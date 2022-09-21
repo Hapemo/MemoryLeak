@@ -42,6 +42,6 @@
 logs
 
 
-gam200/bin/Debug/x64
-gam200/bin/Release/x64
+bin/Debug/x64
+bin/Release/x64/*
 
