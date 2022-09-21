@@ -1,0 +1,163 @@
+/*!
+file:	Input.h
+author:	Jazz Teoh Yu Jue
+date:	20/05/2022
+
+email:	j.teoh@digipen.edu
+
+brief:	Input detects keyboard input states and returns that to caller
+
+    All content © 2022 DigiPen Institute of Technology Singapore. All rights reserved.
+*//*__________________________________________________________________________________*/
+
+#pragma once
+#include "pch.h"
+
+struct GLFWwindow;
+
+// Available keys
+enum KEY {
+
+  UNKNOWN = -1,
+  SPACE = 32,
+  APOSTROPHE = 39,/* ' */
+  COMMA = 44,/* , */
+  MINUS = 45,/* - */
+  PERIOD = 46,/* . */
+  SLASH = 47,/* / */
+  _0 = 48,
+  _1 = 49,
+  _2 = 50,
+  _3 = 51,
+  _4 = 52,
+  _5 = 53,
+  _6 = 54,
+  _7 = 55,
+  _8 = 56,
+  _9 = 57,
+  SEMICOLON = 59,/* ; */
+  EQUAL = 61,/* = */
+  A = 65,
+  B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
+  LEFT_BRACKET, /* [ */
+  BACKSLASH, /* \ */
+  RIGHT_BRACKET, /* ] */
+  GRAVE_ACCENT = 96, /* ` */
+  WORLD_1 = 161, /* non-US #1 */
+  WORLD_2, /* non-US #2 */
+  ESCAPE = 256,
+  ENTER,
+  TAB,
+  BACKSPACE,
+  INSERT,
+  DELETE,
+  RIGHT,
+  LEFT,
+  DOWN,
+  UP,
+  PAGE_UP,
+  PAGE_DOWN,
+  HOME,
+  END,
+  CAPS_LOCK = 280,
+  SCROLL_LOCK,
+  NUM_LOCK,
+  PRINT_SCREEN,
+  PAUSE,
+  F1 = 290,
+  F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14,
+  F15, F16, F17, F18, F19, F20, F21, F22, F23, F24, F25,
+  PAD_0 = 320,
+  PAD_1, PAD_2, PAD_3, PAD_4, PAD_5, PAD_6, PAD_7, PAD_8, PAD_9,
+  PAD_DECIMAL,
+  PAD_DIVIDE,
+  PAD_MULTIPLY,
+  PAD_SUBTRACT,
+  PAD_ADD,
+  PAD_ENTER,
+  PAD_EQUAL,
+  LEFT_SHIFT = 340,
+  LEFT_CONTROL,
+  LEFT_ALT,
+  LEFT_SUPER,
+  RIGHT_SHIFT,
+  RIGHT_CONTROL,
+  RIGHT_ALT,
+  RIGHT_SUPER,
+  MENU,
+  M_BUTTON_L,
+  M_BUTTON_R,
+  M_BUTTON_M,
+  M_BUTTON_4,
+  M_BUTTON_5,
+  M_BUTTON_6,
+  M_BUTTON_7,
+  M_BUTTON_8,
+};
+
+// State of key pressed
+enum STATE {
+  NOTPRESS,
+  RELEASE,
+  PRESS,
+  HOLD
+};
+
+class Input {
+private:
+  // I/O callbacks ...
+  static void key_cb(GLFWwindow* pwin, int key, int scancode, int action, int mod);
+  static void mousebutton_cb(GLFWwindow* pwin, int button, int action, int mod);
+  static void mousescroll_cb(GLFWwindow* pwin, double xoffset, double yoffset);
+  static void mousepos_cb(GLFWwindow* pwin, double xpos, double ypos);
+  
+  static std::array<bool, 324> prev_key_states;
+  static int starting_index;
+  static int total_mouse_key;
+  static int max_keyboard_index;
+  static GLFWwindow* window;
+  static GLFWcursor* cursor;
+  
+public:
+  /***************************************************************************/
+  /*!
+    \brief
+      Initialises the Input system
+  */
+  /**************************************************************************/
+  static void init();
+
+
+  //-------------------------------------------------------------
+  // Keyboard controls
+  //-------------------------------------------------------------
+  
+  /***************************************************************************/
+  /*!
+    \brief
+      Checks for the state of certain key
+    \param STATE
+      State of the key pressed
+    \param KEY
+      Key to check the state of
+    \return
+      Returns true if inputted state matches current state of specified key
+  */
+  /**************************************************************************/
+  static bool CheckKey(STATE, KEY);
+  
+  /***************************************************************************/
+  /*!
+    \brief
+      Update the previous state of all keys.
+      Must be called once after all key inquiry
+  */
+  /**************************************************************************/
+  static void updatePrevKeyStates();
+
+  //-------------------------------------------------------------
+  // Mouse controls
+  //-------------------------------------------------------------
+  static double cursorPosX();
+  static double cursorPosY();
+};

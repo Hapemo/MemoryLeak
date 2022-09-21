@@ -1,0 +1,68 @@
+#include "PerformanceVisualiser.h"
+//#include "Logger.h"
+
+void PerformanceVisualiser::StartSystemTracking(std::string _systemName)
+{
+	for (std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> > &system : PerformanceVisualiser::mSystemPerformance) {
+		if (system.first == _systemName) {
+			TIMEPOINT startTimepoint = std::chrono::high_resolution_clock::now();
+			system.second.second.first = startTimepoint;
+			return;
+		}
+	}
+	TIMEPOINT startTimepoint = std::chrono::high_resolution_clock::now();
+	PerformanceVisualiser::mSystemPerformance.push_back({ _systemName, { 0, { startTimepoint, startTimepoint } } });
+}
+
+double PerformanceVisualiser::StopSystemTracking(std::string _systemName)
+{
+	for (std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> > &system : PerformanceVisualiser::mSystemPerformance) {
+		if (system.first == _systemName) {
+			std::pair<TIMEPOINT, TIMEPOINT>* systemTrack = &(system.second.second);
+			(*systemTrack).second = std::chrono::high_resolution_clock::now();
+
+			long long start = std::chrono::time_point_cast<std::chrono::microseconds>((*systemTrack).first).time_since_epoch().count();
+			long long end = std::chrono::time_point_cast<std::chrono::microseconds>((*systemTrack).second).time_since_epoch().count();
+
+			long long duration = end - start;
+			double millisec = 0.0;
+			millisec = duration * 0.001;
+			double* seconds = &(system.second.first);
+			*seconds = millisec / 1000;
+			
+			return millisec;
+		}
+	}
+	return 0.0;
+}
+
+double PerformanceVisualiser::GetPerformance(std::string _systemName) {
+	for (const std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> > &system : PerformanceVisualiser::mSystemPerformance)
+		if (system.first == _systemName)
+			return system.second.first;
+	return 0.0;
+}
+
+std::string PerformanceVisualiser::GetPerformances() {
+	bool firstSystem = true;
+	double totalUsed = 0;
+	double MainLoop = 0;
+	std::string result = "(";
+
+	for (const std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> >& system : PerformanceVisualiser::mSystemPerformance)
+		if (system.first == "MainLoop") MainLoop = system.second.first;
+
+	for (const std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> > &system : PerformanceVisualiser::mSystemPerformance) {
+		std::string systemName = system.first;
+		if (systemName != "MainLoop") if (firstSystem) firstSystem = false; else result += ", ";
+		double systemSeconds = system.second.first;
+		double systemPercent = (systemSeconds / MainLoop) * 100;
+		if (systemName != "MainLoop") totalUsed += systemPercent;
+		if (systemName != "MainLoop") result += systemName + ": " + std::to_string(systemPercent) + "%";
+	}
+	if (!firstSystem) result += ", ";
+	result += "Others: " + std::to_string(100.0 - totalUsed) + "%";
+	result += ")";
+
+	return result;
+}
