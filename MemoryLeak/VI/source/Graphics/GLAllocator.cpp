@@ -1,4 +1,4 @@
-#include "GLAllocator.h"
+#include "Graphics/GLAllocator.h"
 
 GLAllocator::GLAllocator(size_t no_of_objects, size_t max_vertices_per_object, size_t indices_per_object)
 {

@@ -138,7 +138,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
-    <ClInclude Include="include\Animator.h" />
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\AudioVariable.h" />
@@ -157,36 +156,36 @@
     <ClInclude Include="include\ECS_managers.h" />
     <ClInclude Include="include\ECS_systems.h" />
     <ClInclude Include="include\ECS_tools.h" />
-    <ClInclude Include="include\FBO.h" />
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\GameStateManager.h" />
-    <ClInclude Include="include\GLAllocator.h" />
-    <ClInclude Include="include\GLShader.h" />
+    <ClInclude Include="include\Graphics\Animator.h" />
+    <ClInclude Include="include\Graphics\FBO.h" />
+    <ClInclude Include="include\Graphics\GLAllocator.h" />
+    <ClInclude Include="include\Graphics\GLShader.h" />
+    <ClInclude Include="include\Graphics\RenderManager.h" />
+    <ClInclude Include="include\Graphics\SheetAnimator.h" />
+    <ClInclude Include="include\Graphics\SpriteManager.h" />
+    <ClInclude Include="include\Graphics\SpriteVariable.h" />
+    <ClInclude Include="include\Graphics\TransformManager.h" />
+    <ClInclude Include="include\Graphics\Vertex.h" />
     <ClInclude Include="include\Helper.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\LevelEditor.h" />
     <ClInclude Include="include\Physics2DManager.h" />
     <ClInclude Include="include\PlayerManager.h" />
-    <ClInclude Include="include\RenderManager.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneManager.h" />
     <ClInclude Include="include\Serialization.h" />
-    <ClInclude Include="include\SheetAnimator.h" />
     <ClInclude Include="include\SignalHandler.h" />
-    <ClInclude Include="include\SpriteManager.h" />
-    <ClInclude Include="include\SpriteVariable.h" />
     <ClInclude Include="include\Start.h" />
     <ClInclude Include="include\StartupException.h" />
     <ClInclude Include="include\Start_1.h" />
     <ClInclude Include="include\Start_background.h" />
     <ClInclude Include="include\TagVariable.h" />
-    <ClInclude Include="include\TransformManager.h" />
-    <ClInclude Include="include\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AI.cpp" />
-    <ClCompile Include="source\Animator.cpp" />
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\AudioManger.cpp" />
     <ClCompile Include="source\BenchmarkManager.cpp" />
@@ -196,11 +195,16 @@
     <ClCompile Include="source\ECSManager.cpp" />
     <ClCompile Include="source\ECS_managers.cpp" />
     <ClCompile Include="source\ECS_tools.cpp" />
-    <ClCompile Include="source\FBO.cpp" />
     <ClCompile Include="source\GameState.cpp" />
     <ClCompile Include="source\GameStateManager.cpp" />
-    <ClCompile Include="source\GLAllocator.cpp" />
-    <ClCompile Include="source\GLShader.cpp" />
+    <ClCompile Include="source\Graphics\Animator.cpp" />
+    <ClCompile Include="source\Graphics\FBO.cpp" />
+    <ClCompile Include="source\Graphics\GLAllocator.cpp" />
+    <ClCompile Include="source\Graphics\GLShader.cpp" />
+    <ClCompile Include="source\Graphics\RenderManager.cpp" />
+    <ClCompile Include="source\Graphics\SheetAnimator.cpp" />
+    <ClCompile Include="source\Graphics\SpriteManager.cpp" />
+    <ClCompile Include="source\Graphics\TransformManager.cpp" />
     <ClCompile Include="source\Helper.cpp" />
     <ClCompile Include="source\Input.cpp" />
     <ClCompile Include="source\LevelEditor.cpp" />
@@ -208,18 +212,14 @@
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Physics2DManager.cpp" />
     <ClCompile Include="source\PlayerManager.cpp" />
-    <ClCompile Include="source\RenderManager.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\SceneManager.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
-    <ClCompile Include="source\SheetAnimator.cpp" />
     <ClCompile Include="source\SingletonManager.cpp" />
-    <ClCompile Include="source\SpriteManager.cpp" />
     <ClCompile Include="source\Start.cpp" />
     <ClCompile Include="source\Start_1.cpp" />
     <ClCompile Include="source\Start_background.cpp" />
-    <ClCompile Include="source\TransformManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

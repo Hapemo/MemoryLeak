@@ -1,4 +1,4 @@
-#include "GLShader.h"
+#include "Graphics/GLShader.h"
 
 GLShader::GLShader(const std::string& vertexShader, const std::string& fragmentShader)
 {

@@ -8,7 +8,7 @@
 This file contains function definitions for an Animator system that operates on
 Entities with the Sprite and Animation Component.
 *******************************************************************************/
-#include "Animator.h"
+#include "Graphics/Animator.h"
 
 /*!*****************************************************************************
 \brief

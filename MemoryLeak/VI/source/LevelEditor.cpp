@@ -10,7 +10,7 @@ Entities and its Components.
 *******************************************************************************/
 #include <LevelEditor.h>
 #include <ECSManager.h>
-#include <SpriteManager.h>
+#include "Graphics/SpriteManager.h"
 #include <AI.h>
 #include <Logger.h>
 

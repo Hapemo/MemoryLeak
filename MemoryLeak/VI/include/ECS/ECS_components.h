@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 #include "vec2.h"
-#include "SpriteVariable.h"
+#include "Graphics/SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
 

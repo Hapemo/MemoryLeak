@@ -1,4 +1,4 @@
-#include "SpriteManager.h"
+#include "Graphics/SpriteManager.h"
 #include "ResourceManager.h"
 #include "PerformanceVisualiser.h"
 #include "Logger.h"

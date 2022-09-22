@@ -1,4 +1,4 @@
-#include "FBO.h"
+#include "Graphics/FBO.h"
 
 FBOSpec::FBOSpec() : samples(1), renderToScreen(true), width(), height() {}
 
