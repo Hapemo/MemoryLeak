@@ -113,6 +113,14 @@ void LevelEditor::Update()
 				ImGui::MenuItem("Scene2");
 				ImGui::EndMenu();
 			}
+			if (ImGui::MenuItem("Load Dialogs"))
+			{
+				serializationManager->LoadDialogs();
+			}
+			if (ImGui::MenuItem("Print Dialogs"))
+			{
+				dialogManager->PrintDialogs();
+			}
 			if (ImGui::MenuItem("Save", "Ctrl+S")) 
 			{
 				serializationManager->SaveScene();
