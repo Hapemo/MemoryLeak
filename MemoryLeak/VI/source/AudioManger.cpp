@@ -102,3 +102,18 @@ void AudioManager::UpdateSound()
         }
     }
 }
+void AudioManager::SetALLVolume(float vol) 
+{
+    for (const Entity& e : mEntities)
+    {
+        e.GetComponent<Audio>().sound.volume = vol;
+    }
+}
+void AudioManager::SetBGMVolume(float vol)
+{
+
+}
+void AudioManager::SetSFXVolume(float vol)
+{
+
+}
