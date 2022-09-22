@@ -9,6 +9,7 @@ enum class E_CHANNEL
 struct Sound
 {
 	std::string path;
+	bool toPlay = false;
 	float volume =1.0f;
 	float volumeMod =1.0f;
 	float pitch = 1.0f;

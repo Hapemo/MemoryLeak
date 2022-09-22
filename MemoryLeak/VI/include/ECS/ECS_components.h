@@ -19,16 +19,6 @@ struct Lifespan {
 	//Lifespan(float _lifetime, float _limit) : lifetime(_lifetime), limit(_limit) {}
 };
 
-struct Tag {//delete
-	std::string name;
-	TAG			tag;
-};
-
-struct IsActive {//dete
-	bool isActive; // Active state of entity
-};
-
-
 struct Transform
 {
 	glm::vec2		scale;
@@ -119,6 +109,12 @@ struct Audio {
 	bool isSpacial = false;
 };
 
+struct Text {
+	std::string text;
+	int textID;
+	int nextTextID;
+	GLuint texture = 0; //for dialog box
+};
 
 
 

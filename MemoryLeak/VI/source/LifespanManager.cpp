@@ -3,7 +3,7 @@
 
 void LifespanManager::Update(float dt) {
 	for (Entity e : mEntities) {
-		bool& isActive{ e.GetComponent<IsActive>().isActive };
+		bool& isActive{ e.GetComponent<General>().isActive };
 		if (!isActive) continue;
 
 		Lifespan& lifespan{ e.GetComponent<Lifespan>() };
@@ -17,7 +17,7 @@ void LifespanManager::Update(float dt) {
 
 void LifespanManager::Reset(std::set<Entity> entities, float newLimit) {
 	for (Entity e : entities) {
-		e.GetComponent<IsActive>().isActive = true;
+		e.GetComponent<General>().isActive = true;
 
 		Lifespan& lifespan{ e.GetComponent<Lifespan>() };
 		lifespan.lifetime = 0;
