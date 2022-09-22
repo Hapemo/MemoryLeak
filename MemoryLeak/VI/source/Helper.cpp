@@ -14,6 +14,7 @@ All content © 2022 DigiPen Institute of Technology Singapore. All rights reserve
 /*                                                                   includes
 ----------------------------------------------------------------------------- */
 #include "Helper.h"
+#include "Application.h"
 
 /*                                                   objects with file scope
 ----------------------------------------------------------------------------- */

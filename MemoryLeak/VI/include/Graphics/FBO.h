@@ -16,6 +16,7 @@ class FBO
 {
 public:
 	FBO() : fboid(), colorAttachment(), depthAttachment(), specs() {};
+	//FBO(const FBOSpec& specs);
 	~FBO();
 	void Init(int, int);
 	void Bind();

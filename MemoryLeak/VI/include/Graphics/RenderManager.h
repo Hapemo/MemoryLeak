@@ -29,11 +29,12 @@ public:
 	void RenderToFrameBuffer() { fbo.SetRenderToScreen(false); }
 
 private:
-	int windowWidth, windowHeight;
 	bool debug;
 	float vectorLengthModifier;
 	FBO fbo;
-	GLShader defaultProgram;
+	//GLShader defaultProgram;
+	int* mWindowWidth;
+	int* mWindowHeight;
 	GLShader textureProgram;
 	GLAllocator allocator;
 	std::vector<Vertex> vertices;

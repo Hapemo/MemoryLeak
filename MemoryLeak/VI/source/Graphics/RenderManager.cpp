@@ -6,12 +6,12 @@ constexpr size_t no_of_objects = 10000;
 constexpr size_t max_vertices_per_object = 4;
 constexpr size_t indices_per_object = 6;
 constexpr size_t max_textures_per_draw = 16;
-constexpr float set = 0.1f;
+constexpr float alpha = 0.25f;
 
 RenderManager::RenderManager()
 	: allocator(no_of_objects, max_vertices_per_object, indices_per_object),
-	fbo(), textureProgram("shaders/texture.vert", "shaders/texture.frag"), 
-	defaultProgram("shaders/default.vert", "shaders/default.frag")
+	fbo(), textureProgram("shaders/batch.vert", "shaders/batch.frag"), mWindowHeight(nullptr),
+	mWindowWidth(nullptr)
 {
 	debug = true;
 	vectorLengthModifier = 50.f;
@@ -23,21 +23,20 @@ RenderManager::RenderManager()
 	glDepthFunc(GL_LEQUAL);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	InitializeShaders();
-	vertices.reserve(no_of_objects * set * max_vertices_per_object);
-	indices.reserve(no_of_objects * set * indices_per_object);
-	textureVertices.reserve(no_of_objects * set * max_vertices_per_object);
-	textureIndices.reserve(no_of_objects * set * indices_per_object);
-	debugPoints.reserve(no_of_objects * set);
-	debugVertices.reserve(no_of_objects * set * max_vertices_per_object);
-	debugIndices.reserve(no_of_objects * set * indices_per_object);
+	vertices.reserve(no_of_objects * 0.1f * max_vertices_per_object);
+	indices.reserve(no_of_objects * 0.1f * indices_per_object);
+	textureVertices.reserve(no_of_objects * 0.2f * max_vertices_per_object);
+	textureIndices.reserve(no_of_objects * 0.2f * indices_per_object);
+	debugPoints.reserve(no_of_objects * 0.1f);
+	debugVertices.reserve(no_of_objects * 0.1f * max_vertices_per_object);
+	debugIndices.reserve(no_of_objects * 0.1f * indices_per_object);
 
 }
 
-void RenderManager::Init(int* _windowWidth, int* _windowHeight) 
-{
-	windowWidth = *_windowWidth;
-	windowHeight = *_windowHeight;
-	fbo.Init(*_windowWidth, *_windowHeight);
+void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
+	mWindowWidth = _windowWidth;
+	mWindowHeight = _windowHeight;
+	fbo.Init(*mWindowWidth, *mWindowHeight);
 }
 
 void RenderManager::Render()
@@ -56,7 +55,7 @@ void RenderManager::Render()
 	for (const Entity& e : mEntities)
 	{
 		if (!e.GetComponent<General>().isActive) continue;
-
+		
 		switch (e.GetComponent<Sprite>().sprite)
 		{
 		case SPRITE::TEXTURE:
@@ -102,7 +101,6 @@ void RenderManager::Render()
 			textureVertices.insert(textureVertices.end(), it->second.vertices.begin(), it->second.vertices.end());
 			ConcatIndices(textureIndices, it->second.indices);
 			++textureCount;
-
 			if (textureCount == max_textures_per_draw)
 			{
 				textureCount = 0;
@@ -127,19 +125,15 @@ void RenderManager::Render()
 			++textureCount;
 		}
 	}
-	BatchRenderElements(GL_TRIANGLES, textureVertices, textureIndices);
-	allocator.UnbindVAO();
-	textureProgram.Unbind();
 
-	defaultProgram.Bind();
-	allocator.BindVAO();
+	BatchRenderElements(GL_TRIANGLES, textureVertices, textureIndices);
 	BatchRenderElements(GL_TRIANGLES, vertices, indices);
 
 	if (debug)
 		RenderDebug();
 
 	allocator.UnbindVAO();
-	defaultProgram.Unbind();
+	textureProgram.Unbind();
 
 	if (!fbo.GetRenderToScreen())
 		fbo.Unbind();
@@ -252,14 +246,14 @@ void RenderManager::CreateSquare(const Entity& e, std::vector<Vertex>& vertices,
 	float texID = e.GetComponent<Sprite>().texture;
 
 	float texMin{};
-	float texMax{ 1.f };
+	float texMax{1.f};
 
 	if (e.HasComponent<SheetAnimation>())
 	{
 		float slice = texMax / (float)e.GetComponent<SheetAnimation>().frameCount;
 		float index = (float)e.GetComponent<SheetAnimation>().currFrameIndex;
 
-		texMin = index * slice;
+		texMin =  index * slice;
 		texMax = texMin + slice;
 	}
 
@@ -495,18 +489,18 @@ glm::mat3x3 RenderManager::GetTransform(const glm::vec2& scale, float rotate, co
 	float sinRot = sinf(rotate);
 
 	glm::mat3x3 temp =
-	{
+	{ 
 		glm::vec3(scale.x * cosRot, scale.x * sinRot, 0.f),
 		glm::vec3(-scale.y * sinRot, scale.y * cosRot, 0.f),
-		glm::vec3(translate.x, translate.y, 1.f)
+		glm::vec3(translate.x, translate.y, 1.f) 
 	};
 
-	temp[0][0] /= (float)windowWidth;
-	temp[0][1] /= (float)windowHeight;
-	temp[1][0] /= (float)windowWidth;
-	temp[1][1] /= (float)windowHeight;
-	temp[2][0] /= (float)windowWidth / 2.f;
-	temp[2][1] /= (float)windowHeight / 2.f;
+	temp[0][0] /= static_cast<float>(*mWindowWidth);
+	temp[0][1] /= static_cast<float>(*mWindowHeight);
+	temp[1][0] /= static_cast<float>(*mWindowWidth);
+	temp[1][1] /= static_cast<float>(*mWindowHeight);
+	temp[2][0] /= static_cast<float>(*mWindowWidth) / 2.f;
+	temp[2][1] /= static_cast<float>(*mWindowHeight) / 2.f;
 
 	return temp;
 }
@@ -524,10 +518,9 @@ glm::vec4 RenderManager::GetColor(GLubyte r, GLubyte g, GLubyte b, GLubyte a)
 
 void RenderManager::InitializeShaders()
 {
-	defaultProgram.CompileLinkShaders();
 	textureProgram.CompileLinkShaders();
 
-	if (!defaultProgram.Validate() || !textureProgram.Validate())
+	if (!textureProgram.Validate())
 	{
 		std::cout << "Unable to validate shader programs\n";
 		std::exit(EXIT_FAILURE);
