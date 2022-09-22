@@ -29,7 +29,7 @@ public:
     void CreateNew(std::string _newType);
 
     template <typename T, typename ...Args>
-    void CustomLog(const std::source_location _logData, const std::string _customLogLevel, const T _logMessage, const Args... _logMessages)
+    [[noreturn]] void CustomLog(const std::source_location _logData, const std::string _customLogLevel, const T _logMessage, const Args... _logMessages)
     {
         size_t customType = -1;
         size_t index = 0;
@@ -54,6 +54,7 @@ public:
     *   @param _logMessage | _logMessages String for the message to be logged.
     */
     template <typename T, typename ...Args>
+    [[noreturn]]
     void Log(const std::source_location _logData, const size_t _logType, const T _logMessage, const Args... _logMessages)
     {
         // pushing log into vector for imgui

@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -144,26 +144,18 @@
     <ClInclude Include="include\AudioVariable.h" />
     <ClInclude Include="include\ColliderTransformManager.h" />
     <ClInclude Include="include\Collision2DManager.h" />
-    <ClInclude Include="include\DialogManager.h" />
-    <ClInclude Include="include\ECSManager.h" />
     <ClInclude Include="include\ECS\ECSManager.h" />
     <ClInclude Include="include\ECS\ECS_components.h" />
     <ClInclude Include="include\ECS\ECS_items.h" />
     <ClInclude Include="include\ECS\ECS_managers.h" />
     <ClInclude Include="include\ECS\ECS_systems.h" />
     <ClInclude Include="include\ECS\ECS_tools.h" />
-    <ClInclude Include="include\ECS_components.h" />
-    <ClInclude Include="include\ECS_items.h" />
-    <ClInclude Include="include\ECS_managers.h" />
-    <ClInclude Include="include\ECS_systems.h" />
-    <ClInclude Include="include\ECS_tools.h" />
     <ClInclude Include="include\FBO.h" />
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\GameStateManager.h" />
     <ClInclude Include="include\GLAllocator.h" />
     <ClInclude Include="include\GLShader.h" />
     <ClInclude Include="include\Helper.h" />
-    <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\LevelEditor.h" />
     <ClInclude Include="include\Physics2DManager.h" />
     <ClInclude Include="include\PlayerManager.h" />
@@ -192,7 +184,6 @@
     <ClCompile Include="source\BenchmarkManager.cpp" />
     <ClCompile Include="source\ColliderTransformManager.cpp" />
     <ClCompile Include="source\Collision2DManager.cpp" />
-    <ClCompile Include="source\DialogManager.cpp" />
     <ClCompile Include="source\ECSManager.cpp" />
     <ClCompile Include="source\ECS_managers.cpp" />
     <ClCompile Include="source\ECS_tools.cpp" />
@@ -202,7 +193,6 @@
     <ClCompile Include="source\GLAllocator.cpp" />
     <ClCompile Include="source\GLShader.cpp" />
     <ClCompile Include="source\Helper.cpp" />
-    <ClCompile Include="source\Input.cpp" />
     <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\main.cpp" />
