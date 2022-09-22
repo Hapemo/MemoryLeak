@@ -129,6 +129,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\ImGuizmo.h" />
+    <ClInclude Include="imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\imstb_rectpack.h" />
+    <ClInclude Include="imgui\imstb_textedit.h" />
+    <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="include\ISingleton.h" />
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\mat3.h" />
@@ -144,6 +154,14 @@
     <ClInclude Include="include\vec3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\ImGuizmo.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="imgui\imgui_tables.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="source\Logger.cpp" />
     <ClCompile Include="source\mat3.cpp" />
     <ClCompile Include="source\mat32.cpp" />
