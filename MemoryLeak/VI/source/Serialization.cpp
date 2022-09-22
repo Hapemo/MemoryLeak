@@ -27,7 +27,7 @@ void SerializationManager::LoadScene()
 	std::ifstream ifs("./resources/Scene/SceneJ.json");
 	if (!ifs.good())
 	{
-		if (!ifs.good()) LOG_ERROR("Can't open json file!");
+		std::cout << "cant open json file";
 	}
 
 	std::stringstream contents;
@@ -70,8 +70,8 @@ void SerializationManager::LoadScene()
 			s.x = entity["Transform"]["scale"]["X"].GetDouble();
 			s.y = entity["Transform"]["scale"]["Y"].GetDouble();
 			r = (float)entity["Transform"]["rotation"].GetDouble();
-			t.x = entity["Transform"]["translation"]["X"].GetDouble();
-			t.y = entity["Transform"]["translation"]["Y"].GetDouble();
+			t.x = entity["Transform"]["translation"]["X"].GetDouble()+10.0;
+			t.y = entity["Transform"]["translation"]["Y"].GetDouble() + 10.0;
 		
 			e.AddComponent<Transform>({ s, r, t });
 		}
@@ -194,8 +194,8 @@ void addVectorsMember(Document& scene, Value& parent, const char* name, std::vec
 }
 void SerializationManager::SaveScene()
 {
-	LOG_INFO("saveing scene");
-	Document scene;
+	std::cout << "saveing scene\n";
+	Document scene ;
 	auto& allocator = scene.GetAllocator();
 	scene.SetObject();
 	
@@ -301,9 +301,9 @@ void SerializationManager::SaveScene()
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("path"), StringRef(e.GetComponent<Audio>().sound.path.c_str()), allocator);
 			tmp.AddMember(StringRef("volume"), e.GetComponent<Audio>().sound.volume, allocator);
-			tmp.AddMember(StringRef("volumeMod"), e.GetComponent<Audio>().sound.volumeMod, allocator);
 			tmp.AddMember(StringRef("pitch"), e.GetComponent<Audio>().sound.pitch, allocator);
 			tmp.AddMember(StringRef("isPaused"), e.GetComponent<Audio>().sound.isPaused, allocator);
+			tmp.AddMember(StringRef("volume"), e.GetComponent<Audio>().sound.volume, allocator);
 			tmp.AddMember(StringRef("isMute"), e.GetComponent<Audio>().sound.isMute, allocator);
 			tmp.AddMember(StringRef("isLoop"), e.GetComponent<Audio>().sound.isLoop, allocator);
 			tmp.AddMember(StringRef("isRandPitch"), e.GetComponent<Audio>().sound.isRandPitch, allocator);
@@ -322,68 +322,14 @@ void SerializationManager::SaveScene()
 	ofs << jsonf;
 	if (!ofs.good() )
 	{
-		LOG_ERROR("json errorrr");
+		std::cout << "json errorrr";
 	}
 }
 void SerializationManager::LoadDialogs()
 {
-	std::ifstream ifs("./resources/Dialogs/Dialog1.json");
-	if (!ifs.good()) LOG_ERROR("Can't open json file!");
-	LOG_INFO("Opening dialog json file!");
 
-	std::stringstream contents;
-	contents << ifs.rdbuf();
-	Document doc;
-	doc.Parse(contents.str().c_str());
-
-	//std::cout << "contents.str() " << contents.str() << '\n';
-
-	Dialog dialog;
-	Value dialogObj(kObjectType);
-	dialogObj = doc.GetArray();
-	for (int index = 0; index < dialogObj.Size(); ++index) {
-		dialog.id = dialogObj[index]["Dialogue ID"].GetInt();
-		dialog.text = dialogObj[index]["Dialogue Text"].GetString();
-		//std::cout << "dialog.text " << dialog.text << '\n';
-		dialog.speaker = dialogObj[index]["Speaker"].GetInt();
-		dialog.next = dialogObj[index]["Next Dialogue"].GetInt();
-		dialog.next2 = dialogObj[index]["Next Dialogue(2)"].GetInt();
-		dialogManager->LoadDialog(dialog);
-	}
 }
 void SerializationManager::SaveDialogs()
 {
-	/*
-	LOG_INFO("saving dialogs");
-	Document dialog;
-	auto& allocator = dialog.GetAllocator();
-	dialog.SetObject();
 
-	StringBuffer buffer;
-	Writer<StringBuffer> writer(buffer);
-	int counter = 0;
-
-	for (const Dialog d : DialogManager::mDialogs)
-	{
-		Value entity(kObjectType);
-		if (e.HasComponent<General>())
-		{
-			Value tmp(kObjectType);
-			tmp.AddMember(StringRef("name"), StringRef(e.GetComponent<General>().name.c_str()), allocator);
-			tmp.AddMember(StringRef("tag"), (int)e.GetComponent<General>().tag, allocator);
-			tmp.AddMember(StringRef("subtag"), (int)e.GetComponent<General>().subtag, allocator);
-			tmp.AddMember(StringRef("isActive"), e.GetComponent<General>().isActive, allocator);
-			entity.AddMember(StringRef("General"), tmp, allocator);
-		}
-	}
-
-	scene.Accept(writer);
-	std::string jsonf(buffer.GetString(), buffer.GetSize());
-	std::ofstream ofs("./resources/Scene/SceneJ.json");
-	ofs << jsonf;
-	if (!ofs.good())
-	{
-		LOG_ERROR("json errorrr");
-	}
-	*/
 }

@@ -97,13 +97,10 @@ void Physics2DManager::FirstUpdate(const std::set<Entity> &_entityList) {
 	//			transformManager->SetTranslate(e1, transformManager->GetTranslate(e1) + glm::vec2{ glm::cos(Physics2DManager::GetMoveDirection(e1)), glm::sin(Physics2DManager::GetMoveDirection(e1)) } *Physics2DManager::GetSpeed(e1) * static_cast<float>(Helper::dt));
 	//			transformManager->SetTranslate(e2, transformManager->GetTranslate(e2) + glm::vec2{ glm::cos(Physics2DManager::GetMoveDirection(e2)), glm::sin(Physics2DManager::GetMoveDirection(e2)) } *Physics2DManager::GetSpeed(e2) * static_cast<float>(Helper::dt));
 	//			if (e1.HasComponent<Audio>()){
-	//				////audioManager->playSound(e1, 3);
-	//				e1.GetComponent<Audio>().toPlay = true;
+	//				audioManager->playSound(e1, 3);
 	//			}
 	//			if (e2.HasComponent<Audio>()){
-	//				////audioManager->playSound(e2, 4);
-	//				e2.GetComponent<Audio>().toPlay = true;
-	// 
+	//				audioManager->playSound(e2, 4);
 	//			}
 	//		}
 	//	}
