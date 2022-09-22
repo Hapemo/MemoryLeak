@@ -10,10 +10,10 @@ Entities and its Components.
 *******************************************************************************/
 #pragma once
 #include "pch.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-#include "imGuizmo.h"
+#include "../imgui/imgui.h"
+#include "../imgui/imgui_impl_glfw.h"
+#include "../imgui/imgui_impl_opengl3.h"
+#include "../imgui/imGuizmo.h"
 
 #include <ECS_systems.h>
 #include "ECS_items.h"
