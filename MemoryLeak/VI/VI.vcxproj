@@ -220,7 +220,6 @@
     <ClCompile Include="source\Start.cpp" />
     <ClCompile Include="source\Start_1.cpp" />
     <ClCompile Include="source\Start_background.cpp" />
-    <ClCompile Include="source\TransformManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />
