@@ -37,7 +37,7 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight)
 {
 	windowWidth = *_windowWidth;
 	windowHeight = *_windowHeight;
-	fbo.Init(*_windowWidth / 1.25f, *_windowHeight / 1.25f);
+	fbo.Init(*_windowWidth, *_windowHeight);
 }
 
 void RenderManager::Render()
@@ -102,6 +102,7 @@ void RenderManager::Render()
 			textureVertices.insert(textureVertices.end(), it->second.vertices.begin(), it->second.vertices.end());
 			ConcatIndices(textureIndices, it->second.indices);
 			++textureCount;
+
 			if (textureCount == max_textures_per_draw)
 			{
 				textureCount = 0;
