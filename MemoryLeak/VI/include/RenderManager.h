@@ -6,7 +6,6 @@
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include "GLShader.h"
-#include "Application.h"
 #include "PerformanceVisualiser.h"
 #include "FBO.h"
 
@@ -21,6 +20,7 @@ class RenderManager : public System
 {
 public:
 	RenderManager();
+	void Init(int*, int*);
 	void Render();
 	void SetDebug(bool);
 	void SetVectorLengthModifier(float);
@@ -33,6 +33,8 @@ private:
 	float vectorLengthModifier;
 	FBO fbo;
 	//GLShader defaultProgram;
+	int* mWindowWidth;
+	int* mWindowHeight;
 	GLShader textureProgram;
 	GLAllocator allocator;
 	std::vector<Vertex> vertices;

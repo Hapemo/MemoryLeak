@@ -36,22 +36,22 @@
     <ClInclude Include="include\Collision2DManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ECS_components.h">
+    <ClInclude Include="include\ECS\ECS_components.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ECS_items.h">
+    <ClInclude Include="include\ECS\ECS_items.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ECS_managers.h">
+    <ClInclude Include="include\ECS\ECS_managers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ECS_systems.h">
+    <ClInclude Include="include\ECS\ECS_systems.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ECS_tools.h">
+    <ClInclude Include="include\ECS\ECS_tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ECSManager.h">
+    <ClInclude Include="include\ECS\ECSManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\FBO.h">
@@ -70,9 +70,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Helper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\LevelEditor.h">
@@ -180,9 +177,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Helper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\LevelEditor.cpp">

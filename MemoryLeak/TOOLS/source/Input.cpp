@@ -1,6 +1,5 @@
 #include "Input.h"
 #include "pch.h"
-#include "Application.h"
 
 std::array<bool, 324> Input::prev_key_states;
 int Input::starting_index{ 32 };
@@ -9,18 +8,18 @@ int Input::max_keyboard_index{ 348 };
 GLFWwindow* Input::window;
 GLFWcursor* Input::cursor;
 
-void Input::init() {
-  window = Application::getWindow();
+void Input::init(GLFWwindow* _window) {
+  window = _window;
 
 
   // Initialise all the callbacks for input
   // glfwSetKeyCallback(Application::getWindow(), key_cb);
   //glfwSetMouseButtonCallback(Application::getWindow(), mousebutton_cb);
   //glfwSetCursorPosCallback(Application::getWindow(), mousepos_cb);
-  glfwSetScrollCallback(Application::getWindow(), mousescroll_cb);
+  glfwSetScrollCallback(window, mousescroll_cb);
 
   // this is the default setting ...
-  glfwSetInputMode(Application::getWindow(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
  }
 
 /*  _________________________________________________________________________*/
