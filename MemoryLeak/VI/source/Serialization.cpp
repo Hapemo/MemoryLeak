@@ -195,7 +195,7 @@ void addVectorsMember(Document& scene, Value& parent, const char* name, std::vec
 void SerializationManager::SaveScene()
 {
 	LOG_INFO("saveing scene");
-	Document scene ;
+	Document scene;
 	auto& allocator = scene.GetAllocator();
 	scene.SetObject();
 	
