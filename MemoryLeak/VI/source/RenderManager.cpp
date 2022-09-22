@@ -36,7 +36,7 @@ RenderManager::RenderManager()
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
-	fbo.Init(static_cast<float>(*mWindowWidth), static_cast<float>(*mWindowHeight));
+	fbo.Init(*mWindowWidth, *mWindowHeight);
 }
 
 void RenderManager::Render()

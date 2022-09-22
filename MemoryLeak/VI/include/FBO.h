@@ -1,6 +1,5 @@
 #pragma once
 #include "pch.h"
-#include "Application.h"
 #include "GLAllocator.h"
 #include <glm/glm.hpp>
 
@@ -19,7 +18,7 @@ public:
 	FBO() : fboid(), colorAttachment(), depthAttachment(), specs() {};
 	//FBO(const FBOSpec& specs);
 	~FBO();
-	void Init(float, float);
+	void Init(int, int);
 	void Bind();
 	void Unbind();
 	void SetRenderToScreen(bool scrn) { specs.renderToScreen = scrn; }
