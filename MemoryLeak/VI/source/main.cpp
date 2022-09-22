@@ -49,6 +49,7 @@ void real_main() {
 
     // Part 1
     Application::init();
+
 #if 0 // Testing SparseSet
     SparseSet<double> set(20);
     int count1{ 15 };
@@ -104,6 +105,7 @@ int main() {
         real_main();
     }
     catch (const std::exception& e) {
-        LOG_CRASH("The program has caught an exception.");
+        std::string exc = e.what();
+        LOG_CRASH("The program has caught an exception: " + exc);
     }
 }

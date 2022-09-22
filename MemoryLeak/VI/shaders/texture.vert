@@ -17,15 +17,14 @@ out vec4 vColor;
 out vec2 vTexCoord;
 out float vTexID;
 
-
 /**
 * @brief main function for vertex shader
 * @param none
 * @return none
 */
-void main(void) {
-	vec3 temp = vec3(vec2(aVertexPosition), -aVertexPosition.z);
-	gl_Position = vec4(temp, 1.0);
+void main(void) 
+{
+	gl_Position = vec4(vec3(vec2(aVertexPosition), -aVertexPosition.z), 1.0);
 	vColor = aColor;
 	vTexCoord = aVertexTexture;
 	vTexID = aTexID;

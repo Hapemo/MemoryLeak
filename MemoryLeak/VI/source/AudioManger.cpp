@@ -65,6 +65,21 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
     mSfxSound["HEALTH.wav"] = snd;
     //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
 }
+void AudioManager::UpdateSound()
+{
+    for (const Entity& e : mEntities)
+    {
+        if (e.GetComponent<Audio>().sound.toPlay)
+        {
+            PlaySound(e, 1);
+            if (!e.GetComponent<Audio>().sound.isLoop)
+            {
+                e.GetComponent<Audio>().sound.toPlay = false;
+            }
+        }
+    }
+    system->update();
+}
 /*!*****************************************************************************
 \brief
     Plays a single sound
@@ -87,4 +102,19 @@ void AudioManager::PlaySound(const Entity& _e, int _sound)
             system->playSound(mSfxSound[snd], nullptr, false, &mChannel[_sound]);
         }
     }
+}
+void AudioManager::SetALLVolume(float vol)
+{
+    for (const Entity& e : mEntities)
+    {
+        e.GetComponent<Audio>().sound.volume = vol;
+    }
+}
+void AudioManager::SetBGMVolume(float vol)
+{
+
+}
+void AudioManager::SetSFXVolume(float vol)
+{
+
 }

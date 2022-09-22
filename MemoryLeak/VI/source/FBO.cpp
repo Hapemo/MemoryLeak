@@ -2,7 +2,8 @@
 
 FBOSpec::FBOSpec() : samples(1), renderToScreen(true), width(), height() {}
 
-void FBO::Init(int _windowWidth, int _windowHeight) {
+void FBO::Init(int _windowWidth, int _windowHeight) 
+{
 	specs.width = _windowWidth;
 	specs.height = _windowHeight;
 
