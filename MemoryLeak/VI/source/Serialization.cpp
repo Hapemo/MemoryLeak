@@ -70,8 +70,8 @@ void SerializationManager::LoadScene()
 			s.x = entity["Transform"]["scale"]["X"].GetDouble();
 			s.y = entity["Transform"]["scale"]["Y"].GetDouble();
 			r = (float)entity["Transform"]["rotation"].GetDouble();
-			t.x = entity["Transform"]["translation"]["X"].GetDouble()+10.0;
-			t.y = entity["Transform"]["translation"]["Y"].GetDouble() + 10.0;
+			t.x = entity["Transform"]["translation"]["X"].GetDouble();
+			t.y = entity["Transform"]["translation"]["Y"].GetDouble();
 		
 			e.AddComponent<Transform>({ s, r, t });
 		}
@@ -301,9 +301,9 @@ void SerializationManager::SaveScene()
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("path"), StringRef(e.GetComponent<Audio>().sound.path.c_str()), allocator);
 			tmp.AddMember(StringRef("volume"), e.GetComponent<Audio>().sound.volume, allocator);
+			tmp.AddMember(StringRef("volumeMod"), e.GetComponent<Audio>().sound.volumeMod, allocator);
 			tmp.AddMember(StringRef("pitch"), e.GetComponent<Audio>().sound.pitch, allocator);
 			tmp.AddMember(StringRef("isPaused"), e.GetComponent<Audio>().sound.isPaused, allocator);
-			tmp.AddMember(StringRef("volume"), e.GetComponent<Audio>().sound.volume, allocator);
 			tmp.AddMember(StringRef("isMute"), e.GetComponent<Audio>().sound.isMute, allocator);
 			tmp.AddMember(StringRef("isLoop"), e.GetComponent<Audio>().sound.isLoop, allocator);
 			tmp.AddMember(StringRef("isRandPitch"), e.GetComponent<Audio>().sound.isRandPitch, allocator);
