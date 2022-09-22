@@ -2,10 +2,10 @@
 #include "pch.h"
 #include "ECS_tools.h"
 
-#include "TransformManager.h"
-#include "SpriteManager.h"
-//#include "RenderManager.h"
-#include "RenderManager.h"
+#include "Graphics/TransformManager.h"
+#include "Graphics/SpriteManager.h"
+//#include "Graphics/RenderManager.h"
+#include "Graphics/RenderManager.h"
 #include "ColliderTransformManager.h"
 
 #include "PlayerManager.h"
@@ -13,8 +13,8 @@
 #include "Collision2DManager.h"
 
 #include "LevelEditor.h"
-#include "Animator.h"
-#include "SheetAnimator.h"
+#include "Graphics/Animator.h"
+#include "Graphics/SheetAnimator.h"
 #include "AudioManager.h"
 #include "Serialization.h"
 #include "DialogManager.h"

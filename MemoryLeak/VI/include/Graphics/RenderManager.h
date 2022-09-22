@@ -1,13 +1,13 @@
 #pragma once
-#include "GLAllocator.h"
+#include "Graphics/GLAllocator.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
-#include "GLShader.h"
+#include "Graphics/GLShader.h"
 #include "PerformanceVisualiser.h"
-#include "FBO.h"
+#include "Graphics/FBO.h"
 
 struct TextureInfo
 {
