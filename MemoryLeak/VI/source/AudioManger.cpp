@@ -88,3 +88,33 @@ void AudioManager::PlaySound(const Entity& _e, int _sound)
         }
     }
 }
+void AudioManager::UpdateSound()
+{
+    for (const Entity& e : mEntities)
+    {
+        if (e.GetComponent<Audio>().sound.toPlay)
+        {
+            PlaySound(e, 1);
+            if (!e.GetComponent<Audio>().sound.isLoop)
+            {
+                e.GetComponent<Audio>().sound.toPlay = false;
+            }
+        }
+    }
+    system->update();
+}
+void AudioManager::SetALLVolume(float vol)
+{
+    for (const Entity& e : mEntities)
+    {
+        e.GetComponent<Audio>().sound.volume = vol;
+    }
+}
+void AudioManager::SetBGMVolume(float vol)
+{
+
+}
+void AudioManager::SetSFXVolume(float vol)
+{
+
+}

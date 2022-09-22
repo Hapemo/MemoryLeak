@@ -113,6 +113,14 @@ void LevelEditor::Update()
 				ImGui::MenuItem("Scene2");
 				ImGui::EndMenu();
 			}
+			if (ImGui::MenuItem("Load Dialogs"))
+			{
+				serializationManager->LoadDialogs();
+			}
+			if (ImGui::MenuItem("Print Dialogs"))
+			{
+				dialogManager->PrintDialogs();
+			}
 			if (ImGui::MenuItem("Save", "Ctrl+S")) 
 			{
 				serializationManager->SaveScene();
@@ -253,12 +261,12 @@ void  LevelEditor::SceneManager()
 					{
 						if (e.HasComponent<General>())
 						{
+							ImGui::Text("General");
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
 								selectedEntityID = counter;
 							}
-							ImGui::Text("General");
 						}
 						if (e.HasComponent<Lifespan>())
 						{
@@ -429,8 +437,8 @@ void LevelEditor::EntityManager()
 			//++counter;
 			int counter = selectedEntityID;
 			const Entity& e = *selectedEntity;
-			const char* lbl = e.GetComponent<General>().name.c_str();
-			ImGui::Text(lbl);
+			//const char* lbl = e.GetComponent<General>().name.c_str();
+			//ImGui::Text(lbl);
 			if (e.HasComponent<General>())
 			{
 				ImGui::Text("General");
@@ -467,14 +475,12 @@ void LevelEditor::EntityManager()
 
 				tmpVec2[0] = transformManager->GetScale(e).x;
 				tmpVec2[1] = transformManager->GetScale(e).y;
-				//ImGui::InputFloat2("Set Scale", shipSize);
 				ImGui::DragFloat2("Set Scale", tmpVec2);
 				glm::vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
 				transformManager->SetScale(e, scale);
 
 				tmpVec2[0] = transformManager->GetTranslate(e).x;
 				tmpVec2[1] = transformManager->GetTranslate(e).y;
-				//ImGui::SliderFloat2("Set Position", shipPos, -800.f, 800.f);
 				ImGui::DragFloat2("Set Position", tmpVec2);
 				glm::vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
 				transformManager->SetTranslate(e, pos);
@@ -485,32 +491,17 @@ void LevelEditor::EntityManager()
 				tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 				transformManager->SetRotation(e, tmpFloat);
 
-				////imguizmo
-				//ImGuizmo::SetOrthographic(true);
-				//ImGuizmo::SetDrawlist();
-				//ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y,
-				//	ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
-				////ImGuizmo::SetRect(0, 0, 1600, 900);
-
-				//glm::mat4 view = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
-				//glm::mat4 trans = renderManager->GetTransform(e);
-				//ImGuizmo::Manipulate(glm::value_ptr(view), glm::value_ptr(view), 
-				//	ImGuizmo::OPERATION::TRANSLATE, ImGuizmo::LOCAL,
-				//	glm::value_ptr(view));
-
-
-
-
+				
 			}
 			if (e.HasComponent<Sprite>())
 			{
 				ImGui::Text("Sprite");
-				float shipColor[4];
+				//float shipColor[4];
 				tmpVec4[0] = e.GetComponent<Sprite>().color.r /255.f;
 				tmpVec4[1] = e.GetComponent<Sprite>().color.g / 255.f;
 				tmpVec4[2] = e.GetComponent<Sprite>().color.b / 255.f;
 				tmpVec4[3] = e.GetComponent<Sprite>().color.a / 255.f;
-				ImGui::ColorEdit4("Color", shipColor);
+				ImGui::ColorEdit4("Color", tmpVec4);
 				e.GetComponent<Sprite>().color.r = (GLubyte)(tmpVec4[0] * 255);
 				e.GetComponent<Sprite>().color.g = (GLubyte)(tmpVec4[1] * 255);
 				e.GetComponent<Sprite>().color.b = (GLubyte)(tmpVec4[2] * 255);
@@ -602,27 +593,25 @@ void LevelEditor::EntityManager()
 			if (e.HasComponent<RectCollider>())
 			{
 				ImGui::Text("RectCollider");
-				float vec2[2];
-				vec2[0] = e.GetComponent<RectCollider>().centerOffset.x;
-				vec2[1] = e.GetComponent<RectCollider>().centerOffset.y;
-				ImGui::InputFloat2("Box position Offset", vec2);
-				e.GetComponent<RectCollider>().centerOffset = { vec2[0] ,vec2[1]};
+				tmpVec2[0] = e.GetComponent<RectCollider>().centerOffset.x;
+				tmpVec2[1] = e.GetComponent<RectCollider>().centerOffset.y;
+				ImGui::InputFloat2("Box position Offset", tmpVec2);
+				e.GetComponent<RectCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1]};
 
-				vec2[0] = e.GetComponent<RectCollider>().scaleOffset.x;
-				vec2[1] = e.GetComponent<RectCollider>().scaleOffset.y;
-				ImGui::InputFloat2("Box scale Offset", vec2);
-				e.GetComponent<RectCollider>().scaleOffset = { vec2[0] ,vec2[1] };
+				tmpVec2[0] = e.GetComponent<RectCollider>().scaleOffset.x;
+				tmpVec2[1] = e.GetComponent<RectCollider>().scaleOffset.y;
+				ImGui::InputFloat2("Box scale Offset", tmpVec2);
+				e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 				ImGui::Checkbox("Box RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
 			}
 			if (e.HasComponent<CircleCollider>())
 			{
 				ImGui::Text("CircleCollider");
-				float vec2[2];
-				vec2[0] = e.GetComponent<CircleCollider>().centerOffset.x;
-				vec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
-				ImGui::InputFloat2("Circle position Offset", vec2);
-				e.GetComponent<CircleCollider>().centerOffset = { vec2[0] ,vec2[1] };
+				tmpVec2[0] = e.GetComponent<CircleCollider>().centerOffset.x;
+				tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
+				ImGui::InputFloat2("Circle position Offset", tmpVec2);
+				e.GetComponent<CircleCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 				float scale = e.GetComponent<CircleCollider>().scaleOffset;
 				ImGui::InputFloat("Circle scale Offset", &scale);
@@ -630,22 +619,28 @@ void LevelEditor::EntityManager()
 
 				ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
 			}
-			/*if (e.HasComponent<Edge2DCollider>())
+			if (e.HasComponent<Edge2DCollider>())
 			{
 				ImGui::Text("Edge2DCollider");
-				float vec2[2];
-				vec2[0] = e.GetComponent<Edge2DCollider>().p0Offset.x;
-				vec2[1] = e.GetComponent<Edge2DCollider>().p0Offset.y;
-				ImGui::InputFloat2("p0 Offset", vec2);
-				e.GetComponent<Edge2DCollider>().p0Offset = { vec2[0] ,vec2[1] };
+				tmpVec2[0] = e.GetComponent<Edge2DCollider>().p0Offset.x;
+				tmpVec2[1] = e.GetComponent<Edge2DCollider>().p0Offset.y;
+				ImGui::InputFloat2("p0 Offset", tmpVec2);
+				e.GetComponent<Edge2DCollider>().p0Offset = { tmpVec2[0] ,tmpVec2[1] };
 
-				vec2[0] = e.GetComponent<Edge2DCollider>().p1Offset.x;
-				vec2[1] = e.GetComponent<Edge2DCollider>().p1Offset.y;
-				ImGui::InputFloat2("p1 Offset", vec2);
-				e.GetComponent<Edge2DCollider>().p1Offset = { vec2[0] ,vec2[1] };
-
+				ImGui::InputFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset);
+				ImGui::InputFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset);
 				ImGui::Checkbox("RenderFlag", &e.GetComponent<Edge2DCollider>().renderFlag);
-			}*/
+			}
+			if (e.HasComponent<Point2DCollider>())
+			{
+				ImGui::Text("Point2DCollider");
+				tmpVec2[0] = e.GetComponent<Point2DCollider>().centerOffset.x;
+				tmpVec2[1] = e.GetComponent<Point2DCollider>().centerOffset.y;
+				ImGui::InputFloat2("centerOffset", tmpVec2);
+				e.GetComponent<Point2DCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+				ImGui::Checkbox("RenderFlag", &e.GetComponent<Point2DCollider>().renderFlag);
+			}
 			if (e.HasComponent<Physics2D>())
 			{
 				ImGui::Text("Physics2D");
@@ -657,9 +652,7 @@ void LevelEditor::EntityManager()
 			if (e.HasComponent<Audio>())
 			{
 				ImGui::Text("Audio");
-				std::string snd = e.GetComponent<Audio>().sound.path;
 				ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
-				//e.GetComponent<Audio>().sound.path = snd;
 				ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
 			}
 			if (e.HasComponent<Stuff>())
@@ -703,7 +696,7 @@ void LevelEditor::EntityManager()
 			}
 
 			static int componentsID;
-			static const char* components[]{ "General","Lifespan","Transform", "Sprite" ,"Animation","Physics2D",
+			static const char* components[]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
 				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Audio" ,"Stuff" };
 			ImGui::Combo("Select Component", &componentsID, components, IM_ARRAYSIZE(components));
 			if (ImGui::Button("Add Component"))
@@ -719,16 +712,18 @@ void LevelEditor::EntityManager()
 				else if (componentsID == 4)
 					e.AddComponent<Animation>({});
 				else if (componentsID == 5)
-					e.AddComponent<Physics2D>({});
+					e.AddComponent<SheetAnimation>({});
 				else if (componentsID == 6)
-					e.AddComponent<RectCollider>({ });
+					e.AddComponent<Physics2D>({});
 				else if (componentsID == 7)
-					e.AddComponent<CircleCollider>({});
+					e.AddComponent<RectCollider>({ });
 				else if (componentsID == 8)
-					e.AddComponent<Edge2DCollider>({});
+					e.AddComponent<CircleCollider>({});
 				else if (componentsID == 9)
-					e.AddComponent<Audio>({});
+					e.AddComponent<Edge2DCollider>({});
 				else if (componentsID == 10)
+					e.AddComponent<Audio>({});
+				else if (componentsID == 11)
 					e.AddComponent<Stuff>({});
 			}
 			if (ImGui::BeginPopupContextWindow(0, 1, false))
@@ -754,9 +749,8 @@ void LevelEditor::EntityManager()
 
 void  LevelEditor::AssetManager()
 {
-	GLuint my_image_texture = 0;
+	GLuint my_image_texture = spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
 	GLuint my_image2_texture = 0;
-	my_image_texture = spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
 	std::string rootPath = "resources";
 	ImVec2 buttonSize = { 100,100 };
 	ImGui::Begin("Asset Manager");
@@ -766,7 +760,7 @@ void  LevelEditor::AssetManager()
 		static std::filesystem::path m_CurrentDirectory = std::filesystem::path(rootPath);
 		if (m_CurrentDirectory != std::filesystem::path(rootPath))
 		{
-			if (ImGui::Button("<- BACK", { 100,100 }))
+			if (ImGui::Button("<- BACK", buttonSize))
 			{
 				m_CurrentDirectory = m_CurrentDirectory.parent_path();
 			}
@@ -828,8 +822,19 @@ void LevelEditor::ViewPortManager()
 	ImGui::SameLine(0.f, 20.f);
 	ImGui::Button("Pause", { 100,25 });
 	GLuint frameBuffer = renderManager->GetFBO();
-	//ImGui::Image((ImTextureID)frameBuffer, { 1280,720 }, ImVec2(0, 1), ImVec2(1, 0));
-	ImGui::Image((ImTextureID)frameBuffer, { ImGui::GetWindowWidth(),ImGui::GetWindowHeight() -100}, ImVec2(0, 1), ImVec2(1, 0));
+	ImVec2 viewportSize = ImGui::GetWindowSize();
+	viewportSize.y -=70;
+	//Calcualting the aspect ratio 
+	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
+	{
+		viewportSize.x = viewportSize.y / 9 * 16;
+	}
+	else if (viewportSize.x / viewportSize.y < 16 / 9.0f) // tall screen
+	{
+		viewportSize.y = viewportSize.x / 16 * 9;
+	}
+	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth()- viewportSize.x)*0.5, 60));
+	ImGui::Image((ImTextureID)frameBuffer, { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
 
 	if (selectedEntity != nullptr && selectedEntityID <= (int)mEntities.size())
 	{
