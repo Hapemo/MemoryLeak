@@ -10,7 +10,8 @@ constexpr float alpha = 0.25f;
 
 RenderManager::RenderManager()
 	: allocator(no_of_objects, max_vertices_per_object, indices_per_object),
-	fbo(), textureProgram("shaders/batch.vert", "shaders/batch.frag")
+	fbo(), textureProgram("shaders/batch.vert", "shaders/batch.frag"), mWindowHeight(nullptr),
+	mWindowWidth(nullptr)
 {
 	debug = true;
 	vectorLengthModifier = 50.f;
@@ -30,6 +31,12 @@ RenderManager::RenderManager()
 	debugVertices.reserve(no_of_objects * 0.1f * max_vertices_per_object);
 	debugIndices.reserve(no_of_objects * 0.1f * indices_per_object);
 
+}
+
+void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
+	mWindowWidth = _windowWidth;
+	mWindowHeight = _windowHeight;
+	fbo.Init(static_cast<float>(*mWindowWidth), static_cast<float>(*mWindowHeight));
 }
 
 void RenderManager::Render()
@@ -488,12 +495,12 @@ glm::mat3x3 RenderManager::GetTransform(const glm::vec2& scale, float rotate, co
 		glm::vec3(translate.x, translate.y, 1.f) 
 	};
 
-	temp[0][0] /= (float)Application::getWindowWidth();
-	temp[0][1] /= (float)Application::getWindowHeight();
-	temp[1][0] /= (float)Application::getWindowWidth();
-	temp[1][1] /= (float)Application::getWindowHeight();
-	temp[2][0] /= (float)Application::getWindowWidth() / 2.f;
-	temp[2][1] /= (float)Application::getWindowHeight() / 2.f;
+	temp[0][0] /= static_cast<float>(*mWindowWidth);
+	temp[0][1] /= static_cast<float>(*mWindowHeight);
+	temp[1][0] /= static_cast<float>(*mWindowWidth);
+	temp[1][1] /= static_cast<float>(*mWindowHeight);
+	temp[2][0] /= static_cast<float>(*mWindowWidth) / 2.f;
+	temp[2][1] /= static_cast<float>(*mWindowHeight) / 2.f;
 
 	return temp;
 }

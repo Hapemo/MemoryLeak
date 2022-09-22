@@ -16,9 +16,10 @@ struct FBOSpec
 class FBO
 {
 public:
-	FBO() : FBO(FBOSpec()) {};
-	FBO(const FBOSpec& specs);
+	FBO() : fboid(), colorAttachment(), depthAttachment(), specs() {};
+	//FBO(const FBOSpec& specs);
 	~FBO();
+	void Init(float, float);
 	void Bind();
 	void Unbind();
 	void SetRenderToScreen(bool scrn) { specs.renderToScreen = scrn; }

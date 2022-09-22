@@ -7,6 +7,7 @@ class Application {
 public:
 	static void init();
 	static void startup();
+	static void SystemInit();
 	static void FirstUpdate();		// Called at the start of every game loop
 	static void SecondUpdate();		// Called at the end of every game loop
 	static void exit();

@@ -22,7 +22,7 @@ void Application::startup() {
   try {
     loadConfig("../config.txt");
     glfwStartUp();
-    Input::init();
+    Input::init(ptr_window);
     glewStartUp();
     GameStateManager::GetInstance()->Init();
     ECSManager::ECS_init();
@@ -31,6 +31,18 @@ void Application::startup() {
     std::cout << "Unable to create OpenGL context\n" << error.what() << '\n';
     std::exit(EXIT_FAILURE);
   }
+}
+
+void Application::SystemInit() {
+  for (size_t index = 0; index < GET_RESOURCES().size(); ++index) {
+    spriteManager->InitializeTexture(GET_TEXTURE(index));
+  }
+
+  //@weijhin
+  levelEditor->LevelEditor::Init();
+  audioManager->AudioManager::AudioManager();
+  benchmarkManager->StartTime();
+  renderManager->Init(&window_width, &window_height);
 }
 
 
@@ -44,17 +56,9 @@ void Application::init() {
   INIT_TEXTURES("Sprites");
   INIT_TEXTURES("Spritesheets");
 
-  for (size_t index = 0; index < GET_RESOURCES().size(); ++index) {
-      spriteManager->InitializeTexture(GET_TEXTURE(index));
-  }
-
-  //@weijhin
-  levelEditor->LevelEditor::Init();
-  audioManager->AudioManager::AudioManager();
   // Part 2
   Helper::print_specs();
-  
-  benchmarkManager->StartTime();
+  SystemInit();
 }
 
 void Application::FirstUpdate() {
