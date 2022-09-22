@@ -10,10 +10,10 @@ Entities and its Components.
 *******************************************************************************/
 #pragma once
 #include "pch.h"
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_impl_glfw.h"
-#include "../imgui/imgui_impl_opengl3.h"
-#include "../imgui/imGuizmo.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include "imGuizmo.h"
 
 #include <ECS_systems.h>
 #include "ECS_items.h"
@@ -25,7 +25,7 @@ Entities and its Components.
 class LevelEditor : public System
 {
 public:
-	void Init();
+	void Init(GLFWwindow*, int*, int*);
 	void Window();
 	void Update();
 	void Exit();
@@ -36,5 +36,7 @@ private:
 	void AssetManager();
 	void ViewPortManager();
 	void ShowDebugInfo();
-	
+	GLFWwindow* mWindow;
+	int* mWindowWidth;
+	int* mWindowHeight;
 };

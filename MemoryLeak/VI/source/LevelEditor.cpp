@@ -59,7 +59,7 @@ int SRT = 0;
 //	return true;
 //	//return false;
 //}
-void LevelEditor::Init()
+void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeight)
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -70,9 +70,11 @@ void LevelEditor::Init()
 
 	//(void)io;
 	ImGui::StyleColorsDark();
-	ImGui_ImplGlfw_InitForOpenGL(Application::getWindow(), true);
+	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
-	
+	mWindowWidth = _windowWidth;
+	mWindowHeight = _windowHeight;
+
 	//IM_ASSERT(ret);
 	//weatherAIinit();
 }
@@ -850,8 +852,8 @@ void LevelEditor::ViewPortManager()
 			ImGui::GetWindowWidth(), ImGui::GetWindowHeight());*/
 		glm::mat4 iii = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
 		glm::mat4 view = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
-		view[3][0] /= (float)Application::getWindowWidth() / 2.f;
-		view[3][1] /= (float)Application::getWindowHeight() / 2.f;
+		view[3][0] /= (float)*mWindowWidth / 2.f;
+		view[3][1] /= (float)*mWindowHeight / 2.f;
 		//glm::mat4 trans = renderManager->GetTransform(e);
 		//glm::mat4 trans2 = glm::inverse(renderManager->GetTransform(e));
 		glm::mat4 trans{
@@ -864,10 +866,10 @@ void LevelEditor::ViewPortManager()
 		if (SRT == 1)
 		{
 			opp = ImGuizmo::OPERATION::SCALE;
-			view[0][0] /= (float)Application::getWindowWidth() / 2.f;
-			view[0][1] /= (float)Application::getWindowHeight() / 2.f;
-			view[1][0] /= (float)Application::getWindowWidth() / 2.f;
-			view[1][1] /= (float)Application::getWindowHeight() / 2.f;
+			view[0][0] /= (float)*mWindowWidth / 2.f;
+			view[0][1] /= (float)*mWindowHeight / 2.f;
+			view[1][0] /= (float)*mWindowWidth / 2.f;
+			view[1][1] /= (float)*mWindowHeight / 2.f;
 			
 		}
 		if (SRT == 2)
@@ -885,8 +887,8 @@ void LevelEditor::ViewPortManager()
 			if (ImGuizmo::IsUsing())
 			{
 				if(SRT==3)
-					transformManager->SetTranslate(e, { trans[3][0]* (float)Application::getWindowWidth() / 2.f,
-						trans[3][1]* (float)Application::getWindowHeight() / 2.f });
+					transformManager->SetTranslate(e, { trans[3][0]* (float)*mWindowWidth / 2.f,
+						trans[3][1]* (float)*mWindowHeight / 2.f });
 				if(SRT==1)
 					transformManager->SetScale(e, { glm::length(trans[0]),glm::length(trans[1]) }	);
 			}

@@ -2,7 +2,7 @@
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
-#include <Application.h>
+//#include <Application.h>
 #include "Graphics/TransformManager.h"
 #include <glm/glm.hpp>
 #define _USE_MATH_DEFINES

@@ -39,7 +39,7 @@ void Application::SystemInit() {
   }
 
   //@weijhin
-  levelEditor->LevelEditor::Init();
+  levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
   audioManager->AudioManager::AudioManager();
   benchmarkManager->StartTime();
   renderManager->Init(&window_width, &window_height);
