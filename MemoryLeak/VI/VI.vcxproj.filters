@@ -39,9 +39,6 @@
     <ClInclude Include="include\GameStateManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Helper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\LevelEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -188,9 +185,6 @@
     <ClCompile Include="source\GameStateManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Helper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\LevelEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -228,9 +222,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Start_background.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\TransformManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\DialogManager.cpp">
