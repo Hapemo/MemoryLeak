@@ -10,7 +10,7 @@
 
 #include "PlayerManager.h"
 #include "../Physics/Physics2DManager.h"
-#include "Collision2DManager.h"
+#include "../Physics/Collision2DManager.h"
 
 #include "LevelEditor.h"
 #include "Animator.h"
