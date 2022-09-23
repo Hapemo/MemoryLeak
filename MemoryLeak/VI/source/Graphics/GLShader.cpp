@@ -4,8 +4,8 @@ GLShader::GLShader(const std::string& vertexShader, const std::string& fragmentS
 {
 	programID = glCreateProgram();
 	linked = false;
-	paths.first = vertexShader;
-	paths.second = fragmentShader;
+	paths.first = "../VI/" + vertexShader;
+	paths.second = "../VI/" + fragmentShader;
 }
 
 GLShader::~GLShader()
@@ -16,6 +16,7 @@ GLShader::~GLShader()
 
 bool GLShader::CompileVertexShader()
 {
+	//std::string str1 = "" + paths.first;
 	std::ifstream vertexShader(paths.first, std::ifstream::in);
 
 	if (!vertexShader)

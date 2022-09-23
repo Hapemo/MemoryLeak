@@ -40,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -185,7 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AI.cpp" />
-    <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\AudioManger.cpp" />
     <ClCompile Include="source\BenchmarkManager.cpp" />
     <ClCompile Include="source\ColliderTransformManager.cpp" />
@@ -194,8 +193,6 @@
     <ClCompile Include="source\ECSManager.cpp" />
     <ClCompile Include="source\ECS_managers.cpp" />
     <ClCompile Include="source\ECS_tools.cpp" />
-    <ClCompile Include="source\GameState.cpp" />
-    <ClCompile Include="source\GameStateManager.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
@@ -207,7 +204,6 @@
     <ClCompile Include="source\Input.cpp" />
     <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
-    <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Physics2DManager.cpp" />
     <ClCompile Include="source\PlayerManager.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
@@ -218,6 +214,7 @@
     <ClCompile Include="source\Start.cpp" />
     <ClCompile Include="source\Start_1.cpp" />
     <ClCompile Include="source\Start_background.cpp" />
+    <ClCompile Include="source\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />
