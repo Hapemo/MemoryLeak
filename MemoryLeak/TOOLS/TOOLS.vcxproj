@@ -141,16 +141,16 @@
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="include\Helper.h" />
     <ClInclude Include="include\Input.h" />
-    <ClInclude Include="include\ISingleton.h" />
+    <ClInclude Include="include\DesignPatterns\ISingleton.h" />
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\mat3.h" />
     <ClInclude Include="include\mat32.h" />
     <ClInclude Include="include\NFmath.h" />
     <ClInclude Include="include\pch.h" />
     <ClInclude Include="include\PerformanceVisualiser.h" />
-    <ClInclude Include="include\Singleton.h" />
-    <ClInclude Include="include\SingletonManager.h" />
-    <ClInclude Include="include\SparseSet.h" />
+    <ClInclude Include="include\DesignPatterns\Singleton.h" />
+    <ClInclude Include="include\DesignPatterns\SingletonManager.h" />
+    <ClInclude Include="include\DesignPatterns\SparseSet.h" />
     <ClInclude Include="include\Utilities.h" />
     <ClInclude Include="include\vec2.h" />
     <ClInclude Include="include\vec3.h" />
@@ -170,6 +170,7 @@
     <ClCompile Include="source\mat3.cpp" />
     <ClCompile Include="source\mat32.cpp" />
     <ClCompile Include="source\PerformanceVisualiser.cpp" />
+    <ClCompile Include="source\SingletonManager.cpp" />
     <ClCompile Include="source\vec2.cpp" />
     <ClCompile Include="source\vec3.cpp" />
   </ItemGroup>

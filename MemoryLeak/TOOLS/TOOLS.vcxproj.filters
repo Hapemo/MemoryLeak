@@ -36,16 +36,16 @@
     <ClInclude Include="include\NFmath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ISingleton.h">
+    <ClInclude Include="include\DesignPatterns\ISingleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Singleton.h">
+    <ClInclude Include="include\DesignPatterns\Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\SingletonManager.h">
+    <ClInclude Include="include\DesignPatterns\SingletonManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\SparseSet.h">
+    <ClInclude Include="include\DesignPatterns\SparseSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Logger.h">
@@ -138,6 +138,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Helper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SingletonManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

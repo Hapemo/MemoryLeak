@@ -174,7 +174,6 @@
     <ClInclude Include="include\PlayerManager.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Scene.h" />
-    <ClInclude Include="include\SceneManager.h" />
     <ClInclude Include="include\Serialization.h" />
     <ClInclude Include="include\SignalHandler.h" />
     <ClInclude Include="include\StartupException.h" />
@@ -189,9 +188,9 @@
     <ClCompile Include="source\ColliderTransformManager.cpp" />
     <ClCompile Include="source\Collision2DManager.cpp" />
     <ClCompile Include="source\DialogManager.cpp" />
-    <ClCompile Include="source\ECSManager.cpp" />
-    <ClCompile Include="source\ECS_managers.cpp" />
-    <ClCompile Include="source\ECS_tools.cpp" />
+    <ClCompile Include="source\ECS\ECSManager.cpp" />
+    <ClCompile Include="source\ECS\ECS_managers.cpp" />
+    <ClCompile Include="source\ECS\ECS_tools.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
@@ -207,9 +206,7 @@
     <ClCompile Include="source\PlayerManager.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Scene.cpp" />
-    <ClCompile Include="source\SceneManager.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
-    <ClCompile Include="source\SingletonManager.cpp" />
     <ClCompile Include="source\Start_1.cpp" />
     <ClCompile Include="source\Start_background.cpp" />
     <ClCompile Include="source\stb_image.cpp" />
