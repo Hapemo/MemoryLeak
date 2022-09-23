@@ -5,9 +5,11 @@
 
 class PlayerManager : public System {
 public:
-	void InitPlayer(const Entity &_e);
+	void InitPlayer(const Entity& _e);
 	void Update();
 	void RemovePlayer();
 private:
-	const Entity *player;
+	Entity mPlayer;
+	bool mIsEnabled{ false };
+	bool mTurnFlag{ true };
 };

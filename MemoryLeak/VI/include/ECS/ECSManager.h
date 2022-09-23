@@ -9,7 +9,7 @@
 #include "ColliderTransformManager.h"
 
 #include "PlayerManager.h"
-#include "Physics2DManager.h"
+#include "../Physics/Physics2DManager.h"
 #include "Collision2DManager.h"
 
 #include "LevelEditor.h"

@@ -68,6 +68,8 @@ struct Physics2D {
 	float mass,
 		  speed,
 		  moveDirection;
+	glm::vec2 forces,
+			  velocity;
 	bool renderFlag = false;
 };
 

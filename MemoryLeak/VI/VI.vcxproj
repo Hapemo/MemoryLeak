@@ -143,7 +143,7 @@
     <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\AudioVariable.h" />
     <ClInclude Include="include\ColliderTransformManager.h" />
-    <ClInclude Include="include\Collision2DManager.h" />
+    <ClInclude Include="include\Physics\Collision2DManager.h" />
     <ClInclude Include="include\ECS\ECSManager.h" />
     <ClInclude Include="include\ECS\ECS_components.h" />
     <ClInclude Include="include\ECS\ECS_items.h" />
@@ -157,7 +157,7 @@
     <ClInclude Include="include\GLShader.h" />
     <ClInclude Include="include\Helper.h" />
     <ClInclude Include="include\LevelEditor.h" />
-    <ClInclude Include="include\Physics2DManager.h" />
+    <ClInclude Include="include\Physics\Physics2DManager.h" />
     <ClInclude Include="include\PlayerManager.h" />
     <ClInclude Include="include\RenderManager.h" />
     <ClInclude Include="include\ResourceManager.h" />
@@ -183,7 +183,7 @@
     <ClCompile Include="source\AudioManger.cpp" />
     <ClCompile Include="source\BenchmarkManager.cpp" />
     <ClCompile Include="source\ColliderTransformManager.cpp" />
-    <ClCompile Include="source\Collision2DManager.cpp" />
+    <ClCompile Include="source\Physics\Collision2DManager.cpp" />
     <ClCompile Include="source\ECSManager.cpp" />
     <ClCompile Include="source\ECS_managers.cpp" />
     <ClCompile Include="source\ECS_tools.cpp" />
@@ -196,7 +196,7 @@
     <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\Physics2DManager.cpp" />
+    <ClCompile Include="source\Physics\Physics2DManager.cpp" />
     <ClCompile Include="source\PlayerManager.cpp" />
     <ClCompile Include="source\RenderManager.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
