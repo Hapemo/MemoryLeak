@@ -39,7 +39,7 @@ void Application::SystemInit() {
   }
 
   //@weijhin
-  levelEditor->LevelEditor::Init();
+  levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
   audioManager->AudioManager::AudioManager();
   benchmarkManager->StartTime();
   renderManager->Init(&window_width, &window_height);
@@ -96,7 +96,7 @@ void Application::SecondUpdate() {
   }
   // Reset input
   Input::updatePrevKeyStates();
-
+  audioManager->UpdateSound();
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 

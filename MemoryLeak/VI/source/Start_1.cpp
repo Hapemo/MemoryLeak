@@ -8,7 +8,7 @@ Entity e8;
 void Start_1::Init() {
 
 
-  //serializationManager->LoadScene();
+  serializationManager->LoadScene();
     //Entity e{ ECS::CreateEntity() };
     //mEntities.insert(e);
     //e.AddComponent(Transform{ {150,150}, 0, {0,0} },
@@ -31,93 +31,93 @@ void Start_1::Init() {
   renderManager->SetVectorLengthModifier(5.f);
   renderManager->SetDebug(true);
 
-  Entity e1{ ECS::CreateEntity() };
-  mEntities.insert(e1);
-  e1.AddComponent(Transform{ {64,64}, 0, {-Application::getWindowWidth() / 2 + 32, Application::getWindowHeight()/2-32}},
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-      SheetAnimation{ 4, 0, 0.1f },
-      General{ "robot yeet", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
-      CircleCollider{ {0,0},1, true },
-      RectCollider{ {0,0},{1,1}, true });
-  spriteManager->SetTexture(e1, "Textures\\Spritesheets\\jumppadSheet.png");
-  physics2DManager->AddPhysicsComponent(e1, 0.f, 60.f, 0.f, true);
-  //physics2DManager->AddRectColliderComponent(e1, glm::vec2{ 0.f, 0.f }, glm::vec2{ 1.f, 1.f }, true);
-  //physics2DManager->AddCircleColliderComponent(e1, glm::vec2{ 0.f, 0.f }, 1.f, true);
+  //Entity e1{ ECS::CreateEntity() };
+  //mEntities.insert(e1);
+  //e1.AddComponent(Transform{ {64,64}, 0, {-Application::getWindowWidth() / 2 + 32, Application::getWindowHeight()/2-32}},
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+  //    SheetAnimation{ 4, 0, 0.1f },
+  //    General{ "robot yeet", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
+  //    CircleCollider{ {0,0},1, true },
+  //    RectCollider{ {0,0},{1,1}, true });
+  //spriteManager->SetTexture(e1, "Textures\\Spritesheets\\jumppadSheet.png");
+  //physics2DManager->AddPhysicsComponent(e1, 0.f, 60.f, 0.f, true);
+  ////physics2DManager->AddRectColliderComponent(e1, glm::vec2{ 0.f, 0.f }, glm::vec2{ 1.f, 1.f }, true);
+  ////physics2DManager->AddCircleColliderComponent(e1, glm::vec2{ 0.f, 0.f }, 1.f, true);
 
-  Entity e2{ ECS::CreateEntity() };
-  mEntities.insert(e2);
-  e2.AddComponent(Transform{ {64,64}, 0, {-Application::getWindowWidth() / 2 + 96, Application::getWindowHeight() / 2-32} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-      SheetAnimation{ 6, 0, 0.1f },
-      General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-  spriteManager->SetTexture(e2, "Textures\\Spritesheets\\walkingSheet.png");
-
-
-  Entity e3{ ECS::CreateEntity() };
-  mEntities.insert(e3);
-  e3.AddComponent(Transform{ {64,64}, 0, {-Application::getWindowWidth() / 2 + 96+64, Application::getWindowHeight() / 2-32} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-      SheetAnimation{ 4, 0, 0.1f },
-      General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-  spriteManager->SetTexture(e3, "Textures\\Spritesheets\\bridgeSheet.png");
+  //Entity e2{ ECS::CreateEntity() };
+  //mEntities.insert(e2);
+  //e2.AddComponent(Transform{ {64,64}, 0, {-Application::getWindowWidth() / 2 + 96, Application::getWindowHeight() / 2-32} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+  //    SheetAnimation{ 6, 0, 0.1f },
+  //    General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+  //spriteManager->SetTexture(e2, "Textures\\Spritesheets\\walkingSheet.png");
 
 
-  Entity e4{ ECS::CreateEntity() };
-  mEntities.insert(e4);
-  e4.AddComponent(Transform{ {288,256}, 0, {-Application::getWindowWidth() / 2 + 200 + 175 + 256 + 144, Application::getWindowHeight() / 2 - 16 - 64 - 126} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-      SheetAnimation{ 22, 0, 0.1f },
-      General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-  spriteManager->SetTexture(e4, "Textures\\Spritesheets\\knight1.png");
+  //Entity e3{ ECS::CreateEntity() };
+  //mEntities.insert(e3);
+  //e3.AddComponent(Transform{ {64,64}, 0, {-Application::getWindowWidth() / 2 + 96+64, Application::getWindowHeight() / 2-32} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+  //    SheetAnimation{ 4, 0, 0.1f },
+  //    General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+  //spriteManager->SetTexture(e3, "Textures\\Spritesheets\\bridgeSheet.png");
 
-  Entity e5{ ECS::CreateEntity() };
-  mEntities.insert(e5);
-  e5.AddComponent(Transform{ {350,618}, 0, {-Application::getWindowWidth() / 2 + 200 + 175, Application::getWindowHeight() / 2 - 309} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-      SheetAnimation{ 8, 0, 0.1f },
-      General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-  spriteManager->SetTexture(e5, "Textures\\Spritesheets\\random1.png");
 
-  Entity e7{ ECS::CreateEntity() };
-  mEntities.insert(e7);
-  e7.AddComponent(Transform{ {288,256}, 0, {-Application::getWindowWidth() / 2 +200 + 175 + 256 +144, Application::getWindowHeight() / 2 - 16 - 64} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-      SheetAnimation{ 8, 0, 0.1f },
-      General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
-      RectCollider{ {0.f,0.f}, {1.f,1.f}, true });
-  spriteManager->SetTexture(e7, "Textures\\Spritesheets\\knight6.png");
+  //Entity e4{ ECS::CreateEntity() };
+  //mEntities.insert(e4);
+  //e4.AddComponent(Transform{ {288,256}, 0, {-Application::getWindowWidth() / 2 + 200 + 175 + 256 + 144, Application::getWindowHeight() / 2 - 16 - 64 - 126} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+  //    SheetAnimation{ 22, 0, 0.1f },
+  //    General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+  //spriteManager->SetTexture(e4, "Textures\\Spritesheets\\knight1.png");
 
-  e8= ECS::CreateEntity() ;
-  mEntities.insert(e8);
-  e8.AddComponent(Transform{ {288,256}, 0, {-Application::getWindowWidth() / 2 + 200 + 175 + 256 + 144+144, Application::getWindowHeight() / 2 - 16 - 64} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-      SheetAnimation{ 8, 0, 0.1f },
-      General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-  spriteManager->SetTexture(e8, "Textures\\Spritesheets\\knight6.png");
+  //Entity e5{ ECS::CreateEntity() };
+  //mEntities.insert(e5);
+  //e5.AddComponent(Transform{ {350,618}, 0, {-Application::getWindowWidth() / 2 + 200 + 175, Application::getWindowHeight() / 2 - 309} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+  //    SheetAnimation{ 8, 0, 0.1f },
+  //    General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+  //spriteManager->SetTexture(e5, "Textures\\Spritesheets\\random1.png");
 
-  Entity e9 = ECS::CreateEntity();
-  mEntities.insert(e9);
-  e9.AddComponent(Transform{ {Application::getWindowWidth(),Application::getWindowHeight()}, 0, {0,0} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 0 },
-      General{ "bgd 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-  spriteManager->SetTexture(e9, "Textures\\Background\\background.png");
+  //Entity e7{ ECS::CreateEntity() };
+  //mEntities.insert(e7);
+  //e7.AddComponent(Transform{ {288,256}, 0, {-Application::getWindowWidth() / 2 +200 + 175 + 256 +144, Application::getWindowHeight() / 2 - 16 - 64} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+  //    SheetAnimation{ 8, 0, 0.1f },
+  //    General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
+  //    RectCollider{ {0.f,0.f}, {1.f,1.f}, true });
+  //spriteManager->SetTexture(e7, "Textures\\Spritesheets\\knight6.png");
 
-  Entity e10 = ECS::CreateEntity();
-  mEntities.insert(e10);
-  e10.AddComponent(Transform{ {Application::getWindowWidth(),Application::getWindowHeight()}, 0, {0,0} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 1 },
-      General{ "bgd 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-  spriteManager->SetTexture(e10, "Textures\\Background\\middleground.png");
+  //e8= ECS::CreateEntity() ;
+  //mEntities.insert(e8);
+  //e8.AddComponent(Transform{ {288,256}, 0, {-Application::getWindowWidth() / 2 + 200 + 175 + 256 + 144+144, Application::getWindowHeight() / 2 - 16 - 64} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+  //    SheetAnimation{ 8, 0, 0.1f },
+  //    General{ "robot 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+  //spriteManager->SetTexture(e8, "Textures\\Spritesheets\\knight6.png");
 
-  Entity e11 = ECS::CreateEntity();
-  mEntities.insert(e11);
-  e11.AddComponent(Transform{ {Application::getWindowWidth(),Application::getWindowHeight()}, 0, {0,0} },
-      Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 2 },
-      General{ "bgd 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-  spriteManager->SetTexture(e11, "Textures\\Background\\foreground.png");
-  physics2DManager->AddPhysicsComponent(e2, 0.f, 60.f, glm::pi<float>(), true);
-  /*physics2DManager->AddRectColliderComponent(e2, glm::vec2{ 0.f, 0.f }, glm::vec2{ 1.f, 1.f }, true);
-  physics2DManager->AddCircleColliderComponent(e2, glm::vec2{ 0.f, 0.f }, 1.f, true);*/
+  //Entity e9 = ECS::CreateEntity();
+  //mEntities.insert(e9);
+  //e9.AddComponent(Transform{ {Application::getWindowWidth(),Application::getWindowHeight()}, 0, {0,0} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 0 },
+  //    General{ "bgd 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+  //spriteManager->SetTexture(e9, "Textures\\Background\\background.png");
+
+  //Entity e10 = ECS::CreateEntity();
+  //mEntities.insert(e10);
+  //e10.AddComponent(Transform{ {Application::getWindowWidth(),Application::getWindowHeight()}, 0, {0,0} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 1 },
+  //    General{ "bgd 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+  //spriteManager->SetTexture(e10, "Textures\\Background\\middleground.png");
+
+  //Entity e11 = ECS::CreateEntity();
+  //mEntities.insert(e11);
+  //e11.AddComponent(Transform{ {Application::getWindowWidth(),Application::getWindowHeight()}, 0, {0,0} },
+  //    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 2 },
+  //    General{ "bgd 4", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+  //spriteManager->SetTexture(e11, "Textures\\Background\\foreground.png");
+  //physics2DManager->AddPhysicsComponent(e2, 0.f, 60.f, glm::pi<float>(), true);
+  ///*physics2DManager->AddRectColliderComponent(e2, glm::vec2{ 0.f, 0.f }, glm::vec2{ 1.f, 1.f }, true);
+  //physics2DManager->AddCircleColliderComponent(e2, glm::vec2{ 0.f, 0.f }, 1.f, true);*/
 
   //levelEditor->LevelEditor::Init();
   /*transformManager->Init(); */
@@ -141,7 +141,7 @@ void Start_1::Update() {
     //      updateAICircle(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
     //}
 
-    static float timer = 0;
+    /*static float timer = 0;
     timer += Helper::dt;
     if (timer >= 2.2f)
     {
@@ -159,7 +159,7 @@ void Start_1::Update() {
 
         }
         timer = 0;
-    }
+    }*/
     //renderManager->Render();
     //renderManager->RenderDebug();
     //TRACK_PERFORMANCE("Physics");
@@ -188,7 +188,7 @@ void Start_1::PrintOrResetEntityLifespan(std::set<Entity> entities, KEY key) {
             for (const Entity& e : entities) {
                 std::cout << "EntityID: " << std::setw(4) << std::right << e.id;
                 std::cout << " | Lifespan: " << std::setprecision(4) << std::setw(6) << std::right << e.GetComponent<Lifespan>().lifetime;
-                std::cout << " | isActive: " << e.GetComponent<IsActive>().isActive << '\n';
+                std::cout << " | isActive: " << e.GetComponent<General>().isActive << '\n';
             }
     }
 }

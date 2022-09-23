@@ -5,7 +5,7 @@
 #include "Helper.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
-#include "SpriteManager.h"
+#include "Graphics/SpriteManager.h"
 
 GameStateManager::GameStateManager() :
 	prev_GS(GS::START), next_GS(GS::START), curr_GS(GS::START), curr_gamestate(nullptr) 

@@ -113,7 +113,7 @@ void weatherAIupdate()
 void updateAIAllColors(const Entity& e)
 {
 	static double time = 0.0;
-	time += 1.f / Application::getTargetFPS() / 10.0; //deltatime
+	//time += 1.f / Application::getTargetFPS() / 10.0; //deltatime
 	if (time > 2 * M_PI)
 		time -= (2 * M_PI);
 	float red = float((sin(time)		+ 1) / 2 );
@@ -127,7 +127,7 @@ void updateAIAllColors(const Entity& e)
 void updateAITrafficLight(const Entity& e)
 {
 	static double time = 0.0;
-	time += 1.f / Application::getTargetFPS() /2.f;//deltatime
+	//time += 1.f / Application::getTargetFPS() /2.f;//deltatime
 	float red = 0.0f;
 	float green = 0.0f;
 	float blue = 0.0f;
@@ -161,7 +161,7 @@ void updateAITrafficLight(const Entity& e)
 void updateAIUpDown(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
-	time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
+	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
 	static int state = 1;
 	static float change = 0.0f;
 	glm::vec2 incrTranslation{};
@@ -185,7 +185,7 @@ void updateAIUpDown(const Entity& e, float speed, float range)
 void updateAILeftRight(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
-	time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
+	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
 	static int state = 1;
 	static float change = 0.0f;
 	glm::vec2 incrTranslation{};
@@ -209,7 +209,7 @@ void updateAILeftRight(const Entity& e, float speed, float range)
 void updateAICircle(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
-	time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
+	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
 	glm::vec2 incrTranslation{};
 	incrTranslation.x = (float)(sin(time * speed) * speed);
 	incrTranslation.y = (float)(cos(time * speed) * speed);
@@ -220,7 +220,7 @@ void updateAICircle(const Entity& e, float speed, float range)
 void updateAISwing(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
-	time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
+	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
 	float incrRotation{};
 	static int state = 1;
 	static float change = 0.0f;

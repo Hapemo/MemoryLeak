@@ -19,13 +19,13 @@ Entities and its Components.
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include <Application.h>
-#include "TransformManager.h"
+#include "Graphics/TransformManager.h"
 
 
 class LevelEditor : public System
 {
 public:
-	void Init();
+	void Init(GLFWwindow*, int*, int*);
 	void Window();
 	void Update();
 	void Exit();
@@ -36,5 +36,7 @@ private:
 	void AssetManager();
 	void ViewPortManager();
 	void ShowDebugInfo();
-	
+	GLFWwindow* mWindow;
+	int* mWindowWidth;
+	int* mWindowHeight;
 };
