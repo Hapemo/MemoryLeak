@@ -132,12 +132,14 @@
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\GameStateManager.h" />
+    <ClInclude Include="include\Start.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\GameState.cpp" />
     <ClCompile Include="source\GameStateManager.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Start.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

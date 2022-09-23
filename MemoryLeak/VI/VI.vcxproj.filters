@@ -135,9 +135,6 @@
     <ClInclude Include="include\SignalHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Start.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Start_1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -152,18 +149,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GameState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GameStateManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Graphics\Animator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -243,9 +228,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\SingletonManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Start.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Start_1.cpp">
