@@ -8,19 +8,20 @@ This file contains the implementation of the vertex shader in GLSL.
 *//*__________________________________________________________________________*/
 #version 450 core
 
-layout (location=0) in vec2 aVertexPosition;
+layout (location=0) in vec3 aVertexPosition;
+layout (location=1) in vec4 aColor;
 layout (location=2) in vec2 aVertexTexture;
+layout (location=3) in float aTexID;
 
-uniform mat3 uModel_to_NDC;
-
-layout (location=0) out vec2 vTexture;
+out vec4 vColor;
 
 /**
 * @brief main function for vertex shader
 * @param none
 * @return none
 */
-void main(void) {
-	gl_Position = vec4(vec2(uModel_to_NDC * vec3(aVertexPosition, 1.f)), 0.0, 1.0);
-	vTexture = aVertexTexture;
+void main(void) 
+{
+	vColor = aColor;
+	gl_Position = vec4(vec3(vec2(aVertexPosition), -aVertexPosition.z), 1.0);
 }

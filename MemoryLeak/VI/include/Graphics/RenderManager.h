@@ -32,9 +32,9 @@ private:
 	bool debug;
 	float vectorLengthModifier;
 	FBO fbo;
-	//GLShader defaultProgram;
 	int* mWindowWidth;
 	int* mWindowHeight;
+	GLShader defaultProgram;
 	GLShader textureProgram;
 	GLAllocator allocator;
 	std::vector<Vertex> vertices;

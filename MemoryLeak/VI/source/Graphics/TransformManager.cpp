@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file TransformManager.cpp
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 20-09-2022
+\brief
+This file contains function definitions for a TransformManager system to 
+manipulate its components.
+*******************************************************************************/
 #include "Graphics/TransformManager.h"
 
 void TransformManager::SetScale(const Entity& e, const glm::vec2& _scale)

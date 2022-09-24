@@ -10,8 +10,9 @@ constexpr float alpha = 0.25f;
 
 RenderManager::RenderManager()
 	: allocator(no_of_objects, max_vertices_per_object, indices_per_object),
-	fbo(), textureProgram("shaders/batch.vert", "shaders/batch.frag"), mWindowHeight(nullptr),
-	mWindowWidth(nullptr)
+	fbo(), defaultProgram("shaders/default.vert", "shaders/default.frag"),
+	textureProgram("shaders/texture.vert", "shaders/texture.frag"),
+	mWindowHeight(nullptr),	mWindowWidth(nullptr)
 {
 	debug = true;
 	vectorLengthModifier = 50.f;
@@ -30,7 +31,6 @@ RenderManager::RenderManager()
 	debugPoints.reserve(no_of_objects * 0.1f);
 	debugVertices.reserve(no_of_objects * 0.1f * max_vertices_per_object);
 	debugIndices.reserve(no_of_objects * 0.1f * indices_per_object);
-
 }
 
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
@@ -55,7 +55,7 @@ void RenderManager::Render()
 	for (const Entity& e : mEntities)
 	{
 		if (!e.GetComponent<General>().isActive) continue;
-		
+
 		switch (e.GetComponent<Sprite>().sprite)
 		{
 		case SPRITE::TEXTURE:
@@ -125,15 +125,19 @@ void RenderManager::Render()
 			++textureCount;
 		}
 	}
-
 	BatchRenderElements(GL_TRIANGLES, textureVertices, textureIndices);
+	allocator.UnbindVAO();
+	textureProgram.Unbind();
+
+	defaultProgram.Bind();
+	allocator.BindVAO();
 	BatchRenderElements(GL_TRIANGLES, vertices, indices);
 
 	if (debug)
 		RenderDebug();
 
 	allocator.UnbindVAO();
-	textureProgram.Unbind();
+	defaultProgram.Unbind();
 
 	if (!fbo.GetRenderToScreen())
 		fbo.Unbind();
@@ -226,15 +230,15 @@ void RenderManager::RenderDebug()
 void RenderManager::BatchRenderArrays(GLenum mode, const std::vector<Vertex>& vertices)
 {
 	if (vertices.empty()) return;
-	glNamedBufferSubData(allocator.vboid, 0, sizeof(Vertex) * vertices.size(), vertices.data());
+	glNamedBufferSubData(allocator.mvboid, 0, sizeof(Vertex) * vertices.size(), vertices.data());
 	glDrawArrays(mode, 0, vertices.size());
 }
 
 void RenderManager::BatchRenderElements(GLenum mode, const std::vector<Vertex>& vertices, const std::vector<GLushort>& indices)
 {
 	if (vertices.empty()) return;
-	glNamedBufferSubData(allocator.vboid, 0, sizeof(Vertex) * vertices.size(), vertices.data());
-	glNamedBufferSubData(allocator.eboid, 0, indices.size() * sizeof(GLushort), indices.data());
+	glNamedBufferSubData(allocator.mvboid, 0, sizeof(Vertex) * vertices.size(), vertices.data());
+	glNamedBufferSubData(allocator.meboid, 0, indices.size() * sizeof(GLushort), indices.data());
 	glDrawElements(mode, indices.size(), GL_UNSIGNED_SHORT, nullptr);
 }
 
@@ -246,14 +250,14 @@ void RenderManager::CreateSquare(const Entity& e, std::vector<Vertex>& vertices,
 	float texID = e.GetComponent<Sprite>().texture;
 
 	float texMin{};
-	float texMax{1.f};
+	float texMax{ 1.f };
 
 	if (e.HasComponent<SheetAnimation>())
 	{
 		float slice = texMax / (float)e.GetComponent<SheetAnimation>().frameCount;
 		float index = (float)e.GetComponent<SheetAnimation>().currFrameIndex;
 
-		texMin =  index * slice;
+		texMin = index * slice;
 		texMax = texMin + slice;
 	}
 
@@ -489,18 +493,18 @@ glm::mat3x3 RenderManager::GetTransform(const glm::vec2& scale, float rotate, co
 	float sinRot = sinf(rotate);
 
 	glm::mat3x3 temp =
-	{ 
+	{
 		glm::vec3(scale.x * cosRot, scale.x * sinRot, 0.f),
 		glm::vec3(-scale.y * sinRot, scale.y * cosRot, 0.f),
-		glm::vec3(translate.x, translate.y, 1.f) 
+		glm::vec3(translate.x, translate.y, 1.f)
 	};
 
-	temp[0][0] /= static_cast<float>(*mWindowWidth);
-	temp[0][1] /= static_cast<float>(*mWindowHeight);
-	temp[1][0] /= static_cast<float>(*mWindowWidth);
-	temp[1][1] /= static_cast<float>(*mWindowHeight);
-	temp[2][0] /= static_cast<float>(*mWindowWidth) / 2.f;
-	temp[2][1] /= static_cast<float>(*mWindowHeight) / 2.f;
+	temp[0][0] /= (float)*mWindowWidth;
+	temp[0][1] /= (float)*mWindowHeight;
+	temp[1][0] /= (float)*mWindowWidth;
+	temp[1][1] /= (float)*mWindowHeight;
+	temp[2][0] /= (float)*mWindowWidth / 2.f;
+	temp[2][1] /= (float)*mWindowHeight / 2.f;
 
 	return temp;
 }
@@ -518,13 +522,10 @@ glm::vec4 RenderManager::GetColor(GLubyte r, GLubyte g, GLubyte b, GLubyte a)
 
 void RenderManager::InitializeShaders()
 {
+	defaultProgram.CompileLinkShaders();
 	textureProgram.CompileLinkShaders();
 
-	if (!textureProgram.Validate())
-	{
-		std::cout << "Unable to validate shader programs\n";
-		std::exit(EXIT_FAILURE);
-	}
+	defaultProgram.Validate(), textureProgram.Validate();
 }
 
 
