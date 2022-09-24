@@ -4,11 +4,11 @@
 #include "ECS_components.h"
 
 struct Dialog {
-	int id = -1;
-	std::string text = "";
-	int speaker = -1;
-	int next = -1;
-	int next2 = -1;
+	int id;
+	std::string text;
+	int speaker;
+	int next;
+	int next2;
 };
 
 class DialogManager : public System
