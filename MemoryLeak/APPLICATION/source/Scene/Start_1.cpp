@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file Start_1.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+First scene created.
+*******************************************************************************/
 #pragma once
 #include "pch.h"
 #include "Start_1.h"
@@ -140,51 +149,51 @@ void Start_1::Init() {
 }
 
 void Start_1::Update() {
-    //for (auto& e : mEntities) {
-    //    if (e.GetComponent<Stuff>().colorChange == 1)
-    //      updateAIAllColors(e);
-    //    else if (e.GetComponent<Stuff>().colorChange == 2)
-    //      updateAITrafficLight(e);
-    //    if (e.GetComponent<Stuff>().movement == 1)
-    //      updateAIUpDown(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
-    //    else if (e.GetComponent<Stuff>().movement == 2)
-    //      updateAILeftRight(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
-    //    else if (e.GetComponent<Stuff>().movement == 3)
-    //      updateAISwing(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
-    //    else if (e.GetComponent<Stuff>().movement == 4)
-    //      updateAICircle(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
-    //}
+  //for (auto& e : mEntities) {
+  //    if (e.GetComponent<Stuff>().colorChange == 1)
+  //      updateAIAllColors(e);
+  //    else if (e.GetComponent<Stuff>().colorChange == 2)
+  //      updateAITrafficLight(e);
+  //    if (e.GetComponent<Stuff>().movement == 1)
+  //      updateAIUpDown(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+  //    else if (e.GetComponent<Stuff>().movement == 2)
+  //      updateAILeftRight(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+  //    else if (e.GetComponent<Stuff>().movement == 3)
+  //      updateAISwing(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+  //    else if (e.GetComponent<Stuff>().movement == 4)
+  //      updateAICircle(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+  //}
 
-    /*static float timer = 0;
-    timer += Helper::dt;
-    if (timer >= 2.2f)
-    {
-        if (spriteManager->GetTexturePath(e8.GetComponent<Sprite>().texture) == "Textures\\Spritesheets\\knight6.png")
-        {
-            spriteManager->SetTexture(e8, "Textures\\Spritesheets\\knight1.png");
-            e8.GetComponent<SheetAnimation>().frameCount = 22;
-            e8.GetComponent<SheetAnimation>().currFrameIndex = 0;
-        }
-        else
-        {
-            spriteManager->SetTexture(e8, "Textures\\Spritesheets\\knight6.png");
-            e8.GetComponent<SheetAnimation>().frameCount = 8;
-            e8.GetComponent<SheetAnimation>().currFrameIndex = 0;
+  /*static float timer = 0;
+  timer += Helper::dt;
+  if (timer >= 2.2f)
+  {
+      if (spriteManager->GetTexturePath(e8.GetComponent<Sprite>().texture) == "Textures\\Spritesheets\\knight6.png")
+      {
+          spriteManager->SetTexture(e8, "Textures\\Spritesheets\\knight1.png");
+          e8.GetComponent<SheetAnimation>().frameCount = 22;
+          e8.GetComponent<SheetAnimation>().currFrameIndex = 0;
+      }
+      else
+      {
+          spriteManager->SetTexture(e8, "Textures\\Spritesheets\\knight6.png");
+          e8.GetComponent<SheetAnimation>().frameCount = 8;
+          e8.GetComponent<SheetAnimation>().currFrameIndex = 0;
 
-        }
-        timer = 0;
-    }*/
-    //renderManager->Render();
-    //renderManager->RenderDebug();
-    //TRACK_PERFORMANCE("Physics");
-    physics2DManager->Update(Helper::dt);
-    //END_TRACK("Physics");
+      }
+      timer = 0;
+  }*/
+  //renderManager->Render();
+  //renderManager->RenderDebug();
+  //TRACK_PERFORMANCE("Physics");
+  physics2DManager->Update(Helper::dt);
+  //END_TRACK("Physics");
 
-    PrintOrResetEntityLifespan(mEntities, A);
+  ControlEntityLifespan(mEntities, A);
 }
 
 void Start_1::Reset() {
-    std::cout << " Start_1 Reset() called\n";
+  std::cout << " Start_1 Reset() called\n";
 }
 
 void Start_1::Clear() {
@@ -194,17 +203,17 @@ void Start_1::Clear() {
     //levelEditor->exit();
 }
 
-void Start_1::PrintOrResetEntityLifespan(std::set<Entity> entities, KEY key) {
-    if (Input::CheckKey(HOLD, key)) {
-        if (Input::CheckKey(PRESS, LEFT_SHIFT))
-            lifespanManager->Reset(entities);
-        else
-            for (const Entity& e : entities) {
-                std::cout << "EntityID: " << std::setw(4) << std::right << e.id;
-                std::cout << " | Lifespan: " << std::setprecision(4) << std::setw(6) << std::right << e.GetComponent<Lifespan>().lifetime;
-                std::cout << " | isActive: " << e.GetComponent<General>().isActive << '\n';
-            }
-    }
+void Start_1::ControlEntityLifespan(std::set<Entity> entities, KEY key) {
+  if (Input::CheckKey(HOLD, key)) {
+    if (Input::CheckKey(PRESS, LEFT_SHIFT))
+      lifespanManager->Reset(entities);
+    else
+      for (const Entity& e : entities) {
+        std::cout << "EntityID: " << std::setw(4) << std::right << e.id;
+        std::cout << " | Lifespan: " << std::setprecision(4) << std::setw(6) << std::right << e.GetComponent<Lifespan>().lifetime;
+        std::cout << " | isActive: " << e.GetComponent<General>().isActive << '\n';
+      }
+  }
 }
 
 

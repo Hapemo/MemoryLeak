@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file Start_background.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+Scene to control the background
+*******************************************************************************/
 #pragma once
 #include "pch.h"
 #include "Start_background.h"

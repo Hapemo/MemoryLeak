@@ -1,15 +1,13 @@
-/*!
-@file    main.cpp
-@author  j.teoh@digipen.edu
-@date    13/05/2022
+/*!*****************************************************************************
+\file main.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+main file of the whole program
+*******************************************************************************/
 
-This file uses functionality defined in types Helper and GLApp to initialize 
-an OpenGL context and implement a game loop.
-
-*//*__________________________________________________________________________*/
-
-/*                                                                   includes
------------------------------------------------------------------------------ */
 // Extension loader library's header must be included before GLFW's header!!!
 #include <Helper.h>
 #include "pch.h"
@@ -18,15 +16,6 @@ an OpenGL context and implement a game loop.
 #include "SignalHandler.h"
 #include "SparseSet.h"
 
-
-
-
-/*                                                   type declarations
------------------------------------------------------------------------------ */
-
-
-/*                                                      function definitions
------------------------------------------------------------------------------ */
 /*  _________________________________________________________________________ */
 /*! main
 
@@ -39,7 +28,10 @@ Indicates how the program existed. Normal exit is signaled by a return value of
 Note that the C++ compiler will insert a return 0 statement if one is missing.
 */
 
-
+/*!*****************************************************************************
+ \brief
+ child main file that runs the application
+*******************************************************************************/
 void real_main() {
     std::signal(SIGABRT, HandleAbort);
     std::signal(SIGTERM, HandleTerminate);
@@ -80,13 +72,20 @@ void real_main() {
 
     // Part 2
     while (!glfwWindowShouldClose(Application::getWindow())) {
-        GameStateManager::GetInstance()->Loop();
+        GameStateManager::GetInstance()->Update();
     }
 
     // Part 3
     Application::exit();
 }
 
+/*!*****************************************************************************
+ \brief
+ The master main file that runs a child main file and catches exceptions that it
+ throws
+ 
+ \int main int
+*******************************************************************************/
 int main() {
     try {
         /*
