@@ -61,7 +61,7 @@ int ResourceManager::UpdateTextures() {
 }
 
 void ResourceManager::InitializeTextures(std::string _filepath) {
-	const std::filesystem::path tex_dir{ "resources\\Textures\\" + _filepath };
+	const std::filesystem::path tex_dir{ "..\\resources\\Textures\\" + _filepath };
 	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(tex_dir))
 	{
 		int height, width, channels;
@@ -73,7 +73,7 @@ void ResourceManager::InitializeTextures(std::string _filepath) {
 
 GLuint ResourceManager::GetTextureID(const std::string& _texturePath) {
 	for (size_t index = 0; index < mResources.size(); ++index)
-		if (mResources[index].texture.path == "resources\\" + _texturePath) return mResources[index].texture.id;
+		if (mResources[index].texture.path == ",,\\resources\\" + _texturePath) return mResources[index].texture.id;
 	return 0;
 }
 
