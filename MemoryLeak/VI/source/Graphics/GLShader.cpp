@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file GLShader.h
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 20-09-2022
+\brief
+This file contains function definitions to encapsulate a OpenGL shader object.
+*******************************************************************************/
 #include "Graphics/GLShader.h"
 
 /*!*****************************************************************************
