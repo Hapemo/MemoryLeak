@@ -35,7 +35,7 @@ void Application::startup() {
 
 void Application::SystemInit() {
   for (size_t index = 0; index < GET_RESOURCES().size(); ++index) {
-    spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
+    spriteManager->InitializeTexture(GET_TEXTURE(index));
   }
 
   //@weijhin
@@ -43,6 +43,7 @@ void Application::SystemInit() {
   audioManager->AudioManager::AudioManager();
   renderManager->Init(&window_width, &window_height);
 }
+
 
 void Application::init() {
   // Part 1

@@ -9,11 +9,11 @@
 #define UNLOAD_ASSET(...) ResourceManager::GetInstance()->UnloadTexture(__VA_ARGS__)
 #define GET_TEXTURE_ID(...) ResourceManager::GetInstance()->GetTextureID(__VA_ARGS__)
 #define GET_TEXTURE_PATH(...) ResourceManager::GetInstance()->GetTexturePath(__VA_ARGS__)
-#define GET_TEXTURE_DATA(...) ResourceManager::GetInstance()->GetTextureData(__VA_ARGS__)
+#define GET_TEXTURE(...) ResourceManager::GetInstance()->GetTextureData(__VA_ARGS__)
 #define GET_RESOURCES(...) ResourceManager::GetInstance()->GetResources(__VA_ARGS__)
 
 #define INIT_TEXTURES(...) ResourceManager::GetInstance()->InitializeTextures(__VA_ARGS__)
-#define UPDATE_TEXTURES(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
+#define CHECK_TEXTURES_UPDATE(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
 
 class ResourceManager : public Singleton<ResourceManager> {
 public:
@@ -28,7 +28,7 @@ public:
 private:
 	struct ResourceData {
 		TextureData	texture;
-		time_t		lastModified = time(NULL);
+		time_t		lastModified;
 		int			usage = 0;
 	};
 
@@ -41,11 +41,10 @@ public:
 	const ResourceManager& operator=(const ResourceManager&) = delete;
 
 	void InitializeTextures(std::string _filepath);
-	std::vector<int> UpdateTextures();
+	int UpdateTextures();
 	TextureData& GetTextureData(size_t _index);
 	std::vector<ResourceData>& GetResources();
-	
-	void UpdateTexture(const size_t _index);
+
 	TextureData LoadTexture(const std::string _filepath);
 	void UnloadTexture(void* _data);
 

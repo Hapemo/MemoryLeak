@@ -7,37 +7,16 @@
 #include <algorithm>
 #include "ResourceManager.h"
 
-void ResourceManager::InitializeTextures(std::string _filepath) {
-	const std::filesystem::path tex_dir{ "..\\resources\\Textures\\" + _filepath };
-	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(tex_dir)) {
-		std::string str = entry.string();
-		//size_t pos = str.find_first_of('\\') + 1;
-		LoadTexture(str);
-	}
-}
-
 ResourceManager::TextureData ResourceManager::LoadTexture(const std::string _filepath)
 {
-	struct stat stats;
 	ResourceData trackResource;
 	const char* filepath = _filepath.c_str();
 	stbi_set_flip_vertically_on_load(true);
 	trackResource.texture.data = stbi_load(filepath, &trackResource.texture.width, &trackResource.texture.height, &trackResource.texture.channels, 0);
 	trackResource.texture.path = filepath;
-	if (stat(trackResource.texture.path.c_str(), &stats) == 0)
-		trackResource.lastModified = stats.st_mtime;
 	++trackResource.usage;
 	mResources.push_back(trackResource);
-	//std::cout << mResources[mResources.size() - 1].texture.path << std::endl;
 	return trackResource.texture;
-}
-
-void ResourceManager::UpdateTexture(const size_t _index)
-{
-	const char* filepath = mResources[_index].texture.path.c_str();
-	stbi_set_flip_vertically_on_load(true);
-	mResources[_index].texture.data = stbi_load(filepath, &mResources[_index].texture.width, &mResources[_index].texture.height, &mResources[_index].texture.channels, 0);
-	std::cout << mResources[_index].texture.path << std::endl;
 }
 
 std::vector<ResourceManager::ResourceData>& ResourceManager::GetResources() {
@@ -57,30 +36,39 @@ ResourceManager::TextureData& ResourceManager::GetTextureData(size_t _index) {
 		> unload image
 */
 
-std::vector<int> ResourceManager::UpdateTextures() {
-	std::vector<int> updatedTextures;
+int ResourceManager::UpdateTextures() {
 	struct stat stats;
-	//std::cout << mResources.size() << std::endl;
 	for (size_t index = 0; index < mResources.size(); ++index) {
 		if (stat(mResources[index].texture.path.c_str(), &stats) == 0) {
 			std::ifstream fopen(mResources[index].texture.path);
 			if (!fopen.is_open()) {
 				fopen.close();
+				UnloadTexture(mResources[index].texture.data);
 				mResources.erase(mResources.begin() + index);
-				continue;
 			}
 			time_t lastModifiedTime = stats.st_mtime;
-			//if(index == 0) std::cout << mResources[index].texture.path << " last updated time: " << lastModifiedTime << " | stored last updated: " << mResources[index].lastModified << std::endl;
 			if (lastModifiedTime != mResources[index].lastModified) {
 				//std::cout << "unloading " << mResources[index].texture.path << std::endl;
-				UpdateTexture(index);
-				mResources[index].lastModified = lastModifiedTime;
-				updatedTextures.push_back((int)index);
+				UnloadTexture(mResources[index].texture.data);
+				LoadTexture(mResources[index].texture.path);
+				mResources[index].texture.data = stbi_load(mResources[index].texture.path.c_str(), &mResources[index].texture.width, &mResources[index].texture.height, &mResources[index].texture.channels, 0);
 			}
 			fopen.close();
+			return (int)index;
 		}
 	}
-	return updatedTextures;
+	return -1;
+}
+
+void ResourceManager::InitializeTextures(std::string _filepath) {
+	const std::filesystem::path tex_dir{ "..\\resources\\Textures\\" + _filepath };
+	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(tex_dir))
+	{
+		int height, width, channels;
+		std::string str = entry.string();
+		size_t pos = str.find_first_of('\\') + 1;
+		LoadTexture(str);
+	}
 }
 
 GLuint ResourceManager::GetTextureID(const std::string& _texturePath) {
@@ -91,7 +79,7 @@ GLuint ResourceManager::GetTextureID(const std::string& _texturePath) {
 
 std::string	ResourceManager::GetTexturePath(GLint _id) {
 	for (size_t index = 0; index < mResources.size(); ++index)
-		if ((GLint)mResources[index].texture.id == (GLint)_id) return mResources[index].texture.path;
+		if (mResources[index].texture.id == _id) return mResources[index].texture.path;
 	return "";
 }
 
@@ -101,6 +89,5 @@ void ResourceManager::UnloadTexture(void* _data) {
 
 float ResourceManager::GetAspectRatio(const GLuint _id) {
 	for (size_t index = 0; index < mResources.size(); ++index)
-		if (mResources[index].texture.id == _id) return (float)(mResources[index].texture.height / mResources[index].texture.width);
-	return 0.0f;
+		if (mResources[index].texture.id == _id) return (mResources[index].texture.height / mResources[index].texture.width);
 }
