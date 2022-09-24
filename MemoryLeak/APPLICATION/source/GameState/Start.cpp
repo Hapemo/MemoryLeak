@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file Start.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+First game state ever, going to be deprecated
+*******************************************************************************/
 #include "AI.h"
 #include "Start.h"
 #include "Input.h"

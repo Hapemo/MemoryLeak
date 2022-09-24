@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file Application.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+Main application that gets called in the main loop. It handles the creation and
+start up of window and game system, also runs their update functions.
+*******************************************************************************/
 #include "Application.h"
 //#include "Windows.h"
 #include "Helper.h"
@@ -48,13 +58,13 @@ void Application::SystemInit() {
 void Application::init() {
   // Part 1
   startup();
-
+  /*
   INIT_TEXTURES("Background");
   INIT_TEXTURES("Icons");
   INIT_TEXTURES("Menu");
   INIT_TEXTURES("Sprites");
   INIT_TEXTURES("Spritesheets");
-
+  */
   // Part 2
   Helper::print_specs();
   SystemInit();

@@ -5,7 +5,8 @@
 \par Group: Memory Leak Studios
 \date 24-09-2022
 \brief
-
+Manages the gamestate flow, control which game state is running or will be
+running.
 *******************************************************************************/
 #include "GameStateManager.h"
 #include "GameState.h"
@@ -24,7 +25,7 @@ GameStateManager::GameStateManager() :
 	mPrevGS(), mNextGS(), mCurrGS(), mCurrGameState(nullptr) 
 {};
 
-void GameStateManager::Loop() {
+void GameStateManager::Update() {
 	if (mCurrGS == E_GS::RESTART) mNextGS = mCurrGS = mPrevGS;
 	else {
 		// Update();
@@ -40,6 +41,7 @@ void GameStateManager::Loop() {
 		Application::FirstUpdate();
 
 		mCurrGameState->Update();
+		GSControlPanel();
 		int update = CHECK_TEXTURES_UPDATE();
 		if (update > -1) {
 			//spriteManager->InitializeTexture(GET_TEXTURE((size_t)update));
@@ -48,8 +50,6 @@ void GameStateManager::Loop() {
 		TRACK_PERFORMANCE("Graphics");
 		mCurrGameState->Draw();
 		END_TRACK("Graphics");
-
-		GSControlPanel();
 
 		Application::SecondUpdate(); // This should always be the last
 		END_TRACK("MainLoop");
@@ -76,8 +76,6 @@ void GameStateManager::Init() {
 void GameStateManager::NextGS(E_GS gamestate) { mNextGS = gamestate; }
 
 void GameStateManager::SetNewGameState() { mCurrGameState = GS_List[mCurrGS]; }
-
-void GameStateManager::Update() { }
 
 void GameStateManager::Exit() {
 	for (GS_pair pair : GS_List) {
