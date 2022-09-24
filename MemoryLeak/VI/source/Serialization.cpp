@@ -116,7 +116,7 @@ void SerializationManager::LoadScene()
 			float	moveDirection = entity["Physics2D"]["moveDirection"].GetFloat();
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ mass, speed, moveDirection, glm::vec2{0, 0}, glm::vec2{0, 0}, renderFlag });
+			//e.AddComponent<Physics2D>({ mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
 			physics2DManager->AddPhysicsComponent(e, mass, speed, moveDirection, renderFlag);
 		}
 		if (entity.HasMember("RectCollider"))
@@ -124,14 +124,14 @@ void SerializationManager::LoadScene()
 			glm::vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 			glm::vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
 			bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
-			e.AddComponent<RectCollider>({ centerOffset , scaleOffset , renderFlag });
+			e.AddComponent<RectCollider>({ Math::Vec2{centerOffset} , Math::Vec2{scaleOffset} , renderFlag });
 		}
 		if (entity.HasMember("CircleCollider"))
 		{
 			glm::vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 			float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
 			bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
-			e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , renderFlag });
+			e.AddComponent<CircleCollider>({ Math::Vec2{centerOffset} , scaleOffset , renderFlag });
 		}
 		/*if (entity.HasMember("Edge2DCollider"))
 		{
@@ -267,15 +267,15 @@ void SerializationManager::SaveScene()
 		if (e.HasComponent<RectCollider>())
 		{
 			Value tmp(kObjectType);
-			addVectorMember(scene, tmp, "centerOffset", e.GetComponent<RectCollider>().centerOffset);
-			addVectorMember(scene, tmp, "scaleOffset", e.GetComponent<RectCollider>().scaleOffset);
+			addVectorMember(scene, tmp, "centerOffset", glm::vec2{ e.GetComponent<RectCollider>().centerOffset.x, e.GetComponent<RectCollider>().centerOffset.y});
+			addVectorMember(scene, tmp, "scaleOffset", glm::vec2{ e.GetComponent<RectCollider>().scaleOffset.x , e.GetComponent<RectCollider>().centerOffset.y });
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<RectCollider>().renderFlag, allocator);
 			entity.AddMember(StringRef("RectCollider"), tmp, allocator);
 		}
 		if (e.HasComponent<CircleCollider>())
 		{
 			Value tmp(kObjectType);
-			addVectorMember(scene, tmp, "centerOffset", e.GetComponent<CircleCollider>().centerOffset);
+			addVectorMember(scene, tmp, "centerOffset", glm::vec2{ e.GetComponent<CircleCollider>().centerOffset.x, e.GetComponent<CircleCollider>().centerOffset.y });
 			tmp.AddMember(StringRef("scaleOffset"), e.GetComponent<CircleCollider>().scaleOffset, allocator);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<CircleCollider>().renderFlag, allocator);
 			entity.AddMember(StringRef("CircleCollider"), tmp, allocator);
@@ -283,7 +283,7 @@ void SerializationManager::SaveScene()
 		if (e.HasComponent<Edge2DCollider>())
 		{
 			Value tmp(kObjectType);
-			addVectorMember(scene, tmp, "p0Offset", e.GetComponent<Edge2DCollider>().p0Offset);
+			addVectorMember(scene, tmp, "p0Offset", glm::vec2{ e.GetComponent<Edge2DCollider>().p0Offset.x, e.GetComponent<Edge2DCollider>().p0Offset.y });
 			tmp.AddMember(StringRef("rotationOffset"), e.GetComponent<Edge2DCollider>().rotationOffset, allocator);
 			tmp.AddMember(StringRef("scaleOffset"), e.GetComponent<Edge2DCollider>().scaleOffset, allocator);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Edge2DCollider>().renderFlag, allocator);

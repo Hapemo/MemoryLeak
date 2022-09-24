@@ -387,7 +387,7 @@ void  LevelEditor::SceneManager()
 							General{ "_NEW_", TAG::OTHERS, SUBTAG::NOSUBTAG, true },
 							Transform{ {150,150}, 0, {(float)std::rand() / (float)RAND_MAX * 600,(float)std::rand() / (float)RAND_MAX * 400} },
 							Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
-							RectCollider{ glm::vec2{0,0}, glm::vec2{1,1}, true });
+							RectCollider{ Math::Vec2{0,0}, Math::Vec2{1,1}, true });
 					}
 					ImGui::EndPopup();
 				}
@@ -409,7 +409,7 @@ void  LevelEditor::SceneManager()
 				General{"_NEW_", TAG::OTHERS, SUBTAG::NOSUBTAG, true},
 				Transform{ {150,150}, 0, {(float)std::rand() / (float)RAND_MAX * 600,(float)std::rand() / (float)RAND_MAX * 400} },
 				Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
-				RectCollider{ glm::vec2{0,0}, glm::vec2{1,1}, true });
+				RectCollider{ Math::Vec2{0,0}, Math::Vec2{1,1}, true });
 		}
 	}
 	ImGui::EndTabBar();

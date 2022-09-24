@@ -162,7 +162,8 @@ void RenderManager::RenderDebug()
 			Transform t = e.GetComponent<Transform>();
 			t.scale = { 0, 0 };
 			t.rotation = 0;
-			t.translation += e.GetComponent<Point2DCollider>().centerOffset;
+			t.translation.x += e.GetComponent<Point2DCollider>().centerOffset.x;
+			t.translation.y += e.GetComponent<Point2DCollider>().centerOffset.y;
 			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
 		}
 
@@ -171,16 +172,19 @@ void RenderManager::RenderDebug()
 			Transform t = e.GetComponent<Transform>();
 			t.scale *= glm::vec2(e.GetComponent<Edge2DCollider>().scaleOffset);
 			t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
-			t.translation += e.GetComponent<Edge2DCollider>().p0Offset;
+			t.translation.x += e.GetComponent<Edge2DCollider>().p0Offset.x;
+			t.translation.y += e.GetComponent<Edge2DCollider>().p0Offset.y;
 			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
 		}
 
 		if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
-			t.scale *= e.GetComponent<RectCollider>().scaleOffset;
+			t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;
+			t.scale.y *= e.GetComponent<RectCollider>().scaleOffset.y;
 			t.rotation = 0;
-			t.translation += e.GetComponent<RectCollider>().centerOffset;
+			t.translation.x += e.GetComponent<RectCollider>().centerOffset.x;
+			t.translation.y += e.GetComponent<RectCollider>().centerOffset.y;
 			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
 		}
 
@@ -189,7 +193,8 @@ void RenderManager::RenderDebug()
 			Transform t = e.GetComponent<Transform>();
 			t.scale = glm::vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
 			t.rotation = 0;
-			t.translation += e.GetComponent<CircleCollider>().centerOffset;
+			t.translation.x += e.GetComponent<CircleCollider>().centerOffset.x;
+			t.translation.y += e.GetComponent<CircleCollider>().centerOffset.y;
 			CreateDebugCircle(t, e.GetComponent<Sprite>().color);
 		}
 

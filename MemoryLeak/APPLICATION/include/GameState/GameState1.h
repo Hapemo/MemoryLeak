@@ -1,5 +1,6 @@
 #pragma once
 #include "GameState.h"
+#include "ECSManager.h"
 
 class GameState1 : public GameState {
 public:
@@ -13,5 +14,5 @@ public:
 	virtual void Free();
 	virtual void Unload();
 private:
-
+	std::set<Entity> mEntities;
 };

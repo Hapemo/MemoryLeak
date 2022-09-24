@@ -1,6 +1,6 @@
 #include "ECSManager.h"
 
-void Collision2DManager::AddRectColliderComponent(const Entity& e, const glm::vec2& _centerOffset, const glm::vec2& _scaleOffset, const bool& _renderFlag) {
+void Collision2DManager::AddRectColliderComponent(const Entity& e, const Math::Vec2& _centerOffset, const Math::Vec2& _scaleOffset, const bool& _renderFlag) {
 	if (!e.HasComponent<RectCollider>())
 		e.AddComponent(RectCollider{ _centerOffset, _scaleOffset, _renderFlag });
 	else {
@@ -10,7 +10,7 @@ void Collision2DManager::AddRectColliderComponent(const Entity& e, const glm::ve
 	}
 }
 
-void Collision2DManager::AddCircleColliderComponent(const Entity& e, const glm::vec2& _centerOffset, const float& _radiusOffset, const bool& _renderFlag) {
+void Collision2DManager::AddCircleColliderComponent(const Entity& e, const Math::Vec2& _centerOffset, const float& _radiusOffset, const bool& _renderFlag) {
 	if (!e.HasComponent<CircleCollider>())
 		e.AddComponent(CircleCollider{ _centerOffset, _radiusOffset, _renderFlag });
 	else {
@@ -20,7 +20,7 @@ void Collision2DManager::AddCircleColliderComponent(const Entity& e, const glm::
 	}
 }
 
-void Collision2DManager::AddEdgeColliderComponent(const Entity& e, const glm::vec2& _p0Offset, const float& _rotationOffset, const float& _scaleOffset, const bool& _renderFlag) {
+void Collision2DManager::AddEdgeColliderComponent(const Entity& e, const Math::Vec2& _p0Offset, const float& _rotationOffset, const float& _scaleOffset, const bool& _renderFlag) {
 	if (!e.HasComponent<Edge2DCollider>())
 		e.AddComponent(Edge2DCollider{ _p0Offset, _rotationOffset, _scaleOffset, _renderFlag });
 	else {
@@ -42,11 +42,11 @@ CircleCollider& Collision2DManager::GetCircleCollider(const Entity& e) {
 	return e.GetComponent<CircleCollider>();
 }
 
-glm::vec2 Collision2DManager::GetCircleCenterOffset(const Entity& e) {
+Math::Vec2 Collision2DManager::GetCircleCenterOffset(const Entity& e) {
 	return Collision2DManager::GetCircleCollider(e).centerOffset;
 }
 
-void Collision2DManager::SetCircleCenterOffset(const Entity& e, const glm::vec2& _centerOffset) {
+void Collision2DManager::SetCircleCenterOffset(const Entity& e, const Math::Vec2& _centerOffset) {
 	Collision2DManager::GetCircleCollider(e).centerOffset = _centerOffset;
 }
 
@@ -70,19 +70,19 @@ RectCollider& Collision2DManager::GetRectCollider(const Entity& e) {
 	return e.GetComponent<RectCollider>();
 }
 
-glm::vec2 Collision2DManager::GetRectCenterOffset(const Entity& e) {
+Math::Vec2 Collision2DManager::GetRectCenterOffset(const Entity& e) {
 	return Collision2DManager::GetRectCollider(e).centerOffset;
 }
 
-void Collision2DManager::SetRectCenterOffset(const Entity& e, const glm::vec2& _centerOffset) {
+void Collision2DManager::SetRectCenterOffset(const Entity& e, const Math::Vec2& _centerOffset) {
 	Collision2DManager::GetRectCollider(e).centerOffset = _centerOffset;
 }
 
-glm::vec2 Collision2DManager::GetRectScaleOffset(const Entity& e) {
+Math::Vec2 Collision2DManager::GetRectScaleOffset(const Entity& e) {
 	return Collision2DManager::GetRectCollider(e).scaleOffset;
 }
 
-void Collision2DManager::SetRectScaleOffset(const Entity& e, const glm::vec2& _scaleOffset) {
+void Collision2DManager::SetRectScaleOffset(const Entity& e, const Math::Vec2& _scaleOffset) {
 	Collision2DManager::GetRectCollider(e).scaleOffset = _scaleOffset;
 }
 
@@ -98,11 +98,11 @@ Edge2DCollider& Collision2DManager::GetEdgeCollider(const Entity& e) {
 	return e.GetComponent<Edge2DCollider>();
 }
 
-glm::vec2 Collision2DManager::GetEdgeP0Offset(const Entity& e) {
+Math::Vec2 Collision2DManager::GetEdgeP0Offset(const Entity& e) {
 	return Collision2DManager::GetEdgeCollider(e).p0Offset;
 }
 
-void Collision2DManager::SetEdgeP0Offset(const Entity& e, const glm::vec2& _centerOffset) {
+void Collision2DManager::SetEdgeP0Offset(const Entity& e, const Math::Vec2& _centerOffset) {
 	Collision2DManager::GetEdgeCollider(e).p0Offset = _centerOffset;
 }
 
@@ -143,10 +143,6 @@ bool Collision2DManager::ExistsInCollisionList(const Entity& e1, const Entity& e
 	return false;
 }
 
-void Collision2DManager::UpdateCollisionList() {
-	Collision2DManager::UpdateCollisionList(mEntities);
-}
-
 void Collision2DManager::UpdateCollisionList(const std::set<Entity>& _entityList) {
 	mCollisionCheckList.clear();
 
@@ -165,10 +161,6 @@ void Collision2DManager::UpdateCollisionList(const std::set<Entity>& _entityList
 	//}
 
 	//std::cout << std::endl;
-}
-
-void Collision2DManager::Update() {
-	Collision2DManager::Update(mEntities);
 }
 
 void Collision2DManager::Update(const std::set<Entity>& _entityList) {
@@ -252,6 +244,7 @@ void Collision2DManager::ResolveCollision(CollisionStore& _collisionData) {
 	default:
 		break;
 	}
+	LOG_INFO("Collision between object detected");
 
 	if (_collisionData.obj1.HasComponent<Audio>()) {
 		_collisionData.obj1.GetComponent<Audio>().sound.toPlay = true;
@@ -263,17 +256,17 @@ void Collision2DManager::ResolveCollision(CollisionStore& _collisionData) {
 
 // Physics function checking
 bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
-	glm::vec2 center1{ _collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<RectCollider>().centerOffset },
-		scale1{ static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
-				 static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.y) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.y) / 2.0) },
-		center2{ _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<RectCollider>().centerOffset },
-		scale2{ static_cast<float>(static_cast<double>(_collisionData.obj2.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj2.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
-				 static_cast<float>(static_cast<double>(_collisionData.obj2.GetComponent<Transform>().scale.y) * static_cast<double>(_collisionData.obj2.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
+	Math::Vec2 center1{ Math::Vec2{_collisionData.obj1.GetComponent<Transform>().translation} + _collisionData.obj1.GetComponent<RectCollider>().centerOffset },
+			   scale1{ static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+				       static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.y) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.y) / 2.0) },
+			   center2{ Math::Vec2{_collisionData.obj2.GetComponent<Transform>().translation} + _collisionData.obj2.GetComponent<RectCollider>().centerOffset },
+		       scale2{ static_cast<float>(static_cast<double>(_collisionData.obj2.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj2.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+				       static_cast<float>(static_cast<double>(_collisionData.obj2.GetComponent<Transform>().scale.y) * static_cast<double>(_collisionData.obj2.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
 
-	glm::vec2 aabb1min{ center1 - scale1 },
-		aabb1max{ center1 + scale1 },
-		aabb2min{ center2 - scale2 },
-		aabb2max{ center2 + scale2 };
+	Math::Vec2 aabb1min{ center1 - scale1 },
+			   aabb1max{ center1 + scale1 },
+			   aabb2min{ center2 - scale2 },
+			   aabb2max{ center2 + scale2 };
 
 	// Static
 	if (aabb1max.x < aabb2min.x)
@@ -285,14 +278,14 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 	if (aabb1min.y > aabb2max.y)
 		return false;
 
-	//Vb.x = vel2.x - vel1.x;
-	//Vb.y = vel2.y - vel1.y;
-	//glm::vec2 Vb{obj2.GetComponent<Physics2D>().velocity - obj1.GetComponent<Physics2D>().velocity};
-	glm::vec2 Vb{ (glm::vec2{glm::cos(_collisionData.obj2.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj2.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj2.GetComponent<Physics2D>().speed) -
-				  (glm::vec2{glm::cos(_collisionData.obj1.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj1.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj1.GetComponent<Physics2D>().speed) };
+
+	//Math::Vec2 Vb{ (Math::Vec2{glm::cos(_collisionData.obj2.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj2.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj2.GetComponent<Physics2D>().speed) -
+	//			   (Math::Vec2{glm::cos(_collisionData.obj1.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj1.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj1.GetComponent<Physics2D>().speed) };
+	Math::Vec2 Vb{ _collisionData.obj2.GetComponent<Physics2D>().velocity - _collisionData.obj1.GetComponent<Physics2D>().velocity };
+
 
 	// If relative velocity is zero
-	if (Vb == glm::vec2{ 0.f, 0.f })
+	if (Vb == Math::Vec2{ 0.f, 0.f })
 		return false;
 
 	// Dynamic
@@ -361,59 +354,60 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 
 bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData) {
 	// Find the relative velocity of both circles
-	glm::vec2 relVel{ (glm::vec2{glm::cos(_collisionData.obj1.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj1.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj1.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt)) -
-					  (glm::vec2{glm::cos(_collisionData.obj2.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj2.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj2.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt)) };
-
-	// Static
-		// If relVel is 0
-	if (relVel == glm::vec2{ 0.f, 0.f }) {
-		if (glm::abs(glm::distance(_collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset, _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<CircleCollider>().centerOffset) -
-			(_collisionData.obj1.GetComponent<Transform>().scale.x * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset + _collisionData.obj2.GetComponent<Transform>().scale.x * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset)) > 0.f)
+	Math::Vec2 relVel{ (_collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(Helper::dt)) -
+					   (_collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(Helper::dt)) };
+	return false;
+// Static
+	// If relVel is 0
+	if (relVel == Math::Vec2{ 0.f, 0.f }) {
+		if (abs(
+			Math::SqDistance(Math::Vec2{ _collisionData.obj1.GetComponent<Transform>().translation } + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset, Math::Vec2{ _collisionData.obj2.GetComponent<Transform>().translation } + _collisionData.obj2.GetComponent<CircleCollider>().centerOffset) -
+			(_collisionData.obj1.GetComponent<Transform>().scale.x * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset + _collisionData.obj2.GetComponent<Transform>().scale.x * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset)
+			) > 0.f)
 			return false;
 		else
 			return true;
 	}
 
-	// Dynamic 
+// Dynamic 
 	// Reduce problem by checking a static circle (pillar) and a moving point (ray/line)
 		// Create a third circle that inherits the following:
 		//	second object's collider's translation (Transform + centreOffset)
 		//  radius is the sum of the radius of the 2 circles
 		//  scaleOffset is 1
 	Transform tDataTmpCircle{ _collisionData.obj2.GetComponent<Transform>() };
-	tDataTmpCircle.translation += _collisionData.obj2.GetComponent<CircleCollider>().centerOffset;
+	tDataTmpCircle.translation.x += _collisionData.obj2.GetComponent<CircleCollider>().centerOffset.x;
+	tDataTmpCircle.translation.y += _collisionData.obj2.GetComponent<CircleCollider>().centerOffset.y;
 	tDataTmpCircle.scale = _collisionData.obj1.GetComponent<Transform>().scale * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset +
 		_collisionData.obj2.GetComponent<Transform>().scale * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset;
 
 	// Create a ray that starts from first object's position and goes in the direction of the relative velocity
 	Transform tDataTmpRay{};
-	tDataTmpRay.translation = _collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset;
-	tDataTmpRay.rotation = static_cast<float>(glm::acos(static_cast<double>(relVel.x) / static_cast<double>(glm::length(relVel))));
-	tDataTmpRay.scale.x = glm::length(relVel);
-
-	//std::cout << (_collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset).x << ", " << (_collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset).y << " | "
-	//	<< tDataTmpRay.translation.x << ", " << tDataTmpRay.translation.y << std::endl;
-	//std::cout << relVel.x << ", " << relVel.y << " | " << tDataTmpRay.rotation << std::endl;
+	tDataTmpRay.translation.x = _collisionData.obj1.GetComponent<Transform>().translation.x + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset.x;
+	tDataTmpRay.translation.y = _collisionData.obj1.GetComponent<Transform>().translation.y + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset.y;
+	//tDataTmpRay.rotation = static_cast<float>(glm::acos(static_cast<double>(relVel.x) / static_cast<double>(glm::length(relVel))));
+	//tDataTmpRay.scale.x = glm::length(relVel);
 
 	// Check if collision will occur by calling the RayCircle collision function
 	// Get normalized direction of the ray
-	glm::vec2 relVelDir{ glm::normalize(relVel) };
+	Math::Vec2 relVelDir{ relVel.Normalized()};
 
 	// Calculate m and check if ray is moving away from circle
-	double m{ static_cast<double>(glm::dot(tDataTmpCircle.translation - tDataTmpRay.translation, relVelDir)) };
+	double m{ static_cast<double>(Math::Dot(Math::Vec2{tDataTmpCircle.translation - tDataTmpRay.translation}, relVelDir)) };
 	if ((m < 0.0) &&
-		(static_cast<double>(glm::length(tDataTmpCircle.translation - tDataTmpRay.translation)) > (tDataTmpCircle.scale.x / 2.0)))
+		(static_cast<double>(Math::SqDistance(Math::Vec2{ tDataTmpCircle.translation }, Math::Vec2{ tDataTmpRay.translation })) 
+			> (tDataTmpCircle.scale.x / 2.0) *  (tDataTmpCircle.scale.x / 2.0)))
 		return false;
 
 	// Calculate and check if the closest distance to the circle is larger than the circle's radius
-	double n{ static_cast<double>(glm::length(tDataTmpCircle.translation - tDataTmpRay.translation)) - m };
-	if (n > (static_cast<double>(tDataTmpCircle.scale.x) / 2.0))
+	double n2{ static_cast<double>(Math::SqDistance(Math::Vec2{tDataTmpCircle.translation}, Math::Vec2{tDataTmpRay.translation})) - m * m};
+	if (n2 > (static_cast<double>(tDataTmpCircle.scale.x) / 2.0) * (static_cast<double>(tDataTmpCircle.scale.x) / 2.0))
 		return false;
 
 	// Find intersection time and take minimum value
-	double s{ static_cast<double>(tDataTmpCircle.scale.x) / 2.0 - n };
-	double tmpInterTime1{ (m - s) / static_cast<double>(tDataTmpRay.scale.x) },
-		tmpInterTime2{ (m + s) / static_cast<double>(tDataTmpRay.scale.x) };
+	double s{ sqrt((static_cast<double>(tDataTmpCircle.scale.x) / 2.0) * (static_cast<double>(tDataTmpCircle.scale.x) / 2.0) - n2) };
+	double tmpInterTime1{ (m - s) / relVel.Magnitude()},
+		   tmpInterTime2{ (m + s) / relVel.Magnitude() };
 	double interTime = (tmpInterTime1 < tmpInterTime2) ? tmpInterTime1 : tmpInterTime2;
 
 	// Check if the intersection time is within 1 unit
@@ -428,53 +422,63 @@ bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData) {
 void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData) {
 	//Collision2DManager::CR_CirclevsCircle(_collisionData);
 	// Compute and store objects' current velocity
-	glm::vec2 velObj1{ glm::vec2{glm::cos(_collisionData.obj1.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj1.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj1.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt) },
-		velObj2{ glm::vec2{glm::cos(_collisionData.obj2.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj2.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj2.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt) };
+	//Math::Vec2 velObj1{ Math::Vec2{glm::cos(_collisionData.obj1.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj1.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj1.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt) },
+	//		   velObj2{ Math::Vec2{glm::cos(_collisionData.obj2.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj2.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj2.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt) };
 
-	glm::vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime) },
-		interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
+	//Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime) },
+	//	interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
 
-	//glm::vec2 normal{ glm::normalize(interPtObj1 - interPtObj2) };
-	//double aA{ glm::dot(velObj1, normal) },
-	//	   aB{ glm::dot(velObj2, normal) };
+	////Math::Vec2 normal{ glm::normalize(interPtObj1 - interPtObj2) };
+	////double aA{ glm::dot(velObj1, normal) },
+	////	   aB{ glm::dot(velObj2, normal) };
 
-	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1;
-	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2;
+	//_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1;
+	//_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2;
 
 	/*float tmpDir = _collisionData.obj1.GetComponent<Physics2D>().moveDirection;
 	_collisionData.obj1.GetComponent<Physics2D>().moveDirection = _collisionData.obj2.GetComponent<Physics2D>().moveDirection;
 	_collisionData.obj2.GetComponent<Physics2D>().moveDirection = tmpDir;
 
-	transformManager->SetTranslate(*_collisionData.obj1, transformManager->GetTranslate(*_collisionData.obj1) + glm::vec2{ glm::cos(physics2DManager->GetMoveDirection(*_collisionData.obj1)), glm::sin(physics2DManager->GetMoveDirection(*_collisionData.obj1)) } * physics2DManager->GetSpeed(*_collisionData.obj1) * static_cast<float>(Helper::dt));
-	transformManager->SetTranslate(*_collisionData.obj2, transformManager->GetTranslate(*_collisionData.obj2) + glm::vec2{ glm::cos(physics2DManager->GetMoveDirection(*_collisionData.obj2)), glm::sin(physics2DManager->GetMoveDirection(*_collisionData.obj2)) } * physics2DManager->GetSpeed(*_collisionData.obj2) * static_cast<float>(Helper::dt));*/
+	transformManager->SetTranslate(*_collisionData.obj1, transformManager->GetTranslate(*_collisionData.obj1) + Math::Vec2{ glm::cos(physics2DManager->GetMoveDirection(*_collisionData.obj1)), glm::sin(physics2DManager->GetMoveDirection(*_collisionData.obj1)) } * physics2DManager->GetSpeed(*_collisionData.obj1) * static_cast<float>(Helper::dt));
+	transformManager->SetTranslate(*_collisionData.obj2, transformManager->GetTranslate(*_collisionData.obj2) + Math::Vec2{ glm::cos(physics2DManager->GetMoveDirection(*_collisionData.obj2)), glm::sin(physics2DManager->GetMoveDirection(*_collisionData.obj2)) } * physics2DManager->GetSpeed(*_collisionData.obj2) * static_cast<float>(Helper::dt));*/
+	_collisionData.obj1.GetComponent<Physics2D>().speed = 
+	_collisionData.obj2.GetComponent<Physics2D>().speed = 0.f;
+
+	_collisionData.obj1.GetComponent<Physics2D>().velocity = 
+	_collisionData.obj2.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f, 0.f };
 }
 
 void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData) {
+	_collisionData.obj1.GetComponent<Physics2D>().speed =
+		_collisionData.obj2.GetComponent<Physics2D>().speed = 0.f;
+
+	_collisionData.obj1.GetComponent<Physics2D>().velocity =
+		_collisionData.obj2.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f, 0.f };
 	// Compute and store objects' current velocity
-	glm::vec2 velObj1{ glm::vec2{glm::cos(_collisionData.obj1.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj1.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj1.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt) },
-		velObj2{ glm::vec2{glm::cos(_collisionData.obj2.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj2.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj2.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt) };
+	//Math::Vec2 velObj1{ Math::Vec2{glm::cos(_collisionData.obj1.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj1.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj1.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt) },
+	//	velObj2{ Math::Vec2{glm::cos(_collisionData.obj2.GetComponent<Physics2D>().moveDirection), glm::sin(_collisionData.obj2.GetComponent<Physics2D>().moveDirection)} *_collisionData.obj2.GetComponent<Physics2D>().speed * static_cast<float>(Helper::dt) };
 
-	// Compute and store objects' meeting point
-	glm::vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime) },
-		interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
-	// Get normal to collision occurance
-	glm::vec2 normal{ glm::normalize(interPtObj1 - interPtObj2) };
-	double aA{ glm::dot(velObj1, normal) },
-		aB{ glm::dot(velObj2, normal) };
+	//// Compute and store objects' meeting point
+	//Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime) },
+	//	interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
+	//// Get normal to collision occurance
+	//Math::Vec2 normal{ glm::normalize(interPtObj1 - interPtObj2) };
+	//double aA{ glm::dot(velObj1, normal) },
+	//	aB{ glm::dot(velObj2, normal) };
 
-	// Compute objects' reflected velocity after collision
-	glm::vec2 reflectedVelObj1{ velObj1 - static_cast<float>(((2.0 * (aA - aB)) / (static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) + static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass))) * static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass)) * normal },
-		reflectedVelObj2{ velObj2 + static_cast<float>(((2.0 * (aA - aB)) / (static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) + static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass))) * static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass)) * normal };
+	//// Compute objects' reflected velocity after collision
+	//Math::Vec2 reflectedVelObj1{ velObj1 - static_cast<float>(((2.0 * (aA - aB)) / (static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) + static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass))) * static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass)) * normal },
+	//	reflectedVelObj2{ velObj2 + static_cast<float>(((2.0 * (aA - aB)) / (static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) + static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass))) * static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass)) * normal };
 
-	// Compute objects' velocity direction after collision
-	_collisionData.obj1.GetComponent<Physics2D>().moveDirection = static_cast<float>(glm::acos(static_cast<double>(reflectedVelObj1.x) / static_cast<double>(glm::length(reflectedVelObj2))));
-	_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(glm::acos(static_cast<double>(reflectedVelObj2.x) / static_cast<double>(glm::length(reflectedVelObj2))));
+	//// Compute objects' velocity direction after collision
+	//_collisionData.obj1.GetComponent<Physics2D>().moveDirection = static_cast<float>(glm::acos(static_cast<double>(reflectedVelObj1.x) / static_cast<double>(glm::length(reflectedVelObj2))));
+	//_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(glm::acos(static_cast<double>(reflectedVelObj2.x) / static_cast<double>(glm::length(reflectedVelObj2))));
 
-	// Compute speed of the objects
-	_collisionData.obj1.GetComponent<Physics2D>().speed = static_cast<float>(static_cast<double>(glm::length(reflectedVelObj1)) / Helper::dt);
-	_collisionData.obj2.GetComponent<Physics2D>().speed = static_cast<float>(static_cast<double>(glm::length(reflectedVelObj2)) / Helper::dt);
+	//// Compute speed of the objects
+	//_collisionData.obj1.GetComponent<Physics2D>().speed = static_cast<float>(static_cast<double>(glm::length(reflectedVelObj1)) / Helper::dt);
+	//_collisionData.obj2.GetComponent<Physics2D>().speed = static_cast<float>(static_cast<double>(glm::length(reflectedVelObj2)) / Helper::dt);
 
-	// Compute objects' position the frame after the collision
-	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 + reflectedVelObj1 * static_cast<float>(1.0 - _collisionData.interTime);
-	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + reflectedVelObj2 * static_cast<float>(1.0 - _collisionData.interTime);
+	//// Compute objects' position the frame after the collision
+	//_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 + reflectedVelObj1 * static_cast<float>(1.0 - _collisionData.interTime);
+	//_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + reflectedVelObj2 * static_cast<float>(1.0 - _collisionData.interTime);
 }

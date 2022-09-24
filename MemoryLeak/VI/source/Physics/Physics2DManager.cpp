@@ -13,8 +13,8 @@
 #include "ECSManager.h"
 
 // Constant values
-const double fixedDT{ 1.0 / 60.0 },		// Fixed delta time step 
-			 accumulatedDTCap{ 1.0 };
+const double fixedDT{ 1.0 / 60.0 },		// Fixed delta time step of 1/60 steps a second
+			 accumulatedDTCap{ 1.0 };	// Accumulated cannot store more than 1 second worth of updates
 const float  velocityCap{ 0.99f };		// Velocity multipler cap to reach max velocity
 
 
@@ -33,6 +33,10 @@ NULL
 void Physics2DManager::Update(const double& _appDT) {
 	// Increment accumulatedDT by the application's DT
 	Physics2DManager::mAccumulatedDT += _appDT;
+
+	// Prevent spiral of death
+	if (Physics2DManager::mAccumulatedDT > accumulatedDTCap)
+		Physics2DManager::mAccumulatedDT = accumulatedDTCap;
 
 	// If the accumlatedDT is larger than or equal to the defined fixedDT,
 	//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
@@ -56,16 +60,17 @@ void Physics2DManager::Step() {
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mPhysicsObjectList) {
 		// Add movement as a force acting on the entity
-		Physics2DManager::AddForces(e, glm::vec2{ glm::cos(Physics2DManager::GetMoveDirection(e)), glm::sin(Physics2DManager::GetMoveDirection(e)) } *Physics2DManager::GetSpeed(e));
+		Physics2DManager::AddForces(e, Math::Vec2{ glm::cos(Physics2DManager::GetMoveDirection(e)), glm::sin(Physics2DManager::GetMoveDirection(e)) } *Physics2DManager::GetSpeed(e));
 		// Compute acceleration and add to velocity
 		Physics2DManager::AddVelocity(e, (Physics2DManager::GetForces(e) / Physics2DManager::GetMass(e)) * static_cast<float>(fixedDT));
 		// Cap velocity
 		Physics2DManager::ScaleVelocity(e, velocityCap);
 		// Move entity by velocitys
-		e.GetComponent<Transform>().translation += Physics2DManager::GetVelocity(e) * static_cast<float>(fixedDT);
+		e.GetComponent<Transform>().translation.x += Physics2DManager::GetVelocity(e).x * static_cast<float>(fixedDT);
+		e.GetComponent<Transform>().translation.y += Physics2DManager::GetVelocity(e).y * static_cast<float>(fixedDT);
 
 		// Reset forces on the object for next step
-		Physics2DManager::SetForces(e, glm::vec2{ 0.f, 0.f });
+		Physics2DManager::SetForces(e, Math::Vec2{ 0.f, 0.f });
 	}
 }
 
@@ -212,14 +217,14 @@ void Physics2DManager::AddPhysicsComponent(const Entity& _e, const float& _mass,
 	// If the physics component does not exists in the entity yet, we add it to the entity with the given values
 	// If it already exists, we reset the values to the given values
 	if (!_e.HasComponent<Physics2D>()) {
-		_e.AddComponent(Physics2D{ _mass, _speed, _moveDirection, glm::vec2{0, 0}, glm::vec2{0, 0}, _renderFlag });
+		_e.AddComponent(Physics2D{ _mass, _speed, _moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, _renderFlag });
 	}
 	else {
 		Physics2DManager::SetMass(_e, _mass);
 		Physics2DManager::SetSpeed(_e, _speed);
 		Physics2DManager::SetMoveDirection(_e, _moveDirection);
-		Physics2DManager::SetForces(_e, glm::vec2{ 0, 0 });
-		Physics2DManager::SetVelocity(_e, glm::vec2{ 0, 0 });
+		Physics2DManager::SetForces(_e, Math::Vec2{ 0, 0 });
+		Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
 		Physics2DManager::SetPhysicsRenderFlag(_e, _renderFlag);
 	}
 
@@ -251,8 +256,8 @@ void Physics2DManager::RemovePhysicsComponent(const Entity& _e) {
 	Physics2DManager::SetMass(_e, 0.f);
 	Physics2DManager::SetSpeed(_e, 0.f);
 	Physics2DManager::SetMoveDirection(_e, 0.f);
-	Physics2DManager::SetForces(_e, glm::vec2{ 0, 0 });
-	Physics2DManager::SetVelocity(_e, glm::vec2{ 0, 0 });
+	Physics2DManager::SetForces(_e, Math::Vec2{ 0, 0 });
+	Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
 	Physics2DManager::SetPhysicsRenderFlag(_e, false);
 }
 
@@ -378,7 +383,7 @@ A reference to a read-only Entity to
 \return glm::vec
 A copy of the value of the entity's net forces
 *******************************************************************************/
-glm::vec2 Physics2DManager::GetForces(const Entity& _e) {
+Math::Vec2 Physics2DManager::GetForces(const Entity& _e) {
 	return Physics2DManager::GetPhysicsComponent(_e).forces;
 }
 
@@ -390,13 +395,13 @@ given value
 \param const Entity &
 A reference to a read-only Entity to set
 
-\param const glm::vec2 &
+\param const Math::Vec2 &
 A reference to a read-only value containing net force to set to
 
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::SetForces(const Entity& _e, const glm::vec2& _forces) {
+void Physics2DManager::SetForces(const Entity& _e, const Math::Vec2& _forces) {
 	Physics2DManager::GetPhysicsComponent(_e).forces = _forces;
 }
 
@@ -408,13 +413,13 @@ entity's forces to become the updated net forces
 \param const Entity &
 A reference to a read-only Entity to set
 
-\param const glm::vec2 &
+\param const Math::Vec2 &
 A reference to a read-only value containing force to add
 
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::AddForces(const Entity& _e, const glm::vec2& _forces) {
+void Physics2DManager::AddForces(const Entity& _e, const Math::Vec2& _forces) {
 	Physics2DManager::GetPhysicsComponent(_e).forces += _forces;
 }
 
@@ -426,13 +431,13 @@ the given force value to become the updated net forces
 \param const Entity &
 A reference to a read-only Entity to set
 
-\param const glm::vec2 &
+\param const Math::Vec2 &
 A reference to a read-only value containing force to subtract
 
 \return void
 NULL
 *******************************************************************************/
-//void Physics2DManager::DeductForces(const Entity &_e, const glm::vec2 &_forces){
+//void Physics2DManager::DeductForces(const Entity &_e, const Math::Vec2 &_forces){
 //	//Physics2DManager::AddForces(_e, -_forces);
 //	Physics2DManager::GetPhysicsComponent(_e).forces -= _forces;
 //}
@@ -444,10 +449,10 @@ GetVelocity function that returns the stored value of the entity's velocity
 \param const Entity &
 A reference to a read-only Entity to
 
-\return glm::vec2
+\return Math::Vec2
 A copy of the value of the entity's velocity
 *******************************************************************************/
-glm::vec2 Physics2DManager::GetVelocity(const Entity& _e) {
+Math::Vec2 Physics2DManager::GetVelocity(const Entity& _e) {
 	return Physics2DManager::GetPhysicsComponent(_e).velocity;
 }
 
@@ -459,13 +464,13 @@ given value
 \param const Entity &
 A reference to a read-only Entity to set
 
-\param const glm::vec2 &
+\param const Math::Vec2 &
 A reference to a read-only value containing velocity to set to
 
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::SetVelocity(const Entity& _e, const glm::vec2& _velocity) {
+void Physics2DManager::SetVelocity(const Entity& _e, const Math::Vec2& _velocity) {
 	Physics2DManager::GetPhysicsComponent(_e).velocity = _velocity;
 }
 
@@ -477,13 +482,13 @@ entity's velocity
 \param const Entity &
 A reference to a read-only Entity to set
 
-\param const glm::vec2 &
+\param const Math::Vec2 &
 A reference to a read-only value containing velocity to add
 
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::AddVelocity(const Entity& _e, const glm::vec2& _velocity) {
+void Physics2DManager::AddVelocity(const Entity& _e, const Math::Vec2& _velocity) {
 	Physics2DManager::GetPhysicsComponent(_e).velocity += _velocity;
 }
 
