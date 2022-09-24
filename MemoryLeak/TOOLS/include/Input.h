@@ -13,8 +13,6 @@ brief:	Input detects keyboard input states and returns that to caller
 #pragma once
 #include "pch.h"
 
-struct GLFWwindow;
-
 // Available keys
 enum KEY {
 
@@ -105,12 +103,6 @@ enum STATE {
 
 class Input {
 private:
-  // I/O callbacks ...
-  static void key_cb(GLFWwindow* pwin, int key, int scancode, int action, int mod);
-  static void mousebutton_cb(GLFWwindow* pwin, int button, int action, int mod);
-  static void mousescroll_cb(GLFWwindow* pwin, double xoffset, double yoffset);
-  static void mousepos_cb(GLFWwindow* pwin, double xpos, double ypos);
-  
   static std::array<bool, 324> prev_key_states;
   static int starting_index;
   static int total_mouse_key;
@@ -155,9 +147,5 @@ public:
   /**************************************************************************/
   static void updatePrevKeyStates();
 
-  //-------------------------------------------------------------
-  // Mouse controls
-  //-------------------------------------------------------------
-  static double cursorPosX();
-  static double cursorPosY();
+  static Math::Vec2 CursorPos();
 };
