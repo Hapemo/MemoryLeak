@@ -62,7 +62,8 @@ void Physics2DManager::Step() {
 		// Cap velocity
 		Physics2DManager::ScaleVelocity(e, velocityCap);
 		// Move entity by velocitys
-		e.GetComponent<Transform>().translation += Physics2DManager::GetVelocity(e) * static_cast<float>(fixedDT);
+		glm::vec2 temp = Physics2DManager::GetVelocity(e) * static_cast<float>(fixedDT);
+		e.GetComponent<Transform>().translation += Math::Vec2(temp.x, temp.y);
 
 		// Reset forces on the object for next step
 		Physics2DManager::SetForces(e, glm::vec2{ 0.f, 0.f });
