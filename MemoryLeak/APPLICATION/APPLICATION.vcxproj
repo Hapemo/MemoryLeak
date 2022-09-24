@@ -85,10 +85,16 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\prop-page\APP_property_x64.props" />
+    <Import Project="..\prop-page\IncludeTOOLS.props" />
+    <Import Project="..\prop-page\IncludeVI.props" />
+    <Import Project="..\prop-page\IncludeAPPLICATION.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\prop-page\APP_property_x64.props" />
+    <Import Project="..\prop-page\IncludeTOOLS.props" />
+    <Import Project="..\prop-page\IncludeVI.props" />
+    <Import Project="..\prop-page\IncludeAPPLICATION.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

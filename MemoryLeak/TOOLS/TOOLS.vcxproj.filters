@@ -21,19 +21,19 @@
     <ClInclude Include="include\Utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\mat3.h">
+    <ClInclude Include="include\Math\mat3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\mat32.h">
+    <ClInclude Include="include\Math\mat32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\vec2.h">
+    <ClInclude Include="include\Math\vec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\vec3.h">
+    <ClInclude Include="include\Math\vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\NFmath.h">
+    <ClInclude Include="include\Math\NFmath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\DesignPatterns\ISingleton.h">
@@ -92,16 +92,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\mat3.cpp">
+    <ClCompile Include="source\Math\mat3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\mat32.cpp">
+    <ClCompile Include="source\Math\mat32.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\vec2.cpp">
+    <ClCompile Include="source\Math\vec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\vec3.cpp">
+    <ClCompile Include="source\Math\vec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Logger.cpp">
