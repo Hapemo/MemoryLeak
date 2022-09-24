@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file Application.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+Main application that gets called in the main loop. It handles the creation and
+start up of window and game system, also runs their update functions.
+*******************************************************************************/
 #include "Application.h"
 //#include "Windows.h"
 #include "Helper.h"
@@ -48,13 +58,13 @@ void Application::SystemInit() {
 void Application::init() {
   // Part 1
   startup();
-
+  /*
   INIT_TEXTURES("Background");
   INIT_TEXTURES("Icons");
   INIT_TEXTURES("Menu");
   INIT_TEXTURES("Sprites");
   INIT_TEXTURES("Spritesheets");
-
+  */
   // Part 2
   Helper::print_specs();
   SystemInit();
@@ -138,7 +148,7 @@ void Application::loadConfig(std::string path) {
     if (key == "window_width") window_width = stoi(value);
     else if (key == "window_height") window_height = stoi(value);
     else if (key == "title") title = value;
-    else if (key == "fps_limit") target_fps = stoi(value);
+    else if (key == "fps_limit") target_fps = static_cast<float>(stoi(value));
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";
@@ -184,8 +194,8 @@ void Application::glfwStartUp() {
 
   ptr_window = glfwCreateWindow(window_width, window_height, title.c_str(), NULL, NULL);
   if (!ptr_window) {
-    throw StartUpException("GLFW unable to create OpenGL context - abort program");
     glfwTerminate();
+    throw StartUpException("GLFW unable to create OpenGL context - abort program");
   }
 
   glfwMakeContextCurrent(ptr_window);
@@ -211,7 +221,7 @@ void Application::glewStartUp() {
 
 void Application::error_cb(int error, char const* description) {
 #ifdef _DEBUG
-  std::cerr << "GLFW error: " << description << std::endl;
+  std::cerr << "GLFW error " << error << ": " << description << std::endl;
 #endif
 }
 
@@ -221,5 +231,6 @@ void Application::fbsize_cb(GLFWwindow* ptr_win, int width, int height) {
 #endif
   // use the entire framebuffer as drawing region
   glViewport(0, 0, width, height);
+  (void)ptr_win;
   // later, if working in 3D, we'll have to set the projection matrix here ...
 }

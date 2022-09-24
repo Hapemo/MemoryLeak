@@ -1,22 +1,14 @@
-/*!
-file:	    Helper.cpp
-author:	  Jazz Teoh Yu Jue
-date:	    16/05/2022
-
-email:	  j.teoh@digipen.edu
-
-brief:	  Helper provides multiple useful but niche functionalities such as framerate
-          tracking and printing system specs
-
-All content © 2022 DigiPen Institute of Technology Singapore. All rights reserved.
-*//*__________________________________________________________________________________*/
-
-/*                                                                   includes
------------------------------------------------------------------------------ */
+/*!*****************************************************************************
+\file Helper.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+General helper class of application that calculates FPS and prints GLFW info
+*******************************************************************************/
 #include "Helper.h"
 
-/*                                                   objects with file scope
------------------------------------------------------------------------------ */
 // static data members declared in Helper
 GLdouble Helper::fps;
 double Helper::dt;
@@ -36,11 +28,11 @@ void Helper::CalcFPS(double fps_calc_interval) {
   // update fps at least every 10 seconds ...
   fps_calc_interval = (fps_calc_interval < 0.0) ? 0.0 : fps_calc_interval;
   fps_calc_interval = (fps_calc_interval > 10.0) ? 10.0 : fps_calc_interval;
-  //if (elapsed_time > fps_calc_interval) {
+  if (elapsed_time > fps_calc_interval) {
   Helper::fps = count / Helper::dt; // elapsed_time;
     start_time = curr_time;
     count = 0.0;
-  //}
+  }
 }
 
 void Helper::CalcDeltaTime() {

@@ -1,15 +1,13 @@
-/*!
-file:	ISingleton.h
-author:	Jazz Teoh Yu Jue
-date:	16/05/2022
-
-email:	j.teoh@digipen.edu
-
-brief:	ISingleton is only used to provide polymorphism control for SingletonManager. This
-		is necessary since Singleton class is templatized
-
-		All content © 2022 DigiPen Institute of Technology Singapore. All rights reserved.
-*//*__________________________________________________________________________________*/
+/*!*****************************************************************************
+\file ISingleton.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+ISingleton is only used to provide polymorphism control for SingletonManager. This
+is necessary since Singleton class is templatized
+*******************************************************************************/
 
 #pragma once
 
@@ -17,12 +15,10 @@ brief:	ISingleton is only used to provide polymorphism control for SingletonMana
 
 class ISingleton {
 public:
-	/***************************************************************************/
-	/*!
-		\brief
-			Adds a singleton to the SingletonManager
-	*/
-	/**************************************************************************/
+	/*!*****************************************************************************
+	\brief
+	Adds a singleton to the SingletonManager
+	*******************************************************************************/
 	ISingleton() { SingletonManager::addSingleton(this); }
 	
 	// Default dtor

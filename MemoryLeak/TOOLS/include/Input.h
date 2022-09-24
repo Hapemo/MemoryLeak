@@ -1,14 +1,12 @@
-/*!
-file:	Input.h
-author:	Jazz Teoh Yu Jue
-date:	20/05/2022
-
-email:	j.teoh@digipen.edu
-
-brief:	Input detects keyboard input states and returns that to caller
-
-    All content © 2022 DigiPen Institute of Technology Singapore. All rights reserved.
-*//*__________________________________________________________________________________*/
+/*!*****************************************************************************
+\file Input.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+Input detects keyboard and mouse input states and returns that to caller
+*******************************************************************************/
 
 #pragma once
 #include "pch.h"
@@ -111,41 +109,41 @@ private:
   static GLFWcursor* cursor;
   
 public:
-  /***************************************************************************/
-  /*!
-    \brief
-      Initialises the Input system
-  */
-  /**************************************************************************/
+  /*!*****************************************************************************
+  \brief
+  Initialises the Input system
+  *******************************************************************************/
   static void init(GLFWwindow*);
-
 
   //-------------------------------------------------------------
   // Keyboard controls
   //-------------------------------------------------------------
   
-  /***************************************************************************/
-  /*!
-    \brief
-      Checks for the state of certain key
-    \param STATE
-      State of the key pressed
-    \param KEY
-      Key to check the state of
-    \return
-      Returns true if inputted state matches current state of specified key
-  */
-  /**************************************************************************/
+  /*!*****************************************************************************
+  \brief
+  Checks for the state of certain key
+  \param STATE
+  - State of the key pressed
+  \param KEY
+  - Key to check the state of
+  \return bool
+  - Returns true if inputted state matches current state of specified key
+  *******************************************************************************/
   static bool CheckKey(STATE, KEY);
   
-  /***************************************************************************/
-  /*!
-    \brief
-      Update the previous state of all keys.
-      Must be called once after all key inquiry
-  */
-  /**************************************************************************/
+  /*!*****************************************************************************
+  \brief
+  Update the previous state of all keys.
+  Must be called once after all key inquiry
+  *******************************************************************************/
   static void updatePrevKeyStates();
 
+  /*!*****************************************************************************
+  \brief
+  Returns the mouse cursor position
+
+  \return Math::Vec2
+  - Position of mouse cursor
+  *******************************************************************************/
   static Math::Vec2 CursorPos();
 };
