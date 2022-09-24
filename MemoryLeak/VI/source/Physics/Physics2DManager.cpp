@@ -1,10 +1,22 @@
-//#include "Physics2DManager.h"
-#include "../../include/ECS/ECSManager.h"
+/*!*****************************************************************************
+\file	Physics2DManager.cpp
+\author Lee Hsien Wei, Joachim
+\par	DP email: l.hsienweijoachim@digipen.edu
+\par	Course: GAM200
+\par	Group: Memory Leak Studios
+\date	22-09-2022
+\brief  This file contains the definition of the Physics System Class member
+		functions which handles the dynamics of entities stored in its list
+*******************************************************************************/
+
+// Include header
+#include "ECSManager.h"
 
 // Constant values
-const double fixedDT			{ 1.0 / 60.0 },
-			 fixedAccumulator	{ 1.0 };
-const float velocityScalarCap	{ 0.99f };
+const double fixedDT{ 1.0 / 60.0 },		// Fixed delta time step 
+			 accumulatedDTCap{ 1.0 };
+const float  velocityCap{ 0.99f };		// Velocity multipler cap to reach max velocity
+
 
 /*!*****************************************************************************
 \brief
@@ -48,7 +60,7 @@ void Physics2DManager::Step() {
 		// Compute acceleration and add to velocity
 		Physics2DManager::AddVelocity(e, (Physics2DManager::GetForces(e) / Physics2DManager::GetMass(e)) * static_cast<float>(fixedDT));
 		// Cap velocity
-		Physics2DManager::ScaleVelocity(e, velocityScalarCap);
+		Physics2DManager::ScaleVelocity(e, velocityCap);
 		// Move entity by velocitys
 		e.GetComponent<Transform>().translation += Physics2DManager::GetVelocity(e) * static_cast<float>(fixedDT);
 

@@ -254,10 +254,10 @@ void Collision2DManager::ResolveCollision(CollisionStore& _collisionData) {
 	}
 
 	if (_collisionData.obj1.HasComponent<Audio>()) {
-		audioManager->PlaySound(_collisionData.obj1, 3);
+		_collisionData.obj1.GetComponent<Audio>().sound.toPlay = true;
 	}
 	if (_collisionData.obj2.HasComponent<Audio>()) {
-		audioManager->PlaySound(_collisionData.obj2, 4);
+		_collisionData.obj2.GetComponent<Audio>().sound.toPlay = true;
 	}
 }
 
@@ -385,12 +385,6 @@ bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData) {
 	tDataTmpCircle.scale = _collisionData.obj1.GetComponent<Transform>().scale * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset +
 		_collisionData.obj2.GetComponent<Transform>().scale * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset;
 
-	//std::cout << (_collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<CircleCollider>().centerOffset).x << ", " << (_collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<CircleCollider>().centerOffset).y << " | " 
-	//			<< tDataTmpCircle.translation.x << ", " << tDataTmpCircle.translation.y << std::endl;
-
-	//std::cout << (_collisionData.obj1.GetComponent<Transform>().scale * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset +
-	//	_collisionData.obj2.GetComponent<Transform>().scale * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset).x << " | " << tDataTmpCircle.scale.x << std::endl;
-
 	// Create a ray that starts from first object's position and goes in the direction of the relative velocity
 	Transform tDataTmpRay{};
 	tDataTmpRay.translation = _collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset;
@@ -484,10 +478,3 @@ void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData) {
 	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 + reflectedVelObj1 * static_cast<float>(1.0 - _collisionData.interTime);
 	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + reflectedVelObj2 * static_cast<float>(1.0 - _collisionData.interTime);
 }
-
-
-//	if (0.0 <= interTime && interTime <= 1.0)
-//		return true;
-//	else
-//		return false;
-//}

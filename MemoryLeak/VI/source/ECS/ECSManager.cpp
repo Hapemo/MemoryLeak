@@ -5,7 +5,7 @@ std::shared_ptr<BenchmarkManager> benchmarkManager{ nullptr };
 std::shared_ptr<TransformManager> transformManager{ nullptr };
 std::shared_ptr<SpriteManager> spriteManager{ nullptr };
 std::shared_ptr<RenderManager> renderManager{ nullptr };
-std::shared_ptr<PlayerManager> playerManager{ nullptr };
+//std::shared_ptr<PlayerManager> playerManager{ nullptr };
 std::shared_ptr<Physics2DManager> physics2DManager{ nullptr };
 std::shared_ptr<Collision2DManager> collision2DManager{ nullptr };
 std::shared_ptr<LevelEditor> levelEditor{ nullptr };
@@ -64,14 +64,14 @@ void ECSManager::RegisterBenchmarkManager() {
 	ECS::SetSystemSignature<BenchmarkManager>(signature);
 }
 
-void ECSManager::RegisterPlayerManager() {
-	Signature signature{};
-	signature.set(ECS::GetComponentType<General>());
-	signature.set(ECS::GetComponentType<PlayerTmp>());
-
-	playerManager = ECS::RegisterSystem<PlayerManager>();
-	ECS::SetSystemSignature<PlayerManager>(signature);
-}
+//void ECSManager::RegisterPlayerManager() {
+//	Signature signature{};
+//	signature.set(ECS::GetComponentType<General>());
+//	signature.set(ECS::GetComponentType<PlayerTmp>());
+//
+//	playerManager = ECS::RegisterSystem<PlayerManager>();
+//	ECS::SetSystemSignature<PlayerManager>(signature);
+//}
 
 void ECSManager::RegisterPhysics2DManager() {
 	Signature signature{};
@@ -152,7 +152,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterRenderManager();
 	RegisterAnimator();
 	RegisterSheetAnimator();
-	RegisterPlayerManager();
+	//RegisterPlayerManager();
 	RegisterPhysics2DManager();
 	RegisterCollision2DManager();
 	RegisterLevelEditor();

@@ -176,7 +176,6 @@
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\LevelEditor.h" />
     <ClInclude Include="include\Physics\Physics2DManager.h" />
-    <ClInclude Include="include\PlayerManager.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Serialization.h" />
@@ -191,7 +190,6 @@
     <ClCompile Include="source\AudioManger.cpp" />
     <ClCompile Include="source\BenchmarkManager.cpp" />
     <ClCompile Include="source\ColliderTransformManager.cpp" />
-    <ClCompile Include="source\Collision2DManager.cpp" />
     <ClCompile Include="source\DialogManager.cpp" />
     <ClCompile Include="source\ECS\ECSManager.cpp" />
     <ClCompile Include="source\ECS\ECS_managers.cpp" />
@@ -206,8 +204,8 @@
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
     <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
-    <ClCompile Include="source\Physics2DManager.cpp" />
-    <ClCompile Include="source\PlayerManager.cpp" />
+    <ClCompile Include="source\Physics\Collision2DManager.cpp" />
+    <ClCompile Include="source\Physics\Physics2DManager.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
     <ClCompile Include="source\stb_image.cpp" />
