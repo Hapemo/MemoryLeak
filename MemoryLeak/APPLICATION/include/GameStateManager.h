@@ -4,9 +4,11 @@
 
 class GameState;
 
-enum class GS {
+enum class E_GS {
 	INVALID,
 	START,
+	GameState1,
+	GameState2,
 
 	RESTART,
 	EXIT
@@ -22,20 +24,22 @@ public:
 	void Loop();
 	void Exit();
 
-	void setNewGameState();
-	void nextGS(GS);
+	void SetNewGameState();
+	void NextGS(E_GS);
 
-	GS getNextGS() { return next_GS; }
-	GS getCurrGS() { return curr_GS; }
-	GS getPrevGS() { return prev_GS; }
+	E_GS getNextGS() { return mNextGS; }
+	E_GS getCurrGS() { return mCurrGS; }
+	E_GS getPrevGS() { return mPrevGS; }
+
+	static void GSControlPanel();
 
 private:
 	using FP = void (*)(void);
-	using GS_pair = std::pair<GS, GameState*>;
+	using GS_pair = std::pair<E_GS, GameState*>;
 
-	std::map<GS, GameState*> GS_list;
-	GS curr_GS, prev_GS, next_GS;
-	GameState* curr_gamestate;
+	std::map<E_GS, GameState*> GS_List;
+	E_GS mCurrGS, mPrevGS, mNextGS;
+	GameState* mCurrGameState;
 };
 
 
