@@ -369,15 +369,6 @@ void  LevelEditor::SceneManager()
 								selectedEntityID = counter;
 							}
 						}
-						if (e.HasComponent<Benchmark>())
-						{
-							ImGui::Text("Benchmark");
-							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
-							{
-								selectedEntity = &e;
-								selectedEntityID = counter;
-							}
-						}
 						ImGui::TreePop();
 
 					}
@@ -691,10 +682,6 @@ void LevelEditor::EntityManager()
 					}
 				}*/
 
-			}
-			if (e.HasComponent<Benchmark>())
-			{
-				ImGui::Text("Benchmark");
 			}
 
 			static int componentsID;
