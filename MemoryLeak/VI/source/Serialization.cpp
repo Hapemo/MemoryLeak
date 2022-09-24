@@ -341,7 +341,7 @@ void SerializationManager::LoadDialogs()
 	Dialog dialog;
 	Value dialogObj(kObjectType);
 	dialogObj = doc.GetArray();
-	for (int index = 0; index < dialogObj.Size(); ++index) {
+	for (rapidjson::SizeType index = 0; index < dialogObj.Size(); ++index) {
 		dialog.id = dialogObj[index]["Dialogue ID"].GetInt();
 		dialog.text = dialogObj[index]["Dialogue Text"].GetString();
 		//std::cout << "dialog.text " << dialog.text << '\n';
