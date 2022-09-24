@@ -15,6 +15,11 @@ Entities with the Sprite and Animation Component.
 #include "ECS_components.h"
 #include "Helper.h"
 
+/*!*****************************************************************************
+\brief
+Animator class that operates on Entities containing the Sprite and Animation
+Component.
+*******************************************************************************/
 class Animator : public System
 {
 public:
@@ -48,7 +53,7 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void AddImages(const Entity& e, GLuint frame);
+	void AddImages(const Entity& _e, GLuint _frame);
 
 	/*!*****************************************************************************
 	\brief
@@ -65,7 +70,7 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void AddImages(const Entity& e, const std::vector<GLuint>& frames);
+	void AddImages(const Entity& _e, const std::vector<GLuint>& _frames);
 private:
 	/*!*****************************************************************************
 	\brief
@@ -77,6 +82,6 @@ private:
 	\return
 	None.
 	*******************************************************************************/
-	void Animate(const Entity& e);
+	void Animate(const Entity& _e);
 };
 
