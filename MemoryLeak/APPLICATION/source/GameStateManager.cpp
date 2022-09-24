@@ -28,10 +28,12 @@ void GameStateManager::Loop() {
 
 		// Update Input
 		curr_gamestate->Update();
-		int update = UPDATE_TEXTURES();
-		if (update > -1) {
-			//spriteManager->InitializeTexture(GET_TEXTURE((size_t)update));
-		}
+
+		TRACK_PERFORMANCE("TexturesLoop");
+		std::vector<int> update = UPDATE_TEXTURES();
+		for (size_t index = 0; index < update.size(); ++index)
+			spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
+		END_TRACK("TexturesLoop");
 
 		TRACK_PERFORMANCE("Graphics");
 		curr_gamestate->Draw();

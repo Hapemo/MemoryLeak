@@ -20,15 +20,26 @@ void ResourceManager::InitializeTextures(std::string _filepath) {
 
 ResourceManager::TextureData ResourceManager::LoadTexture(const std::string _filepath)
 {
+	struct stat stats;
 	ResourceData trackResource;
 	const char* filepath = _filepath.c_str();
 	stbi_set_flip_vertically_on_load(true);
 	trackResource.texture.data = stbi_load(filepath, &trackResource.texture.width, &trackResource.texture.height, &trackResource.texture.channels, 0);
 	trackResource.texture.path = filepath;
+	if (stat(trackResource.texture.path.c_str(), &stats) == 0)
+		trackResource.lastModified = stats.st_mtime;
 	++trackResource.usage;
 	mResources.push_back(trackResource);
-	std::cout << mResources[mResources.size() - 1].texture.path << std::endl;
+	//std::cout << mResources[mResources.size() - 1].texture.path << std::endl;
 	return trackResource.texture;
+}
+
+void ResourceManager::UpdateTexture(const size_t _index)
+{
+	const char* filepath = mResources[_index].texture.path.c_str();
+	stbi_set_flip_vertically_on_load(true);
+	mResources[_index].texture.data = stbi_load(filepath, &mResources[_index].texture.width, &mResources[_index].texture.height, &mResources[_index].texture.channels, 0);
+	std::cout << mResources[_index].texture.path << std::endl;
 }
 
 std::vector<ResourceManager::ResourceData>& ResourceManager::GetResources() {
@@ -48,33 +59,30 @@ ResourceManager::TextureData& ResourceManager::GetTextureData(size_t _index) {
 		> unload image
 */
 
-int ResourceManager::UpdateTextures() {
+std::vector<int> ResourceManager::UpdateTextures() {
+	std::vector<int> updatedTextures;
 	struct stat stats;
 	//std::cout << mResources.size() << std::endl;
 	for (size_t index = 0; index < mResources.size(); ++index) {
-		std::cout << "mResources[index].texture.path " << mResources[index].texture.path << std::endl;
 		if (stat(mResources[index].texture.path.c_str(), &stats) == 0) {
 			std::ifstream fopen(mResources[index].texture.path);
 			if (!fopen.is_open()) {
 				fopen.close();
-				UnloadTexture(mResources[index].texture.data);
 				mResources.erase(mResources.begin() + index);
-				//return -1;
+				continue;
 			}
 			time_t lastModifiedTime = stats.st_mtime;
-			//std::cout << mResources[index].texture.path << " last updated time: " << lastModifiedTime << std::endl;
+			//if(index == 0) std::cout << mResources[index].texture.path << " last updated time: " << lastModifiedTime << " | stored last updated: " << mResources[index].lastModified << std::endl;
 			if (lastModifiedTime != mResources[index].lastModified) {
 				//std::cout << "unloading " << mResources[index].texture.path << std::endl;
-				//UnloadTexture(mResources[index].texture.data);
-				//LoadTexture(mResources[index].texture.path);
-				//mResources[index].texture.data = stbi_load(mResources[index].texture.path.c_str(), &mResources[index].texture.width, &mResources[index].texture.height, &mResources[index].texture.channels, 0);
-				fopen.close();
-				//return (int)index;
+				UpdateTexture(index);
+				mResources[index].lastModified = lastModifiedTime;
+				updatedTextures.push_back((int)index);
 			}
 			fopen.close();
 		}
 	}
-	return -1;
+	return updatedTextures;
 }
 
 GLuint ResourceManager::GetTextureID(const std::string& _texturePath) {
