@@ -1,22 +1,14 @@
-/*!
-file:	    Helper.cpp
-author:	  Jazz Teoh Yu Jue
-date:	    16/05/2022
-
-email:	  j.teoh@digipen.edu
-
-brief:	  Helper provides multiple useful but niche functionalities such as framerate
-          tracking and printing system specs
-
-All content © 2022 DigiPen Institute of Technology Singapore. All rights reserved.
-*//*__________________________________________________________________________________*/
-
-/*                                                                   includes
------------------------------------------------------------------------------ */
+/*!*****************************************************************************
+\file Helper.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+General helper class of application that calculates FPS and prints GLFW info
+*******************************************************************************/
 #include "Helper.h"
 
-/*                                                   objects with file scope
------------------------------------------------------------------------------ */
 // static data members declared in Helper
 GLdouble Helper::fps;
 double Helper::dt;
