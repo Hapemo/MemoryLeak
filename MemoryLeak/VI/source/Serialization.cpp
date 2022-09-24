@@ -65,7 +65,7 @@ void SerializationManager::LoadScene()
 		}
 		if (entity.HasMember("Transform"))
 		{
-			glm::vec2 s, t;
+			Math::Vec2 s, t;
 			float r;
 			s.x = entity["Transform"]["scale"]["X"].GetDouble();
 			s.y = entity["Transform"]["scale"]["Y"].GetDouble();
@@ -73,7 +73,7 @@ void SerializationManager::LoadScene()
 			t.x = entity["Transform"]["translation"]["X"].GetDouble();
 			t.y = entity["Transform"]["translation"]["Y"].GetDouble();
 		
-			e.AddComponent<Transform>({ s, r, t });
+			e.AddComponent<Transform>({ s, r, t }); 
 		}
 		if (entity.HasMember("Sprite"))
 		{
@@ -218,9 +218,11 @@ void SerializationManager::SaveScene()
 		if (e.HasComponent<Transform>())
 		{
 			Value tmp(kObjectType);
-			addVectorMember(scene, tmp, "scale", e.GetComponent<Transform>().scale);
+			addVectorMember(scene, tmp, "scale", glm::vec2(e.GetComponent<Transform>().scale.x, 
+				e.GetComponent<Transform>().scale.y));
 			tmp.AddMember(StringRef("rotation"), e.GetComponent<Transform>().rotation, allocator);
-			addVectorMember(scene, tmp, "translation", e.GetComponent<Transform>().translation);
+			addVectorMember(scene, tmp, "translation", glm::vec2(e.GetComponent<Transform>().translation.x, 
+				e.GetComponent<Transform>().translation.y));
 			entity.AddMember(StringRef("Transform"), tmp, allocator);
 		}
 		if (e.HasComponent<Sprite>())

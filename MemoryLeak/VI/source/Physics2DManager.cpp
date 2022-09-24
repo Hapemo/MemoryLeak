@@ -71,7 +71,7 @@ void Physics2DManager::FirstUpdate(const std::set<Entity> &_entityList) {
 		//transformManager->SetTranslate(e, transformManager->GetTranslate(e) + Physics2DManager::GetVelocity(e) * static_cast<float>(Helper::dt));
 
 		transformManager->SetTranslate(*e, transformManager->GetTranslate(*e) + 
-										glm::vec2{ glm::cos(Physics2DManager::GetMoveDirection(*e)), glm::sin(Physics2DManager::GetMoveDirection(*e)) } *Physics2DManager::GetSpeed(*e) * static_cast<float>(Helper::dt));
+										Math::Vec2{ glm::cos(Physics2DManager::GetMoveDirection(*e)), glm::sin(Physics2DManager::GetMoveDirection(*e)) } *Physics2DManager::GetSpeed(*e) * static_cast<float>(Helper::dt));
 	}
 
 	// Collision check
