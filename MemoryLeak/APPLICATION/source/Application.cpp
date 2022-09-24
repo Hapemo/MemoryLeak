@@ -138,7 +138,7 @@ void Application::loadConfig(std::string path) {
     if (key == "window_width") window_width = stoi(value);
     else if (key == "window_height") window_height = stoi(value);
     else if (key == "title") title = value;
-    else if (key == "fps_limit") target_fps = stoi(value);
+    else if (key == "fps_limit") target_fps = static_cast<float>(stoi(value));
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";
