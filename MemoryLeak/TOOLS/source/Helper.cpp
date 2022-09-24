@@ -28,11 +28,11 @@ void Helper::CalcFPS(double fps_calc_interval) {
   // update fps at least every 10 seconds ...
   fps_calc_interval = (fps_calc_interval < 0.0) ? 0.0 : fps_calc_interval;
   fps_calc_interval = (fps_calc_interval > 10.0) ? 10.0 : fps_calc_interval;
-  //if (elapsed_time > fps_calc_interval) {
+  if (elapsed_time > fps_calc_interval) {
   Helper::fps = count / Helper::dt; // elapsed_time;
     start_time = curr_time;
     count = 0.0;
-  //}
+  }
 }
 
 void Helper::CalcDeltaTime() {
