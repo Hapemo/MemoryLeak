@@ -18,7 +18,6 @@ public:
 	static int getWindowHeight() { return window_height; }
 	static float getTargetFPS() { return target_fps; }
 
-
 private:
 	static int window_width, window_height;
 	static std::string title;

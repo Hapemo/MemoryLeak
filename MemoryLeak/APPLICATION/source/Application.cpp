@@ -74,7 +74,7 @@ void Application::SecondUpdate() {
   PrintTitleBar(0.3);
 
   // Close the window if the close flag is triggered
-  if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::GetInstance()->nextGS(GS::EXIT);
+  if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
 
   // Update ImGui
   TRACK_PERFORMANCE("Editor");
@@ -114,8 +114,6 @@ void Application::exit() {
   // Part 2
   glfwTerminate();
 }
-
-
 
 // Private helper functions
 void Application::loadConfig(std::string path) {
