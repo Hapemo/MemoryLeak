@@ -28,7 +28,7 @@ public:
 private:
 	struct ResourceData {
 		TextureData	texture;
-		time_t		lastModified = time(NULL);
+		time_t		lastModified;
 		int			usage = 0;
 	};
 
@@ -41,10 +41,11 @@ public:
 	const ResourceManager& operator=(const ResourceManager&) = delete;
 
 	void InitializeTextures(std::string _filepath);
-	int UpdateTextures();
+	std::vector<int> UpdateTextures();
 	TextureData& GetTextureData(size_t _index);
 	std::vector<ResourceData>& GetResources();
-
+	
+	void UpdateTexture(const size_t _index);
 	TextureData LoadTexture(const std::string _filepath);
 	void UnloadTexture(void* _data);
 
