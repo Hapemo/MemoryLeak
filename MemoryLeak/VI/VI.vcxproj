@@ -199,16 +199,12 @@
     <ClCompile Include="source\Graphics\SheetAnimator.cpp" />
     <ClCompile Include="source\Graphics\SpriteManager.cpp" />
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
-    <ClCompile Include="source\Input.cpp" />
     <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Physics2DManager.cpp" />
     <ClCompile Include="source\PlayerManager.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
-    <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
-    <ClCompile Include="source\Start_1.cpp" />
-    <ClCompile Include="source\Start_background.cpp" />
     <ClCompile Include="source\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
