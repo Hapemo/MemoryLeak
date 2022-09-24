@@ -1,5 +1,5 @@
 #pragma once
-#include "../../include/pch.h"
+#include <iostream>
 #include <glm/glm.hpp>
 
 namespace Math {
