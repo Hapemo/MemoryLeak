@@ -1,25 +1,29 @@
-/*!
-@file    my-tutorial-1.vert
-@author  k.yujun@digipen.edu
-@date    17/05/2022
-
-This file contains the implementation of the vertex shader in GLSL.
-
-*//*__________________________________________________________________________*/
+/*!*****************************************************************************
+\file default.vert
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 20-09-2022
+\brief
+This file contains the vertex shader for rendering default shapes. 2 Shader 
+programs are being used to reduce the frequency of "if" statements in the 
+fragment shader.
+*******************************************************************************/
 #version 450 core
 
+//taking in vertex attributes
 layout (location=0) in vec3 aVertexPosition;
 layout (location=1) in vec4 aColor;
 layout (location=2) in vec2 aVertexTexture;
 layout (location=3) in float aTexID;
 
+//passing to fragment shader
 out vec4 vColor;
 
-/**
-* @brief main function for vertex shader
-* @param none
-* @return none
-*/
+/*!*****************************************************************************
+\brief
+Main function of the vertex shader.
+*******************************************************************************/
 void main(void) 
 {
 	vColor = aColor;

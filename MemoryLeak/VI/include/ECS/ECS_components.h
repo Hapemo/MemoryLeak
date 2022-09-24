@@ -21,9 +21,9 @@ struct Lifespan {
 
 struct Transform
 {
-	glm::vec2		scale;
+	Math::Vec2		scale;
 	float			rotation;
-	glm::vec2		translation;
+	Math::Vec2		translation;
 };
 
 struct Sprite

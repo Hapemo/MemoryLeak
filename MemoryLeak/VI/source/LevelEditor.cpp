@@ -469,13 +469,13 @@ void LevelEditor::EntityManager()
 				tmpVec2[0] = transformManager->GetScale(e).x;
 				tmpVec2[1] = transformManager->GetScale(e).y;
 				ImGui::DragFloat2("Set Scale", tmpVec2);
-				glm::vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
+				Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
 				transformManager->SetScale(e, scale);
 
 				tmpVec2[0] = transformManager->GetTranslate(e).x;
 				tmpVec2[1] = transformManager->GetTranslate(e).y;
 				ImGui::DragFloat2("Set Position", tmpVec2);
-				glm::vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
+				Math::Vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
 				transformManager->SetTranslate(e, pos);
 
 				tmpFloat = transformManager->GetRotation(e);

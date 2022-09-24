@@ -31,6 +31,7 @@ namespace Math {
     Vec2 Normalized() const;
     float Magnitude() const;
     float SqMagnitude() const;
+    glm::vec2 ToGLM() const;
     /*
     Vec3(glm::vec3);
     glm::vec3 operator glm::vec3() const;

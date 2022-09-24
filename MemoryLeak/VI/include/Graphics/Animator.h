@@ -6,7 +6,8 @@
 \date 20-09-2022
 \brief
 This file contains function declarations for an Animator system that operates on 
-Entities with the Sprite and Animation Component.
+Entities with the Sprite and Animation Component. It uses !DIFFERENT TEXTURES! to
+animate.
 *******************************************************************************/
 #pragma once
 #include "pch.h"
@@ -31,7 +32,7 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Animates a single Entity with Components Sprite and Animation.
+	Animates all Entities with Components Sprite and Animation.
 	
 	\return 
 	None.
@@ -74,7 +75,7 @@ public:
 private:
 	/*!*****************************************************************************
 	\brief
-	Animates all Entities with Components Sprite and Animation.
+	Animates a single Entity with Components Sprite and Animation.
 	
 	\param const Entity& e
 	The Entity to be animated.
