@@ -363,26 +363,26 @@ private:
 	\return
 	The Transformation matrix.
 	*******************************************************************************/
-	glm::mat3x3 GetTransform(const Entity& _e);
+	Math::Mat3 GetTransform(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
 	Helper function for returning the Transformation matrix given scale, rotate, and
 	translate.
 
-	\param const glm::vec2& _scale
+	\param const Math::Vec2& _scale
 	The scale for the transformation.
 
 	\param float _rotate
 	The rotation for the transformation
 
-	\param const glm::vec2& _translate
+	\param const Math::Vec2& _translate
 	The translatetion for the transformation
 
 	\return
 	The Transformation matrix.
 	*******************************************************************************/
-	glm::mat3x3 GetTransform(const glm::vec2& _scale, float _rotate, const glm::vec2& _translate);
+	Math::Mat3 GetTransform(const Math::Vec2& _scale, float _rotate, const Math::Vec2& _translate);
 
 	/*!*****************************************************************************
 	\brief

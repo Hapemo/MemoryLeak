@@ -65,6 +65,11 @@ namespace Math {
     return x * x + y * y + z * z;
   }
 
+  glm::vec3 Vec3::ToGLM() const
+  {
+      return glm::vec3(this->x, this->y, this->z);
+  }
+
   Vec3::~Vec3() {}
   Vec3 operator+(const Vec3& lhs, const Vec3& rhs) {
     Vec3 temp = lhs;
