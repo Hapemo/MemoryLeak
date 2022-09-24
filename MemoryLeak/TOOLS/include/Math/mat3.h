@@ -20,7 +20,7 @@ namespace Math {
     explicit Mat3(const Mat32& mat);
     Mat3& operator=(const Mat3& mat);
     float* operator[](short idx) { return mtx1[idx]; }
-    const float const* operator[](short idx) const { return mtx1[idx]; }
+    const float * operator[](short idx) const { return mtx1[idx]; }
     Mat3& Transpose();
     Mat3 Transposed() const;
     ~Mat3();

@@ -1,4 +1,5 @@
 #pragma once
+//#pragma warning ( disable : 4840 4477)
 #include "pch.h"
 #include "Singleton.h"
 #include "Utilities.h"

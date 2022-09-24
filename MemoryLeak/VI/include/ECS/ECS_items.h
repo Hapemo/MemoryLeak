@@ -135,7 +135,7 @@ T& ComponentArray<T>::GetData(EntityID entity) {
 
 template<typename T>
 bool ComponentArray<T>::HasEntity(EntityID entity) {
-	return mData.CheckData(entity);
+	return mData.CheckData(static_cast<short>(entity));
 }
 
 //template<typename T>
