@@ -6,6 +6,7 @@ namespace Math {
 
   Vec3::Vec3(float i) : x(i), y(i), z(i) {}
 
+  Vec3::Vec3(const glm::vec3& v) : x(v.x), y(v.y), z(v.z) {}
   Vec3::Vec3(const Vec3& vct) : x(vct.x), y(vct.y), z(vct.z) {}
   Vec3::Vec3(const Vec2& v) : x(v.x), y(v.y), z(1) {}
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <glm/glm.hpp>
 
 namespace Math {
   struct Vec2;
@@ -21,6 +22,7 @@ namespace Math {
     Vec3(float x, float y, float z);
     Vec3(float i = 0);
     Vec3(const Vec3& vct);
+    explicit Vec3(const glm::vec3& v);
     explicit Vec3(const Vec2& v);
     Vec3& operator+=(const Vec3& rhs);
     Vec3& operator-=(const Vec3& rhs);
