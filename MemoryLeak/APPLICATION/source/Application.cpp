@@ -14,7 +14,7 @@ int Application::window_width{};
 int Application::window_height{};
 std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
-float Application::target_fps = 60.f;
+float Application::target_fps = 0;
 bool editorMode = false;
 
 void Application::startup() {
@@ -41,7 +41,6 @@ void Application::SystemInit() {
   //@weijhin
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
   audioManager->AudioManager::AudioManager();
-  benchmarkManager->StartTime();
   renderManager->Init(&window_width, &window_height);
 }
 
@@ -123,18 +122,9 @@ void Application::loadConfig(std::string path) {
   // Opening file
   std::fstream file;
   file.open(path, std::ios_base::in);
-  std::vector<std::pair<std::string, std::string>> config;
-  config.reserve(10);
-
   if (!file.is_open()) throw StartUpException("File " + path + " not found.");
   
-  // Extracting config information
-  std::string line{};
-  while (std::getline(file, line)) {
-    size_t midpoint{ line.find(':') };
-
-    config.push_back({ line.substr(0, midpoint), line.substr(midpoint + 2, midpoint + 2 - line.length()) });
-  }
+  std::map<std::string, std::string> config = Util::TextFileToMap(file);
 
   // Applying configurations
 #ifdef _DEBUG
@@ -148,8 +138,9 @@ void Application::loadConfig(std::string path) {
     if (value.length() <= 0) throw StartUpException("Config error: " + key + " not found!");
 
     if (key == "window_width") window_width = stoi(value);
-    if (key == "window_height") window_height = stoi(value);
-    if (key == "title") title = value;
+    else if (key == "window_height") window_height = stoi(value);
+    else if (key == "title") title = value;
+    else if (key == "fps_limit") target_fps = stoi(value);
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";
