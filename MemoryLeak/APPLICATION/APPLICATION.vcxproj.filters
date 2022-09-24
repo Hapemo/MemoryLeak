@@ -1,48 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClInclude Include="include\Scene\Scene.h" />
+    <ClInclude Include="include\Scene\Start_1.h" />
+    <ClInclude Include="include\Scene\Start_background.h" />
+    <ClInclude Include="include\Application.h" />
+    <ClInclude Include="include\GameState.h" />
+    <ClInclude Include="include\GameStateManager.h" />
+    <ClInclude Include="include\Start.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GameState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GameStateManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Start.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="source\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GameState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GameStateManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Start.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClCompile Include="source\Scene\Scene.cpp" />
+    <ClCompile Include="source\Scene\Start_1.cpp" />
+    <ClCompile Include="source\Scene\Start_background.cpp" />
+    <ClCompile Include="source\Application.cpp" />
+    <ClCompile Include="source\GameState.cpp" />
+    <ClCompile Include="source\GameStateManager.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Start.cpp" />
   </ItemGroup>
 </Project>

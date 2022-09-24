@@ -66,10 +66,12 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\prop-page\TOOLS_property_x64.props" />
+    <Import Project="..\prop-page\IncludeTOOLS.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\prop-page\TOOLS_property_x64.props" />
+    <Import Project="..\prop-page\IncludeTOOLS.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -143,17 +145,17 @@
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\DesignPatterns\ISingleton.h" />
     <ClInclude Include="include\Logger.h" />
-    <ClInclude Include="include\mat3.h" />
-    <ClInclude Include="include\mat32.h" />
-    <ClInclude Include="include\NFmath.h" />
+    <ClInclude Include="include\Math\mat3.h" />
+    <ClInclude Include="include\Math\mat32.h" />
+    <ClInclude Include="include\Math\NFmath.h" />
     <ClInclude Include="include\pch.h" />
     <ClInclude Include="include\PerformanceVisualiser.h" />
     <ClInclude Include="include\DesignPatterns\Singleton.h" />
     <ClInclude Include="include\DesignPatterns\SingletonManager.h" />
     <ClInclude Include="include\DesignPatterns\SparseSet.h" />
     <ClInclude Include="include\Utilities.h" />
-    <ClInclude Include="include\vec2.h" />
-    <ClInclude Include="include\vec3.h" />
+    <ClInclude Include="include\Math\vec2.h" />
+    <ClInclude Include="include\Math\vec3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp" />
@@ -167,12 +169,12 @@
     <ClCompile Include="source\Helper.cpp" />
     <ClCompile Include="source\Input.cpp" />
     <ClCompile Include="source\Logger.cpp" />
-    <ClCompile Include="source\mat3.cpp" />
-    <ClCompile Include="source\mat32.cpp" />
+    <ClCompile Include="source\Math\mat3.cpp" />
+    <ClCompile Include="source\Math\mat32.cpp" />
     <ClCompile Include="source\PerformanceVisualiser.cpp" />
     <ClCompile Include="source\SingletonManager.cpp" />
-    <ClCompile Include="source\vec2.cpp" />
-    <ClCompile Include="source\vec3.cpp" />
+    <ClCompile Include="source\Math\vec2.cpp" />
+    <ClCompile Include="source\Math\vec3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

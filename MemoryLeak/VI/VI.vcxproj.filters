@@ -197,9 +197,6 @@
     <ClCompile Include="source\ECS\ECSManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\LevelEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -215,16 +212,7 @@
     <ClCompile Include="source\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Serialization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Start_1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Start_background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\stb_image.cpp">
