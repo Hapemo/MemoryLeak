@@ -15,18 +15,6 @@ private:
 	// Nothing for now 
 };
 
-class BenchmarkManager : public System {
-public:
-	void MultiSqrtTest();
-	void StartTime();
-	double RecordTime();
-
-private:
-	double startTime = 0;
-};
-
-
-
 
 
 

@@ -175,6 +175,7 @@
     <ClCompile Include="source\SingletonManager.cpp" />
     <ClCompile Include="source\Math\vec2.cpp" />
     <ClCompile Include="source\Math\vec3.cpp" />
+    <ClCompile Include="source\Utilities.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

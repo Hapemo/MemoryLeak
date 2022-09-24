@@ -176,9 +176,6 @@
     <ClCompile Include="source\AudioManger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\BenchmarkManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\ColliderTransformManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
