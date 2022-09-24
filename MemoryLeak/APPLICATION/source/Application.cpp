@@ -35,7 +35,7 @@ void Application::startup() {
 
 void Application::SystemInit() {
   for (size_t index = 0; index < GET_RESOURCES().size(); ++index) {
-    spriteManager->InitializeTexture(GET_TEXTURE(index));
+    spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
   }
 
   //@weijhin
@@ -44,7 +44,6 @@ void Application::SystemInit() {
   benchmarkManager->StartTime();
   renderManager->Init(&window_width, &window_height);
 }
-
 
 void Application::init() {
   // Part 1

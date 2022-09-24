@@ -28,7 +28,7 @@ void GameStateManager::Loop() {
 
 		// Update Input
 		curr_gamestate->Update();
-		int update = CHECK_TEXTURES_UPDATE();
+		int update = UPDATE_TEXTURES();
 		if (update > -1) {
 			//spriteManager->InitializeTexture(GET_TEXTURE((size_t)update));
 		}
