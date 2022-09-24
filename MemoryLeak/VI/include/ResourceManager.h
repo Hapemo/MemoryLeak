@@ -28,7 +28,7 @@ public:
 private:
 	struct ResourceData {
 		TextureData	texture;
-		time_t		lastModified = time(NULL);
+		time_t		lastModified;
 		int			usage = 0;
 	};
 

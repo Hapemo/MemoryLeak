@@ -73,7 +73,7 @@ void ResourceManager::InitializeTextures(std::string _filepath) {
 
 GLuint ResourceManager::GetTextureID(const std::string& _texturePath) {
 	for (size_t index = 0; index < mResources.size(); ++index)
-		if (mResources[index].texture.path == ",,\\resources\\" + _texturePath) return mResources[index].texture.id;
+		if (mResources[index].texture.path == "..\\resources\\" + _texturePath) return mResources[index].texture.id;
 	return 0;
 }
 

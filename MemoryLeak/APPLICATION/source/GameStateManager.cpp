@@ -1,71 +1,87 @@
 #include "GameStateManager.h"
 #include "GameState.h"
-#include "Start.h"
 #include "Application.h"
 #include "Helper.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
 #include "Graphics/SpriteManager.h"
+#include "Input.h"
+#include "Start.h"
+#include "GameState1.h"
+#include "GameState2.h"
+#include "GameState3.h"
 
 GameStateManager::GameStateManager() :
-	prev_GS(GS::START), next_GS(GS::START), curr_GS(GS::START), curr_gamestate(nullptr) 
+	mPrevGS(), mNextGS(), mCurrGS(), mCurrGameState(nullptr) 
 {};
 
 void GameStateManager::Loop() {
-	if (curr_GS == GS::RESTART) next_GS = curr_GS = prev_GS;
+	if (mCurrGS == E_GS::RESTART) mNextGS = mCurrGS = mPrevGS;
 	else {
 		// Update();
-		setNewGameState();
-		curr_gamestate->Load();
+		SetNewGameState();
+		mCurrGameState->Load();
 	}
 
-	curr_gamestate->Init();
+	mCurrGameState->Init();
 
-	while (curr_GS == next_GS) {
+	while (mCurrGS == mNextGS) {
 		TRACK_PERFORMANCE("MainLoop");
 
 		Application::FirstUpdate();
 
-		// Update Input
-		curr_gamestate->Update();
+		mCurrGameState->Update();
 		int update = CHECK_TEXTURES_UPDATE();
 		if (update > -1) {
 			//spriteManager->InitializeTexture(GET_TEXTURE((size_t)update));
 		}
 
 		TRACK_PERFORMANCE("Graphics");
-		curr_gamestate->Draw();
+		mCurrGameState->Draw();
 		END_TRACK("Graphics");
 
-		Application::SecondUpdate();
+		GSControlPanel();
 
+		Application::SecondUpdate(); // This should always be the last
 		END_TRACK("MainLoop");
 	}
 
-	curr_gamestate->Free();
+	mCurrGameState->Free();
 
-	if (next_GS != GS::RESTART) curr_gamestate->Unload();;
+	if (mNextGS != E_GS::RESTART) mCurrGameState->Unload();;
 
-	prev_GS = curr_GS;
-	curr_GS = next_GS;
+	mPrevGS = mCurrGS;
+	mCurrGS = mNextGS;
 }
 
 void GameStateManager::Init() {
-	GS_list.insert(GS_pair(GS::START, new Start));
+	mPrevGS = mNextGS = mCurrGS = E_GS::GameState1;
+	
+	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
+	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
+	GS_List.insert(GS_pair(E_GS::GameState3, new GameState3));
 }
 
 
-void GameStateManager::nextGS(GS gamestate) { next_GS = gamestate; }
+void GameStateManager::NextGS(E_GS gamestate) { mNextGS = gamestate; }
 
-void GameStateManager::setNewGameState() { curr_gamestate = GS_list[curr_GS]; }
+void GameStateManager::SetNewGameState() { mCurrGameState = GS_List[mCurrGS]; }
 
 void GameStateManager::Update() { }
 
 void GameStateManager::Exit() {
-	for (GS_pair pair : GS_list) {
+	for (GS_pair pair : GS_List) {
 		if (!pair.second) continue;
 		delete pair.second;
 		pair.second = nullptr;
 	}
-	curr_gamestate = nullptr;
+	mCurrGameState = nullptr;
+}
+
+void GameStateManager::GSControlPanel() {
+	if (Application::GetEditorMode()) return;
+	if (Input::CheckKey(PRESS, _1)) GameStateManager::GetInstance()->NextGS(E_GS::GameState1);
+	else if (Input::CheckKey(PRESS, _2)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
+	else if (Input::CheckKey(PRESS, _3)) GameStateManager::GetInstance()->NextGS(E_GS::GameState3);
+	else if (Input::CheckKey(PRESS, _0)) GameStateManager::GetInstance()->NextGS(E_GS::START);
 }

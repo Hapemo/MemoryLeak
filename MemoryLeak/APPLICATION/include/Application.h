@@ -17,13 +17,14 @@ public:
 	static int getWindowWidth() { return window_width; }
 	static int getWindowHeight() { return window_height; }
 	static float getTargetFPS() { return target_fps; }
-
+	static bool GetEditorMode() { return editorMode; }
 
 private:
 	static int window_width, window_height;
 	static std::string title;
 	static GLFWwindow* ptr_window;
 	static float target_fps;
+	static bool editorMode;
 
 	static void loadConfig(std::string path);
 	static void PrintTitleBar(double);

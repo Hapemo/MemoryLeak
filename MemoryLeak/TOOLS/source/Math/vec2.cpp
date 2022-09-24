@@ -1,3 +1,4 @@
+#include <glm/glm.hpp>
 #include "vec2.h"
 #include "vec3.h"
 
@@ -7,6 +8,8 @@ namespace Math {
   Vec2::Vec2(float i) : x(i), y(i) {}
 
   Vec2::Vec2(const Vec2& v) : x(v.x), y(v.y) {}
+
+  Vec2::Vec2(glm::vec2 v) : x(v.x), y(v.y) {}
 
   Vec2::Vec2(const Vec3& v) : x(v.x), y(v.y) {}
   
