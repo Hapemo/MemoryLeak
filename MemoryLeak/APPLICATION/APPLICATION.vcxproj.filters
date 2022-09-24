@@ -10,6 +10,7 @@
     <ClInclude Include="include\GameState\Start.h" />
     <ClInclude Include="include\GameState\GameState1.h" />
     <ClInclude Include="include\GameState\GameState2.h" />
+    <ClInclude Include="include\GameState\GameState3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Scene\Scene.cpp" />
@@ -22,5 +23,6 @@
     <ClCompile Include="source\GameState\Start.cpp" />
     <ClCompile Include="source\GameState\GameState1.cpp" />
     <ClCompile Include="source\GameState\GameState2.cpp" />
+    <ClCompile Include="source\GameState\GameState3.cpp" />
   </ItemGroup>
 </Project>

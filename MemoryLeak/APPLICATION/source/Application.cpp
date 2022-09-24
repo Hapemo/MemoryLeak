@@ -15,7 +15,7 @@ int Application::window_height{};
 std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
 float Application::target_fps = 0;
-bool editorMode = false;
+bool Application::editorMode = false;
 
 void Application::startup() {
   

@@ -24,6 +24,7 @@
     <ClInclude Include="include\GameStateManager.h" />
     <ClInclude Include="include\GameState\GameState1.h" />
     <ClInclude Include="include\GameState\GameState2.h" />
+    <ClInclude Include="include\GameState\GameState3.h" />
     <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\Scene\Start_1.h" />
     <ClInclude Include="include\Scene\Start_background.h" />
@@ -35,6 +36,7 @@
     <ClCompile Include="source\GameStateManager.cpp" />
     <ClCompile Include="source\GameState\GameState1.cpp" />
     <ClCompile Include="source\GameState\GameState2.cpp" />
+    <ClCompile Include="source\GameState\GameState3.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Scene\Scene.cpp" />
     <ClCompile Include="source\Scene\Start_1.cpp" />

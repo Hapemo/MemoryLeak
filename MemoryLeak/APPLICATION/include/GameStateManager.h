@@ -9,6 +9,7 @@ enum class E_GS {
 	START,
 	GameState1,
 	GameState2,
+	GameState3,
 
 	RESTART,
 	EXIT
