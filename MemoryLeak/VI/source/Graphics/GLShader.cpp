@@ -1,162 +1,230 @@
 #include "Graphics/GLShader.h"
 
-GLShader::GLShader(const std::string& vertexShader, const std::string& fragmentShader)
+/*!*****************************************************************************
+\brief
+Constructor for GLShader class.
+
+\param _vertexShader
+File path to the vertex shader source code.
+
+\param _fragmentShader
+File path to the fragment shader source code.
+*******************************************************************************/
+GLShader::GLShader(const std::string& _vertexShader, const std::string& _fragmentShader)
 {
-	programID = glCreateProgram();
-	linked = false;
-	paths.first = "../VI/" + vertexShader;
-	paths.second = "../VI/" + fragmentShader;
+	mProgramID = glCreateProgram();
+	mLinked = false;
+	mPaths.first = "../VI/" + _vertexShader;
+	mPaths.second = "../VI/" + _fragmentShader;
 }
 
+/*!*****************************************************************************
+\brief
+Destructor for GLShader class.
+*******************************************************************************/
 GLShader::~GLShader()
 {
-	if (programID > 0) 
-		glDeleteProgram(programID);
+	if (mProgramID > 0) 
+		glDeleteProgram(mProgramID);
 }
 
-bool GLShader::CompileVertexShader()
+/*!*****************************************************************************
+\brief
+Compile the vertex shader's code.
+*******************************************************************************/
+void GLShader::CompileVertexShader()
 {
-	//std::string str1 = "" + paths.first;
-	std::ifstream vertexShader(paths.first, std::ifstream::in);
+	//opens the shader file
+	std::ifstream vertexShader(mPaths.first, std::ifstream::in);
 
+	//error checking
 	if (!vertexShader)
 		throw std::string("File for vertex shader not found!");
 
+	//reading file into stringstream
 	std::stringstream ss;
 	ss << vertexShader.rdbuf();
 	vertexShader.close();
 
 	std::string str = ss.str();
 
+	//creating vertex shader
 	GLuint vertexHandle = glCreateShader(GL_VERTEX_SHADER);
 	GLchar const* vertexCode[] = { str.c_str() };
 
+	//inserting source code and compiling
 	glShaderSource(vertexHandle, 1, vertexCode, NULL);
 	glCompileShader(vertexHandle);
 
 	GLint result;
 	glGetShaderiv(vertexHandle, GL_COMPILE_STATUS, &result);
 
+	//error checking
 	if (result == GL_FALSE)
 		throw std::string("Vertex shader compilation failed.");
 
-	glAttachShader(programID, vertexHandle);
-
-	return true;
+	//attach shader to shader program
+	glAttachShader(mProgramID, vertexHandle);
 }
 
-bool GLShader::CompileFragmentShader()
+/*!*****************************************************************************
+\brief
+Compile the fragment shader's code.
+*******************************************************************************/
+void GLShader::CompileFragmentShader()
 {
-	std::ifstream fragmentShader(paths.second, std::ifstream::in);
+	//opens the shader file
+	std::ifstream fragmentShader(mPaths.second, std::ifstream::in);
 
+	//error checking
 	if (!fragmentShader)
-	{
 		throw std::string("File for fragment shader not found!");
-		return false;
-	}
 
+	//reading file into stringstream
 	std::stringstream ss;
 	ss << fragmentShader.rdbuf();
 	fragmentShader.close();
 
 	std::string str = ss.str();
 
+	//creating the shader program
 	GLuint fragmentHandle = glCreateShader(GL_FRAGMENT_SHADER);
 	GLchar const* fragmentCode[] = { str.c_str() };
 
+	//inserting source code and compiling
 	glShaderSource(fragmentHandle, 1, fragmentCode, NULL);
 	glCompileShader(fragmentHandle);
 
 	GLint result;
 	glGetShaderiv(fragmentHandle, GL_COMPILE_STATUS, &result);
 
+	//error checking
 	if (result == GL_FALSE)
-	{
 		throw std::string("Fragment shader compilation failed.");
-		return false;
-	}
 
-	glAttachShader(programID, fragmentHandle);
-
-	return true;
+	//attach shader to shader program
+	glAttachShader(mProgramID, fragmentHandle);
 }
 
-bool GLShader::CompileShaders()
+/*!*****************************************************************************
+\brief
+Compile both vertex and fragment shader's code.
+*******************************************************************************/
+void GLShader::CompileShaders()
 {
-	if (CompileVertexShader() && CompileFragmentShader())
-		return true;
-	return false;
+	CompileVertexShader(), CompileFragmentShader();
 }
 
-bool GLShader::LinkShaders()
+/*!*****************************************************************************
+\brief
+Links vertex and fragment shaders.
+*******************************************************************************/
+void GLShader::LinkShaders()
 {
-	if (linked)
-		return true;
+	if (mLinked)
+		return;
 
-	glLinkProgram(programID);
+	//links the 2 shaders
+	glLinkProgram(mProgramID);
 
 	GLint result;
-	glGetProgramiv(programID, GL_LINK_STATUS, &result);
+	glGetProgramiv(mProgramID, GL_LINK_STATUS, &result);
 
+	//error checking
 	if (result == GL_FALSE)
-	{
 		throw std::string("Linking of shaders failed.");
-		return false;
-	}
 
-	linked = true;
-
-	return true;
+	mLinked = true;
 }
 
-bool GLShader::CompileLinkShaders()
+/*!*****************************************************************************
+\brief
+Compile and link both vertex and fragment shader's code.
+*******************************************************************************/
+void GLShader::CompileLinkShaders()
 {
-	if (CompileShaders() && LinkShaders())
-		return true;
-	return false;
+	CompileShaders(), LinkShaders();
 }
 
-bool GLShader::Validate()
+/*!*****************************************************************************
+\brief
+Checks if vertex and fragment shaders are compiled and linked correctly, will
+throw an exception otherwise.
+*******************************************************************************/
+void GLShader::Validate()
 {
-	glValidateProgram(programID);
+	//checks the state of the program
+	glValidateProgram(mProgramID);
 
 	GLint result;
-	glGetProgramiv(programID, GL_VALIDATE_STATUS, &result);
+	glGetProgramiv(mProgramID, GL_VALIDATE_STATUS, &result);
 
+	//error checking
 	if (result == GL_FALSE)
-	{
 		throw std::string("Validation of shaders failed");
-		return false;
-	}
-
-	return result;
 }
 
+/*!*****************************************************************************
+\brief
+Binds the shader program to the OpenGL context
+*******************************************************************************/
 void GLShader::Bind()
 {
-	glUseProgram(programID);
+	glUseProgram(mProgramID);
 }
 
+/*!*****************************************************************************
+\brief
+Unbinds the shader program to the OpenGL context
+*******************************************************************************/
 void GLShader::Unbind()
 {
 	glUseProgram(0);
 }
 
-void GLShader::RegisterUniform(const std::string& uniform)
+/*!*****************************************************************************
+\brief
+Register a uniform and its location.
+
+\param const std::string& _uniform
+The name of the uniform.
+*******************************************************************************/
+void GLShader::RegisterUniform(const std::string& _uniform)
 {
-	uniforms.insert(std::pair<std::string, GLint>(uniform, glGetUniformLocation(GetID(), uniform.c_str())));
+	mUniforms.insert(std::pair<std::string, GLint>(_uniform, 
+		glGetUniformLocation(GetID(), _uniform.c_str())));
 	
-	if (uniforms[uniform] < 0)
+	if (mUniforms[_uniform] < 0)
 		throw std::string("Uniform not found!");
 }
 
-void GLShader::RegisterUniforms(const std::vector<std::string>& strings)
+/*!*****************************************************************************
+\brief
+Register uniforms and their location.
+
+\param const std::vector<std::string>& _strings
+The names of the uniforms.
+*******************************************************************************/
+void GLShader::RegisterUniforms(const std::vector<std::string>& _strings)
 {
-	for (const std::string& str : strings)
+	for (const std::string& str : _strings)
 		RegisterUniform(str);
 }
 
-void GLShader::InsertUniform1iv(const std::string& uniform, size_t count, int* data)
+/*!*****************************************************************************
+\brief
+Inserts a uniform of type integer array into the shader program.
+
+\param const std::string& _uniform
+Name of the uniform.
+
+\param size_t _count
+Number of elements in the array.
+
+\param int* _data
+Pointer to the array.
+*******************************************************************************/
+void GLShader::InsertUniform1iv(const std::string& _uniform, size_t _count, int* _data)
 {
-	glUniform1iv(uniforms[uniform], count, data);
+	glUniform1iv(mUniforms[_uniform], _count, _data);
 }

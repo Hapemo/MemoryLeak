@@ -740,7 +740,7 @@ void  LevelEditor::AssetManager()
 {
 	GLuint my_image_texture = spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
 	GLuint my_image2_texture = 0;
-	std::string rootPath = ",,\\resources";
+	std::string rootPath = "..\\resources";
 	ImVec2 buttonSize = { 100,100 };
 	ImGui::Begin("Asset Manager");
 	ImGui::BeginTabBar("Assets ");

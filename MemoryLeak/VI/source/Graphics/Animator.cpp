@@ -33,25 +33,30 @@ The Entity to be animated.
 \return
 None.
 *******************************************************************************/
-void Animator::Animate(const Entity& e)
+void Animator::Animate(const Entity& _e)
 {
-	if (!e.GetComponent<General>().isActive) return;
-	if (!e.HasComponent<Animation>()) return;
-	if (!e.GetComponent<Animation>().images.size())
+	if (!_e.GetComponent<General>().isActive) return;
+	if (!_e.HasComponent<Animation>()) return;
+	if (!_e.GetComponent<Animation>().images.size())
 	{
-		if (!(e.HasComponent<Sprite>() && e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)) return;
-		static GLuint addImage = e.GetComponent<Sprite>().texture;
-		AddImages(e, addImage);
+		//if image vector is empty, initialize it with the texture in its sprite component
+		if (!(_e.HasComponent<Sprite>() && _e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)) return;
+		static GLuint addImage = _e.GetComponent<Sprite>().texture;
+		AddImages(_e, addImage);
 	}
 
-	e.GetComponent<Animation>().timeToImageSwap -= Helper::dt;
+	//update time to image swap
+	_e.GetComponent<Animation>().timeToImageSwap -= Helper::dt;
 
-	if (e.GetComponent<Animation>().timeToImageSwap >= 0) return;
+	if (_e.GetComponent<Animation>().timeToImageSwap >= 0) return;
 
-	e.GetComponent<Animation>().timeToImageSwap = e.GetComponent<Animation>().timePerImage;
-	e.GetComponent<Animation>().currentImageIndex = ++e.GetComponent<Animation>().currentImageIndex < e.GetComponent<Animation>().images.size() ?
-		e.GetComponent<Animation>().currentImageIndex : 0;
-	e.GetComponent<Sprite>().texture = e.GetComponent<Animation>().images[e.GetComponent<Animation>().currentImageIndex];
+	//reset counter
+	_e.GetComponent<Animation>().timeToImageSwap = _e.GetComponent<Animation>().timePerImage;
+	//change the image
+	_e.GetComponent<Animation>().currentImageIndex = ++_e.GetComponent<Animation>().currentImageIndex < _e.GetComponent<Animation>().images.size() ?
+		_e.GetComponent<Animation>().currentImageIndex : 0;
+	//change its texture
+	_e.GetComponent<Sprite>().texture = _e.GetComponent<Animation>().images[_e.GetComponent<Animation>().currentImageIndex];
 }
 
 /*!*****************************************************************************
@@ -69,9 +74,9 @@ Component.
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& e, GLuint frame)
+void Animator::AddImages(const Entity& _e, GLuint _frame)
 {
-	e.GetComponent<Animation>().images.push_back(frame);
+	_e.GetComponent<Animation>().images.push_back(_frame);
 }
 
 /*!*****************************************************************************
@@ -89,7 +94,7 @@ component
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& e, const std::vector<GLuint>& frames)
+void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames)
 {
-	e.GetComponent<Animation>().images.insert(e.GetComponent<Animation>().images.end(), frames.begin(), frames.end());
+	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
 }
