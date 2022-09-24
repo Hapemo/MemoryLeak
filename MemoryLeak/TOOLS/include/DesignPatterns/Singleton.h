@@ -1,15 +1,13 @@
-/*!
-file:	Singleton.h
-author:	Jazz Teoh Yu Jue
-date:	16/05/2022
-
-email:	j.teoh@digipen.edu
-
-brief:	Singleton base class, a design pattern that allows creation of only one instance
-		of a class. 
-
-		All content © 2022 DigiPen Institute of Technology Singapore. All rights reserved.
-*//*__________________________________________________________________________________*/
+/*!*****************************************************************************
+\file Singleton.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+Singleton base class, a design pattern that allows creation of only one instance
+of a class.
+*******************************************************************************/
 
 #pragma once
 
@@ -20,12 +18,10 @@ class Singleton : public ISingleton{
 private:
 	static T* instance;
 
-	/***************************************************************************/
-	/*!
-		\brief
-			Frees the singleton memory if it exists
-	*/
-	/**************************************************************************/
+	/*!*****************************************************************************
+	\brief
+	Frees the singleton memory if it exists
+	*******************************************************************************/
 	void Destroy() {
 		if (instance) {
 			delete instance;
@@ -46,14 +42,13 @@ public:
 	Singleton(Singleton&&) = delete;
 	Singleton& operator= (Singleton&&) = delete;
 
-	/***************************************************************************/
-	/*!
-		\brief
-			Returns the Singleton instance, make one if there is none
-		\return
-			Current singleton instance
-	*/
-	/**************************************************************************/
+	/*!*****************************************************************************
+	\brief
+	Returns the Singleton instance, make one if there is none
+
+	\return T*
+	- Current singleton instance
+	*******************************************************************************/
 	static T* GetInstance() {
 		if (!instance) instance = new T;
 		return instance;

@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file GameStateManager.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+
+*******************************************************************************/
 #include "GameStateManager.h"
 #include "GameState.h"
 #include "Application.h"
@@ -60,6 +69,7 @@ void GameStateManager::Loop() {
 void GameStateManager::Init() {
 	mPrevGS = mNextGS = mCurrGS = E_GS::GameState1;
 	
+	GS_List.insert(GS_pair(E_GS::START, new Start));
 	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
 	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
 	GS_List.insert(GS_pair(E_GS::GameState3, new GameState3));

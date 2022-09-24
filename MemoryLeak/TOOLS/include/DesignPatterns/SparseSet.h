@@ -1,3 +1,19 @@
+/*!*****************************************************************************
+\file SparseSet.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+SparseSet is a design pattern that contains 2 arrays, one shallow one dense.
+Shallow array contains key pointing to addresses in dense array
+Dense array contains template type that contains data.
+SparseSet acts like a std::map<int, templateType>. it's faster but it only maps
+integer to templateType data.
+It's faster than array too since it's data are densely occupied. Dense array
+contains existing data that are arranged contiguously.
+*******************************************************************************/
+
 #pragma once
 #include "pch.h"
 #include "logger.h"
@@ -7,22 +23,67 @@ class SparseSet {
 private:
 	using DataType = T; // Container's data
 	using IndexType = short; // Index unit for pairing
-	
 	// Data's ID must be convertable to int.
 	
 public:
 	SparseSet() = delete;
 	SparseSet(SparseSet const&) = delete;
 
-	SparseSet(int);
-	//std::vector<int> GetShallow() { return mShallow; }
-	//std::vector<DataType> GetDense() { return mDense; }
+	/*!*****************************************************************************
+	\brief
+	Parametrized constructor for constructing SparseSet
 
+	\param int
+	- Size of SparseSet
+	*******************************************************************************/
+	SparseSet(int);
+
+	/*!*****************************************************************************
+	\brief
+	Operator overload to access data like array
+
+	\param IndexType const&
+	- Index of data
+	*******************************************************************************/
 	DataType& operator[](IndexType const&);
+
+	/*!*****************************************************************************
+	\brief
+	Add data into SparseSet
+
+	\param DataType const&
+	Data
+
+	\param IndexType const&
+	- Index of data
+	*******************************************************************************/
 	void AddData(DataType const&, IndexType const&);
+
+	/*!*****************************************************************************
+	\brief
+	Remove data from SparseSet
+
+	\param IndexType const&
+	- Index of data
+	*******************************************************************************/
 	void RemoveData(IndexType const&);
+
+	/*!*****************************************************************************
+	\brief
+	Check if data is available
+
+	\param IndexType const&
+	- Index of data
+
+	\return bool
+	- True if data exists, otherwise false
+	*******************************************************************************/
 	bool CheckData(IndexType const&);
 	
+	/*!*****************************************************************************
+	\brief
+	Print SparseSet
+	*******************************************************************************/
 	void PrintSet();
 
 private:
@@ -32,9 +93,6 @@ private:
 	const int mSize;
 	const int emptyID;
 };
-
-
-//std::ostream& operator<<(std::ostream& out, SparseSet);
 
 template<typename T>
 SparseSet<T>::SparseSet(int _size) : mSize(_size), emptyID(INT_MAX), mCapacity(0) {
@@ -49,8 +107,6 @@ SparseSet<T>::DataType& SparseSet<T>::operator[](IndexType const& _index) {
 	ASSERT(deepID != emptyID, "SparseSet cannot find ID: " + std::to_string(deepID));
 	return mDense[deepID];
 }
-
-
 
 template<typename T>
 void SparseSet<T>::RemoveData(IndexType const& _index) {
@@ -67,7 +123,6 @@ void SparseSet<T>::RemoveData(IndexType const& _index) {
 	}
 	deepID = emptyID;
 }
-
 
 template<typename T>
 void SparseSet<T>::AddData(DataType const& _data, IndexType const& _index) {
