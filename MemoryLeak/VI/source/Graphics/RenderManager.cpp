@@ -381,6 +381,7 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	float texMin{};
 	float texMax{ 1.f };
 
+	//calculate the new texture coordinates if component contains sheet animation.
 	if (_e.HasComponent<SheetAnimation>())
 	{
 		float slice = texMax / (float)_e.GetComponent<SheetAnimation>().frameCount;
@@ -787,13 +788,13 @@ Math::Mat3 RenderManager::GetTransform(const Entity& _e)
 Helper function for returning the Transformation matrix given scale, rotate, and
 translate.
 
-\param const glm::vec2& _scale
+\param const Math::Vec2& _scale
 The scale for the transformation.
 
 \param float _rotate
 The rotation for the transformation
 
-\param const glm::vec2& _translate
+\param const Math::Vec2& _translate
 The translatetion for the transformation
 
 \return
@@ -806,9 +807,9 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 
 	Math::Mat3 temp
 	{
-		Math::Vec3(_scale.x * cosRot, -_scale.y * sinRot, _translate.x),
-		Math::Vec3(_scale.x * sinRot, _scale.y * cosRot, _translate.y),
-		Math::Vec3(0.f, 0.f, 1.f)
+		Math::Vec3(_scale.x * cosRot, _scale.x * sinRot, 0.f),
+		Math::Vec3(-_scale.y * sinRot, _scale.y * cosRot, 0.f),
+		Math::Vec3(_translate.x, _translate.y, 1.f)
 	};
 
 	temp[0][0] /= (float)*mWindowWidth;

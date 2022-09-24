@@ -11,7 +11,6 @@ to operate on OpenGL's Frame Buffer Object.
 #pragma once
 #include "pch.h"
 #include "Graphics/GLAllocator.h"
-#include <glm/glm.hpp>
 
 /*!*****************************************************************************
 \brief
