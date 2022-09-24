@@ -122,7 +122,6 @@ void Start_1::Init() {
   //levelEditor->LevelEditor::Init();
   /*transformManager->Init(); */
 
-  physics2DManager->Init(mEntities);
   Reset();
 }
 
@@ -164,7 +163,7 @@ void Start_1::Update() {
     //renderManager->Render();
     //renderManager->RenderDebug();
     //TRACK_PERFORMANCE("Physics");
-    physics2DManager->FirstUpdate(mEntities);
+    physics2DManager->Update(Helper::dt);
     //END_TRACK("Physics");
 
     PrintOrResetEntityLifespan(mEntities, A);

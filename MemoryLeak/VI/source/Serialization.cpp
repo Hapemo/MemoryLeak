@@ -116,7 +116,7 @@ void SerializationManager::LoadScene()
 			float	moveDirection = entity["Physics2D"]["moveDirection"].GetFloat();
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ mass, speed, moveDirection, renderFlag });
+			e.AddComponent<Physics2D>({ mass, speed, moveDirection, glm::vec2{0, 0}, glm::vec2{0, 0}, renderFlag });
 			physics2DManager->AddPhysicsComponent(e, mass, speed, moveDirection, renderFlag);
 		}
 		if (entity.HasMember("RectCollider"))

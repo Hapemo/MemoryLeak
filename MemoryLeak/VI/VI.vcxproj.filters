@@ -114,12 +114,6 @@
     <ClInclude Include="include\LevelEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Physics2DManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\PlayerManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -142,6 +136,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\TagVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\Collision2DManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\Physics2DManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -179,9 +179,6 @@
     <ClCompile Include="source\ColliderTransformManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Collision2DManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\DialogManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -200,10 +197,7 @@
     <ClCompile Include="source\LifespanManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Physics2DManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\PlayerManager.cpp">
+    <ClCompile Include="source\Physics\Physics2DManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\ResourceManager.cpp">
@@ -213,6 +207,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\stb_image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Physics\Collision2DManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
