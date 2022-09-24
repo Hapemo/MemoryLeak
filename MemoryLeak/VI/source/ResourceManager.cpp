@@ -9,11 +9,9 @@
 
 void ResourceManager::InitializeTextures(std::string _filepath) {
 	const std::filesystem::path tex_dir{ "..\\resources\\Textures\\" + _filepath };
-	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(tex_dir))
-	{
-		int height, width, channels;
+	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(tex_dir)) {
 		std::string str = entry.string();
-		size_t pos = str.find_first_of('\\') + 1;
+		//size_t pos = str.find_first_of('\\') + 1;
 		LoadTexture(str);
 	}
 }
@@ -93,7 +91,7 @@ GLuint ResourceManager::GetTextureID(const std::string& _texturePath) {
 
 std::string	ResourceManager::GetTexturePath(GLint _id) {
 	for (size_t index = 0; index < mResources.size(); ++index)
-		if (mResources[index].texture.id == _id) return mResources[index].texture.path;
+		if ((GLint)mResources[index].texture.id == (GLint)_id) return mResources[index].texture.path;
 	return "";
 }
 
@@ -103,5 +101,6 @@ void ResourceManager::UnloadTexture(void* _data) {
 
 float ResourceManager::GetAspectRatio(const GLuint _id) {
 	for (size_t index = 0; index < mResources.size(); ++index)
-		if (mResources[index].texture.id == _id) return (mResources[index].texture.height / mResources[index].texture.width);
+		if (mResources[index].texture.id == _id) return (float)(mResources[index].texture.height / mResources[index].texture.width);
+	return 0.0f;
 }
