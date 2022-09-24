@@ -24,7 +24,7 @@ glm::vec2 GetVec2(Value& vecIn)
 
 void SerializationManager::LoadScene()
 {
-	std::ifstream ifs("./resources/Scene/SceneJ.json");
+	std::ifstream ifs("../resources/Scene/SceneJ.json");
 	if (!ifs.good())
 	{
 		if (!ifs.good()) LOG_ERROR("Can't open json file!");
@@ -318,7 +318,7 @@ void SerializationManager::SaveScene()
 
 	scene.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
-	std::ofstream ofs("./resources/Scene/SceneJ.json");
+	std::ofstream ofs("../resources/Scene/SceneJ.json");
 	ofs << jsonf;
 	if (!ofs.good() )
 	{
@@ -327,7 +327,7 @@ void SerializationManager::SaveScene()
 }
 void SerializationManager::LoadDialogs()
 {
-	std::ifstream ifs("./resources/Dialogs/Dialog1.json");
+	std::ifstream ifs("../resources/Dialogs/Dialog1.json");
 	if (!ifs.good()) LOG_ERROR("Can't open json file!");
 	LOG_INFO("Opening dialog json file!");
 
@@ -379,7 +379,7 @@ void SerializationManager::SaveDialogs()
 
 	scene.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
-	std::ofstream ofs("./resources/Scene/SceneJ.json");
+	std::ofstream ofs("../resources/Scene/SceneJ.json");
 	ofs << jsonf;
 	if (!ofs.good())
 	{
