@@ -1,7 +1,6 @@
 #include "ECSManager.h"
 
 std::shared_ptr<LifespanManager> lifespanManager{ nullptr };
-std::shared_ptr<BenchmarkManager> benchmarkManager{ nullptr };
 std::shared_ptr<TransformManager> transformManager{ nullptr };
 std::shared_ptr<SpriteManager> spriteManager{ nullptr };
 std::shared_ptr<RenderManager> renderManager{ nullptr };
@@ -54,24 +53,14 @@ void ECSManager::RegisterRenderManager() {
 	ECS::SetSystemSignature<RenderManager>(signature);
 }
 
-void ECSManager::RegisterBenchmarkManager() {
-	Signature signature;
+void ECSManager::RegisterPlayerManager() {
+	Signature signature{};
 	signature.set(ECS::GetComponentType<General>());
-	signature.set(ECS::GetComponentType<Benchmark>());
-	signature.set(ECS::GetComponentType<Lifespan>());
+	signature.set(ECS::GetComponentType<PlayerTmp>());
 
-	benchmarkManager = ECS::RegisterSystem<BenchmarkManager>();
-	ECS::SetSystemSignature<BenchmarkManager>(signature);
+	playerManager = ECS::RegisterSystem<PlayerManager>();
+	ECS::SetSystemSignature<PlayerManager>(signature);
 }
-
-//void ECSManager::RegisterPlayerManager() {
-//	Signature signature{};
-//	signature.set(ECS::GetComponentType<General>());
-//	signature.set(ECS::GetComponentType<PlayerTmp>());
-//
-//	playerManager = ECS::RegisterSystem<PlayerManager>();
-//	ECS::SetSystemSignature<PlayerManager>(signature);
-//}
 
 void ECSManager::RegisterPhysics2DManager() {
 	Signature signature{};
@@ -147,7 +136,6 @@ void ECSManager::RegisterSheetAnimator() {
 void ECSManager::RegisterAllSystems() {
 	RegisterLifespanManager();
 	RegisterTransformManager();
-	RegisterBenchmarkManager();
 	RegisterSpriteManager();
 	RegisterRenderManager();
 	RegisterAnimator();
@@ -166,7 +154,6 @@ void ECSManager::RegisterAllSystems() {
 void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<General>();
 	ECS::RegisterComponent<Lifespan>();
-	ECS::RegisterComponent<Benchmark>();
 	ECS::RegisterComponent<Transform>();
 	ECS::RegisterComponent<Sprite>();
 	ECS::RegisterComponent<Animation>();

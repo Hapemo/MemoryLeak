@@ -188,7 +188,6 @@
   <ItemGroup>
     <ClCompile Include="source\AI.cpp" />
     <ClCompile Include="source\AudioManger.cpp" />
-    <ClCompile Include="source\BenchmarkManager.cpp" />
     <ClCompile Include="source\ColliderTransformManager.cpp" />
     <ClCompile Include="source\DialogManager.cpp" />
     <ClCompile Include="source\ECS\ECSManager.cpp" />

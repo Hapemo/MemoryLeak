@@ -20,7 +20,6 @@
 #include "DialogManager.h"
 
 extern std::shared_ptr<LifespanManager> lifespanManager;
-extern std::shared_ptr<BenchmarkManager> benchmarkManager;
 extern std::shared_ptr<TransformManager> transformManager;
 extern std::shared_ptr<SpriteManager> spriteManager;
 extern std::shared_ptr<RenderManager> renderManager;

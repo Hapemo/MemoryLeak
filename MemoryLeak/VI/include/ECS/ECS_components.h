@@ -50,10 +50,6 @@ struct SheetAnimation
 	float timeToFrameSwap = 0.f;
 };
 
-struct Benchmark {
-	float latestSpeed;
-};
-
 struct Physics2D {
 	float mass,
 		  speed,
