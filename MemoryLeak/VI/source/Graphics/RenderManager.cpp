@@ -205,41 +205,46 @@ void RenderManager::RenderDebug()
 			Transform t = e.GetComponent<Transform>();
 			t.scale = { 0, 0 };
 			t.rotation = 0;
-			t.translation += e.GetComponent<Point2DCollider>().centerOffset;
+			t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x, 
+				e.GetComponent<Point2DCollider>().centerOffset.y);
 			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
 		}
 
 		if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
-			t.scale *= Math::Vec2(e.GetComponent<Edge2DCollider>().scaleOffset);
+			t.scale *= e.GetComponent<Edge2DCollider>().scaleOffset;
 			t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
-			t.translation += e.GetComponent<Edge2DCollider>().p0Offset;
+			t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
+				e.GetComponent<Edge2DCollider>().p0Offset.y);
 			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
 		}
 
 		if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
-			t.scale *= e.GetComponent<RectCollider>().scaleOffset;
+			t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;
+			t.scale.y *= e.GetComponent<RectCollider>().scaleOffset.y;
 			t.rotation = 0;
-			t.translation += e.GetComponent<RectCollider>().centerOffset;
+			t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
+				e.GetComponent<RectCollider>().centerOffset.y);
 			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
 		}
 
 		if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
-			t.scale = glm::vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
+			t.scale = Math::Vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
 			t.rotation = 0;
-			t.translation += e.GetComponent<CircleCollider>().centerOffset;
+			t.translation += Math::Vec2(e.GetComponent<CircleCollider>().centerOffset.x,
+				e.GetComponent<CircleCollider>().centerOffset.y);
 			CreateDebugCircle(t, e.GetComponent<Sprite>().color);
 		}
 
 		if (e.HasComponent<Physics2D>() && e.GetComponent<Physics2D>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
-			t.scale = glm::vec2(e.GetComponent<Physics2D>().speed) * mVectorLengthModifier;
+			t.scale = Math::Vec2(e.GetComponent<Physics2D>().speed) * mVectorLengthModifier;
 			t.rotation = e.GetComponent<Physics2D>().moveDirection;
 			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
 		}
@@ -368,7 +373,7 @@ Indices array for new indices to be pushed to.
 *******************************************************************************/
 void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
 {
-	glm::mat3x3 mtx = GetTransform(_e);
+	Math::Mat3 mtx = GetTransform(_e);
 	glm::vec4 clr = GetColor(_e);
 	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 	float texID = _e.GetComponent<Sprite>().texture;
@@ -386,25 +391,25 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	}
 
 	Vertex v0, v1, v2, v3;
-	v0.position = mtx * glm::vec3(-1.f, 1.f, 1.f);
+	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
 	v0.position.z = layer;
 	v0.color = clr;
 	v0.texCoords = glm::vec2(texMin, 1.f);
 	v0.texID = texID;
 
-	v1.position = mtx * glm::vec3(-1.f, -1.f, 1.f);
+	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
 	v1.position.z = layer;
 	v1.color = clr;
 	v1.texCoords = glm::vec2(texMin, 0.f);
 	v1.texID = texID;
 
-	v2.position = mtx * glm::vec3(1.f, 1.f, 1.f);
+	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
 	v2.position.z = layer;
 	v2.color = clr;
 	v2.texCoords = glm::vec2(texMax, 1.f);
 	v2.texID = texID;
 
-	v3.position = mtx * glm::vec3(1.f, -1.f, 1.f);
+	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
 	v3.position.z = layer;
 	v3.color = clr;
 	v3.texCoords = glm::vec2(texMax, 0.f);
@@ -433,13 +438,13 @@ The entity containing Transform and Sprite component.
 *******************************************************************************/
 void RenderManager::CreateCircle(const Entity& _e)
 {
-	glm::mat3x3 mtx = GetTransform(_e);
+	Math::Mat3 mtx = GetTransform(_e);
 	glm::vec4 clr = GetColor(_e);
 	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255.f) / 255.f;
 
 	float theta = 2.f / CIRCLE_SLICES * 3.14159265f;
 	Vertex v0;
-	v0.position = mtx * glm::vec3(0.f, 0.f, 1.f);
+	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
 	v0.position.z = layer;
 	v0.color = clr;
 	v0.texID = 0.f;
@@ -448,7 +453,7 @@ void RenderManager::CreateCircle(const Entity& _e)
 	for (int i = 1; i < CIRCLE_SLICES + 2; ++i)
 	{
 		Vertex v;
-		v.position = mtx * glm::vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f);
+		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
 		v.position.z = layer;
 		v.color = clr;
 		v.texID = 0.f;
@@ -492,11 +497,11 @@ The color component.
 void RenderManager::CreateDebugPoint(const Transform& _t, const Color& _c)
 {
 	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
-	glm::mat3x3 mtx = GetTransform({ 0, 0 }, 0, _t.translation);
+	Math::Mat3 mtx = GetTransform({ 0, 0 }, 0, _t.translation);
 
 	Vertex v0;
 	v0.color = clr;
-	v0.position = mtx * glm::vec3(0, 0, 1.f);
+	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
 	v0.texID = 0.f;
 	v0.position.z = 1;
 
@@ -530,16 +535,16 @@ The color component.
 void RenderManager::CreateDebugLine(const Transform& _t, const Color& _c)
 {
 	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
-	glm::mat3x3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
+	Math::Mat3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
 
 	Vertex v0, v1;
 	v0.color = clr;
-	v0.position = mtx * glm::vec3(0.f, 0.f, 1.f);
+	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
 	v0.position.z = 1;
 	v0.texID = 0.f;
 
 	v1.color = clr;
-	v1.position = mtx * glm::vec3(1.f, 0.f, 1.f);
+	v1.position = (mtx * Math::Vec3(1.f, 0.f, 1.f)).ToGLM();
 	v1.position.z = 1;
 	v1.texID = 0.f;
 
@@ -577,25 +582,25 @@ The color component.
 *******************************************************************************/
 void RenderManager::CreateDebugSquare(const Transform& _t, const Color& _c)
 {
-	glm::mat3x3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
+	Math::Mat3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
 	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
 	Vertex v0, v1, v2, v3;
-	v0.position = mtx * glm::vec3(-1.f, 1.f, 1.f);
+	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
 	v0.position.z = 1;
 	v0.color = clr;
 	v0.texID = 0.f;
 
-	v1.position = mtx * glm::vec3(-1.f, -1.f, 1.f);
+	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
 	v1.position.z = 1;
 	v1.color = clr;
 	v1.texID = 0.f;
 
-	v2.position = mtx * glm::vec3(1.f, 1.f, 1.f);
+	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
 	v2.position.z = 1;
 	v2.color = clr;
 	v2.texID = 0.f;
 
-	v3.position = mtx * glm::vec3(1.f, -1.f, 1.f);
+	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
 	v3.position.z = 1;
 	v3.color = clr;
 	v3.texID = 0.f;
@@ -642,7 +647,7 @@ The color component.
 *******************************************************************************/
 void RenderManager::CreateDebugCircle(const Transform& _t, const Color& _c)
 {
-	glm::mat3x3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
+	Math::Mat3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
 	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
 
 	float theta = 2.f / CIRCLE_SLICES * 3.14159265f;
@@ -650,7 +655,7 @@ void RenderManager::CreateDebugCircle(const Transform& _t, const Color& _c)
 	for (int i = 1; i < CIRCLE_SLICES + 2; ++i)
 	{
 		Vertex v;
-		v.position = mtx * glm::vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f);
+		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
 		v.position.z = 1;
 		v.color = clr;
 		v.texID = 0.f;
@@ -771,7 +776,7 @@ The entity containing Transform and Sprite component.
 \return
 The Transformation matrix.
 *******************************************************************************/
-glm::mat3x3 RenderManager::GetTransform(const Entity& _e)
+Math::Mat3 RenderManager::GetTransform(const Entity& _e)
 {
 	return GetTransform(_e.GetComponent<Transform>().scale, _e.GetComponent<Transform>().rotation,
 		_e.GetComponent<Transform>().translation);
@@ -794,16 +799,16 @@ The translatetion for the transformation
 \return
 The Transformation matrix.
 *******************************************************************************/
-glm::mat3x3 RenderManager::GetTransform(const glm::vec2& _scale, float _rotate, const glm::vec2& _translate)
+Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, const Math::Vec2& _translate)
 {
 	float cosRot = cosf(_rotate);
 	float sinRot = sinf(_rotate);
 
-	glm::mat3x3 temp =
+	Math::Mat3 temp
 	{
-		glm::vec3(_scale.x * cosRot, _scale.x * sinRot, 0.f),
-		glm::vec3(-_scale.y * sinRot, _scale.y * cosRot, 0.f),
-		glm::vec3(_translate.x, _translate.y, 1.f)
+		Math::Vec3(_scale.x * cosRot, -_scale.y * sinRot, _translate.x),
+		Math::Vec3(_scale.x * sinRot, _scale.y * cosRot, _translate.y),
+		Math::Vec3(0.f, 0.f, 1.f)
 	};
 
 	temp[0][0] /= (float)*mWindowWidth;

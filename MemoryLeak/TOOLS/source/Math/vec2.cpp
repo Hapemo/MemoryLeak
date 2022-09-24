@@ -62,6 +62,11 @@ namespace Math {
     return x * x + y * y;
   }
 
+  glm::vec2 Vec2::ToGLM() const
+  {
+      return glm::vec2(this->x, this->y);
+  }
+
   Vec2 operator+(const Vec2& lhs, const Vec2& rhs) {
     Vec2 temp = lhs;
     return temp += rhs;

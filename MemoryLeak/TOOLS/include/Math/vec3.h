@@ -1,5 +1,6 @@
 #pragma once
-#include <iostream>
+#include "../../include/pch.h"
+#include <glm/glm.hpp>
 
 namespace Math {
   struct Vec2;
@@ -32,6 +33,7 @@ namespace Math {
     Vec3 Normalized() const;
     float Magnitude() const;
     float SqMagnitude() const;
+    glm::vec3 ToGLM() const;
     ~Vec3();
     /*
     Vec3(glm::vec3);
