@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file SpriteManager.h
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 20-09-2022
+\brief
+This file contains function declarations for the class SpriteManager, which
+operates on Entities with Sprite Component.
+*******************************************************************************/
 #pragma once
 #include "ECS_components.h"
 #include <ECS_systems.h>
@@ -6,27 +16,44 @@
 #include "SpriteVariable.h"
 #include "ResourceManager.h"
 
-
+/*!*****************************************************************************
+\brief
+SpriteManager Class that handles the getting and setting of varibles in the
+Sprite Component.
+*******************************************************************************/
 class SpriteManager : public System
 {
 public:
+	/*!*****************************************************************************
+	\brief
+	Default Constructor for SpriteManager class.
+	*******************************************************************************/
 	SpriteManager();
 
-	Color	GetColor			(const Entity& e) { return e.GetComponent<Sprite>().color; }
-	void	SetColor			(const Entity& e, const Color& clr);
-	void	SetColor			(const Entity& e, GLubyte r, GLubyte g, GLubyte b, GLubyte a = 255);
+	/*!*****************************************************************************
+	\brief
+	Initializes and stores a texture in OpenGL memory.
 
-	SPRITE	GetSprite			(const Entity& e) { return e.GetComponent<Sprite>().sprite; }
-	void	SetSprite			(const Entity& e, SPRITE sprite);
+	\param ResourceManager::TextureData& texData
+	A struct encapsulating the details in a Texture object.
+	*******************************************************************************/
+	void	InitializeTexture	(ResourceManager::TextureData& _texData);
 
-	GLuint	GetTexture			(const Entity& e) { return e.GetComponent<Sprite>().texture; }
-	void	SetTexture			(const Entity& e, const std::string& texture_path);
+	//------------------------------------------------------------------------------
+	// Getter and Setters
+	//------------------------------------------------------------------------------
+	Color	GetColor			(const Entity& _e) { return _e.GetComponent<Sprite>().color; }
+	void	SetColor			(const Entity& _e, const Color& clr);
+	void	SetColor			(const Entity& _e, GLubyte _r, GLubyte _g, 
+									GLubyte _b, GLubyte _a = 255);
 
-	//GLuint	GetAspectRatio		(const Entity& e) { return e.GetComponent<Sprite>().texture; }
+	SPRITE	GetSprite			(const Entity& _e) { return _e.GetComponent<Sprite>().sprite; }
+	void	SetSprite			(const Entity& _e, SPRITE _sprite);
+
+	GLuint	GetTexture			(const Entity& _e) { return _e.GetComponent<Sprite>().texture; }
+	void	SetTexture			(const Entity& _e, const std::string& _texture_path);
 	
-	GLuint	GetTextureID		(const std::string& texture_path) { return GET_TEXTURE_ID(texture_path); }
-	std::string	GetTexturePath	(GLint id) { return GET_TEXTURE_PATH(id); }
-
-	void	InitializeTexture	(ResourceManager::TextureData& texData);
+	GLuint	GetTextureID		(const std::string& _texture_path) { return GET_TEXTURE_ID(_texture_path); }
+	std::string	GetTexturePath	(GLint _id) { return GET_TEXTURE_PATH(_id); }
 private:
 };

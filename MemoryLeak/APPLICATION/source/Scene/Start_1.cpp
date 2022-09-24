@@ -25,7 +25,21 @@ void Start_1::Init() {
     //e1.AddComponent<General>({ name1, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
   //int count{ 2500 };
   //while (count--) {
-
+    //Entity e{ ECS::CreateEntity() };
+    //mEntities.insert(e);
+    //e.AddComponent(Transform{ {150,150}, 0, {0,0} },
+    //    Sprite{ Color{0,255,0,255}, SPRITE::SQUARE, 0 , 18 });
+    //std::string name = "object " + std::to_string(1);
+    //e.AddComponent(Stuff());
+    //e.AddComponent<General>({ name, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
+    //
+    //Entity e1{ ECS::CreateEntity() };
+    //mEntities.insert(e1);
+    //e1.AddComponent(Transform{ {150,150}, 2, {300,0} },
+    //    Sprite{ Color{0,255,0,255}, SPRITE::SQUARE, 0 , 18 });
+    //std::string name1 = "object " + std::to_string(1);
+    //e1.AddComponent(Stuff());
+    //e1.AddComponent<General>({ name1, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
   //  //set one of the entities as texture!
   //}
   renderManager->SetVectorLengthModifier(5.f);
