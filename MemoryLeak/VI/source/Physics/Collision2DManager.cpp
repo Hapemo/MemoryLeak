@@ -356,7 +356,6 @@ bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData) {
 	// Find the relative velocity of both circles
 	Math::Vec2 relVel{ (_collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(Helper::dt)) -
 					   (_collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(Helper::dt)) };
-	return false;
 // Static
 	// If relVel is 0
 	if (relVel == Math::Vec2{ 0.f, 0.f }) {
