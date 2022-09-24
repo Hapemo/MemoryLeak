@@ -4,7 +4,7 @@ std::shared_ptr<LifespanManager> lifespanManager{ nullptr };
 std::shared_ptr<TransformManager> transformManager{ nullptr };
 std::shared_ptr<SpriteManager> spriteManager{ nullptr };
 std::shared_ptr<RenderManager> renderManager{ nullptr };
-std::shared_ptr<PlayerManager> playerManager{ nullptr };
+//std::shared_ptr<PlayerManager> playerManager{ nullptr };
 std::shared_ptr<Physics2DManager> physics2DManager{ nullptr };
 std::shared_ptr<Collision2DManager> collision2DManager{ nullptr };
 std::shared_ptr<LevelEditor> levelEditor{ nullptr };
@@ -140,7 +140,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterRenderManager();
 	RegisterAnimator();
 	RegisterSheetAnimator();
-	RegisterPlayerManager();
+	//RegisterPlayerManager();
 	RegisterPhysics2DManager();
 	RegisterCollision2DManager();
 	RegisterLevelEditor();
