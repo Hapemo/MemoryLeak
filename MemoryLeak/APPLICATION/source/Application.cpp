@@ -36,10 +36,6 @@ void Application::startup() {
 }
 
 void Application::SystemInit() {
-  for (size_t index = 0; index < GET_RESOURCES().size(); ++index) {
-    spriteManager->InitializeTexture(GET_TEXTURE(index));
-  }
-
   //@weijhin
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
   audioManager->AudioManager::AudioManager();
@@ -50,13 +46,7 @@ void Application::SystemInit() {
 void Application::init() {
   // Part 1
   startup();
-  /*
-  INIT_TEXTURES("Background");
-  INIT_TEXTURES("Icons");
-  INIT_TEXTURES("Menu");
-  INIT_TEXTURES("Sprites");
-  INIT_TEXTURES("Spritesheets");
-  */
+
   // Part 2
   Helper::print_specs();
   SystemInit();
