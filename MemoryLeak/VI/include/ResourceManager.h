@@ -8,6 +8,7 @@
 #define LOAD_ASSET(...) ResourceManager::GetInstance()->LoadTexture(__VA_ARGS__)
 #define UNLOAD_ASSET(...) ResourceManager::GetInstance()->UnloadTexture(__VA_ARGS__)
 #define GET_TEXTURE_ID(...) ResourceManager::GetInstance()->GetTextureID(__VA_ARGS__)
+#define GET_TEXTURE_IDs(...) ResourceManager::GetInstance()->GetTextureIDs(__VA_ARGS__)
 #define GET_TEXTURE_PATH(...) ResourceManager::GetInstance()->GetTexturePath(__VA_ARGS__)
 #define GET_TEXTURE_DATA(...) ResourceManager::GetInstance()->GetTextureData(__VA_ARGS__)
 #define GET_RESOURCES(...) ResourceManager::GetInstance()->GetResources(__VA_ARGS__)
@@ -51,5 +52,6 @@ public:
 
 	float	GetAspectRatio(const GLuint _id);
 	GLuint	GetTextureID(const std::string& _texture_path);
+	std::vector<GLuint>	GetTextureIDs(const std::string& _texture_path);
 	std::string	GetTexturePath(GLint _id);
 };
