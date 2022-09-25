@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file ECS_components.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+This file contains all the structs of components used in ECS
+*******************************************************************************/
 #pragma once
 #include <glm/glm.hpp>
 #include "vec2.h"
@@ -113,17 +122,4 @@ struct Text {
 	int nextTextID;
 	GLuint texture = 0; //for dialog box
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
