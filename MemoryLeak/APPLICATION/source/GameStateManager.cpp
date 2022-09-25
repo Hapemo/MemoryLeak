@@ -72,6 +72,15 @@ void GameStateManager::Init() {
 	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
 	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
 	GS_List.insert(GS_pair(E_GS::GameState3, new GameState3));
+
+	INIT_TEXTURES("Background");
+	INIT_TEXTURES("Icons");
+	INIT_TEXTURES("Menu");
+	INIT_TEXTURES("Sprites");
+	INIT_TEXTURES("Spritesheets");
+
+	for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
+		spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 }
 
 
