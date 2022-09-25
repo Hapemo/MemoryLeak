@@ -45,7 +45,7 @@ void Application::startup() {
 
 void Application::SystemInit() {
   for (size_t index = 0; index < GET_RESOURCES().size(); ++index) {
-    spriteManager->InitializeTexture(GET_TEXTURE(index));
+    spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
   }
 
   //@weijhin

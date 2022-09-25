@@ -32,7 +32,7 @@ public:
     template <typename T, typename ...Args>
     void CustomLog(const std::source_location _logData, const std::string _customLogLevel, const T _logMessage, const Args... _logMessages)
     {
-        size_t customType = -1;
+        size_t customType = 0;
         size_t index = 0;
         for (std::string type : mLogNames) {
             if (type == _customLogLevel)
@@ -40,7 +40,7 @@ public:
             ++index;
         }
 
-        if (customType != -1) {
+        if (customType > 0) {
             if constexpr (sizeof...(_logMessages) > 0)
                 return Log(_logData, customType, _logMessages...);
             else
@@ -61,7 +61,7 @@ public:
         mLoggerStr.push_back(std::make_pair((E_LOGLEVEL)_logType, ("[" + Util::CurrentDateTime() + "]\t" + _logMessage).c_str()));
 
         // printing log into terminal
-        printf("[%s]\t%s\t%s\n", (Util::CurrentDateTime()).c_str(), (Logger::mLogTypesVec[_logType].title).c_str(), _logMessage);
+        //printf("[%s]\t%s\t%s\n", (Util::CurrentDateTime()).c_str(), (Logger::mLogTypesVec[_logType].title).c_str(), _logMessage);
 
         // human readable log file
         mLogInfile << "[" << Util::CurrentDateTime() << "]\t" << std::left << std::setw(15) << Logger::mLogTypesVec[_logType].title << _logMessage;
