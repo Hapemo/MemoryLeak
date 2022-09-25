@@ -54,6 +54,10 @@ void GameStateManager::Update() {
 		mCurrGameState->Draw();
 		END_TRACK("Graphics");
 
+		TRACK_PERFORMANCE("Audio");
+		audioManager->UpdateSound();
+		END_TRACK("Audio");
+
 		Application::SecondUpdate(); // This should always be the last
 		END_TRACK("MainLoop");
 	}

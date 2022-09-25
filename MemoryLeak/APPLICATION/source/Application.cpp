@@ -35,7 +35,6 @@ void Application::startup() {
 }
 
 void Application::SystemInit() {
-  //@weijhin
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
   audioManager->AudioManager::AudioManager();
   renderManager->Init(&window_width, &window_height);
@@ -93,7 +92,6 @@ void Application::SecondUpdate() {
 }
 
 void Application::exit() {
-    //@weijhin
     levelEditor->Exit();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();
