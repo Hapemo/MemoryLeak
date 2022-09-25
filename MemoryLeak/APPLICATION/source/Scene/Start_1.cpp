@@ -18,25 +18,39 @@ void Start_1::Init() {
 
 
   serializationManager->LoadScene();
-  //Entity e{ ECS::CreateEntity() };
-  //mEntities.insert(e);
-  //e.AddComponent(Transform{ {150,150}, 0, {0,0} },
-  //               Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 , 18});
-  //std::string name = "object " + std::to_string(1);
-  //e.AddComponent(Stuff());
-  //e.AddComponent<General>({ name, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
-  //Entity e1{ ECS::CreateEntity() };
-  //mEntities.insert(e1);
-  //e1.AddComponent(Transform{ {150,150}, 0, {0,100} },
-  //    Sprite{ Color{255,0,0,255}, SPRITE::CIRCLE, 0 , 17 });
-  //std::string name1 = "object " + std::to_string(2);
-  //e1.AddComponent(Stuff());
-  //e1.AddComponent<General>({ name1, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
-//int count{ 2500 };
-//while (count--) {
-
-//  //set one of the entities as texture!
-//}
+    //Entity e{ ECS::CreateEntity() };
+    //mEntities.insert(e);
+    //e.AddComponent(Transform{ {150,150}, 0, {0,0} },
+    //               Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 , 18});
+    //std::string name = "object " + std::to_string(1);
+    //e.AddComponent(Stuff());
+    //e.AddComponent<General>({ name, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
+    //Entity e1{ ECS::CreateEntity() };
+    //mEntities.insert(e1);
+    //e1.AddComponent(Transform{ {150,150}, 0, {0,100} },
+    //    Sprite{ Color{255,0,0,255}, SPRITE::CIRCLE, 0 , 17 });
+    //std::string name1 = "object " + std::to_string(2);
+    //e1.AddComponent(Stuff());
+    //e1.AddComponent<General>({ name1, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
+  //int count{ 2500 };
+  //while (count--) {
+    //Entity e{ ECS::CreateEntity() };
+    //mEntities.insert(e);
+    //e.AddComponent(Transform{ {150,150}, 0, {0,0} },
+    //    Sprite{ Color{0,255,0,255}, SPRITE::SQUARE, 0 , 18 });
+    //std::string name = "object " + std::to_string(1);
+    //e.AddComponent(Stuff());
+    //e.AddComponent<General>({ name, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
+    //
+    //Entity e1{ ECS::CreateEntity() };
+    //mEntities.insert(e1);
+    //e1.AddComponent(Transform{ {150,150}, 2, {300,0} },
+    //    Sprite{ Color{0,255,0,255}, SPRITE::SQUARE, 0 , 18 });
+    //std::string name1 = "object " + std::to_string(1);
+    //e1.AddComponent(Stuff());
+    //e1.AddComponent<General>({ name1, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
+  //  //set one of the entities as texture!
+  //}
   renderManager->SetVectorLengthModifier(5.f);
   renderManager->SetDebug(true);
 
@@ -183,10 +197,10 @@ void Start_1::Reset() {
 }
 
 void Start_1::Clear() {
-  for (auto& e : mEntities)
-    e.Destroy();
-
-  //levelEditor->exit();
+    physics2DManager->PhyObjListClear();
+    for (auto& e : mEntities)
+        e.Destroy();
+    //levelEditor->exit();
 }
 
 void Start_1::ControlEntityLifespan(std::set<Entity> entities, KEY key) {

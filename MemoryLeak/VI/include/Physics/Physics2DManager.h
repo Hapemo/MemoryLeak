@@ -20,21 +20,21 @@
 // -----------------------------
 class Physics2DManager : public System {
 public:
-	// -----------------------------
-	// System functions
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		Update function that simulates physics by stepping it in fixedDT when enough
-		time has passed
+// -----------------------------
+// System functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	Update function that simulates physics by stepping it in fixedDT when enough
+	time has passed
 
-		\param int const double &
-		A reference to a read-only variable that tells us the application's current
-		delta time
+	\param int const double &
+	A reference to a read-only variable that tells us the application's current
+	delta time
 
-		\return void
-		NULL
-		*******************************************************************************/
+	\return void
+	NULL
+	*******************************************************************************/
 	void Update(const double& _appDT);
 
 	/*!*****************************************************************************
@@ -295,7 +295,7 @@ public:
 	\return glm::vec
 	A copy of the value of the entity's net forces
 	*******************************************************************************/
-	glm::vec2 GetForces(const Entity& _e);
+	Math::Vec2 GetForces(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
@@ -305,13 +305,13 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to set
 
-	\param const glm::vec2 &
+	\param const Math::Vec2 &
 	A reference to a read-only value containing net force to set to
 
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetForces(const Entity& _e, const glm::vec2& _forces);
+	void SetForces(const Entity& _e, const Math::Vec2& _forces);
 
 	/*!*****************************************************************************
 	\brief
@@ -321,13 +321,13 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to set
 
-	\param const glm::vec2 &
+	\param const Math::Vec2 &
 	A reference to a read-only value containing force to add
 
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddForces(const Entity& _e, const glm::vec2& _forces);
+	void AddForces(const Entity& _e, const Math::Vec2& _forces);
 
 	/*!*****************************************************************************
 	\brief
@@ -336,10 +336,10 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to
 
-	\return glm::vec2
+	\return Math::Vec2
 	A copy of the value of the entity's velocity
 	*******************************************************************************/
-	glm::vec2 GetVelocity(const Entity& _e);
+	Math::Vec2 GetVelocity(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
@@ -349,13 +349,13 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to set
 
-	\param const glm::vec2 &
+	\param const Math::Vec2 &
 	A reference to a read-only value containing velocity to set to
 
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetVelocity(const Entity& _e, const glm::vec2& _velocity);
+	void SetVelocity(const Entity& _e, const Math::Vec2& _velocity);
 
 	/*!*****************************************************************************
 	\brief
@@ -365,13 +365,13 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to set
 
-	\param const glm::vec2 &
+	\param const Math::Vec2 &
 	A reference to a read-only value containing velocity to add
 
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddVelocity(const Entity& _e, const glm::vec2& _velocity);
+	void AddVelocity(const Entity& _e, const Math::Vec2& _velocity);
 
 	/*!*****************************************************************************
 	\brief
