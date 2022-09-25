@@ -401,7 +401,7 @@ template<typename T>
 T& Entity::GetComponent() const { return Coordinator::GetInstance()->GetComponent<T>(id); }
 
 template<typename T>
-void Entity::RemoveComponent() { return Coordinator::GetInstance()->RemoveComponent<T>(id); }
+void Entity::RemoveComponent() const { return Coordinator::GetInstance()->RemoveComponent<T>(id); }
 
 template<typename T>
 bool Entity::HasComponent() const { return Coordinator::GetInstance()->HasComponent<T>(id); }
