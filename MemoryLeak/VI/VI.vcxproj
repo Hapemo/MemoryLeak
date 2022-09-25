@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -182,7 +182,6 @@
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Serialization.h" />
     <ClInclude Include="include\SignalHandler.h" />
-    <ClInclude Include="include\StartupException.h" />
     <ClInclude Include="include\Start_1.h" />
     <ClInclude Include="include\Start_background.h" />
     <ClInclude Include="include\TagVariable.h" />

@@ -60,6 +60,7 @@ void GameState1::Free() {
 	
     for (auto& e : mEntities)
         e.Destroy();
+    mEntities.clear();
 }
 
 void GameState1::Unload() {
