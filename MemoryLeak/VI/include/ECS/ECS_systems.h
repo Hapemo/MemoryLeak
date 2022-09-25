@@ -34,7 +34,7 @@ public:
 	\param float
 	- New amount of lifespan Entities should have. By default 0 so it won't reset
 	*******************************************************************************/
-	void Reset(std::set<Entity> entities, float newLimit = 0);
+	void Reset(std::set<Entity>, float = 0);
 
 private:
 	// Nothing for now 

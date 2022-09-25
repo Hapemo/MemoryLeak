@@ -39,24 +39,24 @@ EntityID EntityManager::CreateEntity() {
 	return id;
 }
 
-void EntityManager::DestroyEntity(EntityID entity) {
-	assert(entity < MAX_ENTITIES && "EntityID out of range.");
+void EntityManager::DestroyEntity(EntityID _entity) {
+	assert(_entity < MAX_ENTITIES && "EntityID out of range.");
 
-	mSignatures[entity].reset();
-	mAvailableEntities.push_back(entity);
+	mSignatures[_entity].reset();
+	mAvailableEntities.push_back(_entity);
 	--mLivingEntityCount;
 }
 
-void EntityManager::SetSignature(EntityID entity, Signature signature) {
-	assert(entity < MAX_ENTITIES && "EntityID out of range.");
+void EntityManager::SetSignature(EntityID _entity, Signature _signature) {
+	assert(_entity < MAX_ENTITIES && "EntityID out of range.");
 
-	mSignatures[entity] = signature;
+	mSignatures[_entity] = _signature;
 }
 
-Signature EntityManager::GetSignature(EntityID entity) {
-	assert(entity < MAX_ENTITIES && "EntityID out of range.");
+Signature EntityManager::GetSignature(EntityID _entity) {
+	assert(_entity < MAX_ENTITIES && "EntityID out of range.");
 
-	return mSignatures[entity];
+	return mSignatures[_entity];
 } 
 
 
@@ -66,11 +66,11 @@ Signature EntityManager::GetSignature(EntityID entity) {
 ComponentArrayManager::ComponentArrayManager() : 
 	mComponentTypes(), mComponentArrays(), mNextComponentType() {}
 
-void ComponentArrayManager::EntityDestroyed(EntityID entity) {
+void ComponentArrayManager::EntityDestroyed(EntityID _entity) {
 	for (auto const& [name, component] : mComponentArrays) {
-		if (!component->HasEntity(entity)) continue;
+		if (!component->HasEntity(_entity)) continue;
 
-		component->RemoveData(entity);
+		component->RemoveData(_entity);
 	}
 }
 
@@ -81,18 +81,18 @@ void ComponentArrayManager::EntityDestroyed(EntityID entity) {
 SystemManager::SystemManager() :
 	mSignatures(), mSystems() {}
 
-void SystemManager::EntityDestroyed(EntityID entity) {
+void SystemManager::EntityDestroyed(EntityID _entity) {
 	for (auto const& [name, system] : mSystems)
-		system->mEntities.erase(Entity{ entity });
+		system->mEntities.erase(Entity{ _entity });
 }
 
-void SystemManager::EntitySignatureChanged(EntityID entity, Signature entitySignature) {
+void SystemManager::EntitySignatureChanged(EntityID _entity, Signature _entitySignature) {
 	for (auto const& [name, system] : mSystems) {
 		Signature systemSignature{ mSignatures[name] };
 
-		if ((entitySignature & systemSignature) == systemSignature)
-			system->mEntities.insert(Entity{ entity });
-		else system->mEntities.erase(Entity{ entity });
+		if ((_entitySignature & systemSignature) == systemSignature)
+			system->mEntities.insert(Entity{ _entity });
+		else system->mEntities.erase(Entity{ _entity });
 	}
 }
 
@@ -108,10 +108,10 @@ Coordinator::Coordinator() {
 
 EntityID Coordinator::CreateEntity() { return mEntityManager->CreateEntity(); }
 
-void Coordinator::DestroyEntity(EntityID entity) {
-	mEntityManager->DestroyEntity(entity);
-	mComponentArrayManager->EntityDestroyed(entity);
-	mSystemManager->EntityDestroyed(entity);
+void Coordinator::DestroyEntity(EntityID _entity) {
+	mEntityManager->DestroyEntity(_entity);
+	mComponentArrayManager->EntityDestroyed(_entity);
+	mSystemManager->EntityDestroyed(_entity);
 }
 
 void Coordinator::DestroyAllEntities() {
@@ -120,11 +120,11 @@ void Coordinator::DestroyAllEntities() {
 			DestroyEntity(entity);
 }
 
-void Coordinator::DestroySomeEntites(const std::vector<EntityID>& dontDestroy) {
+void Coordinator::DestroySomeEntites(const std::vector<EntityID>& _dontDestroy) {
 	for (EntityID entity = 0; entity < MAX_ENTITIES; ++entity) {
 		if (mEntityManager->GetSignature(entity) != 0)
 			// Skip those in dontDestroy
-			if (std::find(dontDestroy.begin(), dontDestroy.end(), entity) == dontDestroy.end())
+			if (std::find(_dontDestroy.begin(), _dontDestroy.end(), entity) == _dontDestroy.end())
 				DestroyEntity(entity);
 	}
 }

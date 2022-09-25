@@ -42,7 +42,7 @@ public:
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	void DestroyEntity(EntityID entity);
+	void DestroyEntity(EntityID);
 
 	/*!*****************************************************************************
 	Assign an signature to an entity
@@ -53,7 +53,7 @@ public:
 	\param Signature
 	- Signature of an entity
 	*******************************************************************************/
-	void SetSignature(EntityID entity, Signature signature);
+	void SetSignature(EntityID, Signature);
 
 	/*!*****************************************************************************
 	Access the signature of an entity
@@ -61,7 +61,7 @@ public:
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	Signature GetSignature(EntityID entity);
+	Signature GetSignature(EntityID);
 
 private:
 	// A container of unused entity ids
@@ -120,8 +120,8 @@ public:
 	- Component data to add to entity
 	*******************************************************************************/
 	template<typename T>
-	void AddComponent(EntityID entity, T component) {
-		GetComponentArray<T>()->InsertData(entity, component);
+	void AddComponent(EntityID _entity, T _component) {
+		GetComponentArray<T>()->InsertData(_entity, _component);
 	}
 
 	/*!*****************************************************************************
@@ -131,8 +131,8 @@ public:
 	- ID of an entity
 	*******************************************************************************/
 	template<typename T>
-	void RemoveComponent(EntityID entity) {
-		GetComponentArray<T>()->RemoveData(entity);
+	void RemoveComponent(EntityID _entity) {
+		GetComponentArray<T>()->RemoveData(_entity);
 	}
 	
 	/*!*****************************************************************************
@@ -142,8 +142,8 @@ public:
 	- ID of an entity
 	*******************************************************************************/
 	template<typename T>
-	T& GetComponent(EntityID entity) {
-		return GetComponentArray<T>()->GetData(entity);
+	T& GetComponent(EntityID _entity) {
+		return GetComponentArray<T>()->GetData(_entity);
 	}
 	
 	/*!*****************************************************************************
@@ -152,7 +152,7 @@ public:
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	void EntityDestroyed(EntityID entity);
+	void EntityDestroyed(EntityID);
 
 private:
 	// Map of component name to ComponentType
@@ -206,12 +206,12 @@ public:
 	- Signature of system
 	*******************************************************************************/
 	template<typename T>
-	void SetSignature(Signature signature) {
+	void SetSignature(Signature _signature) {
 		std::string typeName{ typeid(T).name() };
 
 		assert(mSystems.find(typeName) != mSystems.end() && "Attempted to set signature to non-existance System.");
 
-		mSignatures.insert({ typeName, signature });
+		mSignatures.insert({ typeName, _signature });
 	}
 
 	/*!*****************************************************************************
@@ -220,7 +220,7 @@ public:
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	void EntityDestroyed(EntityID entity);
+	void EntityDestroyed(EntityID);
  
 	/*!*****************************************************************************
 	Notify all systems that an entity's signature has changed.
@@ -232,7 +232,7 @@ public:
 	\param Signature
 	- New signature of entity
 	*******************************************************************************/
-	void EntitySignatureChanged(EntityID entity, Signature entitySignature);
+	void EntitySignatureChanged(EntityID, Signature);
 
 private:
 	// Map system's name to their unique signature
@@ -269,7 +269,7 @@ public:
 	\param EntityID
 	- ID of entity
 	*******************************************************************************/
-	void DestroyEntity(EntityID entity);
+	void DestroyEntity(EntityID);
 
 	// From Component Manager
 	/*!*****************************************************************************
@@ -288,13 +288,13 @@ public:
 	- Component data to add into entity
 	*******************************************************************************/
 	template<typename T>
-	void AddComponent(EntityID entity, T component) {
-		mComponentArrayManager->AddComponent<T>(entity, component);
+	void AddComponent(EntityID _entity, T _component) {
+		mComponentArrayManager->AddComponent<T>(_entity, _component);
 
-		Signature signature = mEntityManager->GetSignature(entity);
+		Signature signature = mEntityManager->GetSignature(_entity);
 		signature.set(mComponentArrayManager->GetComponentType<T>(), true);
-		mEntityManager->SetSignature(entity, signature);
-		mSystemManager->EntitySignatureChanged(entity, signature);
+		mEntityManager->SetSignature(_entity, signature);
+		mSystemManager->EntitySignatureChanged(_entity, signature);
 	};
 
 	/*!*****************************************************************************
@@ -304,12 +304,12 @@ public:
 	- ID of an Entity
 	*******************************************************************************/
 	template<typename T>
-	void RemoveComponent(EntityID entity) {
-		mComponentArrayManager->RemoveComponent<T>(entity);
-		Signature signature = mEntityManager->GetSignature(entity);
+	void RemoveComponent(EntityID _entity) {
+		mComponentArrayManager->RemoveComponent<T>(_entity);
+		Signature signature = mEntityManager->GetSignature(_entity);
 		signature.set(mComponentArrayManager->GetComponentType<T>(), false);
-		mEntityManager->SetSignature(entity, signature);
-		mSystemManager->EntitySignatureChanged(entity, signature);
+		mEntityManager->SetSignature(_entity, signature);
+		mSystemManager->EntitySignatureChanged(_entity, signature);
 	}
 
 	/*!*****************************************************************************
@@ -322,7 +322,7 @@ public:
 	- Component data of an entity
 	*******************************************************************************/
 	template<typename T>
-	T& GetComponent(EntityID entity) { return mComponentArrayManager->GetComponent<T>(entity); }
+	T& GetComponent(EntityID _entity) { return mComponentArrayManager->GetComponent<T>(_entity); }
 
 	/*!*****************************************************************************
 	Get the component type of a component
@@ -340,8 +340,8 @@ public:
 	- ID of an entity
 	*******************************************************************************/
 	template<typename T>
-	bool HasComponent(EntityID entity) {
-		return mEntityManager->GetSignature(entity)[mComponentArrayManager->GetComponentType<T>()];
+	bool HasComponent(EntityID _entity) {
+		return mEntityManager->GetSignature(_entity)[mComponentArrayManager->GetComponentType<T>()];
 	}
 
 	// From System Manager
@@ -361,7 +361,7 @@ public:
 	- Signature to assign to system
 	*******************************************************************************/
 	template<typename T>
-	void SetSystemSignature(const Signature& signature) { return mSystemManager->SetSignature<T>(signature); }
+	void SetSystemSignature(const Signature& _signature) { return mSystemManager->SetSignature<T>(_signature); }
 
 	// Extra
 	/*!*****************************************************************************
@@ -375,7 +375,7 @@ public:
 	/param const std::vector<EntityID>&
 	- A bunch of entities to be blacklisted from being deleted
 	*******************************************************************************/
-	void DestroySomeEntites(const std::vector<EntityID>& dontDestroy);
+	void DestroySomeEntites(const std::vector<EntityID>&);
 
 private:
 	std::unique_ptr<EntityManager> mEntityManager;
