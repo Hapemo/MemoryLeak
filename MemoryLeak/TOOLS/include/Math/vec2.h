@@ -25,6 +25,7 @@ namespace Math {
     Vec2& operator-=(const Vec2& rhs);
     Vec2& operator*=(float rhs);
     Vec2& operator/=(float rhs);
+    bool  operator==(const Vec2& rhs);
     Vec2& operator=(const Vec2& rhs);
     Vec2 operator-() const;
     Vec2& Normalize();

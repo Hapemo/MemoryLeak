@@ -63,38 +63,33 @@ struct Physics2D {
 	float mass,
 		  speed,
 		  moveDirection;
-	glm::vec2 forces,
-			  velocity;
+	Math::Vec2 forces,
+			   velocity;
 	bool renderFlag = false;
 };
 
 struct RectCollider {
-	glm::vec2 centerOffset,
-		scaleOffset;
-	//Math::Vec2 centerOffset,
-		//	   scaleOffset;
+	Math::Vec2 centerOffset,
+			   scaleOffset;
 	// float rotationOffset;
 	bool renderFlag = false;
 };
 
 struct CircleCollider {
-	glm::vec2 centerOffset;
-	//Math::Vec2 centerOffset;
+	Math::Vec2 centerOffset;
 	float scaleOffset;
 	bool renderFlag = false;
 };
 
 struct Edge2DCollider {
-	glm::vec2 p0Offset;
-	//Math::Vec2 p0Offset;
+	Math::Vec2 p0Offset;
 	float rotationOffset,
 		  scaleOffset;
 	bool renderFlag;
 };
 
 struct Point2DCollider {
-	glm::vec2 centerOffset;
-	//Math::Vec2 centerOffset;
+	Math::Vec2 centerOffset;
 	bool renderFlag;
 };
 
