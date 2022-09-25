@@ -39,10 +39,17 @@ void GameState3::Draw() {
 }
 
 void GameState3::Free() {
+    physics2DManager->PhyObjListClear();
 
+    for (auto& e : mEntities)
+        e.Destroy();
+    mEntities.clear();
 }
 
 void GameState3::Unload() {
+    //renderManager->Clear();
+    //spriteManager->FreeTextures();
+    //FREE_RESOURCES();
    // levelEditor->Exit();
     //renderManager->RenderToScreen();
 }
