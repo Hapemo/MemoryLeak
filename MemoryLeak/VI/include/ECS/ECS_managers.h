@@ -18,7 +18,7 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 #include "ECS_items.h"
 
 //-------------------------------------------------------------------------
-// EntityID Manager
+// Entity Manager
 // Manages the creation and destruction of entities, incharge of 
 // distributing entities on request.
 // Manages the system each entities can use.
@@ -29,26 +29,12 @@ public:
 	Default constructor of EntityManager. Initialises all entity IDs and reserve the
 	0th entity to be null.
 	*******************************************************************************/
-	EntityManager() :
-		mAvailableEntities(), mSignatures(), mLivingEntityCount()
-	{
-		mAvailableEntities.resize(MAX_ENTITIES);
-		for (size_t i = 0; i < MAX_ENTITIES; ++i)
-			mAvailableEntities[i] = static_cast<std::uint32_t>(i);
-
-		CreateEntity(); // EntityID 0 shall be reserved for null
-	}
+	EntityManager();
 
 	/*!*****************************************************************************
 	Creates and returns an entity.
 	*******************************************************************************/
-	EntityID CreateEntity() {
-		assert(mLivingEntityCount < MAX_ENTITIES && "Too many instances of entities.");
-		EntityID id = mAvailableEntities.front();
-		mAvailableEntities.pop_front();
-		++mLivingEntityCount;
-		return id;
-	}
+	EntityID CreateEntity();
 
 	/*!*****************************************************************************
 	Frees an entity id for future usage
@@ -56,13 +42,7 @@ public:
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	void DestroyEntity(EntityID entity) {
-		assert(entity < MAX_ENTITIES && "EntityID out of range.");
-
-		mSignatures[entity].reset();
-		mAvailableEntities.push_back(entity);
-		--mLivingEntityCount;
-	}
+	void DestroyEntity(EntityID entity);
 
 	/*!*****************************************************************************
 	Assign an signature to an entity
@@ -73,11 +53,7 @@ public:
 	\param Signature
 	- Signature of an entity
 	*******************************************************************************/
-	void SetSignature(EntityID entity, Signature signature) {
-		assert(entity < MAX_ENTITIES && "EntityID out of range.");
-
-		mSignatures[entity] = signature;
-	}
+	void SetSignature(EntityID entity, Signature signature);
 
 	/*!*****************************************************************************
 	Access the signature of an entity
@@ -85,11 +61,7 @@ public:
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	Signature GetSignature(EntityID entity) {
-		assert(entity < MAX_ENTITIES && "EntityID out of range.");
-
-		return mSignatures[entity];
-	}
+	Signature GetSignature(EntityID entity);
 
 private:
 	// A container of unused entity ids
@@ -110,9 +82,7 @@ private:
 //-------------------------------------------------------------------------
 class ComponentArrayManager {
 public:
-	ComponentArrayManager() :
-		mComponentTypes(), mComponentArrays(), mNextComponentType()
-	{}
+	ComponentArrayManager();
 
 	/*!*****************************************************************************
 	Initialise and register a new component
@@ -182,13 +152,7 @@ public:
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	void EntityDestroyed(EntityID entity) {
-		for (auto const& [name, component] : mComponentArrays) {
-			if (!component->HasEntity(entity)) continue;
-			
-			component->RemoveData(entity);
-		}
-	}
+	void EntityDestroyed(EntityID entity);
 
 private:
 	// Map of component name to ComponentType
@@ -216,9 +180,7 @@ private:
 //-------------------------------------------------------------------------
 class SystemManager {
 public:
-	SystemManager() :
-		mSignatures(), mSystems()
-	{}
+	SystemManager();
 
 	/*!*****************************************************************************
 	Initialises system and register it into SystemManager
@@ -258,10 +220,7 @@ public:
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	void EntityDestroyed(EntityID entity) {
-		for (auto const&[name, system] : mSystems)
-			system->mEntities.erase(Entity{ entity });
-	}
+	void EntityDestroyed(EntityID entity);
  
 	/*!*****************************************************************************
 	Notify all systems that an entity's signature has changed.
@@ -273,22 +232,13 @@ public:
 	\param Signature
 	- New signature of entity
 	*******************************************************************************/
-	void EntitySignatureChanged(EntityID entity, Signature entitySignature) {
-		for (auto const& [name, system] : mSystems) {
-			Signature systemSignature{ mSignatures[name] };
-
-			if ((entitySignature & systemSignature) == systemSignature)
-				system->mEntities.insert(Entity{ entity });
-			else system->mEntities.erase(Entity{ entity });
-		}
-	}
+	void EntitySignatureChanged(EntityID entity, Signature entitySignature);
 
 private:
 	// Map system's name to their unique signature
 	std::unordered_map<std::string, Signature> mSignatures;
 	// Map system's name to a pointer to the system itself
 	std::unordered_map<std::string, std::shared_ptr<System>> mSystems;
-
 };
 
 
@@ -302,11 +252,7 @@ public:
 	/*!*****************************************************************************
 	Initialise EntityManager, ComponentArrayManager and SystemManager.
 	*******************************************************************************/
-	Coordinator() {
-		mEntityManager = std::make_unique<EntityManager>();
-		mComponentArrayManager = std::make_unique<ComponentArrayManager>();
-		mSystemManager = std::make_unique<SystemManager>();
-	}
+	Coordinator();
 
 	// From EntityID Manager
 	/*!*****************************************************************************
@@ -315,7 +261,7 @@ public:
 	\param EntityID
 	- ID of newly created entity
 	*******************************************************************************/
-	EntityID CreateEntity() { return mEntityManager->CreateEntity(); }
+	EntityID CreateEntity();
 
 	/*!*****************************************************************************
 	Destroy entity from all ECS managers
@@ -323,11 +269,7 @@ public:
 	\param EntityID
 	- ID of entity
 	*******************************************************************************/
-	void DestroyEntity(EntityID entity) {
-		mEntityManager->DestroyEntity(entity);
-		mComponentArrayManager->EntityDestroyed(entity);
-		mSystemManager->EntityDestroyed(entity);
-	}
+	void DestroyEntity(EntityID entity);
 
 	// From Component Manager
 	/*!*****************************************************************************
@@ -425,25 +367,15 @@ public:
 	/*!*****************************************************************************
 	Destroy all entities in ECS
 	*******************************************************************************/
-	void DestroyAllEntities() {
-		for (EntityID entity = 0; entity < MAX_ENTITIES; ++entity)
-			if (mEntityManager->GetSignature(entity) != 0)
-				DestroyEntity(entity);
-	}
+	void DestroyAllEntities();
 
 	/*!*****************************************************************************
 	Destroy all entities except specified ones
 
-
+	/param const std::vector<EntityID>&
+	- A bunch of entities to be blacklisted from being deleted
 	*******************************************************************************/
-	void DestroySomeEntites(const std::vector<EntityID>& dontDestroy) {
-		for (EntityID entity = 0; entity < MAX_ENTITIES; ++entity) {
-			if (mEntityManager->GetSignature(entity) != 0)
-				// Skip those in dontDestroy
-				if (std::find(dontDestroy.begin(), dontDestroy.end(), entity) == dontDestroy.end())
-					DestroyEntity(entity);
-		}
-	}
+	void DestroySomeEntites(const std::vector<EntityID>& dontDestroy);
 
 private:
 	std::unique_ptr<EntityManager> mEntityManager;
@@ -454,6 +386,7 @@ private:
 //-------------------------------------------------------------------------
 // EntityID
 // EntityID and it's functions
+// Declarations are in Entity struct
 //-------------------------------------------------------------------------
 
 template<typename T, typename ...args>

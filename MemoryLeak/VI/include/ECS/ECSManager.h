@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file ECSManager.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+This file contains the initialisation of ECS system. Registering all systems and
+components.
+*******************************************************************************/
 #pragma once
 #include "pch.h"
 #include "ECS_tools.h"
@@ -19,6 +29,9 @@
 #include "Serialization.h"
 #include "DialogManager.h"
 
+//-------------------------------------------------------------------
+// System pointers with declaration from ECSManager.cpp
+//-------------------------------------------------------------------
 extern std::shared_ptr<LifespanManager> lifespanManager;
 extern std::shared_ptr<TransformManager> transformManager;
 extern std::shared_ptr<SpriteManager> spriteManager;
@@ -35,6 +48,11 @@ extern std::shared_ptr<DialogManager> dialogManager;
 
 class ECSManager {
 private:
+
+	//-------------------------------------------------------------------
+	// All these functions are to register the system with correct 
+	// components and signatures
+	//-------------------------------------------------------------------
 	static void RegisterLifespanManager();
 	static void RegisterBenchmarkManager();
 	static void RegisterTransformManager();
@@ -42,7 +60,6 @@ private:
 	static void RegisterRenderManager();
 	static void RegisterAnimator();
 	static void RegisterSheetAnimator();
-	//static void RegisterPlayerManager();
 	static void RegisterPhysics2DManager();
 	static void RegisterCollision2DManager();
 	static void RegisterLevelEditor();
@@ -51,19 +68,21 @@ private:
 	static void RegisterDialogManager();
 	
 	// More to come
-	
+
+	/*!*****************************************************************************
+	Register the all systems to ECS
+	*******************************************************************************/
 	static void RegisterAllSystems();
+
+	/*!*****************************************************************************
+	Register the all components to ECS
+	*******************************************************************************/
 	static void RegisterAllComponents();
 public:
+
+	/*!*****************************************************************************
+	Initialise ECS with all systems and components. Should be called once before 
+	the ECS system.
+	*******************************************************************************/
 	static void ECS_init();
 };
-
-
-
-
-
-
-
-
-
-
