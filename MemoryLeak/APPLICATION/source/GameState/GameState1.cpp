@@ -69,6 +69,7 @@ void GameState1::Free() {
 }
 
 void GameState1::Unload() {
+    FREE_RESOURCES();
     spriteManager->FreeTextures();
 }
 

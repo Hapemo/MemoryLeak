@@ -93,7 +93,7 @@ std::string	ResourceManager::GetTexturePath(GLint _id) {
 	return "";
 }
 
-std::vector<GLuint>	ResourceManager::GetTextureIDS() {
+std::vector<GLuint>	ResourceManager::GetTextureIDs() {
 	std::vector<GLuint> result;
 	for (size_t index = 0; index < mResources.size(); ++index)
 		result.push_back(mResources[index].texture.id);
@@ -108,4 +108,8 @@ float ResourceManager::GetAspectRatio(const GLuint _id) {
 	for (size_t index = 0; index < mResources.size(); ++index)
 		if (mResources[index].texture.id == _id) return (float)(mResources[index].texture.height / mResources[index].texture.width);
 	return 0.0f;
+}
+
+void ResourceManager::FreeResources() {
+	mResources.clear();
 }
