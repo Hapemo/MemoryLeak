@@ -12,7 +12,6 @@ start up of window and game system, also runs their update functions.
 //#include "Windows.h"
 #include "Helper.h"
 #include "Input.h"
-#include "StartupException.h"
 #include "GameStateManager.h"
 #include "ECSManager.h"
 #include "LevelEditor.h"
@@ -28,19 +27,12 @@ float Application::target_fps = 0;
 bool Application::editorMode = false;
 
 void Application::startup() {
-  
-  try {
-    loadConfig("../config.txt");
-    glfwStartUp();
-    Input::init(ptr_window);
-    glewStartUp();
-    GameStateManager::GetInstance()->Init();
-    ECSManager::ECS_init();
-  }
-  catch (StartUpException error) {
-    std::cout << "Unable to create OpenGL context\n" << error.what() << '\n';
-    std::exit(EXIT_FAILURE);
-  }
+  loadConfig("../config.txt");
+  glfwStartUp();
+  Input::init(ptr_window);
+  glewStartUp();
+  GameStateManager::GetInstance()->Init();
+  ECSManager::ECS_init();
 }
 
 void Application::SystemInit() {
@@ -130,7 +122,7 @@ void Application::loadConfig(std::string path) {
   // Opening file
   std::fstream file;
   file.open(path, std::ios_base::in);
-  if (!file.is_open()) throw StartUpException("File " + path + " not found.");
+  ASSERT(file.is_open(), "File " + path + " not found.\n");
   
   std::map<std::string, std::string> config = Util::TextFileToMap(file);
 
@@ -142,8 +134,7 @@ void Application::loadConfig(std::string path) {
 #ifdef _DEBUG
     std::cout << key << " | " << value << '\n';
 #endif
-    
-    if (value.length() <= 0) throw StartUpException("Config error: " + key + " not found!");
+    ASSERT(value.length() > 0, "Config error: " + key + " not found!\n");
 
     if (key == "window_width") window_width = stoi(value);
     else if (key == "window_height") window_height = stoi(value);
@@ -171,8 +162,8 @@ void Application::PrintTitleBar(double _s) {
 
 void Application::glfwStartUp() {
   // Part 1
-  if (!glfwInit()) throw StartUpException("GLFW init has failed - abort program!!!");
-
+  ASSERT(glfwInit(), "GLFW init has failed - abort program!!!\n");
+  
   const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
   if (!window_width) window_width = mode->width;
@@ -193,9 +184,10 @@ void Application::glfwStartUp() {
   glfwWindowHint(GLFW_RESIZABLE, GL_FALSE); // window dimensions are static
 
   ptr_window = glfwCreateWindow(window_width, window_height, title.c_str(), NULL, NULL);
+
   if (!ptr_window) {
     glfwTerminate();
-    throw StartUpException("GLFW unable to create OpenGL context - abort program");
+    ASSERT(ptr_window, "GLFW unable to create OpenGL context - abort program");
   }
 
   glfwMakeContextCurrent(ptr_window);
@@ -207,16 +199,10 @@ void Application::glfwStartUp() {
 void Application::glewStartUp() {
   // Part 2: Initialize entry points to OpenGL functions and extensions
   GLenum err = glewInit();
-  if (GLEW_OK != err) {
-    std::stringstream string;
-    string << "Unable to initialize GLEW - error " << glewGetErrorString(err) << " abort program";
-    throw StartUpException(string.str());
-  }
-  /*if (GLEW_VERSION_4_5) {
-    std::cout << "Using glew version: " << glewGetString(GLEW_VERSION) << std::endl;
-    std::cout << "Driver supports OpenGL 4.5\n" << std::endl;
-  }
-  else throw StartUpException("Driver doesn't support OpenGL 4.5 - abort program");*/
+
+  std::stringstream string;
+  string << "Unable to initialize GLEW - error " << glewGetErrorString(err) << " abort program\n";
+  ASSERT(!GLEW_OK, string.str());
 }
 
 void Application::error_cb(int error, char const* description) {
