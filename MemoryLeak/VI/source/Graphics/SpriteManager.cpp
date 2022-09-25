@@ -61,7 +61,8 @@ Free all textures in OpenGL memory.
 *******************************************************************************/
 void SpriteManager::FreeTextures()
 {
-	glDeleteTextures(GET_TEXTURE_IDS().size(), GET_TEXTURE_IDS().data());
+	for (GLuint* i : GET_TEXTURE_IDS())
+		glDeleteTextures(1, i);
 }
 
 //------------------------------------------------------------------------------

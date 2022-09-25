@@ -70,8 +70,8 @@ void GameState1::Free() {
 
 void GameState1::Unload() {
     renderManager->Clear();
-    FREE_RESOURCES();
     spriteManager->FreeTextures();
+    FREE_RESOURCES();
 }
 
 
