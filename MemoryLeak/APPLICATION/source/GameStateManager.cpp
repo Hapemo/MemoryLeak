@@ -14,6 +14,7 @@ running.
 #include "Helper.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
+#include "Graphics/RenderManager.h"
 #include "Graphics/SpriteManager.h"
 #include "Input.h"
 #include "Start.h"
@@ -63,8 +64,12 @@ void GameStateManager::Update() {
 
 	mCurrGameState->Free();
 
-	if (mNextGS != E_GS::RESTART) mCurrGameState->Unload();;
-
+	if (mNextGS != E_GS::RESTART) {
+		mCurrGameState->Unload();
+		renderManager->Clear();
+		glfwSwapBuffers(Application::getWindow());
+		renderManager->Clear();
+	}
 	mPrevGS = mCurrGS;
 	mCurrGS = mNextGS;
 }

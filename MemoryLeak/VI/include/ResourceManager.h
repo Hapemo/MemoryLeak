@@ -54,6 +54,6 @@ public:
 
 	float GetAspectRatio(const GLuint _id);
 	GLuint GetTextureID(const std::string& _texture_path);
-	std::vector<GLuint>	GetTextureIDs();
+	std::vector<GLuint*>	GetTextureIDs();
 	std::string	GetTexturePath(GLint _id);
 };
