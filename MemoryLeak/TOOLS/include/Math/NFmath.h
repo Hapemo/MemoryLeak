@@ -1,8 +1,19 @@
+/*!*****************************************************************************
+\file NFmath.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+This file is just a compiled header file for the math libraries
+*******************************************************************************/
 #pragma once
-// This file is just a compiled header file for the math libraries
 #include "mat3.h"
 #include "mat32.h"
 #include "vec2.h"
 #include "vec3.h"
 
-#define PI 3.141592653589793238
+namespace Math {
+	static const double PI{ 3.141592653589793238 };
+}
+

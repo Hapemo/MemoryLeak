@@ -3,49 +3,49 @@
 #include "vec3.h"
 
 namespace Math {
-  Vec2::Vec2(float x, float y) : x(x), y(y) {}
+  Vec2::Vec2(float _x, float _y) : x(_x), y(_y) {}
 
-  Vec2::Vec2(float i) : x(i), y(i) {}
+  Vec2::Vec2(float _i) : x(_i), y(_i) {}
 
-  Vec2::Vec2(const Vec2& v) : x(v.x), y(v.y) {}
+  Vec2::Vec2(const Vec2& _v) : x(_v.x), y(_v.y) {}
 
-  Vec2::Vec2(glm::vec2 v) : x(v.x), y(v.y) {}
+  Vec2::Vec2(glm::vec2 _v) : x(_v.x), y(_v.y) {}
 
-  Vec2::Vec2(const Vec3& v) : x(v.x), y(v.y) {}
+  Vec2::Vec2(const Vec3& _v) : x(_v.x), y(_v.y) {}
   
   Vec2::~Vec2() {} 
 
-  Vec2& Vec2::operator+=(const Vec2& rhs) {
-    x += rhs.x;
-    y += rhs.y;
+  Vec2& Vec2::operator+=(const Vec2& _rhs) {
+    x += _rhs.x;
+    y += _rhs.y;
     return *this;
   }
 
-  Vec2& Vec2::operator-=(const Vec2& rhs) {
-    x -= rhs.x;
-    y -= rhs.y;
+  Vec2& Vec2::operator-=(const Vec2& _rhs) {
+    x -= _rhs.x;
+    y -= _rhs.y;
     return *this;
   }
 
-  Vec2& Vec2::operator*=(float rhs) {
-    x *= rhs;
-    y *= rhs;
+  Vec2& Vec2::operator*=(float _rhs) {
+    x *= _rhs;
+    y *= _rhs;
     return *this;
   }
 
-  Vec2& Vec2::operator/=(float rhs) {
-    x /= rhs;
-    y /= rhs;
+  Vec2& Vec2::operator/=(float _rhs) {
+    x /= _rhs;
+    y /= _rhs;
     return *this;
   }
 
-  bool Vec2::operator==(const Vec2& rhs) {
-      return (this->x == rhs.x && this->y == rhs.y);
+  bool Vec2::operator==(const Vec2& _rhs) {
+      return (this->x == _rhs.x && this->y == _rhs.y);
   }
 
-  Vec2& Vec2::operator=(const Vec2& rhs) {
-    x = rhs.x;
-    y = rhs.y;
+  Vec2& Vec2::operator=(const Vec2& _rhs) {
+    x = _rhs.x;
+    y = _rhs.y;
     return *this;
   }
 
@@ -74,44 +74,44 @@ namespace Math {
       return glm::vec2(this->x, this->y);
   }
 
-  Vec2 operator+(const Vec2& lhs, const Vec2& rhs) {
-    Vec2 temp = lhs;
-    return temp += rhs;
+  Vec2 operator+(const Vec2& _lhs, const Vec2& _rhs) {
+    Vec2 temp = _lhs;
+    return temp += _rhs;
   }
 
-  Vec2 operator-(const Vec2& lhs, const Vec2& rhs) {
-    Vec2 temp = lhs;
-    return temp -= rhs;
+  Vec2 operator-(const Vec2& _lhs, const Vec2& _rhs) {
+    Vec2 temp = _lhs;
+    return temp -= _rhs;
   }
 
-  Vec2 operator*(const Vec2& lhs, float rhs) {
-    Vec2 temp = lhs;
-    return temp *= rhs;
+  Vec2 operator*(const Vec2& _lhs, float _rhs) {
+    Vec2 temp = _lhs;
+    return temp *= _rhs;
   }
 
-  Vec2 operator*(float lhs, const Vec2& rhs) {
-    return operator*(rhs, lhs);
+  Vec2 operator*(float _lhs, const Vec2& _rhs) {
+    return operator*(_rhs, _lhs);
   }
 
-  Vec2 operator/(const Vec2& lhs, float rhs) {
-    Vec2 temp = lhs;
-    return temp /= rhs;
+  Vec2 operator/(const Vec2& _lhs, float _rhs) {
+    Vec2 temp = _lhs;
+    return temp /= _rhs;
   }
 
-  float Dot(const Vec2& lhs, const Vec2& rhs) {
-    return lhs.x * rhs.x + lhs.y * rhs.y;
+  float Dot(const Vec2& _lhs, const Vec2& _rhs) {
+    return _lhs.x * _rhs.x + _lhs.y * _rhs.y;
   }
 
-  float Distance(const Vec2& lhs, const Vec2& rhs) {
-    return (lhs - rhs).Magnitude();
+  float Distance(const Vec2& _lhs, const Vec2& _rhs) {
+    return (_lhs - _rhs).Magnitude();
   }
 
-  float SqDistance(const Vec2& lhs, const Vec2& rhs) {
-    return (lhs-rhs).SqMagnitude();
+  float SqDistance(const Vec2& _lhs, const Vec2& _rhs) {
+    return (_lhs-_rhs).SqMagnitude();
   }
 
-  std::ostream& operator<<(std::ostream& os, const Vec2& rhs) {
-    os << '(' << rhs.x << ", " << rhs.y << ')';
+  std::ostream& operator<<(std::ostream& os, const Vec2& _rhs) {
+    os << '(' << _rhs.x << ", " << _rhs.y << ')';
     return os;
   }
 
