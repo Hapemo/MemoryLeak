@@ -9,6 +9,7 @@ Game state for testing physics
 *******************************************************************************/
 #include "GameState2.h"
 #include "ECSManager.h"
+#include "Application.h"
 
 
 
@@ -20,12 +21,17 @@ void GameState2::Load() {
 
 void GameState2::Init() {
     int i = 2500;
+    int width = Application::getWindowWidth() / 2.f;
+    int height = Application::getWindowHeight() / 2.f;
     while (i--)
     {
+        float tempx = (-width + (std::rand() % (width + width + 1)));
+        float tempy = (-height + (std::rand() % (height + height + 1)));
         Entity e1{ ECS::CreateEntity() };
-        e1.AddComponent(Transform{ {64,64}, 0, {-100, 0} },
+        e1.AddComponent(Transform{ {64,64}, 0, {tempx,tempy}},
             Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
             General{ "count" + i, TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+        spriteManager->SetTexture(e1, "Textures\\Sprites\\jumppad1.png");
     }
 }
 
@@ -34,15 +40,17 @@ void GameState2::Update() {
 }
 
 void GameState2::Draw() {
-
+    renderManager->Render();
 }
 
 void GameState2::Free() {
-
+    ECS::DestroyAllEntities();
 }
 
 void GameState2::Unload() {
-
+    renderManager->Clear();
+    spriteManager->FreeTextures();
+    FREE_RESOURCES();
 }
 
 
