@@ -10,7 +10,6 @@ Game state for testing editor
 #pragma once
 #include "GameState.h"
 #include "ECSManager.h"
-
 class GameState3 : public GameState {
 public:
 	GameState3() = default;

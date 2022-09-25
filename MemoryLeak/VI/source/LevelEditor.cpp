@@ -13,52 +13,26 @@ Entities and its Components.
 #include "Graphics/SpriteManager.h"
 #include <AI.h>
 #include <Logger.h>
-
+#include <vec2.h>
 #include <filesystem>
 #define _USE_MATH_DEFINES
 #include <math.h>
+
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 
-const Entity* selectedEntity;
-int selectedEntityID = 0;
+
+//int selectedEntityID = 0;
 int SRT = 0;
-// Simple helper function to load an image into a OpenGL texture with common settings
-//bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height)
-//{
-//	 //Load from file
-//	int image_width = 0;
-//	int image_height = 0;
-//	unsigned char* image_data = stbi_load(filename, &image_width, &image_height, NULL, 4);
-//	if (image_data == NULL)
-//		return false;
-//
-//	// Create a OpenGL texture identifier
-//	GLuint image_texture;
-//	glGenTextures(1, &image_texture);
-//	glBindTexture(GL_TEXTURE_2D, image_texture);
-//
-//	// Setup filtering parameters for display
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); // This is required on WebGL for non power-of-two textures
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); // Same
-//
-//	// Upload pixels into texture
-//#if defined(GL_UNPACK_ROW_LENGTH) && !defined(__EMSCRIPTEN__)
-//	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
-//#endif
-//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image_width, image_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
-//	stbi_image_free(image_data);
-//
-//	*out_texture = image_texture;
-//	*out_width = image_width;
-//	*out_height = image_height;
-//
-//	return true;
-//	//return false;
-//}
+
+/*!*****************************************************************************
+\brief
+	Initializes the level editor
+
+\return
+None.
+*******************************************************************************/
 void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeight)
 {
 	IMGUI_CHECKVERSION();
@@ -67,8 +41,6 @@ void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeigh
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-
-	//(void)io;
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
@@ -77,7 +49,15 @@ void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeigh
 
 	//IM_ASSERT(ret);
 	//weatherAIinit();
+	selectedEntity = nullptr;
 }
+/*!*****************************************************************************
+\brief
+	Creates the level editor window
+
+\return
+None.
+*******************************************************************************/
 void LevelEditor::Window()
 {
 	ImGui_ImplOpenGL3_NewFrame();
@@ -85,22 +65,38 @@ void LevelEditor::Window()
 	ImGui::NewFrame();
 	//ImGui::ShowDemoWindow();
 }
+/*!*****************************************************************************
+\brief
+	Updates the Level editor
+
+\return
+None.
+*******************************************************************************/
 void LevelEditor::Update()
 {
 	//weatherAIupdate();
 	//ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 	//ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_AutoSelectNewTabs | ImGuiTabBarFlags_Reorderable;
 	static bool showdebug = true;
+	static char filenameS[30] = "Enter scene filename";
+	static char filenameO[30] = "Enter scene filename";
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
 		{
 			ImGui::MenuItem("(menu)", NULL, false, false);
-			if (ImGui::MenuItem("New")) {}
+			ImGui::InputText("o", filenameO, 30);
 			if (ImGui::MenuItem("Open", "Ctrl+O")) 
 			{
-				serializationManager->LoadScene();
+				serializationManager->LoadScene(filenameO);
 			}
+			ImGui::Separator();
+			ImGui::InputText("s", filenameS, 30);
+			if (ImGui::MenuItem("Save", "Ctrl+S"))
+			{
+				serializationManager->SaveScene(filenameS);
+			}
+			ImGui::Separator();
 			if (ImGui::MenuItem("Clear Scene"))
 			{
 				for (const Entity& e : mEntities)
@@ -109,12 +105,7 @@ void LevelEditor::Update()
 				}
 
 			}
-			if (ImGui::BeginMenu("Open Recent"))
-			{
-				ImGui::MenuItem("Scene1");
-				ImGui::MenuItem("Scene2");
-				ImGui::EndMenu();
-			}
+			ImGui::Separator();
 			if (ImGui::MenuItem("Load Dialogs"))
 			{
 				serializationManager->LoadDialogs();
@@ -123,21 +114,16 @@ void LevelEditor::Update()
 			{
 				dialogManager->PrintDialogs();
 			}
-			if (ImGui::MenuItem("Save", "Ctrl+S")) 
-			{
-				serializationManager->SaveScene();
-			}
-			if (ImGui::MenuItem("Save As..")) {}
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Edit"))
 		{
-			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-			if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
-			ImGui::Separator();
 			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
 			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
 			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+			ImGui::Separator();
+			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
+			if (ImGui::MenuItem("Redo", "CTRL+Y")) {}
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Options"))
@@ -154,6 +140,7 @@ void LevelEditor::Update()
 		}
 		ImGui::EndMainMenuBar();
 	}
+	
 	SceneManager();
 	EntityManager();
 	AssetManager();
@@ -174,6 +161,13 @@ void LevelEditor::Update()
 	}
 	
 }
+/*!*****************************************************************************
+\brief
+	Debig logger pannel
+
+\return
+None.
+*******************************************************************************/
 void LevelEditor::ShowDebugInfo()
 {
 	std::vector<std::pair<Logger::E_LOGLEVEL, std::string>> loggerStr = Logger::GetInstance()->GetLoggerStr();
@@ -239,6 +233,13 @@ void LevelEditor::ShowDebugInfo()
 	ImGui::EndTabBar();
 	ImGui::End();
 }
+/*!*****************************************************************************
+\brief
+	Scene manager pannel
+
+\return
+None.
+*******************************************************************************/
 void  LevelEditor::SceneManager()
 {
 	ImGui::Begin("Scene Manager");
@@ -267,7 +268,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Lifespan>())
@@ -276,7 +277,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Transform>())
@@ -285,7 +286,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Sprite>())
@@ -294,7 +295,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Animation>())
@@ -303,7 +304,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<SheetAnimation>())
@@ -312,7 +313,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Physics2D>())
@@ -321,7 +322,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<RectCollider>())
@@ -330,7 +331,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<CircleCollider>())
@@ -339,7 +340,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Edge2DCollider>())
@@ -348,7 +349,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Stuff>())
@@ -357,7 +358,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Audio>())
@@ -366,14 +367,12 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						ImGui::TreePop();
 
 					}
-					/*else
-						first[counter] = false;*/
 				}
 				ImGui::TreePop();
 				if (ImGui::BeginPopupContextWindow(0, 1, false))
@@ -415,6 +414,13 @@ void  LevelEditor::SceneManager()
 	ImGui::EndTabBar();
 	ImGui::End();
 }
+/*!*****************************************************************************
+\brief
+	Entity Manager pannel
+
+\return
+None.
+*******************************************************************************/
 void LevelEditor::EntityManager()
 {
 	float tmpVec2[2];
@@ -425,71 +431,80 @@ void LevelEditor::EntityManager()
 	ImGui::BeginTabBar("Edit Entities ");
 	if (ImGui::BeginTabItem("Edit Game: "))
 	{
-		if (selectedEntity != nullptr && selectedEntityID <= (int)mEntities.size())
+		if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
 		{
 			//++counter;
-			int counter = selectedEntityID;
+			//int counter = selectedEntityID;
 			const Entity& e = *selectedEntity;
 			//const char* lbl = e.GetComponent<General>().name.c_str();
 			//ImGui::Text(lbl);
 			if (e.HasComponent<General>())
 			{
-				ImGui::Text("General");
-				ImGui::Checkbox("isActive", &e.GetComponent<General>().isActive); //isactive
-				ImGui::InputText("Name", const_cast<char*>(e.GetComponent<General>().name.c_str()), 30);
-				int tagID = (int)e.GetComponent<General>().tag;
-				static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
-				ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
-				e.GetComponent<General>().tag = (TAG)tagID;
-				int subtagID = (int)e.GetComponent<General>().subtag;
-				static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
-				ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
-				e.GetComponent<General>().subtag = (SUBTAG)subtagID;
-
+				//if (ImGui::TreeNode("General")) {
+					ImGui::Text("General");
+						ImGui::Checkbox("isActive", &e.GetComponent<General>().isActive); //isactive
+						ImGui::InputText("Name", const_cast<char*>(e.GetComponent<General>().name.c_str()), 30);
+						int tagID = (int)e.GetComponent<General>().tag;
+						static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+						ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
+						e.GetComponent<General>().tag = (TAG)tagID;
+						int subtagID = (int)e.GetComponent<General>().subtag;
+						static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+						ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
+						e.GetComponent<General>().subtag = (SUBTAG)subtagID;
+					//ImGui::TreePop();
+				//}
 			}
 			if (e.HasComponent<Lifespan>())
 			{
-				ImGui::Text("Lifespan");
-				ImGui::InputFloat("Lifespan", &e.GetComponent<Lifespan>().limit);
+				if (ImGui::TreeNode("Lifespan")) {
+					//ImGui::Text("Lifespan");
+					ImGui::InputFloat("Lifespan", &e.GetComponent<Lifespan>().limit);
+					ImGui::TreePop();
+				}
 			}
 			if (e.HasComponent<Transform>())
 			{
-				ImGui::Text("Transform");
+				if (ImGui::TreeNode("Transform Gizmo")) {
+					//ImGui::Text("Transform Gizmo: ");
+					static bool s = 0,r = 0,t = 0;
+					ImGui::Checkbox("Scale", &s);
+					if (s) { SRT = 1; r = t = 0; }
+					ImGui::Checkbox("Rotate", &r);
+					if (r) { SRT = 2; s = t = 0; }
+					ImGui::Checkbox("translate", &t);
+					if (t) { SRT = 3; s = r = 0; }
+					if (!s && !r && !t) SRT = 0;
+					ImGui::TreePop();
+				}
 
+				if (ImGui::TreeNode("Transform")) {
+					//ImGui::Text("Transform Component");
+					tmpVec2[0] = transformManager->GetScale(e).x;
+					tmpVec2[1] = transformManager->GetScale(e).y;
+					ImGui::DragFloat2("Set Scale", tmpVec2);
+					Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
+					transformManager->SetScale(e, scale);
 
-				static bool s = 0,r = 0,t = 0;
-				ImGui::Checkbox("Scale", &s);
-				if (s) { SRT = 1; r = t = 0; }
-				ImGui::Checkbox("Rotate", &r);
-				if (r) { SRT = 2; s = t = 0; }
-				ImGui::Checkbox("translate", &t);
-				if (t) { SRT = 3; s = r = 0; }
-				if (!s && !r && !t) SRT = 0;
+					tmpVec2[0] = transformManager->GetTranslate(e).x;
+					tmpVec2[1] = transformManager->GetTranslate(e).y;
+					ImGui::DragFloat2("Set Position", tmpVec2);
+					Math::Vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
+					transformManager->SetTranslate(e, pos);
 
-				tmpVec2[0] = transformManager->GetScale(e).x;
-				tmpVec2[1] = transformManager->GetScale(e).y;
-				ImGui::DragFloat2("Set Scale", tmpVec2);
-				Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
-				transformManager->SetScale(e, scale);
-
-				tmpVec2[0] = transformManager->GetTranslate(e).x;
-				tmpVec2[1] = transformManager->GetTranslate(e).y;
-				ImGui::DragFloat2("Set Position", tmpVec2);
-				Math::Vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
-				transformManager->SetTranslate(e, pos);
-
-				tmpFloat = transformManager->GetRotation(e);
-				tmpFloat = (float)(tmpFloat / M_PI * 180.f);
-				ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
-				tmpFloat = (float)(tmpFloat * M_PI / 180.f);
-				transformManager->SetRotation(e, tmpFloat);
-
+					tmpFloat = transformManager->GetRotation(e);
+					tmpFloat = (float)(tmpFloat / M_PI * 180.f);
+					ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
+					tmpFloat = (float)(tmpFloat * M_PI / 180.f);
+					transformManager->SetRotation(e, tmpFloat);
+					ImGui::TreePop();
+				}
 				
 			}
 			if (e.HasComponent<Sprite>())
 			{
-				ImGui::Text("Sprite");
-				//float shipColor[4];
+				if (ImGui::TreeNode("Sprite")) {
+				//ImGui::Text("Sprite");
 				tmpVec4[0] = e.GetComponent<Sprite>().color.r /255.f;
 				tmpVec4[1] = e.GetComponent<Sprite>().color.g / 255.f;
 				tmpVec4[2] = e.GetComponent<Sprite>().color.b / 255.f;
@@ -530,11 +545,13 @@ void LevelEditor::EntityManager()
 					ImGui::EndDragDropTarget();
 				}
 				ImGui::InputInt("Layer", &e.GetComponent<Sprite>().layer);
-
+				ImGui::TreePop();
+				}
 			}
 			if (e.HasComponent<Animation>())
 			{
-				ImGui::Text("Animation");
+				if (ImGui::TreeNode("Animation")) {
+				//ImGui::Text("Animation");
 				static GLuint addImage = {};
 				static std::string  texadd =  "Add image";
 				for (size_t i = 0; i <= e.GetComponent<Animation>().images.size(); ++i)
@@ -574,18 +591,24 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage);
 				ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
 				ImGui::InputInt("currentImageIndex", &e.GetComponent<Animation>().currentImageIndex);
+				ImGui::TreePop();
+				}
 			}
 			if (e.HasComponent<SheetAnimation>())
 			{
-				ImGui::Text("SheetAnimation");
+				if (ImGui::TreeNode("SheetAnimation")) {
+				//ImGui::Text("SheetAnimation");
 				ImGui::InputInt("frameCount", (int*)&e.GetComponent<SheetAnimation>().frameCount);
 				ImGui::InputInt("currFrameIndex", (int*)&e.GetComponent<SheetAnimation>().currFrameIndex);
 				ImGui::InputFloat("timePerFrame", &e.GetComponent<SheetAnimation>().timePerFrame);
 				ImGui::InputFloat("timeToFrameSwap", &e.GetComponent<SheetAnimation>().timeToFrameSwap);
+				ImGui::TreePop();
+				}
 			}
 			if (e.HasComponent<RectCollider>())
 			{
-				ImGui::Text("RectCollider");
+				if (ImGui::TreeNode("RectCollider")) {
+				//ImGui::Text("RectCollider");
 				tmpVec2[0] = e.GetComponent<RectCollider>().centerOffset.x;
 				tmpVec2[1] = e.GetComponent<RectCollider>().centerOffset.y;
 				ImGui::InputFloat2("Box position Offset", tmpVec2);
@@ -597,10 +620,13 @@ void LevelEditor::EntityManager()
 				e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 				ImGui::Checkbox("Box RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
+				ImGui::TreePop();
+			}
 			}
 			if (e.HasComponent<CircleCollider>())
 			{
-				ImGui::Text("CircleCollider");
+				if (ImGui::TreeNode("CircleCollider")) {
+				//ImGui::Text("CircleCollider");
 				tmpVec2[0] = e.GetComponent<CircleCollider>().centerOffset.x;
 				tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
 				ImGui::InputFloat2("Circle position Offset", tmpVec2);
@@ -611,10 +637,13 @@ void LevelEditor::EntityManager()
 				e.GetComponent<CircleCollider>().scaleOffset = { scale };
 
 				ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
+				ImGui::TreePop();
+			}
 			}
 			if (e.HasComponent<Edge2DCollider>())
 			{
-				ImGui::Text("Edge2DCollider");
+				if (ImGui::TreeNode("Edge2DCollider")) {
+				//ImGui::Text("Edge2DCollider");
 				tmpVec2[0] = e.GetComponent<Edge2DCollider>().p0Offset.x;
 				tmpVec2[1] = e.GetComponent<Edge2DCollider>().p0Offset.y;
 				ImGui::InputFloat2("p0 Offset", tmpVec2);
@@ -623,33 +652,45 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset);
 				ImGui::InputFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset);
 				ImGui::Checkbox("RenderFlag", &e.GetComponent<Edge2DCollider>().renderFlag);
+				ImGui::TreePop();
+			}
 			}
 			if (e.HasComponent<Point2DCollider>())
 			{
-				ImGui::Text("Point2DCollider");
+				if (ImGui::TreeNode("Point2DCollider")) {
+				//ImGui::Text("Point2DCollider");
 				tmpVec2[0] = e.GetComponent<Point2DCollider>().centerOffset.x;
 				tmpVec2[1] = e.GetComponent<Point2DCollider>().centerOffset.y;
 				ImGui::InputFloat2("centerOffset", tmpVec2);
 				e.GetComponent<Point2DCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 				ImGui::Checkbox("RenderFlag", &e.GetComponent<Point2DCollider>().renderFlag);
+				ImGui::TreePop();
+			}
 			}
 			if (e.HasComponent<Physics2D>())
 			{
-				ImGui::Text("Physics2D");
+				if (ImGui::TreeNode("Physics2D")) {
+				//ImGui::Text("Physics2D");
 				ImGui::InputFloat("Mass", &e.GetComponent<Physics2D>().mass);
 				ImGui::InputFloat("Speed", &e.GetComponent<Physics2D>().speed);
 				ImGui::InputFloat("moveDirection", &e.GetComponent<Physics2D>().moveDirection);
 				ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
+				ImGui::TreePop();
+				}
 			}
 			if (e.HasComponent<Audio>())
 			{
-				ImGui::Text("Audio");
+				if (ImGui::TreeNode("Audio")) {
+				//ImGui::Text("Audio");
 				ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
 				ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
+				ImGui::TreePop();
+			}
 			}
 			if (e.HasComponent<Stuff>())
 			{
+				if (ImGui::TreeNode("Stuff")) {
 				ImGui::Text("Stuff");
 				/*static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
 				eid = "Select Color Change" + std::to_string(counter);
@@ -681,7 +722,8 @@ void LevelEditor::EntityManager()
 						e.GetComponent<Stuff>().range = range;
 					}
 				}*/
-
+				ImGui::TreePop();
+				}
 			}
 
 			static int componentsID;
@@ -721,7 +763,7 @@ void LevelEditor::EntityManager()
 				{
 					e.Destroy();
 					selectedEntity = nullptr;
-					selectedEntityID = 99;
+					//selectedEntityID = 99;
 				}
 				ImGui::EndPopup();
 			}
@@ -735,7 +777,13 @@ void LevelEditor::EntityManager()
 
 
 
+/*!*****************************************************************************
+\brief
+	Asset manager pannel
 
+\return
+None.
+*******************************************************************************/
 void  LevelEditor::AssetManager()
 {
 	GLuint my_image_texture = spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
@@ -797,11 +845,19 @@ void  LevelEditor::AssetManager()
 	ImGui::EndTabBar();
 	ImGui::End();
 }
+
+/*!*****************************************************************************
+\brief
+	Viewport manager pannel
+
+\return
+None.
+*******************************************************************************/
 void LevelEditor::ViewPortManager()
 {
 	ImGuiWindowFlags window_flags = 0;
 	window_flags |= ImGuiWindowFlags_NoBackground;
-	bool open_ptr = true;
+	//bool open_ptr = true;
 	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
 	ImGui::Begin("View Port Manager");
 	ImGui::SameLine(300.f, 0.f);
@@ -822,13 +878,13 @@ void LevelEditor::ViewPortManager()
 	{
 		viewportSize.y = viewportSize.x / 16 * 9;
 	}
-	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth()- viewportSize.x)*0.5, 60));
+	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth()- viewportSize.x)*0.5f, 60.f));
 	ImGui::Image((ImTextureID)frameBuffer, { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
 
-	if (selectedEntity != nullptr && selectedEntityID <= (int)mEntities.size())
+	if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
 	{
 		//++counter;
-		int counter = selectedEntityID;
+		//int counter = selectedEntityID;
 		const Entity& e = *selectedEntity;
 		//imguizmo
 		ImGuizmo::SetOrthographic(true);
@@ -896,7 +952,13 @@ void LevelEditor::ViewPortManager()
 
 
 
+/*!*****************************************************************************
+\brief
+	Shuts down Imgui, release all resources
 
+\return
+None.
+*******************************************************************************/
 void LevelEditor::Exit()
 {
 	ImGui_ImplOpenGL3_Shutdown();

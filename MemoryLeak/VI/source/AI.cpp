@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file AI.cpp
+\author Huang Wei Jhin
+\par DP email: h.weijhin@digipen.edu
+\par Group: Memory Leak Studios
+\date 20-09-2022
+\brief
+This file contains function definations for a AI system that modifies
+Entities and its Components.
+*******************************************************************************/
 #include "AI.h"
 #include <ECSManager.h>
 #define mapWidth 50
@@ -14,6 +24,13 @@ int sizeY[maxlocation]{};
 int initialDirectionX[maxlocation]{};
 int initialDirectionY[maxlocation]{};
 int currentWeather[maxlocation]{};
+/*!*****************************************************************************
+\brief
+	Initialized the weather AI with initial random values
+
+\return
+None.
+*******************************************************************************/
 void weatherAIinit()
 {
 	int numWeatherLoc = 3;//(std::rand() % 3)+1;
@@ -46,6 +63,13 @@ void weatherAIinit()
 	std::cout << "\n ";
 	std::cout << "\n ";
 }
+/*!*****************************************************************************
+\brief
+	Update the Weatehr AI
+
+\return
+None.
+*******************************************************************************/
 void weatherAIupdate()
 {
 	
@@ -110,6 +134,14 @@ void weatherAIupdate()
 		std::cout << "\n ";
 	}
 }
+
+/*!*****************************************************************************
+\brief
+	AI to change colours of entities
+
+\return
+None.
+*******************************************************************************/
 void updateAIAllColors(const Entity& e)
 {
 	static double time = 0.0;
@@ -119,11 +151,19 @@ void updateAIAllColors(const Entity& e)
 	float red = float((sin(time)		+ 1) / 2 );
 	float green = float((sin(time * 4) + 1) / 2 );
 	float blue = float((sin(time * 8) + 1) / 2 );
-	glm::vec3 clr = glm::vec3(red, green, blue);
+	Color clr{ red, green, blue , 255 };
+	e.GetComponent<Sprite>().color = clr;
 	//@weijhin
 	//colorManager->SetColor(e, clr);
 }
 
+/*!*****************************************************************************
+\brief
+	AI to chnage a traffic light entity colour
+
+\return
+None.
+*******************************************************************************/
 void updateAITrafficLight(const Entity& e)
 {
 	static double time = 0.0;
@@ -153,18 +193,26 @@ void updateAITrafficLight(const Entity& e)
 	{
 		red = 1.0f;
 	}
-	glm::vec3 clr = glm::vec3(red, green, blue);
+	Color clr{ red, green, blue , 255};
+	e.GetComponent<Sprite>().color = clr;
 	//@weijhin
 	//colorManager->SetColor(e, clr);
 }
 
+/*!*****************************************************************************
+\brief
+	AI to move an entity up and down
+
+\return
+None.
+*******************************************************************************/
 void updateAIUpDown(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
 	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
 	static int state = 1;
 	static float change = 0.0f;
-	glm::vec2 incrTranslation{};
+	Math::Vec2 incrTranslation{};
 	if (state)
 	{
 		incrTranslation.y = speed;
@@ -179,16 +227,25 @@ void updateAIUpDown(const Entity& e, float speed, float range)
 		state = 0;
 	else if (change < -range)
 		state = 1;
+	e.GetComponent<Transform>().translation += incrTranslation;
 	//@weijhin
 	//transformManager->IncrTranslate(e, incrTranslation);
 }
+
+/*!*****************************************************************************
+\brief
+	AI to move an entity left and right
+
+\return
+None.
+*******************************************************************************/
 void updateAILeftRight(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
 	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
 	static int state = 1;
 	static float change = 0.0f;
-	glm::vec2 incrTranslation{};
+	Math::Vec2 incrTranslation{};
 	if (state)
 	{
 		incrTranslation.x = speed;
@@ -203,20 +260,38 @@ void updateAILeftRight(const Entity& e, float speed, float range)
 		state = 0;
 	else if (change < -range)
 		state = 1;
+	e.GetComponent<Transform>().translation += incrTranslation;
 	//@weijhin
 	//transformManager->IncrTranslate(e, incrTranslation);
 }
+
+/*!*****************************************************************************
+\brief
+	AI to move an entity in circles
+
+\return
+None.
+*******************************************************************************/
 void updateAICircle(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
 	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
-	glm::vec2 incrTranslation{};
+	Math::Vec2 incrTranslation{};
 	incrTranslation.x = (float)(sin(time * speed) * speed);
 	incrTranslation.y = (float)(cos(time * speed) * speed);
+	e.GetComponent<Transform>().translation += incrTranslation;
 	//@weijhin
 	//transformManager->IncrTranslate(e, incrTranslation);
 
 }
+
+/*!*****************************************************************************
+\brief
+	AI to roatate an entity
+
+\return
+None.
+*******************************************************************************/
 void updateAISwing(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
@@ -238,6 +313,7 @@ void updateAISwing(const Entity& e, float speed, float range)
 		state = 0;
 	else if (change < -range)
 		state = 1;
+	e.GetComponent<Transform>().rotation += incrRotation;
 	//@weijhin
 	//transformManager->IncrRotation(e, incrRotation);
 }

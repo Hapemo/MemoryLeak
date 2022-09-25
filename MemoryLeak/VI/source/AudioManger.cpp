@@ -5,7 +5,7 @@
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function definations for a audio system 
+This file contains function definations for a audio system to play sound in the game
 *******************************************************************************/
 #include "AudioManager.h"
 
@@ -72,7 +72,7 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
 \return
 None.
 *******************************************************************************/
-void AudioManager::PlaySound(const Entity& _e, int _sound)
+void AudioManager::PlaySound(const Entity& _e, int _channel)
 {
     //for (int i = 0; i < e.GetComponent<Audio>().sound.size(); i++) 
     if (!_e.GetComponent<Audio>().sound.isPaused)
@@ -80,11 +80,12 @@ void AudioManager::PlaySound(const Entity& _e, int _sound)
         std::string snd = _e.GetComponent<Audio>().sound.path;
         //mSfxSound[snd]->setMode(2);
         bool f;
-        mChannel[_sound]->isPlaying(&f);
+        mChannel[_channel]->isPlaying(&f);
         if(!f)
         {
-            mChannel[_sound]->setVolume(_e.GetComponent<Audio>().sound.volume);
-            system->playSound(mSfxSound[snd], nullptr, false, &mChannel[_sound]);
+            LOG_INFO("Play Collision sound");
+            mChannel[_channel]->setVolume(_e.GetComponent<Audio>().sound.volume);
+            system->playSound(mSfxSound[snd], nullptr, false, &mChannel[_channel]);
         }
     }
 }
@@ -92,8 +93,9 @@ void AudioManager::UpdateSound()
 {
     for (const Entity& e : mEntities)
     {
-        if (e.GetComponent<Audio>().sound.toPlay)
+        if (e.GetComponent<Audio>().sound.toPlay==true)
         {
+            
             PlaySound(e, 1);
             if (!e.GetComponent<Audio>().sound.isLoop)
             {

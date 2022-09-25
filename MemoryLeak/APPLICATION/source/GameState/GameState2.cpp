@@ -20,7 +20,8 @@ void GameState2::Load() {
 }
 
 void GameState2::Init() {
-    int i = 3000;
+    //serializationManager->LoadScene("SceneJGraphics");
+    int i = 2500;
     int width = Application::getWindowWidth() / 2.f;
     int height = Application::getWindowHeight() / 2.f;
     while (i--)
