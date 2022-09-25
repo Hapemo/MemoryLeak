@@ -13,52 +13,18 @@ Entities and its Components.
 #include "Graphics/SpriteManager.h"
 #include <AI.h>
 #include <Logger.h>
-
+#include <vec2.h>
 #include <filesystem>
 #define _USE_MATH_DEFINES
 #include <math.h>
+
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 
-const Entity* selectedEntity;
-int selectedEntityID = 0;
+
+//int selectedEntityID = 0;
 int SRT = 0;
-// Simple helper function to load an image into a OpenGL texture with common settings
-//bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height)
-//{
-//	 //Load from file
-//	int image_width = 0;
-//	int image_height = 0;
-//	unsigned char* image_data = stbi_load(filename, &image_width, &image_height, NULL, 4);
-//	if (image_data == NULL)
-//		return false;
-//
-//	// Create a OpenGL texture identifier
-//	GLuint image_texture;
-//	glGenTextures(1, &image_texture);
-//	glBindTexture(GL_TEXTURE_2D, image_texture);
-//
-//	// Setup filtering parameters for display
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); // This is required on WebGL for non power-of-two textures
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); // Same
-//
-//	// Upload pixels into texture
-//#if defined(GL_UNPACK_ROW_LENGTH) && !defined(__EMSCRIPTEN__)
-//	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
-//#endif
-//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image_width, image_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
-//	stbi_image_free(image_data);
-//
-//	*out_texture = image_texture;
-//	*out_width = image_width;
-//	*out_height = image_height;
-//
-//	return true;
-//	//return false;
-//}
 void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeight)
 {
 	IMGUI_CHECKVERSION();
@@ -67,8 +33,6 @@ void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeigh
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-
-	//(void)io;
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
@@ -77,6 +41,7 @@ void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeigh
 
 	//IM_ASSERT(ret);
 	//weatherAIinit();
+	selectedEntity = nullptr;
 }
 void LevelEditor::Window()
 {
@@ -96,10 +61,13 @@ void LevelEditor::Update()
 		if (ImGui::BeginMenu("File"))
 		{
 			ImGui::MenuItem("(menu)", NULL, false, false);
-			if (ImGui::MenuItem("New")) {}
 			if (ImGui::MenuItem("Open", "Ctrl+O")) 
 			{
-				serializationManager->LoadScene();
+				serializationManager->LoadScene("SceneJ");
+			}
+			if (ImGui::MenuItem("Save", "Ctrl+S"))
+			{
+				serializationManager->SaveScene();
 			}
 			if (ImGui::MenuItem("Clear Scene"))
 			{
@@ -109,12 +77,6 @@ void LevelEditor::Update()
 				}
 
 			}
-			if (ImGui::BeginMenu("Open Recent"))
-			{
-				ImGui::MenuItem("Scene1");
-				ImGui::MenuItem("Scene2");
-				ImGui::EndMenu();
-			}
 			if (ImGui::MenuItem("Load Dialogs"))
 			{
 				serializationManager->LoadDialogs();
@@ -123,21 +85,16 @@ void LevelEditor::Update()
 			{
 				dialogManager->PrintDialogs();
 			}
-			if (ImGui::MenuItem("Save", "Ctrl+S")) 
-			{
-				serializationManager->SaveScene();
-			}
-			if (ImGui::MenuItem("Save As..")) {}
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Edit"))
 		{
-			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-			if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
-			ImGui::Separator();
 			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
 			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
 			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+			ImGui::Separator();
+			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
+			if (ImGui::MenuItem("Redo", "CTRL+Y")) {}
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Options"))
@@ -154,6 +111,7 @@ void LevelEditor::Update()
 		}
 		ImGui::EndMainMenuBar();
 	}
+	
 	SceneManager();
 	EntityManager();
 	AssetManager();
@@ -267,7 +225,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Lifespan>())
@@ -276,7 +234,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Transform>())
@@ -285,7 +243,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Sprite>())
@@ -294,7 +252,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Animation>())
@@ -303,7 +261,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<SheetAnimation>())
@@ -312,7 +270,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Physics2D>())
@@ -321,7 +279,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<RectCollider>())
@@ -330,7 +288,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<CircleCollider>())
@@ -339,7 +297,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Edge2DCollider>())
@@ -348,7 +306,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Stuff>())
@@ -357,7 +315,7 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Audio>())
@@ -366,14 +324,12 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								selectedEntityID = counter;
+								//selectedEntityID = counter;
 							}
 						}
 						ImGui::TreePop();
 
 					}
-					/*else
-						first[counter] = false;*/
 				}
 				ImGui::TreePop();
 				if (ImGui::BeginPopupContextWindow(0, 1, false))
@@ -425,10 +381,10 @@ void LevelEditor::EntityManager()
 	ImGui::BeginTabBar("Edit Entities ");
 	if (ImGui::BeginTabItem("Edit Game: "))
 	{
-		if (selectedEntity != nullptr && selectedEntityID <= (int)mEntities.size())
+		if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
 		{
 			//++counter;
-			int counter = selectedEntityID;
+			//int counter = selectedEntityID;
 			const Entity& e = *selectedEntity;
 			//const char* lbl = e.GetComponent<General>().name.c_str();
 			//ImGui::Text(lbl);
@@ -489,7 +445,6 @@ void LevelEditor::EntityManager()
 			if (e.HasComponent<Sprite>())
 			{
 				ImGui::Text("Sprite");
-				//float shipColor[4];
 				tmpVec4[0] = e.GetComponent<Sprite>().color.r /255.f;
 				tmpVec4[1] = e.GetComponent<Sprite>().color.g / 255.f;
 				tmpVec4[2] = e.GetComponent<Sprite>().color.b / 255.f;
@@ -721,7 +676,7 @@ void LevelEditor::EntityManager()
 				{
 					e.Destroy();
 					selectedEntity = nullptr;
-					selectedEntityID = 99;
+					//selectedEntityID = 99;
 				}
 				ImGui::EndPopup();
 			}
@@ -801,7 +756,7 @@ void LevelEditor::ViewPortManager()
 {
 	ImGuiWindowFlags window_flags = 0;
 	window_flags |= ImGuiWindowFlags_NoBackground;
-	bool open_ptr = true;
+	//bool open_ptr = true;
 	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
 	ImGui::Begin("View Port Manager");
 	ImGui::SameLine(300.f, 0.f);
@@ -822,13 +777,13 @@ void LevelEditor::ViewPortManager()
 	{
 		viewportSize.y = viewportSize.x / 16 * 9;
 	}
-	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth()- viewportSize.x)*0.5, 60));
+	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth()- viewportSize.x)*0.5f, 60.f));
 	ImGui::Image((ImTextureID)frameBuffer, { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
 
-	if (selectedEntity != nullptr && selectedEntityID <= (int)mEntities.size())
+	if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
 	{
 		//++counter;
-		int counter = selectedEntityID;
+		//int counter = selectedEntityID;
 		const Entity& e = *selectedEntity;
 		//imguizmo
 		ImGuizmo::SetOrthographic(true);

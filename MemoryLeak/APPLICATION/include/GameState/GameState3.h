@@ -9,7 +9,7 @@ Game state for testing editor
 *******************************************************************************/
 #pragma once
 #include "GameState.h"
-
+#include "ECSManager.h"
 class GameState3 : public GameState {
 public:
 	GameState3() = default;
@@ -24,5 +24,5 @@ public:
 	virtual void Free();
 	virtual void Unload();
 private:
-
+	std::set<Entity> mEntities;
 };

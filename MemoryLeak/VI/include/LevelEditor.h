@@ -39,4 +39,5 @@ private:
 	GLFWwindow* mWindow;
 	int* mWindowWidth;
 	int* mWindowHeight;
+	const Entity* selectedEntity;
 };

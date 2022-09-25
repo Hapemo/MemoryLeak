@@ -17,7 +17,7 @@ Entity e8;
 void Start_1::Init() {
 
 
-  serializationManager->LoadScene();
+  serializationManager->LoadScene("SceneJ");
     //Entity e{ ECS::CreateEntity() };
     //mEntities.insert(e);
     //e.AddComponent(Transform{ {150,150}, 0, {0,0} },

@@ -8,23 +8,26 @@
 This file contains function definations for a Serialization system that modifies
 Entities and its Components.
 *******************************************************************************/
-#include "Serialization.h"
-#include "ECSManager.h"
-
+#include <Serialization.h>
+#include <ECSManager.h>
+#include <vec2.h>
 
 
 using namespace rapidjson;
-glm::vec2 GetVec2(Value& vecIn)
+Math::Vec2 GetVec2(Value& vecIn)
 {
-	glm::vec2 vecOut;
+	Math::Vec2 vecOut;
 	vecOut.x = vecIn["X"].GetDouble();
 	vecOut.y = vecIn["Y"].GetDouble();
 	return vecOut;
 }
 
-void SerializationManager::LoadScene()
+void SerializationManager::LoadScene(std::string filename)
 {
-	std::ifstream ifs("../resources/Scene/SceneJ.json");
+	//"../resources/Scene/SceneJ.json"
+	std::string path = "../resources/Scene/" + filename + ".json";
+	std::ifstream ifs(path);
+	//std::ifstream ifs(filename);
 	if (!ifs.good())
 	{
 		if (!ifs.good()) LOG_ERROR("Can't open json file!");
@@ -101,7 +104,7 @@ void SerializationManager::LoadScene()
 			int currentImageIndex = entity["Animation"]["currentImageIndex"].GetInt();
 			e.AddComponent<Animation>({ images , timePerImage , timeToImageSwap , currentImageIndex });
 		} 
-		if (entity.HasMember("SheetAnimation"))  ////////// newwwwwwwwwwwwww
+		if (entity.HasMember("SheetAnimation"))
 		{
 			short frameCount = (short)entity["SheetAnimation"]["frameCount"].GetInt();
 			short currentImageIndex = (short)entity["SheetAnimation"]["currFrameIndex"].GetInt();
@@ -121,26 +124,33 @@ void SerializationManager::LoadScene()
 		}
 		if (entity.HasMember("RectCollider"))
 		{
-			glm::vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
-			glm::vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
+			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
+			Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
 			bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
-			e.AddComponent<RectCollider>({ Math::Vec2{centerOffset} , Math::Vec2{scaleOffset} , renderFlag });
+			e.AddComponent<RectCollider>({ Math::Vec2{centerOffset} , scaleOffset , renderFlag });
 		}
 		if (entity.HasMember("CircleCollider"))
 		{
-			glm::vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
+			Math::Vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 			float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
 			bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
-			e.AddComponent<CircleCollider>({ Math::Vec2{centerOffset} , scaleOffset , renderFlag });
+			e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
-		/*if (entity.HasMember("Edge2DCollider"))
+		if (entity.HasMember("Edge2DCollider"))
 		{
-			e.AddComponent<Edge2DCollider>({});
+			Math::Vec2 p0Offset = GetVec2(entity["Edge2DCollider"]["p0Offset"]);
+			float rotationOffset = entity["Edge2DCollider"]["rotationOffset"].GetFloat();
+			float scaleOffset = entity["Edge2DCollider"]["scaleOffset"].GetFloat();
+			bool renderFlag = entity["Edge2DCollider"]["renderFlag"].GetBool();
+
+			e.AddComponent<Edge2DCollider>({ p0Offset ,rotationOffset, scaleOffset , renderFlag });
 		}
 		if (entity.HasMember("Point2DCollider"))
 		{
-			e.AddComponent<Point2DCollider>({});
-		}*/
+			Math::Vec2 centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
+			bool renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
+			e.AddComponent<Point2DCollider>({ centerOffset ,renderFlag });
+		}
 		if (entity.HasMember("Audio"))
 		{
 			Sound sound;
@@ -162,7 +172,7 @@ void SerializationManager::LoadScene()
 }
 
 
-void addVectorMember(Document& scene, Value& parent, const char* name, glm::vec2 data)
+void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec2 data)
 {
 	Value child(kObjectType);
 	child.AddMember(StringRef("X"), data.x, scene.GetAllocator());
@@ -218,11 +228,9 @@ void SerializationManager::SaveScene()
 		if (e.HasComponent<Transform>())
 		{
 			Value tmp(kObjectType);
-			addVectorMember(scene, tmp, "scale", glm::vec2(e.GetComponent<Transform>().scale.x, 
-				e.GetComponent<Transform>().scale.y));
+			addVectorMember(scene, tmp, "scale", e.GetComponent<Transform>().scale);
 			tmp.AddMember(StringRef("rotation"), e.GetComponent<Transform>().rotation, allocator);
-			addVectorMember(scene, tmp, "translation", glm::vec2(e.GetComponent<Transform>().translation.x, 
-				e.GetComponent<Transform>().translation.y));
+			addVectorMember(scene, tmp, "translation", e.GetComponent<Transform>().translation);
 			entity.AddMember(StringRef("Transform"), tmp, allocator);
 		}
 		if (e.HasComponent<Sprite>())
@@ -248,7 +256,7 @@ void SerializationManager::SaveScene()
 			tmp.AddMember(StringRef("currentImageIndex"), e.GetComponent<Animation>().currentImageIndex, allocator);
 			entity.AddMember(StringRef("Animation"), tmp, allocator);
 		}
-		if (e.HasComponent<SheetAnimation>())    //// newww wwwwwwwwwwwwwwwwwwwwww
+		if (e.HasComponent<SheetAnimation>()) 
 		{
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("frameCount"), e.GetComponent<SheetAnimation>().frameCount, allocator);
@@ -263,21 +271,23 @@ void SerializationManager::SaveScene()
 			tmp.AddMember(StringRef("mass"), e.GetComponent<Physics2D>().mass, allocator);
 			tmp.AddMember(StringRef("speed"), e.GetComponent<Physics2D>().speed, allocator);
 			tmp.AddMember(StringRef("moveDirection"), e.GetComponent<Physics2D>().moveDirection, allocator);
+			addVectorMember(scene, tmp, "forces",  e.GetComponent<Physics2D>().forces);
+			addVectorMember(scene, tmp, "velocity", e.GetComponent<Physics2D>().velocity);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Physics2D>().renderFlag, allocator);
 			entity.AddMember(StringRef("Physics2D"), tmp, allocator);
 		}
 		if (e.HasComponent<RectCollider>())
 		{
 			Value tmp(kObjectType);
-			addVectorMember(scene, tmp, "centerOffset", glm::vec2{ e.GetComponent<RectCollider>().centerOffset.x, e.GetComponent<RectCollider>().centerOffset.y});
-			addVectorMember(scene, tmp, "scaleOffset", glm::vec2{ e.GetComponent<RectCollider>().scaleOffset.x , e.GetComponent<RectCollider>().centerOffset.y });
+			addVectorMember(scene, tmp, "centerOffset",e.GetComponent<RectCollider>().centerOffset);
+			addVectorMember(scene, tmp, "scaleOffset", e.GetComponent<RectCollider>().scaleOffset);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<RectCollider>().renderFlag, allocator);
 			entity.AddMember(StringRef("RectCollider"), tmp, allocator);
 		}
 		if (e.HasComponent<CircleCollider>())
 		{
 			Value tmp(kObjectType);
-			addVectorMember(scene, tmp, "centerOffset", glm::vec2{ e.GetComponent<CircleCollider>().centerOffset.x, e.GetComponent<CircleCollider>().centerOffset.y });
+			addVectorMember(scene, tmp, "centerOffset",e.GetComponent<CircleCollider>().centerOffset);
 			tmp.AddMember(StringRef("scaleOffset"), e.GetComponent<CircleCollider>().scaleOffset, allocator);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<CircleCollider>().renderFlag, allocator);
 			entity.AddMember(StringRef("CircleCollider"), tmp, allocator);
@@ -285,19 +295,19 @@ void SerializationManager::SaveScene()
 		if (e.HasComponent<Edge2DCollider>())
 		{
 			Value tmp(kObjectType);
-			addVectorMember(scene, tmp, "p0Offset", glm::vec2{ e.GetComponent<Edge2DCollider>().p0Offset.x, e.GetComponent<Edge2DCollider>().p0Offset.y });
+			addVectorMember(scene, tmp, "p0Offset", e.GetComponent<Edge2DCollider>().p0Offset);
 			tmp.AddMember(StringRef("rotationOffset"), e.GetComponent<Edge2DCollider>().rotationOffset, allocator);
 			tmp.AddMember(StringRef("scaleOffset"), e.GetComponent<Edge2DCollider>().scaleOffset, allocator);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Edge2DCollider>().renderFlag, allocator);
 			entity.AddMember(StringRef("Edge2DCollider"), tmp, allocator);
 		}
-		/*if (e.HasComponent<Point2DCollider>())
+		if (e.HasComponent<Point2DCollider>())
 		{
 			Value tmp(kObjectType);
 			addVectorMember(scene, tmp, "centerOffset", e.GetComponent<Point2DCollider>().centerOffset);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Point2DCollider>().renderFlag, allocator);
 			entity.AddMember(StringRef("Point2DCollider"), tmp, allocator);
-		}*/
+		}
 		if (e.HasComponent<Audio>())
 		{
 			Value tmp(kObjectType);

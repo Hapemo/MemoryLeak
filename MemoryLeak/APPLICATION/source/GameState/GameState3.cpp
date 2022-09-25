@@ -8,22 +8,34 @@
 Game state for testing physics
 *******************************************************************************/
 #include "GameState3.h"
-
+#include "Application.h"
 
 void GameState3::Load() {
-
+	serializationManager->LoadScene("SceneJ");
 }
 
 void GameState3::Init() {
-
+    //levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
+    renderManager->RenderToFrameBuffer();
 }
 
 void GameState3::Update() {
+    TRACK_PERFORMANCE("Physics");
+    physics2DManager->Update(FPSManager::dt);
+    collision2DManager->Update(mEntities);
+    END_TRACK("Physics");
+    sheetAnimator->Animate();
 
+    TRACK_PERFORMANCE("Editor");
+    renderManager->RenderToFrameBuffer();
+    levelEditor->LevelEditor::Window();
+    levelEditor->LevelEditor::Update();
+
+    END_TRACK("Editor");
 }
 
 void GameState3::Draw() {
-
+    renderManager->Render();
 }
 
 void GameState3::Free() {
@@ -31,7 +43,8 @@ void GameState3::Free() {
 }
 
 void GameState3::Unload() {
-
+   // levelEditor->Exit();
+    //renderManager->RenderToScreen();
 }
 
 

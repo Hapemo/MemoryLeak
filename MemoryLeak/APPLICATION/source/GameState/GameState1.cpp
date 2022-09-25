@@ -13,7 +13,6 @@ Game state for testing physics
 
 void GameState1::Load() {
     INIT_TEXTURES("Spritesheets");
-
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
     renderManager->SetVectorLengthModifier(5.f);
@@ -27,7 +26,7 @@ void GameState1::Init() {
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
         SheetAnimation{ 4, 0, 0.1f },
         General{ "robot 1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
-        Audio{ Sound{"SHOOT1.wav"}, false });
+        Audio{ Sound{"DAMAGE.wav", true}, false });
 
     spriteManager->SetTexture(e1, "Textures\\Spritesheets\\jumppadSheet.png");
     physics2DManager->AddPhysicsComponent(e1, 1.f, 50.f, 0.f, true);
@@ -39,7 +38,8 @@ void GameState1::Init() {
     e2.AddComponent(Transform{ {64,64}, 0, {100, 0} },
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
         SheetAnimation{ 6, 0, 0.1f },
-        General{ "robot 2", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+        General{ "robot 2", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
+        Audio{ Sound{"DAMAGE.wav", true}, false });
     spriteManager->SetTexture(e2, "Textures\\Spritesheets\\walkingSheet.png");
     physics2DManager->AddPhysicsComponent(e2, 10.f, 50.f, glm::pi<float>(), true);
     //collision2DManager->AddRectColliderComponent(e2, Math::Vec2{0.f, 0.f}, Math::Vec2{1.f, 1.f}, true);
