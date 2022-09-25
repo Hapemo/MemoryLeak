@@ -93,6 +93,13 @@ std::string	ResourceManager::GetTexturePath(GLint _id) {
 	return "";
 }
 
+std::vector<GLuint>	ResourceManager::GetTextureIDs(const std::string& _texture_path) {
+	std::vector<GLuint> result;
+	for (size_t index = 0; index < mResources.size(); ++index)
+		result.push_back(mResources[index].texture.id);
+	return result;
+}
+
 void ResourceManager::UnloadTexture(void* _data) {
 	stbi_image_free(_data);
 }
