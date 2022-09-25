@@ -8,7 +8,7 @@
 #define LOAD_ASSET(...) ResourceManager::GetInstance()->LoadTexture(__VA_ARGS__)
 #define UNLOAD_ASSET(...) ResourceManager::GetInstance()->UnloadTexture(__VA_ARGS__)
 #define GET_TEXTURE_ID(...) ResourceManager::GetInstance()->GetTextureID(__VA_ARGS__)
-#define GET_TEXTURE_IDS(...) ResourceManager::GetInstance()->GetTextureIDs(__VA_ARGS__)
+#define GET_TEXTURE_IDS(...) ResourceManager::GetInstance()->GetTextureIDS(__VA_ARGS__)
 #define GET_TEXTURE_PATH(...) ResourceManager::GetInstance()->GetTexturePath(__VA_ARGS__)
 #define GET_TEXTURE_DATA(...) ResourceManager::GetInstance()->GetTextureData(__VA_ARGS__)
 #define GET_RESOURCES(...) ResourceManager::GetInstance()->GetResources(__VA_ARGS__)

@@ -69,7 +69,7 @@ void GameState1::Free() {
 }
 
 void GameState1::Unload() {
-	
+    spriteManager->FreeTextures();
 }
 
 
