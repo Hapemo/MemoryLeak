@@ -58,13 +58,7 @@ void Application::SystemInit() {
 void Application::init() {
   // Part 1
   startup();
-  /*
-  INIT_TEXTURES("Background");
-  INIT_TEXTURES("Icons");
-  INIT_TEXTURES("Menu");
-  INIT_TEXTURES("Sprites");
-  INIT_TEXTURES("Spritesheets");
-  */
+
   // Part 2
   Helper::print_specs();
   SystemInit();

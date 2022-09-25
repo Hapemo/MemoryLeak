@@ -1,3 +1,17 @@
+/*!*****************************************************************************
+\file ECS_managers.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+This file contains 4 different classes that makes up the whole ECS system.
+Entity Manager - manages all the entities
+ComponentArrayManager - Manages all the components
+SystemManager - Manages all the system in the game
+Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
+							wishes to use the ECS should go through Cooridnator
+*******************************************************************************/
 #pragma once
 #include "pch.h"
 
@@ -11,6 +25,11 @@
 //-------------------------------------------------------------------------
 class EntityManager {
 public:
+	/*!*****************************************************************************
+	\brief
+	Default constructor of EntityManager. Initialises all entity IDs and reserve the
+	0th entity to be null.
+	*******************************************************************************/
 	EntityManager() :
 		mAvailableEntities(), mSignatures(), mLivingEntityCount()
 	{
@@ -21,7 +40,10 @@ public:
 		CreateEntity(); // EntityID 0 shall be reserved for null
 	}
 
-	// Creates and returns an entity
+	/*!*****************************************************************************
+	\brief
+	Creates and returns an entity.
+	*******************************************************************************/
 	EntityID CreateEntity() {
 		assert(mLivingEntityCount < MAX_ENTITIES && "Too many instances of entities.");
 		EntityID id = mAvailableEntities.front();
@@ -29,7 +51,14 @@ public:
 		++mLivingEntityCount;
 		return id;
 	}
-	// Frees an entity id for future usage
+
+	/*!*****************************************************************************
+	\brief
+	Frees an entity id for future usage
+	
+	\param EntityID
+	- ID of an entity
+	*******************************************************************************/
 	void DestroyEntity(EntityID entity) {
 		assert(entity < MAX_ENTITIES && "EntityID out of range.");
 
@@ -37,13 +66,30 @@ public:
 		mAvailableEntities.push_back(entity);
 		--mLivingEntityCount;
 	}
-	// Assign an signature to an entity
+
+	/*!*****************************************************************************
+	\brief
+	Assign an signature to an entity
+	
+	\param EntityID
+	- ID of an entity
+
+	\param Signature
+	- Signature of an entity
+	*******************************************************************************/
 	void SetSignature(EntityID entity, Signature signature) {
 		assert(entity < MAX_ENTITIES && "EntityID out of range.");
 
 		mSignatures[entity] = signature;
 	}
-	// Access the signature of an entity
+
+	/*!*****************************************************************************
+	\brief
+	Access the signature of an entity
+	
+	\param EntityID
+	- ID of an entity
+	*******************************************************************************/
 	Signature GetSignature(EntityID entity) {
 		assert(entity < MAX_ENTITIES && "EntityID out of range.");
 

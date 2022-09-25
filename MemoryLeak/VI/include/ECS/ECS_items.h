@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file ECS_items.h
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+This file contains the basic structs that make up the ECS system. It contains 
+Entity, IComponentArray and ComponentArray.
+*******************************************************************************/
 #pragma once
 #include "pch.h"
 #include "SparseSet.h"
@@ -27,19 +37,61 @@ struct Entity {
 
 	Entity() = default;
 	
-	explicit Entity(EntityID id) : id(id) {}
+	// Copy Constructor
+	explicit Entity(EntityID _id) : id(_id) {}
 
-	// This is required for std::set as set uses '<' operator to compare placement of items in set
-	bool operator<(Entity const& entity2) const { return id < entity2.id; } 
+	/*!*****************************************************************************
+	\brief
+	Operator overload for '<' operator. This is required for std::set as set uses 
+	'<' operator to arrange placement of items in std::set.
 
+	\param 
+	- the interval (in seconds) at which fps is to be calculated
+	*******************************************************************************/
+	bool operator<(Entity const& _entity) const { return id < _entity.id; } 
+
+	/*!*****************************************************************************
+	 \brief
+	 Destroy an entity, returning it's ID and components.
+	*******************************************************************************/
 	void Destroy() const;
 
-	template<typename T, typename ...args>
-	void AddComponent(T component, args...components) const;
+	/*!*****************************************************************************
+	\brief
+	Add components to an existing Entity
 
+	\param T
+	- First component to add in
+
+	\param ...args
+	- Other components to add in if there is any
+	*******************************************************************************/
+	template<typename T, typename ...args>
+	void AddComponent(T, args...) const;
+
+	/*!*****************************************************************************
+	\brief
+	Get a reference to an Entity's component 
+
+	\param T
+	- First component to add in
+
+	\param ...args
+	- Other components to add in if there is any
+
+	\return T&
+	- Reference to entity's component
+	*******************************************************************************/
 	template<typename T>
 	T& GetComponent() const;
 
+	/*!*****************************************************************************
+	\brief
+	Checks if an entity has the indicated component
+	
+	\return bool
+	- True if has indicated component, otherwise false
+	*******************************************************************************/
 	template<typename T>
 	bool HasComponent() const;
 };
@@ -53,7 +105,23 @@ struct Entity {
 class IComponentArray {
 public:
 	virtual ~IComponentArray() = default;
+
+	/*!*****************************************************************************
+	\brief
+	Remove component from an entity
+
+	\return bool
+	- True if has indicated component, otherwise false
+	*******************************************************************************/
 	virtual void RemoveData(EntityID) = 0;
+
+	/*!*****************************************************************************
+	\brief
+	Checks if a component array has data of an entity
+
+	\return bool
+	- True if has data of entity, otherwise false
+	*******************************************************************************/
 	virtual bool HasEntity(EntityID) = 0;
 };
 
@@ -67,31 +135,55 @@ class ComponentArray : public IComponentArray {
 public:
 	ComponentArray();
 
-	// Assign a component to an entity and give it a specified component data
+	/*!*****************************************************************************
+	\brief
+	Assign a component to an entity and give it a specified component data
+
+	\param EntityID
+	- ID of entity
+
+	\param T
+	- Component data to insert into entity
+	*******************************************************************************/
 	void InsertData(EntityID, T);
-	// Remove a component from an entity
+
+	/*!*****************************************************************************
+	\brief
+	Remove a component from an entity
+
+	\param EntityID
+	- ID of entity
+	*******************************************************************************/
 	void RemoveData(EntityID);
-	// Access the component information of an entity
+	
+	/*!*****************************************************************************
+	\brief
+	Access the component information of an entity
+
+	\param EntityID
+	- ID of entity
+
+	\return T&
+	- Reference of component to entity
+	*******************************************************************************/
 	T& GetData(EntityID);
-	//void EntityDestroyed(EntityID);
+
+	/*!*****************************************************************************
+	\brief
+	Checks if the Component array has data of an entity
+
+	\param EntityID
+	- ID of entity
+
+	\return bool
+	- True if has data of the entity, otherwise false
+	*******************************************************************************/
 	bool HasEntity(EntityID);
 
 private:
-	//------------------------
-	// Rational for proxy ID structure
-	// If std::unordered_map<EntityID, T> is used, everything will work fine.
-	// But it will be slower, because there will be lots of gaps in the array 
-	// of components, which doesn't work well with how cache functions. 
-	// Wasted space = less information cache can store = inefficient but extensive
-	// memory space have to be used.
-	// This proxy ID method eliminates any gaps between each components, making it 
-	// more memory efficient and easier to store in cache
-	//------------------------
-	
 	SparseSet<T> mData;
 };
 
-struct Entity;
 //-------------------------------------------------------------------------
 // System
 // Base class containing a set of entities which the system can operate on
@@ -101,9 +193,7 @@ struct Entity;
 //-------------------------------------------------------------------------
 class System {
 public:
-	//std::set<EntityID> mEntities;
 	std::set<Entity> mEntities;
-	//std::vector<Entity> mEntities;
 };
 
 
@@ -119,23 +209,23 @@ template<typename T>
 ComponentArray<T>::ComponentArray() : mData(MAX_ENTITIES) {}
 
 template<typename T>
-void ComponentArray<T>::InsertData(EntityID entity, T component) {
-	mData.AddData(component, static_cast<short>(entity));
+void ComponentArray<T>::InsertData(EntityID _entity, T _component) {
+	mData.AddData(_component, static_cast<short>(_entity));
 }
 
 template<typename T>
-void ComponentArray<T>::RemoveData(EntityID entity) {
-	mData.RemoveData(static_cast<short>(entity));
+void ComponentArray<T>::RemoveData(EntityID _entity) {
+	mData.RemoveData(static_cast<short>(_entity));
 }
 
 template<typename T>
-T& ComponentArray<T>::GetData(EntityID entity) {
-	return mData[static_cast<short>(entity)];
+T& ComponentArray<T>::GetData(EntityID _entity) {
+	return mData[static_cast<short>(_entity)];
 }
 
 template<typename T>
-bool ComponentArray<T>::HasEntity(EntityID entity) {
-	return mData.CheckData(static_cast<short>(entity));
+bool ComponentArray<T>::HasEntity(EntityID _entity) {
+	return mData.CheckData(static_cast<short>(_entity));
 }
 
 //template<typename T>
