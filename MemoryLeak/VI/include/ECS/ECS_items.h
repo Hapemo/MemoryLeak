@@ -85,6 +85,12 @@ struct Entity {
 	T& GetComponent() const;
 
 	/*!*****************************************************************************
+	Remove a component from entity
+	*******************************************************************************/
+	template<typename T>
+	void RemoveComponent();
+
+	/*!*****************************************************************************
 	Checks if an entity has the indicated component
 	
 	\return bool
