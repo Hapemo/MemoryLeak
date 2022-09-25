@@ -47,9 +47,9 @@ void GameState3::Free() {
 }
 
 void GameState3::Unload() {
-    renderManager->Clear();
-    spriteManager->FreeTextures();
-    FREE_RESOURCES();
+    //renderManager->Clear();
+    //spriteManager->FreeTextures();
+    //FREE_RESOURCES();
    // levelEditor->Exit();
     //renderManager->RenderToScreen();
 }

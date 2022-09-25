@@ -21,7 +21,7 @@ enum class E_GS {
 	GameState1,
 	GameState2,
 	GameState3,
-
+	ParallaxSprite,
 	RESTART,
 	EXIT
 };
