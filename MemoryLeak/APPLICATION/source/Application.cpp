@@ -134,6 +134,12 @@ void Application::loadConfig(std::string path) {
   
   std::map<std::string, std::string> config = Util::TextFileToMap(file);
 
+  while (std::getline(file, line)) {
+    size_t midpoint{ line.find(':') };
+
+    config.push_back({ line.substr(0, midpoint), line.substr(midpoint + 2, midpoint + 2 - line.length()) });
+  }
+
   // Applying configurations
 #ifdef _DEBUG
   std::cout << "config file\n-----------\n";

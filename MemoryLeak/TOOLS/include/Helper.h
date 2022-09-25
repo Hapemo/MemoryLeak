@@ -14,14 +14,14 @@ General helper class of application that calculates FPS and prints GLFW info
 struct Helper
 {
   /*!*****************************************************************************
-   \brief
-   This function must be called once per game loop. It uses GLFW's time
-   functions to compute:
-   1. the interval in seconds between each frame
-   2. the frames per second every "fps_calc_interval" seconds
+  \brief
+  This function must be called once per game loop. It uses GLFW's time
+  functions to compute:
+  1. the interval in seconds between each frame
+  2. the frames per second every "fps_calc_interval" seconds
 
-   \param double
-   - the interval (in seconds) at which fps is to be calculated
+  \param double
+  - the interval (in seconds) at which fps is to be calculated
   *******************************************************************************/
   static void CalcFPS(double = 1.0);
 

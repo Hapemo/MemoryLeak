@@ -9,6 +9,8 @@ Game state for testing physics
 *******************************************************************************/
 #include "GameState1.h"
 
+
+
 void GameState1::Load() {
     renderManager->SetVectorLengthModifier(5.f);
     renderManager->SetDebug(true);
@@ -27,7 +29,7 @@ void GameState1::Init() {
     physics2DManager->AddPhysicsComponent(e1, 1.f, 50.f, 0.f, true);
     //collision2DManager->AddRectColliderComponent(e1, Math::Vec2{0.f, 0.f}, Math::Vec2{1.f, 1.f}, true);
     collision2DManager->AddCircleColliderComponent(e1, Math::Vec2{ 0.f, 0.f }, 1.f, true);
-
+	
     Entity e2{ ECS::CreateEntity() };
     mEntities.insert(e2);
     e2.AddComponent(Transform{ {64,64}, 0, {100, 0} },
@@ -55,7 +57,7 @@ void GameState1::Draw() {
 
 void GameState1::Free() {
     physics2DManager->PhyObjListClear();
-
+	
     for (auto& e : mEntities)
         e.Destroy();
 }
