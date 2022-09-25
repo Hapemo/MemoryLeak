@@ -21,8 +21,8 @@ Entities and its Components.
 class SerializationManager : public System
 {
 public:
-	void LoadScene(std::string);
-	void SaveScene();
+	void LoadScene(std::string _filename = "SceneJ");
+	void SaveScene(std::string _filename = "SceneJ");
 	void LoadDialogs();
 	void SaveDialogs();
 private:

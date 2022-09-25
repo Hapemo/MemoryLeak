@@ -5,7 +5,7 @@
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function definations for a audio system 
+This file contains function definations for a audio system to play sound in the game
 *******************************************************************************/
 #include "AudioManager.h"
 

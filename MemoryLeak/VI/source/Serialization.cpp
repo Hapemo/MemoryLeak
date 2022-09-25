@@ -1,12 +1,13 @@
 /*!*****************************************************************************
 \file Serialization.cpp
-\author Huang Wei Jhin
-\par DP email: h.weijhin@digipen.edu
+\author Huang Wei Jhin, Chen Jia Wenyy
+\par DP email: h.weijhin@digipen.edu, jiawenny@digipen.edu
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function definations for a Serialization system that modifies
-Entities and its Components.
+This file contains function definations for a Serialization system that saves and load
+-Entities and its Components
+-Dialogs
 *******************************************************************************/
 #include <Serialization.h>
 #include <ECSManager.h>
@@ -14,6 +15,15 @@ Entities and its Components.
 
 
 using namespace rapidjson;
+/*!*****************************************************************************
+\brief
+	Creats a vec2 using rapidjson value
+\param
+	vecIn rapidjason vetor 2 value
+
+\return
+None.
+*******************************************************************************/
 Math::Vec2 GetVec2(Value& vecIn)
 {
 	Math::Vec2 vecOut;
@@ -22,17 +32,26 @@ Math::Vec2 GetVec2(Value& vecIn)
 	return vecOut;
 }
 
-void SerializationManager::LoadScene(std::string filename)
+/*!*****************************************************************************
+\brief
+	Loads the scene into ECS
+
+\return
+None.
+*******************************************************************************/
+void SerializationManager::LoadScene(std::string _filename)
 {
 	//"../resources/Scene/SceneJ.json"
-	std::string path = "../resources/Scene/" + filename + ".json";
+	std::string path = "../resources/Scene/" + _filename + ".json";
 	std::ifstream ifs(path);
 	//std::ifstream ifs(filename);
 	if (!ifs.good())
 	{
-		if (!ifs.good()) LOG_ERROR("Can't open json file!");
+		LOG_ERROR("Can't open json file! : " + path);
+		return;
 	}
-
+	else
+		LOG_ERROR("Opening Scene: " + path);
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
@@ -171,7 +190,13 @@ void SerializationManager::LoadScene(std::string filename)
 	}
 }
 
+/*!*****************************************************************************
+\brief
+	Adds a vector 2 to a rapid jason dom tree
 
+\return
+None.
+*******************************************************************************/
 void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec2 data)
 {
 	Value child(kObjectType);
@@ -179,6 +204,22 @@ void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec
 	child.AddMember(StringRef("Y"), data.y, scene.GetAllocator());
 	parent.AddMember(StringRef(name), child, scene.GetAllocator());
 }
+
+/*!*****************************************************************************
+\brief
+	Adds a vector to a rapid jason dom tree as a array
+\param scene
+	rapid jason document to add to 
+\param parent
+	parent onject to add to 
+\param name
+	name of child to add to parant object
+\prama data
+	data to be added to the child objects
+		
+\return
+None.
+*******************************************************************************/
 template<typename T>
 void addVectorArrayMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
 {
@@ -190,6 +231,21 @@ void addVectorArrayMember(Document& scene, Value& parent, const char* name, std:
 	}
 	parent.AddMember(StringRef(name), child, scene.GetAllocator());
 }
+
+/*!*****************************************************************************
+\brief
+	Adds a vector to a rapid jason dom tree as individual child objects
+\param scene
+	rapid jason document to add to
+\param parent
+	parent onject to add to
+\param name
+	name of child to add to parant object
+\prama data
+	data to be added to the child objects
+\return
+None.
+*******************************************************************************/
 template<typename T>
 void addVectorsMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
 {
@@ -202,9 +258,15 @@ void addVectorsMember(Document& scene, Value& parent, const char* name, std::vec
 	}
 	parent.AddMember(StringRef(name), child, scene.GetAllocator());
 }
-void SerializationManager::SaveScene()
+/*!*****************************************************************************
+\brief
+	Saves the data in the ECS system to a json file
+
+\return
+None.
+*******************************************************************************/
+void SerializationManager::SaveScene(std::string _filename)
 {
-	LOG_INFO("saveing scene");
 	Document scene;
 	auto& allocator = scene.GetAllocator();
 	scene.SetObject();
@@ -330,13 +392,24 @@ void SerializationManager::SaveScene()
 
 	scene.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
-	std::ofstream ofs("../resources/Scene/SceneJ.json");
+	std::string path = "../resources/Scene/" + _filename + ".json";
+	std::ofstream ofs(path);
 	ofs << jsonf;
 	if (!ofs.good() )
 	{
-		LOG_ERROR("json errorrr");
+		LOG_ERROR("Unable to save scene to: " + path);
 	}
+	else
+		LOG_ERROR("Saved Scene: " + path);
 }
+
+/*!*****************************************************************************
+\brief
+	Loads the dialogs from a json file to the dialog manager
+
+\return
+None.
+*******************************************************************************/
 void SerializationManager::LoadDialogs()
 {
 	std::ifstream ifs("../resources/Dialogs/Dialog1.json");
@@ -363,6 +436,13 @@ void SerializationManager::LoadDialogs()
 		dialogManager->LoadDialog(dialog);
 	}
 }
+/*!*****************************************************************************
+\brief
+	Saves the data in the dialog manager to a json file
+
+\return
+None.
+*******************************************************************************/
 void SerializationManager::SaveDialogs()
 {
 	/*

@@ -40,4 +40,5 @@ private:
 	int* mWindowWidth;
 	int* mWindowHeight;
 	const Entity* selectedEntity;
+	
 };
