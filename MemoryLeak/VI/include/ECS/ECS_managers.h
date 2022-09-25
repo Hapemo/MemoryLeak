@@ -18,7 +18,7 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 #include "ECS_items.h"
 
 //-------------------------------------------------------------------------
-// EntityID Manager
+// Entity Manager
 // Manages the creation and destruction of entities, incharge of 
 // distributing entities on request.
 // Manages the system each entities can use.
@@ -26,49 +26,25 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 class EntityManager {
 public:
 	/*!*****************************************************************************
-	\brief
 	Default constructor of EntityManager. Initialises all entity IDs and reserve the
 	0th entity to be null.
 	*******************************************************************************/
-	EntityManager() :
-		mAvailableEntities(), mSignatures(), mLivingEntityCount()
-	{
-		mAvailableEntities.resize(MAX_ENTITIES);
-		for (size_t i = 0; i < MAX_ENTITIES; ++i)
-			mAvailableEntities[i] = static_cast<std::uint32_t>(i);
-
-		CreateEntity(); // EntityID 0 shall be reserved for null
-	}
+	EntityManager();
 
 	/*!*****************************************************************************
-	\brief
 	Creates and returns an entity.
 	*******************************************************************************/
-	EntityID CreateEntity() {
-		assert(mLivingEntityCount < MAX_ENTITIES && "Too many instances of entities.");
-		EntityID id = mAvailableEntities.front();
-		mAvailableEntities.pop_front();
-		++mLivingEntityCount;
-		return id;
-	}
+	EntityID CreateEntity();
 
 	/*!*****************************************************************************
-	\brief
 	Frees an entity id for future usage
 	
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	void DestroyEntity(EntityID entity) {
-		assert(entity < MAX_ENTITIES && "EntityID out of range.");
-
-		mSignatures[entity].reset();
-		mAvailableEntities.push_back(entity);
-		--mLivingEntityCount;
-	}
+	void DestroyEntity(EntityID);
 
 	/*!*****************************************************************************
-	\brief
 	Assign an signature to an entity
 	
 	\param EntityID
@@ -77,24 +53,15 @@ public:
 	\param Signature
 	- Signature of an entity
 	*******************************************************************************/
-	void SetSignature(EntityID entity, Signature signature) {
-		assert(entity < MAX_ENTITIES && "EntityID out of range.");
-
-		mSignatures[entity] = signature;
-	}
+	void SetSignature(EntityID, Signature);
 
 	/*!*****************************************************************************
-	\brief
 	Access the signature of an entity
 	
 	\param EntityID
 	- ID of an entity
 	*******************************************************************************/
-	Signature GetSignature(EntityID entity) {
-		assert(entity < MAX_ENTITIES && "EntityID out of range.");
-
-		return mSignatures[entity];
-	}
+	Signature GetSignature(EntityID);
 
 private:
 	// A container of unused entity ids
@@ -115,11 +82,11 @@ private:
 //-------------------------------------------------------------------------
 class ComponentArrayManager {
 public:
-	ComponentArrayManager() :
-		mComponentTypes(), mComponentArrays(), mNextComponentType()
-	{}
+	ComponentArrayManager();
 
-	// Initialise and register a new component
+	/*!*****************************************************************************
+	Initialise and register a new component
+	*******************************************************************************/
 	template<typename T>
 	void RegisterComponent() {
 		std::string typeName{ typeid(T).name() };
@@ -128,7 +95,13 @@ public:
 		mComponentTypes.insert({ typeName, mNextComponentType++ });
 		mComponentArrays.insert({ typeName, std::make_shared<ComponentArray<T>>() });
 	}
-	// Access the ComponentType of a component array
+	
+	/*!*****************************************************************************
+	Access the ComponentType, which is ID, of a component array
+
+	\return ComponentType
+	- Component Type of a component
+	*******************************************************************************/
 	template<typename T>
 	ComponentType GetComponentType() {
 		std::string typeName{ typeid(T).name() };
@@ -136,29 +109,50 @@ public:
 		assert(mComponentTypes.find(typeName) != mComponentTypes.end() && "Attempted to access unregistered component.");
 		return mComponentTypes[typeName];
 	}
-	// Add an entity to a component array
+	
+	/*!*****************************************************************************
+	Add an entity to a component array
+
+	\param EntityID
+	- ID of an entity
+
+	\param T
+	- Component data to add to entity
+	*******************************************************************************/
 	template<typename T>
-	void AddComponent(EntityID entity, T component) {
-		GetComponentArray<T>()->InsertData(entity, component);
+	void AddComponent(EntityID _entity, T _component) {
+		GetComponentArray<T>()->InsertData(_entity, _component);
 	}
-	// Remove an entity from a component array
+
+	/*!*****************************************************************************
+	Remove an entity from a component array
+
+	\param EntityID
+	- ID of an entity
+	*******************************************************************************/
 	template<typename T>
-	void RemoveComponent(EntityID entity) {
-		GetComponentArray<T>()->RemoveData(entity);
+	void RemoveComponent(EntityID _entity) {
+		GetComponentArray<T>()->RemoveData(_entity);
 	}
-	// Access the component of an entity through the component array
+	
+	/*!*****************************************************************************
+	Get component data of an entity
+
+	\param EntityID
+	- ID of an entity
+	*******************************************************************************/
 	template<typename T>
-	T& GetComponent(EntityID entity) {
-		return GetComponentArray<T>()->GetData(entity);
+	T& GetComponent(EntityID _entity) {
+		return GetComponentArray<T>()->GetData(_entity);
 	}
-	// Destroy all components of an entity in each respective component array
-	void EntityDestroyed(EntityID entity) {
-		for (auto const& [name, component] : mComponentArrays) {
-			if (!component->HasEntity(entity)) continue;
-			
-			component->RemoveData(entity);
-		}
-	}
+	
+	/*!*****************************************************************************
+	Destroy all components of an entity in each respective component array
+
+	\param EntityID
+	- ID of an entity
+	*******************************************************************************/
+	void EntityDestroyed(EntityID);
 
 private:
 	// Map of component name to ComponentType
@@ -186,11 +180,14 @@ private:
 //-------------------------------------------------------------------------
 class SystemManager {
 public:
-	SystemManager() :
-		mSignatures(), mSystems()
-	{}
+	SystemManager();
 
-	// Initialises system and register it into SystemManager
+	/*!*****************************************************************************
+	Initialises system and register it into SystemManager
+
+	\return std::shared_ptr<T>
+	- Pointer to templated ComponentArray
+	*******************************************************************************/
 	template<typename T>
 	std::shared_ptr<T> RegisterSystem() {
 		std::string typeName{ typeid(T).name() };
@@ -201,41 +198,47 @@ public:
 		mSystems.insert({ typeName, system });
 		return system;
 	}
+ 
+	/*!*****************************************************************************
+	Assign a signature to a system
 
-	// Assign a signature to a system
+	\param Signature
+	- Signature of system
+	*******************************************************************************/
 	template<typename T>
-	void SetSignature(Signature signature) {
+	void SetSignature(Signature _signature) {
 		std::string typeName{ typeid(T).name() };
 
 		assert(mSystems.find(typeName) != mSystems.end() && "Attempted to set signature to non-existance System.");
 
-		mSignatures.insert({ typeName, signature });
+		mSignatures.insert({ typeName, _signature });
 	}
 
-	// Remove a destroyed entity from all system's set
-	void EntityDestroyed(EntityID entity) {
-		for (auto const&[name, system] : mSystems)
-			system->mEntities.erase(Entity{ entity });
-	}
+	/*!*****************************************************************************
+	Remove a destroyed entity from all system's set
 
-	// Notify all systems that an entity's signature has changed
-	// Remove or add it to the appropriate system's set
-	void EntitySignatureChanged(EntityID entity, Signature entitySignature) {
-		for (auto const& [name, system] : mSystems) {
-			Signature systemSignature{ mSignatures[name] };
+	\param EntityID
+	- ID of an entity
+	*******************************************************************************/
+	void EntityDestroyed(EntityID);
+ 
+	/*!*****************************************************************************
+	Notify all systems that an entity's signature has changed.
+	Remove or add it to the appropriate system's set
 
-			if ((entitySignature & systemSignature) == systemSignature)
-				system->mEntities.insert(Entity{ entity });
-			else system->mEntities.erase(Entity{ entity });
-		}
-	}
+	\param EntityID
+	- ID of an entity
+
+	\param Signature
+	- New signature of entity
+	*******************************************************************************/
+	void EntitySignatureChanged(EntityID, Signature);
 
 private:
 	// Map system's name to their unique signature
 	std::unordered_map<std::string, Signature> mSignatures;
 	// Map system's name to a pointer to the system itself
 	std::unordered_map<std::string, std::shared_ptr<System>> mSystems;
-
 };
 
 
@@ -246,79 +249,133 @@ private:
 //-------------------------------------------------------------------------
 class Coordinator : public Singleton<Coordinator> {
 public:
-	Coordinator() {
-		mEntityManager = std::make_unique<EntityManager>();
-		mComponentArrayManager = std::make_unique<ComponentArrayManager>();
-		mSystemManager = std::make_unique<SystemManager>();
-	}
+	/*!*****************************************************************************
+	Initialise EntityManager, ComponentArrayManager and SystemManager.
+	*******************************************************************************/
+	Coordinator();
 
 	// From EntityID Manager
-	EntityID CreateEntity() { return mEntityManager->CreateEntity(); }
+	/*!*****************************************************************************
+	Create an entity
 
-	void DestroyEntity(EntityID entity) {
-		mEntityManager->DestroyEntity(entity);
-		mComponentArrayManager->EntityDestroyed(entity);
-		mSystemManager->EntityDestroyed(entity);
-	}
+	\param EntityID
+	- ID of newly created entity
+	*******************************************************************************/
+	EntityID CreateEntity();
+
+	/*!*****************************************************************************
+	Destroy entity from all ECS managers
+
+	\param EntityID
+	- ID of entity
+	*******************************************************************************/
+	void DestroyEntity(EntityID);
 
 	// From Component Manager
+	/*!*****************************************************************************
+	Register new component to ECS
+	*******************************************************************************/
 	template<typename T>
 	void RegisterComponent() { mComponentArrayManager->RegisterComponent<T>(); }
 
-	template<typename T>
-	void AddComponent(EntityID entity, T component) {
-		mComponentArrayManager->AddComponent<T>(entity, component);
+	/*!*****************************************************************************
+	Add a component to entity
+	
+	\param EntityID
+	- ID of an Entity
 
-		Signature signature = mEntityManager->GetSignature(entity);
+	\param T
+	- Component data to add into entity
+	*******************************************************************************/
+	template<typename T>
+	void AddComponent(EntityID _entity, T _component) {
+		mComponentArrayManager->AddComponent<T>(_entity, _component);
+
+		Signature signature = mEntityManager->GetSignature(_entity);
 		signature.set(mComponentArrayManager->GetComponentType<T>(), true);
-		mEntityManager->SetSignature(entity, signature);
-		mSystemManager->EntitySignatureChanged(entity, signature);
+		mEntityManager->SetSignature(_entity, signature);
+		mSystemManager->EntitySignatureChanged(_entity, signature);
 	};
 
+	/*!*****************************************************************************
+	Remove a component from an entity
+	
+	\param EntityID
+	- ID of an Entity
+	*******************************************************************************/
 	template<typename T>
-	void RemoveComponent(EntityID entity) {
-		mComponentArrayManager->RemoveComponent<T>(entity);
-		Signature signature = mEntityManager->GetSignature(entity);
+	void RemoveComponent(EntityID _entity) {
+		mComponentArrayManager->RemoveComponent<T>(_entity);
+		Signature signature = mEntityManager->GetSignature(_entity);
 		signature.set(mComponentArrayManager->GetComponentType<T>(), false);
-		mEntityManager->SetSignature(entity, signature);
-		mSystemManager->EntitySignatureChanged(entity, signature);
+		mEntityManager->SetSignature(_entity, signature);
+		mSystemManager->EntitySignatureChanged(_entity, signature);
 	}
 
-	template<typename T>
-	T& GetComponent(EntityID entity) { return mComponentArrayManager->GetComponent<T>(entity); }
+	/*!*****************************************************************************
+	Get the component data of an entity
 
+	\param EntityID
+	- ID of an Entity
+
+	\return T&
+	- Component data of an entity
+	*******************************************************************************/
+	template<typename T>
+	T& GetComponent(EntityID _entity) { return mComponentArrayManager->GetComponent<T>(_entity); }
+
+	/*!*****************************************************************************
+	Get the component type of a component
+
+	\return ComponentType
+	- ComponentType of a component
+	*******************************************************************************/
 	template<typename T>
 	ComponentType GetComponentType() { return mComponentArrayManager->GetComponentType<T>(); }
 
-	//template<typename T>
-	//bool HasComponent(EntityID entity) { return mComponentArrayManager->HasComponent<T>(entity); }
+	/*!*****************************************************************************
+	Checks if an entity has a component
+
+	\return EntityID
+	- ID of an entity
+	*******************************************************************************/
 	template<typename T>
-	bool HasComponent(EntityID entity) {
-		return mEntityManager->GetSignature(entity)[mComponentArrayManager->GetComponentType<T>()];
+	bool HasComponent(EntityID _entity) {
+		return mEntityManager->GetSignature(_entity)[mComponentArrayManager->GetComponentType<T>()];
 	}
 
 	// From System Manager
+	/*!*****************************************************************************
+	Register a system
+
+	\return std::shared_ptr<T>
+	- Pointer to newly registered system
+	*******************************************************************************/
 	template<typename T>
 	std::shared_ptr<T> RegisterSystem() { return mSystemManager->RegisterSystem<T>(); }
 
+	/*!*****************************************************************************
+	Set the signature of a system
+
+	\param const Signature&
+	- Signature to assign to system
+	*******************************************************************************/
 	template<typename T>
-	void SetSystemSignature(const Signature& signature) { return mSystemManager->SetSignature<T>(signature); }
+	void SetSystemSignature(const Signature& _signature) { return mSystemManager->SetSignature<T>(_signature); }
 
 	// Extra
-	void DestroyAllEntities() {
-		for (EntityID entity = 0; entity < MAX_ENTITIES; ++entity)
-			if (mEntityManager->GetSignature(entity) != 0)
-				DestroyEntity(entity);
-	}
+	/*!*****************************************************************************
+	Destroy all entities in ECS
+	*******************************************************************************/
+	void DestroyAllEntities();
 
-	void DestroySomeEntites(const std::vector<EntityID>& dontDestroy) {
-		for (EntityID entity = 0; entity < MAX_ENTITIES; ++entity) {
-			if (mEntityManager->GetSignature(entity) != 0)
-				// Skip those in dontDestroy
-				if (std::find(dontDestroy.begin(), dontDestroy.end(), entity) == dontDestroy.end())
-					DestroyEntity(entity);
-		}
-	}
+	/*!*****************************************************************************
+	Destroy all entities except specified ones
+
+	/param const std::vector<EntityID>&
+	- A bunch of entities to be blacklisted from being deleted
+	*******************************************************************************/
+	void DestroySomeEntites(const std::vector<EntityID>&);
 
 private:
 	std::unique_ptr<EntityManager> mEntityManager;
@@ -329,6 +386,7 @@ private:
 //-------------------------------------------------------------------------
 // EntityID
 // EntityID and it's functions
+// Declarations are in Entity struct
 //-------------------------------------------------------------------------
 
 template<typename T, typename ...args>

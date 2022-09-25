@@ -182,7 +182,6 @@
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Serialization.h" />
     <ClInclude Include="include\SignalHandler.h" />
-    <ClInclude Include="include\StartupException.h" />
     <ClInclude Include="include\Start_1.h" />
     <ClInclude Include="include\Start_background.h" />
     <ClInclude Include="include\TagVariable.h" />

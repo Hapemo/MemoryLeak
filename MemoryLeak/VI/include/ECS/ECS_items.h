@@ -70,7 +70,6 @@ struct Entity {
 	void AddComponent(T, args...) const;
 
 	/*!*****************************************************************************
-	\brief
 	Get a reference to an Entity's component 
 
 	\param T
@@ -86,7 +85,6 @@ struct Entity {
 	T& GetComponent() const;
 
 	/*!*****************************************************************************
-	\brief
 	Checks if an entity has the indicated component
 	
 	\return bool

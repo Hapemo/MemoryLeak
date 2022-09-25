@@ -132,9 +132,6 @@
     <ClInclude Include="include\Start_background.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\StartupException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\TagVariable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
