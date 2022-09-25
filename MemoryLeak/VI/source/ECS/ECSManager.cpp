@@ -1,5 +1,16 @@
+/*!*****************************************************************************
+\file ECSManager.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+This file contains the initialisation of ECS system. Registering all systems and
+components.
+*******************************************************************************/
 #include "ECSManager.h"
 
+// Instantiation of system pointers
 std::shared_ptr<LifespanManager> lifespanManager{ nullptr };
 std::shared_ptr<TransformManager> transformManager{ nullptr };
 std::shared_ptr<SpriteManager> spriteManager{ nullptr };

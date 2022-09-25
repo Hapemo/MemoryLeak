@@ -12,7 +12,6 @@ start up of window and game system, also runs their update functions.
 //#include "Windows.h"
 #include "Helper.h"
 #include "Input.h"
-#include "StartupException.h"
 #include "GameStateManager.h"
 #include "ECSManager.h"
 #include "LevelEditor.h"
@@ -24,31 +23,18 @@ int Application::window_width{};
 int Application::window_height{};
 std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
-float Application::target_fps = 0;
 bool Application::editorMode = false;
 
 void Application::startup() {
-  
-  try {
-    loadConfig("../config.txt");
-    glfwStartUp();
-    Input::init(ptr_window);
-    glewStartUp();
-    GameStateManager::GetInstance()->Init();
-    ECSManager::ECS_init();
-  }
-  catch (StartUpException error) {
-    std::cout << "Unable to create OpenGL context\n" << error.what() << '\n';
-    std::exit(EXIT_FAILURE);
-  }
+  loadConfig("../config.txt");
+  glfwStartUp();
+  Input::init(ptr_window);
+  glewStartUp();
+  GameStateManager::GetInstance()->Init();
+  ECSManager::ECS_init();
 }
 
 void Application::SystemInit() {
-  for (size_t index = 0; index < GET_RESOURCES().size(); ++index) {
-    spriteManager->InitializeTexture(GET_TEXTURE(index));
-  }
-
-  //@weijhin
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
   audioManager->AudioManager::AudioManager();
   renderManager->Init(&window_width, &window_height);
@@ -58,26 +44,18 @@ void Application::SystemInit() {
 void Application::init() {
   // Part 1
   startup();
-  /*
-  INIT_TEXTURES("Background");
-  INIT_TEXTURES("Icons");
-  INIT_TEXTURES("Menu");
-  INIT_TEXTURES("Sprites");
-  INIT_TEXTURES("Spritesheets");
-  */
-  // Part 2
-  Helper::print_specs();
+
   SystemInit();
 }
 
 void Application::FirstUpdate() {
-  Helper::prev_time = glfwGetTime();
+  FPSManager::mPrevTime = glfwGetTime();
 
   // Part 1
   glfwPollEvents();
   
   // Part 2
-  Helper::CalcFPS(0);
+  FPSManager::CalcFPS(0);
 }
 
 void Application::SecondUpdate() {
@@ -109,15 +87,11 @@ void Application::SecondUpdate() {
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 
-  // Calculate delta time
-  //Sleep(1);
-  //while ((glfwGetTime() - Helper::prev_time) < (double)(1.0 / Application::getTargetFPS())) {}
-  Helper::CalcDeltaTime();
-  
+  FPSManager::LimitFPS();
+  FPSManager::CalcDeltaTime();
 }
 
 void Application::exit() {
-    //@weijhin
     levelEditor->Exit();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();
@@ -130,7 +104,7 @@ void Application::loadConfig(std::string path) {
   // Opening file
   std::fstream file;
   file.open(path, std::ios_base::in);
-  if (!file.is_open()) throw StartUpException("File " + path + " not found.");
+  ASSERT(file.is_open(), "File " + path + " not found.\n");
   
   std::map<std::string, std::string> config = Util::TextFileToMap(file);
 
@@ -142,13 +116,12 @@ void Application::loadConfig(std::string path) {
 #ifdef _DEBUG
     std::cout << key << " | " << value << '\n';
 #endif
-    
-    if (value.length() <= 0) throw StartUpException("Config error: " + key + " not found!");
+    ASSERT(value.length() > 0, "Config error: " + key + " not found!\n");
 
     if (key == "window_width") window_width = stoi(value);
     else if (key == "window_height") window_height = stoi(value);
     else if (key == "title") title = value;
-    else if (key == "fps_limit") target_fps = static_cast<float>(stoi(value));
+    else if (key == "fps_limit") FPSManager::mLimitFPS = static_cast<double>(stoi(value));
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";
@@ -158,21 +131,21 @@ void Application::loadConfig(std::string path) {
 // _s, time interval in updating titlebar, in seconds
 void Application::PrintTitleBar(double _s) {
   static double timeElapsed{};
-  timeElapsed += Helper::dt;
+  timeElapsed += FPSManager::dt;
   if (timeElapsed > _s) {
     timeElapsed = 0;
 
     // write window title with current fps ...
     std::stringstream sstr;
-    sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " << Helper::fps << " | " << Helper::dt << " | " << GET_SYSTEMS_PERFORMANCES();
+    sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " << FPSManager::fps << " | " << FPSManager::dt << " | " << GET_SYSTEMS_PERFORMANCES();
     glfwSetWindowTitle(Application::getWindow(), sstr.str().c_str());
   }
 }
 
 void Application::glfwStartUp() {
   // Part 1
-  if (!glfwInit()) throw StartUpException("GLFW init has failed - abort program!!!");
-
+  ASSERT(glfwInit(), "GLFW init has failed - abort program!!!\n");
+  
   const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
   if (!window_width) window_width = mode->width;
@@ -193,9 +166,10 @@ void Application::glfwStartUp() {
   glfwWindowHint(GLFW_RESIZABLE, GL_FALSE); // window dimensions are static
 
   ptr_window = glfwCreateWindow(window_width, window_height, title.c_str(), NULL, NULL);
+
   if (!ptr_window) {
     glfwTerminate();
-    throw StartUpException("GLFW unable to create OpenGL context - abort program");
+    ASSERT(ptr_window, "GLFW unable to create OpenGL context - abort program");
   }
 
   glfwMakeContextCurrent(ptr_window);
@@ -207,16 +181,10 @@ void Application::glfwStartUp() {
 void Application::glewStartUp() {
   // Part 2: Initialize entry points to OpenGL functions and extensions
   GLenum err = glewInit();
-  if (GLEW_OK != err) {
-    std::stringstream string;
-    string << "Unable to initialize GLEW - error " << glewGetErrorString(err) << " abort program";
-    throw StartUpException(string.str());
-  }
-  /*if (GLEW_VERSION_4_5) {
-    std::cout << "Using glew version: " << glewGetString(GLEW_VERSION) << std::endl;
-    std::cout << "Driver supports OpenGL 4.5\n" << std::endl;
-  }
-  else throw StartUpException("Driver doesn't support OpenGL 4.5 - abort program");*/
+
+  std::stringstream string;
+  string << "Unable to initialize GLEW - error " << glewGetErrorString(err) << " abort program\n";
+  ASSERT(!GLEW_OK, string.str());
 }
 
 void Application::error_cb(int error, char const* description) {

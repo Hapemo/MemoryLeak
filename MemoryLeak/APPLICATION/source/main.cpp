@@ -33,11 +33,12 @@ Note that the C++ compiler will insert a return 0 statement if one is missing.
  child main file that runs the application
 *******************************************************************************/
 void real_main() {
-    std::signal(SIGABRT, HandleAbort);
-    std::signal(SIGTERM, HandleTerminate);
-    std::signal(SIGSEGV, HandleSegFault);
-    std::signal(SIGILL, HandleIllegal);
-    std::signal(SIGFPE, HandleInvalidOp);
+    std::signal(SIGABRT, HandleSignal);
+    std::signal(SIGTERM, HandleSignal);
+    std::signal(SIGINT, HandleSignal);
+    std::signal(SIGSEGV, HandleSignal);
+    std::signal(SIGILL, HandleSignal);
+    std::signal(SIGFPE, HandleSignal);
 
     // Part 1
     Application::init();

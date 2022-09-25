@@ -90,6 +90,7 @@ void RenderManager::Render()
 	for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
 		samplerUniform[i] = i;
 
+	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
 	for (const Entity& e : mEntities)
 	{
@@ -119,7 +120,9 @@ void RenderManager::Render()
 			continue;
 		}
 	}
+	/*************************************CREATING VERTICES END**************************************/
 
+	/*************************************TEXTURE BATCHING START*************************************/
 	//use texture program and bind VAO
 	mTextureProgram.Bind();
 	mAllocator.BindVAO();
@@ -160,7 +163,9 @@ void RenderManager::Render()
 	//unuse VAO and texture program
 	mAllocator.UnbindVAO();
 	mTextureProgram.Unbind();
+	/**************************************TEXTURE BATCHING END**************************************/
 
+	/***********************************SHAPES/DEBUG BATCHING START**********************************/
 	//use normal program for drawing shapes
 	mDefaultProgram.Bind();
 	mAllocator.BindVAO();
@@ -174,6 +179,7 @@ void RenderManager::Render()
 	//unuse VAO and normal program
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
+	/***********************************SHAPES/DEBUG BATCHING END************************************/
 
 	//unbind fbo
 	if (!mfbo.GetRenderToScreen())
@@ -187,6 +193,11 @@ void RenderManager::Render()
 	mDebugPoints.clear();
 	mDebugVertices.clear();
 	mDebugIndices.clear();
+}
+
+void RenderManager::Clear()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 /*!*****************************************************************************

@@ -14,6 +14,7 @@ running.
 #include "Helper.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
+#include "Graphics/RenderManager.h"
 #include "Graphics/SpriteManager.h"
 #include "Input.h"
 #include "Start.h"
@@ -42,14 +43,20 @@ void GameStateManager::Update() {
 
 		mCurrGameState->Update();
 		GSControlPanel();
-		int update = CHECK_TEXTURES_UPDATE();
-		if (update > -1) {
-			//spriteManager->InitializeTexture(GET_TEXTURE((size_t)update));
-		}
+
+		TRACK_PERFORMANCE("TexturesLoop");
+		//std::vector<int> update = UPDATE_TEXTURES();
+		//for (size_t index = 0; index < update.size(); ++index)
+		//	spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
+		END_TRACK("TexturesLoop");
 
 		TRACK_PERFORMANCE("Graphics");
 		mCurrGameState->Draw();
 		END_TRACK("Graphics");
+
+		TRACK_PERFORMANCE("Audio");
+		audioManager->UpdateSound();
+		END_TRACK("Audio");
 
 		Application::SecondUpdate(); // This should always be the last
 		END_TRACK("MainLoop");
@@ -57,8 +64,12 @@ void GameStateManager::Update() {
 
 	mCurrGameState->Free();
 
-	if (mNextGS != E_GS::RESTART) mCurrGameState->Unload();;
-
+	if (mNextGS != E_GS::RESTART) {
+		mCurrGameState->Unload();
+		renderManager->Clear();
+		glfwSwapBuffers(Application::getWindow());
+		renderManager->Clear();
+	}
 	mPrevGS = mCurrGS;
 	mCurrGS = mNextGS;
 }

@@ -822,7 +822,7 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 		return false;
 
 	// Dynamic
-	double tFirst{ 0 }, tLast{ Helper::dt }, tTmp{ 0 };
+	double tFirst{ 0 }, tLast{ FPSManager::dt }, tTmp{ 0 };
 
 	// ------ X axis -----
 	if (static_cast<double>(Vb.x) < 0.0) {

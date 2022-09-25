@@ -55,6 +55,16 @@ void SpriteManager::InitializeTexture(ResourceManager::TextureData& _texData)
 	UNLOAD_ASSET(_texData.data);
 }
 
+/*!*****************************************************************************
+\brief
+Free all textures in OpenGL memory.
+*******************************************************************************/
+void SpriteManager::FreeTextures()
+{
+	for (GLuint* i : GET_TEXTURE_IDS())
+		glDeleteTextures(1, i);
+}
+
 //------------------------------------------------------------------------------
 // Getter and Setters
 //------------------------------------------------------------------------------

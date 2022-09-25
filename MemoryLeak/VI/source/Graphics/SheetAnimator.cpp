@@ -40,7 +40,7 @@ void SheetAnimator::Animate(const Entity& _e)
 	if (!_e.HasComponent<SheetAnimation>()) return;
 
 	//decrement time to swap
-	_e.GetComponent<SheetAnimation>().timeToFrameSwap -= Helper::dt;
+	_e.GetComponent<SheetAnimation>().timeToFrameSwap -= FPSManager::dt;
 
 	if (_e.GetComponent<SheetAnimation>().timeToFrameSwap >= 0) return;
 

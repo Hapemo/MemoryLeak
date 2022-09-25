@@ -2,34 +2,28 @@
 #include <csignal>
 #include "Logger.h"
 
-void HandleAbort(int signal_number)
+void HandleSignal(int _signalNumber)
 {
-  (void)signal_number;
-    LOG_CRASH("The program has called an abortion.");
-}
-
-void HandleTerminate(int signal_number)
-{
-  (void)signal_number;
-  LOG_CRASH("The program has received a termination request.");
-}
-
-void HandleSegFault(int signal_number)
-{
-  (void)signal_number;
-  LOG_CRASH("The program has detected an invalid access to storage.");
-}
-
-void HandleIllegal(int signal_number)
-{
-  (void)signal_number;
-  LOG_CRASH("The program has detected an illegal instruction.");
-}
-
-void HandleInvalidOp(int signal_number)
-{
-  (void)signal_number;
-  LOG_CRASH("The program has detected an erroneous arithmetic operation.");
+    switch (_signalNumber) {
+    case SIGABRT:
+        LOG_CRASH("The program has called an abortion.");
+        break;
+    case SIGTERM:
+        LOG_CRASH("The program has received a termination request.");
+        break;
+    case SIGINT:
+        LOG_CRASH("The program has been interrupted externally.");
+        break;
+    case SIGSEGV:
+        LOG_CRASH("The program has detected an invalid access to storage.");
+        break;
+    case SIGILL:
+        LOG_CRASH("The program has detected an illegal instruction.");
+        break;
+    case SIGFPE:
+        LOG_CRASH("The program has detected an erroneous arithmetic operation.");
+        break;
+    }
 }
 
 /*
