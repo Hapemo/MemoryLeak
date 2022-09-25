@@ -12,6 +12,10 @@ Game state for testing physics
 
 
 void GameState1::Load() {
+    INIT_TEXTURES("Spritesheets");
+
+    for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
+        spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
     renderManager->SetVectorLengthModifier(5.f);
     renderManager->SetDebug(true);
 }
@@ -48,6 +52,7 @@ void GameState1::Update() {
     physics2DManager->Update(Helper::dt);
     collision2DManager->Update(mEntities);
     END_TRACK("Physics");
+    sheetAnimator->Animate();
 }
 
 void GameState1::Draw() {
