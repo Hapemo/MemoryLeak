@@ -460,6 +460,8 @@ void LevelEditor::EntityManager()
 				if (ImGui::TreeNode("Lifespan")) {
 					//ImGui::Text("Lifespan");
 					ImGui::InputFloat("Lifespan", &e.GetComponent<Lifespan>().limit);
+					if (ImGui::Button("Remove Component"))
+						e.RemoveComponent<Lifespan>();
 					ImGui::TreePop();
 				}
 			}
@@ -497,6 +499,8 @@ void LevelEditor::EntityManager()
 					ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 					tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 					transformManager->SetRotation(e, tmpFloat);
+					if (ImGui::Button("Remove Component"))
+						e.RemoveComponent<Transform>();
 					ImGui::TreePop();
 				}
 				
@@ -545,6 +549,8 @@ void LevelEditor::EntityManager()
 					ImGui::EndDragDropTarget();
 				}
 				ImGui::InputInt("Layer", &e.GetComponent<Sprite>().layer);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<Sprite>();
 				ImGui::TreePop();
 				}
 			}
@@ -591,6 +597,8 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage);
 				ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
 				ImGui::InputInt("currentImageIndex", &e.GetComponent<Animation>().currentImageIndex);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<Animation>();
 				ImGui::TreePop();
 				}
 			}
@@ -602,6 +610,8 @@ void LevelEditor::EntityManager()
 				ImGui::InputInt("currFrameIndex", (int*)&e.GetComponent<SheetAnimation>().currFrameIndex);
 				ImGui::InputFloat("timePerFrame", &e.GetComponent<SheetAnimation>().timePerFrame);
 				ImGui::InputFloat("timeToFrameSwap", &e.GetComponent<SheetAnimation>().timeToFrameSwap);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<SheetAnimation>();
 				ImGui::TreePop();
 				}
 			}
@@ -620,6 +630,8 @@ void LevelEditor::EntityManager()
 				e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 				ImGui::Checkbox("Box RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<RectCollider>();
 				ImGui::TreePop();
 			}
 			}
@@ -637,6 +649,8 @@ void LevelEditor::EntityManager()
 				e.GetComponent<CircleCollider>().scaleOffset = { scale };
 
 				ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<CircleCollider>();
 				ImGui::TreePop();
 			}
 			}
@@ -652,6 +666,8 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset);
 				ImGui::InputFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset);
 				ImGui::Checkbox("RenderFlag", &e.GetComponent<Edge2DCollider>().renderFlag);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<Edge2DCollider>();
 				ImGui::TreePop();
 			}
 			}
@@ -665,6 +681,8 @@ void LevelEditor::EntityManager()
 				e.GetComponent<Point2DCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 				ImGui::Checkbox("RenderFlag", &e.GetComponent<Point2DCollider>().renderFlag);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<Point2DCollider>();
 				ImGui::TreePop();
 			}
 			}
@@ -676,6 +694,8 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("Speed", &e.GetComponent<Physics2D>().speed);
 				ImGui::InputFloat("moveDirection", &e.GetComponent<Physics2D>().moveDirection);
 				ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<Physics2D>();
 				ImGui::TreePop();
 				}
 			}
@@ -685,6 +705,8 @@ void LevelEditor::EntityManager()
 				//ImGui::Text("Audio");
 				ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
 				ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<Audio>();
 				ImGui::TreePop();
 			}
 			}
@@ -722,6 +744,8 @@ void LevelEditor::EntityManager()
 						e.GetComponent<Stuff>().range = range;
 					}
 				}*/
+				if (ImGui::Button("Remove Component"))
+					e.RemoveComponent<Stuff>();
 				ImGui::TreePop();
 				}
 			}
