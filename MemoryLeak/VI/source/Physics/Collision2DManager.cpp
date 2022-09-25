@@ -289,7 +289,7 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 		return false;
 
 	// Dynamic
-	double tFirst{ 0 }, tLast{ Helper::dt }, tTmp{ 0 };
+	double tFirst{ 0 }, tLast{ FPSManager::dt }, tTmp{ 0 };
 
 	// ------ X axis -----
 	if (static_cast<double>(Vb.x) < 0.0) {
@@ -354,8 +354,8 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 
 bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData) {
 	// Find the relative velocity of both circles
-	Math::Vec2 relVel{ (_collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(Helper::dt)) -
-					   (_collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(Helper::dt)) };
+	Math::Vec2 relVel{ (_collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(FPSManager::dt)) -
+					   (_collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(FPSManager::dt)) };
 // Static
 	// If relVel is 0
 	if (relVel == Math::Vec2{ 0.f, 0.f }) {

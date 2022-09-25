@@ -23,7 +23,6 @@ int Application::window_width{};
 int Application::window_height{};
 std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
-float Application::target_fps = 0;
 bool Application::editorMode = false;
 
 void Application::startup() {
@@ -47,19 +46,17 @@ void Application::init() {
   // Part 1
   startup();
 
-  // Part 2
-  Helper::print_specs();
   SystemInit();
 }
 
 void Application::FirstUpdate() {
-  Helper::prev_time = glfwGetTime();
+  FPSManager::mPrevTime = glfwGetTime();
 
   // Part 1
   glfwPollEvents();
   
   // Part 2
-  Helper::CalcFPS(0);
+  FPSManager::CalcFPS(0);
 }
 
 void Application::SecondUpdate() {
@@ -91,11 +88,8 @@ void Application::SecondUpdate() {
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 
-  // Calculate delta time
-  //Sleep(1);
-  //while ((glfwGetTime() - Helper::prev_time) < (double)(1.0 / Application::getTargetFPS())) {}
-  Helper::CalcDeltaTime();
-  
+  FPSManager::LimitFPS();
+  FPSManager::CalcDeltaTime();
 }
 
 void Application::exit() {
@@ -129,7 +123,7 @@ void Application::loadConfig(std::string path) {
     if (key == "window_width") window_width = stoi(value);
     else if (key == "window_height") window_height = stoi(value);
     else if (key == "title") title = value;
-    else if (key == "fps_limit") target_fps = static_cast<float>(stoi(value));
+    else if (key == "fps_limit") FPSManager::mLimitFPS = static_cast<double>(stoi(value));
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";
@@ -139,13 +133,13 @@ void Application::loadConfig(std::string path) {
 // _s, time interval in updating titlebar, in seconds
 void Application::PrintTitleBar(double _s) {
   static double timeElapsed{};
-  timeElapsed += Helper::dt;
+  timeElapsed += FPSManager::dt;
   if (timeElapsed > _s) {
     timeElapsed = 0;
 
     // write window title with current fps ...
     std::stringstream sstr;
-    sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " << Helper::fps << " | " << Helper::dt << " | " << GET_SYSTEMS_PERFORMANCES();
+    sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " << FPSManager::fps << " | " << FPSManager::dt << " | " << GET_SYSTEMS_PERFORMANCES();
     glfwSetWindowTitle(Application::getWindow(), sstr.str().c_str());
   }
 }

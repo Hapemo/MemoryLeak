@@ -49,7 +49,7 @@ void GameState1::Init() {
 
 void GameState1::Update() {
     TRACK_PERFORMANCE("Physics");
-    physics2DManager->Update(Helper::dt);
+    physics2DManager->Update(FPSManager::dt);
     collision2DManager->Update(mEntities);
     END_TRACK("Physics");
     sheetAnimator->Animate();
