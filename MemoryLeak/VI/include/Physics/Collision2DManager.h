@@ -61,25 +61,14 @@ public:
 	bool GetEdgeRenderFlag(const Entity& _e);
 	void SetEdgeRenderFlag(const Entity& _e, const bool& _renderFlag);
 
+	// Point
+	Point2DCollider& GetPointCollider(const Entity& _e);
+	Math::Vec2 GetPointCenterOffset(const Entity& _e);
+	void SetPointCenterOffset(const Entity& _e, const Math::Vec2& _centerOffset);
+	bool GetPointRenderFlag(const Entity& _e);
+	void SetPointRenderFlag(const Entity& _e, const bool& _renderFlag);
+
 	// Collision Checks / Response functions
-
-		// May need to change
-		// {
-		//template<typename T>
-		//T GetCollider(const Entity &e);
-
-		//Math::Vec2 GetColliderCenterOffset(const Entity &e);
-		//void SetColliderCenterOffset(const Entity &e, const Math::Vec2 &_centerOffset);
-
-		//template<typename T>
-		//T GetColliderScaleOffset(const Entity &e);
-		//bool SetColliderScaleOffset(const Entity &e, const float &_scaleOffset);
-		//bool SetColliderScaleOffset(const Entity &e, const Math::Vec2 &_scaleOffset);
-
-		//bool GetColliderRenderFlag(const Entity &e);
-		//void SetColliderRenderFlag(const Entity &e, const bool &_renderFlag);
-		// }
-
 	bool CheckCollision(CollisionStore& _collisionData);
 	void ResolveCollision(CollisionStore& _collisionData);
 

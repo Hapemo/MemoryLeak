@@ -9,13 +9,18 @@
 		functions which handles the dynamics of entities stored in its list
 *******************************************************************************/
 
-// Include header
+// -----------------------------
+// Include files
+// -----------------------------
 #include "ECSManager.h"
 
+// -----------------------------
 // Constant values
-const double fixedDT{ 1.0 / 60.0 },		// Fixed delta time step of 1/60 steps a second
-			 accumulatedDTCap{ 1.0 };	// Accumulated cannot store more than 1 second worth of updates
-const float  velocityCap{ 0.99f };		// Velocity multipler cap to reach max velocity
+// -----------------------------
+const double fixedDT{ 1.0 / 60.0 },			// Fixed delta time step of 1/60 steps a second
+			 accumulatedDTCap{ 1.0 };		// Accumulated cannot store more than 1 second worth of updates
+const float  velocityCap{ 0.99f };			// Velocity multipler cap to reach max velocity
+const Math::Vec2 gravityForce{ 0.f, -9.81f };// Gravity pull
 
 
 /*!*****************************************************************************
@@ -59,15 +64,16 @@ NULL
 void Physics2DManager::Step() {
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mPhysicsObjectList) {
+		// If entity is a gravity enabled object, enact gravity force on it
+		
 		// Add movement as a force acting on the entity
-		Physics2DManager::AddForces(e, Math::Vec2{ glm::cos(Physics2DManager::GetMoveDirection(e)), glm::sin(Physics2DManager::GetMoveDirection(e)) } *Physics2DManager::GetSpeed(e));
+		Physics2DManager::AddForces(e, Math::Vec2{ cos(Physics2DManager::GetMoveDirection(e)), sin(Physics2DManager::GetMoveDirection(e)) } * Physics2DManager::GetSpeed(e));
 		// Compute acceleration and add to velocity
 		Physics2DManager::AddVelocity(e, (Physics2DManager::GetForces(e) / Physics2DManager::GetMass(e)) * static_cast<float>(fixedDT));
 		// Cap velocity
 		Physics2DManager::ScaleVelocity(e, velocityCap);
 		// Move entity by velocitys
-		e.GetComponent<Transform>().translation.x += Physics2DManager::GetVelocity(e).x * static_cast<float>(fixedDT);
-		e.GetComponent<Transform>().translation.y += Physics2DManager::GetVelocity(e).y * static_cast<float>(fixedDT);
+		e.GetComponent<Transform>().translation += Physics2DManager::GetVelocity(e) * static_cast<float>(fixedDT);
 
 		// Reset forces on the object for next step
 		Physics2DManager::SetForces(e, Math::Vec2{ 0.f, 0.f });
@@ -380,7 +386,7 @@ GetForces function that returns the stored value of the entity's net forces
 \param const Entity &
 A reference to a read-only Entity to
 
-\return glm::vec
+\return Math::Vec2
 A copy of the value of the entity's net forces
 *******************************************************************************/
 Math::Vec2 Physics2DManager::GetForces(const Entity& _e) {
@@ -425,22 +431,18 @@ void Physics2DManager::AddForces(const Entity& _e, const Math::Vec2& _forces) {
 
 /*!*****************************************************************************
 \brief
-DeductForces function that subtracts from the stored value of the entity's forces
-the given force value to become the updated net forces
+AddGravity function that adds the gravity force value to the stored value of the
+entity's forces to become the updated net forces
 
 \param const Entity &
 A reference to a read-only Entity to set
 
-\param const Math::Vec2 &
-A reference to a read-only value containing force to subtract
-
 \return void
 NULL
 *******************************************************************************/
-//void Physics2DManager::DeductForces(const Entity &_e, const Math::Vec2 &_forces){
-//	//Physics2DManager::AddForces(_e, -_forces);
-//	Physics2DManager::GetPhysicsComponent(_e).forces -= _forces;
-//}
+void Physics2DManager::AddGravity(const Entity& _e) {
+	Physics2DManager::AddForces(_e, Physics2DManager::GetMass(_e) * gravityForce);
+}
 
 /*!*****************************************************************************
 \brief

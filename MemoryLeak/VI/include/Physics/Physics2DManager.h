@@ -50,20 +50,20 @@ public:
 	void Step();
 
 
-	// -----------------------------
-	// System object list functions
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		IsEmptyPhyObjList function that checks if the system's stored entity list is empty.
-		If yes, the function returns true. Otherwise, it returns false
+// -----------------------------
+// System object list functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	IsEmptyPhyObjList function that checks if the system's stored entity list is empty.
+	If yes, the function returns true. Otherwise, it returns false
 
-		\param void
-		NULL
+	\param void
+	NULL
 
-		\return bool
-		Evaluated result of whether the list is empty
-		*******************************************************************************/
+	\return bool
+	Evaluated result of whether the list is empty
+	*******************************************************************************/
 	bool IsEmptyPhyObjList();
 
 	/*!*****************************************************************************
@@ -122,20 +122,20 @@ public:
 	void UpdatePhyObjList(const std::set<Entity>& _entityList);
 
 
-	// -----------------------------
-	// Component-related functions
-	// -----------------------------
-		 /*!*****************************************************************************
-		\brief
-		HasPhysicsComponent function that checks if the given entity has a physics
-		component. If yes, the function returns true. Otherwise it returns false.
+// -----------------------------
+// Component-related functions
+// -----------------------------
+		/*!*****************************************************************************
+	\brief
+	HasPhysicsComponent function that checks if the given entity has a physics
+	component. If yes, the function returns true. Otherwise it returns false.
 
-		\param const Entity &
-		A reference to a read-only Entity to check for
+	\param const Entity &
+	A reference to a read-only Entity to check for
 
-		\return bool
-		Evaluated result of whether the entity has a physics component
-		*******************************************************************************/
+	\return bool
+	Evaluated result of whether the entity has a physics component
+	*******************************************************************************/
 	bool HasPhysicsComponent(const Entity& _e);
 
 	/*!*****************************************************************************
@@ -197,19 +197,19 @@ public:
 	*******************************************************************************/
 	Physics2D& GetPhysicsComponent(const Entity& _e);
 
-	// -----------------------------
-	// Get / Set functions
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		GetMass function that returns the stored value of the entity's mass
+// -----------------------------
+// Get / Set functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	GetMass function that returns the stored value of the entity's mass
 
-		\param const Entity &
-		A reference to a read-only Entity to get from
+	\param const Entity &
+	A reference to a read-only Entity to get from
 
-		\return float
-		A copy of the value of the entity's mass
-		*******************************************************************************/
+	\return float
+	A copy of the value of the entity's mass
+	*******************************************************************************/
 	float GetMass(const Entity& _e);
 
 	/*!*****************************************************************************
@@ -292,7 +292,7 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to
 
-	\return glm::vec
+	\return Math::Vec2
 	A copy of the value of the entity's net forces
 	*******************************************************************************/
 	Math::Vec2 GetForces(const Entity& _e);
@@ -328,6 +328,19 @@ public:
 	NULL
 	*******************************************************************************/
 	void AddForces(const Entity& _e, const Math::Vec2& _forces);
+
+	/*!*****************************************************************************
+	\brief
+	AddGravity function that adds the gravity force value to the stored value of the
+	entity's forces to become the updated net forces
+
+	\param const Entity &
+	A reference to a read-only Entity to set
+
+	\return void
+	NULL
+	*******************************************************************************/
+	void AddGravity(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
