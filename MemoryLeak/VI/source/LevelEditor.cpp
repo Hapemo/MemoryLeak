@@ -849,7 +849,7 @@ void  LevelEditor::AssetManager()
 				my_image2_texture = spriteManager->GetTextureID(texPath);
 				if (my_image2_texture)
 				{
-				ImGui::ImageButton(static_cast<void*>(&my_image2_texture), buttonSize, ImVec2(0, 1), ImVec2(1, 0));
+				ImGui::ImageButton((ImTextureID)(my_image2_texture), buttonSize, ImVec2(0, 1), ImVec2(1, 0));
 				if (ImGui::BeginDragDropSource())
 				{
 					const wchar_t* itemPath = (wchar_t*)texPath.c_str();
@@ -907,7 +907,7 @@ void LevelEditor::ViewPortManager()
 		viewportSize.y = viewportSize.x / 16 * 9;
 	}
 	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth()- viewportSize.x)*0.5f, 60.f));
-	ImGui::Image(static_cast<void*>(&frameBuffer), { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
+	ImGui::Image((ImTextureID)(frameBuffer), { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
 
 	if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
 	{
