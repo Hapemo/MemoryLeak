@@ -104,7 +104,7 @@ void Application::loadConfig(std::string path) {
   // Opening file
   std::fstream file;
   file.open(path, std::ios_base::in);
-  ASSERT(file.is_open(), "File " + path + " not found.\n");
+  ASSERT(!file.is_open(), "File " + path + " not found.\n");
   
   std::map<std::string, std::string> config = Util::TextFileToMap(file);
 
@@ -116,7 +116,7 @@ void Application::loadConfig(std::string path) {
 #ifdef _DEBUG
     std::cout << key << " | " << value << '\n';
 #endif
-    ASSERT(value.length() > 0, "Config error: " + key + " not found!\n");
+    ASSERT(value.length() < 1, "Config error: " + key + " not found!\n");
 
     if (key == "window_width") window_width = stoi(value);
     else if (key == "window_height") window_height = stoi(value);
@@ -144,7 +144,7 @@ void Application::PrintTitleBar(double _s) {
 
 void Application::glfwStartUp() {
   // Part 1
-  ASSERT(glfwInit(), "GLFW init has failed - abort program!!!\n");
+  ASSERT(!glfwInit(), "GLFW init has failed - abort program!!!\n");
   
   const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
@@ -169,7 +169,7 @@ void Application::glfwStartUp() {
 
   if (!ptr_window) {
     glfwTerminate();
-    ASSERT(ptr_window, "GLFW unable to create OpenGL context - abort program");
+    ASSERT(!ptr_window, "GLFW unable to create OpenGL context - abort program");
   }
 
   glfwMakeContextCurrent(ptr_window);
@@ -184,7 +184,7 @@ void Application::glewStartUp() {
 
   std::stringstream string;
   string << "Unable to initialize GLEW - error " << glewGetErrorString(err) << " abort program\n";
-  ASSERT(!GLEW_OK, string.str());
+  ASSERT(GLEW_OK, string.str());
 }
 
 void Application::error_cb(int error, char const* description) {
