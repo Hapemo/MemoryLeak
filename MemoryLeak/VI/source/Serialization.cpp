@@ -27,8 +27,8 @@ None.
 Math::Vec2 GetVec2(Value& vecIn)
 {
 	Math::Vec2 vecOut;
-	vecOut.x = vecIn["X"].GetDouble();
-	vecOut.y = vecIn["Y"].GetDouble();
+	vecOut.x = vecIn["X"].GetFloat();
+	vecOut.y = vecIn["Y"].GetFloat();
 	return vecOut;
 }
 
@@ -65,8 +65,8 @@ void SerializationManager::LoadScene(std::string _filename)
 		
 		Entity e{ ECS::CreateEntity() };
 		Value entity(kObjectType);
-		std::string s("Entity" + std::to_string(i));
-		Value index(s.c_str(), s.size(), doc.GetAllocator());
+		std::string str("Entity" + std::to_string(i));
+		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
 		if (!doc.HasMember(index))
 			std::cout << "error   "<<i;
 		entity = doc[index];
@@ -89,11 +89,11 @@ void SerializationManager::LoadScene(std::string _filename)
 		{
 			Math::Vec2 s, t;
 			float r;
-			s.x = entity["Transform"]["scale"]["X"].GetDouble();
-			s.y = entity["Transform"]["scale"]["Y"].GetDouble();
-			r = (float)entity["Transform"]["rotation"].GetDouble();
-			t.x = entity["Transform"]["translation"]["X"].GetDouble();
-			t.y = entity["Transform"]["translation"]["Y"].GetDouble();
+			s.x = entity["Transform"]["scale"]["X"].GetFloat();
+			s.y = entity["Transform"]["scale"]["Y"].GetFloat();
+			r = (float)entity["Transform"]["rotation"].GetFloat();
+			t.x = entity["Transform"]["translation"]["X"].GetFloat();
+			t.y = entity["Transform"]["translation"]["Y"].GetFloat();
 		
 			e.AddComponent<Transform>({ s, r, t }); 
 		}
@@ -114,9 +114,9 @@ void SerializationManager::LoadScene(std::string _filename)
 			std::vector<GLuint> images;
 			Value a(kObjectType);
 			a = entity["Animation"]["images"].GetArray();
-			for (int i = 0; i < a.Size(); ++i)
+			for (int j = 0; j < (int)a.Size(); ++j)
 			{
-				images.push_back((GLuint)a[i].GetInt());
+				images.push_back((GLuint)a[j].GetInt());
 			}
 			float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
 			float timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
