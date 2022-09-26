@@ -11,6 +11,14 @@ Game state for testing physics
 #include "Application.h"
 
 void GameState3::Load() {
+    INIT_TEXTURES("Background");
+    INIT_TEXTURES("Icons");
+    INIT_TEXTURES("Menu");
+    INIT_TEXTURES("Sprites");
+    INIT_TEXTURES("Spritesheets");
+    for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
+        spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
+
 	serializationManager->LoadScene("SceneJ");
 }
 
@@ -47,11 +55,11 @@ void GameState3::Free() {
 }
 
 void GameState3::Unload() {
-    //renderManager->Clear();
-    //spriteManager->FreeTextures();
-    //FREE_RESOURCES();
-   // levelEditor->Exit();
-    //renderManager->RenderToScreen();
+    //levelEditor->Exit();
+    renderManager->RenderToScreen();
+    renderManager->Clear();
+    spriteManager->FreeTextures();
+    FREE_RESOURCES();
 }
 
 

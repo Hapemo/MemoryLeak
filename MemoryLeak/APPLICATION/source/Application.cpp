@@ -68,18 +68,21 @@ void Application::SecondUpdate() {
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
   {
-      renderManager->RenderToFrameBuffer();
     levelEditor->LevelEditor::Window();
     levelEditor->LevelEditor::Update();
   }
-  else
-      renderManager->RenderToScreen();
+  
 
   END_TRACK("Editor");
 
   if (Input::CheckKey(STATE::RELEASE, KEY::E))
   {
       editorMode = !editorMode;
+      if (editorMode)
+        renderManager->RenderToFrameBuffer();
+      else
+          renderManager->RenderToScreen();
+
   }
   // Reset input
   Input::updatePrevKeyStates();
@@ -92,7 +95,8 @@ void Application::SecondUpdate() {
 }
 
 void Application::exit() {
-    levelEditor->Exit();
+  levelEditor->Exit();
+  //audioManager->~AudioManager();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();
   // Part 2
