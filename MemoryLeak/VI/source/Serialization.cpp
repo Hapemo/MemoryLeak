@@ -89,11 +89,13 @@ void SerializationManager::LoadScene(std::string _filename)
 		{
 			Math::Vec2 s, t;
 			float r;
-			s.x = entity["Transform"]["scale"]["X"].GetFloat();
-			s.y = entity["Transform"]["scale"]["Y"].GetFloat();
+			s = GetVec2(entity["Transform"]["scale"]);
 			r = (float)entity["Transform"]["rotation"].GetFloat();
+			t = GetVec2(entity["Transform"]["translation"]);
+			/*s.x = entity["Transform"]["scale"]["X"].GetFloat();
+			s.y = entity["Transform"]["scale"]["Y"].GetFloat();
 			t.x = entity["Transform"]["translation"]["X"].GetFloat();
-			t.y = entity["Transform"]["translation"]["Y"].GetFloat();
+			t.y = entity["Transform"]["translation"]["Y"].GetFloat();*/
 		
 			e.AddComponent<Transform>({ s, r, t }); 
 		}
