@@ -27,8 +27,8 @@ None.
 Math::Vec2 GetVec2(Value& vecIn)
 {
 	Math::Vec2 vecOut;
-	vecOut.x = vecIn["X"].GetDouble();
-	vecOut.y = vecIn["Y"].GetDouble();
+	vecOut.x = vecIn["X"].GetFloat();
+	vecOut.y = vecIn["Y"].GetFloat();
 	return vecOut;
 }
 
@@ -65,8 +65,8 @@ void SerializationManager::LoadScene(std::string _filename)
 		
 		Entity e{ ECS::CreateEntity() };
 		Value entity(kObjectType);
-		std::string s("Entity" + std::to_string(i));
-		Value index(s.c_str(), s.size(), doc.GetAllocator());
+		std::string str("Entity" + std::to_string(i));
+		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
 		if (!doc.HasMember(index))
 			std::cout << "error   "<<i;
 		entity = doc[index];
@@ -89,11 +89,11 @@ void SerializationManager::LoadScene(std::string _filename)
 		{
 			Math::Vec2 s, t;
 			float r;
-			s.x = entity["Transform"]["scale"]["X"].GetDouble();
-			s.y = entity["Transform"]["scale"]["Y"].GetDouble();
-			r = (float)entity["Transform"]["rotation"].GetDouble();
-			t.x = entity["Transform"]["translation"]["X"].GetDouble();
-			t.y = entity["Transform"]["translation"]["Y"].GetDouble();
+			s.x = entity["Transform"]["scale"]["X"].GetFloat();
+			s.y = entity["Transform"]["scale"]["Y"].GetFloat();
+			r = (float)entity["Transform"]["rotation"].GetFloat();
+			t.x = entity["Transform"]["translation"]["X"].GetFloat();
+			t.y = entity["Transform"]["translation"]["Y"].GetFloat();
 		
 			e.AddComponent<Transform>({ s, r, t }); 
 		}
@@ -105,7 +105,8 @@ void SerializationManager::LoadScene(std::string _filename)
 			c.b = (GLubyte)entity["Sprite"]["color"]["b"].GetInt();
 			c.a = (GLubyte)entity["Sprite"]["color"]["a"].GetInt();
 			SPRITE s = (SPRITE)entity["Sprite"]["sprite"].GetInt();
-			GLuint t = (GLuint)entity["Sprite"]["texture"].GetInt();
+			GLuint t = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
+			//GLuint t = (GLuint)entity["Sprite"]["texture"].GetInt();
 			int l = entity["Sprite"]["layer"].GetInt();
 			e.AddComponent<Sprite>({ c, s, t ,l});
 		}
@@ -114,9 +115,9 @@ void SerializationManager::LoadScene(std::string _filename)
 			std::vector<GLuint> images;
 			Value a(kObjectType);
 			a = entity["Animation"]["images"].GetArray();
-			for (int i = 0; i < a.Size(); ++i)
+			for (int j = 0; j < (int)a.Size(); ++j)
 			{
-				images.push_back((GLuint)a[i].GetInt());
+				images.push_back((GLuint)a[j].GetInt());
 			}
 			float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
 			float timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
@@ -308,7 +309,8 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmpc.AddMember(StringRef("a"), e.GetComponent<Sprite>().color.a, allocator);
 			tmp.AddMember(StringRef("color"), tmpc, allocator);
 			tmp.AddMember(StringRef("sprite"), (int)e.GetComponent<Sprite>().sprite, allocator);
-			tmp.AddMember(StringRef("texture"), (int)e.GetComponent<Sprite>().texture, allocator);
+			std::string tex = spriteManager->GetTexturePath(spriteManager->GetTexture(e));
+			tmp.AddMember(StringRef("texture"), StringRef(tex.c_str()), allocator);
 			tmp.AddMember(StringRef("layer"), e.GetComponent<Sprite>().layer, allocator);
 			entity.AddMember(StringRef("Sprite"), tmp, allocator);
 		}

@@ -80,6 +80,17 @@ void real_main() {
     Application::exit();
 }
 
+void EnableMemoryLeakChecking(int breakAlloc = -1)
+{
+    //Set the leak checking flag
+    int tmpDbgFlag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+    tmpDbgFlag |= _CRTDBG_LEAK_CHECK_DF;
+    _CrtSetDbgFlag(tmpDbgFlag);
+
+    //If a valid break alloc provided set the breakAlloc
+    if (breakAlloc != -1) _CrtSetBreakAlloc(breakAlloc);
+}
+
 /*!*****************************************************************************
  \brief
  The master main file that runs a child main file and catches exceptions that it
@@ -112,7 +123,7 @@ int main() {
         //throwing exception
         THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "File for vertex shader not found!");
         */
-
+        //EnableMemoryLeakChecking(22388);
         real_main();
     }
     catch (const std::exception& e) {

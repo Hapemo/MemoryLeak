@@ -14,7 +14,7 @@
 #define GET_RESOURCES(...) ResourceManager::GetInstance()->GetResources(__VA_ARGS__)
 #define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
 
-#define INIT_TEXTURES(...) ResourceManager::GetInstance()->InitializeTextures(__VA_ARGS__)
+#define LOAD_TEXTURES(...) ResourceManager::GetInstance()->LoadTextures(__VA_ARGS__)
 #define UPDATE_TEXTURES(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
 
 class ResourceManager : public Singleton<ResourceManager> {
@@ -42,18 +42,19 @@ public:
 	ResourceManager(const ResourceManager&) = delete;
 	const ResourceManager& operator=(const ResourceManager&) = delete;
 
-	void InitializeTextures(std::string _filepath);
+	void LoadTextures(std::string _filepath);
 	std::vector<int> UpdateTextures();
-	TextureData& GetTextureData(size_t _index);
-	std::vector<ResourceData>& GetResources();
 	void FreeResources();
 
 	void UpdateTexture(const size_t _index);
 	TextureData LoadTexture(const std::string _filepath);
 	void UnloadTexture(void* _data);
 
+	TextureData& GetTextureData(size_t _index) { return mResources[_index].texture; }
+	std::vector<ResourceData>& GetResources() { return mResources; }
+
 	float GetAspectRatio(const GLuint _id);
 	GLuint GetTextureID(const std::string& _texture_path);
-	std::vector<GLuint*>	GetTextureIDs();
+	std::vector<GLuint*> GetTextureIDs();
 	std::string	GetTexturePath(GLint _id);
 };
