@@ -31,6 +31,7 @@ void GameState3::Update() {
     TRACK_PERFORMANCE("Physics");
     physics2DManager->Update(FPSManager::dt);
     END_TRACK("Physics");
+    animator->Animate();
     sheetAnimator->Animate();
 
     TRACK_PERFORMANCE("Editor");

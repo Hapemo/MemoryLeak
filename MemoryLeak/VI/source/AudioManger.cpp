@@ -63,6 +63,7 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
     mSfxSound["DAMAGE.wav"] = snd;
     system->createSound(",,\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
     mSfxSound["HEALTH.wav"] = snd;
+    //delete snd;
     //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
 }
 /*!*****************************************************************************
