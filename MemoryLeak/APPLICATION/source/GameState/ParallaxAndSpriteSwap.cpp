@@ -13,8 +13,8 @@ Game state for testing physics
 #include "Input.h"
 
 void ParallaxAndSpriteSwap::Load() {
-    INIT_TEXTURES("Background");
-    INIT_TEXTURES("Spritesheets");
+    LOAD_TEXTURES("Background");
+    LOAD_TEXTURES("Spritesheets");
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 }

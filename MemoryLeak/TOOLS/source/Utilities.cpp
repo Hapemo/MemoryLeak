@@ -38,3 +38,12 @@ std::map<std::string, std::string> Util::TextFileToMap(std::fstream& _file) {
 
   return data;
 }
+
+void Util::MemoryLeak() {
+    #include <cstdlib>
+    #include <crtdbg.h>
+
+    #ifdef _DEBUG
+    #define new new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+    #endif
+}

@@ -7,7 +7,7 @@
 #include <algorithm>
 #include "ResourceManager.h"
 
-void ResourceManager::InitializeTextures(std::string _filepath) {
+void ResourceManager::LoadTextures(std::string _filepath) {
 	const std::filesystem::path tex_dir{ "..\\resources\\Textures\\" + _filepath };
 	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(tex_dir)) {
 		std::string str = entry.string();
@@ -39,14 +39,6 @@ void ResourceManager::UpdateTexture(const size_t _index)
 	//std::cout << mResources[_index].texture.path << std::endl;
 }
 
-std::vector<ResourceManager::ResourceData>& ResourceManager::GetResources() {
-	return mResources;
-}
-
-ResourceManager::TextureData& ResourceManager::GetTextureData(size_t _index) {
-	return mResources[_index].texture;
-}
-
 /*
 	check if files have changed/been updated
 	> check last updated time
@@ -64,7 +56,6 @@ std::vector<int> ResourceManager::UpdateTextures() {
 			std::ifstream fopen(mResources[index].texture.path);
 			if (!fopen.is_open()) {
 				fopen.close();
-				UnloadTexture(mResources[index].texture.data);
 				mResources.erase(mResources.begin() + index);
 				continue;
 			}
@@ -88,9 +79,13 @@ GLuint ResourceManager::GetTextureID(const std::string& _texturePath) {
 }
 
 std::string	ResourceManager::GetTexturePath(GLint _id) {
+	std::string path = "";
 	for (size_t index = 0; index < mResources.size(); ++index)
-		if ((GLint)mResources[index].texture.id == (GLint)_id) return mResources[index].texture.path;
-	return "";
+		if ((GLint)mResources[index].texture.id == (GLint)_id) {
+			path = mResources[index].texture.path;
+			path = path.substr(13);
+		}
+	return path;
 }
 
 std::vector<GLuint*> ResourceManager::GetTextureIDs() {
