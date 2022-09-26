@@ -88,7 +88,7 @@ struct Entity {
 	Remove a component from entity
 	*******************************************************************************/
 	template<typename T>
-	void RemoveComponent();
+	void RemoveComponent() const;
 
 	/*!*****************************************************************************
 	Checks if an entity has the indicated component

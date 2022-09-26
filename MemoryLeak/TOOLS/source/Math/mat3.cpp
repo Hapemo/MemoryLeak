@@ -3,56 +3,56 @@
 #include "mat32.h"
 
 namespace Math {
-  Mat3::Mat3(float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3) {
-    mtx2[0] = x1;
-    mtx2[1] = y1;
-    mtx2[2] = z1;
-    mtx2[3] = x2;
-    mtx2[4] = y2;
-    mtx2[5] = z2;
-    mtx2[6] = x3;
-    mtx2[7] = y3;
-    mtx2[8] = z3;
+  Mat3::Mat3(float _x1, float _y1, float _z1, float _x2, float _y2, float _z2, float _x3, float _y3, float _z3) {
+    mMtx2[0] = _x1;
+    mMtx2[1] = _y1;
+    mMtx2[2] = _z1;
+    mMtx2[3] = _x2;
+    mMtx2[4] = _y2;
+    mMtx2[5] = _z2;
+    mMtx2[6] = _x3;
+    mMtx2[7] = _y3;
+    mMtx2[8] = _z3;
   }
 
-  Mat3::Mat3(const Vec3& vct1, const Vec3& vct2, const Vec3& vct3) {
-    mtx2[0] = vct1.x;
-    mtx2[1] = vct1.y;
-    mtx2[2] = vct1.z;
-    mtx2[3] = vct2.x;
-    mtx2[4] = vct2.y;
-    mtx2[5] = vct2.z;
-    mtx2[6] = vct3.x;
-    mtx2[7] = vct3.y;
-    mtx2[8] = vct3.z;
+  Mat3::Mat3(const Vec3& _vct1, const Vec3& _vct2, const Vec3& _vct3) {
+    mMtx2[0] = _vct1.x;
+    mMtx2[1] = _vct1.y;
+    mMtx2[2] = _vct1.z;
+    mMtx2[3] = _vct2.x;
+    mMtx2[4] = _vct2.y;
+    mMtx2[5] = _vct2.z;
+    mMtx2[6] = _vct3.x;
+    mMtx2[7] = _vct3.y;
+    mMtx2[8] = _vct3.z;
   }
 
-  Mat3::Mat3(const Mat3& mat) {
+  Mat3::Mat3(const Mat3& _mat) {
     for (int i = 0; i < 9; ++i) {
-      mtx2[i] = mat.mtx2[i];
+      mMtx2[i] = _mat.mMtx2[i];
     }
   }
 
-  Mat3::Mat3(float i) {
-    mtx2[0] = mtx2[4] = mtx2[8] = i;
-    mtx2[1] = mtx2[2] = mtx2[3] = mtx2[5] = mtx2[6] = mtx2[7] = 0;
+  Mat3::Mat3(float _i) {
+    mMtx2[0] = mMtx2[4] = mMtx2[8] = _i;
+    mMtx2[1] = mMtx2[2] = mMtx2[3] = mMtx2[5] = mMtx2[6] = mMtx2[7] = 0;
   }
 
-  Mat3::Mat3(const Mat32& mat) {
-    mtx1[0][0] = mat[0][0];
-    mtx1[0][1] = mat[0][1];
-    mtx1[0][2] = mat[0][2];
-    mtx1[1][0] = mat[1][0];
-    mtx1[1][1] = mat[1][1];
-    mtx1[1][2] = mat[1][2];
-    mtx1[2][0] = 0;
-    mtx1[2][1] = 0;
-    mtx1[2][2] = 1;
+  Mat3::Mat3(const Mat32& _mat) {
+    mMtx1[0][0] = _mat[0][0];
+    mMtx1[0][1] = _mat[0][1];
+    mMtx1[0][2] = _mat[0][2];
+    mMtx1[1][0] = _mat[1][0];
+    mMtx1[1][1] = _mat[1][1];
+    mMtx1[1][2] = _mat[1][2];
+    mMtx1[2][0] = 0;
+    mMtx1[2][1] = 0;
+    mMtx1[2][2] = 1;
   }
 
-  Mat3& Mat3::operator=(const Mat3& mat) {
+  Mat3& Mat3::operator=(const Mat3& _mat) {
     for (int i = 0; i < 9; ++i) {
-      this->mtx2[i] = mat.mtx2[i];
+      this->mMtx2[i] = _mat.mMtx2[i];
     }
     return *this;
   }
@@ -61,7 +61,7 @@ namespace Math {
     Mat3 temp = *this;
     for (int i = 0; i < 3; ++i)
       for (int j = 0; j < 3; ++j) {
-        temp.mtx1[j][i] = mtx1[i][j];
+        temp.mMtx1[j][i] = mMtx1[i][j];
       }
     return *this = temp;
   }
@@ -70,16 +70,16 @@ namespace Math {
     Mat3 temp = *this;
     for (int i = 0; i < 3; ++i)
       for (int j = 0; j < 3; ++j) {
-        temp.mtx1[j][i] = mtx1[i][j];
+        temp.mMtx1[j][i] = mMtx1[i][j];
       }
     return temp;
   }
 
   Mat3::~Mat3() {}
-  Vec3 operator*(const Mat3& lhs, const Vec3& rhs) {
-    float x = lhs.mtx2[0] * rhs.x + lhs.mtx2[3] * rhs.y + lhs.mtx2[6] * rhs.z;
-    float y = lhs.mtx2[1] * rhs.x + lhs.mtx2[4] * rhs.y + lhs.mtx2[7] * rhs.z;
-    float z = lhs.mtx2[2] * rhs.x + lhs.mtx2[5] * rhs.y + lhs.mtx2[8] * rhs.z;
+  Vec3 operator*(const Mat3& _lhs, const Vec3& _rhs) {
+    float x = _lhs.mMtx2[0] * _rhs.x + _lhs.mMtx2[3] * _rhs.y + _lhs.mMtx2[6] * _rhs.z;
+    float y = _lhs.mMtx2[1] * _rhs.x + _lhs.mMtx2[4] * _rhs.y + _lhs.mMtx2[7] * _rhs.z;
+    float z = _lhs.mMtx2[2] * _rhs.x + _lhs.mMtx2[5] * _rhs.y + _lhs.mMtx2[8] * _rhs.z;
     return { x, y, z };
   }
 
@@ -87,23 +87,23 @@ namespace Math {
     return operator*(rhs, lhs);
   }
 
-  Mat3 operator*(const Mat3& lhs, const Mat3& rhs) {
+  Mat3 operator*(const Mat3& _lhs, const Mat3& _rhs) {
     Mat3 temp = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     for (int i = 0; i < 3; i++)
       for (int j = 0; j < 3; j++) {
-        temp.mtx1[i][j] = 0;
+        temp.mMtx1[i][j] = 0;
         for (int k = 0; k < 3; k++) {
-          temp.mtx1[i][j] += lhs.mtx1[i][k] * rhs.mtx1[k][j];
+          temp.mMtx1[i][j] += _lhs.mMtx1[i][k] * _rhs.mMtx1[k][j];
         }
       }
     return temp;
   }
 
-  std::ostream& operator<<(std::ostream& out, const Mat3& m) {
-    out << std::fixed << std::setprecision(7);
-    out << "| " << m[0][0] << " , " << m[0][1] << " , " << m[0][2] << " |" << '\n';
-    out << "| " << m[1][0] << " , " << m[1][1] << " , " << m[1][2] << " |" << '\n';
-    out << "| " << m[2][0] << " , " << m[2][1] << " , " << m[2][2] << " |" << '\n';
-    return out;
+  std::ostream& operator<<(std::ostream& _out, const Mat3& _m) {
+    _out << std::fixed << std::setprecision(7);
+    _out << "| " << _m[0][0] << " , " << _m[0][1] << " , " << _m[0][2] << " |" << '\n';
+    _out << "| " << _m[1][0] << " , " << _m[1][1] << " , " << _m[1][2] << " |" << '\n';
+    _out << "| " << _m[2][0] << " , " << _m[2][1] << " , " << _m[2][2] << " |" << '\n';
+    return _out;
   }
 }

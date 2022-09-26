@@ -2,46 +2,46 @@
 #include "vec2.h"
 
 namespace Math {
-  Vec3::Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+  Vec3::Vec3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
 
-  Vec3::Vec3(float i) : x(i), y(i), z(i) {}
+  Vec3::Vec3(float _i) : x(_i), y(_i), z(_i) {}
 
-  Vec3::Vec3(const glm::vec3& v) : x(v.x), y(v.y), z(v.z) {}
-  Vec3::Vec3(const Vec3& vct) : x(vct.x), y(vct.y), z(vct.z) {}
-  Vec3::Vec3(const Vec2& v) : x(v.x), y(v.y), z(1) {}
+  Vec3::Vec3(const glm::vec3& _v) : x(_v.x), y(_v.y), z(_v.z) {}
+  Vec3::Vec3(const Vec3& _vct) : x(_vct.x), y(_vct.y), z(_vct.z) {}
+  Vec3::Vec3(const Vec2& _v) : x(_v.x), y(_v.y), z(1) {}
 
-  Vec3& Vec3::operator+=(const Vec3& rhs) {
-    x += rhs.x;
-    y += rhs.y;
-    z += rhs.z;
+  Vec3& Vec3::operator+=(const Vec3& _rhs) {
+    x += _rhs.x;
+    y += _rhs.y;
+    z += _rhs.z;
     return *this;
   }
 
-  Vec3& Vec3::operator-=(const Vec3& rhs) {
-    x -= rhs.x;
-    y -= rhs.y;
-    z -= rhs.z;
+  Vec3& Vec3::operator-=(const Vec3& _rhs) {
+    x -= _rhs.x;
+    y -= _rhs.y;
+    z -= _rhs.z;
     return *this;
   }
 
-  Vec3& Vec3::operator*=(float rhs) {
-    x *= rhs;
-    y *= rhs;
-    z *= rhs;
+  Vec3& Vec3::operator*=(float _rhs) {
+    x *= _rhs;
+    y *= _rhs;
+    z *= _rhs;
     return *this;
   }
 
-  Vec3& Vec3::operator/=(float rhs) {
-    x /= rhs;
-    y /= rhs;
-    z /= rhs;
+  Vec3& Vec3::operator/=(float _rhs) {
+    x /= _rhs;
+    y /= _rhs;
+    z /= _rhs;
     return *this;
   }
 
-  Vec3& Vec3::operator=(const Vec3& rhs) {
-    x = rhs.x;
-    y = rhs.y;
-    z = rhs.z;
+  Vec3& Vec3::operator=(const Vec3& _rhs) {
+    x = _rhs.x;
+    y = _rhs.y;
+    z = _rhs.z;
     return *this;
   }
 
@@ -70,33 +70,32 @@ namespace Math {
       return glm::vec3(this->x, this->y, this->z);
   }
 
-  Vec3::~Vec3() {}
-  Vec3 operator+(const Vec3& lhs, const Vec3& rhs) {
-    Vec3 temp = lhs;
-    return temp += rhs;
+  Vec3 operator+(const Vec3& _lhs, const Vec3& _rhs) {
+    Vec3 temp = _lhs;
+    return temp += _rhs;
   }
 
-  Vec3 operator-(const Vec3& lhs, const Vec3& rhs) {
-    Vec3 temp = lhs;
-    return temp -= rhs;
+  Vec3 operator-(const Vec3& _lhs, const Vec3& _rhs) {
+    Vec3 temp = _lhs;
+    return temp -= _rhs;
   }
 
-  Vec3 operator*(const Vec3& lhs, float rhs) {
-    Vec3 temp = lhs;
-    return temp *= rhs;
+  Vec3 operator*(const Vec3& _lhs, float _rhs) {
+    Vec3 temp = _lhs;
+    return temp *= _rhs;
   }
 
-  Vec3 operator*(float lhs, const Vec3& rhs) {
-    return operator*(rhs, lhs);
+  Vec3 operator*(float _lhs, const Vec3& _rhs) {
+    return operator*(_rhs, _lhs);
   }
 
-  Vec3 operator/(const Vec3& lhs, float rhs) {
-    Vec3 temp = lhs;
-    return temp /= rhs;
+  Vec3 operator/(const Vec3& _lhs, float _rhs) {
+    Vec3 temp = _lhs;
+    return temp /= _rhs;
   }
 
-  float Dot(const Vec3& lhs, const Vec3& rhs) {
-    return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+  float Dot(const Vec3& _lhs, const Vec3& _rhs) {
+    return _lhs.x * _rhs.x + _lhs.y * _rhs.y + _lhs.z * _rhs.z;
   }
 
   Vec3 Cross(const Vec3& v1, const Vec3& v2) {
@@ -107,16 +106,16 @@ namespace Math {
     return v;
   }
 
-  float Distance(const Vec3& lhs, const Vec3& rhs) {
-    return (lhs-rhs).Magnitude();
+  float Distance(const Vec3& _lhs, const Vec3& _rhs) {
+    return (_lhs-_rhs).Magnitude();
   }
 
-  float SqDistance(const Vec3& lhs, const Vec3& rhs) {
-    return (lhs - rhs).SqMagnitude();
+  float SqDistance(const Vec3& _lhs, const Vec3& _rhs) {
+    return (_lhs - _rhs).SqMagnitude();
   }
 
-  std::ostream& operator<<(std::ostream& os, const Vec3& rhs) {
-    os << '(' << rhs.x << ", " << rhs.y << ", " << rhs.z << ')';
+  std::ostream& operator<<(std::ostream& os, const Vec3& _rhs) {
+    os << '(' << _rhs.x << ", " << _rhs.y << ", " << _rhs.z << ')';
     return os;
   }
 
