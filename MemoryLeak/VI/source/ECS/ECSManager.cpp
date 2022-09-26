@@ -17,6 +17,7 @@ std::shared_ptr<SpriteManager> spriteManager{ nullptr };
 std::shared_ptr<RenderManager> renderManager{ nullptr };
 std::shared_ptr<Physics2DManager> physics2DManager{ nullptr };
 std::shared_ptr<Collision2DManager> collision2DManager{ nullptr };
+std::shared_ptr<PlayerController> playerManager{ nullptr };
 std::shared_ptr<LevelEditor> levelEditor{ nullptr };
 std::shared_ptr<Animator> animator{ nullptr };
 std::shared_ptr<SheetAnimator> sheetAnimator{ nullptr };
@@ -82,6 +83,14 @@ void ECSManager::RegisterCollision2DManager() {
 	ECS::SetSystemSignature<Collision2DManager>(signature);
 }
 
+void ECSManager::RegisterPlayerController() {
+	Signature signature{};
+	signature.set(ECS::GetComponentType<PlayerTmp>());
+
+	playerManager = ECS::RegisterSystem<PlayerController>();
+	ECS::SetSystemSignature<PlayerController>(signature);
+}
+
 void ECSManager::RegisterLevelEditor() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
@@ -141,7 +150,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterRenderManager();
 	RegisterAnimator();
 	RegisterSheetAnimator();
-	//RegisterPlayerManager();
+	RegisterPlayerController();
 	RegisterPhysics2DManager();
 	RegisterCollision2DManager();
 	RegisterLevelEditor();

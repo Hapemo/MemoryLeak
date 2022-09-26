@@ -186,7 +186,7 @@ void Start_1::Update() {
   //renderManager->Render();
   //renderManager->RenderDebug();
   //TRACK_PERFORMANCE("Physics");
-  physics2DManager->Update(FPSManager::dt);
+  physics2DManager->Update(mEntities, FPSManager::dt);
   //END_TRACK("Physics");
 
   ControlEntityLifespan(mEntities, A);
@@ -197,7 +197,6 @@ void Start_1::Reset() {
 }
 
 void Start_1::Clear() {
-    physics2DManager->PhyObjListClear();
     for (auto& e : mEntities)
         e.Destroy();
     //levelEditor->exit();

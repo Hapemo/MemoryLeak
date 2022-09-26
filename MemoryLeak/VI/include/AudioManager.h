@@ -34,9 +34,8 @@ public:
 	//void SetSoundFrequence(int, float);		//Set sound frequency
 	//void SetSoundPitch(int, float);			//Set sound pitch
 	//void Update();
-
-private:
 	void PlaySound(const Entity& e, int sound);	//Play sound 
+private:
 	FMOD_RESULT mResult;
 	FMOD::System* system;
 	std::map<std::string, FMOD::Sound*> mBgmSound;

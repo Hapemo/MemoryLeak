@@ -28,114 +28,44 @@ public:
 	Update function that simulates physics by stepping it in fixedDT when enough
 	time has passed
 
-	\param int const double &
+	\param const std::set<Entity &
+	A reference to read-only container holding the current state's entity list
+
+	\param const double &
 	A reference to a read-only variable that tells us the application's current
 	delta time
 
 	\return void
 	NULL
 	*******************************************************************************/
-	void Update(const double& _appDT);
+	void Update(const std::set<Entity>& _entityList, const double& _appDT);
 
 	/*!*****************************************************************************
 	\brief
 	Step function that executes fixed delta time physics stepping
 
-	\param void
-	NULL
+	\param const std::set<Entity &
+	A reference to read-only container holding the current state's entity list
 
 	\return void
 	NULL
 	*******************************************************************************/
-	void Step();
+	void Step(const std::set<Entity>& _entityList);
 
-
-	// -----------------------------
-	// System object list functions
-	// -----------------------------
+// -----------------------------
+// Component-related functions
+// -----------------------------
 		/*!*****************************************************************************
-		\brief
-		IsEmptyPhyObjList function that checks if the system's stored entity list is empty.
-		If yes, the function returns true. Otherwise, it returns false
-
-		\param void
-		NULL
-
-		\return bool
-		Evaluated result of whether the list is empty
-		*******************************************************************************/
-	bool IsEmptyPhyObjList();
-
-	/*!*****************************************************************************
 	\brief
-	IsEntityInObjList function that checks if the given entity exists in the system's
-	list to update dynamics for. If it exists, the function reurns true. Otherwise,
-	it returns false
+	HasPhysicsComponent function that checks if the given entity has a physics
+	component. If yes, the function returns true. Otherwise it returns false.
 
 	\param const Entity &
 	A reference to a read-only Entity to check for
 
 	\return bool
-	Evaluated result of whether the entity exists in the list
+	Evaluated result of whether the entity has a physics component
 	*******************************************************************************/
-	bool IsEntityInPhyObjList(const Entity& _e);
-
-	/*!*****************************************************************************
-	\brief
-	IsEntityInObjList function that removes the given entity from the system's list.
-	The function will check if the entity exists in the list before proceeding with
-	removal. If successful, the function returns true. Otherwise, it returns false
-
-	\param const Entity &
-	A reference to a read-only Entity to remove
-
-	\return bool
-	Evaluated result of whether the removal was successful
-	*******************************************************************************/
-	bool RemoveEntityInPhyObjList(const Entity& _e);
-
-	/*!*****************************************************************************
-	\brief
-	PhyObjListClear function that removes all entities in the system's stored list
-
-	\param const void
-	NULL
-
-	\return void
-	NULL
-	*******************************************************************************/
-	void PhyObjListClear();
-
-	/*!*****************************************************************************
-	\brief
-	UpdatePhyObjList function that removes any non-existent entities, and adds new
-	entities that require physics update given the list of entities in the current
-	scene
-
-	\param const std::set<Entity> &
-	A reference to a read-only set of entities that contains the entities in the current
-	scene
-
-	\return void
-	NULL
-	*******************************************************************************/
-	void UpdatePhyObjList(const std::set<Entity>& _entityList);
-
-
-	// -----------------------------
-	// Component-related functions
-	// -----------------------------
-		 /*!*****************************************************************************
-		\brief
-		HasPhysicsComponent function that checks if the given entity has a physics
-		component. If yes, the function returns true. Otherwise it returns false.
-
-		\param const Entity &
-		A reference to a read-only Entity to check for
-
-		\return bool
-		Evaluated result of whether the entity has a physics component
-		*******************************************************************************/
 	bool HasPhysicsComponent(const Entity& _e);
 
 	/*!*****************************************************************************
@@ -166,10 +96,11 @@ public:
 	NULL
 	*******************************************************************************/
 	void AddPhysicsComponent(const Entity& _e,
-		const float& _mass = 1.f,
-		const float& _speed = 0.f,
-		const float& _moveDirection = 0.f,
-		const bool& _renderFlag = false);
+							 const bool& _gravityEnabled = false,
+							 const float& _mass = 1.f,
+							 const float& _speed = 0.f,
+							 const float& _moveDirection = 0.f,
+							 const bool& _renderFlag = false);
 
 	/*!*****************************************************************************
 	\brief
@@ -197,19 +128,48 @@ public:
 	*******************************************************************************/
 	Physics2D& GetPhysicsComponent(const Entity& _e);
 
-	// -----------------------------
-	// Get / Set functions
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		GetMass function that returns the stored value of the entity's mass
+// -----------------------------
+// Get / Set functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	GetGravityEnabled function that returns the stored value of the entity's
+	gravity enabled flag
 
-		\param const Entity &
-		A reference to a read-only Entity to get from
+	\param const Entity &
+	A reference to a read-only Entity to
 
-		\return float
-		A copy of the value of the entity's mass
-		*******************************************************************************/
+	\return bool
+	The value of the entity's gravity enabled flag
+	*******************************************************************************/
+	bool GetGravityEnabled(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	SetGravityEnabled function that sets the stored value of the entity's
+	gravity enabled flag to the given value
+
+	\param const Entity &
+	A reference to a read-only Entity to
+
+	\param const bool &
+	A reference to a read-only value containing value to set
+
+	\return void
+	NULL
+	*******************************************************************************/
+	void SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled);
+
+	/*!*****************************************************************************
+	\brief
+	GetMass function that returns the stored value of the entity's mass
+
+	\param const Entity &
+	A reference to a read-only Entity to get from
+
+	\return float
+	A copy of the value of the entity's mass
+	*******************************************************************************/
 	float GetMass(const Entity& _e);
 
 	/*!*****************************************************************************
@@ -292,7 +252,7 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to
 
-	\return glm::vec
+	\return Math::Vec2
 	A copy of the value of the entity's net forces
 	*******************************************************************************/
 	Math::Vec2 GetForces(const Entity& _e);
@@ -328,6 +288,19 @@ public:
 	NULL
 	*******************************************************************************/
 	void AddForces(const Entity& _e, const Math::Vec2& _forces);
+
+	/*!*****************************************************************************
+	\brief
+	AddGravityForce function that adds the gravity force value to the stored value of the
+	entity's forces to become the updated net forces
+
+	\param const Entity &
+	A reference to a read-only Entity to set
+
+	\return void
+	NULL
+	*******************************************************************************/
+	void AddGravityForce(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
@@ -398,8 +371,8 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to
 
-	\return float
-	A copy of the value of the entity's physics render flag
+	\return bool
+	The value of the entity's physics render flag
 	*******************************************************************************/
 	bool GetPhysicsRenderFlag(const Entity& _e);
 
@@ -419,7 +392,6 @@ public:
 	*******************************************************************************/
 	void SetPhysicsRenderFlag(const Entity& _e, const bool& _renderFlag);
 private:
-	std::set<Entity> mPhysicsObjectList;	// Member variable storing list of entities to update dynamics for
-	double mAccumulatedDT{ 0.0 };				// Member variable storing accumulatedDT
+	double mAccumulatedDT{ 0.0 };	// Member variable storing accumulatedDT
 };
 
