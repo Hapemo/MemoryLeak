@@ -48,10 +48,14 @@ public:
 	\param const std::set<Entity> &
 	A reference to a read-only container holding the list of entities to check against
 
+	\param const double &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+
 	\return void
 	NULL
 	*******************************************************************************/
-	void Update(const std::set<Entity>& _entityList);
+	void Update(const std::set<Entity>& _entityList, const double &_dt);
 
 // -----------------------------
 // System object list functions
@@ -686,10 +690,14 @@ public:
 	\param CollisionStore &
 	A reference to struct containing entity pair data to check
 
+	\param const double &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+
 	\return bool
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
-	bool CheckCollision(CollisionStore& _collisionData);
+	bool CheckCollision(CollisionStore& _collisionData, const double& _dt);
 
 	/*!*****************************************************************************
 	\brief
@@ -699,10 +707,14 @@ public:
 	\param CollisionStore &
 	A reference to struct containing entity pair data to resolve
 
+	\param const double &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+
 	\return void
 	NULL
 	*******************************************************************************/
-	void ResolveCollision(CollisionStore& _collisionData);
+	void ResolveCollision(CollisionStore& _collisionData, const double& _dt);
 
 	/*!*****************************************************************************
 	\brief
@@ -712,10 +724,14 @@ public:
 	\param CollisionStore &
 	A reference to struct containing entity pair data to check
 
+	\param const double &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+
 	\return bool
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
-	bool CI_RectvsRect(CollisionStore& _collisionData);
+	bool CI_RectvsRect(CollisionStore& _collisionData, const double& _dt);
 
 	/*!*****************************************************************************
 	\brief
@@ -724,10 +740,14 @@ public:
 	\param CollisionStore &
 	A reference to struct containing entity pair data to check
 
+	\param const double &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+
 	\return bool
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
-	bool CI_CirclevsCircle(CollisionStore& _collisionData);
+	bool CI_CirclevsCircle(CollisionStore& _collisionData, const double& _dt);
 	/*bool CI_RayvsStaticCircle(const Transform &tDataRay,
 							  const Transform &tDataCircle, const CircleCollider &cDataCircle);*/
 	//bool CI_RectvsCircle(CollisionStore &_collisionData);
@@ -740,10 +760,14 @@ public:
 	\param CollisionStore &
 	A reference to struct containing entity pair data to resolve
 
+	\param const double &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+
 	\return void
 	NULL
 	*******************************************************************************/
-	void CR_RectvsRect(CollisionStore& _collisionData);
+	void CR_RectvsRect(CollisionStore& _collisionData, const double& _dt);
 
 	/*!*****************************************************************************
 	\brief
@@ -753,10 +777,14 @@ public:
 	\param CollisionStore &
 	A reference to struct containing entity pair data to resolve
 
+	\param const double &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+
 	\return void
 	NULL
 	*******************************************************************************/
-	void CR_CirclevsCircle(CollisionStore& _collisionData);
+	void CR_CirclevsCircle(CollisionStore& _collisionData, const double& _dt);
 	//void CR_RectvsCircle(CollisionStore &_collisionData);
 
 private:

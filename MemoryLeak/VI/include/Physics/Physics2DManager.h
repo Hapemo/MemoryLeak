@@ -28,99 +28,29 @@ public:
 	Update function that simulates physics by stepping it in fixedDT when enough
 	time has passed
 
-	\param int const double &
+	\param const std::set<Entity &
+	A reference to read-only container holding the current state's entity list
+
+	\param const double &
 	A reference to a read-only variable that tells us the application's current
 	delta time
 
 	\return void
 	NULL
 	*******************************************************************************/
-	void Update(const double& _appDT);
+	void Update(const std::set<Entity>& _entityList, const double& _appDT);
 
 	/*!*****************************************************************************
 	\brief
 	Step function that executes fixed delta time physics stepping
 
-	\param void
-	NULL
+	\param const std::set<Entity &
+	A reference to read-only container holding the current state's entity list
 
 	\return void
 	NULL
 	*******************************************************************************/
-	void Step();
-
-
-// -----------------------------
-// System object list functions
-// -----------------------------
-	/*!*****************************************************************************
-	\brief
-	IsEmptyPhyObjList function that checks if the system's stored entity list is empty.
-	If yes, the function returns true. Otherwise, it returns false
-
-	\param void
-	NULL
-
-	\return bool
-	Evaluated result of whether the list is empty
-	*******************************************************************************/
-	bool IsEmptyPhyObjList();
-
-	/*!*****************************************************************************
-	\brief
-	IsEntityInObjList function that checks if the given entity exists in the system's
-	list to update dynamics for. If it exists, the function reurns true. Otherwise,
-	it returns false
-
-	\param const Entity &
-	A reference to a read-only Entity to check for
-
-	\return bool
-	Evaluated result of whether the entity exists in the list
-	*******************************************************************************/
-	bool IsEntityInPhyObjList(const Entity& _e);
-
-	/*!*****************************************************************************
-	\brief
-	IsEntityInObjList function that removes the given entity from the system's list.
-	The function will check if the entity exists in the list before proceeding with
-	removal. If successful, the function returns true. Otherwise, it returns false
-
-	\param const Entity &
-	A reference to a read-only Entity to remove
-
-	\return bool
-	Evaluated result of whether the removal was successful
-	*******************************************************************************/
-	bool RemoveEntityInPhyObjList(const Entity& _e);
-
-	/*!*****************************************************************************
-	\brief
-	PhyObjListClear function that removes all entities in the system's stored list
-
-	\param const void
-	NULL
-
-	\return void
-	NULL
-	*******************************************************************************/
-	void PhyObjListClear();
-
-	/*!*****************************************************************************
-	\brief
-	UpdatePhyObjList function that removes any non-existent entities, and adds new
-	entities that require physics update given the list of entities in the current
-	scene
-
-	\param const std::set<Entity> &
-	A reference to a read-only set of entities that contains the entities in the current
-	scene
-
-	\return void
-	NULL
-	*******************************************************************************/
-	void UpdatePhyObjList(const std::set<Entity>& _entityList);
-
+	void Step(const std::set<Entity>& _entityList);
 
 // -----------------------------
 // Component-related functions
@@ -462,7 +392,6 @@ public:
 	*******************************************************************************/
 	void SetPhysicsRenderFlag(const Entity& _e, const bool& _renderFlag);
 private:
-	std::set<Entity> mPhysicsObjectList;	// Member variable storing list of entities to update dynamics for
-	double mAccumulatedDT{ 0.0 };				// Member variable storing accumulatedDT
+	double mAccumulatedDT{ 0.0 };	// Member variable storing accumulatedDT
 };
 

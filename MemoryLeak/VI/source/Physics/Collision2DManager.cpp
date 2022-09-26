@@ -779,17 +779,21 @@ collision
 \param const std::set<Entity> &
 A reference to a read-only container holding the list of entities to check against
 
+\param const double &
+A reference to a read-only variable that tells us the application's current
+delta time
+
 \return void
 NULL
 *******************************************************************************/
-void Collision2DManager::Update(const std::set<Entity>& _entityList) {
+void Collision2DManager::Update(const std::set<Entity>& _entityList, const double &_dt) {
 	// Update container of entity pairs
 	Collision2DManager::UpdateCollisionList(_entityList);
 
 	// Loop through the entity pairs and check for collision
 	for (CollisionStore& cs : Collision2DManager::mCollisionCheckList) {
-		if (Collision2DManager::CheckCollision(cs)) {
-			Collision2DManager::ResolveCollision(cs);
+		if (Collision2DManager::CheckCollision(cs, _dt)) {
+			Collision2DManager::ResolveCollision(cs, _dt);
 		}
 	}
 }
@@ -803,14 +807,18 @@ of that function as its result
 \param CollisionStore &
 A reference to struct containing entity pair data to check
 
+\param const double &
+A reference to a read-only variable that tells us the application's current
+delta time
+
 \return bool
 Evaluated result of whether collision has occurred between the given entity pair
 *******************************************************************************/
-bool Collision2DManager::CheckCollision(CollisionStore& _collisionData) {
+bool Collision2DManager::CheckCollision(CollisionStore& _collisionData, const double &_dt) {
 	// Rect vs Rect
 	if (_collisionData.obj1.HasComponent<RectCollider>() && _collisionData.obj2.HasComponent<RectCollider>()) {
 		_collisionData.collisionType = 1;
-		return Collision2DManager::CI_RectvsRect(_collisionData);
+		return Collision2DManager::CI_RectvsRect(_collisionData, _dt);
 	}
 
 	// Rect vs Circle
@@ -829,7 +837,7 @@ bool Collision2DManager::CheckCollision(CollisionStore& _collisionData) {
 	// Circle vs Circle
 	if (_collisionData.obj1.HasComponent<CircleCollider>() && _collisionData.obj2.HasComponent<CircleCollider>()) {
 		_collisionData.collisionType = 6;
-		return Collision2DManager::CI_CirclevsCircle(_collisionData);
+		return Collision2DManager::CI_CirclevsCircle(_collisionData, _dt);
 	}
 
 	// Circle vs Line
@@ -852,14 +860,18 @@ depending on the collider type of the given entity pair
 \param CollisionStore &
 A reference to struct containing entity pair data to resolve
 
+\param const double &
+A reference to a read-only variable that tells us the application's current
+delta time
+
 \return void
 NULL
 *******************************************************************************/
-void Collision2DManager::ResolveCollision(CollisionStore& _collisionData) {
+void Collision2DManager::ResolveCollision(CollisionStore& _collisionData, const double& _dt) {
 	// Change function call based on the resultant collision type in the stored data
 	switch (_collisionData.collisionType) {
 	case 1:	// Rect vs Rect
-		Collision2DManager::CR_RectvsRect(_collisionData);
+		Collision2DManager::CR_RectvsRect(_collisionData, _dt);
 		break;
 	case 2:	// Rect vs Circle
 
@@ -874,7 +886,7 @@ void Collision2DManager::ResolveCollision(CollisionStore& _collisionData) {
 
 		break;
 	case 6:	// Circle vs Circle
-		Collision2DManager::CR_CirclevsCircle(_collisionData);
+		Collision2DManager::CR_CirclevsCircle(_collisionData, _dt);
 		break;
 	case 7:	// Circle vs Line
 
@@ -912,10 +924,14 @@ colliders using AABB
 \param CollisionStore &
 A reference to struct containing entity pair data to check
 
+\param const double &
+A reference to a read-only variable that tells us the application's current
+delta time
+
 \return bool
 Evaluated result of whether collision has occurred between the given entity pair
 *******************************************************************************/
-bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
+bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData, const double& _dt) {
 	// Store center and scale of both entities
 	Math::Vec2 center1{ Math::Vec2{_collisionData.obj1.GetComponent<Transform>().translation} + _collisionData.obj1.GetComponent<RectCollider>().centerOffset },
 			   scale1{ static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
@@ -942,12 +958,12 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 
 // Dynamic check
 	// Compute relative velocity
-	Math::Vec2 Vb{ _collisionData.obj2.GetComponent<Physics2D>().velocity - _collisionData.obj1.GetComponent<Physics2D>().velocity };
+	Math::Vec2 Vb{ _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) };
 	// Check if relative velocity is zero
 	if (Vb == Math::Vec2{ 0.f, 0.f })
 		return false;
 
-	double tFirst{ 0 }, tLast{ FPSManager::dt }, tTmp{ 0 };
+	double tFirst{ 0 }, tLast{ _dt }, tTmp{ 0 };
 
 	// ------ X axis -----
 	if (static_cast<double>(Vb.x) < 0.0) {
@@ -1018,13 +1034,17 @@ CI_CirclevsCircle function that checks for collision between 2 circular collider
 \param CollisionStore &
 A reference to struct containing entity pair data to check
 
+\param const double &
+A reference to a read-only variable that tells us the application's current
+delta time
+
 \return bool
 Evaluated result of whether collision has occurred between the given entity pair
 *******************************************************************************/
-bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData) {
+bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData, const double& _dt) {
 	// Find the relative velocity of both circles
-	Math::Vec2 relVel{ _collisionData.obj1.GetComponent<Physics2D>().velocity -
-					   _collisionData.obj2.GetComponent<Physics2D>().velocity };
+	Math::Vec2 relVel{ _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) -
+					   _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) };
 	// Store radius of both circles
 	double  circle1Radius{ (_collisionData.obj1.GetComponent<Transform>().scale.x * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset) / 2.0},
 			circle2Radius{ (_collisionData.obj2.GetComponent<Transform>().scale.x * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset) / 2.0};
@@ -1098,23 +1118,27 @@ rectangular collider
 \param CollisionStore &
 A reference to struct containing entity pair data to resolve
 
+\param const double &
+A reference to a read-only variable that tells us the application's current
+delta time
+
 \return void
 NULL
 *******************************************************************************/
-void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData) {
-	// Compute and store objects' current velocity
-	Math::Vec2 velObj1{ _collisionData.obj1.GetComponent<Physics2D>().velocity },
-			   velObj2{ _collisionData.obj2.GetComponent<Physics2D>().velocity };
+void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData, const double& _dt) {
+	// Get and store objects' current velocity
+	Math::Vec2 velObj1{ _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) },
+			   velObj2{ _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) };
 	//double massObj1{ static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) },
-	//	   massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
+	//	     massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
 
 	// Compute and store objects' meeting point
 	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<RectCollider>().centerOffset + velObj1 * static_cast<float>(_collisionData.interTime) },
 		       interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<RectCollider>().centerOffset + velObj2 * static_cast<float>(_collisionData.interTime) };
 
 	// Set the entities' position at the meeting point
-	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<CircleCollider>().centerOffset;
-	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<CircleCollider>().centerOffset;
+	//_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<CircleCollider>().centerOffset;
+	//_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<CircleCollider>().centerOffset;
 
 	// Stop their movement for now as a hack until bounce/slide can be figured out
 	_collisionData.obj1.GetComponent<Physics2D>().speed = 
@@ -1132,19 +1156,23 @@ circle collider
 \param CollisionStore &
 A reference to struct containing entity pair data to resolve
 
+\param const double &
+A reference to a read-only variable that tells us the application's current
+delta time
+
 \return void
 NULL
 *******************************************************************************/
-void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData) {
+void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData, const double& _dt) {
 	// Compute and store objects' current velocity
-	Math::Vec2 velObj1{ _collisionData.obj1.GetComponent<Physics2D>().velocity },
-			   velObj2{ _collisionData.obj2.GetComponent<Physics2D>().velocity };
+	Math::Vec2 velObj1{ _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) },
+			   velObj2{ _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) };
 	double massObj1{ static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) },
 		   massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
 
 	// Compute and store objects' meeting point
-	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset + velObj1 * static_cast<float>(_collisionData.interTime)},
-			   interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<CircleCollider>().centerOffset + velObj2 * static_cast<float>(_collisionData.interTime) };
+	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime)},
+			   interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
 
 	// Get normal to collision occurance
 	Math::Vec2 normal{ (interPtObj1 - interPtObj2).Normalized()};
@@ -1163,11 +1191,7 @@ void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData) {
 	_collisionData.obj1.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(reflectedVelObj1.x) / static_cast<double>(reflectedVelObj1.Magnitude())));
 	_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(reflectedVelObj2.x) / static_cast<double>(reflectedVelObj2.Magnitude())));
 
-	// Compute speed of the objects
-	_collisionData.obj1.GetComponent<Physics2D>().speed = reflectedVelObj1.Magnitude();
-	_collisionData.obj2.GetComponent<Physics2D>().speed = reflectedVelObj2.Magnitude();
-
 	// Compute objects' position the frame after the collision
-	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<CircleCollider>().centerOffset + reflectedVelObj1 * static_cast<float>(1.0 - _collisionData.interTime);
-	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<CircleCollider>().centerOffset + reflectedVelObj2 * static_cast<float>(1.0 - _collisionData.interTime);
+	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 + reflectedVelObj1 * static_cast<float>(_dt - _collisionData.interTime);
+	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + reflectedVelObj2 * static_cast<float>(_dt - _collisionData.interTime);
 }

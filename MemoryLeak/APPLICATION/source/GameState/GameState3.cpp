@@ -21,8 +21,8 @@ void GameState3::Init() {
 
 void GameState3::Update() {
     TRACK_PERFORMANCE("Physics");
-    physics2DManager->Update(FPSManager::dt);
-    collision2DManager->Update(mEntities);
+    physics2DManager->Update(mEntities, FPSManager::dt);
+    //collision2DManager->Update(mEntities);
     END_TRACK("Physics");
     sheetAnimator->Animate();
 
@@ -39,8 +39,6 @@ void GameState3::Draw() {
 }
 
 void GameState3::Free() {
-    physics2DManager->PhyObjListClear();
-
     for (auto& e : mEntities)
         e.Destroy();
     mEntities.clear();
