@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MemoryLeak"
   ],
+  "SelectedNode": "\\MemoryLeak\\MemoryLeak.sln",
   "PreviewInSolutionExplorer": false
 }

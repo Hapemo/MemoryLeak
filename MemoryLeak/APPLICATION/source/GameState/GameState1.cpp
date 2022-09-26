@@ -85,9 +85,9 @@ void GameState1::Init() {
 //    physics2DManager->AddPhysicsComponent(e4, false, 5.f, 50.f, glm::pi<float>(), true);
 //    collision2DManager->AddCircleColliderComponent(e4, Math::Vec2{ 0.f, 0.f }, 1.f, true);
 //    
-//// -----------------------------
-//// Player Movement Test
-//// -----------------------------
+// -----------------------------
+// Player Movement Test
+// -----------------------------
 //    Entity e5{ ECS::CreateEntity() };
 //    //mEntities.insert(e5);
 //// Modify entity position scale and rotation here
@@ -98,7 +98,7 @@ void GameState1::Init() {
 //                    Audio{ Sound{"DAMAGE.wav", true}, false });
 //    spriteManager->SetTexture(e5, "Textures\\Spritesheets\\walkingSheet.png");
 //    physics2DManager->AddPhysicsComponent(e5);
-//    playerManager->RegisterPlayer(e5);
+//    e5.AddComponent(PlayerTmp{ 0 });
 
     //serializationManager->SaveScene("SceneJPhysics");
 }

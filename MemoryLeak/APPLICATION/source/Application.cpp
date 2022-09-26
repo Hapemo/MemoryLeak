@@ -36,7 +36,7 @@ void Application::startup() {
 
 void Application::SystemInit() {
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
-  audioManager->AudioManager::AudioManager();
+  //audioManager->AudioManager::AudioManager();
   renderManager->Init(&window_width, &window_height);
 }
 
