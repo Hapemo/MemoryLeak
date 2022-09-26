@@ -18,7 +18,7 @@ components.
 #include "Graphics/RenderManager.h"
 #include "ColliderTransformManager.h"
 
-//#include "PlayerManager.h"
+#include "../Player/PlayerController.h"
 #include "../Physics/Physics2DManager.h"
 #include "../Physics/Collision2DManager.h"
 
@@ -38,7 +38,7 @@ extern std::shared_ptr<SpriteManager> spriteManager;
 extern std::shared_ptr<RenderManager> renderManager;
 extern std::shared_ptr<Animator> animator;
 extern std::shared_ptr<SheetAnimator> sheetAnimator;
-//extern std::shared_ptr<PlayerManager> playerManager;
+extern std::shared_ptr<PlayerController> playerManager;
 extern std::shared_ptr<Physics2DManager> physics2DManager;
 extern std::shared_ptr<Collision2DManager> collision2DManager;
 extern std::shared_ptr<LevelEditor> levelEditor;
@@ -62,6 +62,7 @@ private:
 	static void RegisterSheetAnimator();
 	static void RegisterPhysics2DManager();
 	static void RegisterCollision2DManager();
+	static void RegisterPlayerController();
 	static void RegisterLevelEditor();
 	static void RegisterAudioManager();
 	static void RegisterSerializationManager();

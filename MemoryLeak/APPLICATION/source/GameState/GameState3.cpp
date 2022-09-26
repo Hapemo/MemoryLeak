@@ -11,7 +11,15 @@ Game state for testing physics
 #include "Application.h"
 
 void GameState3::Load() {
-	serializationManager->LoadScene("SceneJ");
+    INIT_TEXTURES("Background");
+    INIT_TEXTURES("Icons");
+    INIT_TEXTURES("Menu");
+    INIT_TEXTURES("Sprites");
+    INIT_TEXTURES("Spritesheets");
+    for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
+        spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
+
+	serializationManager->LoadScene("SceneJPhysics");
 }
 
 void GameState3::Init() {
@@ -22,7 +30,6 @@ void GameState3::Init() {
 void GameState3::Update() {
     TRACK_PERFORMANCE("Physics");
     physics2DManager->Update(FPSManager::dt);
-    collision2DManager->Update(mEntities);
     END_TRACK("Physics");
     sheetAnimator->Animate();
 
@@ -30,7 +37,6 @@ void GameState3::Update() {
     renderManager->RenderToFrameBuffer();
     levelEditor->LevelEditor::Window();
     levelEditor->LevelEditor::Update();
-
     END_TRACK("Editor");
 }
 
@@ -39,19 +45,15 @@ void GameState3::Draw() {
 }
 
 void GameState3::Free() {
-    physics2DManager->PhyObjListClear();
-
-    for (auto& e : mEntities)
-        e.Destroy();
-    mEntities.clear();
+    ECS::DestroyAllEntities();
 }
 
 void GameState3::Unload() {
-    //renderManager->Clear();
-    //spriteManager->FreeTextures();
-    //FREE_RESOURCES();
-   // levelEditor->Exit();
-    //renderManager->RenderToScreen();
+    //levelEditor->Exit();
+    renderManager->RenderToScreen();
+    renderManager->Clear();
+    spriteManager->FreeTextures();
+    FREE_RESOURCES();
 }
 
 

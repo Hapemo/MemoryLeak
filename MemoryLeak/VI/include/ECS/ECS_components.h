@@ -60,6 +60,7 @@ struct SheetAnimation
 };
 
 struct Physics2D {
+	bool gravityEnabled = false;
 	float mass,
 		  speed,
 		  moveDirection;

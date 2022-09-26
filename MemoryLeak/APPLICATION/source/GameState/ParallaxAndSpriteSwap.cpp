@@ -105,7 +105,7 @@ void ParallaxAndSpriteSwap::Update() {
         }
     }
     physics2DManager->Update(FPSManager::dt);
-    collision2DManager->Update(mEntities);
+    //collision2DManager->Update(mEntities);
     sheetAnimator->Animate();
 }
 
@@ -114,8 +114,6 @@ void ParallaxAndSpriteSwap::Draw() {
 }
 
 void ParallaxAndSpriteSwap::Free() {
-    physics2DManager->PhyObjListClear();
-
     for (auto& e : mEntities)
         e.Destroy();
     mEntities.clear();

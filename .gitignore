@@ -39,6 +39,7 @@
 # Directories
 .vs
 .tmp
+.sqlite
 logs
 
 

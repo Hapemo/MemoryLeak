@@ -10,7 +10,7 @@ Game state for testing physics
 #pragma once
 #include "GameState.h"
 #include "ECSManager.h"
-
+#include "ECS_items.h"
 class GameState1 : public GameState {
 public:
 	GameState1() = default;
@@ -25,5 +25,5 @@ public:
 	virtual void Free();
 	virtual void Unload();
 private:
-	std::set<Entity> mEntities;
+	//std::set<Entity> mEntities;
 };

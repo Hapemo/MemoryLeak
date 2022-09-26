@@ -9,13 +9,18 @@
 		functions which handles the dynamics of entities stored in its list
 *******************************************************************************/
 
-// Include header
+// -----------------------------
+// Include files
+// -----------------------------
 #include "ECSManager.h"
 
+// -----------------------------
 // Constant values
-const double fixedDT{ 1.0 / 60.0 },		// Fixed delta time step of 1/60 steps a second
-			 accumulatedDTCap{ 1.0 };	// Accumulated cannot store more than 1 second worth of updates
-const float  velocityCap{ 0.99f };		// Velocity multipler cap to reach max velocity
+// -----------------------------
+const double fixedDT{ 1.0 / 60.0 },			// Fixed delta time step of 1/60 steps a second
+			 accumulatedDTCap{ 1.0 };		// Accumulated cannot store more than 1 second worth of updates
+const float  velocityCap{ 0.99f };			// Velocity multipler cap to reach max velocity
+const Math::Vec2 gravityForce{ 0.f, -9.81f };// Gravity pull
 
 
 /*!*****************************************************************************
@@ -23,13 +28,17 @@ const float  velocityCap{ 0.99f };		// Velocity multipler cap to reach max veloc
 Update function that simulates physics by stepping it in fixedDT when enough
 time has passed
 
-\param int const double &
+\param const std::set<Entity &
+A reference to read-only container holding the current state's entity list
+
+\param const double &
 A reference to a read-only variable that tells us the application's current
 delta time
 
 \return void
 NULL
 *******************************************************************************/
+//void Physics2DManager::Update(const std::set<Entity>& _entityList, const double& _appDT) {
 void Physics2DManager::Update(const double& _appDT) {
 	// Increment accumulatedDT by the application's DT
 	Physics2DManager::mAccumulatedDT += _appDT;
@@ -42,6 +51,7 @@ void Physics2DManager::Update(const double& _appDT) {
 	//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
 	while (Physics2DManager::mAccumulatedDT >= fixedDT) {
 		Physics2DManager::Step();
+		collision2DManager->Update(fixedDT);
 		Physics2DManager::mAccumulatedDT -= fixedDT;
 	}
 }
@@ -50,125 +60,37 @@ void Physics2DManager::Update(const double& _appDT) {
 \brief
 Step function that executes fixed delta time physics stepping
 
-\param void
-NULL
+\param const std::set<Entity &
+A reference to read-only container holding the current state's entity list
 
 \return void
 NULL
 *******************************************************************************/
 void Physics2DManager::Step() {
 	// Update all required entities physics based on object rotation/orientation
-	for (const Entity& e : mPhysicsObjectList) {
+	for (const Entity& e : mEntities) {
+		// Skip if entity does not have physics component
+		if (!e.HasComponent<Physics2D>())
+			continue;
+
+		// If entity is a gravity enabled object, enact gravity force on it
+		if (Physics2DManager::GetGravityEnabled(e))
+			Physics2DManager::AddGravityForce(e);
 		// Add movement as a force acting on the entity
-		Physics2DManager::AddForces(e, Math::Vec2{ glm::cos(Physics2DManager::GetMoveDirection(e)), glm::sin(Physics2DManager::GetMoveDirection(e)) } *Physics2DManager::GetSpeed(e));
+		Physics2DManager::AddForces(e, Math::Vec2{ cos(Physics2DManager::GetMoveDirection(e)), sin(Physics2DManager::GetMoveDirection(e)) } * Physics2DManager::GetSpeed(e));
 		// Compute acceleration and add to velocity
-		Physics2DManager::AddVelocity(e, (Physics2DManager::GetForces(e) / Physics2DManager::GetMass(e)) * static_cast<float>(fixedDT));
+		if (Physics2DManager::GetMass(e) != 0.f)
+			Physics2DManager::AddVelocity(e, (Physics2DManager::GetForces(e) / Physics2DManager::GetMass(e)) * static_cast<float>(fixedDT));
+		else
+			Physics2DManager::AddVelocity(e, Physics2DManager::GetForces(e) * static_cast<float>(fixedDT));
 		// Cap velocity
 		Physics2DManager::ScaleVelocity(e, velocityCap);
 		// Move entity by velocitys
-		e.GetComponent<Transform>().translation.x += Physics2DManager::GetVelocity(e).x * static_cast<float>(fixedDT);
-		e.GetComponent<Transform>().translation.y += Physics2DManager::GetVelocity(e).y * static_cast<float>(fixedDT);
+		e.GetComponent<Transform>().translation += Physics2DManager::GetVelocity(e) * static_cast<float>(fixedDT);
 
 		// Reset forces on the object for next step
 		Physics2DManager::SetForces(e, Math::Vec2{ 0.f, 0.f });
 	}
-}
-
-/*!*****************************************************************************
-\brief
-IsEmptyPhyObjList function that checks if the system's stored entity list is empty.
-If yes, the function returns true. Otherwise, it returns false
-
-\param void
-NULL
-
-\return bool
-Evaluated result of whether the list is empty
-*******************************************************************************/
-bool Physics2DManager::IsEmptyPhyObjList() {
-	return Physics2DManager::mPhysicsObjectList.empty();
-}
-
-/*!*****************************************************************************
-\brief
-IsEntityInObjList function that checks if the given entity exists in the system's
-list to update dynamics for. If it exists, the function reurns true. Otherwise,
-it returns false
-
-\param const Entity &
-A reference to a read-only Entity to check for
-
-\return bool
-Evaluated result of whether the entity exists in the list
-*******************************************************************************/
-bool Physics2DManager::IsEntityInPhyObjList(const Entity& _e) {
-	return Physics2DManager::mPhysicsObjectList.contains(_e);
-}
-
-//const Entity * Physics2DManager::FindEntityInObjList(const Entity &_e){
-//	return Physics2DManager::mPhysicsObjectList.find(&_e);
-//}
-
-/*!*****************************************************************************
-\brief
-IsEntityInObjList function that removes the given entity from the system's list.
-The function will check if the entity exists in the list before proceeding with
-removal. If successful, the function returns true. Otherwise, it returns false
-
-\param const Entity &
-A reference to a read-only Entity to remove
-
-\return bool
-Evaluated result of whether the removal was successful
-*******************************************************************************/
-bool Physics2DManager::RemoveEntityInPhyObjList(const Entity& _e) {
-	if (Physics2DManager::IsEntityInPhyObjList(_e)) {
-		Physics2DManager::mPhysicsObjectList.erase(_e);
-		return true;
-	}
-	else
-		return false;
-}
-
-/*!*****************************************************************************
-\brief
-PhyObjListClear function that removes all entities in the system's stored list
-
-\param const void
-NULL
-
-\return void
-NULL
-*******************************************************************************/
-void Physics2DManager::PhyObjListClear() {
-	Physics2DManager::mPhysicsObjectList.clear();
-}
-
-/*!*****************************************************************************
-\brief
-UpdatePhyObjList function that removes any non-existent entities, and adds new
-entities that require physics update given the list of entities in the current
-scene
-
-\param const std::set<Entity> &
-A reference to a read-only set of entities that contains the entities in the current
-scene
-
-\return void
-NULL
-*******************************************************************************/
-void Physics2DManager::UpdatePhyObjList(const std::set<Entity>& _entityList) {
-	// If the list is not empty, remove any non-existing entities in the current scene
-	if (!Physics2DManager::IsEmptyPhyObjList()) {
-		for (const Entity e : Physics2DManager::mPhysicsObjectList)
-			if (!(_entityList.contains(e)))	// Does not exists in scene entity list, remove it from system's list
-				Physics2DManager::RemoveEntityInPhyObjList(e);
-	}
-
-	// Add new relevant entities in the current scene not in the list
-	for (const Entity& e : _entityList)
-		if (e.HasComponent<Physics2D>() && !(Physics2DManager::mPhysicsObjectList.contains(e)))
-			Physics2DManager::mPhysicsObjectList.insert(e);
 }
 
 /*!*****************************************************************************
@@ -213,11 +135,11 @@ A reference to a read-only value containing the flag value of the render flag
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::AddPhysicsComponent(const Entity& _e, const float& _mass, const float& _speed, const float& _moveDirection, const bool& _renderFlag) {
+void Physics2DManager::AddPhysicsComponent(const Entity& _e, const bool & _gravityEnabled, const float& _mass, const float& _speed, const float& _moveDirection, const bool& _renderFlag) {
 	// If the physics component does not exists in the entity yet, we add it to the entity with the given values
 	// If it already exists, we reset the values to the given values
 	if (!_e.HasComponent<Physics2D>()) {
-		_e.AddComponent(Physics2D{ _mass, _speed, _moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, _renderFlag });
+		_e.AddComponent(Physics2D{ _gravityEnabled, _mass, _speed, _moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, _renderFlag });
 	}
 	else {
 		Physics2DManager::SetMass(_e, _mass);
@@ -227,10 +149,6 @@ void Physics2DManager::AddPhysicsComponent(const Entity& _e, const float& _mass,
 		Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
 		Physics2DManager::SetPhysicsRenderFlag(_e, _renderFlag);
 	}
-
-	// If the entity does not exists in the system's stored list, add the entity to it
-	if (!(mPhysicsObjectList.contains(_e)))
-		mPhysicsObjectList.insert(_e);
 }
 
 /*!*****************************************************************************
@@ -245,20 +163,9 @@ A reference to a read-only Entity to remove the physics component from
 NULL
 *******************************************************************************/
 void Physics2DManager::RemovePhysicsComponent(const Entity& _e) {
-	// Remove entity from system's stored list
-	mPhysicsObjectList.erase(_e);
-
-	// When removeComponent function is implemented, use it
-	// For now, we set everything to 0
-	// Works for now as the physics system only updates entity stored in its list
-	// and in the event the AddPhysicsComponent function is called again,
-	// the function handles the already existing physics component
-	Physics2DManager::SetMass(_e, 0.f);
-	Physics2DManager::SetSpeed(_e, 0.f);
-	Physics2DManager::SetMoveDirection(_e, 0.f);
-	Physics2DManager::SetForces(_e, Math::Vec2{ 0, 0 });
-	Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
-	Physics2DManager::SetPhysicsRenderFlag(_e, false);
+	// Remove component if component exists
+	if (_e.HasComponent<Physics2D>())
+		_e.RemoveComponent<Physics2D>();
 }
 
 /*!*****************************************************************************
@@ -274,6 +181,39 @@ A reference to the Physics2D component in the given entity
 *******************************************************************************/
 Physics2D& Physics2DManager::GetPhysicsComponent(const Entity& _e) {
 	return _e.GetComponent<Physics2D>();
+}
+
+/*!*****************************************************************************
+\brief
+GetGravityEnabled function that returns the stored value of the entity's
+gravity enabled flag
+
+\param const Entity &
+A reference to a read-only Entity to
+
+\return bool
+The value of the entity's gravity enabled flag
+*******************************************************************************/
+bool Physics2DManager::GetGravityEnabled(const Entity& _e) {
+	return Physics2DManager::GetPhysicsComponent(_e).gravityEnabled;
+}
+
+/*!*****************************************************************************
+\brief
+SetGravityEnabled function that sets the stored value of the entity's
+gravity enabled flag to the given value
+
+\param const Entity &
+A reference to a read-only Entity to
+
+\param const bool &
+A reference to a read-only value containing value to set
+
+\return void
+NULL
+*******************************************************************************/
+void Physics2DManager::SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled) {
+	Physics2DManager::GetPhysicsComponent(_e).gravityEnabled = _gravityEnabled;
 }
 
 /*!*****************************************************************************
@@ -380,7 +320,7 @@ GetForces function that returns the stored value of the entity's net forces
 \param const Entity &
 A reference to a read-only Entity to
 
-\return glm::vec
+\return Math::Vec2
 A copy of the value of the entity's net forces
 *******************************************************************************/
 Math::Vec2 Physics2DManager::GetForces(const Entity& _e) {
@@ -425,22 +365,18 @@ void Physics2DManager::AddForces(const Entity& _e, const Math::Vec2& _forces) {
 
 /*!*****************************************************************************
 \brief
-DeductForces function that subtracts from the stored value of the entity's forces
-the given force value to become the updated net forces
+AddGravityForce function that adds the gravity force value to the stored value of the
+entity's forces to become the updated net forces
 
 \param const Entity &
 A reference to a read-only Entity to set
 
-\param const Math::Vec2 &
-A reference to a read-only value containing force to subtract
-
 \return void
 NULL
 *******************************************************************************/
-//void Physics2DManager::DeductForces(const Entity &_e, const Math::Vec2 &_forces){
-//	//Physics2DManager::AddForces(_e, -_forces);
-//	Physics2DManager::GetPhysicsComponent(_e).forces -= _forces;
-//}
+void Physics2DManager::AddGravityForce(const Entity& _e) {
+	Physics2DManager::AddForces(_e, Physics2DManager::GetMass(_e) * gravityForce);
+}
 
 /*!*****************************************************************************
 \brief
@@ -519,8 +455,8 @@ physics render flag
 \param const Entity &
 A reference to a read-only Entity to
 
-\return float
-A copy of the value of the entity's physics render flag
+\return bool
+The value of the entity's physics render flag
 *******************************************************************************/
 bool Physics2DManager::GetPhysicsRenderFlag(const Entity& _e) {
 	return Physics2DManager::GetPhysicsComponent(_e).renderFlag;

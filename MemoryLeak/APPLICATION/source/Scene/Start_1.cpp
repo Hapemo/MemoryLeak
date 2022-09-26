@@ -197,7 +197,6 @@ void Start_1::Reset() {
 }
 
 void Start_1::Clear() {
-    physics2DManager->PhyObjListClear();
     for (auto& e : mEntities)
         e.Destroy();
     //levelEditor->exit();

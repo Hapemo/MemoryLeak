@@ -27,8 +27,8 @@ None.
 Math::Vec2 GetVec2(Value& vecIn)
 {
 	Math::Vec2 vecOut;
-	vecOut.x = vecIn["X"].GetDouble();
-	vecOut.y = vecIn["Y"].GetDouble();
+	vecOut.x = vecIn["X"].GetFloat();
+	vecOut.y = vecIn["Y"].GetFloat();
 	return vecOut;
 }
 
@@ -65,8 +65,8 @@ void SerializationManager::LoadScene(std::string _filename)
 		
 		Entity e{ ECS::CreateEntity() };
 		Value entity(kObjectType);
-		std::string s("Entity" + std::to_string(i));
-		Value index(s.c_str(), s.size(), doc.GetAllocator());
+		std::string str("Entity" + std::to_string(i));
+		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
 		if (!doc.HasMember(index))
 			std::cout << "error   "<<i;
 		entity = doc[index];
@@ -89,11 +89,11 @@ void SerializationManager::LoadScene(std::string _filename)
 		{
 			Math::Vec2 s, t;
 			float r;
-			s.x = entity["Transform"]["scale"]["X"].GetDouble();
-			s.y = entity["Transform"]["scale"]["Y"].GetDouble();
-			r = (float)entity["Transform"]["rotation"].GetDouble();
-			t.x = entity["Transform"]["translation"]["X"].GetDouble();
-			t.y = entity["Transform"]["translation"]["Y"].GetDouble();
+			s.x = entity["Transform"]["scale"]["X"].GetFloat();
+			s.y = entity["Transform"]["scale"]["Y"].GetFloat();
+			r = (float)entity["Transform"]["rotation"].GetFloat();
+			t.x = entity["Transform"]["translation"]["X"].GetFloat();
+			t.y = entity["Transform"]["translation"]["Y"].GetFloat();
 		
 			e.AddComponent<Transform>({ s, r, t }); 
 		}
@@ -114,9 +114,9 @@ void SerializationManager::LoadScene(std::string _filename)
 			std::vector<GLuint> images;
 			Value a(kObjectType);
 			a = entity["Animation"]["images"].GetArray();
-			for (int i = 0; i < a.Size(); ++i)
+			for (int j = 0; j < (int)a.Size(); ++j)
 			{
-				images.push_back((GLuint)a[i].GetInt());
+				images.push_back((GLuint)a[j].GetInt());
 			}
 			float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
 			float timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
@@ -136,17 +136,20 @@ void SerializationManager::LoadScene(std::string _filename)
 			float mass = entity["Physics2D"]["mass"].GetFloat();
 			float	speed = entity["Physics2D"]["speed"].GetFloat();
 			float	moveDirection = entity["Physics2D"]["moveDirection"].GetFloat();
+			bool gravityEnabled = false;
+			if(entity["Physics2D"].HasMember("gravityEnabled"))
+				gravityEnabled = entity["Physics2D"]["gravityEnabled"].GetBool();
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			//e.AddComponent<Physics2D>({ mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
-			physics2DManager->AddPhysicsComponent(e, mass, speed, moveDirection, renderFlag);
+			e.AddComponent<Physics2D>({ gravityEnabled, mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
+			//physics2DManager->AddPhysicsComponent(e, mass, speed, moveDirection, renderFlag);
 		}
 		if (entity.HasMember("RectCollider"))
 		{
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 			Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
 			bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
-			e.AddComponent<RectCollider>({ Math::Vec2{centerOffset} , scaleOffset , renderFlag });
+			e.AddComponent<RectCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
 		if (entity.HasMember("CircleCollider"))
 		{
@@ -335,6 +338,7 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("moveDirection"), e.GetComponent<Physics2D>().moveDirection, allocator);
 			addVectorMember(scene, tmp, "forces",  e.GetComponent<Physics2D>().forces);
 			addVectorMember(scene, tmp, "velocity", e.GetComponent<Physics2D>().velocity);
+			tmp.AddMember(StringRef("gravityEnabled"), e.GetComponent<Physics2D>().gravityEnabled, allocator);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Physics2D>().renderFlag, allocator);
 			entity.AddMember(StringRef("Physics2D"), tmp, allocator);
 		}

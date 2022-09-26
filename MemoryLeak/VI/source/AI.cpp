@@ -146,12 +146,13 @@ void updateAIAllColors(const Entity& e)
 {
 	static double time = 0.0;
 	//time += 1.f / Application::getTargetFPS() / 10.0; //deltatime
+	time += FPSManager::dt;
 	if (time > 2 * M_PI)
 		time -= (2 * M_PI);
-	float red = float((sin(time)		+ 1) / 2 );
-	float green = float((sin(time * 4) + 1) / 2 );
-	float blue = float((sin(time * 8) + 1) / 2 );
-	Color clr{ red, green, blue , 255 };
+	GLubyte red = GLubyte((sin(time)		+ 1) / 2 *255.f);
+	GLubyte green = GLubyte((sin(time * 4) + 1) / 2 * 255.f);
+	GLubyte blue = GLubyte((sin(time * 8) + 1) / 2 * 255.f);
+	Color clr{ red, green, blue , (GLubyte)255 };
 	e.GetComponent<Sprite>().color = clr;
 	//@weijhin
 	//colorManager->SetColor(e, clr);
@@ -193,7 +194,8 @@ void updateAITrafficLight(const Entity& e)
 	{
 		red = 1.0f;
 	}
-	Color clr{ red, green, blue , 255};
+
+	Color clr{ (GLubyte)(red * 255), (GLubyte)(green * 255), (GLubyte)(blue*255) , (GLubyte)255};
 	e.GetComponent<Sprite>().color = clr;
 	//@weijhin
 	//colorManager->SetColor(e, clr);
@@ -274,6 +276,7 @@ None.
 *******************************************************************************/
 void updateAICircle(const Entity& e, float speed, float range)
 {
+	(void)range;
 	static double time = 0.0;
 	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
 	Math::Vec2 incrTranslation{};
