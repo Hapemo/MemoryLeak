@@ -14,7 +14,7 @@ Game state for testing physics
 
 
 void GameState2::Load() {
-    INIT_TEXTURES("Sprites");
+    LOAD_TEXTURES("Sprites");
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 }
