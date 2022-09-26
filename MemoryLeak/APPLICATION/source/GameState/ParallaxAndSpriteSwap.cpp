@@ -20,8 +20,8 @@ void ParallaxAndSpriteSwap::Load() {
 }
 
 void ParallaxAndSpriteSwap::Init() {
-    float width = Application::getWindowWidth();
-    float height = Application::getWindowHeight();
+    float width = (float)Application::getWindowWidth();
+    float height = (float)Application::getWindowHeight();
     Entity e1{ ECS::CreateEntity() };
     mEntities.insert(e1);
     e1.AddComponent(Transform{ {width, height}, 0, {0,0} },
@@ -72,7 +72,7 @@ void ParallaxAndSpriteSwap::Init() {
 
     Entity e7{ ECS::CreateEntity() };
     mEntities.insert(e7);
-    e7.AddComponent(Transform{ {96,96}, 0, {50, -100} },
+    e7.AddComponent(Transform{ {96*2,96*2}, 0, {50, -100} },
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
         SheetAnimation{ 6, 0, 0.1f },
         General{ "spritesheet", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
@@ -84,7 +84,7 @@ void ParallaxAndSpriteSwap::Update() {
     for (const Entity& e : mEntities)
     {
         if (e.GetComponent<Transform>().translation.x >= Application::getWindowWidth())
-            e.GetComponent<Transform>().translation.x = -Application::getWindowWidth();
+            e.GetComponent<Transform>().translation.x = (float)-Application::getWindowWidth();
 
         if (e.GetComponent<General>().name == "spritesheet")
         {
