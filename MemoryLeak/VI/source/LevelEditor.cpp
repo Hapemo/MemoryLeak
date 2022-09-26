@@ -10,22 +10,15 @@ Entities and its Components.
 *******************************************************************************/
 #include <LevelEditor.h>
 #include <ECSManager.h>
-#include "Graphics/SpriteManager.h"
-#include <AI.h>
+//#include "Graphics/SpriteManager.h"
+//#include <AI.h>
 #include <Logger.h>
 #include <vec2.h>
 #include <filesystem>
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-//#define STB_IMAGE_IMPLEMENTATION
-//#include "stb_image.h"
-
-
-
-//int selectedEntityID = 0;
 int SRT = 0;
-
 /*!*****************************************************************************
 \brief
 	Initializes the level editor
@@ -49,8 +42,15 @@ void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeigh
 
 	//IM_ASSERT(ret);
 	//weatherAIinit();
-	selectedEntity = nullptr;
+	Start();
 }
+void LevelEditor::Start()
+{
+	selectedEntity = nullptr;
+	isPaused = true;
+	serializationManager->SaveScene("SceneTemp");
+}
+
 /*!*****************************************************************************
 \brief
 	Creates the level editor window
@@ -271,7 +271,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Lifespan>())
@@ -280,7 +279,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Transform>())
@@ -289,7 +287,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Sprite>())
@@ -298,7 +295,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Animation>())
@@ -307,7 +303,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<SheetAnimation>())
@@ -316,7 +311,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Physics2D>())
@@ -325,7 +319,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<RectCollider>())
@@ -334,7 +327,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<CircleCollider>())
@@ -343,7 +335,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Edge2DCollider>())
@@ -352,7 +343,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Stuff>())
@@ -361,7 +351,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Audio>())
@@ -370,7 +359,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						if (e.HasComponent<Stuff>())
@@ -379,7 +367,6 @@ void  LevelEditor::SceneManager()
 							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 							{
 								selectedEntity = &e;
-								//selectedEntityID = counter;
 							}
 						}
 						ImGui::TreePop();
@@ -452,7 +439,7 @@ void LevelEditor::EntityManager()
 			//ImGui::Text(lbl);
 			if (e.HasComponent<General>())
 			{
-				if (ImGui::CollapsingHeader("General")&&true) {
+				if (ImGui::CollapsingHeader("General")||true) {
 					ImGui::Text("General");
 						ImGui::Checkbox("isActive", &e.GetComponent<General>().isActive); //isactive
 						ImGui::InputText("Name", const_cast<char*>(e.GetComponent<General>().name.c_str()), 30);
@@ -876,11 +863,17 @@ void LevelEditor::ViewPortManager()
 	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
 	ImGui::Begin("View Port Manager");
 	ImGui::SameLine(300.f, 0.f);
-	ImGui::Button("Reset", {100,25});
+	if (ImGui::Button("Reset", { 100,25 }))
+		serializationManager->LoadScene("SceneTmp");
 	ImGui::SameLine(0.f,20.f);
-	ImGui::Button("Play", {100,25});
+	if (ImGui::Button("Play", { 100,25 }))
+	{
+		serializationManager->SaveScene("SceneTmp");
+		isPaused = false;
+	}
 	ImGui::SameLine(0.f, 20.f);
-	ImGui::Button("Pause", { 100,25 });
+	if(ImGui::Button("Pause", { 100,25 }))
+		isPaused = true;
 	GLuint frameBuffer = renderManager->GetFBO();
 	ImVec2 viewportSize = ImGui::GetWindowSize();
 	viewportSize.y -=70;
@@ -952,15 +945,7 @@ void LevelEditor::ViewPortManager()
 			}
 			//glm::decompose();
 		}
-		
-
-
 	}
-
-	
-	
-	
-
 	ImGui::End();
 }
 

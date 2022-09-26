@@ -52,6 +52,7 @@ void SerializationManager::LoadScene(std::string _filename)
 	}
 	else
 		LOG_ERROR("Opening Scene: " + path);
+	ECS::DestroyAllEntities();
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
@@ -146,7 +147,6 @@ void SerializationManager::LoadScene(std::string _filename)
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
 			e.AddComponent<Physics2D>({ gravityEnabled, mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
-			//physics2DManager->AddPhysicsComponent(e, mass, speed, moveDirection, renderFlag);
 		}
 		if (entity.HasMember("RectCollider"))
 		{
@@ -191,6 +191,15 @@ void SerializationManager::LoadScene(std::string _filename)
 
 			bool isSpacial = entity["Audio"]["isSpacial"].GetBool();
 			e.AddComponent<Audio>({ sound , isSpacial});
+		}
+		if (entity.HasMember("AI"))
+		{
+			int colorChange = entity["AI"]["colorChange"].GetInt();
+			int movement = entity["AI"]["movement"].GetInt();
+			float speed = entity["AI"]["speed"].GetFloat();
+			float range = entity["AI"]["range"].GetFloat();
+
+			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
 		}
 		mEntities.insert(e);
 		i++;
@@ -311,6 +320,8 @@ void SerializationManager::SaveScene(std::string _filename)
 	
 	for (const Entity& e : mEntities)
 	{
+		if (!e.HasComponent<General>())
+			continue;
 		Value entity(kObjectType);
 		if (e.HasComponent<General>())
 		{
@@ -420,6 +431,15 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("isRandPitch"), e.GetComponent<Audio>().sound.isRandPitch, allocator);
 			tmp.AddMember(StringRef("isSpacial"), e.GetComponent<Audio>().isSpacial, allocator);
 			entity.AddMember(StringRef("Audio"), tmp, allocator);
+		}
+		if (e.HasComponent<Stuff>())
+		{
+			Value tmp(kObjectType);
+			tmp.AddMember(StringRef("colorChange"), e.GetComponent<Stuff>().colorChange, allocator);
+			tmp.AddMember(StringRef("movement"), e.GetComponent<Stuff>().movement, allocator);
+			tmp.AddMember(StringRef("speed"), e.GetComponent<Stuff>().speed, allocator);
+			tmp.AddMember(StringRef("range"), e.GetComponent<Stuff>().range, allocator);
+			entity.AddMember(StringRef("AI"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);

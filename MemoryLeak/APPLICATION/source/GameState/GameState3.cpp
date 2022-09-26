@@ -20,20 +20,25 @@ void GameState3::Load() {
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 
 	serializationManager->LoadScene("SceneJUX");
+    levelEditor->Start();
 }
 
 void GameState3::Init() {
     //levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
     renderManager->RenderToFrameBuffer();
+    levelEditor->UnpauseEditor(); // for this game state showing editor only
 }
 
 void GameState3::Update() {
-    TRACK_PERFORMANCE("Physics");
-    physics2DManager->Update(FPSManager::dt);
-    END_TRACK("Physics");
-    animator->Animate();
-    sheetAnimator->Animate();
-
+    if (!levelEditor->IsEditorPaused())
+    {
+        TRACK_PERFORMANCE("Physics");
+        physics2DManager->Update(FPSManager::dt);
+        END_TRACK("Physics");
+        animator->Animate();
+        sheetAnimator->Animate();
+        aiManager->updateAI();
+    }
     TRACK_PERFORMANCE("Editor");
     renderManager->RenderToFrameBuffer();
     levelEditor->LevelEditor::Window();
@@ -46,7 +51,7 @@ void GameState3::Draw() {
 }
 
 void GameState3::Free() {
-    serializationManager->SaveScene("SceneJUX");
+    //serializationManager->SaveScene("SceneJUX");
     ECS::DestroyAllEntities();
 }
 

@@ -46,6 +46,7 @@ void Application::init() {
   startup();
 
   SystemInit();
+  audioManager->PlayBGSound("MENUBG.wav", 10);
 }
 
 void Application::FirstUpdate() {
@@ -71,17 +72,20 @@ void Application::SecondUpdate() {
     levelEditor->LevelEditor::Window();
     levelEditor->LevelEditor::Update();
   }
-  
-
   END_TRACK("Editor");
 
   if (Input::CheckKey(STATE::RELEASE, KEY::E))
   {
       editorMode = !editorMode;
       if (editorMode)
+      {
+        levelEditor->Start();
         renderManager->RenderToFrameBuffer();
+      }
       else
+      {
           renderManager->RenderToScreen();
+      }
 
   }
   // Reset input

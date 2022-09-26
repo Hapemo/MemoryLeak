@@ -108,11 +108,11 @@ void GameState1::Init() {
 }
 
 void GameState1::Update() {
-    playerManager->Update(FPSManager::dt);
-    TRACK_PERFORMANCE("Physics");
-    physics2DManager->Update(FPSManager::dt);
-    END_TRACK("Physics");
-    //sheetAnimator->Animate();
+        playerManager->Update(FPSManager::dt);
+        TRACK_PERFORMANCE("Physics");
+        physics2DManager->Update(FPSManager::dt);
+        END_TRACK("Physics");
+        sheetAnimator->Animate();
 }
 
 void GameState1::Draw() {
