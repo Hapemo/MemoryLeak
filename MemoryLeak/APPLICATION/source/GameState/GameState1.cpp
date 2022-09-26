@@ -8,7 +8,6 @@
 Game state for testing physics
 *******************************************************************************/
 #include "GameState1.h"
-#include "Application.h"
 
 void GameState1::Load() {
     INIT_TEXTURES("Spritesheets");

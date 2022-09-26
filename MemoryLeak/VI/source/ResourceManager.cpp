@@ -93,7 +93,7 @@ std::string	ResourceManager::GetTexturePath(GLint _id) {
 	return "";
 }
 
-std::vector<GLuint*>	ResourceManager::GetTextureIDs() {
+std::vector<GLuint*> ResourceManager::GetTextureIDs() {
 	std::vector<GLuint*> result;
 	for (size_t index = 0; index < mResources.size(); ++index)
 		result.push_back(&mResources[index].texture.id);

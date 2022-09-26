@@ -90,16 +90,27 @@ void real_main() {
 int main() {
     try {
         /*
+        //logging strings
         LOG_INFO("The program has started.");
 
+        //logging integers/floats etc
+        float f = 0.1f;
+        LOG_INFO(f);
+
+        //creating and using custom log type
         LOG_CUSTOM_CREATE("CUSTOMNAME");
         LOG_CUSTOM("CUSTOMNAME", "Testing Custom Message");
 
+        //logging strings and integers/floats etc
         std::string message = "Hello World!";
         int num = 1;
         LOG_INFO(("Message is: " + message + " Number is: " + std::to_string(num)).c_str());
 
-        ASSERT(num == 2, "Test Assert!");
+        //asserting
+        ASSERT(num == 1, "Test Assert!");
+
+        //throwing exception
+        THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "File for vertex shader not found!");
         */
 
         real_main();

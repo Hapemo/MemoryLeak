@@ -12,6 +12,7 @@
 #define LOG_CUSTOM(_customLogLevel, ...) Logger::GetInstance()->CustomLog(std::source_location::current(), _customLogLevel, __VA_ARGS__)
 #define LOG_CUSTOM_CREATE(_newType) Logger::GetInstance()->CreateNew(_newType)
 #define ASSERT(_condition, ...) Logger::GetInstance()->LogAssert(_condition, std::source_location::current(), __VA_ARGS__)
+#define THROW(_type, ...) Logger::GetInstance()->LogThrow((size_t)_type, std::source_location::current(), __VA_ARGS__)
 
 /**
 *   Singleton Logger Class.
@@ -25,6 +26,13 @@ public:
         LOG_ERROR = 3,
         LOG_ASSERT = 4,
         LOG_CRASH = 5
+    };
+
+    enum class E_EXCEPTION {
+        RANGE_ERR = 0,
+        OVERFLOW_ERR = 1,
+        LOGIC_ERR = 2,
+        RUNTIME_ERR = 3
     };
 
     void CreateNew(std::string _newType);
@@ -61,7 +69,7 @@ public:
         mLoggerStr.push_back(std::make_pair((E_LOGLEVEL)_logType, ("[" + Util::CurrentDateTime() + "]\t" + _logMessage).c_str()));
 
         // printing log into terminal
-        //printf("[%s]\t%s\t%s\n", (Util::CurrentDateTime()).c_str(), (Logger::mLogTypesVec[_logType].title).c_str(), _logMessage);
+        std::cout << "[" << Util::CurrentDateTime().c_str() << "]\t" << Logger::mLogTypesVec[_logType].title.c_str() << "\t" << _logMessage << "\n";
 
         // human readable log file
         mLogInfile << "[" << Util::CurrentDateTime() << "]\t" << std::left << std::setw(15) << Logger::mLogTypesVec[_logType].title << _logMessage;
@@ -70,7 +78,7 @@ public:
         mFullLogInfile << "[" << Util::CurrentDateTime() << "] " << _logData.file_name() << " (LINE " << _logData.line() << ")\n\t\t\t\t" << Logger::mLogTypesVec[_logType].title << ": " << _logMessage;
 
         // specific log file types
-        if (_logType == (size_t)Logger::E_LOGLEVEL::LOG_ASSERT || _logType == (size_t)Logger::E_LOGLEVEL::LOG_CRASH)
+        if (_logType == (size_t)Logger::E_LOGLEVEL::LOG_ASSERT)
             mLogFilesVec[_logType] << "[" << Util::CurrentDateTime() << "] " << _logData.file_name() << " (LINE " << _logData.line() << ")\n\t\t\t\t" << _logMessage;
         else
             mLogFilesVec[_logType] << "[" << Util::CurrentDateTime() << "]\t" << _logMessage;
@@ -87,9 +95,31 @@ public:
     template <typename ...Args>
     void LogAssert(bool _condition, const std::source_location _logData, Args... _args)
     {
-        if (_condition) return;
+        if (!_condition) return;
         Log(_logData, (size_t)Logger::E_LOGLEVEL::LOG_ASSERT, _args...);
         throw std::runtime_error(_args...);
+    }
+    
+    template <typename Args>
+    void LogThrow(const size_t _type, const std::source_location _logData, Args _args)
+    {
+        std::string filename = _logData.file_name();
+        std::string line = std::to_string(_logData.line());
+        std::string data = "\n\t\t\t\tThrown at " + filename + " (LINE " + line + ")\n";
+        switch (_type) {
+        case (size_t)E_EXCEPTION::RUNTIME_ERR:
+            throw std::runtime_error(_args + data);
+            break;
+        case (size_t)E_EXCEPTION::RANGE_ERR:
+            throw std::range_error(_args + data);
+            break;
+        case (size_t)E_EXCEPTION::OVERFLOW_ERR:
+            throw std::overflow_error(_args + data);
+            break;
+        case (size_t)E_EXCEPTION::LOGIC_ERR:
+            throw std::logic_error(_args + data);
+            break;
+        }
     }
 
     std::vector<std::pair<E_LOGLEVEL, std::string>> GetLoggerStr() { return mLoggerStr; }
@@ -114,7 +144,7 @@ private:
     /**
     *   Log file name.
     **/
-    const std::string mFilepath = "logs/";
+    const std::string mFilepath = "../logs/";
     std::vector<std::string> mLogNames = { "INFO", "DEBUG", "WARN", "ERROR", "ASSERT", "CRASH" };
     /**
     *   Log file(s) stream object.
