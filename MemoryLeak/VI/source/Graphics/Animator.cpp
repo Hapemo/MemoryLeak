@@ -46,7 +46,7 @@ void Animator::Animate(const Entity& _e)
 	}
 
 	//update time to image swap
-	_e.GetComponent<Animation>().timeToImageSwap -= FPSManager::dt;
+	_e.GetComponent<Animation>().timeToImageSwap -= static_cast<float>(FPSManager::dt);
 
 	if (_e.GetComponent<Animation>().timeToImageSwap >= 0) return;
 
