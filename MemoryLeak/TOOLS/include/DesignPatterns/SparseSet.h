@@ -104,14 +104,14 @@ SparseSet<T>::SparseSet(int _size) : mSize(_size), emptyID(INT_MAX), mCapacity(0
 template<typename T>
 SparseSet<T>::DataType& SparseSet<T>::operator[](IndexType const& _index) {
 	int deepID{ mShallow[static_cast<int>(_index)] };
-	ASSERT(deepID != emptyID, "SparseSet cannot find ID: " + std::to_string(deepID));
+	ASSERT(deepID == emptyID, "SparseSet cannot find ID: " + std::to_string(deepID));
 	return mDense[deepID];
 }
 
 template<typename T>
 void SparseSet<T>::RemoveData(IndexType const& _index) {
 	int& deepID{ mShallow[static_cast<int>(_index)] };
-	ASSERT(deepID != emptyID, "SparseSet cannot find ID: " + std::to_string(deepID));
+	ASSERT(deepID == emptyID, "SparseSet cannot find ID: " + std::to_string(deepID));
 
 	--mCapacity;
 	mDense[deepID] = mDense[mCapacity];

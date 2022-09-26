@@ -47,8 +47,9 @@ void GLShader::CompileVertexShader()
 	std::ifstream vertexShader(mPaths.first, std::ifstream::in);
 
 	//error checking
-	if (!vertexShader)
-		throw std::string("File for vertex shader not found!");
+	if (!vertexShader) {
+		THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "File for vertex shader not found!");
+	}
 
 	//reading file into stringstream
 	std::stringstream ss;
