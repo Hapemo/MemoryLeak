@@ -43,6 +43,7 @@ None.
 *******************************************************************************/
 AudioManager::~AudioManager()
 {
+    LOG_INFO("Audio release");
     system->release();
 
 }
@@ -57,11 +58,11 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
 {
     mChannel.resize(20);
     FMOD::Sound* snd;
-    system->createSound(",,\\resources\\Audio\\SHOOT1.wav", FMOD_DEFAULT, nullptr, &snd);
+    system->createSound("..\\resources\\Audio\\SHOOT1.wav", FMOD_DEFAULT, nullptr, &snd);
     mSfxSound["SHOOT1.wav"] = snd;
-    system->createSound(",,\\resources\\Audio\\DAMAGE.wav", FMOD_DEFAULT, nullptr, &snd);
+    system->createSound("..\\resources\\Audio\\DAMAGE.wav", FMOD_DEFAULT, nullptr, &snd);
     mSfxSound["DAMAGE.wav"] = snd;
-    system->createSound(",,\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
+    system->createSound("..\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
     mSfxSound["HEALTH.wav"] = snd;
     //delete snd;
     //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
