@@ -9,7 +9,8 @@ Game state for testing graphics
 *******************************************************************************/
 #pragma once
 #include "GameState.h"
-
+#include "ECS_items.h"
+#include "ECSManager.h"
 class GameState2 : public GameState {
 public:
 	GameState2() = default;

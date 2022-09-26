@@ -105,8 +105,8 @@ void SerializationManager::LoadScene(std::string _filename)
 			c.b = (GLubyte)entity["Sprite"]["color"]["b"].GetInt();
 			c.a = (GLubyte)entity["Sprite"]["color"]["a"].GetInt();
 			SPRITE s = (SPRITE)entity["Sprite"]["sprite"].GetInt();
-			//GLuint t = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
-			GLuint t = (GLuint)entity["Sprite"]["texture"].GetInt();
+			GLuint t = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
+			//GLuint t = (GLuint)entity["Sprite"]["texture"].GetInt();
 			int l = entity["Sprite"]["layer"].GetInt();
 			e.AddComponent<Sprite>({ c, s, t ,l});
 		}

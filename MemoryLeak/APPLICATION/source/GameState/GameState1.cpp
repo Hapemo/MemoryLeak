@@ -8,7 +8,7 @@
 Game state for testing physics
 *******************************************************************************/
 #include "GameState1.h"
-
+#include "Application.h"
 void GameState1::Load() {
     LOAD_TEXTURES("Spritesheets");
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
@@ -99,8 +99,8 @@ void GameState1::Init() {
 //    spriteManager->SetTexture(e5, "Textures\\Spritesheets\\walkingSheet.png");
 //    physics2DManager->AddPhysicsComponent(e5);
 //    playerManager->RegisterPlayer(e5);
-
-    serializationManager->SaveScene("SceneJPhysics");
+//
+//    serializationManager->SaveScene("SceneJPhysics");
 }
 
 void GameState1::Update() {
