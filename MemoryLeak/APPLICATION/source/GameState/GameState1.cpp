@@ -100,7 +100,7 @@ void GameState1::Init() {
 //    physics2DManager->AddPhysicsComponent(e5);
 //    playerManager->RegisterPlayer(e5);
 
-    //serializationManager->SaveScene("SceneJPhysics");
+    serializationManager->SaveScene("SceneJPhysics");
 }
 
 void GameState1::Update() {

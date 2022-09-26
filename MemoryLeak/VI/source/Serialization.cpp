@@ -105,6 +105,7 @@ void SerializationManager::LoadScene(std::string _filename)
 			c.b = (GLubyte)entity["Sprite"]["color"]["b"].GetInt();
 			c.a = (GLubyte)entity["Sprite"]["color"]["a"].GetInt();
 			SPRITE s = (SPRITE)entity["Sprite"]["sprite"].GetInt();
+			//GLuint t = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
 			GLuint t = (GLuint)entity["Sprite"]["texture"].GetInt();
 			int l = entity["Sprite"]["layer"].GetInt();
 			e.AddComponent<Sprite>({ c, s, t ,l});
@@ -308,7 +309,8 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmpc.AddMember(StringRef("a"), e.GetComponent<Sprite>().color.a, allocator);
 			tmp.AddMember(StringRef("color"), tmpc, allocator);
 			tmp.AddMember(StringRef("sprite"), (int)e.GetComponent<Sprite>().sprite, allocator);
-			tmp.AddMember(StringRef("texture"), (int)e.GetComponent<Sprite>().texture, allocator);
+			std::string tex = spriteManager->GetTexturePath(spriteManager->GetTexture(e));
+			tmp.AddMember(StringRef("texture"), StringRef(tex.c_str()), allocator);
 			tmp.AddMember(StringRef("layer"), e.GetComponent<Sprite>().layer, allocator);
 			entity.AddMember(StringRef("Sprite"), tmp, allocator);
 		}
