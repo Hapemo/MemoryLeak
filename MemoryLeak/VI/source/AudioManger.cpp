@@ -43,7 +43,6 @@ None.
 *******************************************************************************/
 AudioManager::~AudioManager()
 {
-    LOG_INFO("Audio release");
     system->release();
 
 }
@@ -64,6 +63,11 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
     mSfxSound["DAMAGE.wav"] = snd;
     system->createSound("..\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
     mSfxSound["HEALTH.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\MENUBG.wav", FMOD_DEFAULT, nullptr, &snd);
+    mBgmSound["MENUBG.wav"] = snd;
+
+    
+    //delete snd;
     //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
 }
 /*!*****************************************************************************
@@ -90,6 +94,33 @@ void AudioManager::PlaySound(const Entity& _e, int _channel)
         }
     }
 }
+
+/*!*****************************************************************************
+\brief
+    Plays a single background sound
+
+\return
+None.
+*******************************************************************************/
+void AudioManager::PlayBGSound(std::string _snd, int _channel)
+{
+    mBgmSound[_snd]->setMode(2);
+    bool f;
+    mChannel[_channel]->isPlaying(&f);
+    if (!f)
+    {
+        LOG_INFO("Play BG sound");
+        mChannel[_channel]->setVolume(0.5f);
+        system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
+    }
+}
+/*!*****************************************************************************
+\brief
+    Update function to play sounds of entities that need to be played
+
+\return
+None.
+*******************************************************************************/
 void AudioManager::UpdateSound()
 {
     for (const Entity& e : mEntities)
@@ -106,6 +137,15 @@ void AudioManager::UpdateSound()
     }
     system->update();
 }
+/*!*****************************************************************************
+\brief
+    Set all volume
+\param vol
+    volume to set to
+
+\return
+None.
+*******************************************************************************/
 void AudioManager::SetALLVolume(float vol)
 {
     for (const Entity& e : mEntities)
@@ -113,6 +153,15 @@ void AudioManager::SetALLVolume(float vol)
         e.GetComponent<Audio>().sound.volume = vol;
     }
 }
+/*!*****************************************************************************
+\brief
+    Set all volume
+\param vol
+    volume to set to
+
+\return
+None.
+*******************************************************************************/
 void AudioManager::SetBGMVolume(float vol)
 {
     for (const Entity& e : mEntities)
@@ -120,6 +169,15 @@ void AudioManager::SetBGMVolume(float vol)
         e.GetComponent<Audio>().sound.volume = vol;
     }
 }
+/*!*****************************************************************************
+\brief
+    Set all volume
+\param vol
+    volume to set to
+
+\return
+None.
+*******************************************************************************/
 void AudioManager::SetSFXVolume(float vol)
 {
     for (const Entity& e : mEntities)
