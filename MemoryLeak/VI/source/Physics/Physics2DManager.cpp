@@ -19,7 +19,7 @@
 // -----------------------------
 const double fixedDT{ 1.0 / 60.0 },			// Fixed delta time step of 1/60 steps a second
 			 accumulatedDTCap{ 1.0 };		// Accumulated cannot store more than 1 second worth of updates
-const float  velocityCap{ 0.99f };			// Velocity multipler cap to reach max velocity
+const float  velocityCap{ 0.98f };			// Velocity multipler cap to reach max velocity
 const Math::Vec2 gravityForce{ 0.f, -9.81f };// Gravity pull
 
 

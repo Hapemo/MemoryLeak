@@ -86,7 +86,7 @@ void Application::SecondUpdate() {
   }
   // Reset input
   Input::updatePrevKeyStates();
-  audioManager->UpdateSound();
+  //audioManager->UpdateSound();
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 

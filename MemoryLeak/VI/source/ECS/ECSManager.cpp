@@ -86,6 +86,7 @@ void ECSManager::RegisterCollision2DManager() {
 void ECSManager::RegisterPlayerController() {
 	Signature signature{};
 	signature.set(ECS::GetComponentType<PlayerTmp>());
+	signature.set(ECS::GetComponentType<Physics2D>());
 
 	playerManager = ECS::RegisterSystem<PlayerController>();
 	ECS::SetSystemSignature<PlayerController>(signature);
@@ -154,7 +155,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterPhysics2DManager();
 	RegisterCollision2DManager();
 	RegisterLevelEditor();
-	RegisterAudioManager();
+	//RegisterAudioManager();
 	RegisterSerializationManager();
 	RegisterDialogManager();
 	

@@ -4,7 +4,6 @@
 
 class PlayerController : public System {
 public:
-	void Update(double dt);
+	void Update(double _dt);
 private:
-	bool mTurnFlag{ true };
 };

@@ -56,7 +56,7 @@ void GameStateManager::Update() {
 		END_TRACK("Graphics");
 
 		TRACK_PERFORMANCE("Audio");
-		audioManager->UpdateSound();
+		//audioManager->UpdateSound();
 		END_TRACK("Audio");
 
 		Application::SecondUpdate(); // This should always be the last
