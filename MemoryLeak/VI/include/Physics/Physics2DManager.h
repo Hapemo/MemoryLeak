@@ -166,10 +166,11 @@ public:
 	NULL
 	*******************************************************************************/
 	void AddPhysicsComponent(const Entity& _e,
-		const float& _mass = 1.f,
-		const float& _speed = 0.f,
-		const float& _moveDirection = 0.f,
-		const bool& _renderFlag = false);
+							 const bool& _gravityEnabled = false,
+							 const float& _mass = 1.f,
+							 const float& _speed = 0.f,
+							 const float& _moveDirection = 0.f,
+							 const bool& _renderFlag = false);
 
 	/*!*****************************************************************************
 	\brief
@@ -200,6 +201,35 @@ public:
 // -----------------------------
 // Get / Set functions
 // -----------------------------
+	/*!*****************************************************************************
+	\brief
+	GetGravityEnabled function that returns the stored value of the entity's
+	gravity enabled flag
+
+	\param const Entity &
+	A reference to a read-only Entity to
+
+	\return bool
+	The value of the entity's gravity enabled flag
+	*******************************************************************************/
+	bool GetGravityEnabled(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	SetGravityEnabled function that sets the stored value of the entity's
+	gravity enabled flag to the given value
+
+	\param const Entity &
+	A reference to a read-only Entity to
+
+	\param const bool &
+	A reference to a read-only value containing value to set
+
+	\return void
+	NULL
+	*******************************************************************************/
+	void SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled);
+
 	/*!*****************************************************************************
 	\brief
 	GetMass function that returns the stored value of the entity's mass
@@ -331,7 +361,7 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	AddGravity function that adds the gravity force value to the stored value of the
+	AddGravityForce function that adds the gravity force value to the stored value of the
 	entity's forces to become the updated net forces
 
 	\param const Entity &
@@ -340,7 +370,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddGravity(const Entity& _e);
+	void AddGravityForce(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
@@ -411,8 +441,8 @@ public:
 	\param const Entity &
 	A reference to a read-only Entity to
 
-	\return float
-	A copy of the value of the entity's physics render flag
+	\return bool
+	The value of the entity's physics render flag
 	*******************************************************************************/
 	bool GetPhysicsRenderFlag(const Entity& _e);
 

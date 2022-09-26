@@ -17,6 +17,26 @@
 
 /*!*****************************************************************************
 \brief
+HasCollider function that checks if the given entity contains a collider
+
+\param const Entity &
+A reference to a read-only Entity to add collider to
+
+\return bool
+Evaluated result of whether the entity has a collider
+*******************************************************************************/
+bool Collision2DManager::HasCollider(const Entity& _e) {
+	if (_e.HasComponent<RectCollider>() ||
+		_e.HasComponent<CircleCollider>() ||
+		_e.HasComponent<Edge2DCollider>() ||
+		_e.HasComponent<Point2DCollider>())
+		return true;
+	else
+		return false;
+}
+
+/*!*****************************************************************************
+\brief
 AddRectColliderComponent function that adds a rectangular collider to the given
 entity of specified parameters
 
@@ -127,22 +147,96 @@ void Collision2DManager::AddEdgeColliderComponent(const Entity& _e, const Math::
 
 /*!*****************************************************************************
 \brief
-HasCollider function that checks if the given entity contains a collider
+AddPointColliderComponent function that adds a point collider to the given
+entity of specified parameters
 
 \param const Entity &
 A reference to a read-only Entity to add collider to
 
-\return bool
-Evaluated result of whether the entity has a collider
+\param const Math::Vec2 &
+A reference to a read-only variable containing the center offset of the
+collider from the entity's position
+
+\param const bool &
+A reference to a read-only variable containing the value of whether the collider
+should be rendered
+
+\return void
+NULL
 *******************************************************************************/
-bool Collision2DManager::HasCollider(const Entity& _e) {
-	if (_e.HasComponent<RectCollider>() || 
-		_e.HasComponent<CircleCollider>() ||
-		_e.HasComponent<Edge2DCollider>() ||
-		_e.HasComponent<Point2DCollider>())
-		return true;
-	else
-		return false;
+void Collision2DManager::AddPointColliderComponent(const Entity& _e, const Math::Vec2& _centerOffset, const bool& _renderFlag) {
+	// Check if the component already exists
+	// If so, edit it
+	if (!_e.HasComponent<Point2DCollider>())
+		_e.AddComponent(Point2DCollider{ _centerOffset, _renderFlag });
+	else {
+		Collision2DManager::SetPointCenterOffset(_e, _centerOffset);
+		Collision2DManager::SetPointRenderFlag(_e, _renderFlag);
+	}
+}
+
+/*!*****************************************************************************
+\brief
+RemoveRectColliderComponent function that removes rectangular collider of the 
+given entity
+
+\param const Entity &
+A reference to a read-only Entity to remove collider from
+
+\return void
+NULL
+*******************************************************************************/
+void Collision2DManager::RemoveRectColliderComponent(const Entity& _e) {
+	if (_e.HasComponent<RectCollider>())
+		_e.RemoveComponent<RectCollider>();
+}
+
+/*!*****************************************************************************
+\brief
+RemoveCircleColliderComponent function that removes circle collider of the
+given entity
+
+\param const Entity &
+A reference to a read-only Entity to remove collider from
+
+\return void
+NULL
+*******************************************************************************/
+void Collision2DManager::RemoveCircleColliderComponent(const Entity& _e) {
+	if (_e.HasComponent<CircleCollider>())
+		_e.RemoveComponent<CircleCollider>();
+}
+
+/*!*****************************************************************************
+\brief
+RemoveEdgeColliderComponent function that removes edge collider of the
+given entity
+
+\param const Entity &
+A reference to a read-only Entity to remove collider from
+
+\return void
+NULL
+*******************************************************************************/
+void Collision2DManager::RemoveEdgeColliderComponent(const Entity& _e) {
+	if (_e.HasComponent<Edge2DCollider>())
+		_e.RemoveComponent<Edge2DCollider>();
+}
+
+/*!*****************************************************************************
+\brief
+RemovePointColliderComponent function that removes point collider of the
+given entity
+
+\param const Entity &
+A reference to a read-only Entity to remove collider from
+
+\return void
+NULL
+*******************************************************************************/
+void Collision2DManager::RemovePointColliderComponent(const Entity& _e) {
+	if (_e.HasComponent<Point2DCollider>())
+		_e.RemoveComponent<Point2DCollider>();
 }
 
 /*!*****************************************************************************
@@ -552,7 +646,7 @@ Math::Vec2 Collision2DManager::GetPointCenterOffset(const Entity& _e) {
 
 /*!*****************************************************************************
 \brief
-SetRectCenterOffset function that set the value of the given entity's point
+SetPointCenterOffset function that set the value of the given entity's point
 collider's center offset
 
 \param const Entity &
@@ -570,14 +664,14 @@ void Collision2DManager::SetPointCenterOffset(const Entity& _e, const Math::Vec2
 
 /*!*****************************************************************************
 \brief
-GetPointScaleOffset function that returns the value of the given entity's
-point collider's scale offset
+GetPointRenderFlag function that returns the value of the given entity's
+point collider's render flag
 
 \param const Entity &
-A reference to a read-only Entity to get the scale offset of
+A reference to a read-only Entity to get the render flag of
 
-\return Math::Vec2
-Value of the point collider's scale offset
+\return bool
+Value of the point collider's render flag
 *******************************************************************************/
 bool Collision2DManager::GetPointRenderFlag(const Entity& _e) {
 	return Collision2DManager::GetPointCollider(_e).renderFlag;
@@ -585,14 +679,14 @@ bool Collision2DManager::GetPointRenderFlag(const Entity& _e) {
 
 /*!*****************************************************************************
 \brief
-SetPointScaleOffset function that set the value of the given entity's point
-collider's scale offset
+SetPointRenderFlag function that set the value of the given entity's point
+collider's render flag
 
 \param const Entity &
-A reference to a read-only Entity to set the scale offset of
+A reference to a read-only Entity to set the render flag of
 
-\param const Math::Vec2 &
-A reference to a read-only variable containing the scale offset to set to
+\param const bool &
+A reference to a read-only variable containing the flag to set the render flag to
 
 \return void
 NULL
@@ -601,17 +695,33 @@ void Collision2DManager::SetPointRenderFlag(const Entity& _e, const bool& _rende
 	Collision2DManager::GetPointCollider(_e).renderFlag = _renderFlag;
 }
 
+/*!*****************************************************************************
+\brief
+ExistsInCollisionList function that checks and returns the whether if the given
+entity pair is already in the collision entity pair container list
 
+\param const Entity &
+A reference to a read-only variable containing the 1st entity of the entity pair
+
+\param const Entity &
+A reference to a read-only variable containing the 2nd entity of the entity pair
+
+\return bool
+Evaluated result of whether the entity pair exists in container
+*******************************************************************************/
 bool Collision2DManager::ExistsInCollisionList(const Entity& e1, const Entity& e2) {
+	// Nothing in container, does not exists
 	if (mCollisionCheckList.size() == 0)
 		return false;
 
+	// Loop through the list and check if the pair exists
 	for (const CollisionStore& cs : mCollisionCheckList) {
 		if ((cs.obj1.id == e1.id && cs.obj2.id == e2.id) ||
 			(cs.obj1.id == e2.id && cs.obj2.id == e1.id))
 			return true;
 	}
 
+	// Loop completed, entity pair was not found
 	return false;
 }
 
@@ -628,7 +738,7 @@ NULL
 *******************************************************************************/
 void Collision2DManager::UpdateCollisionList(const std::set<Entity>& _entityList) {
 	// Clear list from previous frame
-	mCollisionCheckList.clear();
+	Collision2DManager::ClearCollisionList();
 
 	// Loop through list
 	for (const Entity& e1 : _entityList) {
@@ -643,6 +753,20 @@ void Collision2DManager::UpdateCollisionList(const std::set<Entity>& _entityList
 				mCollisionCheckList.emplace_back(CollisionStore{ 0, e1, e2 });
 		}
 	}
+}
+
+/*!*****************************************************************************
+\brief
+ClearCollisionList function that clears the system's stored container
+
+\param void
+NULL
+
+\return void
+NULL
+*******************************************************************************/
+void Collision2DManager::ClearCollisionList() {
+	mCollisionCheckList.clear();
 }
 
 /*!*****************************************************************************
@@ -782,9 +906,8 @@ void Collision2DManager::ResolveCollision(CollisionStore& _collisionData) {
 
 /*!*****************************************************************************
 \brief
-CheckCollision function that calls the respective collision detection function
-depending on the collider type of the given entity pair and returns the result
-of that function as its result
+CI_RectvsRect function that checks for collision between 2 rectangular
+colliders using AABB
 
 \param CollisionStore &
 A reference to struct containing entity pair data to check
@@ -793,6 +916,7 @@ A reference to struct containing entity pair data to check
 Evaluated result of whether collision has occurred between the given entity pair
 *******************************************************************************/
 bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
+	// Store center and scale of both entities
 	Math::Vec2 center1{ Math::Vec2{_collisionData.obj1.GetComponent<Transform>().translation} + _collisionData.obj1.GetComponent<RectCollider>().centerOffset },
 			   scale1{ static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
 				       static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.y) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.y) / 2.0) },
@@ -800,12 +924,13 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 		       scale2{ static_cast<float>(static_cast<double>(_collisionData.obj2.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj2.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
 				       static_cast<float>(static_cast<double>(_collisionData.obj2.GetComponent<Transform>().scale.y) * static_cast<double>(_collisionData.obj2.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
 
+	// Compute min and max of both entities
 	Math::Vec2 aabb1min{ center1 - scale1 },
 			   aabb1max{ center1 + scale1 },
 			   aabb2min{ center2 - scale2 },
 			   aabb2max{ center2 + scale2 };
 
-	// Static
+// Static check
 	if (aabb1max.x < aabb2min.x)
 		return false;
 	if (aabb1min.x > aabb2max.x)
@@ -815,13 +940,13 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 	if (aabb1min.y > aabb2max.y)
 		return false;
 
+// Dynamic check
+	// Compute relative velocity
 	Math::Vec2 Vb{ _collisionData.obj2.GetComponent<Physics2D>().velocity - _collisionData.obj1.GetComponent<Physics2D>().velocity };
-
-	// If relative velocity is zero
+	// Check if relative velocity is zero
 	if (Vb == Math::Vec2{ 0.f, 0.f })
 		return false;
 
-	// Dynamic
 	double tFirst{ 0 }, tLast{ FPSManager::dt }, tTmp{ 0 };
 
 	// ------ X axis -----
@@ -880,22 +1005,34 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData) {
 	if (tFirst > tLast) // Case 5
 		return false;
 
+	// Use first as intersection time
 	_collisionData.interTime = tFirst;
 
 	return true;
 }
 
+/*!*****************************************************************************
+\brief
+CI_CirclevsCircle function that checks for collision between 2 circular colliders 
+
+\param CollisionStore &
+A reference to struct containing entity pair data to check
+
+\return bool
+Evaluated result of whether collision has occurred between the given entity pair
+*******************************************************************************/
 bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData) {
 	// Find the relative velocity of both circles
 	Math::Vec2 relVel{ _collisionData.obj1.GetComponent<Physics2D>().velocity -
 					   _collisionData.obj2.GetComponent<Physics2D>().velocity };
-
+	// Store radius of both circles
 	double  circle1Radius{ (_collisionData.obj1.GetComponent<Transform>().scale.x * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset) / 2.0},
 			circle2Radius{ (_collisionData.obj2.GetComponent<Transform>().scale.x * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset) / 2.0};
 
 // Static
-	// If relVel is 0
+	// Check if relVel is 0
 	if (relVel == Math::Vec2{ 0.f, 0.f }) {
+		// Check if there is a distance between the 2 circles
 		if (abs(
 			Math::SqDistance(_collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset, _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<CircleCollider>().centerOffset) -
 			static_cast<float>(circle1Radius * circle1Radius + circle2Radius * circle2Radius)
@@ -953,17 +1090,33 @@ bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData) {
 		return false;
 }
 
+/*!*****************************************************************************
+\brief
+CR_RectvsRect function that resolves collision between 2 entities of
+rectangular collider
+
+\param CollisionStore &
+A reference to struct containing entity pair data to resolve
+
+\return void
+NULL
+*******************************************************************************/
 void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData) {
 	// Compute and store objects' current velocity
 	Math::Vec2 velObj1{ _collisionData.obj1.GetComponent<Physics2D>().velocity },
-		velObj2{ _collisionData.obj2.GetComponent<Physics2D>().velocity };
-	double massObj1{ static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) },
-		massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
+			   velObj2{ _collisionData.obj2.GetComponent<Physics2D>().velocity };
+	//double massObj1{ static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) },
+	//	   massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
 
 	// Compute and store objects' meeting point
-	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime) },
-		       interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
+	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<RectCollider>().centerOffset + velObj1 * static_cast<float>(_collisionData.interTime) },
+		       interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<RectCollider>().centerOffset + velObj2 * static_cast<float>(_collisionData.interTime) };
 
+	// Set the entities' position at the meeting point
+	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<CircleCollider>().centerOffset;
+	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<CircleCollider>().centerOffset;
+
+	// Stop their movement for now as a hack until bounce/slide can be figured out
 	_collisionData.obj1.GetComponent<Physics2D>().speed = 
 	_collisionData.obj2.GetComponent<Physics2D>().speed = 0.f;
 
@@ -971,6 +1124,17 @@ void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData) {
 	_collisionData.obj2.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f, 0.f };
 }
 
+/*!*****************************************************************************
+\brief
+CR_CirclevsCircle function that resolves collision between 2 entities of
+circle collider
+
+\param CollisionStore &
+A reference to struct containing entity pair data to resolve
+
+\return void
+NULL
+*******************************************************************************/
 void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData) {
 	// Compute and store objects' current velocity
 	Math::Vec2 velObj1{ _collisionData.obj1.GetComponent<Physics2D>().velocity },

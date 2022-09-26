@@ -65,7 +65,8 @@ void Physics2DManager::Step() {
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mPhysicsObjectList) {
 		// If entity is a gravity enabled object, enact gravity force on it
-		
+		if (Physics2DManager::GetGravityEnabled(e))
+			Physics2DManager::AddGravityForce(e);
 		// Add movement as a force acting on the entity
 		Physics2DManager::AddForces(e, Math::Vec2{ cos(Physics2DManager::GetMoveDirection(e)), sin(Physics2DManager::GetMoveDirection(e)) } * Physics2DManager::GetSpeed(e));
 		// Compute acceleration and add to velocity
@@ -219,11 +220,11 @@ A reference to a read-only value containing the flag value of the render flag
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::AddPhysicsComponent(const Entity& _e, const float& _mass, const float& _speed, const float& _moveDirection, const bool& _renderFlag) {
+void Physics2DManager::AddPhysicsComponent(const Entity& _e, const bool & _gravityEnabled, const float& _mass, const float& _speed, const float& _moveDirection, const bool& _renderFlag) {
 	// If the physics component does not exists in the entity yet, we add it to the entity with the given values
 	// If it already exists, we reset the values to the given values
 	if (!_e.HasComponent<Physics2D>()) {
-		_e.AddComponent(Physics2D{ _mass, _speed, _moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, _renderFlag });
+		_e.AddComponent(Physics2D{ _gravityEnabled, _mass, _speed, _moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, _renderFlag });
 	}
 	else {
 		Physics2DManager::SetMass(_e, _mass);
@@ -254,17 +255,9 @@ void Physics2DManager::RemovePhysicsComponent(const Entity& _e) {
 	// Remove entity from system's stored list
 	mPhysicsObjectList.erase(_e);
 
-	// When removeComponent function is implemented, use it
-	// For now, we set everything to 0
-	// Works for now as the physics system only updates entity stored in its list
-	// and in the event the AddPhysicsComponent function is called again,
-	// the function handles the already existing physics component
-	Physics2DManager::SetMass(_e, 0.f);
-	Physics2DManager::SetSpeed(_e, 0.f);
-	Physics2DManager::SetMoveDirection(_e, 0.f);
-	Physics2DManager::SetForces(_e, Math::Vec2{ 0, 0 });
-	Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
-	Physics2DManager::SetPhysicsRenderFlag(_e, false);
+	// Remove component
+	if (_e.HasComponent<Physics2D>())
+		_e.RemoveComponent<Physics2D>();
 }
 
 /*!*****************************************************************************
@@ -280,6 +273,39 @@ A reference to the Physics2D component in the given entity
 *******************************************************************************/
 Physics2D& Physics2DManager::GetPhysicsComponent(const Entity& _e) {
 	return _e.GetComponent<Physics2D>();
+}
+
+/*!*****************************************************************************
+\brief
+GetGravityEnabled function that returns the stored value of the entity's
+gravity enabled flag
+
+\param const Entity &
+A reference to a read-only Entity to
+
+\return bool
+The value of the entity's gravity enabled flag
+*******************************************************************************/
+bool Physics2DManager::GetGravityEnabled(const Entity& _e) {
+	return Physics2DManager::GetPhysicsComponent(_e).gravityEnabled;
+}
+
+/*!*****************************************************************************
+\brief
+SetGravityEnabled function that sets the stored value of the entity's
+gravity enabled flag to the given value
+
+\param const Entity &
+A reference to a read-only Entity to
+
+\param const bool &
+A reference to a read-only value containing value to set
+
+\return void
+NULL
+*******************************************************************************/
+void Physics2DManager::SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled) {
+	Physics2DManager::GetPhysicsComponent(_e).gravityEnabled = _gravityEnabled;
 }
 
 /*!*****************************************************************************
@@ -431,7 +457,7 @@ void Physics2DManager::AddForces(const Entity& _e, const Math::Vec2& _forces) {
 
 /*!*****************************************************************************
 \brief
-AddGravity function that adds the gravity force value to the stored value of the
+AddGravityForce function that adds the gravity force value to the stored value of the
 entity's forces to become the updated net forces
 
 \param const Entity &
@@ -440,7 +466,7 @@ A reference to a read-only Entity to set
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::AddGravity(const Entity& _e) {
+void Physics2DManager::AddGravityForce(const Entity& _e) {
 	Physics2DManager::AddForces(_e, Physics2DManager::GetMass(_e) * gravityForce);
 }
 
@@ -521,8 +547,8 @@ physics render flag
 \param const Entity &
 A reference to a read-only Entity to
 
-\return float
-A copy of the value of the entity's physics render flag
+\return bool
+The value of the entity's physics render flag
 *******************************************************************************/
 bool Physics2DManager::GetPhysicsRenderFlag(const Entity& _e) {
 	return Physics2DManager::GetPhysicsComponent(_e).renderFlag;
