@@ -38,7 +38,8 @@ delta time
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::Update(const std::set<Entity>& _entityList, const double& _appDT) {
+//void Physics2DManager::Update(const std::set<Entity>& _entityList, const double& _appDT) {
+void Physics2DManager::Update(const double& _appDT) {
 	// Increment accumulatedDT by the application's DT
 	Physics2DManager::mAccumulatedDT += _appDT;
 
@@ -49,8 +50,8 @@ void Physics2DManager::Update(const std::set<Entity>& _entityList, const double&
 	// If the accumlatedDT is larger than or equal to the defined fixedDT,
 	//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
 	while (Physics2DManager::mAccumulatedDT >= fixedDT) {
-		Physics2DManager::Step(mEntities);
-		collision2DManager->Update(_entityList, fixedDT);
+		Physics2DManager::Step();
+		collision2DManager->Update(fixedDT);
 		Physics2DManager::mAccumulatedDT -= fixedDT;
 	}
 }
@@ -65,9 +66,9 @@ A reference to read-only container holding the current state's entity list
 \return void
 NULL
 *******************************************************************************/
-void Physics2DManager::Step(const std::set<Entity>& _entityList) {
+void Physics2DManager::Step() {
 	// Update all required entities physics based on object rotation/orientation
-	for (const Entity& e : _entityList) {
+	for (const Entity& e : mEntities) {
 		// Skip if entity does not have physics component
 		if (!e.HasComponent<Physics2D>())
 			continue;
@@ -78,7 +79,10 @@ void Physics2DManager::Step(const std::set<Entity>& _entityList) {
 		// Add movement as a force acting on the entity
 		Physics2DManager::AddForces(e, Math::Vec2{ cos(Physics2DManager::GetMoveDirection(e)), sin(Physics2DManager::GetMoveDirection(e)) } * Physics2DManager::GetSpeed(e));
 		// Compute acceleration and add to velocity
-		Physics2DManager::AddVelocity(e, (Physics2DManager::GetForces(e) / Physics2DManager::GetMass(e)) * static_cast<float>(fixedDT));
+		if (Physics2DManager::GetMass(e) != 0.f)
+			Physics2DManager::AddVelocity(e, (Physics2DManager::GetForces(e) / Physics2DManager::GetMass(e)) * static_cast<float>(fixedDT));
+		else
+			Physics2DManager::AddVelocity(e, Physics2DManager::GetForces(e) * static_cast<float>(fixedDT));
 		// Cap velocity
 		Physics2DManager::ScaleVelocity(e, velocityCap);
 		// Move entity by velocitys

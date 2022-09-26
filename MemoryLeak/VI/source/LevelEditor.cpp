@@ -99,8 +99,8 @@ void LevelEditor::Update()
 			ImGui::Separator();
 			if (ImGui::MenuItem("Clear Scene"))
 			{
-				physics2DManager->PhyObjListClear();
 				ECS::DestroyAllEntities();
+				selectedEntity = nullptr;
 				/*for (const Entity& e : mEntities)
 				{
 					e.Destroy();
@@ -632,7 +632,7 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat2("Box scale Offset", tmpVec2);
 				e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
-				ImGui::Checkbox("Box RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
+				ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
 				if (ImGui::Button("Remove Component"))
 					e.RemoveComponent<RectCollider>();
 				//ImGui::TreePop();
@@ -696,6 +696,7 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("Mass", &e.GetComponent<Physics2D>().mass);
 				ImGui::InputFloat("Speed", &e.GetComponent<Physics2D>().speed);
 				ImGui::InputFloat("moveDirection", &e.GetComponent<Physics2D>().moveDirection);
+				ImGui::Checkbox("gravityEnabled", &e.GetComponent<Physics2D>().gravityEnabled);
 				ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
 				if (ImGui::Button("Remove Component"))
 					e.RemoveComponent<Physics2D>();

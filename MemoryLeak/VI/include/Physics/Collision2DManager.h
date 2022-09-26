@@ -55,7 +55,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void Update(const std::set<Entity>& _entityList, const double &_dt);
+	void Update(const double &_dt);
 
 // -----------------------------
 // System object list functions
@@ -87,7 +87,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void UpdateCollisionList(const std::set<Entity>& _entityList);
+	void UpdateCollisionList();
 
 	/*!*****************************************************************************
 	\brief

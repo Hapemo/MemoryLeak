@@ -104,7 +104,7 @@ void ParallaxAndSpriteSwap::Update() {
             }
         }
     }
-    physics2DManager->Update(mEntities, FPSManager::dt);
+    physics2DManager->Update(FPSManager::dt);
     //collision2DManager->Update(mEntities);
     sheetAnimator->Animate();
 }

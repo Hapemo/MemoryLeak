@@ -38,7 +38,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void Update(const std::set<Entity>& _entityList, const double& _appDT);
+	void Update(const double& _appDT);
 
 	/*!*****************************************************************************
 	\brief
@@ -50,7 +50,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void Step(const std::set<Entity>& _entityList);
+	void Step();
 
 // -----------------------------
 // Component-related functions

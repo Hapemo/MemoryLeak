@@ -136,17 +136,20 @@ void SerializationManager::LoadScene(std::string _filename)
 			float mass = entity["Physics2D"]["mass"].GetFloat();
 			float	speed = entity["Physics2D"]["speed"].GetFloat();
 			float	moveDirection = entity["Physics2D"]["moveDirection"].GetFloat();
+			bool gravityEnabled = false;
+			if(entity["Physics2D"].HasMember("gravityEnabled"))
+				gravityEnabled = entity["Physics2D"]["gravityEnabled"].GetBool();
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			//e.AddComponent<Physics2D>({ mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
-			physics2DManager->AddPhysicsComponent(e, mass, speed, moveDirection, renderFlag);
+			e.AddComponent<Physics2D>({ gravityEnabled, mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
+			//physics2DManager->AddPhysicsComponent(e, mass, speed, moveDirection, renderFlag);
 		}
 		if (entity.HasMember("RectCollider"))
 		{
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 			Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
 			bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
-			e.AddComponent<RectCollider>({ Math::Vec2{centerOffset} , scaleOffset , renderFlag });
+			e.AddComponent<RectCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
 		if (entity.HasMember("CircleCollider"))
 		{
@@ -335,6 +338,7 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("moveDirection"), e.GetComponent<Physics2D>().moveDirection, allocator);
 			addVectorMember(scene, tmp, "forces",  e.GetComponent<Physics2D>().forces);
 			addVectorMember(scene, tmp, "velocity", e.GetComponent<Physics2D>().velocity);
+			tmp.AddMember(StringRef("gravityEnabled"), e.GetComponent<Physics2D>().gravityEnabled, allocator);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Physics2D>().renderFlag, allocator);
 			entity.AddMember(StringRef("Physics2D"), tmp, allocator);
 		}

@@ -186,7 +186,7 @@ void Start_1::Update() {
   //renderManager->Render();
   //renderManager->RenderDebug();
   //TRACK_PERFORMANCE("Physics");
-  physics2DManager->Update(mEntities, FPSManager::dt);
+  physics2DManager->Update(FPSManager::dt);
   //END_TRACK("Physics");
 
   ControlEntityLifespan(mEntities, A);

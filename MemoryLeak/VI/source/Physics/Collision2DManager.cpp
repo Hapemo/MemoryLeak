@@ -736,13 +736,13 @@ A reference to a read-only container holding the list of entities to check again
 \return void
 NULL
 *******************************************************************************/
-void Collision2DManager::UpdateCollisionList(const std::set<Entity>& _entityList) {
+void Collision2DManager::UpdateCollisionList() {
 	// Clear list from previous frame
 	Collision2DManager::ClearCollisionList();
 
 	// Loop through list
-	for (const Entity& e1 : _entityList) {
-		for (const Entity& e2 : _entityList) {
+	for (const Entity& e1 : mEntities) {
+		for (const Entity& e2 : mEntities) {
 			// If entity looped is itself or either entities do not contain a collider, skip it
 			if (e1.id == e2.id || !Collision2DManager::HasCollider(e1) || !Collision2DManager::HasCollider(e2))
 				continue;
@@ -786,9 +786,9 @@ delta time
 \return void
 NULL
 *******************************************************************************/
-void Collision2DManager::Update(const std::set<Entity>& _entityList, const double &_dt) {
+void Collision2DManager::Update(const double &_dt) {
 	// Update container of entity pairs
-	Collision2DManager::UpdateCollisionList(_entityList);
+	Collision2DManager::UpdateCollisionList();
 
 	// Loop through the entity pairs and check for collision
 	for (CollisionStore& cs : Collision2DManager::mCollisionCheckList) {
@@ -958,7 +958,14 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData, const dou
 
 // Dynamic check
 	// Compute relative velocity
-	Math::Vec2 Vb{ _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) };
+	Math::Vec2 Vb{};
+	if (_collisionData.obj2.HasComponent<Physics2D>() && _collisionData.obj1.HasComponent<Physics2D>())
+		Vb = _collisionData.obj2.GetComponent<Physics2D>().velocity* static_cast<float>(_dt) - _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (_collisionData.obj1.HasComponent<Physics2D>()) 
+		Vb = _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (_collisionData.obj2.HasComponent<Physics2D>()) 
+		Vb = _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+
 	// Check if relative velocity is zero
 	if (Vb == Math::Vec2{ 0.f, 0.f })
 		return false;
@@ -1043,8 +1050,16 @@ Evaluated result of whether collision has occurred between the given entity pair
 *******************************************************************************/
 bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData, const double& _dt) {
 	// Find the relative velocity of both circles
-	Math::Vec2 relVel{ _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) -
-					   _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) };
+	Math::Vec2 relVel{};
+	if (_collisionData.obj2.HasComponent<Physics2D>() && _collisionData.obj1.HasComponent<Physics2D>())
+		relVel = _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (_collisionData.obj1.HasComponent<Physics2D>())
+		relVel = _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (_collisionData.obj2.HasComponent<Physics2D>())
+		relVel = _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+
+
+
 	// Store radius of both circles
 	double  circle1Radius{ (_collisionData.obj1.GetComponent<Transform>().scale.x * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset) / 2.0},
 			circle2Radius{ (_collisionData.obj2.GetComponent<Transform>().scale.x * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset) / 2.0};
@@ -1127,8 +1142,8 @@ NULL
 *******************************************************************************/
 void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData, const double& _dt) {
 	// Get and store objects' current velocity
-	Math::Vec2 velObj1{ _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) },
-			   velObj2{ _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) };
+	Math::Vec2 velObj1{ _collisionData.obj1.HasComponent<Physics2D>() ? _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} },
+			   velObj2{ _collisionData.obj2.HasComponent<Physics2D>() ? _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} };
 	//double massObj1{ static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) },
 	//	     massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
 
@@ -1165,8 +1180,8 @@ NULL
 *******************************************************************************/
 void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData, const double& _dt) {
 	// Compute and store objects' current velocity
-	Math::Vec2 velObj1{ _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) },
-			   velObj2{ _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) };
+	Math::Vec2 velObj1{ _collisionData.obj1.HasComponent<Physics2D>() ? _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} },
+				velObj2{ _collisionData.obj2.HasComponent<Physics2D>() ? _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} };
 	double massObj1{ static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) },
 		   massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
 

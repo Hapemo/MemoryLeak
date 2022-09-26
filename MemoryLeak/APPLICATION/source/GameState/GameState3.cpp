@@ -19,7 +19,7 @@ void GameState3::Load() {
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 
-	serializationManager->LoadScene("SceneJ");
+	serializationManager->LoadScene("SceneJPhysics");
 }
 
 void GameState3::Init() {
@@ -29,8 +29,7 @@ void GameState3::Init() {
 
 void GameState3::Update() {
     TRACK_PERFORMANCE("Physics");
-    physics2DManager->Update(mEntities, FPSManager::dt);
-    //collision2DManager->Update(mEntities);
+    physics2DManager->Update(FPSManager::dt);
     END_TRACK("Physics");
     sheetAnimator->Animate();
 
@@ -38,7 +37,6 @@ void GameState3::Update() {
     renderManager->RenderToFrameBuffer();
     levelEditor->LevelEditor::Window();
     levelEditor->LevelEditor::Update();
-
     END_TRACK("Editor");
 }
 
@@ -47,9 +45,7 @@ void GameState3::Draw() {
 }
 
 void GameState3::Free() {
-    for (auto& e : mEntities)
-        e.Destroy();
-    mEntities.clear();
+    ECS::DestroyAllEntities();
 }
 
 void GameState3::Unload() {
