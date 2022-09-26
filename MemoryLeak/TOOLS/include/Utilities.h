@@ -12,6 +12,8 @@ public:
 
   static const std::string LowerString(std::string _input);
 
+  static void MemoryLeak();
+
   template <typename T>
   static const bool IsWholeNum(T _num) {
     return (_num - floor(_num)) != 0 ? false : true;

@@ -40,6 +40,8 @@ void real_main() {
     std::signal(SIGILL, HandleSignal);
     std::signal(SIGFPE, HandleSignal);
 
+    Util::MemoryLeak();
+
     // Part 1
     Application::init();
 
@@ -114,6 +116,10 @@ int main() {
         */
 
         real_main();
+
+        #if defined(DEBUG) | defined(_DEBUG)
+            _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+        #endif
     }
     catch (const std::exception& e) {
         std::string exc = e.what();

@@ -10,7 +10,7 @@ Game state for testing physics
 #include "GameState1.h"
 
 void GameState1::Load() {
-    INIT_TEXTURES("Spritesheets");
+    LOAD_TEXTURES("Spritesheets");
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
     renderManager->SetVectorLengthModifier(5.f);
