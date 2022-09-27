@@ -40,8 +40,6 @@ void real_main() {
     std::signal(SIGILL, HandleSignal);
     std::signal(SIGFPE, HandleSignal);
 
-    Util::MemoryLeak();
-
     // Part 1
     Application::init();
 
@@ -82,6 +80,17 @@ void real_main() {
     Application::exit();
 }
 
+void EnableMemoryLeakChecking(int breakAlloc = -1)
+{
+    //Set the leak checking flag
+    int tmpDbgFlag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+    tmpDbgFlag |= _CRTDBG_LEAK_CHECK_DF;
+    _CrtSetDbgFlag(tmpDbgFlag);
+
+    //If a valid break alloc provided set the breakAlloc
+    if (breakAlloc != -1) _CrtSetBreakAlloc(breakAlloc);
+}
+
 /*!*****************************************************************************
  \brief
  The master main file that runs a child main file and catches exceptions that it
@@ -114,12 +123,8 @@ int main() {
         //throwing exception
         THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "File for vertex shader not found!");
         */
-
+        EnableMemoryLeakChecking();
         real_main();
-
-        #if defined(DEBUG) | defined(_DEBUG)
-            _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-        #endif
     }
     catch (const std::exception& e) {
         std::string exc = e.what();

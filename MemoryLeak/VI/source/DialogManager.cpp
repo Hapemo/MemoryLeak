@@ -19,7 +19,7 @@ void DialogManager::PrintDialogs() {
 	}
 }
 
-bool DialogManager::IsChoice(int _id) {
+bool DialogManager::HasChoice(int _id) {
 	for (Dialog dialog : mDialogs)
 		if (dialog.next2 != -1) return true;
 	return false;
