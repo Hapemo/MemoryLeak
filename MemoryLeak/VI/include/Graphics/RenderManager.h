@@ -107,6 +107,18 @@ public:
 	*******************************************************************************/
 	void RenderToFrameBuffer() { mfbo.SetRenderToScreen(false); }
 
+	/*!*****************************************************************************
+	\brief
+	Function that returns the transform of an Entity for use with ImGuizmo
+
+	\param const Entity& _e
+	Entity to get the Transformation matrix of.
+
+	\return std::vector<float>
+	Transformation matrix of the Entity.
+	*******************************************************************************/
+	std::vector<float> GetImGuizmoMat4(const Entity& _e);
+
 private:
 	bool mDebug;
 	float mVectorLengthModifier;
