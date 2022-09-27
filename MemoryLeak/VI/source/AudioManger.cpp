@@ -16,7 +16,7 @@ This file contains function definations for a audio system to play sound in the 
 \return
 None.
 *******************************************************************************/
-AudioManager::AudioManager()
+void AudioManager::Init()
 {
 
     mResult = FMOD::System_Create(&system);      // Create the main system object.
@@ -41,11 +41,17 @@ AudioManager::AudioManager()
 \return
 None.
 *******************************************************************************/
-AudioManager::~AudioManager()
+void AudioManager::Unload()
 {
-    std::cout << "Audio destructor called\n";
-    system->release();
+    for (auto& i : mSfxSound)
+        i.second->release();
 
+    for (auto& i : mBgmSound)
+        i.second->release();
+    
+    mChannel.clear();
+    
+    system->release();
 }
 /*!*****************************************************************************
 \brief
@@ -67,7 +73,6 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
     system->createSound("..\\resources\\Audio\\MENUBG.wav", FMOD_DEFAULT, nullptr, &snd);
     mBgmSound["MENUBG.wav"] = snd;
 
-    
     //delete snd;
     //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
 }

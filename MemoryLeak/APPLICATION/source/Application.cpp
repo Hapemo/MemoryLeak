@@ -36,7 +36,7 @@ void Application::startup() {
 
 void Application::SystemInit() {
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
-  audioManager->AudioManager::AudioManager();
+  audioManager->Init();
   renderManager->Init(&window_width, &window_height);
 }
 
@@ -99,7 +99,7 @@ void Application::SecondUpdate() {
 
 void Application::exit() {
   levelEditor->Exit();
-  //audioManager->~AudioManager();
+  audioManager->Unload();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();
   // Part 2
