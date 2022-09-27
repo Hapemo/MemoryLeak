@@ -324,9 +324,11 @@ void RenderManager::RenderDebug()
 		}
 	}
 
-	//batch render all of them
+	/***************************************DEBUG BATCHING START*************************************/
 	BatchRenderArrays(GL_POINTS, mDebugPoints);
 	BatchRenderElements(GL_LINES, mDebugVertices, mDebugIndices);
+	/***************************************DEBUG BATCHING END***************************************/
+
 }
 
 /*!*****************************************************************************

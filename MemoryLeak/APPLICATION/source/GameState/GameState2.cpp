@@ -25,10 +25,10 @@ void GameState2::Load() {
 void GameState2::Init() {
     /*************************************4000 Objects Start************************************/
     //serializationManager->LoadScene("SceneJGraphics");
-     int i = 4000;
+     int entityCount = 2550;
      int width = Application::getWindowWidth() >> 1;
      int height = Application::getWindowHeight() >> 1;
-     while (i--)
+     while (entityCount--)
      {
          float tempx = (float)((-width + (std::rand() % (width * 2 + 1))));
          float tempy = (float)((-height + (std::rand() % (height * 2 + 1))));
@@ -41,10 +41,10 @@ void GameState2::Init() {
              std::exit(EXIT_FAILURE);
 
          Entity e1{ ECS::CreateEntity() };
-         e1.AddComponent(Transform{ {32,32}, 0, {tempx,tempy}},
+         e1.AddComponent(Transform{ {200,80}, 0, {tempx,tempy}},
              Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-             General{ "count" + i, TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-         spriteManager->SetTexture(e1, "Textures\\Sprites\\jumppad1.png");
+             General{ "count " + entityCount, TAG::OTHERS, SUBTAG::NOSUBTAG, true });
+         spriteManager->SetTexture(e1, "Textures\\Icons\\backBtn.png");
      }
     /*************************************2500 Objects End************************************/
     
