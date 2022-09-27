@@ -195,8 +195,8 @@ void Application::glewStartUp() {
 }
 
 void Application::error_cb(int error, char const* description) {
-  (void)description;
-  (void)error; // This function should only run for debug
+    (void)error;
+    (void)description;
 #ifdef _DEBUG
   std::cerr << "GLFW error " << error << ": " << description << std::endl;
 #endif

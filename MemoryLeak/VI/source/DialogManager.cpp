@@ -19,6 +19,12 @@ void DialogManager::PrintDialogs() {
 	}
 }
 
+bool DialogManager::HasChoice(int _id) {
+	for (Dialog dialog : mDialogs)
+		if (dialog.next2 != -1) return true;
+	return false;
+}
+
 int DialogManager::GetSpeaker(int _id) {
 	for (Dialog dialog : mDialogs)
 		if (dialog.id == _id) return dialog.speaker;
