@@ -1,5 +1,5 @@
 /*!*****************************************************************************
-\file	Physics2DManager.cpp
+\file	Physics2DManager.h
 \author Lee Hsien Wei, Joachim
 \par	DP email: l.hsienweijoachim@digipen.edu
 \par	Course: GAM200
@@ -28,9 +28,6 @@ public:
 	Update function that simulates physics by stepping it in fixedDT when enough
 	time has passed
 
-	\param const std::set<Entity &
-	A reference to read-only container holding the current state's entity list
-
 	\param const double &
 	A reference to a read-only variable that tells us the application's current
 	delta time
@@ -44,8 +41,8 @@ public:
 	\brief
 	Step function that executes fixed delta time physics stepping
 
-	\param const std::set<Entity &
-	A reference to read-only container holding the current state's entity list
+	\param void
+	NULL
 
 	\return void
 	NULL

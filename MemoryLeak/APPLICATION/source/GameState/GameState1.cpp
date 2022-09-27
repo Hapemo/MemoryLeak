@@ -22,7 +22,7 @@ void GameState1::Load() {
 }
 
 void GameState1::Init() {
-//    serializationManager->LoadScene("SceneJPhysics");
+    serializationManager->LoadScene("SceneJPhysics");
 //    float entityTransformPosY{ static_cast<float>(Application::getWindowHeight()) / 2.f - 128.f };
 //// -----------------------------
 //// Rect vs Rect Collision Test
@@ -95,14 +95,14 @@ void GameState1::Init() {
     Entity e5{ ECS::CreateEntity() };
     //mEntities.insert(e5);
 // Modify entity position scale and rotation here
-    e5.AddComponent(Transform{ Math::Vec2{64,64}, 0, Math::Vec2{0, 0} },
-                    Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-                    SheetAnimation{ 6, 0, 0.1f },
-                    General{ "Player", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
-                    Audio{ Sound{"DAMAGE.wav", true}, false });
-    spriteManager->SetTexture(e5, "Textures\\Spritesheets\\walkingSheet.png");
-    physics2DManager->AddPhysicsComponent(e5, false, 1.f, 0.f, 0.f, true);
-    e5.AddComponent(PlayerTmp{ 0 });
+    //e5.AddComponent(Transform{ Math::Vec2{64,64}, 0, Math::Vec2{0, 0} },
+    //                Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+    //                SheetAnimation{ 6, 0, 0.1f },
+    //                General{ "Player", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
+    //                Audio{ Sound{"DAMAGE.wav", true}, false });
+    //spriteManager->SetTexture(e5, "Textures\\Spritesheets\\walkingSheet.png");
+    //physics2DManager->AddPhysicsComponent(e5, false, 1.f, 0.f, 0.f, true);
+    //e5.AddComponent(PlayerTmp{ 0 });
 
     //serializationManager->SaveScene("SceneJPhysics");
 }

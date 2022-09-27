@@ -45,9 +45,6 @@ public:
 	If collision is detected, the function then calls another function to resolve
 	collision
 
-	\param const std::set<Entity> &
-	A reference to a read-only container holding the list of entities to check against
-
 	\param const double &
 	A reference to a read-only variable that tells us the application's current
 	delta time
@@ -81,8 +78,8 @@ public:
 	UpdateCollisionList function that clears and updates the system's stored container
 	holding the entity pairs that need to be checked for collision
 
-	\param const std::set<Entity> &
-	A reference to a read-only container holding the list of entities to check against
+	\param void
+	NULL
 
 	\return void
 	NULL

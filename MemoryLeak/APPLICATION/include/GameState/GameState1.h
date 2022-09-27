@@ -9,8 +9,8 @@ Game state for testing physics
 *******************************************************************************/
 #pragma once
 #include "GameState.h"
-#include "ECS_items.h"
 #include "ECSManager.h"
+#include "ECS_items.h"
 class GameState1 : public GameState {
 public:
 	GameState1() = default;

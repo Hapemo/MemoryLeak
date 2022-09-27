@@ -28,9 +28,6 @@ const Math::Vec2 gravityForce{ 0.f, -9.81f };// Gravity pull
 Update function that simulates physics by stepping it in fixedDT when enough
 time has passed
 
-\param const std::set<Entity &
-A reference to read-only container holding the current state's entity list
-
 \param const double &
 A reference to a read-only variable that tells us the application's current
 delta time
@@ -38,7 +35,6 @@ delta time
 \return void
 NULL
 *******************************************************************************/
-//void Physics2DManager::Update(const std::set<Entity>& _entityList, const double& _appDT) {
 void Physics2DManager::Update(const double& _appDT) {
 	// Increment accumulatedDT by the application's DT
 	Physics2DManager::mAccumulatedDT += _appDT;
@@ -60,8 +56,8 @@ void Physics2DManager::Update(const double& _appDT) {
 \brief
 Step function that executes fixed delta time physics stepping
 
-\param const std::set<Entity &
-A reference to read-only container holding the current state's entity list
+\param void
+NULL
 
 \return void
 NULL
