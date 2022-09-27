@@ -74,7 +74,7 @@ void Application::SecondUpdate() {
   }
   END_TRACK("Editor");
 
-  if (Input::CheckKey(STATE::RELEASE, KEY::E))
+  if (Input::CheckKey(STATE::RELEASE, KEY::E)&& Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL))
   {
       editorMode = !editorMode;
       if (editorMode)
