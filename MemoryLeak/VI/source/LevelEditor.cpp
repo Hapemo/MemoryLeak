@@ -823,13 +823,14 @@ void  LevelEditor::AssetManager()
 				my_image2_texture = spriteManager->GetTextureID(texPath);
 				if (my_image2_texture)
 				{
-				ImGui::ImageButton((ImTextureID)(my_image2_texture), buttonSize, ImVec2(0, 1), ImVec2(1, 0));
-				if (ImGui::BeginDragDropSource())
-				{
-					const wchar_t* itemPath = (wchar_t*)texPath.c_str();
-					ImGui::SetDragDropPayload("TEXTURES", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t) , ImGuiCond_Once);
-					ImGui::EndDragDropSource();
-				}
+					ImTextureID textureImage = (void*)(intptr_t)my_image2_texture;
+					ImGui::ImageButton(textureImage, buttonSize, ImVec2(0, 1), ImVec2(1, 0));
+					if (ImGui::BeginDragDropSource())
+					{
+						const wchar_t* itemPath = (wchar_t*)texPath.c_str();
+						ImGui::SetDragDropPayload("TEXTURES", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t) , ImGuiCond_Once);
+						ImGui::EndDragDropSource();
+					}
 				}
 				else
 					ImGui::Button(filename.c_str(), buttonSize);
@@ -887,7 +888,8 @@ void LevelEditor::ViewPortManager()
 		viewportSize.y = viewportSize.x / 16 * 9;
 	}
 	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth()- viewportSize.x)*0.5f, 60.f));
-	ImGui::Image((ImTextureID)(frameBuffer), { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
+	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
+	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
 
 	if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
 	{
