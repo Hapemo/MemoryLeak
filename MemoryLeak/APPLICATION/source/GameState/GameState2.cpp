@@ -20,6 +20,7 @@ void GameState2::Load() {
 }
 
 void GameState2::Init() {
+    /*************************************2500 Objects Start************************************/
     //serializationManager->LoadScene("SceneJGraphics");
     int i = 4000;
     int width = Application::getWindowWidth() >> 1;
@@ -42,6 +43,7 @@ void GameState2::Init() {
             General{ "count" + i, TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
         spriteManager->SetTexture(e1, "Textures\\Sprites\\jumppad1.png");
     }
+    /*************************************2500 Objects End************************************/
 }
 
 void GameState2::Update() {
