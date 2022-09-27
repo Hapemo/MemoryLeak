@@ -123,7 +123,7 @@ int main() {
         //throwing exception
         THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "File for vertex shader not found!");
         */
-        //EnableMemoryLeakChecking(22388);
+        EnableMemoryLeakChecking();
         real_main();
     }
     catch (const std::exception& e) {
