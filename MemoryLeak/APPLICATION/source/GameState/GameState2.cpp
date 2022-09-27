@@ -23,7 +23,7 @@ void GameState2::Load() {
 }
 
 void GameState2::Init() {
-    /*************************************2500 Objects Start************************************/
+    /*************************************4000 Objects Start************************************/
     //serializationManager->LoadScene("SceneJGraphics");
      int i = 4000;
      int width = Application::getWindowWidth() >> 1;
