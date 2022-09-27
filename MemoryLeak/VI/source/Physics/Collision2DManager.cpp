@@ -1152,8 +1152,8 @@ void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData, const dou
 		       interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<RectCollider>().centerOffset + velObj2 * static_cast<float>(_collisionData.interTime) };
 
 	// Set the entities' position at the meeting point
-	//_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<CircleCollider>().centerOffset;
-	//_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<CircleCollider>().centerOffset;
+	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<RectCollider>().centerOffset;
+	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<RectCollider>().centerOffset;
 
 	// Stop their movement for now as a hack until bounce/slide can be figured out
 	_collisionData.obj1.GetComponent<Physics2D>().speed = 

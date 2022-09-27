@@ -99,7 +99,7 @@ void Application::SecondUpdate() {
 
 void Application::exit() {
   levelEditor->Exit();
-  //audioManager->~AudioManager();
+  audioManager->~AudioManager();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();
   // Part 2
