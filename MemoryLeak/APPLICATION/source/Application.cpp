@@ -36,7 +36,7 @@ void Application::startup() {
 
 void Application::SystemInit() {
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
-  audioManager->AudioManager::AudioManager();
+  //audioManager->AudioManager::AudioManager();
   renderManager->Init(&window_width, &window_height);
 }
 
@@ -46,7 +46,7 @@ void Application::init() {
   startup();
 
   SystemInit();
-  audioManager->PlayBGSound("MENUBG.wav", 10);
+  //audioManager->PlayBGSound("MENUBG.wav", 10);
 }
 
 void Application::FirstUpdate() {
@@ -64,7 +64,7 @@ void Application::SecondUpdate() {
 
   // Close the window if the close flag is triggered
   if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
-  audioManager->UpdateSound();
+  //audioManager->UpdateSound();
   // Update ImGui
   TRACK_PERFORMANCE("Editor");
   if (editorMode)

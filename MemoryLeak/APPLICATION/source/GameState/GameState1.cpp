@@ -22,7 +22,7 @@ void GameState1::Load() {
 }
 
 void GameState1::Init() {
-    serializationManager->LoadScene("SceneJPhysics");
+//    serializationManager->LoadScene("SceneJPhysics");
 //    float entityTransformPosY{ static_cast<float>(Application::getWindowHeight()) / 2.f - 128.f };
 //// -----------------------------
 //// Rect vs Rect Collision Test
