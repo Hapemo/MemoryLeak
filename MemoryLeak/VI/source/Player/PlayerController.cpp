@@ -72,6 +72,6 @@ void PlayerController::Update(double _dt) {
 		}
 
 		// No movement input, scale down the speed to slow it down
-		e.GetComponent<Physics2D>().speed *= playerSpeedNaturalLossScalar;
+		e.GetComponent<Physics2D>().speed *= static_cast<float>(playerSpeedNaturalLossScalar);
 	}
 }
