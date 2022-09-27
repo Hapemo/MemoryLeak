@@ -1,3 +1,16 @@
+/*!*****************************************************************************
+\file Logger.h
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 26-09-2022
+\brief
+This file contains the class Logger and it's functions declaration.
+The Logger class logs messages and errors of different levels and
+also handles the assertion.
+*******************************************************************************/
+
 #pragma once
 //#pragma warning ( disable : 4840 4477)
 #include "pch.h"
@@ -35,8 +48,29 @@ public:
         RUNTIME_ERR = 3
     };
 
+    /*!*****************************************************************************
+    \brief
+    Creates a new log type.
+
+    \param std::string _newType
+    The name of the new log type.
+    *******************************************************************************/
     void CreateNew(std::string _newType);
 
+    /*!*****************************************************************************
+    \brief
+    Logs a message of a custom log type.
+
+    \param const std::source_location _logData
+    The log data consisting of the filename and the code line of when the log is
+    being called.
+
+    \param std::string _customLogLevel
+    The name of the custom log type.
+
+    \param const T _logMessage
+    The message to be logged.
+    *******************************************************************************/
     template <typename T, typename ...Args>
     void CustomLog(const std::source_location _logData, const std::string _customLogLevel, const T _logMessage, const Args... _logMessages)
     {
@@ -56,12 +90,21 @@ public:
         }
     }
 
-    /**
-    *   Logger function to log message according to log type.
-    *   @param _logData The file location and line number the log is from.
-    *   @param _logType Log type/level.
-    *   @param _logMessage | _logMessages String for the message to be logged.
-    */
+    /*!*****************************************************************************
+    \brief
+    Logs a message according to the log type and prints the log into their
+    respective log files.
+
+    \param const std::source_location _logData
+    The log data containing of the file location and the code line number of
+    when the log is being called.
+
+    \param const size_t _logType
+    The log type/level.
+
+    \param const T _logMessage
+    The message to be logged.
+    *******************************************************************************/
     template <typename T, typename ...Args>
     void Log(const std::source_location _logData, const size_t _logType, const T _logMessage, const Args... _logMessages)
     {
@@ -92,6 +135,17 @@ public:
         }
     }
 
+    /*!*****************************************************************************
+    \brief
+    Asserts base on a condition and prints the assert into a file.
+
+    \param bool _condition
+    The condition to check against.
+
+    \param const std::source_location _logData
+    The log data containing of the file location and the code line number of
+    when the assert is being called.
+    *******************************************************************************/
     template <typename ...Args>
     void LogAssert(bool _condition, const std::source_location _logData, Args... _args)
     {
@@ -100,6 +154,17 @@ public:
         throw std::runtime_error(_args...);
     }
     
+    /*!*****************************************************************************
+    \brief
+    Asserts base on a condition and prints the assert in a file.
+
+    \param bool _condition
+    The condition to check against.
+
+    \param const std::source_location _logData
+    The log data containing of the file location and the code line number of
+    when the assert is being called.
+    *******************************************************************************/
     template <typename Args>
     void LogThrow(const size_t _type, const std::source_location _logData, Args _args)
     {
@@ -122,16 +187,22 @@ public:
         }
     }
 
+    /*!*****************************************************************************
+    \brief
+    Retrieves a vector of all the logs to be displayed in the editor.
+    *******************************************************************************/
     std::vector<std::pair<E_LOGLEVEL, std::string>> GetLoggerStr() { return mLoggerStr; }
 
-    /**
-    *    Default constructor for the Logger class.
-    */
+    /*!*****************************************************************************
+    \brief
+    Default constructor for the Logger class.
+    *******************************************************************************/
     Logger();
 
-    /**
-    *    Destructor for the Logger class.
-    */
+    /*!*****************************************************************************
+    \brief
+    Destructor for the Logger class.
+    *******************************************************************************/
     ~Logger();
 private:
     struct LogType {
@@ -141,20 +212,14 @@ private:
 
         LogType(std::string _s1, std::string _s2, int _u1) : title(_s1), filename(_s2), level(_u1) {};
     };
-    /**
-    *   Log file name.
-    **/
+
     const std::string mFilepath = "../logs/";
     std::vector<std::string> mLogNames = { "INFO", "DEBUG", "WARN", "ERROR", "ASSERT", "CRASH" };
-    /**
-    *   Log file(s) stream object.
-    **/
+
     std::fstream mLogInfile;
     std::fstream mFullLogInfile;
     std::vector<std::fstream> mLogFilesVec;
-    /**
-    *   Different log types and their file names.
-    **/
+
     std::vector<LogType> mLogTypesVec;
     std::vector<std::pair<E_LOGLEVEL, std::string>> mLoggerStr;
 };

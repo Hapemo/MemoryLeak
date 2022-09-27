@@ -1,6 +1,25 @@
-#include "PerformanceVisualiser.h"
-//#include "Logger.h"
+/*!*****************************************************************************
+\file PrrformanceVisualiser.cpp
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 26-09-2022
+\brief
+This file contains the function definitions of the class PerformanceVisualiser.
+The PerformanceVisualiser class tracks and measure the performance speed for
+different systems in the engine and displays them in percentage.
+*******************************************************************************/
 
+#include "PerformanceVisualiser.h"
+
+/*!*****************************************************************************
+\brief
+Register and start tracking the system usage.
+
+\param _systemName
+Unique name identifier of the system to be tracked.
+*******************************************************************************/
 void PerformanceVisualiser::StartSystemTracking(std::string _systemName)
 {
 	for (std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> > &system : PerformanceVisualiser::mSystemPerformance) {
@@ -14,6 +33,17 @@ void PerformanceVisualiser::StartSystemTracking(std::string _systemName)
 	PerformanceVisualiser::mSystemPerformance.push_back({ _systemName, { 0, { startTimepoint, startTimepoint } } });
 }
 
+/*!*****************************************************************************
+\brief
+End the tracking of the system usage. Calculates the time taken and stores them
+in the member vector mSystemPerformance.
+
+\param _systemName
+Unique name identifier of the system.
+
+\return
+Returns a double of the system performance in millisec.
+*******************************************************************************/
 double PerformanceVisualiser::StopSystemTracking(std::string _systemName)
 {
 	for (std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> > &system : PerformanceVisualiser::mSystemPerformance) {
@@ -36,6 +66,16 @@ double PerformanceVisualiser::StopSystemTracking(std::string _systemName)
 	return 0.0;
 }
 
+/*!*****************************************************************************
+\brief
+Gets a specific system's performance.
+
+\param _systemName
+Unique name identifier of the system.
+
+\return
+Returns a double of the system performance in millisec.
+*******************************************************************************/
 double PerformanceVisualiser::GetPerformance(std::string _systemName) {
 	for (const std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> > &system : PerformanceVisualiser::mSystemPerformance)
 		if (system.first == _systemName)
@@ -43,6 +83,13 @@ double PerformanceVisualiser::GetPerformance(std::string _systemName) {
 	return 0.0;
 }
 
+/*!*****************************************************************************
+\brief
+Measures and gets a string of all the systems' performances in percentages.
+
+\return
+Returns a string populated with all the system performance in percentages.
+*******************************************************************************/
 std::string PerformanceVisualiser::GetPerformances() {
 	bool firstSystem = true;
 	double totalUsed = 0;

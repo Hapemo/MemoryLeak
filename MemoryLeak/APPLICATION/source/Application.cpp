@@ -36,7 +36,7 @@ void Application::startup() {
 
 void Application::SystemInit() {
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
-  audioManager->AudioManager::AudioManager();
+  audioManager->Init();
   renderManager->Init(&window_width, &window_height);
 }
 
@@ -46,6 +46,7 @@ void Application::init() {
   startup();
 
   SystemInit();
+  audioManager->PlayBGSound("MENUBG.wav", 10);
 }
 
 void Application::FirstUpdate() {
@@ -63,7 +64,7 @@ void Application::SecondUpdate() {
 
   // Close the window if the close flag is triggered
   if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
-
+  audioManager->UpdateSound();
   // Update ImGui
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
@@ -71,22 +72,24 @@ void Application::SecondUpdate() {
     levelEditor->LevelEditor::Window();
     levelEditor->LevelEditor::Update();
   }
-  
-
   END_TRACK("Editor");
 
-  if (Input::CheckKey(STATE::RELEASE, KEY::E))
+  if (Input::CheckKey(STATE::RELEASE, KEY::E)&& Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL))
   {
       editorMode = !editorMode;
       if (editorMode)
+      {
+        levelEditor->Start();
         renderManager->RenderToFrameBuffer();
+      }
       else
+      {
           renderManager->RenderToScreen();
+      }
 
   }
   // Reset input
   Input::updatePrevKeyStates();
-  audioManager->UpdateSound();
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 
@@ -96,7 +99,7 @@ void Application::SecondUpdate() {
 
 void Application::exit() {
   levelEditor->Exit();
-  //audioManager->~AudioManager();
+  audioManager->Unload();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();
   // Part 2
@@ -192,6 +195,8 @@ void Application::glewStartUp() {
 }
 
 void Application::error_cb(int error, char const* description) {
+    (void)error;
+    (void)description;
 #ifdef _DEBUG
   std::cerr << "GLFW error " << error << ": " << description << std::endl;
 #endif
