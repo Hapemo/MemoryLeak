@@ -1,3 +1,15 @@
+/*!*****************************************************************************
+\file ResourceManager.cpp
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 26-09-2022
+\brief
+This file contains the class ResourceManager and it's functions declaration.
+The ResourceManager class manages the resources, their data and usage.
+*******************************************************************************/
+
 #pragma once
 
 #include <sys/types.h>
@@ -7,6 +19,13 @@
 #include <algorithm>
 #include "ResourceManager.h"
 
+/*!*****************************************************************************
+\brief
+Loads all the textures in the specified filepath.
+
+\param std::string _filepath
+The filepath in string.
+*******************************************************************************/
 void ResourceManager::LoadTextures(std::string _filepath) {
 	const std::filesystem::path tex_dir{ "..\\resources\\Textures\\" + _filepath };
 	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(tex_dir)) {
@@ -15,6 +34,14 @@ void ResourceManager::LoadTextures(std::string _filepath) {
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Load a specific texture by calling the stbi load function and stores it's data
+in a ResourceData struct. Stores the resource in a member vector mResources.
+
+\param const std::string _filepath
+The filepath of the texture to be loaded.
+*******************************************************************************/
 ResourceManager::TextureData ResourceManager::LoadTexture(const std::string _filepath)
 {
 	struct stat stats;
@@ -31,6 +58,13 @@ ResourceManager::TextureData ResourceManager::LoadTexture(const std::string _fil
 	return trackResource.texture;
 }
 
+/*!*****************************************************************************
+\brief
+Update a specific texture and it's data by calling the stbi load functon.
+
+\param const size_t _index
+The index of the texture to be updated.
+*******************************************************************************/
 void ResourceManager::UpdateTexture(const size_t _index)
 {
 	const char* filepath = mResources[_index].texture.path.c_str();
@@ -39,15 +73,16 @@ void ResourceManager::UpdateTexture(const size_t _index)
 	//std::cout << mResources[_index].texture.path << std::endl;
 }
 
-/*
-	check if files have changed/been updated
-	> check last updated time
-	> container that stores the previous time
-		> if different, then unload and reload the image to the same pointer
-	> check if filename doesnt exist means file is deleted
-		> unload image
-*/
+/*!*****************************************************************************
+\brief
+Check if files have changed/been updated by checking the last updated time. If
+timing is different, then reload the texture. Also check for if the filename
+doesn't exist, means the file is deleted, which the function will then remove
+the texture from the mResources vector.
 
+\return
+Returns a vector of resource id that has been updated.
+*******************************************************************************/
 std::vector<int> ResourceManager::UpdateTextures() {
 	std::vector<int> updatedTextures;
 	struct stat stats;
@@ -72,12 +107,32 @@ std::vector<int> ResourceManager::UpdateTextures() {
 	return updatedTextures;
 }
 
+/*!*****************************************************************************
+\brief
+Retrieve the texture id of a specific resource.
+
+\param const std::string& _texturePath
+The filepath of the texture.
+
+\return
+Returns the id of the texture in GLuint.
+*******************************************************************************/
 GLuint ResourceManager::GetTextureID(const std::string& _texturePath) {
 	for (size_t index = 0; index < mResources.size(); ++index)
 		if (mResources[index].texture.path == "..\\resources\\" + _texturePath) return mResources[index].texture.id;
 	return 0;
 }
 
+/*!*****************************************************************************
+\brief
+Retrieve the texture path of a specific resource.
+
+\param GLint _id
+The id of the texture.
+
+\return
+Returns the path of the texture in string.
+*******************************************************************************/
 std::string	ResourceManager::GetTexturePath(GLint _id) {
 	std::string path = "";
 	for (size_t index = 0; index < mResources.size(); ++index)
@@ -88,6 +143,13 @@ std::string	ResourceManager::GetTexturePath(GLint _id) {
 	return path;
 }
 
+/*!*****************************************************************************
+\brief
+Retrieve all the texture ids of the resources.
+
+\return
+Returns a vector of the ids in GLuint* of all the texture.
+*******************************************************************************/
 std::vector<GLuint*> ResourceManager::GetTextureIDs() {
 	std::vector<GLuint*> result;
 	for (size_t index = 0; index < mResources.size(); ++index)
@@ -95,16 +157,37 @@ std::vector<GLuint*> ResourceManager::GetTextureIDs() {
 	return result;
 }
 
+/*!*****************************************************************************
+\brief
+Unload a specific texture data by calling stbi image free.
+
+\param void* _data
+The void* pointing to the data of the texture to be deleted.
+*******************************************************************************/
 void ResourceManager::UnloadTexture(void* _data) {
 	stbi_image_free(_data);
 }
 
+/*!*****************************************************************************
+\brief
+Gets the aspect ratio of a specific texture.
+
+\param const GLuint _id
+The id of the texture.
+
+\return
+Returns the aspect ratio of the texture in float.
+*******************************************************************************/
 float ResourceManager::GetAspectRatio(const GLuint _id) {
 	for (size_t index = 0; index < mResources.size(); ++index)
 		if (mResources[index].texture.id == _id) return (float)(mResources[index].texture.height / mResources[index].texture.width);
 	return 0.0f;
 }
 
+/*!*****************************************************************************
+\brief
+Free the resources in the vector.
+*******************************************************************************/
 void ResourceManager::FreeResources() {
 	mResources.clear();
 }

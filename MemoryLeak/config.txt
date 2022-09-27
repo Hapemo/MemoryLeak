@@ -1,4 +1,4 @@
 title: gam200
 window_width: 1600
 window_height: 900
-fps_limit: 60
+fps_limit: 0

@@ -18,7 +18,6 @@ Entities and its Components.
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
-//#include <Application.h>
 #include "Graphics/TransformManager.h"
 
 
@@ -26,9 +25,12 @@ class LevelEditor : public System
 {
 public:
 	void Init(GLFWwindow*, int*, int*);
+	void Start();
 	void Window();
 	void Update();
 	void Exit();
+	bool IsEditorPaused() { return isPaused; };
+	void UnpauseEditor() { isPaused = false; };
 
 private:
 	void SceneManager();
@@ -40,5 +42,6 @@ private:
 	int* mWindowWidth;
 	int* mWindowHeight;
 	const Entity* selectedEntity;
+	bool isPaused;
 	
 };
