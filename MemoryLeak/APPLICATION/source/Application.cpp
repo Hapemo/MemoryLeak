@@ -196,7 +196,7 @@ void Application::glewStartUp() {
 
 void Application::error_cb(int error, char const* description) {
     (void)error;
-    (void)description;
+    (void)description; // This function should only be called for debug mode
 #ifdef _DEBUG
   std::cerr << "GLFW error " << error << ": " << description << std::endl;
 #endif
