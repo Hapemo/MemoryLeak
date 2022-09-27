@@ -63,7 +63,7 @@ Returns true if the dialog has choices else returns false.
 *******************************************************************************/
 bool DialogManager::HasChoice(int _id) {
 	for (Dialog dialog : mDialogs)
-		if (dialog.next2 != -1) return true;
+		if (dialog.id == _id && dialog.next2 != -1) return true;
 	return false;
 }
 

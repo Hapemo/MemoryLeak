@@ -113,9 +113,7 @@ int main() {
         THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "File for vertex shader not found!");
         */
 
-        Util::EnableMemoryLeakChecking(); //dialog manager
-        //Util::EnableMemoryLeakChecking(22390); //dialog manager
-        //Util::EnableMemoryLeakChecking(22388); //audio memleak
+        Util::EnableMemoryLeakChecking(); 
 
         real_main();
     }

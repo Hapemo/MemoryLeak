@@ -223,7 +223,7 @@ std::vector<float> RenderManager::GetImGuizmoMat4(const Entity& _e)
 	for (int i = 0; i < 2; ++i)
 		for (int j = 0; j < 2; ++j)
 		{
-			ret.push_back(temp[i][j]);
+			ret.push_back(temp[(short)i][j]);
 			if (j == 1)
 			{
 				ret.push_back(0);
