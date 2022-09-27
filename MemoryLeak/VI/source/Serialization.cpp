@@ -52,7 +52,6 @@ void SerializationManager::LoadScene(std::string _filename)
 	}
 	else
 		LOG_ERROR("Opening Scene: " + path);
-	ECS::DestroyAllEntities();
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
@@ -90,13 +89,11 @@ void SerializationManager::LoadScene(std::string _filename)
 		{
 			Math::Vec2 s, t;
 			float r;
-			s = GetVec2(entity["Transform"]["scale"]);
-			r = (float)entity["Transform"]["rotation"].GetFloat();
-			t = GetVec2(entity["Transform"]["translation"]);
-			/*s.x = entity["Transform"]["scale"]["X"].GetFloat();
+			s.x = entity["Transform"]["scale"]["X"].GetFloat();
 			s.y = entity["Transform"]["scale"]["Y"].GetFloat();
+			r = (float)entity["Transform"]["rotation"].GetFloat();
 			t.x = entity["Transform"]["translation"]["X"].GetFloat();
-			t.y = entity["Transform"]["translation"]["Y"].GetFloat();*/
+			t.y = entity["Transform"]["translation"]["Y"].GetFloat();
 		
 			e.AddComponent<Transform>({ s, r, t }); 
 		}
@@ -120,8 +117,7 @@ void SerializationManager::LoadScene(std::string _filename)
 			a = entity["Animation"]["images"].GetArray();
 			for (int j = 0; j < (int)a.Size(); ++j)
 			{
-				GLuint tex = spriteManager->GetTextureID(a[j].GetString());
-				images.push_back(tex);
+				images.push_back((GLuint)a[j].GetInt());
 			}
 			float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
 			float timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
@@ -147,6 +143,7 @@ void SerializationManager::LoadScene(std::string _filename)
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
 			e.AddComponent<Physics2D>({ gravityEnabled, mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
+			//physics2DManager->AddPhysicsComponent(e, mass, speed, moveDirection, renderFlag);
 		}
 		if (entity.HasMember("RectCollider"))
 		{
@@ -192,15 +189,6 @@ void SerializationManager::LoadScene(std::string _filename)
 			bool isSpacial = entity["Audio"]["isSpacial"].GetBool();
 			e.AddComponent<Audio>({ sound , isSpacial});
 		}
-		if (entity.HasMember("AI"))
-		{
-			int colorChange = entity["AI"]["colorChange"].GetInt();
-			int movement = entity["AI"]["movement"].GetInt();
-			float speed = entity["AI"]["speed"].GetFloat();
-			float range = entity["AI"]["range"].GetFloat();
-
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
-		}
 		mEntities.insert(e);
 		i++;
 	}
@@ -220,34 +208,7 @@ void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec
 	child.AddMember(StringRef("Y"), data.y, scene.GetAllocator());
 	parent.AddMember(StringRef(name), child, scene.GetAllocator());
 }
-/*!*****************************************************************************
-\brief
-	Adds a string vector to a rapid jason dom tree as a array
-\param scene
-	rapid jason document to add to
-\param parent
-	parent onject to add to
-\param name
-	name of child to add to parant object
-\prama data
-	data to be added to the child objects
 
-\return
-None.
-*******************************************************************************/
-template<typename T>
-void addVectorArrayStrMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
-{
-	Value child(kObjectType);
-	child.SetArray();
-	for (size_t i = 0; i < data.size(); ++i)
-	{
-		std::string tex = spriteManager->GetTexturePath(data[i]);
-		Value texpath(tex.c_str(), (SizeType)tex.size(), scene.GetAllocator());
-		child.PushBack(texpath, scene.GetAllocator());
-	}
-	parent.AddMember(StringRef(name), child, scene.GetAllocator());
-}
 /*!*****************************************************************************
 \brief
 	Adds a vector to a rapid jason dom tree as a array
@@ -320,8 +281,6 @@ void SerializationManager::SaveScene(std::string _filename)
 	
 	for (const Entity& e : mEntities)
 	{
-		if (!e.HasComponent<General>())
-			continue;
 		Value entity(kObjectType);
 		if (e.HasComponent<General>())
 		{
@@ -351,15 +310,14 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("color"), tmpc, allocator);
 			tmp.AddMember(StringRef("sprite"), (int)e.GetComponent<Sprite>().sprite, allocator);
 			std::string tex = spriteManager->GetTexturePath(spriteManager->GetTexture(e));
-			Value texpath(tex.c_str(), (SizeType)tex.size(), allocator);
-			tmp.AddMember(StringRef("texture"), texpath, allocator);
+			tmp.AddMember(StringRef("texture"), StringRef(tex.c_str()), allocator);
 			tmp.AddMember(StringRef("layer"), e.GetComponent<Sprite>().layer, allocator);
 			entity.AddMember(StringRef("Sprite"), tmp, allocator);
 		}
 		if (e.HasComponent<Animation>())
 		{
 			Value tmp(kObjectType);
-			addVectorArrayStrMember(scene, tmp, "images", e.GetComponent<Animation>().images);
+			addVectorArrayMember(scene, tmp, "images", e.GetComponent<Animation>().images);
 			tmp.AddMember(StringRef("timePerImage"), e.GetComponent<Animation>().timePerImage, allocator);
 			tmp.AddMember(StringRef("timeToImageSwap"), e.GetComponent<Animation>().timeToImageSwap, allocator);
 			tmp.AddMember(StringRef("currentImageIndex"), e.GetComponent<Animation>().currentImageIndex, allocator);
@@ -431,15 +389,6 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("isRandPitch"), e.GetComponent<Audio>().sound.isRandPitch, allocator);
 			tmp.AddMember(StringRef("isSpacial"), e.GetComponent<Audio>().isSpacial, allocator);
 			entity.AddMember(StringRef("Audio"), tmp, allocator);
-		}
-		if (e.HasComponent<Stuff>())
-		{
-			Value tmp(kObjectType);
-			tmp.AddMember(StringRef("colorChange"), e.GetComponent<Stuff>().colorChange, allocator);
-			tmp.AddMember(StringRef("movement"), e.GetComponent<Stuff>().movement, allocator);
-			tmp.AddMember(StringRef("speed"), e.GetComponent<Stuff>().speed, allocator);
-			tmp.AddMember(StringRef("range"), e.GetComponent<Stuff>().range, allocator);
-			entity.AddMember(StringRef("AI"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);

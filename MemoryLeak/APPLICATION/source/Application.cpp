@@ -46,7 +46,10 @@ void Application::init() {
   startup();
 
   SystemInit();
+<<<<<<< HEAD
   //audioManager->PlayBGSound("MENUBG.wav", 10);
+=======
+>>>>>>> parent of 6947b26 (Merge with weijhin and resolved conflicts)
 }
 
 void Application::FirstUpdate() {
@@ -64,7 +67,11 @@ void Application::SecondUpdate() {
 
   // Close the window if the close flag is triggered
   if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
+<<<<<<< HEAD
   //audioManager->UpdateSound();
+=======
+
+>>>>>>> parent of 6947b26 (Merge with weijhin and resolved conflicts)
   // Update ImGui
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
@@ -72,24 +79,22 @@ void Application::SecondUpdate() {
     levelEditor->LevelEditor::Window();
     levelEditor->LevelEditor::Update();
   }
+  
+
   END_TRACK("Editor");
 
   if (Input::CheckKey(STATE::RELEASE, KEY::E))
   {
       editorMode = !editorMode;
       if (editorMode)
-      {
-        levelEditor->Start();
         renderManager->RenderToFrameBuffer();
-      }
       else
-      {
           renderManager->RenderToScreen();
-      }
 
   }
   // Reset input
   Input::updatePrevKeyStates();
+  //audioManager->UpdateSound();
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 

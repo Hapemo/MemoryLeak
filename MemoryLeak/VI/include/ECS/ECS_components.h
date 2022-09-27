@@ -71,14 +71,14 @@ struct Physics2D {
 
 struct RectCollider {
 	Math::Vec2 centerOffset,
-		scaleOffset = {1.f,1.f};
+			   scaleOffset;
 	// float rotationOffset;
 	bool renderFlag = false;
 };
 
 struct CircleCollider {
 	Math::Vec2 centerOffset;
-	float scaleOffset =1.f;
+	float scaleOffset;
 	bool renderFlag = false;
 };
 
