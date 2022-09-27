@@ -23,6 +23,7 @@ void GameState2::Load() {
 }
 
 void GameState2::Init() {
+<<<<<<< HEAD
     serializationManager->LoadScene("SceneJGraphics");
     //int i = 2600;
     //int width = Application::getWindowWidth() >> 1;
@@ -31,6 +32,16 @@ void GameState2::Init() {
     //{
     //    float tempx = (float)((-width + (std::rand() % (width * 2 + 1))));
     //    float tempy = (float)((-height + (std::rand() % (height * 2 + 1))));
+=======
+    //serializationManager->LoadScene("SceneJGraphics");
+    int i = 2500;
+    int width = Application::getWindowWidth() / 2.f;
+    int height = Application::getWindowHeight() / 2.f;
+    while (i--)
+    {
+        float tempx = (-width + (std::rand() % (width * 2 + 1)));
+        float tempy = (-height + (std::rand() % (height * 2 + 1)));
+>>>>>>> parent of f14e8d3 (Merge with main and resolved conflicts)
 
     //    //if random number is outside of screen, crash
     //    //ensures that everything is rendered in the screen!!
@@ -39,12 +50,21 @@ void GameState2::Init() {
     //    if (tempy > height || tempy < -height)
     //        std::exit(EXIT_FAILURE);
 
+<<<<<<< HEAD
     //    Entity e1{ ECS::CreateEntity() };
     //    e1.AddComponent(Transform{ {32,32}, 0, {tempx,tempy}},
     //        Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
     //        General{ "count" + std::to_string(i), TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
     //    spriteManager->SetTexture(e1, "Textures\\Sprites\\jumppad1.png");
     //}
+=======
+        Entity e1{ ECS::CreateEntity() };
+        e1.AddComponent(Transform{ {32,32}, 0, {tempx,tempy}},
+            Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
+            General{ "count" + std::to_string(i), TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
+        spriteManager->SetTexture(e1, "Textures\\Sprites\\jumppad1.png");
+    }
+>>>>>>> parent of f14e8d3 (Merge with main and resolved conflicts)
 }
 
 void GameState2::Update() {

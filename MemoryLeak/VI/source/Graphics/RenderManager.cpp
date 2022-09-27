@@ -46,13 +46,13 @@ RenderManager::RenderManager()
 	InitializeShaders();
 	
 	//reserve space in vectors
-	mVertices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT));
-	mIndices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT));
-	mTextureVertices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT));
-	mTextureIndices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT));
-	mDebugPoints.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER));
-	mDebugVertices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT));
-	mDebugIndices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT));
+	mVertices.reserve(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT);
+	mIndices.reserve(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT);
+	mTextureVertices.reserve(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT);
+	mTextureIndices.reserve(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT);
+	mDebugPoints.reserve(NO_OF_OBJECTS * MODIFIER);
+	mDebugVertices.reserve(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT);
+	mDebugIndices.reserve(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT);
 }
 
 /*!*****************************************************************************
@@ -323,7 +323,7 @@ void RenderManager::BatchRenderArrays(GLenum _mode, const std::vector<Vertex>& _
 {
 	if (_vertices.empty()) return;
 	glNamedBufferSubData(mAllocator.mvboid, 0, sizeof(Vertex) * _vertices.size(), _vertices.data());
-	glDrawArrays(_mode, 0, static_cast<GLsizei>(_vertices.size()));
+	glDrawArrays(_mode, 0, _vertices.size());
 }
 
 /*!*****************************************************************************
@@ -344,7 +344,7 @@ void RenderManager::BatchRenderElements(GLenum _mode, const std::vector<Vertex>&
 	if (_vertices.empty()) return;
 	glNamedBufferSubData(mAllocator.mvboid, 0, sizeof(Vertex) * _vertices.size(), _vertices.data());
 	glNamedBufferSubData(mAllocator.meboid, 0, _indices.size() * sizeof(GLushort), _indices.data());
-	glDrawElements(_mode, static_cast<GLsizei>(_indices.size()), GL_UNSIGNED_SHORT, nullptr);
+	glDrawElements(_mode, _indices.size(), GL_UNSIGNED_SHORT, nullptr);
 }
 
 /*!*****************************************************************************
@@ -387,7 +387,7 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	Math::Mat3 mtx = GetTransform(_e);
 	glm::vec4 clr = GetColor(_e);
 	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
-	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
+	float texID = _e.GetComponent<Sprite>().texture;
 
 	float texMin{};
 	float texMax{ 1.f };
@@ -432,7 +432,7 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	_vertices.push_back(v2);
 	_vertices.push_back(v3);
 
-	GLushort first = _indices.empty() ? 0 : _indices.back() + 1;
+	GLuint first = _indices.empty() ? 0 : _indices.back() + 1;
 	_indices.push_back(first);
 	_indices.push_back(first + 1);
 	_indices.push_back(first + 2);
@@ -472,9 +472,9 @@ void RenderManager::CreateCircle(const Entity& _e)
 		mVertices.push_back(v);
 	}
 
-	GLushort pivot = mIndices.empty() ? 0 : mIndices.back() + 1;
+	GLuint pivot = mIndices.empty() ? 0 : mIndices.back() + 1;
 
-	for (GLushort i = 0; i < CIRCLE_SLICES; ++i)
+	for (int i = 0; i < CIRCLE_SLICES; ++i)
 	{
 		mIndices.push_back(pivot);
 		mIndices.push_back(pivot + 1 + i);
@@ -563,7 +563,7 @@ void RenderManager::CreateDebugLine(const Transform& _t, const Color& _c)
 	mDebugVertices.push_back(v0);
 	mDebugVertices.push_back(v1);
 
-	GLushort first = mDebugIndices.empty() ? 0 : mDebugIndices.back() + 1;
+	GLuint first = mDebugIndices.empty() ? 0 : mDebugIndices.back() + 1;
 	mDebugIndices.push_back(first);
 	mDebugIndices.push_back(first + 1);
 }
@@ -622,7 +622,7 @@ void RenderManager::CreateDebugSquare(const Transform& _t, const Color& _c)
 	mDebugVertices.push_back(v3);
 	mDebugVertices.push_back(v2);
 
-	GLushort first = mDebugIndices.empty() ? 0 : mDebugIndices.back() + 1;
+	GLuint first = mDebugIndices.empty() ? 0 : mDebugIndices.back() + 1;
 	mDebugIndices.push_back(first);
 	mDebugIndices.push_back(first + 1);
 	mDebugIndices.push_back(first + 1);
@@ -674,9 +674,9 @@ void RenderManager::CreateDebugCircle(const Transform& _t, const Color& _c)
 		mDebugVertices.push_back(v);
 	}
 
-	GLushort first = mDebugIndices.empty() ? 0 : mDebugIndices.back() + 1;
+	GLuint first = mDebugIndices.empty() ? 0 : mDebugIndices.back() + 1;
 
-	for (GLushort i = 0; i < CIRCLE_SLICES; ++i)
+	for (int i = 0; i < CIRCLE_SLICES; ++i)
 	{
 		mDebugIndices.push_back(first + i);
 		mDebugIndices.push_back(first + i + 1);

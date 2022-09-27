@@ -236,5 +236,5 @@ Pointer to the array.
 *******************************************************************************/
 void GLShader::InsertUniform1iv(const std::string& _uniform, size_t _count, int* _data)
 {
-	glUniform1iv(mUniforms[_uniform], static_cast<GLsizei>(_count), _data);
+	glUniform1iv(mUniforms[_uniform], _count, _data);
 }
