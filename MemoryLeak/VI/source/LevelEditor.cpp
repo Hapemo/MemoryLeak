@@ -887,7 +887,8 @@ void LevelEditor::ViewPortManager()
 	{
 		viewportSize.y = viewportSize.x / 16 * 9;
 	}
-	ImGui::SetCursorPos(ImVec2((ImGui::GetWindowWidth()- viewportSize.x)*0.5f, 60.f));
+	Math::Vec2 pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
+	ImGui::SetCursorPos(ImVec2(pos.x,pos.y));
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
 	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
 
@@ -897,20 +898,15 @@ void LevelEditor::ViewPortManager()
 		//imguizmo
 		ImGuizmo::SetOrthographic(true);
 		ImGuizmo::SetDrawlist();
-		ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y,
-			ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
+		ImGuizmo::SetRect(ImGui::GetWindowPos().x+pos.x, ImGui::GetWindowPos().y+pos.y,
+			viewportSize.x, viewportSize.y);
 		const float identity[16] = {1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1};
-		std::vector<float> trf = { 100,0,0,0,  0,100,0,0, 0,0,0,0, 0,0,0,1 };// renderManager->GetImGuizmoMat(e);
-		float translate[16];
+		std::vector<float> trf = renderManager->GetImGuizmoMat4(e);
+		float translate[16]= { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
 		for (int i = 0; i < 16; ++i)
 		{
 			translate[i] = trf[i];
 		}
-		/*glm::mat4 trans{
-		transformManager->GetScale(e).x, 0								,0,transformManager->GetTranslate(e).x,
-		0								,transformManager->GetScale(e).y,0,transformManager->GetTranslate(e).y,
-		0								,			0					,1,0,
-		0								,			0					,0,1};*/
 		
 		ImGuizmo::OPERATION opp{};
 		if (SRT == 1)
@@ -934,13 +930,43 @@ void LevelEditor::ViewPortManager()
 				{
 					Math::Vec2 scaleX = { translate[0] , translate[1] };
 					Math::Vec2 scaleY = { translate[4] , translate[5] };
-					Math::Vec2 scale = { scaleX.Magnitude() , scaleY.Magnitude() };
+					Math::Vec2 scale = { scaleX.Magnitude()* (float) *mWindowWidth , scaleY.Magnitude() * (float)*mWindowHeight};
 					e.GetComponent<Transform>().scale = scale;
 				}
-				if (SRT == 3)
+				else if (SRT == 2)
 				{
-					//Math::Vec2 translation = { translate[3] , translate[7] };
-					Math::Vec2 translation = { translate[12] , translate[13]};
+					Math::Vec2 scale = { translate[0] , translate[1]};
+					float rotation=(float)(acosf(scale.x/scale.Magnitude()));
+					/*float theta1 = atan2(translate[6], translate[10]);
+					float c2 = scale.Magnitude();
+					float theta2 = atan2(-translate[2], c2);
+					float s1 = sin(theta1);
+					float c1 = cos(theta1);
+					float rotation = atan2(s1 * translate[8] - c1 * translate[4], c1 * translate[5] - s1 * translate[9]);*/
+
+					/*rot.Normalize();
+					float rotation{};
+					if (rot.x == 0)
+					{
+						if (rot.y > 0)
+							rotation = (float)Math::PI / 2;
+						else if (rot.y < 0)
+							rotation = 3 * (float)Math::PI / 2;
+						else
+							rotation = 0;
+					}
+					else
+					{
+						if (rot.y >= 0)
+							rotation = atan2(rot.y, rot.x);
+						else if (rot.y < 0)
+							rotation = 2 * (float)Math::PI + atan2(rot.y, rot.x);
+					}*/
+					e.GetComponent<Transform>().rotation = rotation;
+				}
+				else if (SRT == 3)
+				{
+					Math::Vec2 translation = { translate[12] * (float)(*mWindowWidth/2), translate[13] * (float)(*mWindowHeight/2)};
 					e.GetComponent<Transform>().translation = translation;
 				}
 			}
