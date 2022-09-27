@@ -79,6 +79,8 @@ void SerializationManager::LoadScene(std::string _filename)
 			int tag = entity["General"]["tag"].GetInt();
 			int subtag = entity["General"]["subtag"].GetInt();
 			e.AddComponent<General>(General{ name, (TAG)tag ,(SUBTAG)subtag, isActive });
+			if (tag == (int)TAG::PLAYER)
+				e.AddComponent(PlayerTmp{ 0 });
 		}
 		if (entity.HasMember("Lifespan"))
 		{

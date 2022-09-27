@@ -16,8 +16,8 @@ This file contains function declarations for a audio system
 class AudioManager : public System
 {
 public:
-	AudioManager();								//constructor add fmod
-	~AudioManager();							//Deconstructor
+	void Init();								//constructor add fmod
+	void Unload();							//Deconstructor
 
 	void LoadSound();							//Load all sound 
 	void PlayBGSound(std::string, int);

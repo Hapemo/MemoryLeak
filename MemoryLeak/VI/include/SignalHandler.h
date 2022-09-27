@@ -1,7 +1,25 @@
+/*!*****************************************************************************
+\file SignalHandler.h
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 26-09-2022
+\brief
+This file contains the function HandleSignal which handles the different
+signal sent by the program and prints into the crash log.
+*******************************************************************************/
 #pragma once
 #include <csignal>
 #include "Logger.h"
 
+/*!*****************************************************************************
+\brief
+Handles the different signal sent by the program and prints into the crash log.
+
+\param int _signalNumber
+The signal received.
+*******************************************************************************/
 void HandleSignal(int _signalNumber)
 {
     switch (_signalNumber) {

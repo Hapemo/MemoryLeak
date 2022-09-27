@@ -147,6 +147,9 @@ public:
 	*******************************************************************************/
 	void CreateNewDialogue(int _id, std::string _text, int _speaker, int _next, int _next2 = -1);
 
+	void RemoveDialog(int _id);
+	void Clear();
+
 private:
 	/*!*****************************************************************************
 	\brief
