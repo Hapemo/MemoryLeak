@@ -8,19 +8,21 @@
 Game state for testing physics
 *******************************************************************************/
 #include "GameState2.h"
-#include "ECSManager.h"
 #include "Application.h"
 
 
 
 void GameState2::Load() {
+    LOAD_TEXTURES("Background");
+    LOAD_TEXTURES("Icons");
+    LOAD_TEXTURES("Menu");
     LOAD_TEXTURES("Sprites");
+    LOAD_TEXTURES("Spritesheets");
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 }
 
 void GameState2::Init() {
-<<<<<<< HEAD
 <<<<<<< HEAD
     serializationManager->LoadScene("SceneJGraphics");
     //int i = 2600;
@@ -40,25 +42,14 @@ void GameState2::Init() {
         float tempx = (-width + (std::rand() % (width * 2 + 1)));
         float tempy = (-height + (std::rand() % (height * 2 + 1)));
 >>>>>>> parent of f14e8d3 (Merge with main and resolved conflicts)
-=======
-    //serializationManager->LoadScene("SceneJGraphics");
-    int i = 4000;
-    int width = Application::getWindowWidth() >> 1;
-    int height = Application::getWindowHeight() >> 1;
-    while (i--)
-    {
-        float tempx = (float)((-width + (std::rand() % (width * 2 + 1))));
-        float tempy = (float)((-height + (std::rand() % (height * 2 + 1))));
->>>>>>> parent of 6947b26 (Merge with weijhin and resolved conflicts)
 
-        //if random number is outside of screen, crash
-        //ensures that everything is rendered in the screen!!
-        if (tempx > width || tempx < -width)
-            std::exit(EXIT_FAILURE);
-        if (tempy > height || tempy < -height)
-            std::exit(EXIT_FAILURE);
+    //    //if random number is outside of screen, crash
+    //    //ensures that everything is rendered in the screen!!
+    //    if (tempx > width || tempx < -width)
+    //        std::exit(EXIT_FAILURE);
+    //    if (tempy > height || tempy < -height)
+    //        std::exit(EXIT_FAILURE);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     //    Entity e1{ ECS::CreateEntity() };
     //    e1.AddComponent(Transform{ {32,32}, 0, {tempx,tempy}},
@@ -74,18 +65,9 @@ void GameState2::Init() {
         spriteManager->SetTexture(e1, "Textures\\Sprites\\jumppad1.png");
     }
 >>>>>>> parent of f14e8d3 (Merge with main and resolved conflicts)
-=======
-        Entity e1{ ECS::CreateEntity() };
-        e1.AddComponent(Transform{ {32,32}, 0, {tempx,tempy}},
-            Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-            General{ "count" + i, TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-        spriteManager->SetTexture(e1, "Textures\\Sprites\\jumppad1.png");
-    }
->>>>>>> parent of 6947b26 (Merge with weijhin and resolved conflicts)
 }
 
 void GameState2::Update() {
-
 }
 
 void GameState2::Draw() {
@@ -93,7 +75,7 @@ void GameState2::Draw() {
 }
 
 void GameState2::Free() {
-    serializationManager->SaveScene("SceneJGraphics");
+    //serializationManager->SaveScene("SceneJGraphics");
     ECS::DestroyAllEntities();
 }
 

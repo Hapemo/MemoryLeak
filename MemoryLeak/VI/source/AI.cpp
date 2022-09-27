@@ -10,28 +10,16 @@ Entities and its Components.
 *******************************************************************************/
 #include "AI.h"
 #include <ECSManager.h>
-#define mapWidth 50
-#define mapHeight 40
-#define maxSizeX 5
-#define maxSizeY 5
-#define maxDirection 8
-#define maxlocation 3
-int map[mapWidth][mapHeight]{};
-int initialLoactionX[maxlocation]{};
-int initialLoactionY[maxlocation]{};
-int sizeX[maxlocation]{};
-int sizeY[maxlocation]{};
-int initialDirectionX[maxlocation]{};
-int initialDirectionY[maxlocation]{};
-int currentWeather[maxlocation]{};
+
+
 /*!*****************************************************************************
 \brief
-	Initialized the weather AI with initial random values
+	Initialize the weather AI with initial random values
 
 \return
 None.
 *******************************************************************************/
-void weatherAIinit()
+void AIManager::weatherAIinit()
 {
 	int numWeatherLoc = 3;//(std::rand() % 3)+1;
 	for (int i = 0; i < numWeatherLoc; i++)
@@ -70,7 +58,7 @@ void weatherAIinit()
 \return
 None.
 *******************************************************************************/
-void weatherAIupdate()
+void AIManager::weatherAIupdate()
 {
 	
 	int update = std::rand() % 100;
@@ -134,25 +122,48 @@ void weatherAIupdate()
 		std::cout << "\n ";
 	}
 }
-
 /*!*****************************************************************************
 \brief
-	AI to change colours of entities
+	Update all the AI
 
 \return
 None.
 *******************************************************************************/
-void updateAIAllColors(const Entity& e)
+void AIManager::updateAI()
+{
+	for (auto& e : mEntities) {
+		if (e.GetComponent<Stuff>().colorChange == 1)
+			updateAIAllColors(e);
+		else if (e.GetComponent<Stuff>().colorChange == 2)
+			updateAITrafficLight(e);
+		if (e.GetComponent<Stuff>().movement == 1)
+			updateAIUpDown(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+		else if (e.GetComponent<Stuff>().movement == 2)
+			updateAILeftRight(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+		else if (e.GetComponent<Stuff>().movement == 3)
+			updateAISwing(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+		else if (e.GetComponent<Stuff>().movement == 4)
+			updateAICircle(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+	}
+}
+/*!*****************************************************************************
+\brief
+	AI to change colours of entities
+\param e
+	entity to change
+\return
+None.
+*******************************************************************************/
+void AIManager::updateAIAllColors(const Entity& e)
 {
 	static double time = 0.0;
-	//time += 1.f / Application::getTargetFPS() / 10.0; //deltatime
-	time += FPSManager::dt;
+	time += FPSManager::dt/10.f;
 	if (time > 2 * M_PI)
 		time -= (2 * M_PI);
 	GLubyte red = GLubyte((sin(time)		+ 1) / 2 *255.f);
 	GLubyte green = GLubyte((sin(time * 4) + 1) / 2 * 255.f);
 	GLubyte blue = GLubyte((sin(time * 8) + 1) / 2 * 255.f);
-	Color clr{ red, green, blue , (GLubyte)255 };
+	Color clr{ red, green, blue , e.GetComponent<Sprite>().color.a };
 	e.GetComponent<Sprite>().color = clr;
 	//@weijhin
 	//colorManager->SetColor(e, clr);
@@ -161,14 +172,15 @@ void updateAIAllColors(const Entity& e)
 /*!*****************************************************************************
 \brief
 	AI to chnage a traffic light entity colour
-
+\param e
+	entity to change
 \return
 None.
 *******************************************************************************/
-void updateAITrafficLight(const Entity& e)
+void AIManager::updateAITrafficLight(const Entity& e)
 {
 	static double time = 0.0;
-	//time += 1.f / Application::getTargetFPS() /2.f;//deltatime
+	time += FPSManager::dt;
 	float red = 0.0f;
 	float green = 0.0f;
 	float blue = 0.0f;
@@ -195,23 +207,26 @@ void updateAITrafficLight(const Entity& e)
 		red = 1.0f;
 	}
 
-	Color clr{ (GLubyte)(red * 255), (GLubyte)(green * 255), (GLubyte)(blue*255) , (GLubyte)255};
+	Color clr{ (GLubyte)(red * 255), (GLubyte)(green * 255), (GLubyte)(blue*255) , e.GetComponent<Sprite>().color.a };
 	e.GetComponent<Sprite>().color = clr;
-	//@weijhin
-	//colorManager->SetColor(e, clr);
 }
 
 /*!*****************************************************************************
 \brief
 	AI to move an entity up and down
-
+\param e
+	entity to change
+\param speed
+	speed to move
+\param range
+	range of movement
 \return
 None.
 *******************************************************************************/
-void updateAIUpDown(const Entity& e, float speed, float range)
+void AIManager::updateAIUpDown(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
-	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
+	time += FPSManager::dt;
 	static int state = 1;
 	static float change = 0.0f;
 	Math::Vec2 incrTranslation{};
@@ -230,21 +245,24 @@ void updateAIUpDown(const Entity& e, float speed, float range)
 	else if (change < -range)
 		state = 1;
 	e.GetComponent<Transform>().translation += incrTranslation;
-	//@weijhin
-	//transformManager->IncrTranslate(e, incrTranslation);
 }
 
 /*!*****************************************************************************
 \brief
 	AI to move an entity left and right
-
+\param e
+	entity to change
+\param speed
+	speed to move
+\param range
+	range of movement
 \return
 None.
 *******************************************************************************/
-void updateAILeftRight(const Entity& e, float speed, float range)
+void AIManager::updateAILeftRight(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
-	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
+	time += FPSManager::dt;
 	static int state = 1;
 	static float change = 0.0f;
 	Math::Vec2 incrTranslation{};
@@ -263,42 +281,48 @@ void updateAILeftRight(const Entity& e, float speed, float range)
 	else if (change < -range)
 		state = 1;
 	e.GetComponent<Transform>().translation += incrTranslation;
-	//@weijhin
-	//transformManager->IncrTranslate(e, incrTranslation);
 }
 
 /*!*****************************************************************************
 \brief
 	AI to move an entity in circles
-
+\param e
+	entity to change
+\param speed
+	speed to move
+\param range
+	range of movement
 \return
 None.
 *******************************************************************************/
-void updateAICircle(const Entity& e, float speed, float range)
+void AIManager::updateAICircle(const Entity& e, float speed, float range)
 {
-	(void)range;
+	(void)range; //WIP
 	static double time = 0.0;
-	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
+	time += FPSManager::dt;
 	Math::Vec2 incrTranslation{};
 	incrTranslation.x = (float)(sin(time * speed) * speed);
 	incrTranslation.y = (float)(cos(time * speed) * speed);
 	e.GetComponent<Transform>().translation += incrTranslation;
-	//@weijhin
-	//transformManager->IncrTranslate(e, incrTranslation);
 
 }
 
 /*!*****************************************************************************
 \brief
 	AI to roatate an entity
-
+\param e
+	entity to change
+\param speed
+	speed to move
+\param range
+	range of movement
 \return
 None.
 *******************************************************************************/
-void updateAISwing(const Entity& e, float speed, float range)
+void AIManager::updateAISwing(const Entity& e, float speed, float range)
 {
 	static double time = 0.0;
-	//time += 1.f / Application::getTargetFPS() / 2.f;//deltatime
+	time += FPSManager::dt;
 	float incrRotation{};
 	static int state = 1;
 	static float change = 0.0f;
@@ -317,6 +341,4 @@ void updateAISwing(const Entity& e, float speed, float range)
 	else if (change < -range)
 		state = 1;
 	e.GetComponent<Transform>().rotation += incrRotation;
-	//@weijhin
-	//transformManager->IncrRotation(e, incrRotation);
 }
