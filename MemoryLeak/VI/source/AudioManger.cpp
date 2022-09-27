@@ -43,6 +43,7 @@ None.
 *******************************************************************************/
 AudioManager::~AudioManager()
 {
+    std::cout << "Audio destructor called\n";
     system->release();
 
 }
