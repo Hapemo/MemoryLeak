@@ -30,8 +30,8 @@ void GameState2::Init() {
         float tempx = (float)((-width + (std::rand() % (width * 2 + 1))));
         float tempy = (float)((-height + (std::rand() % (height * 2 + 1))));
 
-        //if random number is outside of screen, crash
-        //ensures that everything is rendered in the screen!!
+        /*******************if random number is outside of screen, crash**************/
+        /*******************ensures that everything is rendered in the screen!!*******/
         if (tempx > width || tempx < -width)
             std::exit(EXIT_FAILURE);
         if (tempy > height || tempy < -height)
