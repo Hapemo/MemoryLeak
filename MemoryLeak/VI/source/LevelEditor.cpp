@@ -893,59 +893,57 @@ void LevelEditor::ViewPortManager()
 
 	if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
 	{
-		//++counter;
-		//int counter = selectedEntityID;
 		const Entity& e = *selectedEntity;
 		//imguizmo
 		ImGuizmo::SetOrthographic(true);
 		ImGuizmo::SetDrawlist();
 		ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y,
 			ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
-		/*ImGuizmo::SetRect(0, 0,
-			ImGui::GetWindowWidth(), ImGui::GetWindowHeight());*/
-		glm::mat4 iii = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
-		glm::mat4 view = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
-		view[3][0] /= (float)*mWindowWidth / 2.f;
-		view[3][1] /= (float)*mWindowHeight / 2.f;
-		//glm::mat4 trans = renderManager->GetTransform(e);
-		//glm::mat4 trans2 = glm::inverse(renderManager->GetTransform(e));
-		glm::mat4 trans{
+		const float identity[16] = {1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1};
+		std::vector<float> trf = { 100,0,0,0,  0,100,0,0, 0,0,0,0, 0,0,0,1 };// renderManager->GetImGuizmoMat(e);
+		float translate[16];
+		for (int i = 0; i < 16; ++i)
+		{
+			translate[i] = trf[i];
+		}
+		/*glm::mat4 trans{
 		transformManager->GetScale(e).x, 0								,0,transformManager->GetTranslate(e).x,
 		0								,transformManager->GetScale(e).y,0,transformManager->GetTranslate(e).y,
 		0								,			0					,1,0,
-		0								,			0					,0,1};
+		0								,			0					,0,1};*/
 		
 		ImGuizmo::OPERATION opp{};
 		if (SRT == 1)
 		{
 			opp = ImGuizmo::OPERATION::SCALE;
-			view[0][0] /= (float)*mWindowWidth / 2.f;
-			view[0][1] /= (float)*mWindowHeight / 2.f;
-			view[1][0] /= (float)*mWindowWidth / 2.f;
-			view[1][1] /= (float)*mWindowHeight / 2.f;
-			
 		}
-		if (SRT == 2)
+		else if (SRT == 2)
 		{
 			opp = ImGuizmo::OPERATION::ROTATE;
 		}
-		if (SRT == 3)
+		else if (SRT == 3)
 		{
 			opp = ImGuizmo::OPERATION::TRANSLATE;
 		}
 		if (SRT != 0)
 		{
-			ImGuizmo::Manipulate(glm::value_ptr(view), glm::value_ptr(iii),
-				opp, ImGuizmo::LOCAL, glm::value_ptr(trans));
+			ImGuizmo::Manipulate(&identity[0], &identity[0], opp, ImGuizmo::LOCAL, &translate[0]);
 			if (ImGuizmo::IsUsing())
 			{
-				if(SRT==3)
-					transformManager->SetTranslate(e, { trans[3][0]* (float)*mWindowWidth / 2.f,
-						trans[3][1]* (float)*mWindowHeight / 2.f });
-				if(SRT==1)
-					transformManager->SetScale(e, { glm::length(trans[0]),glm::length(trans[1]) }	);
+				if (SRT == 1)
+				{
+					Math::Vec2 scaleX = { translate[0] , translate[1] };
+					Math::Vec2 scaleY = { translate[4] , translate[5] };
+					Math::Vec2 scale = { scaleX.Magnitude() , scaleY.Magnitude() };
+					e.GetComponent<Transform>().scale = scale;
+				}
+				if (SRT == 3)
+				{
+					//Math::Vec2 translation = { translate[3] , translate[7] };
+					Math::Vec2 translation = { translate[12] , translate[13]};
+					e.GetComponent<Transform>().translation = translation;
+				}
 			}
-			//glm::decompose();
 		}
 	}
 	ImGui::End();

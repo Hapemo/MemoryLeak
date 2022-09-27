@@ -70,6 +70,8 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
     mSfxSound["DAMAGE.wav"] = snd;
     system->createSound("..\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
     mSfxSound["HEALTH.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\SHOOT5.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["SHOOT5.wav"] = snd;
     system->createSound("..\\resources\\Audio\\MENUBG.wav", FMOD_DEFAULT, nullptr, &snd);
     mBgmSound["MENUBG.wav"] = snd;
 
@@ -134,7 +136,7 @@ void AudioManager::UpdateSound()
         if (e.GetComponent<Audio>().sound.toPlay==true)
         {
             
-            PlaySound(e, 1);
+            PlaySound(e, (int)(std::rand()%10));
             if (!e.GetComponent<Audio>().sound.isLoop)
             {
                 e.GetComponent<Audio>().sound.toPlay = false;
