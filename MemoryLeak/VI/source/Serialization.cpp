@@ -1,7 +1,7 @@
 /*!*****************************************************************************
 \file Serialization.cpp
-\author Huang Wei Jhin, Chen Jia Wenyy
-\par DP email: h.weijhin@digipen.edu, jiawenny@digipen.edu
+\author Huang Wei Jhin, Chen Jia Wen
+\par DP email: h.weijhin@digipen.edu, c.jiawen@digipen.edu
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
@@ -504,37 +504,4 @@ None.
 *******************************************************************************/
 void SerializationManager::SaveDialogs()
 {
-	/*
-	LOG_INFO("saving dialogs");
-	Document dialog;
-	auto& allocator = dialog.GetAllocator();
-	dialog.SetObject();
-
-	StringBuffer buffer;
-	Writer<StringBuffer> writer(buffer);
-	int counter = 0;
-
-	for (const Dialog d : DialogManager::mDialogs)
-	{
-		Value entity(kObjectType);
-		if (e.HasComponent<General>())
-		{
-			Value tmp(kObjectType);
-			tmp.AddMember(StringRef("name"), StringRef(e.GetComponent<General>().name.c_str()), allocator);
-			tmp.AddMember(StringRef("tag"), (int)e.GetComponent<General>().tag, allocator);
-			tmp.AddMember(StringRef("subtag"), (int)e.GetComponent<General>().subtag, allocator);
-			tmp.AddMember(StringRef("isActive"), e.GetComponent<General>().isActive, allocator);
-			entity.AddMember(StringRef("General"), tmp, allocator);
-		}
-	}
-
-	scene.Accept(writer);
-	std::string jsonf(buffer.GetString(), buffer.GetSize());
-	std::ofstream ofs("../resources/Scene/SceneJ.json");
-	ofs << jsonf;
-	if (!ofs.good())
-	{
-		LOG_ERROR("json errorrr");
-	}
-	*/
 }
