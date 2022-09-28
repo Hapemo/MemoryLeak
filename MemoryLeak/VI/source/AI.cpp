@@ -225,20 +225,19 @@ None.
 *******************************************************************************/
 void AIManager::updateAIUpDown(const Entity& e, float speed, float range)
 {
-	static double time = 0.0;
-	time += FPSManager::dt;
+	float time = (float)FPSManager::dt*60.f;
 	static int state = 1;
 	static float change = 0.0f;
 	Math::Vec2 incrTranslation{};
 	if (state)
 	{
-		incrTranslation.y = speed;
-		change += speed;
+		incrTranslation.y = speed* time;
+		change += speed * time;
 	}
 	else
 	{
-		incrTranslation.y = -speed;
-		change -= speed;
+		incrTranslation.y = -speed * time;
+		change -= speed * time;
 	}
 	if (change > range)
 		state = 0;
@@ -261,20 +260,19 @@ None.
 *******************************************************************************/
 void AIManager::updateAILeftRight(const Entity& e, float speed, float range)
 {
-	static double time = 0.0;
-	time += FPSManager::dt;
+	float time = (float)FPSManager::dt * 60.f;
 	static int state = 1;
 	static float change = 0.0f;
 	Math::Vec2 incrTranslation{};
 	if (state)
 	{
-		incrTranslation.x = speed;
-		change += speed;
+		incrTranslation.x = speed * time;
+		change += speed * time;
 	}
 	else
 	{
-		incrTranslation.x = -speed;
-		change -= speed;
+		incrTranslation.x = -speed * time;
+		change -= speed * time;
 	}
 	if (change > range)
 		state = 0;
@@ -301,8 +299,8 @@ void AIManager::updateAICircle(const Entity& e, float speed, float range)
 	static double time = 0.0;
 	time += FPSManager::dt;
 	Math::Vec2 incrTranslation{};
-	incrTranslation.x = (float)(sin(time * speed) * speed);
-	incrTranslation.y = (float)(cos(time * speed) * speed);
+	incrTranslation.x = (float)(sin(time * speed) );
+	incrTranslation.y = (float)(cos(time * speed) );
 	e.GetComponent<Transform>().translation += incrTranslation;
 
 }
@@ -321,20 +319,19 @@ None.
 *******************************************************************************/
 void AIManager::updateAISwing(const Entity& e, float speed, float range)
 {
-	static double time = 0.0;
-	time += FPSManager::dt;
+	float time = (float)FPSManager::dt * 60.f;
 	float incrRotation{};
 	static int state = 1;
 	static float change = 0.0f;
 	if (state)
 	{
-		incrRotation = (float)(speed / 100);
-		change += speed;
+		incrRotation = (float)(speed * time / 100);
+		change += speed * time;
 	}
 	else
 	{
-		incrRotation = -(float)(speed / 100);
-		change -= speed;
+		incrRotation = -(float)(speed * time / 100);
+		change -= speed * time;
 	}
 	if (change > range)
 		state = 0;

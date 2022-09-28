@@ -18,7 +18,7 @@ Entities and its Components.
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-int SRT = 0;
+
 /*!*****************************************************************************
 \brief
 	Initializes the level editor
@@ -48,7 +48,8 @@ void LevelEditor::Start()
 {
 	selectedEntity = nullptr;
 	isPaused = true;
-	serializationManager->SaveScene("SceneTemp");
+	SRT = 0;
+	//serializationManager->SaveScene("SceneTemp");
 }
 
 /*!*****************************************************************************
@@ -144,9 +145,7 @@ void LevelEditor::Update()
 	ViewPortManager();
 	if(showdebug)
 		ShowDebugInfo();
-	//ImGui::End();
 	
-
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -239,6 +238,7 @@ None.
 *******************************************************************************/
 void  LevelEditor::SceneManager()
 {
+	static int n = 0;
 	ImGui::Begin("Scene Manager");
 	ImGui::BeginTabBar("Edit Scene ");
 	if (ImGui::BeginTabItem("Edit Game: "))
@@ -373,34 +373,36 @@ void  LevelEditor::SceneManager()
 				{
 					if (ImGui::MenuItem(" Create Entity"))
 					{
-						//LogInfo("Created new entity");
+						LOG_INFO("Created new entity");
 						Entity e{ ECS::CreateEntity() };
 						mEntities.insert(e);
 						e.AddComponent(
-							General{ "_NEW_", TAG::OTHERS, SUBTAG::NOSUBTAG, true },
+							General{ "_NEW_"+std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true},
 							Transform{ {150,150}, 0, {0.f,0.f} },
 							Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 });
+						n++;
 					}
 					ImGui::EndPopup();
 				}
 
 			}
 		}
-		if (ImGui::TreeNode("Scene 2"))
+		/*if (ImGui::TreeNode("Scene 2"))
 		{
 			ImGui::Text("Nothing");
 			ImGui::TreePop();
-		}
+		}*/
 		ImGui::EndTabItem();
 		if (ImGui::Button("New object"))
 		{
-			//LogInfo("Created new entity");
+			LOG_INFO("Created new entity");
 			Entity e{ ECS::CreateEntity() };
 			mEntities.insert(e);
 			e.AddComponent(
-				General{"_NEW_", TAG::OTHERS, SUBTAG::NOSUBTAG, true},
+				General{"_NEW_" + std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true},
 				Transform{ {150,150}, 0, {0.f,0.f} },
 				Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 });
+			n++;
 		}
 	}
 	ImGui::EndTabBar();
@@ -452,7 +454,10 @@ void LevelEditor::EntityManager()
 					//ImGui::Text("Lifespan");
 					ImGui::InputFloat("Lifespan", &e.GetComponent<Lifespan>().limit);
 					if (ImGui::Button("Remove Lifespan"))
+					{
 						e.RemoveComponent<Lifespan>();
+						LOG_INFO("Lifespan component removed");
+					}
 				}
 			}
 			if (e.HasComponent<Transform>())
@@ -460,11 +465,11 @@ void LevelEditor::EntityManager()
 				if (ImGui::CollapsingHeader("Transform Gizmo")) {
 					//ImGui::Text("Transform Gizmo: ");
 					static bool s = 0,r = 0,t = 0;
-					ImGui::Checkbox("Scale", &s);
+					ImGui::Checkbox("Scale Gizmo", &s);
 					if (s) { SRT = 1; r = t = 0; }
-					ImGui::Checkbox("Rotate", &r);
-					if (r) { SRT = 2; s = t = 0; }
-					ImGui::Checkbox("translate", &t);
+					//ImGui::Checkbox("Rotate", &r);
+					//if (r) { SRT = 2; s = t = 0; }
+					ImGui::Checkbox("Translate Gizmo", &t);
 					if (t) { SRT = 3; s = r = 0; }
 					if (!s && !r && !t) SRT = 0;
 				}
@@ -489,234 +494,267 @@ void LevelEditor::EntityManager()
 					tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 					transformManager->SetRotation(e, tmpFloat);
 					if (ImGui::Button("Remove Transform"))
+					{
 						e.RemoveComponent<Transform>();
+						LOG_INFO("Transform component removed");
+					}
 				}
 				
 			}
 			if (e.HasComponent<Sprite>())
 			{
 				if (ImGui::CollapsingHeader("Sprite")) {
-				//ImGui::Text("Sprite");
-				tmpVec4[0] = e.GetComponent<Sprite>().color.r /255.f;
-				tmpVec4[1] = e.GetComponent<Sprite>().color.g / 255.f;
-				tmpVec4[2] = e.GetComponent<Sprite>().color.b / 255.f;
-				tmpVec4[3] = e.GetComponent<Sprite>().color.a / 255.f;
-				ImGui::ColorEdit4("Color", tmpVec4);
-				e.GetComponent<Sprite>().color.r = (GLubyte)(tmpVec4[0] * 255);
-				e.GetComponent<Sprite>().color.g = (GLubyte)(tmpVec4[1] * 255);
-				e.GetComponent<Sprite>().color.b = (GLubyte)(tmpVec4[2] * 255);
-				e.GetComponent<Sprite>().color.a = (GLubyte)(tmpVec4[3] * 255);
-				std::string tex{};
-				if(e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)
-					tex = spriteManager->GetTexturePath(spriteManager->GetTexture(e));
-				else if (e.GetComponent<Sprite>().sprite == SPRITE::CIRCLE)
-					tex = "CIRCLE";
-				else if (e.GetComponent<Sprite>().sprite == SPRITE::SQUARE)
-					tex = "SQUARE";
-				
-				int shapeID = (int)e.GetComponent<Sprite>().sprite;
-				static const char* shape[]{"SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW"};
-				ImGui::Combo("Shape", &shapeID, shape, IM_ARRAYSIZE(shape));
-				e.GetComponent<Sprite>().sprite = (SPRITE)shapeID;
-				if ((SPRITE)shapeID != SPRITE::TEXTURE)
-				{
-					e.GetComponent<Sprite>().texture = 0;
-				}
-				ImGui::Text(tex.c_str());
-
-				static const wchar_t* texpath = (const wchar_t*)"";
-				if (ImGui::BeginDragDropTarget())
-				{
-					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
-					{
-						texpath = (const wchar_t*)payload->Data;
-						std::string tp = (std::string)((const char*)texpath);
-						e.GetComponent<Sprite>().sprite = SPRITE::TEXTURE;
-						spriteManager->SetTexture(e, tp);
-					}
-					ImGui::EndDragDropTarget();
-				}
-				ImGui::InputInt("Layer", &e.GetComponent<Sprite>().layer);
-				if (ImGui::Button("Remove Sprite"))
-					e.RemoveComponent<Sprite>();
-				}
-			}
-			if (e.HasComponent<Animation>())
-			{
-				if (ImGui::CollapsingHeader("Animation")) {
-				//ImGui::Text("Animation");
-				static GLuint addImage = {};
-				static std::string  texadd =  "Add image";
-				for (size_t i = 0; i <= e.GetComponent<Animation>().images.size(); ++i)
-				{
+					//ImGui::Text("Sprite");
+					tmpVec4[0] = e.GetComponent<Sprite>().color.r /255.f;
+					tmpVec4[1] = e.GetComponent<Sprite>().color.g / 255.f;
+					tmpVec4[2] = e.GetComponent<Sprite>().color.b / 255.f;
+					tmpVec4[3] = e.GetComponent<Sprite>().color.a / 255.f;
+					ImGui::ColorEdit4("Color", tmpVec4);
+					e.GetComponent<Sprite>().color.r = (GLubyte)(tmpVec4[0] * 255);
+					e.GetComponent<Sprite>().color.g = (GLubyte)(tmpVec4[1] * 255);
+					e.GetComponent<Sprite>().color.b = (GLubyte)(tmpVec4[2] * 255);
+					e.GetComponent<Sprite>().color.a = (GLubyte)(tmpVec4[3] * 255);
 					std::string tex{};
-					if (i != e.GetComponent<Animation>().images.size())
+					if(e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)
+						tex = spriteManager->GetTexturePath(spriteManager->GetTexture(e));
+					else if (e.GetComponent<Sprite>().sprite == SPRITE::CIRCLE)
+						tex = "CIRCLE";
+					else if (e.GetComponent<Sprite>().sprite == SPRITE::SQUARE)
+						tex = "SQUARE";
+				
+					int shapeID = (int)e.GetComponent<Sprite>().sprite;
+					static const char* shape[]{"SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW"};
+					ImGui::Combo("Shape", &shapeID, shape, IM_ARRAYSIZE(shape));
+					e.GetComponent<Sprite>().sprite = (SPRITE)shapeID;
+					if ((SPRITE)shapeID != SPRITE::TEXTURE)
 					{
-						tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().images[i]);
-						ImGui::Text(tex.c_str());
+						e.GetComponent<Sprite>().texture = 0;
 					}
-					else
-					{
-						ImGui::InputText("Addimage", const_cast<char*>(texadd.c_str()), texadd.size());
-						tex = texadd;
-					}
+					ImGui::Text(tex.c_str());
+
 					static const wchar_t* texpath = (const wchar_t*)"";
 					if (ImGui::BeginDragDropTarget())
 					{
 						if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
 						{
 							texpath = (const wchar_t*)payload->Data;
-							if (i == e.GetComponent<Animation>().images.size())
-								texadd= (char*)texpath;
-							std::string  tp = (std::string)((const char*)texpath);
-							if (i != e.GetComponent<Animation>().images.size())
-								e.GetComponent<Animation>().images[i] = spriteManager->GetTextureID(tp);
-							else
-								addImage = spriteManager->GetTextureID(tp);
+							std::string tp = (std::string)((const char*)texpath);
+							e.GetComponent<Sprite>().sprite = SPRITE::TEXTURE;
+							spriteManager->SetTexture(e, tp);
 						}
 						ImGui::EndDragDropTarget();
 					}
+					ImGui::InputInt("Layer", &e.GetComponent<Sprite>().layer);
+					if (ImGui::Button("Remove Sprite"))
+					{
+						e.RemoveComponent<Sprite>();
+						LOG_INFO("Sprite component removed");
+					}
 				}
-				if (ImGui::Button("Add Sprite"))
-				{
-					animator->AddImages(e, addImage);
-				}
-				ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage);
-				ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
-				ImGui::InputInt("currentImageIndex", &e.GetComponent<Animation>().currentImageIndex);
-				if (ImGui::Button("Remove Animation"))
-					e.RemoveComponent<Animation>();
+			}
+			if (e.HasComponent<Animation>())
+			{
+				if (ImGui::CollapsingHeader("Animation")) {
+					//ImGui::Text("Animation");
+					static GLuint addImage = {};
+					static std::string  texadd =  "Add image";
+					for (size_t i = 0; i <= e.GetComponent<Animation>().images.size(); ++i)
+					{
+						std::string tex{};
+						if (i != e.GetComponent<Animation>().images.size())
+						{
+							tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().images[i]);
+							ImGui::Text(tex.c_str());
+						}
+						else
+						{
+							ImGui::InputText("Addimage", const_cast<char*>(texadd.c_str()), texadd.size());
+							tex = texadd;
+						}
+						static const wchar_t* texpath = (const wchar_t*)"";
+						if (ImGui::BeginDragDropTarget())
+						{
+							if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+							{
+								texpath = (const wchar_t*)payload->Data;
+								if (i == e.GetComponent<Animation>().images.size())
+									texadd= (char*)texpath;
+								std::string  tp = (std::string)((const char*)texpath);
+								if (i != e.GetComponent<Animation>().images.size())
+									e.GetComponent<Animation>().images[i] = spriteManager->GetTextureID(tp);
+								else
+									addImage = spriteManager->GetTextureID(tp);
+							}
+							ImGui::EndDragDropTarget();
+						}
+					}
+					if (ImGui::Button("Add Sprite"))
+					{
+						animator->AddImages(e, addImage);
+					}
+					ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage);
+					ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
+					ImGui::InputInt("currentImageIndex", &e.GetComponent<Animation>().currentImageIndex);
+					if (ImGui::Button("Remove Animation"))
+					{
+						e.RemoveComponent<Animation>();
+						LOG_INFO("Animation component removed");
+					}
 				}
 			}
 			if (e.HasComponent<SheetAnimation>())
 			{
 				if (ImGui::CollapsingHeader("SheetAnimation")) {
-				//ImGui::Text("SheetAnimation");
-				ImGui::InputInt("frameCount", (int*)&e.GetComponent<SheetAnimation>().frameCount);
-				ImGui::InputInt("currFrameIndex", (int*)&e.GetComponent<SheetAnimation>().currFrameIndex);
-				ImGui::InputFloat("timePerFrame", &e.GetComponent<SheetAnimation>().timePerFrame);
-				ImGui::InputFloat("timeToFrameSwap", &e.GetComponent<SheetAnimation>().timeToFrameSwap);
-				if (ImGui::Button("Remove SheetAnimation"))
-					e.RemoveComponent<SheetAnimation>();
+					//ImGui::Text("SheetAnimation");
+					ImGui::InputInt("frameCount", (int*)&e.GetComponent<SheetAnimation>().frameCount);
+					ImGui::InputInt("currFrameIndex", (int*)&e.GetComponent<SheetAnimation>().currFrameIndex);
+					ImGui::InputFloat("timePerFrame", &e.GetComponent<SheetAnimation>().timePerFrame);
+					ImGui::InputFloat("timeToFrameSwap", &e.GetComponent<SheetAnimation>().timeToFrameSwap);
+					if (ImGui::Button("Remove SheetAnimation"))
+					{
+						e.RemoveComponent<SheetAnimation>();
+						LOG_INFO("SheetAnimation component removed");
+					}
 				}
 			}
 			if (e.HasComponent<RectCollider>())
 			{
 				if (ImGui::CollapsingHeader("RectCollider")) {
-				//ImGui::Text("RectCollider");
-				tmpVec2[0] = e.GetComponent<RectCollider>().centerOffset.x;
-				tmpVec2[1] = e.GetComponent<RectCollider>().centerOffset.y;
-				ImGui::InputFloat2("Box position Offset", tmpVec2);
-				e.GetComponent<RectCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1]};
+					//ImGui::Text("RectCollider");
+					tmpVec2[0] = e.GetComponent<RectCollider>().centerOffset.x;
+					tmpVec2[1] = e.GetComponent<RectCollider>().centerOffset.y;
+					ImGui::InputFloat2("Box position Offset", tmpVec2);
+					e.GetComponent<RectCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1]};
 
-				tmpVec2[0] = e.GetComponent<RectCollider>().scaleOffset.x;
-				tmpVec2[1] = e.GetComponent<RectCollider>().scaleOffset.y;
-				ImGui::InputFloat2("Box scale Offset", tmpVec2);
-				e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
+					tmpVec2[0] = e.GetComponent<RectCollider>().scaleOffset.x;
+					tmpVec2[1] = e.GetComponent<RectCollider>().scaleOffset.y;
+					ImGui::InputFloat2("Box scale Offset", tmpVec2);
+					e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
-				ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
-				if (ImGui::Button("Remove RectCollider"))
-					e.RemoveComponent<RectCollider>();
-			}
+					ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
+					if (ImGui::Button("Remove RectCollider"))
+					{
+						e.RemoveComponent<RectCollider>();
+						LOG_INFO("RectCollider component removed");
+					}
+				}
 			}
 			if (e.HasComponent<CircleCollider>())
 			{
 				if (ImGui::CollapsingHeader("CircleCollider")) {
-				//ImGui::Text("CircleCollider");
-				tmpVec2[0] = e.GetComponent<CircleCollider>().centerOffset.x;
-				tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
-				ImGui::InputFloat2("Circle position Offset", tmpVec2);
-				e.GetComponent<CircleCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+					//ImGui::Text("CircleCollider");
+					tmpVec2[0] = e.GetComponent<CircleCollider>().centerOffset.x;
+					tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
+					ImGui::InputFloat2("Circle position Offset", tmpVec2);
+					e.GetComponent<CircleCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 
-				float scale = e.GetComponent<CircleCollider>().scaleOffset;
-				ImGui::InputFloat("Circle scale Offset", &scale);
-				e.GetComponent<CircleCollider>().scaleOffset = { scale };
+					float scale = e.GetComponent<CircleCollider>().scaleOffset;
+					ImGui::InputFloat("Circle scale Offset", &scale);
+					e.GetComponent<CircleCollider>().scaleOffset = { scale };
 
-				ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
-				if (ImGui::Button("Remove CircleCollider"))
-					e.RemoveComponent<CircleCollider>();
-			}
+					ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
+					if (ImGui::Button("Remove CircleCollider"))
+					{
+						e.RemoveComponent<CircleCollider>();
+						LOG_INFO("CircleCollider component removed");
+					}
+				}
 			}
 			if (e.HasComponent<Edge2DCollider>())
 			{
 				if (ImGui::CollapsingHeader("Edge2DCollider")) {
-				//ImGui::Text("Edge2DCollider");
-				tmpVec2[0] = e.GetComponent<Edge2DCollider>().p0Offset.x;
-				tmpVec2[1] = e.GetComponent<Edge2DCollider>().p0Offset.y;
-				ImGui::InputFloat2("p0 Offset", tmpVec2);
-				e.GetComponent<Edge2DCollider>().p0Offset = { tmpVec2[0] ,tmpVec2[1] };
+					//ImGui::Text("Edge2DCollider");
+					tmpVec2[0] = e.GetComponent<Edge2DCollider>().p0Offset.x;
+					tmpVec2[1] = e.GetComponent<Edge2DCollider>().p0Offset.y;
+					ImGui::InputFloat2("p0 Offset", tmpVec2);
+					e.GetComponent<Edge2DCollider>().p0Offset = { tmpVec2[0] ,tmpVec2[1] };
 
-				ImGui::InputFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset);
-				ImGui::InputFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset);
-				ImGui::Checkbox("RenderFlag", &e.GetComponent<Edge2DCollider>().renderFlag);
-				if (ImGui::Button("Remove Edge2DCollider"))
-					e.RemoveComponent<Edge2DCollider>();
-			}
+					ImGui::InputFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset);
+					ImGui::InputFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset);
+					ImGui::Checkbox("RenderFlag", &e.GetComponent<Edge2DCollider>().renderFlag);
+					if (ImGui::Button("Remove Edge2DCollider"))
+					{
+						e.RemoveComponent<Edge2DCollider>();
+						LOG_INFO("Edge2DCollider component removed");
+					}
+				}
 			}
 			if (e.HasComponent<Point2DCollider>())
 			{
 				if (ImGui::CollapsingHeader("Point2DCollider")) {
-				//ImGui::Text("Point2DCollider");
-				tmpVec2[0] = e.GetComponent<Point2DCollider>().centerOffset.x;
-				tmpVec2[1] = e.GetComponent<Point2DCollider>().centerOffset.y;
-				ImGui::InputFloat2("centerOffset", tmpVec2);
-				e.GetComponent<Point2DCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+					//ImGui::Text("Point2DCollider");
+					tmpVec2[0] = e.GetComponent<Point2DCollider>().centerOffset.x;
+					tmpVec2[1] = e.GetComponent<Point2DCollider>().centerOffset.y;
+					ImGui::InputFloat2("centerOffset", tmpVec2);
+					e.GetComponent<Point2DCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 
-				ImGui::Checkbox("RenderFlag", &e.GetComponent<Point2DCollider>().renderFlag);
-				if (ImGui::Button("Remove Point2DCollider"))
-					e.RemoveComponent<Point2DCollider>();
-			}
+					ImGui::Checkbox("RenderFlag", &e.GetComponent<Point2DCollider>().renderFlag);
+					if (ImGui::Button("Remove Point2DCollider"))
+					{
+						e.RemoveComponent<Point2DCollider>();
+						LOG_INFO("Point2DCollider component removed");	
+					}
+				}
 			}
 			if (e.HasComponent<Physics2D>())
 			{
 				if (ImGui::CollapsingHeader("Physics2D")) {
-				//ImGui::Text("Physics2D");
-				ImGui::InputFloat("Mass", &e.GetComponent<Physics2D>().mass);
-				ImGui::InputFloat("Speed", &e.GetComponent<Physics2D>().speed);
-				ImGui::InputFloat("moveDirection", &e.GetComponent<Physics2D>().moveDirection);
-				ImGui::Checkbox("gravityEnabled", &e.GetComponent<Physics2D>().gravityEnabled);
-				ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
-				if (ImGui::Button("Remove Physics2D"))
-					e.RemoveComponent<Physics2D>();
+					//ImGui::Text("Physics2D");
+					ImGui::InputFloat("Mass", &e.GetComponent<Physics2D>().mass);
+					ImGui::InputFloat("Speed", &e.GetComponent<Physics2D>().speed);
+					ImGui::InputFloat("moveDirection", &e.GetComponent<Physics2D>().moveDirection);
+					ImGui::Checkbox("gravityEnabled", &e.GetComponent<Physics2D>().gravityEnabled);
+					ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
+					if (ImGui::Button("Remove Physics2D"))
+					{
+						e.RemoveComponent<Physics2D>();
+						LOG_INFO("Physics2D component removed");
+					}
 				}
 			}
 			if (e.HasComponent<Audio>())
 			{
 				if (ImGui::CollapsingHeader("Audio")) {
-				//ImGui::Text("Audio");
-				ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
-				ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
-				if (ImGui::Button("Remove Audio"))
-					e.RemoveComponent<Audio>();
-			}
+					//ImGui::Text("Audio");
+					ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
+					ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
+					if (ImGui::Button("Remove Audio"))
+					{
+						e.RemoveComponent<Audio>();
+						LOG_INFO("Audio component removed");
+					}
+				}
 			}
 			if (e.HasComponent<Stuff>())
 			{
 				if (ImGui::CollapsingHeader("AI")) {
-				static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
-				int colorChangeID = e.GetComponent<Stuff>().colorChange;
-				ImGui::Combo("Select Color Change", &colorChangeID, colorChange, IM_ARRAYSIZE(colorChange));
-				e.GetComponent<Stuff>().colorChange = colorChangeID;
+					static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
+					int colorChangeID = e.GetComponent<Stuff>().colorChange;
+					ImGui::Combo("Select Color Change", &colorChangeID, colorChange, IM_ARRAYSIZE(colorChange));
+					e.GetComponent<Stuff>().colorChange = colorChangeID;
 
-				static const char* movement[]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
-				int movementID = e.GetComponent<Stuff>().movement;
-				ImGui::Combo("Select Movement", &movementID, movement, IM_ARRAYSIZE(movement));
-				e.GetComponent<Stuff>().movement = movementID;
+					static const char* movement[]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
+					int movementID = e.GetComponent<Stuff>().movement;
+					ImGui::Combo("Select Movement", &movementID, movement, IM_ARRAYSIZE(movement));
+					e.GetComponent<Stuff>().movement = movementID;
 
-				if (e.GetComponent<Stuff>().movement)
-				{
-					float speed = e.GetComponent<Stuff>().speed;
-					ImGui::SliderFloat("Speed", &speed, 0.f, 15.f);
-					e.GetComponent<Stuff>().speed = speed;
-					if (e.GetComponent<Stuff>().movement < 4)
+					if (e.GetComponent<Stuff>().movement)
 					{
-						float range = e.GetComponent<Stuff>().range;
-						ImGui::SliderFloat("Range", &range, 0.f, 400.f);
-						e.GetComponent<Stuff>().range = range;
+						float speed = e.GetComponent<Stuff>().speed;
+						ImGui::SliderFloat("Speed", &speed, 0.f, 15.f);
+						e.GetComponent<Stuff>().speed = speed;
+						if (e.GetComponent<Stuff>().movement < 4)
+						{
+							float range = e.GetComponent<Stuff>().range;
+							ImGui::SliderFloat("Range", &range, 0.f, 400.f);
+							e.GetComponent<Stuff>().range = range;
+						}
 					}
-				}
-				if (ImGui::Button("Remove AI"))
-					e.RemoveComponent<Stuff>();
+					if (ImGui::Button("Remove AI"))
+					{
+						e.RemoveComponent<Stuff>();
+						LOG_INFO("AI component removed");
+					}
 				}
 			}
 
@@ -750,12 +788,15 @@ void LevelEditor::EntityManager()
 					e.AddComponent<Audio>({});
 				else if (componentsID == 11)
 					e.AddComponent<Stuff>({});
+				std::string add(components[componentsID]);
+				LOG_INFO(add+"conponent added");
 			}
 			if (ImGui::BeginPopupContextWindow(0, 1, false))
 			{
 				if (ImGui::MenuItem("Delete Entity"))
 				{
 					e.Destroy();
+					LOG_INFO("Entity deleated");
 					selectedEntity = nullptr;
 					//selectedEntityID = 99;
 				}
@@ -835,6 +876,8 @@ void  LevelEditor::AssetManager()
 			ImGui::Text(filename.c_str());
 			ImGui::NextColumn();
 		}
+		ImGui::Columns(1);
+		ImGui::Text("   ");
 		ImGui::EndTabItem();
 	}
 	ImGui::EndTabBar();
@@ -855,19 +898,6 @@ void LevelEditor::ViewPortManager()
 	//bool open_ptr = true;
 	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
 	ImGui::Begin("View Port Manager");
-	ImGui::SameLine(300.f, 0.f);
-	if (ImGui::Button("Reset", { 100,25 }))
-		serializationManager->LoadScene("SceneTmp");
-	ImGui::SameLine(0.f,20.f);
-	if (ImGui::Button("Play", { 100,25 }))
-	{
-		serializationManager->SaveScene("SceneTmp");
-		isPaused = false;
-	}
-	ImGui::SameLine(0.f, 20.f);
-	if(ImGui::Button("Pause", { 100,25 }))
-		isPaused = true;
-	GLuint frameBuffer = renderManager->GetFBO();
 	ImVec2 viewportSize = ImGui::GetWindowSize();
 	viewportSize.y -=70;
 	//Calcualting the aspect ratio 
@@ -879,7 +909,21 @@ void LevelEditor::ViewPortManager()
 	{
 		viewportSize.y = viewportSize.x / 16 * 9;
 	}
-	Math::Vec2 pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
+	Math::Vec2 pos = { (ImGui::GetWindowWidth()/2.f) -110.f, 30.f };
+	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	//if (ImGui::Button("Reset", { 100,25 }))
+		//serializationManager->LoadScene("SceneTmp");
+	//ImGui::SameLine(0.f,20.f);
+	if (ImGui::Button("Play", { 100,25 }))
+	{
+		//serializationManager->SaveScene("SceneTmp");
+		isPaused = false;
+	}
+	ImGui::SameLine(0.f, 20.f);
+	if(ImGui::Button("Pause", { 100,25 }))
+		isPaused = true;
+	GLuint frameBuffer = renderManager->GetFBO();
+	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x,pos.y));
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
 	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
