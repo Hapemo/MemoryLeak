@@ -51,7 +51,7 @@ void SerializationManager::LoadScene(std::string _filename)
 		return;
 	}
 	else
-		LOG_ERROR("Opening Scene: " + path);
+		LOG_INFO("Opening Scene: " + path);
 	ECS::DestroyAllEntities();
 	std::stringstream contents;
 	contents << ifs.rdbuf();
@@ -90,15 +90,9 @@ void SerializationManager::LoadScene(std::string _filename)
 		}
 		if (entity.HasMember("Transform"))
 		{
-			Math::Vec2 s, t;
-			float r;
-			s = GetVec2(entity["Transform"]["scale"]);
-			r = (float)entity["Transform"]["rotation"].GetFloat();
-			t = GetVec2(entity["Transform"]["translation"]);
-			/*s.x = entity["Transform"]["scale"]["X"].GetFloat();
-			s.y = entity["Transform"]["scale"]["Y"].GetFloat();
-			t.x = entity["Transform"]["translation"]["X"].GetFloat();
-			t.y = entity["Transform"]["translation"]["Y"].GetFloat();*/
+			Math::Vec2 s = GetVec2(entity["Transform"]["scale"]);
+			float r = (float)entity["Transform"]["rotation"].GetFloat();
+			Math::Vec2 t = GetVec2(entity["Transform"]["translation"]);
 		
 			e.AddComponent<Transform>({ s, r, t }); 
 		}
@@ -459,7 +453,7 @@ void SerializationManager::SaveScene(std::string _filename)
 		LOG_ERROR("Unable to save scene to: " + path);
 	}
 	else
-		LOG_ERROR("Saved Scene: " + path);
+		LOG_INFO("Saved Scene: " + path);
 }
 
 /*!*****************************************************************************
