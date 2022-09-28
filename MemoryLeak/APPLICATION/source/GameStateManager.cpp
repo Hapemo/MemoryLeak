@@ -101,9 +101,9 @@ void GameStateManager::Exit() {
 
 void GameStateManager::GSControlPanel() {
 	if (Application::GetEditorMode()) return;
-	if (Input::CheckKey(PRESS, _1) && Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState1);
-	else if (Input::CheckKey(PRESS, _2) && Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
-	else if (Input::CheckKey(PRESS, _3) && Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState3);
-	else if (Input::CheckKey(PRESS, _4) && Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ParallaxSprite);
-	else if (Input::CheckKey(PRESS, _0) && Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::START);
+	if (Input::CheckKey(PRESS, _1) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState1);
+	else if (Input::CheckKey(PRESS, _2) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
+	else if (Input::CheckKey(PRESS, _3) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState3);
+	else if (Input::CheckKey(PRESS, _4) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ParallaxSprite);
+	else if (Input::CheckKey(PRESS, _0) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::START);
 }

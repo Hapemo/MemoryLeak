@@ -29,7 +29,10 @@ const ComponentType MAX_COMPONENTS{ 32 };
 using Signature = std::bitset<MAX_COMPONENTS>;
 
 
-
+/*!*****************************************************************************
+\brief
+Entity is a part of the ECS, representing each game object
+*******************************************************************************/
 struct Entity {
 	// Some of the member functions are defined in ECS_managers.cpp because
 	// they require functions declared in ECS_managers.h

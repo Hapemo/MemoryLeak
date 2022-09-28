@@ -27,9 +27,9 @@ bool Application::editorMode = false;
 
 void Application::startup() {
   loadConfig("../config.txt");
-  glfwStartUp();
-  Input::init(ptr_window);
-  glewStartUp();
+  GLFWStartUp();
+  Input::Init(ptr_window);
+  GlewStartUp();
   GameStateManager::GetInstance()->Init();
   ECSManager::ECS_init();
 }
@@ -74,7 +74,7 @@ void Application::SecondUpdate() {
   }
   END_TRACK("Editor");
 
-  if (Input::CheckKey(STATE::RELEASE, KEY::E)&& Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL))
+  if (Input::CheckKey(E_STATE::RELEASE, E_KEY::E)&& Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL))
   {
       editorMode = !editorMode;
       if (editorMode)
@@ -89,7 +89,7 @@ void Application::SecondUpdate() {
 
   }
   // Reset input
-  Input::updatePrevKeyStates();
+  Input::UpdatePrevKeyStates();
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 
@@ -149,7 +149,7 @@ void Application::PrintTitleBar(double _s) {
   }
 }
 
-void Application::glfwStartUp() {
+void Application::GLFWStartUp() {
   // Part 1
   ASSERT(!glfwInit(), "GLFW init has failed - abort program!!!\n");
   
@@ -185,7 +185,7 @@ void Application::glfwStartUp() {
   glfwSwapInterval(0);
 }
 
-void Application::glewStartUp() {
+void Application::GlewStartUp() {
   // Part 2: Initialize entry points to OpenGL functions and extensions
   GLenum err = glewInit();
 

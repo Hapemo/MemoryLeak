@@ -48,6 +48,11 @@ extern std::shared_ptr<SerializationManager> serializationManager;
 extern std::shared_ptr<DialogManager> dialogManager;
 extern std::shared_ptr<AIManager> aiManager;
 
+/*!*****************************************************************************
+\brief
+ECSManager encapsulates the functions to register all managers and components 
+in ECS
+*******************************************************************************/
 class ECSManager {
 private:
 

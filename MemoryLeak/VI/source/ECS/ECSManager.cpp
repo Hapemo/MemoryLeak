@@ -189,7 +189,7 @@ void ECSManager::RegisterAllComponents() {
 	// More to come
 }
 
-void ECSManager::ECS_init() {
+void ECSManager::ECS_Init() {
 	RegisterAllComponents();
 	RegisterAllSystems();
 }
