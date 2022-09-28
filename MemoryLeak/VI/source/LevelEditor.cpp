@@ -493,11 +493,11 @@ void LevelEditor::EntityManager()
 					ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 					tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 					transformManager->SetRotation(e, tmpFloat);
-					if (ImGui::Button("Remove Transform"))
+					/*if (ImGui::Button("Remove Transform"))
 					{
 						e.RemoveComponent<Transform>();
 						LOG_INFO("Transform component removed");
-					}
+					}*/
 				}
 				
 			}
@@ -718,6 +718,8 @@ void LevelEditor::EntityManager()
 					//ImGui::Text("Audio");
 					ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
 					ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
+					ImGui::Checkbox("Click to Play", &e.GetComponent<Audio>().sound.toPlay);
+					//ImGui::Checkbox("isLoop", &e.GetComponent<Audio>().sound.isLoop);
 					if (ImGui::Button("Remove Audio"))
 					{
 						e.RemoveComponent<Audio>();
@@ -970,9 +972,18 @@ void LevelEditor::ViewPortManager()
 					e.GetComponent<Transform>().scale = scale;
 				}
 				else if (SRT == 2)
-				{
+				{///Work in progres
 					Math::Vec2 scale = { translate[0] , translate[1]};
+					//LOG_INFO("           ");
+					//LOG_INFO(std::to_string(scale.x * *mWindowWidth));
+					//LOG_INFO(std::to_string(scale.y * *mWindowWidth));
+					//LOG_INFO(std::to_string (translate[2] * *mWindowWidth));
 					float rotation=(float)(acosf(scale.x/scale.Magnitude()));
+					if (scale.y < 0.f)
+					{
+						rotation = -rotation;
+					}
+					//LOG_INFO(std::to_string(rotation));
 					/*float theta1 = atan2(translate[6], translate[10]);
 					float c2 = scale.Magnitude();
 					float theta2 = atan2(-translate[2], c2);
