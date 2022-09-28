@@ -15,14 +15,19 @@ Entities and its Components.
 
 #define _USE_MATH_DEFINES
 #include <math.h>
-
+/*!*****************************************************************************
+DEFINES
+*******************************************************************************/
 #define mapWidth 50
 #define mapHeight 40
 #define maxSizeX 5
 #define maxSizeY 5
 #define maxDirection 8
 #define maxlocation 3
-
+/*!*****************************************************************************
+\brief
+	This class encapsulates the functions for AI manager
+*******************************************************************************/
 class AIManager : public System
 {
 public:

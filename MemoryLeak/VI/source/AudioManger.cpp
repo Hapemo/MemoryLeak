@@ -75,7 +75,6 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
     system->createSound("..\\resources\\Audio\\MENUBG.wav", FMOD_DEFAULT, nullptr, &snd);
     mBgmSound["MENUBG.wav"] = snd;
 
-    //delete snd;
     //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
 }
 /*!*****************************************************************************

@@ -5,7 +5,10 @@ enum class E_CHANNEL
 	SFX,
 	LAST
 };
-
+/*!*****************************************************************************
+\brief
+	This struct contains the data for a single Sound
+*******************************************************************************/
 struct Sound
 {
 	std::string path;

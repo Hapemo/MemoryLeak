@@ -183,20 +183,29 @@ struct PlayerTmp {
 	int HP = 1;
 };
 
-
+/*!*****************************************************************************
+\brief
+	This temporary struct contains the data for AI component
+*******************************************************************************/
 struct Stuff {
 	int	colorChange =0;
 	int	movement = 0;
 	float	speed = 1.f;
 	float range = 10.f;
 };
-
+/*!*****************************************************************************
+\brief
+	This struct contains the data for Audio component
+*******************************************************************************/
 struct Audio {
 	//std::vector<Sound> sound;
 	Sound sound;
 	bool isSpacial = false;
 };
-
+/*!*****************************************************************************
+\brief
+	This struct contains the data for Text component
+*******************************************************************************/
 struct Text {
 	std::string text;
 	int textID;
