@@ -17,9 +17,11 @@
 // -----------------------------
 #include "ECS_systems.h"
 
-// ----------------------------------------
-// CollisionStore struct
-// ----------------------------------------
+/*!*****************************************************************************
+\brief CollisionStore struct that stores collision information regarding an 
+	   entity pair. This includes the type of collision detected and the
+	   intersection time
+*******************************************************************************/
 struct CollisionStore {
 	int collisionType;	// Type of collision detected
 
@@ -30,9 +32,10 @@ struct CollisionStore {
 	double interTime;	// Intersection time
 };
 
-// ----------------------------------------
-// Collision Detection / Resolution System
-// ----------------------------------------
+/*!*****************************************************************************
+\brief Collision2DManager system class that handles the collision store to detect
+	   and resolve collisions
+*******************************************************************************/
 class Collision2DManager : public System {
 public:
 // -----------------------------
