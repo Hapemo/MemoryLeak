@@ -15,9 +15,10 @@
 // -----------------------------
 #include "ECS_systems.h"
 
-// -----------------------------
-// Physics System
-// -----------------------------
+/*!*****************************************************************************
+\brief Physics system class that handles the updating of object's positions
+	   through the use of forces and fixed dt updates
+*******************************************************************************/
 class Physics2DManager : public System {
 public:
 // -----------------------------
