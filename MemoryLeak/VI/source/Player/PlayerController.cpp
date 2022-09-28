@@ -19,21 +19,23 @@
 // -----------------------------
 // Constant values
 // -----------------------------
-const double playerRotationSpeed{ 40.0 / 180.0 * Math::PI },	// Rotation speed in radians
-			 playerSpeedChange{ 80.0 },							// Speed change
-			 playerSpeedNaturalLossScalar{ 0.98 };				// Speed decceleration scalar
+const double playerRotationSpeed{ 40.0 / 180.0 * Math::PI },	// Player rotation speed in radians
+			 playerSpeedChange{ 20.0 },							// Player speed change
+			 playerSpeedNaturalLossScalar{ 0.98 },				// Player speed decceleration scalar
+		     playerSpeedCap {100.f};							// Player speed cap
 
 /*!*****************************************************************************
 \brief
 Update function that checks for keyboard input to modify physics components values
 to move player entities
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
+
+\param void
+NULL
+
 \return void
 NULL
 *******************************************************************************/
-void PlayerController::Update(double _dt) {
+void PlayerController::Update() {
 	// Loop through entity container
 	for (const Entity& e : mEntities) {
 	// -----------------------------
@@ -52,24 +54,28 @@ void PlayerController::Update(double _dt) {
 		//	e.GetComponent<Physics2D>().speed -= static_cast<float>(playerSpeedChange * _dt);
 
 	// -----------------------------
-	// Movement input first draft (key movement)
+	// Movement input second draft (key movement)
 	// -----------------------------
 		if (Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W)) {
 			e.GetComponent<Physics2D>().moveDirection = static_cast<float>(Math::PI / 2.0);
-			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange * _dt);
+			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
 		if (Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) {
 			e.GetComponent<Physics2D>().moveDirection = static_cast<float>(-Math::PI / 2.0);
-			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange * _dt);
+			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
 		if (Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) {
 			e.GetComponent<Physics2D>().moveDirection = static_cast<float>(Math::PI);
-			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange * _dt);
+			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
 		if (Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D)) {
 			e.GetComponent<Physics2D>().moveDirection = 0.f;
-			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange * _dt);
+			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
+
+		// Cap player speed
+		if (e.GetComponent<Physics2D>().speed > playerSpeedCap)
+			e.GetComponent<Physics2D>().speed = playerSpeedCap;
 
 		// No movement input, scale down the speed to slow it down
 		e.GetComponent<Physics2D>().speed *= static_cast<float>(playerSpeedNaturalLossScalar);

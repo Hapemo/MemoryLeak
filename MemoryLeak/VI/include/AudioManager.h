@@ -12,7 +12,10 @@ This file contains function declarations for a audio system
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
-
+/*!*****************************************************************************
+\brief
+	This class encapsulates the functions for Audio manager
+*******************************************************************************/
 class AudioManager : public System
 {
 public:

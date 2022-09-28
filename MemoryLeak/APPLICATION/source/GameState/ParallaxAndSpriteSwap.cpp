@@ -11,6 +11,7 @@ Game state for testing physics
 #include "ECSManager.h"
 #include "Application.h"
 #include "Input.h"
+#include "Logger.h"
 
 void ParallaxAndSpriteSwap::Load() {
     LOAD_TEXTURES("Background");
@@ -117,6 +118,11 @@ void ParallaxAndSpriteSwap::Init() {
 
 void ParallaxAndSpriteSwap::Update() {
     static bool isjump = false;
+    if (Input::CheckKey(STATE::PRESS, KEY::ENTER))
+        ASSERT(1 == 1, "1 is equal to 1!!!");
+    if (Input::CheckKey(STATE::PRESS, KEY::RIGHT_SHIFT))
+        THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "Right shift is pressed!!!");
+
     for (const Entity& e : mEntities)
     {
         if (e.GetComponent<Transform>().translation.x >= Application::getWindowWidth())

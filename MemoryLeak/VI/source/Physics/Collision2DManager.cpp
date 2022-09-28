@@ -730,8 +730,8 @@ bool Collision2DManager::ExistsInCollisionList(const Entity& e1, const Entity& e
 UpdateCollisionList function that clears and updates the system's stored container
 holding the entity pairs that need to be checked for collision
 
-\param const std::set<Entity> &
-A reference to a read-only container holding the list of entities to check against
+\param void
+NULL
 
 \return void
 NULL

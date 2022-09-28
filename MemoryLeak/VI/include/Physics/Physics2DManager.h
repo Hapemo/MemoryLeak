@@ -15,9 +15,10 @@
 // -----------------------------
 #include "ECS_systems.h"
 
-// -----------------------------
-// Physics System
-// -----------------------------
+/*!*****************************************************************************
+\brief Physics system class that handles the updating of object's positions
+	   through the use of forces and fixed dt updates
+*******************************************************************************/
 class Physics2DManager : public System {
 public:
 // -----------------------------
@@ -27,9 +28,6 @@ public:
 	\brief
 	Update function that simulates physics by stepping it in fixedDT when enough
 	time has passed
-
-	\param const std::set<Entity &
-	A reference to read-only container holding the current state's entity list
 
 	\param const double &
 	A reference to a read-only variable that tells us the application's current
@@ -44,8 +42,8 @@ public:
 	\brief
 	Step function that executes fixed delta time physics stepping
 
-	\param const std::set<Entity &
-	A reference to read-only container holding the current state's entity list
+	\param void
+	NULL
 
 	\return void
 	NULL
@@ -55,7 +53,7 @@ public:
 // -----------------------------
 // Component-related functions
 // -----------------------------
-		/*!*****************************************************************************
+	/*!*****************************************************************************
 	\brief
 	HasPhysicsComponent function that checks if the given entity has a physics
 	component. If yes, the function returns true. Otherwise it returns false.

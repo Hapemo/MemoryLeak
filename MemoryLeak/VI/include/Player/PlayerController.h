@@ -15,24 +15,26 @@
 // -----------------------------
 #include "ECSManager.h"
 
-// -----------------------------
-// Player Controller
-// -----------------------------
+/*!*****************************************************************************
+\brief PlayerController system class that handles movement input to move the
+	   position of the player entities
+*******************************************************************************/
 class PlayerController : public System {
 public:
-	// -----------------------------
-	// Controller functions
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		Update function that checks for keyboard input to modify physics components values
-		to move player entities
-		\param const double &
-		A reference to a read-only variable that tells us the application's current
-		delta time
-		\return void
-		NULL
-		*******************************************************************************/
-	void Update(double _dt);
+// -----------------------------
+// Controller functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	Update function that checks for keyboard input to modify physics components values
+	to move player entities
+
+	\param void
+	NULL
+
+	\return void
+	NULL
+	*******************************************************************************/
+	void Update();
 private:
 };

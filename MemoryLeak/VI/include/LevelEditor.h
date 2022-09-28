@@ -20,7 +20,10 @@ Entities and its Components.
 #include "ECS_components.h"
 #include "Graphics/TransformManager.h"
 
-
+/*!*****************************************************************************
+\brief
+	This class encapsulates the functions for the Level Editor
+*******************************************************************************/
 class LevelEditor : public System
 {
 public:
@@ -43,5 +46,6 @@ private:
 	int* mWindowHeight;
 	const Entity* selectedEntity;
 	bool isPaused;
+	int SRT;
 	
 };

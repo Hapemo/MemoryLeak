@@ -17,9 +17,11 @@
 // -----------------------------
 #include "ECS_systems.h"
 
-// ----------------------------------------
-// CollisionStore struct
-// ----------------------------------------
+/*!*****************************************************************************
+\brief CollisionStore struct that stores collision information regarding an 
+	   entity pair. This includes the type of collision detected and the
+	   intersection time
+*******************************************************************************/
 struct CollisionStore {
 	int collisionType;	// Type of collision detected
 
@@ -30,9 +32,10 @@ struct CollisionStore {
 	double interTime;	// Intersection time
 };
 
-// ----------------------------------------
-// Collision Detection / Resolution System
-// ----------------------------------------
+/*!*****************************************************************************
+\brief Collision2DManager system class that handles the collision store to detect
+	   and resolve collisions
+*******************************************************************************/
 class Collision2DManager : public System {
 public:
 // -----------------------------
@@ -44,9 +47,6 @@ public:
 	through it and calls function to check for collision between the entity pair.
 	If collision is detected, the function then calls another function to resolve
 	collision
-
-	\param const std::set<Entity> &
-	A reference to a read-only container holding the list of entities to check against
 
 	\param const double &
 	A reference to a read-only variable that tells us the application's current
@@ -80,9 +80,6 @@ public:
 	\brief
 	UpdateCollisionList function that clears and updates the system's stored container
 	holding the entity pairs that need to be checked for collision
-
-	\param const std::set<Entity> &
-	A reference to a read-only container holding the list of entities to check against
 
 	\return void
 	NULL

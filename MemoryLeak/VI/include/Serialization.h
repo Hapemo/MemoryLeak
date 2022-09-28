@@ -18,6 +18,11 @@ Entities and its Components.
 #include "writer.h"
 #include <istreamwrapper.h>
 #include "stringbuffer.h"
+
+/*!*****************************************************************************
+\brief
+	This class encapsulates the functions for Serialization manager
+*******************************************************************************/
 class SerializationManager : public System
 {
 public:

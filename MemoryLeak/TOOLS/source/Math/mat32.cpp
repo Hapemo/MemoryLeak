@@ -1,3 +1,15 @@
+/*!*****************************************************************************
+\file mat32.cpp
+\author Jazz Teoh Yu Jue, Chen Jia Wen
+\par DP email: j.teoh\@digipen.edu, c.jiawen\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+This file contains the implementation of 3x2 matrix and it's operations.
+3x2 matrix is useful in 2D aspect because during the homogenenous transformation
+calculation of 2D space, the last row is not needed since it's always 0,0,1.
+Doing computation with it results in wasted processing speed and storage memory
+*******************************************************************************/
 #include "mat32.h"
 #include "mat3.h"
 #include <iomanip>
