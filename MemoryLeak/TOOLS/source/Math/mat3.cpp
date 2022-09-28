@@ -1,12 +1,16 @@
 /*!*****************************************************************************
-\file mat3.h
-\author Chen Jia Wen
-\par DP email: c.jiawen\@digipen.edu
-\par Course: GAM200
+\file mat3.cpp
+\author Jazz Teoh Yu Jue, Chen Jia Wen
+\par DP email: j.teoh\@digipen.edu, c.jiawen\@digipen.edu
 \par Group: Memory Leak Studios
-\date 26-09-2022
+\date 24-09-2022
 \brief
-This file contains the implementations of the 3x3 matrix and it's operations.
+This file contains the implementation of 3x3 matrix and it's operations.
+The matrix is structured with row major method as such,
+x1, x2, x3
+y1, y2, y3
+z1, z2, z3
+
 *******************************************************************************/
 
 #include <iomanip>
