@@ -101,11 +101,6 @@ void LevelEditor::Update()
 			{
 				ECS::DestroyAllEntities();
 				selectedEntity = nullptr;
-				/*for (const Entity& e : mEntities)
-				{
-					e.Destroy();
-				}*/
-
 			}
 			ImGui::Separator();
 			if (ImGui::MenuItem("Load Dialogs"))
@@ -381,11 +376,10 @@ void  LevelEditor::SceneManager()
 						//LogInfo("Created new entity");
 						Entity e{ ECS::CreateEntity() };
 						mEntities.insert(e);
-						e.AddComponent(Lifespan{ 0, 2000 },
+						e.AddComponent(
 							General{ "_NEW_", TAG::OTHERS, SUBTAG::NOSUBTAG, true },
-							Transform{ {150,150}, 0, {(float)std::rand() / (float)RAND_MAX * 600,(float)std::rand() / (float)RAND_MAX * 400} },
-							Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
-							RectCollider{ Math::Vec2{0,0}, Math::Vec2{1,1}, true });
+							Transform{ {150,150}, 0, {0.f,0.f} },
+							Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 });
 					}
 					ImGui::EndPopup();
 				}
@@ -403,11 +397,10 @@ void  LevelEditor::SceneManager()
 			//LogInfo("Created new entity");
 			Entity e{ ECS::CreateEntity() };
 			mEntities.insert(e);
-			e.AddComponent(Lifespan{ 0, 2000 },
+			e.AddComponent(
 				General{"_NEW_", TAG::OTHERS, SUBTAG::NOSUBTAG, true},
-				Transform{ {150,150}, 0, {(float)std::rand() / (float)RAND_MAX * 600,(float)std::rand() / (float)RAND_MAX * 400} },
-				Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
-				RectCollider{ Math::Vec2{0,0}, Math::Vec2{1,1}, true });
+				Transform{ {150,150}, 0, {0.f,0.f} },
+				Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 });
 		}
 	}
 	ImGui::EndTabBar();
@@ -458,7 +451,7 @@ void LevelEditor::EntityManager()
 				if (ImGui::CollapsingHeader("Lifespan")) {
 					//ImGui::Text("Lifespan");
 					ImGui::InputFloat("Lifespan", &e.GetComponent<Lifespan>().limit);
-					if (ImGui::Button("Remove Component"))
+					if (ImGui::Button("Remove Lifespan"))
 						e.RemoveComponent<Lifespan>();
 				}
 			}
@@ -495,7 +488,7 @@ void LevelEditor::EntityManager()
 					ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 					tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 					transformManager->SetRotation(e, tmpFloat);
-					if (ImGui::Button("Remove Component"))
+					if (ImGui::Button("Remove Transform"))
 						e.RemoveComponent<Transform>();
 				}
 				
@@ -544,7 +537,7 @@ void LevelEditor::EntityManager()
 					ImGui::EndDragDropTarget();
 				}
 				ImGui::InputInt("Layer", &e.GetComponent<Sprite>().layer);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove Sprite"))
 					e.RemoveComponent<Sprite>();
 				}
 			}
@@ -591,7 +584,7 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage);
 				ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
 				ImGui::InputInt("currentImageIndex", &e.GetComponent<Animation>().currentImageIndex);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove Animation"))
 					e.RemoveComponent<Animation>();
 				}
 			}
@@ -603,7 +596,7 @@ void LevelEditor::EntityManager()
 				ImGui::InputInt("currFrameIndex", (int*)&e.GetComponent<SheetAnimation>().currFrameIndex);
 				ImGui::InputFloat("timePerFrame", &e.GetComponent<SheetAnimation>().timePerFrame);
 				ImGui::InputFloat("timeToFrameSwap", &e.GetComponent<SheetAnimation>().timeToFrameSwap);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove SheetAnimation"))
 					e.RemoveComponent<SheetAnimation>();
 				}
 			}
@@ -622,7 +615,7 @@ void LevelEditor::EntityManager()
 				e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 				ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove RectCollider"))
 					e.RemoveComponent<RectCollider>();
 			}
 			}
@@ -640,7 +633,7 @@ void LevelEditor::EntityManager()
 				e.GetComponent<CircleCollider>().scaleOffset = { scale };
 
 				ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove CircleCollider"))
 					e.RemoveComponent<CircleCollider>();
 			}
 			}
@@ -656,7 +649,7 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset);
 				ImGui::InputFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset);
 				ImGui::Checkbox("RenderFlag", &e.GetComponent<Edge2DCollider>().renderFlag);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove Edge2DCollider"))
 					e.RemoveComponent<Edge2DCollider>();
 			}
 			}
@@ -670,7 +663,7 @@ void LevelEditor::EntityManager()
 				e.GetComponent<Point2DCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 				ImGui::Checkbox("RenderFlag", &e.GetComponent<Point2DCollider>().renderFlag);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove Point2DCollider"))
 					e.RemoveComponent<Point2DCollider>();
 			}
 			}
@@ -683,7 +676,7 @@ void LevelEditor::EntityManager()
 				ImGui::InputFloat("moveDirection", &e.GetComponent<Physics2D>().moveDirection);
 				ImGui::Checkbox("gravityEnabled", &e.GetComponent<Physics2D>().gravityEnabled);
 				ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove Physics2D"))
 					e.RemoveComponent<Physics2D>();
 				}
 			}
@@ -693,14 +686,13 @@ void LevelEditor::EntityManager()
 				//ImGui::Text("Audio");
 				ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
 				ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove Audio"))
 					e.RemoveComponent<Audio>();
 			}
 			}
 			if (e.HasComponent<Stuff>())
 			{
 				if (ImGui::CollapsingHeader("AI")) {
-				ImGui::Text("Stuff");
 				static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
 				int colorChangeID = e.GetComponent<Stuff>().colorChange;
 				ImGui::Combo("Select Color Change", &colorChangeID, colorChange, IM_ARRAYSIZE(colorChange));
@@ -723,7 +715,7 @@ void LevelEditor::EntityManager()
 						e.GetComponent<Stuff>().range = range;
 					}
 				}
-				if (ImGui::Button("Remove Component"))
+				if (ImGui::Button("Remove AI"))
 					e.RemoveComponent<Stuff>();
 				}
 			}
@@ -739,7 +731,7 @@ void LevelEditor::EntityManager()
 				else if (componentsID == 1)
 					e.AddComponent<Lifespan>({0,1000});
 				else if (componentsID == 2)
-					e.AddComponent<Transform>({ {200,100}, 0, {0,0} });
+					e.AddComponent<Transform>({ {100,100}, 0, {0,0} });
 				else if (componentsID == 3)
 					e.AddComponent<Sprite>({});
 				else if (componentsID == 4)
