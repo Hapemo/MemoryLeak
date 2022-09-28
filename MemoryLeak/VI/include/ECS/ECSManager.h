@@ -28,6 +28,7 @@ components.
 #include "AudioManager.h"
 #include "Serialization.h"
 #include "DialogManager.h"
+#include "AI.h"
 
 //-------------------------------------------------------------------
 // System pointers with declaration from ECSManager.cpp
@@ -45,6 +46,7 @@ extern std::shared_ptr<LevelEditor> levelEditor;
 extern std::shared_ptr<AudioManager> audioManager;
 extern std::shared_ptr<SerializationManager> serializationManager;
 extern std::shared_ptr<DialogManager> dialogManager;
+extern std::shared_ptr<AIManager> aiManager;
 
 class ECSManager {
 private:
@@ -67,6 +69,7 @@ private:
 	static void RegisterAudioManager();
 	static void RegisterSerializationManager();
 	static void RegisterDialogManager();
+	static void RegisterAIManager();
 	
 	// More to come
 

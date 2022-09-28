@@ -40,8 +40,6 @@ void real_main() {
     std::signal(SIGILL, HandleSignal);
     std::signal(SIGFPE, HandleSignal);
 
-    Util::MemoryLeak();
-
     // Part 1
     Application::init();
 
@@ -115,11 +113,9 @@ int main() {
         THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "File for vertex shader not found!");
         */
 
-        real_main();
+        Util::EnableMemoryLeakChecking(); 
 
-        #if defined(DEBUG) | defined(_DEBUG)
-            _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-        #endif
+        real_main();
     }
     catch (const std::exception& e) {
         std::string exc = e.what();

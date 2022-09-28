@@ -1,7 +1,7 @@
 /*!*****************************************************************************
 \file vec2.h
-\author Jazz Teoh Yu Jue
-\par DP email: j.teoh\@digipen.edu
+\author Jazz Teoh Yu Jue, Chen Jia Wen
+\par DP email: j.teoh\@digipen.edu, c.jiawen\@digipen.edu
 \par Group: Memory Leak Studios
 \date 24-09-2022
 \brief

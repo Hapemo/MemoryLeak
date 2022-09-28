@@ -195,9 +195,50 @@ void RenderManager::Render()
 	mDebugIndices.clear();
 }
 
+/*!*****************************************************************************
+\brief
+Clears the background. Mainly used for switching states.
+*******************************************************************************/
 void RenderManager::Clear()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+/*!*****************************************************************************
+\brief
+Function that returns the transform of an Entity for use with ImGuizmo
+
+\param const Entity& _e
+Entity to get the Transformation matrix of.
+
+\return std::vector<float>
+Transformation matrix of the Entity.
+*******************************************************************************/
+std::vector<float> RenderManager::GetImGuizmoMat4(const Entity& _e)
+{
+	Math::Mat3 temp = GetTransform(_e);
+	std::vector<float> ret; 
+	ret.reserve(16);
+
+	for (int i = 0; i < 2; ++i)
+		for (int j = 0; j < 2; ++j)
+		{
+			ret.push_back(temp[(short)i][j]);
+			if (j == 1)
+			{
+				ret.push_back(0);
+				ret.push_back(0);
+			}
+		}
+	ret.push_back(0);
+	ret.push_back(0);
+	ret.push_back(1);
+	ret.push_back(0);
+	ret.push_back(temp[2][0]);
+	ret.push_back(temp[2][1]);
+	ret.push_back(0);
+	ret.push_back(1);
+	return ret;
 }
 
 /*!*****************************************************************************
@@ -283,9 +324,11 @@ void RenderManager::RenderDebug()
 		}
 	}
 
-	//batch render all of them
+	/***************************************DEBUG BATCHING START*************************************/
 	BatchRenderArrays(GL_POINTS, mDebugPoints);
 	BatchRenderElements(GL_LINES, mDebugVertices, mDebugIndices);
+	/***************************************DEBUG BATCHING END***************************************/
+
 }
 
 /*!*****************************************************************************
