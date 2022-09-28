@@ -3,6 +3,6 @@ Welcome to Memory Leak, our game is about a ferryman sending wandering souls to 
 
 Below are each components of our system and how it works, check them out!
 
-[Entity Component System](Documentations/entity_component_system.md)
+[Entity Component System](MemoryLeak/Documentations/entity_component_system.md)
 
 
