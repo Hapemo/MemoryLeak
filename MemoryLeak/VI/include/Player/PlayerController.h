@@ -28,9 +28,10 @@ public:
 	\brief
 	Update function that checks for keyboard input to modify physics components values
 	to move player entities
-	\param const double &
-	A reference to a read-only variable that tells us the application's current
-	delta time
+
+	\param void
+	NULL
+
 	\return void
 	NULL
 	*******************************************************************************/

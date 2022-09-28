@@ -28,9 +28,10 @@ const double playerRotationSpeed{ 40.0 / 180.0 * Math::PI },	// Player rotation 
 \brief
 Update function that checks for keyboard input to modify physics components values
 to move player entities
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
+
+\param void
+NULL
+
 \return void
 NULL
 *******************************************************************************/
@@ -53,7 +54,7 @@ void PlayerController::Update() {
 		//	e.GetComponent<Physics2D>().speed -= static_cast<float>(playerSpeedChange * _dt);
 
 	// -----------------------------
-	// Movement input first draft (key movement)
+	// Movement input second draft (key movement)
 	// -----------------------------
 		if (Input::CheckKey(STATE::PRESS, KEY::W) || Input::CheckKey(STATE::HOLD, KEY::W)) {
 			e.GetComponent<Physics2D>().moveDirection = static_cast<float>(Math::PI / 2.0);
