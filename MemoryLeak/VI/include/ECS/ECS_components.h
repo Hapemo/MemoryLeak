@@ -85,43 +85,102 @@ struct SheetAnimation
 	float timeToFrameSwap = 0.f;
 };
 
+/*!*****************************************************************************
+\brief 
+This component encapsulates information regarding dynamic movement of an entity.
+The gravityEnabled variable tells the physics manager if the entity should be
+ affected by gravity
+The mass variable contains how heavy the object is
+The speed variable contains how fast the object moves
+The moveDirection variable contains the direction the object is moving in terms
+ of radian rotations
+The forces variable contains the net force acting on the object at frametime
+The velocity variable contains the current velocity of the object at frametime
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the velocity vector
+*******************************************************************************/
 struct Physics2D {
 	bool gravityEnabled = false;
-	float mass,
-		  speed,
-		  moveDirection;
-	Math::Vec2 forces,
-			   velocity;
+	float mass = 1.f,
+		  speed = 0.f,
+		  moveDirection = 0.f;
+	Math::Vec2 forces = { 0.f, 0.f },
+			   velocity = { 0.f, 0.f };
 	bool renderFlag = false;
 };
 
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a rectangular collider for
+collision detection
+The centerOffset variable contains the offset from the entity's transform's 
+ translation
+The scaleOffset variable contains the offset from the entity's transform's scale
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the collider
+*******************************************************************************/
 struct RectCollider {
-	Math::Vec2 centerOffset,
-		scaleOffset = {1.f,1.f};
-	// float rotationOffset;
+	Math::Vec2 centerOffset = { 0.f, 0.f },
+			   scaleOffset = {1.f,1.f};
+	// float rotationOffset,
 	bool renderFlag = false;
 };
 
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a circular collider for
+collision detection
+The centerOffset variable contains the offset from the entity's transform's
+ translation
+The scaleOffset variable contains the offset from the entity's transform's scale
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the collider
+*******************************************************************************/
 struct CircleCollider {
-	Math::Vec2 centerOffset;
-	float scaleOffset =1.f;
+	Math::Vec2 centerOffset = { 0.f, 0.f };
+	float scaleOffset = 1.f;
 	bool renderFlag = false;
 };
 
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding an edge/line collider for
+collision detection
+The p0Offset variable contains the offset from the entity's first point's 
+ transform's translation
+The rotationOffset variable contains the offset from the entity's first point's 
+ transform's rotation
+The scaleOffset variable contains the offset from the entity's transform's scale
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the collider
+*******************************************************************************/
 struct Edge2DCollider {
-	Math::Vec2 p0Offset;
-	float rotationOffset,
-		  scaleOffset;
-	bool renderFlag;
+	Math::Vec2 p0Offset = { 0.f, 0.f };
+	float rotationOffset = 0.f,
+		  scaleOffset = 1.f;
+	bool renderFlag = false;
 };
 
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a point collider for
+collision detection
+The centerOffset variable contains the offset from the entity's transform's
+ translation
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the collider
+*******************************************************************************/
 struct Point2DCollider {
-	Math::Vec2 centerOffset;
-	bool renderFlag;
+	Math::Vec2 centerOffset = { 0.f, 0.f };
+	bool renderFlag = false;
 };
 
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding the player, such as health
+*******************************************************************************/
 struct PlayerTmp {
-	int HP;
+	int HP = 1;
 };
 
 
