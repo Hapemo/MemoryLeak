@@ -1,3 +1,14 @@
+/*!*****************************************************************************
+\file mat3.h
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 26-09-2022
+\brief
+This file contains the implementations of the 3x3 matrix and it's operations.
+*******************************************************************************/
+
 #include <iomanip>
 #include "mat3.h"
 #include "mat32.h"

@@ -57,3 +57,6 @@ MemoryLeak/bin/Release/x64/glew32.dll
 MemoryLeak/bin/Release/x64/glfw3.dll
 MemoryLeak/bin/Release/x64/TOOLS.lib
 MemoryLeak/bin/Debug/x64/VI.lib
+MemoryLeak/resources/Scene/SceneTemp.json
+MemoryLeak/resources/Scene/SceneTmp.json
+MemoryLeak/bin/Release/x64/TOOLS/TOOLS.lib

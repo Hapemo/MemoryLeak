@@ -1152,8 +1152,8 @@ void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData, const dou
 		       interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<RectCollider>().centerOffset + velObj2 * static_cast<float>(_collisionData.interTime) };
 
 	// Set the entities' position at the meeting point
-	//_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<CircleCollider>().centerOffset;
-	//_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<CircleCollider>().centerOffset;
+	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<RectCollider>().centerOffset;
+	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<RectCollider>().centerOffset;
 
 	// Stop their movement for now as a hack until bounce/slide can be figured out
 	_collisionData.obj1.GetComponent<Physics2D>().speed = 
@@ -1182,31 +1182,51 @@ void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData, const
 	// Compute and store objects' current velocity
 	Math::Vec2 velObj1{ _collisionData.obj1.HasComponent<Physics2D>() ? _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} },
 				velObj2{ _collisionData.obj2.HasComponent<Physics2D>() ? _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} };
-	double massObj1{ static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) },
-		   massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
-
+	double massObj1{ _collisionData.obj1.HasComponent<Physics2D>() ? static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) : 1.f },
+		   massObj2{ _collisionData.obj2.HasComponent<Physics2D>() ? static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) : 1.f };
 	// Compute and store objects' meeting point
-	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime)},
-			   interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
-
+	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime) },
+		interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
 	// Get normal to collision occurance
-	Math::Vec2 normal{ (interPtObj1 - interPtObj2).Normalized()};
-	double aA{ Math::Dot(velObj1, normal) },
-		   aB{ Math::Dot(velObj2, normal) };
+	Math::Vec2 normal{ (interPtObj1 - interPtObj2).Normalized() };
 
-	// Compute objects' reflected velocity after collision
-	Math::Vec2 reflectedVelObj1{ velObj1 - static_cast<float>( ( (2.0 * (aA - aB)) / (massObj1 + massObj2) * massObj2) ) * normal },
-		       reflectedVelObj2{ velObj2 + static_cast<float>( ( (2.0 * (aA - aB)) / (massObj1 + massObj2) * massObj1) ) * normal };
+	// Static response
+	if (velObj1 == Math::Vec2{ 0.f, 0.f } || velObj2 == Math::Vec2{ 0.f, 0.f }) {
+		Math::Vec2 penetratedVec{ interPtObj1 - interPtObj2 };
+		Math::Vec2 newVel = penetratedVec - 2 * (Math::Dot(penetratedVec, normal)) * normal;
+		if (velObj1 == Math::Vec2{ 0.f, 0.f }) {
+			/*_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + (penetratedVec - 2 * (Math::Dot(penetratedVec, normal)) * normal) * _dt;
+			Math::Vec2 newVel{ _collisionData.obj2.GetComponent<Transform>().translation - interPtObj2 };
+			_collisionData.obj2.GetComponent<Physics2D>().velocity = newVel;
+			_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(newVel.x) / static_cast<double>(newVel.Magnitude())));*/
 
-	// Store the reflected velocity as the new velocity
-	_collisionData.obj1.GetComponent<Physics2D>().velocity = reflectedVelObj1;
-	_collisionData.obj2.GetComponent<Physics2D>().velocity = reflectedVelObj2;
+			_collisionData.obj2.GetComponent<Physics2D>().velocity = newVel;
+			_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(newVel.x) / static_cast<double>(newVel.Magnitude())));
+		}
+		if (velObj2 == Math::Vec2{ 0.f, 0.f }) {
+			_collisionData.obj1.GetComponent<Physics2D>().velocity = newVel;
+			_collisionData.obj1.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(newVel.x) / static_cast<double>(newVel.Magnitude())));
+		}
+	}
+	// Dynamic Response
+	else {
+		double aA{ Math::Dot(velObj1, normal) },
+			   aB{ Math::Dot(velObj2, normal) };
 
-	// Compute objects' velocity direction after collision
-	_collisionData.obj1.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(reflectedVelObj1.x) / static_cast<double>(reflectedVelObj1.Magnitude())));
-	_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(reflectedVelObj2.x) / static_cast<double>(reflectedVelObj2.Magnitude())));
+		// Compute objects' reflected velocity after collision
+		Math::Vec2 reflectedVelObj1{ velObj1 - static_cast<float>(((2.0 * (aA - aB)) / (massObj1 + massObj2) * massObj2)) * normal },
+					reflectedVelObj2{ velObj2 + static_cast<float>(((2.0 * (aA - aB)) / (massObj1 + massObj2) * massObj1)) * normal };
 
-	// Compute objects' position the frame after the collision
-	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 + reflectedVelObj1 * static_cast<float>(_dt - _collisionData.interTime);
-	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + reflectedVelObj2 * static_cast<float>(_dt - _collisionData.interTime);
+		// Store the reflected velocity as the new velocity
+		_collisionData.obj1.GetComponent<Physics2D>().velocity = reflectedVelObj1;
+		_collisionData.obj2.GetComponent<Physics2D>().velocity = reflectedVelObj2;
+
+		// Compute objects' velocity direction after collision
+		_collisionData.obj1.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(reflectedVelObj1.x) / static_cast<double>(reflectedVelObj1.Magnitude())));
+		_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(reflectedVelObj2.x) / static_cast<double>(reflectedVelObj2.Magnitude())));
+
+		// Compute objects' position the frame after the collision
+		_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 + reflectedVelObj1 * static_cast<float>(_dt - _collisionData.interTime);
+		_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + reflectedVelObj2 * static_cast<float>(_dt - _collisionData.interTime);
+	}
 }
