@@ -12,7 +12,7 @@ operates on Entities with Sprite and Transform Components.
 #include "pch.h"
 
 //define number of triangles for circle
-constexpr int CIRCLE_SLICES = 12;
+constexpr int CIRCLE_SLICES = 18;
 //modifier for vector.reserve() 
 constexpr float MODIFIER = 0.05f;
 constexpr size_t NO_OF_OBJECTS = 10000;
