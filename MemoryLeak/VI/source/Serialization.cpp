@@ -12,6 +12,7 @@ This file contains function definations for a Serialization system that saves an
 #include <Serialization.h>
 #include <ECSManager.h>
 #include <vec2.h>
+#include <prettywriter.h>
 
 
 using namespace rapidjson;
@@ -311,7 +312,8 @@ void SerializationManager::SaveScene(std::string _filename)
 	scene.SetObject();
 	
 	StringBuffer buffer;
-	Writer<StringBuffer> writer(buffer);
+	//Writer<StringBuffer> writer(buffer);
+	PrettyWriter<StringBuffer> writer(buffer);
 	int counter = 0;
 	
 	for (const Entity& e : mEntities)
