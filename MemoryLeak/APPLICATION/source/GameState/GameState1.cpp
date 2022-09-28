@@ -26,7 +26,7 @@ void GameState1::Init() {
 }
 
 void GameState1::Update() {
-        playerManager->Update(FPSManager::dt);
+        playerManager->Update();
         TRACK_PERFORMANCE("Physics");
         physics2DManager->Update(FPSManager::dt);
         END_TRACK("Physics");
