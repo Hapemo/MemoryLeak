@@ -118,9 +118,9 @@ void ParallaxAndSpriteSwap::Init() {
 
 void ParallaxAndSpriteSwap::Update() {
     static bool isjump = false;
-    if (Input::CheckKey(STATE::PRESS, KEY::ENTER))
+    if (Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
         ASSERT(1 == 1, "1 is equal to 1!!!");
-    if (Input::CheckKey(STATE::PRESS, KEY::RIGHT_SHIFT))
+    if (Input::CheckKey(E_STATE::PRESS, E_KEY::RIGHT_SHIFT))
         THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "Right shift is pressed!!!");
 
     for (const Entity& e : mEntities)
