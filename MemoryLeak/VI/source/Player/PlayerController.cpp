@@ -71,7 +71,19 @@ void PlayerController::Update() {
 			e.GetComponent<Physics2D>().moveDirection = 0.f;
 			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
-
+		if (Input::CheckKey(STATE::PRESS, KEY::M_BUTTON_L) || Input::CheckKey(STATE::HOLD, KEY::M_BUTTON_L)) {
+			Math::Vec2 cursorPos = Input::CursorPos();
+			cursorPos.x -= 800.f;
+			cursorPos.y = (-cursorPos.y) + 450.f;
+			Math::Vec2 dir = cursorPos - e.GetComponent<Transform>().translation;
+			float rotation = (float)(acosf(dir.x / dir.Magnitude()));
+			if (dir.y < 0.f)
+			{
+				rotation = -rotation;
+			}
+			e.GetComponent<Physics2D>().moveDirection = rotation;
+			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
+		}
 		// Cap player speed
 		if (e.GetComponent<Physics2D>().speed > playerSpeedCap)
 			e.GetComponent<Physics2D>().speed = playerSpeedCap;
