@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file vec3.cpp
+\author Jazz Teoh Yu Jue, Chen Jia Wen
+\par DP email: j.teoh\@digipen.edu, c.jiawen\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+\brief
+This file contains the implementation of 3D vector and it's operations.
+*******************************************************************************/
 #include "vec3.h"
 #include "vec2.h"
 
