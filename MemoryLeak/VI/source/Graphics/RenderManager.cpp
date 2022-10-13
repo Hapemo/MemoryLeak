@@ -68,7 +68,7 @@ Pixel height of the window.
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
-
+	fontManager.Init();
 	//initialize fbo with window width and height
 	mfbo.Init(*mWindowWidth, *mWindowHeight);
 }
