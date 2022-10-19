@@ -51,13 +51,11 @@ void GameStateManager::Update() {
 		//	spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 		END_TRACK("TexturesLoop");
 
+		Application::SystemUpdate();
+
 		TRACK_PERFORMANCE("Graphics");
 		mCurrGameState->Draw();
 		END_TRACK("Graphics");
-
-		TRACK_PERFORMANCE("Audio");
-		audioManager->UpdateSound();
-		END_TRACK("Audio");
 
 		Application::SecondUpdate(); // This should always be the last
 		END_TRACK("MainLoop");

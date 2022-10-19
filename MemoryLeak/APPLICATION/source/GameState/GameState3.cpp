@@ -30,15 +30,6 @@ void GameState3::Init() {
 }
 
 void GameState3::Update() {
-    if (!levelEditor->IsEditorPaused())
-    {
-        TRACK_PERFORMANCE("Physics");
-        physics2DManager->Update(FPSManager::dt);
-        END_TRACK("Physics");
-        animator->Animate();
-        sheetAnimator->Animate();
-        aiManager->updateAI();
-    }
     TRACK_PERFORMANCE("Editor");
     renderManager->RenderToFrameBuffer();
     levelEditor->LevelEditor::Window();
