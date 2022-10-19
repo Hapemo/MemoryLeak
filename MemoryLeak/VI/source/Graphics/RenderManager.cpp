@@ -29,7 +29,7 @@ RenderManager::RenderManager()
 	: mAllocator(NO_OF_OBJECTS, VERTICES_PER_OBJECT, INDICES_PER_OBJECT),
 	mfbo(), mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
-	mWindowHeight(nullptr),	mWindowWidth(nullptr)
+	mWindowHeight(nullptr), mWindowWidth(nullptr)
 {
 	//set debug mode to true
 	mDebug = true;
@@ -180,6 +180,7 @@ void RenderManager::Render()
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
+	fontManager.Draw("sup niggers?!?!?!?!?", 540.0f, 570.0f, 0.5f);
 
 	//unbind fbo
 	if (!mfbo.GetRenderToScreen())
