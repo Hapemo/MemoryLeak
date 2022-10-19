@@ -40,6 +40,28 @@ void Application::SystemInit() {
   renderManager->Init(&window_width, &window_height);
 }
 
+void Application::SystemUpdate() {
+
+  // AI
+  aiManager->updateAI();
+  
+  // Physics
+  TRACK_PERFORMANCE("Physics");
+  physics2DManager->Update(FPSManager::dt);
+  END_TRACK("Physics");
+
+  // Audio
+  TRACK_PERFORMANCE("Audio");
+  audioManager->UpdateSound();
+  END_TRACK("Audio");
+
+  // Animator
+  sheetAnimator->Animate();
+  animator->Animate();
+
+  // Player
+  // playerManager->Update(); // Has error on gamestate3, maybe because player was not freed in gamestate1
+}
 
 void Application::init() {
   // Part 1
