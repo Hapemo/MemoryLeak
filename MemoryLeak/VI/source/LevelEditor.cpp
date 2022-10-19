@@ -1022,8 +1022,24 @@ void LevelEditor::ViewPortManager()
 	}
 	ImGui::End();
 }
-
-
+std::string& BreakString(std::string& _str, int _offset)
+{
+	int offset = 0;
+	while (_str.size() > _offset)
+	{
+		if (_str[_offset] == ' ')
+		{
+			_str.replace(_offset, 1, "\n");
+			_offset += 50;
+		}
+		else
+		{
+			offset = (int)_str.find("\n", _offset);
+			_offset += offset;
+		}
+	}
+	return _str;
+}
 /*!*****************************************************************************
 \brief
 	Editor for game dialogs with options
@@ -1035,48 +1051,71 @@ void LevelEditor::DialogEditor()
 {
 	ImGui::Begin("Dialog Editor");
 	int id = 1;
+	static int id2 = 0;
+	int prevID = 1;
 	static int selectedID = 0;
 	std::string dialog{};
+	std::string dialog2{};
 	static std::string editDialog{};
+			//LOG_INFO(std::to_string(id2));
 	while (id)
 	{
 		if (dialogManager->GetDialogs().size() == 0)
 			break;
 		dialog = dialogManager->GetDialogue(id);
-		//ImGui::Text(dialog.c_str());
+		BreakString(dialog, 70);
+		if (id2)
+		{
+			dialog2 = dialogManager->GetDialogue(id2);
+			BreakString(dialog2, 70);
+			if (dialogManager->GetSpeaker(id2))
+			{
+				ImGui::NewLine();
+				ImGui::SameLine(ImGui::GetWindowWidth() - (dialog2.size() * 7.4f < ImGui::GetWindowWidth() / 2.f ? dialog2.size() * 7.4 : ImGui::GetWindowWidth() / 2));
+			}
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(100, 0, 0)));
+			if (ImGui::Button(dialog2.c_str()))
+			{
+				selectedID = id2;
+				editDialog = dialogManager->GetDialogue(selectedID);
+				BreakString(editDialog, 100);
+			}
+			ImGui::PopStyleColor();
+			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
+			{
+				dialogManager->EditChoice(prevID, id2, id);
+			}
+		}
 		if (dialogManager->GetSpeaker(id))
 		{
-			//ImGui::SetNextItemWidth(100);
-			//ImGui::InputText("Player", const_cast<char*>(dialog.c_str()), dialog.size());
 			ImGui::NewLine();
-			ImGui::SameLine(ImGui::GetWindowWidth() - (dialog.size()*7.5< ImGui::GetWindowWidth() / 2 ? dialog.size() *7.5 : ImGui::GetWindowWidth() / 2));
-			ImGui::TextWrapped(dialog.c_str());
-			if (ImGui::IsItemClicked())
-			{
-				selectedID = id;
-				editDialog = dialogManager->GetDialogue(selectedID);
-			}
+			ImGui::SameLine(ImGui::GetWindowWidth() - (dialog.size() * 7.4f < ImGui::GetWindowWidth() / 2.f ? dialog.size() * 7.4 : ImGui::GetWindowWidth() / 2));
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 100, 0)));
 		}
-		else
+		if(ImGui::Button(dialog.c_str()))
 		{
-			ImGui::PushTextWrapPos(ImGui::GetWindowWidth()/2);
-			//ImGui::InputText("Passenger", const_cast<char*>(dialog.c_str()), dialog.size());
-			ImGui::TextWrapped(dialog.c_str());
-			if (ImGui::IsItemClicked())
-			{
-				selectedID = id;
-				editDialog = dialogManager->GetDialogue(selectedID);
-			}
-			ImGui::PopTextWrapPos();
+			selectedID = id;
+			editDialog = dialogManager->GetDialogue(selectedID);
+			BreakString(editDialog, 100);
 		}
+		if (dialogManager->GetSpeaker(id))
+			ImGui::PopStyleColor();
+		if (id2)
+		{
+			
+		}
+		prevID = id;
+		id2 = dialogManager->GetNext2(id);
 		id = dialogManager->GetNext(id);
+			
 		ImGui::NewLine();
 	}
 
 	if (selectedID)
 	{
-		
-		ImGui::InputText(" ", const_cast<char*>(editDialog.c_str()), editDialog.size());
+		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight()-100));
+		ImGui::InputTextMultiline(" ", const_cast<char*>(editDialog.c_str()), 1000, 
+			ImVec2(ImGui::GetWindowWidth()-150, 70));
 		ImGui::SameLine();
 		if (ImGui::Button("Send Nudes"))
 		{

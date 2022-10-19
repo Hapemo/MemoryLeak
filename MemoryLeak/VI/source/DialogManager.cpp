@@ -117,6 +117,12 @@ int DialogManager::GetNext(int _id) {
 	LOG_ERROR("Dialogue ID doesn't exist!");
 	return 0;
 }
+int DialogManager::GetNext2(int _id) {
+	for (Dialog dialog : mDialogs)
+		if (dialog.id == _id) return dialog.next2;
+	LOG_ERROR("Dialogue ID doesn't exist!");
+	return 0;
+}
 
 /*!*****************************************************************************
 \brief
@@ -154,6 +160,18 @@ void DialogManager::EditDialogue(int _id, std::string _text)
 		if (dialog.id == _id)
 		{
 			dialog.text = _text;
+			break;
+		}
+	}
+}
+void DialogManager::EditChoice(int _id, int _choice, int _choice2)
+{
+	for (Dialog& dialog : mDialogs)
+	{
+		if (dialog.id == _id)
+		{
+			dialog.next = _choice;
+			dialog.next2 = _choice2;
 			break;
 		}
 	}

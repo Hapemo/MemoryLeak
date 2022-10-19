@@ -125,7 +125,7 @@ public:
 	Returns the next dialog id.
 	*******************************************************************************/
 	int GetNext(int _id);
-	
+	int GetNext2(int _id);
 	/*!*****************************************************************************
 	\brief
 	Creates a new dialog item.
@@ -147,6 +147,7 @@ public:
 	*******************************************************************************/
 	void CreateNewDialogue(int _id, std::string _text, int _speaker, int _next, int _next2 = -1);
 	void EditDialogue(int _id, std::string _text);
+	void EditChoice(int _id, int _choice, int _choice2);
 	void RemoveDialog(int _id);
 	void Clear();
 
