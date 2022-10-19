@@ -63,7 +63,7 @@ Returns true if the dialog has choices else returns false.
 *******************************************************************************/
 bool DialogManager::HasChoice(int _id) {
 	for (Dialog dialog : mDialogs)
-		if (dialog.id == _id && dialog.next2 != -1) return true;
+		if (dialog.id == _id && dialog.next2 != 0) return true;
 	return false;
 }
 
@@ -115,7 +115,7 @@ int DialogManager::GetNext(int _id) {
 	for (Dialog dialog : mDialogs)
 		if (dialog.id == _id) return dialog.next;
 	LOG_ERROR("Dialogue ID doesn't exist!");
-	return -1;
+	return 0;
 }
 
 /*!*****************************************************************************
@@ -132,8 +132,9 @@ std::pair<int, int> DialogManager::GetChoices(int _id) {
 	std::pair<int, int> choices;
 	for (Dialog dialog : mDialogs) {
 		if (dialog.id == _id) {
-			if (dialog.next2 == -1) {
+			if (dialog.next2 == 0) {
 				LOG_ERROR("Dialogue doesn't have choices!");
+				choices.first = choices.second = 0;
 				return choices;
 			}
 			else {
@@ -144,6 +145,18 @@ std::pair<int, int> DialogManager::GetChoices(int _id) {
 		}
 	}
 	return choices;
+}
+
+void DialogManager::EditDialogue(int _id, std::string _text)
+{
+	for (Dialog& dialog : mDialogs)
+	{
+		if (dialog.id == _id)
+		{
+			dialog.text = _text;
+			break;
+		}
+	}
 }
 
 /*!*****************************************************************************

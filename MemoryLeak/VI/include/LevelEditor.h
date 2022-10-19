@@ -41,6 +41,7 @@ private:
 	void AssetManager();
 	void ViewPortManager();
 	void ShowDebugInfo();
+	void DialogEditor();
 	GLFWwindow* mWindow;
 	int* mWindowWidth;
 	int* mWindowHeight;

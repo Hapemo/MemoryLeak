@@ -145,7 +145,7 @@ void LevelEditor::Update()
 	ViewPortManager();
 	if(showdebug)
 		ShowDebugInfo();
-	
+	DialogEditor();
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -226,6 +226,7 @@ void LevelEditor::ShowDebugInfo()
 		}
 		ImGui::EndTabItem();
 	}
+	ImGui::Text("   ");
 	ImGui::EndTabBar();
 	ImGui::End();
 }
@@ -1021,6 +1022,75 @@ void LevelEditor::ViewPortManager()
 	}
 	ImGui::End();
 }
+
+
+/*!*****************************************************************************
+\brief
+	Editor for game dialogs with options
+
+\return
+None.
+*******************************************************************************/
+void LevelEditor::DialogEditor()
+{
+	ImGui::Begin("Dialog Editor");
+	int id = 1;
+	static int selectedID = 0;
+	std::string dialog{};
+	static std::string editDialog{};
+	while (id)
+	{
+		if (dialogManager->GetDialogs().size() == 0)
+			break;
+		dialog = dialogManager->GetDialogue(id);
+		//ImGui::Text(dialog.c_str());
+		if (dialogManager->GetSpeaker(id))
+		{
+			//ImGui::SetNextItemWidth(100);
+			//ImGui::InputText("Player", const_cast<char*>(dialog.c_str()), dialog.size());
+			ImGui::NewLine();
+			ImGui::SameLine(ImGui::GetWindowWidth() - (dialog.size()*7.5< ImGui::GetWindowWidth() / 2 ? dialog.size() *7.5 : ImGui::GetWindowWidth() / 2));
+			ImGui::TextWrapped(dialog.c_str());
+			if (ImGui::IsItemClicked())
+			{
+				selectedID = id;
+				editDialog = dialogManager->GetDialogue(selectedID);
+			}
+		}
+		else
+		{
+			ImGui::PushTextWrapPos(ImGui::GetWindowWidth()/2);
+			//ImGui::InputText("Passenger", const_cast<char*>(dialog.c_str()), dialog.size());
+			ImGui::TextWrapped(dialog.c_str());
+			if (ImGui::IsItemClicked())
+			{
+				selectedID = id;
+				editDialog = dialogManager->GetDialogue(selectedID);
+			}
+			ImGui::PopTextWrapPos();
+		}
+		id = dialogManager->GetNext(id);
+		ImGui::NewLine();
+	}
+
+	if (selectedID)
+	{
+		
+		ImGui::InputText(" ", const_cast<char*>(editDialog.c_str()), editDialog.size());
+		ImGui::SameLine();
+		if (ImGui::Button("Send Nudes"))
+		{
+			dialogManager->EditDialogue(selectedID, editDialog);
+		}
+	}
+
+	ImGui::End();
+}
+
+
+
+
+
 
 
 

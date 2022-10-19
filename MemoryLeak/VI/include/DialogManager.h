@@ -146,7 +146,7 @@ public:
 	The dialog id of the second choice.
 	*******************************************************************************/
 	void CreateNewDialogue(int _id, std::string _text, int _speaker, int _next, int _next2 = -1);
-
+	void EditDialogue(int _id, std::string _text);
 	void RemoveDialog(int _id);
 	void Clear();
 
