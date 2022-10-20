@@ -1,0 +1,121 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "At last we meet again!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "I've been waiting for you!",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "What would you like to do? Play or reminisce?",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 5
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "I'd like to play.",
+   "Speaker": 1,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "I'd like to reminisce.",
+   "Speaker": 1,
+   "Next Dialogue": 12,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "Let's play a game where you hold your hands out and I'll give you something! I think you'll like it, you've always liked it!",
+   "Speaker": 0,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "Well, let's play together now! ...Wait. You're supposed to be doing something else, right?",
+   "Speaker": 0,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 9
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "What am I supposed to do?",
+   "Speaker": 1,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "I don't even know where I am...",
+   "Speaker": 1,
+   "Next Dialogue": 11,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "The people said you're a ferryman. Quick! The passengers are waiting! We will play when we see each other again! *Fades away*",
+   "Speaker": 0,
+   "Next Dialogue": -1,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "We're currently at Cordelia! It's said that this place holds special memories. Explore this place and see it for yourself! We'll meet again soon!*Fades away*",
+   "Speaker": 0,
+   "Next Dialogue": -1,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 12,
+   "Dialogue Text": "We have plenty of time to reminisce slowly! Oh right! There's one thing I wanted to show you!",
+   "Speaker": 0,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 13,
+   "Dialogue Text": "TADA! Ain't it pretty? Have you seen it before? Do you know what it's called?",
+   "Speaker": 0,
+   "Next Dialogue": 14,
+   "Next Dialogue(2)": 15
+ },
+ {
+   "Dialogue ID": 14,
+   "Dialogue Text": "Yes, I think.",
+   "Speaker": 1,
+   "Next Dialogue": 17,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 15,
+   "Dialogue Text": "No, I haven't.",
+   "Speaker": 1,
+   "Next Dialogue": 16,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 16,
+   "Dialogue Text": "These are called sea conches, the people said. They're known to store memories of the past, that must be important to you. Don't forget them now! *Fades away*",
+   "Speaker": 0,
+   "Next Dialogue": -1,
+   "Next Dialogue(2)": -1
+ },
+ {
+   "Dialogue ID": 17,
+   "Dialogue Text": "So you remember the sea conches after all! Don't forget them now! Bye bye! *Fades away*",
+   "Speaker": 0,
+   "Next Dialogue": -1,
+   "Next Dialogue(2)": -1
+ }
+]

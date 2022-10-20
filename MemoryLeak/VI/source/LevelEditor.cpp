@@ -896,13 +896,20 @@ None.
 *******************************************************************************/
 void LevelEditor::ViewPortManager()
 {
+	//ImGui::Begin("View Port Manager");
+	WorldViewPort();
+	CameraViewPort();
+	//ImGui::End();
+}
+void  LevelEditor::WorldViewPort()
+{
 	ImGuiWindowFlags window_flags = 0;
 	window_flags |= ImGuiWindowFlags_NoBackground;
 	//bool open_ptr = true;
 	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
-	ImGui::Begin("View Port Manager");
+	ImGui::Begin("World View");
 	ImVec2 viewportSize = ImGui::GetWindowSize();
-	viewportSize.y -=70;
+	viewportSize.y -= 70;
 	//Calcualting the aspect ratio 
 	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
 	{
@@ -912,7 +919,7 @@ void LevelEditor::ViewPortManager()
 	{
 		viewportSize.y = viewportSize.x / 16 * 9;
 	}
-	Math::Vec2 pos = { (ImGui::GetWindowWidth()/2.f) -110.f, 30.f };
+	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	//if (ImGui::Button("Reset", { 100,25 }))
 		//serializationManager->LoadScene("SceneTmp");
@@ -923,13 +930,13 @@ void LevelEditor::ViewPortManager()
 		isPaused = false;
 	}
 	ImGui::SameLine(0.f, 20.f);
-	if(ImGui::Button("Pause", { 100,25 }))
+	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
 	GLuint frameBuffer = renderManager->GetFBO();
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
-	ImGui::SetCursorPos(ImVec2(pos.x,pos.y));
+	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
-	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
+	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 
 	if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
 	{
@@ -937,16 +944,16 @@ void LevelEditor::ViewPortManager()
 		//imguizmo
 		ImGuizmo::SetOrthographic(true);
 		ImGuizmo::SetDrawlist();
-		ImGuizmo::SetRect(ImGui::GetWindowPos().x+pos.x, ImGui::GetWindowPos().y+pos.y,
+		ImGuizmo::SetRect(ImGui::GetWindowPos().x + pos.x, ImGui::GetWindowPos().y + pos.y,
 			viewportSize.x, viewportSize.y);
-		const float identity[16] = {1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1};
+		const float identity[16] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
 		std::vector<float> trf = renderManager->GetImGuizmoMat4(e);
-		float translate[16]= { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
+		float translate[16] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
 		for (int i = 0; i < 16; ++i)
 		{
 			translate[i] = trf[i];
 		}
-		
+
 		ImGuizmo::OPERATION opp{};
 		if (SRT == 1)
 		{
@@ -969,17 +976,17 @@ void LevelEditor::ViewPortManager()
 				{
 					Math::Vec2 scaleX = { translate[0] , translate[1] };
 					Math::Vec2 scaleY = { translate[4] , translate[5] };
-					Math::Vec2 scale = { scaleX.Magnitude()* (float) *mWindowWidth , scaleY.Magnitude() * (float)*mWindowHeight};
+					Math::Vec2 scale = { scaleX.Magnitude() * (float)*mWindowWidth , scaleY.Magnitude() * (float)*mWindowHeight };
 					e.GetComponent<Transform>().scale = scale;
 				}
 				else if (SRT == 2)
 				{///Work in progres
-					Math::Vec2 scale = { translate[0] , translate[1]};
+					Math::Vec2 scale = { translate[0] , translate[1] };
 					//LOG_INFO("           ");
 					//LOG_INFO(std::to_string(scale.x * *mWindowWidth));
 					//LOG_INFO(std::to_string(scale.y * *mWindowWidth));
 					//LOG_INFO(std::to_string (translate[2] * *mWindowWidth));
-					float rotation=(float)(acosf(scale.x/scale.Magnitude()));
+					float rotation = (float)(acosf(scale.x / scale.Magnitude()));
 					if (scale.y < 0.f)
 					{
 						rotation = -rotation;
@@ -1014,12 +1021,52 @@ void LevelEditor::ViewPortManager()
 				}
 				else if (SRT == 3)
 				{
-					Math::Vec2 translation = { translate[12] * (float)(*mWindowWidth/2), translate[13] * (float)(*mWindowHeight/2)};
+					Math::Vec2 translation = { translate[12] * (float)(*mWindowWidth / 2), translate[13] * (float)(*mWindowHeight / 2) };
 					e.GetComponent<Transform>().translation = translation;
 				}
 			}
 		}
 	}
+	ImGui::End();
+}
+void  LevelEditor::CameraViewPort()
+{
+	ImGuiWindowFlags window_flags = 0;
+	window_flags |= ImGuiWindowFlags_NoBackground;
+	//bool open_ptr = true;
+	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
+	ImGui::Begin("Camera View");
+	ImVec2 viewportSize = ImGui::GetWindowSize();
+	viewportSize.y -= 70;
+	//Calcualting the aspect ratio 
+	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
+	{
+		viewportSize.x = viewportSize.y / 9 * 16;
+	}
+	else if (viewportSize.x / viewportSize.y < 16 / 9.0f) // tall screen
+	{
+		viewportSize.y = viewportSize.x / 16 * 9;
+	}
+	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
+	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	//if (ImGui::Button("Reset", { 100,25 }))
+		//serializationManager->LoadScene("SceneTmp");
+	//ImGui::SameLine(0.f,20.f);
+	if (ImGui::Button("Play", { 100,25 }))
+	{
+		//serializationManager->SaveScene("SceneTmp");
+		isPaused = false;
+	}
+	ImGui::SameLine(0.f, 20.f);
+	if (ImGui::Button("Pause", { 100,25 }))
+		isPaused = true;
+	GLuint frameBuffer = renderManager->GetFBO();
+	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
+	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
+	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+
+	
 	ImGui::End();
 }
 std::string& BreakString(std::string& _str, int _offset)
@@ -1079,6 +1126,7 @@ void LevelEditor::DialogEditor()
 				selectedID = id2;
 				editDialog = dialogManager->GetDialogue(selectedID);
 				BreakString(editDialog, 100);
+				
 			}
 			ImGui::PopStyleColor();
 			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))

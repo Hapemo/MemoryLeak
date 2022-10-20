@@ -60,3 +60,8 @@ MemoryLeak/bin/Debug/x64/VI.lib
 MemoryLeak/resources/Scene/SceneTemp.json
 MemoryLeak/resources/Scene/SceneTmp.json
 MemoryLeak/bin/Release/x64/TOOLS/TOOLS.lib
+MemoryLeak/bin/Release/x64/VI/fmod.dll
+MemoryLeak/bin/Release/x64/VI/fmodL.dll
+MemoryLeak/bin/Release/x64/VI/glew32.dll
+MemoryLeak/bin/Release/x64/VI/glfw3.dll
+MemoryLeak/bin/Release/x64/VI/VI.lib
