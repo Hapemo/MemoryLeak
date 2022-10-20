@@ -80,7 +80,7 @@ Render Entities with Sprite and Transform Component.
 void RenderManager::Render()
 {
 	//temp
-	static float muller = 0.0001f;
+	static float muller = 0.001f;
 	cam *= muller;
 	if (cam.GetZoom() > 2.f)
 		muller = -muller;
