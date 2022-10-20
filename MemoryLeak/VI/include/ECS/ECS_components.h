@@ -101,12 +101,33 @@ The renderFlag variable contains the flag variable telling the render manager
 *******************************************************************************/
 struct Physics2D {
 	bool gravityEnabled = false;
-	float mass = 1.f,
-		  speed = 0.f,
-		  moveDirection = 0.f;
-	Math::Vec2 forces = { 0.f, 0.f },
-			   velocity = { 0.f, 0.f };
+	double mass = 1.f,
+		  inertiaMass = 1.f;
+	Math::Vec2	velocity = { 0.f, 0.f },
+				acceleration = { 0.f, 0.f };
+	Math::Vec2	angularVelocity = { 0.f, 0.f },
+				angularAcceleration = { 0.f, 0.f };
 	bool renderFlag = false;
+};
+
+struct Force {
+	double lifetime;
+	double age;
+	bool isActive;
+};
+
+struct LinearForce : Force {
+	Math::Vec2 unitDirection;
+	double magnitude;
+};
+
+struct RotationalForce : Force {
+	Math::Vec2 torque;
+};
+
+struct DragForce : Force{
+	double	directionalDrag,
+			rotationalDrag;
 };
 
 /*!*****************************************************************************
