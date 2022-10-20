@@ -1,25 +1,12 @@
-/*!*****************************************************************************
-\file RenderManager.h
-\author Kew Yu Jun
-\par DP email: k.yujun\@digipen.edu
-\par Group: Memory Leak Studios
-\date 20-09-2022
-\brief
-This file contains function declarations for the class RenderManager, which 
-operates on Entities with Sprite and Transform Components.
-*******************************************************************************/
 #pragma once
+#include <pch.h>
 #include "Graphics/GLAllocator.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "Graphics/GLShader.h"
+#include "Graphics/FBO.h"
+#include "FontManager.h"
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
-#include "Graphics/GLShader.h"
-#include "PerformanceVisualiser.h"
-#include "Graphics/FBO.h"
-#include "FontManager.h"
-#include "Camera.h"
 
 /*!*****************************************************************************
 \brief
@@ -32,103 +19,15 @@ struct TextureInfo
 	std::vector<GLushort> mIndices;
 };
 
-/*!*****************************************************************************
-\brief
-RenderManager Class that handles rendering of Entities with Sprite and Transform
-Component.
-*******************************************************************************/
-class RenderManager : public System
+class Renderer
 {
 public:
-	/*!*****************************************************************************
-	\brief
-	Default Constructor for RenderManager class.
-	*******************************************************************************/
-	RenderManager();
-
-	/*!*****************************************************************************
-	\brief
-	Initializes the RenderManager class.
-
-	\param int* _windowWidth
-	Pixel width of the window.
-
-	\param int* _windowHeight
-	Pixel height of the window.
-	*******************************************************************************/
-	void Init(int* _windowWidth, int* _windowHeight);
-
-	/*!*****************************************************************************
-	\brief
-	Render Entities with Sprite and Transform Component.
-	*******************************************************************************/
-	void Render();
-
-	/*!*****************************************************************************
-	\brief
-	Clears the background. Mainly used for switching states.
-	*******************************************************************************/
-	void Clear();
-
-	/*!*****************************************************************************
-	\brief
-	Sets the debug mode of rendering.
-
-	\param bool
-	Renders debug drawings if debug mode is set to true.
-	*******************************************************************************/
-	void SetDebug(bool);
-
-	/*!*****************************************************************************
-	\brief
-	Sets the modifier for the length of the debug vector.
-
-	\param float
-	Modifier for the length of the vector.
-	*******************************************************************************/
-	void SetVectorLengthModifier(float);
-
-	/*!*****************************************************************************
-	\brief
-	Returns the color attachment to the frame buffer.
-
-	\return
-	Returns the color attachment to the frame buffer.
-	*******************************************************************************/
-	GLuint GetFBO() const { return mfbo.GetColorAttachment(); }
-
-	/*!*****************************************************************************
-	\brief
-	Rendering will be done to the screen instead of the FBO.
-	*******************************************************************************/
-	void RenderToScreen() { mfbo.SetRenderToScreen(true); }
-
-	/*!*****************************************************************************
-	\brief
-	Rendering will be done to the FBO instead of the screen.
-	*******************************************************************************/
-	void RenderToFrameBuffer() { mfbo.SetRenderToScreen(false); }
-
-	/*!*****************************************************************************
-	\brief
-	Function that returns the transform of an Entity for use with ImGuizmo
-
-	\param const Entity& _e
-	Entity to get the Transformation matrix of.
-
-	\return std::vector<float>
-	Transformation matrix of the Entity.
-	*******************************************************************************/
-	std::vector<float> GetImGuizmoMat4(const Entity& _e);
-
+	Renderer();
 private:
-	Camera cam;
-	FontManager fontManager;
+	FBO mfbo;
 	bool mDebug;
 	float mVectorLengthModifier;
-	FBO mfbo;
-	int* mWindowWidth;
-	int* mWindowHeight;
+	FontManager fontManager;
 	GLShader mDefaultProgram;
 	GLShader mTextureProgram;
 	GLAllocator mAllocator;
@@ -145,7 +44,7 @@ private:
 	Renders debug drawings.
 	*******************************************************************************/
 	void RenderDebug();
-	
+
 	/*!*****************************************************************************
 	\brief
 	Binds a Texture Unit to an image.
@@ -202,6 +101,24 @@ private:
 	Current texture units that are in use.
 	*******************************************************************************/
 	void BatchRenderTextures(int& _texCount, std::vector<int>& _texUnits);
+
+	/*!*****************************************************************************
+	\brief
+	Sets the debug mode of rendering.
+
+	\param bool
+	Renders debug drawings if debug mode is set to true.
+	*******************************************************************************/
+	void SetDebug(bool);
+
+	/*!*****************************************************************************
+	\brief
+	Sets the modifier for the length of the debug vector.
+
+	\param float
+	Modifier for the length of the vector.
+	*******************************************************************************/
+	void SetVectorLengthModifier(float);
 
 	/*!*****************************************************************************
 	\brief
@@ -321,7 +238,7 @@ private:
 
 	/*!*****************************************************************************
 	\brief
-	Creates a debug arrow based on Transform and Sprite Component, or Physics2D 
+	Creates a debug arrow based on Transform and Sprite Component, or Physics2D
 	component.
 
 	\param const Entity& _e
@@ -331,7 +248,7 @@ private:
 
 	/*!*****************************************************************************
 	\brief
-	Creates a debug arrow based on Transform and Sprite Component, or Physics2D 
+	Creates a debug arrow based on Transform and Sprite Component, or Physics2D
 	component.
 
 	\param const Transform& _t
@@ -344,86 +261,7 @@ private:
 
 	/*!*****************************************************************************
 	\brief
-	Helper function for returning the color of the Sprite Component in OpenGL.
-
-	\param const Entity& _e
-	The entity containing Transform and Sprite component.
-
-	\return
-	Returns the color of the Sprite.
-	*******************************************************************************/
-	glm::vec4 GetColor(const Entity& _e);
-
-	/*!*****************************************************************************
-	\brief
-	Helper function for returning a Color in OpenGL.
-
-	\param GLubyte _r
-	The redness of the color.
-
-	\param GLubyte _g
-	The greenness of the color.
-
-	\param GLubyte _b
-	The blueness of the color.
-
-	\param GLubyte _a
-	The transparency of the color.
-
-	\return
-	Returns the color.
-	*******************************************************************************/
-	glm::vec4 GetColor(GLubyte _r, GLubyte _g, GLubyte _b, GLubyte _a);
-
-	/*!*****************************************************************************
-	\brief
-	Helper function for returning the Transformation matrix of a Component.
-
-	\param const Entity& _e
-	The entity containing Transform and Sprite component.
-
-	\return
-	The Transformation matrix.
-	*******************************************************************************/
-	Math::Mat3 GetTransform(const Entity& _e);
-
-	/*!*****************************************************************************
-	\brief
-	Helper function for returning the Transformation matrix given scale, rotate, and
-	translate.
-
-	\param const Math::Vec2& _scale
-	The scale for the transformation.
-
-	\param float _rotate
-	The rotation for the transformation
-
-	\param const Math::Vec2& _translate
-	The translatetion for the transformation
-
-	\return
-	The Transformation matrix.
-	*******************************************************************************/
-	Math::Mat3 GetTransform(const Math::Vec2& _scale, float _rotate, const Math::Vec2& _translate);
-
-	/*!*****************************************************************************
-	\brief
 	Initializes the Shader program.
 	*******************************************************************************/
 	void InitializeShaders();
-
-	/*!*****************************************************************************
-	\brief
-	Helper function for concatenating the vector of indices.
-
-	\param std::vector<GLushort>& _first
-	The vector for indices to be pushed into.
-
-	\param std::vector<GLushort>& _second
-	The vector for indices to be taken from.
-	*******************************************************************************/
-	void ConcatIndices(std::vector<GLushort>& _first, std::vector<GLushort>& _second);
 };
-
-
-

@@ -147,9 +147,6 @@
     <ClInclude Include="include\Graphics\FontManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ft2build.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\freetype\freetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -288,6 +285,15 @@
     <ClInclude Include="include\freetype\tttags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Graphics\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\EditorCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Graphics\Animator.cpp">
@@ -360,6 +366,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Graphics\FontManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Graphics\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Graphics\EditorCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Graphics\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

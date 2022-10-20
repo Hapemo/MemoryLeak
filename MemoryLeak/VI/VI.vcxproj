@@ -194,8 +194,10 @@
     <ClInclude Include="include\freetype\ttnameid.h" />
     <ClInclude Include="include\freetype\tttables.h" />
     <ClInclude Include="include\freetype\tttags.h" />
-    <ClInclude Include="include\ft2build.h" />
+    <ClInclude Include="include\Graphics\Camera.h" />
+    <ClInclude Include="include\Graphics\EditorCamera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
+    <ClInclude Include="include\Graphics\Renderer.h" />
     <ClInclude Include="include\Physics\Collision2DManager.h" />
     <ClInclude Include="include\Collision2DManager.h" />
     <ClInclude Include="include\DialogManager.h" />
@@ -244,10 +246,13 @@
     <ClCompile Include="source\ECS\ECS_managers.cpp" />
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
+    <ClCompile Include="source\Graphics\Camera.cpp" />
+    <ClCompile Include="source\Graphics\EditorCamera.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
     <ClCompile Include="source\Graphics\FontManager.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
     <ClCompile Include="source\Graphics\GLShader.cpp" />
+    <ClCompile Include="source\Graphics\Renderer.cpp" />
     <ClCompile Include="source\Graphics\RenderManager.cpp" />
     <ClCompile Include="source\Graphics\SheetAnimator.cpp" />
     <ClCompile Include="source\Graphics\SpriteManager.cpp" />
