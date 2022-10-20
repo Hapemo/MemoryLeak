@@ -20,11 +20,12 @@ The DialogManager manages the scripts and dialogues data.
 The struct for all the dialog's data.
 *******************************************************************************/
 struct Dialog {
-	int id = -1;
+	int id = 0;
 	std::string text = "";
-	int speaker = -1;
-	int next = -1;
-	int next2 = -1;
+	int speaker = 0;
+	int next = 0;
+	int next2 = 0;
+	int selectedChoice = 0;
 };
 
 class DialogManager : public System
@@ -126,6 +127,8 @@ public:
 	*******************************************************************************/
 	int GetNext(int _id);
 	int GetNext2(int _id);
+	int GetSelectedChoice(int _id);
+	void SetSelectedChoice(int _id, int _selectedChoice);
 	/*!*****************************************************************************
 	\brief
 	Creates a new dialog item.

@@ -981,12 +981,8 @@ void  LevelEditor::WorldViewPort()
 					e.GetComponent<Transform>().scale = scale;
 				}
 				else if (SRT == 2)
-				{///Work in progres
+				{
 					Math::Vec2 scale = { translate[0] , translate[1] };
-					//LOG_INFO("           ");
-					//LOG_INFO(std::to_string(scale.x * *mWindowWidth));
-					//LOG_INFO(std::to_string(scale.y * *mWindowWidth));
-					//LOG_INFO(std::to_string (translate[2] * *mWindowWidth));
 					float rotation = (float)(acosf(scale.x / scale.Magnitude()));
 					if (scale.y < 0.f)
 					{
@@ -1032,10 +1028,6 @@ void  LevelEditor::WorldViewPort()
 }
 void  LevelEditor::CameraViewPort()
 {
-	ImGuiWindowFlags window_flags = 0;
-	window_flags |= ImGuiWindowFlags_NoBackground;
-	//bool open_ptr = true;
-	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
 	ImGui::Begin("Camera View");
 	ImVec2 viewportSize = ImGui::GetWindowSize();
 	viewportSize.y -= 70;
@@ -1097,79 +1089,121 @@ None.
 *******************************************************************************/
 void LevelEditor::DialogEditor()
 {
+	GLuint player_texture = spriteManager->GetTextureID("Textures\\Sprites\\mc.png");
+	ImTextureID playerIcon = (void*)(intptr_t)player_texture;
+	GLuint passenger_texture = spriteManager->GetTextureID("Textures\\Sprites\\girl.png");
+	ImTextureID passengerIcon = (void*)(intptr_t)passenger_texture;
+	GLuint send_texture = spriteManager->GetTextureID("Textures\\Icons\\sendIcon.png");
+	ImTextureID sendIcon = (void*)(intptr_t)send_texture;
 	ImGui::Begin("Dialog Editor");
 	int id = 1;
-	static int id2 = 0;
+	int id2 = 0;
 	int prevID = 1;
 	static int selectedID = 0;
 	std::string dialog{};
 	std::string dialog2{};
 	static std::string editDialog{};
-			//LOG_INFO(std::to_string(id2));
+	int wrapsize = int(ImGui::GetWindowWidth()/13);
+	ImVec2 iconSize = ImVec2(40, 40);
+	//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(100, 0, 0))); ImGui::PopStyleColor();
 	while (id)
 	{
 		if (dialogManager->GetDialogs().size() == 0)
 			break;
 		dialog = dialogManager->GetDialogue(id);
-		BreakString(dialog, 70);
-		if (id2)
+		BreakString(dialog, wrapsize);
+		
+		if (dialogManager->GetSpeaker(id))// if right side convo (Player)
+		{
+			ImGui::NewLine();
+			ImGui::SameLine(ImGui::GetWindowWidth()-70);
+			ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
+			ImGui::SameLine(ImGui::GetWindowWidth() - 77 -(dialog.find("\n") != std::string::npos ? dialog.find("\n") : dialog.size()) * 7.4f);
+			if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0))); //unselected
+			else//1st
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0))); //selected
+		}
+		else //left side (NPC)
+		{
+			//ImGui::Button("passenger", ImVec2(40,40));
+			ImGui::ImageButton(passengerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
+			ImGui::SameLine();
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200))); 
+		}
+		ImGui::Button(dialog.c_str());
+		ImGui::PopStyleColor();
+		if(ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
+		{//edit text for 1st choice
+			selectedID = id;
+			editDialog = dialogManager->GetDialogue(selectedID);
+			BreakString(editDialog, wrapsize);
+		}
+		else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
+		{//change selected to 1st choice
+			dialogManager->SetSelectedChoice(prevID, 0);
+		}
+		if (id2) //if have 2nd choice
 		{
 			dialog2 = dialogManager->GetDialogue(id2);
-			BreakString(dialog2, 70);
+			BreakString(dialog2, wrapsize);
 			if (dialogManager->GetSpeaker(id2))
 			{
 				ImGui::NewLine();
-				ImGui::SameLine(ImGui::GetWindowWidth() - (dialog2.size() * 7.4f < ImGui::GetWindowWidth() / 2.f ? dialog2.size() * 7.4 : ImGui::GetWindowWidth() / 2));
+				ImGui::SameLine(ImGui::GetWindowWidth() - 70);
+				ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
+				ImGui::SameLine(ImGui::GetWindowWidth() - 77-(dialog2.find("\n") != std::string::npos ? dialog2.find("\n") : dialog2.size()) * 7.4f);
+				if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0))); //selected
+				else//1st
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0))); //unselected
 			}
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(100, 0, 0)));
-			if (ImGui::Button(dialog2.c_str()))
+			else //left side (NPC)
 			{
-				selectedID = id2;
-				editDialog = dialogManager->GetDialogue(selectedID);
-				BreakString(editDialog, 100);
-				
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200)));
 			}
+			ImGui::Button(dialog2.c_str());
 			ImGui::PopStyleColor();
 			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
-			{
-				dialogManager->EditChoice(prevID, id2, id);
+			{//edit text for 2nd choice
+				selectedID = id2;
+				editDialog = dialogManager->GetDialogue(selectedID);
+				BreakString(editDialog, wrapsize);
+			}
+			else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
+			{//change selected to 2nd choice
+				dialogManager->SetSelectedChoice(prevID, 1);
 			}
 		}
-		if (dialogManager->GetSpeaker(id))
-		{
-			ImGui::NewLine();
-			ImGui::SameLine(ImGui::GetWindowWidth() - (dialog.size() * 7.4f < ImGui::GetWindowWidth() / 2.f ? dialog.size() * 7.4 : ImGui::GetWindowWidth() / 2));
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 100, 0)));
-		}
-		if(ImGui::Button(dialog.c_str()))
-		{
-			selectedID = id;
-			editDialog = dialogManager->GetDialogue(selectedID);
-			BreakString(editDialog, 100);
-		}
-		if (dialogManager->GetSpeaker(id))
-			ImGui::PopStyleColor();
-		if (id2)
-		{
-			
-		}
-		prevID = id;
-		id2 = dialogManager->GetNext2(id);
-		id = dialogManager->GetNext(id);
+		//Get new ID for net loop
+		if (dialogManager->GetSelectedChoice(prevID))//2nd
+			prevID = id2;
+		else//1st
+			prevID = id;
+		id = dialogManager->GetNext(prevID);
+		id2 = dialogManager->GetNext2(prevID);
+		
 			
 		ImGui::NewLine();
 	}
-
+	ImGui::Separator();
+	//LOG_INFO(std::to_string(ImGui::GetScrollY()));
+	
 	if (selectedID)
 	{
-		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight()-100));
+		ImGui::Button("", ImVec2(1, 150));
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(ImColor(50, 50, 50)));
+		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 120 + ImGui::GetScrollY()));
+		ImGui::BeginChild("yeet", ImVec2(ImGui::GetWindowWidth()-20, 100), true);
 		ImGui::InputTextMultiline(" ", const_cast<char*>(editDialog.c_str()), 1000, 
-			ImVec2(ImGui::GetWindowWidth()-150, 70));
+			ImVec2(ImGui::GetWindowWidth()-100, 80));
 		ImGui::SameLine();
-		if (ImGui::Button("Send Nudes"))
+		if(ImGui::ImageButton(sendIcon, ImVec2(50, 50), ImVec2(0, 1), ImVec2(1, 0)))
 		{
 			dialogManager->EditDialogue(selectedID, editDialog);
 		}
+		ImGui::EndChild();
+		ImGui::PopStyleColor();
 	}
 
 	ImGui::End();

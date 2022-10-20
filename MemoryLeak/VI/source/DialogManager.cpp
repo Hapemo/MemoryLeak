@@ -123,6 +123,19 @@ int DialogManager::GetNext2(int _id) {
 	LOG_ERROR("Dialogue ID doesn't exist!");
 	return 0;
 }
+int DialogManager::GetSelectedChoice(int _id)
+{
+	for (Dialog dialog : mDialogs)
+		if (dialog.id == _id) return dialog.selectedChoice;
+	LOG_ERROR("Dialogue ID doesn't exist!");
+	return 0;
+}
+void DialogManager::SetSelectedChoice(int _id, int _selectedChoice)
+{
+	for (Dialog& dialog : mDialogs)
+		if (dialog.id == _id) dialog.selectedChoice = _selectedChoice;
+	LOG_ERROR("Dialogue ID doesn't exist!");
+}
 
 /*!*****************************************************************************
 \brief

@@ -18,6 +18,7 @@ Entities and its Components.
 #include "writer.h"
 #include <istreamwrapper.h>
 #include "stringbuffer.h"
+#include <prettywriter.h>
 
 /*!*****************************************************************************
 \brief

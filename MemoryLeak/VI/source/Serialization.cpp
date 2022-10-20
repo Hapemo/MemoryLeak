@@ -12,7 +12,7 @@ This file contains function definations for a Serialization system that saves an
 #include <Serialization.h>
 #include <ECSManager.h>
 #include <vec2.h>
-#include <prettywriter.h>
+
 
 
 using namespace rapidjson;
@@ -467,7 +467,7 @@ None.
 *******************************************************************************/
 void SerializationManager::LoadDialogs()
 {
-	std::ifstream ifs("../resources/Dialogs/Dialog1.json");
+	std::ifstream ifs("../resources/Dialogs/Dialog2.json");
 	if (!ifs.good()) LOG_ERROR("Can't open json file!");
 	LOG_INFO("Opening dialog json file!");
 
