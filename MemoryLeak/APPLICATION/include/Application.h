@@ -37,6 +37,12 @@ public:
 
 	/*!*****************************************************************************
 	 \brief
+	 Update Game Engine ECS's systems, should be called every game loop
+	*******************************************************************************/
+	static void SystemUpdate();
+
+	/*!*****************************************************************************
+	 \brief
 	 Initialisation before start of each game loop.
 	*******************************************************************************/
 	static void FirstUpdate();

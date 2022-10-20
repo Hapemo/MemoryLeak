@@ -927,7 +927,8 @@ void  LevelEditor::WorldViewPort()
 	if (ImGui::Button("Play", { 100,25 }))
 	{
 		//serializationManager->SaveScene("SceneTmp");
-		isPaused = false;
+		//isPaused = false;
+		renderManager->GetCamera() *= 0.01f;
 	}
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", { 100,25 }))

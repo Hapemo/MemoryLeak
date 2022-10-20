@@ -179,9 +179,7 @@ void ParallaxAndSpriteSwap::Update() {
             /*************************************Collider Edit End************************************/
         }
     }
-    physics2DManager->Update(FPSManager::dt);
     //collision2DManager->Update(mEntities);
-    sheetAnimator->Animate();
 }
 
 void ParallaxAndSpriteSwap::Draw() {
