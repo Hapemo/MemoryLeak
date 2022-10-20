@@ -79,13 +79,14 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
-	//temp
-	static float muller = 0.001f;
-	cam *= muller;
-	if (cam.GetZoom() > 2.f)
-		muller = -muller;
-	if (cam.GetZoom() < 0.5f)
-		muller = -muller;
+	/*************************************Camera showcase start************************************/
+	////temp
+	//static float muller = 0.001f;
+	//cam *= muller;
+	//if (cam.GetZoom() > 2.f)
+	//	muller = -muller;
+	//if (cam.GetZoom() < 0.5f)
+	//	muller = -muller;
 		
 	////temp
 	//static Math::Vec2 adder(0.f, 1.f);
@@ -95,6 +96,7 @@ void RenderManager::Render()
 	//	adder = -adder;
 	//if (cam.GetPos().y < -450.f)
 	//	adder = -adder;
+	/*************************************Camera showcase end************************************/
 
 	//draw to fbo if flag is true
 	if (!mfbo.GetRenderToScreen())

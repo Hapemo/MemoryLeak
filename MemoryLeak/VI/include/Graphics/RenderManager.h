@@ -121,6 +121,8 @@ public:
 	*******************************************************************************/
 	std::vector<float> GetImGuizmoMat4(const Entity& _e);
 
+	Camera GetCamera() { return cam; }
+
 private:
 	Camera cam;
 	FontManager fontManager;
