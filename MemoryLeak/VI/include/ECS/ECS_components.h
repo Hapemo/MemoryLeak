@@ -14,6 +14,11 @@ This file contains all the structs of components used in ECS
 #include "AudioVariable.h"
 #include "TagVariable.h"
 
+/*!*****************************************************************************
+\brief
+Struct that encapsulates general information most component will have, such as
+name, tag and isActive flag
+*******************************************************************************/
 struct General {
 	std::string name;
 	TAG tag;
@@ -21,6 +26,10 @@ struct General {
 	bool isActive;
 };
 
+/*!*****************************************************************************
+\brief
+This component encapsulate the entity's lifetime
+*******************************************************************************/
 struct Lifespan {
 	float lifetime; // Duration of entity's existance
 	float limit; // Maximum duration of entity's existance

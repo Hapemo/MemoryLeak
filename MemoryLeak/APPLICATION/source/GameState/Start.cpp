@@ -28,8 +28,6 @@ void Start::Update() {
   
   //Start_background::GetInstance()->PrimaryUpdate();
   Start_1::GetInstance()->PrimaryUpdate();
-  animator->Animate();
-  sheetAnimator->Animate();
     //TrackSystemPerformance("Physics");
     //physics2DManager->FirstUpdate(mEntities);
     //physics2DManager->FirstUpdate();

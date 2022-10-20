@@ -12,7 +12,7 @@ Input detects keyboard and mouse input states and returns that to caller
 #include "pch.h"
 
 // Available keys
-enum KEY {
+enum E_KEY {
 
   UNKNOWN = -1,
   SPACE = 32,
@@ -92,7 +92,7 @@ enum KEY {
 };
 
 // State of key pressed
-enum STATE {
+enum E_STATE {
   NOTPRESS,
   RELEASE,
   PRESS,
@@ -101,19 +101,19 @@ enum STATE {
 
 class Input {
 private:
-  static std::array<bool, 324> prev_key_states;
-  static int starting_index;
-  static int total_mouse_key;
-  static int max_keyboard_index;
-  static GLFWwindow* window;
-  static GLFWcursor* cursor;
+  static std::array<bool, 324> mPrevKeyStates;
+  static int mStartingIndex;
+  static int mTotalMouseKey;
+  static int mMaxKeyboardIndex;
+  static GLFWwindow* mWindow;
+  static GLFWcursor* mCursor;
   
 public:
   /*!*****************************************************************************
   \brief
   Initialises the Input system
   *******************************************************************************/
-  static void init(GLFWwindow*);
+  static void Init(GLFWwindow*);
 
   //-------------------------------------------------------------
   // Keyboard controls
@@ -129,14 +129,14 @@ public:
   \return bool
   - Returns true if inputted state matches current state of specified key
   *******************************************************************************/
-  static bool CheckKey(STATE, KEY);
+  static bool CheckKey(E_STATE, E_KEY);
   
   /*!*****************************************************************************
   \brief
   Update the previous state of all keys.
   Must be called once after all key inquiry
   *******************************************************************************/
-  static void updatePrevKeyStates();
+  static void UpdatePrevKeyStates();
 
   /*!*****************************************************************************
   \brief

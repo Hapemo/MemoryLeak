@@ -56,23 +56,23 @@ void PlayerController::Update() {
 	// -----------------------------
 	// Movement input second draft (key movement)
 	// -----------------------------
-		if (Input::CheckKey(STATE::PRESS, KEY::W) || Input::CheckKey(STATE::HOLD, KEY::W)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W)) {
 			e.GetComponent<Physics2D>().moveDirection = static_cast<float>(Math::PI / 2.0);
 			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
-		if (Input::CheckKey(STATE::PRESS, KEY::S) || Input::CheckKey(STATE::HOLD, KEY::S)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) {
 			e.GetComponent<Physics2D>().moveDirection = static_cast<float>(-Math::PI / 2.0);
 			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
-		if (Input::CheckKey(STATE::PRESS, KEY::A) || Input::CheckKey(STATE::HOLD, KEY::A)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) {
 			e.GetComponent<Physics2D>().moveDirection = static_cast<float>(Math::PI);
 			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
-		if (Input::CheckKey(STATE::PRESS, KEY::D) || Input::CheckKey(STATE::HOLD, KEY::D)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D)) {
 			e.GetComponent<Physics2D>().moveDirection = 0.f;
 			e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
 		}
-		if (Input::CheckKey(STATE::PRESS, KEY::M_BUTTON_L) || Input::CheckKey(STATE::HOLD, KEY::M_BUTTON_L)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L)) {
 			Math::Vec2 cursorPos = Input::CursorPos();
 			cursorPos.x -= 800.f;
 			cursorPos.y = (-cursorPos.y) + 450.f;

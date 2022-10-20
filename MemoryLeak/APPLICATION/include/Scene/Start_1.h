@@ -33,7 +33,7 @@ private:
 	\param KEY
 	Key press to operate on these entities
 	*******************************************************************************/
-	void ControlEntityLifespan(std::set<Entity>, KEY);
+	void ControlEntityLifespan(std::set<Entity>, E_KEY);
 
 
 };
