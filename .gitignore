@@ -19,7 +19,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-#*.dll
 
 # Fortran module files
 *.mod
@@ -29,7 +28,7 @@
 *.lai
 *.la
 *.a
-#*.lib
+
 
 # Executables
 *.exe
@@ -42,37 +41,3 @@
 .sqlite
 logs
 
-MemoryLeak/bin/Debug/x64/fmod.dll
-MemoryLeak/bin/Debug/x64/fmodL.dll
-MemoryLeak/bin/Debug/x64/glew32.dll
-MemoryLeak/bin/Debug/x64/glfw3.dll
-MemoryLeak/bin/Debug/x64/TOOLS.lib
-MemoryLeak/bin/Release/x64/fmod.dll
-MemoryLeak/bin/Release/x64/fmodL.dll
-MemoryLeak/bin/Release/x64/glew32.dll
-MemoryLeak/bin/Release/x64/glfw3.dll
-MemoryLeak/bin/Release/x64/TOOLS.lib
-MemoryLeak/bin/Debug/x64/VI.lib
-MemoryLeak/resources/Scene/SceneTemp.json
-MemoryLeak/resources/Scene/SceneTmp.json
-MemoryLeak/bin/Release/x64/TOOLS/TOOLS.lib
-MemoryLeak/bin/Release/x64/VI/VI.lib
-MemoryLeak/bin/Release/x64/VI/glfw3.dll
-MemoryLeak/bin/Release/x64/VI/glew32.dll
-MemoryLeak/bin/Release/x64/VI/fmodL.dll
-MemoryLeak/bin/Release/x64/VI/fmod.dll
-MemoryLeak/bin/Release/x64/VI.lib
-MemoryLeak/bin/Release/x64/TOOLS/glfw3.dll
-MemoryLeak/bin/Release/x64/TOOLS/glew32.dll
-MemoryLeak/bin/Release/x64/TOOLS/fmodL.dll
-MemoryLeak/bin/Release/x64/TOOLS/fmod.dll
-MemoryLeak/bin/Debug/x64/VI/VI.lib
-MemoryLeak/bin/Debug/x64/VI/glfw3.dll
-MemoryLeak/bin/Debug/x64/VI/glew32.dll
-MemoryLeak/bin/Debug/x64/VI/fmodL.dll
-MemoryLeak/bin/Debug/x64/VI/fmod.dll
-MemoryLeak/bin/Debug/x64/TOOLS/TOOLS.lib
-MemoryLeak/bin/Debug/x64/TOOLS/glfw3.dll
-MemoryLeak/bin/Debug/x64/TOOLS/glew32.dll
-MemoryLeak/bin/Debug/x64/TOOLS/fmodL.dll
-MemoryLeak/bin/Debug/x64/TOOLS/fmod.dll
