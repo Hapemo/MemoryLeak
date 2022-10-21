@@ -9,6 +9,8 @@ Game state for testing physics
 *******************************************************************************/
 #include "GameState1.h"
 #include "Application.h"
+#include "PrefabManager.h"
+
 void GameState1::Load() {
     LOAD_TEXTURES("Background");
     LOAD_TEXTURES("Icons");
@@ -23,6 +25,14 @@ void GameState1::Load() {
 
 void GameState1::Init() {
     serializationManager->LoadScene("SceneJPhysics");
+    Prefab pref{};
+    pref.AddComponent<General>({ "Starting Name", TAG::OTHERS, SUBTAG::NOSUBTAG, false });
+    pref.AddComponent<Lifespan>({ 10.f, 2.f });
+
+    int entityCount{ 10 };
+    while (entityCount--) {
+
+    }
 }
 
 void GameState1::Update() {

@@ -7,6 +7,7 @@
 \brief
 This file contains the initialisation of ECS system. Registering all systems and
 components.
+TODO: take note not to change the component registration order. It will break prefab
 *******************************************************************************/
 #pragma once
 #include "pch.h"
