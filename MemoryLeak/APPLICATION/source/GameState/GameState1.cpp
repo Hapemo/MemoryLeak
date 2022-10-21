@@ -9,7 +9,6 @@ Game state for testing physics
 *******************************************************************************/
 #include "GameState1.h"
 #include "Application.h"
-#include "PrefabManager.h"
 
 void GameState1::Load() {
     LOAD_TEXTURES("Background");

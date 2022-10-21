@@ -5,7 +5,8 @@
 \par Group: Memory Leak Studios
 \date 24-09-2022
 \brief
-This file contains all the structs of components used in ECS
+This file contains all the structs of components used in ECS. 
+ComponentType starts from 0.
 *******************************************************************************/
 #pragma once
 #include <glm/glm.hpp>
@@ -13,6 +14,8 @@ This file contains all the structs of components used in ECS
 #include "Graphics/SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
+
+class Prefab;
 
 /*!*****************************************************************************
 \brief
@@ -24,6 +27,7 @@ struct General {
 	TAG tag;
 	SUBTAG	subtag = SUBTAG::NOSUBTAG;
 	bool isActive;
+	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
 };
 
 /*!*****************************************************************************
