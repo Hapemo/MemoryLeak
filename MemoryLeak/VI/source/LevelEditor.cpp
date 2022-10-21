@@ -1204,7 +1204,7 @@ void LevelEditor::DialogEditor()
 	
 	if (selectedID)
 	{
-		ImGui::Button("", ImVec2(1, 150));
+		ImGui::Button(" ", ImVec2(1, 150));
 		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(ImColor(50, 50, 50)));
 		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 120 + ImGui::GetScrollY()));
 		ImGui::BeginChild("yeet", ImVec2(ImGui::GetWindowWidth()-20, 100), true);
