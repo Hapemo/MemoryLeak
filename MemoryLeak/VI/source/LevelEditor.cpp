@@ -1,4 +1,5 @@
 /*!*****************************************************************************
+/*!*****************************************************************************
 \file LevelEditor.cpp
 \author Huang Wei Jhin
 \par DP email: h.weijhin@digipen.edu
@@ -81,6 +82,8 @@ void LevelEditor::Update()
 	static bool showdebug = true;
 	static char filenameS[30] = "Enter scene filename";
 	static char filenameO[30] = "Enter scene filename";
+	static char filenameS_Dialog[30] = "";
+	static char filenameO_Dialog[30] = "";
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
@@ -104,10 +107,20 @@ void LevelEditor::Update()
 				selectedEntity = nullptr;
 			}
 			ImGui::Separator();
-			if (ImGui::MenuItem("Load Dialogs"))
+			ImGui::MenuItem("Open Dialogue File", NULL, false, false);
+			ImGui::InputText(".json ", filenameO_Dialog, 20);
+			if (ImGui::MenuItem("Open", "Ctrl+D")) 
 			{
-				serializationManager->LoadDialogs();
+				serializationManager->LoadDialogs(filenameO_Dialog);
 			}
+			ImGui::Separator();
+			ImGui::MenuItem("Save Dialogue File As", NULL, false, false);
+			ImGui::InputText(".json", filenameS_Dialog, 20);
+			if (ImGui::MenuItem("Save As", "Ctrl+F"))
+			{
+				serializationManager->SaveDialogs(filenameS_Dialog);
+			}
+			ImGui::Separator();
 			if (ImGui::MenuItem("Print Dialogs"))
 			{
 				dialogManager->PrintDialogs();

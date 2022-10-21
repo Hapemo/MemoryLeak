@@ -16,8 +16,7 @@ The DialogManager manages the scripts and dialogues data.
 \brief
 Constructor of the DialogManager.
 *******************************************************************************/
-DialogManager::DialogManager()
-{
+DialogManager::DialogManager() {
 	LOG_CUSTOM_CREATE("DIALOG");
 }
 
@@ -25,30 +24,28 @@ DialogManager::DialogManager()
 \brief
 Destructor of the DialogManager.
 *******************************************************************************/
-DialogManager::~DialogManager()
-{
+DialogManager::~DialogManager() {
 	Clear();
 }
 
 /*!*****************************************************************************
 \brief
-Loads the dialog and it's data into the member vector mDialogs.
+Loads the dialog and it's data into the member map mDialogs.
 
 \param Dialog _dialog
-The dialog data to be loaded into the vector.
+The dialog data to be loaded into the map.
 *******************************************************************************/
-void DialogManager::LoadDialog(Dialog _dialog) {
-	mDialogs.push_back(_dialog);
+void DialogManager::LoadDialog(int _id, Dialog _dialog) {
+	mDialogs[_id] = _dialog;
 }
 
 /*!*****************************************************************************
 \brief
-Prints all the dialog text in the member vector mDialogs.
+Prints all the dialog text in the member map mDialogs.
 *******************************************************************************/
 void DialogManager::PrintDialogs() {
-	for (Dialog dialog : mDialogs) {
-		LOG_CUSTOM("DIALOG", dialog.text.c_str());
-	}
+	for (std::pair<int, Dialog> dialog : mDialogs)
+		LOG_CUSTOM("DIALOG", dialog.second.text.c_str());
 }
 
 /*!*****************************************************************************
@@ -62,8 +59,10 @@ The id of the dialog to be checked.
 Returns true if the dialog has choices else returns false.
 *******************************************************************************/
 bool DialogManager::HasChoice(int _id) {
-	for (Dialog dialog : mDialogs)
-		if (dialog.id == _id && dialog.next2 != 0) return true;
+	if (mDialogs.count(_id)) {
+		if (mDialogs[_id].next2) return true;
+		else return false;
+	} else LOG_ERROR("Dialogue ID doesn't exist!");
 	return false;
 }
 
@@ -78,9 +77,8 @@ The id of the dialog to get the speaker of.
 Returns the speaker id.
 *******************************************************************************/
 int DialogManager::GetSpeaker(int _id) {
-	for (Dialog dialog : mDialogs)
-		if (dialog.id == _id) return dialog.speaker;
-	LOG_ERROR("Dialogue ID doesn't exist!");
+	if(mDialogs.count(_id)) return mDialogs[_id].speaker;
+	else LOG_ERROR("Dialogue ID doesn't exist!");
 	return -1;
 }
 
@@ -95,9 +93,8 @@ The id of the dialog to get.
 Returns the dialog text in string.
 *******************************************************************************/
 std::string DialogManager::GetDialogue(int _id) {
-	for (Dialog dialog : mDialogs)
-		if (dialog.id == _id) return dialog.text;
-	LOG_ERROR("Dialogue ID doesn't exist!");
+	if (mDialogs.count(_id)) return mDialogs[_id].text;
+	else LOG_ERROR("Dialogue ID doesn't exist!");
 	return "";
 }
 
@@ -112,29 +109,53 @@ The id of the current dialog.
 Returns the next dialog id.
 *******************************************************************************/
 int DialogManager::GetNext(int _id) {
-	for (Dialog dialog : mDialogs)
-		if (dialog.id == _id) return dialog.next;
-	LOG_ERROR("Dialogue ID doesn't exist!");
+	if (mDialogs.count(_id)) return mDialogs[_id].next;
+	else LOG_ERROR("Dialogue ID doesn't exist!");
 	return 0;
 }
+
+/*!*****************************************************************************
+\brief
+Retrieves the second choice dialog id.
+
+\param int _id
+The id of the current dialog.
+
+\return
+Returns the second choice dialog id.
+*******************************************************************************/
 int DialogManager::GetNext2(int _id) {
-	for (Dialog dialog : mDialogs)
-		if (dialog.id == _id) return dialog.next2;
-	LOG_ERROR("Dialogue ID doesn't exist!");
+	if (mDialogs.count(_id)) return mDialogs[_id].next2;
+	else LOG_ERROR("Dialogue ID doesn't exist!");
 	return 0;
 }
-int DialogManager::GetSelectedChoice(int _id)
-{
-	for (Dialog dialog : mDialogs)
-		if (dialog.id == _id) return dialog.selectedChoice;
-	LOG_ERROR("Dialogue ID doesn't exist!");
+
+/*!*****************************************************************************
+\brief
+Retrieves the curently selected choice.
+
+\param int _id
+The id of the current dialog.
+*******************************************************************************/
+int DialogManager::GetSelectedChoice(int _id) {
+	if (mDialogs.count(_id)) return mDialogs[_id].selectedChoice;
+	else LOG_ERROR("Dialogue ID doesn't exist!");
 	return 0;
 }
-void DialogManager::SetSelectedChoice(int _id, int _selectedChoice)
-{
-	for (Dialog& dialog : mDialogs)
-		if (dialog.id == _id) dialog.selectedChoice = _selectedChoice;
-	LOG_ERROR("Dialogue ID doesn't exist!");
+
+/*!*****************************************************************************
+\brief
+Set the selected choice.
+
+\param int _id
+The id of the current dialog.
+
+\param int _selectedChoice
+The selected choice.
+*******************************************************************************/
+void DialogManager::SetSelectedChoice(int _id, int _selectedChoice) {
+	if (mDialogs.count(_id)) mDialogs[_id].selectedChoice = _selectedChoice;
+	else  LOG_ERROR("Dialogue ID doesn't exist!");
 }
 
 /*!*****************************************************************************
@@ -149,44 +170,52 @@ Returns a pair of integers with the choices of the dialog.
 *******************************************************************************/
 std::pair<int, int> DialogManager::GetChoices(int _id) {
 	std::pair<int, int> choices;
-	for (Dialog dialog : mDialogs) {
-		if (dialog.id == _id) {
-			if (dialog.next2 == 0) {
-				LOG_ERROR("Dialogue doesn't have choices!");
-				choices.first = choices.second = 0;
-				return choices;
-			}
-			else {
-				choices.first = dialog.next;
-				choices.second = dialog.next2;
-				break;
-			}
+	if (mDialogs.count(_id)) {
+		if (!mDialogs[_id].next2) {
+			LOG_ERROR("Dialogue doesn't have choices!");
+			choices.first = choices.second = 0;
+		}
+		else {
+			choices.first = mDialogs[_id].next;
+			choices.second = mDialogs[_id].next2;
 		}
 	}
+	else LOG_ERROR("Dialogue ID doesn't exist!");
 	return choices;
 }
 
-void DialogManager::EditDialogue(int _id, std::string _text)
-{
-	for (Dialog& dialog : mDialogs)
-	{
-		if (dialog.id == _id)
-		{
-			dialog.text = _text;
-			break;
-		}
-	}
+/*!*****************************************************************************
+\brief
+Edit a certain dialog from the member map mDialogs.
+
+\param int _id
+The id of the current dialog.
+
+\param int _text
+The updated dialog string.
+*******************************************************************************/
+void DialogManager::EditDialogue(int _id, std::string _text) {
+	if (mDialogs.count(_id))
+		mDialogs[_id].text = _text;
 }
-void DialogManager::EditChoice(int _id, int _choice, int _choice2)
-{
-	for (Dialog& dialog : mDialogs)
-	{
-		if (dialog.id == _id)
-		{
-			dialog.next = _choice;
-			dialog.next2 = _choice2;
-			break;
-		}
+
+/*!*****************************************************************************
+\brief
+Swap the 2 choices options in the member map mDialogs.
+
+\param int _id
+The id of the dialog choices to be swap.
+
+\param int _choice
+The first choice.
+
+\param int _choice2
+The second choice.
+*******************************************************************************/
+void DialogManager::EditChoice(int _id, int _choice, int _choice2) {
+	if (mDialogs.count(_id)) {
+		mDialogs[_id].next = _choice;
+		mDialogs[_id].next2 = _choice2;
 	}
 }
 
@@ -210,24 +239,21 @@ The dialog id of the next dialog item/first choice.
 The dialog id of the second choice.
 *******************************************************************************/
 void DialogManager::CreateNewDialogue(int _id, std::string _text, int _speaker, int _next, int _next2) {
-	for (Dialog dialog : mDialogs) {
-		if (dialog.id == _id) {
-			LOG_ERROR("Dialogue ID already exist!");
-			return;
-		}
+	if (mDialogs.count(_id))
+		LOG_ERROR("Dialogue ID already exist!");
+	else {
+		Dialog newDialog;
+		newDialog.text = _text;
+		newDialog.speaker = _speaker;
+		newDialog.next = _next;
+		newDialog.next2 = _next2;
+		mDialogs[_id] = newDialog;
 	}
-	Dialog newDialog;
-	newDialog.id = _id;
-	newDialog.text = _text;
-	newDialog.speaker = _speaker;
-	newDialog.next = _next;
-	newDialog.next2 = _next2;
-	mDialogs.push_back(newDialog);
 }
 
 /*!*****************************************************************************
 \brief
-Clear the member vector mDialogs.
+Clear the member map mDialogs.
 *******************************************************************************/
 void DialogManager::Clear() {
 	mDialogs.clear();
@@ -235,21 +261,13 @@ void DialogManager::Clear() {
 
 /*!*****************************************************************************
 \brief
-Remove a certain dialog from the member vector mDialogs.
+Remove a certain dialog from the member map mDialogs.
 
 \param int _id
 The id of the current dialog.
-
-\return
-Returns the next dialog id.
 *******************************************************************************/
 void DialogManager::RemoveDialog(int _id) {
-	for (size_t index = 0; index < mDialogs.size(); ++index) {
-		if (mDialogs[index].id == _id) {
-			mDialogs.erase(std::next(mDialogs.begin(), index), std::next(mDialogs.begin(), index + 1));
-			return;
-		}
-	}
-	LOG_ERROR("Dialogue ID doesn't exist!");
+	if (mDialogs.count(_id)) mDialogs.erase(_id);
+	else LOG_ERROR("Dialogue ID doesn't exist!");
 }
 
