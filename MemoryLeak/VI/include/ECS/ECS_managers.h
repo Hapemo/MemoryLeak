@@ -415,14 +415,12 @@ bool Entity::HasComponent() const { return Coordinator::GetInstance()->HasCompon
 //-------------------------------------------------------------------------
 template<typename T>
 void Prefab::AddComponent(T const& _component) { // TODO: Possible optimisation to put _component into data instead of *(static_cast<T*>(mComponents[pos]))
-	(void)_component;
-	return;
-	/*ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
+	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
 	mComponents[pos] = new T;
 	*(static_cast<T*>(mComponents[pos])) = _component;
 
 	for (Entity const& e : mPrefabees)
-		e.AddComponent<T>(*(static_cast<T*>(mComponents[pos])));*/
+		e.AddComponent<T>(*(static_cast<T*>(mComponents[pos])));
 }
 
 template<typename T>

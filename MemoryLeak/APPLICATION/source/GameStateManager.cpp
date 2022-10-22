@@ -45,12 +45,6 @@ void GameStateManager::Update() {
 		mCurrGameState->Update();
 		GSControlPanel();
 
-		TRACK_PERFORMANCE("TexturesLoop");
-		//std::vector<int> update = UPDATE_TEXTURES();
-		//for (size_t index = 0; index < update.size(); ++index)
-		//	spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
-		END_TRACK("TexturesLoop");
-
 		Application::SystemUpdate();
 
 		TRACK_PERFORMANCE("Graphics");

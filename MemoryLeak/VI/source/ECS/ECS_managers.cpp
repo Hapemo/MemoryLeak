@@ -42,11 +42,10 @@ Entity Prefab::CreatePrefabee() {
 
 	// Loop through all components, if component exists, add it to entity.
 	for (void* component : mComponents) {
-		++compType;
 		if (!component) continue;
 
 		// TODO: Very dangerous. If there is a change in component order, whole thing breaks
-		switch (compType) {
+		switch (compType++) {
 		case 0: // General
 			e.AddComponent<General>(*(static_cast<General*>(component)));
 			break;
@@ -143,6 +142,8 @@ EntityID EntityManager::CreateEntity() {
 
 void EntityManager::DestroyEntity(EntityID _entity) {
 	assert(_entity < MAX_ENTITIES && "EntityID out of range.");
+	assert(std::find(mAvailableEntities.begin(), mAvailableEntities.end(), _entity) == mAvailableEntities.end() 
+				 && "Attempted to delete non-existant Entity");
 
 	mSignatures[_entity].reset();
 	mAvailableEntities.push_back(_entity);
@@ -212,6 +213,8 @@ EntityID Coordinator::CreateEntity() { return mEntityManager->CreateEntity(); }
 
 // Get the prefab to cut the ties between this entity and the prefab
 void Coordinator::UnlinkPrefab(EntityID _entity) {
+	if (!HasComponent<Lifespan>(_entity)) return;
+	if (!HasComponent<General>(_entity)) return;
 	General genComponent = GetComponent<General>(_entity);
 	if (!genComponent.prefab) {
 		LOG_WARN("Attempted to unlink non-existing prefab from entity. Ignore this if it happens during DestroyEntity.");
@@ -221,10 +224,10 @@ void Coordinator::UnlinkPrefab(EntityID _entity) {
 }
 
 void Coordinator::DestroyEntity(EntityID _entity) {
+	UnlinkPrefab(_entity);
 	mEntityManager->DestroyEntity(_entity);
 	mComponentArrayManager->EntityDestroyed(_entity);
 	mSystemManager->EntityDestroyed(_entity);
-	UnlinkPrefab(_entity);
 }
 
 void Coordinator::DestroyAllEntities() {

@@ -30,8 +30,8 @@ void Application::startup() {
   GLFWStartUp();
   Input::Init(ptr_window);
   GlewStartUp();
-  GameStateManager::GetInstance()->Init();
   ECSManager::ECS_init();
+  GameStateManager::GetInstance()->Init();
 }
 
 void Application::SystemInit() {

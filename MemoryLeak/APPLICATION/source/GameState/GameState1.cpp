@@ -9,7 +9,7 @@ Game state for testing physics
 *******************************************************************************/
 #include "GameState1.h"
 #include "Application.h"
-
+#include "Input.h"
 void GameState1::Load() {
     LOAD_TEXTURES("Background");
     LOAD_TEXTURES("Icons");
@@ -24,17 +24,33 @@ void GameState1::Load() {
 
 void GameState1::Init() {
     serializationManager->LoadScene("SceneJPhysics");
-    Prefab pref{};
-    pref.AddComponent<General>({ "Starting Name", TAG::OTHERS, SUBTAG::NOSUBTAG, false });
     pref.AddComponent<Lifespan>({ 10.f, 2.f });
 
     int entityCount{ 10 };
     while (entityCount--) {
-
+      mEntities.insert(pref.CreatePrefabee());
     }
 }
 
 void GameState1::Update() {
+  if (Input::CheckKey(E_STATE::PRESS, E_KEY::P)) 
+    for (auto const& e : mEntities) {
+      Lifespan lifespan = e.GetComponent<Lifespan>();
+      printf("Lifespan: %f, %f\n", lifespan.lifetime, lifespan.limit);
+    }
+
+  if (Input::CheckKey(E_STATE::PRESS, E_KEY::U)) {
+    Lifespan ls = (mEntities.begin())->GetComponent<Lifespan>();
+    ls.lifetime += 1;
+    ls.limit += 2;
+    pref.UpdateComponent(ls);
+  }
+
+  if (Input::CheckKey(E_STATE::PRESS, E_KEY::D)) {
+    ECS::DestroyEntity(11);
+    mEntities.erase(Entity{ 11 });
+  }
+
 }
 
 void GameState1::Draw() {
