@@ -179,7 +179,6 @@
     <ClInclude Include="include\LevelEditor.h" />
     <ClInclude Include="include\Physics\Physics2DManager.h" />
     <ClInclude Include="include\Player\PlayerController.h" />
-    <ClInclude Include="include\PrefabManager\PrefabManager.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Serialization.h" />
@@ -189,7 +188,6 @@
     <ClInclude Include="include\TagVariable.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="include\PrefabManager\PrefabManager.cpp" />
     <ClCompile Include="source\AI.cpp" />
     <ClCompile Include="source\AudioManger.cpp" />
     <ClCompile Include="source\ColliderTransformManager.cpp" />
