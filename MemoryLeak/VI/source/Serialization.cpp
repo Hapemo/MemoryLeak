@@ -15,6 +15,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include <vec2.h>
 
 
+
 using namespace rapidjson;
 /*!*****************************************************************************
 \brief
@@ -312,7 +313,8 @@ void SerializationManager::SaveScene(std::string _filename)
 	scene.SetObject();
 	
 	StringBuffer buffer;
-	Writer<StringBuffer> writer(buffer);
+	//Writer<StringBuffer> writer(buffer);
+	PrettyWriter<StringBuffer> writer(buffer);
 	int counter = 0;
 	
 	for (const Entity& e : mEntities)
@@ -464,30 +466,33 @@ void SerializationManager::SaveScene(std::string _filename)
 \return
 None.
 *******************************************************************************/
-void SerializationManager::LoadDialogs()
+void SerializationManager::LoadDialogs(std::string _filename)
 {
-	std::ifstream ifs("../resources/Dialogs/Dialog1.json");
-	if (!ifs.good()) LOG_ERROR("Can't open json file!");
-	LOG_INFO("Opening dialog json file!");
+	std::ifstream ifs("../resources/Dialogs/" + _filename + ".json");
+	if (!ifs.good())
+		LOG_ERROR("Can't open " + _filename + ".json file!");
+	else {
+		LOG_INFO("Opened dialog json file: " + _filename);
 
-	std::stringstream contents;
-	contents << ifs.rdbuf();
-	Document doc;
-	doc.Parse(contents.str().c_str());
+		std::stringstream contents;
+		contents << ifs.rdbuf();
+		Document json;
+		json.Parse(contents.str().c_str());
 
-	//std::cout << "contents.str() " << contents.str() << '\n';
-
-	Dialog dialog;
-	Value dialogObj(kObjectType);
-	dialogObj = doc.GetArray();
-	for (rapidjson::SizeType index = 0; index < dialogObj.Size(); ++index) {
-		dialog.id = dialogObj[index]["Dialogue ID"].GetInt();
-		dialog.text = dialogObj[index]["Dialogue Text"].GetString();
-		//std::cout << "dialog.text " << dialog.text << '\n';
-		dialog.speaker = dialogObj[index]["Speaker"].GetInt();
-		dialog.next = dialogObj[index]["Next Dialogue"].GetInt();
-		dialog.next2 = dialogObj[index]["Next Dialogue(2)"].GetInt();
-		dialogManager->LoadDialog(dialog);
+		//std::cout << "contents.str() " << contents.str() << '\n';
+		int dialogId;
+		Dialog dialog;
+		Value dialogObj(kArrayType);
+		dialogObj = json.GetArray();
+		for (rapidjson::SizeType index = 0; index < dialogObj.Size(); ++index) {
+			dialogId = dialogObj[index]["Dialogue ID"].GetInt();
+			dialog.text = dialogObj[index]["Dialogue Text"].GetString();
+			//std::cout << "dialog.text " << dialog.text << '\n';
+			dialog.speaker = dialogObj[index]["Speaker"].GetInt();
+			dialog.next = dialogObj[index]["Next Dialogue"].GetInt();
+			dialog.next2 = dialogObj[index]["Next Dialogue(2)"].GetInt();
+			dialogManager->LoadDialog(dialogId, dialog);
+		}
 	}
 }
 /*!*****************************************************************************
@@ -497,6 +502,30 @@ void SerializationManager::LoadDialogs()
 \return
 None.
 *******************************************************************************/
-void SerializationManager::SaveDialogs()
+void SerializationManager::SaveDialogs(std::string _filename)
 {
+	Document json;
+	auto& allocator = json.GetAllocator();
+	json.SetArray();
+	StringBuffer buffer;
+	Writer<StringBuffer> writer(buffer);
+	Value temp(kObjectType);
+	for (std::pair<int, Dialog> dialog : dialogManager->GetDialogs()){
+		Value dialogObj(kObjectType);
+		std::string text = dialog.second.text;
+		Value dText(text.c_str(), (SizeType)text.size(), allocator);
+		dialogObj.AddMember(StringRef("Dialogue ID"), (int)dialog.first, allocator);
+		dialogObj.AddMember(StringRef("Dialogue Text"), dText, allocator);
+		dialogObj.AddMember(StringRef("Speaker"), (int)dialog.second.speaker, allocator);
+		dialogObj.AddMember(StringRef("Next Dialogue"), (int)dialog.second.next, allocator);
+		dialogObj.AddMember(StringRef("Next Dialogue(2)"), (int)dialog.second.next2, allocator);
+		json.PushBack(dialogObj, allocator);
+	}
+	json.Accept(writer);
+	std::string jsonf(buffer.GetString(), buffer.GetSize());
+	std::string path = "../resources/Dialogs/" + _filename + ".json";
+	std::ofstream ofs(path);
+	ofs << jsonf;
+	if (!ofs.good()) LOG_ERROR("Unable to save dialogue file to: " + path);
+	else LOG_INFO("Saved dialogue file: " + path);
 }

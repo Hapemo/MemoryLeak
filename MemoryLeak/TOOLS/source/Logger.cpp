@@ -35,22 +35,29 @@ void Logger::CreateNew(std::string _newType) {
 Default constructor for the Logger class.
 *******************************************************************************/
 Logger::Logger() {
+    if (!std::filesystem::exists(mFilepath))
+        std::filesystem::create_directory(mFilepath);
+
     // CREATE VECTOR WITH LOG TYPE DETAILS
     for (size_t i = 0; i < mLogNames.size(); ++i)
         mLogTypesVec.push_back({ Util::UpperString(mLogNames[i]), Util::LowerString(mLogNames[i]) + ".log", (int)i });
 
     // opening specific log file types
     mLogFilesVec.resize(mLogTypesVec.size());
-    for (size_t i = 0; i < mLogNames.size(); ++i)
+    for (size_t i = 0; i < mLogNames.size(); ++i) {
         mLogFilesVec[i].open(mFilepath + mLogTypesVec[i].filename.c_str(), std::ios_base::out | std::ios_base::app);
+        mLogFilesVec[i] << "----- NEW RUN -----\n";
+    }
 
     // opening human readable log file
     const std::string logFilename = "log.log";
     mLogInfile.open(mFilepath + logFilename, std::ios_base::out | std::ios_base::app);
+    mLogInfile << "----- NEW RUN -----\n";
 
     // opening full log file with file name and line number
     const std::string fullLogFilename = "fulllog.log";
     mFullLogInfile.open(mFilepath + fullLogFilename, std::ios_base::out | std::ios_base::app);
+    mFullLogInfile << "----- NEW RUN -----\n";
 }
 
 /*!*****************************************************************************
@@ -58,9 +65,12 @@ Logger::Logger() {
 Destructor for the Logger class.
 *******************************************************************************/
 Logger::~Logger() {
+    mLogInfile << "----- END RUN -----\n";
+    mFullLogInfile << "----- END RUN -----\n";
     mLogInfile.close();
     mFullLogInfile.close();
-
-    for (size_t i = 0; i < mLogNames.size(); ++i)
+    for (size_t i = 0; i < mLogNames.size(); ++i) {
+        mLogFilesVec[i] << "----- END RUN -----\n";
         mLogFilesVec[i].close();
+    }
 }

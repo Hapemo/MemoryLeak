@@ -17,5 +17,6 @@ std::vector<ISingleton*> SingletonManager::singletons;
 void SingletonManager::addSingleton(ISingleton* singleton) { singletons.push_back(singleton); }
 
 void SingletonManager::destroyAllSingletons() {
-	for (ISingleton* singleton : singletons) singleton->Destroy();
+	for (ISingleton* singleton : singletons) 
+		singleton->Destroy();
 }

@@ -29,7 +29,7 @@ RenderManager::RenderManager()
 	: mAllocator(NO_OF_OBJECTS, VERTICES_PER_OBJECT, INDICES_PER_OBJECT),
 	mfbo(), mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
-	mWindowHeight(nullptr),	mWindowWidth(nullptr)
+	mWindowHeight(nullptr), mWindowWidth(nullptr)
 {
 	//set debug mode to true
 	mDebug = true;
@@ -68,7 +68,7 @@ Pixel height of the window.
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
-
+	fontManager.Init();
 	//initialize fbo with window width and height
 	mfbo.Init(*mWindowWidth, *mWindowHeight);
 }
@@ -79,6 +79,25 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
+	/*************************************Camera showcase start************************************/
+	////temp
+	//static float muller = 0.001f;
+	//cam *= muller;
+	//if (cam.GetZoom() > 2.f)
+	//	muller = -muller;
+	//if (cam.GetZoom() < 0.5f)
+	//	muller = -muller;
+		
+	////temp
+	//static Math::Vec2 adder(0.f, 1.f);
+	//cam += adder;
+	//std::cout << cam.GetPos() << std::endl;
+	//if (cam.GetPos().y > 450.f)
+	//	adder = -adder;
+	//if (cam.GetPos().y < -450.f)
+	//	adder = -adder;
+	/*************************************Camera showcase end************************************/
+
 	//draw to fbo if flag is true
 	if (!mfbo.GetRenderToScreen())
 		mfbo.Bind();
@@ -180,6 +199,10 @@ void RenderManager::Render()
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
+	fontManager.Draw("hello, fonts is working lol", 540.0f, 660.0f, 0.5f);
+	fontManager.Draw("lol congrats", 540.0f, 630.0f, 0.5f);
+	fontManager.Draw("lol thanks", 540.0f, 600.0f, 0.5f);
+	fontManager.Draw("lol", 540.0f, 570.0f, 0.5f);
 
 	//unbind fbo
 	if (!mfbo.GetRenderToScreen())
@@ -866,12 +889,15 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 		Math::Vec3(_translate.x, _translate.y, 1.f)
 	};
 
-	temp[0][0] /= (float)*mWindowWidth;
-	temp[0][1] /= (float)*mWindowHeight;
-	temp[1][0] /= (float)*mWindowWidth;
-	temp[1][1] /= (float)*mWindowHeight;
-	temp[2][0] /= (float)*mWindowWidth / 2.f;
-	temp[2][1] /= (float)*mWindowHeight / 2.f;
+	temp[2][0] -= cam.GetPos().x;
+	temp[2][1] -= cam.GetPos().y;
+
+	temp[0][0] /= (float)*mWindowWidth * cam.GetZoom();
+	temp[0][1] /= (float)*mWindowHeight * cam.GetZoom();
+	temp[1][0] /= (float)*mWindowWidth * cam.GetZoom();
+	temp[1][1] /= (float)*mWindowHeight * cam.GetZoom();
+	temp[2][0] /= (float)*mWindowWidth / 2.f * cam.GetZoom();
+	temp[2][1] /= (float)*mWindowHeight / 2.f * cam.GetZoom();
 
 	return temp;
 }
