@@ -16,6 +16,7 @@ void GameState1::Load() {
     LOAD_TEXTURES("Menu");
     LOAD_TEXTURES("Sprites");
     LOAD_TEXTURES("Spritesheets");
+    ResourceManager::GetInstance()->LoadAllResources();
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
     renderManager->SetVectorLengthModifier(5.f);

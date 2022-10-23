@@ -15,7 +15,7 @@ The ResourceManager class manages the resources, their data and usage.
 #include <sys/types.h>
 #include <sys/stat.h>
 #define stat _stat
-
+#include <chrono>
 #include <algorithm>
 #include "ResourceManager.h"
 
@@ -191,3 +191,139 @@ Free the resources in the vector.
 void ResourceManager::FreeResources() {
 	mResources.clear();
 }
+
+// GUID is made with the following format
+// GUID is firstly made with total time stamp
+// Then replaced the first byte with resource type
+// Then replace the second byte with instance of guidCounter
+ResourceManager::GUID ResourceManager::GUIDGenerator(std::filesystem::path const& _path) {
+	E_RESOURCETYPE resourceType{ CheckResourceType(_path) };
+	ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
+
+	std::chrono::time_point today = std::chrono::system_clock::now();
+	std::chrono::duration duration = today.time_since_epoch();
+	GUID guid = *static_cast<GUID*>(static_cast<void*>(&duration));
+	unsigned char* guidPtr = static_cast<unsigned char*>(static_cast<void*>(&guid));
+	*guidPtr = static_cast<unsigned char>(resourceType);
+	*(guidPtr + 1) = ++guidCounter; // guidCounter will automatically reset to 0 when overflow, this is intended.
+	return guid;
+}
+
+bool ResourceManager::FileExist(std::string const& _fileName) {
+	std::ifstream file{ _fileName.c_str() };
+	return file.good();
+}
+
+ResourceManager::GUID ResourceManager::ReadGUIDFromFile(std::string const& _metaPath) {
+	std::ifstream file{ _metaPath };
+	char buffer [sizeof(GUID)];
+	file.read(buffer, sizeof(GUID));
+	return *(static_cast<GUID*>(static_cast<void*>(buffer)));
+}
+
+void ResourceManager::LoadAllResources() {
+	LoadAllResources(std::filesystem::path{resourceFolder});
+}
+
+void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
+	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(_folder)) {
+		// If it's a folder, go into it
+		if (std::filesystem::is_directory(entry)) {
+			LoadAllResources(entry);
+			continue;
+		}
+		// Else process any non-meta file
+		const std::string fileName{ entry.filename().string() };
+		if (fileName.find(".meta") != std::string::npos) continue;
+
+		// Check for existing meta file
+		std::string metaPath{ entry.string() + ".meta" };
+		GUID guid{};
+		if (FileExist(metaPath))// If exist, get it's guid
+			guid = ReadGUIDFromFile(metaPath);
+		else {									// else make one and get it's guid
+			guid = GUIDGenerator(entry);
+			std::ofstream newMetaFile(metaPath);
+			char* data = static_cast<char*>(static_cast<void*>(&guid));
+			newMetaFile.write(data, sizeof(guid));
+			newMetaFile.close();
+		}
+
+		// Open and store resources, then linking them to their guid
+		E_RESOURCETYPE resourceType{ CheckResourceType(entry) };
+		ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
+
+		void* dataPointer{};
+		
+		switch (resourceType) {
+		case E_RESOURCETYPE::texture:
+			dataPointer = new TextureData;
+			*(static_cast<TextureData*>(dataPointer)) = LoadTexture(entry.string());
+			break;
+
+		case E_RESOURCETYPE::audio:
+			
+			break;
+
+		case E_RESOURCETYPE::script:
+			
+			break;
+
+		case E_RESOURCETYPE::scene:
+			
+			break;
+
+		case E_RESOURCETYPE::gamestate:
+			
+			break;
+
+		case E_RESOURCETYPE::dialogue:
+			
+			break;
+		}
+		mAllResources.insert({ guid, dataPointer });
+	}
+}
+
+void ResourceManager::UnloadAllResources() {
+	for (auto& [guid, dataPtr] : mAllResources) {
+		E_RESOURCETYPE resourceType{ static_cast<E_RESOURCETYPE>(guid) };
+
+		switch (resourceType) {
+		case E_RESOURCETYPE::texture:
+			delete dataPtr;
+			break;
+
+		case E_RESOURCETYPE::audio:
+
+			break;
+
+		case E_RESOURCETYPE::script:
+
+			break;
+
+		case E_RESOURCETYPE::scene:
+
+			break;
+
+		case E_RESOURCETYPE::gamestate:
+
+			break;
+
+		case E_RESOURCETYPE::dialogue:
+
+			break;
+		}
+	}
+}
+
+ResourceManager::E_RESOURCETYPE ResourceManager::CheckResourceType(std::filesystem::path const& _path) {
+	if (_path.string().find("\\Audio\\") != std::string::npos) return E_RESOURCETYPE::audio;
+	else if (_path.string().find("\\Dialogs\\") != std::string::npos) return E_RESOURCETYPE::dialogue;
+	else if (_path.string().find("\\Scene\\") != std::string::npos) return E_RESOURCETYPE::scene;
+	else if (_path.string().find("\\Textures\\") != std::string::npos) return E_RESOURCETYPE::texture;
+	else if (_path.string().find("\\Scripts\\") != std::string::npos) return E_RESOURCETYPE::script;
+	else if (_path.string().find("\\GameStates\\") != std::string::npos) return E_RESOURCETYPE::gamestate;
+	return E_RESOURCETYPE::error;
+}
+
