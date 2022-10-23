@@ -187,11 +187,6 @@ void RenderManager::Render()
 	mDefaultProgram.Unbind();
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
 
-	mFontManager.Draw("hello, fonts is working lol", 540.0f, 660.0f, 0.5f);
-	mFontManager.Draw("lol congrats", 540.0f, 630.0f, 0.5f);
-	mFontManager.Draw("lol thanks", 540.0f, 600.0f, 0.5f);
-	mFontManager.Draw("lol", 540.0f, 570.0f, 0.5f);
-
 	if (!mRenderGameToScreen)
 	{
 		mCurrRenderPass == RENDER_STATE::GAME ? 
