@@ -61,7 +61,7 @@ protected:
 	std::set<Entity> mEntities;
 
 private:
-	bool pause;
+	bool pause; //TODO can change this to IsActive
 };
 
 
