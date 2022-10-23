@@ -288,9 +288,6 @@
     <ClInclude Include="include\Graphics\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Graphics\EditorCamera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Graphics\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -374,9 +371,6 @@
     <ClCompile Include="source\Graphics\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Graphics\EditorCamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Graphics\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -399,5 +393,7 @@
     </None>
     <None Include="shaders\texture.frag" />
     <None Include="shaders\texture.vert" />
+    <None Include="shaders\font.frag" />
+    <None Include="shaders\font.vert" />
   </ItemGroup>
 </Project>

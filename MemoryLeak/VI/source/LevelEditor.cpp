@@ -941,12 +941,12 @@ void  LevelEditor::WorldViewPort()
 	{
 		//serializationManager->SaveScene("SceneTmp");
 		//isPaused = false;
-		renderManager->GetCamera() *= 0.01f;
+		renderManager->GetWorldCamera() *= 0.01f;
 	}
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
-	GLuint frameBuffer = renderManager->GetFBO();
+	GLuint frameBuffer = renderManager->GetWorldFBO();
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
@@ -1062,11 +1062,12 @@ void  LevelEditor::CameraViewPort()
 	{
 		//serializationManager->SaveScene("SceneTmp");
 		isPaused = false;
+		//renderManager->GetGameCamera() += Math::Vec2(10.f, 10.f);
 	}
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
-	GLuint frameBuffer = renderManager->GetFBO();
+	GLuint frameBuffer = renderManager->GetGameFBO();
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;

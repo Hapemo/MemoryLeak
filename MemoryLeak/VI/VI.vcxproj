@@ -213,7 +213,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\freetype\tttables.h" />
     <ClInclude Include="include\freetype\tttags.h" />
     <ClInclude Include="include\Graphics\Camera.h" />
-    <ClInclude Include="include\Graphics\EditorCamera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
     <ClInclude Include="include\Graphics\Renderer.h" />
     <ClInclude Include="include\MonoScripting.h" />
@@ -266,7 +265,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
     <ClCompile Include="source\Graphics\Camera.cpp" />
-    <ClCompile Include="source\Graphics\EditorCamera.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
     <ClCompile Include="source\Graphics\FontManager.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
@@ -291,6 +289,8 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <None Include="shaders\batch.vert" />
     <None Include="shaders\default.frag" />
     <None Include="shaders\default.vert" />
+    <None Include="shaders\font.frag" />
+    <None Include="shaders\font.vert" />
     <None Include="shaders\texture.frag" />
     <None Include="shaders\texture.vert" />
   </ItemGroup>
