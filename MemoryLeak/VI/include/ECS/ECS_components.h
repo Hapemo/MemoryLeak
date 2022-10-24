@@ -85,31 +85,6 @@ struct SheetAnimation
 	float timeToFrameSwap = 0.f;
 };
 
-/*!*****************************************************************************
-\brief 
-This component encapsulates information regarding dynamic movement of an entity.
-The gravityEnabled variable tells the physics manager if the entity should be
- affected by gravity
-The mass variable contains how heavy the object is
-The speed variable contains how fast the object moves
-The moveDirection variable contains the direction the object is moving in terms
- of radian rotations
-The forces variable contains the net force acting on the object at frametime
-The velocity variable contains the current velocity of the object at frametime
-The renderFlag variable contains the flag variable telling the render manager
- whether to render the velocity vector
-*******************************************************************************/
-struct Physics2D {
-	bool gravityEnabled = false;
-	double mass = 1.f,
-		  inertiaMass = 1.f;
-	Math::Vec2	velocity = { 0.f, 0.f },
-				acceleration = { 0.f, 0.f };
-	Math::Vec2	angularVelocity = { 0.f, 0.f },
-				angularAcceleration = { 0.f, 0.f };
-	bool renderFlag = false;
-};
-
 struct Force {
 	double lifetime;
 	double age;
@@ -132,6 +107,38 @@ struct DragForce : Force{
 
 /*!*****************************************************************************
 \brief
+This component encapsulates information regarding dynamic movement of an entity.
+The gravityEnabled variable tells the physics manager if the entity should be
+ affected by gravity
+The mass variable contains how heavy the object is
+The speed variable contains how fast the object moves
+The moveDirection variable contains the direction the object is moving in terms
+ of radian rotations
+The forces variable contains the net force acting on the object at frametime
+The velocity variable contains the current velocity of the object at frametime
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the velocity vector
+*******************************************************************************/
+struct Physics2D {
+	bool gravityEnabled;
+	bool dynamicsEnabled;
+	double mass;
+	double invMass;
+	double restitution;
+	double friction;
+	double damping;
+	Math::Vec2 accumulatedForce;
+	double speed;
+	float moveDirection;
+	Math::Vec2 velocity;
+	Math::Vec2 acceleration;
+	bool renderFlag;
+
+	std::vector<Force> ActingForces;
+};
+
+/*!*****************************************************************************
+\brief
 This component encapsulates information regarding a rectangular collider for
 collision detection
 The centerOffset variable contains the offset from the entity's transform's 
@@ -140,11 +147,13 @@ The scaleOffset variable contains the offset from the entity's transform's scale
 The renderFlag variable contains the flag variable telling the render manager
  whether to render the collider
 *******************************************************************************/
+struct Collider2D {
+	Math::Vec2 centerOffset;
+	bool renderFlag;
+};
+
 struct RectCollider {
-	Math::Vec2 centerOffset = { 0.f, 0.f },
-			   scaleOffset = {1.f,1.f};
-	// float rotationOffset,
-	bool renderFlag = false;
+	Math::Vec2 scaleOffset;
 };
 
 /*!*****************************************************************************
@@ -158,9 +167,7 @@ The renderFlag variable contains the flag variable telling the render manager
  whether to render the collider
 *******************************************************************************/
 struct CircleCollider {
-	Math::Vec2 centerOffset = { 0.f, 0.f };
-	float scaleOffset = 1.f;
-	bool renderFlag = false;
+	float scaleOffset;
 };
 
 /*!*****************************************************************************

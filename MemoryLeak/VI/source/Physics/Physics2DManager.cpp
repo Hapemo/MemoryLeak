@@ -17,51 +17,24 @@
 // -----------------------------
 // Constant values
 // -----------------------------
-const double fixedDT{ 1.0 / 60.0 },			// Fixed delta time step of 1/60 steps a second
-			 accumulatedDTCap{ 1.0 };		// Accumulated cannot store more than 1 second worth of updates
-const float  velocityCap{ 0.99f };			// Velocity multipler cap to reach max velocity
-const Math::Vec2 gravityForce{ 0.f, -9.81f };// Gravity pull
 
-
-/*!*****************************************************************************
-\brief
-Update function that simulates physics by stepping it in fixedDT when enough
-time has passed
-
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::Update(const double& _appDT) {
 	// Increment accumulatedDT by the application's DT
 	Physics2DManager::mAccumulatedDT += _appDT;
 
 	// Prevent spiral of death
-	if (Physics2DManager::mAccumulatedDT > accumulatedDTCap)
-		Physics2DManager::mAccumulatedDT = accumulatedDTCap;
+	if (Physics2DManager::mAccumulatedDT > Physics2DManager::accumulatedDTCap)
+		Physics2DManager::mAccumulatedDT = Physics2DManager::accumulatedDTCap;
 
 	// If the accumlatedDT is larger than or equal to the defined fixedDT,
 	//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
-	while (Physics2DManager::mAccumulatedDT >= fixedDT) {
+	while (Physics2DManager::mAccumulatedDT >= Physics2DManager::fixedDT) {
 		Physics2DManager::Step();
-		collision2DManager->Update(fixedDT);
-		Physics2DManager::mAccumulatedDT -= fixedDT;
+		//collision2DManager->Update(Physics2DManager::fixedDT);
+		Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
 	}
 }
 
-/*!*****************************************************************************
-\brief
-Step function that executes fixed delta time physics stepping
-
-\param void
-NULL
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::Step() {
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mEntities) {
@@ -69,411 +42,160 @@ void Physics2DManager::Step() {
 		if (!e.HasComponent<Physics2D>())
 			continue;
 
+		// Skip if entity is a static object
+		if (!GetDynamicsEnabled(e))
+			continue;
+
 		// If entity is a gravity enabled object, enact gravity force on it
-		if (Physics2DManager::GetGravityEnabled(e))
-			Physics2DManager::AddGravityForce(e);
+		if (GetGravityEnabled(e)) {
+			SetAcceleration(e, Physics2DManager::gravityForce);
+		}
 		// Add movement as a force acting on the entity
-		Physics2DManager::AddForces(e, Math::Vec2{ cos(Physics2DManager::GetMoveDirection(e)), sin(Physics2DManager::GetMoveDirection(e)) } * Physics2DManager::GetSpeed(e));
-		// Compute acceleration and add to velocity
-		if (Physics2DManager::GetMass(e) != 0.f)
-			Physics2DManager::AddVelocity(e, (Physics2DManager::GetForces(e) / Physics2DManager::GetMass(e)) * static_cast<float>(fixedDT));
-		else
-			Physics2DManager::AddVelocity(e, Physics2DManager::GetForces(e) * static_cast<float>(fixedDT));
+		// AddForce(e, Math::Vec2{ cos(GetMoveDirection(e)), sin(GetMoveDirection(e)) } *GetSpeed(e));
+
+		// Determine acceleration
+		SetAcceleration(e, GetAccumulatedForce(e) * GetInverseMass(e) + GetAcceleration(e));
+
+		// Determine velocity
+		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(fixedDT));
+
+		// Dampen velocity (for soft drag)
+		SetVelocity(e, GetVelocity(e) * std::pow(GetDamping(e), fixedDT));
+
 		// Cap velocity
-		Physics2DManager::ScaleVelocity(e, velocityCap);
-		// Move entity by velocitys
-		e.GetComponent<Transform>().translation += Physics2DManager::GetVelocity(e) * static_cast<float>(fixedDT);
+		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) {
+			SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::velocityCap);
+		}
+
+		// Move entity by velocity
+		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(fixedDT);
 
 		// Reset forces on the object for next step
-		Physics2DManager::SetForces(e, Math::Vec2{ 0.f, 0.f });
+		SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
 	}
 }
 
-/*!*****************************************************************************
-\brief
-HasPhysicsComponent function that checks if the given entity has a physics
-component. If yes, the function returns true. Otherwise it returns false.
 
-\param const Entity &
-A reference to a read-only Entity to check for
-
-\return bool
-Evaluated result of whether the entity has a physics component
-*******************************************************************************/
-bool Physics2DManager::HasPhysicsComponent(const Entity& _e) {
-	return _e.HasComponent<Physics2D>();
-}
-
-/*!*****************************************************************************
-\brief
-AddPhysicsComponent function that adds a physics component to the given entity
-and initializes the component to the given values. If the component already
-exists in the entity, the function will set the component's data members to the
-given values. Finally, it will add the entity to the system's stored list if
-it does not exists in the list yet.
-
-\param const Entity &
-A reference to a read-only Entity to check for
-
-\param const float &
-A reference to a read-only value containing the entity's mass
-
-\param const float &
-A reference to a read-only value containing the entity's speed
-
-\param const float &
-A reference to a read-only value containing the entity's movement direction in the
-form of radian rotations
-
-\param const bool &
-A reference to a read-only value containing the flag value of the render flag
-
-\return void
-NULL
-*******************************************************************************/
-void Physics2DManager::AddPhysicsComponent(const Entity& _e, const bool & _gravityEnabled, const float& _mass, const float& _speed, const float& _moveDirection, const bool& _renderFlag) {
-	// If the physics component does not exists in the entity yet, we add it to the entity with the given values
-	// If it already exists, we reset the values to the given values
-	if (!_e.HasComponent<Physics2D>()) {
-		_e.AddComponent(Physics2D{ _gravityEnabled, _mass, _speed, _moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, _renderFlag });
-	}
-	else {
-		Physics2DManager::SetMass(_e, _mass);
-		Physics2DManager::SetSpeed(_e, _speed);
-		Physics2DManager::SetMoveDirection(_e, _moveDirection);
-		Physics2DManager::SetForces(_e, Math::Vec2{ 0, 0 });
-		Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
-		Physics2DManager::SetPhysicsRenderFlag(_e, _renderFlag);
-	}
-}
-
-/*!*****************************************************************************
-\brief
-RemovePhysicsComponent function that removes the given entity from the system's
-stored list and remove the physics component from the entity itself
-
-\param const Entity &
-A reference to a read-only Entity to remove the physics component from
-
-\return void
-NULL
-*******************************************************************************/
-void Physics2DManager::RemovePhysicsComponent(const Entity& _e) {
-	// Remove component if component exists
-	if (_e.HasComponent<Physics2D>())
-		_e.RemoveComponent<Physics2D>();
-}
-
-/*!*****************************************************************************
-\brief
-GetPhysicsComponent function that getsand returns the physics component of the
-given entity
-
-\param const Entity &
-A reference to a read-only Entity to get from
-
-\return Physics2D &
-A reference to the Physics2D component in the given entity
-*******************************************************************************/
 Physics2D& Physics2DManager::GetPhysicsComponent(const Entity& _e) {
 	return _e.GetComponent<Physics2D>();
 }
 
-/*!*****************************************************************************
-\brief
-GetGravityEnabled function that returns the stored value of the entity's
-gravity enabled flag
-
-\param const Entity &
-A reference to a read-only Entity to
-
-\return bool
-The value of the entity's gravity enabled flag
-*******************************************************************************/
 bool Physics2DManager::GetGravityEnabled(const Entity& _e) {
-	return Physics2DManager::GetPhysicsComponent(_e).gravityEnabled;
+	return GetPhysicsComponent(_e).gravityEnabled;
 }
 
-/*!*****************************************************************************
-\brief
-SetGravityEnabled function that sets the stored value of the entity's
-gravity enabled flag to the given value
-
-\param const Entity &
-A reference to a read-only Entity to
-
-\param const bool &
-A reference to a read-only value containing value to set
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled) {
-	Physics2DManager::GetPhysicsComponent(_e).gravityEnabled = _gravityEnabled;
+	GetPhysicsComponent(_e).gravityEnabled = _gravityEnabled;
 }
 
-/*!*****************************************************************************
-\brief
-GetMass function that returns the stored value of the entity's mass
-
-\param const Entity &
-A reference to a read-only Entity to get from
-
-\return float
-A copy of the value of the entity's mass
-*******************************************************************************/
-float Physics2DManager::GetMass(const Entity& _e) {
-	return Physics2DManager::GetPhysicsComponent(_e).mass;
+bool Physics2DManager::GetDynamicsEnabled(const Entity& _e) {
+	return GetPhysicsComponent(_e).dynamicsEnabled;
 }
 
-/*!*****************************************************************************
-\brief
-SetMass function that sets the stored value of the entity's mass to the given value
-
-\param const Entity &
-A reference to a read-only Entity to set
-
-\param const float &
-A reference to a read-only value containing the mass to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Physics2DManager::SetMass(const Entity& _e, const float& _mass) {
-	Physics2DManager::GetPhysicsComponent(_e).mass = _mass;
+void Physics2DManager::SetDynamicsEnabled(const Entity& _e, const bool& _dynamicsEnabled) {
+	GetPhysicsComponent(_e).dynamicsEnabled = _dynamicsEnabled;
 }
 
-/*!*****************************************************************************
-\brief
-GetSpeed function that returns the stored value of the entity's speed
+double Physics2DManager::GetMass(const Entity& _e) {
+	return GetPhysicsComponent(_e).mass;
+}
 
-\param const Entity &
-A reference to a read-only Entity to get from
+void Physics2DManager::SetMass(const Entity& _e, const double& _mass) {
+	GetPhysicsComponent(_e).mass = _mass;
+}
 
-\return float
-A copy of the value of the entity's speed
-*******************************************************************************/
+double Physics2DManager::GetInverseMass(const Entity& _e) {
+	return GetPhysicsComponent(_e).invMass;
+}
+
+void Physics2DManager::SetInverseMass(const Entity& _e, const double& _invMass) {
+	GetPhysicsComponent(_e).invMass  =  _invMass;
+}
+
+double Physics2DManager::GetRestitution(const Entity& _e) {
+	return GetPhysicsComponent(_e).restitution;
+}
+
+void Physics2DManager::SetRestitution(const Entity& _e, const double& _restitution) {
+	GetPhysicsComponent(_e).restitution = _restitution;
+}
+
+double Physics2DManager::GetFriction(const Entity& _e) {
+	return GetPhysicsComponent(_e).friction;
+}
+
+void Physics2DManager::SetFriction(const Entity& _e, const double& _friction) {
+	GetPhysicsComponent(_e).friction = _friction;
+}
+
+double Physics2DManager::GetDamping(const Entity& _e) {
+	return GetPhysicsComponent(_e).damping;
+}
+
+void Physics2DManager::SetDamping(const Entity& _e, const double& _damping) {
+	GetPhysicsComponent(_e).damping = _damping;
+}
+
 float Physics2DManager::GetSpeed(const Entity& _e) {
-	return Physics2DManager::GetPhysicsComponent(_e).speed;
+	return GetPhysicsComponent(_e).speed;
 }
 
-/*!*****************************************************************************
-\brief
-SetSpeed function that sets the stored value of the entity's speed to the given
-value
-
-\param const Entity &
-A reference to a read-only Entity to set
-
-\param const float &
-A reference to a read-only value containing the speed to set to
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::SetSpeed(const Entity& _e, const float& _speed) {
-	Physics2DManager::GetPhysicsComponent(_e).speed = _speed;
+	GetPhysicsComponent(_e).speed = _speed;
 }
 
-/*!*****************************************************************************
-\brief
-GetMoveDirection function that returns the stored value of the entity's
-moveDirection in the form of radian rotations
-
-\param const Entity &
-A reference to a read-only Entity to remove the physics component from
-
-\return float
-A copy of the value of the entity's moveDirection
-*******************************************************************************/
 float Physics2DManager::GetMoveDirection(const Entity& _e) {
-	return Physics2DManager::GetPhysicsComponent(_e).moveDirection;
+	return GetPhysicsComponent(_e).moveDirection;
 }
 
-/*!*****************************************************************************
-\brief
-SetMoveDirection function that sets the stored value of the entity's move direction
-to the given value
-
-\param const Entity &
-A reference to a read-only Entity to set
-
-\param const float &
-A reference to a read-only value containing the move direction to set to
-Value should be in radians
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::SetMoveDirection(const Entity& _e, const float& _moveDirection) {
-	Physics2DManager::GetPhysicsComponent(_e).moveDirection = _moveDirection;
+	GetPhysicsComponent(_e).moveDirection = _moveDirection;
 }
 
-/*!*****************************************************************************
-\brief
-GetForces function that returns the stored value of the entity's net forces
-
-\param const Entity &
-A reference to a read-only Entity to
-
-\return Math::Vec2
-A copy of the value of the entity's net forces
-*******************************************************************************/
-Math::Vec2 Physics2DManager::GetForces(const Entity& _e) {
-	return Physics2DManager::GetPhysicsComponent(_e).forces;
+Math::Vec2 Physics2DManager::GetAccumulatedForce(const Entity& _e) {
+	return GetPhysicsComponent(_e).accumulatedForce;
 }
 
-/*!*****************************************************************************
-\brief
-SetForces function that sets the stored value of the entity's net forces to the
-given value
-
-\param const Entity &
-A reference to a read-only Entity to set
-
-\param const Math::Vec2 &
-A reference to a read-only value containing net force to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Physics2DManager::SetForces(const Entity& _e, const Math::Vec2& _forces) {
-	Physics2DManager::GetPhysicsComponent(_e).forces = _forces;
+void Physics2DManager::SetAccumulatedForce(const Entity& _e, const Math::Vec2& _accumulatedForce) {
+	GetPhysicsComponent(_e).accumulatedForce = _accumulatedForce;
 }
 
-/*!*****************************************************************************
-\brief
-AddForces function that adds the given force value to the stored value of the
-entity's forces to become the updated net forces
+void Physics2DManager::UpdateAccumulatedForce(const Entity& _e) {
 
-\param const Entity &
-A reference to a read-only Entity to set
-
-\param const Math::Vec2 &
-A reference to a read-only value containing force to add
-
-\return void
-NULL
-*******************************************************************************/
-void Physics2DManager::AddForces(const Entity& _e, const Math::Vec2& _forces) {
-	Physics2DManager::GetPhysicsComponent(_e).forces += _forces;
 }
 
-/*!*****************************************************************************
-\brief
-AddGravityForce function that adds the gravity force value to the stored value of the
-entity's forces to become the updated net forces
-
-\param const Entity &
-A reference to a read-only Entity to set
-
-\return void
-NULL
-*******************************************************************************/
-void Physics2DManager::AddGravityForce(const Entity& _e) {
-	Physics2DManager::AddForces(_e, Physics2DManager::GetMass(_e) * gravityForce);
-}
-
-/*!*****************************************************************************
-\brief
-GetVelocity function that returns the stored value of the entity's velocity
-
-\param const Entity &
-A reference to a read-only Entity to
-
-\return Math::Vec2
-A copy of the value of the entity's velocity
-*******************************************************************************/
 Math::Vec2 Physics2DManager::GetVelocity(const Entity& _e) {
-	return Physics2DManager::GetPhysicsComponent(_e).velocity;
+	return GetPhysicsComponent(_e).velocity;
 }
 
-/*!*****************************************************************************
-\brief
-SetVelocity function that sets the stored value of the entity's velocity to the
-given value
-
-\param const Entity &
-A reference to a read-only Entity to set
-
-\param const Math::Vec2 &
-A reference to a read-only value containing velocity to set to
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::SetVelocity(const Entity& _e, const Math::Vec2& _velocity) {
-	Physics2DManager::GetPhysicsComponent(_e).velocity = _velocity;
+	GetPhysicsComponent(_e).velocity = _velocity;
 }
 
-/*!*****************************************************************************
-\brief
-AddVelocity function that adds the given velocity to the stored value of the
-entity's velocity
-
-\param const Entity &
-A reference to a read-only Entity to set
-
-\param const Math::Vec2 &
-A reference to a read-only value containing velocity to add
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::AddVelocity(const Entity& _e, const Math::Vec2& _velocity) {
-	Physics2DManager::GetPhysicsComponent(_e).velocity += _velocity;
+	GetPhysicsComponent(_e).velocity += _velocity;
 }
 
-/*!*****************************************************************************
-\brief
-ScaleVelocity function that scales the stored value of the entity's velocity by
-the given scalar value
-
-\param const Entity &
-A reference to a read-only Entity to set
-
-\param const float &
-A reference to a read-only value containing the scalar to scale the stored
-velocity by
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::ScaleVelocity(const Entity& _e, const float& _scalar) {
-	Physics2DManager::GetPhysicsComponent(_e).velocity *= _scalar;
+	GetPhysicsComponent(_e).velocity *= _scalar;
 }
 
-/*!*****************************************************************************
-\brief
-GetPhysicsRenderFlag function that returns the stored value of the entity's
-physics render flag
+Math::Vec2 Physics2DManager::GetAcceleration(const Entity& _e) {
+	return GetPhysicsComponent(_e).acceleration;
+}
 
-\param const Entity &
-A reference to a read-only Entity to
+void Physics2DManager::SetAcceleration(const Entity& _e, const Math::Vec2& _acceleration) {
+	GetPhysicsComponent(_e).acceleration = _acceleration;
+}
 
-\return bool
-The value of the entity's physics render flag
-*******************************************************************************/
 bool Physics2DManager::GetPhysicsRenderFlag(const Entity& _e) {
-	return Physics2DManager::GetPhysicsComponent(_e).renderFlag;
+	return GetPhysicsComponent(_e).renderFlag;
 }
 
-/*!*****************************************************************************
-\brief
-SetPhysicsRenderFlag function that sets the stored value of the entity's
-physics render flag to the given value
-
-\param const Entity &
-A reference to a read-only Entity to
-
-\param const bool &
-A reference to a read-only value containing value to set
-
-\return void
-NULL
-*******************************************************************************/
 void Physics2DManager::SetPhysicsRenderFlag(const Entity& _e, const bool& _renderFlag) {
-	Physics2DManager::GetPhysicsComponent(_e).renderFlag = _renderFlag;
+	GetPhysicsComponent(_e).renderFlag = _renderFlag;
 }
 
-
+void Physics2DManager::AddForce(const Entity& _e, const Force& _force) {
+	GetPhysicsComponent(_e).ActingForces.push_back(_force);
+}

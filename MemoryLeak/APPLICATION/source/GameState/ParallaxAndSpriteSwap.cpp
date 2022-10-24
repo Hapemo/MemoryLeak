@@ -35,14 +35,14 @@ void ParallaxAndSpriteSwap::Init() {
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 0 },
         General{ "background", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
     spriteManager->SetTexture(e1, "Textures\\Background\\background.png");
-    physics2DManager->AddPhysicsComponent(e1, false, 1.f, 50.f);
+    //physics2DManager->AddPhysicsComponent(e1, false, 1.f, 50.f);
     Entity e4{ ECS::CreateEntity() };
     mEntities.insert(e4);
     e4.AddComponent(Transform{ {width, height}, 0, {width,0} },
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 0 },
         General{ "background1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
     spriteManager->SetTexture(e4, "Textures\\Background\\background.png");
-    physics2DManager->AddPhysicsComponent(e4, false, 1.f, 50.f);
+    //physics2DManager->AddPhysicsComponent(e4, false, 1.f, 50.f);
 
     //middleground of parallax
     Entity e2{ ECS::CreateEntity() };
@@ -51,14 +51,14 @@ void ParallaxAndSpriteSwap::Init() {
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 1 },
         General{ "middleground", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
     spriteManager->SetTexture(e2, "Textures\\Background\\middleground.png");
-    physics2DManager->AddPhysicsComponent(e2, false, 1.f, 150.f);
+    //physics2DManager->AddPhysicsComponent(e2, false, 1.f, 150.f);
     Entity e5{ ECS::CreateEntity() };
     mEntities.insert(e5);
     e5.AddComponent(Transform{ {width, height}, 0, {width,0} },
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 1 },
         General{ "middleground1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
     spriteManager->SetTexture(e5, "Textures\\Background\\middleground.png");
-    physics2DManager->AddPhysicsComponent(e5, false, 1.f, 150.f);
+    //physics2DManager->AddPhysicsComponent(e5, false, 1.f, 150.f);
 
     //foreground of parallax
     Entity e3{ ECS::CreateEntity() };
@@ -67,14 +67,14 @@ void ParallaxAndSpriteSwap::Init() {
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 2 },
         General{ "foreground", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
     spriteManager->SetTexture(e3, "Textures\\Background\\foreground.png");
-    physics2DManager->AddPhysicsComponent(e3, false, 1.f, 300.f);
+    //physics2DManager->AddPhysicsComponent(e3, false, 1.f, 300.f);
     Entity e6{ ECS::CreateEntity() };
     mEntities.insert(e6);
     e6.AddComponent(Transform{ {width, height}, 0, {width,0} },
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 2 },
         General{ "foreground1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
     spriteManager->SetTexture(e6, "Textures\\Background\\foreground.png");
-    physics2DManager->AddPhysicsComponent(e6, false, 1.f, 300.f);
+    //physics2DManager->AddPhysicsComponent(e6, false, 1.f, 300.f);
     /*************************************Parallax End************************************/
 
     /*************************************Spritesheet Multiple Animation Start************************************/
@@ -84,8 +84,8 @@ void ParallaxAndSpriteSwap::Init() {
     e7.AddComponent(Transform{ {96*2,96*2}, 0, {50, -100} },
         Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
         SheetAnimation{ 6, 0, 0.1f },
-        General{ "spritesheet", TAG::PASSENGER, SUBTAG::NOSUBTAG, true },
-        RectCollider{{0,0},{1,1},true});
+        General{ "spritesheet", TAG::PASSENGER, SUBTAG::NOSUBTAG, true }//,
+        /*RectCollider{{0,0},{1,1},true}*/);
     spriteManager->SetTexture(e7, "Textures\\Spritesheets\\Woodcutter_run.png");
     /*************************************Spritesheet Multiple Animation End************************************/
 
@@ -159,14 +159,14 @@ void ParallaxAndSpriteSwap::Update() {
             /*************************************Scale and Rotate Sprite End************************************/
 
             /*************************************Collider Edit Start************************************/
-            if (Input::CheckKey(STATE::HOLD, KEY::W))
-                e.GetComponent<RectCollider>().centerOffset.y += 1.f;
-            if (Input::CheckKey(STATE::HOLD, KEY::S))
-                e.GetComponent<RectCollider>().centerOffset.y -= 1.f;
-            if (Input::CheckKey(STATE::HOLD, KEY::A))
-                e.GetComponent<RectCollider>().centerOffset.x -= 1.f;
-            if (Input::CheckKey(STATE::HOLD, KEY::D))
-                e.GetComponent<RectCollider>().centerOffset.x += 1.f;
+            //if (Input::CheckKey(STATE::HOLD, KEY::W))
+            //    e.GetComponent<RectCollider>().centerOffset.y += 1.f;
+            //if (Input::CheckKey(STATE::HOLD, KEY::S))
+            //    e.GetComponent<RectCollider>().centerOffset.y -= 1.f;
+            //if (Input::CheckKey(STATE::HOLD, KEY::A))
+            //    e.GetComponent<RectCollider>().centerOffset.x -= 1.f;
+            //if (Input::CheckKey(STATE::HOLD, KEY::D))
+            //    e.GetComponent<RectCollider>().centerOffset.x += 1.f;
 
             if (Input::CheckKey(STATE::HOLD, KEY::I))
                 e.GetComponent<RectCollider>().scaleOffset.y += 0.02f;
