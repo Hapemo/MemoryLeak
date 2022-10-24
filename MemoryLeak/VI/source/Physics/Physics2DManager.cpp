@@ -46,6 +46,9 @@ void Physics2DManager::Step() {
 		if (!GetDynamicsEnabled(e))
 			continue;
 
+		// Update accumulated forces acting on entity
+
+
 		// If entity is a gravity enabled object, enact gravity force on it
 		if (GetGravityEnabled(e)) {
 			SetAcceleration(e, Physics2DManager::gravityForce);
@@ -161,7 +164,27 @@ void Physics2DManager::SetAccumulatedForce(const Entity& _e, const Math::Vec2& _
 }
 
 void Physics2DManager::UpdateAccumulatedForce(const Entity& _e) {
+	std::vector<Force>& EntityActingForces{ GetPhysicsComponent(_e).ActingForces };
+	for (auto it{ EntityActingForces.begin() }; it != EntityActingForces.end();) {
+		if (it->age < it->lifetimeLimit) 
+			it->age += Physics2DManager::fixedDT;
+		else 
+			it->isActive = false;
 
+		if (it->isActive) {
+			switch (it->forceID) {
+			// Linear
+			case 0:
+				break;
+			// Rotational
+			case 1:
+				break;
+			// Drag
+			case 2:
+				break;
+			}
+		}
+	}
 }
 
 Math::Vec2 Physics2DManager::GetVelocity(const Entity& _e) {

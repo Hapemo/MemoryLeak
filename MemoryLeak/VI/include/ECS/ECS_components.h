@@ -86,23 +86,23 @@ struct SheetAnimation
 };
 
 struct Force {
-	double lifetime;
+	double lifetimeLimit;
 	double age;
 	bool isActive;
-};
-
-struct LinearForce : Force {
-	Math::Vec2 unitDirection;
-	double magnitude;
-};
-
-struct RotationalForce : Force {
-	Math::Vec2 torque;
-};
-
-struct DragForce : Force{
-	double	directionalDrag,
-			rotationalDrag;
+	int forceID;
+	union {
+		struct LinearForce {
+			Math::Vec2 unitDirection;
+			double magnitude;
+		} linearForce;
+		struct RotationalForce {
+			Math::Vec2 torque;
+		} rotationalForce;
+		struct DragForce {
+			double	directionalDrag;
+			double	rotationalDrag;
+		} dragForce;
+	};
 };
 
 /*!*****************************************************************************
