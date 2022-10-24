@@ -33,7 +33,25 @@ Prefab::Prefab() : mName(""), mPrefabees(), mComponents() {
 }
 
 Prefab::~Prefab() {
-	for (void* ptr : mComponents) delete ptr;
+	//for (void* ptr : mComponents) 
+	//	delete ptr;
+
+	// TODO: Very dangerous. If there is a change in component order, whole thing breaks
+	delete static_cast<General*>(mComponents[0]);
+	delete static_cast<Lifespan*>(mComponents[1]);
+	delete static_cast<Transform*>(mComponents[2]);
+	delete static_cast<Sprite*>(mComponents[3]);
+	delete static_cast<Animation*>(mComponents[4]);
+	delete static_cast<SheetAnimation*>(mComponents[5]);
+	delete static_cast<Physics2D*>(mComponents[6]);
+	delete static_cast<CircleCollider*>(mComponents[7]);
+	delete static_cast<RectCollider*>(mComponents[8]);
+	delete static_cast<Edge2DCollider*>(mComponents[9]);
+	delete static_cast<Point2DCollider*>(mComponents[10]);
+	delete static_cast<PlayerTmp*>(mComponents[11]);
+	delete static_cast<Stuff*>(mComponents[12]);
+	delete static_cast<Audio*>(mComponents[13]);
+	delete static_cast<Text*>(mComponents[14]);
 }
 
 Entity Prefab::CreatePrefabee() {

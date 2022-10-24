@@ -291,7 +291,7 @@ void ResourceManager::UnloadAllResources() {
 
 		switch (resourceType) {
 		case E_RESOURCETYPE::texture:
-			delete dataPtr;
+			delete static_cast<TextureData*>(dataPtr);
 			break;
 
 		case E_RESOURCETYPE::audio:
