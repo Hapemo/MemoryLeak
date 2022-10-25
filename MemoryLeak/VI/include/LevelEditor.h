@@ -44,6 +44,7 @@ private:
 	void CameraViewPort();
 	void ShowDebugInfo();
 	void DialogEditor();
+	//void CheckUndo(Entity * const e, float old);
 	GLFWwindow* mWindow;
 	int* mWindowWidth;
 	int* mWindowHeight;
@@ -51,4 +52,6 @@ private:
 	bool isPaused;
 	int SRT;
 	
+	std::vector<std::pair<Entity * const, Transform>> undoStack;
+	int stackPointer;
 };
