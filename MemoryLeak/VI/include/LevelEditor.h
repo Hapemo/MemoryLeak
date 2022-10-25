@@ -44,7 +44,9 @@ private:
 	void CameraViewPort();
 	void ShowDebugInfo();
 	void DialogEditor();
-	//void CheckUndo(Entity * const e, float old);
+	void SaveUndo(Entity * const e, Transform& old);
+	void Undo();
+	void Redo();
 	GLFWwindow* mWindow;
 	int* mWindowWidth;
 	int* mWindowHeight;
