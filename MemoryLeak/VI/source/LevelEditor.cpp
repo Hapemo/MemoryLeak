@@ -90,17 +90,11 @@ void LevelEditor::Update()
 	{
 		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::Z))//relocate
 		{
-			stackPointer--;
-			if (stackPointer >= 0)
-			{
-				std::cout << undoStack[stackPointer].second.rotation << "\n";
-				(undoStack[stackPointer].first)->GetComponent<Transform>() = undoStack[stackPointer].second;
-			}
-			else
-			{
-				LOG_ERROR("NO MORE UNDOO");
-				stackPointer = 0;
-			}
+			Undo();
+		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::Y))//relocate
+		{
+			Redo();
 		}
 		if (ImGui::BeginMenu("File"))
 		{
@@ -153,20 +147,12 @@ void LevelEditor::Update()
 			ImGui::Separator();
 			if (ImGui::MenuItem("Undo", "CTRL+Z"))
 			{ 
-				stackPointer--;
-				if (stackPointer >= 0)
-				{
-					std::cout<< undoStack[stackPointer].second.rotation <<"\n";
-					(undoStack[stackPointer].first)->GetComponent<Transform>() = undoStack[stackPointer].second;
-				}
-				else
-				{
-					LOG_ERROR("NO MORE UNDOO");
-					stackPointer = 0;
-				}
-
+				Undo();
 			}
-			if (ImGui::MenuItem("Redo", "CTRL+Y")) { stackPointer++; }
+			if (ImGui::MenuItem("Redo", "CTRL+Y")) 
+			{ 
+				Redo();
+			}
 			ImGui::EndMenu();
 			
 		}
@@ -526,29 +512,21 @@ void LevelEditor::EntityManager()
 					ImGui::DragFloat2("Set Scale", tmpVec2);
 					Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
 					transformManager->SetScale(e, scale);
+					SaveUndo(const_cast<Entity*>(selectedEntity), old);
 
 					tmpVec2[0] = transformManager->GetTranslate(e).x;
 					tmpVec2[1] = transformManager->GetTranslate(e).y;
 					ImGui::DragFloat2("Set Position", tmpVec2);
 					Math::Vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
 					transformManager->SetTranslate(e, pos);
+					SaveUndo(const_cast<Entity*>(selectedEntity), old);
+
 					tmpFloat = transformManager->GetRotation(e);
 					tmpFloat = (float)(tmpFloat / M_PI * 180.f);
 					ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 					tmpFloat = (float)(tmpFloat * M_PI / 180.f);
-					if (ImGui::IsItemActivated())
-					{
-						old = e.GetComponent<Transform>();
-						std::cout << old.rotation << " new old  \n";
-					}
-					if (ImGui::IsItemDeactivatedAfterEdit())
-					{
-						std::cout << old.rotation << " done  old  \n";
-						//undoStack.erase(undoStack.begin() + stackPointer-1);
-						undoStack.push_back(std::make_pair(const_cast<Entity*>(selectedEntity), old));
-						stackPointer = (int)undoStack.size();
-					}
 					transformManager->SetRotation(e, tmpFloat);
+					SaveUndo(const_cast<Entity*>(selectedEntity), old);
 					/*if (ImGui::Button("Remove Transform"))
 					{
 						e.RemoveComponent<Transform>();
@@ -990,10 +968,9 @@ void  LevelEditor::WorldViewPort()
 	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
 
-
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	if (ImGui::IsWindowFocused()) 
+	if (ImGui::IsWindowHovered())
 	{
 		Math::Vec2 ScreenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
 		Math::Vec2 WorldMousePos = ScreenMousePos;
@@ -1223,7 +1200,7 @@ void  LevelEditor::CameraViewPort()
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	//
-	if (ImGui::IsWindowFocused())
+	if (ImGui::IsWindowHovered())
 	{
 		Math::Vec2 ScreenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
 		Math::Vec2 WorldMousePos = ScreenMousePos;
@@ -1467,18 +1444,45 @@ void LevelEditor::Exit()
 
 }
 
-//void LevelEditor::CheckUndo(Entity * const e, float old)
-//{
-//	if (ImGui::IsItemActivated())
-//	{
-//		// here we record the old value for later undo record.
-//		old = neww;
-//	}
-//
-//	if (ImGui::IsItemDeactivatedAfterEdit())
-//	{
-//		
-//		undoStack.push_back(std::pair(e, old));
-//		stackPointer++;
-//	}
-//}
+void LevelEditor::SaveUndo(Entity * const e, Transform& old)
+{
+	if (ImGui::IsItemActivated())
+	{
+		old = e->GetComponent<Transform>();
+		std::cout << old.rotation << " new old  \n";
+	}
+	if (ImGui::IsItemDeactivatedAfterEdit())
+	{
+		std::cout << old.rotation << " done  old  \n";
+		//undoStack.erase(undoStack.begin() + stackPointer-1);
+		undoStack.push_back(std::make_pair(e, old));
+		stackPointer = (int)undoStack.size();
+	}
+}
+void LevelEditor::Undo()
+{
+	stackPointer--;
+	if (stackPointer >= 0)
+	{
+		std::cout << undoStack[stackPointer].second.rotation << "\n";
+		(undoStack[stackPointer].first)->GetComponent<Transform>() = undoStack[stackPointer].second;
+	}
+	else
+	{
+		LOG_ERROR("FK LA NO MORE UNDOO");
+		stackPointer = 0;
+	}
+}
+void LevelEditor::Redo()
+{
+	stackPointer++;
+	if (stackPointer < (int)undoStack.size())
+	{
+		(undoStack[stackPointer].first)->GetComponent<Transform>() = undoStack[stackPointer].second;
+	}
+	else
+	{
+		LOG_ERROR("NO MORE REDOO");
+		stackPointer = (int)undoStack.size() - 1;
+	}
+}
