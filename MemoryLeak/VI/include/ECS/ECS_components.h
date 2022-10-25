@@ -85,26 +85,6 @@ struct SheetAnimation
 	float timeToFrameSwap = 0.f;
 };
 
-struct Force {
-	double lifetimeLimit;
-	double age;
-	bool isActive;
-	int forceID;
-	union {
-		struct LinearForce {
-			Math::Vec2 unitDirection;
-			double magnitude;
-		} linearForce;
-		struct RotationalForce {
-			Math::Vec2 torque;
-		} rotationalForce;
-		struct DragForce {
-			double	directionalDrag;
-			double	rotationalDrag;
-		} dragForce;
-	};
-};
-
 /*!*****************************************************************************
 \brief
 This component encapsulates information regarding dynamic movement of an entity.
@@ -121,20 +101,25 @@ The renderFlag variable contains the flag variable telling the render manager
 *******************************************************************************/
 struct Physics2D {
 	bool gravityEnabled;
+	double gravityScale;
 	bool dynamicsEnabled;
+
 	double mass;
 	double invMass;
+
+	double inertia;
+	double invInertia;
+
+	// double density;
 	double restitution;
 	double friction;
 	double damping;
 	Math::Vec2 accumulatedForce;
-	double speed;
-	float moveDirection;
+	//float speed;
+	//float moveDirection;
 	Math::Vec2 velocity;
 	Math::Vec2 acceleration;
 	bool renderFlag;
-
-	std::vector<Force> ActingForces;
 };
 
 /*!*****************************************************************************

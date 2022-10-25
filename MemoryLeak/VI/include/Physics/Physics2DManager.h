@@ -15,6 +15,45 @@
 // -----------------------------
 #include "ECS_systems.h"
 
+class Force {
+public:
+	Force();
+	~Force();
+
+	Entity GetEntity() {
+		return entity;
+	}
+	void SetEntity(const Entity& _e) {
+		entity = _e;
+	}
+
+	double GetLifetimeLimit() {
+		return lifetimeLimit;
+	}
+	void SetLifetimeLimit()
+
+
+private:
+	Entity entity;
+	double lifetimeLimit;
+	double age;
+	bool isActive;
+	int forceID;
+	union {
+		struct LinearForce {
+			Math::Vec2 unitDirection;
+			float magnitude;
+		} linearForce;
+		struct RotationalForce {
+			Math::Vec2 torque;
+		} rotationalForce;
+		struct DragForce {
+			float	directionalDrag;
+			float	rotationalDrag;
+		} dragForce;
+	};
+};
+
 /*!*****************************************************************************
 \brief Physics system class that handles the updating of object's positions
 	   through the use of forces and fixed dt updates
@@ -40,6 +79,10 @@ public:
 	bool GetGravityEnabled(const Entity& _e);
 
 	void SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled);
+
+	double GetGravityScale(const Entity& _e);
+
+	void SetGravityScale(const Entity& _e, const double& _gravityScale);
 
 	bool GetDynamicsEnabled(const Entity& _e);
 
@@ -77,7 +120,7 @@ public:
 
 	void SetAccumulatedForce(const Entity& _e, const Math::Vec2& _accumulatedForce);
 
-	void UpdateAccumulatedForce(const Entity& _e);
+	void UpdateEntitiesAccumulatedForce();
 
 	Math::Vec2 GetVelocity(const Entity& _e);
 
@@ -95,12 +138,20 @@ public:
 
 	void SetPhysicsRenderFlag(const Entity& _e, const bool& _renderFlag);
 
-	void AddForce(const Entity& _e, const Force& _force);
+	void AddForce(const Entity& _e, const Math::Vec2 _unitDirection = { 0.f, 0.f }, const float& _magnitude = 1.f, 
+				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	void AddForce(const Entity& _e, const Math::Vec2 _torque = { 0.f, 0.f }, 
+				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	void AddForce(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f, 
+				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 private:
 	double mAccumulatedDT{ 0.0 };	// Member variable storing accumulatedDT
 	const double fixedDT{ 1.0 / 60.0 };		// Fixed delta time step of 1/60 steps a second
 	const double accumulatedDTCap{ 1.0 };		// Accumulated cannot store more than 1 second worth of updates
 	const float  velocityCap{ 1000.f };			// 
-	const Math::Vec2 gravityForce{ 0.f, -98.1f };// Gravity pull
+	const Math::Vec2 gravityForce{ 0.f, -9.81f };// Gravity pull
+	bool StepMode;
+
+	std::vector<Force> forceList;
 };
 
