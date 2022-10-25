@@ -1476,13 +1476,13 @@ void LevelEditor::Undo()
 void LevelEditor::Redo()
 {
 	stackPointer++;
-	if (stackPointer < (int)undoStack.size())
+	if (stackPointer <(int)undoStack.size())
 	{
 		(undoStack[stackPointer].first)->GetComponent<Transform>() = undoStack[stackPointer].second;
 	}
 	else
 	{
 		LOG_ERROR("NO MORE REDOO");
-		stackPointer = (int)undoStack.size() - 1;
+		stackPointer = (int)undoStack.size();
 	}
 }
