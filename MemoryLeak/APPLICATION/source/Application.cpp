@@ -17,6 +17,7 @@ start up of window and game system, also runs their update functions.
 #include "LevelEditor.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
+#include "TestScript.h"
 
 // Static variables
 int Application::window_width{};

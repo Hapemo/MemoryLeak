@@ -10,6 +10,8 @@ Game state for testing physics
 #include "GameState1.h"
 #include "Application.h"
 #include "Input.h"
+#include "TestScript.h"
+
 void GameState1::Load() {
     LOAD_TEXTURES("Background");
     LOAD_TEXTURES("Icons");
@@ -31,6 +33,8 @@ void GameState1::Init() {
     while (entityCount--) {
       mEntities.insert(pref.CreatePrefabee());
     }
+    
+    TestScript::StartScript(const_cast<Entity*>(&(*(mEntities.begin()))));
 }
 
 void GameState1::Update() {
