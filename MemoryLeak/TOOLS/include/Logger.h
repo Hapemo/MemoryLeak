@@ -12,7 +12,7 @@ also handles the assertion.
 *******************************************************************************/
 
 #pragma once
-//#pragma warning ( disable : 4840 4477)
+#include <filesystem>
 #include "pch.h"
 #include "Singleton.h"
 #include "Utilities.h"
@@ -108,23 +108,26 @@ public:
     template <typename T, typename ...Args>
     void Log(const std::source_location _logData, const size_t _logType, const T _logMessage, const Args... _logMessages)
     {
+        std::string currentDate = Util::CurrentDateTime(Util::E_DTFORMAT::DATE);
+        std::string currentTime = Util::CurrentDateTime(Util::E_DTFORMAT::TIME);
+
         // pushing log into vector for imgui
-        mLoggerStr.push_back(std::make_pair((E_LOGLEVEL)_logType, ("[" + Util::CurrentDateTime() + "]\t" + _logMessage).c_str()));
+        mLoggerStr.push_back(std::make_pair((E_LOGLEVEL)_logType, ("[" + currentDate + " | " + currentTime + "]\t" + _logMessage).c_str()));
 
         // printing log into terminal
-        std::cout << "[" << Util::CurrentDateTime().c_str() << "]\t" << Logger::mLogTypesVec[_logType].title.c_str() << "\t" << _logMessage << "\n";
+        std::cout << "[" << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME).c_str() << "]\t" << Logger::mLogTypesVec[_logType].title.c_str() << "\t" << _logMessage << "\n";
 
         // human readable log file
-        mLogInfile << "[" << Util::CurrentDateTime() << "]\t" << std::left << std::setw(15) << Logger::mLogTypesVec[_logType].title << _logMessage;
+        mLogInfile << "[" << currentDate << " | " << currentTime << "] " << std::left << std::setw(10) << Logger::mLogTypesVec[_logType].title << _logMessage;
 
         // full log file with file name and line number
-        mFullLogInfile << "[" << Util::CurrentDateTime() << "] " << _logData.file_name() << " (LINE " << _logData.line() << ")\n\t\t\t\t" << Logger::mLogTypesVec[_logType].title << ": " << _logMessage;
+        mFullLogInfile << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME) << " " << Logger::mLogTypesVec[_logType].title << " " << _logData.file_name() << ":" << _logData.line() << " " << _logMessage;
 
         // specific log file types
-        if (_logType == (size_t)Logger::E_LOGLEVEL::LOG_ASSERT)
-            mLogFilesVec[_logType] << "[" << Util::CurrentDateTime() << "] " << _logData.file_name() << " (LINE " << _logData.line() << ")\n\t\t\t\t" << _logMessage;
+        if (_logType == (size_t)Logger::E_LOGLEVEL::LOG_ASSERT || _logType == (size_t)Logger::E_LOGLEVEL::LOG_CRASH)
+            mLogFilesVec[_logType] << "[" << currentDate << " | " << currentTime << "]\n" << _logData.file_name() << ":" << _logData.line() << "\n" << _logMessage;
         else
-            mLogFilesVec[_logType] << "[" << Util::CurrentDateTime() << "]\t" << _logMessage;
+            mLogFilesVec[_logType] << "[" << currentDate << " | " << currentTime  << "] " << _logMessage;
 
         if constexpr (sizeof...(_logMessages) > 0) {
             return Log(_logData, _logType, _logMessages...);
@@ -170,19 +173,19 @@ public:
     {
         std::string filename = _logData.file_name();
         std::string line = std::to_string(_logData.line());
-        std::string data = "\n\t\t\t\tThrown at " + filename + " (LINE " + line + ")\n";
+        std::string data = filename + ":" + line + "\n";
         switch (_type) {
         case (size_t)E_EXCEPTION::RUNTIME_ERR:
-            throw std::runtime_error(_args + data);
+            throw std::runtime_error(data + _args);
             break;
         case (size_t)E_EXCEPTION::RANGE_ERR:
-            throw std::range_error(_args + data);
+            throw std::range_error(data + _args);
             break;
         case (size_t)E_EXCEPTION::OVERFLOW_ERR:
-            throw std::overflow_error(_args + data);
+            throw std::overflow_error(data + _args);
             break;
         case (size_t)E_EXCEPTION::LOGIC_ERR:
-            throw std::logic_error(_args + data);
+            throw std::logic_error(data + _args);
             break;
         }
     }

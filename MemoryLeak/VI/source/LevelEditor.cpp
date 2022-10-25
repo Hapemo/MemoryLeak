@@ -1,4 +1,5 @@
 /*!*****************************************************************************
+/*!*****************************************************************************
 \file LevelEditor.cpp
 \author Huang Wei Jhin
 \par DP email: h.weijhin@digipen.edu
@@ -81,6 +82,8 @@ void LevelEditor::Update()
 	static bool showdebug = true;
 	static char filenameS[30] = "Enter scene filename";
 	static char filenameO[30] = "Enter scene filename";
+	static char filenameS_Dialog[30] = "";
+	static char filenameO_Dialog[30] = "";
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
@@ -104,10 +107,20 @@ void LevelEditor::Update()
 				selectedEntity = nullptr;
 			}
 			ImGui::Separator();
-			if (ImGui::MenuItem("Load Dialogs"))
+			ImGui::MenuItem("Open Dialogue File", NULL, false, false);
+			ImGui::InputText(".json ", filenameO_Dialog, 20);
+			if (ImGui::MenuItem("Open", "Ctrl+D")) 
 			{
-				serializationManager->LoadDialogs();
+				serializationManager->LoadDialogs(filenameO_Dialog);
 			}
+			ImGui::Separator();
+			ImGui::MenuItem("Save Dialogue File As", NULL, false, false);
+			ImGui::InputText(".json", filenameS_Dialog, 20);
+			if (ImGui::MenuItem("Save As", "Ctrl+F"))
+			{
+				serializationManager->SaveDialogs(filenameS_Dialog);
+			}
+			ImGui::Separator();
 			if (ImGui::MenuItem("Print Dialogs"))
 			{
 				dialogManager->PrintDialogs();
@@ -928,12 +941,12 @@ void  LevelEditor::WorldViewPort()
 	{
 		//serializationManager->SaveScene("SceneTmp");
 		//isPaused = false;
-		renderManager->GetCamera() *= 0.01f;
+		renderManager->GetWorldCamera() *= 0.01f;
 	}
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
-	GLuint frameBuffer = renderManager->GetFBO();
+	GLuint frameBuffer = renderManager->GetWorldFBO();
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
@@ -1049,11 +1062,12 @@ void  LevelEditor::CameraViewPort()
 	{
 		//serializationManager->SaveScene("SceneTmp");
 		isPaused = false;
+		//renderManager->GetGameCamera() += Math::Vec2(10.f, 10.f);
 	}
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
-	GLuint frameBuffer = renderManager->GetFBO();
+	GLuint frameBuffer = renderManager->GetGameFBO();
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
@@ -1191,7 +1205,7 @@ void LevelEditor::DialogEditor()
 	
 	if (selectedID)
 	{
-		ImGui::Button("", ImVec2(1, 150));
+		ImGui::Button(" ", ImVec2(1, 150));
 		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(ImColor(50, 50, 50)));
 		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 120 + ImGui::GetScrollY()));
 		ImGui::BeginChild("yeet", ImVec2(ImGui::GetWindowWidth()-20, 100), true);

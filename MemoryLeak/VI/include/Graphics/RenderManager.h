@@ -21,6 +21,8 @@ operates on Entities with Sprite and Transform Components.
 #include "FontManager.h"
 #include "Camera.h"
 
+enum class RENDER_STATE { WORLD, GAME };
+
 /*!*****************************************************************************
 \brief
 Struct that encapsulates what is needed when rendering a texture in OpenGL.
@@ -95,19 +97,28 @@ public:
 	\return
 	Returns the color attachment to the frame buffer.
 	*******************************************************************************/
-	GLuint GetFBO() const { return mfbo.GetColorAttachment(); }
+	GLuint GetWorldFBO() const { return mWorldFBO.GetColorAttachment(); }
+
+	/*!*****************************************************************************
+	\brief
+	Returns the color attachment to the frame buffer.
+
+	\return
+	Returns the color attachment to the frame buffer.
+	*******************************************************************************/
+	GLuint GetGameFBO() const { return mGameFBO.GetColorAttachment(); }
 
 	/*!*****************************************************************************
 	\brief
 	Rendering will be done to the screen instead of the FBO.
 	*******************************************************************************/
-	void RenderToScreen() { mfbo.SetRenderToScreen(true); }
+	void RenderToScreen() { mRenderGameToScreen = true; }
 
 	/*!*****************************************************************************
 	\brief
 	Rendering will be done to the FBO instead of the screen.
 	*******************************************************************************/
-	void RenderToFrameBuffer() { mfbo.SetRenderToScreen(false); }
+	void RenderToFrameBuffer() { mRenderGameToScreen = false; }
 
 	/*!*****************************************************************************
 	\brief
@@ -121,14 +132,16 @@ public:
 	*******************************************************************************/
 	std::vector<float> GetImGuizmoMat4(const Entity& _e);
 
-	Camera& GetCamera() { return cam; }
+	Camera& GetWorldCamera() { return mWorldCam; }
+	Camera& GetGameCamera() { return mGameCam; }
 
 private:
-	Camera cam;
-	FontManager fontManager;
-	bool mDebug;
+	RENDER_STATE mCurrRenderPass;
+	Camera mWorldCam, mGameCam;
+	FontManager mFontManager;
+	bool mDebug, mRenderGameToScreen;
 	float mVectorLengthModifier;
-	FBO mfbo;
+	FBO mWorldFBO, mGameFBO;
 	int* mWindowWidth;
 	int* mWindowHeight;
 	GLShader mDefaultProgram;

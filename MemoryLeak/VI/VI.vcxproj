@@ -77,10 +77,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)lib\Mono\include\mono-2.0;$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)lib\Mono\include\mono-2.0;$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -123,6 +125,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>TOOLS.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\glfw-3.3.7.bin.WIN64\lib-vc2022\glfw3.dll" "$(TargetDir)glfw3.dll" /Y
+copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\x64\glew32.dll" "$(TargetDir)glew32.dll" /Y
+copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmodL.dll" "$(TargetDir)fmodL.dll" /Y
+copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmod.dll" "$(TargetDir)fmod.dll" /Y
+xcopy "$(SolutionDir)lib\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)mono-2.0-sgen.dll" /Y
+xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -141,6 +151,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>TOOLS.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\glfw-3.3.7.bin.WIN64\lib-vc2022\glfw3.dll" "$(TargetDir)glfw3.dll" /Y
+copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\x64\glew32.dll" "$(TargetDir)glew32.dll" /Y
+copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmodL.dll" "$(TargetDir)fmodL.dll" /Y
+copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmod.dll" "$(TargetDir)fmod.dll" /Y
+xcopy "$(SolutionDir)lib\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)mono-2.0-sgen.dll" /Y
+xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -195,9 +213,9 @@
     <ClInclude Include="include\freetype\tttables.h" />
     <ClInclude Include="include\freetype\tttags.h" />
     <ClInclude Include="include\Graphics\Camera.h" />
-    <ClInclude Include="include\Graphics\EditorCamera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
     <ClInclude Include="include\Graphics\Renderer.h" />
+    <ClInclude Include="include\MonoScripting.h" />
     <ClInclude Include="include\Physics\Collision2DManager.h" />
     <ClInclude Include="include\Collision2DManager.h" />
     <ClInclude Include="include\DialogManager.h" />
@@ -247,7 +265,6 @@
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
     <ClCompile Include="source\Graphics\Camera.cpp" />
-    <ClCompile Include="source\Graphics\EditorCamera.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
     <ClCompile Include="source\Graphics\FontManager.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
@@ -264,6 +281,7 @@
     <ClCompile Include="source\Player\PlayerController.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
+    <ClCompile Include="source\MonoScripting.cpp" />
     <ClCompile Include="source\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +289,8 @@
     <None Include="shaders\batch.vert" />
     <None Include="shaders\default.frag" />
     <None Include="shaders\default.vert" />
+    <None Include="shaders\font.frag" />
+    <None Include="shaders\font.vert" />
     <None Include="shaders\texture.frag" />
     <None Include="shaders\texture.vert" />
   </ItemGroup>

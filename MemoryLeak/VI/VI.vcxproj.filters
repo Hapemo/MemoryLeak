@@ -288,10 +288,10 @@
     <ClInclude Include="include\Graphics\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Graphics\EditorCamera.h">
+    <ClInclude Include="include\Graphics\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Graphics\Camera.h">
+    <ClInclude Include="include\MonoScripting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -371,10 +371,10 @@
     <ClCompile Include="source\Graphics\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Graphics\EditorCamera.cpp">
+    <ClCompile Include="source\Graphics\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Graphics\Camera.cpp">
+    <ClCompile Include="source\MonoScripting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -393,5 +393,7 @@
     </None>
     <None Include="shaders\texture.frag" />
     <None Include="shaders\texture.vert" />
+    <None Include="shaders\font.frag" />
+    <None Include="shaders\font.vert" />
   </ItemGroup>
 </Project>
