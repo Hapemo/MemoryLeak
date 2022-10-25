@@ -72,7 +72,7 @@ public:
 	static int getWindowWidth() { return window_width; }
 	static int getWindowHeight() { return window_height; }
 	static bool GetEditorMode() { return editorMode; }
-
+	static void SetEditorMode(bool mode);
 private:
 	static int window_width, window_height;
 	static std::string title;

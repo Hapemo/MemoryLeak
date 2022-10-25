@@ -32,6 +32,7 @@ void Application::startup() {
   GlewStartUp();
   ECSManager::ECS_init();
   GameStateManager::GetInstance()->Init();
+  SetEditorMode(true);
 }
 
 void Application::SystemInit() {
@@ -43,21 +44,24 @@ void Application::SystemInit() {
 void Application::SystemUpdate() {
 
   // AI
+  TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
-  
+  END_TRACK("AI");
+
   // Physics
   TRACK_PERFORMANCE("Physics");
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
 
-  // Audio
-  TRACK_PERFORMANCE("Audio");
-  audioManager->UpdateSound();
-  END_TRACK("Audio");
 
   // Animator
   sheetAnimator->Animate();
   animator->Animate();
+
+  // Audio
+  TRACK_PERFORMANCE("Audio");
+  audioManager->UpdateSound();
+  END_TRACK("Audio");
 
   // Player
   // playerManager->Update(); // Has error on gamestate3, maybe because player was not freed in gamestate1
@@ -86,7 +90,7 @@ void Application::SecondUpdate() {
 
   // Close the window if the close flag is triggered
   if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
-  audioManager->UpdateSound();
+  /////audioManager->UpdateSound();
   // Update ImGui
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
@@ -232,4 +236,10 @@ void Application::fbsize_cb(GLFWwindow* ptr_win, int width, int height) {
   glViewport(0, 0, width, height);
   (void)ptr_win;
   // later, if working in 3D, we'll have to set the projection matrix here ...
+}
+void Application::SetEditorMode(bool mode)
+{
+    editorMode = mode;
+    if (mode) renderManager->RenderToFrameBuffer();
+    else renderManager->RenderToScreen();
 }
