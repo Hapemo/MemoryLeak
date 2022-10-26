@@ -909,6 +909,20 @@ void  LevelEditor::AssetManager()
 			{
 				if (directory.is_directory())
 					m_CurrentDirectory /= path.filename();
+				else
+				{
+					std::string filename = directory.path().stem().string();
+					std::cout << filename.substr(0, 7);
+					if (filename.substr(0, 6) == "Dialog")
+					{
+						serializationManager->LoadDialogs(filename);
+					}
+					else if (filename.substr(0, 5) == "Scene")
+					{
+						serializationManager->LoadScene(filename);
+					}
+
+				}
 			}
 			ImGui::Text(filename.c_str());
 			ImGui::NextColumn();
