@@ -1,0 +1,121 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Ah, it's been a while since I've last seen anyone else here.",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "Do you mind travelling to a place together with me?",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "It feels like it's been so long since I last visited that place...",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 5
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "Where do you want to go?",
+   "Speaker": 1,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "How long has it been?",
+   "Speaker": 1,
+   "Next Dialogue": 12,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "I heard from passer-bys that there lives a porthouse somewhere around here.",
+   "Speaker": 0,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "For some reason, I always find myself immersed with the idea of porthouses...",
+   "Speaker": 0,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 9
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "Does it remind you of anything?",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "Have you ever been to one?",
+   "Speaker": 0,
+   "Next Dialogue": 11,
+   "Next Dialogue(2)": 15
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "Back in the days, I used to work in a porthouse myself where I'd ferry our little men back and forth all the time. I wonder how they're doing now...",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "Definitely. The sound of the waves and sirens of boats surrounding it still resonate with me today...",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 12,
+   "Dialogue Text": "I have already lost count of that myself...",
+   "Speaker": 0,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 13,
+   "Dialogue Text": "All I remember is a final wish I have that's yet to be fulfilled.",
+   "Speaker": 0,
+   "Next Dialogue": 14,
+   "Next Dialogue(2)": 15
+ },
+ {
+   "Dialogue ID": 14,
+   "Dialogue Text": "What is it about?",
+   "Speaker": 1,
+   "Next Dialogue": 16,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 15,
+   "Dialogue Text": "So you're like me...",
+   "Speaker": 1,
+   "Next Dialogue": 17,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 16,
+   "Dialogue Text": "I once met a girl by the dock while I was still working as a portman. We made a promise long ago but it was never kept...",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 17,
+   "Dialogue Text": "Am I? Haha, it's a long story really... Looking back at it, I always wonder how I manage to ferry everyone else and yet I was never able to bring myself back to her...",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
