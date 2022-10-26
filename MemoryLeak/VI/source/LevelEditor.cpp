@@ -1322,16 +1322,16 @@ void LevelEditor::DialogEditor()
 			ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 			ImGui::SameLine(ImGui::GetWindowWidth() - 77 -(dialog.find("\n") != std::string::npos ? dialog.find("\n") : dialog.size()) * 7.4f);
 			if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0))); //unselected
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(220, 30, 58))); //unselected
 			else//1st
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0))); //selected
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 128, 0))); //selected
 		}
 		else //left side (NPC)
 		{
 			//ImGui::Button("passenger", ImVec2(40,40));
 			ImGui::ImageButton(passengerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 			ImGui::SameLine();
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200))); 
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 136, 204))); //passenger
 		}
 		ImGui::Button(dialog.c_str());
 		ImGui::PopStyleColor();
@@ -1360,13 +1360,13 @@ void LevelEditor::DialogEditor()
 				ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 				ImGui::SameLine(ImGui::GetWindowWidth() - 77-(dialog2.find("\n") != std::string::npos ? dialog2.find("\n") : dialog2.size()) * 7.4f);
 				if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
-					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0))); //selected
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 128, 0))); //selected
 				else//1st
-					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0))); //unselected
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(220, 30, 58))); //unselected
 			}
 			else //left side (NPC)
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200)));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 136, 204)));
 			}
 			ImGui::Button(dialog2.c_str());
 			ImGui::PopStyleColor();
