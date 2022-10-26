@@ -49,21 +49,19 @@ void Physics2DManager::Step() {
 		// Update accumulated forces acting on entity
 		UpdateEntitiesAccumulatedForce(e);
 
-		// If entity is a gravity enabled object, enact gravity force on it
-		if (GetGravityEnabled(e)) {
-			SetAcceleration(e, Physics2DManager::gravityForce);
-		}
-		// Add movement as a force acting on the entity
-		// AddForce(e, Math::Vec2{ cos(GetMoveDirection(e)), sin(GetMoveDirection(e)) } *GetSpeed(e));
-
 		// Determine acceleration
-		SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(GetInverseMass(e)) + GetAcceleration(e));
+		if (GetGravityEnabled(e))
+			SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(GetInverseMass(e)) + gravityForce * static_cast<float>(GetGravityScale(e)));
+		else
+			SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(GetInverseMass(e)));
 
 		// Determine velocity
 		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(fixedDT));
+		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * GetInverseInertia(e) * static_cast<float>(fixedDT));
 
 		// Dampen velocity (for soft drag)
-		SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
+		//SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
+		SetVelocity(e, GetVelocity(e) * GetDamping(e));
 
 		// Cap velocity
 		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) {
@@ -72,6 +70,7 @@ void Physics2DManager::Step() {
 
 		// Move entity by velocity
 		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(fixedDT);
+		e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * fixedDT);
 
 		// Reset forces on the object for next step
 		SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
@@ -259,11 +258,12 @@ void Physics2DManager::UpdateEntitiesAccumulatedForce(const Entity& _e) {
 				break;
 			// Rotational
 			case 1:
-
+				SetAngularTorque(_e, GetAngularTorque(_e) + it->rotationalForce.torque);
 				break;
 			// Drag
 			case 2:
 				SetAccumulatedForce(_e, GetAccumulatedForce(_e) * it->dragForce.directionalDrag);
+				SetAngularTorque(_e, GetAngularTorque(_e) * it->dragForce.rotationalDrag);
 				break;
 			}
 

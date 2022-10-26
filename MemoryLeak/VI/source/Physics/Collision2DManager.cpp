@@ -15,11 +15,14 @@
 // -----------------------------
 #include "ECSManager.h"
 
-bool CI_CirclevsCircle() {
+bool CI_CirclevsCircle(Contact& _contactInfo) {
+	// Find relative velocity of both circles
+	
+
 	return false;
 }
 
-bool CI_RectvsRect() {
+bool CI_RectvsRect(Contact& _contactInfo) {
 	return false;
 }
 
@@ -35,15 +38,19 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 void Collision2DManager::GenerateContactList() {
 	// Broad phase here
 
-	//for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
-	//	for (auto e2{e1}; e2 != mEntities.end();++e2) {
-	//		if (e1 == e2)
-	//			continue;
+	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
+		for (auto e2{e1}; e2 != mEntities.end();++e2) {
+			if (e1 == e2)
+				continue;
 
-	//		if (e1->GetComponent<Physics2D>().dynamicsEnabled || e2->GetComponent<Physics2D>().dynamicsEnabled) {
-	//			
-	//			//CollisionDatabase
-	//		}
-	//	}
-	//}
+			// Prevents checks against 2 non moving object
+			//if (e1->GetComponent<Physics2D>().dynamicsEnabled || e2->GetComponent<Physics2D>().dynamicsEnabled) {	
+				//CollisionDatabase
+			//}
+
+			// Callback function to generate contact
+			Contact contact{*e1, *e2};
+			//(*CollisionDatabase[static_cast<int>(e1->GetComponent<Collider2D>().typeID)][static_cast<int>(e2->GetComponent<Collider2D>().typeID)])(contact);
+		}
+	}
 }

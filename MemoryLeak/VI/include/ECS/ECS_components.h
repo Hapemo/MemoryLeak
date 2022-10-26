@@ -86,8 +86,6 @@ struct SheetAnimation
 	float timeToFrameSwap = 0.f;
 };
 
-class Force;
-
 /*!*****************************************************************************
 \brief
 This component encapsulates information regarding dynamic movement of an entity.
@@ -135,23 +133,6 @@ struct Physics2D {
 
 /*!*****************************************************************************
 \brief
-This component encapsulates information regarding a rectangular collider for
-collision detection
-The centerOffset variable contains the offset from the entity's transform's 
- translation
-The scaleOffset variable contains the offset from the entity's transform's scale
-The renderFlag variable contains the flag variable telling the render manager
- whether to render the collider
-*******************************************************************************/
-struct RectCollider {
-	Math::Vec2 centerOffset;
-	Math::Vec2 scaleOffset;
-	bool isTrigger;
-	bool renderFlag;
-};
-
-/*!*****************************************************************************
-\brief
 This component encapsulates information regarding a circular collider for
 collision detection
 The centerOffset variable contains the offset from the entity's transform's
@@ -163,8 +144,31 @@ The renderFlag variable contains the flag variable telling the render manager
 struct CircleCollider {
 	Math::Vec2 centerOffset;
 	float scaleOffset;
+};
+
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a rectangular collider for
+collision detection
+The centerOffset variable contains the offset from the entity's transform's 
+ translation
+The scaleOffset variable contains the offset from the entity's transform's scale
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the collider
+*******************************************************************************/
+struct RectCollider {
+	Math::Vec2 centerOffset;
+	Math::Vec2 scaleOffset;
+};
+
+struct Collider2D {
+	//ColliderType typeID;
 	bool isTrigger;
 	bool renderFlag;
+	//union {
+	//	struct RectCollider rectCollider;
+	//	struct CircleCollider circleCollider;
+	//};
 };
 
 /*!*****************************************************************************

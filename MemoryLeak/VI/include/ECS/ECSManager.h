@@ -41,7 +41,7 @@ extern std::shared_ptr<Animator> animator;
 extern std::shared_ptr<SheetAnimator> sheetAnimator;
 extern std::shared_ptr<PlayerController> playerManager;
 extern std::shared_ptr<Physics2DManager> physics2DManager;
-//extern std::shared_ptr<Collision2DManager> collision2DManager;
+extern std::shared_ptr<Collision2DManager> collision2DManager;
 extern std::shared_ptr<LevelEditor> levelEditor;
 extern std::shared_ptr<AudioManager> audioManager;
 extern std::shared_ptr<SerializationManager> serializationManager;

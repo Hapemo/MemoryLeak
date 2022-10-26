@@ -18,13 +18,13 @@
 #include "ECS_systems.h"
 
 struct Contact {
-	//Manifold(const Entity& _e1, const Entity& _e2) : {};
-
+	Contact(const Entity& _e1, const Entity& _e2) : e1{ _e1 }, e2{ _e2 } {};
 	Entity e1;
 	Entity e2;
 
 	float penetration;
 	Math::Vec2 normal;
+	std::vector<Math::Vec2> contacts;
 };
 
 enum class ColliderType {
@@ -33,7 +33,7 @@ enum class ColliderType {
 	MAXTYPESOFCOLLIDERS
 };
 
-typedef bool (*CollisionCallback)(void);
+typedef bool (*CollisionCallback)(Contact &);
 
 class Collision2DManager : public System {
 public:

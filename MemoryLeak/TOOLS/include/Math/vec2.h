@@ -279,9 +279,13 @@ namespace Math {
   - Second Vec2
 
   \return float
-  - Pseudoscalar result of cross product
+  - Magnitude of orthogonal vector along z-axis
   *******************************************************************************/
   float Cross(const Vec2&, const Vec2&);
+
+  Vec2 Cross(const Vec2&, float);
+
+  Vec2 Cross(float, const Vec2&);
   
   /*!*****************************************************************************
   Distance of a Vec2 to another

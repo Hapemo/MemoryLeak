@@ -106,6 +106,14 @@ namespace Math {
       return _lhs.x * _rhs.y - _lhs.y * _rhs.x;
   }
 
+  Vec2 Cross(const Vec2& _lhs, float scalar) {
+      return Vec2{ scalar * _lhs.y, -scalar * _lhs.x };
+  }
+
+  Vec2 Cross(float scalar, const Vec2& _lhs) {
+      return Vec2{ -scalar * _lhs.y, scalar * _lhs.x };
+  }
+
   float Distance(const Vec2& _lhs, const Vec2& _rhs) {
     return (_lhs - _rhs).Magnitude();
   }
