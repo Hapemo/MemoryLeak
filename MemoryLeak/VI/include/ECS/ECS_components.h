@@ -13,6 +13,7 @@ This file contains all the structs of components used in ECS
 #include "Graphics/SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
+#include "../Physics/Force.h"
 
 struct General {
 	std::string name;
@@ -85,6 +86,8 @@ struct SheetAnimation
 	float timeToFrameSwap = 0.f;
 };
 
+class Force;
+
 /*!*****************************************************************************
 \brief
 This component encapsulates information regarding dynamic movement of an entity.
@@ -115,10 +118,18 @@ struct Physics2D {
 	double friction;
 	double damping;
 	Math::Vec2 accumulatedForce;
+
 	//float speed;
 	//float moveDirection;
+	
 	Math::Vec2 velocity;
 	Math::Vec2 acceleration;
+	
+	double angularVelocity;
+	double angularTorque;
+	
+	std::vector<Force> forceList;
+
 	bool renderFlag;
 };
 
@@ -132,13 +143,11 @@ The scaleOffset variable contains the offset from the entity's transform's scale
 The renderFlag variable contains the flag variable telling the render manager
  whether to render the collider
 *******************************************************************************/
-struct Collider2D {
-	Math::Vec2 centerOffset;
-	bool renderFlag;
-};
-
 struct RectCollider {
+	Math::Vec2 centerOffset;
 	Math::Vec2 scaleOffset;
+	bool isTrigger;
+	bool renderFlag;
 };
 
 /*!*****************************************************************************
@@ -152,7 +161,10 @@ The renderFlag variable contains the flag variable telling the render manager
  whether to render the collider
 *******************************************************************************/
 struct CircleCollider {
+	Math::Vec2 centerOffset;
 	float scaleOffset;
+	bool isTrigger;
+	bool renderFlag;
 };
 
 /*!*****************************************************************************

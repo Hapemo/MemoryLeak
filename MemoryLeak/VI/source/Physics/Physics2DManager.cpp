@@ -36,8 +36,6 @@ void Physics2DManager::Update(const double& _appDT) {
 }
 
 void Physics2DManager::Step() {
-	UpdateEntitiesAccumulatedForce();
-
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mEntities) {
 		// Skip if entity does not have physics component
@@ -49,7 +47,7 @@ void Physics2DManager::Step() {
 			continue;
 
 		// Update accumulated forces acting on entity
-
+		UpdateEntitiesAccumulatedForce(e);
 
 		// If entity is a gravity enabled object, enact gravity force on it
 		if (GetGravityEnabled(e)) {
@@ -115,6 +113,7 @@ double Physics2DManager::GetMass(const Entity& _e) {
 
 void Physics2DManager::SetMass(const Entity& _e, const double& _mass) {
 	GetPhysicsComponent(_e).mass = _mass;
+	SetInverseMass(_e, 1.0 / GetMass(_e));
 }
 
 double Physics2DManager::GetInverseMass(const Entity& _e) {
@@ -123,7 +122,27 @@ double Physics2DManager::GetInverseMass(const Entity& _e) {
 
 void Physics2DManager::SetInverseMass(const Entity& _e, const double& _invMass) {
 	GetPhysicsComponent(_e).invMass  =  _invMass;
+	SetMass(_e, 1.0 / GetInverseMass(_e));
 }
+
+double Physics2DManager::GetInertia(const Entity& _e) {
+	return GetPhysicsComponent(_e).inertia;
+}
+
+void Physics2DManager::SetInertia(const Entity& _e, const double& _inertia) {
+	GetPhysicsComponent(_e).inertia = _inertia;
+	SetInverseInertia(_e, 1.0 / GetInertia(_e));
+}
+
+double Physics2DManager::GetInverseInertia(const Entity& _e) {
+	return GetPhysicsComponent(_e).invInertia;
+}
+
+void Physics2DManager::SetInverseInertia(const Entity& _e, const double& _invInertia) {
+	GetPhysicsComponent(_e).invInertia = _invInertia;
+	SetInertia(_e, 1.0 / GetInverseInertia(_e));
+}
+
 
 double Physics2DManager::GetRestitution(const Entity& _e) {
 	return GetPhysicsComponent(_e).restitution;
@@ -173,42 +192,6 @@ void Physics2DManager::SetAccumulatedForce(const Entity& _e, const Math::Vec2& _
 	GetPhysicsComponent(_e).accumulatedForce = _accumulatedForce;
 }
 
-void Physics2DManager::UpdateEntitiesAccumulatedForce() {
-	for (auto it{ forceList.begin() }; it != forceList.end();) {
-		if (it->age < it->lifetimeLimit) 
-			it->age += Physics2DManager::fixedDT;
-		else if (it->lifetimeLimit == 0.0) {
-			// Assume infinite lifespan
-			// Do nothing
-		}
-		else 
-			it->isActive = false;
-
-		if (it->isActive) {
-			switch (it->forceID) {
-			// Linear
-			case 0:
-				SetAccumulatedForce(it->entity, GetAccumulatedForce(it->entity) + (it->linearForce.unitDirection * it->linearForce.magnitude));
-				break;
-			// Rotational
-			case 1:
-				
-				break;
-			// Drag
-			case 2:
-				SetAccumulatedForce(it->entity, GetAccumulatedForce(it->entity) * it->dragForce.directionalDrag);
-				break;
-			}
-
-			++it;
-		}
-		else {
-			++it;
-			forceList.erase(it - 1);
-		}
-	}
-}
-
 Math::Vec2 Physics2DManager::GetVelocity(const Entity& _e) {
 	return GetPhysicsComponent(_e).velocity;
 }
@@ -233,6 +216,22 @@ void Physics2DManager::SetAcceleration(const Entity& _e, const Math::Vec2& _acce
 	GetPhysicsComponent(_e).acceleration = _acceleration;
 }
 
+double Physics2DManager::GetAngularVelocity(const Entity& _e) {
+	return GetPhysicsComponent(_e).angularVelocity;
+}
+
+void Physics2DManager::SetAngularVelocity(const Entity& _e, const double& _angVel) {
+	GetPhysicsComponent(_e).angularVelocity = _angVel;
+}
+
+double Physics2DManager::GetAngularTorque(const Entity& _e) {
+	return GetPhysicsComponent(_e).angularTorque;
+}
+
+void Physics2DManager::SetAngularTorque(const Entity& _e, const double& _angTorque) {
+	GetPhysicsComponent(_e).angularTorque = _angTorque;
+}
+
 bool Physics2DManager::GetPhysicsRenderFlag(const Entity& _e) {
 	return GetPhysicsComponent(_e).renderFlag;
 }
@@ -241,10 +240,45 @@ void Physics2DManager::SetPhysicsRenderFlag(const Entity& _e, const bool& _rende
 	GetPhysicsComponent(_e).renderFlag = _renderFlag;
 }
 
-void Physics2DManager::AddForce(const Entity& _e, const Math::Vec2 _unitDirection, const float& _magnitude,
+void Physics2DManager::UpdateEntitiesAccumulatedForce(const Entity& _e) {
+	for (auto it{ GetPhysicsComponent(_e).forceList.begin() }; it != GetPhysicsComponent(_e).forceList.end();) {
+		if (it->age < it->lifetimeLimit)
+			it->age += Physics2DManager::fixedDT;
+		else if (it->lifetimeLimit == 0.0) {
+			// Assume infinite lifespan
+			// Do nothing
+		}
+		else
+			it->isActive = false;
+
+		if (it->isActive) {
+			switch (it->forceID) {
+			// Linear
+			case 0:
+				SetAccumulatedForce(_e, GetAccumulatedForce(_e) + (it->linearForce.unitDirection * it->linearForce.magnitude));
+				break;
+			// Rotational
+			case 1:
+
+				break;
+			// Drag
+			case 2:
+				SetAccumulatedForce(_e, GetAccumulatedForce(_e) * it->dragForce.directionalDrag);
+				break;
+			}
+
+			++it;
+		}
+		else {
+			++it;
+			GetPhysicsComponent(_e).forceList.erase(it - 1);
+		}
+	}
+}
+
+void Physics2DManager::AddForce(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude,
 								const double& _lifetimeLimit, const double& _age, const bool& _isActive) {
 	Force tmpForce{};
-	tmpForce.entity = _e;
 	tmpForce.lifetimeLimit = _lifetimeLimit;
 	tmpForce.age = _age;
 	tmpForce.isActive = _isActive;
@@ -252,25 +286,23 @@ void Physics2DManager::AddForce(const Entity& _e, const Math::Vec2 _unitDirectio
 	tmpForce.linearForce.unitDirection = _unitDirection;
 	tmpForce.linearForce.magnitude = _magnitude;
 
-	forceList.push_back(tmpForce);
+	GetPhysicsComponent(_e).forceList.push_back(tmpForce);
 }
 
-void Physics2DManager::AddForce(const Entity& _e, const Math::Vec2 _torque, 
+void Physics2DManager::AddForce(const Entity& _e, const float& _torque, 
 								const double& _lifetimeLimit, const double& _age,  const bool& _isActive) {
 	Force tmpForce{};
-	tmpForce.entity = _e;
 	tmpForce.lifetimeLimit = _lifetimeLimit;
 	tmpForce.age = _age;
 	tmpForce.isActive = _isActive;
 	tmpForce.forceID = 1;
 	tmpForce.rotationalForce.torque = _torque;
 
-	forceList.push_back(tmpForce);
+	GetPhysicsComponent(_e).forceList.push_back(tmpForce);
 }
 void Physics2DManager::AddForce(const Entity& _e, const float& _directionDrag, const float& _rotationDrag,
 								const double& _lifetimeLimit, const double& _age, const bool& _isActive) {
 	Force tmpForce{};
-	tmpForce.entity = _e;
 	tmpForce.lifetimeLimit = _lifetimeLimit;
 	tmpForce.age = _age;
 	tmpForce.isActive = _isActive;
@@ -278,5 +310,10 @@ void Physics2DManager::AddForce(const Entity& _e, const float& _directionDrag, c
 	tmpForce.dragForce.directionalDrag = _directionDrag;
 	tmpForce.dragForce.rotationalDrag = _rotationDrag;
 
-	forceList.push_back(tmpForce);
+	GetPhysicsComponent(_e).forceList.push_back(tmpForce);
+}
+
+void Physics2DManager::ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _contact) {
+	SetVelocity(_e, GetVelocity(_e) + static_cast<float>(GetInverseMass(_e)) * _impulse);
+	SetAngularVelocity(_e, GetAngularVelocity(_e) + GetInverseInertia(_e) * Math::Cross(_impulse, _contact));
 }

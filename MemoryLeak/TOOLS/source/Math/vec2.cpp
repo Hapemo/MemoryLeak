@@ -102,6 +102,10 @@ namespace Math {
     return _lhs.x * _rhs.x + _lhs.y * _rhs.y;
   }
 
+  float Cross(const Vec2& _lhs, const Vec2& _rhs) {
+      return _lhs.x * _rhs.y - _lhs.y * _rhs.x;
+  }
+
   float Distance(const Vec2& _lhs, const Vec2& _rhs) {
     return (_lhs - _rhs).Magnitude();
   }

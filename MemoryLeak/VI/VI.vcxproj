@@ -177,6 +177,7 @@
     <ClInclude Include="include\Graphics\Vertex.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\LevelEditor.h" />
+    <ClInclude Include="include\Physics\Force.h" />
     <ClInclude Include="include\Physics\Physics2DManager.h" />
     <ClInclude Include="include\Player\PlayerController.h" />
     <ClInclude Include="include\ResourceManager.h" />

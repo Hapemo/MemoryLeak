@@ -15,45 +15,6 @@
 // -----------------------------
 #include "ECS_systems.h"
 
-class Force {
-public:
-	Force();
-	~Force();
-
-	Entity GetEntity() {
-		return entity;
-	}
-	void SetEntity(const Entity& _e) {
-		entity = _e;
-	}
-
-	double GetLifetimeLimit() {
-		return lifetimeLimit;
-	}
-	void SetLifetimeLimit()
-
-
-private:
-	Entity entity;
-	double lifetimeLimit;
-	double age;
-	bool isActive;
-	int forceID;
-	union {
-		struct LinearForce {
-			Math::Vec2 unitDirection;
-			float magnitude;
-		} linearForce;
-		struct RotationalForce {
-			Math::Vec2 torque;
-		} rotationalForce;
-		struct DragForce {
-			float	directionalDrag;
-			float	rotationalDrag;
-		} dragForce;
-	};
-};
-
 /*!*****************************************************************************
 \brief Physics system class that handles the updating of object's positions
 	   through the use of forces and fixed dt updates
@@ -68,82 +29,73 @@ public:
 	void Step();
 
 	// -----------------------------
-	// Component-related functions
-	// -----------------------------
-
-	// -----------------------------
 	// Get / Set functions
 	// -----------------------------
 	Physics2D& GetPhysicsComponent(const Entity& _e);
 
 	bool GetGravityEnabled(const Entity& _e);
-
 	void SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled);
 
 	double GetGravityScale(const Entity& _e);
-
 	void SetGravityScale(const Entity& _e, const double& _gravityScale);
 
 	bool GetDynamicsEnabled(const Entity& _e);
-
 	void SetDynamicsEnabled(const Entity& _e, const bool& _dynamicsEnabled);
 
 	double GetMass(const Entity& _e);
-
 	void SetMass(const Entity& _e, const double& _mass);
-
 	double GetInverseMass(const Entity& _e);
-
 	void SetInverseMass(const Entity& _e, const double& _invMass);
 
-	double GetRestitution(const Entity& _e);
+	double GetInertia(const Entity& _e);
+	void SetInertia(const Entity& _e, const double& _inertia);
+	double GetInverseInertia(const Entity& _e);
+	void SetInverseInertia(const Entity& _e, const double& _invInertia);
 
+	double GetRestitution(const Entity& _e);
 	void SetRestitution(const Entity& _e, const double& _restitution);
 
 	double GetFriction(const Entity& _e);
-
 	void SetFriction(const Entity& _e, const double& _friction);
 
 	double GetDamping(const Entity& _e);
-
 	void SetDamping(const Entity& _e, const double& _damping);
 
 	float GetSpeed(const Entity& _e);
-
 	void SetSpeed(const Entity& _e, const float& _speed);
 
 	float GetMoveDirection(const Entity& _e);
-
 	void SetMoveDirection(const Entity& _e, const float& _moveDirection);
 
 	Math::Vec2 GetAccumulatedForce(const Entity& _e);
-
 	void SetAccumulatedForce(const Entity& _e, const Math::Vec2& _accumulatedForce);
 
-	void UpdateEntitiesAccumulatedForce();
-
 	Math::Vec2 GetVelocity(const Entity& _e);
-
 	void SetVelocity(const Entity& _e, const Math::Vec2& _velocity);
-
 	void AddVelocity(const Entity& _e, const Math::Vec2& _velocity);
-
 	void ScaleVelocity(const Entity& _e, const float& _scalar);
 
 	Math::Vec2 GetAcceleration(const Entity& _e);
-
 	void SetAcceleration(const Entity& _e, const Math::Vec2& _acceleration);
 
-	bool GetPhysicsRenderFlag(const Entity& _e);
+	double GetAngularVelocity(const Entity& _e);
+	void SetAngularVelocity(const Entity& _e, const double& _angVel);
 
+	double GetAngularTorque(const Entity& _e);
+	void SetAngularTorque(const Entity& _e, const double& _angTorque);
+
+	bool GetPhysicsRenderFlag(const Entity& _e);
 	void SetPhysicsRenderFlag(const Entity& _e, const bool& _renderFlag);
 
-	void AddForce(const Entity& _e, const Math::Vec2 _unitDirection = { 0.f, 0.f }, const float& _magnitude = 1.f, 
+	void UpdateEntitiesAccumulatedForce(const Entity& _e);
+
+	void AddForce(const Entity& _e, const Math::Vec2& _unitDirection = { 0.f, 0.f }, const float& _magnitude = 1.f, 
 				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
-	void AddForce(const Entity& _e, const Math::Vec2 _torque = { 0.f, 0.f }, 
+	void AddForce(const Entity& _e, const float& _torque = 0.f, 
 				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	void AddForce(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f, 
 				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _contact);
 private:
 	double mAccumulatedDT{ 0.0 };	// Member variable storing accumulatedDT
 	const double fixedDT{ 1.0 / 60.0 };		// Fixed delta time step of 1/60 steps a second
@@ -151,7 +103,5 @@ private:
 	const float  velocityCap{ 1000.f };			// 
 	const Math::Vec2 gravityForce{ 0.f, -9.81f };// Gravity pull
 	bool StepMode;
-
-	std::vector<Force> forceList;
 };
 

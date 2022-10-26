@@ -296,8 +296,8 @@ void RenderManager::RenderDebug()
 		if (e.HasComponent<Physics2D>() && e.GetComponent<Physics2D>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
-			t.scale = Math::Vec2(e.GetComponent<Physics2D>().speed) * mVectorLengthModifier;
-			t.rotation = e.GetComponent<Physics2D>().moveDirection;
+			//t.scale = Math::Vec2(e.GetComponent<Physics2D>().speed) * mVectorLengthModifier;
+			//t.rotation = e.GetComponent<Physics2D>().moveDirection;
 			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
 		}
 
