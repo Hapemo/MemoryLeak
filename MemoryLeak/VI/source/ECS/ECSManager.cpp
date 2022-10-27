@@ -67,7 +67,6 @@ void ECSManager::RegisterRenderManager() {
 
 void ECSManager::RegisterPhysics2DManager() {
 	Signature signature{};
-	signature.set(ECS::GetComponentType<General>());
 	signature.set(ECS::GetComponentType<Physics2D>());
 
 	physics2DManager = ECS::RegisterSystem<Physics2DManager>();

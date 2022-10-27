@@ -89,16 +89,31 @@ struct SheetAnimation
 /*!*****************************************************************************
 \brief
 This component encapsulates information regarding dynamic movement of an entity.
-The gravityEnabled variable tells the physics manager if the entity should be
- affected by gravity
-The mass variable contains how heavy the object is
-The speed variable contains how fast the object moves
-The moveDirection variable contains the direction the object is moving in terms
- of radian rotations
-The forces variable contains the net force acting on the object at frametime
-The velocity variable contains the current velocity of the object at frametime
-The renderFlag variable contains the flag variable telling the render manager
- whether to render the velocity vector
+> The gravityEnabled variable tells the physics manager if the entity should be
+   affected by gravity
+> The gravityScale variable tells the physics manager how much should the base 
+   gravity force affect this object
+> The dynamicsEnabled variable tells the physics manager if the entity is a 
+   static, non-moving object that should not move
+> The mass variable contains how heavy the object is
+> The invMass variable contains the reciprocal of the mass mostly used in 
+   calculations
+> The inertia variable contains how much force is required to move the object
+> The invInertia variable contains the reciprocal of the inertia mostly used in 
+   calculations
+> The restitution variable contains the restitution value which is used during 
+   collision resolution to determine the amount of force conserved
+> The friction variable contains the friction value 
+> The damping variable contains the damping value used to create soft drag
+> The accumulatedForce variable contains the sum of forces acting on the entity
+   at the current step
+> The velocity variable contains the current velocity of the object
+> The acceleration variable contains the current acceleration value of the object
+> The angularVelocity variable contains the current angular velocity of the object
+> The angularTorque variable contains the current angular acceleration of the object
+> The forceList variable contains the list of forces acting on the object
+> The renderFlag variable contains the flag variable telling the render manager
+   whether to render the velocity vector
 *******************************************************************************/
 struct Physics2D {
 	bool gravityEnabled;
@@ -162,13 +177,13 @@ struct RectCollider {
 };
 
 struct Collider2D {
-	//ColliderType typeID;
+	int typeID;
 	bool isTrigger;
 	bool renderFlag;
-	//union {
-	//	struct RectCollider rectCollider;
-	//	struct CircleCollider circleCollider;
-	//};
+	union {
+		struct RectCollider rectCollider;
+		struct CircleCollider circleCollider;
+	};
 };
 
 /*!*****************************************************************************

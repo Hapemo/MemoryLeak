@@ -4,19 +4,16 @@
 \par	DP email: l.hsienweijoachim@digipen.edu
 \par	Course: GAM200
 \par	Group: Memory Leak Studios
-\date	22-09-2022
+\date	27-09-2022
 \brief  This file contains the definition of the Physics System Class member
 		functions which handles the dynamics of entities stored in its list
+		as well as the management of forces acting on the entities
 *******************************************************************************/
 
 // -----------------------------
 // Include files
 // -----------------------------
 #include "ECSManager.h"
-
-// -----------------------------
-// Constant values
-// -----------------------------
 
 void Physics2DManager::Update(const double& _appDT) {
 	// Increment accumulatedDT by the application's DT
@@ -61,7 +58,7 @@ void Physics2DManager::Step() {
 
 		// Dampen velocity (for soft drag)
 		//SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
-		SetVelocity(e, GetVelocity(e) * GetDamping(e));
+		ScaleVelocity(e, static_cast<float>(std::pow(GetDamping(e), fixedDT)));
 
 		// Cap velocity
 		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) {
@@ -77,7 +74,37 @@ void Physics2DManager::Step() {
 	}
 }
 
+void Physics2DManager::AddPhysicsComponent() {
+	//// If the physics component does not exists in the entity yet, we add it to the entity with the given values
+	//// If it already exists, we reset the values to the given values
+	//if (!_e.HasComponent<Physics2D>()) {
+	//	_e.AddComponent(Physics2D{ _gravityEnabled, _mass, _speed, _moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, _renderFlag });
+	//}
+	//else {
+	//	Physics2DManager::SetMass(_e, _mass);
+	//	Physics2DManager::SetSpeed(_e, _speed);
+	//	Physics2DManager::SetMoveDirection(_e, _moveDirection);
+	//	Physics2DManager::SetForces(_e, Math::Vec2{ 0, 0 });
+	//	Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
+	//	Physics2DManager::SetPhysicsRenderFlag(_e, _renderFlag);
+	//}
+}
 
+void Physics2DManager::RemovePhysicsComponent(const Entity& _e) {
+	// Remove component if component exists
+	if (_e.HasComponent<Physics2D>())
+		_e.RemoveComponent<Physics2D>();
+}
+
+/*!*****************************************************************************
+\brief
+GetPhysicsComponent function that getsand returns the physics component of the
+given entity
+\param const Entity &
+A reference to a read-only Entity to get from
+\return Physics2D &
+A reference to the Physics2D component in the given entity
+*******************************************************************************/
 Physics2D& Physics2DManager::GetPhysicsComponent(const Entity& _e) {
 	return _e.GetComponent<Physics2D>();
 }
@@ -89,6 +116,7 @@ bool Physics2DManager::GetGravityEnabled(const Entity& _e) {
 void Physics2DManager::SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled) {
 	GetPhysicsComponent(_e).gravityEnabled = _gravityEnabled;
 }
+
 
 double Physics2DManager::GetGravityScale(const Entity& _e) {
 	return GetPhysicsComponent(_e).gravityScale;
@@ -141,7 +169,6 @@ void Physics2DManager::SetInverseInertia(const Entity& _e, const double& _invIne
 	GetPhysicsComponent(_e).invInertia = _invInertia;
 	SetInertia(_e, 1.0 / GetInverseInertia(_e));
 }
-
 
 double Physics2DManager::GetRestitution(const Entity& _e) {
 	return GetPhysicsComponent(_e).restitution;
