@@ -27,9 +27,9 @@ bool Application::editorMode = false;
 
 void Application::startup() {
   loadConfig("../config.txt");
-  glfwStartUp();
-  Input::init(ptr_window);
-  glewStartUp();
+  GLFWStartUp();
+  Input::Init(ptr_window);
+  GlewStartUp();
   GameStateManager::GetInstance()->Init();
   ECSManager::ECS_init();
 }
@@ -40,6 +40,28 @@ void Application::SystemInit() {
   renderManager->Init(&window_width, &window_height);
 }
 
+void Application::SystemUpdate() {
+
+  // AI
+  aiManager->updateAI();
+  
+  // Physics
+  TRACK_PERFORMANCE("Physics");
+  physics2DManager->Update(FPSManager::dt);
+  END_TRACK("Physics");
+
+  // Audio
+  TRACK_PERFORMANCE("Audio");
+  audioManager->UpdateSound();
+  END_TRACK("Audio");
+
+  // Animator
+  sheetAnimator->Animate();
+  animator->Animate();
+
+  // Player
+  // playerManager->Update(); // Has error on gamestate3, maybe because player was not freed in gamestate1
+}
 
 void Application::init() {
   // Part 1
@@ -74,7 +96,7 @@ void Application::SecondUpdate() {
   }
   END_TRACK("Editor");
 
-  if (Input::CheckKey(STATE::RELEASE, KEY::E)&& Input::CheckKey(STATE::HOLD, KEY::LEFT_CONTROL))
+  if (Input::CheckKey(E_STATE::RELEASE, E_KEY::E)&& Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL))
   {
       editorMode = !editorMode;
       if (editorMode)
@@ -89,7 +111,7 @@ void Application::SecondUpdate() {
 
   }
   // Reset input
-  Input::updatePrevKeyStates();
+  Input::UpdatePrevKeyStates();
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 
@@ -149,7 +171,7 @@ void Application::PrintTitleBar(double _s) {
   }
 }
 
-void Application::glfwStartUp() {
+void Application::GLFWStartUp() {
   // Part 1
   ASSERT(!glfwInit(), "GLFW init has failed - abort program!!!\n");
   
@@ -185,7 +207,7 @@ void Application::glfwStartUp() {
   glfwSwapInterval(0);
 }
 
-void Application::glewStartUp() {
+void Application::GlewStartUp() {
   // Part 2: Initialize entry points to OpenGL functions and extensions
   GLenum err = glewInit();
 

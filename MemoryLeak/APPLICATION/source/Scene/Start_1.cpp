@@ -202,7 +202,7 @@ void Start_1::Clear() {
     //levelEditor->exit();
 }
 
-void Start_1::ControlEntityLifespan(std::set<Entity> entities, KEY key) {
+void Start_1::ControlEntityLifespan(std::set<Entity> entities, E_KEY key) {
   if (Input::CheckKey(HOLD, key)) {
     if (Input::CheckKey(PRESS, LEFT_SHIFT))
       lifespanManager->Reset(entities);

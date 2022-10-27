@@ -1,5 +1,5 @@
 /*!*****************************************************************************
-\file PrrformanceVisualiser.h
+\file PerformanceVisualiser.h
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200

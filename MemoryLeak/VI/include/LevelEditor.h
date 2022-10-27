@@ -40,7 +40,10 @@ private:
 	void EntityManager();
 	void AssetManager();
 	void ViewPortManager();
+	void WorldViewPort();
+	void CameraViewPort();
 	void ShowDebugInfo();
+	void DialogEditor();
 	GLFWwindow* mWindow;
 	int* mWindowWidth;
 	int* mWindowHeight;

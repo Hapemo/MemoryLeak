@@ -16,6 +16,12 @@ The functions in this class acts as an aid to other functions.
 
 class Util {
 public:
+    enum class E_DTFORMAT {
+        DATE_TIME = 0,
+        DATE = 1,
+        TIME = 2
+    };
+
     /*!*****************************************************************************
     \brief
     Get current date and time in DD-MM-YYYY | HH:mm:ss format
@@ -26,7 +32,7 @@ public:
     \return
     Returns a const date and time in string.
     *******************************************************************************/
-    static const std::string CurrentDateTime();
+    static const std::string CurrentDateTime(E_DTFORMAT _format);
 
     /*!*****************************************************************************
     \brief

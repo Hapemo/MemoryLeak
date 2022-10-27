@@ -20,11 +20,11 @@ The DialogManager manages the scripts and dialogues data.
 The struct for all the dialog's data.
 *******************************************************************************/
 struct Dialog {
-	int id = -1;
 	std::string text = "";
-	int speaker = -1;
-	int next = -1;
-	int next2 = -1;
+	int speaker = 0;
+	int next = 0;
+	int next2 = 0;
+	int selectedChoice = 0;
 };
 
 class DialogManager : public System
@@ -44,27 +44,27 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Loads the dialog and it's data into the member vector mDialogs.
+	Loads the dialog and it's data into the member map mDialogs.
 
 	\param Dialog _dialog
-	The dialog data to be loaded into the vector.
+	The dialog data to be loaded into the map.
 	*******************************************************************************/
-	void LoadDialog(Dialog _dialog);
+	void LoadDialog(int _id, Dialog _dialog);
 
 	/*!*****************************************************************************
 	\brief
-	Prints all the dialog text in the member vector mDialogs.
+	Prints all the dialog text in the member map mDialogs.
 	*******************************************************************************/
 	void PrintDialogs();
 
 	/*!*****************************************************************************
 	\brief
-	Gets the vector (mDialogs) filled with all the dialog data.
+	Gets the map (mDialogs) filled with all the dialog data.
 
 	\return
-	Returns a vector of Dialog structs.
+	Returns a map of Dialog structs.
 	*******************************************************************************/
-	std::vector<Dialog> GetDialogs() { return mDialogs; }
+	std::map<int, Dialog> GetDialogs() { return mDialogs; }
 
 	/*!*****************************************************************************
 	\brief
@@ -125,7 +125,40 @@ public:
 	Returns the next dialog id.
 	*******************************************************************************/
 	int GetNext(int _id);
-	
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the second choice dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the second choice dialog id.
+	*******************************************************************************/
+	int GetNext2(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the curently selected choice.
+
+	\param int _id
+	The id of the current dialog.
+	*******************************************************************************/
+	int GetSelectedChoice(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Set the selected choice.
+
+	\param int _id
+	The id of the current dialog.
+
+	\param int _selectedChoice
+	The selected choice.
+	*******************************************************************************/
+	void SetSelectedChoice(int _id, int _selectedChoice);
+
 	/*!*****************************************************************************
 	\brief
 	Creates a new dialog item.
@@ -147,13 +180,52 @@ public:
 	*******************************************************************************/
 	void CreateNewDialogue(int _id, std::string _text, int _speaker, int _next, int _next2 = -1);
 
+	/*!*****************************************************************************
+	\brief
+	Edit a certain dialog from the member map mDialogs.
+
+	\param int _id
+	The id of the current dialog.
+
+	\param int _text
+	The updated dialog string.
+	*******************************************************************************/
+	void EditDialogue(int _id, std::string _text);
+
+	/*!*****************************************************************************
+	\brief
+	Swap the 2 choices options in the member map mDialogs.
+
+	\param int _id
+	The id of the dialog choices to be swap.
+
+	\param int _choice
+	The first choice.
+
+	\param int _choice2
+	The second choice.
+	*******************************************************************************/
+	void EditChoice(int _id, int _choice, int _choice2);
+
+	/*!*****************************************************************************
+	\brief
+	Remove a certain dialog from the member map mDialogs.
+
+	\param int _id
+	The id of the current dialog.
+	*******************************************************************************/
 	void RemoveDialog(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Clear the member map mDialogs.
+	*******************************************************************************/
 	void Clear();
 
 private:
 	/*!*****************************************************************************
 	\brief
-	The vector containing all the dialogs' data.
+	The map containing all the dialogs' data.
 	*******************************************************************************/
-	std::vector<Dialog> mDialogs;
+	std::map<int, Dialog> mDialogs;
 };

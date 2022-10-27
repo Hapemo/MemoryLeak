@@ -18,6 +18,7 @@ Entities and its Components.
 #include "writer.h"
 #include <istreamwrapper.h>
 #include "stringbuffer.h"
+#include <prettywriter.h>
 
 /*!*****************************************************************************
 \brief
@@ -28,7 +29,7 @@ class SerializationManager : public System
 public:
 	void LoadScene(std::string _filename = "SceneJ");
 	void SaveScene(std::string _filename = "SceneJ");
-	void LoadDialogs();
-	void SaveDialogs();
+	void LoadDialogs(std::string _filename = "Dialog1");
+	void SaveDialogs(std::string _filename = "Dialog1");
 private:
 };

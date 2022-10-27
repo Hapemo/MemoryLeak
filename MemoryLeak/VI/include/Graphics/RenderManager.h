@@ -18,6 +18,8 @@ operates on Entities with Sprite and Transform Components.
 #include "Graphics/GLShader.h"
 #include "PerformanceVisualiser.h"
 #include "Graphics/FBO.h"
+#include "FontManager.h"
+#include "Camera.h"
 
 /*!*****************************************************************************
 \brief
@@ -119,7 +121,11 @@ public:
 	*******************************************************************************/
 	std::vector<float> GetImGuizmoMat4(const Entity& _e);
 
+	Camera& GetCamera() { return cam; }
+
 private:
+	Camera cam;
+	FontManager fontManager;
 	bool mDebug;
 	float mVectorLengthModifier;
 	FBO mfbo;

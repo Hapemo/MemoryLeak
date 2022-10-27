@@ -1,7 +1,7 @@
 /*!*****************************************************************************
 \file main.cpp
-\author Jazz Teoh Yu Jue
-\par DP email: j.teoh\@digipen.edu
+\author Jazz Teoh Yu Jue, Chen Jia Wen
+\par DP email: j.teoh\@digipen.edu, c.jiawen\@digipen.edu
 \par Group: Memory Leak Studios
 \date 24-09-2022
 \brief
@@ -43,34 +43,6 @@ void real_main() {
     // Part 1
     Application::init();
 
-#if 0 // Testing SparseSet
-    SparseSet<double> set(20);
-    int count1{ 15 };
-    while (count1--) set.AddData(10 * count1 + 1, count1);
-    set.PrintSet();
-
-    set.RemoveData(2);
-    set.RemoveData(4);
-    set.RemoveData(7);
-    set.RemoveData(9);
-    set.RemoveData(13);
-    set.RemoveData(1);
-
-    set.PrintSet();
-
-    set.AddData(999, 2);
-    set.AddData(999, 4);
-    set.AddData(999, 7);
-    set.PrintSet();
-
-    count1 = 15;
-    while (count1--) {
-      if (count1 == 9 || count1 == 13 || count1 == 1) continue;
-      std::cout << "index: " << count1 << " | data: " << set[count1] << '\n';
-    }
-
-#endif
-
     // Part 2
     while (!glfwWindowShouldClose(Application::getWindow())) {
         GameStateManager::GetInstance()->Update();
@@ -89,32 +61,7 @@ void real_main() {
 *******************************************************************************/
 int main() {
     try {
-        /*
-        //logging strings
-        LOG_INFO("The program has started.");
-
-        //logging integers/floats etc
-        float f = 0.1f;
-        LOG_INFO(f);
-
-        //creating and using custom log type
-        LOG_CUSTOM_CREATE("CUSTOMNAME");
-        LOG_CUSTOM("CUSTOMNAME", "Testing Custom Message");
-
-        //logging strings and integers/floats etc
-        std::string message = "Hello World!";
-        int num = 1;
-        LOG_INFO(("Message is: " + message + " Number is: " + std::to_string(num)).c_str());
-
-        //asserting
-        ASSERT(num == 1, "Test Assert!");
-
-        //throwing exception
-        THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "File for vertex shader not found!");
-        */
-
-        Util::EnableMemoryLeakChecking(); 
-
+        Util::EnableMemoryLeakChecking();
         real_main();
     }
     catch (const std::exception& e) {

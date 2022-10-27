@@ -22,13 +22,13 @@ The string to be converted.
 \return
 Returns a const date and time in string.
 *******************************************************************************/
-const std::string Util::CurrentDateTime() {
+const std::string Util::CurrentDateTime(Util::E_DTFORMAT _format) {
     time_t now = time(NULL);
-    char time[80];
+    char datetime[80];
     struct tm timeStruct;
     localtime_s(&timeStruct, &now);
-    strftime(time, sizeof(time), "%d-%m-%Y | %X", &timeStruct);
-    return time;
+    strftime(datetime, sizeof(datetime), (_format == E_DTFORMAT::DATE ? "%d-%m-%Y" : (_format == E_DTFORMAT::TIME ? "%X" : "%d-%m-%Y %X")), &timeStruct);
+    return datetime;
 }
 
 /*!*****************************************************************************
