@@ -18,7 +18,7 @@ std::shared_ptr<RenderManager> renderManager{ nullptr };
 std::shared_ptr<Physics2DManager> physics2DManager{ nullptr };
 std::shared_ptr<Collision2DManager> collision2DManager{ nullptr };
 std::shared_ptr<PlayerController> playerManager{ nullptr };
-std::shared_ptr<LevelEditor> levelEditor{ nullptr };
+std::shared_ptr<EditorManager> editorManager{ nullptr };
 std::shared_ptr<Animator> animator{ nullptr };
 std::shared_ptr<SheetAnimator> sheetAnimator{ nullptr };
 std::shared_ptr<AudioManager> audioManager{ nullptr };
@@ -92,12 +92,12 @@ void ECSManager::RegisterPlayerController() {
 	ECS::SetSystemSignature<PlayerController>(signature);
 }
 
-void ECSManager::RegisterLevelEditor() {
+void ECSManager::RegisterEditorManager() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
 
-	levelEditor = ECS::RegisterSystem<LevelEditor>();
-	ECS::SetSystemSignature<LevelEditor>(signature);
+	editorManager = ECS::RegisterSystem<EditorManager>();
+	ECS::SetSystemSignature<EditorManager>(signature);
 }
 
 void ECSManager::RegisterAudioManager() {
@@ -162,7 +162,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterPlayerController();
 	RegisterPhysics2DManager();
 	RegisterCollision2DManager();
-	RegisterLevelEditor();
+	RegisterEditorManager();
 	RegisterAudioManager();
 	RegisterSerializationManager();
 	RegisterDialogManager();

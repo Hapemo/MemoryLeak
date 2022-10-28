@@ -23,7 +23,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include "../Physics/Physics2DManager.h"
 #include "../Physics/Collision2DManager.h"
 
-#include "LevelEditor.h"
+#include "EditorManager.h"
 #include "Graphics/Animator.h"
 #include "Graphics/SheetAnimator.h"
 #include "AudioManager.h"
@@ -43,7 +43,7 @@ extern std::shared_ptr<SheetAnimator> sheetAnimator;
 extern std::shared_ptr<PlayerController> playerManager;
 extern std::shared_ptr<Physics2DManager> physics2DManager;
 extern std::shared_ptr<Collision2DManager> collision2DManager;
-extern std::shared_ptr<LevelEditor> levelEditor;
+extern std::shared_ptr<EditorManager> editorManager;
 extern std::shared_ptr<AudioManager> audioManager;
 extern std::shared_ptr<SerializationManager> serializationManager;
 extern std::shared_ptr<DialogManager> dialogManager;
@@ -70,7 +70,7 @@ private:
 	static void RegisterPhysics2DManager();
 	static void RegisterCollision2DManager();
 	static void RegisterPlayerController();
-	static void RegisterLevelEditor();
+	static void RegisterEditorManager();
 	static void RegisterAudioManager();
 	static void RegisterSerializationManager();
 	static void RegisterDialogManager();

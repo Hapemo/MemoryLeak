@@ -14,7 +14,7 @@ start up of window and game system, also runs their update functions.
 #include "Input.h"
 #include "GameStateManager.h"
 #include "ECSManager.h"
-#include "LevelEditor.h"
+#include "Editor\EditorManager.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
 #include "TestScript.h"
@@ -37,7 +37,7 @@ void Application::startup() {
 }
 
 void Application::SystemInit() {
-  levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
+  editorManager->Init(ptr_window, &window_width, &window_height);
   audioManager->Init();
   renderManager->Init(&window_width, &window_height);
   ResourceManager::GetInstance()->LoadAllResources();
@@ -99,8 +99,8 @@ void Application::SecondUpdate() {
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
   {
-    levelEditor->LevelEditor::Window();
-    levelEditor->LevelEditor::Update();
+      editorManager->Window();
+      editorManager->Update();
   }
   END_TRACK("Editor");
 
@@ -109,7 +109,7 @@ void Application::SecondUpdate() {
       editorMode = !editorMode;
       if (editorMode)
       {
-        levelEditor->Start();
+        editorManager->Start();
         renderManager->RenderToFrameBuffer();
       }
       else
@@ -128,7 +128,7 @@ void Application::SecondUpdate() {
 }
 
 void Application::exit() {
-  levelEditor->Exit();
+  editorManager->Exit();
   audioManager->Unload();
   spriteManager->FreeTextures();
   ResourceManager::GetInstance()->UnloadAllResources();

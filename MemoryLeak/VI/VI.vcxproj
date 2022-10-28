@@ -166,6 +166,14 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\AudioVariable.h" />
     <ClInclude Include="include\ColliderTransformManager.h" />
+    <ClInclude Include="include\Editor\AssetPanel.h" />
+    <ClInclude Include="include\Editor\DebugPanel.h" />
+    <ClInclude Include="include\Editor\DialoguePanel.h" />
+    <ClInclude Include="include\Editor\EditorManager.h" />
+    <ClInclude Include="include\Editor\GameViewPanel.h" />
+    <ClInclude Include="include\Editor\HierarchyPanel.h" />
+    <ClInclude Include="include\Editor\InspectorPanel.h" />
+    <ClInclude Include="include\Editor\WorldViewPanel.h" />
     <ClInclude Include="include\freetype\freetype.h" />
     <ClInclude Include="include\freetype\ftadvanc.h" />
     <ClInclude Include="include\freetype\ftbbox.h" />
@@ -266,6 +274,14 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\ECS\ECSManager.cpp" />
     <ClCompile Include="source\ECS\ECS_managers.cpp" />
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
+    <ClCompile Include="source\Editor\AssetPanel.cpp" />
+    <ClCompile Include="source\Editor\DebugPanel.cpp" />
+    <ClCompile Include="source\Editor\DialoguePanel.cpp" />
+    <ClCompile Include="source\Editor\EditorManager.cpp" />
+    <ClCompile Include="source\Editor\GameViewPanel.cpp" />
+    <ClCompile Include="source\Editor\HierarchyPanel.cpp" />
+    <ClCompile Include="source\Editor\InspectorPanel.cpp" />
+    <ClCompile Include="source\Editor\WorldViewPanel.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
     <ClCompile Include="source\Graphics\Camera.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
@@ -277,7 +293,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Graphics\SheetAnimator.cpp" />
     <ClCompile Include="source\Graphics\SpriteManager.cpp" />
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
-    <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
     <ClCompile Include="source\Logic\MonoScripting.cpp" />

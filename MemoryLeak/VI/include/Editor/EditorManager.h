@@ -1,5 +1,5 @@
 /*!*****************************************************************************
-\file LevelEditor.h
+\file EditorManager.h
 \author Huang Wei Jhin
 \par DP email: h.weijhin@digipen.edu
 \par Group: Memory Leak Studios
@@ -24,7 +24,7 @@ Entities and its Components.
 \brief
 	This class encapsulates the functions for the Level Editor
 *******************************************************************************/
-class LevelEditor : public System
+class EditorManager : public System
 {
 public:
 	void Init(GLFWwindow*, int*, int*);
@@ -34,9 +34,10 @@ public:
 	void Exit();
 	bool IsEditorPaused() { return isPaused; };
 	void UnpauseEditor() { isPaused = false; };
+private:
 
 	
-private:
+protected:
 	void SceneManager();
 	void EntityManager();
 	void AssetManager();
