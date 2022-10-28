@@ -454,6 +454,7 @@ void LevelEditor::EntityManager()
 	float tmpFloat;
 	float tmpVec4[4];
 	static Transform old{};
+	static COMPONENT tempComponent{};
 	ImGui::Begin("Entity Manager");
 	ImGui::BeginTabBar("Edit Entities ");
 	if (ImGui::BeginTabItem("Edit Game: "))
@@ -467,14 +468,18 @@ void LevelEditor::EntityManager()
 				if (ImGui::CollapsingHeader("General")||true) {
 					ImGui::Text("General");
 						ImGui::Checkbox("isActive", &e.GetComponent<General>().isActive); //isactive
+						SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::GENERAL);
 						ImGui::InputText("Name", const_cast<char*>(e.GetComponent<General>().name.c_str()), 30);
+						SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::GENERAL);
 						int tagID = (int)e.GetComponent<General>().tag;
 						static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
 						ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
+						SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::GENERAL);
 						e.GetComponent<General>().tag = (TAG)tagID;
 						int subtagID = (int)e.GetComponent<General>().subtag;
 						static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
 						ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
+						SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::GENERAL);
 						e.GetComponent<General>().subtag = (SUBTAG)subtagID;
 				}
 			}
@@ -512,21 +517,21 @@ void LevelEditor::EntityManager()
 					ImGui::DragFloat2("Set Scale", tmpVec2);
 					Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
 					transformManager->SetScale(e, scale);
-					SaveUndo(const_cast<Entity*>(selectedEntity), old);
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::TRANSFORM);
 
 					tmpVec2[0] = transformManager->GetTranslate(e).x;
 					tmpVec2[1] = transformManager->GetTranslate(e).y;
 					ImGui::DragFloat2("Set Position", tmpVec2);
 					Math::Vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
 					transformManager->SetTranslate(e, pos);
-					SaveUndo(const_cast<Entity*>(selectedEntity), old);
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::TRANSFORM);
 
 					tmpFloat = transformManager->GetRotation(e);
 					tmpFloat = (float)(tmpFloat / M_PI * 180.f);
 					ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 					tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 					transformManager->SetRotation(e, tmpFloat);
-					SaveUndo(const_cast<Entity*>(selectedEntity), old);
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::TRANSFORM);
 					/*if (ImGui::Button("Remove Transform"))
 					{
 						e.RemoveComponent<Transform>();
@@ -682,12 +687,16 @@ void LevelEditor::EntityManager()
 					tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
 					ImGui::InputFloat2("Circle position Offset", tmpVec2);
 					e.GetComponent<CircleCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
 					float scale = e.GetComponent<CircleCollider>().scaleOffset;
 					ImGui::InputFloat("Circle scale Offset", &scale);
 					e.GetComponent<CircleCollider>().scaleOffset = { scale };
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
 					ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
+
 					if (ImGui::Button("Remove CircleCollider"))
 					{
 						e.RemoveComponent<CircleCollider>();
@@ -909,6 +918,20 @@ void  LevelEditor::AssetManager()
 			{
 				if (directory.is_directory())
 					m_CurrentDirectory /= path.filename();
+				else
+				{
+					std::string filename = directory.path().stem().string();
+					std::cout << filename.substr(0, 7);
+					if (filename.substr(0, 6) == "Dialog")
+					{
+						serializationManager->LoadDialogs(filename);
+					}
+					else if (filename.substr(0, 5) == "Scene")
+					{
+						serializationManager->LoadScene(filename);
+					}
+
+				}
 			}
 			ImGui::Text(filename.c_str());
 			ImGui::NextColumn();
@@ -1322,16 +1345,16 @@ void LevelEditor::DialogEditor()
 			ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 			ImGui::SameLine(ImGui::GetWindowWidth() - 77 -(dialog.find("\n") != std::string::npos ? dialog.find("\n") : dialog.size()) * 7.4f);
 			if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0))); //unselected
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(220, 30, 58))); //unselected
 			else//1st
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0))); //selected
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 128, 0))); //selected
 		}
 		else //left side (NPC)
 		{
 			//ImGui::Button("passenger", ImVec2(40,40));
 			ImGui::ImageButton(passengerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 			ImGui::SameLine();
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200))); 
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 136, 204))); //passenger
 		}
 		ImGui::Button(dialog.c_str());
 		ImGui::PopStyleColor();
@@ -1360,13 +1383,13 @@ void LevelEditor::DialogEditor()
 				ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 				ImGui::SameLine(ImGui::GetWindowWidth() - 77-(dialog2.find("\n") != std::string::npos ? dialog2.find("\n") : dialog2.size()) * 7.4f);
 				if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
-					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0))); //selected
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 128, 0))); //selected
 				else//1st
-					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0))); //unselected
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(220, 30, 58))); //unselected
 			}
 			else //left side (NPC)
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200)));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 136, 204)));
 			}
 			ImGui::Button(dialog2.c_str());
 			ImGui::PopStyleColor();
@@ -1444,16 +1467,19 @@ void LevelEditor::Exit()
 
 }
 
-void LevelEditor::SaveUndo(Entity * const e, Transform& old)
+void LevelEditor::SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id)
 {
 	if (ImGui::IsItemActivated())
 	{
-		old = e->GetComponent<Transform>();
-		std::cout << old.rotation << " new old  \n";
+		if (id == COMPONENTID::GENERAL)
+			old = e->GetComponent<General>();
+		else if(id == COMPONENTID::TRANSFORM)
+			old = e->GetComponent<Transform>();
+		else if (id == COMPONENTID::CIRCLECOLLIDER)
+			old = e->GetComponent<CircleCollider>();
 	}
 	if (ImGui::IsItemDeactivatedAfterEdit())
 	{
-		std::cout << old.rotation << " done  old  \n";
 		//undoStack.erase(undoStack.begin() + stackPointer-1);
 		undoStack.push_back(std::make_pair(e, old));
 		stackPointer = (int)undoStack.size();
@@ -1464,8 +1490,13 @@ void LevelEditor::Undo()
 	stackPointer--;
 	if (stackPointer >= 0)
 	{
-		std::cout << undoStack[stackPointer].second.rotation << "\n";
-		(undoStack[stackPointer].first)->GetComponent<Transform>() = undoStack[stackPointer].second;
+		//std::is_same<, Transform>::value_type);
+		if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
+			(undoStack[stackPointer].first)->GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
+		if (undoStack[stackPointer].second.index()==(int)COMPONENTID::TRANSFORM)
+			(undoStack[stackPointer].first)->GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
+		else if(undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
+			(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
 	}
 	else
 	{
@@ -1476,13 +1507,19 @@ void LevelEditor::Undo()
 void LevelEditor::Redo()
 {
 	stackPointer++;
-	if (stackPointer < (int)undoStack.size())
+	if (stackPointer <(int)undoStack.size())
 	{
-		(undoStack[stackPointer].first)->GetComponent<Transform>() = undoStack[stackPointer].second;
+		if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
+			(undoStack[stackPointer].first)->GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
+		else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::TRANSFORM)
+			(undoStack[stackPointer].first)->GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
+		else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
+			(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
+
 	}
 	else
 	{
 		LOG_ERROR("NO MORE REDOO");
-		stackPointer = (int)undoStack.size() - 1;
+		stackPointer = (int)undoStack.size();
 	}
 }
