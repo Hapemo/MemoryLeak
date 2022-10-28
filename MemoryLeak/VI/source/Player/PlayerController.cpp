@@ -57,16 +57,23 @@ void PlayerController::Update() {
 	// -----------------------------
 	// Movement input second draft (key movement)
 	// -----------------------------
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W)) {
+		// Up movement
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::I) || Input::CheckKey(E_STATE::HOLD, E_KEY::I)) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f } * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) {
+		
+		// Down movement
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::K) || Input::CheckKey(E_STATE::HOLD, E_KEY::K)) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, -1.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) {
+
+		// Left movement
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::J) || Input::CheckKey(E_STATE::HOLD, E_KEY::J)) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ -1.f, 0.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D)) {
+
+		// Right movement
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::L) || Input::CheckKey(E_STATE::HOLD, E_KEY::L)) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ 1.f, 0.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 

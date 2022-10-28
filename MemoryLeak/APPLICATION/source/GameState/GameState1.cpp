@@ -73,10 +73,10 @@ void GameState1::Update() {
     pref.UpdateComponent(ls);
   }
 
-  //if (Input::CheckKey(E_STATE::PRESS, E_KEY::D)) {
-  //  ECS::DestroyEntity(11);
-  //  mEntities.erase(Entity{ 11 });
-  //}
+  if (Input::CheckKey(E_STATE::PRESS, E_KEY::D)) {
+    ECS::DestroyEntity(11);
+    mEntities.erase(Entity{ 11 });
+  }
 
 }
 

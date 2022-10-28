@@ -454,25 +454,118 @@ public:
 	*******************************************************************************/
 	void SetPhysicsRenderFlag(const Entity& _e, const bool& _renderFlag);
 
-
+	/*!*****************************************************************************
+	\brief
+	UpdateEntitiesAccumulatedForce function that updates the entity's final acting
+	force based on the list of forces acting on the entity at frame time. It also
+	deactivates and removes forces that have aged/expired
+	\param const Entity &
+	A reference to a read-only Entity to
+	\return void
+	NULL
+	*******************************************************************************/
 	void UpdateEntitiesAccumulatedForce(const Entity& _e);
 
-	void AddForce(const Entity& _e, const Math::Vec2& _unitDirection = { 0.f, 0.f }, const float& _magnitude = 1.f, 
-				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
-	void AddForce(const Entity& _e, const float& _torque = 0.f, 
-				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
-	void AddForce(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f, 
-				  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	/*!*****************************************************************************
+	\brief
+	AddLinearForce function that adds a linear force to an entity's list of forces
+	to act on it
+	\param const Entity &
+	A reference to a read-only Entity to
+	\param const Math::Vec2 &
+	A reference to a read-only variable containing the direction of the force
+	\param const float &
+	A reference to a read-only variable containing the magnitude of the force
+	\param const double & 
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const double &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	\return void
+	NULL
+	*******************************************************************************/
+	void AddLinearForce(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude, 
+						const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	/*!*****************************************************************************
+	\brief
+	AddRotationForce function that adds a rotation force to an entity's list of forces
+	to act on it
+	\param const Entity &
+	A reference to a read-only Entity to
+	\param const float &
+	A reference to a read-only variable containing the torque
+	\param const double &
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const double &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	\return void
+	NULL
+	*******************************************************************************/
+	void AddRotationForce(const Entity& _e, const float& _torque, 
+						  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	/*!*****************************************************************************
+	\brief
+	AddDragForce function that adds a drag/resistance force to an entity's list of forces
+	to act on it
+	\param const Entity &
+	A reference to a read-only Entity to
+	\param const float &
+	A reference to a read-only variable containing the directional drag force. It has
+	a default value of 1
+	\param const float &
+	A reference to a read-only variable containing the rotational drag force. It has
+	a default value of 1
+	\param const double &
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const double &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	\return void
+	NULL
+	*******************************************************************************/
+	void AddDragForce(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f, 
+					  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+
+	/*!*****************************************************************************
+	\brief
+	ApplyImpulse function that adds a velocity impulse to the entity
+	\param const Entity &
+	A reference to a read-only Entity to
+	\param const Math::Vec2 &
+	A reference to a read-only variable containing the velocity impulse
+	\param const Math::Vec2 &
+	A reference to a read-only variable containing the contact position for rotation
+	calculation
+	\return void
+	NULL
+	*******************************************************************************/
 	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _contact);
 private:
 	// -----------------------------
 	// Constant values
 	// -----------------------------
-	double mAccumulatedDT{ 0.0 };	// Member variable storing accumulatedDT
-	const double fixedDT{ 1.0 / 60.0 };		// Fixed delta time step of 1/60 steps a second
-	const double accumulatedDTCap{ 1.0 };		// Accumulated cannot store more than 1 second worth of updates
-	const float  velocityCap{ 1000.f };			// 
-	const Math::Vec2 gravityForce{ 0.f, -9.81f };// Gravity pull
-	bool StepMode;
+	double mAccumulatedDT{ 0.0 };					// Member variable storing accumulatedDT
+	const double fixedDT{ 1.0 / 60.0 };				// Fixed delta time step of 1/60 steps a second
+	const double accumulatedDTCap{ 1.0 };			// Accumulated cannot store more than 1 second worth of updates
+	const float  velocityCap{ 1000.f };				// Global velocity cap
+	const Math::Vec2 gravityForce{ 0.f, -9.81f };	// Gravity pull
+	bool StepMode;									// Flag variable containing whether physics update is in step mode
+	bool AdvanceStep;								// Flag variable containing whether physics should step when its in step mode
 };
 

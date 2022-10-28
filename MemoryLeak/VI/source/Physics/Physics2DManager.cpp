@@ -14,21 +14,43 @@
 // Include files
 // -----------------------------
 #include "ECSManager.h"
+#include "Input.h"
 
 void Physics2DManager::Update(const double& _appDT) {
-	// Increment accumulatedDT by the application's DT
-	Physics2DManager::mAccumulatedDT += _appDT;
 
-	// Prevent spiral of death
-	if (Physics2DManager::mAccumulatedDT > Physics2DManager::accumulatedDTCap)
-		Physics2DManager::mAccumulatedDT = Physics2DManager::accumulatedDTCap;
+	if (Input::CheckKey(E_STATE::PRESS, E_KEY::GRAVE_ACCENT) && (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT)|| Input::CheckKey(E_STATE::HOLD, E_KEY::RIGHT_SHIFT)))
+		Physics2DManager::StepMode = !Physics2DManager::StepMode;
 
-	// If the accumlatedDT is larger than or equal to the defined fixedDT,
-	//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
-	while (Physics2DManager::mAccumulatedDT >= Physics2DManager::fixedDT) {
-		Physics2DManager::Step();
-		//collision2DManager->Update(Physics2DManager::fixedDT);
-		Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
+	if (Input::CheckKey(E_STATE::PRESS, E_KEY::GRAVE_ACCENT))
+		Physics2DManager::AdvanceStep = true;
+
+	// Check if system is not in step mode
+	if (!Physics2DManager::StepMode) {
+		// Increment accumulatedDT by the application's DT
+		Physics2DManager::mAccumulatedDT += _appDT;
+
+		// Prevent spiral of death
+		if (Physics2DManager::mAccumulatedDT > Physics2DManager::accumulatedDTCap)
+			Physics2DManager::mAccumulatedDT = Physics2DManager::accumulatedDTCap;
+
+		// If the accumlatedDT is larger than or equal to the defined fixedDT,
+		//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
+		while (Physics2DManager::mAccumulatedDT >= Physics2DManager::fixedDT) {
+			Step();
+			Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
+		}
+	}
+	// In step mode
+	else {
+		// Reset accumulatedDT for next time we are not in step mode
+		Physics2DManager::mAccumulatedDT = 0.0;
+		// Check if we should step (key pressed)
+		if (Physics2DManager::AdvanceStep) {
+			// Execute a simulation tick of physics using defined fixedDT
+			Step();
+			// Set advance flag to false;
+			AdvanceStep = false;
+		}
 	}
 }
 
@@ -303,7 +325,7 @@ void Physics2DManager::UpdateEntitiesAccumulatedForce(const Entity& _e) {
 	}
 }
 
-void Physics2DManager::AddForce(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude,
+void Physics2DManager::AddLinearForce(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude,
 								const double& _lifetimeLimit, const double& _age, const bool& _isActive) {
 	Force tmpForce{};
 	tmpForce.lifetimeLimit = _lifetimeLimit;
@@ -316,7 +338,7 @@ void Physics2DManager::AddForce(const Entity& _e, const Math::Vec2& _unitDirecti
 	GetPhysicsComponent(_e).forceList.push_back(tmpForce);
 }
 
-void Physics2DManager::AddForce(const Entity& _e, const float& _torque, 
+void Physics2DManager::AddRotationForce(const Entity& _e, const float& _torque, 
 								const double& _lifetimeLimit, const double& _age,  const bool& _isActive) {
 	Force tmpForce{};
 	tmpForce.lifetimeLimit = _lifetimeLimit;
@@ -327,7 +349,7 @@ void Physics2DManager::AddForce(const Entity& _e, const float& _torque,
 
 	GetPhysicsComponent(_e).forceList.push_back(tmpForce);
 }
-void Physics2DManager::AddForce(const Entity& _e, const float& _directionDrag, const float& _rotationDrag,
+void Physics2DManager::AddDragForce(const Entity& _e, const float& _directionDrag, const float& _rotationDrag,
 								const double& _lifetimeLimit, const double& _age, const bool& _isActive) {
 	Force tmpForce{};
 	tmpForce.lifetimeLimit = _lifetimeLimit;
