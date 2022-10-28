@@ -25,7 +25,7 @@ void GameState2::Load() {
 void GameState2::Init() {
     /*************************************2550 Objects Start************************************/
     //serializationManager->LoadScene("SceneJGraphics");
-     int entityCount = 200;
+     int entityCount = 1000;
      int width = Application::getWindowWidth() >> 1;
      int height = Application::getWindowHeight() >> 1;
      while (entityCount--)

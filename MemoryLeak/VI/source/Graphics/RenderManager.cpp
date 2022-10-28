@@ -71,7 +71,6 @@ Pixel height of the window.
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
-	mFontManager.Init();
 	//initialize fbo with window width and height
 	mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
 	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
@@ -125,6 +124,10 @@ void RenderManager::Render()
 		default:
 			continue;
 		}
+
+		if (!e.HasComponent<Text>()) continue;
+		std::string x = e.GetComponent<Text>().fontFile;
+		CreateText(e);
 	}
 	/*************************************CREATING VERTICES END**************************************/
 
@@ -186,6 +189,8 @@ void RenderManager::Render()
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
+	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
+		i->second.DrawParagraphs();
 
 	if (!mRenderGameToScreen)
 	{
@@ -203,6 +208,7 @@ void RenderManager::Render()
 	mDebugPoints.clear();
 	mDebugVertices.clear();
 	mDebugIndices.clear();
+
 
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		Render();
@@ -280,7 +286,7 @@ void RenderManager::RenderDebug()
 			t.rotation = 0;
 			t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x, 
 				e.GetComponent<Point2DCollider>().centerOffset.y);
-			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
+			CreateDebugPoint(t, e.GetComponent<Sprite>().color);
 		}
 
 		if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
@@ -572,7 +578,7 @@ The color component.
 *******************************************************************************/
 void RenderManager::CreateDebugPoint(const Transform& _t, const Color& _c)
 {
-	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
+	glm::vec4 clr {0.f, 1.f, 0.f, 1.f}/*GetColor(_c.r, _c.g, _c.b, _c.a)*/;
 	Math::Mat3 mtx = GetTransform({ 0, 0 }, 0, _t.translation);
 
 	Vertex v0;
@@ -937,4 +943,21 @@ void RenderManager::ConcatIndices(std::vector<GLushort>& _first, std::vector<GLu
 		idx += back + 1;
 		_first.push_back(idx);
 	}
+}
+
+void RenderManager::SetClearColor(const Color& _clr)
+{
+	glClearColor(_clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f);
+}
+
+void RenderManager::CreateText(const Entity& _e)
+{
+	Text text = _e.GetComponent<Text>();
+
+	if (mFontRenderers.find(text.fontFile) == mFontRenderers.end())
+		mFontRenderers.emplace(text.fontFile, text.fontFile);
+
+	mFontRenderers[text.fontFile].AddParagraph(text.text,
+		text.pos + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
+		text.scale, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));
 }

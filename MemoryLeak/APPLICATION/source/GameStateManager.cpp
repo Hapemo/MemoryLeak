@@ -22,6 +22,7 @@ running.
 #include "GameState2.h"
 #include "GameState3.h"
 #include "ParallaxAndSpriteSwap.h"
+#include "Lighting.h"
 
 GameStateManager::GameStateManager() :
 	mPrevGS(), mNextGS(), mCurrGS(), mCurrGameState(nullptr) 
@@ -82,6 +83,7 @@ void GameStateManager::Init() {
 	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
 	GS_List.insert(GS_pair(E_GS::GameState3, new GameState3));
 	GS_List.insert(GS_pair(E_GS::ParallaxSprite, new ParallaxAndSpriteSwap));
+	GS_List.insert(GS_pair(E_GS::Lighting, new Lighting));
 }
 
 
@@ -104,5 +106,6 @@ void GameStateManager::GSControlPanel() {
 	else if (Input::CheckKey(PRESS, _2) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
 	else if (Input::CheckKey(PRESS, _3) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState3);
 	else if (Input::CheckKey(PRESS, _4) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ParallaxSprite);
+	else if (Input::CheckKey(PRESS, _5) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Lighting);
 	else if (Input::CheckKey(PRESS, _0) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::START);
 }
