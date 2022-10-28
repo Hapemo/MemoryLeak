@@ -14,7 +14,7 @@ start up of window and game system, also runs their update functions.
 #include "Input.h"
 #include "GameStateManager.h"
 #include "ECSManager.h"
-#include "LevelEditor.h"
+#include "Editor/EditorManager.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
 #include "TestScript.h"

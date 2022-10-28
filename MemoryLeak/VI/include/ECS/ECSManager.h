@@ -23,7 +23,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include "../Physics/Physics2DManager.h"
 #include "../Physics/Collision2DManager.h"
 
-#include "LevelEditor.h"
+#include "Editor/EditorManager.h"
 #include "Graphics/Animator.h"
 #include "Graphics/SheetAnimator.h"
 #include "AudioManager.h"

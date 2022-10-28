@@ -9,7 +9,7 @@
 This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
-#include <LevelEditor.h>
+#include "Editor/EditorManager.h"
 #include <ECSManager.h>
 //#include "Graphics/SpriteManager.h"
 //#include <AI.h>
