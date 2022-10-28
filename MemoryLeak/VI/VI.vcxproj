@@ -82,7 +82,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)lib\Mono\include\mono-2.0;$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)lib\Mono\include\mono-2.0;$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(SolutionDir)VI\include\Logic;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -213,10 +213,12 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\freetype\tttables.h" />
     <ClInclude Include="include\freetype\tttags.h" />
     <ClInclude Include="include\Graphics\Camera.h" />
-    <ClInclude Include="include\Graphics\EditorCamera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
     <ClInclude Include="include\Graphics\Renderer.h" />
-    <ClInclude Include="include\MonoScripting.h" />
+    <ClInclude Include="include\Logic\LogicSystem.h" />
+    <ClInclude Include="include\Logic\MonoScripting.h" />
+    <ClInclude Include="include\Logic\ScriptComponent.h" />
+    <ClInclude Include="include\Logic\ScriptManager.h" />
     <ClInclude Include="include\Physics\ColliderBody.h" />
     <ClInclude Include="include\Physics\Collision2DManager.h" />
     <ClInclude Include="include\Collision2DManager.h" />
@@ -268,7 +270,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
     <ClCompile Include="source\Graphics\Camera.cpp" />
-    <ClCompile Include="source\Graphics\EditorCamera.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
     <ClCompile Include="source\Graphics\FontManager.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
@@ -280,12 +281,15 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
     <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
+    <ClCompile Include="source\Logic\LogicSystem.cpp" />
+    <ClCompile Include="source\Logic\MonoScripting.cpp" />
+    <ClCompile Include="source\Logic\ScriptComponent.cpp" />
+    <ClCompile Include="source\Logic\ScriptManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />
     <ClCompile Include="source\Physics\Physics2DManager.cpp" />
     <ClCompile Include="source\Player\PlayerController.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
-    <ClCompile Include="source\MonoScripting.cpp" />
     <ClCompile Include="source\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -293,6 +297,8 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <None Include="shaders\batch.vert" />
     <None Include="shaders\default.frag" />
     <None Include="shaders\default.vert" />
+    <None Include="shaders\font.frag" />
+    <None Include="shaders\font.vert" />
     <None Include="shaders\texture.frag" />
     <None Include="shaders\texture.vert" />
   </ItemGroup>

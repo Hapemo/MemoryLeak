@@ -15,7 +15,7 @@ to operate on OpenGL's Frame Buffer Object.
 \brief
 Default constructor for FBOSpec class.
 *******************************************************************************/
-FBOSpec::FBOSpec() : mSamples(1), mRenderToScreen(true), mWidth(), mHeight() {}
+FBOSpec::FBOSpec() : mSamples(1), mWidth(), mHeight() {}
 
 /*!*****************************************************************************
 \brief

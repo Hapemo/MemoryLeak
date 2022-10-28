@@ -27,12 +27,15 @@ Default Constructor for RenderManager class.
 *******************************************************************************/
 RenderManager::RenderManager()
 	: mAllocator(NO_OF_OBJECTS, VERTICES_PER_OBJECT, INDICES_PER_OBJECT),
-	mfbo(), mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
+	mWorldFBO(), mGameFBO(), mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
 	mWindowHeight(nullptr), mWindowWidth(nullptr)
 {
 	//set debug mode to true
 	mDebug = true;
+	//render world (editor)
+	mRenderGameToScreen = true;
+	mCurrRenderPass = RENDER_STATE::GAME;
 	mVectorLengthModifier = 50.f;
 
 	//initialize opengl values
@@ -68,9 +71,11 @@ Pixel height of the window.
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
-	fontManager.Init();
 	//initialize fbo with window width and height
-	mfbo.Init(*mWindowWidth, *mWindowHeight);
+	mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
+	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
+	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
+	mGameCam.Init(*mWindowWidth, *mWindowHeight);
 }
 
 /*!*****************************************************************************
@@ -79,28 +84,9 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
-	/*************************************Camera showcase start************************************/
-	////temp
-	//static float muller = 0.001f;
-	//cam *= muller;
-	//if (cam.GetZoom() > 2.f)
-	//	muller = -muller;
-	//if (cam.GetZoom() < 0.5f)
-	//	muller = -muller;
-		
-	////temp
-	//static Math::Vec2 adder(0.f, 1.f);
-	//cam += adder;
-	//std::cout << cam.GetPos() << std::endl;
-	//if (cam.GetPos().y > 450.f)
-	//	adder = -adder;
-	//if (cam.GetPos().y < -450.f)
-	//	adder = -adder;
-	/*************************************Camera showcase end************************************/
-
-	//draw to fbo if flag is true
-	if (!mfbo.GetRenderToScreen())
-		mfbo.Bind();
+	if (!mRenderGameToScreen)
+		mCurrRenderPass == RENDER_STATE::GAME ? 
+		mGameFBO.Bind() : mWorldFBO.Bind();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -138,6 +124,10 @@ void RenderManager::Render()
 		default:
 			continue;
 		}
+
+		if (!e.HasComponent<Text>()) continue;
+		std::string x = e.GetComponent<Text>().fontFile;
+		CreateText(e);
 	}
 	/*************************************CREATING VERTICES END**************************************/
 
@@ -192,21 +182,23 @@ void RenderManager::Render()
 	//render all shapes
 	BatchRenderElements(GL_TRIANGLES, mVertices, mIndices);
 
-	if (mDebug)
+	if (mCurrRenderPass == RENDER_STATE::WORLD || (mDebug && mRenderGameToScreen))
 		RenderDebug();
 
 	//unuse VAO and normal program
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
-	fontManager.Draw("hello, fonts is working lol", 540.0f, 660.0f, 0.5f);
-	fontManager.Draw("lol congrats", 540.0f, 630.0f, 0.5f);
-	fontManager.Draw("lol thanks", 540.0f, 600.0f, 0.5f);
-	fontManager.Draw("lol", 540.0f, 570.0f, 0.5f);
+	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
+		i->second.DrawParagraphs();
 
-	//unbind fbo
-	if (!mfbo.GetRenderToScreen())
-		mfbo.Unbind();
+	if (!mRenderGameToScreen)
+	{
+		mCurrRenderPass == RENDER_STATE::GAME ? 
+		mGameFBO.Unbind() : mWorldFBO.Unbind();
+		mCurrRenderPass = mCurrRenderPass == RENDER_STATE::GAME ? 
+		RENDER_STATE::WORLD : RENDER_STATE::GAME;
+	}
 
 	//clear vertices for next iteration
 	mVertices.clear();
@@ -216,6 +208,10 @@ void RenderManager::Render()
 	mDebugPoints.clear();
 	mDebugVertices.clear();
 	mDebugIndices.clear();
+
+
+	if (mCurrRenderPass == RENDER_STATE::WORLD)
+		Render();
 }
 
 /*!*****************************************************************************
@@ -270,6 +266,14 @@ Renders debug drawings.
 *******************************************************************************/
 void RenderManager::RenderDebug()
 {
+	if (mCurrRenderPass == RENDER_STATE::WORLD)
+	{
+		Transform t;
+		t.rotation = 0;
+		t.scale = mGameCam.GetZoom() * mGameCam.GetWindowDim();
+		t.translation = mGameCam.GetPos();
+		CreateDebugSquare(t, { 0, 255, 0, 255 });
+	}
 	for (const Entity& e : mEntities)
 	{
 		if (!e.GetComponent<General>().isActive) continue;
@@ -574,7 +578,7 @@ The color component.
 *******************************************************************************/
 void RenderManager::CreateDebugPoint(const Transform& _t, const Color& _c)
 {
-	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
+	glm::vec4 clr {0.f, 1.f, 0.f, 1.f}/*GetColor(_c.r, _c.g, _c.b, _c.a)*/;
 	Math::Mat3 mtx = GetTransform({ 0, 0 }, 0, _t.translation);
 
 	Vertex v0;
@@ -879,6 +883,7 @@ The Transformation matrix.
 *******************************************************************************/
 Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, const Math::Vec2& _translate)
 {
+	Camera cam = mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mWorldCam;
 	float cosRot = cosf(_rotate);
 	float sinRot = sinf(_rotate);
 
@@ -938,4 +943,21 @@ void RenderManager::ConcatIndices(std::vector<GLushort>& _first, std::vector<GLu
 		idx += back + 1;
 		_first.push_back(idx);
 	}
+}
+
+void RenderManager::SetClearColor(const Color& _clr)
+{
+	glClearColor(_clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f);
+}
+
+void RenderManager::CreateText(const Entity& _e)
+{
+	Text text = _e.GetComponent<Text>();
+
+	if (mFontRenderers.find(text.fontFile) == mFontRenderers.end())
+		mFontRenderers.emplace(text.fontFile, text.fontFile);
+
+	mFontRenderers[text.fontFile].AddParagraph(text.text,
+		text.pos + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
+		text.scale, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));
 }

@@ -5,6 +5,7 @@ enum class TAG
 	PASSENGER,
 	ENEMY,
 	BUILDING,
+	BACKGROUND,
 	OTHERS,
 	END  //placeholder only use for loops
 };

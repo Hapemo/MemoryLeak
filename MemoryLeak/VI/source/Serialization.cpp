@@ -8,6 +8,7 @@
 This file contains function definations for a Serialization system that saves and load
 -Entities and its Components
 -Dialogs
+TODO: take note not to change the component registration order. It will break prefab
 *******************************************************************************/
 #include <Serialization.h>
 #include <ECSManager.h>

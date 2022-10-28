@@ -363,6 +363,9 @@ public:
 	template<typename T>
 	void SetSystemSignature(const Signature& _signature) { return mSystemManager->SetSignature<T>(_signature); }
 
+	// For prefab
+	void UnlinkPrefab(EntityID _entity);
+
 	// Extra
 	/*!*****************************************************************************
 	Destroy all entities in ECS
@@ -405,3 +408,39 @@ void Entity::RemoveComponent() const { return Coordinator::GetInstance()->Remove
 
 template<typename T>
 bool Entity::HasComponent() const { return Coordinator::GetInstance()->HasComponent<T>(id); }
+
+
+//-------------------------------------------------------------------------
+// Prefab
+//-------------------------------------------------------------------------
+template<typename T>
+void Prefab::AddComponent(T const& _component) { // TODO: Possible optimisation to put _component into data instead of *(static_cast<T*>(mComponents[pos]))
+	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
+	mComponents[pos] = new T;
+	std::cout << "sizeof " << sizeof(T) << '\n';
+	*(static_cast<T*>(mComponents[pos])) = _component;
+
+	for (Entity const& e : mPrefabees)
+		e.AddComponent<T>(*(static_cast<T*>(mComponents[pos])));
+}
+
+template<typename T>
+void Prefab::UpdateComponent(T const& _component) { // TODO: Possible optimisation to put _component into data instead of *(static_cast<T*>(mComponents[pos]))
+	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
+	*(static_cast<T*>(mComponents[pos])) = _component;
+
+	for (Entity const& e : mPrefabees)
+		e.GetComponent<T>() = *(static_cast<T*>(mComponents[pos]));
+}
+
+template<typename T>
+void Prefab::RemoveComponent() {
+	for (Entity const& e : mPrefabees)
+		e.RemoveComponent<T>();
+
+	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
+	delete mComponents[pos];
+	mComponents[pos] = nullptr;
+}
+
+

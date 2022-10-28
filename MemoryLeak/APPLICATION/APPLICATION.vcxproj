@@ -25,13 +25,16 @@
     <ClInclude Include="include\GameState\GameState1.h" />
     <ClInclude Include="include\GameState\GameState2.h" />
     <ClInclude Include="include\GameState\GameState3.h" />
+    <ClInclude Include="include\GameState\Lighting.h" />
     <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\Scene\Start_1.h" />
     <ClInclude Include="include\Scene\Start_background.h" />
     <ClInclude Include="include\GameState\Start.h" />
     <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
+    <ClInclude Include="include\TestScript.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\GameState\Lighting.cpp" />
     <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\GameState.cpp" />
@@ -44,6 +47,7 @@
     <ClCompile Include="source\Scene\Start_1.cpp" />
     <ClCompile Include="source\Scene\Start_background.cpp" />
     <ClCompile Include="source\GameState\Start.cpp" />
+    <ClCompile Include="source\TestScript.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -108,6 +112,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)APPLICATION\include;$(SolutionDir)APPLICATION\include\GameState;$(SolutionDir)APPLICATION\include\Scene;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

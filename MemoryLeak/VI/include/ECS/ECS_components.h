@@ -5,7 +5,8 @@
 \par Group: Memory Leak Studios
 \date 24-09-2022
 \brief
-This file contains all the structs of components used in ECS
+This file contains all the structs of components used in ECS. 
+ComponentType starts from 0.
 *******************************************************************************/
 #pragma once
 #include <glm/glm.hpp>
@@ -15,6 +16,8 @@ This file contains all the structs of components used in ECS
 #include "TagVariable.h"
 #include "../Physics/Force.h"
 #include "../Physics/ColliderBody.h"
+#include <variant>
+class Prefab;
 
 /*!*****************************************************************************
 \brief
@@ -26,6 +29,7 @@ struct General {
 	TAG tag;
 	SUBTAG	subtag = SUBTAG::NOSUBTAG;
 	bool isActive;
+	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
 };
 
 /*!*****************************************************************************
@@ -228,9 +232,35 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
+	std::string fontFile; //CaviarDreams.ttf || 3Dumb.ttf
 	std::string text;
+	Math::Vec2 pos; //world coordinates
+	float scale;
+	Color color;
+
 	int textID;
 	int nextTextID;
 	GLuint texture = 0; //for dialog box
 };
 
+//use to index the variant data type, for ditor and serilization to determine type stored
+enum class COMPONENTID
+{
+	GENERAL,		//0
+	LIFESPAN,		//1 
+	TRANSFORM,		//2
+	SPRITE,			//3
+	ANIMATION,		//4
+	SHEETANIMATION,	//5 
+	PHYSICS2D,		//6
+	RECTCOLLIDER,	//7
+	CIRCLECOLLIDER, //8
+	EDGE2DCOLLIDER, //9
+	POINT2DCOLLIDER,//10
+	AUDIO,			//11
+	TEXT,			//12
+	AI				//13
+};
+typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
+	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
+	Point2DCollider, Audio, PlayerTmp, Stuff>  COMPONENT;
