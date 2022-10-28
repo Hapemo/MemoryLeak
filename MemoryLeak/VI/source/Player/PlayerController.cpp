@@ -19,10 +19,9 @@
 // -----------------------------
 // Constant values
 // -----------------------------
-const double playerRotationSpeed{ 40.0 / 180.0 * Math::PI },	// Player rotation speed in radians
-			 playerSpeedChange{ 20.0 },							// Player speed change
-			 playerSpeedNaturalLossScalar{ 0.98 },				// Player speed decceleration scalar
-		     playerSpeedCap {100.f};							// Player speed cap
+const double playerSpeed{30.f},
+			 playerSpeedNaturalLossScalar{ 0.99 },				// Player speed decceleration scalar
+		     playerSpeedCap {300.f};							// Player speed cap
 
 /*!*****************************************************************************
 \brief
@@ -58,45 +57,25 @@ void PlayerController::Update() {
 	// -----------------------------
 	// Movement input second draft (key movement)
 	// -----------------------------
-		//if (Input::CheckKey(STATE::PRESS, KEY::W) || Input::CheckKey(STATE::HOLD, KEY::W)) {
-		//	e.GetComponent<Physics2D>().moveDirection = static_cast<float>(Math::PI / 2.0);
-		//	e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
-		//}
-		//if (Input::CheckKey(STATE::PRESS, KEY::S) || Input::CheckKey(STATE::HOLD, KEY::S)) {
-		//	e.GetComponent<Physics2D>().moveDirection = static_cast<float>(-Math::PI / 2.0);
-		//	e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
-		//}
-		//if (Input::CheckKey(STATE::PRESS, KEY::A) || Input::CheckKey(STATE::HOLD, KEY::A)) {
-		//	e.GetComponent<Physics2D>().moveDirection = static_cast<float>(Math::PI);
-		//	e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
-		//}
-		//if (Input::CheckKey(STATE::PRESS, KEY::D) || Input::CheckKey(STATE::HOLD, KEY::D)) {
-		//	e.GetComponent<Physics2D>().moveDirection = 0.f;
-		//	e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
-		//}
-
-		//// Cap player speed
-		//if (e.GetComponent<Physics2D>().speed > playerSpeedCap)
-		//	e.GetComponent<Physics2D>().speed = playerSpeedCap;
-
-		//// No movement input, scale down the speed to slow it down
-		//e.GetComponent<Physics2D>().speed *= static_cast<float>(playerSpeedNaturalLossScalar);
-	
-	// -----------------------------
-	// Movement input third draft (key movement)
-	// -----------------------------
 		if (Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W)) {
-			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f }, Math::Vec2{ 0.f, 0.f });
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f } * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 		if (Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) {
-			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, -1.f }, Math::Vec2{ 0.f, 0.f });
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, -1.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 		if (Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) {
-			physics2DManager->ApplyImpulse(e, Math::Vec2{ -1.f, 0.f }, Math::Vec2{ 0.f, 0.f });
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ -1.f, 0.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 		if (Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D)) {
-			physics2DManager->ApplyImpulse(e, Math::Vec2{ 1.f, 0.f }, Math::Vec2{ 0.f, 0.f });
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 1.f, 0.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 
+		// Cap player speed
+		if (Math::Dot(physics2DManager->GetVelocity(e), physics2DManager->GetVelocity(e)) > playerSpeedCap * playerSpeedCap) {
+			physics2DManager->SetVelocity(e, physics2DManager->GetVelocity(e).Normalize() * playerSpeedCap);
+		}
+
+		// No movement input, scale down the speed to slow it down
+		physics2DManager->ScaleVelocity(e, static_cast<float>(playerSpeedNaturalLossScalar));
 	}
 }

@@ -657,61 +657,61 @@ void LevelEditor::EntityManager()
 					}
 				}
 			}
-			if (e.HasComponent<RectCollider>())
-			{
-				if (ImGui::CollapsingHeader("RectCollider")) {
-					//ImGui::Text("RectCollider");
-					tmpVec2[0] = e.GetComponent<RectCollider>().centerOffset.x;
-					tmpVec2[1] = e.GetComponent<RectCollider>().centerOffset.y;
-					ImGui::InputFloat2("Box position Offset", tmpVec2);
-					e.GetComponent<RectCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1]};
+			//if (e.HasComponent<RectCollider>())
+			//{
+			//	if (ImGui::CollapsingHeader("RectCollider")) {
+			//		//ImGui::Text("RectCollider");
+			//		tmpVec2[0] = e.GetComponent<RectCollider>().centerOffset.x;
+			//		tmpVec2[1] = e.GetComponent<RectCollider>().centerOffset.y;
+			//		ImGui::InputFloat2("Box position Offset", tmpVec2);
+			//		e.GetComponent<RectCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1]};
 
-			//		tmpVec2[0] = e.GetComponent<RectCollider>().scaleOffset.x;
-			//		tmpVec2[1] = e.GetComponent<RectCollider>().scaleOffset.y;
-			//		ImGui::InputFloat2("Box scale Offset", tmpVec2);
-			//		e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
+			////		tmpVec2[0] = e.GetComponent<RectCollider>().scaleOffset.x;
+			////		tmpVec2[1] = e.GetComponent<RectCollider>().scaleOffset.y;
+			////		ImGui::InputFloat2("Box scale Offset", tmpVec2);
+			////		e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
-					ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
-					if (ImGui::Button("Remove RectCollider"))
-					{
-						e.RemoveComponent<RectCollider>();
-						LOG_INFO("RectCollider component removed");
-					}
-				}
-			}
-			if (e.HasComponent<CircleCollider>())
-			{
-				if (ImGui::CollapsingHeader("CircleCollider")) {
-					//ImGui::Text("CircleCollider");
-					tmpVec2[0] = e.GetComponent<CircleCollider>().centerOffset.x;
-					tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
-					ImGui::InputFloat2("Circle position Offset", tmpVec2);
-					e.GetComponent<CircleCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
-					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
+			//		ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
+			//		if (ImGui::Button("Remove RectCollider"))
+			//		{
+			//			e.RemoveComponent<RectCollider>();
+			//			LOG_INFO("RectCollider component removed");
+			//		}
+			//	}
+			//}
+			//if (e.HasComponent<CircleCollider>())
+			//{
+			//	if (ImGui::CollapsingHeader("CircleCollider")) {
+			//		//ImGui::Text("CircleCollider");
+			//		tmpVec2[0] = e.GetComponent<CircleCollider>().centerOffset.x;
+			//		tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
+			//		ImGui::InputFloat2("Circle position Offset", tmpVec2);
+			//		e.GetComponent<CircleCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+			//		SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
-					float scale = e.GetComponent<CircleCollider>().scaleOffset;
-					ImGui::InputFloat("Circle scale Offset", &scale);
-					e.GetComponent<CircleCollider>().scaleOffset = { scale };
-					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
+			//		float scale = e.GetComponent<CircleCollider>().scaleOffset;
+			//		ImGui::InputFloat("Circle scale Offset", &scale);
+			//		e.GetComponent<CircleCollider>().scaleOffset = { scale };
+			//		SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
-					ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
-					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
+			//		ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
+			//		SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
-					if (ImGui::Button("Remove CircleCollider"))
-					{
-						e.RemoveComponent<CircleCollider>();
-						LOG_INFO("CircleCollider component removed");
-					}
-				}
-			}
-			if (e.HasComponent<Edge2DCollider>())
-			{
-				if (ImGui::CollapsingHeader("Edge2DCollider")) {
-					//ImGui::Text("Edge2DCollider");
-					tmpVec2[0] = e.GetComponent<Edge2DCollider>().p0Offset.x;
-					tmpVec2[1] = e.GetComponent<Edge2DCollider>().p0Offset.y;
-					ImGui::InputFloat2("p0 Offset", tmpVec2);
-					e.GetComponent<Edge2DCollider>().p0Offset = { tmpVec2[0] ,tmpVec2[1] };
+			//		if (ImGui::Button("Remove CircleCollider"))
+			//		{
+			//			e.RemoveComponent<CircleCollider>();
+			//			LOG_INFO("CircleCollider component removed");
+			//		}
+			//	}
+			//}
+			//if (e.HasComponent<Edge2DCollider>())
+			//{
+			//	if (ImGui::CollapsingHeader("Edge2DCollider")) {
+			//		//ImGui::Text("Edge2DCollider");
+			//		tmpVec2[0] = e.GetComponent<Edge2DCollider>().p0Offset.x;
+			//		tmpVec2[1] = e.GetComponent<Edge2DCollider>().p0Offset.y;
+			//		ImGui::InputFloat2("p0 Offset", tmpVec2);
+			//		e.GetComponent<Edge2DCollider>().p0Offset = { tmpVec2[0] ,tmpVec2[1] };
 
 			//		ImGui::InputFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset);
 			//		ImGui::InputFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset);
