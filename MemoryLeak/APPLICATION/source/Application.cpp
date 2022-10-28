@@ -37,7 +37,7 @@ void Application::startup() {
 }
 
 void Application::SystemInit() {
-  editorManager->Init(ptr_window, &window_width, &window_height);
+  editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
   renderManager->Init(&window_width, &window_height);
 }
@@ -96,7 +96,7 @@ void Application::SecondUpdate() {
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
   {
-      editorManager->Window();
+      //editorManager->Window();
       editorManager->Update();
   }
   END_TRACK("Editor");
@@ -106,7 +106,7 @@ void Application::SecondUpdate() {
       editorMode = !editorMode;
       if (editorMode)
       {
-        editorManager->Start();
+        editorManager->Init();
         renderManager->RenderToFrameBuffer();
       }
       else
@@ -125,7 +125,7 @@ void Application::SecondUpdate() {
 }
 
 void Application::exit() {
-  editorManager->Exit();
+  editorManager->Unload();
   audioManager->Unload();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();

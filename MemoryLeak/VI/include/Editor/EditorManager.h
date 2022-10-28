@@ -19,6 +19,7 @@ Entities and its Components.
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include "Graphics/TransformManager.h"
+//class Panel;
 
 /*!*****************************************************************************
 \brief
@@ -27,15 +28,18 @@ Entities and its Components.
 class EditorManager : public System
 {
 public:
-	void Init(GLFWwindow*, int*, int*);
-	void Start();
+	void Load(GLFWwindow*, int*, int*);
+	void Init();
 	void Window();
 	void Update();
-	void Exit();
+	void Free();
+	void Unload();
+
+
 	bool IsEditorPaused() { return isPaused; };
 	void UnpauseEditor() { isPaused = false; };
 private:
-
+	//std::vector<Panel> panels;
 	
 protected:
 	void SceneManager();

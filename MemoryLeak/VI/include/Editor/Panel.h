@@ -15,13 +15,12 @@ Entities and its Components.
 \brief
 	This class encapsulates the functions for the Level Editor
 *******************************************************************************/
-class DialoguePanel : public EditorManager
+class Panel : public EditorManager
 {
 public:
-	
-	void Init();
-	void Update();
-	void Free();
+	void Init() {};
+	void Update() {};
+	void Free() {};
 
 	
 private:

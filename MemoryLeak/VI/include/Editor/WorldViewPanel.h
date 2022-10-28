@@ -18,7 +18,9 @@ Entities and its Components.
 class WorldViewPanel : public EditorManager
 {
 public:
-	
+	void Init();
+	void Update();
+	void Free();
 
 	
 private:

@@ -10,3 +10,16 @@ This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "DialoguePanel.h"
+
+void DialoguePanel::Init()
+{
+
+}
+void DialoguePanel::Update()
+{
+
+}
+void DialoguePanel::Free()
+{
+
+}

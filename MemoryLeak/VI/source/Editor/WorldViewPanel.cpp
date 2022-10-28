@@ -10,3 +10,15 @@ This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "WorldViewPanel.h"
+void WorldViewPanel::Init()
+{
+
+}
+void WorldViewPanel::Update()
+{
+
+}
+void WorldViewPanel::Free()
+{
+
+}

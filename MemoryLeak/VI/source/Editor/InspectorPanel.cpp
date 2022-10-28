@@ -10,3 +10,16 @@ This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "InspectorPanel.h"
+
+void InspectorPanel::Init()
+{
+
+}
+void InspectorPanel::Update()
+{
+
+}
+void InspectorPanel::Free()
+{
+
+}

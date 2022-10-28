@@ -10,3 +10,16 @@ This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "GameViewPanel.h"
+
+void GameViewPanel::Init()
+{
+
+}
+void GameViewPanel::Update()
+{
+
+}
+void GameViewPanel::Free()
+{
+
+}

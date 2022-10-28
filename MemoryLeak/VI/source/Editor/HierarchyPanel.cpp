@@ -10,3 +10,16 @@ This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "HierarchyPanel.h"
+
+void HierarchyPanel::Init()
+{
+
+}
+void HierarchyPanel::Update()
+{
+
+}
+void HierarchyPanel::Free()
+{
+
+}

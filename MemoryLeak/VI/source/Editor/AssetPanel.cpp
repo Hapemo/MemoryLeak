@@ -10,3 +10,16 @@ This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "AssetPanel.h"
+
+void AssetPanel::Init()
+{
+
+}
+void AssetPanel::Update()
+{
+
+}
+void AssetPanel::Free()
+{
+
+}

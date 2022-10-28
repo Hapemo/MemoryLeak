@@ -173,6 +173,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Editor\GameViewPanel.h" />
     <ClInclude Include="include\Editor\HierarchyPanel.h" />
     <ClInclude Include="include\Editor\InspectorPanel.h" />
+    <ClInclude Include="include\Editor\Panel.h" />
     <ClInclude Include="include\Editor\WorldViewPanel.h" />
     <ClInclude Include="include\freetype\freetype.h" />
     <ClInclude Include="include\freetype\ftadvanc.h" />

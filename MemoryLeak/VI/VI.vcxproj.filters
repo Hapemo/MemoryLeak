@@ -327,6 +327,9 @@
     <ClInclude Include="include\Editor\WorldViewPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Editor\Panel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Graphics\Animator.cpp">

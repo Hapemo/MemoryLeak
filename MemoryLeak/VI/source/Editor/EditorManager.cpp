@@ -19,6 +19,8 @@ Entities and its Components.
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <Input.h>
+#include <DebugPanel.h>
+#include <Panel.h>
 
 
 /*!*****************************************************************************
@@ -28,7 +30,7 @@ Entities and its Components.
 \return
 None.
 *******************************************************************************/
-void EditorManager::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeight)
+void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHeight)
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -44,9 +46,12 @@ void EditorManager::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 
 	//IM_ASSERT(ret);
 	//weatherAIinit();
-	Start();
+	
+	/*DebugPanel dp{};
+	panels.push_back(dp);*/
+	Init();
 }
-void EditorManager::Start()
+void EditorManager::Init()
 {
 	selectedEntity = nullptr;
 	isPaused = true;
@@ -78,6 +83,7 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
+	Window();
 	//weatherAIupdate();
 	//ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 	//ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_AutoSelectNewTabs | ImGuiTabBarFlags_Reorderable;
@@ -175,8 +181,10 @@ void EditorManager::Update()
 	EntityManager();
 	AssetManager();
 	ViewPortManager();
-	if(showdebug)
-		ShowDebugInfo();
+	if (showdebug)
+		DebugPanel::Update();
+		//panels[0].Update();
+		//ShowDebugInfo();
 	DialogEditor();
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -1481,12 +1489,23 @@ void EditorManager::DialogEditor()
 
 /*!*****************************************************************************
 \brief
+	free
+
+\return
+None.
+*******************************************************************************/
+void EditorManager::Free()
+{
+	
+}
+/*!*****************************************************************************
+\brief
 	Shuts down Imgui, release all resources
 
 \return
 None.
 *******************************************************************************/
-void EditorManager::Exit()
+void EditorManager::Unload()
 {
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
