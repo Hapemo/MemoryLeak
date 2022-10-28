@@ -22,13 +22,12 @@ void GameState3::Load() {
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 
 	serializationManager->LoadScene("SceneJUX");
-    levelEditor->Start();
 }
 
 void GameState3::Init() {
     //levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
     renderManager->RenderToFrameBuffer();
-    levelEditor->UnpauseEditor(); // for this game state showing editor only
+    editorManager->UnpauseEditor(); // for this game state showing editor only
 }
 
 void GameState3::Update() {

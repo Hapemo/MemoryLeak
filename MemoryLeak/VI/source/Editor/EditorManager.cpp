@@ -1,6 +1,6 @@
 /*!*****************************************************************************
 /*!*****************************************************************************
-\file LevelEditor.cpp
+\file EditorManager.cpp
 \author Huang Wei Jhin
 \par DP email: h.weijhin@digipen.edu
 \par Group: Memory Leak Studios
@@ -9,7 +9,7 @@
 This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
-#include "Editor/EditorManager.h"
+#include "EditorManager.h"
 #include <ECSManager.h>
 //#include "Graphics/SpriteManager.h"
 //#include <AI.h>
@@ -28,7 +28,7 @@ Entities and its Components.
 \return
 None.
 *******************************************************************************/
-void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeight)
+void EditorManager::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeight)
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -46,7 +46,7 @@ void LevelEditor::Init(GLFWwindow* _window, int* _windowWidth, int* _windowHeigh
 	//weatherAIinit();
 	Start();
 }
-void LevelEditor::Start()
+void EditorManager::Start()
 {
 	selectedEntity = nullptr;
 	isPaused = true;
@@ -62,7 +62,7 @@ void LevelEditor::Start()
 \return
 None.
 *******************************************************************************/
-void LevelEditor::Window()
+void EditorManager::Window()
 {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
@@ -76,7 +76,7 @@ void LevelEditor::Window()
 \return
 None.
 *******************************************************************************/
-void LevelEditor::Update()
+void EditorManager::Update()
 {
 	//weatherAIupdate();
 	//ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
@@ -196,7 +196,7 @@ void LevelEditor::Update()
 \return
 None.
 *******************************************************************************/
-void LevelEditor::ShowDebugInfo()
+void EditorManager::ShowDebugInfo()
 {
 	std::vector<std::pair<Logger::E_LOGLEVEL, std::string>> loggerStr = Logger::GetInstance()->GetLoggerStr();
 	ImGui::Begin("Debug Logger");
@@ -269,7 +269,7 @@ void LevelEditor::ShowDebugInfo()
 \return
 None.
 *******************************************************************************/
-void  LevelEditor::SceneManager()
+void  EditorManager::SceneManager()
 {
 	static int n = 0;
 	ImGui::Begin("Scene Manager");
@@ -452,7 +452,7 @@ void  LevelEditor::SceneManager()
 \return
 None.
 *******************************************************************************/
-void LevelEditor::EntityManager()
+void EditorManager::EntityManager()
 {
 	float tmpVec2[2];
 	float tmpFloat;
@@ -869,7 +869,7 @@ void LevelEditor::EntityManager()
 \return
 None.
 *******************************************************************************/
-void  LevelEditor::AssetManager()
+void  EditorManager::AssetManager()
 {
 	GLuint my_image_texture = spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
 	GLuint my_image2_texture = 0;
@@ -955,14 +955,14 @@ void  LevelEditor::AssetManager()
 \return
 None.
 *******************************************************************************/
-void LevelEditor::ViewPortManager()
+void EditorManager::ViewPortManager()
 {
 	//ImGui::Begin("View Port Manager");
 	WorldViewPort();
 	CameraViewPort();
 	//ImGui::End();
 }
-void  LevelEditor::WorldViewPort()
+void  EditorManager::WorldViewPort()
 {
 	ImGuiWindowFlags window_flags = 0;
 	window_flags |= ImGuiWindowFlags_NoBackground;
@@ -1218,7 +1218,7 @@ void  LevelEditor::WorldViewPort()
 	}
 	ImGui::End();
 }
-void  LevelEditor::CameraViewPort()
+void  EditorManager::CameraViewPort()
 {
 	ImGui::Begin("Camera View");
 	Math::Vec2 viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y };
@@ -1339,7 +1339,7 @@ std::string& BreakString(std::string& _str, int _offset)
 \return
 None.
 *******************************************************************************/
-void LevelEditor::DialogEditor()
+void EditorManager::DialogEditor()
 {
 	GLuint player_texture = spriteManager->GetTextureID("Textures\\Sprites\\mc.png");
 	ImTextureID playerIcon = (void*)(intptr_t)player_texture;
@@ -1486,7 +1486,7 @@ void LevelEditor::DialogEditor()
 \return
 None.
 *******************************************************************************/
-void LevelEditor::Exit()
+void EditorManager::Exit()
 {
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
@@ -1494,7 +1494,7 @@ void LevelEditor::Exit()
 
 }
 
-void LevelEditor::SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id)
+void EditorManager::SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id)
 {
 	if (ImGui::IsItemActivated())
 	{
@@ -1512,7 +1512,7 @@ void LevelEditor::SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id)
 		stackPointer = (int)undoStack.size();
 	}
 }
-void LevelEditor::Undo()
+void EditorManager::Undo()
 {
 	stackPointer--;
 	if (stackPointer >= 0)
@@ -1531,7 +1531,7 @@ void LevelEditor::Undo()
 		stackPointer = 0;
 	}
 }
-void LevelEditor::Redo()
+void EditorManager::Redo()
 {
 	stackPointer++;
 	if (stackPointer <(int)undoStack.size())
