@@ -15,15 +15,26 @@ struct Character
 	unsigned int advance;	//offset to advance to next glyph
 };
 
-class FontManager
+struct Paragraph
+{
+	std::string characters;
+	Math::Vec2 pos;
+	float scale;
+	Math::Vec3 color;
+};
+
+class FontRenderer
 {
 public:
-	FontManager();
-	void Init();
-	void Draw(std::string text, float x, float y, float scale);
+	FontRenderer() : FontRenderer("3Dumb.ttf") {}
+	FontRenderer(const std::string& fontfile);
+	void Init(const std::string& _fontfile);
+	void AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color);
+	void DrawParagraphs();
 private:
-	unsigned int vao, vbo;
+	GLuint vao, vbo;
 	glm::mat4 projection;
 	std::unordered_map<char, Character> glyphs;
+	std::vector<Paragraph> paragraphs;
 	GLShader mFontProgram;
 };
