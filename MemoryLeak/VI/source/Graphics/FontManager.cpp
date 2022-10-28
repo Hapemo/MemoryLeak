@@ -1,22 +1,18 @@
 #include <FontManager.h>
 
-FontRenderer::FontRenderer(const std::string& fontfile) 
-: mFontProgram("shaders/font.vert", "shaders/font.frag"), vao(), vbo(), projection()
+FontManager::FontManager() : mFontProgram("shaders/font.vert", "shaders/font.frag")
 {
     mFontProgram.CompileLinkShaders();
     mFontProgram.Validate();
-    Init(fontfile);
 }
 
-void FontRenderer::Init(const std::string& _fontfile)
+void FontManager::Init()
 {
     FT_Library ft;
     ASSERT(FT_Init_FreeType(&ft), "ERROR::FREETYPE: Could not init FreeType Library\n");
 
-    std::string filepath = "../VI/fonts/" + _fontfile;
-
     FT_Face face;
-    ASSERT(FT_New_Face(ft, filepath.c_str(), 0, &face), "ERROR::FREETYPE: Failed to load font\n");
+    ASSERT(FT_New_Face(ft, "../VI/fonts/CaviarDreams.ttf", 0, &face), "ERROR::FREETYPE: Failed to load font\n");
 
     FT_Set_Pixel_Sizes(face, 0, 48);
 
@@ -80,55 +76,43 @@ void FontRenderer::Init(const std::string& _fontfile)
     mFontProgram.Unbind();
  }
 
-void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color)
+void FontManager::Draw(std::string text, float x, float y, float scale)
 {
-    paragraphs.push_back(Paragraph(text, _pos, scale, color));
-}
+    mFontProgram.Bind();
+    glUniform3f(glGetUniformLocation(mFontProgram.GetID(), "textColor"), 1, 1, 1);
+    glActiveTexture(GL_TEXTURE0);
+    glBindVertexArray(vao);
 
-
-void FontRenderer::DrawParagraphs()
-{
-    for (const Paragraph& para : paragraphs)
+    for (std::string::const_iterator cIter = text.begin(); cIter != text.end(); ++cIter)
     {
-        Math::Vec2 pos = para.pos;
-        mFontProgram.Bind();
-        glUniform3f(glGetUniformLocation(mFontProgram.GetID(), "textColor"), para.color.r, para.color.g, para.color.b);
-        glActiveTexture(GL_TEXTURE0);
-        glBindVertexArray(vao);
+        Character ch = glyphs[*cIter];
+        float xpos = x + ch.bearing.x * scale;
+        float ypos = y - (ch.size.y - ch.bearing.y) * scale;
 
-        for (std::string::const_iterator cIter = para.characters.begin(); cIter != para.characters.end(); ++cIter)
-        {
-            Character ch = glyphs[*cIter];
-            float xpos = pos.x + ch.bearing.x * para.scale;
-            float ypos = pos.y - (ch.size.y - ch.bearing.y) * para.scale;
+        float w = ch.size.x * scale;
+        float h = ch.size.y * scale;
+        // update VBO for each character
+        float vertices[6][4] = {
+            { xpos,     ypos + h,   0.0f, 0.0f },
+            { xpos,     ypos,       0.0f, 1.0f },
+            { xpos + w, ypos,       1.0f, 1.0f },
 
-            float w = ch.size.x * para.scale;
-            float h = ch.size.y * para.scale;
-            // update VBO for each character
-            float vertices[6][4] = {
-                { xpos,     ypos + h,   0.0f, 0.0f },
-                { xpos,     ypos,       0.0f, 1.0f },
-                { xpos + w, ypos,       1.0f, 1.0f },
-
-                { xpos,     ypos + h,   0.0f, 0.0f },
-                { xpos + w, ypos,       1.0f, 1.0f },
-                { xpos + w, ypos + h,   1.0f, 0.0f }
-            };
-            // render glyph texture over quad
-            glBindTexture(GL_TEXTURE_2D, ch.textureID);
-            // update content of VBO memory
-            glBindBuffer(GL_ARRAY_BUFFER, vbo);
-            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
-            // render quad
-            glDrawArrays(GL_TRIANGLES, 0, 6);
-
-            // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-            pos.x += (ch.advance >> 6) * para.scale; // bitshift by 6 to get value in pixels (2^6 = 64)
-        }
-        glBindVertexArray(0);
-        glBindTexture(GL_TEXTURE_2D, 0);
-        mFontProgram.Unbind();
+            { xpos,     ypos + h,   0.0f, 0.0f },
+            { xpos + w, ypos,       1.0f, 1.0f },
+            { xpos + w, ypos + h,   1.0f, 0.0f }
+        };
+        // render glyph texture over quad
+        glBindTexture(GL_TEXTURE_2D, ch.textureID);
+        // update content of VBO memory
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        // render quad
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
+        x += (ch.advance >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
     }
-    paragraphs.clear();
+    glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    mFontProgram.Unbind();
 }

@@ -25,7 +25,6 @@
     <ClInclude Include="include\GameState\GameState1.h" />
     <ClInclude Include="include\GameState\GameState2.h" />
     <ClInclude Include="include\GameState\GameState3.h" />
-    <ClInclude Include="include\GameState\Lighting.h" />
     <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\Scene\Start_1.h" />
     <ClInclude Include="include\Scene\Start_background.h" />
@@ -34,7 +33,6 @@
     <ClInclude Include="include\TestScript.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\GameState\Lighting.cpp" />
     <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\GameState.cpp" />

@@ -24,8 +24,6 @@ Camera& Camera::operator-=(const Math::Vec2& translate)
 Camera& Camera::operator*=(float zoom)
 {
 	mZoom += zoom;
-	if (mZoom < 0.1f)
-		mZoom = 0.1f;
 	return *this;
 }
 
@@ -37,6 +35,4 @@ void Camera::SetPos(const Math::Vec2& _mPos)
 void Camera::SetZoom(float _mZoom)
 {
 	mZoom = _mZoom;
-	if (mZoom < 0.1f)
-		mZoom = 0.1f;
 }

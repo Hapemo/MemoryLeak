@@ -220,12 +220,7 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
-	std::string fontFile; //CaviarDreams.ttf || 3Dumb.ttf
 	std::string text;
-	Math::Vec2 pos; //world coordinates
-	float scale;
-	Color color;
-
 	int textID;
 	int nextTextID;
 	GLuint texture = 0; //for dialog box
