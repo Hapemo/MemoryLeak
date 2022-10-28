@@ -32,6 +32,7 @@ void GameState1::Init() {
     e1.AddComponent(Physics2D{ false, 100.0, true, 0.5, 1.0 / 0.5, 1.0, 1.0 / 1.0, 0.3, 0.3, 0.9, Math::Vec2{0.f, 0.f}, Math::Vec2{0.f, 0.f}, Math::Vec2{0.f, 0.f}, 0.0, 0.0, std::vector<Force>(), true });
     //physics2DManager->AddForce(e1, Math::Vec2{ 1.f, 0.f }, 50.0);
     //physics2DManager->AddForce(e1, Math::Vec2{ -1.f, 1.f }, 50.0);
+    e1.AddComponent(PlayerTmp{});
 }
 
 void GameState1::Update() {

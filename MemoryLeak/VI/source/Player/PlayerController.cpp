@@ -37,7 +37,9 @@ NULL
 *******************************************************************************/
 void PlayerController::Update() {
 	// Loop through entity container
-	//for (const Entity& e : mEntities) {
+	for (const Entity& e : mEntities) {
+		if (!e.HasComponent<PlayerTmp>())
+			continue;
 	// -----------------------------
 	// Movement input first draft (Direction based movement)
 	// -----------------------------
@@ -79,5 +81,22 @@ void PlayerController::Update() {
 
 		//// No movement input, scale down the speed to slow it down
 		//e.GetComponent<Physics2D>().speed *= static_cast<float>(playerSpeedNaturalLossScalar);
-	//}
+	
+	// -----------------------------
+	// Movement input third draft (key movement)
+	// -----------------------------
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W)) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f }, Math::Vec2{ 0.f, 0.f });
+		}
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, -1.f }, Math::Vec2{ 0.f, 0.f });
+		}
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ -1.f, 0.f }, Math::Vec2{ 0.f, 0.f });
+		}
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D)) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 1.f, 0.f }, Math::Vec2{ 0.f, 0.f });
+		}
+
+	}
 }
