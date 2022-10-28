@@ -18,4 +18,4 @@ void ECS::DestroyEntity(EntityID _entity) { Coordinator::GetInstance()->DestroyE
 
 void ECS::DestroyAllEntities() { Coordinator::GetInstance()->DestroyAllEntities(); }
 
-void ECS::DestroySomeEntites(const std::vector<EntityID>& _dontDestroy) { Coordinator::GetInstance()->DestroySomeEntites(_dontDestroy); }
+void ECS::DestroySomeEntites(const std::set<Entity>& _e) { Coordinator::GetInstance()->DestroySomeEntites(_e); }

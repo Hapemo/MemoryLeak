@@ -18,5 +18,32 @@ How to make a gamestate?
 	 your game state class
 *******************************************************************************/
 #include "GameState.h"
-
+#include "Scene.h"
+#include "Serialization.h"
 // Nothing for now
+
+void GameState::LoadWithGUID(ResourceManager::GUID const& _guid) {
+  LOG_DEBUG("Loading GameState " + std::to_string(_guid));
+  GameStateData gamestateData = ResourceManager::GetInstance()->LoadGameState(_guid);
+  mEntities = gamestateData.mEntities;
+  mGuid = _guid;
+  for (ResourceManager::GUID const& guid : gamestateData.mGUIDs) {
+    LOG_DEBUG("Loading Scene " + std::to_string(guid));
+    Scene* scene = new Scene;
+    mScenes.push_back(scene);
+    SceneData sceneData = ResourceManager::GetInstance()->LoadScene(guid);
+    scene->mEntities = sceneData.mEntities;
+    scene->pause = sceneData.isActive;
+    scene->mGuid = guid;
+  }
+}
+
+void GameState::UnloadWithGUID() {
+  LOG_DEBUG("Unloading GameState " + std::to_string(mGuid));
+  for (Scene* scene : mScenes) {
+    scene->Unload();
+    delete scene;
+  }
+  mScenes.clear();
+  ResourceManager::GetInstance()->UnloadGameState(mGuid);
+}

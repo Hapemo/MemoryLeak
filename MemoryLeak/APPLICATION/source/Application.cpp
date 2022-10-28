@@ -38,6 +38,9 @@ void Application::SystemInit() {
   levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
   audioManager->Init();
   renderManager->Init(&window_width, &window_height);
+  ResourceManager::GetInstance()->LoadAllResources();
+  for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
+    spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 }
 
 void Application::SystemUpdate() {
@@ -122,6 +125,8 @@ void Application::SecondUpdate() {
 void Application::exit() {
   levelEditor->Exit();
   audioManager->Unload();
+  spriteManager->FreeTextures();
+  ResourceManager::GetInstance()->UnloadAllResources();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();
   // Part 2

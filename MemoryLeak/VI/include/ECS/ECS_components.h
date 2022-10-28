@@ -27,6 +27,7 @@ struct General {
 	TAG tag;
 	SUBTAG	subtag = SUBTAG::NOSUBTAG;
 	bool isActive;
+	bool isPaused;
 	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
 };
 

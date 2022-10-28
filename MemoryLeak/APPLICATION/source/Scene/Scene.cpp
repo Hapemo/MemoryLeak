@@ -15,9 +15,16 @@ void Scene::PrimaryUpdate() {
 	Update();
 }
 
-void Scene::Pause(bool _pause) { pause = _pause; }
+void Scene::Pause(bool _pause) { 
+	for (auto& e : mEntities)
+		e.GetComponent<General>().isPaused = _pause;
+	pause = _pause; 
+}
 
-
+void Scene::Unload() {
+	LOG_DEBUG("Unloading Scene " + std::to_string(mGuid));
+	ResourceManager::GetInstance()->UnloadScene(mGuid);
+}
 
 
 

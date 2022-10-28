@@ -17,11 +17,11 @@ class GameState;
 // Game state ID
 enum class E_GS {
 	INVALID,
-	START,
 	GameState1,
 	GameState2,
 	GameState3,
 	ParallaxSprite,
+	JAZZ,
 	RESTART,
 	EXIT
 };

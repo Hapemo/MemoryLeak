@@ -1,4 +1,7 @@
 {
+    "SceneData": {
+        "isActive": true
+    },
     "Entity0": {
         "General": {
             "name": "Rect1",

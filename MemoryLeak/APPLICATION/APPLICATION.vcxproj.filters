@@ -2,29 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="include\Scene\Scene.h" />
-    <ClInclude Include="include\Scene\Start_1.h" />
-    <ClInclude Include="include\Scene\Start_background.h" />
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\GameStateManager.h" />
-    <ClInclude Include="include\GameState\Start.h" />
     <ClInclude Include="include\GameState\GameState1.h" />
     <ClInclude Include="include\GameState\GameState2.h" />
     <ClInclude Include="include\GameState\GameState3.h" />
     <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
+    <ClInclude Include="include\GameState\GameStateJazz.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Scene\Scene.cpp" />
-    <ClCompile Include="source\Scene\Start_1.cpp" />
-    <ClCompile Include="source\Scene\Start_background.cpp" />
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\GameState.cpp" />
     <ClCompile Include="source\GameStateManager.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\GameState\Start.cpp" />
     <ClCompile Include="source\GameState\GameState1.cpp" />
     <ClCompile Include="source\GameState\GameState2.cpp" />
     <ClCompile Include="source\GameState\GameState3.cpp" />
     <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
+    <ClCompile Include="source\GameState\GameStateJazz.cpp" />
   </ItemGroup>
 </Project>

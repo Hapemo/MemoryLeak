@@ -22,6 +22,11 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 // This file only contains this function to support forward declaration of function for ECS_items.h > struct Entity
 void Entity::Destroy() const { Coordinator::GetInstance()->DestroyEntity(id); }
 
+bool Entity::ShouldRun() const {
+	General genComponent = this->GetComponent<General>();
+	return genComponent.isPaused && genComponent.isActive;
+}
+
 
 Prefab::Prefab() : mName(""), mPrefabees(), mComponents() {
 	for (void* ptr : mComponents) ptr = nullptr;
@@ -254,11 +259,7 @@ void Coordinator::DestroyAllEntities() {
 			DestroyEntity(entity);
 }
 
-void Coordinator::DestroySomeEntites(const std::vector<EntityID>& _dontDestroy) {
-	for (EntityID entity = 0; entity < MAX_ENTITIES; ++entity) {
-		if (mEntityManager->GetSignature(entity) != 0)
-			// Skip those in dontDestroy
-			if (std::find(_dontDestroy.begin(), _dontDestroy.end(), entity) == _dontDestroy.end())
-				DestroyEntity(entity);
-	}
+void Coordinator::DestroySomeEntites(const std::set<Entity>& _e) {
+	for (Entity const& e : _e)
+		e.Destroy();
 }

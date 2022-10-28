@@ -19,6 +19,15 @@ How to make a gamestate?
 *******************************************************************************/
 #pragma once
 
+#include "pch.h"
+#include "ECS_items.h"
+#include "ResourceManager.h"
+#include "Scene.h"
+
+class Scene;
+class ResourceManager;
+struct Entity;
+
 class GameState {
 public:
 	GameState() {};
@@ -64,7 +73,13 @@ public:
 	*******************************************************************************/
 	virtual void Unload() = 0;
 
-// TODO
-// Container of scenes
-// Container of global entities
+protected:
+	void LoadWithGUID(ResourceManager::GUID const&);
+	void UnloadWithGUID();
+
+	std::vector<Scene*> mScenes;
+	std::set<Entity> mEntities;
+	ResourceManager::GUID mGuid;
+	//std::vector<ResourceManager::GUID> mResources;
+
 };

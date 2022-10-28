@@ -13,12 +13,26 @@ Entities and its Components.
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include <ECS_tools.h>
+#include "ResourceManager.h"
 
 #include "document.h"
 #include "writer.h"
 #include <istreamwrapper.h>
 #include "stringbuffer.h"
 #include <prettywriter.h>
+
+// Data that a scene class should contain
+struct SceneData {
+	bool isActive;
+	std::set<Entity> mEntities;
+};
+
+//Data that a gamestate class should contain
+struct GameStateData {
+	std::set<Entity> mEntities;
+	std::vector<ResourceManager::GUID> mGUIDs;
+};
+
 
 /*!*****************************************************************************
 \brief
@@ -31,5 +45,13 @@ public:
 	void SaveScene(std::string _filename = "SceneJ");
 	void LoadDialogs(std::string _filename = "Dialog1");
 	void SaveDialogs(std::string _filename = "Dialog1");
+
+	static std::set<Entity> LoadEntities(std::string const& _filePath);
+	static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
+	static SceneData LoadSceneData(std::string const& _filePath);
+	static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid);
+	static GameStateData LoadGameStateData(std::string const& _filePath);
+	static void SaveSceneData(ResourceManager::GUID const&);
+
 private:
 };

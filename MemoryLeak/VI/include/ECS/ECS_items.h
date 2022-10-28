@@ -101,6 +101,9 @@ struct Entity {
 	*******************************************************************************/
 	template<typename T>
 	bool HasComponent() const;
+
+	// Checks if the entity is active and not paused
+	bool ShouldRun() const;
 };
 
 

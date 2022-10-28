@@ -378,7 +378,7 @@ public:
 	/param const std::vector<EntityID>&
 	- A bunch of entities to be blacklisted from being deleted
 	*******************************************************************************/
-	void DestroySomeEntites(const std::vector<EntityID>&);
+	void DestroySomeEntites(const std::set<Entity>&);
 
 private:
 	std::unique_ptr<EntityManager> mEntityManager;

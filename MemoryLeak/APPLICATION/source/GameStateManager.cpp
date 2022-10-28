@@ -17,10 +17,10 @@ running.
 #include "Graphics/RenderManager.h"
 #include "Graphics/SpriteManager.h"
 #include "Input.h"
-#include "Start.h"
 #include "GameState1.h"
 #include "GameState2.h"
 #include "GameState3.h"
+#include "GameStateJazz.h"
 #include "ParallaxAndSpriteSwap.h"
 
 GameStateManager::GameStateManager() :
@@ -75,13 +75,13 @@ void GameStateManager::Update() {
 }
 
 void GameStateManager::Init() {
-	mPrevGS = mNextGS = mCurrGS = E_GS::GameState1;
+	mPrevGS = mNextGS = mCurrGS = E_GS::JAZZ; // Starting game state
 	
-	GS_List.insert(GS_pair(E_GS::START, new Start));
 	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
 	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
 	GS_List.insert(GS_pair(E_GS::GameState3, new GameState3));
 	GS_List.insert(GS_pair(E_GS::ParallaxSprite, new ParallaxAndSpriteSwap));
+	GS_List.insert(GS_pair(E_GS::JAZZ, new GameStateJazz));
 }
 
 
@@ -104,5 +104,5 @@ void GameStateManager::GSControlPanel() {
 	else if (Input::CheckKey(PRESS, _2) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
 	else if (Input::CheckKey(PRESS, _3) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState3);
 	else if (Input::CheckKey(PRESS, _4) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ParallaxSprite);
-	else if (Input::CheckKey(PRESS, _0) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::START);
+	else if (Input::CheckKey(PRESS, J) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::JAZZ);
 }

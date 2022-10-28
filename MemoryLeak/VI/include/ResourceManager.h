@@ -8,6 +8,14 @@
 \brief
 This file contains the function definition of the class ResourceManager.
 The ResourceManager class manages the resources, their data and usage.
+
+IMPORTANT NOTE TODO: Right now, all scene data are loaded into the gamestate 
+since the start. Next time if we want to load in specific scene data resource 
+at specific game state, we have to make a function that load specific scene
+using indicated GUIDs.
+Currently, gamestates have to be manually unloaded when exiting the gamestate,
+cannot call UnloadAllResources. Next time, during game mode instead of editor mode,
+UnloadAllResources should be called to unload even the gamestate's data.
 *******************************************************************************/
 
 #pragma once
@@ -30,6 +38,9 @@ The ResourceManager class manages the resources, their data and usage.
 #define UPDATE_TEXTURES(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
 #define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
 
+struct GameStateData;
+struct SceneData;
+struct Entity;
 class ResourceManager : public Singleton<ResourceManager> {
 public:
 	/*!*****************************************************************************
@@ -53,7 +64,7 @@ public:
 		audio,
 		script,
 		scene,
-		gamestate,
+		gamestateEntities,
 		dialogue
 	};
 private:
@@ -77,6 +88,7 @@ private:
 	const std::filesystem::path resourceFolder = "..\\resources";
 
 	std::map<GUID, void*> mAllResources;
+	std::map<GUID, std::string> mAllFilePaths;
 	unsigned char guidCounter = 0;
 public:
 	/*!*****************************************************************************
@@ -217,16 +229,49 @@ public:
 	*******************************************************************************/
 	std::string	GetTexturePath(GLint _id);
 
+	// Generate a new guid
 	GUID GUIDGenerator(std::filesystem::path const&);
 
+	// Helper function to check if a file exists
 	bool FileExist(std::string const&);
 
+	// Load all resources to resource manager
 	void LoadAllResources();
 	void LoadAllResources(std::filesystem::path const&);
 
+	// Unload all resources in resource manager (mAllResources)
 	void UnloadAllResources();
 
+	// Read guid from meta file
 	GUID ReadGUIDFromFile(std::string const& _metaPath);
 
+	// Check resource type and return an enum of it
 	E_RESOURCETYPE CheckResourceType(std::filesystem::path const&);
+
+	// Get resource container with guid
+	template<typename T>
+	T& GetResource(GUID const&);
+
+	// Get the file path of a resource using it's GUID
+	std::string GetFilePath(GUID const&);
+
+	// Load game state json file
+	GameStateData LoadGameState(GUID const&);
+	void UnloadGameState(GUID const&);
+
+	// Load scene json file
+	SceneData LoadScene(GUID const&);
+	void UnloadScene(GUID const&);
 };
+
+template<typename T>
+T& ResourceManager::GetResource(GUID const& _guid) {
+	return *(static_cast<T*>(mAllResources[_guid]));
+}
+
+
+
+
+
+
+

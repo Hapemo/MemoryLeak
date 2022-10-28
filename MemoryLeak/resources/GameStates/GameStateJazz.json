@@ -1,0 +1,138 @@
+{
+    "GameStateData": {
+        "Scenes": [16665530225854980]
+    },
+    "Entity0": {
+        "General": {
+            "name": "Rect1",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -136.33200073242188,
+                "Y": 322.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\boat.png",
+            "layer": 10
+        },
+        "Physics2D": {
+            "mass": 1.0,
+            "speed": 50.0,
+            "moveDirection": 0.0,
+            "forces": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "velocity": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "gravityEnabled": false,
+            "renderFlag": true
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "DAMAGE.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },"Entity1": {
+        "General": {
+            "name": "Rect2",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 220.0,
+                "Y": 220.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 167.86642456054688,
+                "Y": 322.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building_2.png",
+            "layer": 10
+        },
+        "Physics2D": {
+            "mass": 5.0,
+            "speed": 50.0,
+            "moveDirection": 3.1415927410125732,
+            "forces": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "velocity": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "gravityEnabled": false,
+            "renderFlag": true
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "DAMAGE.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    }
+}

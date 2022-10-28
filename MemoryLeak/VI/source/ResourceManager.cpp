@@ -18,6 +18,7 @@ The ResourceManager class manages the resources, their data and usage.
 #include <chrono>
 #include <algorithm>
 #include "ResourceManager.h"
+#include "Serialization.h"
 
 /*!*****************************************************************************
 \brief
@@ -232,7 +233,7 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 			LoadAllResources(entry);
 			continue;
 		}
-		// Else process any non-meta file
+		// Skip any meta files
 		const std::string fileName{ entry.filename().string() };
 		if (fileName.find(".meta") != std::string::npos) continue;
 
@@ -270,11 +271,13 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 			break;
 
 		case E_RESOURCETYPE::scene:
-			
+			//dataPointer = new SceneData;
+			//*(static_cast<SceneData*>(dataPointer)) = SerializationManager::LoadSceneData(entry.string());
 			break;
 
-		case E_RESOURCETYPE::gamestate:
-			
+		case E_RESOURCETYPE::gamestateEntities:
+			//dataPointer = new GameStateData;
+			//*(static_cast<GameStateData*>(dataPointer)) = SerializationManager::LoadGameStateData(entry.string());
 			break;
 
 		case E_RESOURCETYPE::dialogue:
@@ -282,6 +285,8 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 			break;
 		}
 		mAllResources.insert({ guid, dataPointer });
+		mAllFilePaths.insert({ guid, entry.string() });
+		std::cout << "GUID: " << guid << " | File: " << entry.string() << '\n';
 	}
 }
 
@@ -302,19 +307,29 @@ void ResourceManager::UnloadAllResources() {
 
 			break;
 
-		case E_RESOURCETYPE::scene:
-
+		case E_RESOURCETYPE::scene: {
+			SceneData* data = static_cast<SceneData*>(dataPtr);
+			if (!data) break;
+			ECS::DestroySomeEntites(data->mEntities);
+			delete data;
 			break;
+		}
 
-		case E_RESOURCETYPE::gamestate:
-
+		case E_RESOURCETYPE::gamestateEntities: {
+			GameStateData* data = static_cast<GameStateData*>(dataPtr);
+			if (!data) break;
+			ECS::DestroySomeEntites(data->mEntities);
+			delete data;
 			break;
+		}
 
 		case E_RESOURCETYPE::dialogue:
 
 			break;
 		}
 	}
+	mAllResources.clear();
+	mAllFilePaths.clear();
 }
 
 ResourceManager::E_RESOURCETYPE ResourceManager::CheckResourceType(std::filesystem::path const& _path) {
@@ -323,7 +338,34 @@ ResourceManager::E_RESOURCETYPE ResourceManager::CheckResourceType(std::filesyst
 	else if (_path.string().find("\\Scene\\") != std::string::npos) return E_RESOURCETYPE::scene;
 	else if (_path.string().find("\\Textures\\") != std::string::npos) return E_RESOURCETYPE::texture;
 	else if (_path.string().find("\\Scripts\\") != std::string::npos) return E_RESOURCETYPE::script;
-	else if (_path.string().find("\\GameStates\\") != std::string::npos) return E_RESOURCETYPE::gamestate;
+	else if (_path.string().find("\\GameStates\\") != std::string::npos) return E_RESOURCETYPE::gamestateEntities;
 	return E_RESOURCETYPE::error;
 }
 
+std::string ResourceManager::GetFilePath(GUID const& _guid) {
+	return mAllFilePaths[_guid];
+}
+
+GameStateData ResourceManager::LoadGameState(GUID const& _guid) {
+	mAllResources[_guid] = new GameStateData;
+	*(static_cast<GameStateData*>(mAllResources[_guid])) = SerializationManager::LoadGameStateData(mAllFilePaths[_guid]);
+	return *static_cast<GameStateData*>(mAllResources[_guid]);
+}
+
+void ResourceManager::UnloadGameState(GUID const& _guid) {
+	GameStateData* data = static_cast<GameStateData*>(mAllResources[_guid]);
+	ECS::DestroySomeEntites(data->mEntities);
+	delete data;
+}
+
+SceneData ResourceManager::LoadScene(GUID const& _guid) {
+	mAllResources[_guid] = new SceneData;
+	*(static_cast<SceneData*>(mAllResources[_guid])) = SerializationManager::LoadSceneData(mAllFilePaths[_guid]);
+	return *static_cast<SceneData*>(mAllResources[_guid]);
+}
+
+void ResourceManager::UnloadScene(GUID const& _guid) {
+	SceneData* data = static_cast<SceneData*>(mAllResources[_guid]);
+	ECS::DestroySomeEntites(data->mEntities);
+	delete data;
+}

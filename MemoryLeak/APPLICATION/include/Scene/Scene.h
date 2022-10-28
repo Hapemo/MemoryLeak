@@ -12,6 +12,7 @@ a group of entities and operates on them.
 #include "ECS_items.h"
 #include "pch.h"
 #include "ECSManager.h"
+#include "ResourceManager.h"
 
 class Scene {
 public:
@@ -36,32 +37,29 @@ public:
 	 \brief
 	 Initialise variables and entities for the scene
 	*******************************************************************************/
-	virtual void Init() = 0;
+	void Init() {};
 
 	/*!*****************************************************************************
 	 \brief
 	 Update the scene and entity operations every game loop.
 	*******************************************************************************/
-	virtual void Update() = 0;
+	void Update() {};
 
 	/*!*****************************************************************************
 	 \brief
 	 Resets the scene variables. This should be called in the init function. 
 	*******************************************************************************/
-	virtual void Reset() = 0;
+	void Exit() {};
 
-	/*!*****************************************************************************
-	 \brief
-	 Clear all entities and free all scene data. Should be called before exiting
-	 the scene.
-	*******************************************************************************/
-	virtual void Clear() = 0;
+	void Unload();
+
+	std::set<Entity> mEntities;
+	bool pause; // TODO can change this to IsActive
+	ResourceManager::GUID mGuid;
 
 protected:
-	std::set<Entity> mEntities;
 
 private:
-	bool pause; //TODO can change this to IsActive
 };
 
 
