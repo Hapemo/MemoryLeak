@@ -217,6 +217,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Graphics\FontManager.h" />
     <ClInclude Include="include\Graphics\Renderer.h" />
     <ClInclude Include="include\MonoScripting.h" />
+    <ClInclude Include="include\Physics\ColliderBody.h" />
     <ClInclude Include="include\Physics\Collision2DManager.h" />
     <ClInclude Include="include\Collision2DManager.h" />
     <ClInclude Include="include\DialogManager.h" />

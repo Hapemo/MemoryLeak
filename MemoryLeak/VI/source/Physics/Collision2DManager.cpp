@@ -50,9 +50,9 @@ void Collision2DManager::GenerateContactList() {
 
 			// Callback function to generate contact
 			Contact contact{*e1, *e2};
-			(*CollisionDatabase[static_cast<int>(e1->GetComponent<Collider2D>().typeID)][static_cast<int>(e2->GetComponent<Collider2D>().typeID)])(contact);
-			if (contact.contacts.size() != 0)
-				contactList.push_back(contact);
+			//(*CollisionDatabase[static_cast<int>(e1->GetComponent<Collider2D>().typeID)][static_cast<int>(e2->GetComponent<Collider2D>().typeID)])(contact);
+			//if (contact.contacts.size() != 0)
+			//	contactList.push_back(contact);
 
 		}
 	}

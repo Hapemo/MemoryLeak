@@ -300,6 +300,9 @@
     <ClInclude Include="include\Physics\Force.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Physics\ColliderBody.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Graphics\Animator.cpp">
