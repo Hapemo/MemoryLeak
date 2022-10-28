@@ -406,13 +406,15 @@ void  LevelEditor::SceneManager()
 				{
 					if (ImGui::MenuItem(" Create Entity"))
 					{
+						Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
 						LOG_INFO("Created new entity");
 						Entity e{ ECS::CreateEntity() };
 						mEntities.insert(e);
 						e.AddComponent(
 							General{ "_NEW_"+std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true},
-							Transform{ {150,150}, 0, {0.f,0.f} },
-							Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 });
+							Transform{ {150,150}, 0, campos },
+							Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
+							RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 						n++;
 					}
 					ImGui::EndPopup();
@@ -428,13 +430,15 @@ void  LevelEditor::SceneManager()
 		ImGui::EndTabItem();
 		if (ImGui::Button("New object"))
 		{
+			Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
 			LOG_INFO("Created new entity");
 			Entity e{ ECS::CreateEntity() };
 			mEntities.insert(e);
 			e.AddComponent(
 				General{"_NEW_" + std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true},
-				Transform{ {150,150}, 0, {0.f,0.f} },
-				Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 });
+				Transform{ {150,150}, 0, campos },
+				Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
+				RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 			n++;
 		}
 	}
@@ -990,17 +994,19 @@ void  LevelEditor::WorldViewPort()
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
-
+	static Math::Vec2 ScreenMousePos{};
+	static Math::Vec2 WorldMousePos{};
+	static Math::Vec2 CamMousePos{};
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	if (ImGui::IsWindowHovered())
 	{
-		Math::Vec2 ScreenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
-		Math::Vec2 WorldMousePos = ScreenMousePos;
+		ScreenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
+		WorldMousePos = ScreenMousePos;
 		WorldMousePos.y = -WorldMousePos.y;
 		WorldMousePos.x = WorldMousePos.x / viewportSize.x * *mWindowWidth;
 		WorldMousePos.y = WorldMousePos.y / viewportSize.y * *mWindowHeight;
-		Math::Vec2 CamMousePos = WorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();
+		CamMousePos = WorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();
 		const Math::Vec2 moveHorizontal{ 1, 0 };
 		const Math::Vec2 moveVertical{ 0, 1 };
 		const float zoom{ 0.1f };
@@ -1188,7 +1194,28 @@ void  LevelEditor::WorldViewPort()
 	GLuint frameBuffer = renderManager->GetWorldFBO();
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
 	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+	static const wchar_t* texpath = (const wchar_t*)"";
+	static int n{1};
+	if (ImGui::BeginDragDropTarget())
+	{
+		if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+		{
+			LOG_INFO("Created new entity");
+			Entity e{ ECS::CreateEntity() };
+			mEntities.insert(e);
+			e.AddComponent(
+				General{ "_NEW_DragDrop" + std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
+				Transform{ {150,150}, 0, CamMousePos },
+				Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0 },
+				RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true});
 
+			texpath = (const wchar_t*)payload->Data;
+			std::string tp = (std::string)((const char*)texpath);
+			spriteManager->SetTexture(e, tp);
+			n++;
+		}
+		ImGui::EndDragDropTarget();
+	}
 	ImGui::End();
 }
 void  LevelEditor::CameraViewPort()
