@@ -43,9 +43,6 @@
     <ClCompile Include="source\GameState\GameState3.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Scene\Scene.cpp" />
-    <ClCompile Include="source\Scene\Start_1.cpp" />
-    <ClCompile Include="source\Scene\Start_background.cpp" />
-    <ClCompile Include="source\GameState\Start.cpp" />
     <ClCompile Include="source\TestScript.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
