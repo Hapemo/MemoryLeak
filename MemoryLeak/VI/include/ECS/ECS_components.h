@@ -189,10 +189,10 @@ struct Collider2D {
 	int typeID;
 	bool isTrigger;
 	bool renderFlag;
-	union {
-		struct RectCollider rectCollider;
-		struct CircleCollider circleCollider;
-	};
+	//union {
+	//	struct RectCollider rectCollider;
+	//	struct CircleCollider circleCollider;
+	//};
 };
 
 /*!*****************************************************************************
