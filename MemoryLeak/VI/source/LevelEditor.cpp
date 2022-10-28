@@ -18,6 +18,7 @@ Entities and its Components.
 #include <filesystem>
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include <Input.h>
 
 
 /*!*****************************************************************************
@@ -50,6 +51,7 @@ void LevelEditor::Start()
 	selectedEntity = nullptr;
 	isPaused = true;
 	SRT = 0;
+	stackPointer = 0;
 	//serializationManager->SaveScene("SceneTemp");
 }
 
@@ -80,25 +82,35 @@ void LevelEditor::Update()
 	//ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 	//ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_AutoSelectNewTabs | ImGuiTabBarFlags_Reorderable;
 	static bool showdebug = true;
-	static char filenameS[30] = "Enter scene filename";
-	static char filenameO[30] = "Enter scene filename";
+	static char filenameS_Scene[30] = "";
+	static char filenameO_Scene[30] = "";
 	static char filenameS_Dialog[30] = "";
 	static char filenameO_Dialog[30] = "";
 	if (ImGui::BeginMainMenuBar())
 	{
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::Z))//relocate
+		{
+			Undo();
+		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::Y))//relocate
+		{
+			Redo();
+		}
 		if (ImGui::BeginMenu("File"))
 		{
 			ImGui::MenuItem("(menu)", NULL, false, false);
-			ImGui::InputText("o", filenameO, 30);
-			if (ImGui::MenuItem("Open", "Ctrl+O")) 
+			ImGui::MenuItem("Open Scene File", NULL, false, false);
+			ImGui::InputText(".json (os)", filenameO_Scene, 30);
+			if (ImGui::MenuItem("Open Scene", "Ctrl+O")) 
 			{
-				serializationManager->LoadScene(filenameO);
+				serializationManager->LoadScene(filenameO_Scene);
 			}
 			ImGui::Separator();
-			ImGui::InputText("s", filenameS, 30);
-			if (ImGui::MenuItem("Save", "Ctrl+S"))
+			ImGui::MenuItem("Open Scene File", NULL, false, false);
+			ImGui::InputText(".json (ss)", filenameS_Scene, 30);
+			if (ImGui::MenuItem("Save Scene As", "Ctrl+S"))
 			{
-				serializationManager->SaveScene(filenameS);
+				serializationManager->SaveScene(filenameS_Scene);
 			}
 			ImGui::Separator();
 			if (ImGui::MenuItem("Clear Scene"))
@@ -108,15 +120,15 @@ void LevelEditor::Update()
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Dialogue File", NULL, false, false);
-			ImGui::InputText(".json ", filenameO_Dialog, 20);
-			if (ImGui::MenuItem("Open", "Ctrl+D")) 
+			ImGui::InputText(".json (od)", filenameO_Dialog, 20);
+			if (ImGui::MenuItem("Open Dialog", "Ctrl+D")) 
 			{
 				serializationManager->LoadDialogs(filenameO_Dialog);
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Save Dialogue File As", NULL, false, false);
-			ImGui::InputText(".json", filenameS_Dialog, 20);
-			if (ImGui::MenuItem("Save As", "Ctrl+F"))
+			ImGui::InputText(".json (sd)", filenameS_Dialog, 20);
+			if (ImGui::MenuItem("Save Dialog As", "Ctrl+F"))
 			{
 				serializationManager->SaveDialogs(filenameS_Dialog);
 			}
@@ -133,9 +145,16 @@ void LevelEditor::Update()
 			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
 			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
 			ImGui::Separator();
-			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-			if (ImGui::MenuItem("Redo", "CTRL+Y")) {}
+			if (ImGui::MenuItem("Undo", "CTRL+Z"))
+			{ 
+				Undo();
+			}
+			if (ImGui::MenuItem("Redo", "CTRL+Y")) 
+			{ 
+				Redo();
+			}
 			ImGui::EndMenu();
+			
 		}
 		if (ImGui::BeginMenu("Options"))
 		{
@@ -257,7 +276,7 @@ void  LevelEditor::SceneManager()
 	ImGui::BeginTabBar("Edit Scene ");
 	if (ImGui::BeginTabItem("Edit Game: "))
 	{
-		std::vector<std::string> tag { "PLAYER","PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+		std::vector<std::string> tag { "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
 		for (int i = 0; i < (int)tag.size(); i++)
 		{
 
@@ -387,13 +406,15 @@ void  LevelEditor::SceneManager()
 				{
 					if (ImGui::MenuItem(" Create Entity"))
 					{
+						Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
 						LOG_INFO("Created new entity");
 						Entity e{ ECS::CreateEntity() };
 						mEntities.insert(e);
 						e.AddComponent(
 							General{ "_NEW_"+std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true},
-							Transform{ {150,150}, 0, {0.f,0.f} },
-							Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 });
+							Transform{ {150,150}, 0, campos },
+							Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
+							RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 						n++;
 					}
 					ImGui::EndPopup();
@@ -409,13 +430,15 @@ void  LevelEditor::SceneManager()
 		ImGui::EndTabItem();
 		if (ImGui::Button("New object"))
 		{
+			Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
 			LOG_INFO("Created new entity");
 			Entity e{ ECS::CreateEntity() };
 			mEntities.insert(e);
 			e.AddComponent(
 				General{"_NEW_" + std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true},
-				Transform{ {150,150}, 0, {0.f,0.f} },
-				Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 });
+				Transform{ {150,150}, 0, campos },
+				Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
+				RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 			n++;
 		}
 	}
@@ -434,31 +457,33 @@ void LevelEditor::EntityManager()
 	float tmpVec2[2];
 	float tmpFloat;
 	float tmpVec4[4];
-	//int shape;
+	static Transform old{};
+	static COMPONENT tempComponent{};
 	ImGui::Begin("Entity Manager");
 	ImGui::BeginTabBar("Edit Entities ");
 	if (ImGui::BeginTabItem("Edit Game: "))
 	{
-		if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
+		if (selectedEntity != nullptr)
 		{
-			//++counter;
-			//int counter = selectedEntityID;
-			const Entity& e = *selectedEntity;
-			//const char* lbl = e.GetComponent<General>().name.c_str();
-			//ImGui::Text(lbl);
+			Entity e = *selectedEntity;		
+
 			if (e.HasComponent<General>())
 			{
 				if (ImGui::CollapsingHeader("General")||true) {
 					ImGui::Text("General");
 						ImGui::Checkbox("isActive", &e.GetComponent<General>().isActive); //isactive
+						SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::GENERAL);
 						ImGui::InputText("Name", const_cast<char*>(e.GetComponent<General>().name.c_str()), 30);
+						SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::GENERAL);
 						int tagID = (int)e.GetComponent<General>().tag;
-						static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+						static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
 						ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
+						SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::GENERAL);
 						e.GetComponent<General>().tag = (TAG)tagID;
 						int subtagID = (int)e.GetComponent<General>().subtag;
 						static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
 						ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
+						SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::GENERAL);
 						e.GetComponent<General>().subtag = (SUBTAG)subtagID;
 				}
 			}
@@ -474,6 +499,7 @@ void LevelEditor::EntityManager()
 					}
 				}
 			}
+			
 			if (e.HasComponent<Transform>())
 			{
 				if (ImGui::CollapsingHeader("Transform Gizmo")) {
@@ -481,8 +507,8 @@ void LevelEditor::EntityManager()
 					static bool s = 0,r = 0,t = 0;
 					ImGui::Checkbox("Scale Gizmo", &s);
 					if (s) { SRT = 1; r = t = 0; }
-					//ImGui::Checkbox("Rotate", &r);
-					//if (r) { SRT = 2; s = t = 0; }
+					ImGui::Checkbox("Rotate", &r);
+					if (r) { SRT = 2; s = t = 0; }
 					ImGui::Checkbox("Translate Gizmo", &t);
 					if (t) { SRT = 3; s = r = 0; }
 					if (!s && !r && !t) SRT = 0;
@@ -495,18 +521,21 @@ void LevelEditor::EntityManager()
 					ImGui::DragFloat2("Set Scale", tmpVec2);
 					Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
 					transformManager->SetScale(e, scale);
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::TRANSFORM);
 
 					tmpVec2[0] = transformManager->GetTranslate(e).x;
 					tmpVec2[1] = transformManager->GetTranslate(e).y;
 					ImGui::DragFloat2("Set Position", tmpVec2);
 					Math::Vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
 					transformManager->SetTranslate(e, pos);
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::TRANSFORM);
 
 					tmpFloat = transformManager->GetRotation(e);
 					tmpFloat = (float)(tmpFloat / M_PI * 180.f);
 					ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 					tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 					transformManager->SetRotation(e, tmpFloat);
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::TRANSFORM);
 					/*if (ImGui::Button("Remove Transform"))
 					{
 						e.RemoveComponent<Transform>();
@@ -515,6 +544,7 @@ void LevelEditor::EntityManager()
 				}
 				
 			}
+			
 			if (e.HasComponent<Sprite>())
 			{
 				if (ImGui::CollapsingHeader("Sprite")) {
@@ -661,12 +691,16 @@ void LevelEditor::EntityManager()
 					tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
 					ImGui::InputFloat2("Circle position Offset", tmpVec2);
 					e.GetComponent<CircleCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
 					float scale = e.GetComponent<CircleCollider>().scaleOffset;
 					ImGui::InputFloat("Circle scale Offset", &scale);
 					e.GetComponent<CircleCollider>().scaleOffset = { scale };
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
 					ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
+					SaveUndo(const_cast<Entity*>(selectedEntity), tempComponent, COMPONENTID::CIRCLECOLLIDER);
+
 					if (ImGui::Button("Remove CircleCollider"))
 					{
 						e.RemoveComponent<CircleCollider>();
@@ -888,6 +922,20 @@ void  LevelEditor::AssetManager()
 			{
 				if (directory.is_directory())
 					m_CurrentDirectory /= path.filename();
+				else
+				{
+					std::string filename = directory.path().stem().string();
+					std::cout << filename.substr(0, 7);
+					if (filename.substr(0, 6) == "Dialog")
+					{
+						serializationManager->LoadDialogs(filename);
+					}
+					else if (filename.substr(0, 5) == "Scene")
+					{
+						serializationManager->LoadScene(filename);
+					}
+
+				}
 			}
 			ImGui::Text(filename.c_str());
 			ImGui::NextColumn();
@@ -921,7 +969,7 @@ void  LevelEditor::WorldViewPort()
 	//bool open_ptr = true;
 	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
 	ImGui::Begin("World View");
-	ImVec2 viewportSize = ImGui::GetWindowSize();
+	Math::Vec2 viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y };
 	viewportSize.y -= 70;
 	//Calcualting the aspect ratio 
 	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
@@ -946,103 +994,234 @@ void  LevelEditor::WorldViewPort()
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
-	GLuint frameBuffer = renderManager->GetWorldFBO();
+	static Math::Vec2 ScreenMousePos{};
+	static Math::Vec2 WorldMousePos{};
+	static Math::Vec2 CamMousePos{};
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
-	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
-
-	if (selectedEntity != nullptr)// && selectedEntityID <= (int)mEntities.size())
+	if (ImGui::IsWindowHovered())
 	{
-		const Entity& e = *selectedEntity;
-		//imguizmo
-		ImGuizmo::SetOrthographic(true);
-		ImGuizmo::SetDrawlist();
-		ImGuizmo::SetRect(ImGui::GetWindowPos().x + pos.x, ImGui::GetWindowPos().y + pos.y,
-			viewportSize.x, viewportSize.y);
-		const float identity[16] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
-		std::vector<float> trf = renderManager->GetImGuizmoMat4(e);
-		float translate[16] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
-		for (int i = 0; i < 16; ++i)
+		ScreenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
+		WorldMousePos = ScreenMousePos;
+		WorldMousePos.y = -WorldMousePos.y;
+		WorldMousePos.x = WorldMousePos.x / viewportSize.x * *mWindowWidth;
+		WorldMousePos.y = WorldMousePos.y / viewportSize.y * *mWindowHeight;
+		CamMousePos = WorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();
+		const Math::Vec2 moveHorizontal{ 1, 0 };
+		const Math::Vec2 moveVertical{ 0, 1 };
+		const float zoom{ 0.1f };
+		static Math::Vec2 camOffset{};
+		static Math::Vec2 camPos{};
+		static Math::Vec2 offset{};
+		static int isSelected = 0;
+		if (abs(ScreenMousePos.x) < viewportSize.x / 2 && abs(ScreenMousePos.y) < viewportSize.y / 2)
 		{
-			translate[i] = trf[i];
-		}
-
-		ImGuizmo::OPERATION opp{};
-		if (SRT == 1)
-		{
-			opp = ImGuizmo::OPERATION::SCALE;
-		}
-		else if (SRT == 2)
-		{
-			opp = ImGuizmo::OPERATION::ROTATE;
-		}
-		else if (SRT == 3)
-		{
-			opp = ImGuizmo::OPERATION::TRANSLATE;
-		}
-		if (SRT != 0)
-		{
-			ImGuizmo::Manipulate(&identity[0], &identity[0], opp, ImGuizmo::LOCAL, &translate[0]);
-			if (ImGuizmo::IsUsing())
+			//Camera movement
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::UP))
 			{
-				if (SRT == 1)
-				{
-					Math::Vec2 scaleX = { translate[0] , translate[1] };
-					Math::Vec2 scaleY = { translate[4] , translate[5] };
-					Math::Vec2 scale = { scaleX.Magnitude() * (float)*mWindowWidth , scaleY.Magnitude() * (float)*mWindowHeight };
-					e.GetComponent<Transform>().scale = scale;
-				}
-				else if (SRT == 2)
-				{
-					Math::Vec2 scale = { translate[0] , translate[1] };
-					float rotation = (float)(acosf(scale.x / scale.Magnitude()));
-					if (scale.y < 0.f)
-					{
-						rotation = -rotation;
-					}
-					//LOG_INFO(std::to_string(rotation));
-					/*float theta1 = atan2(translate[6], translate[10]);
-					float c2 = scale.Magnitude();
-					float theta2 = atan2(-translate[2], c2);
-					float s1 = sin(theta1);
-					float c1 = cos(theta1);
-					float rotation = atan2(s1 * translate[8] - c1 * translate[4], c1 * translate[5] - s1 * translate[9]);*/
+				renderManager->GetWorldCamera() += moveVertical;
+			}
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::DOWN))
+			{
+				renderManager->GetWorldCamera() -= moveVertical;
+			}
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::RIGHT))
+			{
+				renderManager->GetWorldCamera() += moveHorizontal;
+			}
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT))
+			{
+				renderManager->GetWorldCamera() -= moveHorizontal;
+			}
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && !isSelected)
+			{
+				camOffset = CamMousePos;
+			}
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && !isSelected)
+			{
+				camPos = -(WorldMousePos * renderManager->GetWorldCamera().GetZoom() - camOffset);
+				renderManager->GetWorldCamera().SetPos(camPos);
+			}
+			if (Input::GetScroll() > 0.0) //scroll up   // zoon in
+			{
 
-					/*rot.Normalize();
-					float rotation{};
-					if (rot.x == 0)
-					{
-						if (rot.y > 0)
-							rotation = (float)Math::PI / 2;
-						else if (rot.y < 0)
-							rotation = 3 * (float)Math::PI / 2;
-						else
-							rotation = 0;
-					}
-					else
-					{
-						if (rot.y >= 0)
-							rotation = atan2(rot.y, rot.x);
-						else if (rot.y < 0)
-							rotation = 2 * (float)Math::PI + atan2(rot.y, rot.x);
-					}*/
-					e.GetComponent<Transform>().rotation = rotation;
-				}
-				else if (SRT == 3)
+				renderManager->GetWorldCamera() += WorldMousePos * zoom;
+				renderManager->GetWorldCamera() *= -zoom;
+				//renderManager->GetWorldCamera() -= -mousePos;
+			}
+			else if (Input::GetScroll() < 0.0)  //scroll down //zoom out
+			{
+				renderManager->GetWorldCamera() -= WorldMousePos * zoom;
+				renderManager->GetWorldCamera() *= zoom;
+				//renderManager->GetWorldCamera() += -mousePos;
+			}
+		}
+		if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
+			isSelected = 0;
+
+		//object picking
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && (abs(ScreenMousePos.x) < viewportSize.x / 2 && abs(ScreenMousePos.y) < viewportSize.y / 2))
+		{
+			int layer = 0;
+			for (const Entity& e : mEntities)
+			{
+				if (e.GetComponent<General>().tag == TAG::BACKGROUND)
+					continue;
+				if (e.HasComponent<Transform>() && e.HasComponent<Sprite>())
 				{
-					Math::Vec2 translation = { translate[12] * (float)(*mWindowWidth / 2), translate[13] * (float)(*mWindowHeight / 2) };
-					e.GetComponent<Transform>().translation = translation;
+					Math::Vec2 scale = e.GetComponent<Transform>().scale;
+					Math::Vec2 translation = e.GetComponent<Transform>().translation;
+					Math::Vec2 distance = CamMousePos - translation;
+					if (abs(distance.x) < scale.x / 2 && abs(distance.y) < scale.y / 2)
+					{
+						LOG_INFO(e.GetComponent<General>().name + " Selected");
+						if (e.GetComponent<Sprite>().layer >= layer)
+						{
+							selectedEntity = &e;
+							layer = e.GetComponent<Sprite>().layer;
+							offset = distance;
+							isSelected = 1;
+						}
+					}
 				}
 			}
 		}
+
+		if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)// && selectedEntityID <= (int)mEntities.size())
+		{
+			const Entity& e = *selectedEntity;
+			if (SRT == 0)
+			{
+				Math::Vec2 scale = e.GetComponent<Transform>().scale;
+				Math::Vec2 translation = e.GetComponent<Transform>().translation;
+				Math::Vec2 distance = CamMousePos - translation;
+				//if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && (abs(ScreenMousePos.x) < viewportSize.x / 2 && abs(ScreenMousePos.y) < viewportSize.y / 2))
+				if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && (abs(distance.x) < scale.x / 2 && abs(distance.y) < scale.y / 2))
+				{
+					e.GetComponent<Transform>().translation = CamMousePos - offset;
+					isSelected = 1;
+				}
+				if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && isSelected == 1)
+				{
+					e.GetComponent<Transform>().translation = CamMousePos - offset;
+				}
+			}
+			else
+			{
+				//imguizmo
+				ImGuizmo::SetOrthographic(true);
+				ImGuizmo::SetDrawlist();
+				ImGuizmo::SetRect(ImGui::GetWindowPos().x + pos.x, ImGui::GetWindowPos().y + pos.y,
+					viewportSize.x, viewportSize.y);
+				const float identity[16] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
+				std::vector<float> trf = renderManager->GetImGuizmoMat4(e);
+				float translate[16] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
+				for (int i = 0; i < 16; ++i)
+				{
+					translate[i] = trf[i];
+				}
+
+				ImGuizmo::OPERATION opp{};
+				if (SRT == 1)
+				{
+					opp = ImGuizmo::OPERATION::SCALE;
+				}
+				else if (SRT == 2)
+				{
+					opp = ImGuizmo::OPERATION::ROTATE;
+					//std::cout << translate[0] << " : " << translate[1] << "\n";
+				}
+				else if (SRT == 3)
+				{
+					opp = ImGuizmo::OPERATION::TRANSLATE;
+				}
+				ImGuizmo::Manipulate(&identity[0], &identity[0], opp, ImGuizmo::LOCAL, &translate[0]);
+				if (ImGuizmo::IsUsing())
+				{
+					if (SRT == 1)
+					{
+						Math::Vec2 scaleX = { translate[0] , translate[1] };
+						Math::Vec2 scaleY = { translate[4] , translate[5] };
+						Math::Vec2 scale = { scaleX.Magnitude() * (float)*mWindowWidth , scaleY.Magnitude() * (float)*mWindowHeight };
+						e.GetComponent<Transform>().scale = scale;
+					}
+					else if (SRT == 2)
+					{
+						Math::Vec2 scale = { translate[0] , translate[1] };
+						float rotation = (float)(acosf(scale.x / scale.Magnitude()));
+						if (scale.y < 0.f)
+						{
+							rotation = -rotation;
+						}
+						/*float theta1 = atan2(translate[6], translate[10]);
+						float c2 = scale.Magnitude();
+						float theta2 = atan2(-translate[2], c2);
+						float s1 = sin(theta1);
+						float c1 = cos(theta1);
+						float rotation = atan2(s1 * translate[8] - c1 * translate[4], c1 * translate[5] - s1 * translate[9]);*/
+
+						/*rot.Normalize();
+						float rotation{};
+						if (rot.x == 0)
+						{
+							if (rot.y > 0)
+								rotation = (float)Math::PI / 2;
+							else if (rot.y < 0)
+								rotation = 3 * (float)Math::PI / 2;
+							else
+								rotation = 0;
+						}
+						else
+						{
+							if (rot.y >= 0)
+								rotation = atan2(rot.y, rot.x);
+							else if (rot.y < 0)
+								rotation = 2 * (float)Math::PI + atan2(rot.y, rot.x);
+						}*/
+						if (rotation)
+							LOG_INFO(std::to_string(rotation));
+						e.GetComponent<Transform>().rotation = rotation;
+					}
+					else if (SRT == 3)
+					{
+						Math::Vec2 translation = { translate[12] * (float)(*mWindowWidth / 2), translate[13] * (float)(*mWindowHeight / 2) };
+						e.GetComponent<Transform>().translation = translation;
+					}
+				}
+			}
+		}
+	}
+	GLuint frameBuffer = renderManager->GetWorldFBO();
+	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
+	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+	static const wchar_t* texpath = (const wchar_t*)"";
+	static int n{1};
+	if (ImGui::BeginDragDropTarget())
+	{
+		if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+		{
+			LOG_INFO("Created new entity");
+			Entity e{ ECS::CreateEntity() };
+			mEntities.insert(e);
+			e.AddComponent(
+				General{ "_NEW_DragDrop" + std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
+				Transform{ {150,150}, 0, CamMousePos },
+				Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0 },
+				RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true});
+
+			texpath = (const wchar_t*)payload->Data;
+			std::string tp = (std::string)((const char*)texpath);
+			spriteManager->SetTexture(e, tp);
+			n++;
+		}
+		ImGui::EndDragDropTarget();
 	}
 	ImGui::End();
 }
 void  LevelEditor::CameraViewPort()
 {
 	ImGui::Begin("Camera View");
-	ImVec2 viewportSize = ImGui::GetWindowSize();
+	Math::Vec2 viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y };
 	viewportSize.y -= 70;
 	//Calcualting the aspect ratio 
 	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
@@ -1067,13 +1246,72 @@ void  LevelEditor::CameraViewPort()
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", { 100,25 }))
 		isPaused = true;
-	GLuint frameBuffer = renderManager->GetGameFBO();
+	
 	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	//
+	if (ImGui::IsWindowHovered())
+	{
+		Math::Vec2 ScreenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
+		Math::Vec2 WorldMousePos = ScreenMousePos;
+		WorldMousePos.y = -WorldMousePos.y;
+		WorldMousePos.x = WorldMousePos.x / viewportSize.x * *mWindowWidth;
+		WorldMousePos.y = WorldMousePos.y / viewportSize.y * *mWindowHeight;
+		Math::Vec2 CamMousePos = WorldMousePos * renderManager->GetGameCamera().GetZoom() + renderManager->GetGameCamera().GetPos();
+		const Math::Vec2 moveHorizontal{ 1, 0 };
+		const Math::Vec2 moveVertical{ 0, 1 };
+		const float zoom{ 0.1f };
+		static Math::Vec2 camOffset{};
+		static Math::Vec2 camPos{};
+		static Math::Vec2 offset{};
+		static int isSelected = 0;
+		if (abs(ScreenMousePos.x) < viewportSize.x / 2 && abs(ScreenMousePos.y) < viewportSize.y / 2)
+		{
+			//Camera movement
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::UP))
+			{
+				renderManager->GetGameCamera() += moveVertical;
+			}
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::DOWN))
+			{
+				renderManager->GetGameCamera() -= moveVertical;
+			}
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::RIGHT))
+			{
+				renderManager->GetGameCamera() += moveHorizontal;
+			}
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT))
+			{
+				renderManager->GetGameCamera() -= moveHorizontal;
+			}
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && !isSelected)
+			{
+				camOffset = CamMousePos;
+			}
+			if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && !isSelected)
+			{
+				camPos = -(WorldMousePos * renderManager->GetGameCamera().GetZoom() - camOffset);
+				renderManager->GetGameCamera().SetPos(camPos);
+			}
+			if (Input::GetScroll() > 0.0) //scroll up   // zoon in
+			{
+
+				renderManager->GetGameCamera() += WorldMousePos * zoom;
+				renderManager->GetGameCamera() *= -zoom;
+				//renderManager->GetWorldCamera() -= -mousePos;
+			}
+			else if (Input::GetScroll() < 0.0)  //scroll down //zoom out
+			{
+				renderManager->GetGameCamera() -= WorldMousePos * zoom;
+				renderManager->GetGameCamera() *= zoom;
+				//renderManager->GetWorldCamera() += -mousePos;
+			}
+		}
+
+	}
+	GLuint frameBuffer = renderManager->GetGameFBO();
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
 	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
-
-	
 	ImGui::End();
 }
 std::string& BreakString(std::string& _str, int _offset)
@@ -1134,16 +1372,16 @@ void LevelEditor::DialogEditor()
 			ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 			ImGui::SameLine(ImGui::GetWindowWidth() - 77 -(dialog.find("\n") != std::string::npos ? dialog.find("\n") : dialog.size()) * 7.4f);
 			if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0))); //unselected
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(220, 30, 58))); //unselected
 			else//1st
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0))); //selected
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 128, 0))); //selected
 		}
 		else //left side (NPC)
 		{
 			//ImGui::Button("passenger", ImVec2(40,40));
 			ImGui::ImageButton(passengerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 			ImGui::SameLine();
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200))); 
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 136, 204))); //passenger
 		}
 		ImGui::Button(dialog.c_str());
 		ImGui::PopStyleColor();
@@ -1151,6 +1389,10 @@ void LevelEditor::DialogEditor()
 		{//edit text for 1st choice
 			selectedID = id;
 			editDialog = dialogManager->GetDialogue(selectedID);
+			for (size_t i = editDialog.size(); i < 500; i++)
+			{
+				editDialog += " ";
+			}
 			BreakString(editDialog, wrapsize);
 		}
 		else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
@@ -1168,13 +1410,13 @@ void LevelEditor::DialogEditor()
 				ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 				ImGui::SameLine(ImGui::GetWindowWidth() - 77-(dialog2.find("\n") != std::string::npos ? dialog2.find("\n") : dialog2.size()) * 7.4f);
 				if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
-					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0))); //selected
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 128, 0))); //selected
 				else//1st
-					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0))); //unselected
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(220, 30, 58))); //unselected
 			}
 			else //left side (NPC)
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200)));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 136, 204)));
 			}
 			ImGui::Button(dialog2.c_str());
 			ImGui::PopStyleColor();
@@ -1182,6 +1424,10 @@ void LevelEditor::DialogEditor()
 			{//edit text for 2nd choice
 				selectedID = id2;
 				editDialog = dialogManager->GetDialogue(selectedID);
+				for (size_t i = editDialog.size(); i < 500; i++)
+				{
+					editDialog += " ";
+				}
 				BreakString(editDialog, wrapsize);
 			}
 			else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
@@ -1214,7 +1460,17 @@ void LevelEditor::DialogEditor()
 		ImGui::SameLine();
 		if(ImGui::ImageButton(sendIcon, ImVec2(50, 50), ImVec2(0, 1), ImVec2(1, 0)))
 		{
-			dialogManager->EditDialogue(selectedID, editDialog);
+			std::string editedDialog;
+			std::string word;
+			std::istringstream ss(editDialog);
+
+			while (ss >> word) {
+				if (!editedDialog.empty()) {
+					editedDialog += ' ';
+				}
+				editedDialog += word;
+			}
+			dialogManager->EditDialogue(selectedID, editedDialog);
 		}
 		ImGui::EndChild();
 		ImGui::PopStyleColor();
@@ -1222,14 +1478,6 @@ void LevelEditor::DialogEditor()
 
 	ImGui::End();
 }
-
-
-
-
-
-
-
-
 
 /*!*****************************************************************************
 \brief
@@ -1244,4 +1492,61 @@ void LevelEditor::Exit()
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
+}
+
+void LevelEditor::SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id)
+{
+	if (ImGui::IsItemActivated())
+	{
+		if (id == COMPONENTID::GENERAL)
+			old = e->GetComponent<General>();
+		else if(id == COMPONENTID::TRANSFORM)
+			old = e->GetComponent<Transform>();
+		else if (id == COMPONENTID::CIRCLECOLLIDER)
+			old = e->GetComponent<CircleCollider>();
+	}
+	if (ImGui::IsItemDeactivatedAfterEdit())
+	{
+		//undoStack.erase(undoStack.begin() + stackPointer-1);
+		undoStack.push_back(std::make_pair(e, old));
+		stackPointer = (int)undoStack.size();
+	}
+}
+void LevelEditor::Undo()
+{
+	stackPointer--;
+	if (stackPointer >= 0)
+	{
+		//std::is_same<, Transform>::value_type);
+		if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
+			(undoStack[stackPointer].first)->GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
+		if (undoStack[stackPointer].second.index()==(int)COMPONENTID::TRANSFORM)
+			(undoStack[stackPointer].first)->GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
+		else if(undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
+			(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
+	}
+	else
+	{
+		LOG_ERROR("FK LA NO MORE UNDOO");
+		stackPointer = 0;
+	}
+}
+void LevelEditor::Redo()
+{
+	stackPointer++;
+	if (stackPointer <(int)undoStack.size())
+	{
+		if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
+			(undoStack[stackPointer].first)->GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
+		else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::TRANSFORM)
+			(undoStack[stackPointer].first)->GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
+		else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
+			(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
+
+	}
+	else
+	{
+		LOG_ERROR("NO MORE REDOO");
+		stackPointer = (int)undoStack.size();
+	}
 }

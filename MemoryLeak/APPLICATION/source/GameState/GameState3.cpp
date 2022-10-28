@@ -16,6 +16,8 @@ void GameState3::Load() {
     LOAD_TEXTURES("Menu");
     LOAD_TEXTURES("Sprites");
     LOAD_TEXTURES("Spritesheets");
+    Application::SetEditorMode(true);
+   
     for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
         spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 
@@ -30,11 +32,7 @@ void GameState3::Init() {
 }
 
 void GameState3::Update() {
-    TRACK_PERFORMANCE("Editor");
-    renderManager->RenderToFrameBuffer();
-    levelEditor->LevelEditor::Window();
-    levelEditor->LevelEditor::Update();
-    END_TRACK("Editor");
+
 }
 
 void GameState3::Draw() {
@@ -44,6 +42,7 @@ void GameState3::Draw() {
 void GameState3::Free() {
     //serializationManager->SaveScene("SceneJUX");
     ECS::DestroyAllEntities();
+    Application::SetEditorMode(false);
 }
 
 void GameState3::Unload() {

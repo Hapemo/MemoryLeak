@@ -18,7 +18,7 @@
 //#include "Graphics/GLShader.h"
 //#include "PerformanceVisualiser.h"
 //#include "Graphics/FBO.h"
-//#include "FontManager.h"
+//#include "FontRenderer.h"
 //#include "Camera.h"
 //
 ///*!*****************************************************************************
@@ -125,7 +125,7 @@
 //
 //private:
 //	Camera mCam;
-//	FontManager mFontManager;
+//	FontRenderer mFontRenderer;
 //	bool mDebug;
 //	float mVectorLengthModifier;
 //	FBO mfbo;

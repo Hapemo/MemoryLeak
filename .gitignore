@@ -31,7 +31,6 @@
 *.a
 *.lib
 
-
 # Executables
 *.exe
 *.out
@@ -43,3 +42,4 @@
 .sqlite
 logs
 
+MemoryLeak/bin/Release/x64/TOOLS/TOOLS.lib

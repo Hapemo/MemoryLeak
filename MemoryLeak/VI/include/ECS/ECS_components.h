@@ -14,7 +14,7 @@ ComponentType starts from 0.
 #include "Graphics/SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
-
+#include <variant>
 class Prefab;
 
 /*!*****************************************************************************
@@ -221,9 +221,35 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
+	std::string fontFile; //CaviarDreams.ttf || 3Dumb.ttf
 	std::string text;
+	Math::Vec2 pos; //world coordinates
+	float scale;
+	Color color;
+
 	int textID;
 	int nextTextID;
 	GLuint texture = 0; //for dialog box
 };
 
+//use to index the variant data type, for ditor and serilization to determine type stored
+enum class COMPONENTID
+{
+	GENERAL,		//0
+	LIFESPAN,		//1 
+	TRANSFORM,		//2
+	SPRITE,			//3
+	ANIMATION,		//4
+	SHEETANIMATION,	//5 
+	PHYSICS2D,		//6
+	RECTCOLLIDER,	//7
+	CIRCLECOLLIDER, //8
+	EDGE2DCOLLIDER, //9
+	POINT2DCOLLIDER,//10
+	AUDIO,			//11
+	TEXT,			//12
+	AI				//13
+};
+typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
+	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
+	Point2DCollider, Audio, PlayerTmp, Stuff>  COMPONENT;

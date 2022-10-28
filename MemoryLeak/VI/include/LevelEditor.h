@@ -35,6 +35,7 @@ public:
 	bool IsEditorPaused() { return isPaused; };
 	void UnpauseEditor() { isPaused = false; };
 
+	
 private:
 	void SceneManager();
 	void EntityManager();
@@ -44,6 +45,9 @@ private:
 	void CameraViewPort();
 	void ShowDebugInfo();
 	void DialogEditor();
+	void SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id);
+	void Undo();
+	void Redo();
 	GLFWwindow* mWindow;
 	int* mWindowWidth;
 	int* mWindowHeight;
@@ -51,4 +55,7 @@ private:
 	bool isPaused;
 	int SRT;
 	
+	//std::vector<std::pair<Entity * const, Transform>> undoStack;
+	std::vector<std::pair<Entity* const, COMPONENT>> undoStack;
+	int stackPointer;
 };

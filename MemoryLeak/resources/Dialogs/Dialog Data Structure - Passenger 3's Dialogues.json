@@ -1,0 +1,121 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Oh, I almost didn't notice you here.",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "Well since you're here. good timing!",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "A certain place has been on my mind for a while now after all.",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 5
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "Any description of that place?",
+   "Speaker": 1,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "Is that why you were lost in thought?",
+   "Speaker": 1,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "Do you know that feeling? When you're high up above?",
+   "Speaker": 0,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "For a moment it feels like your worries and troubles don't matter as much anymore...",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 11
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "I couldn't help it!",
+   "Speaker": 0,
+   "Next Dialogue": 9,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "Whenever I see water around me, I can't help but think about that place...",
+   "Speaker": 0,
+   "Next Dialogue": 14,
+   "Next Dialogue(2)": 15
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "Was that place perhaps really high?",
+   "Speaker": 1,
+   "Next Dialogue": 12,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "I guess this place must've meant a lot to you.",
+   "Speaker": 1,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 12,
+   "Dialogue Text": "Definitely one of the highest structure you'll ever see here! Oh did I mention it has a hole somewhere too?",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 13,
+   "Dialogue Text": "Of course it did! Now that I think about it, I used to look beyond the hole of the ceiling, thinking about what lies on the other side of the world...",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 14,
+   "Dialogue Text": "Water?",
+   "Speaker": 1,
+   "Next Dialogue": 17,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 15,
+   "Dialogue Text": "You love being around water bodies?",
+   "Speaker": 1,
+   "Next Dialogue": 16,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 16,
+   "Dialogue Text": "Sure you bet! It was always fun watching as the water flowed downwards. I wonder where it goes...",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 17,
+   "Dialogue Text": "That place was well known for its waterfall. The sound of it usually helped to calm my mind back then.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
