@@ -135,10 +135,12 @@ public:
 	Camera& GetWorldCamera() { return mWorldCam; }
 	Camera& GetGameCamera() { return mGameCam; }
 
+	void SetClearColor(const Color& _clr);
+
 private:
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam;
-	FontManager mFontManager;
+	std::unordered_map<std::string, FontRenderer> mFontRenderers;
 	bool mDebug, mRenderGameToScreen;
 	float mVectorLengthModifier;
 	FBO mWorldFBO, mGameFBO;
@@ -420,6 +422,8 @@ private:
 	The Transformation matrix.
 	*******************************************************************************/
 	Math::Mat3 GetTransform(const Math::Vec2& _scale, float _rotate, const Math::Vec2& _translate);
+
+	void CreateText(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
