@@ -22,7 +22,7 @@ template<typename T>
 class SparseSet {
 private:
 	using DataType = T; // Container's data
-	using IndexType = short; // Index unit for pairing
+	using IndexType = long long int; // Index unit for pairing
 	// Data's ID must be convertable to int.
 	
 public:

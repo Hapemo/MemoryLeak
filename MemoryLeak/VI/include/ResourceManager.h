@@ -44,7 +44,20 @@ public:
 		GLsizei		height = 0;
 		int			channels = 0;
 	};
+
+	using GUID = uint64_t;
+	
+	enum class E_RESOURCETYPE : char {
+		error = 0,
+		texture,
+		audio,
+		script,
+		scene,
+		gamestate,
+		dialogue
+	};
 private:
+
 	/*!*****************************************************************************
 	\brief
 	Struct to store all the data of a resource.
@@ -60,6 +73,11 @@ private:
 	Member vector to store all the loaded resources data.
 	*******************************************************************************/
 	std::vector<ResourceData> mResources;
+	
+	const std::filesystem::path resourceFolder = "..\\resources";
+
+	std::map<GUID, void*> mAllResources;
+	unsigned char guidCounter = 0;
 public:
 	/*!*****************************************************************************
 	\brief
@@ -198,4 +216,17 @@ public:
 	Returns the path of the texture in string.
 	*******************************************************************************/
 	std::string	GetTexturePath(GLint _id);
+
+	GUID GUIDGenerator(std::filesystem::path const&);
+
+	bool FileExist(std::string const&);
+
+	void LoadAllResources();
+	void LoadAllResources(std::filesystem::path const&);
+
+	void UnloadAllResources();
+
+	GUID ReadGUIDFromFile(std::string const& _metaPath);
+
+	E_RESOURCETYPE CheckResourceType(std::filesystem::path const&);
 };

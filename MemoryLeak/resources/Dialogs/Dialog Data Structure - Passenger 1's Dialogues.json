@@ -1,0 +1,121 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Hey you over there!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "I was trying to find my way back but I can't seem to find what I'm looking for.",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "Can you help me find it?",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 5
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "Do you remember the way it looks?",
+   "Speaker": 1,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "What are you looking for?",
+   "Speaker": 1,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "Hm... I'm not exactly sure...",
+   "Speaker": 0,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "But I do remember the way my brother and I used to run along the stairs in our house...",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 12
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "Back before my days were numbered, I used to spend my time reading below the Cordelia tree.",
+   "Speaker": 0,
+   "Next Dialogue": 9,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "The Cordelia tree was really breathtaking... I wish I could see it again.",
+   "Speaker": 0,
+   "Next Dialogue": 14,
+   "Next Dialogue(2)": 15
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "You must've lived in a pretty big house.",
+   "Speaker": 1,
+   "Next Dialogue": 11,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "Yeah! It was one of those houses with a really spectacular view. Whenever the wind blows, it felt like my worries were carried away...",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 12,
+   "Dialogue Text": "Oh, I don't see your brother anywhere.",
+   "Speaker": 1,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 13,
+   "Dialogue Text": "... I came here alone...",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 14,
+   "Dialogue Text": "Do you recall the looks of it?",
+   "Speaker": 1,
+   "Next Dialogue": 16,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 15,
+   "Dialogue Text": "Does the Cordelia bear any significance?",
+   "Speaker": 1,
+   "Next Dialogue": 17,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 16,
+   "Dialogue Text": "No, except that it gave off a feeling of tranquility.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 17,
+   "Dialogue Text": "Just one thing. Regret. They say that everytime you look at the Cordelia tree, it feels as if time has been frozen.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]

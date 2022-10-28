@@ -12,6 +12,7 @@
     <ClInclude Include="include\GameState\GameState2.h" />
     <ClInclude Include="include\GameState\GameState3.h" />
     <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
+    <ClInclude Include="include\TestScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Scene\Scene.cpp" />
@@ -26,5 +27,6 @@
     <ClCompile Include="source\GameState\GameState2.cpp" />
     <ClCompile Include="source\GameState\GameState3.cpp" />
     <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
+    <ClCompile Include="source\TestScript.cpp" />
   </ItemGroup>
 </Project>

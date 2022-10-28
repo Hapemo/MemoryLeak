@@ -205,6 +205,69 @@ public:
 
 
 
+//-------------------------------------------------------------------------
+// Prefab
+// 
+// Important notes
+// Prefab will automatically contain general component.
+// General {"", TAG::OTHERS, SUBTAG::NOSUBTAG, true, this}
+// The only thing initialised in this component is the prefab pointer,
+// pointing to itself.
+//-------------------------------------------------------------------------
+class Prefab {
+public:
+	Prefab();
+	~Prefab();
+
+	// Create new entity with prefab
+	// Must use ECS::CreateEntity
+	Entity CreatePrefabee();
+
+	// Remove entity's link from prefab. Can be called by user.
+	// When user press a button to uncheck a flag for being a prefabee.
+	// Must be called when entity gets deleted.
+	// Must be called when entity gets copy assigned to another entity.
+	void UnlinkPrefabee(Entity const&);
+
+	// Add components to prefab. Must update all prefabees on newly added component.
+	template<typename T>
+	void AddComponent(T const&);
+
+	// Change component in prefab. Must update all prefabees on updated component.
+	template<typename T>
+	void UpdateComponent(T const&);
+
+	// Remove component from prefab. Must remove component from all components.
+	template<typename T>
+	void RemoveComponent();
+
+	std::string& Name() { return mName; }
+
+private:
+	std::string mName;
+	std::set<Entity> mPrefabees;
+	std::array<void*, MAX_COMPONENTS> mComponents;
+
+	/* Components (Needs to be updated)
+	General*							mGeneral;
+	Lifespan*							mLifespan;
+	Transform*						mTransform;
+	Sprite*								mSprite;
+	Animation*						mAnimation;
+	SheetAnimation*				mSheetAnimation;
+	Physics2D*						mPhysics2D;
+	RectCollider*					mRectCollider;
+	CircleCollider*				mCircleCollider;
+	Edge2DCollider*				mEdge2DCollider;
+	Point2DCollider*			mPoint2DCollider;
+	PlayerTmp*						mPlayerTmp;
+	Stuff*								mStuff;
+	Audio*								mAudio;
+	Text*									mText;
+	*/
+};
+
+
 //=========================================================================
 // Template function declarations
 //=========================================================================

@@ -39,17 +39,18 @@ void GameStateManager::Update() {
 
 	while (mCurrGS == mNextGS) {
 		TRACK_PERFORMANCE("MainLoop");
-
 		Application::FirstUpdate();
+
+		//-------------------------------------
+		// ImGui update
+		// ImGui is a tool that uses VI Engine to change the game data stored in VI Engine
+
+
+		//-------------------------------------
+
 
 		mCurrGameState->Update();
 		GSControlPanel();
-
-		TRACK_PERFORMANCE("TexturesLoop");
-		//std::vector<int> update = UPDATE_TEXTURES();
-		//for (size_t index = 0; index < update.size(); ++index)
-		//	spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
-		END_TRACK("TexturesLoop");
 
 		Application::SystemUpdate();
 

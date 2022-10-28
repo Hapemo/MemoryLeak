@@ -64,4 +64,7 @@ public:
 	*******************************************************************************/
 	virtual void Unload() = 0;
 
+// TODO
+// Container of scenes
+// Container of global entities
 };

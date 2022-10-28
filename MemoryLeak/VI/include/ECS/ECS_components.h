@@ -5,7 +5,8 @@
 \par Group: Memory Leak Studios
 \date 24-09-2022
 \brief
-This file contains all the structs of components used in ECS
+This file contains all the structs of components used in ECS. 
+ComponentType starts from 0.
 *******************************************************************************/
 #pragma once
 #include <glm/glm.hpp>
@@ -13,6 +14,8 @@ This file contains all the structs of components used in ECS
 #include "Graphics/SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
+#include <variant>
+class Prefab;
 
 /*!*****************************************************************************
 \brief
@@ -24,6 +27,7 @@ struct General {
 	TAG tag;
 	SUBTAG	subtag = SUBTAG::NOSUBTAG;
 	bool isActive;
+	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
 };
 
 /*!*****************************************************************************
@@ -222,3 +226,24 @@ struct Text {
 	GLuint texture = 0; //for dialog box
 };
 
+//use to index the variant data type, for ditor and serilization to determine type stored
+enum class COMPONENTID
+{
+	GENERAL,		//0
+	LIFESPAN,		//1 
+	TRANSFORM,		//2
+	SPRITE,			//3
+	ANIMATION,		//4
+	SHEETANIMATION,	//5 
+	PHYSICS2D,		//6
+	RECTCOLLIDER,	//7
+	CIRCLECOLLIDER, //8
+	EDGE2DCOLLIDER, //9
+	POINT2DCOLLIDER,//10
+	AUDIO,			//11
+	TEXT,			//12
+	AI				//13
+};
+typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
+	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
+	Point2DCollider, Audio, PlayerTmp, Stuff>  COMPONENT;
