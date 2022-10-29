@@ -28,12 +28,9 @@ void GameState::LoadWithGUID(ResourceManager::GUID const& _guid) {
   mEntities = gamestateData.mEntities;
   mGuid = _guid;
   for (ResourceManager::GUID const& guid : gamestateData.mGUIDs) {
-    LOG_CUSTOM("SCENE", "Loading Scene " + std::to_string(guid));
     Scene* scene = new Scene(guid);
+    scene->Load(guid);
     mScenes.push_back(scene);
-    SceneData sceneData = ResourceManager::GetInstance()->LoadScene(guid);
-    scene->mEntities = sceneData.mEntities;
-    scene->pause = sceneData.isActive;
   }
 }
 

@@ -53,8 +53,15 @@ public:
 	 Resets the scene variables. This should be called in the init function. 
 	*******************************************************************************/
 	void Exit() {};
+	
+	// Load with guid
+	void Load(ResourceManager::GUID const& _guid);
 
 	void Unload();
+
+	void AddEntity();
+
+	void RemoveEntity(Entity const&);
 
 	std::set<Entity> mEntities;
 	bool pause; // TODO can change this to IsActive
