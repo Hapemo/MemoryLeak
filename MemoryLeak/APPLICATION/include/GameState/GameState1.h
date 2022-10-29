@@ -25,6 +25,5 @@ public:
 	virtual void Free();
 	virtual void Unload();
 private:
-	Prefab pref;
-	std::set<Entity> mEntities;
+	//Prefab pref;
 };

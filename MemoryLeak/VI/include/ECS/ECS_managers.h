@@ -63,6 +63,8 @@ public:
 	*******************************************************************************/
 	Signature GetSignature(EntityID);
 
+	uint32_t GetEntityCount() { return mLivingEntityCount; }
+
 private:
 	// A container of unused entity ids
 	std::deque<EntityID> mAvailableEntities;
@@ -379,6 +381,8 @@ public:
 	- A bunch of entities to be blacklisted from being deleted
 	*******************************************************************************/
 	void DestroySomeEntites(const std::set<Entity>&);
+
+	uint32_t GetEntityCount();
 
 private:
 	std::unique_ptr<EntityManager> mEntityManager;

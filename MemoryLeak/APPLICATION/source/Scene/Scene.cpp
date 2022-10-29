@@ -10,6 +10,18 @@ a group of entities and operates on them.
 *******************************************************************************/
 #include "Scene.h"
 
+Scene::Scene() : mEntities(), pause(false), mGuid(0) {
+	LOG_CUSTOM("SCENE", "Scene created with mGuid: " + std::to_string(mGuid));
+}
+
+Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), pause(false), mGuid(_guid) {
+	LOG_CUSTOM("SCENE", "Scene created with mGuid: " + std::to_string(mGuid));
+}
+
+Scene::~Scene() {
+	LOG_CUSTOM("SCENE", "Scene destroyed with mGuid: " + std::to_string(mGuid));
+}
+
 void Scene::PrimaryUpdate() {
 	if (pause) return;
 	Update();
@@ -22,8 +34,9 @@ void Scene::Pause(bool _pause) {
 }
 
 void Scene::Unload() {
-	LOG_DEBUG("Unloading Scene " + std::to_string(mGuid));
+	LOG_CUSTOM("SCENE", "Unloading Scene with mGuid: " + std::to_string(mGuid));
 	ResourceManager::GetInstance()->UnloadScene(mGuid);
+	mEntities.clear();
 }
 
 

@@ -16,6 +16,9 @@ a group of entities and operates on them.
 
 class Scene {
 public:
+	Scene();
+	Scene(ResourceManager::GUID const&);
+	~Scene();
 	/*!*****************************************************************************
 	 \brief
 	 Set the scene's pause status

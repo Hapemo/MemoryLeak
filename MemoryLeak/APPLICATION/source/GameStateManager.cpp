@@ -76,6 +76,8 @@ void GameStateManager::Update() {
 }
 
 void GameStateManager::Init() {
+	LOG_CUSTOM_CREATE("GAMESTATE");
+	LOG_CUSTOM_CREATE("SCENE");
 	mPrevGS = mNextGS = mCurrGS = E_GS::JAZZ; // Starting game state
 	
 	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));

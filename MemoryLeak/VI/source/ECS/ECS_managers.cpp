@@ -15,6 +15,7 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 
 #include "ECS_managers.h"
 #include "ECS_components.h"
+#include "Logger.h"
 
 //-------------------------------------------------------------------------
 // Definitions from ECS_items
@@ -160,6 +161,7 @@ EntityID EntityManager::CreateEntity() {
 	EntityID id = mAvailableEntities.front();
 	mAvailableEntities.pop_front();
 	++mLivingEntityCount;
+	LOG_CUSTOM("ECS", "Created Entity " + std::to_string(id));
 	return id;
 }
 
@@ -227,6 +229,7 @@ void SystemManager::EntitySignatureChanged(EntityID _entity, Signature _entitySi
 // Coordinator
 //-------------------------------------------------------------------------
 Coordinator::Coordinator() {
+	LOG_CUSTOM_CREATE("ECS");
 	mEntityManager = std::make_unique<EntityManager>();
 	mComponentArrayManager = std::make_unique<ComponentArrayManager>();
 	mSystemManager = std::make_unique<SystemManager>();
@@ -247,6 +250,7 @@ void Coordinator::UnlinkPrefab(EntityID _entity) {
 }
 
 void Coordinator::DestroyEntity(EntityID _entity) {
+	LOG_CUSTOM("ECS", "Destroy Entity " + std::to_string(_entity));
 	UnlinkPrefab(_entity);
 	mEntityManager->DestroyEntity(_entity);
 	mComponentArrayManager->EntityDestroyed(_entity);
@@ -263,3 +267,5 @@ void Coordinator::DestroySomeEntites(const std::set<Entity>& _e) {
 	for (Entity const& e : _e)
 		e.Destroy();
 }
+
+uint32_t Coordinator::GetEntityCount() { return mEntityManager->GetEntityCount(); }

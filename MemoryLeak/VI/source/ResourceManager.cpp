@@ -308,18 +308,18 @@ void ResourceManager::UnloadAllResources() {
 			break;
 
 		case E_RESOURCETYPE::scene: {
-			SceneData* data = static_cast<SceneData*>(dataPtr);
-			if (!data) break;
-			ECS::DestroySomeEntites(data->mEntities);
-			delete data;
+			//SceneData* data = static_cast<SceneData*>(dataPtr);
+			//if (!data) break;
+			//ECS::DestroySomeEntites(data->mEntities);
+			//delete data;
 			break;
 		}
 
 		case E_RESOURCETYPE::gamestateEntities: {
-			GameStateData* data = static_cast<GameStateData*>(dataPtr);
-			if (!data) break;
-			ECS::DestroySomeEntites(data->mEntities);
-			delete data;
+			//GameStateData* data = static_cast<GameStateData*>(dataPtr);
+			//if (!data) break;
+			//ECS::DestroySomeEntites(data->mEntities);
+			//delete data;
 			break;
 		}
 
