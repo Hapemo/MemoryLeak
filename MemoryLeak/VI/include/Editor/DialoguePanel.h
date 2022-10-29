@@ -9,13 +9,13 @@ This file contains function declarations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #pragma once
-#include "EditorManager.h"
+#include "Panel.h"
 
 /*!*****************************************************************************
 \brief
 	This class encapsulates the functions for the Level Editor
 *******************************************************************************/
-class DialoguePanel : public EditorManager
+class DialoguePanel : public System
 {
 public:
 	
@@ -25,5 +25,5 @@ public:
 
 	
 private:
-	
+	static std::string& BreakString(std::string& _str, int _offset);
 };

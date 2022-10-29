@@ -19,9 +19,9 @@ Entities and its Components.
 class DebugPanel : public Panel
 {
 public:
-	static  void Init();
-	static  void Update();
-	static  void Free();
+	void Init();
+	void Update();
+	void Free();
 
 	
 private:

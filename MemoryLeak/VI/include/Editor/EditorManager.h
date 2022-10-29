@@ -19,6 +19,11 @@ Entities and its Components.
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include "Graphics/TransformManager.h"
+#include <vec2.h>
+#include <filesystem>
+#define _USE_MATH_DEFINES
+#include <math.h>
+#include <Input.h>
 //class Panel;
 
 /*!*****************************************************************************
@@ -54,13 +59,11 @@ protected:
 	void Undo();
 	void Redo();
 	GLFWwindow* mWindow;
-	int* mWindowWidth;
-	int* mWindowHeight;
-	const Entity* selectedEntity;
-	bool isPaused;
-	int SRT;
-	
-	//std::vector<std::pair<Entity * const, Transform>> undoStack;
-	std::vector<std::pair<Entity* const, COMPONENT>> undoStack;
-	int stackPointer;
+	static int* mWindowWidth;
+	static int* mWindowHeight;
+	static const Entity* selectedEntity;
+	static bool isPaused;
+	static int SRT;
+	static std::vector<std::pair<Entity* const, COMPONENT>> undoStack;
+	static int stackPointer;
 };

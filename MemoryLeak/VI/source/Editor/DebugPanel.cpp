@@ -10,10 +10,10 @@ This file contains function definations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "DebugPanel.h"
-
+#include <ECSManager.h>
 void DebugPanel::Init()
 {
-
+	
 }
 void DebugPanel::Update()
 {

@@ -9,13 +9,13 @@ This file contains function declarations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #pragma once
-#include "EditorManager.h"
+#include "Panel.h"
 
 /*!*****************************************************************************
 \brief
 	This class encapsulates the functions for the Level Editor
 *******************************************************************************/
-class GameViewPanel : public EditorManager
+class GameViewPanel : public Panel
 {
 public:
 	void Init();
