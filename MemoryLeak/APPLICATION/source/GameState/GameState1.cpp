@@ -22,9 +22,10 @@ void GameState1::Load() {
 }
 
 void GameState1::Init() {
-  for (Scene* scenePtr : mScenes)
-    scenePtr->Init();
-  //pref.AddComponent<Lifespan>({ 10.f, 2.f });
+    for (Scene* scenePtr : mScenes)
+        scenePtr->Init();
+    
+    //pref.AddComponent<Lifespan>({ 10.f, 2.f });
 
     //int entityCount{ 100 };
     //while (entityCount--) {
@@ -39,7 +40,7 @@ void GameState1::Init() {
     //    Sprite{ Color{0,255,0,0}, SPRITE::SQUARE, 0, 1 },
     //    General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true },
     //    Text{ "CaviarDreams.ttf", "Hello World!", Math::Vec2{0,0}, 1, {255, 0, 0, 255}, 0, 0 });
-
+    
     //mEntities.insert(e1);
     //LOG_DEBUG("Special Entity Created --> Entity " + std::to_string(e1.id));
     //Entity e2{ ECS::CreateEntity() };
@@ -49,13 +50,16 @@ void GameState1::Init() {
     //    Text{ "3Dumb.ttf", "Hello World!", Math::Vec2{100,0}, 1, {255, 0, 0, 255}, 0, 0 });
     //
     //mEntities.insert(e2);
-
-    TestScript::StartScript(const_cast<Entity*>(&(*(mEntities.begin()))));
+    
+    ScriptComponent test;
+    Entity{ 11 }.AddComponent<Script>(Script(&test));
+    logicSystem->Init();
 }
 
 void GameState1::Update() {
   for (Scene* scenePtr : mScenes)
     scenePtr->PrimaryUpdate();
+
   //if (Input::CheckKey(E_STATE::PRESS, E_KEY::P))
   //  for (auto const& e : mEntities) {
   //    Lifespan lifespan = e.GetComponent<Lifespan>();
@@ -74,6 +78,7 @@ void GameState1::Update() {
   //  mEntities.erase(Entity{ 11 });
   //}
 
+  //logicSystem->Update();
 }
 
 void GameState1::Draw() {
@@ -82,8 +87,9 @@ void GameState1::Draw() {
 }
 
 void GameState1::Free() {
-  for (auto& scenePtr : mScenes)
-    scenePtr->Exit();
+    for (auto& scenePtr : mScenes)
+        scenePtr->Exit();
+    //logicSystem->Exit();
 }
 
 void GameState1::Unload() {

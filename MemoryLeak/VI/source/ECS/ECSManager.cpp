@@ -25,6 +25,7 @@ std::shared_ptr<AudioManager> audioManager{ nullptr };
 std::shared_ptr<SerializationManager> serializationManager{ nullptr };
 std::shared_ptr<DialogManager> dialogManager{ nullptr };
 std::shared_ptr<AIManager> aiManager{ nullptr };
+std::shared_ptr<LogicSystem> logicSystem{ nullptr };
 //----------------------------------------------------------------
 // Register Managers
 //----------------------------------------------------------------
@@ -149,6 +150,14 @@ void ECSManager::RegisterSheetAnimator() {
 	sheetAnimator = ECS::RegisterSystem<SheetAnimator>();
 	ECS::SetSystemSignature<SheetAnimator>(signature);
 }
+
+void ECSManager::RegisterLogicSystem() {
+	Signature signature;
+	signature.set(ECS::GetComponentType<Script>());
+
+	logicSystem = ECS::RegisterSystem<LogicSystem>();
+	ECS::SetSystemSignature<LogicSystem>(signature);
+}
 //----------------------------------------------------------------
 // ECSManager Functions
 //----------------------------------------------------------------
@@ -167,6 +176,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterSerializationManager();
 	RegisterDialogManager();
 	RegisterAIManager();
+	RegisterLogicSystem();
 	// More to come
 }
 
@@ -186,6 +196,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Stuff>();
 	ECS::RegisterComponent<Audio>();
 	ECS::RegisterComponent<Text>();
+	ECS::RegisterComponent<Script>();
 	// More to come
 }
 

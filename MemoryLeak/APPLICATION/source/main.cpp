@@ -45,6 +45,10 @@ void real_main() {
 
     // Part 2
     while (!glfwWindowShouldClose(Application::getWindow())) {
+        /*
+        int i = 1;
+        BREAKPOINT(1 == i);
+        */
         GameStateManager::GetInstance()->Update();
     }
 
