@@ -12,14 +12,7 @@ The LogicSystem class handles the C# scripting for the engine.
 
 #pragma once
 
-class ScriptManager;
-
-#include "Singleton.h"
-#include "ScriptComponent.h"
-#include <string>
-#include <vector>
-
-class LogicSystem : public Singleton<LogicSystem>
+class LogicSystem : public System
 {
 public:
 	/*!*****************************************************************************
@@ -37,15 +30,6 @@ public:
 	const LogicSystem& operator=(const LogicSystem&) = delete;
 
 	void Init();
-	bool Update();
+	void Update();
 	void Exit();
-
-	void AddBehaviour(std::string _key, ScriptManager* _behaviour);
-
-private:
-	// various behaviours (contains scripts)
-	std::map<std::string, ScriptManager*> mBehaviours;
-
-	// a behaviour-component contains the keys into "behaviours"
-	std::map<std::string, ScriptComponent*> mBehaviourComponents;
 };

@@ -30,6 +30,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include "Serialization.h"
 #include "DialogManager.h"
 #include "AI.h"
+#include "LogicSystem.h"
 
 //-------------------------------------------------------------------
 // System pointers with declaration from ECSManager.cpp
@@ -48,6 +49,7 @@ extern std::shared_ptr<AudioManager> audioManager;
 extern std::shared_ptr<SerializationManager> serializationManager;
 extern std::shared_ptr<DialogManager> dialogManager;
 extern std::shared_ptr<AIManager> aiManager;
+extern std::shared_ptr<LogicSystem> logicSystem;
 
 /*!*****************************************************************************
 \brief
@@ -75,6 +77,7 @@ private:
 	static void RegisterSerializationManager();
 	static void RegisterDialogManager();
 	static void RegisterAIManager();
+	static void RegisterLogicSystem();
 	
 	// More to come
 

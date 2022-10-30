@@ -7,28 +7,22 @@
 \date 24-10-2022
 \brief
 This file contains the function declarations of the class ScriptComponent.
-The ScriptComponent class handles the C# scripting for the engine.
+The ScriptComponent class is the base class for the scripting component in the
+engine.
 *******************************************************************************/
 
 #pragma once
 #include "ECS_items.h"
-#include <string>
-#include <vector>
 
-// allows making bahaviour objects
 class ScriptComponent
 {
-protected:
-	// holds the behaviour index of the scripts container in the LogicSystem
-	std::string mBehaviourKey;
-	Entity* mOwner;
 public:
 	/*!*****************************************************************************
 	\brief
 	Default constructor and destructor.
 	*******************************************************************************/
-	ScriptComponent(std::string _key, Entity* _entity);
-	~ScriptComponent();
+	ScriptComponent() {}
+	~ScriptComponent() {}
 
 	/*!*****************************************************************************
 	\brief
@@ -37,13 +31,19 @@ public:
 	ScriptComponent(const ScriptComponent&) = delete;
 	const ScriptComponent& operator=(const ScriptComponent&) = delete;
 
-	void SetBehaviourKey(std::string _behaviourKey);
-	void SetOwner(Entity* _owner);
-
-	inline std::string GetBehaviourKey() noexcept {
-		return mBehaviourKey;
+	virtual void StartScript(Entity* gob) {
+		(void)gob;
+		LOG_INFO("Base script starts works!!!");
 	}
-	inline Entity* GetOwner() noexcept {
-		return mOwner;
+
+	virtual void UpdateScript(Entity* gob) {
+		(void)gob;
+		LOG_INFO("Base script updating works!!!");
+	}
+
+	virtual void EndScript(Entity* gob) {
+		(void)gob;
+		LOG_INFO("Base script end works!!!");
 	}
 };
+

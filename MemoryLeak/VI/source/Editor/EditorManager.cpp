@@ -1364,6 +1364,9 @@ std::string& BreakString(std::string& _str, int _offset)
 		}
 	}
 	return _str;*/
+
+	std::string str;
+	return str;
 }
 /*!*****************************************************************************
 \brief
