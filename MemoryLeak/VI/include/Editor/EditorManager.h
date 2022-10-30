@@ -18,7 +18,13 @@ Entities and its Components.
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
-#include "Graphics/TransformManager.h"
+//#include "Graphics/TransformManager.h"
+#include <vec2.h>
+#include <filesystem>
+#define _USE_MATH_DEFINES
+#include <math.h>
+#include <Input.h>
+//class Panel;
 
 /*!*****************************************************************************
 \brief
@@ -27,17 +33,23 @@ Entities and its Components.
 class EditorManager : public System
 {
 public:
-	void Init(GLFWwindow*, int*, int*);
-	void Start();
+	void Load(GLFWwindow*, int*, int*);
+	void Init();
 	void Window();
 	void Update();
-	void Exit();
+	void Free();
+	void Unload();
+
+
+	bool IsScenePaused() { return isScenePaused; }
 	bool IsEditorPaused() { return isPaused; };
 	void UnpauseEditor() { isPaused = false; };
 private:
-
+	//std::vector<Panel> panels;
 	
 protected:
+	void ShowDialogue(bool _active);
+	static bool isScenePaused;
 	void SceneManager();
 	void EntityManager();
 	void AssetManager();
@@ -50,13 +62,13 @@ protected:
 	void Undo();
 	void Redo();
 	GLFWwindow* mWindow;
-	int* mWindowWidth;
-	int* mWindowHeight;
-	const Entity* selectedEntity;
-	bool isPaused;
-	int SRT;
-	
-	//std::vector<std::pair<Entity * const, Transform>> undoStack;
-	std::vector<std::pair<Entity* const, COMPONENT>> undoStack;
-	int stackPointer;
+	static std::set<Entity>* myEntities;
+	static int* mWindowWidth;
+	static int* mWindowHeight;
+	static const Entity* selectedEntity;
+	static Entity selEntity;
+	static bool isPaused;
+	static int SRT;
+	static std::vector<std::pair<Entity* const, COMPONENT>> undoStack;
+	static int stackPointer;
 };
