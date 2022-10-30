@@ -22,11 +22,14 @@ also handles the assertion.
 #define LOG_WARN(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_WARN, __VA_ARGS__)
 #define LOG_ERROR(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_ERROR, __VA_ARGS__)
 #define LOG_CRASH(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_CRASH, __VA_ARGS__)
+
 #define LOG_CUSTOM(_customLogLevel, ...) Logger::GetInstance()->CustomLog(std::source_location::current(), _customLogLevel, __VA_ARGS__)
 #define LOG_CUSTOM_CREATE(_newType) Logger::GetInstance()->CreateNew(_newType)
+
 #define ASSERT(_condition, ...) Logger::GetInstance()->LogAssert(_condition, std::source_location::current(), __VA_ARGS__)
 #define THROW(_type, ...) Logger::GetInstance()->LogThrow((size_t)_type, std::source_location::current(), __VA_ARGS__)
 
+#define BREAKPOINT(_condition) if (_condition) __debugbreak();
 #define MAX_LOG_HISTORY 500
 
 /**
@@ -178,6 +181,7 @@ public:
         std::string data = filename + ":" + line + "\n";
         switch (_type) {
         case (size_t)E_EXCEPTION::RUNTIME_ERR:
+            __debugbreak();
             throw std::runtime_error(data + _args);
             break;
         case (size_t)E_EXCEPTION::RANGE_ERR:

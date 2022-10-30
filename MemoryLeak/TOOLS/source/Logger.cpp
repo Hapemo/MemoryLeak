@@ -122,7 +122,7 @@ void Logger::DeleteTempFile(std::fstream& _logfile, std::string _logFilename) {
         while (getline(mTempFile, line)) {
             if (maxline < MAX_LOG_HISTORY) { // checks for log history length
                 // replace NEW RUN header with PREV RUN
-                int index;
+                size_t index;
                 std::string prevRun = "----- PREV RUN -----";
                 while ((index = line.find("----- NEW RUN -----")) != std::string::npos)
                     line.replace(index, prevRun.length(), prevRun);
