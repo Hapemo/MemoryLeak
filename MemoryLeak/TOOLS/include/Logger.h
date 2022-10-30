@@ -27,6 +27,8 @@ also handles the assertion.
 #define ASSERT(_condition, ...) Logger::GetInstance()->LogAssert(_condition, std::source_location::current(), __VA_ARGS__)
 #define THROW(_type, ...) Logger::GetInstance()->LogThrow((size_t)_type, std::source_location::current(), __VA_ARGS__)
 
+#define MAX_LOG_HISTORY 500
+
 /**
 *   Singleton Logger Class.
 */
@@ -118,10 +120,10 @@ public:
         std::cout << "[" << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME).c_str() << "]\t" << Logger::mLogTypesVec[_logType].title.c_str() << "\t" << _logMessage << "\n";
 
         // human readable log file
-        mLogInfile << "[" << currentDate << " | " << currentTime << "] " << std::left << std::setw(10) << Logger::mLogTypesVec[_logType].title << _logMessage;
+        mLogFile << "[" << currentDate << " | " << currentTime << "] " << std::left << std::setw(10) << Logger::mLogTypesVec[_logType].title << _logMessage;
 
         // full log file with file name and line number
-        mFullLogInfile << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME) << " " << Logger::mLogTypesVec[_logType].title << " " << _logData.file_name() << ":" << _logData.line() << " " << _logMessage;
+        mFullLogFile << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME) << " " << Logger::mLogTypesVec[_logType].title << " " << _logData.file_name() << ":" << _logData.line() << " " << _logMessage;
 
         // specific log file types
         if (_logType == (size_t)Logger::E_LOGLEVEL::LOG_ASSERT || _logType == (size_t)Logger::E_LOGLEVEL::LOG_CRASH)
@@ -132,8 +134,8 @@ public:
         if constexpr (sizeof...(_logMessages) > 0) {
             return Log(_logData, _logType, _logMessages...);
         } else {
-            mLogInfile << "\n" << std::flush;
-            mFullLogInfile << "\n" << std::flush;
+            mLogFile << "\n" << std::flush;
+            mFullLogFile << "\n" << std::flush;
             mLogFilesVec[_logType] << "\n" << std::flush;
         }
     }
@@ -198,6 +200,19 @@ public:
 
     /*!*****************************************************************************
     \brief
+    Creates a temporary log file.
+    *******************************************************************************/
+    void CreateTempFile(std::fstream& _logfile, std::string _logFilename);
+    
+
+    /*!*****************************************************************************
+    \brief
+    Delete the temporary log file.
+    *******************************************************************************/
+    void DeleteTempFile(std::fstream& _logfile, std::string _logFilename);
+
+    /*!*****************************************************************************
+    \brief
     Default constructor for the Logger class.
     *******************************************************************************/
     Logger();
@@ -223,8 +238,13 @@ private:
     const std::string mFilepath = "../logs/";
     std::vector<std::string> mLogNames = { "INFO", "DEBUG", "WARN", "ERROR", "ASSERT", "CRASH" };
 
-    std::fstream mLogInfile;
-    std::fstream mFullLogInfile;
+    const std::string mLogFilename = "log.log";
+    const std::string mFullLogFilename = "fulllog.log";
+    const std::string mTempFilename = "temp_";
+
+    std::fstream mLogFile;
+    std::fstream mTempFile;
+    std::fstream mFullLogFile;
     std::vector<std::fstream> mLogFilesVec;
 
     std::vector<LogType> mLogTypesVec;
