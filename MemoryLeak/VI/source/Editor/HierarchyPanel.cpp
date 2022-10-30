@@ -11,7 +11,7 @@ that lists the entities and its components in the scene
 *******************************************************************************/
 #include "HierarchyPanel.h"
 #include <ECSManager.h>
-int HierarchyPanel::newEntityCount = 0;
+int HierarchyPanel::newEntityCount = 1;
 /*!*****************************************************************************
 \brief
 	Initializes the HierarchyPanel editor

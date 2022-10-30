@@ -1349,7 +1349,7 @@ void  EditorManager::CameraViewPort()
 }
 std::string& BreakString(std::string& _str, int _offset)
 {
-	/*int offset = 0;
+	int offset = 0;
 	while (_str.size() > _offset)
 	{
 		if (_str[_offset] == ' ')
@@ -1363,7 +1363,7 @@ std::string& BreakString(std::string& _str, int _offset)
 			_offset += offset;
 		}
 	}
-	return _str;*/
+	return _str;
 }
 /*!*****************************************************************************
 \brief

@@ -23,6 +23,12 @@ public:
 
 	
 private:
-	
-
+	void ArrowKeyMoveCam();
+	void MouseClickMoveCam();
+	void ScrollMoveCam();
+	void NewEntity();
+	void SetSelectedEntity();
+	void MoveSelectedEntity(Entity e);
+	void UseGuizmo(Entity e);
+	static int newEntityCount;
 };

@@ -20,7 +20,6 @@ void InspectorPanel::Update()
 	float tmpVec2[2];
 	float tmpFloat;
 	float tmpVec4[4];
-	static Transform old{};
 	static COMPONENT tempComponent{};
 	ImGui::Begin("Entity Manager");
 	ImGui::BeginTabBar("Edit Entities ");
