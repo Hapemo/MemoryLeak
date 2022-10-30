@@ -74,6 +74,7 @@ void Application::init() {
 
   SystemInit();
   audioManager->PlayBGSound("MENUBG.wav", 10);
+  
 }
 
 void Application::FirstUpdate() {
@@ -96,7 +97,6 @@ void Application::SecondUpdate() {
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
   {
-      //editorManager->Window();
       editorManager->Update();
   }
   END_TRACK("Editor");
@@ -111,6 +111,7 @@ void Application::SecondUpdate() {
       }
       else
       {
+          editorManager->Free();
           renderManager->RenderToScreen();
       }
 

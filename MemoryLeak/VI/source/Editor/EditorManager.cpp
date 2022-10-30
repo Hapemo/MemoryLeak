@@ -11,12 +11,7 @@ Entities and its Components.
 *******************************************************************************/
 #include "EditorManager.h"
 #include <ECSManager.h>
-#include <Logger.h>
-//#include <vec2.h>
-//#include <filesystem>
-//#define _USE_MATH_DEFINES
-//#include <math.h>
-//#include <Input.h>
+//#include <Logger.h>
 #include <Panel.h>
 #include <DebugPanel.h>
 #include <DialoguePanel.h>
@@ -37,10 +32,13 @@ DebugPanel debugPanel{};
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
 const Entity* EditorManager::selectedEntity = nullptr;
+ Entity selEntity{};
 bool EditorManager::isPaused=false;
 int EditorManager::SRT{};
 std::vector<std::pair<Entity* const, COMPONENT>> EditorManager::undoStack{};
 int EditorManager::stackPointer{};
+std::set<Entity>* EditorManager::myEntities = nullptr;
+bool EditorManager::isScenePaused = false;;
 /*!*****************************************************************************
 \brief
 	Initializes the level editor
@@ -61,29 +59,27 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	ImGui_ImplOpenGL3_Init("#version 450");
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
-
+	myEntities = &mEntities;
 	//IM_ASSERT(ret);
 	//weatherAIinit();
 	
-	/*DebugPanel dp{};
-	panels.push_back(dp);*/
 	Init();
 }
 void EditorManager::Init()
 {
+	isScenePaused = true;
+
 	selectedEntity = nullptr;
 	isPaused = true;
 	SRT = 0;
 	stackPointer = 0;
-	//serializationManager->SaveScene("SceneTemp");
-	//HierarchyPanel::Init();
-	//InspectorPanel::Init();
-	//WorldViewPanel::Init();
-	//GameViewPanel::Init();
-	//DialoguePanel::Init();
-	//AssetPanel::Init();
-	//DebugPanel::Init();
-	//wvp.Init();
+	hierarchyPanel.Init();
+	inspectorPanel.Init();
+	worldViewPanel.Init();
+	gameViewPanel.Init();
+	dialoguePanel.Init();
+	assetPanel.Init();
+	debugPanel.Init();
 }
 
 /*!*****************************************************************************
@@ -113,7 +109,7 @@ void EditorManager::Update()
 	//weatherAIupdate();
 	//ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 	//ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_AutoSelectNewTabs | ImGuiTabBarFlags_Reorderable;
-	static bool showdebug = true;
+	//static bool showdebug = true;
 	static char filenameS_Scene[30] = "";
 	static char filenameO_Scene[30] = "";
 	static char filenameS_Dialog[30] = "";
@@ -156,6 +152,7 @@ void EditorManager::Update()
 			if (ImGui::MenuItem("Open Dialog", "Ctrl+D")) 
 			{
 				serializationManager->LoadDialogs(filenameO_Dialog);
+				ShowDialogue(true);
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Save Dialogue File As", NULL, false, false);
@@ -190,13 +187,13 @@ void EditorManager::Update()
 		}
 		if (ImGui::BeginMenu("Options"))
 		{
-			if (!showdebug && ImGui::MenuItem("Show Debug Info"))
+			if (!debugPanel.isActive() && ImGui::MenuItem("Show Debug Info"))
 			{
-				showdebug = true;
+				debugPanel.setIsActive(true);
 			}
-			if (showdebug && ImGui::MenuItem("Hide Debug Info"))
+			if (debugPanel.isActive() && ImGui::MenuItem("Hide Debug Info"))
 			{
-				showdebug = false;
+				debugPanel.setIsActive(false);
 			}
 			ImGui::EndMenu();
 		}
@@ -899,9 +896,6 @@ void EditorManager::EntityManager()
 	//ImGui::EndTabBar();
 	//ImGui::End();
 }
-
-
-
 /*!*****************************************************************************
 \brief
 	Asset manager pannel
@@ -987,7 +981,6 @@ void  EditorManager::AssetManager()
 	//ImGui::EndTabBar();
 	//ImGui::End();
 }
-
 /*!*****************************************************************************
 \brief
 	Viewport manager pannel
@@ -1039,14 +1032,14 @@ void  EditorManager::WorldViewPort()
 	//static Math::Vec2 CamMousePos{};
 	//pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
 	//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	//if (ImGui::IsWindowHovered())
-	//{
 	//	ScreenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
 	//	WorldMousePos = ScreenMousePos;
 	//	WorldMousePos.y = -WorldMousePos.y;
 	//	WorldMousePos.x = WorldMousePos.x / viewportSize.x * *mWindowWidth;
 	//	WorldMousePos.y = WorldMousePos.y / viewportSize.y * *mWindowHeight;
 	//	CamMousePos = WorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();
+	//if (ImGui::IsWindowHovered())
+	//{
 	//	const Math::Vec2 moveHorizontal{ 1, 0 };
 	//	const Math::Vec2 moveVertical{ 0, 1 };
 	//	const float zoom{ 0.1f };
@@ -1356,7 +1349,7 @@ void  EditorManager::CameraViewPort()
 }
 std::string& BreakString(std::string& _str, int _offset)
 {
-	int offset = 0;
+	/*int offset = 0;
 	while (_str.size() > _offset)
 	{
 		if (_str[_offset] == ' ')
@@ -1370,7 +1363,7 @@ std::string& BreakString(std::string& _str, int _offset)
 			_offset += offset;
 		}
 	}
-	return _str;
+	return _str;*/
 }
 /*!*****************************************************************************
 \brief
@@ -1384,7 +1377,7 @@ void EditorManager::DialogEditor()
 	//GLuint player_texture = spriteManager->GetTextureID("Textures\\Sprites\\mc.png");
 	//ImTextureID playerIcon = (void*)(intptr_t)player_texture;
 	//GLuint passenger_texture = spriteManager->GetTextureID("Textures\\Sprites\\girl.png");
-	//ImTextureID passengerIcon = (void*)(intptr_t)passenger_texture;
+	//ImTextureID npcIcon = (void*)(intptr_t)passenger_texture;
 	//GLuint send_texture = spriteManager->GetTextureID("Textures\\Icons\\sendIcon.png");
 	//ImTextureID sendIcon = (void*)(intptr_t)send_texture;
 	//ImGui::Begin("Dialog Editor");
@@ -1394,7 +1387,7 @@ void EditorManager::DialogEditor()
 	//static int selectedID = 0;
 	//std::string dialog{};
 	//std::string dialog2{};
-	//static std::string editDialog{};
+	//static std::string dialogEdit{};
 	//int wrapsize = int(ImGui::GetWindowWidth()/13);
 	//ImVec2 iconSize = ImVec2(40, 40);
 	////ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(100, 0, 0))); ImGui::PopStyleColor();
@@ -1419,7 +1412,7 @@ void EditorManager::DialogEditor()
 	//	else //left side (NPC)
 	//	{
 	//		//ImGui::Button("passenger", ImVec2(40,40));
-	//		ImGui::ImageButton(passengerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
+	//		ImGui::ImageButton(npcIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 	//		ImGui::SameLine();
 	//		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 136, 204))); //passenger
 	//	}
@@ -1428,12 +1421,12 @@ void EditorManager::DialogEditor()
 	//	if(ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
 	//	{//edit text for 1st choice
 	//		selectedID = id;
-	//		editDialog = dialogManager->GetDialogue(selectedID);
-	//		for (size_t i = editDialog.size(); i < 500; i++)
+	//		dialogEdit = dialogManager->GetDialogue(selectedID);
+	//		for (size_t i = dialogEdit.size(); i < 500; i++)
 	//		{
-	//			editDialog += " ";
+	//			dialogEdit += " ";
 	//		}
-	//		BreakString(editDialog, wrapsize);
+	//		BreakString(dialogEdit, wrapsize);
 	//	}
 	//	else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
 	//	{//change selected to 1st choice
@@ -1463,12 +1456,12 @@ void EditorManager::DialogEditor()
 	//		if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
 	//		{//edit text for 2nd choice
 	//			selectedID = id2;
-	//			editDialog = dialogManager->GetDialogue(selectedID);
-	//			for (size_t i = editDialog.size(); i < 500; i++)
+	//			dialogEdit = dialogManager->GetDialogue(selectedID);
+	//			for (size_t i = dialogEdit.size(); i < 500; i++)
 	//			{
-	//				editDialog += " ";
+	//				dialogEdit += " ";
 	//			}
-	//			BreakString(editDialog, wrapsize);
+	//			BreakString(dialogEdit, wrapsize);
 	//		}
 	//		else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
 	//		{//change selected to 2nd choice
@@ -1495,14 +1488,14 @@ void EditorManager::DialogEditor()
 	//	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(ImColor(50, 50, 50)));
 	//	ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 120 + ImGui::GetScrollY()));
 	//	ImGui::BeginChild("yeet", ImVec2(ImGui::GetWindowWidth()-20, 100), true);
-	//	ImGui::InputTextMultiline(" ", const_cast<char*>(editDialog.c_str()), 1000, 
+	//	ImGui::InputTextMultiline(" ", const_cast<char*>(dialogEdit.c_str()), 1000, 
 	//		ImVec2(ImGui::GetWindowWidth()-100, 80));
 	//	ImGui::SameLine();
 	//	if(ImGui::ImageButton(sendIcon, ImVec2(50, 50), ImVec2(0, 1), ImVec2(1, 0)))
 	//	{
 	//		std::string editedDialog;
 	//		std::string word;
-	//		std::istringstream ss(editDialog);
+	//		std::istringstream ss(dialogEdit);
 
 	//		while (ss >> word) {
 	//			if (!editedDialog.empty()) {
@@ -1518,7 +1511,6 @@ void EditorManager::DialogEditor()
 
 	//ImGui::End();
 }
-
 /*!*****************************************************************************
 \brief
 	free
@@ -1528,13 +1520,14 @@ None.
 *******************************************************************************/
 void EditorManager::Free()
 {
-	/*HierarchyPanel::Free();
-	InspectorPanel::Free();
-	WorldViewPanel::Free();
-	GameViewPanel::Free();
-	DialoguePanel::Free();
-	AssetPanel::Free();
-	DebugPanel::Free();*/
+	isScenePaused = false;
+	hierarchyPanel.Free();
+	inspectorPanel.Free();
+	worldViewPanel.Free();
+	gameViewPanel.Free();
+	dialoguePanel.Free();
+	assetPanel.Free();
+	debugPanel.Free();
 }
 /*!*****************************************************************************
 \brief
@@ -1606,4 +1599,8 @@ void EditorManager::Redo()
 		LOG_ERROR("NO MORE REDOO");
 		stackPointer = (int)undoStack.size();
 	}
+}
+void EditorManager::ShowDialogue(bool _active)
+{
+	dialoguePanel.setIsActive(_active);
 }

@@ -75,6 +75,7 @@ void AssetPanel::Update()
 					if (filename.substr(0, 6) == "Dialog")
 					{
 						serializationManager->LoadDialogs(filename);
+						ShowDialogue(true);
 					}
 					else if (filename.substr(0, 5) == "Scene")
 					{

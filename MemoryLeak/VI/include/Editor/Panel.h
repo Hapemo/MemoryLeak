@@ -21,8 +21,10 @@ public:
 	void Init() {};
 	void Update() {};
 	void Free() {};
-
-	
+	bool isActive() { return active; }
+	void setIsActive(bool _active) { active = _active; }
+protected:
+	bool active = true;
 private:
 	
 };

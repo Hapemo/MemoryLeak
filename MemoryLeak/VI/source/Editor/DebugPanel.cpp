@@ -1,23 +1,39 @@
 /*!*****************************************************************************
 /*!*****************************************************************************
-\file LevelEditor.cpp
+\file DebugPanel.cpp
 \author Huang Wei Jhin
 \par DP email: h.weijhin@digipen.edu
 \par Group: Memory Leak Studios
-\date 20-09-2022
+\date 20-10-2022
 \brief
-This file contains function definations for a Level Editor system that modifies
-Entities and its Components.
+This file contains function definations for a Debug Panel Editor system that displays debug infomation from logger
 *******************************************************************************/
 #include "DebugPanel.h"
 #include <ECSManager.h>
+/*!*****************************************************************************
+\brief
+	Initializes the Debug Panel editor
+
+\return
+None.
+*******************************************************************************/
 void DebugPanel::Init()
 {
-	
+	loggerStr = Logger::GetInstance()->GetLoggerStr();
 }
+/*!*****************************************************************************
+\brief
+	Updates the Debug Panel editor
+
+\return
+None.
+*******************************************************************************/
 void DebugPanel::Update()
 {
-	std::vector<std::pair<Logger::E_LOGLEVEL, std::string>> loggerStr = Logger::GetInstance()->GetLoggerStr();
+	if (!active)
+		return;
+	//loggerStr = Logger::GetInstance()->GetLoggerStr();
+	Init();
 	ImGui::Begin("Debug Logger");
 	ImGui::BeginTabBar("DebugLogger ");
 	if (ImGui::BeginTabItem("All Logs "))
@@ -82,6 +98,13 @@ void DebugPanel::Update()
 	ImGui::End();
 
 }
+/*!*****************************************************************************
+\brief
+	Free the Debug Panel editor
+
+\return
+None.
+*******************************************************************************/
 void DebugPanel::Free()
 {
 

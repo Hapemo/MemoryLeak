@@ -18,7 +18,7 @@ Entities and its Components.
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
-#include "Graphics/TransformManager.h"
+//#include "Graphics/TransformManager.h"
 #include <vec2.h>
 #include <filesystem>
 #define _USE_MATH_DEFINES
@@ -41,12 +41,15 @@ public:
 	void Unload();
 
 
+	bool IsScenePaused() { return isScenePaused; }
 	bool IsEditorPaused() { return isPaused; };
 	void UnpauseEditor() { isPaused = false; };
 private:
 	//std::vector<Panel> panels;
 	
 protected:
+	void ShowDialogue(bool _active);
+	static bool isScenePaused;
 	void SceneManager();
 	void EntityManager();
 	void AssetManager();
@@ -59,9 +62,11 @@ protected:
 	void Undo();
 	void Redo();
 	GLFWwindow* mWindow;
+	static std::set<Entity>* myEntities;
 	static int* mWindowWidth;
 	static int* mWindowHeight;
 	static const Entity* selectedEntity;
+	static Entity selEntity;
 	static bool isPaused;
 	static int SRT;
 	static std::vector<std::pair<Entity* const, COMPONENT>> undoStack;

@@ -52,8 +52,8 @@ void GameStateManager::Update() {
 
 		mCurrGameState->Update();
 		GSControlPanel();
-
-		Application::SystemUpdate();
+		if(!editorManager->IsScenePaused())
+			Application::SystemUpdate();
 
 		TRACK_PERFORMANCE("Graphics");
 		mCurrGameState->Draw();

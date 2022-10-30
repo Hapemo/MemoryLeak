@@ -1,75 +1,76 @@
 /*!*****************************************************************************
 /*!*****************************************************************************
-\file LevelEditor.cpp
+\file WorldViewPanel.cpp
 \author Huang Wei Jhin
 \par DP email: h.weijhin@digipen.edu
 \par Group: Memory Leak Studios
-\date 20-09-2022
+\date 20-10-2022
 \brief
-This file contains function definations for a Level Editor system that modifies
-Entities and its Components.
+This file contains function definations for a WorldView Panel Editor system that displays the world scene
 *******************************************************************************/
 #include "WorldViewPanel.h"
 #include <ECSManager.h>
+
+/*!*****************************************************************************
+\brief
+	Initializes the WorldViewPanel editor
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::Init()
 {
-
+	viewportSize={ 0,0 };
 }
+/*!*****************************************************************************
+\brief
+	Updates the WorldViewPanel Panel editor
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::Update()
 {
-	ImGuiWindowFlags window_flags = 0;
-	window_flags |= ImGuiWindowFlags_NoBackground;
-	//bool open_ptr = true;
-	//ImGui::Begin("View Port Manager", &open_ptr, window_flags);
 	ImGui::Begin("World View");
-	Math::Vec2 viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y };
-	viewportSize.y -= 70;
+	viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y-70 };
 	//Calcualting the aspect ratio 
-	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
-	{
-		viewportSize.x = viewportSize.y / 9 * 16;
-	}
-	else if (viewportSize.x / viewportSize.y < 16 / 9.0f) // tall screen
-	{
-		viewportSize.y = viewportSize.x / 16 * 9;
-	}
+	SetViewportAspectRatio();
+	
 	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	//if (ImGui::Button("Reset", { 100,25 }))
+	//if (ImGui::Button("Reset", buttonSize))
 		//serializationManager->LoadScene("SceneTmp");
 	//ImGui::SameLine(0.f,20.f);
-	if (ImGui::Button("Play", { 100,25 }))
+	if (ImGui::Button("Play", buttonSize))
 	{
-		//serializationManager->SaveScene("SceneTmp");
-		//isPaused = false;
-		renderManager->GetWorldCamera() *= 0.01f;
+		isScenePaused = false;
 	}
 	ImGui::SameLine(0.f, 20.f);
-	if (ImGui::Button("Pause", { 100,25 }))
+	if (ImGui::Button("Pause", buttonSize))
 	{
-		//isPaused = true;
+		isScenePaused = true;
 	}
-	static Math::Vec2 ScreenMousePos{};
-	static Math::Vec2 WorldMousePos{};
-	static Math::Vec2 CamMousePos{};
-	pos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
-	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	/*static Math::Vec2 screenMousePos{};
+	static Math::Vec2 worldMousePos{};
+	static Math::Vec2 camMousePos{};*/
+	/*viewportPos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, 60.f };
+	screenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
+	worldMousePos = screenMousePos;
+	worldMousePos.y = -worldMousePos.y;
+	worldMousePos.x = worldMousePos.x / viewportSize.x * *mWindowWidth;
+	worldMousePos.y = worldMousePos.y / viewportSize.y * *mWindowHeight;
+	camMousePos = worldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();*/
+	CalculateMousePos(E_CAMERA_TYPE::WORLD);
 	if (ImGui::IsWindowHovered())
 	{
-		ScreenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - pos - viewportSize / 2;
-		WorldMousePos = ScreenMousePos;
-		WorldMousePos.y = -WorldMousePos.y;
-		WorldMousePos.x = WorldMousePos.x / viewportSize.x * *mWindowWidth;
-		WorldMousePos.y = WorldMousePos.y / viewportSize.y * *mWindowHeight;
-		CamMousePos = WorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();
-		const Math::Vec2 moveHorizontal{ 1, 0 };
+		/*const Math::Vec2 moveHorizontal{ 1, 0 };
 		const Math::Vec2 moveVertical{ 0, 1 };
-		const float zoom{ 0.1f };
+		const float zoom{ 0.1f };*/
 		static Math::Vec2 camOffset{};
 		static Math::Vec2 camPos{};
 		static Math::Vec2 offset{};
 		static int isSelected = 0;
-		if (abs(ScreenMousePos.x) < viewportSize.x / 2 && abs(ScreenMousePos.y) < viewportSize.y / 2)
+		if (abs(screenMousePos.x) < viewportSize.x / 2 && abs(screenMousePos.y) < viewportSize.y / 2)
 		{
 			//Camera movement
 			if (Input::CheckKey(E_STATE::HOLD, E_KEY::UP))
@@ -90,24 +91,24 @@ void WorldViewPanel::Update()
 			}
 			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && !isSelected)
 			{
-				camOffset = CamMousePos;
+				camOffset = camMousePos;
 			}
 			if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && !isSelected)
 			{
-				camPos = -(WorldMousePos * renderManager->GetWorldCamera().GetZoom() - camOffset);
+				camPos = -(worldMousePos * renderManager->GetWorldCamera().GetZoom() - camOffset);
 				renderManager->GetWorldCamera().SetPos(camPos);
 			}
 			if (Input::GetScroll() > 0.0) //scroll up   // zoon in
 			{
 
-				renderManager->GetWorldCamera() += WorldMousePos * zoom;
-				renderManager->GetWorldCamera() *= -zoom;
+				renderManager->GetWorldCamera() += worldMousePos * moveZoom;
+				renderManager->GetWorldCamera() *= -moveZoom;
 				//renderManager->GetWorldCamera() -= -mousePos;
 			}
 			else if (Input::GetScroll() < 0.0)  //scroll down //zoom out
 			{
-				renderManager->GetWorldCamera() -= WorldMousePos * zoom;
-				renderManager->GetWorldCamera() *= zoom;
+				renderManager->GetWorldCamera() -= worldMousePos * moveZoom;
+				renderManager->GetWorldCamera() *= moveZoom;
 				//renderManager->GetWorldCamera() += -mousePos;
 			}
 		}
@@ -115,10 +116,10 @@ void WorldViewPanel::Update()
 			isSelected = 0;
 
 		//object picking
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && (abs(ScreenMousePos.x) < viewportSize.x / 2 && abs(ScreenMousePos.y) < viewportSize.y / 2))
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && (abs(screenMousePos.x) < viewportSize.x / 2 && abs(screenMousePos.y) < viewportSize.y / 2))
 		{
 			int layer = 0;
-			for (const Entity& e : mEntities)/////////here////////////////////////////////////////////////here
+			for (const Entity& e : *myEntities)
 			{
 				if (e.GetComponent<General>().tag == TAG::BACKGROUND)
 					continue;
@@ -126,7 +127,7 @@ void WorldViewPanel::Update()
 				{
 					Math::Vec2 scale = e.GetComponent<Transform>().scale;
 					Math::Vec2 translation = e.GetComponent<Transform>().translation;
-					Math::Vec2 distance = CamMousePos - translation;
+					Math::Vec2 distance = camMousePos - translation;
 					if (abs(distance.x) < scale.x / 2 && abs(distance.y) < scale.y / 2)
 					{
 						LOG_INFO(e.GetComponent<General>().name + " Selected");
@@ -149,16 +150,16 @@ void WorldViewPanel::Update()
 			{
 				Math::Vec2 scale = e.GetComponent<Transform>().scale;
 				Math::Vec2 translation = e.GetComponent<Transform>().translation;
-				Math::Vec2 distance = CamMousePos - translation;
-				//if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && (abs(ScreenMousePos.x) < viewportSize.x / 2 && abs(ScreenMousePos.y) < viewportSize.y / 2))
+				Math::Vec2 distance = camMousePos - translation;
+				//if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && (abs(screenMousePos.x) < viewportSize.x / 2 && abs(screenMousePos.y) < viewportSize.y / 2))
 				if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && (abs(distance.x) < scale.x / 2 && abs(distance.y) < scale.y / 2))
 				{
-					e.GetComponent<Transform>().translation = CamMousePos - offset;
+					e.GetComponent<Transform>().translation = camMousePos - offset;
 					isSelected = 1;
 				}
 				if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && isSelected == 1)
 				{
-					e.GetComponent<Transform>().translation = CamMousePos - offset;
+					e.GetComponent<Transform>().translation = camMousePos - offset;
 				}
 			}
 			else
@@ -248,6 +249,7 @@ void WorldViewPanel::Update()
 	}
 	GLuint frameBuffer = renderManager->GetWorldFBO();
 	ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
+	ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
 	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 	static const wchar_t* texpath = (const wchar_t*)"";
 	static int n{ 1 };
@@ -257,10 +259,10 @@ void WorldViewPanel::Update()
 		{
 			LOG_INFO("Created new entity");
 			Entity e{ ECS::CreateEntity() };
-			mEntities.insert(e);
+			(*myEntities).insert(e);
 			e.AddComponent(
 				General{ "_NEW_DragDrop" + std::to_string(n), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
-				Transform{ {150,150}, 0, CamMousePos },
+				Transform{ {150,150}, 0, camMousePos },
 				Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0 },
 				RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 
@@ -273,6 +275,13 @@ void WorldViewPanel::Update()
 	}
 	ImGui::End();
 }
+/*!*****************************************************************************
+\brief
+	Free the WorldViewPanel editor
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::Free()
 {
 
