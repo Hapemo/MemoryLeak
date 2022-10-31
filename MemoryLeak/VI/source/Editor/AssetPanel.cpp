@@ -101,6 +101,8 @@ void AssetPanel::Update()
 						}
 						else if (texfilename.substr(0, 5) == "Scene")
 						{
+							ECS::DestroyAllEntities();
+							selectedEntity = nullptr;
 							serializationManager->LoadScene(texfilename);
 						}
 					}
