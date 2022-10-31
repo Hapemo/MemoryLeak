@@ -380,53 +380,63 @@ void InspectorPanel::Physics2DEditor()
 
 	if (ImGui::CollapsingHeader("Physics2D")) {
 		//ImGui::Text("Physics2D");
-		ImGui::Checkbox("gravityEnabled", &e.GetComponent<Physics2D>().gravityEnabled);
+		// 
+		// 
+		//ImGui::Checkbox("gravityEnabled", &e.GetComponent<Physics2D>().gravityEnabled);
 
-		//////
-		ImGui::InputFloat("Mass", &e.GetComponent<Physics2D>().mass);
-		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
-		ImGui::InputFloat("Speed", &e.GetComponent<Physics2D>().speed);
-		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
-		ImGui::InputFloat("moveDirection", &e.GetComponent<Physics2D>().moveDirection);
-		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
-		/////
-
-		/*ImGui::InputDouble("gravityScale", &e.GetComponent<Physics2D>().gravityScale);
+		////////
+		//ImGui::InputFloat("Mass", &e.GetComponent<Physics2D>().mass);
+		//SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
+		//ImGui::InputFloat("Speed", &e.GetComponent<Physics2D>().speed);
+		//SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
+		//ImGui::InputFloat("moveDirection", &e.GetComponent<Physics2D>().moveDirection);
+		//SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
+		///////
+		//ImGui::InputDouble("gravityScale", &e.GetComponent<Physics2D>().gravityScale);
 
 		ImGui::Checkbox("dynamicsEnabled", &e.GetComponent<Physics2D>().dynamicsEnabled);
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputDouble("Mass", &e.GetComponent<Physics2D>().mass);
-		
-		ImGui::InputDouble("invMass", &e.GetComponent<Physics2D>().invMass);
+		ImGui::InputFloat("Mass", &e.GetComponent<Physics2D>().mass);
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputDouble("inertia", &e.GetComponent<Physics2D>().inertia);
+		ImGui::InputFloat("inertia", &e.GetComponent<Physics2D>().inertia);
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputFloat("invInertia", &e.GetComponent<Physics2D>().invInertia);
+		ImGui::InputFloat("restitution", &e.GetComponent<Physics2D>().restitution);
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputDouble("restitution", &e.GetComponent<Physics2D>().restitution);
+		ImGui::InputFloat("friction", &e.GetComponent<Physics2D>().friction);
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputDouble("friction", &e.GetComponent<Physics2D>().friction);
+		ImGui::InputFloat("damping", &e.GetComponent<Physics2D>().damping);
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputDouble("damping", &e.GetComponent<Physics2D>().damping);
+		tmpVec2[0] = e.GetComponent<Physics2D>().velocity.x;
+		tmpVec2[1] = e.GetComponent<Physics2D>().velocity.y;
+		ImGui::InputFloat2("velocity", tmpVec2);
+		e.GetComponent<Physics2D>().velocity = { tmpVec2[0] ,tmpVec2[1] };
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
+
+		tmpVec2[0] = e.GetComponent<Physics2D>().acceleration.x;
+		tmpVec2[1] = e.GetComponent<Physics2D>().acceleration.y;
+		ImGui::InputFloat2("acceleration", tmpVec2);
+		e.GetComponent<Physics2D>().acceleration = { tmpVec2[0] ,tmpVec2[1] };
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
+
 				
 		tmpVec2[0] = e.GetComponent<Physics2D>().accumulatedForce.x;
 		tmpVec2[1] = e.GetComponent<Physics2D>().accumulatedForce.y;
 		ImGui::InputFloat2("accumulatedForce", tmpVec2);
-		e.GetComponent<Physics2D>().accumulatedForce = { tmpVec2[0] ,tmpVec2[1] };*/
+		e.GetComponent<Physics2D>().accumulatedForce = { tmpVec2[0] ,tmpVec2[1] };
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		tmpVec2[0] = e.GetComponent<Physics2D>().velocity.x;
-		tmpVec2[1] = e.GetComponent<Physics2D>().velocity.y;
-		ImGui::InputFloat2("accumulatedForce", tmpVec2);
-		e.GetComponent<Physics2D>().velocity = { tmpVec2[0] ,tmpVec2[1] };
 
-		/*tmpVec2[0] = e.GetComponent<Physics2D>().acceleration.x;
-		tmpVec2[1] = e.GetComponent<Physics2D>().acceleration.y;
-		ImGui::InputFloat2("accumulatedForce", tmpVec2);
-		e.GetComponent<Physics2D>().acceleration = { tmpVec2[0] ,tmpVec2[1] };
+		ImGui::InputFloat("angularVelocity", &e.GetComponent<Physics2D>().angularVelocity);
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputDouble("angularVelocity", &e.GetComponent<Physics2D>().angularVelocity);
-
-		ImGui::InputDouble("angularTorque", &e.GetComponent<Physics2D>().angularTorque);*/
+		ImGui::InputFloat("angularTorque", &e.GetComponent<Physics2D>().angularTorque);
+		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
 		ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);

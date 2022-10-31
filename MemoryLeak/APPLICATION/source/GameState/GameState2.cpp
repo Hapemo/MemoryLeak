@@ -13,13 +13,6 @@ Game state for testing physics
 
 
 void GameState2::Load() {
-    LOAD_TEXTURES("Background");
-    LOAD_TEXTURES("Icons");
-    LOAD_TEXTURES("Menu");
-    LOAD_TEXTURES("Sprites");
-    LOAD_TEXTURES("Spritesheets");
-    for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
-        spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 }
 
 void GameState2::Init() {

@@ -268,7 +268,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugPoint(const Transform& _t, const Color& _c);
+	void CreateDebugPoint(const Transform& _t);
 
 	/*!*****************************************************************************
 	\brief
