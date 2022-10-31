@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file Camera.h
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 17-10-2022
+\brief
+This file contains a basic camera system for moving and zooming in/out.
+*******************************************************************************/
 #pragma once
 #include <pch.h>
 

@@ -272,10 +272,11 @@ struct Dialogue
 struct Script {
 	ScriptComponent* script;
 };
-
-
-
-
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a lightsource, currently, it
+only contains an offset. Later versions will include light intensity.
+*******************************************************************************/
 struct LightSource
 {
 	Math::Vec2 centreOffset;
