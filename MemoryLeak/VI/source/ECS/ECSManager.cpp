@@ -68,7 +68,6 @@ void ECSManager::RegisterRenderManager() {
 
 void ECSManager::RegisterPhysics2DManager() {
 	Signature signature{};
-	signature.set(ECS::GetComponentType<General>());
 	signature.set(ECS::GetComponentType<Physics2D>());
 
 	physics2DManager = ECS::RegisterSystem<Physics2DManager>();
@@ -77,9 +76,7 @@ void ECSManager::RegisterPhysics2DManager() {
 
 void ECSManager::RegisterCollision2DManager() {
 	Signature signature{};
-	signature.set(ECS::GetComponentType<General>());
-	//signature.set(ECS::GetComponentType<RectCollider>());
-	//signature.set(ECS::GetComponentType<CircleCollider>());
+	signature.set(ECS::GetComponentType<Collider2D>());
 
 	collision2DManager = ECS::RegisterSystem<Collision2DManager>();
 	ECS::SetSystemSignature<Collision2DManager>(signature);
@@ -188,8 +185,9 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Animation>();
 	ECS::RegisterComponent<SheetAnimation>();
 	ECS::RegisterComponent<Physics2D>();
-	ECS::RegisterComponent<CircleCollider>();
-	ECS::RegisterComponent<RectCollider>();
+	ECS::RegisterComponent<Collider2D>();
+	//ECS::RegisterComponent<CircleCollider>();
+	//ECS::RegisterComponent<RectCollider>();
 	ECS::RegisterComponent<Edge2DCollider>();
 	ECS::RegisterComponent<Point2DCollider>();
 	ECS::RegisterComponent<PlayerTmp>();

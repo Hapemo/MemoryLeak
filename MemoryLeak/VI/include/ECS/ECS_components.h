@@ -14,6 +14,8 @@ ComponentType starts from 0.
 #include "Graphics/SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
+#include "../Physics/Force.h"
+#include "../Physics/ColliderBody.h"
 #include <variant>
 #include "ScriptComponent.h"
 
@@ -102,31 +104,35 @@ struct SheetAnimation
 };
 
 /*!*****************************************************************************
-\brief 
+\brief
 This component encapsulates information regarding dynamic movement of an entity.
-The gravityEnabled variable tells the physics manager if the entity should be
- affected by gravity
-The mass variable contains how heavy the object is
-The speed variable contains how fast the object moves
-The moveDirection variable contains the direction the object is moving in terms
- of radian rotations
-The forces variable contains the net force acting on the object at frametime
-The velocity variable contains the current velocity of the object at frametime
-The renderFlag variable contains the flag variable telling the render manager
- whether to render the velocity vector
+> The gravityEnabled variable tells the physics manager if the entity should be
+   affected by gravity
+> The gravityScale variable tells the physics manager how much should the base 
+   gravity force affect this object
+> The dynamicsEnabled variable tells the physics manager if the entity is a 
+   static, non-moving object that should not move
+> The mass variable contains how heavy the object is
+> The invMass variable contains the reciprocal of the mass mostly used in 
+   calculations
+> The inertia variable contains how much force is required to move the object
+> The invInertia variable contains the reciprocal of the inertia mostly used in 
+   calculations
+> The restitution variable contains the restitution value which is used during 
+   collision resolution to determine the amount of force conserved
+> The friction variable contains the friction value 
+> The damping variable contains the damping value used to create soft drag
+> The accumulatedForce variable contains the sum of forces acting on the entity
+   at the current step
+> The velocity variable contains the current velocity of the object
+> The acceleration variable contains the current acceleration value of the object
+> The angularVelocity variable contains the current angular velocity of the object
+> The angularTorque variable contains the current angular acceleration of the object
+> The forceList variable contains the list of forces acting on the object
+> The renderFlag variable contains the flag variable telling the render manager
+   whether to render the velocity vector
 *******************************************************************************/
 struct Physics2D {
-	bool gravityEnabled = false;
-	float mass = 1.f,
-		  speed = 0.f,
-		  moveDirection = 0.f;
-	Math::Vec2 forces = { 0.f, 0.f },
-			   velocity = { 0.f, 0.f };
-	bool renderFlag = false;
-};
-struct nPhysics2D {
-	bool gravityEnabled;
-	double gravityScale;
 	bool dynamicsEnabled;
 
 	double mass;
@@ -143,17 +149,18 @@ struct nPhysics2D {
 
 	//float speed;
 	//float moveDirection;
-
+	
 	Math::Vec2 velocity;
 	Math::Vec2 acceleration;
-
+	
 	double angularVelocity;
 	double angularTorque;
-
-	//std::vector<Force> forceList;
+	
+	std::vector<Force> forceList;
 
 	bool renderFlag;
 };
+
 /*!*****************************************************************************
 \brief
 This component encapsulates information regarding a rectangular collider for
@@ -171,20 +178,10 @@ struct RectCollider {
 	bool renderFlag = false;
 };
 
-/*!*****************************************************************************
-\brief
-This component encapsulates information regarding a circular collider for
-collision detection
-The centerOffset variable contains the offset from the entity's transform's
- translation
-The scaleOffset variable contains the offset from the entity's transform's scale
-The renderFlag variable contains the flag variable telling the render manager
- whether to render the collider
-*******************************************************************************/
-struct CircleCollider {
-	Math::Vec2 centerOffset = { 0.f, 0.f };
-	float scaleOffset = 1.f;
-	bool renderFlag = false;
+struct Collider2D {
+	bool isTrigger;
+	bool renderFlag;
+	std::vector<ColliderBody> colliderList;
 };
 
 /*!*****************************************************************************

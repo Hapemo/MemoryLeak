@@ -135,7 +135,7 @@ void SerializationManager::LoadScene(std::string _filename)
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("Physics2D"))
+		/*if (entity.HasMember("Physics2D"))
 		{
 			float mass = entity["Physics2D"]["mass"].GetFloat();
 			float	speed = entity["Physics2D"]["speed"].GetFloat();
@@ -175,7 +175,7 @@ void SerializationManager::LoadScene(std::string _filename)
 			Math::Vec2 centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
 			bool renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
 			e.AddComponent<Point2DCollider>({ centerOffset ,renderFlag });
-		}
+		}*/
 		if (entity.HasMember("Audio"))
 		{
 			Sound sound;
@@ -374,7 +374,7 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("timeToFrameSwap"), e.GetComponent<SheetAnimation>().timeToFrameSwap, allocator);
 			entity.AddMember(StringRef("SheetAnimation"), tmp, allocator);
 		}
-		if (e.HasComponent<Physics2D>())
+		/*if (e.HasComponent<Physics2D>())
 		{
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("mass"), e.GetComponent<Physics2D>().mass, allocator);
@@ -417,7 +417,7 @@ void SerializationManager::SaveScene(std::string _filename)
 			addVectorMember(scene, tmp, "centerOffset", e.GetComponent<Point2DCollider>().centerOffset);
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Point2DCollider>().renderFlag, allocator);
 			entity.AddMember(StringRef("Point2DCollider"), tmp, allocator);
-		}
+		}*/
 		if (e.HasComponent<Audio>())
 		{
 			Value tmp(kObjectType);

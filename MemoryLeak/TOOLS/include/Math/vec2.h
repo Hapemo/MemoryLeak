@@ -268,6 +268,24 @@ namespace Math {
   - Result of dot product
   *******************************************************************************/
   float Dot(const Vec2&, const Vec2&);
+
+  /*!*****************************************************************************
+  Cross product of 2 Vec2
+
+  \param const Vec2&
+  - First Vec2
+
+  \param const Vec2&
+  - Second Vec2
+
+  \return float
+  - Magnitude of orthogonal vector along z-axis
+  *******************************************************************************/
+  float Cross(const Vec2&, const Vec2&);
+
+  Vec2 Cross(const Vec2&, float);
+
+  Vec2 Cross(float, const Vec2&);
   
   /*!*****************************************************************************
   Distance of a Vec2 to another

@@ -279,52 +279,52 @@ void RenderManager::RenderDebug()
 		if (!e.GetComponent<General>().isActive) continue;
 
 		//check if entity has any of these physics components
-		if (e.HasComponent<Point2DCollider>() && e.GetComponent<Point2DCollider>().renderFlag)
-		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale = { 0, 0 };
-			t.rotation = 0;
-			t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x, 
-				e.GetComponent<Point2DCollider>().centerOffset.y);
-			CreateDebugPoint(t, e.GetComponent<Sprite>().color);
-		}
+		//if (e.HasComponent<Point2DCollider>() && e.GetComponent<Point2DCollider>().renderFlag)
+		//{
+		//	Transform t = e.GetComponent<Transform>();
+		//	t.scale = { 0, 0 };
+		//	t.rotation = 0;
+		//	t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x, 
+		//		e.GetComponent<Point2DCollider>().centerOffset.y);
+		//	CreateDebugSquare(t, e.GetComponent<Sprite>().color);
+		//}
 
-		if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
-		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale *= e.GetComponent<Edge2DCollider>().scaleOffset;
-			t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
-			t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
-				e.GetComponent<Edge2DCollider>().p0Offset.y);
-			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
-		}
+		//if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
+		//{
+		//	Transform t = e.GetComponent<Transform>();
+		//	t.scale *= e.GetComponent<Edge2DCollider>().scaleOffset;
+		//	t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
+		//	t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
+		//		e.GetComponent<Edge2DCollider>().p0Offset.y);
+		//	CreateDebugArrow(t, e.GetComponent<Sprite>().color);
+		//}
 
-		if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
-		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;
-			t.scale.y *= e.GetComponent<RectCollider>().scaleOffset.y;
-			t.rotation = 0;
-			t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
-				e.GetComponent<RectCollider>().centerOffset.y);
-			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
-		}
+		//if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
+		//{
+		//	Transform t = e.GetComponent<Transform>();
+		//	t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;
+		//	t.scale.y *= e.GetComponent<RectCollider>().scaleOffset.y;
+		//	t.rotation = 0;
+		//	t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
+		//		e.GetComponent<RectCollider>().centerOffset.y);
+		//	CreateDebugSquare(t, e.GetComponent<Sprite>().color);
+		//}
 
-		if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
-		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale = Math::Vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
-			t.rotation = 0;
-			t.translation += Math::Vec2(e.GetComponent<CircleCollider>().centerOffset.x,
-				e.GetComponent<CircleCollider>().centerOffset.y);
-			CreateDebugCircle(t, e.GetComponent<Sprite>().color);
-		}
+		//if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
+		//{
+		//	Transform t = e.GetComponent<Transform>();
+		//	t.scale = Math::Vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
+		//	t.rotation = 0;
+		//	t.translation += Math::Vec2(e.GetComponent<CircleCollider>().centerOffset.x,
+		//		e.GetComponent<CircleCollider>().centerOffset.y);
+		//	CreateDebugCircle(t, e.GetComponent<Sprite>().color);
+		//}
 
 		if (e.HasComponent<Physics2D>() && e.GetComponent<Physics2D>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
-			t.scale = Math::Vec2(e.GetComponent<Physics2D>().speed) * mVectorLengthModifier;
-			t.rotation = e.GetComponent<Physics2D>().moveDirection;
+			//t.scale = Math::Vec2(e.GetComponent<Physics2D>().speed) * mVectorLengthModifier;
+			//t.rotation = e.GetComponent<Physics2D>().moveDirection;
 			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
 		}
 
