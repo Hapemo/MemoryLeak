@@ -45,10 +45,10 @@ void GameStateManager::Update() {
 		//-------------------------------------
 		// ImGui update
 		// ImGui is a tool that uses VI Engine to change the game data stored in VI Engine
-
-
+		TRACK_PERFORMANCE("Editor");
+		editorManager->Update();
+		END_TRACK("Editor");
 		//-------------------------------------
-
 
 		mCurrGameState->Update();
 		GSControlPanel();
@@ -66,10 +66,8 @@ void GameStateManager::Update() {
 	mCurrGameState->Free();
 
 	if (mNextGS != E_GS::RESTART) {
-		mCurrGameState->Unload();
-		renderManager->Clear();
+		mCurrGameState->PrimaryUnload();
 		glfwSwapBuffers(Application::getWindow());
-		renderManager->Clear();
 	}
 	mPrevGS = mCurrGS;
 	mCurrGS = mNextGS;
@@ -103,7 +101,12 @@ void GameStateManager::Exit() {
 }
 
 void GameStateManager::GSControlPanel() {
-	if (Application::GetEditorMode()) return;
+	static bool renderToScreen{ false };
+	if (Input::CheckKey(PRESS, E) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) {
+		renderToScreen = !renderToScreen;
+		if (renderToScreen) renderManager->RenderToScreen();
+		else renderManager->RenderToFrameBuffer();
+	}
 	if (Input::CheckKey(PRESS, _1) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState1);
 	else if (Input::CheckKey(PRESS, _2) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
 	else if (Input::CheckKey(PRESS, _3) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState3);

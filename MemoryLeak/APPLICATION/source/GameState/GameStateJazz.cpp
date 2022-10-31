@@ -53,8 +53,6 @@ void GameStateJazz::Free() {
 }
 
 void GameStateJazz::Unload() {
-  renderManager->Clear();
-  UnloadWithGUID();
   //spriteManager->FreeTextures();
   //ResourceManager::GetInstance()->UnloadAllResources();
 }

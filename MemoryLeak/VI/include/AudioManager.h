@@ -12,6 +12,7 @@ This file contains function declarations for a audio system
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
+#include "pch.h"
 /*!*****************************************************************************
 \brief
 	This class encapsulates the functions for Audio manager
@@ -21,6 +22,8 @@ class AudioManager : public System
 public:
 	void Init();								//constructor add fmod
 	void Unload();							//Deconstructor
+
+	FMOD::Sound* LoadAudio(std::filesystem::path const& audio);
 
 	void LoadSound();							//Load all sound 
 	void PlayBGSound(std::string, int);

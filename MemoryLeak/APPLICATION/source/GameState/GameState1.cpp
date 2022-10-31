@@ -34,18 +34,18 @@ void GameState1::Init() {
     //while (entityCount--)
     //  mEntities.insert(ECS::CreateEntity());
 
-    Entity e1{ ECS::CreateEntity() };
-    e1.AddComponent(Transform{ {100, 100}, 0, {0, 200} },
-        Sprite{ Color{0,255,0,0}, SPRITE::SQUARE, 0, 1 },
-        General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "CaviarDreams", "Hello World!", Math::Vec2{100,0}});
-    
-    //LOG_DEBUG("Special Entity Created --> Entity " + std::to_string(e1.id));
-    Entity e2{ ECS::CreateEntity() };
-    e2.AddComponent(Transform{ {100, 100}, 0, {0, 0} },
-        Sprite{ Color{0,255,0,0}, SPRITE::SQUARE, 0, 1 },
-        General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true,false },
-        Text{ "3Dumb", "Hello World!", Math::Vec2{0,0}});
+    //Entity e1{ ECS::CreateEntity() };
+    //e1.AddComponent(Transform{ {100, 100}, 0, {0, 200} },
+    //    Sprite{ Color{0,255,0,0}, SPRITE::SQUARE, 0, 1 },
+    //    General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
+    //    Text{ "CaviarDreams", "Hello World!", Math::Vec2{100,0}});
+    //
+    ////LOG_DEBUG("Special Entity Created --> Entity " + std::to_string(e1.id));
+    //Entity e2{ ECS::CreateEntity() };
+    //e2.AddComponent(Transform{ {100, 100}, 0, {0, 0} },
+    //    Sprite{ Color{0,255,0,0}, SPRITE::SQUARE, 0, 1 },
+    //    General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true,false },
+    //    Text{ "3Dumb", "Hello World!", Math::Vec2{0,0}});
 
     //ScriptComponent test;
     //Entity{ 11 }.AddComponent<Script>(Script(&test));
@@ -72,9 +72,7 @@ void GameState1::Init() {
     //    Sprite{ Color{0,255,0,0}, SPRITE::SQUARE, 0, 1 },
     //    General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true },
     //    Text{ "3Dumb.ttf", "Hello World!", Math::Vec2{100,0}, 1, {255, 0, 0, 255}});
-    
-    //TestScript::StartScript(const_cast<Entity*>(&(*(mEntities.begin()))));
-
+  
     //Entity e3{ ECS::CreateEntity() };
     //e3.AddComponent(General{ "Rect1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
     //e3.AddComponent(Transform{ {150, 150}, 0, {0, 0} });
@@ -119,15 +117,11 @@ void GameState1::Draw() {
 void GameState1::Free() {
     for (auto& scenePtr : mScenes)
         scenePtr->Exit();
-    ECS::DestroyAllEntities();
+    //ECS::DestroyAllEntities();
     //logicSystem->Exit();
 }
 
 void GameState1::Unload() {
-  renderManager->Clear();
-  UnloadWithGUID();
-
-  std::cout << "entity count in GS1: " << mEntities.size() << '\n';
   //spriteManager->FreeTextures();
   //ResourceManager::GetInstance()->UnloadAllResources();
   //FREE_RESOURCES();

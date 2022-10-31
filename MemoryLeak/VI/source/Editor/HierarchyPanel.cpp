@@ -148,6 +148,12 @@ void HierarchyPanel::Update()
 		{
 			newEntity();
 		}
+		if (ImGui::Button("New Prefab")) {
+			static Prefab pre = Prefab("new Prefab");
+			mPrefabs.push_back(pre);
+			Entity p = mPrefabs[0].CreatePrefabee();
+			p.GetComponent<General>().name = "Prefabee";
+		}
 	}
 	ImGui::EndTabBar();
 	ImGui::End();

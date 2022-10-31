@@ -21,6 +21,15 @@ Important Notes about mEntities!
 Entities loaded in by mEntities will be stored in mEntities and automatically be 
 unloaded, but entities loaded in manually cannot be unloaded automatically. You
 MUST keep track of which entities they are and unload them manually
+
+Important Note about entity! (Activate & Deactivate)
+When entity first loaded into gamestate/scene, it's scripts will be called if 
+it's active. Inactive entities's script will be activate if it's activated via
+e.Activate(). Scripts of entities in paused scenes will automatically be called
+when scene is unpaused for the first time.
+Entity's Exit() script will be called when entity is deactivated via 
+e.Deactivate(). Entity will also automatically deactivate itself when leaving
+gamestate but NOT when pausing scene.
 *******************************************************************************/
 #pragma once
 
@@ -71,6 +80,13 @@ public:
 	*******************************************************************************/
 	virtual void Free() = 0;
 
+	void PrimaryUnload();
+
+protected:
+	void LoadWithGUID(ResourceManager::GUID const&);
+	void UnloadWithGUID();
+	void CreateScene();
+
 	/*!*****************************************************************************
 	 \brief
 	 Unload any resources used in the game state, such as art assets and heap memory
@@ -78,10 +94,6 @@ public:
 	*******************************************************************************/
 	virtual void Unload() = 0;
 
-protected:
-	void LoadWithGUID(ResourceManager::GUID const&);
-	void UnloadWithGUID();
-	void CreateScene();
 
 	std::vector<Scene*> mScenes;
 	std::set<Entity> mEntities;

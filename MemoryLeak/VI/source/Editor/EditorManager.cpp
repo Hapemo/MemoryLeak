@@ -36,6 +36,7 @@ int EditorManager::stackPointer{-1};
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
+std::vector <Prefab> EditorManager::mPrefabs{};
 /*!*****************************************************************************
 \brief
 	Initializes the level editor
