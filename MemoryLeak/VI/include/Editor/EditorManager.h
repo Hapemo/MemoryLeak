@@ -40,7 +40,6 @@ public:
 	void Free();
 	void Unload();
 
-
 	bool IsScenePaused() { return isScenePaused; }
 
 	

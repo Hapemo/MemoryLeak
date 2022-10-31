@@ -28,7 +28,8 @@ private:
 	void ScrollMoveCam();
 	void NewEntity();
 	void SetSelectedEntity();
-	void MoveSelectedEntity(Entity e);
-	void UseGuizmo(Entity e);
+	void MoveSelectedEntity();
+	void UseGuizmo();
 	static int newEntityCount;
+	Entity e;
 };

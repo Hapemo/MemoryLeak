@@ -127,7 +127,7 @@ void EditorManager::Update()
 	//weatherAIupdate();
 	for (size_t p = 0; p < panels.size(); p++)
 	{
-		panels[p]->Update();
+			panels[p]->Update();
 	}
 	/*hierarchyPanel.Update();
 	inspectorPanel.Update();
@@ -368,6 +368,24 @@ void EditorManager::SetPannelIsActive(E_PANELID _panel, bool _isActive)
 		debugPanel.setIsActive(_isActive);
 	}*/
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

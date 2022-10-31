@@ -49,3 +49,4 @@ bool ViewportPanel::IsMouseInScreen()
 	return (abs(screenMousePos.x) < viewportSize.x / 2 && abs(screenMousePos.y) < viewportSize.y / 2);
 	
 }
+
