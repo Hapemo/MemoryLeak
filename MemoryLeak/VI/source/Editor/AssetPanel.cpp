@@ -50,6 +50,7 @@ void AssetPanel::Update()
 				texPath = directory.path().string();
 				texPath = texPath.substr(13);
 				texExt = directory.path().extension().string();
+				texfilename = directory.path().stem().string();
 				if (texExt == ".meta")
 					continue;
 				my_image2_texture = spriteManager->GetTextureID(texPath);
@@ -66,9 +67,23 @@ void AssetPanel::Update()
 							ImGui::EndDragDropSource();
 						}
 					}
+					
 				}
 				else
+				{
 					ImGui::Button(filename.c_str(), buttonSize);
+					if (texExt == ".wav")
+					{
+						if (ImGui::BeginDragDropSource())
+						{
+							std::string audiofilename = directory.path().filename().string();
+							std::cout << audiofilename << "        AUDIOOOOOOOOOOOOOO\n";
+							const wchar_t* itemPath = (wchar_t*)audiofilename.c_str();
+							ImGui::SetDragDropPayload("AUDIO", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
+						}
+					}
+				}
 			}
 			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 			{
@@ -78,7 +93,7 @@ void AssetPanel::Update()
 				{
 					if (texExt == ".json")
 					{
-						texfilename = directory.path().stem().string();
+						
 						if (texfilename.substr(0, 6) == "Dialog")
 						{
 							serializationManager->LoadDialogs(texfilename);
