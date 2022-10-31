@@ -318,11 +318,11 @@ void RenderManager::RenderDebug()
 			if (p2d.velocity.y != 0 && p2d.velocity.x >= 0)
 				t.rotation = atan2f(p2d.velocity.y, p2d.velocity.x);
 			else if (p2d.velocity.y == 0 && p2d.velocity.x > 0)
-				t.rotation = Math::PI / 2.f;
+				t.rotation = (float)Math::PI / 2.f;
 			else if (p2d.velocity.y != 0 && p2d.velocity.x < 0)
-				t.rotation = Math::PI * 2.f + atan2f(p2d.velocity.y, p2d.velocity.x);
+				t.rotation = (float)Math::PI * 2.f + atan2f(p2d.velocity.y, p2d.velocity.x);
 			else
-				t.rotation = 3.f * Math::PI / 2.f;
+				t.rotation = 3.f * (float)Math::PI / 2.f;
 			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
 		}
 
@@ -592,7 +592,7 @@ The entity containing Transform and Sprite component.
 *******************************************************************************/
 void RenderManager::CreateDebugPoint(const Entity& _e)
 {
-	CreateDebugPoint(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color);
+	CreateDebugPoint(_e.GetComponent<Transform>());
 }
 
 /*!*****************************************************************************
@@ -606,7 +606,7 @@ The transform component.
 \param const Color& _c
 The color component.
 *******************************************************************************/
-void RenderManager::CreateDebugPoint(const Transform& _t, const Color& _c)
+void RenderManager::CreateDebugPoint(const Transform& _t)
 {
 	glm::vec4 clr {0.f, 1.f, 0.f, 1.f}/*GetColor(_c.r, _c.g, _c.b, _c.a)*/;
 	Math::Mat3 mtx = GetTransform({ 0, 0 }, 0, _t.translation);
