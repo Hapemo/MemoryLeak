@@ -51,9 +51,9 @@ void GameState1::Init() {
     //
     //mEntities.insert(e2);
     
-    ScriptComponent test;
-    Entity{ 11 }.AddComponent<Script>(Script(&test));
-    logicSystem->Init();
+    //ScriptComponent test;
+    //Entity{ 11 }.AddComponent<Script>(Script(&test));
+    //logicSystem->Init();
 }
 
 void GameState1::Update() {

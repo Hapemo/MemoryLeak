@@ -24,8 +24,40 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 void Entity::Destroy() const { Coordinator::GetInstance()->DestroyEntity(id); }
 
 bool Entity::ShouldRun() const {
-	General genComponent = this->GetComponent<General>();
-	return genComponent.isPaused && genComponent.isActive;
+	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	General const& genComponent = GetComponent<General>();
+	return !genComponent.isPaused && genComponent.isActive;
+}
+
+void Entity::Activate() {
+	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	GetComponent<General>().isActive = true;
+
+	//------------------------------------------------------------------
+	// Codes that should run when activating entity halfway through game
+	
+
+
+
+
+
+
+	//------------------------------------------------------------------
+}
+
+void Entity::Deactivate() {
+	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	GetComponent<General>().isActive = false;
+
+	//------------------------------------------------------------------
+	// Codes that should run when deactivating entity halfway through game
+
+
+
+
+
+
+	//------------------------------------------------------------------
 }
 
 
