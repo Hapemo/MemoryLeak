@@ -541,6 +541,17 @@ void InspectorPanel::AudioEditor()
 		//ImGui::Text("Audio");
 		ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+		static const wchar_t* texpath = (const wchar_t*)"";
+		if (ImGui::BeginDragDropTarget())
+		{
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("AUDIO"))
+			{
+				texpath = (const wchar_t*)payload->Data;
+				std::string tp = (std::string)((const char*)texpath);
+				e.GetComponent<Audio>().sound.path = tp;
+			}
+			ImGui::EndDragDropTarget();
+		}
 
 		ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
