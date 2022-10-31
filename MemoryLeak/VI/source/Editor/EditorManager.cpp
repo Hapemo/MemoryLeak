@@ -13,6 +13,7 @@ Entities and its Components.
 #include <ECSManager.h>
 //#include <Logger.h>
 #include <Panel.h>
+#include <AnimationPanel.h>
 #include <HierarchyPanel.h>
 #include <InspectorPanel.h>
 #include <WorldViewPanel.h>
@@ -60,6 +61,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
 	//weatherAIinit();
+	static AnimationPanel animationPanel{};
 	static HierarchyPanel hierarchyPanel{};
 	static InspectorPanel inspectorPanel{};
 	static WorldViewPanel worldViewPanel{};
@@ -68,6 +70,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static AssetPanel assetPanel{};
 	static DebugPanel debugPanel{};
 	static MenuPanel menuPanel{};
+	panels.push_back(&animationPanel);
 	panels.push_back(&hierarchyPanel);
 	panels.push_back(&inspectorPanel);
 	panels.push_back(&worldViewPanel);
