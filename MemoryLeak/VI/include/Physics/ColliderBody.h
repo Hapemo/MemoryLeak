@@ -1,19 +1,19 @@
 #pragma once
 
-enum class ColliderType {
-	CIRCLE = 0,
-	RECT,
+enum class ColliderType : int {
+	RECT = 1,
+	CIRCLE,
 	MAXTYPESOFCOLLIDERS
 };
 
-class ColliderBody {
-public:
-	ColliderBody(ColliderType _typeID) : typeID{_typeID} {}
-	virtual ~ColliderBody() {}
-
-	ColliderType typeID;
-
-};
+//class ColliderBody {
+//public:
+//	ColliderBody(ColliderType _typeID) : typeID{_typeID} {}
+//	virtual ~ColliderBody() {}
+//
+//	ColliderType typeID;
+//
+//};
 
 //class RectCollider : ColliderBody {
 //public:

@@ -168,12 +168,24 @@ struct RectCollider {
 	// float rotationOffset,
 	bool renderFlag = false;
 };
+
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a circular collider for
+collision detection
+The centerOffset variable contains the offset from the entity's transform's
+ translation
+The scaleOffset variable contains the offset from the entity's transform's scale
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the collider
+*******************************************************************************/
 struct CircleCollider {
 	Math::Vec2 centerOffset = { 0.f, 0.f };
 	float 	scaleOffset = { 1.f };
 	// float rotationOffset,
 	bool renderFlag = false;
 };
+
 
 struct Collider2D {
 	bool isTrigger;
@@ -216,7 +228,7 @@ struct Point2DCollider {
 
 /*!*****************************************************************************
 \brief
-This component encapsulates information regarding the player, such as health
+This temporary component encapsulates information regarding the player, such as health
 *******************************************************************************/
 struct PlayerTmp {
 	int HP = 1;

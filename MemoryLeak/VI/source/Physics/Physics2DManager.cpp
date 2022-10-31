@@ -19,13 +19,13 @@
 void Physics2DManager::Update(const double& _appDT) {
 
 	if (Input::CheckKey(E_STATE::PRESS, E_KEY::GRAVE_ACCENT) && (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT)|| Input::CheckKey(E_STATE::HOLD, E_KEY::RIGHT_SHIFT)))
-		Physics2DManager::StepMode = !Physics2DManager::StepMode;
+		Physics2DManager::mStepMode = !Physics2DManager::mStepMode;
 
 	if (Input::CheckKey(E_STATE::PRESS, E_KEY::GRAVE_ACCENT))
-		Physics2DManager::AdvanceStep = true;
+		Physics2DManager::mAdvanceStep = true;
 
 	// Check if system is not in step mode
-	if (!Physics2DManager::StepMode) {
+	if (!Physics2DManager::mStepMode) {
 		// Increment accumulatedDT by the application's DT
 		Physics2DManager::mAccumulatedDT += _appDT;
 
@@ -45,11 +45,11 @@ void Physics2DManager::Update(const double& _appDT) {
 		// Reset accumulatedDT for next time we are not in step mode
 		Physics2DManager::mAccumulatedDT = 0.0;
 		// Check if we should step (key pressed)
-		if (Physics2DManager::AdvanceStep) {
+		if (Physics2DManager::mAdvanceStep) {
 			// Execute a simulation tick of physics using defined fixedDT
 			Step();
 			// Set advance flag to false;
-			AdvanceStep = false;
+			mAdvanceStep = false;
 		}
 	}
 }
@@ -66,31 +66,37 @@ void Physics2DManager::Step() {
 			continue;
 
 		// Update accumulated forces acting on entity
-		//UpdateEntitiesAccumulatedForce(e);
+		UpdateEntitiesAccumulatedForce(e);
 
 		// Determine acceleration
 		SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(1.0 / GetMass(e)));
 
 		// Determine velocity
 		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(fixedDT));
-		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (1.0 / GetInertia(e)) * static_cast<float>(fixedDT));
+		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (1.0f / GetInertia(e)) * static_cast<float>(fixedDT));
 
-		// Dampen velocity (for soft drag)
-		//SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
-		ScaleVelocity(e, static_cast<float>(std::pow(GetDamping(e), fixedDT)));
-
-		// Cap velocity
-		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) {
-			SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::velocityCap);
-		}
-
-		// Move entity by velocity
-		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(fixedDT);
-		e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * fixedDT);
-
+		// Update positions
+		UpdatePosition(e);
+		
 		// Reset forces on the object for next step
-		//SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
+		SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
 	}
+}
+
+void Physics2DManager::UpdatePosition(const Entity& _e) {
+	// Dampen velocity (for soft drag)
+	//SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
+	ScaleVelocity(_e, static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
+
+	// Cap velocity
+	if (Math::Dot(GetVelocity(_e), GetVelocity(_e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) {
+		SetVelocity(_e, GetVelocity(_e).Normalize() * Physics2DManager::velocityCap);
+	}
+
+	// Move entity by velocity
+	_e.GetComponent<Transform>().translation += GetVelocity(_e) * static_cast<float>(fixedDT);
+	_e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(_e) * fixedDT);
+
 }
 
 //void Physics2DManager::AddPhysicsComponent() {
@@ -258,12 +264,12 @@ void Physics2DManager::UpdateEntitiesAccumulatedForce(const Entity& _e) {
 				break;
 			// Rotational
 			case 1:
-				SetAngularTorque(_e, GetAngularTorque(_e) + it->rotationalForce.torque);
+				SetAngularTorque(_e, GetAngularTorque(_e) + static_cast<float>(it->rotationalForce.torque));
 				break;
 			// Drag
 			case 2:
 				SetAccumulatedForce(_e, GetAccumulatedForce(_e) * it->dragForce.directionalDrag);
-				SetAngularTorque(_e, GetAngularTorque(_e) * it->dragForce.rotationalDrag);
+				SetAngularTorque(_e, GetAngularTorque(_e) * static_cast<float>(it->dragForce.rotationalDrag));
 				break;
 			}
 
@@ -314,6 +320,6 @@ void Physics2DManager::AddDragForce(const Entity& _e, const float& _directionDra
 }
 
 void Physics2DManager::ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _contact) {
-	SetVelocity(_e, GetVelocity(_e) + static_cast<float>(1.0 / GetMass(_e)) * _impulse);
-	SetAngularVelocity(_e, GetAngularVelocity(_e) + 1.0 / GetInertia(_e) * Math::Cross(_impulse, _contact));
+	SetVelocity(_e, GetVelocity(_e) + static_cast<float>(1.0f / GetMass(_e)) * _impulse);
+	SetAngularVelocity(_e, GetAngularVelocity(_e) + 1.0f / GetInertia(_e) * Math::Cross(_impulse, _contact));
 }

@@ -17,36 +17,66 @@
 // -----------------------------
 #include "ECS_systems.h"
 
-struct Contact {
-	Contact(const Entity& _e1, const Entity& _e2) : e1{ _e1 }, e2{ _e2 } {};
-	Entity e1;
-	Entity e2;
+class Contact {
+public:
+	Contact(const Entity& _obj1, const Entity& _obj2);
 
-	int e1Index;
-	int e2Index;
-	float penetration;
-	Math::Vec2 normal;
-	std::vector<Math::Vec2> contacts;
+	float DetermineRestitution();
+	float DetermineFriction();
 
+	Entity obj1;
+	Entity obj2;
+
+	int obj1Type{};
+	int obj2Type{};
+	double interTime{};
+	float penetration{};
+	Math::Vec2 normal{};
+	std::vector<Math::Vec2> contacts{};
 };
 
-typedef bool (*CollisionCallback)(Contact &);
+typedef bool (*CollisionCallback)(Contact&, const double&);
 
+
+
+/*!*****************************************************************************
+\brief Collision2DManager system class that handles the collision store to detect
+	   and resolve collisions
+*******************************************************************************/
 class Collision2DManager : public System {
 public:
+// -----------------------------
+// Collision Checks Lib
+// -----------------------------
+	static bool CI_RectvsRect(Contact& _contact, const double& _dt);
+	static bool CI_CirclevsCircle(Contact& _contact, const double& _dt);
+
+// -----------------------------
+// Component-related functions
+// -----------------------------
+	bool HasCollider(const Entity& _e);
+	int NoOfColliders(const Entity& e);
+
+// -----------------------------
+// System functions
+// -----------------------------
 	void SetupCollisionDatabase();
 	void RegisterCollisionTest(const ColliderType& typeA, const ColliderType& typeB, CollisionCallback function);
 
-	void GenerateContactList();
+	void ResolveCollisions(const double &_dt);
+	void GenerateContactList(const double& _dt);
+	void ClearContactList();
 
-	double DetermineRestitution(const Entity& e1, const Entity& e2);
-	double DetermineFriction(const Entity& e1, const Entity& e2);
+	void ResolveContact(Contact& _contact);
+	void UpdatePositions(const Contact& _contact, const double& _dt);
+	void PositionCorrection(Contact& _contact);
+	void UpdateVelocities(Contact& _contact, const double& _dt);
 
-	void ResolveContact(Contact& contact);
 private:
-	CollisionCallback CollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
-	std::vector<Contact> boardPhase;
-	std::vector<Contact> contactList;
+	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
+	std::vector<Contact> mContactList;
 
-	const float EPSILON{ 0.0001f };
+	// const float penEpsilion{ 0.0001f };
+	const float	penAllowance{ 0.05f },
+				penPercentage{ 0.4f };
 };
