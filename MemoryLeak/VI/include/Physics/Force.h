@@ -39,11 +39,11 @@ public:
 			float magnitude;
 		} linearForce;
 		struct RotationalForce {
-			double torque;
+			float torque;
 		} rotationalForce;
 		struct DragForce {
 			float	directionalDrag;
-			double	rotationalDrag;
+			float	rotationalDrag;
 		} dragForce;
 	};
 };
