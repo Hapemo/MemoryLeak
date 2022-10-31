@@ -127,7 +127,7 @@ void ECSManager::RegisterDialogManager() {
 void ECSManager::RegisterAIManager() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
-	signature.set(ECS::GetComponentType<Stuff>());
+	signature.set(ECS::GetComponentType<AI>());
 
 	aiManager = ECS::RegisterSystem<AIManager>();
 	ECS::SetSystemSignature<AIManager>(signature);
@@ -193,10 +193,11 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Edge2DCollider>();
 	ECS::RegisterComponent<Point2DCollider>();
 	ECS::RegisterComponent<PlayerTmp>();
-	ECS::RegisterComponent<Stuff>();
+	ECS::RegisterComponent<AI>();
 	ECS::RegisterComponent<Audio>();
 	ECS::RegisterComponent<Text>();
 	ECS::RegisterComponent<Script>();
+	ECS::RegisterComponent<Dialogue>();
 	// More to come
 }
 

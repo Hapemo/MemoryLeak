@@ -105,12 +105,27 @@ void HierarchyPanel::Update()
 						}
 						if (e.HasComponent<Text>())
 						{
-							ImGui::Text("Stuff");
+							ImGui::Text("Text");
 							setSelectedEntity(&e);
 						}
-						if (e.HasComponent<Stuff>())
+						if (e.HasComponent<AI>())
 						{
 							ImGui::Text("AI");
+							setSelectedEntity(&e);
+						}
+						if (e.HasComponent<Script>())
+						{
+							ImGui::Text("Script");
+							setSelectedEntity(&e);
+						}
+						if (e.HasComponent<Dialogue>())
+						{
+							ImGui::Text("Dialogue");
+							setSelectedEntity(&e);
+						}
+						if (e.HasComponent<PlayerTmp>())
+						{
+							ImGui::Text("PlayerTmp");
 							setSelectedEntity(&e);
 						}
 						ImGui::TreePop();
