@@ -158,6 +158,7 @@ void ECSManager::RegisterLogicSystem() {
 
 	logicSystem = ECS::RegisterSystem<LogicSystem>();
 	ECS::SetSystemSignature<LogicSystem>(signature);
+}
 	
 void ECSManager::RegisterShadowManager() {
 	Signature signature;

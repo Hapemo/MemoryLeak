@@ -258,7 +258,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Graphics\TransformManager.h" />
     <ClInclude Include="include\Graphics\Vertex.h" />
     <ClInclude Include="include\Input.h" />
-    <ClInclude Include="include\LevelEditor.h" />
     <ClInclude Include="include\Physics\Physics2DManager.h" />
     <ClInclude Include="include\Player\PlayerController.h" />
     <ClInclude Include="include\ResourceManager.h" />
@@ -301,7 +300,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Graphics\SpriteManager.cpp" />
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
     <ClCompile Include="source\Graphics\VertexFetcher.cpp" />
-    <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
     <ClCompile Include="source\Logic\MonoScripting.cpp" />

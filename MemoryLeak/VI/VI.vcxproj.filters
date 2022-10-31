@@ -111,9 +111,6 @@
     <ClInclude Include="include\DialogManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\LevelEditor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>

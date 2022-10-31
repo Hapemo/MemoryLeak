@@ -13,7 +13,7 @@ void ShadowManager::MakeShadows(const Entity& _lightsource, std::shared_ptr<Rend
     std::vector<Math::Vec2> points;
     Math::Vec2 pivot = _lightsource.GetComponent<Transform>().translation + _lightsource.GetComponent<LightSource>().centreOffset;
 
-    int rays = 480;
+    int rays = 360;
 
     for (int i = 0; i < rays; ++i)
     {
