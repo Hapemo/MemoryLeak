@@ -13,15 +13,7 @@ Game state for testing physics
 #include "Input.h"
 #include "Logger.h"
 
-void ParallaxAndSpriteSwap::Load() {
-    LOAD_TEXTURES("Background");
-    LOAD_TEXTURES("Icons");
-    LOAD_TEXTURES("Menu");
-    LOAD_TEXTURES("Sprites");
-    LOAD_TEXTURES("Spritesheets");
-    for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
-        spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
-}
+void ParallaxAndSpriteSwap::Load() {}
 
 void ParallaxAndSpriteSwap::Init() {
     float width = (float)Application::getWindowWidth();
@@ -192,8 +184,4 @@ void ParallaxAndSpriteSwap::Free() {
     mEntities.clear();
 }
 
-void ParallaxAndSpriteSwap::Unload() {
-    renderManager->Clear();
-    spriteManager->FreeTextures();
-    FREE_RESOURCES();
-}
+void ParallaxAndSpriteSwap::Unload() {}

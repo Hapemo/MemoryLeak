@@ -11,17 +11,7 @@ float LineLine(const Math::Vec2& p0, const Math::Vec2& p1, const Math::Vec2& p, 
     return (Math::Dot(p0 - p, normal) * Math::Dot(p1 - p, normal));
 }
 
-void Lighting::Load()
-{
-    LOAD_TEXTURES("Background");
-    LOAD_TEXTURES("Icons");
-    LOAD_TEXTURES("Menu");
-    LOAD_TEXTURES("Sprites");
-    LOAD_TEXTURES("Spritesheets");
-    ResourceManager::GetInstance()->LoadAllResources();
-    for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
-        spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
-}
+void Lighting::Load() {}
 
 void Lighting::Init()
 {
@@ -128,9 +118,4 @@ void Lighting::Free()
     ECS::DestroyAllEntities();
 }
 
-void Lighting::Unload()
-{
-    renderManager->Clear();
-    spriteManager->FreeTextures();
-    FREE_RESOURCES();
-}
+void Lighting::Unload() {}

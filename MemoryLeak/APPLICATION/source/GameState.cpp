@@ -36,6 +36,11 @@ void GameState::LoadWithGUID(ResourceManager::GUID const& _guid) {
 
 void GameState::UnloadWithGUID() {
   LOG_CUSTOM("GAMESTATE", "Unloading GameState " + std::to_string(mGuid));
+  if (mGuid == 0) {
+    LOG_ERROR("Current game state unloaded without guid\n");
+    return;
+  }
+
   for (Scene* scene : mScenes) {
     scene->Unload();
     delete scene;
@@ -49,4 +54,12 @@ void GameState::CreateScene() {
   Scene* scene = new Scene;
   
   mScenes.push_back(scene);
+}
+
+void GameState::PrimaryUnload() {
+  Unload();
+  UnloadWithGUID();
+  renderManager->Clear();
+  if (Coordinator::GetInstance()->GetEntityCount() != 0)
+    LOG_ERROR("There remains " + std::to_string(Coordinator::GetInstance()->GetEntityCount()) + " after Unloading GameState " + std::to_string(mGuid));
 }

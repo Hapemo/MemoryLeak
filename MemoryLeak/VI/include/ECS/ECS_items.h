@@ -104,6 +104,11 @@ struct Entity {
 
 	// Checks if the entity is active and not paused
 	bool ShouldRun() const;
+
+	// Set entity's isactive to true
+	void Activate();
+	void Deactivate();
+
 };
 
 

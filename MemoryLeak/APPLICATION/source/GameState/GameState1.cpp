@@ -93,9 +93,6 @@ void GameState1::Free() {
 }
 
 void GameState1::Unload() {
-  renderManager->Clear();
-  UnloadWithGUID();
-  std::cout << "entity count in GS1: " << mEntities.size() << '\n';
   //spriteManager->FreeTextures();
   //ResourceManager::GetInstance()->UnloadAllResources();
   //FREE_RESOURCES();

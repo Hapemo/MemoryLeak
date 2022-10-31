@@ -66,10 +66,8 @@ void GameStateManager::Update() {
 	mCurrGameState->Free();
 
 	if (mNextGS != E_GS::RESTART) {
-		mCurrGameState->Unload();
-		renderManager->Clear();
+		mCurrGameState->PrimaryUnload();
 		glfwSwapBuffers(Application::getWindow());
-		renderManager->Clear();
 	}
 	mPrevGS = mCurrGS;
 	mCurrGS = mNextGS;
