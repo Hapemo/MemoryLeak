@@ -1,7 +1,7 @@
 {
     "Entity0": {
         "General": {
-            "name": "_NEW_DragDrop1",
+            "name": "MenuBackground",
             "tag": 4,
             "subtag": 0,
             "isActive": true
@@ -42,7 +42,7 @@
     },
     "Entity1": {
         "General": {
-            "name": "_NEW_DragDrop2",
+            "name": "MenuIcon",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -67,7 +67,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\bon voyage logo 5.png",
-            "layer": 2
+            "layer": 1
         },
         "RectCollider": {
             "centerOffset": {
@@ -90,13 +90,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 280.0,
-                "Y": 130.0
+                "X": 300.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2.5920000076293945,
-                "Y": 48.16299819946289
+                "X": 0.0,
+                "Y": 50.0
             }
         },
         "Sprite": {
@@ -108,7 +108,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 2
+            "layer": 1
         },
         "RectCollider": {
             "centerOffset": {
@@ -125,7 +125,63 @@
             "fontFile": "CaviarDreams",
             "text": "PLAY",
             "offset": {
-                "X": -59.0,
+                "X": -80.0,
+                "Y": -52.0
+            },
+            "scale": 1.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    "Entity3": {
+        "General": {
+            "name": "_NEW_DragDrop5",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 534.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -84.8979263305664,
+                "Y": -183.87757873535156
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "aPLAYdsfdsf",
+            "offset": {
+                "X": 0.0,
                 "Y": 0.0
             },
             "scale": 1.0,
@@ -135,6 +191,47 @@
                 "b": 255,
                 "a": 255
             }
+        }
+    },
+    "Entity4": {
+        "General": {
+            "name": "_NEW_DragDrop6",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 548.163330078125,
+                "Y": -231.02044677734375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 0
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
         }
     }
 }
