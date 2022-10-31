@@ -22,15 +22,12 @@ struct Contact {
 	Entity e1;
 	Entity e2;
 
+	int e1Index;
+	int e2Index;
 	float penetration;
 	Math::Vec2 normal;
 	std::vector<Math::Vec2> contacts;
-};
 
-enum class ColliderType {
-	CIRCLE = 0,
-	RECT,
-	MAXTYPESOFCOLLIDERS
 };
 
 typedef bool (*CollisionCallback)(Contact &);
@@ -41,7 +38,15 @@ public:
 	void RegisterCollisionTest(const ColliderType& typeA, const ColliderType& typeB, CollisionCallback function);
 
 	void GenerateContactList();
+
+	double DetermineRestitution(const Entity& e1, const Entity& e2);
+	double DetermineFriction(const Entity& e1, const Entity& e2);
+
+	void ResolveContact(Contact& contact);
 private:
 	CollisionCallback CollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
+	std::vector<Contact> boardPhase;
 	std::vector<Contact> contactList;
+
+	const float EPSILON{ 0.0001f };
 };

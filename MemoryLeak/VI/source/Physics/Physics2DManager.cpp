@@ -69,10 +69,7 @@ void Physics2DManager::Step() {
 		UpdateEntitiesAccumulatedForce(e);
 
 		// Determine acceleration
-		if (GetGravityEnabled(e))
-			SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(GetInverseMass(e)) + gravityForce * static_cast<float>(GetGravityScale(e)));
-		else
-			SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(GetInverseMass(e)));
+		SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(GetInverseMass(e)));
 
 		// Determine velocity
 		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(fixedDT));
@@ -96,7 +93,7 @@ void Physics2DManager::Step() {
 	}
 }
 
-void Physics2DManager::AddPhysicsComponent() {
+//void Physics2DManager::AddPhysicsComponent() {
 	//// If the physics component does not exists in the entity yet, we add it to the entity with the given values
 	//// If it already exists, we reset the values to the given values
 	//if (!_e.HasComponent<Physics2D>()) {
@@ -110,7 +107,7 @@ void Physics2DManager::AddPhysicsComponent() {
 	//	Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
 	//	Physics2DManager::SetPhysicsRenderFlag(_e, _renderFlag);
 	//}
-}
+//}
 
 void Physics2DManager::RemovePhysicsComponent(const Entity& _e) {
 	// Remove component if component exists
@@ -118,34 +115,8 @@ void Physics2DManager::RemovePhysicsComponent(const Entity& _e) {
 		_e.RemoveComponent<Physics2D>();
 }
 
-/*!*****************************************************************************
-\brief
-GetPhysicsComponent function that getsand returns the physics component of the
-given entity
-\param const Entity &
-A reference to a read-only Entity to get from
-\return Physics2D &
-A reference to the Physics2D component in the given entity
-*******************************************************************************/
 Physics2D& Physics2DManager::GetPhysicsComponent(const Entity& _e) {
 	return _e.GetComponent<Physics2D>();
-}
-
-bool Physics2DManager::GetGravityEnabled(const Entity& _e) {
-	return GetPhysicsComponent(_e).gravityEnabled;
-}
-
-void Physics2DManager::SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled) {
-	GetPhysicsComponent(_e).gravityEnabled = _gravityEnabled;
-}
-
-
-double Physics2DManager::GetGravityScale(const Entity& _e) {
-	return GetPhysicsComponent(_e).gravityScale;
-}
-
-void Physics2DManager::SetGravityScale(const Entity& _e, const double& _gravityScale){
-	GetPhysicsComponent(_e).gravityScale = _gravityScale;
 }
 
 bool Physics2DManager::GetDynamicsEnabled(const Entity& _e) {

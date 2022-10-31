@@ -43,17 +43,44 @@ void Collision2DManager::GenerateContactList() {
 			if (e1 == e2)
 				continue;
 
+			if (!e1->HasComponent<Collider2D>() || !e2->HasComponent<Collider2D>())
+				continue;
+
 			// Prevents checks against 2 non moving object
-			//if (e1->GetComponent<Physics2D>().dynamicsEnabled || e2->GetComponent<Physics2D>().dynamicsEnabled) {	
-				//CollisionDatabase
-			//}
+			//if (!e1->GetComponent<Physics2D>().dynamicsEnabled || !e2->GetComponent<Physics2D>().dynamicsEnabled)	
+			//	continue;
 
 			// Callback function to generate contact
-			Contact contact{*e1, *e2};
-			//(*CollisionDatabase[static_cast<int>(e1->GetComponent<Collider2D>().typeID)][static_cast<int>(e2->GetComponent<Collider2D>().typeID)])(contact);
-			//if (contact.contacts.size() != 0)
-			//	contactList.push_back(contact);
-
+			auto e1ColliderList{ e1->GetComponent<Collider2D>().colliderList };
+			auto e2ColliderList{ e2->GetComponent<Collider2D>().colliderList };
+			for (int i{ 0 }; i < static_cast<int>(e1ColliderList.size()); ++i) {
+				for (int j{ 0 }; j < static_cast<int>(e2ColliderList.size()); ++j) {
+					Contact contact{ *e1, *e2 };
+					(*CollisionDatabase[static_cast<int>(e1ColliderList[i].typeID)][static_cast<int>(e2ColliderList[i].typeID)])(contact);
+					if (contact.contacts.size() != 0)
+						contactList.push_back(contact);
+				}
+			}
 		}
 	}
+}
+
+double Collision2DManager::DetermineRestitution(const Entity& e1, const Entity& e2) {
+	if (!e1.HasComponent<Physics2D>() || !e2.HasComponent<Physics2D>()) {
+		return e1.HasComponent<Physics2D>() ? e1.GetComponent<Physics2D>().restitution : e2.HasComponent<Physics2D>() ? e2.GetComponent<Physics2D>().restitution : 0.0;
+	}
+
+	return std::min(e1.GetComponent<Physics2D>().restitution, e2.GetComponent<Physics2D>().restitution);
+}
+
+double Collision2DManager::DetermineFriction(const Entity& e1, const Entity& e2) {
+	if (!e1.HasComponent<Physics2D>() || !e2.HasComponent<Physics2D>()) {
+		return e1.HasComponent<Physics2D>() ? std::sqrt(e1.GetComponent<Physics2D>().friction) : e2.HasComponent<Physics2D>() ? std::sqrt(e2.GetComponent<Physics2D>().friction) : 0.0;
+	}
+
+	return std::sqrt(e1.GetComponent<Physics2D>().friction * e2.GetComponent<Physics2D>().friction);
+}
+
+void Collision2DManager::ResolveContact(Contact& contact) {
+
 }

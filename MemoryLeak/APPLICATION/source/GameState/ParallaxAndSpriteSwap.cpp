@@ -159,23 +159,23 @@ void ParallaxAndSpriteSwap::Update() {
             /*************************************Scale and Rotate Sprite End************************************/
 
             /*************************************Collider Edit Start************************************/
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::W))
-                e.GetComponent<RectCollider>().centerOffset.y += 1.f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::S))
-                e.GetComponent<RectCollider>().centerOffset.y -= 1.f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::A))
-                e.GetComponent<RectCollider>().centerOffset.x -= 1.f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::D))
-                e.GetComponent<RectCollider>().centerOffset.x += 1.f;
+            //if (Input::CheckKey(E_STATE::HOLD, E_KEY::W))
+            //    e.GetComponent<RectCollider>().centerOffset.y += 1.f;
+            //if (Input::CheckKey(E_STATE::HOLD, E_KEY::S))
+            //    e.GetComponent<RectCollider>().centerOffset.y -= 1.f;
+            //if (Input::CheckKey(E_STATE::HOLD, E_KEY::A))
+            //    e.GetComponent<RectCollider>().centerOffset.x -= 1.f;
+            //if (Input::CheckKey(E_STATE::HOLD, E_KEY::D))
+            //    e.GetComponent<RectCollider>().centerOffset.x += 1.f;
 
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::I))
-                e.GetComponent<RectCollider>().scaleOffset.y += 0.02f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::K))
-                e.GetComponent<RectCollider>().scaleOffset.y -= 0.02f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::J))
-                e.GetComponent<RectCollider>().scaleOffset.x -= 0.02f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::L))
-                e.GetComponent<RectCollider>().scaleOffset.x += 0.02f;
+            //if (Input::CheckKey(E_STATE::HOLD, E_KEY::I))
+            //    e.GetComponent<RectCollider>().scaleOffset.y += 0.02f;
+            //if (Input::CheckKey(E_STATE::HOLD, E_KEY::K))
+            //    e.GetComponent<RectCollider>().scaleOffset.y -= 0.02f;
+            //if (Input::CheckKey(E_STATE::HOLD, E_KEY::J))
+            //    e.GetComponent<RectCollider>().scaleOffset.x -= 0.02f;
+            //if (Input::CheckKey(E_STATE::HOLD, E_KEY::L))
+            //    e.GetComponent<RectCollider>().scaleOffset.x += 0.02f;
             /*************************************Collider Edit End************************************/
         }
     }

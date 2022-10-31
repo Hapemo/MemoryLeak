@@ -52,16 +52,11 @@ public:
 // -----------------------------
 	/*!*****************************************************************************
 	\brief
-	AddPhysicsComponent function that adds a physics component to the given entity
-	and initializes the component to the given values. If the component already
-	exists in the entity, the function will set the component's data members to the
-	given values. 
-	
-	
+	Ignore for now
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddPhysicsComponent();
+	//void AddPhysicsComponent();
 
 	/*!*****************************************************************************
 	\brief
@@ -88,52 +83,6 @@ public:
 // -----------------------------
 // Get / Set functions
 // -----------------------------
-	/*!*****************************************************************************
-	\brief
-	GetGravityEnabled function that returns the stored value of the entity's
-	gravity enabled flag
-	\param const Entity &
-	A reference to a read-only Entity to
-	\return bool
-	The value of the entity's gravity enabled flag
-	*******************************************************************************/
-	bool GetGravityEnabled(const Entity& _e);
-	/*!*****************************************************************************
-	\brief
-	SetGravityEnabled function that sets the stored value of the entity's
-	gravity enabled flag to the given value
-	\param const Entity &
-	A reference to a read-only Entity to
-	\param const bool &
-	A reference to a read-only value containing value to set
-	\return void
-	NULL
-	*******************************************************************************/
-	void SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled);
-
-	/*!*****************************************************************************
-	\brief
-	GetGravityScale function that returns the stored value of the entity's
-	gravity scale
-	\param const Entity &
-	A reference to a read-only Entity to
-	\return double
-	The value of the entity's gravity scale
-	*******************************************************************************/
-	double GetGravityScale(const Entity& _e);
-	/*!*****************************************************************************
-	\brief
-	SetGravityScale function that sets the stored value of the entity's
-	gravity scale value to the given value
-	\param const Entity &
-	A reference to a read-only Entity to
-	\param const double &
-	A reference to a read-only value containing value to set
-	\return void
-	NULL
-	*******************************************************************************/
-	void SetGravityScale(const Entity& _e, const double& _gravityScale);
-
 	/*!*****************************************************************************
 	\brief
 	GetDynamicsEnabled function that returns the stored value of the entity's
@@ -564,7 +513,6 @@ private:
 	const double fixedDT{ 1.0 / 60.0 };				// Fixed delta time step of 1/60 steps a second
 	const double accumulatedDTCap{ 1.0 };			// Accumulated cannot store more than 1 second worth of updates
 	const float  velocityCap{ 1000.f };				// Global velocity cap
-	const Math::Vec2 gravityForce{ 0.f, -9.81f };	// Gravity pull
 	bool StepMode;									// Flag variable containing whether physics update is in step mode
 	bool AdvanceStep;								// Flag variable containing whether physics should step when its in step mode
 };

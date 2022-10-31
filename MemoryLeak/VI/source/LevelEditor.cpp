@@ -349,22 +349,22 @@ void  LevelEditor::SceneManager()
 								selectedEntity = &e;
 							}
 						}
-						if (e.HasComponent<RectCollider>())
-						{
-							ImGui::Text("RectCollider");
-							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
-							{
-								selectedEntity = &e;
-							}
-						}
-						if (e.HasComponent<CircleCollider>())
-						{
-							ImGui::Text("CircleCollider");
-							if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
-							{
-								selectedEntity = &e;
-							}
-						}
+						//if (e.HasComponent<RectCollider>())
+						//{
+						//	ImGui::Text("RectCollider");
+						//	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+						//	{
+						//		selectedEntity = &e;
+						//	}
+						//}
+						//if (e.HasComponent<CircleCollider>())
+						//{
+						//	ImGui::Text("CircleCollider");
+						//	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+						//	{
+						//		selectedEntity = &e;
+						//	}
+						//}
 						if (e.HasComponent<Edge2DCollider>())
 						{
 							ImGui::Text("Edge2DCollider");
@@ -824,10 +824,10 @@ void LevelEditor::EntityManager()
 					e.AddComponent<SheetAnimation>({});
 				else if (componentsID == 6)
 					e.AddComponent<Physics2D>({});
-				else if (componentsID == 7)
+				/*else if (componentsID == 7)
 					e.AddComponent<RectCollider>({ });
 				else if (componentsID == 8)
-					e.AddComponent<CircleCollider>({});
+					e.AddComponent<CircleCollider>({});*/
 				else if (componentsID == 9)
 					e.AddComponent<Edge2DCollider>({});
 				else if (componentsID == 10)
@@ -1475,8 +1475,8 @@ void LevelEditor::SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id)
 			old = e->GetComponent<General>();
 		else if(id == COMPONENTID::TRANSFORM)
 			old = e->GetComponent<Transform>();
-		else if (id == COMPONENTID::CIRCLECOLLIDER)
-			old = e->GetComponent<CircleCollider>();
+		//else if (id == COMPONENTID::CIRCLECOLLIDER)
+		//	old = e->GetComponent<CircleCollider>();
 	}
 	if (ImGui::IsItemDeactivatedAfterEdit())
 	{
@@ -1495,8 +1495,8 @@ void LevelEditor::Undo()
 			(undoStack[stackPointer].first)->GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
 		if (undoStack[stackPointer].second.index()==(int)COMPONENTID::TRANSFORM)
 			(undoStack[stackPointer].first)->GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
-		else if(undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
-			(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
+		//else if(undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
+		//	(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
 	}
 	else
 	{
@@ -1513,8 +1513,8 @@ void LevelEditor::Redo()
 			(undoStack[stackPointer].first)->GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
 		else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::TRANSFORM)
 			(undoStack[stackPointer].first)->GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
-		else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
-			(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
+		//else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
+		//	(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
 
 	}
 	else

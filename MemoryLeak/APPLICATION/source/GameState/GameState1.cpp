@@ -53,7 +53,7 @@ void GameState1::Init() {
     e3.AddComponent(Transform{ {150, 150}, 0, {0, 0} });
     e3.AddComponent(Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 });
     spriteManager->SetTexture(e3, "Textures\\Sprites\\mc.png");
-    e3.AddComponent(Physics2D{ false, 100.0, true, 0.5, 1.0 / 0.5, 1.0, 1.0 / 1.0, 0.3, 0.3, 0.9, Math::Vec2{0.f, 0.f}, Math::Vec2{0.f, 0.f}, Math::Vec2{0.f, 0.f}, 0.0, 0.0, std::vector<Force>(), true });
+    e3.AddComponent(Physics2D{ true, 0.5, 1.0 / 0.5, 1.0, 1.0 / 1.0, 0.3, 0.3, 0.9, Math::Vec2{0.f, 0.f}, Math::Vec2{0.f, 0.f}, Math::Vec2{0.f, 0.f}, 0.0, 0.0, std::vector<Force>(), true });
     //physics2DManager->AddForce(e3, Math::Vec2{ 1.f, 0.f }, 50.0);
     //physics2DManager->AddForce(e3, Math::Vec2{ -1.f, 1.f }, 50.0);
     e3.AddComponent(PlayerTmp{});

@@ -130,8 +130,6 @@ This component encapsulates information regarding dynamic movement of an entity.
    whether to render the velocity vector
 *******************************************************************************/
 struct Physics2D {
-	bool gravityEnabled;
-	double gravityScale;
 	bool dynamicsEnabled;
 
 	double mass;
@@ -262,5 +260,5 @@ enum class COMPONENTID
 	AI				//13
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
-	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
+	Physics2D, /*RectCollider, CircleCollider,*/ Edge2DCollider,
 	Point2DCollider, Audio, PlayerTmp, Stuff>  COMPONENT;
