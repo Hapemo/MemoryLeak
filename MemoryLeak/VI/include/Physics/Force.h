@@ -29,9 +29,9 @@ public:
 		return *this;
 	}
 
-	double lifetimeLimit;
-	double age;
-	bool isActive;
+	double lifetimeLimit{0.f};
+	double age{0.f};
+	bool isActive{true};
 	int forceID;
 	union {
 		struct LinearForce {

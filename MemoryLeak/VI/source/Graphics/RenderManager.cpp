@@ -299,7 +299,9 @@ void RenderManager::RenderDebug()
 		//	CreateDebugArrow(t, e.GetComponent<Sprite>().color);
 		//}
 
-		//if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
+		//if (e.HasComponent<
+		// 
+		// >() && e.GetComponent<RectCollider>().renderFlag)
 		//{
 		//	Transform t = e.GetComponent<Transform>();
 		//	t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;

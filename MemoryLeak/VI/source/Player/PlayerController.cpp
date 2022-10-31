@@ -37,8 +37,9 @@ NULL
 void PlayerController::Update() {
 	// Loop through entity container
 	for (const Entity& e : mEntities) {
-		if (!e.HasComponent<PlayerTmp>())
+		if (!e.HasComponent<PlayerTmp>() || !e.HasComponent<Physics2D>())
 			continue;
+
 	// -----------------------------
 	// Movement input first draft (Direction based movement)
 	// -----------------------------

@@ -29,7 +29,7 @@ public:
 	\brief
 	Update function that simulates physics by stepping it in fixedDT when enough
 	time has passed
-	\param const double &
+	\param const float &
 	A reference to a read-only variable that tells us the application's current
 	delta time
 	\return void
@@ -111,154 +111,110 @@ public:
 	GetMass function that returns the stored value of the entity's mass
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\return double
+	\return float
 	A copy of the value of the entity's mass
 	*******************************************************************************/
-	double GetMass(const Entity& _e);
+	float GetMass(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
 	SetMass function that sets the stored value of the entity's mass to the given 
 	value. It also updates the stored value of the entity's inverse mass
 	\param const Entity &
 	A reference to a read-only Entity to set
-	\param const double &
+	\param const float &
 	A reference to a read-only value containing the mass to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetMass(const Entity& _e, const double& _mass);
-	/*!*****************************************************************************
-	\brief
-	GetInverseMass function that returns the stored value of the entity's inverse mass
-	\param const Entity &
-	A reference to a read-only Entity to get from
-	\return double
-	A copy of the value of the entity's inverse mass
-	*******************************************************************************/
-	double GetInverseMass(const Entity& _e);
-	/*!*****************************************************************************
-	\brief
-	SetInverseMass function that sets the stored value of the entity's inverse mass 
-	to the given value. It also updates the stored value of the entity's mass
-	\param const Entity &
-	A reference to a read-only Entity to set
-	\param const double &
-	A reference to a read-only value containing the inverse mass to set to
-	\return void
-	NULL
-	*******************************************************************************/
-	void SetInverseMass(const Entity& _e, const double& _invMass);
+	void SetMass(const Entity& _e, const float& _mass);
 
 	/*!*****************************************************************************
 	\brief
 	GetInertia function that returns the stored value of the entity's inertia
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\return double
+	\return float
 	A copy of the value of the entity's inertia
 	*******************************************************************************/
-	double GetInertia(const Entity& _e);
+	float GetInertia(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
 	SetInertia function that sets the stored value of the entity's inertia to the 
 	given value. It also updates the stored value of the entity's inverse inertia
 	\param const Entity &
 	A reference to a read-only Entity to set
-	\param const double &
+	\param const float &
 	A reference to a read-only value containing the inertia to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetInertia(const Entity& _e, const double& _inertia);
-	/*!*****************************************************************************
-	\brief
-	GetInverseInertia function that returns the stored value of the entity's inverse
-	inertia
-	\param const Entity &
-	A reference to a read-only Entity to get from
-	\return double
-	A copy of the value of the entity's inverse inertia
-	*******************************************************************************/
-	double GetInverseInertia(const Entity& _e);
-	/*!*****************************************************************************
-	\brief
-	SetInverseInertia function that sets the stored value of the entity's inverse 
-	inertia to the given value. It also updates the stored value of the entity's
-	inertia
-	\param const Entity &
-	A reference to a read-only Entity to set
-	\param const double &
-	A reference to a read-only value containing the inverse inertia to set to
-	\return void
-	NULL
-	*******************************************************************************/
-	void SetInverseInertia(const Entity& _e, const double& _invInertia);
+	void SetInertia(const Entity& _e, const float& _inertia);
 
 	/*!*****************************************************************************
 	\brief
 	GetRestitution function that returns the stored value of the entity's restitution
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\return double
+	\return float
 	A copy of the value of the entity's restitution
 	*******************************************************************************/
-	double GetRestitution(const Entity& _e);
+	float GetRestitution(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
 	SetRestitution function that sets the stored value of the entity's restitution
 	to the given value
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\param const double &
+	\param const float &
 	A reference to a read-only value containing the inverse inertia to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetRestitution(const Entity& _e, const double& _restitution);
+	void SetRestitution(const Entity& _e, const float& _restitution);
 
 	/*!*****************************************************************************
 	\brief
 	GetFriction function that returns the stored value of the entity's friction
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\return double
+	\return float
 	A copy of the value of the entity's friction
 	*******************************************************************************/
-	double GetFriction(const Entity& _e);
+	float GetFriction(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
 	SetFriction function that sets the stored value of the entity's friction
 	to the given value
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\param const double &
+	\param const float &
 	A reference to a read-only value containing the friction to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetFriction(const Entity& _e, const double& _friction);
+	void SetFriction(const Entity& _e, const float& _friction);
 
 	/*!*****************************************************************************
 	\brief
 	GetDamping function that returns the stored value of the entity's damping
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\return double
+	\return float
 	A copy of the value of the entity's damping
 	*******************************************************************************/
-	double GetDamping(const Entity& _e);
+	float GetDamping(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
 	SetDamping function that sets the stored value of the entity's damping to the 
 	given value
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\param const double &
+	\param const float &
 	A reference to a read-only value containing the damping to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetDamping(const Entity& _e, const double& _damping);
+	void SetDamping(const Entity& _e, const float& _damping);
 
 	//float GetSpeed(const Entity& _e);
 	//void SetSpeed(const Entity& _e, const float& _speed);
@@ -362,11 +318,11 @@ public:
 	velocity
 	\param const Entity &
 	A reference to a read-only Entity to get from
-	\return double
+	\return float
 	A copy of the value of the entity's angular velocity
 	*******************************************************************************/
-	double GetAngularVelocity(const Entity& _e);
-	void SetAngularVelocity(const Entity& _e, const double& _angVel);
+	float GetAngularVelocity(const Entity& _e);
+	void SetAngularVelocity(const Entity& _e, const float& _angVel);
 
 	/*!*****************************************************************************
 	\brief
@@ -377,8 +333,8 @@ public:
 	\return Math::Vec2
 	A copy of the value of the entity's angular acceleration
 	*******************************************************************************/
-	double GetAngularTorque(const Entity& _e);
-	void SetAngularTorque(const Entity& _e, const double& _angTorque);
+	float GetAngularTorque(const Entity& _e);
+	void SetAngularTorque(const Entity& _e, const float& _angTorque);
 
 	/*!*****************************************************************************
 	\brief
@@ -425,11 +381,11 @@ public:
 	A reference to a read-only variable containing the direction of the force
 	\param const float &
 	A reference to a read-only variable containing the magnitude of the force
-	\param const double & 
+	\param const float & 
 	A reference to a read-only variable containing the lifespan of the force.
 	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
 	lifespan
-	\param const double &
+	\param const float &
 	A reference to a read-only variable containing the starting age of the force.
 	Omission of this param assumes it starts from 0
 	\param const bool &
@@ -448,11 +404,11 @@ public:
 	A reference to a read-only Entity to
 	\param const float &
 	A reference to a read-only variable containing the torque
-	\param const double &
+	\param const float &
 	A reference to a read-only variable containing the lifespan of the force.
 	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
 	lifespan
-	\param const double &
+	\param const float &
 	A reference to a read-only variable containing the starting age of the force.
 	Omission of this param assumes it starts from 0
 	\param const bool &
@@ -475,11 +431,11 @@ public:
 	\param const float &
 	A reference to a read-only variable containing the rotational drag force. It has
 	a default value of 1
-	\param const double &
+	\param const float &
 	A reference to a read-only variable containing the lifespan of the force.
 	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
 	lifespan
-	\param const double &
+	\param const float &
 	A reference to a read-only variable containing the starting age of the force.
 	Omission of this param assumes it starts from 0
 	\param const bool &

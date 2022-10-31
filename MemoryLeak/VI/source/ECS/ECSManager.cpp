@@ -186,8 +186,8 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<SheetAnimation>();
 	ECS::RegisterComponent<Physics2D>();
 	ECS::RegisterComponent<Collider2D>();
-	//ECS::RegisterComponent<CircleCollider>();
-	//ECS::RegisterComponent<RectCollider>();
+	ECS::RegisterComponent<CircleCollider>();
+	ECS::RegisterComponent<RectCollider>();
 	ECS::RegisterComponent<Edge2DCollider>();
 	ECS::RegisterComponent<Point2DCollider>();
 	ECS::RegisterComponent<PlayerTmp>();

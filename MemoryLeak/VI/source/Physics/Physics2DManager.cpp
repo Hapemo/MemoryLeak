@@ -66,14 +66,14 @@ void Physics2DManager::Step() {
 			continue;
 
 		// Update accumulated forces acting on entity
-		UpdateEntitiesAccumulatedForce(e);
+		//UpdateEntitiesAccumulatedForce(e);
 
 		// Determine acceleration
-		SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(GetInverseMass(e)));
+		SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(1.0 / GetMass(e)));
 
 		// Determine velocity
 		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(fixedDT));
-		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * GetInverseInertia(e) * static_cast<float>(fixedDT));
+		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (1.0 / GetInertia(e)) * static_cast<float>(fixedDT));
 
 		// Dampen velocity (for soft drag)
 		//SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
@@ -89,7 +89,7 @@ void Physics2DManager::Step() {
 		e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * fixedDT);
 
 		// Reset forces on the object for next step
-		SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
+		//SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
 	}
 }
 
@@ -127,63 +127,43 @@ void Physics2DManager::SetDynamicsEnabled(const Entity& _e, const bool& _dynamic
 	GetPhysicsComponent(_e).dynamicsEnabled = _dynamicsEnabled;
 }
 
-double Physics2DManager::GetMass(const Entity& _e) {
+float Physics2DManager::GetMass(const Entity& _e) {
 	return GetPhysicsComponent(_e).mass;
 }
 
-void Physics2DManager::SetMass(const Entity& _e, const double& _mass) {
+void Physics2DManager::SetMass(const Entity& _e, const float& _mass) {
 	GetPhysicsComponent(_e).mass = _mass;
-	SetInverseMass(_e, 1.0 / GetMass(_e));
 }
 
-double Physics2DManager::GetInverseMass(const Entity& _e) {
-	return GetPhysicsComponent(_e).invMass;
-}
-
-void Physics2DManager::SetInverseMass(const Entity& _e, const double& _invMass) {
-	GetPhysicsComponent(_e).invMass  =  _invMass;
-	SetMass(_e, 1.0 / GetInverseMass(_e));
-}
-
-double Physics2DManager::GetInertia(const Entity& _e) {
+float Physics2DManager::GetInertia(const Entity& _e) {
 	return GetPhysicsComponent(_e).inertia;
 }
 
-void Physics2DManager::SetInertia(const Entity& _e, const double& _inertia) {
+void Physics2DManager::SetInertia(const Entity& _e, const float& _inertia) {
 	GetPhysicsComponent(_e).inertia = _inertia;
-	SetInverseInertia(_e, 1.0 / GetInertia(_e));
 }
 
-double Physics2DManager::GetInverseInertia(const Entity& _e) {
-	return GetPhysicsComponent(_e).invInertia;
-}
-
-void Physics2DManager::SetInverseInertia(const Entity& _e, const double& _invInertia) {
-	GetPhysicsComponent(_e).invInertia = _invInertia;
-	SetInertia(_e, 1.0 / GetInverseInertia(_e));
-}
-
-double Physics2DManager::GetRestitution(const Entity& _e) {
+float Physics2DManager::GetRestitution(const Entity& _e) {
 	return GetPhysicsComponent(_e).restitution;
 }
 
-void Physics2DManager::SetRestitution(const Entity& _e, const double& _restitution) {
+void Physics2DManager::SetRestitution(const Entity& _e, const float& _restitution) {
 	GetPhysicsComponent(_e).restitution = _restitution;
 }
 
-double Physics2DManager::GetFriction(const Entity& _e) {
+float Physics2DManager::GetFriction(const Entity& _e) {
 	return GetPhysicsComponent(_e).friction;
 }
 
-void Physics2DManager::SetFriction(const Entity& _e, const double& _friction) {
+void Physics2DManager::SetFriction(const Entity& _e, const float& _friction) {
 	GetPhysicsComponent(_e).friction = _friction;
 }
 
-double Physics2DManager::GetDamping(const Entity& _e) {
+float Physics2DManager::GetDamping(const Entity& _e) {
 	return GetPhysicsComponent(_e).damping;
 }
 
-void Physics2DManager::SetDamping(const Entity& _e, const double& _damping) {
+void Physics2DManager::SetDamping(const Entity& _e, const float& _damping) {
 	GetPhysicsComponent(_e).damping = _damping;
 }
 
@@ -235,19 +215,19 @@ void Physics2DManager::SetAcceleration(const Entity& _e, const Math::Vec2& _acce
 	GetPhysicsComponent(_e).acceleration = _acceleration;
 }
 
-double Physics2DManager::GetAngularVelocity(const Entity& _e) {
+float Physics2DManager::GetAngularVelocity(const Entity& _e) {
 	return GetPhysicsComponent(_e).angularVelocity;
 }
 
-void Physics2DManager::SetAngularVelocity(const Entity& _e, const double& _angVel) {
+void Physics2DManager::SetAngularVelocity(const Entity& _e, const float& _angVel) {
 	GetPhysicsComponent(_e).angularVelocity = _angVel;
 }
 
-double Physics2DManager::GetAngularTorque(const Entity& _e) {
+float Physics2DManager::GetAngularTorque(const Entity& _e) {
 	return GetPhysicsComponent(_e).angularTorque;
 }
 
-void Physics2DManager::SetAngularTorque(const Entity& _e, const double& _angTorque) {
+void Physics2DManager::SetAngularTorque(const Entity& _e, const float& _angTorque) {
 	GetPhysicsComponent(_e).angularTorque = _angTorque;
 }
 
@@ -334,6 +314,6 @@ void Physics2DManager::AddDragForce(const Entity& _e, const float& _directionDra
 }
 
 void Physics2DManager::ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _contact) {
-	SetVelocity(_e, GetVelocity(_e) + static_cast<float>(GetInverseMass(_e)) * _impulse);
-	SetAngularVelocity(_e, GetAngularVelocity(_e) + GetInverseInertia(_e) * Math::Cross(_impulse, _contact));
+	SetVelocity(_e, GetVelocity(_e) + static_cast<float>(1.0 / GetMass(_e)) * _impulse);
+	SetAngularVelocity(_e, GetAngularVelocity(_e) + 1.0 / GetInertia(_e) * Math::Cross(_impulse, _contact));
 }

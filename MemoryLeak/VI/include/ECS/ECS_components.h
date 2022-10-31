@@ -133,32 +133,23 @@ This component encapsulates information regarding dynamic movement of an entity.
    whether to render the velocity vector
 *******************************************************************************/
 struct Physics2D {
-	bool dynamicsEnabled;
+	bool dynamicsEnabled{true};
 
-	double mass;
-	double invMass;
-
-	double inertia;
-	double invInertia;
-
-	// double density;
-	double restitution;
-	double friction;
-	double damping;
-	Math::Vec2 accumulatedForce;
-
-	//float speed;
-	//float moveDirection;
+	float mass{1.f};
+	float inertia{1.f};
+	float restitution{0.3f};
+	float friction{0.3f};
+	float damping{0.9f};
+	Math::Vec2 accumulatedForce{0.f, 0.f};
+	Math::Vec2 velocity{0.f, 0.f};
+	Math::Vec2 acceleration{0.f, 0.f};
 	
-	Math::Vec2 velocity;
-	Math::Vec2 acceleration;
+	float angularVelocity{0.f};
+	float angularTorque{0.f};
 	
-	double angularVelocity;
-	double angularTorque;
-	
-	std::vector<Force> forceList;
+	std::vector<Force> forceList{};
 
-	bool renderFlag;
+	bool renderFlag{false};
 };
 
 /*!*****************************************************************************
@@ -174,6 +165,12 @@ The renderFlag variable contains the flag variable telling the render manager
 struct RectCollider {
 	Math::Vec2 centerOffset = { 0.f, 0.f },
 			   scaleOffset = {1.f,1.f};
+	// float rotationOffset,
+	bool renderFlag = false;
+};
+struct CircleCollider {
+	Math::Vec2 centerOffset = { 0.f, 0.f };
+	float 	scaleOffset = { 1.f };
 	// float rotationOffset,
 	bool renderFlag = false;
 };

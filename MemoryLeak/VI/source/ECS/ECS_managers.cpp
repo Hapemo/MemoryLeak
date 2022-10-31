@@ -50,8 +50,8 @@ Prefab::~Prefab() {
 	delete static_cast<Animation*>(mComponents[4]);
 	delete static_cast<SheetAnimation*>(mComponents[5]);
 	delete static_cast<Physics2D*>(mComponents[6]);
-	//delete static_cast<CircleCollider*>(mComponents[7]);
-	//delete static_cast<RectCollider*>(mComponents[8]);
+	delete static_cast<CircleCollider*>(mComponents[7]);
+	delete static_cast<RectCollider*>(mComponents[8]);
 	delete static_cast<Edge2DCollider*>(mComponents[9]);
 	delete static_cast<Point2DCollider*>(mComponents[10]);
 	delete static_cast<PlayerTmp*>(mComponents[11]);
@@ -99,11 +99,11 @@ Entity Prefab::CreatePrefabee() {
 			break;
 
 		case 7: // CircleCollider
-			//e.AddComponent<CircleCollider>(*(static_cast<CircleCollider*>(component)));
+			e.AddComponent<CircleCollider>(*(static_cast<CircleCollider*>(component)));
 			break;
 
 		case 8: // RectCollider
-			//e.AddComponent<RectCollider>(*(static_cast<RectCollider*>(component)));
+			e.AddComponent<RectCollider>(*(static_cast<RectCollider*>(component)));
 			break;
 
 		case 9: // Edge2DCollider
