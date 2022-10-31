@@ -252,12 +252,11 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
-	std::string fontFile = "3Dumb.ttf"; //CaviarDreams.ttf || 3Dumb.ttf
+	std::string fontFile = "3Dumb"; //CaviarDreams.ttf || 3Dumb.ttf
 	std::string text = "Hello";
-	Math::Vec2 pos = Math::Vec2{0, 0}; //world coordinates
+	Math::Vec2 offset = Math::Vec2{0, 0}; //world coordinates
 	float scale =1.f;
 	Color color = Color{ 0, 0, 0, 255 };
-
 };
 struct Dialogue
 {

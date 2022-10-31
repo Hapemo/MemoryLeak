@@ -19,7 +19,7 @@ void Lighting::Init()
     renderManager->SetClearColor(black);
     Entity e1{ ECS::CreateEntity() };
     mEntities.insert(e1);
-    e1.AddComponent(Transform{ {400, 100}, 2, {100,250} },
+    e1.AddComponent(Transform{ {400, 100}, 1.f, {100,250} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false });
     Entity e2{ ECS::CreateEntity() };
@@ -96,6 +96,4 @@ void Lighting::Free()
 void Lighting::Unload()
 {
     renderManager->Clear();
-    spriteManager->FreeTextures();
-    FREE_RESOURCES();
 }

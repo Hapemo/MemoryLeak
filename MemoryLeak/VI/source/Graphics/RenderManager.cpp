@@ -113,11 +113,10 @@ void RenderManager::Render()
 			CreateCircle(e);
 			break;
 		default:
-			continue;
+			break;
 		}
 
 		if (!e.HasComponent<Text>()) continue;
-		std::string x = e.GetComponent<Text>().fontFile;
 		CreateText(e);
 	}
 	/*************************************CREATING VERTICES END**************************************/
@@ -977,10 +976,12 @@ void RenderManager::CreateText(const Entity& _e)
 {
 	Text text = _e.GetComponent<Text>();
 
-	if (mFontRenderers.find(text.fontFile) == mFontRenderers.end())
-		mFontRenderers.emplace(text.fontFile, text.fontFile);
+	std::string fileName = text.fontFile + ".ttf";
 
-	mFontRenderers[text.fontFile].AddParagraph(text.text,
-		text.pos + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
+	if (mFontRenderers.find(fileName) == mFontRenderers.end())
+		mFontRenderers.emplace(fileName, fileName);
+
+	mFontRenderers[fileName].AddParagraph(text.text,
+		text.offset + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f) + _e.GetComponent<Transform>().translation,
 		text.scale, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));
 }

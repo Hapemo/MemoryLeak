@@ -577,11 +577,11 @@ void InspectorPanel::TextEditor()
 		ImGui::InputText("Addfont", const_cast<char*>(e.GetComponent<Text>().fontFile.c_str()), 30);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
-		tmpVec2[0] = e.GetComponent<Text>().pos.x;
-		tmpVec2[1] = e.GetComponent<Text>().pos.y;
+		tmpVec2[0] = e.GetComponent<Text>().offset.x;
+		tmpVec2[1] = e.GetComponent<Text>().offset.y;
 		ImGui::DragFloat2("Text Pos", tmpVec2);
 		Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
-		e.GetComponent<Text>().pos = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+		e.GetComponent<Text>().offset = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
 		ImGui::DragFloat("Text Scale", &e.GetComponent<Text>().scale);
