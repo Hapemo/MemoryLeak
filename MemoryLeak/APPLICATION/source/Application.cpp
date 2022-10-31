@@ -37,7 +37,7 @@ void Application::startup() {
 }
 
 void Application::SystemInit() {
-  editorManager->Init(ptr_window, &window_width, &window_height);
+  editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
   renderManager->Init(&window_width, &window_height);
   ResourceManager::GetInstance()->LoadAllResources();
@@ -76,6 +76,7 @@ void Application::init() {
 
   SystemInit();
   audioManager->PlayBGSound("MENUBG.wav", 10);
+  
 }
 
 void Application::FirstUpdate() {
@@ -98,7 +99,6 @@ void Application::SecondUpdate() {
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
   {
-      editorManager->Window();
       editorManager->Update();
   }
   END_TRACK("Editor");
@@ -108,11 +108,12 @@ void Application::SecondUpdate() {
       editorMode = !editorMode;
       if (editorMode)
       {
-        editorManager->Start();
+        editorManager->Init();
         renderManager->RenderToFrameBuffer();
       }
       else
       {
+          editorManager->Free();
           renderManager->RenderToScreen();
       }
 
@@ -127,7 +128,7 @@ void Application::SecondUpdate() {
 }
 
 void Application::exit() {
-  editorManager->Exit();
+  editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
   ResourceManager::GetInstance()->UnloadAllResources();

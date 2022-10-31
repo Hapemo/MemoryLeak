@@ -9,16 +9,18 @@ This file contains function declarations for a Level Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #pragma once
-#include "EditorManager.h"
+#include "Panel.h"
 
 /*!*****************************************************************************
 \brief
 	This class encapsulates the functions for the Level Editor
 *******************************************************************************/
-class AssetPanel : public EditorManager
+class AssetPanel : public Panel
 {
 public:
-	
+	void Init();
+	void Update();
+	void Free();
 
 	
 private:

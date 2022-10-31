@@ -15,6 +15,8 @@ ComponentType starts from 0.
 #include "AudioVariable.h"
 #include "TagVariable.h"
 #include <variant>
+#include "ScriptComponent.h"
+
 class Prefab;
 
 /*!*****************************************************************************
@@ -253,3 +255,12 @@ enum class COMPONENTID
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
 	Point2DCollider, Audio, PlayerTmp, Stuff>  COMPONENT;
+
+/*!*****************************************************************************
+\brief
+	This struct contains the data for Script component
+*******************************************************************************/
+struct Script {
+	ScriptComponent* script;
+};
+

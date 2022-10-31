@@ -1,30 +1,23 @@
 #pragma once
+
 #include "ECS_items.h"
-#include "ScriptManager.h"
+#include "ScriptComponent.h"
 #include "Logger.h"
 
-class TestScript {
+class TestScript : public ScriptComponent {
 public:
-	TestScript(){
-		m_behaviour = new ScriptManager("TestScript", StartScript, UpdateScript, EndScript);
-	}
-	~TestScript() { delete m_behaviour; }
-
 	static void StartScript(Entity* gob) {
 		(void)gob;
-		LOG_INFO("Script starts works!!!");
+		LOG_INFO("Test script starts works!!!");
 	}
 
 	static void UpdateScript(Entity* gob) {
 		(void)gob;
-		LOG_INFO("Script updating works!!!");
+		LOG_INFO("Test script updating works!!!");
 	}
 
 	static void EndScript(Entity* gob) {
 		(void)gob;
-		LOG_INFO("Script end works!!!");
+		LOG_INFO("Test script end works!!!");
 	}
-
-private:
-	ScriptManager* m_behaviour;
 };
