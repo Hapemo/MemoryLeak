@@ -201,8 +201,8 @@ The renderFlag variable contains the flag variable telling the render manager
 *******************************************************************************/
 struct Edge2DCollider {
 	Math::Vec2 p0Offset = { 0.f, 0.f };
-	float rotationOffset = 0.f,
-		  scaleOffset = 1.f;
+	float rotationOffset = 0.f;
+	float scaleOffset = 1.f;
 	bool renderFlag = false;
 };
 
@@ -277,10 +277,12 @@ struct Script {
 
 
 
+struct LightSource
+{
+	Math::Vec2 centreOffset;
+};
 
-
-
-//use to index the variant data type, for editor and serilization to determine type stored
+//use to index the variant data type, for ditor and serilization to determine type stored
 enum class COMPONENTID
 {
 	GENERAL,		//0

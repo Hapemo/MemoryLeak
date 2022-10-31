@@ -26,6 +26,7 @@ std::shared_ptr<SerializationManager> serializationManager{ nullptr };
 std::shared_ptr<DialogManager> dialogManager{ nullptr };
 std::shared_ptr<AIManager> aiManager{ nullptr };
 std::shared_ptr<LogicSystem> logicSystem{ nullptr };
+std::shared_ptr<ShadowManager> shadowManager{ nullptr };
 //----------------------------------------------------------------
 // Register Managers
 //----------------------------------------------------------------
@@ -157,6 +158,14 @@ void ECSManager::RegisterLogicSystem() {
 
 	logicSystem = ECS::RegisterSystem<LogicSystem>();
 	ECS::SetSystemSignature<LogicSystem>(signature);
+	
+void ECSManager::RegisterShadowManager() {
+	Signature signature;
+	signature.set(ECS::GetComponentType<General>());
+	signature.set(ECS::GetComponentType<Sprite>());
+
+	shadowManager = ECS::RegisterSystem<ShadowManager>();
+	ECS::SetSystemSignature<ShadowManager>(signature);
 }
 //----------------------------------------------------------------
 // ECSManager Functions
@@ -177,6 +186,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterDialogManager();
 	RegisterAIManager();
 	RegisterLogicSystem();
+	RegisterShadowManager();
 	// More to come
 }
 
@@ -198,6 +208,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Text>();
 	ECS::RegisterComponent<Script>();
 	ECS::RegisterComponent<Dialogue>();
+	ECS::RegisterComponent<LightSource>();
 	// More to come
 }
 

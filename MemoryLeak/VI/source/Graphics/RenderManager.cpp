@@ -10,16 +10,7 @@ operates on Entities with Sprite and Transform Components.
 *******************************************************************************/
 #include "Graphics/RenderManager.h"
 #include "pch.h"
-
-//define number of triangles for circle
-constexpr int CIRCLE_SLICES = 18;
-//modifier for vector.reserve() 
-constexpr float MODIFIER = 0.05f;
-constexpr size_t NO_OF_OBJECTS = 10000;
-constexpr size_t VERTICES_PER_OBJECT = 4;
-constexpr size_t INDICES_PER_OBJECT = 6;
-//maximum used texture units in 1 draw call
-constexpr size_t TEXTURES_PER_DRAW = 16;
+#include "RenderProps.h"
 
 /*!*****************************************************************************
 \brief
@@ -292,11 +283,11 @@ void RenderManager::RenderDebug()
 		if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
-			t.scale *= e.GetComponent<Edge2DCollider>().scaleOffset;
+			t.scale = { e.GetComponent<Edge2DCollider>().scaleOffset };
 			t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
 			t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
 				e.GetComponent<Edge2DCollider>().p0Offset.y);
-			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
+			CreateDebugLine(t, e.GetComponent<Sprite>().color);
 		}
 
 		if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
@@ -437,6 +428,38 @@ void RenderManager::BatchRenderTextures(int& _texCount, std::vector<int>& _texUn
 	mTextureVertices.clear();
 	mTextureIndices.clear();
 	_texUnits.clear();
+}
+
+void RenderManager::CreateLightingTriangle(const Math::Vec2& p0, const Math::Vec2& p1, const Math::Vec2& p2)
+{
+	Math::Mat3 mtx0 = GetTransform({ 0, 0 }, 0, { p0.x, p0.y });
+	Math::Mat3 mtx1 = GetTransform({ 0, 0 }, 0, { p1.x, p1.y });
+	Math::Mat3 mtx2 = GetTransform({ 0, 0 }, 0, { p2.x, p2.y });
+
+	Vertex v0, v1, v2;
+	v0.position = (mtx0 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
+	v0.position.z = 0.5f;
+	v0.color = { 1.f, 1.f, 1.f, 1.f };
+	v0.texID = 0;
+
+	v1.position = (mtx1 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
+	v1.position.z = 0.5f;
+	v1.color = { 1.f, 1.f, 1.f, 1.f };
+	v1.texID = 0;
+
+	v2.position = (mtx2 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
+	v2.position.z = 0.5f;
+	v2.color = { 1.f, 1.f, 1.f, 1.f };
+	v2.texID = 0;
+
+	mVertices.push_back(v0);
+	mVertices.push_back(v1);
+	mVertices.push_back(v2);
+
+	GLushort first = mIndices.empty() ? 0 : mIndices.back() + 1;
+	mIndices.push_back(first);
+	mIndices.push_back(first + 1);
+	mIndices.push_back(first + 2);
 }
 
 /*!*****************************************************************************

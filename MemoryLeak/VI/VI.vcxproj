@@ -225,7 +225,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\freetype\tttags.h" />
     <ClInclude Include="include\Graphics\Camera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
-    <ClInclude Include="include\Graphics\Renderer.h" />
+    <ClInclude Include="include\Graphics\VertexFetcher.h" />
     <ClInclude Include="include\Logic\LogicSystem.h" />
     <ClInclude Include="include\Logic\MonoScripting.h" />
     <ClInclude Include="include\Logic\ScriptComponent.h" />
@@ -264,6 +264,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Serialization.h" />
+    <ClInclude Include="include\Graphics\ShadowManager.h" />
     <ClInclude Include="include\SignalHandler.h" />
     <ClInclude Include="include\Start_1.h" />
     <ClInclude Include="include\Start_background.h" />
@@ -293,11 +294,14 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Graphics\FontManager.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
     <ClCompile Include="source\Graphics\GLShader.cpp" />
-    <ClCompile Include="source\Graphics\Renderer.cpp" />
     <ClCompile Include="source\Graphics\RenderManager.cpp" />
+    <ClCompile Include="include\Graphics\RenderProps.h" />
+    <ClCompile Include="source\Graphics\ShadowManager.cpp" />
     <ClCompile Include="source\Graphics\SheetAnimator.cpp" />
     <ClCompile Include="source\Graphics\SpriteManager.cpp" />
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
+    <ClCompile Include="source\Graphics\VertexFetcher.cpp" />
+    <ClCompile Include="source\LevelEditor.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
     <ClCompile Include="source\Logic\MonoScripting.cpp" />
