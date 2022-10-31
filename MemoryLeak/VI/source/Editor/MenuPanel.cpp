@@ -64,7 +64,7 @@ void MenuPanel::Update()
 			if (ImGui::MenuItem("Clear Scene"))
 			{
 				ECS::DestroyAllEntities();
-				selectedEntity = nullptr;
+				SceneReset();
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Dialogue File", NULL, false, false);

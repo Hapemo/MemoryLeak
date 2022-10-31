@@ -172,7 +172,7 @@ void InspectorPanel::GeneralEditor()
 		ImGui::Checkbox("isActive", &e.GetComponent<General>().isActive); //isactive
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
 
-		ImGui::InputText("Name", const_cast<char*>(e.GetComponent<General>().name.c_str()), 30);
+		ImGui::InputText("Name", &e.GetComponent<General>().name);
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
 
 		int tagID = (int)e.GetComponent<General>().tag;
@@ -572,7 +572,8 @@ void InspectorPanel::TextEditor()
 	if (ImGui::CollapsingHeader("Text")) {
 		//ImGui::Text("Text");
 		//ImGuiInput
-		ImGui::InputText("Addtext", const_cast<char*>(e.GetComponent<Text>().text.c_str()), 50);
+		ImGui::InputText("Addstrtext", &e.GetComponent<Text>().text);
+		//ImGui::InputText("Addtext", const_cast<char*>(e.GetComponent<Text>().text.c_str()), 50);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 		ImGui::InputText("Addfont", const_cast<char*>(e.GetComponent<Text>().fontFile.c_str()), 50);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);

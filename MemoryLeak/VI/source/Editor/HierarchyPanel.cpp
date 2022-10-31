@@ -45,6 +45,7 @@ void HierarchyPanel::Update()
 				{
 					if (e.GetComponent<General>().tag != (TAG)i)
 						continue;
+					
 					const char* lbl = e.GetComponent<General>().name.c_str();
 					if (ImGui::TreeNode(lbl))
 					{
@@ -178,7 +179,7 @@ void HierarchyPanel::newEntity()
 	e.AddComponent(
 		General{ "_NEW_" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
 		Transform{ {150,150}, 0, campos },
-		Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0 },
+		Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0,highestLayer },
 		RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 	newEntityCount++;
 }

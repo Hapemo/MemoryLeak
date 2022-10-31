@@ -35,7 +35,7 @@ std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
 int EditorManager::stackPointer{-1};
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
-
+int EditorManager::highestLayer =0;
 /*!*****************************************************************************
 \brief
 	Initializes the level editor
@@ -124,6 +124,16 @@ None.
 void EditorManager::Update()
 {
 	Window();
+	for (const Entity& e : *myEntities)
+	{
+		if (e.HasComponent<Sprite>())
+		{
+			if (highestLayer <= e.GetComponent<Sprite>().layer)
+				highestLayer = e.GetComponent<Sprite>().layer +1;
+		}
+		/*if (e.HasComponent<Text>())
+			std::cout << e.GetComponent<Text>().text << "   text\n";*/
+	}
 	//weatherAIupdate();
 	for (size_t p = 0; p < panels.size(); p++)
 	{
@@ -367,6 +377,11 @@ void EditorManager::SetPannelIsActive(E_PANELID _panel, bool _isActive)
 	{
 		debugPanel.setIsActive(_isActive);
 	}*/
+}
+void EditorManager::SceneReset()
+{
+	highestLayer = 0;
+	selectedEntity = nullptr;
 }
 
 

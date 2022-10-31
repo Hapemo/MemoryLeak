@@ -168,7 +168,7 @@ void WorldViewPanel::NewEntity()
 		e.AddComponent(
 			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
 			Transform{ {150,150}, 0, camMousePos },
-			Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0 },
+			Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0, highestLayer},
 			RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 
 		texpath = (const wchar_t*)payload->Data;

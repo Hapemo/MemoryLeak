@@ -14,6 +14,7 @@ Entities and its Components.
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "imGuizmo.h"
+#include "imgui_stdlib.h"
 
 #include <ECS_systems.h>
 #include "ECS_items.h"
@@ -61,6 +62,7 @@ protected:
 		DEBUG,
 		MENU
 	};
+	void SceneReset();
 	static bool GetPannelIsActive(E_PANELID _panel);
 	static void SetPannelIsActive(E_PANELID _panel, bool _isActive);
 	void SaveUndo(Entity const e, COMPONENT& old, COMPONENTID id);
@@ -77,7 +79,7 @@ protected:
 	static int SRT;
 	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
 	static int stackPointer;
-
+	static int highestLayer;
 
 
 
