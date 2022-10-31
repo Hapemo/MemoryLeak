@@ -47,18 +47,24 @@ void AssetPanel::Update()
 			}
 			else
 			{
-				std::string texPath = directory.path().string();
+				texPath = directory.path().string();
 				texPath = texPath.substr(13);
+				texExt = directory.path().extension().string();
+				if (texExt == ".meta")
+					continue;
 				my_image2_texture = spriteManager->GetTextureID(texPath);
 				if (my_image2_texture)
 				{
 					ImTextureID textureImage = (void*)(intptr_t)my_image2_texture;
 					ImGui::ImageButton(textureImage, buttonSize, ImVec2(0, 1), ImVec2(1, 0));
-					if (ImGui::BeginDragDropSource())
+					if (texExt == ".png")
 					{
-						const wchar_t* itemPath = (wchar_t*)texPath.c_str();
-						ImGui::SetDragDropPayload("TEXTURES", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
-						ImGui::EndDragDropSource();
+						if (ImGui::BeginDragDropSource())
+						{
+							const wchar_t* itemPath = (wchar_t*)texPath.c_str();
+							ImGui::SetDragDropPayload("TEXTURES", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
+						}
 					}
 				}
 				else
@@ -70,16 +76,25 @@ void AssetPanel::Update()
 					m_CurrentDirectory /= path.filename();
 				else
 				{
-					std::string filename = directory.path().stem().string();
-					std::cout << filename.substr(0, 7);
-					if (filename.substr(0, 6) == "Dialog")
+					if (texExt == ".json")
 					{
-						serializationManager->LoadDialogs(filename);
-						ShowDialogue(true);
+						texfilename = directory.path().stem().string();
+						if (texfilename.substr(0, 6) == "Dialog")
+						{
+							serializationManager->LoadDialogs(texfilename);
+							SetPannelIsActive(E_PANELID::DIALOGUE ,true);
+						}
+						else if (texfilename.substr(0, 5) == "Scene")
+						{
+							serializationManager->LoadScene(texfilename);
+						}
 					}
-					else if (filename.substr(0, 5) == "Scene")
+					else if (texExt == ".png")
 					{
-						serializationManager->LoadScene(filename);
+					}
+					else if (texExt == ".wav")
+					{
+						//audioManager->Play(texfilename);
 					}
 
 				}

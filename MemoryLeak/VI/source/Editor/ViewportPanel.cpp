@@ -9,7 +9,7 @@ This file contains function definations for a Viewport Panel Editor system that 
 *******************************************************************************/
 #include "ViewportPanel.h"
 #include <ECSManager.h>
-
+int ViewportPanel::isSelected = 0;
 /*!*****************************************************************************
 \brief
 	This function set the view port to 16:9 aspect ratio regardless of window size
@@ -19,6 +19,7 @@ None.
 *******************************************************************************/
 void ViewportPanel::SetViewportAspectRatio()
 {
+	viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y - 70 };
 	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
 	{
 		viewportSize.x = viewportSize.y / 9 * 16;
@@ -30,6 +31,8 @@ void ViewportPanel::SetViewportAspectRatio()
 }
 void ViewportPanel::CalculateMousePos(E_CAMERA_TYPE _type)
 {
+	//to use matrix from graphics in the future
+	
 	viewportPos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, buttonSize.y +35.f };
 	screenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
 	worldMousePos = screenMousePos;
@@ -41,3 +44,9 @@ void ViewportPanel::CalculateMousePos(E_CAMERA_TYPE _type)
 	else if (_type == E_CAMERA_TYPE::WORLD)
 		camMousePos = worldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();
 }
+bool ViewportPanel::IsMouseInScreen()
+{
+	return (abs(screenMousePos.x) < viewportSize.x / 2 && abs(screenMousePos.y) < viewportSize.y / 2);
+	
+}
+

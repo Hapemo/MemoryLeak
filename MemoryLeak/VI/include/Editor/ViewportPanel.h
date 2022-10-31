@@ -29,12 +29,19 @@ protected:
 	};
 	void SetViewportAspectRatio();
 	void CalculateMousePos(E_CAMERA_TYPE _type);
+	bool IsMouseInScreen();
+	
 	Math::Vec2 viewportSize{};
 	Math::Vec2 viewportPos{};
 	Math::Vec2 screenMousePos{};
 	Math::Vec2 worldMousePos{};
 	Math::Vec2 camMousePos{};
-	//const float zoom = 0.1f;
+
+	Math::Vec2 camOffset{};
+	Math::Vec2 camPos{};
+	Math::Vec2 objectOffset{};
+	static int isSelected;
+	ImTextureID fameBufferImage{};
 private:
 
 };

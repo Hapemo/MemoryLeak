@@ -55,7 +55,7 @@ Prefab::~Prefab() {
 	delete static_cast<Edge2DCollider*>(mComponents[9]);
 	delete static_cast<Point2DCollider*>(mComponents[10]);
 	delete static_cast<PlayerTmp*>(mComponents[11]);
-	delete static_cast<Stuff*>(mComponents[12]);
+	delete static_cast<AI*>(mComponents[12]);
 	delete static_cast<Audio*>(mComponents[13]);
 	delete static_cast<Text*>(mComponents[14]);
 }
@@ -119,7 +119,7 @@ Entity Prefab::CreatePrefabee() {
 			break;
 
 		case 12: // Stuff
-			e.AddComponent<Stuff>(*(static_cast<Stuff*>(component)));
+			e.AddComponent<AI>(*(static_cast<AI*>(component)));
 			break;
 
 		case 13: // Audio
