@@ -65,15 +65,14 @@ FMOD::Sound* AudioManager::LoadAudio(std::filesystem::path const& audio) //Load 
 {
   FMOD::Sound* snd;
   system->createSound(audio.string().c_str(), FMOD_DEFAULT, nullptr, &snd);
-  if (audio.parent_path().string() == "../resources/Audio/SFX") 
+  if (audio.parent_path().string() == "..\\resources\\Audio\\SFX") 
   {
       mSfxSound[audio.stem().string()] = snd;
   
   }
-  else //if () 
+  else  if (audio.parent_path().string() == "..\\resources\\Audio\\BGM")
   {
-      mSfxSound[audio.filename().string()] = snd;
-      mBgmSound[audio.filename().string()] = snd;
+      mBgmSound[audio.stem().string()] = snd;
   }
   return snd;
 }

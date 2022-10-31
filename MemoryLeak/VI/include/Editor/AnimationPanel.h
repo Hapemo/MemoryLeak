@@ -5,8 +5,8 @@
 \par Group: Memory Leak Studios
 \date 20-10-2022
 \brief
-This file contains function declarations for a Dialogue Panel Editor system that modifies
-and view dialogues between a player and npc.
+This file contains function declarations for a AnimationPanel Editor system that modifies
+and Animation 
 *******************************************************************************/
 #pragma once
 #include "Panel.h"
@@ -25,5 +25,5 @@ public:
 
 	
 private:
-	
+	ImTextureID textureImage;
 };

@@ -74,7 +74,7 @@ void Application::init() {
   startup();
 
   SystemInit();
-  audioManager->PlayBGSound("MENUBG.wav", 10);
+  audioManager->PlayBGSound("PIntro", 10);
   
 }
 

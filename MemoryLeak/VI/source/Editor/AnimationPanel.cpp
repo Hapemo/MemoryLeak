@@ -6,8 +6,8 @@
 \par Group: Memory Leak Studios
 \date 20-10-2022
 \brief
-This file contains function definations for a Dialogue Panel Editor system that modifies
-and view dialogues between a player and npc.
+This file contains function definations for a AnimationPanel Editor system that modifies
+and Animation 
 *******************************************************************************/
 #include "AnimationPanel.h"
 #include <ECSManager.h>
@@ -45,14 +45,14 @@ void AnimationPanel::Update()
 			GLuint animation_texture = spriteManager->GetTexture(e);
 			if (animation_texture)
 			{
-				ImTextureID textureImage = (void*)(intptr_t)animation_texture;
-				ImGui::ImageButton(textureImage, ImVec2(300, 300), ImVec2(0, 1), ImVec2(1, 0));
+				textureImage = (void*)(intptr_t)animation_texture;
+				ImGui::ImageButton(textureImage, ImVec2(200, 200), ImVec2(0, 1), ImVec2(1, 0));
 			}
 			if (e.HasComponent<SheetAnimation>())
 			{
 				GLuint animated_texture = spriteManager->GetTexture(e);////// YU JUN get moving animated amimation
-				ImTextureID textureImage = (void*)(intptr_t)animated_texture;
-				ImGui::ImageButton(textureImage, ImVec2(300, 300), ImVec2(0, 1), ImVec2(1, 0));
+				textureImage = (void*)(intptr_t)animated_texture;
+				ImGui::ImageButton(textureImage, ImVec2(200, 200), ImVec2(0, 1), ImVec2(1, 0));
 			}
 		}
 	}

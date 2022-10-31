@@ -549,7 +549,7 @@ void InspectorPanel::AudioEditor()
 {
 	if (ImGui::CollapsingHeader("Audio")) {
 		//ImGui::Text("Audio");
-		ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
+		ImGui::InputText("Addsound", &e.GetComponent<Audio>().sound.path);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 		static const wchar_t* texpath = (const wchar_t*)"";
 		if (ImGui::BeginDragDropTarget())
@@ -585,7 +585,7 @@ void InspectorPanel::TextEditor()
 		ImGui::InputText("Addstrtext", &e.GetComponent<Text>().text);
 		//ImGui::InputText("Addtext", const_cast<char*>(e.GetComponent<Text>().text.c_str()), 50);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
-		ImGui::InputText("Addfont", const_cast<char*>(e.GetComponent<Text>().fontFile.c_str()), 50);
+		ImGui::InputText("Addfont", &e.GetComponent<Text>().fontFile);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
 		tmpVec2[0] = e.GetComponent<Text>().offset.x;

@@ -112,6 +112,7 @@ void AssetPanel::Update()
 					else if (texExt == ".wav")
 					{
 						//audioManager->Play(texfilename);
+						audioManager->PlayBGSound(texfilename, 10);
 					}
 
 				}
