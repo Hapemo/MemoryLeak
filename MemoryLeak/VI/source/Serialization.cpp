@@ -200,6 +200,26 @@ void SerializationManager::LoadScene(std::string _filename)
 
 			e.AddComponent<AI>({ colorChange ,movement, speed , range });
 		}
+		if (entity.HasMember("Text")) {
+			Text text;
+			text.fontFile = entity["Text"]["fontFile"].GetString();
+			text.text = entity["Text"]["text"].GetString();
+			text.offset = GetVec2(entity["Text"]["offset"]);
+			text.scale = entity["Text"]["scale"].GetFloat();
+			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+			e.AddComponent<Text>(text);
+		}
+		if (entity.HasMember("Dialogue")) {
+			Dialogue dialogue;
+			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+			e.AddComponent<Dialogue>(dialogue);
+		}
 		mEntities.insert(e);
 		i++;
 	}
@@ -441,11 +461,34 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("range"), e.GetComponent<AI>().range, allocator);
 			entity.AddMember(StringRef("AI"), tmp, allocator);
 		}
+		if (e.HasComponent<Text>()) {
+			Value tmp(kObjectType);
+			Value tmpc(kObjectType);
+			tmp.AddMember(StringRef("fontFile"), StringRef(e.GetComponent<Text>().fontFile.c_str()), allocator);
+			tmp.AddMember(StringRef("text"), StringRef(e.GetComponent<Text>().text.c_str()), allocator);
+			addVectorMember(scene, tmp, "offset", e.GetComponent<Text>().offset);
+			tmp.AddMember(StringRef("scale"), e.GetComponent<Text>().scale, allocator);
+			tmpc.AddMember(StringRef("r"), e.GetComponent<Text>().color.r, allocator);
+			tmpc.AddMember(StringRef("g"), e.GetComponent<Text>().color.g, allocator);
+			tmpc.AddMember(StringRef("b"), e.GetComponent<Text>().color.b, allocator);
+			tmpc.AddMember(StringRef("a"), e.GetComponent<Text>().color.a, allocator);
+			tmp.AddMember(StringRef("color"), tmpc, allocator);
+			entity.AddMember(StringRef("Text"), tmp, allocator);
+		}
+		if (e.HasComponent<Dialogue>()) {
+			Value tmp(kObjectType);
+			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
+			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
+			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
+			entity.AddMember(StringRef("Dialogue"), tmp, allocator);
+		}
 		std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
 		scene.AddMember(index, entity, allocator);
 		counter++;
-	} 
+	}
+
 
 	scene.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
@@ -667,6 +710,26 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 
 			e.AddComponent<AI>({ colorChange ,movement, speed , range });
 		}
+		if (entity.HasMember("Text")) {
+			Text text;
+			text.fontFile = entity["Text"]["fontFile"].GetString();
+			text.text = entity["Text"]["text"].GetString();
+			text.offset = GetVec2(entity["Text"]["offset"]);
+			text.scale = entity["Text"]["scale"].GetFloat();
+			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+			e.AddComponent<Text>(text);
+		}
+		if (entity.HasMember("Dialogue")) {
+			Dialogue dialogue;
+			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+			e.AddComponent<Dialogue>(dialogue);
+		}
 		entities.insert(e);
 		i++;
 	}
@@ -824,6 +887,26 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			float range = entity["AI"]["range"].GetFloat();
 
 			e.AddComponent<AI>({ colorChange ,movement, speed , range });
+		}
+		if (entity.HasMember("Text")) {
+			Text text;
+			text.fontFile = entity["Text"]["fontFile"].GetString();
+			text.text = entity["Text"]["text"].GetString();
+			text.offset = GetVec2(entity["Text"]["offset"]);
+			text.scale = entity["Text"]["scale"].GetFloat();
+			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+			e.AddComponent<Text>(text);
+		}
+		if (entity.HasMember("Dialogue")) {
+			Dialogue dialogue;
+			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+			e.AddComponent<Dialogue>(dialogue);
 		}
 		sceneData.mEntities.insert(e);
 		i++;
@@ -987,6 +1070,26 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 
 			e.AddComponent<AI>({ colorChange ,movement, speed , range });
 		}
+		if (entity.HasMember("Text")) {
+			Text text;
+			text.fontFile = entity["Text"]["fontFile"].GetString();
+			text.text = entity["Text"]["text"].GetString();
+			text.offset = GetVec2(entity["Text"]["offset"]);
+			text.scale = entity["Text"]["scale"].GetFloat();
+			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+			e.AddComponent<Text>(text);
+		}
+		if (entity.HasMember("Dialogue")) {
+			Dialogue dialogue;
+			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+			e.AddComponent<Dialogue>(dialogue);
+		}
 		gamestateData.mEntities.insert(e);
 		i++;
 	}
@@ -1121,6 +1224,28 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 			tmp.AddMember(StringRef("speed"), e.GetComponent<AI>().speed, allocator);
 			tmp.AddMember(StringRef("range"), e.GetComponent<AI>().range, allocator);
 			entity.AddMember(StringRef("AI"), tmp, allocator);
+		}
+		if (e.HasComponent<Text>()) {
+			Value tmp(kObjectType);
+			Value tmpc(kObjectType);
+			tmp.AddMember(StringRef("fontFile"), StringRef(e.GetComponent<Text>().fontFile.c_str()), allocator);
+			tmp.AddMember(StringRef("text"), StringRef(e.GetComponent<Text>().text.c_str()), allocator);
+			addVectorMember(scene, tmp, "offset", e.GetComponent<Text>().offset);
+			tmp.AddMember(StringRef("scale"), e.GetComponent<Text>().scale, allocator);
+			tmpc.AddMember(StringRef("r"), e.GetComponent<Text>().color.r, allocator);
+			tmpc.AddMember(StringRef("g"), e.GetComponent<Text>().color.g, allocator);
+			tmpc.AddMember(StringRef("b"), e.GetComponent<Text>().color.b, allocator);
+			tmpc.AddMember(StringRef("a"), e.GetComponent<Text>().color.a, allocator);
+			tmp.AddMember(StringRef("color"), tmpc, allocator);
+			entity.AddMember(StringRef("Text"), tmp, allocator);
+		}
+		if (e.HasComponent<Dialogue>()) {
+			Value tmp(kObjectType);
+			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
+			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
+			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
+			entity.AddMember(StringRef("Dialogue"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);

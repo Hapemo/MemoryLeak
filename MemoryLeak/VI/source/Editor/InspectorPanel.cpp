@@ -97,7 +97,7 @@ void InspectorPanel::Update()
 			{
 				AddComponent();
 				std::string add(componentsList[addComponentID]);
-				LOG_INFO(add + "conponent added");
+				LOG_INFO(add + " conponent added");
 			}
 			if (ImGui::BeginPopupContextWindow(0, 1, false))
 			{
@@ -146,7 +146,7 @@ void InspectorPanel::AddComponent()
 	else if (addComponentID == (int)COMPONENTID::AUDIO)
 		e.AddComponent<Audio>({});
 	else if (addComponentID == (int)COMPONENTID::TEXT)
-		e.AddComponent<Text>({ "CaviarDreams.ttf", "HEllO", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
+		e.AddComponent<Text>({ "CaviarDreams", "    ", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
 	else if (addComponentID == (int)COMPONENTID::AI)
 		e.AddComponent<AI>({});
 	else if (addComponentID == (int)COMPONENTID::SCRIPT)
@@ -573,14 +573,13 @@ void InspectorPanel::TextEditor()
 		//ImGui::Text("Text");
 		ImGui::InputText("Addtext", const_cast<char*>(e.GetComponent<Text>().text.c_str()), 30);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
-
+		//char newtex[30] = e.GetComponent<Text>().fontFile.c_str();
 		ImGui::InputText("Addfont", const_cast<char*>(e.GetComponent<Text>().fontFile.c_str()), 30);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
 		tmpVec2[0] = e.GetComponent<Text>().offset.x;
 		tmpVec2[1] = e.GetComponent<Text>().offset.y;
 		ImGui::DragFloat2("Text Pos", tmpVec2);
-		Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
 		e.GetComponent<Text>().offset = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 

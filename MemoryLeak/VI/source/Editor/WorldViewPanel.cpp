@@ -71,26 +71,26 @@ void WorldViewPanel::Update()
 			ScrollMoveCam();
 			
 		}
-	}
-	if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
-		isSelected = 0;
+		if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
+			isSelected = 0;
 
-	//object picking
-	if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
-	{
-		SetSelectedEntity();
-	}
-	
-	if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
-	{
-		e = *selectedEntity;
-		if (SRT == 0)
+		//object picking
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
 		{
-			MoveSelectedEntity();
+			SetSelectedEntity();
 		}
-		else
+	
+		if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
 		{
-			UseGuizmo();
+			e = *selectedEntity;
+			if (SRT == 0)
+			{
+				MoveSelectedEntity();
+			}
+			else
+			{
+				UseGuizmo();
+			}
 		}
 	}
 	
