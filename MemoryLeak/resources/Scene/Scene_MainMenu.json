@@ -1,0 +1,125 @@
+{
+    "Entity0": {
+        "General": {
+            "name": "_NEW_DragDrop1",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1920.0,
+                "Y": 1080.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\menu screen background.jpg",
+            "layer": 0
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity1": {
+        "General": {
+            "name": "_NEW_DragDrop2",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 300.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 290.0614013671875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\bon voyage logo 5.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity2": {
+        "General": {
+            "name": "_NEW_DragDrop4",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3.6811981201171875,
+                "Y": -26.31900978088379
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    }
+}

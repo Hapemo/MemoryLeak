@@ -58,7 +58,7 @@ void AssetPanel::Update()
 				{
 					ImTextureID textureImage = (void*)(intptr_t)my_image2_texture;
 					ImGui::ImageButton(textureImage, buttonSize, ImVec2(0, 1), ImVec2(1, 0));
-					if (texExt == ".png")
+					if (texExt == ".png" || texExt == ".jpg")
 					{
 						if (ImGui::BeginDragDropSource())
 						{
