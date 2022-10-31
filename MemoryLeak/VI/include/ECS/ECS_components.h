@@ -261,9 +261,10 @@ struct Text {
 };
 struct Dialogue
 {
+	int speakerID;
+	int selecetedID;
 	int textID;
 	int nextTextID;
-	int seleceted;
 };
 /*!*****************************************************************************
 \brief
