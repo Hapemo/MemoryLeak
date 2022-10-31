@@ -218,13 +218,14 @@ public:
 // 
 // Important notes
 // Prefab will automatically contain general component.
-// General {"", TAG::OTHERS, SUBTAG::NOSUBTAG, true, this}
+// General {"", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this}
 // The only thing initialised in this component is the prefab pointer,
 // pointing to itself.
 //-------------------------------------------------------------------------
 class Prefab {
 public:
 	Prefab();
+	Prefab(std::string const&);
 	~Prefab();
 
 	// Create new entity with prefab
@@ -248,6 +249,8 @@ public:
 	// Remove component from prefab. Must remove component from all components.
 	template<typename T>
 	void RemoveComponent();
+
+	std::set<Entity> const& GetPrefabees() const { return mPrefabees; }
 
 	std::string& Name() { return mName; }
 

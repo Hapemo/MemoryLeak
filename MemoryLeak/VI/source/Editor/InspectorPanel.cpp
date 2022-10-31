@@ -162,7 +162,7 @@ void InspectorPanel::DeleteEntity()
 	e.Destroy();
 	LOG_INFO("Entity deleated");
 	selectedEntity = nullptr;
-	e = *(static_cast<Entity*>(nullptr));
+	e = Entity{ 0 };
 }
 void InspectorPanel::GeneralEditor()
 {

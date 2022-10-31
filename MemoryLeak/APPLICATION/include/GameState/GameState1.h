@@ -25,5 +25,5 @@ public:
 	virtual void Free();
 	virtual void Unload();
 private:
-	//Prefab pref;
+	Prefab pref;
 };

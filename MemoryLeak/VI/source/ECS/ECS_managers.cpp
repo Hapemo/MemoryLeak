@@ -69,7 +69,13 @@ Prefab::Prefab() : mName(""), mPrefabees(), mComponents() {
 	//ComponentType genType = Coordinator::GetInstance()->GetComponentType<General>();
 	//General* genComponent = static_cast<General*>(mComponents[genType]);
 	//genComponent->prefab = this;
-	General genComponent = { "", TAG::OTHERS, SUBTAG::NOSUBTAG, true, this };
+	General genComponent = { "", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this };
+	AddComponent<General>(genComponent);
+}
+
+Prefab::Prefab(std::string const& _name) : mName(_name), mPrefabees(), mComponents() {
+	for (void* ptr : mComponents) ptr = nullptr;
+	General genComponent = { "", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this };
 	AddComponent<General>(genComponent);
 }
 

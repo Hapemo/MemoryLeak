@@ -35,7 +35,7 @@ std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
 int EditorManager::stackPointer{-1};
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
-
+std::vector <Prefab> EditorManager::mPrefabs{};
 /*!*****************************************************************************
 \brief
 	Initializes the level editor

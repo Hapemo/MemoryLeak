@@ -32,7 +32,8 @@ void AudioManager::Init()
         //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
         exit(-1);
     }
-    LoadSound();
+    mChannel.resize(20);
+    ///LoadSound();
 }
 /*!*****************************************************************************
 \brief
@@ -60,6 +61,29 @@ void AudioManager::Unload()
 \return
 None.
 *******************************************************************************/
+FMOD::Sound* AudioManager::LoadAudio(std::filesystem::path const& audio) //Load a sound needed in the game
+{
+  FMOD::Sound* snd;
+  system->createSound(audio.string().c_str(), FMOD_DEFAULT, nullptr, &snd);
+  if (audio.parent_path().string() == "../resources/Audio/SFX") 
+  {
+      mSfxSound[audio.stem().string()] = snd;
+  
+  }
+  else //if () 
+  {
+      mSfxSound[audio.filename().string()] = snd;
+      mBgmSound[audio.filename().string()] = snd;
+  }
+  return snd;
+}
+/*!*****************************************************************************
+\brief
+    Load all the sounds needed to FMOD
+
+\return
+None.
+*******************************************************************************/
 void AudioManager::LoadSound() //Load all the sound needed in the game
 {
     mChannel.resize(20);
@@ -77,6 +101,7 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
 
     //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
 }
+//////resourceManager->GetResource<FMOD::Sound*>(guid);
 /*!*****************************************************************************
 \brief
     Plays a single sound

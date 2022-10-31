@@ -77,7 +77,7 @@ protected:
 	static int SRT;
 	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
 	static int stackPointer;
-
+	static std::vector < Prefab> mPrefabs;
 
 
 
