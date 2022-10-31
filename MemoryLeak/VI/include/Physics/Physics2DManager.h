@@ -4,9 +4,10 @@
 \par	DP email: l.hsienweijoachim@digipen.edu
 \par	Course: GAM200
 \par	Group: Memory Leak Studios
-\date	22-09-2022
+\date	27-09-2022
 \brief  This file contains the declaration of the Physics System Class and its
 		member functions which handles the dynamics of entities stored in its list
+		as well as the management of forces acting on the entities
 *******************************************************************************/
 #pragma once
 
@@ -16,8 +17,8 @@
 #include "ECS_systems.h"
 
 /*!*****************************************************************************
-\brief Physics system class that handles the updating of object's positions
-	   through the use of forces and fixed dt updates
+\brief Physics system class that handles the updating of object's accumulated 
+	   forces & positions through the use of forces.
 *******************************************************************************/
 class Physics2DManager : public System {
 public:
@@ -28,11 +29,9 @@ public:
 	\brief
 	Update function that simulates physics by stepping it in fixedDT when enough
 	time has passed
-
-	\param const double &
+	\param const float &
 	A reference to a read-only variable that tells us the application's current
 	delta time
-
 	\return void
 	NULL
 	*******************************************************************************/
@@ -41,10 +40,8 @@ public:
 	/*!*****************************************************************************
 	\brief
 	Step function that executes fixed delta time physics stepping
-
 	\param void
 	NULL
-
 	\return void
 	NULL
 	*******************************************************************************/
@@ -55,59 +52,18 @@ public:
 // -----------------------------
 	/*!*****************************************************************************
 	\brief
-	HasPhysicsComponent function that checks if the given entity has a physics
-	component. If yes, the function returns true. Otherwise it returns false.
-
-	\param const Entity &
-	A reference to a read-only Entity to check for
-
-	\return bool
-	Evaluated result of whether the entity has a physics component
-	*******************************************************************************/
-	bool HasPhysicsComponent(const Entity& _e);
-
-	/*!*****************************************************************************
-	\brief
-	AddPhysicsComponent function that adds a physics component to the given entity
-	and initializes the component to the given values. If the component already
-	exists in the entity, the function will set the component's data members to the
-	given values. Finally, it will add the entity to the system's stored list if
-	it does not exists in the list yet.
-
-	\param const Entity &
-	A reference to a read-only Entity to check for
-
-	\param const float &
-	A reference to a read-only value containing the entity's mass
-
-	\param const float &
-	A reference to a read-only value containing the entity's speed
-
-	\param const float &
-	A reference to a read-only value containing the entity's movement direction in the
-	form of radian rotations
-
-	\param const bool &
-	A reference to a read-only value containing the flag value of the render flag
-
+	Ignore for now
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddPhysicsComponent(const Entity& _e,
-							 const bool& _gravityEnabled = false,
-							 const float& _mass = 1.f,
-							 const float& _speed = 0.f,
-							 const float& _moveDirection = 0.f,
-							 const bool& _renderFlag = false);
+	//void AddPhysicsComponent();
 
 	/*!*****************************************************************************
 	\brief
-	RemovePhysicsComponent function that removes the given entity from the system's
-	stored list and remove the physics component from the entity itself
-
+	RemovePhysicsComponent function that removes the physics component from the 
+	entity itself if it exists
 	\param const Entity &
 	A reference to a read-only Entity to remove the physics component from
-
 	\return void
 	NULL
 	*******************************************************************************/
@@ -117,10 +73,8 @@ public:
 	\brief
 	GetPhysicsComponent function that getsand returns the physics component of the
 	given entity
-
 	\param const Entity &
 	A reference to a read-only Entity to get from
-
 	\return Physics2D &
 	A reference to the Physics2D component in the given entity
 	*******************************************************************************/
@@ -131,55 +85,44 @@ public:
 // -----------------------------
 	/*!*****************************************************************************
 	\brief
-	GetGravityEnabled function that returns the stored value of the entity's
-	gravity enabled flag
-
+	GetDynamicsEnabled function that returns the stored value of the entity's
+	dynamics enabled flag
 	\param const Entity &
 	A reference to a read-only Entity to
-
 	\return bool
-	The value of the entity's gravity enabled flag
+	The value of the entity's dynamics enabled flag
 	*******************************************************************************/
-	bool GetGravityEnabled(const Entity& _e);
-
+	bool GetDynamicsEnabled(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
-	SetGravityEnabled function that sets the stored value of the entity's
-	gravity enabled flag to the given value
-
+	SetDynamicsEnabled function that sets the stored value of the entity's
+	dynamics enabled flag to the given value
 	\param const Entity &
 	A reference to a read-only Entity to
-
 	\param const bool &
 	A reference to a read-only value containing value to set
-
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetGravityEnabled(const Entity& _e, const bool& _gravityEnabled);
+	void SetDynamicsEnabled(const Entity& _e, const bool& _dynamicsEnabled);
 
 	/*!*****************************************************************************
 	\brief
 	GetMass function that returns the stored value of the entity's mass
-
 	\param const Entity &
 	A reference to a read-only Entity to get from
-
 	\return float
 	A copy of the value of the entity's mass
 	*******************************************************************************/
 	float GetMass(const Entity& _e);
-
 	/*!*****************************************************************************
 	\brief
-	SetMass function that sets the stored value of the entity's mass to the given value
-
+	SetMass function that sets the stored value of the entity's mass to the given 
+	value. It also updates the stored value of the entity's inverse mass
 	\param const Entity &
 	A reference to a read-only Entity to set
-
 	\param const float &
 	A reference to a read-only value containing the mass to set to
-
 	\return void
 	NULL
 	*******************************************************************************/
@@ -187,175 +130,161 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	GetSpeed function that returns the stored value of the entity's speed
-
+	GetInertia function that returns the stored value of the entity's inertia
 	\param const Entity &
 	A reference to a read-only Entity to get from
-
 	\return float
-	A copy of the value of the entity's speed
+	A copy of the value of the entity's inertia
 	*******************************************************************************/
-	float GetSpeed(const Entity& _e);
-
+	float GetInertia(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
-	SetSpeed function that sets the stored value of the entity's speed to the given
-	value
-
+	SetInertia function that sets the stored value of the entity's inertia to the 
+	given value. It also updates the stored value of the entity's inverse inertia
 	\param const Entity &
 	A reference to a read-only Entity to set
-
 	\param const float &
-	A reference to a read-only value containing the speed to set to
-
+	A reference to a read-only value containing the inertia to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetSpeed(const Entity& _e, const float& _speed);
+	void SetInertia(const Entity& _e, const float& _inertia);
 
 	/*!*****************************************************************************
 	\brief
-	GetMoveDirection function that returns the stored value of the entity's
-	moveDirection in the form of radian rotations
-
+	GetRestitution function that returns the stored value of the entity's restitution
 	\param const Entity &
-	A reference to a read-only Entity to remove the physics component from
-
+	A reference to a read-only Entity to get from
 	\return float
-	A copy of the value of the entity's moveDirection
+	A copy of the value of the entity's restitution
 	*******************************************************************************/
-	float GetMoveDirection(const Entity& _e);
-
+	float GetRestitution(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
-	SetMoveDirection function that sets the stored value of the entity's move direction
+	SetRestitution function that sets the stored value of the entity's restitution
 	to the given value
-
 	\param const Entity &
-	A reference to a read-only Entity to set
-
+	A reference to a read-only Entity to get from
 	\param const float &
-	A reference to a read-only value containing the move direction to set to
-	Value should be in radians
-
+	A reference to a read-only value containing the inverse inertia to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetMoveDirection(const Entity& _e, const float& _moveDirection);
+	void SetRestitution(const Entity& _e, const float& _restitution);
 
 	/*!*****************************************************************************
 	\brief
-	GetForces function that returns the stored value of the entity's net forces
-
+	GetFriction function that returns the stored value of the entity's friction
 	\param const Entity &
-	A reference to a read-only Entity to
-
-	\return Math::Vec2
-	A copy of the value of the entity's net forces
+	A reference to a read-only Entity to get from
+	\return float
+	A copy of the value of the entity's friction
 	*******************************************************************************/
-	Math::Vec2 GetForces(const Entity& _e);
+	float GetFriction(const Entity& _e);
+	/*!*****************************************************************************
+	\brief
+	SetFriction function that sets the stored value of the entity's friction
+	to the given value
+	\param const Entity &
+	A reference to a read-only Entity to get from
+	\param const float &
+	A reference to a read-only value containing the friction to set to
+	\return void
+	NULL
+	*******************************************************************************/
+	void SetFriction(const Entity& _e, const float& _friction);
 
 	/*!*****************************************************************************
 	\brief
-	SetForces function that sets the stored value of the entity's net forces to the
+	GetDamping function that returns the stored value of the entity's damping
+	\param const Entity &
+	A reference to a read-only Entity to get from
+	\return float
+	A copy of the value of the entity's damping
+	*******************************************************************************/
+	float GetDamping(const Entity& _e);
+	/*!*****************************************************************************
+	\brief
+	SetDamping function that sets the stored value of the entity's damping to the 
 	given value
-
 	\param const Entity &
-	A reference to a read-only Entity to set
-
-	\param const Math::Vec2 &
-	A reference to a read-only value containing net force to set to
-
+	A reference to a read-only Entity to get from
+	\param const float &
+	A reference to a read-only value containing the damping to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void SetForces(const Entity& _e, const Math::Vec2& _forces);
+	void SetDamping(const Entity& _e, const float& _damping);
+
+	//float GetSpeed(const Entity& _e);
+	//void SetSpeed(const Entity& _e, const float& _speed);
+
+	//float GetMoveDirection(const Entity& _e);
+	//void SetMoveDirection(const Entity& _e, const float& _moveDirection);
 
 	/*!*****************************************************************************
 	\brief
-	AddForces function that adds the given force value to the stored value of the
-	entity's forces to become the updated net forces
-
+	GetAccumulatedForce function that returns the stored value of the entity's 
+	final force
 	\param const Entity &
-	A reference to a read-only Entity to set
-
-	\param const Math::Vec2 &
-	A reference to a read-only value containing force to add
-
-	\return void
-	NULL
+	A reference to a read-only Entity to get from
+	\return Math::Vec2
+	A copy of the value of the entity's final force
 	*******************************************************************************/
-	void AddForces(const Entity& _e, const Math::Vec2& _forces);
-
+	Math::Vec2 GetAccumulatedForce(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
-	AddGravityForce function that adds the gravity force value to the stored value of the
-	entity's forces to become the updated net forces
-
+	SetAccumulatedForce function that sets the stored value of the entity's 
+	accumulated force to the given value
 	\param const Entity &
-	A reference to a read-only Entity to set
-
+	A reference to a read-only Entity to get from
+	\param const Math::Vec2 &
+	A reference to a read-only value containing the force to set to
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddGravityForce(const Entity& _e);
+	void SetAccumulatedForce(const Entity& _e, const Math::Vec2& _accumulatedForce);
 
 	/*!*****************************************************************************
 	\brief
 	GetVelocity function that returns the stored value of the entity's velocity
-
 	\param const Entity &
-	A reference to a read-only Entity to
-
+	A reference to a read-only Entity to get from
 	\return Math::Vec2
 	A copy of the value of the entity's velocity
 	*******************************************************************************/
 	Math::Vec2 GetVelocity(const Entity& _e);
-
 	/*!*****************************************************************************
 	\brief
-	SetVelocity function that sets the stored value of the entity's velocity to the
-	given value
-
+	SetVelocity function that sets the stored value of the entity's velocity
+	to the given value
 	\param const Entity &
-	A reference to a read-only Entity to set
-
+	A reference to a read-only Entity to get from
 	\param const Math::Vec2 &
-	A reference to a read-only value containing velocity to set to
-
+	A reference to a read-only value containing the friction to set to
 	\return void
 	NULL
 	*******************************************************************************/
 	void SetVelocity(const Entity& _e, const Math::Vec2& _velocity);
-
 	/*!*****************************************************************************
 	\brief
-	AddVelocity function that adds the given velocity to the stored value of the
-	entity's velocity
-
+	AddVelocity function that adds a given vector containing a velocity vector to add
+	to he stored value of the entity's velocity
 	\param const Entity &
-	A reference to a read-only Entity to set
-
+	A reference to a read-only Entity to get from
 	\param const Math::Vec2 &
-	A reference to a read-only value containing velocity to add
-
+	A reference to a read-only value containing the velocity vector to add
 	\return void
 	NULL
 	*******************************************************************************/
 	void AddVelocity(const Entity& _e, const Math::Vec2& _velocity);
-
 	/*!*****************************************************************************
 	\brief
-	ScaleVelocity function that scales the stored value of the entity's velocity by
-	the given scalar value
-
+	ScaleVelocity function that scales the entity's velocity by the given scalar
 	\param const Entity &
-	A reference to a read-only Entity to set
-
+	A reference to a read-only Entity to get from
 	\param const float &
-	A reference to a read-only value containing the scalar to scale the stored
-	velocity by
-
+	A reference to a read-only value containing the scalar value
 	\return void
 	NULL
 	*******************************************************************************/
@@ -363,33 +292,184 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	GetAcceleration function that returns the stored value of the entity's acceleration
+	\param const Entity &
+	A reference to a read-only Entity to get from
+	\return Math::Vec2
+	A copy of the value of the entity's acceleration
+	*******************************************************************************/
+	Math::Vec2 GetAcceleration(const Entity& _e);
+	/*!*****************************************************************************
+	\brief
+	SetAcceleration function that sets the stored value of the entity's velocity
+	to the given value
+	\param const Entity &
+	A reference to a read-only Entity to get from
+	\param const Math::Vec2 &
+	A reference to a read-only value containing the friction to set to
+	\return void
+	NULL
+	*******************************************************************************/
+	void SetAcceleration(const Entity& _e, const Math::Vec2& _acceleration);
+
+	/*!*****************************************************************************
+	\brief
+	GetAngularVelocity function that returns the stored value of the entity's angular
+	velocity
+	\param const Entity &
+	A reference to a read-only Entity to get from
+	\return float
+	A copy of the value of the entity's angular velocity
+	*******************************************************************************/
+	float GetAngularVelocity(const Entity& _e);
+	void SetAngularVelocity(const Entity& _e, const float& _angVel);
+
+	/*!*****************************************************************************
+	\brief
+	GetAngularTorque function that returns the stored value of the entity's angular
+	acceleration
+	\param const Entity &
+	A reference to a read-only Entity to get from
+	\return Math::Vec2
+	A copy of the value of the entity's angular acceleration
+	*******************************************************************************/
+	float GetAngularTorque(const Entity& _e);
+	void SetAngularTorque(const Entity& _e, const float& _angTorque);
+
+	/*!*****************************************************************************
+	\brief
 	GetPhysicsRenderFlag function that returns the stored value of the entity's
 	physics render flag
-
 	\param const Entity &
 	A reference to a read-only Entity to
-
 	\return bool
 	The value of the entity's physics render flag
 	*******************************************************************************/
 	bool GetPhysicsRenderFlag(const Entity& _e);
-
 	/*!*****************************************************************************
 	\brief
 	SetPhysicsRenderFlag function that sets the stored value of the entity's
 	physics render flag to the given value
-
 	\param const Entity &
 	A reference to a read-only Entity to
-
 	\param const bool &
 	A reference to a read-only value containing value to set
-
 	\return void
 	NULL
 	*******************************************************************************/
 	void SetPhysicsRenderFlag(const Entity& _e, const bool& _renderFlag);
+
+	/*!*****************************************************************************
+	\brief
+	UpdateEntitiesAccumulatedForce function that updates the entity's final acting
+	force based on the list of forces acting on the entity at frame time. It also
+	deactivates and removes forces that have aged/expired
+	\param const Entity &
+	A reference to a read-only Entity to
+	\return void
+	NULL
+	*******************************************************************************/
+	void UpdateEntitiesAccumulatedForce(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	AddLinearForce function that adds a linear force to an entity's list of forces
+	to act on it
+	\param const Entity &
+	A reference to a read-only Entity to
+	\param const Math::Vec2 &
+	A reference to a read-only variable containing the direction of the force
+	\param const float &
+	A reference to a read-only variable containing the magnitude of the force
+	\param const float & 
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const float &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	\return void
+	NULL
+	*******************************************************************************/
+	void AddLinearForce(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude, 
+						const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	/*!*****************************************************************************
+	\brief
+	AddRotationForce function that adds a rotation force to an entity's list of forces
+	to act on it
+	\param const Entity &
+	A reference to a read-only Entity to
+	\param const float &
+	A reference to a read-only variable containing the torque
+	\param const float &
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const float &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	\return void
+	NULL
+	*******************************************************************************/
+	void AddRotationForce(const Entity& _e, const float& _torque, 
+						  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	/*!*****************************************************************************
+	\brief
+	AddDragForce function that adds a drag/resistance force to an entity's list of forces
+	to act on it
+	\param const Entity &
+	A reference to a read-only Entity to
+	\param const float &
+	A reference to a read-only variable containing the directional drag force. It has
+	a default value of 1
+	\param const float &
+	A reference to a read-only variable containing the rotational drag force. It has
+	a default value of 1
+	\param const float &
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const float &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	\return void
+	NULL
+	*******************************************************************************/
+	void AddDragForce(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f, 
+					  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+
+	/*!*****************************************************************************
+	\brief
+	ApplyImpulse function that adds a velocity impulse to the entity
+	\param const Entity &
+	A reference to a read-only Entity to
+	\param const Math::Vec2 &
+	A reference to a read-only variable containing the velocity impulse
+	\param const Math::Vec2 &
+	A reference to a read-only variable containing the contact position for rotation
+	calculation
+	\return void
+	NULL
+	*******************************************************************************/
+	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _contact);
 private:
-	double mAccumulatedDT{ 0.0 };	// Member variable storing accumulatedDT
+	// -----------------------------
+	// Constant values
+	// -----------------------------
+	double mAccumulatedDT{ 0.0 };					// Member variable storing accumulatedDT
+	const double fixedDT{ 1.0 / 60.0 };				// Fixed delta time step of 1/60 steps a second
+	const double accumulatedDTCap{ 1.0 };			// Accumulated cannot store more than 1 second worth of updates
+	const float  velocityCap{ 1000.f };				// Global velocity cap
+	bool StepMode;									// Flag variable containing whether physics update is in step mode
+	bool AdvanceStep;								// Flag variable containing whether physics should step when its in step mode
 };
 

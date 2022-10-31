@@ -18,9 +18,9 @@ Entities and its Components.
 class Panel : public EditorManager
 {
 public:
-	void Init() {};
-	void Update() {};
-	void Free() {};
+	virtual void Init() = 0;
+	virtual void Update() = 0;
+	virtual void Free() = 0;
 	bool isActive() { return active; }
 	void setIsActive(bool _active) { active = _active; }
 protected:

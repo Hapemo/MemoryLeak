@@ -135,17 +135,27 @@ void SerializationManager::LoadScene(std::string _filename)
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("Physics2D"))
-		{
+		if (entity.HasMember("nPhysics2D")) {
+
+			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
-			float	speed = entity["Physics2D"]["speed"].GetFloat();
-			float	moveDirection = entity["Physics2D"]["moveDirection"].GetFloat();
-			bool gravityEnabled = false;
-			if(entity["Physics2D"].HasMember("gravityEnabled"))
-				gravityEnabled = entity["Physics2D"]["gravityEnabled"].GetBool();
+			float inertia = entity["Physics2D"]["inertia"].GetFloat();
+			float restitution = entity["Physics2D"]["restitution"].GetFloat();
+			float friction = entity["Physics2D"]["friction"].GetFloat();
+			float damping = entity["Physics2D"]["damping"].GetFloat();
+
+			Math::Vec2 accumulatedForce = GetVec2(entity["Physics2D"]["accumulatedForce"]);
+			Math::Vec2 velocity = GetVec2(entity["Physics2D"]["velocity"]);
+			Math::Vec2 acceleration = GetVec2(entity["Physics2D"]["acceleration"]);
+
+			float angularVelocity = entity["Physics2D"]["angularVelocity"].GetFloat();
+			float angularTorque = entity["Physics2D"]["angularTorque"].GetFloat();
+
+			//vect force
+
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ gravityEnabled, mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
 		}
 		if (entity.HasMember("RectCollider"))
 		{
@@ -198,7 +208,27 @@ void SerializationManager::LoadScene(std::string _filename)
 			float speed = entity["AI"]["speed"].GetFloat();
 			float range = entity["AI"]["range"].GetFloat();
 
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
+			e.AddComponent<AI>({ colorChange ,movement, speed , range });
+		}
+		if (entity.HasMember("Text")) {
+			Text text;
+			text.fontFile = entity["Text"]["fontFile"].GetString();
+			text.text = entity["Text"]["text"].GetString();
+			text.offset = GetVec2(entity["Text"]["offset"]);
+			text.scale = entity["Text"]["scale"].GetFloat();
+			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+			e.AddComponent<Text>(text);
+		}
+		if (entity.HasMember("Dialogue")) {
+			Dialogue dialogue;
+			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+			e.AddComponent<Dialogue>(dialogue);
 		}
 		mEntities.insert(e);
 		i++;
@@ -374,15 +404,22 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("timeToFrameSwap"), e.GetComponent<SheetAnimation>().timeToFrameSwap, allocator);
 			entity.AddMember(StringRef("SheetAnimation"), tmp, allocator);
 		}
-		if (e.HasComponent<Physics2D>())
-		{
+		if (e.HasComponent<Physics2D>()) {
 			Value tmp(kObjectType);
+			tmp.AddMember(StringRef("dynamicsEnabled"), e.GetComponent<Physics2D>().dynamicsEnabled, allocator);
 			tmp.AddMember(StringRef("mass"), e.GetComponent<Physics2D>().mass, allocator);
-			tmp.AddMember(StringRef("speed"), e.GetComponent<Physics2D>().speed, allocator);
-			tmp.AddMember(StringRef("moveDirection"), e.GetComponent<Physics2D>().moveDirection, allocator);
-			addVectorMember(scene, tmp, "forces",  e.GetComponent<Physics2D>().forces);
+			tmp.AddMember(StringRef("inertia"), e.GetComponent<Physics2D>().inertia, allocator);
+			tmp.AddMember(StringRef("restitution"), e.GetComponent<Physics2D>().restitution, allocator);
+			tmp.AddMember(StringRef("friction"), e.GetComponent<Physics2D>().friction, allocator);
+			tmp.AddMember(StringRef("damping"), e.GetComponent<Physics2D>().damping, allocator);
+
+			addVectorMember(scene, tmp, "accumulatedForce", e.GetComponent<Physics2D>().accumulatedForce);
 			addVectorMember(scene, tmp, "velocity", e.GetComponent<Physics2D>().velocity);
-			tmp.AddMember(StringRef("gravityEnabled"), e.GetComponent<Physics2D>().gravityEnabled, allocator);
+			addVectorMember(scene, tmp, "acceleration", e.GetComponent<Physics2D>().acceleration);
+
+			tmp.AddMember(StringRef("angularVelocity"), e.GetComponent<Physics2D>().angularVelocity, allocator);
+			tmp.AddMember(StringRef("angularTorque"), e.GetComponent<Physics2D>().angularTorque, allocator);
+
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Physics2D>().renderFlag, allocator);
 			entity.AddMember(StringRef("Physics2D"), tmp, allocator);
 		}
@@ -432,20 +469,43 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("isSpacial"), e.GetComponent<Audio>().isSpacial, allocator);
 			entity.AddMember(StringRef("Audio"), tmp, allocator);
 		}
-		if (e.HasComponent<Stuff>())
+		if (e.HasComponent<AI>())
 		{
 			Value tmp(kObjectType);
-			tmp.AddMember(StringRef("colorChange"), e.GetComponent<Stuff>().colorChange, allocator);
-			tmp.AddMember(StringRef("movement"), e.GetComponent<Stuff>().movement, allocator);
-			tmp.AddMember(StringRef("speed"), e.GetComponent<Stuff>().speed, allocator);
-			tmp.AddMember(StringRef("range"), e.GetComponent<Stuff>().range, allocator);
+			tmp.AddMember(StringRef("colorChange"), e.GetComponent<AI>().colorChange, allocator);
+			tmp.AddMember(StringRef("movement"), e.GetComponent<AI>().movement, allocator);
+			tmp.AddMember(StringRef("speed"), e.GetComponent<AI>().speed, allocator);
+			tmp.AddMember(StringRef("range"), e.GetComponent<AI>().range, allocator);
 			entity.AddMember(StringRef("AI"), tmp, allocator);
+		}
+		if (e.HasComponent<Text>()) {
+			Value tmp(kObjectType);
+			Value tmpc(kObjectType);
+			tmp.AddMember(StringRef("fontFile"), StringRef(e.GetComponent<Text>().fontFile.c_str()), allocator);
+			tmp.AddMember(StringRef("text"), StringRef(e.GetComponent<Text>().text.c_str()), allocator);
+			addVectorMember(scene, tmp, "offset", e.GetComponent<Text>().offset);
+			tmp.AddMember(StringRef("scale"), e.GetComponent<Text>().scale, allocator);
+			tmpc.AddMember(StringRef("r"), e.GetComponent<Text>().color.r, allocator);
+			tmpc.AddMember(StringRef("g"), e.GetComponent<Text>().color.g, allocator);
+			tmpc.AddMember(StringRef("b"), e.GetComponent<Text>().color.b, allocator);
+			tmpc.AddMember(StringRef("a"), e.GetComponent<Text>().color.a, allocator);
+			tmp.AddMember(StringRef("color"), tmpc, allocator);
+			entity.AddMember(StringRef("Text"), tmp, allocator);
+		}
+		if (e.HasComponent<Dialogue>()) {
+			Value tmp(kObjectType);
+			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
+			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
+			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
+			entity.AddMember(StringRef("Dialogue"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
 		scene.AddMember(index, entity, allocator);
 		counter++;
-	} 
+	}
+
 
 	scene.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
@@ -609,16 +669,27 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("Physics2D")) {
+		if (entity.HasMember("nPhysics2D")) {
+			
+			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
-			float	speed = entity["Physics2D"]["speed"].GetFloat();
-			float	moveDirection = entity["Physics2D"]["moveDirection"].GetFloat();
-			bool gravityEnabled = false;
-			if (entity["Physics2D"].HasMember("gravityEnabled"))
-				gravityEnabled = entity["Physics2D"]["gravityEnabled"].GetBool();
+			float inertia = entity["Physics2D"]["inertia"].GetFloat();
+			float restitution = entity["Physics2D"]["restitution"].GetFloat();
+			float friction = entity["Physics2D"]["friction"].GetFloat();
+			float damping = entity["Physics2D"]["damping"].GetFloat();
+
+			Math::Vec2 accumulatedForce = GetVec2(entity["Physics2D"]["accumulatedForce"]);
+			Math::Vec2 velocity = GetVec2(entity["Physics2D"]["velocity"]);
+			Math::Vec2 acceleration = GetVec2(entity["Physics2D"]["acceleration"]);
+
+			float angularVelocity = entity["Physics2D"]["angularVelocity"].GetFloat();
+			float angularTorque = entity["Physics2D"]["angularTorque"].GetFloat();
+
+			//vect force
+
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ gravityEnabled, mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
 		}
 		if (entity.HasMember("RectCollider")) {
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
@@ -665,7 +736,27 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 			float speed = entity["AI"]["speed"].GetFloat();
 			float range = entity["AI"]["range"].GetFloat();
 
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
+			e.AddComponent<AI>({ colorChange ,movement, speed , range });
+		}
+		if (entity.HasMember("Text")) {
+			Text text;
+			text.fontFile = entity["Text"]["fontFile"].GetString();
+			text.text = entity["Text"]["text"].GetString();
+			text.offset = GetVec2(entity["Text"]["offset"]);
+			text.scale = entity["Text"]["scale"].GetFloat();
+			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+			e.AddComponent<Text>(text);
+		}
+		if (entity.HasMember("Dialogue")) {
+			Dialogue dialogue;
+			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+			e.AddComponent<Dialogue>(dialogue);
 		}
 		entities.insert(e);
 		i++;
@@ -767,16 +858,27 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("Physics2D")) {
+		if (entity.HasMember("nPhysics2D")) {
+
+			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
-			float	speed = entity["Physics2D"]["speed"].GetFloat();
-			float	moveDirection = entity["Physics2D"]["moveDirection"].GetFloat();
-			bool gravityEnabled = false;
-			if (entity["Physics2D"].HasMember("gravityEnabled"))
-				gravityEnabled = entity["Physics2D"]["gravityEnabled"].GetBool();
+			float inertia = entity["Physics2D"]["inertia"].GetFloat();
+			float restitution = entity["Physics2D"]["restitution"].GetFloat();
+			float friction = entity["Physics2D"]["friction"].GetFloat();
+			float damping = entity["Physics2D"]["damping"].GetFloat();
+
+			Math::Vec2 accumulatedForce = GetVec2(entity["Physics2D"]["accumulatedForce"]);
+			Math::Vec2 velocity = GetVec2(entity["Physics2D"]["velocity"]);
+			Math::Vec2 acceleration = GetVec2(entity["Physics2D"]["acceleration"]);
+
+			float angularVelocity = entity["Physics2D"]["angularVelocity"].GetFloat();
+			float angularTorque = entity["Physics2D"]["angularTorque"].GetFloat();
+
+			//vect force
+
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ gravityEnabled, mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
 		}
 		if (entity.HasMember("RectCollider")) {
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
@@ -823,7 +925,27 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			float speed = entity["AI"]["speed"].GetFloat();
 			float range = entity["AI"]["range"].GetFloat();
 
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
+			e.AddComponent<AI>({ colorChange ,movement, speed , range });
+		}
+		if (entity.HasMember("Text")) {
+			Text text;
+			text.fontFile = entity["Text"]["fontFile"].GetString();
+			text.text = entity["Text"]["text"].GetString();
+			text.offset = GetVec2(entity["Text"]["offset"]);
+			text.scale = entity["Text"]["scale"].GetFloat();
+			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+			e.AddComponent<Text>(text);
+		}
+		if (entity.HasMember("Dialogue")) {
+			Dialogue dialogue;
+			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+			e.AddComponent<Dialogue>(dialogue);
 		}
 		sceneData.mEntities.insert(e);
 		i++;
@@ -911,10 +1033,10 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 		}
 		if (entity.HasMember("Animation")) {
 			std::vector<GLuint> images;
-			Value a(kObjectType);
-			a = entity["Animation"]["images"].GetArray();
-			for (int j = 0; j < (int)a.Size(); ++j) {
-				GLuint tex = spriteManager->GetTextureID(a[j].GetString());
+			Value ar(kObjectType);
+			ar = entity["Animation"]["images"].GetArray();
+			for (int j = 0; j < (int)ar.Size(); ++j) {
+				GLuint tex = spriteManager->GetTextureID(ar[j].GetString());
 				images.push_back(tex);
 			}
 			float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
@@ -929,16 +1051,27 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("Physics2D")) {
+		if (entity.HasMember("nPhysics2D")) {
+
+			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
-			float	speed = entity["Physics2D"]["speed"].GetFloat();
-			float	moveDirection = entity["Physics2D"]["moveDirection"].GetFloat();
-			bool gravityEnabled = false;
-			if (entity["Physics2D"].HasMember("gravityEnabled"))
-				gravityEnabled = entity["Physics2D"]["gravityEnabled"].GetBool();
+			float inertia = entity["Physics2D"]["inertia"].GetFloat();
+			float restitution = entity["Physics2D"]["restitution"].GetFloat();
+			float friction = entity["Physics2D"]["friction"].GetFloat();
+			float damping = entity["Physics2D"]["damping"].GetFloat();
+
+			Math::Vec2 accumulatedForce = GetVec2(entity["Physics2D"]["accumulatedForce"]);
+			Math::Vec2 velocity = GetVec2(entity["Physics2D"]["velocity"]);
+			Math::Vec2 acceleration = GetVec2(entity["Physics2D"]["acceleration"]);
+
+			float angularVelocity = entity["Physics2D"]["angularVelocity"].GetFloat();
+			float angularTorque = entity["Physics2D"]["angularTorque"].GetFloat();
+
+			//vect force
+
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ gravityEnabled, mass, speed, moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
 		}
 		if (entity.HasMember("RectCollider")) {
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
@@ -985,7 +1118,27 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 			float speed = entity["AI"]["speed"].GetFloat();
 			float range = entity["AI"]["range"].GetFloat();
 
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
+			e.AddComponent<AI>({ colorChange ,movement, speed , range });
+		}
+		if (entity.HasMember("Text")) {
+			Text text;
+			text.fontFile = entity["Text"]["fontFile"].GetString();
+			text.text = entity["Text"]["text"].GetString();
+			text.offset = GetVec2(entity["Text"]["offset"]);
+			text.scale = entity["Text"]["scale"].GetFloat();
+			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+			e.AddComponent<Text>(text);
+		}
+		if (entity.HasMember("Dialogue")) {
+			Dialogue dialogue;
+			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+			e.AddComponent<Dialogue>(dialogue);
 		}
 		gamestateData.mEntities.insert(e);
 		i++;
@@ -1064,12 +1217,20 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 		}
 		if (e.HasComponent<Physics2D>()) {
 			Value tmp(kObjectType);
+			tmp.AddMember(StringRef("dynamicsEnabled"), e.GetComponent<Physics2D>().dynamicsEnabled, allocator);
 			tmp.AddMember(StringRef("mass"), e.GetComponent<Physics2D>().mass, allocator);
-			tmp.AddMember(StringRef("speed"), e.GetComponent<Physics2D>().speed, allocator);
-			tmp.AddMember(StringRef("moveDirection"), e.GetComponent<Physics2D>().moveDirection, allocator);
-			addVectorMember(scene, tmp, "forces", e.GetComponent<Physics2D>().forces);
+			tmp.AddMember(StringRef("inertia"), e.GetComponent<Physics2D>().inertia, allocator);
+			tmp.AddMember(StringRef("restitution"), e.GetComponent<Physics2D>().restitution, allocator);
+			tmp.AddMember(StringRef("friction"), e.GetComponent<Physics2D>().friction, allocator);
+			tmp.AddMember(StringRef("damping"), e.GetComponent<Physics2D>().damping, allocator);
+
+			addVectorMember(scene, tmp, "accumulatedForce", e.GetComponent<Physics2D>().accumulatedForce);
 			addVectorMember(scene, tmp, "velocity", e.GetComponent<Physics2D>().velocity);
-			tmp.AddMember(StringRef("gravityEnabled"), e.GetComponent<Physics2D>().gravityEnabled, allocator);
+			addVectorMember(scene, tmp, "acceleration", e.GetComponent<Physics2D>().acceleration);
+
+			tmp.AddMember(StringRef("angularVelocity"), e.GetComponent<Physics2D>().angularVelocity, allocator);
+			tmp.AddMember(StringRef("angularTorque"), e.GetComponent<Physics2D>().angularTorque, allocator);
+
 			tmp.AddMember(StringRef("renderFlag"), e.GetComponent<Physics2D>().renderFlag, allocator);
 			entity.AddMember(StringRef("Physics2D"), tmp, allocator);
 		}
@@ -1114,13 +1275,35 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 			tmp.AddMember(StringRef("isSpacial"), e.GetComponent<Audio>().isSpacial, allocator);
 			entity.AddMember(StringRef("Audio"), tmp, allocator);
 		}
-		if (e.HasComponent<Stuff>()) {
+		if (e.HasComponent<AI>()) {
 			Value tmp(kObjectType);
-			tmp.AddMember(StringRef("colorChange"), e.GetComponent<Stuff>().colorChange, allocator);
-			tmp.AddMember(StringRef("movement"), e.GetComponent<Stuff>().movement, allocator);
-			tmp.AddMember(StringRef("speed"), e.GetComponent<Stuff>().speed, allocator);
-			tmp.AddMember(StringRef("range"), e.GetComponent<Stuff>().range, allocator);
+			tmp.AddMember(StringRef("colorChange"), e.GetComponent<AI>().colorChange, allocator);
+			tmp.AddMember(StringRef("movement"), e.GetComponent<AI>().movement, allocator);
+			tmp.AddMember(StringRef("speed"), e.GetComponent<AI>().speed, allocator);
+			tmp.AddMember(StringRef("range"), e.GetComponent<AI>().range, allocator);
 			entity.AddMember(StringRef("AI"), tmp, allocator);
+		}
+		if (e.HasComponent<Text>()) {
+			Value tmp(kObjectType);
+			Value tmpc(kObjectType);
+			tmp.AddMember(StringRef("fontFile"), StringRef(e.GetComponent<Text>().fontFile.c_str()), allocator);
+			tmp.AddMember(StringRef("text"), StringRef(e.GetComponent<Text>().text.c_str()), allocator);
+			addVectorMember(scene, tmp, "offset", e.GetComponent<Text>().offset);
+			tmp.AddMember(StringRef("scale"), e.GetComponent<Text>().scale, allocator);
+			tmpc.AddMember(StringRef("r"), e.GetComponent<Text>().color.r, allocator);
+			tmpc.AddMember(StringRef("g"), e.GetComponent<Text>().color.g, allocator);
+			tmpc.AddMember(StringRef("b"), e.GetComponent<Text>().color.b, allocator);
+			tmpc.AddMember(StringRef("a"), e.GetComponent<Text>().color.a, allocator);
+			tmp.AddMember(StringRef("color"), tmpc, allocator);
+			entity.AddMember(StringRef("Text"), tmp, allocator);
+		}
+		if (e.HasComponent<Dialogue>()) {
+			Value tmp(kObjectType);
+			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
+			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
+			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
+			entity.AddMember(StringRef("Dialogue"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);

@@ -20,6 +20,7 @@ operates on Entities with Sprite and Transform Components.
 #include "Graphics/FBO.h"
 #include "FontManager.h"
 #include "Camera.h"
+#include <stdarg.h>
 
 enum class RENDER_STATE { WORLD, GAME };
 
@@ -137,6 +138,7 @@ public:
 
 	void SetClearColor(const Color& _clr);
 
+	void CreateLightingTriangle(const Math::Vec2& p0, const Math::Vec2& p1, const Math::Vec2& p2);
 private:
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam;
@@ -220,6 +222,7 @@ private:
 	*******************************************************************************/
 	void BatchRenderTextures(int& _texCount, std::vector<int>& _texUnits);
 
+
 	/*!*****************************************************************************
 	\brief
 	Creates a square or texture based on Transform and Sprite Component.
@@ -265,7 +268,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugPoint(const Transform& _t, const Color& _c);
+	void CreateDebugPoint(const Transform& _t);
 
 	/*!*****************************************************************************
 	\brief

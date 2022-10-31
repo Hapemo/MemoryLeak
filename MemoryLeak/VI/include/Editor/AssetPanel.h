@@ -24,5 +24,7 @@ public:
 
 	
 private:
-	
+	std::string texPath;
+	std::string texExt;
+	std::string texfilename;
 };

@@ -11,15 +11,7 @@ Game state for testing physics
 #include "Application.h"
 
 void GameState3::Load() {
-    LOAD_TEXTURES("Background");
-    LOAD_TEXTURES("Icons");
-    LOAD_TEXTURES("Menu");
-    LOAD_TEXTURES("Sprites");
-    LOAD_TEXTURES("Spritesheets");
     Application::SetEditorMode(true);
-   
-    for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
-        spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 
 	serializationManager->LoadScene("SceneJUX");
 }
@@ -27,7 +19,8 @@ void GameState3::Load() {
 void GameState3::Init() {
     //levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
     renderManager->RenderToFrameBuffer();
-    editorManager->UnpauseEditor(); // for this game state showing editor only
+    Application::SetEditorMode(true);
+    //editorManager->UnpauseEditor(); // for this game state showing editor only
 }
 
 void GameState3::Update() {

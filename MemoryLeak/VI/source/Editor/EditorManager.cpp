@@ -13,32 +13,29 @@ Entities and its Components.
 #include <ECSManager.h>
 //#include <Logger.h>
 #include <Panel.h>
-#include <DebugPanel.h>
-#include <DialoguePanel.h>
-#include <AssetPanel.h>
 #include <HierarchyPanel.h>
 #include <InspectorPanel.h>
 #include <WorldViewPanel.h>
 #include <GameViewPanel.h>
+#include <DialoguePanel.h>
+#include <DebugPanel.h>
+#include <AssetPanel.h>
+#include <MenuPanel.h>
 
-HierarchyPanel hierarchyPanel{};
-InspectorPanel inspectorPanel{};
-WorldViewPanel worldViewPanel{};
-GameViewPanel gameViewPanel{};
-DialoguePanel dialoguePanel{};
-AssetPanel assetPanel{};
-DebugPanel debugPanel{};
+
+std::vector<Panel*> EditorManager::panels{};
+
 
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
 const Entity* EditorManager::selectedEntity = nullptr;
  Entity selEntity{};
-bool EditorManager::isPaused=false;
 int EditorManager::SRT{};
-std::vector<std::pair<Entity* const, COMPONENT>> EditorManager::undoStack{};
-int EditorManager::stackPointer{};
+std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
+int EditorManager::stackPointer{-1};
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
+
 /*!*****************************************************************************
 \brief
 	Initializes the level editor
@@ -62,24 +59,45 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
 	//weatherAIinit();
-	
+	static HierarchyPanel hierarchyPanel{};
+	static InspectorPanel inspectorPanel{};
+	static WorldViewPanel worldViewPanel{};
+	static GameViewPanel gameViewPanel{};
+	static DialoguePanel dialoguePanel{};
+	static AssetPanel assetPanel{};
+	static DebugPanel debugPanel{};
+	static MenuPanel menuPanel{};
+	panels.push_back(&hierarchyPanel);
+	panels.push_back(&inspectorPanel);
+	panels.push_back(&worldViewPanel);
+	panels.push_back(&gameViewPanel);
+	panels.push_back(&dialoguePanel);
+	panels.push_back(&assetPanel);
+	panels.push_back(&debugPanel);
+	panels.push_back(&menuPanel);
+
 	Init();
 }
 void EditorManager::Init()
 {
 	isScenePaused = true;
-
 	selectedEntity = nullptr;
-	isPaused = true;
 	SRT = 0;
 	stackPointer = 0;
-	hierarchyPanel.Init();
+
+	for (size_t p = 0; p < panels.size(); p++)
+	{
+		panels[p]->Init();
+		std::cout << p << "    init\n";
+	}
+	/*hierarchyPanel.Init();
 	inspectorPanel.Init();
 	worldViewPanel.Init();
 	gameViewPanel.Init();
 	dialoguePanel.Init();
 	assetPanel.Init();
 	debugPanel.Init();
+	menuPanel.Init();*/
 }
 
 /*!*****************************************************************************
@@ -107,113 +125,18 @@ void EditorManager::Update()
 {
 	Window();
 	//weatherAIupdate();
-	//ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
-	//ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_AutoSelectNewTabs | ImGuiTabBarFlags_Reorderable;
-	//static bool showdebug = true;
-	static char filenameS_Scene[30] = "";
-	static char filenameO_Scene[30] = "";
-	static char filenameS_Dialog[30] = "";
-	static char filenameO_Dialog[30] = "";
-	if (ImGui::BeginMainMenuBar())
+	for (size_t p = 0; p < panels.size(); p++)
 	{
-		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::Z))//relocate
-		{
-			Undo();
-		}
-		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::Y))//relocate
-		{
-			Redo();
-		}
-		if (ImGui::BeginMenu("File"))
-		{
-			ImGui::MenuItem("(menu)", NULL, false, false);
-			ImGui::MenuItem("Open Scene File", NULL, false, false);
-			ImGui::InputText(".json (os)", filenameO_Scene, 30);
-			if (ImGui::MenuItem("Open Scene", "Ctrl+O")) 
-			{
-				serializationManager->LoadScene(filenameO_Scene);
-			}
-			ImGui::Separator();
-			ImGui::MenuItem("Open Scene File", NULL, false, false);
-			ImGui::InputText(".json (ss)", filenameS_Scene, 30);
-			if (ImGui::MenuItem("Save Scene As", "Ctrl+S"))
-			{
-				serializationManager->SaveScene(filenameS_Scene);
-			}
-			ImGui::Separator();
-			if (ImGui::MenuItem("Clear Scene"))
-			{
-				ECS::DestroyAllEntities();
-				selectedEntity = nullptr;
-			}
-			ImGui::Separator();
-			ImGui::MenuItem("Open Dialogue File", NULL, false, false);
-			ImGui::InputText(".json (od)", filenameO_Dialog, 20);
-			if (ImGui::MenuItem("Open Dialog", "Ctrl+D")) 
-			{
-				serializationManager->LoadDialogs(filenameO_Dialog);
-				ShowDialogue(true);
-			}
-			ImGui::Separator();
-			ImGui::MenuItem("Save Dialogue File As", NULL, false, false);
-			ImGui::InputText(".json (sd)", filenameS_Dialog, 20);
-			if (ImGui::MenuItem("Save Dialog As", "Ctrl+F"))
-			{
-				serializationManager->SaveDialogs(filenameS_Dialog);
-			}
-			ImGui::Separator();
-			if (ImGui::MenuItem("Print Dialogs"))
-			{
-				dialogManager->PrintDialogs();
-			}
-			ImGui::EndMenu();
-		}
-		if (ImGui::BeginMenu("Edit"))
-		{
-			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
-			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
-			ImGui::Separator();
-			if (ImGui::MenuItem("Undo", "CTRL+Z"))
-			{ 
-				Undo();
-			}
-			if (ImGui::MenuItem("Redo", "CTRL+Y")) 
-			{ 
-				Redo();
-			}
-			ImGui::EndMenu();
-			
-		}
-		if (ImGui::BeginMenu("Options"))
-		{
-			if (!debugPanel.isActive() && ImGui::MenuItem("Show Debug Info"))
-			{
-				debugPanel.setIsActive(true);
-			}
-			if (debugPanel.isActive() && ImGui::MenuItem("Hide Debug Info"))
-			{
-				debugPanel.setIsActive(false);
-			}
-			ImGui::EndMenu();
-		}
-		ImGui::EndMainMenuBar();
+			panels[p]->Update();
 	}
-	
-	//SceneManager();
-	//EntityManager();
-	//AssetManager();
-	//ViewPortManager();
-	//if (showdebug)
-		//ShowDebugInfo();
-	//DialogEditor();
-	hierarchyPanel.Update();
+	/*hierarchyPanel.Update();
 	inspectorPanel.Update();
 	worldViewPanel.Update();
 	gameViewPanel.Update();
 	dialoguePanel.Update();
 	assetPanel.Update();
 	debugPanel.Update();
+	menuPanel.Update();*/
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -228,13 +151,260 @@ void EditorManager::Update()
 }
 /*!*****************************************************************************
 \brief
+	free
+
+\return
+None.
+*******************************************************************************/
+void EditorManager::Free()
+{
+	isScenePaused = false;
+	for (size_t p = 0; p < panels.size(); p++)
+	{
+		panels[p]->Free();
+	}
+	/*hierarchyPanel.Free();
+	inspectorPanel.Free();
+	worldViewPanel.Free();
+	gameViewPanel.Free();
+	dialoguePanel.Free();
+	assetPanel.Free();
+	debugPanel.Free();
+	menuPanel.Free();*/
+}
+/*!*****************************************************************************
+\brief
+	Shuts down Imgui, release all resources
+
+\return
+None.
+*******************************************************************************/
+void EditorManager::Unload()
+{
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
+}
+
+void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
+{
+	static int lastID = -1;
+	if (ImGui::IsItemActivated())
+	{
+		if (_id == COMPONENTID::GENERAL)
+			_old = e.GetComponent<General>();
+		else if (_id == COMPONENTID::LIFESPAN)
+			_old = e.GetComponent<Lifespan>();
+		else if (_id == COMPONENTID::TRANSFORM)
+			_old = e.GetComponent<Transform>();
+		else if (_id == COMPONENTID::SPRITE)
+			_old = e.GetComponent<Sprite>();
+		else if (_id == COMPONENTID::ANIMATION)
+			_old = e.GetComponent<Animation>();
+		else if (_id == COMPONENTID::SHEETANIMATION)
+			_old = e.GetComponent<SheetAnimation>();
+		else if (_id == COMPONENTID::PHYSICS2D)
+			_old = e.GetComponent<Physics2D>();
+		else if (_id == COMPONENTID::RECTCOLLIDER)
+			_old = e.GetComponent<RectCollider>();
+		else if (_id == COMPONENTID::CIRCLECOLLIDER)
+			_old = e.GetComponent<CircleCollider>();
+		else if (_id == COMPONENTID::EDGE2DCOLLIDER)
+			_old = e.GetComponent<Edge2DCollider>();
+		else if (_id == COMPONENTID::POINT2DCOLLIDER)
+			_old = e.GetComponent<Point2DCollider>();
+		else if (_id == COMPONENTID::AUDIO)
+			_old = e.GetComponent<Audio>();
+		else if (_id == COMPONENTID::TEXT)
+			_old = e.GetComponent<Text>();
+		else if (_id == COMPONENTID::AI)
+			_old = e.GetComponent<AI>();
+		else if (_id == COMPONENTID::SCRIPT)
+			_old = e.GetComponent<Script>();
+		else if (_id == COMPONENTID::DIALOGUE)
+			_old = e.GetComponent<Dialogue>();
+		else if (_id == COMPONENTID::PLAYERTMP)
+			_old = e.GetComponent<PlayerTmp>();
+	}
+	if (ImGui::IsItemDeactivatedAfterEdit())
+	{
+		//undoStack.erase(undoStack.begin() + stackPointer-1);
+		if (lastID != (int)_id)
+		{
+			undoStack.push_back(std::make_pair(e, _old));
+			stackPointer = (int)undoStack.size();
+		}
+		COMPONENT _new;
+		if (_id == COMPONENTID::GENERAL)
+			_new = e.GetComponent<General>();
+		else if (_id == COMPONENTID::LIFESPAN)
+			_new = e.GetComponent<Lifespan>();
+		else if (_id == COMPONENTID::TRANSFORM)
+			_new = e.GetComponent<Transform>();
+		else if (_id == COMPONENTID::SPRITE)
+			_new = e.GetComponent<Sprite>();
+		else if (_id == COMPONENTID::ANIMATION)
+			_new = e.GetComponent<Animation>();
+		else if (_id == COMPONENTID::SHEETANIMATION)
+			_new = e.GetComponent<SheetAnimation>();
+		else if (_id == COMPONENTID::PHYSICS2D)
+			_new = e.GetComponent<Physics2D>();
+		else if (_id == COMPONENTID::RECTCOLLIDER)
+			_new = e.GetComponent<RectCollider>();
+		else if (_id == COMPONENTID::CIRCLECOLLIDER)
+			_new = e.GetComponent<CircleCollider>();
+		else if (_id == COMPONENTID::EDGE2DCOLLIDER)
+			_new = e.GetComponent<Edge2DCollider>();
+		else if (_id == COMPONENTID::POINT2DCOLLIDER)
+			_new = e.GetComponent<Point2DCollider>();
+		else if (_id == COMPONENTID::AUDIO)
+			_new = e.GetComponent<Audio>();
+		else if (_id == COMPONENTID::TEXT)
+			_new = e.GetComponent<Text>();
+		else if (_id == COMPONENTID::AI)
+			_new = e.GetComponent<AI>();
+		else if (_id == COMPONENTID::SCRIPT)
+			_new = e.GetComponent<Script>();
+		else if (_id == COMPONENTID::DIALOGUE)
+			_new = e.GetComponent<Dialogue>();
+		else if (_id == COMPONENTID::PLAYERTMP)
+			_new = e.GetComponent<PlayerTmp>();
+
+		undoStack.push_back(std::make_pair(e, _new));
+		stackPointer = (int)undoStack.size();
+		lastID = (int)_id;
+	}
+}
+
+void EditorManager::Do()
+{
+	if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
+		(undoStack[stackPointer].first).GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::LIFESPAN)
+		(undoStack[stackPointer].first).GetComponent<Lifespan>() = std::get<Lifespan>(undoStack[stackPointer].second);
+	if (undoStack[stackPointer].second.index() == (int)COMPONENTID::TRANSFORM)
+		(undoStack[stackPointer].first).GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::SPRITE)
+		(undoStack[stackPointer].first).GetComponent<Sprite>() = std::get<Sprite>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::ANIMATION)
+		(undoStack[stackPointer].first).GetComponent<Animation>() = std::get<Animation>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::SHEETANIMATION)
+		(undoStack[stackPointer].first).GetComponent<SheetAnimation>() = std::get<SheetAnimation>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PHYSICS2D)
+		(undoStack[stackPointer].first).GetComponent<Physics2D>() = std::get<Physics2D>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::RECTCOLLIDER)
+		(undoStack[stackPointer].first).GetComponent<RectCollider>() = std::get<RectCollider>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
+		(undoStack[stackPointer].first).GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::EDGE2DCOLLIDER)
+		(undoStack[stackPointer].first).GetComponent<Edge2DCollider>() = std::get<Edge2DCollider>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::POINT2DCOLLIDER)
+		(undoStack[stackPointer].first).GetComponent<Point2DCollider>() = std::get<Point2DCollider>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::AUDIO)
+		(undoStack[stackPointer].first).GetComponent<Audio>() = std::get<Audio>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::TEXT)
+		(undoStack[stackPointer].first).GetComponent<Text>() = std::get<Text>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::AI)
+		(undoStack[stackPointer].first).GetComponent<AI>() = std::get<AI>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::SCRIPT)
+		(undoStack[stackPointer].first).GetComponent<Script>() = std::get<Script>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::DIALOGUE)
+		(undoStack[stackPointer].first).GetComponent<Dialogue>() = std::get<Dialogue>(undoStack[stackPointer].second);
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PLAYERTMP)
+		(undoStack[stackPointer].first).GetComponent<PlayerTmp>() = std::get<PlayerTmp>(undoStack[stackPointer].second);
+}
+void EditorManager::Undo()
+{
+	if(stackPointer == (int)undoStack.size())
+		stackPointer--;
+	stackPointer--;
+	if (stackPointer >= 0)
+	{
+		Do();
+	}
+	else
+	{
+		LOG_ERROR("FK LA NO MORE UNDOO");
+		stackPointer = 0;
+	}
+}
+void EditorManager::Redo()
+{
+	stackPointer++;
+	if (stackPointer < (int)undoStack.size())
+	{
+		Do();
+	}
+	else
+	{
+		LOG_ERROR("NO MORE REDOO");
+		stackPointer = (int)undoStack.size();
+	}
+}
+bool EditorManager::GetPannelIsActive(E_PANELID _panel)
+{
+	if ((int)_panel < panels.size())
+		return panels[(int)_panel]->isActive();
+	return false;
+	/*if (_panel == E_PANELID::DIALOGUE)
+	{
+		return dialoguePanel.isActive();
+	}
+	else if (_panel == E_PANELID::DEBUG)
+	{
+		return debugPanel.isActive();
+	}*/
+}
+void EditorManager::SetPannelIsActive(E_PANELID _panel, bool _isActive)
+{
+	if((int)_panel < panels.size())
+		panels[(int)_panel]->setIsActive(_isActive);
+	/*if (_panel == E_PANELID::DIALOGUE)
+	{
+		dialoguePanel.setIsActive(_isActive);
+	}
+	else if (_panel == E_PANELID::DEBUG)
+	{
+		debugPanel.setIsActive(_isActive);
+	}*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*!*****************************************************************************
+\brief
 	Debig logger pannel
 
 \return
 None.
 *******************************************************************************/
-void EditorManager::ShowDebugInfo()
-{
+//void EditorManager::ShowDebugInfo()
+//{
 	/*std::vector<std::pair<Logger::E_LOGLEVEL, std::string>> loggerStr = Logger::GetInstance()->GetLoggerStr();
 	ImGui::Begin("Debug Logger");
 	ImGui::BeginTabBar("DebugLogger ");
@@ -298,7 +468,7 @@ void EditorManager::ShowDebugInfo()
 	ImGui::Text("   ");
 	ImGui::EndTabBar();
 	ImGui::End();*/
-}
+//}
 /*!*****************************************************************************
 \brief
 	Scene manager pannel
@@ -306,8 +476,8 @@ void EditorManager::ShowDebugInfo()
 \return
 None.
 *******************************************************************************/
-void  EditorManager::SceneManager()
-{
+//void  EditorManager::SceneManager()
+//{
 	//static int n = 0;
 	//ImGui::Begin("Scene Manager");
 	//ImGui::BeginTabBar("Edit Scene ");
@@ -481,7 +651,7 @@ void  EditorManager::SceneManager()
 	//}
 	//ImGui::EndTabBar();
 	//ImGui::End();
-}
+//}
 /*!*****************************************************************************
 \brief
 	Entity Manager pannel
@@ -489,8 +659,8 @@ void  EditorManager::SceneManager()
 \return
 None.
 *******************************************************************************/
-void EditorManager::EntityManager()
-{
+//void EditorManager::EntityManager()
+//{
 	//float tmpVec2[2];
 	//float tmpFloat;
 	//float tmpVec4[4];
@@ -895,7 +1065,7 @@ void EditorManager::EntityManager()
 	//}
 	//ImGui::EndTabBar();
 	//ImGui::End();
-}
+//}
 /*!*****************************************************************************
 \brief
 	Asset manager pannel
@@ -903,8 +1073,8 @@ void EditorManager::EntityManager()
 \return
 None.
 *******************************************************************************/
-void  EditorManager::AssetManager()
-{
+//void  EditorManager::AssetManager()
+//{
 	//GLuint my_image_texture = spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
 	//GLuint my_image2_texture = 0;
 	//std::string rootPath = "..\\resources";
@@ -980,7 +1150,7 @@ void  EditorManager::AssetManager()
 	//}
 	//ImGui::EndTabBar();
 	//ImGui::End();
-}
+//}
 /*!*****************************************************************************
 \brief
 	Viewport manager pannel
@@ -988,15 +1158,15 @@ void  EditorManager::AssetManager()
 \return
 None.
 *******************************************************************************/
-void EditorManager::ViewPortManager()
-{
+//void EditorManager::ViewPortManager()
+//{
 	//ImGui::Begin("View Port Manager");
-	WorldViewPort();
-	CameraViewPort();
+	//WorldViewPort();
+	//CameraViewPort();
 	//ImGui::End();
-}
-void  EditorManager::WorldViewPort()
-{
+//}
+//void  EditorManager::WorldViewPort()
+//{
 	//ImGuiWindowFlags window_flags = 0;
 	//window_flags |= ImGuiWindowFlags_NoBackground;
 	////bool open_ptr = true;
@@ -1250,9 +1420,9 @@ void  EditorManager::WorldViewPort()
 	//	ImGui::EndDragDropTarget();
 	//}
 	//ImGui::End();
-}
-void  EditorManager::CameraViewPort()
-{
+//}
+///void  EditorManager::CameraViewPort()
+//{
 	//ImGui::Begin("Camera View");
 	//Math::Vec2 viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y };
 	//viewportSize.y -= 70;
@@ -1346,28 +1516,25 @@ void  EditorManager::CameraViewPort()
 	//ImTextureID fameBufferImage = (void*)(intptr_t)frameBuffer;
 	//ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 	//ImGui::End();
-}
-std::string& BreakString(std::string& _str, int _offset)
-{
-	/*int offset = 0;
-	while (_str.size() > _offset)
-	{
-		if (_str[_offset] == ' ')
-		{
-			_str.replace(_offset, 1, "\n");
-			_offset += 50;
-		}
-		else
-		{
-			offset = (int)_str.find("\n", _offset);
-			_offset += offset;
-		}
-	}
-	return _str;*/
-
-	std::string str;
-	return str;
-}
+//}
+//std::string& BreakString(std::string& _str, int _offset)
+//{
+//	int offset = 0;
+//	while (_str.size() > _offset)
+//	{
+//		if (_str[_offset] == ' ')
+//		{
+//			_str.replace(_offset, 1, "\n");
+//			_offset += 50;
+//		}
+//		else
+//		{
+//			offset = (int)_str.find("\n", _offset);
+//			_offset += offset;
+//		}
+//	}
+//	return _str;
+//}
 /*!*****************************************************************************
 \brief
 	Editor for game dialogs with options
@@ -1375,8 +1542,8 @@ std::string& BreakString(std::string& _str, int _offset)
 \return
 None.
 *******************************************************************************/
-void EditorManager::DialogEditor()
-{
+//void EditorManager::DialogEditor()
+//{
 	//GLuint player_texture = spriteManager->GetTextureID("Textures\\Sprites\\mc.png");
 	//ImTextureID playerIcon = (void*)(intptr_t)player_texture;
 	//GLuint passenger_texture = spriteManager->GetTextureID("Textures\\Sprites\\girl.png");
@@ -1513,97 +1680,5 @@ void EditorManager::DialogEditor()
 	//}
 
 	//ImGui::End();
-}
-/*!*****************************************************************************
-\brief
-	free
+//}
 
-\return
-None.
-*******************************************************************************/
-void EditorManager::Free()
-{
-	isScenePaused = false;
-	hierarchyPanel.Free();
-	inspectorPanel.Free();
-	worldViewPanel.Free();
-	gameViewPanel.Free();
-	dialoguePanel.Free();
-	assetPanel.Free();
-	debugPanel.Free();
-}
-/*!*****************************************************************************
-\brief
-	Shuts down Imgui, release all resources
-
-\return
-None.
-*******************************************************************************/
-void EditorManager::Unload()
-{
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplGlfw_Shutdown();
-	ImGui::DestroyContext();
-
-}
-
-void EditorManager::SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id)
-{
-	if (ImGui::IsItemActivated())
-	{
-		if (id == COMPONENTID::GENERAL)
-			old = e->GetComponent<General>();
-		else if(id == COMPONENTID::TRANSFORM)
-			old = e->GetComponent<Transform>();
-		else if (id == COMPONENTID::CIRCLECOLLIDER)
-			old = e->GetComponent<CircleCollider>();
-	}
-	if (ImGui::IsItemDeactivatedAfterEdit())
-	{
-		//undoStack.erase(undoStack.begin() + stackPointer-1);
-		undoStack.push_back(std::make_pair(e, old));
-		stackPointer = (int)undoStack.size();
-	}
-}
-void EditorManager::Undo()
-{
-	stackPointer--;
-	if (stackPointer >= 0)
-	{
-		//std::is_same<, Transform>::value_type);
-		if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
-			(undoStack[stackPointer].first)->GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
-		if (undoStack[stackPointer].second.index()==(int)COMPONENTID::TRANSFORM)
-			(undoStack[stackPointer].first)->GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
-		else if(undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
-			(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
-	}
-	else
-	{
-		LOG_ERROR("FK LA NO MORE UNDOO");
-		stackPointer = 0;
-	}
-}
-void EditorManager::Redo()
-{
-	stackPointer++;
-	if (stackPointer <(int)undoStack.size())
-	{
-		if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
-			(undoStack[stackPointer].first)->GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
-		else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::TRANSFORM)
-			(undoStack[stackPointer].first)->GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
-		else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
-			(undoStack[stackPointer].first)->GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
-
-	}
-	else
-	{
-		LOG_ERROR("NO MORE REDOO");
-		stackPointer = (int)undoStack.size();
-	}
-}
-void EditorManager::ShowDialogue(bool _active)
-{
-	dialoguePanel.setIsActive(_active);
-}

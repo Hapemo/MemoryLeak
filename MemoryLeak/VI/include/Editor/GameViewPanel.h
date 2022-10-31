@@ -23,6 +23,8 @@ public:
 
 	
 private:
-	
+	void ArrowKeyMoveCam();
+	void MouseClickMoveCam();
+	void ScrollMoveCam();
 
 };

@@ -29,7 +29,7 @@ also handles the assertion.
 #define ASSERT(_condition, ...) Logger::GetInstance()->LogAssert(_condition, std::source_location::current(), __VA_ARGS__)
 #define THROW(_type, ...) Logger::GetInstance()->LogThrow((size_t)_type, std::source_location::current(), __VA_ARGS__)
 
-#define BREAKPOINT(_condition) if (_condition) __debugbreak();
+#define BREAKPOINT(_condition) if (_condition) { EndRun(); __debugbreak(); }
 #define MAX_LOG_HISTORY 500
 
 /**
@@ -181,7 +181,6 @@ public:
         std::string data = filename + ":" + line + "\n";
         switch (_type) {
         case (size_t)E_EXCEPTION::RUNTIME_ERR:
-            __debugbreak();
             throw std::runtime_error(data + _args);
             break;
         case (size_t)E_EXCEPTION::RANGE_ERR:
@@ -208,12 +207,17 @@ public:
     *******************************************************************************/
     void CreateTempFile(std::fstream& _logfile, std::string _logFilename);
     
-
     /*!*****************************************************************************
     \brief
     Delete the temporary log file.
     *******************************************************************************/
     void DeleteTempFile(std::fstream& _logfile, std::string _logFilename);
+
+    /*!*****************************************************************************
+    \brief
+    End the current run for the logger.
+    *******************************************************************************/
+    void EndRun();
 
     /*!*****************************************************************************
     \brief

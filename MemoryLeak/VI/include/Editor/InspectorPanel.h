@@ -24,5 +24,31 @@ public:
 
 	
 private:
-	
+	void GeneralEditor();
+	void LifespanEditor();
+	void TransformEditor();
+	void SpriteEditor();
+	void AnimationEditor();
+	void SheetAnimationEditor();
+	void Physics2DEditor();
+	void RectColliderEditor();
+	void CircleColliderEditor();
+	void Edge2DColliderEditor();
+	void Point2DColliderEditor();
+	void AudioEditor();
+	void TextEditor();
+	void AIEditor();
+	void PlayerTmpEditor();
+	void AddComponent();
+	void DeleteEntity();
+
+	Entity e;
+	float tmpFloat;
+	float tmpVec2[2];
+	float tmpVec4[4];
+	COMPONENT tempComponent{};
+
+	int addComponentID{};
+	const char* componentsList[17]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
+				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "PlayerTmp" };
 };

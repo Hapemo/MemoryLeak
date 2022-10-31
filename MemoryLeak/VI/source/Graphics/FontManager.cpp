@@ -52,9 +52,9 @@ void FontRenderer::Init(const std::string& _fontfile)
         // now store character for later use
         Character character = {
             texture,
-            Math::Vec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
-            Math::Vec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-            face->glyph->advance.x
+            Math::Vec2((float)face->glyph->bitmap.width, (float)face->glyph->bitmap.rows),
+            Math::Vec2((float)face->glyph->bitmap_left, (float)face->glyph->bitmap_top),
+            (unsigned int)face->glyph->advance.x
         };
         glyphs.insert(std::pair<char, Character>(c, character));
     }
@@ -74,9 +74,9 @@ void FontRenderer::Init(const std::string& _fontfile)
     glBindVertexArray(0);
 
 
-    glm::mat4 projection = glm::ortho(0.0f, 1600.f, 0.0f, 900.f);
+    glm::mat4 _projection = glm::ortho(0.0f, 1600.f, 0.0f, 900.f);
     mFontProgram.Bind();
-    glUniformMatrix4fv(glGetUniformLocation(mFontProgram.GetID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    glUniformMatrix4fv(glGetUniformLocation(mFontProgram.GetID(), "projection"), 1, GL_FALSE, glm::value_ptr(_projection));
     mFontProgram.Unbind();
  }
 
