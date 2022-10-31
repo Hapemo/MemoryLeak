@@ -75,12 +75,15 @@ protected:
 	static int* mWindowHeight;
 	static std::set<Entity>* myEntities;
 	static const Entity* selectedEntity;
+	static Prefab* selectedPrefab;
+	static const void* selected;
+	static int selectedType;
 	static Entity selEntity;
 	static int SRT;
 	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
 	static int stackPointer;
 	static int highestLayer;
-	static std::vector < Prefab> mPrefabs;
+	static std::vector <Prefab*> mPrefabs;
 
 
 

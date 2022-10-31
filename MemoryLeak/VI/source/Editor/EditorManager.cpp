@@ -30,6 +30,9 @@ std::vector<Panel*> EditorManager::panels{};
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
 const Entity* EditorManager::selectedEntity = nullptr;
+Prefab* EditorManager::selectedPrefab = nullptr;
+const void* EditorManager::selected = nullptr;
+int EditorManager::selectedType=0;
  Entity selEntity{};
 int EditorManager::SRT{};
 std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
@@ -37,7 +40,7 @@ int EditorManager::stackPointer{-1};
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
-std::vector <Prefab> EditorManager::mPrefabs{};
+std::vector <Prefab*> EditorManager::mPrefabs{};
 /*!*****************************************************************************
 \brief
 	Initializes the level editor

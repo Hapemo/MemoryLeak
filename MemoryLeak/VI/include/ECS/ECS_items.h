@@ -250,6 +250,13 @@ public:
 	template<typename T>
 	void RemoveComponent();
 
+	template<typename T>
+	bool HasComponent() const;
+
+	template<typename T>
+	T& GetComponent() const;
+
+
 	std::set<Entity> const& GetPrefabees() const { return mPrefabees; }
 
 	std::string& Name() { return mName; }

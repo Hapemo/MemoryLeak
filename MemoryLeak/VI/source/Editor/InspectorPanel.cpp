@@ -108,6 +108,107 @@ void InspectorPanel::Update()
 				ImGui::EndPopup();
 			}
 		}
+		else if (selectedPrefab != nullptr)
+		{
+			Prefab* p = selectedPrefab;
+
+			if (p->HasComponent<General>())
+			{
+				ImGui::InputText("Prefab Name", &p->Name());
+				if (ImGui::CollapsingHeader("General") || true) {
+					ImGui::Text("General");
+
+					ImGui::Checkbox("isActive", &p->GetComponent<General>().isActive); //isactive
+					//
+
+					ImGui::InputText("Name", &p->GetComponent<General>().name);
+					
+
+					/*int tagID = (int)p.GetComponent<General>().tag;
+					static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
+					ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
+					p.GetComponent<General>().tag = (TAG)tagID;
+					
+
+					int subtagID = (int)p.GetComponent<General>().subtag;
+					static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+					ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
+					p.GetComponent<General>().subtag = (SUBTAG)subtagID;*/
+					
+				}
+			}
+			//if (p.HasComponent<Lifespan>())
+			//{
+			//	//LifespanEditor();
+			//}
+			//if (p.HasComponent<Transform>())
+			//{
+			//	//TransformEditor();
+			//}
+			/*if (p.HasComponent<Sprite>())
+			{
+				SpriteEditor();
+			}
+			if (p.HasComponent<Animation>())
+			{
+				AnimationEditor();
+			}
+			if (p.HasComponent<SheetAnimation>())
+			{
+				SheetAnimationEditor();
+			}
+			if (p.HasComponent<Physics2D>())
+			{
+				Physics2DEditor();
+			}
+			if (p.HasComponent<RectCollider>())
+			{
+				RectColliderEditor();
+			}
+			if (p.HasComponent<CircleCollider>())
+			{
+				CircleColliderEditor();
+			}
+			if (p.HasComponent<Edge2DCollider>())
+			{
+				Edge2DColliderEditor();
+			}
+			if (p.HasComponent<Point2DCollider>())
+			{
+				Point2DColliderEditor();
+			}
+			if (p.HasComponent<Audio>())
+			{
+				AudioEditor();
+			}
+			if (p.HasComponent<Text>())
+			{
+				TextEditor();
+			}
+			if (p.HasComponent<AI>())
+			{
+				AIEditor();
+			}
+			if (p.HasComponent<PlayerTmp>())
+			{
+				PlayerTmpEditor();
+			}*/
+
+
+			ImGui::Combo("Select Prefab Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
+			if (ImGui::Button("Add Component to prefab"))
+			{
+				if (addComponentID == (int)COMPONENTID::GENERAL)
+					p->AddComponent<General>({ "_new_", (TAG)0, (SUBTAG)0, true });
+				else if (addComponentID == (int)COMPONENTID::LIFESPAN)
+					p->AddComponent<Lifespan>({ 0,1000 });
+				else if (addComponentID == (int)COMPONENTID::TRANSFORM)
+					p->AddComponent<Transform>({ {100,100}, 0, {0,0} });
+				
+				std::string add(componentsList[addComponentID]);
+				LOG_INFO(add + " conponent added to prefab");
+			}
+		}
 		ImGui::EndTabItem();
 
 	}

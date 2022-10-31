@@ -446,5 +446,19 @@ void Prefab::RemoveComponent() {
 	delete mComponents[pos];
 	mComponents[pos] = nullptr;
 }
+template<typename T>
+bool Prefab::HasComponent() const {
+	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
+	if (mComponents[pos]==nullptr)
+		return false;
+	else
+		return true;
+	
+}
+template<typename T>
+T& Prefab::GetComponent() const { 
+	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
 
+	return *(static_cast<T*>(mComponents[pos]));
+}
 

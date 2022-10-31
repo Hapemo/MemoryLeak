@@ -76,9 +76,7 @@ void AssetPanel::Update()
 					{
 						if (ImGui::BeginDragDropSource())
 						{
-							std::string audiofilename = directory.path().filename().string();
-							std::cout << audiofilename << "        AUDIOOOOOOOOOOOOOO\n";
-							const wchar_t* itemPath = (wchar_t*)audiofilename.c_str();
+							const wchar_t* itemPath = (wchar_t*)texfilename.c_str();
 							ImGui::SetDragDropPayload("AUDIO", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
 							ImGui::EndDragDropSource();
 						}
@@ -112,7 +110,8 @@ void AssetPanel::Update()
 					else if (texExt == ".wav")
 					{
 						//audioManager->Play(texfilename);
-						audioManager->PlayBGSound(texfilename, 10);
+						std::cout << "play " << texfilename << "\n";
+						audioManager->PlayBGSound(texfilename, 11);
 					}
 
 				}

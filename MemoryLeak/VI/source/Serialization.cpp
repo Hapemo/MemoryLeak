@@ -956,7 +956,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("Physics2D")) {
+		if (entity.HasMember("nnnPhysics2D")) {
 
 			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
@@ -1178,7 +1178,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("Physics2D")) {
+		if (entity.HasMember("nnnnnPhysics2D")) {
 
 			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
