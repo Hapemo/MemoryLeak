@@ -11,21 +11,6 @@ Game state for testing physics
 #include "Application.h"
 #include "Input.h"
 
-void LoadGameStateFile() { // This should be called in ResourceManager
-  // File format shall be a json file. First line is a list of GUID
-  // Second line and there after shall be entity data
-
-  // Read in saved data 
-  // Store all scene GUID in a member container in GameState
-  // Load in all entity data into ECS
-}
-
-void LoadSceneFiles() {
-  // Loop through all scene GUID in GameState
-  // Load each scene file (This should be done in resource manager)
-  // Add pointer to those scenes to current GameState
-}
-
 void GameStateJazz::Load() {
   //ResourceManager::GetInstance()->LoadAllResources();
 

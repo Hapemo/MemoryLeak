@@ -16,6 +16,11 @@ How to make a gamestate?
 4. In GameStateManager's Init(), make a new line "GS_list.insert(GS_pair(<GS>, 
 	 new <GameState>));" where <GS> is your game state's enum and <GameState> is 
 	 your game state class
+
+Important Notes about mEntities!
+Entities loaded in by mEntities will be stored in mEntities and automatically be 
+unloaded, but entities loaded in manually cannot be unloaded automatically. You
+MUST keep track of which entities they are and unload them manually
 *******************************************************************************/
 #pragma once
 
@@ -76,6 +81,7 @@ public:
 protected:
 	void LoadWithGUID(ResourceManager::GUID const&);
 	void UnloadWithGUID();
+	void CreateScene();
 
 	std::vector<Scene*> mScenes;
 	std::set<Entity> mEntities;

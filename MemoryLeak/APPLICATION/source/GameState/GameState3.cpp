@@ -27,7 +27,8 @@ void GameState3::Load() {
 void GameState3::Init() {
     //levelEditor->LevelEditor::Init(ptr_window, &window_width, &window_height);
     renderManager->RenderToFrameBuffer();
-    editorManager->UnpauseEditor(); // for this game state showing editor only
+    Application::SetEditorMode(true);
+    //editorManager->UnpauseEditor(); // for this game state showing editor only
 }
 
 void GameState3::Update() {

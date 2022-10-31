@@ -198,7 +198,7 @@ void SerializationManager::LoadScene(std::string _filename)
 			float speed = entity["AI"]["speed"].GetFloat();
 			float range = entity["AI"]["range"].GetFloat();
 
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
+			e.AddComponent<AI>({ colorChange ,movement, speed , range });
 		}
 		mEntities.insert(e);
 		i++;
@@ -432,13 +432,13 @@ void SerializationManager::SaveScene(std::string _filename)
 			tmp.AddMember(StringRef("isSpacial"), e.GetComponent<Audio>().isSpacial, allocator);
 			entity.AddMember(StringRef("Audio"), tmp, allocator);
 		}
-		if (e.HasComponent<Stuff>())
+		if (e.HasComponent<AI>())
 		{
 			Value tmp(kObjectType);
-			tmp.AddMember(StringRef("colorChange"), e.GetComponent<Stuff>().colorChange, allocator);
-			tmp.AddMember(StringRef("movement"), e.GetComponent<Stuff>().movement, allocator);
-			tmp.AddMember(StringRef("speed"), e.GetComponent<Stuff>().speed, allocator);
-			tmp.AddMember(StringRef("range"), e.GetComponent<Stuff>().range, allocator);
+			tmp.AddMember(StringRef("colorChange"), e.GetComponent<AI>().colorChange, allocator);
+			tmp.AddMember(StringRef("movement"), e.GetComponent<AI>().movement, allocator);
+			tmp.AddMember(StringRef("speed"), e.GetComponent<AI>().speed, allocator);
+			tmp.AddMember(StringRef("range"), e.GetComponent<AI>().range, allocator);
 			entity.AddMember(StringRef("AI"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));
@@ -665,7 +665,7 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 			float speed = entity["AI"]["speed"].GetFloat();
 			float range = entity["AI"]["range"].GetFloat();
 
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
+			e.AddComponent<AI>({ colorChange ,movement, speed , range });
 		}
 		entities.insert(e);
 		i++;
@@ -823,7 +823,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			float speed = entity["AI"]["speed"].GetFloat();
 			float range = entity["AI"]["range"].GetFloat();
 
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
+			e.AddComponent<AI>({ colorChange ,movement, speed , range });
 		}
 		sceneData.mEntities.insert(e);
 		i++;
@@ -911,10 +911,10 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 		}
 		if (entity.HasMember("Animation")) {
 			std::vector<GLuint> images;
-			Value a(kObjectType);
-			a = entity["Animation"]["images"].GetArray();
-			for (int j = 0; j < (int)a.Size(); ++j) {
-				GLuint tex = spriteManager->GetTextureID(a[j].GetString());
+			Value ar(kObjectType);
+			ar = entity["Animation"]["images"].GetArray();
+			for (int j = 0; j < (int)ar.Size(); ++j) {
+				GLuint tex = spriteManager->GetTextureID(ar[j].GetString());
 				images.push_back(tex);
 			}
 			float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
@@ -985,7 +985,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 			float speed = entity["AI"]["speed"].GetFloat();
 			float range = entity["AI"]["range"].GetFloat();
 
-			e.AddComponent<Stuff>({ colorChange ,movement, speed , range });
+			e.AddComponent<AI>({ colorChange ,movement, speed , range });
 		}
 		gamestateData.mEntities.insert(e);
 		i++;
@@ -1114,12 +1114,12 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 			tmp.AddMember(StringRef("isSpacial"), e.GetComponent<Audio>().isSpacial, allocator);
 			entity.AddMember(StringRef("Audio"), tmp, allocator);
 		}
-		if (e.HasComponent<Stuff>()) {
+		if (e.HasComponent<AI>()) {
 			Value tmp(kObjectType);
-			tmp.AddMember(StringRef("colorChange"), e.GetComponent<Stuff>().colorChange, allocator);
-			tmp.AddMember(StringRef("movement"), e.GetComponent<Stuff>().movement, allocator);
-			tmp.AddMember(StringRef("speed"), e.GetComponent<Stuff>().speed, allocator);
-			tmp.AddMember(StringRef("range"), e.GetComponent<Stuff>().range, allocator);
+			tmp.AddMember(StringRef("colorChange"), e.GetComponent<AI>().colorChange, allocator);
+			tmp.AddMember(StringRef("movement"), e.GetComponent<AI>().movement, allocator);
+			tmp.AddMember(StringRef("speed"), e.GetComponent<AI>().speed, allocator);
+			tmp.AddMember(StringRef("range"), e.GetComponent<AI>().range, allocator);
 			entity.AddMember(StringRef("AI"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));

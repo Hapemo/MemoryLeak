@@ -18,7 +18,13 @@ Entities and its Components.
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
-#include "Graphics/TransformManager.h"
+//#include "Graphics/TransformManager.h"
+#include <vec2.h>
+#include <filesystem>
+#define _USE_MATH_DEFINES
+#include <math.h>
+#include <Input.h>
+class Panel;
 
 /*!*****************************************************************************
 \brief
@@ -27,17 +33,56 @@ Entities and its Components.
 class EditorManager : public System
 {
 public:
-	void Init(GLFWwindow*, int*, int*);
-	void Start();
+	void Load(GLFWwindow*, int*, int*);
+	void Init();
 	void Window();
 	void Update();
-	void Exit();
-	bool IsEditorPaused() { return isPaused; };
-	void UnpauseEditor() { isPaused = false; };
-private:
+	void Free();
+	void Unload();
+
+	bool IsScenePaused() { return isScenePaused; }
 
 	
+
+	//bool IsEditorPaused() { return isPaused; };
+	//void UnpauseEditor() { isPaused = false; };
+private:
+	static std::vector<Panel*> panels;
+	
 protected:
+	enum class E_PANELID
+	{
+		HIERARCHY,
+		INSPECTOR,
+		WORLDVIEW,
+		GAMEVIEW,
+		DIALOGUE,
+		ASSET,
+		DEBUG,
+		MENU
+	};
+	static bool GetPannelIsActive(E_PANELID _panel);
+	static void SetPannelIsActive(E_PANELID _panel, bool _isActive);
+	void SaveUndo(Entity const e, COMPONENT& old, COMPONENTID id);
+	void Do();
+	void Undo();
+	void Redo();
+	static bool isScenePaused;
+	GLFWwindow* mWindow;
+	static int* mWindowWidth;
+	static int* mWindowHeight;
+	static std::set<Entity>* myEntities;
+	static const Entity* selectedEntity;
+	static Entity selEntity;
+	static int SRT;
+	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
+	static int stackPointer;
+
+
+
+
+	
+	/*static bool isPaused;
 	void SceneManager();
 	void EntityManager();
 	void AssetManager();
@@ -45,18 +90,5 @@ protected:
 	void WorldViewPort();
 	void CameraViewPort();
 	void ShowDebugInfo();
-	void DialogEditor();
-	void SaveUndo(Entity * const e, COMPONENT& old, COMPONENTID id);
-	void Undo();
-	void Redo();
-	GLFWwindow* mWindow;
-	int* mWindowWidth;
-	int* mWindowHeight;
-	const Entity* selectedEntity;
-	bool isPaused;
-	int SRT;
-	
-	//std::vector<std::pair<Entity * const, Transform>> undoStack;
-	std::vector<std::pair<Entity* const, COMPONENT>> undoStack;
-	int stackPointer;
+	void DialogEditor();*/
 };

@@ -15,6 +15,8 @@ ComponentType starts from 0.
 #include "AudioVariable.h"
 #include "TagVariable.h"
 #include <variant>
+#include "ScriptComponent.h"
+
 class Prefab;
 
 /*!*****************************************************************************
@@ -122,7 +124,36 @@ struct Physics2D {
 			   velocity = { 0.f, 0.f };
 	bool renderFlag = false;
 };
+struct nPhysics2D {
+	bool gravityEnabled;
+	double gravityScale;
+	bool dynamicsEnabled;
 
+	double mass;
+	double invMass;
+
+	double inertia;
+	double invInertia;
+
+	// double density;
+	double restitution;
+	double friction;
+	double damping;
+	Math::Vec2 accumulatedForce;
+
+	//float speed;
+	//float moveDirection;
+
+	Math::Vec2 velocity;
+	Math::Vec2 acceleration;
+
+	double angularVelocity;
+	double angularTorque;
+
+	//std::vector<Force> forceList;
+
+	bool renderFlag;
+};
 /*!*****************************************************************************
 \brief
 This component encapsulates information regarding a rectangular collider for
@@ -170,8 +201,8 @@ The renderFlag variable contains the flag variable telling the render manager
 *******************************************************************************/
 struct Edge2DCollider {
 	Math::Vec2 p0Offset = { 0.f, 0.f };
-	float rotationOffset = 0.f,
-		  scaleOffset = 1.f;
+	float rotationOffset = 0.f;
+	float scaleOffset = 1.f;
 	bool renderFlag = false;
 };
 
@@ -201,7 +232,7 @@ struct PlayerTmp {
 \brief
 	This temporary struct contains the data for AI component
 *******************************************************************************/
-struct Stuff {
+struct AI {
 	int	colorChange =0;
 	int	movement = 0;
 	float	speed = 1.f;
@@ -221,15 +252,34 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
-	std::string fontFile; //CaviarDreams.ttf || 3Dumb.ttf
-	std::string text;
-	Math::Vec2 pos; //world coordinates
-	float scale;
-	Color color;
+	std::string fontFile = "3Dumb.ttf"; //CaviarDreams.ttf || 3Dumb.ttf
+	std::string text = "Hello";
+	Math::Vec2 pos = Math::Vec2{0, 0}; //world coordinates
+	float scale =1.f;
+	Color color = Color{ 0, 0, 0, 255 };
 
+};
+struct Dialogue
+{
+	int speakerID;
+	int selecetedID;
 	int textID;
 	int nextTextID;
-	GLuint texture = 0; //for dialog box
+};
+/*!*****************************************************************************
+\brief
+	This struct contains the data for Script component
+*******************************************************************************/
+struct Script {
+	ScriptComponent* script;
+};
+
+
+
+
+struct LightSource
+{
+	Math::Vec2 centreOffset;
 };
 
 //use to index the variant data type, for ditor and serilization to determine type stored
@@ -248,8 +298,14 @@ enum class COMPONENTID
 	POINT2DCOLLIDER,//10
 	AUDIO,			//11
 	TEXT,			//12
-	AI				//13
+	AI,				//13
+	SCRIPT,			
+	DIALOGUE,
+	PLAYERTMP
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, PlayerTmp, Stuff>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, PlayerTmp>  COMPONENT;
+
+
+

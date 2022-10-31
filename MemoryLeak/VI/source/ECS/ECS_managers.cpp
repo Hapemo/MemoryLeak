@@ -15,6 +15,7 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 
 #include "ECS_managers.h"
 #include "ECS_components.h"
+#include "Logger.h"
 
 //-------------------------------------------------------------------------
 // Definitions from ECS_items
@@ -54,7 +55,7 @@ Prefab::~Prefab() {
 	delete static_cast<Edge2DCollider*>(mComponents[9]);
 	delete static_cast<Point2DCollider*>(mComponents[10]);
 	delete static_cast<PlayerTmp*>(mComponents[11]);
-	delete static_cast<Stuff*>(mComponents[12]);
+	delete static_cast<AI*>(mComponents[12]);
 	delete static_cast<Audio*>(mComponents[13]);
 	delete static_cast<Text*>(mComponents[14]);
 }
@@ -118,7 +119,7 @@ Entity Prefab::CreatePrefabee() {
 			break;
 
 		case 12: // Stuff
-			e.AddComponent<Stuff>(*(static_cast<Stuff*>(component)));
+			e.AddComponent<AI>(*(static_cast<AI*>(component)));
 			break;
 
 		case 13: // Audio
@@ -160,6 +161,7 @@ EntityID EntityManager::CreateEntity() {
 	EntityID id = mAvailableEntities.front();
 	mAvailableEntities.pop_front();
 	++mLivingEntityCount;
+	LOG_CUSTOM("ECS", "Created Entity " + std::to_string(id));
 	return id;
 }
 
@@ -227,6 +229,7 @@ void SystemManager::EntitySignatureChanged(EntityID _entity, Signature _entitySi
 // Coordinator
 //-------------------------------------------------------------------------
 Coordinator::Coordinator() {
+	LOG_CUSTOM_CREATE("ECS");
 	mEntityManager = std::make_unique<EntityManager>();
 	mComponentArrayManager = std::make_unique<ComponentArrayManager>();
 	mSystemManager = std::make_unique<SystemManager>();
@@ -247,6 +250,7 @@ void Coordinator::UnlinkPrefab(EntityID _entity) {
 }
 
 void Coordinator::DestroyEntity(EntityID _entity) {
+	LOG_CUSTOM("ECS", "Destroy Entity " + std::to_string(_entity));
 	UnlinkPrefab(_entity);
 	mEntityManager->DestroyEntity(_entity);
 	mComponentArrayManager->EntityDestroyed(_entity);
@@ -263,3 +267,5 @@ void Coordinator::DestroySomeEntites(const std::set<Entity>& _e) {
 	for (Entity const& e : _e)
 		e.Destroy();
 }
+
+uint32_t Coordinator::GetEntityCount() { return mEntityManager->GetEntityCount(); }

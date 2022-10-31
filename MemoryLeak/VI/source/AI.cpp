@@ -132,18 +132,18 @@ None.
 void AIManager::updateAI()
 {
 	for (auto& e : mEntities) {
-		if (e.GetComponent<Stuff>().colorChange == 1)
+		if (e.GetComponent<AI>().colorChange == 1)
 			updateAIAllColors(e);
-		else if (e.GetComponent<Stuff>().colorChange == 2)
+		else if (e.GetComponent<AI>().colorChange == 2)
 			updateAITrafficLight(e);
-		if (e.GetComponent<Stuff>().movement == 1)
-			updateAIUpDown(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
-		else if (e.GetComponent<Stuff>().movement == 2)
-			updateAILeftRight(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
-		else if (e.GetComponent<Stuff>().movement == 3)
-			updateAISwing(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
-		else if (e.GetComponent<Stuff>().movement == 4)
-			updateAICircle(e, e.GetComponent<Stuff>().speed, e.GetComponent<Stuff>().range);
+		if (e.GetComponent<AI>().movement == 1)
+			updateAIUpDown(e, e.GetComponent<AI>().speed, e.GetComponent<AI>().range);
+		else if (e.GetComponent<AI>().movement == 2)
+			updateAILeftRight(e, e.GetComponent<AI>().speed, e.GetComponent<AI>().range);
+		else if (e.GetComponent<AI>().movement == 3)
+			updateAISwing(e, e.GetComponent<AI>().speed, e.GetComponent<AI>().range);
+		else if (e.GetComponent<AI>().movement == 4)
+			updateAICircle(e, e.GetComponent<AI>().speed, e.GetComponent<AI>().range);
 	}
 }
 /*!*****************************************************************************

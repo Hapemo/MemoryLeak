@@ -111,9 +111,6 @@
     <ClInclude Include="include\DialogManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\LevelEditor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -285,9 +282,6 @@
     <ClInclude Include="include\freetype\tttags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Graphics\Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Graphics\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -325,6 +319,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Editor\WorldViewPanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Editor\Panel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Editor\ViewportPanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Editor\MenuPanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\VertexFetcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\ShadowManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -398,9 +407,6 @@
     <ClCompile Include="source\Graphics\FontManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Graphics\Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Graphics\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -438,6 +444,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Editor\WorldViewPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Editor\ViewportPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Editor\MenuPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Graphics\VertexFetcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Graphics\RenderProps.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Graphics\ShadowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

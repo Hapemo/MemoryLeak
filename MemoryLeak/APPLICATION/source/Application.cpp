@@ -37,7 +37,7 @@ void Application::startup() {
 }
 
 void Application::SystemInit() {
-  editorManager->Init(ptr_window, &window_width, &window_height);
+  editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
   renderManager->Init(&window_width, &window_height);
   ResourceManager::GetInstance()->LoadAllResources();
@@ -56,7 +56,6 @@ void Application::SystemUpdate() {
   TRACK_PERFORMANCE("Physics");
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
-
 
   // Animator
   sheetAnimator->Animate();
@@ -77,6 +76,7 @@ void Application::init() {
 
   SystemInit();
   audioManager->PlayBGSound("MENUBG.wav", 10);
+  
 }
 
 void Application::FirstUpdate() {
@@ -99,7 +99,6 @@ void Application::SecondUpdate() {
   TRACK_PERFORMANCE("Editor");
   if (editorMode)
   {
-      editorManager->Window();
       editorManager->Update();
   }
   END_TRACK("Editor");
@@ -109,11 +108,12 @@ void Application::SecondUpdate() {
       editorMode = !editorMode;
       if (editorMode)
       {
-        editorManager->Start();
+        editorManager->Init();
         renderManager->RenderToFrameBuffer();
       }
       else
       {
+          editorManager->Free();
           renderManager->RenderToScreen();
       }
 
@@ -128,7 +128,7 @@ void Application::SecondUpdate() {
 }
 
 void Application::exit() {
-  editorManager->Exit();
+  editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
   ResourceManager::GetInstance()->UnloadAllResources();
@@ -176,7 +176,11 @@ void Application::PrintTitleBar(double _s) {
 
     // write window title with current fps ...
     std::stringstream sstr;
-    sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " << FPSManager::fps << " | " << FPSManager::dt << " | " << GET_SYSTEMS_PERFORMANCES();
+    sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " 
+                                               << "fps: " << FPSManager::fps << " | "
+                                               << "dt: " << FPSManager::dt << " | "
+                                               << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | "
+                                               << GET_SYSTEMS_PERFORMANCES();
     glfwSetWindowTitle(Application::getWindow(), sstr.str().c_str());
   }
 }
