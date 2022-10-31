@@ -1,3 +1,12 @@
+/*!*****************************************************************************
+\file RenderProps.h
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 22-10-2022
+\brief
+This file contains information related to the rendering of objects.
+*******************************************************************************/
 #pragma once
 //define number of triangles for circle
 constexpr int CIRCLE_SLICES = 18;
