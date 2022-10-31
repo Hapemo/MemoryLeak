@@ -45,8 +45,9 @@ void real_main() {
 
     // Part 2
     while (!glfwWindowShouldClose(Application::getWindow())) {
+        //int i = 1;
+        //ASSERT(i == 1, "assert test");
         /*
-        int i = 1;
         BREAKPOINT(1 == i);
         */
         GameStateManager::GetInstance()->Update();
@@ -71,5 +72,6 @@ int main() {
     catch (const std::exception& e) {
         std::string exc = e.what();
         LOG_CRASH("The program has caught an exception: " + exc);
+        Logger::GetInstance()->EndRun();
     }
 }

@@ -42,6 +42,7 @@ void HandleSignal(int _signalNumber)
         LOG_CRASH("The program has detected an erroneous arithmetic operation.");
         break;
     }
+    Logger::GetInstance()->EndRun();
 }
 
 /*

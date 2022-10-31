@@ -33,7 +33,7 @@ void Logger::CreateNew(std::string _newType) {
     CreateTempFile(mLogFilesVec[newIndex], mLogTypesVec[newIndex].filename); // Copy current data to temp file
     mLogFilesVec[newIndex].close();
     mLogFilesVec[newIndex].open(mFilepath + mLogTypesVec[newIndex].filename.c_str(), std::ios_base::out); // reopen log file as out stream
-    mLogFilesVec[newIndex] << "----- NEW RUN -----\n";
+    mLogFilesVec[newIndex] << "------ NEW RUN ------\n";
 }
 
 /*!*****************************************************************************
@@ -55,7 +55,7 @@ Logger::Logger() {
         CreateTempFile(mLogFilesVec[i], mLogTypesVec[i].filename); // Copy current data to temp file
         mLogFilesVec[i].close();
         mLogFilesVec[i].open(mFilepath + mLogTypesVec[i].filename.c_str(), std::ios_base::out); // reopen log file as out stream
-        mLogFilesVec[i] << "----- NEW RUN -----\n";
+        mLogFilesVec[i] << "------ NEW RUN ------\n";
     }
 
     // opening human readable log file
@@ -63,14 +63,34 @@ Logger::Logger() {
     CreateTempFile(mLogFile, mLogFilename); // Copy current data to temp file
     mLogFile.close();
     mLogFile.open(mFilepath + mLogFilename, std::ios_base::out); // reopen log file as out stream
-    mLogFile << "----- NEW RUN -----\n";
+    mLogFile << "------ NEW RUN ------\n";
 
     // opening full log file with file name and line number
     mFullLogFile.open(mFilepath + mFullLogFilename, std::ios_base::in);
     CreateTempFile(mFullLogFile, mFullLogFilename); // Copy current data to temp file
     mFullLogFile.close();
     mFullLogFile.open(mFilepath + mFullLogFilename, std::ios_base::out); // reopen log file as out stream
-    mFullLogFile << "----- NEW RUN -----\n";
+    mFullLogFile << "------ NEW RUN ------\n";
+}
+
+/*!*****************************************************************************
+\brief
+End the current run for the logger.
+*******************************************************************************/
+void Logger::EndRun() {
+    mLogFile << "------ RUN ENDED ------\n";
+    DeleteTempFile(mLogFile, mLogFilename);
+    mLogFile.close();
+
+    mFullLogFile << "------ RUN ENDED ------\n";
+    DeleteTempFile(mFullLogFile, mFullLogFilename);
+    mFullLogFile.close();
+
+    for (size_t i = 0; i < mLogNames.size(); ++i) {
+        mLogFilesVec[i] << "------ RUN ENDED ------\n";
+        DeleteTempFile(mLogFilesVec[i], mLogTypesVec[i].filename);
+        mLogFilesVec[i].close();
+    }
 }
 
 /*!*****************************************************************************
@@ -78,19 +98,7 @@ Logger::Logger() {
 Destructor for the Logger class.
 *******************************************************************************/
 Logger::~Logger() {
-    mLogFile << "----- END RUN -----\n";
-    DeleteTempFile(mLogFile, mLogFilename);
-    mLogFile.close();
-
-    mFullLogFile << "----- END RUN -----\n";
-    DeleteTempFile(mFullLogFile, mFullLogFilename);
-    mFullLogFile.close();
-
-    for (size_t i = 0; i < mLogNames.size(); ++i) {
-        mLogFilesVec[i] << "----- END RUN -----\n";
-        DeleteTempFile(mLogFilesVec[i], mLogTypesVec[i].filename);
-        mLogFilesVec[i].close();
-    }
+    EndRun();
 }
 
 /*!*****************************************************************************
@@ -102,9 +110,8 @@ void Logger::CreateTempFile(std::fstream& _logfile, std::string _logFilename) {
     mTempFile.open(mFilepath + tempFilename, std::ios_base::out);
     std::string line;
     if (_logfile && mTempFile) {
-        while (getline(_logfile, line)) {
+        while (getline(_logfile, line))
             mTempFile << line << "\n";
-        }
     } else std::cout << "Failed to create temp log file: " << tempFilename << "\n";
     mTempFile.close();
 }
@@ -123,8 +130,8 @@ void Logger::DeleteTempFile(std::fstream& _logfile, std::string _logFilename) {
             if (maxline < MAX_LOG_HISTORY) { // checks for log history length
                 // replace NEW RUN header with PREV RUN
                 size_t index;
-                std::string prevRun = "----- PREV RUN -----";
-                while ((index = line.find("----- NEW RUN -----")) != std::string::npos)
+                std::string prevRun = "------ PREV RUN ------";
+                while ((index = line.find("------ NEW RUN ------")) != std::string::npos)
                     line.replace(index, prevRun.length(), prevRun);
                 _logfile << line << "\n";
                 ++maxline;
