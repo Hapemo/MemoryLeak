@@ -233,11 +233,11 @@ void WorldViewPanel::UseGuizmo()
 		translate[i] = trf[i];
 	}
 
-	//std::vector<float> cam = renderManager->GetWorldCamera().
+	std::vector<float> cam = renderManager->GetWorldCamera().GetImGuizmoWorldToCam();
 	float camera[16] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
 	for (int i = 0; i < 16; ++i)
 	{
-		//camera[i] = cam[i];
+		camera[i] = cam[i];
 	}
 
 	ImGuizmo::OPERATION opp{};
