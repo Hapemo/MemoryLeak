@@ -1,11 +1,11 @@
 /*!*****************************************************************************
-\file GameState3.cpp
-\author Jazz Teoh Yu Jue
-\par DP email: j.teoh\@digipen.edu
+\file AIDemo.cpp
+\author Huang Wei Jhin
+\par DP email: h.weijhin\@digipen.edu
 \par Group: Memory Leak Studios
 \date 24-09-2022
 \brief
-Game state for testing physics
+Game state for testing AI
 *******************************************************************************/
 #include "AIDemo.h"
 #include "Application.h"
@@ -28,12 +28,10 @@ void AIDemo::Draw() {
 }
 
 void AIDemo::Free() {
-    ECS::DestroyAllEntities();
 }
 
 void AIDemo::Unload() {
     
-    renderManager->Clear();
 }
 
 

@@ -10,7 +10,7 @@ Game state for main menu
 #include "MainMenu.h"
 #include "Application.h"
 #include "Input.h"
-//#include "TestScript.h"
+
 
 void MainMenu::Load() {
 	LoadWithGUID(16672089683329284);
@@ -35,9 +35,7 @@ void MainMenu::Draw() {
 void MainMenu::Free() {
 	for (auto& scenePtr : mScenes)
 		scenePtr->Exit();
-	ECS::DestroyAllEntities();
 }
 
 void MainMenu::Unload() {
-	renderManager->Clear();
 }

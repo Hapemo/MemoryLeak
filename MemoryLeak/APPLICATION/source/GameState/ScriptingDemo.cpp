@@ -11,8 +11,8 @@ Gamestate for testing scripting.
 
 #include "ScriptingDemo.h"
 
-Entity firstEntity{};
-Entity secondEntity{};
+//Entity firstEntity{};
+//Entity secondEntity{};
 //ScriptComponent testBaseScript;
 TestScript firstTestScript;
 TestScript2 secondTestScript;
@@ -72,13 +72,11 @@ void ScriptingDemo::Free() {
     for (auto& scenePtr : mScenes)
         scenePtr->Exit();
     logicSystem->Exit();
-    firstEntity.Destroy();
-    secondEntity.Destroy();
-    ECS::DestroyAllEntities();
+    //firstEntity.Destroy();
+    //secondEntity.Destroy();
 }
 
 void ScriptingDemo::Unload() {
-    renderManager->Clear();
     //spriteManager->FreeTextures();
     //FREE_RESOURCES();
 }

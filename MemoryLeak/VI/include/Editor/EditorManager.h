@@ -42,7 +42,7 @@ public:
 	void Unload();
 
 	bool IsScenePaused() { return isScenePaused; }
-
+	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
 	
 
 	//bool IsEditorPaused() { return isPaused; };

@@ -10,7 +10,7 @@ Game state for level 1
 #include "Level1.h"
 #include "Application.h"
 #include "Input.h"
-#include "TestScript.h"
+
 
 void Level1::Load() {
 	LoadWithGUID(16669349234147588);
@@ -35,9 +35,7 @@ void Level1::Draw() {
 void Level1::Free() {
 	for (auto& scenePtr : mScenes)
 		scenePtr->Exit();
-	ECS::DestroyAllEntities();
 }
 
 void Level1::Unload() {
-	renderManager->Clear();
 }

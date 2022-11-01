@@ -42,15 +42,26 @@ void WorldViewPanel::Update()
 	//if (ImGui::Button("Reset", buttonSize))
 		//serializationManager->LoadScene("SceneTmp");
 	//ImGui::SameLine(0.f,20.f);
+	if (isScenePaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isScenePaused = false;
 	}
+	ImGui::PopStyleColor();
+
+	if (isScenePaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", buttonSize))
 	{
 		isScenePaused = true;
 	}
+	ImGui::PopStyleColor();
 	CalculateMousePos(E_CAMERA_TYPE::WORLD);
 	fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();
 	ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
@@ -184,22 +195,22 @@ void WorldViewPanel::NewEntity()
 void WorldViewPanel::SetSelectedEntity()
 {
 	int layer = 0;
-	for (const Entity& e : *myEntities)
+	for (const Entity& ee : *myEntities)
 	{
-		if (e.GetComponent<General>().tag == TAG::BACKGROUND)
+		if (ee.GetComponent<General>().tag == TAG::BACKGROUND)
 			continue;
-		if (e.HasComponent<Transform>() && e.HasComponent<Sprite>()) //||e.HasComponent<Text>()
+		if (ee.HasComponent<Transform>() && ee.HasComponent<Sprite>()) //||e.HasComponent<Text>()
 		{
-			Math::Vec2 scale = e.GetComponent<Transform>().scale;
-			Math::Vec2 translation = e.GetComponent<Transform>().translation;
+			Math::Vec2 scale = ee.GetComponent<Transform>().scale;
+			Math::Vec2 translation = ee.GetComponent<Transform>().translation;
 			Math::Vec2 distance = camMousePos - translation;
 			if (abs(distance.x) < scale.x / 2 && abs(distance.y) < scale.y / 2)
 			{
-				LOG_INFO(e.GetComponent<General>().name + " Selected");
-				if (e.GetComponent<Sprite>().layer >= layer)
+				LOG_INFO(ee.GetComponent<General>().name + " Selected");
+				if (ee.GetComponent<Sprite>().layer >= layer)
 				{
-					selectedEntity = &e;
-					layer = e.GetComponent<Sprite>().layer;
+					selectedEntity = &ee;
+					layer = ee.GetComponent<Sprite>().layer;
 					objectOffset = distance;
 					isSelected = 1;
 				}

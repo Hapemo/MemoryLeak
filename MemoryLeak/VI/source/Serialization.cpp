@@ -73,7 +73,8 @@ void SerializationManager::LoadScene(std::string _filename)
 		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
 		if (!doc.HasMember(index))
 		{
-			LOG_ERROR("1 Enitity not loaded");
+			LOG_INFO("1 Enitity not loaded");
+			
 			continue;
 		}
 		entity = doc[index];
@@ -695,7 +696,11 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 		std::string str("Entity" + std::to_string(i));
 		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
 		if (!doc.HasMember(index))
-			std::cout << "error   " << i;
+		{
+			LOG_INFO("1 Enitity not loaded");
+			
+			continue;
+		}
 		entity = doc[index];
 
 		if (entity.HasMember("General")) {
@@ -923,7 +928,11 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 		std::string str("Entity" + std::to_string(i));
 		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
 		if (!doc.HasMember(index))
-			std::cout << "error   " << i;
+		{
+			LOG_INFO("1 Enitity not loaded");
+
+			continue;
+		}
 		entity = doc[index];
 
 		if (entity.HasMember("General")) {
@@ -1157,7 +1166,11 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 		std::string str("Entity" + std::to_string(i));
 		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
 		if (!doc.HasMember(index))
-			std::cout << "error   " << i;
+		{
+			LOG_INFO("1 Enitity not loaded");
+
+			continue;
+		}
 		entity = doc[index];
 
 		if (entity.HasMember("General")) {

@@ -56,6 +56,7 @@ void GameStateManager::Update() {
 
 		mCurrGameState->Update();
 		GSControlPanel();
+
 		if(!editorManager->IsScenePaused())
 			Application::SystemUpdate();
 
@@ -124,6 +125,15 @@ void GameStateManager::SetNewGameState() {
 	case E_GS::ParallaxSprite:
 		Application::GetCurrGameStateName() = "ParallaxSprite";
 		break;
+	case E_GS::AIDemo:
+		Application::GetCurrGameStateName() = "AI Demo";
+		break;
+	case E_GS::MainMenu:
+		Application::GetCurrGameStateName() = "Main Menu";
+		break;
+	case E_GS::Level1:
+		Application::GetCurrGameStateName() = "Level1";
+		break;
 	default:
 		Application::GetCurrGameStateName() = "Unknown";
 	}
@@ -142,8 +152,16 @@ void GameStateManager::GSControlPanel() {
 	static bool renderToScreen{ false };
 	if (Input::CheckKey(PRESS, E) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) {
 		renderToScreen = !renderToScreen;
-		if (renderToScreen) renderManager->RenderToScreen();
-		else renderManager->RenderToFrameBuffer();
+		if (renderToScreen)
+		{
+			renderManager->RenderToScreen();
+			editorManager->SetScenePaused(false);
+		}
+		else
+		{
+			renderManager->RenderToFrameBuffer();
+			editorManager->SetScenePaused(true);
+		}
 	}
 	if (Input::CheckKey(PRESS, O) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState1);
 	else if (Input::CheckKey(PRESS, G) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
