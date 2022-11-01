@@ -456,7 +456,7 @@ bool Prefab::HasComponent() const {
 	
 }
 template<typename T>
-T& Prefab::GetComponent() const { 
+T const& Prefab::GetComponent() const { 
 	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
 
 	return *(static_cast<T*>(mComponents[pos]));

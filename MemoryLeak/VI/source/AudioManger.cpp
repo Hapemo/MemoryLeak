@@ -125,7 +125,36 @@ void AudioManager::PlaySound(const Entity& _e, int _channel)
         }
     }
 }
+/*!*****************************************************************************
+\brief
+    Plays a single background sound
 
+\return
+None.
+*******************************************************************************/
+void AudioManager::PlayAnySound(std::string _snd, int _channel)
+{
+    bool f;
+    mChannel[_channel]->isPlaying(&f);
+    if (f)
+    {
+        mChannel[_channel]->stop();
+    }
+    
+    LOG_INFO("Play a sound");
+    mChannel[_channel]->setVolume(1.0f);
+    if (mBgmSound.find(_snd) != mBgmSound.end())
+    {
+        mBgmSound[_snd]->setMode(1);
+        system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
+    }
+    else if (mSfxSound.find(_snd) != mSfxSound.end())
+    {
+        mSfxSound[_snd]->setMode(1);
+        system->playSound(mSfxSound[_snd], nullptr, false, &mChannel[_channel]);
+    }
+    
+}
 /*!*****************************************************************************
 \brief
     Plays a single background sound
