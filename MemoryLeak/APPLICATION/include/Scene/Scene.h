@@ -7,6 +7,9 @@
 \brief
 Scene base class. Each game state can have multiple scenes which encapsulates
 a group of entities and operates on them.
+
+For Milestone 2:
+Added load and unload of scene using resourceManager
 *******************************************************************************/
 #pragma once
 #include "ECS_items.h"
@@ -20,54 +23,62 @@ public:
 	Scene(ResourceManager::GUID const&);
 	~Scene();
 	/*!*****************************************************************************
-	 \brief
-	 Set the scene's pause status
+	Set the scene's pause status
 
-	 \param bool
-	 True to pause the scene's update loop, otherwise false
+	\param bool
+	- True to pause the scene's update loop, otherwise false
 	*******************************************************************************/
 	void Pause(bool);
 
 	/*!*****************************************************************************
-	 \brief
-	 Main update loop of the game that dismisses all other updates if game is paused
+	Main update loop of the game that dismisses all other updates if game is paused
 	*******************************************************************************/
 	void PrimaryUpdate();
-	//void Load();
-	//void Save();
 
 	/*!*****************************************************************************
-	 \brief
-	 Initialise variables and entities for the scene
+	Initialise variables and entities for the scene
 	*******************************************************************************/
 	void Init() {};
 
 	/*!*****************************************************************************
-	 \brief
-	 Update the scene and entity operations every game loop.
+	Update the scene and entity operations every game loop.
 	*******************************************************************************/
 	void Update() {};
 
 	/*!*****************************************************************************
-	 \brief
-	 Resets the scene variables. This should be called in the init function. 
+	Resets the scene variables. This should be called in the init function. 
 	*******************************************************************************/
 	void Exit() {};
 	
-	// Load with guid
+	/*!*****************************************************************************
+	Load scene with guid, using resource manager
+
+	\param ResourceManager::GUID const&
+	- GUID that references to the scene
+	*******************************************************************************/
 	void Load(ResourceManager::GUID const& _guid);
 
+	/*!*****************************************************************************
+	Unload scene using resource manager
+	*******************************************************************************/
 	void Unload();
 
+	/*!*****************************************************************************
+	Add Entity to scene
+	*******************************************************************************/
 	void AddEntity();
 
+	/*!*****************************************************************************
+	Remove entity from scene
+
+	\param Entity const&
+	- Entity to remove
+	*******************************************************************************/
 	void RemoveEntity(Entity const&);
 
-	std::set<Entity> mEntities;
-	bool pause; // TODO can change this to IsActive
-	ResourceManager::GUID mGuid;
-
-protected:
+	std::set<Entity> mEntities;			// Entities in the scene 
+	bool pause;											// Paused state of the scene
+	ResourceManager::GUID mGuid;		// Scene's GUID
 
 private:
 };

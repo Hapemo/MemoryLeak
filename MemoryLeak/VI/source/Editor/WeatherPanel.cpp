@@ -42,9 +42,6 @@ void WeatherPanel::Update()
 	SetViewportAspectRatio();
 	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	//if (ImGui::Button("Reset", { 100,25 }))
-		//serializationManager->LoadScene("SceneTmp");
-	//ImGui::SameLine(0.f,20.f);
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isWeatherPaused = false;
@@ -60,25 +57,25 @@ void WeatherPanel::Update()
 		{
 			if (aiManager->weatherMap[w][h] == SUNNUY)
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(255, 0, 0)));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(255, 153, 51)));
 				ImGui::Button("S", weatherIocnSize);
 				ImGui::PopStyleColor();
 			}
 			else if (aiManager->weatherMap[w][h] == FOG)
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 255)));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(102, 204, 0)));
 				ImGui::Button("F", weatherIocnSize);
 				ImGui::PopStyleColor();
 			}
 			else if (aiManager->weatherMap[w][h] == RAIN)
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(255, 0, 255)));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 76, 153)));
 				ImGui::Button("R", weatherIocnSize);
 				ImGui::PopStyleColor();
 			}
 			else if (aiManager->weatherMap[w][h] == WINDY)
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 255, 0)));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 200)));
 				ImGui::Button("W", weatherIocnSize);
 				ImGui::PopStyleColor();
 			}

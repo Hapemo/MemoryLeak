@@ -41,9 +41,10 @@ std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
 std::vector <Prefab*> EditorManager::mPrefabs{};
+bool EditorManager::isAnimatorEditor = false;
 /*!*****************************************************************************
 \brief
-	Initializes the level editor
+	Load the level editor
 
 \return
 None.
@@ -86,6 +87,13 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&weatherPanel);
 	Init();
 }
+/*!*****************************************************************************
+\brief
+	Inilialize the level editor and all its pannels
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Init()
 {
 	isScenePaused = true;
@@ -394,6 +402,7 @@ void EditorManager::SceneReset()
 {
 	highestLayer = 0;
 	selectedEntity = nullptr;
+	renderManager->ResetCameras();
 }
 
 

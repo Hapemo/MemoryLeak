@@ -84,7 +84,8 @@ protected:
 	static int stackPointer;
 	static int highestLayer;
 	static std::vector <Prefab*> mPrefabs;
-
+	static bool isAnimatorEditor;
+	bool isAnimatorEditorFocused(){return isAnimatorEditor;}
 
 
 	

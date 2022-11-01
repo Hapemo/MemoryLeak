@@ -8,6 +8,10 @@
 Game state base class, contains Load, Init, Update, Draw, Free and Unload
 functions.
 
+For Milestone 2:
+Added load and unload of game state using resourceManager
+Added encapsulation of scenes in game state
+
 How to make a gamestate?
 
 1. Make a class for your gamestate, inherited from class GameState
@@ -60,6 +64,7 @@ void GameState::PrimaryUnload() {
   Unload();
   UnloadWithGUID();
   renderManager->Clear();
+  renderManager->ResetCameras();
   if (Coordinator::GetInstance()->GetEntityCount() != 0)
     LOG_ERROR("There remains " + std::to_string(Coordinator::GetInstance()->GetEntityCount()) + " after Unloading GameState " + std::to_string(mGuid));
 

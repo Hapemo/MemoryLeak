@@ -16,6 +16,8 @@ Entity ECS::CreateEntity() {
 
 void ECS::DestroyEntity(EntityID _entity) { Coordinator::GetInstance()->DestroyEntity(_entity); }
 
+void ECS::UnlinkPrefab(EntityID _e) { Coordinator::GetInstance()->UnlinkPrefab(_e); }
+
 void ECS::DestroyAllEntities() { Coordinator::GetInstance()->DestroyAllEntities(); }
 
 void ECS::DestroySomeEntites(const std::set<Entity>& _e) { Coordinator::GetInstance()->DestroySomeEntites(_e); }

@@ -65,19 +65,6 @@ void GameState1::Init() {
     //    Sprite{ Color{0,255,0,0}, SPRITE::SQUARE, 0, 1 },
     //    General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true },
     //    Text{ "3Dumb.ttf", "Hello World!", Math::Vec2{100,0}, 1, {255, 0, 0, 255}});
-  
-    //Entity e3{ ECS::CreateEntity() };
-    //e3.AddComponent(General{ "Rect1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true });
-    //e3.AddComponent(Transform{ {150, 150}, 0, {0, 0} });
-    //e3.AddComponent(Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 });
-    //spriteManager->SetTexture(e3, "Textures\\Sprites\\mc.png");
-    //e3.AddComponent(Physics2D{ true, 0.5f, 1.0f, 0.3f, 0.3f, 0.9f, Math::Vec2{0.f, 0.f}, Math::Vec2{0.f, 0.f}, Math::Vec2{0.f, 0.f}, 0.0f, 0.0f, std::vector<Force>(), true });
-    ////physics2DManager->AddForce(e3, Math::Vec2{ 1.f, 0.f }, 50.0);
-    ////physics2DManager->AddForce(e3, Math::Vec2{ -1.f, 1.f }, 50.0);
-    //e3.AddComponent(PlayerTmp{});
-    //    Text{ "3Dumb.ttf", "Hello World!", Math::Vec2{100,0}, 1, {255, 0, 0, 255}, 0, 0 });
-    //
-    //mEntities.insert(e2);
 }
 
 void GameState1::Update() {

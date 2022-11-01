@@ -9,6 +9,12 @@
 This file contains the function definition of the class ResourceManager.
 The ResourceManager class manages the resources, their data and usage.
 
+For Milestone 2:
+Revamped resource manager to a more robust resource manager, managing all types
+of resources using void*. Added meta file system. Added scene and game state
+serialisation. Automatically loading of game state and scene will be implmemented
+for game release, but currently it's done manually in game state.
+
 IMPORTANT NOTE TODO: Right now, all scene data are loaded into the gamestate 
 since the start. Next time if we want to load in specific scene data resource 
 at specific game state, we have to make a function that load specific scene
@@ -43,8 +49,7 @@ struct SceneData;
 struct Entity;
 class ResourceManager : public Singleton<ResourceManager> {
 public:
-	/*!*****************************************************************************
-	\brief
+	/*!*****************************************************************************
 	Struct to store all the texture data.
 	*******************************************************************************/
 	struct TextureData {
@@ -70,7 +75,6 @@ public:
 private:
 
 	/*!*****************************************************************************
-	\brief
 	Struct to store all the data of a resource.
 	*******************************************************************************/
 	struct ResourceData {
@@ -80,7 +84,6 @@ private:
 	};
 
 	/*!*****************************************************************************
-	\brief
 	Member vector to store all the loaded resources data.
 	*******************************************************************************/
 	std::vector<ResourceData> mResources;
@@ -92,13 +95,11 @@ private:
 	unsigned char guidCounter = 0;
 public:
 	/*!*****************************************************************************
-	\brief
 	Constructor for ResourceManager.
 	*******************************************************************************/
 	ResourceManager() {};
 
 	/*!*****************************************************************************
-	\brief
 	Destructor for ResourceManager.
 	*******************************************************************************/
 	~ResourceManager() {};
@@ -108,7 +109,6 @@ public:
 	const ResourceManager& operator=(const ResourceManager&) = delete;
 
 	/*!*****************************************************************************
-	\brief
 	Loads all the textures in the specified filepath.
 
 	\param std::string _filepath
@@ -118,7 +118,6 @@ public:
 
 
 	/*!*****************************************************************************
-	\brief
 	Check if files have changed/been updated by checking the last updated time. If
 	timing is different, then reload the texture. Also check for if the filename
 	doesn't exist, means the file is deleted, which the function will then remove
@@ -130,13 +129,11 @@ public:
 	std::vector<int> UpdateTextures();
 
 	/*!*****************************************************************************
-	\brief
 	Free the resources in the vector.
 	*******************************************************************************/
 	void FreeResources();
 
 	/*!*****************************************************************************
-	\brief
 	Update a specific texture and it's data by calling the stbi load functon.
 
 	\param const size_t _index
@@ -145,7 +142,6 @@ public:
 	void UpdateTexture(const size_t _index);
 
 	/*!*****************************************************************************
-	\brief
 	Load a specific texture by calling the stbi load function and stores it's data
 	in a ResourceData struct. Stores the resource in a member vector mResources.
 
@@ -155,7 +151,6 @@ public:
 	TextureData LoadTexture(const std::string _filepath);
 
 	/*!*****************************************************************************
-	\brief
 	Unload a specific texture data by calling stbi image free.
 
 	\param void* _data
@@ -164,7 +159,6 @@ public:
 	void UnloadTexture(void* _data);
 
 	/*!*****************************************************************************
-	\brief
 	Retrieve the texture data of a specific texture.
 
 	\param size_t _index
@@ -176,7 +170,6 @@ public:
 	TextureData& GetTextureData(size_t _index) { return mResources[_index].texture; }
 
 	/*!*****************************************************************************
-	\brief
 	Retrieve the loaded resources stored in the member vector mResources.
 
 	\return
@@ -185,7 +178,6 @@ public:
 	std::vector<ResourceData>& GetResources() { return mResources; }
 
 	/*!*****************************************************************************
-	\brief
 	Gets the aspect ratio of a specific texture.
 
 	\param const GLuint _id
@@ -197,7 +189,6 @@ public:
 	float GetAspectRatio(const GLuint _id);
 
 	/*!*****************************************************************************
-	\brief
 	Retrieve the texture id of a specific resource.
 
 	\param const std::string& _texturePath
@@ -209,7 +200,6 @@ public:
 	GLuint GetTextureID(const std::string& _texture_path);
 
 	/*!*****************************************************************************
-	\brief
 	Retrieve all the texture ids of the resources.
 
 	\return
@@ -218,7 +208,6 @@ public:
 	std::vector<GLuint*> GetTextureIDs();
 
 	/*!*****************************************************************************
-	\brief
 	Retrieve the texture path of a specific resource.
 
 	\param GLint _id
@@ -229,41 +218,140 @@ public:
 	*******************************************************************************/
 	std::string	GetTexturePath(GLint _id);
 
-	// Generate a new guid
+	/*!*****************************************************************************
+	Generate a new guid
+
+	\param std::filesystem::path const&
+	- File path of file to generate guid for
+
+	\return GUID
+	- Newly generated guid
+	*******************************************************************************/
 	GUID GUIDGenerator(std::filesystem::path const&);
 
-	// Helper function to check if a file exists
+	/*!*****************************************************************************
+	Helper function to check if a file exists
+
+	\param std::string const&
+	- File path of file
+
+	\return bool
+	- True if the file exists, otherwise false
+	*******************************************************************************/
 	bool FileExist(std::string const&);
 
 	// Load all resources to resource manager
+	/*!*****************************************************************************
+	Load all resouces from one resource folder stated in the resource manager class.
+	Calls another function overload of LoadAllResources to load all files.
+	*******************************************************************************/
 	void LoadAllResources();
+
+	/*!*****************************************************************************
+	Load all files in a folder/file path. If it's a folder, enter it and find files
+	to load in.
+
+	\param std::filesystem::path const&
+	- Folder/file path to load
+	*******************************************************************************/
 	void LoadAllResources(std::filesystem::path const&);
 
-	// Unload all resources in resource manager (mAllResources)
+	/*!*****************************************************************************
+	Unload all resources in resource manager. (mAllResources)
+	*******************************************************************************/
 	void UnloadAllResources();
 
-	// Read guid from meta file
+	/*!*****************************************************************************
+	Read guid from meta file
+
+	\param std::string const& _metaPath
+	- File path of the guid file
+
+	\return GUID
+	- GUID extracted
+	*******************************************************************************/
 	GUID ReadGUIDFromFile(std::string const& _metaPath);
 
-	// Check resource type and return an enum of it
+	/*!*****************************************************************************
+	Check resource type of a resource file and return an enum of it
+
+	\param std::filesystem::path const&
+	- File path of file to check
+
+	\return E_RESOURCETYPE
+	- Resource type of file 
+	*******************************************************************************/
 	E_RESOURCETYPE CheckResourceType(std::filesystem::path const&);
 
-	// Get resource container with guid
+	/*!*****************************************************************************
+	Get resource data with guid
+
+	\param GUID const&
+	- Guid of the resource data
+
+	\return T&
+	- Resource data
+	*******************************************************************************/
 	template<typename T>
 	T& GetResource(GUID const&);
 
-	// Get the file path of a resource using it's GUID
+	/*!*****************************************************************************
+	Get the file path of a resource using it's GUID
+
+	\param GUID const&
+	- Guid of the file
+
+	\return std::string
+	- File path of the file
+	*******************************************************************************/
 	std::string GetFilePath(GUID const&);
 
-	// Load game state json file
+	/*!*****************************************************************************
+	Load game state json file. Load in all the data of gamestate and load the
+	entities in to the ECS.
+
+	\param GUID const&
+	- Guid of the game state
+
+	\return GameStateData
+	- Data of a game state
+	*******************************************************************************/
 	GameStateData LoadGameState(GUID const&);
+
+	/*!*****************************************************************************
+	Unload a gamestate when quitting the game state. It will also destroy all the
+	entities in the game state from ECS.
+
+	\param GUID const&
+	- Guid of the game state
+	*******************************************************************************/
 	void UnloadGameState(GUID const&);
 
-	// Load scene json file
+	/*!*****************************************************************************
+	Load scene json file. Load in all the data of the scene and load the entities in
+	to the ECS.
+
+	\param GUID const&
+	- Guid of the scene
+
+	\return SceneData
+	- Data that a scene should have
+	*******************************************************************************/
 	SceneData LoadScene(GUID const&);
+
+	/*!*****************************************************************************
+	Unload a scene when quitting the scene. It will also destroy all the entities in 
+	the scene from ECS.
+
+	\param GUID const&
+	- Guid of the scene
+	*******************************************************************************/
 	void UnloadScene(GUID const&);
 };
 
+//------------------------------------
+// Template function definitions
+//------------------------------------
 template<typename T>
 T& ResourceManager::GetResource(GUID const& _guid) {
 	return *(static_cast<T*>(mAllResources[_guid]));

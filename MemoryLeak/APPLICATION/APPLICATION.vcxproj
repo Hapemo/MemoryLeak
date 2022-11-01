@@ -27,6 +27,7 @@
     <ClInclude Include="include\GameState\GameState3.h" />
     <ClInclude Include="include\GameState\ScriptingDemo.h" />
     <ClInclude Include="include\GameState\GameStateJazz.h" />
+    <ClInclude Include="include\GameState\GameStatePhysics.h" />
     <ClInclude Include="include\GameState\Lighting.h" />
     <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
@@ -36,6 +37,7 @@
   <ItemGroup>
     <ClCompile Include="source\GameState\ScriptingDemo.cpp" />
     <ClCompile Include="source\GameState\GameStateJazz.cpp" />
+    <ClCompile Include="source\GameState\GameStatePhysics.cpp" />
     <ClCompile Include="source\GameState\Lighting.cpp" />
     <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
     <ClCompile Include="source\Application.cpp" />

@@ -34,8 +34,8 @@ None.
 void HierarchyPanel::Update()
 {
 	ImGui::Begin("Hierarchy Manager");
-	ImGui::BeginTabBar("Edit Scene ");
-	if (ImGui::BeginTabItem("Scene: "))
+	ImGui::BeginTabBar("Hierarchy ");
+	if (ImGui::BeginTabItem("Scene 1: "))
 	{
 		for (int i = 0; i < (int)tag.size(); i++)
 		{

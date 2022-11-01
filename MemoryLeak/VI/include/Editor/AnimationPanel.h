@@ -9,21 +9,21 @@ This file contains function declarations for a AnimationPanel Editor system that
 and Animation 
 *******************************************************************************/
 #pragma once
-#include "Panel.h"
+#include "ViewportPanel.h"
 
 /*!*****************************************************************************
 \brief
 	This class encapsulates the functions for the Dialogue Panel Editor
 *******************************************************************************/
-class AnimationPanel : public Panel
+class AnimationPanel : public ViewportPanel
 {
 public:
 	
 	void Init();
 	void Update();
 	void Free();
-
 	
 private:
 	ImTextureID textureImage;
+	bool isAnimationPaused;
 };

@@ -19,8 +19,8 @@ void InspectorPanel::Update()
 {
 	
 	//static COMPONENT tempComponent{};
-	ImGui::Begin("Entity Manager");
-	ImGui::BeginTabBar("Edit Entities ");
+	ImGui::Begin("Inspector Manager");
+	ImGui::BeginTabBar("Inspector ");
 	if (ImGui::BeginTabItem("Edit Game: "))
 	{
 		if (selectedEntity != nullptr)
@@ -272,7 +272,7 @@ void InspectorPanel::TransformEditor()
 		if (!s && !r && !t) SRT = 0;
 	}
 
-	if (ImGui::CollapsingHeader("Transform")) {
+	if (ImGui::CollapsingHeader("Transform") || true) {
 		//ImGui::Text("Transform Component");
 		tmpVec2[0] = transformManager->GetScale(e).x;
 		tmpVec2[1] = transformManager->GetScale(e).y;
@@ -323,7 +323,6 @@ void InspectorPanel::SpriteEditor()
 			tex = "CIRCLE";
 		else if (e.GetComponent<Sprite>().sprite == SPRITE::SQUARE)
 			tex = "SQUARE";
-
 		int shapeID = (int)e.GetComponent<Sprite>().sprite;
 		static const char* shape[]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
 		ImGui::Combo("Shape", &shapeID, shape, IM_ARRAYSIZE(shape));
@@ -334,17 +333,31 @@ void InspectorPanel::SpriteEditor()
 		{
 			e.GetComponent<Sprite>().texture = 0;
 		}
-		ImGui::Text(tex.c_str());
+		if (e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)
+		{
+			ImGui::InputText("Sprite", &tex);
+			spriteManager->SetTexture(e, tex);
+			SaveUndo(e, tempComponent, COMPONENTID::SPRITE);
 
-		static const wchar_t* texpath = (const wchar_t*)"";
+		}
+		else
+		{
+			ImGui::Text(tex.c_str());
+		}
+
 		if (ImGui::BeginDragDropTarget())
 		{
+			static const wchar_t* texpath = (const wchar_t*)"";
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
 			{
 				texpath = (const wchar_t*)payload->Data;
 				std::string tp = (std::string)((const char*)texpath);
 				e.GetComponent<Sprite>().sprite = SPRITE::TEXTURE;
 				spriteManager->SetTexture(e, tp);
+				COMPONENT _new;
+				_new = e.GetComponent<Sprite>();
+				undoStack.push_back(std::make_pair(e, _new));
+				stackPointer = (int)undoStack.size();
 			}
 			ImGui::EndDragDropTarget();
 		}
@@ -390,6 +403,7 @@ void InspectorPanel::AnimationEditor()
 						e.GetComponent<Animation>().images[i] = spriteManager->GetTextureID(tp);
 					else
 						addImage = spriteManager->GetTextureID(tp);
+					
 				}
 				ImGui::EndDragDropTarget();
 			}
@@ -415,7 +429,7 @@ void InspectorPanel::AnimationEditor()
 }
 void InspectorPanel::SheetAnimationEditor()
 {
-	if (ImGui::CollapsingHeader("SheetAnimation")) {
+	if (ImGui::CollapsingHeader("SheetAnimation")||isAnimatorEditorFocused()) {
 		//ImGui::Text("SheetAnimation");
 		ImGui::InputInt("frameCount", (int*)&e.GetComponent<SheetAnimation>().frameCount);
 		SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);
@@ -497,6 +511,7 @@ void InspectorPanel::Physics2DEditor()
 
 		ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
+
 		if (ImGui::Button("Remove Physics2D"))
 		{
 			e.RemoveComponent<Physics2D>();
@@ -604,7 +619,7 @@ void InspectorPanel::Point2DColliderEditor()
 }
 void InspectorPanel::AudioEditor()
 {
-	if (ImGui::CollapsingHeader("Audio")) {
+	if (ImGui::CollapsingHeader("Audio") || true) {
 		//ImGui::Text("Audio");
 		ImGui::InputText("Addsound", &e.GetComponent<Audio>().sound.path);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
@@ -616,6 +631,10 @@ void InspectorPanel::AudioEditor()
 				texpath = (const wchar_t*)payload->Data;
 				std::string tp = (std::string)((const char*)texpath);
 				e.GetComponent<Audio>().sound.path = tp;
+				COMPONENT _new;
+				_new = e.GetComponent<Audio>();
+				undoStack.push_back(std::make_pair(e, _new));
+				stackPointer = (int)undoStack.size();
 			}
 			ImGui::EndDragDropTarget();
 		}
