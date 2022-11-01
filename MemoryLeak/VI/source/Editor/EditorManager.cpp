@@ -42,6 +42,7 @@ bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
 std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
+
 /*!*****************************************************************************
 \brief
 	Load the level editor
@@ -86,6 +87,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&animationPanel);
 	panels.push_back(&weatherPanel);
 	Init();
+	serializationManager->LoadDialogs("Dialog Data Structure - Passenger 1's Dialogues"); //for demo submision
 }
 /*!*****************************************************************************
 \brief

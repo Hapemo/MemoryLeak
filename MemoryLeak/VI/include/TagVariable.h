@@ -6,6 +6,9 @@ enum class TAG
 	ENEMY,
 	BUILDING,
 	BACKGROUND,
+	ENVIRONMENT,
+	EFFECTS,
+	PREFABS,
 	OTHERS,
 	END  //placeholder only use for loops
 };

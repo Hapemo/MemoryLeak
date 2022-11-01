@@ -22,7 +22,7 @@ None.
 void HierarchyPanel::Init()
 {
 	//to be read from file in the future
-	tag = { "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
+	tag = { "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "ENVIRONMENT","EFFECTS","PREFABS","OTHERS" };
 }
 /*!*****************************************************************************
 \brief
@@ -208,7 +208,7 @@ None.
 *******************************************************************************/
 void HierarchyPanel::newPrefab()
 {
-	static int n{};
+	static int n{1};
 	Prefab* pre = new Prefab("new Prefab"+std::to_string(n));
 	//static Prefab pre("new Prefab"+n);
 	mPrefabs.push_back(pre);
@@ -216,7 +216,7 @@ void HierarchyPanel::newPrefab()
 }
 void HierarchyPanel::newPrefabee(Prefab* pre)
 {
-	static int n{};
+	static int n{1};
 	Entity b = pre->CreatePrefabee();
 	b.GetComponent<General>().name = "Prefabee" + std::to_string(n);
 	n++;

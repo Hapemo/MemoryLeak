@@ -446,7 +446,16 @@ void Prefab::UpdateComponent(T const& _component) { // TODO: Possible optimisati
 	*(static_cast<T*>(mComponents[pos])) = _component;
 
 	for (Entity const& e : mPrefabees)
+	{
 		e.GetComponent<T>() = *(static_cast<T*>(mComponents[pos]));
+		//doesnt work... whyy? -WJ
+		// need to ensure all entities different name
+		//if (pos == 0) //==COMPONENTID::GENERAL
+		//{
+		//	static int count{ 1 };
+		//	e.GetComponent<T>().name = e.GetComponent<T>().name + std::to_string(count);
+		//}
+	}
 }
 
 template<typename T>
