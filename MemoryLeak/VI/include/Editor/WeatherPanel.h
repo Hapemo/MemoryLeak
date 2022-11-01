@@ -27,4 +27,4 @@ public:
 private:
 	bool isWeatherPaused;
 };
-#define weatherIocnSize ImVec2(10,10)
+#define weatherIocnSize ImVec2(12,12)
