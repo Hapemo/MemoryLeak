@@ -37,7 +37,6 @@ void Physics2DManager::Update(const double& _appDT) {
 		//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
 		while (Physics2DManager::mAccumulatedDT >= Physics2DManager::fixedDT) {
 			Step();
-			collision2DManager->ResolveCollisions(Physics2DManager::fixedDT);
 			Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
 		}
 	}
@@ -82,6 +81,8 @@ void Physics2DManager::Step() {
 		// Reset forces on the object for next step
 		SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
 	}
+
+	collision2DManager->ResolveCollisions(Physics2DManager::fixedDT);
 }
 
 void Physics2DManager::UpdatePosition(const Entity& _e) {
