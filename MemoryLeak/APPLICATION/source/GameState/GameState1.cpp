@@ -10,7 +10,6 @@ Game state for testing physics
 #include "GameState1.h"
 #include "Application.h"
 #include "Input.h"
-#include "TestScript.h"
 
 void GameState1::Load() {
   //ResourceManager::GetInstance()->LoadAllResources();
@@ -20,8 +19,7 @@ void GameState1::Load() {
   renderManager->SetDebug(true);
   LoadWithGUID(16667121456447749);
 }
-Entity scriptEntity{};
-ScriptComponent test;
+
 void GameState1::Init() {
     for (Scene* scenePtr : mScenes)
         scenePtr->Init();
@@ -80,11 +78,6 @@ void GameState1::Init() {
     //    Text{ "3Dumb.ttf", "Hello World!", Math::Vec2{100,0}, 1, {255, 0, 0, 255}, 0, 0 });
     //
     //mEntities.insert(e2);
-    
-    scriptEntity = ECS::CreateEntity();
-    scriptEntity.AddComponent<General>(General{ "scriptEntity", TAG::OTHERS, SUBTAG::OTHERS, true, false });
-    scriptEntity.AddComponent<Script>(Script({ "TestScript", &test }));
-    logicSystem->Init();
 }
 
 void GameState1::Update() {
@@ -108,8 +101,6 @@ void GameState1::Update() {
   //  ECS::DestroyEntity(11);
   //  mEntities.erase(Entity{ 11 });
   //}
-
-  logicSystem->Update();
 }
 
 void GameState1::Draw() {
@@ -121,8 +112,6 @@ void GameState1::Free() {
     for (auto& scenePtr : mScenes)
         scenePtr->Exit();
     //ECS::DestroyAllEntities();
-    //logicSystem->Exit();
-    scriptEntity.Destroy();
 }
 
 void GameState1::Unload() {

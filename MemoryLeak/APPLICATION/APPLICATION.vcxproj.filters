@@ -10,8 +10,10 @@
     <ClInclude Include="include\GameState\GameState3.h" />
     <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
     <ClInclude Include="include\GameState\GameStateJazz.h" />
-    <ClInclude Include="include\TestScript.h" />
     <ClInclude Include="include\GameState\Lighting.h" />
+    <ClInclude Include="include\GameState\ScriptingDemo.h" />
+    <ClInclude Include="include\Scripts\TestScript.h" />
+    <ClInclude Include="include\Scripts\TestScript2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Scene\Scene.cpp" />
@@ -24,7 +26,9 @@
     <ClCompile Include="source\GameState\GameState3.cpp" />
     <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
     <ClCompile Include="source\GameState\GameStateJazz.cpp" />
-    <ClCompile Include="source\TestScript.cpp" />
     <ClCompile Include="source\GameState\Lighting.cpp" />
+    <ClCompile Include="source\GameState\ScriptingDemo.cpp" />
+    <ClCompile Include="source\Scripts\TestScript.cpp" />
+    <ClCompile Include="source\Scripts\TestScript2.cpp" />
   </ItemGroup>
 </Project>

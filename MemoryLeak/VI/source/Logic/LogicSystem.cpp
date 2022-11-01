@@ -10,16 +10,12 @@ This file contains the function definitions of the class LogicSystem.
 The LogicSystem class handles the C# scripting for the engine.
 *******************************************************************************/
 
-#include "ECS_tools.h"
-#include "Logic/LogicSystem.h"
-#include "Logic/ScriptManager.h"
+#include "LogicSystem.h"
 
-LogicSystem::LogicSystem() {
-}
-
-LogicSystem::~LogicSystem() {
-}
-
+/*!*****************************************************************************
+\brief
+Run the initialisation function for all active entities' scripts.
+*******************************************************************************/
 void LogicSystem::Init() {
 	LOG_DEBUG("LOGICSYSYEM INIT.");
 	for (Entity const& e : mEntities) {
@@ -30,6 +26,10 @@ void LogicSystem::Init() {
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Run the update function for all active entities' scripts.
+*******************************************************************************/
 void LogicSystem::Update() {
 	//LOG_DEBUG("LOGICSYSYEM UPDATE.");
 	for (Entity const& e : mEntities) {
@@ -40,6 +40,10 @@ void LogicSystem::Update() {
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Run the exit function for all active entities' scripts.
+*******************************************************************************/
 void LogicSystem::Exit() {
 	LOG_DEBUG("LOGICSYSYEM EXITING.");
 	for (Entity const& e : mEntities) {
