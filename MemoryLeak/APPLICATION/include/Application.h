@@ -71,10 +71,13 @@ public:
 	static std::string getTitle() { return title; }
 	static int getWindowWidth() { return window_width; }
 	static int getWindowHeight() { return window_height; }
+	static std::string& GetCurrGameStateName() { return mCurrGameStateName; }
+
 private:
 	static int window_width, window_height;
 	static std::string title;
 	static GLFWwindow* ptr_window;
+	static std::string mCurrGameStateName;
 
 	/*!*****************************************************************************
 	 \brief

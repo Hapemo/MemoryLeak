@@ -93,7 +93,37 @@ void GameStateManager::Init() {
 
 void GameStateManager::NextGS(E_GS gamestate) { mNextGS = gamestate; }
 
-void GameStateManager::SetNewGameState() { mCurrGameState = GS_List[mCurrGS]; }
+void GameStateManager::SetNewGameState() { 
+	mCurrGameState = GS_List[mCurrGS];
+	switch (mCurrGS) {
+	case E_GS::JAZZ:
+		Application::GetCurrGameStateName() = "JAZZ";
+		break;
+	case E_GS::PHYSICS:
+		Application::GetCurrGameStateName() = "PHYSICS";
+		break;
+	case E_GS::ScriptingDemo:
+		Application::GetCurrGameStateName() = "ScriptingDemo";
+		break;
+	case E_GS::Lighting:
+		Application::GetCurrGameStateName() = "Lighting";
+		break;
+	case E_GS::EXIT:
+		Application::GetCurrGameStateName() = "EXIT";
+		break;
+	case E_GS::INVALID:
+		Application::GetCurrGameStateName() = "INVALID";
+		break;
+	case E_GS::RESTART:
+		Application::GetCurrGameStateName() = "RESTART";
+		break;
+	case E_GS::ParallaxSprite:
+		Application::GetCurrGameStateName() = "ParallaxSprite";
+		break;
+	default:
+		Application::GetCurrGameStateName() = "Unknown";
+	}
+}
 
 void GameStateManager::Exit() {
 	for (GS_pair pair : GS_List) {
