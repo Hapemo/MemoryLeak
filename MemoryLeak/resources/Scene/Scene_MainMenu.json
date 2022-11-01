@@ -96,7 +96,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 50.0
+                "Y": 80.0
             }
         },
         "Sprite": {
@@ -152,7 +152,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -66.23051452636719
+                "Y": -30.231000900268555
             }
         },
         "Sprite": {
@@ -196,19 +196,19 @@
     "Entity4": {
         "General": {
             "name": "_NEW_DragDrop1",
-            "tag": 8,
+            "tag": 5,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 400.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -428.4313659667969,
-                "Y": -171.56861877441406
+                "X": 0.0,
+                "Y": -369.6080017089844
             }
         },
         "Sprite": {
@@ -232,24 +232,39 @@
                 "Y": 1.0
             },
             "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Quit",
+            "offset": {
+                "X": -59.0,
+                "Y": -19.0
+            },
+            "scale": 1.2000000476837158,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
         }
     },
     "Entity5": {
         "General": {
-            "name": "_NEW_DragDrop2",
-            "tag": 8,
+            "name": "Settling",
+            "tag": 5,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 400.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 471.5686340332031,
-                "Y": -281.37255859375
+                "X": 0.0,
+                "Y": -254.27499389648438
             }
         },
         "Sprite": {
@@ -273,9 +288,162 @@
                 "Y": 1.0
             },
             "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Credits",
+            "offset": {
+                "X": -88.0,
+                "Y": -25.0
+            },
+            "scale": 1.2000000476837158,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
         }
     },
     "Entity6": {
+        "General": {
+            "name": "_NEW_DragDrop3",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -142.02000427246094
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 13
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Settlings",
+            "offset": {
+                "X": -105.0,
+                "Y": -24.0
+            },
+            "scale": 1.2000000476837158,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    "Entity7": {
+        "General": {
+            "name": "_NEW_DragDrop1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 538.2352905273438,
+                "Y": -214.7058868408203
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\boat.png",
+            "layer": 14
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity8": {
+        "General": {
+            "name": "_NEW_DragDrop2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 563.7254638671875,
+                "Y": -244.11766052246094
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\mc.png",
+            "layer": 15
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity9": {
         "General": {
             "name": "_NEW_DragDrop3",
             "tag": 8,
@@ -289,8 +457,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -16.666667938232422,
-                "Y": -314.7059020996094
+                "X": -679.4118041992188,
+                "Y": -324.5097961425781
             }
         },
         "Sprite": {
@@ -301,8 +469,8 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 13
+            "texture": "Textures\\Characters\\girl.png",
+            "layer": 16
         },
         "RectCollider": {
             "centerOffset": {

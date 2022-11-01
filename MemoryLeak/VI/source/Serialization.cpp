@@ -332,7 +332,7 @@ void addVectorArrayForceMember(Document& scene, Value& parent, const char* name,
 		Value grandchilditems(kObjectType);
 		if (data[i].forceID == 0)
 		{
-			addVectorMember(scene, grandchilditems, "scale", data[i].linearForce.unitDirection);
+			addVectorMember(scene, grandchilditems, "unitDirection", data[i].linearForce.unitDirection);
 			grandchilditems.AddMember(StringRef("magnitude"), data[i].linearForce.magnitude, scene.GetAllocator());
 		}
 		else if (data[i].forceID==1)
@@ -787,7 +787,7 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 				force.forceID = f["forceID"].GetInt();
 				if (force.forceID == 0)
 				{
-					force.linearForce.unitDirection = GetVec2(f["linearForce"]["magnitude"]);
+					force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
 					force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
 				}
 				else if (force.forceID == 1)
@@ -1020,7 +1020,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 				force.forceID = f["forceID"].GetInt();
 				if (force.forceID == 0)
 				{
-					force.linearForce.unitDirection = GetVec2(f["linearForce"]["magnitude"]);
+					force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
 					force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
 				}
 				else if (force.forceID == 1)
@@ -1257,7 +1257,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 				force.forceID = f["forceID"].GetInt();
 				if (force.forceID == 0)
 				{
-					force.linearForce.unitDirection = GetVec2(f["linearForce"]["magnitude"]);
+					force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
 					force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
 				}
 				else if (force.forceID == 1)

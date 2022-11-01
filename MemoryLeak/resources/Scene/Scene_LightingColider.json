@@ -28,12 +28,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 0.699999988079071,
+                "Y": 3.799999952316284
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -73,12 +84,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.2999999523162842,
+                "Y": 1.2999999523162842
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -101,7 +123,7 @@
                 "X": 100.0,
                 "Y": 200.0
             },
-            "rotation": 1.7000000476837158,
+            "rotation": 1.6999999284744263,
             "translation": {
                 "X": 400.0,
                 "Y": -250.0
@@ -118,12 +140,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 2.0,
+                "Y": 0.5
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -163,12 +196,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.2000000476837158,
+                "Y": 1.2000000476837158
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -208,12 +252,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 2.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -253,12 +308,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 0.30000001192092896,
+                "Y": 3.0
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -298,12 +364,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -343,12 +420,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.2000000476837158,
+                "Y": 1.2000000476837158
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -388,12 +476,23 @@
             "texture": "Textures\\Icons\\Assets.txt",
             "layer": 1
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "3Dumb",
             "text": "Wall",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {
@@ -418,8 +517,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 2.240483522415161
+                "X": -31.927078247070313,
+                "Y": 19.531606674194336
             }
         },
         "Sprite": {
@@ -445,8 +544,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 0.0,
-                "Y": 0.5143687129020691
+                "X": 0.000011581709259189665,
+                "Y": 7.006492321624085e-44
             },
             "acceleration": {
                 "X": 0.0,
@@ -457,12 +556,23 @@
             "forceList": [],
             "renderFlag": false
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Lightsource",
             "offset": {
-                "X": -50.0,
-                "Y": -2.240483522415161
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
             },
             "scale": 0.75,
             "color": {

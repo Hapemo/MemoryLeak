@@ -768,9 +768,6 @@ void InspectorPanel::PrefabEditor()
 			//static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
 			ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
 			general.subtag = (SUBTAG)subtagID;
-			if (ImGui::IsItemDeactivatedAfterEdit)
-			{
-			}
 			p->UpdateComponent(general);
 		}
 	}
