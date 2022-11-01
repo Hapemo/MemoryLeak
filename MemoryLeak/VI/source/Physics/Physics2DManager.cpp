@@ -281,7 +281,7 @@ void Physics2DManager::UpdateEntitiesAccumulatedForce(const Entity& _e) {
 	}
 }
 
-void Physics2DManager::AddLinearForce(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude,
+void Physics2DManager::AddLinearForceToList(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude,
 								const double& _lifetimeLimit, const double& _age, const bool& _isActive) {
 	Force tmpForce{};
 	tmpForce.lifetimeLimit = _lifetimeLimit;
@@ -294,7 +294,7 @@ void Physics2DManager::AddLinearForce(const Entity& _e, const Math::Vec2& _unitD
 	GetPhysicsComponent(_e).forceList.push_back(tmpForce);
 }
 
-void Physics2DManager::AddRotationForce(const Entity& _e, const float& _torque, 
+void Physics2DManager::AddRotationForceToList(const Entity& _e, const float& _torque, 
 								const double& _lifetimeLimit, const double& _age,  const bool& _isActive) {
 	Force tmpForce{};
 	tmpForce.lifetimeLimit = _lifetimeLimit;
@@ -305,7 +305,7 @@ void Physics2DManager::AddRotationForce(const Entity& _e, const float& _torque,
 
 	GetPhysicsComponent(_e).forceList.push_back(tmpForce);
 }
-void Physics2DManager::AddDragForce(const Entity& _e, const float& _directionDrag, const float& _rotationDrag,
+void Physics2DManager::AddDragForceToList(const Entity& _e, const float& _directionDrag, const float& _rotationDrag,
 								const double& _lifetimeLimit, const double& _age, const bool& _isActive) {
 	Force tmpForce{};
 	tmpForce.lifetimeLimit = _lifetimeLimit;

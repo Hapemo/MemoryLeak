@@ -304,16 +304,16 @@ bool Collision2DManager::HasCollider(const Entity& _e) {
 		? true : false;
 }
 
-int Collision2DManager::NoOfColliders(const Entity& _e) {
-	int count{ 0 };
-	
-	if (_e.HasComponent<RectCollider>())
-		++count;
-	if (_e.HasComponent<CircleCollider>())
-		++count;
-
-	return count;
-}
+//int Collision2DManager::NoOfColliders(const Entity& _e) {
+//	int count{ 0 };
+//	
+//	if (_e.HasComponent<RectCollider>())
+//		++count;
+//	if (_e.HasComponent<CircleCollider>())
+//		++count;
+//
+//	return count;
+//}
 
 void Collision2DManager::SetupCollisionDatabase() {
 	RegisterCollisionTest(ColliderType::CIRCLE, ColliderType::CIRCLE, CI_CirclevsCircle);
@@ -336,6 +336,7 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 	for (auto item : mContactList) {
 		UpdatePositions(item);
 		UpdateVelocities(item, _dt);
+		PositionCorrection(item);
 	}
 
 	ClearContactList();
@@ -371,34 +372,33 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 				continue;
 
 			// Code has not accounted for multiple colliders attached to an entity despite it being a constraint made to me by group members
-			for (int i{ 0 }; i < NoOfColliders(*e1); ++i){
-				int e1Type{0};
-				if (e1->HasComponent<RectCollider>())
-					e1Type = static_cast<int>(ColliderType::RECT);
+			//for (int i{ 0 }; i < NoOfColliders(*e1); ++i){
+			int e1Type{0};
+			if (e1->HasComponent<RectCollider>())
+				e1Type = static_cast<int>(ColliderType::RECT);
+			else if (e1->HasComponent<CircleCollider>())
+				e1Type = static_cast<int>(ColliderType::CIRCLE);
+			else
+				break;
 
-				else if (e1->HasComponent<CircleCollider>())
-					e1Type = static_cast<int>(ColliderType::CIRCLE);
-				else
-					break;
+			//	for (int j{ 0 }; j < NoOfColliders(*e2); ++j) {
+			int e2Type{0};
 
-				for (int j{ 0 }; j < NoOfColliders(*e2); ++j) {
-					int e2Type{0};
+			if (e2->HasComponent<RectCollider>())
+				e2Type = static_cast<int>(ColliderType::RECT);
+			else if (e1->HasComponent<CircleCollider>())
+				e1Type = static_cast<int>(ColliderType::CIRCLE);
+			else
+				break;
 
-					if (e2->HasComponent<RectCollider>())
-						e2Type = static_cast<int>(ColliderType::RECT);
-					else if (e1->HasComponent<CircleCollider>())
-						e1Type = static_cast<int>(ColliderType::CIRCLE);
-					else
-						break;
-
-					Contact contact{ *e1, *e2 };
-					contact.obj1Type = e1Type;
-					contact.obj2Type = e2Type;
-					(*mCollisionDatabase[static_cast<int>(contact.obj1Type)][static_cast<int>(contact.obj2Type)])(contact, _dt);
-					if (!contact.contacts.empty())
-						mContactList.push_back(contact);
-				}
-			}
+			Contact contact{ *e1, *e2 };
+			contact.obj1Type = e1Type;
+			contact.obj2Type = e2Type;
+			(*mCollisionDatabase[static_cast<int>(contact.obj1Type)][static_cast<int>(contact.obj2Type)])(contact, _dt);
+			if (!contact.contacts.empty())
+				mContactList.push_back(contact);
+			//	}
+			//}
 		}
 	}
 

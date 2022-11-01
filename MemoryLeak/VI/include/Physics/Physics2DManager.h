@@ -375,7 +375,7 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	AddLinearForce function that adds a linear force to an entity's list of forces
+	AddLinearForceToList function that adds a linear force to an entity's list of forces
 	to act on it
 	\param const Entity &
 	A reference to a read-only Entity to
@@ -396,11 +396,11 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddLinearForce(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude, 
-						const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	void AddLinearForceToList(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude, 
+							  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	/*!*****************************************************************************
 	\brief
-	AddRotationForce function that adds a rotation force to an entity's list of forces
+	AddRotationForceToList function that adds a rotation force to an entity's list of forces
 	to act on it
 	\param const Entity &
 	A reference to a read-only Entity to
@@ -419,11 +419,11 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddRotationForce(const Entity& _e, const float& _torque, 
+	void AddRotationForceToList(const Entity& _e, const float& _torque, 
 						  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	/*!*****************************************************************************
 	\brief
-	AddDragForce function that adds a drag/resistance force to an entity's list of forces
+	AddDragForceToList function that adds a drag/resistance force to an entity's list of forces
 	to act on it
 	\param const Entity &
 	A reference to a read-only Entity to
@@ -446,8 +446,12 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddDragForce(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f, 
+	void AddDragForceToList(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f, 
 					  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	//void ApplyLinearForceToAccumulated(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude);
+	//void ApplyRotationForceToAccumulated(const Entity& _e, const float& _torque);
+	//void ApplyDragForceToAccumulated(const Entity& _e, const float& _directionDrag, const float& _rotationDrag);
+
 
 	/*!*****************************************************************************
 	\brief

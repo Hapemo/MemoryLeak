@@ -956,7 +956,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("nnnPhysics2D")) {
+		if (entity.HasMember("Physics2D")) {
 
 			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
@@ -987,7 +987,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 				force.forceID = f["forceID"].GetInt();
 				if (force.forceID == 0)
 				{
-					force.linearForce.unitDirection = GetVec2(f["linearForce"]["magnitude"]);
+					force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
 					force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
 				}
 				else if (force.forceID == 1)
@@ -1005,7 +1005,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
 		}
 		if (entity.HasMember("RectCollider")) {
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
@@ -1178,7 +1178,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("nnnnnPhysics2D")) {
+		if (entity.HasMember("Physics2D")) {
 
 			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
@@ -1227,7 +1227,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
 		}
 		if (entity.HasMember("RectCollider")) {
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
