@@ -88,15 +88,24 @@ void Physics2DManager::UpdatePosition(const Entity& _e) {
 	// Dampen velocity (for soft drag)
 	//SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
 	ScaleVelocity(_e, static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
+	SetAngularVelocity(_e, GetAngularVelocity(_e) * static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
 
 	// Cap velocity
-	if (Math::Dot(GetVelocity(_e), GetVelocity(_e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) {
+	if (Math::Dot(GetVelocity(_e), GetVelocity(_e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) 
 		SetVelocity(_e, GetVelocity(_e).Normalize() * Physics2DManager::velocityCap);
-	}
+
+	if (GetAngularVelocity(_e) > Physics2DManager::angularVelocityCap)
+		SetAngularVelocity(_e, Physics2DManager::angularVelocityCap);
 
 	// Move entity by velocity
 	_e.GetComponent<Transform>().translation += GetVelocity(_e) * static_cast<float>(fixedDT);
 	_e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(_e) * fixedDT);
+
+	// Clamp rotation
+	if (_e.GetComponent<Transform>().rotation > static_cast<float>((2.0 * Math::PI)))
+		_e.GetComponent<Transform>().rotation -= static_cast<float>((2.0 * Math::PI));
+	else if (_e.GetComponent<Transform>().rotation < static_cast<float>(-(2.0 * Math::PI)))
+		_e.GetComponent<Transform>().rotation += static_cast<float>((2.0 * Math::PI));
 }
 
 //void Physics2DManager::AddPhysicsComponent() {

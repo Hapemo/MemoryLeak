@@ -166,7 +166,7 @@ void SerializationManager::LoadScene(std::string _filename)
 				force.forceID = f["forceID"].GetInt();
 				if (force.forceID == 0)
 				{
-					force.linearForce.unitDirection = GetVec2(f["linearForce"]["magnitude"]);
+					force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
 					force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
 				}
 				else if (force.forceID == 1)

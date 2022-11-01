@@ -85,7 +85,7 @@ void ECSManager::RegisterCollision2DManager() {
 
 void ECSManager::RegisterPlayerController() {
 	Signature signature{};
-	signature.set(ECS::GetComponentType<PlayerTmp>());
+	signature.set(ECS::GetComponentType<General>());
 
 	playerManager = ECS::RegisterSystem<PlayerController>();
 	ECS::SetSystemSignature<PlayerController>(signature);

@@ -552,7 +552,15 @@
             },
             "angularVelocity": 0.0,
             "angularTorque": 0.0,
-            "forceList": [],
+            "forceList": [{
+                "lifetimeLimit": 0.0,
+                "age": 0.0,
+                "isActive": true,
+                "forceID": 1,
+                "rotationalForce": {
+                    "torque": 0.26
+                }
+            }],
             "renderFlag": false
         },
         "CircleCollider": {

@@ -30,7 +30,10 @@ NULL
 void PlayerController::Update() {
 	// Loop through entity container
 	for (const Entity& e : mEntities) {
-		if (!e.HasComponent<PlayerTmp>() || !e.HasComponent<Physics2D>())
+		if (!e.HasComponent<Physics2D>())
+			continue;
+
+		if (e.GetComponent<General>().tag != TAG::PLAYER)
 			continue;
 		
 		// Hack so that debug render is correct
