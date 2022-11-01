@@ -37,4 +37,9 @@ public:
 	*******************************************************************************/
 	void Update();
 private:
+	const double playerSpeed{ 30.f },								// Player speed
+				 playerSpeedNaturalLossScalar{ 0.99 },				// Player speed decceleration scalar
+				 playerSpeedCap{ 300.f };							// Player speed cap
+
+	bool FirstUpdate{ true };
 };

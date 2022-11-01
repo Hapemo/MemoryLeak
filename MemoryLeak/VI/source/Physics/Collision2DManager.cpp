@@ -4,10 +4,11 @@
 \par	DP email: l.hsienweijoachim@digipen.edu
 \par	Course: GAM200
 \par	Group: Memory Leak Studios
-\date	25-09-2022
-\brief  This file contains the definition of the Collision System Class member
-		functions which handles the collision detection and resolution of entities
-		stored in its list
+\date	01-11-2022
+\brief  This file contains the declaration of the Collision System Class and its
+		member functions which handles a database of possible collision checks
+		stored in its list. It also defines the CollisionStore struct that is
+		used to store the information about the entity pair and its collision
 *******************************************************************************/
 
 // -----------------------------
@@ -149,18 +150,23 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	if (obj2.HasComponent<Physics2D>())
 		obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_contact.interTime);
 
+	// Compute penetration
 	Math::Vec2 distVec{ obj1NewPos - obj2NewPos };
 	Math::Vec2 diff{ scale1.x + scale2.x - std::fabs(distVec.x),
 					 scale1.y + scale2.y - std::fabs(distVec.y) };
 
 	//if (0.f < dist.x) {
 	//	if (0.f < dist.y) {
+	// 
+	// Find axis that penetrates less and use it to resolve collision
 	if (diff.x < diff.y) {
+		// Set contact information
 		_contact.normal = distVec.x < 0 ? Math::Vec2{ -1.f, 0.f } : Math::Vec2{ 1.f, 0.f };
 		_contact.penetration = diff.x;
 		_contact.contacts.push_back(_contact.normal * diff.x + obj1NewPos);
 	}
 	else {
+		// Set contact information
 		_contact.normal = distVec.y < 0 ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
 		_contact.penetration = diff.y;
 		_contact.contacts.push_back(_contact.normal * diff.y + obj1NewPos);
@@ -189,11 +195,13 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 	if ( sqDist < (obj1R * obj1R + obj2R * obj2R)) {
 		// On top of each other
 		if (sqDist == 0.f) {
+			// Set contact information
 			_contact.penetration = obj1R;
 			_contact.normal = Math::Vec2{ 1.f, 0.f };
 			_contact.contacts.push_back(obj1Pos);
 		}
 		else {
+			// Set contact information
 			_contact.penetration = (obj1R + obj2R) - sqrt(sqDist);
 			_contact.normal = (obj2Pos - obj1Pos).Normalize();
 			_contact.contacts.push_back(_contact.normal * obj1R + obj1Pos);
@@ -275,6 +283,7 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 		if (obj2.HasComponent<Physics2D>())
 			obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_contact.interTime);
 
+		// Set contact information
 		_contact.penetration = sqrt(Math::SqDistance(obj1NewPos, obj2NewPos)) - (obj1R + obj2R);
 		_contact.normal = (obj2NewPos - obj1NewPos).Normalize();
 		_contact.contacts.push_back(_contact.normal * obj1R + obj1NewPos);
@@ -328,15 +337,40 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 
 
 void Collision2DManager::ResolveCollisions(const double& _dt) {
+	// Check for collision and generate contact list
 	GenerateContactList(_dt);
 
-	for (auto item : mContactList)
-		ResolveContact(item);
+	// Resolve collision
+	// Uncomment and move player into a circle collider to see the player spin
+	//for (Contact &item : mContactList)
+	//	ResolveContact(item);
 
-	for (auto item : mContactList) {
-		UpdatePositions(item);
-		UpdateVelocities(item, _dt);
-		PositionCorrection(item);
+	for (Contact &item : mContactList) {
+		//UpdatePositions(item);
+		//UpdateVelocities(item, _dt);
+		//PositionCorrection(item);
+
+		// Impulse response not working
+		// For now, we just disable the movement
+		//if (item.obj1.HasComponent<Physics2D>()) 
+		//	item.obj1.GetComponent<Physics2D>().dynamicsEnabled = false;
+		//if (item.obj2.HasComponent<Physics2D>())
+		//	item.obj2.GetComponent<Physics2D>().dynamicsEnabled = false;
+		
+		// For now, we just clear the movement
+		if (item.obj1.HasComponent<Physics2D>()) {
+			item.obj1.GetComponent<Physics2D>().acceleration = Math::Vec2{ 0.f, 0.f };
+			item.obj1.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f, 0.f };
+			item.obj1.GetComponent<Physics2D>().accumulatedForce = Math::Vec2{ 0.f, 0.f };
+			item.obj1.GetComponent<Physics2D>().forceList.clear();
+		}
+		if (item.obj2.HasComponent<Physics2D>()) {
+			item.obj2.GetComponent<Physics2D>().acceleration = Math::Vec2{ 0.f, 0.f };
+			item.obj2.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f, 0.f };
+			item.obj2.GetComponent<Physics2D>().accumulatedForce = Math::Vec2{ 0.f, 0.f };
+			item.obj2.GetComponent<Physics2D>().forceList.clear();
+		}
+
 	}
 
 	ClearContactList();
@@ -346,6 +380,7 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 	// Broad Phase Here
 
 
+	// For now, we loop through the entity list
 	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
 		for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
 			if (e1 == e2)
@@ -368,33 +403,39 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 			//	}
 			//}
 
+			// Check if either of the entities do not have collider
 			if (!HasCollider(*e1) || !HasCollider(*e2))
 				continue;
 
 			// Code has not accounted for multiple colliders attached to an entity despite it being a constraint made to me by group members
 			//for (int i{ 0 }; i < NoOfColliders(*e1); ++i){
+			// Find collider type of 1st entity
 			int e1Type{0};
 			if (e1->HasComponent<RectCollider>())
 				e1Type = static_cast<int>(ColliderType::RECT);
 			else if (e1->HasComponent<CircleCollider>())
 				e1Type = static_cast<int>(ColliderType::CIRCLE);
 			else
-				break;
+				continue;
 
 			//	for (int j{ 0 }; j < NoOfColliders(*e2); ++j) {
+			// Find collider type of 2nd entity
 			int e2Type{0};
-
 			if (e2->HasComponent<RectCollider>())
 				e2Type = static_cast<int>(ColliderType::RECT);
-			else if (e1->HasComponent<CircleCollider>())
-				e1Type = static_cast<int>(ColliderType::CIRCLE);
+			else if (e2->HasComponent<CircleCollider>())
+				e2Type = static_cast<int>(ColliderType::CIRCLE);
 			else
-				break;
+				continue;
 
+			// Initialize contact
 			Contact contact{ *e1, *e2 };
 			contact.obj1Type = e1Type;
 			contact.obj2Type = e2Type;
+			// Call function to check for collision
 			(*mCollisionDatabase[static_cast<int>(contact.obj1Type)][static_cast<int>(contact.obj2Type)])(contact, _dt);
+
+			// If contact isnt empty, means collision occurred
 			if (!contact.contacts.empty())
 				mContactList.push_back(contact);
 			//	}
@@ -409,32 +450,30 @@ void Collision2DManager::ClearContactList() {
 }
 
 void Collision2DManager::ResolveContact(Contact& _contact) {
+	// Compute average restitution and friction of the two entities
 	float avgRestitution{ _contact.DetermineRestitution() },
 		  cofFriction{ _contact.DetermineFriction() };
 
+	// Store bool value of whether entity has physics component
 	bool obj1HasP{ _contact.obj1.HasComponent<Physics2D>() },
 		 obj2HasP{ _contact.obj1.HasComponent<Physics2D>() };
 
-	Physics2D& obj1P{ _contact.obj1.GetComponent<Physics2D>() },
-		       obj2P{ _contact.obj2.GetComponent<Physics2D>() };
-
 	// Check for infinite mass
 	if (obj1HasP && obj2HasP) {
-		if (obj1P.mass == 0.f && obj2P.mass == 0.f) {
-			obj1P.velocity = Math::Vec2{ 0.f,0.f };
-			obj2P.velocity = Math::Vec2{ 0.f,0.f };
+		if (_contact.obj1.GetComponent<Physics2D>().mass == 0.f && _contact.obj2.GetComponent<Physics2D>().mass == 0.f) {
+			_contact.obj1.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f,0.f };
+			_contact.obj2.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f,0.f };
 			return;
 		}
 	}
 
+	// Store positions
 	Math::Vec2 obj1Pos{ _contact.obj1.GetComponent<Transform>().translation },
-		obj2Pos{ _contact.obj2.GetComponent<Transform>().translation };
-
+			   obj2Pos{ _contact.obj2.GetComponent<Transform>().translation };
 	if (_contact.obj1Type == static_cast<int>(ColliderType::RECT))
 		obj1Pos += _contact.obj1.GetComponent<RectCollider>().centerOffset;
 	else if (_contact.obj1Type == static_cast<int>(ColliderType::CIRCLE))
 		obj1Pos += _contact.obj1.GetComponent<CircleCollider>().centerOffset;
-
 	if (_contact.obj2Type == static_cast<int>(ColliderType::RECT))
 		obj2Pos += _contact.obj2.GetComponent<RectCollider>().centerOffset;
 	else if (_contact.obj2Type == static_cast<int>(ColliderType::CIRCLE))
@@ -443,14 +482,14 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 	for (auto contact : _contact.contacts) {
 		// Calculate radii from COM to contact
 		Math::Vec2 rObj1{ contact - obj1Pos },
-			rObj2{ contact - obj2Pos };
+					rObj2{ contact - obj2Pos };
 
 		// Relative Velocity
 		Math::Vec2 relVel{ 0.f, 0.f };
 		if (obj2HasP)
-			relVel += obj2P.velocity + Math::Cross(obj2P.angularVelocity, rObj2);
+			relVel += _contact.obj2.GetComponent<Physics2D>().velocity + Math::Cross(_contact.obj2.GetComponent<Physics2D>().angularVelocity, rObj2);
 		if (obj1HasP)
-			relVel -= obj1P.velocity - Math::Cross(obj1P.angularVelocity, rObj1);
+			relVel -= _contact.obj1.GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj1.GetComponent<Physics2D>().angularVelocity, rObj1);
 
 		// Relative velocity along the normal
 		float contactVel{ Math::Dot(relVel, _contact.normal) };
@@ -464,9 +503,9 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 			  rObj2CrossN{ Math::Cross(rObj2, _contact.normal) };
 		float invMassSum{ 0 };
 		if (obj1HasP)
-			invMassSum += ((obj1P.mass == 0.f) ? 0.f : 1.f / obj1P.mass) + (rObj1CrossN * rObj1CrossN) * ((obj1P.inertia == 0.f) ? 0.f : 1.f / obj1P.inertia);
+			invMassSum += ((_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass) + (rObj1CrossN * rObj1CrossN) * ((_contact.obj1.GetComponent<Physics2D>().inertia == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().inertia);
 		if (obj2HasP)
-			invMassSum += ((obj2P.mass == 0.f) ? 0.f : 1.f / obj2P.mass) + (rObj2CrossN * rObj2CrossN) * ((obj2P.inertia == 0.f) ? 0.f : 1.f / obj2P.inertia);
+			invMassSum += ((_contact.obj2.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj2.GetComponent<Physics2D>().mass) + (rObj2CrossN * rObj2CrossN) * ((_contact.obj2.GetComponent<Physics2D>().inertia == 0.f) ? 0.f : 1.f / _contact.obj2.GetComponent<Physics2D>().inertia);
 
 		// Calculate impulse scalar
 		float scalar{ -(1.f + avgRestitution) * contactVel };
@@ -479,9 +518,9 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 	
 		// Friction impulse
 		if (obj2HasP)
-			relVel += obj2P.velocity + Math::Cross(obj2P.angularVelocity, rObj2);
+			relVel += _contact.obj2.GetComponent<Physics2D>().velocity + Math::Cross(_contact.obj2.GetComponent<Physics2D>().angularVelocity, rObj2);
 		if (obj1HasP)
-			relVel -= obj1P.velocity - Math::Cross(obj1P.angularVelocity, rObj1);
+			relVel -= _contact.obj1.GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj1.GetComponent<Physics2D>().angularVelocity, rObj1);
 
 		// Tangent
 		Math::Vec2 tangent{ relVel - (_contact.normal * Math::Dot(relVel, _contact.normal)) };
@@ -510,11 +549,13 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 }
 
 void Collision2DManager::UpdatePositions(const Contact& _contact) {
+	// Call physics manager to update based on new velocity
 	physics2DManager->UpdatePosition(_contact.obj1);
 	physics2DManager->UpdatePosition(_contact.obj2);
 }
 
 void Collision2DManager::PositionCorrection(Contact& _contact) {
+	// Compute total inverse mass
 	float invMassSum{ 0.f };
 	if (_contact.obj1.HasComponent<Physics2D>())
 		invMassSum += (_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass;
@@ -523,12 +564,14 @@ void Collision2DManager::PositionCorrection(Contact& _contact) {
 	if (invMassSum == 0.f)
 		invMassSum = 1.f;
 
+	// Compute correction value and correct positions
 	Math::Vec2 correction = std::max(_contact.penetration - penAllowance, 0.f) / invMassSum * _contact.normal * penPercentage;
 	_contact.obj1.GetComponent<Transform>().translation -= correction * (_contact.obj1.HasComponent<Physics2D>() ? (_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass : 1.f);
 	_contact.obj2.GetComponent<Transform>().translation += correction * (_contact.obj2.HasComponent<Physics2D>() ? (_contact.obj2.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj2.GetComponent<Physics2D>().mass : 1.f);
 }
 
 void Collision2DManager::UpdateVelocities(Contact& _contact, const double& _dt) {
+	// Calculate relative velocity
 	Math::Vec2 relVel{};
 	if (_contact.obj1.HasComponent<Physics2D>() && _contact.obj2.HasComponent<Physics2D>())
 		relVel = _contact.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - _contact.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
@@ -537,32 +580,33 @@ void Collision2DManager::UpdateVelocities(Contact& _contact, const double& _dt) 
 	else if (_contact.obj2.HasComponent<Physics2D>())
 		relVel = _contact.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
 
+	// Compute seperating velocity scalar
 	float SepVelScalar{ Math::Dot(relVel, _contact.normal) };
 
 	if (SepVelScalar < 0 && SepVelScalar < FLT_MAX)
 		return;
 
+	// Compute updated seperating velocity scalar
 	float newSepVelScalar{ -SepVelScalar * _contact.DetermineRestitution() };
 
-	Math::Vec2 accCausedVel{};
-	if (_contact.obj1.HasComponent<Physics2D>() && _contact.obj2.HasComponent<Physics2D>())
-		relVel = _contact.obj1.GetComponent<Physics2D>().acceleration - _contact.obj2.GetComponent<Physics2D>().acceleration;
-	else if (_contact.obj1.HasComponent<Physics2D>())
-		relVel = _contact.obj1.GetComponent<Physics2D>().acceleration;
-	else if (_contact.obj2.HasComponent<Physics2D>())
-		relVel = _contact.obj2.GetComponent<Physics2D>().acceleration;
+	// No gravity in our game
+	//Math::Vec2 accCausedVel{};
+	//if (_contact.obj1.HasComponent<Physics2D>() && _contact.obj2.HasComponent<Physics2D>())
+	//	relVel = _contact.obj1.GetComponent<Physics2D>().acceleration - _contact.obj2.GetComponent<Physics2D>().acceleration;
+	//else if (_contact.obj1.HasComponent<Physics2D>())
+	//	relVel = _contact.obj1.GetComponent<Physics2D>().acceleration;
+	//else if (_contact.obj2.HasComponent<Physics2D>())
+	//	relVel = _contact.obj2.GetComponent<Physics2D>().acceleration;
 
-	float accCausedVelScalar{ Math::Dot(accCausedVel, _contact.normal) * static_cast<float>(_dt) };
-	if (accCausedVelScalar < 0){
-		newSepVelScalar += _contact.DetermineRestitution() * accCausedVelScalar;
+	//float accCausedVelScalar{ Math::Dot(accCausedVel, _contact.normal) * static_cast<float>(_dt) };
+	//if (accCausedVelScalar < 0){
+	//	newSepVelScalar += _contact.DetermineRestitution() * accCausedVelScalar;
 
-		if (newSepVelScalar < 0.f)
-			newSepVelScalar = 0.f;
-	}
+	//	if (newSepVelScalar < 0.f)
+	//		newSepVelScalar = 0.f;
+	//}
 
-
-	(_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass;
-
+	// Compute total inverse mass
 	float invMassSum{ 0.f };
 	if (_contact.obj1.HasComponent<Physics2D>())
 		invMassSum += (_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass;;
@@ -571,6 +615,7 @@ void Collision2DManager::UpdateVelocities(Contact& _contact, const double& _dt) 
 	if (invMassSum == 0.f)
 		invMassSum = 1.f;
 
+	// Compute change in velocity & impulse per mass
 	float deltaVelocity{ newSepVelScalar - SepVelScalar };
 	Math::Vec2 impulsePerMass{ _contact.normal * (deltaVelocity / invMassSum) };
 

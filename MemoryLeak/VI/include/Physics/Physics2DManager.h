@@ -475,6 +475,7 @@ private:
 	const double fixedDT{ 1.0 / 60.0 };				// Fixed delta time step of 1/60 steps a second
 	const double accumulatedDTCap{ 1.0 };			// Accumulated cannot store more than 1 second worth of updates
 	const float  velocityCap{ 1000.f };				// Global velocity cap
+	const float	 angularVelocityCap{ 30.f };		// Global angular velocity cap
 	bool mStepMode;									// Flag variable containing whether physics update is in step mode
 	bool mAdvanceStep;								// Flag variable containing whether physics should step when its in step mode
 };

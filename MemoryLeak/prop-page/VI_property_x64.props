@@ -22,7 +22,7 @@ copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmod.dll" "$(TargetDir)fmod.dll" /Y</Comm
       <WarningLevel>Level4</WarningLevel>
     </ClCompile>
     <ClCompile>
-      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>GLFW_DLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

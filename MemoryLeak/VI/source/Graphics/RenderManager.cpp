@@ -275,11 +275,11 @@ void RenderManager::RenderDebug()
 			Physics2D &p2d = e.GetComponent<Physics2D>();
 			Transform t = e.GetComponent<Transform>();
 			t.scale = Math::Vec2(p2d.velocity.Magnitude()) * mVectorLengthModifier;
-			if (p2d.velocity.y != 0 && p2d.velocity.x >= 0)
+			if (p2d.velocity.y != 0.f && p2d.velocity.x >= 0.f)
 				t.rotation = atan2f(p2d.velocity.y, p2d.velocity.x);
-			else if (p2d.velocity.y == 0 && p2d.velocity.x > 0)
+			else if (p2d.velocity.y == 0.f && p2d.velocity.x > 0.f)
 				t.rotation = (float)Math::PI / 2.f;
-			else if (p2d.velocity.y != 0 && p2d.velocity.x < 0)
+			else if (p2d.velocity.y != 0.f && p2d.velocity.x < 0.f)
 				t.rotation = (float)Math::PI * 2.f + atan2f(p2d.velocity.y, p2d.velocity.x);
 			else
 				t.rotation = 3.f * (float)Math::PI / 2.f;

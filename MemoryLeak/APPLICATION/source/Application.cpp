@@ -46,6 +46,9 @@ void Application::SystemInit() {
   renderManager->SetVectorLengthModifier(5.f);
   renderManager->SetDebug(true);
 
+  // Collision database initialization
+  collision2DManager->SetupCollisionDatabase();
+
   ResourceManager::GetInstance()->LoadAllResources();
   for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
     spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
