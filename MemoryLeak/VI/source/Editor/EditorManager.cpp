@@ -22,7 +22,7 @@ Entities and its Components.
 #include <DebugPanel.h>
 #include <AssetPanel.h>
 #include <MenuPanel.h>
-
+#include "WeatherPanel.h"
 
 std::vector<Panel*> EditorManager::panels{};
 
@@ -73,7 +73,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static AssetPanel assetPanel{};
 	static DebugPanel debugPanel{};
 	static MenuPanel menuPanel{};
-	panels.push_back(&animationPanel);
+	static WeatherPanel weatherPanel{};
 	panels.push_back(&hierarchyPanel);
 	panels.push_back(&inspectorPanel);
 	panels.push_back(&worldViewPanel);
@@ -82,7 +82,8 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&assetPanel);
 	panels.push_back(&debugPanel);
 	panels.push_back(&menuPanel);
-
+	panels.push_back(&animationPanel);
+	panels.push_back(&weatherPanel);
 	Init();
 }
 void EditorManager::Init()
@@ -198,6 +199,10 @@ None.
 *******************************************************************************/
 void EditorManager::Unload()
 {
+	for (size_t i =0; i< mPrefabs.size(); i++)
+	{
+		delete mPrefabs[i];
+	}
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();

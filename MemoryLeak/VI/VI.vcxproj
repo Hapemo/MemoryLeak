@@ -177,6 +177,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Editor\MenuPanel.h" />
     <ClInclude Include="include\Editor\Panel.h" />
     <ClInclude Include="include\Editor\ViewportPanel.h" />
+    <ClInclude Include="include\Editor\WeatherPanel.h" />
     <ClInclude Include="include\Editor\WorldViewPanel.h" />
     <ClInclude Include="include\freetype\freetype.h" />
     <ClInclude Include="include\freetype\ftadvanc.h" />
@@ -291,6 +292,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Editor\InspectorPanel.cpp" />
     <ClCompile Include="source\Editor\MenuPanel.cpp" />
     <ClCompile Include="source\Editor\ViewportPanel.cpp" />
+    <ClCompile Include="source\Editor\WeatherPanel.cpp" />
     <ClCompile Include="source\Editor\WorldViewPanel.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
     <ClCompile Include="source\Graphics\Camera.cpp" />

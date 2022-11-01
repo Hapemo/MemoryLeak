@@ -39,12 +39,15 @@ private:
 	void TextEditor();
 	void AIEditor();
 	void PlayerTmpEditor();
+	void AddPrefabComponent();
+	void PrefabEditor();
 
 	
 	void AddComponent();
 	void DeleteEntity();
 
 	Entity e;
+	Prefab* p;
 	float tmpFloat;
 	float tmpVec2[2];
 	float tmpVec4[4];

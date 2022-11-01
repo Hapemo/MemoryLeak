@@ -111,7 +111,7 @@ void AssetPanel::Update()
 					{
 						//audioManager->Play(texfilename);
 						std::cout << "play " << texfilename << "\n";
-						audioManager->PlayBGSound(texfilename, 11);
+						audioManager->PlayAnySound(texfilename, 16);
 					}
 
 				}

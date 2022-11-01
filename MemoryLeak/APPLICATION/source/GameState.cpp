@@ -8,6 +8,10 @@
 Game state base class, contains Load, Init, Update, Draw, Free and Unload
 functions.
 
+For Milestone 2:
+Added load and unload of game state using resourceManager
+Added encapsulation of scenes in game state
+
 How to make a gamestate?
 
 1. Make a class for your gamestate, inherited from class GameState

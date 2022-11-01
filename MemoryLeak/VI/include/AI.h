@@ -35,6 +35,7 @@ public:
 	void weatherAIupdate();
 	void updateAI();
 
+	int weatherMap[mapWidth][mapHeight]{}; //to be shifted to provate after implementing proxy class for [] [] operator
 private:
 	void updateAIAllColors(const Entity&);
 	void updateAITrafficLight(const Entity&);
@@ -42,7 +43,8 @@ private:
 	void updateAILeftRight(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAICircle(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAISwing(const Entity&, float speed = 1.0f, float range = 10.0f);
-	int map[mapWidth][mapHeight]{};
+	int* getWeatherMap();
+
 	int initialLoactionX[maxlocation]{};
 	int initialLoactionY[maxlocation]{};
 	int sizeX[maxlocation]{};
