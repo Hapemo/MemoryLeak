@@ -6,17 +6,17 @@
 
 class TestScript : public ScriptComponent {
 public:
-	static void StartScript(Entity* gob) {
+	static void StartScript(Entity const& gob) {
 		(void)gob;
 		LOG_INFO("Test script starts works!!!");
 	}
 
-	static void UpdateScript(Entity* gob) {
+	static void UpdateScript(Entity const& gob) {
 		(void)gob;
 		LOG_INFO("Test script updating works!!!");
 	}
 
-	static void EndScript(Entity* gob) {
+	static void EndScript(Entity const& gob) {
 		(void)gob;
 		LOG_INFO("Test script end works!!!");
 	}

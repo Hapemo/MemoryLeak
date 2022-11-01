@@ -254,7 +254,7 @@ void SerializationManager::LoadScene(std::string _filename)
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
@@ -564,7 +564,7 @@ void SerializationManager::SaveScene(std::string _filename)
 		if (e.HasComponent<Dialogue>()) {
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
-			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("selectedID"), e.GetComponent<Dialogue>().selectedID, allocator);
 			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
 			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
 			entity.AddMember(StringRef("Dialogue"), tmp, allocator);
@@ -851,7 +851,7 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
@@ -1069,7 +1069,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
@@ -1291,7 +1291,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
@@ -1456,7 +1456,7 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 		if (e.HasComponent<Dialogue>()) {
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
-			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("selectedID"), e.GetComponent<Dialogue>().selectedID, allocator);
 			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
 			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
 			entity.AddMember(StringRef("Dialogue"), tmp, allocator);

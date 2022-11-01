@@ -20,7 +20,8 @@ void GameState1::Load() {
   renderManager->SetDebug(true);
   LoadWithGUID(16667121456447749);
 }
-
+Entity scriptEntity{};
+ScriptComponent test;
 void GameState1::Init() {
     for (Scene* scenePtr : mScenes)
         scenePtr->Init();
@@ -30,7 +31,7 @@ void GameState1::Init() {
     //while (entityCount--) {
     //  mEntities.insert(pref.CreatePrefabee());
     //}
-
+    
     //while (entityCount--)
     //  mEntities.insert(ECS::CreateEntity());
 
@@ -47,12 +48,6 @@ void GameState1::Init() {
     //    General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true,false },
     //    Text{ "3Dumb", "Hello World!", Math::Vec2{0,0}});
 
-    //ScriptComponent test;
-    //Entity{ 11 }.AddComponent<Script>(Script(&test));
-    //logicSystem->Init();
-    //ScriptComponent test;
-    //Entity{ 11 }.AddComponent<Script>(Script(&test));
-    //logicSystem->Init();
     //serializationManager->LoadScene("SceneJPhysics");
     //pref.AddComponent<Lifespan>({ 10.f, 2.f });
 
@@ -82,6 +77,14 @@ void GameState1::Init() {
     ////physics2DManager->AddForce(e3, Math::Vec2{ 1.f, 0.f }, 50.0);
     ////physics2DManager->AddForce(e3, Math::Vec2{ -1.f, 1.f }, 50.0);
     //e3.AddComponent(PlayerTmp{});
+    //    Text{ "3Dumb.ttf", "Hello World!", Math::Vec2{100,0}, 1, {255, 0, 0, 255}, 0, 0 });
+    //
+    //mEntities.insert(e2);
+    
+    scriptEntity = ECS::CreateEntity();
+    scriptEntity.AddComponent<General>(General{ "scriptEntity", TAG::OTHERS, SUBTAG::OTHERS, true, false });
+    scriptEntity.AddComponent<Script>(Script({ "TestScript", &test }));
+    logicSystem->Init();
 }
 
 void GameState1::Update() {
@@ -106,7 +109,7 @@ void GameState1::Update() {
   //  mEntities.erase(Entity{ 11 });
   //}
 
-  //logicSystem->Update();
+  logicSystem->Update();
 }
 
 void GameState1::Draw() {
@@ -119,6 +122,7 @@ void GameState1::Free() {
         scenePtr->Exit();
     //ECS::DestroyAllEntities();
     //logicSystem->Exit();
+    scriptEntity.Destroy();
 }
 
 void GameState1::Unload() {
@@ -126,8 +130,3 @@ void GameState1::Unload() {
   //ResourceManager::GetInstance()->UnloadAllResources();
   //FREE_RESOURCES();
 }
-
-
-
-
-

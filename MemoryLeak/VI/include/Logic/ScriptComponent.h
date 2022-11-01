@@ -13,6 +13,7 @@ engine.
 
 #pragma once
 #include "ECS_items.h"
+#include <string.h>
 
 class ScriptComponent
 {
@@ -31,17 +32,17 @@ public:
 	ScriptComponent(const ScriptComponent&) = delete;
 	const ScriptComponent& operator=(const ScriptComponent&) = delete;
 
-	virtual void StartScript(Entity* gob) {
+	virtual void StartScript(Entity const& gob) {
 		(void)gob;
 		LOG_INFO("Base script starts works!!!");
 	}
 
-	virtual void UpdateScript(Entity* gob) {
+	virtual void UpdateScript(Entity const& gob) {
 		(void)gob;
-		LOG_INFO("Base script updating works!!!");
+		//LOG_INFO("Base script updating works!!!");
 	}
 
-	virtual void EndScript(Entity* gob) {
+	virtual void EndScript(Entity const& gob) {
 		(void)gob;
 		LOG_INFO("Base script end works!!!");
 	}
