@@ -24,6 +24,7 @@ int Application::window_width{};
 int Application::window_height{};
 std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
+std::string Application::mCurrGameStateName{""};
 
 void Application::startup() {
   loadConfig("../config.txt");
@@ -166,7 +167,9 @@ void Application::PrintTitleBar(double _s) {
 
     // write window title with current fps ...
     std::stringstream sstr;
+
     sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " 
+                                               << "GameState: " << mCurrGameStateName << " | "
                                                << "fps: " << FPSManager::fps << " | "
                                                << "dt: " << FPSManager::dt << " | "
                                                << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | "
