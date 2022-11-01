@@ -614,7 +614,7 @@
         },
         "Physics2D": {
             "dynamicsEnabled": true,
-            "mass": 1.0,
+            "mass": 4.0,
             "inertia": 1.0,
             "restitution": 0.0,
             "friction": 0.0,

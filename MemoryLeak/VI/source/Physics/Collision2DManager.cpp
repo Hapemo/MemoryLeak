@@ -484,8 +484,10 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 			(*mCollisionDatabase[static_cast<int>(contact.obj1Type)][static_cast<int>(contact.obj2Type)])(contact, _dt);
 
 			// If contact isnt empty, means collision occurred
-			if (!contact.contacts.empty())
+			if (!contact.contacts.empty()) {
 				mContactList.push_back(contact);
+				LOG_INFO("Collision Detected\n");
+			}
 			//	}
 			//}
 		}
