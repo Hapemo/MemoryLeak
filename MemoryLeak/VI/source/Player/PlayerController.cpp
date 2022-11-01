@@ -78,7 +78,7 @@ void PlayerController::Update() {
 
 		// Cap player speed
 		if (Math::Dot(physics2DManager->GetVelocity(e), physics2DManager->GetVelocity(e)) > playerSpeedCap * playerSpeedCap) {
-			physics2DManager->SetVelocity(e, physics2DManager->GetVelocity(e).Normalize() * playerSpeedCap);
+			physics2DManager->SetVelocity(e, physics2DManager->GetVelocity(e).Normalize() * static_cast<float>(playerSpeedCap));
 		}
 
 		// No movement input, scale down the speed to slow it down
