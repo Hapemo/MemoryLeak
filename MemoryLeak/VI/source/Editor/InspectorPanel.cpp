@@ -19,8 +19,8 @@ void InspectorPanel::Update()
 {
 	
 	//static COMPONENT tempComponent{};
-	ImGui::Begin("Entity Manager");
-	ImGui::BeginTabBar("Edit Entities ");
+	ImGui::Begin("Inspector Manager");
+	ImGui::BeginTabBar("Inspector ");
 	if (ImGui::BeginTabItem("Edit Game: "))
 	{
 		if (selectedEntity != nullptr)
@@ -429,7 +429,7 @@ void InspectorPanel::AnimationEditor()
 }
 void InspectorPanel::SheetAnimationEditor()
 {
-	if (ImGui::CollapsingHeader("SheetAnimation")) {
+	if (ImGui::CollapsingHeader("SheetAnimation")||isAnimatorEditorFocused()) {
 		//ImGui::Text("SheetAnimation");
 		ImGui::InputInt("frameCount", (int*)&e.GetComponent<SheetAnimation>().frameCount);
 		SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);

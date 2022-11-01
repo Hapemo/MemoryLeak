@@ -42,9 +42,6 @@ void WeatherPanel::Update()
 	SetViewportAspectRatio();
 	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	//if (ImGui::Button("Reset", { 100,25 }))
-		//serializationManager->LoadScene("SceneTmp");
-	//ImGui::SameLine(0.f,20.f);
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isWeatherPaused = false;
