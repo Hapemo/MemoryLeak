@@ -339,7 +339,7 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 void Collision2DManager::ResolveCollisions(const double& _dt) {
 	// Check for collision and generate contact list
 	GenerateContactList(_dt);
-
+	bool notplayer = false;
 	// Resolve collision
 	// Uncomment and move player into a circle collider to see the player spin
 	//for (Contact &item : mContactList)
@@ -370,7 +370,55 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 			item.obj2.GetComponent<Physics2D>().accumulatedForce = Math::Vec2{ 0.f, 0.f };
 			item.obj2.GetComponent<Physics2D>().forceList.clear();
 		}
-
+		if (item.obj1.GetComponent<General>().tag == TAG::PLAYER)
+		{
+			Math::Vec2 distance = item.obj1.GetComponent<Transform>().translation - item.obj2.GetComponent<Transform>().translation;
+			if (distance.y <= 0)
+				playerManager->getCheck()[0] = false;
+			if (distance.y >= 0)
+				playerManager->getCheck()[1] = false;
+			if(distance.x <= 0)
+				playerManager->getCheck()[3] = false;
+			if (distance.x >= 0)
+				playerManager->getCheck()[2] = false;
+			notplayer = true;
+		}
+		else if (item.obj2.GetComponent<General>().tag == TAG::PLAYER)
+		{
+			Math::Vec2 distance = item.obj2.GetComponent<Transform>().translation - item.obj1.GetComponent<Transform>().translation;
+			if (distance.y <= 0)
+			{
+				playerManager->getCheck()[0] = false;
+				playerManager->getCheck()[1] = true;
+			}
+			if (distance.y >= 0)
+			{
+				playerManager->getCheck()[1] = false;
+				playerManager->getCheck()[0] = true;
+			}
+			if (distance.x <= 0)
+			{
+				playerManager->getCheck()[3] = false;
+				playerManager->getCheck()[2] = true;
+			}
+			if (distance.x >= 0)
+			{
+				playerManager->getCheck()[2] = false;
+				playerManager->getCheck()[3] = true;
+			}
+			notplayer = true;
+		}
+		else
+		{
+			notplayer = false;
+		}
+	}
+	if (notplayer== false) //player not coliding reset
+	{
+		playerManager->getCheck()[0] = true;
+		playerManager->getCheck()[1] = true;
+		playerManager->getCheck()[2] = true;
+		playerManager->getCheck()[3] = true;
 	}
 
 	ClearContactList();

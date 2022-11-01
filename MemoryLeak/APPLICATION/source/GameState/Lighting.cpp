@@ -10,7 +10,9 @@ Entity lightsource;
 
 void Lighting::Load() 
 {
-    LoadWithGUID(16673144311251204);
+    //LoadWithGUID(16673144311251204);
+    LoadWithGUID(16673157420351748);//with colider but collision not working lol
+    
 }
 
 void Lighting::Init()

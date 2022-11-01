@@ -78,14 +78,14 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static WeatherPanel weatherPanel{};
 	panels.push_back(&hierarchyPanel);
 	panels.push_back(&inspectorPanel);
-	panels.push_back(&worldViewPanel);
-	panels.push_back(&gameViewPanel);
-	panels.push_back(&dialoguePanel);
+	panels.push_back(&weatherPanel);
+	panels.push_back(&animationPanel);
+	panels.push_back(&dialoguePanel);//4
 	panels.push_back(&assetPanel);
 	panels.push_back(&debugPanel);
 	panels.push_back(&menuPanel);
-	panels.push_back(&animationPanel);
-	panels.push_back(&weatherPanel);
+	panels.push_back(&gameViewPanel);
+	panels.push_back(&worldViewPanel);
 	Init();
 	serializationManager->LoadDialogs("Dialog Data Structure - Passenger 1's Dialogues"); //for demo submision
 }

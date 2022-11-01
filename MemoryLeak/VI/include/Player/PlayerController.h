@@ -36,10 +36,12 @@ public:
 	NULL
 	*******************************************************************************/
 	void Update();
+	std::vector<bool>& getCheck() { return check; }
 private:
 	const double playerSpeed{ 15.f },								// Player speed
 				 playerSpeedNaturalLossScalar{ 0.99 },				// Player speed decceleration scalar
 				 playerSpeedCap{ 300.f };							// Player speed cap
 
 	bool FirstUpdate{ true };
+	static std::vector<bool> check;
 };
