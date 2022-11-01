@@ -402,6 +402,7 @@ void EditorManager::SceneReset()
 {
 	highestLayer = 0;
 	selectedEntity = nullptr;
+	renderManager->ResetCameras();
 }
 
 

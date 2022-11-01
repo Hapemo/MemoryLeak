@@ -26,7 +26,7 @@ operates on Entities with Sprite and Transform Components.
 \brief
 Enum class with states that check which framebuffer to render to
 *******************************************************************************/
-enum class RENDER_STATE { WORLD, GAME };
+enum class RENDER_STATE { WORLD, GAME, ANIMATOR };
 
 /*!*****************************************************************************
 \brief
@@ -115,6 +115,17 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Returns the color attachment to the Animator buffer, for displaying the 
+	Animator editor.
+
+	\return
+	Returns the color attachment to the Animator buffer, for displaying the 
+	Animator editor.
+	*******************************************************************************/
+	GLuint GetAnimatorFBO();
+
+	/*!*****************************************************************************
+	\brief
 	Rendering will be done to the screen instead of the FBO.
 	*******************************************************************************/
 	void RenderToScreen() { mRenderGameToScreen = true; }
@@ -157,6 +168,15 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Returns the Animator camera object.
+
+	\return
+	Returns the Animator camera object.
+	*******************************************************************************/
+	Camera& GetAnimatorCamera() { return mAnimatorCam; }
+
+	/*!*****************************************************************************
+	\brief
 	Sets the color to be cleared every frame.
 
 	\param const Color& _clr
@@ -178,13 +198,19 @@ public:
 	The third point of the triangle.
 	*******************************************************************************/
 	void CreateLightingTriangle(const Math::Vec2& _p0, const Math::Vec2& _p1, const Math::Vec2& _p2);
+
+	/*!*****************************************************************************
+	\brief
+	Resets all the cameras in RenderManager.
+	*******************************************************************************/
+	void ResetCameras();
 private:
 	RENDER_STATE mCurrRenderPass;
-	Camera mWorldCam, mGameCam;
+	Camera mWorldCam, mGameCam, mAnimatorCam;
 	std::unordered_map<std::string, FontRenderer> mFontRenderers;
 	bool mDebug, mRenderGameToScreen;
 	float mVectorLengthModifier;
-	FBO mWorldFBO, mGameFBO;
+	FBO mWorldFBO, mGameFBO, mAnimatorFBO;
 	int* mWindowWidth;
 	int* mWindowHeight;
 	GLShader mDefaultProgram;
@@ -261,6 +287,23 @@ private:
 	*******************************************************************************/
 	void BatchRenderTextures(int& _texCount, std::vector<int>& _texUnits);
 
+	/*!*****************************************************************************
+	\brief
+	Creating vertices from the ECS.
+	*******************************************************************************/
+	void CreateVertices(std::map<GLuint, TextureInfo>& _texInfo);
+
+	/*!*****************************************************************************
+	\brief
+	Rendering of textures
+	*******************************************************************************/
+	void RenderTextures(std::map<GLuint, TextureInfo>& _texInfo);
+
+	/*!*****************************************************************************
+	\brief
+	Rendering of shapes
+	*******************************************************************************/
+	void RenderShapes(bool _renderDebug);
 
 	/*!*****************************************************************************
 	\brief
