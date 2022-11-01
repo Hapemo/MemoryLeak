@@ -60,25 +60,25 @@ void WeatherPanel::Update()
 			if (aiManager->weatherMap[w][h] == SUNNUY)
 			{
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(255, 0, 0)));
-				ImGui::Button("SUN", weatherIocnSize);
+				ImGui::Button("S", weatherIocnSize);
 				ImGui::PopStyleColor();
 			}
 			else if (aiManager->weatherMap[w][h] == FOG)
 			{
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 255)));
-				ImGui::Button("FOG", weatherIocnSize);
+				ImGui::Button("F", weatherIocnSize);
 				ImGui::PopStyleColor();
 			}
 			else if (aiManager->weatherMap[w][h] == RAIN)
 			{
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(255, 0, 255)));
-				ImGui::Button("RAIN", weatherIocnSize);
+				ImGui::Button("R", weatherIocnSize);
 				ImGui::PopStyleColor();
 			}
 			else if (aiManager->weatherMap[w][h] == WINDY)
 			{
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 255, 0)));
-				ImGui::Button("WINDY", weatherIocnSize);
+				ImGui::Button("W", weatherIocnSize);
 				ImGui::PopStyleColor();
 			}
 			ImGui::SameLine(0.0f,2.f);
