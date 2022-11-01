@@ -38,6 +38,7 @@ public:
 	None.
 	*******************************************************************************/
 	void Animate();
+
 	/*!*****************************************************************************
 	\brief
 	Animates a single Entity with Components Sprite and SheetAnimation.

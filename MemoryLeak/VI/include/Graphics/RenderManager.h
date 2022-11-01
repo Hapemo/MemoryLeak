@@ -22,6 +22,10 @@ operates on Entities with Sprite and Transform Components.
 #include "Camera.h"
 #include <stdarg.h>
 
+/*!*****************************************************************************
+\brief
+Enum class with states that check which framebuffer to render to
+*******************************************************************************/
 enum class RENDER_STATE { WORLD, GAME };
 
 /*!*****************************************************************************
@@ -133,12 +137,47 @@ public:
 	*******************************************************************************/
 	std::vector<float> GetImGuizmoMat4(const Entity& _e);
 
+	/*!*****************************************************************************
+	\brief
+	Returns the Editor camera object.
+
+	\return
+	Returns the Editor camera object.
+	*******************************************************************************/
 	Camera& GetWorldCamera() { return mWorldCam; }
+
+	/*!*****************************************************************************
+	\brief
+	Returns the Game camera object.
+
+	\return
+	Returns the Game camera object.
+	*******************************************************************************/
 	Camera& GetGameCamera() { return mGameCam; }
 
+	/*!*****************************************************************************
+	\brief
+	Sets the color to be cleared every frame.
+
+	\param const Color& _clr
+	The color to be cleared with.
+	*******************************************************************************/
 	void SetClearColor(const Color& _clr);
 
-	void CreateLightingTriangle(const Math::Vec2& p0, const Math::Vec2& p1, const Math::Vec2& p2);
+	/*!*****************************************************************************
+	\brief
+	Creates	a triangle from points. Currently used for shadows.
+
+	\param const Math::Vec2& _p0
+	The first point of the triangle.
+
+	\param const Math::Vec2& _p1
+	The second point of the triangle.
+
+	\param const Math::Vec2& _p2
+	The third point of the triangle.
+	*******************************************************************************/
+	void CreateLightingTriangle(const Math::Vec2& _p0, const Math::Vec2& _p1, const Math::Vec2& _p2);
 private:
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam;
@@ -426,6 +465,13 @@ private:
 	*******************************************************************************/
 	Math::Mat3 GetTransform(const Math::Vec2& _scale, float _rotate, const Math::Vec2& _translate);
 
+	/*!*****************************************************************************
+	\brief
+	Sends text into the FontManager to be rendered.
+
+	\param const Entity& _e
+	The entity with the Text component.
+	*******************************************************************************/
 	void CreateText(const Entity& _e);
 
 	/*!*****************************************************************************

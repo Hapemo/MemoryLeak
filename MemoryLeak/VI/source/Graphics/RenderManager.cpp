@@ -172,6 +172,7 @@ void RenderManager::Render()
 	//render all shapes
 	BatchRenderElements(GL_TRIANGLES, mVertices, mIndices);
 
+	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
 	if (mCurrRenderPass == RENDER_STATE::WORLD || (mDebug && mRenderGameToScreen))
 		RenderDebug();
 
@@ -179,8 +180,11 @@ void RenderManager::Render()
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
+
+	/*************************************FONT RENDERING START***************************************/
 	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
 		i->second.DrawParagraphs();
+	/*************************************FONT RENDERING END*****************************************/
 
 	if (!mRenderGameToScreen)
 	{
@@ -199,7 +203,7 @@ void RenderManager::Render()
 	mDebugVertices.clear();
 	mDebugIndices.clear();
 
-
+	//recursion for editor viewport
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		Render();
 }
@@ -436,7 +440,19 @@ void RenderManager::BatchRenderTextures(int& _texCount, std::vector<int>& _texUn
 	mTextureIndices.clear();
 	_texUnits.clear();
 }
+/*!*****************************************************************************
+\brief
+Creates	a triangle from points. Currently used for shadows.
 
+\param const Math::Vec2& _p0
+The first point of the triangle.
+
+\param const Math::Vec2& _p1
+The second point of the triangle.
+
+\param const Math::Vec2& _p2
+The third point of the triangle.
+*******************************************************************************/
 void RenderManager::CreateLightingTriangle(const Math::Vec2& p0, const Math::Vec2& p1, const Math::Vec2& p2)
 {
 	Math::Mat3 mtx0 = GetTransform({ 0, 0 }, 0, { p0.x, p0.y });
@@ -445,17 +461,17 @@ void RenderManager::CreateLightingTriangle(const Math::Vec2& p0, const Math::Vec
 
 	Vertex v0, v1, v2;
 	v0.position = (mtx0 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = 0.5f;
+	v0.position.z = 0.f;
 	v0.color = { 1.f, 1.f, 1.f, 1.f };
 	v0.texID = 0;
 
 	v1.position = (mtx1 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v1.position.z = 0.5f;
+	v1.position.z = 0.f;
 	v1.color = { 1.f, 1.f, 1.f, 1.f };
 	v1.texID = 0;
 
 	v2.position = (mtx2 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v2.position.z = 0.5f;
+	v2.position.z = 0.f;
 	v2.color = { 1.f, 1.f, 1.f, 1.f };
 	v2.texID = 0;
 
@@ -974,21 +990,35 @@ void RenderManager::ConcatIndices(std::vector<GLushort>& _first, std::vector<GLu
 		_first.push_back(idx);
 	}
 }
+/*!*****************************************************************************
+\brief
+Sets the color to be cleared every frame.
 
+\param const Color& _clr
+The color to be cleared with.
+*******************************************************************************/
 void RenderManager::SetClearColor(const Color& _clr)
 {
 	glClearColor(_clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f);
 }
+/*!*****************************************************************************
+\brief
+Sends text into the FontManager to be rendered.
 
+\param const Entity& _e
+The entity with the Text component.
+*******************************************************************************/
 void RenderManager::CreateText(const Entity& _e)
 {
 	Text text = _e.GetComponent<Text>();
 
 	std::string fileName = text.fontFile + ".ttf";
 
+	//check if font program already exisits, if not create one
 	if (mFontRenderers.find(fileName) == mFontRenderers.end())
 		mFontRenderers.emplace(fileName, fileName);
 
+	//add paragraph into font renderer
 	mFontRenderers[fileName].AddParagraph(text.text,
 		text.offset + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f) + _e.GetComponent<Transform>().translation,
 		text.scale, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));

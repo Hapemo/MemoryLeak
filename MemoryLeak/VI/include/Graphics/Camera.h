@@ -10,22 +10,93 @@ This file contains a basic camera system for moving and zooming in/out.
 #pragma once
 #include <pch.h>
 
+/*!*****************************************************************************
+\brief
+Class that encapsulates a Camera.
+*******************************************************************************/
 class Camera
 {
 public:
+	/*!*****************************************************************************
+	\brief
+	Default constructor for Camera class.
+	*******************************************************************************/
 	Camera();
+	/*!*****************************************************************************
+	\brief
+	Default destrcutor for FontRenderer class.
+	*******************************************************************************/
 	~Camera() = default;
+	/*!*****************************************************************************
+	\brief
+	Initializes the camera class with width and height.
 
+	\param int _windowWidth
+	width of the camera.
+
+	\param int _windowHeight
+	height of the camera.
+	*******************************************************************************/
 	void Init(int _windowWidth, int _windowHeight);
+	/*!*****************************************************************************
+	\brief
+	Operator overload for +=.
 
-	Camera& operator+=(const Math::Vec2& translate);
-	Camera& operator-=(const Math::Vec2& translate);
-	Camera& operator*=(float zoom);
+	\param const Math::Vec2& _translate
+	The amount to translate the camera by.
+
+	\return
+	A reference to the camera.
+	*******************************************************************************/
+	Camera& operator+=(const Math::Vec2& _translate);
+	/*!*****************************************************************************
+	\brief
+	Operator overload for -=.
+
+	\param const Math::Vec2& _translate
+	The amount to translate the camera by.
+
+	\return
+	A reference to the camera.
+	*******************************************************************************/
+	Camera& operator-=(const Math::Vec2& _translate);
+	/*!*****************************************************************************
+	\brief
+	Operator overload for *=.
+
+	\param const Math::Vec2& _zoom
+	The amount to zoom the camera. +ve amounts to zoom in, -ve to zoom out.
+
+	\return
+	A reference to the camera.
+	*******************************************************************************/
+	Camera& operator*=(float _zoom);
+
+	//------------------------------------------------------------------------------
+	// Getter and Setters
+	//------------------------------------------------------------------------------
 	Math::Vec2 GetWindowDim() { return Math::Vec2( static_cast<float>(mWindowWidth), static_cast<float>(mWindowHeight)); }
 	Math::Vec2 GetPos() { return mPos; }
 	float GetZoom() { return mZoom; }
 	void SetPos(const Math::Vec2& _mPos);
 	void SetZoom(float _mZoom);
+
+	/*!*****************************************************************************
+	\brief
+	Gets the world to camera (view) transform for ImGuizmo.
+
+	\return
+	A vector containing the matrix.
+	*******************************************************************************/
+	std::vector<float> GetImGuizmoWorldToCam();
+	/*!*****************************************************************************
+	\brief
+	Gets the camera to world transform for ImGuizmo.
+
+	\return
+	A vector containing the matrix.
+	*******************************************************************************/
+	std::vector<float> GetImGuizmoCamToWorld();	
 
 private:
 	int mWindowWidth, mWindowHeight;
