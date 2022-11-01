@@ -439,13 +439,14 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 		if (contactVel > 0)
 			return;
 
+	// Velocity impulse
 		float rObj1CrossN{ Math::Cross(rObj1, _contact.normal) },
-			rObj2CrossN{ Math::Cross(rObj2, _contact.normal) };
+			  rObj2CrossN{ Math::Cross(rObj2, _contact.normal) };
 		float invMassSum{ 0 };
 		if (obj1HasP)
-			invMassSum += (1.f / obj1P.mass) + (rObj1CrossN * rObj1CrossN) * (1.f / obj1P.inertia);
+			invMassSum += ((obj1P.mass == 0.f) ? 0.f : 1.f / obj1P.mass) + (rObj1CrossN * rObj1CrossN) * ((obj1P.inertia == 0.f) ? 0.f : 1.f / obj1P.inertia);
 		if (obj2HasP)
-			invMassSum += (1.f / obj2P.mass) + (rObj2CrossN * rObj2CrossN) * (1.f / obj2P.inertia);
+			invMassSum += ((obj2P.mass == 0.f) ? 0.f : 1.f / obj2P.mass) + (rObj2CrossN * rObj2CrossN) * ((obj2P.inertia == 0.f) ? 0.f : 1.f / obj2P.inertia);
 
 		// Calculate impulse scalar
 		float scalar{ -(1.f + avgRestitution) * contactVel };
@@ -455,7 +456,8 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 		// Apply impulse
 		physics2DManager->ApplyImpulse(_contact.obj1, -(_contact.normal * scalar), rObj1);
 		physics2DManager->ApplyImpulse(_contact.obj2, _contact.normal * scalar, rObj2);
-
+	
+		// Friction impulse
 		if (obj2HasP)
 			relVel += obj2P.velocity + Math::Cross(obj2P.angularVelocity, rObj2);
 		if (obj1HasP)
@@ -495,15 +497,15 @@ void Collision2DManager::UpdatePositions(const Contact& _contact, const double& 
 void Collision2DManager::PositionCorrection(Contact& _contact) {
 	float invMassSum{ 0.f };
 	if (_contact.obj1.HasComponent<Physics2D>())
-		invMassSum += 1.f / _contact.obj1.GetComponent<Physics2D>().mass;
+		invMassSum += (_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass;
 	if (_contact.obj2.HasComponent<Physics2D>())
-		invMassSum += 1.f / _contact.obj2.GetComponent<Physics2D>().mass;
+		invMassSum += (_contact.obj2.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj2.GetComponent<Physics2D>().mass;
 	if (invMassSum == 0.f)
 		invMassSum = 1.f;
 
 	Math::Vec2 correction = std::max(_contact.penetration - penAllowance, 0.f) / invMassSum * _contact.normal * penPercentage;
-	_contact.obj1.GetComponent<Transform>().translation -= correction * (_contact.obj1.HasComponent<Physics2D>() ? 1.f / _contact.obj1.GetComponent<Physics2D>().mass : 1.f);
-	_contact.obj2.GetComponent<Transform>().translation += correction * (_contact.obj2.HasComponent<Physics2D>() ? 1.f / _contact.obj2.GetComponent<Physics2D>().mass : 1.f);
+	_contact.obj1.GetComponent<Transform>().translation -= correction * (_contact.obj1.HasComponent<Physics2D>() ? (_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass : 1.f);
+	_contact.obj2.GetComponent<Transform>().translation += correction * (_contact.obj2.HasComponent<Physics2D>() ? (_contact.obj2.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj2.GetComponent<Physics2D>().mass : 1.f);
 }
 
 void Collision2DManager::UpdateVelocities(Contact& _contact, const double& _dt) {
@@ -522,5 +524,40 @@ void Collision2DManager::UpdateVelocities(Contact& _contact, const double& _dt) 
 
 	float newSepVelScalar{ -SepVelScalar * _contact.DetermineRestitution() };
 
-	// Continue tmr
+	Math::Vec2 accCausedVel{};
+	if (_contact.obj1.HasComponent<Physics2D>() && _contact.obj2.HasComponent<Physics2D>())
+		relVel = _contact.obj1.GetComponent<Physics2D>().acceleration - _contact.obj2.GetComponent<Physics2D>().acceleration;
+	else if (_contact.obj1.HasComponent<Physics2D>())
+		relVel = _contact.obj1.GetComponent<Physics2D>().acceleration;
+	else if (_contact.obj2.HasComponent<Physics2D>())
+		relVel = _contact.obj2.GetComponent<Physics2D>().acceleration;
+
+	float accCausedVelScalar{ Math::Dot(accCausedVel, _contact.normal) * static_cast<float>(_dt) };
+	if (accCausedVelScalar < 0){
+		newSepVelScalar += _contact.DetermineRestitution() * accCausedVelScalar;
+
+		if (newSepVelScalar < 0.f)
+			newSepVelScalar = 0.f;
+	}
+
+
+	(_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass;
+
+	float invMassSum{ 0.f };
+	if (_contact.obj1.HasComponent<Physics2D>())
+		invMassSum += (_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass;;
+	if (_contact.obj2.HasComponent<Physics2D>())
+		invMassSum += (_contact.obj2.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj2.GetComponent<Physics2D>().mass;;
+	if (invMassSum == 0.f)
+		invMassSum = 1.f;
+
+	float deltaVelocity{ newSepVelScalar - SepVelScalar };
+	Math::Vec2 impulsePerMass{ _contact.normal * (deltaVelocity / invMassSum) };
+
+	// Apply impulse
+	if (_contact.obj1.HasComponent<Physics2D>())
+		_contact.obj1.GetComponent<Physics2D>().velocity += impulsePerMass * ((_contact.obj1.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj1.GetComponent<Physics2D>().mass);
+	if (_contact.obj2.HasComponent<Physics2D>())
+		_contact.obj2.GetComponent<Physics2D>().velocity += impulsePerMass * ((_contact.obj2.GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj2.GetComponent<Physics2D>().mass);
+		
 }
