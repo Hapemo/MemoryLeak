@@ -51,7 +51,9 @@ void AnimationPanel::Update()
 	if (ImGui::IsWindowFocused())
 		isAnimatorEditor = true;
 	else
+	{
 		isAnimatorEditor = false;
+	}
 	if (selectedEntity != nullptr)
 	{
 		Entity e = *selectedEntity;
@@ -90,9 +92,9 @@ void AnimationPanel::Update()
 				// 
 				//Temp untill graphics return fame buffer for single animation entity
 				frame = e.GetComponent<SheetAnimation>().frameCount;
-				//renderManager->GetWorldCamera().SetZoom(-1800 / e.GetComponent<Transform>().scale.y);
-				//renderManager->GetWorldCamera().SetPos(e.GetComponent<Transform>().translation);
-				textureImage = (void*)(intptr_t)renderManager->GetGameFBO();
+				renderManager->GetAnimatorCamera().SetZoom(e.GetComponent<Transform>().scale.y / *mWindowHeight);
+				renderManager->GetAnimatorCamera().SetPos(e.GetComponent<Transform>().translation);
+				textureImage = (void*)(intptr_t)renderManager->GetAnimatorFBO();
 				ImGui::Image(textureImage, viewSize, ImVec2(0, 1), ImVec2(1, 0));
 				if (ImGui::BeginDragDropTarget())
 				{
@@ -100,7 +102,7 @@ void AnimationPanel::Update()
 				}
 				if (!isAnimationPaused)
 				{
-					if(ImGui::IsWindowFocused())
+					if (ImGui::IsWindowFocused())
 						sheetAnimator->Animate();
 				}
 			}
