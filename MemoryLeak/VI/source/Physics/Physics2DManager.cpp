@@ -89,6 +89,7 @@ void Physics2DManager::UpdatePosition(const Entity& _e) {
 	//SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
 	ScaleVelocity(_e, static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
 	SetAngularVelocity(_e, GetAngularVelocity(_e) * static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
+	SetAngularTorque(_e, GetAngularTorque(_e) * static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
 
 	// Cap velocity
 	if (Math::Dot(GetVelocity(_e), GetVelocity(_e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) 
@@ -96,6 +97,8 @@ void Physics2DManager::UpdatePosition(const Entity& _e) {
 
 	if (GetAngularVelocity(_e) > Physics2DManager::angularVelocityCap)
 		SetAngularVelocity(_e, Physics2DManager::angularVelocityCap);
+	if (GetAngularTorque(_e) > Physics2DManager::angularVelocityCap)
+		SetAngularTorque(_e, Physics2DManager::angularVelocityCap);
 
 	// Move entity by velocity
 	_e.GetComponent<Transform>().translation += GetVelocity(_e) * static_cast<float>(fixedDT);
@@ -285,8 +288,7 @@ void Physics2DManager::UpdateEntitiesAccumulatedForce(const Entity& _e) {
 			++it;
 		}
 		else {
-			++it;
-			GetPhysicsComponent(_e).forceList.erase(it - 1);
+			it = GetPhysicsComponent(_e).forceList.erase(it);
 		}
 	}
 }
