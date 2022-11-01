@@ -103,10 +103,10 @@ std::vector<float> Camera::GetImGuizmoWorldToCam()
 {
 	return std::vector<float>
 	{
-		mZoom, 0.f, 0.f, 0.f, 
-		0.f, mZoom, 0.f, 0.f, 
+		1.f / mZoom, 0.f, 0.f, 0.f, 
+		0.f, 1.f / mZoom, 0.f, 0.f, 
 		0.f, 0.f, 1.f, 0.f, 
-		-Math::Dot({ mZoom, 0 }, mPos), -Math::Dot({ 0, mZoom }, mPos), 0.f, 1.f
+		-Math::Dot({ 1.f / mZoom, 0 }, mPos), -Math::Dot({ 0, 1.f / mZoom }, mPos), 0.f, 1.f
 	};
 }
 /*!*****************************************************************************
