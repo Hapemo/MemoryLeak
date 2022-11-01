@@ -10,49 +10,45 @@ This file contains the function definitions of the class LogicSystem.
 The LogicSystem class handles the C# scripting for the engine.
 *******************************************************************************/
 
-#include "ECS_tools.h"
-#include "Logic/LogicSystem.h"
-#include "Logic/ScriptManager.h"
+#include "LogicSystem.h"
 
-LogicSystem::LogicSystem() {
-}
-
-LogicSystem::~LogicSystem() {
-}
-
+/*!*****************************************************************************
+\brief
+Run the initialisation function for all active entities' scripts.
+*******************************************************************************/
 void LogicSystem::Init() {
 	LOG_DEBUG("LOGICSYSYEM INIT.");
-	std::set<Entity>::iterator it;
-	for (it = mEntities.begin(); it != mEntities.end(); ++it) {
-		if ((*it).GetComponent<General>().isActive && !(*it).GetComponent<General>().isPaused) {
-			if ((*it).HasComponent<Script>()) {
-				LOG_DEBUG("hasScript.");
-				(*it).GetComponent<Script>().script->StartScript(const_cast<Entity*>(&(*it)));
-			}
+	for (Entity const& e : mEntities) {
+		if (e.ShouldRun()) {
+			LOG_DEBUG("hasScript.");
+			e.GetComponent<Script>().script->StartScript(e);
 		}
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Run the update function for all active entities' scripts.
+*******************************************************************************/
 void LogicSystem::Update() {
-	LOG_DEBUG("LOGICSYSYEM UPDATE.");
-	std::set<Entity>::iterator it;
-	for (it = mEntities.begin(); it != mEntities.end(); ++it) {
-		if ((*it).GetComponent<General>().isActive && !(*it).GetComponent<General>().isPaused) {
-			if ((*it).HasComponent<Script>()) {
-				(*it).GetComponent<Script>().script->UpdateScript(const_cast<Entity*>(&(*it)));
-			}
+	//LOG_DEBUG("LOGICSYSYEM UPDATE.");
+	for (Entity const& e : mEntities) {
+		if (e.ShouldRun() && e.HasComponent<Script>()) {
+			Script& script = e.GetComponent<Script>();
+			script.script->UpdateScript(e);
 		}
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Run the exit function for all active entities' scripts.
+*******************************************************************************/
 void LogicSystem::Exit() {
 	LOG_DEBUG("LOGICSYSYEM EXITING.");
-	std::set<Entity>::iterator it;
-	for (it = mEntities.begin(); it != mEntities.end(); ++it) {
-		if ((*it).GetComponent<General>().isActive && !(*it).GetComponent<General>().isPaused) {
-			if ((*it).HasComponent<Script>()) {
-				(*it).GetComponent<Script>().script->EndScript(const_cast<Entity*>(&(*it)));
-			}
+	for (Entity const& e : mEntities) {
+		if (e.ShouldRun() && e.HasComponent<Script>()) {
+			e.GetComponent<Script>().script->EndScript(e);
 		}
 	}
 }

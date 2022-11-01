@@ -19,11 +19,14 @@ enum class E_GS {
 	INVALID,
 	GameState1,
 	GameState2,
-	GameState3,
+	AIDemo,
 	ParallaxSprite,
+	ScriptingDemo,
 	JAZZ,
 	PHYSICS,
 	Lighting,
+	MainMenu,
+	Level1,
 	RESTART,
 	EXIT
 };

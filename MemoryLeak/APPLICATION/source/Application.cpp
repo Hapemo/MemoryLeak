@@ -24,6 +24,7 @@ int Application::window_width{};
 int Application::window_height{};
 std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
+std::string Application::mCurrGameStateName{""};
 
 void Application::startup() {
   loadConfig("../config.txt");
@@ -58,7 +59,6 @@ void Application::SystemUpdate() {
   // AI
   TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
-  
   END_TRACK("AI");
 
   // Physics
@@ -66,9 +66,16 @@ void Application::SystemUpdate() {
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
 
+  //Scripting
+  TRACK_PERFORMANCE("Scripting");
+  logicSystem->Update();
+  END_TRACK("Scripting");
+
   // Animator
+  TRACK_PERFORMANCE("Animation");
   sheetAnimator->Animate();
   animator->Animate();
+  END_TRACK("Animation");
 
   // Audio
   TRACK_PERFORMANCE("Audio");
@@ -163,7 +170,9 @@ void Application::PrintTitleBar(double _s) {
 
     // write window title with current fps ...
     std::stringstream sstr;
+
     sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " 
+                                               << "GameState: " << mCurrGameStateName << " | "
                                                << "fps: " << FPSManager::fps << " | "
                                                << "dt: " << FPSManager::dt << " | "
                                                << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | "

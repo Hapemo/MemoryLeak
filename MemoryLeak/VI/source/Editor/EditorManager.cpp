@@ -42,6 +42,7 @@ bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
 std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
+
 /*!*****************************************************************************
 \brief
 	Load the level editor
@@ -86,6 +87,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&animationPanel);
 	panels.push_back(&weatherPanel);
 	Init();
+	serializationManager->LoadDialogs("Dialog Data Structure - Passenger 1's Dialogues"); //for demo submision
 }
 /*!*****************************************************************************
 \brief
@@ -164,6 +166,7 @@ void EditorManager::Update()
 	debugPanel.Update();
 	menuPanel.Update();*/
 
+	glClearColor(0.f,0.f,0.f,1.f);
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -173,7 +176,6 @@ void EditorManager::Update()
 		ImGui::RenderPlatformWindowsDefault();
 		glfwMakeContextCurrent(backup_current_context);
 	}
-	
 }
 /*!*****************************************************************************
 \brief

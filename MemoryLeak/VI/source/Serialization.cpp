@@ -72,7 +72,10 @@ void SerializationManager::LoadScene(std::string _filename)
 		std::string str("Entity" + std::to_string(i));
 		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
 		if (!doc.HasMember(index))
-			std::cout << "error   "<<i;
+		{
+			LOG_ERROR("1 Enitity not loaded");
+			continue;
+		}
 		entity = doc[index];
 	
 		if (entity.HasMember("General"))
@@ -254,10 +257,15 @@ void SerializationManager::LoadScene(std::string _filename)
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
+		}
+		if (entity.HasMember("LightSource")) {
+			LightSource lightSource;
+			lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
+			e.AddComponent<LightSource>(lightSource);
 		}
 		mEntities.insert(e);
 		i++;
@@ -564,10 +572,15 @@ void SerializationManager::SaveScene(std::string _filename)
 		if (e.HasComponent<Dialogue>()) {
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
-			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("selectedID"), e.GetComponent<Dialogue>().selectedID, allocator);
 			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
 			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
 			entity.AddMember(StringRef("Dialogue"), tmp, allocator);
+		}
+		if (e.HasComponent<LightSource>()) {
+			Value tmp(kObjectType);
+			addVectorMember(scene, tmp, "centerOffset", e.GetComponent<LightSource>().centreOffset);
+			entity.AddMember(StringRef("LightSource"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -739,7 +752,7 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
 		if (entity.HasMember("Physics2D")) {
-			
+
 			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
 			float inertia = entity["Physics2D"]["inertia"].GetFloat();
@@ -787,21 +800,24 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
 		}
-		if (entity.HasMember("RectCollider")) {
+		if (entity.HasMember("RectCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 			Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
 			bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
 			e.AddComponent<RectCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("CircleCollider")) {
+		if (entity.HasMember("CircleCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 			float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
 			bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
 			e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("Edge2DCollider")) {
+		if (entity.HasMember("Edge2DCollider"))
+		{
 			Math::Vec2 p0Offset = GetVec2(entity["Edge2DCollider"]["p0Offset"]);
 			float rotationOffset = entity["Edge2DCollider"]["rotationOffset"].GetFloat();
 			float scaleOffset = entity["Edge2DCollider"]["scaleOffset"].GetFloat();
@@ -809,12 +825,14 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 
 			e.AddComponent<Edge2DCollider>({ p0Offset ,rotationOffset, scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("Point2DCollider")) {
+		if (entity.HasMember("Point2DCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
 			bool renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
 			e.AddComponent<Point2DCollider>({ centerOffset ,renderFlag });
 		}
-		if (entity.HasMember("Audio")) {
+		if (entity.HasMember("Audio"))
+		{
 			Sound sound;
 			sound.path = entity["Audio"]["path"].GetString();
 			sound.volume = entity["Audio"]["volume"].GetFloat();
@@ -828,7 +846,8 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 			bool isSpacial = entity["Audio"]["isSpacial"].GetBool();
 			e.AddComponent<Audio>({ sound , isSpacial });
 		}
-		if (entity.HasMember("AI")) {
+		if (entity.HasMember("AI"))
+		{
 			int colorChange = entity["AI"]["colorChange"].GetInt();
 			int movement = entity["AI"]["movement"].GetInt();
 			float speed = entity["AI"]["speed"].GetFloat();
@@ -851,10 +870,15 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
+		}
+		if (entity.HasMember("LightSource")) {
+			LightSource lightSource;
+			lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
+			e.AddComponent<LightSource>(lightSource);
 		}
 		entities.insert(e);
 		i++;
@@ -891,7 +915,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 
 	int i = 0;
 	int runOnce{};
-	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr) {
+	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr <= doc.MemberEnd(); ++itr) {
 		if (!runOnce++) continue;
 
 		Entity e{ ECS::CreateEntity() };
@@ -987,7 +1011,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 				force.forceID = f["forceID"].GetInt();
 				if (force.forceID == 0)
 				{
-					force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
+					force.linearForce.unitDirection = GetVec2(f["linearForce"]["magnitude"]);
 					force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
 				}
 				else if (force.forceID == 1)
@@ -1007,19 +1031,22 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 
 			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
 		}
-		if (entity.HasMember("RectCollider")) {
+		if (entity.HasMember("RectCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 			Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
 			bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
 			e.AddComponent<RectCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("CircleCollider")) {
+		if (entity.HasMember("CircleCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 			float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
 			bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
 			e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("Edge2DCollider")) {
+		if (entity.HasMember("Edge2DCollider"))
+		{
 			Math::Vec2 p0Offset = GetVec2(entity["Edge2DCollider"]["p0Offset"]);
 			float rotationOffset = entity["Edge2DCollider"]["rotationOffset"].GetFloat();
 			float scaleOffset = entity["Edge2DCollider"]["scaleOffset"].GetFloat();
@@ -1027,12 +1054,14 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 
 			e.AddComponent<Edge2DCollider>({ p0Offset ,rotationOffset, scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("Point2DCollider")) {
+		if (entity.HasMember("Point2DCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
 			bool renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
 			e.AddComponent<Point2DCollider>({ centerOffset ,renderFlag });
 		}
-		if (entity.HasMember("Audio")) {
+		if (entity.HasMember("Audio"))
+		{
 			Sound sound;
 			sound.path = entity["Audio"]["path"].GetString();
 			sound.volume = entity["Audio"]["volume"].GetFloat();
@@ -1046,7 +1075,8 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			bool isSpacial = entity["Audio"]["isSpacial"].GetBool();
 			e.AddComponent<Audio>({ sound , isSpacial });
 		}
-		if (entity.HasMember("AI")) {
+		if (entity.HasMember("AI"))
+		{
 			int colorChange = entity["AI"]["colorChange"].GetInt();
 			int movement = entity["AI"]["movement"].GetInt();
 			float speed = entity["AI"]["speed"].GetFloat();
@@ -1069,10 +1099,15 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
+		}
+		if (entity.HasMember("LightSource")) {
+			LightSource lightSource;
+			lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
+			e.AddComponent<LightSource>(lightSource);
 		}
 		sceneData.mEntities.insert(e);
 		i++;
@@ -1114,7 +1149,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 
 	int i = 0;
 	int runOnce{0};
-	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr) {
+	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr <= doc.MemberEnd(); ++itr) {
 		if (!runOnce++) continue;
 
 		Entity e{ ECS::CreateEntity() };
@@ -1229,19 +1264,22 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 
 			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
 		}
-		if (entity.HasMember("RectCollider")) {
+		if (entity.HasMember("RectCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 			Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
 			bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
 			e.AddComponent<RectCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("CircleCollider")) {
+		if (entity.HasMember("CircleCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 			float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
 			bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
 			e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("Edge2DCollider")) {
+		if (entity.HasMember("Edge2DCollider"))
+		{
 			Math::Vec2 p0Offset = GetVec2(entity["Edge2DCollider"]["p0Offset"]);
 			float rotationOffset = entity["Edge2DCollider"]["rotationOffset"].GetFloat();
 			float scaleOffset = entity["Edge2DCollider"]["scaleOffset"].GetFloat();
@@ -1249,12 +1287,14 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 
 			e.AddComponent<Edge2DCollider>({ p0Offset ,rotationOffset, scaleOffset , renderFlag });
 		}
-		if (entity.HasMember("Point2DCollider")) {
+		if (entity.HasMember("Point2DCollider"))
+		{
 			Math::Vec2 centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
 			bool renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
 			e.AddComponent<Point2DCollider>({ centerOffset ,renderFlag });
 		}
-		if (entity.HasMember("Audio")) {
+		if (entity.HasMember("Audio"))
+		{
 			Sound sound;
 			sound.path = entity["Audio"]["path"].GetString();
 			sound.volume = entity["Audio"]["volume"].GetFloat();
@@ -1268,7 +1308,8 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 			bool isSpacial = entity["Audio"]["isSpacial"].GetBool();
 			e.AddComponent<Audio>({ sound , isSpacial });
 		}
-		if (entity.HasMember("AI")) {
+		if (entity.HasMember("AI"))
+		{
 			int colorChange = entity["AI"]["colorChange"].GetInt();
 			int movement = entity["AI"]["movement"].GetInt();
 			float speed = entity["AI"]["speed"].GetFloat();
@@ -1291,10 +1332,15 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
+		}
+		if (entity.HasMember("LightSource")) {
+			LightSource lightSource;
+			lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
+			e.AddComponent<LightSource>(lightSource);
 		}
 		gamestateData.mEntities.insert(e);
 		i++;
@@ -1456,7 +1502,7 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 		if (e.HasComponent<Dialogue>()) {
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
-			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("selectedID"), e.GetComponent<Dialogue>().selectedID, allocator);
 			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
 			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
 			entity.AddMember(StringRef("Dialogue"), tmp, allocator);

@@ -13,16 +13,16 @@ engine.
 
 #pragma once
 #include "ECS_items.h"
+#include "Logger.h"
 
-class ScriptComponent
-{
+class ScriptComponent {
 public:
 	/*!*****************************************************************************
 	\brief
 	Default constructor and destructor.
 	*******************************************************************************/
-	ScriptComponent() {}
-	~ScriptComponent() {}
+	ScriptComponent() = default;
+	~ScriptComponent() = default;
 
 	/*!*****************************************************************************
 	\brief
@@ -31,19 +31,21 @@ public:
 	ScriptComponent(const ScriptComponent&) = delete;
 	const ScriptComponent& operator=(const ScriptComponent&) = delete;
 
-	virtual void StartScript(Entity* gob) {
-		(void)gob;
-		LOG_INFO("Base script starts works!!!");
-	}
+	/*!*****************************************************************************
+	\brief
+	Start script to run on initialisation.
+	*******************************************************************************/
+	virtual void StartScript(Entity const& gob);
 
-	virtual void UpdateScript(Entity* gob) {
-		(void)gob;
-		LOG_INFO("Base script updating works!!!");
-	}
+	/*!*****************************************************************************
+	\brief
+	Update script to run every update function call.
+	*******************************************************************************/
+	virtual void UpdateScript(Entity const& gob);
 
-	virtual void EndScript(Entity* gob) {
-		(void)gob;
-		LOG_INFO("Base script end works!!!");
-	}
+	/*!*****************************************************************************
+	\brief
+	End script to run when the entity gets destroyed/exit.
+	*******************************************************************************/
+	virtual void EndScript(Entity const& gob);
 };
-

@@ -83,14 +83,14 @@
     },
     "Entity2": {
         "General": {
-            "name": "_NEW_DragDrop1",
+            "name": "PlayBtn",
             "tag": 5,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 300.0,
+                "X": 400.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
@@ -125,10 +125,10 @@
             "fontFile": "CaviarDreams",
             "text": "PLAY",
             "offset": {
-                "X": -80.0,
-                "Y": -52.0
+                "X": -66.0,
+                "Y": -25.0
             },
-            "scale": 1.5,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -139,20 +139,20 @@
     },
     "Entity3": {
         "General": {
-            "name": "_NEW_DragDrop5",
+            "name": "HowToPlayBtn",
             "tag": 5,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 534.0,
-                "Y": 150.0
+                "X": 400.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -84.8979263305664,
-                "Y": -183.87757873535156
+                "X": 0.0,
+                "Y": -66.23051452636719
             }
         },
         "Sprite": {
@@ -179,12 +179,12 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "aPLAYdsfdsf",
+            "text": "How To Play",
             "offset": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -155.0,
+                "Y": -24.0
             },
-            "scale": 1.0,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -195,8 +195,8 @@
     },
     "Entity4": {
         "General": {
-            "name": "_NEW_DragDrop6",
-            "tag": 5,
+            "name": "_NEW_DragDrop1",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -207,8 +207,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 548.163330078125,
-                "Y": -231.02044677734375
+                "X": -428.4313659667969,
+                "Y": -171.56861877441406
             }
         },
         "Sprite": {
@@ -219,8 +219,90 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
-            "layer": 0
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 11
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity5": {
+        "General": {
+            "name": "_NEW_DragDrop2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 471.5686340332031,
+                "Y": -281.37255859375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 12
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity6": {
+        "General": {
+            "name": "_NEW_DragDrop3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -16.666667938232422,
+                "Y": -314.7059020996094
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 13
         },
         "RectCollider": {
             "centerOffset": {

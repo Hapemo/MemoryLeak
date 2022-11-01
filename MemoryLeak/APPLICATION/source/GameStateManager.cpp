@@ -19,11 +19,14 @@ running.
 #include "Input.h"
 #include "GameState1.h"
 #include "GameState2.h"
-#include "GameState3.h"
+#include "AIDemo.h"
+#include "ScriptingDemo.h"
 #include "GameStateJazz.h"
 #include "GameStatePhysics.h"
 #include "ParallaxAndSpriteSwap.h"
 #include "Lighting.h"
+#include "MainMenu.h"
+#include "Level1.h"
 
 GameStateManager::GameStateManager() :
 	mPrevGS(), mNextGS(), mCurrGS(), mCurrGameState(nullptr) 
@@ -81,17 +84,50 @@ void GameStateManager::Init() {
 	
 	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
 	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
-	GS_List.insert(GS_pair(E_GS::GameState3, new GameState3));
+	GS_List.insert(GS_pair(E_GS::AIDemo, new AIDemo));
+	GS_List.insert(GS_pair(E_GS::ScriptingDemo, new ScriptingDemo));
 	GS_List.insert(GS_pair(E_GS::ParallaxSprite, new ParallaxAndSpriteSwap));
 	GS_List.insert(GS_pair(E_GS::JAZZ, new GameStateJazz));
 	GS_List.insert(GS_pair(E_GS::PHYSICS, new GameStatePhysics));
 	GS_List.insert(GS_pair(E_GS::Lighting, new Lighting));
+	GS_List.insert(GS_pair(E_GS::MainMenu, new MainMenu));
+	GS_List.insert(GS_pair(E_GS::Level1, new Level1));
 }
 
 
 void GameStateManager::NextGS(E_GS gamestate) { mNextGS = gamestate; }
 
-void GameStateManager::SetNewGameState() { mCurrGameState = GS_List[mCurrGS]; }
+void GameStateManager::SetNewGameState() { 
+	mCurrGameState = GS_List[mCurrGS];
+	switch (mCurrGS) {
+	case E_GS::JAZZ:
+		Application::GetCurrGameStateName() = "JAZZ";
+		break;
+	case E_GS::PHYSICS:
+		Application::GetCurrGameStateName() = "PHYSICS";
+		break;
+	case E_GS::ScriptingDemo:
+		Application::GetCurrGameStateName() = "ScriptingDemo";
+		break;
+	case E_GS::Lighting:
+		Application::GetCurrGameStateName() = "Lighting";
+		break;
+	case E_GS::EXIT:
+		Application::GetCurrGameStateName() = "EXIT";
+		break;
+	case E_GS::INVALID:
+		Application::GetCurrGameStateName() = "INVALID";
+		break;
+	case E_GS::RESTART:
+		Application::GetCurrGameStateName() = "RESTART";
+		break;
+	case E_GS::ParallaxSprite:
+		Application::GetCurrGameStateName() = "ParallaxSprite";
+		break;
+	default:
+		Application::GetCurrGameStateName() = "Unknown";
+	}
+}
 
 void GameStateManager::Exit() {
 	for (GS_pair pair : GS_List) {
@@ -109,11 +145,14 @@ void GameStateManager::GSControlPanel() {
 		if (renderToScreen) renderManager->RenderToScreen();
 		else renderManager->RenderToFrameBuffer();
 	}
-	if (Input::CheckKey(PRESS, _1) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState1);
-	else if (Input::CheckKey(PRESS, _2) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
-	else if (Input::CheckKey(PRESS, _3) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState3);
-	else if (Input::CheckKey(PRESS, _4) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ParallaxSprite);
+	if (Input::CheckKey(PRESS, O) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState1);
+	else if (Input::CheckKey(PRESS, G) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
+	else if (Input::CheckKey(PRESS, I) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::AIDemo);
+	else if (Input::CheckKey(PRESS, A) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ParallaxSprite);
 	else if (Input::CheckKey(PRESS, J) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::JAZZ);
-	else if (Input::CheckKey(PRESS, _5) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Lighting);
+	else if (Input::CheckKey(PRESS, L) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Lighting);
+	else if (Input::CheckKey(PRESS, S) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ScriptingDemo);
 	else if (Input::CheckKey(PRESS, P) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::PHYSICS);
+	else if (Input::CheckKey(PRESS, _0) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::MainMenu);
+	else if (Input::CheckKey(PRESS, _1) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Level1);
 }

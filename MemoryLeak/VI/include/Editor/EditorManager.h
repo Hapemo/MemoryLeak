@@ -86,8 +86,6 @@ protected:
 	static std::vector <Prefab*> mPrefabs;
 	static bool isAnimatorEditor;
 	bool isAnimatorEditorFocused(){return isAnimatorEditor;}
-
-
 	
 	/*static bool isPaused;
 	void SceneManager();

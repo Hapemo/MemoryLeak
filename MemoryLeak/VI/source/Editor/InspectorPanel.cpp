@@ -233,13 +233,13 @@ void InspectorPanel::GeneralEditor()
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
 
 		int tagID = (int)e.GetComponent<General>().tag;
-		static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
+		//static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "ENVIRONMENT","EFFECTS","PREFABS","OTHERS" };
 		ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
 		e.GetComponent<General>().tag = (TAG)tagID;
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
 
 		int subtagID = (int)e.GetComponent<General>().subtag;
-		static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+		//static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
 		ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
 		e.GetComponent<General>().subtag = (SUBTAG)subtagID;
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
@@ -324,7 +324,7 @@ void InspectorPanel::SpriteEditor()
 		else if (e.GetComponent<Sprite>().sprite == SPRITE::SQUARE)
 			tex = "SQUARE";
 		int shapeID = (int)e.GetComponent<Sprite>().sprite;
-		static const char* shape[]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
+		//static const char* shape[]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
 		ImGui::Combo("Shape", &shapeID, shape, IM_ARRAYSIZE(shape));
 		e.GetComponent<Sprite>().sprite = (SPRITE)shapeID;
 		SaveUndo(e, tempComponent, COMPONENTID::SPRITE);
@@ -706,13 +706,13 @@ void InspectorPanel::AIEditor()
 {
 
 	if (ImGui::CollapsingHeader("AI")) {
-		static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
+		//static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
 		int colorChangeID = e.GetComponent<AI>().colorChange;
 		ImGui::Combo("Select Color Change", &colorChangeID, colorChange, IM_ARRAYSIZE(colorChange));
 		e.GetComponent<AI>().colorChange = colorChangeID;
 		SaveUndo(e, tempComponent, COMPONENTID::AI);
 
-		static const char* movement[]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
+		//static const char* movement[]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
 		int movementID = e.GetComponent<AI>().movement;
 		ImGui::Combo("Select Movement", &movementID, movement, IM_ARRAYSIZE(movement));
 		e.GetComponent<AI>().movement = movementID;
@@ -754,18 +754,18 @@ void InspectorPanel::PrefabEditor()
 			General general = p->GetComponent<General>();
 			ImGui::Checkbox("isActive", &general.isActive); //isactive
 			//
-
-			ImGui::InputText("Name", &general.name);
+			//Should not chnage name for all prefabees
+			//ImGui::InputText("Name", &general.name);
 
 
 			int tagID = (int)general.tag;
-			static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
+			//static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "ENVIRONMENT","EFFECTS","PREFABS","OTHERS"};
 			ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
 			general.tag = (TAG)tagID;
 
 
 			int subtagID = (int)general.subtag;
-			static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+			//static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
 			ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
 			general.subtag = (SUBTAG)subtagID;
 			if (ImGui::IsItemDeactivatedAfterEdit)
@@ -841,7 +841,7 @@ void InspectorPanel::PrefabEditor()
 				tex = "SQUARE";
 
 			int shapeID = (int)sprite.sprite;
-			static const char* shape[]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
+			//static const char* shape[]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
 			ImGui::Combo("Shape", &shapeID, shape, IM_ARRAYSIZE(shape));
 			sprite.sprite = (SPRITE)shapeID;
 			if ((SPRITE)shapeID != SPRITE::TEXTURE)
@@ -1124,12 +1124,12 @@ void InspectorPanel::PrefabEditor()
 	{
 		if (ImGui::CollapsingHeader("AI")) {
 			AI ai = p->GetComponent<AI>();
-			static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
+			//static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
 			int colorChangeID = ai.colorChange;
 			ImGui::Combo("Select Color Change", &colorChangeID, colorChange, IM_ARRAYSIZE(colorChange));
 			ai.colorChange = colorChangeID;
 
-			static const char* movement[]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
+			//static const char* movement[]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
 			int movementID = ai.movement;
 			ImGui::Combo("Select Movement", &movementID, movement, IM_ARRAYSIZE(movement));
 			ai.movement = movementID;

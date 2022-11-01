@@ -267,7 +267,7 @@ struct Text {
 struct Dialogue
 {
 	int speakerID;
-	int selecetedID;
+	int selectedID;
 	int textID;
 	int nextTextID;
 };
@@ -276,6 +276,7 @@ struct Dialogue
 	This struct contains the data for Script component
 *******************************************************************************/
 struct Script {
+	std::string name;
 	ScriptComponent* script;
 };
 /*!*****************************************************************************

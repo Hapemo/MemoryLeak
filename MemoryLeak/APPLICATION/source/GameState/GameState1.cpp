@@ -10,7 +10,6 @@ Game state for testing physics
 #include "GameState1.h"
 #include "Application.h"
 #include "Input.h"
-#include "TestScript.h"
 
 void GameState1::Load() {
   //ResourceManager::GetInstance()->LoadAllResources();
@@ -30,7 +29,7 @@ void GameState1::Init() {
     //while (entityCount--) {
     //  mEntities.insert(pref.CreatePrefabee());
     //}
-
+    
     //while (entityCount--)
     //  mEntities.insert(ECS::CreateEntity());
 
@@ -47,12 +46,6 @@ void GameState1::Init() {
     //    General{ "TEXTBOX", TAG::OTHERS, SUBTAG::NOSUBTAG, true,false },
     //    Text{ "3Dumb", "Hello World!", Math::Vec2{0,0}});
 
-    //ScriptComponent test;
-    //Entity{ 11 }.AddComponent<Script>(Script(&test));
-    //logicSystem->Init();
-    //ScriptComponent test;
-    //Entity{ 11 }.AddComponent<Script>(Script(&test));
-    //logicSystem->Init();
     //serializationManager->LoadScene("SceneJPhysics");
     //pref.AddComponent<Lifespan>({ 10.f, 2.f });
 
@@ -95,8 +88,6 @@ void GameState1::Update() {
   //  ECS::DestroyEntity(11);
   //  mEntities.erase(Entity{ 11 });
   //}
-
-  //logicSystem->Update();
 }
 
 void GameState1::Draw() {
@@ -108,7 +99,6 @@ void GameState1::Free() {
     for (auto& scenePtr : mScenes)
         scenePtr->Exit();
     //ECS::DestroyAllEntities();
-    //logicSystem->Exit();
 }
 
 void GameState1::Unload() {
@@ -116,8 +106,3 @@ void GameState1::Unload() {
   //ResourceManager::GetInstance()->UnloadAllResources();
   //FREE_RESOURCES();
 }
-
-
-
-
-

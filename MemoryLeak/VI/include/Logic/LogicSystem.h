@@ -11,6 +11,8 @@ The LogicSystem class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #pragma once
+#include "ECS_tools.h"
+#include "ScriptManager.h"
 
 class LogicSystem : public System
 {
@@ -19,8 +21,8 @@ public:
 	\brief
 	Default constructor and destructor.
 	*******************************************************************************/
-	LogicSystem();
-	~LogicSystem();
+	LogicSystem() = default;
+	~LogicSystem() = default;
 
 	/*!*****************************************************************************
 	\brief
@@ -29,7 +31,21 @@ public:
 	LogicSystem(const LogicSystem&) = delete;
 	const LogicSystem& operator=(const LogicSystem&) = delete;
 
+	/*!*****************************************************************************
+	\brief
+	Run the initialisation function for all active entities' scripts.
+	*******************************************************************************/
 	void Init();
+
+	/*!*****************************************************************************
+	\brief
+	Run the update function for all active entities' scripts.
+	*******************************************************************************/
 	void Update();
+
+	/*!*****************************************************************************
+	\brief
+	Run the exit function for all active entities' scripts.
+	*******************************************************************************/
 	void Exit();
 };

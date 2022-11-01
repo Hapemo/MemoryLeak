@@ -37,7 +37,7 @@ void Entity::Activate() {
 	// Codes that should run when activating entity halfway through game
 	
 	// Scripting
-	if (HasComponent<Script>()) GetComponent<Script>().script->StartScript(this);
+	if (HasComponent<Script>()) GetComponent<Script>().script->StartScript(*this);
 
 
 
@@ -54,7 +54,7 @@ void Entity::Deactivate() {
 	// Codes that should run when deactivating entity halfway through game
 	
 	// Scripting
-	if (HasComponent<Script>()) GetComponent<Script>().script->EndScript(this);
+	if (HasComponent<Script>()) GetComponent<Script>().script->EndScript(*this);
 
 
 
@@ -69,13 +69,13 @@ Prefab::Prefab() : mName(""), mPrefabees(), mComponents() {
 	//ComponentType genType = Coordinator::GetInstance()->GetComponentType<General>();
 	//General* genComponent = static_cast<General*>(mComponents[genType]);
 	//genComponent->prefab = this;
-	General genComponent = { "", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this };
+	General genComponent = { "", TAG::PREFABS, SUBTAG::NOSUBTAG, true, false, this };
 	AddComponent<General>(genComponent);
 }
 
 Prefab::Prefab(std::string const& _name) : mName(_name), mPrefabees(), mComponents() {
 	for (void* ptr : mComponents) ptr = nullptr;
-	General genComponent = { "", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this };
+	General genComponent = { "", TAG::PREFABS, SUBTAG::NOSUBTAG, true, false, this };
 	AddComponent<General>(genComponent);
 }
 
@@ -104,7 +104,7 @@ Prefab::~Prefab() {
 Entity Prefab::CreatePrefabee() {
 	int compType{};
 	Entity e = { (Entity)Coordinator::GetInstance()->CreateEntity() };
-
+	static int count{ 1 };
 	// Loop through all components, if component exists, add it to entity.
 	for (void* component : mComponents) {
 		if (!component) continue;
@@ -113,6 +113,7 @@ Entity Prefab::CreatePrefabee() {
 		switch (compType++) {
 		case 0: // General
 			e.AddComponent<General>(*(static_cast<General*>(component)));
+			e.GetComponent<General>().name = e.GetComponent<General>().name+std::to_string(count);
 			break;
 
 		case 1: // Lifespan
