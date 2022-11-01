@@ -28,7 +28,7 @@ RenderManager::RenderManager()
 	//render world (editor)
 	mRenderGameToScreen = true;
 	mCurrRenderPass = RENDER_STATE::GAME;
-	mVectorLengthModifier = 50.f;
+	mVectorLengthModifier = 10.f;
 
 	//initialize opengl values
 	glClearColor(0.537f, 0.812f, 0.941f, 1.f);
@@ -272,7 +272,7 @@ void RenderManager::RenderDebug()
 
 		if (e.HasComponent<Physics2D>() && e.GetComponent<Physics2D>().renderFlag)
 		{
-			Physics2D p2d = e.GetComponent<Physics2D>();
+			Physics2D &p2d = e.GetComponent<Physics2D>();
 			Transform t = e.GetComponent<Transform>();
 			t.scale = Math::Vec2(p2d.velocity.Magnitude()) * mVectorLengthModifier;
 			if (p2d.velocity.y != 0 && p2d.velocity.x >= 0)

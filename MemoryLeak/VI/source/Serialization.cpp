@@ -63,7 +63,7 @@ void SerializationManager::LoadScene(std::string _filename)
 
 	int i = 0;
 	int runOnce{};
-	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr)
+	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr <= doc.MemberEnd(); ++itr)
 	{
 		if (!runOnce++) continue;
 
@@ -254,7 +254,7 @@ void SerializationManager::LoadScene(std::string _filename)
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
@@ -564,7 +564,7 @@ void SerializationManager::SaveScene(std::string _filename)
 		if (e.HasComponent<Dialogue>()) {
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
-			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("selectedID"), e.GetComponent<Dialogue>().selectedID, allocator);
 			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
 			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
 			entity.AddMember(StringRef("Dialogue"), tmp, allocator);
@@ -851,7 +851,7 @@ std::set<Entity> SerializationManager::LoadEntities(std::string const& _filePath
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
@@ -956,7 +956,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("nnnPhysics2D")) {
+		if (entity.HasMember("Physics2D")) {
 
 			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
@@ -987,7 +987,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 				force.forceID = f["forceID"].GetInt();
 				if (force.forceID == 0)
 				{
-					force.linearForce.unitDirection = GetVec2(f["linearForce"]["magnitude"]);
+					force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
 					force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
 				}
 				else if (force.forceID == 1)
@@ -1005,7 +1005,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
 		}
 		if (entity.HasMember("RectCollider")) {
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
@@ -1069,7 +1069,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
@@ -1178,7 +1178,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
 		}
-		if (entity.HasMember("nnnnnPhysics2D")) {
+		if (entity.HasMember("Physics2D")) {
 
 			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
 			float mass = entity["Physics2D"]["mass"].GetFloat();
@@ -1227,7 +1227,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 
 			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, std::vector<Force>{}, renderFlag });
+			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
 		}
 		if (entity.HasMember("RectCollider")) {
 			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
@@ -1291,7 +1291,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 		if (entity.HasMember("Dialogue")) {
 			Dialogue dialogue;
 			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selecetedID = (GLubyte)entity["Dialogue"]["selecetedID"].GetInt();
+			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
 			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
 			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 			e.AddComponent<Dialogue>(dialogue);
@@ -1456,7 +1456,7 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 		if (e.HasComponent<Dialogue>()) {
 			Value tmp(kObjectType);
 			tmp.AddMember(StringRef("speakerID"), e.GetComponent<Dialogue>().speakerID, allocator);
-			tmp.AddMember(StringRef("selecetedID"), e.GetComponent<Dialogue>().selecetedID, allocator);
+			tmp.AddMember(StringRef("selectedID"), e.GetComponent<Dialogue>().selectedID, allocator);
 			tmp.AddMember(StringRef("textID"), e.GetComponent<Dialogue>().textID, allocator);
 			tmp.AddMember(StringRef("nextTextID"), e.GetComponent<Dialogue>().nextTextID, allocator);
 			entity.AddMember(StringRef("Dialogue"), tmp, allocator);

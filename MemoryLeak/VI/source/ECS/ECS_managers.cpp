@@ -37,7 +37,7 @@ void Entity::Activate() {
 	// Codes that should run when activating entity halfway through game
 	
 	// Scripting
-	if (HasComponent<Script>()) GetComponent<Script>().script->StartScript(this);
+	if (HasComponent<Script>()) GetComponent<Script>().script->StartScript(*this);
 
 
 
@@ -54,7 +54,7 @@ void Entity::Deactivate() {
 	// Codes that should run when deactivating entity halfway through game
 	
 	// Scripting
-	if (HasComponent<Script>()) GetComponent<Script>().script->EndScript(this);
+	if (HasComponent<Script>()) GetComponent<Script>().script->EndScript(*this);
 
 
 

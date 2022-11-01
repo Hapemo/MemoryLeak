@@ -45,11 +45,6 @@ void real_main() {
 
     // Part 2
     while (!glfwWindowShouldClose(Application::getWindow())) {
-        //int i = 1;
-        //ASSERT(i == 1, "assert test");
-        /*
-        BREAKPOINT(1 == i);
-        */
         GameStateManager::GetInstance()->Update();
     }
 

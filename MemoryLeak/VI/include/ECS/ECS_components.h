@@ -137,8 +137,8 @@ struct Physics2D {
 
 	float mass{1.f};
 	float inertia{1.f};
-	float restitution{0.3f};
-	float friction{0.3f};
+	float restitution{0.0f};
+	float friction{0.0f};
 	float damping{0.9f};
 	Math::Vec2 accumulatedForce{0.f, 0.f};
 	Math::Vec2 velocity{0.f, 0.f};
@@ -168,6 +168,17 @@ struct RectCollider {
 	// float rotationOffset,
 	bool renderFlag = false;
 };
+
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a circular collider for
+collision detection
+The centerOffset variable contains the offset from the entity's transform's
+ translation
+The scaleOffset variable contains the offset from the entity's transform's scale
+The renderFlag variable contains the flag variable telling the render manager
+ whether to render the collider
+*******************************************************************************/
 struct CircleCollider {
 	Math::Vec2 centerOffset = { 0.f, 0.f };
 	float 	scaleOffset = { 1.f };
@@ -175,11 +186,12 @@ struct CircleCollider {
 	bool renderFlag = false;
 };
 
-struct Collider2D {
-	bool isTrigger;
-	bool renderFlag;
-	std::vector<ColliderBody> colliderList;
-};
+
+//struct Collider2D {
+//	bool isTrigger;
+//	bool renderFlag;
+//	std::vector<ColliderBody> colliderList;
+//};
 
 /*!*****************************************************************************
 \brief
@@ -216,7 +228,7 @@ struct Point2DCollider {
 
 /*!*****************************************************************************
 \brief
-This component encapsulates information regarding the player, such as health
+This temporary component encapsulates information regarding the player, such as health
 *******************************************************************************/
 struct PlayerTmp {
 	int HP = 1;
@@ -255,7 +267,7 @@ struct Text {
 struct Dialogue
 {
 	int speakerID;
-	int selecetedID;
+	int selectedID;
 	int textID;
 	int nextTextID;
 };
@@ -264,6 +276,7 @@ struct Dialogue
 	This struct contains the data for Script component
 *******************************************************************************/
 struct Script {
+	std::string name;
 	ScriptComponent* script;
 };
 /*!*****************************************************************************

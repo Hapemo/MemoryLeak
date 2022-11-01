@@ -155,7 +155,7 @@ The selected choice.
 *******************************************************************************/
 void DialogManager::SetSelectedChoice(int _id, int _selectedChoice) {
 	if (mDialogs.count(_id)) mDialogs[_id].selectedChoice = _selectedChoice;
-	else  LOG_ERROR("Dialogue ID doesn't exist!");
+	else LOG_ERROR("Dialogue ID doesn't exist!");
 }
 
 /*!*****************************************************************************

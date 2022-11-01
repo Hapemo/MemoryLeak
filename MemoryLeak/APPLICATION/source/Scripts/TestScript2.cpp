@@ -1,41 +1,46 @@
 /*!*****************************************************************************
-\file ScriptComponent.cpp
+\file TestScript2.cpp
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 24-10-2022
 \brief
-This file contains the function definitions of the class ScriptComponent.
-The ScriptComponent class is the base class for the scripting component in the
+This file contains the function definitions of the class TestScript2.
+The TestScript2 class is an example to test the scripting component in the
 engine.
 *******************************************************************************/
 
-#include "ScriptComponent.h"
+#include "TestScript2.h"
 
 /*!*****************************************************************************
 \brief
-Start script to run on initialisation.
+Function will run on initialisation of the entity.
 *******************************************************************************/
-void ScriptComponent::StartScript(Entity const& gob) {
+void TestScript2::StartScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Base script starts works!!!");
+	LOG_INFO("Test script2 starts works!!!");
 }
 
 /*!*****************************************************************************
 \brief
-Update script to run every update function call.
+Function will run on every update while the entity is active.
 *******************************************************************************/
-void ScriptComponent::UpdateScript(Entity const& gob) {
-	(void)gob;
-	//LOG_INFO("Base script updating works!!!");
+void TestScript2::UpdateScript(Entity const& gob) {
+	//LOG_INFO("Test script updating works!!!");
+	if (Input::CheckKey(E_STATE::HOLD, Y)) {
+		gob.GetComponent<Transform>().scale += 2;
+	}
+	else if (Input::CheckKey(E_STATE::HOLD, U)) {
+		gob.GetComponent<Transform>().scale -= 2;
+	}
 }
 
 /*!*****************************************************************************
 \brief
-End script to run when the entity gets destroyed/exit.
+Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void ScriptComponent::EndScript(Entity const& gob) {
+void TestScript2::EndScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Base script end works!!!");
+	LOG_INFO("Test script2 end works!!!");
 }
