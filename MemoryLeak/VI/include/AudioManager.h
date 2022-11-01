@@ -26,6 +26,7 @@ public:
 	FMOD::Sound* LoadAudio(std::filesystem::path const& audio);
 
 	void LoadSound();							//Load all sound 
+	void PlayAnySound(std::string _snd, int _channel);
 	void PlayBGSound(std::string, int);
 	void UpdateSound();
 	void SetALLVolume(float vol);

@@ -36,20 +36,21 @@ void AIManager::weatherAIinit()
 			for (int w = initialLoactionX[i] - sizeX[i]; w <= initialLoactionX[i] + sizeX[i]; w++)
 			{
 				if(w>=0 && w< mapWidth&& h >= 0 && h < mapHeight)
-					map[w][h] = currentWeather[i];
+					weatherMap[w][h] = currentWeather[i];
 			}
 		}
 	}
-	for (int h = 0; h < mapHeight; h++)
+	/*for (int h = 0; h < mapHeight; h++)
 	{
 		for (int w = 0; w < mapWidth ; w++)
 		{
-			std::cout<<map[w][h]<<" ";
+			std::cout<<weatherMap[w][h]<<" ";
 		}
 		std::cout << "\n ";
 	}
 	std::cout << "\n ";
-	std::cout << "\n ";
+	std::cout << "\n ";*/
+	
 }
 /*!*****************************************************************************
 \brief
@@ -68,7 +69,7 @@ void AIManager::weatherAIupdate()
 		{
 			for (int w = 0; w < mapWidth; w++)
 			{
-				map[w][h] = 0;
+				weatherMap[w][h] = 0;
 			}
 		}
 		int numWeatherLoc = 3;// std::rand() % 3;
@@ -95,7 +96,7 @@ void AIManager::weatherAIupdate()
 				{
 					if (w >= 0 && w < mapWidth && h >= 0 && h < mapHeight)
 					{
-						map[w][h] = currentWeather[i];
+						weatherMap[w][h] = currentWeather[i];
 						setted = 1;
 					}
 				}
@@ -111,17 +112,25 @@ void AIManager::weatherAIupdate()
 				initialDirectionY[i] = (std::rand() % 3) - 1;
 			}
 		}
-		for (int h = 0; h < mapHeight; h++)
+		/*for (int h = 0; h < mapHeight; h++)
 		{
 			for (int w = 0; w < mapWidth; w++)
 			{
-				std::cout << map[w][h] << " ";
+				std::cout << weatherMap[w][h] << " ";
 			}
 			std::cout << "\n ";
 		}
-		std::cout << "\n ";
+		std::cout << "\n ";*/
+
+		
 	}
 }
+
+int* AIManager::getWeatherMap()
+{
+	return &weatherMap[0][0];
+}
+
 /*!*****************************************************************************
 \brief
 	Update all the AI

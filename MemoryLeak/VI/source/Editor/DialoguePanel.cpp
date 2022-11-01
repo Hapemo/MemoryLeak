@@ -49,7 +49,6 @@ void DialoguePanel::Update()
 		start++;
 		Init();
 	}
-
 	ImGui::Begin("Dialog Editor");
 	wrapsize = int(ImGui::GetWindowWidth() / 13);
 	int id = 1;

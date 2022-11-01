@@ -110,101 +110,15 @@ void InspectorPanel::Update()
 		}
 		else if (selectedPrefab != nullptr)
 		{
-			Prefab* p = selectedPrefab;
-
-			if (p->HasComponent<General>())
-			{
-				ImGui::InputText("Prefab Name", &p->Name());
-				if (ImGui::CollapsingHeader("General") || true) {
-					ImGui::Text("General");
-
-					ImGui::Checkbox("isActive", &p->GetComponent<General>().isActive); //isactive
-					//
-
-					ImGui::InputText("Name", &p->GetComponent<General>().name);
-					
-
-					/*int tagID = (int)p.GetComponent<General>().tag;
-					static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
-					ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
-					p.GetComponent<General>().tag = (TAG)tagID;
-					
-
-					int subtagID = (int)p.GetComponent<General>().subtag;
-					static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
-					ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
-					p.GetComponent<General>().subtag = (SUBTAG)subtagID;*/
-					
-				}
-			}
-			//if (p.HasComponent<Lifespan>())
-			//{
-			//	//LifespanEditor();
-			//}
-			//if (p.HasComponent<Transform>())
-			//{
-			//	//TransformEditor();
-			//}
-			/*if (p.HasComponent<Sprite>())
-			{
-				SpriteEditor();
-			}
-			if (p.HasComponent<Animation>())
-			{
-				AnimationEditor();
-			}
-			if (p.HasComponent<SheetAnimation>())
-			{
-				SheetAnimationEditor();
-			}
-			if (p.HasComponent<Physics2D>())
-			{
-				Physics2DEditor();
-			}
-			if (p.HasComponent<RectCollider>())
-			{
-				RectColliderEditor();
-			}
-			if (p.HasComponent<CircleCollider>())
-			{
-				CircleColliderEditor();
-			}
-			if (p.HasComponent<Edge2DCollider>())
-			{
-				Edge2DColliderEditor();
-			}
-			if (p.HasComponent<Point2DCollider>())
-			{
-				Point2DColliderEditor();
-			}
-			if (p.HasComponent<Audio>())
-			{
-				AudioEditor();
-			}
-			if (p.HasComponent<Text>())
-			{
-				TextEditor();
-			}
-			if (p.HasComponent<AI>())
-			{
-				AIEditor();
-			}
-			if (p.HasComponent<PlayerTmp>())
-			{
-				PlayerTmpEditor();
-			}*/
+			p = selectedPrefab;
+			PrefabEditor();
+			
 
 
 			ImGui::Combo("Select Prefab Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 			if (ImGui::Button("Add Component to prefab"))
 			{
-				if (addComponentID == (int)COMPONENTID::GENERAL)
-					p->AddComponent<General>({ "_new_", (TAG)0, (SUBTAG)0, true });
-				else if (addComponentID == (int)COMPONENTID::LIFESPAN)
-					p->AddComponent<Lifespan>({ 0,1000 });
-				else if (addComponentID == (int)COMPONENTID::TRANSFORM)
-					p->AddComponent<Transform>({ {100,100}, 0, {0,0} });
-				
+				AddPrefabComponent();
 				std::string add(componentsList[addComponentID]);
 				LOG_INFO(add + " conponent added to prefab");
 			}
@@ -258,6 +172,48 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<PlayerTmp>({});
 	
 }
+
+void InspectorPanel::AddPrefabComponent()
+{
+	if (p == nullptr)
+		return;
+	if (addComponentID == (int)COMPONENTID::GENERAL)
+		p->AddComponent<General>({ "_new_", (TAG)0, (SUBTAG)0, true });
+	else if (addComponentID == (int)COMPONENTID::LIFESPAN)
+		p->AddComponent<Lifespan>({ 0,1000 });
+	else if (addComponentID == (int)COMPONENTID::TRANSFORM)
+		p->AddComponent<Transform>({ {100,100}, 0, {0,0} });
+	else if (addComponentID == (int)COMPONENTID::SPRITE)
+		p->AddComponent<Sprite>({});
+	else if (addComponentID == (int)COMPONENTID::ANIMATION)
+		p->AddComponent<Animation>({});
+	else if (addComponentID == (int)COMPONENTID::SHEETANIMATION)
+		p->AddComponent<SheetAnimation>({});
+	else if (addComponentID == (int)COMPONENTID::PHYSICS2D)
+		p->AddComponent<Physics2D>({});
+	else if (addComponentID == (int)COMPONENTID::RECTCOLLIDER)
+		p->AddComponent<RectCollider>({ });
+	else if (addComponentID == (int)COMPONENTID::CIRCLECOLLIDER)
+		p->AddComponent<CircleCollider>({});
+	else if (addComponentID == (int)COMPONENTID::EDGE2DCOLLIDER)
+		p->AddComponent<Edge2DCollider>({});
+	else if (addComponentID == (int)COMPONENTID::POINT2DCOLLIDER)
+		p->AddComponent<Point2DCollider>({});
+	else if (addComponentID == (int)COMPONENTID::AUDIO)
+		p->AddComponent<Audio>({});
+	else if (addComponentID == (int)COMPONENTID::TEXT)
+		p->AddComponent<Text>({ "CaviarDreams", "PLAY", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
+	else if (addComponentID == (int)COMPONENTID::AI)
+		p->AddComponent<AI>({});
+	else if (addComponentID == (int)COMPONENTID::SCRIPT)
+		p->AddComponent<Script>({});
+	else if (addComponentID == (int)COMPONENTID::DIALOGUE)
+		p->AddComponent<Dialogue>({});
+	else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
+		p->AddComponent<PlayerTmp>({});
+}
+
+
 void InspectorPanel::DeleteEntity()
 {
 	e.Destroy();
@@ -667,9 +623,12 @@ void InspectorPanel::AudioEditor()
 		ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 
-		ImGui::Checkbox("Click to Play", &e.GetComponent<Audio>().sound.toPlay);
-		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
-
+		/*ImGui::Checkbox("Click to Play", &e.GetComponent<Audio>().sound.toPlay);
+		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);*/
+		if (ImGui::Button("Play", ImVec2(50, 10)))
+		{
+			audioManager->PlayAnySound(e.GetComponent<Audio>().sound.path, 17);
+		}
 		//ImGui::Checkbox("isLoop", &e.GetComponent<Audio>().sound.isLoop);
 		if (ImGui::Button("Remove Audio"))
 		{
@@ -760,4 +719,421 @@ void InspectorPanel::AIEditor()
 			LOG_INFO("AI component removed");
 		}
 	}
+}
+
+
+
+void InspectorPanel::PrefabEditor()
+{
+	if (p == nullptr)
+		return;
+	if (p->HasComponent<General>())
+	{
+		ImGui::InputText("Prefab Name", &p->Name());
+		if (ImGui::CollapsingHeader("General") || true) {
+			ImGui::Text("General");
+			General general = p->GetComponent<General>();
+			ImGui::Checkbox("isActive", &general.isActive); //isactive
+			//
+
+			ImGui::InputText("Name", &general.name);
+
+
+			int tagID = (int)general.tag;
+			static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
+			ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
+			general.tag = (TAG)tagID;
+
+
+			int subtagID = (int)general.subtag;
+			static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+			ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
+			general.subtag = (SUBTAG)subtagID;
+			if (ImGui::IsItemDeactivatedAfterEdit)
+			{
+			}
+			p->UpdateComponent(general);
+		}
+	}
+	if (p->HasComponent<Lifespan>())
+	{
+		if (ImGui::CollapsingHeader("Lifespan")) {
+			//ImGui::Text("Lifespan");
+			Lifespan lifespan = p->GetComponent<Lifespan>();
+			ImGui::InputFloat("Lifespan", &lifespan.limit);
+			if (ImGui::Button("Remove Lifespan"))
+			{
+				p->RemoveComponent<Lifespan>();
+				LOG_INFO("Lifespan component removed");
+			}
+		}
+	}
+
+	if (p->HasComponent<Transform>())
+	{
+		if (ImGui::CollapsingHeader("Transform")) {
+			Transform transform = p->GetComponent<Transform>();
+			//ImGui::Text("Transform Component");
+			tmpVec2[0] = transform.scale.x;
+			tmpVec2[1] = transform.scale.y;
+			ImGui::DragFloat2("Set Scale", tmpVec2);
+			transform.scale = { tmpVec2[0] ,tmpVec2[1] };
+
+			tmpVec2[0] = transform.translation.x;
+			tmpVec2[1] = transform.translation.y;
+			ImGui::DragFloat2("Set Position", tmpVec2);
+			transform.translation = { tmpVec2[0] ,tmpVec2[1] };
+
+			tmpFloat = transform.rotation;
+			tmpFloat = (float)(tmpFloat / M_PI * 180.f);
+			ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
+			tmpFloat = (float)(tmpFloat * M_PI / 180.f);
+			transform.rotation = tmpFloat;
+			p->UpdateComponent(transform);
+			if (ImGui::Button("Remove Transform"))
+			{
+				p->RemoveComponent<Transform>();
+				LOG_INFO("Transform component removed");
+			}
+		}
+
+	}
+
+	if (p->HasComponent<Sprite>())
+	{
+		if (ImGui::CollapsingHeader("Sprite")) {
+			//ImGui::Text("Sprite");
+			Sprite sprite = p->GetComponent<Sprite>();
+			tmpVec4[0] = sprite.color.r / 255.f;
+			tmpVec4[1] = sprite.color.g / 255.f;
+			tmpVec4[2] = sprite.color.b / 255.f;
+			tmpVec4[3] = sprite.color.a / 255.f;
+			ImGui::ColorEdit4("Color", tmpVec4);
+			sprite.color.r = (GLubyte)(tmpVec4[0] * 255);
+			sprite.color.g = (GLubyte)(tmpVec4[1] * 255);
+			sprite.color.b = (GLubyte)(tmpVec4[2] * 255);
+			sprite.color.a = (GLubyte)(tmpVec4[3] * 255);
+			std::string tex{};
+			if (sprite.sprite == SPRITE::TEXTURE)
+				tex = spriteManager->GetTexturePath(sprite.texture);
+			else if (sprite.sprite == SPRITE::CIRCLE)
+				tex = "CIRCLE";
+			else if (sprite.sprite == SPRITE::SQUARE)
+				tex = "SQUARE";
+
+			int shapeID = (int)sprite.sprite;
+			static const char* shape[]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
+			ImGui::Combo("Shape", &shapeID, shape, IM_ARRAYSIZE(shape));
+			sprite.sprite = (SPRITE)shapeID;
+			if ((SPRITE)shapeID != SPRITE::TEXTURE)
+			{
+				sprite.texture = 0;
+			}
+			ImGui::Text(tex.c_str());
+
+			static const wchar_t* texpath = (const wchar_t*)"";
+			if (ImGui::BeginDragDropTarget())
+			{
+				if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+				{
+					texpath = (const wchar_t*)payload->Data;
+					std::string tp = (std::string)((const char*)texpath);
+					sprite.sprite = SPRITE::TEXTURE;
+					sprite.texture = spriteManager->GetTextureID(tp);
+				}
+				ImGui::EndDragDropTarget();
+			}
+			ImGui::InputInt("Layer", &sprite.layer);
+			p->UpdateComponent(sprite);
+			if (ImGui::Button("Remove Sprite"))
+			{
+				p->RemoveComponent<Sprite>();
+				LOG_INFO("Sprite component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Animation>())
+	{
+		if (ImGui::CollapsingHeader("Animation")) {
+			//ImGui::Text("Animation");
+			Animation animation = p->GetComponent<Animation>();
+			static GLuint addImage = {};
+			static std::string  texadd = "Add image";
+			for (size_t i = 0; i <= animation.images.size(); ++i)
+			{
+				std::string tex{};
+				if (i != animation.images.size())
+				{
+					tex = spriteManager->GetTexturePath(animation.images[i]);
+					ImGui::Text(tex.c_str());
+				}
+				else
+				{
+					ImGui::InputText("Addimage", &texadd, texadd.size());
+					tex = texadd;
+				}
+				static const wchar_t* texpath = (const wchar_t*)"";
+				if (ImGui::BeginDragDropTarget())
+				{
+					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+					{
+						texpath = (const wchar_t*)payload->Data;
+						if (i == p->GetComponent<Animation>().images.size())
+							texadd = (char*)texpath;
+						std::string  tp = (std::string)((const char*)texpath);
+						if (i != animation.images.size())
+							animation.images[i] = spriteManager->GetTextureID(tp);
+						else
+							addImage = spriteManager->GetTextureID(tp);
+					}
+					ImGui::EndDragDropTarget();
+				}
+			}
+			if (ImGui::Button("Add Sprite"))
+			{
+				animator->AddImages(e, addImage);
+			}
+			ImGui::InputFloat("timePerImage", &animation.timePerImage);
+			ImGui::InputFloat("timeToImageSwap", &animation.timeToImageSwap);
+			ImGui::InputInt("currentImageIndex", &animation.currentImageIndex);
+			p->UpdateComponent<Animation>(animation);
+			if (ImGui::Button("Remove Animation"))
+			{
+				p->RemoveComponent<Animation>();
+				LOG_INFO("Animation component removed");
+			}
+		}
+	}
+	if (p->HasComponent<SheetAnimation>())
+	{
+		if (ImGui::CollapsingHeader("SheetAnimation")) {
+			//ImGui::Text("SheetAnimation");
+			SheetAnimation sheetAnimation = p->GetComponent<SheetAnimation>();
+			ImGui::InputInt("frameCount", (int*)sheetAnimation.frameCount);
+			ImGui::InputInt("currFrameIndex", (int*)sheetAnimation.currFrameIndex);
+			ImGui::InputFloat("timePerFrame", &sheetAnimation.timePerFrame);
+			ImGui::InputFloat("timeToFrameSwap", &sheetAnimation.timeToFrameSwap);
+			p->UpdateComponent<SheetAnimation>(sheetAnimation);
+			if (ImGui::Button("Remove SheetAnimation"))
+			{
+				p->RemoveComponent<SheetAnimation>();
+				LOG_INFO("SheetAnimation component removed");
+			}
+		}
+	}
+	if (p->HasComponent<RectCollider>())
+	{
+		if (ImGui::CollapsingHeader("RectCollider")) {
+			//ImGui::Text("RectCollider");
+			RectCollider rectCollider = p->GetComponent<RectCollider>();
+			tmpVec2[0] = p->GetComponent<RectCollider>().centerOffset.x;
+			tmpVec2[1] = p->GetComponent<RectCollider>().centerOffset.y;
+			ImGui::InputFloat2("Box position Offset", tmpVec2);
+			rectCollider.centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+			tmpVec2[0] = rectCollider.scaleOffset.x;
+			tmpVec2[1] = rectCollider.scaleOffset.y;
+			ImGui::InputFloat2("Box scale Offset", tmpVec2);
+			rectCollider.scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+			ImGui::Checkbox("Rect RenderFlag", &rectCollider.renderFlag);
+			p->UpdateComponent<RectCollider>(rectCollider);
+			if (ImGui::Button("Remove RectCollider"))
+			{
+				p->RemoveComponent<RectCollider>();
+				LOG_INFO("RectCollider component removed");
+			}
+		}
+	}
+	if (p->HasComponent<CircleCollider>())
+	{
+		if (ImGui::CollapsingHeader("CircleCollider")) {
+			//ImGui::Text("CircleCollider");
+			CircleCollider circleCollider = p->GetComponent<CircleCollider>();
+			tmpVec2[0] = circleCollider.centerOffset.x;
+			tmpVec2[1] = circleCollider.centerOffset.y;
+			ImGui::InputFloat2("Circle position Offset", tmpVec2);
+			circleCollider.centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+			float scale = circleCollider.scaleOffset;
+			ImGui::InputFloat("Circle scale Offset", &scale);
+			circleCollider.scaleOffset = { scale };
+
+			ImGui::Checkbox("Circle RenderFlag", &circleCollider.renderFlag);
+
+			p->UpdateComponent<CircleCollider>(circleCollider);
+			if (ImGui::Button("Remove CircleCollider"))
+			{
+				p->RemoveComponent<CircleCollider>();
+				LOG_INFO("CircleCollider component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Edge2DCollider>())
+	{
+		if (ImGui::CollapsingHeader("Edge2DCollider")) {
+			//ImGui::Text("Edge2DCollider");
+			Edge2DCollider edge2DCollider = p->GetComponent<Edge2DCollider>();
+			tmpVec2[0] = edge2DCollider.p0Offset.x;
+			tmpVec2[1] = edge2DCollider.p0Offset.y;
+			ImGui::InputFloat2("p0 Offset", tmpVec2);
+			edge2DCollider.p0Offset = { tmpVec2[0] ,tmpVec2[1] };
+
+			ImGui::InputFloat("rotationOffset", &edge2DCollider.rotationOffset);
+			ImGui::InputFloat("scaleOffset", &edge2DCollider.scaleOffset);
+			ImGui::Checkbox("RenderFlag", &edge2DCollider.renderFlag);
+			p->UpdateComponent<Edge2DCollider>(edge2DCollider);
+			if (ImGui::Button("Remove Edge2DCollider"))
+			{
+				p->RemoveComponent<Edge2DCollider>();
+				LOG_INFO("Edge2DCollider component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Point2DCollider>())
+	{
+		if (ImGui::CollapsingHeader("Point2DCollider")) {
+			//ImGui::Text("Point2DCollider");
+			Point2DCollider point2DCollider = p->GetComponent<Point2DCollider>();
+			tmpVec2[0] = point2DCollider.centerOffset.x;
+			tmpVec2[1] = point2DCollider.centerOffset.y;
+			ImGui::InputFloat2("centerOffset", tmpVec2);
+			point2DCollider.centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+			ImGui::Checkbox("RenderFlag", &point2DCollider.renderFlag);
+			p->UpdateComponent<Point2DCollider>(point2DCollider);
+			if (ImGui::Button("Remove Point2DCollider"))
+			{
+				p->RemoveComponent<Point2DCollider>();
+				LOG_INFO("Point2DCollider component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Physics2D>())
+	{
+		if (ImGui::CollapsingHeader("Physics2D")) {
+			//ImGui::Text("Physics2D");
+			Physics2D physics2D = p->GetComponent<Physics2D>();
+			ImGui::Checkbox("dynamicsEnabled", &e.GetComponent<Physics2D>().dynamicsEnabled);
+			ImGui::InputFloat("Mass", &physics2D.mass);
+			ImGui::InputFloat("inertia", &physics2D.inertia);
+			ImGui::InputFloat("restitution", &physics2D.restitution);
+			ImGui::InputFloat("friction", &physics2D.friction);
+			ImGui::InputFloat("damping", &physics2D.damping);
+
+			tmpVec2[0] = physics2D.velocity.x;
+			tmpVec2[1] = physics2D.velocity.y;
+			ImGui::InputFloat2("velocity", tmpVec2);
+			physics2D.velocity = { tmpVec2[0] ,tmpVec2[1] };
+
+			tmpVec2[0] = physics2D.acceleration.x;
+			tmpVec2[1] = physics2D.acceleration.y;
+			ImGui::InputFloat2("acceleration", tmpVec2);
+			physics2D.acceleration = { tmpVec2[0] ,tmpVec2[1] };
+
+
+			tmpVec2[0] = physics2D.accumulatedForce.x;
+			tmpVec2[1] = physics2D.accumulatedForce.y;
+			ImGui::InputFloat2("accumulatedForce", tmpVec2);
+			physics2D.accumulatedForce = { tmpVec2[0] ,tmpVec2[1] };
+
+			ImGui::InputFloat("angularVelocity", &physics2D.angularVelocity);
+			ImGui::InputFloat("angularTorque", &physics2D.angularTorque);
+			ImGui::Checkbox("Physics RenderFlag", &physics2D.renderFlag);
+
+
+			p->UpdateComponent<Physics2D>(physics2D);
+			if (ImGui::Button("Remove Physics2D"))
+			{
+				p->RemoveComponent<Physics2D>();
+				LOG_INFO("Physics2D component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Audio>())
+	{
+		if (ImGui::CollapsingHeader("Audio")) {
+			//ImGui::Text("Audio");
+			Audio audio = p->GetComponent<Audio>();
+			ImGui::InputText("Addsound", &audio.sound.path);
+			ImGui::Checkbox("Pause", &audio.sound.isPaused);
+			//ImGui::Checkbox("Click to Play", &audio.sound.toPlay);
+			if (ImGui::Button("Play", ImVec2(50, 10)))
+			{
+				audioManager->PlayAnySound(audio.sound.path, 17);
+			}
+			//ImGui::Checkbox("isLoop", &audio.sound.isLoop);
+			p->UpdateComponent<Audio>(audio);
+			if (ImGui::Button("Remove Audio"))
+			{
+				p->RemoveComponent<Audio>();
+				LOG_INFO("Audio component removed");
+			}
+		}
+	}
+	if (ImGui::CollapsingHeader("Text")) {
+		//ImGui::Text("Text");
+		Text text = p->GetComponent<Text>();
+		ImGui::InputText("Addstrtext", &text.text);
+		ImGui::InputText("Addfont", &text.fontFile);
+
+		tmpVec2[0] = text.offset.x;
+		tmpVec2[1] = text.offset.y;
+		ImGui::DragFloat2("Text Pos", tmpVec2);
+		text.offset = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+
+		ImGui::DragFloat("Text Scale", &text.scale);
+
+		tmpVec4[0] = text.color.r / 255.f;
+		tmpVec4[1] = text.color.g / 255.f;
+		tmpVec4[2] = text.color.b / 255.f;
+		tmpVec4[3] = text.color.a / 255.f;
+		ImGui::ColorEdit4("Text Color", tmpVec4);
+		text.color.r = (GLubyte)(tmpVec4[0] * 255);
+		text.color.g = (GLubyte)(tmpVec4[1] * 255);
+		text.color.b = (GLubyte)(tmpVec4[2] * 255);
+		text.color.a = (GLubyte)(tmpVec4[3] * 255);
+		p->UpdateComponent<Text>(text);
+
+		if (ImGui::Button("Remove Text"))
+		{
+			e.RemoveComponent<Text>();
+			LOG_INFO("Text component removed");
+		}
+	}
+	if (p->HasComponent<AI>())
+	{
+		if (ImGui::CollapsingHeader("AI")) {
+			AI ai = p->GetComponent<AI>();
+			static const char* colorChange[]{ "None","Smoothy","Traffic Light" };
+			int colorChangeID = ai.colorChange;
+			ImGui::Combo("Select Color Change", &colorChangeID, colorChange, IM_ARRAYSIZE(colorChange));
+			ai.colorChange = colorChangeID;
+
+			static const char* movement[]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
+			int movementID = ai.movement;
+			ImGui::Combo("Select Movement", &movementID, movement, IM_ARRAYSIZE(movement));
+			ai.movement = movementID;
+
+			if (ai.movement)
+			{
+				float speed = ai.speed;
+				ImGui::SliderFloat("Speed", &speed, 0.f, 15.f);
+				ai.speed = speed;
+				if (ai.movement < 4)
+				{
+					float range = ai.range;
+					ImGui::SliderFloat("Range", &range, 0.f, 400.f);
+					ai.range = range;
+				}
+			}
+			p->UpdateComponent<AI>(ai);
+			if (ImGui::Button("Remove AI"))
+			{
+				p->RemoveComponent<AI>();
+				LOG_INFO("AI component removed");
+			}
+		}
+	}
+
 }

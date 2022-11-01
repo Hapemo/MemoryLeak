@@ -37,6 +37,7 @@ void Application::startup() {
 void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
+  //aiManager->weatherAIinit();
   renderManager->Init(&window_width, &window_height);
   renderManager->RenderToFrameBuffer();
   ResourceManager::GetInstance()->LoadAllResources();
@@ -49,6 +50,7 @@ void Application::SystemUpdate() {
   // AI
   TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
+  
   END_TRACK("AI");
 
   // Physics
@@ -74,8 +76,8 @@ void Application::init() {
   startup();
 
   SystemInit();
-  audioManager->PlayBGSound("PIntro", 10);
-  
+ // audioManager->PlayBGSound("PIntro", 10);
+ // audioManager->PlayBGSound("MENUBG", 10);
 }
 
 void Application::FirstUpdate() {

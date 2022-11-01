@@ -254,7 +254,7 @@ public:
 	bool HasComponent() const;
 
 	template<typename T>
-	T& GetComponent() const;
+	T const& GetComponent() const;
 
 
 	std::set<Entity> const& GetPrefabees() const { return mPrefabees; }
