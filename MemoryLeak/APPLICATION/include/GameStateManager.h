@@ -23,6 +23,7 @@ enum class E_GS {
 	ParallaxSprite,
 	ScriptingDemo,
 	JAZZ,
+	PHYSICS,
 	Lighting,
 	RESTART,
 	EXIT

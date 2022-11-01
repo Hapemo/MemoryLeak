@@ -22,6 +22,7 @@ running.
 #include "GameState3.h"
 #include "ScriptingDemo.h"
 #include "GameStateJazz.h"
+#include "GameStatePhysics.h"
 #include "ParallaxAndSpriteSwap.h"
 #include "Lighting.h"
 
@@ -85,6 +86,7 @@ void GameStateManager::Init() {
 	GS_List.insert(GS_pair(E_GS::ScriptingDemo, new ScriptingDemo));
 	GS_List.insert(GS_pair(E_GS::ParallaxSprite, new ParallaxAndSpriteSwap));
 	GS_List.insert(GS_pair(E_GS::JAZZ, new GameStateJazz));
+	GS_List.insert(GS_pair(E_GS::PHYSICS, new GameStatePhysics));
 	GS_List.insert(GS_pair(E_GS::Lighting, new Lighting));
 }
 
@@ -116,4 +118,5 @@ void GameStateManager::GSControlPanel() {
 	else if (Input::CheckKey(PRESS, J) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::JAZZ);
 	else if (Input::CheckKey(PRESS, _5) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Lighting);
 	else if (Input::CheckKey(PRESS, _6) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ScriptingDemo);
+	else if (Input::CheckKey(PRESS, P) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::PHYSICS);
 }
