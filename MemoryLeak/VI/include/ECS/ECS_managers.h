@@ -366,6 +366,12 @@ public:
 	void SetSystemSignature(const Signature& _signature) { return mSystemManager->SetSignature<T>(_signature); }
 
 	// For prefab
+	/*!*****************************************************************************
+	Unlink a prefab from an entity
+
+	\param EntityID
+	- Entity to unlink itself from it's prefab
+	*******************************************************************************/
 	void UnlinkPrefab(EntityID _entity);
 
 	// Extra
@@ -382,6 +388,12 @@ public:
 	*******************************************************************************/
 	void DestroySomeEntites(const std::set<Entity>&);
 
+	/*!*****************************************************************************
+	Get the count of entity in ECS
+
+	\return uint32_t
+	- Number of entities
+	*******************************************************************************/
 	uint32_t GetEntityCount();
 
 private:
