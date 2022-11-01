@@ -137,8 +137,8 @@ struct Physics2D {
 
 	float mass{1.f};
 	float inertia{1.f};
-	float restitution{0.3f};
-	float friction{0.3f};
+	float restitution{0.0f};
+	float friction{0.0f};
 	float damping{0.9f};
 	Math::Vec2 accumulatedForce{0.f, 0.f};
 	Math::Vec2 velocity{0.f, 0.f};
@@ -187,11 +187,11 @@ struct CircleCollider {
 };
 
 
-struct Collider2D {
-	bool isTrigger;
-	bool renderFlag;
-	std::vector<ColliderBody> colliderList;
-};
+//struct Collider2D {
+//	bool isTrigger;
+//	bool renderFlag;
+//	std::vector<ColliderBody> colliderList;
+//};
 
 /*!*****************************************************************************
 \brief

@@ -22,7 +22,7 @@ Contact::Contact(const Entity& _obj1, const Entity& _obj2) : obj1{ _obj1 }, obj2
 
 float Contact::DetermineRestitution() {
 	if (!obj1.HasComponent<Physics2D>() || !obj2.HasComponent<Physics2D>()) {
-		return obj1.HasComponent<Physics2D>() ? obj1.GetComponent<Physics2D>().restitution : obj2.HasComponent<Physics2D>() ? obj2.GetComponent<Physics2D>().restitution : 0.0;
+		return obj1.HasComponent<Physics2D>() ? obj1.GetComponent<Physics2D>().restitution : obj2.HasComponent<Physics2D>() ? obj2.GetComponent<Physics2D>().restitution : 0.f;
 	}
 
 	return std::min(obj1.GetComponent<Physics2D>().restitution, obj2.GetComponent<Physics2D>().restitution);
@@ -30,7 +30,7 @@ float Contact::DetermineRestitution() {
 
 float Contact::DetermineFriction() {
 	if (!obj1.HasComponent<Physics2D>() || !obj2.HasComponent<Physics2D>()) {
-		return obj1.HasComponent<Physics2D>() ? std::sqrt(obj1.GetComponent<Physics2D>().friction) : obj2.HasComponent<Physics2D>() ? std::sqrt(obj2.GetComponent<Physics2D>().friction) : 0.0;
+		return obj1.HasComponent<Physics2D>() ? std::sqrt(obj1.GetComponent<Physics2D>().friction) : obj2.HasComponent<Physics2D>() ? std::sqrt(obj2.GetComponent<Physics2D>().friction) : 0.f;
 	}
 
 	return std::sqrt(obj1.GetComponent<Physics2D>().friction * obj2.GetComponent<Physics2D>().friction);
@@ -145,9 +145,9 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	Math::Vec2 obj1NewPos{ center1 },
 			   obj2NewPos{ center2 };
 	if (obj1.HasComponent<Physics2D>())
-		obj1NewPos += obj1.GetComponent<Physics2D>().velocity * _contact.interTime;
+		obj1NewPos += obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_contact.interTime);
 	if (obj2.HasComponent<Physics2D>())
-		obj2NewPos += obj2.GetComponent<Physics2D>().velocity * _contact.interTime;
+		obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_contact.interTime);
 
 	Math::Vec2 distVec{ obj1NewPos - obj2NewPos };
 	Math::Vec2 diff{ scale1.x + scale2.x - std::fabs(distVec.x),
@@ -271,16 +271,32 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 		Math::Vec2 obj1NewPos{ obj1Pos }, 
 				   obj2NewPos{ obj2Pos };
 		if (obj1.HasComponent<Physics2D>())
-			obj1NewPos += obj1.GetComponent<Physics2D>().velocity * _contact.interTime;
+			obj1NewPos += obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_contact.interTime);
 		if (obj2.HasComponent<Physics2D>())
-			obj2NewPos += obj2.GetComponent<Physics2D>().velocity * _contact.interTime;
+			obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_contact.interTime);
 
 		_contact.penetration = sqrt(Math::SqDistance(obj1NewPos, obj2NewPos)) - (obj1R + obj2R);
 		_contact.normal = (obj2NewPos - obj1NewPos).Normalize();
 		_contact.contacts.push_back(_contact.normal * obj1R + obj1NewPos);
+
+		return true;
 	}
 	else
 		return false;
+}
+
+bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
+	_contact;
+	_dt;
+
+	return false;
+}
+
+bool Collision2DManager::CI_RectvsCircle(Contact& _contact, const double& _dt) {
+	_contact;
+	_dt;
+
+	return false;
 }
 
 bool Collision2DManager::HasCollider(const Entity& _e) {
@@ -302,6 +318,8 @@ int Collision2DManager::NoOfColliders(const Entity& _e) {
 void Collision2DManager::SetupCollisionDatabase() {
 	RegisterCollisionTest(ColliderType::CIRCLE, ColliderType::CIRCLE, CI_CirclevsCircle);
 	RegisterCollisionTest(ColliderType::RECT, ColliderType::RECT, CI_RectvsRect);
+	RegisterCollisionTest(ColliderType::CIRCLE, ColliderType::RECT, CI_CirclevsRect);
+	RegisterCollisionTest(ColliderType::RECT, ColliderType::CIRCLE, CI_RectvsCircle);
 }
 
 void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const ColliderType& typeB, CollisionCallback function) {
@@ -315,8 +333,10 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 	for (auto item : mContactList)
 		ResolveContact(item);
 
-	for (auto item : mContactList)
-		UpdatePositions(item, _dt);
+	for (auto item : mContactList) {
+		UpdatePositions(item);
+		UpdateVelocities(item, _dt);
+	}
 
 	ClearContactList();
 }
@@ -489,7 +509,7 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 	}
 }
 
-void Collision2DManager::UpdatePositions(const Contact& _contact, const double& _dt) {
+void Collision2DManager::UpdatePositions(const Contact& _contact) {
 	physics2DManager->UpdatePosition(_contact.obj1);
 	physics2DManager->UpdatePosition(_contact.obj2);
 }

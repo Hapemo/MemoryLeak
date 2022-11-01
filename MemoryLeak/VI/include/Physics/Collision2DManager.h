@@ -50,6 +50,8 @@ public:
 // -----------------------------
 	static bool CI_RectvsRect(Contact& _contact, const double& _dt);
 	static bool CI_CirclevsCircle(Contact& _contact, const double& _dt);
+	static bool CI_RectvsCircle(Contact& _contact, const double& _dt);
+	static bool CI_CirclevsRect(Contact& _contact, const double& _dt);
 
 // -----------------------------
 // Component-related functions
@@ -68,7 +70,7 @@ public:
 	void ClearContactList();
 
 	void ResolveContact(Contact& _contact);
-	void UpdatePositions(const Contact& _contact, const double& _dt);
+	void UpdatePositions(const Contact& _contact);
 	void PositionCorrection(Contact& _contact);
 	void UpdateVelocities(Contact& _contact, const double& _dt);
 

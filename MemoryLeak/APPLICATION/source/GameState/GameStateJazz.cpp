@@ -33,7 +33,7 @@ void GameStateJazz::Init() {
     scenePtr->Init();
   //serializationManager->LoadSceneData(16665530225854980);
   //serializationManager->LoadScene("SceneJPhysics");
-  renderManager->SetClearColor({ 0,0,0,255 });
+  //renderManager->SetClearColor({ 0,0,0,255 });
 
 }
 

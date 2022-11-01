@@ -69,11 +69,11 @@ void Physics2DManager::Step() {
 		UpdateEntitiesAccumulatedForce(e);
 
 		// Determine acceleration
-		SetAcceleration(e, GetAccumulatedForce(e) * static_cast<float>(1.0 / GetMass(e)));
+		SetAcceleration(e, GetAccumulatedForce(e) * (GetMass(e) == 0.f ? 0.f : static_cast<float>(1.f / GetMass(e))));
 
 		// Determine velocity
 		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(fixedDT));
-		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (1.0f / GetInertia(e)) * static_cast<float>(fixedDT));
+		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (GetInertia(e) == 0.f ? 0.f : (1.f / GetInertia(e))) * static_cast<float>(fixedDT));
 
 		// Update positions
 		UpdatePosition(e);
@@ -96,7 +96,6 @@ void Physics2DManager::UpdatePosition(const Entity& _e) {
 	// Move entity by velocity
 	_e.GetComponent<Transform>().translation += GetVelocity(_e) * static_cast<float>(fixedDT);
 	_e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(_e) * fixedDT);
-
 }
 
 //void Physics2DManager::AddPhysicsComponent() {
@@ -320,6 +319,6 @@ void Physics2DManager::AddDragForce(const Entity& _e, const float& _directionDra
 }
 
 void Physics2DManager::ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _contact) {
-	SetVelocity(_e, GetVelocity(_e) + static_cast<float>(1.0f / GetMass(_e)) * _impulse);
-	SetAngularVelocity(_e, GetAngularVelocity(_e) + 1.0f / GetInertia(_e) * Math::Cross(_impulse, _contact));
+	SetVelocity(_e, GetVelocity(_e) + (GetMass(_e) == 0.f ? 0.f : (1.f / GetMass(_e))) * _impulse);
+	SetAngularVelocity(_e, GetAngularVelocity(_e) + (GetInertia(_e) == 0.f ? 0.f : (1.f / GetInertia(_e))) * Math::Cross(_impulse, _contact));
 }

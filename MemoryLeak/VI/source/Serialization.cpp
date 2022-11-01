@@ -63,7 +63,7 @@ void SerializationManager::LoadScene(std::string _filename)
 
 	int i = 0;
 	int runOnce{};
-	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr)
+	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr <= doc.MemberEnd(); ++itr)
 	{
 		if (!runOnce++) continue;
 

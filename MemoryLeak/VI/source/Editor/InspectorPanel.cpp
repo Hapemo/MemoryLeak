@@ -541,6 +541,7 @@ void InspectorPanel::Physics2DEditor()
 
 		ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
+
 		if (ImGui::Button("Remove Physics2D"))
 		{
 			e.RemoveComponent<Physics2D>();
