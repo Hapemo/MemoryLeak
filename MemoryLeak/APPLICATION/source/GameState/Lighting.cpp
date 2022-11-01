@@ -8,11 +8,6 @@ constexpr Color grey{ 50, 50, 50, 255 };
 constexpr Color white{ 255, 255, 255, 255 };
 Entity lightsource;
 
-float LineLine(const Math::Vec2& p0, const Math::Vec2& p1, const Math::Vec2& p, const Math::Vec2& normal)
-{
-    return (Math::Dot(p0 - p, normal) * Math::Dot(p1 - p, normal));
-}
-
 void Lighting::Load() {}
 
 void Lighting::Init()

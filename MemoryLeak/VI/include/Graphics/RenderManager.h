@@ -198,6 +198,12 @@ public:
 	The third point of the triangle.
 	*******************************************************************************/
 	void CreateLightingTriangle(const Math::Vec2& _p0, const Math::Vec2& _p1, const Math::Vec2& _p2);
+
+	/*!*****************************************************************************
+	\brief
+	Resets all the cameras in RenderManager.
+	*******************************************************************************/
+	void ResetCameras();
 private:
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam, mAnimatorCam;

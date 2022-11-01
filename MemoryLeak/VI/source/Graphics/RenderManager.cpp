@@ -555,6 +555,17 @@ void RenderManager::CreateLightingTriangle(const Math::Vec2& p0, const Math::Vec
 
 /*!*****************************************************************************
 \brief
+Resets all the cameras in RenderManager.
+*******************************************************************************/
+void RenderManager::ResetCameras()
+{
+	mAnimatorCam.Reset();
+	mGameCam.Reset();
+	mWorldCam.Reset();
+}
+
+/*!*****************************************************************************
+\brief
 Creates a square or texture based on Transform and Sprite Component.
 
 \param const Entity& _e

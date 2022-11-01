@@ -126,3 +126,13 @@ std::vector<float> Camera::GetImGuizmoCamToWorld()
 		mPos.x, mPos.y, 0.f, 1.f
 	};
 }
+
+/*!*****************************************************************************
+\brief
+Resets the camera to its default position and zoom.
+*******************************************************************************/
+void Camera::Reset()
+{
+	mPos = { 0.f, 0.f };
+	mZoom = 1.f;
+}
