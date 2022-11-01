@@ -67,8 +67,9 @@ void WorldViewPanel::Update()
 		{
 			//Camera movement
 			ArrowKeyMoveCam();
-			MouseClickMoveCam();
 			ScrollMoveCam();
+			if(isScenePaused)
+				MouseClickMoveCam();
 			
 		}
 		if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
@@ -82,14 +83,17 @@ void WorldViewPanel::Update()
 	
 		if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
 		{
-			e = *selectedEntity;
-			if (SRT == 0)
+			if (isScenePaused)
 			{
-				MoveSelectedEntity();
-			}
-			else
-			{
-				UseGuizmo();
+				e = *selectedEntity;
+				if (SRT == 0)
+				{
+					MoveSelectedEntity();
+				}
+				else
+				{
+					UseGuizmo();
+				}
 			}
 		}
 	}

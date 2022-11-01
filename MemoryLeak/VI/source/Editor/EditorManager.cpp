@@ -166,6 +166,7 @@ void EditorManager::Update()
 	debugPanel.Update();
 	menuPanel.Update();*/
 
+	glClearColor(0.f,0.f,0.f,1.f);
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -175,7 +176,6 @@ void EditorManager::Update()
 		ImGui::RenderPlatformWindowsDefault();
 		glfwMakeContextCurrent(backup_current_context);
 	}
-	
 }
 /*!*****************************************************************************
 \brief
