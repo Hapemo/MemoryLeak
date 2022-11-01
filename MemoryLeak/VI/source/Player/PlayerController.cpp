@@ -16,13 +16,6 @@
 #include "ECSManager.h"
 #include "Input.h"
 
-// -----------------------------
-// Constant values
-// -----------------------------
-const double playerSpeed{30.f},
-			 playerSpeedNaturalLossScalar{ 0.99 },				// Player speed decceleration scalar
-		     playerSpeedCap {300.f};							// Player speed cap
-
 /*!*****************************************************************************
 \brief
 Update function that checks for keyboard input to modify physics components values
@@ -39,6 +32,11 @@ void PlayerController::Update() {
 	for (const Entity& e : mEntities) {
 		if (!e.HasComponent<PlayerTmp>() || !e.HasComponent<Physics2D>())
 			continue;
+		
+		// Hack so that debug render is correct
+		if (FirstUpdate) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f }, Math::Vec2{ 0.f, 0.f });
+		}
 
 	// -----------------------------
 	// Movement input first draft (Direction based movement)
@@ -59,22 +57,22 @@ void PlayerController::Update() {
 	// Movement input second draft (key movement)
 	// -----------------------------
 		// Up movement
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::I) || Input::CheckKey(E_STATE::HOLD, E_KEY::I)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W)) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f } * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 		
 		// Down movement
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::K) || Input::CheckKey(E_STATE::HOLD, E_KEY::K)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, -1.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 
 		// Left movement
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::J) || Input::CheckKey(E_STATE::HOLD, E_KEY::J)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ -1.f, 0.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 
 		// Right movement
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::L) || Input::CheckKey(E_STATE::HOLD, E_KEY::L)) {
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D)) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ 1.f, 0.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 
@@ -86,4 +84,7 @@ void PlayerController::Update() {
 		// No movement input, scale down the speed to slow it down
 		physics2DManager->ScaleVelocity(e, static_cast<float>(playerSpeedNaturalLossScalar));
 	}
+
+	if (FirstUpdate)
+		FirstUpdate = false;
 }
