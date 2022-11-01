@@ -354,6 +354,10 @@ void InspectorPanel::SpriteEditor()
 				std::string tp = (std::string)((const char*)texpath);
 				e.GetComponent<Sprite>().sprite = SPRITE::TEXTURE;
 				spriteManager->SetTexture(e, tp);
+				COMPONENT _new;
+				_new = e.GetComponent<Sprite>();
+				undoStack.push_back(std::make_pair(e, _new));
+				stackPointer = (int)undoStack.size();
 			}
 			ImGui::EndDragDropTarget();
 		}
@@ -399,6 +403,7 @@ void InspectorPanel::AnimationEditor()
 						e.GetComponent<Animation>().images[i] = spriteManager->GetTextureID(tp);
 					else
 						addImage = spriteManager->GetTextureID(tp);
+					
 				}
 				ImGui::EndDragDropTarget();
 			}
@@ -625,6 +630,10 @@ void InspectorPanel::AudioEditor()
 				texpath = (const wchar_t*)payload->Data;
 				std::string tp = (std::string)((const char*)texpath);
 				e.GetComponent<Audio>().sound.path = tp;
+				COMPONENT _new;
+				_new = e.GetComponent<Audio>();
+				undoStack.push_back(std::make_pair(e, _new));
+				stackPointer = (int)undoStack.size();
 			}
 			ImGui::EndDragDropTarget();
 		}
