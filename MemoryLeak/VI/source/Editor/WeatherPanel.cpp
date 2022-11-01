@@ -23,6 +23,7 @@ void WeatherPanel::Init()
 {
 	aiManager->weatherAIinit();
 	viewportSize = { 0,0 };
+	isWeatherPaused = true;
 }
 /*!*****************************************************************************
 \brief
@@ -86,7 +87,7 @@ void WeatherPanel::Update()
 		ImGui::NewLine();
 	}
 	
-	if (isWeatherPaused)
+	if (!isWeatherPaused)
 	{
 		aiManager->weatherAIupdate();
 	}

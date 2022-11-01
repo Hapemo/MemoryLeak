@@ -62,7 +62,7 @@ None.
 void AIManager::weatherAIupdate()
 {
 	
-	int update = std::rand() % 100;
+	int update = std::rand() % 10;
 	if (update == 0)
 	{
 		for (int h = 0; h < mapHeight; h++)

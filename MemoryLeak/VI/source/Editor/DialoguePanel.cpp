@@ -41,6 +41,7 @@ None.
 *******************************************************************************/
 void DialoguePanel::Update()
 {
+std::cout << "Yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy";
 	if (!active)
 		return;
 	static int start{};
@@ -49,7 +50,7 @@ void DialoguePanel::Update()
 		start++;
 		Init();
 	}
-
+	std::cout << "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";
 	ImGui::Begin("Dialog Editor");
 	wrapsize = int(ImGui::GetWindowWidth() / 13);
 	int id = 1;
