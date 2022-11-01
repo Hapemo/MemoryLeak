@@ -26,61 +26,61 @@ void Lighting::Init()
     e1.AddComponent(Transform{ {400, 100}, 1.f, {100,250} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0}, 0.75f, {255, 0, 0, 255} });
     Entity e2{ ECS::CreateEntity() };
     mEntities.insert(e2);
     e2.AddComponent(Transform{ {100, 100}, 4, {-400,0} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0}, 0.75f, {255, 0, 0, 255} });
     Entity e3{ ECS::CreateEntity() };
     mEntities.insert(e3);
     e3.AddComponent(Transform{ {100, 200}, 1.7f, {400,-250} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0}, 0.75f, {255, 0, 0, 255} });
     Entity e4{ ECS::CreateEntity() };
     mEntities.insert(e4);
     e4.AddComponent(Transform{ {200, 200}, 2.8f, {650,50} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0}, 0.75f, {255, 0, 0, 255} });
     Entity e5{ ECS::CreateEntity() };
     mEntities.insert(e5);
     e5.AddComponent(Transform{ {100, 300}, 0.4f, {-650,200} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0},0.75f, {255, 0, 0, 255} });
     Entity e6{ ECS::CreateEntity() };
     mEntities.insert(e6);
     e6.AddComponent(Transform{ {300, 100}, 4.7f, {-400,-250} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0}, 0.75f, {255, 0, 0, 255} });
     Entity e7{ ECS::CreateEntity() };
     mEntities.insert(e7);
     e7.AddComponent(Transform{ {100, 100}, 0, {500, 300} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0}, 0.75f, {255, 0, 0, 255} });
     Entity e8{ ECS::CreateEntity() };
     mEntities.insert(e8);
     e8.AddComponent(Transform{ {100, 100}, 0.5f, {-200, 250} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0}, 0.75f, {255, 0, 0, 255} });
     Entity e9{ ECS::CreateEntity() };
     mEntities.insert(e9);
     e9.AddComponent(Transform{ {100, 100}, 0.f, {0, -250} },
         Sprite{ grey, SPRITE::SQUARE, 0, 1 },
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
-        Text{ "3Dumb", "Wall", {-50, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "3Dumb", "Wall", {-50, 0}, 0.75f, {255, 0, 0, 255} });
     lightsource = ECS::CreateEntity();
     lightsource.AddComponent(Transform{ {10, 10}, 0, {0,0} },
         Sprite{ {255, 0, 0, 255}, SPRITE::CIRCLE, 0, 240},
         General{ "background", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false },
         LightSource{{0,0}},
-        Text{ "CaviarDreams", "Lightsource", {-120, 0}, 1.f, {255, 0, 0, 255} });
+        Text{ "CaviarDreams", "Lightsource", {-120, 0}, 0.75f, {255, 0, 0, 255} });
     mEntities.insert(lightsource);
 }
 

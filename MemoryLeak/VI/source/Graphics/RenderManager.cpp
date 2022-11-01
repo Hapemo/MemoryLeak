@@ -18,7 +18,8 @@ Default Constructor for RenderManager class.
 *******************************************************************************/
 RenderManager::RenderManager()
 	: mAllocator(NO_OF_OBJECTS, VERTICES_PER_OBJECT, INDICES_PER_OBJECT),
-	mWorldFBO(), mGameFBO(), mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
+	mWorldFBO(), mGameFBO(), mAnimatorFBO(), 
+	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
 	mWindowHeight(nullptr), mWindowWidth(nullptr)
 {
@@ -65,8 +66,10 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	//initialize fbo with window width and height
 	mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
 	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
+	mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
 	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
 	mGameCam.Init(*mWindowWidth, *mWindowHeight);
+	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
 }
 
 /*!*****************************************************************************
@@ -82,103 +85,18 @@ void RenderManager::Render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	std::map<GLuint, TextureInfo> textureInfo;
-	int samplerUniform[TEXTURES_PER_DRAW];
-	for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
-		samplerUniform[i] = i;
 
 	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
-	for (const Entity& e : mEntities)
-	{
-		if (!e.GetComponent<General>().isActive) continue;
-
-		switch (e.GetComponent<Sprite>().sprite)
-		{
-		case SPRITE::TEXTURE:
-		{
-			GLuint texid = e.GetComponent<Sprite>().texture;
-			if (texid != 0)
-			{
-				if (textureInfo.find(texid) == textureInfo.end())
-					textureInfo[texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
-
-				CreateSquare(e, textureInfo[texid].mVertices, textureInfo[texid].mIndices);
-			}
-		}
-		break;
-		case SPRITE::SQUARE:
-			CreateSquare(e, mVertices, mIndices);
-			break;
-		case SPRITE::CIRCLE:
-			CreateCircle(e);
-			break;
-		default:
-			break;
-		}
-
-		if (!e.HasComponent<Text>()) continue;
-		CreateText(e);
-	}
+	CreateVertices(textureInfo);
 	/*************************************CREATING VERTICES END**************************************/
 
 	/*************************************TEXTURE BATCHING START*************************************/
-	//use texture program and bind VAO
-	mTextureProgram.Bind();
-	mAllocator.BindVAO();
-
-	//insert uniforms
-	mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
-
-	int textureCount = 0;
-
-	std::vector<int> usedTexUnits;
-	usedTexUnits.reserve(TEXTURES_PER_DRAW);
-
-	//iterate over texture map
-	for (std::map<GLuint, TextureInfo>::iterator it = textureInfo.begin(); it != textureInfo.end(); ++it)
-	{
-		//if texture unit is not used, concat vertices
-		if (std::find(usedTexUnits.begin(), usedTexUnits.end(), 
-			it->second.mTextureUnit % TEXTURES_PER_DRAW) == usedTexUnits.end())
-		{
-			BindTextureUnit(it->first, it->second, usedTexUnits);
-			++textureCount;
-
-			//if all texture units are used, draw
-			if (textureCount == TEXTURES_PER_DRAW)
-				BatchRenderTextures(textureCount, usedTexUnits);
-		}
-		//if texture unit is used, render
-		else
-		{
-			BatchRenderTextures(textureCount, usedTexUnits);
-			BindTextureUnit(it->first, it->second, usedTexUnits);
-			++textureCount;
-		}
-	}
-	//render remaining textures if any
-	BatchRenderTextures(textureCount, usedTexUnits);
-
-	//unuse VAO and texture program
-	mAllocator.UnbindVAO();
-	mTextureProgram.Unbind();
+	RenderTextures(textureInfo);
 	/**************************************TEXTURE BATCHING END**************************************/
 
 	/***********************************SHAPES/DEBUG BATCHING START**********************************/
-	//use normal program for drawing shapes
-	mDefaultProgram.Bind();
-	mAllocator.BindVAO();
-
-	//render all shapes
-	BatchRenderElements(GL_TRIANGLES, mVertices, mIndices);
-
-	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
-	if (mCurrRenderPass == RENDER_STATE::WORLD || (mDebug && mRenderGameToScreen))
-		RenderDebug();
-
-	//unuse VAO and normal program
-	mAllocator.UnbindVAO();
-	mDefaultProgram.Unbind();
+	RenderShapes(true);
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
 
 	/*************************************FONT RENDERING START***************************************/
@@ -206,6 +124,44 @@ void RenderManager::Render()
 	//recursion for editor viewport
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		Render();
+}
+
+/*!*****************************************************************************
+\brief
+Returns the color attachment to the Animator buffer, for displaying the
+Animator editor.
+
+\return
+Returns the color attachment to the Animator buffer, for displaying the
+Animator editor.
+*******************************************************************************/
+GLuint RenderManager::GetAnimatorFBO()
+{
+	RENDER_STATE prevState = mCurrRenderPass;
+	mCurrRenderPass = RENDER_STATE::ANIMATOR;
+	mAnimatorFBO.Bind();
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	std::map<GLuint, TextureInfo> textureInfo;
+
+	CreateVertices(textureInfo);
+	RenderTextures(textureInfo);
+	RenderShapes(false);
+
+	mAnimatorFBO.Unbind();
+
+	//clear vertices for next iteration
+	mVertices.clear();
+	mIndices.clear();
+	mTextureVertices.clear();
+	mTextureIndices.clear();
+	mDebugPoints.clear();
+	mDebugVertices.clear();
+	mDebugIndices.clear();
+	mCurrRenderPass = prevState;
+
+	return mAnimatorFBO.GetColorAttachment();
 }
 
 /*!*****************************************************************************
@@ -417,6 +373,118 @@ void RenderManager::BatchRenderElements(GLenum _mode, const std::vector<Vertex>&
 	glNamedBufferSubData(mAllocator.mvboid, 0, sizeof(Vertex) * _vertices.size(), _vertices.data());
 	glNamedBufferSubData(mAllocator.meboid, 0, _indices.size() * sizeof(GLushort), _indices.data());
 	glDrawElements(_mode, static_cast<GLsizei>(_indices.size()), GL_UNSIGNED_SHORT, nullptr);
+}
+
+/*!*****************************************************************************
+\brief
+Creating vertices from the ECS.
+*******************************************************************************/
+void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
+{
+	for (const Entity& e : mEntities)
+	{
+		if (!e.GetComponent<General>().isActive) continue;
+
+		switch (e.GetComponent<Sprite>().sprite)
+		{
+		case SPRITE::TEXTURE:
+		{
+			GLuint texid = e.GetComponent<Sprite>().texture;
+			if (texid != 0)
+			{
+				if (_texInfo.find(texid) == _texInfo.end())
+					_texInfo[texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+				CreateSquare(e, _texInfo[texid].mVertices, _texInfo[texid].mIndices);
+			}
+		}
+		break;
+		case SPRITE::SQUARE:
+			CreateSquare(e, mVertices, mIndices);
+			break;
+		case SPRITE::CIRCLE:
+			CreateCircle(e);
+			break;
+		default:
+			break;
+		}
+
+		if (!e.HasComponent<Text>()) continue;
+		CreateText(e);
+	}
+}
+
+/*!*****************************************************************************
+\brief
+Rendering of textures
+*******************************************************************************/
+void RenderManager::RenderTextures(std::map<GLuint, TextureInfo>& _texInfo)
+{
+	int samplerUniform[TEXTURES_PER_DRAW];
+	for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
+		samplerUniform[i] = i;
+	//use texture program and bind VAO
+	mTextureProgram.Bind();
+	mAllocator.BindVAO();
+
+	//insert uniforms
+	mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
+
+	int textureCount = 0;
+
+	std::vector<int> usedTexUnits;
+	usedTexUnits.reserve(TEXTURES_PER_DRAW);
+
+	//iterate over texture map
+	for (std::map<GLuint, TextureInfo>::iterator it = _texInfo.begin(); it != _texInfo.end(); ++it)
+	{
+		//if texture unit is not used, concat vertices
+		if (std::find(usedTexUnits.begin(), usedTexUnits.end(),
+			it->second.mTextureUnit % TEXTURES_PER_DRAW) == usedTexUnits.end())
+		{
+			BindTextureUnit(it->first, it->second, usedTexUnits);
+			++textureCount;
+
+			//if all texture units are used, draw
+			if (textureCount == TEXTURES_PER_DRAW)
+				BatchRenderTextures(textureCount, usedTexUnits);
+		}
+		//if texture unit is used, render
+		else
+		{
+			BatchRenderTextures(textureCount, usedTexUnits);
+			BindTextureUnit(it->first, it->second, usedTexUnits);
+			++textureCount;
+		}
+	}
+	//render remaining textures if any
+	BatchRenderTextures(textureCount, usedTexUnits);
+
+	//unuse VAO and texture program
+	mAllocator.UnbindVAO();
+	mTextureProgram.Unbind();
+}
+
+/*!*****************************************************************************
+\brief
+Rendering of shapes
+*******************************************************************************/
+void RenderManager::RenderShapes(bool _renderDebug)
+{
+	//use normal program for drawing shapes
+	mDefaultProgram.Bind();
+	mAllocator.BindVAO();
+
+	//render all shapes
+	BatchRenderElements(GL_TRIANGLES, mVertices, mIndices);
+
+	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
+	if (_renderDebug && (mCurrRenderPass == RENDER_STATE::WORLD || (mDebug && mRenderGameToScreen)))
+		RenderDebug();
+
+	//unuse VAO and normal program
+	mAllocator.UnbindVAO();
+	mDefaultProgram.Unbind();
 }
 
 /*!*****************************************************************************
@@ -929,7 +997,10 @@ The Transformation matrix.
 *******************************************************************************/
 Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, const Math::Vec2& _translate)
 {
-	Camera cam = mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mWorldCam;
+	Camera cam = mCurrRenderPass == RENDER_STATE::GAME ? 
+		mGameCam : 
+		mCurrRenderPass == RENDER_STATE::WORLD ? 
+		mWorldCam : mAnimatorCam;
 	float cosRot = cosf(_rotate);
 	float sinRot = sinf(_rotate);
 
