@@ -7,6 +7,10 @@
 \brief
 Scene base class. Each game state can have multiple scenes which encapsulates
 a group of entities and operates on them.
+
+For Milestone 2:
+Added load and unload of scene using resourceManager
+Added adding and removing of entity
 *******************************************************************************/
 #include "Scene.h"
 
