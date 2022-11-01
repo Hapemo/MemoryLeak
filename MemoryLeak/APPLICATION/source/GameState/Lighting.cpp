@@ -110,4 +110,6 @@ void Lighting::Free()
     ECS::DestroyAllEntities();
 }
 
-void Lighting::Unload() {}
+void Lighting::Unload() {
+    renderManager->Clear();
+}

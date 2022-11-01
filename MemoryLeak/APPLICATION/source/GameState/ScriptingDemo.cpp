@@ -18,6 +18,7 @@ TestScript firstTestScript;
 TestScript2 secondTestScript;
 
 void ScriptingDemo::Load() {
+    LoadWithGUID(16673097090400516);
     renderManager->SetVectorLengthModifier(5.f);
     renderManager->SetDebug(true);
 }
@@ -25,8 +26,20 @@ void ScriptingDemo::Load() {
 void ScriptingDemo::Init() {
     for (Scene* scenePtr : mScenes)
         scenePtr->Init();
-
-    firstEntity = ECS::CreateEntity();
+    int i = 0;
+    for (Entity e : mEntities)
+    {
+        if (i == 0)
+        {
+            e.AddComponent<Script>(Script({ "TestScript", &firstTestScript }));
+        }
+        else if (i == 1)
+        {
+            e.AddComponent<Script>(Script({ "TestScript2", &secondTestScript }));
+        }
+        i++;
+    }
+   /* firstEntity = ECS::CreateEntity();
     secondEntity = ECS::CreateEntity();
 
     firstEntity.AddComponent<General>(General{ "firstEntity", TAG::OTHERS, SUBTAG::OTHERS, true, false });
@@ -40,7 +53,7 @@ void ScriptingDemo::Init() {
     secondEntity.AddComponent<Sprite>(Sprite{ Color{0, 255, 0, 255}, SPRITE::TEXTURE, 0, 10 });
 
     spriteManager->SetTexture(firstEntity, "Textures\\Icons\\backBtn.png");
-    spriteManager->SetTexture(secondEntity, "Textures\\Icons\\backBtn.png");
+    spriteManager->SetTexture(secondEntity, "Textures\\Icons\\backBtn.png");*/
 
     logicSystem->Init();
 }
@@ -48,7 +61,7 @@ void ScriptingDemo::Init() {
 void ScriptingDemo::Update() {
     for (Scene* scenePtr : mScenes)
         scenePtr->PrimaryUpdate();
-    logicSystem->Update();
+    //logicSystem->Update();
 }
 
 void ScriptingDemo::Draw() {
@@ -61,10 +74,11 @@ void ScriptingDemo::Free() {
     logicSystem->Exit();
     firstEntity.Destroy();
     secondEntity.Destroy();
+    ECS::DestroyAllEntities();
 }
 
 void ScriptingDemo::Unload() {
     renderManager->Clear();
-    spriteManager->FreeTextures();
-    FREE_RESOURCES();
+    //spriteManager->FreeTextures();
+    //FREE_RESOURCES();
 }

@@ -56,7 +56,6 @@ void Application::SystemUpdate() {
   // AI
   TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
-  
   END_TRACK("AI");
 
   // Physics
@@ -64,9 +63,16 @@ void Application::SystemUpdate() {
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
 
+  //Scripting
+  TRACK_PERFORMANCE("Scripting");
+  logicSystem->Update();
+  END_TRACK("Scripting");
+
   // Animator
+  TRACK_PERFORMANCE("Animation");
   sheetAnimator->Animate();
   animator->Animate();
+  END_TRACK("Animation");
 
   // Audio
   TRACK_PERFORMANCE("Audio");
