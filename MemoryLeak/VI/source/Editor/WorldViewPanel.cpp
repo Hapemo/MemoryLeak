@@ -71,26 +71,26 @@ void WorldViewPanel::Update()
 			ScrollMoveCam();
 			
 		}
-	}
-	if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
-		isSelected = 0;
+		if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
+			isSelected = 0;
 
-	//object picking
-	if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
-	{
-		SetSelectedEntity();
-	}
-	
-	if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
-	{
-		e = *selectedEntity;
-		if (SRT == 0)
+		//object picking
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
 		{
-			MoveSelectedEntity();
+			SetSelectedEntity();
 		}
-		else
+	
+		if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
 		{
-			UseGuizmo();
+			e = *selectedEntity;
+			if (SRT == 0)
+			{
+				MoveSelectedEntity();
+			}
+			else
+			{
+				UseGuizmo();
+			}
 		}
 	}
 	
@@ -163,17 +163,17 @@ void WorldViewPanel::NewEntity()
 	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
 	{
 		LOG_INFO("Created new entity");
-		Entity e{ ECS::CreateEntity() };
-		(*myEntities).insert(e);
-		e.AddComponent(
+		Entity ne{ ECS::CreateEntity() };
+		(*myEntities).insert(ne);
+		ne.AddComponent(
 			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
 			Transform{ {150,150}, 0, camMousePos },
-			Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0 },
+			Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0, highestLayer},
 			RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 
 		texpath = (const wchar_t*)payload->Data;
 		std::string tp = (std::string)((const char*)texpath);
-		spriteManager->SetTexture(e, tp);
+		spriteManager->SetTexture(ne, tp);
 		newEntityCount++;
 	}
 }

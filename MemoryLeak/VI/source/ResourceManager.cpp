@@ -19,6 +19,7 @@ The ResourceManager class manages the resources, their data and usage.
 #include <algorithm>
 #include "ResourceManager.h"
 #include "Serialization.h"
+#include "ECSManager.h"
 
 /*!*****************************************************************************
 \brief
@@ -263,7 +264,8 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 			break;
 
 		case E_RESOURCETYPE::audio:
-			
+			// entry.string() gives the path of the file. eg. "..\\resources\\Audio\\SHOOT1.wav"
+			/*dataPointer = static_cast<void*>*/(audioManager->LoadAudio(entry));
 			break;
 
 		case E_RESOURCETYPE::script:
@@ -300,7 +302,7 @@ void ResourceManager::UnloadAllResources() {
 			break;
 
 		case E_RESOURCETYPE::audio:
-
+			//static_cast<FMOD::Sound*>(dataPtr)->release();
 			break;
 
 		case E_RESOURCETYPE::script:

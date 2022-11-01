@@ -1,29 +1,134 @@
+GUID: 16671508787298562 | File: ..\resources\Audio\BGM\Bon_Voyage_BGM.wav
+GUID: 16671508787298818 | File: ..\resources\Audio\BGM\MonsterChase_BGM.wav
+GUID: 16671508787299074 | File: ..\resources\Audio\BGM\MonsterChase_Fire End_BGM.wav
 GUID: 16665530161234178 | File: ..\resources\Audio\DAMAGE.wav
 GUID: 16665530161234434 | File: ..\resources\Audio\HEALTH.wav
+GUID: 16669560247877890 | File: ..\resources\Audio\HOVER.wav
 GUID: 16665530161234690 | File: ..\resources\Audio\MENUBG.wav
+GUID: 16671508787365634 | File: ..\resources\Audio\SFX\Background_Light Waves_SFX.wav
+GUID: 16671508787365890 | File: ..\resources\Audio\SFX\Boat_Row_Long_SFX.wav
+GUID: 16671508787364866 | File: ..\resources\Audio\SFX\Boat_Row_SFX.wav
+GUID: 16671508787365122 | File: ..\resources\Audio\SFX\Button_Click_SFX.wav
+GUID: 16671508787365378 | File: ..\resources\Audio\SFX\Fog_SFX.wav
+GUID: 16671508787431682 | File: ..\resources\Audio\SFX\Monster_Warning_SFX.wav
+GUID: 16671508787431938 | File: ..\resources\Audio\SFX\Rain_SFX.wav
 GUID: 16665530161234946 | File: ..\resources\Audio\SHOOT1.wav
 GUID: 16665530161235202 | File: ..\resources\Audio\SHOOT5.wav
-GUID: 16665530188105222 | File: ..\resources\Dialogs\Dialog1.json
-GUID: 16665530188105478 | File: ..\resources\Dialogs\Dialog2.json
+GUID: 16669560248009218 | File: ..\resources\Audio\Sound\BACKGROUND.wav
+GUID: 16669560248009474 | File: ..\resources\Audio\Sound\Boss Arriving.wav
+GUID: 16669560248009730 | File: ..\resources\Audio\Sound\Boss Beaming.wav
+GUID: 16669560248075522 | File: ..\resources\Audio\Sound\Boss Charging.wav
+GUID: 16669560248075778 | File: ..\resources\Audio\Sound\Boss Defeated.wav
+GUID: 16669560248076034 | File: ..\resources\Audio\Sound\Boss Fight 1.wav
+GUID: 16669560248076290 | File: ..\resources\Audio\Sound\Boss Fight 2.wav
+GUID: 16669560248076546 | File: ..\resources\Audio\Sound\BtnClick.wav
+GUID: 16669560248076802 | File: ..\resources\Audio\Sound\ClarinetComed CTE05_22.1.wav
+GUID: 16669560248077058 | File: ..\resources\Audio\Sound\Colide.wav
+GUID: 16669560248077314 | File: ..\resources\Audio\Sound\COMPUTER-LAPTOP_GEN-HDF-08259.wav
+GUID: 16669560248077570 | File: ..\resources\Audio\Sound\COMPUTER-MOUSE_GEN-HDF-08311.wav
+GUID: 16669560248077826 | File: ..\resources\Audio\Sound\COMPUTER-MOUSE_GEN-HDF-08334.wav
+GUID: 16669560248143618 | File: ..\resources\Audio\Sound\DAMAGE.wav
+GUID: 16669560248143874 | File: ..\resources\Audio\Sound\DOOR_UNLOCK.wav
+GUID: 16669560248144130 | File: ..\resources\Audio\Sound\Ending 1.wav
+GUID: 16669560248144386 | File: ..\resources\Audio\Sound\Explosion 1.wav
+GUID: 16669560248144642 | File: ..\resources\Audio\Sound\Explosion 2.wav
+GUID: 16669560248144898 | File: ..\resources\Audio\Sound\Explosion 3.wav
+GUID: 16669560248145154 | File: ..\resources\Audio\Sound\Explosion 4.wav
+GUID: 16669560248145410 | File: ..\resources\Audio\Sound\Explosion 5.wav
+GUID: 16669560248145666 | File: ..\resources\Audio\Sound\Explosion 6.wav
+GUID: 16669560248145922 | File: ..\resources\Audio\Sound\Force Field (shield).wav
+GUID: 16669560248146178 | File: ..\resources\Audio\Sound\Game.wav
+GUID: 14757395258967641090 | File: ..\resources\Audio\Sound\GameMenu.wav
+GUID: 16669560248146690 | File: ..\resources\Audio\Sound\Health.wav
+GUID: 16669560248146946 | File: ..\resources\Audio\Sound\Launch Melany 1.wav
+GUID: 16669560248212738 | File: ..\resources\Audio\Sound\Launch Melany 2.wav
+GUID: 16669560248212994 | File: ..\resources\Audio\Sound\Launch Melany 3.wav
+GUID: 16669560248213250 | File: ..\resources\Audio\Sound\Levelup.wav
+GUID: 16669560248213506 | File: ..\resources\Audio\Sound\MENUBG.wav
+GUID: 16669560248213762 | File: ..\resources\Audio\Sound\OLD TO DELETE\GUN-MACHINE-GUN_GEN-HDF-13553.wav
+GUID: 16669560248214018 | File: ..\resources\Audio\Sound\OLD TO DELETE\GUN-MACHINE-GUN_GEN-HDF-13554.wav
+GUID: 16669560248214274 | File: ..\resources\Audio\Sound\OLD TO DELETE\Levelupold.wav
+GUID: 16669560248214530 | File: ..\resources\Audio\Sound\OLD TO DELETE\SHOOT.wav
+GUID: 16669560248214786 | File: ..\resources\Audio\Sound\OLD TO DELETE\Shooting.wav
+GUID: 16669560248215042 | File: ..\resources\Audio\Sound\OLD TO DELETE\shootold.wav
+GUID: 16669560248215298 | File: ..\resources\Audio\Sound\Power Down.wav
+GUID: 16669560248281090 | File: ..\resources\Audio\Sound\SCI-FI-ACCENT_GEN-HDF-20477.wav
+GUID: 16669560248281346 | File: ..\resources\Audio\Sound\SCI-FI-SWEEP_GEN-HDF-20820.wav
+GUID: 16669560248281602 | File: ..\resources\Audio\Sound\Shield.wav
+GUID: 16669560248281858 | File: ..\resources\Audio\Sound\SHOOT1.wav
+GUID: 16669560248282114 | File: ..\resources\Audio\Sound\SHOOT2.wav
+GUID: 16669560248282370 | File: ..\resources\Audio\Sound\SHOOT3.wav
+GUID: 16669560248282626 | File: ..\resources\Audio\Sound\SHOOT4.wav
+GUID: 16669560248282882 | File: ..\resources\Audio\Sound\SHOOT5.wav
+GUID: 16669560248283138 | File: ..\resources\Audio\Sound\Shooting 1.wav
+GUID: 16669560248283394 | File: ..\resources\Audio\Sound\Shooting 2.wav
+GUID: 16669560248283650 | File: ..\resources\Audio\Sound\Space Background.wav
+GUID: 16669560248283906 | File: ..\resources\Audio\Sound\TELEPORT_END.wav
+GUID: 16669560248284162 | File: ..\resources\Audio\Sound\UPSWING - DanceTechno MSCDNT1_31.wav
+GUID: 16669560248349954 | File: ..\resources\Audio\Sound\WEAPONCHANGE.wav
+GUID: 16669560248350210 | File: ..\resources\Audio\Sound\WESTERN SWINGER - Country MSCCOU2_20.wav
+GUID: 16667753240078338 | File: ..\resources\Audio\Vuk's_Ambiences\__MACOSX\Vuk's_Ambiences\._SwampNightTime_Loop.wav
+GUID: 16667753240144898 | File: ..\resources\Audio\Vuk's_Ambiences\__MACOSX\Vuk's_Ambiences\Thunder Claps\._ThunderClap_Linear_02.wav
+GUID: 16672104409334022 | File: ..\resources\Dialogs\dfsdfsdf.json
+GUID: 16667753240210950 | File: ..\resources\Dialogs\Dialog Data Structure -  Passenger 4's Dialogues.json
+GUID: 16667753240211206 | File: ..\resources\Dialogs\Dialog Data Structure - Little Girl's Dialogues.json
+GUID: 16667753240276998 | File: ..\resources\Dialogs\Dialog Data Structure - Passenger 1's Dialogues.json
+GUID: 16667753240277254 | File: ..\resources\Dialogs\Dialog Data Structure - Passenger 2's Dialogues.json
+GUID: 16667753240277510 | File: ..\resources\Dialogs\Dialog Data Structure - Passenger 3's Dialogues.json
+GUID: 16667753240343302 | File: ..\resources\Dialogs\Dialog Data Structure - Passenger 5's Dialogues.json
+GUID: 16667753240343558 | File: ..\resources\Dialogs\Dialog Data Structure - Passenger 6's Dialogues.json
+GUID: 16667534319354118 | File: ..\resources\Dialogs\Dialog1.json
+GUID: 16667534319419910 | File: ..\resources\Dialogs\Dialog2.json
 GUID: 16667121456447749 | File: ..\resources\GameStates\GameStateJazz.json
+GUID: 16671373923582212 | File: ..\resources\Scene\.json
 GUID: 14757395258967590916 | File: ..\resources\Scene\SceneJ.json
 GUID: 16665530225854724 | File: ..\resources\Scene\SceneJGraphics.json
 GUID: 16665530225854980 | File: ..\resources\Scene\SceneJPhysics.json
 GUID: 16665530225855236 | File: ..\resources\Scene\SceneJUX.json
+GUID: 16669349234147588 | File: ..\resources\Scene\Scene_Level1.json
+GUID: 16671370998972676 | File: ..\resources\Scene\Scene_Level2.json
+GUID: 16672089683329284 | File: ..\resources\Scene\Scene_MainMenu.json
+GUID: 16672089683395076 | File: ..\resources\Scene\Scene_Menu.json
 GUID: 16665530414992385 | File: ..\resources\Textures\Background\Assets.txt
 GUID: 16665530911558913 | File: ..\resources\Textures\Background\background.png
 GUID: 16665530911559169 | File: ..\resources\Textures\Background\foreground.png
 GUID: 16665530911624961 | File: ..\resources\Textures\Background\greyStoneBG.png
 GUID: 16665530911625217 | File: ..\resources\Textures\Background\middleground.png
+GUID: 16669651548307713 | File: ..\resources\Textures\Characters\ghost 1.png
+GUID: 16669651548570113 | File: ..\resources\Textures\Characters\ghost 2.png
+GUID: 16669651548766977 | File: ..\resources\Textures\Characters\ghost 3.png
+GUID: 16669651549029377 | File: ..\resources\Textures\Characters\ghost 4.png
+GUID: 16669651549226241 | File: ..\resources\Textures\Characters\ghost 5.png
+GUID: 16669651549423105 | File: ..\resources\Textures\Characters\ghost 6.png
+GUID: 16669651549751041 | File: ..\resources\Textures\Characters\girl.png
+GUID: 16669651550341121 | File: ..\resources\Textures\Characters\mc.png
+GUID: 16669651550931201 | File: ..\resources\Textures\Characters\sea monster.png
 GUID: 16665530911691009 | File: ..\resources\Textures\Icons\Assets.txt
 GUID: 16665530911691265 | File: ..\resources\Textures\Icons\backBtn.png
 GUID: 16665530911691521 | File: ..\resources\Textures\Icons\folderIcon.png
 GUID: 16665530912084993 | File: ..\resources\Textures\Icons\sendIcon.png
+GUID: 16671515798471169 | File: ..\resources\Textures\Menu\bon voyage logo 5.png
+GUID: 16669651553094145 | File: ..\resources\Textures\Menu\button-1.png
+GUID: 16669651553094401 | File: ..\resources\Textures\Menu\button-2.png
+GUID: 16669651553160193 | File: ..\resources\Textures\Menu\game over 3.jpg
 GUID: 16665530912085249 | File: ..\resources\Textures\Menu\game over.jpg
+GUID: 16669651554405633 | File: ..\resources\Textures\Menu\menu screen background.jpg
+GUID: 16669651555061249 | File: ..\resources\Textures\Menu\pause-screen.jpg
+GUID: 16669651555782401 | File: ..\resources\Textures\Menu\settings-menu-screen.jpg
+GUID: 16669651556438017 | File: ..\resources\Textures\Menu\title screen 4.6.jpg
 GUID: 16665530912609793 | File: ..\resources\Textures\Menu\title screen.jpg
+GUID: 16669651557945601 | File: ..\resources\Textures\Menu\volume-button-1.png
+GUID: 16669651557945857 | File: ..\resources\Textures\Menu\volume-button-2.png
+GUID: 16669651558011649 | File: ..\resources\Textures\Menu\volume-button-3.png
+GUID: 16669651558011905 | File: ..\resources\Textures\Menu\window-1.png
 GUID: 16665530913265409 | File: ..\resources\Textures\Sprites\boat.png
+GUID: 16671351933436161 | File: ..\resources\Textures\Sprites\building 4.png
 GUID: 16665530914510849 | File: ..\resources\Textures\Sprites\building_1.png
+GUID: 16671351934157313 | File: ..\resources\Textures\Sprites\building_2(revised).png
 GUID: 16665530915887361 | File: ..\resources\Textures\Sprites\building_2.png
+GUID: 16671351934878465 | File: ..\resources\Textures\Sprites\building_3(revised).png
+GUID: 16671351935075329 | File: ..\resources\Textures\Sprites\building_5(revised).png
+GUID: 16671351935337729 | File: ..\resources\Textures\Sprites\building_6(revised).png
 GUID: 14757395258967641089 | File: ..\resources\Textures\Sprites\bush-1.png
 GUID: 16665530918443777 | File: ..\resources\Textures\Sprites\ghost_1.png
 GUID: 16665530919492609 | File: ..\resources\Textures\Sprites\ghost_1_green.png
@@ -41,6 +146,7 @@ GUID: 16665530928801537 | File: ..\resources\Textures\Sprites\house_1.png
 GUID: 16665530930243585 | File: ..\resources\Textures\Sprites\house_2.png
 GUID: 16665530931685633 | File: ..\resources\Textures\Sprites\house_3.png
 GUID: 16665530933127681 | File: ..\resources\Textures\Sprites\house_4.png
+GUID: 16671387269988609 | File: ..\resources\Textures\Sprites\lighthouse(revised).png
 GUID: 16665530934438657 | File: ..\resources\Textures\Sprites\lighthouse.png
 GUID: 16665530935553025 | File: ..\resources\Textures\Sprites\mc.png
 GUID: 16665530936798465 | File: ..\resources\Textures\Sprites\monster.png

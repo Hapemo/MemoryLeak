@@ -207,8 +207,8 @@ The renderFlag variable contains the flag variable telling the render manager
 *******************************************************************************/
 struct Edge2DCollider {
 	Math::Vec2 p0Offset = { 0.f, 0.f };
-	float rotationOffset = 0.f,
-		  scaleOffset = 1.f;
+	float rotationOffset = 0.f;
+	float scaleOffset = 1.f;
 	bool renderFlag = false;
 };
 
@@ -258,12 +258,11 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
-	std::string fontFile = "3Dumb.ttf"; //CaviarDreams.ttf || 3Dumb.ttf
+	std::string fontFile = "3Dumb"; //CaviarDreams.ttf || 3Dumb.ttf
 	std::string text = "Hello";
-	Math::Vec2 pos = Math::Vec2{0, 0}; //world coordinates
+	Math::Vec2 offset = Math::Vec2{0, 0}; //world coordinates
 	float scale =1.f;
 	Color color = Color{ 0, 0, 0, 255 };
-
 };
 struct Dialogue
 {
@@ -279,14 +278,17 @@ struct Dialogue
 struct Script {
 	ScriptComponent* script;
 };
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a lightsource, currently, it
+only contains an offset. Later versions will include light intensity.
+*******************************************************************************/
+struct LightSource
+{
+	Math::Vec2 centreOffset;
+};
 
-
-
-
-
-
-
-//use to index the variant data type, for editor and serilization to determine type stored
+//use to index the variant data type, for ditor and serilization to determine type stored
 enum class COMPONENTID
 {
 	GENERAL,		//0

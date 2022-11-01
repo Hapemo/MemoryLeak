@@ -38,9 +38,6 @@ void GameViewPanel::Update()
 	}
 
 	CalculateMousePos(E_CAMERA_TYPE::GAME);
-	fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
-	ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
-	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 	if (ImGui::IsWindowHovered())
 	{
 		
@@ -55,6 +52,9 @@ void GameViewPanel::Update()
 		}
 
 	}
+	fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
+	ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
+	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 	ImGui::End();
 }
 void GameViewPanel::Free()

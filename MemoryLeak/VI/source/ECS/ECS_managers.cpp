@@ -24,8 +24,43 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 void Entity::Destroy() const { Coordinator::GetInstance()->DestroyEntity(id); }
 
 bool Entity::ShouldRun() const {
-	General genComponent = this->GetComponent<General>();
-	return genComponent.isPaused && genComponent.isActive;
+	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	General const& genComponent = GetComponent<General>();
+	return !genComponent.isPaused && genComponent.isActive;
+}
+
+void Entity::Activate() {
+	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	GetComponent<General>().isActive = true;
+
+	//------------------------------------------------------------------
+	// Codes that should run when activating entity halfway through game
+	
+	// Scripting
+	if (HasComponent<Script>()) GetComponent<Script>().script->StartScript(this);
+
+
+
+
+
+	//------------------------------------------------------------------
+}
+
+void Entity::Deactivate() {
+	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	GetComponent<General>().isActive = false;
+
+	//------------------------------------------------------------------
+	// Codes that should run when deactivating entity halfway through game
+	
+	// Scripting
+	if (HasComponent<Script>()) GetComponent<Script>().script->EndScript(this);
+
+
+
+
+
+	//------------------------------------------------------------------
 }
 
 
@@ -34,7 +69,13 @@ Prefab::Prefab() : mName(""), mPrefabees(), mComponents() {
 	//ComponentType genType = Coordinator::GetInstance()->GetComponentType<General>();
 	//General* genComponent = static_cast<General*>(mComponents[genType]);
 	//genComponent->prefab = this;
-	General genComponent = { "", TAG::OTHERS, SUBTAG::NOSUBTAG, true, this };
+	General genComponent = { "", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this };
+	AddComponent<General>(genComponent);
+}
+
+Prefab::Prefab(std::string const& _name) : mName(_name), mPrefabees(), mComponents() {
+	for (void* ptr : mComponents) ptr = nullptr;
+	General genComponent = { "", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this };
 	AddComponent<General>(genComponent);
 }
 

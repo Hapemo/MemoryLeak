@@ -13,6 +13,7 @@ Entities and its Components.
 #include <ECSManager.h>
 //#include <Logger.h>
 #include <Panel.h>
+#include <AnimationPanel.h>
 #include <HierarchyPanel.h>
 #include <InspectorPanel.h>
 #include <WorldViewPanel.h>
@@ -29,13 +30,17 @@ std::vector<Panel*> EditorManager::panels{};
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
 const Entity* EditorManager::selectedEntity = nullptr;
+Prefab* EditorManager::selectedPrefab = nullptr;
+const void* EditorManager::selected = nullptr;
+int EditorManager::selectedType=0;
  Entity selEntity{};
 int EditorManager::SRT{};
 std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
 int EditorManager::stackPointer{-1};
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
-
+int EditorManager::highestLayer =0;
+std::vector <Prefab*> EditorManager::mPrefabs{};
 /*!*****************************************************************************
 \brief
 	Initializes the level editor
@@ -59,6 +64,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
 	//weatherAIinit();
+	static AnimationPanel animationPanel{};
 	static HierarchyPanel hierarchyPanel{};
 	static InspectorPanel inspectorPanel{};
 	static WorldViewPanel worldViewPanel{};
@@ -67,6 +73,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static AssetPanel assetPanel{};
 	static DebugPanel debugPanel{};
 	static MenuPanel menuPanel{};
+	panels.push_back(&animationPanel);
 	panels.push_back(&hierarchyPanel);
 	panels.push_back(&inspectorPanel);
 	panels.push_back(&worldViewPanel);
@@ -124,6 +131,16 @@ None.
 void EditorManager::Update()
 {
 	Window();
+	for (const Entity& e : *myEntities)
+	{
+		if (e.HasComponent<Sprite>())
+		{
+			if (highestLayer <= e.GetComponent<Sprite>().layer)
+				highestLayer = e.GetComponent<Sprite>().layer +1;
+		}
+		/*if (e.HasComponent<Text>())
+			std::cout << e.GetComponent<Text>().text << "   text\n";*/
+	}
 	//weatherAIupdate();
 	for (size_t p = 0; p < panels.size(); p++)
 	{
@@ -367,6 +384,11 @@ void EditorManager::SetPannelIsActive(E_PANELID _panel, bool _isActive)
 	{
 		debugPanel.setIsActive(_isActive);
 	}*/
+}
+void EditorManager::SceneReset()
+{
+	highestLayer = 0;
+	selectedEntity = nullptr;
 }
 
 

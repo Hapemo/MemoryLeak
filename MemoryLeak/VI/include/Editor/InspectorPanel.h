@@ -39,6 +39,8 @@ private:
 	void TextEditor();
 	void AIEditor();
 	void PlayerTmpEditor();
+
+	
 	void AddComponent();
 	void DeleteEntity();
 

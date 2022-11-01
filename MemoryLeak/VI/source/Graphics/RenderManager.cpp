@@ -10,16 +10,7 @@ operates on Entities with Sprite and Transform Components.
 *******************************************************************************/
 #include "Graphics/RenderManager.h"
 #include "pch.h"
-
-//define number of triangles for circle
-constexpr int CIRCLE_SLICES = 18;
-//modifier for vector.reserve() 
-constexpr float MODIFIER = 0.05f;
-constexpr size_t NO_OF_OBJECTS = 10000;
-constexpr size_t VERTICES_PER_OBJECT = 4;
-constexpr size_t INDICES_PER_OBJECT = 6;
-//maximum used texture units in 1 draw call
-constexpr size_t TEXTURES_PER_DRAW = 16;
+#include "RenderProps.h"
 
 /*!*****************************************************************************
 \brief
@@ -122,11 +113,10 @@ void RenderManager::Render()
 			CreateCircle(e);
 			break;
 		default:
-			continue;
+			break;
 		}
 
 		if (!e.HasComponent<Text>()) continue;
-		std::string x = e.GetComponent<Text>().fontFile;
 		CreateText(e);
 	}
 	/*************************************CREATING VERTICES END**************************************/
@@ -279,54 +269,60 @@ void RenderManager::RenderDebug()
 		if (!e.GetComponent<General>().isActive) continue;
 
 		//check if entity has any of these physics components
-		//if (e.HasComponent<Point2DCollider>() && e.GetComponent<Point2DCollider>().renderFlag)
-		//{
-		//	Transform t = e.GetComponent<Transform>();
-		//	t.scale = { 0, 0 };
-		//	t.rotation = 0;
-		//	t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x, 
-		//		e.GetComponent<Point2DCollider>().centerOffset.y);
-		//	CreateDebugSquare(t, e.GetComponent<Sprite>().color);
-		//}
+		if (e.HasComponent<Point2DCollider>() && e.GetComponent<Point2DCollider>().renderFlag)
+		{
+			Transform t = e.GetComponent<Transform>();
+			t.scale = { 0, 0 };
+			t.rotation = 0;
+			t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x, 
+				e.GetComponent<Point2DCollider>().centerOffset.y);
+			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
+		}
 
-		//if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
-		//{
-		//	Transform t = e.GetComponent<Transform>();
-		//	t.scale *= e.GetComponent<Edge2DCollider>().scaleOffset;
-		//	t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
-		//	t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
-		//		e.GetComponent<Edge2DCollider>().p0Offset.y);
-		//	CreateDebugArrow(t, e.GetComponent<Sprite>().color);
-		//}
+		if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
+		{
+			Transform t = e.GetComponent<Transform>();
+			t.scale = { e.GetComponent<Edge2DCollider>().scaleOffset };
+			t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
+			t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
+				e.GetComponent<Edge2DCollider>().p0Offset.y);
+			CreateDebugLine(t, e.GetComponent<Sprite>().color);
+		}
 
-		//if (e.HasComponent<
-		// 
-		// >() && e.GetComponent<RectCollider>().renderFlag)
-		//{
-		//	Transform t = e.GetComponent<Transform>();
-		//	t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;
-		//	t.scale.y *= e.GetComponent<RectCollider>().scaleOffset.y;
-		//	t.rotation = 0;
-		//	t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
-		//		e.GetComponent<RectCollider>().centerOffset.y);
-		//	CreateDebugSquare(t, e.GetComponent<Sprite>().color);
-		//}
+		if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
+		{
+			Transform t = e.GetComponent<Transform>();
+			t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;
+			t.scale.y *= e.GetComponent<RectCollider>().scaleOffset.y;
+			t.rotation = 0;
+			t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
+				e.GetComponent<RectCollider>().centerOffset.y);
+			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
+		}
 
-		//if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
-		//{
-		//	Transform t = e.GetComponent<Transform>();
-		//	t.scale = Math::Vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
-		//	t.rotation = 0;
-		//	t.translation += Math::Vec2(e.GetComponent<CircleCollider>().centerOffset.x,
-		//		e.GetComponent<CircleCollider>().centerOffset.y);
-		//	CreateDebugCircle(t, e.GetComponent<Sprite>().color);
-		//}
+		if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
+		{
+			Transform t = e.GetComponent<Transform>();
+			t.scale = Math::Vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
+			t.rotation = 0;
+			t.translation += Math::Vec2(e.GetComponent<CircleCollider>().centerOffset.x,
+				e.GetComponent<CircleCollider>().centerOffset.y);
+			CreateDebugCircle(t, e.GetComponent<Sprite>().color);
+		}
 
 		if (e.HasComponent<Physics2D>() && e.GetComponent<Physics2D>().renderFlag)
 		{
+			Physics2D p2d = e.GetComponent<Physics2D>();
 			Transform t = e.GetComponent<Transform>();
-			//t.scale = Math::Vec2(e.GetComponent<Physics2D>().speed) * mVectorLengthModifier;
-			//t.rotation = e.GetComponent<Physics2D>().moveDirection;
+			t.scale = Math::Vec2(p2d.velocity.Magnitude()) * mVectorLengthModifier;
+			if (p2d.velocity.y != 0 && p2d.velocity.x >= 0)
+				t.rotation = atan2f(p2d.velocity.y, p2d.velocity.x);
+			else if (p2d.velocity.y == 0 && p2d.velocity.x > 0)
+				t.rotation = (float)Math::PI / 2.f;
+			else if (p2d.velocity.y != 0 && p2d.velocity.x < 0)
+				t.rotation = (float)Math::PI * 2.f + atan2f(p2d.velocity.y, p2d.velocity.x);
+			else
+				t.rotation = 3.f * (float)Math::PI / 2.f;
 			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
 		}
 
@@ -439,6 +435,38 @@ void RenderManager::BatchRenderTextures(int& _texCount, std::vector<int>& _texUn
 	mTextureVertices.clear();
 	mTextureIndices.clear();
 	_texUnits.clear();
+}
+
+void RenderManager::CreateLightingTriangle(const Math::Vec2& p0, const Math::Vec2& p1, const Math::Vec2& p2)
+{
+	Math::Mat3 mtx0 = GetTransform({ 0, 0 }, 0, { p0.x, p0.y });
+	Math::Mat3 mtx1 = GetTransform({ 0, 0 }, 0, { p1.x, p1.y });
+	Math::Mat3 mtx2 = GetTransform({ 0, 0 }, 0, { p2.x, p2.y });
+
+	Vertex v0, v1, v2;
+	v0.position = (mtx0 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
+	v0.position.z = 0.5f;
+	v0.color = { 1.f, 1.f, 1.f, 1.f };
+	v0.texID = 0;
+
+	v1.position = (mtx1 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
+	v1.position.z = 0.5f;
+	v1.color = { 1.f, 1.f, 1.f, 1.f };
+	v1.texID = 0;
+
+	v2.position = (mtx2 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
+	v2.position.z = 0.5f;
+	v2.color = { 1.f, 1.f, 1.f, 1.f };
+	v2.texID = 0;
+
+	mVertices.push_back(v0);
+	mVertices.push_back(v1);
+	mVertices.push_back(v2);
+
+	GLushort first = mIndices.empty() ? 0 : mIndices.back() + 1;
+	mIndices.push_back(first);
+	mIndices.push_back(first + 1);
+	mIndices.push_back(first + 2);
 }
 
 /*!*****************************************************************************
@@ -564,7 +592,7 @@ The entity containing Transform and Sprite component.
 *******************************************************************************/
 void RenderManager::CreateDebugPoint(const Entity& _e)
 {
-	CreateDebugPoint(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color);
+	CreateDebugPoint(_e.GetComponent<Transform>());
 }
 
 /*!*****************************************************************************
@@ -578,7 +606,7 @@ The transform component.
 \param const Color& _c
 The color component.
 *******************************************************************************/
-void RenderManager::CreateDebugPoint(const Transform& _t, const Color& _c)
+void RenderManager::CreateDebugPoint(const Transform& _t)
 {
 	glm::vec4 clr {0.f, 1.f, 0.f, 1.f}/*GetColor(_c.r, _c.g, _c.b, _c.a)*/;
 	Math::Mat3 mtx = GetTransform({ 0, 0 }, 0, _t.translation);
@@ -956,10 +984,12 @@ void RenderManager::CreateText(const Entity& _e)
 {
 	Text text = _e.GetComponent<Text>();
 
-	if (mFontRenderers.find(text.fontFile) == mFontRenderers.end())
-		mFontRenderers.emplace(text.fontFile, text.fontFile);
+	std::string fileName = text.fontFile + ".ttf";
 
-	mFontRenderers[text.fontFile].AddParagraph(text.text,
-		text.pos + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
+	if (mFontRenderers.find(fileName) == mFontRenderers.end())
+		mFontRenderers.emplace(fileName, fileName);
+
+	mFontRenderers[fileName].AddParagraph(text.text,
+		text.offset + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f) + _e.GetComponent<Transform>().translation,
 		text.scale, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));
 }

@@ -24,7 +24,6 @@ int Application::window_width{};
 int Application::window_height{};
 std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
-bool Application::editorMode = false;
 
 void Application::startup() {
   loadConfig("../config.txt");
@@ -33,13 +32,13 @@ void Application::startup() {
   GlewStartUp();
   ECSManager::ECS_init();
   GameStateManager::GetInstance()->Init();
-  SetEditorMode(true);
 }
 
 void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
   renderManager->Init(&window_width, &window_height);
+  renderManager->RenderToFrameBuffer();
   ResourceManager::GetInstance()->LoadAllResources();
   for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
     spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
@@ -75,7 +74,7 @@ void Application::init() {
   startup();
 
   SystemInit();
-  audioManager->PlayBGSound("MENUBG.wav", 10);
+  audioManager->PlayBGSound("PIntro", 10);
   
 }
 
@@ -95,29 +94,7 @@ void Application::SecondUpdate() {
   // Close the window if the close flag is triggered
   if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
   /////audioManager->UpdateSound();
-  // Update ImGui
-  TRACK_PERFORMANCE("Editor");
-  if (editorMode)
-  {
-      editorManager->Update();
-  }
-  END_TRACK("Editor");
-
-  if (Input::CheckKey(E_STATE::RELEASE, E_KEY::E)&& Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL))
-  {
-      editorMode = !editorMode;
-      if (editorMode)
-      {
-        editorManager->Init();
-        renderManager->RenderToFrameBuffer();
-      }
-      else
-      {
-          editorManager->Free();
-          renderManager->RenderToScreen();
-      }
-
-  }
+  
   // Reset input
   Input::UpdatePrevKeyStates();
   // Part 2: swap buffers: front <-> back
@@ -246,10 +223,4 @@ void Application::fbsize_cb(GLFWwindow* ptr_win, int width, int height) {
   glViewport(0, 0, width, height);
   (void)ptr_win;
   // later, if working in 3D, we'll have to set the projection matrix here ...
-}
-void Application::SetEditorMode(bool mode)
-{
-    editorMode = mode;
-    if (mode) renderManager->RenderToFrameBuffer();
-    else renderManager->RenderToScreen();
 }

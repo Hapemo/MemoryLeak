@@ -97,7 +97,7 @@ void InspectorPanel::Update()
 			{
 				AddComponent();
 				std::string add(componentsList[addComponentID]);
-				LOG_INFO(add + "conponent added");
+				LOG_INFO(add + " conponent added");
 			}
 			if (ImGui::BeginPopupContextWindow(0, 1, false))
 			{
@@ -106,6 +106,107 @@ void InspectorPanel::Update()
 					DeleteEntity();
 				}
 				ImGui::EndPopup();
+			}
+		}
+		else if (selectedPrefab != nullptr)
+		{
+			Prefab* p = selectedPrefab;
+
+			if (p->HasComponent<General>())
+			{
+				ImGui::InputText("Prefab Name", &p->Name());
+				if (ImGui::CollapsingHeader("General") || true) {
+					ImGui::Text("General");
+
+					ImGui::Checkbox("isActive", &p->GetComponent<General>().isActive); //isactive
+					//
+
+					ImGui::InputText("Name", &p->GetComponent<General>().name);
+					
+
+					/*int tagID = (int)p.GetComponent<General>().tag;
+					static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "OTHERS" };
+					ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
+					p.GetComponent<General>().tag = (TAG)tagID;
+					
+
+					int subtagID = (int)p.GetComponent<General>().subtag;
+					static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+					ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
+					p.GetComponent<General>().subtag = (SUBTAG)subtagID;*/
+					
+				}
+			}
+			//if (p.HasComponent<Lifespan>())
+			//{
+			//	//LifespanEditor();
+			//}
+			//if (p.HasComponent<Transform>())
+			//{
+			//	//TransformEditor();
+			//}
+			/*if (p.HasComponent<Sprite>())
+			{
+				SpriteEditor();
+			}
+			if (p.HasComponent<Animation>())
+			{
+				AnimationEditor();
+			}
+			if (p.HasComponent<SheetAnimation>())
+			{
+				SheetAnimationEditor();
+			}
+			if (p.HasComponent<Physics2D>())
+			{
+				Physics2DEditor();
+			}
+			if (p.HasComponent<RectCollider>())
+			{
+				RectColliderEditor();
+			}
+			if (p.HasComponent<CircleCollider>())
+			{
+				CircleColliderEditor();
+			}
+			if (p.HasComponent<Edge2DCollider>())
+			{
+				Edge2DColliderEditor();
+			}
+			if (p.HasComponent<Point2DCollider>())
+			{
+				Point2DColliderEditor();
+			}
+			if (p.HasComponent<Audio>())
+			{
+				AudioEditor();
+			}
+			if (p.HasComponent<Text>())
+			{
+				TextEditor();
+			}
+			if (p.HasComponent<AI>())
+			{
+				AIEditor();
+			}
+			if (p.HasComponent<PlayerTmp>())
+			{
+				PlayerTmpEditor();
+			}*/
+
+
+			ImGui::Combo("Select Prefab Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
+			if (ImGui::Button("Add Component to prefab"))
+			{
+				if (addComponentID == (int)COMPONENTID::GENERAL)
+					p->AddComponent<General>({ "_new_", (TAG)0, (SUBTAG)0, true });
+				else if (addComponentID == (int)COMPONENTID::LIFESPAN)
+					p->AddComponent<Lifespan>({ 0,1000 });
+				else if (addComponentID == (int)COMPONENTID::TRANSFORM)
+					p->AddComponent<Transform>({ {100,100}, 0, {0,0} });
+				
+				std::string add(componentsList[addComponentID]);
+				LOG_INFO(add + " conponent added to prefab");
 			}
 		}
 		ImGui::EndTabItem();
@@ -146,7 +247,7 @@ void InspectorPanel::AddComponent()
 	else if (addComponentID == (int)COMPONENTID::AUDIO)
 		e.AddComponent<Audio>({});
 	else if (addComponentID == (int)COMPONENTID::TEXT)
-		e.AddComponent<Text>({ "CaviarDreams.ttf", "HEllO", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
+		e.AddComponent<Text>({ "CaviarDreams", "PLAY", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
 	else if (addComponentID == (int)COMPONENTID::AI)
 		e.AddComponent<AI>({});
 	else if (addComponentID == (int)COMPONENTID::SCRIPT)
@@ -162,7 +263,7 @@ void InspectorPanel::DeleteEntity()
 	e.Destroy();
 	LOG_INFO("Entity deleated");
 	selectedEntity = nullptr;
-	e = *(static_cast<Entity*>(nullptr));
+	e = Entity{ 0 };
 }
 void InspectorPanel::GeneralEditor()
 {
@@ -172,7 +273,7 @@ void InspectorPanel::GeneralEditor()
 		ImGui::Checkbox("isActive", &e.GetComponent<General>().isActive); //isactive
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
 
-		ImGui::InputText("Name", const_cast<char*>(e.GetComponent<General>().name.c_str()), 30);
+		ImGui::InputText("Name", &e.GetComponent<General>().name);
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
 
 		int tagID = (int)e.GetComponent<General>().tag;
@@ -549,7 +650,7 @@ void InspectorPanel::AudioEditor()
 {
 	if (ImGui::CollapsingHeader("Audio")) {
 		//ImGui::Text("Audio");
-		ImGui::InputText("Addsound", const_cast<char*>(e.GetComponent<Audio>().sound.path.c_str()), 30);
+		ImGui::InputText("Addsound", &e.GetComponent<Audio>().sound.path);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 		static const wchar_t* texpath = (const wchar_t*)"";
 		if (ImGui::BeginDragDropTarget())
@@ -581,17 +682,17 @@ void InspectorPanel::TextEditor()
 {
 	if (ImGui::CollapsingHeader("Text")) {
 		//ImGui::Text("Text");
-		ImGui::InputText("Addtext", const_cast<char*>(e.GetComponent<Text>().text.c_str()), 30);
+		//ImGuiInput
+		ImGui::InputText("Addstrtext", &e.GetComponent<Text>().text);
+		//ImGui::InputText("Addtext", const_cast<char*>(e.GetComponent<Text>().text.c_str()), 50);
+		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
+		ImGui::InputText("Addfont", &e.GetComponent<Text>().fontFile);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
-		ImGui::InputText("Addfont", const_cast<char*>(e.GetComponent<Text>().fontFile.c_str()), 30);
-		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
-
-		tmpVec2[0] = e.GetComponent<Text>().pos.x;
-		tmpVec2[1] = e.GetComponent<Text>().pos.y;
+		tmpVec2[0] = e.GetComponent<Text>().offset.x;
+		tmpVec2[1] = e.GetComponent<Text>().offset.y;
 		ImGui::DragFloat2("Text Pos", tmpVec2);
-		Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
-		e.GetComponent<Text>().pos = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+		e.GetComponent<Text>().offset = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
 		ImGui::DragFloat("Text Scale", &e.GetComponent<Text>().scale);

@@ -58,7 +58,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "DAMAGE.wav",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -125,7 +125,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "DAMAGE.wav",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -189,7 +189,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "SHOOT1.wav",
+            "path": "SHOOT1",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -253,7 +253,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "SHOOT1.wav",
+            "path": "SHOOT1",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -317,7 +317,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "DAMAGE.wav",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -381,7 +381,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "DAMAGE.wav",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -445,7 +445,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "SHOOT5.wav",
+            "path": "SHOOT5",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,

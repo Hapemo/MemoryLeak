@@ -25,7 +25,15 @@ public:
 	
 private:
 	void newEntity();
+	void newPrefab();
+	void newPrefabee(Prefab*);
+
+	void setSelectedPrefab( Prefab* p);
 	void setSelectedEntity(const Entity* e);
+
+	void setSelected(const void* e);
+	template<typename T>
+	void listComponents(const T* e, std::string _name);
 	static int newEntityCount;
 	std::vector<std::string> tag;
 };

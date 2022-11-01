@@ -1,0 +1,43 @@
+{
+    "Entity0": {
+        "General": {
+            "name": "_NEW_0",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1920.0,
+                "Y": 1080.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -7.362060546875,
+                "Y": 30.736183166503906
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\menu screen background.jpg",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    }
+}

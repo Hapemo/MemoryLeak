@@ -58,7 +58,7 @@ void AssetPanel::Update()
 				{
 					ImTextureID textureImage = (void*)(intptr_t)my_image2_texture;
 					ImGui::ImageButton(textureImage, buttonSize, ImVec2(0, 1), ImVec2(1, 0));
-					if (texExt == ".png")
+					if (texExt == ".png" || texExt == ".jpg")
 					{
 						if (ImGui::BeginDragDropSource())
 						{
@@ -76,9 +76,7 @@ void AssetPanel::Update()
 					{
 						if (ImGui::BeginDragDropSource())
 						{
-							std::string audiofilename = directory.path().filename().string();
-							std::cout << audiofilename << "        AUDIOOOOOOOOOOOOOO\n";
-							const wchar_t* itemPath = (wchar_t*)audiofilename.c_str();
+							const wchar_t* itemPath = (wchar_t*)texfilename.c_str();
 							ImGui::SetDragDropPayload("AUDIO", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
 							ImGui::EndDragDropSource();
 						}
@@ -101,6 +99,8 @@ void AssetPanel::Update()
 						}
 						else if (texfilename.substr(0, 5) == "Scene")
 						{
+							ECS::DestroyAllEntities();
+							SceneReset();
 							serializationManager->LoadScene(texfilename);
 						}
 					}
@@ -110,6 +110,8 @@ void AssetPanel::Update()
 					else if (texExt == ".wav")
 					{
 						//audioManager->Play(texfilename);
+						std::cout << "play " << texfilename << "\n";
+						audioManager->PlayBGSound(texfilename, 11);
 					}
 
 				}

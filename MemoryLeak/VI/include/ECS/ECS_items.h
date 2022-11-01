@@ -104,6 +104,11 @@ struct Entity {
 
 	// Checks if the entity is active and not paused
 	bool ShouldRun() const;
+
+	// Set entity's isactive to true
+	void Activate();
+	void Deactivate();
+
 };
 
 
@@ -213,13 +218,14 @@ public:
 // 
 // Important notes
 // Prefab will automatically contain general component.
-// General {"", TAG::OTHERS, SUBTAG::NOSUBTAG, true, this}
+// General {"", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this}
 // The only thing initialised in this component is the prefab pointer,
 // pointing to itself.
 //-------------------------------------------------------------------------
 class Prefab {
 public:
 	Prefab();
+	Prefab(std::string const&);
 	~Prefab();
 
 	// Create new entity with prefab
@@ -243,6 +249,15 @@ public:
 	// Remove component from prefab. Must remove component from all components.
 	template<typename T>
 	void RemoveComponent();
+
+	template<typename T>
+	bool HasComponent() const;
+
+	template<typename T>
+	T& GetComponent() const;
+
+
+	std::set<Entity> const& GetPrefabees() const { return mPrefabees; }
 
 	std::string& Name() { return mName; }
 
