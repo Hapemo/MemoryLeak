@@ -41,7 +41,6 @@ None.
 *******************************************************************************/
 void DialoguePanel::Update()
 {
-std::cout << "Yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy";
 	if (!active)
 		return;
 	static int start{};

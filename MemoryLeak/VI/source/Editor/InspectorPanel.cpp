@@ -623,9 +623,12 @@ void InspectorPanel::AudioEditor()
 		ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 
-		ImGui::Checkbox("Click to Play", &e.GetComponent<Audio>().sound.toPlay);
-		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
-
+		/*ImGui::Checkbox("Click to Play", &e.GetComponent<Audio>().sound.toPlay);
+		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);*/
+		if (ImGui::Button("Play", ImVec2(50, 10)))
+		{
+			audioManager->PlayAnySound(e.GetComponent<Audio>().sound.path, 17);
+		}
 		//ImGui::Checkbox("isLoop", &e.GetComponent<Audio>().sound.isLoop);
 		if (ImGui::Button("Remove Audio"))
 		{
@@ -1054,7 +1057,11 @@ void InspectorPanel::PrefabEditor()
 			Audio audio = p->GetComponent<Audio>();
 			ImGui::InputText("Addsound", &audio.sound.path);
 			ImGui::Checkbox("Pause", &audio.sound.isPaused);
-			ImGui::Checkbox("Click to Play", &audio.sound.toPlay);
+			//ImGui::Checkbox("Click to Play", &audio.sound.toPlay);
+			if (ImGui::Button("Play", ImVec2(50, 10)))
+			{
+				audioManager->PlayAnySound(audio.sound.path, 17);
+			}
 			//ImGui::Checkbox("isLoop", &audio.sound.isLoop);
 			p->UpdateComponent<Audio>(audio);
 			if (ImGui::Button("Remove Audio"))

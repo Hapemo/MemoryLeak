@@ -74,7 +74,6 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static DebugPanel debugPanel{};
 	static MenuPanel menuPanel{};
 	static WeatherPanel weatherPanel{};
-	panels.push_back(&animationPanel);
 	panels.push_back(&hierarchyPanel);
 	panels.push_back(&inspectorPanel);
 	panels.push_back(&worldViewPanel);
@@ -83,6 +82,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&assetPanel);
 	panels.push_back(&debugPanel);
 	panels.push_back(&menuPanel);
+	panels.push_back(&animationPanel);
 	panels.push_back(&weatherPanel);
 	Init();
 }
