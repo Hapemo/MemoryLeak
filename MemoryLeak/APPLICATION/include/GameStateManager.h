@@ -22,6 +22,7 @@ enum class E_GS {
 	GameState3,
 	ParallaxSprite,
 	JAZZ,
+	PHYSICS,
 	Lighting,
 	RESTART,
 	EXIT

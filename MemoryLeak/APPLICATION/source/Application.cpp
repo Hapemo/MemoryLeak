@@ -38,8 +38,13 @@ void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
   //aiManager->weatherAIinit();
+  
   renderManager->Init(&window_width, &window_height);
   renderManager->RenderToFrameBuffer();
+  // For render debug
+  renderManager->SetVectorLengthModifier(5.f);
+  renderManager->SetDebug(true);
+
   ResourceManager::GetInstance()->LoadAllResources();
   for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
     spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
