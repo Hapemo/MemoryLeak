@@ -62,3 +62,4 @@ MemoryLeak/resources/Scene/SceneTmp.json
 MemoryLeak/bin/Release/x64/TOOLS/TOOLS.lib
 /MemoryLeak/lib/imgui-docking/examples/example_glfw_vulkan/out/build/x64-Debug
 /MemoryLeak/lib/imgui-docking/examples/example_android_opengl3/out/build/x64-Debug
+MemoryLeak/APPLICATION/imgui.ini

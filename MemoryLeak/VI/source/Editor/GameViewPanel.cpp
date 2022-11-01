@@ -19,7 +19,7 @@ void GameViewPanel::Init()
 }
 void GameViewPanel::Update()
 {
-	ImGui::Begin("Camera View");
+	ImGui::Begin("Game View");
 	//Calcualting the aspect ratio 
 	SetViewportAspectRatio();
 	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };

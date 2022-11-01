@@ -64,6 +64,7 @@ void GameState::PrimaryUnload() {
   Unload();
   UnloadWithGUID();
   renderManager->Clear();
+  renderManager->ResetCameras();
   if (Coordinator::GetInstance()->GetEntityCount() != 0)
     LOG_ERROR("There remains " + std::to_string(Coordinator::GetInstance()->GetEntityCount()) + " after Unloading GameState " + std::to_string(mGuid));
 
