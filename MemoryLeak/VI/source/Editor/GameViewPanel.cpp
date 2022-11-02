@@ -83,6 +83,11 @@ void GameViewPanel::Update()
 	fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
 	ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
 	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+	if (ImGui::BeginDragDropTarget())
+	{
+		NewEntity();
+		ImGui::EndDragDropTarget();
+	}
 	ImGui::End();
 }
 /*!*****************************************************************************
@@ -202,5 +207,25 @@ void GameViewPanel::ButtonClick()
 				}
 			}
 		}
+	}
+}
+void GameViewPanel::NewEntity()
+{
+	static const wchar_t* texpath = (const wchar_t*)"";
+	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+	{
+		LOG_INFO("Created new entity");
+		Entity ne{ ECS::CreateEntity() };
+		(*myEntities).insert(ne);
+		ne.AddComponent(
+			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
+			Transform{ {150,150}, 0, camMousePos },
+			Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0, highestLayer },
+			RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
+
+		texpath = (const wchar_t*)payload->Data;
+		std::string tp = (std::string)((const char*)texpath);
+		spriteManager->SetTexture(ne, tp);
+		newEntityCount++;
 	}
 }

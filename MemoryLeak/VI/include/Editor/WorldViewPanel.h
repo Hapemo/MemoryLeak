@@ -30,6 +30,6 @@ private:
 	void SetSelectedEntity();
 	void MoveSelectedEntity();
 	void UseGuizmo();
-	static int newEntityCount;
+	//static int newEntityCount;
 	Entity e;
 };

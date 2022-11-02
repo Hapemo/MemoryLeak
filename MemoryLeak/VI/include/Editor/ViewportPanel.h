@@ -45,6 +45,7 @@ protected:
 	Math::Vec2 objectOffset{};
 	static int isSelected;
 	ImTextureID fameBufferImage{};
+	static int newEntityCount;
 private:
 
 };

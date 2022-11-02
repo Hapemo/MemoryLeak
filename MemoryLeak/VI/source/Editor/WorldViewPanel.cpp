@@ -10,7 +10,7 @@ This file contains function definations for a WorldView Panel Editor system that
 *******************************************************************************/
 #include "WorldViewPanel.h"
 #include <ECSManager.h>
-int WorldViewPanel::newEntityCount =1;
+
 /*!*****************************************************************************
 \brief
 	Initializes the WorldViewPanel editor
