@@ -370,6 +370,10 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 			item.obj2.GetComponent<Physics2D>().accumulatedForce = Math::Vec2{ 0.f, 0.f };
 			item.obj2.GetComponent<Physics2D>().forceList.clear();
 		}
+
+	// --------------------------------------------
+	// Response hack for player (done by Wei Jhin)
+	// --------------------------------------------
 		if (item.obj1.GetComponent<General>().tag == TAG::PLAYER)
 		{
 			Math::Vec2 distance = item.obj1.GetComponent<Transform>().translation - item.obj2.GetComponent<Transform>().translation;
