@@ -13,7 +13,7 @@ This file contains function declarations for a Debug Panel Editor system that di
 
 /*!*****************************************************************************
 \brief
-	This class encapsulates the functions for the Level Editor
+	This class encapsulates the functions for the DebugPanel
 *******************************************************************************/
 class DebugPanel : public Panel
 {

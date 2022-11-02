@@ -152,7 +152,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -30.231000900268555
+                "Y": -30.231002807617188
             }
         },
         "Sprite": {
@@ -347,7 +347,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Settlings",
+            "text": "Settings",
             "offset": {
                 "X": -105.0,
                 "Y": -24.0
@@ -363,20 +363,20 @@
     },
     "Entity7": {
         "General": {
-            "name": "_NEW_DragDrop1",
-            "tag": 8,
+            "name": "Boat",
+            "tag": 0,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
+                "X": -400.0,
                 "Y": 400.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 538.2352905273438,
-                "Y": -214.7058868408203
+                "X": 611.8492431640625,
+                "Y": -210.91641235351563
             }
         },
         "Sprite": {
@@ -388,36 +388,49 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\boat.png",
-            "layer": 14
+            "layer": 18
         },
-        "RectCollider": {
-            "centerOffset": {
+        "Physics2D": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+            "velocity": {
+                "X": -7.048226206233382e-14,
+                "Y": 5.172123105777644e-14
             },
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
+            "renderFlag": false
         }
     },
     "Entity8": {
         "General": {
-            "name": "_NEW_DragDrop2",
-            "tag": 8,
+            "name": "Player",
+            "tag": 0,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
+                "X": -150.0,
                 "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 563.7254638671875,
-                "Y": -244.11766052246094
+                "X": 592.90966796875,
+                "Y": -252.32009887695313
             }
         },
         "Sprite": {
@@ -429,36 +442,49 @@
             },
             "sprite": 2,
             "texture": "Textures\\Characters\\mc.png",
-            "layer": 15
+            "layer": 20
         },
-        "RectCollider": {
-            "centerOffset": {
+        "Physics2D": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+            "velocity": {
+                "X": -7.048226206233382e-14,
+                "Y": 5.172123105777644e-14
             },
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
+            "renderFlag": false
         }
     },
     "Entity9": {
         "General": {
-            "name": "_NEW_DragDrop3",
+            "name": "Little Girl",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 100.0,
+                "Y": 120.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -679.4118041992188,
-                "Y": -324.5097961425781
+                "X": -535.9998779296875,
+                "Y": -271.5686340332031
             }
         },
         "Sprite": {
@@ -482,6 +508,94 @@
                 "Y": 1.0
             },
             "renderFlag": true
+        }
+    },
+    "Entity10": {
+        "General": {
+            "name": "LightHouse",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -300.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -607.5490112304688,
+                "Y": -160.64700317382813
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\lighthouse(revised).png",
+            "layer": 14
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity11": {
+        "General": {
+            "name": "Light",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -609.803955078125,
+                "Y": 15.686274528503418
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 1,
+            "texture": "Textures\\Icons\\Assets.txt",
+            "layer": 21
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "AI": {
+            "colorChange": 2,
+            "movement": 0,
+            "speed": 1.0,
+            "range": 10.0
         }
     }
 }

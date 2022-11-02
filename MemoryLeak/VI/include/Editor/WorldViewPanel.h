@@ -12,7 +12,7 @@ This file contains function definations for a WorldView Panel Editor system that
 
 /*!*****************************************************************************
 \brief
-	This class encapsulates the functions for the Level Editor
+	This class encapsulates the functions for the WorldView Panel
 *******************************************************************************/
 class WorldViewPanel : public ViewportPanel
 {

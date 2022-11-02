@@ -6,15 +6,28 @@
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function definations for a Level Editor system that modifies
-Entities and its Components.
+This file contains function declarations for a AssetPanel that view recources
 *******************************************************************************/
 #include "AssetPanel.h"
 #include <ECSManager.h>
+/*!*****************************************************************************
+\brief
+	Initializes the Asset Panel editor
+
+\return
+None.
+*******************************************************************************/
 void AssetPanel::Init()
 {
 
 }
+/*!*****************************************************************************
+\brief
+	Update the Asset Panel editor
+
+\return
+None.
+*******************************************************************************/
 void AssetPanel::Update()
 {
 	GLuint my_image_texture = spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
@@ -81,6 +94,24 @@ void AssetPanel::Update()
 							ImGui::EndDragDropSource();
 						}
 					}
+					else if (texExt == ".cpp")
+					{
+						if (ImGui::BeginDragDropSource())
+						{
+							const wchar_t* itemPath = (wchar_t*)texfilename.c_str();
+							ImGui::SetDragDropPayload("SCRIPT", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
+						}
+					}
+					else if (texExt == ".ttf")
+					{
+						if (ImGui::BeginDragDropSource())
+						{
+							const wchar_t* itemPath = (wchar_t*)texfilename.c_str();
+							ImGui::SetDragDropPayload("FONT", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
+						}
+					}
 				}
 			}
 			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
@@ -126,6 +157,13 @@ void AssetPanel::Update()
 	ImGui::EndTabBar();
 	ImGui::End();
 }
+/*!*****************************************************************************
+\brief
+	Free the Asset Panel editor
+
+\return
+None.
+*******************************************************************************/
 void AssetPanel::Free()
 {
 

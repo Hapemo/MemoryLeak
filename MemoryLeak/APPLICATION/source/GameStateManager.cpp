@@ -27,7 +27,7 @@ running.
 #include "Lighting.h"
 #include "MainMenu.h"
 #include "Level1.h"
-
+E_GS GameStateManager::mCurrentState = E_GS::MainMenu;
 GameStateManager::GameStateManager() :
 	mPrevGS(), mNextGS(), mCurrGS(), mCurrGameState(nullptr) 
 {};
@@ -41,7 +41,7 @@ void GameStateManager::Update() {
 	}
 
 	mCurrGameState->Init();
-
+	////////logicSystem->Init(); // need inilitialze loaded script data else need do in serilization
 	while (mCurrGS == mNextGS) {
 		TRACK_PERFORMANCE("MainLoop");
 		Application::FirstUpdate();
@@ -81,18 +81,18 @@ void GameStateManager::Update() {
 void GameStateManager::Init() {
 	LOG_CUSTOM_CREATE("GAMESTATE");
 	LOG_CUSTOM_CREATE("SCENE");
-	mPrevGS = mNextGS = mCurrGS = E_GS::JAZZ; // Starting game state
+	mPrevGS = mNextGS = mCurrGS = E_GS::MainMenu; // Starting game state
 	
-	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
-	GS_List.insert(GS_pair(E_GS::Stability, new Stability));
-	GS_List.insert(GS_pair(E_GS::AIDemo, new AIDemo));
-	GS_List.insert(GS_pair(E_GS::ScriptingDemo, new ScriptingDemo));
-	GS_List.insert(GS_pair(E_GS::ParallaxSprite, new ParallaxAndSpriteSwap));
-	GS_List.insert(GS_pair(E_GS::JAZZ, new GameStateJazz));
-	GS_List.insert(GS_pair(E_GS::PHYSICS, new GameStatePhysics));
-	GS_List.insert(GS_pair(E_GS::Lighting, new Lighting));
 	GS_List.insert(GS_pair(E_GS::MainMenu, new MainMenu));
 	GS_List.insert(GS_pair(E_GS::Level1, new Level1));
+	GS_List.insert(GS_pair(E_GS::PHYSICS, new GameStatePhysics));
+	GS_List.insert(GS_pair(E_GS::ScriptingDemo, new ScriptingDemo));
+	GS_List.insert(GS_pair(E_GS::Lighting, new Lighting));
+	GS_List.insert(GS_pair(E_GS::ParallaxSprite, new ParallaxAndSpriteSwap));
+	GS_List.insert(GS_pair(E_GS::AIDemo, new AIDemo));
+	GS_List.insert(GS_pair(E_GS::JAZZ, new GameStateJazz));
+	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
+	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
 }
 
 
@@ -176,4 +176,18 @@ void GameStateManager::GSControlPanel() {
 	else if (Input::CheckKey(PRESS, P) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::PHYSICS);
 	else if (Input::CheckKey(PRESS, _0) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::MainMenu);
 	else if (Input::CheckKey(PRESS, _1) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+	else if (Input::CheckKey(PRESS, RIGHT) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(++mCurrentState);
+	else if (Input::CheckKey(PRESS, LEFT) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(--mCurrentState);
+}
+
+E_GS& operator++(E_GS& _gs)                         // prefix increment operator
+{
+	_gs = (_gs == E_GS(static_cast<int>(E_GS::END_OF_LIST) - 1)) ? E_GS::MainMenu : E_GS(static_cast<int>(_gs) + 1);
+	return _gs;
+}
+
+E_GS& operator--(E_GS& _gs)                         // prefix decrement operator
+{
+	_gs = (_gs == E_GS::MainMenu) ? E_GS(static_cast<int>(E_GS::END_OF_LIST) - 1) : E_GS(static_cast<int>(_gs) - 1);
+	return _gs;
 }

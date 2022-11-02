@@ -21,7 +21,7 @@ void ScriptingDemo::Init() {
     for (Scene* scenePtr : mScenes)
         scenePtr->Init();
 
-    size_t i = 0;
+   /* size_t i = 0;
     for (Entity e : mEntities) {
         if (i == 0)
             e.AddComponent<Script>(Script({ "RotateScript", nullptr }));

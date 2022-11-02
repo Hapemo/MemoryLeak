@@ -43,9 +43,9 @@ void WorldViewPanel::Update()
 		//serializationManager->LoadScene("SceneTmp");
 	//ImGui::SameLine(0.f,20.f);
 	if (isScenePaused)
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-	else
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isScenePaused = false;
@@ -53,9 +53,9 @@ void WorldViewPanel::Update()
 	ImGui::PopStyleColor();
 
 	if (isScenePaused)
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-	else
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", buttonSize))
 	{
@@ -122,6 +122,13 @@ void WorldViewPanel::Free()
 {
 
 }
+/*!*****************************************************************************
+\brief
+	This Function Moves the camera based on arrow key input
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::ArrowKeyMoveCam()
 {
 	if (Input::CheckKey(E_STATE::HOLD, E_KEY::UP))
@@ -141,6 +148,13 @@ void WorldViewPanel::ArrowKeyMoveCam()
 		renderManager->GetWorldCamera() -= moveHorizontal;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function Moves the camera based on mouse input
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::MouseClickMoveCam()
 {
 	if (SRT == 0)
@@ -156,6 +170,13 @@ void WorldViewPanel::MouseClickMoveCam()
 		}
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function Zoom the camera based on mouse input 
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::ScrollMoveCam()
 {
 	if (Input::GetScroll() > 0.0) //scroll up   // zoon in
@@ -172,6 +193,13 @@ void WorldViewPanel::ScrollMoveCam()
 		//renderManager->GetWorldCamera() += -mousePos;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function created a new enitity
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::NewEntity()
 {
 	static const wchar_t* texpath = (const wchar_t*)"";
@@ -192,6 +220,13 @@ void WorldViewPanel::NewEntity()
 		newEntityCount++;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function sets the selected entity
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::SetSelectedEntity()
 {
 	int layer = 0;
@@ -204,7 +239,7 @@ void WorldViewPanel::SetSelectedEntity()
 			Math::Vec2 scale = ee.GetComponent<Transform>().scale;
 			Math::Vec2 translation = ee.GetComponent<Transform>().translation;
 			Math::Vec2 distance = camMousePos - translation;
-			if (abs(distance.x) < scale.x / 2 && abs(distance.y) < scale.y / 2)
+			if (abs(distance.x) < abs(scale.x) / 2 && abs(distance.y) < abs(scale.y) / 2)
 			{
 				LOG_INFO(ee.GetComponent<General>().name + " Selected");
 				if (ee.GetComponent<Sprite>().layer >= layer)
@@ -218,12 +253,19 @@ void WorldViewPanel::SetSelectedEntity()
 		}
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function moves the selected entity basded on mouse input
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::MoveSelectedEntity()
 {
 	Math::Vec2 scale = e.GetComponent<Transform>().scale;
 	Math::Vec2 translation = e.GetComponent<Transform>().translation;
 	Math::Vec2 distance = camMousePos - translation;
-	if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && (abs(distance.x) < scale.x / 2 && abs(distance.y) < scale.y / 2))
+	if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && (abs(distance.x) < abs(scale.x) / 2 && abs(distance.y) < abs(scale.y) / 2))
 	{
 		e.GetComponent<Transform>().translation = camMousePos - objectOffset;
 		isSelected = 1;
@@ -233,6 +275,13 @@ void WorldViewPanel::MoveSelectedEntity()
 		e.GetComponent<Transform>().translation = camMousePos - objectOffset;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function moves the selected entity basded on mouse input using ImGuizmo
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::UseGuizmo()
 {
 	

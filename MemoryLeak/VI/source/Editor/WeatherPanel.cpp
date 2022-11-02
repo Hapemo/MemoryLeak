@@ -4,17 +4,17 @@
 \author Huang Wei Jhin
 \par DP email: h.weijhin@digipen.edu
 \par Group: Memory Leak Studios
-\date 20-10-2022
+\date 30-10-2022
 \brief
-This file contains function definations for a AnimationPanel Editor system that modifies
-and Animation 
+This file contains function declarations for a WeatherPanel Editor system that modifies
+and Weather tile map
 *******************************************************************************/
 #include "WeatherPanel.h"
 #include <ECSManager.h>
 
 /*!*****************************************************************************
 \brief
-	Initializes the Dialogue Panel editor
+	Initializes the Weather Panel editor
 
 \return
 None.
@@ -27,7 +27,7 @@ void WeatherPanel::Init()
 }
 /*!*****************************************************************************
 \brief
-	Updates the Dialogue Panel editor
+	Updates the Weather Panel editor
 
 \return
 None.
@@ -42,15 +42,26 @@ void WeatherPanel::Update()
 	SetViewportAspectRatio();
 	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	if (isWeatherPaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isWeatherPaused = false;
 	}
+	ImGui::PopStyleColor();
+
+	if (isWeatherPaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", buttonSize))
 	{
 		isWeatherPaused = true;
 	}
+	ImGui::PopStyleColor();
 	for (int h = 0; h < mapHeight; h++)
 	{
 		for (int w = 0; w < mapWidth; w++)
@@ -92,7 +103,7 @@ void WeatherPanel::Update()
 }
 /*!*****************************************************************************
 \brief
-	Free the Dialogue Panel editor
+	Free the Weather Panel editor
 
 \return
 None.

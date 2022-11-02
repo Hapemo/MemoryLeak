@@ -1,11 +1,11 @@
 /*!*****************************************************************************
-\file GameState3.cpp
-\author Jazz Teoh Yu Jue
-\par DP email: j.teoh\@digipen.edu
+\file ParallaxAndSpriteSwap.cpp
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 31-10-2022
 \brief
-Game state for testing physics
+Game state for testing background and sprite changes
 *******************************************************************************/
 #include "ParallaxAndSpriteSwap.h"
 #include "ECSManager.h"
@@ -13,107 +13,19 @@ Game state for testing physics
 #include "Input.h"
 #include "Logger.h"
 
-void ParallaxAndSpriteSwap::Load() {}
+void ParallaxAndSpriteSwap::Load() {
+    LoadWithGUID(16673599440027908);
+}
 
 void ParallaxAndSpriteSwap::Init() {
-    float width = (float)Application::getWindowWidth();
-    float height = (float)Application::getWindowHeight();
-
-    /*************************************Parallax Start************************************/
-    //background of parallax
-    Entity e1{ ECS::CreateEntity() };
-    mEntities.insert(e1);
-    e1.AddComponent(Transform{ {width, height}, 0, {0,0} },
-        Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 0 },
-        General{ "background", TAG::PASSENGER, SUBTAG::NOSUBTAG, true, false });
-    spriteManager->SetTexture(e1, "Textures\\Background\\background.png");
-    //physics2DManager->AddPhysicsComponent(e1, false, 1.f, 50.f);
-    Entity e4{ ECS::CreateEntity() };
-    mEntities.insert(e4);
-    e4.AddComponent(Transform{ {width, height}, 0, {width,0} },
-        Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 0 },
-        General{ "background1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true, false });
-    spriteManager->SetTexture(e4, "Textures\\Background\\background.png");
-    //physics2DManager->AddPhysicsComponent(e4, false, 1.f, 50.f);
-
-    //middleground of parallax
-    Entity e2{ ECS::CreateEntity() };
-    mEntities.insert(e2);
-    e2.AddComponent(Transform{ {width, height}, 0, {0,0} },
-        Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 1 },
-        General{ "middleground", TAG::PASSENGER, SUBTAG::NOSUBTAG, true, false });
-    spriteManager->SetTexture(e2, "Textures\\Background\\middleground.png");
-    //physics2DManager->AddPhysicsComponent(e2, false, 1.f, 150.f);
-    Entity e5{ ECS::CreateEntity() };
-    mEntities.insert(e5);
-    e5.AddComponent(Transform{ {width, height}, 0, {width,0} },
-        Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 1 },
-        General{ "middleground1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true,false });
-    spriteManager->SetTexture(e5, "Textures\\Background\\middleground.png");
-    //physics2DManager->AddPhysicsComponent(e5, false, 1.f, 150.f);
-
-    //foreground of parallax
-    Entity e3{ ECS::CreateEntity() };
-    mEntities.insert(e3);
-    e3.AddComponent(Transform{ {width, height}, 0, {0,0} },
-        Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 2 },
-        General{ "foreground", TAG::PASSENGER, SUBTAG::NOSUBTAG, true,false });
-    spriteManager->SetTexture(e3, "Textures\\Background\\foreground.png");
-    //physics2DManager->AddPhysicsComponent(e3, false, 1.f, 300.f);
-    Entity e6{ ECS::CreateEntity() };
-    mEntities.insert(e6);
-    e6.AddComponent(Transform{ {width, height}, 0, {width,0} },
-        Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 2 },
-        General{ "foreground1", TAG::PASSENGER, SUBTAG::NOSUBTAG, true,false });
-    spriteManager->SetTexture(e6, "Textures\\Background\\foreground.png");
-    //physics2DManager->AddPhysicsComponent(e6, false, 1.f, 300.f);
-    /*************************************Parallax End************************************/
-
-    /*************************************Spritesheet Multiple Animation Start************************************/
-    //sprite changing 
-    Entity e7{ ECS::CreateEntity() };
-    mEntities.insert(e7);
-    e7.AddComponent(Transform{ {96*2,96*2}, 0, {50, -100} },
-        Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
-        SheetAnimation{ 6, 0, 0.1f },
-        General{ "spritesheet", TAG::PASSENGER, SUBTAG::NOSUBTAG, true, false },
-        RectCollider{{0,0},{1,1},true});
-    spriteManager->SetTexture(e7, "Textures\\Spritesheets\\Woodcutter_run.png");
-    /*************************************Spritesheet Multiple Animation End************************************/
-
-    /*************************************Debug Drawings Start************************************/
-    Entity e8{ ECS::CreateEntity() };
-    mEntities.insert(e8);
-    e8.AddComponent(Transform{ {0, 0}, 0, {200, 200} },
-        Sprite{ Color{0,255,0,255}, SPRITE::DEBUG_POINT, 0, 255 },
-        General{ "point", TAG::OTHERS, SUBTAG::NOSUBTAG, true,false });
-
-    Entity e9{ ECS::CreateEntity() };
-    mEntities.insert(e9);
-    e9.AddComponent(Transform{ {100, 0}, 0, {250, 200} },
-        Sprite{ Color{0,255,0,255}, SPRITE::DEBUG_LINE, 0, 255 },
-        General{ "line", TAG::OTHERS, SUBTAG::NOSUBTAG, true ,false});
-
-    Entity e10{ ECS::CreateEntity() };
-    mEntities.insert(e10);
-    e10.AddComponent(Transform{ {100, 100}, 0, {400, 200} },
-        Sprite{ Color{0,255,0,255}, SPRITE::DEBUG_SQUARE, 0, 255 },
-        General{ "square", TAG::OTHERS, SUBTAG::NOSUBTAG, true ,false});
-
-    Entity e11{ ECS::CreateEntity() };
-    mEntities.insert(e11);
-    e11.AddComponent(Transform{ {100, 100}, 0, {550, 200} },
-        Sprite{ Color{0,255,0,255}, SPRITE::DEBUG_CIRCLE, 0, 255 },
-        General{ "circle", TAG::OTHERS, SUBTAG::NOSUBTAG, true,false });
-    /*************************************Debug Drawings End************************************/
+    for (Scene* scenePtr : mScenes)
+        scenePtr->Init();
 }
 
 void ParallaxAndSpriteSwap::Update() {
+    for (Scene* scenePtr : mScenes)
+        scenePtr->PrimaryUpdate();
     static bool isjump = false;
-    if (Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
-        ASSERT(1 == 1, "1 is equal to 1!!!");
-    if (Input::CheckKey(E_STATE::PRESS, E_KEY::RIGHT_SHIFT))
-        THROW(Logger::E_EXCEPTION::RUNTIME_ERR, "Right shift is pressed!!!");
 
     for (const Entity& e : mEntities)
     {
@@ -175,14 +87,12 @@ void ParallaxAndSpriteSwap::Update() {
 }
 
 void ParallaxAndSpriteSwap::Draw() {
-    sheetAnimator->Animate();
     renderManager->Render();
 }
 
 void ParallaxAndSpriteSwap::Free() {
-    for (auto& e : mEntities)
-        e.Destroy();
-    mEntities.clear();
+    for (auto& scenePtr : mScenes)
+        scenePtr->Exit();
 }
 
 void ParallaxAndSpriteSwap::Unload() {}

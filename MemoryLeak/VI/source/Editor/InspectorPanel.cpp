@@ -6,19 +6,32 @@
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function definations for a Level Editor system that modifies
+This file contains function definations for a Inspector Panel Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "InspectorPanel.h"
 #include <ECSManager.h>
+#include "ScriptManager.h"
+/*!*****************************************************************************
+\brief
+	Initializes the Inspector Panel editor
+
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::Init()
 {
 
 }
+/*!*****************************************************************************
+\brief
+	Update the Inspector Panel editor
+
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::Update()
 {
-	
-	//static COMPONENT tempComponent{};
 	ImGui::Begin("Inspector Manager");
 	ImGui::BeginTabBar("Inspector ");
 	if (ImGui::BeginTabItem("Edit Game: "))
@@ -83,15 +96,18 @@ void InspectorPanel::Update()
 			{
 				AIEditor();
 			}
+			if (e.HasComponent<Script>())
+			{
+				ScriptEditor();
+			}
+			if (e.HasComponent<Dialogue>())
+			{
+				DialogueEditor();
+			}
 			if (e.HasComponent<PlayerTmp>())
 			{
 				PlayerTmpEditor();
 			}
-			
-
-			//static int addComponentID;
-			/*static const char* componentsList[]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
-				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "PlayerTmp"};*/
 			ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 			if (ImGui::Button("Add Component"))
 			{
@@ -112,9 +128,6 @@ void InspectorPanel::Update()
 		{
 			p = selectedPrefab;
 			PrefabEditor();
-			
-
-
 			ImGui::Combo("Select Prefab Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 			if (ImGui::Button("Add Component to prefab"))
 			{
@@ -124,16 +137,28 @@ void InspectorPanel::Update()
 			}
 		}
 		ImGui::EndTabItem();
-
 	}
 	ImGui::EndTabBar();
 	ImGui::End();
 }
+/*!*****************************************************************************
+\brief
+	Initializes the Inspector Panel editor
+
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::Free()
 {
 
 }
+/*!*****************************************************************************
+\brief
+	This function add a component to an entity
 
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::AddComponent()
 {
 	if (addComponentID == (int)COMPONENTID::GENERAL)
@@ -172,7 +197,13 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<PlayerTmp>({});
 	
 }
+/*!*****************************************************************************
+\brief
+	This function add a component to an prefab
 
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::AddPrefabComponent()
 {
 	if (p == nullptr)
@@ -213,7 +244,13 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<PlayerTmp>({});
 }
 
+/*!*****************************************************************************
+\brief
+	This function delete an entity
 
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::DeleteEntity()
 {
 	e.Destroy();
@@ -221,6 +258,13 @@ void InspectorPanel::DeleteEntity()
 	selectedEntity = nullptr;
 	e = Entity{ 0 };
 }
+/*!*****************************************************************************
+\brief
+	This functions below onawards edits a particular component
+
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::GeneralEditor()
 {
 	if (ImGui::CollapsingHeader("General") || true) {
@@ -661,10 +705,20 @@ void InspectorPanel::TextEditor()
 	if (ImGui::CollapsingHeader("Text")) {
 		//ImGui::Text("Text");
 		//ImGuiInput
-		ImGui::InputText("Addstrtext", &e.GetComponent<Text>().text);
-		//ImGui::InputText("Addtext", const_cast<char*>(e.GetComponent<Text>().text.c_str()), 50);
+		ImGui::InputText("Add text", &e.GetComponent<Text>().text);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
-		ImGui::InputText("Addfont", &e.GetComponent<Text>().fontFile);
+		ImGui::InputText("Add font", &e.GetComponent<Text>().fontFile);
+		if (ImGui::BeginDragDropTarget())
+		{
+			static const wchar_t* texpath = (const wchar_t*)"";
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("FONT"))
+			{
+				texpath = (const wchar_t*)payload->Data;
+				std::string tp = (std::string)((const char*)texpath);
+				e.GetComponent<Text>().fontFile = tp;
+			}
+			ImGui::EndDragDropTarget();
+		}
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
 		tmpVec2[0] = e.GetComponent<Text>().offset.x;
@@ -739,9 +793,52 @@ void InspectorPanel::AIEditor()
 		}
 	}
 }
+void InspectorPanel::ScriptEditor()
+{
+	if (ImGui::CollapsingHeader("Script")) {
+		if (ImGui::InputText("Add script file name", &e.GetComponent<Script>().name))
+		{
+			e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
+		}
+		if (ImGui::BeginDragDropTarget())
+		{
+			static const wchar_t* texpath = (const wchar_t*)"";
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("SCRIPT"))
+			{
+				texpath = (const wchar_t*)payload->Data;
+				std::string tp = (std::string)((const char*)texpath);
+				e.GetComponent<Script>().name = tp;
+				e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
+			}
+			ImGui::EndDragDropTarget();
+		}
+		if (ImGui::Button("Remove Script"))
+		{
+			e.RemoveComponent<Script>();
+			LOG_INFO("Script component removed");
+		}
+	}
+}
+void InspectorPanel::DialogueEditor()
+{
+	if (ImGui::CollapsingHeader("Dialogue")) 
+	{
+		ImGui:Text("Dialogue WIP");
+		if (ImGui::Button("Remove Dialogue"))
+		{
+			e.RemoveComponent<Dialogue>();
+			LOG_INFO("Dialogue component removed");
+		}
+	}
+}
 
+/*!*****************************************************************************
+\brief
+	This functions below onawards edits a particular component in a prefab
 
-
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::PrefabEditor()
 {
 	if (p == nullptr)
@@ -1148,6 +1245,29 @@ void InspectorPanel::PrefabEditor()
 			{
 				p->RemoveComponent<AI>();
 				LOG_INFO("AI component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Script>())
+	{
+		if (ImGui::CollapsingHeader("Script")) {
+			ImGui::InputText("Add script file name", &e.GetComponent<Script>().name);
+			if (ImGui::Button("Remove Script"))
+			{
+				e.RemoveComponent<Script>();
+				LOG_INFO("Script component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Dialogue>())
+	{
+		if (ImGui::CollapsingHeader("Dialogue"))
+		{
+			ImGui:Text("Dialogue WIP");
+			if (ImGui::Button("Remove Dialogue"))
+			{
+				e.RemoveComponent<Dialogue>();
+				LOG_INFO("Dialogue component removed");
 			}
 		}
 	}

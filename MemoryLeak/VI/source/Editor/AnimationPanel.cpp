@@ -14,7 +14,7 @@ and Animation
 
 /*!*****************************************************************************
 \brief
-	Initializes the Dialogue Panel editor
+	Initializes the Animation Panel editor
 
 \return
 None.
@@ -26,7 +26,7 @@ void AnimationPanel::Init()
 }
 /*!*****************************************************************************
 \brief
-	Updates the Dialogue Panel editor
+	Updates the Animation Panel editor
 
 \return
 None.
@@ -39,15 +39,26 @@ void AnimationPanel::Update()
 	SetViewportAspectRatio();
 	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	if (isAnimationPaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isAnimationPaused = false;
 	}
+	ImGui::PopStyleColor();
+
+	if (isAnimationPaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", buttonSize))
 	{
 		isAnimationPaused = true;
 	}
+	ImGui::PopStyleColor();
 	if (ImGui::IsWindowFocused())
 		isAnimatorEditor = true;
 	else
@@ -119,7 +130,7 @@ void AnimationPanel::Update()
 }
 /*!*****************************************************************************
 \brief
-	Free the Dialogue Panel editor
+	Free the Animation Panel editor
 
 \return
 None.

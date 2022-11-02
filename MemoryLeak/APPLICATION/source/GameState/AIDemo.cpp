@@ -11,16 +11,18 @@ Game state for testing AI
 #include "Application.h"
 
 void AIDemo::Load() {
-	//serializationManager->LoadScene("SceneJUX");
+	//serializationManager->LoadScene("Scene_AIDemo");
     LoadWithGUID(16665530225855236);
 }
 
 void AIDemo::Init() {
-   
+    for (Scene* scenePtr : mScenes)
+        scenePtr->Init();
 }
 
 void AIDemo::Update() {
-
+    for (Scene* scenePtr : mScenes)
+        scenePtr->PrimaryUpdate();
 }
 
 void AIDemo::Draw() {
@@ -28,6 +30,8 @@ void AIDemo::Draw() {
 }
 
 void AIDemo::Free() {
+    for (auto& scenePtr : mScenes)
+        scenePtr->Exit();
 }
 
 void AIDemo::Unload() {

@@ -3,7 +3,7 @@
 \author Huang Wei Jhin
 \par DP email: h.weijhin\@digipen.edu
 \par Group: Memory Leak Studios
-\date 01-11-2022
+\date 05-11-2022
 \brief
 Game state for level 1
 *******************************************************************************/
@@ -13,6 +13,7 @@ Game state for level 1
 
 
 void Level1::Load() {
+	//serializationManager->LoadScene("Scene_Level1");
 	LoadWithGUID(16669349234147588);
 }
 
@@ -27,8 +28,6 @@ void Level1::Update() {
 }
 
 void Level1::Draw() {
-	for (Scene* scenePtr : mScenes)
-		scenePtr->PrimaryUpdate();
 	renderManager->Render();
 }
 

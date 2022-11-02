@@ -12,7 +12,7 @@ This file contains function declarations for a Menu Panel Editor system
 
 /*!*****************************************************************************
 \brief
-	This class encapsulates the functions for the Level Editor
+	This class encapsulates the functions for the Level Editor Main menu
 *******************************************************************************/
 class MenuPanel : public Panel
 {

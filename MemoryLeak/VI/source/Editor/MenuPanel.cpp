@@ -5,7 +5,7 @@
 \par Group: Memory Leak Studios
 \date 20-10-2022
 \brief
-This file contains function definations for a MenuPanel Editor system 
+	This class encapsulates the functions for the Level Editor Main menu
 *******************************************************************************/
 #include "MenuPanel.h"
 #include <ECSManager.h>

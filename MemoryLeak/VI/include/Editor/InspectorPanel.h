@@ -5,7 +5,7 @@
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function declarations for a Level Editor system that modifies
+This file contains function declarations for a Inspector Panel Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #pragma once
@@ -38,6 +38,8 @@ private:
 	void AudioEditor();
 	void TextEditor();
 	void AIEditor();
+	void ScriptEditor();
+	void DialogueEditor();
 	void PlayerTmpEditor();
 	void AddPrefabComponent();
 	void PrefabEditor();
@@ -55,7 +57,7 @@ private:
 	const char* tag[9]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "ENVIRONMENT","EFFECTS","PREFABS","OTHERS" };
 	const char* subtag[6]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
 	const char* shape[8]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
-	const char* colorChange[4]{ "None","Smoothy","Traffic Light" };
+	const char* colorChange[3]{ "None","Smoothy","Traffic Light" };
 	const char* movement[5]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
 	int addComponentID{};
 	const char* componentsList[17]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
