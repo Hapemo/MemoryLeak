@@ -98,12 +98,12 @@ public:
 	/*!*****************************************************************************
 	Constructor for ResourceManager.
 	*******************************************************************************/
-	ResourceManager() {};
+	ResourceManager() = default;
 
 	/*!*****************************************************************************
 	Destructor for ResourceManager.
 	*******************************************************************************/
-	~ResourceManager() {};
+	~ResourceManager() = default;
 
 	// Delete the copy constructor
 	ResourceManager(const ResourceManager&) = delete;
@@ -116,7 +116,6 @@ public:
 	The filepath in string.
 	*******************************************************************************/
 	void LoadTextures(std::string _filepath);
-
 
 	/*!*****************************************************************************
 	Check if files have changed/been updated by checking the last updated time. If

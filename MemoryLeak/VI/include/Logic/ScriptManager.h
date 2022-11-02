@@ -28,6 +28,8 @@ private:
     ScriptMap mScripts;
 
 public:
+    ~ScriptManager() = default;
+
     template<class Script>
     void RegisterScript(const std::string& _name) {
         mScripts.insert({ _name, []() -> Base* { return new Script(); } });
