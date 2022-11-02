@@ -11,6 +11,7 @@ Entities and its Components.
 *******************************************************************************/
 #include "GameViewPanel.h"
 #include <ECSManager.h>
+#include "../../../APPLICATION/include/GameStateManager.h"
 /*!*****************************************************************************
 \brief
 	Initializes the GameViewPanel editor
@@ -67,9 +68,16 @@ void GameViewPanel::Update()
 		{
 			//Camera movement
 			ArrowKeyMoveCam();
-			MouseClickMoveCam();
 			ScrollMoveCam();
-			ButtonClick();
+			if (isScenePaused)
+				MouseClickMoveCam();
+			else
+			{
+				if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
+				{
+					ButtonClick();
+				}
+			}
 		}
 	}
 	fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
@@ -163,7 +171,7 @@ void GameViewPanel::ButtonClick()
 	{
 		if (ee.GetComponent<General>().tag == TAG::ENVIRONMENT)
 		{
-			if (ee.HasComponent<Transform>() && ee.HasComponent<Sprite>()) //||e.HasComponent<Text>()
+			if (ee.HasComponent<Transform>() && ee.HasComponent<Sprite>()&& ee.HasComponent<Text>()) //button
 			{
 				Math::Vec2 scale = ee.GetComponent<Transform>().scale;
 				Math::Vec2 translation = ee.GetComponent<Transform>().translation;
@@ -173,11 +181,20 @@ void GameViewPanel::ButtonClick()
 					LOG_INFO(ee.GetComponent<General>().name + "Clicked");
 					if (ee.GetComponent<Sprite>().layer >= layer)
 					{
-						selectedEntity = &ee;
+						if ( ee.GetComponent<Text>().color.g == (GLubyte)0)
+							ee.GetComponent<Text>().color = Color(255,255,255,255);
+						else
+							ee.GetComponent<Text>().color = Color(0, 0, 0, 255);
 						layer = ee.GetComponent<Sprite>().layer;
-						objectOffset = distance;
-						isSelected = 1;
+						if (ee.GetComponent<General>().tag == TAG::PLAYER)
+						{
+							GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+						}
 					}
+				}
+				else if (ee.GetComponent<Sprite>().color.r == (GLubyte)0 && ee.GetComponent<Sprite>().color.g == (GLubyte)0 && ee.GetComponent<Sprite>().color.b == (GLubyte)0)
+				{
+					ee.GetComponent<Sprite>().color = Color(255, 255, 255, 255);
 				}
 			}
 		}

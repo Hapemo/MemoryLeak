@@ -17,6 +17,10 @@
                 "Y": -100.0
             }
         },
+        "Script": {
+            "name": "RotateScript",
+            "script": nullptr
+        },
         "Sprite": {
             "color": {
                 "r": 0,
@@ -49,6 +53,10 @@
                 "X": 0.0,
                 "Y": 225.0
             }
+        },
+        "Script": {
+            "name": "ScaleScript",
+            "script": nullptr
         },
         "Sprite": {
             "color": {

@@ -11,38 +11,54 @@ The ScriptManager class manages the scripts for the engine.
 *******************************************************************************/
 
 #pragma once
-#include "Singleton.h"
 #include <map>
 #include <functional>
 #include <string>
-#include <iostream>
+#include "Singleton.h"
+#include "Logger.h"
 
 #define REGISTER_SCRIPT(_base, _derived) ScriptFactory<_base, _derived> s_##_derived##Creator(#_derived);
 
 template<class Base>
 class ScriptManager : public Singleton<ScriptManager<Base>> {
 public:
+    typedef std::pair<std::string, std::function<Base* ()>> ScriptPair;
     typedef std::map<std::string, std::function<Base* ()>> ScriptMap;
 
 private:
     ScriptMap mScripts;
 
 public:
+    ScriptManager() {
+        LOG_ERROR("script manager constructed!!!");
+    };
+    ~ScriptManager() {
+        LOG_ERROR("Destroying script manager!");
+        for (const ScriptPair& script : mScripts)
+            if(script.second())
+                delete script.second();
+    }
+
     template<class Script>
     void RegisterScript(const std::string& _name) {
-        mScripts.insert({ _name, []() -> Base* { return new Script(); } });
+        (void)_name;
+        //mScripts.insert({ _name, []() -> Base* { return new Script(); } });
     }
 
     Base* GetScript(const std::string& _name) {
         const ScriptMap::iterator script = mScripts.find(_name);
-        if (script == mScripts.end()) return nullptr; // not a derived class
-        else return (script->second)();
+        if (script == mScripts.end()) {
+            LOG_ERROR("Error retrieving script: " + _name);
+            return nullptr; // not a derived class
+        } else return (script->second)();
     }
 
     void PrintRegisteredScripts() {
-        for (const auto& creator : mScripts)
-            LOG_INFO(creator.first.c_str());
+        for (const ScriptPair& script : mScripts)
+            LOG_INFO(script.first.c_str());
     }
+
+    ScriptMap GetScripts() { return mScripts; }
 };
 
 template<class Base, class Script>
