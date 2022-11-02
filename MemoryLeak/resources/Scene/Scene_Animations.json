@@ -1,0 +1,259 @@
+{
+    "Entity0": {
+        "General": {
+            "name": "background",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Background\\background.png",
+            "layer": 0
+        }
+    },
+    "Entity1": {
+        "General": {
+            "name": "middleground",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Background\\middleground.png",
+            "layer": 1
+        }
+    },
+    "Entity2": {
+        "General": {
+            "name": "foreground",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Background\\foreground.png",
+            "layer": 2
+        }
+    },
+    "Entity3": {
+        "General": {
+            "name": "spritesheet",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 189.0,
+                "Y": 189.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 50.0,
+                "Y": -100.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\Woodcutter_run.png",
+            "layer": 10
+        },
+        "SheetAnimation": {
+            "frameCount": 6,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": -22.0,
+                "Y": -21.0
+            },
+            "scaleOffset": {
+                "X": 0.7200002670288086,
+                "Y": 0.7800002098083496
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity4": {
+        "General": {
+            "name": "point",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 200.0,
+                "Y": 200.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 3,
+            "texture": "Textures\\Icons\\Assets.txt",
+            "layer": 255
+        }
+    },
+    "Entity5": {
+        "General": {
+            "name": "line",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 0.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 250.0,
+                "Y": 200.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 4,
+            "texture": "Textures\\Icons\\Assets.txt",
+            "layer": 255
+        }
+    },
+    "Entity6": {
+        "General": {
+            "name": "square",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 400.0,
+                "Y": 200.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 5,
+            "texture": "Textures\\Icons\\Assets.txt",
+            "layer": 255
+        }
+    },
+    "Entity7": {
+        "General": {
+            "name": "circle",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 550.0,
+                "Y": 200.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 6,
+            "texture": "Textures\\Icons\\Assets.txt",
+            "layer": 255
+        }
+    }
+}

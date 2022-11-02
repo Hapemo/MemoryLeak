@@ -18,7 +18,7 @@ running.
 #include "Graphics/SpriteManager.h"
 #include "Input.h"
 #include "GameState1.h"
-#include "GameState2.h"
+#include "Stability.h"
 #include "AIDemo.h"
 #include "ScriptingDemo.h"
 #include "GameStateJazz.h"
@@ -93,7 +93,6 @@ void GameStateManager::Init() {
 	GS_List.insert(GS_pair(E_GS::AIDemo, new AIDemo));
 	GS_List.insert(GS_pair(E_GS::JAZZ, new GameStateJazz));
 	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
-	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
 }
 
 
@@ -135,6 +134,9 @@ void GameStateManager::SetNewGameState() {
 	case E_GS::Level1:
 		Application::GetCurrGameStateName() = "Level1";
 		break;
+	case E_GS::Stability:
+		Application::GetCurrGameStateName() = "Stability";
+		break;
 	default:
 		Application::GetCurrGameStateName() = "Unknown";
 	}
@@ -165,7 +167,7 @@ void GameStateManager::GSControlPanel() {
 		}
 	}
 	if (Input::CheckKey(PRESS, O) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState1);
-	else if (Input::CheckKey(PRESS, G) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::GameState2);
+	else if (Input::CheckKey(PRESS, G) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Stability);
 	else if (Input::CheckKey(PRESS, I) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::AIDemo);
 	else if (Input::CheckKey(PRESS, A) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ParallaxSprite);
 	else if (Input::CheckKey(PRESS, J) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::JAZZ);

@@ -26,7 +26,7 @@ enum class E_GS {
 	JAZZ,
 	END_OF_LIST,
 	GameState1,
-	GameState2,
+	Stability,
 	RESTART,
 	EXIT
 
