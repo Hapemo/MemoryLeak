@@ -56,17 +56,24 @@ void PlayerController::Update() {
 		//if (Input::CheckKey(STATE::PRESS, KEY::S) || Input::CheckKey(STATE::HOLD, KEY::S))
 		//	e.GetComponent<Physics2D>().speed -= static_cast<float>(playerSpeedChange * _dt);
 
-		if (!check[0])
-			std::cout << "wwwwwwwwwwwwwwwwwwwww\n";
-		if (!check[1])
-			std::cout << "sssssssssssssssssssssssssss\n";
-		if (!check[2])
-			std::cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaa\n";
-		if (!check[3])
-			std::cout << "ddddddddddddddddddddddddddddddn";
-		
+	// --------------------------------------------
+	// Response hack for player (done by Wei Jhin)
+	// --------------------------------------------
+		// cout debugs by Wei Jhin
+		//if (!check[0])
+		//	std::cout << "wwwwwwwwwwwwwwwwwwwww\n";
+		//if (!check[1])
+		//	std::cout << "sssssssssssssssssssssssssss\n";
+		//if (!check[2])
+		//	std::cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaa\n";
+		//if (!check[3])
+		//	std::cout << "ddddddddddddddddddddddddddddddn";
+	
+	// -----------------------------
 	// Movement input second draft (key movement)
 	// -----------------------------
+	// Contains response hack for player (done by Wei Jhin)
+
 		// Up movement
 		if ((Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W))&&check[0]) {
 			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f } * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
@@ -96,6 +103,7 @@ void PlayerController::Update() {
 		physics2DManager->ScaleVelocity(e, static_cast<float>(playerSpeedNaturalLossScalar));
 	}
 
+	// Hack so that debug render is correct
 	if (FirstUpdate)
 		FirstUpdate = false;
 	

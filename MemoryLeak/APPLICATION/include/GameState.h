@@ -51,10 +51,7 @@ public:
 	GameState() {};
 	virtual ~GameState() {};
 
-  /*!*****************************************************************************
-  Load any necessary resources in for the game state
-  *******************************************************************************/
-	virtual void Load() = 0;
+
 
 	/*!*****************************************************************************
 	Initialise any values or resources for the game state
@@ -79,6 +76,7 @@ public:
 	*******************************************************************************/
 	virtual void Free() = 0;
 
+	void PrimaryLoad();
 	void PrimaryUnload();
 
 protected:
@@ -92,6 +90,10 @@ protected:
 	*******************************************************************************/
 	virtual void Unload() = 0;
 
+	/*!*****************************************************************************
+	Load any necessary resources in for the game state
+	*******************************************************************************/
+	virtual void Load() = 0;
 
 	std::vector<Scene*> mScenes;
 	std::set<Entity> mEntities;

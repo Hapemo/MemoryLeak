@@ -11,12 +11,6 @@ Gamestate for testing scripting.
 
 #include "ScriptingDemo.h"
 
-//Entity firstEntity{};
-//Entity secondEntity{};
-//ScriptComponent testBaseScript;
-TestScript firstTestScript;
-TestScript2 secondTestScript;
-
 void ScriptingDemo::Load() {
     LoadWithGUID(16673097090400516);
     renderManager->SetVectorLengthModifier(5.f);
@@ -26,34 +20,15 @@ void ScriptingDemo::Load() {
 void ScriptingDemo::Init() {
     for (Scene* scenePtr : mScenes)
         scenePtr->Init();
-    int i = 0;
-    for (Entity e : mEntities)
-    {
+
+    size_t i = 0;
+    for (Entity e : mEntities) {
         if (i == 0)
-        {
-            e.AddComponent<Script>(Script({ "TestScript", &firstTestScript }));
-        }
+            e.AddComponent<Script>(Script({ "RotateScript", nullptr }));
         else if (i == 1)
-        {
-            e.AddComponent<Script>(Script({ "TestScript2", &secondTestScript }));
-        }
-        i++;
+            e.AddComponent<Script>(Script({ "ScaleScript", nullptr }));
+        ++i;
     }
-   /* firstEntity = ECS::CreateEntity();
-    secondEntity = ECS::CreateEntity();
-
-    firstEntity.AddComponent<General>(General{ "firstEntity", TAG::OTHERS, SUBTAG::OTHERS, true, false });
-    firstEntity.AddComponent<Script>(Script({ "TestScript", &firstTestScript }));
-    firstEntity.AddComponent<Transform>(Transform{ {200, 80}, 0, { 0, -100 } });
-    firstEntity.AddComponent<Sprite>(Sprite{ Color{0, 255, 0, 255}, SPRITE::TEXTURE, 0, 10 });
-
-    secondEntity.AddComponent<General>(General{ "secondEntity", TAG::OTHERS, SUBTAG::OTHERS, true, false });
-    secondEntity.AddComponent<Script>(Script({ "TestScript2", &secondTestScript }));
-    secondEntity.AddComponent<Transform>(Transform{ {200, 80}, 0, { 0, 100 } });
-    secondEntity.AddComponent<Sprite>(Sprite{ Color{0, 255, 0, 255}, SPRITE::TEXTURE, 0, 10 });
-
-    spriteManager->SetTexture(firstEntity, "Textures\\Icons\\backBtn.png");
-    spriteManager->SetTexture(secondEntity, "Textures\\Icons\\backBtn.png");*/
 
     logicSystem->Init();
 }
@@ -61,7 +36,7 @@ void ScriptingDemo::Init() {
 void ScriptingDemo::Update() {
     for (Scene* scenePtr : mScenes)
         scenePtr->PrimaryUpdate();
-    //logicSystem->Update();
+    logicSystem->Update();
 }
 
 void ScriptingDemo::Draw() {
@@ -72,11 +47,7 @@ void ScriptingDemo::Free() {
     for (auto& scenePtr : mScenes)
         scenePtr->Exit();
     logicSystem->Exit();
-    //firstEntity.Destroy();
-    //secondEntity.Destroy();
 }
 
 void ScriptingDemo::Unload() {
-    //spriteManager->FreeTextures();
-    //FREE_RESOURCES();
 }

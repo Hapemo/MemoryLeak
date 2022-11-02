@@ -12,11 +12,12 @@
     <ClInclude Include="include\GameState\GameStateJazz.h" />
     <ClInclude Include="include\GameState\Lighting.h" />
     <ClInclude Include="include\GameState\ScriptingDemo.h" />
-    <ClInclude Include="include\Scripts\TestScript.h" />
-    <ClInclude Include="include\Scripts\TestScript2.h" />
+    <ClInclude Include="include\Scripts\RotateScript.h" />
+    <ClInclude Include="include\Scripts\ScaleScript.h" />
     <ClInclude Include="include\GameState\GameStatePhysics.h" />
     <ClInclude Include="include\GameState\Level1.h" />
     <ClInclude Include="include\GameState\MainMenu.h" />
+    <ClInclude Include="include\Scripts\TestScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Scene\Scene.cpp" />
@@ -31,10 +32,11 @@
     <ClCompile Include="source\GameState\GameStateJazz.cpp" />
     <ClCompile Include="source\GameState\Lighting.cpp" />
     <ClCompile Include="source\GameState\ScriptingDemo.cpp" />
-    <ClCompile Include="source\Scripts\TestScript.cpp" />
-    <ClCompile Include="source\Scripts\TestScript2.cpp" />
+    <ClCompile Include="source\Scripts\RotateScript.cpp" />
+    <ClCompile Include="source\Scripts\ScaleScript.cpp" />
     <ClCompile Include="source\GameState\GameStatePhysics.cpp" />
     <ClCompile Include="source\GameState\Level1.cpp" />
     <ClCompile Include="source\GameState\MainMenu.cpp" />
+    <ClCompile Include="source\Scripts\TestScript.cpp" />
   </ItemGroup>
 </Project>

@@ -1,13 +1,13 @@
 /*!*****************************************************************************
-\file TestScript.h
+\file RotateScript.h
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
-\date 02-11-2022
+\date 24-10-2022
 \brief
-This file contains the function declarations of the class TestScript.
-The TestScript class is an example to test the scripting component in the
+This file contains the function declarations of the class RotateScript.
+The RotateScript class is an example to test the scripting component in the
 engine.
 *******************************************************************************/
 
@@ -17,13 +17,13 @@ engine.
 #include "ScriptManager.h"
 #include "ScriptComponent.h"
 
-class TestScript : public ScriptComponent {
+class RotateScript : public ScriptComponent {
 private:
-	std::string name = "TestScript";
+	std::string name = "RotateScript";
 
 public:
-	TestScript() {
-		LOG_DEBUG("TestScript running constructor");
+	RotateScript() {
+		LOG_DEBUG("RotateScript running constructor");
 	}
 
 	/*!*****************************************************************************

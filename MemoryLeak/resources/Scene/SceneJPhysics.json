@@ -460,7 +460,7 @@
         },
         "Physics2D": {
             "dynamicsEnabled": true,
-            "mass": 1.0,
+            "mass": 0.0,
             "inertia": 1.0,
             "restitution": 0.0,
             "friction": 0.0,
@@ -479,7 +479,21 @@
             },
             "angularVelocity": 0.0,
             "angularTorque": 0.0,
-            "forceList": [],
+            "forceList": [
+              {
+                "lifetimeLimit": 0.0,
+                "age": 0.0,
+                "isActive": true,
+                "forceID": 0,
+                "linearForce": {
+                  "unitDirection": {
+                    "X": -1.0,
+                    "Y": 0.0
+                  },
+                  "magnitude": 50.0
+                }
+              }
+            ],
             "renderFlag": false
         },
         "CircleCollider": {
@@ -534,7 +548,7 @@
         "Physics2D": {
             "dynamicsEnabled": true,
             "mass": 1.0,
-            "inertia": 1.0,
+            "inertia": 10.0,
             "restitution": 0.0,
             "friction": 0.0,
             "damping": 0.8999999761581421,
@@ -553,7 +567,7 @@
             "angularVelocity": 0.0,
             "angularTorque": 0.0,
             "forceList": [{
-                "lifetimeLimit": 0.0,
+                "lifetimeLimit": 10.0,
                 "age": 0.0,
                 "isActive": true,
                 "forceID": 1,
@@ -614,7 +628,7 @@
         },
         "Physics2D": {
             "dynamicsEnabled": true,
-            "mass": 1.0,
+            "mass": 4.0,
             "inertia": 1.0,
             "restitution": 0.0,
             "friction": 0.0,

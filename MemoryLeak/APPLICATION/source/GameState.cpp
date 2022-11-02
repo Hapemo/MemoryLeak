@@ -60,6 +60,12 @@ void GameState::CreateScene() {
   mScenes.push_back(scene);
 }
 
+void GameState::PrimaryLoad() {
+  Load();
+  editorManager->Init();
+  logicSystem->Init();
+}
+
 void GameState::PrimaryUnload() {
   Unload();
   UnloadWithGUID();
@@ -69,5 +75,4 @@ void GameState::PrimaryUnload() {
     LOG_ERROR("There remains " + std::to_string(Coordinator::GetInstance()->GetEntityCount()) + " after Unloading GameState " + std::to_string(mGuid));
   ECS::DestroyAllEntities();
   // Put in gamestate init later
-  editorManager->Init();
 }

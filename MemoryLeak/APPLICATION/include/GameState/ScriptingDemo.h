@@ -14,8 +14,6 @@ Gamestate for testing scripting.
 #include "ECSManager.h"
 #include "Application.h"
 #include "Input.h"
-#include "TestScript.h"
-#include "TestScript2.h"
 
 class ScriptingDemo : public GameState {
 public:
