@@ -1,7 +1,7 @@
 {
     "Entity0": {
         "General": {
-            "name": "_NEW_9",
+            "name": "Water",
             "tag": 4,
             "subtag": 0,
             "isActive": true
@@ -42,7 +42,7 @@
     },
     "Entity1": {
         "General": {
-            "name": "_NEW_10",
+            "name": "Double Story House",
             "tag": 3,
             "subtag": 0,
             "isActive": true
@@ -83,7 +83,7 @@
     },
     "Entity2": {
         "General": {
-            "name": "_NEW_11",
+            "name": "Bush1",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -95,8 +95,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -805.0798950195313,
-                "Y": -738.5538940429688
+                "X": -685.8641967773438,
+                "Y": -832.6714477539063
             }
         },
         "Sprite": {
@@ -124,7 +124,7 @@
     },
     "Entity3": {
         "General": {
-            "name": "_NEW_12",
+            "name": "Water Fountain",
             "tag": 3,
             "subtag": 0,
             "isActive": true
@@ -165,7 +165,7 @@
     },
     "Entity4": {
         "General": {
-            "name": "_NEW_13",
+            "name": "Little Girl",
             "tag": 1,
             "subtag": 0,
             "isActive": true
@@ -177,7 +177,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -619.9546508789063,
+                "X": -614.9550170898438,
                 "Y": -204.325927734375
             }
         },
@@ -206,7 +206,7 @@
     },
     "Entity5": {
         "General": {
-            "name": "_NEW_14",
+            "name": "Tree1",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -218,8 +218,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -643.73486328125,
-                "Y": -351.4922790527344
+                "X": -1703.7349853515625,
+                "Y": -871.4920043945313
             }
         },
         "Sprite": {
@@ -247,7 +247,7 @@
     },
     "Entity6": {
         "General": {
-            "name": "_NEW_15",
+            "name": "Boat",
             "tag": 0,
             "subtag": 0,
             "isActive": true
@@ -260,7 +260,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -512.5277099609375,
-                "Y": -254.31686401367188
+                "Y": -418.9484558105469
             }
         },
         "Sprite": {
@@ -274,21 +274,34 @@
             "texture": "Textures\\Sprites\\boat.png",
             "layer": 1
         },
-        "RectCollider": {
-            "centerOffset": {
+        "Physics2D": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+            "velocity": {
+                "X": 0.0,
+                "Y": -1.7703392261753803e-16
             },
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
+            "renderFlag": false
         }
     },
     "Entity7": {
         "General": {
-            "name": "_NEW_16",
+            "name": "Player",
             "tag": 0,
             "subtag": 0,
             "isActive": true
@@ -300,8 +313,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -529.5436401367188,
-                "Y": -272.15289306640625
+                "X": -527.5440063476563,
+                "Y": -436.78460693359375
             }
         },
         "Sprite": {
@@ -315,21 +328,34 @@
             "texture": "Textures\\Characters\\mc.png",
             "layer": 2
         },
-        "RectCollider": {
-            "centerOffset": {
+        "Physics2D": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+            "velocity": {
+                "X": 0.0,
+                "Y": -1.7703392261753803e-16
             },
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
+            "renderFlag": false
         }
     },
     "Entity8": {
         "General": {
-            "name": "_NEW_17",
+            "name": "Lighthouse",
             "tag": 3,
             "subtag": 0,
             "isActive": true
@@ -370,7 +396,7 @@
     },
     "Entity9": {
         "General": {
-            "name": "_NEW_18",
+            "name": "Tree2",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -382,7 +408,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1071.7989501953125,
+                "X": -1531.7989501953125,
                 "Y": -108.75880432128906
             }
         },
@@ -411,7 +437,7 @@
     },
     "Entity10": {
         "General": {
-            "name": "_NEW_19",
+            "name": "Tree3",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -423,8 +449,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -504.73736572265625,
-                "Y": 329.5555725097656
+                "X": 963.9689331054688,
+                "Y": 945.9677734375
             }
         },
         "Sprite": {
@@ -452,7 +478,7 @@
     },
     "Entity11": {
         "General": {
-            "name": "_NEW_20",
+            "name": "Tree4",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -464,8 +490,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -878.4732055664063,
-                "Y": 240.170654296875
+                "X": 1242.31103515625,
+                "Y": -784.5350341796875
             }
         },
         "Sprite": {
@@ -493,7 +519,7 @@
     },
     "Entity12": {
         "General": {
-            "name": "_NEW_21",
+            "name": "Tree5",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -505,8 +531,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -283.3250427246094,
-                "Y": -482.28961181640625
+                "X": -155.8740997314453,
+                "Y": -798.3679809570313
             }
         },
         "Sprite": {
@@ -534,7 +560,7 @@
     },
     "Entity13": {
         "General": {
-            "name": "_NEW_22",
+            "name": "Bush2",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -546,8 +572,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -513.3477783203125,
-                "Y": 6.867584228515625
+                "X": -432.95562744140625,
+                "Y": 222.5538330078125
             }
         },
         "Sprite": {
@@ -575,8 +601,8 @@
     },
     "Entity14": {
         "General": {
-            "name": "_NEW_23",
-            "tag": 5,
+            "name": "Single Story House",
+            "tag": 3,
             "subtag": 0,
             "isActive": true
         },
@@ -587,7 +613,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 218.74789428710938,
+                "X": 388.74798583984375,
                 "Y": -545.8430786132813
             }
         },
@@ -616,7 +642,7 @@
     },
     "Entity15": {
         "General": {
-            "name": "_NEW_24",
+            "name": "Tree6",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -657,8 +683,8 @@
     },
     "Entity16": {
         "General": {
-            "name": "_NEW_25",
-            "tag": 5,
+            "name": "Walnut House",
+            "tag": 3,
             "subtag": 0,
             "isActive": true
         },
@@ -698,8 +724,8 @@
     },
     "Entity17": {
         "General": {
-            "name": "_NEW_0",
-            "tag": 5,
+            "name": "Light",
+            "tag": 6,
             "subtag": 0,
             "isActive": true
         },
@@ -710,20 +736,20 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1129.202880859375,
-                "Y": 36.90203857421875
+                "X": -1101.2030029296875,
+                "Y": 320.9020080566406
             }
         },
         "Sprite": {
             "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
+                "r": 178,
+                "g": 0,
+                "b": 147,
                 "a": 100
             },
             "sprite": 1,
             "texture": "Textures\\Icons\\Assets.txt",
-            "layer": 0
+            "layer": 2
         },
         "RectCollider": {
             "centerOffset": {
@@ -735,11 +761,17 @@
                 "Y": 1.0
             },
             "renderFlag": true
+        },
+        "AI": {
+            "colorChange": 1,
+            "movement": 0,
+            "speed": 1.0,
+            "range": 10.0
         }
     },
     "Entity18": {
         "General": {
-            "name": "_new_",
+            "name": "Tree",
             "tag": 0,
             "subtag": 0,
             "isActive": true
@@ -751,8 +783,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 554.3510131835938,
-                "Y": -55.35312271118164
+                "X": 890.8215942382813,
+                "Y": -101.2354736328125
             }
         },
         "Sprite": {
@@ -780,7 +812,7 @@
     },
     "Entity19": {
         "General": {
-            "name": "_NEW_1",
+            "name": "Ruins",
             "tag": 3,
             "subtag": 0,
             "isActive": true
@@ -792,7 +824,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 668.7474365234375,
+                "X": 680.7470092773438,
                 "Y": 424.37359619140625
             }
         },
@@ -821,8 +853,8 @@
     },
     "Entity20": {
         "General": {
-            "name": "_NEW_0",
-            "tag": 5,
+            "name": "Passenger1",
+            "tag": 1,
             "subtag": 0,
             "isActive": true
         },
@@ -862,8 +894,8 @@
     },
     "Entity21": {
         "General": {
-            "name": "_NEW_1",
-            "tag": 5,
+            "name": "Porthouse",
+            "tag": 3,
             "subtag": 0,
             "isActive": true
         },
@@ -874,7 +906,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -767.7667846679688,
+                "X": -771.7670288085938,
                 "Y": 689.145751953125
             }
         },
@@ -903,7 +935,7 @@
     },
     "Entity22": {
         "General": {
-            "name": "_NEW_2",
+            "name": "Tree7",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -915,8 +947,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 331.5043029785156,
-                "Y": 577.8244018554688
+                "X": 158.17095947265625,
+                "Y": 1087.6280517578125
             }
         },
         "Sprite": {
@@ -944,7 +976,7 @@
     },
     "Entity23": {
         "General": {
-            "name": "_NEW_3",
+            "name": "Tree8",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -956,8 +988,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -237.40231323242188,
-                "Y": 593.2003784179688
+                "X": -186.42193603515625,
+                "Y": 623.7886352539063
             }
         },
         "Sprite": {
@@ -985,7 +1017,7 @@
     },
     "Entity24": {
         "General": {
-            "name": "_NEW_4",
+            "name": "Bush3",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -997,8 +1029,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -925.215576171875,
-                "Y": 604.4759521484375
+                "X": -899.725341796875,
+                "Y": 400.5544128417969
             }
         },
         "Sprite": {
@@ -1026,7 +1058,7 @@
     },
     "Entity25": {
         "General": {
-            "name": "_NEW_5",
+            "name": "Tree9",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1038,8 +1070,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1303.871826171875,
-                "Y": 682.6879272460938
+                "X": -1381.8719482421875,
+                "Y": 718.68798828125
             }
         },
         "Sprite": {

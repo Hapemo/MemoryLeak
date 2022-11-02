@@ -42,15 +42,26 @@ void WeatherPanel::Update()
 	SetViewportAspectRatio();
 	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	if (isWeatherPaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isWeatherPaused = false;
 	}
+	ImGui::PopStyleColor();
+
+	if (isWeatherPaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	ImGui::SameLine(0.f, 20.f);
 	if (ImGui::Button("Pause", buttonSize))
 	{
 		isWeatherPaused = true;
 	}
+	ImGui::PopStyleColor();
 	for (int h = 0; h < mapHeight; h++)
 	{
 		for (int w = 0; w < mapWidth; w++)
