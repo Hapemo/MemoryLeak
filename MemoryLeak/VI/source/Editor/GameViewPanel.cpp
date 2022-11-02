@@ -69,6 +69,7 @@ void GameViewPanel::Update()
 			ArrowKeyMoveCam();
 			MouseClickMoveCam();
 			ScrollMoveCam();
+			ButtonClick();
 		}
 	}
 	fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
@@ -153,5 +154,32 @@ void GameViewPanel::ScrollMoveCam()
 		renderManager->GetGameCamera() -= worldMousePos * moveZoom;
 		renderManager->GetGameCamera() *= moveZoom;
 		//renderManager->GetWorldCamera() += -mousePos;
+	}
+}
+void GameViewPanel::ButtonClick()
+{
+	int layer = 0;
+	for (const Entity& ee : *myEntities)
+	{
+		if (ee.GetComponent<General>().tag == TAG::ENVIRONMENT)
+		{
+			if (ee.HasComponent<Transform>() && ee.HasComponent<Sprite>()) //||e.HasComponent<Text>()
+			{
+				Math::Vec2 scale = ee.GetComponent<Transform>().scale;
+				Math::Vec2 translation = ee.GetComponent<Transform>().translation;
+				Math::Vec2 distance = camMousePos - translation;
+				if (abs(distance.x) < abs(scale.x) / 2 && abs(distance.y) < abs(scale.y) / 2)
+				{
+					LOG_INFO(ee.GetComponent<General>().name + "Clicked");
+					if (ee.GetComponent<Sprite>().layer >= layer)
+					{
+						selectedEntity = &ee;
+						layer = ee.GetComponent<Sprite>().layer;
+						objectOffset = distance;
+						isSelected = 1;
+					}
+				}
+			}
+		}
 	}
 }
