@@ -44,7 +44,7 @@ void MainMenu::Update() {
 							Color{0, 0, 0, 255}: Color{ 255, 255, 255, 255 };
 						if (e.GetComponent<General>().subtag == SUBTAG::PLAYER)
 						{
-							GameStateManager::GetInstance()->NextGS(++mCurrentState);
+							GameStateManager::GetInstance()->NextGS(E_GS::Level1);
 						}
 						if (e.GetComponent<General>().subtag == SUBTAG::ENEMY)
 						{
