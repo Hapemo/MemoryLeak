@@ -37,7 +37,7 @@ void GameStateManager::Update() {
 	else {
 		// Update();
 		SetNewGameState();
-		mCurrGameState->Load();
+		mCurrGameState->PrimaryLoad();
 	}
 
 	mCurrGameState->Init();
