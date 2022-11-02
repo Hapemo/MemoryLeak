@@ -92,7 +92,6 @@ void GameStateManager::Init() {
 	GS_List.insert(GS_pair(E_GS::AIDemo, new AIDemo));
 	GS_List.insert(GS_pair(E_GS::JAZZ, new GameStateJazz));
 	GS_List.insert(GS_pair(E_GS::GameState1, new GameState1));
-	GS_List.insert(GS_pair(E_GS::GameState2, new GameState2));
 }
 
 

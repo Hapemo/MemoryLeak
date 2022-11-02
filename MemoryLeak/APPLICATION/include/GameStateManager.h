@@ -27,14 +27,6 @@ enum class E_GS {
 	END_OF_LIST,
 	GameState1,
 	Stability,
-	AIDemo,
-	ParallaxSprite,
-	ScriptingDemo,
-	JAZZ,
-	PHYSICS,
-	Lighting,
-	MainMenu,
-	Level1,
 	RESTART,
 	EXIT
 
