@@ -162,6 +162,9 @@ void Application::loadConfig(std::string path) {
 
 // _s, time interval in updating titlebar, in seconds
 void Application::PrintTitleBar(double _s) {
+  static bool printDebug{ true };
+  if (Input::CheckKey(HOLD, LEFT_ALT) && Input::CheckKey(HOLD, LEFT_SHIFT) && Input::CheckKey(PRESS, S)) printDebug = !printDebug;
+
   static double timeElapsed{};
   timeElapsed += FPSManager::dt;
   if (timeElapsed > _s) {
@@ -170,12 +173,15 @@ void Application::PrintTitleBar(double _s) {
     // write window title with current fps ...
     std::stringstream sstr;
 
+
     sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " 
                                                << "GameState: " << mCurrGameStateName << " | "
                                                << "fps: " << FPSManager::fps << " | "
                                                << "dt: " << FPSManager::dt << " | "
-                                               << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | "
-                                               << GET_SYSTEMS_PERFORMANCES();
+                                               << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | ";
+
+    if (printDebug) sstr << GET_SYSTEMS_PERFORMANCES();
+
     glfwSetWindowTitle(Application::getWindow(), sstr.str().c_str());
   }
 }
