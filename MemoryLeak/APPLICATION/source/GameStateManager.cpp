@@ -46,6 +46,7 @@ void GameStateManager::Update() {
 		//-------------------------------------
 		// ImGui update
 		// ImGui is a tool that uses VI Engine to change the game data stored in VI Engine
+
 		TRACK_PERFORMANCE("Editor");
 		editorManager->Update();
 		END_TRACK("Editor");

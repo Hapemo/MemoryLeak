@@ -11,6 +11,7 @@ Game state for main menu
 #include "Application.h"
 #include "Input.h"
 #include "VertexFetcher.h"
+#include <GameStateManager.h>
 
 
 void MainMenu::Load() {
@@ -38,8 +39,15 @@ void MainMenu::Update() {
 			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
 				if (cursorPos.x <= vertices[0].x && cursorPos.y <= vertices[0].y)
 					if (cursorPos.x >= vertices[2].x && cursorPos.y >= vertices[2].y)
+					{
 						e.GetComponent<Text>().color = e.GetComponent<Text>().color.g == 255 ? 
 							Color{0, 0, 0, 255}: Color{ 255, 255, 255, 255 };
+						//if (e.GetComponent<General>().tag == TAG::PLAYER)
+						if (e.GetComponent<General>().name == "PlayBtn")
+						{
+							GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+						}
+					}
 		}
 	}
 	for (Scene* scenePtr : mScenes)

@@ -132,6 +132,8 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
+	if (renderManager->GetRenderGameToScreen())
+		return;
 	Window();
 	for (const Entity& e : *myEntities)
 	{
