@@ -32,7 +32,8 @@ void ShadowManager::MakeShadows(const Entity& _lightsource, std::shared_ptr<Rend
     }
     
     std::vector<Math::Vec2> points;
-    Math::Vec2 pivot = _lightsource.GetComponent<Transform>().translation + _lightsource.GetComponent<LightSource>().centreOffset;
+    Math::Vec2 pivot = _lightsource.GetComponent<Transform>().translation 
+        + _lightsource.GetComponent<LightSource>().centreOffset;
 
     int rays = 360;
 
@@ -71,7 +72,8 @@ The normal to the ray.
 Return < 0 => in line of sight
 Return > 0 => not in line of sight
 *******************************************************************************/
-float ShadowManager::LineOfSightCheck(const Math::Vec2& _p0, const Math::Vec2& _p1, const Math::Vec2& _p, const Math::Vec2& _vtr, const Math::Vec2& _normal)
+float ShadowManager::LineOfSightCheck(const Math::Vec2& _p0, const Math::Vec2& _p1, 
+    const Math::Vec2& _p, const Math::Vec2& _vtr, const Math::Vec2& _normal)
 {
     float lineOfSightCheck(Math::Dot(_p0 - _p, _normal) * Math::Dot(_p1 - _p, _normal));
     return Math::Dot(_p0 - _p, _vtr) < 0 ? std::abs(lineOfSightCheck) : lineOfSightCheck;
@@ -158,7 +160,8 @@ Math::Vec2 ShadowManager::RayCast(const Transform& _xform)
         float dist1 = PointLineSegDist(xform.translation, lineseg1.first, lineseg1.second);
         float dist2 = PointLineSegDist(xform.translation, lineseg2.first, lineseg2.second);
 
-        lineseg = dist1 < dist2 ? (dist1 < shortestDistance ? shortestDistance = dist1, lineseg1 : lineseg)
+        lineseg = dist1 < dist2 ? 
+            (dist1 < shortestDistance ? shortestDistance = dist1, lineseg1 : lineseg)
             : (dist2 < shortestDistance ? shortestDistance = dist2, lineseg2 : lineseg);
     }
     Math::Vec2 linesegEqn = Math::Vec2(lineseg.second - lineseg.first);

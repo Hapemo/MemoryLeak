@@ -31,23 +31,27 @@ void FontRenderer::Init(const std::string& _fontfile)
 {
     //free type
     FT_Library ft;
-    ASSERT(FT_Init_FreeType(&ft), "ERROR::FREETYPE: Could not init FreeType Library\n");
+    ASSERT(FT_Init_FreeType(&ft), 
+        "ERROR::FREETYPE: Could not init FreeType Library\n");
 
     std::string filepath = "../VI/fonts/" + _fontfile;
 
     FT_Face face;
-    ASSERT(FT_New_Face(ft, filepath.c_str(), 0, &face), "ERROR::FREETYPE: Failed to load font\n");
+    ASSERT(FT_New_Face(ft, filepath.c_str(), 0, &face), 
+        "ERROR::FREETYPE: Failed to load font\n");
 
     FT_Set_Pixel_Sizes(face, 0, 48);
 
-    ASSERT(FT_Load_Char(face, 'X', FT_LOAD_RENDER), "ERROR::FREETYTPE: Failed to load Glyph\n");
+    ASSERT(FT_Load_Char(face, 'X', FT_LOAD_RENDER), 
+        "ERROR::FREETYTPE: Failed to load Glyph\n");
     
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
 
     for (unsigned char c = 0; c < 128; ++c)
     {
         // load character glyph into opengl
-        ASSERT(FT_Load_Char(face, c, FT_LOAD_RENDER), "ERROR::FREETYTPE: Failed to load Glyph\n");
+        ASSERT(FT_Load_Char(face, c, FT_LOAD_RENDER), 
+            "ERROR::FREETYTPE: Failed to load Glyph\n");
         glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
         // generate texture for the glyph
         unsigned int texture;
