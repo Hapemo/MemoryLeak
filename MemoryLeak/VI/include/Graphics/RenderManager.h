@@ -138,6 +138,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Rendering will be done to the FBO instead of the screen.
+	*******************************************************************************/
+	bool GetRenderGameToScreen() { return mRenderGameToScreen; }
+
+	/*!*****************************************************************************
+	\brief
 	Function that returns the transform of an Entity for use with ImGuizmo
 
 	\param const Entity& _e
