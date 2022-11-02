@@ -824,7 +824,7 @@ void InspectorPanel::DialogueEditor()
 	if (ImGui::CollapsingHeader("Dialogue")) 
 	{
 		std::string dia = "Dialogue WIP";
-		ImGui:Text(dia.c_str());
+		//ImGui:Text(dia.c_str());
 		if (ImGui::Button("Remove Dialogue"))
 		{
 			e.RemoveComponent<Dialogue>();
@@ -1268,7 +1268,7 @@ void InspectorPanel::PrefabEditor()
 		if (ImGui::CollapsingHeader("Dialogue"))
 		{
 			std::string dia = "Dialogue WIP";
-			ImGui:Text(dia.c_str());
+			//ImGui:Text(dia.c_str());
 			if (ImGui::Button("Remove Dialogue"))
 			{
 				e.RemoveComponent<Dialogue>();
