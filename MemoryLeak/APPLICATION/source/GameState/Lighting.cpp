@@ -130,9 +130,9 @@ void Lighting::Draw()
 
 void Lighting::Free()
 {
-    editorManager->SetScenePaused(false);
+    renderManager->RenderToFrameBuffer();
 }
 
 void Lighting::Unload() {
-    editorManager->SetScenePaused(false);
+    
 }

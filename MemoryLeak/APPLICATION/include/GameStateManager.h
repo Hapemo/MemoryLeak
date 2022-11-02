@@ -13,23 +13,26 @@ running.
 #include "Singleton.h"
 
 class GameState;
-
 // Game state ID
 enum class E_GS {
 	INVALID,
-	GameState1,
-	GameState2,
-	AIDemo,
-	ParallaxSprite,
-	ScriptingDemo,
-	JAZZ,
-	PHYSICS,
-	Lighting,
 	MainMenu,
 	Level1,
+	PHYSICS,
+	ScriptingDemo,
+	Lighting,
+	ParallaxSprite,
+	AIDemo,
+	JAZZ,
+	END_OF_LIST,
+	GameState1,
+	GameState2,
 	RESTART,
 	EXIT
+
 };
+E_GS& operator++(E_GS& _gs);
+E_GS& operator--(E_GS& _gs);
 
 class GameStateManager : public Singleton<GameStateManager> {
 public:
@@ -92,6 +95,7 @@ private:
 	std::map<E_GS, GameState*> GS_List;
 	E_GS mCurrGS, mPrevGS, mNextGS;
 	GameState* mCurrGameState;
+	static E_GS mCurrentState;
 };
 
 
