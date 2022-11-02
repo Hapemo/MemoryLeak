@@ -49,7 +49,7 @@ struct SceneData;
 struct Entity;
 class ResourceManager : public Singleton<ResourceManager> {
 public:
-	/*!*****************************************************************************
+	/*!*****************************************************************************
 	Struct to store all the texture data.
 	*******************************************************************************/
 	struct TextureData {

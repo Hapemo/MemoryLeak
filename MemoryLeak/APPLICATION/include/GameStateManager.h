@@ -23,10 +23,7 @@ enum class E_GS {
 	Lighting,
 	ParallaxSprite,
 	AIDemo,
-	JAZZ,
 	END_OF_LIST,
-	GameState1,
-	Stability,
 	RESTART,
 	EXIT
 
