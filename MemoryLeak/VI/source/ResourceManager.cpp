@@ -198,6 +198,7 @@ void ResourceManager::FreeResources() {
 // GUID is firstly made with total time stamp
 // Then replaced the first byte with resource type
 // Then replace the second byte with instance of guidCounter
+
 ResourceManager::GUID ResourceManager::GUIDGenerator(std::filesystem::path const& _path) {
 	E_RESOURCETYPE resourceType{ CheckResourceType(_path) };
 	//ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
