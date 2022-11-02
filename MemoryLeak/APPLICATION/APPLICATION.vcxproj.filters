@@ -6,7 +6,7 @@
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\GameStateManager.h" />
     <ClInclude Include="include\GameState\GameState1.h" />
-    <ClInclude Include="include\GameState\GameState2.h" />
+    <ClInclude Include="include\GameState\Stability.h" />
     <ClInclude Include="include\GameState\AIDemo.h" />
     <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
     <ClInclude Include="include\GameState\GameStateJazz.h" />
@@ -26,7 +26,7 @@
     <ClCompile Include="source\GameStateManager.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\GameState\GameState1.cpp" />
-    <ClCompile Include="source\GameState\GameState2.cpp" />
+    <ClCompile Include="source\GameState\Stability.cpp" />
     <ClCompile Include="source\GameState\AIDemo.cpp" />
     <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
     <ClCompile Include="source\GameState\GameStateJazz.cpp" />

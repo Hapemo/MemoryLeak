@@ -29,14 +29,11 @@ void ScriptingDemo::Init() {
             e.AddComponent<Script>(Script({ "ScaleScript", nullptr }));
         ++i;
     }
-
-    logicSystem->Init();
 }
 
 void ScriptingDemo::Update() {
     for (Scene* scenePtr : mScenes)
         scenePtr->PrimaryUpdate();
-    logicSystem->Update();
 }
 
 void ScriptingDemo::Draw() {
@@ -46,7 +43,6 @@ void ScriptingDemo::Draw() {
 void ScriptingDemo::Free() {
     for (auto& scenePtr : mScenes)
         scenePtr->Exit();
-    logicSystem->Exit();
 }
 
 void ScriptingDemo::Unload() {

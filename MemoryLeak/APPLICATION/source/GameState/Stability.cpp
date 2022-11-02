@@ -1,26 +1,27 @@
 /*!*****************************************************************************
-\file GameState2.cpp
-\author Jazz Teoh Yu Jue
-\par DP email: j.teoh\@digipen.edu
+\file Stability.cpp
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 02-11-2022
 \brief
-Game state for testing physics
+\brief
+Game state for testing 2500 objects stability.
+
 *******************************************************************************/
-#include "GameState2.h"
+#include "Stability.h"
 #include "Application.h"
 
-
-
-void GameState2::Load() {
+void Stability::Load() {
 }
 
-void GameState2::Init() {
+void Stability::Init() {
     /*************************************2550 Objects Start************************************/
-    //serializationManager->LoadScene("SceneJGraphics");
      int entityCount = 1000;
      int width = Application::getWindowWidth() >> 1;
      int height = Application::getWindowHeight() >> 1;
+
      while (entityCount--)
      {
          float tempx = (float)((-width + (std::rand() % (width * 2 + 1))));
@@ -37,31 +38,29 @@ void GameState2::Init() {
          e1.AddComponent(Transform{ {200, 80}, 0, {tempx, tempy}},
              Sprite{ Color{0,255,0,255}, SPRITE::TEXTURE, 0, 10 },
              General{ "count " + std::to_string(entityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true });
+
+         if (entityCount % 2)
+             e1.AddComponent<Script>(Script({ "RotateScript", nullptr }));
+         else if (entityCount % 2 == 0)
+             e1.AddComponent<Script>(Script({ "ScaleScript", nullptr }));
+
          spriteManager->SetTexture(e1, "Textures\\Icons\\backBtn.png");
      }
     /*************************************2550 Objects End************************************/
-    
+     logicSystem->Init();
 }
 
-void GameState2::Update() {
+void Stability::Update() {
+    logicSystem->Update();
 }
 
-void GameState2::Draw() {
+void Stability::Draw() {
     renderManager->Render();
 }
 
-void GameState2::Free() {
-    //serializationManager->SaveScene("SceneJGraphics");
-    ECS::DestroyAllEntities();
+void Stability::Free() {
+    logicSystem->Exit();
 }
 
-void GameState2::Unload() {
-    renderManager->Clear();
-    spriteManager->FreeTextures();
-    FREE_RESOURCES();
+void Stability::Unload() {
 }
-
-
-
-
-

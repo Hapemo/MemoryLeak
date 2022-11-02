@@ -37,7 +37,7 @@ void LogicSystem::Init() {
 Run the update function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Update() {
-	//LOG_DEBUG("LOGICSYSYEM UPDATE.");
+	LOG_DEBUG("LOGICSYSYEM UPDATE.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun() && e.HasComponent<Script>()) {
 			e.GetComponent<Script>().script->UpdateScript(e);

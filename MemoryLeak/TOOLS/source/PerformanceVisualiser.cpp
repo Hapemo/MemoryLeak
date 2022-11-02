@@ -107,8 +107,8 @@ std::string PerformanceVisualiser::GetPerformances() {
 		if (systemName != "MainLoop") totalUsed += systemPercent;
 		if (systemName != "MainLoop") result += systemName + ": " + std::to_string(systemPercent) + "%";
 	}
-	if (!firstSystem) result += ", ";
-	result += "Others: " + std::to_string(100.0 - totalUsed) + "%";
+	//if (!firstSystem) result += ", ";
+	//result += "Others: " + std::to_string(100.0 - totalUsed) + "%";
 	result += ")";
 
 	return result;

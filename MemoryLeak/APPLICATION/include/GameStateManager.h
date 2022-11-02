@@ -18,7 +18,7 @@ class GameState;
 enum class E_GS {
 	INVALID,
 	GameState1,
-	GameState2,
+	Stability,
 	AIDemo,
 	ParallaxSprite,
 	ScriptingDemo,

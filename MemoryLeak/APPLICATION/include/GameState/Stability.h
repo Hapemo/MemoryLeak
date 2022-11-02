@@ -1,19 +1,23 @@
 /*!*****************************************************************************
-\file GameState2.h
-\author Jazz Teoh Yu Jue
-\par DP email: j.teoh\@digipen.edu
+\file Stability.h
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 02-11-2022
 \brief
-Game state for testing graphics
+\brief
+Game state for testing 2500 objects stability.
+
 *******************************************************************************/
 #pragma once
 #include "GameState.h"
 #include "ECS_items.h"
 #include "ECSManager.h"
-class GameState2 : public GameState {
+
+class Stability : public GameState {
 public:
-	GameState2() = default;
+	Stability() = default;
 
 	//------------------------------------------------------------------------------
 	// Virtual Functions from GameState. Refer to GameState for details
