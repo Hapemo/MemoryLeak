@@ -688,7 +688,7 @@ void InspectorPanel::AudioEditor()
 
 		/*ImGui::Checkbox("Click to Play", &e.GetComponent<Audio>().sound.toPlay);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);*/
-		if (ImGui::Button("Play", ImVec2(50, 10)))
+		if (ImGui::Button("Play"))
 		{
 			audioManager->PlayAnySound(e.GetComponent<Audio>().sound.path, 17);
 		}
