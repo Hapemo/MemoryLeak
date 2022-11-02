@@ -22,6 +22,7 @@ void LogicSystem::Init() {
 	for (Entity const& e : mEntities) {
 		e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
 		LOG_WARN(e.GetComponent<Script>().name.c_str());
+		LOG_WARN("--");
 	}
 
 	LOG_DEBUG("LOGICSYSYEM INIT.");
