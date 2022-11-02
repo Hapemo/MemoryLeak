@@ -67,8 +67,16 @@ void GameViewPanel::Update()
 		{
 			//Camera movement
 			ArrowKeyMoveCam();
-			MouseClickMoveCam();
 			ScrollMoveCam();
+			if (isScenePaused)
+				MouseClickMoveCam();
+			else
+			{
+				if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
+				{
+					ButtonClick();
+				}
+			}
 		}
 	}
 	fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
@@ -153,5 +161,41 @@ void GameViewPanel::ScrollMoveCam()
 		renderManager->GetGameCamera() -= worldMousePos * moveZoom;
 		renderManager->GetGameCamera() *= moveZoom;
 		//renderManager->GetWorldCamera() += -mousePos;
+	}
+}
+void GameViewPanel::ButtonClick()
+{
+	int layer = 0;
+	for (const Entity& ee : *myEntities)
+	{
+		if (ee.GetComponent<General>().tag == TAG::ENVIRONMENT)
+		{
+			if (ee.HasComponent<Transform>() && ee.HasComponent<Sprite>()&& ee.HasComponent<Text>()) //button
+			{
+				Math::Vec2 scale = ee.GetComponent<Transform>().scale;
+				Math::Vec2 translation = ee.GetComponent<Transform>().translation;
+				Math::Vec2 distance = camMousePos - translation;
+				if (abs(distance.x) < abs(scale.x) / 2 && abs(distance.y) < abs(scale.y) / 2)
+				{
+					LOG_INFO(ee.GetComponent<General>().name + "Clicked");
+					if (ee.GetComponent<Sprite>().layer >= layer)
+					{
+						if ( ee.GetComponent<Text>().color.g == (GLubyte)0)
+							ee.GetComponent<Text>().color = Color(255,255,255,255);
+						else
+							ee.GetComponent<Text>().color = Color(0, 0, 0, 255);
+						layer = ee.GetComponent<Sprite>().layer;
+						if (ee.GetComponent<General>().tag == TAG::PLAYER)
+						{
+							//GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+						}
+					}
+				}
+				else if (ee.GetComponent<Sprite>().color.r == (GLubyte)0 && ee.GetComponent<Sprite>().color.g == (GLubyte)0 && ee.GetComponent<Sprite>().color.b == (GLubyte)0)
+				{
+					ee.GetComponent<Sprite>().color = Color(255, 255, 255, 255);
+				}
+			}
+		}
 	}
 }

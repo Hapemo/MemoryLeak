@@ -46,6 +46,7 @@ void GameStateManager::Update() {
 		//-------------------------------------
 		// ImGui update
 		// ImGui is a tool that uses VI Engine to change the game data stored in VI Engine
+
 		TRACK_PERFORMANCE("Editor");
 		editorManager->Update();
 		END_TRACK("Editor");
@@ -66,6 +67,7 @@ void GameStateManager::Update() {
 	}
 
 	mCurrGameState->Free();
+	editorManager->Free();
 
 	if (mNextGS != E_GS::RESTART) {
 		mCurrGameState->PrimaryUnload();
@@ -73,7 +75,6 @@ void GameStateManager::Update() {
 	}
 	mPrevGS = mCurrGS;
 	mCurrGS = mNextGS;
-	editorManager->Free();
 }
 
 void GameStateManager::Init() {
@@ -165,6 +166,7 @@ void GameStateManager::GSControlPanel() {
 	else if (Input::CheckKey(PRESS, _1) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Level1);
 	else if (Input::CheckKey(PRESS, RIGHT) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(++mCurrentState);
 	else if (Input::CheckKey(PRESS, LEFT) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(--mCurrentState);
+	//else if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
 }
 
 E_GS& operator++(E_GS& _gs)                         // prefix increment operator

@@ -10,6 +10,8 @@ Game state for main menu
 #include "MainMenu.h"
 #include "Application.h"
 #include "Input.h"
+#include "VertexFetcher.h"
+#include <GameStateManager.h>
 
 
 void MainMenu::Load() {
@@ -23,6 +25,31 @@ void MainMenu::Init() {
 }
 
 void MainMenu::Update() {
+	if (renderManager->GetRenderGameToScreen())
+	{
+		Math::Vec2 cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) +
+			Math::Vec2(-Application::getWindowWidth() / 2.f, Application::getWindowHeight() / 2.f);
+		for (const Entity& e : mEntities)
+		{
+			if (e.GetComponent<General>().tag != TAG::ENVIRONMENT)
+				continue;
+			if (!e.HasComponent<Text>())
+				continue;
+			std::vector<Math::Vec2> vertices = VertexFetcher::FetchVertices(e);
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
+				if (cursorPos.x <= vertices[0].x && cursorPos.y <= vertices[0].y)
+					if (cursorPos.x >= vertices[2].x && cursorPos.y >= vertices[2].y)
+					{
+						e.GetComponent<Text>().color = e.GetComponent<Text>().color.g == 255 ? 
+							Color{0, 0, 0, 255}: Color{ 255, 255, 255, 255 };
+						//if (e.GetComponent<General>().tag == TAG::PLAYER)
+						if (e.GetComponent<General>().name == "PlayBtn")
+						{
+							GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+						}
+					}
+		}
+	}
 	for (Scene* scenePtr : mScenes)
 		scenePtr->PrimaryUpdate();
 }
