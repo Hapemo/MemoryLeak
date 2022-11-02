@@ -17,6 +17,7 @@ start up of window and game system, also runs their update functions.
 #include "Editor\EditorManager.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
+#include "ScriptManager.h"
 
 // Static variables
 int Application::window_width{};
@@ -127,6 +128,7 @@ void Application::exit() {
   editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
+  ScriptManager<ScriptComponent>::GetInstance()->~ScriptManager();
   ResourceManager::GetInstance()->UnloadAllResources();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();

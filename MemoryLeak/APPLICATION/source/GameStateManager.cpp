@@ -155,6 +155,7 @@ void GameStateManager::GSControlPanel() {
 			editorManager->SetScenePaused(true);
 		}
 	}
+	if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
 	if (Input::CheckKey(PRESS, I) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::AIDemo);
 	else if (Input::CheckKey(PRESS, A) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::ParallaxSprite);
 	else if (Input::CheckKey(PRESS, L) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Lighting);
