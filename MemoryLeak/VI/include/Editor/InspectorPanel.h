@@ -5,7 +5,7 @@
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function declarations for a Level Editor system that modifies
+This file contains function declarations for a Inspector Panel Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #pragma once

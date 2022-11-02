@@ -27,8 +27,6 @@ void GameStatePhysics::Update() {
 }
 
 void GameStatePhysics::Draw() {
-	for (Scene* scenePtr : mScenes)
-		scenePtr->PrimaryUpdate();
 	renderManager->Render();
 }
 

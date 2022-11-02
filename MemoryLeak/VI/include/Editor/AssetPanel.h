@@ -5,15 +5,14 @@
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function declarations for a Level Editor system that modifies
-Entities and its Components.
+This file contains function declarations for a AssetPanel that view recources 
 *******************************************************************************/
 #pragma once
 #include "Panel.h"
 
 /*!*****************************************************************************
 \brief
-	This class encapsulates the functions for the Level Editor
+	This class encapsulates the functions for the AssetPanel
 *******************************************************************************/
 class AssetPanel : public Panel
 {

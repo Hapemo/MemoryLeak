@@ -11,12 +11,25 @@ Entities and its Components.
 *******************************************************************************/
 #include "GameViewPanel.h"
 #include <ECSManager.h>
+/*!*****************************************************************************
+\brief
+	Initializes the GameViewPanel editor
 
+\return
+None.
+*******************************************************************************/
 void GameViewPanel::Init()
 {
 	viewportSize = { 0,0 };
 	//camera = renderManager->GetGameCamera();
 }
+/*!*****************************************************************************
+\brief
+	Update the GameViewPanel editor
+
+\return
+None.
+*******************************************************************************/
 void GameViewPanel::Update()
 {
 	ImGui::Begin("Game View");
@@ -40,27 +53,37 @@ void GameViewPanel::Update()
 	CalculateMousePos(E_CAMERA_TYPE::GAME);
 	if (ImGui::IsWindowHovered())
 	{
-		
-		
 		if (IsMouseInScreen())
 		{
 			//Camera movement
 			ArrowKeyMoveCam();
 			MouseClickMoveCam();
 			ScrollMoveCam();
-			
 		}
-
 	}
 	fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
 	ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
 	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 	ImGui::End();
 }
+/*!*****************************************************************************
+\brief
+	Free the GameViewPanel editor
+
+\return
+None.
+*******************************************************************************/
 void GameViewPanel::Free()
 {
 
 }
+/*!*****************************************************************************
+\brief
+	This Function Moves the camera based on arrow key input
+
+\return
+None.
+*******************************************************************************/
 void GameViewPanel::ArrowKeyMoveCam()
 {
 	if (Input::CheckKey(E_STATE::HOLD, E_KEY::UP))
@@ -80,6 +103,13 @@ void GameViewPanel::ArrowKeyMoveCam()
 		renderManager->GetGameCamera() -= moveHorizontal;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function Moves the camera based on mouse input
+
+\return
+None.
+*******************************************************************************/
 void GameViewPanel::MouseClickMoveCam()
 {
 	if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && !isSelected)
@@ -92,6 +122,13 @@ void GameViewPanel::MouseClickMoveCam()
 		renderManager->GetGameCamera().SetPos(camPos);
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function Zoom the camera based on mouse input
+
+\return
+None.
+*******************************************************************************/
 void GameViewPanel::ScrollMoveCam()
 {
 	if (Input::GetScroll() > 0.0) //scroll up   // zoon in

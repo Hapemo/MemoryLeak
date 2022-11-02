@@ -122,6 +122,13 @@ void WorldViewPanel::Free()
 {
 
 }
+/*!*****************************************************************************
+\brief
+	This Function Moves the camera based on arrow key input
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::ArrowKeyMoveCam()
 {
 	if (Input::CheckKey(E_STATE::HOLD, E_KEY::UP))
@@ -141,6 +148,13 @@ void WorldViewPanel::ArrowKeyMoveCam()
 		renderManager->GetWorldCamera() -= moveHorizontal;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function Moves the camera based on mouse input
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::MouseClickMoveCam()
 {
 	if (SRT == 0)
@@ -156,6 +170,13 @@ void WorldViewPanel::MouseClickMoveCam()
 		}
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function Zoom the camera based on mouse input 
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::ScrollMoveCam()
 {
 	if (Input::GetScroll() > 0.0) //scroll up   // zoon in
@@ -172,6 +193,13 @@ void WorldViewPanel::ScrollMoveCam()
 		//renderManager->GetWorldCamera() += -mousePos;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function created a new enitity
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::NewEntity()
 {
 	static const wchar_t* texpath = (const wchar_t*)"";
@@ -192,6 +220,13 @@ void WorldViewPanel::NewEntity()
 		newEntityCount++;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function sets the selected entity
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::SetSelectedEntity()
 {
 	int layer = 0;
@@ -218,6 +253,13 @@ void WorldViewPanel::SetSelectedEntity()
 		}
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function moves the selected entity basded on mouse input
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::MoveSelectedEntity()
 {
 	Math::Vec2 scale = e.GetComponent<Transform>().scale;
@@ -233,6 +275,13 @@ void WorldViewPanel::MoveSelectedEntity()
 		e.GetComponent<Transform>().translation = camMousePos - objectOffset;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This Function moves the selected entity basded on mouse input using ImGuizmo
+
+\return
+None.
+*******************************************************************************/
 void WorldViewPanel::UseGuizmo()
 {
 	

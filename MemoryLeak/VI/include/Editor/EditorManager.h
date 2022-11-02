@@ -44,9 +44,6 @@ public:
 	bool IsScenePaused() { return isScenePaused; }
 	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
 	
-
-	//bool IsEditorPaused() { return isPaused; };
-	//void UnpauseEditor() { isPaused = false; };
 private:
 	static std::vector<Panel*> panels;
 	

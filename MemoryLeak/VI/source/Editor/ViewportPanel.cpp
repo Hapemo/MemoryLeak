@@ -29,6 +29,13 @@ void ViewportPanel::SetViewportAspectRatio()
 		viewportSize.y = viewportSize.x / 16 * 9;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function Calculate the MousePos in world, screen and camera coordinates
+
+\return
+None.
+*******************************************************************************/
 void ViewportPanel::CalculateMousePos(E_CAMERA_TYPE _type)
 {
 	//to use matrix from graphics in the future

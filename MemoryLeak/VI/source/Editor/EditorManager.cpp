@@ -65,7 +65,6 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	mWindowHeight = _windowHeight;
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
-	//weatherAIinit();
 	static AnimationPanel animationPanel{};
 	static HierarchyPanel hierarchyPanel{};
 	static InspectorPanel inspectorPanel{};
@@ -108,14 +107,6 @@ void EditorManager::Init()
 		panels[p]->Init();
 		std::cout << p << "    init\n";
 	}
-	/*hierarchyPanel.Init();
-	inspectorPanel.Init();
-	worldViewPanel.Init();
-	gameViewPanel.Init();
-	dialoguePanel.Init();
-	assetPanel.Init();
-	debugPanel.Init();
-	menuPanel.Init();*/
 }
 
 /*!*****************************************************************************
@@ -134,7 +125,7 @@ void EditorManager::Window()
 }
 /*!*****************************************************************************
 \brief
-	Updates the Level editor
+	Updates the Level editor and all its panels
 
 \return
 None.
@@ -149,23 +140,11 @@ void EditorManager::Update()
 			if (highestLayer <= e.GetComponent<Sprite>().layer)
 				highestLayer = e.GetComponent<Sprite>().layer +1;
 		}
-		/*if (e.HasComponent<Text>())
-			std::cout << e.GetComponent<Text>().text << "   text\n";*/
 	}
-	//weatherAIupdate();
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
 	}
-	/*hierarchyPanel.Update();
-	inspectorPanel.Update();
-	worldViewPanel.Update();
-	gameViewPanel.Update();
-	dialoguePanel.Update();
-	assetPanel.Update();
-	debugPanel.Update();
-	menuPanel.Update();*/
-
 	glClearColor(0.f,0.f,0.f,1.f);
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -179,7 +158,7 @@ void EditorManager::Update()
 }
 /*!*****************************************************************************
 \brief
-	free
+	free the editor and all its panels
 
 \return
 None.
@@ -191,14 +170,6 @@ void EditorManager::Free()
 	{
 		panels[p]->Free();
 	}
-	/*hierarchyPanel.Free();
-	inspectorPanel.Free();
-	worldViewPanel.Free();
-	gameViewPanel.Free();
-	dialoguePanel.Free();
-	assetPanel.Free();
-	debugPanel.Free();
-	menuPanel.Free();*/
 }
 /*!*****************************************************************************
 \brief
@@ -217,7 +188,23 @@ void EditorManager::Unload()
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 }
+/*!*****************************************************************************
+\brief
+	This function save the preious component if the item is going to be edited
+	              save to undo stack after the edit is done
 
+\param  e
+	entity change is made on
+
+\param _old
+	reference to original component values
+
+\param _id
+	COMPONENT ID
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 {
 	static int lastID = -1;
@@ -307,7 +294,13 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 		lastID = (int)_id;
 	}
 }
+/*!*****************************************************************************
+\brief
+	this function does the undo or redo
 
+\return
+None.
+*******************************************************************************/
 void EditorManager::Do()
 {
 	if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
@@ -345,6 +338,13 @@ void EditorManager::Do()
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PLAYERTMP)
 		(undoStack[stackPointer].first).GetComponent<PlayerTmp>() = std::get<PlayerTmp>(undoStack[stackPointer].second);
 }
+/*!*****************************************************************************
+\brief
+	this function does the undo 
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Undo()
 {
 	if(stackPointer == (int)undoStack.size())
@@ -360,6 +360,13 @@ void EditorManager::Undo()
 		stackPointer = 0;
 	}
 }
+/*!*****************************************************************************
+\brief
+	this function does the redo
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Redo()
 {
 	stackPointer++;
@@ -373,33 +380,47 @@ void EditorManager::Redo()
 		stackPointer = (int)undoStack.size();
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function Check is a panel is active
+
+\param _panel
+	panel to check
+
+\return
+None.
+*******************************************************************************/
 bool EditorManager::GetPannelIsActive(E_PANELID _panel)
 {
 	if ((int)_panel < panels.size())
 		return panels[(int)_panel]->isActive();
 	return false;
-	/*if (_panel == E_PANELID::DIALOGUE)
-	{
-		return dialoguePanel.isActive();
-	}
-	else if (_panel == E_PANELID::DEBUG)
-	{
-		return debugPanel.isActive();
-	}*/
 }
+/*!*****************************************************************************
+\brief
+	This function Set is a panel to active or not
+
+\param _panel
+	panel to set
+
+\param 
+	true for active or false for inactive
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::SetPannelIsActive(E_PANELID _panel, bool _isActive)
 {
 	if((int)_panel < panels.size())
 		panels[(int)_panel]->setIsActive(_isActive);
-	/*if (_panel == E_PANELID::DIALOGUE)
-	{
-		dialoguePanel.setIsActive(_isActive);
-	}
-	else if (_panel == E_PANELID::DEBUG)
-	{
-		debugPanel.setIsActive(_isActive);
-	}*/
 }
+/*!*****************************************************************************
+\brief
+	This function Resets the scene
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::SceneReset()
 {
 	highestLayer = 0;

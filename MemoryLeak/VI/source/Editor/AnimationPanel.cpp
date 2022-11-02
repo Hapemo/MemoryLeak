@@ -14,7 +14,7 @@ and Animation
 
 /*!*****************************************************************************
 \brief
-	Initializes the Dialogue Panel editor
+	Initializes the Animation Panel editor
 
 \return
 None.
@@ -26,7 +26,7 @@ void AnimationPanel::Init()
 }
 /*!*****************************************************************************
 \brief
-	Updates the Dialogue Panel editor
+	Updates the Animation Panel editor
 
 \return
 None.
@@ -119,7 +119,7 @@ void AnimationPanel::Update()
 }
 /*!*****************************************************************************
 \brief
-	Free the Dialogue Panel editor
+	Free the Animation Panel editor
 
 \return
 None.

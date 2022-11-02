@@ -3,7 +3,7 @@
 \author Huang Wei Jhin
 \par DP email: h.weijhin\@digipen.edu
 \par Group: Memory Leak Studios
-\date 01-11-2022
+\date 05-11-2022
 \brief
 Game state for main menu
 *******************************************************************************/
@@ -13,6 +13,7 @@ Game state for main menu
 
 
 void MainMenu::Load() {
+	//serializationManager->LoadScene("Scene_MainMenu");
 	LoadWithGUID(16672089683329284);
 }
 
@@ -27,8 +28,6 @@ void MainMenu::Update() {
 }
 
 void MainMenu::Draw() {
-	for (Scene* scenePtr : mScenes)
-		scenePtr->PrimaryUpdate();
 	renderManager->Render();
 }
 

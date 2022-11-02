@@ -3,7 +3,7 @@
 \author Huang Wei Jhin
 \par DP email: h.weijhin\@digipen.edu
 \par Group: Memory Leak Studios
-\date 01-11-2022
+\date 05-11-2022
 \brief
 Game state for level 1
 *******************************************************************************/

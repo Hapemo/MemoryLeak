@@ -4,17 +4,17 @@
 \author Huang Wei Jhin
 \par DP email: h.weijhin@digipen.edu
 \par Group: Memory Leak Studios
-\date 20-10-2022
+\date 30-10-2022
 \brief
-This file contains function definations for a AnimationPanel Editor system that modifies
-and Animation 
+This file contains function declarations for a WeatherPanel Editor system that modifies
+and Weather tile map
 *******************************************************************************/
 #include "WeatherPanel.h"
 #include <ECSManager.h>
 
 /*!*****************************************************************************
 \brief
-	Initializes the Dialogue Panel editor
+	Initializes the Weather Panel editor
 
 \return
 None.
@@ -27,7 +27,7 @@ void WeatherPanel::Init()
 }
 /*!*****************************************************************************
 \brief
-	Updates the Dialogue Panel editor
+	Updates the Weather Panel editor
 
 \return
 None.
@@ -92,7 +92,7 @@ void WeatherPanel::Update()
 }
 /*!*****************************************************************************
 \brief
-	Free the Dialogue Panel editor
+	Free the Weather Panel editor
 
 \return
 None.

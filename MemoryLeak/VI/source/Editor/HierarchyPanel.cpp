@@ -46,92 +46,7 @@ void HierarchyPanel::Update()
 					if (e.GetComponent<General>().tag != (TAG)i)
 						continue;
 					listComponents(&e, e.GetComponent<General>().name);
-					/*const char* lbl = e.GetComponent<General>().name.c_str();
-					if (ImGui::TreeNode(lbl))
-					{
-						if (e.HasComponent<General>())
-						{
-							ImGui::Text("General");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Lifespan>())
-						{
-							ImGui::Text("Lifespan");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Transform>())
-						{
-							ImGui::Text("Transform");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Sprite>())
-						{
-							ImGui::Text("Sprite");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Animation>())
-						{
-							ImGui::Text("Animation");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<SheetAnimation>())
-						{
-							ImGui::Text("SheetAnimation");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Physics2D>())
-						{
-							ImGui::Text("Physics2D");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<RectCollider>())
-						{
-							ImGui::Text("RectCollider");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<CircleCollider>())
-						{
-							ImGui::Text("CircleCollider");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Edge2DCollider>())
-						{
-							ImGui::Text("Edge2DCollider");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Audio>())
-						{
-							ImGui::Text("Audio");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Text>())
-						{
-							ImGui::Text("Text");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<AI>())
-						{
-							ImGui::Text("AI");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Script>())
-						{
-							ImGui::Text("Script");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<Dialogue>())
-						{
-							ImGui::Text("Dialogue");
-							setSelectedEntity(&e);
-						}
-						if (e.HasComponent<PlayerTmp>())
-						{
-							ImGui::Text("PlayerTmp");
-							setSelectedEntity(&e);
-						}
-						ImGui::TreePop();
-
-					}*/
+					
 				}
 			}
 		}
@@ -237,6 +152,13 @@ void HierarchyPanel::setSelectedEntity(const Entity* e)
 		selectedPrefab = nullptr;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function sets the selected prefab
+
+\return
+None.
+*******************************************************************************/
 void HierarchyPanel::setSelectedPrefab( Prefab* p)
 {
 	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
@@ -245,7 +167,13 @@ void HierarchyPanel::setSelectedPrefab( Prefab* p)
 		selectedEntity = nullptr;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function sets the selected entity or prefab
 
+\return
+None.
+*******************************************************************************/
 void HierarchyPanel::setSelected(const void* e)
 {
 	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
@@ -263,6 +191,13 @@ void HierarchyPanel::setSelected(const void* e)
 		}
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function list components for entities or prefabs
+
+\return
+None.
+*******************************************************************************/
 template<typename T>
 void HierarchyPanel::listComponents(const T* e, std::string _name)
 {

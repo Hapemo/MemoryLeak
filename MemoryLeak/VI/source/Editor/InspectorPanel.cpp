@@ -6,19 +6,31 @@
 \par Group: Memory Leak Studios
 \date 20-09-2022
 \brief
-This file contains function definations for a Level Editor system that modifies
+This file contains function definations for a Inspector Panel Editor system that modifies
 Entities and its Components.
 *******************************************************************************/
 #include "InspectorPanel.h"
 #include <ECSManager.h>
+/*!*****************************************************************************
+\brief
+	Initializes the Inspector Panel editor
+
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::Init()
 {
 
 }
+/*!*****************************************************************************
+\brief
+	Update the Inspector Panel editor
+
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::Update()
 {
-	
-	//static COMPONENT tempComponent{};
 	ImGui::Begin("Inspector Manager");
 	ImGui::BeginTabBar("Inspector ");
 	if (ImGui::BeginTabItem("Edit Game: "))
@@ -87,11 +99,6 @@ void InspectorPanel::Update()
 			{
 				PlayerTmpEditor();
 			}
-			
-
-			//static int addComponentID;
-			/*static const char* componentsList[]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
-				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "PlayerTmp"};*/
 			ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 			if (ImGui::Button("Add Component"))
 			{
@@ -112,9 +119,6 @@ void InspectorPanel::Update()
 		{
 			p = selectedPrefab;
 			PrefabEditor();
-			
-
-
 			ImGui::Combo("Select Prefab Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 			if (ImGui::Button("Add Component to prefab"))
 			{
@@ -124,16 +128,28 @@ void InspectorPanel::Update()
 			}
 		}
 		ImGui::EndTabItem();
-
 	}
 	ImGui::EndTabBar();
 	ImGui::End();
 }
+/*!*****************************************************************************
+\brief
+	Initializes the Inspector Panel editor
+
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::Free()
 {
 
 }
+/*!*****************************************************************************
+\brief
+	This function add a component to an entity
 
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::AddComponent()
 {
 	if (addComponentID == (int)COMPONENTID::GENERAL)
@@ -172,7 +188,13 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<PlayerTmp>({});
 	
 }
+/*!*****************************************************************************
+\brief
+	This function add a component to an prefab
 
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::AddPrefabComponent()
 {
 	if (p == nullptr)
@@ -213,7 +235,13 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<PlayerTmp>({});
 }
 
+/*!*****************************************************************************
+\brief
+	This function delete an entity
 
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::DeleteEntity()
 {
 	e.Destroy();
@@ -221,6 +249,13 @@ void InspectorPanel::DeleteEntity()
 	selectedEntity = nullptr;
 	e = Entity{ 0 };
 }
+/*!*****************************************************************************
+\brief
+	This functions below onawards edits a particular component
+
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::GeneralEditor()
 {
 	if (ImGui::CollapsingHeader("General") || true) {
@@ -741,7 +776,13 @@ void InspectorPanel::AIEditor()
 }
 
 
+/*!*****************************************************************************
+\brief
+	This functions below onawards edits a particular component in a prefab
 
+\return
+None.
+*******************************************************************************/
 void InspectorPanel::PrefabEditor()
 {
 	if (p == nullptr)
