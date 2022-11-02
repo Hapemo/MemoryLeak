@@ -17,8 +17,6 @@ start up of window and game system, also runs their update functions.
 #include "Editor\EditorManager.h"
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
-#include "ScriptManager.h"
-
 // Static variables
 int Application::window_width{};
 int Application::window_height{};
@@ -38,7 +36,6 @@ void Application::startup() {
 void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
-  logicSystem->Init();
   //aiManager->weatherAIinit();
   
   renderManager->Init(&window_width, &window_height);
@@ -68,12 +65,6 @@ void Application::SystemUpdate() {
   END_TRACK("Physics");
 
   //Scripting
-  TRACK_PERFORMANCE("Scripting");
-  logicSystem->Update();
-
-  END_TRACK("Scripting");
-
-  // Animator
   TRACK_PERFORMANCE("Animation");
   sheetAnimator->Animate();
   animator->Animate();
@@ -128,7 +119,6 @@ void Application::exit() {
   editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
-  ScriptManager<ScriptComponent>::GetInstance()->~ScriptManager();
   ResourceManager::GetInstance()->UnloadAllResources();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();

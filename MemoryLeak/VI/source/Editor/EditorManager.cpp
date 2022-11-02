@@ -248,8 +248,6 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 			_old = e.GetComponent<Text>();
 		else if (_id == COMPONENTID::AI)
 			_old = e.GetComponent<AI>();
-		else if (_id == COMPONENTID::SCRIPT)
-			_old = e.GetComponent<Script>();
 		else if (_id == COMPONENTID::DIALOGUE)
 			_old = e.GetComponent<Dialogue>();
 		else if (_id == COMPONENTID::PLAYERTMP)
@@ -292,8 +290,6 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 			_new = e.GetComponent<Text>();
 		else if (_id == COMPONENTID::AI)
 			_new = e.GetComponent<AI>();
-		else if (_id == COMPONENTID::SCRIPT)
-			_new = e.GetComponent<Script>();
 		else if (_id == COMPONENTID::DIALOGUE)
 			_new = e.GetComponent<Dialogue>();
 		else if (_id == COMPONENTID::PLAYERTMP)
@@ -341,8 +337,6 @@ void EditorManager::Do()
 		(undoStack[stackPointer].first).GetComponent<Text>() = std::get<Text>(undoStack[stackPointer].second);
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::AI)
 		(undoStack[stackPointer].first).GetComponent<AI>() = std::get<AI>(undoStack[stackPointer].second);
-	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::SCRIPT)
-		(undoStack[stackPointer].first).GetComponent<Script>() = std::get<Script>(undoStack[stackPointer].second);
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::DIALOGUE)
 		(undoStack[stackPointer].first).GetComponent<Dialogue>() = std::get<Dialogue>(undoStack[stackPointer].second);
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PLAYERTMP)

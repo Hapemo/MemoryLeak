@@ -280,11 +280,6 @@ void HierarchyPanel::listComponents(const T* e, std::string _name)
 			ImGui::Text("AI");
 			setSelected(e);
 		}
-		if (e->HasComponent<Script>())
-		{
-			ImGui::Text("Script");
-			setSelected(e);
-		}
 		if (e->HasComponent<Dialogue>())
 		{
 			ImGui::Text("Dialogue");

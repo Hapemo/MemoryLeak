@@ -274,17 +274,9 @@ void SerializationManager::LoadScene(std::string _filename)
 			lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
 			e.AddComponent<LightSource>(lightSource);
 		}
-		if (entity.HasMember("Script")) {
-			Script script;
-			script.name = entity["Script"]["name"].GetString();
-			script.script = nullptr;
-
-			e.AddComponent<Script>(script);
-		}
 		mEntities.insert(e);
 		i++;
 	}
-	logicSystem->Init();
 }
 
 /*!*****************************************************************************
@@ -596,11 +588,6 @@ void SerializationManager::SaveScene(std::string _filename)
 			Value tmp(kObjectType);
 			addVectorMember(scene, tmp, "centerOffset", e.GetComponent<LightSource>().centreOffset);
 			entity.AddMember(StringRef("LightSource"), tmp, allocator);
-		}
-		if (e.HasComponent<Script>()) {
-			Value tmp(kObjectType);
-			tmp.AddMember(StringRef("name"), StringRef(e.GetComponent<Script>().name.c_str()), allocator);
-			entity.AddMember(StringRef("Script"), tmp, allocator);
 		}
 		std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -927,16 +914,9 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 			lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
 			e.AddComponent<LightSource>(lightSource);
 		}
-		if (entity.HasMember("Script")) {
-			Script script;
-			script.name = entity["Script"]["name"].GetString();
-			script.script = nullptr;
-			e.AddComponent<Script>(script);
-		}
 		sceneData.mEntities.insert(e);
 		i++;
 	}
-	logicSystem->Init();
 	return sceneData;
 }
 
@@ -1178,16 +1158,9 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 			lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
 			e.AddComponent<LightSource>(lightSource);
 		}
-		if (entity.HasMember("Script")) {
-			Script script;
-			script.name = entity["Script"]["name"].GetString();
-			script.script = nullptr;
-			e.AddComponent<Script>(script);
-		}
 		gamestateData.mEntities.insert(e);
 		i++;
 	}
-	logicSystem->Init();
 	return gamestateData;
 }
 

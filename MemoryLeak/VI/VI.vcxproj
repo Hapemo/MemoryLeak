@@ -227,10 +227,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Graphics\Camera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
     <ClInclude Include="include\Graphics\VertexFetcher.h" />
-    <ClInclude Include="include\Logic\LogicSystem.h" />
-    <ClInclude Include="include\Logic\MonoScripting.h" />
-    <ClInclude Include="include\Logic\ScriptComponent.h" />
-    <ClInclude Include="include\Logic\ScriptManager.h" />
     <ClInclude Include="include\Physics\ColliderBody.h" />
     <ClInclude Include="include\Physics\Collision2DManager.h" />
     <ClInclude Include="include\Collision2DManager.h" />
@@ -307,10 +303,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
     <ClCompile Include="source\Graphics\VertexFetcher.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
-    <ClCompile Include="source\Logic\LogicSystem.cpp" />
-    <ClCompile Include="source\Logic\MonoScripting.cpp" />
-    <ClCompile Include="source\Logic\ScriptComponent.cpp" />
-    <ClCompile Include="source\Logic\ScriptManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />
     <ClCompile Include="source\Physics\Physics2DManager.cpp" />
     <ClCompile Include="source\Player\PlayerController.cpp" />

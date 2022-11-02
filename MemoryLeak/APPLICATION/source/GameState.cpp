@@ -63,7 +63,6 @@ void GameState::CreateScene() {
 void GameState::PrimaryLoad() {
   Load();
   editorManager->Init();
-  logicSystem->Init();
 }
 
 void GameState::PrimaryUnload() {

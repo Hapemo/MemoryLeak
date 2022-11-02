@@ -11,7 +11,6 @@ Entities and its Components.
 *******************************************************************************/
 #include "InspectorPanel.h"
 #include <ECSManager.h>
-#include "ScriptManager.h"
 /*!*****************************************************************************
 \brief
 	Initializes the Inspector Panel editor
@@ -95,10 +94,6 @@ void InspectorPanel::Update()
 			if (e.HasComponent<AI>())
 			{
 				AIEditor();
-			}
-			if (e.HasComponent<Script>())
-			{
-				ScriptEditor();
 			}
 			if (e.HasComponent<Dialogue>())
 			{
@@ -189,8 +184,6 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<Text>({ "CaviarDreams", "PLAY", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
 	else if (addComponentID == (int)COMPONENTID::AI)
 		e.AddComponent<AI>({});
-	else if (addComponentID == (int)COMPONENTID::SCRIPT)
-		e.AddComponent<Script>({});
 	else if (addComponentID == (int)COMPONENTID::DIALOGUE)
 		e.AddComponent<Dialogue>({});
 	else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
@@ -236,8 +229,6 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<Text>({ "CaviarDreams", "PLAY", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
 	else if (addComponentID == (int)COMPONENTID::AI)
 		p->AddComponent<AI>({});
-	else if (addComponentID == (int)COMPONENTID::SCRIPT)
-		p->AddComponent<Script>({});
 	else if (addComponentID == (int)COMPONENTID::DIALOGUE)
 		p->AddComponent<Dialogue>({});
 	else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
@@ -796,10 +787,6 @@ void InspectorPanel::AIEditor()
 void InspectorPanel::ScriptEditor()
 {
 	if (ImGui::CollapsingHeader("Script")) {
-		if (ImGui::InputText("Add script file name", &e.GetComponent<Script>().name))
-		{
-			e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
-		}
 		if (ImGui::BeginDragDropTarget())
 		{
 			static const wchar_t* texpath = (const wchar_t*)"";
@@ -807,14 +794,11 @@ void InspectorPanel::ScriptEditor()
 			{
 				texpath = (const wchar_t*)payload->Data;
 				std::string tp = (std::string)((const char*)texpath);
-				e.GetComponent<Script>().name = tp;
-				e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
 			}
 			ImGui::EndDragDropTarget();
 		}
 		if (ImGui::Button("Remove Script"))
 		{
-			e.RemoveComponent<Script>();
 			LOG_INFO("Script component removed");
 		}
 	}
@@ -1249,17 +1233,6 @@ void InspectorPanel::PrefabEditor()
 			{
 				p->RemoveComponent<AI>();
 				LOG_INFO("AI component removed");
-			}
-		}
-	}
-	if (p->HasComponent<Script>())
-	{
-		if (ImGui::CollapsingHeader("Script")) {
-			ImGui::InputText("Add script file name", &e.GetComponent<Script>().name);
-			if (ImGui::Button("Remove Script"))
-			{
-				e.RemoveComponent<Script>();
-				LOG_INFO("Script component removed");
 			}
 		}
 	}

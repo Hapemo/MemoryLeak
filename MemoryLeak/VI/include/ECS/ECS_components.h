@@ -17,7 +17,6 @@ ComponentType starts from 0.
 #include "../Physics/Force.h"
 #include "../Physics/ColliderBody.h"
 #include <variant>
-#include "ScriptComponent.h"
 
 class Prefab;
 
@@ -273,14 +272,6 @@ struct Dialogue
 };
 /*!*****************************************************************************
 \brief
-	This struct contains the data for Script component
-*******************************************************************************/
-struct Script {
-	std::string name;
-	ScriptComponent* script;
-};
-/*!*****************************************************************************
-\brief
 This component encapsulates information regarding a lightsource, currently, it
 only contains an offset. Later versions will include light intensity.
 *******************************************************************************/
@@ -305,14 +296,13 @@ enum class COMPONENTID
 	POINT2DCOLLIDER,//10
 	AUDIO,			//11
 	TEXT,			//12
-	AI,				//13
-	SCRIPT,			
+	AI,				//13		
 	DIALOGUE,
 	PLAYERTMP
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, PlayerTmp>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Dialogue, PlayerTmp>  COMPONENT;
 
 
 

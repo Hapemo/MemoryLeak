@@ -10,7 +10,6 @@ Game state for testing physics
 #include "GameStatePhysics.h"
 #include "Application.h"
 #include "Input.h"
-#include "TestScript.h"
 
 void GameStatePhysics::Load() {
 	LoadWithGUID(16667121456447749);
