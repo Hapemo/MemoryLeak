@@ -28,7 +28,11 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void TestScript::UpdateScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Test script updating works!!!");
+	static int counter{};
+	if (++counter > 1000) {
+		LOG_INFO("Test script updating works!!!");
+		counter = 0;
+	}
 }
 
 /*!*****************************************************************************
