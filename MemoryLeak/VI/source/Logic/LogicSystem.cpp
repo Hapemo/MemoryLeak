@@ -11,16 +11,22 @@ The LogicSystem class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #include "LogicSystem.h"
+#include "ScriptManager.h"
 
 /*!*****************************************************************************
 \brief
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
+	ScriptManager<ScriptComponent>::GetInstance()->PrintRegisteredScripts();
+	for (Entity const& e : mEntities) {
+		e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
+		LOG_WARN(e.GetComponent<Script>().name.c_str());
+	}
+
 	LOG_DEBUG("LOGICSYSYEM INIT.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun()) {
-			LOG_DEBUG("hasScript.");
 			e.GetComponent<Script>().script->StartScript(e);
 		}
 	}
@@ -34,8 +40,7 @@ void LogicSystem::Update() {
 	//LOG_DEBUG("LOGICSYSYEM UPDATE.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun() && e.HasComponent<Script>()) {
-			Script& script = e.GetComponent<Script>();
-			script.script->UpdateScript(e);
+			e.GetComponent<Script>().script->UpdateScript(e);
 		}
 	}
 }

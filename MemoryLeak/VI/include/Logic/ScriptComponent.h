@@ -16,6 +16,8 @@ engine.
 #include "Logger.h"
 
 class ScriptComponent {
+private:
+	std::string name = "Base";
 public:
 	/*!*****************************************************************************
 	\brief
@@ -48,4 +50,16 @@ public:
 	End script to run when the entity gets destroyed/exit.
 	*******************************************************************************/
 	virtual void EndScript(Entity const& gob);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieve the name of the script.
+	*******************************************************************************/
+	inline std::string GetName() { return name; }
+
+	/*!*****************************************************************************
+	\brief
+	Retrieve the script object.
+	*******************************************************************************/
+	inline ScriptComponent* GetScript() { return this; }
 };

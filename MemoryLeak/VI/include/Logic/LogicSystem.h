@@ -12,7 +12,6 @@ The LogicSystem class handles the C# scripting for the engine.
 
 #pragma once
 #include "ECS_tools.h"
-#include "ScriptManager.h"
 
 class LogicSystem : public System
 {
