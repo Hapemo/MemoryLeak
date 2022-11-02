@@ -715,7 +715,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 
 	// Getting scene data from json
 	std::string sceneDataName{ "SceneData" };
-	Value sceneDataJson(sceneDataName.c_str(), sceneDataName.size(), doc.GetAllocator());
+	Value sceneDataJson(sceneDataName.c_str(), (rapidjson::SizeType)sceneDataName.size(), doc.GetAllocator());
 	if (!doc.HasMember(sceneDataJson))
 	{
 		std::cout << "No sceneData found in scene file!\n";
@@ -960,7 +960,7 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 
 	// Getting gamestate data from json
 	std::string gamestateDataName{ "GameStateData" };
-	Value gamestateDataJson(gamestateDataName.c_str(), gamestateDataName.size(), doc.GetAllocator());
+	Value gamestateDataJson(gamestateDataName.c_str(), (rapidjson::SizeType)gamestateDataName.size(), doc.GetAllocator());
 	if (!doc.HasMember(gamestateDataJson)) {
 		std::cout << "No gamestateData found in scene file!\n";
 		gamestateData.mGUIDs.push_back(0);

@@ -110,7 +110,7 @@ void HierarchyPanel::newEntity()
 	e.AddComponent(
 		General{ "_NEW_" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
 		Transform{ {150,150}, 0, campos },
-		Sprite{ Color{0,255,0,100}, SPRITE::CIRCLE, 0,highestLayer },
+		Sprite{ Color{0,255,0,255}, SPRITE::CIRCLE, 0,highestLayer },
 		RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 	newEntityCount++;
 }
@@ -124,9 +124,12 @@ None.
 void HierarchyPanel::newPrefab()
 {
 	static int n{1};
-	Prefab* pre = new Prefab("new Prefab"+std::to_string(n));
-	//static Prefab pre("new Prefab"+n);
-	mPrefabs.push_back(pre);
+	if (n == 2)
+		return;
+	//Prefab* pre = new Prefab("new Prefab"+std::to_string(n));
+	static Prefab pre(".new Prefab"+n);
+	mPrefabs.push_back(&pre);
+	//delete pre;
 	n++;
 }
 void HierarchyPanel::newPrefabee(Prefab* pre)

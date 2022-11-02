@@ -54,7 +54,7 @@ void DialoguePanel::Update()
 	int id = 1;
 	int id2 = 0;
 	int prevID = 1;
-	ImGui::SetCursorPosX(ImGui::GetWindowWidth() - sendbuttonSize.x-30);
+	/*ImGui::SetCursorPosX(ImGui::GetWindowWidth() - sendbuttonSize.x-30);
 	ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol);
 	if (ImGui::Button("X", sendbuttonSize))
 	{
@@ -62,7 +62,7 @@ void DialoguePanel::Update()
 		ImGui::PopStyleColor();
 		return;
 	}
-	ImGui::PopStyleColor();
+	ImGui::PopStyleColor();*/
 	while (id)
 	{
 		if (dialogManager->GetDialogs().size() == 0)

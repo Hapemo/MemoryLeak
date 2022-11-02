@@ -823,7 +823,8 @@ void InspectorPanel::DialogueEditor()
 {
 	if (ImGui::CollapsingHeader("Dialogue")) 
 	{
-		ImGui:Text("Dialogue WIP");
+		std::string dia = "Dialogue WIP";
+		ImGui:Text(dia.c_str());
 		if (ImGui::Button("Remove Dialogue"))
 		{
 			e.RemoveComponent<Dialogue>();
@@ -982,7 +983,7 @@ void InspectorPanel::PrefabEditor()
 				}
 				else
 				{
-					ImGui::InputText("Addimage", &texadd, texadd.size());
+					ImGui::InputText("Addimage", &texadd);
 					tex = texadd;
 				}
 				static const wchar_t* texpath = (const wchar_t*)"";
@@ -1184,34 +1185,37 @@ void InspectorPanel::PrefabEditor()
 			}
 		}
 	}
-	if (ImGui::CollapsingHeader("Text")) {
-		//ImGui::Text("Text");
-		Text text = p->GetComponent<Text>();
-		ImGui::InputText("Addstrtext", &text.text);
-		ImGui::InputText("Addfont", &text.fontFile);
+	if (p->HasComponent<Text>())
+	{
+		if (ImGui::CollapsingHeader("Text")) {
+			//ImGui::Text("Text");
+			Text text = p->GetComponent<Text>();
+			ImGui::InputText("Addstrtext", &text.text);
+			ImGui::InputText("Addfont", &text.fontFile);
 
-		tmpVec2[0] = text.offset.x;
-		tmpVec2[1] = text.offset.y;
-		ImGui::DragFloat2("Text Pos", tmpVec2);
-		text.offset = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+			tmpVec2[0] = text.offset.x;
+			tmpVec2[1] = text.offset.y;
+			ImGui::DragFloat2("Text Pos", tmpVec2);
+			text.offset = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 
-		ImGui::DragFloat("Text Scale", &text.scale);
+			ImGui::DragFloat("Text Scale", &text.scale);
 
-		tmpVec4[0] = text.color.r / 255.f;
-		tmpVec4[1] = text.color.g / 255.f;
-		tmpVec4[2] = text.color.b / 255.f;
-		tmpVec4[3] = text.color.a / 255.f;
-		ImGui::ColorEdit4("Text Color", tmpVec4);
-		text.color.r = (GLubyte)(tmpVec4[0] * 255);
-		text.color.g = (GLubyte)(tmpVec4[1] * 255);
-		text.color.b = (GLubyte)(tmpVec4[2] * 255);
-		text.color.a = (GLubyte)(tmpVec4[3] * 255);
-		p->UpdateComponent<Text>(text);
+			tmpVec4[0] = text.color.r / 255.f;
+			tmpVec4[1] = text.color.g / 255.f;
+			tmpVec4[2] = text.color.b / 255.f;
+			tmpVec4[3] = text.color.a / 255.f;
+			ImGui::ColorEdit4("Text Color", tmpVec4);
+			text.color.r = (GLubyte)(tmpVec4[0] * 255);
+			text.color.g = (GLubyte)(tmpVec4[1] * 255);
+			text.color.b = (GLubyte)(tmpVec4[2] * 255);
+			text.color.a = (GLubyte)(tmpVec4[3] * 255);
+			p->UpdateComponent<Text>(text);
 
-		if (ImGui::Button("Remove Text"))
-		{
-			e.RemoveComponent<Text>();
-			LOG_INFO("Text component removed");
+			if (ImGui::Button("Remove Text"))
+			{
+				e.RemoveComponent<Text>();
+				LOG_INFO("Text component removed");
+			}
 		}
 	}
 	if (p->HasComponent<AI>())
@@ -1263,7 +1267,8 @@ void InspectorPanel::PrefabEditor()
 	{
 		if (ImGui::CollapsingHeader("Dialogue"))
 		{
-			ImGui:Text("Dialogue WIP");
+			std::string dia = "Dialogue WIP";
+			ImGui:Text(dia.c_str());
 			if (ImGui::Button("Remove Dialogue"))
 			{
 				e.RemoveComponent<Dialogue>();

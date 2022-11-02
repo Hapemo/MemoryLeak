@@ -66,7 +66,7 @@ The layer variable contains which layer the sprite is to be rendered in.
 *******************************************************************************/
 struct Sprite
 {
-	Color color;
+	Color color = Color{ 0,255,0,255 };
 	SPRITE sprite;
 	GLuint texture = 0;
 	int layer = 0;

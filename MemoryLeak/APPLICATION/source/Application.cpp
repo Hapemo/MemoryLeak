@@ -123,6 +123,7 @@ void Application::SecondUpdate() {
 }
 
 void Application::exit() {
+    ECS::DestroyAllEntities();
   editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
