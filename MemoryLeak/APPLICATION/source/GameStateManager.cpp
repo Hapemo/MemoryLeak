@@ -76,6 +76,7 @@ void GameStateManager::Update() {
 	}
 	mPrevGS = mCurrGS;
 	mCurrGS = mNextGS;
+	editorManager->Free();
 }
 
 void GameStateManager::Init() {

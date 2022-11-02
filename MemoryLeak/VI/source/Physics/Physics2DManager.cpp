@@ -57,6 +57,11 @@ void Physics2DManager::Update(const double& _appDT) {
 void Physics2DManager::Step() {
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mEntities) {
+
+		if (FirstUpdate) {
+			ApplyImpulse(e, Math::Vec2{ 0.f, 1.f }, Math::Vec2{ 0.f, 0.f });
+		}
+
 		// Skip if entity does not have physics component
 		if (!e.HasComponent<Physics2D>())
 			continue;
@@ -81,6 +86,9 @@ void Physics2DManager::Step() {
 		// Reset forces on the object for next step
 		SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
 	}
+
+	if (FirstUpdate)
+		FirstUpdate = false;
 
 	collision2DManager->ResolveCollisions(Physics2DManager::fixedDT);
 }

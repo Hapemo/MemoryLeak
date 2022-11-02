@@ -175,7 +175,7 @@ void ParallaxAndSpriteSwap::Update() {
 }
 
 void ParallaxAndSpriteSwap::Draw() {
-    sheetAnimator->Animate();
+    //sheetAnimator->Animate();
     renderManager->Render();
 }
 

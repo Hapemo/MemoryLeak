@@ -151,9 +151,12 @@ void AssetPanel::Update()
 			ImGui::NextColumn();
 		}
 		ImGui::Columns(1);
-		ImGui::Text("   ");
+		ImGui::NewLine();
+		ImGui::NewLine();
 		ImGui::EndTabItem();
 	}
+	ImGui::Columns(1);
+	ImGui::NewLine();
 	ImGui::EndTabBar();
 	ImGui::End();
 }

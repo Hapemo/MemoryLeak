@@ -166,6 +166,13 @@ None.
 void EditorManager::Free()
 {
 	isScenePaused = false;
+	SceneReset();
+	
+	for (size_t p = 0; p < mPrefabs.size(); p++)
+	{
+		delete mPrefabs[p];
+	}
+	mPrefabs.clear();
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 		panels[p]->Free();
@@ -425,6 +432,7 @@ void EditorManager::SceneReset()
 {
 	highestLayer = 0;
 	selectedEntity = nullptr;
+	selectedPrefab = nullptr;
 	renderManager->ResetCameras();
 }
 

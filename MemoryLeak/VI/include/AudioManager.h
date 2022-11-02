@@ -32,9 +32,9 @@ public:
 	void SetALLVolume(float vol);
 	void SetBGMVolume(float vol);
 	void SetSFXVolume(float vol);
+	void PlaySound(const Entity& e, int sound);	//Play sound 
 	
 private:
-	void PlaySound(const Entity& e, int sound);	//Play sound 
 	//WIP
 	//void PauseSound(int, bool);				//pasue (sound enum, true/false) true - pause 
 	//void SetSoundVolume(int, float);			//set volume (sound, 0.0f-1.0f, 0 or 1) 1.0f loudest

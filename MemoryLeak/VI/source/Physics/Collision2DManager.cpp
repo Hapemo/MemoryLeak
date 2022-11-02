@@ -371,6 +371,11 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 			item.obj2.GetComponent<Physics2D>().forceList.clear();
 		}
 
+		if (item.obj1.HasComponent<Audio>())
+			audioManager->PlaySound(item.obj1, 4);
+		if (item.obj2.HasComponent<Audio>())
+			audioManager->PlaySound(item.obj2, 5);
+
 	// --------------------------------------------
 	// Response hack for player (done by Wei Jhin)
 	// --------------------------------------------
