@@ -328,6 +328,10 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <None Include="shaders\texture.frag" />
     <None Include="shaders\texture.vert" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\3Dumb.ttf" />
+    <Font Include="fonts\CaviarDreams.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

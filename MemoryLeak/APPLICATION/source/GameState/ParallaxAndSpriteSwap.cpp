@@ -29,9 +29,6 @@ void ParallaxAndSpriteSwap::Update() {
 
     for (const Entity& e : mEntities)
     {
-        if (e.GetComponent<Transform>().translation.x >= Application::getWindowWidth())
-            e.GetComponent<Transform>().translation.x = (float)-Application::getWindowWidth();
-
         if (e.GetComponent<General>().name == "spritesheet")
         {
             /*************************************Multiple Animations Start************************************/
@@ -50,40 +47,8 @@ void ParallaxAndSpriteSwap::Update() {
                 isjump = !isjump;
             }
             /*************************************Multiple Animations End************************************/
-
-            /*************************************Scale and Rotate Sprite Start************************************/
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::UP))
-                e.GetComponent<Transform>().scale += 1.f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::DOWN))
-                e.GetComponent<Transform>().scale -= 1.f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT))
-                e.GetComponent<Transform>().rotation += 0.1f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::RIGHT))
-                e.GetComponent<Transform>().rotation -= 0.1f;
-            /*************************************Scale and Rotate Sprite End************************************/
-
-            /*************************************Collider Edit Start************************************/
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::W))
-                e.GetComponent<RectCollider>().centerOffset.y += 1.f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::S))
-                e.GetComponent<RectCollider>().centerOffset.y -= 1.f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::A))
-                e.GetComponent<RectCollider>().centerOffset.x -= 1.f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::D))
-                e.GetComponent<RectCollider>().centerOffset.x += 1.f;
-
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::I))
-                e.GetComponent<RectCollider>().scaleOffset.y += 0.02f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::K))
-                e.GetComponent<RectCollider>().scaleOffset.y -= 0.02f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::J))
-                e.GetComponent<RectCollider>().scaleOffset.x -= 0.02f;
-            if (Input::CheckKey(E_STATE::HOLD, E_KEY::L))
-                e.GetComponent<RectCollider>().scaleOffset.x += 0.02f;
-            /*************************************Collider Edit End************************************/
         }
     }
-    //collision2DManager->Update(mEntities);
 }
 
 void ParallaxAndSpriteSwap::Draw() {

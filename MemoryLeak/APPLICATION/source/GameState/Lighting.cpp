@@ -3,9 +3,6 @@
 #include <VertexFetcher.h>
 #include "Helper.h"
 
-constexpr Color black{ 0, 0, 0, 255 };
-constexpr Color grey{ 50, 50, 50, 255 };
-constexpr Color white{ 255, 255, 255, 255 };
 Entity lightsource;
 
 void Lighting::Load() 
@@ -19,7 +16,6 @@ void Lighting::Init()
     renderManager->SetDebug(true);
     renderManager->RenderToScreen();
     editorManager->SetScenePaused(false);
-    renderManager->SetClearColor(black);
    
     for (const Entity& e : mEntities)
     {
@@ -42,7 +38,7 @@ void Lighting::Update()
         if (e.HasComponent<Text>())
         {
         e.GetComponent<Text>().offset = -renderManager->GetGameCamera().GetPos();
-        e.GetComponent<Text>().offset.x -= 50;
+        e.GetComponent<Text>().offset.x -= e.GetComponent<Text>().text.size() * 10;
         }
     }
     shadowManager->MakeShadows(lightsource, renderManager);
