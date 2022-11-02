@@ -200,8 +200,9 @@ void ResourceManager::FreeResources() {
 // Then replace the second byte with instance of guidCounter
 ResourceManager::GUID ResourceManager::GUIDGenerator(std::filesystem::path const& _path) {
 	E_RESOURCETYPE resourceType{ CheckResourceType(_path) };
-	ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
-
+	//ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
+	if (resourceType == E_RESOURCETYPE::error)
+		return 0;
 	std::chrono::time_point today = std::chrono::system_clock::now();
 	std::chrono::duration duration = today.time_since_epoch();
 	GUID guid = *static_cast<GUID*>(static_cast<void*>(&duration));
@@ -253,8 +254,12 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 
 		// Open and store resources, then linking them to their guid
 		E_RESOURCETYPE resourceType{ CheckResourceType(entry) };
-		ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
-
+		//ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type"); ///fk you add new folder crash alr...
+		if (resourceType == E_RESOURCETYPE::error)
+		{
+			LOG_INFO("1 Unknown resource");
+			continue;
+		}
 		void* dataPointer{};
 		
 		switch (resourceType) {
@@ -284,6 +289,9 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 
 		case E_RESOURCETYPE::dialogue:
 			
+			break;
+		case E_RESOURCETYPE::font:
+
 			break;
 		}
 		mAllResources.insert({ guid, dataPointer });
@@ -326,6 +334,9 @@ void ResourceManager::UnloadAllResources() {
 		}
 
 		case E_RESOURCETYPE::dialogue:
+
+			break;
+		case E_RESOURCETYPE::font:
 
 			break;
 		}

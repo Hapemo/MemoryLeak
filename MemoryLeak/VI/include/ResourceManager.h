@@ -70,7 +70,8 @@ public:
 		script,
 		scene,
 		gamestateEntities,
-		dialogue
+		dialogue,
+		font /////////////////////////////added
 	};
 private:
 

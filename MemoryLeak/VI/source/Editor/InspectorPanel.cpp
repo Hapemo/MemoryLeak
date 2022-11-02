@@ -11,6 +11,7 @@ Entities and its Components.
 *******************************************************************************/
 #include "InspectorPanel.h"
 #include <ECSManager.h>
+#include "ScriptManager.h"
 /*!*****************************************************************************
 \brief
 	Initializes the Inspector Panel editor
@@ -94,6 +95,14 @@ void InspectorPanel::Update()
 			if (e.HasComponent<AI>())
 			{
 				AIEditor();
+			}
+			if (e.HasComponent<Script>())
+			{
+				ScriptEditor();
+			}
+			if (e.HasComponent<Dialogue>())
+			{
+				DialogueEditor();
 			}
 			if (e.HasComponent<PlayerTmp>())
 			{
@@ -696,10 +705,20 @@ void InspectorPanel::TextEditor()
 	if (ImGui::CollapsingHeader("Text")) {
 		//ImGui::Text("Text");
 		//ImGuiInput
-		ImGui::InputText("Addstrtext", &e.GetComponent<Text>().text);
-		//ImGui::InputText("Addtext", const_cast<char*>(e.GetComponent<Text>().text.c_str()), 50);
+		ImGui::InputText("Add text", &e.GetComponent<Text>().text);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
-		ImGui::InputText("Addfont", &e.GetComponent<Text>().fontFile);
+		ImGui::InputText("Add font", &e.GetComponent<Text>().fontFile);
+		if (ImGui::BeginDragDropTarget())
+		{
+			static const wchar_t* texpath = (const wchar_t*)"";
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("FONT"))
+			{
+				texpath = (const wchar_t*)payload->Data;
+				std::string tp = (std::string)((const char*)texpath);
+				e.GetComponent<Text>().fontFile = tp;
+			}
+			ImGui::EndDragDropTarget();
+		}
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
 		tmpVec2[0] = e.GetComponent<Text>().offset.x;
@@ -774,7 +793,44 @@ void InspectorPanel::AIEditor()
 		}
 	}
 }
-
+void InspectorPanel::ScriptEditor()
+{
+	if (ImGui::CollapsingHeader("Script")) {
+		if (ImGui::InputText("Add script file name", &e.GetComponent<Script>().name))
+		{
+			e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
+		}
+		if (ImGui::BeginDragDropTarget())
+		{
+			static const wchar_t* texpath = (const wchar_t*)"";
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("SCRIPT"))
+			{
+				texpath = (const wchar_t*)payload->Data;
+				std::string tp = (std::string)((const char*)texpath);
+				e.GetComponent<Script>().name = tp;
+				e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
+			}
+			ImGui::EndDragDropTarget();
+		}
+		if (ImGui::Button("Remove Script"))
+		{
+			e.RemoveComponent<Script>();
+			LOG_INFO("Script component removed");
+		}
+	}
+}
+void InspectorPanel::DialogueEditor()
+{
+	if (ImGui::CollapsingHeader("Dialogue")) 
+	{
+		ImGui:Text("Dialogue WIP");
+		if (ImGui::Button("Remove Dialogue"))
+		{
+			e.RemoveComponent<Dialogue>();
+			LOG_INFO("Dialogue component removed");
+		}
+	}
+}
 
 /*!*****************************************************************************
 \brief
@@ -1189,6 +1245,29 @@ void InspectorPanel::PrefabEditor()
 			{
 				p->RemoveComponent<AI>();
 				LOG_INFO("AI component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Script>())
+	{
+		if (ImGui::CollapsingHeader("Script")) {
+			ImGui::InputText("Add script file name", &e.GetComponent<Script>().name);
+			if (ImGui::Button("Remove Script"))
+			{
+				e.RemoveComponent<Script>();
+				LOG_INFO("Script component removed");
+			}
+		}
+	}
+	if (p->HasComponent<Dialogue>())
+	{
+		if (ImGui::CollapsingHeader("Dialogue"))
+		{
+			ImGui:Text("Dialogue WIP");
+			if (ImGui::Button("Remove Dialogue"))
+			{
+				e.RemoveComponent<Dialogue>();
+				LOG_INFO("Dialogue component removed");
 			}
 		}
 	}

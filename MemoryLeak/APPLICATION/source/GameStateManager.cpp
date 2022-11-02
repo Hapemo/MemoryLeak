@@ -41,7 +41,7 @@ void GameStateManager::Update() {
 	}
 
 	mCurrGameState->Init();
-
+	////////logicSystem->Init(); // need inilitialze loaded script data else need do in serilization
 	while (mCurrGS == mNextGS) {
 		TRACK_PERFORMANCE("MainLoop");
 		Application::FirstUpdate();

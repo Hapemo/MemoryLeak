@@ -38,6 +38,8 @@ private:
 	void AudioEditor();
 	void TextEditor();
 	void AIEditor();
+	void ScriptEditor();
+	void DialogueEditor();
 	void PlayerTmpEditor();
 	void AddPrefabComponent();
 	void PrefabEditor();

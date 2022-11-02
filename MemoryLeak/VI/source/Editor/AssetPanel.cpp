@@ -94,6 +94,24 @@ void AssetPanel::Update()
 							ImGui::EndDragDropSource();
 						}
 					}
+					else if (texExt == ".cpp")
+					{
+						if (ImGui::BeginDragDropSource())
+						{
+							const wchar_t* itemPath = (wchar_t*)texfilename.c_str();
+							ImGui::SetDragDropPayload("SCRIPT", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
+						}
+					}
+					else if (texExt == ".ttf")
+					{
+						if (ImGui::BeginDragDropSource())
+						{
+							const wchar_t* itemPath = (wchar_t*)texfilename.c_str();
+							ImGui::SetDragDropPayload("FONT", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
+						}
+					}
 				}
 			}
 			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))

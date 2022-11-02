@@ -27,7 +27,10 @@ void LogicSystem::Init() {
 	LOG_DEBUG("LOGICSYSYEM INIT.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun()) {
-			e.GetComponent<Script>().script->StartScript(e);
+			if (e.GetComponent<Script>().script != nullptr)
+				e.GetComponent<Script>().script->StartScript(e);
+			else
+				LOG_ERROR("start: Script failed to attach!!!");
 		}
 	}
 }
@@ -40,7 +43,10 @@ void LogicSystem::Update() {
 	//LOG_DEBUG("LOGICSYSYEM UPDATE.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun() && e.HasComponent<Script>()) {
-			e.GetComponent<Script>().script->UpdateScript(e);
+			if (e.GetComponent<Script>().script != nullptr)
+				e.GetComponent<Script>().script->UpdateScript(e);
+			else
+				LOG_ERROR("Update: Script failed to attach!!!");
 		}
 	}
 }
@@ -53,7 +59,10 @@ void LogicSystem::Exit() {
 	LOG_DEBUG("LOGICSYSYEM EXITING.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun() && e.HasComponent<Script>()) {
-			e.GetComponent<Script>().script->EndScript(e);
+			if (e.GetComponent<Script>().script != nullptr)
+				e.GetComponent<Script>().script->EndScript(e);
+			else
+				LOG_ERROR("End: Script failed to attach!!!");
 		}
 	}
 }
