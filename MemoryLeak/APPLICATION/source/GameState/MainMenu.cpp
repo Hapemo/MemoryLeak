@@ -42,10 +42,13 @@ void MainMenu::Update() {
 					{
 						e.GetComponent<Text>().color = e.GetComponent<Text>().color.g == 255 ? 
 							Color{0, 0, 0, 255}: Color{ 255, 255, 255, 255 };
-						//if (e.GetComponent<General>().tag == TAG::PLAYER)
-						if (e.GetComponent<General>().name == "PlayBtn")
+						if (e.GetComponent<General>().subtag == SUBTAG::PLAYER)
 						{
-							GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+							GameStateManager::GetInstance()->NextGS(++mCurrentState);
+						}
+						if (e.GetComponent<General>().subtag == SUBTAG::ENEMY)
+						{
+							GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
 						}
 					}
 		}
