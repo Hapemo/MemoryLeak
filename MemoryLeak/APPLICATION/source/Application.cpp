@@ -128,7 +128,6 @@ void Application::exit() {
   editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
-  ScriptManager<ScriptComponent>::GetInstance()->~ScriptManager();
   ResourceManager::GetInstance()->UnloadAllResources();
   GameStateManager::GetInstance()->Exit();
   SingletonManager::destroyAllSingletons();

@@ -20,15 +20,22 @@ The ScriptManager class manages the scripts for the engine.
 #define REGISTER_SCRIPT(_base, _derived) ScriptFactory<_base, _derived> s_##_derived##Creator(#_derived);
 
 template<class Base>
-class ScriptManager : public Singleton<ScriptManager<Base>> {
+class ScriptManager {
 public:
     typedef std::map<std::string, std::function<Base* ()>> ScriptMap;
 
 private:
     ScriptMap mScripts;
+    static std::shared_ptr<ScriptManager<Base>> mInstance;
 
 public:
     ~ScriptManager() = default;
+
+    static std::shared_ptr<ScriptManager<Base>> GetInstance() {
+      if (mInstance == nullptr)
+        mInstance = std::make_unique<ScriptManager<Base>>();
+      return mInstance;
+    }
 
     template<class Script>
     void RegisterScript(const std::string& _name) {
@@ -46,6 +53,9 @@ public:
             LOG_INFO(creator.first.c_str());
     }
 };
+
+template<class Base>
+std::shared_ptr<ScriptManager<Base>> ScriptManager<Base>::mInstance;
 
 template<class Base, class Script>
 class ScriptFactory {
