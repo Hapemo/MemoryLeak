@@ -26,7 +26,6 @@ enum class E_GS {
 	END_OF_LIST,
 	RESTART,
 	EXIT
-
 };
 E_GS& operator++(E_GS& _gs);
 E_GS& operator--(E_GS& _gs);
@@ -77,6 +76,7 @@ public:
 	E_GS GetNextGS() { return mNextGS; }
 	E_GS GetCurrGS() { return mCurrGS; }
 	E_GS GetPrevGS() { return mPrevGS; }
+	void SetStartingGS(E_GS _gs) { mStartingGS = _gs; }
 
 	/*!*****************************************************************************
 	\brief
@@ -90,7 +90,7 @@ private:
 	using GS_pair = std::pair<E_GS, GameState*>;
 
 	std::map<E_GS, GameState*> GS_List;
-	E_GS mCurrGS, mPrevGS, mNextGS;
+	E_GS mCurrGS, mPrevGS, mNextGS, mStartingGS;
 	GameState* mCurrGameState;
 	static E_GS mCurrentState;
 };

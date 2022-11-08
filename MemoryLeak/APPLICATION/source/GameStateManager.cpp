@@ -26,7 +26,7 @@ running.
 #include "Level1.h"
 E_GS GameStateManager::mCurrentState = E_GS::MainMenu;
 GameStateManager::GameStateManager() :
-	mPrevGS(), mNextGS(), mCurrGS(), mCurrGameState(nullptr) 
+	mPrevGS(), mNextGS(), mCurrGS(), mStartingGS(), mCurrGameState(nullptr)
 {};
 
 void GameStateManager::Update() {
@@ -80,7 +80,7 @@ void GameStateManager::Update() {
 void GameStateManager::Init() {
 	LOG_CUSTOM_CREATE("GAMESTATE");
 	LOG_CUSTOM_CREATE("SCENE");
-	mPrevGS = mNextGS = mCurrGS = E_GS::MainMenu; // Starting game state
+	mPrevGS = mNextGS = mCurrGS = mStartingGS; // Starting game state
 	
 	GS_List.insert(GS_pair(E_GS::MainMenu, new MainMenu));
 	GS_List.insert(GS_pair(E_GS::Level1, new Level1));

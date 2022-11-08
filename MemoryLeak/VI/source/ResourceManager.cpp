@@ -346,11 +346,33 @@ void ResourceManager::UnloadAllResources() {
 	mAllFilePaths.clear();
 }
 
+void ResourceManager::CheckWrongAudioFile(std::filesystem::path const& _path) {
+	if (_path.string().find(".wav") != std::string::npos) return; // Nothing wrong with wav file
+
+	// If something wrong with audio file read in, code under here
+
+}
+
+void ResourceManager::CheckWrongTextureFile(std::filesystem::path const& _path) {
+	if (_path.string().find(".png") != std::string::npos ||
+			_path.string().find(".jpg") != std::string::npos) return; // Nothing wrong with wav file
+
+	// If something wrong with audio file read in, code under here
+
+}
+
+
 ResourceManager::E_RESOURCETYPE ResourceManager::CheckResourceType(std::filesystem::path const& _path) {
-	if (_path.string().find("\\Audio\\") != std::string::npos) return E_RESOURCETYPE::audio;
+	if (_path.string().find("\\Audio\\") != std::string::npos) {
+		CheckWrongAudioFile(_path);
+		return E_RESOURCETYPE::audio;
+	}
 	else if (_path.string().find("\\Dialogs\\") != std::string::npos) return E_RESOURCETYPE::dialogue;
 	else if (_path.string().find("\\Scene\\") != std::string::npos) return E_RESOURCETYPE::scene;
-	else if (_path.string().find("\\Textures\\") != std::string::npos) return E_RESOURCETYPE::texture;
+	else if (_path.string().find("\\Textures\\") != std::string::npos) {
+		CheckWrongTextureFile(_path);
+		return E_RESOURCETYPE::texture;
+	}
 	else if (_path.string().find("\\Scripts\\") != std::string::npos) return E_RESOURCETYPE::script;
 	else if (_path.string().find("\\GameStates\\") != std::string::npos) return E_RESOURCETYPE::gamestateEntities;
 	return E_RESOURCETYPE::error;
