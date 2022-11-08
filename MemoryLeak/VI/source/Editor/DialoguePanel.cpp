@@ -11,7 +11,8 @@ and view dialogues between a player and npc.
 *******************************************************************************/
 #include "DialoguePanel.h"
 #include <ECSManager.h>
-
+#define iconSize ImVec2(40, 40)
+#define sendbuttonSize ImVec2(50, 50)
 /*!*****************************************************************************
 \brief
 	Initializes the Dialogue Panel editor
@@ -50,6 +51,11 @@ void DialoguePanel::Update()
 		Init();
 	}
 	ImGui::Begin("Dialog Editor");
+	renderUI();
+	if (!isViewportPaused)
+	{
+		narrateDialogue();
+	}
 	wrapsize = int(ImGui::GetWindowWidth() / 13);
 	int id = 1;
 	int id2 = 0;
@@ -192,6 +198,47 @@ void DialoguePanel::Free()
 {
 
 }
+
+
+void DialoguePanel::narrateDialogue()
+{
+	int id = 1;
+	int id2 = 0;
+	int prevID = 1;
+	while (id)
+	{
+		if (dialogManager->GetDialogs().size() == 0)
+		{
+			break;
+		}
+		//if (dialogManager->GetSpeaker(id))// if right side convo (Player)
+		//{
+		//	if (dialogManager->GetSelectedChoice(prevID))
+		//	{
+		//		id
+		//	}
+		//}
+		audioManager->PlayAnySound(std::to_string(id), 17);
+		while (audioManager->isPlaying(17))
+		{
+			
+		}
+		//Get new ID for next loop
+		if (dialogManager->GetSelectedChoice(prevID))//2nd
+			prevID = id2;
+		else//1st
+			prevID = id;
+		id = dialogManager->GetNext(prevID);
+		id2 = dialogManager->GetNext2(prevID);
+
+
+		ImGui::NewLine();
+	}
+	isViewportPaused = true;
+}
+
+
+
 /*!*****************************************************************************
 \brief
 	This function removes duplicate white spaces and new line characters in a string
@@ -249,3 +296,4 @@ std::string& DialoguePanel::BreakString(std::string& _str, int _offset, char _br
 	}
 	return _str;
 }
+

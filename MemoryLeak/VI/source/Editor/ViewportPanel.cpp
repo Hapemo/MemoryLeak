@@ -57,4 +57,40 @@ bool ViewportPanel::IsMouseInScreen()
 	return (abs(screenMousePos.x) < viewportSize.x / 2 && abs(screenMousePos.y) < viewportSize.y / 2);
 	
 }
+void ViewportPanel::renderUI()
+{
+	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
+	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	if (isViewportPaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	if (ImGui::Button("Play", buttonSize))
+	{
+		isViewportPaused = false;
+	}
+	ImGui::PopStyleColor();
+
+	if (isViewportPaused)
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	else
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	ImGui::SameLine(0.f, 20.f);
+	if (ImGui::Button("Pause", buttonSize))
+	{
+		isViewportPaused = true;
+	}
+	ImGui::PopStyleColor();
+
+
+	/*ImGui::SetCursorPosX(ImGui::GetWindowWidth() - sendbuttonSize.x-30);
+	ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol);
+	if (ImGui::Button("X", sendbuttonSize))
+	{
+		active = false;
+		ImGui::PopStyleColor();
+		return;
+	}
+	ImGui::PopStyleColor();*/
+}
 

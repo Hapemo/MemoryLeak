@@ -25,7 +25,7 @@ public:
 
 	
 private:
-	bool isWeatherPaused;
+	//bool isWeatherPaused;
 	ImTextureID sunIcon;
 	ImTextureID rainIcon;
 	ImTextureID windIcon;
@@ -36,4 +36,3 @@ private:
 	ImTextureID rainfogIcon;
 	ImTextureID selectedIcon;
 };
-#define weatherIocnSize ImVec2(18,18)

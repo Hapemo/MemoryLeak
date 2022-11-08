@@ -25,5 +25,5 @@ public:
 	
 private:
 	ImTextureID textureImage;
-	bool isAnimationPaused;
+	//bool isAnimationPaused;
 };

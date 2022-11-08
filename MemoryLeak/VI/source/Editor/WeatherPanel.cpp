@@ -11,7 +11,7 @@ and Weather tile map
 *******************************************************************************/
 #include "WeatherPanel.h"
 #include <ECSManager.h>
-
+#define weatherIocnSize ImVec2(18,18)
 /*!*****************************************************************************
 \brief
 	Initializes the Weather Panel editor
@@ -24,7 +24,7 @@ void WeatherPanel::Init()
 	std::srand(std::time(nullptr));
 	aiManager->weatherAIinit();
 	viewportSize = { 0,0 };
-	isWeatherPaused = true;
+	isViewportPaused = true;
 	sunIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\sunIcon.png");
 	rainIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\rainIcon.png");
 	fogIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\fogIcon.png");
@@ -49,7 +49,8 @@ void WeatherPanel::Update()
 
 	ImGui::Begin("Weather Editor");
 	SetViewportAspectRatio();
-	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
+	renderUI();
+	/*Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	if (isWeatherPaused)
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
@@ -70,7 +71,7 @@ void WeatherPanel::Update()
 	{
 		isWeatherPaused = true;
 	}
-	ImGui::PopStyleColor();
+	ImGui::PopStyleColor();*/
 	for (int w = 0; w < aiManager->getWeatherMap().size(); w++)
 	{
 		for (int h = 0; h < aiManager->getWeatherMap()[w].size(); h++)
@@ -151,7 +152,7 @@ void WeatherPanel::Update()
 		ImGui::NewLine();
 	}
 	
-	if (!isWeatherPaused)
+	if (!isViewportPaused)
 	{
 		aiManager->weatherAIupdate();
 	}

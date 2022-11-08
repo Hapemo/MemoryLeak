@@ -108,6 +108,11 @@ void AssetPanel::Update()
 				else if (texParent.find("\\Audio\\SFX") != std::string::npos)
 				{
 					ImGui::ImageButton(sfxIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
+					if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+					{
+						LOG_INFO("Playing " + texFilename);
+						audioManager->PlayAnySound(texFilename, 16);
+					}
 					if (ImGui::BeginDragDropSource())
 					{
 						const wchar_t* itemPath = (wchar_t*)texFilename.c_str();

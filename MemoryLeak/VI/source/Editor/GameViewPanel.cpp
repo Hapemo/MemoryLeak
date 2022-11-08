@@ -36,31 +36,33 @@ void GameViewPanel::Update()
 	ImGui::Begin("Game View");
 	//Calcualting the aspect ratio 
 	SetViewportAspectRatio();
-	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
-	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	//if (ImGui::Button("Reset", { 100,25 }))
-		//serializationManager->LoadScene("SceneTmp");
-	//ImGui::SameLine(0.f,20.f);
-	if (isScenePaused)
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-	else
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-	if (ImGui::Button("Play", buttonSize))
-	{
-		isScenePaused = false;
-	}
-	ImGui::PopStyleColor();
-
-	if (isScenePaused)
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-	else
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-	ImGui::SameLine(0.f, 20.f);
-	if (ImGui::Button("Pause", buttonSize))
-	{
-		isScenePaused = true;
-	}
-	ImGui::PopStyleColor();
+	isViewportPaused = isScenePaused;
+	renderUI();
+	isScenePaused = isViewportPaused;
+	//Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
+	//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+	////if (ImGui::Button("Reset", { 100,25 }))
+	//	//serializationManager->LoadScene("SceneTmp");
+	////ImGui::SameLine(0.f,20.f);
+	//if (isScenePaused)
+	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	//else
+	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	//if (ImGui::Button("Play", buttonSize))
+	//{
+	//	isScenePaused = false;
+	//}
+	//ImGui::PopStyleColor();
+	//if (isScenePaused)
+	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	//else
+	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+	//ImGui::SameLine(0.f, 20.f);
+	//if (ImGui::Button("Pause", buttonSize))
+	//{
+	//	isScenePaused = true;
+	//}
+	//ImGui::PopStyleColor();
 	CalculateMousePos(E_CAMERA_TYPE::GAME);
 	if (ImGui::IsWindowHovered())
 	{

@@ -74,6 +74,10 @@ FMOD::Sound* AudioManager::LoadAudio(std::filesystem::path const& audio) //Load 
   {
       mBgmSound[audio.stem().string()] = snd;
   }
+  else  //if (audio.parent_path().string().find("..\\resources\\Audio\\Dialogue") != std::string::npos)
+  {
+      mSfxSound[audio.stem().string()] = snd;
+  }
   return snd;
 }
 /*!*****************************************************************************
@@ -174,6 +178,14 @@ void AudioManager::PlayBGSound(std::string _snd, int _channel)
         system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
     }
 }
+
+bool AudioManager::isPlaying(int _channel)
+{
+    bool f;
+    mChannel[_channel]->isPlaying(&f);
+    return f;
+}
+
 /*!*****************************************************************************
 \brief
     Update function to play sounds of entities that need to be played

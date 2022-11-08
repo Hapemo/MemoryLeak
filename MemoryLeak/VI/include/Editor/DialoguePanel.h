@@ -9,13 +9,13 @@ This file contains function declarations for a Dialogue Panel Editor system that
 and view dialogues between a player and npc.
 *******************************************************************************/
 #pragma once
-#include "Panel.h"
+#include "ViewportPanel.h"
 
 /*!*****************************************************************************
 \brief
 	This class encapsulates the functions for the Dialogue Panel Editor
 *******************************************************************************/
-class DialoguePanel : public Panel
+class DialoguePanel : public ViewportPanel
 {
 public:
 	
@@ -25,6 +25,7 @@ public:
 
 	
 private:
+	void narrateDialogue();
 	static std::string& BreakString(std::string& _str, int _offset, char _breakAt = ' ', std::string _breakWith = "\n");
 	std::string formatString(std::string);
 	ImTextureID playerIcon;
@@ -42,6 +43,5 @@ private:
 	ImVec4 selectedCol;
 	ImVec4 npcCol;
 	ImVec4 backgroundCol;
-#define iconSize ImVec2(40, 40)
-#define sendbuttonSize ImVec2(50, 50)
+
 };

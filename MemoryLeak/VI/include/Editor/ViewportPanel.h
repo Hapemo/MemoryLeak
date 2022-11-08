@@ -33,7 +33,8 @@ protected:
 	void SetViewportAspectRatio();
 	void CalculateMousePos(E_CAMERA_TYPE _type);
 	bool IsMouseInScreen();
-	
+	void renderUI();
+	bool isViewportPaused = true;
 	Math::Vec2 viewportSize{};
 	Math::Vec2 viewportPos{};
 	Math::Vec2 screenMousePos{};

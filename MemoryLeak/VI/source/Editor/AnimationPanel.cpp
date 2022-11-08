@@ -22,7 +22,7 @@ None.
 void AnimationPanel::Init()
 {
 	viewportSize = { 0,0 };
-	isAnimationPaused = false;
+	isViewportPaused = false;
 }
 /*!*****************************************************************************
 \brief
@@ -37,7 +37,8 @@ void AnimationPanel::Update()
 		return;*/
 	ImGui::Begin("Animation Editor");
 	SetViewportAspectRatio();
-	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
+	renderUI();
+	/*Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	if (isAnimationPaused)
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
@@ -58,7 +59,7 @@ void AnimationPanel::Update()
 	{
 		isAnimationPaused = true;
 	}
-	ImGui::PopStyleColor();
+	ImGui::PopStyleColor();*/
 	if (ImGui::IsWindowFocused())
 		isAnimatorEditor = true;
 	else
@@ -111,7 +112,7 @@ void AnimationPanel::Update()
 				{
 					ImGui::EndDragDropTarget();
 				}
-				if (!isAnimationPaused)
+				if (!isViewportPaused)
 				{
 					if (ImGui::IsWindowFocused())
 						sheetAnimator->Animate();

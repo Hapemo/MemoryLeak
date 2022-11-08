@@ -24,7 +24,7 @@ public:
 	void Unload();							//Deconstructor
 
 	FMOD::Sound* LoadAudio(std::filesystem::path const& audio);
-
+	bool isPlaying(int _channel);
 	void LoadSound();							//Load all sound 
 	void PlayAnySound(std::string _snd, int _channel);
 	void PlayBGSound(std::string, int);
