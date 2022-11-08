@@ -21,35 +21,43 @@ None.
 *******************************************************************************/
 void AIManager::weatherAIinit()
 {
-	int numWeatherLoc = 3;//(std::rand() % 3)+1;
-	for (int i = 0; i < numWeatherLoc; i++)
+	/*for (int h = 0; h < weatherMap.size(); h++)
 	{
-		sizeX[i] = (std::rand() % maxSizeX);
-		sizeY[i] = (std::rand() % maxSizeY);
+		weatherMap[h].clear();
+	}
+	weatherMap.clear();*/
+	weatherMap.resize(mapMaxWidth);
+	for (int w = 0; w < mapMaxWidth; w++)
+	{
+		weatherMap[w].resize(mapMaxHeight);
+	}
+	for (int w = 0; w < mapMaxWidth; w++)
+	{
+		for (int h = 0; h < mapMaxHeight; h++)
+		{
+			weatherMap[w][h] = SUNNUY; //reset map
+		}
+	}
+	//int numWeatherLoc = 3;//(std::rand() % 3)+1;
+	for (int i = 0; i < weatherMaxLocation; i++)
+	{
+		sizeX[i] = (std::rand() % weatherMaxHeight);
+		sizeY[i] = (std::rand() % weatherMaxWidth);
 		currentWeather[i] = (std::rand() % 3) + 1;
-		initialLoactionX[i] = std::rand() % mapWidth;
-		initialLoactionY[i] = std::rand() % mapHeight;
+		currentWeather[i] = (currentWeather[i] == 3 ? FOG : currentWeather[i]);
+		initialLoactionY[i] = std::rand() % mapMaxHeight;
+		initialLoactionX[i] = std::rand() % mapMaxWidth;
 		initialDirectionX[i] = (std::rand() % 3) - 1;
 		initialDirectionY[i] = (std::rand() % 3) - 1;
 		for (int h = initialLoactionY[i] - sizeY[i]; h <= initialLoactionY[i] + sizeY[i]; h++)
 		{
 			for (int w = initialLoactionX[i] - sizeX[i]; w <= initialLoactionX[i] + sizeX[i]; w++)
 			{
-				if(w>=0 && w< mapWidth&& h >= 0 && h < mapHeight)
-					weatherMap[w][h] = currentWeather[i];
+				if(w>=0 && w< mapMaxWidth && h >= 0 && h < mapMaxHeight)
+					weatherMap[w][h] |= currentWeather[i];
 			}
 		}
 	}
-	/*for (int h = 0; h < mapHeight; h++)
-	{
-		for (int w = 0; w < mapWidth ; w++)
-		{
-			std::cout<<weatherMap[w][h]<<" ";
-		}
-		std::cout << "\n ";
-	}
-	std::cout << "\n ";
-	std::cout << "\n ";*/
 	
 }
 /*!*****************************************************************************
@@ -62,18 +70,18 @@ None.
 void AIManager::weatherAIupdate()
 {
 	
-	int update = std::rand() % 100;
+	int update = std::rand() % 20;
 	if (update == 0)
 	{
-		for (int h = 0; h < mapHeight; h++)
+		for (int w = 0; w < mapMaxWidth; w++)
 		{
-			for (int w = 0; w < mapWidth; w++)
+			for (int h = 0; h < mapMaxHeight; h++)
 			{
-				weatherMap[w][h] = 0;
+				weatherMap[w][h] = SUNNUY; //reset map
 			}
 		}
-		int numWeatherLoc = 3;// std::rand() % 3;
-		for (int i = 0; i < numWeatherLoc; i++)
+		//int numWeatherLoc = 3;// std::rand() % 3;
+		for (int i = 0; i < weatherMaxLocation; i++)
 		{
 			//vary direction
 			int directionX = (std::rand() % 3) - 1;
@@ -94,33 +102,26 @@ void AIManager::weatherAIupdate()
 			{
 				for (int w = initialLoactionX[i] - sizeX[i]; w <= initialLoactionX[i] + sizeX[i]; w++)
 				{
-					if (w >= 0 && w < mapWidth && h >= 0 && h < mapHeight)
+					if (w >= 0 && w < mapMaxWidth && h >= 0 && h < mapMaxHeight)
 					{
-						weatherMap[w][h] = currentWeather[i];
+						weatherMap[w][h] |= currentWeather[i];
 						setted = 1;
 					}
 				}
 			}
 			if (setted == 0)
 			{
-				sizeX[i] = (std::rand() % maxSizeX);
-				sizeY[i] = (std::rand() % maxSizeY);
+				//new weather location
+				sizeX[i] = (std::rand() % weatherMaxWidth);
+				sizeY[i] = (std::rand() % weatherMaxHeight);
 				currentWeather[i] = (std::rand() % 3) + 1;
-				initialLoactionX[i] = std::rand() % mapWidth;
-				initialLoactionY[i] = std::rand() % mapHeight;
+				currentWeather[i] = (currentWeather[i] == 3 ? FOG : currentWeather[i]);
+				initialLoactionX[i] = std::rand() % mapMaxWidth;
+				initialLoactionY[i] = std::rand() % mapMaxHeight;
 				initialDirectionX[i] = (std::rand() % 3) - 1;
 				initialDirectionY[i] = (std::rand() % 3) - 1;
 			}
 		}
-		/*for (int h = 0; h < mapHeight; h++)
-		{
-			for (int w = 0; w < mapWidth; w++)
-			{
-				std::cout << weatherMap[w][h] << " ";
-			}
-			std::cout << "\n ";
-		}
-		std::cout << "\n ";*/
 
 		
 	}

@@ -18,11 +18,11 @@ Entities and its Components.
 /*!*****************************************************************************
 DEFINES
 *******************************************************************************/
-#define mapWidth 50
-#define mapHeight 40
-#define maxSizeX 5
-#define maxSizeY 5
-#define maxDirection 8
+//#define mapWidth 40
+//#define mapHeight 50
+//#define maxSizeX 5
+//#define maxSizeY 5
+//#define maxDirection 8
 #define maxlocation 3
 /*!*****************************************************************************
 \brief
@@ -35,7 +35,9 @@ public:
 	void weatherAIupdate();
 	void updateAI();
 
-	int weatherMap[mapWidth][mapHeight]{}; //to be shifted to provate after implementing proxy class for [] [] operator
+	//int weatherMap[mapWidth][mapHeight]{}; //to be shifted to provate after implementing proxy class for [] [] operator
+	std::vector<std::vector<int>> getWeatherMap() { return weatherMap; }
+	std::vector<std::vector<int>> weatherMap{};
 private:
 	void updateAIAllColors(const Entity&);
 	void updateAITrafficLight(const Entity&);
@@ -43,9 +45,12 @@ private:
 	void updateAILeftRight(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAICircle(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAISwing(const Entity&, float speed = 1.0f, float range = 10.0f);
-	//std::vector<std::vector<int>> getWeatherMap() { return weatherMap; }
 
-	//std::vector<std::vector<int>> weatherMap;
+	int mapMaxHeight= 50;
+	int mapMaxWidth= 40;
+	int weatherMaxHeight = 10;
+	int weatherMaxWidth = 10;
+	int weatherMaxLocation = 3;
 
 	int initialLoactionX[maxlocation]{};
 	int initialLoactionY[maxlocation]{};
@@ -56,8 +61,9 @@ private:
 	int currentWeather[maxlocation]{};
 };
 enum WeatherType {
-	SUNNUY,
-	FOG,
-	RAIN,
-	WINDY
+	SUNNUY=0,
+	RAIN=1,
+	WINDY=2,
+	FOG=4,
+	ALL = 7
 };
