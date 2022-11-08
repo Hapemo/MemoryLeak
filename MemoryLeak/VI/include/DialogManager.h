@@ -179,7 +179,8 @@ public:
 	The dialog id of the second choice.
 	*******************************************************************************/
 	void CreateNewDialogue(int _id, std::string _text, int _speaker, int _next, int _next2 = -1);
-
+	void AddNewDialogue(int _previd, std::string _text, int _speaker);
+	void AddNewDialogue2(int _previd, std::string _text, int _speaker); //for second choice
 	/*!*****************************************************************************
 	\brief
 	Edit a certain dialog from the member map mDialogs.

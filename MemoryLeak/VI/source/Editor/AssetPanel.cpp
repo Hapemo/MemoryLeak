@@ -126,6 +126,7 @@ void AssetPanel::Update()
 					if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 					{
 						serializationManager->LoadDialogs(texFilename);
+						audioManager->LoadDialogueAudio(texFilename);
 						SetPannelIsActive(E_PANELID::DIALOGUE, true);
 					}
 					if (ImGui::BeginDragDropSource())

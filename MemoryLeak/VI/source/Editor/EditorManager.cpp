@@ -86,7 +86,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&gameViewPanel);
 	panels.push_back(&worldViewPanel);
 	Init();
-	serializationManager->LoadDialogs("Dialog Data Structure - Passenger 1's Dialogues"); //for demo submision
+	
 }
 /*!*****************************************************************************
 \brief

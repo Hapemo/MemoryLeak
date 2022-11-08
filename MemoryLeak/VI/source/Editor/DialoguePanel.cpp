@@ -12,7 +12,7 @@ and view dialogues between a player and npc.
 #include "DialoguePanel.h"
 #include <ECSManager.h>
 #define iconSize ImVec2(40, 40)
-#define sendbuttonSize ImVec2(50, 50)
+#define sendbuttonSize ImVec2(55, 55)
 /*!*****************************************************************************
 \brief
 	Initializes the Dialogue Panel editor
@@ -42,6 +42,8 @@ None.
 *******************************************************************************/
 void DialoguePanel::Update()
 {
+	static bool scrollToBottom = false;
+	
 	if (!active)
 		return;
 	static int start{};
@@ -51,6 +53,11 @@ void DialoguePanel::Update()
 		Init();
 	}
 	ImGui::Begin("Dialog Editor");
+	if (scrollToBottom)
+	{
+		ImGui::SetScrollY(ImGui::GetWindowHeight()*10.f);
+		scrollToBottom = false;
+	}
 	renderUI();
 	if (!isViewportPaused)
 	{
@@ -60,6 +67,8 @@ void DialoguePanel::Update()
 	int id = 1;
 	int id2 = 0;
 	int prevID = 1;
+	int prevPlayerID = 0;
+	int prevNpcID = 0;
 	/*ImGui::SetCursorPosX(ImGui::GetWindowWidth() - sendbuttonSize.x-30);
 	ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol);
 	if (ImGui::Button("X", sendbuttonSize))
@@ -107,15 +116,20 @@ void DialoguePanel::Update()
 		{//edit text for 1st choice
 			selectedID = id;
 			dialogEdit = dialogManager->GetDialogue(selectedID);
-			for (size_t i = dialogEdit.size(); i < 500; i++)
+			/*for (size_t i = dialogEdit.size(); i < 500; i++)
 			{
 				dialogEdit += " ";
-			}
+			}*/
 			BreakString(dialogEdit, wrapsize);
 		}
 		else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
 		{//change selected to 1st choice
 			dialogManager->SetSelectedChoice(prevID, 0);
+		}
+		else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(1))
+		{//play sound
+			isViewportPaused = true;
+			audioManager->PlayDialogueSound(std::to_string(id), 17);
 		}
 		if (id2) //if have 2nd choice
 		{
@@ -142,15 +156,20 @@ void DialoguePanel::Update()
 			{//edit text for 2nd choice
 				selectedID = id2;
 				dialogEdit = dialogManager->GetDialogue(selectedID);
-				for (size_t i = dialogEdit.size(); i < 500; i++)
+				/*for (size_t i = dialogEdit.size(); i < 500; i++)
 				{
 					dialogEdit += " ";
-				}
+				}*/
 				BreakString(dialogEdit, wrapsize);
 			}
 			else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
 			{//change selected to 2nd choice
 				dialogManager->SetSelectedChoice(prevID, 1);
+			}
+			else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(1))
+			{//play sound
+				isViewportPaused = true;
+				audioManager->PlayDialogueSound(std::to_string(id2), 17);
 			}
 		}
 		//Get new ID for next loop
@@ -160,6 +179,15 @@ void DialoguePanel::Update()
 			prevID = id;
 		id = dialogManager->GetNext(prevID);
 		id2 = dialogManager->GetNext2(prevID);
+
+		if (dialogManager->GetSpeaker(prevID))
+		{
+			prevPlayerID = prevID;
+		}
+		else
+		{
+			prevNpcID = prevID;
+		}
 
 
 		ImGui::NewLine();
@@ -173,14 +201,65 @@ void DialoguePanel::Update()
 		ImGui::PushStyleColor(ImGuiCol_ChildBg, backgroundCol);
 		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 120 + ImGui::GetScrollY()));
 		ImGui::BeginChild(" ", ImVec2(ImGui::GetWindowWidth() - 20, 100), true);
-		ImGui::InputTextMultiline(" ", const_cast<char*>(dialogEdit.c_str()), 1000,
-			ImVec2(ImGui::GetWindowWidth() - 100, 80));
-		ImGui::SameLine();
+		ImGui::InputTextMultiline("", &dialogEdit, ImVec2(ImGui::GetWindowWidth() - 100, 80));
+		ImGui::SameLine(0.0f, 5.f);
 		if (ImGui::ImageButton(sendIcon, sendbuttonSize, ImVec2(0, 1), ImVec2(1, 0)))
 		{
 			dialogManager->EditDialogue(selectedID, formatString(dialogEdit));
 			selectedID = 0;
+			dialogEdit = "";
 		}
+		ImGui::EndChild();
+		ImGui::PopStyleColor();
+	}
+	else
+	{
+		ImGui::Button(" ", ImVec2(1, 150));
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, backgroundCol);
+		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 120 + ImGui::GetScrollY()));
+		ImGui::BeginChild("", ImVec2(ImGui::GetWindowWidth() - 20, 100), true);
+		if (ImGui::ImageButton(npcIcon, sendbuttonSize, ImVec2(0, 1), ImVec2(1, 0),1))
+		{
+			if (dialogEdit != "")
+			{
+				dialogManager->AddNewDialogue(prevID, dialogEdit, 0);
+				dialogEdit = "";
+				scrollToBottom = true;
+			}
+		}
+		ImGui::SameLine(0.0f, 8.f);
+		ImGui::InputTextMultiline("", &dialogEdit,ImVec2(ImGui::GetWindowWidth() - 154, 80));
+		ImGui::SameLine(0.0f,8.f);
+		//ImGui::BeginGroup();
+		ImVec2 pos = ImGui::GetCursorPos();
+		ImGui::PushID(1);
+		//ImGui::PushStyleColor(ImGuiCol_Button, selectedCol);
+		if (ImGui::ImageButton(playerIcon, { sendbuttonSize.x, sendbuttonSize.y/2.f }, ImVec2(0, 1), ImVec2(1, 0.5f), 1, selectedCol))
+		{
+			if (dialogEdit != "")
+			{
+				dialogManager->AddNewDialogue(prevID, dialogEdit, 1);
+				dialogEdit = "";
+				scrollToBottom = true;
+			}
+		}
+		//ImGui::PopStyleColor();
+		ImGui::PopID();
+		ImGui::SetCursorPos({pos.x, pos.y+ sendbuttonSize.y / 2.f });
+		ImGui::PushID(2);
+		//ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol);
+		if (ImGui::ImageButton(playerIcon, { sendbuttonSize.x, sendbuttonSize.y / 2.f }, ImVec2(0, 0.5f), ImVec2(1, 0), 1, unselectedCol))
+		{
+			if (dialogEdit != "")
+			{
+				dialogManager->AddNewDialogue2(prevNpcID, dialogEdit, 1);
+				dialogEdit = "";
+				scrollToBottom = true;
+			}
+		}
+		//ImGui::PopStyleColor();
+		ImGui::PopID();
+		//ImGui::EndGroup();
 		ImGui::EndChild();
 		ImGui::PopStyleColor();
 	}
@@ -202,39 +281,38 @@ void DialoguePanel::Free()
 
 void DialoguePanel::narrateDialogue()
 {
-	int id = 1;
-	int id2 = 0;
-	int prevID = 1;
-	while (id)
+	if (dialogManager->GetDialogs().size() == 0)
 	{
-		if (dialogManager->GetDialogs().size() == 0)
+		return;
+	}
+	static int id = 1;
+	static int id2 = 0;
+	static int prevID = 1;
+
+		
+	if (!audioManager->isPlaying(17))
+	{
+		if (dialogManager->GetSelectedChoice(prevID))
 		{
-			break;
-		}
-		//if (dialogManager->GetSpeaker(id))// if right side convo (Player)
-		//{
-		//	if (dialogManager->GetSelectedChoice(prevID))
-		//	{
-		//		id
-		//	}
-		//}
-		audioManager->PlayAnySound(std::to_string(id), 17);
-		while (audioManager->isPlaying(17))
-		{
-			
-		}
-		//Get new ID for next loop
-		if (dialogManager->GetSelectedChoice(prevID))//2nd
+			audioManager->PlayDialogueSound(std::to_string(id2), 17);
 			prevID = id2;
-		else//1st
+		}
+		else
+		{
+			audioManager->PlayDialogueSound(std::to_string(id), 17);
 			prevID = id;
+		}
 		id = dialogManager->GetNext(prevID);
 		id2 = dialogManager->GetNext2(prevID);
-
-
-		ImGui::NewLine();
 	}
-	isViewportPaused = true;
+
+	if (id == 0)
+	{
+		isViewportPaused = true;
+		id = 1;
+		id2 = 0;
+		prevID = 1;
+	}
 }
 
 

@@ -250,6 +250,44 @@ void DialogManager::CreateNewDialogue(int _id, std::string _text, int _speaker, 
 		mDialogs[_id] = newDialog;
 	}
 }
+void DialogManager::AddNewDialogue(int _previd, std::string _text, int _speaker) {
+	
+	static int _id = 1;
+	for (std::pair<int, Dialog> dialog : mDialogs)
+	{
+		if (mDialogs.count(_id))
+			_id++;
+		else
+			break;
+	}
+	int next = mDialogs[_previd].next;
+	mDialogs[_previd].next = _id;
+	Dialog newDialog;
+	newDialog.text = _text;
+	newDialog.speaker = _speaker;
+	newDialog.next = next;
+	newDialog.next2 = 0;
+	mDialogs[_id] = newDialog;
+}
+void DialogManager::AddNewDialogue2(int _previd, std::string _text, int _speaker) {
+
+	int _id = 1;
+	for (std::pair<int, Dialog> dialog : mDialogs)
+	{
+		if (mDialogs.count(_id))
+			_id++;
+		else
+			break;
+	}
+	int next = mDialogs[_previd].next2;
+	mDialogs[_previd].next2 = _id;
+	Dialog newDialog;
+	newDialog.text = _text;
+	newDialog.speaker = _speaker;
+	newDialog.next = next;
+	newDialog.next2 = 0;
+	mDialogs[_id] = newDialog;
+}
 
 /*!*****************************************************************************
 \brief

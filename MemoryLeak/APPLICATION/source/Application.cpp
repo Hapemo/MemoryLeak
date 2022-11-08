@@ -93,8 +93,8 @@ void Application::init() {
   startup();
 
   SystemInit();
- // audioManager->PlayBGSound("PIntro", 10);
-  audioManager->PlayBGSound("MENUBG", 10);
+  audioManager->PlayBGSound("PIntro", 10);
+  //audioManager->PlayBGSound("MENUBG", 10);
 }
 
 void Application::FirstUpdate() {
