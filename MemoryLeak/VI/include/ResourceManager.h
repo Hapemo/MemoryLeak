@@ -347,6 +347,13 @@ public:
 	- Guid of the scene
 	*******************************************************************************/
 	void UnloadScene(GUID const&);
+
+	//------------------------------------
+	// Helper function 
+	//------------------------------------
+	void CheckWrongAudioFile(std::filesystem::path const&);
+	void CheckWrongTextureFile(std::filesystem::path const&);
+
 };
 
 //------------------------------------
