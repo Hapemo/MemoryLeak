@@ -43,7 +43,9 @@ private:
 	void updateAILeftRight(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAICircle(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAISwing(const Entity&, float speed = 1.0f, float range = 10.0f);
-	int* getWeatherMap();
+	//std::vector<std::vector<int>> getWeatherMap() { return weatherMap; }
+
+	//std::vector<std::vector<int>> weatherMap;
 
 	int initialLoactionX[maxlocation]{};
 	int initialLoactionY[maxlocation]{};

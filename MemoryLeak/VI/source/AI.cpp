@@ -126,10 +126,7 @@ void AIManager::weatherAIupdate()
 	}
 }
 
-int* AIManager::getWeatherMap()
-{
-	return &weatherMap[0][0];
-}
+
 
 /*!*****************************************************************************
 \brief
