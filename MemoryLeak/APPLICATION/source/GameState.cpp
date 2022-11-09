@@ -31,6 +31,7 @@ void GameState::LoadWithGUID(ResourceManager::GUID const& _guid) {
   GameStateData gamestateData = ResourceManager::GetInstance()->LoadGameState(_guid);
   mEntities = gamestateData.mEntities;
   mGuid = _guid;
+  // Scenes are currently loaded here, but in future, it will be done via resource manager.
   for (ResourceManager::GUID const& guid : gamestateData.mGUIDs) {
     Scene* scene = new Scene(guid);
     scene->Load(guid);
@@ -52,6 +53,12 @@ void GameState::UnloadWithGUID() {
   mScenes.clear();
   ResourceManager::GetInstance()->UnloadGameState(mGuid);
   mEntities.clear();
+}
+
+// This should be called when unloading from the editor. 
+// Save all scenes it has and save all it's entities.
+void GameState::SaveGameState() {
+
 }
 
 void GameState::CreateScene() {

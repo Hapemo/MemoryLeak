@@ -165,6 +165,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\AudioVariable.h" />
     <ClInclude Include="include\ColliderTransformManager.h" />
+    <ClInclude Include="include\ECS\PrefabManager.h" />
     <ClInclude Include="include\Editor\AnimationPanel.h" />
     <ClInclude Include="include\Editor\AssetPanel.h" />
     <ClInclude Include="include\Editor\DebugPanel.h" />
@@ -281,6 +282,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\ECS\ECSManager.cpp" />
     <ClCompile Include="source\ECS\ECS_managers.cpp" />
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
+    <ClCompile Include="source\ECS\PrefabManager.cpp" />
     <ClCompile Include="source\Editor\AnimationPanel.cpp" />
     <ClCompile Include="source\Editor\AssetPanel.cpp" />
     <ClCompile Include="source\Editor\DebugPanel.cpp" />

@@ -11,14 +11,21 @@ Game state for testing jazz's stuff
 #include "Application.h"
 #include "Input.h"
 
+#define PREFAB_OR_PARENTCHILD 0 // 0 for prefab, 1 for parentchild
+
 Entity gParent{};
 
 void AddChildren(Entity _parent, Entity _children) {
+#ifdef PREFAB_OR_PARENTCHILD
 	if (!_parent.HasComponent<ParentChild>()) _parent.AddComponent<ParentChild>(ParentChild());
 	_parent.GetComponent<ParentChild>().children.insert(_children);
+#else
+
+#endif
 }
 
 void FullTranslate(Entity _e, Math::Vec2 const& addVec) {
+#ifdef PREFAB_OR_PARENTCHILD
 	Transform& transform = _e.GetComponent<Transform>();
 	transform.translation += addVec;
 
@@ -28,9 +35,13 @@ void FullTranslate(Entity _e, Math::Vec2 const& addVec) {
 			e.GetComponent<Transform>().translation += addVec;
 		}
 	}
+#else
+
+#endif
 }
 
 void JazzGS::Load() {
+#ifdef PREFAB_OR_PARENTCHILD
 	int totalEnt{ 5 };
 	while (totalEnt--) {
 		Entity e = ECS::CreateEntity();
@@ -38,17 +49,24 @@ void JazzGS::Load() {
 		Transform trans = Transform{ { 1.f, 1.f }, 1, {e.id * 10.f,e.id * 10.f} };
 		e.AddComponent<Transform>(trans);
 	}
+#else
 
+#endif
 }
 
 void JazzGS::Init() {
 	// How does yu jun update the entity position?
 	// How does he translate and rotate those entities?
 	// Would be best if through a function
+#ifdef PREFAB_OR_PARENTCHILD
 	gParent = *(mEntities.begin());
+#else
+
+#endif
 }
 
 void JazzGS::Update() {
+#ifdef PREFAB_OR_PARENTCHILD
 	if (Input::CheckKey(PRESS, P)) {
 		for (auto e : mEntities) {
 			Transform const& transform = e.GetComponent<Transform>();
@@ -57,7 +75,7 @@ void JazzGS::Update() {
 	}
 
 	if (Input::CheckKey(PRESS, EQUAL)) {
-		int count{1};
+		int count{ 1 };
 		while (++count <= 5)
 			AddChildren(gParent, Entity(count));
 	}
@@ -65,17 +83,31 @@ void JazzGS::Update() {
 	if (Input::CheckKey(PRESS, PERIOD)) {
 		FullTranslate(gParent, { 1,1 });
 	}
-		
+#else
+
+#endif
 }
 
 void JazzGS::Draw() {
-	
+#ifdef PREFAB_OR_PARENTCHILD
+
+#else
+
+#endif
 }
 
 void JazzGS::Free() {
+#ifdef PREFAB_OR_PARENTCHILD
 	
+#else
+
+#endif
 }
 
 void JazzGS::Unload() {
+#ifdef PREFAB_OR_PARENTCHILD
 
+#else
+
+#endif
 }

@@ -83,6 +83,7 @@ protected:
 	void LoadWithGUID(ResourceManager::GUID const&);
 	void UnloadWithGUID();
 	void CreateScene();
+	void SaveGameState();
 
 	/*!*****************************************************************************
 	Unload any resources used in the game state, such as art assets and heap memory

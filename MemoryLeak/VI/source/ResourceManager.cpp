@@ -405,3 +405,38 @@ void ResourceManager::UnloadScene(GUID const& _guid) {
 	ECS::DestroySomeEntites(data->mEntities);
 	delete data;
 }
+
+std::filesystem::path ResourceManager::FileTypePath(E_RESOURCETYPE _type) {
+	std::string path = resourceFolder.string();
+	switch (_type) {
+	case E_RESOURCETYPE::texture:
+		path + "\\Textures";
+		break;
+	case E_RESOURCETYPE::audio:
+		path + "\\Audio";
+		break;
+	case E_RESOURCETYPE::script:
+		path + "\\Scripts";
+		break;
+	case E_RESOURCETYPE::scene:
+		path + "\\Scene";
+		break;
+	case E_RESOURCETYPE::gamestateEntities:
+		path + "\\GameStates";
+		break;
+	case E_RESOURCETYPE::dialogue:
+		path + "\\Dialogs";
+		break;
+	case E_RESOURCETYPE::font:
+		path + "\\Fonts";
+		break;
+	}
+	return std::filesystem::path(path);
+}
+
+
+
+
+
+
+

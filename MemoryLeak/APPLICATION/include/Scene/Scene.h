@@ -63,6 +63,11 @@ public:
 	*******************************************************************************/
 	void Unload();
 
+	// Save scene to a scene file. If no scene file found, create one.
+	// Return the guid for the game state to save it in their file
+	// This should be called whenever someone wants to save a scene
+	void Save(std::string = "");
+
 	/*!*****************************************************************************
 	Add Entity to scene
 	*******************************************************************************/

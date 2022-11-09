@@ -348,6 +348,8 @@ public:
 	*******************************************************************************/
 	void UnloadScene(GUID const&);
 
+	std::filesystem::path FileTypePath(E_RESOURCETYPE);
+
 	//------------------------------------
 	// Helper function 
 	//------------------------------------
