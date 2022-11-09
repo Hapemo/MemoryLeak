@@ -1,0 +1,37 @@
+[
+    {
+        "Dialogue ID": 0,
+        "Dialogue Text": "",
+        "Speaker": 0,
+        "Next Dialogue": 1,
+        "Next Dialogue(2)": 0
+    },
+    {
+        "Dialogue ID": 1,
+        "Dialogue Text": "1",
+        "Speaker": 0,
+        "Next Dialogue": 2,
+        "Next Dialogue(2)": 0
+    },
+    {
+        "Dialogue ID": 2,
+        "Dialogue Text": "2",
+        "Speaker": 0,
+        "Next Dialogue": 4,
+        "Next Dialogue(2)": 0
+    },
+    {
+        "Dialogue ID": 3,
+        "Dialogue Text": "3",
+        "Speaker": 0,
+        "Next Dialogue": 3,
+        "Next Dialogue(2)": 0
+    },
+    {
+        "Dialogue ID": 4,
+        "Dialogue Text": "4",
+        "Speaker": 0,
+        "Next Dialogue": 0,
+        "Next Dialogue(2)": 0
+    }
+]

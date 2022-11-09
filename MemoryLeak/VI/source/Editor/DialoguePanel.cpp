@@ -44,14 +44,14 @@ void DialoguePanel::Update()
 {
 	static bool scrollToBottom = false;
 	
-	if (!active)
-		return;
-	static int start{};
+	/*if (!active)
+		return;*/
+	/*static int start{};
 	if (start == 0)
 	{
 		start++;
 		Init();
-	}
+	}*/
 	ImGui::Begin("Dialog Editor");
 	if (scrollToBottom)
 	{
@@ -61,45 +61,49 @@ void DialoguePanel::Update()
 	renderUI();
 	if (!isViewportPaused)
 	{
-		narrateDialogue();
+		NarrateDialogue();
 	}
 	wrapsize = int(ImGui::GetWindowWidth() / 13);
 	int id = 1;
 	int id2 = 0;
-	int prevID = 1;
+	int prevID = 0;
 	int prevPlayerID = 0;
 	int prevNpcID = 0;
-	/*ImGui::SetCursorPosX(ImGui::GetWindowWidth() - sendbuttonSize.x-30);
+	
+	ImGui::SameLine();
+	ImGui::SetCursorPosX(ImGui::GetWindowWidth() - sendbuttonSize.x-30);
 	ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol);
 	if (ImGui::Button("X", sendbuttonSize))
 	{
-		active = false;
-		ImGui::PopStyleColor();
-		return;
+		dialogManager->Clear();
 	}
-	ImGui::PopStyleColor();*/
+	ImGui::PopStyleColor();
+
 	while (id)
-	{
+		{
 		if (dialogManager->GetDialogs().size() == 0)
 		{
 			active = false;
 			break;
 		}
 		dialog = dialogManager->GetDialogue(id);
-		if (id == 1 && dialog != dialogPrev) //reset selected if change dialogue
-		{
-			selectedID = 0;
-			dialogPrev = dialog;
-		}
+		//if (id == 1 && dialog != dialogPrev) //reset selected if change dialogue
+		//{
+		//	selectedID = 0;
+		//	prevSelectedID = 0;
+		//	dialogPrev = dialog;
+		//}
 		BreakString(dialog, wrapsize);
 
 		if (dialogManager->GetSpeaker(id))// if right side convo (Player)
 		{
 			ImGui::NewLine();
 			ImGui::SameLine(ImGui::GetWindowWidth() - 70);
+			static bool c = false;
 			ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
+
 			ImGui::SameLine(ImGui::GetWindowWidth() - 77 - (dialog.find("\n") != std::string::npos ? dialog.find("\n") : dialog.size()) * 7.4f);
-			if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
+			if (prevID && dialogManager->GetSelectedChoice(prevID))//2nd choice selected
 				ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol); //unselected
 			else//1st
 				ImGui::PushStyleColor(ImGuiCol_Button, selectedCol); //selected
@@ -116,15 +120,12 @@ void DialoguePanel::Update()
 		{//edit text for 1st choice
 			selectedID = id;
 			dialogEdit = dialogManager->GetDialogue(selectedID);
-			/*for (size_t i = dialogEdit.size(); i < 500; i++)
-			{
-				dialogEdit += " ";
-			}*/
 			BreakString(dialogEdit, wrapsize);
 		}
 		else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
 		{//change selected to 1st choice
-			dialogManager->SetSelectedChoice(prevID, 0);
+			if(prevID)
+				dialogManager->SetSelectedChoice(prevID, 0);
 		}
 		else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(1))
 		{//play sound
@@ -141,7 +142,7 @@ void DialoguePanel::Update()
 				ImGui::SameLine(ImGui::GetWindowWidth() - 70);
 				ImGui::ImageButton(playerIcon, iconSize, ImVec2(0, 1), ImVec2(1, 0));
 				ImGui::SameLine(ImGui::GetWindowWidth() - 77 - (dialog2.find("\n") != std::string::npos ? dialog2.find("\n") : dialog2.size()) * 7.4f);
-				if (dialogManager->GetSelectedChoice(prevID))//2nd choice selected
+				if (prevID && dialogManager->GetSelectedChoice(prevID))//2nd choice selected
 					ImGui::PushStyleColor(ImGuiCol_Button, selectedCol); //selected
 				else//1st
 					ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol); //unselected
@@ -156,10 +157,6 @@ void DialoguePanel::Update()
 			{//edit text for 2nd choice
 				selectedID = id2;
 				dialogEdit = dialogManager->GetDialogue(selectedID);
-				/*for (size_t i = dialogEdit.size(); i < 500; i++)
-				{
-					dialogEdit += " ";
-				}*/
 				BreakString(dialogEdit, wrapsize);
 			}
 			else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
@@ -173,13 +170,12 @@ void DialoguePanel::Update()
 			}
 		}
 		//Get new ID for next loop
-		if (dialogManager->GetSelectedChoice(prevID))//2nd
+		if (prevID && dialogManager->GetSelectedChoice(prevID))//2nd
 			prevID = id2;
 		else//1st
 			prevID = id;
 		id = dialogManager->GetNext(prevID);
 		id2 = dialogManager->GetNext2(prevID);
-
 		if (dialogManager->GetSpeaker(prevID))
 		{
 			prevPlayerID = prevID;
@@ -188,36 +184,34 @@ void DialoguePanel::Update()
 		{
 			prevNpcID = prevID;
 		}
-
-
 		ImGui::NewLine();
 	}
 	ImGui::Separator();
-	//LOG_INFO(std::to_string(ImGui::GetScrollY()));
-
-	if (selectedID)
+	ImGui::Dummy({10,100});
+	ImGui::PushStyleColor(ImGuiCol_ChildBg, backgroundCol);
+	ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 90 + ImGui::GetScrollY()));
+	ImGui::BeginChild(" ", ImVec2(ImGui::GetWindowWidth() - 20, 80), true);
+	if (selectedID) //edit text
 	{
-		ImGui::Button(" ", ImVec2(1, 150));
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, backgroundCol);
-		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 120 + ImGui::GetScrollY()));
-		ImGui::BeginChild(" ", ImVec2(ImGui::GetWindowWidth() - 20, 100), true);
-		ImGui::InputTextMultiline("", &dialogEdit, ImVec2(ImGui::GetWindowWidth() - 100, 80));
+		ImGui::InputTextMultiline("", &dialogEdit, ImVec2(ImGui::GetWindowWidth() - 90, sendbuttonSize.y));
 		ImGui::SameLine(0.0f, 5.f);
 		if (ImGui::ImageButton(sendIcon, sendbuttonSize, ImVec2(0, 1), ImVec2(1, 0)))
 		{
-			dialogManager->EditDialogue(selectedID, formatString(dialogEdit));
+			dialogManager->EditDialogue(selectedID, FormatString(dialogEdit));
 			selectedID = 0;
 			dialogEdit = "";
 		}
-		ImGui::EndChild();
-		ImGui::PopStyleColor();
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::DOWN))
+		{
+			dialogManager->SwapNext(selectedID);
+		}
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::UP))
+		{
+			dialogManager->SwapPrev(selectedID);
+		}
 	}
-	else
+	else //new text
 	{
-		ImGui::Button(" ", ImVec2(1, 150));
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, backgroundCol);
-		ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowHeight() - 120 + ImGui::GetScrollY()));
-		ImGui::BeginChild("", ImVec2(ImGui::GetWindowWidth() - 20, 100), true);
 		if (ImGui::ImageButton(npcIcon, sendbuttonSize, ImVec2(0, 1), ImVec2(1, 0),1))
 		{
 			if (dialogEdit != "")
@@ -228,41 +222,50 @@ void DialoguePanel::Update()
 			}
 		}
 		ImGui::SameLine(0.0f, 8.f);
-		ImGui::InputTextMultiline("", &dialogEdit,ImVec2(ImGui::GetWindowWidth() - 154, 80));
+		ImGui::InputTextMultiline("", &dialogEdit,ImVec2(ImGui::GetWindowWidth() - 155, sendbuttonSize.y));
 		ImGui::SameLine(0.0f,8.f);
-		//ImGui::BeginGroup();
-		ImVec2 pos = ImGui::GetCursorPos();
-		ImGui::PushID(1);
-		//ImGui::PushStyleColor(ImGuiCol_Button, selectedCol);
-		if (ImGui::ImageButton(playerIcon, { sendbuttonSize.x, sendbuttonSize.y/2.f }, ImVec2(0, 1), ImVec2(1, 0.5f), 1, selectedCol))
+		if (prevID != prevPlayerID)
 		{
-			if (dialogEdit != "")
+			if (ImGui::ImageButton(playerIcon, sendbuttonSize, ImVec2(0, 1), ImVec2(1, 0), 1, selectedCol))
 			{
-				dialogManager->AddNewDialogue(prevID, dialogEdit, 1);
-				dialogEdit = "";
-				scrollToBottom = true;
+				if (dialogEdit != "")
+				{
+					dialogManager->AddNewDialogue(prevID, dialogEdit, 1);
+					dialogEdit = "";
+					scrollToBottom = true;
+				}
 			}
 		}
-		//ImGui::PopStyleColor();
-		ImGui::PopID();
-		ImGui::SetCursorPos({pos.x, pos.y+ sendbuttonSize.y / 2.f });
-		ImGui::PushID(2);
-		//ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol);
-		if (ImGui::ImageButton(playerIcon, { sendbuttonSize.x, sendbuttonSize.y / 2.f }, ImVec2(0, 0.5f), ImVec2(1, 0), 1, unselectedCol))
+		else
 		{
-			if (dialogEdit != "")
+			ImVec2 pos = ImGui::GetCursorPos();
+			ImGui::PushID(1);
+			if (ImGui::ImageButton(playerIcon, { sendbuttonSize.x, sendbuttonSize.y / 2.f }, ImVec2(0, 1), ImVec2(1, 0.5f), 1, selectedCol))
 			{
-				dialogManager->AddNewDialogue2(prevNpcID, dialogEdit, 1);
-				dialogEdit = "";
-				scrollToBottom = true;
+				if (dialogEdit != "")
+				{
+					dialogManager->AddNewDialogue(prevID, dialogEdit, 1);
+					dialogEdit = "";
+					scrollToBottom = true;
+				}
 			}
+			ImGui::PopID();
+			ImGui::SetCursorPos({ pos.x, pos.y + sendbuttonSize.y / 2.f });
+			ImGui::PushID(2);
+			if (ImGui::ImageButton(playerIcon, { sendbuttonSize.x, sendbuttonSize.y / 2.f }, ImVec2(0, 0.5f), ImVec2(1, 0), 1, unselectedCol))
+			{
+				if (dialogEdit != "")
+				{
+					dialogManager->AddNewDialogue2(prevNpcID, dialogEdit, 1);
+					dialogEdit = "";
+					scrollToBottom = true;
+				}
+			}
+			ImGui::PopID();
 		}
-		//ImGui::PopStyleColor();
-		ImGui::PopID();
-		//ImGui::EndGroup();
-		ImGui::EndChild();
-		ImGui::PopStyleColor();
 	}
+	ImGui::EndChild();
+	ImGui::PopStyleColor();
 
 	ImGui::End();
 }
@@ -279,7 +282,7 @@ void DialoguePanel::Free()
 }
 
 
-void DialoguePanel::narrateDialogue()
+void DialoguePanel::NarrateDialogue()
 {
 	if (dialogManager->GetDialogs().size() == 0)
 	{
@@ -325,7 +328,7 @@ void DialoguePanel::narrateDialogue()
 \return
 	formated string
 *******************************************************************************/
-std::string DialoguePanel::formatString(std::string _str)
+std::string DialoguePanel::FormatString(std::string _str)
 {
 	std::string editedStr;
 	std::string word;

@@ -181,6 +181,10 @@ public:
 	void CreateNewDialogue(int _id, std::string _text, int _speaker, int _next, int _next2 = -1);
 	void AddNewDialogue(int _previd, std::string _text, int _speaker);
 	void AddNewDialogue2(int _previd, std::string _text, int _speaker); //for second choice
+	void SwapNext(int _id);
+	void SwapPrev(int _id);
+	void Swap(int& _id, int& _id2, int& _id3);
+	int GetPrev(int _id);
 	/*!*****************************************************************************
 	\brief
 	Edit a certain dialog from the member map mDialogs.

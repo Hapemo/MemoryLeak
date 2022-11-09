@@ -177,7 +177,6 @@ void AudioManager::PlayAnySound(std::string _snd, int _channel)
     }
     
     LOG_INFO("Play a sound");
-    mChannel[_channel]->setVolume(1.0f);
     if (mBgmSound.find(_snd) != mBgmSound.end())
     {
         mBgmSound[_snd]->setMode(1);
@@ -188,6 +187,7 @@ void AudioManager::PlayAnySound(std::string _snd, int _channel)
         mSfxSound[_snd]->setMode(1);
         system->playSound(mSfxSound[_snd], nullptr, false, &mChannel[_channel]);
     }
+    mChannel[_channel]->setVolume(1.5f);
     
 }
 void AudioManager::PlayDialogueSound(std::string _snd, int _channel)
@@ -222,8 +222,8 @@ void AudioManager::PlayBGSound(std::string _snd, int _channel)
     if (!f)
     {
         LOG_INFO("Play BG sound");
-        mChannel[_channel]->setVolume(0.5f);
         system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
+        mChannel[_channel]->setVolume(0.1f);
     }
 }
 

@@ -25,9 +25,9 @@ public:
 
 	
 private:
-	void narrateDialogue();
+	void NarrateDialogue();
 	static std::string& BreakString(std::string& _str, int _offset, char _breakAt = ' ', std::string _breakWith = "\n");
-	std::string formatString(std::string);
+	std::string FormatString(std::string);
 	ImTextureID playerIcon;
 	ImTextureID npcIcon;
 	ImTextureID sendIcon;
