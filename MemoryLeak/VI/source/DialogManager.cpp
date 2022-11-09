@@ -291,7 +291,7 @@ void DialogManager::AddNewDialogue2(int _previd, std::string _text, int _speaker
 	newDialog.selectedChoice = 0;
 	mDialogs[_id] = newDialog;
 }
-//int DialogManager::SwapNext(int _id) {
+//int DialogManager::SwapNext(int _id) { // swap text and speaker only
 //	int id2 = GetNext(_id);
 //	if (id2 == 0)// no more swap down
 //		return _id;

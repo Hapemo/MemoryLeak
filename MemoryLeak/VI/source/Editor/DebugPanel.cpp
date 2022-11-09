@@ -93,6 +93,7 @@ void DebugPanel::Update()
 		}
 		ImGui::EndTabItem();
 	}
+	
 	ImGui::Text("   ");
 	ImGui::EndTabBar();
 	ImGui::End();

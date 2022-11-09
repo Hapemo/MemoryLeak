@@ -44,6 +44,7 @@
     <ClCompile Include="source\stb_image.cpp" />
     <ClCompile Include="source\Editor\AnimationPanel.cpp" />
     <ClCompile Include="source\Editor\WeatherPanel.cpp" />
+    <ClCompile Include="source\Editor\PerformancePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="include\TagVariable.h" />
     <ClInclude Include="include\Editor\AnimationPanel.h" />
     <ClInclude Include="include\Editor\WeatherPanel.h" />
+    <ClInclude Include="include\Editor\PerformancePanel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

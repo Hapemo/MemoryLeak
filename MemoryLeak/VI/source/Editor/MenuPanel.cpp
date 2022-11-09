@@ -107,6 +107,16 @@ void MenuPanel::Update()
 		}
 		if (ImGui::BeginMenu("Options"))
 		{
+			if (ImGui::BeginMenu("Change Theme"))
+			{
+				if(ImGui::MenuItem("Dark"))
+					ImGui::StyleColorsDark();
+				if (ImGui::MenuItem("Light"))
+					ImGui::StyleColorsLight();
+				if (ImGui::MenuItem("Classic"))
+					ImGui::StyleColorsClassic();
+				ImGui::EndMenu();
+			}
 			if (!GetPannelIsActive(E_PANELID::DEBUG) && ImGui::MenuItem("Show Debug Info"))
 			{
 				//debugPanel.setIsActive(true);

@@ -138,6 +138,10 @@ void InspectorPanel::Update()
 		}
 		ImGui::EndTabItem();
 	}
+	if (Input::CheckKey(E_STATE::PRESS, E_KEY::DELETE))
+	{
+		DeleteEntity();
+	}
 	ImGui::EndTabBar();
 	ImGui::End();
 }

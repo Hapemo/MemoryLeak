@@ -13,16 +13,17 @@ Entities and its Components.
 #include <ECSManager.h>
 //#include <Logger.h>
 #include <Panel.h>
-#include <AnimationPanel.h>
-#include <HierarchyPanel.h>
-#include <InspectorPanel.h>
-#include <WorldViewPanel.h>
-#include <GameViewPanel.h>
-#include <DialoguePanel.h>
-#include <DebugPanel.h>
-#include <AssetPanel.h>
 #include <MenuPanel.h>
+#include <AssetPanel.h>
+#include <DebugPanel.h>
 #include "WeatherPanel.h"
+#include <GameViewPanel.h>
+#include <WorldViewPanel.h>
+#include <DialoguePanel.h>
+#include <InspectorPanel.h>
+#include <HierarchyPanel.h>
+#include <AnimationPanel.h>
+#include "PerformancePanel.h"
 
 std::vector<Panel*> EditorManager::panels{};
 
@@ -75,6 +76,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static DebugPanel debugPanel{};
 	static MenuPanel menuPanel{};
 	static WeatherPanel weatherPanel{};
+	static PerformancePanel performancePanel{};
 	panels.push_back(&hierarchyPanel);
 	panels.push_back(&inspectorPanel);
 	panels.push_back(&weatherPanel);
@@ -85,6 +87,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&menuPanel);
 	panels.push_back(&gameViewPanel);
 	panels.push_back(&worldViewPanel);
+	panels.push_back(&performancePanel);
 	Init();
 	
 }
