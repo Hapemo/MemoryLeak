@@ -289,6 +289,11 @@ struct LightSource
 	Math::Vec2 centreOffset;
 };
 
+
+struct ParentChild {
+	std::set<Entity> children;
+};
+
 //use to index the variant data type, for ditor and serilization to determine type stored
 enum class COMPONENTID
 {
