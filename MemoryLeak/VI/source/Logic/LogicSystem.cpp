@@ -18,18 +18,23 @@ The LogicSystem class handles the C# scripting for the engine.
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
-	ScriptManager<ScriptComponent>::GetInstance()->PrintRegisteredScripts();
+	ScriptManager<ScriptComponent>::GetInstance()->RegisterScript<ScriptComponent>();
+	//ScriptManager<ScriptComponent>::GetInstance()->PrintRegisteredScripts();
+	/*
 	for (Entity const& e : mEntities) {
 		e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
 		LOG_WARN(e.GetComponent<Script>().name.c_str());
 		LOG_WARN("--");
 	}
+	*/
 
 	LOG_DEBUG("LOGICSYSYEM INIT.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun()) {
-			if (e.GetComponent<Script>().script != nullptr)
-				e.GetComponent<Script>().script->StartScript(e);
+			if (e.GetComponent<Script>().name != "")
+				if(ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
+					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
+				//e.GetComponent<Script>().script->StartScript(e);
 			else
 				LOG_ERROR("start: Script failed to attach!!!");
 		}
@@ -44,8 +49,10 @@ void LogicSystem::Update() {
 	//LOG_DEBUG("LOGICSYSYEM UPDATE.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun() && e.HasComponent<Script>()) {
-			if (e.GetComponent<Script>().script != nullptr)
-				e.GetComponent<Script>().script->UpdateScript(e);
+			if (e.GetComponent<Script>().name != "")
+				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
+					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->UpdateScript(e);
+				//e.GetComponent<Script>().script->UpdateScript(e);
 			else
 				LOG_ERROR("Update: Script failed to attach!!!");
 		}
@@ -60,8 +67,11 @@ void LogicSystem::Exit() {
 	LOG_DEBUG("LOGICSYSYEM EXITING.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun() && e.HasComponent<Script>()) {
-			if (e.GetComponent<Script>().script != nullptr)
-				e.GetComponent<Script>().script->EndScript(e);
+			if (e.GetComponent<Script>().name != "")
+				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
+					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->EndScript(e);
+					//e.GetComponent<Script>().script->EndScript(e);
+				//delete e.GetComponent<Script>().script;
 			else
 				LOG_ERROR("End: Script failed to attach!!!");
 		}

@@ -277,7 +277,7 @@ struct Dialogue
 *******************************************************************************/
 struct Script {
 	std::string name;
-	ScriptComponent* script;
+	//ScriptComponent* script;
 };
 /*!*****************************************************************************
 \brief

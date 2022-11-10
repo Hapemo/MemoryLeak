@@ -277,14 +277,14 @@ void SerializationManager::LoadScene(std::string _filename)
 		if (entity.HasMember("Script")) {
 			Script script;
 			script.name = entity["Script"]["name"].GetString();
-			script.script = nullptr;
+			//script.script = nullptr;
 
 			e.AddComponent<Script>(script);
 		}
 		mEntities.insert(e);
 		i++;
 	}
-	logicSystem->Init();
+	//logicSystem->Init();
 }
 
 /*!*****************************************************************************
@@ -930,13 +930,13 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 		if (entity.HasMember("Script")) {
 			Script script;
 			script.name = entity["Script"]["name"].GetString();
-			script.script = nullptr;
+			//script.script = nullptr;
 			e.AddComponent<Script>(script);
 		}
 		sceneData.mEntities.insert(e);
 		i++;
 	}
-	logicSystem->Init();
+	//logicSystem->Init();
 	return sceneData;
 }
 
@@ -1181,13 +1181,13 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 		if (entity.HasMember("Script")) {
 			Script script;
 			script.name = entity["Script"]["name"].GetString();
-			script.script = nullptr;
+			//script.script = nullptr;
 			e.AddComponent<Script>(script);
 		}
 		gamestateData.mEntities.insert(e);
 		i++;
 	}
-	logicSystem->Init();
+	//logicSystem->Init();
 	return gamestateData;
 }
 

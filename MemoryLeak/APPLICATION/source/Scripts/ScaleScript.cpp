@@ -45,4 +45,5 @@ void ScaleScript::EndScript(Entity const& gob) {
 	LOG_INFO("ScaleScript end works!!!");
 }
 
-REGISTER_SCRIPT(ScriptComponent, ScaleScript);
+//REGISTER_SCRIPT(ScriptComponent, ScaleScript);
+//ScriptFactory<ScriptComponent, ScaleScript> s_ScaleScriptCreator("ScaleScript");

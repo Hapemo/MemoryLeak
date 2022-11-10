@@ -24,6 +24,8 @@ How to make a gamestate?
 #include "GameState.h"
 #include "Scene.h"
 #include "Serialization.h"
+#include "ScriptManager.h"
+#include "ScriptComponent.h"
 // Nothing for now
 
 void GameState::LoadWithGUID(ResourceManager::GUID const& _guid) {
@@ -63,7 +65,6 @@ void GameState::CreateScene() {
 void GameState::PrimaryLoad() {
   Load();
   editorManager->Init();
-  logicSystem->Init();
 }
 
 void GameState::PrimaryUnload() {

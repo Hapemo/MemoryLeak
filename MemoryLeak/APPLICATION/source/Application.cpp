@@ -39,7 +39,7 @@ void Application::startup() {
 void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
-  logicSystem->Init();
+  //logicSystem->Init();
   //aiManager->weatherAIinit();
   
   renderManager->Init(&window_width, &window_height);
@@ -72,10 +72,9 @@ void Application::SystemUpdate() {
   END_TRACK("Physics");
 
   //Scripting
-  TRACK_PERFORMANCE("Scripting");
-  logicSystem->Update();
-
-  END_TRACK("Scripting");
+  //TRACK_PERFORMANCE("Scripting");
+  //logicSystem->Update();
+  //END_TRACK("Scripting");
 
   // Animator
   TRACK_PERFORMANCE("Animation");
@@ -134,6 +133,7 @@ void Application::exit() {
   spriteManager->FreeTextures();
   ResourceManager::GetInstance()->UnloadAllResources();
   GameStateManager::GetInstance()->Exit();
+  ScriptManager<ScriptComponent>::GetInstance()->ScriptingFree();
   SingletonManager::destroyAllSingletons();
   // Part 2
   glfwTerminate();
