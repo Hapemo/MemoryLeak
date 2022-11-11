@@ -22,6 +22,8 @@ using indicated GUIDs.
 Currently, gamestates have to be manually unloaded when exiting the gamestate,
 cannot call UnloadAllResources. Next time, during game mode instead of editor mode,
 UnloadAllResources should be called to unload even the gamestate's data.
+The resource manager can only manage static resources. Dynamic resources that will 
+have change in data during run-time will not work.
 *******************************************************************************/
 
 #pragma once
@@ -71,6 +73,7 @@ public:
 		scene,
 		gamestateEntities,
 		dialogue,
+		prefab,
 		font /////////////////////////////added
 	};
 private:
@@ -243,13 +246,17 @@ public:
 	// Load all resources to resource manager
 	/*!*****************************************************************************
 	Load all resouces from one resource folder stated in the resource manager class.
-	Calls another function overload of LoadAllResources to load all files.
+	Calls another function overload of LoadAllResources to load all files. 
+
+	NOTE: This function is an EDITOR-ONLY function. Launch of game should include a 
+	different structure
 	*******************************************************************************/
 	void LoadAllResources();
 
 	/*!*****************************************************************************
 	Load all files in a folder/file path. If it's a folder, enter it and find files
-	to load in.
+	to load in. NOTE: This function is an EDITOR-ONLY function. Launch of game 
+	should include a different structure
 
 	\param std::filesystem::path const&
 	- Folder/file path to load
@@ -347,6 +354,8 @@ public:
 	- Guid of the scene
 	*******************************************************************************/
 	void UnloadScene(GUID const&);
+
+	std::filesystem::path FileTypePath(E_RESOURCETYPE);
 
 	//------------------------------------
 	// Helper function 

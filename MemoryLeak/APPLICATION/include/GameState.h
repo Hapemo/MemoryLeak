@@ -82,7 +82,8 @@ public:
 protected:
 	void LoadWithGUID(ResourceManager::GUID const&);
 	void UnloadWithGUID();
-	void CreateScene();
+	void CreateScene(std::string const& = "");
+	void SaveGameState();
 
 	/*!*****************************************************************************
 	Unload any resources used in the game state, such as art assets and heap memory
@@ -96,6 +97,6 @@ protected:
 	virtual void Load() = 0;
 
 	std::vector<Scene*> mScenes;
-	std::set<Entity> mEntities;
+	std::set<Entity> mEntities; // (Deprecated)
 	ResourceManager::GUID mGuid;
 };

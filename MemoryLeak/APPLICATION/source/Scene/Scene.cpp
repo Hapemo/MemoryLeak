@@ -15,12 +15,16 @@ Added adding and removing of entity
 #include "Scene.h"
 
 
-Scene::Scene() : mEntities(), pause(false), mGuid(0) {
+Scene::Scene() : mEntities(), pause(false), mGuid(0), mName() {
 	LOG_CUSTOM("SCENE", "Scene created with mGuid: " + std::to_string(mGuid));
 }
 
-Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), pause(false), mGuid(_guid) {
+Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), pause(false), mGuid(_guid), mName() {
 	LOG_CUSTOM("SCENE", "Scene created with mGuid: " + std::to_string(mGuid));
+}
+
+Scene::Scene(std::string const& _name) : mEntities(), pause(false), mGuid(0), mName(_name) {
+	LOG_CUSTOM("SCENE", "Scene created with name: " + mName);
 }
 
 Scene::~Scene() {
@@ -50,6 +54,42 @@ void Scene::Unload() {
 	LOG_CUSTOM("SCENE", "Unloading Scene with mGuid: " + std::to_string(mGuid));
 	ResourceManager::GetInstance()->UnloadScene(mGuid);
 	mEntities.clear();
+}
+
+// Input name of file. eg. Scene1.json
+void Scene::Save(std::string _name) {
+	// Scene file's location
+	std::filesystem::path path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene) };
+
+	// If no name specified, assume the file is already created and use it's old name.
+	if (_name.empty()) {
+		_name = ResourceManager::GetInstance()->GetFilePath(mGuid);
+	} else {
+		// Check if file name exists. If yes, just override it. If not, make a new one with a new guid and use it
+		std::filesystem::path pathName = ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene);
+		_name = pathName.string() + _name;
+		if (ResourceManager::GetInstance()->FileExist(_name)) {
+			LOG_CUSTOM("SCENE", "Saving scene into existing scene file: " + _name);
+		} else mGuid = ResourceManager::GetInstance()->GUIDGenerator(_name); // Else create a new guid for it
+	}
+
+	// Open/create the file
+	std::ofstream ofile{ _name };
+	if (!ofile.is_open()) {
+		LOG_WARN("Unable to open output file while attempting to save scene");
+		return;
+	}
+
+	//----------------------------------------------
+	// Save scene data here
+	//----------------------------------------------
+
+	// Save guid here
+	// Save it's paused state here
+
+	// Save scene entities. (mEntities)
+	// Ask wei jhin how he's saving them now.
+
 }
 
 void Scene::AddEntity() {

@@ -5,7 +5,6 @@
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\GameStateManager.h" />
-    <ClInclude Include="include\GameState\GameState1.h" />
     <ClInclude Include="include\GameState\AIDemo.h" />
     <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
     <ClInclude Include="include\GameState\Lighting.h" />
@@ -16,6 +15,7 @@
     <ClInclude Include="include\GameState\Level1.h" />
     <ClInclude Include="include\GameState\MainMenu.h" />
     <ClInclude Include="include\Scripts\TestScript.h" />
+    <ClInclude Include="include\GameState\JazzGS.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Scene\Scene.cpp" />
@@ -23,7 +23,6 @@
     <ClCompile Include="source\GameState.cpp" />
     <ClCompile Include="source\GameStateManager.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\GameState\GameState1.cpp" />
     <ClCompile Include="source\GameState\AIDemo.cpp" />
     <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
     <ClCompile Include="source\GameState\Lighting.cpp" />
@@ -34,5 +33,6 @@
     <ClCompile Include="source\GameState\Level1.cpp" />
     <ClCompile Include="source\GameState\MainMenu.cpp" />
     <ClCompile Include="source\Scripts\TestScript.cpp" />
+    <ClCompile Include="source\GameState\JazzGS.cpp" />
   </ItemGroup>
 </Project>
