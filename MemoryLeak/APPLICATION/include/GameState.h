@@ -97,6 +97,6 @@ protected:
 	virtual void Load() = 0;
 
 	std::vector<Scene*> mScenes;
-	std::set<Entity> mEntities;
+	std::set<Entity> mEntities; // (Deprecated)
 	ResourceManager::GUID mGuid;
 };

@@ -86,7 +86,6 @@ void Scene::Save(std::string _name) {
 	// Save scene entities. (mEntities)
 	// Ask wei jhin how he's saving them now.
 
-	
 }
 
 void Scene::AddEntity() {

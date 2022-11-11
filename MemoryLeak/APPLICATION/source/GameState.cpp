@@ -29,7 +29,7 @@ How to make a gamestate?
 void GameState::LoadWithGUID(ResourceManager::GUID const& _guid) {
   LOG_CUSTOM("GAMESTATE", "Loading GameState " + std::to_string(_guid));
   GameStateData gamestateData = ResourceManager::GetInstance()->LoadGameState(_guid);
-  mEntities = gamestateData.mEntities;
+  //mEntities = gamestateData.mEntities;
   mGuid = _guid;
   // Scenes are currently loaded here, but in future, it will be done via resource manager.
   for (ResourceManager::GUID const& guid : gamestateData.mGUIDs) {
@@ -58,7 +58,9 @@ void GameState::UnloadWithGUID() {
 // This should be called when unloading from the editor. 
 // Save all scenes it has and save all it's entities.
 void GameState::SaveGameState() {
-
+  GameStateData gsData{};
+  for (auto scenePtr : mScenes)
+    gsData.mGUIDs.push_back(scenePtr->mGuid);
 }
 
 void GameState::CreateScene() {

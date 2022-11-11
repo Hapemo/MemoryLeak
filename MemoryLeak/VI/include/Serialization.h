@@ -29,7 +29,6 @@ struct SceneData {
 
 //Data that a gamestate class should contain
 struct GameStateData {
-	std::set<Entity> mEntities;
 	std::vector<ResourceManager::GUID> mGUIDs;
 };
 
@@ -46,11 +45,10 @@ public:
 	void LoadDialogs(std::string _filename = "Dialog1");
 	void SaveDialogs(std::string _filename = "Dialog1");
 
-	static std::set<Entity> LoadEntities(std::string const& _filePath);
 	static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
 	static SceneData LoadSceneData(std::string const& _filePath);
-	static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid);
-	static GameStateData LoadGameStateData(std::string const& _filePath);
+	static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid); // (Deprecated)
+	static GameStateData LoadGameStateData(std::string const& _filePath); // (Deprecated)
 	static void SaveSceneData(ResourceManager::GUID const&);
 
 private:

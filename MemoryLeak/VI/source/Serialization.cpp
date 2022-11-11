@@ -969,7 +969,6 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 	{
 		Value gamestateDataValue(kObjectType);
 		gamestateDataValue = doc[gamestateDataJson];
-	
 
 		Value a(kObjectType);
 		a = gamestateDataValue["Scenes"].GetArray();
@@ -979,214 +978,6 @@ GameStateData SerializationManager::LoadGameStateData(std::string const& _filePa
 		}
 	}
 	
-	int i = 0;
-	int runOnce{0};
-	for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr <= doc.MemberEnd(); ++itr) {
-		if (!runOnce++) continue;
-
-		Entity e{ ECS::CreateEntity() };
-		Value entity(kObjectType);
-		std::string str("Entity" + std::to_string(i));
-		Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
-		if (!doc.HasMember(index))
-		{
-			LOG_INFO("1 Enitity not loaded");
-
-			continue;
-		}
-		entity = doc[index];
-
-		if (entity.HasMember("General")) {
-			std::string name = entity["General"]["name"].GetString();
-			bool isActive = entity["General"]["isActive"].GetBool();
-			int tag = entity["General"]["tag"].GetInt();
-			int subtag = entity["General"]["subtag"].GetInt();
-			e.AddComponent<General>(General{ name, (TAG)tag ,(SUBTAG)subtag, isActive });
-			if (tag == (int)TAG::PLAYER)
-				e.AddComponent(PlayerTmp{ 0 });
-		}
-		if (entity.HasMember("Lifespan")) {
-			float lifetime = entity["Lifespan"]["lifetime"].GetFloat();
-			float limit = entity["Lifespan"]["limit"].GetFloat();
-			e.AddComponent<Lifespan>({ lifetime, limit });
-		}
-		if (entity.HasMember("Transform")) {
-			Math::Vec2 s = GetVec2(entity["Transform"]["scale"]);
-			float r = (float)entity["Transform"]["rotation"].GetFloat();
-			Math::Vec2 t = GetVec2(entity["Transform"]["translation"]);
-
-			e.AddComponent<Transform>({ s, r, t });
-		}
-		if (entity.HasMember("Sprite")) {
-			Color c;
-			c.r = (GLubyte)entity["Sprite"]["color"]["r"].GetInt();
-			c.g = (GLubyte)entity["Sprite"]["color"]["g"].GetInt();
-			c.b = (GLubyte)entity["Sprite"]["color"]["b"].GetInt();
-			c.a = (GLubyte)entity["Sprite"]["color"]["a"].GetInt();
-			SPRITE s = (SPRITE)entity["Sprite"]["sprite"].GetInt();
-			GLuint t = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
-			//GLuint t = (GLuint)entity["Sprite"]["texture"].GetInt();
-			int l = entity["Sprite"]["layer"].GetInt();
-			e.AddComponent<Sprite>({ c, s, t ,l });
-		}
-		if (entity.HasMember("Animation")) {
-			std::vector<GLuint> images;
-			Value ar(kObjectType);
-			ar = entity["Animation"]["images"].GetArray();
-			for (int j = 0; j < (int)ar.Size(); ++j) {
-				GLuint tex = spriteManager->GetTextureID(ar[j].GetString());
-				images.push_back(tex);
-			}
-			float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
-			float timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
-			int currentImageIndex = entity["Animation"]["currentImageIndex"].GetInt();
-			e.AddComponent<Animation>({ images , timePerImage , timeToImageSwap , currentImageIndex });
-		}
-		if (entity.HasMember("SheetAnimation")) {
-			short frameCount = (short)entity["SheetAnimation"]["frameCount"].GetInt();
-			short currentImageIndex = (short)entity["SheetAnimation"]["currFrameIndex"].GetInt();
-			float timePerImage = entity["SheetAnimation"]["timePerFrame"].GetFloat();
-			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
-			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
-		}
-		if (entity.HasMember("Physics2D")) {
-
-			bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
-			float mass = entity["Physics2D"]["mass"].GetFloat();
-			float inertia = entity["Physics2D"]["inertia"].GetFloat();
-			float restitution = entity["Physics2D"]["restitution"].GetFloat();
-			float friction = entity["Physics2D"]["friction"].GetFloat();
-			float damping = entity["Physics2D"]["damping"].GetFloat();
-
-			Math::Vec2 accumulatedForce = GetVec2(entity["Physics2D"]["accumulatedForce"]);
-			Math::Vec2 velocity = GetVec2(entity["Physics2D"]["velocity"]);
-			Math::Vec2 acceleration = GetVec2(entity["Physics2D"]["acceleration"]);
-
-			float angularVelocity = entity["Physics2D"]["angularVelocity"].GetFloat();
-			float angularTorque = entity["Physics2D"]["angularTorque"].GetFloat();
-
-			//vect force
-			std::vector<Force> forceList{};
-			Value a(kObjectType);
-			a = entity["Physics2D"]["forceList"].GetArray();
-			for (int j = 0; j < (int)a.Size(); ++j)
-			{
-				Force force{};
-				Value f(kObjectType);
-				f = a[j].GetObject();
-				force.lifetimeLimit = f["lifetimeLimit"].GetDouble();
-				force.age = f["age"].GetDouble();
-				force.isActive = f["isActive"].GetBool();
-				force.forceID = f["forceID"].GetInt();
-				if (force.forceID == 0)
-				{
-					force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
-					force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
-				}
-				else if (force.forceID == 1)
-				{
-					force.rotationalForce.torque = f["rotationalForce"]["torque"].GetFloat();
-				}
-				else if (force.forceID == 2)
-				{
-					force.dragForce.directionalDrag = f["dragForce"]["directionalDrag"].GetFloat();
-					force.dragForce.rotationalDrag = f["dragForce"]["rotationalDrag"].GetFloat();
-				}
-
-				forceList.push_back(force);
-			}
-
-			bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
-
-			e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
-		}
-		if (entity.HasMember("RectCollider"))
-		{
-			Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
-			Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
-			bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
-			e.AddComponent<RectCollider>({ centerOffset , scaleOffset , renderFlag });
-		}
-		if (entity.HasMember("CircleCollider"))
-		{
-			Math::Vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
-			float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
-			bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
-			e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , renderFlag });
-		}
-		if (entity.HasMember("Edge2DCollider"))
-		{
-			Math::Vec2 p0Offset = GetVec2(entity["Edge2DCollider"]["p0Offset"]);
-			float rotationOffset = entity["Edge2DCollider"]["rotationOffset"].GetFloat();
-			float scaleOffset = entity["Edge2DCollider"]["scaleOffset"].GetFloat();
-			bool renderFlag = entity["Edge2DCollider"]["renderFlag"].GetBool();
-
-			e.AddComponent<Edge2DCollider>({ p0Offset ,rotationOffset, scaleOffset , renderFlag });
-		}
-		if (entity.HasMember("Point2DCollider"))
-		{
-			Math::Vec2 centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
-			bool renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
-			e.AddComponent<Point2DCollider>({ centerOffset ,renderFlag });
-		}
-		if (entity.HasMember("Audio"))
-		{
-			Sound sound;
-			sound.path = entity["Audio"]["path"].GetString();
-			sound.volume = entity["Audio"]["volume"].GetFloat();
-			sound.volumeMod = entity["Audio"]["volumeMod"].GetFloat();
-			sound.pitch = entity["Audio"]["pitch"].GetFloat();
-			sound.isPaused = entity["Audio"]["isPaused"].GetBool();
-			sound.isMute = entity["Audio"]["isMute"].GetBool();
-			sound.isLoop = entity["Audio"]["isLoop"].GetBool();
-			sound.isRandPitch = entity["Audio"]["isRandPitch"].GetBool();
-
-			bool isSpacial = entity["Audio"]["isSpacial"].GetBool();
-			e.AddComponent<Audio>({ sound , isSpacial });
-		}
-		if (entity.HasMember("AI"))
-		{
-			int colorChange = entity["AI"]["colorChange"].GetInt();
-			int movement = entity["AI"]["movement"].GetInt();
-			float speed = entity["AI"]["speed"].GetFloat();
-			float range = entity["AI"]["range"].GetFloat();
-
-			e.AddComponent<AI>({ colorChange ,movement, speed , range });
-		}
-		if (entity.HasMember("Text")) {
-			Text text;
-			text.fontFile = entity["Text"]["fontFile"].GetString();
-			text.text = entity["Text"]["text"].GetString();
-			text.offset = GetVec2(entity["Text"]["offset"]);
-			text.scale = entity["Text"]["scale"].GetFloat();
-			text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
-			text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
-			text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
-			text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
-			e.AddComponent<Text>(text);
-		}
-		if (entity.HasMember("Dialogue")) {
-			Dialogue dialogue;
-			dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-			dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
-			dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
-			dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
-			e.AddComponent<Dialogue>(dialogue);
-		}
-		if (entity.HasMember("LightSource")) {
-			LightSource lightSource;
-			lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
-			e.AddComponent<LightSource>(lightSource);
-		}
-		if (entity.HasMember("Script")) {
-			Script script;
-			script.name = entity["Script"]["name"].GetString();
-			script.script = nullptr;
-			e.AddComponent<Script>(script);
-		}
-		gamestateData.mEntities.insert(e);
-		i++;
-	}
 	logicSystem->Init();
 	return gamestateData;
 }
@@ -1207,7 +998,6 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 	// Add all scene data
 	Value sceneDataValue(kObjectType);
 	sceneDataValue.AddMember(StringRef("isActive"), sceneData.isActive, allocator);
-
 
 	// Add all entities in the scene
 	for (const Entity& e : sceneData.mEntities) {
@@ -1366,3 +1156,6 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 	} else
 		LOG_INFO("Saved Scene: " + path);
 }
+
+
+
