@@ -13,8 +13,10 @@ engine.
 
 #include "RotateScript.h"
 
-//ScriptFactory<ScriptComponent, RotateScript> s_RotateScriptCreator;
-//"RotateScript"
+//bool success = ScriptManager<ScriptComponent>::GetInstance()->RegisterScript<RotateScript>("RotateScript");
+//ScriptFactory<ScriptComponent, RotateScript> s_RotateScript;
+//ScriptFactory<ScriptComponent, RotateScript> s_RotateScriptCreator("RotateScript");
+
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
@@ -46,5 +48,3 @@ void RotateScript::EndScript(Entity const& gob) {
 	(void)gob;
 	LOG_INFO("RotateScript end works!!!");
 }
-//ScriptFactory<ScriptComponent, RotateScript> s_RotateScriptCreator();
-//REGISTER_SCRIPT(ScriptComponent, RotateScript);

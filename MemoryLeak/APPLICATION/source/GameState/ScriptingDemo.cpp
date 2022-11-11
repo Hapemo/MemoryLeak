@@ -13,7 +13,6 @@ Gamestate for testing scripting.
 
 void ScriptingDemo::Load() {
     LoadWithGUID(16673097090400516);
-    //renderManager->SetVectorLengthModifier(5.f);
     //renderManager->SetDebug(true);
 }
 

@@ -313,6 +313,3 @@ enum class COMPONENTID
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
 	Point2DCollider, Audio, Text, AI, Script, Dialogue, PlayerTmp>  COMPONENT;
-
-
-

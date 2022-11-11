@@ -133,7 +133,7 @@ void Application::exit() {
   spriteManager->FreeTextures();
   ResourceManager::GetInstance()->UnloadAllResources();
   GameStateManager::GetInstance()->Exit();
-  ScriptManager<ScriptComponent>::GetInstance()->ScriptingFree();
+  ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   SingletonManager::destroyAllSingletons();
   // Part 2
   glfwTerminate();

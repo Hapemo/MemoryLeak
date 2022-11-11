@@ -43,6 +43,3 @@ void TestScript::EndScript(Entity const& gob) {
 	(void)gob;
 	LOG_INFO("Test script end works!!!");
 }
-
-//REGISTER_SCRIPT(ScriptComponent, TestScript);
-//ScriptFactory<ScriptComponent, TestScript> s_TestScriptCreator("TestScript");

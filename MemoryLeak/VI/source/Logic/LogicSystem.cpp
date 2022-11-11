@@ -12,13 +12,16 @@ The LogicSystem class handles the C# scripting for the engine.
 
 #include "LogicSystem.h"
 #include "ScriptManager.h"
+//#include "RotateScript.h"
 
 /*!*****************************************************************************
 \brief
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
-	ScriptManager<ScriptComponent>::GetInstance()->RegisterScript<ScriptComponent>();
+	//ScriptFactory<ScriptComponent, RotateScript> s_RotateScriptCreator();
+	//ScriptFactory<ScriptComponent, RotateScript> s_RotateScriptCreator("RotateScript");
+	//ScriptManager<ScriptComponent>::GetInstance()->RegisterScript<RotateScript>("RotateScript");
 	//ScriptManager<ScriptComponent>::GetInstance()->PrintRegisteredScripts();
 	/*
 	for (Entity const& e : mEntities) {
