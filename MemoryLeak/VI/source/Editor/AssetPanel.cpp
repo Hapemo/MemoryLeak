@@ -185,6 +185,10 @@ void AssetPanel::Update()
 							}
 						}
 					}
+					else
+					{
+						ImGui::Button(texFilename.c_str(), folderSize);
+					}
 
 
 					/*my_image2_texture = spriteManager->GetTextureID(texPath);

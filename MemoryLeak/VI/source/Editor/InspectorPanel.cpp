@@ -324,16 +324,18 @@ void InspectorPanel::TransformEditor()
 
 	if (ImGui::CollapsingHeader("Transform") || true) {
 		//ImGui::Text("Transform Component");
-		static bool aspect = false;
 		if (ImGui::Button("Flip X", ImVec2(ImGui::GetWindowWidth()*0.32f, 18)))
 			e.GetComponent<Transform>().scale.x *= -1.f;
+		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
 		ImGui::SameLine(0.f, 5.f);
 		if (ImGui::Button("Flip Y", ImVec2(ImGui::GetWindowWidth() * 0.32f, 18)))
 			e.GetComponent<Transform>().scale.y *= -1.f;
+		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
 		ImGui::SameLine(0.f, 5.f);
 		ImGui::Checkbox("Aspect ratio", &aspect);
 		tmpVec2[0] = transformManager->GetScale(e).x;
 		tmpVec2[1] = transformManager->GetScale(e).y;
+		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
 		float ratio = tmpVec2[1] / tmpVec2[0];
 		ImGui::DragFloat2("Set Scale", tmpVec2);
 		if (aspect)

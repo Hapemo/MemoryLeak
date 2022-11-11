@@ -44,7 +44,7 @@ bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
 std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
-
+bool EditorManager::aspect = false;
 /*!*****************************************************************************
 \brief
 	Load the level editor
@@ -105,6 +105,7 @@ void EditorManager::Init()
 {
 	isScenePaused = true;
 	selectedEntity = nullptr;
+	aspect = false;
 	SRT = 0;
 	stackPointer = 0;
 
@@ -442,6 +443,7 @@ void EditorManager::SceneReset()
 	highestLayer = 0;
 	selectedEntity = nullptr;
 	selectedPrefab = nullptr;
+	aspect = false;
 	renderManager->ResetCameras();
 }
 

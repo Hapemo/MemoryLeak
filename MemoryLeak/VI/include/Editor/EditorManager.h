@@ -76,7 +76,7 @@ protected:
 	static std::set<Entity>* myEntities;
 	static const Entity* selectedEntity;
 	static Entity selEntity;
-
+	static bool aspect;
 	static std::vector <Prefab*> mPrefabs;
 	static Prefab* selectedPrefab;
 	static const void* selected;

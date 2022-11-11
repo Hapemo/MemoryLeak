@@ -139,6 +139,7 @@ void HierarchyPanel::setSelectedEntity(const Entity* e)
 	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 	{
 		selectedEntity = e;
+		aspect = false;
 		selectedPrefab = nullptr;
 	}
 }
