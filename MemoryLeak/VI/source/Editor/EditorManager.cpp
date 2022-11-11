@@ -178,11 +178,11 @@ void EditorManager::Free()
 	SceneReset();
 	undoStack.clear();
 	stackPointer = -1;
-	for (size_t p = 0; p < mPrefabs.size(); p++)
+	/*for (size_t p = 0; p < mPrefabs.size(); p++)
 	{
 		delete mPrefabs[p];
 	}
-	mPrefabs.clear();
+	mPrefabs.clear();*/
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 		panels[p]->Free();
@@ -201,6 +201,7 @@ void EditorManager::Unload()
 	{
 		delete mPrefabs[i];
 	}
+	mPrefabs.clear();
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();

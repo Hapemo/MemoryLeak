@@ -692,7 +692,12 @@ void SerializationManager::SaveDialogs(std::string _filename)
 	if (!ofs.good()) LOG_ERROR("Unable to save dialogue file to: " + path);
 	else LOG_INFO("Saved dialogue file: " + path);
 }
-
+void SerializationManager::LoadPrefabs(std::string _filename)
+{
+}
+void SerializationManager::SavePrefabs(std::string _filename)
+{
+}
 
 SceneData SerializationManager::LoadSceneData(ResourceManager::GUID const& _guid) {
 	return LoadSceneData(ResourceManager::GetInstance()->GetFilePath(_guid));

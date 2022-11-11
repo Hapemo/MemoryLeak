@@ -42,6 +42,8 @@ class SerializationManager : public System
 public:
 	void LoadScene(std::string _filename = "SceneJ");
 	void SaveScene(std::string _filename = "SceneJ");
+	void LoadPrefabs(std::string _filename = "NewPrefab");
+	void SavePrefabs(std::string _filename = "NewPrefab");
 	void LoadDialogs(std::string _filename = "Dialog1");
 	void SaveDialogs(std::string _filename = "Dialog1");
 

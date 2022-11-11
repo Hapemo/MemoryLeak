@@ -21,7 +21,15 @@ None.
 *******************************************************************************/
 void PrefabPanel::Init()
 {
-
+	std::string rootPath = "..\\resources\\Prefabs\\";
+	std::filesystem::path m_CurrentDirectory = std::filesystem::path(rootPath);
+	for (auto& directory : std::filesystem::directory_iterator(m_CurrentDirectory))
+	{
+		const auto& path = directory.path();
+		if (path.extension() == ".meta")
+			continue;
+		serializationManager->LoadPrefabs(path.stem().string());
+	}
 }
 /*!*****************************************************************************
 \brief
@@ -75,7 +83,11 @@ None.
 *******************************************************************************/
 void PrefabPanel::Free()
 {
-
+	for (size_t p = 0; p < mPrefabs.size(); p++)
+	{
+		delete mPrefabs[p];
+	}
+	mPrefabs.clear();
 }
 
 void PrefabPanel::newPrefab()

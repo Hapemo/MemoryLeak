@@ -93,7 +93,6 @@ void AudioManager::LoadDialogueAudio(std::string audio) //Load a sound needed in
     FMOD::Sound* snd;
     std::string parent = "..\\resources\\Audio\\Dialogue\\";
     std::string rootPath = parent + audio;
-    std::cout << rootPath << "    root\n";
     struct stat buffer;
     if (stat(rootPath.c_str(), &buffer) != 0)
     {
@@ -101,7 +100,6 @@ void AudioManager::LoadDialogueAudio(std::string audio) //Load a sound needed in
         return;
     }
     std::filesystem::path m_CurrentDirectory = std::filesystem::path(rootPath);
-    std::cout << m_CurrentDirectory.string() << "\n";
     for (auto& directory : std::filesystem::directory_iterator(m_CurrentDirectory))
     {
         const auto& path = directory.path();
