@@ -13,8 +13,7 @@ Game state for level 1
 
 
 void Level1::Load() {
-	//serializationManager->LoadScene("Scene_Level1");
-	LoadWithGUID(16669349234147588);
+	serializationManager->LoadScene("Scene_Level1");
 }
 
 void Level1::Init() {
@@ -37,4 +36,5 @@ void Level1::Free() {
 }
 
 void Level1::Unload() {
+	ECS::DestroyAllEntities();
 }

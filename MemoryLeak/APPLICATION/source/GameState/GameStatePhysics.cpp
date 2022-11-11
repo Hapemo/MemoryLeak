@@ -13,7 +13,7 @@ Game state for testing physics
 #include "TestScript.h"
 
 void GameStatePhysics::Load() {
-	LoadWithGUID(16667121456447749);
+	serializationManager->LoadScene("SceneJPhysics");
 }
 
 void GameStatePhysics::Init() {
@@ -36,5 +36,5 @@ void GameStatePhysics::Free() {
 }
 
 void GameStatePhysics::Unload() {
-
+	ECS::DestroyAllEntities();
 }

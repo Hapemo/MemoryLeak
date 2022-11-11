@@ -11,8 +11,7 @@ Game state for testing AI
 #include "Application.h"
 
 void AIDemo::Load() {
-	//serializationManager->LoadScene("Scene_AIDemo");
-    LoadWithGUID(16665530225855236);
+	serializationManager->LoadScene("Scene_AIDemo");
 }
 
 void AIDemo::Init() {
@@ -35,6 +34,7 @@ void AIDemo::Free() {
 }
 
 void AIDemo::Unload() {
+    ECS::DestroyAllEntities();
     
 }
 

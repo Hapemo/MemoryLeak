@@ -4,11 +4,10 @@
 #include "Helper.h"
 
 Entity lightsource;
-
+bool check = false;
 void Lighting::Load() 
 {
-    LoadWithGUID(16673144311251204);
-    //LoadWithGUID(16673157420351748);//with colider
+    serializationManager->LoadScene("Scene_Lighting");
 }
 
 void Lighting::Init()
@@ -24,6 +23,7 @@ void Lighting::Init()
             if (e.GetComponent<General>().tag == TAG::PLAYER)
             {
                 lightsource = e;
+                check = true;
                 break;
             }
         }
@@ -32,6 +32,12 @@ void Lighting::Init()
 
 void Lighting::Update()
 {
+    if (check == false)
+    {
+        //LOG_INFO("Cant find light source");
+        return;
+    }
+
     renderManager->GetGameCamera().SetPos(lightsource.GetComponent<Transform>().translation);
     for (const Entity& e : mEntities)
     {
@@ -42,6 +48,7 @@ void Lighting::Update()
         }
     }
     shadowManager->MakeShadows(lightsource, renderManager);
+    
 }
 
 void Lighting::Draw()
@@ -57,5 +64,6 @@ void Lighting::Free()
 }
 
 void Lighting::Unload() {
+    ECS::DestroyAllEntities();
     editorManager->SetScenePaused(false);
 }
