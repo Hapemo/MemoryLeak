@@ -15,12 +15,16 @@ Added adding and removing of entity
 #include "Scene.h"
 
 
-Scene::Scene() : mEntities(), pause(false), mGuid(0) {
+Scene::Scene() : mEntities(), pause(false), mGuid(0), mName() {
 	LOG_CUSTOM("SCENE", "Scene created with mGuid: " + std::to_string(mGuid));
 }
 
-Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), pause(false), mGuid(_guid) {
+Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), pause(false), mGuid(_guid), mName() {
 	LOG_CUSTOM("SCENE", "Scene created with mGuid: " + std::to_string(mGuid));
+}
+
+Scene::Scene(std::string const& _name) : mEntities(), pause(false), mGuid(0), mName(_name) {
+	LOG_CUSTOM("SCENE", "Scene created with name: " + mName);
 }
 
 Scene::~Scene() {

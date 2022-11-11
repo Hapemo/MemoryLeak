@@ -58,13 +58,28 @@ void GameState::UnloadWithGUID() {
 // This should be called when unloading from the editor. 
 // Save all scenes it has and save all it's entities.
 void GameState::SaveGameState() {
+  // Get gamestate data
   GameStateData gsData{};
   for (auto scenePtr : mScenes)
     gsData.mGUIDs.push_back(scenePtr->mGuid);
+
+  // Open output file to save in
+  std::string filePath{ ResourceManager::GetInstance()->GetFilePath(mGuid)};
+  if (filePath.size() < 1) { // When there is no existing gamestate file, create one. NOTE: Once created, user is expected to change this save file's name.
+    filePath = ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::gamestateEntities).string() + "NewGameState.json";
+  }
+  std::ofstream outFile{ filePath };
+  if (!outFile.is_open()) {
+    LOG_WARN("Unable to save gamestate file: " + filePath);
+    return;
+  }
+
+  // Save the gamestate data into output file using serialisation manager
+  // DeserialiseGameStateData(gsData, outFile);
 }
 
-void GameState::CreateScene() {
-  Scene* scene = new Scene;
+void GameState::CreateScene(std::string const& _name) {
+  Scene* scene = new Scene(_name);
   
   mScenes.push_back(scene);
 }

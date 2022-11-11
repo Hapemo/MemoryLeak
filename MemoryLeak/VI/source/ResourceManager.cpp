@@ -386,7 +386,14 @@ ResourceManager::E_RESOURCETYPE ResourceManager::CheckResourceType(std::filesyst
 }
 
 std::string ResourceManager::GetFilePath(GUID const& _guid) {
-	return mAllFilePaths[_guid];
+	std::string filePath{};
+	try {
+		std::string const& filePath{ mAllFilePaths.at(_guid) };
+	} catch (std::out_of_range) {
+		LOG_WARN("Attempting to get non-existing filepath from resource manager, using guid: " + std::to_string(_guid));
+	}
+
+	return filePath;
 }
 
 GameStateData ResourceManager::LoadGameState(GUID const& _guid) {

@@ -82,7 +82,7 @@ public:
 protected:
 	void LoadWithGUID(ResourceManager::GUID const&);
 	void UnloadWithGUID();
-	void CreateScene();
+	void CreateScene(std::string const& = "");
 	void SaveGameState();
 
 	/*!*****************************************************************************
