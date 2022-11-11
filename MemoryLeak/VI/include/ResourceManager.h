@@ -39,11 +39,11 @@ UnloadAllResources should be called to unload even the gamestate's data.
 #define GET_TEXTURE_PATH(...) ResourceManager::GetInstance()->GetTexturePath(__VA_ARGS__)
 #define GET_TEXTURE_DATA(...) ResourceManager::GetInstance()->GetTextureData(__VA_ARGS__)
 #define GET_RESOURCES(...) ResourceManager::GetInstance()->GetResources(__VA_ARGS__)
+#define GET_ASPECT_RATIO(...) ResourceManager::GetInstance()->GetAspectRatio(__VA_ARGS__)
 
 #define LOAD_TEXTURES(...) ResourceManager::GetInstance()->LoadTextures(__VA_ARGS__)
 #define UPDATE_TEXTURES(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
 #define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
-
 struct GameStateData;
 struct SceneData;
 struct Entity;
