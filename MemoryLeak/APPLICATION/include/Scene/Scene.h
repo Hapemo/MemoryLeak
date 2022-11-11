@@ -21,6 +21,7 @@ class Scene {
 public:
 	Scene();
 	Scene(ResourceManager::GUID const&);
+	Scene(std::string const&);
 	~Scene();
 	/*!*****************************************************************************
 	Set the scene's pause status
@@ -84,6 +85,7 @@ public:
 	std::set<Entity> mEntities;			// Entities in the scene 
 	bool pause;											// Paused state of the scene
 	ResourceManager::GUID mGuid;		// Scene's GUID
+	std::string mName;
 
 private:
 };
