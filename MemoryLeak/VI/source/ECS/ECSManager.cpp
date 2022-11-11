@@ -165,6 +165,7 @@ void ECSManager::RegisterShadowManager() {
 	shadowManager = ECS::RegisterSystem<ShadowManager>();
 	ECS::SetSystemSignature<ShadowManager>(signature);
 }
+
 //----------------------------------------------------------------
 // ECSManager Functions
 //----------------------------------------------------------------

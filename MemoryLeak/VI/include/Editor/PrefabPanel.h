@@ -18,6 +18,7 @@ that lists the entities and its components in the scene
 class PrefabPanel : public Panel
 {
 public:
+	void LoadPrefab();
 	void Init();
 	void Update();
 	void Free();
@@ -25,11 +26,9 @@ public:
 	
 private:
 	void newPrefab();
-	void newPrefabee(Prefab*);
-
-	void setSelectedPrefab( Prefab* p);
-	template<typename T>
-	void listComponents(const T* e, std::string _name);
-	void setSelected(const void* e);
+	void newPrefabee(PrefabPtr);
+	void setSelectedPrefab(PrefabPtr p);
+	void listComponents(PrefabPtr p, std::string _name);
+	//void setSelected(PrefabPtr p);
 	static int newPrefabCount;
 };

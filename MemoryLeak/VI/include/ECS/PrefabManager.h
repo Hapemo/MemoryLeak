@@ -20,7 +20,7 @@ class Prefab;
 // Prefab manager contains all the prefabs, drawing these data from resource manager.
 // It allows editor to present all prefabs. 
 // It also allows creation, and saving of new/current prefabs.
-class PrefabManager : Singleton<PrefabManager> {
+class PrefabManager : public Singleton<PrefabManager> {
 public:
 	using PrefabPtr = std::shared_ptr<Prefab>;
 	// Load all prefabs in from resource manager.
@@ -38,7 +38,7 @@ public:
 	// void DeletePrefab(ResourceManager::GUID const&);
 
 	PrefabPtr GetPrefab(std::string const&);
-
+	std::vector<PrefabPtr>& GetPrefab() { return mPrefabs; }
 private:
 	std::vector<PrefabPtr> mPrefabs;
 };
