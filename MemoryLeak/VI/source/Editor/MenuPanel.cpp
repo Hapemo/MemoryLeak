@@ -117,6 +117,15 @@ void MenuPanel::Update()
 					ImGui::StyleColorsClassic();
 				ImGui::EndMenu();
 			}
+			if (ImGui::BeginMenu("Change Song Lol :)"))
+			{
+				for (std::string song : audioManager->GetSongs())
+				{
+					if (ImGui::MenuItem(song.c_str()))
+						audioManager->PlayBGSound(song, 10);
+				}
+				ImGui::EndMenu();
+			}
 			if (!GetPannelIsActive(E_PANELID::DEBUG) && ImGui::MenuItem("Show Debug Info"))
 			{
 				//debugPanel.setIsActive(true);

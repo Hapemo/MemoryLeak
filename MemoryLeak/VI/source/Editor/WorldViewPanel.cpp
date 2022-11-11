@@ -32,84 +32,84 @@ None.
 *******************************************************************************/
 void WorldViewPanel::Update()
 {
-	ImGui::Begin("World View");
-	
-	//Calcualting the view port aspect ratio 
-	SetViewportAspectRatio();
-	isViewportPaused = isScenePaused;
-	renderUI();
-	isScenePaused = isViewportPaused;
-	//Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
-	//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	////if (ImGui::Button("Reset", buttonSize))
-	//	//serializationManager->LoadScene("SceneTmp");
-	////ImGui::SameLine(0.f,20.f);
-	//if (isScenePaused)
-	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-	//else
-	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-	//if (ImGui::Button("Play", buttonSize))
-	//{
-	//	isScenePaused = false;
-	//}
-	//ImGui::PopStyleColor();
-	//if (isScenePaused)
-	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-	//else
-	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-	//ImGui::SameLine(0.f, 20.f);
-	//if (ImGui::Button("Pause", buttonSize))
-	//{
-	//	isScenePaused = true;
-	//}
-	//ImGui::PopStyleColor();
-	CalculateMousePos(E_CAMERA_TYPE::WORLD);
-	fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();
-	ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
-	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
-	if (ImGui::BeginDragDropTarget())
+	if (ImGui::Begin("World View"))
 	{
-		NewEntity();
-		ImGui::EndDragDropTarget();
-	}
-
-	if (ImGui::IsWindowHovered())
-	{
-		if (IsMouseInScreen())
+		//Calcualting the view port aspect ratio 
+		SetViewportAspectRatio();
+		isViewportPaused = isScenePaused;
+		renderUI();
+		isScenePaused = isViewportPaused;
+		//Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
+		//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+		////if (ImGui::Button("Reset", buttonSize))
+		//	//serializationManager->LoadScene("SceneTmp");
+		////ImGui::SameLine(0.f,20.f);
+		//if (isScenePaused)
+		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+		//else
+		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+		//if (ImGui::Button("Play", buttonSize))
+		//{
+		//	isScenePaused = false;
+		//}
+		//ImGui::PopStyleColor();
+		//if (isScenePaused)
+		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+		//else
+		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+		//ImGui::SameLine(0.f, 20.f);
+		//if (ImGui::Button("Pause", buttonSize))
+		//{
+		//	isScenePaused = true;
+		//}
+		//ImGui::PopStyleColor();
+		CalculateMousePos(E_CAMERA_TYPE::WORLD);
+		fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();
+		ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
+		ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+		if (ImGui::BeginDragDropTarget())
 		{
-			//Camera movement
-			ArrowKeyMoveCam();
-			ScrollMoveCam();
-			if(isScenePaused)
-				MouseClickMoveCam();
-			
+			NewEntity();
+			ImGui::EndDragDropTarget();
 		}
-		if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
-			isSelected = 0;
 
-		//object picking
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
+		if (ImGui::IsWindowHovered())
 		{
-			SetSelectedEntity();
-		}
-	
-		if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
-		{
-			if (isScenePaused)
+			if (IsMouseInScreen())
 			{
-				e = *selectedEntity;
-				if (SRT == 0)
+				//Camera movement
+				ArrowKeyMoveCam();
+				ScrollMoveCam();
+				if (isScenePaused)
+					MouseClickMoveCam();
+
+			}
+			if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
+				isSelected = 0;
+
+			//object picking
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
+			{
+				SetSelectedEntity();
+			}
+
+			if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
+			{
+				if (isScenePaused)
 				{
-					MoveSelectedEntity();
-				}
-				else
-				{
-					UseGuizmo();
+					e = *selectedEntity;
+					if (SRT == 0)
+					{
+						MoveSelectedEntity();
+					}
+					else
+					{
+						UseGuizmo();
+					}
 				}
 			}
 		}
 	}
-	
 	ImGui::End();
 }
 /*!*****************************************************************************

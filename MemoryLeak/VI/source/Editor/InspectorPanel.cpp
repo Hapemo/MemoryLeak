@@ -32,117 +32,119 @@ None.
 *******************************************************************************/
 void InspectorPanel::Update()
 {
-	ImGui::Begin("Inspector Manager");
-	ImGui::BeginTabBar("Inspector ");
-	if (ImGui::BeginTabItem("Edit Game: "))
+	if (ImGui::Begin("Inspector Manager"))
 	{
-		if (selectedEntity != nullptr)
+		ImGui::BeginTabBar("Inspector ");
+		if (ImGui::BeginTabItem("Edit Game: "))
 		{
-			e = *selectedEntity;
+			if (selectedEntity != nullptr)
+			{
+				e = *selectedEntity;
 
-			if (e.HasComponent<General>())
-			{
-				GeneralEditor();
-			}
-			if (e.HasComponent<Lifespan>())
-			{
-				LifespanEditor();
-			}
-			if (e.HasComponent<Transform>())
-			{
-				TransformEditor();
-			}
-			if (e.HasComponent<Sprite>())
-			{
-				SpriteEditor();
-			}
-			if (e.HasComponent<Animation>())
-			{
-				AnimationEditor();
-			}
-			if (e.HasComponent<SheetAnimation>())
-			{
-				SheetAnimationEditor();
-			}
-			if (e.HasComponent<Physics2D>())
-			{
-				Physics2DEditor();
-			}
-			if (e.HasComponent<RectCollider>())
-			{
-				RectColliderEditor();
-			}
-			if (e.HasComponent<CircleCollider>())
-			{
-				CircleColliderEditor();
-			}
-			if (e.HasComponent<Edge2DCollider>())
-			{
-				Edge2DColliderEditor();
-			}
-			if (e.HasComponent<Point2DCollider>())
-			{
-				Point2DColliderEditor();
-			}
-			if (e.HasComponent<Audio>())
-			{
-				AudioEditor();
-			}
-			if (e.HasComponent<Text>())
-			{
-				TextEditor();
-			}
-			if (e.HasComponent<AI>())
-			{
-				AIEditor();
-			}
-			if (e.HasComponent<Script>())
-			{
-				ScriptEditor();
-			}
-			if (e.HasComponent<Dialogue>())
-			{
-				DialogueEditor();
-			}
-			if (e.HasComponent<PlayerTmp>())
-			{
-				PlayerTmpEditor();
-			}
-			ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
-			if (ImGui::Button("Add Component"))
-			{
-				AddComponent();
-				std::string add(componentsList[addComponentID]);
-				LOG_INFO(add + " conponent added");
-			}
-			if (ImGui::BeginPopupContextWindow(0, 1, false))
-			{
-				if (ImGui::MenuItem("Delete Entity"))
+				if (e.HasComponent<General>())
 				{
-					DeleteEntity();
+					GeneralEditor();
 				}
-				ImGui::EndPopup();
+				if (e.HasComponent<Lifespan>())
+				{
+					LifespanEditor();
+				}
+				if (e.HasComponent<Transform>())
+				{
+					TransformEditor();
+				}
+				if (e.HasComponent<Sprite>())
+				{
+					SpriteEditor();
+				}
+				if (e.HasComponent<Animation>())
+				{
+					AnimationEditor();
+				}
+				if (e.HasComponent<SheetAnimation>())
+				{
+					SheetAnimationEditor();
+				}
+				if (e.HasComponent<Physics2D>())
+				{
+					Physics2DEditor();
+				}
+				if (e.HasComponent<RectCollider>())
+				{
+					RectColliderEditor();
+				}
+				if (e.HasComponent<CircleCollider>())
+				{
+					CircleColliderEditor();
+				}
+				if (e.HasComponent<Edge2DCollider>())
+				{
+					Edge2DColliderEditor();
+				}
+				if (e.HasComponent<Point2DCollider>())
+				{
+					Point2DColliderEditor();
+				}
+				if (e.HasComponent<Audio>())
+				{
+					AudioEditor();
+				}
+				if (e.HasComponent<Text>())
+				{
+					TextEditor();
+				}
+				if (e.HasComponent<AI>())
+				{
+					AIEditor();
+				}
+				if (e.HasComponent<Script>())
+				{
+					ScriptEditor();
+				}
+				if (e.HasComponent<Dialogue>())
+				{
+					DialogueEditor();
+				}
+				if (e.HasComponent<PlayerTmp>())
+				{
+					PlayerTmpEditor();
+				}
+				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
+				if (ImGui::Button("Add Component"))
+				{
+					AddComponent();
+					std::string add(componentsList[addComponentID]);
+					LOG_INFO(add + " conponent added");
+				}
+				if (ImGui::BeginPopupContextWindow(0, 1, false))
+				{
+					if (ImGui::MenuItem("Delete Entity"))
+					{
+						DeleteEntity();
+					}
+					ImGui::EndPopup();
+				}
 			}
-		}
-		else if (selectedPrefab != nullptr)
-		{
-			p = selectedPrefab;
-			PrefabEditor();
-			ImGui::Combo("Select Prefab Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
-			if (ImGui::Button("Add Component to prefab"))
+			else if (selectedPrefab != nullptr)
 			{
-				AddPrefabComponent();
-				std::string add(componentsList[addComponentID]);
-				LOG_INFO(add + " conponent added to prefab");
+				p = selectedPrefab;
+				PrefabEditor();
+				ImGui::Combo("Select Prefab Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
+				if (ImGui::Button("Add Component to prefab"))
+				{
+					AddPrefabComponent();
+					std::string add(componentsList[addComponentID]);
+					LOG_INFO(add + " conponent added to prefab");
+				}
 			}
+			ImGui::EndTabItem();
 		}
-		ImGui::EndTabItem();
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::DELETE))
+		{
+			DeleteEntity();
+		}
+		ImGui::EndTabBar();
 	}
-	if (Input::CheckKey(E_STATE::PRESS, E_KEY::DELETE))
-	{
-		DeleteEntity();
-	}
-	ImGui::EndTabBar();
 	ImGui::End();
 }
 /*!*****************************************************************************
@@ -479,14 +481,14 @@ void InspectorPanel::SheetAnimationEditor()
 {
 	if (ImGui::CollapsingHeader("SheetAnimation")||isAnimatorEditorFocused()) {
 		//ImGui::Text("SheetAnimation");
-		ImGui::InputInt("frameCount", (int*)&e.GetComponent<SheetAnimation>().frameCount);
+		ImGui::InputInt("frameCount", &e.GetComponent<SheetAnimation>().frameCount);
 		SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);
 		ImGui::InputInt("currFrameIndex", (int*)&e.GetComponent<SheetAnimation>().currFrameIndex);
 		SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);
 		ImGui::InputFloat("timePerFrame", &e.GetComponent<SheetAnimation>().timePerFrame);
 		SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);
-		ImGui::InputFloat("timeToFrameSwap", &e.GetComponent<SheetAnimation>().timeToFrameSwap);
-		SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);
+		//ImGui::InputFloat("timeToFrameSwap", &e.GetComponent<SheetAnimation>().timeToFrameSwap);
+		//SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);
 		if (ImGui::Button("Remove SheetAnimation"))
 		{
 			e.RemoveComponent<SheetAnimation>();

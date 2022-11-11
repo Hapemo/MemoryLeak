@@ -24,6 +24,7 @@ Entities and its Components.
 #include <HierarchyPanel.h>
 #include <AnimationPanel.h>
 #include "PerformancePanel.h"
+#include "PrefabPanel.h"
 
 std::vector<Panel*> EditorManager::panels{};
 
@@ -77,6 +78,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static MenuPanel menuPanel{};
 	static WeatherPanel weatherPanel{};
 	static PerformancePanel performancePanel{};
+	static PrefabPanel prefabPanel{};
 	panels.push_back(&hierarchyPanel);
 	panels.push_back(&inspectorPanel);
 	panels.push_back(&weatherPanel);
@@ -88,6 +90,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&gameViewPanel);
 	panels.push_back(&worldViewPanel);
 	panels.push_back(&performancePanel);
+	panels.push_back(&prefabPanel);
 	Init();
 	
 }
@@ -174,10 +177,10 @@ void EditorManager::Free()
 	SceneReset();
 	undoStack.clear();
 	stackPointer = -1;
-	/*for (size_t p = 0; p < mPrefabs.size(); p++)
+	for (size_t p = 0; p < mPrefabs.size(); p++)
 	{
 		delete mPrefabs[p];
-	}*/
+	}
 	mPrefabs.clear();
 	for (size_t p = 0; p < panels.size(); p++)
 	{

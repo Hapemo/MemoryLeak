@@ -35,7 +35,7 @@ public:
 	void SetBGMVolume(float vol);
 	void SetSFXVolume(float vol);
 	void PlaySound(const Entity& e, int sound);	//Play sound 
-	
+	std::vector<std::string> GetSongs() { return songs; }
 private:
 	//WIP
 	//void PauseSound(int, bool);				//pasue (sound enum, true/false) true - pause 
@@ -54,4 +54,5 @@ private:
 	std::map<std::string, FMOD::Sound*> mSfxSound;
 	std::map<std::string, FMOD::Sound*> mDialogueSound;
 	std::vector<FMOD::Channel*> mChannel;
+	std::vector<std::string> songs;
 };

@@ -25,6 +25,14 @@ void Level1::Init() {
 void Level1::Update() {
 	for (Scene* scenePtr : mScenes)
 		scenePtr->PrimaryUpdate();
+	for (const Entity& e : mEntities)
+	{
+		if (e.GetComponent<General>().tag == TAG::PLAYER)
+		{
+			renderManager->GetGameCamera().SetPos(e.GetComponent<Transform>().translation);
+			break;
+		}
+	}
 }
 
 void Level1::Draw() {

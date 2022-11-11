@@ -24,8 +24,7 @@ public:
 	
 	
 private:
-	int count;
-	
+	int updateTime;
 	std::vector<std::deque<float>> system;
 	std::vector < std::pair < std::string, double >> performance;
 };

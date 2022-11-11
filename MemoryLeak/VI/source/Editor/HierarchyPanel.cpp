@@ -33,54 +33,41 @@ None.
 *******************************************************************************/
 void HierarchyPanel::Update()
 {
-	ImGui::Begin("Hierarchy Manager");
-	ImGui::BeginTabBar("Hierarchy ");
-	if (ImGui::BeginTabItem("Scene 1: "))
+	if (ImGui::Begin("Hierarchy Manager"))
 	{
-		for (int i = 0; i < (int)tag.size(); i++)
+		ImGui::BeginTabBar("Hierarchy ");
+		if (ImGui::BeginTabItem("Scene 1: "))
 		{
-			if (ImGui::CollapsingHeader(tag[i].c_str()))
+			for (int i = 0; i < (int)tag.size(); i++)
 			{
-				for (const Entity& e : *myEntities)
+				if (ImGui::CollapsingHeader(tag[i].c_str()))
 				{
-					if (e.GetComponent<General>().tag != (TAG)i)
-						continue;
-					listComponents(&e, e.GetComponent<General>().name);
-					
+					for (const Entity& e : *myEntities)
+					{
+						if (e.GetComponent<General>().tag != (TAG)i)
+							continue;
+						listComponents(&e, e.GetComponent<General>().name);
+
+					}
 				}
 			}
-		}
-		ImGui::EndTabItem();
-		if (ImGui::BeginPopupContextWindow(0, 1, false))
-		{
-			if (ImGui::MenuItem(" Create Entity"))
+			ImGui::EndTabItem();
+			if (ImGui::BeginPopupContextWindow(0, 1, false))
+			{
+				if (ImGui::MenuItem(" Create Entity"))
+				{
+					newEntity();
+				}
+				ImGui::EndPopup();
+			}
+			ImGui::NewLine();
+			if (ImGui::Button("New Entity"))
 			{
 				newEntity();
 			}
-			ImGui::EndPopup();
 		}
-		if (ImGui::Button("New Entity"))
-		{
-			newEntity();
-		}
-		if (ImGui::Button("New Prefab")) 
-		{
-			newPrefab();
-		}
-		for (Prefab* p: mPrefabs)
-		{
-			if (ImGui::CollapsingHeader(p->Name().c_str()))
-			{
-				listComponents(p, p->Name());
-				if (ImGui::Button("New Prefabee"))
-				{
-					newPrefabee(p);
-				}
-			}
-			
-		}
+		ImGui::EndTabBar();
 	}
-	ImGui::EndTabBar();
 	ImGui::End();
 }
 /*!*****************************************************************************

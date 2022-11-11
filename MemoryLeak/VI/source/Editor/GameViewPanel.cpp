@@ -33,62 +33,64 @@ None.
 *******************************************************************************/
 void GameViewPanel::Update()
 {
-	ImGui::Begin("Game View");
-	//Calcualting the aspect ratio 
-	SetViewportAspectRatio();
-	isViewportPaused = isScenePaused;
-	renderUI();
-	isScenePaused = isViewportPaused;
-	//Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
-	//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-	////if (ImGui::Button("Reset", { 100,25 }))
-	//	//serializationManager->LoadScene("SceneTmp");
-	////ImGui::SameLine(0.f,20.f);
-	//if (isScenePaused)
-	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-	//else
-	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-	//if (ImGui::Button("Play", buttonSize))
-	//{
-	//	isScenePaused = false;
-	//}
-	//ImGui::PopStyleColor();
-	//if (isScenePaused)
-	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-	//else
-	//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-	//ImGui::SameLine(0.f, 20.f);
-	//if (ImGui::Button("Pause", buttonSize))
-	//{
-	//	isScenePaused = true;
-	//}
-	//ImGui::PopStyleColor();
-	CalculateMousePos(E_CAMERA_TYPE::GAME);
-	if (ImGui::IsWindowHovered())
+	if (ImGui::Begin("Game View"))
 	{
-		if (IsMouseInScreen())
+		//Calcualting the aspect ratio 
+		SetViewportAspectRatio();
+		isViewportPaused = isScenePaused;
+		renderUI();
+		isScenePaused = isViewportPaused;
+		//Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
+		//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+		////if (ImGui::Button("Reset", { 100,25 }))
+		//	//serializationManager->LoadScene("SceneTmp");
+		////ImGui::SameLine(0.f,20.f);
+		//if (isScenePaused)
+		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+		//else
+		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+		//if (ImGui::Button("Play", buttonSize))
+		//{
+		//	isScenePaused = false;
+		//}
+		//ImGui::PopStyleColor();
+		//if (isScenePaused)
+		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+		//else
+		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+		//ImGui::SameLine(0.f, 20.f);
+		//if (ImGui::Button("Pause", buttonSize))
+		//{
+		//	isScenePaused = true;
+		//}
+		//ImGui::PopStyleColor();
+		CalculateMousePos(E_CAMERA_TYPE::GAME);
+		if (ImGui::IsWindowHovered())
 		{
-			//Camera movement
-			ArrowKeyMoveCam();
-			ScrollMoveCam();
-			if (isScenePaused)
-				MouseClickMoveCam();
-			else
+			if (IsMouseInScreen())
 			{
-				if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
+				//Camera movement
+				ArrowKeyMoveCam();
+				ScrollMoveCam();
+				if (isScenePaused)
+					MouseClickMoveCam();
+				else
 				{
-					ButtonClick();
+					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
+					{
+						ButtonClick();
+					}
 				}
 			}
 		}
-	}
-	fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
-	ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
-	ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
-	if (ImGui::BeginDragDropTarget())
-	{
-		NewEntity();
-		ImGui::EndDragDropTarget();
+		fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
+		ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
+		ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+		if (ImGui::BeginDragDropTarget())
+		{
+			NewEntity();
+			ImGui::EndDragDropTarget();
+		}
 	}
 	ImGui::End();
 }

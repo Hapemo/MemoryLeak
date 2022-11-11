@@ -78,10 +78,11 @@ FMOD::Sound* AudioManager::LoadAudio(std::filesystem::path const& audio) //Load 
   {
       mBgmSound[audio.stem().string()] = snd;
   }
-  //else  //if (audio.parent_path().string().find("..\\resources\\Audio\\Dialogue") != std::string::npos)
-  //{
-  //    mSfxSound[audio.stem().string()] = snd;
-  //}
+  else  if (audio.parent_path().string() == "..\\resources\\Audio\\Songs")
+  {
+      mBgmSound[audio.stem().string()] = snd;
+      songs.push_back(audio.stem().string());
+  }
   return snd;
 }
 void AudioManager::LoadDialogueAudio(std::string audio) //Load a sound needed in the game
@@ -219,12 +220,13 @@ void AudioManager::PlayBGSound(std::string _snd, int _channel)
     mBgmSound[_snd]->setMode(2);
     bool f;
     mChannel[_channel]->isPlaying(&f);
-    if (!f)
+    if (f)
     {
-        LOG_INFO("Play BG sound");
-        system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
-        mChannel[_channel]->setVolume(0.1f);
+        mChannel[_channel]->stop();
     }
+    LOG_INFO("Play BG sound");
+    system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
+    mChannel[_channel]->setVolume(0.5f);
 }
 
 bool AudioManager::isPlaying(int _channel)
