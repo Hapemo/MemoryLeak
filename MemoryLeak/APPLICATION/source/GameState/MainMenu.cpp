@@ -15,8 +15,7 @@ Game state for main menu
 
 
 void MainMenu::Load() {
-	//serializationManager->LoadScene("Scene_MainMenu");
-	LoadWithGUID(16672089683329284);
+	serializationManager->LoadScene("Scene_MainMenu");
 }
 
 void MainMenu::Init() {
@@ -67,4 +66,5 @@ void MainMenu::Free() {
 }
 
 void MainMenu::Unload() {
+	ECS::DestroyAllEntities();
 }

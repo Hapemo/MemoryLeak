@@ -255,12 +255,9 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 
 		// Open and store resources, then linking them to their guid
 		E_RESOURCETYPE resourceType{ CheckResourceType(entry) };
-		//ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type"); ///fk you add new folder crash alr...
-		if (resourceType == E_RESOURCETYPE::error)
-		{
-			LOG_INFO("1 Unknown resource");
-			continue;
-		}
+		//ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
+		if (resourceType == E_RESOURCETYPE::error || resourceType == E_RESOURCETYPE::prefab) continue;
+
 		void* dataPointer{};
 		
 		switch (resourceType) {
@@ -292,6 +289,9 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 			
 			break;
 		case E_RESOURCETYPE::font:
+
+			break;
+		case E_RESOURCETYPE::prefab:
 
 			break;
 		}
@@ -340,24 +340,60 @@ void ResourceManager::UnloadAllResources() {
 		case E_RESOURCETYPE::font:
 
 			break;
+		case E_RESOURCETYPE::prefab:
+
+			break;
 		}
 	}
 	mAllResources.clear();
 	mAllFilePaths.clear();
 }
 
+void ResourceManager::CheckWrongAudioFile(std::filesystem::path const& _path) {
+	if (_path.string().find(".wav") != std::string::npos) return; // Nothing wrong with wav file
+
+	// If something wrong with audio file read in, code under here
+
+}
+
+void ResourceManager::CheckWrongTextureFile(std::filesystem::path const& _path) {
+	if (_path.string().find(".png") != std::string::npos ||
+			_path.string().find(".jpg") != std::string::npos) return; // Nothing wrong with wav file
+
+	// If something wrong with audio file read in, code under here
+
+}
+
+
 ResourceManager::E_RESOURCETYPE ResourceManager::CheckResourceType(std::filesystem::path const& _path) {
-	if (_path.string().find("\\Audio\\") != std::string::npos) return E_RESOURCETYPE::audio;
+	if (_path.string().find("\\Audio\\") != std::string::npos) {
+		CheckWrongAudioFile(_path);
+		return E_RESOURCETYPE::audio;
+	}
 	else if (_path.string().find("\\Dialogs\\") != std::string::npos) return E_RESOURCETYPE::dialogue;
 	else if (_path.string().find("\\Scene\\") != std::string::npos) return E_RESOURCETYPE::scene;
-	else if (_path.string().find("\\Textures\\") != std::string::npos) return E_RESOURCETYPE::texture;
+	else if (_path.string().find("\\Textures\\") != std::string::npos) {
+		CheckWrongTextureFile(_path);
+		return E_RESOURCETYPE::texture;
+	}
 	else if (_path.string().find("\\Scripts\\") != std::string::npos) return E_RESOURCETYPE::script;
 	else if (_path.string().find("\\GameStates\\") != std::string::npos) return E_RESOURCETYPE::gamestateEntities;
+	else if (_path.string().find("\\Fonts\\") != std::string::npos) return E_RESOURCETYPE::font;
+	else if (_path.string().find("\\Prefabs\\") != std::string::npos) return E_RESOURCETYPE::prefab;
+
+	LOG_WARN("Attempted to load unknown resource into resource manager. Resource: " + _path.string());
 	return E_RESOURCETYPE::error;
 }
 
 std::string ResourceManager::GetFilePath(GUID const& _guid) {
-	return mAllFilePaths[_guid];
+	std::string filePath{};
+	try {
+		std::string const& filePath{ mAllFilePaths.at(_guid) };
+	} catch (std::out_of_range) {
+		LOG_WARN("Attempting to get non-existing filepath from resource manager, using guid: " + std::to_string(_guid));
+	}
+
+	return filePath;
 }
 
 GameStateData ResourceManager::LoadGameState(GUID const& _guid) {
@@ -368,7 +404,6 @@ GameStateData ResourceManager::LoadGameState(GUID const& _guid) {
 
 void ResourceManager::UnloadGameState(GUID const& _guid) {
 	GameStateData* data = static_cast<GameStateData*>(mAllResources[_guid]);
-	ECS::DestroySomeEntites(data->mEntities);
 	delete data;
 }
 
@@ -383,3 +418,41 @@ void ResourceManager::UnloadScene(GUID const& _guid) {
 	ECS::DestroySomeEntites(data->mEntities);
 	delete data;
 }
+
+std::filesystem::path ResourceManager::FileTypePath(E_RESOURCETYPE _type) {
+	std::string path = resourceFolder.string();
+	switch (_type) {
+	case E_RESOURCETYPE::texture:
+		path + "\\Textures\\";
+		break;
+	case E_RESOURCETYPE::audio:
+		path + "\\Audio\\";
+		break;
+	case E_RESOURCETYPE::script:
+		path + "\\Scripts\\";
+		break;
+	case E_RESOURCETYPE::scene:
+		path + "\\Scene\\";
+		break;
+	case E_RESOURCETYPE::gamestateEntities:
+		path + "\\GameStates\\";
+		break;
+	case E_RESOURCETYPE::dialogue:
+		path + "\\Dialogs\\";
+		break;
+	case E_RESOURCETYPE::font:
+		path + "\\Fonts\\";
+		break;
+	case E_RESOURCETYPE::prefab:
+		path + "\\Prefabs\\";
+		break;
+	}
+	return std::filesystem::path(path);
+}
+
+
+
+
+
+
+

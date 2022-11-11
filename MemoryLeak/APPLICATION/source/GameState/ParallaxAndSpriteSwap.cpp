@@ -14,7 +14,7 @@ Game state for testing background and sprite changes
 #include "Logger.h"
 
 void ParallaxAndSpriteSwap::Load() {
-    LoadWithGUID(16673599440027908);
+    serializationManager->LoadScene("Scene_Animations");
 }
 
 void ParallaxAndSpriteSwap::Init() {
@@ -61,4 +61,6 @@ void ParallaxAndSpriteSwap::Free() {
         scenePtr->Exit();
 }
 
-void ParallaxAndSpriteSwap::Unload() {}
+void ParallaxAndSpriteSwap::Unload() {
+    ECS::DestroyAllEntities();
+}

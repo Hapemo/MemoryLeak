@@ -24,9 +24,10 @@ running.
 #include "Lighting.h"
 #include "MainMenu.h"
 #include "Level1.h"
+#include "JazzGS.h"
 E_GS GameStateManager::mCurrentState = E_GS::MainMenu;
 GameStateManager::GameStateManager() :
-	mPrevGS(), mNextGS(), mCurrGS(), mCurrGameState(nullptr) 
+	mPrevGS(), mNextGS(), mCurrGS(), mStartingGS(), mCurrGameState(nullptr)
 {};
 
 void GameStateManager::Update() {
@@ -80,7 +81,7 @@ void GameStateManager::Update() {
 void GameStateManager::Init() {
 	LOG_CUSTOM_CREATE("GAMESTATE");
 	LOG_CUSTOM_CREATE("SCENE");
-	mPrevGS = mNextGS = mCurrGS = E_GS::MainMenu; // Starting game state
+	mPrevGS = mNextGS = mCurrGS = mStartingGS; // Starting game state
 	
 	GS_List.insert(GS_pair(E_GS::MainMenu, new MainMenu));
 	GS_List.insert(GS_pair(E_GS::Level1, new Level1));
@@ -89,6 +90,7 @@ void GameStateManager::Init() {
 	GS_List.insert(GS_pair(E_GS::Lighting, new Lighting));
 	GS_List.insert(GS_pair(E_GS::ParallaxSprite, new ParallaxAndSpriteSwap));
 	GS_List.insert(GS_pair(E_GS::AIDemo, new AIDemo));
+	GS_List.insert(GS_pair(E_GS::JAZZ, new JazzGS));
 }
 
 
@@ -127,6 +129,9 @@ void GameStateManager::SetNewGameState() {
 	case E_GS::Level1:
 		Application::GetCurrGameStateName() = "Level1";
 		break;
+	case E_GS::JAZZ:
+		Application::GetCurrGameStateName() = "Jazz";
+		break;
 	default:
 		Application::GetCurrGameStateName() = "Unknown";
 	}
@@ -164,6 +169,7 @@ void GameStateManager::GSControlPanel() {
 	else if (Input::CheckKey(PRESS, P) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::PHYSICS);
 	else if (Input::CheckKey(PRESS, _0) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::MainMenu);
 	else if (Input::CheckKey(PRESS, _1) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+	else if (Input::CheckKey(PRESS, J) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(E_GS::JAZZ);
 	else if (Input::CheckKey(PRESS, RIGHT) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(++mCurrentState);
 	else if (Input::CheckKey(PRESS, LEFT) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) GameStateManager::GetInstance()->NextGS(--mCurrentState);
 	//else if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);

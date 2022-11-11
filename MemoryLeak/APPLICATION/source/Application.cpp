@@ -25,6 +25,7 @@ int Application::window_height{};
 std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
 std::string Application::mCurrGameStateName{""};
+bool Application::mLoadAllResources{ true };
 
 void Application::startup() {
   loadConfig("../config.txt");
@@ -50,7 +51,10 @@ void Application::SystemInit() {
   // Collision database initialization
   collision2DManager->SetupCollisionDatabase();
 
-  ResourceManager::GetInstance()->LoadAllResources();
+#ifdef _DEBUG
+  if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
+#endif
+    ResourceManager::GetInstance()->LoadAllResources();
   for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
     spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
 }
@@ -125,7 +129,7 @@ void Application::SecondUpdate() {
 }
 
 void Application::exit() {
-    ECS::DestroyAllEntities();
+  ECS::DestroyAllEntities();
   editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
@@ -159,6 +163,8 @@ void Application::loadConfig(std::string path) {
     else if (key == "window_height") window_height = stoi(value);
     else if (key == "title") title = value;
     else if (key == "fps_limit") FPSManager::mLimitFPS = static_cast<double>(stoi(value));
+    else if (key == "starting_gamestate") GameStateManager::GetInstance()->SetStartingGS(static_cast<E_GS>(stoi(value)));
+    else if (key == "load_all_resources") Application::mLoadAllResources = stoi(value);
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";

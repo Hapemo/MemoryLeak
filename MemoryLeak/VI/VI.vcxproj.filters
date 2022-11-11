@@ -46,6 +46,7 @@
     <ClCompile Include="source\Editor\WeatherPanel.cpp" />
     <ClCompile Include="source\Editor\PerformancePanel.cpp" />
     <ClCompile Include="source\Editor\PrefabPanel.cpp" />
+    <ClCompile Include="source\ECS\PrefabManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="include\Editor\WeatherPanel.h" />
     <ClInclude Include="include\Editor\PerformancePanel.h" />
     <ClInclude Include="include\Editor\PrefabPanel.h" />
+    <ClInclude Include="include\ECS\PrefabManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

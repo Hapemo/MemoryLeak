@@ -78,10 +78,12 @@ private:
 	static std::string title;
 	static GLFWwindow* ptr_window;
 	static std::string mCurrGameStateName;
+	static bool mLoadAllResources;
 
 	/*!*****************************************************************************
 	 \brief
 	 Load Config file into application
+	 If there are new config settings, implement in here
 	 
 	 \param std::string
 	 - Path of config file

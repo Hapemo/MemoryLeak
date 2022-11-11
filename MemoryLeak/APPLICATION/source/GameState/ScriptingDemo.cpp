@@ -12,7 +12,7 @@ Gamestate for testing scripting.
 #include "ScriptingDemo.h"
 
 void ScriptingDemo::Load() {
-    LoadWithGUID(16673097090400516);
+    serializationManager->LoadScene("Scene_Scripting");
     renderManager->SetVectorLengthModifier(5.f);
     renderManager->SetDebug(true);
 }
@@ -37,4 +37,5 @@ void ScriptingDemo::Free() {
 }
 
 void ScriptingDemo::Unload() {
+    ECS::DestroyAllEntities();
 }

@@ -243,8 +243,6 @@ private:
 	std::unordered_map<std::string, std::shared_ptr<System>> mSystems;
 };
 
-
-
 //-------------------------------------------------------------------------
 // Coordinator
 // The main Coordinator system, combination of EntityID, Component Array and System managers
