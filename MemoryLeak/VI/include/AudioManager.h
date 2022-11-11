@@ -24,16 +24,18 @@ public:
 	void Unload();							//Deconstructor
 
 	FMOD::Sound* LoadAudio(std::filesystem::path const& audio);
-
+	void LoadDialogueAudio(std::string audio);
+	bool isPlaying(int _channel);
 	void LoadSound();							//Load all sound 
 	void PlayAnySound(std::string _snd, int _channel);
+	void PlayDialogueSound(std::string _snd, int _channel);
 	void PlayBGSound(std::string, int);
 	void UpdateSound();
 	void SetALLVolume(float vol);
 	void SetBGMVolume(float vol);
 	void SetSFXVolume(float vol);
 	void PlaySound(const Entity& e, int sound);	//Play sound 
-	
+	std::vector<std::string> GetSongs() { return songs; }
 private:
 	//WIP
 	//void PauseSound(int, bool);				//pasue (sound enum, true/false) true - pause 
@@ -50,5 +52,7 @@ private:
 	FMOD::System* system;
 	std::map<std::string, FMOD::Sound*> mBgmSound;
 	std::map<std::string, FMOD::Sound*> mSfxSound;
+	std::map<std::string, FMOD::Sound*> mDialogueSound;
 	std::vector<FMOD::Channel*> mChannel;
+	std::vector<std::string> songs;
 };

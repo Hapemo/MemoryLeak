@@ -82,7 +82,7 @@ public:
 	Returns a string populated with all the system performance in percentages.
 	*******************************************************************************/
 	std::string GetPerformances();
-
+	std::vector < std::pair < std::string, double >> GetPerformanceVec();
 private:
 	/*!*****************************************************************************
 	\brief

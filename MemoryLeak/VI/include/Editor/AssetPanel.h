@@ -23,7 +23,23 @@ public:
 
 	
 private:
-	std::string texPath;
+	void calculateSize();
 	std::string texExt;
-	std::string texfilename;
+	std::string texPath;
+	std::string texParent;
+	std::string texFilename;
+	std::string rootPath;
+	
+	ImTextureID sfxIcon;
+	ImTextureID bgmIcon;
+	ImTextureID backIcon;
+	ImTextureID textIcon;
+	ImTextureID sceneIcon;
+	ImTextureID folderIcon;
+	ImTextureID scriptIcon;
+	ImTextureID dialogueIcon;
+	ImTextureID selectedIcon;
+	ImTextureID gamestateIcon;
+	ImVec2 folderSize;
+	int colNum;
 };

@@ -34,67 +34,70 @@ void DebugPanel::Update()
 		return;
 	//loggerStr = Logger::GetInstance()->GetLoggerStr();
 	Init();
-	ImGui::Begin("Debug Logger");
-	ImGui::BeginTabBar("DebugLogger ");
-	if (ImGui::BeginTabItem("All Logs "))
+	if (ImGui::Begin("Debug Logger"))
 	{
-		for (auto str : loggerStr)
+		ImGui::BeginTabBar("DebugLogger");
+		if (ImGui::BeginTabItem("All Logs "))
 		{
-			ImGui::Text(str.second.c_str());
+			for (auto str : loggerStr)
+			{
+				ImGui::Text(str.second.c_str());
+			}
+			ImGui::EndTabItem();
 		}
-		ImGui::EndTabItem();
-	}
 
-	if (ImGui::BeginTabItem("Info Log "))
-	{
-		for (auto str : loggerStr)
+		if (ImGui::BeginTabItem("Info Log "))
 		{
-			if (str.first == Logger::E_LOGLEVEL::LOG_INFO)
-				ImGui::Text(str.second.c_str());
+			for (auto str : loggerStr)
+			{
+				if (str.first == Logger::E_LOGLEVEL::LOG_INFO)
+					ImGui::Text(str.second.c_str());
+			}
+			ImGui::EndTabItem();
 		}
-		ImGui::EndTabItem();
-	}
 
-	if (ImGui::BeginTabItem("Debug Log "))
-	{
+		if (ImGui::BeginTabItem("Debug Log "))
+		{
 
-		for (auto str : loggerStr)
-		{
-			if (str.first == Logger::E_LOGLEVEL::LOG_DEBUG)
-				ImGui::Text(str.second.c_str());
+			for (auto str : loggerStr)
+			{
+				if (str.first == Logger::E_LOGLEVEL::LOG_DEBUG)
+					ImGui::Text(str.second.c_str());
+			}
+			ImGui::EndTabItem();
 		}
-		ImGui::EndTabItem();
-	}
 
-	if (ImGui::BeginTabItem("Warning Log "))
-	{
-		for (auto str : loggerStr)
+		if (ImGui::BeginTabItem("Warning Log "))
 		{
-			if (str.first == Logger::E_LOGLEVEL::LOG_WARN)
-				ImGui::Text(str.second.c_str());
+			for (auto str : loggerStr)
+			{
+				if (str.first == Logger::E_LOGLEVEL::LOG_WARN)
+					ImGui::Text(str.second.c_str());
+			}
+			ImGui::EndTabItem();
 		}
-		ImGui::EndTabItem();
-	}
-	if (ImGui::BeginTabItem("Error Log "))
-	{
-		for (auto str : loggerStr)
+		if (ImGui::BeginTabItem("Error Log "))
 		{
-			if (str.first == Logger::E_LOGLEVEL::LOG_ERROR)
-				ImGui::Text(str.second.c_str());
+			for (auto str : loggerStr)
+			{
+				if (str.first == Logger::E_LOGLEVEL::LOG_ERROR)
+					ImGui::Text(str.second.c_str());
+			}
+			ImGui::EndTabItem();
 		}
-		ImGui::EndTabItem();
-	}
-	if (ImGui::BeginTabItem("Custom Log "))
-	{
-		for (auto str : loggerStr)
+		if (ImGui::BeginTabItem("Custom Log "))
 		{
-			if (str.first > Logger::E_LOGLEVEL::LOG_ASSERT)
-				ImGui::Text(str.second.c_str());
+			for (auto str : loggerStr)
+			{
+				if (str.first > Logger::E_LOGLEVEL::LOG_ASSERT)
+					ImGui::Text(str.second.c_str());
+			}
+			ImGui::EndTabItem();
 		}
-		ImGui::EndTabItem();
+	
+		ImGui::Dummy({ 10,100 });
+		ImGui::EndTabBar();
 	}
-	ImGui::Text("   ");
-	ImGui::EndTabBar();
 	ImGui::End();
 
 }

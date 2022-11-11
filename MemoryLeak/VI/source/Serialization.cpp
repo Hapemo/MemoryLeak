@@ -641,7 +641,7 @@ void SerializationManager::LoadDialogs(std::string _filename)
 		contents << ifs.rdbuf();
 		Document json;
 		json.Parse(contents.str().c_str());
-
+		dialogManager->Clear();
 		//std::cout << "contents.str() " << contents.str() << '\n';
 		int dialogId;
 		Dialog dialog;
@@ -671,7 +671,7 @@ void SerializationManager::SaveDialogs(std::string _filename)
 	auto& allocator = json.GetAllocator();
 	json.SetArray();
 	StringBuffer buffer;
-	Writer<StringBuffer> writer(buffer);
+	PrettyWriter<StringBuffer> writer(buffer);
 	Value temp(kObjectType);
 	for (std::pair<int, Dialog> dialog : dialogManager->GetDialogs()){
 		Value dialogObj(kObjectType);

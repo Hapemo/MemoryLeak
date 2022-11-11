@@ -57,7 +57,10 @@ protected:
 		DIALOGUE,
 		ASSET,
 		DEBUG,
-		MENU
+		MENU,
+		WEATHER,
+		ANIMATION,
+		PERFORMANCE
 	};
 	void SceneReset();
 	static bool GetPannelIsActive(E_PANELID _panel);
@@ -66,21 +69,25 @@ protected:
 	void Do();
 	void Undo();
 	void Redo();
-	static bool isScenePaused;
 	GLFWwindow* mWindow;
 	static int* mWindowWidth;
 	static int* mWindowHeight;
+
 	static std::set<Entity>* myEntities;
 	static const Entity* selectedEntity;
+	static Entity selEntity;
+
+	static std::vector <Prefab*> mPrefabs;
 	static Prefab* selectedPrefab;
 	static const void* selected;
 	static int selectedType;
-	static Entity selEntity;
+
 	static int SRT;
 	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
 	static int stackPointer;
 	static int highestLayer;
-	static std::vector <Prefab*> mPrefabs;
+
+	static bool isScenePaused;
 	static bool isAnimatorEditor;
 	bool isAnimatorEditorFocused(){return isAnimatorEditor;}
 	

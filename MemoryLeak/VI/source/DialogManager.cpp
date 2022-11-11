@@ -62,7 +62,7 @@ bool DialogManager::HasChoice(int _id) {
 	if (mDialogs.count(_id)) {
 		if (mDialogs[_id].next2) return true;
 		else return false;
-	} else LOG_ERROR("Dialogue ID doesn't exist!");
+	} else LOG_ERROR("Dialogue ID doesn't exist! - HasChoice" + std::to_string(_id));
 	return false;
 }
 
@@ -78,7 +78,7 @@ Returns the speaker id.
 *******************************************************************************/
 int DialogManager::GetSpeaker(int _id) {
 	if(mDialogs.count(_id)) return mDialogs[_id].speaker;
-	else LOG_ERROR("Dialogue ID doesn't exist!");
+	else LOG_ERROR("Dialogue ID doesn't exist! - GetSpeaker" + std::to_string(_id));
 	return -1;
 }
 
@@ -94,7 +94,7 @@ Returns the dialog text in string.
 *******************************************************************************/
 std::string DialogManager::GetDialogue(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].text;
-	else LOG_ERROR("Dialogue ID doesn't exist!");
+	else LOG_ERROR("Dialogue ID doesn't exist! - GetDialogue" + std::to_string(_id));
 	return "";
 }
 
@@ -110,7 +110,7 @@ Returns the next dialog id.
 *******************************************************************************/
 int DialogManager::GetNext(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].next;
-	else LOG_ERROR("Dialogue ID doesn't exist!");
+	else LOG_ERROR("Dialogue ID doesn't exist! - GetNext" + std::to_string(_id));
 	return 0;
 }
 
@@ -126,7 +126,7 @@ Returns the second choice dialog id.
 *******************************************************************************/
 int DialogManager::GetNext2(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].next2;
-	else LOG_ERROR("Dialogue ID doesn't exist!");
+	else LOG_ERROR("Dialogue ID doesn't exist!- GetNext2" + std::to_string(_id));
 	return 0;
 }
 
@@ -139,7 +139,7 @@ The id of the current dialog.
 *******************************************************************************/
 int DialogManager::GetSelectedChoice(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].selectedChoice;
-	else LOG_ERROR("Dialogue ID doesn't exist!");
+	else LOG_ERROR("Dialogue ID doesn't exist!- GetSelectedChoice" + std::to_string(_id));
 	return 0;
 }
 
@@ -155,7 +155,7 @@ The selected choice.
 *******************************************************************************/
 void DialogManager::SetSelectedChoice(int _id, int _selectedChoice) {
 	if (mDialogs.count(_id)) mDialogs[_id].selectedChoice = _selectedChoice;
-	else LOG_ERROR("Dialogue ID doesn't exist!");
+	else LOG_ERROR("Dialogue ID doesn't exist!- SetSelectedChoice" + std::to_string(_id));
 }
 
 /*!*****************************************************************************
@@ -180,7 +180,7 @@ std::pair<int, int> DialogManager::GetChoices(int _id) {
 			choices.second = mDialogs[_id].next2;
 		}
 	}
-	else LOG_ERROR("Dialogue ID doesn't exist!");
+	else LOG_ERROR("Dialogue ID doesn't exist!- GetChoices" + std::to_string(_id));
 	return choices;
 }
 
@@ -250,7 +250,118 @@ void DialogManager::CreateNewDialogue(int _id, std::string _text, int _speaker, 
 		mDialogs[_id] = newDialog;
 	}
 }
+void DialogManager::AddNewDialogue(int _previd, std::string _text, int _speaker) {
+	
+	int _id = 1;
+	for (std::pair<int, Dialog> dialog : mDialogs)
+	{
+		if (mDialogs.count(_id))
+			_id++;
+		else
+			break;
+	}
+	int next = mDialogs[_previd].next;
+	mDialogs[_previd].next = _id;
+	Dialog newDialog;
+	newDialog.text = _text;
+	newDialog.speaker = _speaker;
+	newDialog.next = next;
+	newDialog.next2 = 0;
+	newDialog.selectedChoice = 0;
+	mDialogs[_id] = newDialog;
+}
+void DialogManager::AddNewDialogue2(int _previd, std::string _text, int _speaker) {
 
+	int _id = 1;
+	for (std::pair<int, Dialog> dialog : mDialogs)
+	{
+		if (mDialogs.count(_id))
+			_id++;
+		else
+			break;
+	}
+	int next = mDialogs[_previd].next2;
+	mDialogs[_previd].next2 = _id;
+	mDialogs[_previd].selectedChoice = 1;
+	Dialog newDialog;
+	newDialog.text = _text;
+	newDialog.speaker = _speaker;
+	newDialog.next = next;
+	newDialog.next2 = 0;
+	newDialog.selectedChoice = 0;
+	mDialogs[_id] = newDialog;
+}
+//int DialogManager::SwapNext(int _id) { // swap text and speaker only
+//	int id2 = GetNext(_id);
+//	if (id2 == 0)// no more swap down
+//		return _id;
+//	std::string tmpt = mDialogs[id2].text;
+//	mDialogs[id2].text = mDialogs[_id].text;
+//	mDialogs[_id].text = tmpt;
+//
+//	int tmps = mDialogs[id2].speaker;
+//	mDialogs[id2].speaker = mDialogs[_id].speaker;
+//	mDialogs[_id].speaker = tmps;
+//	std::cout << "SWAPPED " << _id << " With " << id2 << "\n";
+//	return id2;
+//}
+//int DialogManager::SwapPrev(int _id) {
+//	if (_id == 1)//no more swap up
+//		return _id; 
+//	int id2 = GetPrev(_id);
+//	if (id2 == 0)// no more swap down
+//		return _id;
+//	std::string tmpt = mDialogs[id2].text;
+//	mDialogs[id2].text = mDialogs[_id].text;
+//	mDialogs[_id].text = tmpt;
+//
+//	int tmps = mDialogs[id2].speaker;
+//	mDialogs[id2].speaker = mDialogs[_id].speaker;
+//	mDialogs[_id].speaker = tmps;
+//
+//	std::cout << "SWAPPED " << _id << " With " << id2 << "\n";
+//	return id2;
+//}
+void DialogManager::SwapNext(int _id) {
+	int id3 = GetPrev(_id);
+	int id2=0;
+	if(GetSelectedChoice(_id))
+		id2 = GetNext2(_id);
+	else
+		id2 = GetNext(_id);
+	if (id2 == 0 || id3 ==0)// no more swap down
+		return;
+
+	Swap(mDialogs[id2].next, mDialogs[_id].next, mDialogs[id3].next);
+	Swap(mDialogs[id2].next2, mDialogs[_id].next2, mDialogs[id3].next2);
+	Swap(mDialogs[id2].selectedChoice, mDialogs[_id].selectedChoice, mDialogs[id3].selectedChoice);
+}
+void DialogManager::SwapPrev(int _id) {
+	int id2 = GetPrev(_id);
+	int id3 = GetPrev(id2);
+	if (id2 == 0 || id3 == 0)// no more swap up
+		return;
+	Swap(mDialogs[_id].next, mDialogs[id2].next, mDialogs[id3].next);
+	Swap(mDialogs[_id].next2, mDialogs[id2].next2, mDialogs[id3].next2);
+	Swap(mDialogs[_id].selectedChoice, mDialogs[id2].selectedChoice, mDialogs[id3].selectedChoice);
+}
+void DialogManager::Swap(int& _id, int& _id2, int& _id3)
+{
+	int tmp = _id3;
+	_id3 = _id2;
+	_id2 = _id;
+	_id = tmp;
+}
+int DialogManager::GetPrev(int _id) {
+	for (std::pair<int, Dialog> dialog : mDialogs)
+	{
+		if (dialog.second.next == _id || dialog.second.next2 == _id)
+		{
+			return dialog.first;
+		}
+	}
+	return 0;
+}
 /*!*****************************************************************************
 \brief
 Clear the member map mDialogs.

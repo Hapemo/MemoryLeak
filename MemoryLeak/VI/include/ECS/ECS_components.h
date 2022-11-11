@@ -97,8 +97,8 @@ The currFrameIndex stores the index of the frame to be used.
 *******************************************************************************/
 struct SheetAnimation
 {
-	short frameCount = 1;
-	short currFrameIndex = 0;
+	int frameCount = 1;
+	int currFrameIndex = 0;
 	float timePerFrame = 1.f;
 	float timeToFrameSwap = 0.f;
 };
