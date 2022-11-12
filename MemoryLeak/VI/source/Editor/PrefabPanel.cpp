@@ -70,18 +70,21 @@ void PrefabPanel::Update()
 					listComponents(p, p->Name());
 					ImGui::PopID();
 					ImGui::PushID(id++);
-					if (ImGui::Button("New Prefabee"))
+					std::string pname = "New " + p->Name() + " Prefabee";
+					if (ImGui::Button(pname.c_str()))
 					{
 						newPrefabee(p);
 					}
 					ImGui::PopID();
 					ImGui::PushID(id++);
-					if (ImGui::Button("Save Prefab"))
+					std::string name = "Save " + p->Name() + " Prefab";
+					if (ImGui::Button(name.c_str()))
 					{
 						serializationManager->SavePrefab(p->Name());
 					}
 					ImGui::PopID();
 				}
+				setSelectedPrefab(p);
 			}
 			ImGui::NewLine();
 			if (ImGui::Button("New Prefab"))

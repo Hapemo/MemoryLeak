@@ -56,6 +56,12 @@ void HierarchyPanel::Update()
 				}
 			}
 			ImGui::EndTabItem();
+			ImGui::NewLine();
+			if (ImGui::Button("New Entity"))
+			{
+				newEntity();
+			}
+		}
 			if (ImGui::BeginPopupContextWindow(0, 1, false))
 			{
 				if (ImGui::MenuItem(" Create Entity"))
@@ -64,12 +70,6 @@ void HierarchyPanel::Update()
 				}
 				ImGui::EndPopup();
 			}
-			ImGui::NewLine();
-			if (ImGui::Button("New Entity"))
-			{
-				newEntity();
-			}
-		}
 		ImGui::EndTabBar();
 	}
 	ImGui::End();
@@ -237,5 +237,6 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 		}
 		ImGui::TreePop();
 	}
+	setSelectedEntity(e);
 }
 
