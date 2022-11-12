@@ -41,7 +41,7 @@ Math::Vec2 SerializationManager::GetVec2(Value& vecIn)
 \return
 None.
 *******************************************************************************/
-void SerializationManager::LoadScene(std::string _filename, int x) //remove x later
+void SerializationManager::LoadScene(std::string _filename)
 {
 	//"../resources/Scene/SceneJ.json"
 	std::string path = "../resources/Scene/" + _filename + ".json";
@@ -58,9 +58,9 @@ void SerializationManager::LoadScene(std::string _filename, int x) //remove x la
 	contents << ifs.rdbuf();
 	Document doc;
 	doc.Parse(contents.str().c_str());
-
-
-
+	int x = 1;
+	if (_filename[0] == 'S' && _filename[1] == 'c' && _filename[3] == 'n')
+		x = 0;
 	if (x == 1)
 	{
 		Value entity(kArrayType);

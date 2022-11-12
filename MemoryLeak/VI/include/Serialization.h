@@ -41,7 +41,7 @@ using namespace rapidjson;
 class SerializationManager : public System
 {
 public:
-	void LoadScene(std::string _filename = "SceneJ", int x = 0);
+	void LoadScene(std::string _filename = "SceneJ");
 	void SaveScene(std::string _filename = "SceneJ");
 	void LoadPrefab(std::string _filename = "NewPrefab");
 	void SavePrefab(std::string _filename = "NewPrefab");

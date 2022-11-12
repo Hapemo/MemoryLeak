@@ -34,6 +34,20 @@ void MenuPanel::Update()
 	static char filenameO_Scene[30] = "";
 	static char filenameS_Dialog[30] = "";
 	static char filenameO_Dialog[30] = "";
+	static float Disco = 0;
+	static float DiscoRate = 0.04f;
+	if (Disco != 0)
+	{
+		Disco += DiscoRate;
+		if ((int)Disco % 3 == 0)
+			ImGui::StyleColorsDark();
+		if ((int)Disco % 3 == 1)
+			ImGui::StyleColorsClassic();
+		if ((int)Disco % 3 == 2)
+			ImGui::StyleColorsLight();
+		if (Disco > 100.f)
+			Disco = 1.f;
+	}
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::Z))//relocate
@@ -53,12 +67,7 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Open Scene", "Ctrl+O"))
 			{
-				//serializationManager->LoadScene(filenameO_Scene);
-				// REMOVEME remove 1
-				if (filenameO_Scene[0] == 'S' && filenameO_Scene[1] == 'c' && filenameO_Scene[3] == 'n')
-					serializationManager->LoadScene(filenameO_Scene);
-				else
-					serializationManager->LoadScene(filenameO_Scene, 1);
+				serializationManager->LoadScene(filenameO_Scene);
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Scene File", NULL, false, false);
@@ -122,12 +131,31 @@ void MenuPanel::Update()
 		{
 			if (ImGui::BeginMenu("Change Theme"))
 			{
-				if(ImGui::MenuItem("Dark"))
+				
+				if (ImGui::MenuItem("Dark"))
+				{
+					Disco = 0;
 					ImGui::StyleColorsDark();
+				}
 				if (ImGui::MenuItem("Light"))
+				{
+					Disco = 0;
 					ImGui::StyleColorsLight();
+				}
 				if (ImGui::MenuItem("Classic"))
+				{
+					Disco = 0;
 					ImGui::StyleColorsClassic();
+				}
+				if (ImGui::MenuItem("Disco"))
+				{
+					Disco = 1;
+				}
+				if (Disco != 0 && ImGui::BeginMenu("Disco Rate"))
+				{
+					ImGui::DragFloat("Rate", &DiscoRate, 0.005f, 0.01f, 0.7f);
+					ImGui::EndMenu();
+				}
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Change Song Lol :)"))

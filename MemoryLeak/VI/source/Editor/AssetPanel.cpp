@@ -162,11 +162,7 @@ void AssetPanel::Update()
 						{
 							ECS::DestroyAllEntities();
 							SceneReset();
-							// REMOVEME remove 1
-							if(texFilename[0] == 'S' && texFilename[1] == 'c' && texFilename[3] == 'n')
-								serializationManager->LoadScene(texFilename);
-							else
-								serializationManager->LoadScene(texFilename, 1);
+							serializationManager->LoadScene(texFilename);
 						}
 					}
 					else if (texParent.find("\\Scripts") != std::string::npos)

@@ -874,24 +874,24 @@ void InspectorPanel::PrefabEditor()
 		ImGui::InputText("Prefab Name", &p->Name());
 		if (ImGui::CollapsingHeader("General") || true) {
 			ImGui::Text("General");
-			General general = p->GetComponent<General>();
-			ImGui::Checkbox("isActive", &general.isActive); //isactive
-			
-			//Should not chnage general name for all prefabees
-			ImGui::InputText("Name", &general.name);
+			//General general = p->GetComponent<General>();
+			//ImGui::Checkbox("isActive", &general.isActive); //isactive
+			//
+			////Should not chnage general name for all prefabees
+			//ImGui::InputText("Name", &general.name);
 
 
-			int tagID = (int)general.tag;
-			//static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "ENVIRONMENT","EFFECTS","PREFABS","OTHERS"};
-			ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
-			general.tag = (TAG)tagID;
+			//int tagID = (int)general.tag;
+			////static const char* tag[]{ "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "ENVIRONMENT","EFFECTS","PREFABS","OTHERS"};
+			//ImGui::Combo("Tag", &tagID, tag, IM_ARRAYSIZE(tag));
+			//general.tag = (TAG)tagID;
 
 
-			int subtagID = (int)general.subtag;
-			//static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
-			ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
-			general.subtag = (SUBTAG)subtagID;
-			p->UpdateComponent(general);
+			//int subtagID = (int)general.subtag;
+			////static const char* subtag[]{ "NOSUBTAG", "PLAYER", "PASSENGER", "ENEMY", "BUILDING", "OTHERS" };
+			//ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
+			//general.subtag = (SUBTAG)subtagID;
+			//p->UpdateComponent(general);
 		}
 	}
 	if (p->HasComponent<Lifespan>())
