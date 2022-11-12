@@ -39,14 +39,6 @@ void Lighting::Update()
     }
 
     renderManager->GetGameCamera().SetPos(lightsource.GetComponent<Transform>().translation);
-    for (const Entity& e : mEntities)
-    {
-        if (e.HasComponent<Text>())
-        {
-        e.GetComponent<Text>().offset = -renderManager->GetGameCamera().GetPos();
-        e.GetComponent<Text>().offset.x -= e.GetComponent<Text>().text.size() * 10;
-        }
-    }
     shadowManager->MakeShadows(lightsource, renderManager);
     
 }

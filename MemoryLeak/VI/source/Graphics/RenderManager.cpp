@@ -11,6 +11,7 @@ operates on Entities with Sprite and Transform Components.
 #include "Graphics/RenderManager.h"
 #include "pch.h"
 #include "RenderProps.h"
+#include "Input.h"
 
 /*!*****************************************************************************
 \brief
@@ -33,7 +34,7 @@ RenderManager::RenderManager()
 	//initialize opengl values
 	glClearColor(0.537f, 0.812f, 0.941f, 1.f);
 	glPointSize(8.f);
-	glLineWidth(2.f);
+	glLineWidth(5.f);
 	glEnable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
@@ -88,6 +89,8 @@ void RenderManager::Render()
 
 	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
+	mGizmo.Update(Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) +
+		Math::Vec2(-*mWindowWidth / 2.f, *mWindowHeight / 2.f) - mGameCam.GetPos());
 	CreateVertices(textureInfo);
 	/*************************************CREATING VERTICES END**************************************/
 
@@ -222,7 +225,7 @@ void RenderManager::RenderDebug()
 		t.rotation = 0;
 		t.scale = mGameCam.GetZoom() * mGameCam.GetWindowDim();
 		t.translation = mGameCam.GetPos();
-		CreateDebugSquare(t, { 0, 255, 0, 255 });
+		CreateDebugSquare(t);
 	}
 	for (const Entity& e : mEntities)
 	{
@@ -236,7 +239,7 @@ void RenderManager::RenderDebug()
 			t.rotation = 0;
 			t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x, 
 				e.GetComponent<Point2DCollider>().centerOffset.y);
-			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
+			CreateDebugSquare(t);
 		}
 
 		if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
@@ -246,7 +249,7 @@ void RenderManager::RenderDebug()
 			t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
 			t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
 				e.GetComponent<Edge2DCollider>().p0Offset.y);
-			CreateDebugLine(t, e.GetComponent<Sprite>().color);
+			CreateDebugLine(t, false);
 		}
 
 		if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
@@ -257,7 +260,7 @@ void RenderManager::RenderDebug()
 			t.rotation = 0;
 			t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
 				e.GetComponent<RectCollider>().centerOffset.y);
-			CreateDebugSquare(t, e.GetComponent<Sprite>().color);
+			CreateDebugSquare(t);
 		}
 
 		if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
@@ -267,7 +270,7 @@ void RenderManager::RenderDebug()
 			t.rotation = 0;
 			t.translation += Math::Vec2(e.GetComponent<CircleCollider>().centerOffset.x,
 				e.GetComponent<CircleCollider>().centerOffset.y);
-			CreateDebugCircle(t, e.GetComponent<Sprite>().color);
+			CreateDebugCircle(t, false);
 		}
 
 		if (e.HasComponent<Physics2D>() && e.GetComponent<Physics2D>().renderFlag)
@@ -283,7 +286,7 @@ void RenderManager::RenderDebug()
 				t.rotation = (float)Math::PI * 2.f + atan2f(p2d.velocity.y, p2d.velocity.x);
 			else
 				t.rotation = 3.f * (float)Math::PI / 2.f;
-			CreateDebugArrow(t, e.GetComponent<Sprite>().color);
+			CreateDebugArrow(t);
 		}
 
 		//check if sprite component itself is a debug drawing
@@ -390,6 +393,15 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 		case SPRITE::TEXTURE:
 		{
 			GLuint texid = e.GetComponent<Sprite>().texture;
+			if (e.HasComponent<Button>())
+			{
+				Button btn = e.GetComponent<Button>();
+				if (btn.isHover)
+					texid = btn.onHoverTexture;
+				if (btn.isClick)
+					texid = btn.onClickTexture;
+			}
+
 			if (texid != 0)
 			{
 				if (_texInfo.find(texid) == _texInfo.end())
@@ -412,6 +424,7 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 		if (!e.HasComponent<Text>()) continue;
 		CreateText(e);
 	}
+	CreateGizmo();
 }
 
 /*!*****************************************************************************
@@ -583,6 +596,14 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	glm::vec4 clr = GetColor(_e);
 	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
+	if (_e.HasComponent<Button>())
+	{
+		Button btn = _e.GetComponent<Button>();
+		if (btn.isHover)
+			texID = static_cast<float>(btn.onHoverTexture);
+		if (btn.isClick)
+			texID = static_cast<float>(btn.onClickTexture);
+	}
 
 	float texMin{};
 	float texMax{ 1.f };
@@ -645,14 +666,20 @@ The entity containing Transform and Sprite component.
 *******************************************************************************/
 void RenderManager::CreateCircle(const Entity& _e)
 {
-	Math::Mat3 mtx = GetTransform(_e);
-	glm::vec4 clr = GetColor(_e);
-	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255.f) / 255.f;
+	CreateCircle(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color, 
+		(_e.GetComponent<Sprite>().layer * 2 - 255.f) / 255.f, false);
+}
+
+void RenderManager::CreateCircle(const Transform& _xform, const Color& _clr, float _layer, bool _isGizmo)
+{
+	Math::Mat3 mtx = GetTransform(_xform.scale, _xform.rotation, _xform.translation);
+	glm::vec4 clr = _isGizmo ? glm::vec4{1.f, 0.f, 0.f, 1.f} : 
+		glm::vec4{_clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f};
 
 	float theta = 2.f / CIRCLE_SLICES * 3.14159265f;
 	Vertex v0;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = layer;
+	v0.position.z = _layer;
 	v0.color = clr;
 	v0.texID = 0.f;
 	mVertices.push_back(v0);
@@ -661,7 +688,7 @@ void RenderManager::CreateCircle(const Entity& _e)
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = layer;
+		v.position.z = _layer;
 		v.color = clr;
 		v.texID = 0.f;
 		mVertices.push_back(v);
@@ -710,7 +737,7 @@ void RenderManager::CreateDebugPoint(const Transform& _t)
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
 	v0.texID = 0.f;
-	v0.position.z = 1;
+	v0.position.z = 0.99f;
 
 	mDebugPoints.push_back(v0);
 }
@@ -725,7 +752,7 @@ The entity containing Transform and Sprite component.
 *******************************************************************************/
 void RenderManager::CreateDebugLine(const Entity& _e)
 {
-	CreateDebugLine(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color);
+	CreateDebugLine(_e.GetComponent<Transform>(), false);
 }
 
 /*!*****************************************************************************
@@ -739,20 +766,20 @@ The transform component.
 \param const Color& _c
 The color component.
 *******************************************************************************/
-void RenderManager::CreateDebugLine(const Transform& _t, const Color& _c)
+void RenderManager::CreateDebugLine(const Transform& _t, bool _isGizmo)
 {
-	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
+	glm::vec4 clr = _isGizmo ? glm::vec4{1.f, 0.f, 0.f, 1.f} : glm::vec4{0.f, 1.f, 0.f, 1.f};
 	Math::Mat3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
 
 	Vertex v0, v1;
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = 1;
+	v0.position.z = 0.99f;
 	v0.texID = 0.f;
 
 	v1.color = clr;
 	v1.position = (mtx * Math::Vec3(1.f, 0.f, 1.f)).ToGLM();
-	v1.position.z = 1;
+	v1.position.z = 0.99f;
 	v1.texID = 0.f;
 
 	mDebugVertices.push_back(v0);
@@ -773,7 +800,7 @@ The entity containing Transform and Sprite component.
 *******************************************************************************/
 void RenderManager::CreateDebugSquare(const Entity& _e)
 {
-	CreateDebugSquare(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color);
+	CreateDebugSquare(_e.GetComponent<Transform>());
 }
 
 /*!*****************************************************************************
@@ -787,28 +814,28 @@ The transform component.
 \param const Color& _c
 The color component.
 *******************************************************************************/
-void RenderManager::CreateDebugSquare(const Transform& _t, const Color& _c)
+void RenderManager::CreateDebugSquare(const Transform& _t)
 {
 	Math::Mat3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
-	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
+	glm::vec4 clr = { 0.f, 1.f, 0.f, 1.f };
 	Vertex v0, v1, v2, v3;
 	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
-	v0.position.z = 1;
+	v0.position.z = 0.95f;
 	v0.color = clr;
 	v0.texID = 0.f;
 
 	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
-	v1.position.z = 1;
+	v1.position.z = 0.95f;
 	v1.color = clr;
 	v1.texID = 0.f;
 
 	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
-	v2.position.z = 1;
+	v2.position.z = 0.95f;
 	v2.color = clr;
 	v2.texID = 0.f;
 
 	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
-	v3.position.z = 1;
+	v3.position.z = 0.95f;
 	v3.color = clr;
 	v3.texID = 0.f;
 
@@ -838,7 +865,7 @@ The entity containing Transform and Sprite component.
 *******************************************************************************/
 void RenderManager::CreateDebugCircle(const Entity& _e)
 {
-	CreateDebugCircle(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color);
+	CreateDebugCircle(_e.GetComponent<Transform>(), false);
 }
 
 /*!*****************************************************************************
@@ -852,18 +879,18 @@ The transform component.
 \param const Color& _c
 The color component.
 *******************************************************************************/
-void RenderManager::CreateDebugCircle(const Transform& _t, const Color& _c)
+void RenderManager::CreateDebugCircle(const Transform& _t, bool _isGizmo)
 {
 	Math::Mat3 mtx = GetTransform(_t.scale, _t.rotation, _t.translation);
-	glm::vec4 clr = GetColor(_c.r, _c.g, _c.b, _c.a);
+	glm::vec4 clr = _isGizmo ? glm::vec4{1.f, 0.f, 0.f, 1.f} : glm::vec4{0.f, 1.f, 0.f, 1.f};
 
-	float theta = 2.f / CIRCLE_SLICES * 3.14159265f;
+	float theta = 2.f / CIRCLE_SLICES * static_cast<float>(Math::PI);
 
 	for (int i = 1; i < CIRCLE_SLICES + 2; ++i)
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = 1;
+		v.position.z = 0.99f;
 		v.color = clr;
 		v.texID = 0.f;
 		mDebugVertices.push_back(v);
@@ -903,9 +930,9 @@ The transform component.
 \param const Color& _c
 The color component.
 *******************************************************************************/
-void RenderManager::CreateDebugArrow(const Transform& _t, const Color& _c)
+void RenderManager::CreateDebugArrow(const Transform& _t)
 {
-	CreateDebugLine(_t, _c);
+	CreateDebugLine(_t, false);
 	mDebugPoints.push_back(mDebugVertices.back());
 }
 
@@ -1101,7 +1128,57 @@ void RenderManager::CreateText(const Entity& _e)
 		mFontRenderers.emplace(fileName, fileName);
 
 	//add paragraph into font renderer
+	
+	Math::Vec2 camOffset = { 0,0 };
+	if (!text.followCam)
+		camOffset = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam.GetPos()
+		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam.GetPos() : mAnimatorCam.GetPos();
+			
 	mFontRenderers[fileName].AddParagraph(text.text,
-		text.offset + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f) + _e.GetComponent<Transform>().translation,
+		text.offset + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f) + _e.GetComponent<Transform>().translation - camOffset,
 		text.scale, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));
+}
+
+void RenderManager::CreateGizmo()
+{
+	if (!mGizmo.GetAttached().id)
+		return;
+	
+	Color clr{ 255, 0, 0, 255 };
+	Transform entityTransform = mGizmo.GetAttached().GetComponent<Transform>();
+
+	//drawing outer rotate circle
+	Math::Vec2 translate = entityTransform.translation;
+	Math::Vec2 scale{ GIZMO_CIRCLE_SIZE, GIZMO_CIRCLE_SIZE};
+	Transform xform{ scale, 0.f, translate };
+	CreateDebugCircle(xform, true);
+
+	//drawing scale x line
+	xform.scale = GIZMO_LINE_SIZE;
+	xform.rotation = 0.f;
+	CreateDebugLine(xform, true);
+
+	//drawing scale y line
+	xform.rotation += (float)Math::PI / 2.f;
+	CreateDebugLine(xform, true);
+
+	//drawing scale x button
+	Math::Vec2 prevScale = xform.scale;
+	xform.translation += {prevScale.x / 2.f, 0.f};
+	xform.scale = GIZMO_BUTTON_SIZE;
+	CreateCircle(xform, clr, 1.f, true);
+
+	//drawing scale y button
+	xform.translation += Math::Vec2{0.f,  prevScale.x / 2.f}  - Math::Vec2{prevScale.x / 2.f, 0.f};
+	CreateCircle(xform, clr, 1.f, true);
+
+	//drawing translate button
+	xform.translation -= { 0.f,  prevScale.x / 2.f };
+	CreateCircle(xform, clr, 1.f, true);
+
+	//drawing rotate button
+	translate += Math::Vec2(cosf(entityTransform.rotation + (float)Math::PI / 2.f), 
+		sinf(entityTransform.rotation + (float)Math::PI / 2.f)) * GIZMO_CIRCLE_SIZE / 2.f;
+	xform.translation = translate;
+	CreateCircle(xform, clr, 1.f, true);
 }
