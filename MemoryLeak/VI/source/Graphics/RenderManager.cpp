@@ -230,6 +230,7 @@ void RenderManager::RenderDebug()
 	for (const Entity& e : mEntities)
 	{
 		if (!e.GetComponent<General>().isActive) continue;
+		if (!e.ShouldRun()) continue;
 
 		//check if entity has any of these physics components
 		if (e.HasComponent<Point2DCollider>() && e.GetComponent<Point2DCollider>().renderFlag)
@@ -387,6 +388,7 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 	for (const Entity& e : mEntities)
 	{
 		if (!e.GetComponent<General>().isActive) continue;
+		if (!e.ShouldRun()) continue;
 
 		switch (e.GetComponent<Sprite>().sprite)
 		{
