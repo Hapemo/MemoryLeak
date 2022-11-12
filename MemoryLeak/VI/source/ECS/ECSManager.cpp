@@ -209,7 +209,6 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Script>();
 	ECS::RegisterComponent<Dialogue>();
 	ECS::RegisterComponent<LightSource>();
-	ECS::RegisterComponent<ParentChild>();
 	// More to come
 }
 

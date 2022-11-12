@@ -33,6 +33,8 @@ struct General {
 	bool isActive;
 	bool isPaused;
 	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
+	std::set<Entity> children;
+	Entity parent;
 };
 
 /*!*****************************************************************************
@@ -287,11 +289,6 @@ only contains an offset. Later versions will include light intensity.
 struct LightSource
 {
 	Math::Vec2 centreOffset;
-};
-
-
-struct ParentChild {
-	std::set<Entity> children;
 };
 
 //use to index the variant data type, for ditor and serilization to determine type stored
