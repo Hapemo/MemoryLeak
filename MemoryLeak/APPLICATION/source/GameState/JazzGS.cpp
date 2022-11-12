@@ -16,25 +16,22 @@ Game state for testing jazz's stuff
 Entity gParent{};
 
 void AddChildren(Entity _parent, Entity _children) {
-#ifdef PREFAB_OR_PARENTCHILD
-	if (!_parent.HasComponent<ParentChild>()) _parent.AddComponent<ParentChild>(ParentChild());
-	_parent.GetComponent<ParentChild>().children.insert(_children);
-#else
-
-#endif
+	_parent.GetComponent<General>().children.insert(_children);
 }
 
 void FullTranslate(Entity _e, Math::Vec2 const& addVec) {
 #ifdef PREFAB_OR_PARENTCHILD
-	Transform& transform = _e.GetComponent<Transform>();
-	transform.translation += addVec;
+	(void) _e;
+	(void)addVec;
+	//Transform& transform = _e.GetComponent<Transform>();
+	//transform.translation += addVec;
 
-	if (_e.HasComponent<ParentChild>()) {
-		std::set<Entity> children = _e.GetComponent<ParentChild>().children;
-		for (Entity e : children) {
-			e.GetComponent<Transform>().translation += addVec;
-		}
-	}
+	//if (_e.HasComponent<ParentChild>()) {
+	//	std::set<Entity> children = _e.GetComponent<ParentChild>().children;
+	//	for (Entity e : children) {
+	//		e.GetComponent<Transform>().translation += addVec;
+	//	}
+	//}
 #else
 
 #endif
