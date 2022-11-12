@@ -128,7 +128,7 @@ void PrefabPanel::newPrefab()
 	//mPrefabs.push_back(pre);
 
 	PrefabPtr newPrefab = PrefabManager::GetInstance()->CreatePrefab();
-	newPrefab->Name() = "new Prefab" + std::to_string(n);
+	newPrefab->Name() = "newPrefab" + std::to_string(n);
 
 	n++;
 }
@@ -136,7 +136,7 @@ void PrefabPanel::newPrefabee(PrefabPtr pre)
 {
 	static int n{1};
 	Entity b = pre->CreatePrefabee();
-	b.GetComponent<General>().name = "Prefabee" + std::to_string(n);
+	b.GetComponent<General>().name = "newPrefabee" + std::to_string(n);
 	n++;
 }
 
