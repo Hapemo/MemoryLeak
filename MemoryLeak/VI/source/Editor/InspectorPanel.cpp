@@ -1048,8 +1048,8 @@ void InspectorPanel::PrefabEditor()
 		if (ImGui::CollapsingHeader("SheetAnimation")) {
 			//ImGui::Text("SheetAnimation");
 			SheetAnimation sheetAnimation = p->GetComponent<SheetAnimation>();
-			ImGui::InputInt("frameCount", (int*)sheetAnimation.frameCount);
-			ImGui::InputInt("currFrameIndex", (int*)sheetAnimation.currFrameIndex);
+			ImGui::InputInt("frameCount", &sheetAnimation.frameCount);
+			ImGui::InputInt("currFrameIndex", &sheetAnimation.currFrameIndex);
 			ImGui::InputFloat("timePerFrame", &sheetAnimation.timePerFrame);
 			ImGui::InputFloat("timeToFrameSwap", &sheetAnimation.timeToFrameSwap);
 			p->UpdateComponent<SheetAnimation>(sheetAnimation);

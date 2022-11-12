@@ -37,6 +37,7 @@ private:
 	ImTextureID sceneIcon;
 	ImTextureID folderIcon;
 	ImTextureID scriptIcon;
+	ImTextureID prefabIcon;
 	ImTextureID dialogueIcon;
 	ImTextureID selectedIcon;
 	ImTextureID gamestateIcon;

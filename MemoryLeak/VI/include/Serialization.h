@@ -41,7 +41,7 @@ using namespace rapidjson;
 class SerializationManager : public System
 {
 public:
-	void LoadScene(std::string _filename = "SceneJ");
+	void LoadScene(std::string _filename = "SceneJ", int x = 0);
 	void SaveScene(std::string _filename = "SceneJ");
 	void LoadPrefab(std::string _filename = "NewPrefab");
 	void SavePrefab(std::string _filename = "NewPrefab");
@@ -62,9 +62,42 @@ private:
 	template<typename T>
 	static void addVectorsMember(Document& scene, Value& parent, const char* name, std::vector <T> data);
 
+	General getGeneral(Value& entity);
+	Lifespan getLifespan(Value& entity);
+	Transform getTransform(Value& entity);
+	Sprite getSprite(Value& entity);
+	Animation getAnimation(Value& entity);
+	SheetAnimation getSheetAnimation(Value& entity);
+	Physics2D getPhysics2D(Value& entity);
+	RectCollider getRectCollider(Value& entity);
+	CircleCollider getCircleCollider(Value& entity);
+	Edge2DCollider getEdge2DCollider(Value& entity);
+	Point2DCollider getPoint2DCollider(Value& entity);
+	Audio getAudio(Value& entity);
+	AI getAI(Value& entity);
+	Text getText(Value& entity);
+	Dialogue getDialogue(Value& entity);
+	LightSource getLightSource(Value& entity);
+	Script getScript(Value& entity);
 
 
-
+	void addGeneral(Document& scene, Value& entity, General general);
+	void addLifespan(Document& scene, Value& entity, Lifespan lifespan);
+	void addTransform(Document& scene, Value& entity, Transform transform);
+	void addSprite(Document& scene, Value& entity, Sprite sprite);
+	void addAnimation(Document& scene, Value& entity, Animation animation);
+	void addSheetAnimation(Document& scene, Value& entity, SheetAnimation sheetAnimation);
+	void addPhysics2D(Document& scene, Value& entity, Physics2D physics2D);
+	void addRectCollider(Document& scene, Value& entity, RectCollider rectCollider);
+	void addCircleCollider(Document& scene, Value& entity, CircleCollider circleCollider);
+	void addEdge2DCollider(Document& scene, Value& entity, Edge2DCollider edge2DCollider);
+	void addPoint2DCollider(Document& scene, Value& entity, Point2DCollider point2DCollider);
+	void addAudio(Document& scene, Value& entity, Audio audio);
+	void addAI(Document& scene, Value& entity, AI ai);
+	void addText(Document& scene, Value& entity, Text text);
+	void addDialogue(Document& scene, Value& entity, Dialogue dialogue);
+	void addLightSource(Document& scene, Value& entity, LightSource lightSource);
+	void addScript(Document& scene, Value& entity, Script script);
 
 public:
 	static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
@@ -74,3 +107,5 @@ public:
 	static void SaveSceneData(ResourceManager::GUID const&);
 
 };
+
+

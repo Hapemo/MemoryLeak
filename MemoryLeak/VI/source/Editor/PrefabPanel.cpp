@@ -30,7 +30,7 @@ void PrefabPanel::LoadPrefab()
 		const auto& path = directory.path();
 		if (path.extension() == ".meta")
 			continue;
-		serializationManager->LoadPrefab(path.stem().string());
+		//serializationManager->LoadPrefab(path.stem().string());
 	}
 }
 
@@ -66,18 +66,21 @@ void PrefabPanel::Update()
 			{
 				if (ImGui::CollapsingHeader(p->Name().c_str()))
 				{
-					ImGui::PushID(id);
+					ImGui::PushID(id++);
 					listComponents(p, p->Name());
 					ImGui::PopID();
-					id++;
+					ImGui::PushID(id++);
 					if (ImGui::Button("New Prefabee"))
 					{
 						newPrefabee(p);
 					}
+					ImGui::PopID();
+					ImGui::PushID(id++);
 					if (ImGui::Button("Save Prefab"))
 					{
 						serializationManager->SavePrefab(p->Name());
 					}
+					ImGui::PopID();
 				}
 			}
 			ImGui::NewLine();
@@ -177,89 +180,93 @@ None.
 void PrefabPanel::listComponents(PrefabPtr p, std::string _name)
 {
 
-	if (ImGui::TreeNode(_name.c_str()))
+	if (p->HasComponent<General>())
 	{
-		if (p->HasComponent<General>())
+		ImGui::Text("General");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Lifespan>())
+	{
+		ImGui::Text("Lifespan");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Transform>())
+	{
+		ImGui::Text("Transform");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Sprite>())
+	{
+		ImGui::Text("Sprite");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Animation>())
+	{
+		ImGui::Text("Animation");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<SheetAnimation>())
+	{
+		ImGui::Text("SheetAnimation");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Physics2D>())
+	{
+		ImGui::Text("Physics2D");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<RectCollider>())
+	{
+		ImGui::Text("RectCollider");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<CircleCollider>())
+	{
+		ImGui::Text("CircleCollider");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Edge2DCollider>())
+	{
+		ImGui::Text("Edge2DCollider");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Audio>())
+	{
+		ImGui::Text("Audio");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Text>())
+	{
+		ImGui::Text("Text");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<AI>())
+	{
+		ImGui::Text("AI");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Script>())
+	{
+		ImGui::Text("Script");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<Dialogue>())
+	{
+		ImGui::Text("Dialogue");
+		setSelectedPrefab(p);
+	}
+	if (p->HasComponent<PlayerTmp>())
+	{
+		ImGui::Text("PlayerTmp");
+		setSelectedPrefab(p);
+	}
+	for (Entity b : p->GetPrefabees())
+	{
+		if (ImGui::TreeNode(b.GetComponent<General>().name.c_str()))
 		{
-			ImGui::Text("General");
-			setSelectedPrefab(p);
+			ImGui::Text(b.GetComponent<General>().name.c_str());
+			ImGui::TreePop();
 		}
-		if (p->HasComponent<Lifespan>())
-		{
-			ImGui::Text("Lifespan");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Transform>())
-		{
-			ImGui::Text("Transform");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Sprite>())
-		{
-			ImGui::Text("Sprite");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Animation>())
-		{
-			ImGui::Text("Animation");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<SheetAnimation>())
-		{
-			ImGui::Text("SheetAnimation");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Physics2D>())
-		{
-			ImGui::Text("Physics2D");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<RectCollider>())
-		{
-			ImGui::Text("RectCollider");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<CircleCollider>())
-		{
-			ImGui::Text("CircleCollider");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Edge2DCollider>())
-		{
-			ImGui::Text("Edge2DCollider");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Audio>())
-		{
-			ImGui::Text("Audio");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Text>())
-		{
-			ImGui::Text("Text");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<AI>())
-		{
-			ImGui::Text("AI");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Script>())
-		{
-			ImGui::Text("Script");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<Dialogue>())
-		{
-			ImGui::Text("Dialogue");
-			setSelectedPrefab(p);
-		}
-		if (p->HasComponent<PlayerTmp>())
-		{
-			ImGui::Text("PlayerTmp");
-			setSelectedPrefab(p);
-		}
-		ImGui::TreePop();
 	}
 }
 

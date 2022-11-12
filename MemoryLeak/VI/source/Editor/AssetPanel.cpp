@@ -32,6 +32,7 @@ void AssetPanel::Init()
 	sceneIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\sceneIcon.png");
 	scriptIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\scriptIcon.png");
 	folderIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
+	prefabIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\prefabIcon.png");
 	dialogueIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\dialogueIcon.png");
 	gamestateIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\gamestateIcon.png");
 }
@@ -158,7 +159,11 @@ void AssetPanel::Update()
 						{
 							ECS::DestroyAllEntities();
 							SceneReset();
-							serializationManager->LoadScene(texFilename);
+							// REMOVEME remove 1
+							if(texFilename[0] == 'S' && texFilename[1] == 'c' && texFilename[3] == 'n')
+								serializationManager->LoadScene(texFilename);
+							else
+								serializationManager->LoadScene(texFilename, 1);
 						}
 					}
 					else if (texParent.find("\\Scripts") != std::string::npos)
@@ -183,6 +188,20 @@ void AssetPanel::Update()
 								ImGui::SetDragDropPayload("TEXTURES", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
 								ImGui::EndDragDropSource();
 							}
+						}
+					}
+					else if (texParent.find("\\Prefabs") != std::string::npos)
+					{
+						ImGui::ImageButton(prefabIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
+						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+						{
+							serializationManager->LoadPrefab(texFilename);
+						}
+						if (ImGui::BeginDragDropSource())
+						{
+							const wchar_t* itemPath = (wchar_t*)texFilename.c_str();
+							ImGui::SetDragDropPayload("PREFAB", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
 						}
 					}
 					else
@@ -281,6 +300,7 @@ void AssetPanel::Update()
 			ImGui::NewLine();
 			ImGui::EndTabItem();
 		}
+		ImGui::Dummy({ 10,100 });
 		ImGui::EndTabBar();
 	}
 	ImGui::End();

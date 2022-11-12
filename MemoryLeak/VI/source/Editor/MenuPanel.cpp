@@ -48,14 +48,23 @@ void MenuPanel::Update()
 		{
 			ImGui::MenuItem("(menu)", NULL, false, false);
 			ImGui::MenuItem("Open Scene File", NULL, false, false);
-			ImGui::InputText(".json (os)", filenameO_Scene, 30);
+			ImGui::PushID(1);
+			ImGui::InputText(".json", filenameO_Scene, 30);
+			ImGui::PopID();
 			if (ImGui::MenuItem("Open Scene", "Ctrl+O"))
 			{
-				serializationManager->LoadScene(filenameO_Scene);
+				//serializationManager->LoadScene(filenameO_Scene);
+				// REMOVEME remove 1
+				if (filenameO_Scene[0] == 'S' && filenameO_Scene[1] == 'c' && filenameO_Scene[3] == 'n')
+					serializationManager->LoadScene(filenameO_Scene);
+				else
+					serializationManager->LoadScene(filenameO_Scene, 1);
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Scene File", NULL, false, false);
-			ImGui::InputText(".json (ss)", filenameS_Scene, 30);
+			ImGui::PushID(2);
+			ImGui::InputText(".json", filenameS_Scene, 30);
+			ImGui::PopID();
 			if (ImGui::MenuItem("Save Scene As", "Ctrl+S"))
 			{
 				serializationManager->SaveScene(filenameS_Scene);
@@ -68,7 +77,9 @@ void MenuPanel::Update()
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Dialogue File", NULL, false, false);
-			ImGui::InputText(".json (od)", filenameO_Dialog, 20);
+			ImGui::PushID(3);
+			ImGui::InputText(".json", filenameO_Dialog, 20);
+			ImGui::PopID();
 			if (ImGui::MenuItem("Open Dialog", "Ctrl+D"))
 			{
 				serializationManager->LoadDialogs(filenameO_Dialog);
@@ -76,7 +87,9 @@ void MenuPanel::Update()
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Save Dialogue File As", NULL, false, false);
-			ImGui::InputText(".json (sd)", filenameS_Dialog, 20);
+			ImGui::PushID(4);
+			ImGui::InputText(".json", filenameS_Dialog, 20);
+			ImGui::PopID();
 			if (ImGui::MenuItem("Save Dialog As", "Ctrl+F"))
 			{
 				serializationManager->SaveDialogs(filenameS_Dialog);
