@@ -248,22 +248,21 @@ void WorldViewPanel::NewPrefabee()
 		LOG_INFO("Created new prefabee");
 		prefabname = (const wchar_t*)payload->Data;
 		std::string prefab = (std::string)((const char*)prefabname);
-		std::cout << prefab <<"ppppppppppppppppppppppppp\n";
-		//serializationManager->LoadPrefab(prefab);
-		//PrefabManager::PrefabPtr pre = PrefabManager::GetInstance()->GetPrefab(prefab);
-		//static int n{ 1 };
-		//Entity b = pre->CreatePrefabee();
-		//b.GetComponent<General>().name = "newdragdropPrefabee" + std::to_string(n++);
-		//if (b.HasComponent<Transform>())
-		//{
-		//	/*Transform transform = b.GetComponent<Transform>();
-		//	transform.translation = camMousePos;*/
-		//	b.GetComponent<Transform>().translation = camMousePos;
-		//}
-		//if (b.HasComponent<Sprite>())
-		//{
-		//	b.GetComponent<Sprite>().layer = highestLayer;
-		//}
+		serializationManager->LoadPrefab(prefab);
+		PrefabManager::PrefabPtr pre = PrefabManager::GetInstance()->GetPrefab(prefab);
+		static int n{ 1 };
+		Entity b = pre->CreatePrefabee();
+		b.GetComponent<General>().name = "newdragdropPrefabee" + std::to_string(n++);
+		if (b.HasComponent<Transform>())
+		{
+			/*Transform transform = b.GetComponent<Transform>();
+			transform.translation = camMousePos;*/
+			b.GetComponent<Transform>().translation = camMousePos;
+		}
+		if (b.HasComponent<Sprite>())
+		{
+			b.GetComponent<Sprite>().layer = highestLayer;
+		}
 	}
 	
 }
