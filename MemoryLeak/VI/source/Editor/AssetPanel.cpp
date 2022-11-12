@@ -67,8 +67,10 @@ void AssetPanel::Update()
 				ImGui::NewLine();
 				ImGui::NewLine();
 			}
+			int id = 0;
 			for (auto& directory : std::filesystem::directory_iterator(m_CurrentDirectory))
 			{
+				
 				const auto& path = directory.path();
 				auto relativePath = std::filesystem::relative(path, rootPath);
 				std::string filename = relativePath.filename().string();
@@ -92,6 +94,7 @@ void AssetPanel::Update()
 					texFilename = directory.path().stem().string();
 					if (texExt == ".meta")
 						continue;
+					ImGui::PushID(id++);
 					if (texParent.find("\\Audio\\BGM") != std::string::npos)
 					{
 						ImGui::ImageButton(bgmIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
@@ -208,7 +211,7 @@ void AssetPanel::Update()
 					{
 						ImGui::Button(texFilename.c_str(), folderSize);
 					}
-
+					ImGui::PopID();
 
 					/*my_image2_texture = spriteManager->GetTextureID(texPath);
 					if (my_image2_texture)
