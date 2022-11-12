@@ -48,10 +48,27 @@ void HierarchyPanel::Update()
 					{
 						if (e.GetComponent<General>().tag != (TAG)i)
 							continue;
-						ImGui::PushID(id);
-						listComponents(&e, e.GetComponent<General>().name);
-						ImGui::PopID();
-						id++;
+						for(int l =-1; l<255; l++)
+						{
+							if (l == -1)
+							{
+								if (!e.HasComponent<Sprite>())
+								{
+									ImGui::PushID(id++);
+									listComponents(&e, e.GetComponent<General>().name);
+									ImGui::PopID();
+								}
+							}
+							else
+							{
+								if (e.GetComponent<Sprite>().layer != l)
+									continue;
+								std::string name = "(" + std::to_string(l) + ") " + e.GetComponent<General>().name;
+								ImGui::PushID(id++);
+								listComponents(&e, name);
+								ImGui::PopID();
+							}
+						}
 					}
 				}
 			}

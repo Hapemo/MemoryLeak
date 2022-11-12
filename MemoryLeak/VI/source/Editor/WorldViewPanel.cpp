@@ -72,6 +72,11 @@ void WorldViewPanel::Update()
 			NewEntity();
 			ImGui::EndDragDropTarget();
 		}
+		if (ImGui::BeginDragDropTarget())
+		{
+			NewPrefabee();
+			ImGui::EndDragDropTarget();
+		}
 
 		if (ImGui::IsWindowHovered())
 		{
@@ -227,6 +232,39 @@ void WorldViewPanel::NewEntity()
 		spriteManager->SetTexture(ne, tp);
 		newEntityCount++;
 	}
+}
+/*!*****************************************************************************
+\brief
+	This Function created a new prefabee
+
+\return
+None.
+*******************************************************************************/
+void WorldViewPanel::NewPrefabee()
+{
+	static const wchar_t* prefabname = (const wchar_t*)"";
+	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("PREFAB"))
+	{
+		LOG_INFO("Created new prefabee");
+		prefabname = (const wchar_t*)payload->Data;
+		std::string prefab = (std::string)((const char*)prefabname);
+		serializationManager->LoadPrefab(prefab);
+		PrefabManager::PrefabPtr pre = PrefabManager::GetInstance()->GetPrefab(prefab);
+		static int n{ 1 };
+		Entity b = pre->CreatePrefabee();
+		b.GetComponent<General>().name = "newdragdropPrefabee" + std::to_string(n++);
+		if (b.HasComponent<Transform>())
+		{
+			/*Transform transform = b.GetComponent<Transform>();
+			transform.translation = camMousePos;*/
+			b.GetComponent<Transform>().translation = camMousePos;
+		}
+		if (b.HasComponent<Sprite>())
+		{
+			b.GetComponent<Sprite>().layer = highestLayer;
+		}
+	}
+	
 }
 /*!*****************************************************************************
 \brief

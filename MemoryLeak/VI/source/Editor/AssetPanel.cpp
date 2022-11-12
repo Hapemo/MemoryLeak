@@ -193,15 +193,15 @@ void AssetPanel::Update()
 					else if (texParent.find("\\Prefabs") != std::string::npos)
 					{
 						ImGui::ImageButton(prefabIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
-						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
-						{
-							serializationManager->LoadPrefab(texFilename);
-						}
 						if (ImGui::BeginDragDropSource())
 						{
 							const wchar_t* itemPath = (wchar_t*)texFilename.c_str();
 							ImGui::SetDragDropPayload("PREFAB", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
 							ImGui::EndDragDropSource();
+						}
+						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+						{
+							serializationManager->LoadPrefab(texFilename);
 						}
 					}
 					else

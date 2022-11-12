@@ -1107,7 +1107,7 @@ void SerializationManager::LoadPrefab(std::string _filename)
 			return;
 		}
 	}
-
+	
 	PrefabManager::PrefabPtr p = PrefabManager::GetInstance()->CreatePrefab();
 	p->Name() = _filename;
 
