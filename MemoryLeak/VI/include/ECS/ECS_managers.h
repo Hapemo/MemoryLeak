@@ -418,6 +418,9 @@ template<typename T>
 T& Entity::GetComponent() const { return Coordinator::GetInstance()->GetComponent<T>(id); }
 
 template<typename T>
+T const& Entity::ReadComponent() const { return Coordinator::GetInstance()->GetComponent<T>(id); }
+
+template<typename T>
 void Entity::RemoveComponent() const { return Coordinator::GetInstance()->RemoveComponent<T>(id); }
 
 template<typename T>
@@ -445,14 +448,8 @@ void Prefab::UpdateComponent(T const& _component) { // TODO: Possible optimisati
 
 	for (Entity const& e : mPrefabees)
 	{
-		e.GetComponent<T>() = *(static_cast<T*>(mComponents[pos]));
-		//doesnt work... whyy? -WJ
-		// need to ensure all entities different name
-		//if (pos == 0) //==COMPONENTID::GENERAL
-		//{
-		//	static int count{ 1 };
-		//	e.GetComponent<T>().name = e.GetComponent<T>().name + std::to_string(count);
-		//}
+		if (!e.HasComponent<T>()) e.AddComponent<T>(*(static_cast<T*>(mComponents[pos]))); // Add component if prefabee doesn't have the component.
+		else e.GetComponent<T>() = *(static_cast<T*>(mComponents[pos]));
 	}
 }
 
