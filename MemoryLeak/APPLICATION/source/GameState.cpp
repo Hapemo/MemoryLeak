@@ -97,6 +97,5 @@ void GameState::PrimaryUnload() {
   renderManager->ResetCameras();
   if (Coordinator::GetInstance()->GetEntityCount() != 0)
     LOG_ERROR("There remains " + std::to_string(Coordinator::GetInstance()->GetEntityCount()) + " after Unloading GameState " + std::to_string(mGuid));
-  ECS::DestroyAllEntities();
   // Put in gamestate init later
 }

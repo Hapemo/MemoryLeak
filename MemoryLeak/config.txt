@@ -2,5 +2,5 @@ title: gam200
 window_width: 1600
 window_height: 900
 fps_limit: 0
-starting_gamestate: 1
+starting_gamestate: 11
 load_all_resources: 1

@@ -34,7 +34,7 @@ void AIDemo::Free() {
 }
 
 void AIDemo::Unload() {
-    ECS::DestroyAllEntities();
+    //ECS::DestroyAllEntities();
     
 }
 

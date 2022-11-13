@@ -168,8 +168,8 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
-	if (renderManager->GetRenderGameToScreen())
-		return;
+	//if (renderManager->GetRenderGameToScreen())
+		renderManager->RenderToFrameBuffer();
 	Window();
 	
 
@@ -221,7 +221,7 @@ void EditorManager::Update()
 
 
 
-	glClearColor(0.f,0.f,0.f,1.f);
+	//glClearColor(0.f,0.f,0.f,1.f);
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)

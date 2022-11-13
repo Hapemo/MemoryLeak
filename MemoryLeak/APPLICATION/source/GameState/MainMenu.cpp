@@ -13,16 +13,22 @@ Game state for main menu
 #include "VertexFetcher.h"
 #include <GameStateManager.h>
 
-
 void MainMenu::Load() {
-	//serializationManager->LoadScene("Scene_MainMenu");
+	serializationManager->LoadScene("Scene_MainMenu");
 }
 
 void MainMenu::Init() {
-	/*for (Scene* scenePtr : mScenes)
-		scenePtr->Init();*/
+	for (Scene* scenePtr : mScenes)
+		scenePtr->Init();
+	//renderManager->GetGizmo().Attach(Entity(5));
+	//if (e.GetComponent<General>().tag != TAG::ENVIRONMENT)
+	//	continue;
+	//if (!e.HasComponent<Text>())
+	//	continue;
+	//e.AddComponent<Button>({});
+	//spriteManager->SetButtonHoverTexture(e, "Textures\\Icons\\backBtn.png");
+	//spriteManager->SetButtonClickTexture(e, "Textures\\Icons\\folderIcon.png");
 }
-
 
 void MainMenu::Update() {
 	buttonManager->Update();
@@ -54,7 +60,7 @@ void MainMenu::Update() {
 				if (cursorPos.x <= vertices[0].x && cursorPos.y <= vertices[0].y)
 					if (cursorPos.x >= vertices[2].x && cursorPos.y >= vertices[2].y)
 					{
-						e.GetComponent<Text>().color = e.GetComponent<Text>().color.g == 255 ? 
+						e.GetComponent<Text>().color = e.GetComponent<Text>().color.g == 255 ?
 							Color{0, 0, 0, 255}: Color{ 255, 255, 255, 255 };
 						if (e.GetComponent<General>().subtag == SUBTAG::PLAYER)
 						{
@@ -66,9 +72,9 @@ void MainMenu::Update() {
 						}
 					}
 		}
-	}
+	}*/
 	for (Scene* scenePtr : mScenes)
-		scenePtr->PrimaryUpdate();*/
+		scenePtr->PrimaryUpdate();
 }
 
 void MainMenu::Draw() {
@@ -76,11 +82,11 @@ void MainMenu::Draw() {
 }
 
 void MainMenu::Free() {
-	/*for (auto& scenePtr : mScenes)
-		scenePtr->Exit();*/
+	for (auto& scenePtr : mScenes)
+		scenePtr->Exit();
 }
 
 void MainMenu::Unload() {
 	renderManager->GetGizmo().Detach();
-	ECS::DestroyAllEntities();
+	//ECS::DestroyAllEntities();
 }

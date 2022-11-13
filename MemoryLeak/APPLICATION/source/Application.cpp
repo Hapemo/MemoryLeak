@@ -44,7 +44,8 @@ void Application::SystemInit() {
   
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
-  renderManager->RenderToFrameBuffer();
+  
+  renderManager->RenderToScreen();
   // For render debug
   renderManager->SetVectorLengthModifier(5.f);
   renderManager->SetDebug(true);
@@ -58,6 +59,7 @@ void Application::SystemInit() {
     ResourceManager::GetInstance()->LoadAllResources();
   for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
     spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
+  editorManager->Init(); //need loaded resources
 }
 
 void Application::SystemUpdate() {

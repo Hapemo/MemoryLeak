@@ -45,9 +45,12 @@ None.
 *******************************************************************************/
 void AssetPanel::Update()
 {
-	//GLuint my_image2_texture = 0;
-	//std::string rootPath = "..\\resources";
-	//ImVec2 buttonSize = { 100,100 };
+	static bool start = true;
+	if (start)
+	{
+		Init();
+		start = false;
+	}
 	if (ImGui::Begin("Asset Manager"))
 	{
 		ImGui::BeginTabBar("Assets");
