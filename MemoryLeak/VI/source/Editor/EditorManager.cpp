@@ -38,6 +38,13 @@ int EditorManager::selectedType=0;
 int EditorManager::SRT{};
 std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
 int EditorManager::stackPointer{-1};
+//copy
+std::pair<Entity, int> EditorManager::copyEntity{};
+float EditorManager::copyOffset = 20.f;
+
+//prefabs
+float EditorManager::prefabOffset = 10.f;
+
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
@@ -47,8 +54,9 @@ bool EditorManager::aspect = false;
 
 std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
 std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
-int EditorManager::selectedGameState{};
-int EditorManager::selectedScene{};
+int EditorManager::selectedGameState{0};
+int EditorManager::selectedScene{0};
+int EditorManager::selectedPrevious = {0};
 /*!*****************************************************************************
 \brief
 	Load the level editor
@@ -78,10 +86,12 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	//newGS.push_back(*myEntities);
 	//std::vector < std::set<Entity>> newGS2;
 	//newGS2.push_back(*myEntities);
-	allEntities.push_back(newGS);
+
+	/*allEntities.push_back(newGS);
 	std::pair< std::string,std::vector<std::string>> newGSNmae{};
 	newGSNmae.first = "NewGameState";
-	allNames.push_back(newGSNmae);
+	allNames.push_back(newGSNmae);*/
+
 	//allEntities.push_back(newGS2);
 
 
@@ -128,7 +138,7 @@ void EditorManager::Init()
 	aspect = false;
 	SRT = 0;
 	stackPointer = 0;
-
+	copyEntity.second = 0;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 		panels[p]->Init();
@@ -161,18 +171,54 @@ void EditorManager::Update()
 	if (renderManager->GetRenderGameToScreen())
 		return;
 	Window();
-	for (const Entity& e : *myEntities)
+	
+
+
+	if (selectedGameState < allEntities.size())
 	{
-		if (e.HasComponent<Sprite>())
+		if (selectedScene < allEntities[selectedGameState].size())
 		{
-			if (highestLayer <= e.GetComponent<Sprite>().layer)
-				highestLayer = e.GetComponent<Sprite>().layer +1;
+			for (const Entity& e : allEntities[selectedGameState][selectedScene])
+			{
+				if (e.HasComponent<Sprite>())
+				{
+					if (highestLayer <= e.GetComponent<Sprite>().layer)
+						highestLayer = e.GetComponent<Sprite>().layer + 1;
+				}
+			}
 		}
 	}
+	static int maxSCENE = 10;
+	selectedPrevious = selectedGameState * maxSCENE + selectedScene;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
 	}
+
+	//IF Change Scene
+	if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
+	{
+		for (const Entity& e : *myEntities)
+		{
+			e.GetComponent<General>().isActive = false;
+		}
+		if (selectedGameState < allEntities.size())
+		{
+			if (selectedScene < allEntities[selectedGameState].size())
+			{
+				for (const Entity& e : allEntities[selectedGameState][selectedScene])
+				{
+					e.GetComponent<General>().isActive = true;
+				}
+			}
+		}
+		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
+		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+		SceneReset();
+	}
+
+
+
 	glClearColor(0.f,0.f,0.f,1.f);
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -466,9 +512,99 @@ void EditorManager::SceneReset()
 	aspect = false;
 	renderManager->ResetCameras();
 }
+void EditorManager::Copy()
+{
+	if (selectedEntity != nullptr)
+	{
+		LOG_INFO("Enitity Copied");
+		copyOffset = 20.f;
+		copyEntity.first = *selectedEntity;
+		copyEntity.second = 1;
+	}
+}
+void EditorManager::Cut()
+{
+	if (selectedEntity != nullptr)
+	{
+		LOG_INFO("Enitity Cutted");
+		copyOffset = 20.f;
+		copyEntity.first = *selectedEntity;
+		copyEntity.second = 2;
+		(*selectedEntity).GetComponent<General>().isActive = false;
+		allEntities[selectedGameState][selectedScene].erase(*selectedEntity);
+		selectedEntity = nullptr;
+	}
+}
+void EditorManager::Paste()
+{
+	if (copyEntity.second != 0)
+	{
+		//Clone Entity;
+		LOG_INFO("Enitity Pasted");
+		Entity e = Clone(copyEntity.first);
+		allEntities[selectedGameState][selectedScene].insert(e);
+		if (copyEntity.second == 2)//cut
+		{
+			copyEntity.first.Destroy();
+			copyEntity.second = 0;
+		}
+		else
+		{
+			if (e.HasComponent<Transform>())
+			{
+				e.GetComponent<Transform>().translation.x += copyOffset;
+				e.GetComponent<Transform>().translation.y += copyOffset;
+				copyOffset += 20.f;
+			}
+		}
+		if (e.HasComponent<General>())
+		{
+			e.GetComponent<General>().isActive = true;
+		}
+	}
+}
+Entity EditorManager::Clone(Entity c)
+{
+	Entity e{ ECS::CreateEntity() };
 
+	if (c.HasComponent<General>())
+		e.AddComponent(c.GetComponent<General>());
+	if (c.HasComponent<Lifespan>())
+		e.AddComponent(c.GetComponent<Lifespan>());
+	if (c.HasComponent<Transform>())
+		e.AddComponent(c.GetComponent<Transform>());
+	if (c.HasComponent<Sprite>())
+		e.AddComponent(c.GetComponent<Sprite>());
+	if (c.HasComponent<Animation>())
+		e.AddComponent(c.GetComponent<Animation>());
+	if (c.HasComponent<SheetAnimation>())
+		e.AddComponent(c.GetComponent<SheetAnimation>());
+	if (c.HasComponent<Physics2D>())
+		e.AddComponent(c.GetComponent<Physics2D>());
+	if (c.HasComponent<RectCollider>())
+		e.AddComponent(c.GetComponent<RectCollider>());
+	if (c.HasComponent<CircleCollider>())
+		e.AddComponent(c.GetComponent<CircleCollider>());
+	if (c.HasComponent<Edge2DCollider>())
+		e.AddComponent(c.GetComponent<Edge2DCollider>());
+	if (c.HasComponent<Point2DCollider>())
+		e.AddComponent(c.GetComponent<Point2DCollider>());
+	if (c.HasComponent<Audio>())
+		e.AddComponent(c.GetComponent<Audio>());
+	if (c.HasComponent<Text>())
+		e.AddComponent(c.GetComponent<Text>());
+	if (c.HasComponent<AI>())
+		e.AddComponent(c.GetComponent<AI>());
+	if (c.HasComponent<Script>())
+		e.AddComponent(c.GetComponent<Script>());
+	if (c.HasComponent<Dialogue>())
+		e.AddComponent(c.GetComponent<Dialogue>());
+	if (c.HasComponent<PlayerTmp>())
+		e.AddComponent(c.GetComponent<PlayerTmp>());
 
+	return e;
 
+}
 
 
 

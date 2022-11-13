@@ -60,6 +60,22 @@ void MenuPanel::Update()
 		{
 			Redo();
 		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT) && Input::CheckKey(E_STATE::PRESS, E_KEY::Z))//relocate
+		{
+			Redo();
+		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::C))//relocate
+		{
+			Copy();
+		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::V))//relocate
+		{
+			Paste();
+		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::X))//relocate
+		{
+			Cut();
+		}
 		if (ImGui::BeginMenu("File"))
 		{
 			int id = 0;
@@ -73,8 +89,9 @@ void MenuPanel::Update()
 			if (ImGui::MenuItem("Open GameState", "Ctrl+O"))
 			{
 				std::pair<  std::string, std::vector<std::string>> gs{};
-				allEntities.push_back(serializationManager->LoadGameState(filenameO_GameState, gs.second));
-				gs.first = filenameO_GameState;
+				std::string GSname = filenameO_GameState;
+				allEntities.push_back(serializationManager->LoadGameState(GSname, gs.second));
+				gs.first = GSname;
 				allNames.push_back(gs);
 			}
 			ImGui::Separator();
@@ -147,9 +164,18 @@ void MenuPanel::Update()
 		}
 		if (ImGui::BeginMenu("Edit"))
 		{
-			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
-			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+			if (ImGui::MenuItem("Cut", "CTRL+X")) 
+			{
+				Cut();
+			}
+			if (ImGui::MenuItem("Copy", "CTRL+C")) 
+			{
+				Copy();
+			}
+			if (ImGui::MenuItem("Paste", "CTRL+V")) 
+			{
+				Paste();
+			}
 			ImGui::Separator();
 			if (ImGui::MenuItem("Undo", "CTRL+Z"))
 			{

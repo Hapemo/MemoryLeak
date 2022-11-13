@@ -107,7 +107,7 @@ Entity Prefab::CreatePrefabee() {
 	static int count{ 1 };
 	// Loop through all components, if component exists, add it to entity.
 	for (void* component : mComponents) {
-		if (!component) continue;
+		if (!component) { compType++; continue; }
 
 		// TODO: Very dangerous. If there is a change in component order, whole thing breaks
 		switch (compType++) {

@@ -43,16 +43,36 @@ class SerializationManager : public System
 public:
 	std::set<Entity> LoadScene(std::string _filename);
 	void SaveScene(std::string _filename, std::set<Entity> entities);
-	std::vector<std::set<Entity>> LoadGameState(std::string _filename, std::vector<std::string> & sceneName);
+	std::vector<std::set<Entity>> LoadGameState(std::string& _filename, std::vector<std::string> & sceneName);
 	void SaveGameState(std::pair<  std::string, std::vector<std::string> > _filename, std::vector<std::set<Entity>> entities);
 	void LoadPrefab(std::string _filename = "NewPrefab");
 	void SavePrefab(std::string _filename = "NewPrefab");
 	void LoadDialogs(std::string _filename = "Dialog1");
 	void SaveDialogs(std::string _filename = "Dialog1");
 
+	//getters
+	std::string GetSceneFilename();
+	std::string GetGameStateFilename();
+	std::string GetPrefabFilename();
+	std::string GetDialogueFilename();
+	std::vector<std::string> GetAllsceneFilename();
+	std::vector<std::string> GetAllgameStateFilename();
+	std::vector<std::string> GetAllprefabFilename();
+	std::vector<std::string> GetAlldialogueFilename();
+
+
 
 private:
-	
+	std::string sceneFilename;
+	std::string gameStateFilename;
+	std::string prefabFilename;
+	std::string dialogueFilename;
+	std::vector<std::string> allsceneFilename;
+	std::vector<std::string> allgameStateFilename;
+	std::vector<std::string> allprefabFilename;
+	std::vector<std::string> alldialogueFilename;
+
+	//helper functions
 	static Math::Vec2 GetVec2(Value& vecIn);
 	static void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec2 data);
 	template<typename T>
@@ -64,6 +84,7 @@ private:
 	template<typename T>
 	static void addVectorsMember(Document& scene, Value& parent, const char* name, std::vector <T> data);
 
+	//load components
 	General getGeneral(Value& entity);
 	Lifespan getLifespan(Value& entity);
 	Transform getTransform(Value& entity);
@@ -82,7 +103,7 @@ private:
 	LightSource getLightSource(Value& entity);
 	Script getScript(Value& entity);
 
-
+	//save components 
 	void addGeneral(Document& scene, Value& entity, General general);
 	void addLifespan(Document& scene, Value& entity, Lifespan lifespan);
 	void addTransform(Document& scene, Value& entity, Transform transform);

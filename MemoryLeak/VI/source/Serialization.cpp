@@ -55,6 +55,8 @@ std::set<Entity> SerializationManager::LoadScene(std::string _filename)
 	}
 	else
 		LOG_INFO("Opening Scene: " + path);
+	sceneFilename = _filename;
+	allsceneFilename.push_back(_filename);
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
@@ -837,7 +839,8 @@ void SerializationManager::SaveScene(std::string _filename, std::set<Entity> ent
 void SerializationManager::addGeneral(Document& scene, Value& entity, General general)
 {
 	Value tmp(kObjectType);
-	tmp.AddMember(StringRef("name"), StringRef(general.name.c_str()), scene.GetAllocator());
+	Value vname(general.name.c_str(), (SizeType)general.name.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("name"), vname, scene.GetAllocator());
 	tmp.AddMember(StringRef("tag"), (int)general.tag, scene.GetAllocator());
 	tmp.AddMember(StringRef("subtag"), (int)general.subtag, scene.GetAllocator());
 	tmp.AddMember(StringRef("isActive"), general.isActive, scene.GetAllocator());
@@ -869,8 +872,8 @@ void SerializationManager::addSprite(Document& scene, Value& entity, Sprite spri
 	tmp.AddMember(StringRef("color"), tmpc, scene.GetAllocator());
 	tmp.AddMember(StringRef("sprite"), (int)sprite.sprite, scene.GetAllocator());
 	std::string tex = spriteManager->GetTexturePath(sprite.texture);
-	Value texpath(tex.c_str(), (SizeType)tex.size(), scene.GetAllocator());
-	tmp.AddMember(StringRef("texture"), texpath, scene.GetAllocator());
+	Value vtexture(tex.c_str(), (SizeType)tex.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("texture"), vtexture, scene.GetAllocator());
 	tmp.AddMember(StringRef("layer"), sprite.layer, scene.GetAllocator());
 	entity.AddMember(StringRef("Sprite"), tmp, scene.GetAllocator());
 }
@@ -950,7 +953,8 @@ void SerializationManager::addPoint2DCollider(Document& scene, Value& entity, Po
 void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
 {
 	Value tmp(kObjectType);
-	tmp.AddMember(StringRef("path"), StringRef(audio.sound.path.c_str()), scene.GetAllocator());
+	Value vpath(audio.sound.path.c_str(), (SizeType)audio.sound.path.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("path"), vpath, scene.GetAllocator());
 	tmp.AddMember(StringRef("volume"), audio.sound.volume, scene.GetAllocator());
 	tmp.AddMember(StringRef("volumeMod"), audio.sound.volumeMod, scene.GetAllocator());
 	tmp.AddMember(StringRef("pitch"), audio.sound.pitch, scene.GetAllocator());
@@ -974,8 +978,10 @@ void SerializationManager::addText(Document& scene, Value& entity, Text text)
 {
 	Value tmp(kObjectType);
 	Value tmpc(kObjectType);
-	tmp.AddMember(StringRef("fontFile"), StringRef(text.fontFile.c_str()), scene.GetAllocator());
-	tmp.AddMember(StringRef("text"), StringRef(text.text.c_str()), scene.GetAllocator());
+	Value vfontFile(text.fontFile.c_str(), (SizeType)text.fontFile.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("fontFile"), vfontFile, scene.GetAllocator());
+	Value vtext(text.text.c_str(), (SizeType)text.text.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("text"), vtext, scene.GetAllocator());
 	addVectorMember(scene, tmp, "offset", text.offset);
 	tmp.AddMember(StringRef("scale"), text.scale, scene.GetAllocator());
 	tmpc.AddMember(StringRef("r"), text.color.r, scene.GetAllocator());
@@ -1009,7 +1015,7 @@ void SerializationManager::addScript(Document& scene, Value& entity, Script scri
 
 
 
-std::vector<std::set<Entity>> SerializationManager::LoadGameState(std::string _filename, std::vector<std::string>& scenefilename)
+std::vector<std::set<Entity>> SerializationManager::LoadGameState(std::string& _filename, std::vector<std::string>& scenefilename)
 {
 	std::vector<std::set<Entity>> gamestate{};
 	//std::vector<std::string> scenefilename{};
@@ -1023,6 +1029,18 @@ std::vector<std::set<Entity>> SerializationManager::LoadGameState(std::string _f
 	}
 	else
 		LOG_INFO("Opening game state: " + path);
+
+	gameStateFilename = _filename;
+	int same = 0;
+	for (std::string s : allgameStateFilename)
+	{
+		if (s == _filename)
+			same++;
+	}
+	allgameStateFilename.push_back(_filename);
+	if (same != 0)
+		_filename += (" ("+ std::to_string(same) + ")");
+
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
@@ -1054,7 +1072,7 @@ void SerializationManager::SaveGameState(std::pair<  std::string, std::vector<st
 	//scave each scene
 	for (int s = 0; s< _filename.second.size(); s++)
 	{
-		//SaveScene(_filename.second[s], entities[s]);
+		SaveScene(_filename.second[s], entities[s]);
 		LOG_INFO("Saved a scene");
 	}
 	Document gamestate;
@@ -1107,8 +1125,12 @@ void SerializationManager::LoadDialogs(std::string _filename)
 	std::ifstream ifs("../resources/Dialogs/" + _filename + ".json");
 	if (!ifs.good())
 		LOG_ERROR("Can't open " + _filename + ".json file!");
-	else {
+	else 
+	{
 		LOG_INFO("Opened dialog json file: " + _filename);
+
+		dialogueFilename = _filename;
+		alldialogueFilename.push_back(_filename);
 
 		std::stringstream contents;
 		contents << ifs.rdbuf();
@@ -1182,6 +1204,10 @@ void SerializationManager::LoadPrefab(std::string _filename)
 	}
 	else
 		LOG_INFO("Loading prefab: " + path);
+
+	prefabFilename = _filename;
+	allprefabFilename.push_back(_filename);
+
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
@@ -1279,7 +1305,7 @@ void SerializationManager::SavePrefab(std::string _filename)
 {
 	PrefabManager::PrefabPtr p = PrefabManager::GetInstance()->GetPrefab(_filename);
 	Document prefab;
-	auto& allocator = prefab.GetAllocator();
+	//auto& allocator = prefab.GetAllocator();
 	prefab.SetObject();
 
 	StringBuffer buffer;
@@ -1372,6 +1398,38 @@ void SerializationManager::SavePrefab(std::string _filename)
 		LOG_INFO("Saved Prefab: " + path);
 }
 
+std::string SerializationManager::GetSceneFilename() 
+{ 
+	return sceneFilename; 
+}
+std::string SerializationManager::GetGameStateFilename() 
+{ 
+	return gameStateFilename; 
+}
+std::string SerializationManager::GetPrefabFilename() 
+{ 
+	return prefabFilename; 
+}
+std::string SerializationManager::GetDialogueFilename() 
+{ 
+	return dialogueFilename; 
+}
+std::vector<std::string> SerializationManager::GetAllsceneFilename() 
+{ 
+	return allsceneFilename; 
+}
+std::vector<std::string> SerializationManager::GetAllgameStateFilename() 
+{ 
+	return allgameStateFilename; 
+}
+std::vector<std::string> SerializationManager::GetAllprefabFilename() 
+{ 
+	return allprefabFilename; 
+}
+std::vector<std::string> SerializationManager::GetAlldialogueFilename() 
+{ 
+	return alldialogueFilename; 
+}
 
 
 

@@ -260,6 +260,7 @@ None.
 *******************************************************************************/
 void InspectorPanel::DeleteEntity()
 {
+	allEntities[selectedGameState][selectedScene].erase(e);
 	e.Destroy();
 	LOG_INFO("Entity deleated");
 	selectedEntity = nullptr;

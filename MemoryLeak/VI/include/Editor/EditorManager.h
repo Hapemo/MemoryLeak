@@ -70,6 +70,10 @@ protected:
 	void Do();
 	void Undo();
 	void Redo();
+	void Copy();
+	void Cut();
+	void Paste();
+	Entity Clone(Entity e);
 	GLFWwindow* mWindow;
 	static int* mWindowWidth;
 	static int* mWindowHeight;
@@ -84,12 +88,20 @@ protected:
 	static std::vector<std::vector<std::set<Entity>>> allEntities;
 	static int selectedGameState;
 	static int selectedScene;
+	static int selectedPrevious;
 	//static std::vector <Prefab*> mPrefabs;
 	//static const void* selected;
 	static int SRT;
+	//undo/redo
 	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
 	static int stackPointer;
 	static int highestLayer;
+	//copy paste
+	static std::pair<Entity, int> copyEntity;
+	static float copyOffset;
+
+	//prefab
+	static float prefabOffset;
 
 	static bool isScenePaused;
 	static bool isAnimatorEditor;

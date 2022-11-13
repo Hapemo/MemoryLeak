@@ -66,6 +66,10 @@ void PrefabPanel::Update()
 			{
 				if (ImGui::CollapsingHeader(p->Name().c_str()))
 				{
+					if(ImGui::IsItemClicked())
+					{
+						prefabOffset = 10.f;
+					}
 					ImGui::PushID(id++);
 					listComponents(p, p->Name());
 					ImGui::PopID();
@@ -133,11 +137,37 @@ void PrefabPanel::newPrefab()
 	n++;
 }
 void PrefabPanel::newPrefabee(PrefabPtr pre)
-{
+{//FUNCTION GS SCENE
+
+	if (selectedGameState >= allEntities.size())
+	{
+		std::vector < std::set<Entity>> newGS{};
+		allEntities.push_back(newGS);
+		std::pair< std::string, std::vector<std::string>> newGSNmae{};
+		newGSNmae.first = "NewGameState0";
+		allNames.push_back(newGSNmae);
+		selectedGameState = (int)allEntities.size() - 1;
+	}
+	if (selectedScene >= allEntities[selectedGameState].size())
+	{
+		std::set<Entity> newSecen{};
+		allEntities[selectedGameState].push_back(newSecen);
+		allNames[selectedGameState].second.push_back("NewScene0");
+		selectedScene = (int)allEntities[selectedGameState].size() - 1;
+	}
+	LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
+	LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
 	static int n{1};
 	Entity b = pre->CreatePrefabee();
 	b.GetComponent<General>().name = "newPrefabee" + std::to_string(n);
+	if (b.HasComponent<Transform>())
+	{
+		b.GetComponent<Transform>().translation.x += prefabOffset;
+		b.GetComponent<Transform>().translation.y += prefabOffset;
+	}
+	(allEntities[selectedGameState][selectedScene]).insert(b);
 	n++;
+	prefabOffset += 10.f;
 }
 
 /*!*****************************************************************************
