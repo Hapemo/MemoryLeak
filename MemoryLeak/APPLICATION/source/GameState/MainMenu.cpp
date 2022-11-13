@@ -15,16 +15,16 @@ Game state for main menu
 
 
 void MainMenu::Load() {
-	serializationManager->LoadScene("Scene_MainMenu");
+	//serializationManager->LoadScene("Scene_MainMenu");
 }
 
 void MainMenu::Init() {
-	for (Scene* scenePtr : mScenes)
-		scenePtr->Init();
+	/*for (Scene* scenePtr : mScenes)
+		scenePtr->Init();*/
 }
 
 void MainMenu::Update() {
-	if (renderManager->GetRenderGameToScreen())
+	/*if (renderManager->GetRenderGameToScreen())
 	{
 		Math::Vec2 cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) +
 			Math::Vec2(-Application::getWindowWidth() / 2.f, Application::getWindowHeight() / 2.f);
@@ -53,7 +53,7 @@ void MainMenu::Update() {
 		}
 	}
 	for (Scene* scenePtr : mScenes)
-		scenePtr->PrimaryUpdate();
+		scenePtr->PrimaryUpdate();*/
 }
 
 void MainMenu::Draw() {
@@ -61,8 +61,8 @@ void MainMenu::Draw() {
 }
 
 void MainMenu::Free() {
-	for (auto& scenePtr : mScenes)
-		scenePtr->Exit();
+	/*for (auto& scenePtr : mScenes)
+		scenePtr->Exit();*/
 }
 
 void MainMenu::Unload() {

@@ -37,8 +37,11 @@ void FontRenderer::Init(const std::string& _fontfile)
     std::string filepath = "../VI/fonts/" + _fontfile;
 
     FT_Face face;
-    ASSERT(FT_New_Face(ft, filepath.c_str(), 0, &face), 
-        "ERROR::FREETYPE: Failed to load font\n");
+    if (FT_New_Face(ft, filepath.c_str(), 0, &face))
+    {
+        LOG_INFO("ERROR::FREETYPE: Failed to load font\n");
+        return;
+    }
 
     FT_Set_Pixel_Sizes(face, 0, 48);
 

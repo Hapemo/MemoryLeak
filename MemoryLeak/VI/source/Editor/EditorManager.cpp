@@ -44,6 +44,11 @@ int EditorManager::highestLayer =0;
 //std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
+
+std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
+std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
+int EditorManager::selectedGameState{};
+int EditorManager::selectedScene{};
 /*!*****************************************************************************
 \brief
 	Load the level editor
@@ -66,6 +71,20 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	mWindowHeight = _windowHeight;
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
+
+
+	std::vector < std::set<Entity>> newGS{};
+	//newGS.push_back(*myEntities);
+	//newGS.push_back(*myEntities);
+	//std::vector < std::set<Entity>> newGS2;
+	//newGS2.push_back(*myEntities);
+	allEntities.push_back(newGS);
+	std::pair< std::string,std::vector<std::string>> newGSNmae{};
+	newGSNmae.first = "NewGameState";
+	allNames.push_back(newGSNmae);
+	//allEntities.push_back(newGS2);
+
+
 	static AnimationPanel animationPanel{};
 	static HierarchyPanel hierarchyPanel{};
 	static InspectorPanel inspectorPanel{};
@@ -91,7 +110,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&performancePanel);
 	panels.push_back(&prefabPanel);
 
-	prefabPanel.LoadPrefab();
+	//prefabPanel.LoadPrefab();
 	Init();
 	
 }

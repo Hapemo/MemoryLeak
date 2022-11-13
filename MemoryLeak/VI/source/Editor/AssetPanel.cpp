@@ -154,15 +154,24 @@ void AssetPanel::Update()
 					else if (texParent.find("\\GameStates") != std::string::npos)
 					{
 						ImGui::ImageButton(gamestateIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
+						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left) && texFilename[0] !='G') //REMOVEME
+						{
+							std::pair<  std::string, std::vector<std::string>> gs{};
+							allEntities.push_back(serializationManager->LoadGameState(texFilename, gs.second));
+							gs.first = texFilename;
+							allNames.push_back(gs);
+						}
 					}
 					else if (texParent.find("\\Scene") != std::string::npos)
 					{
 						ImGui::ImageButton(sceneIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
 						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 						{
-							ECS::DestroyAllEntities();
+							//ECS::DestroyAllEntities();
 							SceneReset();
-							serializationManager->LoadScene(texFilename);
+							allEntities[selectedGameState].push_back(serializationManager->LoadScene(texFilename));
+							allNames[selectedGameState].second.push_back(texFilename);
+							//selectedScene = allEntities[selectedGameState].size() - 1;
 						}
 					}
 					else if (texParent.find("\\Scripts") != std::string::npos)

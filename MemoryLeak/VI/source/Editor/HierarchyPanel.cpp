@@ -35,58 +35,82 @@ void HierarchyPanel::Update()
 {
 	if (ImGui::Begin("Hierarchy Manager"))
 	{
-		ImGui::BeginTabBar("Hierarchy ");
-		if (ImGui::BeginTabItem("Scene 1: "))
+		int id = 0;
+		ImGui::BeginTabBar("GameState");
+		for (int g = 0; g < allEntities.size(); g++)
 		{
-			for (int i = 0; i < (int)tag.size(); i++)
+			//std::string gsName= "GameState" + std::to_string(g + 1);
+			//if(ImGui::BeginTabItem(gsName.c_str()))
+			ImGui::PushID(id++);
+			if (ImGui::BeginTabItem(allNames[g].first.c_str()))
 			{
-				
-				if (ImGui::CollapsingHeader(tag[i].c_str()))
+				ImGui::BeginTabBar("Scenes");
+				for (int s = 0; s < allEntities[g].size(); s++)
 				{
-					int id = 0;
-					for (const Entity& e : *myEntities)
+					//std::string sName = "Scene" + std::to_string(s + 1);
+					//if (ImGui::BeginTabItem(sName.c_str())
+					ImGui::PushID(id++);
+					if (ImGui::BeginTabItem(allNames[g].second[s].c_str()))
 					{
-						if (e.GetComponent<General>().tag != (TAG)i)
-							continue;
-						for(int l =-1; l<255; l++)
+						selectedGameState = g;
+						selectedScene = s;
+						for (int i = 0; i < (int)tag.size(); i++)
 						{
-							if (l == -1)
+
+							if (ImGui::CollapsingHeader(tag[i].c_str()))
 							{
-								if (!e.HasComponent<Sprite>())
+								int id = 0;
+								for (const Entity& e : allEntities[g][s])
 								{
-									ImGui::PushID(id++);
-									listComponents(&e, e.GetComponent<General>().name);
-									ImGui::PopID();
+									if (e.GetComponent<General>().tag != (TAG)i)
+										continue;
+									for (int l = -1; l < 255; l++)
+									{
+										if (l == -1)
+										{
+											if (!e.HasComponent<Sprite>())
+											{
+												ImGui::PushID(id++);
+												listComponents(&e, e.GetComponent<General>().name);
+												ImGui::PopID();
+											}
+										}
+										else
+										{
+											if (e.GetComponent<Sprite>().layer != l)
+												continue;
+											std::string name = "(" + std::to_string(l) + ") " + e.GetComponent<General>().name;
+											ImGui::PushID(id++);
+											listComponents(&e, name);
+											ImGui::PopID();
+										}
+									}
 								}
 							}
-							else
-							{
-								if (e.GetComponent<Sprite>().layer != l)
-									continue;
-								std::string name = "(" + std::to_string(l) + ") " + e.GetComponent<General>().name;
-								ImGui::PushID(id++);
-								listComponents(&e, name);
-								ImGui::PopID();
-							}
 						}
+						if (ImGui::BeginPopupContextWindow(0, 1, false))
+						{
+							if (ImGui::MenuItem(" Create Entity"))
+							{
+								newEntity();
+							}
+							ImGui::EndPopup();
+						}
+						ImGui::NewLine();
+						if (ImGui::Button("New Entity"))
+						{
+							newEntity();
+						}
+						ImGui::EndTabItem();
+						
 					}
+					ImGui::PopID();
 				}
+				ImGui::EndTabBar();
+				ImGui::EndTabItem();
 			}
-			ImGui::EndTabItem();
-			ImGui::NewLine();
-			if (ImGui::Button("New Entity"))
-			{
-				newEntity();
-			}
+			ImGui::PopID();
 		}
-			if (ImGui::BeginPopupContextWindow(0, 1, false))
-			{
-				if (ImGui::MenuItem(" Create Entity"))
-				{
-					newEntity();
-				}
-				ImGui::EndPopup();
-			}
 		ImGui::EndTabBar();
 	}
 	ImGui::End();

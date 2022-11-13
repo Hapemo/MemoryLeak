@@ -41,8 +41,9 @@ Math::Vec2 SerializationManager::GetVec2(Value& vecIn)
 \return
 None.
 *******************************************************************************/
-void SerializationManager::LoadScene(std::string _filename)
+std::set<Entity> SerializationManager::LoadScene(std::string _filename)
 {
+	std::set<Entity> scene{};
 	//"../resources/Scene/SceneJ.json"
 	std::string path = "../resources/Scene/" + _filename + ".json";
 	std::ifstream ifs(path);
@@ -50,7 +51,7 @@ void SerializationManager::LoadScene(std::string _filename)
 	if (!ifs.good())
 	{
 		LOG_ERROR("Can't open json file! : " + path);
-		return;
+		return scene;
 	}
 	else
 		LOG_INFO("Opening Scene: " + path);
@@ -133,7 +134,8 @@ void SerializationManager::LoadScene(std::string _filename)
 				e.AddComponent<Script>(getScript(entity[index]));
 			}
 
-			mEntities.insert(e);
+			//mEntities.insert(e);
+			scene.insert(e);
 		}
 	}
 	else////////////to be deleted REMOVEME
@@ -356,14 +358,16 @@ void SerializationManager::LoadScene(std::string _filename)
 
 				e.AddComponent<Script>(script);
 			}
-			mEntities.insert(e);
+			//mEntities.insert(e);
+			scene.insert(e);
 			i++;
 		}
 	}
 
 
-	logicSystem->Init();
+	//logicSystem->Init();
 	ifs.close();
+	return scene;
 }
 General SerializationManager::getGeneral(Value& entity)
 {
@@ -719,7 +723,7 @@ void SerializationManager::addVectorsMember(Document& scene, Value& parent, cons
 \return
 None.
 *******************************************************************************/
-void SerializationManager::SaveScene(std::string _filename)
+void SerializationManager::SaveScene(std::string _filename, std::set<Entity> entities)
 {
 	Document scene;
 	auto& allocator = scene.GetAllocator();
@@ -729,7 +733,7 @@ void SerializationManager::SaveScene(std::string _filename)
 	PrettyWriter<StringBuffer> writer(buffer);
 	//int counter = 0;
 	
-	for (const Entity& e : mEntities)
+	for (const Entity& e : entities)
 	{
 		if (!e.HasComponent<General>())
 			continue;
@@ -1002,6 +1006,93 @@ void SerializationManager::addScript(Document& scene, Value& entity, Script scri
 	tmp.AddMember(StringRef("name"), StringRef(script.name.c_str()), scene.GetAllocator());
 	entity.AddMember(StringRef("Script"), tmp, scene.GetAllocator());
 }
+
+
+
+std::vector<std::set<Entity>> SerializationManager::LoadGameState(std::string _filename, std::vector<std::string>& scenefilename)
+{
+	std::vector<std::set<Entity>> gamestate{};
+	//std::vector<std::string> scenefilename{};
+	std::string path = "../resources/GameStates/" + _filename + ".json";
+	std::ifstream ifs(path);
+	//std::ifstream ifs(filename);
+	if (!ifs.good())
+	{
+		LOG_ERROR("Can't open json file! : " + path);
+		return gamestate;
+	}
+	else
+		LOG_INFO("Opening game state: " + path);
+	std::stringstream contents;
+	contents << ifs.rdbuf();
+	Document doc;
+	doc.Parse(contents.str().c_str());
+
+	Value entity(kArrayType);
+	entity = doc.GetArray();
+	for (rapidjson::SizeType index = 0; index < entity.Size(); ++index)
+	{
+		std::string sc = entity[index].GetString();
+		scenefilename.push_back(sc);
+	}
+	ifs.close();
+	for (int s = 0;s < scenefilename.size(); s++)
+	{
+		gamestate.push_back(  LoadScene(scenefilename[s]));
+		LOG_INFO("loaded a scene");
+	}
+
+
+
+	return gamestate;
+
+
+}
+void SerializationManager::SaveGameState(std::pair<  std::string, std::vector<std::string> > _filename, std::vector<std::set<Entity>> entities)
+{
+
+	//scave each scene
+	for (int s = 0; s< _filename.second.size(); s++)
+	{
+		//SaveScene(_filename.second[s], entities[s]);
+		LOG_INFO("Saved a scene");
+	}
+	Document gamestate;
+	auto& allocator = gamestate.GetAllocator();
+	//scene.SetObject();
+	gamestate.SetArray();
+	StringBuffer buffer;
+	PrettyWriter<StringBuffer> writer(buffer);
+	//int counter = 0;
+	for (int s = 0; s< _filename.second.size(); s++)
+	{
+		std::string str = _filename.second[s];
+		Value scene(str.c_str(), (SizeType)str.size(), allocator);
+		gamestate.PushBack(scene, allocator);
+	}
+
+	gamestate.Accept(writer);
+	std::string jsonf(buffer.GetString(), buffer.GetSize());
+	std::string path = "../resources/GameStates/" + _filename.first + ".json";
+	std::ofstream ofs(path);
+	ofs << jsonf;
+	if (!ofs.good())
+	{
+		LOG_ERROR("Unable to save Game State to: " + path);
+	}
+	else
+		LOG_INFO("Saved Game State: " + path);
+
+
+
+}
+
+
+
+
+
+
+
 
 
 /*!*****************************************************************************

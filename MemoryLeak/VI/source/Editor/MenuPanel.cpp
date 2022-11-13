@@ -30,6 +30,8 @@ None.
 *******************************************************************************/
 void MenuPanel::Update()
 {
+	static char filenameS_GameState[30] = "";
+	static char filenameO_GameState[30] = "";
 	static char filenameS_Scene[30] = "";
 	static char filenameO_Scene[30] = "";
 	static char filenameS_Dialog[30] = "";
@@ -60,24 +62,55 @@ void MenuPanel::Update()
 		}
 		if (ImGui::BeginMenu("File"))
 		{
+			int id = 0;
 			ImGui::MenuItem("(menu)", NULL, false, false);
+
+			//gamestate
+			ImGui::MenuItem("Open GameState File", NULL, false, false);
+			ImGui::PushID(id++);
+			ImGui::InputText(".json", filenameO_GameState, 30);
+			ImGui::PopID();
+			if (ImGui::MenuItem("Open GameState", "Ctrl+O"))
+			{
+				std::pair<  std::string, std::vector<std::string>> gs{};
+				allEntities.push_back(serializationManager->LoadGameState(filenameO_GameState, gs.second));
+				gs.first = filenameO_GameState;
+				allNames.push_back(gs);
+			}
+			ImGui::Separator();
+			ImGui::MenuItem("Open GameState File", NULL, false, false);
+			ImGui::PushID(id++);
+			ImGui::InputText(".json", filenameS_GameState, 30);
+			ImGui::PopID();
+			if (ImGui::MenuItem("Save GameState As", "Ctrl+S"))
+			{
+				allNames[selectedGameState].first = filenameS_GameState;
+				serializationManager->SaveGameState(allNames[selectedGameState], allEntities[selectedGameState]);
+			}
+
+
+			//scene
 			ImGui::MenuItem("Open Scene File", NULL, false, false);
-			ImGui::PushID(1);
+			ImGui::PushID(id++);
 			ImGui::InputText(".json", filenameO_Scene, 30);
 			ImGui::PopID();
 			if (ImGui::MenuItem("Open Scene", "Ctrl+O"))
 			{
-				serializationManager->LoadScene(filenameO_Scene);
+				//serializationManager->LoadScene(filenameO_Scene);
+				allEntities[selectedGameState].push_back(serializationManager->LoadScene(filenameO_Scene));
+				allNames[selectedGameState].second.push_back(filenameO_Scene);
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Scene File", NULL, false, false);
-			ImGui::PushID(2);
+			ImGui::PushID(id++);
 			ImGui::InputText(".json", filenameS_Scene, 30);
 			ImGui::PopID();
 			if (ImGui::MenuItem("Save Scene As", "Ctrl+S"))
 			{
-				serializationManager->SaveScene(filenameS_Scene);
+				serializationManager->SaveScene(filenameS_Scene, allEntities[selectedGameState][selectedScene]);
 			}
+
+
 			ImGui::Separator();
 			if (ImGui::MenuItem("Clear Scene"))
 			{
@@ -85,8 +118,10 @@ void MenuPanel::Update()
 				SceneReset();
 			}
 			ImGui::Separator();
+
+			//dialogue
 			ImGui::MenuItem("Open Dialogue File", NULL, false, false);
-			ImGui::PushID(3);
+			ImGui::PushID(id++);
 			ImGui::InputText(".json", filenameO_Dialog, 20);
 			ImGui::PopID();
 			if (ImGui::MenuItem("Open Dialog", "Ctrl+D"))
@@ -96,7 +131,7 @@ void MenuPanel::Update()
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Save Dialogue File As", NULL, false, false);
-			ImGui::PushID(4);
+			ImGui::PushID(id++);
 			ImGui::InputText(".json", filenameS_Dialog, 20);
 			ImGui::PopID();
 			if (ImGui::MenuItem("Save Dialog As", "Ctrl+F"))
