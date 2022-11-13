@@ -27,6 +27,8 @@ std::shared_ptr<DialogManager> dialogManager{ nullptr };
 std::shared_ptr<AIManager> aiManager{ nullptr };
 std::shared_ptr<LogicSystem> logicSystem{ nullptr };
 std::shared_ptr<ShadowManager> shadowManager{ nullptr };
+std::shared_ptr<ButtonManager> buttonManager{ nullptr };
+
 //----------------------------------------------------------------
 // Register Managers
 //----------------------------------------------------------------
@@ -166,6 +168,14 @@ void ECSManager::RegisterShadowManager() {
 	ECS::SetSystemSignature<ShadowManager>(signature);
 }
 
+void ECSManager::RegisterButtonManager() {
+	Signature signature;
+	signature.set(ECS::GetComponentType<General>());
+	signature.set(ECS::GetComponentType<Button>());
+
+	buttonManager = ECS::RegisterSystem<ButtonManager>();
+	ECS::SetSystemSignature<ButtonManager>(signature);
+}
 //----------------------------------------------------------------
 // ECSManager Functions
 //----------------------------------------------------------------
@@ -186,6 +196,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterAIManager();
 	RegisterLogicSystem();
 	RegisterShadowManager();
+	RegisterButtonManager();
 	// More to come
 }
 
@@ -209,6 +220,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Script>();
 	ECS::RegisterComponent<Dialogue>();
 	ECS::RegisterComponent<LightSource>();
+	ECS::RegisterComponent<Button>();
 	// More to come
 }
 

@@ -74,6 +74,16 @@ struct Sprite
 	int layer = 0;
 };
 
+struct Button
+{
+	GLuint onHoverTexture = 0;
+	GLuint onClickTexture = 0;
+	bool isHover = false;
+	bool isClick = false;
+	bool activated = false;
+	bool renderFlag = true;
+	bool interactable = true;
+};
 
 /*!*****************************************************************************
 \brief
@@ -260,12 +270,14 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
-	std::string fontFile = "3Dumb"; //CaviarDreams.ttf || 3Dumb.ttf
+	std::string fontFile = "3Dumb"; //CaviarDreams || 3Dumb
 	std::string text = "Hello";
 	Math::Vec2 offset = Math::Vec2{0, 0}; //world coordinates
-	float scale =1.f;
+	float scale = 1.f;
 	Color color = Color{ 0, 0, 0, 255 };
+	bool followCam = false;
 };
+
 struct Dialogue
 {
 	int speakerID;

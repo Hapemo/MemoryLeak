@@ -36,6 +36,7 @@ None.
 void Animator::Animate(const Entity& _e)
 {
 	if (!_e.GetComponent<General>().isActive) return;
+	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<Animation>()) return;
 	if (!_e.GetComponent<Animation>().images.size())
 	{

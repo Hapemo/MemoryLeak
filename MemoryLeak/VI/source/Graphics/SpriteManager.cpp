@@ -70,21 +70,36 @@ void SpriteManager::FreeTextures()
 //------------------------------------------------------------------------------
 void SpriteManager::SetColor(const Entity& e, const Color& clr)
 {
+	if (!e.HasComponent<Sprite>()) return;
 	SetColor(e, clr.r, clr.g, clr.b, clr.a);
 }
 
 void SpriteManager::SetColor(const Entity& e, GLubyte r, GLubyte g, GLubyte b, GLubyte a)
 {
+	if (!e.HasComponent<Sprite>()) return;
 	e.GetComponent<Sprite>().color = { r, g, b, a };
 }
 
 void SpriteManager::SetSprite(const Entity& e, SPRITE sprite)
 {
+	if (!e.HasComponent<Sprite>()) return;
 	e.GetComponent<Sprite>().sprite = sprite;
 }
 
 void SpriteManager::SetTexture(const Entity& e, const std::string& texture_path)
 {
+	if (!e.HasComponent<Sprite>()) return;
 	e.GetComponent<Sprite>().texture = GET_TEXTURE_ID(texture_path);
 }
 
+void SpriteManager::SetButtonHoverTexture(const Entity& _e, const std::string& _texture_path)
+{
+	if (!_e.HasComponent<Button>()) return;
+	_e.GetComponent<Button>().onHoverTexture = GET_TEXTURE_ID(_texture_path);
+}
+
+void SpriteManager::SetButtonClickTexture(const Entity& _e, const std::string& _texture_path)
+{
+	if (!_e.HasComponent<Button>()) return;
+	_e.GetComponent<Button>().onClickTexture = GET_TEXTURE_ID(_texture_path);
+}

@@ -31,7 +31,7 @@ bool Entity::ShouldRun() const {
 
 void Entity::Activate() {
 	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
-	GetComponent<General>().isActive = true;
+	General& genComp{ GetComponent<General>() };
 
 	//------------------------------------------------------------------
 	// Codes that should run when activating entity halfway through game
@@ -39,7 +39,9 @@ void Entity::Activate() {
 	// Scripting
 	if (HasComponent<Script>()) GetComponent<Script>().script->StartScript(*this);
 
-
+	// General
+	genComp.isActive = true;
+	for (Entity e : genComp.children) e.Activate();
 
 
 
@@ -48,7 +50,7 @@ void Entity::Activate() {
 
 void Entity::Deactivate() {
 	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
-	GetComponent<General>().isActive = false;
+	General& genComp{ GetComponent<General>() };
 
 	//------------------------------------------------------------------
 	// Codes that should run when deactivating entity halfway through game
@@ -56,11 +58,18 @@ void Entity::Deactivate() {
 	// Scripting
 	if (HasComponent<Script>()) GetComponent<Script>().script->EndScript(*this);
 
-
+	// General
+	genComp.isActive = false;
+	for (Entity e : genComp.children) e.Deactivate();
 
 
 
 	//------------------------------------------------------------------
+}
+
+void Entity::AddChild(Entity _e) const {
+	GetComponent<General>().children.insert(_e);
+	_e.GetComponent<General>().parent = *this;
 }
 
 
@@ -294,6 +303,12 @@ void Coordinator::UnlinkPrefab(EntityID _entity) {
 void Coordinator::DestroyEntity(EntityID _entity) {
 	LOG_CUSTOM("ECS", "Destroy Entity " + std::to_string(_entity));
 	UnlinkPrefab(_entity);
+	// Detatch from Parent Child
+	General& genComp{ GetComponent<General>(_entity) };
+	genComp.parent.GetComponent<General>().children.erase(Entity(_entity));
+	for (Entity e : genComp.children)
+		e.GetComponent<General>().parent = Entity(0);
+
 	mEntityManager->DestroyEntity(_entity);
 	mComponentArrayManager->EntityDestroyed(_entity);
 	mSystemManager->EntityDestroyed(_entity);

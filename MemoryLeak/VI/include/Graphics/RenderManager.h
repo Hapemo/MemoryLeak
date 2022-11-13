@@ -21,6 +21,7 @@ operates on Entities with Sprite and Transform Components.
 #include "FontManager.h"
 #include "Camera.h"
 #include <stdarg.h>
+#include "VIzmo.h"
 
 /*!*****************************************************************************
 \brief
@@ -210,6 +211,8 @@ public:
 	Resets all the cameras in RenderManager.
 	*******************************************************************************/
 	void ResetCameras();
+
+	VIzmo& GetGizmo() { return mGizmo; }
 private:
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam, mAnimatorCam;
@@ -229,6 +232,7 @@ private:
 	std::vector<Vertex> mDebugPoints;
 	std::vector<Vertex> mDebugVertices;
 	std::vector<GLushort> mDebugIndices;
+	VIzmo mGizmo;
 
 	/*!*****************************************************************************
 	\brief
@@ -335,6 +339,8 @@ private:
 	*******************************************************************************/
 	void CreateCircle(const Entity& _e);
 
+	void CreateCircle(const Transform& _xform, const Color& _clr, float layer, bool _isGizmo);
+
 	/*!*****************************************************************************
 	\brief
 	Creates a debug point based on Transform and Sprite Component, or Physics point
@@ -379,7 +385,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugLine(const Transform& _t, const Color& _c);
+	void CreateDebugLine(const Transform& _t, bool _isGizmo);
 
 	/*!*****************************************************************************
 	\brief
@@ -402,7 +408,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugSquare(const Transform& _t, const Color& _c);
+	void CreateDebugSquare(const Transform& _t);
 
 	/*!*****************************************************************************
 	\brief
@@ -425,7 +431,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugCircle(const Transform& _t, const Color& _c);
+	void CreateDebugCircle(const Transform& _t, bool _isGizmo);
 
 	/*!*****************************************************************************
 	\brief
@@ -448,7 +454,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugArrow(const Transform& _t, const Color& _c);
+	void CreateDebugArrow(const Transform& _t);
 
 	/*!*****************************************************************************
 	\brief
@@ -540,6 +546,8 @@ private:
 	The vector for indices to be taken from.
 	*******************************************************************************/
 	void ConcatIndices(std::vector<GLushort>& _first, std::vector<GLushort>& _second);
+
+	void CreateGizmo();
 };
 
 

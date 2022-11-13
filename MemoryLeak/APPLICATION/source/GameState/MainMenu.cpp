@@ -23,7 +23,22 @@ void MainMenu::Init() {
 		scenePtr->Init();*/
 }
 
+
 void MainMenu::Update() {
+	buttonManager->Update();
+	//for (const Entity& e : mEntities)
+	//{
+	//	if (!e.HasComponent<Button>()) continue;
+	//	if (e.GetComponent<General>().subtag == SUBTAG::PLAYER && e.GetComponent<Button>().activated)
+	//	{
+	//		GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+	//	}
+	//	if (e.GetComponent<General>().subtag == SUBTAG::ENEMY && e.GetComponent<Button>().activated)
+	//	{
+	//		GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
+	//	}
+	//}
+
 	/*if (renderManager->GetRenderGameToScreen())
 	{
 		Math::Vec2 cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) +
@@ -66,5 +81,6 @@ void MainMenu::Free() {
 }
 
 void MainMenu::Unload() {
+	renderManager->GetGizmo().Detach();
 	ECS::DestroyAllEntities();
 }
