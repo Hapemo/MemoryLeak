@@ -34,7 +34,7 @@ void FontRenderer::Init(const std::string& _fontfile)
     ASSERT(FT_Init_FreeType(&ft), 
         "ERROR::FREETYPE: Could not init FreeType Library\n");
 
-    std::string filepath = "../VI/fonts/" + _fontfile;
+    std::string filepath = "../resources/Fonts/" + _fontfile;
 
     FT_Face face;
     ASSERT(FT_New_Face(ft, filepath.c_str(), 0, &face), 
