@@ -243,7 +243,7 @@ void WorldViewPanel::NewEntity()
 		Entity ne{ ECS::CreateEntity() };
 		(allEntities[selectedGameState][selectedScene]).insert(ne);
 		ne.AddComponent(
-			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
+			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false},
 			Transform{ {150,150}, 0, camMousePos },
 			Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0, highestLayer},
 			RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
@@ -295,6 +295,8 @@ void WorldViewPanel::NewPrefabee()
 		static int n{ 1 };
 		Entity b = pre->CreatePrefabee();
 		b.GetComponent<General>().name = "newdragdropPrefabee" + std::to_string(n++);
+		b.GetComponent<General>().isActive = true;
+		b.GetComponent<General>().isPaused = false;
 		if (b.HasComponent<Transform>())
 		{
 			/*Transform transform = b.GetComponent<Transform>();

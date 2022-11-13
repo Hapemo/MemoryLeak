@@ -160,6 +160,8 @@ void PrefabPanel::newPrefabee(PrefabPtr pre)
 	static int n{1};
 	Entity b = pre->CreatePrefabee();
 	b.GetComponent<General>().name = "newPrefabee" + std::to_string(n);
+	b.GetComponent<General>().isActive = true;
+	b.GetComponent<General>().isPaused = false;
 	if (b.HasComponent<Transform>())
 	{
 		b.GetComponent<Transform>().translation.x += prefabOffset;

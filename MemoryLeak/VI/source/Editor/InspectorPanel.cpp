@@ -168,7 +168,7 @@ None.
 void InspectorPanel::AddComponent()
 {
 	if (addComponentID == (int)COMPONENTID::GENERAL)
-		e.AddComponent<General>({ "_new_", (TAG)0, (SUBTAG)0, true });
+		e.AddComponent<General>({ "_new_", (TAG)0, (SUBTAG)0, true , false});
 	else if (addComponentID == (int)COMPONENTID::LIFESPAN)
 		e.AddComponent<Lifespan>({ 0,1000 });
 	else if (addComponentID == (int)COMPONENTID::TRANSFORM)

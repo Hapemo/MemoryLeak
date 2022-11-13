@@ -202,7 +202,7 @@ void HierarchyPanel::newEntity()
 	Entity e{ ECS::CreateEntity() };
 	(allEntities[selectedGameState][selectedScene]).insert(e);
 	e.AddComponent(
-		General{ "_NEW_" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
+		General{ "_NEW_" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false},
 		Transform{ {150,150}, 0, campos },
 		Sprite{ Color{0,255,0,255}, SPRITE::CIRCLE, 0,highestLayer },
 		RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
