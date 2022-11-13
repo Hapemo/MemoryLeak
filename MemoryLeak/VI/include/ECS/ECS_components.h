@@ -33,6 +33,8 @@ struct General {
 	bool isActive;
 	bool isPaused;
 	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
+	std::set<Entity> children;
+	Entity parent;
 };
 
 /*!*****************************************************************************
@@ -72,6 +74,16 @@ struct Sprite
 	int layer = 0;
 };
 
+struct Button
+{
+	GLuint onHoverTexture = 0;
+	GLuint onClickTexture = 0;
+	bool isHover = false;
+	bool isClick = false;
+	bool activated = false;
+	bool renderFlag = true;
+	bool interactable = true;
+};
 
 /*!*****************************************************************************
 \brief
@@ -261,9 +273,11 @@ struct Text {
 	std::string fontFile = "3Dumb"; //CaviarDreams.ttf || 3Dumb.ttf
 	std::string text = "Hello";
 	Math::Vec2 offset = Math::Vec2{0, 0}; //world coordinates
-	float scale =1.f;
+	float scale = 1.f;
 	Color color = Color{ 0, 0, 0, 255 };
+	bool followCam = false;
 };
+
 struct Dialogue
 {
 	int speakerID;
@@ -287,11 +301,6 @@ only contains an offset. Later versions will include light intensity.
 struct LightSource
 {
 	Math::Vec2 centreOffset;
-};
-
-
-struct ParentChild {
-	std::set<Entity> children;
 };
 
 //use to index the variant data type, for ditor and serilization to determine type stored

@@ -182,7 +182,7 @@ Returns the aspect ratio of the texture in float.
 *******************************************************************************/
 float ResourceManager::GetAspectRatio(const GLuint _id) {
 	for (size_t index = 0; index < mResources.size(); ++index)
-		if (mResources[index].texture.id == _id) return (float)(mResources[index].texture.height / mResources[index].texture.width);
+		if (mResources[index].texture.id == _id) return (float)((float)mResources[index].texture.height / (float)mResources[index].texture.width);
 	return 0.0f;
 }
 

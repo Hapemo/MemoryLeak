@@ -43,6 +43,7 @@ void Application::SystemInit() {
   //aiManager->weatherAIinit();
   
   renderManager->Init(&window_width, &window_height);
+  buttonManager->Init(&window_width, &window_height);
   renderManager->RenderToFrameBuffer();
   // For render debug
   renderManager->SetVectorLengthModifier(5.f);

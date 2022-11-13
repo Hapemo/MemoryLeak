@@ -32,8 +32,7 @@ std::vector<Panel*> EditorManager::panels{};
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
 const Entity* EditorManager::selectedEntity = nullptr;
-Prefab* EditorManager::selectedPrefab = nullptr;
-const void* EditorManager::selected = nullptr;
+EditorManager::PrefabPtr EditorManager::selectedPrefab = nullptr;
 int EditorManager::selectedType=0;
  Entity selEntity{};
 int EditorManager::SRT{};
@@ -42,9 +41,9 @@ int EditorManager::stackPointer{-1};
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
-std::vector <Prefab*> EditorManager::mPrefabs{};
+//std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
-
+bool EditorManager::aspect = false;
 /*!*****************************************************************************
 \brief
 	Load the level editor
@@ -91,6 +90,8 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&worldViewPanel);
 	panels.push_back(&performancePanel);
 	panels.push_back(&prefabPanel);
+
+	prefabPanel.LoadPrefab();
 	Init();
 	
 }
@@ -105,13 +106,13 @@ void EditorManager::Init()
 {
 	isScenePaused = true;
 	selectedEntity = nullptr;
+	aspect = false;
 	SRT = 0;
 	stackPointer = 0;
 
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 		panels[p]->Init();
-		std::cout << p << "    init\n";
 	}
 }
 
@@ -177,11 +178,11 @@ void EditorManager::Free()
 	SceneReset();
 	undoStack.clear();
 	stackPointer = -1;
-	for (size_t p = 0; p < mPrefabs.size(); p++)
+	/*for (size_t p = 0; p < mPrefabs.size(); p++)
 	{
 		delete mPrefabs[p];
 	}
-	mPrefabs.clear();
+	mPrefabs.clear();*/
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 		panels[p]->Free();
@@ -196,10 +197,11 @@ None.
 *******************************************************************************/
 void EditorManager::Unload()
 {
-	for (size_t i =0; i< mPrefabs.size(); i++)
+	/*for (size_t i =0; i< mPrefabs.size(); i++)
 	{
 		delete mPrefabs[i];
 	}
+	mPrefabs.clear();*/
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
@@ -442,6 +444,7 @@ void EditorManager::SceneReset()
 	highestLayer = 0;
 	selectedEntity = nullptr;
 	selectedPrefab = nullptr;
+	aspect = false;
 	renderManager->ResetCameras();
 }
 

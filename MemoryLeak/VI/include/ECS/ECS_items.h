@@ -108,6 +108,10 @@ struct Entity {
 	void Activate();
 	void Deactivate();
 
+	template<typename T>
+	T const& ReadComponent() const;
+
+	void AddChild(Entity _e) const;
 };
 
 

@@ -37,6 +37,7 @@ None.
 void SheetAnimator::Animate(const Entity& _e)
 {
 	if (!_e.GetComponent<General>().isActive) return;
+	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<SheetAnimation>()) return;
 
 	//decrement time to swap

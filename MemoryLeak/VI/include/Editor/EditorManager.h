@@ -19,6 +19,7 @@ Entities and its Components.
 #include <ECS_systems.h>
 #include "ECS_items.h"
 #include "ECS_components.h"
+#include "PrefabManager.h"
 //#include "Graphics/TransformManager.h"
 #include <vec2.h>
 #include <filesystem>
@@ -43,7 +44,7 @@ public:
 
 	bool IsScenePaused() { return isScenePaused; }
 	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
-	
+	using PrefabPtr = std::shared_ptr<Prefab>;
 private:
 	static std::vector<Panel*> panels;
 	
@@ -76,12 +77,12 @@ protected:
 	static std::set<Entity>* myEntities;
 	static const Entity* selectedEntity;
 	static Entity selEntity;
-
-	static std::vector <Prefab*> mPrefabs;
-	static Prefab* selectedPrefab;
-	static const void* selected;
+	static bool aspect;
+	static PrefabPtr selectedPrefab;
 	static int selectedType;
 
+	//static std::vector <Prefab*> mPrefabs;
+	//static const void* selected;
 	static int SRT;
 	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
 	static int stackPointer;

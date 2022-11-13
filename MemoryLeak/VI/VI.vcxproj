@@ -227,9 +227,12 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\freetype\ttnameid.h" />
     <ClInclude Include="include\freetype\tttables.h" />
     <ClInclude Include="include\freetype\tttags.h" />
+    <ClInclude Include="include\Graphics\ButtonManager.h" />
     <ClInclude Include="include\Graphics\Camera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
+    <ClInclude Include="include\Graphics\VIzmo.h" />
     <ClInclude Include="include\Graphics\VertexFetcher.h" />
+    <ClInclude Include="include\Graphics\VIzmoProps.h" />
     <ClInclude Include="include\Logic\LogicSystem.h" />
     <ClInclude Include="include\Logic\MonoScripting.h" />
     <ClInclude Include="include\Logic\ScriptComponent.h" />
@@ -300,11 +303,13 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Editor\WeatherPanel.cpp" />
     <ClCompile Include="source\Editor\WorldViewPanel.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
+    <ClCompile Include="source\Graphics\ButtonManager.cpp" />
     <ClCompile Include="source\Graphics\Camera.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
     <ClCompile Include="source\Graphics\FontManager.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
     <ClCompile Include="source\Graphics\GLShader.cpp" />
+    <ClCompile Include="source\Graphics\VIzmo.cpp" />
     <ClCompile Include="source\Graphics\RenderManager.cpp" />
     <ClCompile Include="include\Graphics\RenderProps.h" />
     <ClCompile Include="source\Graphics\ShadowManager.cpp" />

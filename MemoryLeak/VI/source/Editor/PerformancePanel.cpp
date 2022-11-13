@@ -25,7 +25,7 @@ void PerformancePanel::Init()
 	for (int i = 0; i < MaxSystem; i++)
 	{
 		std::deque<float> list;
-		for (int i = 0; i < MaxData; i++)
+		for (int d = 0; d < MaxData; d++)
 		{
 			list.push_front(0.f);
 		}

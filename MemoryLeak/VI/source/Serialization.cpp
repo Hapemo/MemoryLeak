@@ -12,7 +12,7 @@ TODO: take note not to change the component registration order. It will break pr
 *******************************************************************************/
 #include <Serialization.h>
 #include <ECSManager.h>
-#include <vec2.h>
+
 
 
 
@@ -26,7 +26,7 @@ using namespace rapidjson;
 \return
 None.
 *******************************************************************************/
-Math::Vec2 GetVec2(Value& vecIn)
+Math::Vec2 SerializationManager::GetVec2(Value& vecIn)
 {
 	Math::Vec2 vecOut;
 	vecOut.x = vecIn["X"].GetFloat();
@@ -285,6 +285,7 @@ void SerializationManager::LoadScene(std::string _filename)
 		i++;
 	}
 	logicSystem->Init();
+	ifs.close();
 }
 
 /*!*****************************************************************************
@@ -294,7 +295,7 @@ void SerializationManager::LoadScene(std::string _filename)
 \return
 None.
 *******************************************************************************/
-void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec2 data)
+void SerializationManager::addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec2 data)
 {
 	Value child(kObjectType);
 	child.AddMember(StringRef("X"), data.x, scene.GetAllocator());
@@ -317,7 +318,7 @@ void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec
 None.
 *******************************************************************************/
 template<typename T>
-void addVectorArrayStrMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
+void SerializationManager::addVectorArrayStrMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
 {
 	Value child(kObjectType);
 	child.SetArray();
@@ -330,7 +331,7 @@ void addVectorArrayStrMember(Document& scene, Value& parent, const char* name, s
 	parent.AddMember(StringRef(name), child, scene.GetAllocator());
 }
 template<typename T>
-void addVectorArrayForceMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
+void SerializationManager::addVectorArrayForceMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
 {
 	Value child(kObjectType);
 	child.SetArray();
@@ -382,7 +383,7 @@ void addVectorArrayForceMember(Document& scene, Value& parent, const char* name,
 None.
 *******************************************************************************/
 template<typename T>
-void addVectorArrayMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
+void SerializationManager::addVectorArrayMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
 {
 	Value child(kObjectType);
 	child.SetArray();
@@ -408,7 +409,7 @@ void addVectorArrayMember(Document& scene, Value& parent, const char* name, std:
 None.
 *******************************************************************************/
 template<typename T>
-void addVectorsMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
+void SerializationManager::addVectorsMember(Document& scene, Value& parent, const char* name, std::vector <T> data)
 {
 	Value child(kObjectType);
 	for (size_t i = 0; i < data.size(); ++i)
@@ -433,7 +434,6 @@ void SerializationManager::SaveScene(std::string _filename)
 	scene.SetObject();
 	
 	StringBuffer buffer;
-	//Writer<StringBuffer> writer(buffer);
 	PrettyWriter<StringBuffer> writer(buffer);
 	int counter = 0;
 	
@@ -692,6 +692,144 @@ void SerializationManager::SaveDialogs(std::string _filename)
 	if (!ofs.good()) LOG_ERROR("Unable to save dialogue file to: " + path);
 	else LOG_INFO("Saved dialogue file: " + path);
 }
+
+
+
+
+void SerializationManager::LoadPrefab(std::string _filename)
+{
+	std::cout << _filename << " Loading\n";
+	std::string path = "../resources/Prefabs/" + _filename + ".json";
+	std::ifstream ifs(path);
+	//std::ifstream ifs(filename);
+	if (!ifs.good())
+	{
+		LOG_ERROR("Can't open json file! : " + path);
+		return;
+	}
+	else
+		LOG_INFO("Loading prefab: " + path);
+	std::stringstream contents;
+	contents << ifs.rdbuf();
+	Document doc;
+	doc.Parse(contents.str().c_str());
+
+	if (!doc.HasMember("General"))
+		return;
+
+	PrefabManager::PrefabPtr p = PrefabManager::GetInstance()->CreatePrefab();
+	p->Name() = _filename;
+
+	if (doc.HasMember("General"))
+	{
+		std::string name = doc["General"]["name"].GetString();
+		bool isActive = doc["General"]["isActive"].GetBool();
+		int tag = doc["General"]["tag"].GetInt();
+		int subtag = doc["General"]["subtag"].GetInt();
+		//p->AddComponent<General>(General{ name, (TAG)tag ,(SUBTAG)subtag, isActive }); ///Causes memory leaks
+		p->UpdateComponent(General{ name, (TAG)tag ,(SUBTAG)subtag, isActive });
+	}
+	if (doc.HasMember("Lifespan"))
+	{
+		float lifetime = doc["Lifespan"]["lifetime"].GetFloat();
+		float limit = doc["Lifespan"]["limit"].GetFloat();
+		p->AddComponent<Lifespan>({ lifetime, limit });
+	}
+	if (doc.HasMember("Transform"))
+	{
+		Math::Vec2 s = GetVec2(doc["Transform"]["scale"]);
+		float r = (float)doc["Transform"]["rotation"].GetFloat();
+		Math::Vec2 t = GetVec2(doc["Transform"]["translation"]);
+
+		p->AddComponent<Transform>({ s, r, t });
+	}
+
+	ifs.close();
+}
+void SerializationManager::SavePrefab(std::string _filename)
+{
+	PrefabManager::PrefabPtr p = PrefabManager::GetInstance()->GetPrefab(_filename);
+	Document prefab;
+	auto& allocator = prefab.GetAllocator();
+	prefab.SetObject();
+
+	StringBuffer buffer;
+	PrettyWriter<StringBuffer> writer(buffer);
+	//Value prefab(kObjectType);
+	if (p->HasComponent<General>())
+	{
+		Value tmp(kObjectType);
+		tmp.AddMember(StringRef("name"), StringRef(p->GetComponent<General>().name.c_str()), allocator);
+		tmp.AddMember(StringRef("tag"), (int)p->GetComponent<General>().tag, allocator);
+		tmp.AddMember(StringRef("subtag"), (int)p->GetComponent<General>().subtag, allocator);
+		tmp.AddMember(StringRef("isActive"), p->GetComponent<General>().isActive, allocator);
+		prefab.AddMember(StringRef("General"), tmp, allocator);
+	}
+	if (p->HasComponent<Transform>())
+	{
+		Value tmp(kObjectType);
+		addVectorMember(prefab, tmp, "scale", p->GetComponent<Transform>().scale);
+		tmp.AddMember(StringRef("rotation"), p->GetComponent<Transform>().rotation, allocator);
+		addVectorMember(prefab, tmp, "translation", p->GetComponent<Transform>().translation);
+		prefab.AddMember(StringRef("Transform"), tmp, allocator);
+	}
+	if (p->HasComponent<Sprite>())
+	{
+		Value tmp(kObjectType);
+		Value tmpc(kObjectType);
+		tmpc.AddMember(StringRef("r"), p->GetComponent<Sprite>().color.r, allocator);
+		tmpc.AddMember(StringRef("g"), p->GetComponent<Sprite>().color.g, allocator);
+		tmpc.AddMember(StringRef("b"), p->GetComponent<Sprite>().color.b, allocator);
+		tmpc.AddMember(StringRef("a"), p->GetComponent<Sprite>().color.a, allocator);
+		tmp.AddMember(StringRef("color"), tmpc, allocator);
+		tmp.AddMember(StringRef("sprite"), (int)p->GetComponent<Sprite>().sprite, allocator);
+		std::string tex = spriteManager->GetTexturePath(p->GetComponent<Sprite>().texture);
+		Value texpath(tex.c_str(), (SizeType)tex.size(), allocator);
+		tmp.AddMember(StringRef("texture"), texpath, allocator);
+		tmp.AddMember(StringRef("layer"), p->GetComponent<Sprite>().layer, allocator);
+		prefab.AddMember(StringRef("Sprite"), tmp, allocator);
+	}
+	//std::string s(_filename);
+	//Value index(s.c_str(), (SizeType)s.size(), allocator);
+	//scene.AddMember(index, prefab, allocator);
+
+	prefab.Accept(writer);
+	std::string jsonf(buffer.GetString(), buffer.GetSize());
+	std::string path = "../resources/Prefabs/" + _filename + ".json";
+	std::ofstream ofs(path);
+	ofs << jsonf;
+	if (!ofs.good())
+	{
+		LOG_ERROR("Unable to save prefab to: " + path);
+	}
+	else
+		LOG_INFO("Saved Prefab: " + path);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 SceneData SerializationManager::LoadSceneData(ResourceManager::GUID const& _guid) {

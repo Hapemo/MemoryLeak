@@ -84,6 +84,12 @@ void WorldViewPanel::Update()
 					MouseClickMoveCam();
 
 			}
+			if (Input::CheckKey(E_STATE::RELEASE, E_KEY::M_BUTTON_L) && isSelected == 1)
+			{   ///save changes for undo
+				COMPONENT translate = e.GetComponent<Transform>();
+				undoStack.push_back(std::make_pair(e, translate));
+				stackPointer = (int)undoStack.size();
+			}
 			if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
 				isSelected = 0;
 
@@ -91,6 +97,7 @@ void WorldViewPanel::Update()
 			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
 			{
 				SetSelectedEntity();
+				
 			}
 
 			if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
@@ -246,9 +253,13 @@ void WorldViewPanel::SetSelectedEntity()
 				if (ee.GetComponent<Sprite>().layer >= layer)
 				{
 					selectedEntity = &ee;
+					COMPONENT translate = ee.GetComponent<Transform>();
+					undoStack.push_back(std::make_pair(ee, translate));
+					stackPointer = (int)undoStack.size();
 					layer = ee.GetComponent<Sprite>().layer;
 					objectOffset = distance;
 					isSelected = 1;
+					aspect = false;
 				}
 			}
 		}
@@ -275,6 +286,7 @@ void WorldViewPanel::MoveSelectedEntity()
 	{
 		e.GetComponent<Transform>().translation = camMousePos - objectOffset;
 	}
+	
 }
 /*!*****************************************************************************
 \brief

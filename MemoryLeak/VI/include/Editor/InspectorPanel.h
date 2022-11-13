@@ -49,7 +49,7 @@ private:
 	void DeleteEntity();
 
 	Entity e;
-	Prefab* p;
+	PrefabPtr p;
 	float tmpFloat;
 	float tmpVec2[2];
 	float tmpVec4[4];

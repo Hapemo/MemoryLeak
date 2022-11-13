@@ -32,6 +32,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include "AI.h"
 #include "LogicSystem.h"
 #include "Graphics/ShadowManager.h"
+#include "ButtonManager.h"
 
 //-------------------------------------------------------------------
 // System pointers with declaration from ECSManager.cpp
@@ -52,6 +53,7 @@ extern std::shared_ptr<DialogManager> dialogManager;
 extern std::shared_ptr<AIManager> aiManager;
 extern std::shared_ptr<LogicSystem> logicSystem;
 extern std::shared_ptr<ShadowManager> shadowManager;
+extern std::shared_ptr<ButtonManager> buttonManager;
 
 /*!*****************************************************************************
 \brief
@@ -81,6 +83,7 @@ private:
 	static void RegisterAIManager();
 	static void RegisterLogicSystem();
 	static void RegisterShadowManager();
+	static void RegisterButtonManager();
 	
 	// More to come
 

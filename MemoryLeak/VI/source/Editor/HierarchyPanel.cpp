@@ -40,14 +40,18 @@ void HierarchyPanel::Update()
 		{
 			for (int i = 0; i < (int)tag.size(); i++)
 			{
+				
 				if (ImGui::CollapsingHeader(tag[i].c_str()))
 				{
+					int id = 0;
 					for (const Entity& e : *myEntities)
 					{
 						if (e.GetComponent<General>().tag != (TAG)i)
 							continue;
+						ImGui::PushID(id);
 						listComponents(&e, e.GetComponent<General>().name);
-
+						ImGui::PopID();
+						id++;
 					}
 				}
 			}
@@ -101,31 +105,7 @@ void HierarchyPanel::newEntity()
 		RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
 	newEntityCount++;
 }
-/*!*****************************************************************************
-\brief
-	This function creates a new entity
 
-\return
-None.
-*******************************************************************************/
-void HierarchyPanel::newPrefab()
-{
-	static int n{1};
-	if (n == 2)
-		return;
-	//Prefab* pre = new Prefab("new Prefab"+std::to_string(n));
-	static Prefab pre(".new Prefab"+n);
-	mPrefabs.push_back(&pre);
-	//delete pre;
-	n++;
-}
-void HierarchyPanel::newPrefabee(Prefab* pre)
-{
-	static int n{1};
-	Entity b = pre->CreatePrefabee();
-	b.GetComponent<General>().name = "Prefabee" + std::to_string(n);
-	n++;
-}
 /*!*****************************************************************************
 \brief
 	This function sets the selected entity
@@ -140,23 +120,11 @@ void HierarchyPanel::setSelectedEntity(const Entity* e)
 	{
 		selectedEntity = e;
 		selectedPrefab = nullptr;
+		selectedType = 1;
+		aspect = false;
 	}
 }
-/*!*****************************************************************************
-\brief
-	This function sets the selected prefab
 
-\return
-None.
-*******************************************************************************/
-void HierarchyPanel::setSelectedPrefab( Prefab* p)
-{
-	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
-	{
-		selectedPrefab = p;
-		selectedEntity = nullptr;
-	}
-}
 /*!*****************************************************************************
 \brief
 	This function sets the selected entity or prefab
@@ -164,23 +132,16 @@ void HierarchyPanel::setSelectedPrefab( Prefab* p)
 \return
 None.
 *******************************************************************************/
-void HierarchyPanel::setSelected(const void* e)
-{
-	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
-	{
-		selected = e;
-		if (selectedType == 1)
-		{
-			selectedEntity = static_cast<const Entity*>(e);
-			selectedPrefab = nullptr;
-		}
-		else if (selectedType == 2)
-		{
-			selectedPrefab = const_cast<Prefab*>(static_cast<const Prefab*>(e));
-			selectedEntity = nullptr; 
-		}
-	}
-}
+//void HierarchyPanel::setSelected(Entity* e)
+//{
+//	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+//	{
+//		selectedEntity = e;
+//		selectedPrefab = nullptr;
+//		selectedType = 1;
+//		
+//	}
+//}
 /*!*****************************************************************************
 \brief
 	This function list components for entities or prefabs
@@ -188,99 +149,91 @@ void HierarchyPanel::setSelected(const void* e)
 \return
 None.
 *******************************************************************************/
-template<typename T>
-void HierarchyPanel::listComponents(const T* e, std::string _name)
+
+void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 {
 	
 	if (ImGui::TreeNode(_name.c_str()))
 	{
-		if (std::is_same<T, Entity>::value)
-		{
-			selectedType = 1;
-		}
-		else if (std::is_same<T, Prefab>::value)
-		{
-			selectedType = 2;
-		}
 		if (e->HasComponent<General>())
 		{
 			ImGui::Text("General");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Lifespan>())
 		{
 			ImGui::Text("Lifespan");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Transform>())
 		{
 			ImGui::Text("Transform");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Sprite>())
 		{
 			ImGui::Text("Sprite");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Animation>())
 		{
 			ImGui::Text("Animation");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<SheetAnimation>())
 		{
 			ImGui::Text("SheetAnimation");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Physics2D>())
 		{
 			ImGui::Text("Physics2D");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<RectCollider>())
 		{
 			ImGui::Text("RectCollider");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<CircleCollider>())
 		{
 			ImGui::Text("CircleCollider");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Edge2DCollider>())
 		{
 			ImGui::Text("Edge2DCollider");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Audio>())
 		{
 			ImGui::Text("Audio");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Text>())
 		{
 			ImGui::Text("Text");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<AI>())
 		{
 			ImGui::Text("AI");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Script>())
 		{
 			ImGui::Text("Script");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<Dialogue>())
 		{
 			ImGui::Text("Dialogue");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		if (e->HasComponent<PlayerTmp>())
 		{
 			ImGui::Text("PlayerTmp");
-			setSelected(e);
+			setSelectedEntity(e);
 		}
 		ImGui::TreePop();
 	}

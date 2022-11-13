@@ -12,20 +12,43 @@ that lists the entities and its components in the scene
 #include "PrefabPanel.h"
 #include <ECSManager.h>
 int PrefabPanel::newPrefabCount = 1;
+
+
 /*!*****************************************************************************
 \brief
-	Initializes the HierarchyPanel editor
+	Loads the Prefabs
+
+\return
+None.
+*******************************************************************************/
+void PrefabPanel::LoadPrefab()
+{
+	std::string rootPath = "..\\resources\\Prefabs\\";
+	std::filesystem::path m_CurrentDirectory = std::filesystem::path(rootPath);
+	for (auto& directory : std::filesystem::directory_iterator(m_CurrentDirectory))
+	{
+		const auto& path = directory.path();
+		if (path.extension() == ".meta")
+			continue;
+		serializationManager->LoadPrefab(path.stem().string());
+	}
+}
+
+
+/*!*****************************************************************************
+\brief
+	Initializes the PrefabPanel editor
 
 \return
 None.
 *******************************************************************************/
 void PrefabPanel::Init()
 {
-
+	
 }
 /*!*****************************************************************************
 \brief
-	Updates the Hierarchy Panel editor
+	Updates the Prefab Panel editor
 
 \return
 None.
@@ -37,16 +60,30 @@ void PrefabPanel::Update()
 		/*ImGui::BeginTabBar("Prefab ");
 		if (ImGui::BeginTabItem("Prefabs: "))
 		{*/		
-			for (Prefab* p : mPrefabs)
+		
+			int id = 0;
+			for (PrefabPtr p : PrefabManager::GetInstance()->GetPrefab())
 			{
 				if (ImGui::CollapsingHeader(p->Name().c_str()))
 				{
+					ImGui::PushID(id);
 					listComponents(p, p->Name());
+					ImGui::PopID();
+					id++;
 					if (ImGui::Button("New Prefabee"))
 					{
 						newPrefabee(p);
 					}
+					if (ImGui::Button("Save Prefab"))
+					{
+						serializationManager->SavePrefab(p->Name());
+					}
 				}
+			}
+			ImGui::NewLine();
+			if (ImGui::Button("New Prefab"))
+			{
+				newPrefab();
 			}
 			if (ImGui::BeginPopupContextWindow(0, 1, false))
 			{
@@ -56,11 +93,6 @@ void PrefabPanel::Update()
 				}
 				ImGui::EndPopup();
 			}
-			ImGui::NewLine();
-			if (ImGui::Button("New Prefab"))
-			{
-				newPrefab();
-			}
 		/*}
 		ImGui::EndTabItem();*/
 	}
@@ -68,28 +100,33 @@ void PrefabPanel::Update()
 }
 /*!*****************************************************************************
 \brief
-	Free the Hierarchy Panel editor
+	Free the Prefab Panel editor
 
 \return
 None.
 *******************************************************************************/
 void PrefabPanel::Free()
 {
-
+	/*for (size_t p = 0; p < mPrefabs.size(); p++)
+	{
+		delete mPrefabs[p];
+	}
+	mPrefabs.clear();*/
 }
 
 void PrefabPanel::newPrefab()
 {
 	static int n{1};
-	/*if (n == 2)
-		return;*/
 	//static Prefab pre(".new Prefab"+n);
-	Prefab* pre = new Prefab("new Prefab"+std::to_string(n));
-	mPrefabs.push_back(pre);
-	//delete pre;
+	//Prefab* pre = new Prefab("new Prefab"+std::to_string(n));
+	//mPrefabs.push_back(pre);
+
+	PrefabPtr newPrefab = PrefabManager::GetInstance()->CreatePrefab();
+	newPrefab->Name() = "new Prefab" + std::to_string(n);
+
 	n++;
 }
-void PrefabPanel::newPrefabee(Prefab* pre)
+void PrefabPanel::newPrefabee(PrefabPtr pre)
 {
 	static int n{1};
 	Entity b = pre->CreatePrefabee();
@@ -104,12 +141,13 @@ void PrefabPanel::newPrefabee(Prefab* pre)
 \return
 None.
 *******************************************************************************/
-void PrefabPanel::setSelectedPrefab( Prefab* p)
+void PrefabPanel::setSelectedPrefab(PrefabPtr p)
 {
 	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 	{
 		selectedPrefab = p;
 		selectedEntity = nullptr;
+		selectedType = 2;
 	}
 }
 /*!*****************************************************************************
@@ -119,23 +157,15 @@ void PrefabPanel::setSelectedPrefab( Prefab* p)
 \return
 None.
 *******************************************************************************/
-void PrefabPanel::setSelected(const void* e)
-{
-	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
-	{
-		selected = e;
-		if (selectedType == 1)
-		{
-			selectedEntity = static_cast<const Entity*>(e);
-			selectedPrefab = nullptr;
-		}
-		else if (selectedType == 2)
-		{
-			selectedPrefab = const_cast<Prefab*>(static_cast<const Prefab*>(e));
-			selectedEntity = nullptr;
-		}
-	}
-}
+//void PrefabPanel::setSelected(PrefabPtr p)
+//{
+//	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+//	{
+//		selectedPrefab = p;
+//		selectedEntity = nullptr;
+//		selectedType = 2;
+//	}
+//}
 /*!*****************************************************************************
 \brief
 	This function list components for entities or prefabs
@@ -143,99 +173,91 @@ void PrefabPanel::setSelected(const void* e)
 \return
 None.
 *******************************************************************************/
-template<typename T>
-void PrefabPanel::listComponents(const T* e, std::string _name)
+
+void PrefabPanel::listComponents(PrefabPtr p, std::string _name)
 {
 
 	if (ImGui::TreeNode(_name.c_str()))
 	{
-		if (std::is_same<T, Entity>::value)
-		{
-			selectedType = 1;
-		}
-		else if (std::is_same<T, Prefab>::value)
-		{
-			selectedType = 2;
-		}
-		if (e->HasComponent<General>())
+		if (p->HasComponent<General>())
 		{
 			ImGui::Text("General");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Lifespan>())
+		if (p->HasComponent<Lifespan>())
 		{
 			ImGui::Text("Lifespan");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Transform>())
+		if (p->HasComponent<Transform>())
 		{
 			ImGui::Text("Transform");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Sprite>())
+		if (p->HasComponent<Sprite>())
 		{
 			ImGui::Text("Sprite");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Animation>())
+		if (p->HasComponent<Animation>())
 		{
 			ImGui::Text("Animation");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<SheetAnimation>())
+		if (p->HasComponent<SheetAnimation>())
 		{
 			ImGui::Text("SheetAnimation");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Physics2D>())
+		if (p->HasComponent<Physics2D>())
 		{
 			ImGui::Text("Physics2D");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<RectCollider>())
+		if (p->HasComponent<RectCollider>())
 		{
 			ImGui::Text("RectCollider");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<CircleCollider>())
+		if (p->HasComponent<CircleCollider>())
 		{
 			ImGui::Text("CircleCollider");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Edge2DCollider>())
+		if (p->HasComponent<Edge2DCollider>())
 		{
 			ImGui::Text("Edge2DCollider");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Audio>())
+		if (p->HasComponent<Audio>())
 		{
 			ImGui::Text("Audio");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Text>())
+		if (p->HasComponent<Text>())
 		{
 			ImGui::Text("Text");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<AI>())
+		if (p->HasComponent<AI>())
 		{
 			ImGui::Text("AI");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Script>())
+		if (p->HasComponent<Script>())
 		{
 			ImGui::Text("Script");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<Dialogue>())
+		if (p->HasComponent<Dialogue>())
 		{
 			ImGui::Text("Dialogue");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
-		if (e->HasComponent<PlayerTmp>())
+		if (p->HasComponent<PlayerTmp>())
 		{
 			ImGui::Text("PlayerTmp");
-			setSelected(e);
+			setSelectedPrefab(p);
 		}
 		ImGui::TreePop();
 	}
