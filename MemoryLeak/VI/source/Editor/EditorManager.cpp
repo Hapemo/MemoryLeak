@@ -533,6 +533,7 @@ void EditorManager::Cut()
 		copyEntity.first = *selectedEntity;
 		copyEntity.second = 2;
 		(*selectedEntity).GetComponent<General>().isActive = false;
+		(*selectedEntity).GetComponent<General>().isPaused = true;
 		allEntities[selectedGameState][selectedScene].erase(*selectedEntity);
 		selectedEntity = nullptr;
 	}
@@ -547,7 +548,7 @@ void EditorManager::Paste()
 		allEntities[selectedGameState][selectedScene].insert(e);
 		if (copyEntity.second == 2)//cut
 		{
-			copyEntity.first.Destroy();
+			//copyEntity.first.Destroy();
 			copyEntity.second = 0;
 		}
 		else
@@ -562,6 +563,7 @@ void EditorManager::Paste()
 		if (e.HasComponent<General>())
 		{
 			e.GetComponent<General>().isActive = true;
+			e.GetComponent<General>().isPaused = false;
 		}
 	}
 }
