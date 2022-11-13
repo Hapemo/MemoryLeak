@@ -201,6 +201,7 @@ void EditorManager::Update()
 		for (const Entity& e : *myEntities)
 		{
 			e.GetComponent<General>().isActive = false;
+			e.GetComponent<General>().isPaused = true;
 		}
 		if (selectedGameState < allEntities.size())
 		{
@@ -209,6 +210,7 @@ void EditorManager::Update()
 				for (const Entity& e : allEntities[selectedGameState][selectedScene])
 				{
 					e.GetComponent<General>().isActive = true;
+					e.GetComponent<General>().isPaused = false;
 				}
 			}
 		}
