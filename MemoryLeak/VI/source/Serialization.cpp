@@ -56,7 +56,15 @@ std::set<Entity> SerializationManager::LoadScene(std::string _filename)
 	else
 		LOG_INFO("Opening Scene: " + path);
 	sceneFilename = _filename;
+	int same = 0;
+	for (std::string s : allsceneFilename)
+	{
+		if (s == _filename)
+			same++;
+	}
 	allsceneFilename.push_back(_filename);
+	if (same != 0)
+		_filename += (" (" + std::to_string(same) + ")");
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
