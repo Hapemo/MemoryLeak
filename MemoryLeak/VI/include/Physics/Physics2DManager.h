@@ -17,24 +17,24 @@
 #include "ECS_systems.h"
 
 /*!*****************************************************************************
-\brief Physics system class that handles the updating of object's accumulated 
+\brief Physics system class that handles the updating of object's accumulated
 	   forces & positions through the use of forces.
 *******************************************************************************/
 class Physics2DManager : public System {
 public:
-// -----------------------------
-// System functions
-// -----------------------------
-	/*!*****************************************************************************
-	\brief
-	Update function that simulates physics by stepping it in fixedDT when enough
-	time has passed
-	\param const float &
-	A reference to a read-only variable that tells us the application's current
-	delta time
-	\return void
-	NULL
-	*******************************************************************************/
+	// -----------------------------
+	// System functions
+	// -----------------------------
+		/*!*****************************************************************************
+		\brief
+		Update function that simulates physics by stepping it in fixedDT when enough
+		time has passed
+		\param const float &
+		A reference to a read-only variable that tells us the application's current
+		delta time
+		\return void
+		NULL
+		*******************************************************************************/
 	void Update(const double& _appDT);
 
 	/*!*****************************************************************************
@@ -47,7 +47,7 @@ public:
 	*******************************************************************************/
 	void Step();
 
-	void UpdatePosition(const Entity& _e);
+	//void UpdatePosition(const Entity& _e);
 
 // -----------------------------
 // Component-related functions
@@ -62,7 +62,7 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	RemovePhysicsComponent function that removes the physics component from the 
+	RemovePhysicsComponent function that removes the physics component from the
 	entity itself if it exists
 	\param const Entity &
 	A reference to a read-only Entity to remove the physics component from
@@ -82,18 +82,18 @@ public:
 	*******************************************************************************/
 	Physics2D& GetPhysicsComponent(const Entity& _e);
 
-// -----------------------------
-// Get / Set functions
-// -----------------------------
-	/*!*****************************************************************************
-	\brief
-	GetDynamicsEnabled function that returns the stored value of the entity's
-	dynamics enabled flag
-	\param const Entity &
-	A reference to a read-only Entity to
-	\return bool
-	The value of the entity's dynamics enabled flag
-	*******************************************************************************/
+	// -----------------------------
+	// Get / Set functions
+	// -----------------------------
+		/*!*****************************************************************************
+		\brief
+		GetDynamicsEnabled function that returns the stored value of the entity's
+		dynamics enabled flag
+		\param const Entity &
+		A reference to a read-only Entity to
+		\return bool
+		The value of the entity's dynamics enabled flag
+		*******************************************************************************/
 	bool GetDynamicsEnabled(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
@@ -119,7 +119,7 @@ public:
 	float GetMass(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
-	SetMass function that sets the stored value of the entity's mass to the given 
+	SetMass function that sets the stored value of the entity's mass to the given
 	value. It also updates the stored value of the entity's inverse mass
 	\param const Entity &
 	A reference to a read-only Entity to set
@@ -141,7 +141,7 @@ public:
 	float GetInertia(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
-	SetInertia function that sets the stored value of the entity's inertia to the 
+	SetInertia function that sets the stored value of the entity's inertia to the
 	given value. It also updates the stored value of the entity's inverse inertia
 	\param const Entity &
 	A reference to a read-only Entity to set
@@ -207,7 +207,7 @@ public:
 	float GetDamping(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
-	SetDamping function that sets the stored value of the entity's damping to the 
+	SetDamping function that sets the stored value of the entity's damping to the
 	given value
 	\param const Entity &
 	A reference to a read-only Entity to get from
@@ -226,7 +226,7 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	GetAccumulatedForce function that returns the stored value of the entity's 
+	GetAccumulatedForce function that returns the stored value of the entity's
 	final force
 	\param const Entity &
 	A reference to a read-only Entity to get from
@@ -236,7 +236,7 @@ public:
 	Math::Vec2 GetAccumulatedForce(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
-	SetAccumulatedForce function that sets the stored value of the entity's 
+	SetAccumulatedForce function that sets the stored value of the entity's
 	accumulated force to the given value
 	\param const Entity &
 	A reference to a read-only Entity to get from
@@ -383,7 +383,7 @@ public:
 	A reference to a read-only variable containing the direction of the force
 	\param const float &
 	A reference to a read-only variable containing the magnitude of the force
-	\param const float & 
+	\param const float &
 	A reference to a read-only variable containing the lifespan of the force.
 	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
 	lifespan
@@ -396,8 +396,8 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddLinearForceToList(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude, 
-							  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	void AddLinearForceToList(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude,
+		const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	/*!*****************************************************************************
 	\brief
 	AddRotationForceToList function that adds a rotation force to an entity's list of forces
@@ -419,8 +419,8 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddRotationForceToList(const Entity& _e, const float& _torque, 
-						  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	void AddRotationForceToList(const Entity& _e, const float& _torque,
+		const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	/*!*****************************************************************************
 	\brief
 	AddDragForceToList function that adds a drag/resistance force to an entity's list of forces
@@ -446,8 +446,8 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void AddDragForceToList(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f, 
-					  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+	void AddDragForceToList(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f,
+		const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	//void ApplyLinearForceToAccumulated(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude);
 	//void ApplyRotationForceToAccumulated(const Entity& _e, const float& _torque);
 	//void ApplyDragForceToAccumulated(const Entity& _e, const float& _directionDrag, const float& _rotationDrag);
@@ -461,12 +461,12 @@ public:
 	\param const Math::Vec2 &
 	A reference to a read-only variable containing the velocity impulse
 	\param const Math::Vec2 &
-	A reference to a read-only variable containing the contact position for rotation
+	A reference to a read-only variable containing the rotation impulse
 	calculation
 	\return void
 	NULL
 	*******************************************************************************/
-	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _contact);
+	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
 private:
 	// -----------------------------
 	// Constant values
@@ -476,8 +476,7 @@ private:
 	const double accumulatedDTCap{ 1.0 };			// Accumulated cannot store more than 1 second worth of updates
 	const float  velocityCap{ 1000.f };				// Global velocity cap
 	const float	 angularVelocityCap{ 30.f };		// Global angular velocity cap
-	bool mStepMode{false};									// Flag variable containing whether physics update is in step mode
+	bool mStepMode{ false };									// Flag variable containing whether physics update is in step mode
 	bool mAdvanceStep{ false };								// Flag variable containing whether physics should step when its in step mode
-	bool FirstUpdate{true};								// First Update flag
+	bool FirstUpdate{ true };								// First Update flag
 };
-

@@ -36,13 +36,13 @@ public:
 	\brief
 	Default constructor
 	\param const Entity &
-	A reference to a read-only entity 
-	\param const Entity & 
+	A reference to a read-only entity
+	\param const Entity &
 	A reference to a read-only entity
 	\return void
 	NULL
 	*******************************************************************************/
-	Contact(const Entity& _obj1, const Entity& _obj2);
+	Contact(const Entity& _obj1, const Entity& _obj2, const int& _obj1Type, const int& _obj2Type);
 
 	/*!*****************************************************************************
 	\brief
@@ -51,7 +51,7 @@ public:
 	\param void
 	NULL
 	\return float
-	The computed restitution 
+	The computed restitution
 	*******************************************************************************/
 	float DetermineRestitution();
 
@@ -66,17 +66,23 @@ public:
 	*******************************************************************************/
 	float DetermineFriction();
 
-/*!*****************************************************************************
-Class variables
-*******************************************************************************/
-	Entity obj1;			// 1st entity
-	int obj1Type{};			// Collider type of the 1st entity to check against
-	Entity obj2;			// 2nd entity
-	int obj2Type{};			// Collider type of the 2nd entity to check against
-	double interTime{};		// Intersection time
-	float penetration{};	// Collision penetration depths
-	Math::Vec2 normal{};	// Collision normal
-	std::vector<Math::Vec2> contacts{};	// Points of contact of the collision
+	float DetermineSeperatingVelocity();
+
+	/*!*****************************************************************************
+	Class variables
+	*******************************************************************************/
+	Entity obj[2]{};				// Array of entity
+	int objType[2]{};				// Array of entity objType
+	double interTime{};				// Collision time
+	Math::Vec2 normal{};			// Collision normal
+	float penetration{};			// Collision penetration depths
+	float combinedRestitution{};	// Combined restitution value
+	float combinedFriction{};		// Combined friction value
+	Math::Vec2 newVelocity[2]{};	// Computed new velocity after collision
+	float seperatingVelocity{};		// Computed seperating velocity scalar value
+	float contactImpulse{};			// Contact impulse
+	Math::Vec2 contacts{};			// Points of contact of the collision
+
 };
 
 /*!*****************************************************************************
@@ -91,20 +97,20 @@ typedef bool (*CollisionCallback)(Contact&, const double&);
 *******************************************************************************/
 class Collision2DManager : public System {
 public:
-// -----------------------------
-// Collision Checks Lib
-// -----------------------------
-	/*!*****************************************************************************
-	\brief
-	CI_RectvsRect function that checks for collision between 2 entities that have
-	AABB/rectangular colliders
-	\param Contact &
-	A reference to struct containing entity pair data to check
-	\param const double &
-	A reference to a read-only variable containing the delta time
-	\return bool
-	Evaluated result of whether collision has occurred between the given entity pair
-	*******************************************************************************/
+	// -----------------------------
+	// Collision Checks Lib
+	// -----------------------------
+		/*!*****************************************************************************
+		\brief
+		CI_RectvsRect function that checks for collision between 2 entities that have
+		AABB/rectangular colliders
+		\param Contact &
+		A reference to struct containing entity pair data to check
+		\param const double &
+		A reference to a read-only variable containing the delta time
+		\return bool
+		Evaluated result of whether collision has occurred between the given entity pair
+		*******************************************************************************/
 	static bool CI_RectvsRect(Contact& _contact, const double& _dt);
 	/*!*****************************************************************************
 	\brief
@@ -141,17 +147,17 @@ public:
 	*******************************************************************************/
 	static bool CI_CirclevsRect(Contact& _contact, const double& _dt);
 
-// -----------------------------
-// Component-related functions
-// -----------------------------
-	/*!*****************************************************************************
-	\brief
-	HasCollider function that checks if the given entity contains a collider
-	\param const Entity &
-	A reference to a read-only Entity to add collider to
-	\return bool
-	Evaluated result of whether the entity has a collider
-	*******************************************************************************/
+	// -----------------------------
+	// Component-related functions
+	// -----------------------------
+		/*!*****************************************************************************
+		\brief
+		HasCollider function that checks if the given entity contains a collider
+		\param const Entity &
+		A reference to a read-only Entity to add collider to
+		\return bool
+		Evaluated result of whether the entity has a collider
+		*******************************************************************************/
 	bool HasCollider(const Entity& _e);
 	//int NoOfColliders(const Entity& e);
 
@@ -192,7 +198,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void ResolveCollisions(const double &_dt);
+	void ResolveCollisions(const double& _dt);
 	/*!*****************************************************************************
 	\brief
 	GenerateContactList function that detects for collision between entities in the
@@ -205,7 +211,7 @@ public:
 	void GenerateContactList(const double& _dt);
 	/*!*****************************************************************************
 	\brief
-	ClearContactList function that clears the contactList container for the next 
+	ClearContactList function that clears the contactList container for the next
 	frame
 	\param void
 	NULL
@@ -213,52 +219,19 @@ public:
 	NULL
 	*******************************************************************************/
 	void ClearContactList();
-	/*!*****************************************************************************
-	\brief
-	ResolveContact function that resolves detected collisions in the contactList 
-	container
-	\param Contact & 
-	A reference to struct containing entity pair data to resolve
-	\return void
-	NULL
-	*******************************************************************************/
-	void ResolveContact(Contact& _contact);
-	/*!*****************************************************************************
-	\brief
-	UpdatePositions function that calls the physics manager to update the positions 
-	of the object so it is no longer colliding after resolution
-	\param const Contact &
-	A reference to read-only struct containing entity pair data to update
-	\return void
-	NULL
-	*******************************************************************************/
-	void UpdatePositions(const Contact& _contact);
-	/*!*****************************************************************************
-	\brief
-	UpdateVelocities function that calculates the entities' new velocity after
-	collision
-	\param const Contact &
-	A reference to read-only struct containing entity pair data to correct
-	\return void
-	NULL
-	*******************************************************************************/
-	void UpdateVelocities(Contact& _contact, const double& _dt);
-	/*!*****************************************************************************
-	\brief
-	PositionCorrection function that does position correction on resolved collision
-	between entities
-	\param const Contact &
-	A reference to read-only struct containing entity pair data to correct
-	\return void
-	NULL
-	*******************************************************************************/
+
+	void ResolveContact(Contact& _contact, const double& _dt);
+	void ResolvePositions();
 	void PositionCorrection(Contact& _contact);
+	//void ResolveVelocities(const double& _dt);
+	//void ResolveContactVelocity(Contact& _contact, const double& _dt);
+	//void ResolvePenetration(Contact& _contact);
 private:
 	// Database of callback functions to collision checks 
 	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
-	std::vector<Contact> mContactList;		// List of contacts in the current frame
+	std::vector<Contact> mContactList;				// List of contacts in the current frame
 
 	// const float penEpsilion{ 0.0001f };
 	const float	penAllowance{ 0.05f },		// Penetration allowance
-				penPercentage{ 0.4f };		// Penetration percentage to correct
+		penPercentage{ 0.4f };		// Penetration percentage to correct
 };

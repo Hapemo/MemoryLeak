@@ -78,11 +78,11 @@ struct Button
 {
 	GLuint onHoverTexture = 0;
 	GLuint onClickTexture = 0;
+	bool interactable = true;
 	bool isHover = false;
 	bool isClick = false;
 	bool activated = false;
 	bool renderFlag = true;
-	bool interactable = true;
 };
 
 /*!*****************************************************************************
@@ -162,6 +162,13 @@ struct Physics2D {
 	std::vector<Force> forceList{};
 
 	bool renderFlag{false};
+};
+
+struct LayerCollider {
+	Math::Vec2 centerOffset = { 0.f, 0.f },
+				scaleOffset = { 1.f,1.f };
+	// float rotationOffset,
+	bool renderFlag = false;
 };
 
 /*!*****************************************************************************
@@ -322,8 +329,12 @@ enum class COMPONENTID
 	AI,				//13
 	SCRIPT,			
 	DIALOGUE,
-	PLAYERTMP
+	PLAYERTMP,
+	LAYERCOLLIDER
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, PlayerTmp>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, PlayerTmp, LayerCollider>  COMPONENT;
+
+
+

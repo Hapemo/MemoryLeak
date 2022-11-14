@@ -21,26 +21,26 @@
 *******************************************************************************/
 class PlayerController : public System {
 public:
-// -----------------------------
-// Controller functions
-// -----------------------------
-	/*!*****************************************************************************
-	\brief
-	Update function that checks for keyboard input to modify physics components values
-	to move player entities
+	// -----------------------------
+	// Controller functions
+	// -----------------------------
+		/*!*****************************************************************************
+		\brief
+		Update function that checks for keyboard input to modify physics components values
+		to move player entities
 
-	\param void
-	NULL
+		\param void
+		NULL
 
-	\return void
-	NULL
-	*******************************************************************************/
+		\return void
+		NULL
+		*******************************************************************************/
 	void Update();
 	std::vector<bool>& getCheck() { return check; }
 private:
 	const double playerSpeed{ 15.f },								// Player speed
-				 playerSpeedNaturalLossScalar{ 0.99 },				// Player speed decceleration scalar
-				 playerSpeedCap{ 300.f };							// Player speed cap
+		playerSpeedNaturalLossScalar{ 0.99 },				// Player speed decceleration scalar
+		playerSpeedCap{ 300.f };							// Player speed cap
 
 	bool FirstUpdate{ true };
 	static std::vector<bool> check;

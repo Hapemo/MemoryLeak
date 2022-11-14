@@ -208,9 +208,8 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Animation>();
 	ECS::RegisterComponent<SheetAnimation>();
 	ECS::RegisterComponent<Physics2D>();
-	//ECS::RegisterComponent<Collider2D>();
-	ECS::RegisterComponent<CircleCollider>();
 	ECS::RegisterComponent<RectCollider>();
+	ECS::RegisterComponent<CircleCollider>();
 	ECS::RegisterComponent<Edge2DCollider>();
 	ECS::RegisterComponent<Point2DCollider>();
 	ECS::RegisterComponent<PlayerTmp>();
@@ -221,6 +220,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Dialogue>();
 	ECS::RegisterComponent<LightSource>();
 	ECS::RegisterComponent<Button>();
+	ECS::RegisterComponent<LayerCollider>();
 	// More to come
 }
 

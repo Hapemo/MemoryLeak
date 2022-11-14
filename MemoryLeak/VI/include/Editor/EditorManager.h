@@ -45,23 +45,29 @@ public:
 	bool IsScenePaused() { return isScenePaused; }
 	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
 	using PrefabPtr = std::shared_ptr<Prefab>;
+
+	Math::Vec2 GetEditorWorldMousePos();
+	Math::Vec2 GetEditorGameMousePos();
+
 private:
 	static std::vector<Panel*> panels;
 	
 protected:
 	enum class E_PANELID
 	{
+		MENU,
+		DEBUG,
+		PERFORMANCE,
+		ASSET,
+		DIALOGUE,
+		WEATHER,
+		ANIMATION,
+		PREFABS,
 		HIERARCHY,
 		INSPECTOR,
 		WORLDVIEW,
 		GAMEVIEW,
-		DIALOGUE,
-		ASSET,
-		DEBUG,
-		MENU,
-		WEATHER,
-		ANIMATION,
-		PERFORMANCE
+		END
 	};
 	void SceneReset();
 	static bool GetPannelIsActive(E_PANELID _panel);

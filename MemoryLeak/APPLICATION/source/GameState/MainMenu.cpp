@@ -20,7 +20,7 @@ void MainMenu::Load() {
 void MainMenu::Init() {
 	for (Scene* scenePtr : mScenes)
 		scenePtr->Init();
-	//renderManager->GetGizmo().Attach(Entity(5));
+	renderManager->GetGizmo().Attach(Entity(5));
 	//if (e.GetComponent<General>().tag != TAG::ENVIRONMENT)
 	//	continue;
 	//if (!e.HasComponent<Text>())
