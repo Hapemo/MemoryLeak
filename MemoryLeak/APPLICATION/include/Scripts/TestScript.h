@@ -22,9 +22,8 @@ private:
 	std::string name = "TestScript";
 
 public:
-	TestScript() {
-		LOG_DEBUG("TestScript running constructor");
-	}
+	TestScript() = default;
+	~TestScript() override = default;
 
 	/*!*****************************************************************************
 	\brief

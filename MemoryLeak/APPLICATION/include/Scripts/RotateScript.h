@@ -14,17 +14,16 @@ engine.
 #pragma once
 #include "ECS_tools.h"
 #include "Input.h"
-#include "ScriptManager.h"
 #include "ScriptComponent.h"
+#include "ScriptManager.h"
 
 class RotateScript : public ScriptComponent {
 private:
 	std::string name = "RotateScript";
 
 public:
-	RotateScript() {
-		LOG_DEBUG("RotateScript running constructor");
-	}
+	RotateScript() = default;
+	virtual ~RotateScript() = default;
 
 	/*!*****************************************************************************
 	\brief

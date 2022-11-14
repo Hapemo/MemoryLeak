@@ -22,9 +22,8 @@ private:
 	std::string name = "ScaleScript";
 
 public:
-	ScaleScript() {
-		LOG_DEBUG("ScaleScript running constructor");
-	}
+	ScaleScript() = default;
+	~ScaleScript() override = default;
 
 	/*!*****************************************************************************
 	\brief

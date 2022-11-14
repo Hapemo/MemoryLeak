@@ -100,6 +100,3 @@ void Scene::RemoveEntity(Entity const& _e) {
 	_e.Destroy();
 	mEntities.erase(_e);
 }
-
-
-

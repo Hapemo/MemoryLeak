@@ -368,7 +368,7 @@ std::set<Entity> SerializationManager::LoadScene(std::string _filename)
 			if (entity.HasMember("Script")) {
 				Script script;
 				script.name = entity["Script"]["name"].GetString();
-				script.script = nullptr;
+				//script.script = nullptr;
 
 				e.AddComponent<Script>(script);
 			}
@@ -596,7 +596,7 @@ Script SerializationManager::getScript(Value& entity)
 {
 	Script script;
 	script.name = entity["Script"]["name"].GetString();
-	script.script = nullptr;
+	//script.script = nullptr;
 	return script;
 }
 
@@ -1744,7 +1744,7 @@ SceneData SerializationManager::LoadSceneData(std::string const& _filePath) {
 		if (entity.HasMember("Script")) {
 			Script script;
 			script.name = entity["Script"]["name"].GetString();
-			script.script = nullptr;
+			//script.script = nullptr;
 			e.AddComponent<Script>(script);
 		}
 		sceneData.mEntities.insert(e);
@@ -1970,6 +1970,3 @@ void SerializationManager::SaveSceneData(ResourceManager::GUID const& _guid) {
 	} else
 		LOG_INFO("Saved Scene: " + path);
 }
-
-
-

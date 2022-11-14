@@ -45,4 +45,4 @@ void RotateScript::EndScript(Entity const& gob) {
 	LOG_INFO("RotateScript end works!!!");
 }
 
-REGISTER_SCRIPT(ScriptComponent, RotateScript);
+//REGISTER_SCRIPT(ScriptComponent, RotateScript);

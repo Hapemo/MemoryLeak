@@ -24,7 +24,7 @@ public:
 	Default constructor and destructor.
 	*******************************************************************************/
 	ScriptComponent() = default;
-	~ScriptComponent() = default;
+	virtual ~ScriptComponent() = default;
 
 	/*!*****************************************************************************
 	\brief

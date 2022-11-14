@@ -4,7 +4,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <LibraryPath>$(SolutionDir)\bin\$(Configuration)\$(Platform)\VI;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)VI\include\PrefabManager;$(SolutionDir)VI\include\ECS;$(SolutionDir)VI\include\Editor;$(SolutionDir)VI\include\Graphics;$(SolutionDir)VI\include\Logic;$(SolutionDir)VI\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)VI\include\PrefabManager;$(SolutionDir)VI\include\ECS;$(SolutionDir)VI\include\Editor;$(SolutionDir)VI\include\Graphics;$(SolutionDir)VI\include\Logic;$(SolutionDir)VI\include;$(SolutionDir)APPLICATION\include\Scripts;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
