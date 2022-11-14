@@ -164,6 +164,13 @@ struct Physics2D {
 	bool renderFlag{false};
 };
 
+struct LayerCollider {
+	Math::Vec2 centerOffset = { 0.f, 0.f },
+				scaleOffset = { 1.f,1.f };
+	// float rotationOffset,
+	bool renderFlag = false;
+};
+
 /*!*****************************************************************************
 \brief
 This component encapsulates information regarding a rectangular collider for
@@ -322,11 +329,12 @@ enum class COMPONENTID
 	AI,				//13
 	SCRIPT,			
 	DIALOGUE,
-	PLAYERTMP
+	PLAYERTMP,
+	LAYERCOLLIDER
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, PlayerTmp>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, PlayerTmp, LayerCollider>  COMPONENT;
 
 
 

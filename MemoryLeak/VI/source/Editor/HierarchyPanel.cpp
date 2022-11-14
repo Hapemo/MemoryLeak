@@ -297,6 +297,11 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 			ImGui::Text("RectCollider");
 			setSelectedEntity(e);
 		}
+		if (e->HasComponent<LayerCollider>())
+		{
+			ImGui::Text("LayerCollider");
+			setSelectedEntity(e);
+		}
 		if (e->HasComponent<CircleCollider>())
 		{
 			ImGui::Text("CircleCollider");
