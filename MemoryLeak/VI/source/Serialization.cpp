@@ -107,6 +107,10 @@ std::set<Entity> SerializationManager::LoadScene(std::string _filename)
 			{
 				e.AddComponent<Physics2D>(getPhysics2D(entity[index]));
 			}
+			if (entity[index].HasMember("LayerCollider"))
+			{
+				e.AddComponent<LayerCollider>(getLayerCollider(entity[index]));
+			}
 			if (entity[index].HasMember("RectCollider"))
 			{
 				e.AddComponent<RectCollider>(getRectCollider(entity[index]));
@@ -501,6 +505,14 @@ RectCollider SerializationManager::getRectCollider(Value& entity)
 	rectCollider.renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
 	return rectCollider;
 }
+LayerCollider SerializationManager::getLayerCollider(Value& entity)
+{
+	LayerCollider layerCollider;
+	layerCollider.centerOffset = GetVec2(entity["LayerCollider"]["centerOffset"]);
+	layerCollider.scaleOffset = GetVec2(entity["LayerCollider"]["scaleOffset"]);
+	layerCollider.renderFlag = entity["LayerCollider"]["renderFlag"].GetBool();
+	return layerCollider;
+}
 CircleCollider SerializationManager::getCircleCollider(Value& entity)
 {
 	CircleCollider circleCollider;
@@ -786,6 +798,10 @@ void SerializationManager::SaveScene(std::string _filename, std::set<Entity> ent
 		{
 			addRectCollider(scene, entity, e.GetComponent<RectCollider>());
 		}
+		if (e.HasComponent<LayerCollider>())
+		{
+			addLayerCollider(scene, entity, e.GetComponent<LayerCollider>());
+		}
 		if (e.HasComponent<CircleCollider>())
 		{
 			addCircleCollider(scene, entity, e.GetComponent<CircleCollider>());
@@ -933,6 +949,14 @@ void SerializationManager::addRectCollider(Document& scene, Value& entity, RectC
 	addVectorMember(scene, tmp, "scaleOffset", rectCollider.scaleOffset);
 	tmp.AddMember(StringRef("renderFlag"), rectCollider.renderFlag, scene.GetAllocator());
 	entity.AddMember(StringRef("RectCollider"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addLayerCollider(Document& scene, Value& entity, LayerCollider layerCollider)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "centerOffset", layerCollider.centerOffset);
+	addVectorMember(scene, tmp, "scaleOffset", layerCollider.scaleOffset);
+	tmp.AddMember(StringRef("renderFlag"), layerCollider.renderFlag, scene.GetAllocator());
+	entity.AddMember(StringRef("LayerCollider"), tmp, scene.GetAllocator());
 }
 void SerializationManager::addCircleCollider(Document& scene, Value& entity, CircleCollider circleCollider)
 {

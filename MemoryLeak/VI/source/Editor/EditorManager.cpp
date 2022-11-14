@@ -107,18 +107,20 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static WeatherPanel weatherPanel{};
 	static PerformancePanel performancePanel{};
 	static PrefabPanel prefabPanel{};
-	panels.push_back(&prefabPanel);
-	panels.push_back(&inspectorPanel);
-	panels.push_back(&weatherPanel);
-	panels.push_back(&animationPanel);
-	panels.push_back(&dialoguePanel);//4
-	panels.push_back(&assetPanel);
-	panels.push_back(&debugPanel);
-	panels.push_back(&menuPanel);
-	panels.push_back(&gameViewPanel);//8
-	panels.push_back(&worldViewPanel);//9
-	panels.push_back(&performancePanel);
-	panels.push_back(&hierarchyPanel);
+	panels.resize((int)E_PANELID::END);
+
+	panels[(int)E_PANELID::MENU] = &menuPanel;
+	panels[(int)E_PANELID::DEBUG] = &debugPanel;
+	panels[(int)E_PANELID::PERFORMANCE] = &performancePanel;
+	panels[(int)E_PANELID::ASSET] = &assetPanel;
+	panels[(int)E_PANELID::DIALOGUE] = &dialoguePanel;//4
+	panels[(int)E_PANELID::WEATHER] = &weatherPanel;
+	panels[(int)E_PANELID::ANIMATION] = &animationPanel;
+	panels[(int)E_PANELID::PREFABS]= &prefabPanel;
+	panels[(int)E_PANELID::HIERARCHY] = &hierarchyPanel;
+	panels[(int)E_PANELID::INSPECTOR] = &inspectorPanel;
+	panels[(int)E_PANELID::WORLDVIEW] = &gameViewPanel;//8
+	panels[(int)E_PANELID::GAMEVIEW] = &worldViewPanel;//9
 
 	//prefabPanel.LoadPrefab();
 	Init();
@@ -614,12 +616,11 @@ Entity EditorManager::Clone(Entity c)
 
 Math::Vec2 EditorManager::GetEditorWorldMousePos()
 {
-	 std::cout << dynamic_cast<WorldViewPanel*>(panels[9])->GetMousePos() << std::endl;
-	return dynamic_cast<WorldViewPanel*>(panels[9])->GetMousePos();
+	return dynamic_cast<WorldViewPanel*>(panels[(int)E_PANELID::WORLDVIEW])->GetMousePos();
 }
 Math::Vec2 EditorManager::GetEditorGameMousePos()
 {
-	 return dynamic_cast<GameViewPanel*>(panels[8])->GetMousePos();
+	 return dynamic_cast<GameViewPanel*>(panels[(int)E_PANELID::GAMEVIEW])->GetMousePos();
 }
 
 
