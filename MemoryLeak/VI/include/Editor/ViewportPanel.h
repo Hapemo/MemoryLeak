@@ -24,6 +24,8 @@ public:
 	void Init() {};
 	void Update() {};
 	void Free() {};
+
+	Math::Vec2 GetMousePos() { return  worldMousePos; };
 protected:
 	enum class E_CAMERA_TYPE
 	{

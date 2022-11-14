@@ -45,6 +45,10 @@ public:
 	bool IsScenePaused() { return isScenePaused; }
 	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
 	using PrefabPtr = std::shared_ptr<Prefab>;
+
+	Math::Vec2 GetEditorWorldMousePos();
+	Math::Vec2 GetEditorGameMousePos();
+
 private:
 	static std::vector<Panel*> panels;
 	

@@ -171,7 +171,7 @@ void EditorManager::Update()
 	//if (renderManager->GetRenderGameToScreen())
 		renderManager->RenderToFrameBuffer();
 	Window();
-	
+	GetEditorWorldMousePos();
 
 
 	if (selectedGameState < allEntities.size())
@@ -613,7 +613,15 @@ Entity EditorManager::Clone(Entity c)
 
 
 
-
+Math::Vec2 EditorManager::GetEditorWorldMousePos()
+{
+	 std::cout << dynamic_cast<WorldViewPanel*>(panels[9])->GetMousePos() << std::endl;
+	return dynamic_cast<WorldViewPanel*>(panels[9])->GetMousePos();
+}
+Math::Vec2 EditorManager::GetEditorGameMousePos()
+{
+	 return dynamic_cast<GameViewPanel*>(panels[8])->GetMousePos();
+}
 
 
 
