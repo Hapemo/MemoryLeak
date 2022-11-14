@@ -78,11 +78,11 @@ struct Button
 {
 	GLuint onHoverTexture = 0;
 	GLuint onClickTexture = 0;
+	bool interactable = true;
 	bool isHover = false;
 	bool isClick = false;
 	bool activated = false;
 	bool renderFlag = true;
-	bool interactable = true;
 };
 
 /*!*****************************************************************************
