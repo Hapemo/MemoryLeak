@@ -412,15 +412,19 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 
 	// For now, we loop through the entity list
 	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
-		if (!e1->GetComponent<General>().isActive)
+		if (!e1->ShouldRun())
 			continue;
+		//if (!e1->GetComponent<General>().isActive)
+			//continue;
 
 		for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
 			if (e1 == e2)
 				continue;
 
-			if (!e2->GetComponent<General>().isActive)
+			if (!e2->ShouldRun())
 				continue;
+			//if (!e2->GetComponent<General>().isActive)
+			//	continue;
 
 			//if (!e1->HasComponent<Collider2D>() || !e2->HasComponent<Collider2D>())
 			//	continue;

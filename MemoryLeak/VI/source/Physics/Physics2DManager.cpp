@@ -63,10 +63,10 @@ void Physics2DManager::Step() {
 		}
 
 		// Skip if entity should not be run
-		//if (!e.ShouldRun())
-		//	continue;
-		if (!e.GetComponent<General>().isActive)
+		if (!e.ShouldRun())
 			continue;
+		//if (!e.GetComponent<General>().isActive)
+			//continue;
 
 		// Skip if entity does not have physics component
 		if (!e.HasComponent<Physics2D>())
