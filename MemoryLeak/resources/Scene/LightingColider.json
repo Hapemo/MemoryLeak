@@ -1,0 +1,592 @@
+[
+    {
+        "General": {
+            "name": "background1",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 100.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": 100.0,
+                "Y": 250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 0.699999988079071,
+                "Y": 3.799999952316284
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "background2",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 4.0,
+            "translation": {
+                "X": -400.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.2999999523162842,
+                "Y": 1.2999999523162842
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "background3",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 200.0
+            },
+            "rotation": 1.6999999284744263,
+            "translation": {
+                "X": 400.0,
+                "Y": -250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 2.0,
+                "Y": 0.5
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "background4",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 200.0
+            },
+            "rotation": 2.799999952316284,
+            "translation": {
+                "X": 650.0,
+                "Y": 50.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.2000000476837158,
+                "Y": 1.2000000476837158
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "background5",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 300.0
+            },
+            "rotation": 0.4000000059604645,
+            "translation": {
+                "X": -650.0,
+                "Y": 200.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 2.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "background6",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 100.0
+            },
+            "rotation": 4.699999809265137,
+            "translation": {
+                "X": -400.0,
+                "Y": -250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 0.30000001192092896,
+                "Y": 3.0
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "background7",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 500.0,
+                "Y": 300.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "background8",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.5,
+            "translation": {
+                "X": -200.0,
+                "Y": 250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.2000000476837158,
+                "Y": 1.2000000476837158
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "background9",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 50,
+                "g": 50,
+                "b": 50,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "3Dumb",
+            "text": "Wall",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "lightsource",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 10.0,
+                "Y": 10.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -31.927078247070313,
+                "Y": 19.531606674194336
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 240
+        },
+        "Physics2D": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "velocity": {
+                "X": 0.000011581709259189665,
+                "Y": 7.006492321624085e-44
+            },
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
+            "renderFlag": false
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Lightsource",
+            "offset": {
+                "X": -18.072921752929688,
+                "Y": -19.531606674194336
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        },
+        "LightSource": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        }
+    }
+]
