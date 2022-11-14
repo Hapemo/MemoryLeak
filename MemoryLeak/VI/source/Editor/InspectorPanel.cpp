@@ -73,6 +73,10 @@ void InspectorPanel::Update()
 				{
 					RectColliderEditor();
 				}
+				if (e.HasComponent<LayerCollider>())
+				{
+					LayerColliderEditor();
+				}
 				if (e.HasComponent<CircleCollider>())
 				{
 					CircleColliderEditor();
@@ -201,6 +205,8 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<Dialogue>({});
 	else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
 		e.AddComponent<PlayerTmp>({});
+	else if (addComponentID == (int)COMPONENTID::LAYERCOLLIDER)
+		e.AddComponent<LayerCollider>({});
 	
 }
 /*!*****************************************************************************
@@ -614,6 +620,33 @@ void InspectorPanel::RectColliderEditor()
 		{
 			e.RemoveComponent<RectCollider>();
 			LOG_INFO("RectCollider component removed");
+		}
+
+	}
+}
+void InspectorPanel::LayerColliderEditor()
+{
+	if (ImGui::CollapsingHeader("LayerCollider")) {
+		//ImGui::Text("LayerCollider");
+		tmpVec2[0] = e.GetComponent<LayerCollider>().centerOffset.x;
+		tmpVec2[1] = e.GetComponent<LayerCollider>().centerOffset.y;
+		ImGui::InputFloat2("Box position Offset", tmpVec2);
+		e.GetComponent<LayerCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
+
+		tmpVec2[0] = e.GetComponent<LayerCollider>().scaleOffset.x;
+		tmpVec2[1] = e.GetComponent<LayerCollider>().scaleOffset.y;
+		ImGui::InputFloat2("Box scale Offset", tmpVec2);
+		e.GetComponent<LayerCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
+		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
+
+		ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<LayerCollider>().renderFlag);
+		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
+
+		if (ImGui::Button("Remove LayerCollider"))
+		{
+			e.RemoveComponent<LayerCollider>();
+			LOG_INFO("LayerCollider component removed");
 		}
 
 	}

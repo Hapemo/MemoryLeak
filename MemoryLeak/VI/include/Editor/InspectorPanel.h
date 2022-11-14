@@ -32,6 +32,7 @@ private:
 	void SheetAnimationEditor();
 	void Physics2DEditor();
 	void RectColliderEditor();
+	void LayerColliderEditor();
 	void CircleColliderEditor();
 	void Edge2DColliderEditor();
 	void Point2DColliderEditor();
@@ -60,6 +61,6 @@ private:
 	const char* colorChange[3]{ "None","Smoothy","Traffic Light" };
 	const char* movement[5]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
 	int addComponentID{};
-	const char* componentsList[17]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
-				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "PlayerTmp" };
+	const char* componentsList[18]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
+				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "PlayerTmp" ,"LayerCollider"};
 };

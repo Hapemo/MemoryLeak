@@ -93,6 +93,7 @@ private:
 	SheetAnimation getSheetAnimation(Value& entity);
 	Physics2D getPhysics2D(Value& entity);
 	RectCollider getRectCollider(Value& entity);
+	LayerCollider getLayerCollider(Value& entity);
 	CircleCollider getCircleCollider(Value& entity);
 	Edge2DCollider getEdge2DCollider(Value& entity);
 	Point2DCollider getPoint2DCollider(Value& entity);
@@ -112,6 +113,7 @@ private:
 	void addSheetAnimation(Document& scene, Value& entity, SheetAnimation sheetAnimation);
 	void addPhysics2D(Document& scene, Value& entity, Physics2D physics2D);
 	void addRectCollider(Document& scene, Value& entity, RectCollider rectCollider);
+	void addLayerCollider(Document& scene, Value& entity, LayerCollider layerCollider);
 	void addCircleCollider(Document& scene, Value& entity, CircleCollider circleCollider);
 	void addEdge2DCollider(Document& scene, Value& entity, Edge2DCollider edge2DCollider);
 	void addPoint2DCollider(Document& scene, Value& entity, Point2DCollider point2DCollider);
