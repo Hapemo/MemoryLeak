@@ -107,7 +107,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	static WeatherPanel weatherPanel{};
 	static PerformancePanel performancePanel{};
 	static PrefabPanel prefabPanel{};
-	panels.push_back(&hierarchyPanel);
+	panels.push_back(&prefabPanel);
 	panels.push_back(&inspectorPanel);
 	panels.push_back(&weatherPanel);
 	panels.push_back(&animationPanel);
@@ -115,10 +115,10 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels.push_back(&assetPanel);
 	panels.push_back(&debugPanel);
 	panels.push_back(&menuPanel);
-	panels.push_back(&gameViewPanel);
-	panels.push_back(&worldViewPanel);
+	panels.push_back(&gameViewPanel);//8
+	panels.push_back(&worldViewPanel);//9
 	panels.push_back(&performancePanel);
-	panels.push_back(&prefabPanel);
+	panels.push_back(&hierarchyPanel);
 
 	//prefabPanel.LoadPrefab();
 	Init();

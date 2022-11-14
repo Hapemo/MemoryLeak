@@ -56,7 +56,7 @@ void HierarchyPanel::Update()
 					{
 						for (int s = 0; s < allEntities[g].size(); s++)
 						{
-							ImGui::PushID(id++);
+							//ImGui::PushID(id++);
 							if (ImGui::BeginTabItem(allNames[g].second[s].c_str()))
 							{
 								//ImGui::PopID();
@@ -118,8 +118,7 @@ void HierarchyPanel::Update()
 								ImGui::EndTabItem(); //end scene item
 
 							}
-							
-							ImGui::PopID();
+							//ImGui::PopID();
 						}
 						ImGui::EndTabBar(); //for scene
 					}

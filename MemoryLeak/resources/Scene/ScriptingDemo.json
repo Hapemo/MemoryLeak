@@ -1,0 +1,112 @@
+[
+    {
+        "General": {
+            "name": "firstEntity",
+            "tag": 8,
+            "subtag": 5,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -100.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\sea-monster.png",
+            "layer": 10
+        },
+        "Script": {
+            "name": "\u0000estScript\u0000"
+        }
+    },
+    {
+        "General": {
+            "name": "secondEntity",
+            "tag": 8,
+            "subtag": 5,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 225.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\mc.png",
+            "layer": 10
+        },
+        "Script": {
+            "name": "\u0000estScript\u0000\u0000"
+        }
+    },
+    {
+        "General": {
+            "name": "_NEW_DragDrop1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -456.5693359375,
+                "Y": 20.80292320251465
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\girl.png",
+            "layer": 11
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Script": {
+            "name": "\u0000estScript"
+        }
+    }
+]
