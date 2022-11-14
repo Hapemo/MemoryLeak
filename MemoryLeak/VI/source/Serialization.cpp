@@ -1079,9 +1079,9 @@ std::vector<std::set<Entity>> SerializationManager::LoadGameState(std::string& _
 	{
 		SceneData sceneData;
 		sceneData.Name = entity[index]["SceneName"].GetString();
-		sceneData.camera = getTransform(entity[index]["Transform"]);
-		sceneData.camera.scale = GetVec2(entity[index]["CameraZoom"]);
-		sceneData.camera.translation = GetVec2(entity[index]["CameraPos"]);
+		sceneData.camera = getTransform(entity[index]);
+		//sceneData.camera.scale = GetVec2(entity[index]["CameraZoom"]);
+		//sceneData.camera.translation = GetVec2(entity[index]["CameraPos"]);
 		sceneData.isActive = entity[index]["isActive"].GetBool();
 		sceneData.layer = entity[index]["layer"].GetInt();
 		sceneData.order = entity[index]["order"].GetInt();
