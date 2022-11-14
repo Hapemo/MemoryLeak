@@ -32,6 +32,7 @@ void AssetPanel::Init()
 	sceneIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\sceneIcon.png");
 	scriptIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\scriptIcon.png");
 	folderIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
+	prefabIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\prefabIcon.png");
 	dialogueIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\dialogueIcon.png");
 	gamestateIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\gamestateIcon.png");
 }
@@ -44,9 +45,12 @@ None.
 *******************************************************************************/
 void AssetPanel::Update()
 {
-	//GLuint my_image2_texture = 0;
-	//std::string rootPath = "..\\resources";
-	//ImVec2 buttonSize = { 100,100 };
+	static bool start = true;
+	if (start)
+	{
+		Init();
+		start = false;
+	}
 	if (ImGui::Begin("Asset Manager"))
 	{
 		ImGui::BeginTabBar("Assets");
@@ -66,8 +70,10 @@ void AssetPanel::Update()
 				ImGui::NewLine();
 				ImGui::NewLine();
 			}
+			int id = 0;
 			for (auto& directory : std::filesystem::directory_iterator(m_CurrentDirectory))
 			{
+				
 				const auto& path = directory.path();
 				auto relativePath = std::filesystem::relative(path, rootPath);
 				std::string filename = relativePath.filename().string();
@@ -91,6 +97,7 @@ void AssetPanel::Update()
 					texFilename = directory.path().stem().string();
 					if (texExt == ".meta")
 						continue;
+					ImGui::PushID(id++);
 					if (texParent.find("\\Audio\\BGM") != std::string::npos)
 					{
 						ImGui::ImageButton(bgmIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
@@ -150,15 +157,40 @@ void AssetPanel::Update()
 					else if (texParent.find("\\GameStates") != std::string::npos)
 					{
 						ImGui::ImageButton(gamestateIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
+						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left) && texFilename[0] !='G') //REMOVEME
+						{//FUNCTION GS SCENE
+							std::pair<  std::string, std::vector<std::string>> gs{};
+							allEntities.push_back(serializationManager->LoadGameState(texFilename, gs.second));
+							gs.first = texFilename;
+							allNames.push_back(gs);
+							selectedGameState = (int)allEntities.size() - 1;
+							selectedScene = (int)allEntities[selectedGameState].size() - 1;
+							LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
+							LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+						}
 					}
 					else if (texParent.find("\\Scene") != std::string::npos)
 					{
 						ImGui::ImageButton(sceneIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
 						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 						{
-							ECS::DestroyAllEntities();
+							//ECS::DestroyAllEntities();
 							SceneReset();
-							serializationManager->LoadScene(texFilename);
+							if (selectedGameState >= allEntities.size())
+							{//FUNCTION GS SCENE
+								std::vector < std::set<Entity>> newGS{};
+								allEntities.push_back(newGS);
+								std::pair< std::string, std::vector<std::string>> newGSNmae{};
+								newGSNmae.first = "NewGameState0";
+								allNames.push_back(newGSNmae);
+								selectedGameState = (int)allEntities.size() - 1;
+								LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
+							}
+							allEntities[selectedGameState].push_back(serializationManager->LoadScene(texFilename));
+							allNames[selectedGameState].second.push_back(texFilename);
+							selectedScene = (int)allEntities[selectedGameState].size() - 1;
+							LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+
 						}
 					}
 					else if (texParent.find("\\Scripts") != std::string::npos)
@@ -185,11 +217,25 @@ void AssetPanel::Update()
 							}
 						}
 					}
+					else if (texParent.find("\\Prefabs") != std::string::npos)
+					{
+						ImGui::ImageButton(prefabIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
+						if (ImGui::BeginDragDropSource())
+						{
+							const wchar_t* itemPath = (wchar_t*)texFilename.c_str();
+							ImGui::SetDragDropPayload("PREFAB", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
+						}
+						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+						{
+							serializationManager->LoadPrefab(texFilename);
+						}
+					}
 					else
 					{
 						ImGui::Button(texFilename.c_str(), folderSize);
 					}
-
+					ImGui::PopID();
 
 					/*my_image2_texture = spriteManager->GetTextureID(texPath);
 					if (my_image2_texture)
@@ -281,6 +327,7 @@ void AssetPanel::Update()
 			ImGui::NewLine();
 			ImGui::EndTabItem();
 		}
+		ImGui::Dummy({ 10,100 });
 		ImGui::EndTabBar();
 	}
 	ImGui::End();

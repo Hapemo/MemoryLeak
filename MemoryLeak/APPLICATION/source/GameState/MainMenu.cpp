@@ -13,7 +13,6 @@ Game state for main menu
 #include "VertexFetcher.h"
 #include <GameStateManager.h>
 
-
 void MainMenu::Load() {
 	serializationManager->LoadScene("Scene_MainMenu");
 }
@@ -61,7 +60,7 @@ void MainMenu::Update() {
 				if (cursorPos.x <= vertices[0].x && cursorPos.y <= vertices[0].y)
 					if (cursorPos.x >= vertices[2].x && cursorPos.y >= vertices[2].y)
 					{
-						e.GetComponent<Text>().color = e.GetComponent<Text>().color.g == 255 ? 
+						e.GetComponent<Text>().color = e.GetComponent<Text>().color.g == 255 ?
 							Color{0, 0, 0, 255}: Color{ 255, 255, 255, 255 };
 						if (e.GetComponent<General>().subtag == SUBTAG::PLAYER)
 						{
@@ -89,5 +88,5 @@ void MainMenu::Free() {
 
 void MainMenu::Unload() {
 	renderManager->GetGizmo().Detach();
-	ECS::DestroyAllEntities();
+	//ECS::DestroyAllEntities();
 }

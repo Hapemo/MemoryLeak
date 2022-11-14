@@ -26,6 +26,7 @@ enum class E_GS {
 	END_OF_LIST,
 	RESTART,
 	JAZZ,
+	EDITOR,
 	EXIT
 };
 E_GS& operator++(E_GS& _gs);

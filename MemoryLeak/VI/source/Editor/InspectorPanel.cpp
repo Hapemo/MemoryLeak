@@ -168,7 +168,7 @@ None.
 void InspectorPanel::AddComponent()
 {
 	if (addComponentID == (int)COMPONENTID::GENERAL)
-		e.AddComponent<General>({ "_new_", (TAG)0, (SUBTAG)0, true });
+		e.AddComponent<General>({ "_new_", (TAG)0, (SUBTAG)0, true , false});
 	else if (addComponentID == (int)COMPONENTID::LIFESPAN)
 		e.AddComponent<Lifespan>({ 0,1000 });
 	else if (addComponentID == (int)COMPONENTID::TRANSFORM)
@@ -260,7 +260,10 @@ None.
 *******************************************************************************/
 void InspectorPanel::DeleteEntity()
 {
-	e.Destroy();
+	allEntities[selectedGameState][selectedScene].erase(e);
+	e.GetComponent<General>().isActive = false;
+	e.GetComponent<General>().isPaused = true;
+	//e.Destroy();
 	LOG_INFO("Entity deleated");
 	selectedEntity = nullptr;
 	e = Entity{ 0 };
@@ -877,7 +880,7 @@ void InspectorPanel::PrefabEditor()
 			//General general = p->GetComponent<General>();
 			//ImGui::Checkbox("isActive", &general.isActive); //isactive
 			//
-			//Should not chnage general name for all prefabees
+			////Should not chnage general name for all prefabees
 			//ImGui::InputText("Name", &general.name);
 
 
@@ -900,6 +903,7 @@ void InspectorPanel::PrefabEditor()
 			//ImGui::Text("Lifespan");
 			Lifespan lifespan = p->GetComponent<Lifespan>();
 			ImGui::InputFloat("Lifespan", &lifespan.limit);
+			p->UpdateComponent(lifespan);
 			if (ImGui::Button("Remove Lifespan"))
 			{
 				p->RemoveComponent<Lifespan>();
@@ -1048,8 +1052,8 @@ void InspectorPanel::PrefabEditor()
 		if (ImGui::CollapsingHeader("SheetAnimation")) {
 			//ImGui::Text("SheetAnimation");
 			SheetAnimation sheetAnimation = p->GetComponent<SheetAnimation>();
-			ImGui::InputInt("frameCount", (int*)sheetAnimation.frameCount);
-			ImGui::InputInt("currFrameIndex", (int*)sheetAnimation.currFrameIndex);
+			ImGui::InputInt("frameCount", &sheetAnimation.frameCount);
+			ImGui::InputInt("currFrameIndex", &sheetAnimation.currFrameIndex);
 			ImGui::InputFloat("timePerFrame", &sheetAnimation.timePerFrame);
 			ImGui::InputFloat("timeToFrameSwap", &sheetAnimation.timeToFrameSwap);
 			p->UpdateComponent<SheetAnimation>(sheetAnimation);

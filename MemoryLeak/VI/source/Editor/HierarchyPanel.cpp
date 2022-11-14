@@ -33,44 +33,147 @@ None.
 *******************************************************************************/
 void HierarchyPanel::Update()
 {
+
 	if (ImGui::Begin("Hierarchy Manager"))
 	{
-		ImGui::BeginTabBar("Hierarchy ");
-		if (ImGui::BeginTabItem("Scene 1: "))
+		int id = 0;
+		if (ImGui::BeginTabBar("GameState"))
 		{
-			for (int i = 0; i < (int)tag.size(); i++)
+			for (int g = 0; g < allEntities.size(); g++)
 			{
-				
-				if (ImGui::CollapsingHeader(tag[i].c_str()))
+				//ImGui::PushID(id++);
+				if (ImGui::BeginTabItem(allNames[g].first.c_str()))
 				{
-					int id = 0;
-					for (const Entity& e : *myEntities)
+					//ImGui::PopID();
+					selectedGameState = g;
+					ImGui::InputText("GameState Name", &allNames[g].first);
+					std::string saveGSbtn = "Save " + allNames[g].first + " GameState";
+					if (ImGui::Button(saveGSbtn.c_str()))
 					{
-						if (e.GetComponent<General>().tag != (TAG)i)
-							continue;
-						ImGui::PushID(id);
-						listComponents(&e, e.GetComponent<General>().name);
-						ImGui::PopID();
-						id++;
+						serializationManager->SaveGameState(allNames[g], allEntities[g]);
 					}
+					if (ImGui::BeginTabBar("Scenes"))
+					{
+						for (int s = 0; s < allEntities[g].size(); s++)
+						{
+							ImGui::PushID(id++);
+							if (ImGui::BeginTabItem(allNames[g].second[s].c_str()))
+							{
+								//ImGui::PopID();
+								selectedScene = s;
+								ImGui::InputText("Scene Name", &allNames[selectedGameState].second[selectedScene]);
+								std::string saveScenebtn = "Save " + allNames[g].second[s] + " Scene";
+								if (ImGui::Button(saveScenebtn.c_str()))
+								{
+									serializationManager->SaveScene(allNames[g].second[s], allEntities[g][s]);
+								}
+								for (int i = 0; i < (int)tag.size(); i++)
+								{
+
+									if (ImGui::CollapsingHeader(tag[i].c_str()))
+									{
+										//int id = 0;
+										for (const Entity& e : allEntities[g][s])
+										{
+											if (e.GetComponent<General>().tag != (TAG)i)
+												continue;
+											
+											for (int l = -1; l < 255; l++)
+											{
+												if (l == -1)
+												{
+													if (!e.HasComponent<Sprite>())
+													{
+														ImGui::PushID(id++);
+														listComponents(&e, e.GetComponent<General>().name);
+														ImGui::PopID();
+													}
+												}
+												else
+												{
+													if (e.GetComponent<Sprite>().layer != l)
+														continue;
+													std::string name = "(" + std::to_string(l) + ") " + e.GetComponent<General>().name;
+													ImGui::PushID(id++);
+													listComponents(&e, name);
+													ImGui::PopID();
+												}
+											}
+										}
+									}
+								}
+								if (ImGui::BeginPopupContextWindow(0, 1, false))
+								{
+									if (ImGui::MenuItem(" Create Entity"))
+									{
+										newEntity();
+									}
+									ImGui::EndPopup();
+								}
+								ImGui::NewLine();
+								if (ImGui::Button("New Entity"))
+								{
+									newEntity();
+								}
+								ImGui::EndTabItem(); //end scene item
+
+							}
+							
+							ImGui::PopID();
+						}
+						ImGui::EndTabBar(); //for scene
+					}
+					std::string newScenebtn = "New"+ allNames[g].first  +"Scene";
+					if (ImGui::Button(newScenebtn.c_str()))
+					{//FUNCTION GS SCENE
+						static int sn = 1;
+						std::set<Entity> newSecen{};
+						allEntities[g].push_back(newSecen);
+						allNames[g].second.push_back("NewScene" + std::to_string(sn++));
+						selectedScene = (int)allEntities[g].size() - 1;
+					}
+					ImGui::EndTabItem(); //forGS
 				}
+				//else
+					//ImGui::PopID();
 			}
-			ImGui::EndTabItem();
-			if (ImGui::BeginPopupContextWindow(0, 1, false))
-			{
-				if (ImGui::MenuItem(" Create Entity"))
-				{
-					newEntity();
-				}
-				ImGui::EndPopup();
-			}
-			ImGui::NewLine();
-			if (ImGui::Button("New Entity"))
-			{
-				newEntity();
-			}
+			ImGui::EndTabBar();
 		}
-		ImGui::EndTabBar();
+
+		if (ImGui::Button("New GameState"))
+		{//FUNCTION GS SCENE
+			static int gn = 1;
+			std::vector < std::set<Entity>> newGS{};
+			allEntities.push_back(newGS);
+			std::pair< std::string, std::vector<std::string>> newGSNmae{};
+			newGSNmae.first = "NewGameState" + std::to_string(gn++);
+			allNames.push_back(newGSNmae);
+			selectedGameState = (int)allEntities.size() - 1;
+		}
+
+
+
+		////IF Change Scene
+		//if (selectedPrevious != (selectedGameState*10 + selectedScene))
+		//{
+		//	for (const Entity& e : *myEntities)
+		//	{
+		//		e.GetComponent<General>().isActive = false;
+		//	}
+		//	if (selectedGameState < allEntities.size())
+		//	{
+		//		if (selectedScene < allEntities[selectedGameState].size())
+		//		{
+		//			for (const Entity& e : allEntities[selectedGameState][selectedScene])
+		//			{
+		//				e.GetComponent<General>().isActive = true;
+		//			}
+		//		}
+		//	}
+		//	LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
+		//	LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+		//	SceneReset();
+		//}
 	}
 	ImGui::End();
 }
@@ -97,9 +200,9 @@ void HierarchyPanel::newEntity()
 	Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
 	LOG_INFO("Created new entity");
 	Entity e{ ECS::CreateEntity() };
-	(*myEntities).insert(e);
+	(allEntities[selectedGameState][selectedScene]).insert(e);
 	e.AddComponent(
-		General{ "_NEW_" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
+		General{ "_NEW_" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false},
 		Transform{ {150,150}, 0, campos },
 		Sprite{ Color{0,255,0,255}, SPRITE::CIRCLE, 0,highestLayer },
 		RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
@@ -237,5 +340,6 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 		}
 		ImGui::TreePop();
 	}
+	setSelectedEntity(e);
 }
 

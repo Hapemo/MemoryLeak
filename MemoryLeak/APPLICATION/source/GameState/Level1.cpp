@@ -44,5 +44,5 @@ void Level1::Free() {
 }
 
 void Level1::Unload() {
-	ECS::DestroyAllEntities();
+	//ECS::DestroyAllEntities();
 }

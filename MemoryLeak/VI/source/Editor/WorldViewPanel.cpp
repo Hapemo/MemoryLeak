@@ -72,6 +72,11 @@ void WorldViewPanel::Update()
 			NewEntity();
 			ImGui::EndDragDropTarget();
 		}
+		if (ImGui::BeginDragDropTarget())
+		{
+			NewPrefabee();
+			ImGui::EndDragDropTarget();
+		}
 
 		if (ImGui::IsWindowHovered())
 		{
@@ -213,11 +218,32 @@ void WorldViewPanel::NewEntity()
 	static const wchar_t* texpath = (const wchar_t*)"";
 	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
 	{
+		//FUNCTION GS SCENE
+		if (selectedGameState >= allEntities.size())
+		{
+			std::vector < std::set<Entity>> newGS{};
+			allEntities.push_back(newGS);
+			std::pair< std::string, std::vector<std::string>> newGSNmae{};
+			newGSNmae.first = "NewGameState0";
+			allNames.push_back(newGSNmae);
+			selectedGameState = (int)allEntities.size() - 1;
+		}
+		if (selectedScene >= allEntities[selectedGameState].size())
+		{
+			std::set<Entity> newSecen{};
+			allEntities[selectedGameState].push_back(newSecen);
+			allNames[selectedGameState].second.push_back("NewScene0");
+			selectedScene = (int)allEntities[selectedGameState].size() - 1;
+		}
+		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
+		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+
+
 		LOG_INFO("Created new entity");
 		Entity ne{ ECS::CreateEntity() };
-		(*myEntities).insert(ne);
+		(allEntities[selectedGameState][selectedScene]).insert(ne);
 		ne.AddComponent(
-			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
+			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false},
 			Transform{ {150,150}, 0, camMousePos },
 			Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0, highestLayer},
 			RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
@@ -230,6 +256,62 @@ void WorldViewPanel::NewEntity()
 }
 /*!*****************************************************************************
 \brief
+	This Function created a new prefabee
+
+\return
+None.
+*******************************************************************************/
+void WorldViewPanel::NewPrefabee()
+{
+	static const wchar_t* prefabname = (const wchar_t*)"";
+	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("PREFAB"))
+	{
+		//FUNCTION GS SCENE
+		if (selectedGameState >= allEntities.size())
+		{
+			std::vector < std::set<Entity>> newGS{};
+			allEntities.push_back(newGS);
+			std::pair< std::string, std::vector<std::string>> newGSNmae{};
+			newGSNmae.first = "NewGameState0";
+			allNames.push_back(newGSNmae);
+			selectedGameState = (int)allEntities.size() - 1;
+		}
+		if (selectedScene >= allEntities[selectedGameState].size())
+		{
+			std::set<Entity> newSecen{};
+			allEntities[selectedGameState].push_back(newSecen);
+			allNames[selectedGameState].second.push_back("NewScene0");
+			selectedScene = (int)allEntities[selectedGameState].size() - 1;
+		}
+		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
+		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+
+
+		LOG_INFO("Created new prefabee");
+		prefabname = (const wchar_t*)payload->Data;
+		std::string prefab = (std::string)((const char*)prefabname);
+		serializationManager->LoadPrefab(prefab);
+		PrefabManager::PrefabPtr pre = PrefabManager::GetInstance()->GetPrefab(prefab);
+		static int n{ 1 };
+		Entity b = pre->CreatePrefabee();
+		b.GetComponent<General>().name = "newdragdropPrefabee" + std::to_string(n++);
+		b.GetComponent<General>().isActive = true;
+		b.GetComponent<General>().isPaused = false;
+		if (b.HasComponent<Transform>())
+		{
+			/*Transform transform = b.GetComponent<Transform>();
+			transform.translation = camMousePos;*/
+			b.GetComponent<Transform>().translation = camMousePos;
+		}
+		if (b.HasComponent<Sprite>())
+		{
+			b.GetComponent<Sprite>().layer = highestLayer;
+		}
+	}
+	
+}
+/*!*****************************************************************************
+\brief
 	This Function sets the selected entity
 
 \return
@@ -238,7 +320,9 @@ None.
 void WorldViewPanel::SetSelectedEntity()
 {
 	int layer = 0;
-	for (const Entity& ee : *myEntities)
+	if (!(selectedGameState < allEntities.size() && selectedScene < allEntities[selectedGameState].size()))
+		return;
+	for (const Entity& ee : allEntities[selectedGameState][selectedScene])
 	{
 		if (ee.GetComponent<General>().tag == TAG::BACKGROUND)
 			continue;

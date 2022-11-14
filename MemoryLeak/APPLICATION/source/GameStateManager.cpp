@@ -26,56 +26,72 @@ running.
 #include "Level1.h"
 #include "JazzGS.h"
 E_GS GameStateManager::mCurrentState = E_GS::MainMenu;
+//E_GS GameStateManager::mCurrentState = E_GS::EDITOR;
 GameStateManager::GameStateManager() :
 	mPrevGS(), mNextGS(), mCurrGS(), mStartingGS(), mCurrGameState(nullptr)
 {};
 
 void GameStateManager::Update() {
-	if (mCurrGS == E_GS::RESTART) mNextGS = mCurrGS = mPrevGS;
-	else {
-		// Update();
-		SetNewGameState();
-		mCurrGameState->PrimaryLoad();
-	}
 
-	mCurrGameState->Init();
-	////////logicSystem->Init(); // need inilitialze loaded script data else need do in serilization
-	while (mCurrGS == mNextGS) {
+	if (mCurrGS != E_GS::EDITOR)
+	{
+		if (mCurrGS == E_GS::RESTART) mNextGS = mCurrGS = mPrevGS;
+		else {
+			// Update();
+			SetNewGameState();
+			mCurrGameState->PrimaryLoad();
+		}
+
+		mCurrGameState->Init();
+		////////logicSystem->Init(); // need inilitialze loaded script data else need do in serilization
+		while (mCurrGS == mNextGS) {
+			TRACK_PERFORMANCE("MainLoop");
+			Application::FirstUpdate();
+
+			//-------------------------------------
+
+			mCurrGameState->Update();
+			GSControlPanel();
+
+			Application::SystemUpdate();
+
+			TRACK_PERFORMANCE("Graphics");
+			mCurrGameState->Draw();
+			END_TRACK("Graphics");
+
+			Application::SecondUpdate(); // This should always be the last
+			END_TRACK("MainLoop");
+		}
+
+		mCurrGameState->Free();
+		//editorManager->Free();
+
+		if (mNextGS != E_GS::RESTART) {
+			mCurrGameState->PrimaryUnload();
+			glfwSwapBuffers(Application::getWindow());
+		}
+		mPrevGS = mCurrGS;
+		mCurrGS = mNextGS;
+	}
+	else
+	{
 		TRACK_PERFORMANCE("MainLoop");
 		Application::FirstUpdate();
-
-		//-------------------------------------
-		// ImGui update
-		// ImGui is a tool that uses VI Engine to change the game data stored in VI Engine
-
 		TRACK_PERFORMANCE("Editor");
 		editorManager->Update();
 		END_TRACK("Editor");
-		//-------------------------------------
-
-		mCurrGameState->Update();
-		GSControlPanel();
-
-		if(!editorManager->IsScenePaused())
-			Application::SystemUpdate();
 
 		TRACK_PERFORMANCE("Graphics");
-		mCurrGameState->Draw();
+		renderManager->Render();
 		END_TRACK("Graphics");
-
-		Application::SecondUpdate(); // This should always be the last
+		if (!editorManager->IsScenePaused())
+			Application::SystemUpdate();
+		GSControlPanel();
+		Application::SecondUpdate();
 		END_TRACK("MainLoop");
+		mPrevGS = mCurrGS;
+		mCurrGS = mNextGS;
 	}
-
-	mCurrGameState->Free();
-	editorManager->Free();
-
-	if (mNextGS != E_GS::RESTART) {
-		mCurrGameState->PrimaryUnload();
-		glfwSwapBuffers(Application::getWindow());
-	}
-	mPrevGS = mCurrGS;
-	mCurrGS = mNextGS;
 }
 
 void GameStateManager::Init() {
@@ -147,18 +163,21 @@ void GameStateManager::Exit() {
 }
 
 void GameStateManager::GSControlPanel() {
-	static bool renderToScreen{ false };
+	static bool renderToScreen{ true };
 	if (Input::CheckKey(PRESS, E) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)) {
 		renderToScreen = !renderToScreen;
 		if (renderToScreen)
 		{
 			renderManager->RenderToScreen();
 			editorManager->SetScenePaused(false);
+			GameStateManager::GetInstance()->NextGS(E_GS::MainMenu);
+
 		}
 		else
 		{
 			renderManager->RenderToFrameBuffer();
 			editorManager->SetScenePaused(true);
+			GameStateManager::GetInstance()->NextGS(E_GS::EDITOR);
 		}
 	}
 	if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);

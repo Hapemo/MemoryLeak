@@ -30,10 +30,26 @@ None.
 *******************************************************************************/
 void MenuPanel::Update()
 {
+	static char filenameS_GameState[30] = "";
+	static char filenameO_GameState[30] = "";
 	static char filenameS_Scene[30] = "";
 	static char filenameO_Scene[30] = "";
 	static char filenameS_Dialog[30] = "";
 	static char filenameO_Dialog[30] = "";
+	static float Disco = 0;
+	static float DiscoRate = 0.04f;
+	if (Disco != 0)
+	{
+		Disco += DiscoRate;
+		if ((int)Disco % 3 == 0)
+			ImGui::StyleColorsDark();
+		if ((int)Disco % 3 == 1)
+			ImGui::StyleColorsClassic();
+		if ((int)Disco % 3 == 2)
+			ImGui::StyleColorsLight();
+		if (Disco > 100.f)
+			Disco = 1.f;
+	}
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::Z))//relocate
@@ -44,22 +60,74 @@ void MenuPanel::Update()
 		{
 			Redo();
 		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT) && Input::CheckKey(E_STATE::PRESS, E_KEY::Z))//relocate
+		{
+			Redo();
+		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::C))//relocate
+		{
+			Copy();
+		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::V))//relocate
+		{
+			Paste();
+		}
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && Input::CheckKey(E_STATE::PRESS, E_KEY::X))//relocate
+		{
+			Cut();
+		}
 		if (ImGui::BeginMenu("File"))
 		{
+			int id = 0;
 			ImGui::MenuItem("(menu)", NULL, false, false);
+
+			//gamestate
+			ImGui::MenuItem("Open GameState File", NULL, false, false);
+			ImGui::PushID(id++);
+			ImGui::InputText(".json", filenameO_GameState, 30);
+			ImGui::PopID();
+			if (ImGui::MenuItem("Open GameState", "Ctrl+O"))
+			{
+				std::pair<  std::string, std::vector<std::string>> gs{};
+				std::string GSname = filenameO_GameState;
+				allEntities.push_back(serializationManager->LoadGameState(GSname, gs.second));
+				gs.first = GSname;
+				allNames.push_back(gs);
+			}
+			ImGui::Separator();
+			ImGui::MenuItem("Open GameState File", NULL, false, false);
+			ImGui::PushID(id++);
+			ImGui::InputText(".json", filenameS_GameState, 30);
+			ImGui::PopID();
+			if (ImGui::MenuItem("Save GameState As", "Ctrl+S"))
+			{
+				allNames[selectedGameState].first = filenameS_GameState;
+				serializationManager->SaveGameState(allNames[selectedGameState], allEntities[selectedGameState]);
+			}
+
+
+			//scene
 			ImGui::MenuItem("Open Scene File", NULL, false, false);
-			ImGui::InputText(".json (os)", filenameO_Scene, 30);
+			ImGui::PushID(id++);
+			ImGui::InputText(".json", filenameO_Scene, 30);
+			ImGui::PopID();
 			if (ImGui::MenuItem("Open Scene", "Ctrl+O"))
 			{
-				serializationManager->LoadScene(filenameO_Scene);
+				//serializationManager->LoadScene(filenameO_Scene);
+				allEntities[selectedGameState].push_back(serializationManager->LoadScene(filenameO_Scene));
+				allNames[selectedGameState].second.push_back(filenameO_Scene);
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Scene File", NULL, false, false);
-			ImGui::InputText(".json (ss)", filenameS_Scene, 30);
+			ImGui::PushID(id++);
+			ImGui::InputText(".json", filenameS_Scene, 30);
+			ImGui::PopID();
 			if (ImGui::MenuItem("Save Scene As", "Ctrl+S"))
 			{
-				serializationManager->SaveScene(filenameS_Scene);
+				serializationManager->SaveScene(filenameS_Scene, allEntities[selectedGameState][selectedScene]);
 			}
+
+
 			ImGui::Separator();
 			if (ImGui::MenuItem("Clear Scene"))
 			{
@@ -67,8 +135,12 @@ void MenuPanel::Update()
 				SceneReset();
 			}
 			ImGui::Separator();
+
+			//dialogue
 			ImGui::MenuItem("Open Dialogue File", NULL, false, false);
-			ImGui::InputText(".json (od)", filenameO_Dialog, 20);
+			ImGui::PushID(id++);
+			ImGui::InputText(".json", filenameO_Dialog, 20);
+			ImGui::PopID();
 			if (ImGui::MenuItem("Open Dialog", "Ctrl+D"))
 			{
 				serializationManager->LoadDialogs(filenameO_Dialog);
@@ -76,7 +148,9 @@ void MenuPanel::Update()
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Save Dialogue File As", NULL, false, false);
-			ImGui::InputText(".json (sd)", filenameS_Dialog, 20);
+			ImGui::PushID(id++);
+			ImGui::InputText(".json", filenameS_Dialog, 20);
+			ImGui::PopID();
 			if (ImGui::MenuItem("Save Dialog As", "Ctrl+F"))
 			{
 				serializationManager->SaveDialogs(filenameS_Dialog);
@@ -90,9 +164,18 @@ void MenuPanel::Update()
 		}
 		if (ImGui::BeginMenu("Edit"))
 		{
-			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
-			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+			if (ImGui::MenuItem("Cut", "CTRL+X")) 
+			{
+				Cut();
+			}
+			if (ImGui::MenuItem("Copy", "CTRL+C")) 
+			{
+				Copy();
+			}
+			if (ImGui::MenuItem("Paste", "CTRL+V")) 
+			{
+				Paste();
+			}
 			ImGui::Separator();
 			if (ImGui::MenuItem("Undo", "CTRL+Z"))
 			{
@@ -109,12 +192,31 @@ void MenuPanel::Update()
 		{
 			if (ImGui::BeginMenu("Change Theme"))
 			{
-				if(ImGui::MenuItem("Dark"))
+				
+				if (ImGui::MenuItem("Dark"))
+				{
+					Disco = 0;
 					ImGui::StyleColorsDark();
+				}
 				if (ImGui::MenuItem("Light"))
+				{
+					Disco = 0;
 					ImGui::StyleColorsLight();
+				}
 				if (ImGui::MenuItem("Classic"))
+				{
+					Disco = 0;
 					ImGui::StyleColorsClassic();
+				}
+				if (ImGui::MenuItem("Disco"))
+				{
+					Disco = 1;
+				}
+				if (Disco != 0 && ImGui::BeginMenu("Disco Rate"))
+				{
+					ImGui::DragFloat("Rate", &DiscoRate, 0.005f, 0.01f, 0.7f);
+					ImGui::EndMenu();
+				}
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Change Song Lol :)"))

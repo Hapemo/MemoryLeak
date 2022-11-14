@@ -21,7 +21,7 @@ None.
 *******************************************************************************/
 void WeatherPanel::Init()
 {
-	std::srand(std::time(nullptr));
+	std::srand((unsigned int)std::time(nullptr));
 	aiManager->weatherAIinit();
 	viewportSize = { 0,0 };
 	isViewportPaused = true;

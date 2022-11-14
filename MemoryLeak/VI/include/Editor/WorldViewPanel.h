@@ -27,6 +27,7 @@ private:
 	void MouseClickMoveCam();
 	void ScrollMoveCam();
 	void NewEntity();
+	void NewPrefabee();
 	void SetSelectedEntity();
 	void MoveSelectedEntity();
 	void UseGuizmo();

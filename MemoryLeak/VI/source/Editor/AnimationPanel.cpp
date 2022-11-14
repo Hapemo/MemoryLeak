@@ -117,6 +117,8 @@ void AnimationPanel::Update()
 					{
 						if (ImGui::IsWindowFocused())
 							sheetAnimator->Animate();
+						else
+							isViewportPaused = true;
 					}
 				}
 				else
