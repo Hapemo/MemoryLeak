@@ -16,7 +16,8 @@
 // -----------------------------
 #include "ECSManager.h"
 
-Contact::Contact(const Entity & _obj1, const Entity & _obj2, const int& _obj1Type, const int& _obj2Type) {
+
+Contact::Contact(const Entity& _obj1, const Entity& _obj2, const int& _obj1Type, const int& _obj2Type) {
 	// Leave Empty
 	obj[0] = _obj1;
 	obj[1] = _obj2;
@@ -57,7 +58,7 @@ float Contact::DetermineSeperatingVelocity() {
 }
 
 
-bool Collision2DManager::CI_RectvsRect(Contact & _contact, const double& _dt) {
+bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	// Get reference to the entities
 	Entity& obj1{ _contact.obj[0] },
 		& obj2{ _contact.obj[1] };
@@ -196,7 +197,7 @@ bool Collision2DManager::CI_RectvsRect(Contact & _contact, const double& _dt) {
 	return true;
 }
 
-bool Collision2DManager::CI_CirclevsCircle(Contact & _contact, const double& _dt) {
+bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt) {
 	// Get reference to the entities
 	Entity& obj1{ _contact.obj[0] },
 		& obj2{ _contact.obj[1] };
@@ -210,140 +211,140 @@ bool Collision2DManager::CI_CirclevsCircle(Contact & _contact, const double& _dt
 		obj2Pos{ obj2.GetComponent<Transform>().translation + obj2.GetComponent<CircleCollider>().centerOffset };
 
 	float sqDist{ Math::SqDistance(obj2Pos, obj1Pos) };
-	if (sqDist >= (obj1R * obj1R + obj2R + obj2R))
+
+	//if (sqDist >= (obj1R + obj2R) * (obj1R + obj2R))
+	//	return false;
+
+	//if (sqDist == 0.f) {
+	//	_contact.penetration = obj1R;
+	//	_contact.normal = Math::Vec2{ 1.f, 0.f };
+	//	_contact.contacts = obj1Pos;
+	//}
+	//else {
+	//	_contact.penetration = (obj1R + obj2R) - sqrt(sqDist);
+	//	_contact.normal = (obj2Pos - obj1Pos).Normalized();
+	//	_contact.contacts = _contact.normal * obj1R + obj1Pos;
+	//}
+
+// Static
+	// Check if the distance between the circles' centers is smaller than their radius
+	if (sqDist < ((obj1R + obj2R) * (obj1R + obj2R))) {
+		// On top of each other
+		if (sqDist == 0.f) {
+			// Set contact information
+			_contact.penetration = obj1R;
+			_contact.normal = Math::Vec2{ 1.f, 0.f };
+			_contact.contacts = obj1Pos;
+		}
+		else {
+			// Set contact information
+			_contact.penetration = (obj1R + obj2R) - sqrt(sqDist);
+			_contact.normal = (obj2Pos - obj1Pos).Normalize();
+			_contact.contacts = _contact.normal * obj1R + obj1Pos;
+		}
+
+		return true;
+	}
+
+	// Find the relative velocity of both entities
+	Math::Vec2 relVel{};
+	if (obj1.HasComponent<Physics2D>() && obj2.HasComponent<Physics2D>())
+		relVel = obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (_contact.obj[0].HasComponent<Physics2D>())
+		relVel = obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (_contact.obj[1].HasComponent<Physics2D>())
+		relVel = obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+
+	// Check if relVel is 0 (Will not collide)
+	if (relVel == Math::Vec2{ 0.f, 0.f })
 		return false;
 
-	if (sqDist == 0.f) {
-		_contact.penetration = obj1R;
-		_contact.normal = Math::Vec2{ 1.f, 0.f };
-		_contact.contacts = obj1Pos;
-	}
-	else {
-		_contact.penetration = (obj1R + obj2R) - sqrt(sqDist);
-		_contact.normal = (obj2Pos - obj1Pos).Normalized();
-		_contact.contacts = _contact.normal * obj1R + obj1Pos;
-	}
+	// Dynamic 
+		// Reduce problem by checking a static circle (pillar) and a moving point (ray/line)
+			// Create a third circle that inherits the following:
+			//	second object's collider's translation (Transform + centreOffset)
+			//  radius is the sum of the radius of the 2 circles
+			//  scaleOffset is 1
+	Transform tDataTmpCircle{ obj2.GetComponent<Transform>() };
+	tDataTmpCircle.translation += obj2.GetComponent<CircleCollider>().centerOffset;
+	tDataTmpCircle.scale = obj1.GetComponent<Transform>().scale * obj1.GetComponent<CircleCollider>().scaleOffset +
+		obj2.GetComponent<Transform>().scale * obj2.GetComponent<CircleCollider>().scaleOffset;
+	double  tmpCircleRadius{ static_cast<double>(tDataTmpCircle.scale.x) / 2.0 };
 
-	// Static
-	//	// Check if the distance between the circles' centers is smaller than their radius
-	//	float sqDist{ Math::SqDistance(obj1Pos, obj2Pos)};
-	//	if ( sqDist < (obj1R * obj1R + obj2R * obj2R)) {
-	//		// On top of each other
-	//		if (sqDist == 0.f) {
-	//			// Set contact information
-	//			_contact.penetration = obj1R;
-	//			_contact.normal = Math::Vec2{ 1.f, 0.f };
-	//			_contact.contacts = obj1Pos;
-	//		}
-	//		else {
-	//			// Set contact information
-	//			_contact.penetration = (obj1R + obj2R) - sqrt(sqDist);
-	//			_contact.normal = (obj2Pos - obj1Pos).Normalize();
-	//			_contact.contacts  = _contact.normal * obj1R + obj1Pos;
-	//		}
-	//
-	//		return true;
-	//	}
-	//
-	//	// Find the relative velocity of both entities
-	//	Math::Vec2 relVel{};
-	//	if (obj1.HasComponent<Physics2D>() && obj2.HasComponent<Physics2D>())
-	//		relVel = obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	//	else if (_contact.obj[0].HasComponent<Physics2D>())
-	//		relVel = obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	//	else if (_contact.obj[1].HasComponent<Physics2D>())
-	//		relVel = obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	//
-	//	// Check if relVel is 0 (Will not collide)
-	//	if (relVel == Math::Vec2{ 0.f, 0.f })
-	//		return false;
-	//
-	//// Dynamic 
-	//	// Reduce problem by checking a static circle (pillar) and a moving point (ray/line)
-	//		// Create a third circle that inherits the following:
-	//		//	second object's collider's translation (Transform + centreOffset)
-	//		//  radius is the sum of the radius of the 2 circles
-	//		//  scaleOffset is 1
-	//	Transform tDataTmpCircle{ obj2.GetComponent<Transform>() };
-	//	tDataTmpCircle.translation += obj2.GetComponent<CircleCollider>().centerOffset;
-	//	tDataTmpCircle.scale = obj1.GetComponent<Transform>().scale * obj1.GetComponent<CircleCollider>().scaleOffset +
-	//						   obj2.GetComponent<Transform>().scale * obj2.GetComponent<CircleCollider>().scaleOffset;
-	//	double  tmpCircleRadius{ static_cast<double>(tDataTmpCircle.scale.x) / 2.0 };
-	//
-	//	// Create a ray that starts from first object's position and goes in the direction of the relative velocity
-	//	Transform tDataTmpRay{ obj1.GetComponent<Transform>() };
-	//	tDataTmpRay.translation += obj1.GetComponent<CircleCollider>().centerOffset;
-	//	// Compute rotation from relative velocity
-	//	if (relVel.y != 0.f && relVel.x >= 0.f)
-	//		tDataTmpRay.rotation = atan2f(relVel.x, relVel.y);
-	//	else if (relVel.y == 0.f && relVel.x > 0)
-	//		tDataTmpRay.rotation = static_cast<float>(Math::PI / 2.0);
-	//	else if (relVel.y != 0 && relVel.x < 0.f)
-	//		tDataTmpRay.rotation = static_cast<float>(Math::PI / 2.0 + atan2(relVel.x, relVel.y));
-	//	else
-	//		tDataTmpRay.rotation = static_cast<float>(3.0 * Math::PI / 2.0);
-	//	tDataTmpRay.scale.x = relVel.Magnitude();
-	//
-	//// Check if collision will occur 
-	//	// Calculate m and check if ray is moving away from circle
-	//	double m{ static_cast<double>(Math::Dot(tDataTmpCircle.translation - tDataTmpRay.translation, relVel.Normalized())) };
-	//	if (
-	//		(m < 0.0) &&
-	//		(static_cast<double>((tDataTmpCircle.translation - tDataTmpRay.translation).SqMagnitude())
-	//		> tmpCircleRadius * tmpCircleRadius)
-	//		)
-	//		return false;	// Ray will never hit the circle
-	//
-	//	// Calculate and check if the closest distance to the circle is larger than the circle's radius
-	//	double n2{ static_cast<double>((tDataTmpCircle.translation - tDataTmpRay.translation).SqMagnitude()) - (m * m) };
-	//	if (n2 > tmpCircleRadius * tmpCircleRadius)
-	//		return false;	// Ray  will never hit the circle
-	//
-	//	// Find intersection time and take minimum value
-	//	double s{ sqrt(tmpCircleRadius * tmpCircleRadius - n2) };
-	//	double tmpInterTime1{ (m - s) / relVel.Magnitude() },
-	//		   tmpInterTime2{ (m + s) / relVel.Magnitude() };
-	//	double interTime = (tmpInterTime1 < tmpInterTime2) ? tmpInterTime1 : tmpInterTime2;
-	//
-	//	// Check if the intersection time is within 1 unit
-	//	if (0.0 <= interTime && interTime <= 1.0) {
-	//		// Set intersection time
-	//		_contact.interTime = interTime;
-	//
-	//		// Compute position at intersection time
-	//		Math::Vec2 obj1NewPos{ obj1Pos }, 
-	//				   obj2NewPos{ obj2Pos };
-	//		if (obj1.HasComponent<Physics2D>())
-	//			obj1NewPos += obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	//		if (obj2.HasComponent<Physics2D>())
-	//			obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	//
-	//		// Set contact information
-	//		_contact.penetration = sqrt(Math::SqDistance(obj1NewPos, obj2NewPos)) - (obj1R + obj2R);
-	//		_contact.normal = (obj2NewPos - obj1NewPos).Normalize();
-	//		_contact.contacts = _contact.normal * obj1R + obj1NewPos;
-	//
-	//		return true;
-	//	}
-	//	else
-	//		return false;
+	// Create a ray that starts from first object's position and goes in the direction of the relative velocity
+	Transform tDataTmpRay{ obj1.GetComponent<Transform>() };
+	tDataTmpRay.translation += obj1.GetComponent<CircleCollider>().centerOffset;
+	// Compute rotation from relative velocity
+	if (relVel.y != 0.f && relVel.x >= 0.f)
+		tDataTmpRay.rotation = atan2f(relVel.x, relVel.y);
+	else if (relVel.y == 0.f && relVel.x > 0)
+		tDataTmpRay.rotation = static_cast<float>(Math::PI / 2.0);
+	else if (relVel.y != 0 && relVel.x < 0.f)
+		tDataTmpRay.rotation = static_cast<float>(Math::PI / 2.0 + atan2(relVel.x, relVel.y));
+	else
+		tDataTmpRay.rotation = static_cast<float>(3.0 * Math::PI / 2.0);
+	tDataTmpRay.scale.x = relVel.Magnitude();
+
+	// Check if collision will occur 
+		// Calculate m and check if ray is moving away from circle
+	double m{ static_cast<double>(Math::Dot(tDataTmpCircle.translation - tDataTmpRay.translation, relVel.Normalized())) };
+	if (
+		(m < 0.0) &&
+		(static_cast<double>((tDataTmpCircle.translation - tDataTmpRay.translation).SqMagnitude())
+		> tmpCircleRadius * tmpCircleRadius)
+		)
+		return false;	// Ray will never hit the circle
+
+	// Calculate and check if the closest distance to the circle is larger than the circle's radius
+	double n2{ static_cast<double>((tDataTmpCircle.translation - tDataTmpRay.translation).SqMagnitude()) - (m * m) };
+	if (n2 > tmpCircleRadius * tmpCircleRadius)
+		return false;	// Ray  will never hit the circle
+
+	// Find intersection time and take minimum value
+	double s{ sqrt(tmpCircleRadius * tmpCircleRadius - n2) };
+	double tmpInterTime1{ (m - s) / relVel.Magnitude() },
+		tmpInterTime2{ (m + s) / relVel.Magnitude() };
+	double interTime = (tmpInterTime1 < tmpInterTime2) ? tmpInterTime1 : tmpInterTime2;
+
+	// Check if the intersection time is within 1 unit
+	if (0.0 <= interTime && interTime <= 1.0) {
+		// Set intersection time
+		_contact.interTime = interTime;
+
+		// Compute new positions 
+		Math::Vec2 obj1NewPos{ obj1Pos },
+			obj2NewPos{ obj2Pos };
+		if (obj1.HasComponent<Physics2D>())
+			obj1NewPos += obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+		if (obj2.HasComponent<Physics2D>())
+			obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+
+		// Set contact information
+		_contact.penetration = (obj1R + obj2R) - sqrt(Math::SqDistance(obj1NewPos, obj2NewPos));
+		_contact.normal = (obj2NewPos - obj1NewPos).Normalize();
+		_contact.contacts = _contact.normal * obj1R + obj1NewPos;
+
+		return true;
+	}
+	else
+		return false;
 }
 
-bool Collision2DManager::CI_CirclevsRect(Contact & _contact, const double& _dt) {
+bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
 	_contact;
 	_dt;
 
 	return false;
 }
 
-bool Collision2DManager::CI_RectvsCircle(Contact & _contact, const double& _dt) {
+bool Collision2DManager::CI_RectvsCircle(Contact& _contact, const double& _dt) {
 	_contact;
 	_dt;
 
 	return false;
 }
 
-bool Collision2DManager::HasCollider(const Entity & _e) {
+bool Collision2DManager::HasCollider(const Entity& _e) {
 	return (_e.HasComponent<RectCollider>() || _e.HasComponent<CircleCollider>() /*|| _e.HasComponent<RectCollider>() || _e.HasComponent<RectCollider>()*/)
 		? true : false;
 }
@@ -366,7 +367,7 @@ void Collision2DManager::SetupCollisionDatabase() {
 	RegisterCollisionTest(ColliderType::RECT, ColliderType::CIRCLE, CI_RectvsCircle);
 }
 
-void Collision2DManager::RegisterCollisionTest(const ColliderType & typeA, const ColliderType & typeB, CollisionCallback function) {
+void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const ColliderType& typeB, CollisionCallback function) {
 	mCollisionDatabase[static_cast<int>(typeA)][static_cast<int>(typeB)] = function;
 }
 
@@ -470,7 +471,7 @@ void Collision2DManager::ClearContactList() {
 	mContactList.clear();
 }
 
-void Collision2DManager::ResolveContact(Contact & _contact, const double& _dt) {
+void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 	// Store bool value of whether entity has physics component
 	bool obj1HasP{ _contact.obj[0].HasComponent<Physics2D>() },
 		obj2HasP{ _contact.obj[0].HasComponent<Physics2D>() };
@@ -545,33 +546,43 @@ void Collision2DManager::ResolveContact(Contact & _contact, const double& _dt) {
 		physics2DManager->ApplyImpulse(_contact.obj[1], impulse, { 0.f, 0.f });
 
 	// Compute new acceleration/force
-	/*if (obj1HasP) {
-		Math::Vec2 newAccel{ -impulse / static_cast<float>(_dt) };
-		physics2DManager->SetAcceleration(_contact.obj[0], newAccel);
+	Math::Vec2 newForce{};
+	if (obj1HasP) {
+		//Math::Vec2 newAccel{ -impulse / static_cast<float>(_dt) };
+		//physics2DManager->SetAcceleration(_contact.obj[0], newAccel);
 		if (!_contact.obj[0].GetComponent<Physics2D>().forceList.empty()) {
 			Force& moveForce{ _contact.obj[0].GetComponent<Physics2D>().forceList[0] };
 			if (moveForce.forceID == 0) {
-				Math::Vec2 newForce{ newAccel * (physics2DManager->GetMass(_contact.obj[0]) == 0.f ? 0.f : physics2DManager->GetMass(_contact.obj[0])) };
+				//Math::Vec2 newForce{ newAccel * (physics2DManager->GetMass(_contact.obj[0]) == 0.f ? 0.f : physics2DManager->GetMass(_contact.obj[0])) };
+				if (physics2DManager->GetMass(_contact.obj[0]) == 0.f)
+					newForce = -impulse;
+				else
+					newForce = -impulse / physics2DManager->GetMass(_contact.obj[0]);
 				moveForce.linearForce.unitDirection = newForce.Normalized();
 				moveForce.linearForce.magnitude = newForce.Magnitude();
 			}
 		}
 	}
+
 	if (obj2HasP) {
-		Math::Vec2 newAccel{ impulse / static_cast<float>(_dt) };
-		physics2DManager->SetAcceleration(_contact.obj[1], newAccel);
+		//Math::Vec2 newAccel{ impulse / static_cast<float>(_dt) };
+		//physics2DManager->SetAcceleration(_contact.obj[1], newAccel);
 		if (!_contact.obj[1].GetComponent<Physics2D>().forceList.empty()) {
 			Force& moveForce{ _contact.obj[1].GetComponent<Physics2D>().forceList[0] };
 			if (moveForce.forceID == 0) {
-				Math::Vec2 newForce{ newAccel * (physics2DManager->GetMass(_contact.obj[1]) == 0.f ? 0.f : physics2DManager->GetMass(_contact.obj[1])) };
+				//Math::Vec2 newForce{ newAccel * (physics2DManager->GetMass(_contact.obj[1]) == 0.f ? 0.f : physics2DManager->GetMass(_contact.obj[1])) };
+				if (physics2DManager->GetMass(_contact.obj[1]) == 0.f)
+					newForce = impulse;
+				else
+					newForce = impulse / physics2DManager->GetMass(_contact.obj[1]);
 				moveForce.linearForce.unitDirection = newForce.Normalized();
 				moveForce.linearForce.magnitude = newForce.Magnitude();
 			}
 		}
-	}*/
+	}
 }
 
-void Collision2DManager::PositionCorrection(Contact & _contact) {
+void Collision2DManager::PositionCorrection(Contact& _contact) {
 	// Compute total inverse mass
 	float invMassSum{ 0.f };
 	if (_contact.obj[0].HasComponent<Physics2D>())

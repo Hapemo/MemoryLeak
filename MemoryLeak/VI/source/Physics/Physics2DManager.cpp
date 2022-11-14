@@ -99,7 +99,7 @@ void Physics2DManager::Step() {
 			SetAngularVelocity(e, Physics2DManager::angularVelocityCap);
 
 		// Move entity by velocity
-		if (abs(GetVelocity(e).x) > 0.01f && abs(GetVelocity(e).y) > 0.01f)
+		if (abs(GetVelocity(e).x) >= 0.001f || abs(GetVelocity(e).y) >= 0.001f)
 			e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(fixedDT);
 
 		e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * fixedDT);
