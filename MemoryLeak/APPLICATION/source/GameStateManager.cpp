@@ -25,7 +25,7 @@ running.
 #include "MainMenu.h"
 #include "Level1.h"
 #include "JazzGS.h"
-E_GS GameStateManager::mCurrentState = E_GS::MainMenu;
+E_GS GameStateManager::mCurrentState = E_GS::PHYSICS;
 //E_GS GameStateManager::mCurrentState = E_GS::EDITOR;
 GameStateManager::GameStateManager() :
 	mPrevGS(), mNextGS(), mCurrGS(), mStartingGS(), mCurrGameState(nullptr)
