@@ -171,7 +171,6 @@ void EditorManager::Update()
 	//if (renderManager->GetRenderGameToScreen())
 		renderManager->RenderToFrameBuffer();
 	Window();
-	GetEditorWorldMousePos();
 
 
 	if (selectedGameState < allEntities.size())

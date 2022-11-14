@@ -4,7 +4,7 @@
             "name": "firstEntity",
             "tag": 8,
             "subtag": 5,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -29,7 +29,7 @@
             "layer": 10
         },
         "Script": {
-            "name": "\u0000estScript\u0000"
+            "name": ""
         }
     },
     {
@@ -37,7 +37,7 @@
             "name": "secondEntity",
             "tag": 8,
             "subtag": 5,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -62,7 +62,7 @@
             "layer": 10
         },
         "Script": {
-            "name": "\u0000estScript\u0000\u0000"
+            "name": ""
         }
     },
     {
@@ -70,7 +70,7 @@
             "name": "_NEW_DragDrop1",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -106,7 +106,7 @@
             "renderFlag": true
         },
         "Script": {
-            "name": "\u0000estScript"
+            "name": ""
         }
     }
 ]
