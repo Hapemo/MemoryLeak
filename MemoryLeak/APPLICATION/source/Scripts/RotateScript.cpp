@@ -13,9 +13,7 @@ engine.
 
 #include "RotateScript.h"
 
-//bool success = ScriptManager<ScriptComponent>::GetInstance()->RegisterScript<RotateScript>("RotateScript");
-//ScriptFactory<ScriptComponent, RotateScript> s_RotateScript;
-//ScriptFactory<ScriptComponent, RotateScript> s_RotateScriptCreator("RotateScript");
+ScriptRegisterer<ScriptComponent, RotateScript> s_RotateScriptCreator("RotateScript");
 
 /*!*****************************************************************************
 \brief

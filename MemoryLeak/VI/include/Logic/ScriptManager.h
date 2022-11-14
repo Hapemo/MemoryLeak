@@ -47,7 +47,7 @@ public:
     template<class Script>
     bool RegisterScript(const std::string _name) {
         Base* script = new Script;
-        mScripts[_name] = script;
+        mScripts.emplace(_name, script);
         LOG_INFO("Registering script: " + _name);
         return true;
     }
@@ -70,13 +70,11 @@ template<class Base>
 std::shared_ptr<ScriptManager<Base>> ScriptManager<Base>::mInstance;
 
 template<class Base, class Script>
-class ScriptFactory {
-private:
-    //bool success = ScriptManager<Base>::GetInstance()->RegisterScript<Script>("RotateScript");
+class ScriptRegisterer {
 public:
-    ScriptFactory() = default;
-    ~ScriptFactory() = default;
-    ScriptFactory(const std::string _name) {
+    ScriptRegisterer() = default;
+    ~ScriptRegisterer() = default;
+    ScriptRegisterer(const std::string _name) {
         ScriptManager<Base>::GetInstance()->RegisterScript<Script>(_name);
     }
 };

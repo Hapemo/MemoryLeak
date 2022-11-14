@@ -19,17 +19,7 @@ The LogicSystem class handles the C# scripting for the engine.
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
-	//ScriptFactory<ScriptComponent, RotateScript> s_RotateScriptCreator();
-	//ScriptFactory<ScriptComponent, RotateScript> s_RotateScriptCreator("RotateScript");
-	//ScriptManager<ScriptComponent>::GetInstance()->RegisterScript<RotateScript>("RotateScript");
-	//ScriptManager<ScriptComponent>::GetInstance()->PrintRegisteredScripts();
-	/*
-	for (Entity const& e : mEntities) {
-		e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
-		LOG_WARN(e.GetComponent<Script>().name.c_str());
-		LOG_WARN("--");
-	}
-	*/
+	//ScriptRegisterer<ScriptComponent, RotateScript> s_RotateScriptCreator("RotateScript");
 
 	LOG_DEBUG("LOGICSYSYEM INIT.");
 	for (Entity const& e : mEntities) {
@@ -37,7 +27,6 @@ void LogicSystem::Init() {
 			if (e.GetComponent<Script>().name != "")
 				if(ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
-				//e.GetComponent<Script>().script->StartScript(e);
 			else
 				LOG_ERROR("start: Script failed to attach!!!");
 		}
@@ -55,7 +44,6 @@ void LogicSystem::Update() {
 			if (e.GetComponent<Script>().name != "")
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->UpdateScript(e);
-				//e.GetComponent<Script>().script->UpdateScript(e);
 			else
 				LOG_ERROR("Update: Script failed to attach!!!");
 		}
@@ -73,7 +61,6 @@ void LogicSystem::Exit() {
 			if (e.GetComponent<Script>().name != "")
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->EndScript(e);
-					//e.GetComponent<Script>().script->EndScript(e);
 				//delete e.GetComponent<Script>().script;
 			else
 				LOG_ERROR("End: Script failed to attach!!!");
