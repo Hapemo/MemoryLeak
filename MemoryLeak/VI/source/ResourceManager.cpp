@@ -297,7 +297,7 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 		}
 		mAllResources.insert({ guid, dataPointer });
 		mAllFilePaths.insert({ guid, entry.string() });
-		std::cout << "GUID: " << guid << " | File: " << entry.string() << '\n';
+		//std::cout << "GUID: " << guid << " | File: " << entry.string() << '\n';
 	}
 }
 
