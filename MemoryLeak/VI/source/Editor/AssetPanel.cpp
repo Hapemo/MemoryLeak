@@ -157,7 +157,7 @@ void AssetPanel::Update()
 					else if (texParent.find("\\GameStates") != std::string::npos)
 					{
 						ImGui::ImageButton(gamestateIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
-						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left) && texFilename[0] !='G') //REMOVEME
+						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left) && texFilename != "GameStateJazz") //REMOVEME
 						{//FUNCTION GS SCENE
 							std::pair<  std::string, std::vector<std::string>> gs{};
 							allEntities.push_back(serializationManager->LoadGameState(texFilename, gs.second));

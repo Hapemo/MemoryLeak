@@ -4,7 +4,7 @@
             "name": "firstEntity",
             "tag": 8,
             "subtag": 5,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -37,7 +37,7 @@
             "name": "secondEntity",
             "tag": 8,
             "subtag": 5,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -70,7 +70,7 @@
             "name": "_NEW_DragDrop1",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {

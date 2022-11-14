@@ -156,6 +156,7 @@ None.
 *******************************************************************************/
 void EditorManager::Window()
 {
+	glClearColor(0.f, 0.f, 0.1f, 1.f);
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
@@ -201,7 +202,7 @@ void EditorManager::Update()
 	{
 		for (const Entity& e : *myEntities)
 		{
-			e.GetComponent<General>().isActive = false;
+			e.GetComponent<General>().isActive = true;
 			e.GetComponent<General>().isPaused = true;
 		}
 		if (selectedGameState < allEntities.size())
@@ -222,7 +223,6 @@ void EditorManager::Update()
 
 
 
-	//glClearColor(0.f,0.f,0.f,1.f);
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)

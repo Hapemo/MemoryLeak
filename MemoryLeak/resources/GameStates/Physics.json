@@ -1,5 +1,53 @@
 [
-    "PhysicsDemo",
-    "Phy2",
-    "LayerCollider"
+    {
+        "SceneName": "PhysicsDemo",
+        "Transform": {
+            "scale": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": true,
+        "layer": 11,
+        "order": 11
+    },
+    {
+        "SceneName": "Phy2",
+        "Transform": {
+            "scale": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": true,
+        "layer": 12,
+        "order": 12
+    },
+    {
+        "SceneName": "LayerCollider",
+        "Transform": {
+            "scale": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": true,
+        "layer": 13,
+        "order": 13
+    }
 ]

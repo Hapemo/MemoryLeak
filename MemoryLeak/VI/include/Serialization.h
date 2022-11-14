@@ -22,14 +22,21 @@ Entities and its Components.
 #include "stringbuffer.h"
 #include <prettywriter.h>
 
+
 // Data that a scene class should contain
 struct SceneData {
+	std::string Name;
+	Transform camera;
 	bool isActive;
-	std::set<Entity> mEntities;
+	int layer;
+	int order;
+	std::set<Entity> mEntities;  //??
 };
 
 //Data that a gamestate class should contain
 struct GameStateData {
+	std::string Name;
+	std::vector<SceneData> scenes;
 	std::vector<ResourceManager::GUID> mGUIDs;
 };
 
@@ -132,5 +139,6 @@ public:
 	static void SaveSceneData(ResourceManager::GUID const&);
 
 };
+
 
 

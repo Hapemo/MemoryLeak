@@ -390,6 +390,7 @@ General SerializationManager::getGeneral(Value& entity)
 	general.isActive = entity["General"]["isActive"].GetBool();
 	general.tag = (TAG)entity["General"]["tag"].GetInt();
 	general.subtag = (SUBTAG)entity["General"]["subtag"].GetInt();
+	general.isPaused = true;
 	return general;
 }
 Lifespan SerializationManager::getLifespan(Value& entity)
@@ -762,12 +763,6 @@ void SerializationManager::SaveScene(std::string _filename, std::set<Entity> ent
 		Value entity(kObjectType);
 		if (e.HasComponent<General>())
 		{
-			/*Value tmp(kObjectType);
-			tmp.AddMember(StringRef("name"), StringRef(e.GetComponent<General>().name.c_str()), allocator);
-			tmp.AddMember(StringRef("tag"), (int)e.GetComponent<General>().tag, allocator);
-			tmp.AddMember(StringRef("subtag"), (int)e.GetComponent<General>().subtag, allocator);
-			tmp.AddMember(StringRef("isActive"), e.GetComponent<General>().isActive, allocator);
-			entity.AddMember(StringRef("General"), tmp, allocator);*/
 			addGeneral(scene,entity, e.GetComponent<General>());
 		}
 		if (e.HasComponent<Lifespan>())
@@ -1082,8 +1077,18 @@ std::vector<std::set<Entity>> SerializationManager::LoadGameState(std::string& _
 	entity = doc.GetArray();
 	for (rapidjson::SizeType index = 0; index < entity.Size(); ++index)
 	{
-		std::string sc = entity[index].GetString();
-		scenefilename.push_back(sc);
+		SceneData sceneData;
+		sceneData.Name = entity[index]["SceneName"].GetString();
+		sceneData.camera = getTransform(entity[index]["Transform"]);
+		sceneData.camera.scale = GetVec2(entity[index]["CameraZoom"]);
+		sceneData.camera.translation = GetVec2(entity[index]["CameraPos"]);
+		sceneData.isActive = entity[index]["isActive"].GetBool();
+		sceneData.layer = entity[index]["layer"].GetInt();
+		sceneData.order = entity[index]["order"].GetInt();
+
+
+		//std::string sc = entity[index].GetString();
+		scenefilename.push_back(sceneData.Name);
 	}
 	ifs.close();
 	for (int s = 0;s < scenefilename.size(); s++)
@@ -1116,8 +1121,23 @@ void SerializationManager::SaveGameState(std::pair<  std::string, std::vector<st
 	//int counter = 0;
 	for (int s = 0; s< _filename.second.size(); s++)
 	{
-		std::string str = _filename.second[s];
-		Value scene(str.c_str(), (SizeType)str.size(), allocator);
+		static int n = 1;
+		SceneData sceneData;
+		sceneData.Name = _filename.second[s];
+		sceneData.camera = Transform({ {1.f,1.f},0.f, {0.f,0.f} });
+		sceneData.isActive = true;
+		sceneData.layer = n;
+		sceneData.order = n++;
+
+		Value scene(kObjectType);
+		Value sceneName(sceneData.Name.c_str(), (SizeType)sceneData.Name.size(), allocator);
+		scene.AddMember(StringRef("SceneName"), sceneName, gamestate.GetAllocator());
+		addTransform(gamestate, scene, sceneData.camera);
+		//addVectorMember(gamestate, scene, "CameraPos", sceneData.camera.scale);
+		//addVectorMember(gamestate, scene, "CameraZoom", sceneData.camera.translation);
+		scene.AddMember(StringRef("isActive"), sceneData.isActive, gamestate.GetAllocator());
+		scene.AddMember(StringRef("layer"), sceneData.layer, gamestate.GetAllocator());
+		scene.AddMember(StringRef("order"), sceneData.order, gamestate.GetAllocator());
 		gamestate.PushBack(scene, allocator);
 	}
 
