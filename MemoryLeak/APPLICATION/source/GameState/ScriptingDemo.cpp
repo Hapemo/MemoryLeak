@@ -13,20 +13,19 @@ Gamestate for testing scripting.
 
 void ScriptingDemo::Load() {
     serializationManager->LoadScene("Scene_Scripting");
-    renderManager->SetVectorLengthModifier(5.f);
     renderManager->SetDebug(true);
 }
 
 void ScriptingDemo::Init() {
     for (Scene* scenePtr : mScenes)
         scenePtr->Init();
-    logicSystem->Init();
+    //logicSystem->Init();
 }
 
 void ScriptingDemo::Update() {
     for (Scene* scenePtr : mScenes)
         scenePtr->PrimaryUpdate();
-    logicSystem->Update();
+    //logicSystem->Update();
 }
 
 void ScriptingDemo::Draw() {
@@ -34,7 +33,7 @@ void ScriptingDemo::Draw() {
 }
 
 void ScriptingDemo::Free() {
-    logicSystem->Exit();
+    //logicSystem->Exit();
     for (auto& scenePtr : mScenes)
         scenePtr->Exit();
 }

@@ -46,6 +46,7 @@ have change in data during run-time will not work.
 #define LOAD_TEXTURES(...) ResourceManager::GetInstance()->LoadTextures(__VA_ARGS__)
 #define UPDATE_TEXTURES(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
 #define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
+
 struct GameStateData;
 struct SceneData;
 struct Entity;
