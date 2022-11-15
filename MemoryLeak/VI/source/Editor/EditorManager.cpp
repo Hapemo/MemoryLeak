@@ -157,6 +157,7 @@ None.
 void EditorManager::Window()
 {
 	glClearColor(0.f, 0.f, 0.1f, 1.f);
+	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
