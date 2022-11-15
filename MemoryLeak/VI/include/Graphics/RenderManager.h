@@ -213,6 +213,11 @@ public:
 	void ResetCameras();
 
 	VIzmo& GetGizmo() { return mGizmo; }
+
+	void SelectEntity(const Entity& _e);
+	void UnselectEntity(const Entity& _e);
+	void ClearSelectedEntities();
+
 private:
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam, mAnimatorCam;
@@ -232,6 +237,7 @@ private:
 	std::vector<Vertex> mDebugPoints;
 	std::vector<Vertex> mDebugVertices;
 	std::vector<GLushort> mDebugIndices;
+	std::vector<Entity> mEditorSelectedEntities;
 	VIzmo mGizmo;
 
 	/*!*****************************************************************************
@@ -339,7 +345,7 @@ private:
 	*******************************************************************************/
 	void CreateCircle(const Entity& _e);
 
-	void CreateCircle(const Transform& _xform, const Color& _clr, float layer, bool _isGizmo);
+	void CreateCircle(const Transform& _xform, const Color& _clr, float layer);
 
 	/*!*****************************************************************************
 	\brief
@@ -362,7 +368,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugPoint(const Transform& _t);
+	void CreateDebugPoint(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -385,7 +391,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugLine(const Transform& _t, bool _isGizmo);
+	void CreateDebugLine(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -408,7 +414,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugSquare(const Transform& _t);
+	void CreateDebugSquare(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -431,7 +437,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugCircle(const Transform& _t, bool _isGizmo);
+	void CreateDebugCircle(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -454,7 +460,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugArrow(const Transform& _t);
+	void CreateDebugArrow(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
