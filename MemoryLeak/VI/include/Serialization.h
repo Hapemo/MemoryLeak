@@ -41,7 +41,8 @@ Entities and its Components.
 //	///
 //	std::vector<ResourceManager::GUID> mGUIDs;
 //};
-
+class Scene;
+class GameState;
 using namespace rapidjson;
 /*!*****************************************************************************
 \brief
@@ -50,10 +51,10 @@ using namespace rapidjson;
 class SerializationManager : public System
 {
 public:
-	Scene LoadScene(std::filesystem::path _filename);
-	void SaveScene(Scene);
-	GameState LoadGameState(std::filesystem::path _filename);
-	void SaveGameState(GameState);
+	void LoadScene(Scene& _scene, std::filesystem::path _filename);
+	void SaveScene(Scene& _scene);
+	void LoadGameState(GameState& _gameState, std::filesystem::path _filename);
+	void SaveGameState(GameState& _gameState);
 
 
 	void LoadPrefab(std::string _filename = "NewPrefab");

@@ -12,7 +12,8 @@ TODO: take note not to change the component registration order. It will break pr
 *******************************************************************************/
 #include <Serialization.h>
 #include <ECSManager.h>
-
+#include <Scene.h>
+#include <GameState.h>
 
 
 
@@ -46,28 +47,27 @@ void SerializationManager::LoadScene(Scene& _scene, std::filesystem::path _filen
 	Scene sceneData{};
 	
 	//"../resources/Scene/SceneJ.json"
-	std::string path = "../resources/Scene/" + _filename + ".json";
+	//std::string path = "../resources/Scene/" + _filename + ".json";
 	//std::ifstream ifs(path);
 	std::ifstream ifs(_filename.string());
 	if (!ifs.good())
 	{
 		LOG_ERROR("Can't open json file! : " + path);
-		return sceneData;
 	}
 	else
 		LOG_INFO("Opening Scene: " + path);
 
-	sceneData.name = _filename;
+	sceneData.mName = _filename.stem().string();
 	int same = 0;
 	for (std::string s : allsceneFilename)
 	{
 		if (s == _filename)
 			same++;
 	}
-	allsceneFilename.push_back(_filename);
+	allsceneFilename.push_back(sceneData.mName);
 	if (same != 0)
-		sceneData.name += (" (" + std::to_string(same) + ")");
-	sceneFilename = sceneData.name;
+		sceneData.mName += (" (" + std::to_string(same) + ")");
+	sceneFilename = sceneData.mName;
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
