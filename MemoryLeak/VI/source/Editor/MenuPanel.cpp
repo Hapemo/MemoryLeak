@@ -93,9 +93,10 @@ void MenuPanel::Update()
 				allEntities.push_back(serializationManager->LoadGameState(GSname, gs.second));
 				gs.first = GSname;
 				allNames.push_back(gs);*/
-				GSList.push_back(serializationManager->LoadGameState(filenameO_GameState));
-				selectedGameState = (int)GSList.size() - 1;
-				selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+			//gameStateManager::GetInstance()->LoadGameState(serializationManager->LoadGameState(filenameO_GameState));
+				////GSList.push_back(serializationManager->LoadGameState(filenameO_GameState));
+				////selectedGameState = (int)GSList.size() - 1;
+				////selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open GameState File", NULL, false, false);
@@ -105,7 +106,7 @@ void MenuPanel::Update()
 			if (ImGui::MenuItem("Save GameState As", "Ctrl+S"))
 			{
 				//allNames[selectedGameState].first = filenameS_GameState;
-				serializationManager->SaveGameState(GSList[selectedGameState]);
+				////serializationManager->SaveGameState(GSList[selectedGameState]);
 			}
 
 
@@ -116,8 +117,8 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Open Scene", "Ctrl+O"))
 			{
-				GSList[selectedGameState].scenes.push_back(serializationManager->LoadScene(filenameO_Scene));
-				selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+				////GSList[selectedGameState].scenes.push_back(serializationManager->LoadScene(filenameO_Scene));
+				////selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
 				//allEntities[selectedGameState].push_back(serializationManager->LoadScene(filenameO_Scene));
 				//allNames[selectedGameState].second.push_back(filenameO_Scene);
 			}
@@ -128,7 +129,7 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Save Scene As", "Ctrl+S"))
 			{
-				serializationManager->SaveScene(GSList[selectedGameState].scenes[selectedScene]);
+				////serializationManager->SaveScene(GSList[selectedGameState].scenes[selectedScene]);
 			}
 
 
