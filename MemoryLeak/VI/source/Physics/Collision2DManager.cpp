@@ -496,7 +496,7 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 		_contact.obj[0].GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj[0].GetComponent<Physics2D>().angularVelocity, rObj1);
 	else if (obj2HasP)
 		relVel = _contact.obj[1].GetComponent<Physics2D>().velocity + Math::Cross(_contact.obj[1].GetComponent<Physics2D>().angularVelocity, rObj2);
-	else
+	else if (obj1HasP)
 		relVel = -(_contact.obj[0].GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj[0].GetComponent<Physics2D>().angularVelocity, rObj1));
 
 	// Relative velocity along the normal
