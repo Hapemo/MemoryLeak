@@ -278,6 +278,17 @@ void RenderManager::RenderDebug()
 			CreateDebugSquare(t, {0, 255, 0, 255});
 		}
 
+		if (e.HasComponent<LayerCollider>() && e.GetComponent<LayerCollider>().renderFlag)
+		{
+			Transform t = e.GetComponent<Transform>();
+			t.scale.x *= e.GetComponent<LayerCollider>().scaleOffset.x;
+			t.scale.y *= e.GetComponent<LayerCollider>().scaleOffset.y;
+			t.rotation = 0;
+			t.translation += Math::Vec2(e.GetComponent<LayerCollider>().centerOffset.x,
+				e.GetComponent<LayerCollider>().centerOffset.y);
+			CreateDebugSquare(t, { 255, 150, 0, 255 });
+		}
+
 		if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
 		{
 			Transform t = e.GetComponent<Transform>();
