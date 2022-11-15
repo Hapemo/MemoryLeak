@@ -73,11 +73,11 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 
 	// Compute min and max of both entities
 	Math::Vec2	aabb1min{ center1 - scale1 },
-		aabb1max{ center1 + scale1 },
-		aabb2min{ center2 - scale2 },
-		aabb2max{ center2 + scale2 };
+				aabb1max{ center1 + scale1 },
+				aabb2min{ center2 - scale2 },
+				aabb2max{ center2 + scale2 };
 
-	// Static check
+// Static check
 	if (aabb1max.x < aabb2min.x)
 		return false;
 	if (aabb1min.x > aabb2max.x)
@@ -87,8 +87,8 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	if (aabb1min.y > aabb2max.y)
 		return false;
 
-	// Dynamic check
-		// Compute relative velocity
+// Dynamic check
+	// Compute relative velocity
 	Math::Vec2 Vb{};
 	if (obj2.HasComponent<Physics2D>() && obj1.HasComponent<Physics2D>())
 		Vb = obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
@@ -159,8 +159,9 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	if (tFirst > tLast) // Case 5
 		return false;
 
+// Will intersect within the next delta time
 	// Use first as intersection time
-	_contact.interTime = tFirst;
+	//_contact.interTime = tFirst;
 
 	// Compute position at intersection time
 	Math::Vec2 obj1NewPos{ center1 },
@@ -175,24 +176,49 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	Math::Vec2 diff{ scale1.x + scale2.x - std::fabs(distVec.x),
 					 scale1.y + scale2.y - std::fabs(distVec.y) };
 
-	//if (0.f < dist.x) {
-	//	if (0.f < dist.y) {
-	// 
 	// Find axis that penetrates less and use it to resolve collision
 	if (diff.x < diff.y) {
 		// Set contact information
-		_contact.normal = distVec.x < 0 ? Math::Vec2{ -1.f, 0.f } : Math::Vec2{ 1.f, 0.f };
+		_contact.normal = distVec.x < 0 ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
 		_contact.penetration = diff.x;
-		_contact.contacts = _contact.normal * diff.x + obj1NewPos;
+		_contact.contacts = _contact.normal * scale1.x + center1;
 	}
 	else {
 		// Set contact information
 		_contact.normal = distVec.y < 0 ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
 		_contact.penetration = diff.y;
-		_contact.contacts = _contact.normal * diff.y + obj1NewPos;
+		_contact.contacts = _contact.normal * scale1.y + center1;
 	}
+
+	//Math::Vec2 posDel{ center1 - center2 };
+	//float xDiff{ scale1.x + scale2.x - fabs(posDel.x) };
+
+	//// Overlap of AABB of x axis
+	//if (0 < xDiff) {
+	//	// Check y axis as well
+	//	float yDiff{ scale1.y + scale2.y - fabs(posDel.y) };
+	//	if (0 < yDiff) {
+	//		// Overlapping on both axis
+	//		// Collision has happened
+	//		
+	//		// Check which axis to use for collision response
+	//		if (xDiff < yDiff) {
+	//			_contact.normal = ((posDel.x < 0) ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f });
+	//			_contact.penetration = xDiff;
+	//			_contact.contacts = _contact.normal * scale1.x + center1;
+	//			return true;
+	//		}
+	//		else {
+	//			_contact.normal = ((posDel.y < 0) ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f });
+	//			_contact.penetration = yDiff;
+	//			_contact.contacts = _contact.normal * scale1.y + center1;
+	//			return true;
+	//		}
 	//	}
 	//}
+
+	//return false;
+
 
 	return true;
 }
@@ -309,7 +335,7 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 	// Check if the intersection time is within 1 unit
 	if (0.0 <= interTime && interTime <= 1.0) {
 		// Set intersection time
-		_contact.interTime = interTime;
+		//_contact.interTime = interTime;
 
 		// Compute new positions 
 		Math::Vec2 obj1NewPos{ obj1Pos },
@@ -333,6 +359,8 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
 	_contact;
 	_dt;
+
+
 
 	return false;
 }
@@ -378,29 +406,8 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 	//bool notplayer = false;
 	// Resolve collision
 	for (Contact& item : mContactList) {
-		ResolveContact(item, _dt);
+		ResolveContact(item);
 		PositionCorrection(item);
-
-		// Impulse response not working
-		// For now, we just disable the movement
-		//if (item.obj1.HasComponent<Physics2D>()) 
-		//	item.obj1.GetComponent<Physics2D>().dynamicsEnabled = false;
-		//if (item.obj2.HasComponent<Physics2D>())
-		//	item.obj2.GetComponent<Physics2D>().dynamicsEnabled = false;
-
-		// For now, we just clear the movement
-		/*if (item.obj1.HasComponent<Physics2D>()) {
-			item.obj1.GetComponent<Physics2D>().acceleration = Math::Vec2{ 0.f, 0.f };
-			item.obj1.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f, 0.f };
-			item.obj1.GetComponent<Physics2D>().accumulatedForce = Math::Vec2{ 0.f, 0.f };
-			item.obj1.GetComponent<Physics2D>().forceList.clear();
-		}
-		if (item.obj2.HasComponent<Physics2D>()) {
-			item.obj2.GetComponent<Physics2D>().acceleration = Math::Vec2{ 0.f, 0.f };
-			item.obj2.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f, 0.f };
-			item.obj2.GetComponent<Physics2D>().accumulatedForce = Math::Vec2{ 0.f, 0.f };
-			item.obj2.GetComponent<Physics2D>().forceList.clear();
-		}*/
 	}
 
 	ClearContactList();
@@ -475,7 +482,7 @@ void Collision2DManager::ClearContactList() {
 	mContactList.clear();
 }
 
-void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
+void Collision2DManager::ResolveContact(Contact& _contact) {
 	// Store bool value of whether entity has physics component
 	bool obj1HasP{ _contact.obj[0].HasComponent<Physics2D>() },
 		obj2HasP{ _contact.obj[0].HasComponent<Physics2D>() };
