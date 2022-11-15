@@ -1,10 +1,10 @@
-{
-    "Entity0": {
+[
+    {
         "General": {
             "name": "background1",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -25,7 +25,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -55,12 +55,12 @@
             }
         }
     },
-    "Entity1": {
+    {
         "General": {
             "name": "background2",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -81,7 +81,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -111,12 +111,12 @@
             }
         }
     },
-    "Entity2": {
+    {
         "General": {
             "name": "background3",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -137,7 +137,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -167,12 +167,12 @@
             }
         }
     },
-    "Entity3": {
+    {
         "General": {
             "name": "background4",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -193,7 +193,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -223,12 +223,12 @@
             }
         }
     },
-    "Entity4": {
+    {
         "General": {
             "name": "background5",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -249,7 +249,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -279,12 +279,12 @@
             }
         }
     },
-    "Entity5": {
+    {
         "General": {
             "name": "background6",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -305,7 +305,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -335,12 +335,12 @@
             }
         }
     },
-    "Entity6": {
+    {
         "General": {
             "name": "background7",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -361,7 +361,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -391,12 +391,12 @@
             }
         }
     },
-    "Entity7": {
+    {
         "General": {
             "name": "background8",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -417,7 +417,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -447,12 +447,12 @@
             }
         }
     },
-    "Entity8": {
+    {
         "General": {
             "name": "background9",
             "tag": 3,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -473,7 +473,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -503,12 +503,12 @@
             }
         }
     },
-    "Entity9": {
+    {
         "General": {
             "name": "lightsource",
             "tag": 0,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -529,7 +529,7 @@
                 "a": 255
             },
             "sprite": 1,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 240
         },
         "Physics2D": {
@@ -589,4 +589,4 @@
             }
         }
     }
-}
+]

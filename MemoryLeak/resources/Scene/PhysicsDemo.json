@@ -4,7 +4,7 @@
             "name": "Rect1",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -94,7 +94,7 @@
             "name": "Rect2",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -184,7 +184,7 @@
             "name": "Circle1",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -271,7 +271,7 @@
             "name": "Circle2",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -358,7 +358,7 @@
             "name": "Player",
             "tag": 0,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -431,7 +431,7 @@
             "name": "Building1",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -518,7 +518,7 @@
             "name": "Building2",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {

@@ -4,7 +4,7 @@
             "name": "background1",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -49,7 +49,7 @@
             "name": "background2",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -94,7 +94,7 @@
             "name": "background3",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -139,7 +139,7 @@
             "name": "background4",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -184,7 +184,7 @@
             "name": "background5",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -229,7 +229,7 @@
             "name": "background6",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -274,7 +274,7 @@
             "name": "background7",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -319,7 +319,7 @@
             "name": "background8",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -364,7 +364,7 @@
             "name": "background9",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -409,7 +409,7 @@
             "name": "lightsource",
             "tag": 0,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {

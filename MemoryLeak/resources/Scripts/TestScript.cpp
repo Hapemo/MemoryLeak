@@ -40,4 +40,4 @@ void TestScript::EndScript(Entity const& gob) {
 	LOG_INFO("Test script end works!!!");
 }
 
-REGISTER_SCRIPT(ScriptComponent, TestScript);
+//REGISTER_SCRIPT(ScriptComponent, TestScript);

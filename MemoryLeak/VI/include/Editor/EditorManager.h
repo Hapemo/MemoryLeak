@@ -90,6 +90,7 @@ protected:
 	static bool aspect;
 	static PrefabPtr selectedPrefab;
 	static int selectedType;
+	//static std::vector <GameStateData> GSList;
 	static std::vector<  std::pair<  std::string, std::vector<std::string> >> allNames;
 	static std::vector<std::vector<std::set<Entity>>> allEntities;
 	static int selectedGameState;

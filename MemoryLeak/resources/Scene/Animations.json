@@ -4,7 +4,7 @@
             "name": "background",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -34,7 +34,7 @@
             "name": "middleground",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -64,7 +64,7 @@
             "name": "foreground",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -94,7 +94,7 @@
             "name": "spritesheet",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -141,7 +141,7 @@
             "name": "point",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -171,7 +171,7 @@
             "name": "line",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -201,7 +201,7 @@
             "name": "square",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -231,7 +231,7 @@
             "name": "circle",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {

@@ -16,6 +16,7 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 #include "ECS_managers.h"
 #include "ECS_components.h"
 #include "Logger.h"
+#include "ScriptManager.h"
 
 //-------------------------------------------------------------------------
 // Definitions from ECS_items
@@ -37,7 +38,10 @@ void Entity::Activate() {
 	// Codes that should run when activating entity halfway through game
 	
 	// Scripting
-	if (HasComponent<Script>()) GetComponent<Script>().script->StartScript(*this);
+	if (HasComponent<Script>()) //GetComponent<Script>().script->StartScript(*this);
+		if (GetComponent<Script>().name != "")
+			if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(GetComponent<Script>().name) != nullptr)
+				ScriptManager<ScriptComponent>::GetInstance()->GetScript(GetComponent<Script>().name)->StartScript(*this);
 
 	// General
 	genComp.isActive = true;
@@ -56,7 +60,10 @@ void Entity::Deactivate() {
 	// Codes that should run when deactivating entity halfway through game
 	
 	// Scripting
-	if (HasComponent<Script>()) GetComponent<Script>().script->EndScript(*this);
+	if (HasComponent<Script>()) //GetComponent<Script>().script->EndScript(*this);
+		if (GetComponent<Script>().name != "")
+			if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(GetComponent<Script>().name) != nullptr)
+				ScriptManager<ScriptComponent>::GetInstance()->GetScript(GetComponent<Script>().name)->EndScript(*this);
 
 	// General
 	genComp.isActive = false;

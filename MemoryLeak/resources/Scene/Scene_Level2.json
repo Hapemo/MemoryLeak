@@ -1,5 +1,5 @@
-{
-    "Entity0": {
+[
+    {
         "General": {
             "name": "_NEW_0",
             "tag": 4,
@@ -40,7 +40,7 @@
             "renderFlag": true
         }
     },
-    "Entity1": {
+    {
         "General": {
             "name": "_NEW_2",
             "tag": 3,
@@ -81,7 +81,7 @@
             "renderFlag": true
         }
     },
-    "Entity2": {
+    {
         "General": {
             "name": "_NEW_3",
             "tag": 3,
@@ -122,7 +122,7 @@
             "renderFlag": true
         }
     },
-    "Entity3": {
+    {
         "General": {
             "name": "_NEW_4",
             "tag": 5,
@@ -163,7 +163,7 @@
             "renderFlag": true
         }
     },
-    "Entity4": {
+    {
         "General": {
             "name": "_NEW_5",
             "tag": 3,
@@ -204,7 +204,7 @@
             "renderFlag": true
         }
     },
-    "Entity5": {
+    {
         "General": {
             "name": "_NEW_6",
             "tag": 5,
@@ -245,7 +245,7 @@
             "renderFlag": true
         }
     },
-    "Entity6": {
+    {
         "General": {
             "name": "_NEW_7",
             "tag": 5,
@@ -286,7 +286,7 @@
             "renderFlag": true
         }
     },
-    "Entity7": {
+    {
         "General": {
             "name": "_NEW_8",
             "tag": 5,
@@ -327,7 +327,7 @@
             "renderFlag": true
         }
     },
-    "Entity8": {
+    {
         "General": {
             "name": "_NEW_9",
             "tag": 3,
@@ -368,7 +368,7 @@
             "renderFlag": true
         }
     },
-    "Entity9": {
+    {
         "General": {
             "name": "_NEW_10",
             "tag": 3,
@@ -409,7 +409,7 @@
             "renderFlag": true
         }
     },
-    "Entity10": {
+    {
         "General": {
             "name": "_NEW_11",
             "tag": 5,
@@ -450,7 +450,7 @@
             "renderFlag": true
         }
     },
-    "Entity11": {
+    {
         "General": {
             "name": "_NEW_12",
             "tag": 5,
@@ -491,7 +491,7 @@
             "renderFlag": true
         }
     },
-    "Entity12": {
+    {
         "General": {
             "name": "_NEW_13",
             "tag": 5,
@@ -532,7 +532,7 @@
             "renderFlag": true
         }
     },
-    "Entity13": {
+    {
         "General": {
             "name": "_NEW_14",
             "tag": 5,
@@ -573,7 +573,7 @@
             "renderFlag": true
         }
     },
-    "Entity14": {
+    {
         "General": {
             "name": "_NEW_15",
             "tag": 0,
@@ -614,7 +614,7 @@
             "renderFlag": true
         }
     },
-    "Entity15": {
+    {
         "General": {
             "name": "_NEW_16",
             "tag": 5,
@@ -655,7 +655,7 @@
             "renderFlag": true
         }
     },
-    "Entity16": {
+    {
         "General": {
             "name": "_NEW_0",
             "tag": 5,
@@ -696,7 +696,7 @@
             "renderFlag": true
         }
     },
-    "Entity17": {
+    {
         "General": {
             "name": "_NEW_1",
             "tag": 5,
@@ -737,7 +737,7 @@
             "renderFlag": true
         }
     },
-    "Entity18": {
+    {
         "General": {
             "name": "_NEW_2",
             "tag": 5,
@@ -778,7 +778,7 @@
             "renderFlag": true
         }
     },
-    "Entity19": {
+    {
         "General": {
             "name": "_NEW_3",
             "tag": 3,
@@ -819,7 +819,7 @@
             "renderFlag": true
         }
     },
-    "Entity20": {
+    {
         "General": {
             "name": "_NEW_4",
             "tag": 5,
@@ -860,4 +860,4 @@
             "renderFlag": true
         }
     }
-}
+]

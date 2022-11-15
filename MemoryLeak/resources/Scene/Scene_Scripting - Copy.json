@@ -1,0 +1,68 @@
+{
+    "Entity0": {
+        "General": {
+            "name": "firstEntity",
+            "tag": 8,
+            "subtag": 5,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -100.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\sea monster.png",
+            "layer": 10
+        },
+        "Script": {
+            "name": "RotateScript"
+        }
+    },
+    "Entity1": {
+        "General": {
+            "name": "secondEntity",
+            "tag": 8,
+            "subtag": 5,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 225.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\mc.png",
+            "layer": 10
+        },
+        "Script": {
+            "name": "ScaleScript"
+        }
+    }
+}

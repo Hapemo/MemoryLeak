@@ -1,3 +1,36 @@
 [
-    "Scene_Level2", "NewScene"
+    {
+        "SceneName": "Level2",
+        "Transform": {
+            "scale": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": true,
+        "layer": 7,
+        "order": 7
+    },
+    {
+        "SceneName": "NewScene",
+        "Transform": {
+            "scale": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": true,
+        "layer": 8,
+        "order": 8
+    }
 ]

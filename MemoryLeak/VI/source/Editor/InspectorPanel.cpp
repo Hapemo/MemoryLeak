@@ -859,7 +859,7 @@ void InspectorPanel::ScriptEditor()
 	if (ImGui::CollapsingHeader("Script")) {
 		if (ImGui::InputText("Add script file name", &e.GetComponent<Script>().name))
 		{
-			e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
+			//e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
 		}
 		if (ImGui::BeginDragDropTarget())
 		{
@@ -869,7 +869,7 @@ void InspectorPanel::ScriptEditor()
 				texpath = (const wchar_t*)payload->Data;
 				std::string tp = (std::string)((const char*)texpath);
 				e.GetComponent<Script>().name = tp;
-				e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
+				//e.GetComponent<Script>().script = ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name);
 			}
 			ImGui::EndDragDropTarget();
 		}

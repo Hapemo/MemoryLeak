@@ -1,5 +1,5 @@
-{
-    "Entity0": {
+[
+    {
         "General": {
             "name": "Water",
             "tag": 4,
@@ -40,7 +40,7 @@
             "renderFlag": true
         }
     },
-    "Entity1": {
+    {
         "General": {
             "name": "Double Story House",
             "tag": 3,
@@ -81,7 +81,7 @@
             "renderFlag": true
         }
     },
-    "Entity2": {
+    {
         "General": {
             "name": "Bush1",
             "tag": 5,
@@ -122,7 +122,7 @@
             "renderFlag": true
         }
     },
-    "Entity3": {
+    {
         "General": {
             "name": "Water Fountain",
             "tag": 3,
@@ -163,7 +163,7 @@
             "renderFlag": true
         }
     },
-    "Entity4": {
+    {
         "General": {
             "name": "Little Girl",
             "tag": 1,
@@ -204,7 +204,7 @@
             "renderFlag": true
         }
     },
-    "Entity5": {
+    {
         "General": {
             "name": "Tree1",
             "tag": 5,
@@ -245,7 +245,7 @@
             "renderFlag": true
         }
     },
-    "Entity6": {
+    {
         "General": {
             "name": "Boat",
             "tag": 0,
@@ -299,7 +299,7 @@
             "renderFlag": false
         }
     },
-    "Entity7": {
+    {
         "General": {
             "name": "Player",
             "tag": 0,
@@ -353,7 +353,7 @@
             "renderFlag": false
         }
     },
-    "Entity8": {
+    {
         "General": {
             "name": "Lighthouse",
             "tag": 3,
@@ -394,7 +394,7 @@
             "renderFlag": true
         }
     },
-    "Entity9": {
+    {
         "General": {
             "name": "Tree2",
             "tag": 5,
@@ -435,7 +435,7 @@
             "renderFlag": true
         }
     },
-    "Entity10": {
+    {
         "General": {
             "name": "Tree3",
             "tag": 5,
@@ -476,7 +476,7 @@
             "renderFlag": true
         }
     },
-    "Entity11": {
+    {
         "General": {
             "name": "Tree4",
             "tag": 5,
@@ -517,7 +517,7 @@
             "renderFlag": true
         }
     },
-    "Entity12": {
+    {
         "General": {
             "name": "Tree5",
             "tag": 5,
@@ -558,7 +558,7 @@
             "renderFlag": true
         }
     },
-    "Entity13": {
+    {
         "General": {
             "name": "Bush2",
             "tag": 5,
@@ -599,7 +599,7 @@
             "renderFlag": true
         }
     },
-    "Entity14": {
+    {
         "General": {
             "name": "Single Story House",
             "tag": 3,
@@ -640,7 +640,7 @@
             "renderFlag": true
         }
     },
-    "Entity15": {
+    {
         "General": {
             "name": "Tree6",
             "tag": 5,
@@ -681,7 +681,7 @@
             "renderFlag": true
         }
     },
-    "Entity16": {
+    {
         "General": {
             "name": "Walnut House",
             "tag": 3,
@@ -722,7 +722,7 @@
             "renderFlag": true
         }
     },
-    "Entity17": {
+    {
         "General": {
             "name": "Light",
             "tag": 6,
@@ -748,7 +748,7 @@
                 "a": 100
             },
             "sprite": 1,
-            "texture": "Textures\\Icons\\Assets.txt",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 2
         },
         "RectCollider": {
@@ -769,7 +769,7 @@
             "range": 10.0
         }
     },
-    "Entity18": {
+    {
         "General": {
             "name": "Tree",
             "tag": 0,
@@ -810,7 +810,7 @@
             "renderFlag": true
         }
     },
-    "Entity19": {
+    {
         "General": {
             "name": "Ruins",
             "tag": 3,
@@ -851,7 +851,7 @@
             "renderFlag": true
         }
     },
-    "Entity20": {
+    {
         "General": {
             "name": "Passenger1",
             "tag": 1,
@@ -892,7 +892,7 @@
             "renderFlag": true
         }
     },
-    "Entity21": {
+    {
         "General": {
             "name": "Porthouse",
             "tag": 3,
@@ -933,7 +933,7 @@
             "renderFlag": true
         }
     },
-    "Entity22": {
+    {
         "General": {
             "name": "Tree7",
             "tag": 5,
@@ -974,7 +974,7 @@
             "renderFlag": true
         }
     },
-    "Entity23": {
+    {
         "General": {
             "name": "Tree8",
             "tag": 5,
@@ -1015,7 +1015,7 @@
             "renderFlag": true
         }
     },
-    "Entity24": {
+    {
         "General": {
             "name": "Bush3",
             "tag": 5,
@@ -1056,7 +1056,7 @@
             "renderFlag": true
         }
     },
-    "Entity25": {
+    {
         "General": {
             "name": "Tree9",
             "tag": 5,
@@ -1097,4 +1097,4 @@
             "renderFlag": true
         }
     }
-}
+]

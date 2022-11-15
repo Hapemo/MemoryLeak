@@ -11,46 +11,58 @@ The ScriptManager class manages the scripts for the engine.
 *******************************************************************************/
 
 #pragma once
-#include "Singleton.h"
 #include <map>
-#include <functional>
 #include <string>
-#include <iostream>
-
-#define REGISTER_SCRIPT(_base, _derived) ScriptFactory<_base, _derived> s_##_derived##Creator(#_derived);
+#include "Logger.h"
 
 template<class Base>
 class ScriptManager {
 public:
-    typedef std::map<std::string, std::function<Base* ()>> ScriptMap;
+    typedef std::pair<std::string, Base*> ScriptPair;
+    typedef std::map<std::string, Base*> ScriptMap;
 
 private:
     ScriptMap mScripts;
     static std::shared_ptr<ScriptManager<Base>> mInstance;
 
 public:
+    ScriptManager() = default;
     ~ScriptManager() = default;
 
+    void UnloadScripts() {
+        for (const ScriptPair script : mScripts) {
+            if (script.second != nullptr) {
+                delete script.second;
+                LOG_INFO("Deleting script: " + script.first);
+            } else LOG_ERROR("Null pointer to script: " + script.first);
+        }
+    }
+
     static std::shared_ptr<ScriptManager<Base>> GetInstance() {
-      if (mInstance == nullptr)
-        mInstance = std::make_unique<ScriptManager<Base>>();
-      return mInstance;
+        if (mInstance == nullptr)
+            mInstance = std::make_unique<ScriptManager<Base>>();
+        return mInstance;
     }
 
     template<class Script>
-    void RegisterScript(const std::string& _name) {
-        mScripts.insert({ _name, []() -> Base* { return new Script(); } });
+    bool RegisterScript(const std::string _name) {
+        Base* script = new Script;
+        mScripts.emplace(_name, script);
+        LOG_INFO("Registering script: " + _name);
+        return true;
     }
 
-    Base* GetScript(const std::string& _name) {
+    Base* GetScript(const std::string _name) {
         const ScriptMap::iterator script = mScripts.find(_name);
-        if (script == mScripts.end()) return nullptr; // not a derived class
-        else return (script->second)();
+        if (script == mScripts.end()) {
+            LOG_ERROR(("Script '" + _name + "' does not exist.").c_str());
+            return nullptr; // not a derived class
+        }
+        else return script->second;
     }
 
     void PrintRegisteredScripts() {
-        for (const auto& creator : mScripts)
-            LOG_INFO(creator.first.c_str());
+       for (const ScriptPair& script : mScripts) LOG_INFO(script.first.c_str());
     }
 };
 
@@ -58,9 +70,11 @@ template<class Base>
 std::shared_ptr<ScriptManager<Base>> ScriptManager<Base>::mInstance;
 
 template<class Base, class Script>
-class ScriptFactory {
+class ScriptRegisterer {
 public:
-    explicit ScriptFactory(const std::string& _name) {
+    ScriptRegisterer() = default;
+    ~ScriptRegisterer() = default;
+    ScriptRegisterer(const std::string _name) {
         ScriptManager<Base>::GetInstance()->RegisterScript<Script>(_name);
     }
 };
