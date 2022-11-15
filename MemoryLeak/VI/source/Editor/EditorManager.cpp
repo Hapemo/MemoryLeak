@@ -51,7 +51,7 @@ int EditorManager::highestLayer =0;
 //std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
-std::vector <GameStateData>  EditorManager::GSList;
+std::vector <EditorManager::GameStateData>  EditorManager::GSList;
 //std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
 //std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
 int EditorManager::selectedGameState{0};

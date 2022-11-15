@@ -53,6 +53,22 @@ private:
 	static std::vector<Panel*> panels;
 	
 protected:
+	//to remove
+	struct SceneData {
+		std::string name = "";
+		Transform camera = {};
+		bool isActive = false;
+		int layer = 0;
+		int order = 0;;
+		std::set<Entity> mEntities = {};
+	};
+
+	//Data that a gamestate class should contain
+	struct GameStateData {
+		std::string name = "";
+		std::vector<SceneData> scenes = {};
+
+	};
 	enum class E_PANELID
 	{
 		MENU,
@@ -127,4 +143,6 @@ protected:
 	void CameraViewPort();
 	void ShowDebugInfo();
 	void DialogEditor();*/
+
+	
 };
