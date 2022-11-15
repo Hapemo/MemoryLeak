@@ -1132,13 +1132,18 @@ void RenderManager::CreateText(const Entity& _e)
 	//add paragraph into font renderer
 	
 	Math::Vec2 camOffset = { 0,0 };
+	float camZoom = 1.f;
 	if (!text.followCam)
+	{
 		camOffset = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam.GetPos()
 		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam.GetPos() : mAnimatorCam.GetPos();
-			
+		camZoom = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam.GetZoom()
+			: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam.GetZoom() : mAnimatorCam.GetZoom();
+	}
+				
 	mFontRenderers[fileName].AddParagraph(text.text,
-		text.offset + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f) + _e.GetComponent<Transform>().translation - camOffset,
-		text.scale, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));
+		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
+		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));
 }
 
 void RenderManager::CreateGizmo()
