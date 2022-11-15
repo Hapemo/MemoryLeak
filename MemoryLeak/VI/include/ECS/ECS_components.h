@@ -166,7 +166,7 @@ struct Physics2D {
 
 struct LayerCollider {
 	Math::Vec2 centerOffset = { 0.f, 0.f },
-				scaleOffset = { 1.f,1.f };
+				scaleOffset = { 1.f, 1.f };
 	// float rotationOffset,
 	bool renderFlag = false;
 };
@@ -185,7 +185,8 @@ struct RectCollider {
 	Math::Vec2 centerOffset = { 0.f, 0.f },
 			   scaleOffset = {1.f,1.f};
 	// float rotationOffset,
-	bool renderFlag = false;
+	bool isTrigger{ false },
+		 renderFlag{ false };
 };
 
 /*!*****************************************************************************
@@ -202,7 +203,8 @@ struct CircleCollider {
 	Math::Vec2 centerOffset = { 0.f, 0.f };
 	float 	scaleOffset = { 1.f };
 	// float rotationOffset,
-	bool renderFlag = false;
+	bool isTrigger{ false },
+		 renderFlag{ false };
 };
 
 

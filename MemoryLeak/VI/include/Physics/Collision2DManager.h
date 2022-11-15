@@ -16,74 +16,8 @@
 // Include files
 // -----------------------------
 #include "ECS_systems.h"
-
-/*!*****************************************************************************
-\brief ColliderType enum class that encapsulates the different types of colliders
-*******************************************************************************/
-enum class ColliderType : int {
-	RECT = 1,				// Rect
-	CIRCLE,					// Circle
-	MAXTYPESOFCOLLIDERS		// Max size
-};
-
-
-/*!*****************************************************************************
-\brief Contact class that encapsulates information about a collision
-*******************************************************************************/
-class Contact {
-public:
-	/*!*****************************************************************************
-	\brief
-	Default constructor
-	\param const Entity &
-	A reference to a read-only entity
-	\param const Entity &
-	A reference to a read-only entity
-	\return void
-	NULL
-	*******************************************************************************/
-	Contact(const Entity& _obj1, const Entity& _obj2, const int& _obj1Type, const int& _obj2Type);
-
-	/*!*****************************************************************************
-	\brief
-	DetermineRestitution function computes the restitution value between the two
-	entities
-	\param void
-	NULL
-	\return float
-	The computed restitution
-	*******************************************************************************/
-	float DetermineRestitution();
-
-	/*!*****************************************************************************
-	\brief
-	DetermineFriction function computes the friction value between the two
-	entities
-	\param void
-	NULL
-	\return float
-	The computed friction
-	*******************************************************************************/
-	float DetermineFriction();
-
-	float DetermineSeperatingVelocity();
-
-	/*!*****************************************************************************
-	Class variables
-	*******************************************************************************/
-	Entity obj[2]{};				// Array of entity
-	int objType[2]{};				// Array of entity objType
-	//double interTime{};				// Collision time
-	Math::Vec2 normal{};			// Collision normal
-	float penetration{};			// Collision penetration depths
-	float combinedRestitution{};	// Combined restitution value
-	float combinedFriction{};		// Combined friction value
-	Math::Vec2 newVelocity[2]{};	// Computed new velocity after collision
-	float seperatingVelocity{};		// Computed seperating velocity scalar value
-	float contactImpulse{};			// Contact impulse
-	Math::Vec2 contacts{};			// Points of contact of the collision
-
-};
+#include "Contact.h"
+#include "ColliderType.h"
 
 /*!*****************************************************************************
 Define a function callback for collision dispatch
@@ -97,20 +31,20 @@ typedef bool (*CollisionCallback)(Contact&, const double&);
 *******************************************************************************/
 class Collision2DManager : public System {
 public:
-	// -----------------------------
-	// Collision Checks Lib
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		CI_RectvsRect function that checks for collision between 2 entities that have
-		AABB/rectangular colliders
-		\param Contact &
-		A reference to struct containing entity pair data to check
-		\param const double &
-		A reference to a read-only variable containing the delta time
-		\return bool
-		Evaluated result of whether collision has occurred between the given entity pair
-		*******************************************************************************/
+// -----------------------------
+// Collision Checks Lib
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	CI_RectvsRect function that checks for collision between 2 entities that have
+	AABB/rectangular colliders
+	\param Contact &
+	A reference to struct containing entity pair data to check
+	\param const double &
+	A reference to a read-only variable containing the delta time
+	\return bool
+	Evaluated result of whether collision has occurred between the given entity pair
+	*******************************************************************************/
 	static bool CI_RectvsRect(Contact& _contact, const double& _dt);
 	/*!*****************************************************************************
 	\brief
@@ -220,18 +154,19 @@ public:
 	*******************************************************************************/
 	void ClearContactList();
 
-	void ResolveContact(Contact& _contact);
+	void ResolveContact(Contact& _contact, const double& _dt);
 	void PositionCorrection(Contact& _contact);
 	//void ResolvePositions();
 	//void ResolveVelocities(const double& _dt);
 	//void ResolveContactVelocity(Contact& _contact, const double& _dt);
 	//void ResolvePenetration(Contact& _contact);
-private:
+	
 	// Database of callback functions to collision checks 
 	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
+private:
 	std::vector<Contact> mContactList;				// List of contacts in the current frame
 
 	// const float penEpsilion{ 0.0001f };
-	const float	penAllowance{ 0.05f },		// Penetration allowance
-		penPercentage{ 0.4f };		// Penetration percentage to correct
+	const float	penAllowance{ 0.01f },		// Penetration allowance
+				penPercentage{ 1.0f };		// Penetration percentage to correct
 };
