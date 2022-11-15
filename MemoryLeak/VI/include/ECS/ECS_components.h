@@ -165,6 +165,7 @@ struct Physics2D {
 struct LayerCollider {
 	Math::Vec2 centerOffset = { 0.f, 0.f },
 				scaleOffset = { 1.f, 1.f };
+	float yOffset;
 	// float rotationOffset,
 	bool renderFlag = false;
 };

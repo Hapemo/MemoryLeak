@@ -160,19 +160,35 @@ void LayerManager::Update(const double& _dt) {
 	for (auto& item : mUpdateList) {
 		if (item.obj[0].HasComponent<Sprite>() && item.obj[1].HasComponent<Sprite>()) {
 			if (item.obj[0].GetComponent<General>().tag == TAG::PLAYER) {
-				if (item.obj[0].GetComponent<Transform>().translation.y > item.obj[1].GetComponent<Transform>().translation.y) 
-					item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 5;
-				else
-					item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer + 5;
+				//if (item.obj[0].GetComponent<Transform>().translation.y > item.obj[1].GetComponent<Transform>().translation.y) 
+				//	item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 5;
+				//else
+				//	item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer + 5;
+				stack.push_back(std::make_pair(item.obj[0], item.obj[0].GetComponent<Sprite>().layer));
+				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 5;
+
 			}
 			else if (item.obj[1].GetComponent<General>().tag == TAG::PLAYER) {
-				if (item.obj[1].GetComponent<Transform>().translation.y > item.obj[0].GetComponent<Transform>().translation.y)
-					item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 5;
-				else
-					item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer + 5;
+				//if (item.obj[1].GetComponent<Transform>().translation.y > item.obj[0].GetComponent<Transform>().translation.y)
+				//	item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 5;
+				//else
+				//	item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer + 5;
+				stack.push_back(std::make_pair(item.obj[1], item.obj[1].GetComponent<Sprite>().layer));
+				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 5;
 			}
 		}
 	}
-
+	for (std::pair<Entity, int> entity : stack)
+	{
+		bool isColliding = false;
+		for (auto& item : mUpdateList) {
+			if (item.obj[0].id == entity.first.id || item.obj[0].id == entity.first.id)
+			{
+				isColliding = true;
+			}
+		}
+		if(isColliding == false)//not coliding with anything
+			entity.first.GetComponent<Sprite>().layer = entity.second;
+	}
 	mUpdateList.clear();
 }
