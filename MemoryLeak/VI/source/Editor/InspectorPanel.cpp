@@ -266,7 +266,7 @@ None.
 *******************************************************************************/
 void InspectorPanel::DeleteEntity()
 {
-	allEntities[selectedGameState][selectedScene].erase(e);
+	GSList[selectedGameState].scenes[selectedScene].mEntities.erase(e);
 	e.GetComponent<General>().isActive = false;
 	e.GetComponent<General>().isPaused = true;
 	//e.Destroy();

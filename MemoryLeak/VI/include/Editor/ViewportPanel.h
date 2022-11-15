@@ -52,3 +52,5 @@ protected:
 private:
 
 };
+
+//  GSList[selectedGameState].scenes[selectedScene].mEntities

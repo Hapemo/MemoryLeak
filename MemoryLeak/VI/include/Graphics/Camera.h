@@ -103,8 +103,16 @@ public:
 	*******************************************************************************/
 	std::vector<float> GetImGuizmoCamToWorld();	
 
+	Math::Vec2 GetInitialPos() { return mInitialPos; }
+	void SetInitialPos(const Math::Vec2& _initialPos) { mInitialPos = _initialPos; }
+
+	float GetInitialZoom() { return mInitialZoom; }
+	void SetInitialZoom(float _initialZoom) { mInitialZoom = _initialZoom; }
+
 private:
 	int mWindowWidth, mWindowHeight;
 	Math::Vec2 mPos;
 	float mZoom;
+	Math::Vec2 mInitialPos;
+	float mInitialZoom;
 };

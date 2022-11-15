@@ -218,30 +218,20 @@ void WorldViewPanel::NewEntity()
 	static const wchar_t* texpath = (const wchar_t*)"";
 	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
 	{
-		//FUNCTION GS SCENE
-		if (selectedGameState >= allEntities.size())
+		if (selectedGameState >= GSList.size())
 		{
-			std::vector < std::set<Entity>> newGS{};
-			allEntities.push_back(newGS);
-			std::pair< std::string, std::vector<std::string>> newGSNmae{};
-			newGSNmae.first = "NewGameState0";
-			allNames.push_back(newGSNmae);
-			selectedGameState = (int)allEntities.size() - 1;
+			NewGameState();
 		}
-		if (selectedScene >= allEntities[selectedGameState].size())
+		if (selectedScene >= GSList[selectedGameState].scenes.size())
 		{
-			std::set<Entity> newSecen{};
-			allEntities[selectedGameState].push_back(newSecen);
-			allNames[selectedGameState].second.push_back("NewScene0");
-			selectedScene = (int)allEntities[selectedGameState].size() - 1;
+			NewScene();
 		}
 		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
 		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
 
-
 		LOG_INFO("Created new entity");
 		Entity ne{ ECS::CreateEntity() };
-		(allEntities[selectedGameState][selectedScene]).insert(ne);
+		(GSList[selectedGameState].scenes[selectedScene].mEntities).insert(ne);
 		ne.AddComponent(
 			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false},
 			Transform{ {150,150}, 0, camMousePos },
@@ -267,21 +257,13 @@ void WorldViewPanel::NewPrefabee()
 	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("PREFAB"))
 	{
 		//FUNCTION GS SCENE
-		if (selectedGameState >= allEntities.size())
+		if (selectedGameState >= GSList.size())
 		{
-			std::vector < std::set<Entity>> newGS{};
-			allEntities.push_back(newGS);
-			std::pair< std::string, std::vector<std::string>> newGSNmae{};
-			newGSNmae.first = "NewGameState0";
-			allNames.push_back(newGSNmae);
-			selectedGameState = (int)allEntities.size() - 1;
+			NewGameState();
 		}
-		if (selectedScene >= allEntities[selectedGameState].size())
+		if (selectedScene >= GSList[selectedGameState].scenes.size())
 		{
-			std::set<Entity> newSecen{};
-			allEntities[selectedGameState].push_back(newSecen);
-			allNames[selectedGameState].second.push_back("NewScene0");
-			selectedScene = (int)allEntities[selectedGameState].size() - 1;
+			NewScene();
 		}
 		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
 		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
@@ -320,9 +302,9 @@ None.
 void WorldViewPanel::SetSelectedEntity()
 {
 	int layer = 0;
-	if (!(selectedGameState < allEntities.size() && selectedScene < allEntities[selectedGameState].size()))
+	if (!(selectedGameState < GSList.size() && selectedScene < GSList[selectedGameState].scenes.size()))
 		return;
-	for (const Entity& ee : allEntities[selectedGameState][selectedScene])
+	for (const Entity& ee : GSList[selectedGameState].scenes[selectedScene].mEntities)
 	{
 		if (ee.GetComponent<General>().tag == TAG::BACKGROUND)
 			continue;

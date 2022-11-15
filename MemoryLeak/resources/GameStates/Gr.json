@@ -1,0 +1,36 @@
+[
+    {
+        "SceneName": "Animations",
+        "Transform": {
+            "scale": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": false,
+        "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "Lighting",
+        "Transform": {
+            "scale": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": false,
+        "layer": 0,
+        "order": 0
+    }
+]

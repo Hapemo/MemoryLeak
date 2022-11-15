@@ -54,9 +54,9 @@ This component encapsulates what is needed in a Transform Component.
 *******************************************************************************/
 struct Transform
 {
-	Math::Vec2		scale;
-	float			rotation;
-	Math::Vec2		translation;
+	Math::Vec2		scale = {1.f,1.f};
+	float			rotation = 0.f;
+	Math::Vec2		translation = {0.f,0.f};
 };
 
 /*!*****************************************************************************
@@ -76,8 +76,6 @@ struct Sprite
 
 struct Button
 {
-	GLuint onHoverTexture = 0;
-	GLuint onClickTexture = 0;
 	bool interactable = true;
 	bool isHover = false;
 	bool isClick = false;

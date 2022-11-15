@@ -51,9 +51,9 @@ int EditorManager::highestLayer =0;
 //std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
-
-std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
-std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
+std::vector <GameStateData>  EditorManager::GSList;
+//std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
+//std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
 int EditorManager::selectedGameState{0};
 int EditorManager::selectedScene{0};
 int EditorManager::selectedPrevious = {0};
@@ -157,6 +157,7 @@ None.
 void EditorManager::Window()
 {
 	glClearColor(0.f, 0.f, 0.1f, 1.f);
+	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
@@ -176,11 +177,11 @@ void EditorManager::Update()
 	Window();
 
 
-	if (selectedGameState < allEntities.size())
+	if (selectedGameState < GSList.size())
 	{
-		if (selectedScene < allEntities[selectedGameState].size())
+		if (selectedScene < GSList[selectedGameState].scenes.size())
 		{
-			for (const Entity& e : allEntities[selectedGameState][selectedScene])
+			for (const Entity& e : GSList[selectedGameState].scenes[selectedScene].mEntities)
 			{
 				if (e.HasComponent<Sprite>())
 				{
@@ -202,16 +203,14 @@ void EditorManager::Update()
 	{
 		for (const Entity& e : *myEntities)
 		{
-			e.GetComponent<General>().isActive = true;
 			e.GetComponent<General>().isPaused = true;
 		}
-		if (selectedGameState < allEntities.size())
+		if (selectedGameState < GSList.size())
 		{
-			if (selectedScene < allEntities[selectedGameState].size())
+			if (selectedScene < GSList[selectedGameState].scenes.size())
 			{
-				for (const Entity& e : allEntities[selectedGameState][selectedScene])
+				for (const Entity& e : GSList[selectedGameState].scenes[selectedScene].mEntities)
 				{
-					e.GetComponent<General>().isActive = true;
 					e.GetComponent<General>().isPaused = false;
 				}
 			}
@@ -535,7 +534,7 @@ void EditorManager::Cut()
 		copyEntity.second = 2;
 		(*selectedEntity).GetComponent<General>().isActive = false;
 		(*selectedEntity).GetComponent<General>().isPaused = true;
-		allEntities[selectedGameState][selectedScene].erase(*selectedEntity);
+		GSList[selectedGameState].scenes[selectedScene].mEntities.erase(*selectedEntity);
 		selectedEntity = nullptr;
 	}
 }
@@ -546,7 +545,7 @@ void EditorManager::Paste()
 		//Clone Entity;
 		LOG_INFO("Enitity Pasted");
 		Entity e = Clone(copyEntity.first);
-		allEntities[selectedGameState][selectedScene].insert(e);
+		GSList[selectedGameState].scenes[selectedScene].mEntities.insert(e);
 		if (copyEntity.second == 2)//cut
 		{
 			//copyEntity.first.Destroy();
@@ -624,7 +623,23 @@ Math::Vec2 EditorManager::GetEditorGameMousePos()
 }
 
 
-
+void EditorManager::NewScene()
+{
+	static int sn = 1;
+	SceneData sceneData{};
+	sceneData.name = "NewScene" + std::to_string(sn++);
+	GSList[selectedGameState].scenes.push_back(sceneData);
+	selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+}
+void EditorManager::NewGameState()
+{
+	static int gn = 1;
+	GameStateData gameStateData{};
+	gameStateData.name = "NewGameState" + std::to_string(gn++);
+	GSList.push_back(gameStateData);
+	selectedGameState = (int)GSList.size() - 1;
+	selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+}
 
 
 
