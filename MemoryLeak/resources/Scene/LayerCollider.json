@@ -1,7 +1,7 @@
 [
     {
         "General": {
-            "name": "Building",
+            "name": "Building1",
             "tag": 3,
             "subtag": 0,
             "isActive": true
@@ -26,16 +26,65 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\lighthouse.png",
-            "layer": 0
+            "layer": 10
         },
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 50.0
+                "Y": 30.0
             },
             "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.699999988079071
+                "X": 0.3,
+                "Y": 0.8
+            },
+            "renderFlag": true
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -70.0
+            },
+            "scaleOffset": 0.30000001192092896,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Building2",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 269.0,
+                "Y": 325.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 300.0,
+                "Y": 180.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\lighthouse.png",
+            "layer": 10
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 30.0
+            },
+            "scaleOffset": {
+                "X": 0.3,
+                "Y": 0.8
             },
             "renderFlag": true
         },

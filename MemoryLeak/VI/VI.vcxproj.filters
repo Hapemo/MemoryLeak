@@ -49,6 +49,7 @@
     <ClCompile Include="source\ECS\PrefabManager.cpp" />
     <ClCompile Include="source\Graphics\ButtonManager.cpp" />
     <ClCompile Include="source\Graphics\VIzmo.cpp" />
+    <ClCompile Include="source\LayerManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -169,6 +170,9 @@
     <ClInclude Include="include\Graphics\ButtonManager.h" />
     <ClInclude Include="include\Graphics\VIzmo.h" />
     <ClInclude Include="include\Graphics\VIzmoProps.h" />
+    <ClInclude Include="include\LayerManager.h" />
+    <ClInclude Include="include\Physics\Contact.h" />
+    <ClInclude Include="include\Physics\ColliderType.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />
