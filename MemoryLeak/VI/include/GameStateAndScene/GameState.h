@@ -20,9 +20,9 @@ public:
 	void Unload();
 	void Restart();
 	
-private:
 	std::string mName;
 	std::vector<Scene> mScenes;
+private:
 
 };
 

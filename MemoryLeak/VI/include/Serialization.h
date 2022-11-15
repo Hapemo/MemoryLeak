@@ -51,8 +51,8 @@ using namespace rapidjson;
 class SerializationManager : public System
 {
 public:
-	void LoadScene(Scene& _scene, std::filesystem::path _filename);
-	void SaveScene(Scene& _scene);
+	void LoadScene(Scene& _sceneData, std::filesystem::path _filename);
+	void SaveScene(Scene& _sceneData);
 	void LoadGameState(GameState& _gameState, std::filesystem::path _filename);
 	void SaveGameState(GameState& _gameState);
 

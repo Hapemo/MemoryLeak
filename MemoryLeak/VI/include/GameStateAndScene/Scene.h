@@ -83,7 +83,7 @@ public:
 	void RemoveEntity(Entity const&);
 
 	std::set<Entity> mEntities;			// Entities in the scene 
-	bool pause;											// Paused state of the scene
+	bool mIsPause;											// Paused state of the scene
 	ResourceManager::GUID mGuid;		// Scene's GUID
 	std::string mName;
 	Transform mCamera;

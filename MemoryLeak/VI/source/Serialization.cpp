@@ -42,9 +42,9 @@ Math::Vec2 SerializationManager::GetVec2(Value& vecIn)
 \return
 None.
 *******************************************************************************/
-void SerializationManager::LoadScene(Scene& _scene, std::filesystem::path _filename)
+void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _filename)
 {
-	Scene sceneData{};
+	//Scene sceneData{};
 	
 	//"../resources/Scene/SceneJ.json"
 	//std::string path = "../resources/Scene/" + _filename + ".json";
@@ -52,22 +52,22 @@ void SerializationManager::LoadScene(Scene& _scene, std::filesystem::path _filen
 	std::ifstream ifs(_filename.string());
 	if (!ifs.good())
 	{
-		LOG_ERROR("Can't open json file! : " + path);
+		LOG_ERROR("Can't open json file! : " + _filename.stem().string());
 	}
 	else
-		LOG_INFO("Opening Scene: " + path);
+		LOG_INFO("Opening Scene: " + _filename.stem().string());
 
-	sceneData.mName = _filename.stem().string();
+	_sceneData.mName = _filename.stem().string();
 	int same = 0;
 	for (std::string s : allsceneFilename)
 	{
-		if (s == _filename)
+		if (s == _sceneData.mName)
 			same++;
 	}
-	allsceneFilename.push_back(sceneData.mName);
+	allsceneFilename.push_back(_sceneData.mName);
 	if (same != 0)
-		sceneData.mName += (" (" + std::to_string(same) + ")");
-	sceneFilename = sceneData.mName;
+		_sceneData.mName += (" (" + std::to_string(same) + ")");
+	sceneFilename = _sceneData.mName;
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
@@ -152,7 +152,7 @@ void SerializationManager::LoadScene(Scene& _scene, std::filesystem::path _filen
 			}
 
 			//mEntities.insert(e);
-			sceneData.mEntities.insert(e);
+			_sceneData.mEntities.insert(e);
 		}
 	}
 	else////////////to be deleted REMOVEME
@@ -376,14 +376,13 @@ void SerializationManager::LoadScene(Scene& _scene, std::filesystem::path _filen
 				e.AddComponent<Script>(script);
 			}
 			//mEntities.insert(e);
-			sceneData.mEntities.insert(e);
+			_sceneData.mEntities.insert(e);
 			i++;
 		}
 	}
 
 	//logicSystem->Init();
 	ifs.close();
-	return sceneData;
 }
 General SerializationManager::getGeneral(Value& entity)
 {
@@ -748,7 +747,7 @@ void SerializationManager::addVectorsMember(Document& scene, Value& parent, cons
 \return
 None.
 *******************************************************************************/
-void SerializationManager::SaveScene(Scene& _scene)
+void SerializationManager::SaveScene(Scene& _sceneData)
 {
 	Document scene;
 	auto& allocator = scene.GetAllocator();
@@ -758,7 +757,7 @@ void SerializationManager::SaveScene(Scene& _scene)
 	PrettyWriter<StringBuffer> writer(buffer);
 	//int counter = 0;
 	
-	for (const Entity& e : sceneData.mEntities)
+	for (const Entity& e : _sceneData.mEntities)
 	{
 		if (!e.HasComponent<General>())
 			continue;
@@ -846,15 +845,15 @@ void SerializationManager::SaveScene(Scene& _scene)
 
 	scene.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
-	std::string path = "../resources/Scene/" + sceneData.name + ".json";
+	std::string path = "../resources/Scene/" + _sceneData.mName + ".json";
 	std::ofstream ofs(path);
 	ofs << jsonf;
 	if (!ofs.good() )
 	{
-		LOG_ERROR("Unable to save scene to: " + path);
+		LOG_ERROR("Unable to save scene to: " + _sceneData.mName);
 	}
 	else
-		LOG_INFO("Saved Scene: " + path);
+		LOG_INFO("Saved Scene: " + _sceneData.mName);
 }
 
 void SerializationManager::addGeneral(Document& scene, Value& entity, General general)
@@ -1046,30 +1045,29 @@ void SerializationManager::addScript(Document& scene, Value& entity, Script scri
 
 void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem::path _filename)
 {
-	GameState gameStateData{};
+	//GameState gameStateData{};
 	//std::vector<std::string> scenefilename{};
-	std::string path = "../resources/GameStates/" + _filename + ".json";
+	//std::string path = "../resources/GameStates/" + _filename + ".json";
 	//std::ifstream ifs(path);
 	std::ifstream ifs(_filename.string());
 	if (!ifs.good())
 	{
-		LOG_ERROR("Can't open json file! : " + path);
-		return gameStateData;
+		LOG_ERROR("Can't open json file! : " + _filename.stem().string());
 	}
 	else
-		LOG_INFO("Opening game state: " + path);
-	gameStateData.name = _filename;
+		LOG_INFO("Opening game state: " + _filename.stem().string());
+	_gameState.mName = _filename.stem().string();
 	int same = 0;
 	for (std::string s : allgameStateFilename)
 	{
-		if (s == _filename)
+		if (s == _gameState.mName)
 			same++;
 	}
-	allgameStateFilename.push_back(_filename);
+	allgameStateFilename.push_back(_gameState.mName);
 	if (same != 0)
-		gameStateData.name += (" ("+ std::to_string(same) + ")");
+		_gameState.mName += (" ("+ std::to_string(same) + ")");
 
-	gameStateFilename = gameStateData.name;
+	gameStateFilename = _gameState.mName;
 	std::stringstream contents;
 	contents << ifs.rdbuf();
 	Document doc;
@@ -1079,28 +1077,25 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	entity = doc.GetArray();
 	for (rapidjson::SizeType index = 0; index < entity.Size(); ++index)
 	{
-		SceneData sceneData;
-		sceneData.name = entity[index]["SceneName"].GetString();
-		sceneData.camera = getTransform(entity[index]);
-		//sceneData.camera.scale = GetVec2(entity[index]["CameraZoom"]);
-		//sceneData.camera.translation = GetVec2(entity[index]["CameraPos"]);
-		sceneData.isActive = entity[index]["isActive"].GetBool();
-		sceneData.layer = entity[index]["layer"].GetInt();
-		sceneData.order = entity[index]["order"].GetInt();
+		Scene sceneData;
+		sceneData.mName = entity[index]["SceneName"].GetString();
+		sceneData.mCamera = getTransform(entity[index]);
+		sceneData.mIsPause = entity[index]["isActive"].GetBool();
+		sceneData.mLayer = entity[index]["layer"].GetInt();
+		sceneData.mOrder = entity[index]["order"].GetInt();
 
 
-		gameStateData.scenes.push_back(sceneData);
-		//allsceneFilename.push_back(sceneData.name);
+		_gameState.mScenes.push_back(sceneData);
 	}
 	ifs.close();
-	for (int s = 0;s < gameStateData.scenes.size(); s++)
-	{
-		gameStateData.scenes[s] = LoadScene(gameStateData.scenes[s].name);
+	for (int s = 0;s < _gameState.mScenes.size(); s++)
+	{/// Scene::GetInstance()->AddScene(_gameState.mScenes[s].mName);
+		std::string name = "../resources/Scene/" + _gameState.mScenes[s].mName + ".json";
+		std::filesystem::path path { name };
+		LoadScene(_gameState.mScenes[s], path);
 		LOG_INFO("loaded a scene");
 	}
-
-	return gameStateData;
-
+	//return gameStateData;
 }
 void SerializationManager::SaveGameState(GameState& _gameState)
 {
