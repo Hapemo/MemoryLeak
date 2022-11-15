@@ -158,6 +158,18 @@ void LayerManager::Update(const double& _dt) {
 	}
 
 	for (auto& item : mUpdateList) {
+		bool isColliding = false;
+		for (int c = 0; c < (int)stack.size(); c++)
+		{
+			if (item.obj[0].id == stack[c].first.id || item.obj[1].id == stack[c].first.id)
+			{
+				isColliding = true;
+				break;
+			}
+
+		}
+		if (isColliding)
+			continue;
 		if (item.obj[0].HasComponent<Sprite>() && item.obj[1].HasComponent<Sprite>()) {
 			if (item.obj[0].GetComponent<General>().tag == TAG::PLAYER) {
 				//if (item.obj[0].GetComponent<Transform>().translation.y > item.obj[1].GetComponent<Transform>().translation.y) 
@@ -178,17 +190,21 @@ void LayerManager::Update(const double& _dt) {
 			}
 		}
 	}
-	for (std::pair<Entity, int> entity : stack)
+	//for (std::pair<Entity, int> entity : stack)
+	for(int c = 0; c < (int)stack.size(); c++)
 	{
 		bool isColliding = false;
 		for (auto& item : mUpdateList) {
-			if (item.obj[0].id == entity.first.id || item.obj[0].id == entity.first.id)
+			if (item.obj[0].id == stack[c].first.id || item.obj[1].id == stack[c].first.id)
 			{
 				isColliding = true;
 			}
 		}
-		if(isColliding == false)//not coliding with anything
-			entity.first.GetComponent<Sprite>().layer = entity.second;
+		if (isColliding == false)//not coliding with anything
+		{
+			stack[c].first.GetComponent<Sprite>().layer = stack[c].second;
+			stack.erase(stack.begin()+c);
+		}
 	}
 	mUpdateList.clear();
 }
