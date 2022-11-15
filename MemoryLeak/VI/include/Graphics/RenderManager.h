@@ -215,6 +215,7 @@ public:
 	VIzmo& GetGizmo() { return mGizmo; }
 
 	void SelectEntity(const Entity& _e);
+	void SelectEntities(std::vector<Entity>const& _es);
 	void UnselectEntity(const Entity& _e);
 	void ClearSelectedEntities();
 

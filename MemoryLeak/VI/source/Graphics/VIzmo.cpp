@@ -38,7 +38,7 @@ void VIzmo::Update(const Math::Vec2& _mouseCoordinates)
 	if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
 	{
 		for (auto itr = mButtonPos.begin(); itr != mButtonPos.end(); ++itr)
-			if (std::powf(_mouseCoordinates.x - itr->second.x, 2) + std::powf(_mouseCoordinates.y - itr->second.y, 2) < GIZMO_BUTTON_SIZE * 2.5f)
+			if (std::powf(_mouseCoordinates.x - itr->second.x, 2) + std::powf(_mouseCoordinates.y - itr->second.y, 2) < GIZMO_BUTTON_SIZE * 5.f)
 				mSelected = itr->first;
 		return;
 	}

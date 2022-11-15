@@ -76,8 +76,6 @@ struct Sprite
 
 struct Button
 {
-	GLuint onHoverTexture = 0;
-	GLuint onClickTexture = 0;
 	bool interactable = true;
 	bool isHover = false;
 	bool isClick = false;

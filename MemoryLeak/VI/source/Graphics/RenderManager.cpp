@@ -12,6 +12,8 @@ operates on Entities with Sprite and Transform Components.
 #include "pch.h"
 #include "RenderProps.h"
 #include "Input.h"
+#include <ECSManager.h>
+
 
 /*!*****************************************************************************
 \brief
@@ -89,8 +91,9 @@ void RenderManager::Render()
 
 	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
-	mGizmo.Update(Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) +
-		Math::Vec2(-*mWindowWidth / 2.f, *mWindowHeight / 2.f) - mGameCam.GetPos());
+	if (mGizmo.GetAttached().id != 0)
+		mGizmo.Update(editorManager->GetEditorWorldMousePos() + mWorldCam.GetPos());
+
 	CreateVertices(textureInfo);
 	/*************************************CREATING VERTICES END**************************************/
 
@@ -221,11 +224,22 @@ void RenderManager::RenderDebug()
 {
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 	{
+		Color blue{ 0,0,255,100 };
 		Transform t;
 		t.rotation = 0;
 		t.scale = mGameCam.GetZoom() * mGameCam.GetWindowDim();
 		t.translation = mGameCam.GetPos();
-		CreateDebugSquare(t, {0, 255, 0, 255});
+		CreateDebugSquare(t, blue);
+		CreateDebugLine(t, blue);
+		t.rotation += (float)Math::PI / 2.f;
+		t.scale = { t.scale.y, t.scale.x };
+		CreateDebugLine(t, blue);
+		t.rotation += (float)Math::PI / 2.f;
+		t.scale = { t.scale.y, t.scale.x };
+		CreateDebugLine(t, blue);
+		t.rotation += (float)Math::PI / 2.f;
+		t.scale = { t.scale.y, t.scale.x };
+		CreateDebugLine(t, blue);
 	}
 	for (const Entity& e : mEntities)
 	{
@@ -313,6 +327,23 @@ void RenderManager::RenderDebug()
 		}
 	}
 
+	for (const Entity& e : mEditorSelectedEntities)
+	{
+		Color blue{ 0,0,255,100 };
+		Transform xform = e.GetComponent<Transform>();
+		CreateDebugSquare(xform, blue);
+		CreateDebugLine(xform, blue);
+		xform.rotation += (float)Math::PI / 2.f;
+		xform.scale = { xform.scale.y, xform.scale.x };
+		CreateDebugLine(xform, blue);
+		xform.rotation += (float)Math::PI / 2.f;
+		xform.scale = { xform.scale.y, xform.scale.x };
+		CreateDebugLine(xform, blue);
+		xform.rotation += (float)Math::PI / 2.f;
+		xform.scale = { xform.scale.y, xform.scale.x };
+		CreateDebugLine(xform, blue);
+	}
+
 	/***************************************DEBUG BATCHING START*************************************/
 	BatchRenderArrays(GL_POINTS, mDebugPoints);
 	BatchRenderElements(GL_LINES, mDebugVertices, mDebugIndices);
@@ -395,14 +426,6 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 		case SPRITE::TEXTURE:
 		{
 			GLuint texid = e.GetComponent<Sprite>().texture;
-			if (e.HasComponent<Button>())
-			{
-				Button btn = e.GetComponent<Button>();
-				if (btn.isHover)
-					texid = btn.onHoverTexture;
-				if (btn.isClick)
-					texid = btn.onClickTexture;
-			}
 
 			if (texid != 0)
 			{
@@ -598,14 +621,6 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	glm::vec4 clr = GetColor(_e);
 	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
-	if (_e.HasComponent<Button>())
-	{
-		Button btn = _e.GetComponent<Button>();
-		if (btn.isHover)
-			texID = static_cast<float>(btn.onHoverTexture);
-		if (btn.isClick)
-			texID = static_cast<float>(btn.onClickTexture);
-	}
 
 	float texMin{};
 	float texMax{ 1.f };
@@ -1191,10 +1206,13 @@ void RenderManager::CreateGizmo()
 
 void RenderManager::SelectEntity(const Entity& _e)
 {
-	for (const Entity& e : mEditorSelectedEntities)
-		if (e.id == _e.id)
-			return;
+	ClearSelectedEntities();
 	mEditorSelectedEntities.push_back(_e);
+}
+
+void RenderManager::SelectEntities(std::vector<Entity>const& _es)
+{
+	mEditorSelectedEntities = _es;
 }
 
 void RenderManager::UnselectEntity(const Entity& _e)

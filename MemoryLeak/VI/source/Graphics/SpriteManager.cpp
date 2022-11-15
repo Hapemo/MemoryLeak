@@ -91,15 +91,3 @@ void SpriteManager::SetTexture(const Entity& e, const std::string& texture_path)
 	if (!e.HasComponent<Sprite>()) return;
 	e.GetComponent<Sprite>().texture = GET_TEXTURE_ID(texture_path);
 }
-
-void SpriteManager::SetButtonHoverTexture(const Entity& _e, const std::string& _texture_path)
-{
-	if (!_e.HasComponent<Button>()) return;
-	_e.GetComponent<Button>().onHoverTexture = GET_TEXTURE_ID(_texture_path);
-}
-
-void SpriteManager::SetButtonClickTexture(const Entity& _e, const std::string& _texture_path)
-{
-	if (!_e.HasComponent<Button>()) return;
-	_e.GetComponent<Button>().onClickTexture = GET_TEXTURE_ID(_texture_path);
-}
