@@ -17,6 +17,8 @@ Added load and unload of scene using resourceManager
 #include "ECSManager.h"
 #include "ResourceManager.h"
 
+class Transform;
+
 class Scene {
 public:
 	Scene();
@@ -86,6 +88,9 @@ public:
 	bool pause;											// Paused state of the scene
 	ResourceManager::GUID mGuid;		// Scene's GUID
 	std::string mName;
+	Transform mCamera;
+	int mLayer;
+	int mOrder;
 
 private:
 };

@@ -68,7 +68,7 @@ void Scene::Save(std::string _name) {
 		// Check if file name exists. If yes, just override it. If not, make a new one with a new guid and use it
 		std::filesystem::path pathName = ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene);
 		_name = pathName.string() + _name;
-		if (ResourceManager::GetInstance()->FileExist(_name)) {
+		if (ResourceManager::FileExist(_name)) {
 			LOG_CUSTOM("SCENE", "Saving scene into existing scene file: " + _name);
 		} else mGuid = ResourceManager::GetInstance()->GUIDGenerator(_name); // Else create a new guid for it
 	}

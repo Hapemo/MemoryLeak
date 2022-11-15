@@ -16,6 +16,8 @@
     <ClInclude Include="include\GameState\MainMenu.h" />
     <ClInclude Include="include\Scripts\TestScript.h" />
     <ClInclude Include="include\GameState\JazzGS.h" />
+    <ClInclude Include="include\NewGameState.h" />
+    <ClInclude Include="include\NewGameStateManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Scene\Scene.cpp" />
@@ -34,5 +36,7 @@
     <ClCompile Include="source\GameState\MainMenu.cpp" />
     <ClCompile Include="source\Scripts\TestScript.cpp" />
     <ClCompile Include="source\GameState\JazzGS.cpp" />
+    <ClCompile Include="source\NewGameState.cpp" />
+    <ClCompile Include="source\NewGameStateManager.cpp" />
   </ItemGroup>
 </Project>

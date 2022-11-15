@@ -18,6 +18,7 @@ start up of window and game system, also runs their update functions.
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
 #include "ScriptManager.h"
+#include "NewGameStateManager.h"
 
 // Static variables
 int Application::window_width{};
@@ -33,7 +34,7 @@ void Application::startup() {
   Input::Init(ptr_window);
   GlewStartUp();
   ECSManager::ECS_init();
-  GameStateManager::GetInstance()->Init();
+  //GameStateManager::GetInstance()->Init();
 }
 
 void Application::SystemInit() {
@@ -102,6 +103,7 @@ void Application::init() {
   //audioManager->PlayBGSound("PIntro", 10);
   audioManager->PlayBGSound("BINGBIAN", 10);
   //audioManager->PlayBGSound("MENUBG", 10);
+  NewGameStateManager::GetInstance()->Init();
 }
 
 void Application::FirstUpdate() {
@@ -136,7 +138,8 @@ void Application::exit() {
   audioManager->Unload();
   spriteManager->FreeTextures();
   ResourceManager::GetInstance()->UnloadAllResources();
-  GameStateManager::GetInstance()->Exit();
+  //GameStateManager::GetInstance()->Exit();
+  NewGameStateManager::GetInstance()->Exit();
   ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   SingletonManager::destroyAllSingletons();
   // Part 2
@@ -168,6 +171,7 @@ void Application::loadConfig(std::string path) {
     else if (key == "fps_limit") FPSManager::mLimitFPS = static_cast<double>(stoi(value));
     else if (key == "starting_gamestate") GameStateManager::GetInstance()->SetStartingGS(static_cast<E_GS>(stoi(value)));
     else if (key == "load_all_resources") Application::mLoadAllResources = stoi(value);
+    else if (key == "new_starting_gamestate") NewGameStateManager::GetInstance()->ChangeGameState(value);
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";

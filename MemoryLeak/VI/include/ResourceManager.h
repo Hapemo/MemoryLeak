@@ -242,7 +242,7 @@ public:
 	\return bool
 	- True if the file exists, otherwise false
 	*******************************************************************************/
-	bool FileExist(std::string const&);
+	static bool FileExist(std::string const&);
 
 	// Load all resources to resource manager
 	/*!*****************************************************************************

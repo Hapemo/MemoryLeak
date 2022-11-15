@@ -15,6 +15,7 @@ main file of the whole program
 #include "GameStateManager.h"
 #include "SignalHandler.h"
 #include "SparseSet.h"
+#include "NewGameStateManager.h"
 
 /*  _________________________________________________________________________ */
 /*! main
@@ -45,8 +46,9 @@ void real_main() {
 
     // Part 2
     while (!glfwWindowShouldClose(Application::getWindow())) {
-        GameStateManager::GetInstance()->Update();
-        if (GameStateManager::GetInstance()->GetNextGS() == E_GS::EXIT) break;
+      NewGameStateManager::GetInstance()->Update();
+        //GameStateManager::GetInstance()->Update();
+        //if (GameStateManager::GetInstance()->GetNextGS() == E_GS::EXIT) break;
     }
 
     // Part 3

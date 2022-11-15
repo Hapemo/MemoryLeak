@@ -80,10 +80,10 @@ public:
 	void PrimaryUnload();
 
 protected:
-	void LoadWithGUID(ResourceManager::GUID const&);
-	void UnloadWithGUID();
-	void CreateScene(std::string const& = "");
-	void SaveGameState();
+	void LoadWithGUID(ResourceManager::GUID const&); // Deprecated
+	void UnloadWithGUID(); // Deprecated
+	void CreateScene(std::string const& = ""); // Deprecated
+	void SaveGameState(); // Deprecated
 
 	/*!*****************************************************************************
 	Unload any resources used in the game state, such as art assets and heap memory
@@ -98,5 +98,5 @@ protected:
 
 	std::vector<Scene*> mScenes;
 	std::set<Entity> mEntities; // (Deprecated)
-	ResourceManager::GUID mGuid;
+	ResourceManager::GUID mGuid; // Deprecated
 };
