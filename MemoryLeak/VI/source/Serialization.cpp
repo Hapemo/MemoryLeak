@@ -41,14 +41,14 @@ Math::Vec2 SerializationManager::GetVec2(Value& vecIn)
 \return
 None.
 *******************************************************************************/
-SceneData SerializationManager::LoadScene(std::string _filename)
+void SerializationManager::LoadScene(Scene& _scene, std::filesystem::path _filename)
 {
-	SceneData sceneData{};
+	Scene sceneData{};
 	
 	//"../resources/Scene/SceneJ.json"
 	std::string path = "../resources/Scene/" + _filename + ".json";
-	std::ifstream ifs(path);
-	//std::ifstream ifs(filename);
+	//std::ifstream ifs(path);
+	std::ifstream ifs(_filename.string());
 	if (!ifs.good())
 	{
 		LOG_ERROR("Can't open json file! : " + path);
@@ -748,7 +748,7 @@ void SerializationManager::addVectorsMember(Document& scene, Value& parent, cons
 \return
 None.
 *******************************************************************************/
-void SerializationManager::SaveScene(SceneData sceneData)
+void SerializationManager::SaveScene(Scene& _scene)
 {
 	Document scene;
 	auto& allocator = scene.GetAllocator();
@@ -1044,13 +1044,13 @@ void SerializationManager::addScript(Document& scene, Value& entity, Script scri
 
 
 
-GameStateData SerializationManager::LoadGameState(std::string _filename)
+void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem::path _filename)
 {
-	GameStateData gameStateData{};
+	GameState gameStateData{};
 	//std::vector<std::string> scenefilename{};
 	std::string path = "../resources/GameStates/" + _filename + ".json";
-	std::ifstream ifs(path);
-	//std::ifstream ifs(filename);
+	//std::ifstream ifs(path);
+	std::ifstream ifs(_filename.string());
 	if (!ifs.good())
 	{
 		LOG_ERROR("Can't open json file! : " + path);
@@ -1102,7 +1102,7 @@ GameStateData SerializationManager::LoadGameState(std::string _filename)
 	return gameStateData;
 
 }
-void SerializationManager::SaveGameState(GameStateData gameStateData)
+void SerializationManager::SaveGameState(GameState& _gameState)
 {
 
 	//scave each scene
