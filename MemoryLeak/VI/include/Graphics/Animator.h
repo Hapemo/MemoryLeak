@@ -72,6 +72,8 @@ public:
 	None.
 	*******************************************************************************/
 	void AddImages(const Entity& _e, const std::vector<GLuint>& _frames);
+
+	void ManualSwap(const Entity& _e, int _index);
 private:
 	/*!*****************************************************************************
 	\brief

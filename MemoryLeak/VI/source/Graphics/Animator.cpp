@@ -36,8 +36,10 @@ None.
 void Animator::Animate(const Entity& _e)
 {
 	if (!_e.GetComponent<General>().isActive) return;
+	if (!_e.HasComponent<Sprite>()) return;
 	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<Animation>()) return;
+	if (_e.GetComponent<Animation>().timePerImage < 0) return;
 	if (!_e.GetComponent<Animation>().images.size())
 	{
 		//if image vector is empty, initialize it with the texture in its sprite component
@@ -98,4 +100,16 @@ None.
 void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames)
 {
 	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
+}
+
+void Animator::ManualSwap(const Entity& _e, int _index)
+{
+	if (!_e.HasComponent<Sprite>()) return;
+	if (!_e.HasComponent<Animation>()) return;
+	if (_index > _e.GetComponent<Animation>().images.size())
+	{
+		LOG_WARN("Animator::ManualSwap(const Entity& _e, int _index) - Vector subscript out of range! _index > images.size()");
+		return;
+	}
+	_e.GetComponent<Sprite>().texture = _e.GetComponent<Animation>().images[_index];
 }
