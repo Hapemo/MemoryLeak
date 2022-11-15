@@ -53,7 +53,7 @@ void HierarchyPanel::Update()
 					if (ImGui::Button(saveGSbtn.c_str()))
 					{
 						//serializationManager->SaveGameState(allNames[g], allEntities[g]);
-						serializationManager->SaveGameState(GSList[g]);
+						////serializationManager->SaveGameState(GSList[g]);
 					}
 					ImGui::PopStyleColor();
 					std::string removeGSbtn = "REMOVE " + GSList[g].name + " GameState";
@@ -88,7 +88,7 @@ void HierarchyPanel::Update()
 								if (ImGui::Button(saveScenebtn.c_str()))
 								{
 									//serializationManager->SaveScene(allNames[g].second[s], allEntities[g][s]);
-									serializationManager->SaveScene(GSList[g].scenes[s]);
+									////serializationManager->SaveScene(GSList[g].scenes[s]);
 								}
 								ImGui::PopStyleColor();
 								std::string removeScenebtn = "REMOVE " + GSList[g].scenes[s].name + " Scene";
@@ -175,7 +175,7 @@ void HierarchyPanel::Update()
 					std::string newScenebtn = "NEW "+ GSList[g].name  +" Scene";
 					if (ImGui::Button(newScenebtn.c_str()))
 					{//FUNCTION GS SCENE
-						NewScene();
+						////NewScene();
 						//static int sn = 1;
 						//std::set<Entity> newSecen{};
 						//allEntities[g].push_back(newSecen);
@@ -192,7 +192,7 @@ void HierarchyPanel::Update()
 
 		if (ImGui::Button("NEW GameState"))
 		{//FUNCTION GS SCENE
-			NewGameState();
+			////NewGameState();
 
 			//static int gn = 1;
 			//std::vector < std::set<Entity>> newGS{};

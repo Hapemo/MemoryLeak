@@ -137,11 +137,11 @@ private:
 	void addScript(Document& scene, Value& entity, Script script);
 
 public:
-	static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
-	static SceneData LoadSceneData(std::string const& _filePath);
-	static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid); // (Deprecated)
-	static GameStateData LoadGameStateData(std::string const& _filePath); // (Deprecated)
-	static void SaveSceneData(ResourceManager::GUID const&);
+	//static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
+	//static SceneData LoadSceneData(std::string const& _filePath);
+	//static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid); // (Deprecated)
+	//static GameStateData LoadGameStateData(std::string const& _filePath); // (Deprecated)
+	//static void SaveSceneData(ResourceManager::GUID const&);
 
 };
 
