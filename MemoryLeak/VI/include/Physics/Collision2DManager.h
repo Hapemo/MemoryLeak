@@ -73,7 +73,7 @@ public:
 	*******************************************************************************/
 	Entity obj[2]{};				// Array of entity
 	int objType[2]{};				// Array of entity objType
-	double interTime{};				// Collision time
+	//double interTime{};				// Collision time
 	Math::Vec2 normal{};			// Collision normal
 	float penetration{};			// Collision penetration depths
 	float combinedRestitution{};	// Combined restitution value
@@ -220,9 +220,9 @@ public:
 	*******************************************************************************/
 	void ClearContactList();
 
-	void ResolveContact(Contact& _contact, const double& _dt);
-	void ResolvePositions();
+	void ResolveContact(Contact& _contact);
 	void PositionCorrection(Contact& _contact);
+	//void ResolvePositions();
 	//void ResolveVelocities(const double& _dt);
 	//void ResolveContactVelocity(Contact& _contact, const double& _dt);
 	//void ResolvePenetration(Contact& _contact);

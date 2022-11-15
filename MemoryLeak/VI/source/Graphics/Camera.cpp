@@ -14,7 +14,7 @@ This file contains a basic camera system for moving and zooming in/out.
 Default constructor for Camera class.
 *******************************************************************************/
 Camera::Camera() : mPos(0.f, 0.f), mZoom(1.f), 
-	mWindowWidth(0), mWindowHeight(0) {}
+	mWindowWidth(0), mWindowHeight(0), mInitialPos(0, 0), mInitialZoom(1.f) {}
 
 /*!*****************************************************************************
 \brief
@@ -133,6 +133,6 @@ Resets the camera to its default position and zoom.
 *******************************************************************************/
 void Camera::Reset()
 {
-	mPos = { 0.f, 0.f };
-	mZoom = 1.f;
+	mPos = mInitialPos;
+	mZoom = mInitialZoom;
 }
