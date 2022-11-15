@@ -1,9 +1,8 @@
 #pragma once
 #include "pch.h"
+#include "Scene.h"
 
-class Scene;
-
-class NewGameState {
+class GameState {
 public:
 	void Init();
 	void Update();
@@ -11,8 +10,13 @@ public:
 	void Exit();
 
 	// Load new gamestate with file path
-	void AddScene(std::string const& _path);
+	
+
+	void AddScene(std::string const& _path); //{ // filesystem
+		//mScenes.emplace_back(SerialisationManager::LoadScene("NAME"));
+	//}
 	void RemoveScene(std::string const& _name); 
+	void Load(std::filesystem::path const& _path);
 	void Unload();
 	void Restart();
 	

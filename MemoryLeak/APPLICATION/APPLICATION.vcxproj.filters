@@ -1,42 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\Application.h" />
-    <ClInclude Include="include\GameState.h" />
-    <ClInclude Include="include\GameStateManager.h" />
-    <ClInclude Include="include\GameState\AIDemo.h" />
-    <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
-    <ClInclude Include="include\GameState\Lighting.h" />
-    <ClInclude Include="include\GameState\ScriptingDemo.h" />
     <ClInclude Include="include\Scripts\RotateScript.h" />
     <ClInclude Include="include\Scripts\ScaleScript.h" />
-    <ClInclude Include="include\GameState\GameStatePhysics.h" />
-    <ClInclude Include="include\GameState\Level1.h" />
-    <ClInclude Include="include\GameState\MainMenu.h" />
     <ClInclude Include="include\Scripts\TestScript.h" />
-    <ClInclude Include="include\GameState\JazzGS.h" />
-    <ClInclude Include="include\NewGameState.h" />
-    <ClInclude Include="include\NewGameStateManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Scene\Scene.cpp" />
     <ClCompile Include="source\Application.cpp" />
-    <ClCompile Include="source\GameState.cpp" />
-    <ClCompile Include="source\GameStateManager.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\GameState\AIDemo.cpp" />
-    <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
-    <ClCompile Include="source\GameState\Lighting.cpp" />
-    <ClCompile Include="source\GameState\ScriptingDemo.cpp" />
     <ClCompile Include="source\Scripts\RotateScript.cpp" />
     <ClCompile Include="source\Scripts\ScaleScript.cpp" />
-    <ClCompile Include="source\GameState\GameStatePhysics.cpp" />
-    <ClCompile Include="source\GameState\Level1.cpp" />
-    <ClCompile Include="source\GameState\MainMenu.cpp" />
     <ClCompile Include="source\Scripts\TestScript.cpp" />
-    <ClCompile Include="source\GameState\JazzGS.cpp" />
-    <ClCompile Include="source\NewGameState.cpp" />
-    <ClCompile Include="source\NewGameStateManager.cpp" />
   </ItemGroup>
 </Project>

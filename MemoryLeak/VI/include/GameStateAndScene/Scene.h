@@ -17,8 +17,6 @@ Added load and unload of scene using resourceManager
 #include "ECSManager.h"
 #include "ResourceManager.h"
 
-class Transform;
-
 class Scene {
 public:
 	Scene();

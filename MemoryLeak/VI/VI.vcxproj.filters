@@ -49,6 +49,9 @@
     <ClCompile Include="source\ECS\PrefabManager.cpp" />
     <ClCompile Include="source\Graphics\ButtonManager.cpp" />
     <ClCompile Include="source\Graphics\VIzmo.cpp" />
+    <ClCompile Include="source\GameStateAndScene\GameState.cpp" />
+    <ClCompile Include="source\GameStateAndScene\GameStateManager.cpp" />
+    <ClCompile Include="source\GameStateAndScene\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -169,6 +172,9 @@
     <ClInclude Include="include\Graphics\ButtonManager.h" />
     <ClInclude Include="include\Graphics\VIzmo.h" />
     <ClInclude Include="include\Graphics\VIzmoProps.h" />
+    <ClInclude Include="include\GameStateAndScene\GameState.h" />
+    <ClInclude Include="include\GameStateAndScene\GameStateManager.h" />
+    <ClInclude Include="include\GameStateAndScene\Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

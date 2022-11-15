@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(SolutionDir)APPLICATION\include;$(SolutionDir)APPLICATION\include\GameState;$(SolutionDir)APPLICATION\include\Scene;$(SolutionDir)APPLICATION\include\Scripts;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)APPLICATION\include;$(SolutionDir)APPLICATION\include\Scripts;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemGroup />

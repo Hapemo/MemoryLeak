@@ -1,5 +1,5 @@
 /*!*****************************************************************************
-\file NewGameStateManager.h
+\file GameStateManager.h
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
@@ -11,13 +11,12 @@ running.
 #pragma once
 #include "pch.h"
 #include "Singleton.h"
+#include "GameState.h"
 
-class NewGameState;
-
-class NewGameStateManager : public Singleton<NewGameStateManager> {
+class GameStateManager : public Singleton<GameStateManager> {
 public:
-	NewGameStateManager();
-	~NewGameStateManager() {};
+	GameStateManager();
+	~GameStateManager() {};
 
 	/*!*****************************************************************************
 	\brief
@@ -56,22 +55,21 @@ public:
 
 	static const std::string EXIT;
 	static const std::string RESTART;
+	static E_GSMSTATE mGSMState; 
 	
 	// This function is called by user, to change the next game state
 	// User can use game state manager's defined string type EXIT and RESTART to change state.
 	void ChangeGameState(std::string const& _path);
-
+	void UpdateNextGSMState();
 	// Editor only functionalities
-	void AddGameState(std::string const& _path);
-	void RemoveGameState(std::string const& _name);
+	//void AddGameState(std::string const& _path);
+	//void RemoveGameState(std::string const& _name);
 
 private:
-	std::vector<NewGameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode
-	NewGameState* mCurrentGameState; // During game, this shouldn't change at all. Editor mode can change this, depending on which game state is being changed.
+	std::vector<GameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode
+	GameState* mCurrentGameState; // During game, this shouldn't change at all. Editor mode can change this, depending on which game state is being changed.
 	std::string mNextGSPath;
-	static E_GSMSTATE mGSMState; 
 
 	// Update the next game state at the end of game loop (Must be called the last)
-	void UpdateNextGSMState();
 };
 

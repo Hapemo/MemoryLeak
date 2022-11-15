@@ -53,6 +53,9 @@ public:
 	*******************************************************************************/
 	static void SecondUpdate();
 
+	// Main update that runs everythign in a loop
+	static void MainUpdate();
+
 	/*!*****************************************************************************
 	 \brief
 	 Unload and clean up when exiting the application

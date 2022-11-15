@@ -11,7 +11,7 @@ Entities and its Components.
 *******************************************************************************/
 #include "GameViewPanel.h"
 #include <ECSManager.h>
-#include "../../../APPLICATION/include/GameStateManager.h"
+#include "GameStateManager.h"
 /*!*****************************************************************************
 \brief
 	Initializes the GameViewPanel editor
@@ -197,11 +197,11 @@ void GameViewPanel::ButtonClick()
 						layer = ee.GetComponent<Sprite>().layer;
 						if (ee.GetComponent<General>().subtag == SUBTAG::PLAYER)
 						{
-							GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+							//GameStateManager::GetInstance()->NextGS(E_GS::Level1);
 						}
 						if (ee.GetComponent<General>().subtag == SUBTAG::ENEMY)
 						{
-							GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
+							//GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
 						}
 					}
 				}

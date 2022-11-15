@@ -18,7 +18,7 @@ start up of window and game system, also runs their update functions.
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
 #include "ScriptManager.h"
-#include "NewGameStateManager.h"
+#include "GameStateManager.h"
 
 // Static variables
 int Application::window_width{};
@@ -103,7 +103,7 @@ void Application::init() {
   //audioManager->PlayBGSound("PIntro", 10);
   audioManager->PlayBGSound("BINGBIAN", 10);
   //audioManager->PlayBGSound("MENUBG", 10);
-  NewGameStateManager::GetInstance()->Init();
+  GameStateManager::GetInstance()->Init();
 }
 
 void Application::FirstUpdate() {
@@ -120,7 +120,7 @@ void Application::SecondUpdate() {
   PrintTitleBar(0.3);
 
   // Close the window if the close flag is triggered
-  if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
+  if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::mGSMState = GameStateManager::E_GSMSTATE::EXIT;
   /////audioManager->UpdateSound();
   
   // Reset input
@@ -132,6 +132,48 @@ void Application::SecondUpdate() {
   FPSManager::CalcDeltaTime();
 }
 
+void Application::MainUpdate() {
+  // Update gamestate and loop it. 
+  // Stop when exit or restart game state.
+  // Stop when change game state. 
+
+  // Structure is this,
+  // 
+  // Application and controls first update
+  // Editor update
+  // Logic & Systems update
+  // Graphics update
+  // Application ending update
+
+  while (GameStateManager::mGSMState != GameStateManager::E_GSMSTATE::EXIT) {
+    TRACK_PERFORMANCE("MainLoop");
+    FirstUpdate();
+
+    TRACK_PERFORMANCE("Editor");
+    editorManager->Update();
+    END_TRACK("Editor");
+
+    if (!editorManager->IsScenePaused()) {
+      GameStateManager::GetInstance()->Update(); // Game logic
+      SystemUpdate(); // Should be called after logic
+    }
+
+    TRACK_PERFORMANCE("Graphics");
+    //--------------------- Drawing and rendering ---------------------
+    renderManager->Render();
+
+    //-----------------------------------------------------------------
+    END_TRACK("Graphics");
+
+
+    // If it changes, it should've came from when updaing game logic
+    GameStateManager::GetInstance()->UpdateNextGSMState();
+
+    SecondUpdate(); // This should always be the last
+    END_TRACK("MainLoop");
+  }
+}
+
 void Application::exit() {
   ECS::DestroyAllEntities();
   editorManager->Unload();
@@ -139,7 +181,7 @@ void Application::exit() {
   spriteManager->FreeTextures();
   ResourceManager::GetInstance()->UnloadAllResources();
   //GameStateManager::GetInstance()->Exit();
-  NewGameStateManager::GetInstance()->Exit();
+  GameStateManager::GetInstance()->Exit();
   ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   SingletonManager::destroyAllSingletons();
   // Part 2
@@ -169,9 +211,9 @@ void Application::loadConfig(std::string path) {
     else if (key == "window_height") window_height = stoi(value);
     else if (key == "title") title = value;
     else if (key == "fps_limit") FPSManager::mLimitFPS = static_cast<double>(stoi(value));
-    else if (key == "starting_gamestate") GameStateManager::GetInstance()->SetStartingGS(static_cast<E_GS>(stoi(value)));
+    //else if (key == "starting_gamestate") GameStateManager::GetInstance()->SetStartingGS(static_cast<E_GS>(stoi(value)));
     else if (key == "load_all_resources") Application::mLoadAllResources = stoi(value);
-    else if (key == "new_starting_gamestate") NewGameStateManager::GetInstance()->ChangeGameState(value);
+    else if (key == "new_starting_gamestate") GameStateManager::GetInstance()->ChangeGameState(value);
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";

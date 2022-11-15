@@ -227,6 +227,9 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\freetype\ttnameid.h" />
     <ClInclude Include="include\freetype\tttables.h" />
     <ClInclude Include="include\freetype\tttags.h" />
+    <ClInclude Include="include\GameStateAndScene\GameState.h" />
+    <ClInclude Include="include\GameStateAndScene\GameStateManager.h" />
+    <ClInclude Include="include\GameStateAndScene\Scene.h" />
     <ClInclude Include="include\Graphics\ButtonManager.h" />
     <ClInclude Include="include\Graphics\Camera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
@@ -302,6 +305,9 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Editor\ViewportPanel.cpp" />
     <ClCompile Include="source\Editor\WeatherPanel.cpp" />
     <ClCompile Include="source\Editor\WorldViewPanel.cpp" />
+    <ClCompile Include="source\GameStateAndScene\GameState.cpp" />
+    <ClCompile Include="source\GameStateAndScene\GameStateManager.cpp" />
+    <ClCompile Include="source\GameStateAndScene\Scene.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
     <ClCompile Include="source\Graphics\ButtonManager.cpp" />
     <ClCompile Include="source\Graphics\Camera.cpp" />
