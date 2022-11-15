@@ -25,18 +25,20 @@ Entities and its Components.
 
 // Data that a scene class should contain
 struct SceneData {
-	std::string Name;
-	Transform camera;
-	bool isActive;
-	int layer;
-	int order;
-	std::set<Entity> mEntities;  //??
+	std::string name = "";
+	Transform camera = {};
+	bool isActive = false;
+	int layer =0;
+	int order = 0;;
+	std::set<Entity> mEntities = {};
 };
 
 //Data that a gamestate class should contain
 struct GameStateData {
-	std::string Name;
-	std::vector<SceneData> scenes;
+	std::string name = "";
+	std::vector<SceneData> scenes = {};
+
+	///
 	std::vector<ResourceManager::GUID> mGUIDs;
 };
 
@@ -48,10 +50,10 @@ using namespace rapidjson;
 class SerializationManager : public System
 {
 public:
-	std::set<Entity> LoadScene(std::string _filename);
-	void SaveScene(std::string _filename, std::set<Entity> entities);
-	std::vector<std::set<Entity>> LoadGameState(std::string& _filename, std::vector<std::string> & sceneName);
-	void SaveGameState(std::pair<  std::string, std::vector<std::string> > _filename, std::vector<std::set<Entity>> entities);
+	SceneData LoadScene(std::string _filename);
+	void SaveScene(SceneData);
+	GameStateData LoadGameState(std::string _filename);
+	void SaveGameState(GameStateData);
 	void LoadPrefab(std::string _filename = "NewPrefab");
 	void SavePrefab(std::string _filename = "NewPrefab");
 	void LoadDialogs(std::string _filename = "Dialog1");

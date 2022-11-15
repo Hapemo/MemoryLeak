@@ -176,7 +176,7 @@ void GameViewPanel::ScrollMoveCam()
 void GameViewPanel::ButtonClick()
 {
 	int layer = 0;
-	for (const Entity& ee : allEntities[selectedGameState][selectedScene])
+	for (const Entity& ee : GSList[selectedGameState].scenes[selectedScene].mEntities)
 	{
 		if (ee.GetComponent<General>().tag == TAG::ENVIRONMENT)
 		{
@@ -220,7 +220,7 @@ void GameViewPanel::NewEntity()
 	{
 		LOG_INFO("Created new entity");
 		Entity ne{ ECS::CreateEntity() };
-		(allEntities[selectedGameState][selectedScene]).insert(ne);
+		(GSList[selectedGameState].scenes[selectedScene].mEntities).insert(ne);
 		ne.AddComponent(
 			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
 			Transform{ {150,150}, 0, camMousePos },

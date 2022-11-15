@@ -88,11 +88,14 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Open GameState", "Ctrl+O"))
 			{
-				std::pair<  std::string, std::vector<std::string>> gs{};
+				/*std::pair<  std::string, std::vector<std::string>> gs{};
 				std::string GSname = filenameO_GameState;
 				allEntities.push_back(serializationManager->LoadGameState(GSname, gs.second));
 				gs.first = GSname;
-				allNames.push_back(gs);
+				allNames.push_back(gs);*/
+				GSList.push_back(serializationManager->LoadGameState(filenameO_GameState));
+				selectedGameState = (int)GSList.size() - 1;
+				selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open GameState File", NULL, false, false);
@@ -101,8 +104,8 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Save GameState As", "Ctrl+S"))
 			{
-				allNames[selectedGameState].first = filenameS_GameState;
-				serializationManager->SaveGameState(allNames[selectedGameState], allEntities[selectedGameState]);
+				//allNames[selectedGameState].first = filenameS_GameState;
+				serializationManager->SaveGameState(GSList[selectedGameState]);
 			}
 
 
@@ -113,9 +116,10 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Open Scene", "Ctrl+O"))
 			{
-				//serializationManager->LoadScene(filenameO_Scene);
-				allEntities[selectedGameState].push_back(serializationManager->LoadScene(filenameO_Scene));
-				allNames[selectedGameState].second.push_back(filenameO_Scene);
+				GSList[selectedGameState].scenes.push_back(serializationManager->LoadScene(filenameO_Scene));
+				selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+				//allEntities[selectedGameState].push_back(serializationManager->LoadScene(filenameO_Scene));
+				//allNames[selectedGameState].second.push_back(filenameO_Scene);
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Scene File", NULL, false, false);
@@ -124,7 +128,7 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Save Scene As", "Ctrl+S"))
 			{
-				serializationManager->SaveScene(filenameS_Scene, allEntities[selectedGameState][selectedScene]);
+				serializationManager->SaveScene(GSList[selectedGameState].scenes[selectedScene]);
 			}
 
 

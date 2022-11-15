@@ -139,21 +139,23 @@ void PrefabPanel::newPrefab()
 void PrefabPanel::newPrefabee(PrefabPtr pre)
 {//FUNCTION GS SCENE
 
-	if (selectedGameState >= allEntities.size())
+	if (selectedGameState >= GSList.size())
 	{
-		std::vector < std::set<Entity>> newGS{};
+		NewGameState();
+		/*std::vector < std::set<Entity>> newGS{};
 		allEntities.push_back(newGS);
 		std::pair< std::string, std::vector<std::string>> newGSNmae{};
 		newGSNmae.first = "NewGameState0";
 		allNames.push_back(newGSNmae);
-		selectedGameState = (int)allEntities.size() - 1;
+		selectedGameState = (int)allEntities.size() - 1;*/
 	}
-	if (selectedScene >= allEntities[selectedGameState].size())
+	if (selectedScene >= GSList[selectedGameState].scenes.size())
 	{
-		std::set<Entity> newSecen{};
+		NewScene();
+		/*std::set<Entity> newSecen{};
 		allEntities[selectedGameState].push_back(newSecen);
 		allNames[selectedGameState].second.push_back("NewScene0");
-		selectedScene = (int)allEntities[selectedGameState].size() - 1;
+		selectedScene = (int)allEntities[selectedGameState].size() - 1;*/
 	}
 	LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
 	LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
@@ -167,7 +169,7 @@ void PrefabPanel::newPrefabee(PrefabPtr pre)
 		b.GetComponent<Transform>().translation.x += prefabOffset;
 		b.GetComponent<Transform>().translation.y += prefabOffset;
 	}
-	(allEntities[selectedGameState][selectedScene]).insert(b);
+	(GSList[selectedGameState].scenes[selectedScene].mEntities).insert(b);
 	n++;
 	prefabOffset += 10.f;
 }
