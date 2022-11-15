@@ -312,19 +312,66 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 }
 
 bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
-	_contact;
-	_dt;
+	// Get reference to the entities
+	Entity& objCircle{ _contact.obj[0] },
 
+		  & objRect{ _contact.obj[1] };
 
+	
+	Math::Vec2	objCirclePos{ objCircle.GetComponent<Transform>().translation + objCircle.GetComponent<CircleCollider>().centerOffset },
+				objRectPos{ objRect.GetComponent<Transform>().translation + objRect.GetComponent<RectCollider>().centerOffset };
+	float  objCircleR{ (objCircle.GetComponent<Transform>().scale.x * objCircle.GetComponent<CircleCollider>().scaleOffset) / 2.f };
+	Math::Vec2 objRectScale{ static_cast<float>(static_cast<double>(objRect.GetComponent<Transform>().scale.x) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+							 static_cast<float>(static_cast<double>(objRect.GetComponent<Transform>().scale.y) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
 
+	Math::Vec2 p{ objCirclePos },
+		minV{ objRectPos - objRectScale },
+		maxV{ objRectPos + objRectScale };
+
+	Math::Vec2 q{};
+	for (int i{ 0 }; i < 2; ++i) {
+		float v{ p[i] };
+		if (v < minV[i])
+			v = minV[i];
+		if (v > maxV[i])
+			v = maxV[i];
+		q[i] = v;
+	}
+
+	float sqDist{ Math::SqDistance(q, p) };	
+	if (sqDist < objCircleR * objCircleR) {
+		if (sqDist == 0.f) {
+			Math::Vec2 distVec{ objCirclePos - objRectPos };
+			Math::Vec2 diff{ objCircleR + objRectScale.x - std::fabs(distVec.x),
+							 objCircleR + objRectScale.y - std::fabs(distVec.y) };
+
+			if (diff.x < diff.y) {
+				_contact.normal = distVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+				_contact.penetration = diff.x;
+				_contact.contacts = _contact.normal * objRectScale.x + objRectPos;
+			}
+			else {
+				_contact.normal = distVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+				_contact.penetration = diff.y;
+				_contact.contacts = _contact.normal * objRectScale.y + objRectPos;
+			}
+			return true;
+		}
+		else {
+			_contact.normal = (q - p).Normalized();
+			_contact.penetration = objCircleR - Math::Distance(q, p);
+			_contact.contacts = _contact.normal * objCircleR + objCirclePos;
+			return true;
+		}
+	}
 	return false;
 }
 
 bool Collision2DManager::CI_RectvsCircle(Contact& _contact, const double& _dt) {
-	_contact;
-	_dt;
+	std::swap(_contact.obj[0], _contact.obj[1]);
+	std::swap(_contact.objType[0], _contact.objType[1]);
 
-	return false;
+	return CI_CirclevsRect(_contact, _dt);
 }
 
 bool Collision2DManager::HasCollider(const Entity& _e) {

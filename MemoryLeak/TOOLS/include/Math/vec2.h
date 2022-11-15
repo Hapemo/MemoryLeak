@@ -143,7 +143,9 @@ namespace Math {
     Negated version of current Vec2
     *******************************************************************************/
     Vec2 operator-() const;
-    
+
+    float& operator[](int);
+
     /*!*****************************************************************************
     Normalise current Vec2
 
