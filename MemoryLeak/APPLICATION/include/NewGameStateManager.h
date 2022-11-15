@@ -62,8 +62,8 @@ public:
 	void ChangeGameState(std::string const& _path);
 
 	// Editor only functionalities
-	void AddGameState();
-	void RemoveGameState();
+	void AddGameState(std::string const& _path);
+	void RemoveGameState(std::string const& _name);
 
 private:
 	std::vector<NewGameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode

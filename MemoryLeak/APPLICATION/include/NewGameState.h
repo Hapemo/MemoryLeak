@@ -11,15 +11,14 @@ public:
 	void Exit();
 
 	// Load new gamestate with file path
-	void Load(std::string const& _path);
+	void AddScene(std::string const& _path);
+	void RemoveScene(std::string const& _name); 
 	void Unload();
 	void Restart();
-	void Pause(bool _pause) { mPaused = _pause; }; // For editor
-
+	
 private:
 	std::string mName;
 	std::vector<Scene> mScenes;
-	bool mPaused; // For editor
 
 };
 
