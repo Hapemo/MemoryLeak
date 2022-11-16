@@ -81,6 +81,11 @@ void GameStateManager::ChangeGameState(std::string const& _path) {
 }
 
 
-void GameStateManager::Exit() {
-
+void GameStateManager::Unload() {
+	for (auto& gameState : mGameStates) {
+		gameState.Exit();
+		gameState.Unload();
+	}
+	mCurrentGameState = nullptr;
+	mNextGSPath = "";
 }

@@ -175,13 +175,12 @@ void Application::MainUpdate() {
 }
 
 void Application::exit() {
+  GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
   editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
   ResourceManager::GetInstance()->UnloadAllResources();
-  //GameStateManager::GetInstance()->Exit();
-  GameStateManager::GetInstance()->Exit();
   ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   SingletonManager::destroyAllSingletons();
   // Part 2
