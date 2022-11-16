@@ -54,9 +54,9 @@ This component encapsulates what is needed in a Transform Component.
 *******************************************************************************/
 struct Transform
 {
-	Math::Vec2		scale = {1.f,1.f};
-	float			rotation = 0.f;
-	Math::Vec2		translation = {0.f,0.f};
+	Math::Vec2		scale = {1.f,1.f};		//save, edit, see
+	float			rotation = 0.f;			//save, edit, see
+	Math::Vec2		translation = {0.f,0.f};//save, edit, see
 };
 
 /*!*****************************************************************************
@@ -68,19 +68,19 @@ The layer variable contains which layer the sprite is to be rendered in.
 *******************************************************************************/
 struct Sprite
 {
-	Color color = Color{ 0,255,0,255 };
-	SPRITE sprite;
-	GLuint texture = 0;
-	int layer = 0;
+	Color color = Color{ 0,255,0,255 };	//save, edit, see
+	SPRITE sprite;						//save, edit, see
+	GLuint texture = 0;					//save, edit, see
+	int layer = 0;						//save, edit, see
 };
 
 struct Button
 {
-	bool interactable = true;
-	bool isHover = false;
-	bool isClick = false;
-	bool activated = false;
-	bool renderFlag = true;
+	bool interactable = true;			//save, edit, see
+	bool isHover = false;				//NO save, NO edit, see
+	bool isClick = false;				//NO save, NO edit, see
+	bool activated = false;				//NO save, NO edit, see
+	bool renderFlag = true;				//NO save, edit, see
 };
 
 /*!*****************************************************************************
@@ -92,10 +92,10 @@ used.
 *******************************************************************************/
 struct Animation
 {
-	std::vector<GLuint> images;
-	float timePerImage;
-	float timeToImageSwap;
-	int currentImageIndex;
+	std::vector<GLuint> images;			//save, edit, see
+	float timePerImage;					//save, edit, see
+	float timeToImageSwap;				//NO save, NO edit, NO see
+	int currentImageIndex;				//save, edit, see
 };
 
 /*!*****************************************************************************
@@ -107,10 +107,10 @@ The currFrameIndex stores the index of the frame to be used.
 *******************************************************************************/
 struct SheetAnimation
 {
-	int frameCount = 1;
-	int currFrameIndex = 0;
-	float timePerFrame = 1.f;
-	float timeToFrameSwap = 0.f;
+	int frameCount = 1;					//save, edit, see
+	int currFrameIndex = 0;				//save, edit, see
+	float timePerFrame = 1.f;			//save, edit, see
+	float timeToFrameSwap = 0.f;		//NO save, NO edit, NO see
 };
 
 /*!*****************************************************************************
@@ -278,12 +278,12 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
-	std::string fontFile = "3Dumb"; //CaviarDreams || 3Dumb
-	std::string text = "Hello";
-	Math::Vec2 offset = Math::Vec2{0, 0}; //world coordinates
-	float scale = 1.f;
-	Color color = Color{ 0, 0, 0, 255 };
-	bool followCam = false;
+	std::string fontFile = "3Dumb";			//save, edit, see
+	std::string text = "Hello";				//save, edit, see
+	Math::Vec2 offset = Math::Vec2{0, 0};	//save, edit, see
+	float scale = 1.f;						//save, edit, see
+	Color color = Color{ 0, 0, 0, 255 };	//save, edit, see
+	bool followCam = false;					//NO save, edit, see
 };
 
 struct Dialogue

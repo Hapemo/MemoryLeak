@@ -3,6 +3,7 @@
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include "VIzmoProps.h"
+#include "Camera.h"
 
 enum class GIZMO_BUTTON { SCALE_X, SCALE_Y, ROTATE, TRANSLATE, NONE };
 
@@ -13,7 +14,7 @@ public:
 	void Attach(const Entity& _e);
 	Entity GetAttached();
 	void Detach();
-	void Update(const Math::Vec2& _mouseCoordinates);
+	void Update(const Math::Vec2& _mouseCoordinates, Camera& _cam);
 private:
 	Entity mAttached;
 	GIZMO_BUTTON mSelected;

@@ -44,7 +44,7 @@ float EditorManager::copyOffset = 20.f;
 
 //prefabs
 float EditorManager::prefabOffset = 10.f;
-
+Math::Vec2 EditorManager::mmm = 0;
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
@@ -172,9 +172,17 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
+	renderManager->GetGizmo().Detach();
 	//if (renderManager->GetRenderGameToScreen())
 		renderManager->RenderToFrameBuffer();
 	Window();
+	if (selectedEntity)
+		renderManager->SelectEntity(*selectedEntity);
+
+	if (selectedEntity != nullptr && SRT ==2)
+		renderManager->GetGizmo().Attach(*selectedEntity);
+
+
 
 
 	if (selectedGameState < GSList.size())
@@ -612,15 +620,15 @@ Entity EditorManager::Clone(Entity c)
 
 
 
-
-Math::Vec2 EditorManager::GetEditorWorldMousePos()
-{
-	return dynamic_cast<WorldViewPanel*>(panels[(int)E_PANELID::WORLDVIEW])->GetMousePos();
-}
-Math::Vec2 EditorManager::GetEditorGameMousePos()
-{
-	 return dynamic_cast<GameViewPanel*>(panels[(int)E_PANELID::GAMEVIEW])->GetMousePos();
-}
+//
+//Math::Vec2 EditorManager::GetEditorWorldMousePos()
+//{
+//	return dynamic_cast<WorldViewPanel*>(panels[(int)E_PANELID::WORLDVIEW])->GetMousePos();
+//}
+//Math::Vec2 EditorManager::GetEditorGameMousePos()
+//{
+//	 return dynamic_cast<GameViewPanel*>(panels[(int)E_PANELID::GAMEVIEW])->GetMousePos();
+//}
 
 
 void EditorManager::NewScene()
