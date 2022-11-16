@@ -62,6 +62,10 @@ namespace Math {
     return { -x, -y };
   }
 
+    float& Vec2::operator[](int index){
+        return (index == 0) ? this->x : this->y;
+    }
+
   Vec2& Vec2::Normalize() {
     return *this /= this->Magnitude();
   }

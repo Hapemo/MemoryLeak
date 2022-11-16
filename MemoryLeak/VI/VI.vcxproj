@@ -236,11 +236,13 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Graphics\VIzmo.h" />
     <ClInclude Include="include\Graphics\VertexFetcher.h" />
     <ClInclude Include="include\Graphics\VIzmoProps.h" />
+    <ClInclude Include="include\LayerManager.h" />
     <ClInclude Include="include\Logic\LogicSystem.h" />
     <ClInclude Include="include\Logic\MonoScripting.h" />
     <ClInclude Include="include\Logic\ScriptComponent.h" />
     <ClInclude Include="include\Logic\ScriptManager.h" />
     <ClInclude Include="include\Physics\ColliderBody.h" />
+    <ClInclude Include="include\Physics\ColliderType.h" />
     <ClInclude Include="include\Physics\Collision2DManager.h" />
     <ClInclude Include="include\Collision2DManager.h" />
     <ClInclude Include="include\DialogManager.h" />
@@ -270,6 +272,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Graphics\Vertex.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\LevelEditor.h" />
+    <ClInclude Include="include\Physics\Contact.h" />
     <ClInclude Include="include\Physics\Force.h" />
     <ClInclude Include="include\Physics\Physics2DManager.h" />
     <ClInclude Include="include\Player\PlayerController.h" />
@@ -323,6 +326,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\Graphics\SpriteManager.cpp" />
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
     <ClCompile Include="source\Graphics\VertexFetcher.cpp" />
+    <ClCompile Include="source\LayerManager.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
     <ClCompile Include="source\Logic\MonoScripting.cpp" />

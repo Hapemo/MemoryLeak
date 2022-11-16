@@ -58,13 +58,6 @@ public:
 
 	void SetTexture(const Entity& _e, const std::string& _texture_path);
 	GLuint GetTexture(const Entity& _e)	{ return _e.GetComponent<Sprite>().texture; }
-
-	GLuint GetButtonHoverTexture(const Entity& _e) { return _e.GetComponent<Button>().onHoverTexture; }
-	GLuint GetButtonClickTexture(const Entity& _e) { return _e.GetComponent<Button>().onClickTexture; }
-
-	void SetButtonClickTexture(const Entity& _e, const std::string& _texture_path);
-	void SetButtonHoverTexture(const Entity& _e, const std::string& _texture_path);
-
 	
 	GLuint	GetTextureID		(const std::string& _texture_path) { return GET_TEXTURE_ID(_texture_path); }
 	std::string	GetTexturePath	(GLint _id) { return GET_TEXTURE_PATH(_id); }

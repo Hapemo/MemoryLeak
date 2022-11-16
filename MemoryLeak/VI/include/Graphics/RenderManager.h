@@ -215,6 +215,7 @@ public:
 	VIzmo& GetGizmo() { return mGizmo; }
 
 	void SelectEntity(const Entity& _e);
+	void SelectEntities(std::vector<Entity>const& _es);
 	void UnselectEntity(const Entity& _e);
 	void ClearSelectedEntities();
 
@@ -461,6 +462,11 @@ private:
 	The color component.
 	*******************************************************************************/
 	void CreateDebugArrow(const Transform& _t, const Color& _clr);
+
+	Math::Mat3 GetGizmoTransform(const Transform& _xform);
+	void CreateGizmoCircle(const Transform& _t, const Color& _clr);
+	void CreateGizmoDebugLine(const Transform& _t, const Color& _clr);
+	void CreateGizmoDebugCircle(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief

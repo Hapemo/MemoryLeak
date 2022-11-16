@@ -189,37 +189,6 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 		_contact.penetration = diff.y;
 		_contact.contacts = _contact.normal * scale1.y + center1;
 	}
-
-	//Math::Vec2 posDel{ center1 - center2 };
-	//float xDiff{ scale1.x + scale2.x - fabs(posDel.x) };
-
-	//// Overlap of AABB of x axis
-	//if (0 < xDiff) {
-	//	// Check y axis as well
-	//	float yDiff{ scale1.y + scale2.y - fabs(posDel.y) };
-	//	if (0 < yDiff) {
-	//		// Overlapping on both axis
-	//		// Collision has happened
-	//		
-	//		// Check which axis to use for collision response
-	//		if (xDiff < yDiff) {
-	//			_contact.normal = ((posDel.x < 0) ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f });
-	//			_contact.penetration = xDiff;
-	//			_contact.contacts = _contact.normal * scale1.x + center1;
-	//			return true;
-	//		}
-	//		else {
-	//			_contact.normal = ((posDel.y < 0) ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f });
-	//			_contact.penetration = yDiff;
-	//			_contact.contacts = _contact.normal * scale1.y + center1;
-	//			return true;
-	//		}
-	//	}
-	//}
-
-	//return false;
-
-
 	return true;
 }
 
@@ -237,20 +206,6 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 		obj2Pos{ obj2.GetComponent<Transform>().translation + obj2.GetComponent<CircleCollider>().centerOffset };
 
 	float sqDist{ Math::SqDistance(obj2Pos, obj1Pos) };
-
-	//if (sqDist >= (obj1R + obj2R) * (obj1R + obj2R))
-	//	return false;
-
-	//if (sqDist == 0.f) {
-	//	_contact.penetration = obj1R;
-	//	_contact.normal = Math::Vec2{ 1.f, 0.f };
-	//	_contact.contacts = obj1Pos;
-	//}
-	//else {
-	//	_contact.penetration = (obj1R + obj2R) - sqrt(sqDist);
-	//	_contact.normal = (obj2Pos - obj1Pos).Normalized();
-	//	_contact.contacts = _contact.normal * obj1R + obj1Pos;
-	//}
 
 // Static
 	// Check if the distance between the circles' centers is smaller than their radius
@@ -357,19 +312,66 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 }
 
 bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
-	_contact;
-	_dt;
+	// Get reference to the entities
+	Entity& objCircle{ _contact.obj[0] },
 
+		  & objRect{ _contact.obj[1] };
 
+	
+	Math::Vec2	objCirclePos{ objCircle.GetComponent<Transform>().translation + objCircle.GetComponent<CircleCollider>().centerOffset },
+				objRectPos{ objRect.GetComponent<Transform>().translation + objRect.GetComponent<RectCollider>().centerOffset };
+	float  objCircleR{ (objCircle.GetComponent<Transform>().scale.x * objCircle.GetComponent<CircleCollider>().scaleOffset) / 2.f };
+	Math::Vec2 objRectScale{ static_cast<float>(static_cast<double>(objRect.GetComponent<Transform>().scale.x) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+							 static_cast<float>(static_cast<double>(objRect.GetComponent<Transform>().scale.y) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
 
+	Math::Vec2 p{ objCirclePos },
+		minV{ objRectPos - objRectScale },
+		maxV{ objRectPos + objRectScale };
+
+	Math::Vec2 q{};
+	for (int i{ 0 }; i < 2; ++i) {
+		float v{ p[i] };
+		if (v < minV[i])
+			v = minV[i];
+		if (v > maxV[i])
+			v = maxV[i];
+		q[i] = v;
+	}
+
+	float sqDist{ Math::SqDistance(q, p) };	
+	if (sqDist < objCircleR * objCircleR) {
+		if (sqDist == 0.f) {
+			Math::Vec2 distVec{ objCirclePos - objRectPos };
+			Math::Vec2 diff{ objCircleR + objRectScale.x - std::fabs(distVec.x),
+							 objCircleR + objRectScale.y - std::fabs(distVec.y) };
+
+			if (diff.x < diff.y) {
+				_contact.normal = distVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+				_contact.penetration = diff.x;
+				_contact.contacts = _contact.normal * objRectScale.x + objRectPos;
+			}
+			else {
+				_contact.normal = distVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+				_contact.penetration = diff.y;
+				_contact.contacts = _contact.normal * objRectScale.y + objRectPos;
+			}
+			return true;
+		}
+		else {
+			_contact.normal = (q - p).Normalized();
+			_contact.penetration = objCircleR - Math::Distance(q, p);
+			_contact.contacts = _contact.normal * objCircleR + objCirclePos;
+			return true;
+		}
+	}
 	return false;
 }
 
 bool Collision2DManager::CI_RectvsCircle(Contact& _contact, const double& _dt) {
-	_contact;
-	_dt;
+	std::swap(_contact.obj[0], _contact.obj[1]);
+	std::swap(_contact.objType[0], _contact.objType[1]);
 
-	return false;
+	return CI_CirclevsRect(_contact, _dt);
 }
 
 bool Collision2DManager::HasCollider(const Entity& _e) {
@@ -406,8 +408,8 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 	//bool notplayer = false;
 	// Resolve collision
 	for (Contact& item : mContactList) {
-		ResolveContact(item);
 		PositionCorrection(item);
+		ResolveContact(item, _dt);
 	}
 
 	ClearContactList();
@@ -470,7 +472,7 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 			// Call function to check for collision
 			// If it returns true, means collision occurred
 			if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt)) {
-				mContactList.push_back(contact);
+				mContactList.emplace_back(contact);
 				LOG_INFO("Collision Detected\n");
 			}
 		}
@@ -482,7 +484,7 @@ void Collision2DManager::ClearContactList() {
 	mContactList.clear();
 }
 
-void Collision2DManager::ResolveContact(Contact& _contact) {
+void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 	// Store bool value of whether entity has physics component
 	bool obj1HasP{ _contact.obj[0].HasComponent<Physics2D>() },
 		obj2HasP{ _contact.obj[0].HasComponent<Physics2D>() };
@@ -498,6 +500,23 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 			physics2DManager->SetAcceleration(_contact.obj[1], { 0.f, 0.f });
 			physics2DManager->SetAccumulatedForce(_contact.obj[1], { 0.f, 0.f });
 			return;
+		}
+	}
+
+	// Check if either objects are of infinite mass and set all movement values to 0
+	if (obj1HasP) {
+		if (_contact.obj[0].GetComponent<Physics2D>().mass == 0.f) {
+			physics2DManager->SetVelocity(_contact.obj[0], { 0.f, 0.f });
+			physics2DManager->SetAcceleration(_contact.obj[0], { 0.f, 0.f });
+			physics2DManager->SetAccumulatedForce(_contact.obj[0], { 0.f, 0.f });
+		}
+	}
+
+	if (obj2HasP) {
+		if (_contact.obj[1].GetComponent<Physics2D>().mass == 0.f) {
+			physics2DManager->SetVelocity(_contact.obj[1], { 0.f, 0.f });
+			physics2DManager->SetAcceleration(_contact.obj[1], { 0.f, 0.f });
+			physics2DManager->SetAccumulatedForce(_contact.obj[1], { 0.f, 0.f });
 		}
 	}
 
@@ -524,8 +543,8 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 		_contact.obj[0].GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj[0].GetComponent<Physics2D>().angularVelocity, rObj1);
 	else if (obj2HasP)
 		relVel = _contact.obj[1].GetComponent<Physics2D>().velocity + Math::Cross(_contact.obj[1].GetComponent<Physics2D>().angularVelocity, rObj2);
-	else
-		relVel = _contact.obj[0].GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj[0].GetComponent<Physics2D>().angularVelocity, rObj1);
+	else if (obj1HasP)
+		relVel = -(_contact.obj[0].GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj[0].GetComponent<Physics2D>().angularVelocity, rObj1));
 
 	// Relative velocity along the normal
 	float contactVel{ Math::Dot(relVel, _contact.normal) };
@@ -545,26 +564,34 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 		invMassSum += (_contact.obj[1].GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj[1].GetComponent<Physics2D>().mass;;
 
 	// Calculate impulse scalar J
-	float scalar{ -(1.f + _contact.combinedRestitution) * contactVel };
-	scalar /= invMassSum;
+	float scalar{ (-(1.f + _contact.combinedRestitution) * contactVel) / invMassSum };
+	//scalar /= invMassSum;
 	//scalar /= static_cast<float>(_contact.contacts.size());
 
 	// Apply velocity impulse
 	Math::Vec2 impulse{ _contact.normal * scalar };
-	if (obj1HasP)
-		physics2DManager->ApplyImpulse(_contact.obj[0], -(impulse), { 0.f, 0.f });
-	if (obj2HasP)
-		physics2DManager->ApplyImpulse(_contact.obj[1], impulse, { 0.f, 0.f });
+
+	if (obj1HasP) {
+		if (physics2DManager->GetMass(_contact.obj[0]) != 0.f) {
+			physics2DManager->ApplyImpulse(_contact.obj[0], -(impulse), { 0.f, 0.f });
+			if (abs(physics2DManager->GetVelocity(_contact.obj[0]).x) >= 0.001f || abs(physics2DManager->GetVelocity(_contact.obj[0]).y) >= 0.001f)
+				_contact.obj[0].GetComponent<Transform>().translation += physics2DManager->GetVelocity(_contact.obj[0]) * static_cast<float>(_dt);
+		}
+	}
+	if (obj2HasP) {
+		if (physics2DManager->GetMass(_contact.obj[1]) != 0.f) {
+			physics2DManager->ApplyImpulse(_contact.obj[1], impulse, { 0.f, 0.f });
+			if (abs(physics2DManager->GetVelocity(_contact.obj[1]).x) >= 0.001f || abs(physics2DManager->GetVelocity(_contact.obj[1]).y) >= 0.001f)
+				_contact.obj[1].GetComponent<Transform>().translation += physics2DManager->GetVelocity(_contact.obj[1]) * static_cast<float>(_dt);
+		}
+	}
 
 	// Compute new acceleration/force
 	Math::Vec2 newForce{};
 	if (obj1HasP) {
-		//Math::Vec2 newAccel{ -impulse / static_cast<float>(_dt) };
-		//physics2DManager->SetAcceleration(_contact.obj[0], newAccel);
-		if (!_contact.obj[0].GetComponent<Physics2D>().forceList.empty()) {
+		if (!_contact.obj[0].GetComponent<Physics2D>().forceList.empty() && _contact.obj[0].GetComponent<Physics2D>().mass != 0.f) {
 			Force& moveForce{ _contact.obj[0].GetComponent<Physics2D>().forceList[0] };
 			if (moveForce.forceID == 0) {
-				//Math::Vec2 newForce{ newAccel * (physics2DManager->GetMass(_contact.obj[0]) == 0.f ? 0.f : physics2DManager->GetMass(_contact.obj[0])) };
 				if (physics2DManager->GetMass(_contact.obj[0]) == 0.f)
 					newForce = -impulse;
 				else
@@ -576,15 +603,12 @@ void Collision2DManager::ResolveContact(Contact& _contact) {
 	}
 
 	if (obj2HasP) {
-		//Math::Vec2 newAccel{ impulse / static_cast<float>(_dt) };
-		//physics2DManager->SetAcceleration(_contact.obj[1], newAccel);
-		if (!_contact.obj[1].GetComponent<Physics2D>().forceList.empty()) {
+		if (!_contact.obj[1].GetComponent<Physics2D>().forceList.empty() && _contact.obj[1].GetComponent<Physics2D>().mass != 0.f) {
 			Force& moveForce{ _contact.obj[1].GetComponent<Physics2D>().forceList[0] };
 			if (moveForce.forceID == 0) {
-				//Math::Vec2 newForce{ newAccel * (physics2DManager->GetMass(_contact.obj[1]) == 0.f ? 0.f : physics2DManager->GetMass(_contact.obj[1])) };
 				if (physics2DManager->GetMass(_contact.obj[1]) == 0.f)
 					newForce = impulse;
-				else
+				else 
 					newForce = impulse / physics2DManager->GetMass(_contact.obj[1]);
 				moveForce.linearForce.unitDirection = newForce.Normalized();
 				moveForce.linearForce.magnitude = newForce.Magnitude();
@@ -605,8 +629,20 @@ void Collision2DManager::PositionCorrection(Contact& _contact) {
 
 	// Compute correction value and correct positions
 	Math::Vec2 correction = std::max(_contact.penetration - penAllowance, 0.f) / invMassSum * _contact.normal * penPercentage;
-	_contact.obj[0].GetComponent<Transform>().translation -= correction * (_contact.obj[0].HasComponent<Physics2D>() ? (_contact.obj[0].GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj[0].GetComponent<Physics2D>().mass : 1.f);
-	_contact.obj[1].GetComponent<Transform>().translation += correction * (_contact.obj[1].HasComponent<Physics2D>() ? (_contact.obj[1].GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj[1].GetComponent<Physics2D>().mass : 1.f);
+	if (_contact.obj[0].HasComponent<Physics2D>())
+		if (_contact.obj[0].GetComponent<Physics2D>().mass != 0.f)
+			_contact.obj[0].GetComponent<Transform>().translation += correction * -(1.f / _contact.obj[0].GetComponent<Physics2D>().mass);
+	
+	if (_contact.obj[1].HasComponent<Physics2D>())
+		if (_contact.obj[1].GetComponent<Physics2D>().mass != 0.f)
+			_contact.obj[1].GetComponent<Transform>().translation += correction * (1.f / _contact.obj[1].GetComponent<Physics2D>().mass);
+
+	/*if (_contact.obj[0].GetComponent<General>().tag == TAG::PLAYER || _contact.obj[1].GetComponent<General>().tag == TAG::PLAYER) {
+		std::cout << (_contact.obj[1].GetComponent<Transform>().translation) << " | " << (_contact.obj[0].GetComponent<Transform>().translation) << std::endl;
+		std::cout << (_contact.obj[1].GetComponent<Transform>().translation) - (_contact.obj[0].GetComponent<Transform>().translation) << std::endl;
+		std::cout << (_contact.obj[1].GetComponent<Transform>().scale.x / 2.f) << " | " << (_contact.obj[0].GetComponent<Transform>().scale.x / 2.f) << std::endl;
+		std::cout << (_contact.obj[1].GetComponent<Transform>().scale.x / 2.f) + (_contact.obj[0].GetComponent<Transform>().scale.x / 2.f) << std::endl;
+	}*/
 }
 
 //void Collision2DManager::ResolvePositions() {

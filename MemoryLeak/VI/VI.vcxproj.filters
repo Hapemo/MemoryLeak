@@ -52,6 +52,7 @@
     <ClCompile Include="source\GameStateAndScene\GameStateManager.cpp" />
     <ClCompile Include="source\GameStateAndScene\Scene.cpp" />
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
+    <ClCompile Include="source\LayerManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -175,6 +176,9 @@
     <ClInclude Include="include\GameStateAndScene\GameState.h" />
     <ClInclude Include="include\GameStateAndScene\GameStateManager.h" />
     <ClInclude Include="include\GameStateAndScene\Scene.h" />
+    <ClInclude Include="include\LayerManager.h" />
+    <ClInclude Include="include\Physics\Contact.h" />
+    <ClInclude Include="include\Physics\ColliderType.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

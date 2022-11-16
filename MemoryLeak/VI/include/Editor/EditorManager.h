@@ -47,8 +47,8 @@ public:
 	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
 	using PrefabPtr = std::shared_ptr<Prefab>;
 
-	Math::Vec2 GetEditorWorldMousePos();
-	Math::Vec2 GetEditorGameMousePos();
+	Math::Vec2 GetEditorWorldMousePos() { return mWorldMousePos; }
+	//Math::Vec2 GetEditorGameMousePos();
 
 private:
 	static std::vector<Panel*> panels;
@@ -100,7 +100,7 @@ protected:
 	GLFWwindow* mWindow;
 	static int* mWindowWidth;
 	static int* mWindowHeight;
-
+	static Math::Vec2 mWorldMousePos;
 	static std::set<Entity>* myEntities;
 	static const Entity* selectedEntity;
 	static Entity selEntity;

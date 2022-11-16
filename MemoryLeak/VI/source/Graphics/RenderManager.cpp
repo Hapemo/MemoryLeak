@@ -12,6 +12,8 @@ operates on Entities with Sprite and Transform Components.
 #include "pch.h"
 #include "RenderProps.h"
 #include "Input.h"
+#include <ECSManager.h>
+
 
 /*!*****************************************************************************
 \brief
@@ -89,8 +91,9 @@ void RenderManager::Render()
 
 	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
-	mGizmo.Update(Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) +
-		Math::Vec2(-*mWindowWidth / 2.f, *mWindowHeight / 2.f) - mGameCam.GetPos());
+	if (mGizmo.GetAttached().id != 0)
+		mGizmo.Update(editorManager->GetEditorWorldMousePos(), mWorldCam);
+
 	CreateVertices(textureInfo);
 	/*************************************CREATING VERTICES END**************************************/
 
@@ -221,11 +224,22 @@ void RenderManager::RenderDebug()
 {
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 	{
+		Color blue{ 0,0,255,100 };
 		Transform t;
 		t.rotation = 0;
 		t.scale = mGameCam.GetZoom() * mGameCam.GetWindowDim();
 		t.translation = mGameCam.GetPos();
-		CreateDebugSquare(t, {0, 255, 0, 255});
+		CreateDebugSquare(t, blue);
+		CreateDebugLine(t, blue);
+		t.rotation += (float)Math::PI / 2.f;
+		t.scale = { t.scale.y, t.scale.x };
+		CreateDebugLine(t, blue);
+		t.rotation += (float)Math::PI / 2.f;
+		t.scale = { t.scale.y, t.scale.x };
+		CreateDebugLine(t, blue);
+		t.rotation += (float)Math::PI / 2.f;
+		t.scale = { t.scale.y, t.scale.x };
+		CreateDebugLine(t, blue);
 	}
 	for (const Entity& e : mEntities)
 	{
@@ -262,6 +276,17 @@ void RenderManager::RenderDebug()
 			t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
 				e.GetComponent<RectCollider>().centerOffset.y);
 			CreateDebugSquare(t, {0, 255, 0, 255});
+		}
+
+		if (e.HasComponent<LayerCollider>() && e.GetComponent<LayerCollider>().renderFlag)
+		{
+			Transform t = e.GetComponent<Transform>();
+			t.scale.x *= e.GetComponent<LayerCollider>().scaleOffset.x;
+			t.scale.y *= e.GetComponent<LayerCollider>().scaleOffset.y;
+			t.rotation = 0;
+			t.translation += Math::Vec2(e.GetComponent<LayerCollider>().centerOffset.x,
+				e.GetComponent<LayerCollider>().centerOffset.y);
+			CreateDebugSquare(t, { 255, 150, 0, 255 });
 		}
 
 		if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
@@ -311,6 +336,23 @@ void RenderManager::RenderDebug()
 		default:
 			continue;
 		}
+	}
+
+	for (const Entity& e : mEditorSelectedEntities)
+	{
+		Color blue{ 0,0,255,100 };
+		Transform xform = e.GetComponent<Transform>();
+		CreateDebugSquare(xform, blue);
+		CreateDebugLine(xform, blue);
+		xform.rotation += (float)Math::PI / 2.f;
+		xform.scale = { xform.scale.y, xform.scale.x };
+		CreateDebugLine(xform, blue);
+		xform.rotation += (float)Math::PI / 2.f;
+		xform.scale = { xform.scale.y, xform.scale.x };
+		CreateDebugLine(xform, blue);
+		xform.rotation += (float)Math::PI / 2.f;
+		xform.scale = { xform.scale.y, xform.scale.x };
+		CreateDebugLine(xform, blue);
 	}
 
 	/***************************************DEBUG BATCHING START*************************************/
@@ -395,14 +437,6 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 		case SPRITE::TEXTURE:
 		{
 			GLuint texid = e.GetComponent<Sprite>().texture;
-			if (e.HasComponent<Button>())
-			{
-				Button btn = e.GetComponent<Button>();
-				if (btn.isHover)
-					texid = btn.onHoverTexture;
-				if (btn.isClick)
-					texid = btn.onClickTexture;
-			}
 
 			if (texid != 0)
 			{
@@ -598,14 +632,6 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	glm::vec4 clr = GetColor(_e);
 	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
-	if (_e.HasComponent<Button>())
-	{
-		Button btn = _e.GetComponent<Button>();
-		if (btn.isHover)
-			texID = static_cast<float>(btn.onHoverTexture);
-		if (btn.isClick)
-			texID = static_cast<float>(btn.onClickTexture);
-	}
 
 	float texMin{};
 	float texMax{ 1.f };
@@ -1150,51 +1176,57 @@ void RenderManager::CreateGizmo()
 	if (!mGizmo.GetAttached().id)
 		return;
 	
-	Color clr{ 255, 0, 0, 255 };
+	Color red{ 214, 53, 4, 255 };
+	Color green{ 98, 250, 77, 255 };
+	Color blue{ 45, 183, 247, 255 };
+	Color purple{ 246, 45, 241, 255 };
 	Transform entityTransform = mGizmo.GetAttached().GetComponent<Transform>();
 
 	//drawing outer rotate circle
 	Math::Vec2 translate = entityTransform.translation;
 	Math::Vec2 scale{ GIZMO_CIRCLE_SIZE, GIZMO_CIRCLE_SIZE};
 	Transform xform{ scale, 0.f, translate };
-	CreateDebugCircle(xform, clr);
+	CreateGizmoDebugCircle(xform, purple);
 
 	//drawing scale x line
 	xform.scale = GIZMO_LINE_SIZE;
 	xform.rotation = 0.f;
-	CreateDebugLine(xform, clr);
+	CreateGizmoDebugLine(xform, red);
 
 	//drawing scale y line
 	xform.rotation += (float)Math::PI / 2.f;
-	CreateDebugLine(xform,clr);
+	CreateGizmoDebugLine(xform,green);
 
 	//drawing scale x button
 	Math::Vec2 prevScale = xform.scale;
-	xform.translation += {prevScale.x / 2.f, 0.f};
+	xform.translation += Math::Vec2{prevScale.x / 2.f, 0.f} * mWorldCam.GetZoom();
 	xform.scale = GIZMO_BUTTON_SIZE;
-	CreateCircle(xform, clr, 1.f);
+	CreateGizmoCircle(xform, red);
 
 	//drawing scale y button
-	xform.translation += Math::Vec2{0.f,  prevScale.x / 2.f}  - Math::Vec2{prevScale.x / 2.f, 0.f};
-	CreateCircle(xform, clr, 1.f);
+	xform.translation += (Math::Vec2{0.f,  prevScale.x / 2.f}  - Math::Vec2{prevScale.x / 2.f, 0.f}) * mWorldCam.GetZoom();
+	CreateGizmoCircle(xform, green);
 
 	//drawing translate button
-	xform.translation -= { 0.f,  prevScale.x / 2.f };
-	CreateCircle(xform, clr, 1.f);
+	xform.translation -= Math::Vec2{ 0.f, prevScale.x / 2.f } * mWorldCam.GetZoom();
+	CreateGizmoCircle(xform, blue);
 
 	//drawing rotate button
-	translate += Math::Vec2(cosf(entityTransform.rotation + (float)Math::PI / 2.f), 
-		sinf(entityTransform.rotation + (float)Math::PI / 2.f)) * GIZMO_CIRCLE_SIZE / 2.f;
+	translate += (Math::Vec2(cosf(entityTransform.rotation + (float)Math::PI / 2.f), 
+		sinf(entityTransform.rotation + (float)Math::PI / 2.f)) * GIZMO_CIRCLE_SIZE / 2.f) * mWorldCam.GetZoom();
 	xform.translation = translate;
-	CreateCircle(xform, clr, 1.f);
+	CreateGizmoCircle(xform, purple);
 }
 
 void RenderManager::SelectEntity(const Entity& _e)
 {
-	for (const Entity& e : mEditorSelectedEntities)
-		if (e.id == _e.id)
-			return;
+	ClearSelectedEntities();
 	mEditorSelectedEntities.push_back(_e);
+}
+
+void RenderManager::SelectEntities(std::vector<Entity>const& _es)
+{
+	mEditorSelectedEntities = _es;
 }
 
 void RenderManager::UnselectEntity(const Entity& _e)
@@ -1210,4 +1242,113 @@ void RenderManager::UnselectEntity(const Entity& _e)
 void RenderManager::ClearSelectedEntities()
 {
 	mEditorSelectedEntities.clear();
+}
+
+Math::Mat3 RenderManager::GetGizmoTransform(const Transform& _xform)
+{
+	float cosRot = cosf(_xform.rotation);
+	float sinRot = sinf(_xform.rotation);
+
+	Math::Mat3 temp
+	{
+		Math::Vec3(_xform.scale.x * cosRot, _xform.scale.x * sinRot, 0.f),
+		Math::Vec3(-_xform.scale.y * sinRot, _xform.scale.y * cosRot, 0.f),
+		Math::Vec3(_xform.translation.x, _xform.translation.y, 1.f)
+	};
+
+
+	temp[2][0] -= mWorldCam.GetPos().x;
+	temp[2][1] -= mWorldCam.GetPos().y;
+
+	temp[0][0] /= (float)*mWindowWidth;
+	temp[0][1] /= (float)*mWindowHeight;
+	temp[1][0] /= (float)*mWindowWidth;
+	temp[1][1] /= (float)*mWindowHeight;
+	temp[2][0] /= (float)*mWindowWidth / 2.f * mWorldCam.GetZoom();
+	temp[2][1] /= (float)*mWindowHeight / 2.f * mWorldCam.GetZoom();
+
+	return temp;
+}
+
+void RenderManager::CreateGizmoCircle(const Transform& _t, const Color& _clr)
+{
+	Math::Mat3 mtx = GetGizmoTransform(_t);
+	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
+
+	float theta = 2.f / CIRCLE_SLICES * 3.14159265f;
+	Vertex v0;
+	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
+	v0.position.z = 1.f;
+	v0.color = clr;
+	v0.texID = 0.f;
+	mVertices.push_back(v0);
+
+	for (int i = 1; i < CIRCLE_SLICES + 2; ++i)
+	{
+		Vertex v;
+		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
+		v.position.z = 1.f;
+		v.color = clr;
+		v.texID = 0.f;
+		mVertices.push_back(v);
+	}
+
+	GLushort pivot = mIndices.empty() ? 0 : mIndices.back() + 1;
+
+	for (GLushort i = 0; i < CIRCLE_SLICES; ++i)
+	{
+		mIndices.push_back(pivot);
+		mIndices.push_back(pivot + 1 + i);
+		mIndices.push_back(pivot + 2 + i);
+	}
+}
+
+void RenderManager::CreateGizmoDebugLine(const Transform& _t, const Color& _clr)
+{
+	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
+	Math::Mat3 mtx = GetGizmoTransform(_t);
+
+	Vertex v0, v1;
+	v0.color = clr;
+	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
+	v0.position.z = 0.99f;
+	v0.texID = 0.f;
+
+	v1.color = clr;
+	v1.position = (mtx * Math::Vec3(1.f, 0.f, 1.f)).ToGLM();
+	v1.position.z = 0.99f;
+	v1.texID = 0.f;
+
+	mDebugVertices.push_back(v0);
+	mDebugVertices.push_back(v1);
+
+	GLushort first = mDebugIndices.empty() ? 0 : mDebugIndices.back() + 1;
+	mDebugIndices.push_back(first);
+	mDebugIndices.push_back(first + 1);
+}
+
+void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _clr)
+{
+	Math::Mat3 mtx = GetGizmoTransform(_t);
+	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
+
+	float theta = 2.f / CIRCLE_SLICES * static_cast<float>(Math::PI);
+
+	for (int i = 1; i < CIRCLE_SLICES + 2; ++i)
+	{
+		Vertex v;
+		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
+		v.position.z = 0.99f;
+		v.color = clr;
+		v.texID = 0.f;
+		mDebugVertices.push_back(v);
+	}
+
+	GLushort first = mDebugIndices.empty() ? 0 : mDebugIndices.back() + 1;
+
+	for (GLushort i = 0; i < CIRCLE_SLICES; ++i)
+	{
+		mDebugIndices.push_back(first + i);
+		mDebugIndices.push_back(first + i + 1);
+	}
 }

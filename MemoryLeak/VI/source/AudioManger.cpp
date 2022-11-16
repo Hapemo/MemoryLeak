@@ -149,9 +149,9 @@ void AudioManager::PlaySound(const Entity& _e, int _channel)
     {
         std::string snd = _e.GetComponent<Audio>().sound.path;
         //mSfxSound[snd]->setMode(2);
-        bool f;
-        mChannel[_channel]->isPlaying(&f);
-        if(!f)
+        /* bool f;
+        mChannel[_channel]->isPlaying(&f);*/
+        if (!isPlaying(_channel))
         {
             LOG_INFO("Play Collision sound");
             mChannel[_channel]->setVolume(_e.GetComponent<Audio>().sound.volume);
@@ -168,9 +168,9 @@ None.
 *******************************************************************************/
 void AudioManager::PlayAnySound(std::string _snd, int _channel)
 {
-    bool f;
-    mChannel[_channel]->isPlaying(&f);
-    if (f)
+    /* bool f;
+    mChannel[_channel]->isPlaying(&f);*/
+    if (isPlaying(_channel))
     {
         mChannel[_channel]->stop();
     }
@@ -191,9 +191,9 @@ void AudioManager::PlayAnySound(std::string _snd, int _channel)
 }
 void AudioManager::PlayDialogueSound(std::string _snd, int _channel)
 {
-    bool f;
-    mChannel[_channel]->isPlaying(&f);
-    if (f)
+    /*bool f;
+    mChannel[_channel]->isPlaying(&f);*/
+    if (isPlaying(_channel))
     {
         mChannel[_channel]->stop();
     }
@@ -216,9 +216,9 @@ None.
 void AudioManager::PlayBGSound(std::string _snd, int _channel)
 {
     mBgmSound[_snd]->setMode(2);
-    bool f;
-    mChannel[_channel]->isPlaying(&f);
-    if (f)
+   /* bool f;
+    mChannel[_channel]->isPlaying(&f);*/
+    if (isPlaying(_channel))
     {
         mChannel[_channel]->stop();
     }
@@ -245,9 +245,10 @@ void AudioManager::UpdateSound()
 {
     for (const Entity& e : mEntities)
     {
+        if (!e.ShouldRun())
+            continue;
         if (e.GetComponent<Audio>().sound.toPlay==true)
         {
-            
             PlaySound(e, (int)(std::rand()%10));
             if (!e.GetComponent<Audio>().sound.isLoop)
             {

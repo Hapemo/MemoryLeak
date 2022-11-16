@@ -17,6 +17,7 @@ std::shared_ptr<SpriteManager> spriteManager{ nullptr };
 std::shared_ptr<RenderManager> renderManager{ nullptr };
 std::shared_ptr<Physics2DManager> physics2DManager{ nullptr };
 std::shared_ptr<Collision2DManager> collision2DManager{ nullptr };
+std::shared_ptr<LayerManager> layerManager{ nullptr };
 std::shared_ptr<PlayerController> playerManager{ nullptr };
 std::shared_ptr<EditorManager> editorManager{ nullptr };
 std::shared_ptr<Animator> animator{ nullptr };
@@ -83,6 +84,14 @@ void ECSManager::RegisterCollision2DManager() {
 
 	collision2DManager = ECS::RegisterSystem<Collision2DManager>();
 	ECS::SetSystemSignature<Collision2DManager>(signature);
+}
+
+void ECSManager::RegisterLayerManager() {
+	Signature signature{};
+	signature.set(ECS::GetComponentType<LayerCollider>());
+
+	layerManager = ECS::RegisterSystem<LayerManager>();
+	ECS::SetSystemSignature<LayerManager>(signature);
 }
 
 void ECSManager::RegisterPlayerController() {
@@ -186,9 +195,10 @@ void ECSManager::RegisterAllSystems() {
 	RegisterRenderManager();
 	RegisterAnimator();
 	RegisterSheetAnimator();
-	RegisterPlayerController();
 	RegisterPhysics2DManager();
 	RegisterCollision2DManager();
+	RegisterLayerManager();
+	RegisterPlayerController();
 	RegisterEditorManager();
 	RegisterAudioManager();
 	RegisterSerializationManager();
@@ -212,6 +222,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<CircleCollider>();
 	ECS::RegisterComponent<Edge2DCollider>();
 	ECS::RegisterComponent<Point2DCollider>();
+	ECS::RegisterComponent<LayerCollider>();
 	ECS::RegisterComponent<PlayerTmp>();
 	ECS::RegisterComponent<AI>();
 	ECS::RegisterComponent<Audio>();
@@ -220,7 +231,6 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Dialogue>();
 	ECS::RegisterComponent<LightSource>();
 	ECS::RegisterComponent<Button>();
-	ECS::RegisterComponent<LayerCollider>();
 	// More to come
 }
 
