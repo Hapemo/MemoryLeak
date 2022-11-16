@@ -463,6 +463,11 @@ private:
 	*******************************************************************************/
 	void CreateDebugArrow(const Transform& _t, const Color& _clr);
 
+	Math::Mat3 GetGizmoTransform(const Transform& _xform);
+	void CreateGizmoCircle(const Transform& _t, const Color& _clr);
+	void CreateGizmoDebugLine(const Transform& _t, const Color& _clr);
+	void CreateGizmoDebugCircle(const Transform& _t, const Color& _clr);
+
 	/*!*****************************************************************************
 	\brief
 	Helper function for returning the color of the Sprite Component in OpenGL.

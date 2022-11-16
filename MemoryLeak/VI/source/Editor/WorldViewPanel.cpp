@@ -36,6 +36,8 @@ void WorldViewPanel::Update()
 	{
 		//Calcualting the view port aspect ratio 
 		SetViewportAspectRatio();
+		CalculateMousePos(E_CAMERA_TYPE::WORLD);
+		mWorldMousePos = worldMousePos;
 		isViewportPaused = isScenePaused;
 		renderUI();
 		isScenePaused = isViewportPaused;
@@ -116,13 +118,14 @@ void WorldViewPanel::Update()
 					}
 					else
 					{
-						UseGuizmo();
+						//UseGuizmo();
 					}
 				}
 			}
 		}
 	}
 	ImGui::End();
+	
 }
 /*!*****************************************************************************
 \brief
