@@ -12,6 +12,7 @@ Entities and its Components.
 #include "InspectorPanel.h"
 #include <ECSManager.h>
 #include "ScriptManager.h"
+#include "GameStateManager.h"
 /*!*****************************************************************************
 \brief
 	Initializes the Inspector Panel editor
@@ -266,7 +267,7 @@ None.
 *******************************************************************************/
 void InspectorPanel::DeleteEntity()
 {
-	GSList[selectedGameState].scenes[selectedScene].mEntities.erase(e);
+	(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.erase(e);
 	e.GetComponent<General>().isActive = false;
 	e.GetComponent<General>().isPaused = true;
 	//e.Destroy();

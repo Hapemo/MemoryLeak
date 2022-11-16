@@ -55,21 +55,21 @@ private:
 	
 protected:
 	//to remove
-	struct SceneData {
-		std::string name = "";
-		Transform camera = {};
-		bool isActive = false;
-		int layer = 0;
-		int order = 0;;
-		std::set<Entity> mEntities = {};
-	};
+	//struct SceneData {
+	//	std::string name = "";
+	//	Transform camera = {};
+	//	bool isActive = false;
+	//	int layer = 0;
+	//	int order = 0;;
+	//	std::set<Entity> mEntities = {};
+	//};
 
-	//Data that a gamestate class should contain
-	struct GameStateData {
-		std::string name = "";
-		std::vector<SceneData> scenes = {};
+	////Data that a gamestate class should contain
+	//struct GameStateData {
+	//	std::string name = "";
+	//	std::vector<SceneData> scenes = {};
 
-	};
+	//};
 	enum class E_PANELID
 	{
 		MENU,
@@ -110,7 +110,7 @@ protected:
 
 
 	static std::vector<GameState>* mGameStates;
-	static std::vector <GameStateData> GSList;
+	//static std::vector <GameStateData> GSList;
 	//static std::vector<  std::pair<  std::string, std::vector<std::string> >> allNames;
 	//static std::vector<std::vector<std::set<Entity>>> allEntities;
 	static int selectedGameState;

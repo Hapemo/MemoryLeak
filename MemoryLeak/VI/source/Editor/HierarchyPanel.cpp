@@ -48,6 +48,7 @@ void HierarchyPanel::Update()
 				{
 					//ImGui::PopID();
 					selectedGameState = g;
+					GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
 					ImGui::InputText("GameState Name", &(*mGameStates)[g].mName);
 					std::string saveGSbtn = "SAVE " + (*mGameStates)[g].mName + " GameState";
 					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
@@ -55,6 +56,7 @@ void HierarchyPanel::Update()
 					{
 						//serializationManager->SaveGameState(allNames[g], allEntities[g]);
 						////serializationManager->SaveGameState(GSList[g]);
+						(*mGameStates)[g].Save();
 					}
 					ImGui::PopStyleColor();
 					std::string removeGSbtn = "REMOVE " + (*mGameStates)[g].mName + " GameState";
@@ -89,6 +91,7 @@ void HierarchyPanel::Update()
 								{
 									//serializationManager->SaveScene(allNames[g].second[s], allEntities[g][s]);
 									////serializationManager->SaveScene(GSList[g].scenes[s]);
+									(*mGameStates)[g].mScenes[s].Save();
 								}
 								ImGui::PopStyleColor();
 								std::string removeScenebtn = "REMOVE " + (*mGameStates)[g].mScenes[s].mName + " Scene";
@@ -99,7 +102,7 @@ void HierarchyPanel::Update()
 									//allNames[g].second.erase(allNames[g].second.begin() + s);
 									//allEntities[g].erase(allEntities[g].begin() + s);
 									//selectedScene = (int)allEntities[g].size() - 1;
-									selectedScene = (int)GSList[g].scenes.size() - 1;
+									selectedScene = (int)(*mGameStates)[g].mScenes.size() - 1;
 									ImGui::EndTabItem();
 									ImGui::PopStyleColor();
 									break;
@@ -179,7 +182,7 @@ void HierarchyPanel::Update()
 					std::string newScenebtn = "NEW "+ (*mGameStates)[g].mName  +" Scene";
 					if (ImGui::Button(newScenebtn.c_str()))
 					{//FUNCTION GS SCENE
-						////NewScene();
+						NewScene();
 						//static int sn = 1;
 						//std::set<Entity> newSecen{};
 						//allEntities[g].push_back(newSecen);
@@ -196,7 +199,7 @@ void HierarchyPanel::Update()
 
 		if (ImGui::Button("NEW GameState"))
 		{//FUNCTION GS SCENE
-			////NewGameState();
+			NewGameState();
 
 			//static int gn = 1;
 			//std::vector < std::set<Entity>> newGS{};

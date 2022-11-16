@@ -11,6 +11,7 @@ that lists the entities and its components in the scene
 *******************************************************************************/
 #include "PrefabPanel.h"
 #include <ECSManager.h>
+#include "GameStateManager.h"
 int PrefabPanel::newPrefabCount = 1;
 
 
@@ -139,7 +140,7 @@ void PrefabPanel::newPrefab()
 void PrefabPanel::newPrefabee(PrefabPtr pre)
 {//FUNCTION GS SCENE
 
-	if (selectedGameState >= GSList.size())
+	if (selectedGameState >= (*mGameStates).size())
 	{
 		NewGameState();
 		/*std::vector < std::set<Entity>> newGS{};
@@ -149,7 +150,7 @@ void PrefabPanel::newPrefabee(PrefabPtr pre)
 		allNames.push_back(newGSNmae);
 		selectedGameState = (int)allEntities.size() - 1;*/
 	}
-	if (selectedScene >= GSList[selectedGameState].scenes.size())
+	if (selectedScene >= (*mGameStates)[selectedGameState].mScenes.size())
 	{
 		NewScene();
 		/*std::set<Entity> newSecen{};
@@ -169,7 +170,7 @@ void PrefabPanel::newPrefabee(PrefabPtr pre)
 		b.GetComponent<Transform>().translation.x += prefabOffset;
 		b.GetComponent<Transform>().translation.y += prefabOffset;
 	}
-	(GSList[selectedGameState].scenes[selectedScene].mEntities).insert(b);
+	((*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities).insert(b);
 	n++;
 	prefabOffset += 10.f;
 }

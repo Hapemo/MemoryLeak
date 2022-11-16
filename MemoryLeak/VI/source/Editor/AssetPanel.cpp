@@ -174,6 +174,7 @@ void AssetPanel::Update()
 							//LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
 							//LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
 							GameStateManager::GetInstance()->AddGameState(directory.path());
+							GameStateManager::GetInstance()->SetGameState(directory.path().stem().string());
 						}
 					}
 					else if (texParent.find("\\Scene") != std::string::npos)
@@ -183,7 +184,7 @@ void AssetPanel::Update()
 						{
 							//ECS::DestroyAllEntities();
 							SceneReset();
-							if (selectedGameState >= GSList.size())
+							if (selectedGameState >= (*mGameStates).size())
 							{//FUNCTION GS SCENE
 								/*std::vector < std::set<Entity>> newGS{};
 								allEntities.push_back(newGS);
@@ -192,6 +193,7 @@ void AssetPanel::Update()
 								allNames.push_back(newGSNmae);
 								selectedGameState = (int)allEntities.size() - 1;*/
 								NewGameState();
+								GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
 								////LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
 							}
 							////GSList[selectedGameState].scenes.push_back(serializationManager->LoadScene(texFilename));

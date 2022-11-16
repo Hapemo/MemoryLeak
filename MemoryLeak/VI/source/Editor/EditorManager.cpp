@@ -53,7 +53,7 @@ bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
 
 std::vector<GameState>* EditorManager::mGameStates = nullptr;
-std::vector <EditorManager::GameStateData>  EditorManager::GSList;
+//std::vector <EditorManager::GameStateData>  EditorManager::GSList;
 //std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
 //std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
 int EditorManager::selectedGameState{0};
@@ -540,7 +540,7 @@ void EditorManager::Cut()
 		copyEntity.second = 2;
 		(*selectedEntity).GetComponent<General>().isActive = false;
 		(*selectedEntity).GetComponent<General>().isPaused = true;
-		GSList[selectedGameState].scenes[selectedScene].mEntities.erase(*selectedEntity);
+		(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.erase(*selectedEntity);
 		selectedEntity = nullptr;
 	}
 }
@@ -551,7 +551,7 @@ void EditorManager::Paste()
 		//Clone Entity;
 		LOG_INFO("Enitity Pasted");
 		Entity e = Clone(copyEntity.first);
-		GSList[selectedGameState].scenes[selectedScene].mEntities.insert(e);
+		(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(e);
 		if (copyEntity.second == 2)//cut
 		{
 			//copyEntity.first.Destroy();
@@ -632,19 +632,20 @@ Math::Vec2 EditorManager::GetEditorGameMousePos()
 void EditorManager::NewScene()
 {
 	static int sn = 1;
-	SceneData sceneData{};
-	sceneData.name = "NewScene" + std::to_string(sn++);
-	GSList[selectedGameState].scenes.push_back(sceneData);
-	selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+	Scene sceneData{};
+	sceneData.mName = "NewScene" + std::to_string(sn++);
+	(*mGameStates)[selectedGameState].mScenes.push_back(sceneData);
+	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 }
 void EditorManager::NewGameState()
 {
 	static int gn = 1;
-	GameStateData gameStateData{};
-	gameStateData.name = "NewGameState" + std::to_string(gn++);
-	GSList.push_back(gameStateData);
-	selectedGameState = (int)GSList.size() - 1;
-	selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+	GameState gameStateData{};
+	gameStateData.mName = "NewGameState" + std::to_string(gn++);
+	(*mGameStates).push_back(gameStateData);
+	selectedGameState = (int)(*mGameStates).size() - 1;
+	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
+	GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
 }
 
 
