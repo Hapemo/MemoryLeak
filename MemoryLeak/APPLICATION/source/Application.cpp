@@ -44,6 +44,7 @@ void Application::SystemInit() {
   
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
+  playerManager->Init(window_width, window_height);
   
   renderManager->RenderToScreen();
   // For render debug
