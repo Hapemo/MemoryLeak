@@ -45,7 +45,7 @@ void GameState::Load(std::filesystem::path const& _path){
 	for (auto& scene : mScenes) {
 		std::filesystem::path path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene).string() +"/Scene/" + scene.mName + ".json"};
 		scene.Load(path);
-		std::cout << path.string()<<"\n";
+		//std::cout << path.string()<<"\n";
 	}
 }
 

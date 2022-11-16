@@ -12,12 +12,12 @@
                 "Y": 0.0
             }
         },
-        "isActive": true,
+        "isActive": false,
         "layer": 3,
         "order": 3
     },
     {
-        "SceneName": "NewScene",
+        "SceneName": "NewScene (1)",
         "Transform": {
             "scale": {
                 "X": 1.0,

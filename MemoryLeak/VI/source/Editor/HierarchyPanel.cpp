@@ -56,7 +56,7 @@ void HierarchyPanel::Update()
 					if (selectedGameState != g)
 					{
 						gsName = (*mGameStates)[g].mName;
-						GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
+						GameStateManager::GetInstance()->SetGameState((*mGameStates)[g].mName);
 						selectedGameState = g;
 					}
 					ImGui::InputText("GameState Name", &gsName);
