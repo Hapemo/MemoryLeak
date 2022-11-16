@@ -158,53 +158,36 @@ void LayerManager::Update(const double& _dt) {
 	}
 
 	for (auto& item : mUpdateList) {
-		bool isColliding = false;
-		for (int c = 0; c < (int)stack.size(); c++)
-		{
-			if (item.obj[0].id == stack[c].first.id || item.obj[1].id == stack[c].first.id)
-			{
-				isColliding = true;
-				break;
-			}
-
-		}
-		if (isColliding)
-			continue;
 		if (item.obj[0].HasComponent<Sprite>() && item.obj[1].HasComponent<Sprite>()) {
 			if (item.obj[0].GetComponent<General>().tag == TAG::PLAYER) {
-				//if (item.obj[0].GetComponent<Transform>().translation.y > item.obj[1].GetComponent<Transform>().translation.y) 
-				//	item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 5;
-				//else
-				//	item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer + 5;
-				stack.push_back(std::make_pair(item.obj[0], item.obj[0].GetComponent<Sprite>().layer));
+				//stack.push_back(std::make_pair(item.obj[0], item.obj[0].GetComponent<Sprite>().layer));
+				LayerManager::mOriginLayerMap.try_emplace(&item.obj[0], item.obj[0].GetComponent<Sprite>().layer);
 				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 5;
 
 			}
 			else if (item.obj[1].GetComponent<General>().tag == TAG::PLAYER) {
-				//if (item.obj[1].GetComponent<Transform>().translation.y > item.obj[0].GetComponent<Transform>().translation.y)
-				//	item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 5;
-				//else
-				//	item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer + 5;
-				stack.push_back(std::make_pair(item.obj[1], item.obj[1].GetComponent<Sprite>().layer));
+				//stack.push_back(std::make_pair(item.obj[1], item.obj[1].GetComponent<Sprite>().layer));
+				LayerManager::mOriginLayerMap.try_emplace(&item.obj[1], item.obj[1].GetComponent<Sprite>().layer);
 				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 5;
 			}
 		}
 	}
-	//for (std::pair<Entity, int> entity : stack)
-	for(int c = 0; c < (int)stack.size(); c++)
-	{
-		bool isColliding = false;
-		for (auto& item : mUpdateList) {
-			if (item.obj[0].id == stack[c].first.id || item.obj[1].id == stack[c].first.id)
-			{
-				isColliding = true;
-			}
+
+	for (auto it{ mOriginLayerMap.begin() }; it != mOriginLayerMap.end(); ) {
+		bool CollidedFlag{ false };
+		for (auto& collisionPair : mUpdateList) {
+			if (&collisionPair.obj[0] == it->first || &collisionPair.obj[1] == it->first)
+				CollidedFlag = true;
 		}
-		if (isColliding == false)//not coliding with anything
-		{
-			stack[c].first.GetComponent<Sprite>().layer = stack[c].second;
-			stack.erase(stack.begin()+c);
+
+		if (CollidedFlag)
+			++it;
+		else {
+			it->first->GetComponent<Sprite>().layer = it->second;
+			it = mOriginLayerMap.erase(it);
 		}
 	}
+
+
 	mUpdateList.clear();
 }

@@ -15,7 +15,13 @@
 // -----------------------------
 #include "ECSManager.h"
 #include "Input.h"
-std::vector<bool> PlayerController::check{ true, true, true,true };
+
+void PlayerController::Init(const int& _windowWidth, const int& _windowHeight) {
+	ViewToWorld[1][1] = -1;
+	ViewToWorld[0][2] = -(_windowWidth / 2);
+	ViewToWorld[1][2] = _windowHeight / 2;
+}
+
 /*!*****************************************************************************
 \brief
 Update function that checks for keyboard input to modify physics components values
@@ -59,37 +65,46 @@ void PlayerController::Update() {
 			//if (Input::CheckKey(STATE::PRESS, KEY::S) || Input::CheckKey(STATE::HOLD, KEY::S))
 			//	e.GetComponent<Physics2D>().speed -= static_cast<float>(playerSpeedChange * _dt);
 
-			//if (!check[0])
-			//	std::cout << "wwwwwwwwwwwwwwwwwwwww\n";
-			//if (!check[1])
-			//	std::cout << "sssssssssssssssssssssssssss\n";
-			//if (!check[2])
-			//	std::cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaa\n";
-			//if (!check[3])
-			//	std::cout << "ddddddddddddddddddddddddddddddn";
-
+		// -----------------------------	
 		// Movement input second draft (key movement)
-		// -----------------------------
-		// Contains response hack for player (done by Wei Jhin)
-
-			// Up movement
-		if ((Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W))/*&&check[0]*/) {
-			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
+		// -----------------------------	
+		// Up movement
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W)) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, 1.f } * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 
 		// Down movement
-		if ((Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) /*&& check[1]*/) {
-			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, -1.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 0.f, -1.f } * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 
 		// Left movement
-		if ((Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) /*&& check[2]*/) {
-			physics2DManager->ApplyImpulse(e, Math::Vec2{ -1.f, 0.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ -1.f, 0.f } * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 
 		// Right movement
-		if ((Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D))/* && check[3]*/) {
-			physics2DManager->ApplyImpulse(e, Math::Vec2{ 1.f, 0.f } *static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D)) {
+			physics2DManager->ApplyImpulse(e, Math::Vec2{ 1.f, 0.f } * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
+		}
+
+
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L)){// || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L)) {
+			//Math::Vec2 cursorPos = Input::CursorPos();
+			//cursorPos.x -= 800.f;
+			//cursorPos.y = (-cursorPos.y) + 450.f;
+			//Math::Vec2 dir = cursorPos - e.GetComponent<Transform>().translation;
+			//physics2DManager->ApplyImpulse(e, dir.Normalized() * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
+			//float rotation = (float)(acosf(dir.x / dir.Magnitude()));
+			//if (dir.y < 0.f)
+			//{
+			//	rotation = -rotation;
+			//}
+			//e.GetComponent<Physics2D>().moveDirection = rotation;
+			//e.GetComponent<Physics2D>().speed += static_cast<float>(playerSpeedChange);
+
+			//Math::Vec2 cursorWorldPos{ editorManager->GetEditorWorldMousePos() };
+			//physics2DManager->ApplyImpulse(e, (cursorWorldPos - e.GetComponent<Transform>().translation).Normalized() * static_cast<float>(playerSpeed), Math::Vec2{ 0.f, 0.f });
 		}
 
 		// Cap player speed
