@@ -10,7 +10,7 @@ This file contains function definations for a WorldView Panel Editor system that
 *******************************************************************************/
 #include "WorldViewPanel.h"
 #include <ECSManager.h>
-
+#include "GameStateManager.h"
 /*!*****************************************************************************
 \brief
 	Initializes the WorldViewPanel editor
@@ -36,6 +36,8 @@ void WorldViewPanel::Update()
 	{
 		//Calcualting the view port aspect ratio 
 		SetViewportAspectRatio();
+		CalculateMousePos(E_CAMERA_TYPE::WORLD);
+		mWorldMousePos = worldMousePos;
 		isViewportPaused = isScenePaused;
 		renderUI();
 		isScenePaused = isViewportPaused;
@@ -116,13 +118,14 @@ void WorldViewPanel::Update()
 					}
 					else
 					{
-						UseGuizmo();
+						//UseGuizmo();
 					}
 				}
 			}
 		}
 	}
 	ImGui::End();
+	
 }
 /*!*****************************************************************************
 \brief
@@ -218,11 +221,11 @@ void WorldViewPanel::NewEntity()
 	static const wchar_t* texpath = (const wchar_t*)"";
 	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
 	{
-		if (selectedGameState >= GSList.size())
+		if (selectedGameState >= (*mGameStates).size())
 		{
 			NewGameState();
 		}
-		if (selectedScene >= GSList[selectedGameState].scenes.size())
+		if (selectedScene >= (*mGameStates)[selectedGameState].mScenes.size())
 		{
 			NewScene();
 		}
@@ -231,7 +234,7 @@ void WorldViewPanel::NewEntity()
 
 		LOG_INFO("Created new entity");
 		Entity ne{ ECS::CreateEntity() };
-		(GSList[selectedGameState].scenes[selectedScene].mEntities).insert(ne);
+		(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(ne);
 		ne.AddComponent(
 			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false},
 			Transform{ {150,150}, 0, camMousePos },
@@ -257,11 +260,11 @@ void WorldViewPanel::NewPrefabee()
 	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("PREFAB"))
 	{
 		//FUNCTION GS SCENE
-		if (selectedGameState >= GSList.size())
+		if (selectedGameState >= (*mGameStates).size())
 		{
 			NewGameState();
 		}
-		if (selectedScene >= GSList[selectedGameState].scenes.size())
+		if (selectedScene >= (*mGameStates)[selectedGameState].mScenes.size())
 		{
 			NewScene();
 		}
@@ -302,9 +305,9 @@ None.
 void WorldViewPanel::SetSelectedEntity()
 {
 	int layer = 0;
-	if (!(selectedGameState < GSList.size() && selectedScene < GSList[selectedGameState].scenes.size()))
+	if (!(selectedGameState < (*mGameStates).size() && selectedScene < (*mGameStates)[selectedGameState].mScenes.size()))
 		return;
-	for (const Entity& ee : GSList[selectedGameState].scenes[selectedScene].mEntities)
+	for (const Entity& ee : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
 	{
 		if (ee.GetComponent<General>().tag == TAG::BACKGROUND)
 			continue;

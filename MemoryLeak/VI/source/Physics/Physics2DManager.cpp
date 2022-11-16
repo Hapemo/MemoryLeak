@@ -82,12 +82,13 @@ void Physics2DManager::Step() {
 
 		// Update accumulated forces acting on entity
 		UpdateEntitiesAccumulatedForce(e);
-
+		
 		// Determine acceleration
 		SetAcceleration(e, GetAccumulatedForce(e) * (GetMass(e) == 0.f ? 0.f : static_cast<float>(1.f / GetMass(e))));
-
+		
 		// Determine velocity
 		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(fixedDT));
+		
 		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (GetInertia(e) == 0.f ? 0.f : (1.f / GetInertia(e))) * static_cast<float>(fixedDT));
 
 		// Dampen velocity (for soft drag)
@@ -102,9 +103,13 @@ void Physics2DManager::Step() {
 		if (GetAngularVelocity(e) > Physics2DManager::angularVelocityCap)
 			SetAngularVelocity(e, Physics2DManager::angularVelocityCap);
 
+		if (fabs(GetVelocity(e).x) < Math::epsilonValue)
+			e.GetComponent<Physics2D>().velocity.x = 0.f;
+		if (fabs(GetVelocity(e).y) < Math::epsilonValue)
+			e.GetComponent<Physics2D>().velocity.y = 0.f;
+
 		// Move entity by velocity
-		if (abs(GetVelocity(e).x) >= 0.001f || abs(GetVelocity(e).y) >= 0.001f)
-			e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(fixedDT);
+		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(fixedDT);
 
 		e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * fixedDT);
 

@@ -45,8 +45,9 @@ void real_main() {
 
     // Part 2
     while (!glfwWindowShouldClose(Application::getWindow())) {
-        GameStateManager::GetInstance()->Update();
-        if (GameStateManager::GetInstance()->GetNextGS() == E_GS::EXIT) break;
+      Application::MainUpdate();
+        //GameStateManager::GetInstance()->Update();
+        //if (GameStateManager::GetInstance()->GetNextGS() == E_GS::EXIT) break;
     }
 
     // Part 3

@@ -20,14 +20,15 @@ Entities and its Components.
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include "PrefabManager.h"
-//#include "Graphics/TransformManager.h"
+
 #include <vec2.h>
 #include <filesystem>
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <Input.h>
 class Panel;
-
+class Scene;
+class GameState;
 /*!*****************************************************************************
 \brief
 	This class encapsulates the functions for the Level Editor
@@ -46,13 +47,29 @@ public:
 	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
 	using PrefabPtr = std::shared_ptr<Prefab>;
 
-	Math::Vec2 GetEditorWorldMousePos();
-	Math::Vec2 GetEditorGameMousePos();
+	Math::Vec2 GetEditorWorldMousePos() { return mWorldMousePos; }
+	//Math::Vec2 GetEditorGameMousePos();
 
 private:
 	static std::vector<Panel*> panels;
 	
 protected:
+	//to remove
+	//struct SceneData {
+	//	std::string name = "";
+	//	Transform camera = {};
+	//	bool isActive = false;
+	//	int layer = 0;
+	//	int order = 0;;
+	//	std::set<Entity> mEntities = {};
+	//};
+
+	////Data that a gamestate class should contain
+	//struct GameStateData {
+	//	std::string name = "";
+	//	std::vector<SceneData> scenes = {};
+
+	//};
 	enum class E_PANELID
 	{
 		MENU,
@@ -83,14 +100,17 @@ protected:
 	GLFWwindow* mWindow;
 	static int* mWindowWidth;
 	static int* mWindowHeight;
-
+	static Math::Vec2 mWorldMousePos;
 	static std::set<Entity>* myEntities;
 	static const Entity* selectedEntity;
 	static Entity selEntity;
 	static bool aspect;
 	static PrefabPtr selectedPrefab;
 	static int selectedType;
-	static std::vector <GameStateData> GSList;
+
+
+	static std::vector<GameState>* mGameStates;
+	//static std::vector <GameStateData> GSList;
 	//static std::vector<  std::pair<  std::string, std::vector<std::string> >> allNames;
 	//static std::vector<std::vector<std::set<Entity>>> allEntities;
 	static int selectedGameState;
@@ -127,4 +147,6 @@ protected:
 	void CameraViewPort();
 	void ShowDebugInfo();
 	void DialogEditor();*/
+
+	
 };

@@ -10,5 +10,5 @@ public:
 	void Update(const double& _dt);
 private:
 	std::vector<Contact> mUpdateList;
-	std::vector<std::pair<Entity, int>> stack;
+	std::unordered_map<Entity*, int> mOriginLayerMap;
 };

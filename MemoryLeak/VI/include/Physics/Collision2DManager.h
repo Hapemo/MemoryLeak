@@ -168,5 +168,5 @@ private:
 
 	// const float penEpsilion{ 0.0001f };
 	const float	penAllowance{ 0.01f },		// Penetration allowance
-				penPercentage{ 1.0f };		// Penetration percentage to correct
+				penPercentage{ 2.0f };		// Penetration percentage to correct
 };

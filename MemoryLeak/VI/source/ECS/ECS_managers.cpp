@@ -30,7 +30,7 @@ bool Entity::ShouldRun() const {
 	return !genComponent.isPaused && genComponent.isActive;
 }
 
-void Entity::Activate() {
+void Entity::Activate() const {
 	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
 	General& genComp{ GetComponent<General>() };
 
@@ -52,7 +52,7 @@ void Entity::Activate() {
 	//------------------------------------------------------------------
 }
 
-void Entity::Deactivate() {
+void Entity::Deactivate() const {
 	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
 	General& genComp{ GetComponent<General>() };
 
@@ -312,7 +312,7 @@ void Coordinator::DestroyEntity(EntityID _entity) {
 	UnlinkPrefab(_entity);
 	// Detatch from Parent Child
 	General& genComp{ GetComponent<General>(_entity) };
-	genComp.parent.GetComponent<General>().children.erase(Entity(_entity));
+	if (!genComp.parent.id) genComp.parent.GetComponent<General>().children.erase(Entity(_entity));
 	for (Entity e : genComp.children)
 		e.GetComponent<General>().parent = Entity(0);
 

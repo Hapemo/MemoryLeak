@@ -52,40 +52,40 @@ public:
 	void Exit() {};
 	
 	/*!*****************************************************************************
-	Load scene with guid, using resource manager
-
-	\param ResourceManager::GUID const&
-	- GUID that references to the scene
+	Load scene from a file path
 	*******************************************************************************/
-	void Load(ResourceManager::GUID const& _guid);
+	void Load(std::filesystem::path const& _path);
+
+	// *EDITOR ONLY FUNCTION*
+	void Save();
 
 	/*!*****************************************************************************
 	Unload scene using resource manager
 	*******************************************************************************/
 	void Unload();
 
-	// Save scene to a scene file. If no scene file found, create one.
-	// Return the guid for the game state to save it in their file
-	// This should be called whenever someone wants to save a scene
-	void Save(std::string = "");
-
 	/*!*****************************************************************************
-	Add Entity to scene
+	Add Entity to scene. NOTE: Should not be called on game run-time
+	*EDITOR ONLY FUNCTION*
+	
 	*******************************************************************************/
 	void AddEntity();
 
 	/*!*****************************************************************************
-	Remove entity from scene
-
+	Remove entity from scene. NOTE: Should not be called on game run-time
+	*EDITOR ONLY FUNCTION*
+	
 	\param Entity const&
 	- Entity to remove
 	*******************************************************************************/
 	void RemoveEntity(Entity const&);
 
-	std::set<Entity> mEntities;			// Entities in the scene 
-	bool pause;											// Paused state of the scene
-	ResourceManager::GUID mGuid;		// Scene's GUID
-	std::string mName;
+	std::set<Entity> mEntities{};			// Entities in the scene 
+	bool mIsPause=true;											// Paused state of the scene
+	std::string mName="";
+	Transform mCamera{};
+	int mLayer=0;
+	int mOrder=0;
 
 private:
 };

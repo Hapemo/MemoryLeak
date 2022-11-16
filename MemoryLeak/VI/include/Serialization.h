@@ -24,24 +24,25 @@ Entities and its Components.
 
 
 // Data that a scene class should contain
-struct SceneData {
-	std::string name = "";
-	Transform camera = {};
-	bool isActive = false;
-	int layer =0;
-	int order = 0;;
-	std::set<Entity> mEntities = {};
-};
-
-//Data that a gamestate class should contain
-struct GameStateData {
-	std::string name = "";
-	std::vector<SceneData> scenes = {};
-
-	///
-	std::vector<ResourceManager::GUID> mGUIDs;
-};
-
+//struct SceneData {
+//	std::string name = "";
+//	Transform camera = {};
+//	bool isActive = false;
+//	int layer =0;
+//	int order = 0;;
+//	std::set<Entity> mEntities = {};
+//};
+//
+////Data that a gamestate class should contain
+//struct GameStateData {
+//	std::string name = "";
+//	std::vector<SceneData> scenes = {};
+//
+//	///
+//	std::vector<ResourceManager::GUID> mGUIDs;
+//};
+class Scene;
+class GameState;
 using namespace rapidjson;
 /*!*****************************************************************************
 \brief
@@ -50,10 +51,12 @@ using namespace rapidjson;
 class SerializationManager : public System
 {
 public:
-	SceneData LoadScene(std::string _filename);
-	void SaveScene(SceneData);
-	GameStateData LoadGameState(std::string _filename);
-	void SaveGameState(GameStateData);
+	void LoadScene(Scene& _sceneData, std::filesystem::path _filename);
+	void SaveScene(Scene& _sceneData);
+	void LoadGameState(GameState& _gameState, std::filesystem::path _filename);
+	void SaveGameState(GameState& _gameState);
+
+
 	void LoadPrefab(std::string _filename = "NewPrefab");
 	void SavePrefab(std::string _filename = "NewPrefab");
 	void LoadDialogs(std::string _filename = "Dialog1");
@@ -134,11 +137,11 @@ private:
 	void addScript(Document& scene, Value& entity, Script script);
 
 public:
-	static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
-	static SceneData LoadSceneData(std::string const& _filePath);
-	static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid); // (Deprecated)
-	static GameStateData LoadGameStateData(std::string const& _filePath); // (Deprecated)
-	static void SaveSceneData(ResourceManager::GUID const&);
+	//static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
+	//static SceneData LoadSceneData(std::string const& _filePath);
+	//static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid); // (Deprecated)
+	//static GameStateData LoadGameStateData(std::string const& _filePath); // (Deprecated)
+	//static void SaveSceneData(ResourceManager::GUID const&);
 
 };
 

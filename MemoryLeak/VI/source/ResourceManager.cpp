@@ -395,29 +395,29 @@ std::string ResourceManager::GetFilePath(GUID const& _guid) {
 
 	return filePath;
 }
-
-GameStateData ResourceManager::LoadGameState(GUID const& _guid) {
-	mAllResources[_guid] = new GameStateData;
-	*(static_cast<GameStateData*>(mAllResources[_guid])) = SerializationManager::LoadGameStateData(mAllFilePaths[_guid]);
-	return *static_cast<GameStateData*>(mAllResources[_guid]);
-}
-
-void ResourceManager::UnloadGameState(GUID const& _guid) {
-	GameStateData* data = static_cast<GameStateData*>(mAllResources[_guid]);
-	delete data;
-}
-
-SceneData ResourceManager::LoadScene(GUID const& _guid) {
-	mAllResources[_guid] = new SceneData;
-	*(static_cast<SceneData*>(mAllResources[_guid])) = SerializationManager::LoadSceneData(mAllFilePaths[_guid]);
-	return *static_cast<SceneData*>(mAllResources[_guid]);
-}
-
-void ResourceManager::UnloadScene(GUID const& _guid) {
-	SceneData* data = static_cast<SceneData*>(mAllResources[_guid]);
-	ECS::DestroySomeEntites(data->mEntities);
-	delete data;
-}
+//
+//GameStateData ResourceManager::LoadGameState(GUID const& _guid) {
+//	mAllResources[_guid] = new GameStateData;
+//	*(static_cast<GameStateData*>(mAllResources[_guid])) = SerializationManager::LoadGameStateData(mAllFilePaths[_guid]);
+//	return *static_cast<GameStateData*>(mAllResources[_guid]);
+//}
+//
+//void ResourceManager::UnloadGameState(GUID const& _guid) {
+//	GameStateData* data = static_cast<GameStateData*>(mAllResources[_guid]);
+//	delete data;
+//}
+//
+//SceneData ResourceManager::LoadScene(GUID const& _guid) {
+//	mAllResources[_guid] = new SceneData;
+//	*(static_cast<SceneData*>(mAllResources[_guid])) = SerializationManager::LoadSceneData(mAllFilePaths[_guid]);
+//	return *static_cast<SceneData*>(mAllResources[_guid]);
+//}
+//
+//void ResourceManager::UnloadScene(GUID const& _guid) {
+//	SceneData* data = static_cast<SceneData*>(mAllResources[_guid]);
+//	ECS::DestroySomeEntites(data->mEntities);
+//	delete data;
+//}
 
 std::filesystem::path ResourceManager::FileTypePath(E_RESOURCETYPE _type) {
 	std::string path = resourceFolder.string();

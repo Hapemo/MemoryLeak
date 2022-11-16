@@ -11,26 +11,7 @@ running.
 #pragma once
 #include "pch.h"
 #include "Singleton.h"
-
-class GameState;
-// Game state ID
-enum class E_GS {
-	INVALID,
-	MainMenu,
-	Level1,
-	PHYSICS,
-	ScriptingDemo,
-	Lighting,
-	ParallaxSprite,
-	AIDemo,
-	END_OF_LIST,
-	RESTART,
-	JAZZ,
-	EDITOR,
-	EXIT
-};
-E_GS& operator++(E_GS& _gs);
-E_GS& operator--(E_GS& _gs);
+#include "GameState.h"
 
 class GameStateManager : public Singleton<GameStateManager> {
 public:
@@ -55,46 +36,45 @@ public:
 	Unload all game states befor exiting the game. Should be called in application
 	exit
 	*******************************************************************************/
-	void Exit();
-
-	/*!*****************************************************************************
-	\brief
-	Point the game state function pointer to current game state's function
-	*******************************************************************************/
-	void SetNewGameState();
-
-	/*!*****************************************************************************
-	\brief
-	Set the next game state
-
-	\param E_GS
-	- Game State to set next game state to
-	*******************************************************************************/
-	void NextGS(E_GS);
-
-	//------------------------------------------------------------------------------
-	// Getters
-	//------------------------------------------------------------------------------
-	E_GS GetNextGS() { return mNextGS; }
-	E_GS GetCurrGS() { return mCurrGS; }
-	E_GS GetPrevGS() { return mPrevGS; }
-	void SetStartingGS(E_GS _gs) { mStartingGS = _gs; }
+	void Unload();
 
 	/*!*****************************************************************************
 	\brief
 	Controls the next gamestate to run with input keys. Should be called after
 	current game state.
 	*******************************************************************************/
-	static void GSControlPanel();
+	//static void GSControlPanel();
 
+	enum class E_GSMSTATE {
+		EXIT,
+		RESTART,
+		RUNNING,
+		CHANGING,
+		STARTING // Currently no use, just informative
+	};
+
+	static const std::string EXIT;
+	static const std::string RESTART;
+	static E_GSMSTATE mGSMState; 
+	GameState* mCurrentGameState; // During game, this shouldn't change at all. Editor mode can change this, depending on which game state is being changed.
+
+	// This function is called by user, to change the next game state
+	// User can use game state manager's defined string type EXIT and RESTART to change state.
+	void ChangeGameState(std::string const& _path);
+	void UpdateNextGSMState();
+
+	// Editor only functionalities
+	void AddGameState(std::filesystem::path const& _path = std::filesystem::path());
+	void RemoveGameState(GameState* = nullptr);
+	void SetGameState(std::string const& _name);
+	//void setgamestate();
+
+	void SetNextGSPath(std::string const& _path) { mNextGSPath = _path; }
+
+	std::vector<GameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode
+	std::string mNextGSPath;
 private:
-	using FP = void (*)(void);
-	using GS_pair = std::pair<E_GS, GameState*>;
 
-	std::map<E_GS, GameState*> GS_List;
-	E_GS mCurrGS, mPrevGS, mNextGS, mStartingGS;
-	GameState* mCurrGameState;
-	static E_GS mCurrentState;
+	// Update the next game state at the end of game loop (Must be called the last)
 };
-
 

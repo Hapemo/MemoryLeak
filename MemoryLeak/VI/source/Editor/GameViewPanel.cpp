@@ -11,7 +11,7 @@ Entities and its Components.
 *******************************************************************************/
 #include "GameViewPanel.h"
 #include <ECSManager.h>
-#include "../../../APPLICATION/include/GameStateManager.h"
+#include "GameStateManager.h"
 /*!*****************************************************************************
 \brief
 	Initializes the GameViewPanel editor
@@ -176,7 +176,7 @@ void GameViewPanel::ScrollMoveCam()
 void GameViewPanel::ButtonClick()
 {
 	int layer = 0;
-	for (const Entity& ee : GSList[selectedGameState].scenes[selectedScene].mEntities)
+	for (const Entity& ee : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
 	{
 		if (ee.GetComponent<General>().tag == TAG::ENVIRONMENT)
 		{
@@ -197,11 +197,11 @@ void GameViewPanel::ButtonClick()
 						layer = ee.GetComponent<Sprite>().layer;
 						if (ee.GetComponent<General>().subtag == SUBTAG::PLAYER)
 						{
-							GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+							//GameStateManager::GetInstance()->NextGS(E_GS::Level1);
 						}
 						if (ee.GetComponent<General>().subtag == SUBTAG::ENEMY)
 						{
-							GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
+							//GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
 						}
 					}
 				}
@@ -220,7 +220,7 @@ void GameViewPanel::NewEntity()
 	{
 		LOG_INFO("Created new entity");
 		Entity ne{ ECS::CreateEntity() };
-		(GSList[selectedGameState].scenes[selectedScene].mEntities).insert(ne);
+		((*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities).insert(ne);
 		ne.AddComponent(
 			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true },
 			Transform{ {150,150}, 0, camMousePos },

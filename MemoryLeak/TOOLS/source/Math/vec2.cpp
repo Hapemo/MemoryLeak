@@ -71,7 +71,7 @@ namespace Math {
   }
 
   Vec2 Vec2::Normalized() const {
-    return *this / this->Magnitude();
+    return fabs(this->Magnitude()) < 0.0001f ? 0.f : *this / this->Magnitude();
   }
 
   float Vec2::Magnitude() const {

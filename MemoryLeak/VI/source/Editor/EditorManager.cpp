@@ -11,6 +11,7 @@ Entities and its Components.
 *******************************************************************************/
 #include "EditorManager.h"
 #include <ECSManager.h>
+#include "GameStateManager.h"
 //#include <Logger.h>
 #include <Panel.h>
 #include <MenuPanel.h>
@@ -25,7 +26,6 @@ Entities and its Components.
 #include <AnimationPanel.h>
 #include "PerformancePanel.h"
 #include "PrefabPanel.h"
-
 std::vector<Panel*> EditorManager::panels{};
 
 
@@ -44,14 +44,16 @@ float EditorManager::copyOffset = 20.f;
 
 //prefabs
 float EditorManager::prefabOffset = 10.f;
-
+Math::Vec2 EditorManager::mWorldMousePos = 0;
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
 //std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
-std::vector <GameStateData>  EditorManager::GSList;
+
+std::vector<GameState>* EditorManager::mGameStates = nullptr;
+//std::vector <EditorManager::GameStateData>  EditorManager::GSList;
 //std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
 //std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
 int EditorManager::selectedGameState{0};
@@ -145,6 +147,7 @@ void EditorManager::Init()
 	{
 		panels[p]->Init();
 	}
+	mGameStates = &GameStateManager::GetInstance()->mGameStates;
 }
 
 /*!*****************************************************************************
@@ -172,12 +175,20 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
+	renderManager->GetGizmo().Detach();
 	//if (renderManager->GetRenderGameToScreen())
 		renderManager->RenderToFrameBuffer();
 	Window();
+	if (selectedEntity)
+		renderManager->SelectEntity(*selectedEntity);
+
+	if (selectedEntity != nullptr && SRT ==2)
+		renderManager->GetGizmo().Attach(*selectedEntity);
 
 
-	if (selectedGameState < GSList.size())
+
+
+	/*if (selectedGameState < GSList.size())
 	{
 		if (selectedScene < GSList[selectedGameState].scenes.size())
 		{
@@ -190,16 +201,19 @@ void EditorManager::Update()
 				}
 			}
 		}
-	}
+	}*/
 	static int maxSCENE = 10;
 	selectedPrevious = selectedGameState * maxSCENE + selectedScene;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
 	}
-
+	/*for (const Entity& e : *myEntities)
+	{
+		e.GetComponent<General>().isPaused = false;
+	}*/
 	//IF Change Scene
-	if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
+	/*if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
 	{
 		for (const Entity& e : *myEntities)
 		{
@@ -218,7 +232,7 @@ void EditorManager::Update()
 		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
 		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
 		SceneReset();
-	}
+	}*/
 
 
 
@@ -534,7 +548,7 @@ void EditorManager::Cut()
 		copyEntity.second = 2;
 		(*selectedEntity).GetComponent<General>().isActive = false;
 		(*selectedEntity).GetComponent<General>().isPaused = true;
-		GSList[selectedGameState].scenes[selectedScene].mEntities.erase(*selectedEntity);
+		(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.erase(*selectedEntity);
 		selectedEntity = nullptr;
 	}
 }
@@ -545,7 +559,7 @@ void EditorManager::Paste()
 		//Clone Entity;
 		LOG_INFO("Enitity Pasted");
 		Entity e = Clone(copyEntity.first);
-		GSList[selectedGameState].scenes[selectedScene].mEntities.insert(e);
+		(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(e);
 		if (copyEntity.second == 2)//cut
 		{
 			//copyEntity.first.Destroy();
@@ -612,33 +626,34 @@ Entity EditorManager::Clone(Entity c)
 
 
 
-
-Math::Vec2 EditorManager::GetEditorWorldMousePos()
-{
-	return dynamic_cast<WorldViewPanel*>(panels[(int)E_PANELID::WORLDVIEW])->GetMousePos();
-}
-Math::Vec2 EditorManager::GetEditorGameMousePos()
-{
-	 return dynamic_cast<GameViewPanel*>(panels[(int)E_PANELID::GAMEVIEW])->GetMousePos();
-}
+//
+//Math::Vec2 EditorManager::GetEditorWorldMousePos()
+//{
+//	return dynamic_cast<WorldViewPanel*>(panels[(int)E_PANELID::WORLDVIEW])->GetMousePos();
+//}
+//Math::Vec2 EditorManager::GetEditorGameMousePos()
+//{
+//	 return dynamic_cast<GameViewPanel*>(panels[(int)E_PANELID::GAMEVIEW])->GetMousePos();
+//}
 
 
 void EditorManager::NewScene()
 {
 	static int sn = 1;
-	SceneData sceneData{};
-	sceneData.name = "NewScene" + std::to_string(sn++);
-	GSList[selectedGameState].scenes.push_back(sceneData);
-	selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+	Scene sceneData{};
+	sceneData.mName = "NewScene" + std::to_string(sn++);
+	(*mGameStates)[selectedGameState].mScenes.push_back(sceneData);
+	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 }
 void EditorManager::NewGameState()
 {
 	static int gn = 1;
-	GameStateData gameStateData{};
-	gameStateData.name = "NewGameState" + std::to_string(gn++);
-	GSList.push_back(gameStateData);
-	selectedGameState = (int)GSList.size() - 1;
-	selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+	GameState gameStateData{};
+	gameStateData.mName = "NewGameState" + std::to_string(gn++);
+	(*mGameStates).push_back(gameStateData);
+	selectedGameState = (int)(*mGameStates).size() - 1;
+	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
+	GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
 }
 
 
