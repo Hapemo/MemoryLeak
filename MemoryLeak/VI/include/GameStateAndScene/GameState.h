@@ -11,11 +11,10 @@ public:
 
 	// Load new gamestate with file path
 	
-
-	void AddScene(std::filesystem::path const& _path); //{ // filesystem
-		//mScenes.emplace_back(SerialisationManager::LoadScene("NAME"));
-	//}
+	// *EDITOR ONLY FUNCTIONALITIES*
+	void AddScene(std::filesystem::path const& _path);
 	void RemoveScene(std::string const& _name); 
+
 	void Load(std::filesystem::path const& _path);
 	void Save();
 	void Unload();

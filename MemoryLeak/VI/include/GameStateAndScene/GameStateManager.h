@@ -36,7 +36,7 @@ public:
 	Unload all game states befor exiting the game. Should be called in application
 	exit
 	*******************************************************************************/
-	void Exit();
+	void Unload();
 
 	/*!*****************************************************************************
 	\brief
@@ -56,18 +56,22 @@ public:
 	static const std::string EXIT;
 	static const std::string RESTART;
 	static E_GSMSTATE mGSMState; 
-	
+	GameState* mCurrentGameState; // During game, this shouldn't change at all. Editor mode can change this, depending on which game state is being changed.
+
 	// This function is called by user, to change the next game state
 	// User can use game state manager's defined string type EXIT and RESTART to change state.
 	void ChangeGameState(std::string const& _path);
 	void UpdateNextGSMState();
+
 	// Editor only functionalities
-	void AddGameState(std::filesystem::path const& _path) { (void)_path; };
-	//void RemoveGameState(std::string const& _name);
+	void AddGameState(std::filesystem::path const& _path = std::filesystem::path());
+	void RemoveGameState(GameState* = nullptr);
+	void SetGameState(std::string const& _name);
+	//void setgamestate();
 
 	void SetNextGSPath(std::string const& _path) { mNextGSPath = _path; }
 
-	GameState* mCurrentGameState; // During game, this shouldn't change at all. Editor mode can change this, depending on which game state is being changed.
+private:
 	std::vector<GameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode
 	std::string mNextGSPath;
 private:

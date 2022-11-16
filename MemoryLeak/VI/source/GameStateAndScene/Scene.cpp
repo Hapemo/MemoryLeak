@@ -15,20 +15,20 @@ Added adding and removing of entity
 #include "Scene.h"
 
 
-Scene::Scene() : mEntities(), mIsPause(false), mName() {
+Scene::Scene() : mEntities(), mIsPause(false), mName(), mCamera(), mLayer(), mOrder() {
 	LOG_CUSTOM("SCENE", "New Scene created with no name");
 }
 
-Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), mIsPause(false), mName() {
+Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), mIsPause(false), mName(), mCamera(), mLayer(), mOrder() {
 	LOG_CUSTOM("SCENE", "New Scene created with no name");
 }
 
-Scene::Scene(std::string const& _name) : mEntities(), mIsPause(false), mName(_name) {
+Scene::Scene(std::string const& _name) : mEntities(), mIsPause(false), mName(_name), mCamera(), mLayer(), mOrder() {
 	LOG_CUSTOM("SCENE", "Scene created with name: " + mName);
 }
 
 Scene::~Scene() {
-	LOG_CUSTOM("SCENE", "Scene with name " + mName + " destroyed");
+	//LOG_CUSTOM("SCENE", "Scene with name " + mName + " destroyed");
 }
 
 void Scene::PrimaryUpdate() {
@@ -46,6 +46,9 @@ void Scene::Pause(bool _pause) {
 void Scene::Load(std::filesystem::path const& _path) {
 	LOG_CUSTOM("SCENE", "Loading Scene: " + mName);
 	serializationManager->LoadScene(*this, _path);
+	for (auto e : mEntities) {
+		e.GetComponent<General>().isPaused = mIsPause;
+	}
 }
 
 void Scene::Save() {
@@ -55,13 +58,20 @@ void Scene::Save() {
 
 void Scene::Unload() {
 	LOG_CUSTOM("SCENE", "Unloading Scene: " + mName);
-	for (auto e : mEntities)
+
+	decltype(mEntities) tempEntities = mEntities;
+	for (auto e : tempEntities)
 		RemoveEntity(e);
 	if (!mEntities.empty()) LOG_WARN("Scene \"" + mName + "\"still contains " + std::to_string(mEntities.size()) + " after unloading");
 
-	*this = Scene();
+	// Clearing all scene data
+	mEntities.clear();
+	mIsPause = false;
+	mName = decltype(mName)();
+	mCamera = decltype(mCamera)();
+	mLayer = decltype(mLayer)();
+	mOrder = decltype(mOrder)();
 }
-
 
 void Scene::AddEntity() {
 	mEntities.insert(ECS::CreateEntity());
@@ -70,5 +80,6 @@ void Scene::AddEntity() {
 void Scene::RemoveEntity(Entity const& _e) {
 	if (_e.GetComponent<General>().isActive) _e.Deactivate();
 	_e.Destroy();
+	
 	mEntities.erase(_e);
 }

@@ -7,7 +7,6 @@
     <ClCompile Include="source\DialogManager.cpp" />
     <ClCompile Include="source\ECS\ECSManager.cpp" />
     <ClCompile Include="source\ECS\ECS_managers.cpp" />
-    <ClCompile Include="source\ECS\ECS_tools.cpp" />
     <ClCompile Include="source\Editor\AssetPanel.cpp" />
     <ClCompile Include="source\Editor\DebugPanel.cpp" />
     <ClCompile Include="source\Editor\DialoguePanel.cpp" />
@@ -52,6 +51,7 @@
     <ClCompile Include="source\GameStateAndScene\GameState.cpp" />
     <ClCompile Include="source\GameStateAndScene\GameStateManager.cpp" />
     <ClCompile Include="source\GameStateAndScene\Scene.cpp" />
+    <ClCompile Include="source\ECS\ECS_tools.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
