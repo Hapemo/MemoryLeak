@@ -38,18 +38,33 @@ void HierarchyPanel::Update()
 	if (ImGui::Begin("Hierarchy Manager"))
 	{
 		int id = 0;
+		/*ImGuiTabBarFlags_ barfalg = ImGuiTabBarFlags_None;
+		barfalg = (ImGuiTabBarFlags_)(barfalg|ImGuiTabBarFlags_Reorderable);
+		barfalg = (ImGuiTabBarFlags_)(barfalg | ImGuiTabBarFlags_AutoSelectNewTabs);
+		ImGuiTabItemFlags_ flag = ImGuiTabItemFlags_None;*/
 		if (ImGui::BeginTabBar("GameState"))
 		{
 			for (int g = 0; g < (*mGameStates).size(); g++)
 			{
+				
 				//ImGui::PushID(id++);
 				if (ImGui::BeginTabItem((*mGameStates)[g].mName.c_str()))
 				//if (ImGui::BeginTabItem(allNames[g].first.c_str()))
 				{
 					//ImGui::PopID();
-					selectedGameState = g;
-					GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
-					ImGui::InputText("GameState Name", &(*mGameStates)[g].mName);
+					static std::string gsName = (*mGameStates)[g].mName;
+					if (selectedGameState != g)
+					{
+						gsName = (*mGameStates)[g].mName;
+						GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
+						selectedGameState = g;
+					}
+					ImGui::InputText("GameState Name", &gsName);
+					std::string changeGSbtn = "Change " + (*mGameStates)[g].mName + " name";
+					if (ImGui::Button(changeGSbtn.c_str()))
+					{
+						(*mGameStates)[g].mName = gsName;
+					}
 					std::string saveGSbtn = "SAVE " + (*mGameStates)[g].mName + " GameState";
 					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 					if (ImGui::Button(saveGSbtn.c_str()))
@@ -73,7 +88,7 @@ void HierarchyPanel::Update()
 						break;
 					}
 					ImGui::PopStyleColor();
-					if (ImGui::BeginTabBar("Scenes"))
+					if (ImGui::BeginTabBar("Scenes"), ImGuiTabBarFlags_Reorderable)
 					{
 						int layer = 0;
 						int order = 0;
@@ -84,7 +99,13 @@ void HierarchyPanel::Update()
 							{
 								//ImGui::PopID();
 								selectedScene = s;
-								ImGui::InputText("Scene Name", &(*mGameStates)[g].mScenes[s].mName);
+								std::string sName = (*mGameStates)[g].mScenes[s].mName;
+								ImGui::InputText("Scene Name", &sName);
+								std::string changeGSbtn = "Change " + (*mGameStates)[g].mScenes[s].mName + " name";
+								if (ImGui::Button(changeGSbtn.c_str()))
+								{
+									(*mGameStates)[g].mScenes[s].mName = sName;
+								}
 								std::string saveScenebtn = "SAVE " + (*mGameStates)[g].mScenes[s].mName + " Scene";
 								ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 								if (ImGui::Button(saveScenebtn.c_str()))
@@ -108,18 +129,20 @@ void HierarchyPanel::Update()
 									break;
 								}
 								ImGui::PopStyleColor();
-								if (ImGui::CollapsingHeader("Scene Camera"))
+								if (ImGui::CollapsingHeader("Scene Camera")||true)
 								{
 									//ImGui::Checkbox("isActive", &(*mGameStates)[g].mScenes[s].mIsPause);
-									bool isActive = !(*mGameStates)[g].mScenes[s].mIsPause;
-									ImGui::Checkbox("Show Scene", &isActive);
-									(*mGameStates)[g].mScenes[s].Pause(!isActive);	
+									bool isPause = !(*mGameStates)[g].mScenes[s].mIsPause;
+									bool old = isPause;
+									ImGui::Checkbox("Show Scene", &isPause);
+									if(isPause != old)
+										(*mGameStates)[g].mScenes[s].Pause(!isPause);
 
 									float pos[2] = { renderManager->GetGameCamera().GetPos().x , renderManager->GetGameCamera().GetPos().y };
-									ImGui::InputFloat2("Camera Pos", pos);
+									ImGui::DragFloat2("Camera Pos", pos);
 									renderManager->GetGameCamera().SetPos(Math::Vec2{ pos[0], pos[1] });
 									float zoom = renderManager->GetGameCamera().GetZoom();
-									ImGui::InputFloat("Camera Zoom", &zoom);
+									ImGui::DragFloat("Camera Zoom", &zoom);
 									renderManager->GetGameCamera().SetZoom(zoom);
 									ImGui::InputInt("Layer", &(++layer));
 									ImGui::InputInt("Order", &(++order));
