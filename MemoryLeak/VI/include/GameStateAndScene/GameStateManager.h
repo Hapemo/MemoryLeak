@@ -71,7 +71,6 @@ public:
 
 	void SetNextGSPath(std::string const& _path) { mNextGSPath = _path; }
 
-private:
 	std::vector<GameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode
 	std::string mNextGSPath;
 private:
