@@ -37,7 +37,7 @@ void WorldViewPanel::Update()
 		//Calcualting the view port aspect ratio 
 		SetViewportAspectRatio();
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
-		mmm = worldMousePos;
+		mWorldMousePos = worldMousePos;
 		isViewportPaused = isScenePaused;
 		renderUI();
 		isScenePaused = isViewportPaused;

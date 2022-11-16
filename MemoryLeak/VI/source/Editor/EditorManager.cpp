@@ -44,7 +44,7 @@ float EditorManager::copyOffset = 20.f;
 
 //prefabs
 float EditorManager::prefabOffset = 10.f;
-Math::Vec2 EditorManager::mmm = 0;
+Math::Vec2 EditorManager::mWorldMousePos = 0;
 std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
