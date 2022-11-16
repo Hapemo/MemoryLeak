@@ -1088,13 +1088,6 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 		_gameState.mScenes.push_back(sceneData);
 	}
 	ifs.close();
-	for (int s = 0;s < _gameState.mScenes.size(); s++)
-	{/// Scene::GetInstance()->AddScene(_gameState.mScenes[s].mName);
-		std::string name = "../resources/Scene/" + _gameState.mScenes[s].mName + ".json";
-		std::filesystem::path path { name };
-		LoadScene(_gameState.mScenes[s], path);
-		LOG_INFO("loaded a scene");
-	}
 	//return gameStateData;
 }
 void SerializationManager::SaveGameState(GameState& _gameState)
