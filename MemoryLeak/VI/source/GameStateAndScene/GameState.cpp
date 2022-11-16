@@ -16,12 +16,13 @@ void GameState::Exit() {
 // Load new gamestate with file path
 
 
-void GameState::AddScene(std::string const& _path) { // filesystem
-	//mScenes.emplace_back(SerialisationManager::LoadScene("NAME"));
-	(void)_path;
+void GameState::AddScene(std::filesystem::path const& _path) { // filesystem
+	LOG_CUSTOM("GAMESTATE", "Adding scene \"" + _path.stem().string() + "\" to gamestate: " + mName);
+	mScenes.emplace_back(Scene());
+	mScenes.back().Load(_path);
 }
 void GameState::RemoveScene(std::string const& _name){
-	(void)_name;
+	LOG_CUSTOM("GAMESTATE", "Attempting to remove scene \"" + _name + "\" from gamestate: " + mName);
 }
 
 void GameState::Load(std::filesystem::path const& _path){
@@ -29,7 +30,7 @@ void GameState::Load(std::filesystem::path const& _path){
 }
 
 void GameState::Save() {
-	serializationManager->LoadGameState(*this);
+	serializationManager->SaveGameState(*this);
 }
 
 void GameState::Unload(){
