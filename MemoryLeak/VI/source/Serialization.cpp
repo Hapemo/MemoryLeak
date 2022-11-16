@@ -391,7 +391,7 @@ General SerializationManager::getGeneral(Value& entity)
 	general.isActive = entity["General"]["isActive"].GetBool();
 	general.tag = (TAG)entity["General"]["tag"].GetInt();
 	general.subtag = (SUBTAG)entity["General"]["subtag"].GetInt();
-	general.isPaused = true;
+	general.isPaused = false;
 	return general;
 }
 Lifespan SerializationManager::getLifespan(Value& entity)

@@ -62,15 +62,15 @@ public:
 	void ChangeGameState(std::string const& _path);
 	void UpdateNextGSMState();
 	// Editor only functionalities
-	//void AddGameState(std::string const& _path);
+	void AddGameState(std::filesystem::path const& _path) { (void)_path; };
 	//void RemoveGameState(std::string const& _name);
 
 	void SetNextGSPath(std::string const& _path) { mNextGSPath = _path; }
 
-private:
-	std::vector<GameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode
 	GameState* mCurrentGameState; // During game, this shouldn't change at all. Editor mode can change this, depending on which game state is being changed.
+	std::vector<GameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode
 	std::string mNextGSPath;
+private:
 
 	// Update the next game state at the end of game loop (Must be called the last)
 };

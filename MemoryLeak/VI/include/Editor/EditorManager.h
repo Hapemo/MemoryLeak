@@ -20,14 +20,15 @@ Entities and its Components.
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include "PrefabManager.h"
-//#include "Graphics/TransformManager.h"
+
 #include <vec2.h>
 #include <filesystem>
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <Input.h>
 class Panel;
-
+class Scene;
+class GameState;
 /*!*****************************************************************************
 \brief
 	This class encapsulates the functions for the Level Editor
@@ -106,6 +107,9 @@ protected:
 	static bool aspect;
 	static PrefabPtr selectedPrefab;
 	static int selectedType;
+
+
+	static std::vector<GameState>* mGameStates;
 	static std::vector <GameStateData> GSList;
 	//static std::vector<  std::pair<  std::string, std::vector<std::string> >> allNames;
 	//static std::vector<std::vector<std::set<Entity>>> allEntities;

@@ -11,6 +11,7 @@ Entities and its Components.
 *******************************************************************************/
 #include "EditorManager.h"
 #include <ECSManager.h>
+#include "GameStateManager.h"
 //#include <Logger.h>
 #include <Panel.h>
 #include <MenuPanel.h>
@@ -25,7 +26,6 @@ Entities and its Components.
 #include <AnimationPanel.h>
 #include "PerformancePanel.h"
 #include "PrefabPanel.h"
-
 std::vector<Panel*> EditorManager::panels{};
 
 
@@ -51,6 +51,8 @@ int EditorManager::highestLayer =0;
 //std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
+
+std::vector<GameState>* EditorManager::mGameStates = nullptr;
 std::vector <EditorManager::GameStateData>  EditorManager::GSList;
 //std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
 //std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
@@ -145,6 +147,7 @@ void EditorManager::Init()
 	{
 		panels[p]->Init();
 	}
+	mGameStates = &GameStateManager::GetInstance()->mGameStates;
 }
 
 /*!*****************************************************************************
@@ -177,7 +180,7 @@ void EditorManager::Update()
 	Window();
 
 
-	if (selectedGameState < GSList.size())
+	/*if (selectedGameState < GSList.size())
 	{
 		if (selectedScene < GSList[selectedGameState].scenes.size())
 		{
@@ -190,16 +193,19 @@ void EditorManager::Update()
 				}
 			}
 		}
-	}
+	}*/
 	static int maxSCENE = 10;
 	selectedPrevious = selectedGameState * maxSCENE + selectedScene;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
 	}
-
+	/*for (const Entity& e : *myEntities)
+	{
+		e.GetComponent<General>().isPaused = false;
+	}*/
 	//IF Change Scene
-	if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
+	/*if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
 	{
 		for (const Entity& e : *myEntities)
 		{
@@ -218,7 +224,7 @@ void EditorManager::Update()
 		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
 		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
 		SceneReset();
-	}
+	}*/
 
 
 

@@ -10,6 +10,9 @@ This file contains function declarations for a AssetPanel that view recources
 *******************************************************************************/
 #include "AssetPanel.h"
 #include <ECSManager.h>
+#include "Scene.h"
+#include "GameState.h"
+#include "GameStateManager.h"
 #define scrollrate 5
 #define minSize 50
 #define maxSize 200
@@ -168,8 +171,9 @@ void AssetPanel::Update()
 							selectedScene = (int)allEntities[selectedGameState].size() - 1;*/
 							////selectedGameState = (int)GSList.size() - 1;
 							////selectedScene = 0;//(int)GSList[selectedGameState].scenes.size() - 1;
-							LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
-							LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+							//LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
+							//LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+							GameStateManager::GetInstance()->AddGameState(directory.path());
 						}
 					}
 					else if (texParent.find("\\Scene") != std::string::npos)
@@ -195,8 +199,8 @@ void AssetPanel::Update()
 							allNames[selectedGameState].second.push_back(texFilename);
 							selectedScene = (int)allEntities[selectedGameState].size() - 1; */
 							////selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
-							LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
-
+							//LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+							GameStateManager::GetInstance()->mCurrentGameState->AddScene(directory.path());
 						}
 					}
 					else if (texParent.find("\\Scripts") != std::string::npos)
