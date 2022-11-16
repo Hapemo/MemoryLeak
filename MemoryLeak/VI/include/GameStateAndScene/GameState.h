@@ -17,6 +17,7 @@ public:
 	//}
 	void RemoveScene(std::string const& _name); 
 	void Load(std::filesystem::path const& _path);
+	void Save();
 	void Unload();
 	void Restart();
 	

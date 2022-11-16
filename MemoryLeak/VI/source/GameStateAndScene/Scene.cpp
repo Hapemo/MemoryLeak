@@ -15,45 +15,47 @@ Added adding and removing of entity
 #include "Scene.h"
 
 
-Scene::Scene() : mEntities(), pause(false), mGuid(0), mName() {
-	LOG_CUSTOM("SCENE", "Scene created with mGuid: " + std::to_string(mGuid));
+Scene::Scene() : mEntities(), mIsPause(false), mName() {
+	LOG_CUSTOM("SCENE", "New Scene created with no name");
 }
 
-Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), pause(false), mGuid(_guid), mName() {
-	LOG_CUSTOM("SCENE", "Scene created with mGuid: " + std::to_string(mGuid));
+Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), mIsPause(false), mName() {
+	LOG_CUSTOM("SCENE", "New Scene created with no name");
 }
 
-Scene::Scene(std::string const& _name) : mEntities(), pause(false), mGuid(0), mName(_name) {
+Scene::Scene(std::string const& _name) : mEntities(), mIsPause(false), mName(_name) {
 	LOG_CUSTOM("SCENE", "Scene created with name: " + mName);
 }
 
 Scene::~Scene() {
-	LOG_CUSTOM("SCENE", "Scene destroyed with mGuid: " + std::to_string(mGuid));
+	LOG_CUSTOM("SCENE", "Scene with name " + mName + " destroyed");
 }
 
 void Scene::PrimaryUpdate() {
-	if (pause) return;
+	if (mIsPause) return;
 	Update();
 }
 
 void Scene::Pause(bool _pause) { 
 	for (auto& e : mEntities)
 		e.GetComponent<General>().isPaused = _pause;
-	pause = _pause; 
+	mIsPause = _pause; 
 }
 
-void Scene::Load(ResourceManager::GUID const& _guid) {
-	LOG_CUSTOM("SCENE", "Loading Scene " + std::to_string(_guid));
-	SceneData sceneData = ResourceManager::GetInstance()->LoadScene(_guid);
-	mEntities = sceneData.mEntities;
-	pause = sceneData.isActive;
-	mGuid = _guid;
+void Scene::Load(std::filesystem::path const& _path) {
+	LOG_CUSTOM("SCENE", "Loading Scene: " + mName);
+	serializationManager->LoadScene(*this, _path);
+}
+
+void Scene::Save() {
+	LOG_CUSTOM("SCENE", "Saving Scene: " + mName);
+	serializationManager->SaveScene(*this);
 }
 
 void Scene::Unload() {
-	LOG_CUSTOM("SCENE", "Unloading Scene with mGuid: " + std::to_string(mGuid));
-	ResourceManager::GetInstance()->UnloadScene(mGuid);
-	mEntities.clear();
+	LOG_CUSTOM("SCENE", "Unloading Scene: " + mName);
+	//ResourceManager::GetInstance()->UnloadScene(mGuid);
+	//mEntities.clear();
 }
 
 // Input name of file. eg. Scene1.json

@@ -1,4 +1,5 @@
 #include "GameState.h"
+//#include "Serialization.h"
 
 
 void GameState::Init() {
@@ -21,12 +22,14 @@ void GameState::AddScene(std::string const& _path) { // filesystem
 }
 void GameState::RemoveScene(std::string const& _name){
 	(void)_name;
-
 }
 
 void GameState::Load(std::filesystem::path const& _path){
-	(void)_path;
+	serializationManager->LoadGameState(*this, _path);
+}
 
+void GameState::Save() {
+	serializationManager->LoadGameState(*this);
 }
 
 void GameState::Unload(){
