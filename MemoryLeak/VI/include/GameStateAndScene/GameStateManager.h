@@ -50,7 +50,7 @@ public:
 		RESTART,
 		RUNNING,
 		CHANGING,
-		STARTING
+		STARTING // Currently no use, just informative
 	};
 
 	static const std::string EXIT;
@@ -64,6 +64,8 @@ public:
 	// Editor only functionalities
 	//void AddGameState(std::string const& _path);
 	//void RemoveGameState(std::string const& _name);
+
+	void SetNextGSPath(std::string const& _path) { mNextGSPath = _path; }
 
 private:
 	std::vector<GameState> mGameStates; // Only 1 in game, multi gamestates allowed during editor mode

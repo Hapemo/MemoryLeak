@@ -46,10 +46,12 @@ public:
 
     template<class Script>
     bool RegisterScript(const std::string _name) {
-        Base* script = new Script;
-        mScripts.emplace(_name, script);
-        LOG_INFO("Registering script: " + _name);
-        return true;
+      (void)_name;
+      return true;
+        //Base* script = new Script;
+        //mScripts.emplace(_name, script);
+        //LOG_INFO("Registering script: " + _name);
+        //return true;
     }
 
     Base* GetScript(const std::string _name) {

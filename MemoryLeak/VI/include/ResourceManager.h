@@ -46,9 +46,9 @@ have change in data during run-time will not work.
 #define LOAD_TEXTURES(...) ResourceManager::GetInstance()->LoadTextures(__VA_ARGS__)
 #define UPDATE_TEXTURES(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
 #define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
-
-struct GameStateData;
-struct SceneData;
+//
+//struct GameStateData;
+//struct SceneData;
 struct Entity;
 class ResourceManager : public Singleton<ResourceManager> {
 public:
@@ -324,7 +324,7 @@ public:
 	\return GameStateData
 	- Data of a game state
 	*******************************************************************************/
-	GameStateData LoadGameState(GUID const&);
+	//GameStateData LoadGameState(GUID const&);
 
 	/*!*****************************************************************************
 	Unload a gamestate when quitting the game state. It will also destroy all the
@@ -345,7 +345,7 @@ public:
 	\return SceneData
 	- Data that a scene should have
 	*******************************************************************************/
-	SceneData LoadScene(GUID const&);
+	//SceneData LoadScene(GUID const&);
 
 	/*!*****************************************************************************
 	Unload a scene when quitting the scene. It will also destroy all the entities in 

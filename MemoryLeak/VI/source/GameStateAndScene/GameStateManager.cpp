@@ -25,10 +25,15 @@ GameStateManager::GameStateManager() : mGameStates(), mCurrentGameState(nullptr)
 
 // Load the first game state.
 void GameStateManager::Init() {
+	LOG_CUSTOM_CREATE("SCENE");
+	LOG_CUSTOM_CREATE("GAMESTATE");
+
 	mGameStates.emplace_back(GameState());
 	mCurrentGameState = &mGameStates.front();
 
 	mCurrentGameState->Load(mNextGSPath);
+	mCurrentGameState->Init();
+	mGSMState = E_GSMSTATE::RUNNING;
 }
 
 void GameStateManager::Update() {

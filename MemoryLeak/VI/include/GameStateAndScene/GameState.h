@@ -19,7 +19,6 @@ public:
 	void Load(std::filesystem::path const& _path);
 	void Save();
 	void Unload();
-	void Restart();
 	
 	std::string mName;
 	std::vector<Scene> mScenes;

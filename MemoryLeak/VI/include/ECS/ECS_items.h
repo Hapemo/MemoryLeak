@@ -105,8 +105,8 @@ struct Entity {
 	bool ShouldRun() const;
 
 	// Set entity's isactive to true
-	void Activate();
-	void Deactivate();
+	void Activate() const;
+	void Deactivate() const;
 
 	template<typename T>
 	T const& ReadComponent() const;

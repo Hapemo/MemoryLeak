@@ -213,7 +213,7 @@ void Application::loadConfig(std::string path) {
     else if (key == "fps_limit") FPSManager::mLimitFPS = static_cast<double>(stoi(value));
     //else if (key == "starting_gamestate") GameStateManager::GetInstance()->SetStartingGS(static_cast<E_GS>(stoi(value)));
     else if (key == "load_all_resources") Application::mLoadAllResources = stoi(value);
-    else if (key == "new_starting_gamestate") GameStateManager::GetInstance()->ChangeGameState(value);
+    else if (key == "new_starting_gamestate") GameStateManager::GetInstance()->SetNextGSPath(value);
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";

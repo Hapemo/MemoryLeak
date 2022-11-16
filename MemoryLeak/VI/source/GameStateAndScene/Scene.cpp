@@ -37,6 +37,7 @@ void Scene::PrimaryUpdate() {
 }
 
 void Scene::Pause(bool _pause) { 
+	LOG_CUSTOM("SCENE", "Changed Scene \"" + mName + "\" pause status to " + (_pause ? "true" : "false"));
 	for (auto& e : mEntities)
 		e.GetComponent<General>().isPaused = _pause;
 	mIsPause = _pause; 
@@ -54,51 +55,20 @@ void Scene::Save() {
 
 void Scene::Unload() {
 	LOG_CUSTOM("SCENE", "Unloading Scene: " + mName);
-	//ResourceManager::GetInstance()->UnloadScene(mGuid);
-	//mEntities.clear();
+	for (auto e : mEntities)
+		RemoveEntity(e);
+	if (!mEntities.empty()) LOG_WARN("Scene \"" + mName + "\"still contains " + std::to_string(mEntities.size()) + " after unloading");
+
+	*this = Scene();
 }
 
-// Input name of file. eg. Scene1.json
-void Scene::Save(std::string _name) {
-	// Scene file's location
-	std::filesystem::path path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene) };
-
-	// If no name specified, assume the file is already created and use it's old name.
-	if (_name.empty()) {
-		_name = ResourceManager::GetInstance()->GetFilePath(mGuid);
-	} else {
-		// Check if file name exists. If yes, just override it. If not, make a new one with a new guid and use it
-		std::filesystem::path pathName = ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene);
-		_name = pathName.string() + _name;
-		if (ResourceManager::FileExist(_name)) {
-			LOG_CUSTOM("SCENE", "Saving scene into existing scene file: " + _name);
-		} else mGuid = ResourceManager::GetInstance()->GUIDGenerator(_name); // Else create a new guid for it
-	}
-
-	// Open/create the file
-	std::ofstream ofile{ _name };
-	if (!ofile.is_open()) {
-		LOG_WARN("Unable to open output file while attempting to save scene");
-		return;
-	}
-
-	//----------------------------------------------
-	// Save scene data here
-	//----------------------------------------------
-
-	// Save guid here
-	// Save it's paused state here
-
-	// Save scene entities. (mEntities)
-	// Ask wei jhin how he's saving them now.
-
-}
 
 void Scene::AddEntity() {
 	mEntities.insert(ECS::CreateEntity());
 }
 
 void Scene::RemoveEntity(Entity const& _e) {
+	if (_e.GetComponent<General>().isActive) _e.Deactivate();
 	_e.Destroy();
 	mEntities.erase(_e);
 }
