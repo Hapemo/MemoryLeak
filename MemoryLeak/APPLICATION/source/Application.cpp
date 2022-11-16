@@ -65,7 +65,6 @@ void Application::SystemInit() {
 }
 
 void Application::SystemUpdate() {
-
   // AI
   TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
@@ -77,9 +76,9 @@ void Application::SystemUpdate() {
   END_TRACK("Physics");
 
   //Scripting
-  //TRACK_PERFORMANCE("Scripting");
-  //logicSystem->Update();
-  //END_TRACK("Scripting");
+  TRACK_PERFORMANCE("Scripting");
+  logicSystem->Update();
+  END_TRACK("Scripting");
 
   // Animator
   TRACK_PERFORMANCE("Animation");
@@ -181,6 +180,7 @@ void Application::exit() {
   editorManager->Unload();
   audioManager->Unload();
   spriteManager->FreeTextures();
+  ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   ResourceManager::GetInstance()->UnloadAllResources();
   ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   SingletonManager::destroyAllSingletons();

@@ -124,14 +124,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>TOOLS.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\glfw-3.3.7.bin.WIN64\lib-vc2022\glfw3.dll" "$(TargetDir)glfw3.dll" /Y
-copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\x64\glew32.dll" "$(TargetDir)glew32.dll" /Y
-copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmodL.dll" "$(TargetDir)fmodL.dll" /Y
-copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmod.dll" "$(TargetDir)fmod.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)mono-2.0-sgen.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -150,14 +143,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>TOOLS.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\glfw-3.3.7.bin.WIN64\lib-vc2022\glfw3.dll" "$(TargetDir)glfw3.dll" /Y
-copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\x64\glew32.dll" "$(TargetDir)glew32.dll" /Y
-copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmodL.dll" "$(TargetDir)fmodL.dll" /Y
-copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmod.dll" "$(TargetDir)fmod.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)mono-2.0-sgen.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -238,7 +224,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Graphics\VIzmoProps.h" />
     <ClInclude Include="include\LayerManager.h" />
     <ClInclude Include="include\Logic\LogicSystem.h" />
-    <ClInclude Include="include\Logic\MonoScripting.h" />
+    <ClInclude Include="include\Logic\MScriptComponent.h" />
     <ClInclude Include="include\Logic\ScriptComponent.h" />
     <ClInclude Include="include\Logic\ScriptManager.h" />
     <ClInclude Include="include\Physics\ColliderBody.h" />
@@ -329,7 +315,7 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\LayerManager.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
-    <ClCompile Include="source\Logic\MonoScripting.cpp" />
+    <ClCompile Include="source\Logic\MScriptComponent.cpp" />
     <ClCompile Include="source\Logic\ScriptComponent.cpp" />
     <ClCompile Include="source\Logic\ScriptManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />

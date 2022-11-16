@@ -32,7 +32,7 @@
     <ClCompile Include="source\Graphics\VertexFetcher.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
-    <ClCompile Include="source\Logic\MonoScripting.cpp" />
+    <ClCompile Include="source\Logic\MScriptComponent.cpp" />
     <ClCompile Include="source\Logic\ScriptComponent.cpp" />
     <ClCompile Include="source\Logic\ScriptManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />
@@ -121,7 +121,7 @@
     <ClInclude Include="include\Graphics\FontManager.h" />
     <ClInclude Include="include\Graphics\VertexFetcher.h" />
     <ClInclude Include="include\Logic\LogicSystem.h" />
-    <ClInclude Include="include\Logic\MonoScripting.h" />
+    <ClInclude Include="include\Logic\MScriptComponent.h" />
     <ClInclude Include="include\Logic\ScriptComponent.h" />
     <ClInclude Include="include\Logic\ScriptManager.h" />
     <ClInclude Include="include\Physics\ColliderBody.h" />

@@ -1,54 +1,69 @@
 /*!*****************************************************************************
-\file LogicSystem.h
+\file MScriptComponent.h
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
-\date 24-10-2022
+\date 19-10-2022
 \brief
-This file contains the function declarations of the class LogicSystem.
-The LogicSystem class handles the C# scripting for the engine.
+This file contains the function declarations of the class MScriptComponent.
+The MScriptComponent class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #pragma once
-#include "ECS_tools.h"
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
+#include <mono/metadata/debug-helpers.h>
 
-class MScriptComponent;
+#include <string>
+#include <vector>
 
-class LogicSystem : public System
+class MScriptComponent
 {
-private:
-	MScriptComponent* ptrGame = nullptr;
 public:
 	/*!*****************************************************************************
 	\brief
 	Default constructor and destructor.
 	*******************************************************************************/
-	LogicSystem();
-	~LogicSystem();
+	MScriptComponent();
+	~MScriptComponent();
 
 	/*!*****************************************************************************
 	\brief
 	Delete copy constructor.
 	*******************************************************************************/
-	LogicSystem(const LogicSystem&) = delete;
-	const LogicSystem& operator=(const LogicSystem&) = delete;
+	MScriptComponent(const MScriptComponent&) = delete;
+	const MScriptComponent& operator=(const MScriptComponent&) = delete;
 
 	/*!*****************************************************************************
 	\brief
 	Run the initialisation function for all active entities' scripts.
 	*******************************************************************************/
-	void Init();
+	static void Init();
 
 	/*!*****************************************************************************
 	\brief
 	Run the update function for all active entities' scripts.
 	*******************************************************************************/
-	void Update();
+	static void Update();
 
 	/*!*****************************************************************************
 	\brief
 	Run the exit function for all active entities' scripts.
 	*******************************************************************************/
-	void Exit();
+	static void Exit();
+
+private:
+	// Mono generic stuff
+	static MonoDomain* m_ptrMonoDomain;
+	static MonoAssembly* m_ptrGameAssembly;
+	static MonoImage* m_ptrGameAssemblyImage;
+
+	// Mono Methods
+	static MonoMethod* m_ptrTickMethod;
+	static MonoMethod* m_ptrKeyEventMethod;
+
+	// Mono Object
+	static MonoObject* m_ptrGameObject;
+	static uint32_t m_gameObjectGCHandle;
 };
