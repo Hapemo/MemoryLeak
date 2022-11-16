@@ -62,10 +62,12 @@ public:
 	// User can use game state manager's defined string type EXIT and RESTART to change state.
 	void ChangeGameState(std::string const& _path);
 	void UpdateNextGSMState();
+
 	// Editor only functionalities
-	//void AddGameState(std::string const& _path);
-	//void RemoveGameState(std::string const& _name);
-	// void setgamestate();
+	void AddGameState(std::filesystem::path const& _path = std::filesystem::path());
+	void RemoveGameState(GameState* = nullptr);
+	void SetGameState(std::string const& _name);
+	//void setgamestate();
 
 	void SetNextGSPath(std::string const& _path) { mNextGSPath = _path; }
 

@@ -46,6 +46,9 @@ void Scene::Pause(bool _pause) {
 void Scene::Load(std::filesystem::path const& _path) {
 	LOG_CUSTOM("SCENE", "Loading Scene: " + mName);
 	serializationManager->LoadScene(*this, _path);
+	for (auto e : mEntities) {
+		e.GetComponent<General>().isPaused = mIsPause;
+	}
 }
 
 void Scene::Save() {
