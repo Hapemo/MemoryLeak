@@ -118,7 +118,10 @@ void WorldViewPanel::Update()
 					}
 					else
 					{
-						//UseGuizmo();
+						if (SRT == 4)
+							renderManager->GetGizmo().Attach(*selectedEntity);
+						else
+							UseGuizmo();
 					}
 				}
 			}
@@ -322,6 +325,7 @@ void WorldViewPanel::SetSelectedEntity()
 				if (ee.GetComponent<Sprite>().layer >= layer)
 				{
 					selectedEntity = &ee;
+					renderManager->SelectEntity(*selectedEntity);
 					COMPONENT translate = ee.GetComponent<Transform>();
 					undoStack.push_back(std::make_pair(ee, translate));
 					stackPointer = (int)undoStack.size();

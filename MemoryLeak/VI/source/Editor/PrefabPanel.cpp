@@ -188,6 +188,7 @@ void PrefabPanel::setSelectedPrefab(PrefabPtr p)
 	{
 		selectedPrefab = p;
 		selectedEntity = nullptr;
+		renderManager->ClearSelectedEntities();
 		selectedType = 2;
 	}
 }

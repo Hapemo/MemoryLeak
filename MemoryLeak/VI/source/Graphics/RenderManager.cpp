@@ -224,7 +224,7 @@ void RenderManager::RenderDebug()
 {
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 	{
-		Color blue{ 0,0,255,100 };
+		Color blue{ 255,0,0,100 };
 		Transform t;
 		t.rotation = 0;
 		t.scale = mGameCam.GetZoom() * mGameCam.GetWindowDim();
@@ -340,6 +340,9 @@ void RenderManager::RenderDebug()
 
 	for (const Entity& e : mEditorSelectedEntities)
 	{
+		if (!e.GetComponent<General>().isActive) continue;
+		if (!e.ShouldRun()) continue;
+
 		Color blue{ 0,0,255,100 };
 		Transform xform = e.GetComponent<Transform>();
 		CreateDebugSquare(xform, blue);
@@ -959,7 +962,7 @@ The color component.
 *******************************************************************************/
 void RenderManager::CreateDebugArrow(const Transform& _t, const Color& _clr)
 {
-	CreateDebugLine(_t, {0, 255, 0, 255});
+	CreateDebugLine(_t, _clr);
 	mDebugPoints.push_back(mDebugVertices.back());
 }
 
@@ -1165,10 +1168,16 @@ void RenderManager::CreateText(const Entity& _e)
 		camZoom = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam.GetZoom()
 			: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam.GetZoom() : mAnimatorCam.GetZoom();
 	}
+
+	float layer = 1.f;
+	if (!_e.HasComponent<Sprite>())
+		LOG_ERROR("FontRenderer: Component does not contain sprite component! Text will be rendered at max layer!");
+	else
+		layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
-		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f));
+		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer);
 }
 
 void RenderManager::CreateGizmo()

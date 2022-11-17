@@ -38,6 +38,7 @@ struct Paragraph
 	Math::Vec2 pos;
 	float scale;
 	Math::Vec3 color;
+	float layer;
 };
 
 /*!*****************************************************************************
@@ -76,7 +77,7 @@ public:
 	\param const Math::Vec3& _color
 	Color of the font.
 	*******************************************************************************/
-	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color);
+	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color, float layer);
 	/*!*****************************************************************************
 	\brief
 	Renders all paragraphs stored in mParagraphs.
@@ -96,4 +97,5 @@ private:
 	std::unordered_map<char, Character> mGlyphs;
 	std::vector<Paragraph> mParagraphs;
 	GLShader mFontProgram;
+	GLint mTextColorLocation, mMatrixLocation, mZValueLocation;
 };

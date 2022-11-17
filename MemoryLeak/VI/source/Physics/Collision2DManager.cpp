@@ -39,10 +39,10 @@ float Contact::DetermineRestitution() {
 
 float Contact::DetermineFriction() {
 	if (!obj[0].HasComponent<Physics2D>() || !obj[1].HasComponent<Physics2D>()) {
-		return obj[0].HasComponent<Physics2D>() ? std::sqrt(obj[0].GetComponent<Physics2D>().friction) : obj[1].HasComponent<Physics2D>() ? std::sqrt(obj[1].GetComponent<Physics2D>().friction) : 0.f;
+		return obj[0].HasComponent<Physics2D>() ? std::sqrtf(obj[0].GetComponent<Physics2D>().friction) : obj[1].HasComponent<Physics2D>() ? std::sqrtf(obj[1].GetComponent<Physics2D>().friction) : 0.f;
 	}
 
-	return std::sqrt(obj[0].GetComponent<Physics2D>().friction * obj[1].GetComponent<Physics2D>().friction);
+	return std::sqrtf(obj[0].GetComponent<Physics2D>().friction * obj[1].GetComponent<Physics2D>().friction);
 }
 
 float Contact::DetermineSeperatingVelocity() {
@@ -163,7 +163,7 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	// Use first as intersection time
 	//_contact.interTime = tFirst;
 
-	// Compute position at intersection time
+	// Compute next frame's position and use that data for collision response 
 	Math::Vec2 obj1NewPos{ center1 },
 		obj2NewPos{ center2 };
 	if (obj1.HasComponent<Physics2D>())
@@ -179,13 +179,13 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	// Find axis that penetrates less and use it to resolve collision
 	if (diff.x < diff.y) {
 		// Set contact information
-		_contact.normal = distVec.x < 0 ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+		_contact.normal = distVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
 		_contact.penetration = diff.x;
 		_contact.contacts = _contact.normal * scale1.x + center1;
 	}
 	else {
 		// Set contact information
-		_contact.normal = distVec.y < 0 ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+		_contact.normal = distVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
 		_contact.penetration = diff.y;
 		_contact.contacts = _contact.normal * scale1.y + center1;
 	}
@@ -219,7 +219,7 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 		}
 		else {
 			// Set contact information
-			_contact.penetration = (obj1R + obj2R) - sqrt(sqDist);
+			_contact.penetration = (obj1R + obj2R) - sqrtf(sqDist);
 			_contact.normal = (obj2Pos - obj1Pos).Normalize();
 			_contact.contacts = _contact.normal * obj1R + obj1Pos;
 		}
@@ -301,7 +301,7 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 			obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
 
 		// Set contact information
-		_contact.penetration = (obj1R + obj2R) - sqrt(Math::SqDistance(obj1NewPos, obj2NewPos));
+		_contact.penetration = (obj1R + obj2R) - sqrtf(Math::SqDistance(obj1NewPos, obj2NewPos));
 		_contact.normal = (obj2NewPos - obj1NewPos).Normalize();
 		_contact.contacts = _contact.normal * obj1R + obj1NewPos;
 
@@ -490,7 +490,8 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 	bool obj1HasP{ _contact.obj[0].HasComponent<Physics2D>() },
 		obj2HasP{ _contact.obj[0].HasComponent<Physics2D>() };
 
-	// Check for infinite mass of both objects
+	// Error handling: Check for infinite mass of both objects
+	// Do not do anything further
 	if (obj1HasP && obj2HasP) {
 		if (_contact.obj[0].GetComponent<Physics2D>().mass == 0.f && _contact.obj[1].GetComponent<Physics2D>().mass == 0.f) {
 			physics2DManager->SetVelocity(_contact.obj[0], { 0.f, 0.f });
@@ -504,7 +505,7 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 		}
 	}
 
-	// Check if either objects are of infinite mass and set all movement values to 0
+	// Error handling: Check if either objects are of infinite mass and set all movement values to 0
 	if (obj1HasP) {
 		if (_contact.obj[0].GetComponent<Physics2D>().mass == 0.f) {
 			physics2DManager->SetVelocity(_contact.obj[0], { 0.f, 0.f });
@@ -534,11 +535,11 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 		obj2Pos += _contact.obj[1].GetComponent<CircleCollider>().centerOffset;
 
 	// Calculate radii from COM to contact
-	Math::Vec2	rObj1{ _contact.contacts - obj1Pos },
-		rObj2{ _contact.contacts - obj2Pos };
+	//Math::Vec2	rObj1{ _contact.contacts - obj1Pos },
+	//			rObj2{ _contact.contacts - obj2Pos };
 
 	// Relative Velocity
-	// Includes computation for rotation
+	// Accounts for rotation
 	//Math::Vec2 relVel{};
 	//if (obj1HasP && obj2HasP)
 	//	relVel = _contact.obj[1].GetComponent<Physics2D>().velocity + Math::Cross(_contact.obj[1].GetComponent<Physics2D>().angularVelocity, rObj2) -
@@ -554,7 +555,7 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 	else if (obj2HasP) 
 		relVel = _contact.obj[1].GetComponent<Physics2D>().velocity;
 	else if (obj1HasP) 
-		relVel = -(_contact.obj[0].GetComponent<Physics2D>().velocity);
+		relVel = _contact.obj[0].GetComponent<Physics2D>().velocity;
 
 	// Relative velocity along the normal
 	float contactVel{ Math::Dot(relVel, _contact.normal) };
@@ -574,73 +575,77 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 		invMassSum += (_contact.obj[1].GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj[1].GetComponent<Physics2D>().mass;;
 
 	// Calculate impulse scalar J
+	// No need to handle invMassSum == 0 (hence nan) as we already handled the case upon function entnry
 	float scalar{ (-(1.f + _contact.combinedRestitution) * contactVel) / invMassSum };
 
 	// Apply velocity impulse
 	Math::Vec2 impulse{ _contact.normal * scalar };
 
-	if (fabs(impulse.x) < Math::epsilonValue)
-		impulse.x = 0.f;
-	if (fabs(impulse.y) < Math::epsilonValue)
-		impulse.y = 0.f;
-	if (impulse == Math::Vec2{ 0.f, 0.f })
+	// Check for zero vector
+	if ((fabs(impulse.x) < Math::epsilonValue) && (fabs(impulse.y) < Math::epsilonValue))
 		return;
 
+	// Has physics component (Response required)
 	if (obj1HasP) {
+	// Move object to resolve contact
+		// Check if there is mass (not infinite)
 		if (physics2DManager->GetMass(_contact.obj[0]) != 0.f) {
 			physics2DManager->ApplyImpulse(_contact.obj[0], -(impulse), { 0.f, 0.f });
-			if (fabs(physics2DManager->GetVelocity(_contact.obj[0]).x) >= Math::epsilonValue || 
-				fabs(physics2DManager->GetVelocity(_contact.obj[0]).y) >= Math::epsilonValue)
-				_contact.obj[0].GetComponent<Transform>().translation += physics2DManager->GetVelocity(_contact.obj[0]) * static_cast<float>(_dt);
-		}
+			_contact.obj[0].GetComponent<Transform>().translation += physics2DManager->GetVelocity(_contact.obj[0]) * static_cast<float>(_dt);
+
+			// Compute new acceleration/force after resolution
+			// Look for 1st force that dictates the movement force (constraint)
+			if (!_contact.obj[0].GetComponent<Physics2D>().forceList.empty()) {
+				// Get reference to the first force
+				Force& moveForce{ _contact.obj[0].GetComponent<Physics2D>().forceList[0] };
+				// Check if its linear
+				if (moveForce.forceID == 0) {
+					// Compute new force after resolution
+					Math::Vec2 newForceVec{};
+					if (physics2DManager->GetMass(_contact.obj[0]) == 0.f)
+						newForceVec = -impulse;
+					else
+						newForceVec = -impulse / physics2DManager->GetMass(_contact.obj[0]);
+
+					// Check if magnitude would not cause zero division nan
+					if (newForceVec.SqMagnitude() > Math::epsilonValue * Math::epsilonValue) {
+						moveForce.linearForce.unitDirection = newForceVec.Normalized();
+						moveForce.linearForce.magnitude = newForceVec.Magnitude();
+					}
+					else {
+						moveForce.linearForce.unitDirection = { 0.f, 0.f };
+						moveForce.linearForce.magnitude = 0.f;
+					}
+				}
+			}
+		}		
 	}
+
+	// Do the same for the other entity
 	if (obj2HasP) {
 		if (physics2DManager->GetMass(_contact.obj[1]) != 0.f) {
 			physics2DManager->ApplyImpulse(_contact.obj[1], impulse, { 0.f, 0.f });
-			if (fabs(physics2DManager->GetVelocity(_contact.obj[1]).x) >= Math::epsilonValue || 
-				fabs(physics2DManager->GetVelocity(_contact.obj[1]).y) >= Math::epsilonValue)
-				_contact.obj[1].GetComponent<Transform>().translation += physics2DManager->GetVelocity(_contact.obj[1]) * static_cast<float>(_dt);
-		}
-	}
+			_contact.obj[1].GetComponent<Transform>().translation += physics2DManager->GetVelocity(_contact.obj[1]) * static_cast<float>(_dt);
 
-	// Compute new acceleration/force
-	Math::Vec2 newForce{ 0.f, 0.f };
-	if (obj1HasP) {
-		if (!_contact.obj[0].GetComponent<Physics2D>().forceList.empty() && _contact.obj[0].GetComponent<Physics2D>().mass != 0.f) {
-			Force& moveForce{ _contact.obj[0].GetComponent<Physics2D>().forceList[0] };
-			if (moveForce.forceID == 0) {
-				if (physics2DManager->GetMass(_contact.obj[0]) == 0.f)
-					newForce = -impulse;
-				else
-					newForce = -impulse / physics2DManager->GetMass(_contact.obj[0]);
+			if (!_contact.obj[1].GetComponent<Physics2D>().forceList.empty()) {
+				Force& moveForce{ _contact.obj[1].GetComponent<Physics2D>().forceList[0] };
+				if (moveForce.forceID == 0) {
+					Math::Vec2 newForceVec{};
+					if (physics2DManager->GetMass(_contact.obj[1]) == 0.f)
+						newForceVec = impulse;
+					else
+						newForceVec = impulse / physics2DManager->GetMass(_contact.obj[1]);
 
-				if (fabs(newForce.x) < Math::epsilonValue)
-					newForce.x = 0.f;
-				if (fabs(newForce.y) < Math::epsilonValue)
-					newForce.y = 0.f;
-			
-				moveForce.linearForce.unitDirection = newForce.Normalized();
-				moveForce.linearForce.magnitude = newForce.Magnitude();
-			}
-		}
-	}
-
-	if (obj2HasP) {
-		if (!_contact.obj[1].GetComponent<Physics2D>().forceList.empty() && _contact.obj[1].GetComponent<Physics2D>().mass != 0.f) {
-			Force& moveForce{ _contact.obj[1].GetComponent<Physics2D>().forceList[0] };
-			if (moveForce.forceID == 0) {
-				if (physics2DManager->GetMass(_contact.obj[1]) == 0.f)
-					newForce = impulse;
-				else 
-					newForce = impulse / physics2DManager->GetMass(_contact.obj[1]);
-
-				if (fabs(newForce.x) < Math::epsilonValue)
-					newForce.x = 0.f;
-				if (fabs(newForce.y) < Math::epsilonValue)
-					newForce.y = 0.f;
-
-				moveForce.linearForce.unitDirection = newForce.Normalized();
-				moveForce.linearForce.magnitude = newForce.Magnitude();
+					// Check if magnitude would not cause zero division nan
+					if (newForceVec.SqMagnitude() > Math::epsilonValue * Math::epsilonValue) {
+						moveForce.linearForce.unitDirection = newForceVec.Normalized();
+						moveForce.linearForce.magnitude = newForceVec.Magnitude();
+					}
+					else {
+						moveForce.linearForce.unitDirection = { 0.f, 0.f };
+						moveForce.linearForce.magnitude = 0.f;
+					}
+				}
 			}
 		}
 	}

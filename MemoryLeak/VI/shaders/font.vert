@@ -12,6 +12,7 @@ layout (location = 0) in vec4 vertex; // <vec2 pos, vec2 tex>
 out vec2 TexCoords;
 
 uniform mat4 projection;
+uniform float zValue;
 
 /*!*****************************************************************************
 \brief
@@ -19,6 +20,8 @@ Main function of the vertex shader.
 *******************************************************************************/
 void main()
 {
-    gl_Position = projection * vec4(vertex.xy, 0.0, 1.0);
+    vec4 temp = projection * vec4(vertex.xy, 0.0, 1.0);
+    temp.z = -zValue;
+    gl_Position = temp;
     TexCoords = vertex.zw;
 }  

@@ -30,7 +30,6 @@ void VIzmo::Update(const Math::Vec2& _mouseCoordinates, Camera& _cam)
 	if (!mAttached.id)
 		return;
 	Math::Vec2 mPos = _mouseCoordinates * _cam.GetZoom() + _cam.GetPos();
-	std::cout << mPos << std::endl;
 	Transform entityTransform = mAttached.GetComponent<Transform>();
 	mButtonPos[GIZMO_BUTTON::SCALE_X] = entityTransform.translation + Math::Vec2{ GIZMO_LINE_SIZE / 2.f, 0.f } * _cam.GetZoom();
 	mButtonPos[GIZMO_BUTTON::SCALE_Y] = entityTransform.translation + Math::Vec2{ 0.f, GIZMO_LINE_SIZE / 2.f }*_cam.GetZoom();
@@ -56,14 +55,14 @@ void VIzmo::Update(const Math::Vec2& _mouseCoordinates, Camera& _cam)
 		{
 		case GIZMO_BUTTON::SCALE_X:
 		{
-			float difference = mPos.x - mAttached.GetComponent<Transform>().translation.x - GIZMO_LINE_SIZE / 2.f * _cam.GetZoom();
-			mAttached.GetComponent<Transform>().scale.x += difference * (float)FPSManager::dt * 2.f;
+			float difference = mPos.x - mAttached.GetComponent<Transform>().translation.x;
+			mAttached.GetComponent<Transform>().scale.x = difference * 2.f;
 			break;
 		}
 		case GIZMO_BUTTON::SCALE_Y:
 		{
-			float difference = mPos.y - mAttached.GetComponent<Transform>().translation.y - GIZMO_LINE_SIZE / 2.f * _cam.GetZoom();
-			mAttached.GetComponent<Transform>().scale.y += difference * (float)FPSManager::dt * 2.f;
+			float difference = mPos.y - mAttached.GetComponent<Transform>().translation.y;
+			mAttached.GetComponent<Transform>().scale.y = difference * 2.f;
 			break;
 		}
 		case GIZMO_BUTTON::ROTATE:
