@@ -630,7 +630,7 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 {
 	Math::Mat3 mtx = GetTransform(_e);
 	glm::vec4 clr = GetColor(_e);
-	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
+	float layer = (_e.GetComponent<Sprite>().layer * 2 - 256) / 255.f;
 	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
 
 	float texMin{};
@@ -959,7 +959,7 @@ The color component.
 *******************************************************************************/
 void RenderManager::CreateDebugArrow(const Transform& _t, const Color& _clr)
 {
-	CreateDebugLine(_t, {0, 255, 0, 255});
+	CreateDebugLine(_t, _clr);
 	mDebugPoints.push_back(mDebugVertices.back());
 }
 

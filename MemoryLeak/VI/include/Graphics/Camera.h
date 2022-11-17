@@ -109,10 +109,10 @@ public:
 	float GetInitialZoom() { return mInitialZoom; }
 	void SetInitialZoom(float _initialZoom) { mInitialZoom = _initialZoom; }
 
-	int GetCameraWidth();
+	float GetCameraWidth();
 	void SetCameraWidth(int _width);
 
-	int GetCameraHeight();
+	float GetCameraHeight();
 	void SetCameraHeight(int _height);
 
 private:

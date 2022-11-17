@@ -137,22 +137,22 @@ void Camera::Reset()
 	mZoom = mInitialZoom;
 }
 
-int Camera::GetCameraWidth()
+float Camera::GetCameraWidth()
 {
 	return mWindowWidth * GetZoom();
 }
 
 void Camera::SetCameraWidth(int _width)
 {
-	SetZoom(_width / mWindowWidth);
+	SetZoom(_width / (float)mWindowWidth);
 }
 
-int Camera::GetCameraHeight()
+float Camera::GetCameraHeight()
 {
 	return mWindowHeight * GetZoom();
 }
 
 void Camera::SetCameraHeight(int _height)
 {
-	SetZoom(_height / mWindowHeight);
+	SetZoom(_height / (float)mWindowHeight);
 }
