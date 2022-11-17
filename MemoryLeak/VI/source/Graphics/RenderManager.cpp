@@ -340,7 +340,10 @@ void RenderManager::RenderDebug()
 
 	for (const Entity& e : mEditorSelectedEntities)
 	{
-		Color blue{ 255,0,0,100 };
+		if (!e.GetComponent<General>().isActive) continue;
+		if (!e.ShouldRun()) continue;
+
+		Color blue{ 0,0,255,100 };
 		Transform xform = e.GetComponent<Transform>();
 		CreateDebugSquare(xform, blue);
 		CreateDebugLine(xform, blue);
@@ -630,7 +633,7 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 {
 	Math::Mat3 mtx = GetTransform(_e);
 	glm::vec4 clr = GetColor(_e);
-	float layer = (_e.GetComponent<Sprite>().layer * 2 - 256) / 255.f;
+	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
 
 	float texMin{};
