@@ -109,6 +109,12 @@ public:
 	float GetInitialZoom() { return mInitialZoom; }
 	void SetInitialZoom(float _initialZoom) { mInitialZoom = _initialZoom; }
 
+	int GetCameraWidth();
+	void SetCameraWidth(int _width);
+
+	int GetCameraHeight();
+	void SetCameraHeight(int _height);
+
 private:
 	int mWindowWidth, mWindowHeight;
 	Math::Vec2 mPos;
