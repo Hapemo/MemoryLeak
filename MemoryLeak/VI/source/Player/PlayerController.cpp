@@ -17,9 +17,9 @@
 #include "Input.h"
 
 void PlayerController::Init(const int& _windowWidth, const int& _windowHeight) {
-	ViewToWorld[1][1] = -1;
-	ViewToWorld[0][2] = -(_windowWidth / 2);
-	ViewToWorld[1][2] = _windowHeight / 2;
+	ViewToWorld[1][1] = -1.f;
+	ViewToWorld[0][2] = -(static_cast<float>(_windowWidth) / 2.f);
+	ViewToWorld[1][2] = static_cast<float>(_windowHeight) / 2.f;
 }
 
 /*!*****************************************************************************
