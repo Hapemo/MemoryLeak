@@ -179,11 +179,10 @@ void EditorManager::Update()
 	//if (renderManager->GetRenderGameToScreen())
 		renderManager->RenderToFrameBuffer();
 	Window();
-	if (selectedEntity)
-		renderManager->SelectEntity(*selectedEntity);
+	/*if (selectedEntity)
+		renderManager->SelectEntity(*selectedEntity);*/
 
-	if (selectedEntity != nullptr && SRT ==2)
-		renderManager->GetGizmo().Attach(*selectedEntity);
+	
 
 
 
@@ -527,6 +526,7 @@ void EditorManager::SceneReset()
 	selectedPrefab = nullptr;
 	aspect = false;
 	renderManager->ResetCameras();
+	renderManager->ClearSelectedEntities();
 }
 void EditorManager::Copy()
 {

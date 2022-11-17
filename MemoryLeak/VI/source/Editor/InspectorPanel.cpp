@@ -273,6 +273,7 @@ void InspectorPanel::DeleteEntity()
 	//e.Destroy();
 	LOG_INFO("Entity deleated");
 	selectedEntity = nullptr;
+	renderManager->ClearSelectedEntities();
 	e = Entity{ 0 };
 }
 /*!*****************************************************************************
@@ -324,6 +325,8 @@ void InspectorPanel::TransformEditor()
 	if (ImGui::CollapsingHeader("Transform Gizmo")) {
 		//ImGui::Text("Transform Gizmo: ");
 		static bool s = 0, r = 0, t = 0;
+		if(SRT == 4)
+			s = r = t = 0;
 		ImGui::Checkbox("Scale Gizmo", &s);
 		if (s) { SRT = 1; r = t = 0; }
 		ImGui::Checkbox("Rotate", &r);
@@ -335,6 +338,12 @@ void InspectorPanel::TransformEditor()
 
 	if (ImGui::CollapsingHeader("Transform") || true) {
 		//ImGui::Text("Transform Component");
+		static bool g = false;
+		ImGui::Checkbox("Gizmo", &g);
+		if (g)
+			SRT = 4;
+		else
+			SRT = 0;
 		if (ImGui::Button("Flip X", ImVec2(ImGui::GetWindowWidth()*0.32f, 18)))
 			e.GetComponent<Transform>().scale.x *= -1.f;
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
