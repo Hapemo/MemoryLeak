@@ -34,7 +34,7 @@ None.
 *******************************************************************************/
 void HierarchyPanel::Update()
 {
-
+	static int hack = 0;
 	if (ImGui::Begin("Hierarchy Manager"))
 	{
 		int id = 0;
@@ -55,16 +55,19 @@ void HierarchyPanel::Update()
 					static std::string gsName = (*mGameStates)[g].mName;
 					if (selectedGameState != g)
 					{
-						//for (const Entity& e : *myEntities)//REMOVEME aft jazz
-							//e.GetComponent<General>().isPaused = true;
+						if(hack)
+						for (const Entity& e : *myEntities)//REMOVEME aft jazz
+							e.GetComponent<General>().isPaused = true;
 						
 						SceneReset();
 						gsName = (*mGameStates)[g].mName;
 						GameStateManager::GetInstance()->SetGameState((*mGameStates)[g].mName);
 						selectedGameState = g;
-						//for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
-							//for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
-								//e.GetComponent<General>().isPaused = (*mGameStates)[g].mScenes[s].mIsPause;
+
+						if (hack)
+						for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
+							for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
+								e.GetComponent<General>().isPaused = (*mGameStates)[g].mScenes[s].mIsPause;
 
 					}
 					ImGui::InputText("GameState Name", &gsName);
@@ -105,8 +108,41 @@ void HierarchyPanel::Update()
 					ImGui::PopStyleColor();
 					if (ImGui::BeginTabBar("Scenes"), ImGuiTabBarFlags_Reorderable)
 					{
-						int layer = 0;
-						int order = 0;
+						/*int layer = 0;
+						int order = 0;*/
+						if (ImGui::BeginTabItem("All"))
+						{
+							if (selectedScene != 99)
+							{
+								SceneReset();
+								for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
+									for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
+										e.GetComponent<General>().isPaused = (*mGameStates)[g].mScenes[s].mIsPause;
+								selectedScene = 99;
+							}
+							for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
+							{
+									{
+										bool isPause = !(*mGameStates)[g].mScenes[s].mIsPause;
+										bool old = isPause;
+										std::string showScenebtn = "Show " + (*mGameStates)[g].mScenes[s].mName + " Scene";
+										ImGui::Checkbox(showScenebtn.c_str(), &isPause);
+										if (isPause != old)
+											(*mGameStates)[g].mScenes[s].Pause(!isPause);
+									}
+								if (ImGui::CollapsingHeader((*mGameStates)[g].mScenes[s].mName.c_str()))
+								{
+									for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)
+									{
+										ImGui::PushID(id++);
+										listComponents(&e, e.GetComponent<General>().name);
+										ImGui::PopID();
+									}
+								}
+							}
+							ImGui::EndTabItem(); //end ALL scene item
+						}
+
 						for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
 						{
 							//ImGui::PushID(id++);
@@ -115,13 +151,16 @@ void HierarchyPanel::Update()
 								//ImGui::PopID();
 								if (selectedScene != s)
 								{
-									//for (const Entity& e : *myEntities)//REMOVEME aft jazz
-										//e.GetComponent<General>().isPaused = true;
+									if (hack)
+									for (const Entity& e : *myEntities)//REMOVEME aft jazz
+										e.GetComponent<General>().isPaused = true;
 									
 									SceneReset();
 									selectedScene = s;
 
-									//for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
+									if (hack)
+									for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
+										e.GetComponent<General>().isPaused = false;
 										//e.GetComponent<General>().isPaused = (*mGameStates)[g].mScenes[s].mIsPause;
 									
 								}
@@ -175,8 +214,8 @@ void HierarchyPanel::Update()
 									float zoom = renderManager->GetGameCamera().GetZoom();
 									ImGui::DragFloat("Camera Zoom", &zoom);
 									renderManager->GetGameCamera().SetZoom(zoom);
-									ImGui::InputInt("Layer", &(++layer));
-									ImGui::InputInt("Order", &(++order));
+									ImGui::InputInt("Layer", &((*mGameStates)[g].mScenes[s].mLayer));
+									ImGui::InputInt("Order", &((*mGameStates)[g].mScenes[s].mOrder));
 								}
 								for (int i = 0; i < (int)tag.size(); i++)
 								{
