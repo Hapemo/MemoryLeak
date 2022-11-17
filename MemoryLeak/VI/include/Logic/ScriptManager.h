@@ -33,8 +33,8 @@ public:
         for (const ScriptPair script : mScripts) {
             if (script.second != nullptr) {
                 delete script.second;
-                LOG_INFO("Deleting script: " + script.first);
-            } else LOG_ERROR("Null pointer to script: " + script.first);
+                //LOG_INFO("Deleting script: " + script.first);
+            } //else LOG_ERROR("Null pointer to script: " + script.first);
         }
     }
 
@@ -46,25 +46,23 @@ public:
 
     template<class Script>
     bool RegisterScript(const std::string _name) {
-      (void)_name;
-      return true;
-        //Base* script = new Script;
-        //mScripts.emplace(_name, script);
+        Base* script = new Script;
+        mScripts.insert({_name, script});
         //LOG_INFO("Registering script: " + _name);
-        //return true;
+        return true;
     }
 
     Base* GetScript(const std::string _name) {
         const ScriptMap::iterator script = mScripts.find(_name);
         if (script == mScripts.end()) {
-            LOG_ERROR(("Script '" + _name + "' does not exist.").c_str());
+            //LOG_ERROR(("Script '" + _name + "' does not exist.").c_str());
             return nullptr; // not a derived class
         }
         else return script->second;
     }
 
     void PrintRegisteredScripts() {
-       for (const ScriptPair& script : mScripts) LOG_INFO(script.first.c_str());
+       //for (const ScriptPair& script : mScripts) LOG_INFO(script.first.c_str());
     }
 };
 

@@ -11,22 +11,30 @@ The LogicSystem class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #include "LogicSystem.h"
+#include "MScriptComponent.h"
 #include "ScriptManager.h"
-//#include "RotateScript.h"
+
+LogicSystem::LogicSystem() {
+	ptrGame = new MScriptComponent;
+}
+
+LogicSystem::~LogicSystem() {
+	delete ptrGame;
+}
 
 /*!*****************************************************************************
 \brief
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
-	//ScriptRegisterer<ScriptComponent, RotateScript> s_RotateScriptCreator("RotateScript");
-
 	LOG_DEBUG("LOGICSYSYEM INIT.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun()) {
 			if (e.GetComponent<Script>().name != "")
-				if(ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
+				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
+					ptrGame->Init();
+				}
 			else
 				LOG_ERROR("start: Script failed to attach!!!");
 		}
@@ -42,8 +50,10 @@ void LogicSystem::Update() {
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun() && e.HasComponent<Script>()) {
 			if (e.GetComponent<Script>().name != "")
-				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
+				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->UpdateScript(e);
+					ptrGame->Update();
+				}
 			else
 				LOG_ERROR("Update: Script failed to attach!!!");
 		}
@@ -59,9 +69,10 @@ void LogicSystem::Exit() {
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun() && e.HasComponent<Script>()) {
 			if (e.GetComponent<Script>().name != "")
-				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr)
+				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->EndScript(e);
-				//delete e.GetComponent<Script>().script;
+					ptrGame->Exit();
+				}
 			else
 				LOG_ERROR("End: Script failed to attach!!!");
 		}
