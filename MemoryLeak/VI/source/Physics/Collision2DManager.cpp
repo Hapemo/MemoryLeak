@@ -57,6 +57,10 @@ float Contact::DetermineSeperatingVelocity() {
 	return Math::Dot(relVel, normal);
 }
 
+//std::vector<Entity> Collision2DManager::CI_PlayervsEnemy(const Entity& _player, const Entity& _enemy) {
+//	return 
+//}
+
 
 bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	// Get reference to the entities

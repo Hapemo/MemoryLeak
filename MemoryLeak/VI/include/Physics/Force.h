@@ -40,6 +40,32 @@ public:
 		*this = _rhs;
 	}
 
+	Force(const double& _lifetimeLimit, const double& _age, const bool& _isActive, const Math::Vec2& _unitDirection, const float& _magnitude ) {
+		this->lifetimeLimit = _lifetimeLimit;
+		this->age = _age;
+		this->isActive = _isActive;
+		this->forceID = 0;
+		this->linearForce.unitDirection = _unitDirection;
+		this->linearForce.magnitude = _magnitude;
+	}
+
+	Force(const double& _lifetimeLimit, const double& _age, const bool& _isActive, const float& _torque) {
+		this->lifetimeLimit = _lifetimeLimit;
+		this->age = _age;
+		this->isActive = _isActive;
+		this->forceID = 1;
+		this->rotationalForce.torque = _torque;
+	}
+
+	Force(const double& _lifetimeLimit, const double& _age, const bool& _isActive, const float& _directionalDrag, const float& _rotationalDrag) {
+		this->lifetimeLimit = _lifetimeLimit;
+		this->age = _age;
+		this->isActive = _isActive;
+		this->forceID = 2;
+		this->dragForce.directionalDrag = _directionalDrag;
+		this->dragForce.rotationalDrag = _rotationalDrag;
+	}
+
 	/*!*****************************************************************************
 	\brief
 	Default destructor. Required to nullify errors
@@ -86,17 +112,17 @@ public:
 	union {
 		// Linear force
 		struct LinearForce {
-			Math::Vec2 unitDirection;
-			float magnitude;
+			Math::Vec2 unitDirection{};
+			float magnitude{};
 		} linearForce;
 		// Rotation force
 		struct RotationalForce {
-			float torque;
+			float torque{};
 		} rotationalForce;
 		// Drag force
 		struct DragForce {
-			float	directionalDrag;
-			float	rotationalDrag;
+			float	directionalDrag{};
+			float	rotationalDrag{};
 		} dragForce;
 	};
 };

@@ -110,10 +110,10 @@ void InspectorPanel::Update()
 				{
 					DialogueEditor();
 				}
-				if (e.HasComponent<PlayerTmp>())
-				{
-					PlayerTmpEditor();
-				}
+				//if (e.HasComponent<PlayerTmp>())
+				//{
+				//	PlayerTmpEditor();
+				//}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 				if (ImGui::Button("Add Component"))
 				{
@@ -204,8 +204,8 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<Script>({});
 	else if (addComponentID == (int)COMPONENTID::DIALOGUE)
 		e.AddComponent<Dialogue>({});
-	else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
-		e.AddComponent<PlayerTmp>({});
+	//else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
+	//	e.AddComponent<PlayerTmp>({});
 	else if (addComponentID == (int)COMPONENTID::LAYERCOLLIDER)
 		e.AddComponent<LayerCollider>({});
 	
@@ -254,8 +254,8 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<Script>({});
 	else if (addComponentID == (int)COMPONENTID::DIALOGUE)
 		p->AddComponent<Dialogue>({});
-	else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
-		p->AddComponent<PlayerTmp>({});
+	//else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
+	//	p->AddComponent<PlayerTmp>({});
 }
 
 /*!*****************************************************************************
@@ -810,14 +810,14 @@ void InspectorPanel::TextEditor()
 		}
 	}
 }
-void InspectorPanel::PlayerTmpEditor()
-{
-	if (ImGui::CollapsingHeader("PlayerTmp"))
-	{
-		ImGui::InputInt("HP", &e.GetComponent<PlayerTmp>().HP);
-		SaveUndo(e, tempComponent, COMPONENTID::PLAYERTMP);
-	}
-}
+//void InspectorPanel::PlayerTmpEditor()
+//{
+//	if (ImGui::CollapsingHeader("PlayerTmp"))
+//	{
+//		ImGui::InputInt("HP", &e.GetComponent<PlayerTmp>().HP);
+//		SaveUndo(e, tempComponent, COMPONENTID::PLAYERTMP);
+//	}
+//}
 void InspectorPanel::AIEditor()
 {
 

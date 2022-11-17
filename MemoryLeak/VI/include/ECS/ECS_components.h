@@ -250,9 +250,9 @@ struct Point2DCollider {
 \brief
 This temporary component encapsulates information regarding the player, such as health
 *******************************************************************************/
-struct PlayerTmp {
-	int HP = 1;
-};
+//struct PlayerTmp {
+//	int HP = 1;
+//};
 
 /*!*****************************************************************************
 \brief
@@ -330,12 +330,12 @@ enum class COMPONENTID
 	AI,				//13
 	SCRIPT,			
 	DIALOGUE,
-	PLAYERTMP,
+	//PLAYERTMP,
 	LAYERCOLLIDER
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, PlayerTmp, LayerCollider>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, /*PlayerTmp,*/ LayerCollider>  COMPONENT;
 
 
 
