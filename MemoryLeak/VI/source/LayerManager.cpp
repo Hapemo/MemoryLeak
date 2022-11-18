@@ -121,13 +121,13 @@ bool LayerManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	// Find axis that penetrates less and use it to resolve collision
 	if (diff.x < diff.y) {
 		// Set contact information
-		_contact.normal = distVec.x < 0 ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+		_contact.normal = distVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
 		_contact.penetration = diff.x;
 		_contact.contacts = _contact.normal * scale1.x + center1;
 	}
 	else {
 		// Set contact information
-		_contact.normal = distVec.y < 0 ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+		_contact.normal = distVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
 		_contact.penetration = diff.y;
 		_contact.contacts = _contact.normal * scale1.y + center1;
 	}
@@ -173,8 +173,8 @@ void LayerManager::Update(const double& _dt) {
 		}
 	}
 
+	bool CollidedFlag{ false };
 	for (auto it{ mOriginLayerMap.begin() }; it != mOriginLayerMap.end(); ) {
-		bool CollidedFlag{ false };
 		for (auto& collisionPair : mUpdateList) {
 			if (&collisionPair.obj[0] == it->first || &collisionPair.obj[1] == it->first)
 				CollidedFlag = true;
@@ -185,6 +185,7 @@ void LayerManager::Update(const double& _dt) {
 		else {
 			it->first->GetComponent<Sprite>().layer = it->second;
 			it = mOriginLayerMap.erase(it);
+			CollidedFlag = false;
 		}
 	}
 

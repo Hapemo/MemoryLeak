@@ -41,7 +41,7 @@ private:
 	void AIEditor();
 	void ScriptEditor();
 	void DialogueEditor();
-	void PlayerTmpEditor();
+	//void PlayerTmpEditor();
 	void AddPrefabComponent();
 	void PrefabEditor();
 
