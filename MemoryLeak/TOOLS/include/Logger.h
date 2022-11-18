@@ -28,9 +28,8 @@ also handles the assertion.
 
 #define ASSERT(_condition, ...) Logger::GetInstance()->LogAssert(_condition, std::source_location::current(), __VA_ARGS__)
 #define THROW(_type, ...) Logger::GetInstance()->LogThrow((size_t)_type, std::source_location::current(), __VA_ARGS__)
+#define BREAKPOINT(_condition) if (_condition) { Logger::GetInstance()->EndRun(); __debugbreak(); }
 
-#define BREAKPOINT(_condition) if (_condition) { Logger::GetInstance()->EndRun(); __debugbreak(); }
-#define BREAKPOINT(_condition) if (_condition) { Logger::GetInstance()->EndRun(); __debugbreak(); }
 #define MAX_LOG_HISTORY 500
 
 /**
