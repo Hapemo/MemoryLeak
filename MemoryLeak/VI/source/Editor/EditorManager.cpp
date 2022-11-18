@@ -341,8 +341,8 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 			_old = e.GetComponent<Script>();
 		else if (_id == COMPONENTID::DIALOGUE)
 			_old = e.GetComponent<Dialogue>();
-		else if (_id == COMPONENTID::PLAYERTMP)
-			_old = e.GetComponent<PlayerTmp>();
+		//else if (_id == COMPONENTID::PLAYERTMP)
+		//	_old = e.GetComponent<PlayerTmp>();
 	}
 	if (ImGui::IsItemDeactivatedAfterEdit())
 	{
@@ -385,8 +385,8 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 			_new = e.GetComponent<Script>();
 		else if (_id == COMPONENTID::DIALOGUE)
 			_new = e.GetComponent<Dialogue>();
-		else if (_id == COMPONENTID::PLAYERTMP)
-			_new = e.GetComponent<PlayerTmp>();
+		//else if (_id == COMPONENTID::PLAYERTMP)
+		//	_new = e.GetComponent<PlayerTmp>();
 
 		undoStack.push_back(std::make_pair(e, _new));
 		stackPointer = (int)undoStack.size();
@@ -434,8 +434,8 @@ void EditorManager::Do()
 		(undoStack[stackPointer].first).GetComponent<Script>() = std::get<Script>(undoStack[stackPointer].second);
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::DIALOGUE)
 		(undoStack[stackPointer].first).GetComponent<Dialogue>() = std::get<Dialogue>(undoStack[stackPointer].second);
-	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PLAYERTMP)
-		(undoStack[stackPointer].first).GetComponent<PlayerTmp>() = std::get<PlayerTmp>(undoStack[stackPointer].second);
+	//else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PLAYERTMP)
+	//	(undoStack[stackPointer].first).GetComponent<PlayerTmp>() = std::get<PlayerTmp>(undoStack[stackPointer].second);
 }
 /*!*****************************************************************************
 \brief
@@ -617,8 +617,8 @@ Entity EditorManager::Clone(Entity c)
 		e.AddComponent(c.GetComponent<Script>());
 	if (c.HasComponent<Dialogue>())
 		e.AddComponent(c.GetComponent<Dialogue>());
-	if (c.HasComponent<PlayerTmp>())
-		e.AddComponent(c.GetComponent<PlayerTmp>());
+	//if (c.HasComponent<PlayerTmp>())
+	//	e.AddComponent(c.GetComponent<PlayerTmp>());
 
 	return e;
 

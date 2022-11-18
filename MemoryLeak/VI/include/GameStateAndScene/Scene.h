@@ -80,12 +80,12 @@ public:
 	*******************************************************************************/
 	void RemoveEntity(Entity const&);
 
-	std::set<Entity> mEntities;			// Entities in the scene 
-	bool mIsPause;											// Paused state of the scene
-	std::string mName;
-	Transform mCamera;
-	int mLayer;
-	int mOrder;
+	std::set<Entity> mEntities{};			// Entities in the scene 
+	bool mIsPause=true;											// Paused state of the scene
+	std::string mName="";
+	Transform mCamera{};
+	int mLayer=0;
+	int mOrder=0;
 
 private:
 };

@@ -293,11 +293,11 @@ void PrefabPanel::listComponents(PrefabPtr p, std::string _name)
 		ImGui::Text("Dialogue");
 		setSelectedPrefab(p);
 	}
-	if (p->HasComponent<PlayerTmp>())
-	{
-		ImGui::Text("PlayerTmp");
-		setSelectedPrefab(p);
-	}
+	//if (p->HasComponent<PlayerTmp>())
+	//{
+	//	ImGui::Text("PlayerTmp");
+	//	setSelectedPrefab(p);
+	//}
 	for (Entity b : p->GetPrefabees())
 	{
 		if (ImGui::TreeNode(b.GetComponent<General>().name.c_str()))

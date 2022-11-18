@@ -174,7 +174,9 @@ void AssetPanel::Update()
 							//LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
 							//LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
 							GameStateManager::GetInstance()->AddGameState(directory.path());
-							GameStateManager::GetInstance()->SetGameState(directory.path().stem().string());
+							//selectedGameState = (int)(*mGameStates).size() - 1;
+							//selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
+							//GameStateManager::GetInstance()->SetGameState(directory.path().stem().string());
 						}
 					}
 					else if (texParent.find("\\Scene") != std::string::npos)
@@ -203,6 +205,7 @@ void AssetPanel::Update()
 							////selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
 							//LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
 							GameStateManager::GetInstance()->mCurrentGameState->AddScene(directory.path());
+							//selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 						}
 					}
 					else if (texParent.find("\\Scripts") != std::string::npos)

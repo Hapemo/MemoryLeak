@@ -89,7 +89,8 @@ void GameStateManager::AddGameState(std::filesystem::path const& _path) {
 	else
 		mGameStates.back().Load(_path);
 
-	mCurrentGameState = &mGameStates.back();
+	SetGameState(_path.stem().string());  //Call set game state to chnage is paused of entites
+	//mCurrentGameState = &mGameStates.back();
 }
 
 void GameStateManager::RemoveGameState(GameState* _gameState) {
@@ -121,6 +122,14 @@ void GameStateManager::RemoveGameState(GameState* _gameState) {
 void GameStateManager::SetGameState(std::string const& _name) {
 	for (auto& gs : mGameStates) {
 		if (gs.mName == _name) {
+			//for (auto& scene : mCurrentGameState->mScenes)  //set pause true for prevoius scene (dont chane scene.mIsPause as it stores the original value)
+			//	for (auto& e : scene.mEntities)
+			//		e.GetComponent<General>().isPaused = true;
+			//
+			//for (auto& scene : gs.mScenes)  //set pause false for current scene iif scene not paused
+			//	for (auto& e : scene.mEntities)
+			//		e.GetComponent<General>().isPaused = scene.mIsPause;
+
 			mCurrentGameState = &gs;
 			LOG_CUSTOM("GAMESTATEMANAGER", "Set gamestate to: " + _name);
 			return;

@@ -44,7 +44,7 @@ void Application::SystemInit() {
   
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
-  playerManager->Init(window_width, window_height);
+  //playerManager->Init(window_width, window_height);
   
   renderManager->RenderToScreen();
   // For render debug
@@ -91,7 +91,7 @@ void Application::SystemUpdate() {
   END_TRACK("Audio");
 
   // Player
-  playerManager->Update(); // Has error on gamestate3, maybe because player was not freed in gamestate1
+  //playerManager->Update(); // Has error on gamestate3, maybe because player was not freed in gamestate1
 }
 
 void Application::init() {

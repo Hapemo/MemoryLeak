@@ -19,8 +19,8 @@ public:
 	void Save();
 	void Unload();
 	
-	std::string mName;
-	std::vector<Scene> mScenes;
+	std::string mName="";
+	std::vector<Scene> mScenes{};
 private:
 
 };
