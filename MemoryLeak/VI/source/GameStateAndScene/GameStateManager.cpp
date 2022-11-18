@@ -34,6 +34,9 @@ void GameStateManager::Init() {
 
 	mCurrentGameState->Load(mNextGSPath);
 	mCurrentGameState->Init();
+
+	mGameStatesScenesPause.insert({ mCurrentGameState->mName, std::vector<bool>() }); // FOR EDITOR
+
 	mGSMState = E_GSMSTATE::RUNNING;
 }
 
@@ -81,15 +84,33 @@ void GameStateManager::ChangeGameState(std::string const& _path) {
 }
 
 void GameStateManager::AddGameState(std::filesystem::path const& _path) {
-	LOG_CUSTOM("GAMESTATEMANAGER", "Add gamestate: " + _path.string());
-	mGameStates.emplace_back(GameState());
-	
-	if (_path.string().size() < 0)
-		mGameStates.back().mName = "New GameState";
-	else
-		mGameStates.back().Load(_path);
+	std::string currName{ mCurrentGameState->mName };
 
-	SetGameState(_path.stem().string());  //Call set game state to chnage is paused of entites
+	mGameStates.push_back(GameState());
+	
+	for (auto& gs : mGameStates) 
+		if (gs.mName == currName) 
+			mCurrentGameState = &gs; // This line is required because push_back changes arrangement of gamestates, messing up where mCurrentGameState is pointing at.
+	
+	if (_path.string().size() == 0)
+	{
+		static int newGSCount = 1;
+		mGameStates.back().mName = "New GameState " + std::to_string(newGSCount++);  //cannot have same GS name
+		LOG_CUSTOM("GAMESTATEMANAGER", "Add NEW gamestate");
+	}
+	else
+	{
+		mGameStates.back().Load(_path);
+		LOG_CUSTOM("GAMESTATEMANAGER", "Add gamestate: " + _path.string());
+	}
+
+	// FOR EDITOR
+	std::vector<bool> pausedList{};
+	for (Scene& scene : mGameStates.back().mScenes)
+		pausedList.push_back(scene.mIsPause);
+
+	mGameStatesScenesPause.insert({ mGameStates.back().mName, pausedList }); // FOR EDITOR
+	//SetGameState(_path.stem().string());  //Call set game state to chnage is paused of entites
 	//mCurrentGameState = &mGameStates.back();
 }
 
@@ -106,7 +127,11 @@ void GameStateManager::RemoveGameState(GameState* _gameState) {
 		if (it->mName == _gameState->mName) {
 			it->Exit();
 			it->Unload();
+			mGameStatesScenesPause.erase(mGameStatesScenesPause.find(it->mName)); // FOR EDITOR
+			std::string currName{ mCurrentGameState->mName };
 			mGameStates.erase(it);
+			for (auto& gs : mGameStates) if (gs.mName == currName) mCurrentGameState = &gs; // This line is required because removing gamestates from vector changes arrangement of gamestates, 
+																																											// messing up where mCurrentGameState is pointing at.
 			LOG_CUSTOM("GAMESTATEMANAGER", "Removed gamestate: " + _gameState->mName);
 			if (mCurrentGameState = &*it) {
 				if (mGameStates.empty())
@@ -130,7 +155,24 @@ void GameStateManager::SetGameState(std::string const& _name) {
 			//	for (auto& e : scene.mEntities)
 			//		e.GetComponent<General>().isPaused = scene.mIsPause;
 
+			// save curr gamestate scene pause, and pause all the scenes
+			std::cout << mCurrentGameState->mName << '\n';
+			std::vector<bool>& currPauseList = mGameStatesScenesPause[mCurrentGameState->mName];
+			currPauseList.clear();
+			currPauseList.resize(mCurrentGameState->mScenes.size());
+			for (size_t i{}; i < mCurrentGameState->mScenes.size(); ++i) {
+				currPauseList[i] = mCurrentGameState->mScenes[i].mIsPause;
+				mCurrentGameState->mScenes[i].Pause(true);
+			}
+
+			// load next gamestate scene pause, and unload all the saved pause status to the scenes
 			mCurrentGameState = &gs;
+			std::vector<bool>& nextPauseList = mGameStatesScenesPause[mCurrentGameState->mName];
+			for (size_t i{}; i < mCurrentGameState->mScenes.size(); ++i) {
+				mCurrentGameState->mScenes[i].Pause(nextPauseList[i]);
+			}
+			nextPauseList.clear();
+
 			LOG_CUSTOM("GAMESTATEMANAGER", "Set gamestate to: " + _name);
 			return;
 		}

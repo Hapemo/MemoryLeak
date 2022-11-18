@@ -26,7 +26,7 @@ private:
 	void ArrowKeyMoveCam();
 	void MouseClickMoveCam();
 	void ScrollMoveCam();
-	void NewEntity();
+	void NewDragDropEntity();
 	void NewPrefabee();
 	void SetSelectedEntity();
 	void MoveSelectedEntity();

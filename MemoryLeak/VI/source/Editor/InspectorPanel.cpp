@@ -258,23 +258,7 @@ void InspectorPanel::AddPrefabComponent()
 	//	p->AddComponent<PlayerTmp>({});
 }
 
-/*!*****************************************************************************
-\brief
-	This function delete an entity
 
-\return
-None.
-*******************************************************************************/
-void InspectorPanel::DeleteEntity()
-{
-	(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.erase(e);
-	e.GetComponent<General>().isActive = false;
-	e.GetComponent<General>().isPaused = true;
-	//e.Destroy();
-	LOG_INFO("Entity deleated");
-	selectedEntity = nullptr;
-	e = Entity{ 0 };
-}
 /*!*****************************************************************************
 \brief
 	This functions below onawards edits a particular component
@@ -324,6 +308,8 @@ void InspectorPanel::TransformEditor()
 	if (ImGui::CollapsingHeader("Transform Gizmo")) {
 		//ImGui::Text("Transform Gizmo: ");
 		static bool s = 0, r = 0, t = 0;
+		if(SRT == 4)
+			s = r = t = 0;
 		ImGui::Checkbox("Scale Gizmo", &s);
 		if (s) { SRT = 1; r = t = 0; }
 		ImGui::Checkbox("Rotate", &r);
@@ -335,6 +321,12 @@ void InspectorPanel::TransformEditor()
 
 	if (ImGui::CollapsingHeader("Transform") || true) {
 		//ImGui::Text("Transform Component");
+		static bool g = false;
+		ImGui::Checkbox("Gizmo", &g);
+		if (g)
+			SRT = 4;
+		else
+			SRT = 0;
 		if (ImGui::Button("Flip X", ImVec2(ImGui::GetWindowWidth()*0.32f, 18)))
 			e.GetComponent<Transform>().scale.x *= -1.f;
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
@@ -369,7 +361,7 @@ void InspectorPanel::TransformEditor()
 
 		tmpFloat = transformManager->GetRotation(e);
 		tmpFloat = (float)(tmpFloat / M_PI * 180.f);
-		ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
+		ImGui::DragFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 		tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 		transformManager->SetRotation(e, tmpFloat);
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
@@ -963,7 +955,7 @@ void InspectorPanel::PrefabEditor()
 
 			tmpFloat = transform.rotation;
 			tmpFloat = (float)(tmpFloat / M_PI * 180.f);
-			ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
+			ImGui::DragFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 			tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 			transform.rotation = tmpFloat;
 			p->UpdateComponent(transform);

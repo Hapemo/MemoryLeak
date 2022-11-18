@@ -69,11 +69,12 @@ void WorldViewPanel::Update()
 		fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();
 		ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
 		ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
-		if (ImGui::BeginDragDropTarget())
+		NewDragDropEntity();
+		/*if (ImGui::BeginDragDropTarget())
 		{
 			NewEntity();
 			ImGui::EndDragDropTarget();
-		}
+		}*/
 		if (ImGui::BeginDragDropTarget())
 		{
 			NewPrefabee();
@@ -118,7 +119,10 @@ void WorldViewPanel::Update()
 					}
 					else
 					{
-						//UseGuizmo();
+						if (SRT == 4)
+							renderManager->GetGizmo().Attach(*selectedEntity);
+						else
+							UseGuizmo();
 					}
 				}
 			}
@@ -175,11 +179,11 @@ void WorldViewPanel::MouseClickMoveCam()
 {
 	if (SRT == 0)
 	{
-		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && !isSelected)
+		if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_R) && !isSelected)
 		{
 			camOffset = camMousePos;
 		}
-		if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && !isSelected)
+		if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_R) && !isSelected)
 		{
 			camPos = -(worldMousePos * renderManager->GetWorldCamera().GetZoom() - camOffset);
 			renderManager->GetWorldCamera().SetPos(camPos);
@@ -216,35 +220,46 @@ void WorldViewPanel::ScrollMoveCam()
 \return
 None.
 *******************************************************************************/
-void WorldViewPanel::NewEntity()
+void WorldViewPanel::NewDragDropEntity()
 {
-	static const wchar_t* texpath = (const wchar_t*)"";
-	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+	if (ImGui::BeginDragDropTarget())
 	{
-		if (selectedGameState >= (*mGameStates).size())
+		static const wchar_t* texpath = (const wchar_t*)"";
+		if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
 		{
-			NewGameState();
-		}
-		if (selectedScene >= (*mGameStates)[selectedGameState].mScenes.size())
-		{
-			NewScene();
-		}
-		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
-		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
+			if (selectedGameState >= (*mGameStates).size())
+			{
+				NewGameState();
+			}
+			if (selectedScene >= (*mGameStates)[selectedGameState].mScenes.size())
+			{
+				NewScene();
+			}
 
-		LOG_INFO("Created new entity");
-		Entity ne{ ECS::CreateEntity() };
-		(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(ne);
-		ne.AddComponent(
-			General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false},
-			Transform{ {150,150}, 0, camMousePos },
-			Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0, highestLayer},
-			RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
+			LOG_INFO("New DragDrop Entity");
+			e = NewEntity();
+			e.GetComponent<General>().isPaused = false;
+			e.GetComponent<Transform>().translation = camMousePos;
+			e.GetComponent<Sprite>().sprite = SPRITE::TEXTURE;
 
-		texpath = (const wchar_t*)payload->Data;
-		std::string tp = (std::string)((const char*)texpath);
-		spriteManager->SetTexture(ne, tp);
-		newEntityCount++;
+			texpath = (const wchar_t*)payload->Data;
+			std::string tp = (std::string)((const char*)texpath);
+			spriteManager->SetTexture(e, tp);
+
+			/*Entity ne{ ECS::CreateEntity() };
+			(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(ne);
+			ne.AddComponent(
+				General{ "_NEW_DragDrop" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false},
+				Transform{ {150,150}, 0, camMousePos },
+				Sprite{ Color{0,255,0,100}, SPRITE::TEXTURE, 0, highestLayer},
+				RectCollider{ { 0.f, 0.f }, {1.f,1.f}, true });
+
+			texpath = (const wchar_t*)payload->Data;
+			std::string tp = (std::string)((const char*)texpath);
+			spriteManager->SetTexture(ne, tp);
+			newEntityCount++;*/
+		}
+		ImGui::EndDragDropTarget();
 	}
 }
 /*!*****************************************************************************
@@ -268,30 +283,29 @@ void WorldViewPanel::NewPrefabee()
 		{
 			NewScene();
 		}
-		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
-		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
-
 
 		LOG_INFO("Created new prefabee");
 		prefabname = (const wchar_t*)payload->Data;
 		std::string prefab = (std::string)((const char*)prefabname);
 		serializationManager->LoadPrefab(prefab);
 		PrefabManager::PrefabPtr pre = PrefabManager::GetInstance()->GetPrefab(prefab);
-		static int n{ 1 };
+		static int newPrefabeeCount{ 1 };
 		Entity b = pre->CreatePrefabee();
-		b.GetComponent<General>().name = "newdragdropPrefabee" + std::to_string(n++);
-		b.GetComponent<General>().isActive = true;
+		b.GetComponent<General>().name = "NEW Prefabee" + std::to_string(newPrefabeeCount++);
+		b.GetComponent<General>().isActive = true;  //?? needed?
 		b.GetComponent<General>().isPaused = false;
 		if (b.HasComponent<Transform>())
 		{
-			/*Transform transform = b.GetComponent<Transform>();
-			transform.translation = camMousePos;*/
 			b.GetComponent<Transform>().translation = camMousePos;
+			/*b.GetComponent<Transform>().translation.x += prefabOffset;
+			b.GetComponent<Transform>().translation.y += prefabOffset;
+			prefabOffset += 10.f;*/
 		}
-		if (b.HasComponent<Sprite>())
+		/*if (b.HasComponent<Sprite>())
 		{
 			b.GetComponent<Sprite>().layer = highestLayer;
-		}
+		}*/
+		((*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities).insert(b);
 	}
 	
 }
@@ -322,6 +336,7 @@ void WorldViewPanel::SetSelectedEntity()
 				if (ee.GetComponent<Sprite>().layer >= layer)
 				{
 					selectedEntity = &ee;
+					renderManager->SelectEntity(*selectedEntity);
 					COMPONENT translate = ee.GetComponent<Transform>();
 					undoStack.push_back(std::make_pair(ee, translate));
 					stackPointer = (int)undoStack.size();

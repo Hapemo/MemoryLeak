@@ -18,6 +18,9 @@ FontRenderer::FontRenderer(const std::string& fontfile)
 {
     mFontProgram.CompileLinkShaders();
     mFontProgram.Validate();
+    mMatrixLocation = glGetUniformLocation(mFontProgram.GetID(), "projection");
+    mTextColorLocation = glGetUniformLocation(mFontProgram.GetID(), "textColor");
+    mZValueLocation = glGetUniformLocation(mFontProgram.GetID(), "zValue");
     Init(fontfile);
 }
 /*!*****************************************************************************
@@ -105,7 +108,7 @@ void FontRenderer::Init(const std::string& _fontfile)
     glm::mat4 _projection = glm::ortho(0.0f, 1600.f, 0.0f, 900.f);
     mFontProgram.Bind();
     //insert uniform
-    glUniformMatrix4fv(glGetUniformLocation(mFontProgram.GetID(), "projection"), 1, GL_FALSE, glm::value_ptr(_projection));
+    glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
     mFontProgram.Unbind();
  }
 /*!*****************************************************************************
@@ -124,9 +127,9 @@ Scale of the font.
 \param const Math::Vec3& _color
 Color of the font.
 *******************************************************************************/
-void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color)
+void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float layer)
 {
-    mParagraphs.push_back(Paragraph(text, _pos, scale, color));
+    mParagraphs.push_back(Paragraph(text, _pos, scale, color, layer));
 }
 /*!*****************************************************************************
 \brief
@@ -138,7 +141,8 @@ void FontRenderer::DrawParagraphs()
     {
         Math::Vec2 pos = para.pos;
         mFontProgram.Bind();
-        glUniform3f(glGetUniformLocation(mFontProgram.GetID(), "textColor"), para.color.r, para.color.g, para.color.b);
+        glUniform3f(mTextColorLocation, para.color.r, para.color.g, para.color.b);
+        glUniform1f(mZValueLocation, para.layer);
         glActiveTexture(GL_TEXTURE0);
         glBindVertexArray(mVAO);
 

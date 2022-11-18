@@ -31,34 +31,37 @@ std::vector<Panel*> EditorManager::panels{};
 
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
+
+Entity selEntity{};
+//Entity
 const Entity* EditorManager::selectedEntity = nullptr;
+std::set<Entity>* EditorManager::myEntities = nullptr;
+
+std::vector<GameState>* EditorManager::mGameStates = nullptr;
+int EditorManager::selectedGameState{0};
+int EditorManager::selectedScene{0};
+int EditorManager::selectedType = {0};
+
+//prefabs
 EditorManager::PrefabPtr EditorManager::selectedPrefab = nullptr;
-int EditorManager::selectedType=0;
- Entity selEntity{};
-int EditorManager::SRT{};
+float EditorManager::prefabOffset = 10.f;
+
+
+//undo
 std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
 int EditorManager::stackPointer{-1};
+
 //copy
 std::pair<Entity, int> EditorManager::copyEntity{};
 float EditorManager::copyOffset = 20.f;
 
-//prefabs
-float EditorManager::prefabOffset = 10.f;
+int EditorManager::SRT{};
 Math::Vec2 EditorManager::mWorldMousePos = 0;
-std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
-//std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
 
-std::vector<GameState>* EditorManager::mGameStates = nullptr;
-//std::vector <EditorManager::GameStateData>  EditorManager::GSList;
-//std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
-//std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
-int EditorManager::selectedGameState{0};
-int EditorManager::selectedScene{0};
-int EditorManager::selectedPrevious = {0};
 /*!*****************************************************************************
 \brief
 	Load the level editor
@@ -179,11 +182,10 @@ void EditorManager::Update()
 	//if (renderManager->GetRenderGameToScreen())
 		renderManager->RenderToFrameBuffer();
 	Window();
-	if (selectedEntity)
-		renderManager->SelectEntity(*selectedEntity);
+	/*if (selectedEntity)
+		renderManager->SelectEntity(*selectedEntity);*/
 
-	if (selectedEntity != nullptr && SRT ==2)
-		renderManager->GetGizmo().Attach(*selectedEntity);
+	
 
 
 
@@ -202,8 +204,8 @@ void EditorManager::Update()
 			}
 		}
 	}*/
-	static int maxSCENE = 10;
-	selectedPrevious = selectedGameState * maxSCENE + selectedScene;
+	//static int maxSCENE = 10;
+	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
@@ -527,6 +529,7 @@ void EditorManager::SceneReset()
 	selectedPrefab = nullptr;
 	aspect = false;
 	renderManager->ResetCameras();
+	renderManager->ClearSelectedEntities();
 }
 void EditorManager::Copy()
 {
@@ -624,39 +627,73 @@ Entity EditorManager::Clone(Entity c)
 
 }
 
+Entity EditorManager::NewEntity()
+{
+	static int newEntityCount = 1;
+	LOG_INFO("Created new entity");
+	Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
 
+	/*Entity e{ ECS::CreateEntity() };
+	//(allEntities[selectedGameState][selectedScene]).insert(e);
+	(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(e);*/
 
-//
-//Math::Vec2 EditorManager::GetEditorWorldMousePos()
-//{
-//	return dynamic_cast<WorldViewPanel*>(panels[(int)E_PANELID::WORLDVIEW])->GetMousePos();
-//}
-//Math::Vec2 EditorManager::GetEditorGameMousePos()
-//{
-//	 return dynamic_cast<GameViewPanel*>(panels[(int)E_PANELID::GAMEVIEW])->GetMousePos();
-//}
-
+	Entity e = (*mGameStates)[selectedGameState].mScenes[selectedScene].AddEntity();
+	e.AddComponent(
+		General{ "NEW Entity " + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, 
+		true , false},
+		Transform{ {150,150}, 0, campos },
+		Sprite{ Color{0,255,0,255}, SPRITE::CIRCLE, 0,highestLayer });
+	newEntityCount++;
+	//selectedEntity = &e;
+	return e;
+}
 
 void EditorManager::NewScene()
 {
-	static int sn = 1;
+	/*static int sn = 1;
 	Scene sceneData{};
 	sceneData.mName = "NewScene" + std::to_string(sn++);
-	(*mGameStates)[selectedGameState].mScenes.push_back(sceneData);
+	(*mGameStates)[selectedGameState].mScenes.push_back(sceneData);*/
+
+	(*mGameStates)[selectedGameState].AddScene();
 	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
+
 }
 void EditorManager::NewGameState()
 {
-	static int gn = 1;
+	/*static int gn = 1;
 	GameState gameStateData{};
 	gameStateData.mName = "NewGameState" + std::to_string(gn++);
 	(*mGameStates).push_back(gameStateData);
 	selectedGameState = (int)(*mGameStates).size() - 1;
 	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
-	GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
+	GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);*/
+	GameStateManager::GetInstance()->AddGameState();
+	selectedGameState = (int)(*mGameStates).size() - 1;
+	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 }
 
+/*!*****************************************************************************
+\brief
+	This function delete an entity
 
+\return
+None.
+*******************************************************************************/
+void EditorManager::DeleteEntity()
+{
+	if (selectedEntity == nullptr)
+		return;
+	(*mGameStates)[selectedGameState].mScenes[selectedScene].RemoveEntity(*selectedEntity);
+	//(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.erase(e);
+	/*e.GetComponent<General>().isActive = false;
+	e.GetComponent<General>().isPaused = true;*/
+	//e.Destroy();
+	//e = Entity{ 0 };
+	LOG_INFO("Entity deleated");
+	selectedEntity = nullptr;
+	renderManager->ClearSelectedEntities();
+}
 
 
 

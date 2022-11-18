@@ -47,7 +47,7 @@ private:
 
 	
 	void AddComponent();
-	void DeleteEntity();
+	//void DeleteEntity();
 
 	Entity e;
 	PrefabPtr p;

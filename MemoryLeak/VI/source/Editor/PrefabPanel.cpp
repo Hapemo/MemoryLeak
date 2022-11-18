@@ -12,7 +12,6 @@ that lists the entities and its components in the scene
 #include "PrefabPanel.h"
 #include <ECSManager.h>
 #include "GameStateManager.h"
-int PrefabPanel::newPrefabCount = 1;
 
 
 /*!*****************************************************************************
@@ -127,52 +126,37 @@ void PrefabPanel::Free()
 
 void PrefabPanel::newPrefab()
 {
-	static int n{1};
+	static int newPrefabCount{1};
 	//static Prefab pre(".new Prefab"+n);
 	//Prefab* pre = new Prefab("new Prefab"+std::to_string(n));
 	//mPrefabs.push_back(pre);
 
 	PrefabPtr newPrefab = PrefabManager::GetInstance()->CreatePrefab();
-	newPrefab->Name() = "newPrefab" + std::to_string(n);
-
-	n++;
+	newPrefab->Name() = "NEW Prefab" + std::to_string(newPrefabCount++);
 }
 void PrefabPanel::newPrefabee(PrefabPtr pre)
-{//FUNCTION GS SCENE
+{
 
 	if (selectedGameState >= (*mGameStates).size())
 	{
 		NewGameState();
-		/*std::vector < std::set<Entity>> newGS{};
-		allEntities.push_back(newGS);
-		std::pair< std::string, std::vector<std::string>> newGSNmae{};
-		newGSNmae.first = "NewGameState0";
-		allNames.push_back(newGSNmae);
-		selectedGameState = (int)allEntities.size() - 1;*/
 	}
 	if (selectedScene >= (*mGameStates)[selectedGameState].mScenes.size())
 	{
 		NewScene();
-		/*std::set<Entity> newSecen{};
-		allEntities[selectedGameState].push_back(newSecen);
-		allNames[selectedGameState].second.push_back("NewScene0");
-		selectedScene = (int)allEntities[selectedGameState].size() - 1;*/
 	}
-	LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
-	LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
-	static int n{1};
+	static int newPrefabeeCount{1};
 	Entity b = pre->CreatePrefabee();
-	b.GetComponent<General>().name = "newPrefabee" + std::to_string(n);
-	b.GetComponent<General>().isActive = true;
+	b.GetComponent<General>().name = "NEW Prefabee" + std::to_string(newPrefabeeCount++);
+	b.GetComponent<General>().isActive = true;  //?? needed?
 	b.GetComponent<General>().isPaused = false;
 	if (b.HasComponent<Transform>())
 	{
 		b.GetComponent<Transform>().translation.x += prefabOffset;
 		b.GetComponent<Transform>().translation.y += prefabOffset;
+		prefabOffset += 10.f;
 	}
 	((*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities).insert(b);
-	n++;
-	prefabOffset += 10.f;
 }
 
 /*!*****************************************************************************
@@ -188,6 +172,7 @@ void PrefabPanel::setSelectedPrefab(PrefabPtr p)
 	{
 		selectedPrefab = p;
 		selectedEntity = nullptr;
+		renderManager->ClearSelectedEntities();
 		selectedType = 2;
 	}
 }

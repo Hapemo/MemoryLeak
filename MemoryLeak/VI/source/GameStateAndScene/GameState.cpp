@@ -20,10 +20,21 @@ void GameState::Exit() {
 
 
 void GameState::AddScene(std::filesystem::path const& _path) { // filesystem
-	LOG_CUSTOM("GAMESTATE", "Adding scene \"" + _path.stem().string() + "\" to gamestate: " + mName);
 	mScenes.emplace_back(Scene());
 	Scene& latestScene{ mScenes.back() };
-	latestScene.Load(_path);
+	
+
+	if (_path.string().size() == 0)
+	{
+		static int newSceneCount = 1;
+		latestScene.mName = "New Scene " + std::to_string(newSceneCount++);  //cannot have same GS name
+		LOG_CUSTOM("GAMESTATE", "Adding NEW scene to gamestate: " + mName);
+	}
+	else
+	{
+		latestScene.Load(_path);
+		LOG_CUSTOM("GAMESTATE", "Adding scene \"" + _path.stem().string() + "\" to gamestate: " + mName);
+	}
 
 	if (!latestScene.mIsPause) latestScene.Init();
 }
@@ -45,7 +56,10 @@ void GameState::Load(std::filesystem::path const& _path){
 	for (auto& scene : mScenes) {
 		std::filesystem::path path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene).string() +"/Scene/" + scene.mName + ".json"};
 		scene.Load(path);
-		//std::cout << path.string()<<"\n";
+		//renderManager->GetGameCamera().SetInitialPos(scene.mCamera.translation); //need set initial for multiple scenes
+		//renderManager->GetGameCamera().SetInitialZoom(scene.mCamera.rotation);
+		//renderManager->GetGameCamera().SetCameraWidth(scene.mCamera.scale.x); //need set initial scale
+		//renderManager->GetGameCamera().SetCameraHeight(scene.mCamera.scale.y);
 	}
 }
 

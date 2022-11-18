@@ -10,7 +10,7 @@ This file contains function definations for a Viewport Panel Editor system that 
 #include "ViewportPanel.h"
 #include <ECSManager.h>
 int ViewportPanel::isSelected = 0;
-int ViewportPanel::newEntityCount = 1;
+//int ViewportPanel::newEntityCount = 1;
 /*!*****************************************************************************
 \brief
 	This function set the view port to 16:9 aspect ratio regardless of window size

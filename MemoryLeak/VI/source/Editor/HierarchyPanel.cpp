@@ -12,7 +12,7 @@ that lists the entities and its components in the scene
 #include "HierarchyPanel.h"
 #include <ECSManager.h>
 #include "GameStateManager.h"
-int HierarchyPanel::newEntityCount = 1;
+
 /*!*****************************************************************************
 \brief
 	Initializes the HierarchyPanel editor
@@ -34,7 +34,7 @@ None.
 *******************************************************************************/
 void HierarchyPanel::Update()
 {
-
+	static int hack = 1;
 	if (ImGui::Begin("Hierarchy Manager"))
 	{
 		int id = 0;
@@ -49,19 +49,28 @@ void HierarchyPanel::Update()
 				
 				//ImGui::PushID(id++);
 				if (ImGui::BeginTabItem((*mGameStates)[g].mName.c_str()))
-				//if (ImGui::BeginTabItem(allNames[g].first.c_str()))
 				{
 					//ImGui::PopID();
 					static std::string gsName = (*mGameStates)[g].mName;
 					if (selectedGameState != g)
 					{
+						//if(hack)
+						//for (const Entity& e : *myEntities)//REMOVEME aft jazz
+						//	e.GetComponent<General>().isPaused = true;
+						
+						SceneReset();
 						gsName = (*mGameStates)[g].mName;
 						GameStateManager::GetInstance()->SetGameState((*mGameStates)[g].mName);
 						selectedGameState = g;
+
+						//if (hack)
+						//for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
+						//	for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
+						//		e.GetComponent<General>().isPaused = (*mGameStates)[g].mScenes[s].mIsPause;
+
 					}
 					ImGui::InputText("GameState Name", &gsName);
-					std::string changeGSbtn = "Change " + (*mGameStates)[g].mName + " name";
-					if (ImGui::Button(changeGSbtn.c_str()))
+					if(ImGui::IsItemActivated && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
 					{
 						(*mGameStates)[g].mName = gsName;
 					}
@@ -69,8 +78,6 @@ void HierarchyPanel::Update()
 					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 					if (ImGui::Button(saveGSbtn.c_str()))
 					{
-						//serializationManager->SaveGameState(allNames[g], allEntities[g]);
-						////serializationManager->SaveGameState(GSList[g]);
 						(*mGameStates)[g].Save();
 					}
 					ImGui::PopStyleColor();
@@ -78,11 +85,11 @@ void HierarchyPanel::Update()
 					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 					if (ImGui::Button(removeGSbtn.c_str()))
 					{
-						(*mGameStates).erase((*mGameStates).begin() + g);
-						//allNames.erase(allNames.begin() + g);
-						//allEntities.erase(allEntities.begin() + g);
-						//selectedGameState = (int)allEntities.size() - 1;
-						selectedGameState = (int)(*mGameStates).size() - 1;
+						
+						GameStateManager::GetInstance()->RemoveGameState(&(*mGameStates)[g]);
+						selectedScene = 0;
+						selectedGameState = 0;
+
 						ImGui::EndTabItem();
 						ImGui::PopStyleColor();
 						break;
@@ -90,28 +97,69 @@ void HierarchyPanel::Update()
 					ImGui::PopStyleColor();
 					if (ImGui::BeginTabBar("Scenes"), ImGuiTabBarFlags_Reorderable)
 					{
-						int layer = 0;
-						int order = 0;
+						if (ImGui::BeginTabItem("All"))
+						{
+							if (selectedScene != 99)
+							{
+								SceneReset();
+								for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
+									for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
+										e.GetComponent<General>().isPaused = (*mGameStates)[g].mScenes[s].mIsPause;
+								selectedScene = 99;
+							}
+							for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
+							{
+								{
+									bool isPause = !(*mGameStates)[g].mScenes[s].mIsPause;
+									bool old = isPause;
+									std::string showScenebtn = "Show " + (*mGameStates)[g].mScenes[s].mName + " Scene";
+									ImGui::Checkbox(showScenebtn.c_str(), &isPause);
+									if (isPause != old)
+										(*mGameStates)[g].mScenes[s].Pause(!isPause);
+								}
+								if (ImGui::CollapsingHeader((*mGameStates)[g].mScenes[s].mName.c_str()))
+								{
+									for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)
+									{
+										ImGui::PushID(id++);
+										listComponents(&e, e.GetComponent<General>().name);
+										ImGui::PopID();
+									}
+								}
+							}
+							ImGui::EndTabItem(); //end ALL scene item
+						}
+
 						for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
 						{
 							//ImGui::PushID(id++);
 							if (ImGui::BeginTabItem((*mGameStates)[g].mScenes[s].mName.c_str()))
 							{
 								//ImGui::PopID();
-								selectedScene = s;
+								if (selectedScene != s)
+								{
+									if (hack)
+									for (const Entity& e : *myEntities)//REMOVEME aft jazz
+										e.GetComponent<General>().isPaused = true;
+									
+									SceneReset();
+									selectedScene = s;
+
+									if (hack)
+									for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
+										e.GetComponent<General>().isPaused = false;
+									
+								}
 								std::string sName = (*mGameStates)[g].mScenes[s].mName;
 								ImGui::InputText("Scene Name", &sName);
-								std::string changeGSbtn = "Change " + (*mGameStates)[g].mScenes[s].mName + " name";
-								if (ImGui::Button(changeGSbtn.c_str()))
+								if (ImGui::IsItemActivated && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
 								{
-									(*mGameStates)[g].mScenes[s].mName = sName;
+										(*mGameStates)[g].mScenes[s].mName = sName;
 								}
 								std::string saveScenebtn = "SAVE " + (*mGameStates)[g].mScenes[s].mName + " Scene";
 								ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 								if (ImGui::Button(saveScenebtn.c_str()))
 								{
-									//serializationManager->SaveScene(allNames[g].second[s], allEntities[g][s]);
-									////serializationManager->SaveScene(GSList[g].scenes[s]);
 									(*mGameStates)[g].mScenes[s].Save();
 								}
 								ImGui::PopStyleColor();
@@ -119,11 +167,9 @@ void HierarchyPanel::Update()
 								ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 								if (ImGui::Button(removeScenebtn.c_str()))
 								{
-									(*mGameStates)[g].mScenes.erase((*mGameStates)[g].mScenes.begin() + s);
-									//allNames[g].second.erase(allNames[g].second.begin() + s);
-									//allEntities[g].erase(allEntities[g].begin() + s);
-									//selectedScene = (int)allEntities[g].size() - 1;
-									selectedScene = (int)(*mGameStates)[g].mScenes.size() - 1;
+									(*mGameStates)[g].RemoveScene((*mGameStates)[g].mScenes[s].mName);
+									selectedScene = 0;
+
 									ImGui::EndTabItem();
 									ImGui::PopStyleColor();
 									break;
@@ -131,28 +177,49 @@ void HierarchyPanel::Update()
 								ImGui::PopStyleColor();
 								if (ImGui::CollapsingHeader("Scene Camera")||true)
 								{
-									//ImGui::Checkbox("isActive", &(*mGameStates)[g].mScenes[s].mIsPause);
 									bool isPause = !(*mGameStates)[g].mScenes[s].mIsPause;
 									bool old = isPause;
 									ImGui::Checkbox("Show Scene", &isPause);
 									if(isPause != old)
 										(*mGameStates)[g].mScenes[s].Pause(!isPause);
-
+									//can pos
 									float pos[2] = { renderManager->GetGameCamera().GetPos().x , renderManager->GetGameCamera().GetPos().y };
 									ImGui::DragFloat2("Camera Pos", pos);
 									renderManager->GetGameCamera().SetPos(Math::Vec2{ pos[0], pos[1] });
-									float zoom = renderManager->GetGameCamera().GetZoom();
-									ImGui::DragFloat("Camera Zoom", &zoom);
-									renderManager->GetGameCamera().SetZoom(zoom);
-									ImGui::InputInt("Layer", &(++layer));
-									ImGui::InputInt("Order", &(++order));
+									(*mGameStates)[g].mScenes[s].mCamera.scale = Math::Vec2{ pos[0], pos[1] };
+									//cam size
+									float size[2] = { renderManager->GetGameCamera().GetCameraWidth(), renderManager->GetGameCamera().GetCameraHeight() };
+									ImGui::DragFloat("Camera Width", &size[0]);
+									if (ImGui::IsItemActive())
+									{
+										//renderManager->GetGameCamera().SetZoom(1.f);
+										renderManager->GetGameCamera().SetCameraWidth(size[0]);
+										(*mGameStates)[g].mScenes[s].mCamera.scale.x = size[0];
+									}
+									ImGui::DragFloat("Camera Height", &size[1]);
+									if (ImGui::IsItemActive())
+									{
+										//renderManager->GetGameCamera().SetZoom(1.f);
+										renderManager->GetGameCamera().SetCameraHeight(size[1]);
+										(*mGameStates)[g].mScenes[s].mCamera.scale.y = size[1];
+									}
+									//zoom
+									float zoom = 1.f/renderManager->GetGameCamera().GetZoom();
+									ImGui::DragFloat("Camera Zoom", &zoom, 0.005f);
+									if (ImGui::IsItemActive())
+									{
+										renderManager->GetGameCamera().SetZoom(1.f/zoom);
+										(*mGameStates)[g].mScenes[s].mCamera.rotation = zoom;
+									}
+									(*mGameStates)[g].mScenes[s].mCamera.rotation = zoom;
+									ImGui::InputInt("Layer", &((*mGameStates)[g].mScenes[s].mLayer));
+									ImGui::InputInt("Order", &((*mGameStates)[g].mScenes[s].mOrder));
 								}
 								for (int i = 0; i < (int)tag.size(); i++)
 								{
 
 									if (ImGui::CollapsingHeader(tag[i].c_str()))
 									{
-										//int id = 0;GSList[selectedGameState].scenes[selectedScene].mEntities
 										for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)
 										{
 											if (e.GetComponent<General>().tag != (TAG)i)
@@ -186,14 +253,14 @@ void HierarchyPanel::Update()
 								{
 									if (ImGui::MenuItem(" Create Entity"))
 									{
-										newEntity();
+										NewEntity();
 									}
 									ImGui::EndPopup();
 								}
 								ImGui::NewLine();
 								if (ImGui::Button("NEW Entity"))
 								{
-									newEntity();
+									NewEntity();
 								}
 								ImGui::EndTabItem(); //end scene item
 
@@ -206,11 +273,6 @@ void HierarchyPanel::Update()
 					if (ImGui::Button(newScenebtn.c_str()))
 					{//FUNCTION GS SCENE
 						NewScene();
-						//static int sn = 1;
-						//std::set<Entity> newSecen{};
-						//allEntities[g].push_back(newSecen);
-						//allNames[g].second.push_back("NewScene" + std::to_string(sn++));
-						//selectedScene = (int)allEntities[g].size() - 1;
 					}
 					ImGui::EndTabItem(); //forGS
 				}
@@ -223,14 +285,6 @@ void HierarchyPanel::Update()
 		if (ImGui::Button("NEW GameState"))
 		{//FUNCTION GS SCENE
 			NewGameState();
-
-			//static int gn = 1;
-			//std::vector < std::set<Entity>> newGS{};
-			//allEntities.push_back(newGS);
-			//std::pair< std::string, std::vector<std::string>> newGSNmae{};
-			//newGSNmae.first = "NewGameState" + std::to_string(gn++);
-			//allNames.push_back(newGSNmae);
-			//selectedGameState = (int)allEntities.size() - 1;
 		}
 
 	}
@@ -254,19 +308,23 @@ void HierarchyPanel::Free()
 \return
 None.
 *******************************************************************************/
-void HierarchyPanel::newEntity()
-{
-	Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
-	LOG_INFO("Created new entity");
-	Entity e{ ECS::CreateEntity() };
-	//(allEntities[selectedGameState][selectedScene]).insert(e);
-	(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(e);
-	e.AddComponent(
-		General{ "_NEW_" + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false },
-		Transform{ {150,150}, 0, campos },
-		Sprite{ Color{0,255,0,255}, SPRITE::CIRCLE, 0,highestLayer });
-	newEntityCount++;
-}
+//void HierarchyPanel::newEntity()
+//{
+//	LOG_INFO("Created new entity");
+//	Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
+//
+//	/*Entity e{ ECS::CreateEntity() };
+//	//(allEntities[selectedGameState][selectedScene]).insert(e);
+//	(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(e);*/
+//
+//	Entity e = (*mGameStates)[selectedGameState].mScenes[selectedScene].AddEntity();
+//
+//	e.AddComponent(
+//		General{ "NEW Entity " + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, true , false },
+//		Transform{ {150,150}, 0, campos },
+//		Sprite{ Color{0,255,0,255}, SPRITE::CIRCLE, 0,highestLayer });
+//	newEntityCount++;
+//}
 
 /*!*****************************************************************************
 \brief
@@ -284,6 +342,7 @@ void HierarchyPanel::setSelectedEntity(const Entity* e)
 		selectedPrefab = nullptr;
 		selectedType = 1;
 		aspect = false;
+		renderManager->SelectEntity(*selectedEntity);
 	}
 }
 

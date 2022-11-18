@@ -45,31 +45,14 @@ public:
 
 	bool IsScenePaused() { return isScenePaused; }
 	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
-	using PrefabPtr = std::shared_ptr<Prefab>;
-
 	Math::Vec2 GetEditorWorldMousePos() { return mWorldMousePos; }
-	//Math::Vec2 GetEditorGameMousePos();
+
+	using PrefabPtr = std::shared_ptr<Prefab>;
 
 private:
 	static std::vector<Panel*> panels;
 	
 protected:
-	//to remove
-	//struct SceneData {
-	//	std::string name = "";
-	//	Transform camera = {};
-	//	bool isActive = false;
-	//	int layer = 0;
-	//	int order = 0;;
-	//	std::set<Entity> mEntities = {};
-	//};
-
-	////Data that a gamestate class should contain
-	//struct GameStateData {
-	//	std::string name = "";
-	//	std::vector<SceneData> scenes = {};
-
-	//};
 	enum class E_PANELID
 	{
 		MENU,
@@ -86,7 +69,6 @@ protected:
 		GAMEVIEW,
 		END
 	};
-	void SceneReset();
 	static bool GetPannelIsActive(E_PANELID _panel);
 	static void SetPannelIsActive(E_PANELID _panel, bool _isActive);
 	void SaveUndo(Entity const e, COMPONENT& old, COMPONENTID id);
@@ -97,6 +79,12 @@ protected:
 	void Cut();
 	void Paste();
 	Entity Clone(Entity e);
+	void SceneReset();
+	Entity NewEntity();
+	void NewScene();
+	void NewGameState();
+	void DeleteEntity();
+
 	GLFWwindow* mWindow;
 	static int* mWindowWidth;
 	static int* mWindowHeight;
@@ -105,19 +93,17 @@ protected:
 	static const Entity* selectedEntity;
 	static Entity selEntity;
 	static bool aspect;
+	//prefab
+	static float prefabOffset;
 	static PrefabPtr selectedPrefab;
 	static int selectedType;
 
-
+	//GameStates
 	static std::vector<GameState>* mGameStates;
-	//static std::vector <GameStateData> GSList;
-	//static std::vector<  std::pair<  std::string, std::vector<std::string> >> allNames;
-	//static std::vector<std::vector<std::set<Entity>>> allEntities;
 	static int selectedGameState;
 	static int selectedScene;
-	static int selectedPrevious;
-	//static std::vector <Prefab*> mPrefabs;
-	//static const void* selected;
+	//static int selectedPrevious;
+
 	static int SRT;
 	//undo/redo
 	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
@@ -127,15 +113,12 @@ protected:
 	static std::pair<Entity, int> copyEntity;
 	static float copyOffset;
 
-	//prefab
-	static float prefabOffset;
 
 	static bool isScenePaused;
 	static bool isAnimatorEditor;
 	bool isAnimatorEditorFocused(){return isAnimatorEditor;}
 	
-	void NewScene();
-	void NewGameState();
+	
 
 
 	/*static bool isPaused;
@@ -147,6 +130,4 @@ protected:
 	void CameraViewPort();
 	void ShowDebugInfo();
 	void DialogEditor();*/
-
-	
 };

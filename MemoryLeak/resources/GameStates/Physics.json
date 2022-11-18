@@ -3,10 +3,10 @@
         "SceneName": "PhysicsDemo",
         "Transform": {
             "scale": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 1600.0,
+                "Y": 900.0
             },
-            "rotation": 0.0,
+            "rotation": 1.0,
             "translation": {
                 "X": 0.0,
                 "Y": 0.0
@@ -20,10 +20,10 @@
         "SceneName": "Phy2",
         "Transform": {
             "scale": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 1600.0,
+                "Y": 900.0
             },
-            "rotation": 0.0,
+            "rotation": 1.0,
             "translation": {
                 "X": 0.0,
                 "Y": 0.0
@@ -37,10 +37,10 @@
         "SceneName": "LayerCollider",
         "Transform": {
             "scale": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 1600.0,
+                "Y": 900.0
             },
-            "rotation": 0.0,
+            "rotation": 1.0,
             "translation": {
                 "X": 0.0,
                 "Y": 0.0
