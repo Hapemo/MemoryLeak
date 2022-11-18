@@ -73,8 +73,10 @@ void Scene::Unload() {
 	mOrder = decltype(mOrder)();
 }
 
-void Scene::AddEntity() {
-	mEntities.insert(ECS::CreateEntity());
+Entity Scene::AddEntity() {
+	Entity e{ ECS::CreateEntity() };
+	mEntities.insert(e);
+	return e;
 }
 
 void Scene::RemoveEntity(Entity const& _e) {

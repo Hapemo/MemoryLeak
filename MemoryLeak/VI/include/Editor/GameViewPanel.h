@@ -27,6 +27,6 @@ private:
 	void MouseClickMoveCam();
 	void ScrollMoveCam();
 	void ButtonClick();
-	void NewEntity();
+	//void NewEntity();
 	
 };

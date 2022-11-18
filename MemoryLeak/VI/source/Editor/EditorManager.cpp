@@ -627,14 +627,37 @@ Entity EditorManager::Clone(Entity c)
 
 }
 
+Entity EditorManager::NewEntity()
+{
+	static int newEntityCount = 1;
+	LOG_INFO("Created new entity");
+	Math::Vec2 campos = renderManager->GetWorldCamera().GetPos();
+
+	/*Entity e{ ECS::CreateEntity() };
+	//(allEntities[selectedGameState][selectedScene]).insert(e);
+	(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(e);*/
+
+	Entity e = (*mGameStates)[selectedGameState].mScenes[selectedScene].AddEntity();
+	e.AddComponent(
+		General{ "NEW Entity " + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, 
+		true , false},
+		Transform{ {150,150}, 0, campos },
+		Sprite{ Color{0,255,0,255}, SPRITE::CIRCLE, 0,highestLayer });
+	newEntityCount++;
+	//selectedEntity = &e;
+	return e;
+}
 
 void EditorManager::NewScene()
 {
-	static int sn = 1;
+	/*static int sn = 1;
 	Scene sceneData{};
 	sceneData.mName = "NewScene" + std::to_string(sn++);
-	(*mGameStates)[selectedGameState].mScenes.push_back(sceneData);
+	(*mGameStates)[selectedGameState].mScenes.push_back(sceneData);*/
+
+	(*mGameStates)[selectedGameState].AddScene();
 	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
+
 }
 void EditorManager::NewGameState()
 {
@@ -646,9 +669,31 @@ void EditorManager::NewGameState()
 	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 	GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);*/
 	GameStateManager::GetInstance()->AddGameState();
+	selectedGameState = (int)(*mGameStates).size() - 1;
+	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 }
 
+/*!*****************************************************************************
+\brief
+	This function delete an entity
 
+\return
+None.
+*******************************************************************************/
+void EditorManager::DeleteEntity()
+{
+	if (selectedEntity == nullptr)
+		return;
+	(*mGameStates)[selectedGameState].mScenes[selectedScene].RemoveEntity(*selectedEntity);
+	//(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.erase(e);
+	/*e.GetComponent<General>().isActive = false;
+	e.GetComponent<General>().isPaused = true;*/
+	//e.Destroy();
+	//e = Entity{ 0 };
+	LOG_INFO("Entity deleated");
+	selectedEntity = nullptr;
+	renderManager->ClearSelectedEntities();
+}
 
 
 

@@ -24,15 +24,17 @@ public:
 
 	
 private:
-	void newEntity();
-	/*void newPrefab();
-	void newPrefabee(Prefab*);
-	void setSelectedPrefab( Prefab* p);*/
-
 	void setSelectedEntity(const Entity* e);
 
-	//void setSelected(Entity* e);
 	void listComponents(const Entity* e, std::string _name);
-	static int newEntityCount;
 	std::vector<std::string> tag;
+
+
+	/*void newEntity();
+	void newPrefab();
+	void newPrefabee(Prefab*);
+	void setSelectedPrefab( Prefab* p);
+	//void setSelected(Entity* e);
+	//static int newEntityCount;*/
+
 };

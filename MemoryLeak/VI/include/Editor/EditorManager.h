@@ -80,8 +80,10 @@ protected:
 	void Paste();
 	Entity Clone(Entity e);
 	void SceneReset();
+	Entity NewEntity();
 	void NewScene();
 	void NewGameState();
+	void DeleteEntity();
 
 	GLFWwindow* mWindow;
 	static int* mWindowWidth;

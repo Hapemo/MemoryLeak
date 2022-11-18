@@ -258,24 +258,7 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<PlayerTmp>({});
 }
 
-/*!*****************************************************************************
-\brief
-	This function delete an entity
 
-\return
-None.
-*******************************************************************************/
-void InspectorPanel::DeleteEntity()
-{
-	(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.erase(e);
-	e.GetComponent<General>().isActive = false;
-	e.GetComponent<General>().isPaused = true;
-	//e.Destroy();
-	LOG_INFO("Entity deleated");
-	selectedEntity = nullptr;
-	renderManager->ClearSelectedEntities();
-	e = Entity{ 0 };
-}
 /*!*****************************************************************************
 \brief
 	This functions below onawards edits a particular component
@@ -378,7 +361,7 @@ void InspectorPanel::TransformEditor()
 
 		tmpFloat = transformManager->GetRotation(e);
 		tmpFloat = (float)(tmpFloat / M_PI * 180.f);
-		ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
+		ImGui::DragFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 		tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 		transformManager->SetRotation(e, tmpFloat);
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
@@ -972,7 +955,7 @@ void InspectorPanel::PrefabEditor()
 
 			tmpFloat = transform.rotation;
 			tmpFloat = (float)(tmpFloat / M_PI * 180.f);
-			ImGui::SliderFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
+			ImGui::DragFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
 			tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 			transform.rotation = tmpFloat;
 			p->UpdateComponent(transform);

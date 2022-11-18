@@ -12,7 +12,7 @@ public:
 	// Load new gamestate with file path
 	
 	// *EDITOR ONLY FUNCTIONALITIES*
-	void AddScene(std::filesystem::path const& _path);
+	void AddScene(std::filesystem::path const& _path = std::filesystem::path());
 	void RemoveScene(std::string const& _name); 
 
 	void Load(std::filesystem::path const& _path);

@@ -84,7 +84,6 @@ void GameStateManager::ChangeGameState(std::string const& _path) {
 }
 
 void GameStateManager::AddGameState(std::filesystem::path const& _path) {
-	LOG_CUSTOM("GAMESTATEMANAGER", "Add gamestate: " + _path.string());
 	std::string currName{ mCurrentGameState->mName };
 
 	mGameStates.push_back(GameState());
@@ -93,12 +92,16 @@ void GameStateManager::AddGameState(std::filesystem::path const& _path) {
 		if (gs.mName == currName) 
 			mCurrentGameState = &gs; // This line is required because push_back changes arrangement of gamestates, messing up where mCurrentGameState is pointing at.
 	
-	if (_path.string().size() != 0)
-		mGameStates.back().Load(_path);
-	else
+	if (_path.string().size() == 0)
 	{
 		static int newGSCount = 1;
-		mGameStates.back().mName = "New GameState" + std::to_string(newGSCount++);  //cannot have same GS name
+		mGameStates.back().mName = "New GameState " + std::to_string(newGSCount++);  //cannot have same GS name
+		LOG_CUSTOM("GAMESTATEMANAGER", "Add NEW gamestate");
+	}
+	else
+	{
+		mGameStates.back().Load(_path);
+		LOG_CUSTOM("GAMESTATEMANAGER", "Add gamestate: " + _path.string());
 	}
 
 	// FOR EDITOR

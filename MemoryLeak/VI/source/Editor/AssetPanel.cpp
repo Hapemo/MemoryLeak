@@ -185,10 +185,9 @@ void AssetPanel::Update()
 						ImGui::ImageButton(sceneIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
 						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
 						{
-							//ECS::DestroyAllEntities();
 							SceneReset();
 							if (selectedGameState >= (*mGameStates).size())
-							{//FUNCTION GS SCENE
+							{
 								/*std::vector < std::set<Entity>> newGS{};
 								allEntities.push_back(newGS);
 								std::pair< std::string, std::vector<std::string>> newGSNmae{};

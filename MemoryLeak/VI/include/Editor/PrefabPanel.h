@@ -29,6 +29,4 @@ private:
 	void newPrefabee(PrefabPtr);
 	void setSelectedPrefab(PrefabPtr p);
 	void listComponents(PrefabPtr p, std::string _name);
-	//void setSelected(PrefabPtr p);
-	static int newPrefabCount;
 };
