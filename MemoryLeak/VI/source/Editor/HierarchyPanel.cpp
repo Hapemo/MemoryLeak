@@ -429,11 +429,11 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 			ImGui::Text("Dialogue");
 			setSelectedEntity(e);
 		}
-		if (e->HasComponent<PlayerTmp>())
-		{
-			ImGui::Text("PlayerTmp");
-			setSelectedEntity(e);
-		}
+		//if (e->HasComponent<PlayerTmp>())
+		//{
+		//	ImGui::Text("PlayerTmp");
+		//	setSelectedEntity(e);
+		//}
 		ImGui::TreePop();
 	}
 	setSelectedEntity(e);

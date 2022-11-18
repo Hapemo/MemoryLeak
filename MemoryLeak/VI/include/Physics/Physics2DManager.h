@@ -22,19 +22,19 @@
 *******************************************************************************/
 class Physics2DManager : public System {
 public:
-	// -----------------------------
-	// System functions
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		Update function that simulates physics by stepping it in fixedDT when enough
-		time has passed
-		\param const float &
-		A reference to a read-only variable that tells us the application's current
-		delta time
-		\return void
-		NULL
-		*******************************************************************************/
+// -----------------------------
+// System functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	Update function that simulates physics by stepping it in fixedDT when enough
+	time has passed
+	\param const float &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+	\return void
+	NULL
+	*******************************************************************************/
 	void Update(const double& _appDT);
 
 	/*!*****************************************************************************
@@ -46,8 +46,6 @@ public:
 	NULL
 	*******************************************************************************/
 	void Step();
-
-	//void UpdatePosition(const Entity& _e);
 
 // -----------------------------
 // Component-related functions
@@ -82,18 +80,18 @@ public:
 	*******************************************************************************/
 	Physics2D& GetPhysicsComponent(const Entity& _e);
 
-	// -----------------------------
-	// Get / Set functions
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		GetDynamicsEnabled function that returns the stored value of the entity's
-		dynamics enabled flag
-		\param const Entity &
-		A reference to a read-only Entity to
-		\return bool
-		The value of the entity's dynamics enabled flag
-		*******************************************************************************/
+// -----------------------------
+// Get / Set functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	GetDynamicsEnabled function that returns the stored value of the entity's
+	dynamics enabled flag
+	\param const Entity &
+	A reference to a read-only Entity to
+	\return bool
+	The value of the entity's dynamics enabled flag
+	*******************************************************************************/
 	bool GetDynamicsEnabled(const Entity& _e);
 	/*!*****************************************************************************
 	\brief

@@ -32,9 +32,11 @@ typedef bool (*CollisionCallback)(Contact&, const double&);
 class Collision2DManager : public System {
 public:
 // -----------------------------
-// Specific Collision Check Lib
+// Specific/Specialized Collision Check Lib
 // -----------------------------
 	static std::vector<Entity> CI_PlayervsEnemy(const Entity& _player, const Entity& _enemy);
+	
+	static bool Static_RectvsCircle(const Entity& _rect, const Entity& _circle);
 
 // -----------------------------
 // Collision Callback Lib
