@@ -181,7 +181,6 @@ void Application::exit() {
   spriteManager->FreeTextures();
   ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   ResourceManager::GetInstance()->UnloadAllResources();
-  ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   SingletonManager::destroyAllSingletons();
   // Part 2
   glfwTerminate();

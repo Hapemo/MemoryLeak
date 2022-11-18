@@ -10,6 +10,7 @@ This file contains the function definitions of the class MScriptComponent.
 The MScriptComponent class handles the C# scripting for the engine.
 *******************************************************************************/
 
+#include <filesystem>
 #include "MScriptComponent.h"
 
 // Mono generic stuff
@@ -27,7 +28,13 @@ uint32_t MScriptComponent::m_gameObjectGCHandle = 0;
 
 MScriptComponent::MScriptComponent() {
 	// Current directon as mono directory
-	mono_set_dirs("$(TargetDir)", "$(TargetDir)");
+	std::string path;
+#ifdef NDEBUG
+	path = std::filesystem::current_path().parent_path().string() + "\\bin\\Release\\x64";
+#else
+	path = std::filesystem::current_path().parent_path().string() + "\\bin\\Debug\\x64";
+#endif
+	mono_set_dirs(path.c_str(), path.c_str());
 
 	// Create mono domain
 	m_ptrMonoDomain = mono_jit_init("MScriptComponent");
