@@ -11,7 +11,9 @@ The MScriptComponent class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #include <filesystem>
+#include "pch.h"
 #include "MScriptComponent.h"
+//#include "Logger.h"
 
 // Mono generic stuff
 MonoDomain* MScriptComponent::m_ptrMonoDomain = nullptr;
@@ -38,12 +40,16 @@ MScriptComponent::MScriptComponent() {
 
 	// Create mono domain
 	m_ptrMonoDomain = mono_jit_init("MScriptComponent");
+	std::cout << "Creating Mono domain...\n";
 	if (m_ptrMonoDomain) {
 		// Load a mono assembly script.dll
-		m_ptrGameAssembly = mono_domain_assembly_open(m_ptrMonoDomain, "Scripting.dll");
+		m_ptrGameAssembly = mono_domain_assembly_open(m_ptrMonoDomain, (path + "\\Scripting.dll").c_str());
+		if (!m_ptrGameAssembly) std::cout << "Failed to load "; else std::cout << "Loaded ";
+		std::cout << "Mono assembly from: " << path << "\\Scripting.dll" << "\n";
 		if (m_ptrGameAssembly) {
 			// Loading mono image
 			m_ptrGameAssemblyImage = mono_assembly_get_image(m_ptrGameAssembly);
+			std::cout << "Loading Mono image...\n";
 		}
 	}
 }
@@ -63,15 +69,19 @@ MScriptComponent::~MScriptComponent() {
 \brief
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
-void MScriptComponent::Init() {
+void MScriptComponent::StartScript(Entity const& gob) {
+	(void)gob;
+	std::cout << "Mono Initing...\n";
 	if (m_ptrGameAssemblyImage) {
 		// Add internal calls
-		mono_add_internal_call("SCRIPTING.TestClass::Init()", &MScriptComponent::Update);
+		mono_add_internal_call("SCRIPTING.TestClass::Init()", &MScriptComponent::StartScript);
 
 		// Find ptrClass
 		MonoClass* ptrClass = mono_class_from_name(m_ptrGameAssemblyImage, "SCRIPTING", "TestClass");
 
 		if (ptrClass) {
+			std::cout << "Mono ptrClass exist...\n";
+			//LOG_INFO("Mono ptrClass exist.");
 			// Describe method
 			MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(".TestClass:Init()", false);
 			if (ptrMainMethodDesc) {
@@ -97,10 +107,11 @@ void MScriptComponent::Init() {
 \brief
 Run the update function for all active entities' scripts.
 *******************************************************************************/
-void MScriptComponent::Update() {
+void MScriptComponent::UpdateScript(Entity const& gob) {
+	(void)gob;
 	if (m_ptrGameAssemblyImage) {
 		// Add internal calls
-		mono_add_internal_call("SCRIPTING.TestClass::Update()", &MScriptComponent::Update);
+		mono_add_internal_call("SCRIPTING.TestClass::Update()", &MScriptComponent::UpdateScript);
 
 		// Find ptrClass
 		MonoClass* ptrClass = mono_class_from_name(m_ptrGameAssemblyImage, "SCRIPTING", "TestClass");
@@ -131,10 +142,11 @@ void MScriptComponent::Update() {
 \brief
 Run the exit function for all active entities' scripts.
 *******************************************************************************/
-void MScriptComponent::Exit() {
+void MScriptComponent::EndScript(Entity const& gob) {
+	(void)gob;
 	if (m_ptrGameAssemblyImage) {
 		// Add internal calls
-		mono_add_internal_call("SCRIPTING.TestClass::Exit()", &MScriptComponent::Update);
+		mono_add_internal_call("SCRIPTING.TestClass::Exit()", &MScriptComponent::EndScript);
 
 		// Find ptrClass
 		MonoClass* ptrClass = mono_class_from_name(m_ptrGameAssemblyImage, "SCRIPTING", "TestClass");

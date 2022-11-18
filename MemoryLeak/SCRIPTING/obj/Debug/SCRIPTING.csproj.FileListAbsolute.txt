@@ -1,6 +1,8 @@
-D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\Scripting.dll
-D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\Scripting.pdb
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb
-D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Scripting.dll
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Scripting.pdb
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\x64\Scripting.dll
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\x64\Scripting.pdb

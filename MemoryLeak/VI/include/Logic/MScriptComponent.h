@@ -14,11 +14,9 @@ The MScriptComponent class handles the C# scripting for the engine.
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/debug-helpers.h>
+#include "ScriptComponent.h"
 
-#include <string>
-#include <vector>
-
-class MScriptComponent
+class MScriptComponent : public ScriptComponent
 {
 public:
 	/*!*****************************************************************************
@@ -39,19 +37,19 @@ public:
 	\brief
 	Run the initialisation function for all active entities' scripts.
 	*******************************************************************************/
-	static void Init();
+	static void StartScript(Entity const& gob);
 
 	/*!*****************************************************************************
 	\brief
 	Run the update function for all active entities' scripts.
 	*******************************************************************************/
-	static void Update();
+	static void UpdateScript(Entity const& gob);
 
 	/*!*****************************************************************************
 	\brief
 	Run the exit function for all active entities' scripts.
 	*******************************************************************************/
-	static void Exit();
+	static void EndScript(Entity const& gob);
 
 private:
 	// Mono generic stuff

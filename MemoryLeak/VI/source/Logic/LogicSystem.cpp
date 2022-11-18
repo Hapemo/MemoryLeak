@@ -16,10 +16,12 @@ The LogicSystem class handles the C# scripting for the engine.
 
 LogicSystem::LogicSystem() {
 	ptrGame = new MScriptComponent;
+	LOG_DEBUG("Creating new MScriptComponent.");
 }
 
 LogicSystem::~LogicSystem() {
 	delete ptrGame;
+	LOG_DEBUG("Deleting new MScriptComponent.");
 }
 
 /*!*****************************************************************************
@@ -33,7 +35,7 @@ void LogicSystem::Init() {
 			if (e.GetComponent<Script>().name != "")
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
-					ptrGame->Init();
+					if (ptrGame == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ptrGame->StartScript(e);
 				}
 			else
 				LOG_ERROR("start: Script failed to attach!!!");
@@ -52,7 +54,7 @@ void LogicSystem::Update() {
 			if (e.GetComponent<Script>().name != "")
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->UpdateScript(e);
-					ptrGame->Update();
+					if (ptrGame == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ptrGame->UpdateScript(e);
 				}
 			else
 				LOG_ERROR("Update: Script failed to attach!!!");
@@ -71,7 +73,7 @@ void LogicSystem::Exit() {
 			if (e.GetComponent<Script>().name != "")
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->EndScript(e);
-					ptrGame->Exit();
+					if (ptrGame == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ptrGame->EndScript(e);
 				}
 			else
 				LOG_ERROR("End: Script failed to attach!!!");

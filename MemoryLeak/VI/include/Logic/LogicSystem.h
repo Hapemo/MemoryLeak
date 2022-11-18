@@ -12,13 +12,14 @@ The LogicSystem class handles the C# scripting for the engine.
 
 #pragma once
 #include "ECS_tools.h"
+#include "ScriptComponent.h"
 
-class MScriptComponent;
+//class MScriptComponent;
 
 class LogicSystem : public System
 {
 private:
-	MScriptComponent* ptrGame = nullptr;
+	ScriptComponent* ptrGame;
 public:
 	/*!*****************************************************************************
 	\brief
