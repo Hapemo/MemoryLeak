@@ -31,34 +31,37 @@ std::vector<Panel*> EditorManager::panels{};
 
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
+
+Entity selEntity{};
+//Entity
 const Entity* EditorManager::selectedEntity = nullptr;
+std::set<Entity>* EditorManager::myEntities = nullptr;
+
+std::vector<GameState>* EditorManager::mGameStates = nullptr;
+int EditorManager::selectedGameState{0};
+int EditorManager::selectedScene{0};
+int EditorManager::selectedType = {0};
+
+//prefabs
 EditorManager::PrefabPtr EditorManager::selectedPrefab = nullptr;
-int EditorManager::selectedType=0;
- Entity selEntity{};
-int EditorManager::SRT{};
+float EditorManager::prefabOffset = 10.f;
+
+
+//undo
 std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
 int EditorManager::stackPointer{-1};
+
 //copy
 std::pair<Entity, int> EditorManager::copyEntity{};
 float EditorManager::copyOffset = 20.f;
 
-//prefabs
-float EditorManager::prefabOffset = 10.f;
+int EditorManager::SRT{};
 Math::Vec2 EditorManager::mWorldMousePos = 0;
-std::set<Entity>* EditorManager::myEntities = nullptr;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
-//std::vector <Prefab*> EditorManager::mPrefabs{};
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
 
-std::vector<GameState>* EditorManager::mGameStates = nullptr;
-//std::vector <EditorManager::GameStateData>  EditorManager::GSList;
-//std::vector<  std::pair<  std::string, std::vector<std::string> >> EditorManager::allNames{};
-//std::vector<std::vector<std::set<Entity>>> EditorManager::allEntities{};
-int EditorManager::selectedGameState{0};
-int EditorManager::selectedScene{0};
-int EditorManager::selectedPrevious = {0};
 /*!*****************************************************************************
 \brief
 	Load the level editor
@@ -201,8 +204,8 @@ void EditorManager::Update()
 			}
 		}
 	}*/
-	static int maxSCENE = 10;
-	selectedPrevious = selectedGameState * maxSCENE + selectedScene;
+	//static int maxSCENE = 10;
+	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
@@ -625,18 +628,6 @@ Entity EditorManager::Clone(Entity c)
 }
 
 
-
-//
-//Math::Vec2 EditorManager::GetEditorWorldMousePos()
-//{
-//	return dynamic_cast<WorldViewPanel*>(panels[(int)E_PANELID::WORLDVIEW])->GetMousePos();
-//}
-//Math::Vec2 EditorManager::GetEditorGameMousePos()
-//{
-//	 return dynamic_cast<GameViewPanel*>(panels[(int)E_PANELID::GAMEVIEW])->GetMousePos();
-//}
-
-
 void EditorManager::NewScene()
 {
 	static int sn = 1;
@@ -647,13 +638,14 @@ void EditorManager::NewScene()
 }
 void EditorManager::NewGameState()
 {
-	static int gn = 1;
+	/*static int gn = 1;
 	GameState gameStateData{};
 	gameStateData.mName = "NewGameState" + std::to_string(gn++);
 	(*mGameStates).push_back(gameStateData);
 	selectedGameState = (int)(*mGameStates).size() - 1;
 	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
-	GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
+	GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);*/
+	GameStateManager::GetInstance()->AddGameState();
 }
 
 

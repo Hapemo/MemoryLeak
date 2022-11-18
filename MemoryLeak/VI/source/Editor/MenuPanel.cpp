@@ -92,16 +92,19 @@ void MenuPanel::Update()
 				std::string GSname = filenameO_GameState;
 				allEntities.push_back(serializationManager->LoadGameState(GSname, gs.second));
 				gs.first = GSname;
-				allNames.push_back(gs);*/
-			//gameStateManager::GetInstance()->LoadGameState(serializationManager->LoadGameState(filenameO_GameState));
-				////GSList.push_back(serializationManager->LoadGameState(filenameO_GameState));
-				////selectedGameState = (int)GSList.size() - 1;
-				////selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
+				allNames.push_back(gs);
+				gameStateManager::GetInstance()->LoadGameState(serializationManager->LoadGameState(filenameO_GameState));
+				GSList.push_back(serializationManager->LoadGameState(filenameO_GameState));
+				selectedGameState = (int)GSList.size() - 1;
+				selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;*/
 				std::string name = "../resources/GameStates/";
 				name += filenameO_GameState;
 				name += ".json";
 				std::filesystem::path path{ name };
 				GameStateManager::GetInstance()->AddGameState(path);
+				GameStateManager::GetInstance()->SetGameState(path.stem().string());
+				selectedGameState = (int)(*mGameStates).size() - 1;
+				selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 				
 			}
 			ImGui::Separator();
@@ -131,13 +134,13 @@ void MenuPanel::Update()
 				if (selectedGameState >= (*mGameStates).size())
 				{//FUNCTION GS SCENE
 					NewGameState();
-					GameStateManager::GetInstance()->SetGameState((*mGameStates)[selectedGameState].mName);
 				}
 				std::string name = "../resources/Scene/";
 				name += filenameO_Scene;
 				name += ".json";
 				std::filesystem::path path{ name };
 				GameStateManager::GetInstance()->mCurrentGameState->AddScene(path);
+				selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 			}
 			ImGui::Separator();
 			ImGui::MenuItem("Open Scene File", NULL, false, false);

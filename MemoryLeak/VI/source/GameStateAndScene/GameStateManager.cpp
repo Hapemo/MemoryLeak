@@ -91,12 +91,15 @@ void GameStateManager::AddGameState(std::filesystem::path const& _path) {
 	
 	for (auto& gs : mGameStates) 
 		if (gs.mName == currName) 
-			mCurrentGameState = &gs; // This line is required because push_back changes arrangement of gamestates, 
-																																									// messing up where mCurrentGameState is pointing at.
-	if (_path.string().size() < 0)
-		mGameStates.back().mName = "New GameState";
-	else
+			mCurrentGameState = &gs; // This line is required because push_back changes arrangement of gamestates, messing up where mCurrentGameState is pointing at.
+	
+	if (_path.string().size() != 0)
 		mGameStates.back().Load(_path);
+	else
+	{
+		static int newGSCount = 1;
+		mGameStates.back().mName = "New GameState" + std::to_string(newGSCount++);  //cannot have same GS name
+	}
 
 	// FOR EDITOR
 	std::vector<bool> pausedList{};
