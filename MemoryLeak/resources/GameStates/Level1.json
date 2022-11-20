@@ -3,8 +3,8 @@
         "SceneName": "Level1",
         "Transform": {
             "scale": {
-                "X": 1600.0,
-                "Y": 900.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "rotation": 1.0,
             "translation": {
@@ -20,8 +20,8 @@
         "SceneName": "NewScene (1)",
         "Transform": {
             "scale": {
-                "X": 1600.0,
-                "Y": 900.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "rotation": 1.0,
             "translation": {
