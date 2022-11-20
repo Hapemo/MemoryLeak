@@ -42,47 +42,6 @@
     },
     {
         "General": {
-            "name": "MenuIcon",
-            "tag": 3,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 800.0,
-                "Y": 300.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 290.0614013671875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\bon voyage logo 5.png",
-            "layer": 1
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
             "name": "PlayBtn",
             "tag": 5,
             "subtag": 1,
@@ -90,13 +49,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 100.0
+                "X": 496.0,
+                "Y": 99.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 80.0
+                "X": 22.628280639648438,
+                "Y": -36.14518737792969
             }
         },
         "Sprite": {
@@ -123,10 +82,10 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "PLAY",
+            "text": "Start Game",
             "offset": {
-                "X": -66.0,
-                "Y": -25.0
+                "X": -130.0,
+                "Y": -21.0
             },
             "scale": 1.2000000476837158,
             "color": {
@@ -146,13 +105,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 100.0
+                "X": 496.0,
+                "Y": 99.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": -30.231002807617188
+                "X": 19.0238037109375,
+                "Y": -168.60398864746094
             }
         },
         "Sprite": {
@@ -202,13 +161,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 100.0
+                "X": 496.0,
+                "Y": 99.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": -369.6080017089844
+                "X": 19.224029541015625,
+                "Y": -295.7156066894531
             }
         },
         "Sprite": {
@@ -251,20 +210,20 @@
     },
     {
         "General": {
-            "name": "Settling",
-            "tag": 5,
+            "name": "Title",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 100.0
+                "X": 944.0,
+                "Y": 285.1781311035156
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": -254.27499389648438
+                "X": 22.028976440429688,
+                "Y": 193.67959594726563
             }
         },
         "Sprite": {
@@ -272,289 +231,17 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 12
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": true
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Credits",
-            "offset": {
-                "X": -88.0,
-                "Y": -25.0
-            },
-            "scale": 1.2000000476837158,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
                 "a": 255
-            }
-        }
-    },
-    {
-        "General": {
-            "name": "SettingsBtn",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": -142.02000427246094
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 13
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": true
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Settings",
-            "offset": {
-                "X": -105.0,
-                "Y": -24.0
-            },
-            "scale": 1.2000000476837158,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
+            "texture": "Textures\\Menu\\bon voyage logo 5.png",
+            "layer": 1
         }
     },
     {
         "General": {
-            "name": "Boat",
-            "tag": 0,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -400.0,
-                "Y": 400.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 611.8492431640625,
-                "Y": -210.91641235351563
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\boat.png",
-            "layer": 18
-        },
-        "Physics2D": {
-            "dynamicsEnabled": true,
-            "mass": 1.0,
-            "inertia": 1.0,
-            "restitution": 0.0,
-            "friction": 0.0,
-            "damping": 0.8999999761581421,
-            "accumulatedForce": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "velocity": {
-                "X": -7.048226206233382e-14,
-                "Y": 5.172123105777644e-14
-            },
-            "acceleration": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "angularVelocity": 0.0,
-            "angularTorque": 0.0,
-            "forceList": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Player",
-            "tag": 0,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 592.90966796875,
-                "Y": -252.32009887695313
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Characters\\mc.png",
-            "layer": 20
-        },
-        "Physics2D": {
-            "dynamicsEnabled": true,
-            "mass": 1.0,
-            "inertia": 1.0,
-            "restitution": 0.0,
-            "friction": 0.0,
-            "damping": 0.8999999761581421,
-            "accumulatedForce": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "velocity": {
-                "X": -7.048226206233382e-14,
-                "Y": 5.172123105777644e-14
-            },
-            "acceleration": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "angularVelocity": 0.0,
-            "angularTorque": 0.0,
-            "forceList": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Little Girl",
-            "tag": 1,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 100.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -535.9998779296875,
-                "Y": -271.5686340332031
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Characters\\girl.png",
-            "layer": 16
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "LightHouse",
-            "tag": 3,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -300.0,
-                "Y": 500.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -607.5490112304688,
-                "Y": -160.64700317382813
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\lighthouse(revised).png",
-            "layer": 14
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "Light",
-            "tag": 6,
+            "name": "NEW Entity 2",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -565,8 +252,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -609.803955078125,
-                "Y": 15.686274528503418
+                "X": 847.8599243164063,
+                "Y": -432.34039306640625
             }
         },
         "Sprite": {
@@ -574,28 +261,53 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 100
+                "a": 255
             },
-            "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 21
+            "sprite": 2,
+            "texture": "Textures\\Menu\\credits-icon.png",
+            "layer": 1
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": true
+        "Animation": {
+            "images": [],
+            "timePerImage": 0.0,
+            "timeToImageSwap": 0.0,
+            "currentImageIndex": 0
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
         },
-        "AI": {
-            "colorChange": 2,
-            "movement": 0,
-            "speed": 1.0,
-            "range": 10.0
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 847.8596801757813,
+                "Y": -280.91375732421875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\settings-icon.png",
+            "layer": 0
+        },
+        "Animation": {
+            "images": [],
+            "timePerImage": 0.0,
+            "timeToImageSwap": 0.0,
+            "currentImageIndex": 0
         }
     }
 ]

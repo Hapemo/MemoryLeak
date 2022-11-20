@@ -3,10 +3,10 @@
         "SceneName": "Level1",
         "Transform": {
             "scale": {
-                "X": -281.852294921875,
-                "Y": -114.2240219116211
+                "X": 0.0,
+                "Y": 0.0
             },
-            "rotation": 2.000000476837158,
+            "rotation": 1.0,
             "translation": {
                 "X": 0.0,
                 "Y": 0.0
@@ -17,7 +17,7 @@
         "order": 3
     },
     {
-        "SceneName": "NewScene (1)",
+        "SceneName": "Pause",
         "Transform": {
             "scale": {
                 "X": 0.0,
@@ -30,7 +30,7 @@
             }
         },
         "isActive": true,
-        "layer": 4,
-        "order": 4
+        "layer": 0,
+        "order": 0
     }
 ]

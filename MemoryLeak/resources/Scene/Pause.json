@@ -1,0 +1,212 @@
+[
+    {
+        "General": {
+            "name": "Background",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1920.0,
+                "Y": 1080.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1.001251220703125,
+                "Y": 1.4392852783203125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\menu screen background.jpg",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "_new_",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1174.0,
+                "Y": 686.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1.001220703125,
+                "Y": 3.441783905029297
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\window-1.png",
+            "layer": 0
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "PAUSED",
+            "offset": {
+                "X": -174.0,
+                "Y": 188.0
+            },
+            "scale": 2.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Settings_button",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 496.0,
+                "Y": 99.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1.0012664794921875,
+                "Y": 77.53440856933594
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Settings",
+            "offset": {
+                "X": -80.0,
+                "Y": -13.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "QuitGame_button",
+            "tag": 7,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 496.0,
+                "Y": 99.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -44.05507278442383
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Quit Game",
+            "offset": {
+                "X": -109.0,
+                "Y": -17.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Prefabee2",
+            "tag": 7,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 496.0,
+                "Y": 99.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1.001251220703125,
+                "Y": -170.77597045898438
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Resume",
+            "offset": {
+                "X": -72.0,
+                "Y": -16.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    }
+]
