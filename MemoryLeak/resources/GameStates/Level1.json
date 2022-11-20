@@ -3,10 +3,10 @@
         "SceneName": "Level1",
         "Transform": {
             "scale": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -281.852294921875,
+                "Y": -114.2240219116211
             },
-            "rotation": 1.0,
+            "rotation": 2.000000476837158,
             "translation": {
                 "X": 0.0,
                 "Y": 0.0

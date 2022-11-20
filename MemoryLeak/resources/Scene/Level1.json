@@ -177,8 +177,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -564.091552734375,
-                "Y": -110.80902099609375
+                "X": -568.4970703125,
+                "Y": -109.6075210571289
             }
         },
         "Sprite": {
@@ -189,8 +189,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Characters\\girl.png",
+            "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
             "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 9,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.00819600373506546
         },
         "RectCollider": {
             "centerOffset": {
@@ -254,13 +260,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -200.0,
+                "X": -159.0,
                 "Y": 200.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -41.939476013183594,
-                "Y": -100.55050659179688
+                "X": -49.14849090576172,
+                "Y": -103.35122680664063
             }
         },
         "Sprite": {
@@ -271,8 +277,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\boat.png",
+            "texture": "Textures\\Spritesheets\\BOAT\\boat-SE-spritesheet.png",
             "layer": 1
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 2,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0752645954489708
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -287,7 +299,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": -1.7703392261753803e-16
+                "Y": 1.497671604511197e-7
             },
             "acceleration": {
                 "X": 0.0,
@@ -308,13 +320,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -80.0,
+                "X": -67.0,
                 "Y": 80.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -44.74052429199219,
-                "Y": -117.18513488769531
+                "X": -40.73553466796875,
+                "Y": -113.57784271240234
             }
         },
         "Sprite": {
@@ -325,8 +337,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Characters\\mc.png",
+            "texture": "Textures\\Spritesheets\\MC\\Character_mc_SE_idle_spritesheet.png",
             "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 3,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0752645954489708
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -341,7 +359,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": -1.7703392261753803e-16
+                "Y": 1.497671604511197e-7
             },
             "acceleration": {
                 "X": 0.0,
@@ -742,9 +760,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 178,
-                "g": 0,
-                "b": 147,
+                "r": 229,
+                "g": 193,
+                "b": 14,
                 "a": 100
             },
             "sprite": 1,
@@ -877,8 +895,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Characters\\ghost 1.png",
+            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
             "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.040378402918577194
         },
         "RectCollider": {
             "centerOffset": {
