@@ -31,8 +31,8 @@
     },
     {
         "General": {
-            "name": "_new_",
-            "tag": 0,
+            "name": "Paused",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -44,7 +44,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 1.001220703125,
-                "Y": 3.441783905029297
+                "Y": 3.4417877197265625
             }
         },
         "Sprite": {
@@ -62,10 +62,10 @@
             "fontFile": "CaviarDreams",
             "text": "PAUSED",
             "offset": {
-                "X": -174.0,
-                "Y": 188.0
+                "X": -135.0,
+                "Y": 195.0
             },
-            "scale": 2.0,
+            "scale": 1.5,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -166,7 +166,7 @@
     },
     {
         "General": {
-            "name": "NEW Prefabee2",
+            "name": "Resume",
             "tag": 7,
             "subtag": 0,
             "isActive": true

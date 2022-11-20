@@ -194,9 +194,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 1,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.00819600373506546
+            "timeToFrameSwap": 0.08241650462150574
         },
         "RectCollider": {
             "centerOffset": {
@@ -266,7 +266,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -49.14849090576172,
-                "Y": -103.35122680664063
+                "Y": -102.27635192871094
             }
         },
         "Sprite": {
@@ -282,9 +282,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0752645954489708
+            "timeToFrameSwap": 0.03173371031880379
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -299,7 +299,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": 1.497671604511197e-7
+                "Y": 0.2340596467256546
             },
             "acceleration": {
                 "X": 0.0,
@@ -326,7 +326,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -40.73553466796875,
-                "Y": -113.57784271240234
+                "Y": -112.50296783447266
             }
         },
         "Sprite": {
@@ -342,9 +342,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0752645954489708
+            "timeToFrameSwap": 0.03173371031880379
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -359,7 +359,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": 1.497671604511197e-7
+                "Y": 0.2340596467256546
             },
             "acceleration": {
                 "X": 0.0,
@@ -760,9 +760,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 229,
-                "g": 193,
-                "b": 14,
+                "r": 153,
+                "g": 221,
+                "b": 254,
                 "a": 100
             },
             "sprite": 1,
@@ -900,9 +900,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 0,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.040378402918577194
+            "timeToFrameSwap": 0.007484693080186844
         },
         "RectCollider": {
             "centerOffset": {
