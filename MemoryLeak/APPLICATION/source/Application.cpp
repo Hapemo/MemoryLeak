@@ -39,7 +39,7 @@ void Application::startup() {
 void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
-  //logicSystem->Init();
+  logicSystem->Init();
   //aiManager->weatherAIinit();
   
   renderManager->Init(&window_width, &window_height);

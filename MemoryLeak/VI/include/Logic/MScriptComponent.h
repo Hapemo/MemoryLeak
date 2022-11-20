@@ -51,15 +51,19 @@ public:
 	*******************************************************************************/
 	static void EndScript(Entity const& gob);
 
+	std::string MonoDirectoryPath();
+	bool InitMonoDomain(const char* _domain, const std::string _directory, const std::string _dll);
+	MonoClass* GetClassInAssembly(MonoAssembly* _assembly, const char* _namespace, const char* _class);
+	MonoObject* InstantiateClass(const char* _namespace, const char* _class);
+	void CallMethod(MonoObject* _objectInstance, const char* _function, int _paramCount);
+
+	//void TestFunction(std::string _thingToPrint);
+	static MonoString* TestFunction();
+
 private:
 	// Mono generic stuff
-	static MonoDomain* m_ptrMonoDomain;
-	static MonoAssembly* m_ptrGameAssembly;
-	static MonoImage* m_ptrGameAssemblyImage;
-
-	// Mono Methods
-	static MonoMethod* m_ptrTickMethod;
-	static MonoMethod* m_ptrKeyEventMethod;
+	static MonoDomain* mDomain;
+	static MonoAssembly* mAssembly;
 
 	// Mono Object
 	static MonoObject* m_ptrGameObject;
