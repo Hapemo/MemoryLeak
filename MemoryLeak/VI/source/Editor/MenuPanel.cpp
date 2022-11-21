@@ -264,6 +264,11 @@ void MenuPanel::Update()
 				//debugPanel.setIsActive(false);
 				SetPannelIsActive(E_PANELID::DEBUG, false);
 			}
+			/*if (ImGui::MenuItem("Reset panels"))
+			{
+				ImGuiIO& io = ImGui::GetIO();
+				io.IniFilename = "imguiReset.ini";
+			}*/
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();

@@ -26,7 +26,7 @@ None.
 void AssetPanel::Init()
 {
 	colNum = 3;
-	folderSize = { 100,100 };
+	folderSize = { 95,95 };
 	rootPath = "..\\resources";
 	sfxIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\sfxIcon.png");
 	bgmIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\bgmIcon.png");
@@ -161,19 +161,7 @@ void AssetPanel::Update()
 					{
 						ImGui::ImageButton(gamestateIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
 						if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left) && texFilename != "GameStateJazz") //REMOVEME
-						{//FUNCTION GS SCENE
-							/*GSList.push_back(serializationManager->LoadGameState(texFilename));
-							std::pair<  std::string, std::vector<std::string>> gs{};
-							allEntities.push_back(serializationManager->LoadGameState(texFilename, gs.second));
-							gs.first = texFilename;
-							allNames.push_back(gs);
-							selectedGameState = (int)allEntities.size() - 1;
-							selectedScene = (int)allEntities[selectedGameState].size() - 1;
-							selectedGameState = (int)GSList.size() - 1;
-							selectedScene = 0; //(int)GSList[selectedGameState].scenes.size() - 1;
-							LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
-							LOG_INFO("Selected Scene: " + std::to_string(selectedScene));*/
-
+						{
 							GameStateManager::GetInstance()->AddGameState(directory.path());
 							GameStateManager::GetInstance()->SetGameState(directory.path().stem().string());
 							selectedGameState = (int)(*mGameStates).size() - 1;
@@ -188,21 +176,8 @@ void AssetPanel::Update()
 							SceneReset();
 							if (selectedGameState >= (*mGameStates).size())
 							{
-								/*std::vector < std::set<Entity>> newGS{};
-								allEntities.push_back(newGS);
-								std::pair< std::string, std::vector<std::string>> newGSNmae{};
-								newGSNmae.first = "NewGameState0";
-								allNames.push_back(newGSNmae);
-								selectedGameState = (int)allEntities.size() - 1;
-								LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));*/
 								NewGameState();
 							}
-							/*GSList[selectedGameState].scenes.push_back(serializationManager->LoadScene(texFilename));
-							allEntities[selectedGameState].push_back(serializationManager->LoadScene(texFilename));
-							allNames[selectedGameState].second.push_back(texFilename);
-							selectedScene = (int)allEntities[selectedGameState].size() - 1;
-							////selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
-							//LOG_INFO("Selected Scene: " + std::to_string(selectedScene)); */
 							GameStateManager::GetInstance()->mCurrentGameState->AddScene(directory.path());
 							selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 						}

@@ -76,6 +76,8 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+	//io.IniFilename = "imguiReset.ini";
+
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
@@ -174,18 +176,16 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
-	//renderManager->GetGizmo().Detach();   //relocate
-	//if (renderManager->GetRenderGameToScreen())
-	//renderManager->RenderToFrameBuffer();
-
+	if (*mWindowWidth == 0 || *mWindowHeight == 0)
+		return;
 	Window();
-	/*if (selectedEntity)
-		renderManager->SelectEntity(*selectedEntity);
-	if (selectedGameState < GSList.size())
+
+	if (selectedGameState < (*mGameStates).size())
 	{
-		if (selectedScene < GSList[selectedGameState].scenes.size())
+		highestLayer = 0;
+		if (selectedScene < (*mGameStates)[selectedGameState].mScenes.size())
 		{
-			for (const Entity& e : GSList[selectedGameState].scenes[selectedScene].mEntities)
+			for (const Entity& e : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
 			{
 				if (e.HasComponent<Sprite>())
 				{
@@ -196,7 +196,7 @@ void EditorManager::Update()
 		}
 	}
 	//static int maxSCENE = 10;
-	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;*/
+	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
@@ -276,6 +276,8 @@ void EditorManager::Unload()
 		delete mPrefabs[i];
 	}
 	mPrefabs.clear();*/
+	ImGuiIO& io = ImGui::GetIO();
+	io.IniFilename = "imguiTrash.ini";
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
