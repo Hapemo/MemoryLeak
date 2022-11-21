@@ -81,7 +81,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)lib\Mono\include\mono-2.0;$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(SolutionDir)VI\include\Logic;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(SolutionDir)VI\include\Logic;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -20,7 +20,8 @@ None.
 *******************************************************************************/
 void ViewportPanel::SetViewportAspectRatio()
 {
-	viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y - 70 };
+	viewportSize = { ImGui::GetContentRegionAvail().x,ImGui::GetContentRegionAvail().y - 70 };
+	//viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y - 70 };
 	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
 	{
 		viewportSize.x = viewportSize.y / 9 * 16;
@@ -40,9 +41,13 @@ None.
 void ViewportPanel::CalculateMousePos(E_CAMERA_TYPE _type)
 {
 	//to use matrix from graphics in the future
-	
-	viewportPos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, buttonSize.y +35.f };
-	screenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
+	viewportPos = { (ImGui::GetContentRegionAvail().x - viewportSize.x) * 0.5f, buttonSize.y + 35.f };
+	//viewportPos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, buttonSize.y +35.f };
+	Math::Vec2 cursorPos = {ImGui::GetMousePos().x, ImGui::GetMousePos().y};
+	std::cout << Input::CursorPos().x << "\n";
+	std::cout << cursorPos.x << "\n\n";
+	screenMousePos = cursorPos - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
+	//screenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
 	worldMousePos = screenMousePos;
 	worldMousePos.y = -worldMousePos.y;
 	worldMousePos.x = worldMousePos.x / viewportSize.x * *mWindowWidth;

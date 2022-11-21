@@ -19,7 +19,7 @@ The LogicSystem class handles the C# scripting for the engine.
 class LogicSystem : public System
 {
 private:
-	ScriptComponent* monoComponent;
+	//ScriptComponent* monoComponent;
 public:
 	/*!*****************************************************************************
 	\brief
