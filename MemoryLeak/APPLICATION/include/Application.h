@@ -75,7 +75,6 @@ public:
 	static int getWindowWidth() { return window_width; }
 	static int getWindowHeight() { return window_height; }
 	static std::string& GetCurrGameStateName() { return mCurrGameStateName; }
-	static void SetWindowSize(GLFWwindow* , int , int );
 private:
 	static int window_width, window_height;
 	static std::string title;
