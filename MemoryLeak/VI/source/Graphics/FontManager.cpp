@@ -15,7 +15,7 @@ Default constructor for FontRenderer class.
 *******************************************************************************/
 FontRenderer::FontRenderer(const std::string& fontfile) 
 : mFontProgram("shaders/font.vert", "shaders/font.frag"), mVAO(), mVBO(), 
-mWindowWidth(nullptr), mWindowHeight(nullptr)
+mWindowWidth(0), mWindowHeight(0)
 {
     mFontProgram.CompileLinkShaders();
     mFontProgram.Validate();
@@ -144,7 +144,7 @@ Renders all paragraphs stored in mParagraphs.
 void FontRenderer::DrawParagraphs()
 {
     if (!mInitialized) return;
-    glm::mat4 _projection = glm::ortho(0.0f, (float) 1600, 0.0f, (float)900);
+    glm::mat4 _projection = glm::ortho(0.0f, (float) mWindowWidth, 0.0f, (float)mWindowHeight);
 
     for (const Paragraph& para : mParagraphs)
     {

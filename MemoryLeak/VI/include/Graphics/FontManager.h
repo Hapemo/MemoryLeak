@@ -88,8 +88,8 @@ public:
 
 	void SetWindowPtr(int* _windowWidth, int* _windowHeight) 
 	{ 
-		mWindowWidth = _windowWidth; 
-		mWindowHeight = _windowHeight;
+		mWindowWidth = *_windowWidth; 
+		mWindowHeight = *_windowHeight;
 	}
 private:
 	/*!*****************************************************************************
@@ -106,5 +106,5 @@ private:
 	GLShader mFontProgram;
 	GLint mTextColorLocation, mMatrixLocation, mZValueLocation;
 	bool mInitialized;
-	int* mWindowWidth, * mWindowHeight;
+	int mWindowWidth, mWindowHeight;
 };
