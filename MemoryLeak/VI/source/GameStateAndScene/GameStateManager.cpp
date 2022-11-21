@@ -133,7 +133,7 @@ void GameStateManager::RemoveGameState(GameState* _gameState) {
 			for (auto& gs : mGameStates) if (gs.mName == currName) mCurrentGameState = &gs; // This line is required because removing gamestates from vector changes arrangement of gamestates, 
 																																											// messing up where mCurrentGameState is pointing at.
 			LOG_CUSTOM("GAMESTATEMANAGER", "Removed gamestate: " + _gameState->mName);
-			if (mCurrentGameState = &*it) {
+			if (mCurrentGameState == &*it) {
 				if (mGameStates.empty())
 					mCurrentGameState = nullptr;
 				else mCurrentGameState = &mGameStates.front();
