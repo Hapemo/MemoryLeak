@@ -20,16 +20,27 @@ None.
 *******************************************************************************/
 void ViewportPanel::SetViewportAspectRatio()
 {
-	//viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y - 70 };
-	viewportSize = { ImGui::GetContentRegionAvail().x,ImGui::GetContentRegionAvail().y - 70 };
-	if (viewportSize.x / viewportSize.y > *mWindowWidth / *mWindowHeight) //wide screen
+	viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y - 70 };
+	//viewportSize = { ImGui::GetContentRegionAvail().x,ImGui::GetContentRegionAvail().y - 70 };
+	if (viewportSize.x / viewportSize.y > ((float)* mWindowWidth) / ((float)*mWindowHeight)) //wide screen
 	{
-		viewportSize.x = viewportSize.y / *mWindowHeight * *mWindowWidth;
+		viewportSize.x = viewportSize.y / ((float)*mWindowHeight) * ((float)*mWindowWidth);
 	}
-	else if (viewportSize.x / viewportSize.y < *mWindowWidth / *mWindowHeight) // tall screen
+	else if (viewportSize.x / viewportSize.y < ((float)*mWindowWidth) / ((float)*mWindowHeight)) // tall screen
 	{
-		viewportSize.y = viewportSize.x / *mWindowWidth * *mWindowHeight;
+		viewportSize.y = viewportSize.x / ((float)*mWindowWidth) * ((float)*mWindowHeight);
 	}
+
+
+	//if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
+	//{
+	//	viewportSize.x = viewportSize.y / 9 * 16;
+	//}
+	//else if (viewportSize.x / viewportSize.y < 16 / 9.0f) // tall screen
+	//{
+	//	viewportSize.y = viewportSize.x / 16 * 9;
+	//}
+
 }
 /*!*****************************************************************************
 \brief
@@ -41,10 +52,10 @@ None.
 void ViewportPanel::CalculateMousePos(E_CAMERA_TYPE _type)
 {
 	//to use matrix from graphics in the future
-	//viewportPos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, buttonSize.y +35.f };
+	viewportPos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, buttonSize.y +35.f };
 	//screenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
 	
-	viewportPos = { (ImGui::GetContentRegionAvail().x - viewportSize.x) * 0.5f, buttonSize.y + 35.f };
+	//viewportPos = { (ImGui::GetContentRegionAvail().x - viewportSize.x) * 0.5f, buttonSize.y + 35.f };
 	Math::Vec2 cursorPos = {ImGui::GetMousePos().x, ImGui::GetMousePos().y};
 	screenMousePos = cursorPos - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
 	

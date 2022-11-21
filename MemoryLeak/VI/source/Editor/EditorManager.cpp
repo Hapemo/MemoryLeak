@@ -127,6 +127,7 @@ None.
 *******************************************************************************/
 void EditorManager::Init()
 {
+	
 	isScenePaused = true;
 	selectedEntity = nullptr;
 	aspect = false;
@@ -178,6 +179,7 @@ void EditorManager::Update()
 {
 	if (*mWindowWidth == 0 || *mWindowHeight == 0)
 		return;
+
 	Window();
 
 	if (selectedGameState < (*mGameStates).size())

@@ -271,16 +271,10 @@ void Application::GLFWStartUp() {
   glfwSetWindowAspectRatio(ptr_window, window_width, window_height);
   glfwSetWindowSizeCallback(ptr_window, [](GLFWwindow* window, int width, int height)
       {
-          //WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
           (void)window;
           window_width = width;
           window_height = height;
-
-          //WindowResizeEvent event(width, height);
-          //data.EventCallback(event);
-
       });
-  glfwSetWindowSizeCallback(ptr_window, SetWindowSize);
   if (!ptr_window) {
     glfwTerminate();
     ASSERT(!ptr_window, "GLFW unable to create OpenGL context - abort program");
@@ -317,11 +311,4 @@ void Application::fbsize_cb(GLFWwindow* ptr_win, int width, int height) {
   glViewport(0, 0, width, height);
   (void)ptr_win;
   // later, if working in 3D, we'll have to set the projection matrix here ...
-}
-
-void Application::SetWindowSize(GLFWwindow* window, int width, int height)
-{
-    (void)window;
-    window_width = width;
-    window_height = height;
 }
