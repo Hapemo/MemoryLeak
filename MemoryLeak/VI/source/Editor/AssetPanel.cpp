@@ -48,6 +48,8 @@ None.
 *******************************************************************************/
 void AssetPanel::Update()
 {
+	if (!active)
+		return;
 	static bool start = true;
 	if (start)
 	{

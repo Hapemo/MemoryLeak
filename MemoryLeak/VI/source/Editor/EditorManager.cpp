@@ -76,8 +76,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-	//io.IniFilename = "imguiReset.ini";
-
+	
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
@@ -197,37 +196,11 @@ void EditorManager::Update()
 			}
 		}
 	}
-	//static int maxSCENE = 10;
-	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
+		if(panels[p]->isActive())
 			panels[p]->Update();
 	}
-	/*for (const Entity& e : *myEntities)
-	{
-		e.GetComponent<General>().isPaused = false;
-	}
-	//IF Change Scene
-	if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
-	{
-		for (const Entity& e : *myEntities)
-		{
-			e.GetComponent<General>().isPaused = true;
-		}
-		if (selectedGameState < GSList.size())
-		{
-			if (selectedScene < GSList[selectedGameState].scenes.size())
-			{
-				for (const Entity& e : GSList[selectedGameState].scenes[selectedScene].mEntities)
-				{
-					e.GetComponent<General>().isPaused = false;
-				}
-			}
-		}
-		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
-		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
-		SceneReset();
-	}*/
 
 
 	
@@ -254,11 +227,6 @@ void EditorManager::Free()
 	SceneReset();
 	undoStack.clear();
 	stackPointer = -1;
-	/*for (size_t p = 0; p < mPrefabs.size(); p++)
-	{
-		delete mPrefabs[p];
-	}
-	mPrefabs.clear();*/
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 		panels[p]->Free();
@@ -273,11 +241,6 @@ None.
 *******************************************************************************/
 void EditorManager::Unload()
 {
-	/*for (size_t i =0; i< mPrefabs.size(); i++)
-	{
-		delete mPrefabs[i];
-	}
-	mPrefabs.clear();*/
 	ImGuiIO& io = ImGui::GetIO();
 	io.IniFilename = "imguiTrash.ini";
 	ImGui_ImplOpenGL3_Shutdown();
