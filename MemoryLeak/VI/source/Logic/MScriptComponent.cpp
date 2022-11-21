@@ -91,14 +91,19 @@ void MScriptComponent::CallMethod(MonoObject* _objectInstance, const char* _func
 
 	if (method == nullptr) {
 		// No method called "Init" with 0 parameters in the class, log error or something
+		std::cout << "Method " << _function << "() does not exist!\n";
 		return;
 	}
 
 	// Call the C# method on the objectInstance instance, and get any potential exceptions
 	MonoObject* exception = nullptr;
+	std::cout << "Calling method...\n";
 	mono_runtime_invoke(method, _objectInstance, nullptr, &exception);
 
-	// TODO: Handle the exception
+	// Handle the exception
+	if (exception) {
+		std::cout << "Failed to call method: " << _function << "()!\n";
+	}
 }
 
 MonoString* MScriptComponent::TestFunction() {
@@ -116,7 +121,6 @@ MScriptComponent::MScriptComponent() {
 		// Loading mono image
 		MonoObject* testInstance = InstantiateClass("SCRIPTING", "TestClass");
 		CallMethod(testInstance, "Init", 0);
-		std::cout << "Calling method...\n";
 
 		// Test internal functions
 		mono_add_internal_call("SCRIPTING.TestClass::TestFunction", &MScriptComponent::TestFunction);
@@ -132,8 +136,8 @@ MScriptComponent::~MScriptComponent() {
 
 	// Release the domain
 	if (mDomain) {
-		mono_domain_unload(mDomain);
-		mono_domain_free(mDomain, false);
+		//mono_domain_unload(mDomain);
+		//mono_domain_free(mDomain, false);
 		//mDomain = nullptr;
 		mono_jit_cleanup(mDomain);
 	}
