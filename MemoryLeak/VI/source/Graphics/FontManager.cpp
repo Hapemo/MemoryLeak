@@ -144,7 +144,7 @@ Renders all paragraphs stored in mParagraphs.
 void FontRenderer::DrawParagraphs()
 {
     if (!mInitialized) return;
-    glm::mat4 _projection = glm::ortho(0.0f, (float) * mWindowWidth, 0.0f, (float)*mWindowHeight);
+    glm::mat4 _projection = glm::ortho(0.0f, (float) 1600, 0.0f, (float)900);
 
     for (const Paragraph& para : mParagraphs)
     {

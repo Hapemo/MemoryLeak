@@ -1207,7 +1207,7 @@ void RenderManager::CreateText(const Entity& _e)
 		layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
-		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
+		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
 		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer);
 }
 
@@ -1300,12 +1300,12 @@ Math::Mat3 RenderManager::GetGizmoTransform(const Transform& _xform)
 	temp[2][0] -= mWorldCam.GetPos().x;
 	temp[2][1] -= mWorldCam.GetPos().y;
 
-	temp[0][0] /= (float)*mWindowWidth;
-	temp[0][1] /= (float)*mWindowHeight;
-	temp[1][0] /= (float)*mWindowWidth;
-	temp[1][1] /= (float)*mWindowHeight;
-	temp[2][0] /= (float)*mWindowWidth / 2.f * mWorldCam.GetZoom();
-	temp[2][1] /= (float)*mWindowHeight / 2.f * mWorldCam.GetZoom();
+	temp[0][0] /= (float)mInitialWidth;
+	temp[0][1] /= (float)mInitialHeight;
+	temp[1][0] /= (float)mInitialWidth;
+	temp[1][1] /= (float)mInitialHeight;
+	temp[2][0] /= (float)mInitialWidth / 2.f * mWorldCam.GetZoom();
+	temp[2][1] /= (float)mInitialHeight / 2.f * mWorldCam.GetZoom();
 
 	return temp;
 }
