@@ -66,13 +66,16 @@ Pixel height of the window.
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
+	mInitialWidth = *_windowWidth;
+	mInitialHeight = *_windowHeight;
 	//initialize fbo with window width and height
-	mWorldFBO.Init(mWindowWidth, mWindowHeight);
-	mGameFBO.Init(mWindowWidth, mWindowHeight);
-	mAnimatorFBO.Init(mWindowWidth, mWindowHeight);
+	mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
+	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
+	mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
 	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
 	mGameCam.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
+	mPrevWidth = *mWindowWidth;
 }
 
 /*!*****************************************************************************
@@ -81,6 +84,16 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
+	if (mPrevWidth != *mWindowWidth)
+	{
+		mPrevWidth = *mWindowWidth;
+		mWorldFBO.DeleteFBO();
+		mGameFBO.DeleteFBO();
+		mAnimatorFBO.DeleteFBO();
+		mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
+		mGameFBO.Init(*mWindowWidth, *mWindowHeight);
+		mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
+	}
 	if (!mRenderGameToScreen)
 		mCurrRenderPass == RENDER_STATE::GAME ? 
 		mGameFBO.Bind() : mWorldFBO.Bind();
@@ -1088,12 +1101,12 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	temp[2][0] -= cam.GetPos().x;
 	temp[2][1] -= cam.GetPos().y;
 
-	temp[0][0] /= (float)*mWindowWidth * cam.GetZoom();
-	temp[0][1] /= (float)*mWindowHeight * cam.GetZoom();
-	temp[1][0] /= (float)*mWindowWidth * cam.GetZoom();
-	temp[1][1] /= (float)*mWindowHeight * cam.GetZoom();
-	temp[2][0] /= (float)*mWindowWidth / 2.f * cam.GetZoom();
-	temp[2][1] /= (float)*mWindowHeight / 2.f * cam.GetZoom();
+	temp[0][0] /= (float)mInitialWidth* cam.GetZoom();
+	temp[0][1] /= (float)mInitialHeight* cam.GetZoom();
+	temp[1][0] /= (float)mInitialWidth* cam.GetZoom();
+	temp[1][1] /= (float)mInitialHeight* cam.GetZoom();
+	temp[2][0] /= (float)mInitialWidth/ 2.f * cam.GetZoom();
+	temp[2][1] /= (float)mInitialHeight/ 2.f * cam.GetZoom();
 
 	return temp;
 }

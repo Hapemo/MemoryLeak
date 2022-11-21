@@ -27,7 +27,7 @@ Pixel width of the FBO
 \param int _windowHeight
 Pixel height of the FBO
 *******************************************************************************/
-void FBO::Init(int* _windowWidth, int* _windowHeight) {
+void FBO::Init(int _windowWidth, int _windowHeight) {
 	mSpecs.mWidth = _windowWidth;
 	mSpecs.mHeight = _windowHeight;
 
@@ -38,7 +38,7 @@ void FBO::Init(int* _windowWidth, int* _windowHeight) {
 	//create color attachment for the frame buffer
 	glCreateTextures(GL_TEXTURE_2D, 1, &mColorAttachment);
 	glBindTexture(GL_TEXTURE_2D, mColorAttachment);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, *mSpecs.mWidth, *mSpecs.mHeight,
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, mSpecs.mWidth, mSpecs.mHeight,
 							 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -49,7 +49,7 @@ void FBO::Init(int* _windowWidth, int* _windowHeight) {
 	//create depth attachment for the frame buffer
 	glCreateTextures(GL_TEXTURE_2D, 1, &mDepthAttachment);
 	glBindTexture(GL_TEXTURE_2D, mDepthAttachment);
-	glTexStorage2D(GL_TEXTURE_2D, 1, GL_DEPTH24_STENCIL8, *mSpecs.mWidth, *mSpecs.mHeight);
+	glTexStorage2D(GL_TEXTURE_2D, 1, GL_DEPTH24_STENCIL8, mSpecs.mWidth, mSpecs.mHeight);
 
 	//link the depth attachment to the frame buffer
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, mDepthAttachment, 0);
@@ -72,6 +72,10 @@ FBO::~FBO()
 	glDeleteFramebuffers(1, &mfboid);
 }
 
+void FBO::DeleteFBO()
+{
+	glDeleteFramebuffers(1, &mfboid);
+}
 /*!*****************************************************************************
 \brief
 Binds the FBO to the OpenGL context.

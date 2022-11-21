@@ -23,8 +23,8 @@ struct FBOSpec
 	Default constructor for FBOSpec class.
 	*******************************************************************************/
 	FBOSpec();
-	int* mWidth;
-	int* mHeight;
+	int mWidth;
+	int mHeight;
 	int mSamples;
 };
 
@@ -55,7 +55,7 @@ public:
 	\param int _height
 	Pixel height of the FBO
 	*******************************************************************************/
-	void Init(int* _width, int* _height);
+	void Init(int _width, int _height);
 	/*!*****************************************************************************
 	\brief
 	Binds the FBO to the OpenGL context.
@@ -97,7 +97,7 @@ public:
 	\return
 	Returns the pixel width of the FBO.
 	*******************************************************************************/
-	int GetFBOWidth() const { return *mSpecs.mWidth; }
+	int GetFBOWidth() const { return mSpecs.mWidth; }
 	/*!*****************************************************************************
 	\brief
 	Returns the pixel height of the FBO.
@@ -105,7 +105,9 @@ public:
 	\return
 	Returns the pixel height of the FBO.
 	*******************************************************************************/
-	int GetFBOHeight() const { return *mSpecs.mHeight; }
+	int GetFBOHeight() const { return mSpecs.mHeight; }
+
+	void DeleteFBO();
 
 private:
 	GLuint mfboid;
