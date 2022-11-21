@@ -58,11 +58,14 @@ void ViewportPanel::CalculateMousePos(E_CAMERA_TYPE _type)
 	//viewportPos = { (ImGui::GetContentRegionAvail().x - viewportSize.x) * 0.5f, buttonSize.y + 35.f };
 	Math::Vec2 cursorPos = {ImGui::GetMousePos().x, ImGui::GetMousePos().y};
 	screenMousePos = cursorPos - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
-	
+	static int oldWinWidth = *mWindowWidth;
+	static int oldWinHeight = *mWindowHeight;
 	worldMousePos = screenMousePos;
 	worldMousePos.y = -worldMousePos.y;
-	worldMousePos.x = worldMousePos.x / viewportSize.x * *mWindowWidth;
-	worldMousePos.y = worldMousePos.y / viewportSize.y * *mWindowHeight;
+	//worldMousePos.x = worldMousePos.x / viewportSize.x * *mWindowWidth;
+	//worldMousePos.y = worldMousePos.y / viewportSize.y * *mWindowHeight;
+	worldMousePos.x = worldMousePos.x / viewportSize.x * oldWinWidth;
+	worldMousePos.y = worldMousePos.y / viewportSize.y * oldWinHeight;
 	if(_type == E_CAMERA_TYPE::GAME)
 		camMousePos = worldMousePos * renderManager->GetGameCamera().GetZoom() + renderManager->GetGameCamera().GetPos();
 	else if (_type == E_CAMERA_TYPE::WORLD)
@@ -81,9 +84,12 @@ void ViewportPanel::renderUI()
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	else
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	if(!isViewportPaused)
+		SetPannelIsActive(E_PANELID::GAMEVIEW, true);
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isViewportPaused = false;
+		SetPannelIsActive(E_PANELID::GAMEVIEW, false);
 	}
 	ImGui::PopStyleColor();
 
