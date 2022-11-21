@@ -560,6 +560,8 @@ private:
 	void ConcatIndices(std::vector<GLushort>& _first, std::vector<GLushort>& _second);
 
 	void CreateGizmo();
+
+	bool ShouldCull(const Entity& e);
 };
 
 

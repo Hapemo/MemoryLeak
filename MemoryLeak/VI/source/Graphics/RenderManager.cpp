@@ -13,7 +13,7 @@ operates on Entities with Sprite and Transform Components.
 #include "RenderProps.h"
 #include "Input.h"
 #include <ECSManager.h>
-
+#include <VertexFetcher.h>
 
 /*!*****************************************************************************
 \brief
@@ -434,6 +434,7 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 	{
 		if (!e.GetComponent<General>().isActive) continue;
 		if (!e.ShouldRun()) continue;
+		if (ShouldCull(e)) continue;
 
 		switch (e.GetComponent<Sprite>().sprite)
 		{
@@ -1360,4 +1361,78 @@ void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _cl
 		mDebugIndices.push_back(first + i);
 		mDebugIndices.push_back(first + i + 1);
 	}
+}
+
+bool RenderManager::ShouldCull(const Entity& _e)
+{
+	Transform xform = _e.GetComponent<Transform>();
+	Sprite sprite = _e.GetComponent<Sprite>();
+	Camera cam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam : mGameCam;
+
+	Math::Vec2 camDim = Math::Vec2(cam.GetCameraWidth(), cam.GetCameraHeight()) / 2;
+	Math::Vec2 camMin = cam.GetPos() - camDim;
+	Math::Vec2 camMax = cam.GetPos() + camDim;
+
+	if (xform.translation.x >= camMin.x && xform.translation.y >= camMin.y)
+		if (xform.translation.x <= camMax.x && xform.translation.y <= camMin.y)
+			return false;
+
+	switch (sprite.sprite)
+	{
+	case (SPRITE::SQUARE):
+	case (SPRITE::TEXTURE):
+	{
+		std::vector<Math::Vec2> vertices = VertexFetcher::FetchVertices(_e);
+
+		Math::Vec2 boxMin{}, boxMax{};
+
+		for (size_t i = 0; i < vertices.size(); ++i)
+		{
+			if (!i)
+			{
+				boxMin = boxMax = vertices[i];
+				continue;
+			}
+			if (vertices[i].x < boxMin.x)
+				boxMin.x = vertices[i].x;
+			if (vertices[i].y < boxMin.y)
+				boxMin.y = vertices[i].y;
+			if (vertices[i].x > boxMax.x)
+				boxMax.x = vertices[i].x;
+			if (vertices[i].y > boxMax.y)
+				boxMax.y = vertices[i].y;
+		}
+
+		if (boxMax.x < camMin.x)
+			return true;
+		if (boxMin.x > camMax.x)
+			return true;
+		if (boxMax.y < camMin.y)
+			return true;
+		if (boxMin.y > camMax.y)
+			return true;
+		return false;
+	}
+	case (SPRITE::CIRCLE):
+	{
+		Math::Vec2 circleMin{}, circleMax{};
+		float max_scale = std::max(xform.scale.x, xform.scale.y);
+		Math::Vec2 scale = Math::Vec2(max_scale, max_scale) * 0.5f;
+		circleMin = xform.translation - scale;
+		circleMax = xform.translation + scale;
+
+		if (circleMax.x < camMin.x)
+			return true;
+		if (circleMin.x > camMax.x)
+			return true;
+		if (circleMax.y < camMin.y)
+			return true;
+		if (circleMin.y > camMax.y)
+			return true;
+		return false;
+	}
+	default:
+		return false;
+	}
+	return false;
 }
