@@ -6,3 +6,9 @@ C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\Script
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.dll
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.pdb
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.dll
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.pdb
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.AssemblyReference.cache
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.CoreCompileInputs.cache
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
