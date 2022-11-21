@@ -1380,6 +1380,7 @@ void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _cl
 bool RenderManager::ShouldCull(const Entity& _e)
 {
 	if (!_e.HasComponent<Sprite>()) return false;
+	if (mCurrRenderPass == RENDER_STATE::ANIMATOR) return false;
 	Transform xform = _e.GetComponent<Transform>();
 	Sprite sprite = _e.GetComponent<Sprite>();
 	Camera cam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam : mGameCam;
