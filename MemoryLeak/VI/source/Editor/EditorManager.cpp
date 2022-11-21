@@ -159,7 +159,7 @@ void EditorManager::Window()
 	ImGuiViewport* viewport = ImGui::GetMainViewport();
 	ImGui::SetNextWindowPos(viewport->Pos);
 	ImGui::SetNextWindowSize(viewport->Size);
-	ImGuiWindowFlags windowFlag = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse
+	ImGuiWindowFlags windowFlag = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoTitleBar |ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse
 		| ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoMove;
 	ImGui::Begin("Editor", &isOpen, windowFlag);
 	ImGui::DockSpace(dockID, ImVec2(0.f, 0.f));
@@ -174,7 +174,7 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
-	renderManager->GetGizmo().Detach();   //relocate
+	//renderManager->GetGizmo().Detach();   //relocate
 	//if (renderManager->GetRenderGameToScreen())
 	//renderManager->RenderToFrameBuffer();
 

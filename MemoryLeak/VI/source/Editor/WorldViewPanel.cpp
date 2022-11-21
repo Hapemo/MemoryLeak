@@ -102,7 +102,7 @@ void WorldViewPanel::Update()
 				isSelected = 0;
 
 			//object picking
-			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen() &&SRT == 0)
 			{
 				SetSelectedEntity();
 				
@@ -126,6 +126,8 @@ void WorldViewPanel::Update()
 					}
 				}
 			}
+			if(SRT!=4)
+				renderManager->GetGizmo().Detach();
 		}
 	}
 	ImGui::End();

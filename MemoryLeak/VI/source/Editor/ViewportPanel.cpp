@@ -22,13 +22,13 @@ void ViewportPanel::SetViewportAspectRatio()
 {
 	//viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y - 70 };
 	viewportSize = { ImGui::GetContentRegionAvail().x,ImGui::GetContentRegionAvail().y - 70 };
-	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
+	if (viewportSize.x / viewportSize.y > *mWindowWidth / *mWindowHeight) //wide screen
 	{
-		viewportSize.x = viewportSize.y / 9 * 16;
+		viewportSize.x = viewportSize.y / *mWindowHeight * *mWindowWidth;
 	}
-	else if (viewportSize.x / viewportSize.y < 16 / 9.0f) // tall screen
+	else if (viewportSize.x / viewportSize.y < *mWindowWidth / *mWindowHeight) // tall screen
 	{
-		viewportSize.y = viewportSize.x / 16 * 9;
+		viewportSize.y = viewportSize.x / *mWindowWidth * *mWindowHeight;
 	}
 }
 /*!*****************************************************************************
