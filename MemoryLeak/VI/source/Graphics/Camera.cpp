@@ -26,7 +26,7 @@ width of the camera.
 \param int _windowHeight
 height of the camera.
 *******************************************************************************/
-void Camera::Init(int _windowWidth, int _windowHeight)
+void Camera::Init(int* _windowWidth, int* _windowHeight)
 {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
@@ -139,20 +139,20 @@ void Camera::Reset()
 
 float Camera::GetCameraWidth()
 {
-	return mWindowWidth * GetZoom();
+	return *mWindowWidth * GetZoom();
 }
 
 void Camera::SetCameraWidth(int _width)
 {
-	SetZoom(_width / (float)mWindowWidth);
+	SetZoom(_width / (float)*mWindowWidth);
 }
 
 float Camera::GetCameraHeight()
 {
-	return mWindowHeight * GetZoom();
+	return *mWindowHeight * GetZoom();
 }
 
 void Camera::SetCameraHeight(int _height)
 {
-	SetZoom(_height / (float)mWindowHeight);
+	SetZoom(_height / (float)*mWindowHeight);
 }

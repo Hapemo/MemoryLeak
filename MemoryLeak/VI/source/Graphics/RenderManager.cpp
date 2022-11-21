@@ -67,12 +67,12 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
 	//initialize fbo with window width and height
-	mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
-	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
-	mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
-	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
-	mGameCam.Init(*mWindowWidth, *mWindowHeight);
-	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
+	mWorldFBO.Init(mWindowWidth, mWindowHeight);
+	mGameFBO.Init(mWindowWidth, mWindowHeight);
+	mAnimatorFBO.Init(mWindowWidth, mWindowHeight);
+	mWorldCam.Init(mWindowWidth, mWindowHeight);
+	mGameCam.Init(mWindowWidth, mWindowHeight);
+	mAnimatorCam.Init(mWindowWidth, mWindowHeight);
 }
 
 /*!*****************************************************************************
@@ -1162,7 +1162,10 @@ void RenderManager::CreateText(const Entity& _e)
 
 	//check if font program already exisits, if not create one
 	if (mFontRenderers.find(fileName) == mFontRenderers.end())
+	{
 		mFontRenderers.emplace(fileName, fileName);
+		mFontRenderers[fileName].SetWindowPtr(mWindowWidth, mWindowHeight);
+	}
 
 	//add paragraph into font renderer
 	if (!mFontRenderers[fileName].IsInitialized())
