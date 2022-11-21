@@ -70,9 +70,9 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWorldFBO.Init(mWindowWidth, mWindowHeight);
 	mGameFBO.Init(mWindowWidth, mWindowHeight);
 	mAnimatorFBO.Init(mWindowWidth, mWindowHeight);
-	mWorldCam.Init(mWindowWidth, mWindowHeight);
-	mGameCam.Init(mWindowWidth, mWindowHeight);
-	mAnimatorCam.Init(mWindowWidth, mWindowHeight);
+	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
+	mGameCam.Init(*mWindowWidth, *mWindowHeight);
+	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
 }
 
 /*!*****************************************************************************

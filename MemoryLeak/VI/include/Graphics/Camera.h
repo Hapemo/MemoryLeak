@@ -37,7 +37,7 @@ public:
 	\param int _windowHeight
 	height of the camera.
 	*******************************************************************************/
-	void Init(int* _windowWidth, int* _windowHeight);
+	void Init(int _windowWidth, int _windowHeight);
 	/*!*****************************************************************************
 	\brief
 	Operator overload for +=.
@@ -80,7 +80,7 @@ public:
 	//------------------------------------------------------------------------------
 	// Getter and Setters
 	//------------------------------------------------------------------------------
-	Math::Vec2 GetWindowDim() { return Math::Vec2( static_cast<float>(*mWindowWidth), static_cast<float>(*mWindowHeight)); }
+	Math::Vec2 GetWindowDim() { return Math::Vec2( static_cast<float>(mWindowWidth), static_cast<float>(mWindowHeight)); }
 	Math::Vec2 GetPos() { return mPos; }
 	float GetZoom() { return mZoom; }
 	void SetPos(const Math::Vec2& _mPos);
@@ -116,7 +116,7 @@ public:
 	void SetCameraHeight(int _height);
 
 private:
-	int* mWindowWidth,* mWindowHeight;
+	int mWindowWidth, mWindowHeight;
 	Math::Vec2 mPos;
 	float mZoom;
 	Math::Vec2 mInitialPos;
