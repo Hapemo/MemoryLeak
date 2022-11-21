@@ -264,14 +264,11 @@ void MenuPanel::Update()
 				//debugPanel.setIsActive(false);
 				SetPannelIsActive(E_PANELID::DEBUG, false);
 			}
-			if (ImGui::MenuItem("Reset panels"))
+			/*if (ImGui::MenuItem("Reset panels"))
 			{
 				ImGuiIO& io = ImGui::GetIO();
 				io.IniFilename = "imguiReset.ini";
-				ImGui::StyleColorsDark();
-				ImGui_ImplOpenGL3_Init("#version 450");
-				Window();
-			}
+			}*/
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();

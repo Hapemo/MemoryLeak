@@ -176,18 +176,16 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
-	//renderManager->GetGizmo().Detach();   //relocate
-	//if (renderManager->GetRenderGameToScreen())
-	//renderManager->RenderToFrameBuffer();
-
+	if (*mWindowWidth == 0 || *mWindowHeight == 0)
+		return;
 	Window();
-	/*if (selectedEntity)
-		renderManager->SelectEntity(*selectedEntity);
-	if (selectedGameState < GSList.size())
+
+	if (selectedGameState < (*mGameStates).size())
 	{
-		if (selectedScene < GSList[selectedGameState].scenes.size())
+		highestLayer = 0;
+		if (selectedScene < (*mGameStates)[selectedGameState].mScenes.size())
 		{
-			for (const Entity& e : GSList[selectedGameState].scenes[selectedScene].mEntities)
+			for (const Entity& e : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
 			{
 				if (e.HasComponent<Sprite>())
 				{
@@ -198,7 +196,7 @@ void EditorManager::Update()
 		}
 	}
 	//static int maxSCENE = 10;
-	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;*/
+	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
