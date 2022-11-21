@@ -28,10 +28,9 @@ Entities and its Components.
 #include "PrefabPanel.h"
 std::vector<Panel*> EditorManager::panels{};
 
-
+GLFWwindow* EditorManager::mWindow = nullptr;
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
-
 Entity selEntity{};
 //Entity
 const Entity* EditorManager::selectedEntity = nullptr;
@@ -76,28 +75,15 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
+	mWindow = _window;
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
-
-
-	std::vector < std::set<Entity>> newGS{};
-	//newGS.push_back(*myEntities);
-	//newGS.push_back(*myEntities);
-	//std::vector < std::set<Entity>> newGS2;
-	//newGS2.push_back(*myEntities);
-
-	/*allEntities.push_back(newGS);
-	std::pair< std::string,std::vector<std::string>> newGSNmae{};
-	newGSNmae.first = "NewGameState";
-	allNames.push_back(newGSNmae);*/
-
-	//allEntities.push_back(newGS2);
 
 
 	static AnimationPanel animationPanel{};
@@ -127,7 +113,6 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels[(int)E_PANELID::WORLDVIEW] = &gameViewPanel;//8
 	panels[(int)E_PANELID::GAMEVIEW] = &worldViewPanel;//9
 
-	//prefabPanel.LoadPrefab();
 	Init();
 	
 }
@@ -168,6 +153,16 @@ void EditorManager::Window()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 	//ImGui::ShowDemoWindow();
+	static ImGuiID dockID = ImGui::GetID("Editor");
+	static bool isOpen = true;
+	ImGuiViewport* viewport = ImGui::GetMainViewport();
+	ImGui::SetNextWindowPos(viewport->Pos);
+	ImGui::SetNextWindowSize(viewport->Size);
+	ImGuiWindowFlags windowFlag = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse
+		| ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoMove;
+	ImGui::Begin("Editor", &isOpen, windowFlag);
+	ImGui::DockSpace(dockID, ImVec2(0.f, 0.f));
+	ImGui::End();
 }
 /*!*****************************************************************************
 \brief
@@ -183,14 +178,8 @@ void EditorManager::Update()
 		renderManager->RenderToFrameBuffer();
 	Window();
 	/*if (selectedEntity)
-		renderManager->SelectEntity(*selectedEntity);*/
-
-	
-
-
-
-
-	/*if (selectedGameState < GSList.size())
+		renderManager->SelectEntity(*selectedEntity);
+	if (selectedGameState < GSList.size())
 	{
 		if (selectedScene < GSList[selectedGameState].scenes.size())
 		{
@@ -203,9 +192,9 @@ void EditorManager::Update()
 				}
 			}
 		}
-	}*/
+	}
 	//static int maxSCENE = 10;
-	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;
+	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;*/
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 			panels[p]->Update();
@@ -213,9 +202,9 @@ void EditorManager::Update()
 	/*for (const Entity& e : *myEntities)
 	{
 		e.GetComponent<General>().isPaused = false;
-	}*/
+	}
 	//IF Change Scene
-	/*if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
+	if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
 	{
 		for (const Entity& e : *myEntities)
 		{
@@ -237,7 +226,7 @@ void EditorManager::Update()
 	}*/
 
 
-
+	
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
