@@ -84,12 +84,10 @@ void ViewportPanel::renderUI()
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	else
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-	if(!isViewportPaused)
-		SetPannelIsActive(E_PANELID::GAMEVIEW, true);
+	
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isViewportPaused = false;
-		SetPannelIsActive(E_PANELID::GAMEVIEW, false);
 	}
 	ImGui::PopStyleColor();
 
