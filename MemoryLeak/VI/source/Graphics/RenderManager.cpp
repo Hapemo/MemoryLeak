@@ -107,7 +107,8 @@ void RenderManager::Render()
 
 	/*************************************FONT RENDERING START***************************************/
 	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
-		i->second.DrawParagraphs();
+		if (i->second.IsInitialized())
+			i->second.DrawParagraphs();
 	/*************************************FONT RENDERING END*****************************************/
 
 	if (!mRenderGameToScreen)
@@ -316,6 +317,7 @@ void RenderManager::RenderDebug()
 		}
 
 		//check if sprite component itself is a debug drawing
+		if (!e.HasComponent<Sprite>()) continue;
 		switch (e.GetComponent<Sprite>().sprite)
 		{
 		case SPRITE::DEBUG_POINT:
@@ -436,29 +438,32 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 		if (!e.ShouldRun()) continue;
 		if (ShouldCull(e)) continue;
 
-		switch (e.GetComponent<Sprite>().sprite)
+		if (e.HasComponent<Sprite>())
 		{
-		case SPRITE::TEXTURE:
-		{
-			GLuint texid = e.GetComponent<Sprite>().texture;
-
-			if (texid != 0)
+			switch (e.GetComponent<Sprite>().sprite)
 			{
-				if (_texInfo.find(texid) == _texInfo.end())
-					_texInfo[texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+			case SPRITE::TEXTURE:
+			{
+				GLuint texid = e.GetComponent<Sprite>().texture;
 
-				CreateSquare(e, _texInfo[texid].mVertices, _texInfo[texid].mIndices);
+				if (texid != 0)
+				{
+					if (_texInfo.find(texid) == _texInfo.end())
+						_texInfo[texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+					CreateSquare(e, _texInfo[texid].mVertices, _texInfo[texid].mIndices);
+				}
 			}
-		}
-		break;
-		case SPRITE::SQUARE:
-			CreateSquare(e, mVertices, mIndices);
 			break;
-		case SPRITE::CIRCLE:
-			CreateCircle(e);
-			break;
-		default:
-			break;
+			case SPRITE::SQUARE:
+				CreateSquare(e, mVertices, mIndices);
+				break;
+			case SPRITE::CIRCLE:
+				CreateCircle(e);
+				break;
+			default:
+				break;
+			}
 		}
 
 		if (!e.HasComponent<Text>()) continue;
@@ -1150,6 +1155,7 @@ The entity with the Text component.
 *******************************************************************************/
 void RenderManager::CreateText(const Entity& _e)
 {
+	static bool debug{ false };
 	Text text = _e.GetComponent<Text>();
 
 	std::string fileName = text.fontFile + ".ttf";
@@ -1159,7 +1165,9 @@ void RenderManager::CreateText(const Entity& _e)
 		mFontRenderers.emplace(fileName, fileName);
 
 	//add paragraph into font renderer
-	
+	if (!mFontRenderers[fileName].IsInitialized())
+		return;
+
 	Math::Vec2 camOffset = { 0,0 };
 	float camZoom = 1.f;
 	if (!text.followCam)
@@ -1172,7 +1180,13 @@ void RenderManager::CreateText(const Entity& _e)
 
 	float layer = 1.f;
 	if (!_e.HasComponent<Sprite>())
-		LOG_ERROR("FontRenderer: Component does not contain sprite component! Text will be rendered at max layer!");
+	{
+		if (!debug)
+		{
+			LOG_ERROR("FontRenderer: Component does not contain sprite component! Text will be rendered at max layer!");
+			debug = !debug;
+		}
+	}
 	else
 		layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 				
@@ -1365,6 +1379,7 @@ void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _cl
 
 bool RenderManager::ShouldCull(const Entity& _e)
 {
+	if (!_e.HasComponent<Sprite>()) return false;
 	Transform xform = _e.GetComponent<Transform>();
 	Sprite sprite = _e.GetComponent<Sprite>();
 	Camera cam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam : mGameCam;
