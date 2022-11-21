@@ -41,8 +41,7 @@
 logs
 
 
-bin/Debug/x64
-bin/Release/x64/
+MemoryLeak/bin/
 
 MemoryLeak/bin/Debug/x64/fmod.dll
 MemoryLeak/bin/Debug/x64/fmodL.dll
