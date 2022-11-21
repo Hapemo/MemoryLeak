@@ -136,6 +136,7 @@ void EditorManager::Init()
 		panels[p]->Init();
 	}
 	mGameStates = &GameStateManager::GetInstance()->mGameStates;
+	renderManager->RenderToFrameBuffer();
 }
 
 /*!*****************************************************************************
@@ -173,9 +174,10 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
-	renderManager->GetGizmo().Detach();
+	renderManager->GetGizmo().Detach();   //relocate
 	//if (renderManager->GetRenderGameToScreen())
-		renderManager->RenderToFrameBuffer();
+	//renderManager->RenderToFrameBuffer();
+
 	Window();
 	/*if (selectedEntity)
 		renderManager->SelectEntity(*selectedEntity);

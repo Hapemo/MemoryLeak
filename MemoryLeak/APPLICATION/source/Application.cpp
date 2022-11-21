@@ -255,7 +255,7 @@ void Application::GLFWStartUp() {
 
   // In case a GLFW function fails, an error is reported to callback function
   glfwSetErrorCallback(error_cb);
-
+  
    //Before asking GLFW to create an OpenGL context, we specify the minimum constraints
   // in that context:
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -265,10 +265,22 @@ void Application::GLFWStartUp() {
   glfwWindowHint(GLFW_DEPTH_BITS, 24);
   glfwWindowHint(GLFW_RED_BITS, 8); glfwWindowHint(GLFW_GREEN_BITS, 8);
   glfwWindowHint(GLFW_BLUE_BITS, 8); glfwWindowHint(GLFW_ALPHA_BITS, 8);
-  glfwWindowHint(GLFW_RESIZABLE, GL_FALSE); // window dimensions are static
+  glfwWindowHint(GLFW_RESIZABLE, GL_TRUE); // window dimensions are not static
 
   ptr_window = glfwCreateWindow(window_width, window_height, title.c_str(), NULL, NULL);
+  glfwSetWindowAspectRatio(ptr_window, window_width, window_height);
+  glfwSetWindowSizeCallback(ptr_window, [](GLFWwindow* window, int width, int height)
+      {
+          //WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+          (void)window;
+          window_width = width;
+          window_height = height;
 
+          //WindowResizeEvent event(width, height);
+          //data.EventCallback(event);
+
+      });
+  glfwSetWindowSizeCallback(ptr_window, SetWindowSize);
   if (!ptr_window) {
     glfwTerminate();
     ASSERT(!ptr_window, "GLFW unable to create OpenGL context - abort program");
@@ -305,4 +317,11 @@ void Application::fbsize_cb(GLFWwindow* ptr_win, int width, int height) {
   glViewport(0, 0, width, height);
   (void)ptr_win;
   // later, if working in 3D, we'll have to set the projection matrix here ...
+}
+
+void Application::SetWindowSize(GLFWwindow* window, int width, int height)
+{
+    (void)window;
+    window_width = width;
+    window_height = height;
 }
