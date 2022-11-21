@@ -85,7 +85,7 @@ protected:
 	void NewGameState();
 	void DeleteEntity();
 
-	GLFWwindow* mWindow;
+	static GLFWwindow* mWindow;
 	static int* mWindowWidth;
 	static int* mWindowHeight;
 	static Math::Vec2 mWorldMousePos;
