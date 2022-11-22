@@ -31,6 +31,18 @@ Scene::~Scene() {
 	//LOG_CUSTOM("SCENE", "Scene with name " + mName + " destroyed");
 }
 
+void Scene::Init() {
+	
+};
+
+void Scene::Update() {
+	
+};
+
+void Scene::Exit() {
+	
+};
+
 void Scene::PrimaryUpdate() {
 	if (mIsPause) return;
 	Update();
@@ -85,3 +97,4 @@ void Scene::RemoveEntity(Entity const& _e) {
 	
 	mEntities.erase(_e);
 }
+
