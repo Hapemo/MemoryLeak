@@ -391,8 +391,8 @@
     },
     {
         "General": {
-            "name": "NEW Entity 10",
-            "tag": 8,
+            "name": "Back",
+            "tag": 5,
             "subtag": 0,
             "isActive": true
         },
@@ -403,7 +403,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.2002105712890625,
+                "X": 0.0,
                 "Y": -339.111328125
             }
         },
