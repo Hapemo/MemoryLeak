@@ -29,7 +29,7 @@
             "layer": 10
         },
         "Script": {
-            "name": ""
+            "name": "ScaleScript"
         }
     },
     {
@@ -62,7 +62,7 @@
             "layer": 10
         },
         "Script": {
-            "name": ""
+            "name": "RotateScript"
         }
     },
     {
@@ -121,7 +121,7 @@
             }
         },
         "Script": {
-            "name": "\u0000ialogueScript"
+            "name": "DialogueScript"
         }
     }
 ]

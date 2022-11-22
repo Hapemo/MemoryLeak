@@ -13,8 +13,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 18.99871826171875,
-                "Y": 21.439300537109375
+                "X": 0.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -43,8 +43,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 21.001220703125,
-                "Y": 23.441787719726563
+                "X": 0.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -76,8 +76,8 @@
     },
     {
         "General": {
-            "name": "NEW Prefabee1",
-            "tag": 5,
+            "name": "W key",
+            "tag": 8,
             "subtag": 1,
             "isActive": true
         },
@@ -88,8 +88,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -414.239013671875,
-                "Y": 139.26699829101563
+                "X": -421.7390441894531,
+                "Y": 128.01699829101563
             }
         },
         "Sprite": {
@@ -129,8 +129,8 @@
     },
     {
         "General": {
-            "name": "NEW Prefabee1",
-            "tag": 5,
+            "name": "A key",
+            "tag": 8,
             "subtag": 1,
             "isActive": true
         },
@@ -141,8 +141,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -414.239013671875,
-                "Y": 12.164469718933105
+                "X": -421.739013671875,
+                "Y": 12.164470672607422
             }
         },
         "Sprite": {
@@ -182,8 +182,8 @@
     },
     {
         "General": {
-            "name": "NEW Prefabee1",
-            "tag": 5,
+            "name": "S key",
+            "tag": 8,
             "subtag": 1,
             "isActive": true
         },
@@ -194,8 +194,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -414.239013671875,
-                "Y": -116.27534484863281
+                "X": -423.6140441894531,
+                "Y": -103.15034484863281
             }
         },
         "Sprite": {
@@ -235,8 +235,8 @@
     },
     {
         "General": {
-            "name": "NEW Prefabee1",
-            "tag": 5,
+            "name": "D key",
+            "tag": 8,
             "subtag": 1,
             "isActive": true
         },
@@ -247,8 +247,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -414.239013671875,
-                "Y": -239.36598205566406
+                "X": -421.7390441894531,
+                "Y": -222.49099731445313
             }
         },
         "Sprite": {
@@ -278,6 +278,59 @@
                 "Y": -16.0
             },
             "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Back",
+            "tag": 8,
+            "subtag": 1,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1.875,
+                "Y": -333.75
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "renderFlag": false
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Back",
+            "offset": {
+                "X": -65.0,
+                "Y": -16.0
+            },
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
