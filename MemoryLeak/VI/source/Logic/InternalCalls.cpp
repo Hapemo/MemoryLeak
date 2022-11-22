@@ -49,6 +49,18 @@ void InternalCalls::ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, c
 
 /*!*****************************************************************************
 \brief
+	Loads the dialogs from a json file to the dialog manager
+
+\return
+None.
+*******************************************************************************/
+void InternalCalls::LoadDialogs(std::string _filename) {
+	LOG_INFO("Loading Dialog: " + _filename);
+	serializationManager->LoadDialogs(_filename);
+}
+
+/*!*****************************************************************************
+\brief
 Retrieves the dialog text of the dialog with a specific id using function from
 DialogManager.
 
@@ -118,4 +130,26 @@ The selected choice.
 *******************************************************************************/
 void InternalCalls::SetSelectedChoice(int _id, int _selectedChoice) {
 	dialogManager->SetSelectedChoice(_id, _selectedChoice);
+}
+
+/*!*****************************************************************************
+\brief
+Get current dialogue id using function from DialogManager.
+
+\param int _id
+The id of the current dialog.
+*******************************************************************************/
+bool InternalCalls::SetCurrentDialogueID(int _id) {
+	return dialogManager->SetCurrentDialogueID(_id);
+}
+
+/*!*****************************************************************************
+\brief
+Get current dialogue id using function from DialogManager.
+
+\return
+The id of the current dialog.
+*******************************************************************************/
+int InternalCalls::GetCurrentDialogueID() {
+	return dialogManager->GetCurrentDialogueID();
 }

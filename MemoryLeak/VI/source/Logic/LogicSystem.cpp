@@ -38,7 +38,7 @@ void LogicSystem::Init() {
 					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->StartScript(e);
 				}
 			else
-				LOG_ERROR("start: Script failed to attach!!!");
+				LOG_ERROR("Start Script failed to attach!!!");
 		}
 	}
 }
@@ -57,7 +57,7 @@ void LogicSystem::Update() {
 					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->UpdateScript(e);
 				}
 			else
-				LOG_ERROR("Update: Script failed to attach!!!");
+				LOG_ERROR("Update Script failed to attach!!!");
 		}
 	}
 }
@@ -76,7 +76,7 @@ void LogicSystem::Exit() {
 					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->EndScript(e);
 				}
 			else
-				LOG_ERROR("End: Script failed to attach!!!");
+				LOG_ERROR("Exit Script failed to attach!!!");
 		}
 	}
 }

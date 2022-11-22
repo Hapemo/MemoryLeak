@@ -381,7 +381,7 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 		}
 	}
 
-	//logicSystem->Init();
+	logicSystem->Init();
 	ifs.close();
 }
 General SerializationManager::getGeneral(Value& entity)
