@@ -67,7 +67,7 @@ void WorldViewPanel::Update()
 			std::filesystem::path path{ name };
 			//(*mGameStates)[selectedGameState].mName = name + "OLD";
 			//GameStateManager::GetInstance()->RemoveGameState(&(*mGameStates)[selectedGameState]);
-			(*mGameStates)[selectedGameState].mName = "Delete me";
+			(*mGameStates)[selectedGameState].mName = "Pls Delete me";
 			GameStateManager::GetInstance()->AddGameState(path);
 
 
