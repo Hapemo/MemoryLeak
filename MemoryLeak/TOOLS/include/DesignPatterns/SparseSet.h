@@ -104,7 +104,7 @@ SparseSet<T>::SparseSet(int _size) : mSize(_size), emptyID(INT_MAX), mCapacity(0
 template<typename T>
 SparseSet<T>::DataType& SparseSet<T>::operator[](IndexType const& _index) {
 	int deepID{ mShallow[static_cast<int>(_index)] };
-	BREAKPOINT(deepID == emptyID);
+	BREAKPOINT(deepID == emptyID); // If ECS breaks here, means you're trying to access or delete a component but it the entity doesn't have it
 	ASSERT(deepID == emptyID, "SparseSet cannot find ID: " + std::to_string(deepID));
 	return mDense[deepID];
 }

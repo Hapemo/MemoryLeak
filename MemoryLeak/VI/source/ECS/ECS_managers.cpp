@@ -312,7 +312,7 @@ void Coordinator::DestroyEntity(EntityID _entity) {
 	UnlinkPrefab(_entity);
 	// Detatch from Parent Child
 	General& genComp{ GetComponent<General>(_entity) };
-	if (!genComp.parent.id) genComp.parent.GetComponent<General>().children.erase(Entity(_entity));
+	if (genComp.parent.id) genComp.parent.GetComponent<General>().children.erase(Entity(_entity)); // parent is ridiculously big id. maybe nvr initialise
 	for (Entity e : genComp.children)
 		e.GetComponent<General>().parent = Entity(0);
 
