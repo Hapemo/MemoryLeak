@@ -26,6 +26,7 @@ Entities and its Components.
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <Input.h>
+
 class Panel;
 class Scene;
 class GameState;
@@ -118,8 +119,6 @@ protected:
 	static bool isAnimatorEditor;
 	bool isAnimatorEditorFocused(){return isAnimatorEditor;}
 	
-	
-
 
 	/*static bool isPaused;
 	void SceneManager();
