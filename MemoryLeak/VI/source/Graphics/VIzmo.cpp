@@ -27,6 +27,8 @@ void VIzmo::Detach()
 
 void VIzmo::Update(const Math::Vec2& _mouseCoordinates, Camera& _cam)
 {
+	static float scaleX{};
+	static float scaleY{};
 	if (!mAttached.id)
 		return;
 	Math::Vec2 mPos = _mouseCoordinates * _cam.GetZoom() + _cam.GetPos();
@@ -42,6 +44,10 @@ void VIzmo::Update(const Math::Vec2& _mouseCoordinates, Camera& _cam)
 		for (auto itr = mButtonPos.begin(); itr != mButtonPos.end(); ++itr)
 			if (std::powf(mPos.x - itr->second.x, 2) + std::powf(mPos.y - itr->second.y, 2) < std::powf(GIZMO_BUTTON_SIZE / 2.f * _cam.GetZoom(), 2))
 				mSelected = itr->first;
+		if (mSelected == GIZMO_BUTTON::SCALE_X)
+			scaleX = mAttached.GetComponent<Transform>().scale.x;
+		if (mSelected == GIZMO_BUTTON::SCALE_Y)
+			scaleY = mAttached.GetComponent<Transform>().scale.y;
 		return;
 	}
 	if (Input::CheckKey(E_STATE::RELEASE, E_KEY::M_BUTTON_L))
@@ -56,13 +62,15 @@ void VIzmo::Update(const Math::Vec2& _mouseCoordinates, Camera& _cam)
 		case GIZMO_BUTTON::SCALE_X:
 		{
 			float difference = mPos.x - mAttached.GetComponent<Transform>().translation.x;
-			mAttached.GetComponent<Transform>().scale.x = difference * 2.f;
+			mAttached.GetComponent<Transform>().scale.x = scaleX + difference * 2.f - 
+				(mButtonPos[GIZMO_BUTTON::SCALE_X].x - mAttached.GetComponent<Transform>().translation.x) * 2.f;
 			break;
 		}
 		case GIZMO_BUTTON::SCALE_Y:
 		{
 			float difference = mPos.y - mAttached.GetComponent<Transform>().translation.y;
-			mAttached.GetComponent<Transform>().scale.y = difference * 2.f;
+			mAttached.GetComponent<Transform>().scale.y = scaleY + difference * 2.f - 
+				(mButtonPos[GIZMO_BUTTON::SCALE_Y].y - mAttached.GetComponent<Transform>().translation.y) * 2.f;
 			break;
 		}
 		case GIZMO_BUTTON::ROTATE:
