@@ -72,6 +72,10 @@ FBO::~FBO()
 	glDeleteFramebuffers(1, &mfboid);
 }
 
+void FBO::DeleteFBO()
+{
+	glDeleteFramebuffers(1, &mfboid);
+}
 /*!*****************************************************************************
 \brief
 Binds the FBO to the OpenGL context.

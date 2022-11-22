@@ -54,8 +54,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1125.7177734375,
-                "Y": -536.41259765625
+                "X": -1489.1719970703125,
+                "Y": -745.0733642578125
             }
         },
         "Sprite": {
@@ -131,13 +131,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -500.0,
+                "X": -351.0,
                 "Y": 500.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -749.3167114257813,
-                "Y": -58.941009521484375
+                "X": -690.04248046875,
+                "Y": 37.37938690185547
             }
         },
         "Sprite": {
@@ -148,7 +148,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\building_1.png",
+            "texture": "Textures\\Sprites\\building_6(revised).png",
             "layer": 1
         },
         "RectCollider": {
@@ -177,8 +177,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -614.9550170898438,
-                "Y": -204.325927734375
+                "X": -568.4970703125,
+                "Y": -109.6075210571289
             }
         },
         "Sprite": {
@@ -189,8 +189,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Characters\\girl.png",
+            "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
             "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 9,
+            "currFrameIndex": 4,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.08241650462150574
         },
         "RectCollider": {
             "centerOffset": {
@@ -218,8 +224,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1703.7349853515625,
-                "Y": -871.4920043945313
+                "X": -1888.1656494140625,
+                "Y": -934.1702880859375
             }
         },
         "Sprite": {
@@ -254,13 +260,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -200.0,
+                "X": -159.0,
                 "Y": 200.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -512.5277099609375,
-                "Y": -418.9484558105469
+                "X": -49.14849090576172,
+                "Y": -102.27635192871094
             }
         },
         "Sprite": {
@@ -271,8 +277,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\boat.png",
+            "texture": "Textures\\Spritesheets\\BOAT\\boat-SE-spritesheet.png",
             "layer": 1
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 6,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.03173371031880379
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -287,7 +299,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": -1.7703392261753803e-16
+                "Y": 0.2340596467256546
             },
             "acceleration": {
                 "X": 0.0,
@@ -308,13 +320,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -80.0,
+                "X": -67.0,
                 "Y": 80.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -527.5440063476563,
-                "Y": -436.78460693359375
+                "X": -40.73553466796875,
+                "Y": -112.50296783447266
             }
         },
         "Sprite": {
@@ -325,8 +337,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Characters\\mc.png",
+            "texture": "Textures\\Spritesheets\\MC\\Character_mc_SE_idle_spritesheet.png",
             "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 7,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.03173371031880379
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -341,7 +359,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": -1.7703392261753803e-16
+                "Y": 0.2340596467256546
             },
             "acceleration": {
                 "X": 0.0,
@@ -367,8 +385,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1101.73046875,
-                "Y": 165.95648193359375
+                "X": -1529.8656005859375,
+                "Y": 809.7613525390625
             }
         },
         "Sprite": {
@@ -408,8 +426,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1531.7989501953125,
-                "Y": -108.75880432128906
+                "X": -1861.2108154296875,
+                "Y": -256.1430358886719
             }
         },
         "Sprite": {
@@ -449,8 +467,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 963.9689331054688,
-                "Y": 945.9677734375
+                "X": 610.3270874023438,
+                "Y": 1092.1505126953125
             }
         },
         "Sprite": {
@@ -490,8 +508,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1242.31103515625,
-                "Y": -784.5350341796875
+                "X": 1262.736328125,
+                "Y": -535.0230712890625
             }
         },
         "Sprite": {
@@ -531,8 +549,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -155.8740997314453,
-                "Y": -798.3679809570313
+                "X": -332.0943603515625,
+                "Y": -419.4943542480469
             }
         },
         "Sprite": {
@@ -572,8 +590,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -432.95562744140625,
-                "Y": 222.5538330078125
+                "X": 111.72531127929688,
+                "Y": 134.04318237304688
             }
         },
         "Sprite": {
@@ -613,8 +631,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 388.74798583984375,
-                "Y": -545.8430786132813
+                "X": 888.1722412109375,
+                "Y": -767.11962890625
             }
         },
         "Sprite": {
@@ -625,7 +643,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\house_2.png",
+            "texture": "Textures\\Sprites\\building_2(revised).png",
             "layer": 1
         },
         "RectCollider": {
@@ -654,8 +672,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -53.507232666015625,
-                "Y": -267.027587890625
+                "X": 1161.611328125,
+                "Y": 369.16748046875
             }
         },
         "Sprite": {
@@ -691,12 +709,12 @@
         "Transform": {
             "scale": {
                 "X": 500.0,
-                "Y": 500.0
+                "Y": 445.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 108.86178588867188,
-                "Y": 255.3414764404297
+                "X": 935.2947998046875,
+                "Y": 911.7619018554688
             }
         },
         "Sprite": {
@@ -707,7 +725,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\house_4.png",
+            "texture": "Textures\\Sprites\\building 4.png",
             "layer": 1
         },
         "RectCollider": {
@@ -736,15 +754,15 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1101.2030029296875,
-                "Y": 320.9020080566406
+                "X": -1525.1329345703125,
+                "Y": 955.6954345703125
             }
         },
         "Sprite": {
             "color": {
-                "r": 178,
-                "g": 0,
-                "b": 147,
+                "r": 153,
+                "g": 221,
+                "b": 254,
                 "a": 100
             },
             "sprite": 1,
@@ -783,8 +801,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 890.8215942382813,
-                "Y": -101.2354736328125
+                "X": 336.5287780761719,
+                "Y": -925.8662109375
             }
         },
         "Sprite": {
@@ -819,13 +837,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
-                "Y": 500.0
+                "X": 564.0,
+                "Y": 473.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 680.7470092773438,
-                "Y": 424.37359619140625
+                "X": 927.248779296875,
+                "Y": 22.471237182617188
             }
         },
         "Sprite": {
@@ -836,7 +854,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\building_2.png",
+            "texture": "Textures\\Sprites\\building_5(revised).png",
             "layer": 1
         },
         "RectCollider": {
@@ -860,13 +878,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 70.0,
-                "Y": 70.0
+                "X": 39.0,
+                "Y": 94.25
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1028.131591796875,
-                "Y": 39.259490966796875
+                "X": -1448.6572265625,
+                "Y": 688.0704956054688
             }
         },
         "Sprite": {
@@ -877,8 +895,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Characters\\ghost 1.png",
+            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
             "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 4,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.007484693080186844
         },
         "RectCollider": {
             "centerOffset": {
@@ -906,8 +930,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -771.7670288085938,
-                "Y": 689.145751953125
+                "X": -1514.4952392578125,
+                "Y": -15.134796142578125
             }
         },
         "Sprite": {
@@ -918,7 +942,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\house_3.png",
+            "texture": "Textures\\Sprites\\building_3(revised).png",
             "layer": 1
         },
         "RectCollider": {
@@ -942,13 +966,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
+                "X": -400.0,
                 "Y": 400.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 158.17095947265625,
-                "Y": 1087.6280517578125
+                "X": -197.67385864257813,
+                "Y": 509.1048583984375
             }
         },
         "Sprite": {
@@ -988,8 +1012,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -186.42193603515625,
-                "Y": 623.7886352539063
+                "X": -1199.0877685546875,
+                "Y": 907.5433959960938
             }
         },
         "Sprite": {
@@ -1070,8 +1094,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1381.8719482421875,
-                "Y": 718.68798828125
+                "X": -1901.721923828125,
+                "Y": 496.0096740722656
             }
         },
         "Sprite": {

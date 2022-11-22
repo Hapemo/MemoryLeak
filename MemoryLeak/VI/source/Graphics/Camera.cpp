@@ -144,6 +144,8 @@ float Camera::GetCameraWidth()
 
 void Camera::SetCameraWidth(int _width)
 {
+	if (!mWindowWidth)
+		return;
 	SetZoom(_width / (float)mWindowWidth);
 }
 
@@ -154,5 +156,7 @@ float Camera::GetCameraHeight()
 
 void Camera::SetCameraHeight(int _height)
 {
+	if (!mWindowHeight)
+		return;
 	SetZoom(_height / (float)mWindowHeight);
 }

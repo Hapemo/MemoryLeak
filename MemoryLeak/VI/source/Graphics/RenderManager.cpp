@@ -66,6 +66,8 @@ Pixel height of the window.
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
+	mInitialWidth = *_windowWidth;
+	mInitialHeight = *_windowHeight;
 	//initialize fbo with window width and height
 	mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
 	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
@@ -73,6 +75,7 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
 	mGameCam.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
+	mPrevWidth = *mWindowWidth;
 }
 
 /*!*****************************************************************************
@@ -81,6 +84,16 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
+	if (mPrevWidth != *mWindowWidth)
+	{
+		mPrevWidth = *mWindowWidth;
+		mWorldFBO.DeleteFBO();
+		mGameFBO.DeleteFBO();
+		mAnimatorFBO.DeleteFBO();
+		mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
+		mGameFBO.Init(*mWindowWidth, *mWindowHeight);
+		mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
+	}
 	if (!mRenderGameToScreen)
 		mCurrRenderPass == RENDER_STATE::GAME ? 
 		mGameFBO.Bind() : mWorldFBO.Bind();
@@ -1088,12 +1101,12 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	temp[2][0] -= cam.GetPos().x;
 	temp[2][1] -= cam.GetPos().y;
 
-	temp[0][0] /= (float)*mWindowWidth * cam.GetZoom();
-	temp[0][1] /= (float)*mWindowHeight * cam.GetZoom();
-	temp[1][0] /= (float)*mWindowWidth * cam.GetZoom();
-	temp[1][1] /= (float)*mWindowHeight * cam.GetZoom();
-	temp[2][0] /= (float)*mWindowWidth / 2.f * cam.GetZoom();
-	temp[2][1] /= (float)*mWindowHeight / 2.f * cam.GetZoom();
+	temp[0][0] /= (float)mInitialWidth* cam.GetZoom();
+	temp[0][1] /= (float)mInitialHeight* cam.GetZoom();
+	temp[1][0] /= (float)mInitialWidth* cam.GetZoom();
+	temp[1][1] /= (float)mInitialHeight* cam.GetZoom();
+	temp[2][0] /= (float)mInitialWidth/ 2.f * cam.GetZoom();
+	temp[2][1] /= (float)mInitialHeight/ 2.f * cam.GetZoom();
 
 	return temp;
 }
@@ -1162,7 +1175,10 @@ void RenderManager::CreateText(const Entity& _e)
 
 	//check if font program already exisits, if not create one
 	if (mFontRenderers.find(fileName) == mFontRenderers.end())
+	{
 		mFontRenderers.emplace(fileName, fileName);
+		mFontRenderers[fileName].SetWindowPtr(mWindowWidth, mWindowHeight);
+	}
 
 	//add paragraph into font renderer
 	if (!mFontRenderers[fileName].IsInitialized())
@@ -1191,7 +1207,7 @@ void RenderManager::CreateText(const Entity& _e)
 		layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
-		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
+		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
 		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer);
 }
 
@@ -1284,12 +1300,12 @@ Math::Mat3 RenderManager::GetGizmoTransform(const Transform& _xform)
 	temp[2][0] -= mWorldCam.GetPos().x;
 	temp[2][1] -= mWorldCam.GetPos().y;
 
-	temp[0][0] /= (float)*mWindowWidth;
-	temp[0][1] /= (float)*mWindowHeight;
-	temp[1][0] /= (float)*mWindowWidth;
-	temp[1][1] /= (float)*mWindowHeight;
-	temp[2][0] /= (float)*mWindowWidth / 2.f * mWorldCam.GetZoom();
-	temp[2][1] /= (float)*mWindowHeight / 2.f * mWorldCam.GetZoom();
+	temp[0][0] /= (float)mInitialWidth;
+	temp[0][1] /= (float)mInitialHeight;
+	temp[1][0] /= (float)mInitialWidth;
+	temp[1][1] /= (float)mInitialHeight;
+	temp[2][0] /= (float)mInitialWidth / 2.f * mWorldCam.GetZoom();
+	temp[2][1] /= (float)mInitialHeight / 2.f * mWorldCam.GetZoom();
 
 	return temp;
 }

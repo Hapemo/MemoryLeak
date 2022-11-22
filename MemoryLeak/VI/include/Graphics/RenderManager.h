@@ -240,6 +240,8 @@ private:
 	std::vector<GLushort> mDebugIndices;
 	std::vector<Entity> mEditorSelectedEntities;
 	VIzmo mGizmo;
+	int mPrevWidth;
+	int mInitialWidth, mInitialHeight;
 
 	/*!*****************************************************************************
 	\brief

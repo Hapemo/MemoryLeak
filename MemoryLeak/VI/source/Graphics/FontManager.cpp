@@ -14,7 +14,8 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 Default constructor for FontRenderer class.
 *******************************************************************************/
 FontRenderer::FontRenderer(const std::string& fontfile) 
-: mFontProgram("shaders/font.vert", "shaders/font.frag"), mVAO(), mVBO(), mProjection()
+: mFontProgram("shaders/font.vert", "shaders/font.frag"), mVAO(), mVBO(), 
+mWindowWidth(0), mWindowHeight(0)
 {
     mFontProgram.CompileLinkShaders();
     mFontProgram.Validate();
@@ -101,8 +102,6 @@ bool FontRenderer::Init(const std::string& _fontfile)
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
 
-    //projection matrix
-    mProjection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
 
     //create buffers for characters
     glGenVertexArrays(1, &mVAO);
@@ -114,12 +113,6 @@ bool FontRenderer::Init(const std::string& _fontfile)
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
-
-    glm::mat4 _projection = glm::ortho(0.0f, 1600.f, 0.0f, 900.f);
-    mFontProgram.Bind();
-    //insert uniform
-    glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
-    mFontProgram.Unbind();
 
     return true;
  }
@@ -151,11 +144,13 @@ Renders all paragraphs stored in mParagraphs.
 void FontRenderer::DrawParagraphs()
 {
     if (!mInitialized) return;
+    glm::mat4 _projection = glm::ortho(0.0f, (float) mWindowWidth, 0.0f, (float)mWindowHeight);
 
     for (const Paragraph& para : mParagraphs)
     {
         Math::Vec2 pos = para.pos;
         mFontProgram.Bind();
+        glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
         glUniform3f(mTextColorLocation, para.color.r, para.color.g, para.color.b);
         glUniform1f(mZValueLocation, para.layer);
         glActiveTexture(GL_TEXTURE0);

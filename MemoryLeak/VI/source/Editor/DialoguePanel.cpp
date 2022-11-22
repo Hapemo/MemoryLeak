@@ -44,14 +44,6 @@ void DialoguePanel::Update()
 {
 	static bool scrollToBottom = false;
 	
-	/*if (!active)
-		return;*/
-	/*static int start{};
-	if (start == 0)
-	{
-		start++;
-		Init();
-	}*/
 	if (ImGui::Begin("Dialog Editor"))
 	{
 		if (scrollToBottom)

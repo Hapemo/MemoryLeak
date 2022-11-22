@@ -33,8 +33,6 @@ None.
 *******************************************************************************/
 void AnimationPanel::Update()
 {
-	/*if (!active)
-		return;*/
 	if (ImGui::Begin("Animation Editor"))
 	{
 		SetViewportAspectRatio();

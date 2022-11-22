@@ -41,30 +41,6 @@ void WorldViewPanel::Update()
 		isViewportPaused = isScenePaused;
 		renderUI();
 		isScenePaused = isViewportPaused;
-		//Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
-		//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-		////if (ImGui::Button("Reset", buttonSize))
-		//	//serializationManager->LoadScene("SceneTmp");
-		////ImGui::SameLine(0.f,20.f);
-		//if (isScenePaused)
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-		//else
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-		//if (ImGui::Button("Play", buttonSize))
-		//{
-		//	isScenePaused = false;
-		//}
-		//ImGui::PopStyleColor();
-		//if (isScenePaused)
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-		//else
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-		//ImGui::SameLine(0.f, 20.f);
-		//if (ImGui::Button("Pause", buttonSize))
-		//{
-		//	isScenePaused = true;
-		//}
-		//ImGui::PopStyleColor();
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
 		fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();
 		ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
@@ -102,7 +78,7 @@ void WorldViewPanel::Update()
 				isSelected = 0;
 
 			//object picking
-			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen() &&SRT == 0)
 			{
 				SetSelectedEntity();
 				
@@ -126,6 +102,8 @@ void WorldViewPanel::Update()
 					}
 				}
 			}
+			if(SRT!=4)
+				renderManager->GetGizmo().Detach();
 		}
 	}
 	ImGui::End();

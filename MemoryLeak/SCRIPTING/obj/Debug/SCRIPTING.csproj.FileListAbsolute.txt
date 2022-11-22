@@ -16,3 +16,9 @@ C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPT
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb
+C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
+C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb
+C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.dll
+C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.pdb
+C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
