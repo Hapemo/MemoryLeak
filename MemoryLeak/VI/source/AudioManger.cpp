@@ -161,7 +161,6 @@ void AudioManager::PlaySound(const Entity& _e)
     {
         std::string snd = _e.GetComponent<Audio>().sound.path;
         int channel = _e.GetComponent<Audio>().sound.channel;
-        std::cout << "Channnel :  " << channel << "\n";
         //mSfxSound[snd]->setMode(2);
         if (!isPlaying(channel))
         {
@@ -177,10 +176,13 @@ void AudioManager::PlaySound(const Entity& _e)
                 float spacial = (max.Magnitude()-distance.Magnitude())/  max.Magnitude();
                 spacial = spacial < 0.f ? 0.f : spacial;
 
-                std::cout << "Spacial ratio :  " << spacial << "\n";
-                std::cout << "sound vol :  " << vol << "\n";
                 vol = vol *(1.f - _e.GetComponent<Audio>().spacialRatio) + spacial* _e.GetComponent<Audio>().spacialRatio;
+                
+                #ifdef NDEBUG
+                std::cout << "sound vol :  " << _e.GetComponent<Audio>().sound.volume << "\n";
+                std::cout << "Spacial ratio :  " << spacial << "\n";
                 std::cout << "finial sound :  " << vol << "\n";
+                #endif
                 mChannel[channel]->setVolume(vol);
             }
             else

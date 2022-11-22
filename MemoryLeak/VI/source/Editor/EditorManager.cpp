@@ -489,6 +489,13 @@ void EditorManager::SceneReset()
 	renderManager->ResetCameras();
 	renderManager->ClearSelectedEntities();
 }
+/*!*****************************************************************************
+\brief
+	This function copy an entity
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Copy()
 {
 	if (selectedEntity != nullptr)
@@ -499,6 +506,13 @@ void EditorManager::Copy()
 		copyEntity.second = 1;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function cut an entity
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Cut()
 {
 	if (selectedEntity != nullptr)
@@ -513,6 +527,13 @@ void EditorManager::Cut()
 		selectedEntity = nullptr;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function paste an entity
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Paste()
 {
 	if (copyEntity.second != 0)
@@ -542,6 +563,13 @@ void EditorManager::Paste()
 		}
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function clones a entity
+
+\return
+None.
+*******************************************************************************/
 Entity EditorManager::Clone(Entity c)
 {
 	Entity e{ ECS::CreateEntity() };
@@ -584,7 +612,13 @@ Entity EditorManager::Clone(Entity c)
 	return e;
 
 }
+/*!*****************************************************************************
+\brief
+	This function creates a new entity
 
+\return
+None.
+*******************************************************************************/
 Entity EditorManager::NewEntity()
 {
 	static int newEntityCount = 1;
@@ -605,7 +639,13 @@ Entity EditorManager::NewEntity()
 	//selectedEntity = &e;
 	return e;
 }
+/*!*****************************************************************************
+\brief
+	This function creates a new scene
 
+\return
+None.
+*******************************************************************************/
 void EditorManager::NewScene()
 {
 	/*static int sn = 1;
@@ -617,6 +657,13 @@ void EditorManager::NewScene()
 	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 
 }
+/*!*****************************************************************************
+\brief
+	This function created a new gamestate
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::NewGameState()
 {
 	/*static int gn = 1;

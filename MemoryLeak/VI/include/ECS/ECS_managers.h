@@ -434,7 +434,9 @@ template<typename T>
 void Prefab::AddComponent(T const& _component) { // TODO: Possible optimisation to put _component into data instead of *(static_cast<T*>(mComponents[pos]))
 	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
 	mComponents[pos] = new T;
+#ifdef NDEBUG
 	std::cout << "sizeof " << sizeof(T) << '\n';
+#endif
 	*(static_cast<T*>(mComponents[pos])) = _component;
 
 	for (Entity const& e : mPrefabees)
