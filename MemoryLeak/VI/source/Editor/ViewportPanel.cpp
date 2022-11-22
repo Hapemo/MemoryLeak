@@ -78,7 +78,7 @@ bool ViewportPanel::IsMouseInScreen()
 }
 void ViewportPanel::renderUI()
 {
-	ImGui::SetWindowFontScale(1.5);
+	ImGui::SetWindowFontScale(1.5f);
 	Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
 	ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 	if (isViewportPaused)
@@ -102,7 +102,7 @@ void ViewportPanel::renderUI()
 		isViewportPaused = true;
 	}
 	ImGui::PopStyleColor();
-	ImGui::SetWindowFontScale(1.0);
+	ImGui::SetWindowFontScale(1.0f);
 
 	/*ImGui::SetCursorPosX(ImGui::GetWindowWidth() - sendbuttonSize.x-30);
 	ImGui::PushStyleColor(ImGuiCol_Button, unselectedCol);

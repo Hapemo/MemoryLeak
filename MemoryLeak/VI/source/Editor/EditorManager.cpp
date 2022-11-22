@@ -489,6 +489,7 @@ void EditorManager::SceneReset()
 	renderManager->ResetCameras();
 	renderManager->ClearSelectedEntities();
 	renderManager->GetGizmo().Detach();
+	undoStack.clear();
 }
 /*!*****************************************************************************
 \brief

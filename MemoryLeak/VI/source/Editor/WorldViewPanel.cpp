@@ -57,7 +57,7 @@ void WorldViewPanel::Update()
 		}
 		//ImGui::SetWindowFontScale(1.0);
 		renderUI();
-		ImGui::SetWindowFontScale(1.5);
+		ImGui::SetWindowFontScale(1.5f);
 		ImGui::SameLine(0.f, 50.f);
 		if (ImGui::Button("Reset", buttonSize))
 		{
@@ -79,8 +79,17 @@ void WorldViewPanel::Update()
 			/*selectedScene = 100;
 			selectedGameState = 100;*/
 		}
-		ImGui::SetWindowFontScale(1.0);
-		isScenePaused = isViewportPaused;
+		ImGui::SetWindowFontScale(1.0f);
+		static bool checkSave = false;
+		if (!isViewportPaused && isScenePaused&& undoStack.size() != 0)
+		{
+			isScenePaused = isViewportPaused = true;
+			checkSave = true;
+		}
+		else
+			isScenePaused = isViewportPaused;
+
+		//isScenePaused = isViewportPaused;
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
 		fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();
 		ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
@@ -96,7 +105,34 @@ void WorldViewPanel::Update()
 			NewPrefabee();
 			ImGui::EndDragDropTarget();
 		}
-			PopObject();
+		if (checkSave)
+		{
+			ImGui::SetWindowFontScale(1.2f);
+			ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight()/4.f));
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200)));
+			ImGui::Button("Do you want to save scene first?", ImVec2(ImGui::GetWindowWidth() - 100.f, ImGui::GetWindowHeight() / 5.f));
+			ImGui::PopStyleColor();
+			ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight() / 2.f));
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0)));
+			if (ImGui::Button("YES!! Thank you for reminding me.", ImVec2((ImGui::GetWindowWidth() - 110.f)/2.f, ImGui::GetWindowHeight() / 10.f)))
+			{
+				(*mGameStates)[selectedGameState].Save();
+				isScenePaused = isViewportPaused = false;
+				checkSave = false;
+			}
+			ImGui::PopStyleColor();
+			ImGui::SameLine(0.f, 20.f);
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
+			if (ImGui::Button("No.. Just testing.", ImVec2((ImGui::GetWindowWidth() - 110.f)/2.f, ImGui::GetWindowHeight() / 10.f)))
+			{
+				isScenePaused = isViewportPaused = false;
+				checkSave = false;
+			}
+			ImGui::PopStyleColor();
+			ImGui::SetWindowFontScale(1.0f);
+			
+		}
+		PopObject();
 		if (ImGui::IsWindowHovered())
 		{
 			if (IsMouseInScreen())
@@ -105,10 +141,10 @@ void WorldViewPanel::Update()
 				{
 					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
 					{
-						ImGui::SetWindowFontScale(1.8);
+						ImGui::SetWindowFontScale(1.8f);
 						ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight() / 2.f-200.f));
 						ImGui::Button("<----\t\t\tSelect a Scene! \n This is a preview of all Active scenes overlayed.", ImVec2(ImGui::GetWindowWidth()-100.f,400.f));
-						ImGui::SetWindowFontScale(1.0);
+						ImGui::SetWindowFontScale(1.0f);
 					}
 				}
 				//Camera movement
@@ -124,10 +160,10 @@ void WorldViewPanel::Update()
 				{
 					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
 					{
-						ImGui::SetWindowFontScale(1.5);
+						ImGui::SetWindowFontScale(1.5f);
 						ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight() / 2.f - 200.f));
 						ImGui::Button("Dont touch me when scene is playing!!", ImVec2(ImGui::GetWindowWidth() - 100.f, 300.f));
-						ImGui::SetWindowFontScale(1.0);
+						ImGui::SetWindowFontScale(1.0f);
 					}
 				}
 
@@ -421,7 +457,7 @@ void WorldViewPanel::MouseOverObject()
 					notColliding = true;
 					layer = ee.GetComponent<Sprite>().layer;
 					bool check = true;
-					for (int i = popList.size() - 1; i >= 0; i--)
+					for (int i = (int)popList.size() - 1; i >= 0; i--)
 					{
 						if ((popList[i].first->id == ee.id))
 						{
