@@ -327,7 +327,6 @@ void WorldViewPanel::SetSelectedEntity()
 					objectOffset = distance;
 					isSelected = 1;
 					aspect = false;
-					return;
 				}
 			}
 		}
@@ -404,7 +403,7 @@ void WorldViewPanel::MouseOverObject()
 						pop = &ee;
 						popList.push_back(std::make_pair(&ee, 0));
 					}*/
-					return;
+					//return;
 				}
 			}
 		}

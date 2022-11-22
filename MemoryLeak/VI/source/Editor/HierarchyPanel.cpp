@@ -74,14 +74,14 @@ void HierarchyPanel::Update()
 					{
 						(*mGameStates)[g].mName = gsName;
 					}
-					std::string saveGSbtn = "SAVE " + (*mGameStates)[g].mName + " GameState";
+					std::string saveGSbtn = "SAVE GameState";
 					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 					if (ImGui::Button(saveGSbtn.c_str()))
 					{
 						(*mGameStates)[g].Save();
 					}
 					ImGui::PopStyleColor();
-					std::string removeGSbtn = "REMOVE " + (*mGameStates)[g].mName + " GameState";
+					std::string removeGSbtn = "REMOVE GameState";
 					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 					if (ImGui::Button(removeGSbtn.c_str()))
 					{
@@ -156,14 +156,14 @@ void HierarchyPanel::Update()
 								{
 										(*mGameStates)[g].mScenes[s].mName = sName;
 								}
-								std::string saveScenebtn = "SAVE " + (*mGameStates)[g].mScenes[s].mName + " Scene";
+								std::string saveScenebtn = "SAVE Scene";
 								ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 								if (ImGui::Button(saveScenebtn.c_str()))
 								{
 									(*mGameStates)[g].mScenes[s].Save();
 								}
 								ImGui::PopStyleColor();
-								std::string removeScenebtn = "REMOVE " + (*mGameStates)[g].mScenes[s].mName + " Scene";
+								std::string removeScenebtn = "REMOVE Scene";
 								ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 								if (ImGui::Button(removeScenebtn.c_str()))
 								{
@@ -251,7 +251,7 @@ void HierarchyPanel::Update()
 								}
 								if (ImGui::BeginPopupContextWindow(0, 1, false))
 								{
-									if (ImGui::MenuItem(" Create Entity"))
+									if (ImGui::MenuItem("Create Entity"))
 									{
 										NewEntity();
 									}
@@ -269,7 +269,7 @@ void HierarchyPanel::Update()
 						}
 						ImGui::EndTabBar(); //for scene
 					}
-					std::string newScenebtn = "NEW "+ (*mGameStates)[g].mName  +" Scene";
+					std::string newScenebtn = "NEW Scene";
 					if (ImGui::Button(newScenebtn.c_str()))
 					{//FUNCTION GS SCENE
 						NewScene();
