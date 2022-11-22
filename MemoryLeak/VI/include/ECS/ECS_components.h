@@ -34,7 +34,7 @@ struct General {
 	bool isPaused;
 	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
 	std::set<Entity> children;
-	Entity parent;
+	Entity parent = Entity(0);
 };
 
 /*!*****************************************************************************

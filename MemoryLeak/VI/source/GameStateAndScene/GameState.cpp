@@ -4,11 +4,12 @@
 
 void GameState::Init() {
 	for (auto& scene : mScenes)
-		scene.Init();
+		if (!scene.mIsPause) scene.Init();
 }
+
 void GameState::Update() {
 	for (auto& scene : mScenes)
-		scene.PrimaryUpdate();
+		if (!scene.mIsPause) scene.PrimaryUpdate();
 }
 
 void GameState::Exit() {

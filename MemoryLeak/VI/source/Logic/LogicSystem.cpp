@@ -90,16 +90,16 @@ Run the initialisation function for all entities' scripts given by the parameter
 *******************************************************************************/
 void LogicSystem::Init(std::set<Entity> const& _entities) {
 	for (Entity const& e : _entities) {
-		if (e.ShouldRun()) {
-			if (e.GetComponent<Script>().name != "") {
-				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
-					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
-					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->StartScript(e);
-				}
-				else LOG_ERROR("Init Script failed to attach!");
+		//if (e.ShouldRun()) {
+		if (e.GetComponent<Script>().name != "") {
+			if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
+				ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
+				//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->StartScript(e);
 			}
-			else LOG_ERROR("Component script name is empty!");
+			else LOG_ERROR("Init Script failed to attach!");
 		}
+		else LOG_ERROR("Component script name is empty!");
+		//}
 	}
 }
 
@@ -110,7 +110,7 @@ Run the update function for all entities' scripts given by the parameter.
 void LogicSystem::Update(std::set<Entity> const& _entities) {
 	//LOG_DEBUG("LOGICSYSYEM UPDATE.");
 	for (Entity const& e : _entities) {
-		if (e.ShouldRun() && e.HasComponent<Script>()) {
+		if (e.HasComponent<Script>()) { // Removed e.ShouldRun() &&
 			if (e.GetComponent<Script>().name != "") {
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->UpdateScript(e);
@@ -129,7 +129,7 @@ Run the exit function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Exit(std::set<Entity> const& _entities) {
 	for (Entity const& e : _entities) {
-		if (e.ShouldRun() && e.HasComponent<Script>()) {
+		if (e.HasComponent<Script>()) { // Removed e.ShouldRun() &&
 			if (e.GetComponent<Script>().name != "") {
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->EndScript(e);
