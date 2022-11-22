@@ -3,8 +3,8 @@
         "SceneName": "Level2",
         "Transform": {
             "scale": {
-                "X": 1600.0,
-                "Y": 900.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "rotation": 1.0,
             "translation": {
@@ -12,7 +12,7 @@
                 "Y": 0.0
             }
         },
-        "isActive": true,
+        "isActive": false,
         "layer": 7,
         "order": 7
     },
