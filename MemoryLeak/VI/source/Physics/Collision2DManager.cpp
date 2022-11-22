@@ -432,7 +432,7 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 
 
 	// For now, we loop through the entity list
-	// Converted to check player entities against all other entities for M3
+	// Converted to check player entities against all other entities for M3 to reduce amount of checks done
 	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
 		if (!e1->ShouldRun())
 			continue;
