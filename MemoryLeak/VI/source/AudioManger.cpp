@@ -143,6 +143,21 @@ void AudioManager::UpdateSound()
             PlaySound(e);
         }
     }
+    bool isAnyPlaying = false;
+    for (int i = (int)E_AUDIO_CHANNEL::EDITORSONG+1; i < mChannel.size(); i++)
+    {
+        if (isPlaying(i))
+        {
+            isAnyPlaying = true;
+            break;
+        }
+    }
+    if(isAnyPlaying)
+        mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(0.1f);
+    else
+        mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(0.5f);
+
+
     system->update();
 }
 
@@ -259,7 +274,7 @@ void AudioManager::PlayBGSound(std::string _snd, int _channel)
     }
     LOG_INFO("Play BG sound");
     system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
-    mChannel[_channel]->setVolume(0.0f);
+    mChannel[_channel]->setVolume(0.5f);
 }
 
 bool AudioManager::isPlaying(int _channel)
@@ -326,7 +341,15 @@ int AudioManager::AddChannel()
     mChannel.resize(mChannel.size() + 1);
     return ((int)mChannel.size() - 1);
 }
-
+void AudioManager::StopSound(int _channel)
+{
+    mChannel[_channel]->stop();
+}
+void AudioManager::StopSound(const Entity& e)
+{
+    if(e.GetComponent<Audio>().sound.channel != 0)
+        mChannel[e.GetComponent<Audio>().sound.channel]->stop();
+}
 
 /*!*****************************************************************************
 \brief

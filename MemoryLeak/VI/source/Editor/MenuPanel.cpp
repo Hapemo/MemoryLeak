@@ -250,9 +250,13 @@ void MenuPanel::Update()
 				for (std::string song : audioManager->GetSongs())
 				{
 					if (ImGui::MenuItem(song.c_str()))
-						audioManager->PlayBGSound(song, 10);
+						audioManager->PlayBGSound(song, (int)E_AUDIO_CHANNEL::EDITORSONG);
 				}
 				ImGui::EndMenu();
+			}
+			if (ImGui::MenuItem("Stop Song :("))
+			{
+				audioManager->StopSound((int)E_AUDIO_CHANNEL::EDITORSONG);
 			}
 			if (!GetPannelIsActive(E_PANELID::DEBUG) && ImGui::MenuItem("Show Debug Info"))
 			{

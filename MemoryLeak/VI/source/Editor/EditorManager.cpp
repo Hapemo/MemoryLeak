@@ -12,6 +12,7 @@ Entities and its Components.
 #include "EditorManager.h"
 #include <ECSManager.h>
 #include "GameStateManager.h"
+#include "AudioManager.h"
 //#include <Logger.h>
 #include <Panel.h>
 #include <MenuPanel.h>
@@ -85,7 +86,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	mWindowHeight = _windowHeight;
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
-
+	
 
 	static AnimationPanel animationPanel{};
 	static HierarchyPanel hierarchyPanel{};
@@ -126,7 +127,7 @@ None.
 *******************************************************************************/
 void EditorManager::Init()
 {
-	
+	//audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
 	isScenePaused = true;
 	selectedEntity = nullptr;
 	aspect = false;
