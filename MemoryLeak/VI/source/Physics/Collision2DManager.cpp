@@ -432,13 +432,18 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 
 
 	// For now, we loop through the entity list
+	// Converted to check player entities against all other entities for M3 to reduce amount of checks done
 	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
 		if (!e1->ShouldRun())
 			continue;
 		//if (!e1->GetComponent<General>().isActive)
 			//continue;
 
-		for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
+		if (e1->GetComponent<General>().tag != TAG::PLAYER)
+			continue;
+
+		//for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
+		for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
 			if (e1 == e2)
 				continue;
 
