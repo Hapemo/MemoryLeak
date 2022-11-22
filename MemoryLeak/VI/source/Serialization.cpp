@@ -14,7 +14,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include <ECSManager.h>
 #include <Scene.h>
 #include <GameState.h>
-
+#include "GameStateManager.h"
 
 
 using namespace rapidjson;
@@ -59,14 +59,27 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 
 	_sceneData.mName = _filename.stem().string();
 	int same = 0;
-	for (std::string s : allsceneFilename)
+	/*for (std::string s : allsceneFilename)
 	{
 		if (s == _sceneData.mName)
 			same++;
+	}*/
+	for (Scene s : GameStateManager::GetInstance()->mCurrentGameState->mScenes)
+	{
+		if (s.mName == _sceneData.mName)
+			same++;
 	}
 	allsceneFilename.push_back(_sceneData.mName);
-	if (same != 0)
+	if (same > 1)
+	{
+		same = 0;
+		for (std::string n : allsceneFilename)
+		{
+			if (n == _sceneData.mName)
+				same++;
+		}
 		_sceneData.mName += (" (" + std::to_string(same) + ")");
+	}
 	sceneFilename = _sceneData.mName;
 	std::stringstream contents;
 	contents << ifs.rdbuf();
@@ -1050,6 +1063,7 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	//std::vector<std::string> scenefilename{};
 	//std::string path = "../resources/GameStates/" + _filename + ".json";
 	//std::ifstream ifs(path);
+	
 	std::ifstream ifs(_filename.string());
 	if (!ifs.good())
 	{
@@ -1058,16 +1072,26 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	else
 		LOG_INFO("Opening game state: " + _filename.stem().string());
 	_gameState.mName = _filename.stem().string();
+
 	int same = 0;
-	for (std::string s : allgameStateFilename)
+	//for (std::string s : allgameStateFilename)
+	for (GameState& g : GameStateManager::GetInstance()->mGameStates)
 	{
-		if (s == _gameState.mName)
+		if (g.mName == _gameState.mName)
 			same++;
 	}
 	allgameStateFilename.push_back(_gameState.mName);
-	if (same != 0)
+	if (same > 1)//gamestate already open
+	{
+		same = 0; //count number of open GS
+		for (std::string n : allgameStateFilename)
+		{
+			if (n == _gameState.mName)
+				same++;
+		}
 		_gameState.mName += (" ("+ std::to_string(same) + ")");
-
+	}
+	
 	gameStateFilename = _gameState.mName;
 	std::stringstream contents;
 	contents << ifs.rdbuf();

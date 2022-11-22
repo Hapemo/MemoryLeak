@@ -39,7 +39,45 @@ void WorldViewPanel::Update()
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
 		mWorldMousePos = worldMousePos;
 		isViewportPaused = isScenePaused;
+		
+		if (selectedGameState < (*mGameStates).size())
+		{
+			std::string gamesstateName = "Selected GameState: " + (*mGameStates)[selectedGameState].mName;
+			ImGui::Text(gamesstateName.c_str());
+		}
+		if (selectedScene < (*mGameStates)[selectedGameState].mScenes.size())
+		{
+			std::string sceneName= "Selected Scene : " + (*mGameStates)[selectedGameState].mScenes[selectedScene].mName;
+			ImGui::Text(sceneName.c_str());
+		}
+		else if (selectedScene == 99)
+		{
+			std::string sceneName = "ALL Scenes Preview : NO SCENE SELECTED!";
+			ImGui::Text(sceneName.c_str());
+		}
+
 		renderUI();
+		ImGui::SameLine(0.f, 20.f);
+		if (ImGui::Button("Reset", buttonSize))
+		{
+			//std::string oldName = (*mGameStates)[selectedGameState].mName;
+			std::string name = "../resources/GameStates/";
+			name += (*mGameStates)[selectedGameState].mName;
+			name += ".json";
+			std::filesystem::path path{ name };
+			//(*mGameStates)[selectedGameState].mName = name + "OLD";
+			//GameStateManager::GetInstance()->RemoveGameState(&(*mGameStates)[selectedGameState]);
+			(*mGameStates)[selectedGameState].mName = "Delete me";
+			GameStateManager::GetInstance()->AddGameState(path);
+
+
+			//GameStateManager::GetInstance()->SetGameState(path.stem().string());
+			selectedGameState = (int)(*mGameStates).size() - 1;
+			selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
+
+			/*selectedScene = 100;
+			selectedGameState = 100;*/
+		}
 		isScenePaused = isViewportPaused;
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
 		fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();

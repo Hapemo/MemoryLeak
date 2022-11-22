@@ -488,6 +488,7 @@ void EditorManager::SceneReset()
 	aspect = false;
 	renderManager->ResetCameras();
 	renderManager->ClearSelectedEntities();
+	renderManager->GetGizmo().Detach();
 }
 /*!*****************************************************************************
 \brief
