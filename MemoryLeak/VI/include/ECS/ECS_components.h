@@ -272,6 +272,19 @@ struct Audio {
 	//std::vector<Sound> sound;
 	Sound sound;
 	bool isSpacial = false;
+	float spacialDistance = 1.f;
+	float spacialRatio = 0.8f;
+	/*SOUND:
+	std::string path;
+	bool toPlay = false;
+	float volume = 1.0f;
+	float volumeMod = 1.0f;
+	float pitch = 1.0f;
+	bool isPaused = false;
+	bool isMute = false;
+	bool isLoop = false;
+	bool isRandPitch = false;
+	int channel;*/
 };
 /*!*****************************************************************************
 \brief

@@ -719,7 +719,7 @@ void InspectorPanel::AudioEditor()
 {
 	if (ImGui::CollapsingHeader("Audio") || true) {
 		//ImGui::Text("Audio");
-		ImGui::InputText("Addsound", &e.GetComponent<Audio>().sound.path);
+		ImGui::InputText("Add Sound Path", &e.GetComponent<Audio>().sound.path);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 		static const wchar_t* texpath = (const wchar_t*)"";
 		if (ImGui::BeginDragDropTarget())
@@ -736,17 +736,38 @@ void InspectorPanel::AudioEditor()
 			}
 			ImGui::EndDragDropTarget();
 		}
-
-		ImGui::Checkbox("Pause", &e.GetComponent<Audio>().sound.isPaused);
+		ImGui::DragFloat("Volume", &e.GetComponent<Audio>().sound.volume, 0.005f, 0.0f, 1.f);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 
-		/*ImGui::Checkbox("Click to Play", &e.GetComponent<Audio>().sound.toPlay);
-		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);*/
-		if (ImGui::Button("Play"))
+		ImGui::DragFloat("Pitch", &e.GetComponent<Audio>().sound.pitch, 0.005f,0.0f,1.f);
+		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
+		ImGui::Checkbox("isLoop", &e.GetComponent<Audio>().sound.isLoop);
+		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
+		ImGui::Checkbox("isPause", &e.GetComponent<Audio>().sound.isPaused);
+		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
+		if (e.HasComponent<Transform>())
+		{
+			ImGui::Checkbox("isSpacial", &e.GetComponent<Audio>().isSpacial);
+			SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
+			ImGui::DragFloat("spacialDistance", &e.GetComponent<Audio>().spacialDistance, 0.01f, 0.0f, 10.f);
+			SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
+			ImGui::DragFloat("spacialRatio", &e.GetComponent<Audio>().spacialRatio, 0.005f, 0.0f, 1.f);
+			SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+		}
+		
+		if (ImGui::Button("Play Now"))
 		{
 			audioManager->PlayAnySound(e.GetComponent<Audio>().sound.path, 17);
 		}
-		//ImGui::Checkbox("isLoop", &e.GetComponent<Audio>().sound.isLoop);
+		if (ImGui::Button("Play Sound in Game"))
+		{
+			e.GetComponent<Audio>().sound.toPlay = true;
+		}
 		if (ImGui::Button("Remove Audio"))
 		{
 			e.RemoveComponent<Audio>();

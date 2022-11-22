@@ -31,6 +31,10 @@ private:
 	void SetSelectedEntity();
 	void MoveSelectedEntity();
 	void UseGuizmo();
+	void MouseOverObject();
+	void PopObject();
 	//static int newEntityCount;
 	Entity e;
+	const Entity* pop = nullptr;
+	std::vector <std::pair<const Entity*, int>> popList{};
 };
