@@ -112,7 +112,12 @@ void Logger::CreateTempFile(std::fstream& _logfile, std::string _logFilename) {
     if (_logfile && mTempFile) {
         while (getline(_logfile, line))
             mTempFile << line << "\n";
-    } else std::cout << "Failed to create temp log file: " << tempFilename << "\n";
+    } else {
+#ifdef NDEBUG
+#else
+        std::cout << "Failed to create temp log file: " << tempFilename << "\n";
+#endif
+    }
     mTempFile.close();
 }
 
@@ -137,12 +142,25 @@ void Logger::DeleteTempFile(std::fstream& _logfile, std::string _logFilename) {
                 ++maxline;
             }
             else {
+#ifdef NDEBUG
+#else
                 std::cout << "Older log data has been cleared. Log file longer than maximum allowed history count: " << tempFilename << "\n";
+#endif
                 break;
             }
         }
-    } else std::cout << "Temp log file doesn't exist: " << tempFilename << "\n";
+    }
+    else {
+#ifdef NDEBUG
+#else
+        std::cout << "Temp log file doesn't exist: " << tempFilename << "\n";
+#endif
+    }
     mTempFile.close();
-    if (!std::filesystem::remove((mFilepath + tempFilename).c_str()))
+    if (!std::filesystem::remove((mFilepath + tempFilename).c_str())) {
+#ifdef NDEBUG
+#else
         std::cout << "Error removing temp log file: " << tempFilename << "\n";
+#endif
+    }
 }
