@@ -1218,10 +1218,10 @@ void SerializationManager::SaveDialogs(std::string _filename)
 
 
 
-
 void SerializationManager::LoadPrefab(std::string _filename)
 {
 	LOG_INFO("Loading prefab: " + _filename);
+	std::string path = "../resources/Prefabs/" + _filename + ".json";
 	std::ifstream ifs(path);
 	//std::ifstream ifs(filename);
 	if (!ifs.good())
