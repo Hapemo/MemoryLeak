@@ -97,10 +97,10 @@ void Application::SystemUpdate() {
 void Application::init() {
   // Part 1
   startup();
-
   SystemInit();
   //audioManager->PlayBGSound("PIntro", 10);
-  audioManager->PlayBGSound("BINGBIAN", 10);
+  //audioManager->PlayBGSound("BINGBIAN", 10);
+  audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
   //audioManager->PlayBGSound("MENUBG", 10);
   GameStateManager::GetInstance()->Init();
 }
