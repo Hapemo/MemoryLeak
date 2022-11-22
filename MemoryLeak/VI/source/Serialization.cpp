@@ -1167,7 +1167,6 @@ void SerializationManager::LoadDialogs(std::string _filename)
 		Document json;
 		json.Parse(contents.str().c_str());
 		dialogManager->Clear();
-		//std::cout << "contents.str() " << contents.str() << '\n';
 		int dialogId;
 		Dialog dialog;
 		Value dialogObj(kArrayType);
@@ -1175,7 +1174,6 @@ void SerializationManager::LoadDialogs(std::string _filename)
 		for (rapidjson::SizeType index = 0; index < dialogObj.Size(); ++index) {
 			dialogId = dialogObj[index]["Dialogue ID"].GetInt();
 			dialog.text = dialogObj[index]["Dialogue Text"].GetString();
-			//std::cout << "dialog.text " << dialog.text << '\n';
 			dialog.speaker = dialogObj[index]["Speaker"].GetInt();
 			dialog.next = dialogObj[index]["Next Dialogue"].GetInt();
 			dialog.next2 = dialogObj[index]["Next Dialogue(2)"].GetInt();
@@ -1220,10 +1218,9 @@ void SerializationManager::SaveDialogs(std::string _filename)
 
 
 
-
 void SerializationManager::LoadPrefab(std::string _filename)
 {
-	std::cout << _filename << " Loading\n";
+	LOG_INFO("Loading prefab: " + _filename);
 	std::string path = "../resources/Prefabs/" + _filename + ".json";
 	std::ifstream ifs(path);
 	//std::ifstream ifs(filename);

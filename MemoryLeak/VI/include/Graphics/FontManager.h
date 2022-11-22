@@ -83,6 +83,14 @@ public:
 	Renders all paragraphs stored in mParagraphs.
 	*******************************************************************************/
 	void DrawParagraphs();
+
+	bool IsInitialized() { return mInitialized; }
+
+	void SetWindowPtr(int* _windowWidth, int* _windowHeight) 
+	{ 
+		mWindowWidth = *_windowWidth; 
+		mWindowHeight = *_windowHeight;
+	}
 private:
 	/*!*****************************************************************************
 	\brief
@@ -91,11 +99,12 @@ private:
 	\param const std::string& fontfile
 	String containing name of the font file.
 	*******************************************************************************/
-	void Init(const std::string& _fontfile);
+	bool Init(const std::string& _fontfile);
 	GLuint mVAO, mVBO;
-	glm::mat4 mProjection;
 	std::unordered_map<char, Character> mGlyphs;
 	std::vector<Paragraph> mParagraphs;
 	GLShader mFontProgram;
 	GLint mTextColorLocation, mMatrixLocation, mZValueLocation;
+	bool mInitialized;
+	int mWindowWidth, mWindowHeight;
 };

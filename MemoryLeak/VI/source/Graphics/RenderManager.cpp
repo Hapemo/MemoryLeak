@@ -13,7 +13,7 @@ operates on Entities with Sprite and Transform Components.
 #include "RenderProps.h"
 #include "Input.h"
 #include <ECSManager.h>
-
+#include <VertexFetcher.h>
 
 /*!*****************************************************************************
 \brief
@@ -66,6 +66,8 @@ Pixel height of the window.
 void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
+	mInitialWidth = *_windowWidth;
+	mInitialHeight = *_windowHeight;
 	//initialize fbo with window width and height
 	mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
 	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
@@ -73,6 +75,7 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
 	mGameCam.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
+	mPrevWidth = *mWindowWidth;
 }
 
 /*!*****************************************************************************
@@ -81,6 +84,16 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
+	if (mPrevWidth != *mWindowWidth)
+	{
+		mPrevWidth = *mWindowWidth;
+		mWorldFBO.DeleteFBO();
+		mGameFBO.DeleteFBO();
+		mAnimatorFBO.DeleteFBO();
+		mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
+		mGameFBO.Init(*mWindowWidth, *mWindowHeight);
+		mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
+	}
 	if (!mRenderGameToScreen)
 		mCurrRenderPass == RENDER_STATE::GAME ? 
 		mGameFBO.Bind() : mWorldFBO.Bind();
@@ -107,7 +120,8 @@ void RenderManager::Render()
 
 	/*************************************FONT RENDERING START***************************************/
 	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
-		i->second.DrawParagraphs();
+		if (i->second.IsInitialized())
+			i->second.DrawParagraphs();
 	/*************************************FONT RENDERING END*****************************************/
 
 	if (!mRenderGameToScreen)
@@ -316,6 +330,7 @@ void RenderManager::RenderDebug()
 		}
 
 		//check if sprite component itself is a debug drawing
+		if (!e.HasComponent<Sprite>()) continue;
 		switch (e.GetComponent<Sprite>().sprite)
 		{
 		case SPRITE::DEBUG_POINT:
@@ -434,30 +449,34 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 	{
 		if (!e.GetComponent<General>().isActive) continue;
 		if (!e.ShouldRun()) continue;
+		if (ShouldCull(e)) continue;
 
-		switch (e.GetComponent<Sprite>().sprite)
+		if (e.HasComponent<Sprite>())
 		{
-		case SPRITE::TEXTURE:
-		{
-			GLuint texid = e.GetComponent<Sprite>().texture;
-
-			if (texid != 0)
+			switch (e.GetComponent<Sprite>().sprite)
 			{
-				if (_texInfo.find(texid) == _texInfo.end())
-					_texInfo[texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+			case SPRITE::TEXTURE:
+			{
+				GLuint texid = e.GetComponent<Sprite>().texture;
 
-				CreateSquare(e, _texInfo[texid].mVertices, _texInfo[texid].mIndices);
+				if (texid != 0)
+				{
+					if (_texInfo.find(texid) == _texInfo.end())
+						_texInfo[texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+					CreateSquare(e, _texInfo[texid].mVertices, _texInfo[texid].mIndices);
+				}
 			}
-		}
-		break;
-		case SPRITE::SQUARE:
-			CreateSquare(e, mVertices, mIndices);
 			break;
-		case SPRITE::CIRCLE:
-			CreateCircle(e);
-			break;
-		default:
-			break;
+			case SPRITE::SQUARE:
+				CreateSquare(e, mVertices, mIndices);
+				break;
+			case SPRITE::CIRCLE:
+				CreateCircle(e);
+				break;
+			default:
+				break;
+			}
 		}
 
 		if (!e.HasComponent<Text>()) continue;
@@ -1082,12 +1101,12 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	temp[2][0] -= cam.GetPos().x;
 	temp[2][1] -= cam.GetPos().y;
 
-	temp[0][0] /= (float)*mWindowWidth * cam.GetZoom();
-	temp[0][1] /= (float)*mWindowHeight * cam.GetZoom();
-	temp[1][0] /= (float)*mWindowWidth * cam.GetZoom();
-	temp[1][1] /= (float)*mWindowHeight * cam.GetZoom();
-	temp[2][0] /= (float)*mWindowWidth / 2.f * cam.GetZoom();
-	temp[2][1] /= (float)*mWindowHeight / 2.f * cam.GetZoom();
+	temp[0][0] /= (float)mInitialWidth* cam.GetZoom();
+	temp[0][1] /= (float)mInitialHeight* cam.GetZoom();
+	temp[1][0] /= (float)mInitialWidth* cam.GetZoom();
+	temp[1][1] /= (float)mInitialHeight* cam.GetZoom();
+	temp[2][0] /= (float)mInitialWidth/ 2.f * cam.GetZoom();
+	temp[2][1] /= (float)mInitialHeight/ 2.f * cam.GetZoom();
 
 	return temp;
 }
@@ -1149,16 +1168,22 @@ The entity with the Text component.
 *******************************************************************************/
 void RenderManager::CreateText(const Entity& _e)
 {
+	static bool debug{ false };
 	Text text = _e.GetComponent<Text>();
 
 	std::string fileName = text.fontFile + ".ttf";
 
 	//check if font program already exisits, if not create one
 	if (mFontRenderers.find(fileName) == mFontRenderers.end())
+	{
 		mFontRenderers.emplace(fileName, fileName);
+		mFontRenderers[fileName].SetWindowPtr(mWindowWidth, mWindowHeight);
+	}
 
 	//add paragraph into font renderer
-	
+	if (!mFontRenderers[fileName].IsInitialized())
+		return;
+
 	Math::Vec2 camOffset = { 0,0 };
 	float camZoom = 1.f;
 	if (!text.followCam)
@@ -1171,12 +1196,18 @@ void RenderManager::CreateText(const Entity& _e)
 
 	float layer = 1.f;
 	if (!_e.HasComponent<Sprite>())
-		LOG_ERROR("FontRenderer: Component does not contain sprite component! Text will be rendered at max layer!");
+	{
+		if (!debug)
+		{
+			LOG_ERROR("FontRenderer: Component does not contain sprite component! Text will be rendered at max layer!");
+			debug = !debug;
+		}
+	}
 	else
 		layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
-		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(*mWindowWidth * 0.5f, *mWindowHeight * 0.5f),
+		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
 		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer);
 }
 
@@ -1269,12 +1300,12 @@ Math::Mat3 RenderManager::GetGizmoTransform(const Transform& _xform)
 	temp[2][0] -= mWorldCam.GetPos().x;
 	temp[2][1] -= mWorldCam.GetPos().y;
 
-	temp[0][0] /= (float)*mWindowWidth;
-	temp[0][1] /= (float)*mWindowHeight;
-	temp[1][0] /= (float)*mWindowWidth;
-	temp[1][1] /= (float)*mWindowHeight;
-	temp[2][0] /= (float)*mWindowWidth / 2.f * mWorldCam.GetZoom();
-	temp[2][1] /= (float)*mWindowHeight / 2.f * mWorldCam.GetZoom();
+	temp[0][0] /= (float)mInitialWidth;
+	temp[0][1] /= (float)mInitialHeight;
+	temp[1][0] /= (float)mInitialWidth;
+	temp[1][1] /= (float)mInitialHeight;
+	temp[2][0] /= (float)mInitialWidth / 2.f * mWorldCam.GetZoom();
+	temp[2][1] /= (float)mInitialHeight / 2.f * mWorldCam.GetZoom();
 
 	return temp;
 }
@@ -1360,4 +1391,80 @@ void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _cl
 		mDebugIndices.push_back(first + i);
 		mDebugIndices.push_back(first + i + 1);
 	}
+}
+
+bool RenderManager::ShouldCull(const Entity& _e)
+{
+	if (!_e.HasComponent<Sprite>()) return false;
+	if (mCurrRenderPass == RENDER_STATE::ANIMATOR) return false;
+	Transform xform = _e.GetComponent<Transform>();
+	Sprite sprite = _e.GetComponent<Sprite>();
+	Camera cam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam : mGameCam;
+
+	Math::Vec2 camDim = Math::Vec2(cam.GetCameraWidth(), cam.GetCameraHeight()) / 2;
+	Math::Vec2 camMin = cam.GetPos() - camDim;
+	Math::Vec2 camMax = cam.GetPos() + camDim;
+
+	if (xform.translation.x >= camMin.x && xform.translation.y >= camMin.y)
+		if (xform.translation.x <= camMax.x && xform.translation.y <= camMin.y)
+			return false;
+
+	switch (sprite.sprite)
+	{
+	case (SPRITE::SQUARE):
+	case (SPRITE::TEXTURE):
+	{
+		std::vector<Math::Vec2> vertices = VertexFetcher::FetchVertices(_e);
+
+		Math::Vec2 boxMin{}, boxMax{};
+
+		for (size_t i = 0; i < vertices.size(); ++i)
+		{
+			if (!i)
+			{
+				boxMin = boxMax = vertices[i];
+				continue;
+			}
+			if (vertices[i].x < boxMin.x)
+				boxMin.x = vertices[i].x;
+			if (vertices[i].y < boxMin.y)
+				boxMin.y = vertices[i].y;
+			if (vertices[i].x > boxMax.x)
+				boxMax.x = vertices[i].x;
+			if (vertices[i].y > boxMax.y)
+				boxMax.y = vertices[i].y;
+		}
+
+		if (boxMax.x < camMin.x)
+			return true;
+		if (boxMin.x > camMax.x)
+			return true;
+		if (boxMax.y < camMin.y)
+			return true;
+		if (boxMin.y > camMax.y)
+			return true;
+		return false;
+	}
+	case (SPRITE::CIRCLE):
+	{
+		Math::Vec2 circleMin{}, circleMax{};
+		float max_scale = std::max(xform.scale.x, xform.scale.y);
+		Math::Vec2 scale = Math::Vec2(max_scale, max_scale) * 0.5f;
+		circleMin = xform.translation - scale;
+		circleMax = xform.translation + scale;
+
+		if (circleMax.x < camMin.x)
+			return true;
+		if (circleMin.x > camMax.x)
+			return true;
+		if (circleMax.y < camMin.y)
+			return true;
+		if (circleMin.y > camMax.y)
+			return true;
+		return false;
+	}
+	default:
+		return false;
+	}
+	return false;
 }

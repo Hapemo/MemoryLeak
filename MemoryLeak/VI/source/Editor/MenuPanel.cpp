@@ -256,14 +256,17 @@ void MenuPanel::Update()
 			}
 			if (!GetPannelIsActive(E_PANELID::DEBUG) && ImGui::MenuItem("Show Debug Info"))
 			{
-				//debugPanel.setIsActive(true);
 				SetPannelIsActive(E_PANELID::DEBUG, true);
 			}
 			if (GetPannelIsActive(E_PANELID::DEBUG) && ImGui::MenuItem("Hide Debug Info"))
 			{
-				//debugPanel.setIsActive(false);
 				SetPannelIsActive(E_PANELID::DEBUG, false);
 			}
+			/*if (ImGui::MenuItem("Reset panels"))
+			{
+				ImGuiIO& io = ImGui::GetIO();
+				io.IniFilename = "imguiReset.ini";
+			}*/
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();

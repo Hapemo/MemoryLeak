@@ -240,6 +240,8 @@ private:
 	std::vector<GLushort> mDebugIndices;
 	std::vector<Entity> mEditorSelectedEntities;
 	VIzmo mGizmo;
+	int mPrevWidth;
+	int mInitialWidth, mInitialHeight;
 
 	/*!*****************************************************************************
 	\brief
@@ -560,6 +562,8 @@ private:
 	void ConcatIndices(std::vector<GLushort>& _first, std::vector<GLushort>& _second);
 
 	void CreateGizmo();
+
+	bool ShouldCull(const Entity& e);
 };
 
 

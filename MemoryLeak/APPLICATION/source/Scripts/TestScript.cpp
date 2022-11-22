@@ -13,6 +13,8 @@ engine.
 
 #include "TestScript.h"
 
+REGISTER_SCRIPT(ScriptComponent, TestScript);
+
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
@@ -29,7 +31,7 @@ Function will run on every update while the entity is active.
 void TestScript::UpdateScript(Entity const& gob) {
 	(void)gob;
 	static int counter{};
-	if (++counter > 1000) {
+	if (++counter > 500) {
 		LOG_INFO("Test script updating works!!!");
 		counter = 0;
 	}

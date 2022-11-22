@@ -14,14 +14,15 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 Default constructor for FontRenderer class.
 *******************************************************************************/
 FontRenderer::FontRenderer(const std::string& fontfile) 
-: mFontProgram("shaders/font.vert", "shaders/font.frag"), mVAO(), mVBO(), mProjection()
+: mFontProgram("shaders/font.vert", "shaders/font.frag"), mVAO(), mVBO(), 
+mWindowWidth(0), mWindowHeight(0)
 {
     mFontProgram.CompileLinkShaders();
     mFontProgram.Validate();
     mMatrixLocation = glGetUniformLocation(mFontProgram.GetID(), "projection");
     mTextColorLocation = glGetUniformLocation(mFontProgram.GetID(), "textColor");
     mZValueLocation = glGetUniformLocation(mFontProgram.GetID(), "zValue");
-    Init(fontfile);
+    mInitialized = Init(fontfile);
 }
 /*!*****************************************************************************
 \brief
@@ -30,34 +31,44 @@ Initializes the FontRenderer
 \param const std::string& fontfile
 String containing name of the font file.
 *******************************************************************************/
-void FontRenderer::Init(const std::string& _fontfile)
+bool FontRenderer::Init(const std::string& _fontfile)
 {
     //free type
     FT_Library ft;
-    ASSERT(FT_Init_FreeType(&ft), 
-        "ERROR::FREETYPE: Could not init FreeType Library\n");
-
+    if (FT_Init_FreeType(&ft))
+    {
+        LOG_ERROR("ERROR::FREETYPE: failed to initialize FreeType Library\n");
+        return false;
+    }
     std::string filepath = "../resources/Fonts/" + _fontfile;
 
     FT_Face face;
     if (FT_New_Face(ft, filepath.c_str(), 0, &face))
     {
-        LOG_INFO("ERROR::FREETYPE: Failed to load font\n");
-        return;
+        LOG_ERROR("ERROR::FREETYPE: Failed to load font\n");
+        return false;
     }
 
     FT_Set_Pixel_Sizes(face, 0, 48);
 
-    ASSERT(FT_Load_Char(face, 'X', FT_LOAD_RENDER), 
-        "ERROR::FREETYTPE: Failed to load Glyph\n");
+    if (FT_Load_Char(face, 'X', FT_LOAD_RENDER))
+    {
+        LOG_ERROR("ERROR::FREETYPE: Failed to load font\n");
+        return false;
+    }
+
     
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
 
     for (unsigned char c = 0; c < 128; ++c)
     {
         // load character glyph into opengl
-        ASSERT(FT_Load_Char(face, c, FT_LOAD_RENDER), 
-            "ERROR::FREETYTPE: Failed to load Glyph\n");
+        if (FT_Load_Char(face, c, FT_LOAD_RENDER))
+        {
+            LOG_ERROR("ERROR::FREETYTPE: Failed to load Glyph\n");
+            return false;
+        }
+
         glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
         // generate texture for the glyph
         unsigned int texture;
@@ -91,8 +102,6 @@ void FontRenderer::Init(const std::string& _fontfile)
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
 
-    //projection matrix
-    mProjection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
 
     //create buffers for characters
     glGenVertexArrays(1, &mVAO);
@@ -105,11 +114,7 @@ void FontRenderer::Init(const std::string& _fontfile)
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    glm::mat4 _projection = glm::ortho(0.0f, 1600.f, 0.0f, 900.f);
-    mFontProgram.Bind();
-    //insert uniform
-    glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
-    mFontProgram.Unbind();
+    return true;
  }
 /*!*****************************************************************************
 \brief
@@ -129,6 +134,7 @@ Color of the font.
 *******************************************************************************/
 void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float layer)
 {
+    if (!mInitialized) return;
     mParagraphs.push_back(Paragraph(text, _pos, scale, color, layer));
 }
 /*!*****************************************************************************
@@ -137,10 +143,14 @@ Renders all paragraphs stored in mParagraphs.
 *******************************************************************************/
 void FontRenderer::DrawParagraphs()
 {
+    if (!mInitialized) return;
+    glm::mat4 _projection = glm::ortho(0.0f, (float) mWindowWidth, 0.0f, (float)mWindowHeight);
+
     for (const Paragraph& para : mParagraphs)
     {
         Math::Vec2 pos = para.pos;
         mFontProgram.Bind();
+        glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
         glUniform3f(mTextColorLocation, para.color.r, para.color.g, para.color.b);
         glUniform1f(mZValueLocation, para.layer);
         glActiveTexture(GL_TEXTURE0);

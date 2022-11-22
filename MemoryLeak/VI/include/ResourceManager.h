@@ -326,36 +326,6 @@ public:
 	*******************************************************************************/
 	//GameStateData LoadGameState(GUID const&);
 
-	/*!*****************************************************************************
-	Unload a gamestate when quitting the game state. It will also destroy all the
-	entities in the game state from ECS.
-
-	\param GUID const&
-	- Guid of the game state
-	*******************************************************************************/
-	void UnloadGameState(GUID const&);
-
-	/*!*****************************************************************************
-	Load scene json file. Load in all the data of the scene and load the entities in
-	to the ECS.
-
-	\param GUID const&
-	- Guid of the scene
-
-	\return SceneData
-	- Data that a scene should have
-	*******************************************************************************/
-	//SceneData LoadScene(GUID const&);
-
-	/*!*****************************************************************************
-	Unload a scene when quitting the scene. It will also destroy all the entities in 
-	the scene from ECS.
-
-	\param GUID const&
-	- Guid of the scene
-	*******************************************************************************/
-	void UnloadScene(GUID const&);
-
 	std::filesystem::path FileTypePath(E_RESOURCETYPE);
 
 	//------------------------------------

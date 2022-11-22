@@ -64,7 +64,6 @@ void ECSManager::RegisterRenderManager() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
 	signature.set(ECS::GetComponentType<Transform>());
-	signature.set(ECS::GetComponentType<Sprite>());
 
 	renderManager = ECS::RegisterSystem<RenderManager>();
 	ECS::SetSystemSignature<RenderManager>(signature);

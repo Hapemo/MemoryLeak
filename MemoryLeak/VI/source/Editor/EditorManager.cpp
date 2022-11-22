@@ -28,10 +28,9 @@ Entities and its Components.
 #include "PrefabPanel.h"
 std::vector<Panel*> EditorManager::panels{};
 
-
+GLFWwindow* EditorManager::mWindow = nullptr;
 int* EditorManager::mWindowWidth = nullptr;
 int* EditorManager::mWindowHeight = nullptr;
-
 Entity selEntity{};
 //Entity
 const Entity* EditorManager::selectedEntity = nullptr;
@@ -76,28 +75,16 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+	
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
+	mWindow = _window;
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
-
-
-	std::vector < std::set<Entity>> newGS{};
-	//newGS.push_back(*myEntities);
-	//newGS.push_back(*myEntities);
-	//std::vector < std::set<Entity>> newGS2;
-	//newGS2.push_back(*myEntities);
-
-	/*allEntities.push_back(newGS);
-	std::pair< std::string,std::vector<std::string>> newGSNmae{};
-	newGSNmae.first = "NewGameState";
-	allNames.push_back(newGSNmae);*/
-
-	//allEntities.push_back(newGS2);
 
 
 	static AnimationPanel animationPanel{};
@@ -127,7 +114,6 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels[(int)E_PANELID::WORLDVIEW] = &gameViewPanel;//8
 	panels[(int)E_PANELID::GAMEVIEW] = &worldViewPanel;//9
 
-	//prefabPanel.LoadPrefab();
 	Init();
 	
 }
@@ -140,6 +126,7 @@ None.
 *******************************************************************************/
 void EditorManager::Init()
 {
+	
 	isScenePaused = true;
 	selectedEntity = nullptr;
 	aspect = false;
@@ -151,6 +138,7 @@ void EditorManager::Init()
 		panels[p]->Init();
 	}
 	mGameStates = &GameStateManager::GetInstance()->mGameStates;
+	renderManager->RenderToFrameBuffer();
 }
 
 /*!*****************************************************************************
@@ -168,6 +156,16 @@ void EditorManager::Window()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 	//ImGui::ShowDemoWindow();
+	static ImGuiID dockID = ImGui::GetID("Editor");
+	static bool isOpen = true;
+	ImGuiViewport* viewport = ImGui::GetMainViewport();
+	ImGui::SetNextWindowPos(viewport->Pos);
+	ImGui::SetNextWindowSize(viewport->Size);
+	ImGuiWindowFlags windowFlag = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoTitleBar |ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse
+		| ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoMove;
+	ImGui::Begin("Editor", &isOpen, windowFlag);
+	ImGui::DockSpace(dockID, ImVec2(0.f, 0.f));
+	ImGui::End();
 }
 /*!*****************************************************************************
 \brief
@@ -178,23 +176,17 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
-	renderManager->GetGizmo().Detach();
-	//if (renderManager->GetRenderGameToScreen())
-		renderManager->RenderToFrameBuffer();
+	if (*mWindowWidth == 0 || *mWindowHeight == 0)
+		return;
+
 	Window();
-	/*if (selectedEntity)
-		renderManager->SelectEntity(*selectedEntity);*/
 
-	
-
-
-
-
-	/*if (selectedGameState < GSList.size())
+	if (selectedGameState < (*mGameStates).size())
 	{
-		if (selectedScene < GSList[selectedGameState].scenes.size())
+		highestLayer = 0;
+		if (selectedScene < (*mGameStates)[selectedGameState].mScenes.size())
 		{
-			for (const Entity& e : GSList[selectedGameState].scenes[selectedScene].mEntities)
+			for (const Entity& e : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
 			{
 				if (e.HasComponent<Sprite>())
 				{
@@ -203,41 +195,15 @@ void EditorManager::Update()
 				}
 			}
 		}
-	}*/
-	//static int maxSCENE = 10;
-	//selectedPrevious = selectedGameState * maxSCENE + selectedScene;
+	}
 	for (size_t p = 0; p < panels.size(); p++)
 	{
+		if(panels[p]->isActive())
 			panels[p]->Update();
 	}
-	/*for (const Entity& e : *myEntities)
-	{
-		e.GetComponent<General>().isPaused = false;
-	}*/
-	//IF Change Scene
-	/*if (selectedPrevious != (selectedGameState * maxSCENE + selectedScene))
-	{
-		for (const Entity& e : *myEntities)
-		{
-			e.GetComponent<General>().isPaused = true;
-		}
-		if (selectedGameState < GSList.size())
-		{
-			if (selectedScene < GSList[selectedGameState].scenes.size())
-			{
-				for (const Entity& e : GSList[selectedGameState].scenes[selectedScene].mEntities)
-				{
-					e.GetComponent<General>().isPaused = false;
-				}
-			}
-		}
-		LOG_INFO("Selected Game State: " + std::to_string(selectedGameState));
-		LOG_INFO("Selected Scene: " + std::to_string(selectedScene));
-		SceneReset();
-	}*/
 
 
-
+	
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -261,11 +227,6 @@ void EditorManager::Free()
 	SceneReset();
 	undoStack.clear();
 	stackPointer = -1;
-	/*for (size_t p = 0; p < mPrefabs.size(); p++)
-	{
-		delete mPrefabs[p];
-	}
-	mPrefabs.clear();*/
 	for (size_t p = 0; p < panels.size(); p++)
 	{
 		panels[p]->Free();
@@ -280,11 +241,8 @@ None.
 *******************************************************************************/
 void EditorManager::Unload()
 {
-	/*for (size_t i =0; i< mPrefabs.size(); i++)
-	{
-		delete mPrefabs[i];
-	}
-	mPrefabs.clear();*/
+	ImGuiIO& io = ImGui::GetIO();
+	io.IniFilename = "imguiTrash.ini";
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
@@ -531,6 +489,13 @@ void EditorManager::SceneReset()
 	renderManager->ResetCameras();
 	renderManager->ClearSelectedEntities();
 }
+/*!*****************************************************************************
+\brief
+	This function copy an entity
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Copy()
 {
 	if (selectedEntity != nullptr)
@@ -541,6 +506,13 @@ void EditorManager::Copy()
 		copyEntity.second = 1;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function cut an entity
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Cut()
 {
 	if (selectedEntity != nullptr)
@@ -555,6 +527,13 @@ void EditorManager::Cut()
 		selectedEntity = nullptr;
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function paste an entity
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::Paste()
 {
 	if (copyEntity.second != 0)
@@ -584,6 +563,13 @@ void EditorManager::Paste()
 		}
 	}
 }
+/*!*****************************************************************************
+\brief
+	This function clones a entity
+
+\return
+None.
+*******************************************************************************/
 Entity EditorManager::Clone(Entity c)
 {
 	Entity e{ ECS::CreateEntity() };
@@ -626,7 +612,13 @@ Entity EditorManager::Clone(Entity c)
 	return e;
 
 }
+/*!*****************************************************************************
+\brief
+	This function creates a new entity
 
+\return
+None.
+*******************************************************************************/
 Entity EditorManager::NewEntity()
 {
 	static int newEntityCount = 1;
@@ -647,7 +639,13 @@ Entity EditorManager::NewEntity()
 	//selectedEntity = &e;
 	return e;
 }
+/*!*****************************************************************************
+\brief
+	This function creates a new scene
 
+\return
+None.
+*******************************************************************************/
 void EditorManager::NewScene()
 {
 	/*static int sn = 1;
@@ -659,6 +657,13 @@ void EditorManager::NewScene()
 	selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
 
 }
+/*!*****************************************************************************
+\brief
+	This function created a new gamestate
+
+\return
+None.
+*******************************************************************************/
 void EditorManager::NewGameState()
 {
 	/*static int gn = 1;

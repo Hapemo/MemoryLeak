@@ -11,17 +11,17 @@ The LogicSystem class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #include "LogicSystem.h"
-#include "MScriptComponent.h"
+//#include "MScriptComponent.h"
 #include "ScriptManager.h"
 
 LogicSystem::LogicSystem() {
-	ptrGame = new MScriptComponent;
-	LOG_DEBUG("Creating new MScriptComponent.");
+	//monoComponent = new MScriptComponent;
+	//LOG_DEBUG("Creating new MScriptComponent.");
 }
 
 LogicSystem::~LogicSystem() {
-	delete ptrGame;
-	LOG_DEBUG("Deleting new MScriptComponent.");
+	//delete monoComponent;
+	//LOG_DEBUG("Deleting new MScriptComponent.");
 }
 
 /*!*****************************************************************************
@@ -35,7 +35,7 @@ void LogicSystem::Init() {
 			if (e.GetComponent<Script>().name != "")
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
-					if (ptrGame == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ptrGame->StartScript(e);
+					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->StartScript(e);
 				}
 			else
 				LOG_ERROR("start: Script failed to attach!!!");
@@ -54,7 +54,7 @@ void LogicSystem::Update() {
 			if (e.GetComponent<Script>().name != "")
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->UpdateScript(e);
-					if (ptrGame == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ptrGame->UpdateScript(e);
+					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->UpdateScript(e);
 				}
 			else
 				LOG_ERROR("Update: Script failed to attach!!!");
@@ -73,7 +73,7 @@ void LogicSystem::Exit() {
 			if (e.GetComponent<Script>().name != "")
 				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
 					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->EndScript(e);
-					if (ptrGame == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ptrGame->EndScript(e);
+					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->EndScript(e);
 				}
 			else
 				LOG_ERROR("End: Script failed to attach!!!");

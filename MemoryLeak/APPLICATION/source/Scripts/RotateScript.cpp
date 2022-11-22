@@ -13,7 +13,7 @@ engine.
 
 #include "RotateScript.h"
 
-ScriptRegisterer<ScriptComponent, RotateScript> s_RotateScriptCreator("RotateScript");
+REGISTER_SCRIPT(ScriptComponent, RotateScript);
 
 /*!*****************************************************************************
 \brief
@@ -30,10 +30,10 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void RotateScript::UpdateScript(Entity const& gob) {
 	//LOG_INFO("RotateScript updating works!!!");
-	if (Input::CheckKey(E_STATE::HOLD, O)) {
+	if (FUNC->CheckKey(E_STATE::HOLD, O)) {
 		gob.GetComponent<Transform>().rotation += 0.05f;
 	}
-	else if (Input::CheckKey(E_STATE::HOLD, P)) {
+	else if (FUNC->CheckKey(E_STATE::HOLD, P)) {
 		gob.GetComponent<Transform>().rotation -= 0.05f;
 	}
 }

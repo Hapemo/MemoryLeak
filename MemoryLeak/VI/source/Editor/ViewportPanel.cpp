@@ -21,14 +21,26 @@ None.
 void ViewportPanel::SetViewportAspectRatio()
 {
 	viewportSize = { ImGui::GetWindowSize().x,ImGui::GetWindowSize().y - 70 };
-	if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
+	//viewportSize = { ImGui::GetContentRegionAvail().x,ImGui::GetContentRegionAvail().y - 70 };
+	if (viewportSize.x / viewportSize.y > ((float)* mWindowWidth) / ((float)*mWindowHeight)) //wide screen
 	{
-		viewportSize.x = viewportSize.y / 9 * 16;
+		viewportSize.x = viewportSize.y / ((float)*mWindowHeight) * ((float)*mWindowWidth);
 	}
-	else if (viewportSize.x / viewportSize.y < 16 / 9.0f) // tall screen
+	else if (viewportSize.x / viewportSize.y < ((float)*mWindowWidth) / ((float)*mWindowHeight)) // tall screen
 	{
-		viewportSize.y = viewportSize.x / 16 * 9;
+		viewportSize.y = viewportSize.x / ((float)*mWindowWidth) * ((float)*mWindowHeight);
 	}
+
+
+	//if (viewportSize.x / viewportSize.y > 16 / 9.0f) //wide screen
+	//{
+	//	viewportSize.x = viewportSize.y / 9 * 16;
+	//}
+	//else if (viewportSize.x / viewportSize.y < 16 / 9.0f) // tall screen
+	//{
+	//	viewportSize.y = viewportSize.x / 16 * 9;
+	//}
+
 }
 /*!*****************************************************************************
 \brief
@@ -40,13 +52,20 @@ None.
 void ViewportPanel::CalculateMousePos(E_CAMERA_TYPE _type)
 {
 	//to use matrix from graphics in the future
-	
 	viewportPos = { (ImGui::GetWindowWidth() - viewportSize.x) * 0.5f, buttonSize.y +35.f };
-	screenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
+	//screenMousePos = Input::CursorPos() - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
+	
+	//viewportPos = { (ImGui::GetContentRegionAvail().x - viewportSize.x) * 0.5f, buttonSize.y + 35.f };
+	Math::Vec2 cursorPos = {ImGui::GetMousePos().x, ImGui::GetMousePos().y};
+	screenMousePos = cursorPos - Math::Vec2{ ImGui::GetWindowPos().x,ImGui::GetWindowPos().y } - viewportPos - viewportSize / 2;
+	static int oldWinWidth = *mWindowWidth;
+	static int oldWinHeight = *mWindowHeight;
 	worldMousePos = screenMousePos;
 	worldMousePos.y = -worldMousePos.y;
-	worldMousePos.x = worldMousePos.x / viewportSize.x * *mWindowWidth;
-	worldMousePos.y = worldMousePos.y / viewportSize.y * *mWindowHeight;
+	//worldMousePos.x = worldMousePos.x / viewportSize.x * *mWindowWidth;
+	//worldMousePos.y = worldMousePos.y / viewportSize.y * *mWindowHeight;
+	worldMousePos.x = worldMousePos.x / viewportSize.x * oldWinWidth;
+	worldMousePos.y = worldMousePos.y / viewportSize.y * oldWinHeight;
 	if(_type == E_CAMERA_TYPE::GAME)
 		camMousePos = worldMousePos * renderManager->GetGameCamera().GetZoom() + renderManager->GetGameCamera().GetPos();
 	else if (_type == E_CAMERA_TYPE::WORLD)
@@ -65,6 +84,7 @@ void ViewportPanel::renderUI()
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	else
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
+	
 	if (ImGui::Button("Play", buttonSize))
 	{
 		isViewportPaused = false;

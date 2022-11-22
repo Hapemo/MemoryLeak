@@ -78,7 +78,7 @@ void GameViewPanel::Update()
 				{
 					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
 					{
-						ButtonClick();
+						//ButtonClick();
 					}
 				}
 			}

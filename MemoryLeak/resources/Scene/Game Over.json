@@ -1,0 +1,153 @@
+[
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1920.0,
+                "Y": 1080.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1.001220703125,
+                "Y": -0.56317138671875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\game over background.jpg",
+            "layer": 0
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "BOAT CAPSIZED",
+            "offset": {
+                "X": -408.0,
+                "Y": 237.0
+            },
+            "scale": 2.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Prefabee1",
+            "tag": 5,
+            "subtag": 1,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -0.6007461547851563,
+                "Y": 3.4418258666992188
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "renderFlag": false
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Try Again",
+            "offset": {
+                "X": -103.0,
+                "Y": -18.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Prefabee2",
+            "tag": 5,
+            "subtag": 1,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -0.6007537841796875,
+                "Y": -142.94117736816406
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "renderFlag": false
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Quit Game",
+            "offset": {
+                "X": -118.0,
+                "Y": -18.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    }
+]

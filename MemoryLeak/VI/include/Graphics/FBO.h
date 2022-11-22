@@ -107,6 +107,8 @@ public:
 	*******************************************************************************/
 	int GetFBOHeight() const { return mSpecs.mHeight; }
 
+	void DeleteFBO();
+
 private:
 	GLuint mfboid;
 	GLuint mColorAttachment;

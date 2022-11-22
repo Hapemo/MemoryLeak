@@ -143,31 +143,31 @@ This component encapsulates information regarding dynamic movement of an entity.
    whether to render the velocity vector
 *******************************************************************************/
 struct Physics2D {
-	bool dynamicsEnabled{true};
+	bool dynamicsEnabled{true};				// save, edit, see
 
-	float mass{1.f};
-	float inertia{1.f};
-	float restitution{0.0f};
-	float friction{0.0f};
-	float damping{0.9f};
-	Math::Vec2 accumulatedForce{0.f, 0.f};
-	Math::Vec2 velocity{0.f, 0.f};
-	Math::Vec2 acceleration{0.f, 0.f};
+	float mass{1.f};						// save edit, see
+	float inertia{1.f};						// save, NO edit, NO see (for now as unused)
+	float restitution{0.0f};				// save, edit, see
+	float friction{0.0f};					// save, NO edit, NO see (for now as unused)
+	float damping{0.9f};					// save, edit, see 
+	Math::Vec2 accumulatedForce{0.f, 0.f};	// save, NO edit, NO see
+	Math::Vec2 velocity{0.f, 0.f};			// save, NO edit, NO see
+	Math::Vec2 acceleration{0.f, 0.f};		// save, NO edit, NO see
 	
-	float angularVelocity{0.f};
-	float angularTorque{0.f};
+	float angularVelocity{0.f};				// save, NO edit, NO see
+	float angularTorque{0.f};				// save, NO edit, NO see
 	
-	std::vector<Force> forceList{};
+	std::vector<Force> forceList{};			// save, edit, see
 
-	bool renderFlag{false};
+	bool renderFlag{false};					// save, edit, see
 };
 
 struct LayerCollider {
-	Math::Vec2 centerOffset = { 0.f, 0.f },
-				scaleOffset = { 1.f, 1.f };
-	float yOffset;
+	Math::Vec2 centerOffset = { 0.f, 0.f },	// save, edit, see
+				scaleOffset = { 1.f, 1.f };	// save, edit, see
+	//float yOffset;	
 	// float rotationOffset,
-	bool renderFlag = false;
+	bool renderFlag = false;				// save, edit, see
 };
 
 /*!*****************************************************************************
@@ -181,11 +181,11 @@ The renderFlag variable contains the flag variable telling the render manager
  whether to render the collider
 *******************************************************************************/
 struct RectCollider {
-	Math::Vec2 centerOffset = { 0.f, 0.f },
-			   scaleOffset = {1.f,1.f};
+	Math::Vec2 centerOffset = { 0.f, 0.f },	// save, edit, see
+			   scaleOffset = {1.f,1.f};		// save, edit, see
 	// float rotationOffset,
-	bool isTrigger{ false },
-		 renderFlag{ false };
+	bool isTrigger{ false },				// save, edit, see
+		 renderFlag{ false };				// save, edit, see
 };
 
 /*!*****************************************************************************
@@ -199,11 +199,11 @@ The renderFlag variable contains the flag variable telling the render manager
  whether to render the collider
 *******************************************************************************/
 struct CircleCollider {
-	Math::Vec2 centerOffset = { 0.f, 0.f };
-	float 	scaleOffset = { 1.f };
+	Math::Vec2 centerOffset = { 0.f, 0.f };	// save, edit, see
+	float 	scaleOffset = { 1.f };			// save, edit, see
 	// float rotationOffset,
-	bool isTrigger{ false },
-		 renderFlag{ false };
+	bool isTrigger{ false },				// save, edit, see
+		 renderFlag{ false };				// save, edit, see
 };
 
 
@@ -272,6 +272,19 @@ struct Audio {
 	//std::vector<Sound> sound;
 	Sound sound;
 	bool isSpacial = false;
+	float spacialDistance = 1.f;
+	float spacialRatio = 0.8f;
+	/*SOUND:
+	std::string path;
+	bool toPlay = false;
+	float volume = 1.0f;
+	float volumeMod = 1.0f;
+	float pitch = 1.0f;
+	bool isPaused = false;
+	bool isMute = false;
+	bool isLoop = false;
+	bool isRandPitch = false;
+	int channel;*/
 };
 /*!*****************************************************************************
 \brief

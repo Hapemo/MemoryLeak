@@ -41,30 +41,6 @@ void WorldViewPanel::Update()
 		isViewportPaused = isScenePaused;
 		renderUI();
 		isScenePaused = isViewportPaused;
-		//Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
-		//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-		////if (ImGui::Button("Reset", buttonSize))
-		//	//serializationManager->LoadScene("SceneTmp");
-		////ImGui::SameLine(0.f,20.f);
-		//if (isScenePaused)
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-		//else
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-		//if (ImGui::Button("Play", buttonSize))
-		//{
-		//	isScenePaused = false;
-		//}
-		//ImGui::PopStyleColor();
-		//if (isScenePaused)
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-		//else
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-		//ImGui::SameLine(0.f, 20.f);
-		//if (ImGui::Button("Pause", buttonSize))
-		//{
-		//	isScenePaused = true;
-		//}
-		//ImGui::PopStyleColor();
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
 		fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();
 		ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
@@ -80,7 +56,7 @@ void WorldViewPanel::Update()
 			NewPrefabee();
 			ImGui::EndDragDropTarget();
 		}
-
+			PopObject();
 		if (ImGui::IsWindowHovered())
 		{
 			if (IsMouseInScreen())
@@ -89,7 +65,11 @@ void WorldViewPanel::Update()
 				ArrowKeyMoveCam();
 				ScrollMoveCam();
 				if (isScenePaused)
+				{
 					MouseClickMoveCam();
+					if(!SRT)
+						MouseOverObject();
+				}
 
 			}
 			if (Input::CheckKey(E_STATE::RELEASE, E_KEY::M_BUTTON_L) && isSelected == 1)
@@ -100,12 +80,13 @@ void WorldViewPanel::Update()
 			}
 			if (Input::CheckKey(E_STATE::NOTPRESS, E_KEY::M_BUTTON_L))
 				isSelected = 0;
-
+			
+		
 			//object picking
-			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen())
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) && IsMouseInScreen() &&SRT == 0)
 			{
-				SetSelectedEntity();
-				
+				if (isScenePaused)
+					SetSelectedEntity();
 			}
 
 			if (selectedEntity != nullptr && (*selectedEntity).GetComponent<General>().tag != TAG::BACKGROUND)
@@ -126,6 +107,8 @@ void WorldViewPanel::Update()
 					}
 				}
 			}
+			if(SRT!=4)
+				renderManager->GetGizmo().Detach();
 		}
 	}
 	ImGui::End();
@@ -346,6 +329,111 @@ void WorldViewPanel::SetSelectedEntity()
 					aspect = false;
 				}
 			}
+		}
+	}
+}
+/*!*****************************************************************************
+\brief
+	This Function checks the mover over entity
+
+\return
+None.
+*******************************************************************************/
+void WorldViewPanel::MouseOverObject()
+{
+	int layer = 0;
+	bool notColliding = false;
+	if (!(selectedGameState < (*mGameStates).size() && selectedScene < (*mGameStates)[selectedGameState].mScenes.size()))
+		return;
+	for (const Entity& ee : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
+	{
+		if (ee.GetComponent<General>().tag == TAG::BACKGROUND)
+			continue;
+		if (ee.HasComponent<Transform>() && ee.HasComponent<Sprite>()) //||e.HasComponent<Text>()
+		{
+			Math::Vec2 scale = ee.GetComponent<Transform>().scale;
+			Math::Vec2 translation = ee.GetComponent<Transform>().translation;
+			Math::Vec2 distance = camMousePos - translation;
+			if (abs(distance.x) < abs(scale.x) / 2 && abs(distance.y) < abs(scale.y) / 2)
+			{
+				if (ee.GetComponent<Sprite>().layer >= layer)
+				{
+					notColliding = true;
+					layer = ee.GetComponent<Sprite>().layer;
+					bool check = true;
+					for (int i = popList.size() - 1; i >= 0; i--)
+					{
+						if ((popList[i].first->id == ee.id))
+						{
+							check = false;
+							break;
+						}
+					}
+					if (check)
+					{
+						if (pop != nullptr)
+						{
+							if(pop->id != ee.id)
+								popList.push_back(std::make_pair(&ee, 0));
+						}
+						else
+							popList.push_back(std::make_pair(&ee, 0));
+
+					}
+					/*if (pop != nullptr)
+					{
+						if (pop->id != ee.id )
+						{
+							pop = &ee;
+							bool check = true;
+							for (int i = popList.size()-1; i >=0 ; i--)
+							{
+								if ((popList[i].first->id == ee.id))
+								{
+									check = false;
+									break;
+								}
+							}
+							if(check)
+								popList.push_back(std::make_pair(&ee, 0));
+						}
+					}
+					else
+					{
+						pop = &ee;
+						popList.push_back(std::make_pair(&ee, 0));
+					}*/
+					//return;
+				}
+			}
+		}
+	}
+	if (!notColliding)
+		pop = nullptr;
+}
+void WorldViewPanel::PopObject()
+{
+	for (int i = 0; i < popList.size(); i++)
+	{
+		if (popList[i].first != nullptr)
+		{
+			if (popList[i].second < 30)
+			{
+				popList[i].first->GetComponent<Transform>().scale.x += 0.5f;
+				popList[i].first->GetComponent<Transform>().scale.y += 0.5f;
+			}
+			else if(popList[i].second < 60)
+			{
+				popList[i].first->GetComponent<Transform>().scale.x -= 0.5f;
+				popList[i].first->GetComponent<Transform>().scale.y -= 0.5f;
+			}
+			popList[i].second++;
+			if (popList[i].second > 80)
+			{
+				pop = popList[i].first;
+				popList.erase(popList.begin()+i);
+			}
+
 		}
 	}
 }
