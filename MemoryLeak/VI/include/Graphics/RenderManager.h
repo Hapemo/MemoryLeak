@@ -310,13 +310,13 @@ private:
 	\brief
 	Creating vertices from the ECS.
 	*******************************************************************************/
-	void CreateVertices(std::map<GLuint, TextureInfo>& _texInfo);
+	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
 	/*!*****************************************************************************
 	\brief
 	Rendering of textures
 	*******************************************************************************/
-	void RenderTextures(std::map<GLuint, TextureInfo>& _texInfo);
+	void RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
 	/*!*****************************************************************************
 	\brief

@@ -100,7 +100,7 @@ void RenderManager::Render()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	std::map<GLuint, TextureInfo> textureInfo;
+	std::map<size_t, std::map<GLuint, TextureInfo>> textureInfo;
 
 	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
@@ -163,7 +163,7 @@ GLuint RenderManager::GetAnimatorFBO()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	std::map<GLuint, TextureInfo> textureInfo;
+	std::map<size_t, std::map<GLuint, TextureInfo>> textureInfo;
 
 	CreateVertices(textureInfo);
 	RenderTextures(textureInfo);
@@ -443,7 +443,7 @@ void RenderManager::BatchRenderElements(GLenum _mode, const std::vector<Vertex>&
 \brief
 Creating vertices from the ECS.
 *******************************************************************************/
-void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
+void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>&_texInfo)
 {
 	for (const Entity& e : mEntities)
 	{
@@ -451,20 +451,24 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 		if (!e.ShouldRun()) continue;
 		if (ShouldCull(e)) continue;
 
+
 		if (e.HasComponent<Sprite>())
 		{
-			switch (e.GetComponent<Sprite>().sprite)
+			Sprite sprite = e.GetComponent<Sprite>();
+			switch (sprite.sprite)
 			{
 			case SPRITE::TEXTURE:
 			{
-				GLuint texid = e.GetComponent<Sprite>().texture;
+				GLuint texid = sprite.texture;
 
 				if (texid != 0)
 				{
-					if (_texInfo.find(texid) == _texInfo.end())
-						_texInfo[texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+					if (_texInfo.find(sprite.layer) == _texInfo.end())
+						_texInfo[sprite.layer] = std::map<GLuint, TextureInfo>();
+					if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
+						_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-					CreateSquare(e, _texInfo[texid].mVertices, _texInfo[texid].mIndices);
+					CreateSquare(e, _texInfo[sprite.layer][texid].mVertices, _texInfo[sprite.layer][texid].mIndices);
 				}
 			}
 			break;
@@ -489,7 +493,7 @@ void RenderManager::CreateVertices(std::map<GLuint, TextureInfo>& _texInfo)
 \brief
 Rendering of textures
 *******************************************************************************/
-void RenderManager::RenderTextures(std::map<GLuint, TextureInfo>& _texInfo)
+void RenderManager::RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo>>&_texInfo)
 {
 	int samplerUniform[TEXTURES_PER_DRAW];
 	for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
@@ -507,26 +511,30 @@ void RenderManager::RenderTextures(std::map<GLuint, TextureInfo>& _texInfo)
 	usedTexUnits.reserve(TEXTURES_PER_DRAW);
 
 	//iterate over texture map
-	for (std::map<GLuint, TextureInfo>::iterator it = _texInfo.begin(); it != _texInfo.end(); ++it)
+	for (std::map<size_t, std::map<GLuint, TextureInfo>>::iterator it = _texInfo.begin(); it != _texInfo.end(); ++it)
 	{
-		//if texture unit is not used, concat vertices
-		if (std::find(usedTexUnits.begin(), usedTexUnits.end(),
-			it->second.mTextureUnit % TEXTURES_PER_DRAW) == usedTexUnits.end())
+		for (std::map<GLuint, TextureInfo>::iterator it2 = it->second.begin(); it2 != it->second.end(); ++it2)
 		{
-			BindTextureUnit(it->first, it->second, usedTexUnits);
-			++textureCount;
+			//if texture unit is not used, concat vertices
+			if (std::find(usedTexUnits.begin(), usedTexUnits.end(),
+				it2->second.mTextureUnit % TEXTURES_PER_DRAW) == usedTexUnits.end())
+			{
+				BindTextureUnit(it2->first, it2->second, usedTexUnits);
+				++textureCount;
 
-			//if all texture units are used, draw
-			if (textureCount == TEXTURES_PER_DRAW)
+				//if all texture units are used, draw
+				if (textureCount == TEXTURES_PER_DRAW)
+					BatchRenderTextures(textureCount, usedTexUnits);
+			}
+			//if texture unit is used, render
+			else
+			{
 				BatchRenderTextures(textureCount, usedTexUnits);
+				BindTextureUnit(it2->first, it2->second, usedTexUnits);
+				++textureCount;
+			}
 		}
-		//if texture unit is used, render
-		else
-		{
-			BatchRenderTextures(textureCount, usedTexUnits);
-			BindTextureUnit(it->first, it->second, usedTexUnits);
-			++textureCount;
-		}
+		BatchRenderTextures(textureCount, usedTexUnits);
 	}
 	//render remaining textures if any
 	BatchRenderTextures(textureCount, usedTexUnits);

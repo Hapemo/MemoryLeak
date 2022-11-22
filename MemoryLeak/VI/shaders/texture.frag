@@ -29,9 +29,5 @@ void main (void) {
 	vec4 temp;
 	temp = texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
 
-	//discard transparent fragments
-	if (temp.a <= 0)
-		discard;
-
 	fFragColor = temp;
 }
