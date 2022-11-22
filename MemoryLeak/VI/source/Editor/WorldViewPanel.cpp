@@ -39,25 +39,26 @@ void WorldViewPanel::Update()
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
 		mWorldMousePos = worldMousePos;
 		isViewportPaused = isScenePaused;
-		
+		//ImGui::SetWindowFontScale(1.1);
 		if (selectedGameState < (*mGameStates).size())
 		{
-			std::string gamesstateName = "Selected GameState: " + (*mGameStates)[selectedGameState].mName;
+			std::string gamesstateName = "GameState: " + (*mGameStates)[selectedGameState].mName;
 			ImGui::Text(gamesstateName.c_str());
 		}
 		if (selectedScene < (*mGameStates)[selectedGameState].mScenes.size())
 		{
-			std::string sceneName= "Selected Scene : " + (*mGameStates)[selectedGameState].mScenes[selectedScene].mName;
+			std::string sceneName= "Scene : " + (*mGameStates)[selectedGameState].mScenes[selectedScene].mName;
 			ImGui::Text(sceneName.c_str());
 		}
 		else if (selectedScene == 99)
 		{
-			std::string sceneName = "ALL Scenes Preview : NO SCENE SELECTED!";
+			std::string sceneName = "NO SCENE SELECTED!";
 			ImGui::Text(sceneName.c_str());
 		}
-
+		//ImGui::SetWindowFontScale(1.0);
 		renderUI();
-		ImGui::SameLine(0.f, 20.f);
+		ImGui::SetWindowFontScale(1.5);
+		ImGui::SameLine(0.f, 50.f);
 		if (ImGui::Button("Reset", buttonSize))
 		{
 			//std::string oldName = (*mGameStates)[selectedGameState].mName;
@@ -78,6 +79,7 @@ void WorldViewPanel::Update()
 			/*selectedScene = 100;
 			selectedGameState = 100;*/
 		}
+		ImGui::SetWindowFontScale(1.0);
 		isScenePaused = isViewportPaused;
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
 		fameBufferImage = (void*)(intptr_t)renderManager->GetWorldFBO();
@@ -99,6 +101,16 @@ void WorldViewPanel::Update()
 		{
 			if (IsMouseInScreen())
 			{
+				if (selectedScene == 99)
+				{
+					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
+					{
+						ImGui::SetWindowFontScale(1.8);
+						ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight() / 2.f-200.f));
+						ImGui::Button("<----\t\t\tSelect a Scene! \n This is a preview of all Active scenes overlayed.", ImVec2(ImGui::GetWindowWidth()-100.f,400.f));
+						ImGui::SetWindowFontScale(1.0);
+					}
+				}
 				//Camera movement
 				ArrowKeyMoveCam();
 				ScrollMoveCam();
@@ -107,6 +119,16 @@ void WorldViewPanel::Update()
 					MouseClickMoveCam();
 					if(!SRT)
 						MouseOverObject();
+				}
+				else
+				{
+					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
+					{
+						ImGui::SetWindowFontScale(1.5);
+						ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight() / 2.f - 200.f));
+						ImGui::Button("Dont touch me when scene is playing!!", ImVec2(ImGui::GetWindowWidth() - 100.f, 300.f));
+						ImGui::SetWindowFontScale(1.0);
+					}
 				}
 
 			}
