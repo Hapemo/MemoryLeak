@@ -2,7 +2,7 @@
     {
         "General": {
             "name": "Background",
-            "tag": 8,
+            "tag": 4,
             "subtag": 0,
             "isActive": true
         },
@@ -31,7 +31,7 @@
     },
     {
         "General": {
-            "name": "Paused",
+            "name": "How_To_Play",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -76,8 +76,8 @@
     },
     {
         "General": {
-            "name": "W key",
-            "tag": 8,
+            "name": "W_key",
+            "tag": 5,
             "subtag": 1,
             "isActive": true
         },
@@ -129,8 +129,8 @@
     },
     {
         "General": {
-            "name": "A key",
-            "tag": 8,
+            "name": "A_key",
+            "tag": 5,
             "subtag": 1,
             "isActive": true
         },
@@ -142,7 +142,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -421.739013671875,
-                "Y": 12.164470672607422
+                "Y": 12.164471626281738
             }
         },
         "Sprite": {
@@ -182,8 +182,8 @@
     },
     {
         "General": {
-            "name": "S key",
-            "tag": 8,
+            "name": "S_key",
+            "tag": 5,
             "subtag": 1,
             "isActive": true
         },
@@ -235,8 +235,8 @@
     },
     {
         "General": {
-            "name": "D key",
-            "tag": 8,
+            "name": "D_key",
+            "tag": 5,
             "subtag": 1,
             "isActive": true
         },
@@ -289,7 +289,7 @@
     {
         "General": {
             "name": "Back",
-            "tag": 8,
+            "tag": 5,
             "subtag": 1,
             "isActive": true
         },
@@ -300,7 +300,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1.875,
+                "X": 0.0,
                 "Y": -333.75
             }
         },
