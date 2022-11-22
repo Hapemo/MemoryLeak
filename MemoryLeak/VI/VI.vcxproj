@@ -223,6 +223,7 @@
     <ClInclude Include="include\Graphics\VertexFetcher.h" />
     <ClInclude Include="include\Graphics\VIzmoProps.h" />
     <ClInclude Include="include\LayerManager.h" />
+    <ClInclude Include="include\Logic\InternalCalls.h" />
     <ClInclude Include="include\Logic\LogicSystem.h" />
     <ClInclude Include="include\Logic\MScriptComponent.h" />
     <ClInclude Include="include\Logic\ScriptComponent.h" />
@@ -314,6 +315,7 @@
     <ClCompile Include="source\Graphics\VertexFetcher.cpp" />
     <ClCompile Include="source\LayerManager.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
+    <ClCompile Include="source\Logic\InternalCalls.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
     <ClCompile Include="source\Logic\MScriptComponent.cpp" />
     <ClCompile Include="source\Logic\ScriptComponent.cpp" />

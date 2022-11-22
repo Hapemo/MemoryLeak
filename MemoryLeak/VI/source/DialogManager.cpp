@@ -62,7 +62,7 @@ bool DialogManager::HasChoice(int _id) {
 	if (mDialogs.count(_id)) {
 		if (mDialogs[_id].next2) return true;
 		else return false;
-	} else LOG_ERROR("Dialogue ID doesn't exist! - HasChoice" + std::to_string(_id));
+	} else LOG_ERROR("HasChoice(): Dialogue ID doesn't exist!" + std::to_string(_id));
 	return false;
 }
 
@@ -78,7 +78,7 @@ Returns the speaker id.
 *******************************************************************************/
 int DialogManager::GetSpeaker(int _id) {
 	if(mDialogs.count(_id)) return mDialogs[_id].speaker;
-	else LOG_ERROR("Dialogue ID doesn't exist! - GetSpeaker" + std::to_string(_id));
+	else LOG_ERROR("GetSpeaker(): Dialogue ID doesn't exist!" + std::to_string(_id));
 	return -1;
 }
 
@@ -94,7 +94,7 @@ Returns the dialog text in string.
 *******************************************************************************/
 std::string DialogManager::GetDialogue(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].text;
-	else LOG_ERROR("Dialogue ID doesn't exist! - GetDialogue" + std::to_string(_id));
+	else LOG_ERROR("GetDialogue(): Dialogue ID doesn't exist!" + std::to_string(_id));
 	return "";
 }
 
@@ -110,7 +110,7 @@ Returns the next dialog id.
 *******************************************************************************/
 int DialogManager::GetNext(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].next;
-	else LOG_ERROR("Dialogue ID doesn't exist! - GetNext" + std::to_string(_id));
+	else LOG_ERROR("GetNext(): Dialogue ID doesn't exist!" + std::to_string(_id));
 	return 0;
 }
 
@@ -126,7 +126,7 @@ Returns the second choice dialog id.
 *******************************************************************************/
 int DialogManager::GetNext2(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].next2;
-	else LOG_ERROR("Dialogue ID doesn't exist!- GetNext2" + std::to_string(_id));
+	else LOG_ERROR("GetNext2(): Dialogue ID doesn't exist!" + std::to_string(_id));
 	return 0;
 }
 
@@ -139,7 +139,7 @@ The id of the current dialog.
 *******************************************************************************/
 int DialogManager::GetSelectedChoice(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].selectedChoice;
-	else LOG_ERROR("Dialogue ID doesn't exist!- GetSelectedChoice" + std::to_string(_id));
+	else LOG_ERROR("GetSelectedChoice(): Dialogue ID doesn't exist!" + std::to_string(_id));
 	return 0;
 }
 
@@ -155,7 +155,7 @@ The selected choice.
 *******************************************************************************/
 void DialogManager::SetSelectedChoice(int _id, int _selectedChoice) {
 	if (mDialogs.count(_id)) mDialogs[_id].selectedChoice = _selectedChoice;
-	else LOG_ERROR("Dialogue ID doesn't exist!- SetSelectedChoice" + std::to_string(_id));
+	else LOG_ERROR("SetSelectedChoice(): Dialogue ID doesn't exist!" + std::to_string(_id));
 }
 
 /*!*****************************************************************************
@@ -180,7 +180,7 @@ std::pair<int, int> DialogManager::GetChoices(int _id) {
 			choices.second = mDialogs[_id].next2;
 		}
 	}
-	else LOG_ERROR("Dialogue ID doesn't exist!- GetChoices" + std::to_string(_id));
+	else LOG_ERROR("GetChoices(): Dialogue ID doesn't exist!" + std::to_string(_id));
 	return choices;
 }
 

@@ -1,14 +1,12 @@
 /*!*****************************************************************************
-\file ScaleScript.h
+\file DialogueScript.h
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
-\date 24-10-2022
+\date 02-11-2022
 \brief
-This file contains the function declarations of the class ScaleScript.
-The ScaleScript class is an example to test the scripting component in the
-engine.
+This file contains the function declarations of the class DialogueScript.
 *******************************************************************************/
 
 #pragma once
@@ -16,13 +14,13 @@ engine.
 #include "ScriptManager.h"
 #include "ScriptComponent.h"
 
-class ScaleScript : public ScriptComponent {
+class DialogueScript : public ScriptComponent {
 private:
-	std::string name = "ScaleScript";
+	std::string name = "DialogueScript";
 
 public:
-	ScaleScript() = default;
-	~ScaleScript() override = default;
+	DialogueScript() = default;
+	~DialogueScript() override = default;
 
 	/*!*****************************************************************************
 	\brief

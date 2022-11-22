@@ -20,13 +20,20 @@ This file contains function declarations for a audio system
 class AudioManager : public System
 {
 public:
+	enum class E_CHANNEL
+	{
+		FORCEPLAY =0,
+		MAINBACKGROUND,
+		DIALOGUE,
+
+	};
 	void Init();								//constructor add fmod
 	void Unload();							//Deconstructor
 
 	FMOD::Sound* LoadAudio(std::filesystem::path const& audio);
 	void LoadDialogueAudio(std::string audio);
+	//void LoadSound();							//Load all sound 
 	bool isPlaying(int _channel);
-	void LoadSound();							//Load all sound 
 	void PlayAnySound(std::string _snd, int _channel);
 	void PlayDialogueSound(std::string _snd, int _channel);
 	void PlayBGSound(std::string, int);
@@ -34,7 +41,8 @@ public:
 	void SetALLVolume(float vol);
 	void SetBGMVolume(float vol);
 	void SetSFXVolume(float vol);
-	void PlaySound(const Entity& e, int sound);	//Play sound 
+	void PlaySound(const Entity& e);	//Play sound 
+	int AddChannel();
 	std::vector<std::string> GetSongs() { return songs; }
 private:
 	//WIP

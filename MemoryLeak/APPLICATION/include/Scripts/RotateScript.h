@@ -13,7 +13,6 @@ engine.
 
 #pragma once
 #include "ECS_tools.h"
-#include "Input.h"
 #include "ScriptComponent.h"
 #include "ScriptManager.h"
 

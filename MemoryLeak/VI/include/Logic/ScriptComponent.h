@@ -14,6 +14,7 @@ engine.
 #pragma once
 #include "ECS_items.h"
 #include "Logger.h"
+#include "InternalCalls.h"
 
 class ScriptComponent {
 private:

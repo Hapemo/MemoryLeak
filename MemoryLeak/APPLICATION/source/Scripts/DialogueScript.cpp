@@ -1,25 +1,23 @@
 /*!*****************************************************************************
-\file TestScript.cpp
+\file DialogueScript.cpp
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 02-11-2022
 \brief
-This file contains the function definitions of the class TestScript.
-The TestScript class is an example to test the scripting component in the
-engine.
+This file contains the function definitions of the class DialogueScript.
 *******************************************************************************/
 
-#include "TestScript.h"
+#include "DialogueScript.h"
 
-REGISTER_SCRIPT(ScriptComponent, TestScript);
+REGISTER_SCRIPT(ScriptComponent, DialogueScript);
 
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void TestScript::StartScript(Entity const& gob) {
+void DialogueScript::StartScript(Entity const& gob) {
 	(void)gob;
 	LOG_INFO("Test script starts works!!!");
 }
@@ -28,12 +26,13 @@ void TestScript::StartScript(Entity const& gob) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void TestScript::UpdateScript(Entity const& gob) {
+void DialogueScript::UpdateScript(Entity const& gob) {
 	(void)gob;
-	static int counter{};
-	if (++counter > 500) {
-		LOG_INFO("Test script updating works!!!");
-		counter = 0;
+	if (FUNC->CheckKey(E_STATE::HOLD, M)) {
+		std::cout << InternalCalls::GetInstance()->GetWorldMousePos().y << " " << InternalCalls::GetInstance()->GetWorldMousePos().x << "\n";
+	}
+	else if (InternalCalls::GetInstance()->CheckKey(E_STATE::HOLD, N)) {
+		std::cout << FUNC->GetWorldMousePos().y << " " << InternalCalls::GetInstance()->GetWorldMousePos().x << "\n";
 	}
 }
 
@@ -41,7 +40,7 @@ void TestScript::UpdateScript(Entity const& gob) {
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void TestScript::EndScript(Entity const& gob) {
+void DialogueScript::EndScript(Entity const& gob) {
 	(void)gob;
 	LOG_INFO("Test script end works!!!");
 }
