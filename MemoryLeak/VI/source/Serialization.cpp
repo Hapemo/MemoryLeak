@@ -1037,7 +1037,8 @@ void SerializationManager::addLightSource(Document& scene, Value& entity, LightS
 void SerializationManager::addScript(Document& scene, Value& entity, Script script)
 {
 	Value tmp(kObjectType);
-	tmp.AddMember(StringRef("name"), StringRef(script.name.c_str()), scene.GetAllocator());
+	Value spath(script.name.c_str(), (SizeType)script.name.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("name"), spath, scene.GetAllocator());
 	entity.AddMember(StringRef("Script"), tmp, scene.GetAllocator());
 }
 
