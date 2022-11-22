@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\Scripts\DialogueScript.h" />
+    <ClInclude Include="include\Scripts\PlayerMovementScript.h" />
     <ClInclude Include="include\Scripts\RotateScript.h" />
     <ClInclude Include="include\Scripts\ScaleScript.h" />
     <ClInclude Include="include\Scripts\TestScript.h" />
@@ -29,6 +30,7 @@
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Scripts\DialogueScript.cpp" />
+    <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
     <ClCompile Include="source\Scripts\RotateScript.cpp" />
     <ClCompile Include="source\Scripts\ScaleScript.cpp" />
     <ClCompile Include="source\Scripts\TestScript.cpp" />
