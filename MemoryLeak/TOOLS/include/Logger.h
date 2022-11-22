@@ -120,8 +120,10 @@ public:
         mLoggerStr.push_back(std::make_pair((E_LOGLEVEL)_logType, ("[" + currentDate + " | " + currentTime + "]\t" + _logMessage).c_str()));
 
         // printing log into terminal
+#ifdef NDEBUG
+#else
         std::cout << "[" << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME).c_str() << "]\t" << Logger::mLogTypesVec[_logType].title.c_str() << "\t" << _logMessage << "\n";
-
+#endif
         // human readable log file
         mLogFile << "[" << currentDate << " | " << currentTime << "] " << std::left << std::setw(10) << Logger::mLogTypesVec[_logType].title << _logMessage;
 

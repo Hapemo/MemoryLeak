@@ -13,6 +13,8 @@ engine.
 
 #include "ScaleScript.h"
 
+REGISTER_SCRIPT(ScriptComponent, ScaleScript);
+
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
