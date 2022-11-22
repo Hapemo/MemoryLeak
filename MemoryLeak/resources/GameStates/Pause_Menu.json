@@ -3,8 +3,8 @@
         "SceneName": "Pause",
         "Transform": {
             "scale": {
-                "X": -0.0,
-                "Y": -0.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "rotation": 1.0,
             "translation": {
