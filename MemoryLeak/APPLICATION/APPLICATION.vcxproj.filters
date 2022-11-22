@@ -5,6 +5,7 @@
     <ClInclude Include="include\Scripts\RotateScript.h" />
     <ClInclude Include="include\Scripts\ScaleScript.h" />
     <ClInclude Include="include\Scripts\TestScript.h" />
+    <ClInclude Include="include\Scripts\DialogueScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -12,5 +13,6 @@
     <ClCompile Include="source\Scripts\RotateScript.cpp" />
     <ClCompile Include="source\Scripts\ScaleScript.cpp" />
     <ClCompile Include="source\Scripts\TestScript.cpp" />
+    <ClCompile Include="source\Scripts\DialogueScript.cpp" />
   </ItemGroup>
 </Project>
