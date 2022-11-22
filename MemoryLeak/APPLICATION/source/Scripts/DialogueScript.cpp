@@ -11,6 +11,8 @@ This file contains the function definitions of the class DialogueScript.
 
 #include "DialogueScript.h"
 
+REGISTER_SCRIPT(ScriptComponent, DialogueScript);
+
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
@@ -26,11 +28,11 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void DialogueScript::UpdateScript(Entity const& gob) {
 	(void)gob;
-	static int counter{};
-	if (++counter > 1000) {
-		LOG_INFO("Test script updating works!!!");
-		//std::cout << InternalCalls::GetInstance()->GetWorldMousePos().y << " " << InternalCalls::GetInstance()->GetWorldMousePos().x << "\n";
-		counter = 0;
+	if (FUNC->CheckKey(E_STATE::HOLD, M)) {
+		std::cout << InternalCalls::GetInstance()->GetWorldMousePos().y << " " << InternalCalls::GetInstance()->GetWorldMousePos().x << "\n";
+	}
+	else if (InternalCalls::GetInstance()->CheckKey(E_STATE::HOLD, N)) {
+		std::cout << FUNC->GetWorldMousePos().y << " " << InternalCalls::GetInstance()->GetWorldMousePos().x << "\n";
 	}
 }
 

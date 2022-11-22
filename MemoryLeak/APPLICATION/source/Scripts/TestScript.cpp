@@ -13,6 +13,8 @@ engine.
 
 #include "TestScript.h"
 
+REGISTER_SCRIPT(ScriptComponent, TestScript);
+
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
