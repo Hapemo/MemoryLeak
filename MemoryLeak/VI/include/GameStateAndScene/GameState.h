@@ -4,10 +4,10 @@
 
 class GameState {
 public:
-	void Init();
-	void Update();
+	void Init(); // Only initially active scenes will init
+	void Update(); // Only active scenes will update
 
-	void Exit();
+	void Exit(); // All scene's exit will be called regardless of pause state
 
 	// Load new gamestate with file path
 	
