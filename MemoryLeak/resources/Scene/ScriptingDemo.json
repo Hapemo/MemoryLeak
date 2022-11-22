@@ -80,7 +80,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -456.5693359375,
-                "Y": 20.80292320251465
+                "Y": 20.80292510986328
             }
         },
         "Sprite": {
@@ -105,8 +105,23 @@
             },
             "renderFlag": true
         },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "",
+            "offset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
         "Script": {
-            "name": ""
+            "name": "\u0000ialogueScript"
         }
     }
 ]
