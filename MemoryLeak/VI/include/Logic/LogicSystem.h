@@ -52,4 +52,22 @@ public:
 	Run the exit function for all active entities' scripts.
 	*******************************************************************************/
 	void Exit();
+
+	/*!*****************************************************************************
+	\brief
+	Run the initialisation function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void Init(std::set<Entity> const & _entities);
+
+	/*!*****************************************************************************
+	\brief
+	Run the update function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void Update(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
+	Run the exit function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void Exit(std::set<Entity> const& _entities);
 };
