@@ -46,7 +46,7 @@
                 "Y": 0.0
             }
         },
-        "isActive": false,
+        "isActive": true,
         "layer": 0,
         "order": 0
     }
