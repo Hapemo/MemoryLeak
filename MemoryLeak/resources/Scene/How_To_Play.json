@@ -13,8 +13,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1.00128173828125,
-                "Y": 1.4392852783203125
+                "X": 18.99871826171875,
+                "Y": 21.439300537109375
             }
         },
         "Sprite": {
@@ -43,8 +43,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1.001220703125,
-                "Y": 3.4417877197265625
+                "X": 21.001220703125,
+                "Y": 23.441787719726563
             }
         },
         "Sprite": {
@@ -60,10 +60,10 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "PAUSED",
+            "text": "HOW TO PLAY",
             "offset": {
-                "X": -135.0,
-                "Y": 195.0
+                "X": -250.0,
+                "Y": 196.0
             },
             "scale": 1.5,
             "color": {
@@ -76,20 +76,20 @@
     },
     {
         "General": {
-            "name": "Settings_button",
-            "tag": 8,
-            "subtag": 0,
+            "name": "NEW Prefabee1",
+            "tag": 5,
+            "subtag": 1,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 100.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1.0012664794921875,
-                "Y": 77.53440856933594
+                "X": -414.239013671875,
+                "Y": 139.26699829101563
             }
         },
         "Sprite": {
@@ -97,65 +97,28 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 255
+                "a": 100
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 1
         },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Controls",
-            "offset": {
-                "X": -89.0,
-                "Y": -16.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
-            "name": "QuitGame_button",
-            "tag": 7,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 496.0,
-                "Y": 99.0
-            },
-            "rotation": 0.0,
-            "translation": {
+        "CircleCollider": {
+            "centerOffset": {
                 "X": 0.0,
-                "Y": -44.05507278442383
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
+                "Y": 0.0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 1
+            "scaleOffset": 1.0,
+            "renderFlag": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Quit Game",
+            "text": "W    Move Up",
             "offset": {
-                "X": -109.0,
-                "Y": -17.0
+                "X": -17.0,
+                "Y": -16.0
             },
-            "scale": 1.0,
+            "scale": 0.75,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -166,20 +129,20 @@
     },
     {
         "General": {
-            "name": "Resume",
-            "tag": 7,
-            "subtag": 0,
+            "name": "NEW Prefabee1",
+            "tag": 5,
+            "subtag": 1,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 100.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1.001251220703125,
-                "Y": -170.77597045898438
+                "X": -414.239013671875,
+                "Y": 12.164469718933105
             }
         },
         "Sprite": {
@@ -187,20 +150,134 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 255
+                "a": 100
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 1
         },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "renderFlag": false
+        },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Resume",
+            "text": "A    Move Left",
             "offset": {
-                "X": -72.0,
+                "X": -13.0,
+                "Y": -14.0
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Prefabee1",
+            "tag": 5,
+            "subtag": 1,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -414.239013671875,
+                "Y": -116.27534484863281
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "renderFlag": false
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "S    Move Down",
+            "offset": {
+                "X": -8.0,
                 "Y": -16.0
             },
-            "scale": 1.0,
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Prefabee1",
+            "tag": 5,
+            "subtag": 1,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -414.239013671875,
+                "Y": -239.36598205566406
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "renderFlag": false
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "D    Move Right",
+            "offset": {
+                "X": -9.0,
+                "Y": -16.0
+            },
+            "scale": 0.75,
             "color": {
                 "r": 255,
                 "g": 255,
