@@ -22,3 +22,9 @@ C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scr
 C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.pdb
 C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
 C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.dll
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.pdb
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb

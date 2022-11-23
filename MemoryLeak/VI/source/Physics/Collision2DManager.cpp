@@ -16,49 +16,14 @@
 // -----------------------------
 #include "ECSManager.h"
 
-
-Contact::Contact(const Entity& _obj1, const Entity& _obj2, const int& _obj1Type, const int& _obj2Type) {
-	// Leave Empty
-	obj[0] = _obj1;
-	obj[1] = _obj2;
-	objType[0] = _obj1Type;
-	objType[1] = _obj2Type;
-
-	combinedRestitution = DetermineRestitution();
-	combinedFriction = DetermineFriction();
-	seperatingVelocity = DetermineSeperatingVelocity();
-}
-
-float Contact::DetermineRestitution() {
-	if (!obj[0].HasComponent<Physics2D>() || !obj[1].HasComponent<Physics2D>()) {
-		return obj[0].HasComponent<Physics2D>() ? obj[0].GetComponent<Physics2D>().restitution : obj[1].HasComponent<Physics2D>() ? obj[1].GetComponent<Physics2D>().restitution : 0.f;
-	}
-
-	return std::min(obj[0].GetComponent<Physics2D>().restitution, obj[1].GetComponent<Physics2D>().restitution);
-}
-
-float Contact::DetermineFriction() {
-	if (!obj[0].HasComponent<Physics2D>() || !obj[1].HasComponent<Physics2D>()) {
-		return obj[0].HasComponent<Physics2D>() ? std::sqrtf(obj[0].GetComponent<Physics2D>().friction) : obj[1].HasComponent<Physics2D>() ? std::sqrtf(obj[1].GetComponent<Physics2D>().friction) : 0.f;
-	}
-
-	return std::sqrtf(obj[0].GetComponent<Physics2D>().friction * obj[1].GetComponent<Physics2D>().friction);
-}
-
-float Contact::DetermineSeperatingVelocity() {
-	Math::Vec2 relVel{};
-	if (obj[0].HasComponent<Physics2D>() && obj[1].HasComponent<Physics2D>())
-		relVel = obj[0].GetComponent<Physics2D>().velocity - obj[1].GetComponent<Physics2D>().velocity;
-	else if (obj[0].HasComponent<Physics2D>())
-		relVel = obj[0].GetComponent<Physics2D>().velocity;
-	else if (obj[1].HasComponent<Physics2D>())
-		relVel = obj[1].GetComponent<Physics2D>().velocity;
-
-	return Math::Dot(relVel, normal);
-}
-
 //std::vector<Entity> Collision2DManager::CI_PlayervsEnemy(const Entity& _player, const Entity& _enemy) {
 //	return 
+//}
+
+//bool Collision2DManager::SCI_RectvsCircle(const Math::Vec2& _rectPos, const Math::Vec2& _rectScale, const Math::Vec2& _circlePos, const float& _circleScale) {
+//
+//
+//	return false;
 //}
 
 
