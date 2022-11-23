@@ -22,6 +22,8 @@ mWindowWidth(0), mWindowHeight(0)
     mMatrixLocation = glGetUniformLocation(mFontProgram.GetID(), "projection");
     mTextColorLocation = glGetUniformLocation(mFontProgram.GetID(), "textColor");
     mZValueLocation = glGetUniformLocation(mFontProgram.GetID(), "zValue");
+    mMaxYSize = 0;
+    mCamZoom = 0;
     mInitialized = Init(fontfile);
 }
 /*!*****************************************************************************
@@ -98,6 +100,7 @@ bool FontRenderer::Init(const std::string& _fontfile)
             (unsigned int)face->glyph->advance.x
         };
         mGlyphs.insert(std::pair<char, Character>(c, character));
+        mMaxYSize = (float)face->glyph->bitmap.rows > mMaxYSize ? (float)face->glyph->bitmap.rows : mMaxYSize;
     }
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
@@ -132,10 +135,10 @@ Scale of the font.
 \param const Math::Vec3& _color
 Color of the font.
 *******************************************************************************/
-void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float layer)
+void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float layer,float _width)
 {
     if (!mInitialized) return;
-    mParagraphs.push_back(Paragraph(text, _pos, scale, color, layer));
+    mParagraphs.push_back(Paragraph(text, _pos, scale, color, layer, _width));
 }
 /*!*****************************************************************************
 \brief
@@ -148,7 +151,9 @@ void FontRenderer::DrawParagraphs()
 
     for (const Paragraph& para : mParagraphs)
     {
+        float currWidth{};
         Math::Vec2 pos = para.pos;
+        float initialX = pos.x;
         mFontProgram.Bind();
         glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
         glUniform3f(mTextColorLocation, para.color.r, para.color.g, para.color.b);
@@ -160,11 +165,22 @@ void FontRenderer::DrawParagraphs()
         for (std::string::const_iterator cIter = para.characters.begin(); cIter != para.characters.end(); ++cIter)
         {
             Character ch = mGlyphs[*cIter];
+            float w = ch.size.x * para.scale;
+            float h = ch.size.y * para.scale;
+            currWidth += w;
+            if (currWidth > para.renderWidth * 0.6f / mCamZoom)
+            {
+                if (*(cIter) == ' ')
+                {
+                    pos.x = initialX;
+                    pos.y -= (mMaxYSize / mCamZoom) * para.scale;
+                    currWidth = 0;
+                    continue;
+                }
+            }
             float xpos = pos.x + ch.bearing.x * para.scale;
             float ypos = pos.y - (ch.size.y - ch.bearing.y) * para.scale;
 
-            float w = ch.size.x * para.scale;
-            float h = ch.size.y * para.scale;
             // update VBO for each character
             float vertices[6][4] = {
                 { xpos,     ypos + h,   0.0f, 0.0f },
@@ -185,7 +201,7 @@ void FontRenderer::DrawParagraphs()
             glDrawArrays(GL_TRIANGLES, 0, 6);
 
             // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-            pos.x += (ch.advance >> 6) * para.scale; // bitshift by 6 to get value in pixels (2^6 = 64)
+            pos.x += (ch.advanceX >> 6) * para.scale; // bitshift by 6 to get value in pixels (2^6 = 64)
         }
         glBindVertexArray(0);
         glBindTexture(GL_TEXTURE_2D, 0);

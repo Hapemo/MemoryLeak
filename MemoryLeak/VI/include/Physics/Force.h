@@ -5,7 +5,7 @@
 \par	Course: GAM200
 \par	Group: Memory Leak Studios
 \date	27-09-2022
-\brief  This file contains the declaration of the Force class, its member 
+\brief  This file contains the declaration of the Force class, its member
 		functions and its data members which encapsulates information about
 		a force that needs to be acted on an entity
 *******************************************************************************/
@@ -17,7 +17,7 @@
 #include "pch.h"
 
 /*!*****************************************************************************
-\brief Force class that encapsulates information about the Force and its 
+\brief Force class that encapsulates information about the Force and its
 		different types
 *******************************************************************************/
 class Force {
@@ -40,7 +40,25 @@ public:
 		*this = _rhs;
 	}
 
-	Force(const double& _lifetimeLimit, const double& _age, const bool& _isActive, const Math::Vec2& _unitDirection, const float& _magnitude ) {
+	/*!*****************************************************************************
+	\brief
+	Overloaded constructor. Creates a force that encapsulates a linear force
+	\param const Math::Vec2 &
+	A reference to a read-only variable containing the direction of the force
+	\param const float &
+	A reference to a read-only variable containing the magnitude of the force
+	\param const double &
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const double &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	*******************************************************************************/
+	Force(const Math::Vec2& _unitDirection, const float& _magnitude, const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true) {
 		this->lifetimeLimit = _lifetimeLimit;
 		this->age = _age;
 		this->isActive = _isActive;
@@ -49,7 +67,23 @@ public:
 		this->linearForce.magnitude = _magnitude;
 	}
 
-	Force(const double& _lifetimeLimit, const double& _age, const bool& _isActive, const float& _torque) {
+	/*!*****************************************************************************
+	\brief
+	Overloaded constructor. Creates a force that encapsulates a rotation force
+	\param const float &
+	A reference to a read-only variable containing the torque
+	\param const double &
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const double &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	*******************************************************************************/
+	Force(const float& _torque, const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true) {
 		this->lifetimeLimit = _lifetimeLimit;
 		this->age = _age;
 		this->isActive = _isActive;
@@ -57,7 +91,27 @@ public:
 		this->rotationalForce.torque = _torque;
 	}
 
-	Force(const double& _lifetimeLimit, const double& _age, const bool& _isActive, const float& _directionalDrag, const float& _rotationalDrag) {
+	/*!*****************************************************************************
+	\brief
+	Overloaded constructor. Creates a force that encapsulates a rotation force
+	\param const float &
+	A reference to a read-only variable containing the directional drag force. It has
+	a default value of 1
+	\param const float &
+	A reference to a read-only variable containing the rotational drag force. It has
+	a default value of 1
+	\param const double &
+	A reference to a read-only variable containing the lifespan of the force.
+	Omission of this param assumes a lifespan of 0 which is assumed to be infinite
+	lifespan
+	\param const double &
+	A reference to a read-only variable containing the starting age of the force.
+	Omission of this param assumes it starts from 0
+	\param const bool &
+	A reference to a read-only variable containing the active status of the force.
+	Omission of this param assumes it to be active
+	*******************************************************************************/
+	Force(const float& _directionalDrag, const float& _rotationalDrag, const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true) {
 		this->lifetimeLimit = _lifetimeLimit;
 		this->age = _age;
 		this->isActive = _isActive;
@@ -103,26 +157,27 @@ public:
 	}
 
 	/*!*****************************************************************************
-	Class variables
+	Public Class variables
 	*******************************************************************************/
-	double lifetimeLimit{0.f};	// Maximum lifetime
-	double age{0.f};			// Current lifespan
-	bool isActive{true};		// Is it an active force
+	double lifetimeLimit{ 0.f };	// Maximum lifetime
+	double age{ 0.f };			// Current lifespan
+	bool isActive{ true };		// Is it an active force
 	int forceID;				// Force ID to identify how to access the union
 	union {
 		// Linear force
 		struct LinearForce {
-			Math::Vec2 unitDirection{};
-			float magnitude{};
+			Math::Vec2 unitDirection{};	// Direction of the force
+			float magnitude{};			// Magnitude of the force
 		} linearForce;
 		// Rotation force
 		struct RotationalForce {
-			float torque{};
+			// Math::Vec2 centerOffset	// Position where the force is applied relative to the entity
+			float torque{};				// Angular torque of the force
 		} rotationalForce;
 		// Drag force
 		struct DragForce {
-			float	directionalDrag{};
-			float	rotationalDrag{};
+			float	directionalDrag{};	// Scalar representing direction(air) drag
+			float	rotationalDrag{};	// Scalar representing rotation drag
 		} dragForce;
 	};
 };

@@ -119,9 +119,14 @@ void RenderManager::Render()
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
 
 	/*************************************FONT RENDERING START***************************************/
+	Camera currCam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam
+		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
 	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
 		if (i->second.IsInitialized())
+		{
+			i->second.SetCamZoom(currCam.GetZoom());
 			i->second.DrawParagraphs();
+		}
 	/*************************************FONT RENDERING END*****************************************/
 
 	if (!mRenderGameToScreen)
@@ -1216,7 +1221,7 @@ void RenderManager::CreateText(const Entity& _e)
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
-		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer);
+		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer, _e.GetComponent<Transform>().scale.x);
 }
 
 void RenderManager::CreateGizmo()

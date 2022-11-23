@@ -34,9 +34,9 @@ public:
 // -----------------------------
 // Specific/Specialized Collision Check Lib
 // -----------------------------
-	static std::vector<Entity> CI_PlayervsEnemy(const Entity& _player, const Entity& _enemy);
-	
-	static bool Static_RectvsCircle(const Entity& _rect, const Entity& _circle);
+	//static std::vector<Entity> CI_PlayervsEnemy(const Entity& _player, const Entity& _enemy);
+
+	//static bool SCI_RectvsCircle(const Math::Vec2& _rectPos, const Math::Vec2& _rectScale, const Math::Vec2& _circlePos, const float& _circleScale);
 
 // -----------------------------
 // Collision Callback Lib
@@ -53,6 +53,7 @@ public:
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
 	static bool CI_RectvsRect(Contact& _contact, const double& _dt);
+
 	/*!*****************************************************************************
 	\brief
 	CI_CirclevsCircle function that checks for collision between 2 entities that
@@ -65,6 +66,7 @@ public:
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
 	static bool CI_CirclevsCircle(Contact& _contact, const double& _dt);
+
 	/*!*****************************************************************************
 	\brief
 	CI_RectvsCircle function that currently returns false and is a placeholder
@@ -76,6 +78,7 @@ public:
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
 	static bool CI_RectvsCircle(Contact& _contact, const double& _dt);
+
 	/*!*****************************************************************************
 	\brief
 	CI_CirclevsRect function that currently returns false and is a placeholder
@@ -88,17 +91,17 @@ public:
 	*******************************************************************************/
 	static bool CI_CirclevsRect(Contact& _contact, const double& _dt);
 
-	// -----------------------------
-	// Component-related functions
-	// -----------------------------
-		/*!*****************************************************************************
-		\brief
-		HasCollider function that checks if the given entity contains a collider
-		\param const Entity &
-		A reference to a read-only Entity to add collider to
-		\return bool
-		Evaluated result of whether the entity has a collider
-		*******************************************************************************/
+// -----------------------------
+// Component-related functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	HasCollider function that checks if the given entity contains a collider
+	\param const Entity &
+	A reference to a read-only Entity to check
+	\return bool
+	Evaluated result of whether the entity has a collider
+	*******************************************************************************/
 	bool HasCollider(const Entity& _e);
 	//int NoOfColliders(const Entity& e);
 
@@ -115,10 +118,11 @@ public:
 	NULL
 	*******************************************************************************/
 	void SetupCollisionDatabase();
+
 	/*!*****************************************************************************
 	\brief
 	RegisterCollisionTest function adds the given callback function to the system's
-	database uses the collider type value as index
+	database which uses the collider type value as index
 	\param const ColliderType &
 	Reference to read-only enum value containing the 1st collider type
 	\param const ColliderType &
@@ -140,6 +144,7 @@ public:
 	NULL
 	*******************************************************************************/
 	void ResolveCollisions(const double& _dt);
+
 	/*!*****************************************************************************
 	\brief
 	GenerateContactList function that detects for collision between entities in the
@@ -150,6 +155,7 @@ public:
 	NULL
 	*******************************************************************************/
 	void GenerateContactList(const double& _dt);
+
 	/*!*****************************************************************************
 	\brief
 	ClearContactList function that clears the contactList container for the next
@@ -161,19 +167,35 @@ public:
 	*******************************************************************************/
 	void ClearContactList();
 
+	/*!*****************************************************************************
+	\brief
+	ResolveContact function that resolves the collision by updating the entities'
+	velocities, acceleration and forces
+	\param Contact &
+	A reference to the contact to resolve
+	\param const double &
+	A reference to a read-only variable containing the delta time
+	\return void
+	NULL
+	*******************************************************************************/
 	void ResolveContact(Contact& _contact, const double& _dt);
+
+	/*!*****************************************************************************
+	\brief
+	PositionCorrection function that resolves the penetration of the entities by
+	correcting their positions
+	\param Contact &
+	A reference to the contact to resolve
+	\return void
+	NULL
+	*******************************************************************************/
 	void PositionCorrection(Contact& _contact);
-	//void ResolvePositions();
-	//void ResolveVelocities(const double& _dt);
-	//void ResolveContactVelocity(Contact& _contact, const double& _dt);
-	//void ResolvePenetration(Contact& _contact);
-	
+
+private:
 	// Database of callback functions to collision checks 
 	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
-private:
-	std::vector<Contact> mContactList;				// List of contacts in the current frame
+	std::vector<Contact> mContactList;		// List of contacts in the current frame
 
-	// const float penEpsilion{ 0.0001f };
 	const float	penAllowance{ 0.01f },		// Penetration allowance
 				penPercentage{ 2.0f };		// Penetration percentage to correct
 };

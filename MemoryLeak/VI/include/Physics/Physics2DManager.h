@@ -322,6 +322,17 @@ public:
 	A copy of the value of the entity's angular velocity
 	*******************************************************************************/
 	float GetAngularVelocity(const Entity& _e);
+	/*!*****************************************************************************
+	\brief
+	SetAngularVelocity function that sets the stored value of the entity's angular
+	velocity to the given value. The value is assumed to be in radians
+	\param const Entity &
+	A reference to a read-only Entity to get from
+	\param const float &
+	A reference to a read-only value containing the angular velocity to set to
+	\return void
+	NULL
+	*******************************************************************************/
 	void SetAngularVelocity(const Entity& _e, const float& _angVel);
 
 	/*!*****************************************************************************
@@ -334,6 +345,17 @@ public:
 	A copy of the value of the entity's angular acceleration
 	*******************************************************************************/
 	float GetAngularTorque(const Entity& _e);
+	/*!*****************************************************************************
+	\brief
+	SetAngularTorque function that sets the stored value of the entity's angular
+	torque to the given value. The value is assumed to be in radians
+	\param const Entity &
+	A reference to a read-only Entity to get from
+	\param const float &
+	A reference to a read-only value containing the angular velocity to set to
+	\return void
+	NULL
+	*******************************************************************************/
 	void SetAngularTorque(const Entity& _e, const float& _angTorque);
 
 	/*!*****************************************************************************
@@ -395,7 +417,7 @@ public:
 	NULL
 	*******************************************************************************/
 	void AddLinearForceToList(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude,
-		const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+							  const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	/*!*****************************************************************************
 	\brief
 	AddRotationForceToList function that adds a rotation force to an entity's list of forces
@@ -418,7 +440,7 @@ public:
 	NULL
 	*******************************************************************************/
 	void AddRotationForceToList(const Entity& _e, const float& _torque,
-		const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+								const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	/*!*****************************************************************************
 	\brief
 	AddDragForceToList function that adds a drag/resistance force to an entity's list of forces
@@ -445,7 +467,7 @@ public:
 	NULL
 	*******************************************************************************/
 	void AddDragForceToList(const Entity& _e, const float& _directionDrag = 1.f, const float& _rotationDrag = 1.f,
-		const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
+							const double& _lifetimeLimit = 0.0, const double& _age = 0.0, const bool& _isActive = true);
 	//void ApplyLinearForceToAccumulated(const Entity& _e, const Math::Vec2& _unitDirection, const float& _magnitude);
 	//void ApplyRotationForceToAccumulated(const Entity& _e, const float& _torque);
 	//void ApplyDragForceToAccumulated(const Entity& _e, const float& _directionDrag, const float& _rotationDrag);
@@ -474,7 +496,7 @@ private:
 	const double accumulatedDTCap{ 1.0 };			// Accumulated cannot store more than 1 second worth of updates
 	const float  velocityCap{ 1000.f };				// Global velocity cap
 	const float	 angularVelocityCap{ 30.f };		// Global angular velocity cap
-	bool mStepMode{ false };									// Flag variable containing whether physics update is in step mode
-	bool mAdvanceStep{ false };								// Flag variable containing whether physics should step when its in step mode
-	bool FirstUpdate{ true };								// First Update flag
+	bool mStepMode{ false };						// Flag variable containing whether physics update is in step mode
+	bool mAdvanceStep{ false };						// Flag variable containing whether physics should step when its in step mode
+	bool FirstUpdate{ true };						// First Update flag
 };
