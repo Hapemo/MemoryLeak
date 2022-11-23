@@ -405,9 +405,44 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 void Collision2DManager::ResolveCollisions(const double& _dt) {
 	// Check for collision and generate contact list
 	GenerateContactList(_dt);
-	//bool notplayer = false;
+
 	// Resolve collision
 	for (Contact& item : mContactList) {
+
+		// Hack for collision triggers
+		bool triggered{ false };
+		if (item.objType[0] == static_cast<int>(ColliderType::RECT)) {
+			if (item.obj[0].GetComponent<RectCollider>().isTrigger)
+				triggered = true;
+		}
+		else if (item.objType[0] == static_cast<int>(ColliderType::CIRCLE)) {
+			if (item.obj[0].GetComponent<CircleCollider>().isTrigger)
+				triggered = true;
+		}
+
+		if (item.objType[1] == static_cast<int>(ColliderType::RECT)) {
+			if (item.obj[1].GetComponent<RectCollider>().isTrigger)
+				triggered = true;
+		}
+		else if (item.objType[1] == static_cast<int>(ColliderType::CIRCLE)) {
+			if (item.obj[1].GetComponent<CircleCollider>().isTrigger)
+				triggered = true;
+		}
+
+		if (triggered) {
+			// Call script
+			if (item.obj[0].HasComponent<Script>() && item.obj[0].GetComponent<General>().tag != TAG::PLAYER) {
+				// Run the script
+
+			}
+			if (item.obj[1].HasComponent<Script>() && item.obj[0].GetComponent<General>().tag != TAG::PLAYER) {
+				// Run the script
+
+			}
+			// Skip to next contact item
+			continue;
+		}
+	
 		PositionCorrection(item);
 		ResolveContact(item, _dt);
 	}
