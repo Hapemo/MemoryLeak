@@ -504,7 +504,7 @@ void Collision2DManager::ClearContactList() {
 void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 	// Store bool value of whether entity has physics component
 	bool obj1HasP{ _contact.obj[0].HasComponent<Physics2D>() },
-		obj2HasP{ _contact.obj[0].HasComponent<Physics2D>() };
+		obj2HasP{ _contact.obj[1].HasComponent<Physics2D>() };
 
 	// Error handling: Check for infinite mass of both objects
 	// Do not do anything further
