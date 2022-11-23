@@ -228,8 +228,8 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 		& obj2{ _contact.obj[1] };
 
 	// Store radius of circle colliders
-	float  obj1R{ (obj1.GetComponent<Transform>().scale.x * obj1.GetComponent<CircleCollider>().scaleOffset) / 2.f },
-		obj2R{ (obj2.GetComponent<Transform>().scale.x * obj2.GetComponent<CircleCollider>().scaleOffset) / 2.f };
+	float  obj1R{ (std::fabs(obj1.GetComponent<Transform>().scale.x) * obj1.GetComponent<CircleCollider>().scaleOffset) / 2.f },
+		   obj2R{ (std::fabs(obj2.GetComponent<Transform>().scale.x) * obj2.GetComponent<CircleCollider>().scaleOffset) / 2.f};
 
 	// Store position of circle colliders
 	Math::Vec2 obj1Pos{ obj1.GetComponent<Transform>().translation + obj1.GetComponent<CircleCollider>().centerOffset },
@@ -278,8 +278,9 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 			//  scaleOffset is 1
 	Transform tDataTmpCircle{ obj2.GetComponent<Transform>() };
 	tDataTmpCircle.translation += obj2.GetComponent<CircleCollider>().centerOffset;
-	tDataTmpCircle.scale = obj1.GetComponent<Transform>().scale * obj1.GetComponent<CircleCollider>().scaleOffset +
-		obj2.GetComponent<Transform>().scale * obj2.GetComponent<CircleCollider>().scaleOffset;
+	/*tDataTmpCircle.scale = obj1.GetComponent<Transform>().scale * obj1.GetComponent<CircleCollider>().scaleOffset +
+		obj2.GetComponent<Transform>().scale * obj2.GetComponent<CircleCollider>().scaleOffset;*/
+	tDataTmpCircle.scale.x = obj1R + obj2R;
 	double  tmpCircleRadius{ static_cast<double>(tDataTmpCircle.scale.x) / 2.0 };
 
 	// Create a ray that starts from first object's position and goes in the direction of the relative velocity
@@ -354,9 +355,9 @@ bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
 	
 	Math::Vec2	objCirclePos{ objCircle.GetComponent<Transform>().translation + objCircle.GetComponent<CircleCollider>().centerOffset },
 				objRectPos{ objRect.GetComponent<Transform>().translation + objRect.GetComponent<RectCollider>().centerOffset };
-	float  objCircleR{ (objCircle.GetComponent<Transform>().scale.x * objCircle.GetComponent<CircleCollider>().scaleOffset) / 2.f };
-	Math::Vec2 objRectScale{ static_cast<float>(static_cast<double>(objRect.GetComponent<Transform>().scale.x) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
-							 static_cast<float>(static_cast<double>(objRect.GetComponent<Transform>().scale.y) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
+	float  objCircleR{ (std::fabs(objCircle.GetComponent<Transform>().scale.x) * objCircle.GetComponent<CircleCollider>().scaleOffset) / 2.f };
+	Math::Vec2 objRectScale{ static_cast<float>(static_cast<double>(std::fabs(objRect.GetComponent<Transform>().scale.x)) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+							 static_cast<float>(static_cast<double>(std::fabs(objRect.GetComponent<Transform>().scale.y)) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
 
 	Math::Vec2 p{ objCirclePos },
 		minV{ objRectPos - objRectScale },
