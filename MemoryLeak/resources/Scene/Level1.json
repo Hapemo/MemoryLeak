@@ -194,9 +194,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.037958692759275436
+            "timeToFrameSwap": 0.017842715606093407
         },
         "RectCollider": {
             "centerOffset": {
@@ -260,13 +260,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -159.0,
-                "Y": 200.0
+                "X": -101.0,
+                "Y": 126.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": -49.14849090576172,
-                "Y": -93.395751953125
+                "Y": -91.59607696533203
             }
         },
         "Sprite": {
@@ -277,14 +277,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "Textures\\Spritesheets\\BOAT\\boat_SE_spritesheet.png",
             "layer": 1
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.07203789800405502
+            "timeToFrameSwap": 0.07004361599683762
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -299,7 +299,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": 0.29758548736572266
+                "Y": 0.015139003284275532
             },
             "acceleration": {
                 "X": 0.0,
@@ -320,13 +320,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -67.0,
-                "Y": 80.0
+                "X": -58.0,
+                "Y": 64.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -40.73553466796875,
-                "Y": -103.62236785888672
+                "X": -37.736000061035156,
+                "Y": -92.82232666015625
             }
         },
         "Sprite": {
@@ -337,14 +337,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "Textures\\Spritesheets\\MC\\mc-idle-spritesheet.png",
             "layer": 2
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.07203789800405502
+            "timeToFrameSwap": 0.07004361599683762
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -359,7 +359,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": 0.29758548736572266
+                "Y": 0.015139003284275532
             },
             "acceleration": {
                 "X": 0.0,
@@ -760,9 +760,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 127,
-                "g": 129,
-                "b": 131,
+                "r": 202,
+                "g": 202,
+                "b": 6,
                 "a": 100
             },
             "sprite": 1,
@@ -900,9 +900,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.07203789800405502
+            "timeToFrameSwap": 0.07004361599683762
         },
         "RectCollider": {
             "centerOffset": {
