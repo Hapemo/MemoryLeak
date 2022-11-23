@@ -86,10 +86,10 @@ void Application::SystemUpdate() {
   animator->Animate();
   END_TRACK("Animation");
 
-  // Audio
-  TRACK_PERFORMANCE("Audio");
-  audioManager->UpdateSound();
-  END_TRACK("Audio");
+  //// Audio
+  //TRACK_PERFORMANCE("Audio");   //shifted to update in editor
+  //audioManager->UpdateSound();
+  //END_TRACK("Audio");
 }
 
 void Application::init() {
@@ -97,7 +97,6 @@ void Application::init() {
   startup();
   SystemInit();
   //audioManager->PlayBGSound("PIntro", 10);
-  //audioManager->PlayBGSound("BINGBIAN", 10);
   audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
   //audioManager->PlayBGSound("MENUBG", 10);
   GameStateManager::GetInstance()->Init();
@@ -155,13 +154,18 @@ void Application::MainUpdate() {
       SystemUpdate(); // Should be called after logic
     }
 
+
+
     TRACK_PERFORMANCE("Graphics");
     //--------------------- Drawing and rendering ---------------------
     renderManager->Render();
-
     //-----------------------------------------------------------------
     END_TRACK("Graphics");
 
+    // Audio
+    TRACK_PERFORMANCE("Audio");
+    audioManager->UpdateSound();
+    END_TRACK("Audio");
 
     // If it changes, it should've came from when updaing game logic
     GameStateManager::GetInstance()->UpdateNextGSMState();

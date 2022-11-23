@@ -145,7 +145,7 @@ void AssetPanel::Update()
 						if (ImGui::BeginDragDropSource())
 						{
 							const wchar_t* itemPath = (wchar_t*)texFilename.c_str();
-							ImGui::SetDragDropPayload("Dialoge", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::SetDragDropPayload("DIALOGUE", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
 							ImGui::EndDragDropSource();
 						}
 					}

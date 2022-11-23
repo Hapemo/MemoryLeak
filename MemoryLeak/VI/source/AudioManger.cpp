@@ -152,10 +152,19 @@ void AudioManager::UpdateSound()
             break;
         }
     }
-    if(isAnyPlaying)
-        mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(0.1f);
+    static float songVol = 0.8f;
+    if (isAnyPlaying)
+    {
+        songVol = 0.05f;
+    }
     else
-        mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(0.5f);
+    {
+        if (songVol < 0.8f)
+        {
+            songVol += 0.005f;
+        }
+    }
+    mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(songVol);
 
 
     system->update();
@@ -202,6 +211,13 @@ void AudioManager::PlaySound(const Entity& _e)
             }
             else
                 mChannel[channel]->setVolume(_e.GetComponent<Audio>().sound.volume);
+            if (_e.GetComponent<Audio>().sound.isRandPitch)
+            {
+                mChannel[channel]->setPitch(((float)(std::rand()%100))/100.f +0.5f);
+            }
+            else
+                mChannel[channel]->setPitch(_e.GetComponent<Audio>().sound.pitch);
+           
         }
     }
     if (!_e.GetComponent<Audio>().sound.isLoop)

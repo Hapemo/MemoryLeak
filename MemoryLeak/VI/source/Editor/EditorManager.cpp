@@ -50,6 +50,7 @@ float EditorManager::prefabOffset = 10.f;
 //undo
 std::vector<std::pair<Entity const, COMPONENT>> EditorManager::undoStack{};
 int EditorManager::stackPointer{-1};
+std::vector<Entity>  EditorManager::deletedEntities{};
 
 //copy
 std::pair<Entity, int> EditorManager::copyEntity{};
@@ -77,7 +78,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-	io.Fonts->AddFontFromFileTTF("ComicSans.ttf", 15.f);
+	//io.Fonts->AddFontFromFileTTF("ComicSans.ttf", 15.f);
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
@@ -177,7 +178,7 @@ None.
 *******************************************************************************/
 void EditorManager::Update()
 {
-	if (*mWindowWidth == 0 || *mWindowHeight == 0)
+	if (*mWindowWidth < 1 || *mWindowHeight < 1)
 		return;
 
 	Window();
@@ -267,6 +268,8 @@ None.
 *******************************************************************************/
 void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 {
+	if (e.id == 0)
+		return;
 	static int lastID = -1;
 	if (ImGui::IsItemActivated())
 	{
@@ -302,8 +305,10 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 			_old = e.GetComponent<Script>();
 		else if (_id == COMPONENTID::DIALOGUE)
 			_old = e.GetComponent<Dialogue>();
-		//else if (_id == COMPONENTID::PLAYERTMP)
-		//	_old = e.GetComponent<PlayerTmp>();
+		else if (_id == COMPONENTID::BUTTON)
+			_old = e.GetComponent<Button>();
+		else if (_id == COMPONENTID::LAYERCOLLIDER)
+			_old = e.GetComponent<LayerCollider>();
 	}
 	if (ImGui::IsItemDeactivatedAfterEdit())
 	{
@@ -346,8 +351,10 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 			_new = e.GetComponent<Script>();
 		else if (_id == COMPONENTID::DIALOGUE)
 			_new = e.GetComponent<Dialogue>();
-		//else if (_id == COMPONENTID::PLAYERTMP)
-		//	_new = e.GetComponent<PlayerTmp>();
+		else if (_id == COMPONENTID::BUTTON)
+			_new = e.GetComponent<Button>();
+		else if (_id == COMPONENTID::LAYERCOLLIDER)
+			_new = e.GetComponent<LayerCollider>();
 
 		undoStack.push_back(std::make_pair(e, _new));
 		stackPointer = (int)undoStack.size();
@@ -363,40 +370,116 @@ None.
 *******************************************************************************/
 void EditorManager::Do()
 {
+	
 	if (undoStack[stackPointer].second.index() == (int)COMPONENTID::GENERAL)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<General>())
+			(undoStack[stackPointer].first).AddComponent(General());
 		(undoStack[stackPointer].first).GetComponent<General>() = std::get<General>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::LIFESPAN)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Lifespan>())
+			(undoStack[stackPointer].first).AddComponent(Lifespan());
 		(undoStack[stackPointer].first).GetComponent<Lifespan>() = std::get<Lifespan>(undoStack[stackPointer].second);
+	}
 	if (undoStack[stackPointer].second.index() == (int)COMPONENTID::TRANSFORM)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Transform>())
+			(undoStack[stackPointer].first).AddComponent(Transform());
 		(undoStack[stackPointer].first).GetComponent<Transform>() = std::get<Transform>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::SPRITE)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Sprite>())
+			(undoStack[stackPointer].first).AddComponent(Sprite());
 		(undoStack[stackPointer].first).GetComponent<Sprite>() = std::get<Sprite>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::ANIMATION)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Animation>())
+			(undoStack[stackPointer].first).AddComponent(Animation());
 		(undoStack[stackPointer].first).GetComponent<Animation>() = std::get<Animation>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::SHEETANIMATION)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<SheetAnimation>())
+			(undoStack[stackPointer].first).AddComponent(SheetAnimation());
 		(undoStack[stackPointer].first).GetComponent<SheetAnimation>() = std::get<SheetAnimation>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PHYSICS2D)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Physics2D>())
+			(undoStack[stackPointer].first).AddComponent(Physics2D());
 		(undoStack[stackPointer].first).GetComponent<Physics2D>() = std::get<Physics2D>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::RECTCOLLIDER)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<RectCollider>())
+			(undoStack[stackPointer].first).AddComponent(RectCollider());
 		(undoStack[stackPointer].first).GetComponent<RectCollider>() = std::get<RectCollider>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::CIRCLECOLLIDER)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<CircleCollider>())
+			(undoStack[stackPointer].first).AddComponent(CircleCollider());
 		(undoStack[stackPointer].first).GetComponent<CircleCollider>() = std::get<CircleCollider>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::EDGE2DCOLLIDER)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Edge2DCollider>())
+			(undoStack[stackPointer].first).AddComponent(Edge2DCollider());
 		(undoStack[stackPointer].first).GetComponent<Edge2DCollider>() = std::get<Edge2DCollider>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::POINT2DCOLLIDER)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Point2DCollider>())
+			(undoStack[stackPointer].first).AddComponent(Point2DCollider());
 		(undoStack[stackPointer].first).GetComponent<Point2DCollider>() = std::get<Point2DCollider>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::AUDIO)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Audio>())
+			(undoStack[stackPointer].first).AddComponent(Audio());
 		(undoStack[stackPointer].first).GetComponent<Audio>() = std::get<Audio>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::TEXT)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Text>())
+			(undoStack[stackPointer].first).AddComponent(Text());
 		(undoStack[stackPointer].first).GetComponent<Text>() = std::get<Text>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::AI)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<AI>())
+			(undoStack[stackPointer].first).AddComponent(AI());
 		(undoStack[stackPointer].first).GetComponent<AI>() = std::get<AI>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::SCRIPT)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Script>())
+			(undoStack[stackPointer].first).AddComponent(Script());
 		(undoStack[stackPointer].first).GetComponent<Script>() = std::get<Script>(undoStack[stackPointer].second);
+	}
 	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::DIALOGUE)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Dialogue>())
+			(undoStack[stackPointer].first).AddComponent(Dialogue());
 		(undoStack[stackPointer].first).GetComponent<Dialogue>() = std::get<Dialogue>(undoStack[stackPointer].second);
-	//else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PLAYERTMP)
-	//	(undoStack[stackPointer].first).GetComponent<PlayerTmp>() = std::get<PlayerTmp>(undoStack[stackPointer].second);
+	}
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::BUTTON)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Button>())
+			(undoStack[stackPointer].first).AddComponent(Button());
+		(undoStack[stackPointer].first).GetComponent<Button>() = std::get<Button>(undoStack[stackPointer].second);
+
+	}
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::LAYERCOLLIDER)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<LayerCollider>())
+			(undoStack[stackPointer].first).AddComponent(LayerCollider());
+		(undoStack[stackPointer].first).GetComponent<LayerCollider>() = std::get<LayerCollider>(undoStack[stackPointer].second);
+	}
 }
 /*!*****************************************************************************
 \brief
@@ -412,7 +495,19 @@ void EditorManager::Undo()
 	stackPointer--;
 	if (stackPointer >= 0)
 	{
-		Do();
+		if ((undoStack[stackPointer].first).id == 0)//deleted enitty
+		{
+			if (deletedEntities.size() != 0)
+			{
+				deletedEntities[deletedEntities.size() - 1].GetComponent<General>().isPaused = false;
+				(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.insert(deletedEntities[deletedEntities.size() - 1]);
+				deletedEntities.pop_back();
+			}
+			else
+				LOG_ERROR("UNDO error");
+		}
+		else
+			Do();
 	}
 	else
 	{
@@ -491,6 +586,8 @@ void EditorManager::SceneReset()
 	renderManager->ClearSelectedEntities();
 	renderManager->GetGizmo().Detach();
 	undoStack.clear();
+	deletedEntities.clear();
+	stackPointer = -1;
 }
 /*!*****************************************************************************
 \brief
@@ -692,6 +789,10 @@ void EditorManager::DeleteEntity()
 {
 	if (selectedEntity == nullptr)
 		return;
+	(*selectedEntity).GetComponent<General>().isPaused = true;
+	deletedEntities.push_back(Clone(*selectedEntity));
+	undoStack.push_back(std::make_pair(Entity{0}, General()));
+	stackPointer = (int)undoStack.size();
 	(*mGameStates)[selectedGameState].mScenes[selectedScene].RemoveEntity(*selectedEntity);
 	//(*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities.erase(e);
 	/*e.GetComponent<General>().isActive = false;

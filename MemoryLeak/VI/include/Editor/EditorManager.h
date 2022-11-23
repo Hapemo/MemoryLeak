@@ -110,6 +110,7 @@ protected:
 	static std::vector<std::pair<Entity const, COMPONENT>> undoStack;
 	static int stackPointer;
 	static int highestLayer;
+	static std::vector<Entity> deletedEntities;
 	//copy paste
 	static std::pair<Entity, int> copyEntity;
 	static float copyOffset;

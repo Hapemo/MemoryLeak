@@ -20,6 +20,7 @@ struct Sound
 	bool isMute = false;
 	bool isLoop = false;
 	bool isRandPitch = false;
+
 	int channel =0;
 	
 };

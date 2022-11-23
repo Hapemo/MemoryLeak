@@ -305,6 +305,7 @@ struct Text {
 *******************************************************************************/
 struct Dialogue
 {
+	std::string filename;
 	int speakerID;
 	int selectedID;
 	int textID;
@@ -347,12 +348,12 @@ enum class COMPONENTID
 	AI,				//13
 	SCRIPT,			
 	DIALOGUE,
-	//PLAYERTMP,
+	BUTTON,
 	LAYERCOLLIDER
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, /*PlayerTmp,*/ LayerCollider>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider>  COMPONENT;
 
 
 

@@ -42,6 +42,7 @@ void HierarchyPanel::Update()
 		barfalg = (ImGuiTabBarFlags_)(barfalg|ImGuiTabBarFlags_Reorderable);
 		barfalg = (ImGuiTabBarFlags_)(barfalg | ImGuiTabBarFlags_AutoSelectNewTabs);
 		ImGuiTabItemFlags_ flag = ImGuiTabItemFlags_None;*/
+		ImGui::Text("GameState Selection:");
 		if (ImGui::BeginTabBar("GameState"))
 		{
 			for (int g = 0; g < (*mGameStates).size(); g++)
@@ -82,8 +83,10 @@ void HierarchyPanel::Update()
 						SceneReset();
 					}
 					ImGui::PopStyleColor();
+					ImGui::SameLine(0.f, 1.f);
+					ImGui::SetCursorPos(ImVec2(ImGui::GetWindowWidth() - 140.f, ImGui::GetCursorPos().y));
 					std::string removeGSbtn = "REMOVE GameState";
-					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.f, 0.f, 1.0f });
 					if (ImGui::Button(removeGSbtn.c_str()))
 					{
 						
@@ -96,6 +99,7 @@ void HierarchyPanel::Update()
 						break;
 					}
 					ImGui::PopStyleColor();
+					ImGui::Text("Scenes Selection:");
 					if (ImGui::BeginTabBar("Scenes"), ImGuiTabBarFlags_Reorderable)
 					{
 						if (ImGui::BeginTabItem("All"))
@@ -123,7 +127,7 @@ void HierarchyPanel::Update()
 									for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)
 									{
 										ImGui::PushID(id++);
-										listComponents(&e, e.GetComponent<General>().name);
+										ImGui::Text(e.GetComponent<General>().name.c_str());
 										ImGui::PopID();
 									}
 								}
@@ -165,8 +169,10 @@ void HierarchyPanel::Update()
 									SceneReset();
 								}
 								ImGui::PopStyleColor();
+								ImGui::SameLine(0.f, 1.f);
+								ImGui::SetCursorPos(ImVec2(ImGui::GetWindowWidth()-110.f, ImGui::GetCursorPos().y));
 								std::string removeScenebtn = "REMOVE Scene";
-								ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+								ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.8f, 0.f, 0.f, 1.0f });
 								if (ImGui::Button(removeScenebtn.c_str()))
 								{
 									(*mGameStates)[g].RemoveScene((*mGameStates)[g].mScenes[s].mName);
@@ -177,6 +183,10 @@ void HierarchyPanel::Update()
 									break;
 								}
 								ImGui::PopStyleColor();
+
+								/// <summary>
+								/// Game Camera Editor
+								/// </summary>
 								if (ImGui::CollapsingHeader("Scene Camera")||true)
 								{
 									bool isPause = !(*mGameStates)[g].mScenes[s].mIsPause;
@@ -191,14 +201,15 @@ void HierarchyPanel::Update()
 									(*mGameStates)[g].mScenes[s].mCamera.scale = Math::Vec2{ pos[0], pos[1] };
 									//cam size
 									float size[2] = { renderManager->GetGameCamera().GetCameraWidth(), renderManager->GetGameCamera().GetCameraHeight() };
-									ImGui::DragFloat("Camera Width", &size[0]);
+									ImGui::DragFloat("Camera Width", &size[0], 1.f, 0.f);
+
 									if (ImGui::IsItemActive())
 									{
 										//renderManager->GetGameCamera().SetZoom(1.f);
 										renderManager->GetGameCamera().SetCameraWidth(size[0]);
 										(*mGameStates)[g].mScenes[s].mCamera.scale.x = size[0];
 									}
-									ImGui::DragFloat("Camera Height", &size[1]);
+									ImGui::DragFloat("Camera Height", &size[1], 1.f, 0.f);
 									if (ImGui::IsItemActive())
 									{
 										//renderManager->GetGameCamera().SetZoom(1.f);
@@ -215,7 +226,19 @@ void HierarchyPanel::Update()
 									}
 									(*mGameStates)[g].mScenes[s].mCamera.rotation = zoom;
 									ImGui::InputInt("Layer", &((*mGameStates)[g].mScenes[s].mLayer));
+									if (ImGui::IsItemActive())
+									{
+										(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
+											: ((*mGameStates)[g].mScenes[s].mLayer > (*mGameStates)[g].mScenes.size() ? (*mGameStates)[g].mScenes.size()
+												: (*mGameStates)[g].mScenes[s].mLayer);
+									}
 									ImGui::InputInt("Order", &((*mGameStates)[g].mScenes[s].mOrder));
+									if (ImGui::IsItemActive())
+									{
+										(*mGameStates)[g].mScenes[s].mOrder = (*mGameStates)[g].mScenes[s].mOrder < 0 ? 0
+											: ((*mGameStates)[g].mScenes[s].mOrder > (*mGameStates)[g].mScenes.size() ? (*mGameStates)[g].mScenes.size()
+												: (*mGameStates)[g].mScenes[s].mOrder);
+									}
 								}
 								for (int i = 0; i < (int)tag.size(); i++)
 								{
@@ -338,7 +361,7 @@ None.
 
 void HierarchyPanel::setSelectedEntity(const Entity* e)
 {
-	if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+	if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(ImGuiMouseButton_Left))
 	{
 		selectedEntity = e;
 		selectedPrefab = nullptr;
@@ -453,16 +476,16 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 			ImGui::Text("Script");
 			setSelectedEntity(e);
 		}
+		if (e->HasComponent<Button>())
+		{
+			ImGui::Text("Button");
+			setSelectedEntity(e);
+		}
 		if (e->HasComponent<Dialogue>())
 		{
 			ImGui::Text("Dialogue");
 			setSelectedEntity(e);
 		}
-		//if (e->HasComponent<PlayerTmp>())
-		//{
-		//	ImGui::Text("PlayerTmp");
-		//	setSelectedEntity(e);
-		//}
 		ImGui::TreePop();
 	}
 	setSelectedEntity(e);

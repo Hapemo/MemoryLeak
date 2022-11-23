@@ -106,11 +106,12 @@ void WorldViewPanel::Update()
 		}
 		if (checkSave)
 		{
-			ImGui::SetWindowFontScale(1.2f);
+			ImGui::SetWindowFontScale(1.5f);
 			ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight()/4.f));
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 0, 200)));
 			ImGui::Button("Do you want to save scene first?", ImVec2(ImGui::GetWindowWidth() - 100.f, ImGui::GetWindowHeight() / 5.f));
 			ImGui::PopStyleColor();
+			ImGui::SetWindowFontScale(1.2f);
 			ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight() / 2.f));
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 0)));
 			if (ImGui::Button("YES!! Thank you for reminding me.", ImVec2((ImGui::GetWindowWidth() - 110.f)/2.f, ImGui::GetWindowHeight() / 10.f)))
@@ -120,7 +121,7 @@ void WorldViewPanel::Update()
 				checkSave = false;
 			}
 			ImGui::PopStyleColor();
-			ImGui::SameLine(0.f, 20.f);
+			ImGui::SameLine(0.f, 10.f);
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 			if (ImGui::Button("No.. Just testing.", ImVec2((ImGui::GetWindowWidth() - 110.f)/2.f, ImGui::GetWindowHeight() / 10.f)))
 			{

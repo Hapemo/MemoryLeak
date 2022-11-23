@@ -110,17 +110,74 @@ void InspectorPanel::Update()
 				{
 					DialogueEditor();
 				}
+				if (e.HasComponent<Button>())
+				{
+					ButtonEditor();
+				}
 				//if (e.HasComponent<PlayerTmp>())
 				//{
 				//	PlayerTmpEditor();
 				//}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 				if (ImGui::Button("Add Component"))
 				{
 					AddComponent();
 					std::string add(componentsList[addComponentID]);
 					LOG_INFO(add + " conponent added");
 				}
+				ImGui::PopStyleColor();
+				ImGui::NewLine();
+				ImGui::Separator();
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+				if (ImGui::Button("Cut   (CTRL+X)"))
+				{
+					Cut();
+				}
+				ImGui::PopStyleColor();
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0f, 0.f, 0.6f, 1.0f });
+				if (ImGui::Button("Copy  (CTRL+C)"))
+				{
+					Copy();
+				}
+				ImGui::PopStyleColor();
+				if (copyEntity.second != 0)
+				{
+					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
+					if (ImGui::Button("Paste (CTRL+V)"))
+					{
+						Paste();
+					}
+					ImGui::PopStyleColor();
+				}
+				ImGui::Separator();
+				if (stackPointer > 0)
+				{
+					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.5f, 1.0f });
+					if (ImGui::Button("Undo  (CTRL+Z)"))
+					{
+						Undo();
+					}
+					ImGui::PopStyleColor();
+				}
+				if (stackPointer + 1 < (int)undoStack.size())
+				{
+					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.6f, 0.7f, 1.0f });
+					if (ImGui::Button("Redo  (CTRL+Y)"))
+					{
+						Redo();
+					}
+					ImGui::PopStyleColor();
+				}
+				ImGui::Separator();
+
+				ImGui::NewLine();
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.f, 0.f, 1.0f });
+				if (ImGui::Button("Delete Entity"))
+				{
+					DeleteEntity();
+				}
+				ImGui::PopStyleColor();
 				if (ImGui::BeginPopupContextWindow(0, 1, false))
 				{
 					if (ImGui::MenuItem("Delete Entity"))
@@ -141,6 +198,38 @@ void InspectorPanel::Update()
 					std::string add(componentsList[addComponentID]);
 					LOG_INFO(add + " conponent added to prefab");
 				}
+			}
+			else
+			{
+				ImGui::Text("Select an Entity");
+				if (copyEntity.second != 0)
+				{
+					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
+					if (ImGui::Button("Paste (CTRL+V)"))
+					{
+						Paste();
+					}
+					ImGui::PopStyleColor();
+					ImGui::Separator();
+				}
+				/*if (stackPointer > 0)
+				{
+					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.5f, 1.0f });
+					if (ImGui::Button("Undo  (CTRL+Z)"))
+					{
+						Undo();
+					}
+					ImGui::PopStyleColor();
+				}
+				if (stackPointer+1 < (int)undoStack.size())
+				{
+					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.6f, 0.7f, 1.0f });
+					if (ImGui::Button("Redo  (CTRL+Y)"))
+					{
+						Redo();
+					}
+					ImGui::PopStyleColor();
+				}*/
 			}
 			ImGui::EndTabItem();
 		}
@@ -204,8 +293,8 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<Script>({});
 	else if (addComponentID == (int)COMPONENTID::DIALOGUE)
 		e.AddComponent<Dialogue>({});
-	//else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
-	//	e.AddComponent<PlayerTmp>({});
+	else if (addComponentID == (int)COMPONENTID::BUTTON)
+		e.AddComponent<Button>({});
 	else if (addComponentID == (int)COMPONENTID::LAYERCOLLIDER)
 		e.AddComponent<LayerCollider>({});
 	
@@ -254,8 +343,10 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<Script>({});
 	else if (addComponentID == (int)COMPONENTID::DIALOGUE)
 		p->AddComponent<Dialogue>({});
-	//else if (addComponentID == (int)COMPONENTID::PLAYERTMP)
-	//	p->AddComponent<PlayerTmp>({});
+	else if (addComponentID == (int)COMPONENTID::BUTTON)
+		p->AddComponent<Button>({});
+	else if (addComponentID == (int)COMPONENTID::LAYERCOLLIDER)
+		e.AddComponent<LayerCollider>({});
 }
 
 
@@ -292,32 +383,34 @@ void InspectorPanel::GeneralEditor()
 }
 void InspectorPanel::LifespanEditor()
 {
-	if (ImGui::CollapsingHeader("Lifespan")) {
-		//ImGui::Text("Lifespan");
+	if (ImGui::CollapsingHeader("Lifespan")) 
+	{
+		ImGui::InputFloat("Lifespan Limit", &e.GetComponent<Lifespan>().limit);
 		SaveUndo(e, tempComponent, COMPONENTID::LIFESPAN);
-		ImGui::InputFloat("Lifespan", &e.GetComponent<Lifespan>().limit);
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Lifespan"))
 		{
 			e.RemoveComponent<Lifespan>();
 			LOG_INFO("Lifespan component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::TransformEditor()
 {
-	if (ImGui::CollapsingHeader("Transform Gizmo")) {
-		//ImGui::Text("Transform Gizmo: ");
-		static bool s = 0, r = 0, t = 0;
-		if(SRT == 4)
-			s = r = t = 0;
-		ImGui::Checkbox("Scale Gizmo", &s);
-		if (s) { SRT = 1; r = t = 0; }
-		ImGui::Checkbox("Rotate", &r);
-		if (r) { SRT = 2; s = t = 0; }
-		ImGui::Checkbox("Translate Gizmo", &t);
-		if (t) { SRT = 3; s = r = 0; }
-		if (!s && !r && !t) SRT = 0;
-	}
+	//if (ImGui::CollapsingHeader("Transform Gizmo")) {
+	//	//ImGui::Text("Transform Gizmo: ");
+	//	static bool s = 0, r = 0, t = 0;
+	//	if(SRT == 4)
+	//		s = r = t = 0;
+	//	ImGui::Checkbox("Scale Gizmo", &s);
+	//	if (s) { SRT = 1; r = t = 0; }
+	//	ImGui::Checkbox("Rotate", &r);
+	//	if (r) { SRT = 2; s = t = 0; }
+	//	ImGui::Checkbox("Translate Gizmo", &t);
+	//	if (t) { SRT = 3; s = r = 0; }
+	//	if (!s && !r && !t) SRT = 0;
+	//}
 
 	if (ImGui::CollapsingHeader("Transform") || true) {
 		//ImGui::Text("Transform Component");
@@ -434,12 +527,13 @@ void InspectorPanel::SpriteEditor()
 		}
 		ImGui::InputInt("Layer", &e.GetComponent<Sprite>().layer);
 		SaveUndo(e, tempComponent, COMPONENTID::SPRITE);
-
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Sprite"))
 		{
 			e.RemoveComponent<Sprite>();
 			LOG_INFO("Sprite component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::AnimationEditor()
@@ -491,11 +585,13 @@ void InspectorPanel::AnimationEditor()
 		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
 		ImGui::InputInt("currentImageIndex", &e.GetComponent<Animation>().currentImageIndex);
 		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Animation"))
 		{
 			e.RemoveComponent<Animation>();
 			LOG_INFO("Animation component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::SheetAnimationEditor()
@@ -510,11 +606,13 @@ void InspectorPanel::SheetAnimationEditor()
 		SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);
 		//ImGui::InputFloat("timeToFrameSwap", &e.GetComponent<SheetAnimation>().timeToFrameSwap);
 		//SaveUndo(e, tempComponent, COMPONENTID::SHEETANIMATION);
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove SheetAnimation"))
 		{
 			e.RemoveComponent<SheetAnimation>();
 			LOG_INFO("SheetAnimation component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::Physics2DEditor()
@@ -582,12 +680,13 @@ void InspectorPanel::Physics2DEditor()
 
 		ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
-
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Physics2D"))
 		{
 			e.RemoveComponent<Physics2D>();
 			LOG_INFO("Physics2D component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::RectColliderEditor()
@@ -608,12 +707,13 @@ void InspectorPanel::RectColliderEditor()
 
 		ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::RECTCOLLIDER);
-
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove RectCollider"))
 		{
 			e.RemoveComponent<RectCollider>();
 			LOG_INFO("RectCollider component removed");
 		}
+		ImGui::PopStyleColor();
 
 	}
 }
@@ -635,12 +735,13 @@ void InspectorPanel::LayerColliderEditor()
 
 		ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<LayerCollider>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
-
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove LayerCollider"))
 		{
 			e.RemoveComponent<LayerCollider>();
 			LOG_INFO("LayerCollider component removed");
 		}
+		ImGui::PopStyleColor();
 
 	}
 }
@@ -661,12 +762,13 @@ void InspectorPanel::CircleColliderEditor()
 
 		ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::CIRCLECOLLIDER);
-
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove CircleCollider"))
 		{
 			e.RemoveComponent<CircleCollider>();
 			LOG_INFO("CircleCollider component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::Edge2DColliderEditor()
@@ -687,12 +789,13 @@ void InspectorPanel::Edge2DColliderEditor()
 
 		ImGui::Checkbox("RenderFlag", &e.GetComponent<Edge2DCollider>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::EDGE2DCOLLIDER);
-		
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Edge2DCollider"))
 		{
 			e.RemoveComponent<Edge2DCollider>();
 			LOG_INFO("Edge2DCollider component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::Point2DColliderEditor()
@@ -707,12 +810,13 @@ void InspectorPanel::Point2DColliderEditor()
 
 		ImGui::Checkbox("RenderFlag", &e.GetComponent<Point2DCollider>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::POINT2DCOLLIDER);
-
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Point2DCollider"))
 		{
 			e.RemoveComponent<Point2DCollider>();
 			LOG_INFO("Point2DCollider component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::AudioEditor()
@@ -736,10 +840,13 @@ void InspectorPanel::AudioEditor()
 			}
 			ImGui::EndDragDropTarget();
 		}
-		ImGui::DragFloat("Volume", &e.GetComponent<Audio>().sound.volume, 0.005f, 0.0f, 1.f);
+		ImGui::DragFloat("Volume", &e.GetComponent<Audio>().sound.volume, 0.005f, 0.0f, 2.f);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 
-		ImGui::DragFloat("Pitch", &e.GetComponent<Audio>().sound.pitch, 0.005f,0.0f,1.f);
+		ImGui::DragFloat("Pitch", &e.GetComponent<Audio>().sound.pitch, 0.005f,0.5f,2.5f);
+		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
+		ImGui::Checkbox("isRandPitch", &e.GetComponent<Audio>().sound.isRandPitch);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 
 		ImGui::Checkbox("isLoop", &e.GetComponent<Audio>().sound.isLoop);
@@ -747,6 +854,7 @@ void InspectorPanel::AudioEditor()
 
 		ImGui::Checkbox("isPause", &e.GetComponent<Audio>().sound.isPaused);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
 
 		if (e.HasComponent<Transform>())
 		{
@@ -766,13 +874,16 @@ void InspectorPanel::AudioEditor()
 		}
 		if (ImGui::Button("Play Sound in Game"))
 		{
-			e.GetComponent<Audio>().sound.toPlay = true;
+			//e.GetComponent<Audio>().sound.toPlay = true;
+			audioManager->PlaySound(*selectedEntity);
 		}
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Audio"))
 		{
 			e.RemoveComponent<Audio>();
 			LOG_INFO("Audio component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::TextEditor()
@@ -815,12 +926,13 @@ void InspectorPanel::TextEditor()
 		e.GetComponent<Text>().color.b = (GLubyte)(tmpVec4[2] * 255);
 		e.GetComponent<Text>().color.a = (GLubyte)(tmpVec4[3] * 255);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
-
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Text"))
 		{
 			e.RemoveComponent<Text>();
 			LOG_INFO("Text component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 //void InspectorPanel::PlayerTmpEditor()
@@ -861,11 +973,13 @@ void InspectorPanel::AIEditor()
 				SaveUndo(e, tempComponent, COMPONENTID::AI);
 			}
 		}
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove AI"))
 		{
 			e.RemoveComponent<AI>();
 			LOG_INFO("AI component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::ScriptEditor()
@@ -887,27 +1001,66 @@ void InspectorPanel::ScriptEditor()
 			}
 			ImGui::EndDragDropTarget();
 		}
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Script"))
 		{
 			e.RemoveComponent<Script>();
 			LOG_INFO("Script component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::DialogueEditor()
 {
 	if (ImGui::CollapsingHeader("Dialogue")) 
 	{
-		std::string dia = "Dialogue WIP";
-		//ImGui:Text(dia.c_str());
+		ImGui::InputText("Add Dialogue file name", &e.GetComponent<Dialogue>().filename);
+		if (ImGui::BeginDragDropTarget())
+		{
+			static const wchar_t* texpath = (const wchar_t*)"";
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("DIALOGUE"))
+			{
+				texpath = (const wchar_t*)payload->Data;
+				std::string tp = (std::string)((const char*)texpath);
+				e.GetComponent<Dialogue>().filename = tp;
+			}
+			ImGui::EndDragDropTarget();
+		}
+		ImGui::InputInt("speakerID", &e.GetComponent<Dialogue>().speakerID);
+		e.GetComponent<Dialogue>().speakerID = e.GetComponent<Dialogue>().speakerID < 0 ? 0 
+			: (e.GetComponent<Dialogue>().speakerID > 1 ? 1
+				: e.GetComponent<Dialogue>().speakerID);
+		SaveUndo(e, tempComponent, COMPONENTID::DIALOGUE);
+		ImGui::InputInt("selectedID", &e.GetComponent<Dialogue>().selectedID);
+
+		ImGui::InputInt("textID", &e.GetComponent<Dialogue>().textID);
+
+		ImGui::InputInt("nextTextID", &e.GetComponent<Dialogue>().nextTextID);
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Dialogue"))
 		{
 			e.RemoveComponent<Dialogue>();
 			LOG_INFO("Dialogue component removed");
 		}
+		ImGui::PopStyleColor();
 	}
 }
+void InspectorPanel::ButtonEditor()
+{
+	if (ImGui::CollapsingHeader("Button"))
+	{
+		ImGui::Checkbox("interactable", &e.GetComponent<Button>().interactable);
+		SaveUndo(e, tempComponent, COMPONENTID::BUTTON);
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+		if (ImGui::Button("Remove Button"))
+		{
+			e.RemoveComponent<Button>();
+			LOG_INFO("Button component removed");
+		}
+		ImGui::PopStyleColor();
+	}
 
+}
 /*!*****************************************************************************
 \brief
 	This functions below onawards edits a particular component in a prefab

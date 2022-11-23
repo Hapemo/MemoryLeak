@@ -115,6 +115,7 @@ private:
 	Dialogue getDialogue(Value& entity);
 	LightSource getLightSource(Value& entity);
 	Script getScript(Value& entity);
+	Button getButton(Value& entity);
 
 	//save components 
 	void addGeneral(Document& scene, Value& entity, General general);
@@ -135,6 +136,7 @@ private:
 	void addDialogue(Document& scene, Value& entity, Dialogue dialogue);
 	void addLightSource(Document& scene, Value& entity, LightSource lightSource);
 	void addScript(Document& scene, Value& entity, Script script);
+	void addButton(Document& scene, Value& entity, Button button);
 
 public:
 	//static SceneData LoadSceneData(ResourceManager::GUID const& _guid);

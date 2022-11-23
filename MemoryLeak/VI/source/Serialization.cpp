@@ -163,6 +163,9 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			if (entity[index].HasMember("Script")) {
 				e.AddComponent<Script>(getScript(entity[index]));
 			}
+			if (entity[index].HasMember("Button")) {
+				e.AddComponent<Button>(getButton(entity[index]));
+			}
 
 			//mEntities.insert(e);
 			_sceneData.mEntities.insert(e);
@@ -613,7 +616,12 @@ Script SerializationManager::getScript(Value& entity)
 	//script.script = nullptr;
 	return script;
 }
-
+Button SerializationManager::getButton(Value& entity)
+{
+	Button button;
+	button.interactable = entity["Button"]["interactable"].GetBool();
+	return button;
+}
 
 
 
@@ -1054,7 +1062,12 @@ void SerializationManager::addScript(Document& scene, Value& entity, Script scri
 	tmp.AddMember(StringRef("name"), spath, scene.GetAllocator());
 	entity.AddMember(StringRef("Script"), tmp, scene.GetAllocator());
 }
-
+void SerializationManager::addButton(Document& scene, Value& entity, Button button)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("interactable"), button.interactable, scene.GetAllocator());
+	entity.AddMember(StringRef("Button"), tmp, scene.GetAllocator());
+}
 
 
 void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem::path _filename)

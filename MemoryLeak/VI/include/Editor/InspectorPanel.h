@@ -32,7 +32,6 @@ private:
 	void SheetAnimationEditor();
 	void Physics2DEditor();
 	void RectColliderEditor();
-	void LayerColliderEditor();
 	void CircleColliderEditor();
 	void Edge2DColliderEditor();
 	void Point2DColliderEditor();
@@ -41,7 +40,9 @@ private:
 	void AIEditor();
 	void ScriptEditor();
 	void DialogueEditor();
-	//void PlayerTmpEditor();
+	void ButtonEditor();
+	void LayerColliderEditor();
+
 	void AddPrefabComponent();
 	void PrefabEditor();
 
@@ -62,5 +63,5 @@ private:
 	const char* movement[5]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
 	int addComponentID{};
 	const char* componentsList[18]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
-				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "PlayerTmp" ,"LayerCollider"};
+				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "Button" ,"LayerCollider"};
 };
