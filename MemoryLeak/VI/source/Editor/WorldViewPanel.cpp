@@ -44,11 +44,11 @@ void WorldViewPanel::Update()
 		{
 			std::string gamesstateName = "GameState: " + (*mGameStates)[selectedGameState].mName;
 			ImGui::Text(gamesstateName.c_str());
-		}
-		if (selectedScene < (*mGameStates)[selectedGameState].mScenes.size())
-		{
-			std::string sceneName= "Scene : " + (*mGameStates)[selectedGameState].mScenes[selectedScene].mName;
-			ImGui::Text(sceneName.c_str());
+			if (selectedScene < (*mGameStates)[selectedGameState].mScenes.size())
+			{
+				std::string sceneName= "Scene : " + (*mGameStates)[selectedGameState].mScenes[selectedScene].mName;
+				ImGui::Text(sceneName.c_str());
+			}
 		}
 		else if (selectedScene == 99)
 		{

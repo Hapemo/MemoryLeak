@@ -27,6 +27,17 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\water.jpg",
             "layer": 0
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
         }
     },
     {
@@ -183,9 +194,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 7,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.007184901274740696
+            "timeToFrameSwap": 0.037958692759275436
         },
         "RectCollider": {
             "centerOffset": {
@@ -254,8 +265,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -47.065032958984375,
-                "Y": -80.14541625976563
+                "X": -49.14849090576172,
+                "Y": -93.395751953125
             }
         },
         "Sprite": {
@@ -266,14 +277,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+            "texture": "Textures\\Spritesheets\\BOAT\\boat_SE_spritesheet.png",
             "layer": 1
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 3,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.04257480427622795
+            "timeToFrameSwap": 0.07203789800405502
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -281,14 +292,14 @@
             "inertia": 1.0,
             "restitution": 0.0,
             "friction": 0.0,
-            "damping": 0.949999988079071,
+            "damping": 0.8999999761581421,
             "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
             "velocity": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 0.29758548736572266
             },
             "acceleration": {
                 "X": 0.0,
@@ -298,20 +309,6 @@
             "angularTorque": 0.0,
             "forceList": [],
             "renderFlag": false
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": true
-        },
-        "Script": {
-            "name": "PlayerMovementScript"
         }
     },
     {
@@ -329,7 +326,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -40.73553466796875,
-                "Y": -103.57829284667969
+                "Y": -103.62236785888672
             }
         },
         "Sprite": {
@@ -345,9 +342,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.04257480427622795
+            "timeToFrameSwap": 0.07203789800405502
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -362,7 +359,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": 0.0039587137289345264
+                "Y": 0.29758548736572266
             },
             "acceleration": {
                 "X": 0.0,
@@ -547,8 +544,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 402.0,
-                "Y": 402.0
+                "X": 400.0,
+                "Y": 400.0
             },
             "rotation": 0.0,
             "translation": {
@@ -763,9 +760,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 204,
-                "g": 193,
-                "b": 14,
+                "r": 127,
+                "g": 129,
+                "b": 131,
                 "a": 100
             },
             "sprite": 1,
@@ -793,7 +790,7 @@
     {
         "General": {
             "name": "Tree",
-            "tag": 5,
+            "tag": 0,
             "subtag": 0,
             "isActive": true
         },
@@ -903,9 +900,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.04257480427622795
+            "timeToFrameSwap": 0.07203789800405502
         },
         "RectCollider": {
             "centerOffset": {
