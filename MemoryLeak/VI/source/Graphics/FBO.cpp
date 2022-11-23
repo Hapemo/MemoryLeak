@@ -28,8 +28,8 @@ Pixel width of the FBO
 Pixel height of the FBO
 *******************************************************************************/
 void FBO::Init(int _windowWidth, int _windowHeight) {
-	mSpecs.mWidth = _windowWidth;
-	mSpecs.mHeight = _windowHeight;
+	mSpecs.mWidth = _windowWidth == 0 ? 1 : _windowWidth;
+	mSpecs.mHeight = _windowHeight == 0 ? 1 : _windowHeight;
 
 	//creating frame buffer
 	glCreateFramebuffers(1, &mfboid);

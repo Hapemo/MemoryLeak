@@ -25,7 +25,7 @@ struct Character
 	unsigned int textureID; //ID of the glyph
 	Math::Vec2 size;		//size of the glyph
 	Math::Vec2 bearing;		//offset from baseline to left/top of glyph
-	unsigned int advance;	//offset to advance to next glyph
+	unsigned int advanceX;	//offset to advance to next glyph
 };
 
 /*!*****************************************************************************
@@ -39,6 +39,7 @@ struct Paragraph
 	float scale;
 	Math::Vec3 color;
 	float layer;
+	float renderWidth;
 };
 
 /*!*****************************************************************************
@@ -77,7 +78,7 @@ public:
 	\param const Math::Vec3& _color
 	Color of the font.
 	*******************************************************************************/
-	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color, float layer);
+	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color, float layer, float _width);
 	/*!*****************************************************************************
 	\brief
 	Renders all paragraphs stored in mParagraphs.
@@ -91,6 +92,8 @@ public:
 		mWindowWidth = *_windowWidth; 
 		mWindowHeight = *_windowHeight;
 	}
+
+	void SetCamZoom(float _camZoom) { mCamZoom = _camZoom; }
 private:
 	/*!*****************************************************************************
 	\brief
@@ -107,4 +110,6 @@ private:
 	GLint mTextColorLocation, mMatrixLocation, mZValueLocation;
 	bool mInitialized;
 	int mWindowWidth, mWindowHeight;
+	float mMaxYSize;
+	float mCamZoom;
 };
