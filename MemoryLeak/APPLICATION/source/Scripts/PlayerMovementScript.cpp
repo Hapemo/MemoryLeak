@@ -3,7 +3,7 @@
 REGISTER_SCRIPT(ScriptComponent, PlayerMovementScript);
 
 void PlayerMovementScript::StartScript(const Entity& _e) {
-
+	(void)_e;
 }
 
 void PlayerMovementScript::UpdateScript(const Entity& _e) {
@@ -15,5 +15,5 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 }
 
 void PlayerMovementScript::EndScript(const Entity& _e) {
-
+	(void)_e;
 }
