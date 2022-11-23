@@ -7,7 +7,7 @@
 class PlayerMovementScript : public ScriptComponent {
 private:
 	std::string name{ "PlayerMovementScript" };
-	float playerSpeed{ 10.f };
+	float playerSpeed{ 30.f };
 public:
 	PlayerMovementScript() = default;
 	~PlayerMovementScript() override = default;
