@@ -64,6 +64,7 @@ void Application::SystemInit() {
 }
 
 void Application::SystemUpdate() {
+    buttonManager->Update();
   // AI
   TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
