@@ -511,20 +511,20 @@ void WorldViewPanel::PopObject()
 {
 	for (int i = 0; i < popList.size(); i++)
 	{
-		if (popList[i].first != nullptr && popList[i].first->id != 0)
+		if (popList[i].first != nullptr)
 		{
-			if (popList[i].second < 30)
+			if (popList[i].second < 10)
 			{
-				popList[i].first->GetComponent<Transform>().scale.x += 0.5f;
-				popList[i].first->GetComponent<Transform>().scale.y += 0.5f;
+				popList[i].first->GetComponent<Transform>().scale.x += 1.5f;
+				popList[i].first->GetComponent<Transform>().scale.y += 1.5f;
 			}
-			else if(popList[i].second < 60)
+			else if(popList[i].second < 20)
 			{
-				popList[i].first->GetComponent<Transform>().scale.x -= 0.5f;
-				popList[i].first->GetComponent<Transform>().scale.y -= 0.5f;
+				popList[i].first->GetComponent<Transform>().scale.x -= 1.5f;
+				popList[i].first->GetComponent<Transform>().scale.y -= 1.5f;
 			}
 			popList[i].second++;
-			if (popList[i].second > 80)
+			if (popList[i].second > 30)
 			{
 				pop = popList[i].first;
 				popList.erase(popList.begin()+i);
