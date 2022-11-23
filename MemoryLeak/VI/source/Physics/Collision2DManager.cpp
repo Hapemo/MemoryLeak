@@ -439,11 +439,11 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		//if (!e1->GetComponent<General>().isActive)
 			//continue;
 
-		if (e1->GetComponent<General>().tag != TAG::PLAYER)
-			continue;
+		//if (e1->GetComponent<General>().tag != TAG::PLAYER)
+		//	continue;
 
-		//for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
-		for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
+		for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
+		//for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
 			if (e1 == e2)
 				continue;
 
@@ -504,7 +504,7 @@ void Collision2DManager::ClearContactList() {
 void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 	// Store bool value of whether entity has physics component
 	bool obj1HasP{ _contact.obj[0].HasComponent<Physics2D>() },
-		obj2HasP{ _contact.obj[0].HasComponent<Physics2D>() };
+		obj2HasP{ _contact.obj[1].HasComponent<Physics2D>() };
 
 	// Error handling: Check for infinite mass of both objects
 	// Do not do anything further

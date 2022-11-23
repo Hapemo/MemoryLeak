@@ -6,6 +6,7 @@
     <ClInclude Include="include\Scripts\ScaleScript.h" />
     <ClInclude Include="include\Scripts\TestScript.h" />
     <ClInclude Include="include\Scripts\DialogueScript.h" />
+    <ClInclude Include="include\Scripts\PlayerMovementScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -14,5 +15,6 @@
     <ClCompile Include="source\Scripts\ScaleScript.cpp" />
     <ClCompile Include="source\Scripts\TestScript.cpp" />
     <ClCompile Include="source\Scripts\DialogueScript.cpp" />
+    <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
   </ItemGroup>
 </Project>

@@ -39,7 +39,7 @@ void Application::startup() {
 void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
   audioManager->Init();
-  logicSystem->Init();
+  //logicSystem->Init();
   //aiManager->weatherAIinit();
   
   renderManager->Init(&window_width, &window_height);
@@ -97,10 +97,10 @@ void Application::SystemUpdate() {
 void Application::init() {
   // Part 1
   startup();
-
   SystemInit();
   //audioManager->PlayBGSound("PIntro", 10);
-  audioManager->PlayBGSound("BINGBIAN", 10);
+  //audioManager->PlayBGSound("BINGBIAN", 10);
+  audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
   //audioManager->PlayBGSound("MENUBG", 10);
   GameStateManager::GetInstance()->Init();
 }

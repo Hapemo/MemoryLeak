@@ -2,7 +2,7 @@
     {
         "General": {
             "name": "Background",
-            "tag": 8,
+            "tag": 4,
             "subtag": 0,
             "isActive": true
         },
@@ -13,8 +13,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1.001251220703125,
-                "Y": 1.4392852783203125
+                "X": 0.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -43,8 +43,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1.001220703125,
-                "Y": 3.4417877197265625
+                "X": 0.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -76,8 +76,8 @@
     },
     {
         "General": {
-            "name": "Settings_button",
-            "tag": 8,
+            "name": "Controls",
+            "tag": 5,
             "subtag": 0,
             "isActive": true
         },
@@ -88,7 +88,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1.0012664794921875,
+                "X": 0.0,
                 "Y": 77.53440856933594
             }
         },
@@ -105,10 +105,10 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Settings",
+            "text": "Controls",
             "offset": {
-                "X": -80.0,
-                "Y": -13.0
+                "X": -89.0,
+                "Y": -16.0
             },
             "scale": 1.0,
             "color": {
@@ -121,8 +121,8 @@
     },
     {
         "General": {
-            "name": "QuitGame_button",
-            "tag": 7,
+            "name": "Quit_Game",
+            "tag": 5,
             "subtag": 0,
             "isActive": true
         },
@@ -167,7 +167,7 @@
     {
         "General": {
             "name": "Resume",
-            "tag": 7,
+            "tag": 5,
             "subtag": 0,
             "isActive": true
         },
@@ -178,8 +178,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1.001251220703125,
-                "Y": -170.77597045898438
+                "X": 0.0,
+                "Y": -159.2242431640625
             }
         },
         "Sprite": {

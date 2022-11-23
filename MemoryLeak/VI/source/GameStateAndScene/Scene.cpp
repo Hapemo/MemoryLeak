@@ -13,6 +13,7 @@ Added load and unload of scene using resourceManager
 Added adding and removing of entity
 *******************************************************************************/
 #include "Scene.h"
+#include "LogicSystem.h"
 
 
 Scene::Scene() : mEntities(), mIsPause(false), mName(), mCamera(), mLayer(), mOrder() {
@@ -30,6 +31,24 @@ Scene::Scene(std::string const& _name) : mEntities(), mIsPause(false), mName(_na
 Scene::~Scene() {
 	//LOG_CUSTOM("SCENE", "Scene with name " + mName + " destroyed");
 }
+
+void Scene::Init() {
+	//std::set<Entity> shouldRun{};
+	for (auto e : mEntities) if (e.GetComponent<General>().isActive) e.Activate(); // shouldRun.insert(e);
+	
+	//logicSystem->Init(shouldRun);
+};
+
+void Scene::Update() {
+	
+};
+
+void Scene::Exit() {
+	//std::set<Entity> shouldRun{};
+	for (auto e : mEntities) if (e.GetComponent<General>().isActive) e.Deactivate(); // shouldRun.insert(e);
+
+	//logicSystem->Exit(shouldRun);
+};
 
 void Scene::PrimaryUpdate() {
 	if (mIsPause) return;
@@ -85,3 +104,4 @@ void Scene::RemoveEntity(Entity const& _e) {
 	
 	mEntities.erase(_e);
 }
+

@@ -12,6 +12,7 @@ Entities and its Components.
 #include "EditorManager.h"
 #include <ECSManager.h>
 #include "GameStateManager.h"
+#include "AudioManager.h"
 //#include <Logger.h>
 #include <Panel.h>
 #include <MenuPanel.h>
@@ -76,7 +77,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-	
+	io.Fonts->AddFontFromFileTTF("ComicSans.ttf", 15.f);
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
@@ -85,7 +86,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	mWindowHeight = _windowHeight;
 	myEntities = &mEntities;
 	//IM_ASSERT(ret);
-
+	
 
 	static AnimationPanel animationPanel{};
 	static HierarchyPanel hierarchyPanel{};
@@ -126,7 +127,7 @@ None.
 *******************************************************************************/
 void EditorManager::Init()
 {
-	
+	//audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
 	isScenePaused = true;
 	selectedEntity = nullptr;
 	aspect = false;
@@ -488,6 +489,8 @@ void EditorManager::SceneReset()
 	aspect = false;
 	renderManager->ResetCameras();
 	renderManager->ClearSelectedEntities();
+	renderManager->GetGizmo().Detach();
+	undoStack.clear();
 }
 /*!*****************************************************************************
 \brief

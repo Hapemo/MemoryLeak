@@ -1,8 +1,8 @@
 [
     {
         "General": {
-            "name": "NEW Entity 1",
-            "tag": 8,
+            "name": "Background",
+            "tag": 4,
             "subtag": 0,
             "isActive": true
         },
@@ -13,8 +13,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1.001220703125,
-                "Y": -0.56317138671875
+                "X": 0.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -46,20 +46,20 @@
     },
     {
         "General": {
-            "name": "NEW Prefabee1",
+            "name": "Try_Again",
             "tag": 5,
             "subtag": 1,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 100.0
+                "X": 400.5,
+                "Y": 100.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -0.6007461547851563,
-                "Y": 3.4418258666992188
+                "X": 0.0,
+                "Y": 3.4418296813964844
             }
         },
         "Sprite": {
@@ -99,7 +99,7 @@
     },
     {
         "General": {
-            "name": "NEW Prefabee2",
+            "name": "Quit_Game",
             "tag": 5,
             "subtag": 1,
             "isActive": true
@@ -111,7 +111,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -0.6007537841796875,
+                "X": 0.0,
                 "Y": -142.94117736816406
             }
         },

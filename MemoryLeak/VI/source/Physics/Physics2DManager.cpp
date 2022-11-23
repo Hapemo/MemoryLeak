@@ -420,6 +420,11 @@ void Physics2DManager::AddDragForceToList(const Entity& _e, const float& _direct
 }
 
 void Physics2DManager::ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation) {
-	SetVelocity(_e, GetVelocity(_e) + ( GetMass(_e) == 0.f ? 0.f : (1.f / GetMass(_e)) ) * _impulse);
-	SetAngularVelocity(_e, GetAngularVelocity(_e) + (GetInertia(_e) == 0.f ? 0.f : (1.f / GetInertia(_e))) * Math::Cross(_impulse, _rotation));
+	if (!_e.HasComponent<Physics2D>())
+		return;
+
+	if (_e.ShouldRun()) {
+		SetVelocity(_e, GetVelocity(_e) + (GetMass(_e) == 0.f ? 0.f : (1.f / GetMass(_e))) * _impulse);
+		SetAngularVelocity(_e, GetAngularVelocity(_e) + (GetInertia(_e) == 0.f ? 0.f : (1.f / GetInertia(_e))) * Math::Cross(_impulse, _rotation));
+	}
 }

@@ -34,7 +34,7 @@ struct General {
 	bool isPaused;
 	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
 	std::set<Entity> children;
-	Entity parent;
+	Entity parent = Entity(0);
 };
 
 /*!*****************************************************************************
@@ -299,6 +299,10 @@ struct Text {
 	bool followCam = false;					//NO save, edit, see
 };
 
+/*!*****************************************************************************
+\brief
+	This struct contains the data for Dialogue component
+*******************************************************************************/
 struct Dialogue
 {
 	int speakerID;

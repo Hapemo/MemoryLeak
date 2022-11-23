@@ -19,7 +19,9 @@ Function will run on initialisation of the entity.
 *******************************************************************************/
 void DialogueScript::StartScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Test script starts works!!!");
+	LOG_INFO("Dialogue script starts works!!!");
+	FUNC->LoadDialogs("Dialogue LittleGirl 0");
+	FUNC->SetCurrentDialogueID(1);
 }
 
 /*!*****************************************************************************
@@ -28,11 +30,10 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void DialogueScript::UpdateScript(Entity const& gob) {
 	(void)gob;
-	if (FUNC->CheckKey(E_STATE::HOLD, M)) {
-		std::cout << InternalCalls::GetInstance()->GetWorldMousePos().y << " " << InternalCalls::GetInstance()->GetWorldMousePos().x << "\n";
-	}
-	else if (InternalCalls::GetInstance()->CheckKey(E_STATE::HOLD, N)) {
-		std::cout << FUNC->GetWorldMousePos().y << " " << InternalCalls::GetInstance()->GetWorldMousePos().x << "\n";
+	if (FUNC->CheckKey(E_STATE::PRESS, M_BUTTON_L)) {
+		int currentId = FUNC->GetCurrentDialogueID();
+		gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
+		if (!FUNC->SetCurrentDialogueID(++currentId)) gob.GetComponent<Text>().text = "";
 	}
 }
 
@@ -42,5 +43,5 @@ Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void DialogueScript::EndScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Test script end works!!!");
+	LOG_INFO("Dialogue script end works!!!");
 }

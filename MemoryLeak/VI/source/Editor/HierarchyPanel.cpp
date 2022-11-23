@@ -79,6 +79,7 @@ void HierarchyPanel::Update()
 					if (ImGui::Button(saveGSbtn.c_str()))
 					{
 						(*mGameStates)[g].Save();
+						SceneReset();
 					}
 					ImGui::PopStyleColor();
 					std::string removeGSbtn = "REMOVE GameState";
@@ -161,6 +162,7 @@ void HierarchyPanel::Update()
 								if (ImGui::Button(saveScenebtn.c_str()))
 								{
 									(*mGameStates)[g].mScenes[s].Save();
+									SceneReset();
 								}
 								ImGui::PopStyleColor();
 								std::string removeScenebtn = "REMOVE Scene";

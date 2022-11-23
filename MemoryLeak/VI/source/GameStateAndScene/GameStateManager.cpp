@@ -124,20 +124,28 @@ void GameStateManager::RemoveGameState(GameState* _gameState) {
 	}
 
 	for (auto it = mGameStates.begin(); it != mGameStates.end(); ++it) {
+		// Find the game state
 		if (it->mName == _gameState->mName) {
+			// Do necessary unloading 
 			it->Exit();
 			it->Unload();
 			mGameStatesScenesPause.erase(mGameStatesScenesPause.find(it->mName)); // FOR EDITOR
 			std::string currName{ mCurrentGameState->mName };
-			mGameStates.erase(it);
-			for (auto& gs : mGameStates) if (gs.mName == currName) mCurrentGameState = &gs; // This line is required because removing gamestates from vector changes arrangement of gamestates, 
-																																											// messing up where mCurrentGameState is pointing at.
-			LOG_CUSTOM("GAMESTATEMANAGER", "Removed gamestate: " + _gameState->mName);
+			// Erase selected gs from pool
 			if (mCurrentGameState == &*it) {
 				if (mGameStates.empty())
 					mCurrentGameState = nullptr;
 				else mCurrentGameState = &mGameStates.front();
 			}
+			mGameStates.erase(it);
+			//if (!mGameStates.size()) {
+			//	LOG_CUSTOM("GAMESTATEMANAGER", "No more gamestate exists after removing this gamestate: " + _gameState->mName);
+			//	mCurrentGameState = nullptr;
+			//}
+			//for (auto& gs : mGameStates) if (gs.mName == currName) mCurrentGameState = &gs; // This line is required because removing gamestates from vector changes arrangement of gamestates, 
+																																											// messing up where mCurrentGameState is pointing at.
+			LOG_CUSTOM("GAMESTATEMANAGER", "Removed gamestate: " + _gameState->mName);
+
 			return;
 		}
 	}

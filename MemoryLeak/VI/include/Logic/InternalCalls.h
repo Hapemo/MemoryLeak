@@ -51,6 +51,14 @@ public:
 	*******************************************************************************/
 	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
 
+	/*!*****************************************************************************
+	\brief
+		Loads the dialogs from a json file to the dialog manager
+
+	\return
+	None.
+	*******************************************************************************/
+	void LoadDialogs(std::string _filename);
 
 	/*!*****************************************************************************
 	\brief
@@ -114,4 +122,22 @@ public:
 	The selected choice.
 	*******************************************************************************/
 	void SetSelectedChoice(int _id, int _selectedChoice);
+
+	/*!*****************************************************************************
+	\brief
+	Get current dialogue id using function from DialogManager.
+
+	\param int _id
+	The id of the current dialog.
+	*******************************************************************************/
+	bool SetCurrentDialogueID(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Get current dialogue id using function from DialogManager.
+
+	\return
+	The id of the current dialog.
+	*******************************************************************************/
+	int GetCurrentDialogueID();
 };
