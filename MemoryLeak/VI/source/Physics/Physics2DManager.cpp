@@ -139,11 +139,11 @@ void Physics2DManager::Step() {
 		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (GetInertia(e) == 0.f ? 0.f : (1.f / GetInertia(e))) * static_cast<float>(fixedDT));
 
 		// Dampen velocity (for soft drag)
-		ScaleVelocity(e, static_cast<float>(std::pow(GetDamping(e), fixedDT)));
+		ScaleVelocity(e, GetDamping(e));
 		SetAngularVelocity(e, GetAngularVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
 		SetAngularTorque(e, GetAngularTorque(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
 
-		// Cap velocity
+		// Cap simulation velocity
 		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap)
 			SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::velocityCap);
 

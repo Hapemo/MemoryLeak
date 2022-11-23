@@ -1,1124 +1,1127 @@
 [
-  {
-    "General": {
-      "name": "Water",
-      "tag": 4,
-      "subtag": 0,
-      "isActive": true
+    {
+        "General": {
+            "name": "Water",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 4006.0,
+                "Y": 2588.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -300.5469970703125,
+                "Y": 65.29591369628906
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\water.jpg",
+            "layer": 0
+        }
     },
-    "Transform": {
-      "scale": {
-        "X": 4006.0,
-        "Y": 2588.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -300.5469970703125,
-        "Y": 65.29591369628906
-      }
+    {
+        "General": {
+            "name": "Double Story House",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -500.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1489.1719970703125,
+                "Y": -745.0733642578125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\house_1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
     },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\water.jpg",
-      "layer": 0
+    {
+        "General": {
+            "name": "Bush1",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -685.8641967773438,
+                "Y": -832.6714477539063
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\bush-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Water Fountain",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -351.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -690.04248046875,
+                "Y": 37.37938690185547
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building_6(revised).png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Little Girl",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 88.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -568.4970703125,
+                "Y": -109.6075210571289
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
+            "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 9,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.037958692759275436
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree1",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -300.0,
+                "Y": 300.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1888.1656494140625,
+                "Y": -934.1702880859375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Boat",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -159.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -49.14849090576172,
+                "Y": -93.395751953125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+            "layer": 1
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 3,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.07203789800405502
+        },
+        "Physics2D": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "velocity": {
+                "X": 0.0,
+                "Y": 0.29758548736572266
+            },
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
+            "renderFlag": false
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Script": {
+            "name": "PlayerMovementScript"
+        }
+    },
+    {
+        "General": {
+            "name": "Player",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -67.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -40.73553466796875,
+                "Y": -103.62236785888672
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\MC\\mc-idle-spritesheet.png",
+            "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 4,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.07203789800405502
+        },
+        "Physics2D": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "velocity": {
+                "X": 0.0,
+                "Y": 0.29758548736572266
+            },
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Lighthouse",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -500.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1529.8656005859375,
+                "Y": 809.7613525390625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\lighthouse.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree2",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1861.2108154296875,
+                "Y": -256.1430358886719
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-2.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree3",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 610.3270874023438,
+                "Y": 1092.1505126953125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-2.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree4",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1262.736328125,
+                "Y": -535.0230712890625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree5",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 402.0,
+                "Y": 402.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -332.0943603515625,
+                "Y": -419.4943542480469
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Bush2",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 111.72531127929688,
+                "Y": 134.04318237304688
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\bush-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Single Story House",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 888.1722412109375,
+                "Y": -767.11962890625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building_2(revised).png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree6",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1161.611328125,
+                "Y": 369.16748046875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-2.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Walnut House",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 445.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 935.2947998046875,
+                "Y": 911.7619018554688
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building 4.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Light",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1525.1329345703125,
+                "Y": 955.6954345703125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 127,
+                "g": 129,
+                "b": 131,
+                "a": 100
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "AI": {
+            "colorChange": 1,
+            "movement": 0,
+            "speed": 1.0,
+            "range": 10.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 336.5287780761719,
+                "Y": -925.8662109375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-2.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Ruins",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 564.0,
+                "Y": 473.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 927.248779296875,
+                "Y": 22.471237182617188
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building_5(revised).png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Passenger1",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 39.0,
+                "Y": 94.25
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1448.6572265625,
+                "Y": 688.0704956054688
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
+            "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.07203789800405502
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Porthouse",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -500.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1514.4952392578125,
+                "Y": -15.134796142578125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building_3(revised).png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree7",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -197.67385864257813,
+                "Y": 509.1048583984375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-2.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree8",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1199.0877685546875,
+                "Y": 907.5433959960938
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Bush3",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -899.725341796875,
+                "Y": 400.5544128417969
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\bush-1.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree9",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1901.721923828125,
+                "Y": 496.0096740722656
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
     }
-  },
-  {
-    "General": {
-      "name": "Double Story House",
-      "tag": 3,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -500.0,
-        "Y": 500.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1489.1719970703125,
-        "Y": -745.0733642578125
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\house_1.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Bush1",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 200.0,
-        "Y": 200.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -685.8641967773438,
-        "Y": -832.6714477539063
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\bush-1.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Water Fountain",
-      "tag": 3,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -351.0,
-        "Y": 500.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -690.04248046875,
-        "Y": 37.37938690185547
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\building_6(revised).png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Little Girl",
-      "tag": 1,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 50.0,
-        "Y": 88.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -568.4970703125,
-        "Y": -109.6075210571289
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
-      "layer": 2
-    },
-    "SheetAnimation": {
-      "frameCount": 9,
-      "currFrameIndex": 1,
-      "timePerFrame": 0.10000000149011612,
-      "timeToFrameSwap": 0.037958692759275436
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree1",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -300.0,
-        "Y": 300.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1888.1656494140625,
-        "Y": -934.1702880859375
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-1.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Boat",
-      "tag": 0,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -159.0,
-        "Y": 200.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -49.14849090576172,
-        "Y": -93.395751953125
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Spritesheets\\BOAT\\boat_SE_spritesheet.png",
-      "layer": 1
-    },
-    "SheetAnimation": {
-      "frameCount": 8,
-      "currFrameIndex": 3,
-      "timePerFrame": 0.10000000149011612,
-      "timeToFrameSwap": 0.07203789800405502
-    },
-    "Physics2D": {
-      "dynamicsEnabled": true,
-      "mass": 1.0,
-      "inertia": 1.0,
-      "restitution": 0.0,
-      "friction": 0.0,
-      "damping": 0.8999999761581421,
-      "accumulatedForce": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "velocity": {
-        "X": 0.0,
-        "Y": 0.29758548736572266
-      },
-      "acceleration": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "angularVelocity": 0.0,
-      "angularTorque": 0.0,
-      "forceList": [],
-      "renderFlag": false
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Player",
-      "tag": 0,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -67.0,
-        "Y": 80.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -40.73553466796875,
-        "Y": -103.62236785888672
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Spritesheets\\MC\\mc-idle-spritesheet.png",
-      "layer": 2
-    },
-    "SheetAnimation": {
-      "frameCount": 8,
-      "currFrameIndex": 4,
-      "timePerFrame": 0.10000000149011612,
-      "timeToFrameSwap": 0.07203789800405502
-    },
-    "Physics2D": {
-      "dynamicsEnabled": true,
-      "mass": 1.0,
-      "inertia": 1.0,
-      "restitution": 0.0,
-      "friction": 0.0,
-      "damping": 0.8999999761581421,
-      "accumulatedForce": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "velocity": {
-        "X": 0.0,
-        "Y": 0.29758548736572266
-      },
-      "acceleration": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "angularVelocity": 0.0,
-      "angularTorque": 0.0,
-      "forceList": [],
-      "renderFlag": false
-    }
-  },
-  {
-    "General": {
-      "name": "Lighthouse",
-      "tag": 3,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -500.0,
-        "Y": 500.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1529.8656005859375,
-        "Y": 809.7613525390625
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\lighthouse.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree2",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 400.0,
-        "Y": 400.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1861.2108154296875,
-        "Y": -256.1430358886719
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-2.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree3",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 400.0,
-        "Y": 400.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": 610.3270874023438,
-        "Y": 1092.1505126953125
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-2.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree4",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 400.0,
-        "Y": 400.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": 1262.736328125,
-        "Y": -535.0230712890625
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-1.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree5",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 402.0,
-        "Y": 402.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -332.0943603515625,
-        "Y": -419.4943542480469
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-1.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Bush2",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 200.0,
-        "Y": 200.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": 111.72531127929688,
-        "Y": 134.04318237304688
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\bush-1.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Single Story House",
-      "tag": 3,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 500.0,
-        "Y": 500.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": 888.1722412109375,
-        "Y": -767.11962890625
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\building_2(revised).png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree6",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -400.0,
-        "Y": 400.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": 1161.611328125,
-        "Y": 369.16748046875
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-2.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Walnut House",
-      "tag": 3,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 500.0,
-        "Y": 445.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": 935.2947998046875,
-        "Y": 911.7619018554688
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\building 4.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Light",
-      "tag": 6,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 150.0,
-        "Y": 150.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1525.1329345703125,
-        "Y": 955.6954345703125
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 127,
-        "g": 129,
-        "b": 131,
-        "a": 100
-      },
-      "sprite": 1,
-      "texture": "Textures\\Background\\Assets.txt",
-      "layer": 2
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    },
-    "AI": {
-      "colorChange": 1,
-      "movement": 0,
-      "speed": 1.0,
-      "range": 10.0
-    }
-  },
-  {
-    "General": {
-      "name": "Tree",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 400.0,
-        "Y": 400.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": 336.5287780761719,
-        "Y": -925.8662109375
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-2.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Ruins",
-      "tag": 3,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 564.0,
-        "Y": 473.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": 927.248779296875,
-        "Y": 22.471237182617188
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\building_5(revised).png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Passenger1",
-      "tag": 1,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 39.0,
-        "Y": 94.25
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1448.6572265625,
-        "Y": 688.0704956054688
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-      "layer": 2
-    },
-    "SheetAnimation": {
-      "frameCount": 8,
-      "currFrameIndex": 1,
-      "timePerFrame": 0.10000000149011612,
-      "timeToFrameSwap": 0.07203789800405502
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Porthouse",
-      "tag": 3,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -500.0,
-        "Y": 500.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1514.4952392578125,
-        "Y": -15.134796142578125
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\building_3(revised).png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree7",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -400.0,
-        "Y": 400.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -197.67385864257813,
-        "Y": 509.1048583984375
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-2.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree8",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 400.0,
-        "Y": 400.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1199.0877685546875,
-        "Y": 907.5433959960938
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-1.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Bush3",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": 200.0,
-        "Y": 200.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -899.725341796875,
-        "Y": 400.5544128417969
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\bush-1.png",
-      "layer": 2
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  },
-  {
-    "General": {
-      "name": "Tree9",
-      "tag": 5,
-      "subtag": 0,
-      "isActive": true
-    },
-    "Transform": {
-      "scale": {
-        "X": -400.0,
-        "Y": 400.0
-      },
-      "rotation": 0.0,
-      "translation": {
-        "X": -1901.721923828125,
-        "Y": 496.0096740722656
-      }
-    },
-    "Sprite": {
-      "color": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
-        "a": 100
-      },
-      "sprite": 2,
-      "texture": "Textures\\Sprites\\tree-1.png",
-      "layer": 1
-    },
-    "RectCollider": {
-      "centerOffset": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "scaleOffset": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "renderFlag": true
-    }
-  }
 ]
