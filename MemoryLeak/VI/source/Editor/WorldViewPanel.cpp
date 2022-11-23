@@ -66,12 +66,11 @@ void WorldViewPanel::Update()
 			name += (*mGameStates)[selectedGameState].mName;
 			name += ".json";
 			std::filesystem::path path{ name };
-			//(*mGameStates)[selectedGameState].mName = name + "OLD";
-			//GameStateManager::GetInstance()->RemoveGameState(&(*mGameStates)[selectedGameState]);
-			(*mGameStates)[selectedGameState].mName = "Pls Delete me";
+			//(*mGameStates)[selectedGameState].mName = "Pls Delete me";
+			SceneReset();
+			GameStateManager::GetInstance()->RemoveGameState(&(*mGameStates)[selectedGameState]);
 			GameStateManager::GetInstance()->AddGameState(path);
-
-
+			SceneReset();
 			//GameStateManager::GetInstance()->SetGameState(path.stem().string());
 			selectedGameState = (int)(*mGameStates).size() - 1;
 			selectedScene = (int)(*mGameStates)[selectedGameState].mScenes.size() - 1;
