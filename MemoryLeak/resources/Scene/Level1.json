@@ -277,7 +277,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "Textures\\Spritesheets\\BOAT\\boat_SE_spritesheet.png",
             "layer": 1
         },
         "SheetAnimation": {
@@ -337,7 +337,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "Textures\\Spritesheets\\MC\\mc-idle-spritesheet.png",
             "layer": 2
         },
         "SheetAnimation": {
