@@ -49,22 +49,5 @@
         "isActive": true,
         "layer": 0,
         "order": 0
-    },
-    {
-        "SceneName": "Level1",
-        "Transform": {
-            "scale": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "rotation": 1.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "isActive": false,
-        "layer": 0,
-        "order": 0
     }
 ]

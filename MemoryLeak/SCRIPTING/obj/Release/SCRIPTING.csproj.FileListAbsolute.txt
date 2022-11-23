@@ -18,9 +18,3 @@ C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIP
 C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
 C:\Users\h.weijhin\Desktop\GAM\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.AssemblyReference.cache
-C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.dll
-C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.pdb
-C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.AssemblyReference.cache
-C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.CoreCompileInputs.cache
-C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
-C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
