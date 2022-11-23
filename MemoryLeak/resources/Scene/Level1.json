@@ -27,17 +27,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\water.jpg",
             "layer": 0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": true
         }
     },
     {
@@ -269,17 +258,17 @@
                 "Y": -93.395751953125
             }
         },
-      "Sprite": {
-        "color": {
-          "r": 0,
-          "g": 255,
-          "b": 0,
-          "a": 100
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+            "layer": 1
         },
-        "sprite": 2,
-        "texture": "Textures\\Spritesheets\\BOAT\\boat_SE_spritesheet.png",
-        "layer": 1
-      },
         "SheetAnimation": {
             "frameCount": 8,
             "currFrameIndex": 3,
@@ -292,7 +281,7 @@
             "inertia": 1.0,
             "restitution": 0.0,
             "friction": 0.0,
-            "damping": 0.8999999761581421,
+            "damping": 0.949999988079071,
             "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
@@ -309,6 +298,20 @@
             "angularTorque": 0.0,
             "forceList": [],
             "renderFlag": false
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Script": {
+            "name": "PlayerMovementScript"
         }
     },
     {
