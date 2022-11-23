@@ -511,7 +511,7 @@ void WorldViewPanel::PopObject()
 {
 	for (int i = 0; i < popList.size(); i++)
 	{
-		if (popList[i].first != nullptr)
+		if (popList[i].first != nullptr && popList[i].first->id != 0)
 		{
 			if (popList[i].second < 30)
 			{
