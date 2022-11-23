@@ -69,15 +69,15 @@ void Application::SystemUpdate() {
   aiManager->updateAI();
   END_TRACK("AI");
 
-  // Physics
-  TRACK_PERFORMANCE("Physics");
-  physics2DManager->Update(FPSManager::dt);
-  END_TRACK("Physics");
-
   //Scripting
   TRACK_PERFORMANCE("Scripting");
   logicSystem->Update();
   END_TRACK("Scripting");
+
+  // Physics
+  TRACK_PERFORMANCE("Physics");
+  physics2DManager->Update(FPSManager::dt);
+  END_TRACK("Physics");
 
   // Animator
   TRACK_PERFORMANCE("Animation");
@@ -89,9 +89,6 @@ void Application::SystemUpdate() {
   TRACK_PERFORMANCE("Audio");
   audioManager->UpdateSound();
   END_TRACK("Audio");
-
-  // Player
-  //playerManager->Update(); // Has error on gamestate3, maybe because player was not freed in gamestate1
 }
 
 void Application::init() {
