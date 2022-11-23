@@ -62,6 +62,7 @@ public:
 	// User can use game state manager's defined string type EXIT and RESTART to change state.
 	void ChangeGameState(std::string const& _path);
 	void UpdateNextGSMState();
+	Scene& SelectScene(std::string const& _name);
 
 	// Editor only functionalities
 	void AddGameState(std::filesystem::path const& _path = std::filesystem::path());
