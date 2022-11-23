@@ -185,12 +185,6 @@
   <ItemGroup>
     <None Include="shaders\batch.frag" />
     <None Include="shaders\batch.vert" />
-    <None Include="shaders\default.frag" />
-    <None Include="shaders\default.vert" />
-    <None Include="shaders\font.frag" />
-    <None Include="shaders\font.vert" />
-    <None Include="shaders\texture.frag" />
-    <None Include="shaders\texture.vert" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\3Dumb.ttf" />

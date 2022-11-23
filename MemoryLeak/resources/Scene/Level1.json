@@ -277,7 +277,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\boat_SE_spritesheet.png",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "SheetAnimation": {
