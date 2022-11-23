@@ -172,22 +172,29 @@ Entity Prefab::CreatePrefabee() {
 			e.AddComponent<Point2DCollider>(*(static_cast<Point2DCollider*>(component)));
 			break;
 
-		case 11: // PlayerTmp
-			//e.AddComponent<PlayerTmp>(*(static_cast<PlayerTmp*>(component)));
-			break;
-
-		case 12: // Stuff
+		case 11: // Stuff
 			e.AddComponent<AI>(*(static_cast<AI*>(component)));
 			break;
 
-		case 13: // Audio
+		case 12: // Audio
 			e.AddComponent<Audio>(*(static_cast<Audio*>(component)));
 			break;
 
-		case 14: // Text
+		case 13: // Text
 			e.AddComponent<Text>(*(static_cast<Text*>(component)));
 			break;
 
+		case 14: // Script
+			e.AddComponent<Script>(*(static_cast<Script*>(component)));
+			break;
+
+		case 15: // Dialog
+			e.AddComponent<Dialogue>(*(static_cast<Dialogue*>(component)));
+			break;
+
+		case 16: // LayerCollider
+			e.AddComponent<LayerCollider>(*(static_cast<LayerCollider*>(component)));
+			break;
 		}
 	}
 
