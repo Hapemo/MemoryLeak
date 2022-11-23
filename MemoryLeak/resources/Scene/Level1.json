@@ -309,6 +309,9 @@
                 "Y": 1.0
             },
             "renderFlag": true
+        },
+        "Script": {
+            "name": "PlayerMovementScript"
         }
     },
     {
