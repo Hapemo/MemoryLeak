@@ -14,7 +14,7 @@ This file contains the function declarations of the class InternalCalls.
 #include "Input.h"
 #include "vec2.h"
 #include "ECS_items.h"
-#include "DialogManager.h"
+//#include "DialogManager.h"
 
 #define FUNC InternalCalls::GetInstance()
 
@@ -140,4 +140,10 @@ public:
 	The id of the current dialog.
 	*******************************************************************************/
 	int GetCurrentDialogueID();
+
+	/*!*****************************************************************************
+	\brief
+	This function is called by user, to change the next game state
+	*******************************************************************************/
+	void ChangeGameState(std::string const& _name);
 };

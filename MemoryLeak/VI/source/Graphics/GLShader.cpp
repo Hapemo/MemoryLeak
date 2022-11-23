@@ -24,8 +24,8 @@ GLShader::GLShader(const std::string& _vertexShader, const std::string& _fragmen
 	mProgramID = glCreateProgram();
 
 	mLinked = false;
-	mPaths.first = "../VI/" + _vertexShader;
-	mPaths.second = "../VI/" + _fragmentShader;
+	mPaths.first = "../" + _vertexShader;
+	mPaths.second = "../" + _fragmentShader;
 }
 
 /*!*****************************************************************************

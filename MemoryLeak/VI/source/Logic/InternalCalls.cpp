@@ -11,6 +11,7 @@ This file contains the function definitions of the class InternalCalls.
 
 #include "InternalCalls.h"
 #include "ECSManager.h"
+#include "GameStateManager.h"
 
 /*!*****************************************************************************
 \brief
@@ -152,4 +153,12 @@ The id of the current dialog.
 *******************************************************************************/
 int InternalCalls::GetCurrentDialogueID() {
 	return dialogManager->GetCurrentDialogueID();
+}
+
+/*!*****************************************************************************
+\brief
+This function is called by user, to change the next game state
+*******************************************************************************/
+void InternalCalls::ChangeGameState(std::string const& _name) {
+	GameStateManager::GetInstance()->ChangeGameState(_name);
 }
