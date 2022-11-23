@@ -70,11 +70,15 @@ void GameStateManager::UpdateNextGSMState() {
 Scene& GameStateManager::SelectScene(std::string const& _name) {
 	for (auto& scene : mCurrentGameState->mScenes)
 		if (scene.mName == _name) return scene;
+
+	static Scene errScene("Error");
+	LOG_ERROR("Unable to select scene: " + _name);
+	return errScene;
 }
 
 void GameStateManager::ChangeGameState(std::string const& _name) {
 	LOG_CUSTOM("GAMESTATEMANAGER", "Set gamestate to change to: " + _name);
-	std::string path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::gamestateEntities).string() + _name };
+	std::string path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::gamestateEntities).string() + _name + ".json" };
 	// Check if exit or restart;
 	if (_name == EXIT)
 		mGSMState = E_GSMSTATE::EXIT;
