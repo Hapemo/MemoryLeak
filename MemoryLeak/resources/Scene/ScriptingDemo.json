@@ -107,9 +107,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "",
+            "text": "We have plenty of time to reminisce slowly! Oh right! There's one thing I wanted to show you!",
             "offset": {
-                "X": -306.0,
+                "X": -354.0,
                 "Y": 38.0
             },
             "scale": 0.5,
