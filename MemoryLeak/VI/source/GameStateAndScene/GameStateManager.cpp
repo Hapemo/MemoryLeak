@@ -171,9 +171,6 @@ void GameStateManager::SetGameState(std::string const& _name) {
 			//		e.GetComponent<General>().isPaused = scene.mIsPause;
 
 			// save curr gamestate scene pause, and pause all the scenes
-#ifdef NDEBUG
-			std::cout << mCurrentGameState->mName << '\n';
-#endif
 			std::vector<bool>& currPauseList = mGameStatesScenesPause[mCurrentGameState->mName];
 			currPauseList.clear();
 			currPauseList.resize(mCurrentGameState->mScenes.size());
