@@ -10,7 +10,7 @@ private:
 	float playerSpeed{ 0.f },
 		playerSpeedIncrement{ 1.f },
 		playerSpeedNaturalLossScalar{ 0.8f },
-		playerSpeedCap{ 10.f };
+		playerSpeedCap{ 5.f };
 public:
 	PlayerMovementScript() = default;
 	~PlayerMovementScript() override = default;
