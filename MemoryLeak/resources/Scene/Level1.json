@@ -269,17 +269,17 @@
                 "Y": -93.395751953125
             }
         },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 1
+      "Sprite": {
+        "color": {
+          "r": 0,
+          "g": 255,
+          "b": 0,
+          "a": 100
         },
+        "sprite": 2,
+        "texture": "Textures\\Spritesheets\\BOAT\\boat_SE_spritesheet.png",
+        "layer": 1
+      },
         "SheetAnimation": {
             "frameCount": 8,
             "currFrameIndex": 3,
