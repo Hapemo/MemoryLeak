@@ -67,18 +67,24 @@ void GameStateManager::UpdateNextGSMState() {
 	mGSMState = E_GSMSTATE::RUNNING;
 }
 
-void GameStateManager::ChangeGameState(std::string const& _path) {
-	LOG_CUSTOM("GAMESTATEMANAGER", "Set gamestate to change to: " + _path);
+Scene& GameStateManager::SelectScene(std::string const& _name) {
+	for (auto& scene : mCurrentGameState->mScenes)
+		if (scene.mName == _name) return scene;
+}
+
+void GameStateManager::ChangeGameState(std::string const& _name) {
+	LOG_CUSTOM("GAMESTATEMANAGER", "Set gamestate to change to: " + _name);
+	std::string path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::gamestateEntities).string() + _name };
 	// Check if exit or restart;
-	if (_path == EXIT)
+	if (_name == EXIT)
 		mGSMState = E_GSMSTATE::EXIT;
-	else if (_path == RESTART)
+	else if (_name == RESTART)
 		mGSMState = E_GSMSTATE::RESTART;
-	else if (!ResourceManager::FileExist(_path)) {
-		LOG_ERROR("Unable to change gamestate to: " + _path);
+	else if (!ResourceManager::FileExist(path)) {
+		LOG_ERROR("Unable to change gamestate to: " + _name);
 		return;
 	} else {
-		mNextGSPath = _path;
+		mNextGSPath = path;
 		mGSMState = E_GSMSTATE::CHANGING;
 	}
 }
@@ -92,14 +98,11 @@ void GameStateManager::AddGameState(std::filesystem::path const& _path) {
 		if (gs.mName == currName) 
 			mCurrentGameState = &gs; // This line is required because push_back changes arrangement of gamestates, messing up where mCurrentGameState is pointing at.
 	
-	if (_path.string().size() == 0)
-	{
+	if (_path.string().size() == 0) {
 		static int newGSCount = 1;
 		mGameStates.back().mName = "New GameState " + std::to_string(newGSCount++);  //cannot have same GS name
 		LOG_CUSTOM("GAMESTATEMANAGER", "Add NEW gamestate");
-	}
-	else
-	{
+	} else {
 		mGameStates.back().Load(_path);
 		LOG_CUSTOM("GAMESTATEMANAGER", "Add gamestate: " + _path.string());
 	}

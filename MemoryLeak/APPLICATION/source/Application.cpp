@@ -191,7 +191,10 @@ void Application::loadConfig(std::string path) {
   // Opening file
   std::fstream file;
   file.open(path, std::ios_base::in);
-  ASSERT(!file.is_open(), "File " + path + " not found.\n");
+  if (!file.is_open()) {
+    LOG_WARN("File " + path + " not found.\n");
+    return;
+  }
   
   std::map<std::string, std::string> config = Util::TextFileToMap(file);
 
