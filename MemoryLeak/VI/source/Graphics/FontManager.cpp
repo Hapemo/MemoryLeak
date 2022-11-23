@@ -168,7 +168,7 @@ void FontRenderer::DrawParagraphs()
             float w = ch.size.x * para.scale;
             float h = ch.size.y * para.scale;
             currWidth += w;
-            if (currWidth > para.renderWidth * 0.6f / mCamZoom)
+            if (currWidth > para.renderWidth * 0.75f / mCamZoom)
             {
                 if (*(cIter) == ' ')
                 {
