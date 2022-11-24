@@ -31,7 +31,6 @@ void DialoguePanel::Init()
 	selectedCol= ImVec4(ImColor(0, 128, 0));
 	npcCol= ImVec4(ImColor(0, 136, 204));
 	backgroundCol=ImVec4(ImColor(50, 50, 50));
-	//active = false;
 }
 /*!*****************************************************************************
 \brief
@@ -76,7 +75,7 @@ void DialoguePanel::Update()
 		{
 			if (dialogManager->GetDialogs().size() == 0)
 			{
-				active = false;
+				//active = false;
 				break;
 			}
 			dialog = dialogManager->GetDialogue(id);

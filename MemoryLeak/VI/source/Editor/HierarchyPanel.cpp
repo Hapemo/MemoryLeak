@@ -71,7 +71,8 @@ void HierarchyPanel::Update()
 
 					}
 					ImGui::InputText("GameState Name", &gsName);
-					if(ImGui::IsItemActivated && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
+					//if(ImGui::IsItemActive() && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
+					if (ImGui::IsItemDeactivatedAfterEdit())
 					{
 						(*mGameStates)[g].mName = gsName;
 					}
@@ -157,7 +158,8 @@ void HierarchyPanel::Update()
 								}
 								std::string sName = (*mGameStates)[g].mScenes[s].mName;
 								ImGui::InputText("Scene Name", &sName);
-								if (ImGui::IsItemActivated && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
+								//if (ImGui::IsItemActive() && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
+								if (ImGui::IsItemDeactivatedAfterEdit())
 								{
 										(*mGameStates)[g].mScenes[s].mName = sName;
 								}
@@ -206,14 +208,14 @@ void HierarchyPanel::Update()
 									if (ImGui::IsItemActive())
 									{
 										//renderManager->GetGameCamera().SetZoom(1.f);
-										renderManager->GetGameCamera().SetCameraWidth(size[0]);
+										renderManager->GetGameCamera().SetCameraWidth((int)size[0]);
 										(*mGameStates)[g].mScenes[s].mCamera.scale.x = size[0];
 									}
 									ImGui::DragFloat("Camera Height", &size[1], 1.f, 0.f);
 									if (ImGui::IsItemActive())
 									{
 										//renderManager->GetGameCamera().SetZoom(1.f);
-										renderManager->GetGameCamera().SetCameraHeight(size[1]);
+										renderManager->GetGameCamera().SetCameraHeight((int)size[1]);
 										(*mGameStates)[g].mScenes[s].mCamera.scale.y = size[1];
 									}
 									//zoom
@@ -229,14 +231,14 @@ void HierarchyPanel::Update()
 									if (ImGui::IsItemActive())
 									{
 										(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
-											: ((*mGameStates)[g].mScenes[s].mLayer > (*mGameStates)[g].mScenes.size() ? (*mGameStates)[g].mScenes.size()
+											: ((*mGameStates)[g].mScenes[s].mLayer > (int)(*mGameStates)[g].mScenes.size() ? (int)(*mGameStates)[g].mScenes.size()
 												: (*mGameStates)[g].mScenes[s].mLayer);
 									}
 									ImGui::InputInt("Order", &((*mGameStates)[g].mScenes[s].mOrder));
 									if (ImGui::IsItemActive())
 									{
 										(*mGameStates)[g].mScenes[s].mOrder = (*mGameStates)[g].mScenes[s].mOrder < 0 ? 0
-											: ((*mGameStates)[g].mScenes[s].mOrder > (*mGameStates)[g].mScenes.size() ? (*mGameStates)[g].mScenes.size()
+											: ((*mGameStates)[g].mScenes[s].mOrder > (int)(*mGameStates)[g].mScenes.size() ? (int)(*mGameStates)[g].mScenes.size()
 												: (*mGameStates)[g].mScenes[s].mOrder);
 									}
 								}
