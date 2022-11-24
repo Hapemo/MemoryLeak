@@ -1,45 +1,43 @@
 /*!*****************************************************************************
-\file BackToMainMenuButton.cpp
+\file TestScript.cpp
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
-\date 24-11-2022
+\date 02-11-2022
 \brief
-This file contains the function definitions of the class BackToMainMenuButton.
+This file contains the function definitions of the class TestScript.
+The TestScript class is an example to test the scripting component in the
+engine.
 *******************************************************************************/
 
-#include "BackToMainMenuButton.h"
-
-REGISTER_SCRIPT(ScriptComponent, BackToMainMenuButton);
+#include "TestScript.h"
 
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void BackToMainMenuButton::StartScript(Entity const& gob) {
+void TestScript::StartScript(Entity const& gob) {
 	(void)gob;
-	//LOG_INFO("Back to Main Menu button script starts works!!!");
+	LOG_INFO("Test script starts works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void BackToMainMenuButton::UpdateScript(Entity const& gob) {
-	if(gob.HasComponent<Button>())
-		if (gob.GetComponent<Button>().activated) {
-			(FUNC->SelectScene("Settings")).Pause(true);
-			(FUNC->SelectScene("How_To_Play")).Pause(true);
-			(FUNC->SelectScene("Menu_Main")).Pause(false);
-		}
+void TestScript::UpdateScript(Entity const& gob) {
+	(void)gob;
+	LOG_INFO("Test script updating works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void BackToMainMenuButton::EndScript(Entity const& gob) {
+void TestScript::EndScript(Entity const& gob) {
 	(void)gob;
-	//LOG_INFO("Back to Main Menu button script end works!!!");
+	LOG_INFO("Test script end works!!!");
 }
+
+//REGISTER_SCRIPT(ScriptComponent, TestScript);

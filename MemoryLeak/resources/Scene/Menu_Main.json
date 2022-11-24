@@ -326,6 +326,12 @@
             "timePerImage": 0.0,
             "timeToImageSwap": 0.0,
             "currentImageIndex": 0
+        },
+        "Script": {
+            "name": "SettingsButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]
