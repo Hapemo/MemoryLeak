@@ -22,6 +22,7 @@
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\Scripts\BackToMainMenuButton.h" />
     <ClInclude Include="include\Scripts\DialogueScript.h" />
+    <ClInclude Include="include\Scripts\ExitGameButton.h" />
     <ClInclude Include="include\Scripts\HowToPlayButton.h" />
     <ClInclude Include="include\Scripts\PlayerMovementScript.h" />
     <ClInclude Include="include\Scripts\PlayGameButton.h" />
@@ -34,6 +35,7 @@
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Scripts\BackToMainMenuButton.cpp" />
     <ClCompile Include="source\Scripts\DialogueScript.cpp" />
+    <ClCompile Include="source\Scripts\ExitGameButton.cpp" />
     <ClCompile Include="source\Scripts\HowToPlayButton.cpp" />
     <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
     <ClCompile Include="source\Scripts\PlayGameButton.cpp" />

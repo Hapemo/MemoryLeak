@@ -62,7 +62,7 @@
             "fontFile": "CaviarDreams",
             "text": "HOW TO PLAY",
             "offset": {
-                "X": -172.0,
+                "X": -249.0,
                 "Y": 196.0
             },
             "scale": 1.5,
@@ -170,7 +170,7 @@
             "fontFile": "CaviarDreams",
             "text": "Back",
             "offset": {
-                "X": -49.0,
+                "X": -68.0,
                 "Y": -16.0
             },
             "scale": 1.2000000476837158,
@@ -214,7 +214,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Icons\\cursors\\cursor-1.png",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 2
         },
         "Text": {
