@@ -197,33 +197,32 @@ void HierarchyPanel::Update()
 									if(isPause != old)
 										(*mGameStates)[g].mScenes[s].Pause(!isPause);
 									//can pos
-									float pos[2] = { renderManager->GetGameCamera().GetPos().x , renderManager->GetGameCamera().GetPos().y };
+									float pos[2] = { (*mGameStates)[g].mScenes[s].mCamera.translation.x , (*mGameStates)[g].mScenes[s].mCamera.translation.y };
 									ImGui::DragFloat2("Camera Pos", pos);
-									renderManager->GetGameCamera().SetPos(Math::Vec2{ pos[0], pos[1] });
-									(*mGameStates)[g].mScenes[s].mCamera.scale = Math::Vec2{ pos[0], pos[1] };
+									(*mGameStates)[g].mScenes[s].mCamera.translation = Math::Vec2{ pos[0], pos[1] };
 									//cam size
-									float size[2] = { renderManager->GetGameCamera().GetCameraWidth(), renderManager->GetGameCamera().GetCameraHeight() };
+									float size[2] = { (*mGameStates)[g].mScenes[s].mCamera.scale.x, (*mGameStates)[g].mScenes[s].mCamera.scale.y };
 									ImGui::DragFloat("Camera Width", &size[0], 1.f, 0.f);
 
 									if (ImGui::IsItemActive())
 									{
 										//renderManager->GetGameCamera().SetZoom(1.f);
-										renderManager->GetGameCamera().SetCameraWidth((int)size[0]);
+										/*renderManager->GetGameCamera().SetCameraWidth((int)size[0]);*/
 										(*mGameStates)[g].mScenes[s].mCamera.scale.x = size[0];
 									}
 									ImGui::DragFloat("Camera Height", &size[1], 1.f, 0.f);
 									if (ImGui::IsItemActive())
 									{
 										//renderManager->GetGameCamera().SetZoom(1.f);
-										renderManager->GetGameCamera().SetCameraHeight((int)size[1]);
+										/*renderManager->GetGameCamera().SetCameraHeight((int)size[1]);*/
 										(*mGameStates)[g].mScenes[s].mCamera.scale.y = size[1];
 									}
 									//zoom
-									float zoom = 1.f/renderManager->GetGameCamera().GetZoom();
+									float zoom = (*mGameStates)[g].mScenes[s].mCamera.rotation;
 									ImGui::DragFloat("Camera Zoom", &zoom, 0.005f);
 									if (ImGui::IsItemActive())
 									{
-										renderManager->GetGameCamera().SetZoom(1.f/zoom);
+										//renderManager->GetGameCamera().SetZoom(1.f/zoom);
 										(*mGameStates)[g].mScenes[s].mCamera.rotation = zoom;
 									}
 									(*mGameStates)[g].mScenes[s].mCamera.rotation = zoom;

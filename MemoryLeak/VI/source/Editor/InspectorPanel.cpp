@@ -726,17 +726,17 @@ void InspectorPanel::LayerColliderEditor()
 		//ImGui::Text("LayerCollider");
 		tmpVec2[0] = e.GetComponent<LayerCollider>().centerOffset.x;
 		tmpVec2[1] = e.GetComponent<LayerCollider>().centerOffset.y;
-		ImGui::InputFloat2("Box position Offset", tmpVec2);
+		ImGui::InputFloat2("Layer position Offset", tmpVec2);
 		e.GetComponent<LayerCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
 
 		tmpVec2[0] = e.GetComponent<LayerCollider>().scaleOffset.x;
 		tmpVec2[1] = e.GetComponent<LayerCollider>().scaleOffset.y;
-		ImGui::InputFloat2("Box scale Offset", tmpVec2);
+		ImGui::InputFloat2("Layer scale Offset", tmpVec2);
 		e.GetComponent<LayerCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
 
-		ImGui::Checkbox("Layer Collider RenderFlag", &e.GetComponent<LayerCollider>().renderFlag);
+		ImGui::Checkbox("Layer RenderFlag", &e.GetComponent<LayerCollider>().renderFlag);
 		//BREAKPOINT(e.GetComponent<LayerCollider>().renderFlag == true);
 		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
 

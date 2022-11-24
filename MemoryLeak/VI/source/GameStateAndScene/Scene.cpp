@@ -60,6 +60,18 @@ void Scene::Pause(bool _pause) {
 	for (auto& e : mEntities)
 		e.GetComponent<General>().isPaused = _pause;
 	mIsPause = _pause; 
+	Camera& cam = renderManager->GetGameCamera();
+	if (mIsPause)
+	{
+		mCamera = { { cam.GetCameraWidth(), cam.GetCameraHeight() }, mCamera.rotation, cam.GetPos() };
+		renderManager->GetGameCamera().Reset();
+	}
+	else
+	{
+		(void)mCamera;
+		renderManager->GetGameCamera().SetCameraWidth(mCamera.scale.x);
+		renderManager->GetGameCamera().SetPos(mCamera.translation);
+	}
 }
 
 void Scene::Load(std::filesystem::path const& _path) {
