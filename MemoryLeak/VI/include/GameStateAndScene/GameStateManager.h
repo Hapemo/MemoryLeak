@@ -65,7 +65,10 @@ public:
 	void ChangeGameState(std::string const& _path);
 	void UpdateNextGSMState();
 	Scene& SelectScene(std::string const& _name);
-	Entity GetEntity(std::string const& _entityName, std::string const& _sceneName); // Get an entity from current gamestate.
+
+	// Get an entity from current gamestate using it's name, it'll get the first one it found.
+	// if scene is specified, it will only select from that scene
+	Entity GetEntity(std::string const& _entityName, std::string const& _sceneName = "");
 
 	// Editor only functionalities
 	void AddGameState(std::filesystem::path const& _path = std::filesystem::path());
