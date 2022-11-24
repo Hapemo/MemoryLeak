@@ -12,6 +12,7 @@
     <ClInclude Include="include\Scripts\BackToMainMenuButton.h" />
     <ClInclude Include="include\Scripts\ExitGameButton.h" />
     <ClInclude Include="include\Scripts\SettingsButton.h" />
+    <ClInclude Include="include\Scripts\BackToGameButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -26,5 +27,6 @@
     <ClCompile Include="source\Scripts\BackToMainMenuButton.cpp" />
     <ClCompile Include="source\Scripts\ExitGameButton.cpp" />
     <ClCompile Include="source\Scripts\SettingsButton.cpp" />
+    <ClCompile Include="source\Scripts\BackToGameButton.cpp" />
   </ItemGroup>
 </Project>
