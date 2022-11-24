@@ -162,4 +162,23 @@ public:
 	Gets scene to pause or unpause the scene.
 	*******************************************************************************/
 	Scene& SelectScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Sets the texture of an entity.
+	*******************************************************************************/
+	void SetTexture(const Entity& _e, const std::string& _path);
+
+	/*!*****************************************************************************
+	\brief
+	EntitiesCollided function that checks if two given entities have collided by
+	checking whether if a contact with the two entities exists
+	\param const Entity &
+	A reference to a read-only entity to compare with
+	\param const Entity &
+	A reference to a read-only entity to compare against
+	\return bool
+	Evaluated result of whether a collision happened between the two given entities
+	*******************************************************************************/
+	bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
 };

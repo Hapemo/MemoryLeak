@@ -8,6 +8,8 @@ class PlayerMovementScript : public ScriptComponent {
 private:
 	std::string name{ "PlayerMovementScript" };
 	float playerSpeed{ 5.f };
+	Entity dialogueText;
+	Entity littleGirl;
 public:
 	PlayerMovementScript() = default;
 	~PlayerMovementScript() override = default;

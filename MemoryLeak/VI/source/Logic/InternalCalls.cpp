@@ -178,3 +178,26 @@ Gets scene to pause or unpause the scene.
 Scene& InternalCalls::SelectScene(std::string const& _name) {
 	return GameStateManager::GetInstance()->SelectScene(_name);
 }
+
+/*!*****************************************************************************
+\brief
+Sets the texture of an entity.
+*******************************************************************************/
+void InternalCalls::SetTexture(const Entity& _e, const std::string& _path) {
+	spriteManager->SetTexture(_e, _path);
+}
+
+/*!*****************************************************************************
+\brief
+EntitiesCollided function that checks if two given entities have collided by
+checking whether if a contact with the two entities exists
+\param const Entity &
+A reference to a read-only entity to compare with
+\param const Entity &
+A reference to a read-only entity to compare against
+\return bool
+Evaluated result of whether a collision happened between the two given entities
+*******************************************************************************/
+bool InternalCalls::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
+	return collision2DManager->EntitiesCollided(_e1, _e2);
+}

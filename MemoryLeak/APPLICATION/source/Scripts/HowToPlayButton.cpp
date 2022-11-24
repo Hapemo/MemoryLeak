@@ -19,7 +19,7 @@ Function will run on initialisation of the entity.
 *******************************************************************************/
 void HowToPlayButton::StartScript(Entity const& gob) {
 	(void)gob;
-	//LOG_INFO("Play button script starts works!!!");
+	//LOG_INFO("How to Play button script starts works!!!");
 }
 
 /*!*****************************************************************************
@@ -29,6 +29,7 @@ Function will run on every update while the entity is active.
 void HowToPlayButton::UpdateScript(Entity const& gob) {
 	if(gob.HasComponent<Button>())
 		if (gob.GetComponent<Button>().activated) {
+			LOG_INFO("How to Play button activated script works!!!");
 			(FUNC->SelectScene("Menu_Main")).Pause(true);
 			(FUNC->SelectScene("How_To_Play")).Pause(false);
 		}
@@ -40,5 +41,5 @@ Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void HowToPlayButton::EndScript(Entity const& gob) {
 	(void)gob;
-	//LOG_INFO("Play button script end works!!!");
+	//LOG_INFO("How to Play button script end works!!!");
 }
