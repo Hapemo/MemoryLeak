@@ -37,6 +37,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -78,6 +79,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         },
         "Text": {
@@ -97,6 +99,9 @@
         },
         "Script": {
             "name": "PlayGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -137,6 +142,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         },
         "Text": {
@@ -153,6 +159,9 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -193,6 +202,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         },
         "Text": {
