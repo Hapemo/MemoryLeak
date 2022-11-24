@@ -19,11 +19,11 @@ running.
 
 const std::string GameStateManager::EXIT{ "Exit" };
 const std::string GameStateManager::RESTART{ "Restart" };
-Scene GameStateManager::mErrorScene("Error");
-const Entity GameStateManager::mErrorEntity(0);
+//Scene GameStateManager::mErrorScene("Error");
+//const Entity GameStateManager::mErrorEntity(0);
 GameStateManager::E_GSMSTATE GameStateManager::mGSMState{ GameStateManager::E_GSMSTATE::STARTING };
 
-GameStateManager::GameStateManager() : mGameStates(), mCurrentGameState(nullptr), mNextGSPath("") {};
+GameStateManager::GameStateManager() : mGameStates(), mCurrentGameState(nullptr), mNextGSPath(""), mErrorEntity(0), mErrorScene("Error") {};
 
 // Load the first game state.
 void GameStateManager::Init() {
@@ -74,7 +74,7 @@ Scene& GameStateManager::SelectScene(std::string const& _name) {
 		if (scene.mName == _name) return scene;
 
 	LOG_ERROR("Unable to select scene: " + _name);
-	return GameStateManager::mErrorScene;
+	return mErrorScene;
 }
 
 void GameStateManager::ChangeGameState(std::string const& _name) {

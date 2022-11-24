@@ -55,8 +55,8 @@ public:
 
 	static const std::string EXIT;
 	static const std::string RESTART;
-	static Scene mErrorScene;
-	static const Entity mErrorEntity;
+	Scene mErrorScene;
+	const Entity mErrorEntity;
 	static E_GSMSTATE mGSMState;
 	GameState* mCurrentGameState; // During game, this shouldn't change at all. Editor mode can change this, depending on which game state is being changed.
 
