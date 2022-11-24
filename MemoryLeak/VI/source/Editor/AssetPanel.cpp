@@ -87,6 +87,7 @@ void AssetPanel::Update()
 					ResourceManager::GetInstance()->LoadAllResources();
 				}
 			}
+			ImGui::Separator();
 			int id = 0;
 			for (auto& directory : std::filesystem::directory_iterator(m_CurrentDirectory))
 			{
