@@ -25,13 +25,19 @@ Coordinator - Encapsulation of all 3 systems using smart pointers. Anyone who
 void Entity::Destroy() const { Coordinator::GetInstance()->DestroyEntity(id); }
 
 bool Entity::ShouldRun() const {
-	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	if (!HasComponent<General>()) {
+		LOG_ERROR("There is no general component when attempting to change Entity's isActive, entity ID: " + std::to_string(id));
+		return false;
+	}
 	General const& genComponent = GetComponent<General>();
 	return !genComponent.isPaused && genComponent.isActive;
 }
 
 void Entity::Activate() const {
-	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	if (!HasComponent<General>()) {
+		LOG_ERROR("There is no general component when attempting to activate, entity ID: " + std::to_string(id));
+		return;
+	}
 	General& genComp{ GetComponent<General>() };
 
 	//------------------------------------------------------------------
@@ -53,7 +59,10 @@ void Entity::Activate() const {
 }
 
 void Entity::Deactivate() const {
-	ASSERT(!HasComponent<General>(), "There is no general component when attempting to change Entity's isActive");
+	if (!HasComponent<General>()) {
+		LOG_ERROR("There is no general component when attempting to deactivate, entity ID: " + std::to_string(id));
+		return;
+	}
 	General& genComp{ GetComponent<General>() };
 
 	//------------------------------------------------------------------
