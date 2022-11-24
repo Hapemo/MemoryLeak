@@ -14,7 +14,6 @@ operates on Entities with Sprite and Transform Components.
 #include "Input.h"
 #include <ECSManager.h>
 #include <VertexFetcher.h>
-#include <GameState.h>
 #include <GameStateManager.h>
 
 /*!*****************************************************************************
