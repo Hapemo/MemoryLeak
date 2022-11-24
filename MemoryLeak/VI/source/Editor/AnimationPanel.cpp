@@ -93,12 +93,12 @@ void AnimationPanel::Update()
 				}
 				else
 				{
-					ImGui::SetWindowFontScale(1.8);
+					ImGui::SetWindowFontScale(1.8f);
 					if (ImGui::Button("Add Animation Component", viewSize))
 					{
 						e.AddComponent<SheetAnimation>({});
 					}
-					ImGui::SetWindowFontScale(1.0);
+					ImGui::SetWindowFontScale(1.0f);
 				}
 			}
 		}
