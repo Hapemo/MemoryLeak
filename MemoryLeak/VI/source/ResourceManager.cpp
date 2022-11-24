@@ -422,28 +422,28 @@ std::filesystem::path ResourceManager::FileTypePath(E_RESOURCETYPE _type) {
 	std::string path = resourceFolder.string();
 	switch (_type) {
 	case E_RESOURCETYPE::texture:
-		path + "\\Textures\\";
+		path += "\\Textures\\";
 		break;
 	case E_RESOURCETYPE::audio:
-		path + "\\Audio\\";
+		path += "\\Audio\\";
 		break;
 	case E_RESOURCETYPE::script:
-		path + "\\Scripts\\";
+		path += "\\Scripts\\";
 		break;
 	case E_RESOURCETYPE::scene:
-		path + "\\Scene\\";
+		path += "\\Scene\\";
 		break;
 	case E_RESOURCETYPE::gamestateEntities:
-		path + "\\GameStates\\";
+		path += "\\GameStates\\";
 		break;
 	case E_RESOURCETYPE::dialogue:
-		path + "\\Dialogs\\";
+		path += "\\Dialogs\\";
 		break;
 	case E_RESOURCETYPE::font:
-		path + "\\Fonts\\";
+		path += "\\Fonts\\";
 		break;
 	case E_RESOURCETYPE::prefab:
-		path + "\\Prefabs\\";
+		path += "\\Prefabs\\";
 		break;
 	}
 	return std::filesystem::path(path);

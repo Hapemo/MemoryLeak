@@ -55,7 +55,7 @@ void GameState::Load(std::filesystem::path const& _path){
 	LOG_CUSTOM("GAMESTATE", "Load GameState: " + _path.string());
 	serializationManager->LoadGameState(*this, _path);
 	for (auto& scene : mScenes) {
-		std::filesystem::path path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene).string() +"/Scene/" + scene.mName + ".json"};
+		std::filesystem::path path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene).string() + scene.mName + ".json"};
 		scene.Load(path);
 		//renderManager->GetGameCamera().SetInitialPos(scene.mCamera.translation); //need set initial for multiple scenes
 		//renderManager->GetGameCamera().SetInitialZoom(scene.mCamera.rotation);

@@ -85,8 +85,15 @@ void WorldViewPanel::Update()
 			isScenePaused = isViewportPaused = true;
 			checkSave = true;
 		}
+		else if (!isViewportPaused)
+		{
+			SceneReset();
+		}
 		else
+		{
 			isScenePaused = isViewportPaused;
+			//SceneReset();
+		}
 
 		//isScenePaused = isViewportPaused;
 		CalculateMousePos(E_CAMERA_TYPE::WORLD);
@@ -118,6 +125,7 @@ void WorldViewPanel::Update()
 			{
 				(*mGameStates)[selectedGameState].Save();
 				isScenePaused = isViewportPaused = false;
+				SceneReset();
 				checkSave = false;
 			}
 			ImGui::PopStyleColor();
@@ -126,6 +134,7 @@ void WorldViewPanel::Update()
 			if (ImGui::Button("No.. Just testing.", ImVec2((ImGui::GetWindowWidth() - 110.f)/2.f, ImGui::GetWindowHeight() / 10.f)))
 			{
 				isScenePaused = isViewportPaused = false;
+				SceneReset();
 				checkSave = false;
 			}
 			ImGui::PopStyleColor();

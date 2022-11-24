@@ -522,7 +522,8 @@ RectCollider SerializationManager::getRectCollider(Value& entity)
 	RectCollider rectCollider;
 	rectCollider.centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 	rectCollider.scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
-	rectCollider.isTrigger = entity["RectCollider"]["isTrigger"].GetBool();
+	if (entity["RectCollider"].HasMember("isTrigger"))
+		rectCollider.isTrigger = entity["RectCollider"]["isTrigger"].GetBool();
 	rectCollider.renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
 	return rectCollider;
 }
