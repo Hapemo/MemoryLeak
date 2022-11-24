@@ -65,6 +65,7 @@ public:
 	void ChangeGameState(std::string const& _path);
 	void UpdateNextGSMState();
 	Scene& SelectScene(std::string const& _name);
+	void GameStateExit();
 
 	// Get an entity from current gamestate using it's name, it'll get the first one it found.
 	// if scene is specified, it will only select from that scene

@@ -94,6 +94,10 @@ void GameStateManager::ChangeGameState(std::string const& _name) {
 	}
 }
 
+void GameStateManager::GameStateExit() {
+	GameStateManager::GetInstance()->ChangeGameState(GameStateManager::GetInstance()->EXIT);
+}
+
 void GameStateManager::AddGameState(std::filesystem::path const& _path) {
 	std::string currName{ mCurrentGameState->mName };
 

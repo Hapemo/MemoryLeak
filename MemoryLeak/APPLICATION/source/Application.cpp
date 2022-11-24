@@ -168,11 +168,13 @@ void Application::MainUpdate() {
     END_TRACK("Audio");
 
     // If it changes, it should've came from when updaing game logic
+    if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->GameStateExit();
     GameStateManager::GetInstance()->UpdateNextGSMState();
 
     SecondUpdate(); // This should always be the last
     END_TRACK("MainLoop");
   }
+  glfwSetWindowShouldClose(ptr_window, 1);
 }
 
 void Application::exit() {
