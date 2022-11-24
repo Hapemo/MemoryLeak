@@ -3,8 +3,8 @@
         "SceneName": "Level1",
         "Transform": {
             "scale": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 1600.0,
+                "Y": 900.0
             },
             "rotation": 1.0,
             "translation": {
@@ -12,7 +12,7 @@
                 "Y": 0.0
             }
         },
-        "isActive": false,
+        "isActive": true,
         "layer": 3,
         "order": 3
     },
@@ -20,10 +20,10 @@
         "SceneName": "Pause",
         "Transform": {
             "scale": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 1920.0001220703125,
+                "Y": 1080.0
             },
-            "rotation": 1.0,
+            "rotation": 0.8333333134651184,
             "translation": {
                 "X": 0.0,
                 "Y": 0.0
@@ -37,8 +37,8 @@
         "SceneName": "Game Over",
         "Transform": {
             "scale": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 1920.0,
+                "Y": 1080.0
             },
             "rotation": 1.0,
             "translation": {
@@ -54,8 +54,8 @@
         "SceneName": "How_To_Play",
         "Transform": {
             "scale": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 1920.0,
+                "Y": 1080.0
             },
             "rotation": 1.0,
             "translation": {

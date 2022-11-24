@@ -67,6 +67,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -108,6 +109,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -149,6 +151,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -196,6 +199,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -237,6 +241,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -308,6 +313,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         },
         "Script": {
@@ -412,6 +418,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -453,6 +460,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -494,6 +502,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -535,6 +544,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -576,6 +586,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -617,6 +628,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -658,6 +670,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -699,6 +712,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -740,6 +754,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -781,6 +796,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         },
         "AI": {
@@ -828,6 +844,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -869,6 +886,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -916,6 +934,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -957,6 +976,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -998,6 +1018,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1039,6 +1060,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1080,6 +1102,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1121,6 +1144,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },

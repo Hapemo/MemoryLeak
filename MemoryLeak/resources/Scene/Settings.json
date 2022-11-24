@@ -62,7 +62,7 @@
             "fontFile": "CaviarDreams",
             "text": "SETTINGS",
             "offset": {
-                "X": -121.0,
+                "X": -154.0,
                 "Y": 197.0
             },
             "scale": 1.5,
@@ -422,7 +422,7 @@
             "fontFile": "CaviarDreams",
             "text": "Back",
             "offset": {
-                "X": -42.0,
+                "X": -53.0,
                 "Y": -15.0
             },
             "scale": 1.0,

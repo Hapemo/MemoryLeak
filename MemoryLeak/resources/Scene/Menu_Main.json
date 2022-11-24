@@ -86,7 +86,7 @@
             "fontFile": "CaviarDreams",
             "text": "Start Game",
             "offset": {
-                "X": -122.0,
+                "X": -144.0,
                 "Y": -21.0
             },
             "scale": 1.2000000476837158,
@@ -149,7 +149,7 @@
             "fontFile": "CaviarDreams",
             "text": "How To Play",
             "offset": {
-                "X": -128.0,
+                "X": -160.0,
                 "Y": -24.0
             },
             "scale": 1.2000000476837158,
@@ -212,7 +212,7 @@
             "fontFile": "CaviarDreams",
             "text": "Quit",
             "offset": {
-                "X": -53.0,
+                "X": -55.0,
                 "Y": -19.0
             },
             "scale": 1.2000000476837158,

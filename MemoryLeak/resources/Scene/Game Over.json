@@ -32,7 +32,7 @@
             "fontFile": "CaviarDreams",
             "text": "BOAT CAPSIZED",
             "offset": {
-                "X": -350.0,
+                "X": -451.0,
                 "Y": 237.0
             },
             "scale": 2.5,
@@ -79,13 +79,14 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Try Again",
             "offset": {
-                "X": -95.0,
+                "X": -106.0,
                 "Y": -18.0
             },
             "scale": 1.0,
@@ -132,13 +133,14 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Quit Game",
             "offset": {
-                "X": -93.0,
+                "X": -126.0,
                 "Y": -18.0
             },
             "scale": 1.0,
