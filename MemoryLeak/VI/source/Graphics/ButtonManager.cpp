@@ -15,8 +15,7 @@ void ButtonManager::Update()
 	{
 		e.GetComponent<Button>().isHover = CheckHover(e);
 		e.GetComponent<Button>().isClick = CheckClick(e);
-		if (!e.GetComponent<Button>().activated)
-			e.GetComponent<Button>().activated = CheckActivate(e);
+		e.GetComponent<Button>().activated = CheckActivate(e);
 	}
 }
 
