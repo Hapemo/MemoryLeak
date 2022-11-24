@@ -9,9 +9,9 @@ private:
 	std::string name{ "PlayerMovementScript" };
 	float playerSpeed{ 500.f };
 	bool dialogueActivated = false;
+	bool inited = false;
 	Entity dialogueText;
 	Entity littleGirl;
-	bool inited;
 	Scene* currScene;
 public:
 	PlayerMovementScript() = default;

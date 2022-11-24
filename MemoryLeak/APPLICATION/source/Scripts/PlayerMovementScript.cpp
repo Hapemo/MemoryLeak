@@ -5,14 +5,12 @@ REGISTER_SCRIPT(ScriptComponent, PlayerMovementScript);
 void PlayerMovementScript::StartScript(const Entity& _e) {
 	(void)_e;
 	inited = false;
-
 }
 
 void PlayerMovementScript::UpdateScript(const Entity& _e) {
-	if (!inited)
-	{
-		littleGirl = (FUNC->GetEntity("ActivateLittleGirlScript", "Level1"));
-		dialogueText = (FUNC->GetEntity("DialogueText", "Level1"));
+	if (!inited) {
+		littleGirl = FUNC->GetEntity("ActivateLittleGirlScript", "Level1");
+		dialogueText = FUNC->GetEntity("DialogueText", "Level1");
 		currScene = &(FUNC->SelectScene("Level1"));
 		inited = true;
 	}

@@ -35,7 +35,7 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void DialogueScript::UpdateScript(Entity const& gob) {
 	if (currScn->mCamera.scale.x >= targetCamScale.x)
-		currScn->mCamera.scale.x -= 500 * (float)FPSManager::dt;
+		currScn->mCamera.scale.x -= 500 * (float)FUNC->GetDeltaTime();
 
 	if (FUNC->CheckKey(E_STATE::PRESS, M_BUTTON_L)) {
 		if (gob.HasComponent<Text>()) {
