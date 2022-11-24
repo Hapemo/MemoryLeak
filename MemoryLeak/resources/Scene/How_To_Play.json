@@ -109,6 +109,7 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": false
         },
         "Text": {
@@ -162,6 +163,7 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": false
         },
         "Text": {
@@ -215,6 +217,7 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": false
         },
         "Text": {
@@ -268,6 +271,7 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": false
         },
         "Text": {
@@ -321,6 +325,7 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": false
         },
         "Text": {

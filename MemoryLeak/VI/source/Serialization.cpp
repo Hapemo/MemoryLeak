@@ -539,7 +539,8 @@ CircleCollider SerializationManager::getCircleCollider(Value& entity)
 	CircleCollider circleCollider;
 	circleCollider.centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 	circleCollider.scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
-	circleCollider.isTrigger = entity["CircleCollider"]["isTrigger"].GetBool();
+	if(entity["CircleCollider"].HasMember("isTrigger"))
+		circleCollider.isTrigger = entity["CircleCollider"]["isTrigger"].GetBool();
 	circleCollider.renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
 	return circleCollider;
 }
