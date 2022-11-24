@@ -22,6 +22,7 @@ void DialogueScript::StartScript(Entity const& gob) {
 	LOG_INFO("Dialogue script starts works!!!");
 	FUNC->LoadDialogs("Dialogue LittleGirl 0");
 	FUNC->SetCurrentDialogueID(1);
+	if (gob.HasComponent<Text>()) gob.GetComponent<Text>().text = FUNC->GetDialogue(FUNC->GetCurrentDialogueID());
 	(FUNC->GetEntity("DialogueBox", "Level1")).Activate();
 }
 
@@ -31,12 +32,13 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void DialogueScript::UpdateScript(Entity const& gob) {
 	if (FUNC->CheckKey(E_STATE::PRESS, M_BUTTON_L)) {
-		int currentId = FUNC->GetCurrentDialogueID();
 		if (gob.HasComponent<Text>()) {
-			gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
+			int currentId = FUNC->GetCurrentDialogueID();
 			if (!FUNC->SetCurrentDialogueID(++currentId)) {
 				gob.GetComponent<Text>().text = "";
 				gob.Deactivate();
+			} else {
+				gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
 			}
 		}
 	}
@@ -48,6 +50,6 @@ Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void DialogueScript::EndScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Dialogue script end works!!!");
+	//LOG_INFO("Dialogue script end works!!!");
 	(FUNC->GetEntity("DialogueBox", "Level1")).Deactivate();
 }

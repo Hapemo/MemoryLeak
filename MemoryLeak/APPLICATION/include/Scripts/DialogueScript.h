@@ -17,7 +17,6 @@ This file contains the function declarations of the class DialogueScript.
 class DialogueScript : public ScriptComponent {
 private:
 	std::string name = "DialogueScript";
-
 public:
 	DialogueScript() = default;
 	~DialogueScript() override = default;

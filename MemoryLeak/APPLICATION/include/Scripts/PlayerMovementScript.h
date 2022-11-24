@@ -8,6 +8,7 @@ class PlayerMovementScript : public ScriptComponent {
 private:
 	std::string name{ "PlayerMovementScript" };
 	float playerSpeed{ 500.f };
+	bool dialogueActivated = false;
 	Entity dialogueText;
 	Entity littleGirl;
 public:

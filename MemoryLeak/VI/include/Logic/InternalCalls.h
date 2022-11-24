@@ -14,12 +14,13 @@ This file contains the function declarations of the class InternalCalls.
 #include "Input.h"
 #include "vec2.h"
 #include "ECS_items.h"
+#include "Helper.h"
 //#include "GameStateManager.h"
 //#include "Scene.h"
 //#include "DialogManager.h"
 
-
 class Scene; 
+
 #define FUNC InternalCalls::GetInstance()
 
 class InternalCalls : public Singleton<InternalCalls> {
@@ -185,7 +186,6 @@ public:
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
 	bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
-
 
 	/*!*****************************************************************************
 	\brief

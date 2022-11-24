@@ -186,9 +186,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 7,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.03356330096721649
+            "timeToFrameSwap": 0.016553103923797607
         },
         "RectCollider": {
             "centerOffset": {
@@ -259,8 +259,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -51.53335952758789,
-                "Y": -91.70728302001953
+                "X": 106.3045654296875,
+                "Y": -83.54927825927734
             }
         },
         "Sprite": {
@@ -271,14 +271,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png",
             "layer": 1
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 6,
+            "currFrameIndex": 3,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.03356330096721649
+            "timeToFrameSwap": 0.016553103923797607
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -292,8 +292,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 3.3614261150360107,
-                "Y": 12.768058776855469
+                "X": -1.5895219074066816e-22,
+                "Y": -7.730437392003512e-23
             },
             "acceleration": {
                 "X": 0.0,
@@ -718,9 +718,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 163,
-                "g": 11,
-                "b": 30,
+                "r": 234,
+                "g": 224,
+                "b": 1,
                 "a": 100
             },
             "sprite": 1,
@@ -861,9 +861,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.03356330096721649
+            "timeToFrameSwap": 0.016553103923797607
         },
         "RectCollider": {
             "centerOffset": {
@@ -1093,17 +1093,17 @@
             "name": "DialogueBox",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
                 "X": 266.0,
-                "Y": 136.0
+                "Y": 159.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": -386.68499755859375,
-                "Y": -81.99500274658203
+                "Y": -20.9950008392334
             }
         },
         "Sprite": {
@@ -1123,17 +1123,17 @@
             "name": "DialogueText",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
-                "X": 217.0,
+                "X": 225.0,
                 "Y": 89.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": -397.0,
-                "Y": -69.0
+                "Y": 6.0
             }
         },
         "Sprite": {
@@ -1149,9 +1149,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "What am I supposed to do?",
+            "text": "",
             "offset": {
-                "X": -95.0,
+                "X": -108.0,
                 "Y": 22.0
             },
             "scale": 0.4000000059604645,
