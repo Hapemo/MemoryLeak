@@ -705,6 +705,9 @@ void InspectorPanel::RectColliderEditor()
 		e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::RECTCOLLIDER);
 
+		ImGui::Checkbox("Collision Trigger", &e.GetComponent<RectCollider>().isTrigger);
+		SaveUndo(e, tempComponent, COMPONENTID::RECTCOLLIDER);
+
 		ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<RectCollider>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::RECTCOLLIDER);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
@@ -760,8 +763,12 @@ void InspectorPanel::CircleColliderEditor()
 		e.GetComponent<CircleCollider>().scaleOffset = { scale };
 		SaveUndo(e, tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
+		ImGui::Checkbox("Collision Trigger", &e.GetComponent<CircleCollider>().isTrigger);
+		SaveUndo(e, tempComponent, COMPONENTID::CIRCLECOLLIDER);
+
 		ImGui::Checkbox("Circle RenderFlag", &e.GetComponent<CircleCollider>().renderFlag);
 		SaveUndo(e, tempComponent, COMPONENTID::CIRCLECOLLIDER);
+
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove CircleCollider"))
 		{

@@ -442,7 +442,12 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 			// Skip to next contact item
 			continue;
 		}
-	
+
+		if (item.obj[0].HasComponent<Audio>()) 
+			item.obj[0].GetComponent<Audio>().sound.toPlay = true;
+		if (item.obj[1].HasComponent<Audio>())
+			item.obj[1].GetComponent<Audio>().sound.toPlay = true;
+
 		PositionCorrection(item);
 		ResolveContact(item, _dt);
 	}
