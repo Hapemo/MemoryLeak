@@ -180,6 +180,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "BackToMainMenuButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {

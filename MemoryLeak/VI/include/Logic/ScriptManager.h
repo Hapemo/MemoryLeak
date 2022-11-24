@@ -14,6 +14,7 @@ The ScriptManager class manages the scripts for the engine.
 #include <map>
 #include <string>
 #include "Logger.h"
+#include "Scene.h"
 
 #define REGISTER_SCRIPT(_base, _derived) ScriptRegisterer<_base, _derived> s_##_derived##Creator(#_derived)
 

@@ -33,3 +33,4 @@ C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryL
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache

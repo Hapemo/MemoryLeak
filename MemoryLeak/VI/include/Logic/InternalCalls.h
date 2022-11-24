@@ -14,8 +14,12 @@ This file contains the function declarations of the class InternalCalls.
 #include "Input.h"
 #include "vec2.h"
 #include "ECS_items.h"
+//#include "GameStateManager.h"
+//#include "Scene.h"
 //#include "DialogManager.h"
 
+
+class Scene; 
 #define FUNC InternalCalls::GetInstance()
 
 class InternalCalls : public Singleton<InternalCalls> {
@@ -146,4 +150,16 @@ public:
 	This function is called by user, to change the next game state
 	*******************************************************************************/
 	void ChangeGameState(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Gets an entity from scene.
+	*******************************************************************************/
+	Entity GetEntity(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Gets scene to pause or unpause the scene.
+	*******************************************************************************/
+	Scene& SelectScene(std::string const& _name);
 };
