@@ -69,11 +69,22 @@ void AssetPanel::Update()
 				{
 					m_CurrentDirectory = m_CurrentDirectory.parent_path();
 				}
+				ImGui::SameLine(0.f, 1.f);
+				ImGui::SetCursorPos(ImVec2(ImGui::GetWindowWidth()- folderSize.x-25.f, ImGui::GetCursorPosY()));
+				if (ImGui::Button("Refresh", { folderSize.x, folderSize.y / 2.5f }))
+				{
+					ResourceManager::GetInstance()->LoadAllResources();
+				}
 			}
 			else
 			{
-				ImGui::NewLine();
-				ImGui::NewLine();
+				/*ImGui::NewLine();
+				ImGui::NewLine();*/
+				ImGui::SetCursorPos(ImVec2(ImGui::GetWindowWidth() - folderSize.x - 25.f, ImGui::GetCursorPosY()));
+				if (ImGui::Button("Refresh", { folderSize.x, folderSize.y / 2.5f }))
+				{
+					ResourceManager::GetInstance()->LoadAllResources();
+				}
 			}
 			int id = 0;
 			for (auto& directory : std::filesystem::directory_iterator(m_CurrentDirectory))
