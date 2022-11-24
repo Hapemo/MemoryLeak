@@ -8,11 +8,11 @@
             },
             "rotation": 1.0,
             "translation": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -51.53300094604492,
+                "Y": -91.70700073242188
             }
         },
-        "isActive": true,
+        "isActive": false,
         "layer": 3,
         "order": 3
     },
@@ -20,8 +20,8 @@
         "SceneName": "Pause",
         "Transform": {
             "scale": {
-                "X": 1920.0001220703125,
-                "Y": 1080.0
+                "X": 1600.0,
+                "Y": 900.0
             },
             "rotation": 0.8333333134651184,
             "translation": {
@@ -37,8 +37,8 @@
         "SceneName": "Game Over",
         "Transform": {
             "scale": {
-                "X": 1920.0,
-                "Y": 1080.0
+                "X": 1600.0,
+                "Y": 900.0
             },
             "rotation": 1.0,
             "translation": {
@@ -54,8 +54,8 @@
         "SceneName": "How_To_Play",
         "Transform": {
             "scale": {
-                "X": 1920.0,
-                "Y": 1080.0
+                "X": 1600.0,
+                "Y": 900.0
             },
             "rotation": 1.0,
             "translation": {

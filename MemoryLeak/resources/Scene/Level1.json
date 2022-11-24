@@ -322,66 +322,6 @@
     },
     {
         "General": {
-            "name": "Player",
-            "tag": 0,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -67.0,
-                "Y": 80.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -40.73553466796875,
-                "Y": -103.42774200439453
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MC\\mc-idle-spritesheet.png",
-            "layer": 2
-        },
-        "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 7,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.03356330096721649
-        },
-        "Physics2D": {
-            "dynamicsEnabled": true,
-            "mass": 1.0,
-            "inertia": 1.0,
-            "restitution": 0.0,
-            "friction": 0.0,
-            "damping": 0.8999999761581421,
-            "accumulatedForce": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "velocity": {
-                "X": 0.0,
-                "Y": 5.605193857299268e-45
-            },
-            "acceleration": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "angularVelocity": 0.0,
-            "angularTorque": 0.0,
-            "forceList": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
             "name": "Lighthouse",
             "tag": 3,
             "subtag": 0,
