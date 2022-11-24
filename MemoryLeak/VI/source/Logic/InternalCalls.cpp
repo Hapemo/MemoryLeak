@@ -27,6 +27,10 @@ bool InternalCalls::CheckKey(E_STATE _state, E_KEY _key) {
 	return Input::CheckKey(_state, _key);
 }
 
+/*!*****************************************************************************
+\brief
+Get world mouse position.
+*******************************************************************************/
 Math::Vec2 InternalCalls::GetWorldMousePos() {
 	return editorManager->GetEditorWorldMousePos();
 }
@@ -200,4 +204,12 @@ Evaluated result of whether a collision happened between the two given entities
 *******************************************************************************/
 bool InternalCalls::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
 	return collision2DManager->EntitiesCollided(_e1, _e2);
+}
+
+/*!*****************************************************************************
+\brief
+Exits the game.
+*******************************************************************************/
+void InternalCalls::GameStateExit() {
+	GameStateManager::GetInstance()->GameStateExit();
 }

@@ -186,9 +186,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 4,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.027313504368066788
+            "timeToFrameSwap": 0.03356330096721649
         },
         "RectCollider": {
             "centerOffset": {
@@ -254,13 +254,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -159.0,
+                "X": 159.0,
                 "Y": 200.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -64.01666259765625,
-                "Y": -96.12808990478516
+                "X": -51.53335952758789,
+                "Y": -91.70728302001953
             }
         },
         "Sprite": {
@@ -271,14 +271,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
             "layer": 1
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 0,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.027313504368066788
+            "timeToFrameSwap": 0.03356330096721649
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -292,8 +292,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 3.3614261150360107,
+                "Y": 12.768058776855469
             },
             "acceleration": {
                 "X": 0.0,
@@ -351,9 +351,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.027313504368066788
+            "timeToFrameSwap": 0.03356330096721649
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -778,9 +778,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 212,
-                "g": 97,
-                "b": 185,
+                "r": 163,
+                "g": 11,
+                "b": 30,
                 "a": 100
             },
             "sprite": 1,
@@ -921,9 +921,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 6,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.027313504368066788
+            "timeToFrameSwap": 0.03356330096721649
         },
         "RectCollider": {
             "centerOffset": {
@@ -1162,8 +1162,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -397.0,
-                "Y": -80.0
+                "X": -386.68499755859375,
+                "Y": -81.99500274658203
             }
         },
         "Sprite": {
@@ -1192,7 +1192,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -408.0,
+                "X": -402.0,
                 "Y": -69.0
             }
         },
@@ -1224,6 +1224,48 @@
         },
         "Script": {
             "name": "DialogueScript"
+        }
+    },
+    {
+        "General": {
+            "name": "ActivateLittleGirlScript",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 95.0,
+                "Y": 92.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -462.5660095214844,
+                "Y": -112.8550033569336
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 4
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": false
         }
     }
 ]
