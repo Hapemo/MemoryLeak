@@ -186,9 +186,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 4,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.03356330096721649
         },
         "RectCollider": {
             "centerOffset": {
@@ -259,8 +259,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -410.6202087402344,
-                "Y": -59.84050369262695
+                "X": -51.53335952758789,
+                "Y": -91.70728302001953
             }
         },
         "Sprite": {
@@ -276,9 +276,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 0,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.03356330096721649
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -292,8 +292,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 4.015881061553955,
-                "Y": 16.724756240844727
+                "X": 3.3614261150360107,
+                "Y": 12.768058776855469
             },
             "acceleration": {
                 "X": 0.0,
@@ -351,9 +351,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.03356330096721649
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -778,9 +778,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 216,
-                "g": 119,
-                "b": 143,
+                "r": 163,
+                "g": 11,
+                "b": 30,
                 "a": 100
             },
             "sprite": 1,
@@ -921,9 +921,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 6,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.03356330096721649
         },
         "RectCollider": {
             "centerOffset": {
@@ -1153,7 +1153,7 @@
             "name": "DialogueBox",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1183,7 +1183,7 @@
             "name": "DialogueText",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1209,7 +1209,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "At last we meet again!",
+            "text": "What am I supposed to do?",
             "offset": {
                 "X": -107.0,
                 "Y": 22.0
