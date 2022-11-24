@@ -5,7 +5,7 @@ REGISTER_SCRIPT(ScriptComponent, PlayerMovementScript);
 
 void PlayerMovementScript::StartScript(const Entity& _e) {
 	(void)_e;
-	littleGirl = (FUNC->GetEntity("Little Girl", "Level1"));
+	littleGirl = (FUNC->GetEntity("ActivateLittleGirlScript", "Level1"));
 	dialogueText = (FUNC->GetEntity("DialogueText", "Level1"));
 }
 
@@ -46,6 +46,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	}
 	
 	if (FUNC->EntitiesCollided(_e, littleGirl)) {
+		LOG_INFO("Player & Little Girl COLLIDED!");
 		dialogueText.Activate();
 	}
 }

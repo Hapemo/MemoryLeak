@@ -67,6 +67,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -108,6 +109,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -149,6 +151,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -185,7 +188,7 @@
             "frameCount": 9,
             "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.027313504368066788
+            "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
@@ -196,6 +199,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -237,6 +241,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -249,13 +254,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -159.0,
+                "X": 159.0,
                 "Y": 200.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -64.01666259765625,
-                "Y": -96.12808990478516
+                "X": -410.6202087402344,
+                "Y": -59.84050369262695
             }
         },
         "Sprite": {
@@ -266,14 +271,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
             "layer": 1
         },
         "SheetAnimation": {
             "frameCount": 8,
             "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.027313504368066788
+            "timeToFrameSwap": 0.10000000149011612
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -287,8 +292,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 4.015881061553955,
+                "Y": 16.724756240844727
             },
             "acceleration": {
                 "X": 0.0,
@@ -308,6 +313,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         },
         "Script": {
@@ -347,7 +353,7 @@
             "frameCount": 8,
             "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.027313504368066788
+            "timeToFrameSwap": 0.10000000149011612
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -412,6 +418,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -453,6 +460,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -494,6 +502,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -535,6 +544,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -576,6 +586,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -617,6 +628,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -658,6 +670,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -699,6 +712,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -740,6 +754,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -763,9 +778,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 212,
-                "g": 97,
-                "b": 185,
+                "r": 216,
+                "g": 119,
+                "b": 143,
                 "a": 100
             },
             "sprite": 1,
@@ -781,6 +796,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         },
         "AI": {
@@ -828,6 +844,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -869,6 +886,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -905,7 +923,7 @@
             "frameCount": 8,
             "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.027313504368066788
+            "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
@@ -916,6 +934,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -957,6 +976,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -998,6 +1018,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1039,6 +1060,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1080,6 +1102,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1121,6 +1144,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1129,7 +1153,7 @@
             "name": "DialogueBox",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1138,8 +1162,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -397.0,
-                "Y": -80.0
+                "X": -386.68499755859375,
+                "Y": -81.99500274658203
             }
         },
         "Sprite": {
@@ -1159,7 +1183,7 @@
             "name": "DialogueText",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1168,7 +1192,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -408.0,
+                "X": -402.0,
                 "Y": -69.0
             }
         },
@@ -1185,7 +1209,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "What am I supposed to do?",
+            "text": "At last we meet again!",
             "offset": {
                 "X": -107.0,
                 "Y": 22.0
@@ -1200,6 +1224,48 @@
         },
         "Script": {
             "name": "DialogueScript"
+        }
+    },
+    {
+        "General": {
+            "name": "ActivateLittleGirlScript",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 95.0,
+                "Y": 92.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -462.5660095214844,
+                "Y": -112.8550033569336
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 4
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": false
         }
     }
 ]

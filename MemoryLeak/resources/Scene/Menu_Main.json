@@ -222,6 +222,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "ExitGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
