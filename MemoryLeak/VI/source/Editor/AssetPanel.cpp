@@ -36,6 +36,7 @@ void AssetPanel::Init()
 	scriptIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\scriptIcon.png");
 	folderIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\folderIcon.png");
 	prefabIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\prefabIcon.png");
+	refreshIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\refreshIcon.png");
 	dialogueIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\dialogueIcon.png");
 	gamestateIcon = (void*)(intptr_t)spriteManager->GetTextureID("Textures\\Icons\\gamestateIcon.png");
 }
@@ -71,7 +72,7 @@ void AssetPanel::Update()
 				}
 				ImGui::SameLine(0.f, 1.f);
 				ImGui::SetCursorPos(ImVec2(ImGui::GetWindowWidth()- folderSize.x-25.f, ImGui::GetCursorPosY()));
-				if (ImGui::Button("Refresh", { folderSize.x, folderSize.y / 2.5f }))
+				if (ImGui::ImageButton(refreshIcon, { folderSize.x, folderSize.y / 2.5f }, ImVec2(0, 1), ImVec2(1, 0)))
 				{
 					ResourceManager::GetInstance()->LoadAllResources();
 				}
@@ -81,7 +82,7 @@ void AssetPanel::Update()
 				/*ImGui::NewLine();
 				ImGui::NewLine();*/
 				ImGui::SetCursorPos(ImVec2(ImGui::GetWindowWidth() - folderSize.x - 25.f, ImGui::GetCursorPosY()));
-				if (ImGui::Button("Refresh", { folderSize.x, folderSize.y / 2.5f }))
+				if (ImGui::ImageButton(refreshIcon, { folderSize.x, folderSize.y / 2.5f }, ImVec2(0, 1), ImVec2(1, 0)))
 				{
 					ResourceManager::GetInstance()->LoadAllResources();
 				}
