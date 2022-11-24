@@ -11,6 +11,7 @@ private:
 	bool dialogueActivated = false;
 	Entity dialogueText;
 	Entity littleGirl;
+	Scene* currScene;
 public:
 	PlayerMovementScript() = default;
 	~PlayerMovementScript() override = default;
