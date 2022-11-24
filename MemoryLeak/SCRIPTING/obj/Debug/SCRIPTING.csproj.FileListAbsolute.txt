@@ -3,12 +3,6 @@ D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scriptin
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.dll
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.pdb
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.dll
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.pdb
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
@@ -34,3 +28,9 @@ C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryL
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.pdb
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb

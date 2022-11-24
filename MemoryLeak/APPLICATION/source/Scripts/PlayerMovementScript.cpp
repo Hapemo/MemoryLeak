@@ -4,12 +4,18 @@ REGISTER_SCRIPT(ScriptComponent, PlayerMovementScript);
 
 void PlayerMovementScript::StartScript(const Entity& _e) {
 	(void)_e;
-	littleGirl = (FUNC->GetEntity("ActivateLittleGirlScript", "Level1"));
-	dialogueText = (FUNC->GetEntity("DialogueText", "Level1"));
-	currScene = &(FUNC->SelectScene("Level1"));
+	inited = false;
+
 }
 
 void PlayerMovementScript::UpdateScript(const Entity& _e) {
+	if (!inited)
+	{
+		littleGirl = (FUNC->GetEntity("ActivateLittleGirlScript", "Level1"));
+		dialogueText = (FUNC->GetEntity("DialogueText", "Level1"));
+		currScene = &(FUNC->SelectScene("Level1"));
+		inited = true;
+	}
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
 	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L)) {
 		if (dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false) {
