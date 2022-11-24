@@ -31,8 +31,10 @@ Function will run on every update while the entity is active.
 void DialogueScript::UpdateScript(Entity const& gob) {
 	if (FUNC->CheckKey(E_STATE::PRESS, M_BUTTON_L)) {
 		int currentId = FUNC->GetCurrentDialogueID();
-		gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
-		if (!FUNC->SetCurrentDialogueID(++currentId)) gob.GetComponent<Text>().text = "";
+		if (gob.HasComponent<Text>()) {
+			gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
+			if (!FUNC->SetCurrentDialogueID(++currentId)) gob.GetComponent<Text>().text = "";
+		}
 	}
 }
 

@@ -27,9 +27,9 @@ void PlayGameButton::StartScript(Entity const& gob) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void PlayGameButton::UpdateScript(Entity const& gob) {
-	if (gob.GetComponent<Button>().activated) {
-		FUNC->ChangeGameState("Level1");
-	}
+	if(gob.HasComponent<Button>())
+		if (gob.GetComponent<Button>().activated)
+			FUNC->ChangeGameState("Level1");
 }
 
 /*!*****************************************************************************

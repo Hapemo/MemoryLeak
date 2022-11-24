@@ -37,6 +37,7 @@ void GameViewPanel::Update()
 	{
 		//Calcualting the aspect ratio 
 		SetViewportAspectRatio();
+		mWorldMousePos = worldMousePos;
 		isViewportPaused = isScenePaused;
 		renderUI();
 		isScenePaused = isViewportPaused;

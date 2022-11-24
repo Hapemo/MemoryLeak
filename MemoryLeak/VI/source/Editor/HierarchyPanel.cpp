@@ -93,7 +93,7 @@ void HierarchyPanel::Update()
 						GameStateManager::GetInstance()->RemoveGameState(&(*mGameStates)[g]);
 						selectedScene = 0;
 						selectedGameState = 0;
-
+						SceneReset();
 						ImGui::EndTabItem();
 						ImGui::PopStyleColor();
 						break;
@@ -177,7 +177,7 @@ void HierarchyPanel::Update()
 								{
 									(*mGameStates)[g].RemoveScene((*mGameStates)[g].mScenes[s].mName);
 									selectedScene = 0;
-
+									SceneReset();
 									ImGui::EndTabItem();
 									ImGui::PopStyleColor();
 									break;

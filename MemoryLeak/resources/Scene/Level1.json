@@ -183,9 +183,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 1,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.037958692759275436
+            "timeToFrameSwap": 0.027313504368066788
         },
         "RectCollider": {
             "centerOffset": {
@@ -254,8 +254,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -49.14849090576172,
-                "Y": -93.395751953125
+                "X": -64.01666259765625,
+                "Y": -96.12808990478516
             }
         },
         "Sprite": {
@@ -271,9 +271,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.07203789800405502
+            "timeToFrameSwap": 0.027313504368066788
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -288,7 +288,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": 0.29758548736572266
+                "Y": 0.0
             },
             "acceleration": {
                 "X": 0.0,
@@ -329,7 +329,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -40.73553466796875,
-                "Y": -103.62236785888672
+                "Y": -103.42774200439453
             }
         },
         "Sprite": {
@@ -345,9 +345,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.07203789800405502
+            "timeToFrameSwap": 0.027313504368066788
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -362,7 +362,7 @@
             },
             "velocity": {
                 "X": 0.0,
-                "Y": 0.29758548736572266
+                "Y": 5.605193857299268e-45
             },
             "acceleration": {
                 "X": 0.0,
@@ -763,9 +763,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 127,
-                "g": 129,
-                "b": 131,
+                "r": 212,
+                "g": 97,
+                "b": 185,
                 "a": 100
             },
             "sprite": 1,
@@ -903,9 +903,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.07203789800405502
+            "timeToFrameSwap": 0.027313504368066788
         },
         "RectCollider": {
             "centerOffset": {
@@ -1122,6 +1122,84 @@
                 "Y": 1.0
             },
             "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "TextBox",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 266.0,
+                "Y": 136.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -397.0,
+                "Y": -80.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "DialogueBox",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 217.0,
+                "Y": 89.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -408.0,
+                "Y": -69.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 3
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "What am I supposed to do?",
+            "offset": {
+                "X": -107.0,
+                "Y": 22.0
+            },
+            "scale": 0.4000000059604645,
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "DialogueScript"
         }
     }
 ]
