@@ -736,8 +736,10 @@ void InspectorPanel::LayerColliderEditor()
 		e.GetComponent<LayerCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
 
-		ImGui::Checkbox("Rect RenderFlag", &e.GetComponent<LayerCollider>().renderFlag);
+		ImGui::Checkbox("Layer Collider RenderFlag", &e.GetComponent<LayerCollider>().renderFlag);
+		//BREAKPOINT(e.GetComponent<LayerCollider>().renderFlag == true);
 		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
+
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove LayerCollider"))
 		{
