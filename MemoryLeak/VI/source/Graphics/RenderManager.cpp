@@ -104,7 +104,7 @@ void RenderManager::Render()
 
 	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
-	if (mGizmo.GetAttached().id != 0)
+	if (mCurrRenderPass == RENDER_STATE::WORLD && mGizmo.GetAttached().id != 0)
 		mGizmo.Update(editorManager->GetEditorWorldMousePos(), mWorldCam);
 
 	CreateVertices(textureInfo);
@@ -491,7 +491,8 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		if (!e.HasComponent<Text>()) continue;
 		CreateText(e);
 	}
-	CreateGizmo();
+	if (mCurrRenderPass == RENDER_STATE::WORLD)
+		CreateGizmo();
 }
 
 /*!*****************************************************************************
