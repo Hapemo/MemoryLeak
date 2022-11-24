@@ -24,15 +24,11 @@ void GameState::AddScene(std::filesystem::path const& _path) { // filesystem
 	mScenes.emplace_back(Scene());
 	Scene& latestScene{ mScenes.back() };
 	
-
-	if (_path.string().size() == 0)
-	{
+	if (_path.string().size() == 0) {
 		static int newSceneCount = 1;
 		latestScene.mName = "New Scene " + std::to_string(newSceneCount++);  //cannot have same GS name
 		LOG_CUSTOM("GAMESTATE", "Adding NEW scene to gamestate: " + mName);
-	}
-	else
-	{
+	} else {
 		latestScene.Load(_path);
 		LOG_CUSTOM("GAMESTATE", "Adding scene \"" + _path.stem().string() + "\" to gamestate: " + mName);
 	}

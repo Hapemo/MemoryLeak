@@ -14,6 +14,7 @@ operates on Entities with Sprite and Transform Components.
 #include "Input.h"
 #include <ECSManager.h>
 #include <VertexFetcher.h>
+#include <GameStateManager.h>
 
 /*!*****************************************************************************
 \brief
@@ -84,6 +85,18 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
+	auto& scenes = GameStateManager::GetInstance()->mCurrentGameState->mScenes;
+	Scene* currScene{ nullptr };
+	for (auto& scene : scenes) if (scene.mIsPause == false) currScene = &scene;
+
+	if (currScene)
+	{
+		mGameCam.SetCameraWidth(currScene->mCamera.scale.x);
+		mGameCam.SetPos(currScene->mCamera.translation);
+		currScene->mCamera.scale.y = mGameCam.GetCameraHeight();
+		currScene->mCamera.rotation = 1.f / mGameCam.GetZoom();
+	}
+
 	if (mPrevWidth != *mWindowWidth)
 	{
 		mPrevWidth = *mWindowWidth;

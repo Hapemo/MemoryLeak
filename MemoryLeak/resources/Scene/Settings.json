@@ -105,7 +105,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Full Screen",
+            "text": "FullScreen",
             "offset": {
                 "X": 54.0,
                 "Y": -18.0
@@ -133,7 +133,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 137.9474334716797,
+                "X": 170.94700622558594,
                 "Y": 49.574501037597656
             }
         },

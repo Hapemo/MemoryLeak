@@ -582,7 +582,7 @@ void EditorManager::SceneReset()
 	selectedEntity = nullptr;
 	selectedPrefab = nullptr;
 	aspect = false;
-	renderManager->ResetCameras();
+	//renderManager->ResetCameras();
 	renderManager->ClearSelectedEntities();
 	renderManager->GetGizmo().Detach();
 	undoStack.clear();

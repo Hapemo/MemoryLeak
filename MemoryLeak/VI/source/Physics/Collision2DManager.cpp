@@ -403,56 +403,57 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 
 
 void Collision2DManager::ResolveCollisions(const double& _dt) {
+	// Reset contact list every fixed update
+	ClearContactList();
+	
 	// Check for collision and generate contact list
 	GenerateContactList(_dt);
 
 	// Resolve collision
 	for (Contact& item : mContactList) {
-
 		// Hack for collision triggers
 		bool triggered{ false };
-		if (item.objType[0] == static_cast<int>(ColliderType::RECT)) {
+		switch (item.objType[0]) {
+		case static_cast<int>(ColliderType::RECT):
 			if (item.obj[0].GetComponent<RectCollider>().isTrigger)
 				triggered = true;
-		}
-		else if (item.objType[0] == static_cast<int>(ColliderType::CIRCLE)) {
+			break;
+		case static_cast<int>(ColliderType::CIRCLE) :
 			if (item.obj[0].GetComponent<CircleCollider>().isTrigger)
 				triggered = true;
+			break;
 		}
-
-		if (item.objType[1] == static_cast<int>(ColliderType::RECT)) {
+		switch (item.objType[1]) {
+		case static_cast<int>(ColliderType::RECT):
 			if (item.obj[1].GetComponent<RectCollider>().isTrigger)
 				triggered = true;
-		}
-		else if (item.objType[1] == static_cast<int>(ColliderType::CIRCLE)) {
+			break;
+		case static_cast<int>(ColliderType::CIRCLE):
 			if (item.obj[1].GetComponent<CircleCollider>().isTrigger)
 				triggered = true;
+			break;
 		}
 
+		// Trigger object type detected
 		if (triggered) {
-			// Call script
-			if (item.obj[0].HasComponent<Script>() && item.obj[0].GetComponent<General>().tag != TAG::PLAYER) {
-				// Run the script
-
-			}
-			if (item.obj[1].HasComponent<Script>() && item.obj[0].GetComponent<General>().tag != TAG::PLAYER) {
-				// Run the script
-
-			}
 			// Skip to next contact item
 			continue;
 		}
 
+		// Play sound by setting it to play
 		if (item.obj[0].HasComponent<Audio>()) 
 			item.obj[0].GetComponent<Audio>().sound.toPlay = true;
 		if (item.obj[1].HasComponent<Audio>())
 			item.obj[1].GetComponent<Audio>().sound.toPlay = true;
 
+		// Correct penetrated positions
 		PositionCorrection(item);
+		// Resolve contact by updating velocity values of both objects
 		ResolveContact(item, _dt);
 	}
 
-	ClearContactList();
+	// Clear the contact list
+	//ClearContactList();
 }
 
 void Collision2DManager::GenerateContactList(const double& _dt) {
@@ -523,6 +524,17 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		}
 	}
 
+}
+
+bool Collision2DManager::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
+	for (auto const& item : mContactList) {
+		if (item.obj[0].id == _e1.id && item.obj[1].id == _e2.id)
+			return true;
+		if (item.obj[1].id == _e1.id && item.obj[0].id == _e2.id)
+			return true;
+	}
+
+	return false;
 }
 
 void Collision2DManager::ClearContactList() {

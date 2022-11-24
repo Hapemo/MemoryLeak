@@ -98,6 +98,8 @@ private:
 	std::map<GUID, void*> mAllResources;
 	std::map<GUID, std::string> mAllFilePaths;
 	unsigned char guidCounter = 0;
+	bool LoadedAll = false;
+
 public:
 	/*!*****************************************************************************
 	Constructor for ResourceManager.
@@ -258,6 +260,9 @@ public:
 	Load all files in a folder/file path. If it's a folder, enter it and find files
 	to load in. NOTE: This function is an EDITOR-ONLY function. Launch of game 
 	should include a different structure
+	New addition: This function can now load new resources added. The first run,
+	this function loads all resources that can be found. Subsequent run will only 
+	load resouces that are newly added. (Different name files are counted as new)
 
 	\param std::filesystem::path const&
 	- Folder/file path to load

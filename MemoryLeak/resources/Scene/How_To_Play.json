@@ -83,13 +83,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 170.0,
+                "X": 96.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": -421.7390441894531,
-                "Y": 128.01699829101563
+                "Y": 103.01699829101563
             }
         },
         "Sprite": {
@@ -114,172 +114,10 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "W      Move Up",
+            "text": "Move Around/Advance Dialogue",
             "offset": {
-                "X": -7.0,
-                "Y": -16.0
-            },
-            "scale": 0.75,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
-            "name": "A_key",
-            "tag": 5,
-            "subtag": 1,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 170.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -421.739013671875,
-                "Y": 12.164471626281738
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 1
-        },
-        "CircleCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": 1.0,
-            "isTrigger": false,
-            "renderFlag": false
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "A      Move Left",
-            "offset": {
-                "X": -7.0,
-                "Y": -14.0
-            },
-            "scale": 0.75,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
-            "name": "S_key",
-            "tag": 5,
-            "subtag": 1,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 170.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -423.6140441894531,
-                "Y": -103.15034484863281
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 1
-        },
-        "CircleCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": 1.0,
-            "isTrigger": false,
-            "renderFlag": false
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "S      Move Down",
-            "offset": {
-                "X": -8.0,
-                "Y": -16.0
-            },
-            "scale": 0.75,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
-            "name": "D_key",
-            "tag": 5,
-            "subtag": 1,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 170.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -421.7390441894531,
-                "Y": -222.49099731445313
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 1
-        },
-        "CircleCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": 1.0,
-            "isTrigger": false,
-            "renderFlag": false
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "D      Move Right",
-            "offset": {
-                "X": -9.0,
-                "Y": -16.0
+                "X": 76.0,
+                "Y": 16.0
             },
             "scale": 0.75,
             "color": {
@@ -332,7 +170,7 @@
             "fontFile": "CaviarDreams",
             "text": "Back",
             "offset": {
-                "X": -65.0,
+                "X": -49.0,
                 "Y": -16.0
             },
             "scale": 1.2000000476837158,
@@ -348,6 +186,51 @@
         },
         "Button": {
             "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 48.73949432373047
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -421.8182067871094,
+                "Y": 97.06099700927734
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\cursors\\cursor-1.png",
+            "layer": 2
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Cursor",
+            "offset": {
+                "X": -30.0,
+                "Y": -76.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
         }
     }
 ]
