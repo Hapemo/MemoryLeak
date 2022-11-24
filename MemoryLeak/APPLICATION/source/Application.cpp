@@ -58,8 +58,7 @@ void Application::SystemInit() {
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif
     ResourceManager::GetInstance()->LoadAllResources();
-  for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
-    spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
+
   editorManager->Init(); //need loaded resources
 }
 
