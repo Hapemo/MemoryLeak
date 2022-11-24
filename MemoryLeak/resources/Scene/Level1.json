@@ -749,7 +749,7 @@
     {
         "General": {
             "name": "Tree",
-            "tag": 0,
+            "tag": 5,
             "subtag": 0,
             "isActive": true
         },
@@ -1093,7 +1093,7 @@
             "name": "DialogueBox",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1108,10 +1108,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 100
             },
             "sprite": 0,
             "texture": "Textures\\Background\\Assets.txt",
@@ -1123,7 +1123,7 @@
             "name": "DialogueText",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1132,16 +1132,16 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -402.0,
+                "X": -397.0,
                 "Y": -69.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
             },
             "sprite": 0,
             "texture": "Textures\\Background\\Assets.txt",
@@ -1151,14 +1151,14 @@
             "fontFile": "CaviarDreams",
             "text": "What am I supposed to do?",
             "offset": {
-                "X": -107.0,
+                "X": -95.0,
                 "Y": 22.0
             },
             "scale": 0.4000000059604645,
             "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             }
         },

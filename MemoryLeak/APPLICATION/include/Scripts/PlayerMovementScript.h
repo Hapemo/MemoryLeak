@@ -7,7 +7,7 @@
 class PlayerMovementScript : public ScriptComponent {
 private:
 	std::string name{ "PlayerMovementScript" };
-	float playerSpeed{ 5.f };
+	float playerSpeed{ 500.f };
 	Entity dialogueText;
 	Entity littleGirl;
 public:
