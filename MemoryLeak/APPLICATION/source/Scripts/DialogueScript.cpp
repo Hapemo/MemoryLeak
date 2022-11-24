@@ -22,6 +22,7 @@ void DialogueScript::StartScript(Entity const& gob) {
 	LOG_INFO("Dialogue script starts works!!!");
 	FUNC->LoadDialogs("Dialogue LittleGirl 0");
 	FUNC->SetCurrentDialogueID(1);
+	(FUNC->GetEntity("DialogueBox", "Level1")).Activate();
 }
 
 /*!*****************************************************************************
@@ -33,7 +34,10 @@ void DialogueScript::UpdateScript(Entity const& gob) {
 		int currentId = FUNC->GetCurrentDialogueID();
 		if (gob.HasComponent<Text>()) {
 			gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
-			if (!FUNC->SetCurrentDialogueID(++currentId)) gob.GetComponent<Text>().text = "";
+			if (!FUNC->SetCurrentDialogueID(++currentId)) {
+				gob.GetComponent<Text>().text = "";
+				gob.Deactivate();
+			}
 		}
 	}
 }
@@ -45,4 +49,5 @@ Function will run on exit or when the entity is destroyed.
 void DialogueScript::EndScript(Entity const& gob) {
 	(void)gob;
 	LOG_INFO("Dialogue script end works!!!");
+	(FUNC->GetEntity("DialogueBox", "Level1")).Deactivate();
 }

@@ -1126,10 +1126,10 @@
     },
     {
         "General": {
-            "name": "TextBox",
+            "name": "DialogueBox",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1156,10 +1156,10 @@
     },
     {
         "General": {
-            "name": "DialogueBox",
+            "name": "DialogueText",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
