@@ -208,6 +208,7 @@ Entity GameStateManager::GetEntity(std::string const& _entityName, std::string c
 			}
 	}
 	LOG_WARN("Unable to get entity: " + _entityName);
+	return mErrorEntity;
 }
 
 void GameStateManager::Unload() {
