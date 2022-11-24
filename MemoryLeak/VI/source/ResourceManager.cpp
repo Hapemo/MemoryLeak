@@ -227,6 +227,7 @@ ResourceManager::GUID ResourceManager::ReadGUIDFromFile(std::string const& _meta
 
 void ResourceManager::LoadAllResources() {
 	LoadAllResources(std::filesystem::path{resourceFolder});
+	LoadedAll = true;
 }
 
 void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
@@ -239,7 +240,7 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 		// Skip any meta files
 		const std::string fileName{ entry.filename().string() };
 		if (fileName.find(".meta") != std::string::npos) continue;
-
+		
 		// Check for existing meta file
 		std::string metaPath{ entry.string() + ".meta" };
 		GUID guid{};
@@ -251,6 +252,20 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 			char* data = static_cast<char*>(static_cast<void*>(&guid));
 			newMetaFile.write(data, sizeof(guid));
 			newMetaFile.close();
+		}
+
+		// Skip subsequent duplicate resources
+		if (LoadedAll) {
+			bool fileLoaded { false };
+			for (auto& [_guid, _fileName] : mAllFilePaths) {
+				if (_fileName == entry.string()) {
+					fileLoaded = true;
+					break;
+				}
+			}
+
+			if (fileLoaded) continue;
+			LOG_INFO("RESOURCE MANAGER: loading new resources midway through editor: " + entry.string());
 		}
 
 		// Open and store resources, then linking them to their guid
