@@ -34,7 +34,8 @@ Struct that encapsulates a string.
 *******************************************************************************/
 struct Paragraph
 {
-	std::string characters;
+	std::vector<std::string> words;
+	std::vector<float> wordWidth;
 	Math::Vec2 pos;
 	float scale;
 	Math::Vec3 color;

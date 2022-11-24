@@ -8,6 +8,7 @@
 This file contains a class FontRenderer, which is a tool for renderering fonts.
 *******************************************************************************/
 #include <FontManager.h>
+#include <sstream>
 
 /*!*****************************************************************************
 \brief
@@ -138,7 +139,22 @@ Color of the font.
 void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float layer,float _width)
 {
     if (!mInitialized) return;
-    mParagraphs.push_back(Paragraph(text, _pos, scale, color, layer, _width));
+    std::vector<std::string> strings;
+    std::istringstream iss(text);
+    std::string intermediate;
+    while (std::getline(iss, intermediate, ' ')) {
+        strings.push_back(intermediate);
+    }
+    std::vector<float> wordWidth;
+    for (std::string& str : strings)
+    {
+        float width{};
+        str += " ";
+        for (char ch : str)
+            width += mGlyphs[ch].size.x * scale;
+        wordWidth.push_back(width);
+    }
+    mParagraphs.push_back(Paragraph(strings, wordWidth, _pos, scale, color, layer, _width));
 }
 /*!*****************************************************************************
 \brief
@@ -149,7 +165,7 @@ void FontRenderer::DrawParagraphs()
     if (!mInitialized) return;
     glm::mat4 _projection = glm::ortho(0.0f, (float) mWindowWidth, 0.0f, (float)mWindowHeight);
 
-    for (const Paragraph& para : mParagraphs)
+    for (Paragraph& para : mParagraphs)
     {
         float currWidth{};
         Math::Vec2 pos = para.pos;
@@ -162,46 +178,47 @@ void FontRenderer::DrawParagraphs()
         glBindVertexArray(mVAO);
 
         // iterate through characters in paragraph
-        for (std::string::const_iterator cIter = para.characters.begin(); cIter != para.characters.end(); ++cIter)
+        for (size_t i = 0; i < para.words.size(); ++i)
         {
-            Character ch = mGlyphs[*cIter];
-            float w = ch.size.x * para.scale;
-            float h = ch.size.y * para.scale;
-            currWidth += w;
-            if (currWidth > para.renderWidth * 0.75f / mCamZoom)
+            currWidth += para.wordWidth[i];
+            if (i && currWidth > para.renderWidth *0.75f/ mCamZoom)
             {
-                if (*(cIter) == ' ')
-                {
-                    pos.x = initialX;
-                    pos.y -= (mMaxYSize / mCamZoom) * para.scale;
-                    currWidth = 0;
-                    continue;
-                }
+                pos.x = initialX;
+                pos.y -= (mMaxYSize) * para.scale;
+                currWidth = para.wordWidth[i];
             }
-            float xpos = pos.x + ch.bearing.x * para.scale;
-            float ypos = pos.y - (ch.size.y - ch.bearing.y) * para.scale;
+            for (auto itr = para.words[i].begin(); itr != para.words[i].end(); ++itr)
+            {
+                Character ch = mGlyphs[*itr];
+                float w = ch.size.x * para.scale;
+                float h = ch.size.y * para.scale;
+                
+                float xpos = pos.x + ch.bearing.x * para.scale;
+                float ypos = pos.y - (ch.size.y - ch.bearing.y) * para.scale;
 
-            // update VBO for each character
-            float vertices[6][4] = {
-                { xpos,     ypos + h,   0.0f, 0.0f },
-                { xpos,     ypos,       0.0f, 1.0f },
-                { xpos + w, ypos,       1.0f, 1.0f },
+                // update VBO for each character
+                float vertices[6][4] = {
+                    { xpos,     ypos + h,   0.0f, 0.0f },
+                    { xpos,     ypos,       0.0f, 1.0f },
+                    { xpos + w, ypos,       1.0f, 1.0f },
 
-                { xpos,     ypos + h,   0.0f, 0.0f },
-                { xpos + w, ypos,       1.0f, 1.0f },
-                { xpos + w, ypos + h,   1.0f, 0.0f }
-            };
-            // render glyph texture over quad
-            glBindTexture(GL_TEXTURE_2D, ch.textureID);
-            // update content of VBO memory
-            glBindBuffer(GL_ARRAY_BUFFER, mVBO);
-            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
-            // render quad
-            glDrawArrays(GL_TRIANGLES, 0, 6);
+                    { xpos,     ypos + h,   0.0f, 0.0f },
+                    { xpos + w, ypos,       1.0f, 1.0f },
+                    { xpos + w, ypos + h,   1.0f, 0.0f }
+                };
+                // render glyph texture over quad
+                glBindTexture(GL_TEXTURE_2D, ch.textureID);
+                // update content of VBO memory
+                glBindBuffer(GL_ARRAY_BUFFER, mVBO);
+                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+                glBindBuffer(GL_ARRAY_BUFFER, 0);
+                // render quad
+                glDrawArrays(GL_TRIANGLES, 0, 6);
 
-            // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-            pos.x += (ch.advanceX >> 6) * para.scale; // bitshift by 6 to get value in pixels (2^6 = 64)
+                // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
+                pos.x += (ch.advanceX >> 6) * para.scale; // bitshift by 6 to get value in pixels (2^6 = 64)
+
+            }
         }
         glBindVertexArray(0);
         glBindTexture(GL_TEXTURE_2D, 0);
