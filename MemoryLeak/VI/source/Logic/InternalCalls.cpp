@@ -12,6 +12,7 @@ This file contains the function definitions of the class InternalCalls.
 #include "InternalCalls.h"
 #include "ECSManager.h"
 #include "GameStateManager.h"
+#include "Helper.h"
 
 /*!*****************************************************************************
 \brief
@@ -212,4 +213,12 @@ Exits the game.
 *******************************************************************************/
 void InternalCalls::GameStateExit() {
 	GameStateManager::GetInstance()->GameStateExit();
+}
+
+/*!*****************************************************************************
+\brief
+Gets the delta time in double.
+*******************************************************************************/
+double InternalCalls::GetDeltaTime() {
+	return FPSManager::dt;
 }
