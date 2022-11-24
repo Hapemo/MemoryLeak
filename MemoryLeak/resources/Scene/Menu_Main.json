@@ -279,12 +279,6 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\credits-icon.png",
             "layer": 1
-        },
-        "Animation": {
-            "images": [],
-            "timePerImage": 0.0,
-            "timeToImageSwap": 0.0,
-            "currentImageIndex": 0
         }
     },
     {
@@ -314,10 +308,12 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\settings-icon.png",
-            "layer": 0
+            "layer": 1
         },
         "Animation": {
-            "images": [],
+            "images": [
+                "Textures\\Menu\\settings-icon.png"
+            ],
             "timePerImage": 0.0,
             "timeToImageSwap": 0.0,
             "currentImageIndex": 0
