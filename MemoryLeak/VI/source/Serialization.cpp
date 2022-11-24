@@ -310,15 +310,17 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 				Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
+				bool isTrigger = entity["RectCollider"]["isTrigger"].GetBool();
 				bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
-				e.AddComponent<RectCollider>({ centerOffset , scaleOffset , renderFlag });
+				e.AddComponent<RectCollider>({ centerOffset , scaleOffset , isTrigger, renderFlag });
 			}
 			if (entity.HasMember("CircleCollider"))
 			{
 				Math::Vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 				float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
+				bool isTrigger = entity["CircleCollider"]["isTrigger"].GetBool();
 				bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
-				e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , renderFlag });
+				e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , isTrigger, renderFlag });
 			}
 			if (entity.HasMember("Edge2DCollider"))
 			{
@@ -520,6 +522,7 @@ RectCollider SerializationManager::getRectCollider(Value& entity)
 	RectCollider rectCollider;
 	rectCollider.centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
 	rectCollider.scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
+	rectCollider.isTrigger = entity["RectCollider"]["isTrigger"].GetBool();
 	rectCollider.renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
 	return rectCollider;
 }
@@ -536,6 +539,7 @@ CircleCollider SerializationManager::getCircleCollider(Value& entity)
 	CircleCollider circleCollider;
 	circleCollider.centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 	circleCollider.scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
+	circleCollider.isTrigger = entity["CircleCollider"]["isTrigger"].GetBool();
 	circleCollider.renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
 	return circleCollider;
 }
@@ -855,6 +859,9 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 			
 			addScript(scene,entity, e.GetComponent<Script>());
 		}
+		if (e.HasComponent<Button>()) {
+			addButton(scene, entity, e.GetComponent<Button>());
+		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
 		scene.AddMember(index, entity, allocator);
@@ -964,6 +971,7 @@ void SerializationManager::addRectCollider(Document& scene, Value& entity, RectC
 	Value tmp(kObjectType);
 	addVectorMember(scene, tmp, "centerOffset", rectCollider.centerOffset);
 	addVectorMember(scene, tmp, "scaleOffset", rectCollider.scaleOffset);
+	tmp.AddMember(StringRef("isTrigger"), rectCollider.isTrigger, scene.GetAllocator());
 	tmp.AddMember(StringRef("renderFlag"), rectCollider.renderFlag, scene.GetAllocator());
 	entity.AddMember(StringRef("RectCollider"), tmp, scene.GetAllocator());
 }
@@ -980,6 +988,7 @@ void SerializationManager::addCircleCollider(Document& scene, Value& entity, Cir
 	Value tmp(kObjectType);
 	addVectorMember(scene, tmp, "centerOffset", circleCollider.centerOffset);
 	tmp.AddMember(StringRef("scaleOffset"), circleCollider.scaleOffset, scene.GetAllocator());
+	tmp.AddMember(StringRef("isTrigger"), circleCollider.isTrigger, scene.GetAllocator());
 	tmp.AddMember(StringRef("renderFlag"), circleCollider.renderFlag, scene.GetAllocator());
 	entity.AddMember(StringRef("CircleCollider"), tmp, scene.GetAllocator());
 }
