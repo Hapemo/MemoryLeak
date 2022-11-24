@@ -49,6 +49,7 @@ ResourceManager::TextureData ResourceManager::LoadTexture(const std::string _fil
 	struct stat stats;
 	ResourceData trackResource;
 	const char* filepath = _filepath.c_str();
+	LOG_DEBUG("loading texture:" + _filepath);
 	stbi_set_flip_vertically_on_load(true);
 	trackResource.texture.data = stbi_load(filepath, &trackResource.texture.width, &trackResource.texture.height, &trackResource.texture.channels, 0);
 	trackResource.texture.path = filepath;
@@ -56,6 +57,7 @@ ResourceManager::TextureData ResourceManager::LoadTexture(const std::string _fil
 		trackResource.lastModified = stats.st_mtime;
 	++trackResource.usage;
 	mResources.push_back(trackResource);
+	spriteManager->InitializeTexture(mResources.back().texture);
 	//std::cout << mResources[mResources.size() - 1].texture.path << std::endl;
 	return trackResource.texture;
 }
