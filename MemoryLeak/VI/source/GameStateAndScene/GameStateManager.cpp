@@ -19,6 +19,8 @@ running.
 
 const std::string GameStateManager::EXIT{ "Exit" };
 const std::string GameStateManager::RESTART{ "Restart" };
+Scene GameStateManager::mErrorScene("Error");
+const Entity GameStateManager::mErrorEntity(0);
 GameStateManager::E_GSMSTATE GameStateManager::mGSMState{ GameStateManager::E_GSMSTATE::STARTING };
 
 GameStateManager::GameStateManager() : mGameStates(), mCurrentGameState(nullptr), mNextGSPath("") {};
@@ -71,9 +73,8 @@ Scene& GameStateManager::SelectScene(std::string const& _name) {
 	for (auto& scene : mCurrentGameState->mScenes)
 		if (scene.mName == _name) return scene;
 
-	static Scene errScene("Error");
 	LOG_ERROR("Unable to select scene: " + _name);
-	return errScene;
+	return GameStateManager::mErrorScene;
 }
 
 void GameStateManager::ChangeGameState(std::string const& _name) {
@@ -192,6 +193,21 @@ void GameStateManager::SetGameState(std::string const& _name) {
 		}
 	}
 	LOG_WARN("Unable to find gamestate to set to: " + _name);
+}
+
+Entity GameStateManager::GetEntity(std::string const& _entityName, std::string const& _sceneName) {
+	for (Scene& scene : mCurrentGameState->mScenes) {
+		// If scene is specified, skip those scenes that are not same name.
+		if (_sceneName.size() > 0 && _sceneName != scene.mName) continue;
+
+		// Find entity of same name and return
+		for (Entity e : scene.mEntities)
+			if (e.GetComponent<General>().name == _entityName) {
+				LOG_CUSTOM("GAMESTATEMANAGER", "Get entity: \"" + std::to_string(e.id) + "\" from scene: " + scene.mName);
+				return e;
+			}
+	}
+	LOG_WARN("Unable to get entity: " + _entityName);
 }
 
 void GameStateManager::Unload() {
