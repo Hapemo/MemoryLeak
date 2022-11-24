@@ -8,6 +8,8 @@
     <ClInclude Include="include\Scripts\DialogueScript.h" />
     <ClInclude Include="include\Scripts\PlayerMovementScript.h" />
     <ClInclude Include="include\Scripts\PlayGameButton.h" />
+    <ClInclude Include="include\Scripts\HowToPlayButton.h" />
+    <ClInclude Include="include\Scripts\BackToMainMenuButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -18,5 +20,7 @@
     <ClCompile Include="source\Scripts\DialogueScript.cpp" />
     <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
     <ClCompile Include="source\Scripts\PlayGameButton.cpp" />
+    <ClCompile Include="source\Scripts\HowToPlayButton.cpp" />
+    <ClCompile Include="source\Scripts\BackToMainMenuButton.cpp" />
   </ItemGroup>
 </Project>

@@ -1,23 +1,23 @@
 /*!*****************************************************************************
-\file PlayGameButton.cpp
+\file HowToPlayButton.cpp
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
-\date 02-11-2022
+\date 24-11-2022
 \brief
-This file contains the function definitions of the class PlayGameButton.
+This file contains the function definitions of the class HowToPlayButton.
 *******************************************************************************/
 
-#include "PlayGameButton.h"
+#include "HowToPlayButton.h"
 
-REGISTER_SCRIPT(ScriptComponent, PlayGameButton);
+REGISTER_SCRIPT(ScriptComponent, HowToPlayButton);
 
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void PlayGameButton::StartScript(Entity const& gob) {
+void HowToPlayButton::StartScript(Entity const& gob) {
 	(void)gob;
 	//LOG_INFO("Play button script starts works!!!");
 }
@@ -26,17 +26,19 @@ void PlayGameButton::StartScript(Entity const& gob) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void PlayGameButton::UpdateScript(Entity const& gob) {
+void HowToPlayButton::UpdateScript(Entity const& gob) {
 	if(gob.HasComponent<Button>())
-		if (gob.GetComponent<Button>().activated)
-			FUNC->ChangeGameState("Level1");
+		if (gob.GetComponent<Button>().activated) {
+			(FUNC->SelectScene("Menu_Main")).Pause(true);
+			(FUNC->SelectScene("How_To_Play")).Pause(false);
+		}
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void PlayGameButton::EndScript(Entity const& gob) {
+void HowToPlayButton::EndScript(Entity const& gob) {
 	(void)gob;
 	//LOG_INFO("Play button script end works!!!");
 }

@@ -162,3 +162,19 @@ This function is called by user, to change the next game state
 void InternalCalls::ChangeGameState(std::string const& _name) {
 	GameStateManager::GetInstance()->ChangeGameState(_name);
 }
+
+/*!*****************************************************************************
+\brief
+Gets an entity from scene.
+*******************************************************************************/
+Entity InternalCalls::GetEntity(std::string const& _entityName, std::string const& _sceneName) {
+	return GameStateManager::GetInstance()->GetEntity(_entityName, _sceneName);
+}
+
+/*!*****************************************************************************
+\brief
+Gets scene to pause or unpause the scene.
+*******************************************************************************/
+Scene& InternalCalls::SelectScene(std::string const& _name) {
+	return GameStateManager::GetInstance()->SelectScene(_name);
+}
