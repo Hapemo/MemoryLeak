@@ -85,7 +85,7 @@
             "fontFile": "CaviarDreams",
             "text": "Try Again",
             "offset": {
-                "X": -103.0,
+                "X": -95.0,
                 "Y": -18.0
             },
             "scale": 1.0,
@@ -138,7 +138,7 @@
             "fontFile": "CaviarDreams",
             "text": "Quit Game",
             "offset": {
-                "X": -118.0,
+                "X": -93.0,
                 "Y": -18.0
             },
             "scale": 1.0,

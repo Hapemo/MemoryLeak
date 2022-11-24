@@ -152,7 +152,7 @@
             "fontFile": "CaviarDreams",
             "text": "Quit Game",
             "offset": {
-                "X": -109.0,
+                "X": -94.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -197,7 +197,7 @@
             "fontFile": "CaviarDreams",
             "text": "Resume",
             "offset": {
-                "X": -72.0,
+                "X": -66.0,
                 "Y": -16.0
             },
             "scale": 1.0,
