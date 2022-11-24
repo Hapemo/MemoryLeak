@@ -83,7 +83,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 100.0,
+                "X": 170.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
@@ -113,9 +113,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "W    Move Up",
+            "text": "W      Move Up",
             "offset": {
-                "X": -17.0,
+                "X": -7.0,
                 "Y": -16.0
             },
             "scale": 0.75,
@@ -136,7 +136,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 100.0,
+                "X": 170.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
@@ -166,9 +166,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "A    Move Left",
+            "text": "A      Move Left",
             "offset": {
-                "X": -13.0,
+                "X": -7.0,
                 "Y": -14.0
             },
             "scale": 0.75,
@@ -189,7 +189,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 100.0,
+                "X": 170.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
@@ -219,7 +219,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "S    Move Down",
+            "text": "S      Move Down",
             "offset": {
                 "X": -8.0,
                 "Y": -16.0
@@ -242,7 +242,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 100.0,
+                "X": 170.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
@@ -272,7 +272,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "D    Move Right",
+            "text": "D      Move Right",
             "offset": {
                 "X": -9.0,
                 "Y": -16.0
