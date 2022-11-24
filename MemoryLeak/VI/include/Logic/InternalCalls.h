@@ -14,7 +14,7 @@ This file contains the function declarations of the class InternalCalls.
 #include "Input.h"
 #include "vec2.h"
 #include "ECS_items.h"
-#include "Helper.h"
+//#include "Helper.h"
 //#include "GameStateManager.h"
 //#include "Scene.h"
 //#include "DialogManager.h"
@@ -192,4 +192,10 @@ public:
 	Exits the game.
 	*******************************************************************************/
 	void GameStateExit();
+
+	/*!*****************************************************************************
+	\brief
+	Gets the delta time in double.
+	*******************************************************************************/
+	double GetDeltaTime();
 };
