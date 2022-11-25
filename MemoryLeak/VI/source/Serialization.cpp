@@ -53,6 +53,7 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 	if (!ifs.good())
 	{
 		LOG_ERROR("Can't open json file! : " + _filename.string());
+		return;
 	}
 	else
 		LOG_INFO("Opening Scene: " + _filename.string());
@@ -1121,6 +1122,7 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	if (!ifs.good())
 	{
 		LOG_ERROR("Can't open json file! : " + _filename.stem().string());
+		return;
 	}
 	else
 		LOG_INFO("Opening game state: " + _filename.stem().string());
