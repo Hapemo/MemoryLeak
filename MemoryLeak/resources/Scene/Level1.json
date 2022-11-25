@@ -86,7 +86,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -690.04248046875,
-                "Y": 37.37937927246094
+                "Y": 37.37939453125
             }
         },
         "Sprite": {
@@ -155,9 +155,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 8,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.09765560179948807
+            "timeToFrameSwap": 0.03356330096721649
         },
         "RectCollider": {
             "centerOffset": {
@@ -228,8 +228,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 53.139671325683594,
-                "Y": -171.9583282470703
+                "X": -51.53335952758789,
+                "Y": -91.70728302001953
             }
         },
         "Sprite": {
@@ -241,13 +241,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
-            "layer": 60
+            "layer": 1
         },
         "SheetAnimation": {
             "frameCount": 8,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.09765560179948807
+            "timeToFrameSwap": 0.047568801790475845
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -261,8 +261,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 13.107878684997559,
-                "Y": 30.39590072631836
+                "X": -18.115049362182617,
+                "Y": 6.563889026641846
             },
             "acceleration": {
                 "X": 0.0,
@@ -600,7 +600,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 935.2947998046875,
-                "Y": 911.7619018554688
+                "Y": 906.3685913085938
             }
         },
         "Sprite": {
@@ -647,9 +647,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 238,
-                "g": 240,
-                "b": 22,
+                "r": 220,
+                "g": 140,
+                "b": 100,
                 "a": 100
             },
             "sprite": 1,
@@ -677,8 +677,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 336.5287780761719,
-                "Y": -925.8662109375
+                "X": -76.95437622070313,
+                "Y": -997.7763061523438
             }
         },
         "Sprite": {
@@ -749,20 +749,20 @@
     },
     {
         "General": {
-            "name": "Passenger1",
-            "tag": 1,
+            "name": "Passenger_1",
+            "tag": 0,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 39.0,
-                "Y": 94.25
+                "X": 78.0,
+                "Y": 188.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1448.6572265625,
-                "Y": 688.0704956054688
+                "X": -1361.9656982421875,
+                "Y": 651.915771484375
             }
         },
         "Sprite": {
@@ -780,7 +780,52 @@
             "frameCount": 8,
             "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.09765560179948807
+            "timeToFrameSwap": 0.047568801790475845
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 2.5,
+                "Y": 1.5
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Script": {
+            "name": "PassengerScript"
+        }
+    },
+    {
+        "General": {
+            "name": "Porthouse",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -500.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1514.4952392578125,
+                "Y": -15.134796142578125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building_3(revised).png",
+            "layer": 1
         },
         "RectCollider": {
             "centerOffset": {
@@ -1337,6 +1382,36 @@
             },
             "isTrigger": true,
             "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "destination",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 684.1441040039063,
+                "Y": -965.5049438476563
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 5
         }
     }
 ]

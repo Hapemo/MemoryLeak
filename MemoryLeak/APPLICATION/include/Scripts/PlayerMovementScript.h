@@ -10,6 +10,7 @@ private:
 	float playerSpeed{ 500.f };
 	bool dialogueActivated = false;
 	bool inited = false;
+	float speedCheatMultiplier{ 3.f };
 	Entity dialogueText;
 	Entity littleGirl;
 	Scene* currScene;

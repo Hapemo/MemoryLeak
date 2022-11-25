@@ -2,6 +2,10 @@
 
 REGISTER_SCRIPT(ScriptComponent, PlayerMovementScript);
 
+namespace {
+	static bool speedCheat{ false };
+}
+
 void PlayerMovementScript::StartScript(const Entity& _e) {
 	(void)_e;
 	inited = false;
@@ -18,13 +22,15 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	if (currScene->mCamera.scale.x < initialCamScale.x)
 		currScene->mCamera.scale.x += 500 * (float)FUNC->GetDeltaTime();
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
+	if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, C)) speedCheat = !speedCheat; // speed cheat toggle
 
 	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L)) {
 		if (dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currScene->mCamera.translation - _e.GetComponent<Transform>().translation };
-			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
-				FUNC->ApplyImpulse(_e, (dirVector.Normalized() * playerSpeed) * (float)FUNC->GetDeltaTime(), Math::Vec2{ 0.f, 0.f });
-
+			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON) {
+				if (speedCheat) FUNC->ApplyImpulse(_e, dirVector.Normalized() * playerSpeed * static_cast<float>(FPSManager::dt) * speedCheatMultiplier, Math::Vec2{ 0.f, 0.f });
+				else FUNC->ApplyImpulse(_e, dirVector.Normalized() * playerSpeed * static_cast<float>(FPSManager::dt), Math::Vec2{0.f, 0.f});
+			}
 			float rotation{};
 			if (dirVector.y != 0.f && dirVector.x >= 0.f)
 				rotation = atan2f(dirVector.y, dirVector.x);

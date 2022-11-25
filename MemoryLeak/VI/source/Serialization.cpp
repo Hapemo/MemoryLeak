@@ -399,7 +399,6 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 		}
 	}
 
-	logicSystem->Init();
 	ifs.close();
 }
 General SerializationManager::getGeneral(Value& entity)
@@ -1126,8 +1125,8 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	entity = doc.GetArray();
 	for (rapidjson::SizeType index = 0; index < entity.Size(); ++index)
 	{
-		Scene sceneData;
-		sceneData.mName = entity[index]["SceneName"].GetString();
+		Scene sceneData(entity[index]["SceneName"].GetString());
+		//sceneData.mName = entity[index]["SceneName"].GetString();
 		sceneData.mCamera = getTransform(entity[index]);
 		sceneData.mIsPause = entity[index]["isActive"].GetBool();
 		sceneData.mLayer = entity[index]["layer"].GetInt();
