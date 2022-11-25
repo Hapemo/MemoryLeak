@@ -62,7 +62,7 @@
             "fontFile": "CaviarDreams",
             "text": "SETTINGS",
             "offset": {
-                "X": -121.0,
+                "X": -154.0,
                 "Y": 197.0
             },
             "scale": 1.5,
@@ -105,7 +105,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Full Screen",
+            "text": "FullScreen",
             "offset": {
                 "X": 54.0,
                 "Y": -18.0
@@ -133,7 +133,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 137.9474334716797,
+                "X": 170.94700622558594,
                 "Y": 49.574501037597656
             }
         },
@@ -422,7 +422,7 @@
             "fontFile": "CaviarDreams",
             "text": "Back",
             "offset": {
-                "X": -42.0,
+                "X": -53.0,
                 "Y": -15.0
             },
             "scale": 1.0,
@@ -432,6 +432,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "BackToMainMenuButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

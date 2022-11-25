@@ -7,7 +7,15 @@
 class PlayerMovementScript : public ScriptComponent {
 private:
 	std::string name{ "PlayerMovementScript" };
-	float playerSpeed{ 20.f };
+	float playerSpeed{ 500.f };
+	bool dialogueActivated = false;
+	bool inited = false;
+	float speedCheatMultiplier{ 3.f };
+	Entity dialogueText;
+	Entity littleGirl;
+	Scene* currScene;
+	Math::Vec2 initialCamScale;
+
 public:
 	PlayerMovementScript() = default;
 	~PlayerMovementScript() override = default;

@@ -12,6 +12,7 @@ This file contains the function definitions of the class InternalCalls.
 #include "InternalCalls.h"
 #include "ECSManager.h"
 #include "GameStateManager.h"
+#include "Helper.h"
 
 /*!*****************************************************************************
 \brief
@@ -27,6 +28,10 @@ bool InternalCalls::CheckKey(E_STATE _state, E_KEY _key) {
 	return Input::CheckKey(_state, _key);
 }
 
+/*!*****************************************************************************
+\brief
+Get world mouse position.
+*******************************************************************************/
 Math::Vec2 InternalCalls::GetWorldMousePos() {
 	return editorManager->GetEditorWorldMousePos();
 }
@@ -161,4 +166,59 @@ This function is called by user, to change the next game state
 *******************************************************************************/
 void InternalCalls::ChangeGameState(std::string const& _name) {
 	GameStateManager::GetInstance()->ChangeGameState(_name);
+}
+
+/*!*****************************************************************************
+\brief
+Gets an entity from scene.
+*******************************************************************************/
+Entity InternalCalls::GetEntity(std::string const& _entityName, std::string const& _sceneName) {
+	return GameStateManager::GetInstance()->GetEntity(_entityName, _sceneName);
+}
+
+/*!*****************************************************************************
+\brief
+Gets scene to pause or unpause the scene.
+*******************************************************************************/
+Scene& InternalCalls::SelectScene(std::string const& _name) {
+	return GameStateManager::GetInstance()->SelectScene(_name);
+}
+
+/*!*****************************************************************************
+\brief
+Sets the texture of an entity.
+*******************************************************************************/
+void InternalCalls::SetTexture(const Entity& _e, const std::string& _path) {
+	spriteManager->SetTexture(_e, _path);
+}
+
+/*!*****************************************************************************
+\brief
+EntitiesCollided function that checks if two given entities have collided by
+checking whether if a contact with the two entities exists
+\param const Entity &
+A reference to a read-only entity to compare with
+\param const Entity &
+A reference to a read-only entity to compare against
+\return bool
+Evaluated result of whether a collision happened between the two given entities
+*******************************************************************************/
+bool InternalCalls::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
+	return collision2DManager->EntitiesCollided(_e1, _e2);
+}
+
+/*!*****************************************************************************
+\brief
+Exits the game.
+*******************************************************************************/
+void InternalCalls::GameStateExit() {
+	GameStateManager::GetInstance()->GameStateExit();
+}
+
+/*!*****************************************************************************
+\brief
+Gets the delta time in double.
+*******************************************************************************/
+double InternalCalls::GetDeltaTime() {
+	return FPSManager::dt;
 }

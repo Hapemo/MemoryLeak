@@ -6,31 +6,53 @@ bool LayerManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 		& obj2{ _contact.obj[1] };
 
 	// Store center and scale of both entities
-	Math::Vec2	center1{ Math::Vec2{obj1.GetComponent<Transform>().translation} + obj1.GetComponent<LayerCollider>().centerOffset },
-		scale1{ static_cast<float>(static_cast<double>(obj1.GetComponent<Transform>().scale.x) * static_cast<double>(obj1.GetComponent<LayerCollider>().scaleOffset.x) / 2.0),
-				static_cast<float>(static_cast<double>(obj1.GetComponent<Transform>().scale.y) * static_cast<double>(obj1.GetComponent<LayerCollider>().scaleOffset.y) / 2.0) },
-		center2{ Math::Vec2{obj2.GetComponent<Transform>().translation} + obj2.GetComponent<LayerCollider>().centerOffset },
-		scale2{ static_cast<float>(static_cast<double>(obj2.GetComponent<Transform>().scale.x) * static_cast<double>(obj2.GetComponent<LayerCollider>().scaleOffset.x) / 2.0),
-				static_cast<float>(static_cast<double>(obj2.GetComponent<Transform>().scale.y) * static_cast<double>(obj2.GetComponent<LayerCollider>().scaleOffset.y) / 2.0) };
+	Math::Vec2	center1{ Math::Vec2{obj1.GetComponent<Transform>().translation} + obj1.GetComponent<RectCollider>().centerOffset },
+		scale1{ static_cast<float>(static_cast<double>(std::fabs(obj1.GetComponent<Transform>().scale.x)) * static_cast<double>(obj1.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+				static_cast<float>(static_cast<double>(std::fabs(obj1.GetComponent<Transform>().scale.y)) * static_cast<double>(obj1.GetComponent<RectCollider>().scaleOffset.y) / 2.0) },
+		center2{ Math::Vec2{obj2.GetComponent<Transform>().translation} + obj2.GetComponent<RectCollider>().centerOffset },
+		scale2{ static_cast<float>(static_cast<double>(std::fabs(obj2.GetComponent<Transform>().scale.x)) * static_cast<double>(obj2.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+				static_cast<float>(static_cast<double>(std::fabs(obj2.GetComponent<Transform>().scale.y)) * static_cast<double>(obj2.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
 
-	// Compute min and max of both entities
+	// Static check
+		//if (aabb1max.x < aabb2min.x)
+		//	return false;
+		//if (aabb1min.x > aabb2max.x)
+		//	return false;
+		//if (aabb1max.y < aabb2min.y)
+		//	return false;
+		//if (aabb1min.y > aabb2max.y)
+		//	return false;
+	Math::Vec2 distVec{ center1 - center2 };
+	Math::Vec2 diff{ scale1.x + scale2.x - std::fabs(distVec.x),
+					 scale1.y + scale2.y - std::fabs(distVec.y) };
+	// For 2 rect to collide, both axis needs to be larger than 0, indicating a penetration has happened on both axis
+	if (0.f < diff.x) {
+		if (0.f < diff.y) {
+			if (diff.x < diff.y) {
+				// Set contact information
+				_contact.normal = distVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+				_contact.penetration = diff.x;
+				_contact.contacts = _contact.normal * scale1.x + center1;
+				return true;
+			}
+			else {
+				// Set contact information
+				_contact.normal = distVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+				_contact.penetration = diff.y;
+				_contact.contacts = _contact.normal * scale1.y + center1;
+				return true;
+			}
+		}
+	}
+
+	// Dynamic check
+		// Compute min and max of both entities
 	Math::Vec2	aabb1min{ center1 - scale1 },
 		aabb1max{ center1 + scale1 },
 		aabb2min{ center2 - scale2 },
 		aabb2max{ center2 + scale2 };
 
-	// Static check
-	if (aabb1max.x < aabb2min.x)
-		return false;
-	if (aabb1min.x > aabb2max.x)
-		return false;
-	if (aabb1max.y < aabb2min.y)
-		return false;
-	if (aabb1min.y > aabb2max.y)
-		return false;
-
-	// Dynamic check
-		// Compute relative velocity
+	// Compute relative velocity
 	Math::Vec2 Vb{};
 	if (obj2.HasComponent<Physics2D>() && obj1.HasComponent<Physics2D>())
 		Vb = obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
@@ -105,7 +127,7 @@ bool LayerManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 		// Use first as intersection time
 		//_contact.interTime = tFirst;
 
-		// Compute position at intersection time
+		// Compute next frame's position and use that data for collision response 
 	Math::Vec2 obj1NewPos{ center1 },
 		obj2NewPos{ center2 };
 	if (obj1.HasComponent<Physics2D>())
@@ -114,24 +136,29 @@ bool LayerManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 		obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
 
 	// Compute penetration
-	Math::Vec2 distVec{ obj1NewPos - obj2NewPos };
-	Math::Vec2 diff{ scale1.x + scale2.x - std::fabs(distVec.x),
-					 scale1.y + scale2.y - std::fabs(distVec.y) };
+	Math::Vec2 newDistVec{ obj1NewPos - obj2NewPos };
+	Math::Vec2 newDiff{ scale1.x + scale2.x - std::fabs(newDistVec.x),
+					 scale1.y + scale2.y - std::fabs(newDistVec.y) };
 
 	// Find axis that penetrates less and use it to resolve collision
-	if (diff.x < diff.y) {
+	if (newDiff.x < newDiff.y) {
 		// Set contact information
-		_contact.normal = distVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
-		_contact.penetration = diff.x;
+		_contact.normal = newDistVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+		_contact.penetration = newDiff.x;
 		_contact.contacts = _contact.normal * scale1.x + center1;
 	}
 	else {
 		// Set contact information
-		_contact.normal = distVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
-		_contact.penetration = diff.y;
+		_contact.normal = newDistVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+		_contact.penetration = newDiff.y;
 		_contact.contacts = _contact.normal * scale1.y + center1;
 	}
+	if (obj1.HasComponent<Audio>())
+		obj1.GetComponent<Audio>().sound.toPlay = true;
+	if (obj2.HasComponent<Audio>())
+		obj2.GetComponent<Audio>().sound.toPlay = true;
 	return true;
+
 }
 
 void LayerManager::Update(const double& _dt) {
@@ -142,7 +169,10 @@ void LayerManager::Update(const double& _dt) {
 		if (!e1->ShouldRun())
 			continue;
 
-		for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
+		if (e1->GetComponent<General>().tag != TAG::PLAYER)
+			continue;
+
+		for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
 			if (e1 == e2)
 				continue;
 

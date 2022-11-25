@@ -94,6 +94,10 @@ void GameStateManager::ChangeGameState(std::string const& _name) {
 	}
 }
 
+void GameStateManager::GameStateExit() {
+	GameStateManager::GetInstance()->ChangeGameState(GameStateManager::GetInstance()->EXIT);
+}
+
 void GameStateManager::AddGameState(std::filesystem::path const& _path) {
 	std::string currName{ mCurrentGameState->mName };
 
@@ -112,12 +116,20 @@ void GameStateManager::AddGameState(std::filesystem::path const& _path) {
 		LOG_CUSTOM("GAMESTATEMANAGER", "Add gamestate: " + _path.string());
 	}
 
+	// Init the gamestate after loading it.
+	// But must temporarily set it to current game state because some of the functions uses that.
+	GameState* tempStoreGS = mCurrentGameState;
+	mCurrentGameState = &mGameStates.back();
+	mGameStates.back().Init();
+	mCurrentGameState = tempStoreGS;
+
 	// FOR EDITOR
 	std::vector<bool> pausedList{};
 	for (Scene& scene : mGameStates.back().mScenes)
 		pausedList.push_back(scene.mIsPause);
 
-	mGameStatesScenesPause.insert({ mGameStates.back().mName, pausedList }); // FOR EDITOR
+	mGameStatesScenesPause[mGameStates.back().mName] = pausedList; // FOR EDITOR
+	SetGameState(_path.stem().string());  //Call set game state to chnage is paused of entites
 	//SetGameState(_path.stem().string());  //Call set game state to chnage is paused of entites
 	//mCurrentGameState = &mGameStates.back();
 }
@@ -183,6 +195,9 @@ void GameStateManager::SetGameState(std::string const& _name) {
 			// load next gamestate scene pause, and unload all the saved pause status to the scenes
 			mCurrentGameState = &gs;
 			std::vector<bool>& nextPauseList = mGameStatesScenesPause[mCurrentGameState->mName];
+			//if (nextPauseList.size() == 0) {
+			//	LOG_WARN("GameState Scene Pause is 0, gamestate: " + mCurrentGameState->mName);
+			//} else
 			for (size_t i{}; i < mCurrentGameState->mScenes.size(); ++i) {
 				mCurrentGameState->mScenes[i].Pause(nextPauseList[i]);
 			}

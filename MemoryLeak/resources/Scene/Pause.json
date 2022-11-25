@@ -62,7 +62,7 @@
             "fontFile": "CaviarDreams",
             "text": "PAUSED",
             "offset": {
-                "X": -97.0,
+                "X": -132.0,
                 "Y": 195.0
             },
             "scale": 1.5,
@@ -89,7 +89,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 77.53440856933594
+                "Y": 80.0
             }
         },
         "Sprite": {
@@ -107,7 +107,7 @@
             "fontFile": "CaviarDreams",
             "text": "Controls",
             "offset": {
-                "X": -89.0,
+                "X": -96.0,
                 "Y": -16.0
             },
             "scale": 1.0,
@@ -117,6 +117,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "HowToPlayButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -134,7 +140,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -44.05507278442383
+                "Y": -40.0
             }
         },
         "Sprite": {
@@ -152,7 +158,7 @@
             "fontFile": "CaviarDreams",
             "text": "Quit Game",
             "offset": {
-                "X": -94.0,
+                "X": -114.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -162,6 +168,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "ExitGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -179,7 +191,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -159.2242431640625
+                "Y": -160.0
             }
         },
         "Sprite": {
@@ -197,7 +209,7 @@
             "fontFile": "CaviarDreams",
             "text": "Resume",
             "offset": {
-                "X": -66.0,
+                "X": -84.0,
                 "Y": -16.0
             },
             "scale": 1.0,
@@ -207,6 +219,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "BackToGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

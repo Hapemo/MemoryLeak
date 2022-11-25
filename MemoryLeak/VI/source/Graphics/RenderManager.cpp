@@ -373,6 +373,7 @@ void RenderManager::RenderDebug()
 
 	for (const Entity& e : mEditorSelectedEntities)
 	{
+		if (!e.HasComponent<General>()) continue;
 		if (!e.GetComponent<General>().isActive) continue;
 		if (!e.ShouldRun()) continue;
 
