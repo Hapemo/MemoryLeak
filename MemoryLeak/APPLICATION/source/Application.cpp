@@ -44,6 +44,7 @@ void Application::SystemInit() {
   //logicSystem->Init();
   //aiManager->weatherAIinit();
   
+  InternalCalls::GetInstance()->InitScriptWindow(&window_width, &window_height);
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
   //playerManager->Init(window_width, window_height);
@@ -59,7 +60,7 @@ void Application::SystemInit() {
   // Collision database initialization
   collision2DManager->SetupCollisionDatabase();
  
-#ifdef _EDITOR
+#ifdef _DEBUG
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif
     ResourceManager::GetInstance()->LoadAllResources();

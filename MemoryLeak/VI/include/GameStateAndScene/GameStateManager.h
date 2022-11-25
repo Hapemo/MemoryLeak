@@ -75,6 +75,7 @@ public:
 	void AddGameState(std::filesystem::path const& _path = std::filesystem::path());
 	void RemoveGameState(GameState* = nullptr);
 	void SetGameState(std::string const& _name);
+	void RenameGameState(GameState* _gs, std::string const& _name);
 
 	//void setgamestate();
 

@@ -175,14 +175,6 @@ void GameStateManager::RemoveGameState(GameState* _gameState) {
 void GameStateManager::SetGameState(std::string const& _name) {
 	for (auto& gs : mGameStates) {
 		if (gs.mName == _name) {
-			//for (auto& scene : mCurrentGameState->mScenes)  //set pause true for prevoius scene (dont chane scene.mIsPause as it stores the original value)
-			//	for (auto& e : scene.mEntities)
-			//		e.GetComponent<General>().isPaused = true;
-			//
-			//for (auto& scene : gs.mScenes)  //set pause false for current scene iif scene not paused
-			//	for (auto& e : scene.mEntities)
-			//		e.GetComponent<General>().isPaused = scene.mIsPause;
-
 			// save curr gamestate scene pause, and pause all the scenes
 			std::vector<bool>& currPauseList = mGameStatesScenesPause[mCurrentGameState->mName];
 			currPauseList.clear();
@@ -208,6 +200,13 @@ void GameStateManager::SetGameState(std::string const& _name) {
 		}
 	}
 	LOG_WARN("Unable to find gamestate to set to: " + _name);
+}
+
+void GameStateManager::RenameGameState(GameState* _gs, std::string const& _name) {
+	std::string ogName = _gs->mName;
+	mGameStatesScenesPause[_name] = mGameStatesScenesPause[ogName];
+	mGameStatesScenesPause.erase(ogName);
+	_gs->mName = _name;
 }
 
 Entity GameStateManager::GetEntity(std::string const& _entityName, std::string const& _sceneName) {

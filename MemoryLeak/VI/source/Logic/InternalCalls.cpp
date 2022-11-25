@@ -36,7 +36,7 @@ Math::Vec2 InternalCalls::GetWorldMousePos() {
 #ifdef _EDITOR
 	return editorManager->GetEditorWorldMousePos();
 #else 
-	return Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-1600 / 2.f, 900 / 2.f);
+	return Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-*windowWidth / 2.f, *windowHeight / 2.f);
 #endif 
 }
 
@@ -225,4 +225,14 @@ Gets the delta time in double.
 *******************************************************************************/
 double InternalCalls::GetDeltaTime() {
 	return FPSManager::dt;
+}
+
+/*!*****************************************************************************
+\brief
+Initialise the window width and height of the application using pointer.
+Should be called in application's init
+*******************************************************************************/
+void InternalCalls::InitScriptWindow(int* _windowWidth, int* _windowHeight) {
+	windowWidth = _windowWidth;
+	windowHeight = _windowHeight;
 }

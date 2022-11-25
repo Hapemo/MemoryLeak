@@ -25,6 +25,8 @@ class Scene;
 
 class InternalCalls : public Singleton<InternalCalls> {
 private:
+	int* windowWidth = nullptr;
+	int* windowHeight = nullptr;
 
 public:
 	/*!*****************************************************************************
@@ -198,4 +200,11 @@ public:
 	Gets the delta time in double.
 	*******************************************************************************/
 	double GetDeltaTime();
+
+	/*!*****************************************************************************
+	\brief
+	Initialise the window width and height of the application using pointer.
+	Should be called in application's init
+	*******************************************************************************/
+	void InitScriptWindow(int* _windowWidth, int* _windowHeight);
 };
