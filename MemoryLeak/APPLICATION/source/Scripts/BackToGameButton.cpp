@@ -27,8 +27,7 @@ void BackToGameButton::StartScript(Entity const& gob) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void BackToGameButton::UpdateScript(Entity const& gob) {
-	if(FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE) ||
-		gob.HasComponent<Button>() && gob.GetComponent<Button>().activated)
+	if(gob.HasComponent<Button>() && gob.GetComponent<Button>().activated)
 	{
 		(FUNC->SelectScene("Settings")).Pause(true);
 		(FUNC->SelectScene("How_To_Play")).Pause(true);

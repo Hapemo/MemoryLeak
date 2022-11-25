@@ -12,14 +12,13 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		littleGirl = FUNC->GetEntity("ActivateLittleGirlScript", "Level1");
 		dialogueText = FUNC->GetEntity("DialogueText", "Level1");
 		currScene = &(FUNC->SelectScene("Level1"));
+		initialCamScale = currScene->mCamera.scale;
 		inited = true;
 	}
+	if (currScene->mCamera.scale.x < initialCamScale.x)
+		currScene->mCamera.scale.x += 500 * (float)FUNC->GetDeltaTime();
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
-	if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE))
-	{
-		FUNC->SelectScene("Level1").Pause(true);
-		FUNC->SelectScene("Pause").Pause(false);
-	}
+
 	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L)) {
 		if (dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currScene->mCamera.translation - _e.GetComponent<Transform>().translation };
@@ -59,6 +58,14 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 
 	if (currScene)
 		currScene->mCamera.translation = _e.GetComponent<Transform>().translation;
+
+	if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE))
+	{
+		(FUNC->SelectScene("Settings")).Pause(true);
+		(FUNC->SelectScene("How_To_Play")).Pause(true);
+		(FUNC->SelectScene("Pause")).Pause(false);
+		(FUNC->SelectScene("Level1")).Pause(true);
+	}
 }
 
 void PlayerMovementScript::EndScript(const Entity& _e) {
