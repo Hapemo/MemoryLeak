@@ -1,45 +1,43 @@
 /*!*****************************************************************************
-\file DeathScript.cpp
+\file TestScript.cpp
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
-\date 25-11-2022
+\date 02-11-2022
 \brief
-This file contains the function definitions of the class DeathScript.
+This file contains the function definitions of the class TestScript.
+The TestScript class is an example to test the scripting component in the
+engine.
 *******************************************************************************/
 
-#include "DeathScript.h"
-
-REGISTER_SCRIPT(ScriptComponent, DeathScript);
+#include "TestScript.h"
 
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void DeathScript::StartScript(Entity const& _e) {
-	(void)_e;
-	//LOG_INFO("Death script starts works!!!");
-	player = FUNC->GetEntity("Boat", "Level1");
+void TestScript::StartScript(Entity const& gob) {
+	(void)gob;
+	LOG_INFO("Test script starts works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void DeathScript::UpdateScript(Entity const& _e) {
-	if (FUNC->EntitiesCollided(player, _e)) {
-		FUNC->SetTexture(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
-		player.GetComponent<SheetAnimation>().frameCount = 11;
-		if (player.GetComponent<SheetAnimation>().currFrameIndex >= player.GetComponent<SheetAnimation>().frameCount) player.Deactivate();
-	}
+void TestScript::UpdateScript(Entity const& gob) {
+	(void)gob;
+	LOG_INFO("Test script updating works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void DeathScript::EndScript(Entity const& _e) {
-	(void)_e;
-	//LOG_INFO("Death script end works!!!");
+void TestScript::EndScript(Entity const& gob) {
+	(void)gob;
+	LOG_INFO("Test script end works!!!");
 }
+
+//REGISTER_SCRIPT(ScriptComponent, TestScript);

@@ -1,12 +1,12 @@
 /*!*****************************************************************************
-\file DeathScript.h
+\file AttackScript.h
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 25-11-2022
 \brief
-This file contains the function declarations of the class DeathScript.
+This file contains the function declarations of the class AttackScript.
 *******************************************************************************/
 
 #pragma once
@@ -14,13 +14,14 @@ This file contains the function declarations of the class DeathScript.
 #include "ScriptManager.h"
 #include "ScriptComponent.h"
 
-class DeathScript : public ScriptComponent {
+class AttackScript : public ScriptComponent {
 private:
-	std::string name = "DeathScript";
+	std::string name = "AttackScript";
+	Entity enemy;
 	Entity player;
 public:
-	DeathScript() = default;
-	~DeathScript() override = default;
+	AttackScript() = default;
+	~AttackScript() override = default;
 
 	/*!*****************************************************************************
 	\brief
