@@ -74,7 +74,8 @@ void HierarchyPanel::Update()
 					//if(ImGui::IsItemActive() && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
 					if (ImGui::IsItemDeactivatedAfterEdit())
 					{
-						(*mGameStates)[g].mName = gsName;
+						//(*mGameStates)[g].mName = gsName;
+						GameStateManager::GetInstance()->RenameGameState(&(*mGameStates)[g], gsName);
 					}
 					std::string saveGSbtn = "SAVE GameState";
 					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
