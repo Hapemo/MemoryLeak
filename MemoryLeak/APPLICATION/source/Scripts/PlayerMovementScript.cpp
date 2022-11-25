@@ -28,10 +28,10 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L)) {
 		if (dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currScene->mCamera.translation - _e.GetComponent<Transform>().translation };
-			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON) {
-				if (speedCheat) FUNC->ApplyImpulse(_e, dirVector.Normalized() * playerSpeed * static_cast<float>(FPSManager::dt) * speedCheatMultiplier, Math::Vec2{ 0.f, 0.f });
-				else FUNC->ApplyImpulse(_e, dirVector.Normalized() * playerSpeed * static_cast<float>(FPSManager::dt), Math::Vec2{0.f, 0.f});
-			}
+			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
+				FUNC->ApplyImpulse(_e, (dirVector.Normalized() * playerSpeed) * (float)FUNC->GetDeltaTime(), Math::Vec2{ 0.f, 0.f });
+
+			float pi = (float) Math::PI;
 			float rotation{};
 			if (dirVector.y != 0.f && dirVector.x >= 0.f)
 				rotation = atan2f(dirVector.y, dirVector.x);
@@ -39,17 +39,25 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 				rotation = (float)Math::PI / 2.f;
 			else if (dirVector.y != 0.f && dirVector.x < 0.f) {
 				rotation = atan2f(dirVector.y, dirVector.x);
-				rotation += rotation < 0.f ? (float)Math::PI * 2.f : 0.f;
-			} else rotation = 3.f * (float)Math::PI / 2.f;
+				rotation += rotation < 0.f ? pi * 2.f : 0.f;
+			} else rotation = 3.f * pi / 2.f;
 
-			if (rotation >= 0.f && rotation < (float)Math::PI / 2.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
-			else if (rotation >= (float)Math::PI / 2.f && rotation < (float)Math::PI)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\boat_NW_spritesheet.png");
-			else if (rotation >= (float)Math::PI && rotation < (float)Math::PI * 3.f / 2.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
+			if ((rotation > 15.f * pi / 8.f && rotation <= 2.f * pi) || (rotation > 0.f && rotation <= pi / 8.f))
+				spriteManager->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png");
+			else if (rotation > pi / 8.f && rotation <= 3.f * pi / 8.f)
+				spriteManager->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
+			else if (rotation > 3.f * pi / 8.f && rotation <= 5.f * pi / 8.f)
+				spriteManager->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png");
+			else if (rotation > 5.f * pi / 8.f && rotation <= 7.f * pi / 8.f)
+				spriteManager->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png");
+			else if (rotation > 7.f * pi / 8.f && rotation <= 9.f * pi / 8.f)
+				spriteManager->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png");
+			else if (rotation > 9.f * pi / 8.f && rotation <= 11.f * pi / 8.f)
+				spriteManager->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
+			else if (rotation > 11.f * pi / 8.f && rotation <= 13.f * pi / 8.f)
+				spriteManager->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png");
 			else
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
+				spriteManager->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
 
 			if (FUNC->EntitiesCollided(_e, littleGirl)) {
 				if (dialogueActivated == false) {
