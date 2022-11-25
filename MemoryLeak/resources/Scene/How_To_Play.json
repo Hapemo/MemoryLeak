@@ -148,7 +148,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
+                "X": -300.0,
                 "Y": 70.0
             }
         },
@@ -188,13 +188,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 366.0,
+                "X": 379.0,
                 "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 11.98501968383789,
-                "Y": 0.0
+                "X": -299.6254577636719,
+                "Y": -5.9925079345703125
             }
         },
         "Sprite": {
@@ -238,8 +238,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 3.0,
-                "Y": -156.0
+                "X": -294.62799072265625,
+                "Y": -169.98251342773438
             }
         },
         "Sprite": {
@@ -259,6 +259,96 @@
             "offset": {
                 "X": -253.0,
                 "Y": -18.0
+            },
+            "scale": 1.2000000476837158,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Cursor",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 417.0,
+                "Y": 117.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 300.0,
+                "Y": 70.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 2
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Escape",
+            "offset": {
+                "X": -123.0,
+                "Y": -28.0
+            },
+            "scale": 1.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Instruction 1",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 379.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 299.6505126953125,
+                "Y": -6.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 3
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Pause Menu",
+            "offset": {
+                "X": -173.0,
+                "Y": -78.0
             },
             "scale": 1.2000000476837158,
             "color": {
