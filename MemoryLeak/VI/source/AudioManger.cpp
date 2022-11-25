@@ -107,15 +107,56 @@ None.
 *******************************************************************************/
 void AudioManager::UpdateSound()
 {
-    for (const Entity& e : mEntities)
+    if (!editorManager->IsScenePaused())
     {
-        //if (!e.ShouldRun())
-           // continue;
-        if (e.GetComponent<Audio>().sound.toPlay == true)
+        for (const Entity& e : mEntities)
         {
-            if (e.GetComponent<Audio>().sound.channel == 0)
-                e.GetComponent<Audio>().sound.channel = AddChannel();
-            PlaySound(e);
+            if (!e.ShouldRun())
+                continue;
+            if (e.GetComponent<Audio>().sound.toPlay == true)
+            {
+                if (e.GetComponent<Audio>().sound.channel == 0)
+                    e.GetComponent<Audio>().sound.channel = AddChannel();
+                PlaySound(e);
+            }
+            if (e.GetComponent<Audio>().sound.channel != 0 && isPlaying(e.GetComponent<Audio>().sound.channel))
+            {
+                int channel = e.GetComponent<Audio>().sound.channel;
+                if (e.GetComponent<Audio>().isSpacial && e.HasComponent<Transform>())
+                {
+                    float vol = e.GetComponent<Audio>().sound.volume;
+                    Math::Vec2 distance = e.GetComponent<Transform>().translation - renderManager->GetGameCamera().GetPos();
+                    Math::Vec2 max = { renderManager->GetGameCamera().GetCameraWidth() / 2.f * e.GetComponent<Audio>().spacialDistance,
+                        renderManager->GetGameCamera().GetCameraHeight() / 2.f * e.GetComponent<Audio>().spacialDistance };
+
+                    float spacial = (max.Magnitude() - distance.Magnitude()) / max.Magnitude();
+                    spacial = spacial < 0.f ? 0.f : spacial;
+
+                    vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
+
+#ifdef _DEBUG
+                    std::cout << "sound vol :  " << e.GetComponent<Audio>().sound.volume << "\n";
+                    std::cout << "Spacial ratio :  " << spacial << "\n";
+                    std::cout << "finial sound :  " << vol << "\n";
+#endif
+                    mChannel[channel]->setVolume(vol);
+                }
+                else
+                    mChannel[channel]->setVolume(e.GetComponent<Audio>().sound.volume);
+                if (e.GetComponent<Audio>().sound.isRandPitch)
+                {
+                    mChannel[channel]->setPitch(((float)(std::rand() % 100)) / 100.f + 0.5f);
+                }
+                else
+                    mChannel[channel]->setPitch(e.GetComponent<Audio>().sound.pitch);
+            }
+        }
+    }
+    else
+    {
+        for (int i = 19; i < mChannel.size(); i++)
+        {
+            mChannel[i]->stop();
         }
     }
     bool isAnyPlaying = false;
@@ -165,33 +206,7 @@ void AudioManager::PlaySound(const Entity& _e)
         {
             LOG_INFO("Play Entity sound");
             system->playSound(mSfxSound[snd], nullptr, false, &mChannel[channel]);
-            if (_e.GetComponent<Audio>().isSpacial && _e.HasComponent<Transform>())
-            {
-                float vol = _e.GetComponent<Audio>().sound.volume;
-                Math::Vec2 distance = _e.GetComponent<Transform>().translation - renderManager->GetGameCamera().GetPos();
-                Math::Vec2 max = { renderManager->GetGameCamera().GetCameraWidth()/2.f* _e.GetComponent<Audio>().spacialDistance,
-                    renderManager->GetGameCamera().GetCameraHeight()/2.f* _e.GetComponent<Audio>().spacialDistance };
-
-                float spacial = (max.Magnitude()-distance.Magnitude())/  max.Magnitude();
-                spacial = spacial < 0.f ? 0.f : spacial;
-
-                vol = vol *(1.f - _e.GetComponent<Audio>().spacialRatio) + spacial* _e.GetComponent<Audio>().spacialRatio;
-                
-                #ifdef NDEBUG
-                std::cout << "sound vol :  " << _e.GetComponent<Audio>().sound.volume << "\n";
-                std::cout << "Spacial ratio :  " << spacial << "\n";
-                std::cout << "finial sound :  " << vol << "\n";
-                #endif
-                mChannel[channel]->setVolume(vol);
-            }
-            else
-                mChannel[channel]->setVolume(_e.GetComponent<Audio>().sound.volume);
-            if (_e.GetComponent<Audio>().sound.isRandPitch)
-            {
-                mChannel[channel]->setPitch(((float)(std::rand()%100))/100.f +0.5f);
-            }
-            else
-                mChannel[channel]->setPitch(_e.GetComponent<Audio>().sound.pitch);
+           
            
         }
     }

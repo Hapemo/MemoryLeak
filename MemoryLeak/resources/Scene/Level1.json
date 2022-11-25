@@ -1452,7 +1452,7 @@
         },
         "Audio": {
             "path": "MonsterChase_SFX",
-            "volume": 1.0,
+            "volume": 0.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
