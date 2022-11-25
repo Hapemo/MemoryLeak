@@ -80,19 +80,16 @@ void WorldViewPanel::Update()
 		}
 		ImGui::SetWindowFontScale(1.0f);
 		static bool checkSave = false;
-		if (!isViewportPaused && isScenePaused&& undoStack.size() != 0)
+		if (!isViewportPaused && isScenePaused && undoStack.size() != 0)
 		{
 			isScenePaused = isViewportPaused = true;
 			checkSave = true;
 		}
-		else if (!isViewportPaused)
-		{
-			SceneReset();
-		}
 		else
 		{
+			if (!isViewportPaused)
+				SceneReset();
 			isScenePaused = isViewportPaused;
-			//SceneReset();
 		}
 
 		//isScenePaused = isViewportPaused;
@@ -146,7 +143,7 @@ void WorldViewPanel::Update()
 		{
 			if (IsMouseInScreen())
 			{
-				if (selectedScene == 99)
+				if (selectedScene == 99 && isScenePaused)
 				{
 					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
 					{
@@ -167,13 +164,13 @@ void WorldViewPanel::Update()
 				}
 				else
 				{
-					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
+					/*if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L) || Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
 					{
 						ImGui::SetWindowFontScale(1.5f);
 						ImGui::SetCursorPos(ImVec2(50.f, ImGui::GetWindowHeight() / 2.f - 200.f));
 						ImGui::Button("Dont touch me when scene is playing!!", ImVec2(ImGui::GetWindowWidth() - 100.f, 300.f));
 						ImGui::SetWindowFontScale(1.0f);
-					}
+					}*/
 				}
 
 			}
