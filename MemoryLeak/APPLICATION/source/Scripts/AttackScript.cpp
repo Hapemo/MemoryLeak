@@ -46,7 +46,8 @@ void AttackScript::UpdateScript(Entity const& _e) {
 				enemy.GetComponent<SheetAnimation>().currFrameIndex = 0;
 				visible = 1;
 			}
-		} else if (visible == 1) {
+		}
+		if (visible == 1) {
 			FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\monster-attack-1-spritesheet.png");
 			enemy.GetComponent<SheetAnimation>().frameCount = 9;
 			enemy.GetComponent<SheetAnimation>().timePerFrame = 0.100f;
