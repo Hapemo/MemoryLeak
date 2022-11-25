@@ -140,7 +140,7 @@ void EditorManager::Init()
 		panels[p]->Init();
 	}
 	mGameStates = &GameStateManager::GetInstance()->mGameStates;
-	renderManager->RenderToFrameBuffer();
+	//renderManager->RenderToFrameBuffer();
 }
 
 /*!*****************************************************************************

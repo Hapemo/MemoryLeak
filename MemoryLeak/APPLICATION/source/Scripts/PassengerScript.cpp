@@ -12,6 +12,7 @@ void PassengerScript::StartScript(const Entity& _e) {
 	boat = (FUNC->GetEntity("Boat", "Level1"));
 	//passenger = (FUNC->GetEntity("Passenger_1", "Level1"));
 	destination = (FUNC->GetEntity("destination", "Level1"));
+	//destinationHouse = FUNC->GetEntity("")
 	passengerTransform = &_e.GetComponent<Transform>();
 	boatTransform = &boat.GetComponent<Transform>();
 	pickedUp = false;
@@ -23,6 +24,7 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	if (readyToPickUp) {
 		if (collision2DManager->EntitiesCollided(_e, boat)) {
 			pickedUp = true;
+			_e.GetComponent<RectCollider>().isTrigger = true;
 			readyToPickUp = false;
 		}
 		return;
@@ -30,6 +32,7 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	
 	// If picked up, follow boat
 	if (pickedUp) {
+		
 		passengerTransform->translation = boatTransform->translation;
 
 		// If reached destination, get off boat (pickedUp false) and go onto island.

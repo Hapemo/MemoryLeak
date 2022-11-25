@@ -1,0 +1,6 @@
+C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\bin\EditorDebug\Scripting.dll
+C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\bin\EditorDebug\Scripting.pdb
+C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
+C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb
