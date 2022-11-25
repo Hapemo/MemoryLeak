@@ -15,6 +15,11 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		inited = true;
 	}
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
+	if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE))
+	{
+		FUNC->SelectScene("Level1").Pause(true);
+		FUNC->SelectScene("Pause").Pause(false);
+	}
 	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L)) {
 		if (dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currScene->mCamera.translation - _e.GetComponent<Transform>().translation };

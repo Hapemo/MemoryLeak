@@ -274,8 +274,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 847.8599243164063,
-                "Y": -432.34039306640625
+                "X": 700.0,
+                "Y": -370.0
             }
         },
         "Sprite": {
@@ -292,7 +292,7 @@
     },
     {
         "General": {
-            "name": "NEW Entity 3",
+            "name": "Settings",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -304,8 +304,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 847.8596801757813,
-                "Y": -280.91375732421875
+                "X": 700.0,
+                "Y": -220.0
             }
         },
         "Sprite": {

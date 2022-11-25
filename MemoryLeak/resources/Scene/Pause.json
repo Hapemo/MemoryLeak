@@ -89,7 +89,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 77.53440856933594
+                "Y": 80.0
             }
         },
         "Sprite": {
@@ -117,6 +117,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "HowToPlayButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -134,7 +140,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -44.05507278442383
+                "Y": -40.0
             }
         },
         "Sprite": {
@@ -162,6 +168,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "ExitGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -179,7 +191,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -159.2242431640625
+                "Y": -160.0
             }
         },
         "Sprite": {
@@ -207,6 +219,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "BackToGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

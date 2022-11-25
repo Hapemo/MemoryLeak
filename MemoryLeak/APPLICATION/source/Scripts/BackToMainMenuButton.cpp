@@ -32,6 +32,7 @@ void BackToMainMenuButton::UpdateScript(Entity const& gob) {
 			(FUNC->SelectScene("Settings")).Pause(true);
 			(FUNC->SelectScene("How_To_Play")).Pause(true);
 			(FUNC->SelectScene("Menu_Main")).Pause(false);
+			(FUNC->SelectScene("Pause")).Pause(false);
 		}
 }
 

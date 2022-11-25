@@ -29,7 +29,13 @@ Function will run on every update while the entity is active.
 void PlayGameButton::UpdateScript(Entity const& gob) {
 	if(gob.HasComponent<Button>())
 		if (gob.GetComponent<Button>().activated)
+		{
 			FUNC->ChangeGameState("Level1");
+			(FUNC->SelectScene("Settings")).Pause(true);
+			(FUNC->SelectScene("How_To_Play")).Pause(true);
+			(FUNC->SelectScene("Pause")).Pause(true);
+			(FUNC->SelectScene("Level1")).Pause(false);
+		}
 }
 
 /*!*****************************************************************************

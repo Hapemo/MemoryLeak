@@ -28,8 +28,8 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void SettingsButton::UpdateScript(Entity const& gob) {
 	if (gob.HasComponent<Button>()) {
+		if (gob.GetComponent<Button>().isHover)
 		if (gob.GetComponent<Button>().activated) {
-			LOG_INFO("Settings button called!");
 			(FUNC->SelectScene("Menu_Main")).Pause(true);
 			(FUNC->SelectScene("Settings")).Pause(false);
 		}
