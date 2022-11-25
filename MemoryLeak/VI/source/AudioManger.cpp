@@ -134,11 +134,11 @@ void AudioManager::UpdateSound()
 
                     vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
 
-#ifdef _DEBUG
-                    std::cout << "sound vol :  " << e.GetComponent<Audio>().sound.volume << "\n";
-                    std::cout << "Spacial ratio :  " << spacial << "\n";
-                    std::cout << "finial sound :  " << vol << "\n";
-#endif
+//#ifdef _DEBUG
+//                    std::cout << "sound vol :  " << e.GetComponent<Audio>().sound.volume << "\n";
+//                    std::cout << "Spacial ratio :  " << spacial << "\n";
+//                    std::cout << "finial sound :  " << vol << "\n";
+//#endif
                     mChannel[channel]->setVolume(vol);
                 }
                 else
