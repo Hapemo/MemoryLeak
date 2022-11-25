@@ -1,7 +1,7 @@
 /*!*****************************************************************************
 \file WASDScript.cpp
-\author Chen Jia Wen
-\par DP email: c.jiawen\@digipen.edu
+\author Huang Wei Jhin
+\par DP email: h.weijhin@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 24-10-2022
