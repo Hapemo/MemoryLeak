@@ -26,8 +26,8 @@ bool ButtonManager::CheckHover(const Entity& _e)
 #ifdef _EDITOR
 	cursorPos = editorManager->GetEditorWorldMousePos();
 #else
-	cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) +
-		Math::Vec2(-*mWindowWidth / 2.f, *mWindowHeight / 2.f);
+	cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-*mWindowWidth / 2.f, *mWindowHeight / 2.f);
+	//if (Input::CheckKey(PRESS,M_BUTTON_L)) std::cout << "cursorPos: " << cursorPos << '\n';
 #endif
 
 	Transform xform = _e.GetComponent<Transform>();
