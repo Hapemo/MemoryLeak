@@ -13,6 +13,8 @@ private:
 	Entity dialogueText;
 	Entity littleGirl;
 	Scene* currScene;
+	Math::Vec2 initialCamScale;
+
 public:
 	PlayerMovementScript() = default;
 	~PlayerMovementScript() override = default;

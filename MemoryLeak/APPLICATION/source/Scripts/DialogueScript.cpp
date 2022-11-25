@@ -56,7 +56,6 @@ Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void DialogueScript::EndScript(Entity const& gob) {
 	(void)gob;
-	currScn->mCamera.scale = initialCamScale;
 	//LOG_INFO("Dialogue script end works!!!");
 	(FUNC->GetEntity("DialogueBox", "Level1")).Deactivate();
 }
