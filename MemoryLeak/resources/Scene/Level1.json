@@ -1435,7 +1435,7 @@
         "SheetAnimation": {
             "frameCount": 9,
             "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
+            "timePerFrame": 0.6000000238418579,
             "timeToFrameSwap": 0.013957303017377853
         },
         "RectCollider": {
@@ -1636,7 +1636,7 @@
             },
             "sprite": 0,
             "texture": "Textures\\Background\\Assets.txt",
-            "layer": 66
+            "layer": 13
         },
         "RectCollider": {
             "centerOffset": {

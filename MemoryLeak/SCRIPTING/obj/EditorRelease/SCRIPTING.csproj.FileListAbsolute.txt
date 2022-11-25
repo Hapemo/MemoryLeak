@@ -4,3 +4,9 @@ C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorReleas
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\bin\EditorRelease\Scripting.dll
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\bin\EditorRelease\Scripting.pdb
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.AssemblyReference.cache
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb

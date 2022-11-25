@@ -31,7 +31,7 @@ void DeathScript::UpdateScript(Entity const& _e) {
 	if (FUNC->EntitiesCollided(player, _e)) {
 		FUNC->SetTexture(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
 		player.GetComponent<SheetAnimation>().frameCount = 11;
-		if (player.GetComponent<SheetAnimation>().currFrameIndex >= player.GetComponent<SheetAnimation>().frameCount) player.Deactivate();
+		if (player.GetComponent<SheetAnimation>().currFrameIndex == player.GetComponent<SheetAnimation>().frameCount - 1) player.Deactivate();
 	}
 }
 
