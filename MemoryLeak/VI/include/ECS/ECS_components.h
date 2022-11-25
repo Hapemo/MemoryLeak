@@ -273,7 +273,7 @@ struct Audio {
 	Sound sound;
 	bool isSpacial = false;
 	float spacialDistance = 1.f;
-	float spacialRatio = 0.8f;
+	float spacialRatio = 1.f;
 	/*SOUND:
 	std::string path;
 	bool toPlay = false;
