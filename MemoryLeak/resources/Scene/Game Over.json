@@ -96,6 +96,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "PlayGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -150,6 +156,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "ExitGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

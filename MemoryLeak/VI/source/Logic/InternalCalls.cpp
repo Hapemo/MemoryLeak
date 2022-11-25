@@ -36,7 +36,10 @@ Math::Vec2 InternalCalls::GetWorldMousePos() {
 #ifdef _EDITOR
 	return editorManager->GetEditorWorldMousePos();
 #else 
-	return Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-*windowWidth / 2.f, *windowHeight / 2.f);
+	Math::Vec2 cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-*windowWidth / 2.f, *windowHeight / 2.f);
+	if (Input::CheckKey(PRESS, M_BUTTON_L)) std::cout << "cursorPos: " << cursorPos << '\n';
+
+	return cursorPos;
 #endif 
 }
 

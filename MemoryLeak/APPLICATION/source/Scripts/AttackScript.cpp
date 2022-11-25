@@ -38,22 +38,33 @@ void AttackScript::UpdateScript(Entity const& _e) {
 			FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png");
 			enemy.GetComponent<SheetAnimation>().frameCount = 8;
 			enemy.GetComponent<SheetAnimation>().timePerFrame = 0.170f;
-			enemy.GetComponent<Transform>().scale.x = -501.000;
-			enemy.GetComponent<Transform>().scale.y = 333.000;
-			if (enemy.GetComponent<SheetAnimation>().currFrameIndex == enemy.GetComponent<SheetAnimation>().frameCount - 1) visible = 1;
+			enemy.GetComponent<Transform>().scale.x = -523.000f;
+			enemy.GetComponent<Transform>().scale.y = 353.000f;
+			enemy.GetComponent<Transform>().translation.x = 876.748f;
+			enemy.GetComponent<Transform>().translation.y = -201.188f;
+			if (enemy.GetComponent<SheetAnimation>().currFrameIndex == enemy.GetComponent<SheetAnimation>().frameCount - 1) {
+				enemy.GetComponent<SheetAnimation>().currFrameIndex = 0;
+				visible = 1;
+			}
 		} else if (visible == 1) {
 			FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\monster-attack-1-spritesheet.png");
 			enemy.GetComponent<SheetAnimation>().frameCount = 9;
 			enemy.GetComponent<SheetAnimation>().timePerFrame = 0.100f;
-			enemy.GetComponent<Transform>().scale.x = -610.000;
-			enemy.GetComponent<Transform>().scale.y = 402.000;
+			enemy.GetComponent<Transform>().scale.x = -200.000f;
+			enemy.GetComponent<Transform>().scale.y = 86.000f;
+			enemy.GetComponent<Transform>().translation.x = 812.552f;
+			enemy.GetComponent<Transform>().translation.y = -279.941f;
 		}
 	} else {
+		visible = 0;
 		FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png");
 		enemy.GetComponent<SheetAnimation>().frameCount = 8;
 		enemy.GetComponent<SheetAnimation>().timePerFrame = 0.100f;
+		enemy.GetComponent<SheetAnimation>().currFrameIndex = 0;
 		enemy.GetComponent<Transform>().scale.x = -190.000;
 		enemy.GetComponent<Transform>().scale.y = 112.000;
+		enemy.GetComponent<Transform>().translation.x = 866.091f;
+		enemy.GetComponent<Transform>().translation.y = -223.773f;
 	}
 }
 

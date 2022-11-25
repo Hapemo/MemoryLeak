@@ -30,7 +30,8 @@ bool Application::mLoadAllResources{ true };
 void Application::startup() {
   loadConfig("../config.txt");
   GLFWStartUp();
-  Input::Init(ptr_window);
+  Input::Init(ptr_window); 
+  Helper::Init(ptr_window);
   GlewStartUp();
   ECSManager::ECS_init();
   //GameStateManager::GetInstance()->Init();
@@ -163,7 +164,8 @@ void Application::MainUpdate() {
     SystemUpdate();
 
 #endif
-
+    static bool toggle{ false };
+    if (Input::CheckKey(PRESS, SPACE)) Helper::SetFullScreen(toggle = !toggle);
 
     TRACK_PERFORMANCE("Graphics");
     //--------------------- Drawing and rendering ---------------------

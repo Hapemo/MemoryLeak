@@ -60,9 +60,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -108,9 +108,9 @@
         },
         "SheetAnimation": {
             "frameCount": 6,
-            "currFrameIndex": 5,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -167,9 +167,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 5,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -257,9 +257,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -343,9 +343,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -592,9 +592,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -640,9 +640,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -766,9 +766,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -814,9 +814,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 5,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -865,9 +865,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         },
         "RectCollider": {
             "centerOffset": {
@@ -1412,13 +1412,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -190.0,
-                "Y": 112.0
+                "X": -200.0,
+                "Y": 86.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 841.552490234375,
-                "Y": -264.941162109375
+                "X": 812.552001953125,
+                "Y": -279.9410095214844
             }
         },
         "Sprite": {
@@ -1434,9 +1434,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": -1,
             "timePerFrame": 0.25,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.03888919949531555
         },
         "RectCollider": {
             "centerOffset": {
@@ -1474,8 +1474,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 71.0,
-                "Y": 118.0
+                "X": 66.0,
+                "Y": 128.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1496,9 +1496,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         }
     },
     {
@@ -1510,8 +1510,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 78.0,
-                "Y": 119.0
+                "X": 68.0,
+                "Y": 126.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1532,9 +1532,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         }
     },
     {
@@ -1546,8 +1546,8 @@
         },
         "Transform": {
             "scale": {
-                "X": -74.0,
-                "Y": 113.0
+                "X": -65.0,
+                "Y": 119.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1568,9 +1568,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         }
     },
     {
@@ -1582,8 +1582,8 @@
         },
         "Transform": {
             "scale": {
-                "X": -78.0,
-                "Y": 114.0
+                "X": -64.0,
+                "Y": 122.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1604,9 +1604,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.015339603647589684
+            "timeToFrameSwap": 0.07601500302553177
         }
     },
     {
@@ -1618,12 +1618,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 423.5,
-                "Y": 371.5
+                "X": 718.5,
+                "Y": 416.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 639.9547119140625,
+                "X": 808.9550170898438,
                 "Y": -293.0625305175781
             }
         },
