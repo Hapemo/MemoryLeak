@@ -121,7 +121,6 @@
                 "X": 1.2999999523162842,
                 "Y": 0.5
             },
-            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -295,7 +294,6 @@
                 "X": 0.8999999761581421,
                 "Y": 0.8999999761581421
             },
-            "isTrigger": false,
             "renderFlag": true
         },
         "Script": {
@@ -329,7 +327,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\lighthouse.png",
-            "layer": 1
+            "layer": 10
         },
         "RectCollider": {
             "centerOffset": {
@@ -382,18 +380,29 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-2.png",
-            "layer": 1
+            "layer": 20
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -93.0,
+                "Y": -132.0
             },
             "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 0.4699999988079071,
+                "Y": 0.17000000178813934
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": -5.0,
+                "Y": 49.0
+            },
+            "scaleOffset": {
+                "X": 0.949999988079071,
+                "Y": 0.44999998807907104
+            },
             "renderFlag": true
         }
     },
@@ -531,7 +540,6 @@
                 "X": 0.800000011920929,
                 "Y": 0.4000000059604645
             },
-            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -702,7 +710,7 @@
             "name": "Ruins",
             "tag": 3,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -711,8 +719,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 823.7816162109375,
-                "Y": -439.6820068359375
+                "X": 860.1361083984375,
+                "Y": 48.507667541503906
             }
         },
         "Sprite": {
@@ -766,55 +774,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 2
+            "layer": 12
         },
         "SheetAnimation": {
             "frameCount": 8,
             "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.016553103923797607
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "Porthouse",
-            "tag": 3,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -500.0,
-                "Y": 500.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1514.4952392578125,
-                "Y": -15.134796142578125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\building_3(revised).png",
-            "layer": 1
         },
         "RectCollider": {
             "centerOffset": {
@@ -856,7 +822,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-2.png",
-            "layer": 1
+            "layer": 10
         },
         "RectCollider": {
             "centerOffset": {
@@ -879,7 +845,6 @@
                 "X": 0.949999988079071,
                 "Y": 0.5
             },
-            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -910,18 +875,29 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-1.png",
-            "layer": 1
+            "layer": 10
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -14.0,
+                "Y": -125.0
             },
             "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 0.4000000059604645,
+                "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 2.0,
+                "Y": 75.0
+            },
+            "scaleOffset": {
+                "X": 0.75,
+                "Y": 0.5
+            },
             "renderFlag": true
         }
     },
@@ -952,7 +928,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-1.png",
-            "layer": 1
+            "layer": 10
         },
         "RectCollider": {
             "centerOffset": {
@@ -969,13 +945,12 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 70.0
             },
             "scaleOffset": {
                 "X": 0.7799999713897705,
-                "Y": 1.0
+                "Y": 0.5
             },
-            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1265,6 +1240,59 @@
             "scaleOffset": {
                 "X": 0.800000011920929,
                 "Y": 0.4000000059604645
+            },
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Porthouse",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -500.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1514.4952392578125,
+                "Y": -15.134796142578125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building_3(revised).png",
+            "layer": 10
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": -3.0,
+                "Y": -65.0
+            },
+            "scaleOffset": {
+                "X": 0.9399999976158142,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 170.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.30000001192092896
             },
             "renderFlag": true
         }
