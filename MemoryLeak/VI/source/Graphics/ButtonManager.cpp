@@ -27,14 +27,14 @@ bool ButtonManager::CheckHover(const Entity& _e)
 	cursorPos = editorManager->GetEditorWorldMousePos();
 #else
 	cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-*mWindowWidth / 2.f, *mWindowHeight / 2.f);
-	//if (Input::CheckKey(PRESS,M_BUTTON_L)) std::cout << "cursorPos: " << cursorPos << '\n';
 #endif
 
+	float zoom = renderManager->GetGameCamera().GetZoom();
 	Transform xform = _e.GetComponent<Transform>();
-	if (!(cursorPos.x <= xform.translation.x + 0.5f * xform.scale.x)) return false;
-	if (!(cursorPos.x >= xform.translation.x - 0.5f * xform.scale.x)) return false;
-	if (!(cursorPos.y <= xform.translation.y + 0.5f * xform.scale.y)) return false;
-	if (!(cursorPos.y >= xform.translation.y - 0.5f * xform.scale.y)) return false;
+	if (!(cursorPos.x <= xform.translation.x + 0.5f * xform.scale.x /zoom)) return false;
+	if (!(cursorPos.x >= xform.translation.x - 0.5f * xform.scale.x /zoom)) return false;
+	if (!(cursorPos.y <= xform.translation.y + 0.5f * xform.scale.y /zoom)) return false;
+	if (!(cursorPos.y >= xform.translation.y - 0.5f * xform.scale.y /zoom)) return false;
 	return true;
 }
 

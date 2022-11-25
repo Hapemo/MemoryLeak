@@ -578,7 +578,7 @@ void RenderManager::RenderShapes(bool _renderDebug)
 	BatchRenderElements(GL_TRIANGLES, mVertices, mIndices);
 
 	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
-	if (_renderDebug && (mCurrRenderPass == RENDER_STATE::WORLD || (mDebug && mRenderGameToScreen)))
+	if (_renderDebug && (mCurrRenderPass == RENDER_STATE::WORLD || (!mRenderGameToScreen)))
 		RenderDebug();
 
 	//unuse VAO and normal program
