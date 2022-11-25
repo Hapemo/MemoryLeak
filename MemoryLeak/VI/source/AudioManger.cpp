@@ -97,31 +97,6 @@ void AudioManager::LoadDialogueAudio(std::string audio) //Load a sound needed in
     }
     
 }
-/*!*****************************************************************************
-\brief
-    Load all the sounds needed to FMOD
-
-\return
-None.
-*******************************************************************************/
-/*void AudioManager::LoadSound() //Load all the sound needed in the game
-{
-    mChannel.resize(20);
-    FMOD::Sound* snd;
-    system->createSound("..\\resources\\Audio\\SHOOT1.wav", FMOD_DEFAULT, nullptr, &snd);
-    mSfxSound["SHOOT1.wav"] = snd;
-    system->createSound("..\\resources\\Audio\\DAMAGE.wav", FMOD_DEFAULT, nullptr, &snd);
-    mSfxSound["DAMAGE.wav"] = snd;
-    system->createSound("..\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
-    mSfxSound["HEALTH.wav"] = snd;
-    system->createSound("..\\resources\\Audio\\SHOOT5.wav", FMOD_DEFAULT, nullptr, &snd);
-    mSfxSound["SHOOT5.wav"] = snd;
-    system->createSound("..\\resources\\Audio\\MENUBG.wav", FMOD_DEFAULT, nullptr, &snd);
-    mBgmSound["MENUBG.wav"] = snd;
-
-    //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
-//}
-//////resourceManager->GetResource<FMOD::Sound*>(guid);*/
 
 /*!*****************************************************************************
 \brief
@@ -255,6 +230,13 @@ void AudioManager::PlayAnySound(std::string _snd, int _channel)
     mChannel[_channel]->setVolume(1.5f);
     
 }
+/*!*****************************************************************************
+\brief
+    Plays a dialogue naration
+
+\return
+None.
+*******************************************************************************/
 void AudioManager::PlayDialogueSound(std::string _snd, int _channel)
 {
     /*bool f;
@@ -292,7 +274,12 @@ void AudioManager::PlayBGSound(std::string _snd, int _channel)
     system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
     mChannel[_channel]->setVolume(0.5f);
 }
-
+/*!*****************************************************************************
+\brief
+   Checks if a chanel is playing
+\return
+None.
+*******************************************************************************/
 bool AudioManager::isPlaying(int _channel)
 {
     bool f;
@@ -349,7 +336,13 @@ void AudioManager::SetSFXVolume(float vol)
         e.GetComponent<Audio>().sound.volume = vol;
     }
 }
+/*!*****************************************************************************
+\brief
+    Adds a new chanel
 
+\return
+None.
+*******************************************************************************/
 int AudioManager::AddChannel()
 {
     //FMOD::Channel* newChannel;
@@ -357,10 +350,25 @@ int AudioManager::AddChannel()
     mChannel.resize(mChannel.size() + 1);
     return ((int)mChannel.size() - 1);
 }
+
+/*!*****************************************************************************
+\brief
+    Stop a chanel sound
+
+\return
+None.
+*******************************************************************************/
 void AudioManager::StopSound(int _channel)
 {
     mChannel[_channel]->stop();
 }
+/*!*****************************************************************************
+\brief
+    stop a entity sound
+
+\return
+None.
+*******************************************************************************/
 void AudioManager::StopSound(const Entity& e)
 {
     if(e.GetComponent<Audio>().sound.channel != 0)
@@ -389,3 +397,28 @@ void AudioManager::Unload()
 
     system->release();
 }
+/*!*****************************************************************************
+\brief
+    Load all the sounds needed to FMOD
+
+\return
+None.
+*******************************************************************************/
+/*void AudioManager::LoadSound() //Load all the sound needed in the game
+{
+    mChannel.resize(20);
+    FMOD::Sound* snd;
+    system->createSound("..\\resources\\Audio\\SHOOT1.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["SHOOT1.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\DAMAGE.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["DAMAGE.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["HEALTH.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\SHOOT5.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["SHOOT5.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\MENUBG.wav", FMOD_DEFAULT, nullptr, &snd);
+    mBgmSound["MENUBG.wav"] = snd;
+
+    //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
+//}
+//////resourceManager->GetResource<FMOD::Sound*>(guid);*/

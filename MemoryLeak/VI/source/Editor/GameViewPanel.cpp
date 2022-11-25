@@ -41,30 +41,6 @@ void GameViewPanel::Update()
 		isViewportPaused = isScenePaused;
 		renderUI();
 		isScenePaused = isViewportPaused;
-		//Math::Vec2 pos = { (ImGui::GetWindowWidth() / 2.f) - 110.f, 30.f };
-		//ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
-		////if (ImGui::Button("Reset", { 100,25 }))
-		//	//serializationManager->LoadScene("SceneTmp");
-		////ImGui::SameLine(0.f,20.f);
-		//if (isScenePaused)
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-		//else
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-		//if (ImGui::Button("Play", buttonSize))
-		//{
-		//	isScenePaused = false;
-		//}
-		//ImGui::PopStyleColor();
-		//if (isScenePaused)
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
-		//else
-		//	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
-		//ImGui::SameLine(0.f, 20.f);
-		//if (ImGui::Button("Pause", buttonSize))
-		//{
-		//	isScenePaused = true;
-		//}
-		//ImGui::PopStyleColor();
 		CalculateMousePos(E_CAMERA_TYPE::GAME);
 		if (ImGui::IsWindowHovered())
 		{
@@ -75,23 +51,11 @@ void GameViewPanel::Update()
 				ScrollMoveCam();
 				if (isScenePaused)
 					MouseClickMoveCam();
-				else
-				{
-					if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
-					{
-						//ButtonClick();
-					}
-				}
 			}
 		}
 		fameBufferImage = (void*)(intptr_t)renderManager->GetGameFBO();
 		ImGui::SetCursorPos(ImVec2(viewportPos.x, viewportPos.y));
 		ImGui::Image(fameBufferImage, { viewportSize.x, viewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
-		/*if (ImGui::BeginDragDropTarget())
-		{
-			NewEntity();
-			ImGui::EndDragDropTarget();
-		}*/
 	}
 	ImGui::End();
 }
@@ -176,43 +140,43 @@ void GameViewPanel::ScrollMoveCam()
 }
 void GameViewPanel::ButtonClick()
 {
-	int layer = 0;
-	for (const Entity& ee : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
-	{
-		if (ee.GetComponent<General>().tag == TAG::ENVIRONMENT)
-		{
-			if (ee.HasComponent<Transform>() && ee.HasComponent<Sprite>()&& ee.HasComponent<Text>()) //button
-			{
-				Math::Vec2 scale = ee.GetComponent<Transform>().scale;
-				Math::Vec2 translation = ee.GetComponent<Transform>().translation;
-				Math::Vec2 distance = camMousePos - translation;
-				if (abs(distance.x) < abs(scale.x) / 2 && abs(distance.y) < abs(scale.y) / 2)
-				{
-					LOG_INFO(ee.GetComponent<General>().name + "Clicked");
-					if (ee.GetComponent<Sprite>().layer >= layer)
-					{
-						if ( ee.GetComponent<Text>().color.g == (GLubyte)0)
-							ee.GetComponent<Text>().color = Color(255,255,255,255);
-						else
-							ee.GetComponent<Text>().color = Color(0, 0, 0, 255);
-						layer = ee.GetComponent<Sprite>().layer;
-						if (ee.GetComponent<General>().subtag == SUBTAG::PLAYER)
-						{
-							//GameStateManager::GetInstance()->NextGS(E_GS::Level1);
-						}
-						if (ee.GetComponent<General>().subtag == SUBTAG::ENEMY)
-						{
-							//GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
-						}
-					}
-				}
-				else if (ee.GetComponent<Sprite>().color.r == (GLubyte)0 && ee.GetComponent<Sprite>().color.g == (GLubyte)0 && ee.GetComponent<Sprite>().color.b == (GLubyte)0)
-				{
-					ee.GetComponent<Sprite>().color = Color(255, 255, 255, 255);
-				}
-			}
-		}
-	}
+	//int layer = 0;
+	//for (const Entity& ee : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
+	//{
+	//	if (ee.GetComponent<General>().tag == TAG::ENVIRONMENT)
+	//	{
+	//		if (ee.HasComponent<Transform>() && ee.HasComponent<Sprite>()&& ee.HasComponent<Text>()) //button
+	//		{
+	//			Math::Vec2 scale = ee.GetComponent<Transform>().scale;
+	//			Math::Vec2 translation = ee.GetComponent<Transform>().translation;
+	//			Math::Vec2 distance = camMousePos - translation;
+	//			if (abs(distance.x) < abs(scale.x) / 2 && abs(distance.y) < abs(scale.y) / 2)
+	//			{
+	//				LOG_INFO(ee.GetComponent<General>().name + "Clicked");
+	//				if (ee.GetComponent<Sprite>().layer >= layer)
+	//				{
+	//					if ( ee.GetComponent<Text>().color.g == (GLubyte)0)
+	//						ee.GetComponent<Text>().color = Color(255,255,255,255);
+	//					else
+	//						ee.GetComponent<Text>().color = Color(0, 0, 0, 255);
+	//					layer = ee.GetComponent<Sprite>().layer;
+	//					if (ee.GetComponent<General>().subtag == SUBTAG::PLAYER)
+	//					{
+	//						//GameStateManager::GetInstance()->NextGS(E_GS::Level1);
+	//					}
+	//					if (ee.GetComponent<General>().subtag == SUBTAG::ENEMY)
+	//					{
+	//						//GameStateManager::GetInstance()->NextGS(E_GS::EXIT);
+	//					}
+	//				}
+	//			}
+	//			else if (ee.GetComponent<Sprite>().color.r == (GLubyte)0 && ee.GetComponent<Sprite>().color.g == (GLubyte)0 && ee.GetComponent<Sprite>().color.b == (GLubyte)0)
+	//			{
+	//				ee.GetComponent<Sprite>().color = Color(255, 255, 255, 255);
+	//			}
+	//		}
+	//	}
+	//}
 }
 //void GameViewPanel::NewEntity()
 //{

@@ -401,6 +401,16 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 
 	ifs.close();
 }
+
+
+/*!*****************************************************************************
+\brief
+	Gets each component from rapid json
+\param entity
+	rapid json object to get from
+\return
+None.
+*******************************************************************************/
 General SerializationManager::getGeneral(Value& entity)
 {
 	General general;
@@ -884,7 +894,18 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 	else
 		LOG_INFO("Saved Scene: " + path);
 }
-
+/*!*****************************************************************************
+\brief
+	Saves each component into rapid json
+\param scene
+	rapid jason document to add to
+\param entity
+	parent onject to add to
+\prama general
+	data to be added to the child objects
+\return
+None.
+*******************************************************************************/
 void SerializationManager::addGeneral(Document& scene, Value& entity, General general)
 {
 	Value tmp(kObjectType);
@@ -1079,7 +1100,16 @@ void SerializationManager::addButton(Document& scene, Value& entity, Button butt
 	entity.AddMember(StringRef("Button"), tmp, scene.GetAllocator());
 }
 
-
+/*!*****************************************************************************
+\brief
+	Load the saved gamestate data
+\param _gameState
+	gameState to load to
+\param _filename
+   path to load from
+\return
+None.
+*******************************************************************************/
 void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem::path _filename)
 {
 	//GameState gameStateData{};
@@ -1138,6 +1168,14 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	ifs.close();
 	//return gameStateData;
 }
+/*!*****************************************************************************
+\brief
+	Save the gamestate data
+\param _gameState
+	gameState to save from
+\return
+None.
+*******************************************************************************/
 void SerializationManager::SaveGameState(GameState& _gameState)
 {
 
@@ -1265,7 +1303,14 @@ void SerializationManager::SaveDialogs(std::string _filename)
 }
 
 
-
+/*!*****************************************************************************
+\brief
+	Load the saved prefab data
+\param _filename
+	filename to load from
+\return
+None.
+*******************************************************************************/
 void SerializationManager::LoadPrefab(std::string _filename)
 {
 	LOG_INFO("Loading prefab: " + _filename);
@@ -1376,6 +1421,15 @@ void SerializationManager::LoadPrefab(std::string _filename)
 
 	ifs.close();
 }
+
+/*!*****************************************************************************
+\brief
+	save the prefab data
+\param _filename
+	filename to save to
+\return
+None.
+*******************************************************************************/
 void SerializationManager::SavePrefab(std::string _filename)
 {
 	PrefabManager::PrefabPtr p = PrefabManager::GetInstance()->GetPrefab(_filename);
@@ -1387,12 +1441,6 @@ void SerializationManager::SavePrefab(std::string _filename)
 	PrettyWriter<StringBuffer> writer(buffer);
 	if (p->HasComponent<General>())
 	{
-		/*Value tmp(kObjectType);
-		tmp.AddMember(StringRef("name"), StringRef(p->GetComponent<General>().name.c_str()), allocator);
-		tmp.AddMember(StringRef("tag"), (int)p->GetComponent<General>().tag, allocator);
-		tmp.AddMember(StringRef("subtag"), (int)p->GetComponent<General>().subtag, allocator);
-		tmp.AddMember(StringRef("isActive"), p->GetComponent<General>().isActive, allocator);
-		prefab.AddMember(StringRef("General"), tmp, allocator);*/
 		addGeneral(prefab, prefab, p->GetComponent<General>());
 	}
 	if (p->HasComponent<Lifespan>())
@@ -1473,6 +1521,13 @@ void SerializationManager::SavePrefab(std::string _filename)
 		LOG_INFO("Saved Prefab: " + path);
 }
 
+
+/*!*****************************************************************************
+\brief
+	Loaded file name getters
+\return
+None.
+*******************************************************************************/
 std::string SerializationManager::GetSceneFilename() 
 { 
 	return sceneFilename; 

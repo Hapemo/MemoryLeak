@@ -140,7 +140,7 @@ void EditorManager::Init()
 		panels[p]->Init();
 	}
 	mGameStates = &GameStateManager::GetInstance()->mGameStates;
-	renderManager->RenderToFrameBuffer();
+	//renderManager->RenderToFrameBuffer();
 }
 
 /*!*****************************************************************************
@@ -708,8 +708,8 @@ Entity EditorManager::Clone(Entity c)
 		e.AddComponent(c.GetComponent<Dialogue>());
 	if (c.HasComponent<LayerCollider>())
 		e.AddComponent(c.GetComponent<LayerCollider>());
-	//if (c.HasComponent<PlayerTmp>())
-	//	e.AddComponent(c.GetComponent<PlayerTmp>());
+	if (c.HasComponent<Button>())
+		e.AddComponent(c.GetComponent<Button>());
 
 	return e;
 

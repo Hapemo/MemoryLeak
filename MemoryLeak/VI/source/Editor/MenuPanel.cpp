@@ -88,15 +88,6 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Open GameState", "Ctrl+O"))
 			{
-				/*std::pair<  std::string, std::vector<std::string>> gs{};
-				std::string GSname = filenameO_GameState;
-				allEntities.push_back(serializationManager->LoadGameState(GSname, gs.second));
-				gs.first = GSname;
-				allNames.push_back(gs);
-				gameStateManager::GetInstance()->LoadGameState(serializationManager->LoadGameState(filenameO_GameState));
-				GSList.push_back(serializationManager->LoadGameState(filenameO_GameState));
-				selectedGameState = (int)GSList.size() - 1;
-				selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;*/
 				std::string name = "../resources/GameStates/";
 				name += filenameO_GameState;
 				name += ".json";
@@ -114,8 +105,6 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Save GameState As", "Ctrl+S"))
 			{
-				//allNames[selectedGameState].first = filenameS_GameState;
-				////serializationManager->SaveGameState(GSList[selectedGameState]);
 				(*mGameStates)[selectedGameState].Save();
 			}
 
@@ -127,12 +116,8 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Open Scene", "Ctrl+O"))
 			{
-				////GSList[selectedGameState].scenes.push_back(serializationManager->LoadScene(filenameO_Scene));
-				////selectedScene = (int)GSList[selectedGameState].scenes.size() - 1;
-				//allEntities[selectedGameState].push_back(serializationManager->LoadScene(filenameO_Scene));
-				//allNames[selectedGameState].second.push_back(filenameO_Scene);
 				if (selectedGameState >= (*mGameStates).size())
-				{//FUNCTION GS SCENE
+				{
 					NewGameState();
 				}
 				std::string name = "../resources/Scene/";
@@ -149,7 +134,6 @@ void MenuPanel::Update()
 			ImGui::PopID();
 			if (ImGui::MenuItem("Save Scene As", "Ctrl+S"))
 			{
-				////serializationManager->SaveScene(GSList[selectedGameState].scenes[selectedScene]);
 				(*mGameStates)[selectedGameState].mScenes[selectedScene].Save();
 			}
 

@@ -3,8 +3,8 @@
         "SceneName": "SpacialAudio",
         "Transform": {
             "scale": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 1600.0,
+                "Y": 900.0
             },
             "rotation": 1.0,
             "translation": {

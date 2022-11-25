@@ -37,7 +37,9 @@ void Application::startup() {
 }
 
 void Application::SystemInit() {
+#ifdef _EDITOR
   editorManager->Load(ptr_window, &window_width, &window_height);
+#endif
   audioManager->Init();
   //logicSystem->Init();
   //aiManager->weatherAIinit();
@@ -45,21 +47,25 @@ void Application::SystemInit() {
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
   //playerManager->Init(window_width, window_height);
-  
+#ifdef _EDITOR
+  renderManager->RenderToFrameBuffer();
+#else
   renderManager->RenderToScreen();
+#endif
   // For render debug
   renderManager->SetVectorLengthModifier(5.f);
   renderManager->SetDebug(true);
 
   // Collision database initialization
   collision2DManager->SetupCollisionDatabase();
-
-#ifdef _DEBUG
+ 
+#ifdef _EDITOR
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif
     ResourceManager::GetInstance()->LoadAllResources();
-
+#ifdef _EDITOR
   editorManager->Init(); //need loaded resources
+#endif
 }
 
 void Application::SystemUpdate() {
@@ -143,16 +149,19 @@ void Application::MainUpdate() {
   while (GameStateManager::mGSMState != GameStateManager::E_GSMSTATE::EXIT) {
     TRACK_PERFORMANCE("MainLoop");
     FirstUpdate();
-
+#ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
     editorManager->Update();
     END_TRACK("Editor");
-
     if (!editorManager->IsScenePaused()) {
       GameStateManager::GetInstance()->Update(); // Game logic
       SystemUpdate(); // Should be called after logic
     }
+#else
+    GameStateManager::GetInstance()->Update(); // Game logic
+    SystemUpdate();
 
+#endif
 
 
     TRACK_PERFORMANCE("Graphics");
@@ -179,7 +188,9 @@ void Application::MainUpdate() {
 void Application::exit() {
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
+#ifdef _EDITOR
   editorManager->Unload();
+#endif
   audioManager->Unload();
   spriteManager->FreeTextures();
   ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();

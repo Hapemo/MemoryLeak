@@ -26,7 +26,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, C)) speedCheat = !speedCheat; // speed cheat toggle
 
 	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L)) {
-		if (dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false) {
+		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)|| _e.GetComponent<General>().name != "Boat") {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currScene->mCamera.translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
 				FUNC->ApplyImpulse(_e, (dirVector.Normalized() * playerSpeed) * (float)FUNC->GetDeltaTime(), Math::Vec2{ 0.f, 0.f });

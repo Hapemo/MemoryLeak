@@ -58,6 +58,7 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": true
         },
         "Audio": {
@@ -86,8 +87,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -454.0326232910156,
-                "Y": -218.81153869628906
+                "X": -431.3355712890625,
+                "Y": -200.935302734375
             }
         },
         "Sprite": {
@@ -113,8 +114,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 0.5028347373008728,
-                "Y": -5.981155872344971
+                "X": 5.605193857299268e-45,
+                "Y": -5.605193857299268e-45
             },
             "acceleration": {
                 "X": 0.0,
@@ -131,18 +132,11 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": true
         },
-        "Audio": {
-            "path": "HEALTH",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": true
+        "Script": {
+            "name": "WASDScript"
         }
     },
     {
@@ -159,8 +153,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -699.8955688476563,
-                "Y": 359.8121337890625
+                "X": -728.0792846679688,
+                "Y": 397.3904113769531
             }
         },
         "Sprite": {
@@ -204,6 +198,7 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": true
         },
         "Audio": {
@@ -232,8 +227,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 304.655517578125,
-                "Y": -187.6200408935547
+                "X": 468.1210632324219,
+                "Y": -259.018798828125
             }
         },
         "Sprite": {
@@ -277,6 +272,7 @@
                 "Y": 0.0
             },
             "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": true
         },
         "Audio": {

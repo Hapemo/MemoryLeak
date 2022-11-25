@@ -33,7 +33,11 @@ bool InternalCalls::CheckKey(E_STATE _state, E_KEY _key) {
 Get world mouse position.
 *******************************************************************************/
 Math::Vec2 InternalCalls::GetWorldMousePos() {
+#ifdef _EDITOR
 	return editorManager->GetEditorWorldMousePos();
+#else 
+	return Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-1600 / 2.f, 900 / 2.f);
+#endif 
 }
 
 /*!*****************************************************************************
