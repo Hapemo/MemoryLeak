@@ -86,7 +86,7 @@
             "fontFile": "CaviarDreams",
             "text": "Start Game",
             "offset": {
-                "X": -122.0,
+                "X": -144.0,
                 "Y": -21.0
             },
             "scale": 1.2000000476837158,
@@ -149,7 +149,7 @@
             "fontFile": "CaviarDreams",
             "text": "How To Play",
             "offset": {
-                "X": -128.0,
+                "X": -160.0,
                 "Y": -24.0
             },
             "scale": 1.2000000476837158,
@@ -159,6 +159,9 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "HowToPlayButton"
         },
         "Button": {
             "interactable": true
@@ -209,7 +212,7 @@
             "fontFile": "CaviarDreams",
             "text": "Quit",
             "offset": {
-                "X": -53.0,
+                "X": -55.0,
                 "Y": -19.0
             },
             "scale": 1.2000000476837158,
@@ -219,6 +222,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "ExitGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -279,12 +288,6 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\credits-icon.png",
             "layer": 1
-        },
-        "Animation": {
-            "images": [],
-            "timePerImage": 0.0,
-            "timeToImageSwap": 0.0,
-            "currentImageIndex": 0
         }
     },
     {
@@ -314,13 +317,21 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\settings-icon.png",
-            "layer": 0
+            "layer": 1
         },
         "Animation": {
-            "images": [],
+            "images": [
+                "Textures\\Menu\\settings-icon.png"
+            ],
             "timePerImage": 0.0,
             "timeToImageSwap": 0.0,
             "currentImageIndex": 0
+        },
+        "Script": {
+            "name": "SettingsButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

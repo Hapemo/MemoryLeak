@@ -19,7 +19,7 @@ Function will run on initialisation of the entity.
 *******************************************************************************/
 void PlayGameButton::StartScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Play button script starts works!!!");
+	//LOG_INFO("Play button script starts works!!!");
 }
 
 /*!*****************************************************************************
@@ -38,5 +38,5 @@ Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void PlayGameButton::EndScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Play button script end works!!!");
+	//LOG_INFO("Play button script end works!!!");
 }

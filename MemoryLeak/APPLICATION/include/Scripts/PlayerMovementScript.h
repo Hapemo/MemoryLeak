@@ -7,7 +7,12 @@
 class PlayerMovementScript : public ScriptComponent {
 private:
 	std::string name{ "PlayerMovementScript" };
-	float playerSpeed{ 10.f };
+	float playerSpeed{ 500.f };
+	bool dialogueActivated = false;
+	bool inited = false;
+	Entity dialogueText;
+	Entity littleGirl;
+	Scene* currScene;
 public:
 	PlayerMovementScript() = default;
 	~PlayerMovementScript() override = default;

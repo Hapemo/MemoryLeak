@@ -58,8 +58,7 @@ void Application::SystemInit() {
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif
     ResourceManager::GetInstance()->LoadAllResources();
-  for (size_t index = 0; index < GET_RESOURCES().size(); ++index)
-    spriteManager->InitializeTexture(GET_TEXTURE_DATA(index));
+
   editorManager->Init(); //need loaded resources
 }
 
@@ -168,11 +167,13 @@ void Application::MainUpdate() {
     END_TRACK("Audio");
 
     // If it changes, it should've came from when updaing game logic
+    if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->GameStateExit();
     GameStateManager::GetInstance()->UpdateNextGSMState();
 
     SecondUpdate(); // This should always be the last
     END_TRACK("MainLoop");
   }
+  glfwSetWindowShouldClose(ptr_window, 1);
 }
 
 void Application::exit() {

@@ -15,8 +15,7 @@ void ButtonManager::Update()
 	{
 		e.GetComponent<Button>().isHover = CheckHover(e);
 		e.GetComponent<Button>().isClick = CheckClick(e);
-		if (!e.GetComponent<Button>().activated)
-			e.GetComponent<Button>().activated = CheckActivate(e);
+		e.GetComponent<Button>().activated = CheckActivate(e);
 	}
 }
 
@@ -24,9 +23,9 @@ bool ButtonManager::CheckHover(const Entity& _e)
 {
 	Math::Vec2 cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) +
 		Math::Vec2(-*mWindowWidth / 2.f, *mWindowHeight / 2.f);
-#ifdef _DEBUG
+
 	cursorPos = editorManager->GetEditorWorldMousePos();
-#endif
+
 	Transform xform = _e.GetComponent<Transform>();
 	if (!(cursorPos.x <= xform.translation.x + 0.5f * xform.scale.x)) return false;
 	if (!(cursorPos.x >= xform.translation.x - 0.5f * xform.scale.x)) return false;

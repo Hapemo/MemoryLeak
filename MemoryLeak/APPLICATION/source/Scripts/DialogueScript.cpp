@@ -22,6 +22,11 @@ void DialogueScript::StartScript(Entity const& gob) {
 	LOG_INFO("Dialogue script starts works!!!");
 	FUNC->LoadDialogs("Dialogue LittleGirl 0");
 	FUNC->SetCurrentDialogueID(1);
+	if (gob.HasComponent<Text>()) gob.GetComponent<Text>().text = FUNC->GetDialogue(FUNC->GetCurrentDialogueID());
+	(FUNC->GetEntity("DialogueBox", "Level1")).Activate();
+	currScn = &(FUNC->SelectScene("Level1"));
+	initialCamScale = currScn->mCamera.scale;
+	targetCamScale = initialCamScale * 0.5f;
 }
 
 /*!*****************************************************************************
@@ -29,11 +34,18 @@ void DialogueScript::StartScript(Entity const& gob) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void DialogueScript::UpdateScript(Entity const& gob) {
+	if (currScn->mCamera.scale.x >= targetCamScale.x)
+		currScn->mCamera.scale.x -= 500 * (float)FUNC->GetDeltaTime();
+
 	if (FUNC->CheckKey(E_STATE::PRESS, M_BUTTON_L)) {
-		int currentId = FUNC->GetCurrentDialogueID();
 		if (gob.HasComponent<Text>()) {
-			gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
-			if (!FUNC->SetCurrentDialogueID(++currentId)) gob.GetComponent<Text>().text = "";
+			int currentId = FUNC->GetCurrentDialogueID();
+			if (!FUNC->SetCurrentDialogueID(++currentId)) {
+				gob.GetComponent<Text>().text = "";
+				gob.Deactivate();
+			} else {
+				gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
+			}
 		}
 	}
 }
@@ -44,5 +56,7 @@ Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void DialogueScript::EndScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Dialogue script end works!!!");
+	currScn->mCamera.scale = initialCamScale;
+	//LOG_INFO("Dialogue script end works!!!");
+	(FUNC->GetEntity("DialogueBox", "Level1")).Deactivate();
 }

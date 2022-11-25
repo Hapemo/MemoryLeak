@@ -121,6 +121,7 @@
                 "X": 1.2999999523162842,
                 "Y": 0.5
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -157,7 +158,7 @@
             "frameCount": 9,
             "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.021569402888417244
+            "timeToFrameSwap": 0.016553103923797607
         },
         "RectCollider": {
             "centerOffset": {
@@ -228,8 +229,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -48.77200698852539,
-                "Y": -120.27518463134766
+                "X": 106.3045654296875,
+                "Y": -83.54927825927734
             }
         },
         "Sprite": {
@@ -240,14 +241,14 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png",
             "layer": 15
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 6,
+            "currFrameIndex": 3,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.021569402888417244
+            "timeToFrameSwap": 0.016553103923797607
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -261,8 +262,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -1.5895219074066816e-22,
+                "Y": -7.730437392003512e-23
             },
             "acceleration": {
                 "X": 0.0,
@@ -294,70 +295,11 @@
                 "X": 0.8999999761581421,
                 "Y": 0.8999999761581421
             },
+            "isTrigger": false,
             "renderFlag": true
         },
         "Script": {
             "name": "PlayerMovementScript"
-        }
-    },
-    {
-        "General": {
-            "name": "Player",
-            "tag": 0,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -67.0,
-                "Y": 80.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -40.73553466796875,
-                "Y": -103.27776336669922
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 100
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MC\\mc-idle-spritesheet.png",
-            "layer": 2
-        },
-        "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 7,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.021569402888417244
-        },
-        "Physics2D": {
-            "dynamicsEnabled": true,
-            "mass": 1.0,
-            "inertia": 1.0,
-            "restitution": 0.0,
-            "friction": 0.0,
-            "damping": 0.8999999761581421,
-            "accumulatedForce": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "velocity": {
-                "X": 0.0,
-                "Y": 5.605193857299268e-45
-            },
-            "acceleration": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "angularVelocity": 0.0,
-            "angularTorque": 0.0,
-            "forceList": [],
-            "renderFlag": false
         }
     },
     {
@@ -589,6 +531,7 @@
                 "X": 0.800000011920929,
                 "Y": 0.4000000059604645
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -696,9 +639,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 1,
-                "g": 48,
-                "b": 3,
+                "r": 234,
+                "g": 224,
+                "b": 1,
                 "a": 100
             },
             "sprite": 1,
@@ -827,9 +770,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.021569402888417244
+            "timeToFrameSwap": 0.016553103923797607
         },
         "RectCollider": {
             "centerOffset": {
@@ -936,6 +879,7 @@
                 "X": 0.949999988079071,
                 "Y": 0.5
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1031,33 +975,34 @@
                 "X": 0.7799999713897705,
                 "Y": 1.0
             },
+            "isTrigger": false,
             "renderFlag": true
         }
     },
     {
         "General": {
-            "name": "TextBox",
+            "name": "DialogueBox",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
                 "X": 266.0,
-                "Y": 136.0
+                "Y": 159.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -397.0,
-                "Y": -80.0
+                "X": -386.68499755859375,
+                "Y": -20.9950008392334
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 100
             },
             "sprite": 0,
             "texture": "Textures\\Background\\Assets.txt",
@@ -1066,28 +1011,28 @@
     },
     {
         "General": {
-            "name": "DialogueBox",
+            "name": "DialogueText",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
-                "X": 217.0,
+                "X": 225.0,
                 "Y": 89.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -408.0,
-                "Y": -69.0
+                "X": -397.0,
+                "Y": 6.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
             },
             "sprite": 0,
             "texture": "Textures\\Background\\Assets.txt",
@@ -1097,14 +1042,14 @@
             "fontFile": "CaviarDreams",
             "text": "",
             "offset": {
-                "X": -107.0,
+                "X": -108.0,
                 "Y": 22.0
             },
             "scale": 0.4000000059604645,
             "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             }
         },
