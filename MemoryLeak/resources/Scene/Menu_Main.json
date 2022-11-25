@@ -210,9 +210,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Quit",
+            "text": "Quit Game",
             "offset": {
-                "X": -55.0,
+                "X": -132.0,
                 "Y": -19.0
             },
             "scale": 1.2000000476837158,

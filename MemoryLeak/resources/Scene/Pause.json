@@ -89,7 +89,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 80.0
+                "Y": 72.0
             }
         },
         "Sprite": {
@@ -105,9 +105,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Controls",
+            "text": "How To Play",
             "offset": {
-                "X": -96.0,
+                "X": -134.0,
                 "Y": -16.0
             },
             "scale": 1.0,

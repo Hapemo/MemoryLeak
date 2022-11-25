@@ -1,0 +1,137 @@
+[
+    {
+        "General": {
+            "name": "Panel",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1174.0,
+                "Y": 686.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\window-1.png",
+            "layer": 6
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Are you sure you want to quit?",
+            "offset": {
+                "X": -443.0,
+                "Y": -7.0
+            },
+            "scale": 1.2999999523162842,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Yes",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 413.5,
+                "Y": 113.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -290.3443298339844,
+                "Y": -331.57183837890625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 7
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "Yes",
+            "offset": {
+                "X": -40.0,
+                "Y": -14.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "No",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 404.5,
+                "Y": 104.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 288.1470031738281,
+                "Y": -334.3412780761719
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 7
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "No",
+            "offset": {
+                "X": -29.0,
+                "Y": -14.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    }
+]
