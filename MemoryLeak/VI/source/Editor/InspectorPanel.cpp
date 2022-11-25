@@ -114,10 +114,6 @@ void InspectorPanel::Update()
 				{
 					ButtonEditor();
 				}
-				//if (e.HasComponent<PlayerTmp>())
-				//{
-				//	PlayerTmpEditor();
-				//}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 				if (ImGui::Button("Add Component"))
@@ -944,14 +940,6 @@ void InspectorPanel::TextEditor()
 		ImGui::PopStyleColor();
 	}
 }
-//void InspectorPanel::PlayerTmpEditor()
-//{
-//	if (ImGui::CollapsingHeader("PlayerTmp"))
-//	{
-//		ImGui::InputInt("HP", &e.GetComponent<PlayerTmp>().HP);
-//		SaveUndo(e, tempComponent, COMPONENTID::PLAYERTMP);
-//	}
-//}
 void InspectorPanel::AIEditor()
 {
 

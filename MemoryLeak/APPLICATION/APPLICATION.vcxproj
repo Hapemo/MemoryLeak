@@ -49,6 +49,7 @@
     <ClInclude Include="include\Scripts\ScaleScript.h" />
     <ClInclude Include="include\Scripts\SettingsButton.h" />
     <ClInclude Include="include\Scripts\TestScript.h" />
+    <ClInclude Include="include\Scripts\WASDScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -66,6 +67,7 @@
     <ClCompile Include="source\Scripts\ScaleScript.cpp" />
     <ClCompile Include="source\Scripts\SettingsButton.cpp" />
     <ClCompile Include="source\Scripts\TestScript.cpp" />
+    <ClCompile Include="source\Scripts\WASDScript.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
