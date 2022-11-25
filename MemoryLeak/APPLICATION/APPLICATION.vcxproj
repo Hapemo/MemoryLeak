@@ -23,6 +23,7 @@
     <ClInclude Include="include\Scripts\BackToGameButton.h" />
     <ClInclude Include="include\Scripts\PassengerScript.h" />
     <ClInclude Include="include\Scripts\BackToMainMenuButton.h" />
+    <ClInclude Include="include\Scripts\DeathScript.h" />
     <ClInclude Include="include\Scripts\DialogueScript.h" />
     <ClInclude Include="include\Scripts\ExitGameButton.h" />
     <ClInclude Include="include\Scripts\HowToPlayButton.h" />
@@ -39,6 +40,7 @@
     <ClCompile Include="source\Scripts\BackToGameButton.cpp" />
     <ClCompile Include="source\Scripts\PassengerScript.cpp" />
     <ClCompile Include="source\Scripts\BackToMainMenuButton.cpp" />
+    <ClCompile Include="source\Scripts\DeathScript.cpp" />
     <ClCompile Include="source\Scripts\DialogueScript.cpp" />
     <ClCompile Include="source\Scripts\ExitGameButton.cpp" />
     <ClCompile Include="source\Scripts\HowToPlayButton.cpp" />

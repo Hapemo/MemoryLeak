@@ -14,6 +14,7 @@
     <ClInclude Include="include\Scripts\SettingsButton.h" />
     <ClInclude Include="include\Scripts\BackToGameButton.h" />
     <ClInclude Include="include\Scripts\PassengerScript.h" />
+    <ClInclude Include="include\Scripts\DeathScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -30,5 +31,6 @@
     <ClCompile Include="source\Scripts\SettingsButton.cpp" />
     <ClCompile Include="source\Scripts\BackToGameButton.cpp" />
     <ClCompile Include="source\Scripts\PassengerScript.cpp" />
+    <ClCompile Include="source\Scripts\DeathScript.cpp" />
   </ItemGroup>
 </Project>
