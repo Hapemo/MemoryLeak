@@ -1417,8 +1417,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 608.453369140625,
-                "Y": -215.86770629882813
+                "X": 841.552490234375,
+                "Y": -264.941162109375
             }
         },
         "Sprite": {
@@ -1449,6 +1449,17 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "MonsterChase_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": true,
+            "isRandPitch": false,
+            "isSpacial": true
         },
         "Script": {
             "name": "DeathScript"
@@ -1607,13 +1618,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 416.0,
-                "Y": 364.0
+                "X": 423.5,
+                "Y": 371.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 574.1824951171875,
-                "Y": -234.78787231445313
+                "X": 639.9547119140625,
+                "Y": -293.0625305175781
             }
         },
         "Sprite": {
