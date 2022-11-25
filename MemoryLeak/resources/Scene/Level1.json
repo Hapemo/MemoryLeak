@@ -253,7 +253,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
-            "layer": 1
+            "layer": 15
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -300,11 +300,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -33.0
             },
             "scaleOffset": {
                 "X": 0.8999999761581421,
-                "Y": 0.8999999761581421
+                "Y": 0.44999998807907104
             },
             "renderFlag": true
         },

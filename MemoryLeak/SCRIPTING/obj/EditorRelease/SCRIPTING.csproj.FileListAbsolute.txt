@@ -10,3 +10,9 @@ D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRI
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\bin\EditorRelease\Scripting.dll
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\bin\EditorRelease\Scripting.pdb
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
