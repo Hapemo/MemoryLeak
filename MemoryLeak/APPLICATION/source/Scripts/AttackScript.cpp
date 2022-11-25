@@ -50,10 +50,10 @@ void AttackScript::UpdateScript(Entity const& _e) {
 			FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\monster-attack-1-spritesheet.png");
 			enemy.GetComponent<SheetAnimation>().frameCount = 9;
 			enemy.GetComponent<SheetAnimation>().timePerFrame = 0.100f;
-			enemy.GetComponent<Transform>().scale.x = -591.000f;
-			enemy.GetComponent<Transform>().scale.y = 392.000f;
-			enemy.GetComponent<Transform>().translation.x = 866.091f;
-			enemy.GetComponent<Transform>().translation.y = -223.773f;
+			enemy.GetComponent<Transform>().scale.x = -200.000f;
+			enemy.GetComponent<Transform>().scale.y = 86.000f;
+			enemy.GetComponent<Transform>().translation.x = 812.552f;
+			enemy.GetComponent<Transform>().translation.y = -279.941f;
 		}
 	} else {
 		visible = 0;
@@ -63,6 +63,8 @@ void AttackScript::UpdateScript(Entity const& _e) {
 		enemy.GetComponent<SheetAnimation>().currFrameIndex = 0;
 		enemy.GetComponent<Transform>().scale.x = -190.000;
 		enemy.GetComponent<Transform>().scale.y = 112.000;
+		enemy.GetComponent<Transform>().translation.x = 866.091f;
+		enemy.GetComponent<Transform>().translation.y = -223.773f;
 	}
 }
 
