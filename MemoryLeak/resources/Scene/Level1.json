@@ -25,7 +25,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\water.jpg",
+            "texture": "Textures\\Sprites\\Env_Water.png",
             "layer": 0
         }
     },
@@ -1345,8 +1345,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -465.2184143066406,
-                "Y": -108.63920593261719
+                "X": -440.2179870605469,
+                "Y": -82.63899993896484
             }
         },
         "Sprite": {
@@ -1370,7 +1370,7 @@
                 "Y": 1.0
             },
             "isTrigger": true,
-            "renderFlag": false
+            "renderFlag": true
         }
     },
     {
@@ -1417,8 +1417,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 812.552001953125,
-                "Y": -279.9410095214844
+                "X": 814.552001953125,
+                "Y": -276.9410095214844
             }
         },
         "Sprite": {
