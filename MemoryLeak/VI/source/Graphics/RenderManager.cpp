@@ -163,6 +163,7 @@ void RenderManager::Render()
 	//recursion for editor viewport
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		Render();
+	minimap.id = 0;
 }
 
 /*!*****************************************************************************
