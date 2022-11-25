@@ -42,3 +42,22 @@ struct FPSManager
   static double mPrevTime; // Time at beginning of game loop
   static double mLimitFPS;
 };
+
+class Helper {
+public:
+  static void Init(GLFWwindow* _winPtr);
+  static void SetFullScreen(bool _fullscreen);
+  
+
+
+  static bool GetFullScreenFlag() { return fullscreenFlag; }
+  static int GetScreenWidth() { return mWindowSize[0]; }
+  static int GetScreenHeight() { return mWindowSize[1]; }
+
+private:
+  static GLFWwindow* mWindow;
+  static GLFWmonitor* mMonitor;
+  static std::array<int, 2> mWindowPos;
+  static std::array<int, 2> mWindowSize;
+  static bool fullscreenFlag;
+};
