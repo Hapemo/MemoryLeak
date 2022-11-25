@@ -19,8 +19,9 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		initialCamScale = currScene->mCamera.scale;
 		inited = true;
 	}
-	if (currScene->mCamera.scale.x < initialCamScale.x)
-		currScene->mCamera.scale.x += 500 * (float)FUNC->GetDeltaTime();
+	if (dialogueActivated ==false)
+		if (currScene->mCamera.scale.x < initialCamScale.x)
+			currScene->mCamera.scale.x += 500 * (float)FUNC->GetDeltaTime();
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
 	if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, C)) speedCheat = !speedCheat; // speed cheat toggle
 
