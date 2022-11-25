@@ -17,6 +17,7 @@
     <ClInclude Include="include\Scripts\DeathScript.h" />
     <ClInclude Include="include\Scripts\AttackScript.h" />
     <ClInclude Include="include\Scripts\WASDScript.h" />
+    <ClInclude Include="include\Scripts\MoveMinimapScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -36,5 +37,6 @@
     <ClCompile Include="source\Scripts\TestScript.cpp" />
     <ClCompile Include="source\Scripts\AttackScript.cpp" />
     <ClCompile Include="source\Scripts\WASDScript.cpp" />
+    <ClCompile Include="source\Scripts\MoveMinimapScript.cpp" />
   </ItemGroup>
 </Project>

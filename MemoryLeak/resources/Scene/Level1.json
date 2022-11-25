@@ -1741,5 +1741,38 @@
         "Script": {
             "name": "AttackScript"
         }
+    },
+    {
+        "General": {
+            "name": "Minimap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 300.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 602.151611328125,
+                "Y": -258.1967468261719
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\minimap.png",
+            "layer": 66
+        },
+        "Script": {
+            "name": "MoveMinimapScript"
+        }
     }
 ]

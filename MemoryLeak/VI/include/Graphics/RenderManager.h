@@ -230,6 +230,7 @@ private:
 	int* mWindowHeight;
 	GLShader mDefaultProgram;
 	GLShader mTextureProgram;
+	GLShader mMinimapProgram;
 	GLAllocator mAllocator;
 	std::vector<Vertex> mVertices;
 	std::vector<GLushort> mIndices;
@@ -242,6 +243,8 @@ private:
 	VIzmo mGizmo;
 	int mPrevWidth;
 	int mInitialWidth, mInitialHeight;
+	Entity minimap;
+
 
 	/*!*****************************************************************************
 	\brief

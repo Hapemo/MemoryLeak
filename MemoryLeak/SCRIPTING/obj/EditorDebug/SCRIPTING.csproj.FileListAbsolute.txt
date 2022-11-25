@@ -16,3 +16,9 @@ C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryL
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM200\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\bin\EditorDebug\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\bin\EditorDebug\Scripting.pdb
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb

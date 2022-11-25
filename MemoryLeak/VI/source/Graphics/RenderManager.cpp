@@ -25,7 +25,8 @@ RenderManager::RenderManager()
 	mWorldFBO(), mGameFBO(), mAnimatorFBO(), 
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
-	mWindowHeight(nullptr), mWindowWidth(nullptr)
+	mMinimapProgram("shaders/texture.vert", "shaders/minimap.frag"),
+	mWindowHeight(nullptr), mWindowWidth(nullptr), minimap(0)
 {
 	//set debug mode to true
 	mDebug = true;
@@ -470,9 +471,13 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		if (!e.ShouldRun()) continue;
 		if (ShouldCull(e)) continue;
 
-
 		if (e.HasComponent<Sprite>())
 		{
+			if (e.GetComponent<General>().name == "Minimap")
+			{
+				minimap = e;
+				continue;
+			}
 			Sprite sprite = e.GetComponent<Sprite>();
 			switch (sprite.sprite)
 			{
@@ -505,6 +510,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		if (!e.HasComponent<Text>()) continue;
 		CreateText(e);
 	}
+
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		CreateGizmo();
 }
@@ -562,6 +568,28 @@ void RenderManager::RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo
 	//unuse VAO and texture program
 	mAllocator.UnbindVAO();
 	mTextureProgram.Unbind();
+
+	if (minimap.id != 0)
+	{
+		std::vector<Vertex> minimapVertex;
+		std::vector<GLushort> minimapIndices;
+		CreateSquare(minimap, minimapVertex, minimapIndices);
+		TextureInfo minimapInfo{ (int)minimap.GetComponent<Sprite>().texture - 1, minimapVertex, minimapIndices };
+		int samplerUniform[TEXTURES_PER_DRAW];
+		for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
+			samplerUniform[i] = i;
+		//use texture program and bind VAO
+		mMinimapProgram.Bind();
+		mAllocator.BindVAO();
+		mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
+		std::vector<int> usedTexUnits;
+		usedTexUnits.reserve(TEXTURES_PER_DRAW);
+		BindTextureUnit(minimap.GetComponent<Sprite>().texture, minimapInfo, usedTexUnits);
+		int texcount = 1;
+		BatchRenderTextures(texcount, usedTexUnits);
+		mAllocator.UnbindVAO();
+		mMinimapProgram.Unbind();
+	}
 }
 
 /*!*****************************************************************************
@@ -1147,8 +1175,11 @@ void RenderManager::InitializeShaders()
 {
 	mDefaultProgram.CompileLinkShaders();
 	mTextureProgram.CompileLinkShaders();
+	mMinimapProgram.CompileLinkShaders();
 
-	mDefaultProgram.Validate(), mTextureProgram.Validate();
+	mDefaultProgram.Validate();
+	mTextureProgram.Validate();
+	mMinimapProgram.Validate();
 }
 
 /*!*****************************************************************************
