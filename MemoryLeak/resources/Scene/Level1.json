@@ -67,13 +67,24 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -60.0
+            },
+            "scaleOffset": {
+                "X": 0.9300000071525574,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 175.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 1.0
+                "Y": 0.20000000298023224
             },
-            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -92,7 +103,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -717.2084350585938,
-                "Y": 95.10724639892578
+                "Y": 95.10723876953125
             }
         },
         "Sprite": {
@@ -114,11 +125,11 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
+                "X": 5.0,
                 "Y": -140.0
             },
             "scaleOffset": {
-                "X": 0.949999988079071,
+                "X": 0.9100000262260437,
                 "Y": 0.4000000059604645
             },
             "isTrigger": false,
@@ -215,14 +226,25 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 10.0,
+                "Y": -95.0
             },
             "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 0.4000000059604645,
+                "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": -4.0,
+                "Y": 55.0
+            },
+            "scaleOffset": {
+                "X": 0.7699999809265137,
+                "Y": 0.5
+            },
             "renderFlag": true
         }
     },
@@ -438,8 +460,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 610.3270874023438,
-                "Y": 1092.1505126953125
+                "X": 425.3476257324219,
+                "Y": 1097.86767578125
             }
         },
         "Sprite": {
@@ -455,14 +477,25 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -95.0,
+                "Y": -133.0
             },
             "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 0.4699999988079071,
+                "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 40.0
+            },
+            "scaleOffset": {
+                "X": 0.9800000190734863,
+                "Y": 0.5
+            },
             "renderFlag": true
         }
     },
@@ -497,14 +530,25 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -14.0,
+                "Y": -126.0
             },
             "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 0.4000000059604645,
+                "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 5.0,
+                "Y": 75.0
+            },
+            "scaleOffset": {
+                "X": 0.7699999809265137,
+                "Y": 0.5
+            },
             "renderFlag": true
         }
     },
@@ -599,13 +643,24 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -50.0
+            },
+            "scaleOffset": {
+                "X": 0.9100000262260437,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 110.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 1.0
+                "Y": 0.30000001192092896
             },
-            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -646,14 +701,25 @@
         },
         "RectCollider": {
             "centerOffset": {
+                "X": 5.0,
+                "Y": -30.0
+            },
+            "scaleOffset": {
+                "X": 0.949999988079071,
+                "Y": 0.6499999761581421
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 115.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 1.0
+                "Y": 0.20000000298023224
             },
-            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -724,14 +790,25 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -95.0,
+                "Y": -132.0
             },
             "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 0.4699999988079071,
+                "Y": 0.17000000178813934
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 55.0
+            },
+            "scaleOffset": {
+                "X": 0.9800000190734863,
+                "Y": 0.4000000059604645
+            },
             "renderFlag": true
         }
     },
@@ -872,13 +949,24 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -55.0
+            },
+            "scaleOffset": {
+                "X": 0.8999999761581421,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 160.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 1.0
+                "Y": 0.20000000298023224
             },
-            "isTrigger": false,
             "renderFlag": true
         }
     },
@@ -1186,8 +1274,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -931.5230102539063,
-                "Y": 480.7037353515625
+                "X": -924.3303833007813,
+                "Y": 557.425048828125
             }
         },
         "Sprite": {
