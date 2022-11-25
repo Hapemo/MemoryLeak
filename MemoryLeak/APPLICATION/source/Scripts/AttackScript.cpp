@@ -36,10 +36,12 @@ void AttackScript::UpdateScript(Entity const& _e) {
 			enemy.GetComponent<Transform>().scale.x = -501.000;
 			enemy.GetComponent<Transform>().scale.y = 333.000;
 		}
-		else {
+		else if(visible == false) {
 			FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png");
+			enemy.GetComponent<SheetAnimation>().frameCount = 8;
 			enemy.GetComponent<Transform>().scale.x = -501.000;
 			enemy.GetComponent<Transform>().scale.y = 333.000;
+			visible = true;
 		}
 	} else {
 		FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png");

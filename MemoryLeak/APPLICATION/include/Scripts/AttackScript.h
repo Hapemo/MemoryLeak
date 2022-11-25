@@ -19,6 +19,7 @@ private:
 	std::string name = "AttackScript";
 	Entity enemy;
 	Entity player;
+	bool visible = false;
 public:
 	AttackScript() = default;
 	~AttackScript() override = default;
