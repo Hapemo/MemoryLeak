@@ -29,7 +29,7 @@ Function will run on every update while the entity is active.
 void HowToPlayButton::UpdateScript(Entity const& gob) {
 	if(gob.HasComponent<Button>())
 		if (gob.GetComponent<Button>().activated) {
-			LOG_INFO("How to Play button activated script works!!!");
+			//LOG_INFO("How to Play button activated script works!!!");
 			(FUNC->SelectScene("Menu_Main")).Pause(true);
 			(FUNC->SelectScene("Pause")).Pause(true);
 			(FUNC->SelectScene("How_To_Play")).Pause(false);
