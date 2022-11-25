@@ -7,6 +7,8 @@ void ButtonManager::Init(int* _windowWidth, int* _windowHeight)
 {
 	mWindowWidth = _windowWidth;
 	mWindowHeight = _windowHeight;
+	mInitialWidth = *_windowWidth;
+	mInitialHeight = *_windowHeight;
 }
 
 void ButtonManager::Update()
@@ -27,14 +29,16 @@ bool ButtonManager::CheckHover(const Entity& _e)
 	cursorPos = editorManager->GetEditorWorldMousePos();
 #else
 	cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-*mWindowWidth / 2.f, *mWindowHeight / 2.f);
+	cursorPos.x = cursorPos.x / (*mWindowWidth / 2) * (mInitialWidth / 2);
+	cursorPos.y = cursorPos.y / (*mWindowHeight / 2) * (mInitialHeight / 2);
 #endif
 
 	float zoom = renderManager->GetGameCamera().GetZoom();
 	Transform xform = _e.GetComponent<Transform>();
-	if (!(cursorPos.x <= xform.translation.x + 0.5f * xform.scale.x /zoom)) return false;
-	if (!(cursorPos.x >= xform.translation.x - 0.5f * xform.scale.x /zoom)) return false;
-	if (!(cursorPos.y <= xform.translation.y + 0.5f * xform.scale.y /zoom)) return false;
-	if (!(cursorPos.y >= xform.translation.y - 0.5f * xform.scale.y /zoom)) return false;
+	if (!(cursorPos.x <= xform.translation.x + 0.5f * xform.scale.x)) return false;
+	if (!(cursorPos.x >= xform.translation.x - 0.5f * xform.scale.x)) return false;
+	if (!(cursorPos.y <= xform.translation.y + 0.5f * xform.scale.y)) return false;
+	if (!(cursorPos.y >= xform.translation.y - 0.5f * xform.scale.y)) return false;
 	return true;
 }
 

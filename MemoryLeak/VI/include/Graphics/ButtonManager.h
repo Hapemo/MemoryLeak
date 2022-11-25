@@ -15,4 +15,5 @@ private:
 	bool CheckClick(const Entity& _e);
 	bool CheckActivate(const Entity& _e);
 	int* mWindowWidth, *mWindowHeight;
+	int mInitialWidth, mInitialHeight;
 };
