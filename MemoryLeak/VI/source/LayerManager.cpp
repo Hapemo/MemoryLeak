@@ -63,13 +63,13 @@ void LayerManager::Update(const double& _dt) {
 			if (item.obj[0].GetComponent<General>().tag == TAG::PLAYER) {
 				//stack.push_back(std::make_pair(item.obj[0], item.obj[0].GetComponent<Sprite>().layer));
 				LayerManager::mOriginLayerMap.try_emplace(&item.obj[0], item.obj[0].GetComponent<Sprite>().layer);
-				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 5;
+				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 1;
 
 			}
 			else if (item.obj[1].GetComponent<General>().tag == TAG::PLAYER) {
 				//stack.push_back(std::make_pair(item.obj[1], item.obj[1].GetComponent<Sprite>().layer));
 				LayerManager::mOriginLayerMap.try_emplace(&item.obj[1], item.obj[1].GetComponent<Sprite>().layer);
-				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 5;
+				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 1;
 			}
 		}
 	}
