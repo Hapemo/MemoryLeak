@@ -706,6 +706,8 @@ Entity EditorManager::Clone(Entity c)
 		e.AddComponent(c.GetComponent<Script>());
 	if (c.HasComponent<Dialogue>())
 		e.AddComponent(c.GetComponent<Dialogue>());
+	if (c.HasComponent<LayerCollider>())
+		e.AddComponent(c.GetComponent<LayerCollider>());
 	//if (c.HasComponent<PlayerTmp>())
 	//	e.AddComponent(c.GetComponent<PlayerTmp>());
 
