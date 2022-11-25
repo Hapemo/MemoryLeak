@@ -62,7 +62,7 @@
             "frameCount": 3,
             "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -110,7 +110,7 @@
             "frameCount": 6,
             "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -169,7 +169,7 @@
             "frameCount": 9,
             "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -240,8 +240,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 23.405792236328125,
-                "Y": -109.31187438964844
+                "X": 29.412080764770508,
+                "Y": -80.48432922363281
             }
         },
         "Sprite": {
@@ -257,9 +257,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 3,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -273,8 +273,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 12.854878425598145,
-                "Y": 64.48397064208984
+                "X": 17.8675479888916,
+                "Y": 74.84226989746094
             },
             "acceleration": {
                 "X": 0.0,
@@ -345,7 +345,7 @@
             "frameCount": 3,
             "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -594,7 +594,7 @@
             "frameCount": 3,
             "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -642,7 +642,7 @@
             "frameCount": 3,
             "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -677,9 +677,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 159,
-                "g": 235,
-                "b": 242,
+                "r": 151,
+                "g": 213,
+                "b": 254,
                 "a": 100
             },
             "sprite": 1,
@@ -768,7 +768,7 @@
             "frameCount": 3,
             "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -814,9 +814,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -867,7 +867,7 @@
             "frameCount": 3,
             "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -1412,8 +1412,8 @@
         },
         "Transform": {
             "scale": {
-                "X": -485.0,
-                "Y": 314.0
+                "X": -190.0,
+                "Y": 112.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1429,14 +1429,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MONSTER\\monster-attack-1-spritesheet.png",
+            "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
             "layer": 14
         },
         "SheetAnimation": {
-            "frameCount": 9,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.6000000238418579,
-            "timeToFrameSwap": 0.013957303017377853
+            "frameCount": 8,
+            "currFrameIndex": 3,
+            "timePerFrame": 0.25,
+            "timeToFrameSwap": 0.015339603647589684
         },
         "RectCollider": {
             "centerOffset": {
@@ -1496,9 +1496,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 5,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         }
     },
     {
@@ -1532,9 +1532,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 5,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         }
     },
     {
@@ -1568,9 +1568,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 6,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         }
     },
     {
@@ -1604,9 +1604,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.013957303017377853
+            "timeToFrameSwap": 0.015339603647589684
         }
     },
     {
