@@ -19,7 +19,7 @@ Function will run on initialisation of the entity.
 *******************************************************************************/
 void DialogueScript::StartScript(Entity const& gob) {
 	(void)gob;
-	LOG_INFO("Dialogue script starts works!!!");
+	//LOG_INFO("Dialogue script starts works!!!");
 	FUNC->LoadDialogs("Dialogue LittleGirl 0");
 	FUNC->SetCurrentDialogueID(1);
 	if (gob.HasComponent<Text>()) gob.GetComponent<Text>().text = FUNC->GetDialogue(FUNC->GetCurrentDialogueID());
@@ -49,6 +49,11 @@ void DialogueScript::UpdateScript(Entity const& gob) {
 				gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
 			}
 		}
+	}
+
+	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT) && FUNC->CheckKey(PRESS, N)) {
+		gob.GetComponent<Text>().text = "";
+		gob.Deactivate();
 	}
 }
 

@@ -16,17 +16,38 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		littleGirl = FUNC->GetEntity("ActivateLittleGirlScript", "Level1");
 		dialogueText = FUNC->GetEntity("DialogueText", "Level1");
 		water = FUNC->GetEntity("Water", "Level1");
+		enemy = FUNC->GetEntity("Enemy", "Level1");
+
 		currScene = &(FUNC->SelectScene("Level1"));
 		initialCamScale = currScene->mCamera.scale;
 		inited = true;
 	}
-	if (dialogueActivated ==false)
+	if (dialogueActivated == false)
 		if (currScene->mCamera.scale.x < initialCamScale.x)
 			currScene->mCamera.scale.x += 500 * (float)FUNC->GetDeltaTime();
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
-	if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, C)) speedCheat = !speedCheat; // speed cheat toggle
 
-	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L)) {
+
+	if (FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ESCAPE)) {
+		(FUNC->SelectScene("Settings")).Pause(true);
+		(FUNC->SelectScene("How_To_Play")).Pause(true);
+		(FUNC->SelectScene("Pause")).Pause(false);
+		(FUNC->SelectScene("Level1")).Pause(true);
+	}
+
+	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT)) {
+		if (FUNC->CheckKey(PRESS, L)) {
+			(FUNC->SelectScene("Level1")).Pause(true);
+			(FUNC->SelectScene("Game Over")).Pause(false);
+			_e.Deactivate();
+		}
+		if (FUNC->CheckKey(PRESS, M)) canDie = !canDie;
+		if (FUNC->CheckKey(PRESS, N)) speedCheat = !speedCheat; // speed cheat toggle
+	}
+
+	playerSpeed = playerNormalSpeed *(speedCheat ? speedCheatMultiplier : 1);
+
+	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) && (!FUNC->EntitiesCollided(enemy, _e) || !canDie)) {
 		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)/*|| _e.GetComponent<General>().name != "Boat"*/) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currScene->mCamera.translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
@@ -66,7 +87,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 					dialogueActivated = true;
 				}
 			}
-			else  dialogueActivated = false;
+			else dialogueActivated = false;
 		}
 	}
 	Transform eXform = _e.GetComponent<Transform>();
@@ -83,9 +104,8 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	else if (eXform.translation.y > waterMax.y)
 		_e.GetComponent<Transform>().translation.y = waterMax.y;
 
-	if (currScene) {
-		currScene->mCamera.translation += (_e.GetComponent<Transform>().translation - currScene->mCamera.translation) * static_cast<float>(FPSManager::dt);
-	}
+	if (currScene)
+		currScene->mCamera.translation += (_e.GetComponent<Transform>().translation - currScene->mCamera.translation) * static_cast<float>(FUNC->GetDeltaTime());
 
 	if (FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ESCAPE)) {
 		(FUNC->SelectScene("Settings")).Pause(true);
