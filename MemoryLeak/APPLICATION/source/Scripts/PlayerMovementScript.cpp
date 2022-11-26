@@ -83,8 +83,9 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	else if (eXform.translation.y > waterMax.y)
 		_e.GetComponent<Transform>().translation.y = waterMax.y;
 
-	if (currScene)
-		currScene->mCamera.translation = _e.GetComponent<Transform>().translation;
+	if (currScene) {
+		currScene->mCamera.translation += (_e.GetComponent<Transform>().translation - currScene->mCamera.translation) * static_cast<float>(FPSManager::dt);
+	}
 
 	if (FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ESCAPE)) {
 		(FUNC->SelectScene("Settings")).Pause(true);
