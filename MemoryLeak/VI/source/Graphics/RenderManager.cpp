@@ -775,6 +775,19 @@ void RenderManager::CreateCircle(const Entity& _e)
 		(_e.GetComponent<Sprite>().layer * 2 - 255.f) / 255.f);
 }
 
+/*!*****************************************************************************
+\brief
+Creates a circle based on Transform, Color and layer.
+
+\param const Transform& _t
+The transform component.
+
+\param const Color& _cltr&
+The color component.
+
+\param float
+layer to render at.
+*******************************************************************************/
 void RenderManager::CreateCircle(const Transform& _xform, const Color& _clr, float _layer)
 {
 	Math::Mat3 mtx = GetTransform(_xform.scale, _xform.rotation, _xform.translation);
@@ -1257,6 +1270,10 @@ void RenderManager::CreateText(const Entity& _e)
 		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer, _e.GetComponent<Transform>().scale.x);
 }
 
+/*!*****************************************************************************
+\brief
+Creates the gizmo.
+*******************************************************************************/
 void RenderManager::CreateGizmo()
 {
 	if (!mGizmo.GetAttached().id)
@@ -1304,17 +1321,37 @@ void RenderManager::CreateGizmo()
 	CreateGizmoCircle(xform, purple);
 }
 
+/*!*****************************************************************************
+\brief
+Used when an entity is selected in the editor. Draws a box around the selected
+entity.
+
+\param const Entity& _e
+The entity to be selected.
+*******************************************************************************/
 void RenderManager::SelectEntity(const Entity& _e)
 {
 	ClearSelectedEntities();
 	mEditorSelectedEntities.push_back(_e);
 }
+/*!*****************************************************************************
+\brief
+Select multiple entities.
 
+\param std::vector<Entity>const& _es
+The vector of entities to be selected.
+*******************************************************************************/
 void RenderManager::SelectEntities(std::vector<Entity>const& _es)
 {
 	mEditorSelectedEntities = _es;
 }
+/*!*****************************************************************************
+\brief
+Unselect an entity. (not drawing box around it)
 
+\param const Entity& _e
+The entity to be unselected.
+*******************************************************************************/
 void RenderManager::UnselectEntity(const Entity& _e)
 {
 	for (size_t i = 0; i < mEditorSelectedEntities.size(); ++i)
@@ -1324,12 +1361,25 @@ void RenderManager::UnselectEntity(const Entity& _e)
 			return;
 		}
 }
-
+/*!*****************************************************************************
+\brief
+Unselect all entities. (nothing selected)
+*******************************************************************************/
 void RenderManager::ClearSelectedEntities()
 {
 	mEditorSelectedEntities.clear();
 }
 
+/*!*****************************************************************************
+\brief
+Get the transform for where to render the gizmo.
+
+\param const Transform& _xform
+The transform for the object.
+
+\return
+The transform matrix.
+*******************************************************************************/
 Math::Mat3 RenderManager::GetGizmoTransform(const Transform& _xform)
 {
 	float cosRot = cosf(_xform.rotation);
@@ -1356,6 +1406,16 @@ Math::Mat3 RenderManager::GetGizmoTransform(const Transform& _xform)
 	return temp;
 }
 
+/*!*****************************************************************************
+\brief
+Creates a circle for the gizmo.
+
+\param const Transform& _t
+The transform for the circle.
+
+\const Color& _clr
+The color of the circle.
+*******************************************************************************/
 void RenderManager::CreateGizmoCircle(const Transform& _t, const Color& _clr)
 {
 	Math::Mat3 mtx = GetGizmoTransform(_t);
@@ -1389,6 +1449,16 @@ void RenderManager::CreateGizmoCircle(const Transform& _t, const Color& _clr)
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Creates a line for the gizmo.
+
+\param const Transform& _t
+The transform for the circle.
+
+\const Color& _clr
+The color of the circle.
+*******************************************************************************/
 void RenderManager::CreateGizmoDebugLine(const Transform& _t, const Color& _clr)
 {
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
@@ -1413,6 +1483,16 @@ void RenderManager::CreateGizmoDebugLine(const Transform& _t, const Color& _clr)
 	mDebugIndices.push_back(first + 1);
 }
 
+/*!*****************************************************************************
+\brief
+Creates a debug circle for the gizmo. (outline only)
+
+\param const Transform& _t
+The transform for the circle.
+
+\const Color& _clr
+The color of the circle.
+*******************************************************************************/
 void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _clr)
 {
 	Math::Mat3 mtx = GetGizmoTransform(_t);
@@ -1439,6 +1519,15 @@ void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _cl
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Checks if entity should be rendered.
+
+\param const Entity& e
+
+\return bool
+true if it should be culled, false otherwise.
+*******************************************************************************/
 bool RenderManager::ShouldCull(const Entity& _e)
 {
 	if (!_e.HasComponent<Sprite>()) return false;

@@ -1,7 +1,19 @@
+/*!*****************************************************************************
+\file VIzmo.cpp
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 20-09-2022
+\brief
+This file contains function definitions for a Gizmo class used in the editor.
+*******************************************************************************/
 #include "VIzmo.h"
 #include "Input.h"
 #include "Helper.h"
-
+/*!*****************************************************************************
+\brief
+Default constructor for the Gizmo.
+*******************************************************************************/
 VIzmo::VIzmo() : mAttached(0), mSelected(GIZMO_BUTTON::NONE)
 {
 	mButtonPos[GIZMO_BUTTON::SCALE_X] = Math::Vec2{ 0, 0 };
@@ -9,22 +21,47 @@ VIzmo::VIzmo() : mAttached(0), mSelected(GIZMO_BUTTON::NONE)
 	mButtonPos[GIZMO_BUTTON::ROTATE] = Math::Vec2{ 0, 0 };
 	mButtonPos[GIZMO_BUTTON::TRANSLATE] = Math::Vec2{ 0, 0 };
 }
+/*!*****************************************************************************
+\brief
+Attach the gizmo to an entity.
 
+\param const Entity& _e
+Entity to attach the gizmo to.
+*******************************************************************************/
 void VIzmo::Attach(const Entity& _e)
 {
 	mAttached = _e;
 }
+/*!*****************************************************************************
+\brief
+Returns the entity the gizmo is currently attached to.
 
+\return
+The entity the gizmo is attached to.
+*******************************************************************************/
 Entity VIzmo::GetAttached()
 {
 	return mAttached;
 }
-
+/*!*****************************************************************************
+\brief
+Detaches the Gizmo from the entity.
+*******************************************************************************/
 void VIzmo::Detach()
 {
 	mAttached = Entity(0);
 }
+/*!*****************************************************************************
+\brief
+Update loop for gizmo. checks if buttons are pressed and modify the attached
+entity accordingly.
 
+\param const Math::Vec2& _mouseCoordinates
+Mouse coordinates to check for, typically editor mouse coordinates.
+
+\param Camera& _cam
+Camera for view transforms.
+*******************************************************************************/
 void VIzmo::Update(const Math::Vec2& _mouseCoordinates, Camera& _cam)
 {
 	static float scaleX{};

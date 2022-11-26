@@ -86,14 +86,38 @@ public:
 	*******************************************************************************/
 	void DrawParagraphs();
 
+	/*!*****************************************************************************
+	\brief
+	Checks if the manager is initialized properly.
+	
+	\return bool
+	true if initialized. false otherwise.
+	*******************************************************************************/
 	bool IsInitialized() { return mInitialized; }
 
+	/*!*****************************************************************************
+	\brief
+	Passes the window dimension pointer to the camera object.
+
+	\param int* _windowWidth
+	Pointer to the window width
+
+	\param int* _windowHeight
+	Pointer to the window height
+	*******************************************************************************/
 	void SetWindowPtr(int* _windowWidth, int* _windowHeight) 
 	{ 
 		mWindowWidth = *_windowWidth; 
 		mWindowHeight = *_windowHeight;
 	}
 
+	/*!*****************************************************************************
+	\brief
+	Sets the camera's zoom.
+
+	\param float _camZoom
+	The zoom of the camera.
+	*******************************************************************************/
 	void SetCamZoom(float _camZoom) { mCamZoom = _camZoom; }
 private:
 	/*!*****************************************************************************

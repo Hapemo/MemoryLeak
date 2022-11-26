@@ -1,12 +1,11 @@
 /*!*****************************************************************************
-\file texture.frag
+\file minimap.frag
 \author Kew Yu Jun
 \par DP email: k.yujun\@digipen.edu
 \par Group: Memory Leak Studios
-\date 20-09-2022
+\date 26-11-2022
 \brief
-This file contains the fragment shader for rendering textures. 2 Shader programs
-are being used to reduce the frequency of "if" statements in the fragment shader.
+This file contains the fragment shader for rendering "circular viewport".
 *******************************************************************************/
 #version 450 core
 

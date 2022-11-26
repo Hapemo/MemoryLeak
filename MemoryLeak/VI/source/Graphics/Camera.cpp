@@ -78,20 +78,6 @@ Camera& Camera::operator*=(float zoom)
 		mZoom = 0.1f;
 	return *this;
 }
-//------------------------------------------------------------------------------
-// Getter and Setters
-//------------------------------------------------------------------------------
-void Camera::SetPos(const Math::Vec2& _mPos)
-{
-	mPos = _mPos;
-}
-
-void Camera::SetZoom(float _mZoom)
-{
-	mZoom = _mZoom;
-	if (mZoom < 0.1f)
-		mZoom = 0.1f;
-}
 /*!*****************************************************************************
 \brief
 Gets the world to camera (view) transform for ImGuizmo.
@@ -137,23 +123,34 @@ void Camera::Reset()
 	mZoom = mInitialZoom;
 }
 
+//------------------------------------------------------------------------------
+// Getter and Setters
+//------------------------------------------------------------------------------
+void Camera::SetPos(const Math::Vec2& _mPos)
+{
+	mPos = _mPos;
+}
+
+void Camera::SetZoom(float _mZoom)
+{
+	mZoom = _mZoom;
+	if (mZoom < 0.1f)
+		mZoom = 0.1f;
+}
 float Camera::GetCameraWidth()
 {
 	return mWindowWidth * GetZoom();
 }
-
 void Camera::SetCameraWidth(int _width)
 {
 	if (!mWindowWidth)
 		return;
 	SetZoom(_width / (float)mWindowWidth);
 }
-
 float Camera::GetCameraHeight()
 {
 	return mWindowHeight * GetZoom();
 }
-
 void Camera::SetCameraHeight(int _height)
 {
 	if (!mWindowHeight)

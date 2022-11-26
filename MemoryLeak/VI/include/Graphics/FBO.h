@@ -107,6 +107,10 @@ public:
 	*******************************************************************************/
 	int GetFBOHeight() const { return mSpecs.mHeight; }
 
+	/*!*****************************************************************************
+	\brief
+	Deletes the FrameBuffer object. Used when resizing the viewport.
+	*******************************************************************************/
 	void DeleteFBO();
 
 private:

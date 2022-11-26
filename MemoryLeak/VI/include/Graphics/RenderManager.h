@@ -212,11 +212,47 @@ public:
 	*******************************************************************************/
 	void ResetCameras();
 
+	/*!*****************************************************************************
+	\brief
+	Returns the Gizmo object.
+
+	\return
+	A reference to the Gizmo object.
+	*******************************************************************************/
 	VIzmo& GetGizmo() { return mGizmo; }
 
+	/*!*****************************************************************************
+	\brief
+	Used when an entity is selected in the editor. Draws a box around the selected 
+	entity.
+
+	\param const Entity& _e
+	The entity to be selected.
+	*******************************************************************************/
 	void SelectEntity(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Select multiple entities.
+
+	\param std::vector<Entity>const& _es
+	The vector of entities to be selected.
+	*******************************************************************************/
 	void SelectEntities(std::vector<Entity>const& _es);
+
+	/*!*****************************************************************************
+	\brief
+	Unselect an entity. (not drawing box around it)
+
+	\param const Entity& _e
+	The entity to be unselected.
+	*******************************************************************************/
 	void UnselectEntity(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Unselect all entities. (nothing selected)
+	*******************************************************************************/
 	void ClearSelectedEntities();
 
 private:
@@ -352,6 +388,19 @@ private:
 	*******************************************************************************/
 	void CreateCircle(const Entity& _e);
 
+	/*!*****************************************************************************
+	\brief
+	Creates a circle based on Transform, Color and layer.
+
+	\param const Transform& _t
+	The transform component.
+
+	\param const Color& _cltr&
+	The color component.
+
+	\param float
+	layer to render at.
+	*******************************************************************************/
 	void CreateCircle(const Transform& _xform, const Color& _clr, float layer);
 
 	/*!*****************************************************************************
@@ -469,9 +518,52 @@ private:
 	*******************************************************************************/
 	void CreateDebugArrow(const Transform& _t, const Color& _clr);
 
+	/*!*****************************************************************************
+	\brief
+	Get the transform for where to render the gizmo.
+
+	\param const Transform& _xform
+	The transform for the object.
+
+	\return
+	The transform matrix.
+	*******************************************************************************/
 	Math::Mat3 GetGizmoTransform(const Transform& _xform);
+
+	/*!*****************************************************************************
+	\brief
+	Creates a circle for the gizmo.
+
+	\param const Transform& _t
+	The transform for the circle.
+
+	\const Color& _clr
+	The color of the circle.
+	*******************************************************************************/
 	void CreateGizmoCircle(const Transform& _t, const Color& _clr);
+
+	/*!*****************************************************************************
+	\brief
+	Creates a line for the gizmo.
+
+	\param const Transform& _t
+	The transform for the circle.
+
+	\const Color& _clr
+	The color of the circle.
+	*******************************************************************************/
 	void CreateGizmoDebugLine(const Transform& _t, const Color& _clr);
+
+	/*!*****************************************************************************
+	\brief
+	Creates a debug circle for the gizmo. (outline only)
+
+	\param const Transform& _t
+	The transform for the circle.
+
+	\const Color& _clr
+	The color of the circle.
+	*******************************************************************************/
 	void CreateGizmoDebugCircle(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
@@ -565,8 +657,21 @@ private:
 	*******************************************************************************/
 	void ConcatIndices(std::vector<GLushort>& _first, std::vector<GLushort>& _second);
 
+	/*!*****************************************************************************
+	\brief
+	Creates the gizmo.
+	*******************************************************************************/
 	void CreateGizmo();
 
+	/*!*****************************************************************************
+	\brief
+	Checks if entity should be rendered.
+
+	\param const Entity& e
+
+	\return bool
+	true if it should be culled, false otherwise.
+	*******************************************************************************/
 	bool ShouldCull(const Entity& e);
 };
 

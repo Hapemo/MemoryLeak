@@ -71,7 +71,10 @@ FBO::~FBO()
 {
 	glDeleteFramebuffers(1, &mfboid);
 }
-
+/*!*****************************************************************************
+\brief
+Deletes the FrameBuffer object. Used when resizing the viewport.
+*******************************************************************************/
 void FBO::DeleteFBO()
 {
 	glDeleteFramebuffers(1, &mfboid);
