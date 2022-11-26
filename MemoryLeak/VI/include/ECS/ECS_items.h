@@ -10,6 +10,9 @@ Entity, IComponentArray and ComponentArray.
 
 For Milestone 2:
 Added prefab and it's member functions
+
+For Milestone 3:
+Added additional features for entity such as activate and deactivate
 *******************************************************************************/
 #pragma once
 #include "pch.h"
@@ -31,6 +34,7 @@ const ComponentType MAX_COMPONENTS{ 32 };
 // An ID indicating which component an entity posesses
 using Signature = std::bitset<MAX_COMPONENTS>;
 
+enum SAFE : char { safe };
 
 /*!*****************************************************************************
 Entity is a part of the ECS, representing each game object
@@ -86,6 +90,9 @@ struct Entity {
 	template<typename T>
 	T& GetComponent() const;
 
+	template<typename T>
+	T& GetComponent(SAFE) const;
+
 	/*!*****************************************************************************
 	Remove a component from entity
 	*******************************************************************************/
@@ -101,16 +108,41 @@ struct Entity {
 	template<typename T>
 	bool HasComponent() const;
 
-	// Checks if the entity is active and not paused
+	/*!*****************************************************************************
+	Checks if the entity is active and not paused
+
+	\return bool
+	- True if it is not paused and is active, otherwise false
+	*******************************************************************************/
 	bool ShouldRun() const;
 
-	// Set entity's isactive to true
+	/*!*****************************************************************************
+	Contains operations that should be done when entity is activated.
+	Set entity's isActive to true and run it's starting script
+	*******************************************************************************/
 	void Activate() const;
+	
+	/*!*****************************************************************************
+	Contains operations that should be done when entity is deactivated.
+	Set entity's isActive to false and run it's ending script
+	*******************************************************************************/
 	void Deactivate() const;
 
+	/*!*****************************************************************************
+	Get an entity's component as read-only
+
+	\return T const&
+	- Entity's component
+	*******************************************************************************/
 	template<typename T>
 	T const& ReadComponent() const;
 
+	/*!*****************************************************************************
+	Add child to entity, for parent-child hierarchy
+
+	\param _e
+	- Entity to add as child
+	*******************************************************************************/
 	void AddChild(Entity _e) const;
 };
 
@@ -180,6 +212,17 @@ public:
 	- Reference of component to entity
 	*******************************************************************************/
 	T& GetData(EntityID);
+
+	/*!*****************************************************************************
+	Read the component information of an entity
+
+	\param EntityID
+	- ID of entity
+
+	\return T&
+	- Reference of component to entity
+	*******************************************************************************/
+	T const& ReadData(EntityID);
 
 	/*!*****************************************************************************
 	Checks if the Component array has data of an entity
@@ -350,6 +393,11 @@ void ComponentArray<T>::RemoveData(EntityID _entity) {
 
 template<typename T>
 T& ComponentArray<T>::GetData(EntityID _entity) {
+	return mData[static_cast<short>(_entity)];
+}
+
+template<typename T>
+T const& ComponentArray<T>::ReadData(EntityID _entity) {
 	return mData[static_cast<short>(_entity)];
 }
 

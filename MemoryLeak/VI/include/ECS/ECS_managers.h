@@ -147,6 +147,17 @@ public:
 	T& GetComponent(EntityID _entity) {
 		return GetComponentArray<T>()->GetData(_entity);
 	}
+
+	/*!*****************************************************************************
+	Read component data of an entity
+
+	\param EntityID
+	- ID of an entity
+	*******************************************************************************/
+	template<typename T>
+	T const& ReadComponent(EntityID _entity) {
+		return GetComponentArray<T>()->ReadData(_entity);
+	}
 	
 	/*!*****************************************************************************
 	Destroy all components of an entity in each respective component array
@@ -325,6 +336,18 @@ public:
 	T& GetComponent(EntityID _entity) { return mComponentArrayManager->GetComponent<T>(_entity); }
 
 	/*!*****************************************************************************
+	Get read-only component data of an entity
+
+	\param EntityID
+	- ID of an Entity
+
+	\return T&
+	- Component data of an entity
+	*******************************************************************************/
+	template<typename T>
+	T const& ReadComponent(EntityID _entity) { return mComponentArrayManager->ReadComponent<T>(_entity); }
+
+	/*!*****************************************************************************
 	Get the component type of a component
 
 	\return ComponentType
@@ -418,7 +441,19 @@ template<typename T>
 T& Entity::GetComponent() const { return Coordinator::GetInstance()->GetComponent<T>(id); }
 
 template<typename T>
-T const& Entity::ReadComponent() const { return Coordinator::GetInstance()->GetComponent<T>(id); }
+T& Entity::GetComponent(SAFE safe) const {
+	static T errorComponent{};
+	(void)safe;
+	if (Coordinator::GetInstance()->HasComponent<T>(id))
+		return Coordinator::GetInstance()->GetComponent<T>(id);
+	else {
+		LOG_ERROR("Unable to find component \"" + typeid(T).name() + "\" for entity: " + std::to_string(id));
+		return errorComponent;
+	}
+}
+
+template<typename T>
+T const& Entity::ReadComponent() const { return Coordinator::GetInstance()->ReadComponent<T>(id); }
 
 template<typename T>
 void Entity::RemoveComponent() const { return Coordinator::GetInstance()->RemoveComponent<T>(id); }

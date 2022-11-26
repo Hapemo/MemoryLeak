@@ -7,6 +7,9 @@
 \brief
 Manages the gamestate flow, control which game state is running or will be
 running.
+
+For Milestone 3:
+Added additional features for editor and game mode to manage the game state flow
 *******************************************************************************/
 #include "GameStateManager.h"
 #include "GameState.h"
@@ -95,7 +98,7 @@ void GameStateManager::ChangeGameState(std::string const& _name) {
 }
 
 void GameStateManager::GameStateExit() {
-	GameStateManager::GetInstance()->ChangeGameState(GameStateManager::GetInstance()->EXIT);
+	ChangeGameState(EXIT);
 }
 
 void GameStateManager::AddGameState(std::filesystem::path const& _path) {

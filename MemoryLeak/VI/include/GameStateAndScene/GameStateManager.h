@@ -7,6 +7,9 @@
 \brief
 Manages the gamestate flow, control which game state is running or will be 
 running.
+
+For Milestone 3:
+Added additional features for editor and game mode to manage the game state flow
 *******************************************************************************/
 #pragma once
 #include "pch.h"
@@ -19,27 +22,23 @@ public:
 	~GameStateManager() {};
 
 	/*!*****************************************************************************
-	\brief
 	Initialise all the game states that will be ran and the starting game state
 	*******************************************************************************/
 	void Init();
 
 	/*!*****************************************************************************
-	\brief
 	Main game update loop. Runs application's updates and current game state's 
 	update. 
 	*******************************************************************************/
 	void Update();
 
 	/*!*****************************************************************************
-	\brief
 	Unload all game states befor exiting the game. Should be called in application
 	exit
 	*******************************************************************************/
 	void Unload();
 
 	/*!*****************************************************************************
-	\brief
 	Controls the next gamestate to run with input keys. Should be called after
 	current game state.
 	*******************************************************************************/
@@ -58,27 +57,99 @@ public:
 	Scene mErrorScene;
 	const Entity mErrorEntity;
 	static E_GSMSTATE mGSMState;
-	GameState* mCurrentGameState; // During game, this shouldn't change at all. Editor mode can change this, depending on which game state is being changed.
+	GameState* mCurrentGameState; 
 
-	// This function is called by user, to change the next game state
-	// User can use game state manager's defined string type EXIT and RESTART to change state.
-	void ChangeGameState(std::string const& _path);
+	/*!*****************************************************************************
+	Change the current game state to another indicated game state. Use defined
+	constant EXIT or RESTART to exit or restart the game.
+
+	\param std::string const&
+	- Name of the next game state
+	*******************************************************************************/
+	void ChangeGameState(std::string const& _name);
+
+	/*!*****************************************************************************
+	Change the current game state to another indicated game state. Use defined
+	constant EXIT or RESTART to exit or restart the game.
+	This is being called constantly every loop to check if there is changes
+
+	\param std::string const&
+	- Name of the next game state
+	*******************************************************************************/
 	void UpdateNextGSMState();
+
+	/*!*****************************************************************************
+	Change the current game state to another indicated game state. Use defined
+	constant EXIT or RESTART to exit or restart the game.
+
+	\param std::string const&
+	- Name of the next game state
+	*******************************************************************************/
 	Scene& SelectScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	Exit the game, basically calling ChangeGameState(EXIT);
+	*******************************************************************************/
 	void GameStateExit();
 
-	// Get an entity from current gamestate using it's name, it'll get the first one it found.
-	// if scene is specified, it will only select from that scene
+	/*!*****************************************************************************
+	Get an entity from current gamestate using it's name, it'll get the first one it 
+	found. if scene is specified, it will only select from that scene
+
+	\param std::string const&
+	- Name of the entity to get
+
+	\param std::string const&
+	- Scene name to search from
+
+	\return Entity
+	- Entity found. Returns error entity with id 0 if not found.
+	*******************************************************************************/
 	Entity GetEntity(std::string const& _entityName, std::string const& _sceneName = "");
 
+
 	// Editor only functionalities
+	/*!*****************************************************************************
+	Add new game state to game state manager's control
+
+	\param std::string const&
+	- Path of new game state
+	*******************************************************************************/
 	void AddGameState(std::filesystem::path const& _path = std::filesystem::path());
+
+	/*!*****************************************************************************
+	Remove the game state specified
+
+	\param GameState* 
+	- Pointer to the game state to remove from GameStateManager
+	*******************************************************************************/
 	void RemoveGameState(GameState* = nullptr);
+
+	/*!*****************************************************************************
+	Set the mCurrentGameState to specified game state
+
+	\param std::string const&
+	- Name of game state to set to
+	*******************************************************************************/
 	void SetGameState(std::string const& _name);
+	
+	/*!*****************************************************************************
+	Rename a game state
+
+	\param GameState*
+	- Pointer to the game state
+	
+	\param std::string const&
+	- Game state's new name
+	*******************************************************************************/
 	void RenameGameState(GameState* _gs, std::string const& _name);
 
-	//void setgamestate();
+	/*!*****************************************************************************
+	Set the next game state path
 
+	\param std::string const&
+	- Next game state's path
+	*******************************************************************************/
 	void SetNextGSPath(std::string const& _path) { mNextGSPath = _path; }
 
 	std::vector<GameState> mGameStates{}; // Only 1 in game, multi gamestates allowed during editor mode
@@ -86,7 +157,5 @@ public:
 	std::string mNextGSPath;
 
 private:
-
-	// Update the next game state at the end of game loop (Must be called the last)
 };
 

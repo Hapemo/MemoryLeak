@@ -1,3 +1,20 @@
+/*!*****************************************************************************
+\file PrefabManager.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 24-09-2022
+
+This file contain Prefab Manager, which manages the creation, loading and saving
+of prefabs
+
+Prefabs are resources. They're json files containing information of components.
+Load in prefabs into a vector container.
+Prefab manager can create prefabs and store it as a new prefab json file.
+Prefab is an "editor-only" functionality. Start of editor application should
+load in all prefabs usable by designers.
+Prefab's memory is dynamic, thus unable to use resource manager to manage
+*******************************************************************************/
 #include "PrefabManager.h"
 #include "ECS_items.h"
 
@@ -17,7 +34,6 @@ void PrefabManager::LoadPrefab(std::filesystem::path const& _path) {
 	//DeserialisePrefab(prefab, inFile); // Load json file into prefab and store in prefab manager.
 }
 
-// Create a new empty prefab and append it to PrefabManager's container
 typename PrefabManager::PrefabPtr PrefabManager::CreatePrefab() {
 	PrefabPtr prefab = std::make_shared<Prefab>();
 	mPrefabs.push_back(prefab);

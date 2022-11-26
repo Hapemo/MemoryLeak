@@ -336,9 +336,21 @@ public:
 	//------------------------------------
 	// Helper function 
 	//------------------------------------
-	void CheckWrongAudioFile(std::filesystem::path const&);
-	void CheckWrongTextureFile(std::filesystem::path const&);
+	/*!*****************************************************************************
+	Checks if the audio file is of wrong format. Logs warning if it is wrong.
 
+	\param std::filesystem::path const&
+	- File path of the audio file
+	*******************************************************************************/
+	void CheckWrongAudioFile(std::filesystem::path const&);
+
+	/*!*****************************************************************************
+	Checks if the texture file is of wrong format. Logs warning if it is wrong.
+
+	\param std::filesystem::path const&
+	- File path of the texture file
+	*******************************************************************************/
+	void CheckWrongTextureFile(std::filesystem::path const&);
 };
 
 //------------------------------------

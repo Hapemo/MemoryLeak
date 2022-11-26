@@ -18,7 +18,6 @@ std::shared_ptr<RenderManager> renderManager{ nullptr };
 std::shared_ptr<Physics2DManager> physics2DManager{ nullptr };
 std::shared_ptr<Collision2DManager> collision2DManager{ nullptr };
 std::shared_ptr<LayerManager> layerManager{ nullptr };
-//std::shared_ptr<PlayerController> playerManager{ nullptr };
 std::shared_ptr<EditorManager> editorManager{ nullptr };
 std::shared_ptr<Animator> animator{ nullptr };
 std::shared_ptr<SheetAnimator> sheetAnimator{ nullptr };
@@ -92,14 +91,6 @@ void ECSManager::RegisterLayerManager() {
 	layerManager = ECS::RegisterSystem<LayerManager>();
 	ECS::SetSystemSignature<LayerManager>(signature);
 }
-
-//void ECSManager::RegisterPlayerController() {
-//	Signature signature{};
-//	signature.set(ECS::GetComponentType<General>());
-//
-//	playerManager = ECS::RegisterSystem<PlayerController>();
-//	ECS::SetSystemSignature<PlayerController>(signature);
-//}
 
 void ECSManager::RegisterEditorManager() {
 	Signature signature;
