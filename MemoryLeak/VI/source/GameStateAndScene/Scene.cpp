@@ -21,10 +21,12 @@ Scene::Scene() : mEntities(), mIsPause(false), mName(), mCamera(), mLayer(), mOr
 }
 
 Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), mIsPause(false), mName(), mCamera(), mLayer(), mOrder() {
+	(void)_guid;
 	LOG_CUSTOM("SCENE", "New Scene created with no name");
 }
 
 Scene::Scene(std::string const& _name) : mEntities(), mIsPause(false), mName(_name), mCamera(), mLayer(), mOrder() {
+	(void)_name;
 	LOG_CUSTOM("SCENE", "Scene created with name: " + mName);
 }
 
@@ -68,8 +70,7 @@ void Scene::Pause(bool _pause) {
 	}
 	else
 	{
-		(void)mCamera;
-		renderManager->GetGameCamera().SetCameraWidth(mCamera.scale.x);
+		renderManager->GetGameCamera().SetCameraWidth((int)mCamera.scale.x);
 		renderManager->GetGameCamera().SetPos(mCamera.translation);
 	}
 }

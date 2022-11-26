@@ -1,6 +1,7 @@
 #include "ECSManager.h"
 
 bool LayerManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
+	(void)_dt;
 	// Get reference to the entities
 	Entity& obj1{ _contact.obj[0] },
 		& obj2{ _contact.obj[1] };
