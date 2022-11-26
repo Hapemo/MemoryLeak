@@ -12,7 +12,7 @@ void PassengerScript::StartScript(const Entity& _e) {
 	boat = (FUNC->GetEntity("Boat", "Level1"));
 	//passenger = (FUNC->GetEntity("Passenger_1", "Level1"));
 	destination = (FUNC->GetEntity("destination", "Level1"));
-	//destinationHouse = FUNC->GetEntity("")
+	destinationHouse = FUNC->GetEntity("Single Story House", "Level1");
 	passengerTransform = &_e.GetComponent<Transform>();
 	boatTransform = &boat.GetComponent<Transform>();
 	pickedUp = false;
