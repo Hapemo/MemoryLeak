@@ -49,6 +49,7 @@ void ExitConfirmationButton::UpdateScript(Entity const& gob) {
 		(FUNC->SelectScene("Pause")).Pause(true);
 		(FUNC->SelectScene("Level1")).Pause(true);
 		(FUNC->SelectScene("Quit Confirmation")).Pause(false);
+		audioManager->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 }
 

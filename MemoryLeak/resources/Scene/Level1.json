@@ -145,6 +145,17 @@
                 "Y": 0.5
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -263,7 +274,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 29.412078857421875,
-                "Y": -80.48432922363281
+                "Y": -82.48432922363281
             }
         },
         "Sprite": {
@@ -330,6 +341,17 @@
             },
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Boat_Row_SFX",
+            "volume": 0.10000000149011612,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
         "Script": {
             "name": "PlayerMovementScript"
         }
@@ -391,6 +413,17 @@
                 "Y": 0.5
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -444,6 +477,17 @@
                 "Y": 0.6200000047683716
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -497,6 +541,17 @@
                 "Y": 0.6800000071525574
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -509,7 +564,7 @@
         "Transform": {
             "scale": {
                 "X": 349.0,
-                "Y": 507.6363830566406
+                "Y": 507.6363525390625
             },
             "rotation": 0.0,
             "translation": {
@@ -550,6 +605,17 @@
                 "Y": 0.6499999761581421
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -603,6 +669,17 @@
                 "Y": 0.4000000059604645
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -721,6 +798,17 @@
                 "Y": 0.20000000298023224
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -810,6 +898,17 @@
                 "Y": 0.6499999761581421
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -858,6 +957,17 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -968,6 +1078,17 @@
                 "Y": 0.20000000298023224
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1021,6 +1142,17 @@
                 "Y": 0.550000011920929
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1127,6 +1259,17 @@
                 "Y": 0.550000011920929
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1258,6 +1401,17 @@
                 "Y": 0.6000000238418579
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1311,6 +1465,17 @@
                 "Y": 0.6700000166893005
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1364,6 +1529,17 @@
                 "Y": 0.5
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1417,6 +1593,17 @@
                 "Y": 0.44999998807907104
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1459,6 +1646,17 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Rain_SFX",
+            "volume": 0.4099999964237213,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1490,6 +1688,18 @@
             "texture": "Textures\\Menu\\button-2.png",
             "layer": 5
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
         "CircleCollider": {
             "centerOffset": {
                 "X": 0.0,
@@ -1497,7 +1707,18 @@
             },
             "scaleOffset": 1.0,
             "isTrigger": true,
-            "renderFlag": false
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "HEALTH",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1548,15 +1769,15 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "MonsterChase_SFX",
-            "volume": 0.0,
+            "path": "DAMAGE",
+            "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
             "isMute": false,
-            "isLoop": true,
+            "isLoop": false,
             "isRandPitch": false,
-            "isSpacial": true
+            "isSpacial": false
         },
         "Script": {
             "name": "DeathScript"
@@ -1746,6 +1967,17 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "MonsterChase_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": true,
+            "isRandPitch": false,
+            "isSpacial": true
         },
         "Script": {
             "name": "AttackScript"

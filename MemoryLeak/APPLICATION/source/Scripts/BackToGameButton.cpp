@@ -48,6 +48,7 @@ void BackToGameButton::UpdateScript(Entity const& gob) {
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(true);
 		(FUNC->SelectScene("Level1")).Pause(false);
+		audioManager->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 
 	LOG_DEBUG((activate ? "true" : "false"));
@@ -58,6 +59,7 @@ void BackToGameButton::UpdateScript(Entity const& gob) {
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(true);
 		(FUNC->SelectScene("Level1")).Pause(false);
+		audioManager->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 
 	if (FUNC->CheckKey(E_STATE::NOTPRESS, E_KEY::ESCAPE)) activate = true;

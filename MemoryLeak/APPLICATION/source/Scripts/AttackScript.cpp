@@ -24,9 +24,9 @@ void AttackScript::StartScript(Entity const& _e) {
 	//LOG_INFO("Attack script starts works!!!");
 	player = FUNC->GetEntity("Boat", "Level1");
 	enemy = FUNC->GetEntity("Enemy", "Level1");
-	if (enemy.HasComponent<Audio>()) {
-		enemy.GetComponent<Audio>().sound.toPlay = true;
-		enemy.GetComponent<Audio>().sound.isLoop = true;
+	if (_e.HasComponent<Audio>()) {
+		_e.GetComponent<Audio>().sound.toPlay = true;
+		_e.GetComponent<Audio>().sound.isLoop = true;
 	}
 }
 

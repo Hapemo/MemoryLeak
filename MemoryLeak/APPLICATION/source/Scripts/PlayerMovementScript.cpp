@@ -35,12 +35,18 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	{
 		audioManager->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 	}
+	if (_e.HasComponent<Audio>())
+		_e.GetComponent<Audio>().sound.volume = 0.0f;
 	if (!inited) {
 		littleGirl = FUNC->GetEntity("ActivateLittleGirlScript", "Level1");
 		dialogueText = FUNC->GetEntity("DialogueText", "Level1");
 		water = FUNC->GetEntity("Water", "Level1");
 		enemy = FUNC->GetEntity("Enemy", "Level1");
-
+		if (_e.HasComponent<Audio>())
+		{
+			_e.GetComponent<Audio>().sound.toPlay = true;
+			_e.GetComponent<Audio>().sound.isLoop = true;
+		}
 		currScene = &(FUNC->SelectScene("Level1"));
 		initialCamScale = currScene->mCamera.scale;
 		inited = true;
@@ -72,7 +78,8 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currScene->mCamera.translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
 				FUNC->ApplyImpulse(_e, (dirVector.Normalized() * playerSpeed * (speedCheat ? speedCheatMultiplier : 1)) * (float)FUNC->GetDeltaTime(), Math::Vec2{ 0.f, 0.f });
-
+			if (_e.HasComponent<Audio>())
+				_e.GetComponent<Audio>().sound.volume = 0.2f;
 			float pi = (float) Math::PI;
 			float rotation{};
 			if (dirVector.y != 0.f && dirVector.x >= 0.f)
