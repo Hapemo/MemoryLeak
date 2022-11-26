@@ -18,6 +18,9 @@ class DeathScript : public ScriptComponent {
 private:
 	std::string name = "DeathScript";
 	Entity player;
+	bool canDie = true;
+	bool capsize = false;
+	std::string prevTexture;
 public:
 	DeathScript() = default;
 	~DeathScript() override = default;

@@ -85,7 +85,7 @@ public:
 	\param bool
 	Renders debug drawings if debug mode is set to true.
 	*******************************************************************************/
-	void SetDebug(bool);
+	void SetDebug(bool _debug) { mDebug = _debug; }
 
 	/*!*****************************************************************************
 	\brief
@@ -223,7 +223,7 @@ private:
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam, mAnimatorCam;
 	std::unordered_map<std::string, FontRenderer> mFontRenderers;
-	bool mDebug, mRenderGameToScreen;
+	bool mRenderGameToScreen;
 	float mVectorLengthModifier;
 	FBO mWorldFBO, mGameFBO, mAnimatorFBO;
 	int* mWindowWidth;
@@ -244,6 +244,7 @@ private:
 	int mPrevWidth;
 	int mInitialWidth, mInitialHeight;
 	Entity minimap;
+	bool mDebug;
 
 
 	/*!*****************************************************************************
@@ -325,7 +326,7 @@ private:
 	\brief
 	Rendering of shapes
 	*******************************************************************************/
-	void RenderShapes(bool _renderDebug);
+	void RenderShapes();
 
 	/*!*****************************************************************************
 	\brief

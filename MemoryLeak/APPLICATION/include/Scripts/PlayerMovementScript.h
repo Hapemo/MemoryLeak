@@ -9,11 +9,14 @@ private:
 	std::string name{ "PlayerMovementScript" };
 	float playerSpeed{ 500.f };
 	bool dialogueActivated = false;
+	bool dialogueZoomOut = false;
 	bool inited = false;
-	float speedCheatMultiplier{ 3.f };
+	bool canDie = true;
+	float speedCheatMultiplier{ 2.5f };
 	Entity dialogueText;
 	Entity littleGirl;
 	Entity water;
+	Entity enemy;
 	Scene* currScene;
 	Math::Vec2 initialCamScale;
 

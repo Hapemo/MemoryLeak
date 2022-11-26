@@ -136,51 +136,6 @@
     },
     {
         "General": {
-            "name": "Cursor",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 117.0,
-                "Y": 117.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -170.65867614746094,
-                "Y": 44.401206970214844
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 0
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 2
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "",
-            "offset": {
-                "X": -109.0,
-                "Y": -28.0
-            },
-            "scale": 1.5,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
             "name": "Instruction 1",
             "tag": 5,
             "subtag": 0,
@@ -278,13 +233,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 117.0,
-                "Y": 117.0
+                "X": 90.0,
+                "Y": 90.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -171.556884765625,
-                "Y": -126.70658874511719
+                "X": -168.72439575195313,
+                "Y": -132.81863403320313
             }
         },
         "Sprite": {
@@ -294,8 +249,8 @@
                 "b": 0,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 2
         },
         "Text": {
@@ -368,8 +323,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 80.0,
-                "Y": 82.89855194091797
+                "X": 90.0,
+                "Y": 90.0
             },
             "rotation": 0.0,
             "translation": {
