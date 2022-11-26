@@ -17,7 +17,7 @@ This file contains the function declarations of the class BackToGameButton.
 class BackToGameButton : public ScriptComponent {
 private:
 	std::string name = "BackToGameButton";
-
+	bool activate = false;
 public:
 	BackToGameButton() = default;
 	~BackToGameButton() override = default;
