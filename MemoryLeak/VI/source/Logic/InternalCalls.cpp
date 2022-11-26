@@ -201,6 +201,14 @@ void InternalCalls::SetTexture(const Entity& _e, const std::string& _path) {
 
 /*!*****************************************************************************
 \brief
+Retrieves the texture of an entity.
+*******************************************************************************/
+std::string InternalCalls::GetTexture(const Entity& _e) {
+	return spriteManager->GetTexturePath(spriteManager->GetTexture(_e));
+}
+
+/*!*****************************************************************************
+\brief
 EntitiesCollided function that checks if two given entities have collided by
 checking whether if a contact with the two entities exists
 \param const Entity &

@@ -61,7 +61,6 @@ void AttackScript::UpdateScript(Entity const& _e) {
 		FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png");
 		enemy.GetComponent<SheetAnimation>().frameCount = 8;
 		enemy.GetComponent<SheetAnimation>().timePerFrame = 0.100f;
-		enemy.GetComponent<SheetAnimation>().currFrameIndex = 0;
 		enemy.GetComponent<Transform>().scale.x = -200.000f;
 		enemy.GetComponent<Transform>().scale.y = 86.000f;
 		enemy.GetComponent<Transform>().translation.x = 812.552f;
