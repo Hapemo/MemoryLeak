@@ -27,9 +27,25 @@ void ExitGameButton::StartScript(Entity const& gob) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void ExitGameButton::UpdateScript(Entity const& gob) {
+	static float x = gob.GetComponent<Transform>().scale.x;
+	static float y = gob.GetComponent<Transform>().scale.y;
+	if (gob.GetComponent<Button>().isHover) {
+		if (gob.GetComponent<Transform>().scale.x < x + 15.f)
+			++(gob.GetComponent<Transform>().scale.x);
+		if (gob.GetComponent<Transform>().scale.y < y + 15.f)
+			++(gob.GetComponent<Transform>().scale.y);
+	}
+	else {
+		if (gob.GetComponent<Transform>().scale.x > x)
+			--(gob.GetComponent<Transform>().scale.x);
+		if (gob.GetComponent<Transform>().scale.y > y)
+			--(gob.GetComponent<Transform>().scale.y);
+	}
 	if(gob.HasComponent<Button>())
 		if (gob.GetComponent<Button>().activated)
 			FUNC->GameStateExit();
+
+	if (FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ENTER)) FUNC->GameStateExit();
 }
 
 /*!*****************************************************************************

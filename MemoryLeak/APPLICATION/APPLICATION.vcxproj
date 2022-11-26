@@ -38,6 +38,7 @@
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\Scripts\AttackScript.h" />
     <ClInclude Include="include\Scripts\BackToGameButton.h" />
+    <ClInclude Include="include\Scripts\ExitConfirmationButton.h" />
     <ClInclude Include="include\Scripts\MoveMinimapScript.h" />
     <ClInclude Include="include\Scripts\PassengerScript.h" />
     <ClInclude Include="include\Scripts\BackToMainMenuButton.h" />
@@ -45,6 +46,7 @@
     <ClInclude Include="include\Scripts\DialogueScript.h" />
     <ClInclude Include="include\Scripts\ExitGameButton.h" />
     <ClInclude Include="include\Scripts\HowToPlayButton.h" />
+    <ClInclude Include="include\Scripts\PauseButton.h" />
     <ClInclude Include="include\Scripts\PlayerMovementScript.h" />
     <ClInclude Include="include\Scripts\PlayGameButton.h" />
     <ClInclude Include="include\Scripts\RotateScript.h" />
@@ -58,6 +60,7 @@
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Scripts\AttackScript.cpp" />
     <ClCompile Include="source\Scripts\BackToGameButton.cpp" />
+    <ClCompile Include="source\Scripts\ExitConfirmationButton.cpp" />
     <ClCompile Include="source\Scripts\MoveMinimapScript.cpp" />
     <ClCompile Include="source\Scripts\PassengerScript.cpp" />
     <ClCompile Include="source\Scripts\BackToMainMenuButton.cpp" />
@@ -65,6 +68,7 @@
     <ClCompile Include="source\Scripts\DialogueScript.cpp" />
     <ClCompile Include="source\Scripts\ExitGameButton.cpp" />
     <ClCompile Include="source\Scripts\HowToPlayButton.cpp" />
+    <ClCompile Include="source\Scripts\PauseButton.cpp" />
     <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
     <ClCompile Include="source\Scripts\PlayGameButton.cpp" />
     <ClCompile Include="source\Scripts\RotateScript.cpp" />

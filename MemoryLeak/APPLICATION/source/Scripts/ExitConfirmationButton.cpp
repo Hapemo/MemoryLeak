@@ -1,32 +1,33 @@
 /*!*****************************************************************************
-\file SettingsButton.cpp
+\file ExitConfirmationButton.h
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
-\date 24-11-2022
+\date 27-11-2022
 \brief
-The SettingsButton script activates the "Settings" scene on button press.
+The ExitConfirmationButton script activates the exit game confirmation screen
+on button press.
 *******************************************************************************/
 
-#include "SettingsButton.h"
+#include "ExitConfirmationButton.h"
 
-REGISTER_SCRIPT(ScriptComponent, SettingsButton);
+REGISTER_SCRIPT(ScriptComponent, ExitConfirmationButton);
 
 /*!*****************************************************************************
 \brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void SettingsButton::StartScript(Entity const& gob) {
+void ExitConfirmationButton::StartScript(Entity const& gob) {
 	(void)gob;
-	//LOG_INFO("How to Play button script starts works!!!");
+	//LOG_INFO("Back to Main Menu button script starts works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void SettingsButton::UpdateScript(Entity const& gob) {
+void ExitConfirmationButton::UpdateScript(Entity const& gob) {
 	static float x = gob.GetComponent<Transform>().scale.x;
 	static float y = gob.GetComponent<Transform>().scale.y;
 	if (gob.GetComponent<Button>().isHover) {
@@ -42,12 +43,12 @@ void SettingsButton::UpdateScript(Entity const& gob) {
 			--(gob.GetComponent<Transform>().scale.y);
 	}
 
-	if (gob.HasComponent<Button>()) {
-		if (gob.GetComponent<Button>().isHover)
-		if (gob.GetComponent<Button>().activated) {
-			(FUNC->SelectScene("Menu_Main")).Pause(true);
-			(FUNC->SelectScene("Settings")).Pause(false);
-		}
+	if (gob.HasComponent<Button>() && gob.GetComponent<Button>().activated ){
+		(FUNC->SelectScene("Settings")).Pause(true);
+		(FUNC->SelectScene("How_To_Play")).Pause(true);
+		(FUNC->SelectScene("Pause")).Pause(true);
+		(FUNC->SelectScene("Level1")).Pause(true);
+		(FUNC->SelectScene("Quit Confirmation")).Pause(false);
 	}
 }
 
@@ -55,7 +56,7 @@ void SettingsButton::UpdateScript(Entity const& gob) {
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void SettingsButton::EndScript(Entity const& gob) {
+void ExitConfirmationButton::EndScript(Entity const& gob) {
 	(void)gob;
-	//LOG_INFO("How to Play button script end works!!!");
+	//LOG_INFO("Back to Main Menu button script end works!!!");
 }

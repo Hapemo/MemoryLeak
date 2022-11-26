@@ -28,13 +28,29 @@ void BackToGameButton::StartScript(Entity const& gob) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void BackToGameButton::UpdateScript(Entity const& gob) {
-	if (gob.HasComponent<Button>() && gob.GetComponent<Button>().activated)
-	{
+	static float x = gob.GetComponent<Transform>().scale.x;
+	static float y = gob.GetComponent<Transform>().scale.y;
+	if (gob.GetComponent<Button>().isHover) {
+		if (gob.GetComponent<Transform>().scale.x < x + 15.f)
+			++(gob.GetComponent<Transform>().scale.x);
+		if (gob.GetComponent<Transform>().scale.y < y + 15.f)
+			++(gob.GetComponent<Transform>().scale.y);
+	}
+	else {
+		if (gob.GetComponent<Transform>().scale.x > x)
+			--(gob.GetComponent<Transform>().scale.x);
+		if (gob.GetComponent<Transform>().scale.y > y)
+			--(gob.GetComponent<Transform>().scale.y);
+	}
+
+	if (gob.HasComponent<Button>() && gob.GetComponent<Button>().activated) {
 		(FUNC->SelectScene("Settings")).Pause(true);
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(true);
 		(FUNC->SelectScene("Level1")).Pause(false);
 	}
+
+	LOG_DEBUG((activate ? "true" : "false"));
 
 	if (activate && FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ESCAPE)) {
 		activate = false;

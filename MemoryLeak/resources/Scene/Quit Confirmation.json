@@ -87,6 +87,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "ExitGameButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -132,6 +138,12 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "PauseButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

@@ -18,6 +18,8 @@
     <ClInclude Include="include\Scripts\AttackScript.h" />
     <ClInclude Include="include\Scripts\WASDScript.h" />
     <ClInclude Include="include\Scripts\MoveMinimapScript.h" />
+    <ClInclude Include="include\Scripts\ExitConfirmationButton.h" />
+    <ClInclude Include="include\Scripts\PauseButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -38,5 +40,7 @@
     <ClCompile Include="source\Scripts\AttackScript.cpp" />
     <ClCompile Include="source\Scripts\WASDScript.cpp" />
     <ClCompile Include="source\Scripts\MoveMinimapScript.cpp" />
+    <ClCompile Include="source\Scripts\ExitConfirmationButton.cpp" />
+    <ClCompile Include="source\Scripts\PauseButton.cpp" />
   </ItemGroup>
 </Project>
