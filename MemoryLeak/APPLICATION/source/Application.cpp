@@ -56,7 +56,6 @@ void Application::SystemInit() {
 #endif
   // For render debug
   renderManager->SetVectorLengthModifier(5.f);
-  renderManager->SetDebug(true);
 
   // Collision database initialization
   collision2DManager->SetupCollisionDatabase();
