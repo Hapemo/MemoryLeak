@@ -77,15 +77,6 @@ public:
 	*******************************************************************************/
 	void Reset();
 
-	//------------------------------------------------------------------------------
-	// Getter and Setters
-	//------------------------------------------------------------------------------
-	Math::Vec2 GetWindowDim() { return Math::Vec2( static_cast<float>(mWindowWidth), static_cast<float>(mWindowHeight)); }
-	Math::Vec2 GetPos() { return mPos; }
-	float GetZoom() { return mZoom; }
-	void SetPos(const Math::Vec2& _mPos);
-	void SetZoom(float _mZoom);
-
 	/*!*****************************************************************************
 	\brief
 	Gets the world to camera (view) transform for ImGuizmo.
@@ -103,15 +94,20 @@ public:
 	*******************************************************************************/
 	std::vector<float> GetImGuizmoCamToWorld();	
 
+	//------------------------------------------------------------------------------
+	// Getter and Setters
+	//------------------------------------------------------------------------------
+	Math::Vec2 GetWindowDim() { return Math::Vec2( static_cast<float>(mWindowWidth), static_cast<float>(mWindowHeight)); }
+	Math::Vec2 GetPos() { return mPos; }
+	float GetZoom() { return mZoom; }
+	void SetPos(const Math::Vec2& _mPos);
+	void SetZoom(float _mZoom);
 	Math::Vec2 GetInitialPos() { return mInitialPos; }
 	void SetInitialPos(const Math::Vec2& _initialPos) { mInitialPos = _initialPos; }
-
 	float GetInitialZoom() { return mInitialZoom; }
 	void SetInitialZoom(float _initialZoom) { mInitialZoom = _initialZoom; }
-
 	float GetCameraWidth();
 	void SetCameraWidth(int _width);
-
 	float GetCameraHeight();
 	void SetCameraHeight(int _height);
 
