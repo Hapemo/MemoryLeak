@@ -27,6 +27,18 @@ void PlayGameButton::StartScript(Entity const& gob) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void PlayGameButton::UpdateScript(Entity const& gob) {
+	static bool first = true;
+	if (first)
+	{
+		audioManager->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+		first = false;
+	}
+	if (!audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
+	{
+		audioManager->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+	}
+
+
 	static float x = gob.GetComponent<Transform>().scale.x;
 	static float y = gob.GetComponent<Transform>().scale.y;
 	if (gob.GetComponent<Button>().isHover) {
@@ -42,6 +54,7 @@ void PlayGameButton::UpdateScript(Entity const& gob) {
 			--(gob.GetComponent<Transform>().scale.y);
 	}
 
+
 	if(gob.HasComponent<Button>())
 		if (gob.GetComponent<Button>().activated)
 		{
@@ -50,6 +63,8 @@ void PlayGameButton::UpdateScript(Entity const& gob) {
 			(FUNC->SelectScene("How_To_Play")).Pause(true);
 			(FUNC->SelectScene("Pause")).Pause(true);
 			(FUNC->SelectScene("Level1")).Pause(false);
+			audioManager->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+			first = false;
 		}
 }
 

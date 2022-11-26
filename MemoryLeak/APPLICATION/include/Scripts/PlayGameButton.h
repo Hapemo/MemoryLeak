@@ -17,7 +17,6 @@ The PlayGameButton script starts the game (level 1) on button press.
 class PlayGameButton : public ScriptComponent {
 private:
 	std::string name = "PlayGameButton";
-
 public:
 	PlayGameButton() = default;
 	~PlayGameButton() override = default;

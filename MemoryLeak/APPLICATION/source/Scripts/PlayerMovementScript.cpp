@@ -31,6 +31,10 @@ void PlayerMovementScript::StartScript(const Entity& _e) {
 }
 
 void PlayerMovementScript::UpdateScript(const Entity& _e) {
+	if (!audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
+	{
+		audioManager->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+	}
 	if (!inited) {
 		littleGirl = FUNC->GetEntity("ActivateLittleGirlScript", "Level1");
 		dialogueText = FUNC->GetEntity("DialogueText", "Level1");

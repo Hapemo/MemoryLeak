@@ -177,11 +177,27 @@ void AudioManager::UpdateSound()
     {
         if (songVol < 0.8f)
         {
-            songVol += 0.005f;
+            songVol += 0.002f;
         }
     }
     mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(songVol);
-
+    mChannel[(int)E_AUDIO_CHANNEL::MAINBACKGROUND]->setVolume(0.3f+ songVol/4.f); //need manage volume properly aft m3
+    /// <REMOVE after M3>
+    //static bool wasMinimised = false;
+    //if (minimise)   //should check this else where after M3
+    //{
+    //    SetALLVolume(0.f);
+    //    wasMinimised = true;
+    //}
+    //else
+    //{
+    //    if (wasMinimised)
+    //    {
+    //        SetALLVolume(1.f); //idk whats the original volume // need find a way to resume audio after m3
+    //        wasMinimised = false;
+    //    }
+    //}
+    /// </REMOVE>
 
     system->update();
 }
@@ -314,9 +330,9 @@ None.
 *******************************************************************************/
 void AudioManager::SetALLVolume(float vol)
 {
-    for (const Entity& e : mEntities)
+    for (int i = 0; i< mChannel.size(); i++)
     {
-        e.GetComponent<Audio>().sound.volume = vol;
+        mChannel[i]->setVolume(vol);
     }
 }
 /*!*****************************************************************************

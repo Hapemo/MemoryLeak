@@ -103,7 +103,11 @@ void Application::init() {
   startup();
   SystemInit();
   //audioManager->PlayBGSound("PIntro", 10);
-  audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
+//#ifdef _EDITOR
+//  
+//#elif
+//  audioManager->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::EDITORSONG);
+//#endif
   //audioManager->PlayBGSound("MENUBG", 10);
   GameStateManager::GetInstance()->Init();
 }
@@ -149,7 +153,11 @@ void Application::MainUpdate() {
   // Application ending update
 
   while (GameStateManager::mGSMState != GameStateManager::E_GSMSTATE::EXIT) {
-    if (!FirstUpdate()) continue;
+      if (!FirstUpdate())
+      {
+        audioManager->SetALLVolume(0.f);   //need pause all the audio... and resume properly
+        continue;
+      }
     TRACK_PERFORMANCE("MainLoop");
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
@@ -175,7 +183,7 @@ void Application::MainUpdate() {
 
     // Audio
     TRACK_PERFORMANCE("Audio");
-    audioManager->UpdateSound();
+    audioManager->UpdateSound(); 
     END_TRACK("Audio");
 
     // If it changes, it should've came from when updaing game logic

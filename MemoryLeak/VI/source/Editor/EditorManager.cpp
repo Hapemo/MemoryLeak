@@ -116,7 +116,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels[(int)E_PANELID::WORLDVIEW] = &gameViewPanel;//8
 	panels[(int)E_PANELID::GAMEVIEW] = &worldViewPanel;//9
 
-	Init();
+	//Init();
 	
 }
 /*!*****************************************************************************
@@ -128,7 +128,7 @@ None.
 *******************************************************************************/
 void EditorManager::Init()
 {
-	//audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
+	
 	isScenePaused = true;
 	selectedEntity = nullptr;
 	aspect = false;
@@ -140,6 +140,7 @@ void EditorManager::Init()
 		panels[p]->Init();
 	}
 	mGameStates = &GameStateManager::GetInstance()->mGameStates;
+	audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
 	//renderManager->RenderToFrameBuffer();
 }
 
@@ -182,6 +183,18 @@ void EditorManager::Update()
 		return;
 
 	Window();
+	if (isScenePaused )  //to be handled by audio manager after M3 clean up
+	{
+		if(audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
+			audioManager->StopSound((int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+		else if(!audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))
+			audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
+
+	}
+	if (!isScenePaused && audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))//scene playing
+	{
+		audioManager->StopSound((int)E_AUDIO_CHANNEL::EDITORSONG);
+	}
 
 	if (selectedGameState < (*mGameStates).size())
 	{
