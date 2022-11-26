@@ -30,11 +30,11 @@ private:
 	}
 
 protected:
-	Singleton() { std::cout << "Singleton Constructor called\n"; }
+	Singleton() = default;
 
 public:
 	// Default ctor and dtor
-	~Singleton() {}
+	~Singleton() = default;
 
 	// To disable any copying mechanism for Singleton
 	Singleton(const Singleton&) = delete;

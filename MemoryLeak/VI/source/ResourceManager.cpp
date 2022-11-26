@@ -367,7 +367,8 @@ void ResourceManager::UnloadAllResources() {
 }
 
 void ResourceManager::CheckWrongAudioFile(std::filesystem::path const& _path) {
-	if (_path.string().find(".wav") != std::string::npos) return; // Nothing wrong with wav file
+	if (_path.string().find(".wav") != std::string::npos || 
+			_path.string().find(".mp3") != std::string::npos) return; // Nothing wrong with wav file
 
 	// If something wrong with audio file read in, code under here
 	LOG_ERROR("Attempted to load in invalid audio file: " + _path.string());
@@ -375,7 +376,7 @@ void ResourceManager::CheckWrongAudioFile(std::filesystem::path const& _path) {
 
 void ResourceManager::CheckWrongTextureFile(std::filesystem::path const& _path) {
 	if (_path.string().find(".png") != std::string::npos ||
-			_path.string().find(".jpg") != std::string::npos) return; // Nothing wrong with wav file
+			_path.string().find(".jpg") != std::string::npos) return; // Nothing wrong with tex file
 
 	// If something wrong with audio file read in, code under here
 	LOG_ERROR("Attempted to load in invalid texture file: " + _path.string());
