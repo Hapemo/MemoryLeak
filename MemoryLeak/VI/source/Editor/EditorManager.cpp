@@ -158,7 +158,6 @@ void EditorManager::Window()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 	//ImGui::ShowDemoWindow();
-	static ImGuiID dockID = ImGui::GetID("Editor");
 	static bool isOpen = true;
 	ImGuiViewport* viewport = ImGui::GetMainViewport();
 	ImGui::SetNextWindowPos(viewport->Pos);
@@ -166,6 +165,7 @@ void EditorManager::Window()
 	ImGuiWindowFlags windowFlag = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoTitleBar |ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse
 		| ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoMove;
 	ImGui::Begin("Editor", &isOpen, windowFlag);
+	static ImGuiID dockID = ImGui::GetID("Editor");
 	ImGui::DockSpace(dockID, ImVec2(0.f, 0.f));
 	ImGui::End();
 }
