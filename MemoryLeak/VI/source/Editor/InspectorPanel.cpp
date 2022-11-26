@@ -425,8 +425,10 @@ void InspectorPanel::TransformEditor()
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
 		ImGui::SameLine(0.f, 5.f);
 		ImGui::Checkbox("Aspect ratio", &aspect);
-		tmpVec2[0] = transformManager->GetScale(e).x;
-		tmpVec2[1] = transformManager->GetScale(e).y;
+
+		//scale
+		tmpVec2[0] = e.GetComponent<Transform>().scale.x;
+		tmpVec2[1] = e.GetComponent<Transform>().scale.y;
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
 		float ratio = tmpVec2[1] / tmpVec2[0];
 		ImGui::DragFloat2("Set Scale", tmpVec2);
@@ -437,22 +439,23 @@ void InspectorPanel::TransformEditor()
 			else
 				tmpVec2[1] = tmpVec2[0]*ratio;
 		}
-		Math::Vec2 scale{ tmpVec2[0] ,tmpVec2[1] };
-		transformManager->SetScale(e, scale);
+		e.GetComponent<Transform>().scale = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
 
-		tmpVec2[0] = transformManager->GetTranslate(e).x;
-		tmpVec2[1] = transformManager->GetTranslate(e).y;
+
+		//translate
+		tmpVec2[0] = e.GetComponent<Transform>().translation.x;
+		tmpVec2[1] = e.GetComponent<Transform>().translation.y;
 		ImGui::DragFloat2("Set Position", tmpVec2);
-		Math::Vec2 pos{ tmpVec2[0] ,tmpVec2[1] };
-		transformManager->SetTranslate(e, pos);
+		e.GetComponent<Transform>().translation = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
 
-		tmpFloat = transformManager->GetRotation(e);
+		//rotate
+		tmpFloat = e.GetComponent<Transform>().rotation;
 		tmpFloat = (float)(tmpFloat / M_PI * 180.f);
-		ImGui::DragFloat("Set Rotation", &tmpFloat, -360.f, 360.f);
+		ImGui::DragFloat("Set Rotation", &tmpFloat,1.f, -360.f, 360.f);
 		tmpFloat = (float)(tmpFloat * M_PI / 180.f);
-		transformManager->SetRotation(e, tmpFloat);
+		e.GetComponent<Transform>().rotation = tmpFloat;
 		SaveUndo(e, tempComponent, COMPONENTID::TRANSFORM);
 		/*if (ImGui::Button("Remove Transform"))
 		{
