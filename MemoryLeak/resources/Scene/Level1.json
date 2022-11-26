@@ -275,7 +275,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
-            "layer": 100
+            "layer": 50
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -887,7 +887,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 12
+            "layer": 24
         },
         "SheetAnimation": {
             "frameCount": 8,
