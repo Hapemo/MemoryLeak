@@ -66,9 +66,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 					dialogueActivated = true;
 				}
 			}
-			else {
-				dialogueActivated = false;
-			}
+			else  dialogueActivated = false;
 		}
 	}
 	Transform eXform = _e.GetComponent<Transform>();
@@ -88,8 +86,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	if (currScene)
 		currScene->mCamera.translation = _e.GetComponent<Transform>().translation;
 
-	if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE))
-	{
+	if (FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ESCAPE)) {
 		(FUNC->SelectScene("Settings")).Pause(true);
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(false);
