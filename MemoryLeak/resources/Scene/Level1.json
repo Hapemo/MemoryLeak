@@ -8,12 +8,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 4006.0,
-                "Y": 2588.0
+                "X": 4242.0,
+                "Y": 3000.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -300.5469970703125,
+                "X": -306.5469970703125,
                 "Y": 65.29591369628906
             }
         },
@@ -1486,8 +1486,8 @@
                 "b": 0,
                 "a": 255
             },
-            "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
             "layer": 5
         }
     },
