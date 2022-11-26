@@ -84,7 +84,8 @@ void LayerManager::Update(const double& _dt) {
 		if (CollidedFlag)
 			++it;
 		else {
-			it->first->GetComponent<Sprite>().layer = it->second;
+			if (it->first->HasComponent<Sprite>())
+				it->first->GetComponent<Sprite>().layer = it->second;
 			it = mOriginLayerMap.erase(it);
 			CollidedFlag = false;
 		}

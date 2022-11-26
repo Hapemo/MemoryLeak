@@ -56,7 +56,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building1_spritesheet.png",
-            "layer": 1
+            "layer": 24
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -103,7 +103,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -717.2084350585938,
-                "Y": 95.10723876953125
+                "Y": 98.61135864257813
             }
         },
         "Sprite": {
@@ -115,7 +115,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building6_spritesheet.png",
-            "layer": 10
+            "layer": 13
         },
         "SheetAnimation": {
             "frameCount": 6,
@@ -174,7 +174,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
-            "layer": 11
+            "layer": 14
         },
         "SheetAnimation": {
             "frameCount": 9,
@@ -222,7 +222,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-1.png",
-            "layer": 1
+            "layer": 25
         },
         "RectCollider": {
             "centerOffset": {
@@ -262,7 +262,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 29.412080764770508,
+                "X": 29.412078857421875,
                 "Y": -80.48432922363281
             }
         },
@@ -275,7 +275,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
-            "layer": 15
+            "layer": 100
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -361,7 +361,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Lighthouse_spritesheet.png",
-            "layer": 10
+            "layer": 7
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -420,7 +420,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-2.png",
-            "layer": 20
+            "layer": 16
         },
         "RectCollider": {
             "centerOffset": {
@@ -473,7 +473,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-2.png",
-            "layer": 1
+            "layer": 5
         },
         "RectCollider": {
             "centerOffset": {
@@ -526,7 +526,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-1.png",
-            "layer": 1
+            "layer": 20
         },
         "RectCollider": {
             "centerOffset": {
@@ -579,7 +579,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\bush-1.png",
-            "layer": 10
+            "layer": 12
         },
         "RectCollider": {
             "centerOffset": {
@@ -632,7 +632,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 1
+            "layer": 23
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -691,7 +691,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
-            "layer": 1
+            "layer": 6
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -786,7 +786,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-2.png",
-            "layer": 1
+            "layer": 28
         },
         "RectCollider": {
             "centerOffset": {
@@ -839,7 +839,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building5_spritesheet.png",
-            "layer": 1
+            "layer": 12
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -938,7 +938,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building3_spritesheet.png",
-            "layer": 1
+            "layer": 13
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1050,7 +1050,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-1.png",
-            "layer": 10
+            "layer": 6
         },
         "RectCollider": {
             "centerOffset": {
@@ -1234,7 +1234,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-1.png",
-            "layer": 10
+            "layer": 18
         },
         "RectCollider": {
             "centerOffset": {
@@ -1287,7 +1287,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\bush-1.png",
-            "layer": 10
+            "layer": 8
         },
         "RectCollider": {
             "centerOffset": {
@@ -1340,7 +1340,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\tree-2.png",
-            "layer": 1
+            "layer": 6
         },
         "RectCollider": {
             "centerOffset": {
@@ -1381,7 +1381,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -685.0,
-                "Y": -832.0
+                "Y": -825.9138793945313
             }
         },
         "Sprite": {
@@ -1393,7 +1393,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\bush-1.png",
-            "layer": 10
+            "layer": 24
         },
         "RectCollider": {
             "centerOffset": {
@@ -1527,7 +1527,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
-            "layer": 14
+            "layer": 15
         },
         "SheetAnimation": {
             "frameCount": 8,

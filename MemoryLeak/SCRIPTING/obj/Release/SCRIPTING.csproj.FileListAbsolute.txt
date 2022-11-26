@@ -36,3 +36,9 @@ C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRI
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.dll
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.pdb
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
