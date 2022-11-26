@@ -1,12 +1,13 @@
 /*!*****************************************************************************
-\file BackToGameButton.cpp
+\file BackToGameButton.h
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 24-11-2022
 \brief
-This file contains the function definitions of the class BackToGameButton.
+The BackToGameButton script returns the scene to the gameplay on button press.
+Press "ESC" to toggle the pause menu.
 *******************************************************************************/
 
 #include "BackToGameButton.h"

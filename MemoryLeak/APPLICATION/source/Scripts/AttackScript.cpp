@@ -6,7 +6,9 @@
 \par Group: Memory Leak Studios
 \date 25-11-2022
 \brief
-This file contains the function definitions of the class AttackScript.
+The AttackScript handles the detection of when the player is nearby the enemy,
+causing the enemy's rising out of the water animation to run and then run the
+attacking animation.
 *******************************************************************************/
 
 #include "AttackScript.h"

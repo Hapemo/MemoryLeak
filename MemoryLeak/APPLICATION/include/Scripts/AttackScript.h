@@ -1,12 +1,14 @@
 /*!*****************************************************************************
-\file AttackScript.h
+\file AttackScript.cpp
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 25-11-2022
 \brief
-This file contains the function declarations of the class AttackScript.
+The AttackScript handles the detection of when the player is nearby the enemy,
+causing the enemy's rising out of the water animation to run and then run the
+attacking animation.
 *******************************************************************************/
 
 #pragma once

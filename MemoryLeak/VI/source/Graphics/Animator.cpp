@@ -101,7 +101,20 @@ void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames)
 {
 	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
 }
+/*!*****************************************************************************
+\brief
+Does a manual swap of the sprites. Some examples are button hover, button press
+etc.
 
+\param const Entity& e
+The Entity whose Animation Component will be modified.
+
+\param int index
+index to modify
+
+\return
+None.
+*******************************************************************************/
 void Animator::ManualSwap(const Entity& _e, int _index)
 {
 	if (!_e.HasComponent<Sprite>()) return;

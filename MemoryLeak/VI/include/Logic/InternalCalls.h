@@ -7,6 +7,8 @@
 \date 22-11-2022
 \brief
 This file contains the function declarations of the class InternalCalls.
+InternalCalls are where all functions that scripts need to use from the engine
+is being stored.
 *******************************************************************************/
 
 #pragma once

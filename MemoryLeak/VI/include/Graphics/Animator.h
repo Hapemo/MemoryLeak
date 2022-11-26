@@ -73,6 +73,20 @@ public:
 	*******************************************************************************/
 	void AddImages(const Entity& _e, const std::vector<GLuint>& _frames);
 
+	/*!*****************************************************************************
+	\brief
+	Does a manual swap of the sprites. Some examples are button hover, button press
+	etc.
+
+	\param const Entity& e
+	The Entity whose Animation Component will be modified.
+
+	\param int index
+	index to modify
+
+	\return
+	None.
+	*******************************************************************************/
 	void ManualSwap(const Entity& _e, int _index);
 private:
 	/*!*****************************************************************************

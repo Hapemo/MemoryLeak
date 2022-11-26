@@ -6,7 +6,7 @@
 \par Group: Memory Leak Studios
 \date 24-11-2022
 \brief
-This file contains the function declarations of the class HowToPlayButton.
+The HowToPlayButton script opens the "How To Play" screen on button press.
 *******************************************************************************/
 
 #pragma once
