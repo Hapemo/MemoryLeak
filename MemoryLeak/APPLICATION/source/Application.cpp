@@ -108,14 +108,15 @@ void Application::init() {
   GameStateManager::GetInstance()->Init();
 }
 
-void Application::FirstUpdate() {
+bool Application::FirstUpdate() {
   FPSManager::mPrevTime = glfwGetTime();
 
   // Part 1
   glfwPollEvents();
-  
+
   // Part 2
   FPSManager::CalcFPS(0);
+  return !Helper::GetWindowMinimized();
 }
 
 void Application::SecondUpdate() {
@@ -148,8 +149,8 @@ void Application::MainUpdate() {
   // Application ending update
 
   while (GameStateManager::mGSMState != GameStateManager::E_GSMSTATE::EXIT) {
+    if (!FirstUpdate()) continue;
     TRACK_PERFORMANCE("MainLoop");
-    FirstUpdate();
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
     editorManager->Update();
@@ -164,7 +165,7 @@ void Application::MainUpdate() {
 
 #endif
     static bool toggle{ false };
-    if (Input::CheckKey(PRESS, SPACE)) Helper::SetFullScreen(toggle = !toggle);
+    if (Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
 
     TRACK_PERFORMANCE("Graphics");
     //--------------------- Drawing and rendering ---------------------
