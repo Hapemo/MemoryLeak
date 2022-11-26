@@ -170,7 +170,7 @@ void Physics2DManager::Step() {
 
 	collision2DManager->ResolveCollisions(Physics2DManager::fixedDT);
 
-	layerManager->Update(Physics2DManager::fixedDT);
+	layerManager->Update();
 }
 
 //void Physics2DManager::UpdatePosition(const Entity& _e) {
