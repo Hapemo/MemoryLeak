@@ -53,6 +53,7 @@ public:
   static bool GetFullScreenFlag() { return fullscreenFlag; }
   static int GetScreenWidth() { return mWindowSize[0]; }
   static int GetScreenHeight() { return mWindowSize[1]; }
+  static bool GetWindowMinimized() { return !glfwGetWindowAttrib(mWindow, GLFW_FOCUSED ); }
 
 private:
   static GLFWwindow* mWindow;

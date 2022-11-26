@@ -16,39 +16,36 @@ struct GLFWwindow;
 class Application {
 public:
 	/*!*****************************************************************************
-	 \brief
 	 Initialise the application and it's systems such as window, texture resources
 	 and game engine systems
 	*******************************************************************************/
 	static void init();
 
 	/*!*****************************************************************************
-	 \brief
 	 Start up the vital components for application. Should be called in Application
 	 Init()
 	*******************************************************************************/
 	static void startup();
 
 	/*!*****************************************************************************
-	 \brief
 	 initialise Game Engine ECS's systems
 	*******************************************************************************/
 	static void SystemInit();
 
 	/*!*****************************************************************************
-	 \brief
 	 Update Game Engine ECS's systems, should be called every game loop
 	*******************************************************************************/
 	static void SystemUpdate();
 
 	/*!*****************************************************************************
-	 \brief
 	 Initialisation before start of each game loop.
+	 
+	 \return bool
+	- True if ran successfully, otherwise false
 	*******************************************************************************/
-	static void FirstUpdate();
+	static bool FirstUpdate();
 
 	/*!*****************************************************************************
-	 \brief
 	 Clean up after end of each game loop.
 	*******************************************************************************/
 	static void SecondUpdate();
@@ -57,15 +54,9 @@ public:
 	static void MainUpdate();
 
 	/*!*****************************************************************************
-	 \brief
 	 Unload and clean up when exiting the application
 	*******************************************************************************/
 	static void exit();
-
-	/*!*****************************************************************************
-	 \brief
-	 Unload and clean up when exiting the application
-	*******************************************************************************/
 
 	//------------------------------------------------------------------------------
 	// Getter and Setters
@@ -83,7 +74,6 @@ private:
 	static bool mLoadAllResources;
 
 	/*!*****************************************************************************
-	 \brief
 	 Load Config file into application
 	 If there are new config settings, implement in here
 	 
@@ -93,7 +83,6 @@ private:
 	static void loadConfig(std::string);
 
 	/*!*****************************************************************************
-	 \brief
 	 Print the window title bar
 
 	 \param double
@@ -103,19 +92,16 @@ private:
 	static void PrintTitleBar(double);
 
 	/*!*****************************************************************************
-	 \brief
 	 Start up GLFW
 	*******************************************************************************/
 	static void GLFWStartUp();
 	
 	/*!*****************************************************************************
-	 \brief
 	 Start up GLEW
 	*******************************************************************************/
 	static void GlewStartUp();
 	
 	/*!*****************************************************************************
-	 \brief
 	 Callback function for GLFW errors
 
 	 \param int _error
@@ -127,7 +113,6 @@ private:
 	static void error_cb(int _error, char const* _description);
 
 	/*!*****************************************************************************
-	 \brief
 	 Callback function for GLFW framebuffer
 
 	 \param GLFWwindow* _ptrWin
