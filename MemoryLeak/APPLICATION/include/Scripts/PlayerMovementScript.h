@@ -7,12 +7,12 @@
 class PlayerMovementScript : public ScriptComponent {
 private:
 	std::string name{ "PlayerMovementScript" };
-	float playerNormalSpeed{ 500.f };
-	float playerSpeed{ playerNormalSpeed };
+	float playerSpeed{ 500.f };
 	bool dialogueActivated = false;
+	bool dialogueZoomOut = false;
 	bool inited = false;
 	bool canDie = true;
-	float speedCheatMultiplier{ 3.f };
+	float speedCheatMultiplier{ 2.5f };
 	Entity dialogueText;
 	Entity littleGirl;
 	Entity water;
