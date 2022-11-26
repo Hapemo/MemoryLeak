@@ -33,7 +33,6 @@ bool ButtonManager::CheckHover(const Entity& _e)
 	cursorPos.y = cursorPos.y / (*mWindowHeight / 2) * (mInitialHeight / 2);
 #endif
 
-	float zoom = renderManager->GetGameCamera().GetZoom();
 	Transform xform = _e.GetComponent<Transform>();
 	if (!(cursorPos.x <= xform.translation.x + 0.5f * xform.scale.x)) return false;
 	if (!(cursorPos.x >= xform.translation.x - 0.5f * xform.scale.x)) return false;

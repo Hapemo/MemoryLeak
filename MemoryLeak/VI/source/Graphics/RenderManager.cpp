@@ -92,7 +92,7 @@ void RenderManager::Render()
 
 	if (currScene)
 	{
-		mGameCam.SetCameraWidth(currScene->mCamera.scale.x);
+		mGameCam.SetCameraWidth((int)currScene->mCamera.scale.x);
 		mGameCam.SetPos(currScene->mCamera.translation);
 		currScene->mCamera.scale.y = mGameCam.GetCameraHeight();
 		currScene->mCamera.rotation = 1.f / mGameCam.GetZoom();
@@ -576,18 +576,18 @@ void RenderManager::RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo
 		std::vector<GLushort> minimapIndices;
 		CreateSquare(minimap, minimapVertex, minimapIndices);
 		TextureInfo minimapInfo{ (int)minimap.GetComponent<Sprite>().texture - 1, minimapVertex, minimapIndices };
-		int samplerUniform[TEXTURES_PER_DRAW];
+		int samplerUniform1[TEXTURES_PER_DRAW];
 		for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
-			samplerUniform[i] = i;
+			samplerUniform1[i] = i;
 		//use texture program and bind VAO
 		mMinimapProgram.Bind();
 		mAllocator.BindVAO();
-		mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
-		std::vector<int> usedTexUnits;
-		usedTexUnits.reserve(TEXTURES_PER_DRAW);
-		BindTextureUnit(minimap.GetComponent<Sprite>().texture, minimapInfo, usedTexUnits);
+		mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform1);
+		std::vector<int> usedTexUnits1;
+		usedTexUnits1.reserve(TEXTURES_PER_DRAW);
+		BindTextureUnit(minimap.GetComponent<Sprite>().texture, minimapInfo, usedTexUnits1);
 		int texcount = 1;
-		BatchRenderTextures(texcount, usedTexUnits);
+		BatchRenderTextures(texcount, usedTexUnits1);
 		mAllocator.UnbindVAO();
 		mMinimapProgram.Unbind();
 	}
