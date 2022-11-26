@@ -28,8 +28,6 @@ RenderManager::RenderManager()
 	mMinimapProgram("shaders/texture.vert", "shaders/minimap.frag"),
 	mWindowHeight(nullptr), mWindowWidth(nullptr), minimap(0)
 {
-	//set debug mode to true
-	mDebug = true;
 	//render world (editor)
 	mRenderGameToScreen = true;
 	mCurrRenderPass = RENDER_STATE::GAME;
@@ -44,7 +42,7 @@ RenderManager::RenderManager()
 	glDepthFunc(GL_LEQUAL);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	InitializeShaders();
-	
+	mDebug = false;
 	//reserve space in vectors
 	mVertices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT));
 	mIndices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT));
@@ -129,7 +127,7 @@ void RenderManager::Render()
 	/**************************************TEXTURE BATCHING END**************************************/
 
 	/***********************************SHAPES/DEBUG BATCHING START**********************************/
-	RenderShapes(true);
+	RenderShapes();
 	/***********************************SHAPES/DEBUG BATCHING END************************************/
 
 	/*************************************FONT RENDERING START***************************************/
@@ -187,7 +185,7 @@ GLuint RenderManager::GetAnimatorFBO()
 
 	CreateVertices(textureInfo);
 	RenderTextures(textureInfo);
-	RenderShapes(false);
+	RenderShapes();
 
 	mAnimatorFBO.Unbind();
 
@@ -597,7 +595,7 @@ void RenderManager::RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo
 \brief
 Rendering of shapes
 *******************************************************************************/
-void RenderManager::RenderShapes(bool _renderDebug)
+void RenderManager::RenderShapes()
 {
 	//use normal program for drawing shapes
 	mDefaultProgram.Bind();
@@ -607,7 +605,7 @@ void RenderManager::RenderShapes(bool _renderDebug)
 	BatchRenderElements(GL_TRIANGLES, mVertices, mIndices);
 
 	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
-	if (_renderDebug && (mCurrRenderPass == RENDER_STATE::WORLD || (!mRenderGameToScreen)))
+	if (mCurrRenderPass == RENDER_STATE::WORLD || mDebug)
 		RenderDebug();
 
 	//unuse VAO and normal program
@@ -1040,18 +1038,6 @@ void RenderManager::CreateDebugArrow(const Transform& _t, const Color& _clr)
 {
 	CreateDebugLine(_t, _clr);
 	mDebugPoints.push_back(mDebugVertices.back());
-}
-
-/*!*****************************************************************************
-\brief
-Sets the debug mode of rendering.
-
-\param bool
-Renders debug drawings if debug mode is set to true.
-*******************************************************************************/
-void RenderManager::SetDebug(bool _set)
-{
-	mDebug = _set;
 }
 
 /*!*****************************************************************************
