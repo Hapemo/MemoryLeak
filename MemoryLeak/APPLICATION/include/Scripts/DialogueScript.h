@@ -19,6 +19,7 @@ private:
 	std::string name = "DialogueScript";
 	Math::Vec2 initialCamScale;
 	Math::Vec2 targetCamScale;
+	Math::Vec2 currCamScale;
 	Scene* currScn;
 public:
 	DialogueScript() = default;

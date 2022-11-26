@@ -15,6 +15,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	if (!inited) {
 		littleGirl = FUNC->GetEntity("ActivateLittleGirlScript", "Level1");
 		dialogueText = FUNC->GetEntity("DialogueText", "Level1");
+		water = FUNC->GetEntity("Water", "Level1");
 		currScene = &(FUNC->SelectScene("Level1"));
 		initialCamScale = currScene->mCamera.scale;
 		inited = true;
@@ -70,6 +71,19 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			}
 		}
 	}
+	Transform eXform = _e.GetComponent<Transform>();
+	Transform waterXform = water.GetComponent<Transform>();
+	Math::Vec2 waterMin = waterXform.translation - waterXform.scale / 2.f + currScene->mCamera.scale / 2.f;
+	Math::Vec2 waterMax = waterXform.translation + waterXform.scale / 2.f - currScene->mCamera.scale / 2.f;
+
+	if (eXform.translation.x < waterMin.x)
+		_e.GetComponent<Transform>().translation.x = waterMin.x;
+	else if (eXform.translation.x > waterMax.x)
+		_e.GetComponent<Transform>().translation.x = waterMax.x;
+	if (eXform.translation.y < waterMin.y)
+		_e.GetComponent<Transform>().translation.y = waterMin.y;
+	else if (eXform.translation.y > waterMax.y)
+		_e.GetComponent<Transform>().translation.y = waterMax.y;
 
 	if (currScene)
 		currScene->mCamera.translation = _e.GetComponent<Transform>().translation;

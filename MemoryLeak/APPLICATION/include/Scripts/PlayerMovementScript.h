@@ -13,6 +13,7 @@ private:
 	float speedCheatMultiplier{ 3.f };
 	Entity dialogueText;
 	Entity littleGirl;
+	Entity water;
 	Scene* currScene;
 	Math::Vec2 initialCamScale;
 
