@@ -6,7 +6,10 @@
 \par Group: Memory Leak Studios
 \date 25-11-2022
 \brief
-This file contains the function definitions of the class DeathScript.
+The DeathScript runs the player's death animation on the boat collides with
+the enemy.
+
+Press "CTRL+SHIFT+M" to toggle player invincible mode.
 *******************************************************************************/
 
 #include "DeathScript.h"
@@ -28,37 +31,27 @@ void DeathScript::StartScript(Entity const& _e) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void DeathScript::UpdateScript(Entity const& _e) {
-	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT) && FUNC->CheckKey(PRESS, M)) {
-		canDie = !canDie;
-		capsize = false;
-	}
+	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT) && FUNC->CheckKey(PRESS, M)) canDie = !canDie;
 
-	if (FUNC->EntitiesCollided(player, _e) && canDie) {
-		if (capsize == false) {
-			prevTexture = FUNC->GetTexture(player);
-			FUNC->SetTexture(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
+	static bool onEntry = false;
+	if (FUNC->EntitiesCollided(player, _e)) onEntry = true;
+	if (onEntry) {
+		static bool capsized = false;
+		FUNC->SetTexture(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
+		if (capsized == false) {
 			player.GetComponent<SheetAnimation>().frameCount = 11;
 			player.GetComponent<SheetAnimation>().timePerFrame = 0.15f;
 			player.GetComponent<SheetAnimation>().currFrameIndex = 0;
-			capsize = true;
+			capsized = true;
 		}
-		if (capsize == true) {
-			if (player.GetComponent<SheetAnimation>().currFrameIndex == player.GetComponent<SheetAnimation>().frameCount - 1) {
-				player.Deactivate();
-				(FUNC->SelectScene("Level1")).Pause(true);
-				(FUNC->SelectScene("Game Over")).Pause(false);
-				capsize = false;
-			}
-		}
-	}
 
-	if ((!canDie || !FUNC->EntitiesCollided(player, _e)) && prevTexture != "") {
-		capsize = false;
-		player.GetComponent<SheetAnimation>().frameCount = 8;
-		player.GetComponent<SheetAnimation>().timePerFrame = 0.1f;
-		LOG_DEBUG(prevTexture);
-		FUNC->SetTexture(player, prevTexture);
-		prevTexture = "";
+		if (player.GetComponent<SheetAnimation>().currFrameIndex == player.GetComponent<SheetAnimation>().frameCount - 1) {
+			player.Deactivate();
+			(FUNC->SelectScene("Level1")).Pause(true);
+			(FUNC->SelectScene("Game Over")).Pause(false);
+			onEntry = false;
+			capsized = false;
+		}
 	}
 }
 

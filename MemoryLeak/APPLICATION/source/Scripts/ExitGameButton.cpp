@@ -6,7 +6,7 @@
 \par Group: Memory Leak Studios
 \date 24-11-2022
 \brief
-This file contains the function definitions of the class ExitGameButton.
+The ExitGameButton script close the program on button press.
 *******************************************************************************/
 
 #include "ExitGameButton.h"

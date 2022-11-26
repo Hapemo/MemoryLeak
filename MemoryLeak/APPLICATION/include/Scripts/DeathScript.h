@@ -1,12 +1,15 @@
 /*!*****************************************************************************
-\file DeathScript.h
+\file DeathScript.cpp
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 25-11-2022
 \brief
-This file contains the function declarations of the class DeathScript.
+The DeathScript runs the player's death animation on the boat collides with
+the enemy.
+
+Press "CTRL+SHIFT+M" to toggle player invincible mode.
 *******************************************************************************/
 
 #pragma once
@@ -19,7 +22,6 @@ private:
 	std::string name = "DeathScript";
 	Entity player;
 	bool canDie = true;
-	bool capsize = false;
 	std::string prevTexture = "";
 public:
 	DeathScript() = default;

@@ -221,7 +221,7 @@ void DialogManager::EditChoice(int _id, int _choice, int _choice2) {
 
 /*!*****************************************************************************
 \brief
-Creates a new dialog item.
+Creates a new dialog item from scratch.
 
 \param int _id
 The id of the new dialog item.
@@ -250,38 +250,58 @@ void DialogManager::CreateNewDialogue(int _id, std::string _text, int _speaker, 
 		mDialogs[_id] = newDialog;
 	}
 }
+
+/*!*****************************************************************************
+\brief
+Adds a new dialogue.
+
+\param int _previd
+The id of the previous dialog item.
+
+\param std::string _text
+The text of the new dialog item.
+
+\param int _speaker
+The speaker id of the new dialog item.
+*******************************************************************************/
 void DialogManager::AddNewDialogue(int _previd, std::string _text, int _speaker) {
-	
-	int _id = 1;
-	for (std::pair<int, Dialog> dialog : mDialogs)
-	{
-		if (mDialogs.count(_id))
-			_id++;
-		else
-			break;
+	int id = 1;
+	for (std::pair<int, Dialog> dialog : mDialogs) {
+		if (mDialogs.count(id)) id++;
+		else break;
 	}
 	int next = mDialogs[_previd].next;
-	mDialogs[_previd].next = _id;
+	mDialogs[_previd].next = id;
 	Dialog newDialog;
 	newDialog.text = _text;
 	newDialog.speaker = _speaker;
 	newDialog.next = next;
 	newDialog.next2 = 0;
 	newDialog.selectedChoice = 0;
-	mDialogs[_id] = newDialog;
+	mDialogs[id] = newDialog;
 }
-void DialogManager::AddNewDialogue2(int _previd, std::string _text, int _speaker) {
 
-	int _id = 1;
-	for (std::pair<int, Dialog> dialog : mDialogs)
-	{
-		if (mDialogs.count(_id))
-			_id++;
-		else
-			break;
+/*!*****************************************************************************
+\brief
+Adds a new dialogue for second option.
+
+\param int _previd
+The id of the previous dialog item.
+
+\param std::string _text
+The text of the new dialog item.
+
+\param int _speaker
+The speaker id of the new dialog item.
+*******************************************************************************/
+void DialogManager::AddNewDialogue2(int _previd, std::string _text, int _speaker) {
+	int id = 1;
+	for (std::pair<int, Dialog> dialog : mDialogs) {
+		if (mDialogs.count(id)) id++;
+		else break;
 	}
 	int next = mDialogs[_previd].next2;
-	mDialogs[_previd].next2 = _id;
+	mDialogs[_previd].next2 = id;
 	mDialogs[_previd].selectedChoice = 1;
 	Dialog newDialog;
 	newDialog.text = _text;
@@ -289,8 +309,9 @@ void DialogManager::AddNewDialogue2(int _previd, std::string _text, int _speaker
 	newDialog.next = next;
 	newDialog.next2 = 0;
 	newDialog.selectedChoice = 0;
-	mDialogs[_id] = newDialog;
+	mDialogs[id] = newDialog;
 }
+
 //int DialogManager::SwapNext(int _id) { // swap text and speaker only
 //	int id2 = GetNext(_id);
 //	if (id2 == 0)// no more swap down
@@ -322,20 +343,33 @@ void DialogManager::AddNewDialogue2(int _previd, std::string _text, int _speaker
 //	std::cout << "SWAPPED " << _id << " With " << id2 << "\n";
 //	return id2;
 //}
+
+/*!*****************************************************************************
+\brief
+Swap with next dialogue item.
+
+\param int _id
+Id of dialogue item to be swapped.
+*******************************************************************************/
 void DialogManager::SwapNext(int _id) {
 	int id3 = GetPrev(_id);
-	int id2=0;
-	if(GetSelectedChoice(_id))
-		id2 = GetNext2(_id);
-	else
-		id2 = GetNext(_id);
+	int id2 = 0;
+	if(GetSelectedChoice(_id)) id2 = GetNext2(_id);
+	else id2 = GetNext(_id);
 	if (id2 == 0 || id3 ==0)// no more swap down
 		return;
-
 	Swap(mDialogs[id2].next, mDialogs[_id].next, mDialogs[id3].next);
 	Swap(mDialogs[id2].next2, mDialogs[_id].next2, mDialogs[id3].next2);
 	Swap(mDialogs[id2].selectedChoice, mDialogs[_id].selectedChoice, mDialogs[id3].selectedChoice);
 }
+
+/*!*****************************************************************************
+\brief
+Swap with previous dialogue item.
+
+\param int _id
+Id of dialogue item to be swapped.
+*******************************************************************************/
 void DialogManager::SwapPrev(int _id) {
 	int id2 = GetPrev(_id);
 	int id3 = GetPrev(id2);
@@ -345,23 +379,35 @@ void DialogManager::SwapPrev(int _id) {
 	Swap(mDialogs[_id].next2, mDialogs[id2].next2, mDialogs[id3].next2);
 	Swap(mDialogs[_id].selectedChoice, mDialogs[id2].selectedChoice, mDialogs[id3].selectedChoice);
 }
-void DialogManager::Swap(int& _id, int& _id2, int& _id3)
-{
+
+/*!*****************************************************************************
+\brief
+Swap function.
+
+\param int _id, _id2, _id3
+Swaps the 3 parameter. 3 > 1 > 2 > 3.
+*******************************************************************************/
+void DialogManager::Swap(int& _id, int& _id2, int& _id3) {
 	int tmp = _id3;
 	_id3 = _id2;
 	_id2 = _id;
 	_id = tmp;
 }
+
+/*!*****************************************************************************
+\brief
+Retrieves the previous dialogue item.
+
+\param int _id
+Id of current dialogue item.
+*******************************************************************************/
 int DialogManager::GetPrev(int _id) {
 	for (std::pair<int, Dialog> dialog : mDialogs)
-	{
 		if (dialog.second.next == _id || dialog.second.next2 == _id)
-		{
 			return dialog.first;
-		}
-	}
 	return 0;
 }
+
 /*!*****************************************************************************
 \brief
 Clear the member map mDialogs.

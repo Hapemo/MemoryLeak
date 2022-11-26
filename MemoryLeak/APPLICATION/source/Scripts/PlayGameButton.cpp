@@ -4,9 +4,9 @@
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
-\date 02-11-2022
+\date 24-11-2022
 \brief
-This file contains the function definitions of the class PlayGameButton.
+The PlayGameButton script starts the game (level 1) on button press.
 *******************************************************************************/
 
 #include "PlayGameButton.h"

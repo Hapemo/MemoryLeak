@@ -161,7 +161,7 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Creates a new dialog item.
+	Creates a new dialog item from scratch.
 
 	\param int _id
 	The id of the new dialog item.
@@ -179,12 +179,73 @@ public:
 	The dialog id of the second choice.
 	*******************************************************************************/
 	void CreateNewDialogue(int _id, std::string _text, int _speaker, int _next, int _next2 = -1);
+
+	/*!*****************************************************************************
+	\brief
+	Adds a new dialogue.
+
+	\param int _previd
+	The id of the previous dialog item.
+
+	\param std::string _text
+	The text of the new dialog item.
+
+	\param int _speaker
+	The speaker id of the new dialog item.
+	*******************************************************************************/
 	void AddNewDialogue(int _previd, std::string _text, int _speaker);
-	void AddNewDialogue2(int _previd, std::string _text, int _speaker); //for second choice
+
+	/*!*****************************************************************************
+	\brief
+	Adds a new dialogue for second option.
+
+	\param int _previd
+	The id of the previous dialog item.
+
+	\param std::string _text
+	The text of the new dialog item.
+
+	\param int _speaker
+	The speaker id of the new dialog item.
+	*******************************************************************************/
+	void AddNewDialogue2(int _previd, std::string _text, int _speaker);
+
+	/*!*****************************************************************************
+	\brief
+	Swap with next dialogue item.
+
+	\param int _id
+	Id of dialogue item to be swapped.
+	*******************************************************************************/
 	void SwapNext(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Swap with previous dialogue item.
+
+	\param int _id
+	Id of dialogue item to be swapped.
+	*******************************************************************************/
 	void SwapPrev(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Swap function.
+
+	\param int _id, _id2, _id3
+	Swaps the 3 parameter. 3 > 1 > 2 > 3.
+	*******************************************************************************/
 	void Swap(int& _id, int& _id2, int& _id3);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the previous dialogue item.
+
+	\param int _id
+	Id of current dialogue item.
+	*******************************************************************************/
 	int GetPrev(int _id);
+
 	/*!*****************************************************************************
 	\brief
 	Edit a certain dialog from the member map mDialogs.

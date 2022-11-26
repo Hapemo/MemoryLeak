@@ -6,7 +6,8 @@
 \par Group: Memory Leak Studios
 \date 24-11-2022
 \brief
-This file contains the function declarations of the class BackToGameButton.
+The BackToGameButton script returns the scene to the gameplay on button press.
+Press "ESC" to toggle the pause menu.
 *******************************************************************************/
 
 #pragma once

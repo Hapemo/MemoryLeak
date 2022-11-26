@@ -6,7 +6,7 @@
 \par Group: Memory Leak Studios
 \date 24-11-2022
 \brief
-This file contains the function declarations of the class BackToMainMenuButton.
+The BackToMainMenuButton script returns the scene to the main menu on button press.
 *******************************************************************************/
 
 #pragma once

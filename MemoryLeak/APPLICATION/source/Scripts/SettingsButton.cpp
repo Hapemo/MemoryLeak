@@ -6,7 +6,7 @@
 \par Group: Memory Leak Studios
 \date 24-11-2022
 \brief
-This file contains the function definitions of the class SettingsButton.
+The SettingsButton script activates the "Settings" scene on button press.
 *******************************************************************************/
 
 #include "SettingsButton.h"
