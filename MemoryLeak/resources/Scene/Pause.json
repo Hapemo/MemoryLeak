@@ -83,13 +83,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 499.0,
+                "Y": 102.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 72.0
+                "Y": 51.0
             }
         },
         "Sprite": {
@@ -140,7 +140,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -40.0
+                "Y": -61.0
             }
         },
         "Sprite": {
@@ -191,7 +191,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -160.0
+                "Y": -174.0
             }
         },
         "Sprite": {
@@ -207,9 +207,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Resume",
+            "text": "Resume Game",
             "offset": {
-                "X": -84.0,
+                "X": -147.0,
                 "Y": -16.0
             },
             "scale": 1.0,
