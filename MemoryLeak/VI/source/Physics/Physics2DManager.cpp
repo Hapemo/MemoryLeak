@@ -23,7 +23,7 @@ void Physics2DManager::Update(const double& _appDT) {
 		Physics2DManager::mStepMode = !Physics2DManager::mStepMode;
 
 	// Input stepping mode to step
-	if (Input::CheckKey(E_STATE::PRESS, E_KEY::GRAVE_ACCENT))
+	if (Input::CheckKey(E_STATE::PRESS, E_KEY::GRAVE_ACCENT))	// To shift into else block indicating step mode
 		Physics2DManager::mAdvanceStep = true;
 
 
@@ -46,7 +46,7 @@ void Physics2DManager::Update(const double& _appDT) {
 	// In step mode
 	else {
 		// Reset accumulatedDT for next time we are not in step mode
-		Physics2DManager::mAccumulatedDT = 0.0;
+		Physics2DManager::mAccumulatedDT = 0.0;	// To shift into if condition checking for step mode toggle
 		// Check if we should step (key pressed)
 		if (Physics2DManager::mAdvanceStep) {
 			// Execute a simulation tick of physics using defined fixedDT
