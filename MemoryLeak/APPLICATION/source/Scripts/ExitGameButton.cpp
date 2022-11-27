@@ -42,8 +42,7 @@ void ExitGameButton::UpdateScript(Entity const& gob) {
 			--(gob.GetComponent<Transform>().scale.y);
 	}
 	if(gob.HasComponent<Button>())
-		if (gob.GetComponent<Button>().activated)
-		{
+		if (gob.GetComponent<Button>().activated) {
 			FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 			FUNC->GameStateExit();
 		}

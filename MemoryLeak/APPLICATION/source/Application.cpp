@@ -67,6 +67,8 @@ void Application::SystemInit() {
 #ifdef _EDITOR
   editorManager->Init(); //need loaded resources
 #endif
+  // Set fullscreen for .exe build
+  //Helper::SetFullScreen(true);
 }
 
 void Application::SystemUpdate() {
@@ -102,14 +104,16 @@ void Application::init() {
   // Part 1
   startup();
   SystemInit();
-  //audioManager->PlayBGSound("PIntro", 10);
-//#ifdef _EDITOR
-//  
-//#elif
-//  audioManager->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::EDITORSONG);
-//#endif
-  //audioManager->PlayBGSound("MENUBG", 10);
+
   GameStateManager::GetInstance()->Init();
+
+#ifdef NDEBUG
+#ifdef _EDITOR
+#else
+  renderManager->Render();
+  Helper::SetFullScreen(true);
+#endif
+#endif
 }
 
 bool Application::FirstUpdate() {
@@ -259,15 +263,16 @@ void Application::PrintTitleBar(double _s) {
     // write window title with current fps ...
     std::stringstream sstr;
 
-
+#if _DEBUG
     sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " 
                                                << "GameState: " << mCurrGameStateName << " | "
                                                << "fps: " << FPSManager::fps << " | "
                                                << "dt: " << FPSManager::dt << " | "
                                                << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | ";
-
     if (printDebug) sstr << GET_SYSTEMS_PERFORMANCES();
-
+#else
+    sstr << Application::getTitle();
+#endif
     glfwSetWindowTitle(Application::getWindow(), sstr.str().c_str());
   }
 }
