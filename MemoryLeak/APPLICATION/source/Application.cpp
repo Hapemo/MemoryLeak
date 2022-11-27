@@ -67,6 +67,8 @@ void Application::SystemInit() {
 #ifdef _EDITOR
   editorManager->Init(); //need loaded resources
 #endif
+  // Set fullscreen for .exe build
+  //Helper::SetFullScreen(true);
 }
 
 void Application::SystemUpdate() {
