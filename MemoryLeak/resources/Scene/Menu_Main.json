@@ -82,6 +82,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Start Game",
@@ -119,7 +130,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -165.60400390625
+                "Y": -163.85302734375
             }
         },
         "Sprite": {
@@ -144,6 +155,17 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -176,8 +198,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 511.0,
-                "Y": 114.0
+                "X": 496.0,
+                "Y": 99.0
             },
             "rotation": 0.0,
             "translation": {
@@ -207,6 +229,17 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -331,7 +364,7 @@
             "currentImageIndex": 0
         },
         "Audio": {
-            "path": "BTNCLICK",
+            "path": "Button_Click_SFX",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
