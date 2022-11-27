@@ -35,7 +35,7 @@ void DeathScript::UpdateScript(Entity const& _e) {
 
 	static bool onEntry = false;
 	if (FUNC->EntitiesCollided(player, _e)) onEntry = true;
-	if (onEntry) {
+	if (onEntry && canDie) {
 		static bool capsized = false;
 		FUNC->SetTexture(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
 		if (capsized == false) {
