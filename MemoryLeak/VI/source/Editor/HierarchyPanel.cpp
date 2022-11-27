@@ -53,7 +53,7 @@ void HierarchyPanel::Update()
 				{
 					//ImGui::PopID();
 					static std::string gsName = (*mGameStates)[g].mName;
-					if (selectedGameState != g)
+					if (selectedGameState != g && isScenePaused)
 					{
 						//if(hack)
 						//for (const Entity& e : *myEntities)//REMOVEME aft jazz
@@ -106,7 +106,7 @@ void HierarchyPanel::Update()
 					{
 						if (ImGui::BeginTabItem("All"))
 						{
-							if (selectedScene != 99)
+							if (selectedScene != 99 && isScenePaused)
 							{
 								SceneReset();
 								for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
@@ -143,7 +143,7 @@ void HierarchyPanel::Update()
 							if (ImGui::BeginTabItem((*mGameStates)[g].mScenes[s].mName.c_str()))
 							{
 								//ImGui::PopID();
-								if (selectedScene != s)
+								if (selectedScene != s && isScenePaused)
 								{
 									if (hack)
 									for (const Entity& e : *myEntities)//REMOVEME aft jazz

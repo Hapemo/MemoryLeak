@@ -131,7 +131,7 @@ public:
 	\param std::string const&
 	- Name of game state to set to
 	*******************************************************************************/
-	void SetGameState(std::string const& _name);
+	int SetGameState(std::string const& _name);
 	
 	/*!*****************************************************************************
 	Rename a game state
