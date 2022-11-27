@@ -48,7 +48,7 @@ void BackToGameButton::UpdateScript(Entity const& gob) {
 		(FUNC->SelectScene("Settings")).Pause(true);
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(true);
-		(FUNC->SelectScene("Quit_Confirmation")).Pause(true);
+		(FUNC->SelectScene("Quit Confirmation")).Pause(true);
 		(FUNC->SelectScene("Level1")).Pause(false);
 		//FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
@@ -58,7 +58,7 @@ void BackToGameButton::UpdateScript(Entity const& gob) {
 		(FUNC->SelectScene("Settings")).Pause(true);
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(true);
-		(FUNC->SelectScene("Quit_Confirmation")).Pause(true);
+		(FUNC->SelectScene("Quit Confirmation")).Pause(true);
 		(FUNC->SelectScene("Level1")).Pause(false);
 		//FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
