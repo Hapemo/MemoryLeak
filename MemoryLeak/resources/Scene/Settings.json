@@ -398,8 +398,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 511.0,
-                "Y": 114.0
+                "X": 496.0,
+                "Y": 99.0
             },
             "rotation": 0.0,
             "translation": {
@@ -417,6 +417,17 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 8
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         },
         "Text": {
             "fontFile": "CaviarDreams",

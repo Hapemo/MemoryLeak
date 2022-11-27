@@ -86,6 +86,17 @@
                 "Y": 0.20000000298023224
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -147,8 +158,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -257,6 +268,17 @@
                 "Y": 0.6499999761581421
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -343,7 +365,7 @@
         },
         "Audio": {
             "path": "Boat_Row_SFX",
-            "volume": 0.8,
+            "volume": 0.800000011920929,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -415,8 +437,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -479,8 +501,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -543,8 +565,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -607,8 +629,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -627,8 +649,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 210.0,
-                "Y": 253.0
+                "X": 214.5,
+                "Y": 257.5
             },
             "rotation": 0.0,
             "translation": {
@@ -671,8 +693,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -800,8 +822,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -900,8 +922,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -926,7 +948,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 860.1361083984375,
-                "Y": 48.507667541503906
+                "Y": 48.507659912109375
             }
         },
         "Sprite": {
@@ -959,8 +981,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -1080,8 +1102,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -1144,8 +1166,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -1206,6 +1228,17 @@
                 "Y": 0.6700000166893005
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     },
     {
@@ -1222,7 +1255,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.6777267456054688,
+                "X": 0.677734375,
                 "Y": -1017.7900390625
             }
         },
@@ -1261,8 +1294,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -1403,8 +1436,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -1467,8 +1500,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -1531,8 +1564,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -1595,8 +1628,8 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
+            "path": "Collision_Finalized",
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
