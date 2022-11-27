@@ -120,7 +120,7 @@
             "name": "Quit_Game",
             "tag": 5,
             "subtag": 1,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {

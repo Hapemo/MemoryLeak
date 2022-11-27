@@ -35,8 +35,13 @@ void AttackScript::StartScript(Entity const& _e) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void AttackScript::UpdateScript(Entity const& _e) {
+	static bool raised = false;
 	if (FUNC->EntitiesCollided(player, _e)) {
 		if(visible == 0) {
+			if (!raised) {
+				enemy.GetComponent<SheetAnimation>().currFrameIndex = 0;
+				raised = true;
+			}
 			FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png");
 			enemy.GetComponent<SheetAnimation>().frameCount = 8;
 			enemy.GetComponent<SheetAnimation>().timePerFrame = 0.170f;
@@ -60,6 +65,7 @@ void AttackScript::UpdateScript(Entity const& _e) {
 		}
 	} else {
 		visible = 0;
+		raised = false;
 		FUNC->SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png");
 		enemy.GetComponent<SheetAnimation>().frameCount = 8;
 		enemy.GetComponent<SheetAnimation>().timePerFrame = 0.100f;
