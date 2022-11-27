@@ -254,6 +254,7 @@ Renders debug drawings.
 *******************************************************************************/
 void RenderManager::RenderDebug()
 {
+	//overlay for game camera to see where it is
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 	{
 		Color blue{ 255,0,0,100 };
@@ -371,6 +372,7 @@ void RenderManager::RenderDebug()
 		}
 	}
 
+	//make overlay for selected entities in the editor
 	for (const Entity& e : mEditorSelectedEntities)
 	{
 		if (!e.HasComponent<General>()) continue;
@@ -568,6 +570,7 @@ void RenderManager::RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo
 	mAllocator.UnbindVAO();
 	mTextureProgram.Unbind();
 
+	//creating minimap image
 	if (minimap.id != 0)
 	{
 		std::vector<Vertex> minimapVertex;
