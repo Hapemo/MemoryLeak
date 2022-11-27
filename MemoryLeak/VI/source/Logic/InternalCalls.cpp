@@ -249,3 +249,27 @@ void InternalCalls::InitScriptWindow(int* _windowWidth, int* _windowHeight) {
 	windowWidth = _windowWidth;
 	windowHeight = _windowHeight;
 }
+
+/*!*****************************************************************************
+\brief
+	Plays a single background sound
+*******************************************************************************/
+void InternalCalls::PlayAnySound(std::string _name, int _channel) {
+	audioManager->PlayAnySound(_name, _channel);
+}
+
+/*!*****************************************************************************
+\brief
+   Checks if a channel is playing
+*******************************************************************************/
+bool InternalCalls::IsPlaying(int _channel) {
+	return audioManager->isPlaying(_channel);
+}
+
+/*!*****************************************************************************
+\brief
+	Plays a single background sound
+*******************************************************************************/
+void InternalCalls::PlayBGSound(std::string _name, int _channel) {
+	audioManager->PlayBGSound(_name, _channel);
+}

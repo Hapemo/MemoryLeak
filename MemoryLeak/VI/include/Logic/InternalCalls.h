@@ -215,4 +215,22 @@ public:
 	Should be called in application's init
 	*******************************************************************************/
 	void InitScriptWindow(int* _windowWidth, int* _windowHeight);
+
+	/*!*****************************************************************************
+	\brief
+		Plays a single background sound
+	*******************************************************************************/
+	void PlayAnySound(std::string _name, int _channel);
+
+	/*!*****************************************************************************
+	\brief
+	   Checks if a channel is playing
+	*******************************************************************************/
+	bool IsPlaying(int _channel);
+
+	/*!*****************************************************************************
+	\brief
+		Plays a single background sound
+	*******************************************************************************/
+	void PlayBGSound(std::string _name, int _channel);
 };

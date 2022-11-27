@@ -48,7 +48,7 @@ void BackToMainMenuButton::UpdateScript(Entity const& gob) {
 			(FUNC->SelectScene("Quit Confirmation")).Pause(true);
 			(FUNC->SelectScene("Menu_Main")).Pause(false);
 			(FUNC->SelectScene("Pause")).Pause(false);
-			audioManager->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+			FUNC->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 		}
 }
 

@@ -28,16 +28,12 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void PlayGameButton::UpdateScript(Entity const& gob) {
 	static bool first = true;
-	if (first)
-	{
-		audioManager->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+	if (first) {
+		FUNC->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 		first = false;
 	}
-	if (!audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
-	{
-		audioManager->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
-	}
-
+	if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
+		FUNC->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 
 	static float x = gob.GetComponent<Transform>().scale.x;
 	static float y = gob.GetComponent<Transform>().scale.y;
@@ -54,17 +50,15 @@ void PlayGameButton::UpdateScript(Entity const& gob) {
 			--(gob.GetComponent<Transform>().scale.y);
 	}
 
-
 	if(gob.HasComponent<Button>())
-		if (gob.GetComponent<Button>().activated)
-		{
+		if (gob.GetComponent<Button>().activated) {
 			FUNC->ChangeGameState("Level1");
 			(FUNC->SelectScene("Settings")).Pause(true);
 			(FUNC->SelectScene("How_To_Play")).Pause(true);
 			(FUNC->SelectScene("Pause")).Pause(true);
 			(FUNC->SelectScene("Level1")).Pause(false);
-			audioManager->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
-			audioManager->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+			FUNC->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+			FUNC->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 			first = false;
 		}
 }

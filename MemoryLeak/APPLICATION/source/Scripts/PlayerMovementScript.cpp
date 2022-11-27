@@ -31,9 +31,8 @@ void PlayerMovementScript::StartScript(const Entity& _e) {
 }
 
 void PlayerMovementScript::UpdateScript(const Entity& _e) {
-	if (!audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
-	{
-		audioManager->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+	if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))	{
+		FUNC->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 	}
 	if (_e.HasComponent<Audio>())
 		_e.GetComponent<Audio>().sound.volume = 0.0f;
@@ -61,6 +60,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(false);
 		(FUNC->SelectScene("Level1")).Pause(true);
+		FUNC->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 
 	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT)) {
