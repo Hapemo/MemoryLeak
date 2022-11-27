@@ -17,7 +17,7 @@ The PauseButton script pauses the game on button press.
 class PauseButton : public ScriptComponent {
 private:
 	std::string name = "PauseButton";
-
+	bool init;
 public:
 	PauseButton() = default;
 	~PauseButton() override = default;

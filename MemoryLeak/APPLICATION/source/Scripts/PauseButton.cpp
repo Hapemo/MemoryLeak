@@ -19,6 +19,7 @@ Function will run on initialisation of the entity.
 *******************************************************************************/
 void PauseButton::StartScript(Entity const& gob) {
 	(void)gob;
+	init = false;
 	//LOG_INFO("Back to Main Menu button script starts works!!!");
 }
 
@@ -27,6 +28,11 @@ void PauseButton::StartScript(Entity const& gob) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void PauseButton::UpdateScript(Entity const& gob) {
+	if (!init && gob.HasComponent<Button>())
+	{
+		init = true;
+		gob.GetComponent<Button>().activated = false;
+	}
 	if (gob.HasComponent<Button>()) {
 		static float x = gob.GetComponent<Transform>().scale.x;
 		static float y = gob.GetComponent<Transform>().scale.y;
@@ -43,12 +49,14 @@ void PauseButton::UpdateScript(Entity const& gob) {
 				--(gob.GetComponent<Transform>().scale.y);
 		}
 		if (gob.GetComponent<Button>().activated) {
+			init = false;
 			Scene& menuScene{ FUNC->SelectScene("Menu_Main") };
 			if (menuScene.mName != "Error") { // If it's at main menu
 				menuScene.Pause(false);
 				(FUNC->SelectScene("Quit Confirmation")).Pause(true);
 				FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
-			} else { // if it's game pause
+			}
+			else { // if it's game pause
 				(FUNC->SelectScene("Settings")).Pause(true);
 				(FUNC->SelectScene("How_To_Play")).Pause(true);
 				(FUNC->SelectScene("Level1")).Pause(true);
@@ -66,5 +74,6 @@ Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void PauseButton::EndScript(Entity const& gob) {
 	(void)gob;
+
 	//LOG_INFO("Back to Main Menu button script end works!!!");
 }
