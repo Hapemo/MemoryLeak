@@ -47,7 +47,6 @@ void SettingsButton::UpdateScript(Entity const& gob) {
 		if (gob.GetComponent<Button>().activated) {
 			(FUNC->SelectScene("Menu_Main")).Pause(true);
 			(FUNC->SelectScene("Settings")).Pause(false);
-			//FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 		}
 	}
 }

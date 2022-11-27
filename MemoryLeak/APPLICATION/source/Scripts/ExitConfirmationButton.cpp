@@ -50,8 +50,8 @@ void ExitConfirmationButton::UpdateScript(Entity const& gob) {
 		(FUNC->SelectScene("Pause")).Pause(true);
 		(FUNC->SelectScene("Level1")).Pause(true);
 		(FUNC->SelectScene("Menu_Main")).Pause(true);
+		(FUNC->SelectScene("Game Over")).Pause(true);
 		(FUNC->SelectScene("Quit Confirmation")).Pause(false);
-		//FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 }
 

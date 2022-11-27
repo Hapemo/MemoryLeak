@@ -180,7 +180,7 @@
             }
         },
         "Script": {
-            "name": "ExitGameButton"
+            "name": "ExitConfirmationButton"
         },
         "Button": {
             "interactable": true
