@@ -1,8 +1,10 @@
 The game movement is done via mouse click, player will move in the direction of the mouse cursor.
 
 Here are some cheat codes implemented for the game:
-
-
+"CTRL+SHIFT+B" to increase player speed
+"CTRL+SHIFT+N" to skip dialogue scene
+"CTRL+SHIFT+L" to go to lose screen
+"CTRL+SHIFT+M" to toggle player invincibility
 
 
 Flow of the menu
