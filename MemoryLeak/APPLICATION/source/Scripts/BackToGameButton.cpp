@@ -51,8 +51,6 @@ void BackToGameButton::UpdateScript(Entity const& gob) {
 		audioManager->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 
-	LOG_DEBUG((activate ? "true" : "false"));
-
 	if (activate && FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ESCAPE)) {
 		activate = false;
 		(FUNC->SelectScene("Settings")).Pause(true);
