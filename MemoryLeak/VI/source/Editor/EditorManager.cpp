@@ -132,7 +132,7 @@ None.
 *******************************************************************************/
 void EditorManager::Init()
 {
-	
+	isFullScreen = false;
 	isScenePaused = true;
 	selectedEntity = nullptr;
 	aspect = false;
