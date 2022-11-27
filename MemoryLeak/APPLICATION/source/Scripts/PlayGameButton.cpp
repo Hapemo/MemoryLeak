@@ -29,11 +29,11 @@ Function will run on every update while the entity is active.
 void PlayGameButton::UpdateScript(Entity const& gob) {
 	static bool first = true;
 	if (first) {
-		FUNC->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+		FUNC->PlayBGSound("SwampNightTime_Loop", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 		first = false;
 	}
 	if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
-		FUNC->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+		FUNC->PlayBGSound("SwampNightTime_Loop", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 
 	static float x = gob.GetComponent<Transform>().scale.x;
 	static float y = gob.GetComponent<Transform>().scale.y;
@@ -57,7 +57,6 @@ void PlayGameButton::UpdateScript(Entity const& gob) {
 			(FUNC->SelectScene("How_To_Play")).Pause(true);
 			(FUNC->SelectScene("Pause")).Pause(true);
 			(FUNC->SelectScene("Level1")).Pause(false);
-			//FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 			FUNC->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 			first = false;
 		}

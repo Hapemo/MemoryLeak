@@ -829,7 +829,7 @@ void InspectorPanel::Point2DColliderEditor()
 }
 void InspectorPanel::AudioEditor()
 {
-	if (ImGui::CollapsingHeader("Audio") || true) {
+	if (ImGui::CollapsingHeader("Audio")) {
 		//ImGui::Text("Audio");
 		ImGui::InputText("Add Sound Path", &e.GetComponent<Audio>().sound.path);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);

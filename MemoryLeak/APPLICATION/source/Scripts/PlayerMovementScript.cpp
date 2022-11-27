@@ -57,19 +57,20 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE)) {
 		(FUNC->SelectScene("Settings")).Pause(true);
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
-		(FUNC->SelectScene("Pause")).Pause(false);
 		(FUNC->SelectScene("Level1")).Pause(true);
-		FUNC->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+		(FUNC->SelectScene("Game Over")).Pause(true);
+		(FUNC->SelectScene("Pause")).Pause(false);
+		FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 
-	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT)) {
-		if (FUNC->CheckKey(PRESS, L)) {
+	if (FUNC->CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && FUNC->CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT)) {
+		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::L)) {
 			(FUNC->SelectScene("Level1")).Pause(true);
 			(FUNC->SelectScene("Game Over")).Pause(false);
 			_e.Deactivate();
 		}
-		if (FUNC->CheckKey(PRESS, M)) canDie = !canDie;
-		if (FUNC->CheckKey(PRESS, B)) speedCheat = !speedCheat; // speed cheat toggle
+		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::M)) canDie = !canDie;
+		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::B)) speedCheat = !speedCheat; // speed cheat toggle
 	}
 
 	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) && (!FUNC->EntitiesCollided(enemy, _e) || !canDie)) {

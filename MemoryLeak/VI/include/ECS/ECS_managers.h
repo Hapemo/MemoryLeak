@@ -447,7 +447,7 @@ T& Entity::GetComponent(SAFE safe) const {
 	if (Coordinator::GetInstance()->HasComponent<T>(id))
 		return Coordinator::GetInstance()->GetComponent<T>(id);
 	else {
-		LOG_ERROR("Unable to find component \"" + typeid(T).name() + "\" for entity: " + std::to_string(id));
+		LOG_ERROR("Unable to find component \"" + std::string(typeid(T).name()) + "\" for entity: " + std::to_string(id));
 		return errorComponent;
 	}
 }

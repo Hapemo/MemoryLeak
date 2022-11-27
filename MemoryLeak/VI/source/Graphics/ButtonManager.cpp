@@ -39,6 +39,7 @@ void ButtonManager::Update()
 {
 	for (const Entity& e : mEntities)
 	{
+		if (!e.ShouldRun()) continue;
 		e.GetComponent<Button>().isHover = CheckHover(e);
 		e.GetComponent<Button>().isClick = CheckClick(e);
 		e.GetComponent<Button>().activated = CheckActivate(e);
@@ -105,4 +106,11 @@ bool ButtonManager::CheckActivate(const Entity& _e)
 		return true;
 	}
 	return false;
+}
+
+void ButtonManager::ResetAllButtons()
+{
+	for (auto& e : mEntities) {
+		e.GetComponent<Button>(safe).activated = false;
+	}
 }
