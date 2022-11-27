@@ -106,7 +106,7 @@ void HierarchyPanel::Update()
 					{
 						if (ImGui::BeginTabItem("All"))
 						{
-							if (selectedScene != 99 && isScenePaused)
+							if (selectedScene != 99)
 							{
 								SceneReset();
 								for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
@@ -143,7 +143,7 @@ void HierarchyPanel::Update()
 							if (ImGui::BeginTabItem((*mGameStates)[g].mScenes[s].mName.c_str()))
 							{
 								//ImGui::PopID();
-								if (selectedScene != s && isScenePaused)
+								if (selectedScene != s)
 								{
 									if (hack)
 									for (const Entity& e : *myEntities)//REMOVEME aft jazz
