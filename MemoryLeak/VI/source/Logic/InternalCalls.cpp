@@ -229,7 +229,12 @@ bool InternalCalls::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
 Exits the game.
 *******************************************************************************/
 void InternalCalls::GameStateExit() {
+#ifdef _EDITOR
+	editorManager->SetScenePaused(true);
+	editorManager->SetFullScreen(false);
+#elif
 	GameStateManager::GetInstance()->GameStateExit();
+#endif // _EDITOR
 }
 
 /*!*****************************************************************************

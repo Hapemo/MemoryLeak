@@ -47,7 +47,9 @@ public:
 	bool IsScenePaused() { return isScenePaused; }
 	void SetScenePaused(bool _paused) { isScenePaused = _paused; }
 	Math::Vec2 GetEditorWorldMousePos() { return mWorldMousePos; }
-
+	bool IsFullScreen() { return isFullScreen; }
+	void SetFullScreen(bool _isfull) { isFullScreen = _isfull; }
+	
 	using PrefabPtr = std::shared_ptr<Prefab>;
 
 private:
