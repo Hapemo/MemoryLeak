@@ -104,14 +104,16 @@ void Application::init() {
   // Part 1
   startup();
   SystemInit();
-  //audioManager->PlayBGSound("PIntro", 10);
-//#ifdef _EDITOR
-//  
-//#elif
-//  audioManager->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::EDITORSONG);
-//#endif
-  //audioManager->PlayBGSound("MENUBG", 10);
+
   GameStateManager::GetInstance()->Init();
+
+#ifdef NDEBUG
+#ifdef _EDITOR
+#else
+  renderManager->Render();
+  Helper::SetFullScreen(true);
+#endif
+#endif
 }
 
 bool Application::FirstUpdate() {
