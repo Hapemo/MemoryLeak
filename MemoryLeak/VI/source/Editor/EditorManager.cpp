@@ -201,7 +201,7 @@ void EditorManager::Update()
 		if(audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
 			audioManager->StopSound((int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 		else if(!audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))
-			audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
+			audioManager->PlayBGSound("CallMeMaybe", (int)E_AUDIO_CHANNEL::EDITORSONG);
 
 	}
 	if (!isScenePaused && audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))//scene playing
