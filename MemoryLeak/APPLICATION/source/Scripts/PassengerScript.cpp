@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file PassengerScript.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Course: CSD2400
+\par Group: Memory Leak Studios
+\date 27-11-2022
+\brief
+Allow the passenger to be picked up and dropped off by the player
+*******************************************************************************/
 #include "PassengerScript.h"
 
 

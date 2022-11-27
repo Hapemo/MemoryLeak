@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 SparseSet is a design pattern that contains 2 arrays, one shallow one dense.
 Shallow array contains key pointing to addresses in dense array

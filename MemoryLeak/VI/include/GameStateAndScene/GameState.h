@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 GameState is a container that manages a range of scenes. It acts as manager for
 the scenes. Only 1 gmae state should be loaded and running in the game at a 
 time.
