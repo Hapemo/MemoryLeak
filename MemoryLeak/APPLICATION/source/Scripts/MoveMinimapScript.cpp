@@ -1,3 +1,13 @@
+/*!*****************************************************************************
+\file	MoveMinimapScript.h
+\author Kew Yu Jun
+\par	DP email: k.yujun@digipen.edu
+\par	Course: GAM200
+\par	Group: Memory Leak Studios
+\date	26-11-2022
+\brief  This file contains the declaration of the MoveMinimapScript class
+		that defines the game logic used to move the minimap
+*******************************************************************************/
 #include "MoveMinimapScript.h"
 
 REGISTER_SCRIPT(ScriptComponent, MoveMinimapScript);
