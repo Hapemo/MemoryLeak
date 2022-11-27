@@ -232,7 +232,7 @@ void InternalCalls::GameStateExit() {
 #ifdef _EDITOR
 	editorManager->SetScenePaused(true);
 	editorManager->SetFullScreen(false);
-#elif
+#else
 	GameStateManager::GetInstance()->GameStateExit();
 #endif // _EDITOR
 }
