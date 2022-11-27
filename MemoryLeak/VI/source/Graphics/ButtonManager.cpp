@@ -107,3 +107,10 @@ bool ButtonManager::CheckActivate(const Entity& _e)
 	}
 	return false;
 }
+
+void ButtonManager::ResetAllButtons()
+{
+	for (auto& e : mEntities) {
+		e.GetComponent<Button>(safe).activated = false;
+	}
+}

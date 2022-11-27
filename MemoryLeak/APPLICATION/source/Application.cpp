@@ -136,6 +136,8 @@ void Application::SecondUpdate() {
   
   // Reset input
   Input::UpdatePrevKeyStates();
+  buttonManager->ResetAllButtons();
+
   // Part 2: swap buffers: front <-> back
   glfwSwapBuffers(Application::getWindow());
 
