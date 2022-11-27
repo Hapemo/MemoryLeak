@@ -98,7 +98,10 @@ bool ButtonManager::CheckActivate(const Entity& _e)
 	if (CheckHover(_e) && Input::CheckKey(E_STATE::RELEASE, E_KEY::M_BUTTON_L))
 	{
 		if (_e.HasComponent<Audio>())
+		{
+			_e.GetComponent<Audio>().sound.toPlay = true;
 			audioManager->PlaySound(_e);
+		}
 		return true;
 	}
 	return false;
