@@ -58,7 +58,7 @@ private:
 	std::map<std::string, FMOD::Sound*> mDialogueSound;
 	std::vector<FMOD::Channel*> mChannel;
 	std::vector<std::string> songs;
-};
+}; float songVol;
 	enum class E_AUDIO_CHANNEL
 	{
 		FORCEPLAY,

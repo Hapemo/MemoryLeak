@@ -48,7 +48,7 @@ void PauseButton::UpdateScript(Entity const& gob) {
 			(FUNC->SelectScene("Level1")).Pause(true);
 			(FUNC->SelectScene("Quit Confirmation")).Pause(true);
 			(FUNC->SelectScene("Pause")).Pause(false);
-			FUNC->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+			FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 		}
 	}
 }

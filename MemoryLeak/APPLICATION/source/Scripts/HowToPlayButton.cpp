@@ -48,7 +48,7 @@ void HowToPlayButton::UpdateScript(Entity const& gob) {
 			(FUNC->SelectScene("Menu_Main")).Pause(true);
 			(FUNC->SelectScene("Pause")).Pause(true);
 			(FUNC->SelectScene("How_To_Play")).Pause(false);
-			FUNC->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+			FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 		}
 }
 
