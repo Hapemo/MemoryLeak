@@ -29,11 +29,11 @@ Function will run on every update while the entity is active.
 void PlayGameButton::UpdateScript(Entity const& gob) {
 	static bool first = true;
 	if (first) {
-		FUNC->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+		FUNC->PlayBGSound("SwampNightTime_Loop", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 		first = false;
 	}
 	if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
-		FUNC->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+		FUNC->PlayBGSound("SwampNightTime_Loop", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 
 	static float x = gob.GetComponent<Transform>().scale.x;
 	static float y = gob.GetComponent<Transform>().scale.y;
