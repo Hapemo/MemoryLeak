@@ -52,17 +52,17 @@ void PauseButton::UpdateScript(Entity const& gob) {
 			init = false;
 			Scene& menuScene{ FUNC->SelectScene("Menu_Main") };
 			if (menuScene.mName != "Error") { // If it's at main menu
-				menuScene.Pause(false);
 				(FUNC->SelectScene("Quit Confirmation")).Pause(true);
+				menuScene.Pause(false);
 				FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
-			}
-			else { // if it's game pause
+				//FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+			} else { // if it's game pause
 				(FUNC->SelectScene("Settings")).Pause(true);
 				(FUNC->SelectScene("How_To_Play")).Pause(true);
 				(FUNC->SelectScene("Level1")).Pause(true);
 				(FUNC->SelectScene("Quit Confirmation")).Pause(true);
 				(FUNC->SelectScene("Pause")).Pause(false);
-				FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+				//FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 			}
 		}
 	}
