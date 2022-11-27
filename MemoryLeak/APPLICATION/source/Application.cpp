@@ -259,15 +259,16 @@ void Application::PrintTitleBar(double _s) {
     // write window title with current fps ...
     std::stringstream sstr;
 
-
+#if _DEBUG
     sstr << std::fixed << std::setprecision(3) << Application::getTitle() << " | " 
                                                << "GameState: " << mCurrGameStateName << " | "
                                                << "fps: " << FPSManager::fps << " | "
                                                << "dt: " << FPSManager::dt << " | "
                                                << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | ";
-
     if (printDebug) sstr << GET_SYSTEMS_PERFORMANCES();
-
+#else
+    sstr << Application::getTitle();
+#endif
     glfwSetWindowTitle(Application::getWindow(), sstr.str().c_str());
   }
 }
