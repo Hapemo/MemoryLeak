@@ -10,6 +10,7 @@ This file contains function definations for a audio system to play sound in the 
 #include "AudioManager.h"
 #include <sys/stat.h>
 #include <ECSManager.h>
+
 /*!*****************************************************************************
 \brief
     Initializes FMOD
@@ -34,7 +35,7 @@ void AudioManager::Init()
         exit(-1);
     }
     mChannel.resize(20);
-    
+    songVol = 0.05f;
     ///LoadSound();
 }
 
@@ -168,20 +169,20 @@ void AudioManager::UpdateSound()
             break;
         }
     }
-    static float songVol = 0.6f;
+    //static float songVol = 0.05f;
     if (isAnyPlaying)
     {
         songVol = 0.02f;
     }
     else
     {
-        if (songVol < 0.8f)
+        if (songVol < 0.6f)
         {
             songVol += 0.002f;
         }
     }
     mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(songVol);
-    mChannel[(int)E_AUDIO_CHANNEL::MAINBACKGROUND]->setVolume(0.3f+ songVol/4.f); //need manage volume properly aft m3
+    mChannel[(int)E_AUDIO_CHANNEL::MAINBACKGROUND]->setVolume(0.2f+ songVol/4.f); //need manage volume properly aft m3
     /// <REMOVE after M3>
     //static bool wasMinimised = false;
     //if (minimise)   //should check this else where after M3
@@ -334,6 +335,7 @@ void AudioManager::SetALLVolume(float vol)
     {
         mChannel[i]->setVolume(vol);
     }
+    songVol = 0.f;
 }
 /*!*****************************************************************************
 \brief

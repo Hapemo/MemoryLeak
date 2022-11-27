@@ -343,7 +343,7 @@
         },
         "Audio": {
             "path": "Boat_Row_SFX",
-            "volume": 0.10000000149011612,
+            "volume": 0.8,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,

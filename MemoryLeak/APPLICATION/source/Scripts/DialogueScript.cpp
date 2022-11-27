@@ -49,6 +49,7 @@ void DialogueScript::UpdateScript(Entity const& gob) {
 				gob.Deactivate();
 			} else {
 				gob.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
+				FUNC->PlayAnySound("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 			}
 		}
 	}
