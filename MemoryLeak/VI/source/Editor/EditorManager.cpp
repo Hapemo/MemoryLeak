@@ -58,10 +58,14 @@ float EditorManager::copyOffset = 20.f;
 
 int EditorManager::SRT{};
 Math::Vec2 EditorManager::mWorldMousePos = 0;
+bool EditorManager::isFullScreen = false;
 bool EditorManager::isScenePaused = false;;
 int EditorManager::highestLayer =0;
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;
+
+ImGuiWindowFlags EditorManager::windowFlag= ImGuiWindowFlags_None;
+ImGuiWindowFlags EditorManager::GamewindowFlag= ImGuiWindowFlags_None;
 
 /*!*****************************************************************************
 \brief
@@ -113,8 +117,8 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	panels[(int)E_PANELID::PREFABS]= &prefabPanel;
 	panels[(int)E_PANELID::HIERARCHY] = &hierarchyPanel;
 	panels[(int)E_PANELID::INSPECTOR] = &inspectorPanel;
-	panels[(int)E_PANELID::WORLDVIEW] = &gameViewPanel;//8
-	panels[(int)E_PANELID::GAMEVIEW] = &worldViewPanel;//9
+	panels[(int)E_PANELID::WORLDVIEW] = &worldViewPanel;//8
+	panels[(int)E_PANELID::GAMEVIEW] = &gameViewPanel;//9
 
 	//Init();
 	
@@ -140,7 +144,7 @@ void EditorManager::Init()
 		panels[p]->Init();
 	}
 	mGameStates = &GameStateManager::GetInstance()->mGameStates;
-	audioManager->PlayBGSound("BINGBIAN", (int)E_AUDIO_CHANNEL::EDITORSONG);
+	audioManager->PlayBGSound("PayPhone", (int)E_AUDIO_CHANNEL::EDITORSONG);
 	//renderManager->RenderToFrameBuffer();
 }
 
@@ -163,8 +167,17 @@ void EditorManager::Window()
 	ImGuiViewport* viewport = ImGui::GetMainViewport();
 	ImGui::SetNextWindowPos(viewport->Pos);
 	ImGui::SetNextWindowSize(viewport->Size);
-	ImGuiWindowFlags windowFlag = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoTitleBar |ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse
+	if (isFullScreen)
+	{
+		windowFlag = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoMove;
+		GamewindowFlag = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoSavedSettings;
+	}
+	else
+	{
+		windowFlag = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoTitleBar |ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse
 		| ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoMove;
+		GamewindowFlag = ImGuiWindowFlags_NoScrollbar;
+	}
 	ImGui::Begin("Editor", &isOpen, windowFlag);
 	static ImGuiID dockID = ImGui::GetID("Editor");
 	ImGui::DockSpace(dockID, ImVec2(0.f, 0.f));
@@ -213,8 +226,17 @@ void EditorManager::Update()
 	}
 	for (size_t p = 0; p < panels.size(); p++)
 	{
-		if(panels[p]->isActive())
-			panels[p]->Update();
+		if (panels[p]->isActive())
+		{
+			if (!isFullScreen)
+			{
+				if (!isScenePaused && p == (int)E_PANELID::WORLDVIEW)
+					continue;
+				panels[p]->Update();
+			}
+			else
+				panels[(int)E_PANELID::GAMEVIEW]->Update();
+		}
 	}
 
 

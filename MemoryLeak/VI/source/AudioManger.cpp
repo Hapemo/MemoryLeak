@@ -168,10 +168,10 @@ void AudioManager::UpdateSound()
             break;
         }
     }
-    static float songVol = 0.8f;
+    static float songVol = 0.6f;
     if (isAnyPlaying)
     {
-        songVol = 0.05f;
+        songVol = 0.02f;
     }
     else
     {

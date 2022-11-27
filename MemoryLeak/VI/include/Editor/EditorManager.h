@@ -115,12 +115,13 @@ protected:
 	static std::pair<Entity, int> copyEntity;
 	static float copyOffset;
 
-
+	static bool isFullScreen;
 	static bool isScenePaused;
 	static bool isAnimatorEditor;
 	bool isAnimatorEditorFocused(){return isAnimatorEditor;}
 	
-
+	static ImGuiWindowFlags windowFlag;
+	static ImGuiWindowFlags GamewindowFlag;
 	/*static bool isPaused;
 	void SceneManager();
 	void EntityManager();

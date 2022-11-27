@@ -40,6 +40,21 @@ void GameViewPanel::Update()
 		mWorldMousePos = worldMousePos;
 		isViewportPaused = isScenePaused;
 		renderUI();
+		ImGui::SetWindowFontScale(1.2f);
+		//ImGui::SameLine(0.f, 50.f);
+		ImGui::SetCursorPos(ImVec2( ImGui::GetWindowWidth()- buttonSize.x-10.f, 30.f));
+		std::string full{};
+		if (isFullScreen)
+			full = "Minimise";
+		else
+			full = "Full Screen";
+		if (ImGui::Button(full.c_str(), buttonSize))
+		{
+			isFullScreen = !isFullScreen;
+		}
+		ImGui::SetWindowFontScale(1.0f);
+
+
 		isScenePaused = isViewportPaused;
 		CalculateMousePos(E_CAMERA_TYPE::GAME);
 		if (ImGui::IsWindowHovered())

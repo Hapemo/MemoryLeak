@@ -57,8 +57,8 @@ void WorldViewPanel::Update()
 		}
 		//ImGui::SetWindowFontScale(1.0);
 		renderUI();
-		ImGui::SetWindowFontScale(1.5f);
-		ImGui::SameLine(0.f, 50.f);
+		ImGui::SetWindowFontScale(1.3f);
+		ImGui::SameLine(0.f, 30.f);
 		if (ImGui::Button("Reset", buttonSize))
 		{
 			//std::string oldName = (*mGameStates)[selectedGameState].mName;
