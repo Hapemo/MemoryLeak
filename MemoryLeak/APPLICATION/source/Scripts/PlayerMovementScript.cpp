@@ -56,7 +56,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			currScene->mCamera.scale.x += 500 * (float)FUNC->GetDeltaTime();
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
 
-	if (FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ESCAPE)) {
+	if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE)) {
 		(FUNC->SelectScene("Settings")).Pause(true);
 		(FUNC->SelectScene("How_To_Play")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(false);
