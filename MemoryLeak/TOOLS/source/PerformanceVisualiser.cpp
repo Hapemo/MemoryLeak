@@ -114,8 +114,14 @@ std::string PerformanceVisualiser::GetPerformances() {
 	return result;
 }
 
-std::vector < std::pair < std::string, double >> PerformanceVisualiser::GetPerformanceVec()
-{
+/*!*****************************************************************************
+\brief
+Measures and returns a vector of all the systems' performances in percentages.
+
+\return
+Returns a vector populated with all the system performance in percentages.
+*******************************************************************************/
+std::vector < std::pair < std::string, double >> PerformanceVisualiser::GetPerformanceVec() {
 	std::vector < std::pair < std::string, double >> result{};
 	bool firstSystem = true;
 	double totalUsed = 0;
@@ -130,15 +136,11 @@ std::vector < std::pair < std::string, double >> PerformanceVisualiser::GetPerfo
 		double systemSeconds = system.second.first;
 		double systemPercent = (systemSeconds / MainLoop) * 100;
 		if (systemName != "MainLoop") totalUsed += systemPercent;
-		if (systemName != "MainLoop")
-		{
+		if (systemName != "MainLoop") {
 			result.push_back(std::make_pair(systemName, systemPercent));
 			//result.push_back(std::make_pair(systemName, system.second.first));
 		}
 	}
-
-
-
 
 	return result;
 }
