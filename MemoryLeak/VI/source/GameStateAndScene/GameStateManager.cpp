@@ -65,14 +65,13 @@ void GameStateManager::UpdateNextGSMState() {
 		// Changing gamestate to some other gamestate.
 #ifdef _EDITOR
 		std::filesystem::path gsPath{ mNextGSPath };
-		if (!GameStateManager::GetInstance()->SetGameState(gsPath.stem().string()))  //if not already loaded
-		{
+		std::string gsName{ gsPath.stem().string() };
+
+		if (FindGameState(gsName) != mGameStates.end()) { //if not already loaded
 			GameStateManager::GetInstance()->AddGameState(mNextGSPath);
 			//GameStateManager::GetInstance()->ChangeGameState(gsPath.stem().string());
 			GameStateManager::GetInstance()->SetGameState(gsPath.stem().string());
-		}
-		else
-		{
+		} else {
 			GameStateManager::GetInstance()->RemoveGameState(mCurrentGameState);
 			GameStateManager::GetInstance()->AddGameState(gsPath);
 			GameStateManager::GetInstance()->SetGameState(gsPath.stem().string());
@@ -192,7 +191,7 @@ void GameStateManager::RemoveGameState(GameState* _gameState) {
 	LOG_WARN("Unable to find gamestate to remove: " + _gameState->mName);
 }
 
-int GameStateManager::SetGameState(std::string const& _name) {
+bool GameStateManager::SetGameState(std::string const& _name) {
 	for (auto& gs : mGameStates) {
 		if (gs.mName == _name) {
 			// save curr gamestate scene pause, and pause all the scenes

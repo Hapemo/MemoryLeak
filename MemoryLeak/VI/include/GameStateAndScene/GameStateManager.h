@@ -131,7 +131,7 @@ public:
 	\param std::string const&
 	- Name of game state to set to
 	*******************************************************************************/
-	int SetGameState(std::string const& _name);
+	bool SetGameState(std::string const& _name);
 	
 	/*!*****************************************************************************
 	Rename a game state
@@ -151,6 +151,20 @@ public:
 	- Next game state's path
 	*******************************************************************************/
 	void SetNextGSPath(std::string const& _path) { mNextGSPath = _path; }
+
+	/*!*****************************************************************************
+	Find the gamestate name stated. Returns iterator position of gamestate if found,
+	returns end position if not found
+
+	\param std::string const&
+	- Name of game state
+
+	\return std::vector<GameState>::iterator
+	- Iterator position of game state if found, mGameState.end() otherwise.
+	*******************************************************************************/
+	inline std::vector<GameState>::iterator FindGameState(std::string const& _name) {
+		return std::find_if(mGameStates.begin(), mGameStates.end(), [_name] (GameState& gs) -> bool { return gs.mName == _name; });
+	}
 
 	std::vector<GameState> mGameStates{}; // Only 1 in game, multi gamestates allowed during editor mode
 	std::map<std::string,std::vector<bool>> mGameStatesScenesPause; // One std::vector<bool> for each game state to keep record of their pause
