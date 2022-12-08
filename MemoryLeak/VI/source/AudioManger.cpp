@@ -302,7 +302,7 @@ void AudioManager::PlayBGSound(std::string _snd, int _channel)
     {
         mChannel[_channel]->stop();
     }
-    LOG_INFO("Play BG sound");
+    //LOG_INFO("Play BG sound");
     system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
     mChannel[_channel]->setVolume(0.5f);
 }

@@ -42,7 +42,7 @@ void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
 #endif
   audioManager->Init();
-  //logicSystem->Init();
+  logicSystem->Init();
   //aiManager->weatherAIinit();
   
   InternalCalls::GetInstance()->InitScriptWindow(&window_width, &window_height);
@@ -203,6 +203,7 @@ void Application::MainUpdate() {
 }
 
 void Application::exit() {
+    logicSystem->Exit();
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
 #ifdef _EDITOR

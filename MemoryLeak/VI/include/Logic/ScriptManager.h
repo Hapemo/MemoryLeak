@@ -33,22 +33,19 @@ public:
     ~ScriptManager() = default;
 
     void UnloadScripts() {
-#ifdef NDEBUG
-#else
+#ifdef _DEBUG
         std::cout << "Unloading scripts\n";
 #endif
         for (const ScriptPair& script : mScripts) {
             if (script.second != nullptr) {
                 delete script.second;
-#ifdef NDEBUG
-#else
+#ifdef _DEBUG
                 std::cout << "Deleting script: " << script.first << "\n";
 #endif
                 //LOG_INFO("Deleting script: " + script.first);
             } //else LOG_ERROR("Null pointer to script: " + script.first);
             else {
-#ifdef NDEBUG
-#else
+#ifdef _DEBUG
                 std::cout << "Null pointer to script: " << script.first << "\n";
 #endif
             }
@@ -66,8 +63,7 @@ public:
     bool RegisterScript(const std::string _name) {
         Base* script = new Script;
         mScripts.insert({_name, script});
-#ifdef NDEBUG
-#else
+#ifdef _DEBUG
         std::cout << "Registering script: " << _name << "\n";
 #endif
         //LOG_INFO("Registering script: " + _name);
@@ -78,19 +74,18 @@ public:
         const ScriptMap::iterator script = mScripts.find(_name);
         if (script == mScripts.end()) {
             //LOG_ERROR(("Script '" + _name + "' does not exist.").c_str());
-#ifdef NDEBUG
-#else
+#ifdef _DEBUG
             std::cout << "Script '" << _name << "' does not exist." << "\n";
 #endif
             return nullptr; // not a derived class
         }
-        else return script->second;
+        std::cout << "Script '" << _name << "' found." << "\n"; 
+        return script->second;
     }
 
     void PrintRegisteredScripts() {
         //for (const ScriptPair& script : mScripts) LOG_INFO(script.first.c_str());
-#ifdef NDEBUG
-#else
+#ifdef _DEBUG
         for (const ScriptPair& script : mScripts) std::cout << script.first.c_str() << "\n";
 #endif
     }

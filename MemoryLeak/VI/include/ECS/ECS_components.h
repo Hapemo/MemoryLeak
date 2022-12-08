@@ -311,6 +311,7 @@ struct Dialogue
 	int textID;
 	int nextTextID;
 };
+
 /*!*****************************************************************************
 \brief
 	This struct contains the data for Script component
@@ -319,6 +320,7 @@ struct Script {
 	std::string name;
 	//ScriptComponent* script;
 };
+
 /*!*****************************************************************************
 \brief
 This component encapsulates information regarding a lightsource, currently, it

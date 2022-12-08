@@ -14,19 +14,19 @@ The LogicSystem class handles the C# scripting for the engine.
 #include "ECS_tools.h"
 #include "ScriptComponent.h"
 
-//class MScriptComponent;
+class MScriptComponent;
 
 class LogicSystem : public System
 {
 private:
-	//ScriptComponent* monoComponent;
+	MScriptComponent* monoComponent;
 public:
 	/*!*****************************************************************************
 	\brief
 	Default constructor and destructor.
 	*******************************************************************************/
-	LogicSystem();
-	~LogicSystem();
+	LogicSystem() = default;
+	~LogicSystem() = default;
 
 	/*!*****************************************************************************
 	\brief

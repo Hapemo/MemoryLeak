@@ -11,24 +11,25 @@ The LogicSystem class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #include "LogicSystem.h"
-//#include "MScriptComponent.h"
+#include "MScriptComponent.h"
 #include "ScriptManager.h"
 
-LogicSystem::LogicSystem() {
-	//monoComponent = new MScriptComponent;
-	//LOG_DEBUG("Creating new MScriptComponent.");
-}
-
-LogicSystem::~LogicSystem() {
-	//delete monoComponent;
-	//LOG_DEBUG("Deleting new MScriptComponent.");
-}
+//LogicSystem::LogicSystem() {
+//	//LOG_DEBUG("Creating new MScriptComponent.");
+//}
+//
+//LogicSystem::~LogicSystem() {
+//	//LOG_DEBUG("Deleting new MScriptComponent.");
+//}
 
 /*!*****************************************************************************
 \brief
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
+	//ScriptComponent* monoComponent;
+	monoComponent = new MScriptComponent;
+	monoComponent->InitMono();
 	LOG_DEBUG("LOGICSYSYEM INIT.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun()) {
@@ -83,6 +84,8 @@ void LogicSystem::Exit() {
 			else LOG_ERROR("Component script name is empty!");
 		}
 	}
+	monoComponent->CloseMono();
+	delete monoComponent;
 }
 
 /*!*****************************************************************************
