@@ -49,7 +49,7 @@ ResourceManager::TextureData ResourceManager::LoadTexture(const std::string _fil
 	struct stat stats;
 	ResourceData trackResource;
 	const char* filepath = _filepath.c_str();
-	LOG_DEBUG("loading texture:" + _filepath);
+	//LOG_DEBUG("loading texture:" + _filepath);
 	stbi_set_flip_vertically_on_load(true);
 	trackResource.texture.data = stbi_load(filepath, &trackResource.texture.width, &trackResource.texture.height, &trackResource.texture.channels, 0);
 	trackResource.texture.path = filepath;
@@ -229,7 +229,88 @@ ResourceManager::GUID ResourceManager::ReadGUIDFromFile(std::string const& _meta
 
 void ResourceManager::LoadAllResources() {
 	LoadAllResources(std::filesystem::path{resourceFolder});
+	for (std::thread& t : mResourceLoadingThreads)
+		t.join();
 	LoadedAll = true;
+}
+
+void ResourceManager::LoadResource(std::filesystem::path const& entry) {
+	// Skip any meta files
+	const std::string fileName{ entry.filename().string() };
+	if (fileName.find(".meta") != std::string::npos) return;
+
+	// Check for existing meta file
+	std::string metaPath{ entry.string() + ".meta" };
+	GUID guid{};
+	if (FileExist(metaPath))// If exist, get it's guid
+		guid = ReadGUIDFromFile(metaPath);
+	else {									// else make one and get it's guid
+		guid = GUIDGenerator(entry);
+		std::ofstream newMetaFile(metaPath);
+		char* data = static_cast<char*>(static_cast<void*>(&guid));
+		newMetaFile.write(data, sizeof(guid));
+		newMetaFile.close();
+	}
+
+	// Skip subsequent duplicate resources
+	if (LoadedAll) {
+		bool fileLoaded{ false };
+		for (auto& [_guid, _fileName] : mAllFilePaths) {
+			if (_fileName == entry.string()) {
+				fileLoaded = true;
+				break;
+			}
+		}
+
+		if (fileLoaded) return;
+		LOG_INFO("RESOURCE MANAGER: loading new resources midway through editor: " + entry.string());
+	}
+
+	// Open and store resources, then linking them to their guid
+	E_RESOURCETYPE resourceType{ CheckResourceType(entry) };
+	//ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
+	if (resourceType == E_RESOURCETYPE::error || resourceType == E_RESOURCETYPE::prefab) return;
+
+	void* dataPointer{};
+
+	switch (resourceType) {
+	case E_RESOURCETYPE::texture:
+		dataPointer = new TextureData;
+		*(static_cast<TextureData*>(dataPointer)) = LoadTexture(entry.string());
+		break;
+
+	case E_RESOURCETYPE::audio:
+		// entry.string() gives the path of the file. eg. "..\\resources\\Audio\\SHOOT1.wav"
+		/*dataPointer = static_cast<void*>*/(audioManager->LoadAudio(entry));
+		break;
+
+	case E_RESOURCETYPE::script:
+
+		break;
+
+	case E_RESOURCETYPE::scene:
+		//dataPointer = new SceneData;
+		//*(static_cast<SceneData*>(dataPointer)) = SerializationManager::LoadSceneData(entry.string());
+		break;
+
+	case E_RESOURCETYPE::gamestateEntities:
+		//dataPointer = new GameStateData;
+		//*(static_cast<GameStateData*>(dataPointer)) = SerializationManager::LoadGameStateData(entry.string());
+		break;
+
+	case E_RESOURCETYPE::dialogue:
+
+		break;
+	case E_RESOURCETYPE::font:
+
+		break;
+	case E_RESOURCETYPE::prefab:
+
+		break;
+	}
+	mAllResources.insert({ guid, dataPointer });
+	mAllFilePaths.insert({ guid, entry.string() });
+	//std::cout << "GUID: " << guid << " | File: " << entry.string() << '\n';
 }
 
 void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
@@ -239,83 +320,12 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 			LoadAllResources(entry);
 			continue;
 		}
-		// Skip any meta files
-		const std::string fileName{ entry.filename().string() };
-		if (fileName.find(".meta") != std::string::npos) continue;
-		
-		// Check for existing meta file
-		std::string metaPath{ entry.string() + ".meta" };
-		GUID guid{};
-		if (FileExist(metaPath))// If exist, get it's guid
-			guid = ReadGUIDFromFile(metaPath);
-		else {									// else make one and get it's guid
-			guid = GUIDGenerator(entry);
-			std::ofstream newMetaFile(metaPath);
-			char* data = static_cast<char*>(static_cast<void*>(&guid));
-			newMetaFile.write(data, sizeof(guid));
-			newMetaFile.close();
-		}
-
-		// Skip subsequent duplicate resources
-		if (LoadedAll) {
-			bool fileLoaded { false };
-			for (auto& [_guid, _fileName] : mAllFilePaths) {
-				if (_fileName == entry.string()) {
-					fileLoaded = true;
-					break;
-				}
-			}
-
-			if (fileLoaded) continue;
-			LOG_INFO("RESOURCE MANAGER: loading new resources midway through editor: " + entry.string());
-		}
-
-		// Open and store resources, then linking them to their guid
-		E_RESOURCETYPE resourceType{ CheckResourceType(entry) };
-		//ASSERT(resourceType == E_RESOURCETYPE::error, "Unable to determine resource type");
-		if (resourceType == E_RESOURCETYPE::error || resourceType == E_RESOURCETYPE::prefab) continue;
-
-		void* dataPointer{};
-		
-		switch (resourceType) {
-		case E_RESOURCETYPE::texture:
-			dataPointer = new TextureData;
-			*(static_cast<TextureData*>(dataPointer)) = LoadTexture(entry.string());
-			break;
-
-		case E_RESOURCETYPE::audio:
-			// entry.string() gives the path of the file. eg. "..\\resources\\Audio\\SHOOT1.wav"
-			/*dataPointer = static_cast<void*>*/(audioManager->LoadAudio(entry));
-			break;
-
-		case E_RESOURCETYPE::script:
-			
-			break;
-
-		case E_RESOURCETYPE::scene:
-			//dataPointer = new SceneData;
-			//*(static_cast<SceneData*>(dataPointer)) = SerializationManager::LoadSceneData(entry.string());
-			break;
-
-		case E_RESOURCETYPE::gamestateEntities:
-			//dataPointer = new GameStateData;
-			//*(static_cast<GameStateData*>(dataPointer)) = SerializationManager::LoadGameStateData(entry.string());
-			break;
-
-		case E_RESOURCETYPE::dialogue:
-			
-			break;
-		case E_RESOURCETYPE::font:
-
-			break;
-		case E_RESOURCETYPE::prefab:
-
-			break;
-		}
-		mAllResources.insert({ guid, dataPointer });
-		mAllFilePaths.insert({ guid, entry.string() });
-		//std::cout << "GUID: " << guid << " | File: " << entry.string() << '\n';
+		LoadResource(entry);
+		//mResourceLoadingThreads.push_back(std::thread([this,entry] {LoadResource(entry); }));
+		//mResourceLoadingThreads.push_back(std::thread(&ResourceManager::LoadResource, this, entry));
+		//LoadResource(entry);
 	}
+	
 }
 
 void ResourceManager::UnloadAllResources() {

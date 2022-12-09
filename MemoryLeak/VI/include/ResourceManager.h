@@ -99,6 +99,7 @@ private:
 	std::map<GUID, std::string> mAllFilePaths;
 	unsigned char guidCounter = 0;
 	bool LoadedAll = false;
+	std::vector<std::thread> mResourceLoadingThreads;
 
 public:
 	/*!*****************************************************************************
@@ -268,6 +269,8 @@ public:
 	- Folder/file path to load
 	*******************************************************************************/
 	void LoadAllResources(std::filesystem::path const&);
+
+	void LoadResource(std::filesystem::path const&);
 
 	/*!*****************************************************************************
 	Unload all resources in resource manager. (mAllResources)
