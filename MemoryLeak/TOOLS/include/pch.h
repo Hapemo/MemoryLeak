@@ -26,6 +26,8 @@
 #include <filesystem>
 #include <cstdint>
 #include <time.h>
+#include <thread>
+#include <mutex>
 #include "NFmath.h"
 
 
