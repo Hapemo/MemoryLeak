@@ -11,6 +11,7 @@ The ResourceManager class manages the resources, their data and usage.
 *******************************************************************************/
 
 #pragma once
+#define MultiThread 0 // 1 to multi thread, 0 to not multi thread.
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -60,6 +61,33 @@ ResourceManager::TextureData ResourceManager::LoadTexture(const std::string _fil
 	spriteManager->InitializeTexture(mResources.back().texture);
 	//std::cout << mResources[mResources.size() - 1].texture.path << std::endl;
 	return trackResource.texture;
+}
+
+ResourceManager::TextureData ResourceManager::LoadTextureWithoutOpenGL(const std::string _filepath) {
+	struct stat stats;
+	ResourceData trackResource;
+	//LOG_DEBUG("loading texture:" + _filepath);
+	stbi_set_flip_vertically_on_load(true);
+	trackResource.texture.data = stbi_load(_filepath.c_str(), &trackResource.texture.width, &trackResource.texture.height, &trackResource.texture.channels, 0);
+#if MultiThread
+	myLock.lock();
+#endif
+	trackResource.texture.path = _filepath.c_str();
+	if (stat(trackResource.texture.path.c_str(), &stats) == 0)
+		trackResource.lastModified = stats.st_mtime;
+	++trackResource.usage;
+	mResources.push_back(trackResource);
+#if MultiThread
+	myLock.unlock();
+#endif
+	//spriteManager->InitializeTexture(mResources.back().texture);
+	//std::cout << mResources[mResources.size() - 1].texture.path << std::endl;
+	return trackResource.texture;
+}
+
+void ResourceManager::InitialiseAllTextures() {
+	for (auto& resource : mResources)
+		spriteManager->InitializeTexture(resource.texture);
 }
 
 /*!*****************************************************************************
@@ -224,13 +252,22 @@ ResourceManager::GUID ResourceManager::ReadGUIDFromFile(std::string const& _meta
 	std::ifstream file{ _metaPath };
 	char buffer [sizeof(GUID)];
 	file.read(buffer, sizeof(GUID));
+	file.close();
 	return *(static_cast<GUID*>(static_cast<void*>(buffer)));
 }
 
 void ResourceManager::LoadAllResources() {
+	mResources.reserve(1000); // Predict there is going to be at most 1000 textures, for multi threading
+
 	LoadAllResources(std::filesystem::path{resourceFolder});
+
+//#if MultiThread
 	for (std::thread& t : mResourceLoadingThreads)
 		t.join();
+//#endif
+
+	InitialiseAllTextures();
+	
 	LoadedAll = true;
 }
 
@@ -276,12 +313,20 @@ void ResourceManager::LoadResource(std::filesystem::path const& entry) {
 	switch (resourceType) {
 	case E_RESOURCETYPE::texture:
 		dataPointer = new TextureData;
-		*(static_cast<TextureData*>(dataPointer)) = LoadTexture(entry.string());
+//#if MultiThread
+		*(static_cast<TextureData*>(dataPointer)) = LoadTextureWithoutOpenGL(entry.string());
+		//LoadTextureWithoutOpenGL(entry.string());
+//#else
+		//*(static_cast<TextureData*>(dataPointer)) = LoadTexture(entry.string());
+//#endif
 		break;
 
 	case E_RESOURCETYPE::audio:
 		// entry.string() gives the path of the file. eg. "..\\resources\\Audio\\SHOOT1.wav"
-		/*dataPointer = static_cast<void*>*/(audioManager->LoadAudio(entry));
+		/*dataPointer = static_cast<void*>*/
+		myLock.lock();
+		(audioManager->LoadAudio(entry));
+		myLock.unlock();
 		break;
 
 	case E_RESOURCETYPE::script:
@@ -308,8 +353,11 @@ void ResourceManager::LoadResource(std::filesystem::path const& entry) {
 
 		break;
 	}
+	(void)dataPointer;
+	myLock.lock();
 	mAllResources.insert({ guid, dataPointer });
 	mAllFilePaths.insert({ guid, entry.string() });
+	myLock.unlock();
 	//std::cout << "GUID: " << guid << " | File: " << entry.string() << '\n';
 }
 
@@ -320,8 +368,11 @@ void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
 			LoadAllResources(entry);
 			continue;
 		}
+#if MultiThread
+		mResourceLoadingThreads.push_back(std::thread([this,entry] {LoadResource(entry); }));
+#else
 		LoadResource(entry);
-		//mResourceLoadingThreads.push_back(std::thread([this,entry] {LoadResource(entry); }));
+#endif
 		//mResourceLoadingThreads.push_back(std::thread(&ResourceManager::LoadResource, this, entry));
 		//LoadResource(entry);
 	}

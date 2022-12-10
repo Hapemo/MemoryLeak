@@ -100,6 +100,7 @@ private:
 	unsigned char guidCounter = 0;
 	bool LoadedAll = false;
 	std::vector<std::thread> mResourceLoadingThreads;
+	std::mutex myLock;
 
 public:
 	/*!*****************************************************************************
@@ -156,6 +157,27 @@ public:
 	The filepath of the texture to be loaded.
 	*******************************************************************************/
 	TextureData LoadTexture(const std::string _filepath);
+
+	//==============================================================================
+	// For multi threading
+	
+	/*!*****************************************************************************
+	Does the same thing as LoadTexture, but it does not use sprite manager to
+	initialise the texture, because openGL is not thread safe
+
+	\param const std::string _filepath
+	The filepath of the texture to be loaded.
+	*******************************************************************************/
+	TextureData LoadTextureWithoutOpenGL(const std::string _filepath);
+
+	/*!*****************************************************************************
+	Initialise all textures in openGL side.
+
+	\param const std::string _filepath
+	The filepath of the texture to be loaded.
+	*******************************************************************************/
+	void InitialiseAllTextures();
+	//==============================================================================
 
 	/*!*****************************************************************************
 	Unload a specific texture data by calling stbi image free.
