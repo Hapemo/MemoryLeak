@@ -27,12 +27,20 @@ uint32_t MScriptComponent::m_gameObjectGCHandle = 0;
 std::string MScriptComponent::MonoDirectoryPath() {
 	std::string path = std::filesystem::current_path().parent_path().string() + "\\bin\\";
 #ifdef NDEBUG
-	path += "Release";
+#ifdef _EDITOR
+	path += "EditorRelease";
+#else
+	else path += "Release";
+#endif
+#else
+#ifdef _EDITOR
+	path += "EditorDebug";
 #else
 	path += "Debug";
 #endif
+#endif
 	path += "\\x64";
-	mono_set_assemblies_path("D:\\Heart\\Donts\\GitHub\\Memak\\MemoryLeak\\bin\\Debug\\x64");
+	mono_set_assemblies_path(path.c_str());
 	//mono_set_dirs("D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64", "D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64");
 	path += "\\SCRIPTING";
 	return path;
