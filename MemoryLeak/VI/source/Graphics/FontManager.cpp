@@ -136,7 +136,7 @@ Scale of the font.
 \param const Math::Vec3& _color
 Color of the font.
 *******************************************************************************/
-void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float layer,float _width)
+void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, int layer, float _width)
 {
     if (!mInitialized) return;
     std::vector<std::string> strings;
@@ -154,18 +154,22 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
             width += mGlyphs[ch].size.x * scale;
         wordWidth.push_back(width);
     }
-    mParagraphs.push_back(Paragraph(strings, wordWidth, _pos, scale, color, layer, _width));
+    mParagraphs[layer].push_back(Paragraph(strings, wordWidth, _pos, scale, color, _width));
 }
 /*!*****************************************************************************
 \brief
 Renders all paragraphs stored in mParagraphs.
 *******************************************************************************/
-void FontRenderer::DrawParagraphs()
+void FontRenderer::DrawParagraphs(int _layer)
 {
     if (!mInitialized) return;
+    if (mParagraphs.find(_layer) == mParagraphs.end()) return;
     glm::mat4 _projection = glm::ortho(0.0f, (float) mWindowWidth, 0.0f, (float)mWindowHeight);
 
-    for (Paragraph& para : mParagraphs)
+    float layer = ((_layer + 1) * 2 - 255) / 255.f;
+    layer = layer > 1.f ? 1.f : layer;
+
+    for (Paragraph& para : mParagraphs[_layer])
     {
         float currWidth{};
         Math::Vec2 pos = para.pos;
@@ -173,7 +177,7 @@ void FontRenderer::DrawParagraphs()
         mFontProgram.Bind();
         glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
         glUniform3f(mTextColorLocation, para.color.r, para.color.g, para.color.b);
-        glUniform1f(mZValueLocation, para.layer);
+        glUniform1f(mZValueLocation, layer);
         glActiveTexture(GL_TEXTURE0);
         glBindVertexArray(mVAO);
 
@@ -224,6 +228,10 @@ void FontRenderer::DrawParagraphs()
         glBindTexture(GL_TEXTURE_2D, 0);
         mFontProgram.Unbind();
     }
+}
+
+void FontRenderer::Clear()
+{
     //clear paragraph for next frame
     mParagraphs.clear();
 }

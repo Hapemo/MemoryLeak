@@ -46,8 +46,8 @@ void ShadowManager::MakeShadows(const Entity& _lightsource, std::shared_ptr<Rend
     }
     
     //loop and create triangles for shadows
-    for (int i = 0; i < rays; ++i)
-        _renderMgr->CreateLightingTriangle(pivot, points[i], points[(i + 1 == rays)? 0 : i + 1]);
+    //for (int i = 0; i < rays; ++i)
+    //    _renderMgr->CreateLightingTriangle(pivot, points[i], points[(i + 1 == rays)? 0 : i + 1]);
 }
 /*!*****************************************************************************
 \brief

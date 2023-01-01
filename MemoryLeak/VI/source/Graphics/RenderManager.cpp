@@ -25,8 +25,8 @@ RenderManager::RenderManager()
 	mWorldFBO(), mGameFBO(), mAnimatorFBO(), 
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
-	mMinimapProgram("shaders/texture.vert", "shaders/minimap.frag"),
-	mWindowHeight(nullptr), mWindowWidth(nullptr), minimap(0)
+	/*mMinimapProgram("shaders/texture.vert", "shaders/minimap.frag"),*/
+	mWindowHeight(nullptr), mWindowWidth(nullptr)/*, minimap(0)*/
 {
 	//render world (editor)
 	mRenderGameToScreen = true;
@@ -34,7 +34,7 @@ RenderManager::RenderManager()
 	mVectorLengthModifier = 10.f;
 
 	//initialize opengl values
-	glClearColor(0.537f, 0.812f, 0.941f, 1.f);
+	glClearColor(0.537f, 0.812f, 0.941f, 0.f);
 	glPointSize(8.f);
 	glLineWidth(5.f);
 	glEnable(GL_BLEND);
@@ -43,14 +43,7 @@ RenderManager::RenderManager()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	InitializeShaders();
 	mDebug = false;
-	//reserve space in vectors
-	mVertices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT));
-	mIndices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT));
-	mTextureVertices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT));
-	mTextureIndices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT));
-	mDebugPoints.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER));
-	mDebugVertices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * VERTICES_PER_OBJECT));
-	mDebugIndices.reserve(static_cast<uint64_t>(NO_OF_OBJECTS * MODIFIER * INDICES_PER_OBJECT));
+	mRenderLayers.reserve(255);
 }
 
 /*!*****************************************************************************
@@ -122,24 +115,11 @@ void RenderManager::Render()
 	CreateVertices(textureInfo);
 	/*************************************CREATING VERTICES END**************************************/
 
-	/*************************************TEXTURE BATCHING START*************************************/
-	RenderTextures(textureInfo);
-	/**************************************TEXTURE BATCHING END**************************************/
+	BatchRenderLayers(textureInfo);
 
-	/***********************************SHAPES/DEBUG BATCHING START**********************************/
-	RenderShapes();
-	/***********************************SHAPES/DEBUG BATCHING END************************************/
-
-	/*************************************FONT RENDERING START***************************************/
-	Camera currCam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam
-		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
-	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
-		if (i->second.IsInitialized())
-		{
-			i->second.SetCamZoom(currCam.GetZoom());
-			i->second.DrawParagraphs();
-		}
-	/*************************************FONT RENDERING END*****************************************/
+	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
+	if (mCurrRenderPass == RENDER_STATE::WORLD || mDebug)
+		RenderDebug();
 
 	if (!mRenderGameToScreen)
 	{
@@ -157,11 +137,14 @@ void RenderManager::Render()
 	mDebugPoints.clear();
 	mDebugVertices.clear();
 	mDebugIndices.clear();
+	for (auto itr = mFontRenderers.begin(); itr != mFontRenderers.end(); ++itr)
+		itr->second.Clear();
+
 
 	//recursion for editor viewport
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		Render();
-	minimap.id = 0;
+	//minimap.id = 0;
 }
 
 /*!*****************************************************************************
@@ -184,8 +167,7 @@ GLuint RenderManager::GetAnimatorFBO()
 	std::map<size_t, std::map<GLuint, TextureInfo>> textureInfo;
 
 	CreateVertices(textureInfo);
-	RenderTextures(textureInfo);
-	RenderShapes();
+	BatchRenderLayers(textureInfo);
 
 	mAnimatorFBO.Unbind();
 
@@ -201,6 +183,18 @@ GLuint RenderManager::GetAnimatorFBO()
 
 	return mAnimatorFBO.GetColorAttachment();
 }
+
+void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo)
+{
+	for (int layer : mRenderLayers)
+	{
+		if (_texinfo.find(layer) != _texinfo.end())
+			RenderTextures(_texinfo[layer]);
+		RenderShapes(layer);
+		RenderText(layer);
+	}
+}
+
 
 /*!*****************************************************************************
 \brief
@@ -254,6 +248,10 @@ Renders debug drawings.
 *******************************************************************************/
 void RenderManager::RenderDebug()
 {
+	//use normal program for drawing shapes
+	mDefaultProgram.Bind();
+	mAllocator.BindVAO();
+
 	//overlay for game camera to see where it is
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 	{
@@ -398,7 +396,9 @@ void RenderManager::RenderDebug()
 	BatchRenderArrays(GL_POINTS, mDebugPoints);
 	BatchRenderElements(GL_LINES, mDebugVertices, mDebugIndices);
 	/***************************************DEBUG BATCHING END***************************************/
-
+	//unuse VAO and normal program
+	mAllocator.UnbindVAO();
+	mDefaultProgram.Unbind();
 }
 
 /*!*****************************************************************************
@@ -474,12 +474,15 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 
 		if (e.HasComponent<Sprite>())
 		{
-			if (e.GetComponent<General>().name == "Minimap")
-			{
-				minimap = e;
-				continue;
-			}
+			//if (e.GetComponent<General>().name == "Minimap")
+			//{
+			//	minimap = e;
+			//	continue;
+			//}
 			Sprite sprite = e.GetComponent<Sprite>();
+			if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer) == mRenderLayers.end())
+				mRenderLayers.push_back(sprite.layer);
+
 			switch (sprite.sprite)
 			{
 			case SPRITE::TEXTURE:
@@ -498,7 +501,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			}
 			break;
 			case SPRITE::SQUARE:
-				CreateSquare(e, mVertices, mIndices);
+				CreateSquare(e, mVertices[sprite.layer], mIndices[sprite.layer]);
 				break;
 			case SPRITE::CIRCLE:
 				CreateCircle(e);
@@ -514,13 +517,15 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		CreateGizmo();
+
+	std::sort(mRenderLayers.begin(), mRenderLayers.end());
 }
 
 /*!*****************************************************************************
 \brief
 Rendering of textures
 *******************************************************************************/
-void RenderManager::RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo>>&_texInfo)
+void RenderManager::RenderTextures(std::map<GLuint, TextureInfo>&_texInfo)
 {
 	int samplerUniform[TEXTURES_PER_DRAW];
 	for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
@@ -538,30 +543,26 @@ void RenderManager::RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo
 	usedTexUnits.reserve(TEXTURES_PER_DRAW);
 
 	//iterate over texture map
-	for (std::map<size_t, std::map<GLuint, TextureInfo>>::iterator it = _texInfo.begin(); it != _texInfo.end(); ++it)
+	for (std::map<GLuint, TextureInfo>::iterator it = _texInfo.begin(); it != _texInfo.end(); ++it)
 	{
-		for (std::map<GLuint, TextureInfo>::iterator it2 = it->second.begin(); it2 != it->second.end(); ++it2)
+		//if texture unit is not used, concat vertices
+		if (std::find(usedTexUnits.begin(), usedTexUnits.end(), 
+			it->second.mTextureUnit % TEXTURES_PER_DRAW) == usedTexUnits.end())
 		{
-			//if texture unit is not used, concat vertices
-			if (std::find(usedTexUnits.begin(), usedTexUnits.end(),
-				it2->second.mTextureUnit % TEXTURES_PER_DRAW) == usedTexUnits.end())
-			{
-				BindTextureUnit(it2->first, it2->second, usedTexUnits);
-				++textureCount;
+			BindTextureUnit(it->first, it->second, usedTexUnits);
+			++textureCount;
 
-				//if all texture units are used, draw
-				if (textureCount == TEXTURES_PER_DRAW)
-					BatchRenderTextures(textureCount, usedTexUnits);
-			}
-			//if texture unit is used, render
-			else
-			{
+			//if all texture units are used, draw
+			if (textureCount == TEXTURES_PER_DRAW)
 				BatchRenderTextures(textureCount, usedTexUnits);
-				BindTextureUnit(it2->first, it2->second, usedTexUnits);
-				++textureCount;
-			}
 		}
-		BatchRenderTextures(textureCount, usedTexUnits);
+		//if texture unit is used, render
+		else
+		{
+			BatchRenderTextures(textureCount, usedTexUnits);
+			BindTextureUnit(it->first, it->second, usedTexUnits);
+			++textureCount;
+		}
 	}
 	//render remaining textures if any
 	BatchRenderTextures(textureCount, usedTexUnits);
@@ -571,49 +572,59 @@ void RenderManager::RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo
 	mTextureProgram.Unbind();
 
 	//creating minimap image
-	if (minimap.id != 0)
-	{
-		std::vector<Vertex> minimapVertex;
-		std::vector<GLushort> minimapIndices;
-		CreateSquare(minimap, minimapVertex, minimapIndices);
-		TextureInfo minimapInfo{ (int)minimap.GetComponent<Sprite>().texture - 1, minimapVertex, minimapIndices };
-		int samplerUniform1[TEXTURES_PER_DRAW];
-		for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
-			samplerUniform1[i] = i;
-		//use texture program and bind VAO
-		mMinimapProgram.Bind();
-		mAllocator.BindVAO();
-		mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform1);
-		std::vector<int> usedTexUnits1;
-		usedTexUnits1.reserve(TEXTURES_PER_DRAW);
-		BindTextureUnit(minimap.GetComponent<Sprite>().texture, minimapInfo, usedTexUnits1);
-		int texcount = 1;
-		BatchRenderTextures(texcount, usedTexUnits1);
-		mAllocator.UnbindVAO();
-		mMinimapProgram.Unbind();
-	}
+	//if (minimap.id != 0)
+	//{
+	//	std::vector<Vertex> minimapVertex;
+	//	std::vector<GLushort> minimapIndices;
+	//	CreateSquare(minimap, minimapVertex, minimapIndices);
+	//	TextureInfo minimapInfo{ (int)minimap.GetComponent<Sprite>().texture - 1, minimapVertex, minimapIndices };
+	//	int samplerUniform1[TEXTURES_PER_DRAW];
+	//	for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
+	//		samplerUniform1[i] = i;
+	//	//use texture program and bind VAO
+	//	mMinimapProgram.Bind();
+	//	mAllocator.BindVAO();
+	//	mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform1);
+	//	std::vector<int> usedTexUnits1;
+	//	usedTexUnits1.reserve(TEXTURES_PER_DRAW);
+	//	BindTextureUnit(minimap.GetComponent<Sprite>().texture, minimapInfo, usedTexUnits1);
+	//	int texcount = 1;
+	//	BatchRenderTextures(texcount, usedTexUnits1);
+	//	mAllocator.UnbindVAO();
+	//	mMinimapProgram.Unbind();
+	//}
 }
 
 /*!*****************************************************************************
 \brief
 Rendering of shapes
 *******************************************************************************/
-void RenderManager::RenderShapes()
+void RenderManager::RenderShapes(int _layer)
 {
+	if (mVertices.find(_layer) == mVertices.end()) return;
+
 	//use normal program for drawing shapes
 	mDefaultProgram.Bind();
 	mAllocator.BindVAO();
 
 	//render all shapes
-	BatchRenderElements(GL_TRIANGLES, mVertices, mIndices);
-
-	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
-	if (mCurrRenderPass == RENDER_STATE::WORLD || mDebug)
-		RenderDebug();
+	BatchRenderElements(GL_TRIANGLES, mVertices[_layer], mIndices[_layer]);
 
 	//unuse VAO and normal program
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
+}
+
+void RenderManager::RenderText(int _layer)
+{
+	Camera currCam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam
+		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
+	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
+		if (i->second.IsInitialized())
+		{
+			i->second.SetCamZoom(currCam.GetZoom());
+			i->second.DrawParagraphs(_layer);
+		}
 }
 
 /*!*****************************************************************************
@@ -636,50 +647,6 @@ void RenderManager::BatchRenderTextures(int& _texCount, std::vector<int>& _texUn
 	mTextureVertices.clear();
 	mTextureIndices.clear();
 	_texUnits.clear();
-}
-/*!*****************************************************************************
-\brief
-Creates	a triangle from points. Currently used for shadows.
-
-\param const Math::Vec2& _p0
-The first point of the triangle.
-
-\param const Math::Vec2& _p1
-The second point of the triangle.
-
-\param const Math::Vec2& _p2
-The third point of the triangle.
-*******************************************************************************/
-void RenderManager::CreateLightingTriangle(const Math::Vec2& p0, const Math::Vec2& p1, const Math::Vec2& p2)
-{
-	Math::Mat3 mtx0 = GetTransform({ 0, 0 }, 0, { p0.x, p0.y });
-	Math::Mat3 mtx1 = GetTransform({ 0, 0 }, 0, { p1.x, p1.y });
-	Math::Mat3 mtx2 = GetTransform({ 0, 0 }, 0, { p2.x, p2.y });
-
-	Vertex v0, v1, v2;
-	v0.position = (mtx0 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = 0.f;
-	v0.color = { 1.f, 1.f, 1.f, 1.f };
-	v0.texID = 0;
-
-	v1.position = (mtx1 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v1.position.z = 0.f;
-	v1.color = { 1.f, 1.f, 1.f, 1.f };
-	v1.texID = 0;
-
-	v2.position = (mtx2 * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v2.position.z = 0.f;
-	v2.color = { 1.f, 1.f, 1.f, 1.f };
-	v2.texID = 0;
-
-	mVertices.push_back(v0);
-	mVertices.push_back(v1);
-	mVertices.push_back(v2);
-
-	GLushort first = mIndices.empty() ? 0 : mIndices.back() + 1;
-	mIndices.push_back(first);
-	mIndices.push_back(first + 1);
-	mIndices.push_back(first + 2);
 }
 
 /*!*****************************************************************************
@@ -775,7 +742,7 @@ The entity containing Transform and Sprite component.
 void RenderManager::CreateCircle(const Entity& _e)
 {
 	CreateCircle(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color, 
-		(_e.GetComponent<Sprite>().layer * 2 - 255.f) / 255.f);
+		_e.GetComponent<Sprite>().layer);
 }
 
 /*!*****************************************************************************
@@ -791,36 +758,37 @@ The color component.
 \param float
 layer to render at.
 *******************************************************************************/
-void RenderManager::CreateCircle(const Transform& _xform, const Color& _clr, float _layer)
+void RenderManager::CreateCircle(const Transform& _xform, const Color& _clr, int _layer)
 {
 	Math::Mat3 mtx = GetTransform(_xform.scale, _xform.rotation, _xform.translation);
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
+	float layer = (_layer * 2 - 255) / 255.f;
 
 	float theta = 2.f / CIRCLE_SLICES * 3.14159265f;
 	Vertex v0;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = _layer;
+	v0.position.z = layer;
 	v0.color = clr;
 	v0.texID = 0.f;
-	mVertices.push_back(v0);
+	mVertices[_layer].push_back(v0);
 
 	for (int i = 1; i < CIRCLE_SLICES + 2; ++i)
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = _layer;
+		v.position.z = layer;
 		v.color = clr;
 		v.texID = 0.f;
-		mVertices.push_back(v);
+		mVertices[_layer].push_back(v);
 	}
 
-	GLushort pivot = mIndices.empty() ? 0 : mIndices.back() + 1;
+	GLushort pivot = mIndices[_layer].empty() ? 0 : mIndices[_layer].back() + 1;
 
 	for (GLushort i = 0; i < CIRCLE_SLICES; ++i)
 	{
-		mIndices.push_back(pivot);
-		mIndices.push_back(pivot + 1 + i);
-		mIndices.push_back(pivot + 2 + i);
+		mIndices[_layer].push_back(pivot);
+		mIndices[_layer].push_back(pivot + 1 + i);
+		mIndices[_layer].push_back(pivot + 2 + i);
 	}
 }
 
@@ -1178,11 +1146,11 @@ void RenderManager::InitializeShaders()
 {
 	mDefaultProgram.CompileLinkShaders();
 	mTextureProgram.CompileLinkShaders();
-	mMinimapProgram.CompileLinkShaders();
+	//mMinimapProgram.CompileLinkShaders();
 
 	mDefaultProgram.Validate();
 	mTextureProgram.Validate();
-	mMinimapProgram.Validate();
+	//mMinimapProgram.Validate();
 }
 
 /*!*****************************************************************************
@@ -1256,7 +1224,7 @@ void RenderManager::CreateText(const Entity& _e)
 			: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam.GetZoom() : mAnimatorCam.GetZoom();
 	}
 
-	float layer = 1.f;
+	int layer = 255;
 	if (!_e.HasComponent<Sprite>())
 	{
 		if (!debug)
@@ -1266,7 +1234,7 @@ void RenderManager::CreateText(const Entity& _e)
 		}
 	}
 	else
-		layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
+		layer = _e.GetComponent<Sprite>().layer;
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
@@ -1430,7 +1398,7 @@ void RenderManager::CreateGizmoCircle(const Transform& _t, const Color& _clr)
 	v0.position.z = 1.f;
 	v0.color = clr;
 	v0.texID = 0.f;
-	mVertices.push_back(v0);
+	mVertices[255].push_back(v0);
 
 	for (int i = 1; i < CIRCLE_SLICES + 2; ++i)
 	{
@@ -1439,16 +1407,16 @@ void RenderManager::CreateGizmoCircle(const Transform& _t, const Color& _clr)
 		v.position.z = 1.f;
 		v.color = clr;
 		v.texID = 0.f;
-		mVertices.push_back(v);
+		mVertices[255].push_back(v);
 	}
 
-	GLushort pivot = mIndices.empty() ? 0 : mIndices.back() + 1;
+	GLushort pivot = mIndices[255].empty() ? 0 : mIndices[255].back() + 1;
 
 	for (GLushort i = 0; i < CIRCLE_SLICES; ++i)
 	{
-		mIndices.push_back(pivot);
-		mIndices.push_back(pivot + 1 + i);
-		mIndices.push_back(pivot + 2 + i);
+		mIndices[255].push_back(pivot);
+		mIndices[255].push_back(pivot + 1 + i);
+		mIndices[255].push_back(pivot + 2 + i);
 	}
 }
 

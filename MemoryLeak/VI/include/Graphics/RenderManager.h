@@ -193,21 +193,6 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Creates	a triangle from points. Currently used for shadows.
-
-	\param const Math::Vec2& _p0
-	The first point of the triangle.
-
-	\param const Math::Vec2& _p1
-	The second point of the triangle.
-
-	\param const Math::Vec2& _p2
-	The third point of the triangle.
-	*******************************************************************************/
-	void CreateLightingTriangle(const Math::Vec2& _p0, const Math::Vec2& _p1, const Math::Vec2& _p2);
-
-	/*!*****************************************************************************
-	\brief
 	Resets all the cameras in RenderManager.
 	*******************************************************************************/
 	void ResetCameras();
@@ -266,12 +251,12 @@ private:
 	int* mWindowHeight;
 	GLShader mDefaultProgram;
 	GLShader mTextureProgram;
-	GLShader mMinimapProgram;
+	//GLShader mMinimapProgram;
 	GLAllocator mAllocator;
-	std::vector<Vertex> mVertices;
-	std::vector<GLushort> mIndices;
 	std::vector<Vertex> mTextureVertices;
 	std::vector<GLushort> mTextureIndices;
+	std::map<int, std::vector<Vertex>> mVertices;
+	std::map<int, std::vector<GLushort>> mIndices;
 	std::vector<Vertex> mDebugPoints;
 	std::vector<Vertex> mDebugVertices;
 	std::vector<GLushort> mDebugIndices;
@@ -279,8 +264,9 @@ private:
 	VIzmo mGizmo;
 	int mPrevWidth;
 	int mInitialWidth, mInitialHeight;
-	Entity minimap;
+	//Entity minimap;
 	bool mDebug;
+	std::vector<int> mRenderLayers;
 
 
 	/*!*****************************************************************************
@@ -303,6 +289,8 @@ private:
 	Current texture units that are in use.
 	*******************************************************************************/
 	void BindTextureUnit(const GLuint& _texID, TextureInfo& _texInfo, std::vector<int>& _texUnits);
+
+	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
 	/*!*****************************************************************************
 	\brief
@@ -346,6 +334,8 @@ private:
 	*******************************************************************************/
 	void BatchRenderTextures(int& _texCount, std::vector<int>& _texUnits);
 
+	void RenderText(int _layer);
+
 	/*!*****************************************************************************
 	\brief
 	Creating vertices from the ECS.
@@ -356,13 +346,13 @@ private:
 	\brief
 	Rendering of textures
 	*******************************************************************************/
-	void RenderTextures(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
+	void RenderTextures(std::map<GLuint, TextureInfo>& _texInfo);
 
 	/*!*****************************************************************************
 	\brief
 	Rendering of shapes
 	*******************************************************************************/
-	void RenderShapes();
+	void RenderShapes(int _layer);
 
 	/*!*****************************************************************************
 	\brief
@@ -401,7 +391,7 @@ private:
 	\param float
 	layer to render at.
 	*******************************************************************************/
-	void CreateCircle(const Transform& _xform, const Color& _clr, float layer);
+	void CreateCircle(const Transform& _xform, const Color& _clr, int layer);
 
 	/*!*****************************************************************************
 	\brief

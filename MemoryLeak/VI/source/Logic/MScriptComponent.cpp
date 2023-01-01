@@ -30,7 +30,7 @@ std::string MScriptComponent::MonoDirectoryPath() {
 #ifdef _EDITOR
 	path += "EditorRelease";
 #else
-	else path += "Release";
+	path += "Release";
 #endif
 #else
 #ifdef _EDITOR
