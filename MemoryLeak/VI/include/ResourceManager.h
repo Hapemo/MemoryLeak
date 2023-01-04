@@ -92,6 +92,7 @@ private:
 	Member vector to store all the loaded resources data.
 	*******************************************************************************/
 	std::vector<ResourceData> mResources;
+	std::vector<ResourceData> mReloadedResources;
 	
 	const std::filesystem::path resourceFolder = "..\\resources";
 
@@ -177,6 +178,10 @@ public:
 	The filepath of the texture to be loaded.
 	*******************************************************************************/
 	void InitialiseAllTextures();
+
+	void InitialiseReloadedTextures();
+
+
 	//==============================================================================
 
 	/*!*****************************************************************************

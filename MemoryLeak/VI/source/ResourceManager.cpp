@@ -77,6 +77,7 @@ ResourceManager::TextureData ResourceManager::LoadTextureWithoutOpenGL(const std
 		trackResource.lastModified = stats.st_mtime;
 	++trackResource.usage;
 	mResources.push_back(trackResource);
+	if (LoadedAll) mReloadedResources.push_back(trackResource);
 #if MultiThread
 	myLock.unlock();
 #endif
@@ -88,6 +89,12 @@ ResourceManager::TextureData ResourceManager::LoadTextureWithoutOpenGL(const std
 void ResourceManager::InitialiseAllTextures() {
 	for (auto& resource : mResources)
 		spriteManager->InitializeTexture(resource.texture);
+}
+
+void ResourceManager::InitialiseReloadedTextures() {
+	for (auto& resource : mReloadedResources)
+		spriteManager->InitializeTexture(resource.texture);
+	mReloadedResources.clear();
 }
 
 /*!*****************************************************************************
@@ -266,8 +273,10 @@ void ResourceManager::LoadAllResources() {
 		t.join();
 //#endif
 
-	InitialiseAllTextures();
-	
+	// Initialise resources that haven't been initialised before
+	if (!LoadedAll) InitialiseAllTextures();
+	else InitialiseReloadedTextures();
+
 	LoadedAll = true;
 }
 
