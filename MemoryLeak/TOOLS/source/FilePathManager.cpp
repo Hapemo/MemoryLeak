@@ -1,8 +1,6 @@
 #include "FilePathManager.h"
 #include "Logger.h"
 
-//std::shared_ptr<FilePathManager> FilePathManager::mInstance = nullptr;
-
 std::map<std::string, std::string> FilePathManager::mFilePaths;
 
 void FilePathManager::Init(std::string const& path) {
@@ -19,13 +17,6 @@ void FilePathManager::Init(std::string const& path) {
   mFilePaths = Util::TextFileToMap(file);
 }
 
-//std::shared_ptr<FilePathManager> FilePathManager::GetInstance() {
-//  if (!mInstance) {
-//    LOG_CUSTOM_CREATE("FILEPATHMANAGER");
-//    mInstance = std::make_shared<FilePathManager>();
-//  }
-//  return mInstance;
-//}
 
 std::string FilePathManager::GetFilePath(std::string const& pathName) {
   std::string filePath;
