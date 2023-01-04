@@ -28,8 +28,8 @@ Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
 	//ScriptComponent* monoComponent;
-	monoComponent = new MScriptComponent;
-	monoComponent->InitMono();
+	//monoComponent = new MScriptComponent;
+	//monoComponent->InitMono();
 	LOG_DEBUG("LOGICSYSYEM INIT.");
 	for (Entity const& e : mEntities) {
 		if (e.ShouldRun()) {
@@ -84,7 +84,7 @@ void LogicSystem::Exit() {
 			else LOG_ERROR("Component script name is empty!");
 		}
 	}
-	monoComponent->CloseMono();
+	//monoComponent->CloseMono();
 	delete monoComponent;
 }
 
