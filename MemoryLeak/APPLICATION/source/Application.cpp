@@ -44,7 +44,6 @@ void Application::SystemInit() {
   editorManager->Load(ptr_window, &window_width, &window_height);
 #endif
   audioManager->Init();
-  logicSystem->Init();
   //aiManager->weatherAIinit();
   
   InternalCalls::GetInstance()->InitScriptWindow(&window_width, &window_height);
@@ -61,7 +60,10 @@ void Application::SystemInit() {
 
   // Collision database initialization
   collision2DManager->SetupCollisionDatabase();
- 
+
+  // Run Init() scripts
+  logicSystem->Init();
+
 #ifdef _DEBUG
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif

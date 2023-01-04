@@ -702,6 +702,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "Script": {
+            "name": "TestClass"
         }
     },
     {

@@ -11,7 +11,7 @@ The LogicSystem class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #include "LogicSystem.h"
-#include "MScriptComponent.h"
+#include "MonoManager.h"
 #include "ScriptManager.h"
 
 //LogicSystem::LogicSystem() {
@@ -27,22 +27,10 @@ The LogicSystem class handles the C# scripting for the engine.
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
-	//ScriptComponent* monoComponent;
-	//monoComponent = new MScriptComponent;
-	//monoComponent->InitMono();
-	LOG_DEBUG("LOGICSYSYEM INIT.");
-	for (Entity const& e : mEntities) {
-		if (e.ShouldRun()) {
-			if (e.GetComponent<Script>().name != "") {
-				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
-					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
-					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->StartScript(e);
-				}
-				else LOG_ERROR("Start Script failed to attach!");
-			}
-			else LOG_ERROR("Component script name is empty!");
-		}
-	}
+	LOG_DEBUG("Initialising LogicSystem.");
+	mMonoManager = new MonoManager;
+	mMonoManager->InitMono();
+	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::INIT);
 	//GameStateManager::GetReference()->mcurrentGameState->mScenes[]
 }
 
@@ -51,19 +39,7 @@ void LogicSystem::Init() {
 Run the update function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Update() {
-	//LOG_DEBUG("LOGICSYSYEM UPDATE.");
-	for (Entity const& e : mEntities) {
-		if (e.ShouldRun() && e.HasComponent<Script>()) {
-			if (e.GetComponent<Script>().name != "") {
-				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
-					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->UpdateScript(e);
-					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->UpdateScript(e);
-				}
-				else LOG_ERROR("Update Script failed to attach!");
-			}
-			else LOG_ERROR("Component script name is empty!");
-		}
-	}
+	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::UPDATE);
 }
 
 /*!*****************************************************************************
@@ -71,21 +47,10 @@ void LogicSystem::Update() {
 Run the exit function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Exit() {
-	LOG_DEBUG("LOGICSYSYEM EXITING.");
-	for (Entity const& e : mEntities) {
-		if (e.ShouldRun() && e.HasComponent<Script>()) {
-			if (e.GetComponent<Script>().name != "") {
-				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
-					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->EndScript(e);
-					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->EndScript(e);
-				}
-				else LOG_ERROR("Exit Script failed to attach!");
-			}
-			else LOG_ERROR("Component script name is empty!");
-		}
-	}
-	//monoComponent->CloseMono();
-	delete monoComponent;
+	LOG_DEBUG("Closing LogicSystem.");
+	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::EXIT);
+	mMonoManager->CloseMono();
+	delete mMonoManager;
 }
 
 /*!*****************************************************************************
@@ -93,16 +58,7 @@ void LogicSystem::Exit() {
 Run the initialisation function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Init(std::set<Entity> const& _entities) {
-	for (Entity const& e : _entities) {
-		if (e.GetComponent<Script>().name != "") {
-			if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
-				ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->StartScript(e);
-				//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->StartScript(e);
-			}
-			else LOG_ERROR("Init Script failed to attach!");
-		}
-		else LOG_ERROR("Component script name is empty!");
-	}
+	for (Entity const& e : _entities) RunScript(e, E_SCRIPTTYPE::INIT);
 }
 
 /*!*****************************************************************************
@@ -110,18 +66,7 @@ void LogicSystem::Init(std::set<Entity> const& _entities) {
 Run the update function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Update(std::set<Entity> const& _entities) {
-	for (Entity const& e : _entities) {
-		if (e.HasComponent<Script>()) {
-			if (e.GetComponent<Script>().name != "") {
-				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
-					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->UpdateScript(e);
-					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->UpdateScript(e);
-				}
-				else LOG_ERROR("Update Script failed to attach!");
-			}
-			else LOG_ERROR("Component script name is empty!");
-		}
-	}
+	for (Entity const& e : _entities) RunScript(e, E_SCRIPTTYPE::UPDATE);
 }
 
 /*!*****************************************************************************
@@ -129,16 +74,69 @@ void LogicSystem::Update(std::set<Entity> const& _entities) {
 Run the exit function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Exit(std::set<Entity> const& _entities) {
-	for (Entity const& e : _entities) {
-		if (e.HasComponent<Script>()) {
-			if (e.GetComponent<Script>().name != "") {
-				if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name) != nullptr) {
-					ScriptManager<ScriptComponent>::GetInstance()->GetScript(e.GetComponent<Script>().name)->EndScript(e);
-					//if (monoComponent == nullptr) LOG_ERROR("Mono Script Component doesn't exist!"); else ((MScriptComponent*)monoComponent)->EndScript(e);
-				}
-				else LOG_ERROR("Exit Script failed to attach!");
-			}
-			else LOG_ERROR("Component script name is empty!");
-		}
+	for (Entity const& e : _entities) RunScript(e, E_SCRIPTTYPE::EXIT);
+}
+
+/*!*****************************************************************************
+\brief
+Run specified script for entity.
+*******************************************************************************/
+void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
+	if (!_e.ShouldRun()) return;
+	if (!_e.HasComponent<Script>()) return;
+
+	std::string scriptName = _e.GetComponent<Script>().name;
+	if (scriptName == "") {
+		LOG_ERROR("Entity " + _e.GetComponent<General>().name + " component script name is empty!");
+		return;
 	}
+	// Script is C++ script
+	if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName) != nullptr) {
+		switch (_type) {
+		case E_SCRIPTTYPE::INIT:
+			LOG_INFO("Start Script for " + scriptName + " ran!");
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->StartScript(_e);
+			break;
+
+		case E_SCRIPTTYPE::UPDATE:
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->UpdateScript(_e);
+			break;
+
+		case E_SCRIPTTYPE::EXIT:
+			LOG_INFO("Exit Script for " + scriptName + " ran!");
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->EndScript(_e);
+			break;
+
+		default:
+			LOG_WARN("Invalid script type passed in for " + scriptName + "!");
+			break;
+		}
+		return;
+	}
+	// Script is C# script
+	MonoManager::GetInstance()->RegisterMonoScript("BonVoyage", scriptName);
+	if (MonoManager::GetInstance()->GetMonoComponent(scriptName) != nullptr) {
+		switch (_type) {
+		case E_SCRIPTTYPE::INIT:
+			LOG_INFO("Start Script for " + scriptName + " ran!");
+			MonoManager::GetInstance()->CallMethod(scriptName, "Init", 0);
+			break;
+
+		case E_SCRIPTTYPE::UPDATE:
+			MonoManager::GetInstance()->CallMethod(scriptName, "Update", 0);
+			break;
+
+		case E_SCRIPTTYPE::EXIT:
+			LOG_INFO("Exit Script for " + scriptName + " ran!");
+			//MonoManager::GetInstance()->CallMethod(scriptName, "Exit", 0);
+			break;
+
+		default:
+			LOG_WARN("Invalid script type passed in for " + scriptName + "!");
+			break;
+		}
+		return;
+	}
+	// Script doesnt exist
+	LOG_ERROR("Script failed to attach or doesn't exist!");
 }

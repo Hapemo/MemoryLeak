@@ -1,55 +1,40 @@
 /*!*****************************************************************************
-\file MScriptComponent.h
+\file MonoManager.h
 \author Chen Jia Wen
 \par DP email: c.jiawen\@digipen.edu
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 19-10-2022
 \brief
-This file contains the function declarations of the class MScriptComponent.
-The MScriptComponent class handles the C# scripting for the engine.
+This file contains the function declarations of the class MonoManager.
+The MonoManager class handles the C# scripting for the engine.
 *******************************************************************************/
 
 #pragma once
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/debug-helpers.h>
+#include "Singleton.h"
 #include "ScriptComponent.h"
+//#include "MonoComponent.h"
+//#include "MonoMethods.h"
 
-class MScriptComponent : public ScriptComponent
+class MonoManager : public Singleton<MonoManager>
 {
 public:
 	/*!*****************************************************************************
 	\brief
 	Default constructor and destructor.
 	*******************************************************************************/
-	MScriptComponent() = default;
-	~MScriptComponent() = default;
+	MonoManager() = default;
+	~MonoManager() = default;
 
 	/*!*****************************************************************************
 	\brief
 	Delete copy constructor.
 	*******************************************************************************/
-	MScriptComponent(const MScriptComponent&) = delete;
-	const MScriptComponent& operator=(const MScriptComponent&) = delete;
-
-	/*!*****************************************************************************
-	\brief
-	Run the initialisation function for all active entities' scripts.
-	*******************************************************************************/
-	static void StartScript(Entity const& gob);
-
-	/*!*****************************************************************************
-	\brief
-	Run the update function for all active entities' scripts.
-	*******************************************************************************/
-	static void UpdateScript(Entity const& gob);
-
-	/*!*****************************************************************************
-	\brief
-	Run the exit function for all active entities' scripts.
-	*******************************************************************************/
-	static void EndScript(Entity const& gob);
+	MonoManager(const MonoManager&) = delete;
+	const MonoManager& operator=(const MonoManager&) = delete;
 
 	void InitMono();
 	void CloseMono();
@@ -57,10 +42,14 @@ public:
 	bool InitMonoDomain(const char* _root, const char* _appdomain, const std::string _directory, const std::string _dll);
 	MonoClass* GetClassInAssembly(MonoAssembly* _assembly, const char* _namespace, const char* _class);
 	MonoObject* InstantiateClass(const char* _namespace, const char* _class);
-	void CallMethod(MonoObject* _objectInstance, const char* _function, int _paramCount);
+	void CallMethod(std::string _scriptName, const char* _function, int _paramCount);
 
 	//void TestFunction(std::string _thingToPrint);
 	static MonoString* TestFunction();
+	static void RegisterMonoScript(std::string _namespace, std::string _class);
+
+	void SetMonoComponent(std::string _class, MonoObject* _monoObject);
+	MonoObject* GetMonoComponent(std::string _class);
 
 private:
 	// Mono generic stuff
@@ -71,4 +60,7 @@ private:
 	// Mono Object
 	static MonoObject* m_ptrGameObject;
 	static uint32_t m_gameObjectGCHandle;
+
+	// Storing all mono scripts
+	std::map<std::string, MonoObject*> mMonoComponents;
 };

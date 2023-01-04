@@ -14,13 +14,20 @@ The LogicSystem class handles the C# scripting for the engine.
 #include "ECS_tools.h"
 #include "ScriptComponent.h"
 
-class MScriptComponent;
+class MonoManager;
 
 class LogicSystem : public System
 {
 private:
-	MScriptComponent* monoComponent;
+	MonoManager* mMonoManager;
+
 public:
+	enum class E_SCRIPTTYPE {
+		INIT = 1,
+		UPDATE = 2,
+		EXIT = 3,
+	};
+
 	/*!*****************************************************************************
 	\brief
 	Default constructor and destructor.
@@ -70,4 +77,10 @@ public:
 	Run the exit function for all entities' scripts given by the parameter.
 	*******************************************************************************/
 	void Exit(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
+	Run specified script for entity.
+	*******************************************************************************/
+	void RunScript(Entity const& _e, E_SCRIPTTYPE _type);
 };
