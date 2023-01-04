@@ -18,6 +18,7 @@ start up of window and game system, also runs their update functions.
 #include "PerformanceVisualiser.h"
 #include "ResourceManager.h"
 #include "ScriptManager.h"
+#include "FilePathManager.h"
 
 // Static variables
 int Application::window_width{};
@@ -29,6 +30,7 @@ bool Application::mLoadAllResources{ true };
 
 void Application::startup() {
   loadConfig("../config.txt");
+  FilePathManager::Init("../filePaths.txt");
   GLFWStartUp();
   Input::Init(ptr_window); 
   Helper::Init(ptr_window);
