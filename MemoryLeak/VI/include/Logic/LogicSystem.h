@@ -14,13 +14,8 @@ The LogicSystem class handles the C# scripting for the engine.
 #include "ECS_tools.h"
 #include "ScriptComponent.h"
 
-class MonoManager;
-
 class LogicSystem : public System
 {
-private:
-	MonoManager* mMonoManager;
-
 public:
 	enum class E_SCRIPTTYPE {
 		INIT = 1,

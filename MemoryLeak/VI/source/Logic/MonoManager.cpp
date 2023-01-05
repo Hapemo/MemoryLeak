@@ -20,10 +20,24 @@ MonoDomain* MonoManager::mAppDomain = nullptr;
 MonoDomain* MonoManager::mRootDomain = nullptr;
 MonoAssembly* MonoManager::mAssembly = nullptr;
 
-// Mono Object
-MonoObject* MonoManager::m_ptrGameObject = nullptr;
-uint32_t MonoManager::m_gameObjectGCHandle = 0;
+/*!*****************************************************************************
+\brief
+Initialise Mono.
+*******************************************************************************/
+void MonoManager::InitMono() {
+	// Set and get mono directory
+	std::string path = MonoDirectoryPath();
 
+	// Create mono domain
+	bool success = InitMonoDomain("MonoRoot", "MonoAppDomain", path, "Scripting");
+	// Add internal functions
+	if (success) MonoMethods::GetInstance()->RegisterCalls();
+}
+
+/*!*****************************************************************************
+\brief
+Set and return the mono directory path according to the projec configuration.
+*******************************************************************************/
 std::string MonoManager::MonoDirectoryPath() {
 	std::string path = std::filesystem::current_path().parent_path().string() + "\\bin\\";
 #ifdef NDEBUG
@@ -46,6 +60,11 @@ std::string MonoManager::MonoDirectoryPath() {
 	return path;
 }
 
+/*!*****************************************************************************
+\brief
+Initialise the Mono root domain, create the app domain, and load the mono
+assembly dll. Returns true if success, else returns false.
+*******************************************************************************/
 bool MonoManager::InitMonoDomain(const char* _root, const char* _appdomain, const std::string _directory, const std::string _dll) {
 	std::cout << "Initialising Mono domain...\n";
 	mRootDomain = mono_jit_init(_root);
@@ -70,6 +89,11 @@ bool MonoManager::InitMonoDomain(const char* _root, const char* _appdomain, cons
 	return false;
 }
 
+/*!*****************************************************************************
+\brief
+Retrieves the mono class from a mono image. Returns the mono class pointer if
+success, else returns a nullptr.
+*******************************************************************************/
 MonoClass* MonoManager::GetClassInAssembly(MonoAssembly* _assembly, const char* _namespace, const char* _class) {
 	std::cout << "Loading Mono image...\n";
 	MonoImage* assemblyImage = mono_assembly_get_image(_assembly);
@@ -81,21 +105,24 @@ MonoClass* MonoManager::GetClassInAssembly(MonoAssembly* _assembly, const char* 
 
 	std::cout << "Retrieving Mono class...\n";
 	MonoClass* monoClass = mono_class_from_name(assemblyImage, _namespace, _class);
-	if (monoClass == nullptr) {
-		std::cout << "Failed to retrieve Mono class " << _namespace << "::" << _class << "!\n";
-		return nullptr;
-	}
-	//mono_image_close(assemblyImage);
+	if (monoClass == nullptr) return nullptr;
+
+	mono_image_close(assemblyImage);
 	return monoClass;
 }
 
+/*!*****************************************************************************
+\brief
+Loads the mono class and allocate a class instance for it in the app domain.
+Returns the class instance if success, else returns a nullptr.
+*******************************************************************************/
 MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _class) {
 	// Get a reference to the class to instantiate
 	MonoClass* monoClass = GetClassInAssembly(mAssembly, _namespace, _class);
 	if (monoClass == nullptr) {
-		std::cout << "Failed to retrieve Mono class " << _namespace << "::" << _class << " from " << mAssembly << "!\n";
+		std::cout << "Failed to retrieve Mono class " << _namespace << "::" << _class << "!\n";
 		return nullptr;
-	}
+	} else std::cout << "Retrieved Mono class " << _namespace << "::" << _class << ".\n";
 
 	// Allocate an instance of the class
 	MonoObject* classInstance = mono_object_new(mAppDomain, monoClass);
@@ -103,13 +130,17 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	if (classInstance == nullptr) {
 		std::cout << "Failed to allocate an instance to Mono class " << _namespace << "::" << _class << "!\n";
 		return nullptr;
-	}
+	} else std::cout << "Allocated an instance to Mono class " << _namespace << "::" << _class << ".\n";
 
 	// Call the parameterless (default) constructor
 	mono_runtime_object_init(classInstance);
 	return classInstance;
 }
 
+/*!*****************************************************************************
+\brief
+Calls a mono method by script name and function name.
+*******************************************************************************/
 void MonoManager::CallMethod(std::string _scriptName, const char* _function, int _paramCount) {
 	MonoObject* monoInstance = GetMonoComponent(_scriptName);
 	if(monoInstance == nullptr) std::cout << "Failed to get an instance to Mono object from member map mMonoComponents!\n";
@@ -137,53 +168,51 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Test internal function.
+*******************************************************************************/
 MonoString* MonoManager::TestFunction() {
 	std::cout << "Calling internal call success!\n";
 	return mono_string_new(mono_domain_get(), "Hello!");
 }
 
-void MonoManager::SetMonoComponent(std::string _class, MonoObject* _monoObject) {
-	mMonoComponents[_class] = _monoObject;
-}
-
-MonoObject* MonoManager::GetMonoComponent(std::string _class) {
-	return mMonoComponents[_class];
-}
-
+/*!*****************************************************************************
+\brief
+Register the C# scripts to store internally for the logic system to use.
+*******************************************************************************/
 void MonoManager::RegisterMonoScript(std::string _namespace, std::string _class) {
 	if (MonoManager::GetInstance()->GetMonoComponent(_class) == nullptr) {
 		std::cout << "Registering C# script method " << _namespace << "::" << _class << "()...\n";
 		// Loading mono image
 		MonoObject* testInstance = MonoManager::GetInstance()->InstantiateClass(_namespace.c_str(), _class.c_str());
 		// Storing mono object
-		if(testInstance != nullptr) MonoManager::GetInstance()->SetMonoComponent(_class, testInstance);
+		if (testInstance != nullptr) MonoManager::GetInstance()->SetMonoComponent(_class, testInstance);
 		else std::cout << "Failed to register C# script method " << _namespace << "::" << _class << "()!\n";
 	}
 }
 
-void MonoManager::InitMono() {
-	// Set and get mono directory
-	std::string path = MonoDirectoryPath();
-
-	// Create mono domain
-	bool success = InitMonoDomain("MonoRoot", "MonoAppDomain", path, "Scripting");
-	if (success) {
-		// Add test internal functions
-		//mono_add_internal_call("BonVoyage.TestClass::TestFunction", &MonoManager::TestFunction);
-		//mono_add_internal_call("BonVoyage.TestClass::RegisterMonoScript", &MonoManager::RegisterMonoScript);
-		//MonoMethods::GetInstance()->RegisterCalls();
-
-		// Register mono script
-		//MonoObject* testInstance = MonoManager::GetInstance()->InstantiateClass("BonVoyage", "TestClass");
-		//CallMethod(testInstance, "Init", 0);
-	}
+/*!*****************************************************************************
+\brief
+Set the mono script component in the member map mMonoComponents.
+*******************************************************************************/
+void MonoManager::SetMonoComponent(std::string _class, MonoObject* _monoObject) {
+	mMonoComponents[_class] = _monoObject;
 }
 
-void MonoManager::CloseMono() {
-	// Release mono handles
-	//if (m_gameObjectGCHandle)
-		//mono_gchandle_free(m_gameObjectGCHandle);
+/*!*****************************************************************************
+\brief
+Get the mono script component from the member map mMonoComponents by class name.
+*******************************************************************************/
+MonoObject* MonoManager::GetMonoComponent(std::string _class) {
+	return mMonoComponents[_class];
+}
 
+/*!*****************************************************************************
+\brief
+Close Mono and free & unload the domain.
+*******************************************************************************/
+void MonoManager::CloseMono() {
 	// Release the domain
 	if (mAppDomain) {
 		mono_domain_set(mono_get_root_domain(), false);

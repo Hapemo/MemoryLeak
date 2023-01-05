@@ -68,7 +68,7 @@ void Entity::Deactivate() const {
 	
 	// Scripting
 	if (HasComponent<Script>()) //GetComponent<Script>().script->EndScript(*this);
-		logicSystem->RunScript(*this, LogicSystem::E_SCRIPTTYPE::EXIT);
+		//logicSystem->RunScript(*this, LogicSystem::E_SCRIPTTYPE::EXIT);
 
 	// General
 	genComp.isActive = false;

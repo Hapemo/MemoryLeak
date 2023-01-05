@@ -14,22 +14,13 @@ The LogicSystem class handles the C# scripting for the engine.
 #include "MonoManager.h"
 #include "ScriptManager.h"
 
-//LogicSystem::LogicSystem() {
-//	//LOG_DEBUG("Creating new MScriptComponent.");
-//}
-//
-//LogicSystem::~LogicSystem() {
-//	//LOG_DEBUG("Deleting new MScriptComponent.");
-//}
-
 /*!*****************************************************************************
 \brief
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
 	LOG_DEBUG("Initialising LogicSystem.");
-	mMonoManager = new MonoManager;
-	mMonoManager->InitMono();
+	//MonoManager::GetInstance()->InitMono();
 	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::INIT);
 	//GameStateManager::GetReference()->mcurrentGameState->mScenes[]
 }
@@ -49,8 +40,7 @@ Run the exit function for all active entities' scripts.
 void LogicSystem::Exit() {
 	LOG_DEBUG("Closing LogicSystem.");
 	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::EXIT);
-	mMonoManager->CloseMono();
-	delete mMonoManager;
+	//MonoManager::GetInstance()->CloseMono();
 }
 
 /*!*****************************************************************************
@@ -113,6 +103,8 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 		}
 		return;
 	}
+
+	/*
 	// Script is C# script
 	MonoManager::GetInstance()->RegisterMonoScript("BonVoyage", scriptName);
 	if (MonoManager::GetInstance()->GetMonoComponent(scriptName) != nullptr) {
@@ -128,7 +120,7 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 
 		case E_SCRIPTTYPE::EXIT:
 			LOG_INFO("Exit Script for " + scriptName + " ran!");
-			//MonoManager::GetInstance()->CallMethod(scriptName, "Exit", 0);
+			MonoManager::GetInstance()->CallMethod(scriptName, "Exit", 0);
 			break;
 
 		default:
@@ -137,6 +129,8 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 		}
 		return;
 	}
+	*/
+
 	// Script doesnt exist
 	LOG_ERROR("Script failed to attach or doesn't exist!");
 }
