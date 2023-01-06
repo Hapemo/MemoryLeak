@@ -30,7 +30,7 @@ void MonoManager::InitMono() {
 
 	// Create mono domain
 	bool success = InitMonoDomain("MonoRoot", "MonoAppDomain", path, "Scripting");
-	// Add internal functions
+	// Add internal functionsx
 	if (success) MonoMethods::GetInstance()->RegisterCalls();
 }
 
@@ -54,8 +54,8 @@ std::string MonoManager::MonoDirectoryPath() {
 #endif
 #endif
 	path += "\\x64";
-	mono_set_assemblies_path(path.c_str());
-	//mono_set_dirs("D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64", "D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64");
+	//mono_set_assemblies_path(path.c_str());
+	mono_set_dirs("D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64", "D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64");
 	path += "\\SCRIPTING";
 	return path;
 }
@@ -71,8 +71,7 @@ bool MonoManager::InitMonoDomain(const char* _root, const char* _appdomain, cons
 	if (mRootDomain != nullptr) {
 		// Create a mono app domain
 		mAppDomain = mono_domain_create_appdomain((char*)_appdomain, nullptr);
-		if (!mAppDomain)
-			std::cout << "Failed to create Mono app domain: " << _appdomain << "!\n";
+		if (!mAppDomain) std::cout << "Failed to create Mono app domain: " << _appdomain << "!\n";
 		else mono_domain_set(mAppDomain, true);
 
 		std::cout << "Loading Mono assembly...\n";
@@ -106,8 +105,6 @@ MonoClass* MonoManager::GetClassInAssembly(MonoAssembly* _assembly, const char* 
 	std::cout << "Retrieving Mono class...\n";
 	MonoClass* monoClass = mono_class_from_name(assemblyImage, _namespace, _class);
 	if (monoClass == nullptr) return nullptr;
-
-	mono_image_close(assemblyImage);
 	return monoClass;
 }
 
@@ -182,12 +179,12 @@ MonoString* MonoManager::TestFunction() {
 Register the C# scripts to store internally for the logic system to use.
 *******************************************************************************/
 void MonoManager::RegisterMonoScript(std::string _namespace, std::string _class) {
-	if (MonoManager::GetInstance()->GetMonoComponent(_class) == nullptr) {
+	if (GetMonoComponent(_class) == nullptr) {
 		std::cout << "Registering C# script method " << _namespace << "::" << _class << "()...\n";
 		// Loading mono image
-		MonoObject* testInstance = MonoManager::GetInstance()->InstantiateClass(_namespace.c_str(), _class.c_str());
+		MonoObject* testInstance = InstantiateClass(_namespace.c_str(), _class.c_str());
 		// Storing mono object
-		if (testInstance != nullptr) MonoManager::GetInstance()->SetMonoComponent(_class, testInstance);
+		if (testInstance != nullptr) SetMonoComponent(_class, testInstance);
 		else std::cout << "Failed to register C# script method " << _namespace << "::" << _class << "()!\n";
 	}
 }

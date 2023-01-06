@@ -704,7 +704,7 @@
             "isSpacial": false
         },
         "Script": {
-            "name": "TestClass"
+            "name": "TestMonoScript"
         }
     },
     {
