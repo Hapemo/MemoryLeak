@@ -278,6 +278,7 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
+    <ClInclude Include="include\FilePathManager.h" />
     <ClInclude Include="include\Helper.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\DesignPatterns\ISingleton.h" />
@@ -304,6 +305,7 @@
     <ClCompile Include="imgui\imgui_stdlib.cpp" />
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="source\FilePathManager.cpp" />
     <ClCompile Include="source\Helper.cpp" />
     <ClCompile Include="source\Input.cpp" />
     <ClCompile Include="source\Logger.cpp" />

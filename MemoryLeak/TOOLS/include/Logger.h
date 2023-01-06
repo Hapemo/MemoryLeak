@@ -35,7 +35,7 @@ also handles the assertion.
 /**
 *   Singleton Logger Class.
 */
-class Logger : public Singleton<Logger> {
+class Logger {
 public:
     enum class E_LOGLEVEL {
         LOG_INFO = 0,
@@ -232,6 +232,12 @@ public:
     Destructor for the Logger class.
     *******************************************************************************/
     ~Logger();
+
+    static std::shared_ptr<Logger> GetInstance() {
+      if (!mInstance) mInstance = std::make_shared<Logger>();
+      return mInstance;
+    }
+
 private:
     /*!*****************************************************************************
     \brief
@@ -259,4 +265,7 @@ private:
 
     std::vector<LogType> mLogTypesVec;
     std::vector<std::pair<E_LOGLEVEL, std::string>> mLoggerStr;
+
+    static std::shared_ptr<Logger> mInstance;
 };
+

@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace SCRIPTING
+namespace BonVoyage
 {
-    public class TestClass
+    public class TestScript
     {
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        internal extern static string TestFunction();
-
         private string hello = "Hello World!";
         public void Init()
         {
             this.hello = "Initing...";
             Console.WriteLine("Printing from C#: " + this.hello);
-            TestFunction();
+            //Console.WriteLine(InternalCalls.GetWorldMousePos());
+
+           // if (InternalCalls.CheckKey()) { }
         }
         public void Update()
         {

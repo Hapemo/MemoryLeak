@@ -10,3 +10,5 @@ D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPT
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.CoreCompileInputs.cache
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.dll
+D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.pdb

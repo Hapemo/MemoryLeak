@@ -45,9 +45,7 @@ void Entity::Activate() const {
 	
 	// Scripting
 	if (HasComponent<Script>()) //GetComponent<Script>().script->StartScript(*this);
-		if (GetComponent<Script>().name != "")
-			if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(GetComponent<Script>().name) != nullptr)
-				ScriptManager<ScriptComponent>::GetInstance()->GetScript(GetComponent<Script>().name)->StartScript(*this);
+		logicSystem->RunScript(*this, LogicSystem::E_SCRIPTTYPE::INIT);
 
 	// General
 	genComp.isActive = true;
@@ -70,9 +68,7 @@ void Entity::Deactivate() const {
 	
 	// Scripting
 	if (HasComponent<Script>()) //GetComponent<Script>().script->EndScript(*this);
-		if (GetComponent<Script>().name != "")
-			if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(GetComponent<Script>().name) != nullptr)
-				ScriptManager<ScriptComponent>::GetInstance()->GetScript(GetComponent<Script>().name)->EndScript(*this);
+		//logicSystem->RunScript(*this, LogicSystem::E_SCRIPTTYPE::EXIT);
 
 	// General
 	genComp.isActive = false;

@@ -32,7 +32,7 @@
     <ClCompile Include="source\Graphics\VertexFetcher.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
-    <ClCompile Include="source\Logic\MScriptComponent.cpp" />
+    <ClCompile Include="source\Logic\MonoManager.cpp" />
     <ClCompile Include="source\Logic\ScriptComponent.cpp" />
     <ClCompile Include="source\Logic\ScriptManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />
@@ -53,6 +53,8 @@
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
     <ClCompile Include="source\LayerManager.cpp" />
     <ClCompile Include="source\Logic\InternalCalls.cpp" />
+    <ClCompile Include="source\Logic\MonoMethods.cpp" />
+    <ClCompile Include="source\Logic\MonoComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -121,7 +123,7 @@
     <ClInclude Include="include\Graphics\FontManager.h" />
     <ClInclude Include="include\Graphics\VertexFetcher.h" />
     <ClInclude Include="include\Logic\LogicSystem.h" />
-    <ClInclude Include="include\Logic\MScriptComponent.h" />
+    <ClInclude Include="include\Logic\MonoManager.h" />
     <ClInclude Include="include\Logic\ScriptComponent.h" />
     <ClInclude Include="include\Logic\ScriptManager.h" />
     <ClInclude Include="include\Physics\ColliderBody.h" />
@@ -179,6 +181,8 @@
     <ClInclude Include="include\Physics\Contact.h" />
     <ClInclude Include="include\Physics\ColliderType.h" />
     <ClInclude Include="include\Logic\InternalCalls.h" />
+    <ClInclude Include="include\Logic\MonoMethods.h" />
+    <ClInclude Include="include\Logic\MonoComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

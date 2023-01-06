@@ -27,10 +27,25 @@ class Scene;
 
 class InternalCalls : public Singleton<InternalCalls> {
 private:
-	int* windowWidth = nullptr;
-	int* windowHeight = nullptr;
+	static int* windowWidth;
+	static int* windowHeight;
 
 public:
+	/*!*****************************************************************************
+	\brief
+
+	Default constructor and destructor.
+	*******************************************************************************/
+	InternalCalls() = default;
+	~InternalCalls() = default;
+
+	/*!*****************************************************************************
+	\brief
+	Delete copy constructor.
+	*******************************************************************************/
+	InternalCalls(const InternalCalls&) = delete;
+	const InternalCalls& operator=(const InternalCalls&) = delete;
+
 	/*!*****************************************************************************
 	\brief
 	Checks for the state of certain key
@@ -41,13 +56,13 @@ public:
 	\return bool
 	- Returns true if inputted state matches current state of specified key
 	*******************************************************************************/
-	bool CheckKey(E_STATE _state, E_KEY _key);
+	static bool CheckKey(E_STATE _state, E_KEY _key);
 
 	/*!*****************************************************************************
 	\brief
 	Get world mouse position.
 	*******************************************************************************/
-	Math::Vec2 GetWorldMousePos();
+	static Math::Vec2 GetWorldMousePos();
 
 	/*!*****************************************************************************
 	\brief
@@ -62,7 +77,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
+	static void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
 
 	/*!*****************************************************************************
 	\brief
@@ -71,7 +86,7 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void LoadDialogs(std::string _filename);
+	static void LoadDialogs(std::string _filename);
 
 	/*!*****************************************************************************
 	\brief
@@ -84,7 +99,7 @@ public:
 	\return
 	Returns the dialog text in string.
 	*******************************************************************************/
-	std::string GetDialogue(int _id);
+	static std::string GetDialogue(int _id);
 
 	/*!*****************************************************************************
 	\brief
@@ -96,7 +111,7 @@ public:
 	\return
 	Returns the next dialog id.
 	*******************************************************************************/
-	int GetNextDialogueID(int _id);
+	static int GetNextDialogueID(int _id);
 	
 	/*!*****************************************************************************
 	\brief
@@ -109,7 +124,7 @@ public:
 	\return
 	Returns true if the dialog has choices else returns false.
 	*******************************************************************************/
-	bool HasChoice(int _id);
+	static bool HasChoice(int _id);
 
 	/*!*****************************************************************************
 	\brief
@@ -122,7 +137,7 @@ public:
 	\return
 	Returns a pair of integers with the choices of the dialog.
 	*******************************************************************************/
-	std::pair<int, int> GetChoices(int _id);
+	static std::pair<int, int> GetChoices(int _id);
 
 	/*!*****************************************************************************
 	\brief
@@ -134,7 +149,7 @@ public:
 	\param int _selectedChoice
 	The selected choice.
 	*******************************************************************************/
-	void SetSelectedChoice(int _id, int _selectedChoice);
+	static void SetSelectedChoice(int _id, int _selectedChoice);
 
 	/*!*****************************************************************************
 	\brief
@@ -143,7 +158,7 @@ public:
 	\param int _id
 	The id of the current dialog.
 	*******************************************************************************/
-	bool SetCurrentDialogueID(int _id);
+	static bool SetCurrentDialogueID(int _id);
 
 	/*!*****************************************************************************
 	\brief
@@ -152,37 +167,37 @@ public:
 	\return
 	The id of the current dialog.
 	*******************************************************************************/
-	int GetCurrentDialogueID();
+	static int GetCurrentDialogueID();
 
 	/*!*****************************************************************************
 	\brief
 	This function is called by user, to change the next game state
 	*******************************************************************************/
-	void ChangeGameState(std::string const& _name);
+	static void ChangeGameState(std::string const& _name);
 
 	/*!*****************************************************************************
 	\brief
 	Gets an entity from scene.
 	*******************************************************************************/
-	Entity GetEntity(std::string const& _entityName, std::string const& _sceneName);
+	static Entity GetEntity(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
 	Gets scene to pause or unpause the scene.
 	*******************************************************************************/
-	Scene& SelectScene(std::string const& _name);
+	static Scene& SelectScene(std::string const& _name);
 
 	/*!*****************************************************************************
 	\brief
 	Sets the texture of an entity.
 	*******************************************************************************/
-	void SetTexture(const Entity& _e, const std::string& _path);
+	static void SetTexture(const Entity& _e, const std::string& _path);
 
 	/*!*****************************************************************************
 	\brief
 	Retrieves the texture of an entity.
 	*******************************************************************************/
-	std::string GetTexture(const Entity& _e);
+	static std::string GetTexture(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
@@ -195,42 +210,42 @@ public:
 	\return bool
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
-	bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
+	static bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
 
 	/*!*****************************************************************************
 	\brief
 	Exits the game.
 	*******************************************************************************/
-	void GameStateExit();
+	static void GameStateExit();
 
 	/*!*****************************************************************************
 	\brief
 	Gets the delta time in double.
 	*******************************************************************************/
-	double GetDeltaTime();
+	static double GetDeltaTime();
 
 	/*!*****************************************************************************
 	\brief
 	Initialise the window width and height of the application using pointer.
 	Should be called in application's init
 	*******************************************************************************/
-	void InitScriptWindow(int* _windowWidth, int* _windowHeight);
+	static void InitScriptWindow(int* _windowWidth, int* _windowHeight);
 
 	/*!*****************************************************************************
 	\brief
 		Plays a single background sound
 	*******************************************************************************/
-	void PlayAnySound(std::string _name, int _channel);
+	static void PlayAnySound(std::string _name, int _channel);
 
 	/*!*****************************************************************************
 	\brief
 	   Checks if a channel is playing
 	*******************************************************************************/
-	bool IsPlaying(int _channel);
+	static bool IsPlaying(int _channel);
 
 	/*!*****************************************************************************
 	\brief
 		Plays a single background sound
 	*******************************************************************************/
-	void PlayBGSound(std::string _name, int _channel);
+	static void PlayBGSound(std::string _name, int _channel);
 };

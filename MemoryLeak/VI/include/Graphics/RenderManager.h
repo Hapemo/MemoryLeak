@@ -240,6 +240,17 @@ public:
 	*******************************************************************************/
 	void ClearSelectedEntities();
 
+	/*!*****************************************************************************
+	\brief
+	Checks if entity should be rendered.
+
+	\param const Entity& e
+
+	\return bool
+	true if it should be culled, false otherwise.
+	*******************************************************************************/
+	bool ShouldCull(const Entity& e);
+
 private:
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam, mAnimatorCam;
@@ -653,16 +664,6 @@ private:
 	*******************************************************************************/
 	void CreateGizmo();
 
-	/*!*****************************************************************************
-	\brief
-	Checks if entity should be rendered.
-
-	\param const Entity& e
-
-	\return bool
-	true if it should be culled, false otherwise.
-	*******************************************************************************/
-	bool ShouldCull(const Entity& e);
 };
 
 

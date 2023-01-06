@@ -14,6 +14,8 @@ also handles the assertion.
 #pragma once
 #include "Logger.h"
 
+std::shared_ptr<Logger> Logger::mInstance = nullptr;
+
 /*!*****************************************************************************
 \brief
 Creates a new log type.

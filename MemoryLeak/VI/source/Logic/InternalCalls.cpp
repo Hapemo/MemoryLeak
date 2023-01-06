@@ -16,6 +16,9 @@ is being stored.
 #include "GameStateManager.h"
 #include "Helper.h"
 
+int* InternalCalls::windowWidth = nullptr;
+int* InternalCalls::windowHeight = nullptr;
+
 /*!*****************************************************************************
 \brief
 Checks for the state of certain key

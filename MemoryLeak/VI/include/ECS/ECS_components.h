@@ -329,17 +329,26 @@ only contains an offset. Later versions will include light intensity.
 struct LightSource
 {
 	Math::Vec2 centreOffset;
+	float radius;
+	float intensity; //"whiteness" of the light
+};
+
+struct ShadowCaster
+{
+	Math::Vec2 centerOffset = { 0.f, 0.f },	// save, edit, see
+		scaleOffset = { 1.f,1.f };		// save, edit, see
+	bool renderFlag{ false };				// save, edit, see
 };
 
 //use to index the variant data type, for ditor and serilization to determine type stored
 enum class COMPONENTID
 {
 	GENERAL,		//0
-	LIFESPAN,		//1 
+	LIFESPAN,		//1
 	TRANSFORM,		//2
 	SPRITE,			//3
 	ANIMATION,		//4
-	SHEETANIMATION,	//5 
+	SHEETANIMATION,	//5
 	PHYSICS2D,		//6
 	RECTCOLLIDER,	//7
 	CIRCLECOLLIDER, //8
