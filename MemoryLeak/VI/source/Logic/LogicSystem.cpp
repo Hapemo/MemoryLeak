@@ -20,7 +20,7 @@ Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
 	LOG_DEBUG("Initialising LogicSystem.");
-	//MonoManager::GetInstance()->InitMono();
+	MonoManager::GetInstance()->InitMono();
 	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::INIT);
 	//GameStateManager::GetReference()->mcurrentGameState->mScenes[]
 }
@@ -40,7 +40,7 @@ Run the exit function for all active entities' scripts.
 void LogicSystem::Exit() {
 	LOG_DEBUG("Closing LogicSystem.");
 	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::EXIT);
-	//MonoManager::GetInstance()->CloseMono();
+	MonoManager::GetInstance()->CloseMono();
 }
 
 /*!*****************************************************************************
@@ -104,7 +104,6 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 		return;
 	}
 
-	/*
 	// Script is C# script
 	MonoManager::GetInstance()->RegisterMonoScript("BonVoyage", scriptName);
 	if (MonoManager::GetInstance()->GetMonoComponent(scriptName) != nullptr) {
@@ -129,7 +128,6 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 		}
 		return;
 	}
-	*/
 
 	// Script doesnt exist
 	LOG_ERROR("Script failed to attach or doesn't exist!");

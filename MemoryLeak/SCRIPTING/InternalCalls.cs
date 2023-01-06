@@ -8,6 +8,8 @@ namespace BonVoyage
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static bool CheckKey();
 
+        //private extern class Math;
+
 		//[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		//internal extern static Math::Vec2 GetWorldMousePos();
 
@@ -27,7 +29,7 @@ namespace BonVoyage
 		internal extern static bool HasChoice();
 
 		//[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		////internal extern static pair<int, int> GetChoices();
+		//internal extern static pair<int, int> GetChoices();
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static void SetSelectedChoice();

@@ -92,7 +92,7 @@ public:
 	\brief
 	Register the C# scripts to store internally for the logic system to use.
 	*******************************************************************************/
-	static void RegisterMonoScript(std::string _namespace, std::string _class);
+	void RegisterMonoScript(std::string _namespace, std::string _class);
 
 	/*!*****************************************************************************
 	\brief

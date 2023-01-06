@@ -261,7 +261,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>Default</ConformanceMode>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>

@@ -67,10 +67,11 @@
   <ItemGroup>
     <Compile Include="InternalCalls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestScript.cs" />
+    <Compile Include="TestMonoScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(SolutionDir)lib\Mono\etc\mono\" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
