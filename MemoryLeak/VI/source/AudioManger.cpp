@@ -8,6 +8,8 @@
 This file contains function definations for a audio system to play sound in the game
 *******************************************************************************/
 #include "AudioManager.h"
+#include <sys/stat.h>
+#include <ECSManager.h>
 
 /*!*****************************************************************************
 \brief
@@ -32,27 +34,11 @@ void AudioManager::Init()
         //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
         exit(-1);
     }
-    LoadSound();
+    mChannel.resize(20);
+    songVol = 0.05f;
+    ///LoadSound();
 }
-/*!*****************************************************************************
-\brief
-    Deconstructor 
 
-\return
-None.
-*******************************************************************************/
-void AudioManager::Unload()
-{
-    for (auto& i : mSfxSound)
-        i.second->release();
-
-    for (auto& i : mBgmSound)
-        i.second->release();
-    
-    mChannel.clear();
-    
-    system->release();
-}
 /*!*****************************************************************************
 \brief
     Load all the sounds needed to FMOD
@@ -60,23 +46,164 @@ void AudioManager::Unload()
 \return
 None.
 *******************************************************************************/
-void AudioManager::LoadSound() //Load all the sound needed in the game
+FMOD::Sound* AudioManager::LoadAudio(std::filesystem::path const& audio) //Load a sound needed in the game
 {
-    mChannel.resize(20);
-    FMOD::Sound* snd;
-    system->createSound("..\\resources\\Audio\\SHOOT1.wav", FMOD_DEFAULT, nullptr, &snd);
-    mSfxSound["SHOOT1.wav"] = snd;
-    system->createSound("..\\resources\\Audio\\DAMAGE.wav", FMOD_DEFAULT, nullptr, &snd);
-    mSfxSound["DAMAGE.wav"] = snd;
-    system->createSound("..\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
-    mSfxSound["HEALTH.wav"] = snd;
-    system->createSound("..\\resources\\Audio\\SHOOT5.wav", FMOD_DEFAULT, nullptr, &snd);
-    mSfxSound["SHOOT5.wav"] = snd;
-    system->createSound("..\\resources\\Audio\\MENUBG.wav", FMOD_DEFAULT, nullptr, &snd);
-    mBgmSound["MENUBG.wav"] = snd;
-
-    //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
+  FMOD::Sound* snd;
+  system->createSound(audio.string().c_str(), FMOD_DEFAULT, nullptr, &snd);
+  if (audio.parent_path().string() == "..\\resources\\Audio\\SFX") 
+  {
+      mSfxSound[audio.stem().string()] = snd;
+  
+  }
+  else  if (audio.parent_path().string() == "..\\resources\\Audio\\BGM")
+  {
+      mBgmSound[audio.stem().string()] = snd;
+  }
+  else  if (audio.parent_path().string() == "..\\resources\\Audio\\Songs")
+  {
+      mBgmSound[audio.stem().string()] = snd;
+      songs.push_back(audio.stem().string());
+  }
+  return snd;
 }
+/*!*****************************************************************************
+\brief
+    Load all the dialogue sounds needed to FMOD
+
+\return
+None.
+*******************************************************************************/
+void AudioManager::LoadDialogueAudio(std::string audio) //Load a sound needed in the game
+{
+    for (auto& i : mDialogueSound)
+        i.second->release();
+    mDialogueSound.clear();
+    FMOD::Sound* snd;
+    std::string parent = "..\\resources\\Audio\\Dialogue\\";
+    std::string rootPath = parent + audio;
+    struct stat buffer;
+    if (stat(rootPath.c_str(), &buffer) != 0)
+    {
+        LOG_WARN("No Dialogue Audio files found! ");
+        return;
+    }
+    std::filesystem::path m_CurrentDirectory = std::filesystem::path(rootPath);
+    for (auto& directory : std::filesystem::directory_iterator(m_CurrentDirectory))
+    {
+        const auto& path = directory.path();
+        if (path.extension() == ".meta")
+            continue;
+        system->createSound(path.string().c_str(), FMOD_DEFAULT, nullptr, &snd);
+        mDialogueSound[path.stem().string()] = snd;
+    }
+    
+}
+
+/*!*****************************************************************************
+\brief
+    Update function to play sounds of entities that need to be played
+
+\return
+None.
+*******************************************************************************/
+void AudioManager::UpdateSound()
+{
+    if (!editorManager->IsScenePaused())
+    {
+        for (const Entity& e : mEntities)
+        {
+            if (!e.ShouldRun())
+                continue;
+            if (e.GetComponent<Audio>().sound.toPlay == true)
+            {
+                if (e.GetComponent<Audio>().sound.channel == 0)
+                    e.GetComponent<Audio>().sound.channel = AddChannel();
+                PlaySound(e);
+            }
+            if (e.GetComponent<Audio>().sound.channel != 0 && isPlaying(e.GetComponent<Audio>().sound.channel))
+            {
+                int channel = e.GetComponent<Audio>().sound.channel;
+                if (e.GetComponent<Audio>().isSpacial && e.HasComponent<Transform>())
+                {
+                    float vol = e.GetComponent<Audio>().sound.volume;
+                    Math::Vec2 distance = e.GetComponent<Transform>().translation - renderManager->GetGameCamera().GetPos();
+                    Math::Vec2 max = { renderManager->GetGameCamera().GetCameraWidth() / 2.f * e.GetComponent<Audio>().spacialDistance,
+                        renderManager->GetGameCamera().GetCameraHeight() / 2.f * e.GetComponent<Audio>().spacialDistance };
+
+                    float spacial = (max.Magnitude() - distance.Magnitude()) / max.Magnitude();
+                    spacial = spacial < 0.f ? 0.f : spacial;
+
+                    vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
+
+//#ifdef _DEBUG
+//                    std::cout << "sound vol :  " << e.GetComponent<Audio>().sound.volume << "\n";
+//                    std::cout << "Spacial ratio :  " << spacial << "\n";
+//                    std::cout << "finial sound :  " << vol << "\n";
+//#endif
+                    mChannel[channel]->setVolume(vol);
+                }
+                else
+                    mChannel[channel]->setVolume(e.GetComponent<Audio>().sound.volume);
+                if (e.GetComponent<Audio>().sound.isRandPitch)
+                {
+                    mChannel[channel]->setPitch(((float)(std::rand() % 100)) / 100.f + 0.5f);
+                }
+                else
+                    mChannel[channel]->setPitch(e.GetComponent<Audio>().sound.pitch);
+            }
+        }
+    }
+    else
+    {
+        for (int i = 19; i < mChannel.size(); i++)
+        {
+            mChannel[i]->stop();
+        }
+    }
+    bool isAnyPlaying = false;
+    for (int i = (int)E_AUDIO_CHANNEL::EDITORSONG+1; i < mChannel.size(); i++)
+    {
+        if (isPlaying(i))
+        {
+            isAnyPlaying = true;
+            break;
+        }
+    }
+    //static float songVol = 0.05f;
+    if (isAnyPlaying)
+    {
+        songVol = 0.02f;
+    }
+    else
+    {
+        if (songVol < 0.6f)
+        {
+            songVol += 0.002f;
+        }
+    }
+    mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(songVol);
+    mChannel[(int)E_AUDIO_CHANNEL::MAINBACKGROUND]->setVolume(0.2f+ songVol/4.f); //need manage volume properly aft m3
+    /// <REMOVE after M3>
+    //static bool wasMinimised = false;
+    //if (minimise)   //should check this else where after M3
+    //{
+    //    SetALLVolume(0.f);
+    //    wasMinimised = true;
+    //}
+    //else
+    //{
+    //    if (wasMinimised)
+    //    {
+    //        SetALLVolume(1.f); //idk whats the original volume // need find a way to resume audio after m3
+    //        wasMinimised = false;
+    //    }
+    //}
+    /// </REMOVE>
+
+    system->update();
+}
+
+
 /*!*****************************************************************************
 \brief
     Plays a single sound
@@ -84,24 +211,81 @@ void AudioManager::LoadSound() //Load all the sound needed in the game
 \return
 None.
 *******************************************************************************/
-void AudioManager::PlaySound(const Entity& _e, int _channel)
+void AudioManager::PlaySound(const Entity& _e)
 {
     //for (int i = 0; i < e.GetComponent<Audio>().sound.size(); i++) 
     if (!_e.GetComponent<Audio>().sound.isPaused)
     {
         std::string snd = _e.GetComponent<Audio>().sound.path;
+        int channel = _e.GetComponent<Audio>().sound.channel;
         //mSfxSound[snd]->setMode(2);
-        bool f;
-        mChannel[_channel]->isPlaying(&f);
-        if(!f)
+        if (!isPlaying(channel))
         {
-            LOG_INFO("Play Collision sound");
-            mChannel[_channel]->setVolume(_e.GetComponent<Audio>().sound.volume);
-            system->playSound(mSfxSound[snd], nullptr, false, &mChannel[_channel]);
+            LOG_INFO("Play Entity sound");
+            system->playSound(mSfxSound[snd], nullptr, false, &mChannel[channel]);
+           
+           
         }
     }
+    if (!_e.GetComponent<Audio>().sound.isLoop)
+    {
+        _e.GetComponent<Audio>().sound.toPlay = false;
+    }
 }
+/*!*****************************************************************************
+\brief
+    Plays a single background sound
 
+\return
+None.
+*******************************************************************************/
+void AudioManager::PlayAnySound(std::string _snd, int _channel)
+{
+    /* bool f;
+    mChannel[_channel]->isPlaying(&f);*/
+    if (isPlaying(_channel))
+    {
+        mChannel[_channel]->stop();
+    }
+    
+    LOG_INFO("Play a sound");
+    if (mBgmSound.find(_snd) != mBgmSound.end())
+    {
+        mBgmSound[_snd]->setMode(1);
+        system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
+    }
+    else if (mSfxSound.find(_snd) != mSfxSound.end())
+    {
+        mSfxSound[_snd]->setMode(1);
+        system->playSound(mSfxSound[_snd], nullptr, false, &mChannel[_channel]);
+    }
+    mChannel[_channel]->setVolume(1.5f);
+    
+}
+/*!*****************************************************************************
+\brief
+    Plays a dialogue naration
+
+\return
+None.
+*******************************************************************************/
+void AudioManager::PlayDialogueSound(std::string _snd, int _channel)
+{
+    /*bool f;
+    mChannel[_channel]->isPlaying(&f);*/
+    if (isPlaying(_channel))
+    {
+        mChannel[_channel]->stop();
+    }
+
+    mChannel[_channel]->setVolume(1.0f);
+    if (mDialogueSound.find(_snd) != mDialogueSound.end())
+    {
+        mDialogueSound[_snd]->setMode(1);
+        system->playSound(mDialogueSound[_snd], nullptr, false, &mChannel[_channel]);
+    }
+
+}
 /*!*****************************************************************************
 \brief
     Plays a single background sound
@@ -112,38 +296,30 @@ None.
 void AudioManager::PlayBGSound(std::string _snd, int _channel)
 {
     mBgmSound[_snd]->setMode(2);
-    bool f;
-    mChannel[_channel]->isPlaying(&f);
-    if (!f)
+   /* bool f;
+    mChannel[_channel]->isPlaying(&f);*/
+    if (isPlaying(_channel))
     {
-        LOG_INFO("Play BG sound");
-        mChannel[_channel]->setVolume(0.5f);
-        system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
+        mChannel[_channel]->stop();
     }
+    //LOG_INFO("Play BG sound");
+    system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
+    mChannel[_channel]->setVolume(0.5f);
 }
 /*!*****************************************************************************
 \brief
-    Update function to play sounds of entities that need to be played
-
+   Checks if a chanel is playing
 \return
 None.
 *******************************************************************************/
-void AudioManager::UpdateSound()
+bool AudioManager::isPlaying(int _channel)
 {
-    for (const Entity& e : mEntities)
-    {
-        if (e.GetComponent<Audio>().sound.toPlay==true)
-        {
-            
-            PlaySound(e, (int)(std::rand()%10));
-            if (!e.GetComponent<Audio>().sound.isLoop)
-            {
-                e.GetComponent<Audio>().sound.toPlay = false;
-            }
-        }
-    }
-    system->update();
+    bool f;
+    mChannel[_channel]->isPlaying(&f);
+    return f;
 }
+
+
 /*!*****************************************************************************
 \brief
     Set all volume
@@ -155,10 +331,11 @@ None.
 *******************************************************************************/
 void AudioManager::SetALLVolume(float vol)
 {
-    for (const Entity& e : mEntities)
+    for (int i = 0; i< mChannel.size(); i++)
     {
-        e.GetComponent<Audio>().sound.volume = vol;
+        mChannel[i]->setVolume(vol);
     }
+    songVol = 0.f;
 }
 /*!*****************************************************************************
 \brief
@@ -192,3 +369,89 @@ void AudioManager::SetSFXVolume(float vol)
         e.GetComponent<Audio>().sound.volume = vol;
     }
 }
+/*!*****************************************************************************
+\brief
+    Adds a new chanel
+
+\return
+None.
+*******************************************************************************/
+int AudioManager::AddChannel()
+{
+    //FMOD::Channel* newChannel;
+    // mChannel.emplace_back(newChannel);
+    mChannel.resize(mChannel.size() + 1);
+    return ((int)mChannel.size() - 1);
+}
+
+/*!*****************************************************************************
+\brief
+    Stop a chanel sound
+
+\return
+None.
+*******************************************************************************/
+void AudioManager::StopSound(int _channel)
+{
+    mChannel[_channel]->stop();
+}
+/*!*****************************************************************************
+\brief
+    stop a entity sound
+
+\return
+None.
+*******************************************************************************/
+void AudioManager::StopSound(const Entity& e)
+{
+    if(e.GetComponent<Audio>().sound.channel != 0)
+        mChannel[e.GetComponent<Audio>().sound.channel]->stop();
+}
+
+/*!*****************************************************************************
+\brief
+    Deconstructor
+
+\return
+None.
+*******************************************************************************/
+void AudioManager::Unload()
+{
+    for (auto& i : mSfxSound)
+        i.second->release();
+
+    for (auto& i : mBgmSound)
+        i.second->release();
+
+    for (auto& i : mDialogueSound)
+        i.second->release();
+
+    mChannel.clear();
+
+    system->release();
+}
+/*!*****************************************************************************
+\brief
+    Load all the sounds needed to FMOD
+
+\return
+None.
+*******************************************************************************/
+/*void AudioManager::LoadSound() //Load all the sound needed in the game
+{
+    mChannel.resize(20);
+    FMOD::Sound* snd;
+    system->createSound("..\\resources\\Audio\\SHOOT1.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["SHOOT1.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\DAMAGE.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["DAMAGE.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\HEALTH.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["HEALTH.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\SHOOT5.wav", FMOD_DEFAULT, nullptr, &snd);
+    mSfxSound["SHOOT5.wav"] = snd;
+    system->createSound("..\\resources\\Audio\\MENUBG.wav", FMOD_DEFAULT, nullptr, &snd);
+    mBgmSound["MENUBG.wav"] = snd;
+
+    //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
+//}
+//////resourceManager->GetResource<FMOD::Sound*>(guid);*/

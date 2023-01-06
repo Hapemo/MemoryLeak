@@ -83,6 +83,14 @@ public:
 	*******************************************************************************/
 	std::string GetPerformances();
 
+	/*!*****************************************************************************
+	\brief
+	Measures and returns a vector of all the systems' performances in percentages.
+
+	\return
+	Returns a vector populated with all the system performance in percentages.
+	*******************************************************************************/
+	std::vector < std::pair < std::string, double >> GetPerformanceVec();
 private:
 	/*!*****************************************************************************
 	\brief

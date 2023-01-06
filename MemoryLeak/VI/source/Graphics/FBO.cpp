@@ -15,7 +15,7 @@ to operate on OpenGL's Frame Buffer Object.
 \brief
 Default constructor for FBOSpec class.
 *******************************************************************************/
-FBOSpec::FBOSpec() : mSamples(1), mRenderToScreen(true), mWidth(), mHeight() {}
+FBOSpec::FBOSpec() : mSamples(1), mWidth(), mHeight() {}
 
 /*!*****************************************************************************
 \brief
@@ -28,8 +28,8 @@ Pixel width of the FBO
 Pixel height of the FBO
 *******************************************************************************/
 void FBO::Init(int _windowWidth, int _windowHeight) {
-	mSpecs.mWidth = _windowWidth;
-	mSpecs.mHeight = _windowHeight;
+	mSpecs.mWidth = _windowWidth == 0 ? 1 : _windowWidth;
+	mSpecs.mHeight = _windowHeight == 0 ? 1 : _windowHeight;
 
 	//creating frame buffer
 	glCreateFramebuffers(1, &mfboid);
@@ -71,7 +71,14 @@ FBO::~FBO()
 {
 	glDeleteFramebuffers(1, &mfboid);
 }
-
+/*!*****************************************************************************
+\brief
+Deletes the FrameBuffer object. Used when resizing the viewport.
+*******************************************************************************/
+void FBO::DeleteFBO()
+{
+	glDeleteFramebuffers(1, &mfboid);
+}
 /*!*****************************************************************************
 \brief
 Binds the FBO to the OpenGL context.

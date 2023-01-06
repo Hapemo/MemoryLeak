@@ -3,10 +3,16 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
-\brief
+\date 27-11-2022
+
 This file contains the basic structs that make up the ECS system. It contains 
 Entity, IComponentArray and ComponentArray.
+
+For Milestone 2:
+Added prefab and it's member functions
+
+For Milestone 3:
+Added additional features for entity such as activate and deactivate
 *******************************************************************************/
 #pragma once
 #include "pch.h"
@@ -28,9 +34,9 @@ const ComponentType MAX_COMPONENTS{ 32 };
 // An ID indicating which component an entity posesses
 using Signature = std::bitset<MAX_COMPONENTS>;
 
+enum SAFE : char { safe };
 
 /*!*****************************************************************************
-\brief
 Entity is a part of the ECS, representing each game object
 *******************************************************************************/
 struct Entity {
@@ -44,7 +50,6 @@ struct Entity {
 	explicit Entity(EntityID _id) : id(_id) {}
 
 	/*!*****************************************************************************
-	\brief
 	Operator overload for '<' operator. This is required for std::set as set uses 
 	'<' operator to arrange placement of items in std::set.
 
@@ -54,13 +59,11 @@ struct Entity {
 	bool operator<(Entity const& _entity) const { return id < _entity.id; } 
 
 	/*!*****************************************************************************
-	 \brief
 	 Destroy an entity, returning it's ID and components.
 	*******************************************************************************/
 	void Destroy() const;
 
 	/*!*****************************************************************************
-	\brief
 	Add components to an existing Entity
 
 	\param T
@@ -87,6 +90,9 @@ struct Entity {
 	template<typename T>
 	T& GetComponent() const;
 
+	template<typename T>
+	T& GetComponent(SAFE) const;
+
 	/*!*****************************************************************************
 	Remove a component from entity
 	*******************************************************************************/
@@ -101,6 +107,43 @@ struct Entity {
 	*******************************************************************************/
 	template<typename T>
 	bool HasComponent() const;
+
+	/*!*****************************************************************************
+	Checks if the entity is active and not paused
+
+	\return bool
+	- True if it is not paused and is active, otherwise false
+	*******************************************************************************/
+	bool ShouldRun() const;
+
+	/*!*****************************************************************************
+	Contains operations that should be done when entity is activated.
+	Set entity's isActive to true and run it's starting script
+	*******************************************************************************/
+	void Activate() const;
+	
+	/*!*****************************************************************************
+	Contains operations that should be done when entity is deactivated.
+	Set entity's isActive to false and run it's ending script
+	*******************************************************************************/
+	void Deactivate() const;
+
+	/*!*****************************************************************************
+	Get an entity's component as read-only
+
+	\return T const&
+	- Entity's component
+	*******************************************************************************/
+	template<typename T>
+	T const& ReadComponent() const;
+
+	/*!*****************************************************************************
+	Add child to entity, for parent-child hierarchy
+
+	\param _e
+	- Entity to add as child
+	*******************************************************************************/
+	void AddChild(Entity _e) const;
 };
 
 
@@ -114,7 +157,6 @@ public:
 	virtual ~IComponentArray() = default;
 
 	/*!*****************************************************************************
-	\brief
 	Remove component from an entity
 
 	\return bool
@@ -123,7 +165,6 @@ public:
 	virtual void RemoveData(EntityID) = 0;
 
 	/*!*****************************************************************************
-	\brief
 	Checks if a component array has data of an entity
 
 	\return bool
@@ -143,7 +184,6 @@ public:
 	ComponentArray();
 
 	/*!*****************************************************************************
-	\brief
 	Assign a component to an entity and give it a specified component data
 
 	\param EntityID
@@ -155,7 +195,6 @@ public:
 	void InsertData(EntityID, T);
 
 	/*!*****************************************************************************
-	\brief
 	Remove a component from an entity
 
 	\param EntityID
@@ -164,7 +203,6 @@ public:
 	void RemoveData(EntityID);
 	
 	/*!*****************************************************************************
-	\brief
 	Access the component information of an entity
 
 	\param EntityID
@@ -176,7 +214,17 @@ public:
 	T& GetData(EntityID);
 
 	/*!*****************************************************************************
-	\brief
+	Read the component information of an entity
+
+	\param EntityID
+	- ID of entity
+
+	\return T&
+	- Reference of component to entity
+	*******************************************************************************/
+	T const& ReadData(EntityID);
+
+	/*!*****************************************************************************
 	Checks if the Component array has data of an entity
 
 	\param EntityID
@@ -208,45 +256,100 @@ public:
 //-------------------------------------------------------------------------
 // Prefab
 // 
+// Prefabees are entities linked to the prefab
+// 
 // Important notes
 // Prefab will automatically contain general component.
-// General {"", TAG::OTHERS, SUBTAG::NOSUBTAG, true, this}
+// General {"", TAG::OTHERS, SUBTAG::NOSUBTAG, true, false, this}
 // The only thing initialised in this component is the prefab pointer,
 // pointing to itself.
 //-------------------------------------------------------------------------
 class Prefab {
 public:
 	Prefab();
+	Prefab(std::string const&);
 	~Prefab();
 
-	// Create new entity with prefab
-	// Must use ECS::CreateEntity
+	/*!*****************************************************************************
+	Create new prefabee and add it to ECS
+	
+	\return Entity
+	- Prefabee created
+	*******************************************************************************/
 	Entity CreatePrefabee();
 
-	// Remove entity's link from prefab. Can be called by user.
-	// When user press a button to uncheck a flag for being a prefabee.
-	// Must be called when entity gets deleted.
-	// Must be called when entity gets copy assigned to another entity.
+	/*!*****************************************************************************
+	Remove entity's link from prefab.
+	Must be called when entity gets deleted.
+	Must be called when entity gets copy assigned to another entity.
+	
+	\param Entity const&
+	- Entity to unlink
+	*******************************************************************************/
 	void UnlinkPrefabee(Entity const&);
 
-	// Add components to prefab. Must update all prefabees on newly added component.
+	/*!*****************************************************************************
+	Add components to prefab. Must update all prefabees on newly added component.
+
+	\param T const&
+	- Add component to prefab and all it's prefabees.
+	*******************************************************************************/
 	template<typename T>
 	void AddComponent(T const&);
 
-	// Change component in prefab. Must update all prefabees on updated component.
+	/*!*****************************************************************************
+	Change component in prefab. Update all prefabees on updated component.
+
+	\param T const&
+	- Component to update in prefab and all it's prefabees.
+	*******************************************************************************/
 	template<typename T>
 	void UpdateComponent(T const&);
 
-	// Remove component from prefab. Must remove component from all components.
+	/*!*****************************************************************************
+	Remove component from prefab. Remove component from all prefabee too.
+	*******************************************************************************/
 	template<typename T>
 	void RemoveComponent();
 
+	/*!*****************************************************************************
+	Check if prefab has certain component
+
+	\return bool
+	- True if prefab has the component, otherwise false
+	*******************************************************************************/
+	template<typename T>
+	bool HasComponent() const;
+
+	/*!*****************************************************************************
+	Get the component in the prefab.
+
+	\return T const&
+	- Component in the prefab
+	*******************************************************************************/
+	template<typename T>
+	T const& GetComponent() const;
+
+	/*!*****************************************************************************
+	Getter for set of prefabees
+
+	\return std::set<Entity>
+	- All the prefabees tied to the prefab
+	*******************************************************************************/
+	std::set<Entity> const& GetPrefabees() const { return mPrefabees; }
+
+	/*!*****************************************************************************
+	Get a reference of the prefabee's name
+
+	\return std::string&
+	- Name of prefab
+	*******************************************************************************/
 	std::string& Name() { return mName; }
 
 private:
-	std::string mName;
-	std::set<Entity> mPrefabees;
-	std::array<void*, MAX_COMPONENTS> mComponents;
+	std::string mName;																// Prefab's name
+	std::set<Entity> mPrefabees;											// Set of prefabees linked to the prefab
+	std::array<void*, MAX_COMPONENTS> mComponents;		// Array of void pointers to prefab's component data
 
 	/* Components (Needs to be updated)
 	General*							mGeneral;
@@ -290,6 +393,11 @@ void ComponentArray<T>::RemoveData(EntityID _entity) {
 
 template<typename T>
 T& ComponentArray<T>::GetData(EntityID _entity) {
+	return mData[static_cast<short>(_entity)];
+}
+
+template<typename T>
+T const& ComponentArray<T>::ReadData(EntityID _entity) {
 	return mData[static_cast<short>(_entity)];
 }
 

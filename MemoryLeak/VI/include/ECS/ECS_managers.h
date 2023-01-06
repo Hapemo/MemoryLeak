@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 This file contains 4 different classes that makes up the whole ECS system.
 Entity Manager - manages all the entities
@@ -62,6 +62,8 @@ public:
 	- ID of an entity
 	*******************************************************************************/
 	Signature GetSignature(EntityID);
+
+	uint32_t GetEntityCount() { return mLivingEntityCount; }
 
 private:
 	// A container of unused entity ids
@@ -144,6 +146,17 @@ public:
 	template<typename T>
 	T& GetComponent(EntityID _entity) {
 		return GetComponentArray<T>()->GetData(_entity);
+	}
+
+	/*!*****************************************************************************
+	Read component data of an entity
+
+	\param EntityID
+	- ID of an entity
+	*******************************************************************************/
+	template<typename T>
+	T const& ReadComponent(EntityID _entity) {
+		return GetComponentArray<T>()->ReadData(_entity);
 	}
 	
 	/*!*****************************************************************************
@@ -241,8 +254,6 @@ private:
 	std::unordered_map<std::string, std::shared_ptr<System>> mSystems;
 };
 
-
-
 //-------------------------------------------------------------------------
 // Coordinator
 // The main Coordinator system, combination of EntityID, Component Array and System managers
@@ -325,6 +336,18 @@ public:
 	T& GetComponent(EntityID _entity) { return mComponentArrayManager->GetComponent<T>(_entity); }
 
 	/*!*****************************************************************************
+	Get read-only component data of an entity
+
+	\param EntityID
+	- ID of an Entity
+
+	\return T&
+	- Component data of an entity
+	*******************************************************************************/
+	template<typename T>
+	T const& ReadComponent(EntityID _entity) { return mComponentArrayManager->ReadComponent<T>(_entity); }
+
+	/*!*****************************************************************************
 	Get the component type of a component
 
 	\return ComponentType
@@ -364,6 +387,12 @@ public:
 	void SetSystemSignature(const Signature& _signature) { return mSystemManager->SetSignature<T>(_signature); }
 
 	// For prefab
+	/*!*****************************************************************************
+	Unlink a prefab from an entity
+
+	\param EntityID
+	- Entity to unlink itself from it's prefab
+	*******************************************************************************/
 	void UnlinkPrefab(EntityID _entity);
 
 	// Extra
@@ -378,7 +407,15 @@ public:
 	/param const std::vector<EntityID>&
 	- A bunch of entities to be blacklisted from being deleted
 	*******************************************************************************/
-	void DestroySomeEntites(const std::vector<EntityID>&);
+	void DestroySomeEntites(const std::set<Entity>&);
+
+	/*!*****************************************************************************
+	Get the count of entity in ECS
+
+	\return uint32_t
+	- Number of entities
+	*******************************************************************************/
+	uint32_t GetEntityCount();
 
 private:
 	std::unique_ptr<EntityManager> mEntityManager;
@@ -404,6 +441,21 @@ template<typename T>
 T& Entity::GetComponent() const { return Coordinator::GetInstance()->GetComponent<T>(id); }
 
 template<typename T>
+T& Entity::GetComponent(SAFE safe) const {
+	static T errorComponent{};
+	(void)safe;
+	if (Coordinator::GetInstance()->HasComponent<T>(id))
+		return Coordinator::GetInstance()->GetComponent<T>(id);
+	else {
+		LOG_ERROR("Unable to find component \"" + std::string(typeid(T).name()) + "\" for entity: " + std::to_string(id));
+		return errorComponent;
+	}
+}
+
+template<typename T>
+T const& Entity::ReadComponent() const { return Coordinator::GetInstance()->ReadComponent<T>(id); }
+
+template<typename T>
 void Entity::RemoveComponent() const { return Coordinator::GetInstance()->RemoveComponent<T>(id); }
 
 template<typename T>
@@ -417,6 +469,9 @@ template<typename T>
 void Prefab::AddComponent(T const& _component) { // TODO: Possible optimisation to put _component into data instead of *(static_cast<T*>(mComponents[pos]))
 	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
 	mComponents[pos] = new T;
+#ifdef NDEBUG
+	std::cout << "sizeof " << sizeof(T) << '\n';
+#endif
 	*(static_cast<T*>(mComponents[pos])) = _component;
 
 	for (Entity const& e : mPrefabees)
@@ -429,7 +484,10 @@ void Prefab::UpdateComponent(T const& _component) { // TODO: Possible optimisati
 	*(static_cast<T*>(mComponents[pos])) = _component;
 
 	for (Entity const& e : mPrefabees)
-		e.GetComponent<T>() = *(static_cast<T*>(mComponents[pos]));
+	{
+		if (!e.HasComponent<T>()) e.AddComponent<T>(*(static_cast<T*>(mComponents[pos]))); // Add component if prefabee doesn't have the component.
+		else e.GetComponent<T>() = *(static_cast<T*>(mComponents[pos]));
+	}
 }
 
 template<typename T>
@@ -441,5 +499,19 @@ void Prefab::RemoveComponent() {
 	delete mComponents[pos];
 	mComponents[pos] = nullptr;
 }
+template<typename T>
+bool Prefab::HasComponent() const {
+	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
+	if (mComponents[pos]==nullptr)
+		return false;
+	else
+		return true;
+	
+}
+template<typename T>
+T const& Prefab::GetComponent() const { 
+	ComponentType pos{ Coordinator::GetInstance()->GetComponentType<T>() };
 
+	return *(static_cast<T*>(mComponents[pos]));
+}
 

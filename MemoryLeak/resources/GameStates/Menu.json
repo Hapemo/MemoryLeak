@@ -1,0 +1,70 @@
+[
+    {
+        "SceneName": "Menu_Main",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": false,
+        "layer": 9,
+        "order": 9
+    },
+    {
+        "SceneName": "Settings",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": true,
+        "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "How_To_Play",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": true,
+        "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "Quit Confirmation",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": true,
+        "layer": 0,
+        "order": 0
+    }
+]

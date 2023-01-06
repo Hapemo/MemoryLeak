@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 Singleton base class, a design pattern that allows creation of only one instance
 of a class.
@@ -30,11 +30,11 @@ private:
 	}
 
 protected:
-	Singleton() { std::cout << "Singleton Constructor called\n"; }
+	Singleton() = default;
 
 public:
 	// Default ctor and dtor
-	~Singleton() {}
+	~Singleton() = default;
 
 	// To disable any copying mechanism for Singleton
 	Singleton(const Singleton&) = delete;

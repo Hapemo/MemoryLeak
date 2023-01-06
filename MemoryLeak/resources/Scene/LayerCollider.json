@@ -1,0 +1,173 @@
+[
+    {
+        "General": {
+            "name": "Building1",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 269.0,
+                "Y": 325.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -287.95623779296875,
+                "Y": 60.21897506713867
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\lighthouse.png",
+            "layer": 10
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 37.0
+            },
+            "scaleOffset": {
+                "X": 0.20000000298023224,
+                "Y": 0.699999988079071
+            },
+            "renderFlag": true
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -70.0
+            },
+            "scaleOffset": 0.30000001192092896,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Building2",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 269.0,
+                "Y": 325.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 300.0,
+                "Y": 180.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\lighthouse.png",
+            "layer": 10
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 37.0
+            },
+            "scaleOffset": {
+                "X": 0.20000000298023224,
+                "Y": 0.699999988079071
+            },
+            "renderFlag": true
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -70.0
+            },
+            "scaleOffset": 0.30000001192092896,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Player",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 53.50404739379883,
+                "Y": -83.6057357788086
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\mc.png",
+            "layer": 15
+        },
+        "Physics2D": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "velocity": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
+            "renderFlag": false
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 0.6499999761581421,
+                "Y": 0.5
+            },
+            "renderFlag": true
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 0.5,
+            "renderFlag": true
+        }
+    }
+]

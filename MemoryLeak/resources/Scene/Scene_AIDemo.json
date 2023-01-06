@@ -1,0 +1,824 @@
+{
+    "SceneData": {
+        "isActive": true
+    },
+    "Entity0": {
+        "General": {
+            "name": "Player",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -83.24899291992188,
+                "Y": 217.4340057373047
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\mc.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "SHOOT1.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    "Entity1": {
+        "General": {
+            "name": "Boat",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -112.01699829101563,
+                "Y": 226.49600219726563
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\boat.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "SHOOT1.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    "Entity2": {
+        "General": {
+            "name": "Enemy",
+            "tag": 2,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 190.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -386.12200927734375,
+                "Y": 177.71055603027344
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\monster.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "SHOOT1.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "AI": {
+            "colorChange": 0,
+            "movement": 4,
+            "speed": 1.0,
+            "range": 10.0
+        }
+    },
+    "Entity3": {
+        "General": {
+            "name": "Building",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 220.0,
+                "Y": 220.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 43.70399856567383,
+                "Y": 269.6419982910156
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\house_2.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "SHOOT1.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    "Entity4": {
+        "General": {
+            "name": "Passenger 1",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 56.0,
+                "Y": 67.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -10.53499984741211,
+                "Y": 251.57699584960938
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\ghost_1_green.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "SHOOT1.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    "Entity5": {
+        "General": {
+            "name": "Background",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1698.0,
+                "Y": 911.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 23.51999282836914,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\water.jpg",
+            "layer": 0
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "SHOOT1.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "AI": {
+            "colorChange": 0,
+            "movement": 2,
+            "speed": 0.6290000081062317,
+            "range": 19.893999099731445
+        }
+    },
+    "Entity6": {
+        "General": {
+            "name": "Passenger 2",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 70.0,
+                "Y": 70.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -128.60299682617188,
+                "Y": 231.99400329589844
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\ghost_2_green.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "SHOOT1.wav",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    "Entity7": {
+        "General": {
+            "name": "Passenger 3",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 47.0,
+                "Y": 47.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 273.7510070800781,
+                "Y": 296.4339904785156
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\ghost_4_green.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity8": {
+        "General": {
+            "name": "Building 2",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 220.0,
+                "Y": 220.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -491.0169982910156,
+                "Y": -173.50399780273438
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\house_4.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity9": {
+        "General": {
+            "name": "Building 3",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 220.0,
+                "Y": 220.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 345.0060119628906,
+                "Y": 323.9490051269531
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\house_4.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity10": {
+        "General": {
+            "name": "Building 4",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 220.0,
+                "Y": 220.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 373.17498779296875,
+                "Y": 53.38500213623047
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\house_3.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity11": {
+        "General": {
+            "name": "Passenger 4",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 65.0,
+                "Y": 65.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 311.7040100097656,
+                "Y": 33.641998291015625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\ghost_5_green.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity12": {
+        "General": {
+            "name": "LightHouse",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 197.0,
+                "Y": 194.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 623.7509765625,
+                "Y": -274.5660095214844
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\lighthouse.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        }
+    },
+    "Entity13": {
+        "General": {
+            "name": "Tree",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 194.0,
+                "Y": 214.0
+            },
+            "rotation": -0.049999937415122986,
+            "translation": {
+                "X": 26.982999801635742,
+                "Y": -211.50399780273438
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\tree-1.png",
+            "layer": 2
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "AI": {
+            "colorChange": 0,
+            "movement": 3,
+            "speed": 1.0,
+            "range": 17.066999435424805
+        }
+    },
+    "Entity14": {
+        "General": {
+            "name": "AnimatePassenger",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -93.0,
+                "Y": 91.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -565.2490234375,
+                "Y": -182.5659942626953
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 247,
+                "g": 252,
+                "b": 175,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\ghost_1_green.png",
+            "layer": 4
+        },
+        "Animation": {
+            "images": [
+                "Textures\\Sprites\\ghost_2_green.png",
+                "Textures\\Sprites\\ghost_1_green.png"
+            ],
+            "timePerImage": 0.5,
+            "timeToImageSwap": 0.04999900981783867,
+            "currentImageIndex": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "AI": {
+            "colorChange": 0,
+            "movement": 0,
+            "speed": 1.0,
+            "range": 10.0
+        }
+    },
+    "Entity15": {
+        "General": {
+            "name": "Bush",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -576.0170288085938,
+                "Y": 321.4961853027344
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\bush-1.png",
+            "layer": 3
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "AI": {
+            "colorChange": 0,
+            "movement": 1,
+            "speed": 1.0,
+            "range": 65.1240005493164
+        }
+    },
+    "Entity16": {
+        "General": {
+            "name": "light",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 106.0,
+                "Y": 93.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 622.0059814453125,
+                "Y": -206.05099487304688
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 241,
+                "g": 250,
+                "b": 61,
+                "a": 100
+            },
+            "sprite": 1,
+            "texture": "Textures\\Icons\\Assets.txt",
+            "layer": 3
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": true
+        },
+        "AI": {
+            "colorChange": 1,
+            "movement": 0,
+            "speed": 1.0,
+            "range": 10.0
+        }
+    }
+}

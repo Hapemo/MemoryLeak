@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 Singleton Manager keeps a list of all Singletons and free their memory together
 *******************************************************************************/

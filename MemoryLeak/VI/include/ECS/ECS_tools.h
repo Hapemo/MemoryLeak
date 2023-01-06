@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 This file contains easier implementation of using the Coordinate in ECS. 
 The functions here calls the exact function in ECS using singleton Coordinate.
@@ -111,6 +111,12 @@ namespace ECS {
 
 	// Extra
 	/*!*****************************************************************************
+	Unlink prefabs from entity
+	*******************************************************************************/
+	void UnlinkPrefab(EntityID _e);
+
+
+	/*!*****************************************************************************
 	Destroy all entities in ECS
 	*******************************************************************************/
 	void DestroyAllEntities();
@@ -121,5 +127,5 @@ namespace ECS {
 	/param const std::vector<EntityID>&
 	- A bunch of entities to be blacklisted from being deleted
 	*******************************************************************************/
-	void DestroySomeEntites(const std::vector<EntityID>&);
+	void DestroySomeEntites(const std::set<Entity>&);
 }

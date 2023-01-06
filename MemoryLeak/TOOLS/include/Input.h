@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 Input detects keyboard and mouse input states and returns that to caller
 *******************************************************************************/
@@ -13,7 +13,6 @@ Input detects keyboard and mouse input states and returns that to caller
 
 // Available keys
 enum E_KEY {
-
   UNKNOWN = -1,
   SPACE = 32,
   APOSTROPHE = 39,/* ' */
@@ -88,7 +87,7 @@ enum E_KEY {
   M_BUTTON_5,
   M_BUTTON_6,
   M_BUTTON_7,
-  M_BUTTON_8,
+  M_BUTTON_8
 };
 
 // State of key pressed
@@ -107,6 +106,8 @@ private:
   static int mMaxKeyboardIndex;
   static GLFWwindow* mWindow;
   static GLFWcursor* mCursor;
+  static double mScrollTotal;
+  static double mScrollOffset;
   
 public:
   /*!*****************************************************************************
@@ -146,4 +147,7 @@ public:
   - Position of mouse cursor
   *******************************************************************************/
   static Math::Vec2 CursorPos();
+
+  static void scroll_callback(GLFWwindow* _window, double _xoffset, double _yoffset);
+  static double GetScroll();
 };

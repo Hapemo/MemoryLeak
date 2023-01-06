@@ -48,16 +48,16 @@ public:
 	//------------------------------------------------------------------------------
 	// Getter and Setters
 	//------------------------------------------------------------------------------
-	Color	GetColor			(const Entity& _e) { return _e.GetComponent<Sprite>().color; }
-	void	SetColor			(const Entity& _e, const Color& clr);
-	void	SetColor			(const Entity& _e, GLubyte _r, GLubyte _g, 
-									GLubyte _b, GLubyte _a = 255);
+	void SetColor(const Entity& _e, const Color& clr);
+	void SetColor(const Entity& _e, GLubyte _r, GLubyte _g, 
+					GLubyte _b, GLubyte _a = 255);
+	Color GetColor(const Entity& _e) { return _e.GetComponent<Sprite>().color; }
 
-	SPRITE	GetSprite			(const Entity& _e) { return _e.GetComponent<Sprite>().sprite; }
-	void	SetSprite			(const Entity& _e, SPRITE _sprite);
+	void SetSprite(const Entity& _e, SPRITE _sprite);
+	SPRITE GetSprite(const Entity& _e) { return _e.GetComponent<Sprite>().sprite; }
 
-	GLuint	GetTexture			(const Entity& _e) { return _e.GetComponent<Sprite>().texture; }
-	void	SetTexture			(const Entity& _e, const std::string& _texture_path);
+	void SetTexture(const Entity& _e, const std::string& _texture_path);
+	GLuint GetTexture(const Entity& _e)	{ return _e.GetComponent<Sprite>().texture; }
 	
 	GLuint	GetTextureID		(const std::string& _texture_path) { return GET_TEXTURE_ID(_texture_path); }
 	std::string	GetTexturePath	(GLint _id) { return GET_TEXTURE_PATH(_id); }

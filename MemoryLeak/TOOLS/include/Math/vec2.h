@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue, Chen Jia Wen
 \par DP email: j.teoh\@digipen.edu, c.jiawen\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 This file contains the implementation of 2D vector and it's operations
 *******************************************************************************/
@@ -143,7 +143,9 @@ namespace Math {
     Negated version of current Vec2
     *******************************************************************************/
     Vec2 operator-() const;
-    
+
+    float& operator[](int);
+
     /*!*****************************************************************************
     Normalise current Vec2
 
@@ -268,6 +270,24 @@ namespace Math {
   - Result of dot product
   *******************************************************************************/
   float Dot(const Vec2&, const Vec2&);
+
+  /*!*****************************************************************************
+  Cross product of 2 Vec2
+
+  \param const Vec2&
+  - First Vec2
+
+  \param const Vec2&
+  - Second Vec2
+
+  \return float
+  - Magnitude of orthogonal vector along z-axis
+  *******************************************************************************/
+  float Cross(const Vec2&, const Vec2&);
+
+  Vec2 Cross(const Vec2&, float);
+
+  Vec2 Cross(float, const Vec2&);
   
   /*!*****************************************************************************
   Distance of a Vec2 to another

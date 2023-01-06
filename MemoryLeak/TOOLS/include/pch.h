@@ -18,6 +18,7 @@
 #include <cassert>
 #include <set>
 #include <cstdint>
+#include <cstdlib>
 #include <bitset>
 #include <cmath>
 #include <GL/glew.h> // for access to OpenGL API declarations 
@@ -25,6 +26,8 @@
 #include <filesystem>
 #include <cstdint>
 #include <time.h>
+#include <thread>
+#include <mutex>
 #include "NFmath.h"
 
 

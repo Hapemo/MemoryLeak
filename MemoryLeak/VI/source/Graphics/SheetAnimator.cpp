@@ -37,7 +37,12 @@ None.
 void SheetAnimator::Animate(const Entity& _e)
 {
 	if (!_e.GetComponent<General>().isActive) return;
+	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<SheetAnimation>()) return;
+
+	if (_e.GetComponent<SheetAnimation>().currFrameIndex > _e.GetComponent<SheetAnimation>().frameCount - 1 ||
+		_e.GetComponent<SheetAnimation>().currFrameIndex < 0)
+		_e.GetComponent<SheetAnimation>().currFrameIndex = 0;
 
 	//decrement time to swap
 	_e.GetComponent<SheetAnimation>().timeToFrameSwap -= static_cast<float>(FPSManager::dt);

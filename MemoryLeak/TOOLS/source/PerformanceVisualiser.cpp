@@ -107,9 +107,40 @@ std::string PerformanceVisualiser::GetPerformances() {
 		if (systemName != "MainLoop") totalUsed += systemPercent;
 		if (systemName != "MainLoop") result += systemName + ": " + std::to_string(systemPercent) + "%";
 	}
-	if (!firstSystem) result += ", ";
-	result += "Others: " + std::to_string(100.0 - totalUsed) + "%";
+	//if (!firstSystem) result += ", ";
+	//result += "Others: " + std::to_string(100.0 - totalUsed) + "%";
 	result += ")";
+
+	return result;
+}
+
+/*!*****************************************************************************
+\brief
+Measures and returns a vector of all the systems' performances in percentages.
+
+\return
+Returns a vector populated with all the system performance in percentages.
+*******************************************************************************/
+std::vector < std::pair < std::string, double >> PerformanceVisualiser::GetPerformanceVec() {
+	std::vector < std::pair < std::string, double >> result{};
+	bool firstSystem = true;
+	double totalUsed = 0;
+	double MainLoop = 0;
+
+	for (const std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> >& system : PerformanceVisualiser::mSystemPerformance)
+		if (system.first == "MainLoop") MainLoop = system.second.first;
+
+	for (const std::pair<std::string, std::pair<double, std::pair<TIMEPOINT, TIMEPOINT>> >& system : PerformanceVisualiser::mSystemPerformance) {
+		std::string systemName = system.first;
+		if (systemName != "MainLoop") if (firstSystem) firstSystem = false; //else result += ", ";
+		double systemSeconds = system.second.first;
+		double systemPercent = (systemSeconds / MainLoop) * 100;
+		if (systemName != "MainLoop") totalUsed += systemPercent;
+		if (systemName != "MainLoop") {
+			result.push_back(std::make_pair(systemName, systemPercent));
+			//result.push_back(std::make_pair(systemName, system.second.first));
+		}
+	}
 
 	return result;
 }

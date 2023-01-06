@@ -1,31 +1,79 @@
+/*!*****************************************************************************
+\file FontManager.cpp
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 14-10-2022
+\brief
+This file contains a class FontRenderer, which is a tool for renderering fonts.
+*******************************************************************************/
 #include <FontManager.h>
+#include <sstream>
 
-FontManager::FontManager() : mFontProgram("shaders/font.vert", "shaders/font.frag")
+/*!*****************************************************************************
+\brief
+Default constructor for FontRenderer class.
+*******************************************************************************/
+FontRenderer::FontRenderer(const std::string& fontfile) 
+: mFontProgram("shaders/font.vert", "shaders/font.frag"), mVAO(), mVBO(), 
+mWindowWidth(0), mWindowHeight(0)
 {
     mFontProgram.CompileLinkShaders();
     mFontProgram.Validate();
+    mMatrixLocation = glGetUniformLocation(mFontProgram.GetID(), "projection");
+    mTextColorLocation = glGetUniformLocation(mFontProgram.GetID(), "textColor");
+    mZValueLocation = glGetUniformLocation(mFontProgram.GetID(), "zValue");
+    mMaxYSize = 0;
+    mCamZoom = 0;
+    mInitialized = Init(fontfile);
 }
+/*!*****************************************************************************
+\brief
+Initializes the FontRenderer
 
-void FontManager::Init()
+\param const std::string& fontfile
+String containing name of the font file.
+*******************************************************************************/
+bool FontRenderer::Init(const std::string& _fontfile)
 {
+    //free type
     FT_Library ft;
-    ASSERT(FT_Init_FreeType(&ft), "ERROR::FREETYPE: Could not init FreeType Library\n");
+    if (FT_Init_FreeType(&ft))
+    {
+        LOG_ERROR("ERROR::FREETYPE: failed to initialize FreeType Library\n");
+        return false;
+    }
+    std::string filepath = "../resources/Fonts/" + _fontfile;
 
     FT_Face face;
-    ASSERT(FT_New_Face(ft, "../VI/fonts/CaviarDreams.ttf", 0, &face), "ERROR::FREETYPE: Failed to load font\n");
+    if (FT_New_Face(ft, filepath.c_str(), 0, &face))
+    {
+        LOG_ERROR("ERROR::FREETYPE: Failed to load font\n");
+        return false;
+    }
 
     FT_Set_Pixel_Sizes(face, 0, 48);
 
-    ASSERT(FT_Load_Char(face, 'X', FT_LOAD_RENDER), "ERROR::FREETYTPE: Failed to load Glyph\n");
+    if (FT_Load_Char(face, 'X', FT_LOAD_RENDER))
+    {
+        LOG_ERROR("ERROR::FREETYPE: Failed to load font\n");
+        return false;
+    }
+
     
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
 
     for (unsigned char c = 0; c < 128; ++c)
     {
-        // load character glyph 
-        ASSERT(FT_Load_Char(face, c, FT_LOAD_RENDER), "ERROR::FREETYTPE: Failed to load Glyph\n");
+        // load character glyph into opengl
+        if (FT_Load_Char(face, c, FT_LOAD_RENDER))
+        {
+            LOG_ERROR("ERROR::FREETYTPE: Failed to load Glyph\n");
+            return false;
+        }
+
         glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-        // generate texture
+        // generate texture for the glyph
         unsigned int texture;
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
@@ -40,79 +88,150 @@ void FontManager::Init()
             GL_UNSIGNED_BYTE,
             face->glyph->bitmap.buffer
         );
-        // set texture options
+        // set texture options 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        // now store character for later use
+        // store character for later use
         Character character = {
             texture,
-            Math::Vec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
-            Math::Vec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-            face->glyph->advance.x
+            Math::Vec2((float)face->glyph->bitmap.width, (float)face->glyph->bitmap.rows),
+            Math::Vec2((float)face->glyph->bitmap_left, (float)face->glyph->bitmap_top),
+            (unsigned int)face->glyph->advance.x
         };
-        glyphs.insert(std::pair<char, Character>(c, character));
+        mGlyphs.insert(std::pair<char, Character>(c, character));
+        mMaxYSize = (float)face->glyph->bitmap.rows > mMaxYSize ? (float)face->glyph->bitmap.rows : mMaxYSize;
     }
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
 
-    projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
 
-    glGenVertexArrays(1, &vao);
-    glGenBuffers(1, &vbo);
-    glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    //create buffers for characters
+    glGenVertexArrays(1, &mVAO);
+    glGenBuffers(1, &mVBO);
+    glBindVertexArray(mVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, mVBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 4, NULL, GL_DYNAMIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-
-    glm::mat4 projection = glm::ortho(0.0f, 1600.f, 0.0f, 900.f);
-    mFontProgram.Bind();
-    glUniformMatrix4fv(glGetUniformLocation(mFontProgram.GetID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-    mFontProgram.Unbind();
+    return true;
  }
+/*!*****************************************************************************
+\brief
+Adds a paragraph to the font renderer to be rendered.
 
-void FontManager::Draw(std::string text, float x, float y, float scale)
+\param const std::string& _text
+String containing text to be rendered.
+
+\param const Math::Vec2& _pos
+Position to render the string.
+
+\param float _scale
+Scale of the font.
+
+\param const Math::Vec3& _color
+Color of the font.
+*******************************************************************************/
+void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, int layer, float _width)
 {
-    mFontProgram.Bind();
-    glUniform3f(glGetUniformLocation(mFontProgram.GetID(), "textColor"), 1, 1, 1);
-    glActiveTexture(GL_TEXTURE0);
-    glBindVertexArray(vao);
-
-    for (std::string::const_iterator cIter = text.begin(); cIter != text.end(); ++cIter)
-    {
-        Character ch = glyphs[*cIter];
-        float xpos = x + ch.bearing.x * scale;
-        float ypos = y - (ch.size.y - ch.bearing.y) * scale;
-
-        float w = ch.size.x * scale;
-        float h = ch.size.y * scale;
-        // update VBO for each character
-        float vertices[6][4] = {
-            { xpos,     ypos + h,   0.0f, 0.0f },
-            { xpos,     ypos,       0.0f, 1.0f },
-            { xpos + w, ypos,       1.0f, 1.0f },
-
-            { xpos,     ypos + h,   0.0f, 0.0f },
-            { xpos + w, ypos,       1.0f, 1.0f },
-            { xpos + w, ypos + h,   1.0f, 0.0f }
-        };
-        // render glyph texture over quad
-        glBindTexture(GL_TEXTURE_2D, ch.textureID);
-        // update content of VBO memory
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        // render quad
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-        // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-        x += (ch.advance >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
+    if (!mInitialized) return;
+    std::vector<std::string> strings;
+    std::istringstream iss(text);
+    std::string intermediate;
+    while (std::getline(iss, intermediate, ' ')) {
+        strings.push_back(intermediate);
     }
-    glBindVertexArray(0);
-    glBindTexture(GL_TEXTURE_2D, 0);
-    mFontProgram.Unbind();
+    std::vector<float> wordWidth;
+    for (std::string& str : strings)
+    {
+        float width{};
+        str += " ";
+        for (char ch : str)
+            width += mGlyphs[ch].size.x * scale;
+        wordWidth.push_back(width);
+    }
+    mParagraphs[layer].push_back(Paragraph(strings, wordWidth, _pos, scale, color, _width));
+}
+/*!*****************************************************************************
+\brief
+Renders all paragraphs stored in mParagraphs.
+*******************************************************************************/
+void FontRenderer::DrawParagraphs(int _layer)
+{
+    if (!mInitialized) return;
+    if (mParagraphs.find(_layer) == mParagraphs.end()) return;
+    glm::mat4 _projection = glm::ortho(0.0f, (float) mWindowWidth, 0.0f, (float)mWindowHeight);
+
+    float layer = ((_layer + 1) * 2 - 255) / 255.f;
+    layer = layer > 1.f ? 1.f : layer;
+
+    for (Paragraph& para : mParagraphs[_layer])
+    {
+        float currWidth{};
+        Math::Vec2 pos = para.pos;
+        float initialX = pos.x;
+        mFontProgram.Bind();
+        glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
+        glUniform3f(mTextColorLocation, para.color.r, para.color.g, para.color.b);
+        glUniform1f(mZValueLocation, layer);
+        glActiveTexture(GL_TEXTURE0);
+        glBindVertexArray(mVAO);
+
+        // iterate through characters in paragraph
+        for (size_t i = 0; i < para.words.size(); ++i)
+        {
+            currWidth += para.wordWidth[i];
+            if (i && currWidth > para.renderWidth *0.75f/ mCamZoom)
+            {
+                pos.x = initialX;
+                pos.y -= (mMaxYSize) * para.scale;
+                currWidth = para.wordWidth[i];
+            }
+            for (auto itr = para.words[i].begin(); itr != para.words[i].end(); ++itr)
+            {
+                Character ch = mGlyphs[*itr];
+                float w = ch.size.x * para.scale;
+                float h = ch.size.y * para.scale;
+                
+                float xpos = pos.x + ch.bearing.x * para.scale;
+                float ypos = pos.y - (ch.size.y - ch.bearing.y) * para.scale;
+
+                // update VBO for each character
+                float vertices[6][4] = {
+                    { xpos,     ypos + h,   0.0f, 0.0f },
+                    { xpos,     ypos,       0.0f, 1.0f },
+                    { xpos + w, ypos,       1.0f, 1.0f },
+
+                    { xpos,     ypos + h,   0.0f, 0.0f },
+                    { xpos + w, ypos,       1.0f, 1.0f },
+                    { xpos + w, ypos + h,   1.0f, 0.0f }
+                };
+                // render glyph texture over quad
+                glBindTexture(GL_TEXTURE_2D, ch.textureID);
+                // update content of VBO memory
+                glBindBuffer(GL_ARRAY_BUFFER, mVBO);
+                glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+                glBindBuffer(GL_ARRAY_BUFFER, 0);
+                // render quad
+                glDrawArrays(GL_TRIANGLES, 0, 6);
+
+                // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
+                pos.x += (ch.advanceX >> 6) * para.scale; // bitshift by 6 to get value in pixels (2^6 = 64)
+
+            }
+        }
+        glBindVertexArray(0);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        mFontProgram.Unbind();
+    }
+}
+
+void FontRenderer::Clear()
+{
+    //clear paragraph for next frame
+    mParagraphs.clear();
 }

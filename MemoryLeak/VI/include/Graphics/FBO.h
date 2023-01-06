@@ -26,7 +26,6 @@ struct FBOSpec
 	int mWidth;
 	int mHeight;
 	int mSamples;
-	bool mRenderToScreen;
 };
 
 /*!*****************************************************************************
@@ -69,22 +68,6 @@ public:
 	void Unbind();
 	/*!*****************************************************************************
 	\brief
-	A flag to set for rendering to screen or to the frame buffer.
-
-	\param bool scrn
-	True for rendering to screen, false for rendering to the frame buffer.
-	*******************************************************************************/
-	void SetRenderToScreen(bool _scrn) { mSpecs.mRenderToScreen = _scrn; }
-	/*!*****************************************************************************
-	\brief
-	Returns the state of the RenderToScreen flag.
-
-	\return
-	Returns the state of the RenderToScreen flag.
-	*******************************************************************************/
-	bool GetRenderToScreen() { return mSpecs.mRenderToScreen; }
-	/*!*****************************************************************************
-	\brief
 	Returns the ID of the FBO.
 
 	\return
@@ -123,6 +106,12 @@ public:
 	Returns the pixel height of the FBO.
 	*******************************************************************************/
 	int GetFBOHeight() const { return mSpecs.mHeight; }
+
+	/*!*****************************************************************************
+	\brief
+	Deletes the FrameBuffer object. Used when resizing the viewport.
+	*******************************************************************************/
+	void DeleteFBO();
 
 private:
 	GLuint mfboid;

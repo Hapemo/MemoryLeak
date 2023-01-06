@@ -22,9 +22,10 @@ File path to the fragment shader source code.
 GLShader::GLShader(const std::string& _vertexShader, const std::string& _fragmentShader)
 {
 	mProgramID = glCreateProgram();
+
 	mLinked = false;
-	mPaths.first = "../VI/" + _vertexShader;
-	mPaths.second = "../VI/" + _fragmentShader;
+	mPaths.first = "../" + _vertexShader;
+	mPaths.second = "../" + _fragmentShader;
 }
 
 /*!*****************************************************************************
@@ -60,6 +61,7 @@ void GLShader::CompileVertexShader()
 
 	//creating vertex shader
 	GLuint vertexHandle = glCreateShader(GL_VERTEX_SHADER);
+
 	GLchar const* vertexCode[] = { str.c_str() };
 
 	//inserting source code and compiling

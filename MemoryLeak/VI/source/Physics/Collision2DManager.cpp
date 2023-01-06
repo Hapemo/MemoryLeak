@@ -4,10 +4,11 @@
 \par	DP email: l.hsienweijoachim@digipen.edu
 \par	Course: GAM200
 \par	Group: Memory Leak Studios
-\date	25-09-2022
-\brief  This file contains the definition of the Collision System Class member
-		functions which handles the collision detection and resolution of entities 
-		stored in its list
+\date	01-11-2022
+\brief  This file contains the declaration of the Collision System Class and its
+		member functions which handles a database of possible collision checks
+		stored in its list. It also defines the CollisionStore struct that is
+		used to store the information about the entity pair and its collision
 *******************************************************************************/
 
 // -----------------------------
@@ -15,956 +16,77 @@
 // -----------------------------
 #include "ECSManager.h"
 
-/*!*****************************************************************************
-\brief
-HasCollider function that checks if the given entity contains a collider
+//std::vector<Entity> Collision2DManager::CI_PlayervsEnemy(const Entity& _player, const Entity& _enemy) {
+//	return 
+//}
 
-\param const Entity &
-A reference to a read-only Entity to add collider to
+//bool Collision2DManager::SCI_RectvsCircle(const Math::Vec2& _rectPos, const Math::Vec2& _rectScale, const Math::Vec2& _circlePos, const float& _circleScale) {
+//
+//
+//	return false;
+//}
 
-\return bool
-Evaluated result of whether the entity has a collider
-*******************************************************************************/
-bool Collision2DManager::HasCollider(const Entity& _e) {
-	if (_e.HasComponent<RectCollider>() ||
-		_e.HasComponent<CircleCollider>() ||
-		_e.HasComponent<Edge2DCollider>() ||
-		_e.HasComponent<Point2DCollider>())
-		return true;
-	else
-		return false;
-}
 
-/*!*****************************************************************************
-\brief
-AddRectColliderComponent function that adds a rectangular collider to the given
-entity of specified parameters
+bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
+	// Get reference to the entities
+	Entity& obj1{ _contact.obj[0] },
+		& obj2{ _contact.obj[1] };
 
-\param const Entity &
-A reference to a read-only Entity to add collider to
-
-\param const Math::Vec2 &
-A reference to a read-only variable containing the position offset of the 
-collider from the entity's position
-
-\param const Math::Vec2 & 
-A reference to a read-only variable containing the scale offset of the collider 
-from the entity's scale
-
-\param const bool &
-A reference to a read-only variable containing the value of whether the collider
-should be rendered
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::AddRectColliderComponent(const Entity& _e, const Math::Vec2& _centerOffset, const Math::Vec2& _scaleOffset, const bool& _renderFlag) {
-	// Check if the component already exists
-	// If so, edit it
-	if (!_e.HasComponent<RectCollider>())
-		_e.AddComponent(RectCollider{ _centerOffset, _scaleOffset, _renderFlag });
-	else {
-		Collision2DManager::SetRectCenterOffset(_e, _centerOffset);
-		Collision2DManager::SetRectScaleOffset(_e, _scaleOffset);
-		Collision2DManager::SetRectRenderFlag(_e, _renderFlag);
-	}
-}
-
-/*!*****************************************************************************
-\brief
-AddCircleColliderComponent function that adds a circular collider to the given
-entity of specified parameters
-
-\param const Entity &
-A reference to a read-only Entity to add collider to
-
-\param const Math::Vec2 &
-A reference to a read-only variable containing the position offset of the
-collider from the entity's position
-
-\param const float &
-A reference to a read-only variable containing the radius offset of the collider
-from the entity's scale
-
-\param const bool &
-A reference to a read-only variable containing the value of whether the collider
-should be rendered
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::AddCircleColliderComponent(const Entity& _e, const Math::Vec2& _centerOffset, const float& _radiusOffset, const bool& _renderFlag) {
-	// Check if the component already exists
-	// If so, edit it
-	if (!_e.HasComponent<CircleCollider>())
-		_e.AddComponent(CircleCollider{ _centerOffset, _radiusOffset, _renderFlag });
-	else {
-		Collision2DManager::SetCircleCenterOffset(_e, _centerOffset);
-		Collision2DManager::SetCircleRadiusOffset(_e, _radiusOffset);
-		Collision2DManager::SetCircleRenderFlag(_e, _renderFlag);
-	}
-}
-
-/*!*****************************************************************************
-\brief
-AddEdgeColliderComponent function that adds a circular collider to the given
-entity of specified parameters
-
-\param const Entity &
-A reference to a read-only Entity to add collider to
-
-\param const Math::Vec2 &
-A reference to a read-only variable containing the position offset of the
-collider from the entity's position
-
-\param const float &
-A reference to a read-only variable containing the rotation offset of the collider
-from the entity's rotation
-
-\param const float &
-A reference to a read-only variable containing the scale offset of the collider
-from the entity's scale
-
-\param const bool &
-A reference to a read-only variable containing the value of whether the collider
-should be rendered
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::AddEdgeColliderComponent(const Entity& _e, const Math::Vec2& _p0Offset, const float& _rotationOffset, const float& _scaleOffset, const bool& _renderFlag) {
-	// Check if the component already exists
-	// If so, edit it
-	if (!_e.HasComponent<Edge2DCollider>())
-		_e.AddComponent(Edge2DCollider{ _p0Offset, _rotationOffset, _scaleOffset, _renderFlag });
-	else {
-		Collision2DManager::SetEdgeP0Offset(_e, _p0Offset);
-		Collision2DManager::SetEdgeScaleOffset(_e, _scaleOffset);
-		Collision2DManager::SetEdgeRotationOffset(_e, _rotationOffset);
-		Collision2DManager::SetEdgeRenderFlag(_e, _renderFlag);
-	}
-}
-
-/*!*****************************************************************************
-\brief
-AddPointColliderComponent function that adds a point collider to the given
-entity of specified parameters
-
-\param const Entity &
-A reference to a read-only Entity to add collider to
-
-\param const Math::Vec2 &
-A reference to a read-only variable containing the center offset of the
-collider from the entity's position
-
-\param const bool &
-A reference to a read-only variable containing the value of whether the collider
-should be rendered
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::AddPointColliderComponent(const Entity& _e, const Math::Vec2& _centerOffset, const bool& _renderFlag) {
-	// Check if the component already exists
-	// If so, edit it
-	if (!_e.HasComponent<Point2DCollider>())
-		_e.AddComponent(Point2DCollider{ _centerOffset, _renderFlag });
-	else {
-		Collision2DManager::SetPointCenterOffset(_e, _centerOffset);
-		Collision2DManager::SetPointRenderFlag(_e, _renderFlag);
-	}
-}
-
-/*!*****************************************************************************
-\brief
-RemoveRectColliderComponent function that removes rectangular collider of the 
-given entity
-
-\param const Entity &
-A reference to a read-only Entity to remove collider from
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::RemoveRectColliderComponent(const Entity& _e) {
-	if (_e.HasComponent<RectCollider>())
-		_e.RemoveComponent<RectCollider>();
-}
-
-/*!*****************************************************************************
-\brief
-RemoveCircleColliderComponent function that removes circle collider of the
-given entity
-
-\param const Entity &
-A reference to a read-only Entity to remove collider from
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::RemoveCircleColliderComponent(const Entity& _e) {
-	if (_e.HasComponent<CircleCollider>())
-		_e.RemoveComponent<CircleCollider>();
-}
-
-/*!*****************************************************************************
-\brief
-RemoveEdgeColliderComponent function that removes edge collider of the
-given entity
-
-\param const Entity &
-A reference to a read-only Entity to remove collider from
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::RemoveEdgeColliderComponent(const Entity& _e) {
-	if (_e.HasComponent<Edge2DCollider>())
-		_e.RemoveComponent<Edge2DCollider>();
-}
-
-/*!*****************************************************************************
-\brief
-RemovePointColliderComponent function that removes point collider of the
-given entity
-
-\param const Entity &
-A reference to a read-only Entity to remove collider from
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::RemovePointColliderComponent(const Entity& _e) {
-	if (_e.HasComponent<Point2DCollider>())
-		_e.RemoveComponent<Point2DCollider>();
-}
-
-/*!*****************************************************************************
-\brief
-GetCircleCollider function that returns a reference to the given entity's circle
-collider
-
-\param const Entity &
-A reference to a read-only Entity to get the circle collider of
-
-\return CircleCollider&
-A reference to the circle collider of the entity
-*******************************************************************************/
-CircleCollider& Collision2DManager::GetCircleCollider(const Entity& _e) {
-	return _e.GetComponent<CircleCollider>();
-}
-
-/*!*****************************************************************************
-\brief
-GetCircleCenterOffset function that returns the value of the given entity's circle
-collider's center offset
-
-\param const Entity &
-A reference to a read-only Entity to get the center offset of
-
-\return Math::Vec2
-Value of the circle collider's center offset
-*******************************************************************************/
-Math::Vec2 Collision2DManager::GetCircleCenterOffset(const Entity& _e) {
-	return Collision2DManager::GetCircleCollider(_e).centerOffset;
-}
-
-/*!*****************************************************************************
-\brief
-SetCircleCenterOffset function that set the value of the given entity's circle
-collider's center offset
-
-\param const Entity &
-A reference to a read-only Entity to set the center offset of
-
-\param const Math::Vec2&
-A reference to a read-only variable containing the center offset to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetCircleCenterOffset(const Entity& _e, const Math::Vec2& _centerOffset) {
-	Collision2DManager::GetCircleCollider(_e).centerOffset = _centerOffset;
-}
-
-/*!*****************************************************************************
-\brief
-GetCircleRadiusOffset function that returns the value of the given entity's circle
-collider's radius offset
-
-\param const Entity &
-A reference to a read-only Entity to get the radius offset of
-
-\return float
-Value of the circle collider's radius offset
-*******************************************************************************/
-float Collision2DManager::GetCircleRadiusOffset(const Entity& _e) {
-	return Collision2DManager::GetCircleCollider(_e).scaleOffset;
-}
-
-/*!*****************************************************************************
-\brief
-SetCircleRadiusOffset function that set the value of the given entity's circle
-collider's radius offset
-
-\param const Entity &
-A reference to a read-only Entity to set the radius offset of
-
-\param const float &
-A reference to a read-only variable containing the radius offset to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetCircleRadiusOffset(const Entity& _e, const float& _scaleOffset) {
-	Collision2DManager::GetCircleCollider(_e).scaleOffset = _scaleOffset;
-}
-
-/*!*****************************************************************************
-\brief
-GetCircleRenderFlag function that returns the value of the given entity's circle
-collider's render flag
-
-\param const Entity &
-A reference to a read-only Entity to get the render flag of
-
-\return bool
-Value of the circle collider's render flag
-*******************************************************************************/
-bool Collision2DManager::GetCircleRenderFlag(const Entity& _e) {
-	return Collision2DManager::GetCircleCollider(_e).renderFlag;
-}
-
-/*!*****************************************************************************
-\brief
-SetCircleRenderFlag function that set the value of the given entity's circle
-collider's render flag
-
-\param const Entity &
-A reference to a read-only Entity to set the render flag of
-
-\param const bool &
-A reference to a read-only variable containing the flag to set the render flag to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetCircleRenderFlag(const Entity& _e, const bool& _renderFlag) {
-	Collision2DManager::GetCircleCollider(_e).renderFlag = _renderFlag;
-}
-
-/*!*****************************************************************************
-\brief
-GetRectCollider function that returns a reference to the given entity's rectangular
-collider
-
-\param const Entity &
-A reference to a read-only Entity to get the rectangular collider of
-
-\return RectCollider&
-A reference to the rectangular collider of the entity
-*******************************************************************************/
-RectCollider& Collision2DManager::GetRectCollider(const Entity& _e) {
-	return _e.GetComponent<RectCollider>();
-}
-
-/*!*****************************************************************************
-\brief
-GetRectCenterOffset function that returns the value of the given entity's 
-rectangular collider's center offset
-
-\param const Entity &
-A reference to a read-only Entity to get the center offset of
-
-\return Math::Vec2
-Value of the rectangular collider's center offset
-*******************************************************************************/
-Math::Vec2 Collision2DManager::GetRectCenterOffset(const Entity& _e) {
-	return Collision2DManager::GetRectCollider(_e).centerOffset;
-}
-
-/*!*****************************************************************************
-\brief
-SetRectCenterOffset function that set the value of the given entity's rectangular
-collider's center offset
-
-\param const Entity &
-A reference to a read-only Entity to set the center offset of
-
-\param const Math::Vec2&
-A reference to a read-only variable containing the center offset to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetRectCenterOffset(const Entity& _e, const Math::Vec2& _centerOffset) {
-	Collision2DManager::GetRectCollider(_e).centerOffset = _centerOffset;
-}
-
-/*!*****************************************************************************
-\brief
-GetRectScaleOffset function that returns the value of the given entity's 
-rectangular collider's scale offset
-
-\param const Entity &
-A reference to a read-only Entity to get the scale offset of
-
-\return Math::Vec2
-Value of the rectangular collider's scale offset
-*******************************************************************************/
-Math::Vec2 Collision2DManager::GetRectScaleOffset(const Entity& _e) {
-	return Collision2DManager::GetRectCollider(_e).scaleOffset;
-}
-
-/*!*****************************************************************************
-\brief
-SetRectScaleOffset function that set the value of the given entity's rectangular
-collider's scale offset
-
-\param const Entity &
-A reference to a read-only Entity to set the scale offset of
-
-\param const Math::Vec2 &
-A reference to a read-only variable containing the scale offset to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetRectScaleOffset(const Entity& _e, const Math::Vec2& _scaleOffset) {
-	Collision2DManager::GetRectCollider(_e).scaleOffset = _scaleOffset;
-}
-
-/*!*****************************************************************************
-\brief
-GetRectRenderFlag function that returns the value of the given entity's 
-rectangular collider's render flag
-
-\param const Entity &
-A reference to a read-only Entity to get the render flag of
-
-\return bool
-Value of the rectangular collider's render flag
-*******************************************************************************/
-bool Collision2DManager::GetRectRenderFlag(const Entity& _e) {
-	return Collision2DManager::GetRectCollider(_e).renderFlag;
-}
-
-/*!*****************************************************************************
-\brief
-SetRectRenderFlag function that set the value of the given entity's rectangular
-collider's render flag
-
-\param const Entity &
-A reference to a read-only Entity to set the render flag of
-
-\param const bool &
-A reference to a read-only variable containing the flag to set the render flag to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetRectRenderFlag(const Entity& _e, const bool& _renderFlag) {
-	Collision2DManager::GetRectCollider(_e).renderFlag = _renderFlag;
-}
-
-/*!*****************************************************************************
-\brief
-GetEdgeCollider function that returns a reference to the given entity's edge/line
-collider
-
-\param const Entity &
-A reference to a read-only Entity to get the edge/line collider of
-
-\return CircleCollider&
-A reference to the edge/line collider of the entity
-*******************************************************************************/
-Edge2DCollider& Collision2DManager::GetEdgeCollider(const Entity& _e) {
-	return _e.GetComponent<Edge2DCollider>();
-}
-
-/*!*****************************************************************************
-\brief
-GetEdgeP0Offset function that returns the value of the given entity's edge/line
-collider's point offset
-
-\param const Entity &
-A reference to a read-only Entity to get the center offset of
-
-\return Math::Vec2
-Value of the edge/line collider's point offset
-*******************************************************************************/
-Math::Vec2 Collision2DManager::GetEdgeP0Offset(const Entity& _e) {
-	return Collision2DManager::GetEdgeCollider(_e).p0Offset;
-}
-
-/*!*****************************************************************************
-\brief
-SetEdgeP0Offset function that set the value of the given entity's edge/line
-collider's point offset
-
-\param const Entity &
-A reference to a read-only Entity to set the point offset of
-
-\param const Math::Vec2&
-A reference to a read-only variable containing the point offset to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetEdgeP0Offset(const Entity& _e, const Math::Vec2& _centerOffset) {
-	Collision2DManager::GetEdgeCollider(_e).p0Offset = _centerOffset;
-}
-
-/*!*****************************************************************************
-\brief
-GetEdgeScaleOffset function that returns the value of the given entity's
-edge/line collider's scale offset
-
-\param const Entity &
-A reference to a read-only Entity to get the scale offset of
-
-\return Math::Vec2
-Value of the edge/line collider's scale offset
-*******************************************************************************/
-float Collision2DManager::GetEdgeScaleOffset(const Entity& _e) {
-	return Collision2DManager::GetEdgeCollider(_e).scaleOffset;
-}
-
-/*!*****************************************************************************
-\brief
-SetEdgeScaleOffset function that set the value of the given entity's edge/line
-collider's scale offset
-
-\param const Entity &
-A reference to a read-only Entity to set the scale offset of
-
-\param const Math::Vec2 &
-A reference to a read-only variable containing the scale offset to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetEdgeScaleOffset(const Entity& _e, const float& _scaleOffset) {
-	Collision2DManager::GetEdgeCollider(_e).scaleOffset = _scaleOffset;
-}
-
-/*!*****************************************************************************
-\brief
-GetEdgeRotationOffset function that returns the value of the given entity's
-edge/line collider's rotation offset
-
-\param const Entity &
-A reference to a read-only Entity to get the rotation offset of
-
-\return Math::Vec2
-Value of the edge/line collider's rotation offset
-*******************************************************************************/
-float Collision2DManager::GetEdgeRotationOffset(const Entity& _e) {
-	return Collision2DManager::GetEdgeCollider(_e).rotationOffset;
-}
-
-/*!*****************************************************************************
-\brief
-SetEdgeRotationOffset function that set the value of the given entity's edge/line
-collider's rotation offset
-
-\param const Entity &
-A reference to a read-only Entity to set the rotation offset of
-
-\param const float &
-A reference to a read-only variable containing the rotation offset to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetEdgeRotationOffset(const Entity& _e, const float& _rotationOffset) {
-	Collision2DManager::GetEdgeCollider(_e).rotationOffset = _rotationOffset;
-}
-
-/*!*****************************************************************************
-\brief
-GetEdgeRenderFlag function that returns the value of the given entity's
-edge/line collider's render flag
-
-\param const Entity &
-A reference to a read-only Entity to get the render flag of
-
-\return bool
-Value of the edge/line collider's render flag
-*******************************************************************************/
-bool Collision2DManager::GetEdgeRenderFlag(const Entity& _e) {
-	return Collision2DManager::GetEdgeCollider(_e).renderFlag;
-}
-
-/*!*****************************************************************************
-\brief
-SetEdgeRenderFlag function that set the value of the given entity's edge/line
-collider's render flag
-
-\param const Entity &
-A reference to a read-only Entity to set the render flag of
-
-\param const bool &
-A reference to a read-only variable containing the flag to set the render flag to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetEdgeRenderFlag(const Entity& _e, const bool& _renderFlag) {
-	Collision2DManager::GetEdgeCollider(_e).renderFlag = _renderFlag;
-}
-
-/*!*****************************************************************************
-\brief
-GetPointCollider function that returns a reference to the given entity's point
-collider
-
-\param const Entity &
-A reference to a read-only Entity to get the point collider of
-
-\return RectCollider&
-A reference to the point collider of the entity
-*******************************************************************************/
-Point2DCollider& Collision2DManager::GetPointCollider(const Entity& _e) {
-	return _e.GetComponent<Point2DCollider>();
-}
-
-/*!*****************************************************************************
-\brief
-GetPointCenterOffset function that returns the value of the given entity's
-point collider's center offset
-
-\param const Entity &
-A reference to a read-only Entity to get the center offset of
-
-\return Math::Vec2
-Value of the point collider's center offset
-*******************************************************************************/
-Math::Vec2 Collision2DManager::GetPointCenterOffset(const Entity& _e) {
-	return Collision2DManager::GetPointCollider(_e).centerOffset;
-}
-
-/*!*****************************************************************************
-\brief
-SetPointCenterOffset function that set the value of the given entity's point
-collider's center offset
-
-\param const Entity &
-A reference to a read-only Entity to set the center offset of
-
-\param const Math::Vec2&
-A reference to a read-only variable containing the center offset to set to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetPointCenterOffset(const Entity& _e, const Math::Vec2& _centerOffset) {
-	Collision2DManager::GetPointCollider(_e).centerOffset = _centerOffset;
-}
-
-/*!*****************************************************************************
-\brief
-GetPointRenderFlag function that returns the value of the given entity's
-point collider's render flag
-
-\param const Entity &
-A reference to a read-only Entity to get the render flag of
-
-\return bool
-Value of the point collider's render flag
-*******************************************************************************/
-bool Collision2DManager::GetPointRenderFlag(const Entity& _e) {
-	return Collision2DManager::GetPointCollider(_e).renderFlag;
-}
-
-/*!*****************************************************************************
-\brief
-SetPointRenderFlag function that set the value of the given entity's point
-collider's render flag
-
-\param const Entity &
-A reference to a read-only Entity to set the render flag of
-
-\param const bool &
-A reference to a read-only variable containing the flag to set the render flag to
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::SetPointRenderFlag(const Entity& _e, const bool& _renderFlag) {
-	Collision2DManager::GetPointCollider(_e).renderFlag = _renderFlag;
-}
-
-/*!*****************************************************************************
-\brief
-ExistsInCollisionList function that checks and returns the whether if the given
-entity pair is already in the collision entity pair container list
-
-\param const Entity &
-A reference to a read-only variable containing the 1st entity of the entity pair
-
-\param const Entity &
-A reference to a read-only variable containing the 2nd entity of the entity pair
-
-\return bool
-Evaluated result of whether the entity pair exists in container
-*******************************************************************************/
-bool Collision2DManager::ExistsInCollisionList(const Entity& e1, const Entity& e2) {
-	// Nothing in container, does not exists
-	if (mCollisionCheckList.size() == 0)
-		return false;
-
-	// Loop through the list and check if the pair exists
-	for (const CollisionStore& cs : mCollisionCheckList) {
-		if ((cs.obj1.id == e1.id && cs.obj2.id == e2.id) ||
-			(cs.obj1.id == e2.id && cs.obj2.id == e1.id))
-			return true;
-	}
-
-	// Loop completed, entity pair was not found
-	return false;
-}
-
-/*!*****************************************************************************
-\brief
-UpdateCollisionList function that clears and updates the system's stored container
-holding the entity pairs that need to be checked for collision
-
-\param void
-NULL
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::UpdateCollisionList() {
-	// Clear list from previous frame
-	Collision2DManager::ClearCollisionList();
-
-	// Loop through list
-	for (const Entity& e1 : mEntities) {
-		for (const Entity& e2 : mEntities) {
-			// If entity looped is itself or either entities do not contain a collider, skip it
-			if (e1.id == e2.id || !Collision2DManager::HasCollider(e1) || !Collision2DManager::HasCollider(e2))
-				continue;
-
-			// Check if the entity pair has yet to exists in the list
-			// If so, add it to the container
-			if (!Collision2DManager::ExistsInCollisionList(e1, e2))
-				mCollisionCheckList.emplace_back(CollisionStore{ 0, e1, e2 });
-		}
-	}
-}
-
-/*!*****************************************************************************
-\brief
-ClearCollisionList function that clears the system's stored container
-
-\param void
-NULL
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::ClearCollisionList() {
-	mCollisionCheckList.clear();
-}
-
-/*!*****************************************************************************
-\brief
-Update function that calls function to update the system's container and loops 
-through it and calls function to check for collision between the entity pair. 
-If collision is detected, the function then calls another function to resolve
-collision
-
-\param const std::set<Entity> &
-A reference to a read-only container holding the list of entities to check against
-
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::Update(const double &_dt) {
-	// Update container of entity pairs
-	Collision2DManager::UpdateCollisionList();
-
-	// Loop through the entity pairs and check for collision
-	for (CollisionStore& cs : Collision2DManager::mCollisionCheckList) {
-		if (Collision2DManager::CheckCollision(cs, _dt)) {
-			Collision2DManager::ResolveCollision(cs, _dt);
-		}
-	}
-}
-
-/*!*****************************************************************************
-\brief
-CheckCollision function that calls the respective collision detection function
-depending on the collider type of the given entity pair and returns the result 
-of that function as its result
-
-\param CollisionStore &
-A reference to struct containing entity pair data to check
-
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
-
-\return bool
-Evaluated result of whether collision has occurred between the given entity pair
-*******************************************************************************/
-bool Collision2DManager::CheckCollision(CollisionStore& _collisionData, const double &_dt) {
-	// Rect vs Rect
-	if (_collisionData.obj1.HasComponent<RectCollider>() && _collisionData.obj2.HasComponent<RectCollider>()) {
-		_collisionData.collisionType = 1;
-		return Collision2DManager::CI_RectvsRect(_collisionData, _dt);
-	}
-
-	// Rect vs Circle
-	if (_collisionData.obj1.HasComponent<RectCollider>() && _collisionData.obj2.HasComponent<CircleCollider>()) {
-		//return CollisionIntersection_RectvsCircle(CollisionData.obj1, CollisionData.obj2) ? 2 : 0;
-	}
-	if (_collisionData.obj1.HasComponent<CircleCollider>() && _collisionData.obj2.HasComponent<RectCollider>()) {
-		//return CollisionIntersection_RectvsCircle(CollisionData.obj2, CollisionData.obj1) ? 3 :0;
-	}
-
-	// Rect vs Line
-	// result = 4;
-	// result = 5
-
-
-	// Circle vs Circle
-	if (_collisionData.obj1.HasComponent<CircleCollider>() && _collisionData.obj2.HasComponent<CircleCollider>()) {
-		_collisionData.collisionType = 6;
-		return Collision2DManager::CI_CirclevsCircle(_collisionData, _dt);
-	}
-
-	// Circle vs Line
-	// result = 7;
-	// result = 8
-
-	// Line vs Line
-	// result = 9
-
-
-	// result = 0;
-	return false;
-}
-
-/*!*****************************************************************************
-\brief
-ResolvesCollision function that calls the respective collision resolution function
-depending on the collider type of the given entity pair
-
-\param CollisionStore &
-A reference to struct containing entity pair data to resolve
-
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
-
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::ResolveCollision(CollisionStore& _collisionData, const double& _dt) {
-	// Change function call based on the resultant collision type in the stored data
-	switch (_collisionData.collisionType) {
-	case 1:	// Rect vs Rect
-		Collision2DManager::CR_RectvsRect(_collisionData, _dt);
-		break;
-	case 2:	// Rect vs Circle
-
-		break;
-	case 3:	// Circle vs Rect
-
-		break;
-	case 4:	// Rect vs Line
-
-		break;
-	case 5:	// Line vs Rect
-
-		break;
-	case 6:	// Circle vs Circle
-		Collision2DManager::CR_CirclevsCircle(_collisionData, _dt);
-		break;
-	case 7:	// Circle vs Line
-
-		break;
-	case 8:	// Line vs Circle
-
-		break;
-	case 9:	// Line vs Line
-
-		break;
-	case 0:
-	default:
-		break;
-	}
-
-	// Log collision detection & resolution
-	LOG_INFO("Collision between object detected. Resolved!");
-
-	// For demonstration, if the object has audio, play it
-	if (_collisionData.obj1.HasComponent<Audio>()) {
-		_collisionData.obj1.GetComponent<Audio>().sound.toPlay = true;
-	}
-
-	// For demonstration, if the object has audio, play it
-	if (_collisionData.obj2.HasComponent<Audio>()) {
-		_collisionData.obj2.GetComponent<Audio>().sound.toPlay = true;
-	}
-}
-
-/*!*****************************************************************************
-\brief
-CI_RectvsRect function that checks for collision between 2 rectangular
-colliders using AABB
-
-\param CollisionStore &
-A reference to struct containing entity pair data to check
-
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
-
-\return bool
-Evaluated result of whether collision has occurred between the given entity pair
-*******************************************************************************/
-bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData, const double& _dt) {
 	// Store center and scale of both entities
-	Math::Vec2 center1{ Math::Vec2{_collisionData.obj1.GetComponent<Transform>().translation} + _collisionData.obj1.GetComponent<RectCollider>().centerOffset },
-			   scale1{ static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
-				       static_cast<float>(static_cast<double>(_collisionData.obj1.GetComponent<Transform>().scale.y) * static_cast<double>(_collisionData.obj1.GetComponent<RectCollider>().scaleOffset.y) / 2.0) },
-			   center2{ Math::Vec2{_collisionData.obj2.GetComponent<Transform>().translation} + _collisionData.obj2.GetComponent<RectCollider>().centerOffset },
-		       scale2{ static_cast<float>(static_cast<double>(_collisionData.obj2.GetComponent<Transform>().scale.x) * static_cast<double>(_collisionData.obj2.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
-				       static_cast<float>(static_cast<double>(_collisionData.obj2.GetComponent<Transform>().scale.y) * static_cast<double>(_collisionData.obj2.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
-
-	// Compute min and max of both entities
-	Math::Vec2 aabb1min{ center1 - scale1 },
-			   aabb1max{ center1 + scale1 },
-			   aabb2min{ center2 - scale2 },
-			   aabb2max{ center2 + scale2 };
+	Math::Vec2	center1{ Math::Vec2{obj1.GetComponent<Transform>().translation} + obj1.GetComponent<RectCollider>().centerOffset },
+		scale1{ static_cast<float>(static_cast<double>(std::fabs(obj1.GetComponent<Transform>().scale.x)) * static_cast<double>(obj1.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+				static_cast<float>(static_cast<double>(std::fabs(obj1.GetComponent<Transform>().scale.y)) * static_cast<double>(obj1.GetComponent<RectCollider>().scaleOffset.y) / 2.0) },
+		center2{ Math::Vec2{obj2.GetComponent<Transform>().translation} + obj2.GetComponent<RectCollider>().centerOffset },
+		scale2{ static_cast<float>(static_cast<double>(std::fabs(obj2.GetComponent<Transform>().scale.x)) * static_cast<double>(obj2.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+				static_cast<float>(static_cast<double>(std::fabs(obj2.GetComponent<Transform>().scale.y)) * static_cast<double>(obj2.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
 
 // Static check
-	if (aabb1max.x < aabb2min.x)
-		return false;
-	if (aabb1min.x > aabb2max.x)
-		return false;
-	if (aabb1max.y < aabb2min.y)
-		return false;
-	if (aabb1min.y > aabb2max.y)
-		return false;
+	//if (aabb1max.x < aabb2min.x)
+	//	return false;
+	//if (aabb1min.x > aabb2max.x)
+	//	return false;
+	//if (aabb1max.y < aabb2min.y)
+	//	return false;
+	//if (aabb1min.y > aabb2max.y)
+	//	return false;
+	Math::Vec2 distVec{ center1 - center2 };
+	Math::Vec2 diff{ scale1.x + scale2.x - std::fabs(distVec.x),
+					 scale1.y + scale2.y - std::fabs(distVec.y) };
+	// For 2 rect to collide, both axis needs to be larger than 0, indicating a penetration has happened on both axis
+	if (0.f < diff.x) {
+		if (0.f < diff.y) {
+			if (diff.x < diff.y) {
+				// Set contact information
+				_contact.normal = distVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+				_contact.penetration = diff.x;
+				_contact.contacts = _contact.normal * scale1.x + center1;
+				return true;
+			}
+			else {
+				// Set contact information
+				_contact.normal = distVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+				_contact.penetration = diff.y;
+				_contact.contacts = _contact.normal * scale1.y + center1;
+				return true;
+			}
+		}
+	}
 
 // Dynamic check
+	// Compute min and max of both entities
+	Math::Vec2	aabb1min{ center1 - scale1 },
+		aabb1max{ center1 + scale1 },
+		aabb2min{ center2 - scale2 },
+		aabb2max{ center2 + scale2 };
+
 	// Compute relative velocity
 	Math::Vec2 Vb{};
-	if (_collisionData.obj2.HasComponent<Physics2D>() && _collisionData.obj1.HasComponent<Physics2D>())
-		Vb = _collisionData.obj2.GetComponent<Physics2D>().velocity* static_cast<float>(_dt) - _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	else if (_collisionData.obj1.HasComponent<Physics2D>()) 
-		Vb = _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	else if (_collisionData.obj2.HasComponent<Physics2D>()) 
-		Vb = _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	if (obj2.HasComponent<Physics2D>() && obj1.HasComponent<Physics2D>())
+		Vb = obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (obj1.HasComponent<Physics2D>())
+		Vb = obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (obj2.HasComponent<Physics2D>())
+		Vb = obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
 
 	// Check if relative velocity is zero
 	if (Vb == Math::Vec2{ 0.f, 0.f })
@@ -1028,205 +150,582 @@ bool Collision2DManager::CI_RectvsRect(CollisionStore& _collisionData, const dou
 	if (tFirst > tLast) // Case 5
 		return false;
 
+// Will intersect within the next delta time
 	// Use first as intersection time
-	_collisionData.interTime = tFirst;
+	//_contact.interTime = tFirst;
 
+	// Compute next frame's position and use that data for collision response 
+	Math::Vec2 obj1NewPos{ center1 },
+		obj2NewPos{ center2 };
+	if (obj1.HasComponent<Physics2D>())
+		obj1NewPos += obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	if (obj2.HasComponent<Physics2D>())
+		obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+
+	// Compute penetration
+	Math::Vec2 newDistVec{ obj1NewPos - obj2NewPos };
+	Math::Vec2 newDiff{ scale1.x + scale2.x - std::fabs(newDistVec.x),
+					 scale1.y + scale2.y - std::fabs(newDistVec.y) };
+
+	// Find axis that penetrates less and use it to resolve collision
+	if (newDiff.x < newDiff.y) {
+		// Set contact information
+		_contact.normal = newDistVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+		_contact.penetration = newDiff.x;
+		_contact.contacts = _contact.normal * scale1.x + center1;
+	}
+	else {
+		// Set contact information
+		_contact.normal = newDistVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+		_contact.penetration = newDiff.y;
+		_contact.contacts = _contact.normal * scale1.y + center1;
+	}
+	if (obj1.HasComponent<Audio>())
+		obj1.GetComponent<Audio>().sound.toPlay = true;
+	if (obj2.HasComponent<Audio>())
+		obj2.GetComponent<Audio>().sound.toPlay = true;
 	return true;
 }
 
-/*!*****************************************************************************
-\brief
-CI_CirclevsCircle function that checks for collision between 2 circular colliders 
+bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt) {
+	// Get reference to the entities
+	Entity& obj1{ _contact.obj[0] },
+		& obj2{ _contact.obj[1] };
 
-\param CollisionStore &
-A reference to struct containing entity pair data to check
+	// Store radius of circle colliders
+	float  obj1R{ (std::fabs(obj1.GetComponent<Transform>().scale.x) * obj1.GetComponent<CircleCollider>().scaleOffset) / 2.f },
+		   obj2R{ (std::fabs(obj2.GetComponent<Transform>().scale.x) * obj2.GetComponent<CircleCollider>().scaleOffset) / 2.f};
 
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
+	// Store position of circle colliders
+	Math::Vec2 obj1Pos{ obj1.GetComponent<Transform>().translation + obj1.GetComponent<CircleCollider>().centerOffset },
+		obj2Pos{ obj2.GetComponent<Transform>().translation + obj2.GetComponent<CircleCollider>().centerOffset };
 
-\return bool
-Evaluated result of whether collision has occurred between the given entity pair
-*******************************************************************************/
-bool Collision2DManager::CI_CirclevsCircle(CollisionStore& _collisionData, const double& _dt) {
-	// Find the relative velocity of both circles
-	Math::Vec2 relVel{};
-	if (_collisionData.obj2.HasComponent<Physics2D>() && _collisionData.obj1.HasComponent<Physics2D>())
-		relVel = _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	else if (_collisionData.obj1.HasComponent<Physics2D>())
-		relVel = _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-	else if (_collisionData.obj2.HasComponent<Physics2D>())
-		relVel = _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
-
-
-
-	// Store radius of both circles
-	double  circle1Radius{ (_collisionData.obj1.GetComponent<Transform>().scale.x * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset) / 2.0},
-			circle2Radius{ (_collisionData.obj2.GetComponent<Transform>().scale.x * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset) / 2.0};
+	float sqDist{ Math::SqDistance(obj2Pos, obj1Pos) };
 
 // Static
-	// Check if relVel is 0
-	if (relVel == Math::Vec2{ 0.f, 0.f }) {
-		// Check if there is a distance between the 2 circles
-		if (abs(
-			Math::SqDistance(_collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<CircleCollider>().centerOffset, _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<CircleCollider>().centerOffset) -
-			static_cast<float>(circle1Radius * circle1Radius + circle2Radius * circle2Radius)
-			) > 0.f)
-			return false;
-		else
-			return true;
+	// Check if the distance between the circles' centers is smaller than their radius
+	if (sqDist < ((obj1R + obj2R) * (obj1R + obj2R))) {
+		// On top of each other
+		if (sqDist == 0.f) {
+			// Set contact information
+			_contact.penetration = obj1R;
+			_contact.normal = Math::Vec2{ 1.f, 0.f };
+			_contact.contacts = obj1Pos;
+		}
+		else {
+			// Set contact information
+			_contact.penetration = (obj1R + obj2R) - sqrtf(sqDist);
+			_contact.normal = (obj2Pos - obj1Pos).Normalize();
+			_contact.contacts = _contact.normal * obj1R + obj1Pos;
+		}
+
+		return true;
 	}
 
-// Dynamic 
-	// Reduce problem by checking a static circle (pillar) and a moving point (ray/line)
-		// Create a third circle that inherits the following:
-		//	second object's collider's translation (Transform + centreOffset)
-		//  radius is the sum of the radius of the 2 circles
-		//  scaleOffset is 1
-	Transform tDataTmpCircle{ _collisionData.obj2.GetComponent<Transform>() };
-	tDataTmpCircle.translation += _collisionData.obj2.GetComponent<CircleCollider>().centerOffset;
-	tDataTmpCircle.scale = _collisionData.obj1.GetComponent<Transform>().scale * _collisionData.obj1.GetComponent<CircleCollider>().scaleOffset +
-						   _collisionData.obj2.GetComponent<Transform>().scale * _collisionData.obj2.GetComponent<CircleCollider>().scaleOffset;
+	// Find the relative velocity of both entities
+	Math::Vec2 relVel{};
+	if (obj1.HasComponent<Physics2D>() && obj2.HasComponent<Physics2D>())
+		relVel = obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) - obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (_contact.obj[0].HasComponent<Physics2D>())
+		relVel = obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+	else if (_contact.obj[1].HasComponent<Physics2D>())
+		relVel = obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+
+	// Check if relVel is 0 (Will not collide)
+	if (relVel == Math::Vec2{ 0.f, 0.f })
+		return false;
+
+	// Dynamic 
+		// Reduce problem by checking a static circle (pillar) and a moving point (ray/line)
+			// Create a third circle that inherits the following:
+			//	second object's collider's translation (Transform + centreOffset)
+			//  radius is the sum of the radius of the 2 circles
+			//  scaleOffset is 1
+	Transform tDataTmpCircle{ obj2.GetComponent<Transform>() };
+	tDataTmpCircle.translation += obj2.GetComponent<CircleCollider>().centerOffset;
+	/*tDataTmpCircle.scale = obj1.GetComponent<Transform>().scale * obj1.GetComponent<CircleCollider>().scaleOffset +
+		obj2.GetComponent<Transform>().scale * obj2.GetComponent<CircleCollider>().scaleOffset;*/
+	tDataTmpCircle.scale.x = obj1R + obj2R;
 	double  tmpCircleRadius{ static_cast<double>(tDataTmpCircle.scale.x) / 2.0 };
 
 	// Create a ray that starts from first object's position and goes in the direction of the relative velocity
-	Transform tDataTmpRay{ _collisionData.obj1.GetComponent<Transform>() };
-	tDataTmpRay.translation += _collisionData.obj1.GetComponent<CircleCollider>().centerOffset;
-	tDataTmpRay.rotation = static_cast<float>(acos(static_cast<double>(relVel.x) / static_cast<double>(relVel.Magnitude())));
+	Transform tDataTmpRay{ obj1.GetComponent<Transform>() };
+	tDataTmpRay.translation += obj1.GetComponent<CircleCollider>().centerOffset;
+	// Compute rotation from relative velocity
+	if (relVel.y != 0.f && relVel.x >= 0.f)
+		tDataTmpRay.rotation = atan2f(relVel.x, relVel.y);
+	else if (relVel.y == 0.f && relVel.x > 0)
+		tDataTmpRay.rotation = static_cast<float>(Math::PI / 2.0);
+	else if (relVel.y != 0 && relVel.x < 0.f)
+		tDataTmpRay.rotation = static_cast<float>(Math::PI / 2.0 + atan2(relVel.x, relVel.y));
+	else
+		tDataTmpRay.rotation = static_cast<float>(3.0 * Math::PI / 2.0);
 	tDataTmpRay.scale.x = relVel.Magnitude();
 
-// Check if collision will occur 
-	// Calculate m and check if ray is moving away from circle
+	// Check if collision will occur 
+		// Calculate m and check if ray is moving away from circle
 	double m{ static_cast<double>(Math::Dot(tDataTmpCircle.translation - tDataTmpRay.translation, relVel.Normalized())) };
 	if (
 		(m < 0.0) &&
 		(static_cast<double>((tDataTmpCircle.translation - tDataTmpRay.translation).SqMagnitude())
-			> tmpCircleRadius * tmpCircleRadius) 
+		> tmpCircleRadius * tmpCircleRadius)
 		)
 		return false;	// Ray will never hit the circle
 
 	// Calculate and check if the closest distance to the circle is larger than the circle's radius
-	double n2{ static_cast<double>((tDataTmpCircle.translation - tDataTmpRay.translation).SqMagnitude()) - (m * m)};
+	double n2{ static_cast<double>((tDataTmpCircle.translation - tDataTmpRay.translation).SqMagnitude()) - (m * m) };
 	if (n2 > tmpCircleRadius * tmpCircleRadius)
 		return false;	// Ray  will never hit the circle
 
 	// Find intersection time and take minimum value
 	double s{ sqrt(tmpCircleRadius * tmpCircleRadius - n2) };
-	double tmpInterTime1{ (m - s) / relVel.Magnitude()},
-		   tmpInterTime2{ (m + s) / relVel.Magnitude() };
+	double tmpInterTime1{ (m - s) / relVel.Magnitude() },
+		tmpInterTime2{ (m + s) / relVel.Magnitude() };
 	double interTime = (tmpInterTime1 < tmpInterTime2) ? tmpInterTime1 : tmpInterTime2;
 
 	// Check if the intersection time is within 1 unit
 	if (0.0 <= interTime && interTime <= 1.0) {
-		_collisionData.interTime = interTime;
+		// Set intersection time
+		//_contact.interTime = interTime;
+
+		// Compute new positions 
+		Math::Vec2 obj1NewPos{ obj1Pos },
+			obj2NewPos{ obj2Pos };
+		if (obj1.HasComponent<Physics2D>())
+			obj1NewPos += obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+		if (obj2.HasComponent<Physics2D>())
+			obj2NewPos += obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt);
+
+		// Set contact information
+		_contact.penetration = (obj1R + obj2R) - sqrtf(Math::SqDistance(obj1NewPos, obj2NewPos));
+		_contact.normal = (obj2NewPos - obj1NewPos).Normalize();
+		_contact.contacts = _contact.normal * obj1R + obj1NewPos;
+		if (obj1.HasComponent<Audio>())
+			obj1.GetComponent<Audio>().sound.toPlay = true;
+		if (obj2.HasComponent<Audio>())
+			obj2.GetComponent<Audio>().sound.toPlay = true;
 		return true;
 	}
 	else
 		return false;
 }
 
-/*!*****************************************************************************
-\brief
-CR_RectvsRect function that resolves collision between 2 entities of
-rectangular collider
+bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
+	_dt;
 
-\param CollisionStore &
-A reference to struct containing entity pair data to resolve
+	// Get reference to the entities
+	Entity& objCircle{ _contact.obj[0] },
+		  & objRect{ _contact.obj[1] };
 
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
+	
+	Math::Vec2	objCirclePos{ objCircle.GetComponent<Transform>().translation + objCircle.GetComponent<CircleCollider>().centerOffset },
+				objRectPos{ objRect.GetComponent<Transform>().translation + objRect.GetComponent<RectCollider>().centerOffset };
+	float  objCircleR{ (std::fabs(objCircle.GetComponent<Transform>().scale.x) * objCircle.GetComponent<CircleCollider>().scaleOffset) / 2.f };
+	Math::Vec2 objRectScale{ static_cast<float>(static_cast<double>(std::fabs(objRect.GetComponent<Transform>().scale.x)) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.x) / 2.0),
+							 static_cast<float>(static_cast<double>(std::fabs(objRect.GetComponent<Transform>().scale.y)) * static_cast<double>(objRect.GetComponent<RectCollider>().scaleOffset.y) / 2.0) };
 
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::CR_RectvsRect(CollisionStore& _collisionData, const double& _dt) {
-	// Get and store objects' current velocity
-	Math::Vec2 velObj1{ _collisionData.obj1.HasComponent<Physics2D>() ? _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} },
-			   velObj2{ _collisionData.obj2.HasComponent<Physics2D>() ? _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} };
-	//double massObj1{ static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) },
-	//	     massObj2{ static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) };
+	Math::Vec2 p{ objCirclePos },
+		minV{ objRectPos - objRectScale },
+		maxV{ objRectPos + objRectScale };
 
-	// Compute and store objects' meeting point
-	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + _collisionData.obj1.GetComponent<RectCollider>().centerOffset + velObj1 * static_cast<float>(_collisionData.interTime) },
-		       interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + _collisionData.obj2.GetComponent<RectCollider>().centerOffset + velObj2 * static_cast<float>(_collisionData.interTime) };
+	Math::Vec2 q{};
+	for (int i{ 0 }; i < 2; ++i) {
+		float v{ p[i] };
+		if (v < minV[i])
+			v = minV[i];
+		if (v > maxV[i])
+			v = maxV[i];
+		q[i] = v;
+	}
 
-	// Set the entities' position at the meeting point
-	_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 - _collisionData.obj1.GetComponent<RectCollider>().centerOffset;
-	_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 - _collisionData.obj2.GetComponent<RectCollider>().centerOffset;
+	float sqDist{ Math::SqDistance(q, p) };	
+	if (sqDist < objCircleR * objCircleR) {
+		if (sqDist == 0.f) {
+			Math::Vec2 distVec{ objCirclePos - objRectPos };
+			Math::Vec2 diff{ objCircleR + objRectScale.x - std::fabs(distVec.x),
+							 objCircleR + objRectScale.y - std::fabs(distVec.y) };
 
-	// Stop their movement for now as a hack until bounce/slide can be figured out
-	_collisionData.obj1.GetComponent<Physics2D>().speed = 
-	_collisionData.obj2.GetComponent<Physics2D>().speed = 0.f;
-
-	_collisionData.obj1.GetComponent<Physics2D>().velocity = 
-	_collisionData.obj2.GetComponent<Physics2D>().velocity = Math::Vec2{ 0.f, 0.f };
+			if (diff.x < diff.y) {
+				_contact.normal = distVec.x < 0.f ? Math::Vec2{ 1.f, 0.f } : Math::Vec2{ -1.f, 0.f };
+				_contact.penetration = diff.x;
+				_contact.contacts = _contact.normal * objRectScale.x + objRectPos;
+			}
+			else {
+				_contact.normal = distVec.y < 0.f ? Math::Vec2{ 0.f, 1.f } : Math::Vec2{ 0.f, -1.f };
+				_contact.penetration = diff.y;
+				_contact.contacts = _contact.normal * objRectScale.y + objRectPos;
+			}
+			return true;
+		}
+		else {
+			_contact.normal = (q - p).Normalized();
+			_contact.penetration = objCircleR - Math::Distance(q, p);
+			_contact.contacts = _contact.normal * objCircleR + objCirclePos;
+			return true;
+		}
+	}
+	return false;
 }
 
-/*!*****************************************************************************
-\brief
-CR_CirclevsCircle function that resolves collision between 2 entities of
-circle collider
+bool Collision2DManager::CI_RectvsCircle(Contact& _contact, const double& _dt) {
+	std::swap(_contact.obj[0], _contact.obj[1]);
+	std::swap(_contact.objType[0], _contact.objType[1]);
 
-\param CollisionStore &
-A reference to struct containing entity pair data to resolve
+	return CI_CirclevsRect(_contact, _dt);
+}
 
-\param const double &
-A reference to a read-only variable that tells us the application's current
-delta time
+bool Collision2DManager::HasCollider(const Entity& _e) {
+	return (_e.HasComponent<RectCollider>() || _e.HasComponent<CircleCollider>() /*|| _e.HasComponent<RectCollider>() || _e.HasComponent<RectCollider>()*/)
+		? true : false;
+}
 
-\return void
-NULL
-*******************************************************************************/
-void Collision2DManager::CR_CirclevsCircle(CollisionStore& _collisionData, const double& _dt) {
-	// Compute and store objects' current velocity
-	Math::Vec2 velObj1{ _collisionData.obj1.HasComponent<Physics2D>() ? _collisionData.obj1.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} },
-				velObj2{ _collisionData.obj2.HasComponent<Physics2D>() ? _collisionData.obj2.GetComponent<Physics2D>().velocity * static_cast<float>(_dt) : Math::Vec2{0.f, 0.f} };
-	double massObj1{ _collisionData.obj1.HasComponent<Physics2D>() ? static_cast<double>(_collisionData.obj1.GetComponent<Physics2D>().mass) : 1.f },
-		   massObj2{ _collisionData.obj2.HasComponent<Physics2D>() ? static_cast<double>(_collisionData.obj2.GetComponent<Physics2D>().mass) : 1.f };
-	// Compute and store objects' meeting point
-	Math::Vec2 interPtObj1{ _collisionData.obj1.GetComponent<Transform>().translation + velObj1 * static_cast<float>(_collisionData.interTime) },
-		interPtObj2{ _collisionData.obj2.GetComponent<Transform>().translation + velObj2 * static_cast<float>(_collisionData.interTime) };
-	// Get normal to collision occurance
-	Math::Vec2 normal{ (interPtObj1 - interPtObj2).Normalized() };
+//int Collision2DManager::NoOfColliders(const Entity& _e) {
+//	int count{ 0 };
+//	
+//	if (_e.HasComponent<RectCollider>())
+//		++count;
+//	if (_e.HasComponent<CircleCollider>())
+//		++count;
+//
+//	return count;
+//}
 
-	// Static response
-	if (velObj1 == Math::Vec2{ 0.f, 0.f } || velObj2 == Math::Vec2{ 0.f, 0.f }) {
-		Math::Vec2 penetratedVec{ interPtObj1 - interPtObj2 };
-		Math::Vec2 newVel = penetratedVec - 2 * (Math::Dot(penetratedVec, normal)) * normal;
-		if (velObj1 == Math::Vec2{ 0.f, 0.f }) {
-			/*_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + (penetratedVec - 2 * (Math::Dot(penetratedVec, normal)) * normal) * _dt;
-			Math::Vec2 newVel{ _collisionData.obj2.GetComponent<Transform>().translation - interPtObj2 };
-			_collisionData.obj2.GetComponent<Physics2D>().velocity = newVel;
-			_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(newVel.x) / static_cast<double>(newVel.Magnitude())));*/
+void Collision2DManager::SetupCollisionDatabase() {
+	RegisterCollisionTest(ColliderType::CIRCLE, ColliderType::CIRCLE, CI_CirclevsCircle);
+	RegisterCollisionTest(ColliderType::RECT, ColliderType::RECT, CI_RectvsRect);
+	RegisterCollisionTest(ColliderType::CIRCLE, ColliderType::RECT, CI_CirclevsRect);
+	RegisterCollisionTest(ColliderType::RECT, ColliderType::CIRCLE, CI_RectvsCircle);
+}
 
-			_collisionData.obj2.GetComponent<Physics2D>().velocity = newVel;
-			_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(newVel.x) / static_cast<double>(newVel.Magnitude())));
+void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const ColliderType& typeB, CollisionCallback function) {
+	mCollisionDatabase[static_cast<int>(typeA)][static_cast<int>(typeB)] = function;
+}
+
+
+void Collision2DManager::ResolveCollisions(const double& _dt) {
+	// Reset contact list every fixed update
+	ClearContactList();
+	
+	// Check for collision and generate contact list
+	GenerateContactList(_dt);
+
+	// Resolve collision
+	for (Contact& item : mContactList) {
+		// Hack for collision triggers
+		bool triggered{ false };
+		switch (item.objType[0]) {
+		case static_cast<int>(ColliderType::RECT):
+			if (item.obj[0].GetComponent<RectCollider>().isTrigger)
+				triggered = true;
+			break;
+		case static_cast<int>(ColliderType::CIRCLE) :
+			if (item.obj[0].GetComponent<CircleCollider>().isTrigger)
+				triggered = true;
+			break;
 		}
-		if (velObj2 == Math::Vec2{ 0.f, 0.f }) {
-			_collisionData.obj1.GetComponent<Physics2D>().velocity = newVel;
-			_collisionData.obj1.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(newVel.x) / static_cast<double>(newVel.Magnitude())));
+		switch (item.objType[1]) {
+		case static_cast<int>(ColliderType::RECT):
+			if (item.obj[1].GetComponent<RectCollider>().isTrigger)
+				triggered = true;
+			break;
+		case static_cast<int>(ColliderType::CIRCLE):
+			if (item.obj[1].GetComponent<CircleCollider>().isTrigger)
+				triggered = true;
+			break;
+		}
+
+		// Trigger object type detected
+		if (triggered) {
+			// Skip to next contact item
+			continue;
+		}
+
+		// Play sound by setting it to play
+		if (item.obj[0].HasComponent<Audio>()) 
+			item.obj[0].GetComponent<Audio>().sound.toPlay = true;
+		if (item.obj[1].HasComponent<Audio>())
+			item.obj[1].GetComponent<Audio>().sound.toPlay = true;
+
+		// Correct penetrated positions
+		PositionCorrection(item);
+		// Resolve contact by updating velocity values of both objects
+		ResolveContact(item, _dt);
+	}
+
+	// Clear the contact list
+	//ClearContactList();
+}
+
+void Collision2DManager::GenerateContactList(const double& _dt) {
+	// Broad Phase Here
+
+
+	// For now, we loop through the entity list
+	// Converted to check player entities against all other entities for M3 to reduce amount of checks done
+	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
+		if (!e1->ShouldRun())
+			continue;
+		//if (!e1->GetComponent<General>().isActive)
+			//continue;
+
+		if (e1->GetComponent<General>().tag != TAG::PLAYER)
+			continue;
+
+		//for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
+		for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
+			if (e1 == e2)
+				continue;
+
+			if (!e2->ShouldRun())
+				continue;
+			//if (!e2->GetComponent<General>().isActive)
+			//	continue;
+
+			//if (!e1->HasComponent<Collider2D>() || !e2->HasComponent<Collider2D>())
+			//	continue;
+			// Prevents checks against 2 non moving object
+			//if (!e1->GetComponent<Physics2D>().dynamicsEnabled || !e2->GetComponent<Physics2D>().dynamicsEnabled)	
+			//	continue;
+
+			// Check if either of the entities do not have collider
+			if (!HasCollider(*e1) || !HasCollider(*e2))
+				continue;
+
+			// Code has not accounted for multiple colliders attached to an entity despite it being a constraint made to me by group members
+			//for (int i{ 0 }; i < NoOfColliders(*e1); ++i){
+			// Find collider type of 1st entity
+			int e1Type{ 0 };
+			if (e1->HasComponent<RectCollider>())
+				e1Type = static_cast<int>(ColliderType::RECT);
+			else if (e1->HasComponent<CircleCollider>())
+				e1Type = static_cast<int>(ColliderType::CIRCLE);
+			else
+				continue;
+
+			//	for (int j{ 0 }; j < NoOfColliders(*e2); ++j) {
+			// Find collider type of 2nd entity
+			int e2Type{ 0 };
+			if (e2->HasComponent<RectCollider>())
+				e2Type = static_cast<int>(ColliderType::RECT);
+			else if (e2->HasComponent<CircleCollider>())
+				e2Type = static_cast<int>(ColliderType::CIRCLE);
+			else
+				continue;
+
+			// Initialize contact
+			Contact contact{ *e1, *e2, e1Type, e2Type };
+
+			// Call function to check for collision
+			// If it returns true, means collision occurred
+			if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt)) {
+				mContactList.emplace_back(contact);
+				//LOG_INFO("Collision Detected\n");
+			}
 		}
 	}
-	// Dynamic Response
-	else {
-		double aA{ Math::Dot(velObj1, normal) },
-			   aB{ Math::Dot(velObj2, normal) };
 
-		// Compute objects' reflected velocity after collision
-		Math::Vec2 reflectedVelObj1{ velObj1 - static_cast<float>(((2.0 * (aA - aB)) / (massObj1 + massObj2) * massObj2)) * normal },
-					reflectedVelObj2{ velObj2 + static_cast<float>(((2.0 * (aA - aB)) / (massObj1 + massObj2) * massObj1)) * normal };
+}
 
-		// Store the reflected velocity as the new velocity
-		_collisionData.obj1.GetComponent<Physics2D>().velocity = reflectedVelObj1;
-		_collisionData.obj2.GetComponent<Physics2D>().velocity = reflectedVelObj2;
-
-		// Compute objects' velocity direction after collision
-		_collisionData.obj1.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(reflectedVelObj1.x) / static_cast<double>(reflectedVelObj1.Magnitude())));
-		_collisionData.obj2.GetComponent<Physics2D>().moveDirection = static_cast<float>(acos(static_cast<double>(reflectedVelObj2.x) / static_cast<double>(reflectedVelObj2.Magnitude())));
-
-		// Compute objects' position the frame after the collision
-		_collisionData.obj1.GetComponent<Transform>().translation = interPtObj1 + reflectedVelObj1 * static_cast<float>(_dt - _collisionData.interTime);
-		_collisionData.obj2.GetComponent<Transform>().translation = interPtObj2 + reflectedVelObj2 * static_cast<float>(_dt - _collisionData.interTime);
+bool Collision2DManager::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
+	for (auto const& item : mContactList) {
+		if (item.obj[0].id == _e1.id && item.obj[1].id == _e2.id)
+			return true;
+		if (item.obj[1].id == _e1.id && item.obj[0].id == _e2.id)
+			return true;
 	}
+
+	return false;
+}
+
+void Collision2DManager::ClearContactList() {
+	mContactList.clear();
+}
+
+void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
+	// Store bool value of whether entity has physics component
+	bool obj1HasP{ _contact.obj[0].HasComponent<Physics2D>() },
+		 obj2HasP{ _contact.obj[1].HasComponent<Physics2D>() };
+
+	// Error handling: Check for infinite mass of both objects
+	// Do not do anything further
+	if (obj1HasP && obj2HasP) {
+		if (_contact.obj[0].GetComponent<Physics2D>().mass == 0.f && _contact.obj[1].GetComponent<Physics2D>().mass == 0.f) {
+			physics2DManager->SetVelocity(_contact.obj[0], { 0.f, 0.f });
+			physics2DManager->SetAcceleration(_contact.obj[0], { 0.f, 0.f });
+			physics2DManager->SetAccumulatedForce(_contact.obj[0], { 0.f, 0.f });
+
+			physics2DManager->SetVelocity(_contact.obj[1], { 0.f, 0.f });
+			physics2DManager->SetAcceleration(_contact.obj[1], { 0.f, 0.f });
+			physics2DManager->SetAccumulatedForce(_contact.obj[1], { 0.f, 0.f });
+			return;
+		}
+	}
+
+	// Error handling: Check if either objects are of infinite mass and set all movement values to 0
+	if (obj1HasP) {
+		if (_contact.obj[0].GetComponent<Physics2D>().mass == 0.f) {
+			physics2DManager->SetVelocity(_contact.obj[0], { 0.f, 0.f });
+			physics2DManager->SetAcceleration(_contact.obj[0], { 0.f, 0.f });
+			physics2DManager->SetAccumulatedForce(_contact.obj[0], { 0.f, 0.f });
+		}
+	}
+
+	if (obj2HasP) {
+		if (_contact.obj[1].GetComponent<Physics2D>().mass == 0.f) {
+			physics2DManager->SetVelocity(_contact.obj[1], { 0.f, 0.f });
+			physics2DManager->SetAcceleration(_contact.obj[1], { 0.f, 0.f });
+			physics2DManager->SetAccumulatedForce(_contact.obj[1], { 0.f, 0.f });
+		}
+	}
+
+	// Store positions
+	Math::Vec2 obj1Pos{ _contact.obj[0].GetComponent<Transform>().translation },
+			   obj2Pos{ _contact.obj[1].GetComponent<Transform>().translation };
+	if (_contact.objType[0] == static_cast<int>(ColliderType::RECT))
+		obj1Pos += _contact.obj[0].GetComponent<RectCollider>().centerOffset;
+	else if (_contact.objType[0] == static_cast<int>(ColliderType::CIRCLE))
+		obj1Pos += _contact.obj[0].GetComponent<CircleCollider>().centerOffset;
+	if (_contact.objType[1] == static_cast<int>(ColliderType::RECT))
+		obj2Pos += _contact.obj[1].GetComponent<RectCollider>().centerOffset;
+	else if (_contact.objType[1] == static_cast<int>(ColliderType::CIRCLE))
+		obj2Pos += _contact.obj[1].GetComponent<CircleCollider>().centerOffset;
+
+	// Calculate radii from COM to contact
+	//Math::Vec2	rObj1{ _contact.contacts - obj1Pos },
+	//			rObj2{ _contact.contacts - obj2Pos };
+
+	// Relative Velocity
+	// Accounts for rotation
+	//Math::Vec2 relVel{};
+	//if (obj1HasP && obj2HasP)
+	//	relVel = _contact.obj[1].GetComponent<Physics2D>().velocity + Math::Cross(_contact.obj[1].GetComponent<Physics2D>().angularVelocity, rObj2) -
+	//	_contact.obj[0].GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj[0].GetComponent<Physics2D>().angularVelocity, rObj1);
+	//else if (obj2HasP)
+	//	relVel = _contact.obj[1].GetComponent<Physics2D>().velocity + Math::Cross(_contact.obj[1].GetComponent<Physics2D>().angularVelocity, rObj2);
+	//else if (obj1HasP)
+	//	relVel = -(_contact.obj[0].GetComponent<Physics2D>().velocity - Math::Cross(_contact.obj[0].GetComponent<Physics2D>().angularVelocity, rObj1));
+	
+	Math::Vec2 relVel{ 0.f, 0.f };
+	if (obj1HasP && obj2HasP) 
+		relVel = _contact.obj[1].GetComponent<Physics2D>().velocity - _contact.obj[0].GetComponent<Physics2D>().velocity;
+	else if (obj2HasP) 
+		relVel = _contact.obj[1].GetComponent<Physics2D>().velocity;
+	else if (obj1HasP) 
+		relVel = _contact.obj[0].GetComponent<Physics2D>().velocity;
+
+	// Relative velocity along the normal
+	float contactVel{ Math::Dot(relVel, _contact.normal) };
+
+	// Do not resolve if velocities are seperating
+	if (contactVel > 0)
+		return;
+
+	// Rotation Velocity impulse
+	//float	rObj1CrossN{ Math::Cross(rObj1, _contact.normal) },
+	//		rObj2CrossN{ Math::Cross(rObj2, _contact.normal) };
+
+	float invMassSum{};
+	if (obj1HasP)
+		invMassSum += (_contact.obj[0].GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj[0].GetComponent<Physics2D>().mass;;
+	if (obj2HasP)
+		invMassSum += (_contact.obj[1].GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj[1].GetComponent<Physics2D>().mass;;
+
+	// Calculate impulse scalar J
+	// No need to handle invMassSum == 0 (hence nan) as we already handled the case upon function entnry
+	float scalar{ (-(1.f + _contact.combinedRestitution) * contactVel) / invMassSum };
+
+	// Apply velocity impulse
+	Math::Vec2 impulse{ _contact.normal * scalar };
+
+	// Check for zero vector
+	if ((fabs(impulse.x) < Math::epsilonValue) && (fabs(impulse.y) < Math::epsilonValue))
+		return;
+
+	// Has physics component (Response required)
+	if (obj1HasP) {
+	// Move object to resolve contact
+		// Check if there is mass (not infinite)
+		if (physics2DManager->GetMass(_contact.obj[0]) != 0.f) {
+			physics2DManager->ApplyImpulse(_contact.obj[0], -(impulse), { 0.f, 0.f });
+			_contact.obj[0].GetComponent<Transform>().translation += physics2DManager->GetVelocity(_contact.obj[0]) * static_cast<float>(_dt);
+
+			// Compute new acceleration/force after resolution
+			// Look for 1st force that dictates the movement force (constraint)
+			if (!_contact.obj[0].GetComponent<Physics2D>().forceList.empty()) {
+				// Get reference to the first force
+				Force& moveForce{ _contact.obj[0].GetComponent<Physics2D>().forceList[0] };
+				// Check if its linear
+				if (moveForce.forceID == 0) {
+					// Compute new force after resolution
+					Math::Vec2 newForceVec{};
+					if (physics2DManager->GetMass(_contact.obj[0]) == 0.f)
+						newForceVec = -impulse;
+					else
+						newForceVec = -impulse / physics2DManager->GetMass(_contact.obj[0]);
+
+					// Check if magnitude would not cause zero division nan
+					if (newForceVec.SqMagnitude() > Math::epsilonValue * Math::epsilonValue) {
+						moveForce.linearForce.unitDirection = newForceVec.Normalized();
+						moveForce.linearForce.magnitude = newForceVec.Magnitude();
+					}
+					else {
+						moveForce.linearForce.unitDirection = { 0.f, 0.f };
+						moveForce.linearForce.magnitude = 0.f;
+					}
+				}
+			}
+		}		
+	}
+
+	// Do the same for the other entity
+	if (obj2HasP) {
+		if (physics2DManager->GetMass(_contact.obj[1]) != 0.f) {
+			physics2DManager->ApplyImpulse(_contact.obj[1], impulse, { 0.f, 0.f });
+			_contact.obj[1].GetComponent<Transform>().translation += physics2DManager->GetVelocity(_contact.obj[1]) * static_cast<float>(_dt);
+
+			if (!_contact.obj[1].GetComponent<Physics2D>().forceList.empty()) {
+				Force& moveForce{ _contact.obj[1].GetComponent<Physics2D>().forceList[0] };
+				if (moveForce.forceID == 0) {
+					Math::Vec2 newForceVec{};
+					if (physics2DManager->GetMass(_contact.obj[1]) == 0.f)
+						newForceVec = impulse;
+					else
+						newForceVec = impulse / physics2DManager->GetMass(_contact.obj[1]);
+
+					// Check if magnitude would not cause zero division nan
+					if (newForceVec.SqMagnitude() > Math::epsilonValue * Math::epsilonValue) {
+						moveForce.linearForce.unitDirection = newForceVec.Normalized();
+						moveForce.linearForce.magnitude = newForceVec.Magnitude();
+					}
+					else {
+						moveForce.linearForce.unitDirection = { 0.f, 0.f };
+						moveForce.linearForce.magnitude = 0.f;
+					}
+				}
+			}
+		}
+	}
+}
+
+void Collision2DManager::PositionCorrection(Contact& _contact) {
+	// Compute total inverse mass
+	float invMassSum{ 0.f };
+	if (_contact.obj[0].HasComponent<Physics2D>())
+		invMassSum += (_contact.obj[0].GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj[0].GetComponent<Physics2D>().mass;
+	if (_contact.obj[1].HasComponent<Physics2D>())
+		invMassSum += (_contact.obj[1].GetComponent<Physics2D>().mass == 0.f) ? 0.f : 1.f / _contact.obj[1].GetComponent<Physics2D>().mass;
+	if (invMassSum == 0.f)
+		invMassSum = 1.f;
+
+	// Compute correction value
+	Math::Vec2 correction = std::max(_contact.penetration - penAllowance, 0.f) / invMassSum * _contact.normal * penPercentage;
+	
+	// Correct positions
+	if (_contact.obj[0].HasComponent<Physics2D>())
+		if (_contact.obj[0].GetComponent<Physics2D>().mass != 0.f)
+			_contact.obj[0].GetComponent<Transform>().translation += correction * -(1.f / _contact.obj[0].GetComponent<Physics2D>().mass);
+	
+	if (_contact.obj[1].HasComponent<Physics2D>())
+		if (_contact.obj[1].GetComponent<Physics2D>().mass != 0.f)
+			_contact.obj[1].GetComponent<Transform>().translation += correction * (1.f / _contact.obj[1].GetComponent<Physics2D>().mass);
 }

@@ -1,30 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="include\Scene\Scene.h" />
-    <ClInclude Include="include\Scene\Start_1.h" />
-    <ClInclude Include="include\Scene\Start_background.h" />
     <ClInclude Include="include\Application.h" />
-    <ClInclude Include="include\GameState.h" />
-    <ClInclude Include="include\GameStateManager.h" />
-    <ClInclude Include="include\GameState\Start.h" />
-    <ClInclude Include="include\GameState\GameState1.h" />
-    <ClInclude Include="include\GameState\GameState2.h" />
-    <ClInclude Include="include\GameState\GameState3.h" />
-    <ClInclude Include="include\GameState\ParallaxAndSpriteSwap.h" />
+    <ClInclude Include="include\Scripts\RotateScript.h" />
+    <ClInclude Include="include\Scripts\ScaleScript.h" />
+    <ClInclude Include="include\Scripts\TestScript.h" />
+    <ClInclude Include="include\Scripts\DialogueScript.h" />
+    <ClInclude Include="include\Scripts\PlayerMovementScript.h" />
+    <ClInclude Include="include\Scripts\PlayGameButton.h" />
+    <ClInclude Include="include\Scripts\HowToPlayButton.h" />
+    <ClInclude Include="include\Scripts\BackToMainMenuButton.h" />
+    <ClInclude Include="include\Scripts\ExitGameButton.h" />
+    <ClInclude Include="include\Scripts\SettingsButton.h" />
+    <ClInclude Include="include\Scripts\BackToGameButton.h" />
+    <ClInclude Include="include\Scripts\PassengerScript.h" />
+    <ClInclude Include="include\Scripts\DeathScript.h" />
+    <ClInclude Include="include\Scripts\AttackScript.h" />
+    <ClInclude Include="include\Scripts\WASDScript.h" />
+    <ClInclude Include="include\Scripts\MoveMinimapScript.h" />
+    <ClInclude Include="include\Scripts\ExitConfirmationButton.h" />
+    <ClInclude Include="include\Scripts\PauseButton.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Scene\Scene.cpp" />
-    <ClCompile Include="source\Scene\Start_1.cpp" />
-    <ClCompile Include="source\Scene\Start_background.cpp" />
     <ClCompile Include="source\Application.cpp" />
-    <ClCompile Include="source\GameState.cpp" />
-    <ClCompile Include="source\GameStateManager.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\GameState\Start.cpp" />
-    <ClCompile Include="source\GameState\GameState1.cpp" />
-    <ClCompile Include="source\GameState\GameState2.cpp" />
-    <ClCompile Include="source\GameState\GameState3.cpp" />
-    <ClCompile Include="source\GameState\ParallaxAndSpriteSwap.cpp" />
+    <ClCompile Include="source\Scripts\BackToGameButton.cpp" />
+    <ClCompile Include="source\Scripts\PassengerScript.cpp" />
+    <ClCompile Include="source\Scripts\BackToMainMenuButton.cpp" />
+    <ClCompile Include="source\Scripts\DeathScript.cpp" />
+    <ClCompile Include="source\Scripts\DialogueScript.cpp" />
+    <ClCompile Include="source\Scripts\ExitGameButton.cpp" />
+    <ClCompile Include="source\Scripts\HowToPlayButton.cpp" />
+    <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
+    <ClCompile Include="source\Scripts\PlayGameButton.cpp" />
+    <ClCompile Include="source\Scripts\RotateScript.cpp" />
+    <ClCompile Include="source\Scripts\ScaleScript.cpp" />
+    <ClCompile Include="source\Scripts\SettingsButton.cpp" />
+    <ClCompile Include="source\Scripts\TestScript.cpp" />
+    <ClCompile Include="source\Scripts\AttackScript.cpp" />
+    <ClCompile Include="source\Scripts\WASDScript.cpp" />
+    <ClCompile Include="source\Scripts\MoveMinimapScript.cpp" />
+    <ClCompile Include="source\Scripts\ExitConfirmationButton.cpp" />
+    <ClCompile Include="source\Scripts\PauseButton.cpp" />
   </ItemGroup>
 </Project>

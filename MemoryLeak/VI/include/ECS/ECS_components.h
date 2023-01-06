@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 This file contains all the structs of components used in ECS. 
 ComponentType starts from 0.
@@ -14,6 +14,10 @@ ComponentType starts from 0.
 #include "Graphics/SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
+#include "../Physics/Force.h"
+#include "../Physics/ColliderBody.h"
+#include <variant>
+#include "ScriptComponent.h"
 
 class Prefab;
 
@@ -27,7 +31,10 @@ struct General {
 	TAG tag;
 	SUBTAG	subtag = SUBTAG::NOSUBTAG;
 	bool isActive;
+	bool isPaused;
 	Prefab* prefab = nullptr; // Nullptr if it's not linked to any prefab
+	std::set<Entity> children;
+	Entity parent = Entity(0);
 };
 
 /*!*****************************************************************************
@@ -47,9 +54,9 @@ This component encapsulates what is needed in a Transform Component.
 *******************************************************************************/
 struct Transform
 {
-	Math::Vec2		scale;
-	float			rotation;
-	Math::Vec2		translation;
+	Math::Vec2		scale = {1.f,1.f};		//save, edit, see
+	float			rotation = 0.f;			//save, edit, see
+	Math::Vec2		translation = {0.f,0.f};//save, edit, see
 };
 
 /*!*****************************************************************************
@@ -61,12 +68,20 @@ The layer variable contains which layer the sprite is to be rendered in.
 *******************************************************************************/
 struct Sprite
 {
-	Color color;
-	SPRITE sprite;
-	GLuint texture = 0;
-	int layer = 0;
+	Color color = Color{ 0,255,0,255 };	//save, edit, see
+	SPRITE sprite;						//save, edit, see
+	GLuint texture = 0;					//save, edit, see
+	int layer = 0;						//save, edit, see
 };
 
+struct Button
+{
+	bool interactable = true;			//save, edit, see
+	bool isHover = false;				//NO save, NO edit, see
+	bool isClick = false;				//NO save, NO edit, see
+	bool activated = false;				//NO save, NO edit, see
+	bool renderFlag = true;				//NO save, edit, see
+};
 
 /*!*****************************************************************************
 \brief
@@ -93,34 +108,67 @@ The currFrameIndex stores the index of the frame to be used.
 *******************************************************************************/
 struct SheetAnimation
 {
-	short frameCount = 1;
-	short currFrameIndex = 0;
-	float timePerFrame = 1.f;
-	float timeToFrameSwap = 0.f;
+	int frameCount = 1;					//save, edit, see
+	int currFrameIndex = 0;				//save, edit, see
+	float timePerFrame = 1.f;			//save, edit, see
+	float timeToFrameSwap = 0.f;		//NO save, NO edit, NO see
 };
 
 /*!*****************************************************************************
-\brief 
+\brief
 This component encapsulates information regarding dynamic movement of an entity.
-The gravityEnabled variable tells the physics manager if the entity should be
- affected by gravity
-The mass variable contains how heavy the object is
-The speed variable contains how fast the object moves
-The moveDirection variable contains the direction the object is moving in terms
- of radian rotations
-The forces variable contains the net force acting on the object at frametime
-The velocity variable contains the current velocity of the object at frametime
-The renderFlag variable contains the flag variable telling the render manager
- whether to render the velocity vector
+> The gravityEnabled variable tells the physics manager if the entity should be
+   affected by gravity
+> The gravityScale variable tells the physics manager how much should the base 
+   gravity force affect this object
+> The dynamicsEnabled variable tells the physics manager if the entity is a 
+   static, non-moving object that should not move
+> The mass variable contains how heavy the object is
+> The invMass variable contains the reciprocal of the mass mostly used in 
+   calculations
+> The inertia variable contains how much force is required to move the object
+> The invInertia variable contains the reciprocal of the inertia mostly used in 
+   calculations
+> The restitution variable contains the restitution value which is used during 
+   collision resolution to determine the amount of force conserved
+> The friction variable contains the friction value 
+> The damping variable contains the damping value used to create soft drag
+> The accumulatedForce variable contains the sum of forces acting on the entity
+   at the current step
+> The velocity variable contains the current velocity of the object
+> The acceleration variable contains the current acceleration value of the object
+> The angularVelocity variable contains the current angular velocity of the object
+> The angularTorque variable contains the current angular acceleration of the object
+> The forceList variable contains the list of forces acting on the object
+> The renderFlag variable contains the flag variable telling the render manager
+   whether to render the velocity vector
 *******************************************************************************/
 struct Physics2D {
-	bool gravityEnabled = false;
-	float mass = 1.f,
-		  speed = 0.f,
-		  moveDirection = 0.f;
-	Math::Vec2 forces = { 0.f, 0.f },
-			   velocity = { 0.f, 0.f };
-	bool renderFlag = false;
+	bool dynamicsEnabled{true};				// save, edit, see
+
+	float mass{1.f};						// save edit, see
+	float inertia{1.f};						// save, NO edit, NO see (for now as unused)
+	float restitution{0.0f};				// save, edit, see
+	float friction{0.0f};					// save, NO edit, NO see (for now as unused)
+	float damping{0.9f};					// save, edit, see 
+	Math::Vec2 accumulatedForce{0.f, 0.f};	// save, NO edit, NO see
+	Math::Vec2 velocity{0.f, 0.f};			// save, NO edit, NO see
+	Math::Vec2 acceleration{0.f, 0.f};		// save, NO edit, NO see
+	
+	float angularVelocity{0.f};				// save, NO edit, NO see
+	float angularTorque{0.f};				// save, NO edit, NO see
+	
+	std::vector<Force> forceList{};			// save, edit, see
+
+	bool renderFlag{false};					// save, edit, see
+};
+
+struct LayerCollider {
+	Math::Vec2 centerOffset = { 0.f, 0.f },	// save, edit, see
+				scaleOffset = { 1.f, 1.f };	// save, edit, see
+	//float yOffset;	
+	// float rotationOffset,
+	bool renderFlag = false;				// save, edit, see
 };
 
 /*!*****************************************************************************
@@ -134,10 +182,11 @@ The renderFlag variable contains the flag variable telling the render manager
  whether to render the collider
 *******************************************************************************/
 struct RectCollider {
-	Math::Vec2 centerOffset = { 0.f, 0.f },
-			   scaleOffset = {1.f,1.f};
+	Math::Vec2 centerOffset = { 0.f, 0.f },	// save, edit, see
+			   scaleOffset = {1.f,1.f};		// save, edit, see
 	// float rotationOffset,
-	bool renderFlag = false;
+	bool isTrigger{ false },				// save, edit, see
+		 renderFlag{ false };				// save, edit, see
 };
 
 /*!*****************************************************************************
@@ -151,10 +200,19 @@ The renderFlag variable contains the flag variable telling the render manager
  whether to render the collider
 *******************************************************************************/
 struct CircleCollider {
-	Math::Vec2 centerOffset = { 0.f, 0.f };
-	float scaleOffset = 1.f;
-	bool renderFlag = false;
+	Math::Vec2 centerOffset = { 0.f, 0.f };	// save, edit, see
+	float 	scaleOffset = { 1.f };			// save, edit, see
+	// float rotationOffset,
+	bool isTrigger{ false },				// save, edit, see
+		 renderFlag{ false };				// save, edit, see
 };
+
+
+//struct Collider2D {
+//	bool isTrigger;
+//	bool renderFlag;
+//	std::vector<ColliderBody> colliderList;
+//};
 
 /*!*****************************************************************************
 \brief
@@ -170,8 +228,8 @@ The renderFlag variable contains the flag variable telling the render manager
 *******************************************************************************/
 struct Edge2DCollider {
 	Math::Vec2 p0Offset = { 0.f, 0.f };
-	float rotationOffset = 0.f,
-		  scaleOffset = 1.f;
+	float rotationOffset = 0.f;
+	float scaleOffset = 1.f;
 	bool renderFlag = false;
 };
 
@@ -191,17 +249,17 @@ struct Point2DCollider {
 
 /*!*****************************************************************************
 \brief
-This component encapsulates information regarding the player, such as health
+This temporary component encapsulates information regarding the player, such as health
 *******************************************************************************/
-struct PlayerTmp {
-	int HP = 1;
-};
+//struct PlayerTmp {
+//	int HP = 1;
+//};
 
 /*!*****************************************************************************
 \brief
 	This temporary struct contains the data for AI component
 *******************************************************************************/
-struct Stuff {
+struct AI {
 	int	colorChange =0;
 	int	movement = 0;
 	float	speed = 1.f;
@@ -215,16 +273,44 @@ struct Audio {
 	//std::vector<Sound> sound;
 	Sound sound;
 	bool isSpacial = false;
+	float spacialDistance = 1.f;
+	float spacialRatio = 1.f;
+	/*SOUND:
+	std::string path;
+	bool toPlay = false;
+	float volume = 1.0f;
+	float volumeMod = 1.0f;
+	float pitch = 1.0f;
+	bool isPaused = false;
+	bool isMute = false;
+	bool isLoop = false;
+	bool isRandPitch = false;
+	int channel;*/
 };
 /*!*****************************************************************************
 \brief
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
-	std::string text;
+	std::string fontFile = "3Dumb";			//save, edit, see
+	std::string text = "Hello";				//save, edit, see
+	Math::Vec2 offset = Math::Vec2{0, 0};	//save, edit, see
+	float scale = 1.f;						//save, edit, see
+	Color color = Color{ 0, 0, 0, 255 };	//save, edit, see
+	bool followCam = false;					//NO save, edit, see
+};
+
+/*!*****************************************************************************
+\brief
+	This struct contains the data for Dialogue component
+*******************************************************************************/
+struct Dialogue
+{
+	std::string filename;
+	int speakerID;
+	int selectedID;
 	int textID;
 	int nextTextID;
-	GLuint texture = 0; //for dialog box
 };
 
 /*!*****************************************************************************

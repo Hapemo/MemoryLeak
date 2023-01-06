@@ -20,6 +20,14 @@ operates on Entities with Sprite and Transform Components.
 #include "Graphics/FBO.h"
 #include "FontManager.h"
 #include "Camera.h"
+#include <stdarg.h>
+#include "VIzmo.h"
+
+/*!*****************************************************************************
+\brief
+Enum class with states that check which framebuffer to render to
+*******************************************************************************/
+enum class RENDER_STATE { WORLD, GAME, ANIMATOR };
 
 /*!*****************************************************************************
 \brief
@@ -77,7 +85,7 @@ public:
 	\param bool
 	Renders debug drawings if debug mode is set to true.
 	*******************************************************************************/
-	void SetDebug(bool);
+	void SetDebug(bool _debug) { mDebug = _debug; }
 
 	/*!*****************************************************************************
 	\brief
@@ -95,19 +103,45 @@ public:
 	\return
 	Returns the color attachment to the frame buffer.
 	*******************************************************************************/
-	GLuint GetFBO() const { return mfbo.GetColorAttachment(); }
+	GLuint GetWorldFBO() const { return mWorldFBO.GetColorAttachment(); }
+
+	/*!*****************************************************************************
+	\brief
+	Returns the color attachment to the frame buffer.
+
+	\return
+	Returns the color attachment to the frame buffer.
+	*******************************************************************************/
+	GLuint GetGameFBO() const { return mGameFBO.GetColorAttachment(); }
+
+	/*!*****************************************************************************
+	\brief
+	Returns the color attachment to the Animator buffer, for displaying the 
+	Animator editor.
+
+	\return
+	Returns the color attachment to the Animator buffer, for displaying the 
+	Animator editor.
+	*******************************************************************************/
+	GLuint GetAnimatorFBO();
 
 	/*!*****************************************************************************
 	\brief
 	Rendering will be done to the screen instead of the FBO.
 	*******************************************************************************/
-	void RenderToScreen() { mfbo.SetRenderToScreen(true); }
+	void RenderToScreen() { mRenderGameToScreen = true; }
 
 	/*!*****************************************************************************
 	\brief
 	Rendering will be done to the FBO instead of the screen.
 	*******************************************************************************/
-	void RenderToFrameBuffer() { mfbo.SetRenderToScreen(false); }
+	void RenderToFrameBuffer() { mRenderGameToScreen = false; }
+
+	/*!*****************************************************************************
+	\brief
+	Rendering will be done to the FBO instead of the screen.
+	*******************************************************************************/
+	bool GetRenderGameToScreen() { return mRenderGameToScreen; }
 
 	/*!*****************************************************************************
 	\brief
@@ -121,26 +155,130 @@ public:
 	*******************************************************************************/
 	std::vector<float> GetImGuizmoMat4(const Entity& _e);
 
-	Camera& GetCamera() { return cam; }
+	/*!*****************************************************************************
+	\brief
+	Returns the Editor camera object.
+
+	\return
+	Returns the Editor camera object.
+	*******************************************************************************/
+	Camera& GetWorldCamera() { return mWorldCam; }
+
+	/*!*****************************************************************************
+	\brief
+	Returns the Game camera object.
+
+	\return
+	Returns the Game camera object.
+	*******************************************************************************/
+	Camera& GetGameCamera() { return mGameCam; }
+
+	/*!*****************************************************************************
+	\brief
+	Returns the Animator camera object.
+
+	\return
+	Returns the Animator camera object.
+	*******************************************************************************/
+	Camera& GetAnimatorCamera() { return mAnimatorCam; }
+
+	/*!*****************************************************************************
+	\brief
+	Sets the color to be cleared every frame.
+
+	\param const Color& _clr
+	The color to be cleared with.
+	*******************************************************************************/
+	void SetClearColor(const Color& _clr);
+
+	/*!*****************************************************************************
+	\brief
+	Resets all the cameras in RenderManager.
+	*******************************************************************************/
+	void ResetCameras();
+
+	/*!*****************************************************************************
+	\brief
+	Returns the Gizmo object.
+
+	\return
+	A reference to the Gizmo object.
+	*******************************************************************************/
+	VIzmo& GetGizmo() { return mGizmo; }
+
+	/*!*****************************************************************************
+	\brief
+	Used when an entity is selected in the editor. Draws a box around the selected 
+	entity.
+
+	\param const Entity& _e
+	The entity to be selected.
+	*******************************************************************************/
+	void SelectEntity(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Select multiple entities.
+
+	\param std::vector<Entity>const& _es
+	The vector of entities to be selected.
+	*******************************************************************************/
+	void SelectEntities(std::vector<Entity>const& _es);
+
+	/*!*****************************************************************************
+	\brief
+	Unselect an entity. (not drawing box around it)
+
+	\param const Entity& _e
+	The entity to be unselected.
+	*******************************************************************************/
+	void UnselectEntity(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Unselect all entities. (nothing selected)
+	*******************************************************************************/
+	void ClearSelectedEntities();
+
+	/*!*****************************************************************************
+	\brief
+	Checks if entity should be rendered.
+
+	\param const Entity& e
+
+	\return bool
+	true if it should be culled, false otherwise.
+	*******************************************************************************/
+	bool ShouldCull(const Entity& e);
 
 private:
-	Camera cam;
-	FontManager fontManager;
-	bool mDebug;
+	RENDER_STATE mCurrRenderPass;
+	Camera mWorldCam, mGameCam, mAnimatorCam;
+	std::unordered_map<std::string, FontRenderer> mFontRenderers;
+	bool mRenderGameToScreen;
 	float mVectorLengthModifier;
-	FBO mfbo;
+	FBO mWorldFBO, mGameFBO, mAnimatorFBO;
 	int* mWindowWidth;
 	int* mWindowHeight;
 	GLShader mDefaultProgram;
 	GLShader mTextureProgram;
+	//GLShader mMinimapProgram;
 	GLAllocator mAllocator;
-	std::vector<Vertex> mVertices;
-	std::vector<GLushort> mIndices;
 	std::vector<Vertex> mTextureVertices;
 	std::vector<GLushort> mTextureIndices;
+	std::map<int, std::vector<Vertex>> mVertices;
+	std::map<int, std::vector<GLushort>> mIndices;
 	std::vector<Vertex> mDebugPoints;
 	std::vector<Vertex> mDebugVertices;
 	std::vector<GLushort> mDebugIndices;
+	std::vector<Entity> mEditorSelectedEntities;
+	VIzmo mGizmo;
+	int mPrevWidth;
+	int mInitialWidth, mInitialHeight;
+	//Entity minimap;
+	bool mDebug;
+	std::vector<int> mRenderLayers;
+
 
 	/*!*****************************************************************************
 	\brief
@@ -162,6 +300,8 @@ private:
 	Current texture units that are in use.
 	*******************************************************************************/
 	void BindTextureUnit(const GLuint& _texID, TextureInfo& _texInfo, std::vector<int>& _texUnits);
+
+	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
 	/*!*****************************************************************************
 	\brief
@@ -205,6 +345,26 @@ private:
 	*******************************************************************************/
 	void BatchRenderTextures(int& _texCount, std::vector<int>& _texUnits);
 
+	void RenderText(int _layer);
+
+	/*!*****************************************************************************
+	\brief
+	Creating vertices from the ECS.
+	*******************************************************************************/
+	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
+
+	/*!*****************************************************************************
+	\brief
+	Rendering of textures
+	*******************************************************************************/
+	void RenderTextures(std::map<GLuint, TextureInfo>& _texInfo);
+
+	/*!*****************************************************************************
+	\brief
+	Rendering of shapes
+	*******************************************************************************/
+	void RenderShapes(int _layer);
+
 	/*!*****************************************************************************
 	\brief
 	Creates a square or texture based on Transform and Sprite Component.
@@ -231,6 +391,21 @@ private:
 
 	/*!*****************************************************************************
 	\brief
+	Creates a circle based on Transform, Color and layer.
+
+	\param const Transform& _t
+	The transform component.
+
+	\param const Color& _cltr&
+	The color component.
+
+	\param float
+	layer to render at.
+	*******************************************************************************/
+	void CreateCircle(const Transform& _xform, const Color& _clr, int layer);
+
+	/*!*****************************************************************************
+	\brief
 	Creates a debug point based on Transform and Sprite Component, or Physics point
 	collider.
 
@@ -250,7 +425,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugPoint(const Transform& _t, const Color& _c);
+	void CreateDebugPoint(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -273,7 +448,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugLine(const Transform& _t, const Color& _c);
+	void CreateDebugLine(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -296,7 +471,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugSquare(const Transform& _t, const Color& _c);
+	void CreateDebugSquare(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -319,7 +494,7 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugCircle(const Transform& _t, const Color& _c);
+	void CreateDebugCircle(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -342,7 +517,55 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	void CreateDebugArrow(const Transform& _t, const Color& _c);
+	void CreateDebugArrow(const Transform& _t, const Color& _clr);
+
+	/*!*****************************************************************************
+	\brief
+	Get the transform for where to render the gizmo.
+
+	\param const Transform& _xform
+	The transform for the object.
+
+	\return
+	The transform matrix.
+	*******************************************************************************/
+	Math::Mat3 GetGizmoTransform(const Transform& _xform);
+
+	/*!*****************************************************************************
+	\brief
+	Creates a circle for the gizmo.
+
+	\param const Transform& _t
+	The transform for the circle.
+
+	\const Color& _clr
+	The color of the circle.
+	*******************************************************************************/
+	void CreateGizmoCircle(const Transform& _t, const Color& _clr);
+
+	/*!*****************************************************************************
+	\brief
+	Creates a line for the gizmo.
+
+	\param const Transform& _t
+	The transform for the circle.
+
+	\const Color& _clr
+	The color of the circle.
+	*******************************************************************************/
+	void CreateGizmoDebugLine(const Transform& _t, const Color& _clr);
+
+	/*!*****************************************************************************
+	\brief
+	Creates a debug circle for the gizmo. (outline only)
+
+	\param const Transform& _t
+	The transform for the circle.
+
+	\const Color& _clr
+	The color of the circle.
+	*******************************************************************************/
+	void CreateGizmoDebugCircle(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -410,6 +633,15 @@ private:
 
 	/*!*****************************************************************************
 	\brief
+	Sends text into the FontManager to be rendered.
+
+	\param const Entity& _e
+	The entity with the Text component.
+	*******************************************************************************/
+	void CreateText(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
 	Initializes the Shader program.
 	*******************************************************************************/
 	void InitializeShaders();
@@ -425,6 +657,13 @@ private:
 	The vector for indices to be taken from.
 	*******************************************************************************/
 	void ConcatIndices(std::vector<GLushort>& _first, std::vector<GLushort>& _second);
+
+	/*!*****************************************************************************
+	\brief
+	Creates the gizmo.
+	*******************************************************************************/
+	void CreateGizmo();
+
 };
 
 

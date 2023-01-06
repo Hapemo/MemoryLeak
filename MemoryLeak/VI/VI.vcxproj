@@ -5,6 +5,22 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="EditorDebug|Win32">
+      <Configuration>EditorDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="EditorDebug|x64">
+      <Configuration>EditorDebug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="EditorRelease|Win32">
+      <Configuration>EditorRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="EditorRelease|x64">
+      <Configuration>EditorRelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -32,7 +48,20 @@
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
@@ -45,7 +74,20 @@
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
@@ -59,37 +101,85 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-page\Debug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-page\Editor.props" />
+    <Import Project="..\prop-page\Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-page\Release.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-page\Editor.props" />
+    <Import Project="..\prop-page\Release.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\prop-page\VI_property_x64.props" />
     <Import Project="..\prop-page\IncludeTOOLS.props" />
     <Import Project="..\prop-page\IncludeVI.props" />
+    <Import Project="..\prop-page\Debug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-page\VI_property_x64.props" />
+    <Import Project="..\prop-page\IncludeTOOLS.props" />
+    <Import Project="..\prop-page\IncludeVI.props" />
+    <Import Project="..\prop-page\Editor.props" />
+    <Import Project="..\prop-page\Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\prop-page\VI_property_x64.props" />
     <Import Project="..\prop-page\IncludeTOOLS.props" />
     <Import Project="..\prop-page\IncludeVI.props" />
+    <Import Project="..\prop-page\Release.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\prop-page\VI_property_x64.props" />
+    <Import Project="..\prop-page\IncludeTOOLS.props" />
+    <Import Project="..\prop-page\IncludeVI.props" />
+    <Import Project="..\prop-page\Editor.props" />
+    <Import Project="..\prop-page\Release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)lib\Mono\include\mono-2.0;$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|x64'">
+    <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)lib\Mono\include\mono-2.0;$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(SolutionDir)VI\include\Logic;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|x64'">
+    <LibraryPath>$(SolutionDir)lib\Mono\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)TOOLS\include\;$(SolutionDir)TOOLS\imgui;$(SolutionDir)TOOLS\include\DesignPatterns;$(SolutionDir)TOOLS\include\Math;$(SolutionDir)VI\include\Logic;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,7 +192,21 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -116,7 +220,6 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
@@ -125,14 +228,21 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>TOOLS.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\glfw-3.3.7.bin.WIN64\lib-vc2022\glfw3.dll" "$(TargetDir)glfw3.dll" /Y
-copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\x64\glew32.dll" "$(TargetDir)glew32.dll" /Y
-copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmodL.dll" "$(TargetDir)fmodL.dll" /Y
-copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmod.dll" "$(TargetDir)fmod.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)mono-2.0-sgen.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>TOOLS.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -140,7 +250,6 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
@@ -151,14 +260,25 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>TOOLS.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\glfw-3.3.7.bin.WIN64\lib-vc2022\glfw3.dll" "$(TargetDir)glfw3.dll" /Y
-copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\x64\glew32.dll" "$(TargetDir)glew32.dll" /Y
-copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmodL.dll" "$(TargetDir)fmodL.dll" /Y
-copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmod.dll" "$(TargetDir)fmod.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)mono-2.0-sgen.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <TreatWarningAsError>false</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>TOOLS.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -166,6 +286,22 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\AudioVariable.h" />
     <ClInclude Include="include\ColliderTransformManager.h" />
+    <ClInclude Include="include\ECS\PrefabManager.h" />
+    <ClInclude Include="include\Editor\AnimationPanel.h" />
+    <ClInclude Include="include\Editor\AssetPanel.h" />
+    <ClInclude Include="include\Editor\DebugPanel.h" />
+    <ClInclude Include="include\Editor\DialoguePanel.h" />
+    <ClInclude Include="include\Editor\EditorManager.h" />
+    <ClInclude Include="include\Editor\GameViewPanel.h" />
+    <ClInclude Include="include\Editor\HierarchyPanel.h" />
+    <ClInclude Include="include\Editor\InspectorPanel.h" />
+    <ClInclude Include="include\Editor\MenuPanel.h" />
+    <ClInclude Include="include\Editor\Panel.h" />
+    <ClInclude Include="include\Editor\PerformancePanel.h" />
+    <ClInclude Include="include\Editor\PrefabPanel.h" />
+    <ClInclude Include="include\Editor\ViewportPanel.h" />
+    <ClInclude Include="include\Editor\WeatherPanel.h" />
+    <ClInclude Include="include\Editor\WorldViewPanel.h" />
     <ClInclude Include="include\freetype\freetype.h" />
     <ClInclude Include="include\freetype\ftadvanc.h" />
     <ClInclude Include="include\freetype\ftbbox.h" />
@@ -212,11 +348,25 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\freetype\ttnameid.h" />
     <ClInclude Include="include\freetype\tttables.h" />
     <ClInclude Include="include\freetype\tttags.h" />
+    <ClInclude Include="include\GameStateAndScene\GameState.h" />
+    <ClInclude Include="include\GameStateAndScene\GameStateManager.h" />
+    <ClInclude Include="include\GameStateAndScene\Scene.h" />
+    <ClInclude Include="include\Graphics\ButtonManager.h" />
     <ClInclude Include="include\Graphics\Camera.h" />
-    <ClInclude Include="include\Graphics\EditorCamera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
-    <ClInclude Include="include\Graphics\Renderer.h" />
-    <ClInclude Include="include\MonoScripting.h" />
+    <ClInclude Include="include\Graphics\VIzmo.h" />
+    <ClInclude Include="include\Graphics\VertexFetcher.h" />
+    <ClInclude Include="include\Graphics\VIzmoProps.h" />
+    <ClInclude Include="include\LayerManager.h" />
+    <ClInclude Include="include\Logic\InternalCalls.h" />
+    <ClInclude Include="include\Logic\LogicSystem.h" />
+    <ClInclude Include="include\Logic\MonoComponent.h" />
+    <ClInclude Include="include\Logic\MonoManager.h" />
+    <ClInclude Include="include\Logic\MonoMethods.h" />
+    <ClInclude Include="include\Logic\ScriptComponent.h" />
+    <ClInclude Include="include\Logic\ScriptManager.h" />
+    <ClInclude Include="include\Physics\ColliderBody.h" />
+    <ClInclude Include="include\Physics\ColliderType.h" />
     <ClInclude Include="include\Physics\Collision2DManager.h" />
     <ClInclude Include="include\Collision2DManager.h" />
     <ClInclude Include="include\DialogManager.h" />
@@ -246,11 +396,13 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClInclude Include="include\Graphics\Vertex.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\LevelEditor.h" />
+    <ClInclude Include="include\Physics\Contact.h" />
+    <ClInclude Include="include\Physics\Force.h" />
     <ClInclude Include="include\Physics\Physics2DManager.h" />
-    <ClInclude Include="include\Player\PlayerController.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Serialization.h" />
+    <ClInclude Include="include\Graphics\ShadowManager.h" />
     <ClInclude Include="include\SignalHandler.h" />
     <ClInclude Include="include\Start_1.h" />
     <ClInclude Include="include\Start_background.h" />
@@ -264,35 +416,61 @@ xcopy "$(SolutionDir)lib\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /Y</Comman
     <ClCompile Include="source\ECS\ECSManager.cpp" />
     <ClCompile Include="source\ECS\ECS_managers.cpp" />
     <ClCompile Include="source\ECS\ECS_tools.cpp" />
+    <ClCompile Include="source\ECS\PrefabManager.cpp" />
+    <ClCompile Include="source\Editor\AnimationPanel.cpp" />
+    <ClCompile Include="source\Editor\AssetPanel.cpp" />
+    <ClCompile Include="source\Editor\DebugPanel.cpp" />
+    <ClCompile Include="source\Editor\DialoguePanel.cpp" />
+    <ClCompile Include="source\Editor\EditorManager.cpp" />
+    <ClCompile Include="source\Editor\GameViewPanel.cpp" />
+    <ClCompile Include="source\Editor\HierarchyPanel.cpp" />
+    <ClCompile Include="source\Editor\InspectorPanel.cpp" />
+    <ClCompile Include="source\Editor\MenuPanel.cpp" />
+    <ClCompile Include="source\Editor\PerformancePanel.cpp" />
+    <ClCompile Include="source\Editor\PrefabPanel.cpp" />
+    <ClCompile Include="source\Editor\ViewportPanel.cpp" />
+    <ClCompile Include="source\Editor\WeatherPanel.cpp" />
+    <ClCompile Include="source\Editor\WorldViewPanel.cpp" />
+    <ClCompile Include="source\GameStateAndScene\GameState.cpp" />
+    <ClCompile Include="source\GameStateAndScene\GameStateManager.cpp" />
+    <ClCompile Include="source\GameStateAndScene\Scene.cpp" />
     <ClCompile Include="source\Graphics\Animator.cpp" />
+    <ClCompile Include="source\Graphics\ButtonManager.cpp" />
     <ClCompile Include="source\Graphics\Camera.cpp" />
-    <ClCompile Include="source\Graphics\EditorCamera.cpp" />
     <ClCompile Include="source\Graphics\FBO.cpp" />
     <ClCompile Include="source\Graphics\FontManager.cpp" />
     <ClCompile Include="source\Graphics\GLAllocator.cpp" />
     <ClCompile Include="source\Graphics\GLShader.cpp" />
-    <ClCompile Include="source\Graphics\Renderer.cpp" />
+    <ClCompile Include="source\Graphics\VIzmo.cpp" />
     <ClCompile Include="source\Graphics\RenderManager.cpp" />
+    <ClCompile Include="include\Graphics\RenderProps.h" />
+    <ClCompile Include="source\Graphics\ShadowManager.cpp" />
     <ClCompile Include="source\Graphics\SheetAnimator.cpp" />
     <ClCompile Include="source\Graphics\SpriteManager.cpp" />
     <ClCompile Include="source\Graphics\TransformManager.cpp" />
-    <ClCompile Include="source\LevelEditor.cpp" />
+    <ClCompile Include="source\Graphics\VertexFetcher.cpp" />
+    <ClCompile Include="source\LayerManager.cpp" />
     <ClCompile Include="source\LifespanManager.cpp" />
+    <ClCompile Include="source\Logic\InternalCalls.cpp" />
+    <ClCompile Include="source\Logic\LogicSystem.cpp" />
+    <ClCompile Include="source\Logic\MonoComponent.cpp" />
+    <ClCompile Include="source\Logic\MonoManager.cpp" />
+    <ClCompile Include="source\Logic\MonoMethods.cpp" />
+    <ClCompile Include="source\Logic\ScriptComponent.cpp" />
+    <ClCompile Include="source\Logic\ScriptManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />
     <ClCompile Include="source\Physics\Physics2DManager.cpp" />
-    <ClCompile Include="source\Player\PlayerController.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
-    <ClCompile Include="source\MonoScripting.cpp" />
     <ClCompile Include="source\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />
     <None Include="shaders\batch.vert" />
-    <None Include="shaders\default.frag" />
-    <None Include="shaders\default.vert" />
-    <None Include="shaders\texture.frag" />
-    <None Include="shaders\texture.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\3Dumb.ttf" />
+    <Font Include="fonts\CaviarDreams.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,7 @@
 {
+    "SceneData": {
+        "isActive": true
+    },
     "Entity0": {
         "General": {
             "name": "Rect1",
@@ -29,10 +32,13 @@
             "layer": 10
         },
         "Physics2D": {
+            "dynamicsEnabled": true,
             "mass": 1.0,
-            "speed": 50.0,
-            "moveDirection": 0.0,
-            "forces": {
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
@@ -40,8 +46,28 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "gravityEnabled": false,
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [
+                {
+                    "lifetimeLimit": 0.0,
+                    "age": 0.0,
+                    "isActive": true,
+                    "forceID": 0,
+                    "linearForce": {
+                        "unitDirection": {
+                            "X": 1.0,
+                            "Y": 0.0
+                        },
+                        "magnitude": 50.0
+                    }
+                }
+            ],
+            "renderFlag": false
         },
         "RectCollider": {
             "centerOffset": {
@@ -55,7 +81,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "DAMAGE.wav",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -96,10 +122,13 @@
             "layer": 10
         },
         "Physics2D": {
-            "mass": 5.0,
-            "speed": 50.0,
-            "moveDirection": 3.1415927410125732,
-            "forces": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
@@ -107,8 +136,28 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "gravityEnabled": false,
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [
+                {
+                    "lifetimeLimit": 0.0,
+                    "age": 0.0,
+                    "isActive": true,
+                    "forceID": 0,
+                    "linearForce": {
+                        "unitDirection": {
+                            "X": -1.0,
+                            "Y": 0.0
+                        },
+                        "magnitude": 50.0
+                    }
+                }
+            ],
+            "renderFlag": false
         },
         "RectCollider": {
             "centerOffset": {
@@ -122,7 +171,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "DAMAGE.wav",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -163,10 +212,13 @@
             "layer": 10
         },
         "Physics2D": {
+            "dynamicsEnabled": true,
             "mass": 1.0,
-            "speed": 70.0,
-            "moveDirection": 0.0,
-            "forces": {
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
@@ -174,8 +226,28 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "gravityEnabled": false,
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [
+                {
+                    "lifetimeLimit": 0.0,
+                    "age": 0.0,
+                    "isActive": true,
+                    "forceID": 0,
+                    "linearForce": {
+                        "unitDirection": {
+                            "X": 1.0,
+                            "Y": 0.0
+                        },
+                        "magnitude": 50.0
+                    }
+                }
+            ],
+            "renderFlag": false
         },
         "CircleCollider": {
             "centerOffset": {
@@ -186,7 +258,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "SHOOT1.wav",
+            "path": "SHOOT1",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -227,10 +299,13 @@
             "layer": 10
         },
         "Physics2D": {
-            "mass": 5.0,
-            "speed": 70.0,
-            "moveDirection": 3.1415927410125732,
-            "forces": {
+            "dynamicsEnabled": true,
+            "mass": 1.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
@@ -238,8 +313,28 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "gravityEnabled": false,
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [
+                {
+                    "lifetimeLimit": 0.0,
+                    "age": 0.0,
+                    "isActive": true,
+                    "forceID": 0,
+                    "linearForce": {
+                        "unitDirection": {
+                            "X": -1.0,
+                            "Y": 0.0
+                        },
+                        "magnitude": 50.0
+                    }
+                }
+            ],
+            "renderFlag": false
         },
         "CircleCollider": {
             "centerOffset": {
@@ -250,7 +345,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "SHOOT1.wav",
+            "path": "SHOOT1",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -291,10 +386,13 @@
             "layer": 10
         },
         "Physics2D": {
+            "dynamicsEnabled": true,
             "mass": 1.0,
-            "speed": 0.0,
-            "moveDirection": 0.0,
-            "forces": {
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
@@ -302,7 +400,13 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "gravityEnabled": false,
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [],
             "renderFlag": false
         },
         "CircleCollider": {
@@ -314,7 +418,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "DAMAGE.wav",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -355,10 +459,13 @@
             "layer": 0
         },
         "Physics2D": {
-            "mass": 1.0,
-            "speed": 0.0,
-            "moveDirection": 0.0,
-            "forces": {
+            "dynamicsEnabled": true,
+            "mass": 0.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
@@ -366,7 +473,27 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "gravityEnabled": false,
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [
+              {
+                "lifetimeLimit": 0.0,
+                "age": 0.0,
+                "isActive": true,
+                "forceID": 0,
+                "linearForce": {
+                  "unitDirection": {
+                    "X": -1.0,
+                    "Y": 0.0
+                  },
+                  "magnitude": 50.0
+                }
+              }
+            ],
             "renderFlag": false
         },
         "CircleCollider": {
@@ -378,7 +505,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "DAMAGE.wav",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -419,10 +546,13 @@
             "layer": 0
         },
         "Physics2D": {
+            "dynamicsEnabled": true,
             "mass": 1.0,
-            "speed": 0.0,
-            "moveDirection": 0.0,
-            "forces": {
+            "inertia": 10.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
@@ -430,8 +560,22 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "gravityEnabled": false,
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [{
+                "lifetimeLimit": 10.0,
+                "age": 0.0,
+                "isActive": true,
+                "forceID": 1,
+                "rotationalForce": {
+                    "torque": 0.26
+                }
+            }],
+            "renderFlag": false
         },
         "CircleCollider": {
             "centerOffset": {
@@ -442,7 +586,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "SHOOT5.wav",
+            "path": "SHOOT5",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -483,10 +627,13 @@
             "layer": 0
         },
         "Physics2D": {
-            "mass": 1.0,
-            "speed": 100.0,
-            "moveDirection": 0.0,
-            "forces": {
+            "dynamicsEnabled": true,
+            "mass": 4.0,
+            "inertia": 1.0,
+            "restitution": 0.0,
+            "friction": 0.0,
+            "damping": 0.8999999761581421,
+            "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
             },
@@ -494,8 +641,26 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "gravityEnabled": false,
-            "renderFlag": true
+            "acceleration": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "angularVelocity": 0.0,
+            "angularTorque": 0.0,
+            "forceList": [{
+                "lifetimeLimit": 0.0,
+                "age": 0.0,
+                "isActive": true,
+                "forceID": 0,
+                "linearForce": {
+                    "unitDirection": {
+                        "X": -1.0,
+                        "Y": 0.0
+                    },
+                    "magnitude": 50.0
+                }
+            }],
+            "renderFlag": false
         },
         "CircleCollider": {
             "centerOffset": {

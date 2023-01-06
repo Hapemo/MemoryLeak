@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 This file contains the initialisation of ECS system. Registering all systems and
 components.
@@ -19,17 +19,20 @@ TODO: take note not to change the component registration order. It will break pr
 #include "Graphics/RenderManager.h"
 #include "ColliderTransformManager.h"
 
-#include "../Player/PlayerController.h"
 #include "../Physics/Physics2DManager.h"
 #include "../Physics/Collision2DManager.h"
+#include "../LayerManager.h"
 
-#include "LevelEditor.h"
+#include "EditorManager.h"
 #include "Graphics/Animator.h"
 #include "Graphics/SheetAnimator.h"
 #include "AudioManager.h"
 #include "Serialization.h"
 #include "DialogManager.h"
 #include "AI.h"
+#include "LogicSystem.h"
+#include "Graphics/ShadowManager.h"
+#include "ButtonManager.h"
 
 //-------------------------------------------------------------------
 // System pointers with declaration from ECSManager.cpp
@@ -40,14 +43,17 @@ extern std::shared_ptr<SpriteManager> spriteManager;
 extern std::shared_ptr<RenderManager> renderManager;
 extern std::shared_ptr<Animator> animator;
 extern std::shared_ptr<SheetAnimator> sheetAnimator;
-extern std::shared_ptr<PlayerController> playerManager;
 extern std::shared_ptr<Physics2DManager> physics2DManager;
 extern std::shared_ptr<Collision2DManager> collision2DManager;
-extern std::shared_ptr<LevelEditor> levelEditor;
+extern std::shared_ptr<LayerManager> layerManager;
+extern std::shared_ptr<EditorManager> editorManager;
 extern std::shared_ptr<AudioManager> audioManager;
 extern std::shared_ptr<SerializationManager> serializationManager;
 extern std::shared_ptr<DialogManager> dialogManager;
 extern std::shared_ptr<AIManager> aiManager;
+extern std::shared_ptr<LogicSystem> logicSystem;
+extern std::shared_ptr<ShadowManager> shadowManager;
+extern std::shared_ptr<ButtonManager> buttonManager;
 
 /*!*****************************************************************************
 \brief
@@ -69,12 +75,15 @@ private:
 	static void RegisterSheetAnimator();
 	static void RegisterPhysics2DManager();
 	static void RegisterCollision2DManager();
-	static void RegisterPlayerController();
-	static void RegisterLevelEditor();
+	static void RegisterLayerManager();
+	static void RegisterEditorManager();
 	static void RegisterAudioManager();
 	static void RegisterSerializationManager();
 	static void RegisterDialogManager();
 	static void RegisterAIManager();
+	static void RegisterLogicSystem();
+	static void RegisterShadowManager();
+	static void RegisterButtonManager();
 	
 	// More to come
 

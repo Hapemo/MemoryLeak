@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue, Chen Jia Wen
 \par DP email: j.teoh\@digipen.edu, c.jiawen\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 This file contains the implementation of 2D vector and it's operations
 *******************************************************************************/
@@ -62,6 +62,10 @@ namespace Math {
     return { -x, -y };
   }
 
+    float& Vec2::operator[](int index){
+        return (index == 0) ? this->x : this->y;
+    }
+
   Vec2& Vec2::Normalize() {
     return *this /= this->Magnitude();
   }
@@ -109,6 +113,18 @@ namespace Math {
 
   float Dot(const Vec2& _lhs, const Vec2& _rhs) {
     return _lhs.x * _rhs.x + _lhs.y * _rhs.y;
+  }
+
+  float Cross(const Vec2& _lhs, const Vec2& _rhs) {
+      return _lhs.x * _rhs.y - _lhs.y * _rhs.x;
+  }
+
+  Vec2 Cross(const Vec2& _lhs, float scalar) {
+      return Vec2{ scalar * _lhs.y, -scalar * _lhs.x };
+  }
+
+  Vec2 Cross(float scalar, const Vec2& _lhs) {
+      return Vec2{ -scalar * _lhs.y, scalar * _lhs.x };
   }
 
   float Distance(const Vec2& _lhs, const Vec2& _rhs) {

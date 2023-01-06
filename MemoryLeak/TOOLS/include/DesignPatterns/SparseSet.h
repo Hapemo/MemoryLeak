@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 SparseSet is a design pattern that contains 2 arrays, one shallow one dense.
 Shallow array contains key pointing to addresses in dense array
@@ -22,7 +22,7 @@ template<typename T>
 class SparseSet {
 private:
 	using DataType = T; // Container's data
-	using IndexType = short; // Index unit for pairing
+	using IndexType = long long int; // Index unit for pairing
 	// Data's ID must be convertable to int.
 	
 public:
@@ -104,6 +104,7 @@ SparseSet<T>::SparseSet(int _size) : mSize(_size), emptyID(INT_MAX), mCapacity(0
 template<typename T>
 SparseSet<T>::DataType& SparseSet<T>::operator[](IndexType const& _index) {
 	int deepID{ mShallow[static_cast<int>(_index)] };
+	BREAKPOINT(deepID == emptyID); // If ECS breaks here, means you're trying to access or delete a component but it the entity doesn't have it
 	ASSERT(deepID == emptyID, "SparseSet cannot find ID: " + std::to_string(deepID));
 	return mDense[deepID];
 }
@@ -111,6 +112,7 @@ SparseSet<T>::DataType& SparseSet<T>::operator[](IndexType const& _index) {
 template<typename T>
 void SparseSet<T>::RemoveData(IndexType const& _index) {
 	int& deepID{ mShallow[static_cast<int>(_index)] };
+	BREAKPOINT(deepID == emptyID);
 	ASSERT(deepID == emptyID, "SparseSet cannot find ID: " + std::to_string(deepID));
 
 	--mCapacity;

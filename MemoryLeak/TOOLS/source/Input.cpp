@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 Input detects keyboard and mouse input states and returns that to caller
 *******************************************************************************/
@@ -14,6 +14,8 @@ std::array<bool, 324> Input::mPrevKeyStates;
 int Input::mStartingIndex{ 32 };
 int Input::mTotalMouseKey{ 8 };
 int Input::mMaxKeyboardIndex{ 348 };
+double Input::mScrollTotal{ 0 };
+double Input::mScrollOffset{ 0 };
 GLFWwindow* Input::mWindow;
 GLFWcursor* Input::mCursor;
 
@@ -21,6 +23,7 @@ void Input::Init(GLFWwindow* _window) {
   mWindow = _window;
 
   glfwSetInputMode(mWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+  glfwSetScrollCallback(mWindow, scroll_callback);
  }
 
 bool Input::CheckKey(E_STATE state, E_KEY key) {
@@ -55,7 +58,9 @@ bool Input::CheckKey(E_STATE state, E_KEY key) {
     }
 
    default:
+#ifdef NDEBUG
     std::cout << "Invalid current keyId: " + std::to_string((int)key) + " | with current state: " + std::to_string(glfwGetKey(mWindow, (int)key)) << '\n';
+#endif
     assert(0 && "Invalid current key pressed");
 
   }
@@ -68,6 +73,7 @@ void Input::UpdatePrevKeyStates() {
   for (int i = static_cast<int>(sizeof(mPrevKeyStates)) - mTotalMouseKey + 1, j = 0; i < static_cast<int>(sizeof(mPrevKeyStates)); ++i, ++j) {
     mPrevKeyStates[i] = (bool)glfwGetMouseButton(mWindow, j);
   }
+  mScrollOffset = 0.0;
 }
 
 Math::Vec2 Input::CursorPos() {
@@ -75,5 +81,15 @@ Math::Vec2 Input::CursorPos() {
   glfwGetCursorPos(mWindow, &xpos, &ypos);
   return Math::Vec2{ static_cast<float>(xpos), static_cast<float>(ypos) };
 }
-
+void Input::scroll_callback(GLFWwindow* _window, double _xoffset, double _yoffset)
+{
+    (void)_window;
+    (void)_xoffset;
+    mScrollTotal += _yoffset;
+    mScrollOffset = _yoffset;
+}
+double Input::GetScroll()
+{
+    return mScrollOffset;
+}
 

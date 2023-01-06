@@ -36,6 +36,8 @@ None.
 void Animator::Animate(const Entity& _e)
 {
 	if (!_e.GetComponent<General>().isActive) return;
+	if (!_e.HasComponent<Sprite>()) return;
+	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<Animation>()) return;
 
 	Animation animation = _e.GetComponent<Animation>();
@@ -61,7 +63,7 @@ Component.
 \return
 None.
 *******************************************************************************/
-void AddImages(const Entity& _e, GLuint _frame, int _frameCount, float _timePerImage)
+void Animator::AddImages(const Entity& _e, GLuint _frame, int _frameCount, float _timePerImage)
 {
 	_e.GetComponent<Animation>().images.push_back(_frame);
 	_e.GetComponent<Animation>().frameCount.push_back(_frameCount);
@@ -83,16 +85,15 @@ component
 \return
 None.
 *******************************************************************************/
-void AddImages(const Entity& _e, const std::vector<GLuint>& _frames,
-	const std::vector<int>& _frameCounts, const std::vector<float>& _timePerImage)
+void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames,
+	const std::vector<int>& _frameCount, const std::vector<float>& _timePerImage)
 {
-	if (_frames.size() != _frameCounts.size() || _frameCounts.size() != _timePerImage.size() || _timePerImage.size() != _frames.size())
+	if (_frames.size() != _frameCount.size() || _frameCount.size() != _timePerImage.size() || _timePerImage.size() != _frames.size())
 	{
-		LOG_ERROR("Different sized vectors!!");
+		LOG_ERROR("Animator::AddImages - added with different sizes.");
 		return;
 	}
-
 	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
-	_e.GetComponent<Animation>().frameCount.insert(_e.GetComponent<Animation>().frameCount.end(), _frameCounts.begin(), _frameCounts.end());
+	_e.GetComponent<Animation>().frameCount.insert(_e.GetComponent<Animation>().frameCount.end(), _frameCount.begin(), _frameCount.end());
 	_e.GetComponent<Animation>().timePerImage.insert(_e.GetComponent<Animation>().timePerImage.end(), _timePerImage.begin(), _timePerImage.end());
 }

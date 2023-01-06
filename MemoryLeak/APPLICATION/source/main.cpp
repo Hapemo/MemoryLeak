@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue, Chen Jia Wen
 \par DP email: j.teoh\@digipen.edu, c.jiawen\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 main file of the whole program
 *******************************************************************************/
@@ -45,7 +45,9 @@ void real_main() {
 
     // Part 2
     while (!glfwWindowShouldClose(Application::getWindow())) {
-        GameStateManager::GetInstance()->Update();
+      Application::MainUpdate();
+        //GameStateManager::GetInstance()->Update();
+        //if (GameStateManager::GetInstance()->GetNextGS() == E_GS::EXIT) break;
     }
 
     // Part 3
@@ -67,5 +69,6 @@ int main() {
     catch (const std::exception& e) {
         std::string exc = e.what();
         LOG_CRASH("The program has caught an exception: " + exc);
+        Logger::GetInstance()->EndRun();
     }
 }

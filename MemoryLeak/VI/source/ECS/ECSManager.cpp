@@ -3,7 +3,7 @@
 \author Jazz Teoh Yu Jue
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
-\date 24-09-2022
+\date 27-11-2022
 \brief
 This file contains the initialisation of ECS system. Registering all systems and
 components.
@@ -17,14 +17,18 @@ std::shared_ptr<SpriteManager> spriteManager{ nullptr };
 std::shared_ptr<RenderManager> renderManager{ nullptr };
 std::shared_ptr<Physics2DManager> physics2DManager{ nullptr };
 std::shared_ptr<Collision2DManager> collision2DManager{ nullptr };
-std::shared_ptr<PlayerController> playerManager{ nullptr };
-std::shared_ptr<LevelEditor> levelEditor{ nullptr };
+std::shared_ptr<LayerManager> layerManager{ nullptr };
+std::shared_ptr<EditorManager> editorManager{ nullptr };
 std::shared_ptr<Animator> animator{ nullptr };
 std::shared_ptr<SheetAnimator> sheetAnimator{ nullptr };
 std::shared_ptr<AudioManager> audioManager{ nullptr };
 std::shared_ptr<SerializationManager> serializationManager{ nullptr };
 std::shared_ptr<DialogManager> dialogManager{ nullptr };
 std::shared_ptr<AIManager> aiManager{ nullptr };
+std::shared_ptr<LogicSystem> logicSystem{ nullptr };
+std::shared_ptr<ShadowManager> shadowManager{ nullptr };
+std::shared_ptr<ButtonManager> buttonManager{ nullptr };
+
 //----------------------------------------------------------------
 // Register Managers
 //----------------------------------------------------------------
@@ -59,7 +63,6 @@ void ECSManager::RegisterRenderManager() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
 	signature.set(ECS::GetComponentType<Transform>());
-	signature.set(ECS::GetComponentType<Sprite>());
 
 	renderManager = ECS::RegisterSystem<RenderManager>();
 	ECS::SetSystemSignature<RenderManager>(signature);
@@ -67,7 +70,6 @@ void ECSManager::RegisterRenderManager() {
 
 void ECSManager::RegisterPhysics2DManager() {
 	Signature signature{};
-	signature.set(ECS::GetComponentType<General>());
 	signature.set(ECS::GetComponentType<Physics2D>());
 
 	physics2DManager = ECS::RegisterSystem<Physics2DManager>();
@@ -77,27 +79,25 @@ void ECSManager::RegisterPhysics2DManager() {
 void ECSManager::RegisterCollision2DManager() {
 	Signature signature{};
 	signature.set(ECS::GetComponentType<General>());
-	//signature.set(ECS::GetComponentType<RectCollider>());
-	//signature.set(ECS::GetComponentType<CircleCollider>());
 
 	collision2DManager = ECS::RegisterSystem<Collision2DManager>();
 	ECS::SetSystemSignature<Collision2DManager>(signature);
 }
 
-void ECSManager::RegisterPlayerController() {
+void ECSManager::RegisterLayerManager() {
 	Signature signature{};
-	signature.set(ECS::GetComponentType<PlayerTmp>());
+	signature.set(ECS::GetComponentType<LayerCollider>());
 
-	playerManager = ECS::RegisterSystem<PlayerController>();
-	ECS::SetSystemSignature<PlayerController>(signature);
+	layerManager = ECS::RegisterSystem<LayerManager>();
+	ECS::SetSystemSignature<LayerManager>(signature);
 }
 
-void ECSManager::RegisterLevelEditor() {
+void ECSManager::RegisterEditorManager() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
 
-	levelEditor = ECS::RegisterSystem<LevelEditor>();
-	ECS::SetSystemSignature<LevelEditor>(signature);
+	editorManager = ECS::RegisterSystem<EditorManager>();
+	ECS::SetSystemSignature<EditorManager>(signature);
 }
 
 void ECSManager::RegisterAudioManager() {
@@ -126,7 +126,7 @@ void ECSManager::RegisterDialogManager() {
 void ECSManager::RegisterAIManager() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
-	signature.set(ECS::GetComponentType<Stuff>());
+	signature.set(ECS::GetComponentType<AI>());
 
 	aiManager = ECS::RegisterSystem<AIManager>();
 	ECS::SetSystemSignature<AIManager>(signature);
@@ -149,6 +149,32 @@ void ECSManager::RegisterSheetAnimator() {
 	sheetAnimator = ECS::RegisterSystem<SheetAnimator>();
 	ECS::SetSystemSignature<SheetAnimator>(signature);
 }
+
+void ECSManager::RegisterLogicSystem() {
+	Signature signature;
+	signature.set(ECS::GetComponentType<Script>());
+
+	logicSystem = ECS::RegisterSystem<LogicSystem>();
+	ECS::SetSystemSignature<LogicSystem>(signature);
+}
+	
+void ECSManager::RegisterShadowManager() {
+	Signature signature;
+	signature.set(ECS::GetComponentType<General>());
+	signature.set(ECS::GetComponentType<Sprite>());
+
+	shadowManager = ECS::RegisterSystem<ShadowManager>();
+	ECS::SetSystemSignature<ShadowManager>(signature);
+}
+
+void ECSManager::RegisterButtonManager() {
+	Signature signature;
+	signature.set(ECS::GetComponentType<General>());
+	signature.set(ECS::GetComponentType<Button>());
+
+	buttonManager = ECS::RegisterSystem<ButtonManager>();
+	ECS::SetSystemSignature<ButtonManager>(signature);
+}
 //----------------------------------------------------------------
 // ECSManager Functions
 //----------------------------------------------------------------
@@ -159,14 +185,18 @@ void ECSManager::RegisterAllSystems() {
 	RegisterRenderManager();
 	RegisterAnimator();
 	RegisterSheetAnimator();
-	RegisterPlayerController();
 	RegisterPhysics2DManager();
 	RegisterCollision2DManager();
-	RegisterLevelEditor();
+	RegisterLayerManager();
+	//RegisterPlayerController();
+	RegisterEditorManager();
 	RegisterAudioManager();
 	RegisterSerializationManager();
 	RegisterDialogManager();
 	RegisterAIManager();
+	RegisterLogicSystem();
+	RegisterShadowManager();
+	RegisterButtonManager();
 	// More to come
 }
 
@@ -178,14 +208,19 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Animation>();
 	ECS::RegisterComponent<SheetAnimation>();
 	ECS::RegisterComponent<Physics2D>();
-	ECS::RegisterComponent<CircleCollider>();
 	ECS::RegisterComponent<RectCollider>();
+	ECS::RegisterComponent<CircleCollider>();
 	ECS::RegisterComponent<Edge2DCollider>();
 	ECS::RegisterComponent<Point2DCollider>();
-	ECS::RegisterComponent<PlayerTmp>();
-	ECS::RegisterComponent<Stuff>();
+	ECS::RegisterComponent<LayerCollider>();
+	//ECS::RegisterComponent<PlayerTmp>();
+	ECS::RegisterComponent<AI>();
 	ECS::RegisterComponent<Audio>();
 	ECS::RegisterComponent<Text>();
+	ECS::RegisterComponent<Script>();
+	ECS::RegisterComponent<Dialogue>();
+	ECS::RegisterComponent<LightSource>();
+	ECS::RegisterComponent<Button>();
 	// More to come
 }
 

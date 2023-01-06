@@ -1,0 +1,7 @@
+Debug and Release will build the game in game mode respectively.
+EditorDebug and EditorRelease will do that in editor mode.
+
+Debug and EditorDebug will show the win console and print the debugging logs.
+
+macro _EDITOR = 1 when it's in EditorDebug/EditorRelease mode
+macro _DEBUG = 1 when it's in Debug/EditorDebug mode

@@ -1,0 +1,121 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Hey, are you a frequent visitor of this place?",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "While I was passing by on my way earlier, something caught my attention!",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "I was thinking if you could guide me there.",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 5
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "What caught your attention?",
+   "Speaker": 1,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "Why do you want to go there?",
+   "Speaker": 1,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "No matter where I looked, it was just water everywhere...",
+   "Speaker": 0,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "But all of a sudden, I saw these flashes of light before my eyes!",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 11
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "I was intrigued by the way the lights were moving from a distance!",
+   "Speaker": 0,
+   "Next Dialogue": 9,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "Even though it is just a single structure, it illuminated most of the paths around it.",
+   "Speaker": 0,
+   "Next Dialogue": 14,
+   "Next Dialogue(2)": 15
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "Flashes of light?",
+   "Speaker": 1,
+   "Next Dialogue": 12,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "I suppose the flashes of light piqued your interest.",
+   "Speaker": 1,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 12,
+   "Dialogue Text": "Yeah! Always rotating its direction. I thought it was pretty cool.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 13,
+   "Dialogue Text": "Well, most of the lights here come from the houses surrounding it so when I finally saw something moved, I thought, I really had to find its source!",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 14,
+   "Dialogue Text": "Do you remember seeing any paths nearby?",
+   "Speaker": 1,
+   "Next Dialogue": 16,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 15,
+   "Dialogue Text": "I can see why you're intrigued",
+   "Speaker": 1,
+   "Next Dialogue": 17,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 16,
+   "Dialogue Text": "Hm, based on how far I could see, I suppose there was a really pretty house with a dome nearby.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 17,
+   "Dialogue Text": "Indeed! It reminded me of the way one single person could become a pillar of support for others. Just like this structure!",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
