@@ -221,6 +221,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Dialogue>();
 	ECS::RegisterComponent<LightSource>();
 	ECS::RegisterComponent<Button>();
+	ECS::RegisterComponent<ShadowCaster>();
 	// More to come
 }
 

@@ -16,16 +16,16 @@ Added adding and removing of entity
 #include "LogicSystem.h"
 
 
-Scene::Scene() : mEntities(), mIsPause(false), mName(), mCamera(), mLayer(), mOrder() {
+Scene::Scene() : mEntities(), mIsPause(false), mName(), /*mCamera(),*/ mLayer(), mOrder() {
 	LOG_CUSTOM("SCENE", "New Scene created with no name");
 }
 
-Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), mIsPause(false), mName(), mCamera(), mLayer(), mOrder() {
+Scene::Scene(ResourceManager::GUID const& _guid) : mEntities(), mIsPause(false), mName(),/* mCamera(),*/ mLayer(), mOrder() {
 	(void)_guid;
 	LOG_CUSTOM("SCENE", "New Scene created with no name");
 }
 
-Scene::Scene(std::string const& _name) : mEntities(), mIsPause(false), mName(_name), mCamera(), mLayer(), mOrder() {
+Scene::Scene(std::string const& _name) : mEntities(), mIsPause(false), mName(_name),/* mCamera(),*/ mLayer(), mOrder() {
 	(void)_name;
 	LOG_CUSTOM("SCENE", "Scene created with name: " + mName);
 }
@@ -62,17 +62,17 @@ void Scene::Pause(bool _pause) {
 	for (auto& e : mEntities)
 		e.GetComponent<General>().isPaused = _pause;
 	mIsPause = _pause; 
-	Camera& cam = renderManager->GetGameCamera();
-	if (mIsPause)
-	{
-		mCamera = { { cam.GetCameraWidth(), cam.GetCameraHeight() }, mCamera.rotation, cam.GetPos() };
-		renderManager->GetGameCamera().Reset();
-	}
-	else
-	{
-		renderManager->GetGameCamera().SetCameraWidth((int)mCamera.scale.x);
-		renderManager->GetGameCamera().SetPos(mCamera.translation);
-	}
+	/*Camera& cam = renderManager->GetGameCamera();*/
+	//if (mIsPause)
+	//{
+	//	mCamera = { { cam.GetCameraWidth(), cam.GetCameraHeight() }, mCamera.rotation, cam.GetPos() };
+	//	renderManager->GetGameCamera().Reset();
+	//}
+	//else
+	//{
+	//	renderManager->GetGameCamera().SetCameraWidth((int)mCamera.scale.x);
+	//	renderManager->GetGameCamera().SetPos(mCamera.translation);
+	//}
 }
 
 void Scene::Load(std::filesystem::path const& _path) {
@@ -100,7 +100,7 @@ void Scene::Unload() {
 	mEntities.clear();
 	mIsPause = false;
 	mName = decltype(mName)();
-	mCamera = decltype(mCamera)();
+	//mCamera = decltype(mCamera)();
 	mLayer = decltype(mLayer)();
 	mOrder = decltype(mOrder)();
 }

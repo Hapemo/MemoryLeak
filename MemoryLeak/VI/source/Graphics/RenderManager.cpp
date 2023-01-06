@@ -44,6 +44,7 @@ RenderManager::RenderManager()
 	InitializeShaders();
 	mDebug = false;
 	mRenderLayers.reserve(255);
+	mIsCurrSceneUI = false;
 }
 
 /*!*****************************************************************************
@@ -77,14 +78,14 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
-	GameState* gs = GameStateManager::GetInstance()->mCurrentGameState;
+	gs = GameStateManager::GetInstance()->mCurrentGameState;
 
 	if (gs)
 	{
-		mGameCam.SetCameraWidth((int)gs->mCamera.scale.x);
-		mGameCam.SetPos(gs->mCamera.translation);
-		gs->mCamera.scale.y = mGameCam.GetCameraHeight();
-		gs->mCamera.rotation = 1.f / mGameCam.GetZoom();
+		mGameCam.SetCameraWidth((int)reinterpret_cast<GameState*>(gs)->mCamera.scale.x);
+		mGameCam.SetPos(reinterpret_cast<GameState*>(gs)->mCamera.translation);
+		reinterpret_cast<GameState*>(gs)->mCamera.scale.y = mGameCam.GetCameraHeight();
+		reinterpret_cast<GameState*>(gs)->mCamera.rotation = 1.f / mGameCam.GetZoom();
 	}
 
 	if (mPrevWidth != *mWindowWidth)
@@ -270,103 +271,114 @@ void RenderManager::RenderDebug()
 		t.scale = { t.scale.y, t.scale.x };
 		CreateDebugLine(t, blue);
 	}
-	for (const Entity& e : mEntities)
+	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
 	{
-		if (!e.GetComponent<General>().isActive) continue;
-		if (!e.ShouldRun()) continue;
+		if (scene.mIsPause) continue;
 
-		//check if entity has any of these physics components
-		if (e.HasComponent<Point2DCollider>() && e.GetComponent<Point2DCollider>().renderFlag)
-		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale = { 0, 0 };
-			t.rotation = 0;
-			t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x, 
-				e.GetComponent<Point2DCollider>().centerOffset.y);
-			CreateDebugSquare(t, {0, 255, 0, 255});
-		}
+		if (scene.mIsUI && mCurrRenderPass != RENDER_STATE::WORLD)
+			mIsCurrSceneUI = true;
+		else
+			mIsCurrSceneUI = false;
 
-		if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
+		for (Entity e : scene.mEntities)
 		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale = { e.GetComponent<Edge2DCollider>().scaleOffset };
-			t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
-			t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
-				e.GetComponent<Edge2DCollider>().p0Offset.y);
-			CreateDebugLine(t, {0, 255, 0, 255});
-		}
+			if (!e.GetComponent<General>().isActive) continue;
+			if (!e.ShouldRun()) continue;
 
-		if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
-		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;
-			t.scale.y *= e.GetComponent<RectCollider>().scaleOffset.y;
-			t.rotation = 0;
-			t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
-				e.GetComponent<RectCollider>().centerOffset.y);
-			CreateDebugSquare(t, {0, 255, 0, 255});
-		}
+			//check if entity has any of these physics components
+			if (e.HasComponent<Point2DCollider>() && e.GetComponent<Point2DCollider>().renderFlag)
+			{
+				Transform t = e.GetComponent<Transform>();
+				t.scale = { 0, 0 };
+				t.rotation = 0;
+				t.translation += Math::Vec2(e.GetComponent<Point2DCollider>().centerOffset.x,
+					e.GetComponent<Point2DCollider>().centerOffset.y);
+				CreateDebugSquare(t, { 0, 255, 0, 255 });
+			}
 
-		if (e.HasComponent<LayerCollider>() && e.GetComponent<LayerCollider>().renderFlag)
-		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale.x *= e.GetComponent<LayerCollider>().scaleOffset.x;
-			t.scale.y *= e.GetComponent<LayerCollider>().scaleOffset.y;
-			t.rotation = 0;
-			t.translation += Math::Vec2(e.GetComponent<LayerCollider>().centerOffset.x,
-				e.GetComponent<LayerCollider>().centerOffset.y);
-			CreateDebugSquare(t, { 255, 150, 0, 255 });
-		}
+			if (e.HasComponent<Edge2DCollider>() && e.GetComponent<Edge2DCollider>().renderFlag)
+			{
+				Transform t = e.GetComponent<Transform>();
+				t.scale = { e.GetComponent<Edge2DCollider>().scaleOffset };
+				t.rotation += e.GetComponent<Edge2DCollider>().rotationOffset;
+				t.translation += Math::Vec2(e.GetComponent<Edge2DCollider>().p0Offset.x,
+					e.GetComponent<Edge2DCollider>().p0Offset.y);
+				CreateDebugLine(t, { 0, 255, 0, 255 });
+			}
 
-		if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
-		{
-			Transform t = e.GetComponent<Transform>();
-			t.scale = Math::Vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
-			t.rotation = 0;
-			t.translation += Math::Vec2(e.GetComponent<CircleCollider>().centerOffset.x,
-				e.GetComponent<CircleCollider>().centerOffset.y);
-			CreateDebugCircle(t, { 0,255,0,255 });
-		}
+			if (e.HasComponent<RectCollider>() && e.GetComponent<RectCollider>().renderFlag)
+			{
+				Transform t = e.GetComponent<Transform>();
+				t.scale.x *= e.GetComponent<RectCollider>().scaleOffset.x;
+				t.scale.y *= e.GetComponent<RectCollider>().scaleOffset.y;
+				t.rotation = 0;
+				t.translation += Math::Vec2(e.GetComponent<RectCollider>().centerOffset.x,
+					e.GetComponent<RectCollider>().centerOffset.y);
+				CreateDebugSquare(t, { 0, 255, 0, 255 });
+			}
 
-		if (e.HasComponent<Physics2D>() && e.GetComponent<Physics2D>().renderFlag)
-		{
-			Physics2D &p2d = e.GetComponent<Physics2D>();
-			Transform t = e.GetComponent<Transform>();
-			t.scale = Math::Vec2(p2d.velocity.Magnitude()) * mVectorLengthModifier;
-			if (p2d.velocity.y != 0.f && p2d.velocity.x >= 0.f)
-				t.rotation = atan2f(p2d.velocity.y, p2d.velocity.x);
-			else if (p2d.velocity.y == 0.f && p2d.velocity.x > 0.f)
-				t.rotation = (float)Math::PI / 2.f;
-			else if (p2d.velocity.y != 0.f && p2d.velocity.x < 0.f)
-				t.rotation = (float)Math::PI * 2.f + atan2f(p2d.velocity.y, p2d.velocity.x);
-			else
-				t.rotation = 3.f * (float)Math::PI / 2.f;
-			CreateDebugArrow(t, {0, 255, 0, 255});
-		}
+			if (e.HasComponent<LayerCollider>() && e.GetComponent<LayerCollider>().renderFlag)
+			{
+				Transform t = e.GetComponent<Transform>();
+				t.scale.x *= e.GetComponent<LayerCollider>().scaleOffset.x;
+				t.scale.y *= e.GetComponent<LayerCollider>().scaleOffset.y;
+				t.rotation = 0;
+				t.translation += Math::Vec2(e.GetComponent<LayerCollider>().centerOffset.x,
+					e.GetComponent<LayerCollider>().centerOffset.y);
+				CreateDebugSquare(t, { 255, 150, 0, 255 });
+			}
 
-		//check if sprite component itself is a debug drawing
-		if (!e.HasComponent<Sprite>()) continue;
-		switch (e.GetComponent<Sprite>().sprite)
-		{
-		case SPRITE::DEBUG_POINT:
-			CreateDebugPoint(e);
-			break;
-		case SPRITE::DEBUG_LINE:
-			CreateDebugLine(e);
-			break;
-		case SPRITE::DEBUG_SQUARE:
-			CreateDebugSquare(e);
-			break;
-		case SPRITE::DEBUG_CIRCLE:
-			CreateDebugCircle(e);
-			break;
-		case SPRITE::DEBUG_ARROW:
-			CreateDebugArrow(e);
-			break;
-		default:
-			continue;
+			if (e.HasComponent<CircleCollider>() && e.GetComponent<CircleCollider>().renderFlag)
+			{
+				Transform t = e.GetComponent<Transform>();
+				t.scale = Math::Vec2(std::max(t.scale.x, t.scale.y) * e.GetComponent<CircleCollider>().scaleOffset);
+				t.rotation = 0;
+				t.translation += Math::Vec2(e.GetComponent<CircleCollider>().centerOffset.x,
+					e.GetComponent<CircleCollider>().centerOffset.y);
+				CreateDebugCircle(t, { 0,255,0,255 });
+			}
+
+			if (e.HasComponent<Physics2D>() && e.GetComponent<Physics2D>().renderFlag)
+			{
+				Physics2D& p2d = e.GetComponent<Physics2D>();
+				Transform t = e.GetComponent<Transform>();
+				t.scale = Math::Vec2(p2d.velocity.Magnitude()) * mVectorLengthModifier;
+				if (p2d.velocity.y != 0.f && p2d.velocity.x >= 0.f)
+					t.rotation = atan2f(p2d.velocity.y, p2d.velocity.x);
+				else if (p2d.velocity.y == 0.f && p2d.velocity.x > 0.f)
+					t.rotation = (float)Math::PI / 2.f;
+				else if (p2d.velocity.y != 0.f && p2d.velocity.x < 0.f)
+					t.rotation = (float)Math::PI * 2.f + atan2f(p2d.velocity.y, p2d.velocity.x);
+				else
+					t.rotation = 3.f * (float)Math::PI / 2.f;
+				CreateDebugArrow(t, { 0, 255, 0, 255 });
+			}
+
+			//check if sprite component itself is a debug drawing
+			if (!e.HasComponent<Sprite>()) continue;
+			switch (e.GetComponent<Sprite>().sprite)
+			{
+			case SPRITE::DEBUG_POINT:
+				CreateDebugPoint(e);
+				break;
+			case SPRITE::DEBUG_LINE:
+				CreateDebugLine(e);
+				break;
+			case SPRITE::DEBUG_SQUARE:
+				CreateDebugSquare(e);
+				break;
+			case SPRITE::DEBUG_CIRCLE:
+				CreateDebugCircle(e);
+				break;
+			case SPRITE::DEBUG_ARROW:
+				CreateDebugArrow(e);
+				break;
+			default:
+				continue;
+			}
 		}
 	}
+
 
 	//make overlay for selected entities in the editor
 	for (const Entity& e : mEditorSelectedEntities)
@@ -464,55 +476,64 @@ Creating vertices from the ECS.
 *******************************************************************************/
 void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>&_texInfo)
 {
-	for (const Entity& e : mEntities)
+	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
 	{
-		if (!e.GetComponent<General>().isActive) continue;
-		if (!e.ShouldRun()) continue;
-		if (ShouldCull(e)) continue;
+		if (scene.mIsPause) continue;
 
-		if (e.HasComponent<Sprite>())
+		if (scene.mIsUI)
+			mIsCurrSceneUI = true;
+		else
+			mIsCurrSceneUI = false;
+
+		for (Entity e : scene.mEntities)
 		{
-			//if (e.GetComponent<General>().name == "Minimap")
-			//{
-			//	minimap = e;
-			//	continue;
-			//}
-			Sprite sprite = e.GetComponent<Sprite>();
-			if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer) == mRenderLayers.end())
-				mRenderLayers.push_back(sprite.layer);
+			if (!e.GetComponent<General>().isActive) continue;
+			if (!e.ShouldRun()) continue;
+			if (ShouldCull(e)) continue;
 
-			switch (sprite.sprite)
+			if (e.HasComponent<Sprite>())
 			{
-			case SPRITE::TEXTURE:
-			{
-				GLuint texid = sprite.texture;
+				//if (e.GetComponent<General>().name == "Minimap")
+				//{
+				//	minimap = e;
+				//	continue;
+				//}
+				Sprite sprite = e.GetComponent<Sprite>();
+				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer) == mRenderLayers.end())
+					mRenderLayers.push_back(sprite.layer);
 
-				if (texid != 0)
+				switch (sprite.sprite)
 				{
-					if (_texInfo.find(sprite.layer) == _texInfo.end())
-						_texInfo[sprite.layer] = std::map<GLuint, TextureInfo>();
-					if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
-						_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+				case SPRITE::TEXTURE:
+				{
+					GLuint texid = sprite.texture;
 
-					CreateSquare(e, _texInfo[sprite.layer][texid].mVertices, _texInfo[sprite.layer][texid].mIndices);
+					if (texid != 0)
+					{
+						if (_texInfo.find(sprite.layer) == _texInfo.end())
+							_texInfo[sprite.layer] = std::map<GLuint, TextureInfo>();
+						if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
+							_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+						CreateSquare(e, _texInfo[sprite.layer][texid].mVertices, _texInfo[sprite.layer][texid].mIndices);
+					}
+				}
+				break;
+				case SPRITE::SQUARE:
+					CreateSquare(e, mVertices[sprite.layer], mIndices[sprite.layer]);
+					break;
+				case SPRITE::CIRCLE:
+					CreateCircle(e);
+					break;
+				default:
+					break;
 				}
 			}
-			break;
-			case SPRITE::SQUARE:
-				CreateSquare(e, mVertices[sprite.layer], mIndices[sprite.layer]);
-				break;
-			case SPRITE::CIRCLE:
-				CreateCircle(e);
-				break;
-			default:
-				break;
-			}
+
+			if (!e.HasComponent<Text>()) continue;
+			CreateText(e);
 		}
-
-		if (!e.HasComponent<Text>()) continue;
-		CreateText(e);
 	}
-
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		CreateGizmo();
 
@@ -1116,6 +1137,9 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	float cosRot = cosf(_rotate);
 	float sinRot = sinf(_rotate);
 
+	Math::Vec2 camPos = mIsCurrSceneUI ? Math::Vec2{0, 0} : cam.GetPos();
+	float camZoom = mIsCurrSceneUI ? 1.f : cam.GetZoom();
+
 	Math::Mat3 temp
 	{
 		Math::Vec3(_scale.x * cosRot, _scale.x * sinRot, 0.f),
@@ -1123,15 +1147,15 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 		Math::Vec3(_translate.x, _translate.y, 1.f)
 	};
 
-	temp[2][0] -= cam.GetPos().x;
-	temp[2][1] -= cam.GetPos().y;
+	temp[2][0] -= camPos.x;
+	temp[2][1] -= camPos.y;
 
-	temp[0][0] /= (float)mInitialWidth* cam.GetZoom();
-	temp[0][1] /= (float)mInitialHeight* cam.GetZoom();
-	temp[1][0] /= (float)mInitialWidth* cam.GetZoom();
-	temp[1][1] /= (float)mInitialHeight* cam.GetZoom();
-	temp[2][0] /= (float)mInitialWidth/ 2.f * cam.GetZoom();
-	temp[2][1] /= (float)mInitialHeight/ 2.f * cam.GetZoom();
+	temp[0][0] /= (float)mInitialWidth* camZoom;
+	temp[0][1] /= (float)mInitialHeight* camZoom;
+	temp[1][0] /= (float)mInitialWidth* camZoom;
+	temp[1][1] /= (float)mInitialHeight* camZoom;
+	temp[2][0] /= (float)mInitialWidth/ 2.f * camZoom;
+	temp[2][1] /= (float)mInitialHeight/ 2.f * camZoom;
 
 	return temp;
 }

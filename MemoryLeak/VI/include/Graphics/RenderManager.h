@@ -252,6 +252,8 @@ public:
 	bool ShouldCull(const Entity& e);
 
 private:
+	void* gs;
+	bool mIsCurrSceneUI;
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam, mAnimatorCam;
 	std::unordered_map<std::string, FontRenderer> mFontRenderers;
