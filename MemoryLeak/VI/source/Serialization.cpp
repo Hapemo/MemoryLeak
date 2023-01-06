@@ -118,6 +118,7 @@ void SerializationManager::LoadScene(std::string _filename)
 			a = entity["Animation"]["images"].GetArray();
 			for (int j = 0; j < (int)a.Size(); ++j)
 			{
+<<<<<<< Updated upstream
 				GLuint tex = spriteManager->GetTextureID(a[j].GetString());
 				images.push_back(tex);
 			}
@@ -133,6 +134,50 @@ void SerializationManager::LoadScene(std::string _filename)
 			float timePerImage = entity["SheetAnimation"]["timePerFrame"].GetFloat();
 			float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
 			e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
+=======
+				int colorChange = entity["AI"]["colorChange"].GetInt();
+				int movement = entity["AI"]["movement"].GetInt();
+				float speed = entity["AI"]["speed"].GetFloat();
+				float range = entity["AI"]["range"].GetFloat();
+
+				e.AddComponent<AI>({ colorChange ,movement, speed , range });
+			}
+			if (entity.HasMember("Text")) {
+				Text text;
+				text.fontFile = entity["Text"]["fontFile"].GetString();
+				text.text = entity["Text"]["text"].GetString();
+				text.offset = GetVec2(entity["Text"]["offset"]);
+				text.scale = entity["Text"]["scale"].GetFloat();
+				text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+				text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+				text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+				text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+				e.AddComponent<Text>(text);
+			}
+			if (entity.HasMember("Dialogue")) {
+				Dialogue dialogue;
+				dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+				dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
+				dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+				dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+				e.AddComponent<Dialogue>(dialogue);
+			}
+			if (entity.HasMember("LightSource")) {
+				LightSource lightSource;
+				lightSource.centerOffset = GetVec2(entity["LightSource"]["centerOffset"]);
+				e.AddComponent<LightSource>(lightSource);
+			}
+			if (entity.HasMember("Script")) {
+				Script script;
+				script.name = entity["Script"]["name"].GetString();
+				//script.script = nullptr;
+
+				e.AddComponent<Script>(script);
+			}
+			//mEntities.insert(e);
+			_sceneData.mEntities.insert(e);
+			i++;
+>>>>>>> Stashed changes
 		}
 		if (entity.HasMember("Physics2D"))
 		{
@@ -203,6 +248,88 @@ void SerializationManager::LoadScene(std::string _filename)
 		i++;
 	}
 }
+<<<<<<< Updated upstream
+=======
+Point2DCollider SerializationManager::getPoint2DCollider(Value& entity)
+{
+	Point2DCollider point2DCollider;
+	point2DCollider.centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
+	point2DCollider.renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
+	return point2DCollider;
+}
+Audio SerializationManager::getAudio(Value& entity)
+{
+	Audio audio;
+	Sound sound;
+	sound.path = entity["Audio"]["path"].GetString();
+	sound.volume = entity["Audio"]["volume"].GetFloat();
+	sound.volumeMod = entity["Audio"]["volumeMod"].GetFloat();
+	sound.pitch = entity["Audio"]["pitch"].GetFloat();
+	sound.isPaused = entity["Audio"]["isPaused"].GetBool();
+	sound.isMute = entity["Audio"]["isMute"].GetBool();
+	sound.isLoop = entity["Audio"]["isLoop"].GetBool();
+	sound.isRandPitch = entity["Audio"]["isRandPitch"].GetBool();
+	audio.sound = sound;
+	audio.isSpacial = entity["Audio"]["isSpacial"].GetBool();
+	return audio;
+}
+AI SerializationManager::getAI(Value& entity)
+{
+	AI ai;
+	ai.colorChange = entity["AI"]["colorChange"].GetInt();
+	ai.movement = entity["AI"]["movement"].GetInt();
+	ai.speed = entity["AI"]["speed"].GetFloat();
+	ai.range = entity["AI"]["range"].GetFloat();
+	return ai;
+}
+Text SerializationManager::getText(Value& entity)
+{
+	Text text;
+	text.fontFile = entity["Text"]["fontFile"].GetString();
+	text.text = entity["Text"]["text"].GetString();
+	text.offset = GetVec2(entity["Text"]["offset"]);
+	text.scale = entity["Text"]["scale"].GetFloat();
+	text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+	text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+	text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+	text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+	return text;
+}
+Dialogue SerializationManager::getDialogue(Value& entity)
+{
+	Dialogue dialogue;
+	dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+	dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
+	dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+	dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+	return dialogue;
+}
+LightSource SerializationManager::getLightSource(Value& entity)
+{
+	LightSource lightSource;
+	lightSource.centerOffset = GetVec2(entity["LightSource"]["centerOffset"]);
+	return lightSource;
+}
+Script SerializationManager::getScript(Value& entity)
+{
+	Script script;
+	script.name = entity["Script"]["name"].GetString();
+	//script.script = nullptr;
+	return script;
+}
+Button SerializationManager::getButton(Value& entity)
+{
+	Button button;
+	button.interactable = entity["Button"]["interactable"].GetBool();
+	return button;
+}
+
+
+
+
+
+
+>>>>>>> Stashed changes
 
 /*!*****************************************************************************
 \brief
@@ -458,6 +585,344 @@ void SerializationManager::SaveScene(std::string _filename)
 	else
 		LOG_INFO("Saved Scene: " + path);
 }
+<<<<<<< Updated upstream
+=======
+/*!*****************************************************************************
+\brief
+	Saves each component into rapid json
+\param scene
+	rapid jason document to add to
+\param entity
+	parent onject to add to
+\prama general
+	data to be added to the child objects
+\return
+None.
+*******************************************************************************/
+void SerializationManager::addGeneral(Document& scene, Value& entity, General general)
+{
+	Value tmp(kObjectType);
+	Value vname(general.name.c_str(), (SizeType)general.name.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("name"), vname, scene.GetAllocator());
+	tmp.AddMember(StringRef("tag"), (int)general.tag, scene.GetAllocator());
+	tmp.AddMember(StringRef("subtag"), (int)general.subtag, scene.GetAllocator());
+	tmp.AddMember(StringRef("isActive"), general.isActive, scene.GetAllocator());
+	entity.AddMember(StringRef("General"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addLifespan(Document& scene, Value& entity, Lifespan lifespan)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("limit"), lifespan.limit, scene.GetAllocator());
+	tmp.AddMember(StringRef("lifetime"), lifespan.lifetime, scene.GetAllocator());
+	entity.AddMember(StringRef("Lifespan"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addTransform(Document& scene, Value& entity, Transform transform)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "scale", transform.scale);
+	tmp.AddMember(StringRef("rotation"), transform.rotation, scene.GetAllocator());
+	addVectorMember(scene, tmp, "translation", transform.translation);
+	entity.AddMember(StringRef("Transform"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addSprite(Document& scene, Value& entity, Sprite sprite)
+{
+	Value tmp(kObjectType);
+	Value tmpc(kObjectType);
+	tmpc.AddMember(StringRef("r"), sprite.color.r, scene.GetAllocator());
+	tmpc.AddMember(StringRef("g"), sprite.color.g, scene.GetAllocator());
+	tmpc.AddMember(StringRef("b"), sprite.color.b, scene.GetAllocator());
+	tmpc.AddMember(StringRef("a"), sprite.color.a, scene.GetAllocator());
+	tmp.AddMember(StringRef("color"), tmpc, scene.GetAllocator());
+	tmp.AddMember(StringRef("sprite"), (int)sprite.sprite, scene.GetAllocator());
+	std::string tex = spriteManager->GetTexturePath(sprite.texture);
+	Value vtexture(tex.c_str(), (SizeType)tex.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("texture"), vtexture, scene.GetAllocator());
+	tmp.AddMember(StringRef("layer"), sprite.layer, scene.GetAllocator());
+	entity.AddMember(StringRef("Sprite"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addAnimation(Document& scene, Value& entity, Animation animation)
+{
+	Value tmp(kObjectType);
+	addVectorArrayStrMember(scene, tmp, "images", animation.images);
+	tmp.AddMember(StringRef("timePerImage"), animation.timePerImage, scene.GetAllocator());
+	tmp.AddMember(StringRef("timeToImageSwap"), animation.timeToImageSwap, scene.GetAllocator());
+	tmp.AddMember(StringRef("currentImageIndex"), animation.currentImageIndex, scene.GetAllocator());
+	entity.AddMember(StringRef("Animation"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addSheetAnimation(Document& scene, Value& entity, SheetAnimation sheetAnimation)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("frameCount"), sheetAnimation.frameCount, scene.GetAllocator());
+	tmp.AddMember(StringRef("currFrameIndex"), sheetAnimation.currFrameIndex, scene.GetAllocator());
+	tmp.AddMember(StringRef("timePerFrame"), sheetAnimation.timePerFrame, scene.GetAllocator());
+	tmp.AddMember(StringRef("timeToFrameSwap"), sheetAnimation.timeToFrameSwap, scene.GetAllocator());
+	entity.AddMember(StringRef("SheetAnimation"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addPhysics2D(Document& scene, Value& entity, Physics2D physics2D)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("dynamicsEnabled"), physics2D.dynamicsEnabled, scene.GetAllocator());
+	tmp.AddMember(StringRef("mass"), physics2D.mass, scene.GetAllocator());
+	tmp.AddMember(StringRef("inertia"), physics2D.inertia, scene.GetAllocator());
+	tmp.AddMember(StringRef("restitution"), physics2D.restitution, scene.GetAllocator());
+	tmp.AddMember(StringRef("friction"), physics2D.friction, scene.GetAllocator());
+	tmp.AddMember(StringRef("damping"), physics2D.damping, scene.GetAllocator());
+
+	addVectorMember(scene, tmp, "accumulatedForce", physics2D.accumulatedForce);
+	addVectorMember(scene, tmp, "velocity", physics2D.velocity);
+	addVectorMember(scene, tmp, "acceleration", physics2D.acceleration);
+
+	tmp.AddMember(StringRef("angularVelocity"), physics2D.angularVelocity, scene.GetAllocator());
+	tmp.AddMember(StringRef("angularTorque"), physics2D.angularTorque, scene.GetAllocator());
+
+	addVectorArrayForceMember(scene, tmp, "forceList", physics2D.forceList);
+
+
+	tmp.AddMember(StringRef("renderFlag"), physics2D.renderFlag, scene.GetAllocator());
+	entity.AddMember(StringRef("Physics2D"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addRectCollider(Document& scene, Value& entity, RectCollider rectCollider)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "centerOffset", rectCollider.centerOffset);
+	addVectorMember(scene, tmp, "scaleOffset", rectCollider.scaleOffset);
+	tmp.AddMember(StringRef("isTrigger"), rectCollider.isTrigger, scene.GetAllocator());
+	tmp.AddMember(StringRef("renderFlag"), rectCollider.renderFlag, scene.GetAllocator());
+	entity.AddMember(StringRef("RectCollider"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addLayerCollider(Document& scene, Value& entity, LayerCollider layerCollider)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "centerOffset", layerCollider.centerOffset);
+	addVectorMember(scene, tmp, "scaleOffset", layerCollider.scaleOffset);
+	tmp.AddMember(StringRef("renderFlag"), layerCollider.renderFlag, scene.GetAllocator());
+	entity.AddMember(StringRef("LayerCollider"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addCircleCollider(Document& scene, Value& entity, CircleCollider circleCollider)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "centerOffset", circleCollider.centerOffset);
+	tmp.AddMember(StringRef("scaleOffset"), circleCollider.scaleOffset, scene.GetAllocator());
+	tmp.AddMember(StringRef("isTrigger"), circleCollider.isTrigger, scene.GetAllocator());
+	tmp.AddMember(StringRef("renderFlag"), circleCollider.renderFlag, scene.GetAllocator());
+	entity.AddMember(StringRef("CircleCollider"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addEdge2DCollider(Document& scene, Value& entity, Edge2DCollider edge2DCollider)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "p0Offset", edge2DCollider.p0Offset);
+	tmp.AddMember(StringRef("rotationOffset"), edge2DCollider.rotationOffset, scene.GetAllocator());
+	tmp.AddMember(StringRef("scaleOffset"), edge2DCollider.scaleOffset, scene.GetAllocator());
+	tmp.AddMember(StringRef("renderFlag"), edge2DCollider.renderFlag, scene.GetAllocator());
+	entity.AddMember(StringRef("Edge2DCollider"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addPoint2DCollider(Document& scene, Value& entity, Point2DCollider point2DCollider)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "centerOffset", point2DCollider.centerOffset);
+	tmp.AddMember(StringRef("renderFlag"), point2DCollider.renderFlag, scene.GetAllocator());
+	entity.AddMember(StringRef("Point2DCollider"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
+{
+	Value tmp(kObjectType);
+	Value vpath(audio.sound.path.c_str(), (SizeType)audio.sound.path.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("path"), vpath, scene.GetAllocator());
+	tmp.AddMember(StringRef("volume"), audio.sound.volume, scene.GetAllocator());
+	tmp.AddMember(StringRef("volumeMod"), audio.sound.volumeMod, scene.GetAllocator());
+	tmp.AddMember(StringRef("pitch"), audio.sound.pitch, scene.GetAllocator());
+	tmp.AddMember(StringRef("isPaused"), audio.sound.isPaused, scene.GetAllocator());
+	tmp.AddMember(StringRef("isMute"), audio.sound.isMute, scene.GetAllocator());
+	tmp.AddMember(StringRef("isLoop"), audio.sound.isLoop, scene.GetAllocator());
+	tmp.AddMember(StringRef("isRandPitch"), audio.sound.isRandPitch, scene.GetAllocator());
+	tmp.AddMember(StringRef("isSpacial"), audio.isSpacial, scene.GetAllocator());
+	entity.AddMember(StringRef("Audio"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addAI(Document& scene, Value& entity, AI ai)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("colorChange"), ai.colorChange, scene.GetAllocator());
+	tmp.AddMember(StringRef("movement"), ai.movement, scene.GetAllocator());
+	tmp.AddMember(StringRef("speed"), ai.speed, scene.GetAllocator());
+	tmp.AddMember(StringRef("range"), ai.range, scene.GetAllocator());
+	entity.AddMember(StringRef("AI"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addText(Document& scene, Value& entity, Text text)
+{
+	Value tmp(kObjectType);
+	Value tmpc(kObjectType);
+	Value vfontFile(text.fontFile.c_str(), (SizeType)text.fontFile.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("fontFile"), vfontFile, scene.GetAllocator());
+	Value vtext(text.text.c_str(), (SizeType)text.text.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("text"), vtext, scene.GetAllocator());
+	addVectorMember(scene, tmp, "offset", text.offset);
+	tmp.AddMember(StringRef("scale"), text.scale, scene.GetAllocator());
+	tmpc.AddMember(StringRef("r"), text.color.r, scene.GetAllocator());
+	tmpc.AddMember(StringRef("g"), text.color.g, scene.GetAllocator());
+	tmpc.AddMember(StringRef("b"), text.color.b, scene.GetAllocator());
+	tmpc.AddMember(StringRef("a"), text.color.a, scene.GetAllocator());
+	tmp.AddMember(StringRef("color"), tmpc, scene.GetAllocator());
+	entity.AddMember(StringRef("Text"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addDialogue(Document& scene, Value& entity, Dialogue dialogue)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("speakerID"), dialogue.speakerID, scene.GetAllocator());
+	tmp.AddMember(StringRef("selectedID"), dialogue.selectedID, scene.GetAllocator());
+	tmp.AddMember(StringRef("textID"), dialogue.textID, scene.GetAllocator());
+	tmp.AddMember(StringRef("nextTextID"), dialogue.nextTextID, scene.GetAllocator());
+	entity.AddMember(StringRef("Dialogue"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addLightSource(Document& scene, Value& entity, LightSource lightSource)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "centerOffset", lightSource.centerOffset);
+	entity.AddMember(StringRef("LightSource"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addScript(Document& scene, Value& entity, Script script)
+{
+	Value tmp(kObjectType);
+	Value spath(script.name.c_str(), (SizeType)script.name.size(), scene.GetAllocator());
+	tmp.AddMember(StringRef("name"), spath, scene.GetAllocator());
+	entity.AddMember(StringRef("Script"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addButton(Document& scene, Value& entity, Button button)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("interactable"), button.interactable, scene.GetAllocator());
+	entity.AddMember(StringRef("Button"), tmp, scene.GetAllocator());
+}
+
+/*!*****************************************************************************
+\brief
+	Load the saved gamestate data
+\param _gameState
+	gameState to load to
+\param _filename
+   path to load from
+\return
+None.
+*******************************************************************************/
+void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem::path _filename)
+{
+	//GameState gameStateData{};
+	//std::vector<std::string> scenefilename{};
+	//std::string path = "../resources/GameStates/" + _filename + ".json";
+	//std::ifstream ifs(path);
+	
+	std::ifstream ifs(_filename.string());
+	if (!ifs.good())
+	{
+		LOG_ERROR("Can't open json file! : " + _filename.stem().string());
+		return;
+	}
+	else
+		LOG_INFO("Opening game state: " + _filename.stem().string());
+	_gameState.mName = _filename.stem().string();
+
+	int same = 0;
+	//for (std::string s : allgameStateFilename)
+	for (GameState& g : GameStateManager::GetInstance()->mGameStates)
+	{
+		if (g.mName == _gameState.mName)
+			same++;
+	}
+	allgameStateFilename.push_back(_gameState.mName);
+	if (same > 1)//gamestate already open
+	{
+		same = 0; //count number of open GS
+		for (std::string n : allgameStateFilename)
+		{
+			if (n == _gameState.mName)
+				same++;
+		}
+		_gameState.mName += (" ("+ std::to_string(same) + ")");
+	}
+	
+	gameStateFilename = _gameState.mName;
+	std::stringstream contents;
+	contents << ifs.rdbuf();
+	Document doc;
+	doc.Parse(contents.str().c_str());
+
+	Value entity(kArrayType);
+	entity = doc.GetArray();
+	for (rapidjson::SizeType index = 0; index < entity.Size(); ++index)
+	{
+		Scene sceneData(entity[index]["SceneName"].GetString());
+		//sceneData.mName = entity[index]["SceneName"].GetString();
+		sceneData.mCamera = getTransform(entity[index]);
+		sceneData.mIsPause = entity[index]["isActive"].GetBool();
+		sceneData.mLayer = entity[index]["layer"].GetInt();
+		sceneData.mOrder = entity[index]["order"].GetInt();
+
+
+		_gameState.mScenes.push_back(sceneData);
+	}
+	ifs.close();
+	//return gameStateData;
+}
+/*!*****************************************************************************
+\brief
+	Save the gamestate data
+\param _gameState
+	gameState to save from
+\return
+None.
+*******************************************************************************/
+void SerializationManager::SaveGameState(GameState& _gameState)
+{
+
+	//scave each scene
+	for (int s = 0; s< _gameState.mScenes.size(); s++)
+	{
+		SaveScene(_gameState.mScenes[s]);
+		LOG_INFO("Saved a scene");
+	}
+	Document gamestate;
+	auto& allocator = gamestate.GetAllocator();
+	//scene.SetObject();
+	gamestate.SetArray();
+	StringBuffer buffer;
+	PrettyWriter<StringBuffer> writer(buffer);
+	//int counter = 0;
+	for (int s = 0; s< _gameState.mScenes.size(); s++)
+	{
+
+		Value scene(kObjectType);
+		Value sceneName(_gameState.mScenes[s].mName.c_str(), (SizeType)_gameState.mScenes[s].mName.size(), allocator);
+		scene.AddMember(StringRef("SceneName"), sceneName, gamestate.GetAllocator());
+		addTransform(gamestate, scene, _gameState.mScenes[s].mCamera);
+		scene.AddMember(StringRef("isActive"), _gameState.mScenes[s].mIsPause, gamestate.GetAllocator());
+		scene.AddMember(StringRef("layer"), _gameState.mScenes[s].mLayer, gamestate.GetAllocator());
+		scene.AddMember(StringRef("order"), _gameState.mScenes[s].mOrder, gamestate.GetAllocator());
+		gamestate.PushBack(scene, allocator);
+	}
+
+	gamestate.Accept(writer);
+	std::string jsonf(buffer.GetString(), buffer.GetSize());
+	std::string path = "../resources/GameStates/" + _gameState.mName + ".json";
+	std::ofstream ofs(path);
+	ofs << jsonf;
+	if (!ofs.good())
+	{
+		LOG_ERROR("Unable to save Game State to: " + path);
+	}
+	else
+		LOG_INFO("Saved Game State: " + path);
+
+
+
+}
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
 
 /*!*****************************************************************************
 \brief

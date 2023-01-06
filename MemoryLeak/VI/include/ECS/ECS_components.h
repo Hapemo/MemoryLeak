@@ -227,3 +227,61 @@ struct Text {
 	GLuint texture = 0; //for dialog box
 };
 
+/*!*****************************************************************************
+\brief
+	This struct contains the data for Script component
+*******************************************************************************/
+struct Script {
+	std::string name;
+	//ScriptComponent* script;
+};
+
+/*!*****************************************************************************
+\brief
+This component encapsulates information regarding a lightsource, currently, it
+only contains an offset. Later versions will include light intensity.
+*******************************************************************************/
+struct LightSource
+{
+	Math::Vec2 centerOffset;
+	float radius;
+	float intensity; //"whiteness" of the light
+};
+
+struct ShadowCaster
+{
+	Math::Vec2 centerOffset = { 0.f, 0.f },	// save, edit, see
+		scaleOffset = { 1.f,1.f };		// save, edit, see
+	bool renderFlag{ false };				// save, edit, see
+};
+
+//use to index the variant data type, for ditor and serilization to determine type stored
+enum class COMPONENTID
+{
+	GENERAL,		//0
+	LIFESPAN,		//1
+	TRANSFORM,		//2
+	SPRITE,			//3
+	ANIMATION,		//4
+	SHEETANIMATION,	//5
+	PHYSICS2D,		//6
+	RECTCOLLIDER,	//7
+	CIRCLECOLLIDER, //8
+	EDGE2DCOLLIDER, //9
+	POINT2DCOLLIDER,//10
+	AUDIO,			//11
+	TEXT,			//12
+	AI,				//13
+	SCRIPT,			//14
+	DIALOGUE,		//15
+	BUTTON,			//16
+	LAYERCOLLIDER,	//17
+	LIGHTSOURCE,	//18
+	SHADOWCASTER	//19
+};
+typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
+	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster>  COMPONENT;
+
+
+

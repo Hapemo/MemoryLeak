@@ -74,10 +74,6 @@ void InspectorPanel::Update()
 				{
 					RectColliderEditor();
 				}
-				if (e.HasComponent<LayerCollider>())
-				{
-					LayerColliderEditor();
-				}
 				if (e.HasComponent<CircleCollider>())
 				{
 					CircleColliderEditor();
@@ -89,6 +85,10 @@ void InspectorPanel::Update()
 				if (e.HasComponent<Point2DCollider>())
 				{
 					Point2DColliderEditor();
+				}
+				if (e.HasComponent<LayerCollider>())
+				{
+					LayerColliderEditor();
 				}
 				if (e.HasComponent<Audio>())
 				{
@@ -113,6 +113,14 @@ void InspectorPanel::Update()
 				if (e.HasComponent<Button>())
 				{
 					ButtonEditor();
+				}
+				if (e.HasComponent<LightSource>())
+				{
+					LightSourceEditor();
+				}
+				if (e.HasComponent<ShadowCaster>())
+				{
+					ShadowCasterEditor();
 				}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
@@ -293,6 +301,10 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<Button>({});
 	else if (addComponentID == (int)COMPONENTID::LAYERCOLLIDER)
 		e.AddComponent<LayerCollider>({});
+	else if (addComponentID == (int)COMPONENTID::LIGHTSOURCE)
+		e.AddComponent<LightSource>({});
+	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
+		e.AddComponent<ShadowCaster>({});
 	
 }
 /*!*****************************************************************************
@@ -342,7 +354,11 @@ void InspectorPanel::AddPrefabComponent()
 	else if (addComponentID == (int)COMPONENTID::BUTTON)
 		p->AddComponent<Button>({});
 	else if (addComponentID == (int)COMPONENTID::LAYERCOLLIDER)
-		e.AddComponent<LayerCollider>({});
+		p->AddComponent<LayerCollider>({});
+	else if (addComponentID == (int)COMPONENTID::LIGHTSOURCE)
+		p->AddComponent<LightSource>({});
+	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
+		p->AddComponent<ShadowCaster>({});
 }
 
 
@@ -1060,6 +1076,37 @@ void InspectorPanel::ButtonEditor()
 		ImGui::PopStyleColor();
 	}
 
+}
+void InspectorPanel::LightSourceEditor()
+{
+	if (ImGui::CollapsingHeader("LightSource"))
+	{
+		tmpVec2[0] = e.GetComponent<LightSource>().centerOffset.x;
+		tmpVec2[1] = e.GetComponent<LightSource>().centerOffset.y;
+		ImGui::InputFloat2("Light center", tmpVec2);
+		e.GetComponent<LightSource>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+		ImGui::DragFloat("Radius", &e.GetComponent<LightSource>().radius, 1.f);
+
+		ImGui::DragFloat("Intensity", &e.GetComponent<LightSource>().intensity, 0.05f, 0.f, 1.f);
+	}
+}
+void InspectorPanel::ShadowCasterEditor()
+{
+	if (ImGui::CollapsingHeader("ShadowCaster"))
+	{
+		tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset.x;
+		tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset.y;
+		ImGui::InputFloat2("Shadow center", tmpVec2);
+		e.GetComponent<ShadowCaster>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+		tmpVec2[0] = e.GetComponent<ShadowCaster>().scaleOffset.x;
+		tmpVec2[1] = e.GetComponent<ShadowCaster>().scaleOffset.y;
+		ImGui::InputFloat2("Shadow scale ", tmpVec2);
+		e.GetComponent<ShadowCaster>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
+	}
 }
 /*!*****************************************************************************
 \brief
