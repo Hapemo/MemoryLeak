@@ -56,8 +56,10 @@ void Application::SystemUpdate() {
   END_TRACK("Audio");
 
   // Animator
-  sheetAnimator->Animate();
+  TRACK_PERFORMANCE("Animation");
   animator->Animate();
+  sheetAnimator->Animate();
+  END_TRACK("Animation");
 
   // Player
   // playerManager->Update(); // Has error on gamestate3, maybe because player was not freed in gamestate1

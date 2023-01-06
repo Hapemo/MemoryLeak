@@ -37,26 +37,13 @@ void Animator::Animate(const Entity& _e)
 {
 	if (!_e.GetComponent<General>().isActive) return;
 	if (!_e.HasComponent<Animation>()) return;
-	if (!_e.GetComponent<Animation>().images.size())
-	{
-		//if image vector is empty, initialize it with the texture in its sprite component
-		if (!(_e.HasComponent<Sprite>() && _e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)) return;
-		static GLuint addImage = _e.GetComponent<Sprite>().texture;
-		AddImages(_e, addImage);
-	}
 
-	//update time to image swap
-	_e.GetComponent<Animation>().timeToImageSwap -= static_cast<float>(FPSManager::dt);
+	Animation animation = _e.GetComponent<Animation>();
+	_e.GetComponent<Sprite>().texture = animation.images[animation.currentImageIndex];
 
-	if (_e.GetComponent<Animation>().timeToImageSwap >= 0) return;
-
-	//reset counter
-	_e.GetComponent<Animation>().timeToImageSwap = _e.GetComponent<Animation>().timePerImage;
-	//change the image
-	_e.GetComponent<Animation>().currentImageIndex = ++_e.GetComponent<Animation>().currentImageIndex < _e.GetComponent<Animation>().images.size() ?
-		_e.GetComponent<Animation>().currentImageIndex : 0;
-	//change its texture
-	_e.GetComponent<Sprite>().texture = _e.GetComponent<Animation>().images[_e.GetComponent<Animation>().currentImageIndex];
+	if (!_e.HasComponent<SheetAnimation>()) return;
+	_e.GetComponent<SheetAnimation>().frameCount = animation.frameCount[animation.currentImageIndex];
+	_e.GetComponent<SheetAnimation>().timePerFrame = animation.timePerImage[animation.currentImageIndex];
 }
 
 /*!*****************************************************************************
@@ -74,9 +61,11 @@ Component.
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& _e, GLuint _frame)
+void AddImages(const Entity& _e, GLuint _frame, int _frameCount, float _timePerImage)
 {
 	_e.GetComponent<Animation>().images.push_back(_frame);
+	_e.GetComponent<Animation>().frameCount.push_back(_frameCount);
+	_e.GetComponent<Animation>().timePerImage.push_back(_timePerImage);
 }
 
 /*!*****************************************************************************
@@ -94,7 +83,16 @@ component
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames)
+void AddImages(const Entity& _e, const std::vector<GLuint>& _frames,
+	const std::vector<int>& _frameCounts, const std::vector<float>& _timePerImage)
 {
+	if (_frames.size() != _frameCounts.size() || _frameCounts.size() != _timePerImage.size() || _timePerImage.size() != _frames.size())
+	{
+		LOG_ERROR("Different sized vectors!!");
+		return;
+	}
+
 	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
+	_e.GetComponent<Animation>().frameCount.insert(_e.GetComponent<Animation>().frameCount.end(), _frameCounts.begin(), _frameCounts.end());
+	_e.GetComponent<Animation>().timePerImage.insert(_e.GetComponent<Animation>().timePerImage.end(), _timePerImage.begin(), _timePerImage.end());
 }

@@ -54,7 +54,7 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void AddImages(const Entity& _e, GLuint _frame);
+	void AddImages(const Entity& _e, GLuint _frame, int _frameCount = 1, float _timePerImage = 0.f);
 
 	/*!*****************************************************************************
 	\brief
@@ -71,7 +71,9 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void AddImages(const Entity& _e, const std::vector<GLuint>& _frames);
+	void AddImages(const Entity& _e, const std::vector<GLuint>& _frames, 
+		const std::vector<int>& _frameCounts, const std::vector<float>& _timePerImage);
+
 private:
 	/*!*****************************************************************************
 	\brief

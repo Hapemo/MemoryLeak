@@ -77,10 +77,11 @@ used.
 *******************************************************************************/
 struct Animation
 {
-	std::vector<GLuint> images;
-	float timePerImage;
-	float timeToImageSwap;
-	int currentImageIndex;
+	std::vector<GLuint> images;			//save, edit, see
+	std::vector<int> frameCount;		//save, edit, see
+	std::vector<float> timePerImage;	//save, edit, see
+	int currentImageIndex = 0;			//save, edit, see
+	float timeToImageSwap;				//to be deleted
 };
 
 /*!*****************************************************************************
