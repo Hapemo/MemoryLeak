@@ -93,9 +93,10 @@ used.
 struct Animation
 {
 	std::vector<GLuint> images;			//save, edit, see
-	float timePerImage;					//save, edit, see
-	float timeToImageSwap;				//NO save, NO edit, NO see
+	std::vector<int> frameCount;		//save, edit, see
+	std::vector<float> timePerImage;	//save, edit, see
 	int currentImageIndex;				//save, edit, see
+	float timeToImageSwap;				//to be deleted
 };
 
 /*!*****************************************************************************

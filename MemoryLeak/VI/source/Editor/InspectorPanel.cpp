@@ -578,7 +578,7 @@ void InspectorPanel::AnimationEditor()
 			animator->AddImages(e, addImage);
 		}
 		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
-		ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage);
+		ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage[e.GetComponent<Animation>().currentImageIndex]);
 		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
 		ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
 		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
@@ -1236,7 +1236,7 @@ void InspectorPanel::PrefabEditor()
 			{
 				animator->AddImages(e, addImage);
 			}
-			ImGui::InputFloat("timePerImage", &animation.timePerImage);
+			ImGui::InputFloat("timePerImage", &animation.timePerImage[e.GetComponent<Animation>().currentImageIndex]);
 			ImGui::InputFloat("timeToImageSwap", &animation.timeToImageSwap);
 			ImGui::InputInt("currentImageIndex", &animation.currentImageIndex);
 			p->UpdateComponent<Animation>(animation);

@@ -39,7 +39,6 @@ void Animator::Animate(const Entity& _e)
 	if (!_e.HasComponent<Sprite>()) return;
 	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<Animation>()) return;
-	if (_e.GetComponent<Animation>().timePerImage < 0) return;
 	if (!_e.GetComponent<Animation>().images.size())
 	{
 		//if image vector is empty, initialize it with the texture in its sprite component
@@ -48,18 +47,12 @@ void Animator::Animate(const Entity& _e)
 		AddImages(_e, addImage);
 	}
 
-	//update time to image swap
-	_e.GetComponent<Animation>().timeToImageSwap -= static_cast<float>(FPSManager::dt);
+	Animation animation = _e.GetComponent<Animation>();
+	_e.GetComponent<Sprite>().texture = animation.images[animation.currentImageIndex];
 
-	if (_e.GetComponent<Animation>().timeToImageSwap >= 0) return;
-
-	//reset counter
-	_e.GetComponent<Animation>().timeToImageSwap = _e.GetComponent<Animation>().timePerImage;
-	//change the image
-	_e.GetComponent<Animation>().currentImageIndex = ++_e.GetComponent<Animation>().currentImageIndex < _e.GetComponent<Animation>().images.size() ?
-		_e.GetComponent<Animation>().currentImageIndex : 0;
-	//change its texture
-	_e.GetComponent<Sprite>().texture = _e.GetComponent<Animation>().images[_e.GetComponent<Animation>().currentImageIndex];
+	if (!_e.HasComponent<SheetAnimation>()) return;
+	_e.GetComponent<SheetAnimation>().frameCount = animation.frameCount[animation.currentImageIndex];
+	_e.GetComponent<SheetAnimation>().timePerFrame = animation.timePerImage[animation.currentImageIndex];
 }
 
 /*!*****************************************************************************
@@ -77,9 +70,11 @@ Component.
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& _e, GLuint _frame)
+void Animator::AddImages(const Entity& _e, GLuint _frame, int _frameCount, float _timePerImage)
 {
 	_e.GetComponent<Animation>().images.push_back(_frame);
+	_e.GetComponent<Animation>().frameCount.push_back(_frameCount);
+	_e.GetComponent<Animation>().timePerImage.push_back(_timePerImage);
 }
 
 /*!*****************************************************************************
@@ -97,32 +92,15 @@ component
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames)
+void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames,
+	const std::vector<int>& _frameCount, const std::vector<float>& _timePerImage)
 {
-	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
-}
-/*!*****************************************************************************
-\brief
-Does a manual swap of the sprites. Some examples are button hover, button press
-etc.
-
-\param const Entity& e
-The Entity whose Animation Component will be modified.
-
-\param int index
-index to modify
-
-\return
-None.
-*******************************************************************************/
-void Animator::ManualSwap(const Entity& _e, int _index)
-{
-	if (!_e.HasComponent<Sprite>()) return;
-	if (!_e.HasComponent<Animation>()) return;
-	if (_index > _e.GetComponent<Animation>().images.size())
+	if (_frames.size() != _frameCount.size() || _frameCount.size() != _timePerImage.size() || _timePerImage.size() != _frames.size())
 	{
-		LOG_WARN("Animator::ManualSwap(const Entity& _e, int _index) - Vector subscript out of range! _index > images.size()");
+		LOG_ERROR("Animator::AddImages - added with different sizes.");
 		return;
 	}
-	_e.GetComponent<Sprite>().texture = _e.GetComponent<Animation>().images[_index];
+	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
+	_e.GetComponent<Animation>().frameCount.insert(_e.GetComponent<Animation>().frameCount.end(), _frameCount.begin(), _frameCount.end());
+	_e.GetComponent<Animation>().timePerImage.insert(_e.GetComponent<Animation>().timePerImage.end(), _timePerImage.begin(), _timePerImage.end());
 }
