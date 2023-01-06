@@ -271,6 +271,7 @@ void ResourceManager::LoadAllResources() {
 //#if MultiThread
 	for (std::thread& t : mResourceLoadingThreads)
 		t.join();
+	mResourceLoadingThreads.clear();
 //#endif
 
 	// Initialise resources that haven't been initialised before
