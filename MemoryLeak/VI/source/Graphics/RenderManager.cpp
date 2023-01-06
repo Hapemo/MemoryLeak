@@ -77,16 +77,14 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
-	auto& scenes = GameStateManager::GetInstance()->mCurrentGameState->mScenes;
-	Scene* currScene{ nullptr };
-	for (auto& scene : scenes) if (scene.mIsPause == false) currScene = &scene;
+	GameState* gs = GameStateManager::GetInstance()->mCurrentGameState;
 
-	if (currScene)
+	if (gs)
 	{
-		mGameCam.SetCameraWidth((int)currScene->mCamera.scale.x);
-		mGameCam.SetPos(currScene->mCamera.translation);
-		currScene->mCamera.scale.y = mGameCam.GetCameraHeight();
-		currScene->mCamera.rotation = 1.f / mGameCam.GetZoom();
+		mGameCam.SetCameraWidth((int)gs->mCamera.scale.x);
+		mGameCam.SetPos(gs->mCamera.translation);
+		gs->mCamera.scale.y = mGameCam.GetCameraHeight();
+		gs->mCamera.rotation = 1.f / mGameCam.GetZoom();
 	}
 
 	if (mPrevWidth != *mWindowWidth)
