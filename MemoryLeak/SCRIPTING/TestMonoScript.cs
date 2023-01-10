@@ -10,7 +10,7 @@ namespace BonVoyage
         {
             this.hello = "Initing...";
             Console.WriteLine("Printing from C#: " + this.hello);
-            //Console.WriteLine(InternalCalls.GetWorldMousePos());
+            Console.WriteLine(InternalCalls.GetWorldMousePosX());
 
            // if (InternalCalls.CheckKey()) { }
         }

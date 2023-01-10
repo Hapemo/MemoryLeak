@@ -66,6 +66,18 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Get world mouse position x.
+	*******************************************************************************/
+	static float GetWorldMousePosX();
+
+	/*!*****************************************************************************
+	\brief
+	Get world mouse position y.
+	*******************************************************************************/
+	static float GetWorldMousePosY();
+
+	/*!*****************************************************************************
+	\brief
 	ApplyImpulse function that adds a velocity impulse to the entity
 	\param const Entity &
 	A reference to a read-only Entity to
@@ -141,6 +153,42 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Retrieves the next dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the next dialog id.
+	*******************************************************************************/
+	static int GetNext(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the next dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the next dialog id.
+	*******************************************************************************/
+	static int GetChoice1(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the second choice dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the second choice dialog id.
+	*******************************************************************************/
+	static int GetChoice2(int _id);
+
+	/*!*****************************************************************************
+	\brief
 	Set the selected choice using function from DialogManager.
 
 	\param int _id
@@ -183,9 +231,51 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Checks if an entity from scene is active.
+	*******************************************************************************/
+	static bool EntityIsActive(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Activate an entity from scene.
+	*******************************************************************************/
+	static void EntityActivate(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Deactivate an entity from scene.
+	*******************************************************************************/
+	static void EntityDeactivate(std::string const& _entityName, std::string const& _sceneName);
+	
+	/*!*****************************************************************************
+	\brief
+	Gets parent name of an entity from scene.
+	*******************************************************************************/
+	static std::string EntityGetParent(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Gets parent id of an entity from scene.
+	*******************************************************************************/
+	static int EntityGetParentId(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
 	Gets scene to pause or unpause the scene.
 	*******************************************************************************/
 	static Scene& SelectScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Pause scene.
+	*******************************************************************************/
+	static void PauseScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Unpause scene.
+	*******************************************************************************/
+	static void PlayScene(std::string const& _name);
 
 	/*!*****************************************************************************
 	\brief
@@ -201,6 +291,18 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Sets the texture of an entity.
+	*******************************************************************************/
+	static void SetTexture2(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the texture of an entity.
+	*******************************************************************************/
+	static std::string GetTexture2(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
 	EntitiesCollided function that checks if two given entities have collided by
 	checking whether if a contact with the two entities exists
 	\param const Entity &
@@ -211,6 +313,15 @@ public:
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
 	static bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
+
+	/*!*****************************************************************************
+	\brief
+	EntitiesCollided function that checks if two given entities have collided by
+	checking whether if a contact with the two entities exists
+	\return bool
+	Evaluated result of whether a collision happened between the two given entities
+	*******************************************************************************/
+	static bool EntitiesCollided2(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
