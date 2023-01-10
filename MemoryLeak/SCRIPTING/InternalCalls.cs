@@ -97,5 +97,32 @@ namespace BonVoyage
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static void PlayBGSound();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetPosX();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetPosY();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SetPosX();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SetPosY();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetScaleX();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetScaleY();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SetScaleX();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetRotate();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SetRotate();
 	}
 }

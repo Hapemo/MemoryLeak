@@ -46,13 +46,23 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityGetParentId", &FUNC->EntityGetParentId);
 	mono_add_internal_call("BonVoyage.InternalCalls::PauseScene", &FUNC->PauseScene);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayScene", &FUNC->PlayScene);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetTexture", &FUNC->SetTexture2);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetTexture", &FUNC->GetTexture2);
-	mono_add_internal_call("BonVoyage.InternalCalls::EntitiesCollided", &FUNC->EntitiesCollided2);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetTexture", &FUNC->SetTexture);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetTexture", &FUNC->GetTexture);
+	mono_add_internal_call("BonVoyage.InternalCalls::EntitiesCollided", &FUNC->EntitiesCollided);
 	mono_add_internal_call("BonVoyage.InternalCalls::GameStateExit", &FUNC->GameStateExit);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetDeltaTime", &FUNC->GetDeltaTime);
 	mono_add_internal_call("BonVoyage.InternalCalls::InitScriptWindow", &FUNC->InitScriptWindow);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayAnySound", &FUNC->PlayAnySound);
 	mono_add_internal_call("BonVoyage.InternalCalls::IsPlaying", &FUNC->IsPlaying);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayBGSound", &FUNC->PlayBGSound);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetPosX", &FUNC->GetPosX);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetPosY", &FUNC->GetPosY);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetPosX", &FUNC->SetPosX);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetPosY", &FUNC->SetPosY);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetScaleX", &FUNC->GetScaleX);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetScaleY", &FUNC->GetScaleY);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetScaleX", &FUNC->SetScaleX);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetScaleY", &FUNC->SetScaleY);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetRotate", &FUNC->GetRotate);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetRotate", &FUNC->SetRotate);
 }

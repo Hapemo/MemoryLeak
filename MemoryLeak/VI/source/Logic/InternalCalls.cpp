@@ -314,7 +314,7 @@ void InternalCalls::PlayScene(std::string const& _name) {
 \brief
 Sets the texture of an entity.
 *******************************************************************************/
-void InternalCalls::SetTexture(const Entity& _e, const std::string& _path) {
+void InternalCalls::SetTextureByEntity(const Entity& _e, const std::string& _path) {
 	spriteManager->SetTexture(_e, _path);
 }
 
@@ -322,7 +322,7 @@ void InternalCalls::SetTexture(const Entity& _e, const std::string& _path) {
 \brief
 Retrieves the texture of an entity.
 *******************************************************************************/
-std::string InternalCalls::GetTexture(const Entity& _e) {
+std::string InternalCalls::GetTextureByEntity(const Entity& _e) {
 	return spriteManager->GetTexturePath(spriteManager->GetTexture(_e));
 }
 
@@ -330,7 +330,7 @@ std::string InternalCalls::GetTexture(const Entity& _e) {
 \brief
 Sets the texture of an entity.
 *******************************************************************************/
-void InternalCalls::SetTexture2(std::string const& _entityName, std::string const& _sceneName, const std::string& _path) {
+void InternalCalls::SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path) {
 	spriteManager->SetTexture(FUNC->GetEntity(_entityName, _sceneName), _path);
 }
 
@@ -338,7 +338,7 @@ void InternalCalls::SetTexture2(std::string const& _entityName, std::string cons
 \brief
 Retrieves the texture of an entity.
 *******************************************************************************/
-std::string InternalCalls::GetTexture2(std::string const& _entityName, std::string const& _sceneName) {
+std::string InternalCalls::GetTexture(std::string const& _entityName, std::string const& _sceneName) {
 	return spriteManager->GetTexturePath(spriteManager->GetTexture(FUNC->GetEntity(_entityName, _sceneName)));
 }
 
@@ -353,7 +353,7 @@ A reference to a read-only entity to compare against
 \return bool
 Evaluated result of whether a collision happened between the two given entities
 *******************************************************************************/
-bool InternalCalls::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
+bool InternalCalls::EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2) {
 	return collision2DManager->EntitiesCollided(_e1, _e2);
 }
 
@@ -364,7 +364,7 @@ checking whether if a contact with the two entities exists
 \return bool
 Evaluated result of whether a collision happened between the two given entities
 *******************************************************************************/
-bool InternalCalls::EntitiesCollided2(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName) {
+bool InternalCalls::EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName) {
 	return collision2DManager->EntitiesCollided(FUNC->GetEntity(_entityName1, _sceneName), FUNC->GetEntity(_entityName2, _sceneName));
 }
 
@@ -421,4 +421,84 @@ bool InternalCalls::IsPlaying(int _channel) {
 *******************************************************************************/
 void InternalCalls::PlayBGSound(std::string _name, int _channel) {
 	audioManager->PlayBGSound(_name, _channel);
+}
+
+/*!*****************************************************************************
+\brief
+Get X pos of an entity.
+*******************************************************************************/
+float InternalCalls::GetPosX(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.x;
+}
+
+/*!*****************************************************************************
+\brief
+Get Y pos of an entity.
+*******************************************************************************/
+float InternalCalls::GetPosY(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.y;
+}
+
+/*!*****************************************************************************
+\brief
+Set X pos of an entity.
+*******************************************************************************/
+void InternalCalls::SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.x = _posX;
+}
+
+/*!*****************************************************************************
+\brief
+Set Y pos of an entity.
+*******************************************************************************/
+void InternalCalls::SetPosY(std::string const& _entityName, std::string const& _sceneName, float _posY) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.y = _posY;
+}
+
+/*!*****************************************************************************
+\brief
+Set Y scale of an entity.
+*******************************************************************************/
+void InternalCalls::SetScaleY(std::string const& _entityName, std::string const& _sceneName, float _scaleY) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().scale.y = _scaleY;
+}
+
+/*!*****************************************************************************
+\brief
+Set Y scale of an entity.
+*******************************************************************************/
+void InternalCalls::SetScaleX(std::string const& _entityName, std::string const& _sceneName, float _scaleX) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().scale.x = _scaleX;
+}
+
+/*!*****************************************************************************
+\brief
+Get Y scale of an entity.
+*******************************************************************************/
+float InternalCalls::GetScaleY(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().scale.y;
+}
+
+/*!*****************************************************************************
+\brief
+Get X scale of an entity.
+*******************************************************************************/
+float InternalCalls::GetScaleX(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().scale.x;
+}
+
+/*!*****************************************************************************
+\brief
+Set rotation of an entity.
+*******************************************************************************/
+void InternalCalls::SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().rotation = _rotate;
+}
+
+/*!*****************************************************************************
+\brief
+Get rotation of an entity.
+*******************************************************************************/
+float InternalCalls::GetRotate(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().rotation;
 }

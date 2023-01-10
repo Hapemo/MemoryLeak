@@ -281,25 +281,25 @@ public:
 	\brief
 	Sets the texture of an entity.
 	*******************************************************************************/
-	static void SetTexture(const Entity& _e, const std::string& _path);
+	static void SetTextureByEntity(const Entity& _e, const std::string& _path);
 
 	/*!*****************************************************************************
 	\brief
 	Retrieves the texture of an entity.
 	*******************************************************************************/
-	static std::string GetTexture(const Entity& _e);
+	static std::string GetTextureByEntity(const Entity& _e);
 
 	/*!*****************************************************************************
 	\brief
 	Sets the texture of an entity.
 	*******************************************************************************/
-	static void SetTexture2(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
+	static void SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
 
 	/*!*****************************************************************************
 	\brief
 	Retrieves the texture of an entity.
 	*******************************************************************************/
-	static std::string GetTexture2(std::string const& _entityName, std::string const& _sceneName);
+	static std::string GetTexture(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
@@ -312,7 +312,7 @@ public:
 	\return bool
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
-	static bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
+	static bool EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2);
 
 	/*!*****************************************************************************
 	\brief
@@ -321,7 +321,7 @@ public:
 	\return bool
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
-	static bool EntitiesCollided2(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
+	static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
@@ -359,4 +359,64 @@ public:
 		Plays a single background sound
 	*******************************************************************************/
 	static void PlayBGSound(std::string _name, int _channel);
+
+	/*!*****************************************************************************
+	\brief
+	Get X pos of an entity.
+	*******************************************************************************/
+	static float GetPosX(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Get Y pos of an entity.
+	*******************************************************************************/
+	static float GetPosY(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set X pos of an entity.
+	*******************************************************************************/
+	static void SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+
+	/*!*****************************************************************************
+	\brief
+	Set Y pos of an entity.
+	*******************************************************************************/
+	static void SetPosY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+
+	/*!*****************************************************************************
+	\brief
+	Get X scale of an entity.
+	*******************************************************************************/
+	static float GetScaleX(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Get Y scale of an entity.
+	*******************************************************************************/
+	static float GetScaleY(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set X scale of an entity.
+	*******************************************************************************/
+	static void SetScaleX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+
+	/*!*****************************************************************************
+	\brief
+	Set Y scale of an entity.
+	*******************************************************************************/
+	static void SetScaleY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+
+	/*!*****************************************************************************
+	\brief
+	Get rotation of an entity.
+	*******************************************************************************/
+	static float GetRotate(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set rotation of an entity.
+	*******************************************************************************/
+	static void SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate);
 };
