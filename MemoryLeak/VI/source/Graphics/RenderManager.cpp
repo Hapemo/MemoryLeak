@@ -275,7 +275,7 @@ void RenderManager::RenderDebug()
 	{
 		if (scene.mIsPause) continue;
 
-		if (scene.mIsUI && mCurrRenderPass != RENDER_STATE::WORLD)
+		if (scene.mIsUI && mCurrRenderPass == RENDER_STATE::GAME)
 			mIsCurrSceneUI = true;
 		else
 			mIsCurrSceneUI = false;
@@ -480,7 +480,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 	{
 		if (scene.mIsPause) continue;
 
-		if (scene.mIsUI)
+		if (scene.mIsUI && mCurrRenderPass == RENDER_STATE::GAME)
 			mIsCurrSceneUI = true;
 		else
 			mIsCurrSceneUI = false;
@@ -488,8 +488,9 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		for (Entity e : scene.mEntities)
 		{
 			if (!e.GetComponent<General>().isActive) continue;
-			if (!e.ShouldRun()) continue;
-			if (ShouldCull(e)) continue;
+			if (!e.ShouldRun()) 
+				continue;
+			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
 
 			if (e.HasComponent<Sprite>())
 			{
@@ -1236,15 +1237,10 @@ void RenderManager::CreateText(const Entity& _e)
 	if (!mFontRenderers[fileName].IsInitialized())
 		return;
 
-	Math::Vec2 camOffset = { 0,0 };
-	float camZoom = 1.f;
-	if (!text.followCam)
-	{
-		camOffset = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam.GetPos()
-		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam.GetPos() : mAnimatorCam.GetPos();
-		camZoom = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam.GetZoom()
-			: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam.GetZoom() : mAnimatorCam.GetZoom();
-	}
+	Camera cam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam
+				: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
+	cam.SetPos(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? Math::Vec2{ 0, 0 } : cam.GetPos());
+	cam.SetZoom(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? 1.f : cam.GetZoom());
 
 	int layer = 255;
 	if (!_e.HasComponent<Sprite>())
@@ -1259,8 +1255,8 @@ void RenderManager::CreateText(const Entity& _e)
 		layer = _e.GetComponent<Sprite>().layer;
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
-		(text.offset + _e.GetComponent<Transform>().translation  - camOffset ) / camZoom + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
-		text.scale / camZoom, Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer, _e.GetComponent<Transform>().scale.x);
+		(text.offset + _e.GetComponent<Transform>().translation  - cam.GetPos() ) / cam.GetZoom() + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
+		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer, _e.GetComponent<Transform>().scale.x);
 }
 
 /*!*****************************************************************************
