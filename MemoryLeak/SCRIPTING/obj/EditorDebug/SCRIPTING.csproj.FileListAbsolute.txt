@@ -18,3 +18,5 @@ C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIP
 C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
 C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb
+C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.dll
+C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.pdb

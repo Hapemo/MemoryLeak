@@ -34,6 +34,7 @@ private:
 	Entity water;
 	Entity enemy;
 	Scene* currScene;
+	Transform* currCamera;
 	Math::Vec2 initialCamScale;
 
 public:

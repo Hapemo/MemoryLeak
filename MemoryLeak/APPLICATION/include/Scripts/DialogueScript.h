@@ -23,6 +23,7 @@ private:
 	Math::Vec2 targetCamScale;
 	Math::Vec2 currCamScale;
 	Scene* currScn;
+	Transform* currCamera;
 public:
 	DialogueScript() = default;
 	~DialogueScript() override = default;

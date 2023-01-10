@@ -22,6 +22,8 @@ is being stored.
 //#include "DialogManager.h"
 
 class Scene; 
+class GameState;
+struct Transform;
 
 #define FUNC InternalCalls::GetInstance()
 
@@ -186,6 +188,18 @@ public:
 	Gets scene to pause or unpause the scene.
 	*******************************************************************************/
 	static Scene& SelectScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state
+	*******************************************************************************/
+	static GameState& CurrentGameState();
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state's camera
+	*******************************************************************************/
+	static Transform& CurrentCamera();
 
 	/*!*****************************************************************************
 	\brief

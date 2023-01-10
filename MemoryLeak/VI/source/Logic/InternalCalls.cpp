@@ -198,6 +198,22 @@ Scene& InternalCalls::SelectScene(std::string const& _name) {
 
 /*!*****************************************************************************
 \brief
+Get current game state
+*******************************************************************************/
+GameState& InternalCalls::CurrentGameState() {
+	return *GameStateManager::GetInstance()->mCurrentGameState;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera
+*******************************************************************************/
+Transform& InternalCalls::CurrentCamera() {
+	return CurrentGameState().mCamera;
+}
+
+/*!*****************************************************************************
+\brief
 Sets the texture of an entity.
 *******************************************************************************/
 void InternalCalls::SetTexture(const Entity& _e, const std::string& _path) {
