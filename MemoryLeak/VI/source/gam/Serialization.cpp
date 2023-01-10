@@ -968,7 +968,7 @@ void SerializationManager::addAnimation(Document& scene, Value& entity, Animatio
 {
 	Value tmp(kObjectType);
 	addVectorArrayStrMember(scene, tmp, "images", animation.images);
-	//tmp.AddMember(StringRef("timePerImage"), animation.timePerImage, scene.GetAllocator());
+	tmp.AddMember(StringRef("timePerImage"), animation.timePerImage, scene.GetAllocator());
 	tmp.AddMember(StringRef("timeToImageSwap"), animation.timeToImageSwap, scene.GetAllocator());
 	tmp.AddMember(StringRef("currentImageIndex"), animation.currentImageIndex, scene.GetAllocator());
 	entity.AddMember(StringRef("Animation"), tmp, scene.GetAllocator());
