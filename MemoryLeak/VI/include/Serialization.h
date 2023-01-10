@@ -113,9 +113,10 @@ private:
 	AI getAI(Value& entity);
 	Text getText(Value& entity);
 	Dialogue getDialogue(Value& entity);
-	LightSource getLightSource(Value& entity);
 	Script getScript(Value& entity);
 	Button getButton(Value& entity);
+	LightSource getLightSource(Value& entity);
+	ShadowCaster getShadowCaster(Value& entity);
 
 	//save components 
 	void addGeneral(Document& scene, Value& entity, General general);
@@ -134,10 +135,10 @@ private:
 	void addAI(Document& scene, Value& entity, AI ai);
 	void addText(Document& scene, Value& entity, Text text);
 	void addDialogue(Document& scene, Value& entity, Dialogue dialogue);
-	void addLightSource(Document& scene, Value& entity, LightSource lightSource);
 	void addScript(Document& scene, Value& entity, Script script);
 	void addButton(Document& scene, Value& entity, Button button);
-
+	void addLightSource(Document& scene, Value& entity, LightSource lightSource);
+	void addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster);
 public:
 	//static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
 	//static SceneData LoadSceneData(std::string const& _filePath);

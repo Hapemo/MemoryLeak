@@ -69,7 +69,7 @@ public:
 	
 	std::string mName="";
 	std::vector<Scene> mScenes{};
-	Transform mCamera{};
+	Transform mCamera{ {1600.f,900.f} , 1.f , {0.f,0.f}};
 private:
 
 };
