@@ -74,6 +74,8 @@ public:
 	*******************************************************************************/
 	void AddImages(Entity _e, const std::vector<SpriteSheet>& _sheet);
 
+	void SetCurrentImageIndex(Entity _e, int _index) { _e.GetComponent<Animation>().currentImageIndex = _index; }
+	int GetCurrentImageIndex(Entity _e) { return  _e.GetComponent<Animation>().currentImageIndex; }
 private:
 	/*!*****************************************************************************
 	\brief
