@@ -74,7 +74,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::B)) speedCheat = !speedCheat; // speed cheat toggle
 	}
 
-	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) && (!FUNC->EntitiesCollided(enemy, _e) || !canDie)) {
+	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) && (!FUNC->EntitiesCollidedByEntity(enemy, _e) || !canDie)) {
 		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)/*|| _e.GetComponent<General>().name != "Boat"*/) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currCamera->translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
@@ -93,23 +93,23 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			} else rotation = 3.f * pi / 2.f;
 
 			if ((rotation > 15.f * pi / 8.f && rotation <= 2.f * pi) || (rotation > 0.f && rotation <= pi / 8.f))
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png");
 			else if (rotation > pi / 8.f && rotation <= 3.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
 			else if (rotation > 3.f * pi / 8.f && rotation <= 5.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png");
 			else if (rotation > 5.f * pi / 8.f && rotation <= 7.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png");
 			else if (rotation > 7.f * pi / 8.f && rotation <= 9.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png");
 			else if (rotation > 9.f * pi / 8.f && rotation <= 11.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
 			else if (rotation > 11.f * pi / 8.f && rotation <= 13.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png");
 			else
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
 
-			if (FUNC->EntitiesCollided(_e, littleGirl)) {
+			if (FUNC->EntitiesCollidedByEntity(_e, littleGirl)) {
 				if (dialogueActivated == false) {
 					dialogueText.Activate();
 					dialogueActivated = true;
@@ -122,7 +122,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			}
 		}
 		else {
-			if (FUNC->EntitiesCollided(_e, littleGirl)) {
+			if (FUNC->EntitiesCollidedByEntity(_e, littleGirl)) {
 				dialogueZoomOut = true;
 			}
 		}

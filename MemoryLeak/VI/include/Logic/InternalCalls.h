@@ -68,6 +68,18 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Get world mouse position x.
+	*******************************************************************************/
+	static float GetWorldMousePosX();
+
+	/*!*****************************************************************************
+	\brief
+	Get world mouse position y.
+	*******************************************************************************/
+	static float GetWorldMousePosY();
+
+	/*!*****************************************************************************
+	\brief
 	ApplyImpulse function that adds a velocity impulse to the entity
 	\param const Entity &
 	A reference to a read-only Entity to
@@ -143,6 +155,42 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Retrieves the next dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the next dialog id.
+	*******************************************************************************/
+	static int GetNext(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the next dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the next dialog id.
+	*******************************************************************************/
+	static int GetChoice1(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the second choice dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the second choice dialog id.
+	*******************************************************************************/
+	static int GetChoice2(int _id);
+
+	/*!*****************************************************************************
+	\brief
 	Set the selected choice using function from DialogManager.
 
 	\param int _id
@@ -185,6 +233,36 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Checks if an entity from scene is active.
+	*******************************************************************************/
+	static bool EntityIsActive(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Activate an entity from scene.
+	*******************************************************************************/
+	static void EntityActivate(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Deactivate an entity from scene.
+	*******************************************************************************/
+	static void EntityDeactivate(std::string const& _entityName, std::string const& _sceneName);
+	
+	/*!*****************************************************************************
+	\brief
+	Gets parent name of an entity from scene.
+	*******************************************************************************/
+	static std::string EntityGetParent(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Gets parent id of an entity from scene.
+	*******************************************************************************/
+	static int EntityGetParentId(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
 	Gets scene to pause or unpause the scene.
 	*******************************************************************************/
 	static Scene& SelectScene(std::string const& _name);
@@ -203,15 +281,39 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Pause scene.
+	*******************************************************************************/
+	static void PauseScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Unpause scene.
+	*******************************************************************************/
+	static void PlayScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
 	Sets the texture of an entity.
 	*******************************************************************************/
-	static void SetTexture(const Entity& _e, const std::string& _path);
+	static void SetTextureByEntity(const Entity& _e, const std::string& _path);
 
 	/*!*****************************************************************************
 	\brief
 	Retrieves the texture of an entity.
 	*******************************************************************************/
-	static std::string GetTexture(const Entity& _e);
+	static std::string GetTextureByEntity(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Sets the texture of an entity.
+	*******************************************************************************/
+	static void SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the texture of an entity.
+	*******************************************************************************/
+	static std::string GetTexture(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
@@ -224,7 +326,16 @@ public:
 	\return bool
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
-	static bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
+	static bool EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2);
+
+	/*!*****************************************************************************
+	\brief
+	EntitiesCollided function that checks if two given entities have collided by
+	checking whether if a contact with the two entities exists
+	\return bool
+	Evaluated result of whether a collision happened between the two given entities
+	*******************************************************************************/
+	static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
@@ -262,4 +373,64 @@ public:
 		Plays a single background sound
 	*******************************************************************************/
 	static void PlayBGSound(std::string _name, int _channel);
+
+	/*!*****************************************************************************
+	\brief
+	Get X pos of an entity.
+	*******************************************************************************/
+	static float GetPosX(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Get Y pos of an entity.
+	*******************************************************************************/
+	static float GetPosY(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set X pos of an entity.
+	*******************************************************************************/
+	static void SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+
+	/*!*****************************************************************************
+	\brief
+	Set Y pos of an entity.
+	*******************************************************************************/
+	static void SetPosY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+
+	/*!*****************************************************************************
+	\brief
+	Get X scale of an entity.
+	*******************************************************************************/
+	static float GetScaleX(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Get Y scale of an entity.
+	*******************************************************************************/
+	static float GetScaleY(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set X scale of an entity.
+	*******************************************************************************/
+	static void SetScaleX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+
+	/*!*****************************************************************************
+	\brief
+	Set Y scale of an entity.
+	*******************************************************************************/
+	static void SetScaleY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+
+	/*!*****************************************************************************
+	\brief
+	Get rotation of an entity.
+	*******************************************************************************/
+	static float GetRotate(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set rotation of an entity.
+	*******************************************************************************/
+	static void SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate);
 };

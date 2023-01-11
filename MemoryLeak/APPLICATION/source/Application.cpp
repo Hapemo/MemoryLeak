@@ -207,7 +207,7 @@ void Application::MainUpdate() {
 }
 
 void Application::exit() {
-    logicSystem->Exit();
+    //logicSystem->Exit();
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
 #ifdef _EDITOR
