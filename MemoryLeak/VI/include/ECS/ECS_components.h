@@ -95,7 +95,7 @@ struct Animation
 {
 	std::vector<SpriteSheet> sheets;	//save, edit, see
 	int currentImageIndex = 0;			//save, edit, see
-	float timeToImageSwap;				//to be deleted
+	//float timeToImageSwap;				//to be deleted
 };
 
 /*!*****************************************************************************
