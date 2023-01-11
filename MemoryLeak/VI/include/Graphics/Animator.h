@@ -15,6 +15,7 @@ animate.
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include "Helper.h"
+#include "AnimationVariable.h"
 
 /*!*****************************************************************************
 \brief
@@ -54,7 +55,7 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void AddImages(const Entity& _e, GLuint _frame, int _frameCount = 1, float _timePerImage = 0.f);
+	void AddImages(Entity _e, const SpriteSheet& _sheet);
 
 	/*!*****************************************************************************
 	\brief
@@ -71,8 +72,7 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void AddImages(const Entity& _e, const std::vector<GLuint>& _frames, 
-		const std::vector<int>& _frameCounts, const std::vector<float>& _timePerImage);
+	void AddImages(Entity _e, const std::vector<SpriteSheet>& _sheet);
 
 private:
 	/*!*****************************************************************************

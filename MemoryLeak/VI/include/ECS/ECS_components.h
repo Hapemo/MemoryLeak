@@ -11,13 +11,14 @@ ComponentType starts from 0.
 #pragma once
 #include <glm/glm.hpp>
 #include "vec2.h"
-#include "Graphics/SpriteVariable.h"
+#include "SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
 #include "../Physics/Force.h"
 #include "../Physics/ColliderBody.h"
 #include <variant>
 #include "ScriptComponent.h"
+#include "AnimationVariable.h"
 
 class Prefab;
 
@@ -92,9 +93,7 @@ used.
 *******************************************************************************/
 struct Animation
 {
-	std::vector<GLuint> images;			//save, edit, see
-	std::vector<int> frameCount;		//save, edit, see
-	std::vector<float> timePerImage;	//save, edit, see
+	std::vector<SpriteSheet> sheets;	//save, edit, see
 	int currentImageIndex = 0;			//save, edit, see
 	float timeToImageSwap;				//to be deleted
 };

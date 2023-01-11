@@ -41,11 +41,11 @@ void Animator::Animate(const Entity& _e)
 	if (!_e.HasComponent<Animation>()) return;
 
 	Animation animation = _e.GetComponent<Animation>();
-	_e.GetComponent<Sprite>().texture = animation.images[animation.currentImageIndex];
+	_e.GetComponent<Sprite>().texture = animation.sheets[animation.currentImageIndex].sheet;
 
 	if (!_e.HasComponent<SheetAnimation>()) return;
-	_e.GetComponent<SheetAnimation>().frameCount = animation.frameCount[animation.currentImageIndex];
-	_e.GetComponent<SheetAnimation>().timePerFrame = animation.timePerImage[animation.currentImageIndex];
+	_e.GetComponent<SheetAnimation>().frameCount = animation.sheets[animation.currentImageIndex].frameCount;
+	_e.GetComponent<SheetAnimation>().timePerFrame = animation.sheets[animation.currentImageIndex].timePerFrame;
 }
 
 /*!*****************************************************************************
@@ -63,11 +63,9 @@ Component.
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& _e, GLuint _frame, int _frameCount, float _timePerImage)
+void Animator::AddImages(Entity _e, const SpriteSheet& _sheet)
 {
-	_e.GetComponent<Animation>().images.push_back(_frame);
-	_e.GetComponent<Animation>().frameCount.push_back(_frameCount);
-	_e.GetComponent<Animation>().timePerImage.push_back(_timePerImage);
+	_e.GetComponent<Animation>().sheets.push_back(_sheet);
 }
 
 /*!*****************************************************************************
@@ -85,15 +83,7 @@ component
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames,
-	const std::vector<int>& _frameCount, const std::vector<float>& _timePerImage)
+void Animator::AddImages(Entity _e, const std::vector<SpriteSheet>& _sheet)
 {
-	if (_frames.size() != _frameCount.size() || _frameCount.size() != _timePerImage.size() || _timePerImage.size() != _frames.size())
-	{
-		LOG_ERROR("Animator::AddImages - added with different sizes.");
-		return;
-	}
-	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
-	_e.GetComponent<Animation>().frameCount.insert(_e.GetComponent<Animation>().frameCount.end(), _frameCount.begin(), _frameCount.end());
-	_e.GetComponent<Animation>().timePerImage.insert(_e.GetComponent<Animation>().timePerImage.end(), _timePerImage.begin(), _timePerImage.end());
+	_e.GetComponent<Animation>().sheets.insert(_e.GetComponent<Animation>().sheets.begin(), _sheet.begin(), _sheet.end());
 }
