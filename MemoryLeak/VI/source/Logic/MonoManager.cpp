@@ -54,8 +54,7 @@ std::string MonoManager::MonoDirectoryPath() {
 #endif
 #endif
 	path += "\\x64";
-	//mono_set_assemblies_path(path.c_str());
-	mono_set_dirs("D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64", "D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64");
+	mono_set_dirs(path.c_str(), path.c_str());
 	path += "\\SCRIPTING";
 	return path;
 }
