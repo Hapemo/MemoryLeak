@@ -328,6 +328,8 @@ public:
 	*******************************************************************************/
 	static bool EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2);
 
+	static bool CheckCollisionByEntity(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
+
 	/*!*****************************************************************************
 	\brief
 	EntitiesCollided function that checks if two given entities have collided by
@@ -337,7 +339,7 @@ public:
 	*******************************************************************************/
 	static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
 
-	static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck);
+	static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck = false);
 
 	/*!*****************************************************************************
 	\brief

@@ -373,6 +373,10 @@ bool InternalCalls::EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e
 	return collision2DManager->EntitiesCollided(_e1, _e2);
 }
 
+bool InternalCalls::CheckCollisionByEntity(const Entity& _e1, const Entity& _e2, bool const& _dynamicCheck) {
+	return collision2DManager->CheckCollision(_e1, _e2, _dynamicCheck);
+}
+
 /*!*****************************************************************************
 \brief
 EntitiesCollided function that checks if two given entities have collided by
