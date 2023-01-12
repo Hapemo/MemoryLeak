@@ -351,6 +351,7 @@
     <ClInclude Include="include\GameStateAndScene\GameState.h" />
     <ClInclude Include="include\GameStateAndScene\GameStateManager.h" />
     <ClInclude Include="include\GameStateAndScene\Scene.h" />
+    <ClInclude Include="include\Graphics\AnimationVariable.h" />
     <ClInclude Include="include\Graphics\ButtonManager.h" />
     <ClInclude Include="include\Graphics\Camera.h" />
     <ClInclude Include="include\Graphics\FontManager.h" />
