@@ -157,6 +157,7 @@ Animator editor.
 *******************************************************************************/
 GLuint RenderManager::GetAnimatorFBO()
 {
+	animator->Animate();
 	RENDER_STATE prevState = mCurrRenderPass;
 	mCurrRenderPass = RENDER_STATE::ANIMATOR;
 	mAnimatorFBO.Bind();

@@ -39,8 +39,10 @@ void Animator::Animate(const Entity& _e)
 	if (!_e.HasComponent<Sprite>()) return;
 	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<Animation>()) return;
+	if (!_e.GetComponent<Animation>().sheets.size()) return;
 
 	Animation animation = _e.GetComponent<Animation>();
+
 	_e.GetComponent<Sprite>().texture = animation.sheets[animation.currentImageIndex].sheet;
 
 	if (!_e.HasComponent<SheetAnimation>()) return;
