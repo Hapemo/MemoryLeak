@@ -456,15 +456,21 @@ Animation SerializationManager::getAnimation(Value& entity)
 {
 	Animation animation;
 	Value a(kObjectType);
-	a = entity["Animation"]["images"].GetArray();
+	if (entity["Animation"].HasMember("sheets"))
+	{
+	a = entity["Animation"]["sheets"].GetArray();
 	for (int j = 0; j < (int)a.Size(); ++j)
 	{
-		GLuint tex = spriteManager->GetTextureID(a[j].GetString());
-		animation.images.push_back(tex);
+		SpriteSheet sheets{};
+		sheets.sheet = spriteManager->GetTextureID(a[j]["sheet"].GetString());
+		sheets.frameCount = a[j]["frameCount"].GetInt();
+		sheets.timePerFrame = a[j]["timePerFrame"].GetFloat();
+		animation.sheets.push_back(sheets);
 	}
-	animation.timePerImage.push_back(entity["Animation"]["timePerImage"].GetFloat());/////////////!!!!!!!!!!!!!!!!!!!
+	//animation.timePerImage.push_back(entity["Animation"]["timePerImage"].GetFloat());/////////////!!!!!!!!!!!!!!!!!!!
 	//animation.timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
 	animation.currentImageIndex = entity["Animation"]["currentImageIndex"].GetInt();
+	}
 	return animation;
 }
 SheetAnimation SerializationManager::getSheetAnimation(Value& entity)
@@ -967,9 +973,23 @@ void SerializationManager::addSprite(Document& scene, Value& entity, Sprite spri
 void SerializationManager::addAnimation(Document& scene, Value& entity, Animation animation)
 {
 	Value tmp(kObjectType);
-	addVectorArrayStrMember(scene, tmp, "images", animation.images);
-	//tmp.AddMember(StringRef("timePerImage"), animation.timePerImage, scene.GetAllocator());
-	tmp.AddMember(StringRef("timeToImageSwap"), animation.timeToImageSwap, scene.GetAllocator());
+	//addVectorArrayStrMember(scene, tmp, "images", animation.images);
+	//tmp.AddMember(StringRef("timeToImageSwap"), animation.timeToImageSwap, scene.GetAllocator());
+	Value child(kObjectType);
+	child.SetArray();
+	for (size_t i = 0; i < animation.sheets.size(); ++i)
+	{
+		Value sheets(kObjectType);
+		std::string tex = spriteManager->GetTexturePath(animation.sheets[i].sheet);
+		Value texpath(tex.c_str(), (SizeType)tex.size(), scene.GetAllocator());
+		sheets.AddMember(StringRef("sheet"), texpath, scene.GetAllocator());
+		sheets.AddMember(StringRef("frameCount"), animation.sheets[i].frameCount, scene.GetAllocator());
+		sheets.AddMember(StringRef("timePerFrame"), animation.sheets[i].timePerFrame, scene.GetAllocator());
+		child.PushBack(sheets, scene.GetAllocator());
+	}
+	tmp.AddMember(StringRef("sheets"), child, scene.GetAllocator());
+	
+	
 	tmp.AddMember(StringRef("currentImageIndex"), animation.currentImageIndex, scene.GetAllocator());
 	entity.AddMember(StringRef("Animation"), tmp, scene.GetAllocator());
 }

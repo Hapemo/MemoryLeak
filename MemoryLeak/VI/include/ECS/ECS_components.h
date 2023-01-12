@@ -96,6 +96,10 @@ struct Animation
 	std::vector<SpriteSheet> sheets;	//save, edit, see
 	int currentImageIndex = 0;			//save, edit, see
 	//float timeToImageSwap;				//to be deleted
+	/*SpriteSheet::::
+	GLuint sheet = 0;
+	int frameCount = 1;
+	float timePerFrame = 1.f;*/
 };
 
 /*!*****************************************************************************
@@ -274,7 +278,7 @@ struct Audio {
 	bool isSpacial = false;
 	float spacialDistance = 1.f;
 	float spacialRatio = 1.f;
-	/*SOUND:
+	/*SOUND::::
 	std::string path;
 	bool toPlay = false;
 	float volume = 1.0f;

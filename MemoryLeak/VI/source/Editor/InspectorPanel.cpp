@@ -555,15 +555,18 @@ void InspectorPanel::AnimationEditor()
 {
 	if (ImGui::CollapsingHeader("Animation")) {
 		//ImGui::Text("Animation");
-		static GLuint addImage = {};
+		//static GLuint addImage = {};
+		static SpriteSheet addImage{};
 		static std::string  texadd = "Add image";
-		for (size_t i = 0; i <= e.GetComponent<Animation>().images.size(); ++i)
+		for (size_t i = 0; i <= e.GetComponent<Animation>().sheets.size(); ++i)
 		{
 			std::string tex{};
-			if (i != e.GetComponent<Animation>().images.size())
+			if (i != e.GetComponent<Animation>().sheets.size())
 			{
-				tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().images[i]);
-				ImGui::Text(tex.c_str());
+				tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().sheets[i].sheet);
+				ImGui::InputText(("Image "+std::to_string(i)).c_str(), const_cast<char*>(texadd.c_str()), texadd.size());
+				ImGui::InputInt("frameCount", &e.GetComponent<Animation>().sheets[i].frameCount);
+				ImGui::InputFloat("timePerFrame", &e.GetComponent<Animation>().sheets[i].timePerFrame);
 			}
 			else
 			{
@@ -576,13 +579,13 @@ void InspectorPanel::AnimationEditor()
 				if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
 				{
 					texpath = (const wchar_t*)payload->Data;
-					if (i == e.GetComponent<Animation>().images.size())
+					if (i == e.GetComponent<Animation>().sheets.size())
 						texadd = (char*)texpath;
 					std::string  tp = (std::string)((const char*)texpath);
-					if (i != e.GetComponent<Animation>().images.size())
-						e.GetComponent<Animation>().images[i] = spriteManager->GetTextureID(tp);
+					if (i != e.GetComponent<Animation>().sheets.size())
+						e.GetComponent<Animation>().sheets[i].sheet = spriteManager->GetTextureID(tp);
 					else
-						addImage = spriteManager->GetTextureID(tp);
+						addImage.sheet = spriteManager->GetTextureID(tp);
 					
 				}
 				ImGui::EndDragDropTarget();
@@ -593,11 +596,11 @@ void InspectorPanel::AnimationEditor()
 		{
 			animator->AddImages(e, addImage); //yj
 		}
-		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
-		ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage[e.GetComponent<Animation>().currentImageIndex]); //yj
-		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
-		ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
-		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
+		//SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
+		//ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage[e.GetComponent<Animation>().currentImageIndex]); //yj
+		//SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
+		//ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
+		//SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
 		ImGui::InputInt("currentImageIndex", &e.GetComponent<Animation>().currentImageIndex);
 		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
@@ -1246,47 +1249,47 @@ void InspectorPanel::PrefabEditor()
 	{
 		if (ImGui::CollapsingHeader("Animation")) {
 			//ImGui::Text("Animation");
-			Animation animation = p->GetComponent<Animation>();
-			static GLuint addImage = {};
-			static std::string  texadd = "Add image";
-			for (size_t i = 0; i <= animation.images.size(); ++i)
-			{
-				std::string tex{};
-				if (i != animation.images.size())
-				{
-					tex = spriteManager->GetTexturePath(animation.images[i]);
-					ImGui::Text(tex.c_str());
-				}
-				else
-				{
-					ImGui::InputText("Addimage", &texadd);
-					tex = texadd;
-				}
-				static const wchar_t* texpath = (const wchar_t*)"";
-				if (ImGui::BeginDragDropTarget())
-				{
-					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
-					{
-						texpath = (const wchar_t*)payload->Data;
-						if (i == p->GetComponent<Animation>().images.size())
-							texadd = (char*)texpath;
-						std::string  tp = (std::string)((const char*)texpath);
-						if (i != animation.images.size())
-							animation.images[i] = spriteManager->GetTextureID(tp);
-						else
-							addImage = spriteManager->GetTextureID(tp);
-					}
-					ImGui::EndDragDropTarget();
-				}
-			}
-			if (ImGui::Button("Add Sprite"))
-			{
-				animator->AddImages(e, addImage);
-			}
-			ImGui::InputFloat("timePerImage", &animation.timePerImage[e.GetComponent<Animation>().currentImageIndex]); //yj
-			ImGui::InputFloat("timeToImageSwap", &animation.timeToImageSwap);
-			ImGui::InputInt("currentImageIndex", &animation.currentImageIndex);
-			p->UpdateComponent<Animation>(animation);
+			//Animation animation = p->GetComponent<Animation>();
+			//static GLuint addImage = {};
+			//static std::string  texadd = "Add image";
+			//for (size_t i = 0; i <= animation.images.size(); ++i)
+			//{
+			//	std::string tex{};
+			//	if (i != animation.images.size())
+			//	{
+			//		tex = spriteManager->GetTexturePath(animation.images[i]);
+			//		ImGui::Text(tex.c_str());
+			//	}
+			//	else
+			//	{
+			//		ImGui::InputText("Addimage", &texadd);
+			//		tex = texadd;
+			//	}
+			//	static const wchar_t* texpath = (const wchar_t*)"";
+			//	if (ImGui::BeginDragDropTarget())
+			//	{
+			//		if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+			//		{
+			//			texpath = (const wchar_t*)payload->Data;
+			//			if (i == p->GetComponent<Animation>().images.size())
+			//				texadd = (char*)texpath;
+			//			std::string  tp = (std::string)((const char*)texpath);
+			//			if (i != animation.images.size())
+			//				animation.images[i] = spriteManager->GetTextureID(tp);
+			//			else
+			//				addImage = spriteManager->GetTextureID(tp);
+			//		}
+			//		ImGui::EndDragDropTarget();
+			//	}
+			//}
+			//if (ImGui::Button("Add Sprite"))
+			//{
+			//	animator->AddImages(e, addImage);
+			//}
+			//ImGui::InputFloat("timePerImage", &animation.timePerImage[e.GetComponent<Animation>().currentImageIndex]); //yj
+			//ImGui::InputFloat("timeToImageSwap", &animation.timeToImageSwap);
+			//ImGui::InputInt("currentImageIndex", &animation.currentImageIndex);
+			//p->UpdateComponent<Animation>(animation);
 			if (ImGui::Button("Remove Animation"))
 			{
 				p->RemoveComponent<Animation>();
