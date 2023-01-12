@@ -564,7 +564,7 @@ void InspectorPanel::AnimationEditor()
 			if (i != e.GetComponent<Animation>().sheets.size())
 			{
 				tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().sheets[i].sheet);
-				ImGui::InputText(("Image "+std::to_string(i)).c_str(), const_cast<char*>(texadd.c_str()), texadd.size());
+				ImGui::InputText(("Image "+std::to_string(i)).c_str(), const_cast<char*>(tex.c_str()), texadd.size());
 				ImGui::InputInt("frameCount", &e.GetComponent<Animation>().sheets[i].frameCount);
 				ImGui::InputFloat("timePerFrame", &e.GetComponent<Animation>().sheets[i].timePerFrame);
 			}
@@ -586,7 +586,6 @@ void InspectorPanel::AnimationEditor()
 						e.GetComponent<Animation>().sheets[i].sheet = spriteManager->GetTextureID(tp);
 					else
 						addImage.sheet = spriteManager->GetTextureID(tp);
-					
 				}
 				ImGui::EndDragDropTarget();
 			}
