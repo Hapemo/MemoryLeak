@@ -29,19 +29,22 @@ void Physics2DManager::Update(const double& _appDT) {
 
 	// Check if system is not in step mode
 	if (!Physics2DManager::mStepMode) {
-		// Increment accumulatedDT by the application's DT
-		Physics2DManager::mAccumulatedDT += _appDT;
+		//// Increment accumulatedDT by the application's DT
+		//Physics2DManager::mAccumulatedDT += _appDT;
 
-		// Prevent spiral of death
-		if (Physics2DManager::mAccumulatedDT > Physics2DManager::accumulatedDTCap)
-			Physics2DManager::mAccumulatedDT = Physics2DManager::accumulatedDTCap;
+		//// Prevent spiral of death
+		//if (Physics2DManager::mAccumulatedDT > Physics2DManager::accumulatedDTCap)
+		//	Physics2DManager::mAccumulatedDT = Physics2DManager::accumulatedDTCap;
 
-		// If the accumlatedDT is larger than or equal to the defined fixedDT,
-		//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
-		while (Physics2DManager::mAccumulatedDT >= Physics2DManager::fixedDT) {
-			Step();
-			Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
-		}
+		//// If the accumlatedDT is larger than or equal to the defined fixedDT,
+		////	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
+		//while (Physics2DManager::mAccumulatedDT >= Physics2DManager::fixedDT) {
+		//	Step();
+		//	Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
+		//}
+
+		// Removal of fixedDT updates
+		Step(_appDT);
 	}
 	// In step mode
 	else {
@@ -50,20 +53,19 @@ void Physics2DManager::Update(const double& _appDT) {
 		// Check if we should step (key pressed)
 		if (Physics2DManager::mAdvanceStep) {
 			// Execute a simulation tick of physics using defined fixedDT
-			Step();
+			Step(fixedDT);
 			// Set advance flag to false;
 			mAdvanceStep = false;
 		}
 	}
 }
 
-void Physics2DManager::Step() {
+void Physics2DManager::Step(const double& _stepDT) {
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mEntities) {
 
-		if (FirstUpdate) {
+		if (FirstUpdate)
 			ApplyImpulse(e, Math::Vec2{ 0.f, 1.f }, Math::Vec2{ 0.f, 0.f });
-		}
 
 		// Skip if entity should not be run
 		if (!e.ShouldRun())
@@ -134,14 +136,14 @@ void Physics2DManager::Step() {
 		SetAcceleration(e, GetAccumulatedForce(e) * (GetMass(e) == 0.f ? 0.f : static_cast<float>(1.f / GetMass(e))));
 		
 		// Determine velocity
-		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(fixedDT));
+		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(_stepDT));
 		
-		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (GetInertia(e) == 0.f ? 0.f : (1.f / GetInertia(e))) * static_cast<float>(fixedDT));
+		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (GetInertia(e) == 0.f ? 0.f : (1.f / GetInertia(e))) * static_cast<float>(_stepDT));
 
 		// Dampen velocity (for soft drag)
 		ScaleVelocity(e, GetDamping(e));
-		SetAngularVelocity(e, GetAngularVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
-		SetAngularTorque(e, GetAngularTorque(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
+		SetAngularVelocity(e, GetAngularVelocity(e) * static_cast<float>(std::pow(GetDamping(e), _stepDT)));
+		SetAngularTorque(e, GetAngularTorque(e) * static_cast<float>(std::pow(GetDamping(e), _stepDT)));
 
 		// Cap simulation velocity
 		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap)
@@ -151,9 +153,9 @@ void Physics2DManager::Step() {
 			SetAngularVelocity(e, Physics2DManager::angularVelocityCap);
 
 		// Move entity by velocity
-		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(fixedDT);
+		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(_stepDT);
 
-		e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * fixedDT);
+		e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * _stepDT);
 
 		// Clamp rotation
 		if (e.GetComponent<Transform>().rotation > static_cast<float>((2.0 * Math::PI)))
@@ -165,10 +167,11 @@ void Physics2DManager::Step() {
 		SetAccumulatedForce(e, Math::Vec2{ 0.f, 0.f });
 	}
 
+	// Hack
 	if (FirstUpdate)
 		FirstUpdate = false;
 
-	collision2DManager->ResolveCollisions(Physics2DManager::fixedDT);
+	collision2DManager->ResolveCollisions(_stepDT);
 
 	layerManager->Update();
 }

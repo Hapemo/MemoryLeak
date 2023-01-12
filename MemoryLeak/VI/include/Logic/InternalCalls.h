@@ -337,6 +337,8 @@ public:
 	*******************************************************************************/
 	static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
 
+	static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck);
+
 	/*!*****************************************************************************
 	\brief
 	Exits the game.

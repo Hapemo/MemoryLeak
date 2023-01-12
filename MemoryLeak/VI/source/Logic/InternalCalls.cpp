@@ -384,6 +384,10 @@ bool InternalCalls::EntitiesCollided(std::string const& _entityName1, std::strin
 	return collision2DManager->EntitiesCollided(FUNC->GetEntity(_entityName1, _sceneName), FUNC->GetEntity(_entityName2, _sceneName));
 }
 
+bool InternalCalls::CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck) {
+	return collision2DManager->CheckCollision(FUNC->GetEntity(_entityName1, _sceneName), FUNC->GetEntity(_entityName2, _sceneName), _dynamicCheck);
+}
+
 /*!*****************************************************************************
 \brief
 Exits the game.
