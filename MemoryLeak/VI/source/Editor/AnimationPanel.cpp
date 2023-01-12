@@ -1,4 +1,4 @@
-/*!*****************************************************************************
+ /*!*****************************************************************************
 /*!*****************************************************************************
 \file AnimationPanel.cpp
 \author Huang Wei Jhin
@@ -54,24 +54,7 @@ void AnimationPanel::Update()
 				ImVec2 imageSize = { size * ratio * frame,size * ratio };
 				GLuint animation_texture = spriteManager->GetTexture(e);
 				ImVec2 viewSize = { size * 16.f / 9.f,size };
-				if (animation_texture)
-				{
-					textureImage = (void*)(intptr_t)animation_texture;
-					ImGui::Image(textureImage, imageSize, ImVec2(0, 1), ImVec2(1, 0));
-					if (ImGui::BeginDragDropTarget())
-					{
-						static const wchar_t* texpath = (const wchar_t*)"";
-						if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
-						{
-							texpath = (const wchar_t*)payload->Data;
-							std::string tp = (std::string)((const char*)texpath);
-							e.GetComponent<Sprite>().sprite = SPRITE::TEXTURE;
-							spriteManager->SetTexture(e, tp);
-						}
-						ImGui::EndDragDropTarget();
-					}
-
-				}
+				
 				if (e.HasComponent<SheetAnimation>())
 				{
 					frame = e.GetComponent<SheetAnimation>().frameCount;
@@ -90,17 +73,60 @@ void AnimationPanel::Update()
 						else
 							isViewportPaused = true;
 					}
+					ImGui::SliderInt("Frame", &e.GetComponent<SheetAnimation>().currFrameIndex, 0, e.GetComponent<SheetAnimation>().frameCount-1);
 				}
 				else
 				{
 					ImGui::SetWindowFontScale(1.8f);
-					if (ImGui::Button("Add Animation Component", viewSize))
+					if (ImGui::Button("Add Animation Sheet Component", viewSize))
 					{
 						e.AddComponent<SheetAnimation>({});
 					}
 					ImGui::SetWindowFontScale(1.0f);
 				}
+				if (!e.HasComponent<Animation>())
+				{
+					ImGui::SetWindowFontScale(1.8f);
+					if (ImGui::Button("Add Animation Component", viewSize))
+					{
+						e.AddComponent<Animation>({});
+					}
+					ImGui::SetWindowFontScale(1.0f);
+					if (animation_texture)
+					{
+						textureImage = (void*)(intptr_t)animation_texture;
+						ImGui::Image(textureImage, imageSize, ImVec2(0, 1), ImVec2(1, 0));
+						if (ImGui::BeginDragDropTarget())
+						{
+							static const wchar_t* texpath = (const wchar_t*)"";
+							if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+							{
+								texpath = (const wchar_t*)payload->Data;
+								std::string tp = (std::string)((const char*)texpath);
+								e.GetComponent<Sprite>().sprite = SPRITE::TEXTURE;
+								spriteManager->SetTexture(e, tp);
+							}
+							ImGui::EndDragDropTarget();
+						}
+
+					}
+				}
+				else
+				{
+					ImGui::SliderInt("Sheet", &e.GetComponent<Animation>().currentImageIndex,0, (int)e.GetComponent<Animation>().sheets.size()-1);
+					for (size_t i = 0; i < e.GetComponent<Animation>().sheets.size(); i++)
+					{
+						textureImage = (void*)(intptr_t)e.GetComponent<Animation>().sheets[i].sheet;
+						ImGui::Image(textureImage, imageSize, ImVec2(0, 1), ImVec2(1, 0));
+						ImGui::SameLine();
+						ImGui::Text(("Sheet " + std::to_string(i)).c_str());
+					}
+				}
 			}
+		}
+		else
+		{
+			ImGui::Text("Select an entity to edit");
 		}
 	}
 	ImGui::End();

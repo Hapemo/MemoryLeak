@@ -565,8 +565,12 @@ void InspectorPanel::AnimationEditor()
 			{
 				tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().sheets[i].sheet);
 				ImGui::InputText(("Image "+std::to_string(i)).c_str(), const_cast<char*>(tex.c_str()), texadd.size());
-				ImGui::InputInt("frameCount", &e.GetComponent<Animation>().sheets[i].frameCount);
-				ImGui::InputFloat("timePerFrame", &e.GetComponent<Animation>().sheets[i].timePerFrame);
+				ImGui::InputInt(("frameCount"+std::to_string(i)).c_str(), &e.GetComponent<Animation>().sheets[i].frameCount);
+				ImGui::InputFloat(("timePerFrame"+std::to_string(i)).c_str(), &e.GetComponent<Animation>().sheets[i].timePerFrame);
+				if (ImGui::Button(("Remove Sprite" + std::to_string(i)).c_str()))
+				{
+					e.GetComponent<Animation>().sheets.erase(e.GetComponent<Animation>().sheets.begin(), e.GetComponent<Animation>().sheets.begin() + i);
+				}
 			}
 			else
 			{
