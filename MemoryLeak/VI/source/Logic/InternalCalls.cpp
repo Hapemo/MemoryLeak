@@ -33,6 +33,22 @@ bool InternalCalls::CheckKey(E_STATE _state, E_KEY _key) {
 	return Input::CheckKey(_state, _key);
 }
 
+bool InternalCalls::CheckKeyPress(int _key) {
+	return Input::CheckKey(E_STATE::PRESS, (E_KEY)_key);
+}
+
+bool InternalCalls::CheckKeyHold(int _key) {
+	return Input::CheckKey(E_STATE::HOLD, (E_KEY)_key);
+}
+
+bool InternalCalls::CheckKeyRelease(int _key) {
+	return Input::CheckKey(E_STATE::RELEASE, (E_KEY)_key);
+}
+
+bool InternalCalls::CheckKeyIdle(int _key) {
+	return Input::CheckKey(E_STATE::NOTPRESS, (E_KEY)_key);
+}
+
 /*!*****************************************************************************
 \brief
 Get world mouse position.
@@ -50,6 +66,22 @@ Math::Vec2 InternalCalls::GetWorldMousePos() {
 
 /*!*****************************************************************************
 \brief
+Get world mouse position x.
+*******************************************************************************/
+float InternalCalls::GetWorldMousePosX() {
+	return FUNC->GetWorldMousePos().x;
+}
+
+/*!*****************************************************************************
+\brief
+Get world mouse position x.
+*******************************************************************************/
+float InternalCalls::GetWorldMousePosY() {
+	return FUNC->GetWorldMousePos().y;
+}
+
+/*!*****************************************************************************
+\brief
 ApplyImpulse function that adds a velocity impulse to the entity
 \param const Entity &
 A reference to a read-only Entity to
@@ -61,8 +93,14 @@ calculation
 \return void
 NULL
 *******************************************************************************/
-void InternalCalls::ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation) {
+void InternalCalls::ApplyImpulseByEntity(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation) {
 	physics2DManager->ApplyImpulse(_e, _impulse, _rotation);
+}
+
+void InternalCalls::ApplyImpulse(std::string const& _entityName, std::string const& _sceneName, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY) {
+	Math::Vec2 impulse = { _impulseX, _impulseY };
+	Math::Vec2 rotate = { _rotationX, _rotationY };
+	physics2DManager->ApplyImpulse(FUNC->GetEntity(_entityName, _sceneName), impulse, rotate);
 }
 
 /*!*****************************************************************************
@@ -138,6 +176,48 @@ std::pair<int, int> InternalCalls::GetChoices(int _id) {
 
 /*!*****************************************************************************
 \brief
+Retrieves the next dialog id.
+
+\param int _id
+The id of the current dialog.
+
+\return
+Returns the next dialog id.
+*******************************************************************************/
+int InternalCalls::GetNext(int _id) {
+	return dialogManager->GetNext(_id);
+}
+
+/*!*****************************************************************************
+\brief
+Retrieves the next dialog id.
+
+\param int _id
+The id of the current dialog.
+
+\return
+Returns the next dialog id.
+*******************************************************************************/
+int InternalCalls::GetChoice1(int _id) {
+	return dialogManager->GetNext(_id);
+}
+
+/*!*****************************************************************************
+\brief
+Retrieves the second choice dialog id.
+
+\param int _id
+The id of the current dialog.
+
+\return
+Returns the second choice dialog id.
+*******************************************************************************/
+int InternalCalls::GetChoice2(int _id) {
+	return dialogManager->GetNext2(_id);
+}
+
+/*!*****************************************************************************
+\brief
 Set the selected choice using function from DialogManager.
 
 \param int _id
@@ -190,6 +270,46 @@ Entity InternalCalls::GetEntity(std::string const& _entityName, std::string cons
 
 /*!*****************************************************************************
 \brief
+Checks if an entity from scene is active.
+*******************************************************************************/
+bool InternalCalls::EntityIsActive(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<General>().isActive;
+}
+
+/*!*****************************************************************************
+\brief
+Activate an entity from scene.
+*******************************************************************************/
+void InternalCalls::EntityActivate(std::string const& _entityName, std::string const& _sceneName) {
+	(FUNC->GetEntity(_entityName, _sceneName)).Activate();
+}
+
+/*!*****************************************************************************
+\brief
+Deactivate an entity from scene.
+*******************************************************************************/
+void InternalCalls::EntityDeactivate(std::string const& _entityName, std::string const& _sceneName) {
+	(FUNC->GetEntity(_entityName, _sceneName)).Deactivate();
+}
+
+/*!*****************************************************************************
+\brief
+Gets parent name of an entity from scene.
+*******************************************************************************/
+std::string InternalCalls::EntityGetParent(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<General>().parent.GetComponent<General>().name;
+}
+
+/*!*****************************************************************************
+\brief
+Gets parent id of an entity from scene.
+*******************************************************************************/
+int InternalCalls::EntityGetParentId(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<General>().parent.id;
+}
+
+/*!*****************************************************************************
+\brief
 Gets scene to pause or unpause the scene.
 *******************************************************************************/
 Scene& InternalCalls::SelectScene(std::string const& _name) {
@@ -198,9 +318,147 @@ Scene& InternalCalls::SelectScene(std::string const& _name) {
 
 /*!*****************************************************************************
 \brief
+Get current game state
+*******************************************************************************/
+GameState& InternalCalls::CurrentGameState() {
+	return *GameStateManager::GetInstance()->mCurrentGameState;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state name
+*******************************************************************************/
+std::string InternalCalls::GetCurrentGameStateName() {
+	return GameStateManager::GetInstance()->mCurrentGameState->mName;
+}
+
+/*!*****************************************************************************
+\brief
+Pause scene.
+*******************************************************************************/
+void InternalCalls::PauseScene(std::string const& _name) {
+	GameStateManager::GetInstance()->SelectScene(_name).Pause(true);
+}
+
+/*!*****************************************************************************
+\brief
+Unpause scene.
+*******************************************************************************/
+void InternalCalls::PlayScene(std::string const& _name) {
+	GameStateManager::GetInstance()->SelectScene(_name).Pause(false);
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera
+*******************************************************************************/
+Transform& InternalCalls::CurrentCamera() {
+	return CurrentGameState().mCamera;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera X scale
+*******************************************************************************/
+float InternalCalls::GetCurrentCameraScaleX() {
+	return CurrentGameState().mCamera.scale.x;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera Y scale
+*******************************************************************************/
+float InternalCalls::GetCurrentCameraScaleY() {
+	return CurrentGameState().mCamera.scale.y;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera X pos
+*******************************************************************************/
+float InternalCalls::GetCurrentCameraPosX() {
+	return CurrentGameState().mCamera.translation.x;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera Y pos
+*******************************************************************************/
+float InternalCalls::GetCurrentCameraPosY() {
+	return CurrentGameState().mCamera.translation.y;
+}
+
+/*!*****************************************************************************
+\brief
+Set current game state's camera X scale
+*******************************************************************************/
+void InternalCalls::SetCurrentCameraScaleX(float _x) {
+	CurrentGameState().mCamera.scale.x = _x;
+}
+
+/*!*****************************************************************************
+\brief
+Set current game state's camera Y scale
+*******************************************************************************/
+void InternalCalls::SetCurrentCameraScaleY(float _y) {
+	CurrentGameState().mCamera.scale.y = _y;
+}
+
+/*!*****************************************************************************
+\brief
+Set current game state's camera X pos
+*******************************************************************************/
+void InternalCalls::SetCurrentCameraPosX(float _x) {
+	CurrentGameState().mCamera.translation.x = _x;
+}
+
+/*!*****************************************************************************
+\brief
+Set current game state's camera Y pos
+*******************************************************************************/
+void InternalCalls::SetCurrentCameraPosY(float _y) {
+	CurrentGameState().mCamera.translation.y = _y;
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index
+*******************************************************************************/
+void InternalCalls::SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	Entity entity = FUNC->GetEntity(_entityName, _sceneName);
+	animator->SetCurrentImageIndex(entity, _index);
+	entity.GetComponent<SheetAnimation>().currFrameIndex = 0;
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index
+*******************************************************************************/
+int InternalCalls::GetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName) {
+	return animator->GetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName));
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index by entity
+*******************************************************************************/
+void InternalCalls::SetCurrentImageIndexByEntity(Entity _e, int _index) {
+	animator->SetCurrentImageIndex(_e, _index);
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index by entity
+*******************************************************************************/
+int InternalCalls::GetCurrentImageIndexByEntity(Entity _e) {
+	return animator->GetCurrentImageIndex(_e);
+}
+
+/*!*****************************************************************************
+\brief
 Sets the texture of an entity.
 *******************************************************************************/
-void InternalCalls::SetTexture(const Entity& _e, const std::string& _path) {
+void InternalCalls::SetTextureByEntity(const Entity& _e, const std::string& _path) {
 	spriteManager->SetTexture(_e, _path);
 }
 
@@ -208,8 +466,24 @@ void InternalCalls::SetTexture(const Entity& _e, const std::string& _path) {
 \brief
 Retrieves the texture of an entity.
 *******************************************************************************/
-std::string InternalCalls::GetTexture(const Entity& _e) {
+std::string InternalCalls::GetTextureByEntity(const Entity& _e) {
 	return spriteManager->GetTexturePath(spriteManager->GetTexture(_e));
+}
+
+/*!*****************************************************************************
+\brief
+Sets the texture of an entity.
+*******************************************************************************/
+void InternalCalls::SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path) {
+	spriteManager->SetTexture(FUNC->GetEntity(_entityName, _sceneName), _path);
+}
+
+/*!*****************************************************************************
+\brief
+Retrieves the texture of an entity.
+*******************************************************************************/
+std::string InternalCalls::GetTexture(std::string const& _entityName, std::string const& _sceneName) {
+	return spriteManager->GetTexturePath(spriteManager->GetTexture(FUNC->GetEntity(_entityName, _sceneName)));
 }
 
 /*!*****************************************************************************
@@ -223,8 +497,27 @@ A reference to a read-only entity to compare against
 \return bool
 Evaluated result of whether a collision happened between the two given entities
 *******************************************************************************/
-bool InternalCalls::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
+bool InternalCalls::EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2) {
 	return collision2DManager->EntitiesCollided(_e1, _e2);
+}
+
+bool InternalCalls::CheckCollisionByEntity(const Entity& _e1, const Entity& _e2, bool const& _dynamicCheck) {
+	return collision2DManager->CheckCollision(_e1, _e2, _dynamicCheck);
+}
+
+/*!*****************************************************************************
+\brief
+EntitiesCollided function that checks if two given entities have collided by
+checking whether if a contact with the two entities exists
+\return bool
+Evaluated result of whether a collision happened between the two given entities
+*******************************************************************************/
+bool InternalCalls::EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName) {
+	return collision2DManager->EntitiesCollided(FUNC->GetEntity(_entityName1, _sceneName), FUNC->GetEntity(_entityName2, _sceneName));
+}
+
+bool InternalCalls::CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck) {
+	return collision2DManager->CheckCollision(FUNC->GetEntity(_entityName1, _sceneName), FUNC->GetEntity(_entityName2, _sceneName), _dynamicCheck);
 }
 
 /*!*****************************************************************************
@@ -280,4 +573,84 @@ bool InternalCalls::IsPlaying(int _channel) {
 *******************************************************************************/
 void InternalCalls::PlayBGSound(std::string _name, int _channel) {
 	audioManager->PlayBGSound(_name, _channel);
+}
+
+/*!*****************************************************************************
+\brief
+Get X pos of an entity.
+*******************************************************************************/
+float InternalCalls::GetPosX(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.x;
+}
+
+/*!*****************************************************************************
+\brief
+Get Y pos of an entity.
+*******************************************************************************/
+float InternalCalls::GetPosY(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.y;
+}
+
+/*!*****************************************************************************
+\brief
+Set X pos of an entity.
+*******************************************************************************/
+void InternalCalls::SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.x = _posX;
+}
+
+/*!*****************************************************************************
+\brief
+Set Y pos of an entity.
+*******************************************************************************/
+void InternalCalls::SetPosY(std::string const& _entityName, std::string const& _sceneName, float _posY) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.y = _posY;
+}
+
+/*!*****************************************************************************
+\brief
+Set Y scale of an entity.
+*******************************************************************************/
+void InternalCalls::SetScaleY(std::string const& _entityName, std::string const& _sceneName, float _scaleY) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().scale.y = _scaleY;
+}
+
+/*!*****************************************************************************
+\brief
+Set Y scale of an entity.
+*******************************************************************************/
+void InternalCalls::SetScaleX(std::string const& _entityName, std::string const& _sceneName, float _scaleX) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().scale.x = _scaleX;
+}
+
+/*!*****************************************************************************
+\brief
+Get Y scale of an entity.
+*******************************************************************************/
+float InternalCalls::GetScaleY(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().scale.y;
+}
+
+/*!*****************************************************************************
+\brief
+Get X scale of an entity.
+*******************************************************************************/
+float InternalCalls::GetScaleX(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().scale.x;
+}
+
+/*!*****************************************************************************
+\brief
+Set rotation of an entity.
+*******************************************************************************/
+void InternalCalls::SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate) {
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().rotation = _rotate;
+}
+
+/*!*****************************************************************************
+\brief
+Get rotation of an entity.
+*******************************************************************************/
+float InternalCalls::GetRotate(std::string const& _entityName, std::string const& _sceneName) {
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().rotation;
 }

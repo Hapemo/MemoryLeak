@@ -27,7 +27,7 @@
 //}
 
 
-bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
+bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt, const bool& _dynamicCheck) {
 	// Get reference to the entities
 	Entity& obj1{ _contact.obj[0] },
 		& obj2{ _contact.obj[1] };
@@ -71,6 +71,9 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 			}
 		}
 	}
+
+	if (!_dynamicCheck)
+		return false;
 
 // Dynamic check
 	// Compute min and max of both entities
@@ -187,7 +190,7 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt) {
 	return true;
 }
 
-bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt) {
+bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt, const bool& _dynamicCheck) {
 	// Get reference to the entities
 	Entity& obj1{ _contact.obj[0] },
 		& obj2{ _contact.obj[1] };
@@ -221,6 +224,9 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 
 		return true;
 	}
+
+	if (!_dynamicCheck)
+		return false;
 
 	// Find the relative velocity of both entities
 	Math::Vec2 relVel{};
@@ -310,8 +316,9 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt)
 		return false;
 }
 
-bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
+bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt, const bool& _dynamicCheck) {
 	_dt;
+	_dynamicCheck;
 
 	// Get reference to the entities
 	Entity& objCircle{ _contact.obj[0] },
@@ -367,11 +374,11 @@ bool Collision2DManager::CI_CirclevsRect(Contact& _contact, const double& _dt) {
 	return false;
 }
 
-bool Collision2DManager::CI_RectvsCircle(Contact& _contact, const double& _dt) {
+bool Collision2DManager::CI_RectvsCircle(Contact& _contact, const double& _dt, const bool& _dynamicCheck) {
 	std::swap(_contact.obj[0], _contact.obj[1]);
 	std::swap(_contact.objType[0], _contact.objType[1]);
 
-	return CI_CirclevsRect(_contact, _dt);
+	return CI_CirclevsRect(_contact, _dt, _dynamicCheck);
 }
 
 bool Collision2DManager::HasCollider(const Entity& _e) {
@@ -468,11 +475,11 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		//if (!e1->GetComponent<General>().isActive)
 			//continue;
 
-		if (e1->GetComponent<General>().tag != TAG::PLAYER)
-			continue;
+		//if (e1->GetComponent<General>().tag != TAG::PLAYER)
+		//	continue;
 
-		//for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
-		for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
+		for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
+		//for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
 			if (e1 == e2)
 				continue;
 
@@ -517,7 +524,7 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 
 			// Call function to check for collision
 			// If it returns true, means collision occurred
-			if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt)) {
+			if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt, false)) {
 				mContactList.emplace_back(contact);
 				//LOG_INFO("Collision Detected\n");
 			}
@@ -535,6 +542,43 @@ bool Collision2DManager::EntitiesCollided(const Entity& _e1, const Entity& _e2) 
 	}
 
 	return false;
+}
+
+bool Collision2DManager::CheckCollision(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck) {
+	// Static check only
+	if (!_dynamicCheck) {
+		for (auto const& item : mContactList) {
+			if (item.obj[0].id == _e1.id && item.obj[1].id == _e2.id)
+				return true;
+			if (item.obj[1].id == _e1.id && item.obj[0].id == _e2.id)
+				return true;
+		}
+
+		return false;
+	}
+	// Dynamic check only
+	else {
+		// Code has not accounted for multiple colliders attached to an entity despite it being a constraint made to me by group members
+		int e1Type{ 0 }, e2Type;
+		// Find collider type of 1st entity
+		if (_e1.HasComponent<RectCollider>())
+			e1Type = static_cast<int>(ColliderType::RECT);
+		else if (_e1.HasComponent<CircleCollider>())
+			e1Type = static_cast<int>(ColliderType::CIRCLE);
+		else
+
+		// Find collider type of 2nd entity
+		if (_e2.HasComponent<RectCollider>())
+			e2Type = static_cast<int>(ColliderType::RECT);
+		else if (_e2.HasComponent<CircleCollider>())
+			e2Type = static_cast<int>(ColliderType::CIRCLE);
+		
+		// Initialize contact
+		Contact contact{ _e1, _e2, e1Type, e2Type };
+
+		// Return result of the collision check
+		return (*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, FPSManager::dt, _dynamicCheck);
+	}
 }
 
 void Collision2DManager::ClearContactList() {

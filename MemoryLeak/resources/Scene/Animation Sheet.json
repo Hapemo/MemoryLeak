@@ -1,0 +1,83 @@
+[
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -19.74405860900879,
+                "Y": 23.857398986816406
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
+            "layer": 0
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\boat_NW_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 1.0
+                }
+            ],
+            "currentImageIndex": 7
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 1,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.789352536201477
+        }
+    }
+]

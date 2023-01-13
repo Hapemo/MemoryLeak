@@ -83,7 +83,8 @@ public:
 	std::set<Entity> mEntities{};			// Entities in the scene 
 	bool mIsPause=true;											// Paused state of the scene
 	std::string mName="";
-	Transform mCamera{};
+	//Transform mCamera{};
+	bool mIsUI;
 	int mLayer=0;
 	int mOrder=0;
 

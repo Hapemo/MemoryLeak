@@ -42,6 +42,8 @@ private:
 	void DialogueEditor();
 	void ButtonEditor();
 	void LayerColliderEditor();
+	void LightSourceEditor();
+	void ShadowCasterEditor();
 
 	void AddPrefabComponent();
 	void PrefabEditor();
@@ -62,6 +64,11 @@ private:
 	const char* colorChange[3]{ "None","Smoothy","Traffic Light" };
 	const char* movement[5]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
 	int addComponentID{};
-	const char* componentsList[18]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
-				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "Button" ,"LayerCollider"};
+	const char* componentsList[20]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
+				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "Button" ,"LayerCollider", "LightSource", "ShadowCaster"};
+
+
+	/*typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
+		Physics2D, RectCollider, CircleCollider, Edge2DCollider,
+		Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster>  COMPONENT;*/
 };

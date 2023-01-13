@@ -54,8 +54,7 @@ std::string MonoManager::MonoDirectoryPath() {
 #endif
 #endif
 	path += "\\x64";
-	//mono_set_assemblies_path(path.c_str());
-	mono_set_dirs("D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64", "D:\\Heart\\Documents\\GitHub\\MemoryLeak\\MemoryLeak\\bin\\Debug\\x64");
+	mono_set_dirs(path.c_str(), path.c_str());
 	path += "\\SCRIPTING";
 	return path;
 }
@@ -67,6 +66,7 @@ assembly dll. Returns true if success, else returns false.
 *******************************************************************************/
 bool MonoManager::InitMonoDomain(const char* _root, const char* _appdomain, const std::string _directory, const std::string _dll) {
 	std::cout << "Initialising Mono domain...\n";
+	//LOG_INFO("Initialising Mono domain...");
 	mRootDomain = mono_jit_init(_root);
 	if (mRootDomain != nullptr) {
 		// Create a mono app domain

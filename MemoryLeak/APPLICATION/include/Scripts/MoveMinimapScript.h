@@ -21,6 +21,7 @@ class MoveMinimapScript : public ScriptComponent {
 private:
 	std::string name{ "MoveMinimapScript" };
 	Scene* currScene;
+	Transform* currCamera;
 	bool inited;
 	Math::Vec2 originalTranslate;
 	Math::Vec2 originalScale;

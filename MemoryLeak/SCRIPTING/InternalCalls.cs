@@ -5,75 +5,169 @@ namespace BonVoyage
 {
     public class InternalCalls
 	{
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static bool CheckKey();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool CheckKeyPress(int _key);
 
-        //private extern class Math;
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool CheckKeyHold(int _key);
 
-		//[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		//internal extern static Math::Vec2 GetWorldMousePos();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool CheckKeyRelease(int _key);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static void ApplyImpulse();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool CheckKeyIdle(int _key);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static void LoadDialogs();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float GetWorldMousePosX();
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static string GetDialogue();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float GetWorldMousePosY();
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static int GetNextDialogueID();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void ApplyImpulse(string _entityName, string _sceneName, float _impulseX, float _impulseY, float _rotationX, float _rotationY);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static bool HasChoice();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void LoadDialogs(string _filename);
 
-		//[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		//internal extern static pair<int, int> GetChoices();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static string GetDialogue(int _id);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static void SetSelectedChoice();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetNextDialogueID(int _id);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static bool SetCurrentDialogueID();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool HasChoice(int _id);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetChoice1(int _id);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetChoice2(int _id);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetNext(int _id);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetSelectedChoice(int _id, int _selectedChoice);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool SetCurrentDialogueID(int _id);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetCurrentDialogueID();
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static void ChangeGameState();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void ChangeGameState(string _name);
 
-		//[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		//internal extern static Entity GetEntity();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool EntityIsActive(string _entityName, string _sceneName);
 
-		//[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		//internal extern static Scene& SelectScene();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void EntityActivate(string _entityName, string _sceneName);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static void SetTexture();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void EntityDeactivate(string _entityName, string _sceneName);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static string GetTexture();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static string EntityGetParent(string _entityName, string _sceneName);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static bool EntitiesCollided();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int EntityGetParentId(string _entityName, string _sceneName);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static string GetCurrentGameStateName();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void PauseScene(string _name);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void PlayScene(string _name);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetCurrentCameraScaleX();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetCurrentCameraScaleY();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetCurrentCameraPosX();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetCurrentCameraPosY();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentCameraScaleX(float _x);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentCameraScaleY(float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentCameraPosX(float _x);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentCameraPosY(float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentImageIndex(string _entityName, string _sceneName, int _index);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetCurrentImageIndex(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetTexture(string _entityName, string _sceneName, string _path);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static string GetTexture(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool EntitiesCollided(string _entityName1, string _entityName2, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool CheckCollision(string _entityName1, string _entityName2, string _sceneName, bool _dynamicCheck);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void GameStateExit();
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static double GetDeltaTime();
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static void InitScriptWindow();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void PlayAnySound(string _name, int _channel);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static void PlayAnySound();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool IsPlaying(int _channel);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static bool IsPlaying();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void PlayBGSound(string _name, int _channel);
 
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		internal extern static void PlayBGSound();
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetPosX(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetPosY(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetPosX(string _entityName, string _sceneName, float _posX);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetPosY(string _entityName, string _sceneName, float _posY);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetScaleX(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetScaleY(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetScaleX(string _entityName, string _sceneName, float _scaleX);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetScaleY(string _entityName, string _sceneName, float _scaleY);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GetRotate(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetRotate(string _entityName, string _sceneName, float _rotate);
 	}
 }

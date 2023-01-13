@@ -22,7 +22,7 @@
 /*!*****************************************************************************
 Define a function callback for collision dispatch
 *******************************************************************************/
-typedef bool (*CollisionCallback)(Contact&, const double&);
+typedef bool (*CollisionCallback)(Contact&, const double&, const bool&);
 
 
 /*!*****************************************************************************
@@ -52,7 +52,7 @@ public:
 	\return bool
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
-	static bool CI_RectvsRect(Contact& _contact, const double& _dt);
+	static bool CI_RectvsRect(Contact& _contact, const double& _dt, const bool& _dynamicCheck = false);
 
 	/*!*****************************************************************************
 	\brief
@@ -65,7 +65,7 @@ public:
 	\return bool
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
-	static bool CI_CirclevsCircle(Contact& _contact, const double& _dt);
+	static bool CI_CirclevsCircle(Contact& _contact, const double& _dt, const bool& _dynamicCheck = false);
 
 	/*!*****************************************************************************
 	\brief
@@ -77,7 +77,7 @@ public:
 	\return bool
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
-	static bool CI_RectvsCircle(Contact& _contact, const double& _dt);
+	static bool CI_RectvsCircle(Contact& _contact, const double& _dt, const bool& _dynamicCheck = false);
 
 	/*!*****************************************************************************
 	\brief
@@ -89,7 +89,7 @@ public:
 	\return bool
 	Evaluated result of whether collision has occurred between the given entity pair
 	*******************************************************************************/
-	static bool CI_CirclevsRect(Contact& _contact, const double& _dt);
+	static bool CI_CirclevsRect(Contact& _contact, const double& _dt, const bool& _dynamicCheck = false);
 
 // -----------------------------
 // Component-related functions
@@ -168,6 +168,8 @@ public:
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
 	bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
+
+	bool CheckCollision(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
 
 	/*!*****************************************************************************
 	\brief

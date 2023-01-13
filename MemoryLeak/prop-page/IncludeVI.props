@@ -5,7 +5,6 @@
   <PropertyGroup>
     <LibraryPath>$(SolutionDir)\bin\$(Configuration)\$(Platform)\VI;$(SolutionDir)\lib\Mono\lib\$(Configuration);$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)VI\include\PrefabManager;$(SolutionDir)VI\include\ECS;$(SolutionDir)VI\include\Editor;$(SolutionDir)VI\include\Graphics;$(SolutionDir)VI\include\GameStateAndScene;$(SolutionDir)VI\include\Logic;$(SolutionDir)VI\include;$(SolutionDir)lib\Mono\include;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)\bin\$(Configuration)\$(Platform)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
@@ -18,7 +17,8 @@ copy "$(SolutionDir)lib\glew-2.2.0\bin\Release\x64\glew32.dll" "$(TargetDir)glew
 copy "$(SolutionDir)lib\FMOD_V2.02\lib\fmod.dll" "$(TargetDir)fmod.dll" /Y
 copy "$(SolutionDir)lib\freetype-2.12.1\freetype.dll" "$(TargetDir)freetype.dll" /Y
 copy "$(SolutionDir)lib\Mono\lib\mono-2.0-sgen.dll" "$(TargetDir)mono-2.0-sgen.dll" /Y
-xcopy "$(SolutionDir)lib\Mono\Mono" "$(TargetDir)" /Y</Command>
+xcopy "$(SolutionDir)lib\Mono\Mono" "$(TargetDir)Mono" /E /Y /I
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup />

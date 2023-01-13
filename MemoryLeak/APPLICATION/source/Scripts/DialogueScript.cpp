@@ -27,7 +27,8 @@ void DialogueScript::StartScript(Entity const& gob) {
 	if (gob.HasComponent<Text>()) gob.GetComponent<Text>().text = FUNC->GetDialogue(FUNC->GetCurrentDialogueID());
 	(FUNC->GetEntity("DialogueBox", "Level1")).Activate();
 	currScn = &(FUNC->SelectScene("Level1"));
-	initialCamScale = currScn->mCamera.scale;
+	currCamera = &FUNC->CurrentCamera();
+	initialCamScale = FUNC->CurrentCamera().scale;
 	currCamScale = initialCamScale; 
 	targetCamScale = initialCamScale * 0.5f;
 }
@@ -37,10 +38,10 @@ void DialogueScript::StartScript(Entity const& gob) {
 Function will run on every update while the entity is active.
 *******************************************************************************/
 void DialogueScript::UpdateScript(Entity const& gob) {
-	currScn->mCamera.scale = currCamScale;
-	if (currScn->mCamera.scale.x >= targetCamScale.x)
-		currScn->mCamera.scale.x -= 500 * (float)FUNC->GetDeltaTime();
-	currCamScale = currScn->mCamera.scale;
+	currCamera->scale = currCamScale;
+	if (currCamera->scale.x >= targetCamScale.x)
+		currCamera->scale.x -= 500 * (float)FUNC->GetDeltaTime();
+	currCamScale = currCamera->scale;
 	if (FUNC->CheckKey(E_STATE::PRESS, M_BUTTON_L)) {
 		if (gob.HasComponent<Text>()) {
 			int currentId = FUNC->GetCurrentDialogueID();

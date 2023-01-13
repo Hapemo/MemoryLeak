@@ -11,13 +11,14 @@ ComponentType starts from 0.
 #pragma once
 #include <glm/glm.hpp>
 #include "vec2.h"
-#include "Graphics/SpriteVariable.h"
+#include "SpriteVariable.h"
 #include "AudioVariable.h"
 #include "TagVariable.h"
 #include "../Physics/Force.h"
 #include "../Physics/ColliderBody.h"
 #include <variant>
 #include "ScriptComponent.h"
+#include "AnimationVariable.h"
 
 class Prefab;
 
@@ -92,10 +93,13 @@ used.
 *******************************************************************************/
 struct Animation
 {
-	std::vector<GLuint> images;			//save, edit, see
-	float timePerImage;					//save, edit, see
-	float timeToImageSwap;				//NO save, NO edit, NO see
-	int currentImageIndex;				//save, edit, see
+	std::vector<SpriteSheet> sheets;	//save, edit, see
+	int currentImageIndex = 0;			//save, edit, see
+	//float timeToImageSwap;				//to be deleted
+	/*SpriteSheet::::
+	GLuint sheet = 0;
+	int frameCount = 1;
+	float timePerFrame = 1.f;*/
 };
 
 /*!*****************************************************************************
@@ -274,7 +278,7 @@ struct Audio {
 	bool isSpacial = false;
 	float spacialDistance = 1.f;
 	float spacialRatio = 1.f;
-	/*SOUND:
+	/*SOUND::::
 	std::string path;
 	bool toPlay = false;
 	float volume = 1.0f;
@@ -328,7 +332,7 @@ only contains an offset. Later versions will include light intensity.
 *******************************************************************************/
 struct LightSource
 {
-	Math::Vec2 centreOffset;
+	Math::Vec2 centerOffset;
 	float radius;
 	float intensity; //"whiteness" of the light
 };
@@ -357,14 +361,16 @@ enum class COMPONENTID
 	AUDIO,			//11
 	TEXT,			//12
 	AI,				//13
-	SCRIPT,			
-	DIALOGUE,
-	BUTTON,
-	LAYERCOLLIDER
+	SCRIPT,			//14
+	DIALOGUE,		//15
+	BUTTON,			//16
+	LAYERCOLLIDER,	//17
+	LIGHTSOURCE,	//18
+	SHADOWCASTER	//19
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster>  COMPONENT;
 
 
 

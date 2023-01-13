@@ -45,7 +45,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void Step();
+	void Step(const double& _stepDT);
 
 // -----------------------------
 // Component-related functions

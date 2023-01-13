@@ -14,6 +14,10 @@ as Sprites that are Squares. In the future, we will make a Shadow Component.
 #include "ECS_components.h"
 #include <RenderManager.h>
 
+struct Ray
+{
+};
+
 /*!*****************************************************************************
 \brief
 ShadowManager Class that handles raycasting from entities with LightSource 
@@ -89,5 +93,8 @@ private:
 	Returns the point that the ray stopped at.
 	*******************************************************************************/
 	Math::Vec2 RayCast(const Transform& _xform);
-	
+
+	void AttachLightSource(Entity _e);
+
+	Entity lightsource;
 };

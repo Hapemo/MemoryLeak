@@ -252,6 +252,8 @@ public:
 	bool ShouldCull(const Entity& e);
 
 private:
+	void* gs;
+	bool mIsCurrSceneUI;
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam, mAnimatorCam;
 	std::unordered_map<std::string, FontRenderer> mFontRenderers;
@@ -352,6 +354,8 @@ private:
 	Creating vertices from the ECS.
 	*******************************************************************************/
 	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
+
+	void CreateVerticesAnimator(std::map<size_t, std::map<GLuint, TextureInfo>>& _texInfo);
 
 	/*!*****************************************************************************
 	\brief

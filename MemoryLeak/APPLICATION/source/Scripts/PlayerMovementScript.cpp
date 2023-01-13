@@ -46,12 +46,13 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			_e.GetComponent<Audio>().sound.isLoop = true;
 		}
 		currScene = &(FUNC->SelectScene("Level1"));
-		initialCamScale = currScene->mCamera.scale;
+		currCamera = &FUNC->CurrentCamera();
+		initialCamScale = currCamera->scale;
 		inited = true;
 	}
 	if (dialogueZoomOut == true)
-		if (currScene->mCamera.scale.x < initialCamScale.x)
-			currScene->mCamera.scale.x += 500 * (float)FUNC->GetDeltaTime();
+		if (currCamera->scale.x < initialCamScale.x)
+			currCamera->scale.x += 500 * (float)FUNC->GetDeltaTime();
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
 
 	if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE)) {
@@ -73,11 +74,11 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::B)) speedCheat = !speedCheat; // speed cheat toggle
 	}
 
-	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) && (!FUNC->EntitiesCollided(enemy, _e) || !canDie)) {
+	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) && (!FUNC->EntitiesCollidedByEntity(enemy, _e) || !canDie)) {
 		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)/*|| _e.GetComponent<General>().name != "Boat"*/) {
-			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currScene->mCamera.translation - _e.GetComponent<Transform>().translation };
+			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currCamera->translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
-				FUNC->ApplyImpulse(_e, (dirVector.Normalized() * playerSpeed * (speedCheat ? speedCheatMultiplier : 1)) * (float)FUNC->GetDeltaTime(), Math::Vec2{ 0.f, 0.f });
+				FUNC->ApplyImpulseByEntity(_e, (dirVector.Normalized() * playerSpeed * (speedCheat ? speedCheatMultiplier : 1)) * (float)FUNC->GetDeltaTime(), Math::Vec2{ 0.f, 0.f });
 			if (_e.HasComponent<Audio>())
 				_e.GetComponent<Audio>().sound.volume = 0.2f;
 			float pi = (float) Math::PI;
@@ -92,23 +93,23 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			} else rotation = 3.f * pi / 2.f;
 
 			if ((rotation > 15.f * pi / 8.f && rotation <= 2.f * pi) || (rotation > 0.f && rotation <= pi / 8.f))
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png");
 			else if (rotation > pi / 8.f && rotation <= 3.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
 			else if (rotation > 3.f * pi / 8.f && rotation <= 5.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png");
 			else if (rotation > 5.f * pi / 8.f && rotation <= 7.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png");
 			else if (rotation > 7.f * pi / 8.f && rotation <= 9.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png");
 			else if (rotation > 9.f * pi / 8.f && rotation <= 11.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
 			else if (rotation > 11.f * pi / 8.f && rotation <= 13.f * pi / 8.f)
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png");
 			else
-				FUNC->SetTexture(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
+				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
 
-			if (FUNC->EntitiesCollided(_e, littleGirl)) {
+			if (FUNC->EntitiesCollidedByEntity(_e, littleGirl)) {
 				if (dialogueActivated == false) {
 					dialogueText.Activate();
 					dialogueActivated = true;
@@ -121,7 +122,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			}
 		}
 		else {
-			if (FUNC->EntitiesCollided(_e, littleGirl)) {
+			if (FUNC->EntitiesCollidedByEntity(_e, littleGirl)) {
 				dialogueZoomOut = true;
 			}
 		}
@@ -129,8 +130,8 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 
 	Transform eXform = _e.GetComponent<Transform>();
 	Transform waterXform = water.GetComponent<Transform>();
-	Math::Vec2 waterMin = waterXform.translation - waterXform.scale / 2.f + currScene->mCamera.scale / 2.f;
-	Math::Vec2 waterMax = waterXform.translation + waterXform.scale / 2.f - currScene->mCamera.scale / 2.f;
+	Math::Vec2 waterMin = waterXform.translation - waterXform.scale / 2.f + currCamera->scale / 2.f;
+	Math::Vec2 waterMax = waterXform.translation + waterXform.scale / 2.f - currCamera->scale / 2.f;
 
 	if (eXform.translation.x < waterMin.x)
 		_e.GetComponent<Transform>().translation.x = waterMin.x;
@@ -142,7 +143,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		_e.GetComponent<Transform>().translation.y = waterMax.y;
 
 	if (currScene)
-		currScene->mCamera.translation += (_e.GetComponent<Transform>().translation - currScene->mCamera.translation) * static_cast<float>(FUNC->GetDeltaTime()) * (speedCheat ? speedCheatMultiplier : 1);
+		currCamera->translation += (_e.GetComponent<Transform>().translation - currCamera->translation) * static_cast<float>(FUNC->GetDeltaTime()) * (speedCheat ? speedCheatMultiplier : 1);
 }
 
 void PlayerMovementScript::EndScript(const Entity& _e) {

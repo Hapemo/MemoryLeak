@@ -94,8 +94,8 @@ void Application::SystemUpdate() {
 
   // Animator
   TRACK_PERFORMANCE("Animation");
-  sheetAnimator->Animate();
   animator->Animate();
+  sheetAnimator->Animate();
   END_TRACK("Animation");
 
   //// Audio

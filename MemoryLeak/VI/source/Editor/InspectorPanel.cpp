@@ -74,10 +74,6 @@ void InspectorPanel::Update()
 				{
 					RectColliderEditor();
 				}
-				if (e.HasComponent<LayerCollider>())
-				{
-					LayerColliderEditor();
-				}
 				if (e.HasComponent<CircleCollider>())
 				{
 					CircleColliderEditor();
@@ -89,6 +85,10 @@ void InspectorPanel::Update()
 				if (e.HasComponent<Point2DCollider>())
 				{
 					Point2DColliderEditor();
+				}
+				if (e.HasComponent<LayerCollider>())
+				{
+					LayerColliderEditor();
 				}
 				if (e.HasComponent<Audio>())
 				{
@@ -113,6 +113,14 @@ void InspectorPanel::Update()
 				if (e.HasComponent<Button>())
 				{
 					ButtonEditor();
+				}
+				if (e.HasComponent<LightSource>())
+				{
+					LightSourceEditor();
+				}
+				if (e.HasComponent<ShadowCaster>())
+				{
+					ShadowCasterEditor();
 				}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
@@ -266,7 +274,11 @@ void InspectorPanel::AddComponent()
 	else if (addComponentID == (int)COMPONENTID::SPRITE)
 		e.AddComponent<Sprite>({});
 	else if (addComponentID == (int)COMPONENTID::ANIMATION)
+	{
 		e.AddComponent<Animation>({});
+		if (e.HasComponent<Sprite>())
+			animator->AddImages(e, SpriteSheet{e.GetComponent<Sprite>(safe).texture});
+	}
 	else if (addComponentID == (int)COMPONENTID::SHEETANIMATION)
 		e.AddComponent<SheetAnimation>({});
 	else if (addComponentID == (int)COMPONENTID::PHYSICS2D)
@@ -293,6 +305,10 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<Button>({});
 	else if (addComponentID == (int)COMPONENTID::LAYERCOLLIDER)
 		e.AddComponent<LayerCollider>({});
+	else if (addComponentID == (int)COMPONENTID::LIGHTSOURCE)
+		e.AddComponent<LightSource>({});
+	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
+		e.AddComponent<ShadowCaster>({});
 	
 }
 /*!*****************************************************************************
@@ -342,7 +358,11 @@ void InspectorPanel::AddPrefabComponent()
 	else if (addComponentID == (int)COMPONENTID::BUTTON)
 		p->AddComponent<Button>({});
 	else if (addComponentID == (int)COMPONENTID::LAYERCOLLIDER)
-		e.AddComponent<LayerCollider>({});
+		p->AddComponent<LayerCollider>({});
+	else if (addComponentID == (int)COMPONENTID::LIGHTSOURCE)
+		p->AddComponent<LightSource>({});
+	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
+		p->AddComponent<ShadowCaster>({});
 }
 
 
@@ -539,49 +559,72 @@ void InspectorPanel::AnimationEditor()
 {
 	if (ImGui::CollapsingHeader("Animation")) {
 		//ImGui::Text("Animation");
-		static GLuint addImage = {};
+		//static GLuint addImage = {};
+		static SpriteSheet addImage{};
 		static std::string  texadd = "Add image";
-		for (size_t i = 0; i <= e.GetComponent<Animation>().images.size(); ++i)
+		for (size_t i = 0; i <= e.GetComponent<Animation>().sheets.size(); ++i)
 		{
 			std::string tex{};
-			if (i != e.GetComponent<Animation>().images.size())
+			if (i != e.GetComponent<Animation>().sheets.size())
 			{
-				tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().images[i]);
-				ImGui::Text(tex.c_str());
+				tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().sheets[i].sheet);
+				ImGui::InputText(("Image "+std::to_string(i)).c_str(), const_cast<char*>(tex.c_str()), texadd.size());
+				if (ImGui::BeginDragDropTarget())
+				{
+					static const wchar_t* texpath = (const wchar_t*)"";
+					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+					{
+						texpath = (const wchar_t*)payload->Data;
+						std::string tp = (std::string)((const char*)texpath);
+						e.GetComponent<Animation>().sheets[i].sheet = spriteManager->GetTextureID(tp);
+						COMPONENT _new;
+						_new = e.GetComponent<Animation>();
+						undoStack.push_back(std::make_pair(e, _new));
+						stackPointer = (int)undoStack.size();
+					}
+					ImGui::EndDragDropTarget();
+				}
+				ImGui::InputInt(("frameCount"+std::to_string(i)).c_str(), &e.GetComponent<Animation>().sheets[i].frameCount);
+				ImGui::InputFloat(("timePerFrame"+std::to_string(i)).c_str(), &e.GetComponent<Animation>().sheets[i].timePerFrame);
+				if (ImGui::Button(("Remove Sheet" + std::to_string(i)).c_str()))
+				{
+					e.GetComponent<Animation>().sheets.erase(e.GetComponent<Animation>().sheets.begin() + i);
+				}
+				ImGui::Separator();
 			}
 			else
 			{
 				ImGui::InputText("Addimage", const_cast<char*>(texadd.c_str()), texadd.size());
 				tex = texadd;
-			}
-			static const wchar_t* texpath = (const wchar_t*)"";
-			if (ImGui::BeginDragDropTarget())
-			{
-				if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+				static const wchar_t* texpath = (const wchar_t*)"";
+				if (ImGui::BeginDragDropTarget())
 				{
-					texpath = (const wchar_t*)payload->Data;
-					if (i == e.GetComponent<Animation>().images.size())
-						texadd = (char*)texpath;
-					std::string  tp = (std::string)((const char*)texpath);
-					if (i != e.GetComponent<Animation>().images.size())
-						e.GetComponent<Animation>().images[i] = spriteManager->GetTextureID(tp);
-					else
-						addImage = spriteManager->GetTextureID(tp);
-					
+					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+					{
+						texpath = (const wchar_t*)payload->Data;
+						if (i == e.GetComponent<Animation>().sheets.size())
+							texadd = (char*)texpath;
+						std::string  tp = (std::string)((const char*)texpath);
+						if (i != e.GetComponent<Animation>().sheets.size())
+							e.GetComponent<Animation>().sheets[i].sheet = spriteManager->GetTextureID(tp);
+						else
+							addImage.sheet = spriteManager->GetTextureID(tp);
+					}
+					ImGui::EndDragDropTarget();
 				}
-				ImGui::EndDragDropTarget();
 			}
+			
 			SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
 		}
 		if (ImGui::Button("Add Sprite"))
 		{
-			animator->AddImages(e, addImage);
+			animator->AddImages(e, addImage); //yj
 		}
-		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
-		ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage);
-		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
-		ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
-		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
+		//SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
+		//ImGui::InputFloat("timePerImage", &e.GetComponent<Animation>().timePerImage[e.GetComponent<Animation>().currentImageIndex]); //yj
+		//SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
+		//ImGui::InputFloat("timeToImageSwap", &e.GetComponent<Animation>().timeToImageSwap);
+		//SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
 		ImGui::InputInt("currentImageIndex", &e.GetComponent<Animation>().currentImageIndex);
 		SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
@@ -1061,6 +1104,37 @@ void InspectorPanel::ButtonEditor()
 	}
 
 }
+void InspectorPanel::LightSourceEditor()
+{
+	if (ImGui::CollapsingHeader("LightSource"))
+	{
+		tmpVec2[0] = e.GetComponent<LightSource>().centerOffset.x;
+		tmpVec2[1] = e.GetComponent<LightSource>().centerOffset.y;
+		ImGui::InputFloat2("Light center", tmpVec2);
+		e.GetComponent<LightSource>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+		ImGui::DragFloat("Radius", &e.GetComponent<LightSource>().radius, 1.f);
+
+		ImGui::DragFloat("Intensity", &e.GetComponent<LightSource>().intensity, 0.05f, 0.f, 1.f);
+	}
+}
+void InspectorPanel::ShadowCasterEditor()
+{
+	if (ImGui::CollapsingHeader("ShadowCaster"))
+	{
+		tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset.x;
+		tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset.y;
+		ImGui::InputFloat2("Shadow center", tmpVec2);
+		e.GetComponent<ShadowCaster>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+		tmpVec2[0] = e.GetComponent<ShadowCaster>().scaleOffset.x;
+		tmpVec2[1] = e.GetComponent<ShadowCaster>().scaleOffset.y;
+		ImGui::InputFloat2("Shadow scale ", tmpVec2);
+		e.GetComponent<ShadowCaster>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
+
+		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
+	}
+}
 /*!*****************************************************************************
 \brief
 	This functions below onawards edits a particular component in a prefab
@@ -1199,47 +1273,47 @@ void InspectorPanel::PrefabEditor()
 	{
 		if (ImGui::CollapsingHeader("Animation")) {
 			//ImGui::Text("Animation");
-			Animation animation = p->GetComponent<Animation>();
-			static GLuint addImage = {};
-			static std::string  texadd = "Add image";
-			for (size_t i = 0; i <= animation.images.size(); ++i)
-			{
-				std::string tex{};
-				if (i != animation.images.size())
-				{
-					tex = spriteManager->GetTexturePath(animation.images[i]);
-					ImGui::Text(tex.c_str());
-				}
-				else
-				{
-					ImGui::InputText("Addimage", &texadd);
-					tex = texadd;
-				}
-				static const wchar_t* texpath = (const wchar_t*)"";
-				if (ImGui::BeginDragDropTarget())
-				{
-					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
-					{
-						texpath = (const wchar_t*)payload->Data;
-						if (i == p->GetComponent<Animation>().images.size())
-							texadd = (char*)texpath;
-						std::string  tp = (std::string)((const char*)texpath);
-						if (i != animation.images.size())
-							animation.images[i] = spriteManager->GetTextureID(tp);
-						else
-							addImage = spriteManager->GetTextureID(tp);
-					}
-					ImGui::EndDragDropTarget();
-				}
-			}
-			if (ImGui::Button("Add Sprite"))
-			{
-				animator->AddImages(e, addImage);
-			}
-			ImGui::InputFloat("timePerImage", &animation.timePerImage);
-			ImGui::InputFloat("timeToImageSwap", &animation.timeToImageSwap);
-			ImGui::InputInt("currentImageIndex", &animation.currentImageIndex);
-			p->UpdateComponent<Animation>(animation);
+			//Animation animation = p->GetComponent<Animation>();
+			//static GLuint addImage = {};
+			//static std::string  texadd = "Add image";
+			//for (size_t i = 0; i <= animation.images.size(); ++i)
+			//{
+			//	std::string tex{};
+			//	if (i != animation.images.size())
+			//	{
+			//		tex = spriteManager->GetTexturePath(animation.images[i]);
+			//		ImGui::Text(tex.c_str());
+			//	}
+			//	else
+			//	{
+			//		ImGui::InputText("Addimage", &texadd);
+			//		tex = texadd;
+			//	}
+			//	static const wchar_t* texpath = (const wchar_t*)"";
+			//	if (ImGui::BeginDragDropTarget())
+			//	{
+			//		if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+			//		{
+			//			texpath = (const wchar_t*)payload->Data;
+			//			if (i == p->GetComponent<Animation>().images.size())
+			//				texadd = (char*)texpath;
+			//			std::string  tp = (std::string)((const char*)texpath);
+			//			if (i != animation.images.size())
+			//				animation.images[i] = spriteManager->GetTextureID(tp);
+			//			else
+			//				addImage = spriteManager->GetTextureID(tp);
+			//		}
+			//		ImGui::EndDragDropTarget();
+			//	}
+			//}
+			//if (ImGui::Button("Add Sprite"))
+			//{
+			//	animator->AddImages(e, addImage);
+			//}
+			//ImGui::InputFloat("timePerImage", &animation.timePerImage[e.GetComponent<Animation>().currentImageIndex]); //yj
+			//ImGui::InputFloat("timeToImageSwap", &animation.timeToImageSwap);
+			//ImGui::InputInt("currentImageIndex", &animation.currentImageIndex);
+			//p->UpdateComponent<Animation>(animation);
 			if (ImGui::Button("Remove Animation"))
 			{
 				p->RemoveComponent<Animation>();

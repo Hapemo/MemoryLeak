@@ -22,6 +22,8 @@ is being stored.
 //#include "DialogManager.h"
 
 class Scene; 
+class GameState;
+struct Transform;
 
 #define FUNC InternalCalls::GetInstance()
 
@@ -58,11 +60,31 @@ public:
 	*******************************************************************************/
 	static bool CheckKey(E_STATE _state, E_KEY _key);
 
+	static bool CheckKeyPress(int _key);
+
+	static bool CheckKeyHold(int _key);
+
+	static bool CheckKeyRelease(int _key);
+
+	static bool CheckKeyIdle(int _key);
+
 	/*!*****************************************************************************
 	\brief
 	Get world mouse position.
 	*******************************************************************************/
 	static Math::Vec2 GetWorldMousePos();
+
+	/*!*****************************************************************************
+	\brief
+	Get world mouse position x.
+	*******************************************************************************/
+	static float GetWorldMousePosX();
+
+	/*!*****************************************************************************
+	\brief
+	Get world mouse position y.
+	*******************************************************************************/
+	static float GetWorldMousePosY();
 
 	/*!*****************************************************************************
 	\brief
@@ -77,7 +99,8 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	static void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
+	static void ApplyImpulseByEntity(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
+	static void ApplyImpulse(std::string const& _entityName, std::string const& _sceneName, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY);
 
 	/*!*****************************************************************************
 	\brief
@@ -141,6 +164,42 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Retrieves the next dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the next dialog id.
+	*******************************************************************************/
+	static int GetNext(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the next dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the next dialog id.
+	*******************************************************************************/
+	static int GetChoice1(int _id);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the second choice dialog id.
+
+	\param int _id
+	The id of the current dialog.
+
+	\return
+	Returns the second choice dialog id.
+	*******************************************************************************/
+	static int GetChoice2(int _id);
+
+	/*!*****************************************************************************
+	\brief
 	Set the selected choice using function from DialogManager.
 
 	\param int _id
@@ -183,21 +242,160 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Checks if an entity from scene is active.
+	*******************************************************************************/
+	static bool EntityIsActive(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Activate an entity from scene.
+	*******************************************************************************/
+	static void EntityActivate(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Deactivate an entity from scene.
+	*******************************************************************************/
+	static void EntityDeactivate(std::string const& _entityName, std::string const& _sceneName);
+	
+	/*!*****************************************************************************
+	\brief
+	Gets parent name of an entity from scene.
+	*******************************************************************************/
+	static std::string EntityGetParent(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Gets parent id of an entity from scene.
+	*******************************************************************************/
+	static int EntityGetParentId(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
 	Gets scene to pause or unpause the scene.
 	*******************************************************************************/
 	static Scene& SelectScene(std::string const& _name);
 
 	/*!*****************************************************************************
 	\brief
+	Pause scene.
+	*******************************************************************************/
+	static void PauseScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Unpause scene.
+	*******************************************************************************/
+	static void PlayScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state
+	*******************************************************************************/
+	static GameState& CurrentGameState();
+	static std::string GetCurrentGameStateName();
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state's camera
+	*******************************************************************************/
+	static Transform& CurrentCamera();
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state's camera X scale
+	*******************************************************************************/
+	static float GetCurrentCameraScaleX();
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state's camera Y scale
+	*******************************************************************************/
+	static float GetCurrentCameraScaleY();
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state's camera X pos
+	*******************************************************************************/
+	static float GetCurrentCameraPosX();
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state's camera Y pos
+	*******************************************************************************/
+	static float GetCurrentCameraPosY();
+
+	/*!*****************************************************************************
+	\brief
+	Set current game state's camera X scale
+	*******************************************************************************/
+	static void SetCurrentCameraScaleX(float _x);
+
+	/*!*****************************************************************************
+	\brief
+	Set current game state's camera Y scale
+	*******************************************************************************/
+	static void SetCurrentCameraScaleY(float _y);
+
+	/*!*****************************************************************************
+	\brief
+	Set current game state's camera X pos
+	*******************************************************************************/
+	static void SetCurrentCameraPosX(float _x);
+
+	/*!*****************************************************************************
+	\brief
+	Set current game state's camera Y pos
+	*******************************************************************************/
+	static void SetCurrentCameraPosY(float _y);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation image index by entity
+	*******************************************************************************/
+	static void SetCurrentImageIndexByEntity(Entity _e, int _index);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation image index by entity
+	*******************************************************************************/
+	static int GetCurrentImageIndexByEntity(Entity _e);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation image index
+	*******************************************************************************/
+	static void SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation image index
+	*******************************************************************************/
+	static int GetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
 	Sets the texture of an entity.
 	*******************************************************************************/
-	static void SetTexture(const Entity& _e, const std::string& _path);
+	static void SetTextureByEntity(const Entity& _e, const std::string& _path);
 
 	/*!*****************************************************************************
 	\brief
 	Retrieves the texture of an entity.
 	*******************************************************************************/
-	static std::string GetTexture(const Entity& _e);
+	static std::string GetTextureByEntity(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Sets the texture of an entity.
+	*******************************************************************************/
+	static void SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
+
+	/*!*****************************************************************************
+	\brief
+	Retrieves the texture of an entity.
+	*******************************************************************************/
+	static std::string GetTexture(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
@@ -210,7 +408,18 @@ public:
 	\return bool
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
-	static bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
+	static bool EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2);
+	static bool CheckCollisionByEntity(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
+
+	/*!*****************************************************************************
+	\brief
+	EntitiesCollided function that checks if two given entities have collided by
+	checking whether if a contact with the two entities exists
+	\return bool
+	Evaluated result of whether a collision happened between the two given entities
+	*******************************************************************************/
+	static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
+	static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck = false);
 
 	/*!*****************************************************************************
 	\brief
@@ -248,4 +457,64 @@ public:
 		Plays a single background sound
 	*******************************************************************************/
 	static void PlayBGSound(std::string _name, int _channel);
+
+	/*!*****************************************************************************
+	\brief
+	Get X pos of an entity.
+	*******************************************************************************/
+	static float GetPosX(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Get Y pos of an entity.
+	*******************************************************************************/
+	static float GetPosY(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set X pos of an entity.
+	*******************************************************************************/
+	static void SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+
+	/*!*****************************************************************************
+	\brief
+	Set Y pos of an entity.
+	*******************************************************************************/
+	static void SetPosY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+
+	/*!*****************************************************************************
+	\brief
+	Get X scale of an entity.
+	*******************************************************************************/
+	static float GetScaleX(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Get Y scale of an entity.
+	*******************************************************************************/
+	static float GetScaleY(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set X scale of an entity.
+	*******************************************************************************/
+	static void SetScaleX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+
+	/*!*****************************************************************************
+	\brief
+	Set Y scale of an entity.
+	*******************************************************************************/
+	static void SetScaleY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+
+	/*!*****************************************************************************
+	\brief
+	Get rotation of an entity.
+	*******************************************************************************/
+	static float GetRotate(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set rotation of an entity.
+	*******************************************************************************/
+	static void SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate);
 };

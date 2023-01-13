@@ -15,6 +15,7 @@ animate.
 #include "ECS_items.h"
 #include "ECS_components.h"
 #include "Helper.h"
+#include "AnimationVariable.h"
 
 /*!*****************************************************************************
 \brief
@@ -54,7 +55,7 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void AddImages(const Entity& _e, GLuint _frame);
+	void AddImages(Entity _e, const SpriteSheet& _sheet);
 
 	/*!*****************************************************************************
 	\brief
@@ -71,23 +72,10 @@ public:
 	\return
 	None.
 	*******************************************************************************/
-	void AddImages(const Entity& _e, const std::vector<GLuint>& _frames);
+	void AddImages(Entity _e, const std::vector<SpriteSheet>& _sheet);
 
-	/*!*****************************************************************************
-	\brief
-	Does a manual swap of the sprites. Some examples are button hover, button press
-	etc.
-
-	\param const Entity& e
-	The Entity whose Animation Component will be modified.
-
-	\param int index
-	index to modify
-
-	\return
-	None.
-	*******************************************************************************/
-	void ManualSwap(const Entity& _e, int _index);
+	void SetCurrentImageIndex(Entity _e, int _index) { _e.GetComponent<Animation>().currentImageIndex = _index; }
+	int GetCurrentImageIndex(Entity _e) { return  _e.GetComponent<Animation>().currentImageIndex; }
 private:
 	/*!*****************************************************************************
 	\brief

@@ -39,27 +39,16 @@ void Animator::Animate(const Entity& _e)
 	if (!_e.HasComponent<Sprite>()) return;
 	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<Animation>()) return;
-	if (_e.GetComponent<Animation>().timePerImage < 0) return;
-	if (!_e.GetComponent<Animation>().images.size())
-	{
-		//if image vector is empty, initialize it with the texture in its sprite component
-		if (!(_e.HasComponent<Sprite>() && _e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)) return;
-		static GLuint addImage = _e.GetComponent<Sprite>().texture;
-		AddImages(_e, addImage);
-	}
+	if (!_e.GetComponent<Animation>().sheets.size()) return;
+	if (_e.GetComponent<Animation>().currentImageIndex > _e.GetComponent<Animation>().sheets.size() - 1) return;
 
-	//update time to image swap
-	_e.GetComponent<Animation>().timeToImageSwap -= static_cast<float>(FPSManager::dt);
+	Animation animation = _e.GetComponent<Animation>();
 
-	if (_e.GetComponent<Animation>().timeToImageSwap >= 0) return;
+	_e.GetComponent<Sprite>().texture = animation.sheets[animation.currentImageIndex].sheet;
 
-	//reset counter
-	_e.GetComponent<Animation>().timeToImageSwap = _e.GetComponent<Animation>().timePerImage;
-	//change the image
-	_e.GetComponent<Animation>().currentImageIndex = ++_e.GetComponent<Animation>().currentImageIndex < _e.GetComponent<Animation>().images.size() ?
-		_e.GetComponent<Animation>().currentImageIndex : 0;
-	//change its texture
-	_e.GetComponent<Sprite>().texture = _e.GetComponent<Animation>().images[_e.GetComponent<Animation>().currentImageIndex];
+	if (!_e.HasComponent<SheetAnimation>()) return;
+	_e.GetComponent<SheetAnimation>().frameCount = animation.sheets[animation.currentImageIndex].frameCount;
+	_e.GetComponent<SheetAnimation>().timePerFrame = animation.sheets[animation.currentImageIndex].timePerFrame;
 }
 
 /*!*****************************************************************************
@@ -77,9 +66,9 @@ Component.
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& _e, GLuint _frame)
+void Animator::AddImages(Entity _e, const SpriteSheet& _sheet)
 {
-	_e.GetComponent<Animation>().images.push_back(_frame);
+	_e.GetComponent<Animation>().sheets.push_back(_sheet);
 }
 
 /*!*****************************************************************************
@@ -97,32 +86,7 @@ component
 \return
 None.
 *******************************************************************************/
-void Animator::AddImages(const Entity& _e, const std::vector<GLuint>& _frames)
+void Animator::AddImages(Entity _e, const std::vector<SpriteSheet>& _sheet)
 {
-	_e.GetComponent<Animation>().images.insert(_e.GetComponent<Animation>().images.end(), _frames.begin(), _frames.end());
-}
-/*!*****************************************************************************
-\brief
-Does a manual swap of the sprites. Some examples are button hover, button press
-etc.
-
-\param const Entity& e
-The Entity whose Animation Component will be modified.
-
-\param int index
-index to modify
-
-\return
-None.
-*******************************************************************************/
-void Animator::ManualSwap(const Entity& _e, int _index)
-{
-	if (!_e.HasComponent<Sprite>()) return;
-	if (!_e.HasComponent<Animation>()) return;
-	if (_index > _e.GetComponent<Animation>().images.size())
-	{
-		LOG_WARN("Animator::ManualSwap(const Entity& _e, int _index) - Vector subscript out of range! _index > images.size()");
-		return;
-	}
-	_e.GetComponent<Sprite>().texture = _e.GetComponent<Animation>().images[_index];
+	_e.GetComponent<Animation>().sheets.insert(_e.GetComponent<Animation>().sheets.begin(), _sheet.begin(), _sheet.end());
 }

@@ -34,10 +34,10 @@ void DeathScript::UpdateScript(Entity const& _e) {
 	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT) && FUNC->CheckKey(PRESS, M)) canDie = !canDie;
 
 	static bool onEntry = false;
-	if (FUNC->EntitiesCollided(player, _e)) onEntry = true;
+	if (FUNC->EntitiesCollidedByEntity(player, _e)) onEntry = true;
 	if (onEntry && canDie) {
 		static bool capsized = false;
-		FUNC->SetTexture(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
+		FUNC->SetTextureByEntity(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
 		if (capsized == false) {
 			player.GetComponent<SheetAnimation>().frameCount = 11;
 			player.GetComponent<SheetAnimation>().timePerFrame = 0.15f;

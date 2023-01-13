@@ -21,12 +21,13 @@ void MoveMinimapScript::UpdateScript(const Entity& _e) {
 	if (!inited)
 	{
 		currScene = &(FUNC->SelectScene("Level1"));
+		currCamera = &FUNC->CurrentCamera();
 		originalTranslate = _e.GetComponent<Transform>().translation;
 		originalScale = _e.GetComponent<Transform>().scale;
 		inited = true;
 	}
-	_e.GetComponent<Transform>().translation = currScene->mCamera.translation + originalTranslate / currScene->mCamera.rotation;
-	_e.GetComponent<Transform>().scale = originalScale / currScene->mCamera.rotation;
+	_e.GetComponent<Transform>().translation = currCamera->translation + originalTranslate / currCamera->rotation;
+	_e.GetComponent<Transform>().scale = originalScale / currCamera->rotation;
 }
 
 void MoveMinimapScript::EndScript(const Entity& _e) {

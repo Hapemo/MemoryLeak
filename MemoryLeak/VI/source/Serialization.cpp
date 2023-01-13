@@ -45,7 +45,7 @@ None.
 void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _filename)
 {
 	//Scene sceneData{};
-	
+
 	//"../resources/Scene/SceneJ.json"
 	//std::string path = "../resources/Scene/" + _filename + ".json";
 	//std::ifstream ifs(path);
@@ -120,7 +120,7 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				e.AddComponent<SheetAnimation>(getSheetAnimation(entity[index]));
 			}
-			if (entity[index].HasMember("Physics2D")) 
+			if (entity[index].HasMember("Physics2D"))
 			{
 				e.AddComponent<Physics2D>(getPhysics2D(entity[index]));
 			}
@@ -158,14 +158,17 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			if (entity[index].HasMember("Dialogue")) {
 				e.AddComponent<Dialogue>(getDialogue(entity[index]));
 			}
-			if (entity[index].HasMember("LightSource")) {
-				e.AddComponent<LightSource>(getLightSource(entity[index]));
-			}
 			if (entity[index].HasMember("Script")) {
 				e.AddComponent<Script>(getScript(entity[index]));
 			}
 			if (entity[index].HasMember("Button")) {
 				e.AddComponent<Button>(getButton(entity[index]));
+			}
+			if (entity[index].HasMember("LightSource")) {
+				e.AddComponent<LightSource>(getLightSource(entity[index]));
+			}
+			if (entity[index].HasMember("ShadowCaster")) {
+				e.AddComponent<ShadowCaster>(getShadowCaster(entity[index]));
 			}
 
 			//mEntities.insert(e);
@@ -174,230 +177,230 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 	}
 	else////////////to be deleted REMOVEME
 	{
-		int i = 0;
-		for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr <= doc.MemberEnd(); ++itr)
-		{
-			std::string header = "SceneData";
-			Value head(header.c_str(), (SizeType)header.size(), doc.GetAllocator());
+		//int i = 0;
+		//for (Value::ConstMemberIterator itr = doc.MemberBegin(); itr <= doc.MemberEnd(); ++itr)
+		//{
+		//	std::string header = "SceneData";
+		//	Value head(header.c_str(), (SizeType)header.size(), doc.GetAllocator());
 
-			Entity e{ ECS::CreateEntity() };
-			Value entity(kObjectType);
-			std::string str("Entity" + std::to_string(i));
-			Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
-			if (!doc.HasMember(index))
-			{
-				if (doc.HasMember(head))
-				{
-					continue;
-				}
-				LOG_INFO("1 Enitity not loaded");
+		//	Entity e{ ECS::CreateEntity() };
+		//	Value entity(kObjectType);
+		//	std::string str("Entity" + std::to_string(i));
+		//	Value index(str.c_str(), (SizeType)str.size(), doc.GetAllocator());
+		//	if (!doc.HasMember(index))
+		//	{
+		//		if (doc.HasMember(head))
+		//		{
+		//			continue;
+		//		}
+		//		LOG_INFO("1 Enitity not loaded");
 
-				continue;
-			}
-			entity = doc[index];
+		//		continue;
+		//	}
+		//	entity = doc[index];
 
-			if (entity.HasMember("General"))
-			{
-				std::string name = entity["General"]["name"].GetString();
-				bool isActive = entity["General"]["isActive"].GetBool();
-				int tag = entity["General"]["tag"].GetInt();
-				int subtag = entity["General"]["subtag"].GetInt();
-				e.AddComponent<General>(General{ name, (TAG)tag ,(SUBTAG)subtag, isActive });
-				//if (tag == (int)TAG::PLAYER)
-				//	e.AddComponent(PlayerTmp{ 0 });
-			}
-			if (entity.HasMember("Lifespan"))
-			{
-				float lifetime = entity["Lifespan"]["lifetime"].GetFloat();
-				float limit = entity["Lifespan"]["limit"].GetFloat();
-				e.AddComponent<Lifespan>({ lifetime, limit });
-			}
-			if (entity.HasMember("Transform"))
-			{
-				Math::Vec2 s = GetVec2(entity["Transform"]["scale"]);
-				float r = (float)entity["Transform"]["rotation"].GetFloat();
-				Math::Vec2 t = GetVec2(entity["Transform"]["translation"]);
+		//	if (entity.HasMember("General"))
+		//	{
+		//		std::string name = entity["General"]["name"].GetString();
+		//		bool isActive = entity["General"]["isActive"].GetBool();
+		//		int tag = entity["General"]["tag"].GetInt();
+		//		int subtag = entity["General"]["subtag"].GetInt();
+		//		e.AddComponent<General>(General{ name, (TAG)tag ,(SUBTAG)subtag, isActive });
+		//		//if (tag == (int)TAG::PLAYER)
+		//		//	e.AddComponent(PlayerTmp{ 0 });
+		//	}
+		//	if (entity.HasMember("Lifespan"))
+		//	{
+		//		float lifetime = entity["Lifespan"]["lifetime"].GetFloat();
+		//		float limit = entity["Lifespan"]["limit"].GetFloat();
+		//		e.AddComponent<Lifespan>({ lifetime, limit });
+		//	}
+		//	if (entity.HasMember("Transform"))
+		//	{
+		//		Math::Vec2 s = GetVec2(entity["Transform"]["scale"]);
+		//		float r = (float)entity["Transform"]["rotation"].GetFloat();
+		//		Math::Vec2 t = GetVec2(entity["Transform"]["translation"]);
 
-				e.AddComponent<Transform>({ s, r, t });
-			}
-			if (entity.HasMember("Sprite"))
-			{
-				Color c;
-				c.r = (GLubyte)entity["Sprite"]["color"]["r"].GetInt();
-				c.g = (GLubyte)entity["Sprite"]["color"]["g"].GetInt();
-				c.b = (GLubyte)entity["Sprite"]["color"]["b"].GetInt();
-				c.a = (GLubyte)entity["Sprite"]["color"]["a"].GetInt();
-				SPRITE s = (SPRITE)entity["Sprite"]["sprite"].GetInt();
-				GLuint t = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
-				//GLuint t = (GLuint)entity["Sprite"]["texture"].GetInt();
-				int l = entity["Sprite"]["layer"].GetInt();
-				e.AddComponent<Sprite>({ c, s, t ,l });
-			}
-			if (entity.HasMember("Animation"))
-			{
-				std::vector<GLuint> images;
-				Value a(kObjectType);
-				a = entity["Animation"]["images"].GetArray();
-				for (int j = 0; j < (int)a.Size(); ++j)
-				{
-					GLuint tex = spriteManager->GetTextureID(a[j].GetString());
-					images.push_back(tex);
-				}
-				float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
-				float timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
-				int currentImageIndex = entity["Animation"]["currentImageIndex"].GetInt();
-				e.AddComponent<Animation>({ images , timePerImage , timeToImageSwap , currentImageIndex });
-			}
-			if (entity.HasMember("SheetAnimation"))
-			{
-				short frameCount = (short)entity["SheetAnimation"]["frameCount"].GetInt();
-				short currentImageIndex = (short)entity["SheetAnimation"]["currFrameIndex"].GetInt();
-				float timePerImage = entity["SheetAnimation"]["timePerFrame"].GetFloat();
-				float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
-				e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
-			}
-			if (entity.HasMember("Physics2D")) {
+		//		e.AddComponent<Transform>({ s, r, t });
+		//	}
+		//	if (entity.HasMember("Sprite"))
+		//	{
+		//		Color c;
+		//		c.r = (GLubyte)entity["Sprite"]["color"]["r"].GetInt();
+		//		c.g = (GLubyte)entity["Sprite"]["color"]["g"].GetInt();
+		//		c.b = (GLubyte)entity["Sprite"]["color"]["b"].GetInt();
+		//		c.a = (GLubyte)entity["Sprite"]["color"]["a"].GetInt();
+		//		SPRITE s = (SPRITE)entity["Sprite"]["sprite"].GetInt();
+		//		GLuint t = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
+		//		//GLuint t = (GLuint)entity["Sprite"]["texture"].GetInt();
+		//		int l = entity["Sprite"]["layer"].GetInt();
+		//		e.AddComponent<Sprite>({ c, s, t ,l });
+		//	}
+		//	if (entity.HasMember("Animation"))
+		//	{
+		//		std::vector<GLuint> images;
+		//		Value a(kObjectType);
+		//		a = entity["Animation"]["images"].GetArray();
+		//		for (int j = 0; j < (int)a.Size(); ++j)
+		//		{
+		//			GLuint tex = spriteManager->GetTextureID(a[j].GetString());
+		//			images.push_back(tex);
+		//		}
+		//		//float timePerImage = entity["Animation"]["timePerImage"].GetFloat();
+		//		//float timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
+		//		//int currentImageIndex = entity["Animation"]["currentImageIndex"].GetInt();
+		//		//e.AddComponent<Animation>({ images , timePerImage , timeToImageSwap , currentImageIndex });
+		//	}
+		//	if (entity.HasMember("SheetAnimation"))
+		//	{
+		//		short frameCount = (short)entity["SheetAnimation"]["frameCount"].GetInt();
+		//		short currentImageIndex = (short)entity["SheetAnimation"]["currFrameIndex"].GetInt();
+		//		float timePerImage = entity["SheetAnimation"]["timePerFrame"].GetFloat();
+		//		float timeToImageSwap = entity["SheetAnimation"]["timeToFrameSwap"].GetFloat();
+		//		e.AddComponent<SheetAnimation>({ frameCount , currentImageIndex , timePerImage , timeToImageSwap });
+		//	}
+		//	if (entity.HasMember("Physics2D")) {
 
-				bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
-				float mass = entity["Physics2D"]["mass"].GetFloat();
-				float inertia = entity["Physics2D"]["inertia"].GetFloat();
-				float restitution = entity["Physics2D"]["restitution"].GetFloat();
-				float friction = entity["Physics2D"]["friction"].GetFloat();
-				float damping = entity["Physics2D"]["damping"].GetFloat();
+		//		bool dynamicsEnabled = entity["Physics2D"]["dynamicsEnabled"].GetBool();
+		//		float mass = entity["Physics2D"]["mass"].GetFloat();
+		//		float inertia = entity["Physics2D"]["inertia"].GetFloat();
+		//		float restitution = entity["Physics2D"]["restitution"].GetFloat();
+		//		float friction = entity["Physics2D"]["friction"].GetFloat();
+		//		float damping = entity["Physics2D"]["damping"].GetFloat();
 
-				Math::Vec2 accumulatedForce = GetVec2(entity["Physics2D"]["accumulatedForce"]);
-				Math::Vec2 velocity = GetVec2(entity["Physics2D"]["velocity"]);
-				Math::Vec2 acceleration = GetVec2(entity["Physics2D"]["acceleration"]);
+		//		Math::Vec2 accumulatedForce = GetVec2(entity["Physics2D"]["accumulatedForce"]);
+		//		Math::Vec2 velocity = GetVec2(entity["Physics2D"]["velocity"]);
+		//		Math::Vec2 acceleration = GetVec2(entity["Physics2D"]["acceleration"]);
 
-				float angularVelocity = entity["Physics2D"]["angularVelocity"].GetFloat();
-				float angularTorque = entity["Physics2D"]["angularTorque"].GetFloat();
+		//		float angularVelocity = entity["Physics2D"]["angularVelocity"].GetFloat();
+		//		float angularTorque = entity["Physics2D"]["angularTorque"].GetFloat();
 
-				//vect force
-				std::vector<Force> forceList{};
-				Value a(kObjectType);
-				a = entity["Physics2D"]["forceList"].GetArray();
-				for (int j = 0; j < (int)a.Size(); ++j)
-				{
-					Force force{};
-					Value f(kObjectType);
-					f = a[j].GetObject();
-					force.lifetimeLimit = f["lifetimeLimit"].GetDouble();
-					force.age = f["age"].GetDouble();
-					force.isActive = f["isActive"].GetBool();
-					force.forceID = f["forceID"].GetInt();
-					if (force.forceID == 0)
-					{
-						force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
-						force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
-					}
-					else if (force.forceID == 1)
-					{
-						force.rotationalForce.torque = f["rotationalForce"]["torque"].GetFloat();
-					}
-					else if (force.forceID == 2)
-					{
-						force.dragForce.directionalDrag = f["dragForce"]["directionalDrag"].GetFloat();
-						force.dragForce.rotationalDrag = f["dragForce"]["rotationalDrag"].GetFloat();
-					}
+		//		//vect force
+		//		std::vector<Force> forceList{};
+		//		Value a(kObjectType);
+		//		a = entity["Physics2D"]["forceList"].GetArray();
+		//		for (int j = 0; j < (int)a.Size(); ++j)
+		//		{
+		//			Force force{};
+		//			Value f(kObjectType);
+		//			f = a[j].GetObject();
+		//			force.lifetimeLimit = f["lifetimeLimit"].GetDouble();
+		//			force.age = f["age"].GetDouble();
+		//			force.isActive = f["isActive"].GetBool();
+		//			force.forceID = f["forceID"].GetInt();
+		//			if (force.forceID == 0)
+		//			{
+		//				force.linearForce.unitDirection = GetVec2(f["linearForce"]["unitDirection"]);
+		//				force.linearForce.magnitude = f["linearForce"]["magnitude"].GetFloat();
+		//			}
+		//			else if (force.forceID == 1)
+		//			{
+		//				force.rotationalForce.torque = f["rotationalForce"]["torque"].GetFloat();
+		//			}
+		//			else if (force.forceID == 2)
+		//			{
+		//				force.dragForce.directionalDrag = f["dragForce"]["directionalDrag"].GetFloat();
+		//				force.dragForce.rotationalDrag = f["dragForce"]["rotationalDrag"].GetFloat();
+		//			}
 
-					forceList.push_back(force);
-				}
+		//			forceList.push_back(force);
+		//		}
 
-				bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
+		//		bool renderFlag = entity["Physics2D"]["renderFlag"].GetBool();
 
-				e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
-			}
-			if (entity.HasMember("RectCollider"))
-			{
-				Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
-				Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
-				bool isTrigger = entity["RectCollider"]["isTrigger"].GetBool();
-				bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
-				e.AddComponent<RectCollider>({ centerOffset , scaleOffset , isTrigger, renderFlag });
-			}
-			if (entity.HasMember("CircleCollider"))
-			{
-				Math::Vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
-				float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
-				bool isTrigger = entity["CircleCollider"]["isTrigger"].GetBool();
-				bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
-				e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , isTrigger, renderFlag });
-			}
-			if (entity.HasMember("Edge2DCollider"))
-			{
-				Math::Vec2 p0Offset = GetVec2(entity["Edge2DCollider"]["p0Offset"]);
-				float rotationOffset = entity["Edge2DCollider"]["rotationOffset"].GetFloat();
-				float scaleOffset = entity["Edge2DCollider"]["scaleOffset"].GetFloat();
-				bool renderFlag = entity["Edge2DCollider"]["renderFlag"].GetBool();
+		//		e.AddComponent<Physics2D>({ dynamicsEnabled, mass, inertia, restitution, friction, damping, accumulatedForce,velocity, acceleration, angularVelocity, angularTorque, forceList, renderFlag });
+		//	}
+		//	if (entity.HasMember("RectCollider"))
+		//	{
+		//		Math::Vec2 centerOffset = GetVec2(entity["RectCollider"]["centerOffset"]);
+		//		Math::Vec2	scaleOffset = GetVec2(entity["RectCollider"]["scaleOffset"]);
+		//		bool isTrigger = entity["RectCollider"]["isTrigger"].GetBool();
+		//		bool renderFlag = entity["RectCollider"]["renderFlag"].GetBool();
+		//		e.AddComponent<RectCollider>({ centerOffset , scaleOffset , isTrigger, renderFlag });
+		//	}
+		//	if (entity.HasMember("CircleCollider"))
+		//	{
+		//		Math::Vec2 centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
+		//		float scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
+		//		bool isTrigger = entity["CircleCollider"]["isTrigger"].GetBool();
+		//		bool renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
+		//		e.AddComponent<CircleCollider>({ centerOffset , scaleOffset , isTrigger, renderFlag });
+		//	}
+		//	if (entity.HasMember("Edge2DCollider"))
+		//	{
+		//		Math::Vec2 p0Offset = GetVec2(entity["Edge2DCollider"]["p0Offset"]);
+		//		float rotationOffset = entity["Edge2DCollider"]["rotationOffset"].GetFloat();
+		//		float scaleOffset = entity["Edge2DCollider"]["scaleOffset"].GetFloat();
+		//		bool renderFlag = entity["Edge2DCollider"]["renderFlag"].GetBool();
 
-				e.AddComponent<Edge2DCollider>({ p0Offset ,rotationOffset, scaleOffset , renderFlag });
-			}
-			if (entity.HasMember("Point2DCollider"))
-			{
-				Math::Vec2 centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
-				bool renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
-				e.AddComponent<Point2DCollider>({ centerOffset ,renderFlag });
-			}
-			if (entity.HasMember("Audio"))
-			{
-				Sound sound;
-				sound.path = entity["Audio"]["path"].GetString();
-				sound.volume = entity["Audio"]["volume"].GetFloat();
-				sound.volumeMod = entity["Audio"]["volumeMod"].GetFloat();
-				sound.pitch = entity["Audio"]["pitch"].GetFloat();
-				sound.isPaused = entity["Audio"]["isPaused"].GetBool();
-				sound.isMute = entity["Audio"]["isMute"].GetBool();
-				sound.isLoop = entity["Audio"]["isLoop"].GetBool();
-				sound.isRandPitch = entity["Audio"]["isRandPitch"].GetBool();
+		//		e.AddComponent<Edge2DCollider>({ p0Offset ,rotationOffset, scaleOffset , renderFlag });
+		//	}
+		//	if (entity.HasMember("Point2DCollider"))
+		//	{
+		//		Math::Vec2 centerOffset = GetVec2(entity["Point2DCollider"]["centerOffset"]);
+		//		bool renderFlag = entity["Point2DCollider"]["renderFlag"].GetBool();
+		//		e.AddComponent<Point2DCollider>({ centerOffset ,renderFlag });
+		//	}
+		//	if (entity.HasMember("Audio"))
+		//	{
+		//		Sound sound;
+		//		sound.path = entity["Audio"]["path"].GetString();
+		//		sound.volume = entity["Audio"]["volume"].GetFloat();
+		//		sound.volumeMod = entity["Audio"]["volumeMod"].GetFloat();
+		//		sound.pitch = entity["Audio"]["pitch"].GetFloat();
+		//		sound.isPaused = entity["Audio"]["isPaused"].GetBool();
+		//		sound.isMute = entity["Audio"]["isMute"].GetBool();
+		//		sound.isLoop = entity["Audio"]["isLoop"].GetBool();
+		//		sound.isRandPitch = entity["Audio"]["isRandPitch"].GetBool();
 
-				bool isSpacial = entity["Audio"]["isSpacial"].GetBool();
-				e.AddComponent<Audio>({ sound , isSpacial });
-			}
-			if (entity.HasMember("AI"))
-			{
-				int colorChange = entity["AI"]["colorChange"].GetInt();
-				int movement = entity["AI"]["movement"].GetInt();
-				float speed = entity["AI"]["speed"].GetFloat();
-				float range = entity["AI"]["range"].GetFloat();
+		//		bool isSpacial = entity["Audio"]["isSpacial"].GetBool();
+		//		e.AddComponent<Audio>({ sound , isSpacial });
+		//	}
+		//	if (entity.HasMember("AI"))
+		//	{
+		//		int colorChange = entity["AI"]["colorChange"].GetInt();
+		//		int movement = entity["AI"]["movement"].GetInt();
+		//		float speed = entity["AI"]["speed"].GetFloat();
+		//		float range = entity["AI"]["range"].GetFloat();
 
-				e.AddComponent<AI>({ colorChange ,movement, speed , range });
-			}
-			if (entity.HasMember("Text")) {
-				Text text;
-				text.fontFile = entity["Text"]["fontFile"].GetString();
-				text.text = entity["Text"]["text"].GetString();
-				text.offset = GetVec2(entity["Text"]["offset"]);
-				text.scale = entity["Text"]["scale"].GetFloat();
-				text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
-				text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
-				text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
-				text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
-				e.AddComponent<Text>(text);
-			}
-			if (entity.HasMember("Dialogue")) {
-				Dialogue dialogue;
-				dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
-				dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
-				dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
-				dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
-				e.AddComponent<Dialogue>(dialogue);
-			}
-			if (entity.HasMember("LightSource")) {
-				LightSource lightSource;
-				lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
-				e.AddComponent<LightSource>(lightSource);
-			}
-			if (entity.HasMember("Script")) {
-				Script script;
-				script.name = entity["Script"]["name"].GetString();
-				//script.script = nullptr;
+		//		e.AddComponent<AI>({ colorChange ,movement, speed , range });
+		//	}
+		//	if (entity.HasMember("Text")) {
+		//		Text text;
+		//		text.fontFile = entity["Text"]["fontFile"].GetString();
+		//		text.text = entity["Text"]["text"].GetString();
+		//		text.offset = GetVec2(entity["Text"]["offset"]);
+		//		text.scale = entity["Text"]["scale"].GetFloat();
+		//		text.color.r = (GLubyte)entity["Text"]["color"]["r"].GetInt();
+		//		text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
+		//		text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
+		//		text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+		//		e.AddComponent<Text>(text);
+		//	}
+		//	if (entity.HasMember("Dialogue")) {
+		//		Dialogue dialogue;
+		//		dialogue.speakerID = (GLubyte)entity["Dialogue"]["speakerID"].GetInt();
+		//		dialogue.selectedID = (GLubyte)entity["Dialogue"]["selectedID"].GetInt();
+		//		dialogue.textID = (GLubyte)entity["Dialogue"]["textID"].GetInt();
+		//		dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
+		//		e.AddComponent<Dialogue>(dialogue);
+		//	}
+		//	if (entity.HasMember("LightSource")) {
+		//		LightSource lightSource;
+		//		lightSource.centerOffset = GetVec2(entity["LightSource"]["centerOffset"]);
+		//		e.AddComponent<LightSource>(lightSource);
+		//	}
+		//	if (entity.HasMember("Script")) {
+		//		Script script;
+		//		script.name = entity["Script"]["name"].GetString();
+		//		//script.script = nullptr;
 
-				e.AddComponent<Script>(script);
-			}
-			//mEntities.insert(e);
-			_sceneData.mEntities.insert(e);
-			i++;
-		}
+		//		e.AddComponent<Script>(script);
+		//	}
+		//	//mEntities.insert(e);
+		//	_sceneData.mEntities.insert(e);
+		//	i++;
+		//}
 	}
 
 	ifs.close();
@@ -453,15 +456,21 @@ Animation SerializationManager::getAnimation(Value& entity)
 {
 	Animation animation;
 	Value a(kObjectType);
-	a = entity["Animation"]["images"].GetArray();
+	if (entity["Animation"].HasMember("sheets"))
+	{
+	a = entity["Animation"]["sheets"].GetArray();
 	for (int j = 0; j < (int)a.Size(); ++j)
 	{
-		GLuint tex = spriteManager->GetTextureID(a[j].GetString());
-		animation.images.push_back(tex);
+		SpriteSheet sheets{};
+		sheets.sheet = spriteManager->GetTextureID(a[j]["sheet"].GetString());
+		sheets.frameCount = a[j]["frameCount"].GetInt();
+		sheets.timePerFrame = a[j]["timePerFrame"].GetFloat();
+		animation.sheets.push_back(sheets);
 	}
-	animation.timePerImage = entity["Animation"]["timePerImage"].GetFloat();
-	animation.timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
+	//animation.timePerImage.push_back(entity["Animation"]["timePerImage"].GetFloat());/////////////!!!!!!!!!!!!!!!!!!!
+	//animation.timeToImageSwap = entity["Animation"]["timeToImageSwap"].GetFloat();
 	animation.currentImageIndex = entity["Animation"]["currentImageIndex"].GetInt();
+	}
 	return animation;
 }
 SheetAnimation SerializationManager::getSheetAnimation(Value& entity)
@@ -550,7 +559,7 @@ CircleCollider SerializationManager::getCircleCollider(Value& entity)
 	CircleCollider circleCollider;
 	circleCollider.centerOffset = GetVec2(entity["CircleCollider"]["centerOffset"]);
 	circleCollider.scaleOffset = entity["CircleCollider"]["scaleOffset"].GetFloat();
-	if(entity["CircleCollider"].HasMember("isTrigger"))
+	if (entity["CircleCollider"].HasMember("isTrigger"))
 		circleCollider.isTrigger = entity["CircleCollider"]["isTrigger"].GetBool();
 	circleCollider.renderFlag = entity["CircleCollider"]["renderFlag"].GetBool();
 	return circleCollider;
@@ -619,12 +628,6 @@ Dialogue SerializationManager::getDialogue(Value& entity)
 	dialogue.nextTextID = (GLubyte)entity["Dialogue"]["nextTextID"].GetInt();
 	return dialogue;
 }
-LightSource SerializationManager::getLightSource(Value& entity)
-{
-	LightSource lightSource;
-	lightSource.centreOffset = GetVec2(entity["LightSource"]["centerOffset"]);
-	return lightSource;
-}
 Script SerializationManager::getScript(Value& entity)
 {
 	Script script;
@@ -638,7 +641,22 @@ Button SerializationManager::getButton(Value& entity)
 	button.interactable = entity["Button"]["interactable"].GetBool();
 	return button;
 }
-
+LightSource SerializationManager::getLightSource(Value& entity)
+{
+	LightSource lightSource;
+	lightSource.centerOffset = GetVec2(entity["LightSource"]["centerOffset"]);
+	lightSource.radius = entity["LightSource"]["radius"].GetFloat();
+	lightSource.intensity = entity["LightSource"]["intensity"].GetFloat();
+	return lightSource;
+}
+ShadowCaster SerializationManager::getShadowCaster(Value& entity)
+{
+	ShadowCaster shadowCaster;
+	shadowCaster.centerOffset = GetVec2(entity["ShadowCaster"]["centerOffset"]);
+	shadowCaster.scaleOffset = GetVec2(entity["ShadowCaster"]["scaleOffset"]);
+	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();;
+	return shadowCaster;
+}
 
 
 
@@ -707,17 +725,17 @@ void SerializationManager::addVectorArrayForceMember(Document& scene, Value& par
 			addVectorMember(scene, grandchilditems, "unitDirection", data[i].linearForce.unitDirection);
 			grandchilditems.AddMember(StringRef("magnitude"), data[i].linearForce.magnitude, scene.GetAllocator());
 		}
-		else if (data[i].forceID==1)
+		else if (data[i].forceID == 1)
 		{
 			grandchilditems.AddMember(StringRef("torque"), data[i].rotationalForce.torque, scene.GetAllocator());
 		}
-		else if (data[i].forceID==2)
+		else if (data[i].forceID == 2)
 		{
 			grandchilditems.AddMember(StringRef("directionalDrag"), data[i].dragForce.directionalDrag, scene.GetAllocator());
 			grandchilditems.AddMember(StringRef("rotationalDrag"), data[i].dragForce.rotationalDrag, scene.GetAllocator());
 			childitems.AddMember(StringRef("color"), grandchilditems, scene.GetAllocator());
 		}
-		
+
 		child.PushBack(childitems, scene.GetAllocator());
 	}
 	parent.AddMember(StringRef(name), child, scene.GetAllocator());
@@ -728,14 +746,14 @@ void SerializationManager::addVectorArrayForceMember(Document& scene, Value& par
 \brief
 	Adds a vector to a rapid jason dom tree as a array
 \param scene
-	rapid jason document to add to 
+	rapid jason document to add to
 \param parent
-	parent onject to add to 
+	parent onject to add to
 \param name
 	name of child to add to parant object
 \prama data
 	data to be added to the child objects
-		
+
 \return
 None.
 *******************************************************************************/
@@ -793,7 +811,7 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 	StringBuffer buffer;
 	PrettyWriter<StringBuffer> writer(buffer);
 	//int counter = 0;
-	
+
 	for (const Entity& e : _sceneData.mEntities)
 	{
 		if (!e.HasComponent<General>())
@@ -801,7 +819,7 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		Value entity(kObjectType);
 		if (e.HasComponent<General>())
 		{
-			addGeneral(scene,entity, e.GetComponent<General>());
+			addGeneral(scene, entity, e.GetComponent<General>());
 		}
 		if (e.HasComponent<Lifespan>())
 		{
@@ -819,12 +837,12 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		{
 			addAnimation(scene, entity, e.GetComponent<Animation>());
 		}
-		if (e.HasComponent<SheetAnimation>()) 
+		if (e.HasComponent<SheetAnimation>())
 		{
 			addSheetAnimation(scene, entity, e.GetComponent<SheetAnimation>());
 		}
 		if (e.HasComponent<Physics2D>()) {
-			
+
 			addPhysics2D(scene, entity, e.GetComponent<Physics2D>());
 		}
 		if (e.HasComponent<RectCollider>())
@@ -856,23 +874,27 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 			addAI(scene, entity, e.GetComponent<AI>());
 		}
 		if (e.HasComponent<Text>()) {
-			
+
 			addText(scene, entity, e.GetComponent<Text>());
 		}
 		if (e.HasComponent<Dialogue>()) {
-			
+
 			addDialogue(scene, entity, e.GetComponent<Dialogue>());
 		}
-		if (e.HasComponent<LightSource>()) {
-			
-			addLightSource(scene, entity, e.GetComponent<LightSource>());
-		}
 		if (e.HasComponent<Script>()) {
-			
-			addScript(scene,entity, e.GetComponent<Script>());
+
+			addScript(scene, entity, e.GetComponent<Script>());
 		}
 		if (e.HasComponent<Button>()) {
 			addButton(scene, entity, e.GetComponent<Button>());
+		}
+		if (e.HasComponent<LightSource>()) {
+
+			//addLightSource(scene, entity, e.GetComponent<LightSource>());
+		}
+		if (e.HasComponent<ShadowCaster>()) {
+
+			//addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -888,7 +910,7 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 	std::string path = "../resources/Scene/" + _sceneData.mName + ".json";
 	std::ofstream ofs(path);
 	ofs << jsonf;
-	if (!ofs.good() )
+	if (!ofs.good())
 	{
 		LOG_ERROR("Unable to save scene to: " + path);
 	}
@@ -951,9 +973,23 @@ void SerializationManager::addSprite(Document& scene, Value& entity, Sprite spri
 void SerializationManager::addAnimation(Document& scene, Value& entity, Animation animation)
 {
 	Value tmp(kObjectType);
-	addVectorArrayStrMember(scene, tmp, "images", animation.images);
-	tmp.AddMember(StringRef("timePerImage"), animation.timePerImage, scene.GetAllocator());
-	tmp.AddMember(StringRef("timeToImageSwap"), animation.timeToImageSwap, scene.GetAllocator());
+	//addVectorArrayStrMember(scene, tmp, "images", animation.images);
+	//tmp.AddMember(StringRef("timeToImageSwap"), animation.timeToImageSwap, scene.GetAllocator());
+	Value child(kObjectType);
+	child.SetArray();
+	for (size_t i = 0; i < animation.sheets.size(); ++i)
+	{
+		Value sheets(kObjectType);
+		std::string tex = spriteManager->GetTexturePath(animation.sheets[i].sheet);
+		Value texpath(tex.c_str(), (SizeType)tex.size(), scene.GetAllocator());
+		sheets.AddMember(StringRef("sheet"), texpath, scene.GetAllocator());
+		sheets.AddMember(StringRef("frameCount"), animation.sheets[i].frameCount, scene.GetAllocator());
+		sheets.AddMember(StringRef("timePerFrame"), animation.sheets[i].timePerFrame, scene.GetAllocator());
+		child.PushBack(sheets, scene.GetAllocator());
+	}
+	tmp.AddMember(StringRef("sheets"), child, scene.GetAllocator());
+	
+	
 	tmp.AddMember(StringRef("currentImageIndex"), animation.currentImageIndex, scene.GetAllocator());
 	entity.AddMember(StringRef("Animation"), tmp, scene.GetAllocator());
 }
@@ -1081,12 +1117,6 @@ void SerializationManager::addDialogue(Document& scene, Value& entity, Dialogue 
 	tmp.AddMember(StringRef("nextTextID"), dialogue.nextTextID, scene.GetAllocator());
 	entity.AddMember(StringRef("Dialogue"), tmp, scene.GetAllocator());
 }
-void SerializationManager::addLightSource(Document& scene, Value& entity, LightSource lightSource)
-{
-	Value tmp(kObjectType);
-	addVectorMember(scene, tmp, "centerOffset", lightSource.centreOffset);
-	entity.AddMember(StringRef("LightSource"), tmp, scene.GetAllocator());
-}
 void SerializationManager::addScript(Document& scene, Value& entity, Script script)
 {
 	Value tmp(kObjectType);
@@ -1099,6 +1129,22 @@ void SerializationManager::addButton(Document& scene, Value& entity, Button butt
 	Value tmp(kObjectType);
 	tmp.AddMember(StringRef("interactable"), button.interactable, scene.GetAllocator());
 	entity.AddMember(StringRef("Button"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addLightSource(Document& scene, Value& entity, LightSource lightSource)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "centerOffset", lightSource.centerOffset);
+	tmp.AddMember(StringRef("radius"), lightSource.radius, scene.GetAllocator());
+	tmp.AddMember(StringRef("intensity"), lightSource.intensity, scene.GetAllocator());
+	entity.AddMember(StringRef("LightSource"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster)
+{
+	Value tmp(kObjectType);
+	addVectorMember(scene, tmp, "centerOffset", shadowCaster.centerOffset);
+	addVectorMember(scene, tmp, "scaleOffset", shadowCaster.scaleOffset);
+	tmp.AddMember(StringRef("renderFlag"), shadowCaster.renderFlag, scene.GetAllocator());
+	entity.AddMember(StringRef("ShadowCaster"), tmp, scene.GetAllocator());
 }
 
 /*!*****************************************************************************
@@ -1117,7 +1163,7 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	//std::vector<std::string> scenefilename{};
 	//std::string path = "../resources/GameStates/" + _filename + ".json";
 	//std::ifstream ifs(path);
-	
+
 	std::ifstream ifs(_filename.string());
 	if (!ifs.good())
 	{
@@ -1144,9 +1190,9 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 			if (n == _gameState.mName)
 				same++;
 		}
-		_gameState.mName += (" ("+ std::to_string(same) + ")");
+		_gameState.mName += (" (" + std::to_string(same) + ")");
 	}
-	
+
 	gameStateFilename = _gameState.mName;
 	std::stringstream contents;
 	contents << ifs.rdbuf();
@@ -1159,7 +1205,7 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	{
 		Scene sceneData(entity[index]["SceneName"].GetString());
 		//sceneData.mName = entity[index]["SceneName"].GetString();
-		sceneData.mCamera = getTransform(entity[index]);
+		//sceneData.mCamera = getTransform(entity[index]);
 		sceneData.mIsPause = entity[index]["isActive"].GetBool();
 		sceneData.mLayer = entity[index]["layer"].GetInt();
 		sceneData.mOrder = entity[index]["order"].GetInt();
@@ -1182,7 +1228,7 @@ void SerializationManager::SaveGameState(GameState& _gameState)
 {
 
 	//scave each scene
-	for (int s = 0; s< _gameState.mScenes.size(); s++)
+	for (int s = 0; s < _gameState.mScenes.size(); s++)
 	{
 		SaveScene(_gameState.mScenes[s]);
 		LOG_INFO("Saved a scene");
@@ -1194,13 +1240,13 @@ void SerializationManager::SaveGameState(GameState& _gameState)
 	StringBuffer buffer;
 	PrettyWriter<StringBuffer> writer(buffer);
 	//int counter = 0;
-	for (int s = 0; s< _gameState.mScenes.size(); s++)
+	for (int s = 0; s < _gameState.mScenes.size(); s++)
 	{
 
 		Value scene(kObjectType);
 		Value sceneName(_gameState.mScenes[s].mName.c_str(), (SizeType)_gameState.mScenes[s].mName.size(), allocator);
 		scene.AddMember(StringRef("SceneName"), sceneName, gamestate.GetAllocator());
-		addTransform(gamestate, scene, _gameState.mScenes[s].mCamera);
+		//addTransform(gamestate, scene, _gameState.mScenes[s].mCamera);
 		scene.AddMember(StringRef("isActive"), _gameState.mScenes[s].mIsPause, gamestate.GetAllocator());
 		scene.AddMember(StringRef("layer"), _gameState.mScenes[s].mLayer, gamestate.GetAllocator());
 		scene.AddMember(StringRef("order"), _gameState.mScenes[s].mOrder, gamestate.GetAllocator());
@@ -1243,7 +1289,7 @@ void SerializationManager::LoadDialogs(std::string _filename)
 	std::ifstream ifs("../resources/Dialogs/" + _filename + ".json");
 	if (!ifs.good())
 		LOG_ERROR("Can't open " + _filename + ".json file!");
-	else 
+	else
 	{
 		LOG_INFO("Opened dialog json file: " + _filename);
 
@@ -1284,7 +1330,7 @@ void SerializationManager::SaveDialogs(std::string _filename)
 	StringBuffer buffer;
 	PrettyWriter<StringBuffer> writer(buffer);
 	Value temp(kObjectType);
-	for (std::pair<int, Dialog> dialog : dialogManager->GetDialogs()){
+	for (std::pair<int, Dialog> dialog : dialogManager->GetDialogs()) {
 		Value dialogObj(kObjectType);
 		std::string text = dialog.second.text;
 		Value dText(text.c_str(), (SizeType)text.size(), allocator);
@@ -1346,7 +1392,7 @@ void SerializationManager::LoadPrefab(std::string _filename)
 			return;
 		}
 	}
-	
+
 	PrefabManager::PrefabPtr p = PrefabManager::GetInstance()->CreatePrefab();
 	p->Name() = _filename;
 
@@ -1407,7 +1453,7 @@ void SerializationManager::LoadPrefab(std::string _filename)
 	{
 		p->AddComponent<AI>(getAI(doc));
 	}
-	if (doc.HasMember("Text")) 
+	if (doc.HasMember("Text"))
 	{
 		p->AddComponent<Text>(getText(doc));
 	}
@@ -1509,7 +1555,7 @@ void SerializationManager::SavePrefab(std::string _filename)
 
 		addScript(prefab, prefab, p->GetComponent<Script>());
 	}
-	
+
 	prefab.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
 	std::string path = "../resources/Prefabs/" + _filename + ".json";
@@ -1530,37 +1576,37 @@ void SerializationManager::SavePrefab(std::string _filename)
 \return
 None.
 *******************************************************************************/
-std::string SerializationManager::GetSceneFilename() 
-{ 
-	return sceneFilename; 
+std::string SerializationManager::GetSceneFilename()
+{
+	return sceneFilename;
 }
-std::string SerializationManager::GetGameStateFilename() 
-{ 
-	return gameStateFilename; 
+std::string SerializationManager::GetGameStateFilename()
+{
+	return gameStateFilename;
 }
-std::string SerializationManager::GetPrefabFilename() 
-{ 
-	return prefabFilename; 
+std::string SerializationManager::GetPrefabFilename()
+{
+	return prefabFilename;
 }
-std::string SerializationManager::GetDialogueFilename() 
-{ 
-	return dialogueFilename; 
+std::string SerializationManager::GetDialogueFilename()
+{
+	return dialogueFilename;
 }
-std::vector<std::string> SerializationManager::GetAllsceneFilename() 
-{ 
-	return allsceneFilename; 
+std::vector<std::string> SerializationManager::GetAllsceneFilename()
+{
+	return allsceneFilename;
 }
-std::vector<std::string> SerializationManager::GetAllgameStateFilename() 
-{ 
-	return allgameStateFilename; 
+std::vector<std::string> SerializationManager::GetAllgameStateFilename()
+{
+	return allgameStateFilename;
 }
-std::vector<std::string> SerializationManager::GetAllprefabFilename() 
-{ 
-	return allprefabFilename; 
+std::vector<std::string> SerializationManager::GetAllprefabFilename()
+{
+	return allprefabFilename;
 }
-std::vector<std::string> SerializationManager::GetAlldialogueFilename() 
-{ 
-	return alldialogueFilename; 
+std::vector<std::string> SerializationManager::GetAlldialogueFilename()
+{
+	return alldialogueFilename;
 }
 
 
