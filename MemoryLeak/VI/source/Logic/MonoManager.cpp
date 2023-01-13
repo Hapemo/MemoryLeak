@@ -66,6 +66,7 @@ assembly dll. Returns true if success, else returns false.
 *******************************************************************************/
 bool MonoManager::InitMonoDomain(const char* _root, const char* _appdomain, const std::string _directory, const std::string _dll) {
 	std::cout << "Initialising Mono domain...\n";
+	//LOG_INFO("Initialising Mono domain...");
 	mRootDomain = mono_jit_init(_root);
 	if (mRootDomain != nullptr) {
 		// Create a mono app domain

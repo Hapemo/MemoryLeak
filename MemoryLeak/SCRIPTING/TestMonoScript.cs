@@ -11,13 +11,15 @@ namespace BonVoyage
             this.hello = "Initing...";
             Console.WriteLine("Printing from C#: " + this.hello);
             Console.WriteLine(InternalCalls.GetWorldMousePosX());
-
-           // if (InternalCalls.CheckKey()) { }
         }
         public void Update()
         {
-            this.hello = "Updating...";
+            //this.hello = "Updating...";
             Console.WriteLine("Printing from C#: " + this.hello);
+
+            if (InternalCalls.CheckKeyPress(68)) { // Press D
+                this.hello = "PRESSED!";
+            }
         }
         public void Exit()
         {

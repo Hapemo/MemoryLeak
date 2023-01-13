@@ -121,9 +121,13 @@ void AnimationPanel::Update()
 						if(size * ratio * e.GetComponent<Animation>().sheets[i].frameCount<ImGui::GetWindowWidth())
 							imageSize = { size * ratio * e.GetComponent<Animation>().sheets[i].frameCount,size};
 						else
-							imageSize = { ImGui::GetWindowWidth(), ImGui::GetWindowWidth() / ratio / e.GetComponent<Animation>().sheets[i].frameCount };
+							imageSize = { ImGui::GetWindowWidth()-100.f, (ImGui::GetWindowWidth()-100.f) / ratio / e.GetComponent<Animation>().sheets[i].frameCount };
 						textureImage = (void*)(intptr_t)e.GetComponent<Animation>().sheets[i].sheet;
+						float sheetWidth = imageSize.x / e.GetComponent<Animation>().sheets[i].frameCount;
+						ImVec2 p = ImGui::GetCursorScreenPos();
 						ImGui::Image(textureImage, imageSize, ImVec2(0, 1), ImVec2(1, 0));
+						for(int w =1; w< e.GetComponent<Animation>().sheets[i].frameCount ; w++)
+							ImGui::GetWindowDrawList()->AddLine(ImVec2(p.x+ sheetWidth*w, p.y), ImVec2(p.x+ sheetWidth*w, p.y + imageSize.y), IM_COL32(30*w, 0, 30 * (8 - w), 255), 1.0f);
 						ImGui::SameLine();
 						ImGui::Text(("Sheet " + std::to_string(i)).c_str());
 					}
@@ -141,6 +145,7 @@ void AnimationPanel::Update()
 		{
 			ImGui::Text("Select an entity to edit");
 		}
+		
 	}
 	ImGui::End();
 }

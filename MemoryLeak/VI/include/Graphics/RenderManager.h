@@ -355,6 +355,8 @@ private:
 	*******************************************************************************/
 	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
+	void CreateVerticesAnimator(std::map<size_t, std::map<GLuint, TextureInfo>>& _texInfo);
+
 	/*!*****************************************************************************
 	\brief
 	Rendering of textures
