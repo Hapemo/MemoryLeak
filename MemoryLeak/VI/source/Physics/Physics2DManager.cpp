@@ -43,8 +43,20 @@ void Physics2DManager::Update(const double& _appDT) {
 		//	Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
 		//}
 
-		// Removal of fixedDT updates
+		// Removal of strictly fixedDT updates but rather, can be specified by the function parameter
+		//Step(_appDT);
+
+#ifdef MultiThread
+		try {
+
+		}
+		catch () {
+
+		}
+#else
 		Step(_appDT);
+#endif // MultiThread
+
 	}
 	// In step mode
 	else {
@@ -53,7 +65,7 @@ void Physics2DManager::Update(const double& _appDT) {
 		// Check if we should step (key pressed)
 		if (Physics2DManager::mAdvanceStep) {
 			// Execute a simulation tick of physics using defined fixedDT
-			Step(fixedDT);
+			Step(mFixedDT);
 			// Set advance flag to false;
 			mAdvanceStep = false;
 		}
@@ -61,10 +73,11 @@ void Physics2DManager::Update(const double& _appDT) {
 }
 
 void Physics2DManager::Step(const double& _stepDT) {
+
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mEntities) {
 
-		if (FirstUpdate)
+		if (mFirstUpdate)
 			ApplyImpulse(e, Math::Vec2{ 0.f, 1.f }, Math::Vec2{ 0.f, 0.f });
 
 		// Skip if entity should not be run
@@ -146,11 +159,11 @@ void Physics2DManager::Step(const double& _stepDT) {
 		SetAngularTorque(e, GetAngularTorque(e) * static_cast<float>(std::pow(GetDamping(e), _stepDT)));
 
 		// Cap simulation velocity
-		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap)
-			SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::velocityCap);
+		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::mVelocityCap * Physics2DManager::mVelocityCap)
+			SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::mVelocityCap);
 
-		if (GetAngularVelocity(e) > Physics2DManager::angularVelocityCap)
-			SetAngularVelocity(e, Physics2DManager::angularVelocityCap);
+		if (GetAngularVelocity(e) > Physics2DManager::mAngularVelocityCap)
+			SetAngularVelocity(e, Physics2DManager::mAngularVelocityCap);
 
 		// Move entity by velocity
 		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(_stepDT);
@@ -168,8 +181,8 @@ void Physics2DManager::Step(const double& _stepDT) {
 	}
 
 	// Hack
-	if (FirstUpdate)
-		FirstUpdate = false;
+	if (mFirstUpdate)
+		mFirstUpdate = false;
 
 	collision2DManager->ResolveCollisions(_stepDT);
 
@@ -352,7 +365,7 @@ void Physics2DManager::SetPhysicsRenderFlag(const Entity& _e, const bool& _rende
 void Physics2DManager::UpdateEntitiesAccumulatedForce(const Entity& _e) {
 	for (auto it{ GetPhysicsComponent(_e).forceList.begin() }; it != GetPhysicsComponent(_e).forceList.end();) {
 		if (it->age < it->lifetimeLimit)
-			it->age += Physics2DManager::fixedDT;
+			it->age += Physics2DManager::mFixedDT;
 		else if (it->lifetimeLimit == 0.0) {
 			// Assume infinite lifespan
 			// Do nothing
