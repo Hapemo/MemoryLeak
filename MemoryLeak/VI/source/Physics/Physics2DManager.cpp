@@ -48,10 +48,17 @@ void Physics2DManager::Update(const double& _appDT) {
 
 #ifdef MultiThread
 		try {
+			mPhysicsStepLock.lock();
+			std::thread physicsThread([this, _appDT] {Step(_appDT); });
 
+			physicsThread.join();
+			mPhysicsStepLock.unlock();
 		}
-		catch () {
+		catch (const std::exception& _e) {
+			_e;
 
+			if (mPhysicsStepLock.try_lock())
+				mPhysicsStepLock.unlock();
 		}
 #else
 		Step(_appDT);
