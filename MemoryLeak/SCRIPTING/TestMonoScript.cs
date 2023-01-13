@@ -17,8 +17,7 @@ namespace BonVoyage
             //this.hello = "Updating...";
             Console.WriteLine("Printing from C#: " + this.hello);
 
-            if (InternalCalls.CheckKeyPress(68))
-            {
+            if (InternalCalls.CheckKeyPress(68)) { // Press D
                 this.hello = "PRESSED!";
             }
         }
