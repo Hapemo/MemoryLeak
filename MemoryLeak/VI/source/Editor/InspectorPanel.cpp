@@ -569,34 +569,51 @@ void InspectorPanel::AnimationEditor()
 			{
 				tex = spriteManager->GetTexturePath(e.GetComponent<Animation>().sheets[i].sheet);
 				ImGui::InputText(("Image "+std::to_string(i)).c_str(), const_cast<char*>(tex.c_str()), texadd.size());
+				if (ImGui::BeginDragDropTarget())
+				{
+					static const wchar_t* texpath = (const wchar_t*)"";
+					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+					{
+						texpath = (const wchar_t*)payload->Data;
+						std::string tp = (std::string)((const char*)texpath);
+						e.GetComponent<Animation>().sheets[i].sheet = spriteManager->GetTextureID(tp);
+						COMPONENT _new;
+						_new = e.GetComponent<Animation>();
+						undoStack.push_back(std::make_pair(e, _new));
+						stackPointer = (int)undoStack.size();
+					}
+					ImGui::EndDragDropTarget();
+				}
 				ImGui::InputInt(("frameCount"+std::to_string(i)).c_str(), &e.GetComponent<Animation>().sheets[i].frameCount);
 				ImGui::InputFloat(("timePerFrame"+std::to_string(i)).c_str(), &e.GetComponent<Animation>().sheets[i].timePerFrame);
 				if (ImGui::Button(("Remove Sheet" + std::to_string(i)).c_str()))
 				{
 					e.GetComponent<Animation>().sheets.erase(e.GetComponent<Animation>().sheets.begin() + i);
 				}
+				ImGui::Separator();
 			}
 			else
 			{
 				ImGui::InputText("Addimage", const_cast<char*>(texadd.c_str()), texadd.size());
 				tex = texadd;
-			}
-			static const wchar_t* texpath = (const wchar_t*)"";
-			if (ImGui::BeginDragDropTarget())
-			{
-				if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+				static const wchar_t* texpath = (const wchar_t*)"";
+				if (ImGui::BeginDragDropTarget())
 				{
-					texpath = (const wchar_t*)payload->Data;
-					if (i == e.GetComponent<Animation>().sheets.size())
-						texadd = (char*)texpath;
-					std::string  tp = (std::string)((const char*)texpath);
-					if (i != e.GetComponent<Animation>().sheets.size())
-						e.GetComponent<Animation>().sheets[i].sheet = spriteManager->GetTextureID(tp);
-					else
-						addImage.sheet = spriteManager->GetTextureID(tp);
+					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("TEXTURES"))
+					{
+						texpath = (const wchar_t*)payload->Data;
+						if (i == e.GetComponent<Animation>().sheets.size())
+							texadd = (char*)texpath;
+						std::string  tp = (std::string)((const char*)texpath);
+						if (i != e.GetComponent<Animation>().sheets.size())
+							e.GetComponent<Animation>().sheets[i].sheet = spriteManager->GetTextureID(tp);
+						else
+							addImage.sheet = spriteManager->GetTextureID(tp);
+					}
+					ImGui::EndDragDropTarget();
 				}
-				ImGui::EndDragDropTarget();
 			}
+			
 			SaveUndo(e, tempComponent, COMPONENTID::ANIMATION);
 		}
 		if (ImGui::Button("Add Sprite"))

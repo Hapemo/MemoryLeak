@@ -121,7 +121,7 @@ void AnimationPanel::Update()
 						if(size * ratio * e.GetComponent<Animation>().sheets[i].frameCount<ImGui::GetWindowWidth())
 							imageSize = { size * ratio * e.GetComponent<Animation>().sheets[i].frameCount,size};
 						else
-							imageSize = { ImGui::GetWindowWidth(), ImGui::GetWindowWidth() / ratio / e.GetComponent<Animation>().sheets[i].frameCount };
+							imageSize = { ImGui::GetWindowWidth()-100.f, (ImGui::GetWindowWidth()-100.f) / ratio / e.GetComponent<Animation>().sheets[i].frameCount };
 						textureImage = (void*)(intptr_t)e.GetComponent<Animation>().sheets[i].sheet;
 						ImGui::Image(textureImage, imageSize, ImVec2(0, 1), ImVec2(1, 0));
 						ImGui::SameLine();
