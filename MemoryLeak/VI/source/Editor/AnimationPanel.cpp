@@ -50,10 +50,10 @@ void AnimationPanel::Update()
 			{
 				float size = ImGui::GetWindowSize().y / 3.f;
 				static int frame = 1;
-				float ratio = e.GetComponent<Transform>().scale.x / e.GetComponent<Transform>().scale.x;
-				ImVec2 imageSize = { size * ratio * frame,size * ratio };
+				float ratio = e.GetComponent<Transform>().scale.x / e.GetComponent<Transform>().scale.y;
+				ImVec2 imageSize = { size * ratio * frame,size };
 				GLuint animation_texture = spriteManager->GetTexture(e);
-				ImVec2 viewSize = { size * 16.f / 9.f,size };
+				ImVec2 viewSize = { size * 16.f/9.f,size };
 				
 				if (e.HasComponent<SheetAnimation>())
 				{
@@ -77,8 +77,8 @@ void AnimationPanel::Update()
 				}
 				else
 				{
-					ImGui::SetWindowFontScale(1.8f);
-					if (ImGui::Button("Add Animation Sheet Component", viewSize))
+					ImGui::SetWindowFontScale(1.2f);
+					if (ImGui::Button("Add Animation Sheet Component", {viewSize.x/2.f, viewSize.y/2.f}))
 					{
 						e.AddComponent<SheetAnimation>({});
 					}
@@ -86,10 +86,12 @@ void AnimationPanel::Update()
 				}
 				if (!e.HasComponent<Animation>())
 				{
-					ImGui::SetWindowFontScale(1.8f);
-					if (ImGui::Button("Add Animation Component", viewSize))
+					ImGui::SetWindowFontScale(1.2f);
+					if (ImGui::Button("Add Animation Component", { viewSize.x / 2.f, viewSize.y / 2.f }))
 					{
 						e.AddComponent<Animation>({});
+						if (e.HasComponent<Sprite>())
+							animator->AddImages(e, SpriteSheet{ e.GetComponent<Sprite>(safe).texture });
 					}
 					ImGui::SetWindowFontScale(1.0f);
 					if (animation_texture)
@@ -116,10 +118,21 @@ void AnimationPanel::Update()
 					ImGui::SliderInt("Sheet", &e.GetComponent<Animation>().currentImageIndex,0, (int)e.GetComponent<Animation>().sheets.size()-1);
 					for (size_t i = 0; i < e.GetComponent<Animation>().sheets.size(); i++)
 					{
+						if(size * ratio * e.GetComponent<Animation>().sheets[i].frameCount<ImGui::GetWindowWidth())
+							imageSize = { size * ratio * e.GetComponent<Animation>().sheets[i].frameCount,size};
+						else
+							imageSize = { ImGui::GetWindowWidth(), ImGui::GetWindowWidth() / ratio / e.GetComponent<Animation>().sheets[i].frameCount };
 						textureImage = (void*)(intptr_t)e.GetComponent<Animation>().sheets[i].sheet;
 						ImGui::Image(textureImage, imageSize, ImVec2(0, 1), ImVec2(1, 0));
 						ImGui::SameLine();
 						ImGui::Text(("Sheet " + std::to_string(i)).c_str());
+					}
+					if (!isViewportPaused)
+					{
+						if (ImGui::IsWindowFocused())
+							animator->Animate();
+						else
+							isViewportPaused = true;
 					}
 				}
 			}

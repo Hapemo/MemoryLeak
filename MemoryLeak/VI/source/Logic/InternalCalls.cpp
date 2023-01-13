@@ -425,7 +425,9 @@ void InternalCalls::SetCurrentCameraPosY(float _y) {
 Set current animation image index
 *******************************************************************************/
 void InternalCalls::SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
-	animator->SetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName), _index);
+	Entity entity = FUNC->GetEntity(_entityName, _sceneName);
+	animator->SetCurrentImageIndex(entity, _index);
+	entity.GetComponent<SheetAnimation>().currFrameIndex = 0;
 }
 
 /*!*****************************************************************************
