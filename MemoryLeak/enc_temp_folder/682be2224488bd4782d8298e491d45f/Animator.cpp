@@ -40,7 +40,6 @@ void Animator::Animate(const Entity& _e)
 	if (!_e.ShouldRun()) return;
 	if (!_e.HasComponent<Animation>()) return;
 	if (!_e.GetComponent<Animation>().sheets.size()) return;
-	if (_e.GetComponent<Animation>().currentImageIndex > _e.GetComponent<Animation>().sheets.size() - 1) return;
 
 	Animation animation = _e.GetComponent<Animation>();
 
