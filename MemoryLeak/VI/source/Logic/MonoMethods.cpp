@@ -46,9 +46,18 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityGetParentId", &FUNC->EntityGetParentId);
 	mono_add_internal_call("BonVoyage.InternalCalls::PauseScene", &FUNC->PauseScene);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayScene", &FUNC->PlayScene);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraScaleX", &FUNC->GetCurrentCameraScaleX);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraScaleY", &FUNC->GetCurrentCameraScaleY);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraPosX", &FUNC->GetCurrentCameraPosX);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraPosY", &FUNC->GetCurrentCameraPosY);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraScaleX", &FUNC->SetCurrentCameraScaleX);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraScaleY", &FUNC->SetCurrentCameraScaleY);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosX", &FUNC->SetCurrentCameraPosX);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosY", &FUNC->SetCurrentCameraPosY);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetTexture", &FUNC->SetTexture);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetTexture", &FUNC->GetTexture);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntitiesCollided", &FUNC->EntitiesCollided);
+	mono_add_internal_call("BonVoyage.InternalCalls::CheckCollision", &FUNC->CheckCollision);
 	mono_add_internal_call("BonVoyage.InternalCalls::GameStateExit", &FUNC->GameStateExit);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetDeltaTime", &FUNC->GetDeltaTime);
 	mono_add_internal_call("BonVoyage.InternalCalls::InitScriptWindow", &FUNC->InitScriptWindow);

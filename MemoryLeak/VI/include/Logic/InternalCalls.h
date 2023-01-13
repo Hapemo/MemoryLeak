@@ -269,6 +269,18 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Pause scene.
+	*******************************************************************************/
+	static void PauseScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Unpause scene.
+	*******************************************************************************/
+	static void PlayScene(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
 	Get current game state
 	*******************************************************************************/
 	static GameState& CurrentGameState();
@@ -281,15 +293,75 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Pause scene.
+	Get current game state's camera X scale
 	*******************************************************************************/
-	static void PauseScene(std::string const& _name);
+	static float GetCurrentCameraScaleX();
 
 	/*!*****************************************************************************
 	\brief
-	Unpause scene.
+	Get current game state's camera Y scale
 	*******************************************************************************/
-	static void PlayScene(std::string const& _name);
+	static float GetCurrentCameraScaleY();
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state's camera X pos
+	*******************************************************************************/
+	static float GetCurrentCameraPosX();
+
+	/*!*****************************************************************************
+	\brief
+	Get current game state's camera Y pos
+	*******************************************************************************/
+	static float GetCurrentCameraPosY();
+
+	/*!*****************************************************************************
+	\brief
+	Set current game state's camera X scale
+	*******************************************************************************/
+	static void SetCurrentCameraScaleX(float _x);
+
+	/*!*****************************************************************************
+	\brief
+	Set current game state's camera Y scale
+	*******************************************************************************/
+	static void SetCurrentCameraScaleY(float _y);
+
+	/*!*****************************************************************************
+	\brief
+	Set current game state's camera X pos
+	*******************************************************************************/
+	static void SetCurrentCameraPosX(float _x);
+
+	/*!*****************************************************************************
+	\brief
+	Set current game state's camera Y pos
+	*******************************************************************************/
+	static void SetCurrentCameraPosY(float _y);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation image index by entity
+	*******************************************************************************/
+	static void SetCurrentImageIndexByEntity(Entity _e, int _index);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation image index by entity
+	*******************************************************************************/
+	static int GetCurrentImageIndexByEntity(Entity _e);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation image index
+	*******************************************************************************/
+	static void SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation image index
+	*******************************************************************************/
+	static int GetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
@@ -328,6 +400,8 @@ public:
 	*******************************************************************************/
 	static bool EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2);
 
+	static bool CheckCollisionByEntity(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
+
 	/*!*****************************************************************************
 	\brief
 	EntitiesCollided function that checks if two given entities have collided by
@@ -337,7 +411,7 @@ public:
 	*******************************************************************************/
 	static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
 
-	static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck);
+	static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck = false);
 
 	/*!*****************************************************************************
 	\brief

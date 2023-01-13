@@ -57,6 +57,30 @@ namespace BonVoyage
 		internal extern static void PlayScene();
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetCurrentCameraScaleX();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetCurrentCameraScaleY();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetCurrentCameraPosX();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void GetCurrentCameraPosY();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentCameraScaleX();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentCameraScaleY();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentCameraPosX();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SetCurrentCameraPosY();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static bool EntityIsActive();
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -81,6 +105,9 @@ namespace BonVoyage
 		internal extern static bool EntitiesCollided();
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static bool CheckCollision();
+
+		 [MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static void GameStateExit();
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]

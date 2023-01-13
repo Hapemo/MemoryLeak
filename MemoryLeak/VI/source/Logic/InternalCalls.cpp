@@ -312,6 +312,14 @@ void InternalCalls::PauseScene(std::string const& _name) {
 
 /*!*****************************************************************************
 \brief
+Unpause scene.
+*******************************************************************************/
+void InternalCalls::PlayScene(std::string const& _name) {
+	GameStateManager::GetInstance()->SelectScene(_name).Pause(false);
+}
+
+/*!*****************************************************************************
+\brief
 Get current game state's camera
 *******************************************************************************/
 Transform& InternalCalls::CurrentCamera() {
@@ -320,10 +328,98 @@ Transform& InternalCalls::CurrentCamera() {
 
 /*!*****************************************************************************
 \brief
-Unpause scene.
+Get current game state's camera X scale
 *******************************************************************************/
-void InternalCalls::PlayScene(std::string const& _name) {
-	GameStateManager::GetInstance()->SelectScene(_name).Pause(false);
+float InternalCalls::GetCurrentCameraScaleX() {
+	return CurrentGameState().mCamera.scale.x;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera Y scale
+*******************************************************************************/
+float InternalCalls::GetCurrentCameraScaleY() {
+	return CurrentGameState().mCamera.scale.y;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera X pos
+*******************************************************************************/
+float InternalCalls::GetCurrentCameraPosX() {
+	return CurrentGameState().mCamera.translation.x;
+}
+
+/*!*****************************************************************************
+\brief
+Get current game state's camera Y pos
+*******************************************************************************/
+float InternalCalls::GetCurrentCameraPosY() {
+	return CurrentGameState().mCamera.translation.y;
+}
+
+/*!*****************************************************************************
+\brief
+Set current game state's camera X scale
+*******************************************************************************/
+void InternalCalls::SetCurrentCameraScaleX(float _x) {
+	CurrentGameState().mCamera.scale.x = _x;
+}
+
+/*!*****************************************************************************
+\brief
+Set current game state's camera Y scale
+*******************************************************************************/
+void InternalCalls::SetCurrentCameraScaleY(float _y) {
+	CurrentGameState().mCamera.scale.y = _y;
+}
+
+/*!*****************************************************************************
+\brief
+Set current game state's camera X pos
+*******************************************************************************/
+void InternalCalls::SetCurrentCameraPosX(float _x) {
+	CurrentGameState().mCamera.translation.x = _x;
+}
+
+/*!*****************************************************************************
+\brief
+Set current game state's camera Y pos
+*******************************************************************************/
+void InternalCalls::SetCurrentCameraPosY(float _y) {
+	CurrentGameState().mCamera.translation.y = _y;
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index
+*******************************************************************************/
+void InternalCalls::SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	animator->SetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName), _index);
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index
+*******************************************************************************/
+int InternalCalls::GetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName) {
+	return animator->GetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName));
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index by entity
+*******************************************************************************/
+void InternalCalls::SetCurrentImageIndexByEntity(Entity _e, int _index) {
+	animator->SetCurrentImageIndex(_e, _index);
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index by entity
+*******************************************************************************/
+int InternalCalls::GetCurrentImageIndexByEntity(Entity _e) {
+	return animator->GetCurrentImageIndex(_e);
 }
 
 /*!*****************************************************************************
@@ -371,6 +467,10 @@ Evaluated result of whether a collision happened between the two given entities
 *******************************************************************************/
 bool InternalCalls::EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2) {
 	return collision2DManager->EntitiesCollided(_e1, _e2);
+}
+
+bool InternalCalls::CheckCollisionByEntity(const Entity& _e1, const Entity& _e2, bool const& _dynamicCheck) {
+	return collision2DManager->CheckCollision(_e1, _e2, _dynamicCheck);
 }
 
 /*!*****************************************************************************
