@@ -60,6 +60,14 @@ public:
 	*******************************************************************************/
 	static bool CheckKey(E_STATE _state, E_KEY _key);
 
+	static bool CheckKeyPress(int _key);
+
+	static bool CheckKeyHold(int _key);
+
+	static bool CheckKeyRelease(int _key);
+
+	static bool CheckKeyIdle(int _key);
+
 	/*!*****************************************************************************
 	\brief
 	Get world mouse position.
@@ -91,7 +99,8 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	static void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
+	static void ApplyImpulseByEntity(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
+	static void ApplyImpulse(std::string const& _entityName, std::string const& _sceneName, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY);
 
 	/*!*****************************************************************************
 	\brief
@@ -284,6 +293,7 @@ public:
 	Get current game state
 	*******************************************************************************/
 	static GameState& CurrentGameState();
+	static std::string GetCurrentGameStateName();
 
 	/*!*****************************************************************************
 	\brief
@@ -399,7 +409,6 @@ public:
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
 	static bool EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2);
-
 	static bool CheckCollisionByEntity(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
 
 	/*!*****************************************************************************
@@ -410,7 +419,6 @@ public:
 	Evaluated result of whether a collision happened between the two given entities
 	*******************************************************************************/
 	static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
-
 	static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck = false);
 
 	/*!*****************************************************************************
