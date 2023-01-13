@@ -18,3 +18,4 @@ C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scrip
 C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.dll
 C:\Users\jazzt\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.pdb
+C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.AssemblyReference.cache

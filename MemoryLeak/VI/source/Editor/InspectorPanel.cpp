@@ -274,7 +274,11 @@ void InspectorPanel::AddComponent()
 	else if (addComponentID == (int)COMPONENTID::SPRITE)
 		e.AddComponent<Sprite>({});
 	else if (addComponentID == (int)COMPONENTID::ANIMATION)
+	{
 		e.AddComponent<Animation>({});
+		if (e.HasComponent<Sprite>())
+			animator->AddImages(e, SpriteSheet{e.GetComponent<Sprite>(safe).texture});
+	}
 	else if (addComponentID == (int)COMPONENTID::SHEETANIMATION)
 		e.AddComponent<SheetAnimation>({});
 	else if (addComponentID == (int)COMPONENTID::PHYSICS2D)
