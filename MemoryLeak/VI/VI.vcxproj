@@ -399,6 +399,7 @@
     <ClInclude Include="include\Physics\Contact.h" />
     <ClInclude Include="include\Physics\Force.h" />
     <ClInclude Include="include\Physics\Physics2DManager.h" />
+    <ClInclude Include="include\Physics\QuadTree.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Serialization.h" />
@@ -460,6 +461,7 @@
     <ClCompile Include="source\Logic\ScriptManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />
     <ClCompile Include="source\Physics\Physics2DManager.cpp" />
+    <ClCompile Include="source\Physics\QuadTree.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
     <ClCompile Include="source\stb_image.cpp" />
