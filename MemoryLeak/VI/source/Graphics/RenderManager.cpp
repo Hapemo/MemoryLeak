@@ -26,7 +26,7 @@ RenderManager::RenderManager()
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
 	/*mMinimapProgram("shaders/texture.vert", "shaders/minimap.frag"),*/
-	mWindowHeight(nullptr), mWindowWidth(nullptr)/*, minimap(0)*/
+	mWindowHeight(nullptr), mWindowWidth(nullptr), lightsource(0)/*, minimap(0)*/
 {
 	//render world (editor)
 	mRenderGameToScreen = true;
@@ -355,6 +355,16 @@ void RenderManager::RenderDebug()
 				CreateDebugArrow(t, { 0, 255, 0, 255 });
 			}
 
+			if (e.HasComponent<ShadowCaster>() && e.GetComponent<ShadowCaster>().renderFlag)
+			{
+				Transform t = e.GetComponent<Transform>();
+				t.translation += e.GetComponent<ShadowCaster>().centerOffset;
+				t.scale.x *= e.GetComponent<ShadowCaster>().scaleOffset.x;
+				t.scale.y *= e.GetComponent<ShadowCaster>().scaleOffset.y;
+				t.rotation = 0;
+				CreateDebugSquare(t, { 50, 50, 50, 255 });
+			}
+
 			//check if sprite component itself is a debug drawing
 			if (!e.HasComponent<Sprite>()) continue;
 			switch (e.GetComponent<Sprite>().sprite)
@@ -489,8 +499,9 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		for (Entity e : scene.mEntities)
 		{
 			if (!e.GetComponent<General>().isActive) continue;
-			if (!e.ShouldRun()) 
-				continue;
+			if (!e.ShouldRun()) continue;
+			if (e.HasComponent<LightSource>())
+				lightsource = e;
 			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
 
 			if (e.HasComponent<Sprite>())

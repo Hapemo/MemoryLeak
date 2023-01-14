@@ -251,6 +251,20 @@ public:
 	*******************************************************************************/
 	bool ShouldCull(const Entity& e);
 
+	/*!*****************************************************************************
+	\brief
+	Creates a debug point based on Transform and Sprite Component, or Physics point
+	collider.
+
+	\param const Transform& _t
+	The transform component.
+
+	\param const Color& _c
+	The color component.
+	*******************************************************************************/
+	void CreateDebugPoint(const Transform& _t, const Color& _clr);
+
+	Entity GetLightSource() { return lightsource; }
 private:
 	void* gs;
 	bool mIsCurrSceneUI;
@@ -281,6 +295,7 @@ private:
 	bool mDebug;
 	std::vector<int> mRenderLayers;
 
+	Entity lightsource;
 
 	/*!*****************************************************************************
 	\brief
@@ -418,18 +433,6 @@ private:
 	*******************************************************************************/
 	void CreateDebugPoint(const Entity& _e);
 
-	/*!*****************************************************************************
-	\brief
-	Creates a debug point based on Transform and Sprite Component, or Physics point
-	collider.
-
-	\param const Transform& _t
-	The transform component.
-
-	\param const Color& _c
-	The color component.
-	*******************************************************************************/
-	void CreateDebugPoint(const Transform& _t, const Color& _clr);
 
 	/*!*****************************************************************************
 	\brief

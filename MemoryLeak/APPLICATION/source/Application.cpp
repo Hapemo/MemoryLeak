@@ -92,6 +92,8 @@ void Application::SystemUpdate() {
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
 
+  shadowManager->Update();
+
   // Animator
   TRACK_PERFORMANCE("Animation");
   animator->Animate();
