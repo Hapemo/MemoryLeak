@@ -78,4 +78,9 @@ public:
 	Run specified script for entity.
 	*******************************************************************************/
 	void RunScript(Entity const& _e, E_SCRIPTTYPE _type);
+
+private:
+	double mAccumulatedDT{ 0.0 };					
+	const double mFixedDT{ 1.0 / 60.0 };			
+	const double mAccumulatedDTCap{ 1.0 };			
 };

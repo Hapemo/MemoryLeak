@@ -30,7 +30,19 @@ void LogicSystem::Init() {
 Run the update function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Update() {
-	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::UPDATE);
+	// Increment accumulatedDT by the application's DT
+	mAccumulatedDT += FPSManager::dt;
+
+	// Prevent spiral of death
+	if (mAccumulatedDT > mAccumulatedDTCap)
+		mAccumulatedDT = mAccumulatedDTCap;
+
+	// If the accumlatedDT is larger than or equal to the defined fixedDT,
+	//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
+	while (mAccumulatedDT >= mFixedDT) {
+		for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::UPDATE);
+		mAccumulatedDT -= mFixedDT;
+	}
 }
 
 /*!*****************************************************************************
