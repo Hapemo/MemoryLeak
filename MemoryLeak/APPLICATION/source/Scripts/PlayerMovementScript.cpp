@@ -78,7 +78,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)/*|| _e.GetComponent<General>().name != "Boat"*/) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currCamera->translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
-				FUNC->ApplyImpulseByEntity(_e, (dirVector.Normalized() * playerSpeed * (speedCheat ? speedCheatMultiplier : 1)) * (float)FUNC->GetDeltaTime(), Math::Vec2{ 0.f, 0.f });
+				FUNC->ApplyImpulseByEntity(_e, (dirVector.Normalized() * playerSpeed * (speedCheat ? speedCheatMultiplier : 1)) * (float)(1.0 / 60.0)/*(float)FUNC->GetDeltaTime()*/, Math::Vec2{ 0.f, 0.f });
 			if (_e.HasComponent<Audio>())
 				_e.GetComponent<Audio>().sound.volume = 0.2f;
 			float pi = (float) Math::PI;
