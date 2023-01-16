@@ -166,7 +166,7 @@ GLuint RenderManager::GetAnimatorFBO()
 
 	std::map<size_t, std::map<GLuint, TextureInfo>> textureInfo;
 
-	CreateVertices(textureInfo);
+	CreateVerticesAnimator(textureInfo);
 	BatchRenderLayers(textureInfo);
 
 	mAnimatorFBO.Unbind();
@@ -540,6 +540,38 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		CreateGizmo();
 
 	std::sort(mRenderLayers.begin(), mRenderLayers.end());
+}
+
+void RenderManager::CreateVerticesAnimator(std::map<size_t, std::map<GLuint, TextureInfo>>& _texInfo)
+{
+	Entity e = mEditorSelectedEntities[0];
+	Sprite sprite = e.GetComponent<Sprite>();
+	switch (sprite.sprite)
+	{
+	case SPRITE::TEXTURE:
+	{
+		GLuint texid = sprite.texture;
+
+		if (texid != 0)
+		{
+			if (_texInfo.find(sprite.layer) == _texInfo.end())
+				_texInfo[sprite.layer] = std::map<GLuint, TextureInfo>();
+			if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
+				_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+			CreateSquare(e, _texInfo[sprite.layer][texid].mVertices, _texInfo[sprite.layer][texid].mIndices);
+		}
+	}
+	break;
+	case SPRITE::SQUARE:
+		CreateSquare(e, mVertices[sprite.layer], mIndices[sprite.layer]);
+		break;
+	case SPRITE::CIRCLE:
+		CreateCircle(e);
+		break;
+	default:
+		break;
+	}
 }
 
 /*!*****************************************************************************

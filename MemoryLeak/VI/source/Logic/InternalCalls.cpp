@@ -33,6 +33,22 @@ bool InternalCalls::CheckKey(E_STATE _state, E_KEY _key) {
 	return Input::CheckKey(_state, _key);
 }
 
+bool InternalCalls::CheckKeyPress(int _key) {
+	return Input::CheckKey(E_STATE::PRESS, (E_KEY)_key);
+}
+
+bool InternalCalls::CheckKeyHold(int _key) {
+	return Input::CheckKey(E_STATE::HOLD, (E_KEY)_key);
+}
+
+bool InternalCalls::CheckKeyRelease(int _key) {
+	return Input::CheckKey(E_STATE::RELEASE, (E_KEY)_key);
+}
+
+bool InternalCalls::CheckKeyIdle(int _key) {
+	return Input::CheckKey(E_STATE::NOTPRESS, (E_KEY)_key);
+}
+
 /*!*****************************************************************************
 \brief
 Get world mouse position.
@@ -77,8 +93,14 @@ calculation
 \return void
 NULL
 *******************************************************************************/
-void InternalCalls::ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation) {
+void InternalCalls::ApplyImpulseByEntity(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation) {
 	physics2DManager->ApplyImpulse(_e, _impulse, _rotation);
+}
+
+void InternalCalls::ApplyImpulse(std::string const& _entityName, std::string const& _sceneName, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY) {
+	Math::Vec2 impulse = { _impulseX, _impulseY };
+	Math::Vec2 rotate = { _rotationX, _rotationY };
+	physics2DManager->ApplyImpulse(FUNC->GetEntity(_entityName, _sceneName), impulse, rotate);
 }
 
 /*!*****************************************************************************
@@ -304,6 +326,14 @@ GameState& InternalCalls::CurrentGameState() {
 
 /*!*****************************************************************************
 \brief
+Get current game state name
+*******************************************************************************/
+std::string InternalCalls::GetCurrentGameStateName() {
+	return GameStateManager::GetInstance()->mCurrentGameState->mName;
+}
+
+/*!*****************************************************************************
+\brief
 Pause scene.
 *******************************************************************************/
 void InternalCalls::PauseScene(std::string const& _name) {
@@ -395,7 +425,9 @@ void InternalCalls::SetCurrentCameraPosY(float _y) {
 Set current animation image index
 *******************************************************************************/
 void InternalCalls::SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
-	animator->SetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName), _index);
+	Entity entity = FUNC->GetEntity(_entityName, _sceneName);
+	animator->SetCurrentImageIndex(entity, _index);
+	entity.GetComponent<SheetAnimation>().currFrameIndex = 0;
 }
 
 /*!*****************************************************************************

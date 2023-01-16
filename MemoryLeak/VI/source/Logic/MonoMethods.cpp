@@ -24,7 +24,10 @@ Checks for the state of certain key
 - Returns true if inputted state matches current state of specified key
 *******************************************************************************/
 void MonoMethods::RegisterCalls() {
-	mono_add_internal_call("BonVoyage.InternalCalls::CheckKey", &FUNC->CheckKey);
+	mono_add_internal_call("BonVoyage.InternalCalls::CheckKeyPress", &FUNC->CheckKeyPress);
+	mono_add_internal_call("BonVoyage.InternalCalls::CheckKeyHold", &FUNC->CheckKeyPress);
+	mono_add_internal_call("BonVoyage.InternalCalls::CheckKeyRelease", &FUNC->CheckKeyPress);
+	mono_add_internal_call("BonVoyage.InternalCalls::CheckKeyIdle", &FUNC->CheckKeyPress);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetWorldMousePosX", &FUNC->GetWorldMousePosX);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetWorldMousePosY", &FUNC->GetWorldMousePosY);
 	mono_add_internal_call("BonVoyage.InternalCalls::ApplyImpulse", &FUNC->ApplyImpulse);
@@ -44,6 +47,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityDeactivate", &FUNC->EntityDeactivate);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityGetParent", &FUNC->EntityGetParent);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityGetParentId", &FUNC->EntityGetParentId);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentGameStateName", &FUNC->GetCurrentGameStateName);
 	mono_add_internal_call("BonVoyage.InternalCalls::PauseScene", &FUNC->PauseScene);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayScene", &FUNC->PlayScene);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraScaleX", &FUNC->GetCurrentCameraScaleX);
@@ -54,13 +58,14 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraScaleY", &FUNC->SetCurrentCameraScaleY);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosX", &FUNC->SetCurrentCameraPosX);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosY", &FUNC->SetCurrentCameraPosY);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentImageIndex", &FUNC->SetCurrentImageIndex);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentImageIndex", &FUNC->GetCurrentImageIndex);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetTexture", &FUNC->SetTexture);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetTexture", &FUNC->GetTexture);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntitiesCollided", &FUNC->EntitiesCollided);
 	mono_add_internal_call("BonVoyage.InternalCalls::CheckCollision", &FUNC->CheckCollision);
 	mono_add_internal_call("BonVoyage.InternalCalls::GameStateExit", &FUNC->GameStateExit);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetDeltaTime", &FUNC->GetDeltaTime);
-	mono_add_internal_call("BonVoyage.InternalCalls::InitScriptWindow", &FUNC->InitScriptWindow);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayAnySound", &FUNC->PlayAnySound);
 	mono_add_internal_call("BonVoyage.InternalCalls::IsPlaying", &FUNC->IsPlaying);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayBGSound", &FUNC->PlayBGSound);

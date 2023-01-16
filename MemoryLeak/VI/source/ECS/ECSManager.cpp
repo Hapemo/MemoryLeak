@@ -162,6 +162,7 @@ void ECSManager::RegisterShadowManager() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
 	signature.set(ECS::GetComponentType<Sprite>());
+	signature.set(ECS::GetComponentType<ShadowCaster>());
 
 	shadowManager = ECS::RegisterSystem<ShadowManager>();
 	ECS::SetSystemSignature<ShadowManager>(signature);
