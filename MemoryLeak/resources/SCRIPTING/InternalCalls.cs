@@ -175,14 +175,5 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetRotate(string _entityName, string _sceneName, float _rotate);
-
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static bool ButtonClicked(string _entityName, string _sceneName);
-
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static bool ButtonReleased(string _entityName, string _sceneName);
-
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static bool ButtonHover(string _entityName, string _sceneName);
 	}
 }

@@ -83,13 +83,6 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Test internal function.
-	*******************************************************************************/
-	//void TestFunction(std::string _thingToPrint);
-	static MonoString* TestFunction();
-
-	/*!*****************************************************************************
-	\brief
 	Register the C# scripts to store internally for the logic system to use.
 	*******************************************************************************/
 	void RegisterMonoScript(std::string _namespace, std::string _class);
