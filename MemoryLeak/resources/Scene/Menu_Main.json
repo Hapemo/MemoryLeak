@@ -356,11 +356,7 @@
             "layer": 1
         },
         "Animation": {
-            "images": [
-                "Textures\\Menu\\settings-icon.png"
-            ],
-            "timePerImage": 0.0,
-            "timeToImageSwap": 0.0,
+            "sheets": [],
             "currentImageIndex": 0
         },
         "Audio": {

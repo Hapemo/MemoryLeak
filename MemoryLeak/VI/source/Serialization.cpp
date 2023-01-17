@@ -1205,7 +1205,15 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	{
 		Scene sceneData(entity[index]["SceneName"].GetString());
 		//sceneData.mName = entity[index]["SceneName"].GetString();
-		//sceneData.mCamera = getTransform(entity[index]);
+		if (entity[index].HasMember("Transform"))
+		{
+			_gameState.mCamera = getTransform(entity[index]);
+			sceneData.mIsUI = false;
+		}
+		else
+		{
+			sceneData.mIsUI = true;
+		}
 		sceneData.mIsPause = entity[index]["isActive"].GetBool();
 		sceneData.mLayer = entity[index]["layer"].GetInt();
 		sceneData.mOrder = entity[index]["order"].GetInt();
@@ -1246,7 +1254,8 @@ void SerializationManager::SaveGameState(GameState& _gameState)
 		Value scene(kObjectType);
 		Value sceneName(_gameState.mScenes[s].mName.c_str(), (SizeType)_gameState.mScenes[s].mName.size(), allocator);
 		scene.AddMember(StringRef("SceneName"), sceneName, gamestate.GetAllocator());
-		//addTransform(gamestate, scene, _gameState.mScenes[s].mCamera);
+		if(!_gameState.mScenes[s].mIsUI)
+			addTransform(gamestate, scene, _gameState.mCamera);
 		scene.AddMember(StringRef("isActive"), _gameState.mScenes[s].mIsPause, gamestate.GetAllocator());
 		scene.AddMember(StringRef("layer"), _gameState.mScenes[s].mLayer, gamestate.GetAllocator());
 		scene.AddMember(StringRef("order"), _gameState.mScenes[s].mOrder, gamestate.GetAllocator());
