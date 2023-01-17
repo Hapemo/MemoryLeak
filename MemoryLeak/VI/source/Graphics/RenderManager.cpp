@@ -22,7 +22,7 @@ Default Constructor for RenderManager class.
 *******************************************************************************/
 RenderManager::RenderManager()
 	: mAllocator(NO_OF_OBJECTS, VERTICES_PER_OBJECT, INDICES_PER_OBJECT),
-	mWorldFBO(), mGameFBO(), mAnimatorFBO(), 
+	mWorldFBO(), mGameFBO(), mAnimatorFBO(), mLightMapFBO(),
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
 	/*mMinimapProgram("shaders/texture.vert", "shaders/minimap.frag"),*/
@@ -67,6 +67,7 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
 	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
+	mLightMapFBO.Init(*mWindowWidth, *mWindowHeight);
 	mGameCam.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
 	mPrevWidth = *mWindowWidth;
@@ -94,10 +95,16 @@ void RenderManager::Render()
 		mWorldFBO.DeleteFBO();
 		mGameFBO.DeleteFBO();
 		mAnimatorFBO.DeleteFBO();
+		mLightMapFBO.DeleteFBO();
 		mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
 		mGameFBO.Init(*mWindowWidth, *mWindowHeight);
 		mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
+		mLightMapFBO.Init(*mWindowWidth, *mWindowHeight);
 	}
+
+	if (shadowManager->CastShadows())
+		CreateLightMap();
+
 	if (!mRenderGameToScreen)
 		mCurrRenderPass == RENDER_STATE::GAME ? 
 		mGameFBO.Bind() : mWorldFBO.Bind();
@@ -139,11 +146,28 @@ void RenderManager::Render()
 	for (auto itr = mFontRenderers.begin(); itr != mFontRenderers.end(); ++itr)
 		itr->second.Clear();
 
-
 	//recursion for editor viewport
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		Render();
 	//minimap.id = 0;
+}
+
+void RenderManager::CreateLightMap()
+{
+	mLightMapFBO.Bind();
+	Color prevClearColor = mClearColor;
+	SetClearColor({ 0, 0, 0, 100 });
+	Clear();
+	std::vector<Math::Vec2> rayEndPoints = shadowManager->GetRayEndPoints();
+
+	mTextureProgram.Bind();
+	mAllocator.BindVAO();
+
+	mAllocator.UnbindVAO();
+	mTextureProgram.Unbind();
+
+	SetClearColor(prevClearColor);
+	mLightMapFBO.Unbind();
 }
 
 /*!*****************************************************************************
@@ -390,7 +414,6 @@ void RenderManager::RenderDebug()
 		}
 	}
 
-
 	//make overlay for selected entities in the editor
 	for (const Entity& e : mEditorSelectedEntities)
 	{
@@ -479,6 +502,12 @@ void RenderManager::BatchRenderElements(GLenum _mode, const std::vector<Vertex>&
 	glNamedBufferSubData(mAllocator.mvboid, 0, sizeof(Vertex) * _vertices.size(), _vertices.data());
 	glNamedBufferSubData(mAllocator.meboid, 0, _indices.size() * sizeof(GLushort), _indices.data());
 	glDrawElements(_mode, static_cast<GLsizei>(_indices.size()), GL_UNSIGNED_SHORT, nullptr);
+}
+
+void RenderManager::NewLayer(int _layer)
+{
+	if (find(mRenderLayers.begin(), mRenderLayers.end(), _layer) == mRenderLayers.end())
+		mRenderLayers.push_back(_layer);
 }
 
 /*!*****************************************************************************
@@ -795,7 +824,46 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	_indices.push_back(first + 2);
 	_indices.push_back(first + 3);
 }
+void RenderManager::CreateSquare(const Transform& _xform, const Color& _clr, int _layer)
+{
+	Math::Mat3 mtx = GetTransform(_xform.scale, _xform.rotation, _xform.translation);
+	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
+	float layer = (_layer * 2 - 255) / 255.f;
 
+	Vertex v0, v1, v2, v3;
+	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
+	v0.position.z = layer;
+	v0.color = clr;
+	v0.texID = 0.f;
+
+	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
+	v1.position.z = layer;
+	v1.color = clr;
+	v1.texID = 0.f;
+
+	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
+	v2.position.z = layer;
+	v2.color = clr;
+	v2.texID = 0.f;
+
+	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
+	v3.position.z = layer;
+	v3.color = clr;
+	v3.texID = 0.f;
+
+	mVertices[_layer].push_back(v0);
+	mVertices[_layer].push_back(v1);
+	mVertices[_layer].push_back(v2);
+	mVertices[_layer].push_back(v3);
+
+	GLushort first = mIndices[_layer].empty() ? 0 : mIndices[_layer].back() + 1;
+	mIndices[_layer].push_back(first);
+	mIndices[_layer].push_back(first + 1);
+	mIndices[_layer].push_back(first + 2);
+	mIndices[_layer].push_back(first + 1);
+	mIndices[_layer].push_back(first + 2);
+	mIndices[_layer].push_back(first + 3);
+}
 /*!*****************************************************************************
 \brief
 Creates a circle based on Transform and Sprite Component.
@@ -1254,6 +1322,7 @@ The color to be cleared with.
 *******************************************************************************/
 void RenderManager::SetClearColor(const Color& _clr)
 {
+	mClearColor = _clr;
 	glClearColor(_clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f);
 }
 /*!*****************************************************************************
@@ -1451,6 +1520,7 @@ The color of the circle.
 *******************************************************************************/
 void RenderManager::CreateGizmoCircle(const Transform& _t, const Color& _clr)
 {
+	NewLayer(255);
 	Math::Mat3 mtx = GetGizmoTransform(_t);
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
 

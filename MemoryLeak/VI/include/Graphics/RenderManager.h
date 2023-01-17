@@ -251,18 +251,7 @@ public:
 	*******************************************************************************/
 	bool ShouldCull(const Entity& e);
 
-	/*!*****************************************************************************
-	\brief
-	Creates a debug point based on Transform and Sprite Component, or Physics point
-	collider.
-
-	\param const Transform& _t
-	The transform component.
-
-	\param const Color& _c
-	The color component.
-	*******************************************************************************/
-	void CreateDebugPoint(const Transform& _t, const Color& _clr);
+	void NewLayer(int _layer);
 
 	Entity GetLightSource() { return lightsource; }
 private:
@@ -273,7 +262,7 @@ private:
 	std::unordered_map<std::string, FontRenderer> mFontRenderers;
 	bool mRenderGameToScreen;
 	float mVectorLengthModifier;
-	FBO mWorldFBO, mGameFBO, mAnimatorFBO;
+	FBO mWorldFBO, mGameFBO, mAnimatorFBO, mLightMapFBO;
 	int* mWindowWidth;
 	int* mWindowHeight;
 	GLShader mDefaultProgram;
@@ -294,7 +283,7 @@ private:
 	//Entity minimap;
 	bool mDebug;
 	std::vector<int> mRenderLayers;
-
+	Color mClearColor;
 	Entity lightsource;
 
 	/*!*****************************************************************************
@@ -372,6 +361,21 @@ private:
 
 	void CreateVerticesAnimator(std::map<size_t, std::map<GLuint, TextureInfo>>& _texInfo);
 
+	void CreateLightMap();
+
+	/*!*****************************************************************************
+	\brief
+	Creates a debug point based on Transform and Sprite Component, or Physics point
+	collider.
+
+	\param const Transform& _t
+	The transform component.
+
+	\param const Color& _c
+	The color component.
+	*******************************************************************************/
+	void CreateDebugPoint(const Transform& _t, const Color& _clr);
+
 	/*!*****************************************************************************
 	\brief
 	Rendering of textures
@@ -408,6 +412,7 @@ private:
 	*******************************************************************************/
 	void CreateCircle(const Entity& _e);
 
+public:
 	/*!*****************************************************************************
 	\brief
 	Creates a circle based on Transform, Color and layer.
@@ -423,6 +428,9 @@ private:
 	*******************************************************************************/
 	void CreateCircle(const Transform& _xform, const Color& _clr, int layer);
 
+	void CreateSquare(const Transform& _xform, const Color& _clr, int layer);
+
+private:
 	/*!*****************************************************************************
 	\brief
 	Creates a debug point based on Transform and Sprite Component, or Physics point
@@ -443,7 +451,7 @@ private:
 	The entity containing Transform and Sprite component.
 	*******************************************************************************/
 	void CreateDebugLine(const Entity& _e);
-
+public:
 	/*!*****************************************************************************
 	\brief
 	Creates a debug line based on Transform and Sprite Component, or Physics Edge
@@ -456,7 +464,7 @@ private:
 	The color component.
 	*******************************************************************************/
 	void CreateDebugLine(const Transform& _t, const Color& _clr);
-
+private:
 	/*!*****************************************************************************
 	\brief
 	Creates a debug Square based on Transform and Sprite Component, or Physics Rect

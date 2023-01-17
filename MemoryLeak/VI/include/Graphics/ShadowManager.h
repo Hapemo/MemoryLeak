@@ -30,15 +30,20 @@ class ShadowManager : public System
 public:
 	ShadowManager();
 	void Update();
-
+	bool CastShadows() { return mCastShadows; }
+	const std::vector <Math::Vec2>& GetRayEndPoints() { return mRayEndPoints; }
 private:
-	Entity lightsource;
-	std::vector <Edge> objectEdges;
-	std::vector <Math::Vec2> rayDirection;
-	std::vector <Math::Vec2> rayEndPoints;
+	Entity mLightsource;
+	bool mCastShadows;
+	std::vector <Edge> mObjectEdges;
+	std::vector <Edge> mRayDirection;
+	std::vector <Edge> mExtendedRayDirection;
+	std::vector <Math::Vec2> mRayEndPoints;
+	Transform mCamera;
 
 	void RayCast();
 	void CreateRays();
 	void ClearVectors();
+	void CreateCameraVertices();
 	void CreateObjectVertices(Entity e);
 };
