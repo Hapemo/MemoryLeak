@@ -148,6 +148,18 @@ void MonoMethods::SetRotate(MonoString* _entityName, MonoString* _sceneName, flo
 	FUNC->SetRotate(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _rotate);
 }
 
+bool MonoMethods::ButtonClicked(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->ButtonClicked(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+bool MonoMethods::ButtonReleased(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->ButtonReleased(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+bool MonoMethods::ButtonHover(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->ButtonHover(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
 /*!*****************************************************************************
 \brief
 Checks for the state of certain key
@@ -216,4 +228,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::SetScaleY", &MonoMethods::SetScaleY);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetRotate", &MonoMethods::GetRotate);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetRotate", &MonoMethods::SetRotate);
+	mono_add_internal_call("BonVoyage.InternalCalls::ButtonClicked", &MonoMethods::ButtonClicked);
+	mono_add_internal_call("BonVoyage.InternalCalls::ButtonReleased", &MonoMethods::ButtonReleased);
+	mono_add_internal_call("BonVoyage.InternalCalls::ButtonHover", &MonoMethods::ButtonHover);
 }

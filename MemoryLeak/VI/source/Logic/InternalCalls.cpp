@@ -667,3 +667,36 @@ Get rotation of an entity.
 float InternalCalls::GetRotate(std::string const& _entityName, std::string const& _sceneName) {
 	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().rotation;
 }
+
+/*!*****************************************************************************
+\brief
+This is for checking holding down button.
+*******************************************************************************/
+bool InternalCalls::ButtonClickedByEntity(const Entity& _e) {
+	return _e.GetComponent<Button>().isClick;
+}
+bool InternalCalls::ButtonClicked(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Button>().isClick;
+}
+
+/*!*****************************************************************************
+\brief
+This is for checking button is released. Plays sound if there is audio attached to it.
+*******************************************************************************/
+bool InternalCalls::ButtonReleasedByEntity(const Entity& _e) {
+	return _e.GetComponent<Button>().activated;
+}
+bool InternalCalls::ButtonReleased(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Button>().activated;
+}
+
+/*!*****************************************************************************
+\brief
+This is for checking if button is hovered.
+*******************************************************************************/
+bool InternalCalls::ButtonHoverByEntity(const Entity& _e) {
+	return _e.GetComponent<Button>().isHover;
+}
+bool InternalCalls::ButtonHover(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Button>().isHover;
+}

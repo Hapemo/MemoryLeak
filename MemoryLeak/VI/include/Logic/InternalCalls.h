@@ -510,4 +510,25 @@ public:
 	Set rotation of an entity.
 	*******************************************************************************/
 	static void SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate);
+
+	/*!*****************************************************************************
+	\brief
+	This is for checking holding down button.
+	*******************************************************************************/
+	static bool ButtonClickedByEntity(const Entity& _e);
+	static bool ButtonClicked(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	This is for checking button is released. Plays sound if there is audio attached to it.
+	*******************************************************************************/
+	static bool ButtonReleasedByEntity(const Entity& _e);
+	static bool ButtonReleased(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	This is for checking if button is hovered.
+	*******************************************************************************/
+	static bool ButtonHoverByEntity(const Entity& _e);
+	static bool ButtonHover(std::string const& _entityName, std::string const& _sceneName);
 };

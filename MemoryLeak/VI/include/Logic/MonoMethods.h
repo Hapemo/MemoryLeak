@@ -67,4 +67,7 @@ public:
 	static void SetScaleY(MonoString* _entityName, MonoString* _sceneName, float _scaleY);
 	static float GetRotate(MonoString* _entityName, MonoString* _sceneName);
 	static void SetRotate(MonoString* _entityName, MonoString* _sceneName, float _rotate);
+	static bool ButtonClicked(MonoString* _entityName, MonoString* _sceneName);
+	static bool ButtonReleased(MonoString* _entityName, MonoString* _sceneName);
+	static bool ButtonHover(MonoString* _entityName, MonoString* _sceneName);
 };
