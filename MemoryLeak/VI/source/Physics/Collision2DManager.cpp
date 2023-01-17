@@ -475,11 +475,11 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		//if (!e1->GetComponent<General>().isActive)
 			//continue;
 
-		if (e1->GetComponent<General>().tag != TAG::PLAYER)
-			continue;
+		//if (e1->GetComponent<General>().tag != TAG::PLAYER)
+		//	continue;
 
-		//for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
-		for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
+		for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
+		//for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
 			if (e1 == e2)
 				continue;
 
