@@ -19,6 +19,7 @@ The MonoManager class handles the C# scripting for the engine.
 MonoDomain* MonoManager::mAppDomain = nullptr;
 MonoDomain* MonoManager::mRootDomain = nullptr;
 MonoAssembly* MonoManager::mAssembly = nullptr;
+std::shared_ptr<MonoManager> MonoManager::mInstance;
 
 /*!*****************************************************************************
 \brief
