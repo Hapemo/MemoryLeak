@@ -21,6 +21,19 @@ int* InternalCalls::windowHeight = nullptr;
 
 /*!*****************************************************************************
 \brief
+Test internal function for string.
+*******************************************************************************/
+void InternalCalls::TestArgString(MonoString* _thingToPrint) {
+	std::cout << "TestArgString: " << mono_string_to_utf8(_thingToPrint) << "\n";
+}
+
+MonoString* InternalCalls::TestReturnString() {
+	std::cout << "Calling internal call TestReturnString() success!\n";
+	return mono_string_new(mono_domain_get(), "Hello from TestReturnString()!");
+}
+
+/*!*****************************************************************************
+\brief
 Checks for the state of certain key
 \param STATE
 - State of the key pressed

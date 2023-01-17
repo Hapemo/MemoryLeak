@@ -10,15 +10,30 @@ namespace BonVoyage
         {
             this.hello = "Initing...";
             Console.WriteLine("Printing from C#: " + this.hello);
+
+            // Getting C++ int
             Console.WriteLine(InternalCalls.GetWorldMousePosX());
+
+            // Passing C# string to C++
+            InternalCalls.TestArgString("Passed in from C#!");
+
+            // Getting C++ string to print in C#
+            Console.WriteLine(InternalCalls.TestReturnString());
+
+            // Loading dialogue file
+            InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
         }
         public void Update()
         {
-            //this.hello = "Updating...";
-            Console.WriteLine("Printing from C#: " + this.hello);
+            this.hello = "Updating...";
 
-            if (InternalCalls.CheckKeyPress(68)) { // Press D
+            // Press D to print
+            if (InternalCalls.CheckKeyPress(68)) {
                 this.hello = "PRESSED!";
+                Console.WriteLine("Printing from C#: " + this.hello);
+
+                // Printing dialogue index 1 of loaded dialogue file
+                Console.WriteLine(InternalCalls.GetDialogue(1));
             }
         }
         public void Exit()

@@ -12,6 +12,7 @@ is being stored.
 *******************************************************************************/
 
 #pragma once
+#include <mono/jit/jit.h>
 #include "Singleton.h"
 #include "Input.h"
 #include "vec2.h"
@@ -35,18 +36,10 @@ private:
 public:
 	/*!*****************************************************************************
 	\brief
-
-	Default constructor and destructor.
+	Test internal function for string.
 	*******************************************************************************/
-	InternalCalls() = default;
-	~InternalCalls() = default;
-
-	/*!*****************************************************************************
-	\brief
-	Delete copy constructor.
-	*******************************************************************************/
-	InternalCalls(const InternalCalls&) = delete;
-	const InternalCalls& operator=(const InternalCalls&) = delete;
+	static void TestArgString(MonoString* _thingToPrint);
+	static MonoString* TestReturnString();
 
 	/*!*****************************************************************************
 	\brief
