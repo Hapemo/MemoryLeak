@@ -382,7 +382,7 @@ private:
 	\param std::vector<GLushort>& _indices
 	Indices array for new indices to be pushed to.
 	*******************************************************************************/
-	void CreateSquare(const Entity& _e, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
+	void CreateSquare(const Entity& _e, int layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
 
 	/*!*****************************************************************************
 	\brief
@@ -391,7 +391,7 @@ private:
 	\param const Entity& _e
 	The entity containing Transform and Sprite component.
 	*******************************************************************************/
-	void CreateCircle(const Entity& _e);
+	void CreateCircle(const Entity& _e, int layer);
 
 	/*!*****************************************************************************
 	\brief
@@ -642,7 +642,7 @@ private:
 	\param const Entity& _e
 	The entity with the Text component.
 	*******************************************************************************/
-	void CreateText(const Entity& _e);
+	void CreateText(const Entity& _e, int _layer);
 
 	/*!*****************************************************************************
 	\brief

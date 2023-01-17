@@ -26,3 +26,9 @@ C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCR
 C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
 C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.pdb
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb
