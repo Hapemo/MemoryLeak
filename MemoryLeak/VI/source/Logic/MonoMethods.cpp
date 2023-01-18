@@ -160,6 +160,10 @@ bool MonoMethods::ButtonHover(MonoString* _entityName, MonoString* _sceneName) {
 	return FUNC->ButtonHover(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
+void MonoMethods::UpdateText(MonoString* _entityName, MonoString* _sceneName, MonoString* _text) {
+	FUNC->UpdateText(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), MONO->ConvertFromMonoString(_text));
+}
+
 /*!*****************************************************************************
 \brief
 Checks for the state of certain key
@@ -231,4 +235,5 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::ButtonClicked", &MonoMethods::ButtonClicked);
 	mono_add_internal_call("BonVoyage.InternalCalls::ButtonReleased", &MonoMethods::ButtonReleased);
 	mono_add_internal_call("BonVoyage.InternalCalls::ButtonHover", &MonoMethods::ButtonHover);
+	mono_add_internal_call("BonVoyage.InternalCalls::UpdateText", &MonoMethods::UpdateText);
 }

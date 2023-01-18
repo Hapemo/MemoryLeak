@@ -700,3 +700,15 @@ bool InternalCalls::ButtonHoverByEntity(const Entity& _e) {
 bool InternalCalls::ButtonHover(std::string const& _entityName, std::string const& _sceneName) {
 	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Button>().isHover;
 }
+
+/*!*****************************************************************************
+\brief
+Changing text component text.
+*******************************************************************************/
+void InternalCalls::UpdateTextByEntity(const Entity& _e, std::string const& _text) {
+	_e.GetComponent<Text>().text = _text;
+}
+
+void InternalCalls::UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Text>().text = _text;
+}
