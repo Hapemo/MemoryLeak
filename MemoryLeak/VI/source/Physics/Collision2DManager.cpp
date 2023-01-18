@@ -467,7 +467,6 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 
 void Collision2DManager::GenerateContactList(const double& _dt) {
 	// Broad Phase Here
-	mQuadTree.Clear();
 	Math::Vec2 max{0.f, 0.f}, min{0.f, 0.f};
 	for (auto e{ mEntities.begin() }; e != mEntities.end(); ++e) {
 		Math::Vec2 &pos{ e->GetComponent<Transform>().translation };
@@ -476,6 +475,7 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		min.x = std::min(min.x, pos.x);
 		min.y = std::min(min.y, pos.y);
 	}
+	//if (mQuadTree)
 
 	// For now, we loop through the entity list
 	// Converted to check player entities against all other entities for M3 to reduce amount of checks done
