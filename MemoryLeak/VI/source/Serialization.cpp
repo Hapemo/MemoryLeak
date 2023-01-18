@@ -890,11 +890,11 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		}
 		if (e.HasComponent<LightSource>()) {
 
-			//addLightSource(scene, entity, e.GetComponent<LightSource>());
+			addLightSource(scene, entity, e.GetComponent<LightSource>());
 		}
 		if (e.HasComponent<ShadowCaster>()) {
 
-			//addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
+			addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
