@@ -70,4 +70,5 @@ public:
 	static bool ButtonClicked(MonoString* _entityName, MonoString* _sceneName);
 	static bool ButtonReleased(MonoString* _entityName, MonoString* _sceneName);
 	static bool ButtonHover(MonoString* _entityName, MonoString* _sceneName);
+	static void UpdateText(MonoString* _entityName, MonoString* _sceneName, MonoString* _text);
 };

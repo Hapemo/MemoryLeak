@@ -184,5 +184,8 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool ButtonHover(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void UpdateText(string _entityName, string _sceneName, string _text);
 	}
 }

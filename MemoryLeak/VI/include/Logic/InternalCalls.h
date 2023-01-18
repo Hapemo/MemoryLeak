@@ -531,4 +531,11 @@ public:
 	*******************************************************************************/
 	static bool ButtonHoverByEntity(const Entity& _e);
 	static bool ButtonHover(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Changing text component text.
+	*******************************************************************************/
+	static void UpdateTextByEntity(const Entity& _e, std::string const& _text);
+	static void UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text);
 };
