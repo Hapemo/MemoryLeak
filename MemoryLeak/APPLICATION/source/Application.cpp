@@ -59,7 +59,7 @@ void Application::SystemInit() {
   renderManager->SetVectorLengthModifier(5.f);
 
   // Collision database initialization
-  collision2DManager->SetupCollisionDatabase();
+  collision2DManager->Initialize();
 
   // Run Init() scripts
   logicSystem->Init();
@@ -89,8 +89,22 @@ void Application::SystemUpdate() {
 
   // Physics
   TRACK_PERFORMANCE("Physics");
-  physics2DManager->Update(FPSManager::dt);
+  try {
+      physics2DManager->mPhysicsStepLock.lock();
+      std::thread phyThread{ [] {physics2DManager->Update(FPSManager::dt); } };
+      phyThread.join();
+      physics2DManager->mPhysicsStepLock.unlock();
+  }
+  catch (...) {
+      if (physics2DManager->mPhysicsStepLock.try_lock())
+          physics2DManager->mPhysicsStepLock.unlock();
+  }
   END_TRACK("Physics");
+
+  // Layer
+  TRACK_PERFORMANCE("Layer");
+  layerManager->Update();
+  END_TRACK("Layer");
 
   // Animator
   TRACK_PERFORMANCE("Animation");
@@ -208,6 +222,7 @@ void Application::MainUpdate() {
 
 void Application::exit() {
     //logicSystem->Exit();
+    collision2DManager->Cleanup();
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
 #ifdef _EDITOR

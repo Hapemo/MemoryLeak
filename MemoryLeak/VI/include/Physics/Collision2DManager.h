@@ -18,6 +18,7 @@
 #include "ECS_systems.h"
 #include "Contact.h"
 #include "ColliderType.h"
+#include "QuadTree.h"
 
 /*!*****************************************************************************
 Define a function callback for collision dispatch
@@ -206,9 +207,17 @@ public:
 	*******************************************************************************/
 	void PositionCorrection(Contact& _contact);
 
+	void SetupQuadTree();
+	void Initialize();
+
+	void Cleanup();
+
 private:
 	// Database of callback functions to collision checks 
 	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
+	
+	QuadTree mQuadTree;
+	bool mFirstUpdate{ true };
 	std::vector<Contact> mContactList;		// List of contacts in the current frame
 
 	const float	penAllowance{ 0.01f },		// Penetration allowance

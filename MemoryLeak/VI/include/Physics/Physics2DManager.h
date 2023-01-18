@@ -489,6 +489,7 @@ public:
 	NULL
 	*******************************************************************************/
 	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
+	std::mutex mPhysicsStepLock;
 private:
 	// -----------------------------
 	// Constant values
@@ -501,5 +502,4 @@ private:
 	bool mStepMode{ false };						// Flag variable containing whether physics update is in step mode
 	bool mAdvanceStep{ false };						// Flag variable containing whether physics should step when its in step mode
 	bool mFirstUpdate{ true };						// First Update flag
-	std::mutex mPhysicsStepLock;
 };

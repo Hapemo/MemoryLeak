@@ -20,11 +20,7 @@ bool LayerManager::CI_RectvsRect(Contact& _contact) {
 	// For 2 rect to collide, both axis needs to be larger than 0, indicating a penetration has happened on both axis
 	if (0.f < diff.x) {
 		if (0.f < diff.y) {
-			if (diff.x < diff.y)
-				return true;
-			else 
-				return true;
-		
+			return true;
 		}
 	}
 
@@ -33,8 +29,18 @@ bool LayerManager::CI_RectvsRect(Contact& _contact) {
 }
 
 void LayerManager::Update() {
-	// Broad phase 
+	mAccumulatedDT += FPSManager::dt;
 
+	if (mAccumulatedDT > mAccumulatedDTCap)
+		mAccumulatedDT = mAccumulatedDTCap;
+
+	while (mAccumulatedDT >= mFixedDT) {
+		Step();
+		mAccumulatedDT -= mFixedDT;
+	}
+}
+
+void LayerManager::Step() {
 	// Loop through player entities
 	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
 		if (!e1->ShouldRun())

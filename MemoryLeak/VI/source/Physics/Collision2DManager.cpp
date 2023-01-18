@@ -412,6 +412,8 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 void Collision2DManager::ResolveCollisions(const double& _dt) {
 	// Reset contact list every fixed update
 	ClearContactList();
+
+	// 
 	
 	// Check for collision and generate contact list
 	GenerateContactList(_dt);
@@ -465,7 +467,15 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 
 void Collision2DManager::GenerateContactList(const double& _dt) {
 	// Broad Phase Here
-
+	mQuadTree.Clear();
+	Math::Vec2 max{0.f, 0.f}, min{0.f, 0.f};
+	for (auto e{ mEntities.begin() }; e != mEntities.end(); ++e) {
+		Math::Vec2 &pos{ e->GetComponent<Transform>().translation };
+		max.x = std::max(max.x, pos.x);
+		max.y = std::max(max.y, pos.y);
+		min.x = std::min(min.x, pos.x);
+		min.y = std::min(min.y, pos.y);
+	}
 
 	// For now, we loop through the entity list
 	// Converted to check player entities against all other entities for M3 to reduce amount of checks done
@@ -772,4 +782,14 @@ void Collision2DManager::PositionCorrection(Contact& _contact) {
 	if (_contact.obj[1].HasComponent<Physics2D>())
 		if (_contact.obj[1].GetComponent<Physics2D>().mass != 0.f)
 			_contact.obj[1].GetComponent<Transform>().translation += correction * (1.f / _contact.obj[1].GetComponent<Physics2D>().mass);
+}
+
+
+void Collision2DManager::Initialize() {
+	SetupCollisionDatabase();
+	mQuadTree = QuadTree();
+}
+
+void Collision2DManager::Cleanup() {
+	mQuadTree.DestroyTree();
 }

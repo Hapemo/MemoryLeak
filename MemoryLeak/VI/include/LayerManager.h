@@ -43,7 +43,13 @@ public:
 	NULL
 	*******************************************************************************/
 	void Update();
+	
+	void Step();
 private:
 	std::vector<Contact> mUpdateList;					// List of collided layer contacts
 	std::unordered_map<Entity*, int> mOriginLayerMap;	// Container that stores the original layer value
+
+	double mAccumulatedDT{ 0.0 };
+	const double mFixedDT{ 1.0 / 60.0 };
+	double mAccumulatedDTCap{ 1.0 };
 };

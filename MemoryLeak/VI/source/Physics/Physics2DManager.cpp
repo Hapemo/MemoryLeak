@@ -42,28 +42,6 @@ void Physics2DManager::Update(const double& _appDT) {
 			Step(mFixedDT);
 			Physics2DManager::mAccumulatedDT -= Physics2DManager::mFixedDT;
 		}
-
-		// Removal of strictly fixedDT updates but rather, can be specified by the function parameter
-		//Step(_appDT);
-
-//#ifdef MultiThread
-//		try {
-//			mPhysicsStepLock.lock();
-//			std::thread physicsThread([this, _appDT] {Step(_appDT); });
-//
-//			physicsThread.join();
-//			mPhysicsStepLock.unlock();
-//		}
-//		catch (const std::exception& _e) {
-//			_e;
-//
-//			if (mPhysicsStepLock.try_lock())
-//				mPhysicsStepLock.unlock();
-//		}
-//#else
-//		Step(_appDT);
-//#endif // MultiThread
-
 	}
 	// In step mode
 	else {
@@ -157,25 +135,29 @@ void Physics2DManager::Step(const double& _stepDT) {
 		
 		// Determine velocity
 		SetVelocity(e, GetVelocity(e) + GetAcceleration(e) * static_cast<float>(_stepDT));
-		
 		SetAngularVelocity(e, GetAngularVelocity(e) + GetAngularTorque(e) * (GetInertia(e) == 0.f ? 0.f : (1.f / GetInertia(e))) * static_cast<float>(_stepDT));
 
-		// Dampen velocity (for soft drag)
-		ScaleVelocity(e, GetDamping(e));
-		SetAngularVelocity(e, GetAngularVelocity(e) * static_cast<float>(std::pow(GetDamping(e), _stepDT)));
-		SetAngularTorque(e, GetAngularTorque(e) * static_cast<float>(std::pow(GetDamping(e), _stepDT)));
+		if (fabs(GetVelocity(e).x) < FLT_EPSILON && fabs(GetVelocity(e).y) < FLT_EPSILON) {
+			// Do nothing
+		}
+		else {
+			// Dampen velocity (for soft drag)
+			ScaleVelocity(e, GetDamping(e));
+			SetAngularVelocity(e, GetAngularVelocity(e) * static_cast<float>(std::pow(GetDamping(e), _stepDT)));
+			SetAngularTorque(e, GetAngularTorque(e) * static_cast<float>(std::pow(GetDamping(e), _stepDT)));
 
-		// Cap simulation velocity
-		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::mVelocityCap * Physics2DManager::mVelocityCap)
-			SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::mVelocityCap);
+			// Cap simulation velocity
+			if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::mVelocityCap * Physics2DManager::mVelocityCap)
+				SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::mVelocityCap);
 
-		if (GetAngularVelocity(e) > Physics2DManager::mAngularVelocityCap)
-			SetAngularVelocity(e, Physics2DManager::mAngularVelocityCap);
+			if (GetAngularVelocity(e) > Physics2DManager::mAngularVelocityCap)
+				SetAngularVelocity(e, Physics2DManager::mAngularVelocityCap);
 
-		// Move entity by velocity
-		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(_stepDT);
+			// Move entity by velocity
+			e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(_stepDT);
 
-		e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * _stepDT);
+			e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * _stepDT);
+		}
 
 		// Clamp rotation
 		if (e.GetComponent<Transform>().rotation > static_cast<float>((2.0 * Math::PI)))
@@ -192,8 +174,6 @@ void Physics2DManager::Step(const double& _stepDT) {
 		mFirstUpdate = false;
 
 	collision2DManager->ResolveCollisions(_stepDT);
-
-	layerManager->Update();
 }
 
 //void Physics2DManager::UpdatePosition(const Entity& _e) {
