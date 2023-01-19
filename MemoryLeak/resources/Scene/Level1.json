@@ -60,7 +60,7 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -130,7 +130,7 @@
         },
         "SheetAnimation": {
             "frameCount": 6,
-            "currFrameIndex": 5,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -200,7 +200,7 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 8,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -295,8 +295,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 42.60635757446289,
-                "Y": -54.42243194580078
+                "X": 172.29010009765625,
+                "Y": 13.138885498046875
             }
         },
         "Sprite": {
@@ -312,7 +312,7 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -328,8 +328,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 16.694284439086914,
-                "Y": 70.83822631835938
+                "X": 92.29048156738281,
+                "Y": 39.16484832763672
             },
             "acceleration": {
                 "X": 0.0,
@@ -409,7 +409,7 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -654,8 +654,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 127.7249984741211,
-                "Y": 152.04299926757813
+                "X": 239.15048217773438,
+                "Y": -309.32806396484375
             }
         },
         "Sprite": {
@@ -716,8 +716,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 358.0,
-                "Y": 343.0
+                "X": 365.5,
+                "Y": 350.5
             },
             "rotation": 0.0,
             "translation": {
@@ -738,17 +738,17 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
+                "X": 65.0,
                 "Y": -50.0
             },
             "scaleOffset": {
-                "X": 0.9100000262260437,
+                "X": 0.5,
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
@@ -797,7 +797,7 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -856,9 +856,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 163,
-                "g": 244,
-                "b": 221,
+                "r": 156,
+                "g": 26,
+                "b": 4,
                 "a": 100
             },
             "sprite": 1,
@@ -967,7 +967,7 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -1026,18 +1026,18 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
+                "X": 100.0,
                 "Y": 0.0
             },
             "scaleOffset": {
-                "X": 2.5,
-                "Y": 1.5
+                "X": 2.0,
+                "Y": 1.0
             },
             "isTrigger": false,
             "renderFlag": true
@@ -1077,7 +1077,7 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -1788,7 +1788,7 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         },
@@ -1850,7 +1850,7 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         }
@@ -1886,7 +1886,7 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         }
@@ -1922,7 +1922,7 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         }
@@ -1958,7 +1958,7 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 5,
+            "currFrameIndex": 3,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.10000000149011612
         }
@@ -2033,8 +2033,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 621.8905639648438,
-                "Y": -290.52264404296875
+                "X": 625.9912109375,
+                "Y": -280.09332275390625
             }
         },
         "Sprite": {
@@ -2050,6 +2050,48 @@
         },
         "Script": {
             "name": "MoveMinimapScript"
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -149.0,
+                "Y": 73.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 782.8043212890625,
+                "Y": -751.0741577148438
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 67
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
         }
     }
 ]

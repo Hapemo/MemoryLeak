@@ -479,6 +479,9 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 {
 	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
 	{
+		if (scene.mLayer > MAX_SCENE_LAYERS - 1)
+			continue;
+
 		if (scene.mIsPause) continue;
 
 		if (scene.mIsUI && mCurrRenderPass == RENDER_STATE::GAME)
@@ -501,8 +504,8 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				//	continue;
 				//}
 				Sprite sprite = e.GetComponent<Sprite>();
-				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer) == mRenderLayers.end())
-					mRenderLayers.push_back(sprite.layer);
+				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
+					mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
 
 				switch (sprite.sprite)
 				{
@@ -512,20 +515,25 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 
 					if (texid != 0)
 					{
-						if (_texInfo.find(sprite.layer) == _texInfo.end())
-							_texInfo[sprite.layer] = std::map<GLuint, TextureInfo>();
-						if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
-							_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+						if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+						if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid) 
+							== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] = 
+						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-						CreateSquare(e, _texInfo[sprite.layer][texid].mVertices, _texInfo[sprite.layer][texid].mIndices);
+						CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
 					}
 				}
 				break;
 				case SPRITE::SQUARE:
-					CreateSquare(e, mVertices[sprite.layer], mIndices[sprite.layer]);
+					CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, 
+						mVertices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE],
+						mIndices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE]);
 					break;
 				case SPRITE::CIRCLE:
-					CreateCircle(e);
+					CreateCircle(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
 					break;
 				default:
 					break;
@@ -533,7 +541,15 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			}
 
 			if (!e.HasComponent<Text>()) continue;
-			CreateText(e);
+			if (e.HasComponent<Sprite>())
+			{
+				if (find(mRenderLayers.begin(), mRenderLayers.end(), e.GetComponent<Sprite>().layer + scene.mLayer * MAX_LAYERS_PER_SCENE) 
+					== mRenderLayers.end())
+					mRenderLayers.push_back(e.GetComponent<Sprite>().layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+				CreateText(e, e.GetComponent<Sprite>().layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+			}
+			else
+				CreateText(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		}
 	}
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
@@ -559,15 +575,15 @@ void RenderManager::CreateVerticesAnimator(std::map<size_t, std::map<GLuint, Tex
 			if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
 				_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-			CreateSquare(e, _texInfo[sprite.layer][texid].mVertices, _texInfo[sprite.layer][texid].mIndices);
+			CreateSquare(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1, _texInfo[MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1][texid].mVertices, _texInfo[MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1][texid].mIndices);
 		}
 	}
 	break;
 	case SPRITE::SQUARE:
-		CreateSquare(e, mVertices[sprite.layer], mIndices[sprite.layer]);
+		CreateSquare(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1, mVertices[sprite.layer], mIndices[sprite.layer]);
 		break;
 	case SPRITE::CIRCLE:
-		CreateCircle(e);
+		CreateCircle(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		break;
 	default:
 		break;
@@ -726,11 +742,11 @@ Vertices array for new vertices to be pushed to.
 \param std::vector<GLushort>& _indices
 Indices array for new indices to be pushed to.
 *******************************************************************************/
-void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
+void RenderManager::CreateSquare(const Entity& _e, int _layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
 {
 	Math::Mat3 mtx = GetTransform(_e);
 	glm::vec4 clr = GetColor(_e);
-	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
+	float layer = (_layer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f)/ ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
 	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
 
 	float texMin{};
@@ -792,10 +808,9 @@ Creates a circle based on Transform and Sprite Component.
 \param const Entity& _e
 The entity containing Transform and Sprite component.
 *******************************************************************************/
-void RenderManager::CreateCircle(const Entity& _e)
+void RenderManager::CreateCircle(const Entity& _e, int layer)
 {
-	CreateCircle(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color, 
-		_e.GetComponent<Sprite>().layer);
+	CreateCircle(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color, layer);
 }
 
 /*!*****************************************************************************
@@ -815,7 +830,7 @@ void RenderManager::CreateCircle(const Transform& _xform, const Color& _clr, int
 {
 	Math::Mat3 mtx = GetTransform(_xform.scale, _xform.rotation, _xform.translation);
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
-	float layer = (_layer * 2 - 255) / 255.f;
+	float layer = (_layer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f) / ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
 
 	float theta = 2.f / CIRCLE_SLICES * 3.14159265f;
 	Vertex v0;
@@ -878,7 +893,7 @@ void RenderManager::CreateDebugPoint(const Transform& _t, const Color& _clr)
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
 	v0.texID = 0.f;
-	v0.position.z = 0.99f;
+	v0.position.z = 0.99999f;
 
 	mDebugPoints.push_back(v0);
 }
@@ -915,12 +930,12 @@ void RenderManager::CreateDebugLine(const Transform& _t, const Color& _clr)
 	Vertex v0, v1;
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = 0.99f;
+	v0.position.z = 0.99999f;
 	v0.texID = 0.f;
 
 	v1.color = clr;
 	v1.position = (mtx * Math::Vec3(1.f, 0.f, 1.f)).ToGLM();
-	v1.position.z = 0.99f;
+	v1.position.z = 0.99999f;
 	v1.texID = 0.f;
 
 	mDebugVertices.push_back(v0);
@@ -961,22 +976,22 @@ void RenderManager::CreateDebugSquare(const Transform& _t, const Color& _clr)
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
 	Vertex v0, v1, v2, v3;
 	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
-	v0.position.z = 0.95f;
+	v0.position.z = 0.99999f;
 	v0.color = clr;
 	v0.texID = 0.f;
 
 	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
-	v1.position.z = 0.95f;
+	v1.position.z = 0.99999f;
 	v1.color = clr;
 	v1.texID = 0.f;
 
 	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
-	v2.position.z = 0.95f;
+	v2.position.z = 0.99999f;
 	v2.color = clr;
 	v2.texID = 0.f;
 
 	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
-	v3.position.z = 0.95f;
+	v3.position.z = 0.99999f;
 	v3.color = clr;
 	v3.texID = 0.f;
 
@@ -1031,7 +1046,7 @@ void RenderManager::CreateDebugCircle(const Transform& _t, const Color& _clr)
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = 0.99f;
+		v.position.z = 0.99999f;
 		v.color = clr;
 		v.texID = 0.f;
 		mDebugVertices.push_back(v);
@@ -1252,7 +1267,7 @@ Sends text into the FontManager to be rendered.
 \param const Entity& _e
 The entity with the Text component.
 *******************************************************************************/
-void RenderManager::CreateText(const Entity& _e)
+void RenderManager::CreateText(const Entity& _e, int _layer)
 {
 	static bool debug{ false };
 	Text text = _e.GetComponent<Text>();
@@ -1274,22 +1289,10 @@ void RenderManager::CreateText(const Entity& _e)
 				: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
 	cam.SetPos(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? Math::Vec2{ 0, 0 } : cam.GetPos());
 	cam.SetZoom(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? 1.f : cam.GetZoom());
-
-	int layer = 255;
-	if (!_e.HasComponent<Sprite>())
-	{
-		if (!debug)
-		{
-			LOG_ERROR("FontRenderer: Component does not contain sprite component! Text will be rendered at max layer!");
-			debug = !debug;
-		}
-	}
-	else
-		layer = _e.GetComponent<Sprite>().layer;
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation  - cam.GetPos() ) / cam.GetZoom() + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
-		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer, _e.GetComponent<Transform>().scale.x);
+		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), _layer, _e.GetComponent<Transform>().scale.x);
 }
 
 /*!*****************************************************************************

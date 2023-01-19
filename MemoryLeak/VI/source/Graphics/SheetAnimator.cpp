@@ -20,8 +20,20 @@ None.
 *******************************************************************************/
 void SheetAnimator::Animate()
 {
-	for (const Entity& e : mEntities)
-		Animate(e);
+	// Increment accumulatedDT by the application's DT
+	mAccumulatedDT += FPSManager::dt;
+
+	// Prevent spiral of death
+	if (mAccumulatedDT > mAccumulatedDTCap)
+		mAccumulatedDT = mAccumulatedDTCap;
+
+	// If the accumlatedDT is larger than or equal to the defined fixedDT,
+	//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
+	while (mAccumulatedDT >= mFixedDT) {
+		for (const Entity& e : mEntities)
+			Animate(e);
+		mAccumulatedDT -= mFixedDT;
+	}
 }
 
 /*!*****************************************************************************
@@ -45,7 +57,7 @@ void SheetAnimator::Animate(const Entity& _e)
 		_e.GetComponent<SheetAnimation>().currFrameIndex = 0;
 
 	//decrement time to swap
-	_e.GetComponent<SheetAnimation>().timeToFrameSwap -= static_cast<float>(FPSManager::dt);
+	_e.GetComponent<SheetAnimation>().timeToFrameSwap -= static_cast<float>(mFixedDT);
 
 	if (_e.GetComponent<SheetAnimation>().timeToFrameSwap >= 0) return;
 

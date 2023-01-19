@@ -19,6 +19,7 @@ The MonoManager class handles the C# scripting for the engine.
 MonoDomain* MonoManager::mAppDomain = nullptr;
 MonoDomain* MonoManager::mRootDomain = nullptr;
 MonoAssembly* MonoManager::mAssembly = nullptr;
+std::shared_ptr<MonoManager> MonoManager::mInstance;
 
 /*!*****************************************************************************
 \brief
@@ -157,21 +158,12 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 	else {
 		// Call the C# method on the objectInstance instance, and get any potential exceptions
 		MonoObject* exception = nullptr;
-		std::cout << "Calling method...\n";
+		//std::cout << "Calling method...\n";
 		mono_runtime_invoke(method, monoInstance, nullptr, &exception);
 
 		// Handle the exception
 		if (exception) std::cout << "Failed to call method " << _function << "()!\n";
 	}
-}
-
-/*!*****************************************************************************
-\brief
-Test internal function.
-*******************************************************************************/
-MonoString* MonoManager::TestFunction() {
-	std::cout << "Calling internal call success!\n";
-	return mono_string_new(mono_domain_get(), "Hello!");
 }
 
 /*!*****************************************************************************

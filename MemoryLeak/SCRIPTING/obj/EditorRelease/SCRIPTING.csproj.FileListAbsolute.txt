@@ -4,3 +4,5 @@ C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.pdb

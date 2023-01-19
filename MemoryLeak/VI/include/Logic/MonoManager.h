@@ -19,7 +19,7 @@ The MonoManager class handles the C# scripting for the engine.
 //#include "MonoComponent.h"
 #include "MonoMethods.h"
 
-class MonoManager : public Singleton<MonoManager>
+class MonoManager
 {
 public:
 	/*!*****************************************************************************
@@ -83,13 +83,6 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Test internal function.
-	*******************************************************************************/
-	//void TestFunction(std::string _thingToPrint);
-	static MonoString* TestFunction();
-
-	/*!*****************************************************************************
-	\brief
 	Register the C# scripts to store internally for the logic system to use.
 	*******************************************************************************/
 	void RegisterMonoScript(std::string _namespace, std::string _class);
@@ -106,6 +99,11 @@ public:
 	*******************************************************************************/
 	MonoObject* GetMonoComponent(std::string _class);
 
+	static std::shared_ptr<MonoManager> GetInstance() {
+		if (!mInstance) mInstance = std::make_shared<MonoManager>();
+		return mInstance;
+	}
+
 private:
 	// Mono generic stuff
 	static MonoDomain* mAppDomain;
@@ -114,4 +112,6 @@ private:
 
 	// Storing all mono scripts
 	std::map<std::string, MonoObject*> mMonoComponents;
+
+	static std::shared_ptr<MonoManager> mInstance;
 };

@@ -78,4 +78,7 @@ public:
 	Run specified script for entity.
 	*******************************************************************************/
 	void RunScript(Entity const& _e, E_SCRIPTTYPE _type);
+
+private:
+		
 };

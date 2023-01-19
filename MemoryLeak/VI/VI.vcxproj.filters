@@ -55,6 +55,7 @@
     <ClCompile Include="source\Logic\InternalCalls.cpp" />
     <ClCompile Include="source\Logic\MonoMethods.cpp" />
     <ClCompile Include="source\Logic\MonoComponent.cpp" />
+    <ClCompile Include="source\Physics\QuadTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="include\Logic\MonoMethods.h" />
     <ClInclude Include="include\Logic\MonoComponent.h" />
     <ClInclude Include="include\Graphics\AnimationVariable.h" />
+    <ClInclude Include="include\Physics\QuadTree.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

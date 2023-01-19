@@ -29,22 +29,41 @@ void Physics2DManager::Update(const double& _appDT) {
 
 	// Check if system is not in step mode
 	if (!Physics2DManager::mStepMode) {
-		//// Increment accumulatedDT by the application's DT
-		//Physics2DManager::mAccumulatedDT += _appDT;
+		// Increment accumulatedDT by the application's DT
+		Physics2DManager::mAccumulatedDT += _appDT;
 
-		//// Prevent spiral of death
-		//if (Physics2DManager::mAccumulatedDT > Physics2DManager::accumulatedDTCap)
-		//	Physics2DManager::mAccumulatedDT = Physics2DManager::accumulatedDTCap;
+		// Prevent spiral of death
+		if (Physics2DManager::mAccumulatedDT > Physics2DManager::mAccumulatedDTCap)
+			Physics2DManager::mAccumulatedDT = Physics2DManager::mAccumulatedDTCap;
 
-		//// If the accumlatedDT is larger than or equal to the defined fixedDT,
-		////	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
-		//while (Physics2DManager::mAccumulatedDT >= Physics2DManager::fixedDT) {
-		//	Step();
-		//	Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
-		//}
+		// If the accumlatedDT is larger than or equal to the defined fixedDT,
+		//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
+		while (Physics2DManager::mAccumulatedDT >= Physics2DManager::mFixedDT) {
+			Step(mFixedDT);
+			Physics2DManager::mAccumulatedDT -= Physics2DManager::mFixedDT;
+		}
 
-		// Removal of fixedDT updates
-		Step(_appDT);
+		// Removal of strictly fixedDT updates but rather, can be specified by the function parameter
+		//Step(_appDT);
+
+//#ifdef MultiThread
+//		try {
+//			mPhysicsStepLock.lock();
+//			std::thread physicsThread([this, _appDT] {Step(_appDT); });
+//
+//			physicsThread.join();
+//			mPhysicsStepLock.unlock();
+//		}
+//		catch (const std::exception& _e) {
+//			_e;
+//
+//			if (mPhysicsStepLock.try_lock())
+//				mPhysicsStepLock.unlock();
+//		}
+//#else
+//		Step(_appDT);
+//#endif // MultiThread
+
 	}
 	// In step mode
 	else {
@@ -53,7 +72,7 @@ void Physics2DManager::Update(const double& _appDT) {
 		// Check if we should step (key pressed)
 		if (Physics2DManager::mAdvanceStep) {
 			// Execute a simulation tick of physics using defined fixedDT
-			Step(fixedDT);
+			Step(mFixedDT);
 			// Set advance flag to false;
 			mAdvanceStep = false;
 		}
@@ -61,10 +80,11 @@ void Physics2DManager::Update(const double& _appDT) {
 }
 
 void Physics2DManager::Step(const double& _stepDT) {
+
 	// Update all required entities physics based on object rotation/orientation
 	for (const Entity& e : mEntities) {
 
-		if (FirstUpdate)
+		if (mFirstUpdate)
 			ApplyImpulse(e, Math::Vec2{ 0.f, 1.f }, Math::Vec2{ 0.f, 0.f });
 
 		// Skip if entity should not be run
@@ -146,11 +166,11 @@ void Physics2DManager::Step(const double& _stepDT) {
 		SetAngularTorque(e, GetAngularTorque(e) * static_cast<float>(std::pow(GetDamping(e), _stepDT)));
 
 		// Cap simulation velocity
-		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap)
-			SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::velocityCap);
+		if (Math::Dot(GetVelocity(e), GetVelocity(e)) > Physics2DManager::mVelocityCap * Physics2DManager::mVelocityCap)
+			SetVelocity(e, GetVelocity(e).Normalize() * Physics2DManager::mVelocityCap);
 
-		if (GetAngularVelocity(e) > Physics2DManager::angularVelocityCap)
-			SetAngularVelocity(e, Physics2DManager::angularVelocityCap);
+		if (GetAngularVelocity(e) > Physics2DManager::mAngularVelocityCap)
+			SetAngularVelocity(e, Physics2DManager::mAngularVelocityCap);
 
 		// Move entity by velocity
 		e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(_stepDT);
@@ -168,8 +188,8 @@ void Physics2DManager::Step(const double& _stepDT) {
 	}
 
 	// Hack
-	if (FirstUpdate)
-		FirstUpdate = false;
+	if (mFirstUpdate)
+		mFirstUpdate = false;
 
 	collision2DManager->ResolveCollisions(_stepDT);
 
@@ -352,7 +372,7 @@ void Physics2DManager::SetPhysicsRenderFlag(const Entity& _e, const bool& _rende
 void Physics2DManager::UpdateEntitiesAccumulatedForce(const Entity& _e) {
 	for (auto it{ GetPhysicsComponent(_e).forceList.begin() }; it != GetPhysicsComponent(_e).forceList.end();) {
 		if (it->age < it->lifetimeLimit)
-			it->age += Physics2DManager::fixedDT;
+			it->age += Physics2DManager::mFixedDT;
 		else if (it->lifetimeLimit == 0.0) {
 			// Assume infinite lifespan
 			// Do nothing

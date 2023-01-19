@@ -9,6 +9,7 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 *******************************************************************************/
 #include <FontManager.h>
 #include <sstream>
+#include <RenderProps.h>
 
 /*!*****************************************************************************
 \brief
@@ -166,7 +167,7 @@ void FontRenderer::DrawParagraphs(int _layer)
     if (mParagraphs.find(_layer) == mParagraphs.end()) return;
     glm::mat4 _projection = glm::ortho(0.0f, (float) mWindowWidth, 0.0f, (float)mWindowHeight);
 
-    float layer = ((_layer + 1) * 2 - 255) / 255.f;
+    float layer = (_layer + 1 - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f) / ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
     layer = layer > 1.f ? 1.f : layer;
 
     for (Paragraph& para : mParagraphs[_layer])
