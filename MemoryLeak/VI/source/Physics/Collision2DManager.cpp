@@ -183,10 +183,7 @@ bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt, con
 		_contact.penetration = newDiff.y;
 		_contact.contacts = _contact.normal * scale1.y + center1;
 	}
-	if (obj1.HasComponent<Audio>())
-		obj1.GetComponent<Audio>().sound.toPlay = true;
-	if (obj2.HasComponent<Audio>())
-		obj2.GetComponent<Audio>().sound.toPlay = true;
+
 	return true;
 }
 
