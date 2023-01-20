@@ -106,7 +106,7 @@
             "name": "G1",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -127,7 +127,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
+            "texture": "Textures\\Menu\\button-1.png",
             "layer": 51
         },
         "Text": {
@@ -161,13 +161,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 664.0,
+                "X": 733.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -416.968994140625,
-                "Y": 201.04100036621094
+                "X": -122.24026489257813,
+                "Y": 248.81988525390625
             }
         },
         "Sprite": {
@@ -178,7 +178,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
+            "texture": "Textures\\Menu\\button-1.png",
             "layer": 51
         },
         "Text": {
@@ -208,17 +208,17 @@
             "name": "G3",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 619.0,
-                "Y": 206.0
+                "X": 547.0,
+                "Y": 178.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -420.56298828125,
-                "Y": 194.37899780273438
+                "X": -353.56298828125,
+                "Y": 159.37899780273438
             }
         },
         "Sprite": {
@@ -229,7 +229,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
+            "texture": "Textures\\Menu\\button-1.png",
             "layer": 51
         },
         "Text": {
@@ -263,13 +263,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 868.0,
-                "Y": 190.0
+                "X": 781.0,
+                "Y": 185.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -314.0480041503906,
-                "Y": 202.28399658203125
+                "X": -290.04779052734375,
+                "Y": 1.2836475372314453
             }
         },
         "Sprite": {
@@ -280,14 +280,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
+            "texture": "Textures\\Menu\\button-1.png",
             "layer": 51
         },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Let's play a game. Hold your hands out and I'll give you something!",
             "offset": {
-                "X": -388.0,
+                "X": -315.0,
                 "Y": 1.0
             },
             "scale": 1.0,
@@ -314,13 +314,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 841.5,
-                "Y": 188.5
+                "X": 670.5,
+                "Y": 110.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -322.52801513671875,
-                "Y": 185.0
+                "X": 570.4719848632813,
+                "Y": 120.0
             }
         },
         "Sprite": {
@@ -331,15 +331,15 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
+            "texture": "Textures\\Menu\\button-1.png",
             "layer": 51
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Well, let's play together now! Or are you supposed to be doing something else?",
+            "text": "Maybe that girl knows....",
             "offset": {
-                "X": -380.0,
-                "Y": 8.0
+                "X": -255.0,
+                "Y": -17.0
             },
             "scale": 1.0,
             "color": {
@@ -421,8 +421,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 496.1863098144531,
-                "Y": 184.8447265625
+                "X": 610.4719848632813,
+                "Y": 160.0
             }
         },
         "Sprite": {
@@ -518,8 +518,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 669.0,
-                "Y": 109.0
+                "X": 660.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
@@ -569,8 +569,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 667.5,
-                "Y": 107.5
+                "X": 660.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
@@ -616,17 +616,17 @@
             "name": "PP1",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 382.5,
-                "Y": 110.5
+                "X": 660.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 369.97509765625,
-                "Y": 46.21116638183594
+                "X": 377.4284973144531,
+                "Y": -251.9254608154297
             }
         },
         "Sprite": {
@@ -644,7 +644,7 @@
             "fontFile": "CaviarDreams",
             "text": "Play...",
             "offset": {
-                "X": -59.0,
+                "X": -255.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -667,17 +667,17 @@
             "name": "PP2",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 378.0,
+                "X": 660.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 368.11181640625,
-                "Y": -89.48237609863281
+                "X": 655.8136596679688,
+                "Y": 208.65428161621094
             }
         },
         "Sprite": {
@@ -695,7 +695,7 @@
             "fontFile": "CaviarDreams",
             "text": "Reminisce...",
             "offset": {
-                "X": -109.0,
+                "X": -255.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -722,13 +722,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 388.5,
+                "X": 673.5,
                 "Y": 113.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 368.5010070800781,
-                "Y": 43.36399841308594
+                "X": 722.1904296875,
+                "Y": 400.9109802246094
             }
         },
         "Sprite": {
@@ -744,9 +744,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Do what?",
+            "text": "Maybe that girl knows....",
             "offset": {
-                "X": -105.0,
+                "X": -255.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -773,13 +773,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 378.0,
+                "X": 660.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 369.4410095214844,
-                "Y": -92.30400085449219
+                "X": 531.83837890625,
+                "Y": 240.37265014648438
             }
         },
         "Sprite": {
@@ -795,9 +795,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Where am I?",
+            "text": "Maybe that girl knows....",
             "offset": {
-                "X": -130.0,
+                "X": -255.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -824,13 +824,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 388.5,
+                "X": 664.5,
                 "Y": 104.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 369.37701416015625,
-                "Y": 47.255001068115234
+                "X": 732.376708984375,
+                "Y": 439.2546691894531
             }
         },
         "Sprite": {
@@ -846,9 +846,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Yes...",
+            "text": "Maybe that girl knows....",
             "offset": {
-                "X": -52.0,
+                "X": -255.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -875,13 +875,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 381.0,
-                "Y": 100.0
+                "X": 670.5,
+                "Y": 110.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 365.1304931640625,
-                "Y": -91.41200256347656
+                "X": 472.45965576171875,
+                "Y": 98.17804718017578
             }
         },
         "Sprite": {
@@ -897,9 +897,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "No...",
+            "text": "Maybe that girl knows....",
             "offset": {
-                "X": -34.0,
+                "X": -255.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -926,8 +926,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 442.5,
-                "Y": 122.5
+                "X": 436.5,
+                "Y": 116.5
             },
             "rotation": 0.0,
             "translation": {
@@ -983,7 +983,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 413.8429870605469,
-                "Y": -0.5649986267089844
+                "Y": -0.5649999976158142
             }
         },
         "Sprite": {
@@ -1028,13 +1028,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 679.5,
-                "Y": 119.5
+                "X": 672.0,
+                "Y": 112.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 683.5154418945313,
-                "Y": 297.1428527832031
+                "X": 850.4719848632813,
+                "Y": 400.0
             }
         },
         "Sprite": {
@@ -1079,13 +1079,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 675.0,
-                "Y": 115.0
+                "X": 669.0,
+                "Y": 109.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 640.07861328125,
-                "Y": 280.3726806640625
+                "X": 757.8425903320313,
+                "Y": 350.4347839355469
             }
         },
         "Sprite": {
