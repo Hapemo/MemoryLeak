@@ -20,9 +20,13 @@ namespace BonVoyage
         private int clickcount;
 
         private string hello;
+        private int currentdialogueid;
+        private bool starttalking;
 
         public void Init()
         {
+            currentdialogueid = 1;
+
             intro = true;
             introdone = false;
 
@@ -37,17 +41,74 @@ namespace BonVoyage
 
             clickcount = 0;
 
+            starttalking = false;
+
             // Loading dialogue file
             InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
+
+            CameraZoomIn();
         }
 
         public void Update()
         {
+            #region newdialoguewip
+            /*
+            if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) // player enter girl collider
+            {
+                // freeze player
+                if (!starttalking)
+                {
+                CameraZoomIn();
+                InternalCalls.EntityActivate("LittleGirlDialogue", "Dialogue");
+                InternalCalls.UpdateText("LittleGirlDialogue", "Dialogue", InternalCalls.GetDialogue(currentdialogueid));
+                starttalking = true;
+                }
+
+                if (InternalCalls.HasChoice(currentdialogueid))
+                {
+                    InternalCalls.EntityActivate("I2", "Dialogue");
+                    InternalCalls.EntityActivate("I2", "Dialogue");
+                    InternalCalls.UpdateText("FirstChoice", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetChoice1(currentdialogueid)));
+                    InternalCalls.UpdateText("SecondChoioe", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetChoice2(currentdialogueid)));
+
+                    //if first choice click 
+                }
+                else
+                {
+                    if ((InternalCalls.ButtonClicked("LittleGirlDialogue", "Dialogue")) == true)
+                    {
+                        currentdialogueid = InternalCalls.GetNextDialogueID(currentdialogueid);
+                        InternalCalls.UpdateText("LittleGirlDialogue", "Dialogue", InternalCalls.GetDialogue(currentdialogueid));
+                    }
+                }
+            }
+
+            if (InternalCalls.HasChoice(currentdialogueid))
+            {
+                
+                // activate both button, update text for both\
+                InternalCalls.UpdateText("FirstChoice", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetChoice1(currentdialogueid)));
+                InternalCalls.UpdateText("SecondChoioe", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetChoice2(currentdialogueid)));
+
+                //if first choice click 
+            }
+
+            //InternalCalls.UpdateText("I2", "Dialogue", InternalCalls.GetDialogue(currentdialogueid));
+
+            */
+
+            #endregion
+
             if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1"))
             {
-                CameraZoomIn();
                 InternalCalls.SetPosX("Boat", "Level1", 160.0f);
                 InternalCalls.SetPosY("Boat", "Level1", 120.0f);
+
+                if (!starttalking)
+                {
+                    InternalCalls.EntityActivate("I1", "Dialogue");
+                    starttalking = true;
+                }
 
                 if ((InternalCalls.ButtonClicked("I1", "Dialogue")) == true)
                 {
@@ -60,15 +121,23 @@ namespace BonVoyage
                 {
                     InternalCalls.EntityDeactivate("I2", "Dialogue");
                     InternalCalls.EntityDeactivate("IntroBox", "Level1");
+                    CameraZoomOut();
+                    starttalking = false;
                 }
             }
 
 
             if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1"))
             {
-                CameraZoomIn();
                 InternalCalls.SetPosX("Boat", "Level1", -295.0f);
                 InternalCalls.SetPosY("Boat", "Level1", -85.0f);
+
+                if (!starttalking)
+                {
+                    InternalCalls.EntityActivate("G1", "Dialogue");
+                    CameraZoomIn();
+                    starttalking = true;
+                }
 
                 #region LittleGirlBox
 
@@ -173,6 +242,8 @@ namespace BonVoyage
                 {
                     InternalCalls.EntityDeactivate("G8", "Dialogue");
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+                    CameraZoomOut();
+                    starttalking = false;
                 }
 
                 if ((InternalCalls.ButtonClicked("PP4", "Dialogue")) == true)
@@ -195,6 +266,8 @@ namespace BonVoyage
                 {
                     InternalCalls.EntityDeactivate("G9", "Dialogue");
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+                    CameraZoomOut();
+                    starttalking = false;
                 }
 
                 // second choice from second choice
@@ -220,6 +293,8 @@ namespace BonVoyage
                 {
                     InternalCalls.EntityDeactivate("G10", "Dialogue");
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+                    CameraZoomOut();
+                    starttalking = false;
                 }
 
                 if ((InternalCalls.ButtonClicked("PP6", "Dialogue")) == true)
@@ -242,14 +317,11 @@ namespace BonVoyage
                 {
                     InternalCalls.EntityDeactivate("G11", "Dialogue");
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+                    CameraZoomOut();
+                    starttalking = false;
                 }
 
                 #endregion
-            }
-
-            else
-            {
-                CameraZoomOut();
             }
 
             //if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) { encounter2 = true; }
