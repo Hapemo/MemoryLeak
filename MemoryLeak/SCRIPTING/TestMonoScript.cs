@@ -58,7 +58,6 @@ namespace BonVoyage
 
                 if ((InternalCalls.ButtonClicked("I2", "Dialogue")) == true)
                 {
-                    CameraZoomOut();
                     InternalCalls.EntityDeactivate("I2", "Dialogue");
                     InternalCalls.EntityDeactivate("IntroBox", "Level1");
                 }
@@ -127,7 +126,7 @@ namespace BonVoyage
                 {
                     InternalCalls.EntityDeactivate("P2", "Dialogue");
                     InternalCalls.EntityActivate("G6", "Dialogue");
-                    InternalCalls.UpdateText("G6", "Dialogue", "We have plenty of time to reminsce! But first, there's something I want to show you!");
+                    InternalCalls.UpdateText("G6", "Dialogue", "We have plenty of time to reminsce! There's something I want to show you!");
                 }
 
                 if ((InternalCalls.ButtonClicked("G4", "Dialogue")) == true)
@@ -165,13 +164,14 @@ namespace BonVoyage
                 if ((InternalCalls.ButtonClicked("P3", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("P3", "Dialogue");
-                    InternalCalls.EntityActivate("G7", "Dialogue");
-                    InternalCalls.UpdateText("G7", "Dialogue", "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...");
+                    InternalCalls.EntityDeactivate("G5", "Dialogue");
+                    InternalCalls.EntityActivate("G8", "Dialogue");
+                    InternalCalls.UpdateText("G8", "Dialogue", "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...");
                 }
 
-                if ((InternalCalls.ButtonClicked("G7", "Dialogue")) == true)
+                if ((InternalCalls.ButtonClicked("G8", "Dialogue")) == true)
                 {
-                    InternalCalls.EntityDeactivate("G7", "Dialogue");
+                    InternalCalls.EntityDeactivate("G8", "Dialogue");
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
                 }
 
@@ -186,13 +186,14 @@ namespace BonVoyage
                 if ((InternalCalls.ButtonClicked("P4", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("P4", "Dialogue");
-                    InternalCalls.EntityActivate("G8", "Dialogue");
-                    InternalCalls.UpdateText("G8", "Dialogue", "We're currently at Cordelia! It's said this place holds special memories, so explore around! We will meet again...");
+                    InternalCalls.EntityDeactivate("G5", "Dialogue");
+                    InternalCalls.EntityActivate("G9", "Dialogue");
+                    InternalCalls.UpdateText("G9", "Dialogue", "We're currently at Cordelia! It's said this place holds special memories, so explore around! We will meet again...");
                 }
 
-                if ((InternalCalls.ButtonClicked("G8", "Dialogue")) == true)
+                if ((InternalCalls.ButtonClicked("G9", "Dialogue")) == true)
                 {
-                    InternalCalls.EntityDeactivate("G8", "Dialogue");
+                    InternalCalls.EntityDeactivate("G9", "Dialogue");
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
                 }
 
@@ -210,13 +211,14 @@ namespace BonVoyage
                 if ((InternalCalls.ButtonClicked("P5", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("P5", "Dialogue");
-                    InternalCalls.EntityActivate("G9", "Dialogue");
-                    InternalCalls.UpdateText("G9", "Dialogue", "So you remember the sea conches! Don't forget them now! We will meet again...");
+                    InternalCalls.EntityDeactivate("G7", "Dialogue");
+                    InternalCalls.EntityActivate("G10", "Dialogue");
+                    InternalCalls.UpdateText("G10", "Dialogue", "So you remember the sea conches! Don't forget them now! We will meet again...");
                 }
 
-                if ((InternalCalls.ButtonClicked("G9", "Dialogue")) == true)
+                if ((InternalCalls.ButtonClicked("G10", "Dialogue")) == true)
                 {
-                    InternalCalls.EntityDeactivate("G9", "Dialogue");
+                    InternalCalls.EntityDeactivate("G10", "Dialogue");
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
                 }
 
@@ -231,17 +233,23 @@ namespace BonVoyage
                 if ((InternalCalls.ButtonClicked("P6", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("P6", "Dialogue");
-                    InternalCalls.EntityActivate("G10", "Dialogue");
-                    InternalCalls.UpdateText("G10", "Dialogue", "These are called sea conches, and are known to store important memories of the past. We will meet again...");
+                    InternalCalls.EntityDeactivate("G7", "Dialogue");
+                    InternalCalls.EntityActivate("G11", "Dialogue");
+                    InternalCalls.UpdateText("G11", "Dialogue", "These are called sea conches, and are known to store important memories of the past. We will meet again...");
                 }
 
-                if ((InternalCalls.ButtonClicked("G10", "Dialogue")) == true)
+                if ((InternalCalls.ButtonClicked("G11", "Dialogue")) == true)
                 {
-                    InternalCalls.EntityDeactivate("G10", "Dialogue");
+                    InternalCalls.EntityDeactivate("G11", "Dialogue");
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
                 }
 
                 #endregion
+            }
+
+            else
+            {
+                CameraZoomOut();
             }
 
             //if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) { encounter2 = true; }

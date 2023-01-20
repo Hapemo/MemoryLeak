@@ -26,7 +26,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -77,7 +77,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -106,7 +106,7 @@
             "name": "G1",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -128,7 +128,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -179,7 +179,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -230,7 +230,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -263,12 +263,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 868.0,
+                "X": 921.0,
                 "Y": 190.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -314.0480041503906,
+                "X": -288.0480041503906,
                 "Y": 202.28399658203125
             }
         },
@@ -281,13 +281,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Let's play a game. Hold your hands out and I'll give you something!",
+            "text": "Let's play a game where you hold your hands out and I'll give you something!",
             "offset": {
-                "X": -388.0,
+                "X": -420.0,
                 "Y": 1.0
             },
             "scale": 1.0,
@@ -314,13 +314,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 841.5,
+                "X": 976.5,
                 "Y": 188.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -322.52801513671875,
-                "Y": 185.0
+                "X": -261.52801513671875,
+                "Y": 199.0
             }
         },
         "Sprite": {
@@ -332,13 +332,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Well, let's play together now! Or are you supposed to be doing something else?",
             "offset": {
-                "X": -380.0,
+                "X": -445.0,
                 "Y": 8.0
             },
             "scale": 1.0,
@@ -365,13 +365,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 655.5,
-                "Y": 95.5
+                "X": 1046.5,
+                "Y": 198.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 590.4719848632813,
-                "Y": 140.0
+                "X": -225.5279998779297,
+                "Y": 197.0
             }
         },
         "Sprite": {
@@ -382,15 +382,15 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "We have plenty of time to reminsce! There's something I want to show you!",
             "offset": {
-                "X": -255.0,
-                "Y": -17.0
+                "X": -476.0,
+                "Y": 3.0
             },
             "scale": 1.0,
             "color": {
@@ -416,13 +416,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 660.0,
-                "Y": 100.0
+                "X": 1027.0,
+                "Y": 189.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 496.1863098144531,
-                "Y": 184.8447265625
+                "X": -234.81399536132813,
+                "Y": 203.84500122070313
             }
         },
         "Sprite": {
@@ -433,15 +433,15 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "Ain't it pretty? Have you seen one of them before?Do you know what it's called?",
             "offset": {
-                "X": -255.0,
-                "Y": -17.0
+                "X": -461.0,
+                "Y": 3.0
             },
             "scale": 1.0,
             "color": {
@@ -467,13 +467,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 660.0,
-                "Y": 100.0
+                "X": 1065.0,
+                "Y": 190.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 630.4719848632813,
-                "Y": 180.0
+                "X": -217.5279998779297,
+                "Y": 203.0
             }
         },
         "Sprite": {
@@ -484,15 +484,15 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...",
             "offset": {
-                "X": -255.0,
-                "Y": -17.0
+                "X": -485.0,
+                "Y": 5.0
             },
             "scale": 1.0,
             "color": {
@@ -518,13 +518,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 669.0,
-                "Y": 109.0
+                "X": 1078.0,
+                "Y": 186.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 650.4719848632813,
-                "Y": 200.0
+                "X": -207.5279998779297,
+                "Y": 204.0
             }
         },
         "Sprite": {
@@ -535,15 +535,15 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...",
             "offset": {
-                "X": -255.0,
-                "Y": -17.0
+                "X": -483.0,
+                "Y": 8.0
             },
             "scale": 1.0,
             "color": {
@@ -569,13 +569,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 667.5,
-                "Y": 107.5
+                "X": 975.5,
+                "Y": 191.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 670.4719848632813,
-                "Y": 220.0
+                "X": -261.52801513671875,
+                "Y": 200.0
             }
         },
         "Sprite": {
@@ -586,15 +586,15 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "So you remember the sea conches! Don't forget them now! We will meet again...",
             "offset": {
-                "X": -255.0,
-                "Y": -17.0
+                "X": -444.0,
+                "Y": 5.0
             },
             "scale": 1.0,
             "color": {
@@ -638,7 +638,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -689,7 +689,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -740,7 +740,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -791,7 +791,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -842,7 +842,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -893,7 +893,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -943,12 +943,12 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "I'd like to play.",
+            "text": "I'd like to play",
             "offset": {
                 "X": -158.0,
                 "Y": -17.0
@@ -977,13 +977,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 576.0,
-                "Y": 100.0
+                "X": 522.0,
+                "Y": 129.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 413.8429870605469,
-                "Y": -0.5649986267089844
+                "Y": 2.434999942779541
             }
         },
         "Sprite": {
@@ -994,8 +994,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -1028,13 +1028,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 679.5,
+                "X": 695.5,
                 "Y": 119.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 683.5154418945313,
-                "Y": 297.1428527832031
+                "X": 424.5150146484375,
+                "Y": 5.14300012588501
             }
         },
         "Sprite": {
@@ -1045,14 +1045,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "What am I supposed to do?",
             "offset": {
-                "X": -255.0,
+                "X": -309.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -1079,13 +1079,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 675.0,
-                "Y": 115.0
+                "X": 731.0,
+                "Y": 127.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 640.07861328125,
-                "Y": 280.3726806640625
+                "X": 405.0790100097656,
+                "Y": 6.373000144958496
             }
         },
         "Sprite": {
@@ -1096,14 +1096,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "I don't even know where I am.",
             "offset": {
-                "X": -255.0,
+                "X": -323.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -1130,13 +1130,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 664.5,
-                "Y": 104.5
+                "X": 443.5,
+                "Y": 120.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 890.4719848632813,
-                "Y": 440.0
+                "X": 415.47198486328125,
+                "Y": 5.0
             }
         },
         "Sprite": {
@@ -1147,14 +1147,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "Yes, I think.",
             "offset": {
-                "X": -255.0,
+                "X": -118.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -1181,13 +1181,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 660.0,
-                "Y": 100.0
+                "X": 451.0,
+                "Y": 132.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 910.4719848632813,
-                "Y": 460.0
+                "X": 414.47198486328125,
+                "Y": 8.0
             }
         },
         "Sprite": {
@@ -1198,15 +1198,66 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 51
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows....",
+            "text": "Yes, I think.",
             "offset": {
-                "X": -255.0,
+                "X": -129.0,
                 "Y": -17.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "TestMonoScript"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "G11",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 945.5,
+                "Y": 257.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -276.52801513671875,
+                "Y": 190.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "These are called sea conches, and are known to store important memories of the past. We will meet again...",
+            "offset": {
+                "X": -429.0,
+                "Y": 31.0
             },
             "scale": 1.0,
             "color": {
