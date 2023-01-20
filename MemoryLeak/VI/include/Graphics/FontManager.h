@@ -40,6 +40,7 @@ struct Paragraph
 	float scale;
 	Math::Vec3 color;
 	float renderWidth;
+	float camZoom;
 };
 
 /*!*****************************************************************************
@@ -78,7 +79,7 @@ public:
 	\param const Math::Vec3& _color
 	Color of the font.
 	*******************************************************************************/
-	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color, int layer, float _width);
+	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color, int layer, float _width, float _camZoom);
 	/*!*****************************************************************************
 	\brief
 	Renders all paragraphs stored in mParagraphs.
@@ -112,14 +113,6 @@ public:
 		mWindowHeight = *_windowHeight;
 	}
 
-	/*!*****************************************************************************
-	\brief
-	Sets the camera's zoom.
-
-	\param float _camZoom
-	The zoom of the camera.
-	*******************************************************************************/
-	void SetCamZoom(float _camZoom) { mCamZoom = _camZoom; }
 private:
 	/*!*****************************************************************************
 	\brief
@@ -137,5 +130,4 @@ private:
 	bool mInitialized;
 	int mWindowWidth, mWindowHeight;
 	float mMaxYSize;
-	float mCamZoom;
 };
