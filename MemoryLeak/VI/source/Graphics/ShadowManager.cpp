@@ -81,6 +81,15 @@ void ShadowManager::RayCast()
 			mExtendedRayDirection.push_back({ ray.pos, negDir });
 		}
 	}
+	//sort!!!!
+	//sort!!!!
+	//sort!!!!
+	//sort!!!!
+	//sort!!!!
+	//sort!!!!
+	//sort!!!!
+	//sort!!!!
+
 	for (const Edge& ray : mExtendedRayDirection)
 	{
 		smallestT1 = std::numeric_limits<float>::max();
