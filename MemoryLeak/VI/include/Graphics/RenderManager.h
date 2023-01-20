@@ -112,7 +112,7 @@ public:
 	\return
 	Returns the color attachment to the frame buffer.
 	*******************************************************************************/
-	GLuint GetGameFBO() const { return mGameFBO.GetColorAttachment(); }
+	GLuint GetGameFBO() const { return mLightMapFBO.GetColorAttachment(); }
 
 	/*!*****************************************************************************
 	\brief
@@ -277,6 +277,8 @@ private:
 	std::vector<Vertex> mDebugVertices;
 	std::vector<GLushort> mDebugIndices;
 	std::vector<Entity> mEditorSelectedEntities;
+	std::vector<Vertex> mLightVertices;
+	std::vector<GLushort> mLightIndices;
 	VIzmo mGizmo;
 	int mPrevWidth;
 	int mInitialWidth, mInitialHeight;
@@ -308,6 +310,10 @@ private:
 	void BindTextureUnit(const GLuint& _texID, TextureInfo& _texInfo, std::vector<int>& _texUnits);
 
 	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
+
+	void CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices);
+
+	void RenderVisibilityPolygon();
 
 	/*!*****************************************************************************
 	\brief
@@ -402,6 +408,8 @@ private:
 	Indices array for new indices to be pushed to.
 	*******************************************************************************/
 	void CreateSquare(const Entity& _e, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
+
+	void CreateLightFilter(std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
 
 	/*!*****************************************************************************
 	\brief
