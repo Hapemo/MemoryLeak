@@ -4,7 +4,7 @@
             "name": "I1",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -81,7 +81,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Maybe that girl knows...",
+            "text": "Maybe that girl knows....",
             "offset": {
                 "X": -255.0,
                 "Y": -17.0
@@ -208,11 +208,11 @@
             "name": "G3",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
-                "X": 547.0,
+                "X": 711.0,
                 "Y": 178.0
             },
             "rotation": 0.0,
@@ -236,10 +236,10 @@
             "fontFile": "CaviarDreams",
             "text": "What would you like to do? Maybe play or remininsce?",
             "offset": {
-                "X": -269.0,
+                "X": -296.0,
                 "Y": 7.0
             },
-            "scale": 0.8999999761581421,
+            "scale": 1.0,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -616,7 +616,7 @@
             "name": "PP1",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -667,7 +667,7 @@
             "name": "PP2",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
