@@ -5,46 +5,17 @@ namespace BonVoyage
 {
     public class TestMonoScript
     {
-        private bool intro; // player start
-        private bool introdone;
-
-        private bool encounter1; // meet girl
-        private bool encounter1done;
-
-        private bool encounter2; // meet pasenger
-        private bool encounter2done;
-
-        private bool encounter3; // deliver passenger
-        private bool encounter3done;
+        private bool starttalking;
+        private int currentdialogueid;
 
         private int clickcount;
 
-        private string hello;
-        private int currentdialogueid;
-        private bool starttalking;
-
         public void Init()
         {
+            starttalking = false;
             currentdialogueid = 1;
 
-            intro = true;
-            introdone = false;
-
-            encounter1 = false;
-            encounter1done = false;
-
-            encounter2 = false;
-            encounter2done = false;
-
-            encounter3 = false;
-            encounter3done = false;
-
-            clickcount = 0;
-
-            starttalking = false;
-
-            // Loading dialogue file
-            InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
+            InternalCalls.LoadDialogs("Dialogue LittleGirl 0"); // Loading dialogue file
 
             CameraZoomIn();
         }
@@ -126,7 +97,6 @@ namespace BonVoyage
                 }
             }
 
-
             if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1"))
             {
                 InternalCalls.SetPosX("Boat", "Level1", -295.0f);
@@ -135,14 +105,12 @@ namespace BonVoyage
                 if (!starttalking)
                 {
                     InternalCalls.EntityActivate("G1", "Dialogue");
+                    InternalCalls.UpdateText("G1", "Dialogue", "At last we meet again!");
                     CameraZoomIn();
                     starttalking = true;
                 }
 
                 #region LittleGirlBox
-
-                InternalCalls.EntityActivate("G1", "Dialogue");
-                InternalCalls.UpdateText("G1", "Dialogue", "At last we meet again!");
 
                 if ((InternalCalls.ButtonClicked("G1", "Dialogue")) == true)
                 {
@@ -324,9 +292,15 @@ namespace BonVoyage
                 #endregion
             }
 
-            //if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) { encounter2 = true; }
+            if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1"))
+            {
 
-            //if (InternalCalls.EntitiesCollided("PassengerBox", "PassengerDeliver", "Level1")) { encounter3 = true; }
+            }
+
+            if (InternalCalls.EntitiesCollided("PassengerBox", "PassengerDeliver", "Level1"))
+            {
+                
+            }
         }
 
         public void Exit()

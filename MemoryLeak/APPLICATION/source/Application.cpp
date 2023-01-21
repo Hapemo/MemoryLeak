@@ -183,7 +183,7 @@ void Application::MainUpdate() {
 
 #endif
     static bool toggle{ false };
-    if (Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
+    if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
 
     TRACK_PERFORMANCE("Graphics");
     //--------------------- Drawing and rendering ---------------------

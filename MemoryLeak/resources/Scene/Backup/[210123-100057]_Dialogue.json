@@ -134,7 +134,7 @@
             "fontFile": "CaviarDreams",
             "text": "At last we meet again!",
             "offset": {
-                "X": -289.0,
+                "X": -255.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -161,13 +161,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 660.0,
+                "X": 664.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -415.0,
-                "Y": 200.0
+                "X": -416.968994140625,
+                "Y": 201.04100036621094
             }
         },
         "Sprite": {
@@ -185,7 +185,7 @@
             "fontFile": "CaviarDreams",
             "text": "I've been waiting for you!",
             "offset": {
-                "X": -289.0,
+                "X": -278.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -212,13 +212,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 660.0,
-                "Y": 200.0
+                "X": 619.0,
+                "Y": 206.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -415.0,
-                "Y": 190.0
+                "X": -420.56298828125,
+                "Y": 194.37899780273438
             }
         },
         "Sprite": {
@@ -234,9 +234,9 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "What would you like to do? Play or remininsce?",
+            "text": "What would you like to do? Maybe play or remininsce?",
             "offset": {
-                "X": -287.0,
+                "X": -269.0,
                 "Y": 7.0
             },
             "scale": 0.8999999761581421,
@@ -263,13 +263,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 920.0,
-                "Y": 200.0
+                "X": 921.0,
+                "Y": 190.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -290.0,
-                "Y": 190.0
+                "X": -288.0480041503906,
+                "Y": 202.28399658203125
             }
         },
         "Sprite": {
@@ -287,7 +287,7 @@
             "fontFile": "CaviarDreams",
             "text": "Let's play a game where you hold your hands out and I'll give you something!",
             "offset": {
-                "X": -417.0,
+                "X": -420.0,
                 "Y": 1.0
             },
             "scale": 1.0,
@@ -314,12 +314,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 960.0,
+                "X": 976.5,
                 "Y": 188.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -290.0,
+                "X": -261.52801513671875,
                 "Y": 199.0
             }
         },
@@ -338,7 +338,7 @@
             "fontFile": "CaviarDreams",
             "text": "Well, let's play together now! Or are you supposed to be doing something else?",
             "offset": {
-                "X": -444.0,
+                "X": -445.0,
                 "Y": 8.0
             },
             "scale": 1.0,
@@ -365,13 +365,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 1050.0,
-                "Y": 200.0
+                "X": 1046.5,
+                "Y": 198.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -250.0,
-                "Y": 190.0
+                "X": -225.5279998779297,
+                "Y": 197.0
             }
         },
         "Sprite": {
@@ -416,13 +416,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 1022.0,
-                "Y": 200.0
+                "X": 1027.0,
+                "Y": 189.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -260.0,
-                "Y": 190.0
+                "X": -234.81399536132813,
+                "Y": 203.84500122070313
             }
         },
         "Sprite": {
@@ -467,13 +467,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 1060.0,
-                "Y": 200.0
+                "X": 1065.0,
+                "Y": 190.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -240.0,
-                "Y": 190.0
+                "X": -217.5279998779297,
+                "Y": 203.0
             }
         },
         "Sprite": {
@@ -518,13 +518,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 1080.0,
-                "Y": 200.0
+                "X": 1078.0,
+                "Y": 186.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -207.0,
-                "Y": 190.0
+                "X": -207.5279998779297,
+                "Y": 204.0
             }
         },
         "Sprite": {
@@ -569,13 +569,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 1060.0,
-                "Y": 200.0
+                "X": 975.5,
+                "Y": 191.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -211.0,
-                "Y": 190.0
+                "X": -261.52801513671875,
+                "Y": 200.0
             }
         },
         "Sprite": {
@@ -593,7 +593,7 @@
             "fontFile": "CaviarDreams",
             "text": "So you remember the sea conches! Don't forget them now! We will meet again...",
             "offset": {
-                "X": -472.0,
+                "X": -444.0,
                 "Y": 5.0
             },
             "scale": 1.0,
@@ -621,12 +621,12 @@
         "Transform": {
             "scale": {
                 "X": 382.5,
-                "Y": 110.0
+                "Y": 110.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 46.0
+                "X": 369.97509765625,
+                "Y": 46.21116638183594
             }
         },
         "Sprite": {
@@ -676,8 +676,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": -90.0
+                "X": 368.11181640625,
+                "Y": -89.48237609863281
             }
         },
         "Sprite": {
@@ -722,13 +722,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 382.0,
-                "Y": 110.0
+                "X": 388.5,
+                "Y": 113.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 46.0
+                "X": 368.5010070800781,
+                "Y": 43.36399841308594
             }
         },
         "Sprite": {
@@ -773,13 +773,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 382.0,
+                "X": 378.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": -90.0
+                "X": 369.4410095214844,
+                "Y": -92.30400085449219
             }
         },
         "Sprite": {
@@ -824,13 +824,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 382.0,
-                "Y": 110.0
+                "X": 388.5,
+                "Y": 104.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 46.0
+                "X": 369.37701416015625,
+                "Y": 47.255001068115234
             }
         },
         "Sprite": {
@@ -875,13 +875,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 382.0,
+                "X": 381.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": -90.0
+                "X": 365.1304931640625,
+                "Y": -91.41200256347656
             }
         },
         "Sprite": {
@@ -926,13 +926,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 450.0,
-                "Y": 120.0
+                "X": 442.5,
+                "Y": 122.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 5.0
+                "X": 414.33099365234375,
+                "Y": 4.834000110626221
             }
         },
         "Sprite": {
@@ -977,13 +977,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 550.0,
-                "Y": 120.0
+                "X": 522.0,
+                "Y": 129.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 5.0
+                "X": 413.8429870605469,
+                "Y": 2.434999942779541
             }
         },
         "Sprite": {
@@ -1028,13 +1028,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 700.0,
-                "Y": 120.0
+                "X": 695.5,
+                "Y": 119.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 5.0
+                "X": 424.5150146484375,
+                "Y": 5.14300012588501
             }
         },
         "Sprite": {
@@ -1079,13 +1079,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 730.0,
-                "Y": 120.0
+                "X": 731.0,
+                "Y": 127.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 5.0
+                "X": 405.0790100097656,
+                "Y": 6.373000144958496
             }
         },
         "Sprite": {
@@ -1130,12 +1130,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 450.0,
+                "X": 443.5,
                 "Y": 120.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
+                "X": 415.47198486328125,
                 "Y": 5.0
             }
         },
@@ -1181,13 +1181,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 450.0,
-                "Y": 120.0
+                "X": 451.0,
+                "Y": 132.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 5.0
+                "X": 414.47198486328125,
+                "Y": 8.0
             }
         },
         "Sprite": {
@@ -1232,12 +1232,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 945.0,
-                "Y": 260.0
+                "X": 945.5,
+                "Y": 257.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -280.0,
+                "X": -276.52801513671875,
                 "Y": 190.0
             }
         },
@@ -1272,36 +1272,6 @@
         },
         "Button": {
             "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 1",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 280.0,
-                "Y": 60.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -13.250579833984375,
-                "Y": -16.252822875976563
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\healthbar-1.png",
-            "layer": 64
         }
     }
 ]

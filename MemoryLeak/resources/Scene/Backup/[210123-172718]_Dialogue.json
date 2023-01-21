@@ -1273,35 +1273,5 @@
         "Button": {
             "interactable": true
         }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 1",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 280.0,
-                "Y": 60.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -13.250579833984375,
-                "Y": -16.252822875976563
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\healthbar-1.png",
-            "layer": 64
-        }
     }
 ]
