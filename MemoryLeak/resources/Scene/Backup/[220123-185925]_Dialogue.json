@@ -161,8 +161,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 654.0,
-                "Y": 94.0
+                "X": 660.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1283,7 +1283,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
+                "X": 470.0,
                 "Y": 110.0
             },
             "rotation": 0.0,

@@ -161,8 +161,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 654.0,
-                "Y": 94.0
+                "X": 660.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1276,20 +1276,20 @@
     },
     {
         "General": {
-            "name": "hpbar",
+            "name": "NEW Entity 1",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
-                "Y": 110.0
+                "X": 280.0,
+                "Y": 60.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -485.0,
-                "Y": -345.0
+                "X": -13.250579833984375,
+                "Y": -16.252822875976563
             }
         },
         "Sprite": {

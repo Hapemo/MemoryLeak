@@ -1022,7 +1022,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 24
+            "layer": 8
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -2152,48 +2152,6 @@
             "translation": {
                 "X": 160.0,
                 "Y": 120.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 123,
-                "g": 181,
-                "b": 123,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 1
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": true,
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "PassengerBox",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1240.0,
-                "Y": 670.0
             }
         },
         "Sprite": {
