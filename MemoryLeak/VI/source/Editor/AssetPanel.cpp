@@ -208,6 +208,16 @@ void AssetPanel::Update()
 							ImGui::EndDragDropSource();
 						}
 					}
+					else if (texParent.find("\\SCRIPTING") != std::string::npos)
+					{
+						ImGui::ImageButton(scriptIcon, folderSize, ImVec2(0, 1), ImVec2(1, 0));
+						if (ImGui::BeginDragDropSource())
+						{
+							const wchar_t* itemPath = (wchar_t*)texFilename.c_str();
+							ImGui::SetDragDropPayload("SCRIPT", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t), ImGuiCond_Once);
+							ImGui::EndDragDropSource();
+						}
+					}
 					else if (texParent.find("\\Textures") != std::string::npos)
 					{
 						selectedIcon = (void*)(intptr_t)spriteManager->GetTextureID(texPath);

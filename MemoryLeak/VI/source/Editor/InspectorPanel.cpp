@@ -545,6 +545,12 @@ void InspectorPanel::SpriteEditor()
 			ImGui::EndDragDropTarget();
 		}
 		ImGui::InputInt("Layer", &e.GetComponent<Sprite>().layer);
+		if (ImGui::IsItemDeactivatedAfterEdit())
+		{
+			e.GetComponent<Sprite>().layer = e.GetComponent<Sprite>().layer < 0 ? 0
+				: (e.GetComponent<Sprite>().layer > 63 ? 63
+					: e.GetComponent<Sprite>().layer);
+		}
 		SaveUndo(e, tempComponent, COMPONENTID::SPRITE);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Sprite"))

@@ -1,0 +1,121 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "I'm back again!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "I heard that you met many more people along the way!",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "Sooo... what did you gather from them?",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 5
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "After talking to them, it seems that most of them have places related to their memories...",
+   "Speaker": 1,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "Just like you, they gave me relics of their own too.",
+   "Speaker": 1,
+   "Next Dialogue": 12,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "That's great! Did you find any place you like?",
+   "Speaker": 0,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "I hope you can bring me around someday! Just like you always did.",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 11
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "Then that's a promise! I'll be back again, bye bye! *Fades away*",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "Hehe how about you make a guess the next time we meet? See ya! *Fades away*",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "Sure, I'll bring you around someday.",
+   "Speaker": 1,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "Do you have any place in particular that you like?",
+   "Speaker": 1,
+   "Next Dialogue": 9,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 12,
+   "Dialogue Text": "Ooh I guess relics are really popular here!",
+   "Speaker": 0,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 13,
+   "Dialogue Text": "I hope my relic is still kept intact!",
+   "Speaker": 0,
+   "Next Dialogue": 14,
+   "Next Dialogue(2)": 15
+ },
+ {
+   "Dialogue ID": 14,
+   "Dialogue Text": "I'm sorry...",
+   "Speaker": 1,
+   "Next Dialogue": 16,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 15,
+   "Dialogue Text": "Of course.",
+   "Speaker": 1,
+   "Next Dialogue": 17,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 16,
+   "Dialogue Text": "What do you mean...? Have you perhaps... forgotten me...? *Turns into sea monster*",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 17,
+   "Dialogue Text": "Yay! I knew I could trust you. The next time we meet, I'll show you something new so be prepared! Bye! *Fades away*",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]

@@ -890,11 +890,11 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		}
 		if (e.HasComponent<LightSource>()) {
 
-			//addLightSource(scene, entity, e.GetComponent<LightSource>());
+			addLightSource(scene, entity, e.GetComponent<LightSource>());
 		}
 		if (e.HasComponent<ShadowCaster>()) {
 
-			//addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
+			addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -908,6 +908,28 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 	scene.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
 	std::string path = "../resources/Scene/" + _sceneData.mName + ".json";
+
+	// Back up
+	auto t = std::time(nullptr);
+	auto tm = *std::localtime(&t);
+	std::ostringstream oss;
+	oss << std::put_time(&tm, "[%d%m%y-%H%M%S]_");
+	std::string time = oss.str();
+	std::string Backuppath = "../resources/Scene/Backup/" + time + _sceneData.mName +  ".json";
+	std::ifstream ifs(path);
+	if (ifs.good())
+	{
+		LOG_INFO(path +" backing up before saving! To : "+ Backuppath);
+		std::ofstream backUpofs(Backuppath);
+		std::string backupData{};
+		while (getline(ifs, backupData)) {
+			backUpofs << backupData << "\n";
+		}
+
+	}
+	else
+		LOG_ERROR("Can't backup before saving! : ");
+	//
 	std::ofstream ofs(path);
 	ofs << jsonf;
 	if (!ofs.good())
@@ -1205,7 +1227,15 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 	{
 		Scene sceneData(entity[index]["SceneName"].GetString());
 		//sceneData.mName = entity[index]["SceneName"].GetString();
-		//sceneData.mCamera = getTransform(entity[index]);
+		if (entity[index].HasMember("Transform"))
+		{
+			_gameState.mCamera = getTransform(entity[index]);
+			sceneData.mIsUI = false;
+		}
+		else
+		{
+			sceneData.mIsUI = true;
+		}
 		sceneData.mIsPause = entity[index]["isActive"].GetBool();
 		sceneData.mLayer = entity[index]["layer"].GetInt();
 		sceneData.mOrder = entity[index]["order"].GetInt();
@@ -1246,7 +1276,8 @@ void SerializationManager::SaveGameState(GameState& _gameState)
 		Value scene(kObjectType);
 		Value sceneName(_gameState.mScenes[s].mName.c_str(), (SizeType)_gameState.mScenes[s].mName.size(), allocator);
 		scene.AddMember(StringRef("SceneName"), sceneName, gamestate.GetAllocator());
-		//addTransform(gamestate, scene, _gameState.mScenes[s].mCamera);
+		if(!_gameState.mScenes[s].mIsUI)
+			addTransform(gamestate, scene, _gameState.mCamera);
 		scene.AddMember(StringRef("isActive"), _gameState.mScenes[s].mIsPause, gamestate.GetAllocator());
 		scene.AddMember(StringRef("layer"), _gameState.mScenes[s].mLayer, gamestate.GetAllocator());
 		scene.AddMember(StringRef("order"), _gameState.mScenes[s].mOrder, gamestate.GetAllocator());
@@ -1256,7 +1287,31 @@ void SerializationManager::SaveGameState(GameState& _gameState)
 	gamestate.Accept(writer);
 	std::string jsonf(buffer.GetString(), buffer.GetSize());
 	std::string path = "../resources/GameStates/" + _gameState.mName + ".json";
+
+	// Back up
+	auto t = std::time(nullptr);
+	auto tm = *std::localtime(&t);
+	std::ostringstream oss;
+	oss << std::put_time(&tm, "[%d%m%y-%H%M%S]_");
+	std::string time = oss.str();
+	std::string Backuppath = "../resources/GameStates/Backup/" + time + _gameState.mName  + ".json";
+	std::ifstream ifs(path);
+	if (ifs.good())
+	{
+		LOG_INFO(path + " backing up before saving! To : " + Backuppath);
+		std::ofstream backUpofs(Backuppath);
+		std::string backupData{};
+		while (getline(ifs, backupData)) {
+			backUpofs << backupData << "\n";
+		}
+
+	}
+	else
+		LOG_ERROR("Can't backup before saving! : ");
+	//
+
 	std::ofstream ofs(path);
+
 	ofs << jsonf;
 	if (!ofs.good())
 	{

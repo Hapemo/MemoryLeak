@@ -1,0 +1,49 @@
+[
+    {
+        "SceneName": "Level1",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": 167.7220001220703,
+                "Y": 123.29032897949219
+            }
+        },
+        "isActive": false,
+        "layer": 3,
+        "order": 3
+    },
+    {
+        "SceneName": "Pause",
+        "isActive": true,
+        "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "Game Over",
+        "isActive": true,
+        "layer": 4,
+        "order": 4
+    },
+    {
+        "SceneName": "How_To_Play",
+        "isActive": true,
+        "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "Quit Confirmation",
+        "isActive": true,
+        "layer": 4,
+        "order": 4
+    },
+    {
+        "SceneName": "Dialogue",
+        "isActive": false,
+        "layer": 3,
+        "order": 7
+    }
+]
