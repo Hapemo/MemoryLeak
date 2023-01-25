@@ -46,8 +46,7 @@ void ShadowManager::Update()
 
 void ShadowManager::RayCast()
 {
-	Math::Vec2 lightPos = mLightsource.GetComponent<Transform>().translation
-		+ mLightsource.GetComponent<LightSource>().centerOffset;
+	Math::Vec2 lightPos = GetLightPos();
 
 	float T1, T2;
 	float smallestT1{};
@@ -81,14 +80,6 @@ void ShadowManager::RayCast()
 			mExtendedRayDirection.push_back({ ray.pos, negDir });
 		}
 	}
-	//sort!!!!
-	//sort!!!!
-	//sort!!!!
-	//sort!!!!
-	//sort!!!!
-	//sort!!!!
-	//sort!!!!
-	//sort!!!!
 
 	for (const Edge& ray : mExtendedRayDirection)
 	{
@@ -107,18 +98,51 @@ void ShadowManager::RayCast()
 		}
 		mRayEndPoints.push_back(ray.pos + smallestT1 * ray.dir);
 	}
+	std::sort(mRayEndPoints.begin(), mRayEndPoints.end(), CompareAngle);
 }
 
 void ShadowManager::CreateRays()
 {
-	Math::Vec2 lightPos = mLightsource.GetComponent<Transform>().translation
-		+ mLightsource.GetComponent<LightSource>().centerOffset;
+	Math::Vec2 lightPos = GetLightPos();
 
 	Math::Vec2 i{ mCamera.scale.x / 2.f, 0 };
 	Math::Vec2 j{ 0, mCamera.scale.y / 2.f };
 	
 	for (size_t k = 0; k < mObjectEdges.size(); ++k)
 		mRayDirection.push_back({ lightPos, mObjectEdges[k].pos - lightPos });
+}
+
+Math::Vec2 ShadowManager::GetLightPos()
+{
+	if (!mLightsource.id) return Math::Vec2();
+	return mLightsource.GetComponent<Transform>().translation
+		+ mLightsource.GetComponent<LightSource>().centerOffset;;
+}
+
+bool CompareAngle(const Math::Vec2& endPt1, const Math::Vec2& endPt2)
+{
+	return GetAngle(endPt1 - shadowManager->GetLightPos()) < GetAngle(endPt2 - shadowManager->GetLightPos());
+}
+
+float GetAngle(const Math::Vec2& endPt)
+{
+	if (endPt.y != 0.f && endPt.x >= 0.f)
+	{
+		float angle = atan2f(endPt.y, endPt.x);
+		if (angle < 0)
+			angle = (float)Math::PI - abs(angle) + (float)Math::PI;
+		return  angle;
+	}
+	if (endPt.y == 0.f && endPt.x > 0.f)
+		return (float)Math::PI / 2.f;
+	if (endPt.y != 0.f && endPt.x < 0.f)
+	{
+		float angle = atan2f(endPt.y, endPt.x);
+		if (angle < 0)
+			angle = (float)Math::PI - abs(angle) + (float)Math::PI;
+		return  angle;
+	}
+	return 3.f * (float)Math::PI / 2.f;
 }
 
 void ShadowManager::CreateObjectVertices(Entity e)

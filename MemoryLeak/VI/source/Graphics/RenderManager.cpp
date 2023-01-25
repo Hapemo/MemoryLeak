@@ -43,7 +43,7 @@ RenderManager::RenderManager()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	InitializeShaders();
 	mDebug = false;
-	mRenderLayers.reserve(255);
+	mRenderLayers.reserve(MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 	mIsCurrSceneUI = false;
 }
 
@@ -159,7 +159,7 @@ void RenderManager::CreateLightMap()
 {
 	mLightMapFBO.Bind();
 	Color prevClearColor = mClearColor;
-	SetClearColor({ 0, 0, 0, 100 });
+	SetClearColor({ 0, 0, 0, 0 });
 	Clear();
 
 	CreateVisibilityPolygon(shadowManager->GetRayEndPoints());
@@ -175,7 +175,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	if (!lightsource.HasComponent<LightSource>()) return;
 
 	Vertex v0;
-	glm::vec4 clr{ 255, 255, 255, 255 };
+	glm::vec4 clr{ 1.f, 1.f, 1.f, 0.01f };
 	Math::Mat3 mtx;
 
 	Math::Vec2 lightPos = lightsource.GetComponent<Transform>().translation 
@@ -185,7 +185,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
 	v0.texID = 0.f;
-	v0.position.z = 0.f;
+	v0.position.z = 1.f;
 	mLightVertices.push_back(v0);
 
 	for (const Math::Vec2& vec : _vertices)
@@ -193,9 +193,14 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 		mtx = GetTransform({ 0, 0 }, 0, vec);
 		v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
 		v0.texID = 0.f;
-		v0.position.z = 0.f;
+		v0.position.z = 1.f;
 		mLightVertices.push_back(v0);
 	}
+	mtx = GetTransform({ 0, 0 }, 0, _vertices[0]);
+	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
+	v0.texID = 0.f;
+	v0.position.z = 1.f;
+	mLightVertices.push_back(v0);
 
 	GLushort pivot = mLightIndices.empty() ? 0 : mLightIndices.back() + 1;
 
@@ -205,6 +210,44 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 		mLightIndices.push_back(pivot + 1 + i);
 		mLightIndices.push_back(pivot + 2 + i);
 	}
+
+	CreateShadows();
+}
+
+void RenderManager::CreateShadows()
+{
+	glm::vec4 clr{ 0.f, 0.f, 0.f, 0.5f };
+
+	Vertex v0, v1, v2, v3;
+
+	v0.position = Math::Vec3(-1.f, 1.f, 0.9f).ToGLM();
+	v0.color = clr;
+	v0.texID = 0.f;
+
+	v1.position = Math::Vec3(-1.f, -1.f, 0.9f).ToGLM();
+	v1.color = clr;
+	v1.texID = 0.f;
+
+	v2.position = Math::Vec3(1.f, 1.f, 0.9f).ToGLM();
+	v2.color = clr;
+	v2.texID = 0.f;
+
+	v3.position = Math::Vec3(1.f, -1.f, 0.9f).ToGLM();
+	v3.color = clr;
+	v3.texID = 0.f;
+
+	mLightVertices.push_back(v0);
+	mLightVertices.push_back(v1);
+	mLightVertices.push_back(v2);
+	mLightVertices.push_back(v3);
+
+	GLushort first = mLightIndices.empty() ? 0 : mLightIndices.back() + 1;
+	mLightIndices.push_back(first);
+	mLightIndices.push_back(first + 1);
+	mLightIndices.push_back(first + 2);
+	mLightIndices.push_back(first + 1);
+	mLightIndices.push_back(first + 2);
+	mLightIndices.push_back(first + 3);
 }
 
 void RenderManager::RenderVisibilityPolygon()
@@ -617,7 +660,8 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] = 
 						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-						CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+						CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, 
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
 							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
 					}
 				}
@@ -647,23 +691,28 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				CreateText(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		}
 	}
+	int shadowLayer = MAX_LAYERS_PER_SCENE * (MAX_SCENE_LAYERS - 1);
+	if (find(mRenderLayers.begin(), mRenderLayers.end(), shadowLayer) == mRenderLayers.end())
+		mRenderLayers.push_back(shadowLayer);
+	if (_texInfo.find(shadowLayer) == _texInfo.end())
+		_texInfo[shadowLayer] = std::map<GLuint, TextureInfo>();
+	if (_texInfo[shadowLayer].find(mLightMapFBO.GetColorAttachment()) 
+		== _texInfo[shadowLayer].end())
+		_texInfo[shadowLayer][mLightMapFBO.GetColorAttachment()] =
+	{ (int)mLightMapFBO.GetColorAttachment() - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-	if (_texInfo.find(255) == _texInfo.end())
-		_texInfo[255] = std::map<GLuint, TextureInfo>();
-	if (_texInfo[255].find(mLightMapFBO.GetColorAttachment()) == _texInfo[255].end())
-		_texInfo[255][mLightMapFBO.GetColorAttachment()] = { (int)mLightMapFBO.GetColorAttachment() - 1, 
-		std::vector<Vertex>(), std::vector<GLushort>() };
-
-	CreateLightFilter(_texInfo[255][mLightMapFBO.GetColorAttachment()].mVertices, _texInfo[255][mLightMapFBO.GetColorAttachment()].mIndices);
+	CreateLightFilter(shadowLayer, _texInfo[shadowLayer][mLightMapFBO.GetColorAttachment()].mVertices,
+		_texInfo[shadowLayer][mLightMapFBO.GetColorAttachment()].mIndices);
 
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		CreateGizmo();
 
 	std::sort(mRenderLayers.begin(), mRenderLayers.end());
 }
-void RenderManager::CreateLightFilter(std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
+void RenderManager::CreateLightFilter(int _shadowLayer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
 {
-	float layer = 1.f;
+	float layer = (_shadowLayer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f)
+		/ ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
 	float texID = static_cast<float>(mLightMapFBO.GetColorAttachment());
 
 	Vertex v0, v1, v2, v3;
@@ -1071,7 +1120,7 @@ void RenderManager::CreateDebugPoint(const Transform& _t, const Color& _clr)
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
 	v0.texID = 0.f;
-	v0.position.z = 0.99999f;
+	v0.position.z = 1.f;
 
 	mDebugPoints.push_back(v0);
 }
@@ -1108,12 +1157,12 @@ void RenderManager::CreateDebugLine(const Transform& _t, const Color& _clr)
 	Vertex v0, v1;
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = 0.99999f;
+	v0.position.z = 1.f;
 	v0.texID = 0.f;
 
 	v1.color = clr;
 	v1.position = (mtx * Math::Vec3(1.f, 0.f, 1.f)).ToGLM();
-	v1.position.z = 0.99999f;
+	v1.position.z = 1.f;
 	v1.texID = 0.f;
 
 	mDebugVertices.push_back(v0);
@@ -1154,22 +1203,22 @@ void RenderManager::CreateDebugSquare(const Transform& _t, const Color& _clr)
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
 	Vertex v0, v1, v2, v3;
 	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
-	v0.position.z = 0.99999f;
+	v0.position.z = 1.f;
 	v0.color = clr;
 	v0.texID = 0.f;
 
 	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
-	v1.position.z = 0.99999f;
+	v1.position.z = 1.f;
 	v1.color = clr;
 	v1.texID = 0.f;
 
 	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
-	v2.position.z = 0.99999f;
+	v2.position.z = 1.f;
 	v2.color = clr;
 	v2.texID = 0.f;
 
 	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
-	v3.position.z = 0.99999f;
+	v3.position.z = 1.f;
 	v3.color = clr;
 	v3.texID = 0.f;
 
@@ -1224,7 +1273,7 @@ void RenderManager::CreateDebugCircle(const Transform& _t, const Color& _clr)
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = 0.99999f;
+		v.position.z = 1.f;
 		v.color = clr;
 		v.texID = 0.f;
 		mDebugVertices.push_back(v);
@@ -1672,12 +1721,12 @@ void RenderManager::CreateGizmoDebugLine(const Transform& _t, const Color& _clr)
 	Vertex v0, v1;
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = 0.99f;
+	v0.position.z = 1.f;
 	v0.texID = 0.f;
 
 	v1.color = clr;
 	v1.position = (mtx * Math::Vec3(1.f, 0.f, 1.f)).ToGLM();
-	v1.position.z = 0.99f;
+	v1.position.z = 1.f;
 	v1.texID = 0.f;
 
 	mDebugVertices.push_back(v0);
@@ -1709,7 +1758,7 @@ void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _cl
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = 0.99f;
+		v.position.z = 1.f;
 		v.color = clr;
 		v.texID = 0.f;
 		mDebugVertices.push_back(v);

@@ -14,6 +14,10 @@ as Sprites that are Squares. In the future, we will make a Shadow Component.
 #include "ECS_components.h"
 #include <RenderManager.h>
 
+bool CompareAngle(const Math::Vec2& endPt1, const Math::Vec2& endPt2);
+
+float GetAngle(const Math::Vec2& p0);
+
 struct Edge
 {
 	Math::Vec2 pos;
@@ -30,6 +34,7 @@ class ShadowManager : public System
 public:
 	ShadowManager();
 	void Update();
+	Math::Vec2 GetLightPos();
 	bool CastShadows() { return mCastShadows; }
 	const std::vector <Math::Vec2>& GetRayEndPoints() { return mRayEndPoints; }
 private:

@@ -23,11 +23,5 @@ Main function of the fragment shader.
 *******************************************************************************/
 void main (void) 
 {
-	vec4 temp;		
-	temp = vColor;
-
-	//discard transparent fragments
-	if (temp.a <= 0)
-		discard;
 	fFragColor = vColor;
 }

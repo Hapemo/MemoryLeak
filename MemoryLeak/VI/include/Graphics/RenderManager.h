@@ -112,7 +112,9 @@ public:
 	\return
 	Returns the color attachment to the frame buffer.
 	*******************************************************************************/
-	GLuint GetGameFBO() const { return mLightMapFBO.GetColorAttachment(); }
+	GLuint GetGameFBO() const { return mGameFBO.GetColorAttachment(); }
+
+	void CreateShadows();
 
 	/*!*****************************************************************************
 	\brief
@@ -380,8 +382,9 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
+	public:
 	void CreateDebugPoint(const Transform& _t, const Color& _clr);
-
+	private:
 	/*!*****************************************************************************
 	\brief
 	Rendering of textures
@@ -409,7 +412,7 @@ private:
 	*******************************************************************************/
 	void CreateSquare(const Entity& _e, int layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
 
-	void CreateLightFilter(std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
+	void CreateLightFilter(int _shadowLayer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
 
 	/*!*****************************************************************************
 	\brief
