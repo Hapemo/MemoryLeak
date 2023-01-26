@@ -599,7 +599,7 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 			physics2DManager->SetVelocity(_contact.obj[0], { 0.f, 0.f });
 			physics2DManager->SetAcceleration(_contact.obj[0], { 0.f, 0.f });
 			physics2DManager->SetAccumulatedForce(_contact.obj[0], { 0.f, 0.f });
-		}z
+		}
 	}
 
 	if (obj2HasP) {
