@@ -89,16 +89,17 @@ void Application::SystemUpdate() {
 
   // Physics
   TRACK_PERFORMANCE("Physics");
-  try {
-      physics2DManager->mPhysicsStepLock.lock();
-      std::thread phyThread{ [] {physics2DManager->Update(FPSManager::dt); } };
-      phyThread.join();
-      physics2DManager->mPhysicsStepLock.unlock();
-  }
-  catch (...) {
-      if (physics2DManager->mPhysicsStepLock.try_lock())
-          physics2DManager->mPhysicsStepLock.unlock();
-  }
+  //try {
+  //    physics2DManager->mPhysicsStepLock.lock();
+  //    std::thread phyThread{ [] {physics2DManager->Update(FPSManager::dt); } };
+  //    phyThread.join();
+  //    physics2DManager->mPhysicsStepLock.unlock();
+  //}
+  //catch (...) {
+  //    if (physics2DManager->mPhysicsStepLock.try_lock())
+  //        physics2DManager->mPhysicsStepLock.unlock();
+  //}
+  physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
 
   // Layer

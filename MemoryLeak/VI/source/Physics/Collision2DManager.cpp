@@ -800,6 +800,8 @@ void Collision2DManager::PositionCorrection(Contact& _contact) {
 }
 
 void Collision2DManager::SetupQuadTree() {
+	LOG_INFO("Initializing QuadTree...");
+
 	Math::Vec2 worldMin{}, worldMax{};
 	for (const auto& _entity : mEntities) {
 		Math::Vec2& _entityPos{ _entity.GetComponent<Transform>().translation }, & _entityScale{ _entity.GetComponent<Transform>().scale };
@@ -828,6 +830,8 @@ void Collision2DManager::SetupQuadTree() {
 
 	for (const auto& _entity : mEntities)
 		mQuadTree.AddNode(_entity);
+
+	LOG_INFO("QuadTree Initialized");
 }
 
 void Collision2DManager::UpdateEntityInQuadTree(const Entity& _e) {

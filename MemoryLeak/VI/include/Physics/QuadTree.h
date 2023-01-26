@@ -337,14 +337,15 @@ public:
 							  [this, &_entity](const Entity& _rhs) {
 								return _entity.id == _rhs.id; 
 	    					  }) };
-		//ASSERT(it != std::end(_node->values));
-		BREAKPOINT(it == std::end(_node->values));
+		////ASSERT(it != std::end(_node->values));
+		//BREAKPOINT(it == std::end(_node->values));
 
 
-		// Swap with the last element and pop back
-		std::swap(*it, _node->values.back());
-		_node->values.pop_back();
-
+		//// Swap with the last element and pop back
+		//std::swap(*it, _node->values.back());
+		//_node->values.pop_back();
+		if (it != std::end(_node->values))
+			_node->values.erase(it);
 	}
 
 	bool TryMerge(QuadNode* _node) {
