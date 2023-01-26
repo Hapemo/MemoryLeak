@@ -303,7 +303,10 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt,
 		_contact.penetration = (obj1R + obj2R) - sqrtf(Math::SqDistance(obj1NewPos, obj2NewPos));
 		_contact.normal = (obj2NewPos - obj1NewPos).Normalize();
 		_contact.contacts = _contact.normal * obj1R + obj1NewPos;
-
+		if (obj1.HasComponent<Audio>())
+			obj1.GetComponent<Audio>().sound.toPlay = true;
+		if (obj2.HasComponent<Audio>())
+			obj2.GetComponent<Audio>().sound.toPlay = true;
 		return true;
 	}
 	else
@@ -441,6 +444,12 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 			continue;
 		}
 
+		// Play sound by setting it to play
+		if (item.obj[0].HasComponent<Audio>()) 
+			item.obj[0].GetComponent<Audio>().sound.toPlay = true;
+		if (item.obj[1].HasComponent<Audio>())
+			item.obj[1].GetComponent<Audio>().sound.toPlay = true;
+
 		// Correct penetrated positions
 		PositionCorrection(item);
 		// Resolve contact by updating velocity values of both objects
@@ -515,9 +524,8 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 	//		}
 	//	}
 	//}
-	
+
 	mPossibleContactList = mQuadTree.FindAllIntersections();
-	std::cout << "Narrowed size: " << mPossibleContactList.size() << std::endl;
 	for (const std::pair<Entity, Entity>& possibleContactPair : mPossibleContactList) {
 		if (!HasCollider(possibleContactPair.first) || !HasCollider(possibleContactPair.second))
 			continue;
@@ -548,7 +556,6 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 			//LOG_INFO("Collision Detected\n");
 		}
 	}
-	std::cout << "Collision size: " << mContactList.size() << std::endl;
 }
 
 bool Collision2DManager::EntitiesCollided(const Entity& _e1, const Entity& _e2) {

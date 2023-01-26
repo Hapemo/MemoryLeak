@@ -4,9 +4,3 @@ C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
-C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.dll
-C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.pdb
-C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.AssemblyReference.cache
-C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
-C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
-C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
