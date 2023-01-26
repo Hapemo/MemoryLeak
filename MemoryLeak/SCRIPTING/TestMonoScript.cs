@@ -7,7 +7,6 @@ namespace BonVoyage
     {
         private bool starttalking;
         private int currentdialogueid;
-
         private int clickcount;
 
         public void Init()
@@ -70,50 +69,45 @@ namespace BonVoyage
 
             #endregion
 
-            if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1"))
-            {
-                InternalCalls.EntityDeactivate("hpbar", "Dialogue");
-                InternalCalls.SetPosX("Boat", "Level1", 160.0f);
-                InternalCalls.SetPosY("Boat", "Level1", 120.0f);
+            #region Intro Dialogue
+            if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1")) {
+                LockPosition(160, 120);
 
-                if (!starttalking)
-                {
+                if (!starttalking) {
+                    DisableUI();
                     InternalCalls.EntityActivate("I1", "Dialogue");
                     starttalking = true;
                 }
 
-                if ((InternalCalls.ButtonClicked("I1", "Dialogue")) == true)
-                {
+                if ((InternalCalls.ButtonClicked("I1", "Dialogue")) == true) {
                     InternalCalls.EntityDeactivate("I1", "Dialogue");
                     InternalCalls.EntityActivate("I2", "Dialogue");
                     InternalCalls.UpdateText("I2", "Dialogue", "Maybe that girl knows...");
                 }
 
-                if ((InternalCalls.ButtonClicked("I2", "Dialogue")) == true)
-                {
+                if ((InternalCalls.ButtonClicked("I2", "Dialogue")) == true) {
                     InternalCalls.EntityDeactivate("I2", "Dialogue");
                     InternalCalls.EntityDeactivate("IntroBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
-                    InternalCalls.EntityActivate("hpbar", "Dialogue");
+                    EnableUI();
                 }
             }
+            #endregion
 
+            #region Little Girl Dialogue
             if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1"))
             {
-                InternalCalls.EntityDeactivate("hpbar", "Dialogue");
-                InternalCalls.SetPosX("Boat", "Level1", -295.0f);
-                InternalCalls.SetPosY("Boat", "Level1", -85.0f);
+                LockPosition(-295, -85);
 
                 if (!starttalking)
                 {
+                    DisableUI();
                     InternalCalls.EntityActivate("G1", "Dialogue");
                     InternalCalls.UpdateText("G1", "Dialogue", "At last we meet again!");
                     CameraZoomIn();
                     starttalking = true;
                 }
-
-                #region LittleGirlBox
 
                 if ((InternalCalls.ButtonClicked("G1", "Dialogue")) == true)
                 {
@@ -134,7 +128,6 @@ namespace BonVoyage
                 }
 
                 //first choice start
-
                 if ((InternalCalls.ButtonClicked("PP1", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("G3", "Dialogue");
@@ -152,7 +145,6 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("P2", "Dialogue");
                     InternalCalls.UpdateText("P2", "Dialogue", "I'd like to remininsce.");
                 }
-
                 //first choice end
 
                 if ((InternalCalls.ButtonClicked("P1", "Dialogue")) == true)
@@ -192,7 +184,6 @@ namespace BonVoyage
                 }
 
                 // second choice from first choice
-
                 if ((InternalCalls.ButtonClicked("PP3", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("PP3", "Dialogue");
@@ -215,7 +206,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
-                    InternalCalls.EntityActivate("hpbar", "Dialogue");
+                    EnableUI();
                 }
 
                 if ((InternalCalls.ButtonClicked("PP4", "Dialogue")) == true)
@@ -240,11 +231,10 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
-                    InternalCalls.EntityActivate("hpbar", "Dialogue");
+                    EnableUI();
                 }
 
                 // second choice from second choice
-
                 if ((InternalCalls.ButtonClicked("PP5", "Dialogue")) == true)
                 {
 
@@ -268,7 +258,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
-                    InternalCalls.EntityActivate("hpbar", "Dialogue");
+                    EnableUI();
                 }
 
                 if ((InternalCalls.ButtonClicked("PP6", "Dialogue")) == true)
@@ -293,28 +283,26 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
-                    InternalCalls.EntityActivate("hpbar", "Dialogue");
+                    EnableUI();
                 }
-
-                #endregion
             }
+            #endregion
 
+            #region Passenger 1 Dialogue
             if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1"))
             {
                 InternalCalls.EntityDeactivate("hpbar", "Dialogue");
                 InternalCalls.SetPosX("Boat", "Level1", -1240.0f);
                 InternalCalls.SetPosY("Boat", "Level1", 670.0f);
 
-                if (!starttalking)
-                {
+                if (!starttalking) {
                     InternalCalls.EntityActivate("G1", "Dialogue");
                     InternalCalls.UpdateText("G1", "Dialogue", "At last we meet again!");
                     CameraZoomIn();
                     starttalking = true;
                 }
-
+                //using girl dialogue for now
                 #region LittleGirlBox
-
                 if ((InternalCalls.ButtonClicked("G1", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("G1", "Dialogue");
@@ -334,7 +322,6 @@ namespace BonVoyage
                 }
 
                 //first choice start
-
                 if ((InternalCalls.ButtonClicked("PP1", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("G3", "Dialogue");
@@ -352,7 +339,6 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("P2", "Dialogue");
                     InternalCalls.UpdateText("P2", "Dialogue", "I'd like to remininsce.");
                 }
-
                 //first choice end
 
                 if ((InternalCalls.ButtonClicked("P1", "Dialogue")) == true)
@@ -392,7 +378,6 @@ namespace BonVoyage
                 }
 
                 // second choice from first choice
-
                 if ((InternalCalls.ButtonClicked("PP3", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("PP3", "Dialogue");
@@ -444,7 +429,6 @@ namespace BonVoyage
                 }
 
                 // second choice from second choice
-
                 if ((InternalCalls.ButtonClicked("PP5", "Dialogue")) == true)
                 {
 
@@ -495,14 +479,48 @@ namespace BonVoyage
                     starttalking = false;
                     InternalCalls.EntityActivate("hpbar", "Dialogue");
                 }
-
                 #endregion
             }
+            #endregion
+            /*
+            #region Passenger 1 Delivered
+            if (InternalCalls.EntitiesCollided("PassengerBox", "PassengerDeliver", "Level1")) {
 
-            if (InternalCalls.EntitiesCollided("PassengerBox", "PassengerDeliver", "Level1"))
-            {
-                
             }
+            #endregion
+            */
+            #region Memory Fragment UI
+            if ((InternalCalls.ButtonClicked("memoryfragment", "Dialogue")) == true) {
+                if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
+                    InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");
+                }
+                else
+                {
+                    InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
+                }
+            }
+            #endregion
+
+
+        }
+
+        public void LockPosition(float x, float y)
+        {
+            InternalCalls.SetPosX("Boat", "Level1", x);
+            InternalCalls.SetPosY("Boat", "Level1", y);
+        }
+
+        public void DisableUI()
+        {
+            InternalCalls.EntityDeactivate("hpbar", "Dialogue");
+            InternalCalls.EntityDeactivate("memoryfragment", "Dialogue");
+            InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
+        }
+
+        public void EnableUI()
+        {
+            InternalCalls.EntityActivate("hpbar", "Dialogue");
+            InternalCalls.EntityActivate("memoryfragment", "Dialogue");
         }
 
         public void Exit()
