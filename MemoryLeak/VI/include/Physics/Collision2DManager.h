@@ -216,7 +216,17 @@ private:
 	// Database of callback functions to collision checks 
 	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
 	
-	QuadTree mQuadTree;
+
+	struct Node {
+		EntityID _mEntityID;
+		QuadBox _mBox;
+	};
+
+	QuadBox GetBox = [](Node* _node) {
+		return _node->_mBox;
+	};
+
+	QuadTree<Node*, decltype(GetBox)> mQuadTree;
 	bool mFirstUpdate{ true };
 	std::vector<Contact> mContactList;		// List of contacts in the current frame
 
