@@ -237,7 +237,7 @@ Entity GameStateManager::GetEntity(std::string const& _entityName, std::string c
 		// Find entity of same name and return
 		for (Entity e : scene.mEntities)
 			if (e.GetComponent<General>().name == _entityName) {
-				LOG_CUSTOM("GAMESTATEMANAGER", "Get entity: \"" + std::to_string(e.id) + "\" from scene: " + scene.mName);
+				//LOG_CUSTOM("GAMESTATEMANAGER", "Get entity: \"" + std::to_string(e.id) + "\" from scene: " + scene.mName);
 				return e;
 			}
 	}
