@@ -29,22 +29,20 @@ void Physics2DManager::Update(const double& _appDT) {
 
 	// Check if system is not in step mode
 	if (!Physics2DManager::mStepMode) {
-		//// Increment accumulatedDT by the application's DT
-		//Physics2DManager::mAccumulatedDT += _appDT;
+		// Increment accumulatedDT by the application's DT
+		mAccumulatedDT += _appDT;
 
-		//// Prevent spiral of death
-		//if (Physics2DManager::mAccumulatedDT > Physics2DManager::accumulatedDTCap)
-		//	Physics2DManager::mAccumulatedDT = Physics2DManager::accumulatedDTCap;
+		// Prevent spiral of death
+		if (mAccumulatedDT > accumulatedDTCap)
+			mAccumulatedDT = accumulatedDTCap;
 
-		//// If the accumlatedDT is larger than or equal to the defined fixedDT,
-		////	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
-		//while (Physics2DManager::mAccumulatedDT >= Physics2DManager::fixedDT) {
-		//	Step();
-		//	Physics2DManager::mAccumulatedDT -= Physics2DManager::fixedDT;
-		//}
+		// If the accumlatedDT is larger than or equal to the defined fixedDT,
+		//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
+		while (mAccumulatedDT >= fixedDT) {
+			Step(fixedDT);
+			mAccumulatedDT -= fixedDT;
+		}
 
-		// Removal of fixedDT updates
-		Step(_appDT);
 	}
 	// In step mode
 	else {
