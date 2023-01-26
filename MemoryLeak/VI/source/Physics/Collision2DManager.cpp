@@ -303,10 +303,10 @@ bool Collision2DManager::CI_CirclevsCircle(Contact& _contact, const double& _dt,
 		_contact.penetration = (obj1R + obj2R) - sqrtf(Math::SqDistance(obj1NewPos, obj2NewPos));
 		_contact.normal = (obj2NewPos - obj1NewPos).Normalize();
 		_contact.contacts = _contact.normal * obj1R + obj1NewPos;
-		if (obj1.HasComponent<Audio>())
-			obj1.GetComponent<Audio>().sound.toPlay = true;
-		if (obj2.HasComponent<Audio>())
-			obj2.GetComponent<Audio>().sound.toPlay = true;
+		//if (obj1.HasComponent<Audio>())
+		//	obj1.GetComponent<Audio>().sound.toPlay = true;
+		//if (obj2.HasComponent<Audio>())
+		//	obj2.GetComponent<Audio>().sound.toPlay = true;
 		return true;
 	}
 	else
@@ -472,8 +472,8 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		//if (!e1->GetComponent<General>().isActive)
 			//continue;
 
-		//if (e1->GetComponent<General>().tag != TAG::PLAYER)
-		//	continue;
+		if (e1->GetComponent<General>().tag != TAG::PLAYER)
+			continue;
 
 		for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
 		//for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
