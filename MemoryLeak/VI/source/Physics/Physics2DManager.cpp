@@ -83,50 +83,6 @@ void Physics2DManager::Step(const double& _stepDT) {
 		if (GetMass(e) == 0.f)
 			continue;
 
-		// -----------------------------
-		// Player Controller
-		// -----------------------------
-		//if (e.GetComponent<General>().tag == TAG::PLAYER) {
-		//	//std::vector<Force>& forceList{ e.GetComponent<Physics2D>().forceList };
-
-		//	//if (forceList.empty())
-		//	//	forceList.emplace(forceList.begin(), 0.f, 0.f, true, Math::Vec2{ 0.f, 0.f }, 30.f);
-
-		//	//if (forceList[0].forceID != 0)
-		//	//	forceList.emplace(forceList.begin(), 0.f, 0.f, true, Math::Vec2{ 0.f, 0.f }, 30.f);
-
-		//	if (Input::CheckKey(E_STATE::PRESS, E_KEY::W) || Input::CheckKey(E_STATE::HOLD, E_KEY::W)) {
-		//		ApplyImpulse(e, Math::Vec2{ 0.f, 1.f } *5.f, Math::Vec2{ 0.f, 0.f });
-		//		//forceList[0].linearForce.unitDirection = Math::Vec2{ 0.f, 1.f };
-		//	}
-
-		//	// Down movement
-		//	if (Input::CheckKey(E_STATE::PRESS, E_KEY::S) || Input::CheckKey(E_STATE::HOLD, E_KEY::S)) {
-		//		ApplyImpulse(e, Math::Vec2{ 0.f, -1.f } *5.f, Math::Vec2{ 0.f, 0.f });
-		//		//forceList[0].linearForce.unitDirection = Math::Vec2{ 0.f, -1.f };
-		//	}
-
-		//	// Left movement
-		//	if (Input::CheckKey(E_STATE::PRESS, E_KEY::A) || Input::CheckKey(E_STATE::HOLD, E_KEY::A)) {
-		//		ApplyImpulse(e, Math::Vec2{ -1.f, 0.f } *5.f, Math::Vec2{ 0.f, 0.f });
-		//		//forceList[0].linearForce.unitDirection = Math::Vec2{ -1.f, 0.f };
-		//	}
-
-		//	// Right movement
-		//	if (Input::CheckKey(E_STATE::PRESS, E_KEY::D) || Input::CheckKey(E_STATE::HOLD, E_KEY::D)) {
-		//		ApplyImpulse(e, Math::Vec2{ 1.f, 0.f } *5.f, Math::Vec2{ 0.f, 0.f });
-		//		//forceList[0].linearForce.unitDirection = Math::Vec2{ -1.f, 0.f };
-		//	}
-
-		//	// Cap player speed
-		//	if (Math::Dot(physics2DManager->GetVelocity(e), physics2DManager->GetVelocity(e)) > 250.f * 250.f) 
-		//		physics2DManager->SetVelocity(e, physics2DManager->GetVelocity(e).Normalize() * static_cast<float>(250.f));
-
-		//	// No movement input, scale down the speed to slow it down
-		//	physics2DManager->ScaleVelocity(e, static_cast<float>(0.99f));
-		//}
-
-
 		// Update accumulated forces acting on entity
 		UpdateEntitiesAccumulatedForce(e);
 		
@@ -155,8 +111,12 @@ void Physics2DManager::Step(const double& _stepDT) {
 
 			// Move entity by velocity
 			e.GetComponent<Transform>().translation += GetVelocity(e) * static_cast<float>(_stepDT);
-
 			e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * _stepDT);
+
+			// Check if object exits the quadtree bounds
+
+			// Update entity in quad tree
+			collision2DManager->UpdateEntityInQuadTree(e);
 		}
 
 		// Clamp rotation

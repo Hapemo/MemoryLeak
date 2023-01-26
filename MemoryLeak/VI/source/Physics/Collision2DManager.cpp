@@ -409,8 +409,6 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 void Collision2DManager::ResolveCollisions(const double& _dt) {
 	// Reset contact list every fixed update
 	ClearContactList();
-
-	// 
 	
 	// Check for collision and generate contact list
 	GenerateContactList(_dt);
@@ -462,82 +460,102 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 	//ClearContactList();
 }
 
-void Collision2DManager::GenerateContactList(const double& _dt) {
-	// Broad Phase Here
-	Math::Vec2 max{0.f, 0.f}, min{0.f, 0.f};
-	for (auto e{ mEntities.begin() }; e != mEntities.end(); ++e) {
-		Math::Vec2 &pos{ e->GetComponent<Transform>().translation };
-		max.x = std::max(max.x, pos.x);
-		max.y = std::max(max.y, pos.y);
-		min.x = std::min(min.x, pos.x);
-		min.y = std::min(min.y, pos.y);
-	}
-	//if (mQuadTree)
+void Collision2DManager::GenerateContactList(const double& _dt) {	
+	//// For now, we loop through the entity list
+	//// Converted to check player entities against all other entities for M3 to reduce amount of checks done
+	//for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
+	//	if (!e1->ShouldRun())
+	//		continue;
+	//	//if (!e1->GetComponent<General>().isActive)
+	//		//continue;
 
-	// For now, we loop through the entity list
-	// Converted to check player entities against all other entities for M3 to reduce amount of checks done
-	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
-		if (!e1->ShouldRun())
+	//	if (e1->GetComponent<General>().tag != TAG::PLAYER)
+	//		continue;
+
+	//	//for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
+	//	for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
+	//		if (e1 == e2)
+	//			continue;
+
+	//		if (!e2->ShouldRun())
+	//			continue;
+	//		//if (!e2->GetComponent<General>().isActive)
+	//		//	continue;
+
+	//		//if (!e1->HasComponent<Collider2D>() || !e2->HasComponent<Collider2D>())
+	//		//	continue;
+	//		// Prevents checks against 2 non moving object
+	//		//if (!e1->GetComponent<Physics2D>().dynamicsEnabled || !e2->GetComponent<Physics2D>().dynamicsEnabled)	
+	//		//	continue;
+
+	//		// Check if either of the entities do not have collider
+	//		if (!HasCollider(*e1) || !HasCollider(*e2))
+	//			continue;
+
+	//		// Code has not accounted for multiple colliders attached to an entity despite it being a constraint made to me by group members
+	//		//for (int i{ 0 }; i < NoOfColliders(*e1); ++i){
+	//		// Find collider type of 1st entity
+	//		int e1Type{ 0 };
+	//		if (e1->HasComponent<RectCollider>())
+	//			e1Type = static_cast<int>(ColliderType::RECT);
+	//		else if (e1->HasComponent<CircleCollider>())
+	//			e1Type = static_cast<int>(ColliderType::CIRCLE);
+	//		else
+	//			continue;
+
+	//		//	for (int j{ 0 }; j < NoOfColliders(*e2); ++j) {
+	//		// Find collider type of 2nd entity
+	//		int e2Type{ 0 };
+	//		if (e2->HasComponent<RectCollider>())
+	//			e2Type = static_cast<int>(ColliderType::RECT);
+	//		else if (e2->HasComponent<CircleCollider>())
+	//			e2Type = static_cast<int>(ColliderType::CIRCLE);
+	//		else
+	//			continue;
+
+	//		// Initialize contact
+	//		Contact contact{ *e1, *e2, e1Type, e2Type };
+
+	//		// Call function to check for collision
+	//		// If it returns true, means collision occurred
+	//		if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt, false)) {
+	//			mContactList.emplace_back(contact);
+	//			//LOG_INFO("Collision Detected\n");
+	//		}
+	//	}
+	//}
+
+	mPossibleContactList = mQuadTree.FindAllIntersections();
+	for (const std::pair<Entity, Entity>& possibleContactPair : mPossibleContactList) {
+		if (!HasCollider(possibleContactPair.first) || !HasCollider(possibleContactPair.second))
 			continue;
-		//if (!e1->GetComponent<General>().isActive)
-			//continue;
 
-		if (e1->GetComponent<General>().tag != TAG::PLAYER)
+		int e1Type{ 0 };
+		if (possibleContactPair.first.HasComponent<RectCollider>())
+			e1Type = static_cast<int>(ColliderType::RECT);
+		else if (possibleContactPair.first.HasComponent<CircleCollider>())
+			e1Type = static_cast<int>(ColliderType::CIRCLE);
+		else
 			continue;
 
-		//for (auto e2{ e1 }; e2 != mEntities.end(); ++e2) {
-		for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
-			if (e1 == e2)
-				continue;
+		int e2Type{ 0 };
+		if (possibleContactPair.second.HasComponent<RectCollider>())
+			e2Type = static_cast<int>(ColliderType::RECT);
+		else if (possibleContactPair.second.HasComponent<CircleCollider>())
+			e2Type = static_cast<int>(ColliderType::CIRCLE);
+		else
+			continue;
 
-			if (!e2->ShouldRun())
-				continue;
-			//if (!e2->GetComponent<General>().isActive)
-			//	continue;
+		// Initialize contact
+		Contact contact{ possibleContactPair.first, possibleContactPair.second, e1Type, e2Type };
 
-			//if (!e1->HasComponent<Collider2D>() || !e2->HasComponent<Collider2D>())
-			//	continue;
-			// Prevents checks against 2 non moving object
-			//if (!e1->GetComponent<Physics2D>().dynamicsEnabled || !e2->GetComponent<Physics2D>().dynamicsEnabled)	
-			//	continue;
-
-			// Check if either of the entities do not have collider
-			if (!HasCollider(*e1) || !HasCollider(*e2))
-				continue;
-
-			// Code has not accounted for multiple colliders attached to an entity despite it being a constraint made to me by group members
-			//for (int i{ 0 }; i < NoOfColliders(*e1); ++i){
-			// Find collider type of 1st entity
-			int e1Type{ 0 };
-			if (e1->HasComponent<RectCollider>())
-				e1Type = static_cast<int>(ColliderType::RECT);
-			else if (e1->HasComponent<CircleCollider>())
-				e1Type = static_cast<int>(ColliderType::CIRCLE);
-			else
-				continue;
-
-			//	for (int j{ 0 }; j < NoOfColliders(*e2); ++j) {
-			// Find collider type of 2nd entity
-			int e2Type{ 0 };
-			if (e2->HasComponent<RectCollider>())
-				e2Type = static_cast<int>(ColliderType::RECT);
-			else if (e2->HasComponent<CircleCollider>())
-				e2Type = static_cast<int>(ColliderType::CIRCLE);
-			else
-				continue;
-
-			// Initialize contact
-			Contact contact{ *e1, *e2, e1Type, e2Type };
-
-			// Call function to check for collision
-			// If it returns true, means collision occurred
-			if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt, false)) {
-				mContactList.emplace_back(contact);
-				//LOG_INFO("Collision Detected\n");
-			}
+		// Call function to check for collision
+		// If it returns true, means collision occurred
+		if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt, false)) {
+			mContactList.emplace_back(contact);
+			//LOG_INFO("Collision Detected\n");
 		}
 	}
-
 }
 
 bool Collision2DManager::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
@@ -781,12 +799,38 @@ void Collision2DManager::PositionCorrection(Contact& _contact) {
 			_contact.obj[1].GetComponent<Transform>().translation += correction * (1.f / _contact.obj[1].GetComponent<Physics2D>().mass);
 }
 
+void Collision2DManager::SetupQuadTree() {
+	Math::Vec2 worldMin{}, worldMax{};
+	for (const auto& _entity : mEntities) {
+		Math::Vec2& _entityPos{ _entity.GetComponent<Transform>().translation }, & _entityScale{ _entity.GetComponent<Transform>().scale };
+		if (_entity.HasComponent<RectCollider>()) {
+			_entityPos += _entity.GetComponent<RectCollider>().centerOffset;
+			_entityScale.x *= _entity.GetComponent<RectCollider>().scaleOffset.x;
+			_entityScale.y *= _entity.GetComponent<RectCollider>().scaleOffset.y;
+		}
+		else if (_entity.HasComponent<CircleCollider>()) {
+			_entityPos += _entity.GetComponent<CircleCollider>().centerOffset;
+			_entityScale *= _entity.GetComponent<CircleCollider>().scaleOffset;
+		}
+		_entityScale.x = fabs(_entityScale.x);
+		_entityScale.y = fabs(_entityScale.y);
+		Math::Vec2 _entityMax{ _entityPos + _entityScale / 2.f }, _entityMin{ _entityPos - _entityScale / 2.f };
+		
+		worldMax.x = std::max(_entityMax.x, worldMax.x);
+		worldMax.y = std::max(_entityMax.y, worldMax.y);
 
-void Collision2DManager::Initialize() {
-	SetupCollisionDatabase();
-	mQuadTree = QuadTree();
+		worldMin.x = std::min(_entityMin.x, worldMin.x);
+		worldMin.y = std::min(_entityMin.y, worldMin.y);
+	}
+
+	mQuadTree = QuadTree(QuadBox((worldMax + worldMin) / 2.f, 
+								 (worldMax - worldMin)));
+
+	for (const auto& _entity : mEntities)
+		mQuadTree.AddNode(_entity);
 }
 
-void Collision2DManager::Cleanup() {
-	mQuadTree.DestroyTree();
+void Collision2DManager::UpdateEntityInQuadTree(const Entity& _e) {
+	mQuadTree.RemoveNode(_e);
+	mQuadTree.AddNode(_e);
 }

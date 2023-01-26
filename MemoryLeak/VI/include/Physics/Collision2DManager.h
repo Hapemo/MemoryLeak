@@ -208,27 +208,18 @@ public:
 	void PositionCorrection(Contact& _contact);
 
 	void SetupQuadTree();
-	void Initialize();
 
-	void Cleanup();
+	void UpdateEntityInQuadTree(const Entity& _e);
 
 private:
 	// Database of callback functions to collision checks 
 	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
 	
-
-	struct Node {
-		EntityID _mEntityID;
-		QuadBox _mBox;
-	};
-
-	QuadBox GetBox = [](Node* _node) {
-		return _node->_mBox;
-	};
-
-	QuadTree<Node*, decltype(GetBox)> mQuadTree;
-	bool mFirstUpdate{ true };
+	QuadTree mQuadTree;
+	std::vector<std::pair<Entity, Entity>> mPossibleContactList;
 	std::vector<Contact> mContactList;		// List of contacts in the current frame
+
+	bool mFirstUpdate{ true };
 
 	const float	penAllowance{ 0.01f },		// Penetration allowance
 				penPercentage{ 2.0f };		// Penetration percentage to correct

@@ -6,7 +6,8 @@
 
 class QuadBox {
 public:
-	QuadBox(const Math::Vec2& _center = Math::Vec2{0.f, 0.f}, const Math::Vec2& _scale = Math::Vec2{0.f, 0.f}, const Math::Vec2& _centerOffset = Math::Vec2{0.f, 0.f}, const Math::Vec2& _scaleOffset = Math::Vec2{0.f, 0.f}) : _mCenter(_center), _mScale(_scale), _mCenterOffset(_centerOffset), _mScaleOffset(_scaleOffset) {
+	QuadBox(const Math::Vec2& _center = Math::Vec2{0.f, 0.f}, const Math::Vec2& _scale = Math::Vec2{0.f, 0.f}, const Math::Vec2& _centerOffset = Math::Vec2{0.f, 0.f}, const Math::Vec2& _scaleOffset = Math::Vec2{0.f, 0.f}) : 
+		_mCenter(_center), _mScale(_scale), _mCenterOffset(_centerOffset), _mScaleOffset(_scaleOffset) {
 	}
 
 	QuadBox(const Entity& _entity) {
@@ -105,13 +106,15 @@ private:
 							MaxDepth{ 8 };
 
 	struct QuadNode {
-		std::array<std::unique_ptr<QuadNode>, 4> child;
-		std::vector<Entity> values;
+		std::array<std::unique_ptr<QuadNode>, 4> child{};
+		std::vector<Entity> values{ std::vector<Entity>() };
 	};
 
-	QuadBox _mQuadBox;
-	std::unique_ptr<QuadNode> _mRoot;
+	QuadBox _mQuadBox{};
+	std::unique_ptr<QuadNode> _mRoot{};
 public:
+	QuadTree(){}
+
 	QuadTree(const QuadBox& _nodeBox) : _mQuadBox(_nodeBox), _mRoot(std::make_unique<QuadNode>()) {
 
 	}
@@ -131,7 +134,7 @@ public:
 		if (isLeaf(_node)) {
 			// Insert the value in this node if possbile
 			if (_depth >= MaxDepth || _node->values.size() < Threshold)
-				_node->values.emplace_back(_entity);
+				_node->values.push_back(_entity);
 			// Otherwise spilt and try again
 			else {
 				Spilt(_node, _box);
@@ -144,7 +147,7 @@ public:
 			if (i != -1)
 				AddNode(_node->child[i].get(), _depth + 1, ComputeQuadrantDimensions(_box, i), _entity);
 			else
-				_node->values.emplace_back(_entity);
+				_node->values.push_back(_entity);
 		}
 	}
 
@@ -220,25 +223,26 @@ public:
 		}
 	}
 
-	void FindAllIntersections(QuadNode* _node, std::vector<std::pair<Entity, Entity>>& _resultList) {
+	void FindAllIntersections(QuadNode* _node, std::vector<std::pair<Entity, Entity>>& _resultList) const {
 		// Find intersections between values stored in this node
 		// Make sure to not report the same intersection twice
 		for (size_t i{ 0 }; i < _node->values.size(); ++i){
 			for (size_t j{ 0 }; j < i; ++j){
-				if (mGetBox(_node->values[i]).Intersects(mGetBox(_node->values[j])))
+				QuadBox entityBox1{ _node->values[i] }, entityBox2{ _node->values[j] };
+				if (entityBox1.Intersects(entityBox2))
 					_resultList.emplace_back(_node->values[i], _node->values[j]);
 			}
 		}
 
-		if (!isLeaf(_node))
-		{
+		if (!isLeaf(_node)){
 			// Values in this node can intersect values in descendants
-			for (const auto& child : _node->children){
-				for (const auto& value : _node->values)
-					FindIntersectionsInDescendants(child.get(), value, _resultList);
+			for (const auto& child : _node->child){
+				for (const auto& entity : _node->values)
+					FindAllIntersectionsInDescendants(child.get(), entity, _resultList);
 			}
+
 			// Find intersections in children
-			for (const auto& child : _node->children)
+			for (const auto& child : _node->child)
 				FindAllIntersections(child.get(), _resultList);
 		}
 	}
@@ -315,24 +319,30 @@ public:
 
 		// Assign value to child
 		std::vector<Entity> initialValues{ std::vector<Entity>() };
-		for (const auto& value : _node->values) {
-			auto i{ GetQuadrant(_box, mGetBox(value)) };
-			if (i != 1)
-				_node->child[i]->values.emplace_back(value);
+		for (const auto& entity : _node->values) {
+			QuadBox entityBox{entity};
+			auto i{ GetQuadrant(_box, entityBox) };
+			if (i != -1)
+				_node->child[i]->values.push_back(entity);
 			else
-				initialValues.emplace_back(value);
+				initialValues.emplace_back(entity);
 		}
 		_node->values = std::move(initialValues);
 	}
 
 	void RemoveValue(QuadNode* _node, const Entity& _entity) {
 		// Find value in node values container
-		auto it{ std::find_if(std::begin(_node->values), std::end(_node->values), [this, &_entity](const auto& _rhs) {return mEqual(_entity, _rhs); }) };
+		auto it{ std::find_if(std::begin(_node->values), 
+							  std::end(_node->values), 
+							  [this, &_entity](const Entity& _rhs) {
+								return _entity.id == _rhs.id; 
+	    					  }) };
 		//ASSERT(it != std::end(_node->values));
+		BREAKPOINT(it == std::end(_node->values));
 
 
 		// Swap with the last element and pop back
-		*it = std::move(_node->values.back());
+		std::swap(*it, _node->values.back());
 		_node->values.pop_back();
 
 	}
@@ -340,19 +350,19 @@ public:
 	bool TryMerge(QuadNode* _node) {
 		//ASSERT(_node != nullptr);
 		//ASSERT(!isLeaf(_node));
-		auto nbValues{ _node->values.size()};
+		size_t newSize{ _node->values.size()};
 		for (const auto& child : _node->child){
 			if (!isLeaf(child.get()))
 				return false;
-			nbValues += child->values.size();
+			newSize += child->values.size();
 		}
-		if (nbValues <= Threshold){
-			_node->values.reserve(nbValues);
+		if (newSize <= Threshold){
+			_node->values.reserve(newSize);
 			
 			// Merge the values of all the child
 			for (const auto& child : _node->child){
-				for (const auto& value : child->values)
-					_node->values.push_back(value);
+				for (const auto& entity : child->values)
+					_node->values.push_back(entity);
 			}
 			// Remove the child
 			for (auto& child : _node->child)

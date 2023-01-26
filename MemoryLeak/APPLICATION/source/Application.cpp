@@ -59,7 +59,7 @@ void Application::SystemInit() {
   renderManager->SetVectorLengthModifier(5.f);
 
   // Collision database initialization
-  collision2DManager->Initialize();
+  collision2DManager->SetupCollisionDatabase();
 
   // Run Init() scripts
   logicSystem->Init();
@@ -124,6 +124,8 @@ void Application::init() {
   SystemInit();
 
   GameStateManager::GetInstance()->Init();
+
+  collision2DManager->SetupQuadTree();
 
 #ifdef NDEBUG
 #ifdef _EDITOR
@@ -222,7 +224,7 @@ void Application::MainUpdate() {
 
 void Application::exit() {
     //logicSystem->Exit();
-    collision2DManager->Cleanup();
+    //collision2DManager->Cleanup();
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
 #ifdef _EDITOR
