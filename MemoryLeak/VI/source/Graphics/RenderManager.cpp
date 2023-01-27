@@ -1522,6 +1522,35 @@ void RenderManager::CreateText(const Entity& _e, int _layer)
 		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), _layer, _e.GetComponent<Transform>().scale.x, cam.GetZoom());
 }
 
+int RenderManager::GetTextLines(Entity _e)
+{
+	Text text = _e.GetComponent<Text>();
+
+	std::string fileName = text.fontFile + ".ttf";
+
+	//check if font program already exisits, if not create one
+	if (mFontRenderers.find(fileName) == mFontRenderers.end())
+	{
+		mFontRenderers.emplace(fileName, fileName);
+		mFontRenderers[fileName].SetWindowPtr(mWindowWidth, mWindowHeight);
+	}
+
+	//add paragraph into font renderer
+	if (!mFontRenderers[fileName].IsInitialized())
+		return 0;
+
+	Camera cam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam
+		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
+	cam.SetPos(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? Math::Vec2{ 0, 0 } : cam.GetPos());
+	cam.SetZoom(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? 1.f : cam.GetZoom());
+
+	return mFontRenderers[fileName].GetLineCount(text.text,
+		(text.offset + _e.GetComponent<Transform>().translation - cam.GetPos()) / cam.GetZoom() 
+		+ Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
+		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, 
+			text.color.b / 255.f), _e.GetComponent<Transform>().scale.x, cam.GetZoom());
+}
+
 /*!*****************************************************************************
 \brief
 Creates the gizmo.

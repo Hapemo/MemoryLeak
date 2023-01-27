@@ -235,3 +235,39 @@ void FontRenderer::Clear()
     //clear paragraph for next frame
     mParagraphs.clear();
 }
+
+int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float _width, float camZoom)
+{
+    if (!mInitialized) return 0;
+    std::vector<std::string> strings;
+    std::istringstream iss(text);
+    std::string intermediate;
+    while (std::getline(iss, intermediate, ' ')) {
+        strings.push_back(intermediate);
+    }
+    std::vector<float> wordWidth;
+    for (std::string& str : strings)
+    {
+        float width{};
+        str += " ";
+        for (char ch : str)
+            width += mGlyphs[ch].size.x * scale;
+        wordWidth.push_back(width);
+    }
+    
+    Paragraph para = Paragraph(strings, wordWidth, _pos, scale, color, _width, camZoom);
+
+    float currWidth{};
+    int lines = 1;
+    for (size_t i = 0; i < para.words.size(); ++i)
+    {
+        currWidth += para.wordWidth[i];
+        if (i && currWidth > para.renderWidth * 0.6f / para.camZoom)
+        {
+            ++lines;
+            currWidth = para.wordWidth[i];
+        }
+    }
+    return lines;
+
+}

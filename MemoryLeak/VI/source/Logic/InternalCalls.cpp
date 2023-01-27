@@ -712,3 +712,13 @@ void InternalCalls::UpdateTextByEntity(const Entity& _e, std::string const& _tex
 void InternalCalls::UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text) {
 	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Text>().text = _text;
 }
+
+void InternalCalls::SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset)
+{
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Text>().offset = Math::Vec2(_xoffset, _yoffset);
+}
+
+int InternalCalls::GetLineCount(std::string const& _entityName, std::string const& _sceneName)
+{
+	return renderManager->GetTextLines((FUNC->GetEntity(_entityName, _sceneName)));
+}

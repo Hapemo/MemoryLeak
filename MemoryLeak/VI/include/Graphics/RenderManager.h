@@ -475,6 +475,8 @@ public:
 	The color component.
 	*******************************************************************************/
 	void CreateDebugLine(const Transform& _t, const Color& _clr);
+
+	int GetTextLines(Entity _e);
 private:
 	/*!*****************************************************************************
 	\brief

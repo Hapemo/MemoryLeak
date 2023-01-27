@@ -15,7 +15,9 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <Graphics/GLShader.h>
-
+#include <ECS_systems.h>
+#include "ECS_items.h"
+#include "ECS_components.h"
 /*!*****************************************************************************
 \brief
 Struct that encapsulates what is needed for rendering a single character.
@@ -112,6 +114,7 @@ public:
 		mWindowWidth = *_windowWidth; 
 		mWindowHeight = *_windowHeight;
 	}
+	int GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float _width, float camZoom);
 
 private:
 	/*!*****************************************************************************

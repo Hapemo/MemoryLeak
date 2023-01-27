@@ -538,4 +538,7 @@ public:
 	*******************************************************************************/
 	static void UpdateTextByEntity(const Entity& _e, std::string const& _text);
 	static void UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text);
+	static void SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset);
+	static int GetLineCount(std::string const& _entityName, std::string const& _sceneName);
+
 };
