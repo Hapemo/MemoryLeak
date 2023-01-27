@@ -533,6 +533,13 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 
 	mPossibleContactList = mQuadTree.FindAllIntersections();
 	for (const std::pair<Entity, Entity>& possibleContactPair : mPossibleContactList) {
+		if (!possibleContactPair.first.ShouldRun() || !possibleContactPair.second.ShouldRun())
+			continue;
+
+		//if (possibleContactPair.first.GetComponent<General>().tag != TAG::PLAYER &&
+		//	possibleContactPair.second.GetComponent<General>().tag != TAG::PLAYER)
+		//	continue;
+
 		if (!HasCollider(possibleContactPair.first) || !HasCollider(possibleContactPair.second))
 			continue;
 
@@ -846,4 +853,8 @@ void Collision2DManager::SetupQuadTree() {
 void Collision2DManager::UpdateEntityInQuadTree(const Entity& _e) {
 	mQuadTree.RemoveNode(_e);
 	mQuadTree.AddNode(_e);
+}
+
+const std::vector<std::pair<Entity, Entity>>& Collision2DManager::GetPossibleContactList() const {
+	return mPossibleContactList;
 }

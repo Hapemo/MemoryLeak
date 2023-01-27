@@ -215,6 +215,8 @@ public:
 
 	void UpdateEntityInQuadTree(const Entity& _e);
 
+	const std::vector<std::pair<Entity, Entity>>& GetPossibleContactList() const;
+
 private:
 	// Database of callback functions to collision checks 
 	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];

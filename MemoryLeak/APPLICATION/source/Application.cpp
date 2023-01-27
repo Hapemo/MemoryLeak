@@ -108,7 +108,7 @@ void Application::SystemUpdate() {
 
   // Layer
   TRACK_PERFORMANCE("Layer");
-  //layerManager->Update();
+  layerManager->Update();
   END_TRACK("Layer");
 
   // Animator

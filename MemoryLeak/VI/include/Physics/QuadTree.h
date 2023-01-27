@@ -15,13 +15,13 @@ public:
 			this->_mCenter = _entity.GetComponent<Transform>().translation;
 			this->_mScale = _entity.GetComponent<Transform>().scale;
 			this->_mCenterOffset = _entity.GetComponent<RectCollider>().centerOffset;
-			this->_mScaleOffset = _entity.GetComponent<RectCollider>().scaleOffset;
+			this->_mScaleOffset = _entity.GetComponent<RectCollider>().scaleOffset * 2.f;
 		}
 		else if (_entity.HasComponent<CircleCollider>()) {
 			this->_mCenter = _entity.GetComponent<Transform>().translation;
 			this->_mScale = _entity.GetComponent<Transform>().scale;
 			this->_mCenterOffset = _entity.GetComponent<CircleCollider>().centerOffset;
-			this->_mScaleOffset = Math::Vec2{ _entity.GetComponent<CircleCollider>().scaleOffset, _entity.GetComponent<CircleCollider>().scaleOffset };
+			this->_mScaleOffset = Math::Vec2{ _entity.GetComponent<CircleCollider>().scaleOffset, _entity.GetComponent<CircleCollider>().scaleOffset } * 2.f;
 		}
 	}
 	

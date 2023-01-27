@@ -65,6 +65,22 @@ void LayerManager::Step() {
 		}
 	}
 
+	//for (const std::pair<Entity, Entity>& possibleContactPair : collision2DManager->GetPossibleContactList()) {
+	//	if (!possibleContactPair.first.ShouldRun() || !possibleContactPair.second.ShouldRun())
+	//		continue;
+
+	//	//if (possibleContactPair.first.GetComponent<General>().tag != TAG::PLAYER && 
+	//	//	possibleContactPair.second.GetComponent<General>().tag != TAG::PLAYER)
+	//	//	continue;
+
+	//	if (!possibleContactPair.first.HasComponent<LayerCollider>() || !possibleContactPair.second.HasComponent<LayerCollider>())
+	//		continue;
+
+	//	Contact contact{ possibleContactPair.first, possibleContactPair.second, static_cast<int>(ColliderType::RECT), static_cast<int>(ColliderType::RECT) };
+	//	if (CI_RectvsRect(contact))
+	//		mUpdateList.emplace_back(contact);
+	//}
+
 	//  For every contact
 	for (auto& item : mUpdateList) {
 		// Check if they both have a sprite component (contains the layer value
