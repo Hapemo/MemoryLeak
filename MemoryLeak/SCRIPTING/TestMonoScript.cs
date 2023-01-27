@@ -317,9 +317,7 @@ namespace BonVoyage
             #region Passenger 1 Dialogue
             if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1"))
             {
-                InternalCalls.EntityDeactivate("hpbar", "Dialogue");
-                InternalCalls.SetPosX("Boat", "Level1", -1240.0f);
-                InternalCalls.SetPosY("Boat", "Level1", 670.0f);
+                LockPosition(-1240, 670);
 
                 if (!starttalking)
                 {
@@ -437,12 +435,13 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G5", "Dialogue");
                     InternalCalls.EntityActivate("G8", "Dialogue");
                     InternalCalls.UpdateText("G8", "Dialogue", "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("G8", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("G8", "Dialogue");
-                    InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+                    InternalCalls.EntityDeactivate("PassengerBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
                     EnableUI();
@@ -462,12 +461,13 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G5", "Dialogue");
                     InternalCalls.EntityActivate("G9", "Dialogue");
                     InternalCalls.UpdateText("G9", "Dialogue", "We're currently at Cordelia! It's said this place holds special memories, so explore around! We will meet again...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("G9", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("G9", "Dialogue");
-                    InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+                    InternalCalls.EntityDeactivate("PassengerBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
                     EnableUI();
@@ -489,12 +489,13 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G7", "Dialogue");
                     InternalCalls.EntityActivate("G10", "Dialogue");
                     InternalCalls.UpdateText("G10", "Dialogue", "So you remember the sea conches! Don't forget them now! We will meet again...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("G10", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("G10", "Dialogue");
-                    InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+                    InternalCalls.EntityDeactivate("PassengerBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
                     EnableUI();
@@ -514,12 +515,13 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G7", "Dialogue");
                     InternalCalls.EntityActivate("G11", "Dialogue");
                     InternalCalls.UpdateText("G11", "Dialogue", "These are called sea conches, and are known to store important memories of the past. We will meet again...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("G11", "Dialogue")) == true)
                 {
                     InternalCalls.EntityDeactivate("G11", "Dialogue");
-                    InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+                    InternalCalls.EntityDeactivate("PassengerBox", "Level1");
                     CameraZoomOut();
                     starttalking = false;
                     EnableUI();
