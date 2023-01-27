@@ -691,7 +691,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				CreateText(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		}
 	}
-	int shadowLayer = MAX_LAYERS_PER_SCENE * (MAX_SCENE_LAYERS - 2);
+	int shadowLayer = MAX_LAYERS_PER_SCENE * SHADOW_SCENE_LAYER;
 	if (find(mRenderLayers.begin(), mRenderLayers.end(), shadowLayer) == mRenderLayers.end())
 		mRenderLayers.push_back(shadowLayer);
 	if (_texInfo.find(shadowLayer) == _texInfo.end())
