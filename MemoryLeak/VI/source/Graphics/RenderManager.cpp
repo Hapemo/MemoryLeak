@@ -173,6 +173,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 {
 	if (!lightsource.id) return;
 	if (!lightsource.HasComponent<LightSource>()) return;
+	if (!_vertices.size()) return;
 
 	Vertex v0;
 	glm::vec4 clr{ 1.f, 1.f, 1.f, 0.01f };
@@ -690,7 +691,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				CreateText(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		}
 	}
-	int shadowLayer = MAX_LAYERS_PER_SCENE * (MAX_SCENE_LAYERS - 1);
+	int shadowLayer = MAX_LAYERS_PER_SCENE * (MAX_SCENE_LAYERS - 2);
 	if (find(mRenderLayers.begin(), mRenderLayers.end(), shadowLayer) == mRenderLayers.end())
 		mRenderLayers.push_back(shadowLayer);
 	if (_texInfo.find(shadowLayer) == _texInfo.end())
