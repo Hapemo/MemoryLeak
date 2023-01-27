@@ -64,7 +64,7 @@ void ShadowManager::RayCast()
 
 			if (!(T1 > 0 && T2 > 0 && T2 < 1)) // no intersection
 				continue;
-			if (T1 >= smallestT1) // intersection is further than the closest
+			if (T1 >= smallestT1 - 0.0001f) // intersection is further than the closest
 				continue;
 			foundIntersection = true;
 			smallestT1 = T1;
@@ -73,7 +73,7 @@ void ShadowManager::RayCast()
 
 		if (!foundIntersection) // intersection is at a point
 		{
-			float theta = 0.00001f;
+			float theta = 0.001f;
 			Math::Vec2 posDir{ ray.dir.x * cosf(theta) - ray.dir.y * sinf(theta), ray.dir.x * sinf(theta) + ray.dir.y * cosf(theta) };
 			Math::Vec2 negDir{ ray.dir.x * cosf(-theta) - ray.dir.y * sinf(-theta), ray.dir.x * sinf(-theta) + ray.dir.y * cosf(-theta) };
 			mExtendedRayDirection.push_back({ ray.pos, posDir });
