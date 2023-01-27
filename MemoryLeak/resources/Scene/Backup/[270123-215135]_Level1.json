@@ -2119,8 +2119,8 @@
                 "b": 123,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\dialogueIcon.png",
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {

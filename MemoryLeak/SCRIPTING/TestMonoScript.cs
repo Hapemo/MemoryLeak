@@ -124,6 +124,7 @@ namespace BonVoyage
                     {
                         InternalCalls.EntityActivate("G1", "Dialogue");
                         InternalCalls.UpdateText("G1", "Dialogue", "At last we meet again!");
+                        TextAlign("G1", "Dialogue");
                     }
                     CameraZoomIn();
                     starttalking = true;
@@ -134,6 +135,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G1", "Dialogue");
                     InternalCalls.EntityActivate("G2", "Dialogue");
                     InternalCalls.UpdateText("G2", "Dialogue", "I've been waiting for you!");
+                    TextAlign("G2", "Dialogue");
                 }
 
                 if ((InternalCalls.ButtonReleased("G2", "Dialogue")) == true)
@@ -145,6 +147,7 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("PP2", "Dialogue");
                     InternalCalls.UpdateText("PP1", "Dialogue", "Play...");
                     InternalCalls.UpdateText("PP2", "Dialogue", "Reminisce...");
+                    TextAlign("G3", "Dialogue");
                 }
 
                 //first choice start
@@ -172,6 +175,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("P1", "Dialogue");
                     InternalCalls.EntityActivate("G4", "Dialogue");
                     InternalCalls.UpdateText("G4", "Dialogue", "Let's play a game where you hold your hands out and I'll give you something!");
+                    TextAlign("G4", "Dialogue");
                 }
 
                 if ((InternalCalls.ButtonReleased("P2", "Dialogue")) == true)
@@ -179,6 +183,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("P2", "Dialogue");
                     InternalCalls.EntityActivate("G6", "Dialogue");
                     InternalCalls.UpdateText("G6", "Dialogue", "We have plenty of time to reminsce! There's something I want to show you!");
+                    TextAlign("G6", "Dialogue");
                 }
 
                 if ((InternalCalls.ButtonReleased("G4", "Dialogue")) == true)
@@ -190,6 +195,7 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("PP4", "Dialogue");
                     InternalCalls.UpdateText("PP3", "Dialogue", "Do what...");
                     InternalCalls.UpdateText("PP4", "Dialogue", "Where am I...");
+                    TextAlign("G5", "Dialogue");
                 }
 
                 if ((InternalCalls.ButtonReleased("G6", "Dialogue")) == true)
@@ -201,6 +207,7 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("PP6", "Dialogue");
                     InternalCalls.UpdateText("PP5", "Dialogue", "Yes...");
                     InternalCalls.UpdateText("PP6", "Dialogue", "No...");
+                    TextAlign("G7", "Dialogue");
                 }
 
                 // second choice from first choice
@@ -219,6 +226,7 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("G8", "Dialogue");
                     InternalCalls.UpdateText("G8", "Dialogue", "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...");
                     InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
+                    TextAlign("G8", "Dialogue");
                 }
 
                 if ((InternalCalls.ButtonReleased("G8", "Dialogue")) == true)
@@ -245,6 +253,7 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("G9", "Dialogue");
                     InternalCalls.UpdateText("G9", "Dialogue", "We're currently at Cordelia! It's said this place holds special memories, so explore around! We will meet again...");
                     InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
+                    TextAlign("G9", "Dialogue");
                 }
 
                 if ((InternalCalls.ButtonReleased("G9", "Dialogue")) == true)
@@ -273,6 +282,7 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("G10", "Dialogue");
                     InternalCalls.UpdateText("G10", "Dialogue", "So you remember the sea conches! Don't forget them now! We will meet again...");
                     InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
+                    TextAlign("G10", "Dialogue");
                 }
 
                 if ((InternalCalls.ButtonReleased("G10", "Dialogue")) == true)
@@ -299,6 +309,7 @@ namespace BonVoyage
                     InternalCalls.EntityActivate("G11", "Dialogue");
                     InternalCalls.UpdateText("G11", "Dialogue", "These are called sea conches, and are known to store important memories of the past. We will meet again...");
                     InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
+                    TextAlign("G11", "Dialogue");
                 }
 
                 if ((InternalCalls.ButtonReleased("G11", "Dialogue")) == true)
@@ -670,6 +681,50 @@ namespace BonVoyage
         public void CameraZoomOut()
         {
             InternalCalls.SetCurrentCameraScaleX(1600);
+        }
+
+        public void TextAlign(string entityname, string scenename)
+        {
+            if (InternalCalls.GetLineCount(entityname, scenename) == 1)
+            {
+                InternalCalls.SetScaleX(entityname, scenename, 740);
+                InternalCalls.SetScaleY(entityname, scenename, 100);
+
+                InternalCalls.SetPosX(entityname, scenename, -387);
+                InternalCalls.SetPosY(entityname, scenename, 200);
+
+                InternalCalls.SetTextOffset(entityname, scenename, -340, -15);
+            }
+            if (InternalCalls.GetLineCount(entityname, scenename) == 2) 
+            {
+                InternalCalls.SetScaleX(entityname, scenename, 740);
+                InternalCalls.SetScaleY(entityname, scenename, 135);
+
+                InternalCalls.SetPosX(entityname, scenename, -387);
+                InternalCalls.SetPosY(entityname, scenename, 180);
+
+                InternalCalls.SetTextOffset(entityname, scenename, -340, 7);
+            }
+            if (InternalCalls.GetLineCount(entityname, scenename) == 3)
+            {
+                InternalCalls.SetScaleX(entityname, scenename, 740);
+                InternalCalls.SetScaleY(entityname, scenename, 215);
+
+                InternalCalls.SetPosX(entityname, scenename, -387);
+                InternalCalls.SetPosY(entityname, scenename, 133);
+
+                InternalCalls.SetTextOffset(entityname, scenename, -340, 25);
+            }
+            if (InternalCalls.GetLineCount(entityname, scenename) == 4)
+            {
+                InternalCalls.SetScaleX(entityname, scenename, 740);
+                InternalCalls.SetScaleY(entityname, scenename, 215);
+
+                InternalCalls.SetPosX(entityname, scenename, -387);
+                InternalCalls.SetPosY(entityname, scenename, 133);
+
+                InternalCalls.SetTextOffset(entityname, scenename, -340, 50);
+            }
         }
     }
 }

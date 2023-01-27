@@ -110,7 +110,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 660.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
@@ -134,7 +134,7 @@
             "fontFile": "CaviarDreams",
             "text": "At last we meet again!",
             "offset": {
-                "X": 363.0,
+                "X": -289.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -161,7 +161,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 654.0,
                 "Y": 94.0
             },
             "rotation": 0.0,
@@ -212,7 +212,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 660.0,
                 "Y": 135.0
             },
             "rotation": 0.0,
@@ -263,7 +263,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 672.0,
                 "Y": 215.0
             },
             "rotation": 0.0,
@@ -314,7 +314,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 713.0,
                 "Y": 203.5
             },
             "rotation": 0.0,
@@ -365,7 +365,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 1065.0,
                 "Y": 215.0
             },
             "rotation": 0.0,
@@ -416,7 +416,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 731.0,
                 "Y": 215.0
             },
             "rotation": 0.0,
@@ -467,7 +467,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 795.0,
                 "Y": 215.0
             },
             "rotation": 0.0,
@@ -518,7 +518,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 786.0,
                 "Y": 215.0
             },
             "rotation": 0.0,
@@ -569,7 +569,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 705.0,
                 "Y": 215.0
             },
             "rotation": 0.0,
@@ -1232,7 +1232,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
+                "X": 1000.0,
                 "Y": 215.0
             },
             "rotation": 0.0,
