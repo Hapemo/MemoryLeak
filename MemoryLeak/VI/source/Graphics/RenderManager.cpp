@@ -277,7 +277,6 @@ Animator editor.
 *******************************************************************************/
 GLuint RenderManager::GetAnimatorFBO()
 {
-	animator->Animate();
 	RENDER_STATE prevState = mCurrRenderPass;
 	mCurrRenderPass = RENDER_STATE::ANIMATOR;
 	mAnimatorFBO.Bind();
@@ -765,7 +764,7 @@ void RenderManager::CreateVerticesAnimator(std::map<size_t, std::map<GLuint, Tex
 				_texInfo[sprite.layer] = std::map<GLuint, TextureInfo>();
 			if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
 				_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
-
+			NewLayer(MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1);
 			CreateSquare(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1, _texInfo[MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1][texid].mVertices, _texInfo[MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1][texid].mIndices);
 		}
 	}

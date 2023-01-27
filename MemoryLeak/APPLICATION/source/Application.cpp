@@ -92,7 +92,7 @@ void Application::SystemUpdate() {
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
 
-  shadowManager->Update();
+  //shadowManager->Update();
 
   // Animator
   TRACK_PERFORMANCE("Animation");
@@ -174,6 +174,7 @@ void Application::MainUpdate() {
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
     editorManager->Update();
+    shadowManager->Update();
     END_TRACK("Editor");
     if (!editorManager->IsScenePaused()) {
       GameStateManager::GetInstance()->Update(); // Game logic
@@ -181,6 +182,7 @@ void Application::MainUpdate() {
     }
 #else
     GameStateManager::GetInstance()->Update(); // Game logic
+    shadowManager->Update();
     SystemUpdate();
 
 #endif

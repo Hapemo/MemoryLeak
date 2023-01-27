@@ -12,3 +12,9 @@ C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\S
 C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
 C:\Users\yipxi\Desktop\Unity\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
+C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.dll
+C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.pdb
+C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
+C:\Users\h.weijhin\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
