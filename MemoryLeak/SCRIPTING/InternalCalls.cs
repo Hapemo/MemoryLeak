@@ -6,6 +6,12 @@ namespace BonVoyage
     public class InternalCalls
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool TestArgString(string _thingToPrint);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static string TestReturnString();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool CheckKeyPress(int _key);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
@@ -141,10 +147,10 @@ namespace BonVoyage
 		internal extern static void PlayBGSound(string _name, int _channel);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetPosX(string _entityName, string _sceneName);
+		internal extern static float GetPosX(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetPosY(string _entityName, string _sceneName);
+		internal extern static float GetPosY(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetPosX(string _entityName, string _sceneName, float _posX);
@@ -153,10 +159,10 @@ namespace BonVoyage
 		internal extern static void SetPosY(string _entityName, string _sceneName, float _posY);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetScaleX(string _entityName, string _sceneName);
+		internal extern static float GetScaleX(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetScaleY(string _entityName, string _sceneName);
+		internal extern static float GetScaleY(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetScaleX(string _entityName, string _sceneName, float _scaleX);
@@ -165,9 +171,27 @@ namespace BonVoyage
 		internal extern static void SetScaleY(string _entityName, string _sceneName, float _scaleY);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetRotate(string _entityName, string _sceneName);
+		internal extern static float GetRotate(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetRotate(string _entityName, string _sceneName, float _rotate);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool ButtonClicked(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool ButtonReleased(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool ButtonHover(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void UpdateText(string _entityName, string _sceneName, string _text);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetTextOffset(string _entityName, string _sceneName, float _xoffset, float _yoffset);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetLineCount(string _entityName, string _sceneName);
 	}
 }

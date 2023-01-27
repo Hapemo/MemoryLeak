@@ -194,6 +194,7 @@ void Application::MainUpdate() {
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
     editorManager->Update();
+    shadowManager->Update();
     END_TRACK("Editor");
     if (!editorManager->IsScenePaused()) {
       GameStateManager::GetInstance()->Update(); // Game logic
@@ -201,11 +202,12 @@ void Application::MainUpdate() {
     }
 #else
     GameStateManager::GetInstance()->Update(); // Game logic
+    shadowManager->Update();
     SystemUpdate();
 
 #endif
     static bool toggle{ false };
-    if (Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
+    if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
 
     TRACK_PERFORMANCE("Graphics");
     //--------------------- Drawing and rendering ---------------------

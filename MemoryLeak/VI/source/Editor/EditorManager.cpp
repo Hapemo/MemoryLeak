@@ -82,7 +82,7 @@ void EditorManager::Load(GLFWwindow* _window, int* _windowWidth, int* _windowHei
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-	//io.Fonts->AddFontFromFileTTF("ComicSans.ttf", 15.f);
+	io.Fonts->AddFontFromFileTTF("Montserrat-Regular.ttf", 15.f);
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init("#version 450");
@@ -200,8 +200,8 @@ void EditorManager::Update()
 	{
 		if(audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
 			audioManager->StopSound((int)E_AUDIO_CHANNEL::MAINBACKGROUND);
-		else if(!audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))
-			audioManager->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::EDITORSONG);
+		/*else if(!audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))
+			audioManager->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::EDITORSONG);*/
 
 	}
 	if (!isScenePaused && audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))//scene playing

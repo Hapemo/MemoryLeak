@@ -9,6 +9,7 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 *******************************************************************************/
 #include <FontManager.h>
 #include <sstream>
+#include <RenderProps.h>
 
 /*!*****************************************************************************
 \brief
@@ -24,7 +25,6 @@ mWindowWidth(0), mWindowHeight(0)
     mTextColorLocation = glGetUniformLocation(mFontProgram.GetID(), "textColor");
     mZValueLocation = glGetUniformLocation(mFontProgram.GetID(), "zValue");
     mMaxYSize = 0;
-    mCamZoom = 0;
     mInitialized = Init(fontfile);
 }
 /*!*****************************************************************************
@@ -136,7 +136,7 @@ Scale of the font.
 \param const Math::Vec3& _color
 Color of the font.
 *******************************************************************************/
-void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, int layer, float _width)
+void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, int layer, float _width, float camZoom)
 {
     if (!mInitialized) return;
     std::vector<std::string> strings;
@@ -154,7 +154,7 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
             width += mGlyphs[ch].size.x * scale;
         wordWidth.push_back(width);
     }
-    mParagraphs[layer].push_back(Paragraph(strings, wordWidth, _pos, scale, color, _width));
+    mParagraphs[layer].push_back(Paragraph(strings, wordWidth, _pos, scale, color, _width, camZoom));
 }
 /*!*****************************************************************************
 \brief
@@ -166,7 +166,7 @@ void FontRenderer::DrawParagraphs(int _layer)
     if (mParagraphs.find(_layer) == mParagraphs.end()) return;
     glm::mat4 _projection = glm::ortho(0.0f, (float) mWindowWidth, 0.0f, (float)mWindowHeight);
 
-    float layer = ((_layer + 1) * 2 - 255) / 255.f;
+    float layer = (_layer + 1 - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f) / ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
     layer = layer > 1.f ? 1.f : layer;
 
     for (Paragraph& para : mParagraphs[_layer])
@@ -185,7 +185,7 @@ void FontRenderer::DrawParagraphs(int _layer)
         for (size_t i = 0; i < para.words.size(); ++i)
         {
             currWidth += para.wordWidth[i];
-            if (i && currWidth > para.renderWidth *0.75f/ mCamZoom)
+            if (i && currWidth > para.renderWidth *0.6f/ para.camZoom)
             {
                 pos.x = initialX;
                 pos.y -= (mMaxYSize) * para.scale;
@@ -234,4 +234,40 @@ void FontRenderer::Clear()
 {
     //clear paragraph for next frame
     mParagraphs.clear();
+}
+
+int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float _width, float camZoom)
+{
+    if (!mInitialized) return 0;
+    std::vector<std::string> strings;
+    std::istringstream iss(text);
+    std::string intermediate;
+    while (std::getline(iss, intermediate, ' ')) {
+        strings.push_back(intermediate);
+    }
+    std::vector<float> wordWidth;
+    for (std::string& str : strings)
+    {
+        float width{};
+        str += " ";
+        for (char ch : str)
+            width += mGlyphs[ch].size.x * scale;
+        wordWidth.push_back(width);
+    }
+    
+    Paragraph para = Paragraph(strings, wordWidth, _pos, scale, color, _width, camZoom);
+
+    float currWidth{};
+    int lines = 1;
+    for (size_t i = 0; i < para.words.size(); ++i)
+    {
+        currWidth += para.wordWidth[i];
+        if (i && currWidth > para.renderWidth * 0.6f / para.camZoom)
+        {
+            ++lines;
+            currWidth = para.wordWidth[i];
+        }
+    }
+    return lines;
+
 }

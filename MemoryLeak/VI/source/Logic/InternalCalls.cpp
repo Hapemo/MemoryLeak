@@ -21,6 +21,19 @@ int* InternalCalls::windowHeight = nullptr;
 
 /*!*****************************************************************************
 \brief
+Test internal function for string.
+*******************************************************************************/
+void InternalCalls::TestArgString(MonoString* _thingToPrint) {
+	std::cout << "TestArgString: " << mono_string_to_utf8(_thingToPrint) << "\n";
+}
+
+MonoString* InternalCalls::TestReturnString() {
+	std::cout << "Calling internal call TestReturnString() success!\n";
+	return mono_string_new(mono_domain_get(), "Hello from TestReturnString()!");
+}
+
+/*!*****************************************************************************
+\brief
 Checks for the state of certain key
 \param STATE
 - State of the key pressed
@@ -653,4 +666,59 @@ Get rotation of an entity.
 *******************************************************************************/
 float InternalCalls::GetRotate(std::string const& _entityName, std::string const& _sceneName) {
 	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().rotation;
+}
+
+/*!*****************************************************************************
+\brief
+This is for checking holding down button.
+*******************************************************************************/
+bool InternalCalls::ButtonClickedByEntity(const Entity& _e) {
+	return _e.GetComponent<Button>().isClick;
+}
+bool InternalCalls::ButtonClicked(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Button>().isClick;
+}
+
+/*!*****************************************************************************
+\brief
+This is for checking button is released. Plays sound if there is audio attached to it.
+*******************************************************************************/
+bool InternalCalls::ButtonReleasedByEntity(const Entity& _e) {
+	return _e.GetComponent<Button>().activated;
+}
+bool InternalCalls::ButtonReleased(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Button>().activated;
+}
+
+/*!*****************************************************************************
+\brief
+This is for checking if button is hovered.
+*******************************************************************************/
+bool InternalCalls::ButtonHoverByEntity(const Entity& _e) {
+	return _e.GetComponent<Button>().isHover;
+}
+bool InternalCalls::ButtonHover(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Button>().isHover;
+}
+
+/*!*****************************************************************************
+\brief
+Changing text component text.
+*******************************************************************************/
+void InternalCalls::UpdateTextByEntity(const Entity& _e, std::string const& _text) {
+	_e.GetComponent<Text>().text = _text;
+}
+
+void InternalCalls::UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Text>().text = _text;
+}
+
+void InternalCalls::SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset)
+{
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Text>().offset = Math::Vec2(_xoffset, _yoffset);
+}
+
+int InternalCalls::GetLineCount(std::string const& _entityName, std::string const& _sceneName)
+{
+	return renderManager->GetTextLines((FUNC->GetEntity(_entityName, _sceneName)));
 }

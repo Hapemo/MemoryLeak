@@ -12,6 +12,7 @@ that lists the entities and its components in the scene
 #include "HierarchyPanel.h"
 #include <ECSManager.h>
 #include "GameStateManager.h"
+#include <RenderProps.h>
 
 /*!*****************************************************************************
 \brief
@@ -269,14 +270,17 @@ void HierarchyPanel::Update()
 									//	(*mGameStates)[g].mCamera.rotation = zoom;
 									//}
 									ImGui::InputInt("Layer", &((*mGameStates)[g].mScenes[s].mLayer));
-									if (ImGui::IsItemActive())
+									if (ImGui::IsItemDeactivatedAfterEdit())
 									{
-										(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
+										/*(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
 											: ((*mGameStates)[g].mScenes[s].mLayer > (int)(*mGameStates)[g].mScenes.size() ? (int)(*mGameStates)[g].mScenes.size()
+												: (*mGameStates)[g].mScenes[s].mLayer);*/
+										(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
+											: ((*mGameStates)[g].mScenes[s].mLayer > MAX_SCENE_LAYERS ? MAX_SCENE_LAYERS
 												: (*mGameStates)[g].mScenes[s].mLayer);
 									}
 									ImGui::InputInt("Order", &((*mGameStates)[g].mScenes[s].mOrder));
-									if (ImGui::IsItemActive())
+									if (ImGui::IsItemDeactivatedAfterEdit())
 									{
 										(*mGameStates)[g].mScenes[s].mOrder = (*mGameStates)[g].mScenes[s].mOrder < 0 ? 0
 											: ((*mGameStates)[g].mScenes[s].mOrder > (int)(*mGameStates)[g].mScenes.size() ? (int)(*mGameStates)[g].mScenes.size()

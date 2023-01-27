@@ -45,6 +45,7 @@ void AnimationPanel::Update()
 		
 		if (selectedEntity != nullptr)
 		{
+			animator->Animate();
 			Entity e = *selectedEntity;
 			if (e.HasComponent<Sprite>())
 			{
@@ -77,23 +78,19 @@ void AnimationPanel::Update()
 				}
 				else
 				{
-					ImGui::SetWindowFontScale(1.2f);
 					if (ImGui::Button("Add Animation Sheet Component", {viewSize.x/2.f, viewSize.y/2.f}))
 					{
 						e.AddComponent<SheetAnimation>({});
 					}
-					ImGui::SetWindowFontScale(1.0f);
 				}
 				if (!e.HasComponent<Animation>())
 				{
-					ImGui::SetWindowFontScale(1.2f);
 					if (ImGui::Button("Add Animation Component", { viewSize.x / 2.f, viewSize.y / 2.f }))
 					{
 						e.AddComponent<Animation>({});
 						if (e.HasComponent<Sprite>())
 							animator->AddImages(e, SpriteSheet{ e.GetComponent<Sprite>(safe).texture });
 					}
-					ImGui::SetWindowFontScale(1.0f);
 					if (animation_texture)
 					{
 						textureImage = (void*)(intptr_t)animation_texture;
@@ -131,13 +128,13 @@ void AnimationPanel::Update()
 						ImGui::SameLine();
 						ImGui::Text(("Sheet " + std::to_string(i)).c_str());
 					}
-					if (!isViewportPaused)
-					{
-						if (ImGui::IsWindowFocused())
-							animator->Animate();
-						else
-							isViewportPaused = true;
-					}
+					//if (!isViewportPaused)
+					//{
+						//if (ImGui::IsWindowFocused())
+							//animator->Animate();
+						//else
+							//isViewportPaused = true;
+					//}
 				}
 			}
 		}

@@ -22,11 +22,11 @@ Default Constructor for RenderManager class.
 *******************************************************************************/
 RenderManager::RenderManager()
 	: mAllocator(NO_OF_OBJECTS, VERTICES_PER_OBJECT, INDICES_PER_OBJECT),
-	mWorldFBO(), mGameFBO(), mAnimatorFBO(), 
+	mWorldFBO(), mGameFBO(), mAnimatorFBO(), mLightMapFBO(),
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
 	/*mMinimapProgram("shaders/texture.vert", "shaders/minimap.frag"),*/
-	mWindowHeight(nullptr), mWindowWidth(nullptr)/*, minimap(0)*/
+	mWindowHeight(nullptr), mWindowWidth(nullptr), lightsource(0)/*, minimap(0)*/
 {
 	//render world (editor)
 	mRenderGameToScreen = true;
@@ -43,7 +43,7 @@ RenderManager::RenderManager()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	InitializeShaders();
 	mDebug = false;
-	mRenderLayers.reserve(255);
+	mRenderLayers.reserve(MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 	mIsCurrSceneUI = false;
 }
 
@@ -67,6 +67,7 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mGameFBO.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
 	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
+	mLightMapFBO.Init(*mWindowWidth, *mWindowHeight);
 	mGameCam.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
 	mPrevWidth = *mWindowWidth;
@@ -94,10 +95,16 @@ void RenderManager::Render()
 		mWorldFBO.DeleteFBO();
 		mGameFBO.DeleteFBO();
 		mAnimatorFBO.DeleteFBO();
+		mLightMapFBO.DeleteFBO();
 		mWorldFBO.Init(*mWindowWidth, *mWindowHeight);
 		mGameFBO.Init(*mWindowWidth, *mWindowHeight);
 		mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
+		mLightMapFBO.Init(*mWindowWidth, *mWindowHeight);
 	}
+
+	if (shadowManager->CastShadows())
+		CreateLightMap();
+
 	if (!mRenderGameToScreen)
 		mCurrRenderPass == RENDER_STATE::GAME ? 
 		mGameFBO.Bind() : mWorldFBO.Bind();
@@ -136,14 +143,128 @@ void RenderManager::Render()
 	mDebugPoints.clear();
 	mDebugVertices.clear();
 	mDebugIndices.clear();
+	mLightVertices.clear();
+	mLightIndices.clear();
+
 	for (auto itr = mFontRenderers.begin(); itr != mFontRenderers.end(); ++itr)
 		itr->second.Clear();
-
 
 	//recursion for editor viewport
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		Render();
 	//minimap.id = 0;
+}
+
+void RenderManager::CreateLightMap()
+{
+	mLightMapFBO.Bind();
+	Color prevClearColor = mClearColor;
+	SetClearColor({ 0, 0, 0, 0 });
+	Clear();
+
+	CreateVisibilityPolygon(shadowManager->GetRayEndPoints());
+	RenderVisibilityPolygon();
+
+	SetClearColor(prevClearColor);
+	mLightMapFBO.Unbind();
+}
+
+void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices)
+{
+	if (!lightsource.id) return;
+	if (!lightsource.HasComponent<LightSource>()) return;
+	if (!_vertices.size()) return;
+
+	Vertex v0;
+	glm::vec4 clr{ 1.f, 1.f, 1.f, 0.01f };
+	Math::Mat3 mtx;
+
+	Math::Vec2 lightPos = lightsource.GetComponent<Transform>().translation 
+		+ lightsource.GetComponent<LightSource>().centerOffset;
+	mtx = GetTransform({ 0, 0 }, 0, lightPos);
+
+	v0.color = clr;
+	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
+	v0.texID = 0.f;
+	v0.position.z = 1.f;
+	mLightVertices.push_back(v0);
+
+	for (const Math::Vec2& vec : _vertices)
+	{
+		mtx = GetTransform({ 0, 0 }, 0, vec);
+		v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
+		v0.texID = 0.f;
+		v0.position.z = 1.f;
+		mLightVertices.push_back(v0);
+	}
+	mtx = GetTransform({ 0, 0 }, 0, _vertices[0]);
+	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
+	v0.texID = 0.f;
+	v0.position.z = 1.f;
+	mLightVertices.push_back(v0);
+
+	GLushort pivot = mLightIndices.empty() ? 0 : mLightIndices.back() + 1;
+
+	for (GLushort i = 0; i < _vertices.size(); ++i)
+	{
+		mLightIndices.push_back(pivot);
+		mLightIndices.push_back(pivot + 1 + i);
+		mLightIndices.push_back(pivot + 2 + i);
+	}
+
+	CreateShadows();
+}
+
+void RenderManager::CreateShadows()
+{
+	glm::vec4 clr{ 0.f, 0.f, 0.f, 0.5f };
+
+	Vertex v0, v1, v2, v3;
+
+	v0.position = Math::Vec3(-1.f, 1.f, 0.9f).ToGLM();
+	v0.color = clr;
+	v0.texID = 0.f;
+
+	v1.position = Math::Vec3(-1.f, -1.f, 0.9f).ToGLM();
+	v1.color = clr;
+	v1.texID = 0.f;
+
+	v2.position = Math::Vec3(1.f, 1.f, 0.9f).ToGLM();
+	v2.color = clr;
+	v2.texID = 0.f;
+
+	v3.position = Math::Vec3(1.f, -1.f, 0.9f).ToGLM();
+	v3.color = clr;
+	v3.texID = 0.f;
+
+	mLightVertices.push_back(v0);
+	mLightVertices.push_back(v1);
+	mLightVertices.push_back(v2);
+	mLightVertices.push_back(v3);
+
+	GLushort first = mLightIndices.empty() ? 0 : mLightIndices.back() + 1;
+	mLightIndices.push_back(first);
+	mLightIndices.push_back(first + 1);
+	mLightIndices.push_back(first + 2);
+	mLightIndices.push_back(first + 1);
+	mLightIndices.push_back(first + 2);
+	mLightIndices.push_back(first + 3);
+}
+
+void RenderManager::RenderVisibilityPolygon()
+{
+	if (mLightVertices.empty()) return;
+
+	//use normal program for drawing shapes
+	mDefaultProgram.Bind();
+	mAllocator.BindVAO();
+
+	//render all shapes
+	BatchRenderElements(GL_TRIANGLES, mLightVertices, mLightIndices);
+
+	//unuse VAO and normal program
+	mAllocator.UnbindVAO();
+	mDefaultProgram.Unbind();
 }
 
 /*!*****************************************************************************
@@ -157,7 +278,6 @@ Animator editor.
 *******************************************************************************/
 GLuint RenderManager::GetAnimatorFBO()
 {
-	animator->Animate();
 	RENDER_STATE prevState = mCurrRenderPass;
 	mCurrRenderPass = RENDER_STATE::ANIMATOR;
 	mAnimatorFBO.Bind();
@@ -179,6 +299,8 @@ GLuint RenderManager::GetAnimatorFBO()
 	mDebugPoints.clear();
 	mDebugVertices.clear();
 	mDebugIndices.clear();
+	mLightVertices.clear();
+	mLightIndices.clear();
 	mCurrRenderPass = prevState;
 
 	return mAnimatorFBO.GetColorAttachment();
@@ -355,6 +477,16 @@ void RenderManager::RenderDebug()
 				CreateDebugArrow(t, { 0, 255, 0, 255 });
 			}
 
+			if (e.HasComponent<ShadowCaster>() && e.GetComponent<ShadowCaster>().renderFlag)
+			{
+				Transform t = e.GetComponent<Transform>();
+				t.translation += e.GetComponent<ShadowCaster>().centerOffset;
+				t.scale.x *= e.GetComponent<ShadowCaster>().scaleOffset.x;
+				t.scale.y *= e.GetComponent<ShadowCaster>().scaleOffset.y;
+				t.rotation = 0;
+				CreateDebugSquare(t, { 50, 50, 50, 255 });
+			}
+
 			//check if sprite component itself is a debug drawing
 			if (!e.HasComponent<Sprite>()) continue;
 			switch (e.GetComponent<Sprite>().sprite)
@@ -379,7 +511,6 @@ void RenderManager::RenderDebug()
 			}
 		}
 	}
-
 
 	//make overlay for selected entities in the editor
 	for (const Entity& e : mEditorSelectedEntities)
@@ -471,6 +602,12 @@ void RenderManager::BatchRenderElements(GLenum _mode, const std::vector<Vertex>&
 	glDrawElements(_mode, static_cast<GLsizei>(_indices.size()), GL_UNSIGNED_SHORT, nullptr);
 }
 
+void RenderManager::NewLayer(int _layer)
+{
+	if (find(mRenderLayers.begin(), mRenderLayers.end(), _layer) == mRenderLayers.end())
+		mRenderLayers.push_back(_layer);
+}
+
 /*!*****************************************************************************
 \brief
 Creating vertices from the ECS.
@@ -479,6 +616,9 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 {
 	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
 	{
+		if (scene.mLayer > MAX_SCENE_LAYERS - 1)
+			continue;
+
 		if (scene.mIsPause) continue;
 
 		if (scene.mIsUI && mCurrRenderPass == RENDER_STATE::GAME)
@@ -489,8 +629,9 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		for (Entity e : scene.mEntities)
 		{
 			if (!e.GetComponent<General>().isActive) continue;
-			if (!e.ShouldRun()) 
-				continue;
+			if (!e.ShouldRun()) continue;
+			if (e.HasComponent<LightSource>())
+				lightsource = e;
 			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
 
 			if (e.HasComponent<Sprite>())
@@ -501,8 +642,8 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				//	continue;
 				//}
 				Sprite sprite = e.GetComponent<Sprite>();
-				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer) == mRenderLayers.end())
-					mRenderLayers.push_back(sprite.layer);
+				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
+					mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
 
 				switch (sprite.sprite)
 				{
@@ -512,20 +653,26 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 
 					if (texid != 0)
 					{
-						if (_texInfo.find(sprite.layer) == _texInfo.end())
-							_texInfo[sprite.layer] = std::map<GLuint, TextureInfo>();
-						if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
-							_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+						if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+						if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid) 
+							== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] = 
+						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-						CreateSquare(e, _texInfo[sprite.layer][texid].mVertices, _texInfo[sprite.layer][texid].mIndices);
+						CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, 
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
 					}
 				}
 				break;
 				case SPRITE::SQUARE:
-					CreateSquare(e, mVertices[sprite.layer], mIndices[sprite.layer]);
+					CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, 
+						mVertices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE],
+						mIndices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE]);
 					break;
 				case SPRITE::CIRCLE:
-					CreateCircle(e);
+					CreateCircle(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
 					break;
 				default:
 					break;
@@ -533,15 +680,75 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			}
 
 			if (!e.HasComponent<Text>()) continue;
-			CreateText(e);
+			if (e.HasComponent<Sprite>())
+			{
+				if (find(mRenderLayers.begin(), mRenderLayers.end(), e.GetComponent<Sprite>().layer + scene.mLayer * MAX_LAYERS_PER_SCENE) 
+					== mRenderLayers.end())
+					mRenderLayers.push_back(e.GetComponent<Sprite>().layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+				CreateText(e, e.GetComponent<Sprite>().layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+			}
+			else
+				CreateText(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		}
 	}
+	int shadowLayer = MAX_LAYERS_PER_SCENE * SHADOW_SCENE_LAYER;
+	if (find(mRenderLayers.begin(), mRenderLayers.end(), shadowLayer) == mRenderLayers.end())
+		mRenderLayers.push_back(shadowLayer);
+	if (_texInfo.find(shadowLayer) == _texInfo.end())
+		_texInfo[shadowLayer] = std::map<GLuint, TextureInfo>();
+	if (_texInfo[shadowLayer].find(mLightMapFBO.GetColorAttachment()) 
+		== _texInfo[shadowLayer].end())
+		_texInfo[shadowLayer][mLightMapFBO.GetColorAttachment()] =
+	{ (int)mLightMapFBO.GetColorAttachment() - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+	CreateLightFilter(shadowLayer, _texInfo[shadowLayer][mLightMapFBO.GetColorAttachment()].mVertices,
+		_texInfo[shadowLayer][mLightMapFBO.GetColorAttachment()].mIndices);
+
 	if (mCurrRenderPass == RENDER_STATE::WORLD)
 		CreateGizmo();
 
 	std::sort(mRenderLayers.begin(), mRenderLayers.end());
 }
+void RenderManager::CreateLightFilter(int _shadowLayer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
+{
+	float layer = (_shadowLayer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f)
+		/ ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
+	float texID = static_cast<float>(mLightMapFBO.GetColorAttachment());
 
+	Vertex v0, v1, v2, v3;
+	v0.position = Math::Vec3(-1.f, 1.f, 1.f).ToGLM();
+	v0.position.z = layer;
+	v0.texCoords = glm::vec2(0.f, 1.f);
+	v0.texID = texID;
+
+	v1.position = Math::Vec3(-1.f, -1.f, 1.f).ToGLM();
+	v1.position.z = layer;
+	v1.texCoords = glm::vec2(0.f, 0.f);
+	v1.texID = texID;
+
+	v2.position = Math::Vec3(1.f, 1.f, 1.f).ToGLM();
+	v2.position.z = layer;
+	v2.texCoords = glm::vec2(1.f, 1.f);
+	v2.texID = texID;
+
+	v3.position = Math::Vec3(1.f, -1.f, 1.f).ToGLM();
+	v3.position.z = layer;
+	v3.texCoords = glm::vec2(1.f, 0.f);
+	v3.texID = texID;
+
+	_vertices.push_back(v0);
+	_vertices.push_back(v1);
+	_vertices.push_back(v2);
+	_vertices.push_back(v3);
+
+	GLushort first = _indices.empty() ? 0 : _indices.back() + 1;
+	_indices.push_back(first);
+	_indices.push_back(first + 1);
+	_indices.push_back(first + 2);
+	_indices.push_back(first + 1);
+	_indices.push_back(first + 2);
+	_indices.push_back(first + 3);
+}
 void RenderManager::CreateVerticesAnimator(std::map<size_t, std::map<GLuint, TextureInfo>>& _texInfo)
 {
 	Entity e = mEditorSelectedEntities[0];
@@ -558,16 +765,16 @@ void RenderManager::CreateVerticesAnimator(std::map<size_t, std::map<GLuint, Tex
 				_texInfo[sprite.layer] = std::map<GLuint, TextureInfo>();
 			if (_texInfo[sprite.layer].find(texid) == _texInfo[sprite.layer].end())
 				_texInfo[sprite.layer][texid] = { (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
-
-			CreateSquare(e, _texInfo[sprite.layer][texid].mVertices, _texInfo[sprite.layer][texid].mIndices);
+			NewLayer(MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1);
+			CreateSquare(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1, _texInfo[MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1][texid].mVertices, _texInfo[MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1][texid].mIndices);
 		}
 	}
 	break;
 	case SPRITE::SQUARE:
-		CreateSquare(e, mVertices[sprite.layer], mIndices[sprite.layer]);
+		CreateSquare(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE - 1, mVertices[sprite.layer], mIndices[sprite.layer]);
 		break;
 	case SPRITE::CIRCLE:
-		CreateCircle(e);
+		CreateCircle(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		break;
 	default:
 		break;
@@ -674,10 +881,7 @@ void RenderManager::RenderText(int _layer)
 		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
 	for (auto i = mFontRenderers.begin(); i != mFontRenderers.end(); ++i)
 		if (i->second.IsInitialized())
-		{
-			i->second.SetCamZoom(currCam.GetZoom());
 			i->second.DrawParagraphs(_layer);
-		}
 }
 
 /*!*****************************************************************************
@@ -726,11 +930,11 @@ Vertices array for new vertices to be pushed to.
 \param std::vector<GLushort>& _indices
 Indices array for new indices to be pushed to.
 *******************************************************************************/
-void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
+void RenderManager::CreateSquare(const Entity& _e, int _layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
 {
 	Math::Mat3 mtx = GetTransform(_e);
 	glm::vec4 clr = GetColor(_e);
-	float layer = (_e.GetComponent<Sprite>().layer * 2 - 255) / 255.f;
+	float layer = (_layer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f)/ ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
 	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
 
 	float texMin{};
@@ -748,25 +952,25 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 
 	Vertex v0, v1, v2, v3;
 	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
-	v0.position.z = layer;
+	v0.position.z = layer > 1.f ? 1.f : layer;
 	v0.color = clr;
 	v0.texCoords = glm::vec2(texMin, 1.f);
 	v0.texID = texID;
 
 	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
-	v1.position.z = layer;
+	v1.position.z = layer > 1.f ? 1.f : layer;
 	v1.color = clr;
 	v1.texCoords = glm::vec2(texMin, 0.f);
 	v1.texID = texID;
 
 	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
-	v2.position.z = layer;
+	v2.position.z = layer > 1.f ? 1.f : layer;
 	v2.color = clr;
 	v2.texCoords = glm::vec2(texMax, 1.f);
 	v2.texID = texID;
 
 	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
-	v3.position.z = layer;
+	v3.position.z = layer > 1.f ? 1.f : layer;
 	v3.color = clr;
 	v3.texCoords = glm::vec2(texMax, 0.f);
 	v3.texID = texID;
@@ -784,7 +988,46 @@ void RenderManager::CreateSquare(const Entity& _e, std::vector<Vertex>& _vertice
 	_indices.push_back(first + 2);
 	_indices.push_back(first + 3);
 }
+void RenderManager::CreateSquare(const Transform& _xform, const Color& _clr, int _layer)
+{
+	Math::Mat3 mtx = GetTransform(_xform.scale, _xform.rotation, _xform.translation);
+	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
+	float layer = (_layer * 2 - 255) / 255.f;
 
+	Vertex v0, v1, v2, v3;
+	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
+	v0.position.z = layer > 1.f ? 1.f : layer;
+	v0.color = clr;
+	v0.texID = 0.f;
+
+	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
+	v1.position.z = layer > 1.f ? 1.f : layer;
+	v1.color = clr;
+	v1.texID = 0.f;
+
+	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
+	v2.position.z = layer > 1.f ? 1.f : layer;
+	v2.color = clr;
+	v2.texID = 0.f;
+
+	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
+	v3.position.z = layer > 1.f ? 1.f : layer;
+	v3.color = clr;
+	v3.texID = 0.f;
+
+	mVertices[_layer].push_back(v0);
+	mVertices[_layer].push_back(v1);
+	mVertices[_layer].push_back(v2);
+	mVertices[_layer].push_back(v3);
+
+	GLushort first = mIndices[_layer].empty() ? 0 : mIndices[_layer].back() + 1;
+	mIndices[_layer].push_back(first);
+	mIndices[_layer].push_back(first + 1);
+	mIndices[_layer].push_back(first + 2);
+	mIndices[_layer].push_back(first + 1);
+	mIndices[_layer].push_back(first + 2);
+	mIndices[_layer].push_back(first + 3);
+}
 /*!*****************************************************************************
 \brief
 Creates a circle based on Transform and Sprite Component.
@@ -792,10 +1035,9 @@ Creates a circle based on Transform and Sprite Component.
 \param const Entity& _e
 The entity containing Transform and Sprite component.
 *******************************************************************************/
-void RenderManager::CreateCircle(const Entity& _e)
+void RenderManager::CreateCircle(const Entity& _e, int layer)
 {
-	CreateCircle(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color, 
-		_e.GetComponent<Sprite>().layer);
+	CreateCircle(_e.GetComponent<Transform>(), _e.GetComponent<Sprite>().color, layer);
 }
 
 /*!*****************************************************************************
@@ -815,12 +1057,12 @@ void RenderManager::CreateCircle(const Transform& _xform, const Color& _clr, int
 {
 	Math::Mat3 mtx = GetTransform(_xform.scale, _xform.rotation, _xform.translation);
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
-	float layer = (_layer * 2 - 255) / 255.f;
+	float layer = (_layer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f) / ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
 
 	float theta = 2.f / CIRCLE_SLICES * 3.14159265f;
 	Vertex v0;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = layer;
+	v0.position.z = layer > 1.f ? 1.f : layer;
 	v0.color = clr;
 	v0.texID = 0.f;
 	mVertices[_layer].push_back(v0);
@@ -829,7 +1071,7 @@ void RenderManager::CreateCircle(const Transform& _xform, const Color& _clr, int
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = layer;
+		v.position.z = layer > 1.f ? 1.f : layer;
 		v.color = clr;
 		v.texID = 0.f;
 		mVertices[_layer].push_back(v);
@@ -878,7 +1120,7 @@ void RenderManager::CreateDebugPoint(const Transform& _t, const Color& _clr)
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
 	v0.texID = 0.f;
-	v0.position.z = 0.99f;
+	v0.position.z = 1.f;
 
 	mDebugPoints.push_back(v0);
 }
@@ -915,12 +1157,12 @@ void RenderManager::CreateDebugLine(const Transform& _t, const Color& _clr)
 	Vertex v0, v1;
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = 0.99f;
+	v0.position.z = 1.f;
 	v0.texID = 0.f;
 
 	v1.color = clr;
 	v1.position = (mtx * Math::Vec3(1.f, 0.f, 1.f)).ToGLM();
-	v1.position.z = 0.99f;
+	v1.position.z = 1.f;
 	v1.texID = 0.f;
 
 	mDebugVertices.push_back(v0);
@@ -961,22 +1203,22 @@ void RenderManager::CreateDebugSquare(const Transform& _t, const Color& _clr)
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
 	Vertex v0, v1, v2, v3;
 	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
-	v0.position.z = 0.95f;
+	v0.position.z = 1.f;
 	v0.color = clr;
 	v0.texID = 0.f;
 
 	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
-	v1.position.z = 0.95f;
+	v1.position.z = 1.f;
 	v1.color = clr;
 	v1.texID = 0.f;
 
 	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
-	v2.position.z = 0.95f;
+	v2.position.z = 1.f;
 	v2.color = clr;
 	v2.texID = 0.f;
 
 	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
-	v3.position.z = 0.95f;
+	v3.position.z = 1.f;
 	v3.color = clr;
 	v3.texID = 0.f;
 
@@ -1031,7 +1273,7 @@ void RenderManager::CreateDebugCircle(const Transform& _t, const Color& _clr)
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = 0.99f;
+		v.position.z = 1.f;
 		v.color = clr;
 		v.texID = 0.f;
 		mDebugVertices.push_back(v);
@@ -1243,6 +1485,7 @@ The color to be cleared with.
 *******************************************************************************/
 void RenderManager::SetClearColor(const Color& _clr)
 {
+	mClearColor = _clr;
 	glClearColor(_clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f);
 }
 /*!*****************************************************************************
@@ -1252,7 +1495,7 @@ Sends text into the FontManager to be rendered.
 \param const Entity& _e
 The entity with the Text component.
 *******************************************************************************/
-void RenderManager::CreateText(const Entity& _e)
+void RenderManager::CreateText(const Entity& _e, int _layer)
 {
 	static bool debug{ false };
 	Text text = _e.GetComponent<Text>();
@@ -1274,22 +1517,39 @@ void RenderManager::CreateText(const Entity& _e)
 				: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
 	cam.SetPos(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? Math::Vec2{ 0, 0 } : cam.GetPos());
 	cam.SetZoom(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? 1.f : cam.GetZoom());
-
-	int layer = 255;
-	if (!_e.HasComponent<Sprite>())
-	{
-		if (!debug)
-		{
-			LOG_ERROR("FontRenderer: Component does not contain sprite component! Text will be rendered at max layer!");
-			debug = !debug;
-		}
-	}
-	else
-		layer = _e.GetComponent<Sprite>().layer;
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation  - cam.GetPos() ) / cam.GetZoom() + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
-		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), layer, _e.GetComponent<Transform>().scale.x);
+		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), _layer, _e.GetComponent<Transform>().scale.x, cam.GetZoom());
+}
+
+int RenderManager::GetTextLines(Entity _e)
+{
+	Text text = _e.GetComponent<Text>();
+
+	std::string fileName = text.fontFile + ".ttf";
+
+	//check if font program already exisits, if not create one
+	if (mFontRenderers.find(fileName) == mFontRenderers.end())
+	{
+		mFontRenderers.emplace(fileName, fileName);
+		mFontRenderers[fileName].SetWindowPtr(mWindowWidth, mWindowHeight);
+	}
+
+	//add paragraph into font renderer
+	if (!mFontRenderers[fileName].IsInitialized())
+		return 0;
+
+	Camera cam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam
+		: mCurrRenderPass == RENDER_STATE::GAME ? mGameCam : mAnimatorCam;
+	cam.SetPos(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? Math::Vec2{ 0, 0 } : cam.GetPos());
+	cam.SetZoom(mCurrRenderPass == RENDER_STATE::GAME && mIsCurrSceneUI ? 1.f : cam.GetZoom());
+
+	return mFontRenderers[fileName].GetLineCount(text.text,
+		(text.offset + _e.GetComponent<Transform>().translation - cam.GetPos()) / cam.GetZoom() 
+		+ Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
+		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, 
+			text.color.b / 255.f), _e.GetComponent<Transform>().scale.x, cam.GetZoom());
 }
 
 /*!*****************************************************************************
@@ -1440,6 +1700,7 @@ The color of the circle.
 *******************************************************************************/
 void RenderManager::CreateGizmoCircle(const Transform& _t, const Color& _clr)
 {
+	NewLayer(255);
 	Math::Mat3 mtx = GetGizmoTransform(_t);
 	glm::vec4 clr = { _clr.r / 255.f, _clr.g / 255.f, _clr.b / 255.f, _clr.a / 255.f };
 
@@ -1489,12 +1750,12 @@ void RenderManager::CreateGizmoDebugLine(const Transform& _t, const Color& _clr)
 	Vertex v0, v1;
 	v0.color = clr;
 	v0.position = (mtx * Math::Vec3(0.f, 0.f, 1.f)).ToGLM();
-	v0.position.z = 0.99f;
+	v0.position.z = 1.f;
 	v0.texID = 0.f;
 
 	v1.color = clr;
 	v1.position = (mtx * Math::Vec3(1.f, 0.f, 1.f)).ToGLM();
-	v1.position.z = 0.99f;
+	v1.position.z = 1.f;
 	v1.texID = 0.f;
 
 	mDebugVertices.push_back(v0);
@@ -1526,7 +1787,7 @@ void RenderManager::CreateGizmoDebugCircle(const Transform& _t, const Color& _cl
 	{
 		Vertex v;
 		v.position = (mtx * Math::Vec3(cosf((i - 1) * theta), sinf((i - 1) * theta), 1.f)).ToGLM();
-		v.position.z = 0.99f;
+		v.position.z = 1.f;
 		v.color = clr;
 		v.texID = 0.f;
 		mDebugVertices.push_back(v);

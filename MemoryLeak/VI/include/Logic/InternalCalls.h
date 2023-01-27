@@ -12,6 +12,7 @@ is being stored.
 *******************************************************************************/
 
 #pragma once
+#include <mono/jit/jit.h>
 #include "Singleton.h"
 #include "Input.h"
 #include "vec2.h"
@@ -35,18 +36,10 @@ private:
 public:
 	/*!*****************************************************************************
 	\brief
-
-	Default constructor and destructor.
+	Test internal function for string.
 	*******************************************************************************/
-	InternalCalls() = default;
-	~InternalCalls() = default;
-
-	/*!*****************************************************************************
-	\brief
-	Delete copy constructor.
-	*******************************************************************************/
-	InternalCalls(const InternalCalls&) = delete;
-	const InternalCalls& operator=(const InternalCalls&) = delete;
+	static void TestArgString(MonoString* _thingToPrint);
+	static MonoString* TestReturnString();
 
 	/*!*****************************************************************************
 	\brief
@@ -517,4 +510,35 @@ public:
 	Set rotation of an entity.
 	*******************************************************************************/
 	static void SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate);
+
+	/*!*****************************************************************************
+	\brief
+	This is for checking holding down button.
+	*******************************************************************************/
+	static bool ButtonClickedByEntity(const Entity& _e);
+	static bool ButtonClicked(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	This is for checking button is released. Plays sound if there is audio attached to it.
+	*******************************************************************************/
+	static bool ButtonReleasedByEntity(const Entity& _e);
+	static bool ButtonReleased(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	This is for checking if button is hovered.
+	*******************************************************************************/
+	static bool ButtonHoverByEntity(const Entity& _e);
+	static bool ButtonHover(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Changing text component text.
+	*******************************************************************************/
+	static void UpdateTextByEntity(const Entity& _e, std::string const& _text);
+	static void UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text);
+	static void SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset);
+	static int GetLineCount(std::string const& _entityName, std::string const& _sceneName);
+
 };

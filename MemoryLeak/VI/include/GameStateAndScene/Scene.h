@@ -84,7 +84,7 @@ public:
 	bool mIsPause=true;											// Paused state of the scene
 	std::string mName="";
 	//Transform mCamera{};
-	bool mIsUI;
+	bool mIsUI = false;
 	int mLayer=0;
 	int mOrder=0;
 
