@@ -1032,7 +1032,7 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
+                "X": 100.0,
                 "Y": 0.0
             },
             "scaleOffset": {

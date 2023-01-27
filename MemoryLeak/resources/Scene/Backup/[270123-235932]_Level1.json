@@ -1032,7 +1032,7 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
+                "X": 100.0,
                 "Y": 0.0
             },
             "scaleOffset": {
@@ -2119,8 +2119,8 @@
                 "b": 123,
                 "a": 0
             },
-            "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "sprite": 2,
+            "texture": "Textures\\Icons\\dialogueIcon.png",
             "layer": 1
         },
         "RectCollider": {
