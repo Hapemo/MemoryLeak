@@ -185,7 +185,7 @@ void FontRenderer::DrawParagraphs(int _layer)
         for (size_t i = 0; i < para.words.size(); ++i)
         {
             currWidth += para.wordWidth[i];
-            if (i && currWidth > para.renderWidth *0.75f/ para.camZoom)
+            if (i && currWidth > para.renderWidth *0.6f/ para.camZoom)
             {
                 pos.x = initialX;
                 pos.y -= (mMaxYSize) * para.scale;
