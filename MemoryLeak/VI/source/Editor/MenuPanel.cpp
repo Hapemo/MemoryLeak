@@ -233,8 +233,9 @@ void MenuPanel::Update()
 			{
 				for (std::string song : audioManager->GetSongs())
 				{
-					if (ImGui::MenuItem(song.c_str()))
+					if (ImGui::MenuItem(song.c_str())) {
 						audioManager->PlayBGSound(song, (int)E_AUDIO_CHANNEL::EDITORSONG);
+					}
 				}
 				ImGui::EndMenu();
 			}

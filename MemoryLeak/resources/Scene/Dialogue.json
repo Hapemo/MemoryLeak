@@ -213,7 +213,7 @@
         "Transform": {
             "scale": {
                 "X": 660.0,
-                "Y": 200.0
+                "Y": 135.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1257,7 +1257,7 @@
             "text": "These are called sea conches, and are known to store important memories of the past. We will meet again...",
             "offset": {
                 "X": -429.0,
-                "Y": 31.0
+                "Y": 48.0
             },
             "scale": 1.0,
             "color": {
@@ -1288,8 +1288,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -325.0,
-                "Y": -370.0
+                "X": -380.88800048828125,
+                "Y": -406.39752197265625
             }
         },
         "Sprite": {
@@ -1318,8 +1318,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -635.0,
-                "Y": -315.0
+                "X": -678.9439697265625,
+                "Y": -347.88818359375
             }
         },
         "Sprite": {
@@ -1346,8 +1346,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 760.0,
-                "Y": 240.0
+                "X": 766.0,
+                "Y": 246.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1380,6 +1380,228 @@
                 "b": 255,
                 "a": 255
             }
+        }
+    },
+    {
+        "General": {
+            "name": "minimap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 270.0,
+                "Y": 270.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 630.0,
+                "Y": -290.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\minimap.png",
+            "layer": 63
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "enemymap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 280.5,
+                "Y": 280.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 630.0,
+                "Y": -290.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 63
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "weathermap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 280.5,
+                "Y": 280.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 630.0,
+                "Y": -290.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 23,
+                "g": 255,
+                "b": 115,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 63
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "cyclemap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 80.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 442.8985900878906,
+                "Y": -382.6086730957031
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 23,
+                "g": 255,
+                "b": 115,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 63
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "minimapbig",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 906.0,
+                "Y": 906.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 60.0,
+                "Y": 40.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 63
+        }
+    },
+    {
+        "General": {
+            "name": "enemymapbig",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 904.5,
+                "Y": 904.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 60.0,
+                "Y": 40.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 63
+        }
+    },
+    {
+        "General": {
+            "name": "weathhermapbig",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 904.5,
+                "Y": 904.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 60.0,
+                "Y": 40.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 63
         }
     }
 ]

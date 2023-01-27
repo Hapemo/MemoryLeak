@@ -540,6 +540,10 @@ namespace BonVoyage
                 }
             }
             #endregion
+
+            #region Crystalball
+
+            #endregion
         }
 
         public void LockPosition(float x, float y)
@@ -553,12 +557,16 @@ namespace BonVoyage
             InternalCalls.EntityDeactivate("hpbar", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragment", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
+            InternalCalls.EntityDeactivate("cyclemap", "Dialogue");
+            InternalCalls.EntityDeactivate("minimap", "Dialogue");
         }
 
         public void EnableUI()
         {
             InternalCalls.EntityActivate("hpbar", "Dialogue");
             InternalCalls.EntityActivate("memoryfragment", "Dialogue");
+            InternalCalls.EntityActivate("cyclemap", "Dialogue");
+            InternalCalls.EntityActivate("minimap", "Dialogue");
         }
 
         public void Exit()
