@@ -7,7 +7,6 @@ namespace BonVoyage
     {
         private bool starttalking;
         private int currentdialogueid;
-        private int clickcount;
 
         public void Init()
         {
@@ -66,14 +65,13 @@ namespace BonVoyage
             //InternalCalls.UpdateText("I2", "Dialogue", InternalCalls.GetDialogue(currentdialogueid));
 
             */
-
             #endregion
 
             #region Intro Dialogue
             if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1")) {
                 LockPosition(160, 120);
 
-                if (!starttalking) {
+                if (!starttalking && InternalCalls.EntityIsActive("IntroBox", "Level1")) {
                     DisableUI();
                     if (InternalCalls.EntityIsActive("I2", "Dialogue") == false) {
                         InternalCalls.EntityActivate("I1", "Dialogue");
@@ -104,7 +102,7 @@ namespace BonVoyage
             {
                 LockPosition(-295, -85);
 
-                if (!starttalking)
+                if (!starttalking && InternalCalls.EntityIsActive("LittleGirlBox", "Level1"))
                 {
                     DisableUI();
                     if (InternalCalls.EntityIsActive("G2", "Dialogue") == false
@@ -319,7 +317,7 @@ namespace BonVoyage
             {
                 LockPosition(-1240, 670);
 
-                if (!starttalking)
+                if (!starttalking && InternalCalls.EntityIsActive("PassengerBox", "Level1"))
                 {
                     DisableUI();
                     if (InternalCalls.EntityIsActive("G2", "Dialogue") == false
