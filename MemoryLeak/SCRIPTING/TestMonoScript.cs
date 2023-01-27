@@ -86,6 +86,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("I1", "Dialogue");
                     InternalCalls.EntityActivate("I2", "Dialogue");
                     InternalCalls.UpdateText("I2", "Dialogue", "Maybe that girl knows...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("I2", "Dialogue")) == true) {
@@ -219,6 +220,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G5", "Dialogue");
                     InternalCalls.EntityActivate("G8", "Dialogue");
                     InternalCalls.UpdateText("G8", "Dialogue", "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("G8", "Dialogue")) == true)
@@ -244,6 +246,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G5", "Dialogue");
                     InternalCalls.EntityActivate("G9", "Dialogue");
                     InternalCalls.UpdateText("G9", "Dialogue", "We're currently at Cordelia! It's said this place holds special memories, so explore around! We will meet again...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("G9", "Dialogue")) == true)
@@ -271,6 +274,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G7", "Dialogue");
                     InternalCalls.EntityActivate("G10", "Dialogue");
                     InternalCalls.UpdateText("G10", "Dialogue", "So you remember the sea conches! Don't forget them now! We will meet again...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("G10", "Dialogue")) == true)
@@ -296,6 +300,7 @@ namespace BonVoyage
                     InternalCalls.EntityDeactivate("G7", "Dialogue");
                     InternalCalls.EntityActivate("G11", "Dialogue");
                     InternalCalls.UpdateText("G11", "Dialogue", "These are called sea conches, and are known to store important memories of the past. We will meet again...");
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
                 }
 
                 if ((InternalCalls.ButtonReleased("G11", "Dialogue")) == true)
@@ -542,7 +547,79 @@ namespace BonVoyage
             #endregion
 
             #region Crystalball
+            
+            if ((InternalCalls.ButtonReleased("cyclemap", "Dialogue")) == true)
+            {
+                if (InternalCalls.EntityIsActive("minimap", "Dialogue"))
+                {
+                    InternalCalls.EntityDeactivate("minimap", "Dialogue");
+                    InternalCalls.EntityActivate("enemymap", "Dialogue");
 
+                    if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue"))
+                    {
+                        InternalCalls.EntityActivate("enemymapbig", "Dialogue");
+                        InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
+                        InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
+                    }
+                }
+
+                else if (InternalCalls.EntityIsActive("enemymap", "Dialogue"))
+                {
+                    InternalCalls.EntityDeactivate("enemymap", "Dialogue");
+                    InternalCalls.EntityActivate("weathermap", "Dialogue");
+
+                    if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue"))
+                    {
+                        InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
+                        InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
+                        InternalCalls.EntityActivate("weathermapbig", "Dialogue");
+                    }
+                }
+
+                else if (InternalCalls.EntityIsActive("weathermap", "Dialogue"))
+                {
+                    InternalCalls.EntityDeactivate("weathermap", "Dialogue");
+                    InternalCalls.EntityActivate("minimap", "Dialogue");
+
+                    if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue"))
+                    {
+                        InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
+                        InternalCalls.EntityActivate("minimapbig", "Dialogue");
+                        InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
+                    }
+                }
+            }
+            #endregion
+
+            #region Big Maps
+            if ((InternalCalls.ButtonReleased("minimap", "Dialogue")) == true) {
+                if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") == false) {
+                    InternalCalls.EntityActivate("minimapbig", "Dialogue");
+                }
+                else {
+                    InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
+                }
+            }
+
+            if ((InternalCalls.ButtonReleased("enemymap", "Dialogue")) == true)
+            {
+                if (InternalCalls.EntityIsActive("enemymapbig", "Dialogue") == false) {
+                    InternalCalls.EntityActivate("enemymapbig", "Dialogue");
+                }
+                else {
+                    InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
+                }
+            }
+
+            if ((InternalCalls.ButtonReleased("weathermap", "Dialogue")) == true)
+            {
+                if (InternalCalls.EntityIsActive("weathermapbig", "Dialogue") == false) {
+                    InternalCalls.EntityActivate("weathermapbig", "Dialogue");
+                }
+                else {
+                    InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
+                }
+            }
             #endregion
         }
 
@@ -557,26 +634,32 @@ namespace BonVoyage
             InternalCalls.EntityDeactivate("hpbar", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragment", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
+
             InternalCalls.EntityDeactivate("cyclemap", "Dialogue");
+
             InternalCalls.EntityDeactivate("minimap", "Dialogue");
+            InternalCalls.EntityDeactivate("enemymap", "Dialogue");
+            InternalCalls.EntityDeactivate("weathermap", "Dialogue");
+
+            InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
+            InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
+            InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
+
+            InternalCalls.EntityDeactivate("weathertext", "Dialogue");
+            InternalCalls.EntityDeactivate("objectivetext", "Dialogue");
         }
 
         public void EnableUI()
         {
             InternalCalls.EntityActivate("hpbar", "Dialogue");
             InternalCalls.EntityActivate("memoryfragment", "Dialogue");
+
             InternalCalls.EntityActivate("cyclemap", "Dialogue");
+
             InternalCalls.EntityActivate("minimap", "Dialogue");
-        }
 
-        public void Exit()
-        {
-            Console.WriteLine("Exiting...");
-        }
-
-        public void ClickCheck()
-        {
-            if (InternalCalls.CheckKeyRelease(349)) { clickcount++; } //left click
+            InternalCalls.EntityActivate("weathertext", "Dialogue");
+            InternalCalls.EntityActivate("objectivetext", "Dialogue");
         }
 
         public void CameraZoomIn()

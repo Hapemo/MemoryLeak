@@ -1846,7 +1846,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost4_SE_Idle_Spritesheet.png",
-            "layer": 16
+            "layer": 13
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -1882,7 +1882,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost3_SE_Idle_Spritesheet.png",
-            "layer": 63
+            "layer": 13
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -1918,7 +1918,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost6_SE_Idle_Spritesheet.png",
-            "layer": 64
+            "layer": 13
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -1954,7 +1954,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 65
+            "layer": 13
         },
         "SheetAnimation": {
             "frameCount": 8,
