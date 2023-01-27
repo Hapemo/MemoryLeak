@@ -10,7 +10,7 @@ This file contains function definations for a Performance Panel Editor system th
 *******************************************************************************/
 #include "PerformancePanel.h"
 #include <ECSManager.h>
-#define MaxSystem 8
+#define MaxSystem 10
 #define MaxData 16
 /*!*****************************************************************************
 \brief

@@ -102,9 +102,13 @@ void Application::SystemUpdate() {
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
 
+  TRACK_PERFORMANCE("Collision");
+  collision2DManager->Update(FPSManager::dt);
+  END_TRACK("Collision");
+
   // Layer
   TRACK_PERFORMANCE("Layer");
-  layerManager->Update();
+  //layerManager->Update();
   END_TRACK("Layer");
 
   // Animator
@@ -126,6 +130,7 @@ void Application::init() {
 
   GameStateManager::GetInstance()->Init();
 
+  // Set up quadtree after scene entities have been loaded
   collision2DManager->SetupQuadTree();
 
 #ifdef NDEBUG

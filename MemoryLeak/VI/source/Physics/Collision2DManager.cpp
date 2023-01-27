@@ -402,6 +402,17 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 	mCollisionDatabase[static_cast<int>(typeA)][static_cast<int>(typeB)] = function;
 }
 
+void Collision2DManager::Update(const double& _dt) {
+	mAccumulatedDT += _dt;
+
+	if (mAccumulatedDT > mAccumulatedDTCap)
+		mAccumulatedDT = mAccumulatedDTCap;
+
+	while (mAccumulatedDT >= mFixedDT) {
+		ResolveCollisions(mFixedDT);
+		mAccumulatedDT -= mFixedDT;
+	}
+}
 
 void Collision2DManager::ResolveCollisions(const double& _dt) {
 	// Reset contact list every fixed update
@@ -516,6 +527,10 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 	//	}
 	//}
 
+	// Update Tree 
+	GetQuadTree().UpdateDimensions(mEntities);
+	GetQuadTree().UpdateQuadTree(mEntities);
+
 	mPossibleContactList = mQuadTree.FindAllIntersections();
 	for (const std::pair<Entity, Entity>& possibleContactPair : mPossibleContactList) {
 		if (!HasCollider(possibleContactPair.first) || !HasCollider(possibleContactPair.second))
@@ -544,7 +559,7 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		// If it returns true, means collision occurred
 		if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt, false)) {
 			mContactList.emplace_back(contact);
-			//LOG_INFO("Collision Detected\n");
+			LOG_INFO("Collision Detected\n");
 		}
 	}
 }
@@ -790,6 +805,10 @@ void Collision2DManager::PositionCorrection(Contact& _contact) {
 			_contact.obj[1].GetComponent<Transform>().translation += correction * (1.f / _contact.obj[1].GetComponent<Physics2D>().mass);
 }
 
+QuadTree& Collision2DManager::GetQuadTree() {
+	return this->mQuadTree;
+}
+
 void Collision2DManager::SetupQuadTree() {
 	LOG_INFO("Initializing QuadTree...");
 
@@ -817,10 +836,9 @@ void Collision2DManager::SetupQuadTree() {
 	}
 
 	mQuadTree = QuadTree(QuadBox((worldMax + worldMin) / 2.f, 
-								 (worldMax - worldMin)));
+								 (worldMax - worldMin) * 2.f));
 
-	for (const auto& _entity : mEntities)
-		mQuadTree.AddNode(_entity);
+	mQuadTree.UpdateQuadTree(mEntities);
 
 	LOG_INFO("QuadTree Initialized");
 }

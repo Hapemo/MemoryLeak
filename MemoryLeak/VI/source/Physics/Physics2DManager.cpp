@@ -20,27 +20,27 @@ void Physics2DManager::Update(const double& _appDT) {
 
 	// Input stepping mode check
 	if (Input::CheckKey(E_STATE::PRESS, E_KEY::GRAVE_ACCENT) && (Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT) || Input::CheckKey(E_STATE::HOLD, E_KEY::RIGHT_SHIFT)))
-		Physics2DManager::mStepMode = !Physics2DManager::mStepMode;
+		mStepMode = !mStepMode;
 
 	// Input stepping mode to step
 	if (Input::CheckKey(E_STATE::PRESS, E_KEY::GRAVE_ACCENT))	// To shift into else block indicating step mode
-		Physics2DManager::mAdvanceStep = true;
+		mAdvanceStep = true;
 
 
 	// Check if system is not in step mode
-	if (!Physics2DManager::mStepMode) {
+	if (!mStepMode) {
 		// Increment accumulatedDT by the application's DT
-		Physics2DManager::mAccumulatedDT += _appDT;
+		mAccumulatedDT += _appDT;
 
 		// Prevent spiral of death
-		if (Physics2DManager::mAccumulatedDT > Physics2DManager::mAccumulatedDTCap)
-			Physics2DManager::mAccumulatedDT = Physics2DManager::mAccumulatedDTCap;
+		if (mAccumulatedDT > mAccumulatedDTCap)
+			mAccumulatedDT = mAccumulatedDTCap;
 
 		// If the accumlatedDT is larger than or equal to the defined fixedDT,
 		//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
-		while (Physics2DManager::mAccumulatedDT >= Physics2DManager::mFixedDT) {
+		while (mAccumulatedDT >= mFixedDT) {
 			Step(mFixedDT);
-			Physics2DManager::mAccumulatedDT -= Physics2DManager::mFixedDT;
+			mAccumulatedDT -= mFixedDT;
 		}
 	}
 	// In step mode
@@ -114,9 +114,15 @@ void Physics2DManager::Step(const double& _stepDT) {
 			e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(e) * _stepDT);
 
 			// Check if object exits the quadtree bounds
+			//if (!collision2DManager->GetQuadTree().GetBox().Contains(QuadBox(e))) {
+			//	// Resize QuadTree dimensions
 
+			//	// Reinsert all entities
+
+			//}
+			
 			// Update entity in quad tree
-			collision2DManager->UpdateEntityInQuadTree(e);
+			//collision2DManager->UpdateEntityInQuadTree(e);
 		}
 
 		// Clamp rotation
@@ -133,7 +139,7 @@ void Physics2DManager::Step(const double& _stepDT) {
 	if (mFirstUpdate)
 		mFirstUpdate = false;
 
-	collision2DManager->ResolveCollisions(_stepDT);
+	//collision2DManager->ResolveCollisions(_stepDT);
 }
 
 //void Physics2DManager::UpdatePosition(const Entity& _e) {

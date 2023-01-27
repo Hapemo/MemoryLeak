@@ -56,16 +56,32 @@ public:
 		return _mCenter;
 	}
 
+	void SetCenter(const Math::Vec2& _newCenter) {
+		_mCenter = _newCenter;
+	}
+
 	Math::Vec2 GetScale() const {
 		return _mScale;
+	}
+
+	void SetScale(const Math::Vec2& _newScale) {
+		_mScale = _newScale;
 	}
 
 	Math::Vec2 GetCenterOffset() const {
 		return _mCenterOffset;
 	}
 
+	void SetCenterOffset(const Math::Vec2& _newCenterOffset) {
+		_mCenterOffset = _newCenterOffset;
+	}
+
 	Math::Vec2 GetScaleOffset() const {
 		return _mScaleOffset;
+	}
+
+	void SetScaleOffset(const Math::Vec2& _newScaleOffset) {
+		_mScaleOffset = _newScaleOffset;
 	}
 
 	Math::Vec2 GetTopLeft() const {
@@ -127,6 +143,69 @@ public:
 		return !static_cast<bool>(_node->child[0]);
 	}
 
+	void ClearQuadTree(QuadNode* _node) {
+		if (isLeaf(_node)) 
+			_node->values.clear();
+		else {
+			for (size_t i{ 0 }; i < _node->child.size(); ++i) {
+				ClearQuadTree(_node->child[i].get());
+				_node->child[i].reset();
+			}
+		}
+	}
+
+	void ClearQuadTree() {
+		ClearQuadTree(_mRoot.get());
+		_mRoot.get()->values.clear();
+	}
+
+	void UpdateDimensions(const std::set<Entity>& _entitySet) {
+		Math::Vec2 worldMin{}, worldMax{};
+		for (const auto& _entity : _entitySet) {
+			if (!_entity.ShouldRun())
+				continue;
+					
+			Math::Vec2 _entityPos{ _entity.GetComponent<Transform>().translation }, _entityScale{ _entity.GetComponent<Transform>().scale };
+			if (_entity.HasComponent<RectCollider>()) {
+				_entityPos += _entity.GetComponent<RectCollider>().centerOffset;
+				_entityScale.x *= _entity.GetComponent<RectCollider>().scaleOffset.x;
+				_entityScale.y *= _entity.GetComponent<RectCollider>().scaleOffset.y;
+			}
+			else if (_entity.HasComponent<CircleCollider>()) {
+				_entityPos += _entity.GetComponent<CircleCollider>().centerOffset;
+				_entityScale *= _entity.GetComponent<CircleCollider>().scaleOffset;
+			}
+			_entityScale.x = fabs(_entityScale.x);
+			_entityScale.y = fabs(_entityScale.y);
+			Math::Vec2 _entityMax{ _entityPos + _entityScale / 2.f }, _entityMin{ _entityPos - _entityScale / 2.f };
+
+			worldMax.x = std::max(_entityMax.x, worldMax.x);
+			worldMax.y = std::max(_entityMax.y, worldMax.y);
+
+			worldMin.x = std::min(_entityMin.x, worldMin.x);
+			worldMin.y = std::min(_entityMin.y, worldMin.y);
+		}
+
+		QuadBox dimension{ (worldMax + worldMin) / 2.f,
+							(worldMax - worldMin) * 2.f };
+
+		if (!_mQuadBox.Contains(dimension)) {
+			_mQuadBox.SetCenter(dimension.GetCenter());
+			_mQuadBox.SetScale(dimension.GetScale());
+			_mQuadBox.SetCenterOffset(dimension.GetCenterOffset());
+			_mQuadBox.SetScaleOffset(dimension.GetScaleOffset());
+		}
+	}
+
+	void UpdateQuadTree(const std::set<Entity>& _entitySet) {
+		ClearQuadTree();
+
+		for (auto const& _entity : _entitySet) {
+			if (_entity.ShouldRun())
+				AddNode(_entity);
+		}
+	}
+
 	void AddNode(QuadNode* _node, size_t _depth, const QuadBox& _box, const Entity& _entity) {
 		//ASSERT(_node != nullptr);
 		//ASSERT(_box.Contains(mGetBox(_entity));
@@ -134,7 +213,7 @@ public:
 		if (isLeaf(_node)) {
 			// Insert the value in this node if possbile
 			if (_depth >= MaxDepth || _node->values.size() < Threshold)
-				_node->values.push_back(_entity);
+				_node->values.emplace_back(_entity);
 			// Otherwise spilt and try again
 			else {
 				Spilt(_node, _box);
@@ -147,7 +226,7 @@ public:
 			if (i != -1)
 				AddNode(_node->child[i].get(), _depth + 1, ComputeQuadrantDimensions(_box, i), _entity);
 			else
-				_node->values.push_back(_entity);
+				_node->values.emplace_back(_entity);
 		}
 	}
 
@@ -323,7 +402,7 @@ public:
 			QuadBox entityBox{entity};
 			auto i{ GetQuadrant(_box, entityBox) };
 			if (i != -1)
-				_node->child[i]->values.push_back(entity);
+				_node->child[i]->values.emplace_back(entity);
 			else
 				initialValues.emplace_back(entity);
 		}
@@ -363,7 +442,7 @@ public:
 			// Merge the values of all the child
 			for (const auto& child : _node->child){
 				for (const auto& entity : child->values)
-					_node->values.push_back(entity);
+					_node->values.emplace_back(entity);
 			}
 			// Remove the child
 			for (auto& child : _node->child)
@@ -372,5 +451,17 @@ public:
 		}
 		else
 			return false;
+	}
+
+	void InOrderPrint(QuadNode* _node) {
+		if (_node != nullptr) {
+			InOrderPrint(_node->child[0].get());
+			InOrderPrint(_node->child[1].get());
+			for (size_t i{ 0 }; i < _node->values.size(); ++i)
+				std::cout << _node->values[i].id << " ";
+			InOrderPrint(_node->child[2].get());
+			InOrderPrint(_node->child[3].get());
+		}
+		std::cout << std::endl;
 	}
 };

@@ -135,6 +135,8 @@ public:
 	*******************************************************************************/
 	void RegisterCollisionTest(const ColliderType& typeA, const ColliderType& typeB, CollisionCallback function);
 
+	void Update(const double& _dt);
+
 	/*!*****************************************************************************
 	\brief
 	ResolveCollisions function that calls the different system functions in order to
@@ -207,6 +209,8 @@ public:
 	*******************************************************************************/
 	void PositionCorrection(Contact& _contact);
 
+	QuadTree& GetQuadTree();
+
 	void SetupQuadTree();
 
 	void UpdateEntityInQuadTree(const Entity& _e);
@@ -223,4 +227,9 @@ private:
 
 	const float	penAllowance{ 0.01f },		// Penetration allowance
 				penPercentage{ 2.0f };		// Penetration percentage to correct
+
+	double mAccumulatedDT{ 0.0 };					// Member variable storing accumulatedDT
+	const double mFixedDT{ 1.0 / 60.0 };			// Fixed delta time step of 1/60 steps a second
+	const double mAccumulatedDTCap{ 1.0 };			// Accumulated cannot store more than 1 second worth of updates
+
 };
