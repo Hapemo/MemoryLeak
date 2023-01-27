@@ -187,5 +187,11 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void UpdateText(string _entityName, string _sceneName, string _text);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetTextOffset(string _entityName, string _sceneName, float _xoffset, float _yoffset);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetLineCount(string _entityName, string _sceneName);
 	}
 }

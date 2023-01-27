@@ -164,6 +164,14 @@ void MonoMethods::UpdateText(MonoString* _entityName, MonoString* _sceneName, Mo
 	FUNC->UpdateText(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), MONO->ConvertFromMonoString(_text));
 }
 
+void MonoMethods::SetTextOffset(MonoString* _entityName, MonoString* _sceneName, float _xoffset, float _yoffset) {
+	FUNC->SetTextOffset(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _xoffset, _yoffset);
+}
+
+int MonoMethods::GetLineCount(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->GetLineCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
 /*!*****************************************************************************
 \brief
 Checks for the state of certain key
@@ -236,4 +244,6 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::ButtonReleased", &MonoMethods::ButtonReleased);
 	mono_add_internal_call("BonVoyage.InternalCalls::ButtonHover", &MonoMethods::ButtonHover);
 	mono_add_internal_call("BonVoyage.InternalCalls::UpdateText", &MonoMethods::UpdateText);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetTextOffset", &MonoMethods::SetTextOffset);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetLineCount", &MonoMethods::GetLineCount);
 }
