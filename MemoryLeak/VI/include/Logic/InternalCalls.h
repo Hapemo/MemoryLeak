@@ -29,10 +29,6 @@ struct Transform;
 #define FUNC InternalCalls::GetInstance()
 
 class InternalCalls : public Singleton<InternalCalls> {
-private:
-	static int* windowWidth;
-	static int* windowHeight;
-
 public:
 	/*!*****************************************************************************
 	\brief
@@ -425,13 +421,6 @@ public:
 	Gets the delta time in double.
 	*******************************************************************************/
 	static double GetDeltaTime();
-
-	/*!*****************************************************************************
-	\brief
-	Initialise the window width and height of the application using pointer.
-	Should be called in application's init
-	*******************************************************************************/
-	static void InitScriptWindow(int* _windowWidth, int* _windowHeight);
 
 	/*!*****************************************************************************
 	\brief

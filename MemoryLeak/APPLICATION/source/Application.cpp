@@ -46,7 +46,6 @@ void Application::SystemInit() {
   audioManager->Init();
   //aiManager->weatherAIinit();
   
-  InternalCalls::GetInstance()->InitScriptWindow(&window_width, &window_height);
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
   //playerManager->Init(window_width, window_height);
