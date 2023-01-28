@@ -9,6 +9,8 @@ namespace BonVoyage {
     private bool choiceFlag = false;      // This flag is true during choice selection dialogs
     private bool playerTalking = false;   // This flag is true when player is talking, aka P1 active
     private bool updateChat = false;      // This flag is true when dialog changes for anyone
+    private bool RunlittleGirlDialog = true;
+    private bool RunPassengerDialog = true;
     public void Init() {
       //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
       CameraZoomIn();
@@ -47,466 +49,24 @@ namespace BonVoyage {
 
       #region Little Girl Dialogue
       if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) {
-        LockPosition(-295, -85);
 
         // I'll be using G1, P1, PP1 and PP2 for the refactored code
-
-        if (!starttalking && InternalCalls.EntityIsActive("LittleGirlBox", "Level1")) {
-          DisableUI();
-          Console.WriteLine("Start talking\n");
-          // Load Little Girl Talking
-          InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
-          InternalCalls.SetCurrentDialogueID(1);
-
-          // Activate little girl dialogue
-          InternalCalls.EntityActivate("G1", "Dialogue");
-          InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-          TextAlign("G1", "Dialogue");
-
-          // Setting default P1, PP1, PP2 positions
-          InternalCalls.SetPosX("PP1", "Dialogue", 500);
-          InternalCalls.SetPosY("PP1", "Dialogue", 46);
-          InternalCalls.SetPosX("PP2", "Dialogue", 500);
-          InternalCalls.SetPosY("PP2", "Dialogue", -90);
-          InternalCalls.SetPosX("P1", "Dialogue", 450);
-          InternalCalls.SetPosY("P1", "Dialogue", 5);
-
-          starttalking = true;
-
-          CameraZoomIn();
-          starttalking = true;
+        if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
+          LockPosition(-295, -85);
+          RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
         }
 
-        // Button click set flags
-        if (choiceFlag) {
-          if (InternalCalls.ButtonReleased("PP1", "Dialogue") || InternalCalls.ButtonReleased("PP2", "Dialogue")) updateChat = true;
-        } else if (InternalCalls.ButtonReleased("P1", "Dialogue") || InternalCalls.ButtonReleased("G1", "Dialogue")) updateChat = true;
-
-        // Logic done using those flags
-        if (updateChat) {
-          updateChat = false;
-
-          if (choiceFlag) {
-            choiceFlag = false;
-            if (InternalCalls.ButtonReleased("PP2", "Dialogue")) {
-              MoveToNextDialog(2);
-            } else MoveToNextDialog(1);
-
-            InternalCalls.EntityDeactivate("PP1", "Dialogue");
-            InternalCalls.EntityDeactivate("PP2", "Dialogue");
-          }
-          MoveToNextDialog(1);
-
-          Console.WriteLine("curr: " + InternalCalls.GetCurrentDialogueID() + "\n");
-          if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID())) {
-            InternalCalls.EntityActivate("P1", "Dialogue");
-            InternalCalls.EntityDeactivate("G1", "Dialogue");
-            InternalCalls.UpdateText("P1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-          } else {
-            InternalCalls.EntityActivate("G1", "Dialogue");
-            InternalCalls.EntityDeactivate("P1", "Dialogue");
-            InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-            TextAlign("G1", "Dialogue");
-          }
-
-          if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
-            InternalCalls.EntityActivate("PP1", "Dialogue");
-            InternalCalls.EntityActivate("PP2", "Dialogue");
-            InternalCalls.UpdateText("PP1", "Dialogue", GetNextDialog(1));
-            InternalCalls.UpdateText("PP1", "Dialogue", GetNextDialog(2));
-            choiceFlag = true;
-          }
-
-        }
-
-        //// If button clicked, load next dialogue
-        //if (!choiceFlag) {
-        //  //Console.WriteLine("Choice Flag: " + choiceFlag + "\n");
-        //  if (playerTalking) {
-        //    if (InternalCalls.ButtonReleased("P1", "Dialogue")) {           // If click on player talking
-        //      Console.WriteLine("Player talking clicked\n");
-        //      InternalCalls.EntityDeactivate("P1", "Dialogue");
-        //      InternalCalls.EntityActivate("G1", "Dialogue");
-
-        //      MoveToNextDialog();
-        //      InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-        //      TextAlign("G1", "Dialogue");
-        //      playerTalking = false;
-        //    }
-        //  } else {
-        //    if (InternalCalls.ButtonReleased("G1", "Dialogue")) {           // If click on non-player talking
-        //      Console.WriteLine("Non-Player talking clicked\n");
-        //      MoveToNextDialog();
-        //      InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-
-        //      // If next dialog has second choice, load them
-        //      if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
-        //        Console.WriteLine("Duo choices activated\n");
-        //        InternalCalls.EntityActivate("PP1", "Dialogue");
-        //        InternalCalls.EntityActivate("PP2", "Dialogue");
-
-        //        InternalCalls.UpdateText("PP1", "Dialogue", GetNextDialog(1));
-        //        InternalCalls.UpdateText("PP2", "Dialogue", GetNextDialog(2));
-
-        //        Console.WriteLine("PP1: " + InternalCalls.GetPosX("PP1", "Dialogue") + " | " + InternalCalls.GetPosY("PP1", "Dialogue"));
-        //        Console.WriteLine("PP2: " + InternalCalls.GetPosX("PP2", "Dialogue") + " | " + InternalCalls.GetPosY("PP2", "Dialogue"));
-
-        //        choiceFlag = true;
-        //      }
-        //    }
-        //  }
-        //}
-
-        //if (!choiceFlag) {
-
-        //  if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID())) { // Player speaking
-        //    playerTalking = true;
-        //  } else playerTalking = false;
-
-
-        //}
-
-        //if (choiceFlag) {
-        //  if (InternalCalls.ButtonReleased("PP1", "Dialogue")) {          // Choice 1 selected
-        //    Console.WriteLine("Choice 1 clicked\n");
-        //    InternalCalls.EntityDeactivate("G1", "Dialogue");
-        //    InternalCalls.EntityDeactivate("PP1", "Dialogue");
-        //    InternalCalls.EntityDeactivate("PP2", "Dialogue");
-
-        //    MoveToNextDialog();
-        //    MoveToNextDialog();
-
-        //    InternalCalls.EntityActivate("P1", "Dialogue");
-        //    InternalCalls.UpdateText("P1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-        //    //TextAlign("P1", "Dialogue");
-
-        //    choiceFlag = false;
-        //    playerTalking = true;
-        //  } else if (InternalCalls.ButtonReleased("PP2", "Dialogue")) {   // Choice 2 selected
-        //    Console.WriteLine("Choice 2 clicked\n");
-        //    InternalCalls.EntityDeactivate("G1", "Dialogue");
-        //    InternalCalls.EntityDeactivate("PP1", "Dialogue");
-        //    InternalCalls.EntityDeactivate("PP2", "Dialogue");
-
-        //    MoveToNextDialog();
-        //    MoveToNextDialog(2); // This is the only difference with the code above
-
-        //    InternalCalls.EntityActivate("P1", "Dialogue");
-        //    InternalCalls.UpdateText("P1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-        //    //TextAlign("P1", "Dialogue");
-
-        //    choiceFlag = false;
-        //    playerTalking = true;
-        //  }
-        //}
-
-
-
-
-
-
-
-        //if ((InternalCalls.ButtonReleased("G1", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G1", "Dialogue");
-        //  InternalCalls.EntityActivate("G2", "Dialogue");
-        //  InternalCalls.UpdateText("G2", "Dialogue", "I've been waiting for you!");
-        //  TextAlign("G2", "Dialogue");
-        //  InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
-        //  InternalCalls.SetCurrentDialogueID(1);
-        //  Console.WriteLine("Current dialogue ID: " + InternalCalls.GetCurrentDialogueID());
-        //  Console.WriteLine("Current dialogue string: " + InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()) + "\n");
-        //}
-
-        //if ((InternalCalls.ButtonReleased("G2", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G2", "Dialogue");
-        //  InternalCalls.EntityActivate("G3", "Dialogue");
-        //  InternalCalls.UpdateText("G3", "Dialogue", "What would you like to do? Maybe play or remininsce?");
-        //  InternalCalls.EntityActivate("PP1", "Dialogue");
-        //  InternalCalls.EntityActivate("PP2", "Dialogue");
-        //  InternalCalls.UpdateText("PP1", "Dialogue", "Play...");
-        //  InternalCalls.UpdateText("PP2", "Dialogue", "Reminisce...");
-        //  TextAlign("G3", "Dialogue");
-        //}
-
-        ////first choice start
-        //if ((InternalCalls.ButtonReleased("PP1", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G3", "Dialogue");
-        //  InternalCalls.EntityDeactivate("PP1", "Dialogue");
-        //  InternalCalls.EntityDeactivate("PP2", "Dialogue");
-        //  InternalCalls.EntityActivate("G4", "Dialogue");
-        //  InternalCalls.UpdateText("G4", "Dialogue", "Let's play a game where you hold your hands out and I'll give you something!");
-        //  TextAlign("G4", "Dialogue");
-        //}
-
-        //if ((InternalCalls.ButtonReleased("PP2", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G3", "Dialogue");
-        //  InternalCalls.EntityDeactivate("PP1", "Dialogue");
-        //  InternalCalls.EntityDeactivate("PP2", "Dialogue");
-        //  InternalCalls.EntityActivate("G6", "Dialogue");
-        //  InternalCalls.UpdateText("G6", "Dialogue", "We have plenty of time to reminsce! There's something I want to show you!");
-        //  TextAlign("G6", "Dialogue");
-        //}
-        ////first choice end
-
-        //if ((InternalCalls.ButtonReleased("G4", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G4", "Dialogue");
-        //  InternalCalls.EntityActivate("G5", "Dialogue");
-        //  InternalCalls.UpdateText("G5", "Dialogue", "Well, let's play together now! Or are you supposed to be doing something else now?");
-        //  InternalCalls.EntityActivate("PP3", "Dialogue");
-        //  InternalCalls.EntityActivate("PP4", "Dialogue");
-        //  InternalCalls.UpdateText("PP3", "Dialogue", "Do what...");
-        //  InternalCalls.UpdateText("PP4", "Dialogue", "Where am I...");
-        //  TextAlign("G5", "Dialogue");
-        //}
-
-        //if ((InternalCalls.ButtonReleased("G6", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G6", "Dialogue");
-        //  InternalCalls.EntityActivate("G7", "Dialogue");
-        //  InternalCalls.UpdateText("G7", "Dialogue", "Ain't it pretty? Have you seen one before? Do you know what it's called?");
-        //  InternalCalls.EntityActivate("PP5", "Dialogue");
-        //  InternalCalls.EntityActivate("PP6", "Dialogue");
-        //  InternalCalls.UpdateText("PP5", "Dialogue", "Yes...");
-        //  InternalCalls.UpdateText("PP6", "Dialogue", "No...");
-        //  TextAlign("G7", "Dialogue");
-        //}
-
-        //// second choice from first choice
-        //if ((InternalCalls.ButtonReleased("PP3", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("PP3", "Dialogue");
-        //  InternalCalls.EntityDeactivate("PP4", "Dialogue");
-        //  InternalCalls.EntityDeactivate("G5", "Dialogue");
-        //  InternalCalls.EntityActivate("G8", "Dialogue");
-        //  InternalCalls.UpdateText("G8", "Dialogue", "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...");
-        //  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
-        //  TextAlign("G8", "Dialogue");
-        //}
-
-        //if ((InternalCalls.ButtonReleased("G8", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G8", "Dialogue");
-        //  InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
-        //  CameraZoomOut();
-        //  starttalking = false;
-        //  EnableUI();
-        //}
-
-        //if ((InternalCalls.ButtonReleased("PP4", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("PP3", "Dialogue");
-        //  InternalCalls.EntityDeactivate("PP4", "Dialogue");
-        //  InternalCalls.EntityDeactivate("G5", "Dialogue");
-        //  InternalCalls.EntityActivate("G9", "Dialogue");
-        //  InternalCalls.UpdateText("G9", "Dialogue", "We're currently at Cordelia! It's said this place holds special memories, so explore around! We will meet again...");
-        //  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
-        //  TextAlign("G9", "Dialogue");
-        //}
-
-        //if ((InternalCalls.ButtonReleased("G9", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G9", "Dialogue");
-        //  InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
-        //  CameraZoomOut();
-        //  starttalking = false;
-        //  EnableUI();
-        //}
-
-        //// second choice from second choice
-        //if ((InternalCalls.ButtonReleased("PP5", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("PP5", "Dialogue");
-        //  InternalCalls.EntityDeactivate("PP6", "Dialogue");
-        //  InternalCalls.EntityDeactivate("G7", "Dialogue");
-        //  InternalCalls.EntityActivate("G10", "Dialogue");
-        //  InternalCalls.UpdateText("G10", "Dialogue", "So you remember the sea conches! Don't forget them now! We will meet again...");
-        //  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
-        //  TextAlign("G10", "Dialogue");
-        //}
-
-        //if ((InternalCalls.ButtonReleased("G10", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G10", "Dialogue");
-        //  InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
-        //  CameraZoomOut();
-        //  starttalking = false;
-        //  EnableUI();
-        //}
-
-        //if ((InternalCalls.ButtonReleased("PP6", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("PP5", "Dialogue");
-        //  InternalCalls.EntityDeactivate("PP6", "Dialogue");
-        //  InternalCalls.EntityDeactivate("G7", "Dialogue");
-        //  InternalCalls.EntityActivate("G11", "Dialogue");
-        //  InternalCalls.UpdateText("G11", "Dialogue", "These are called sea conches, and are known to store important memories of the past. We will meet again...");
-        //  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find a passenger"); // hint
-        //  TextAlign("G11", "Dialogue");
-        //}
-
-        //if ((InternalCalls.ButtonReleased("G11", "Dialogue")) == true) {
-        //  InternalCalls.EntityDeactivate("G11", "Dialogue");
-        //  InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
-        //  CameraZoomOut();
-        //  starttalking = false;
-        //  EnableUI();
-        //}
       }
       #endregion
 
       #region Passenger 1 Dialogue (currently using Little Girl dialogue lines)
       if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) {
-        LockPosition(-1240, 670);
 
-        if (!starttalking && InternalCalls.EntityIsActive("PassengerBox", "Level1")) {
-          DisableUI();
-          if (InternalCalls.EntityIsActive("G2", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G3", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G4", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G5", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G6", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G7", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G8", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G9", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G10", "Dialogue") == false
-              && InternalCalls.EntityIsActive("G11", "Dialogue") == false) {
-            InternalCalls.EntityActivate("G1", "Dialogue");
-            InternalCalls.UpdateText("G1", "Dialogue", "At last we meet again!");
-            TextAlign("G1", "Dialogue");
-          }
-          CameraZoomIn();
-          starttalking = true;
+        if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunPassengerDialog) {
+          LockPosition(-1240, 670);
+          RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
         }
 
-        if ((InternalCalls.ButtonReleased("G1", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G1", "Dialogue");
-          InternalCalls.EntityActivate("G2", "Dialogue");
-          InternalCalls.UpdateText("G2", "Dialogue", "I've been waiting for you!");
-          TextAlign("G2", "Dialogue");
-        }
-
-        if ((InternalCalls.ButtonReleased("G2", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G2", "Dialogue");
-          InternalCalls.EntityActivate("G3", "Dialogue");
-          InternalCalls.UpdateText("G3", "Dialogue", "What would you like to do? Maybe play or remininsce?");
-          InternalCalls.EntityActivate("PP1", "Dialogue");
-          InternalCalls.EntityActivate("PP2", "Dialogue");
-          InternalCalls.UpdateText("PP1", "Dialogue", "Play...");
-          InternalCalls.UpdateText("PP2", "Dialogue", "Reminisce...");
-          TextAlign("G3", "Dialogue");
-        }
-
-        //first choice start
-        if ((InternalCalls.ButtonReleased("PP1", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G3", "Dialogue");
-          InternalCalls.EntityDeactivate("PP1", "Dialogue");
-          InternalCalls.EntityDeactivate("PP2", "Dialogue");
-          InternalCalls.EntityActivate("G4", "Dialogue");
-          InternalCalls.UpdateText("G4", "Dialogue", "Let's play a game where you hold your hands out and I'll give you something!");
-          TextAlign("G4", "Dialogue");
-        }
-
-        if ((InternalCalls.ButtonReleased("PP2", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G3", "Dialogue");
-          InternalCalls.EntityDeactivate("PP1", "Dialogue");
-          InternalCalls.EntityDeactivate("PP2", "Dialogue");
-          InternalCalls.EntityActivate("G6", "Dialogue");
-          InternalCalls.UpdateText("G6", "Dialogue", "We have plenty of time to reminsce! There's something I want to show you!");
-          TextAlign("G6", "Dialogue");
-        }
-        //first choice end
-
-        if ((InternalCalls.ButtonReleased("G4", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G4", "Dialogue");
-          InternalCalls.EntityActivate("G5", "Dialogue");
-          InternalCalls.UpdateText("G5", "Dialogue", "Well, let's play together now! Or are you supposed to be doing something else now?");
-          InternalCalls.EntityActivate("PP3", "Dialogue");
-          InternalCalls.EntityActivate("PP4", "Dialogue");
-          InternalCalls.UpdateText("PP3", "Dialogue", "Do what...");
-          InternalCalls.UpdateText("PP4", "Dialogue", "Where am I...");
-          TextAlign("G5", "Dialogue");
-        }
-
-        if ((InternalCalls.ButtonReleased("G6", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G6", "Dialogue");
-          InternalCalls.EntityActivate("G7", "Dialogue");
-          InternalCalls.UpdateText("G7", "Dialogue", "Ain't it pretty? Have you seen one before? Do you know what it's called?");
-          InternalCalls.EntityActivate("PP5", "Dialogue");
-          InternalCalls.EntityActivate("PP6", "Dialogue");
-          InternalCalls.UpdateText("PP5", "Dialogue", "Yes...");
-          InternalCalls.UpdateText("PP6", "Dialogue", "No...");
-          TextAlign("G7", "Dialogue");
-        }
-
-        // second choice from first choice
-        if ((InternalCalls.ButtonReleased("PP3", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("PP3", "Dialogue");
-          InternalCalls.EntityDeactivate("PP4", "Dialogue");
-          InternalCalls.EntityDeactivate("G5", "Dialogue");
-          InternalCalls.EntityActivate("G8", "Dialogue");
-          InternalCalls.UpdateText("G8", "Dialogue", "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...");
-          InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find delivery point"); // hint
-          TextAlign("G8", "Dialogue");
-        }
-
-        if ((InternalCalls.ButtonReleased("G8", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G8", "Dialogue");
-          InternalCalls.EntityDeactivate("PassengerBox", "Level1");
-          CameraZoomOut();
-          starttalking = false;
-          EnableUI();
-          SetPosition("Passenger_1", "Level1", -1240, 670);
-        }
-
-        if ((InternalCalls.ButtonReleased("PP4", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("PP3", "Dialogue");
-          InternalCalls.EntityDeactivate("PP4", "Dialogue");
-          InternalCalls.EntityDeactivate("G5", "Dialogue");
-          InternalCalls.EntityActivate("G9", "Dialogue");
-          InternalCalls.UpdateText("G9", "Dialogue", "We're currently at Cordelia! It's said this place holds special memories, so explore around! We will meet again...");
-          InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find delivery point"); // hint
-          TextAlign("G9", "Dialogue");
-        }
-
-        if ((InternalCalls.ButtonReleased("G9", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G9", "Dialogue");
-          InternalCalls.EntityDeactivate("PassengerBox", "Level1");
-          CameraZoomOut();
-          starttalking = false;
-          EnableUI();
-          SetPosition("Passenger_1", "Level1", -1240, 670);
-        }
-
-        // second choice from second choice
-        if ((InternalCalls.ButtonReleased("PP5", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("PP5", "Dialogue");
-          InternalCalls.EntityDeactivate("PP6", "Dialogue");
-          InternalCalls.EntityDeactivate("G7", "Dialogue");
-          InternalCalls.EntityActivate("G10", "Dialogue");
-          InternalCalls.UpdateText("G10", "Dialogue", "So you remember the sea conches! Don't forget them now! We will meet again...");
-          InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find delivery point"); // hint
-          TextAlign("G10", "Dialogue");
-        }
-
-        if ((InternalCalls.ButtonReleased("G10", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G10", "Dialogue");
-          InternalCalls.EntityDeactivate("PassengerBox", "Level1");
-          CameraZoomOut();
-          starttalking = false;
-          EnableUI();
-          SetPosition("Passenger_1", "Level1", -1240, 670);
-        }
-
-        if ((InternalCalls.ButtonReleased("PP6", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("PP5", "Dialogue");
-          InternalCalls.EntityDeactivate("PP6", "Dialogue");
-          InternalCalls.EntityDeactivate("G7", "Dialogue");
-          InternalCalls.EntityActivate("G11", "Dialogue");
-          InternalCalls.UpdateText("G11", "Dialogue", "These are called sea conches, and are known to store important memories of the past. We will meet again...");
-          InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find delivery point"); // hint
-          TextAlign("G11", "Dialogue");
-        }
-
-        if ((InternalCalls.ButtonReleased("G11", "Dialogue")) == true) {
-          InternalCalls.EntityDeactivate("G11", "Dialogue");
-          InternalCalls.EntityDeactivate("PassengerBox", "Level1");
-          CameraZoomOut();
-          starttalking = false;
-          EnableUI();
-          SetPosition("Passenger_1", "Level1", -1240, 670);
-        }
       }
       #endregion
 
@@ -694,6 +254,100 @@ namespace BonVoyage {
       if (choice == 1) return InternalCalls.GetDialogue(InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()));
       else return InternalCalls.GetDialogue(InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()));
     }
+
+    /* For carrying on the dialog conversation logic
+     * player - The chatbox entity of the player
+     * notPlayer - The chatbox entity of the entity the player is talking to
+     * choice1 - The chatbox entity of the first choice dialog
+     * choice2 - The chatbox entity of the second choice dialog
+     * scene - The scene of all the chatbox entities (All must be the same scene)
+     * dialogFile - Dialog file name
+     * return bool - True if dialog is still running. False if dialog has ended.
+    */
+    public bool RunDialog(string player, string notPlayer, string choice1, string choice2, string scene, string dialogFile) {
+      if (!starttalking) {
+        DisableUI();
+        // Load Little Girl Talking
+        InternalCalls.LoadDialogs(dialogFile);
+        InternalCalls.SetCurrentDialogueID(1);
+
+        // Activate little girl dialogue
+        InternalCalls.EntityActivate(notPlayer, scene);
+        InternalCalls.UpdateText(notPlayer, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+        TextAlign(notPlayer, scene);
+
+        // Setting default P1, PP1, PP2 positions
+        InternalCalls.SetPosX(choice1, scene, 500);
+        InternalCalls.SetPosY(choice1, scene, 46);
+        InternalCalls.SetPosX(choice2, scene, 500);
+        InternalCalls.SetPosY(choice2, scene, -90);
+        InternalCalls.SetPosX(player, scene, 450);
+        InternalCalls.SetPosY(player, scene, 5);
+
+        starttalking = true;
+
+        CameraZoomIn();
+        starttalking = true;
+      }
+
+      // Button click set flags
+      if (choiceFlag) {
+        if (InternalCalls.ButtonReleased(choice1, scene) || InternalCalls.ButtonReleased(choice2, scene)) updateChat = true;
+      } else if (InternalCalls.ButtonReleased(player, scene) || InternalCalls.ButtonReleased(notPlayer, scene)) updateChat = true;
+
+      // Logic done using those flags
+      if (updateChat) {
+        updateChat = false;
+
+        // Finish dialog
+        if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0) {
+          DeactivateDialogBox(player, notPlayer, choice1, choice2, scene);
+          starttalking = false;
+          CameraZoomOut();
+          EnableUI();
+          Console.WriteLine("finished dialog");
+          return false;
+        }
+
+        if (choiceFlag) {
+          choiceFlag = false;
+          if (InternalCalls.ButtonReleased(choice2, scene)) {
+            MoveToNextDialog(2);
+          } else MoveToNextDialog(1);
+
+          InternalCalls.EntityDeactivate(choice1, scene);
+          InternalCalls.EntityDeactivate(choice2, scene);
+        }
+        MoveToNextDialog(1);
+
+        if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID())) {
+          InternalCalls.EntityActivate(player, scene);
+          InternalCalls.EntityDeactivate(notPlayer, scene);
+          InternalCalls.UpdateText(player, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+        } else {
+          InternalCalls.EntityActivate(notPlayer, scene);
+          InternalCalls.EntityDeactivate(player, scene);
+          InternalCalls.UpdateText(notPlayer, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+          TextAlign(notPlayer, scene);
+        }
+
+        if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
+          InternalCalls.EntityActivate(choice1, scene);
+          InternalCalls.EntityActivate(choice2, scene);
+          InternalCalls.UpdateText(choice1, scene, GetNextDialog(1));
+          InternalCalls.UpdateText(choice1, scene, GetNextDialog(2));
+          choiceFlag = true;
+        }
+      }
+      return true;
+    }
+
+    public void DeactivateDialogBox(string player, string notPlayer, string choice1, string choice2, string scene) {
+      InternalCalls.EntityDeactivate(player, scene);
+      InternalCalls.EntityDeactivate(notPlayer, scene);
+      InternalCalls.EntityDeactivate(choice1, scene);
+      InternalCalls.EntityDeactivate(choice2, scene);
+    }
     #endregion
     public void LockPosition(float x, float y) {
       InternalCalls.SetPosX("Boat", "Level1", x);
@@ -704,5 +358,9 @@ namespace BonVoyage {
       InternalCalls.SetPosX(entityname, scenename, x);
       InternalCalls.SetPosY(entityname, scenename, y);
     }
+
+
+    
+
   }
 }
