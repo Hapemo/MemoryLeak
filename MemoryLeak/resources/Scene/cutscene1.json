@@ -58,17 +58,6 @@
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 1
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Back to Menu...",
