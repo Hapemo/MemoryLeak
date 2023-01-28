@@ -55,6 +55,8 @@ public:
 	static int GetAnimationCurrentIndex(MonoString* _entityName, MonoString* _sceneName);
 	static int GetAnimationFrameCount(MonoString* _entityName, MonoString* _sceneName);
 	static void SetAnimationFrameCount(MonoString* _entityName, MonoString* _sceneName, int _count);
+	static void SetSpriteSheetIndex(MonoString* _entityName, MonoString* _sceneName, int _index);
+	static int GetSpriteSheetIndex(MonoString* _entityName, MonoString* _sceneName);
 	static void SetTexture(MonoString* _entityName, MonoString* _sceneName, MonoString* _path);
 	static MonoString* GetTexture(MonoString* _entityName, MonoString* _sceneName);
 	static bool EntitiesCollided(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName);

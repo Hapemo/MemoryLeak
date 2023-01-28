@@ -132,6 +132,12 @@ namespace BonVoyage
 		internal extern static void SetAnimationFrameCount(string _entityName, string _sceneName, int _count);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetSpriteSheetIndex(string _entityName, string _sceneName, int _index);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetSpriteSheetIndex(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetTexture(string _entityName, string _sceneName, string _path);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]

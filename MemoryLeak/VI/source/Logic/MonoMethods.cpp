@@ -100,6 +100,14 @@ void MonoMethods::SetAnimationFrameCount(MonoString* _entityName, MonoString* _s
 	return FUNC->SetAnimationFrameCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _count);
 }
 
+void MonoMethods::SetSpriteSheetIndex(MonoString* _entityName, MonoString* _sceneName, int _index) {
+	FUNC->SetSpriteSheetIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
+}
+
+int MonoMethods::GetSpriteSheetIndex(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->GetSpriteSheetIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
 void MonoMethods::SetTexture(MonoString* _entityName, MonoString* _sceneName, MonoString* _path) {
 	FUNC->SetTexture(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), MONO->ConvertFromMonoString(_path));
 }
@@ -250,6 +258,8 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationCurrentIndex", &MonoMethods::GetAnimationCurrentIndex);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationFrameCount", &MonoMethods::GetAnimationFrameCount);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationFrameCount", &MonoMethods::SetAnimationFrameCount);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteSheetIndex", &MonoMethods::SetSpriteSheetIndex);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetSpriteSheetIndex", &MonoMethods::GetSpriteSheetIndex);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetTexture", &MonoMethods::SetTexture);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetTexture", &MonoMethods::GetTexture);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntitiesCollided", &MonoMethods::EntitiesCollided);

@@ -363,13 +363,25 @@ public:
 	\brief
 	Set current animation image index by entity
 	*******************************************************************************/
-	static void SetCurrentImageIndexByEntity(Entity _e, int _index);
+	static void SetSpriteSheetIndexByEntity(Entity _e, int _index);
 
 	/*!*****************************************************************************
 	\brief
 	Get current animation image index by entity
 	*******************************************************************************/
-	static int GetCurrentImageIndexByEntity(Entity _e);
+	static int GetSpriteSheetIndexByEntity(Entity _e);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation image index
+	*******************************************************************************/
+	static void SetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation image index
+	*******************************************************************************/
+	static int GetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief

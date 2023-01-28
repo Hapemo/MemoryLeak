@@ -480,16 +480,32 @@ int InternalCalls::GetAnimationCurrentIndex(std::string const& _entityName, std:
 \brief
 Set current animation image index by entity
 *******************************************************************************/
-void InternalCalls::SetCurrentImageIndexByEntity(Entity _e, int _index) {
+void InternalCalls::SetSpriteSheetIndexByEntity(Entity _e, int _index) {
 	animator->SetCurrentImageIndex(_e, _index);
 }
 
 /*!*****************************************************************************
 \brief
-Set current animation image index by entity
+Get current animation image index by entity
 *******************************************************************************/
-int InternalCalls::GetCurrentImageIndexByEntity(Entity _e) {
+int InternalCalls::GetSpriteSheetIndexByEntity(Entity _e) {
 	return animator->GetCurrentImageIndex(_e);
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index
+*******************************************************************************/
+void InternalCalls::SetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	animator->SetCurrentImageIndex((FUNC->GetEntity(_entityName, _sceneName)), _index);
+}
+
+/*!*****************************************************************************
+\brief
+Get current animation image index
+*******************************************************************************/
+int InternalCalls::GetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName) {
+	return animator->GetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName));
 }
 
 /*!*****************************************************************************
