@@ -74,7 +74,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::B)) speedCheat = !speedCheat; // speed cheat toggle
 	}
 
-	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) && (!FUNC->EntitiesCollidedByEntity(enemy, _e) || !canDie)) {
+	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) /* && (!FUNC->EntitiesCollidedByEntity(enemy, _e) || !canDie) */) {
 		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)/*|| _e.GetComponent<General>().name != "Boat"*/) {
 			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currCamera->translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)

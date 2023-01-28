@@ -1799,7 +1799,7 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 }
@@ -1989,13 +1989,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 862.5,
-                "Y": 634.5
+                "X": 718.5,
+                "Y": 416.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 861.9550170898438,
-                "Y": -212.06300354003906
+                "X": 808.9550170898438,
+                "Y": -293.0625305175781
             }
         },
         "Sprite": {
