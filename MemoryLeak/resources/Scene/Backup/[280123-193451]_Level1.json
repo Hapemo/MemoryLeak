@@ -2358,47 +2358,5 @@
             "isTrigger": true,
             "renderFlag": true
         }
-    },
-    {
-        "General": {
-            "name": "fragment1drop",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -707.960693359375,
-                "Y": -256.8012390136719
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 123,
-                "g": 181,
-                "b": 123,
-                "a": 0
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\pet.png",
-            "layer": 1
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": true,
-            "renderFlag": true
-        }
     }
 ]

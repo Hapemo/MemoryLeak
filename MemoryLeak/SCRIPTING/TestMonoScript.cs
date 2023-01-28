@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class TestMonoScript
     {
+        private bool fragment1 = false;
         private bool starttalking = false;
         private float maxX, maxY, minX, minY, halfX, halfY;
         private float HitInterval = 0;
@@ -87,23 +88,31 @@ namespace BonVoyage {
         }
 
       }
-      #endregion
+            #endregion
 
             #region Passenger 1 Delivered
-            /*
             if (InternalCalls.EntitiesCollided("PassengerBox", "PassengerDeliver", "Level1"))
             {
-
+                // activate cutscene with button to main menu
             }
-            */
             #endregion
 
             #region Memory Fragment UI
+
+            if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1"))
+            {
+                fragment1 = true;
+                InternalCalls.UpdateText("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
+                InternalCalls.EntityDeactivate("fragment1drop", "Level1");
+            }
+
             if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
                 if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
                     InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");
+                    if (fragment1 == true) { InternalCalls.EntityActivate("fragment1obj", "Dialogue"); }
                 } else {
                     InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
+                    if (fragment1 == true) { InternalCalls.EntityDeactivate("fragment1obj", "Dialogue"); }
                 }
             }
             #endregion
@@ -333,6 +342,7 @@ namespace BonVoyage {
             InternalCalls.EntityDeactivate("hpbar", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragment", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
+            InternalCalls.EntityDeactivate("fragment1obj", "Dialogue");
 
             InternalCalls.EntityDeactivate("cyclemap", "Dialogue");
 

@@ -1405,17 +1405,6 @@
             "texture": "Textures\\Icons\\memory fragment button.png",
             "layer": 63
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Button": {
             "interactable": true
         }
@@ -1494,17 +1483,6 @@
             "texture": "Textures\\Sprites\\minimap.png",
             "layer": 62
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Minimap",
@@ -1552,17 +1530,6 @@
             "sprite": 0,
             "texture": "Textures\\Background\\Assets.txt",
             "layer": 62
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -1612,17 +1579,6 @@
             "texture": "Textures\\Background\\Assets.txt",
             "layer": 62
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Weather",
@@ -1670,17 +1626,6 @@
             "sprite": 2,
             "texture": "Textures\\Icons\\cycle.png",
             "layer": 63
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
         },
         "Button": {
             "interactable": true

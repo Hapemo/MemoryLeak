@@ -152,17 +152,6 @@
             "texture": "Textures\\Menu\\text1.png",
             "layer": 63
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "At last we meet again!",
@@ -670,17 +659,6 @@
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 63
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Play...",
@@ -728,17 +706,6 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 63
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -991,17 +958,6 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
             "layer": 63
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -1358,7 +1314,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Icons\\healthbar-1.png",
-            "layer": 63
+            "layer": 64
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -1405,17 +1361,6 @@
             "texture": "Textures\\Icons\\memory fragment button.png",
             "layer": 63
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Button": {
             "interactable": true
         }
@@ -1451,7 +1396,7 @@
         },
         "Text": {
             "fontFile": "CaviarDreams",
-            "text": "Memory Fragments (0/1)",
+            "text": "Memory Fragments (0/2)",
             "offset": {
                 "X": -316.0,
                 "Y": 57.0
@@ -1493,17 +1438,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\minimap.png",
             "layer": 62
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -1553,17 +1487,6 @@
             "texture": "Textures\\Background\\Assets.txt",
             "layer": 62
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Radar",
@@ -1612,17 +1535,6 @@
             "texture": "Textures\\Background\\Assets.txt",
             "layer": 62
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
         "Text": {
             "fontFile": "CaviarDreams",
             "text": "Weather",
@@ -1670,17 +1582,6 @@
             "sprite": 2,
             "texture": "Textures\\Icons\\cycle.png",
             "layer": 63
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
         },
         "Button": {
             "interactable": true
@@ -1848,7 +1749,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
+            "layer": 65
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -1893,7 +1794,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
+            "layer": 65
         },
         "Text": {
             "fontFile": "CaviarDreams",
@@ -1901,51 +1802,6 @@
             "offset": {
                 "X": -165.0,
                 "Y": 5.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
-            "name": "fragment1obj",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 161.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -493.58172607421875,
-                "Y": -162.43270874023438
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\pet.png",
-            "layer": 64
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "A cat.",
-            "offset": {
-                "X": 93.0,
-                "Y": -21.0
             },
             "scale": 1.0,
             "color": {
