@@ -8,6 +8,7 @@ namespace BonVoyage {
     /* Some of these flags are here to optimise the code. Because checking this bool value is faster than button check function calls */
     private bool choiceFlag = false;      // This flag is true during choice selection dialogs
     private bool playerTalking = false;   // This flag is true when player is talking, aka P1 active
+    private bool updateChat = false;      // This flag is true when dialog changes for anyone
     public void Init() {
       //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
       CameraZoomIn();
@@ -76,77 +77,134 @@ namespace BonVoyage {
           starttalking = true;
         }
 
-        // If button clicked, load next dialogue
-        if (!choiceFlag) {
-          //Console.WriteLine("Choice Flag: " + choiceFlag + "\n");
-          if (playerTalking) {
-            if (InternalCalls.ButtonReleased("P1", "Dialogue")) {           // If click on player talking
-              Console.WriteLine("Player talking clicked\n");
-              InternalCalls.EntityDeactivate("P1", "Dialogue");
-              InternalCalls.EntityActivate("G1", "Dialogue");
-
-              MoveToNextDialog();
-              InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-              TextAlign("G1", "Dialogue");
-              playerTalking = false;
-            }
-          } else {
-            if (InternalCalls.ButtonReleased("G1", "Dialogue")) {           // If click on non-player talking
-              Console.WriteLine("Non-Player talking clicked\n");
-              MoveToNextDialog();
-              InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-
-              // If next dialog has second choice, load them
-              if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
-                Console.WriteLine("Duo choices activated\n");
-                InternalCalls.EntityActivate("PP1", "Dialogue");
-                InternalCalls.EntityActivate("PP2", "Dialogue");
-
-                InternalCalls.UpdateText("PP1", "Dialogue", GetNextDialog(1));
-                InternalCalls.UpdateText("PP2", "Dialogue", GetNextDialog(2));
-
-                Console.WriteLine("PP1: " + InternalCalls.GetPosX("PP1", "Dialogue") + " | " + InternalCalls.GetPosY("PP1", "Dialogue"));
-                Console.WriteLine("PP2: " + InternalCalls.GetPosX("PP2", "Dialogue") + " | " + InternalCalls.GetPosY("PP2", "Dialogue"));
-
-                choiceFlag = true;
-              }
-            }
-          }
-        }
-
+        // Button click set flags
         if (choiceFlag) {
-          if (InternalCalls.ButtonReleased("PP1", "Dialogue")) {          // Choice 1 selected
-            Console.WriteLine("Choice 1 clicked\n");
-            InternalCalls.EntityDeactivate("G1", "Dialogue");
+          if (InternalCalls.ButtonReleased("PP1", "Dialogue") || InternalCalls.ButtonReleased("PP2", "Dialogue")) updateChat = true;
+        } else if (InternalCalls.ButtonReleased("P1", "Dialogue") || InternalCalls.ButtonReleased("G1", "Dialogue")) updateChat = true;
+
+        // Logic done using those flags
+        if (updateChat) {
+          updateChat = false;
+
+          if (choiceFlag) {
+            choiceFlag = false;
+            if (InternalCalls.ButtonReleased("PP2", "Dialogue")) {
+              MoveToNextDialog(2);
+            } else MoveToNextDialog(1);
+
             InternalCalls.EntityDeactivate("PP1", "Dialogue");
             InternalCalls.EntityDeactivate("PP2", "Dialogue");
-
-            MoveToNextDialog();
-            MoveToNextDialog();
-
-            InternalCalls.EntityActivate("P1", "Dialogue");
-            InternalCalls.UpdateText("P1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-            //TextAlign("P1", "Dialogue");
-
-            choiceFlag = false;
-            playerTalking = true;
-          } else if (InternalCalls.ButtonReleased("PP2", "Dialogue")) {   // Choice 2 selected
-            Console.WriteLine("Choice 2 clicked\n");
-            InternalCalls.EntityDeactivate("G1", "Dialogue");
-            InternalCalls.EntityDeactivate("PP1", "Dialogue");
-            InternalCalls.EntityDeactivate("PP2", "Dialogue");
-
-            MoveToNextDialog();
-            MoveToNextDialog(2); // This is the only difference with the code above
-
-            InternalCalls.EntityActivate("P1", "Dialogue");
-            InternalCalls.UpdateText("P1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-            //TextAlign("P1", "Dialogue");
-
-            choiceFlag = false;
-            playerTalking = true;
           }
+          MoveToNextDialog(1);
+
+          Console.WriteLine("curr: " + InternalCalls.GetCurrentDialogueID() + "\n");
+          if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID())) {
+            InternalCalls.EntityActivate("P1", "Dialogue");
+            InternalCalls.EntityDeactivate("G1", "Dialogue");
+            InternalCalls.UpdateText("P1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+          } else {
+            InternalCalls.EntityActivate("G1", "Dialogue");
+            InternalCalls.EntityDeactivate("P1", "Dialogue");
+            InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+            TextAlign("G1", "Dialogue");
+          }
+
+          if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
+            InternalCalls.EntityActivate("PP1", "Dialogue");
+            InternalCalls.EntityActivate("PP2", "Dialogue");
+            InternalCalls.UpdateText("PP1", "Dialogue", GetNextDialog(1));
+            InternalCalls.UpdateText("PP1", "Dialogue", GetNextDialog(2));
+            choiceFlag = true;
+          }
+
         }
+
+        //// If button clicked, load next dialogue
+        //if (!choiceFlag) {
+        //  //Console.WriteLine("Choice Flag: " + choiceFlag + "\n");
+        //  if (playerTalking) {
+        //    if (InternalCalls.ButtonReleased("P1", "Dialogue")) {           // If click on player talking
+        //      Console.WriteLine("Player talking clicked\n");
+        //      InternalCalls.EntityDeactivate("P1", "Dialogue");
+        //      InternalCalls.EntityActivate("G1", "Dialogue");
+
+        //      MoveToNextDialog();
+        //      InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+        //      TextAlign("G1", "Dialogue");
+        //      playerTalking = false;
+        //    }
+        //  } else {
+        //    if (InternalCalls.ButtonReleased("G1", "Dialogue")) {           // If click on non-player talking
+        //      Console.WriteLine("Non-Player talking clicked\n");
+        //      MoveToNextDialog();
+        //      InternalCalls.UpdateText("G1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+
+        //      // If next dialog has second choice, load them
+        //      if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
+        //        Console.WriteLine("Duo choices activated\n");
+        //        InternalCalls.EntityActivate("PP1", "Dialogue");
+        //        InternalCalls.EntityActivate("PP2", "Dialogue");
+
+        //        InternalCalls.UpdateText("PP1", "Dialogue", GetNextDialog(1));
+        //        InternalCalls.UpdateText("PP2", "Dialogue", GetNextDialog(2));
+
+        //        Console.WriteLine("PP1: " + InternalCalls.GetPosX("PP1", "Dialogue") + " | " + InternalCalls.GetPosY("PP1", "Dialogue"));
+        //        Console.WriteLine("PP2: " + InternalCalls.GetPosX("PP2", "Dialogue") + " | " + InternalCalls.GetPosY("PP2", "Dialogue"));
+
+        //        choiceFlag = true;
+        //      }
+        //    }
+        //  }
+        //}
+
+        //if (!choiceFlag) {
+
+        //  if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID())) { // Player speaking
+        //    playerTalking = true;
+        //  } else playerTalking = false;
+
+
+        //}
+
+        //if (choiceFlag) {
+        //  if (InternalCalls.ButtonReleased("PP1", "Dialogue")) {          // Choice 1 selected
+        //    Console.WriteLine("Choice 1 clicked\n");
+        //    InternalCalls.EntityDeactivate("G1", "Dialogue");
+        //    InternalCalls.EntityDeactivate("PP1", "Dialogue");
+        //    InternalCalls.EntityDeactivate("PP2", "Dialogue");
+
+        //    MoveToNextDialog();
+        //    MoveToNextDialog();
+
+        //    InternalCalls.EntityActivate("P1", "Dialogue");
+        //    InternalCalls.UpdateText("P1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+        //    //TextAlign("P1", "Dialogue");
+
+        //    choiceFlag = false;
+        //    playerTalking = true;
+        //  } else if (InternalCalls.ButtonReleased("PP2", "Dialogue")) {   // Choice 2 selected
+        //    Console.WriteLine("Choice 2 clicked\n");
+        //    InternalCalls.EntityDeactivate("G1", "Dialogue");
+        //    InternalCalls.EntityDeactivate("PP1", "Dialogue");
+        //    InternalCalls.EntityDeactivate("PP2", "Dialogue");
+
+        //    MoveToNextDialog();
+        //    MoveToNextDialog(2); // This is the only difference with the code above
+
+        //    InternalCalls.EntityActivate("P1", "Dialogue");
+        //    InternalCalls.UpdateText("P1", "Dialogue", InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+        //    //TextAlign("P1", "Dialogue");
+
+        //    choiceFlag = false;
+        //    playerTalking = true;
+        //  }
+        //}
+
+
+
+
+
+
 
         //if ((InternalCalls.ButtonReleased("G1", "Dialogue")) == true) {
         //  InternalCalls.EntityDeactivate("G1", "Dialogue");
