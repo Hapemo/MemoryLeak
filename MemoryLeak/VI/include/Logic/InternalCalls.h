@@ -349,6 +349,18 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Set current animation image speed
+	*******************************************************************************/
+	static void SetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation image speed
+	*******************************************************************************/
+	static float GetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
 	Set current animation image index by entity
 	*******************************************************************************/
 	static void SetCurrentImageIndexByEntity(Entity _e, int _index);
@@ -363,13 +375,25 @@ public:
 	\brief
 	Set current animation image index
 	*******************************************************************************/
-	static void SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+	static void SetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
 
 	/*!*****************************************************************************
 	\brief
 	Get current animation image index
 	*******************************************************************************/
-	static int GetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName);
+	static int GetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation total frame count
+	*******************************************************************************/
+	static int GetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation total frame count
+	*******************************************************************************/
+	static void SetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count);
 
 	/*!*****************************************************************************
 	\brief
@@ -437,6 +461,18 @@ public:
 	Should be called in application's init
 	*******************************************************************************/
 	static void InitScriptWindow(int* _windowWidth, int* _windowHeight);
+
+	/*!*****************************************************************************
+	\brief
+		Stop a sound
+	*******************************************************************************/
+	static void StopSound(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+		Plays a sound on loop
+	*******************************************************************************/
+	static void PlaySoundOnLoop(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief

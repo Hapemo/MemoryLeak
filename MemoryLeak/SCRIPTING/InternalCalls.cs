@@ -114,10 +114,22 @@ namespace BonVoyage
 		internal extern static void SetCurrentCameraPosY(float _y);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetCurrentImageIndex(string _entityName, string _sceneName, int _index);
+		internal extern static void SetAnimationSpeed(string _entityName, string _sceneName, float _speed);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static int GetCurrentImageIndex(string _entityName, string _sceneName);
+		internal extern static float GetAnimationSpeed(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetAnimationCurrentIndex(string _entityName, string _sceneName, int _index);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetAnimationCurrentIndex(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetAnimationFrameCount(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetAnimationFrameCount(string _entityName, string _sceneName, int _count);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetTexture(string _entityName, string _sceneName, string _path);
@@ -136,6 +148,12 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static double GetDeltaTime();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void StopSound(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void PlaySoundOnLoop(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void PlayAnySound(string _name, int _channel);

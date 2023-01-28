@@ -446,20 +446,34 @@ void InternalCalls::SetCurrentCameraPosY(float _y) {
 
 /*!*****************************************************************************
 \brief
-Set current animation image index
+Set current animation image speed
 *******************************************************************************/
-void InternalCalls::SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
-	Entity entity = FUNC->GetEntity(_entityName, _sceneName);
-	animator->SetCurrentImageIndex(entity, _index);
-	entity.GetComponent<SheetAnimation>().currFrameIndex = 0;
+void InternalCalls::SetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().timePerFrame = _speed;
+}
+
+/*!*****************************************************************************
+\brief
+Get current animation image speed
+*******************************************************************************/
+float InternalCalls::GetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().timePerFrame;
 }
 
 /*!*****************************************************************************
 \brief
 Set current animation image index
 *******************************************************************************/
-int InternalCalls::GetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName) {
-	return animator->GetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName));
+void InternalCalls::SetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().currFrameIndex = _index;
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index
+*******************************************************************************/
+int InternalCalls::GetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().currFrameIndex;
 }
 
 /*!*****************************************************************************
@@ -476,6 +490,22 @@ Set current animation image index by entity
 *******************************************************************************/
 int InternalCalls::GetCurrentImageIndexByEntity(Entity _e) {
 	return animator->GetCurrentImageIndex(_e);
+}
+
+/*!*****************************************************************************
+\brief
+Get current animation total frame count
+*******************************************************************************/
+int InternalCalls::GetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().frameCount;
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation total frame count
+*******************************************************************************/
+void InternalCalls::SetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().frameCount = _count;
 }
 
 /*!*****************************************************************************
@@ -577,6 +607,26 @@ void InternalCalls::InitScriptWindow(int* _windowWidth, int* _windowHeight) {
 
 /*!*****************************************************************************
 \brief
+	Plays a sound on loop
+*******************************************************************************/
+void InternalCalls::PlaySoundOnLoop(std::string const& _entityName, std::string const& _sceneName) {
+	if (FUNC->GetEntity(_entityName, _sceneName).HasComponent<Audio>()) {
+		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = true;
+		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.isLoop = true;
+	}
+}
+
+/*!*****************************************************************************
+\brief
+	Stop a sound
+*******************************************************************************/
+void InternalCalls::StopSound(std::string const& _entityName, std::string const& _sceneName) {
+	if (FUNC->GetEntity(_entityName, _sceneName).HasComponent<Audio>())
+		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = false;
+}
+
+/*!*****************************************************************************
+\brief
 	Plays a single background sound
 *******************************************************************************/
 void InternalCalls::PlayAnySound(std::string _name, int _channel) {
@@ -620,6 +670,7 @@ float InternalCalls::GetPosY(std::string const& _entityName, std::string const& 
 Set X pos of an entity.
 *******************************************************************************/
 void InternalCalls::SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX) {
+	LOG_DEBUG(("Setting " + _entityName + " from scene " + _sceneName + " to position X " + std::to_string(_posX) + "px;").c_str());
 	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.x = _posX;
 }
 

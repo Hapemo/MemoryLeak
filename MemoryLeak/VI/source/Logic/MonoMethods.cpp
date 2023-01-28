@@ -76,12 +76,28 @@ void MonoMethods::PlayScene(MonoString* _name) {
 	FUNC->PlayScene(MONO->ConvertFromMonoString(_name));
 }
 
-void MonoMethods::SetCurrentImageIndex(MonoString* _entityName, MonoString* _sceneName, int _index) {
-	FUNC->SetCurrentImageIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
+void MonoMethods::SetAnimationSpeed(MonoString* _entityName, MonoString* _sceneName, float _speed) {
+	FUNC->SetAnimationSpeed(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _speed);
 }
 
-int MonoMethods::GetCurrentImageIndex(MonoString* _entityName, MonoString* _sceneName) {
-	return FUNC->GetCurrentImageIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+float MonoMethods::GetAnimationSpeed(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->GetAnimationSpeed(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+void MonoMethods::SetAnimationCurrentIndex(MonoString* _entityName, MonoString* _sceneName, int _index) {
+	FUNC->SetAnimationCurrentIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
+}
+
+int MonoMethods::GetAnimationCurrentIndex(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->GetAnimationCurrentIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+int MonoMethods::GetAnimationFrameCount(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->GetAnimationFrameCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+void MonoMethods::SetAnimationFrameCount(MonoString* _entityName, MonoString* _sceneName, int _count) {
+	return FUNC->SetAnimationFrameCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _count);
 }
 
 void MonoMethods::SetTexture(MonoString* _entityName, MonoString* _sceneName, MonoString* _path) {
@@ -98,6 +114,14 @@ bool MonoMethods::EntitiesCollided(MonoString* _entityName1, MonoString* _entity
 
 bool MonoMethods::CheckCollision(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName, bool _dynamicCheck) {
 	return FUNC->CheckCollision(MONO->ConvertFromMonoString(_entityName1), MONO->ConvertFromMonoString(_entityName2), MONO->ConvertFromMonoString(_sceneName), _dynamicCheck);
+}
+
+void MonoMethods::StopSound(MonoString* _entityName, MonoString* _sceneName) {
+	FUNC->StopSound(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+void MonoMethods::PlaySoundOnLoop(MonoString* _entityName, MonoString* _sceneName) {
+	FUNC->PlaySoundOnLoop(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
 void MonoMethods::PlayAnySound(MonoString* _name, int _channel) {
@@ -202,6 +226,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::SetSelectedChoice", &FUNC->SetSelectedChoice);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentDialogueID", &FUNC->SetCurrentDialogueID);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentDialogueID", &FUNC->GetCurrentDialogueID);
+	mono_add_internal_call("BonVoyage.InternalCalls::IsPlayerSpeaker", &FUNC->IsPlayerSpeaker);
 	mono_add_internal_call("BonVoyage.InternalCalls::ChangeGameState", &MonoMethods::ChangeGameState);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityIsActive", &MonoMethods::EntityIsActive);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityActivate", &MonoMethods::EntityActivate);
@@ -219,14 +244,20 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraScaleY", &FUNC->SetCurrentCameraScaleY);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosX", &FUNC->SetCurrentCameraPosX);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosY", &FUNC->SetCurrentCameraPosY);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentImageIndex", &MonoMethods::SetCurrentImageIndex);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentImageIndex", &MonoMethods::GetCurrentImageIndex);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationSpeed", &MonoMethods::SetAnimationSpeed);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationSpeed", &MonoMethods::GetAnimationSpeed);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationCurrentIndex", &MonoMethods::SetAnimationCurrentIndex);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationCurrentIndex", &MonoMethods::GetAnimationCurrentIndex);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationFrameCount", &MonoMethods::GetAnimationFrameCount);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationFrameCount", &MonoMethods::SetAnimationFrameCount);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetTexture", &MonoMethods::SetTexture);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetTexture", &MonoMethods::GetTexture);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntitiesCollided", &MonoMethods::EntitiesCollided);
 	mono_add_internal_call("BonVoyage.InternalCalls::CheckCollision", &MonoMethods::CheckCollision);
 	mono_add_internal_call("BonVoyage.InternalCalls::GameStateExit", &FUNC->GameStateExit);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetDeltaTime", &FUNC->GetDeltaTime);
+	mono_add_internal_call("BonVoyage.InternalCalls::StopSound", &MonoMethods::StopSound);
+	mono_add_internal_call("BonVoyage.InternalCalls::PlaySoundOnLoop", &MonoMethods::PlaySoundOnLoop);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayAnySound", &MonoMethods::PlayAnySound);
 	mono_add_internal_call("BonVoyage.InternalCalls::IsPlaying", &FUNC->IsPlaying);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayBGSound", &MonoMethods::PlayBGSound);
@@ -246,5 +277,4 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::UpdateText", &MonoMethods::UpdateText);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetTextOffset", &MonoMethods::SetTextOffset);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetLineCount", &MonoMethods::GetLineCount);
-	mono_add_internal_call("BonVoyage.InternalCalls::IsPlayerSpeaker", &FUNC->IsPlayerSpeaker);
 }
