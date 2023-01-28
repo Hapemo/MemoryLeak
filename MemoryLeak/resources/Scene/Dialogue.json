@@ -1447,7 +1447,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
+            "layer": 62
         },
         "Text": {
             "fontFile": "CaviarDreams",

@@ -91,9 +91,10 @@ namespace BonVoyage {
             #endregion
 
             #region Passenger 1 Delivered
-            if (InternalCalls.EntitiesCollided("PassengerBox", "PassengerDeliver", "Level1"))
+            if (InternalCalls.EntitiesCollided("Boat", "destination", "Level1"))
             {
-                // activate cutscene with button to main menu
+                InternalCalls.PlayScene("cutscene1");
+                InternalCalls.EntityDeactivate("destination", "Level1");
             }
             #endregion
 
@@ -333,6 +334,16 @@ namespace BonVoyage {
             {
                 InternalCalls.PauseScene("Level1");
                 InternalCalls.PlayScene("Game Over");
+            }
+            #endregion
+
+            #region cutscene1
+            //if (InternalCalls.GetCurrentGameStateName() == "cutscene1state")
+            {
+                if ((InternalCalls.ButtonReleased("cutscene1button", "cutscene1")) == true)
+                {
+                    InternalCalls.PauseScene("cutscene1");
+                }
             }
             #endregion
         }
