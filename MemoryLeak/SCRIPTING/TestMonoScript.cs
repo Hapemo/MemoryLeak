@@ -631,12 +631,14 @@ namespace BonVoyage {
             }
 
             if(HitTaken == MaxHealth) {
+                InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 2);
                 InternalCalls.SetAnimationCurrentIndex("Boat", "Level1", 0);
                 HitTaken = -1;
             }
             if (HitTaken == -1 && InternalCalls.GetAnimationCurrentIndex("Boat", "Level1") == InternalCalls.GetAnimationFrameCount("Boat", "Level1") - 1)
             {
-                // end game
+                InternalCalls.PauseScene("Level1");
+                InternalCalls.PlayScene("Game Over");
             }
             #endregion
         }

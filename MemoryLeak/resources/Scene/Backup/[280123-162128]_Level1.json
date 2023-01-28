@@ -290,8 +290,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 252.0,
-                "Y": 250.0
+                "X": 159.0,
+                "Y": 200.0
             },
             "rotation": 0.0,
             "translation": {
@@ -309,91 +309,6 @@
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
             "layer": 50
-        },
-        "Animation": {
-            "sheets": [
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_S_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SW_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_W_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NW_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_N_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NE_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_E_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SE_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                }
-            ],
-            "currentImageIndex": 0
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -1856,7 +1771,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 878.2362670898438,
+                "X": 876.552001953125,
                 "Y": -201.94100952148438
             }
         },

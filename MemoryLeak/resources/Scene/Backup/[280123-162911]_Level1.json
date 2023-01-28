@@ -351,46 +351,6 @@
                     "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_S_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SW_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_W_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NW_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_N_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NE_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_E_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SE_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
                 }
             ],
             "currentImageIndex": 0
