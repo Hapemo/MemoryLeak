@@ -83,7 +83,7 @@ namespace BonVoyage {
 
         if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunPassengerDialog) {
           LockPosition(-1240, 670);
-          RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
+          RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
         }
 
       }
@@ -222,22 +222,22 @@ namespace BonVoyage {
                 case 1:
                     changeInX = rand.Next(0, 5);
                     changeInY = rand.Next(-4, 1);
-                    Console.Write("Region 1!\n");
+                    //Console.Write("Region 1!\n");
                     break;
                 case 2:
                     changeInX = rand.Next(-4, 1);
                     changeInY = rand.Next(-4, 1);
-                    Console.Write("Region 2!\n");
+                    //Console.Write("Region 2!\n");
                     break;
                 case 3:
                     changeInX = rand.Next(-4, 1);
                     changeInY = rand.Next(0, 5);
-                    Console.Write("Region 3!\n");
+                    //Console.Write("Region 3!\n");
                     break;
                 case 4:
                     changeInX = rand.Next(0, 5);
                     changeInY = rand.Next(0, 5);
-                    Console.Write("Region 4!\n");
+                    //Console.Write("Region 4!\n");
                     break;
                 default:
                     break;
