@@ -439,19 +439,102 @@ namespace BonVoyage {
             break;
             }
         }
-        #endregion
 
-        #region Dialogue helper functions
-        // Based on the current dialog ID, move to the next one. Can input choice if there is a choice selection, by default it's 1
-        public void MoveToNextDialog(int choice = 1) { 
+    public void TextAlignChoices(string entityname, string scenename, int choice) {
+      int additionalLines = InternalCalls.GetLineCount(entityname, scenename) - 1;
+      int middle = -25;         // This is the center point of both texts
+      int spaceing = 15;        // Spacing between edge from middle
+      int scaleX = 500;         // This is the default width of button
+      int scaleY = 100;         // This is the default height of button, will changing with respect to line count
+      int buttonCenterX = 500;  // Center X coordinate of button
+      int buttonCenterY = 0;    // This must be calculated, differs for different choices
+      int perLineScaleY = 60;   // This is the increment for one additional line
+      int textXSpacing = 50;    // This is the spacing of the text from the left edge of the box 
+      int textYSpacing = 20;    // This is the spacing of the text from the top edge of the box 
+
+      InternalCalls.SetScaleX(entityname, scenename, scaleX);
+      InternalCalls.SetScaleY(entityname, scenename, scaleY + perLineScaleY* additionalLines);
+
+      if (choice == 1) {
+        buttonCenterY = middle + spaceing + scaleY/2 + perLineScaleY * additionalLines / 2;
+      } else buttonCenterY = middle - spaceing - scaleY / 2 - perLineScaleY * additionalLines / 2;
+
+      InternalCalls.SetPosX(entityname, scenename, buttonCenterX);
+      InternalCalls.SetPosY(entityname, scenename, buttonCenterY);
+
+      int textY = perLineScaleY * additionalLines / 2 - textYSpacing;
+
+      InternalCalls.SetTextOffset(entityname, scenename, -scaleX/2 + textXSpacing, textY);
+
+      //switch(lineCount) {
+      //case 1:
+      //    InternalCalls.SetScaleX(entityname, scenename, 740);
+      //    InternalCalls.SetScaleY(entityname, scenename, 100);
+
+      //    InternalCalls.SetPosX(entityname, scenename, -387);
+      //    InternalCalls.SetPosY(entityname, scenename, 200);
+
+      //    InternalCalls.SetTextOffset(entityname, scenename, -340, -15);
+      //break;
+      //case 2:
+      //    InternalCalls.SetScaleX(entityname, scenename, 740);
+      //    InternalCalls.SetScaleY(entityname, scenename, 135);
+
+      //    InternalCalls.SetPosX(entityname, scenename, -387);
+      //    InternalCalls.SetPosY(entityname, scenename, 180);
+
+      //    InternalCalls.SetTextOffset(entityname, scenename, -340, 7);
+      //break;
+      //case 3:
+      //    InternalCalls.SetScaleX(entityname, scenename, 740);
+      //    InternalCalls.SetScaleY(entityname, scenename, 215);
+
+      //    InternalCalls.SetPosX(entityname, scenename, -387);
+      //    InternalCalls.SetPosY(entityname, scenename, 133);
+
+      //    InternalCalls.SetTextOffset(entityname, scenename, -340, 25);
+      //break;
+      //case 4:
+      //    InternalCalls.SetScaleX(entityname, scenename, 740);
+      //    InternalCalls.SetScaleY(entityname, scenename, 229);
+
+      //    InternalCalls.SetPosX(entityname, scenename, -387);
+      //    InternalCalls.SetPosY(entityname, scenename, 133);
+
+      //    InternalCalls.SetTextOffset(entityname, scenename, -340, 50);
+      //break;
+      //case 5:
+      //    InternalCalls.SetScaleX(entityname, scenename, 740);
+      //    InternalCalls.SetScaleY(entityname, scenename, 277);
+
+      //    InternalCalls.SetPosX(entityname, scenename, -387);
+      //    InternalCalls.SetPosY(entityname, scenename, 108);
+
+      //    InternalCalls.SetTextOffset(entityname, scenename, -340, 75);
+      //break;
+    }
+  
+  #endregion
+
+  #region Dialogue helper functions
+  // Based on the current dialog ID, move to the next one. Can input choice if there is a choice selection, by default it's 1
+  public void MoveToNextDialog(int choice = 1) { 
             if (choice == 1) InternalCalls.SetCurrentDialogueID(InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID())); 
             else InternalCalls.SetCurrentDialogueID(InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID())); 
         }
     
     // Get the texts of the next dialog, able to input 1 or 2 to get the different choices
     public string GetNextDialog(int choice = 1) {
-      if (choice == 1) return InternalCalls.GetDialogue(InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()));
-      else return InternalCalls.GetDialogue(InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()));
+      int ID = 0;
+      if (choice == 1) {
+        ID = InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID());
+        //Console.WriteLine("Choice 1 is: " + ID);
+      } else {
+        ID = InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID());
+        //Console.WriteLine("Choice 2 is: " + ID);
+      }
+      //Console.WriteLine("Resultant line is: " + InternalCalls.GetDialogue(ID));
+      return InternalCalls.GetDialogue(ID);
     }
 
     /* For carrying on the dialog conversation logic
@@ -508,16 +591,22 @@ namespace BonVoyage {
           return false;
         }
 
+        Console.WriteLine("Moving on from: " + InternalCalls.GetCurrentDialogueID());
         if (choiceFlag) {
+          Console.WriteLine("It's a choice dialog");
           choiceFlag = false;
           if (InternalCalls.ButtonReleased(choice2, scene)) {
             MoveToNextDialog(2);
-          } else MoveToNextDialog(1);
-
+            Console.WriteLine("Choice 2 selected, moving to: " + InternalCalls.GetCurrentDialogueID());
+          } else {
+            MoveToNextDialog(1);
+            Console.WriteLine("Choice 1 selected, moving to: " + InternalCalls.GetCurrentDialogueID());
+          }
           InternalCalls.EntityDeactivate(choice1, scene);
           InternalCalls.EntityDeactivate(choice2, scene);
         }
         MoveToNextDialog(1);
+        Console.WriteLine("Moving to: " + InternalCalls.GetCurrentDialogueID());
 
         if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID())) {
           InternalCalls.EntityActivate(player, scene);
@@ -531,10 +620,13 @@ namespace BonVoyage {
         }
 
         if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
+          Console.WriteLine("This dialog is a choice dialog: " + InternalCalls.GetCurrentDialogueID());
           InternalCalls.EntityActivate(choice1, scene);
           InternalCalls.EntityActivate(choice2, scene);
           InternalCalls.UpdateText(choice1, scene, GetNextDialog(1));
-          InternalCalls.UpdateText(choice1, scene, GetNextDialog(2));
+          InternalCalls.UpdateText(choice2, scene, GetNextDialog(2));
+          TextAlignChoices(choice1, scene, 1);
+          TextAlignChoices(choice2, scene, 2);
           choiceFlag = true;
         }
       }

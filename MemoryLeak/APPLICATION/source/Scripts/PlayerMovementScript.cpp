@@ -31,6 +31,7 @@ void PlayerMovementScript::StartScript(const Entity& _e) {
 }
 
 void PlayerMovementScript::UpdateScript(const Entity& _e) {
+	if (Input::CheckKey(PRESS, SPACE)) std::cout << "MousePos: " << FUNC->GetWorldMousePos() << '\n';
 	/*if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
 		FUNC->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);*/
 	if (_e.HasComponent<Audio>())
