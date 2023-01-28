@@ -465,53 +465,6 @@ namespace BonVoyage {
       int textY = perLineScaleY * additionalLines / 2 - textYSpacing;
 
       InternalCalls.SetTextOffset(entityname, scenename, -scaleX/2 + textXSpacing, textY);
-
-      //switch(lineCount) {
-      //case 1:
-      //    InternalCalls.SetScaleX(entityname, scenename, 740);
-      //    InternalCalls.SetScaleY(entityname, scenename, 100);
-
-      //    InternalCalls.SetPosX(entityname, scenename, -387);
-      //    InternalCalls.SetPosY(entityname, scenename, 200);
-
-      //    InternalCalls.SetTextOffset(entityname, scenename, -340, -15);
-      //break;
-      //case 2:
-      //    InternalCalls.SetScaleX(entityname, scenename, 740);
-      //    InternalCalls.SetScaleY(entityname, scenename, 135);
-
-      //    InternalCalls.SetPosX(entityname, scenename, -387);
-      //    InternalCalls.SetPosY(entityname, scenename, 180);
-
-      //    InternalCalls.SetTextOffset(entityname, scenename, -340, 7);
-      //break;
-      //case 3:
-      //    InternalCalls.SetScaleX(entityname, scenename, 740);
-      //    InternalCalls.SetScaleY(entityname, scenename, 215);
-
-      //    InternalCalls.SetPosX(entityname, scenename, -387);
-      //    InternalCalls.SetPosY(entityname, scenename, 133);
-
-      //    InternalCalls.SetTextOffset(entityname, scenename, -340, 25);
-      //break;
-      //case 4:
-      //    InternalCalls.SetScaleX(entityname, scenename, 740);
-      //    InternalCalls.SetScaleY(entityname, scenename, 229);
-
-      //    InternalCalls.SetPosX(entityname, scenename, -387);
-      //    InternalCalls.SetPosY(entityname, scenename, 133);
-
-      //    InternalCalls.SetTextOffset(entityname, scenename, -340, 50);
-      //break;
-      //case 5:
-      //    InternalCalls.SetScaleX(entityname, scenename, 740);
-      //    InternalCalls.SetScaleY(entityname, scenename, 277);
-
-      //    InternalCalls.SetPosX(entityname, scenename, -387);
-      //    InternalCalls.SetPosY(entityname, scenename, 108);
-
-      //    InternalCalls.SetTextOffset(entityname, scenename, -340, 75);
-      //break;
     }
   
   #endregion
