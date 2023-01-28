@@ -169,6 +169,11 @@ void RenderManager::CreateLightMap()
 	mLightMapFBO.Unbind();
 }
 
+glm::vec4 RenderManager::InterpolateColor(const glm::vec4& original, const glm::vec4& target, float distance, float actual)
+{
+	return original + (target - original) * (actual / distance);
+}
+
 void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices)
 {
 	if (!lightsource.id) return;
@@ -176,11 +181,13 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	if (!_vertices.size()) return;
 
 	Vertex v0;
-	glm::vec4 clr{ 1.f, 1.f, 1.f, 0.01f };
+	glm::vec4 clr{ 1.f, 1.f, 1.f, 0.1f };
+	glm::vec4 shadowclr{ 0, 0, 0, 0.8f };
 	Math::Mat3 mtx;
 
 	Math::Vec2 lightPos = lightsource.GetComponent<Transform>().translation 
 		+ lightsource.GetComponent<LightSource>().centerOffset;
+	float radius = lightsource.GetComponent<LightSource>().radius;
 	mtx = GetTransform({ 0, 0 }, 0, lightPos);
 
 	v0.color = clr;
@@ -193,6 +200,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	{
 		mtx = GetTransform({ 0, 0 }, 0, vec);
 		v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
+		v0.color = InterpolateColor(clr, shadowclr, radius, Math::Distance(vec, lightPos));
 		v0.texID = 0.f;
 		v0.position.z = 1.f;
 		mLightVertices.push_back(v0);
@@ -212,12 +220,12 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 		mLightIndices.push_back(pivot + 2 + i);
 	}
 
-	CreateShadows();
+	CreateShadows(shadowclr);
 }
 
-void RenderManager::CreateShadows()
+void RenderManager::CreateShadows(const glm::vec4& _clr)
 {
-	glm::vec4 clr{ 0.f, 0.f, 0.f, 0.5f };
+	glm::vec4 clr = _clr;
 
 	Vertex v0, v1, v2, v3;
 

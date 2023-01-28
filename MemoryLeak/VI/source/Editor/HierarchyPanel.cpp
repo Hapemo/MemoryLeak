@@ -276,7 +276,7 @@ void HierarchyPanel::Update()
 											: ((*mGameStates)[g].mScenes[s].mLayer > (int)(*mGameStates)[g].mScenes.size() ? (int)(*mGameStates)[g].mScenes.size()
 												: (*mGameStates)[g].mScenes[s].mLayer);*/
 										(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
-											: ((*mGameStates)[g].mScenes[s].mLayer > MAX_SCENE_LAYERS ? MAX_SCENE_LAYERS
+											: ((*mGameStates)[g].mScenes[s].mLayer > MAX_SCENE_LAYERS -1  ? MAX_SCENE_LAYERS -1
 												: (*mGameStates)[g].mScenes[s].mLayer);
 									}
 									ImGui::InputInt("Order", &((*mGameStates)[g].mScenes[s].mOrder));
