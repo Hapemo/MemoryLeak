@@ -92,22 +92,18 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 				rotation += rotation < 0.f ? pi * 2.f : 0.f;
 			} else rotation = 3.f * pi / 2.f;
 
-			if ((rotation > 15.f * pi / 8.f && rotation <= 2.f * pi) || (rotation > 0.f && rotation <= pi / 8.f))
-				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png");
-			else if (rotation > pi / 8.f && rotation <= 3.f * pi / 8.f)
-				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
-			else if (rotation > 3.f * pi / 8.f && rotation <= 5.f * pi / 8.f)
-				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png");
-			else if (rotation > 5.f * pi / 8.f && rotation <= 7.f * pi / 8.f)
-				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png");
-			else if (rotation > 7.f * pi / 8.f && rotation <= 9.f * pi / 8.f)
-				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png");
-			else if (rotation > 9.f * pi / 8.f && rotation <= 11.f * pi / 8.f)
-				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
-			else if (rotation > 11.f * pi / 8.f && rotation <= 13.f * pi / 8.f)
-				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png");
-			else
-				FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
+			static const float miniAngle{ pi / 8.f };
+			float tempRotation{ rotation };
+			if (tempRotation < 0) tempRotation += 2 * pi;
+
+			if (tempRotation >= 15.f * miniAngle || tempRotation <= miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png");
+			else if (tempRotation <= 3.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
+			else if (tempRotation <= 5.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png");
+			else if (tempRotation <= 7.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png");
+			else if (tempRotation <= 9.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png");
+			else if (tempRotation <= 11.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
+			else if (tempRotation <= 13.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png");
+			else FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
 
 			if (FUNC->EntitiesCollidedByEntity(_e, littleGirl)) {
 				if (dialogueActivated == false) {
