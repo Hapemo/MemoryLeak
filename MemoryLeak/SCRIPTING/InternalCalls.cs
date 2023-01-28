@@ -90,28 +90,40 @@ namespace BonVoyage
 		internal extern static void PlayScene(string _name);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetCurrentCameraScaleX();
+		internal extern static float GetCurrentCameraScaleX();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetCurrentCameraScaleY();
+		internal extern static float GetCurrentCameraScaleY();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetCurrentCameraPosX();
+		internal extern static float GetCurrentCameraPosX();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetCurrentCameraPosY();
+		internal extern static float GetCurrentCameraPosY();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetCurrentCameraScaleX(float _x);
+		internal extern static float SetCurrentCameraScaleX(float _x);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetCurrentCameraScaleY(float _y);
+		internal extern static float SetCurrentCameraScaleY(float _y);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetCurrentCameraPosX(float _x);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetCurrentCameraPosY(float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float SqMagnitude(float _x, float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float NormalizeX(float _x, float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float NormalizeY(float _x, float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float ArcTangent(float _x, float _y);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetAnimationSpeed(string _entityName, string _sceneName, float _speed);

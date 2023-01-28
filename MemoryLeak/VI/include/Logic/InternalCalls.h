@@ -349,6 +349,15 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Math vector functions
+	*******************************************************************************/
+	static float SqMagnitude(float _x, float _y);
+	static float NormalizeX(float _x, float _y);
+	static float NormalizeY(float _x, float _y);
+	static float ArcTangent(float _x, float _y);
+
+	/*!*****************************************************************************
+	\brief
 	Set current animation image speed
 	*******************************************************************************/
 	static void SetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed);

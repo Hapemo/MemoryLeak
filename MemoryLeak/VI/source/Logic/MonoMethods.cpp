@@ -252,6 +252,10 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraScaleY", &FUNC->SetCurrentCameraScaleY);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosX", &FUNC->SetCurrentCameraPosX);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosY", &FUNC->SetCurrentCameraPosY);
+	mono_add_internal_call("BonVoyage.InternalCalls::SqMagnitude", &FUNC->SqMagnitude);
+	mono_add_internal_call("BonVoyage.InternalCalls::NormalizeX", &FUNC->NormalizeX);
+	mono_add_internal_call("BonVoyage.InternalCalls::NormalizeY", &FUNC->NormalizeY);
+	mono_add_internal_call("BonVoyage.InternalCalls::ArcTangent", &FUNC->ArcTangent);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationSpeed", &MonoMethods::SetAnimationSpeed);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationSpeed", &MonoMethods::GetAnimationSpeed);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationCurrentIndex", &MonoMethods::SetAnimationCurrentIndex);

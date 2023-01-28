@@ -12,8 +12,11 @@ namespace BonVoyage {
         private float HealInterval = 0;
         private float HealCounter = 0;
         private int OctopusAttacked = 0;
+        private float PlayerSpeed = 500f;
 
         private const int MaxHealth = 12;
+        private const float Epsilon = 1.192092896e-07F;
+        private const double Pi = 3.141592653589793238f;
 
         /* Some of these flags are here to optimise the code. Because checking this bool value is faster than button check function calls */
         private bool choiceFlag = false;      // This flag is true during choice selection dialogs
@@ -544,6 +547,47 @@ namespace BonVoyage {
                 } else {
                     InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
                 }
+            }
+            #endregion
+
+            #region Player
+            if (InternalCalls.CheckKeyHold(349)) { // Mouse click
+                float DirX = InternalCalls.GetWorldMousePosX() + InternalCalls.GetCurrentCameraPosX() - InternalCalls.GetPosX("Boat", "Level1");
+                float DirY = InternalCalls.GetWorldMousePosY() + InternalCalls.GetCurrentCameraPosY() - InternalCalls.GetPosY("Boat", "Level1");
+                float NormX = 0f, NormY = 0f;
+                if (InternalCalls.SqMagnitude(DirX, DirY) > Epsilon * Epsilon)
+                {
+                    NormX = InternalCalls.NormalizeX(DirX, DirY);
+                    NormY = InternalCalls.NormalizeY(DirX, DirY);
+                    InternalCalls.ApplyImpulse("Boat", "Level1",
+                        (NormX * PlayerSpeed * (float)InternalCalls.GetDeltaTime()),
+                        (NormY * PlayerSpeed * (float)InternalCalls.GetDeltaTime()), 0f, 0f);
+                }
+
+                float rotation = 0;
+                if (NormY != 0f && NormX >= 0f)
+                    rotation = InternalCalls.ArcTangent(NormY, NormX);
+                else if (NormY == 0f && NormX > 0f)
+                    rotation = (float)Pi / 2;
+                else if (NormY != 0f && NormX < 0f)
+                {
+                    rotation = InternalCalls.ArcTangent(NormY, NormX);
+                    rotation += rotation < 0f ? (float)Pi * 2f : 0f;
+                }
+                else rotation = 3f * (float)Pi / 2f;
+
+                const float miniAngle = (float)Pi / 8;
+                float tempRotation = rotation;
+                if (tempRotation < 0) tempRotation += 2 * (float)Pi;
+
+                if (tempRotation >= 15f * miniAngle || tempRotation <= miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 6);
+                else if (tempRotation <= 3f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 5);
+                else if (tempRotation <= 5f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 4);
+                else if (tempRotation <= 7f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 3);
+                else if (tempRotation <= 9f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 2);
+                else if (tempRotation <= 11f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 1);
+                else if (tempRotation <= 13f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 0);
+                else InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 7);
             }
             #endregion
 

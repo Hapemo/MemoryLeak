@@ -446,6 +446,26 @@ void InternalCalls::SetCurrentCameraPosY(float _y) {
 
 /*!*****************************************************************************
 \brief
+	Math vector functions
+*******************************************************************************/
+float InternalCalls::SqMagnitude(float _x, float _y) {
+	Math::Vec2 temp = { _x, _y };
+	return temp.SqMagnitude();
+}
+float InternalCalls::NormalizeX(float _x, float _y) {
+	Math::Vec2 temp = { _x, _y };
+	return temp.Normalize().x;
+}
+float InternalCalls::NormalizeY(float _x, float _y) {
+	Math::Vec2 temp = { _x, _y };
+	return temp.Normalize().y;
+}
+float InternalCalls::ArcTangent(float _x, float _y) {
+	return atan2f(_x, _y);
+}
+
+/*!*****************************************************************************
+\brief
 Set current animation image speed
 *******************************************************************************/
 void InternalCalls::SetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed) {
