@@ -349,27 +349,72 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Math vector functions
+	*******************************************************************************/
+	static float SqMagnitude(float _x, float _y);
+	static float NormalizeX(float _x, float _y);
+	static float NormalizeY(float _x, float _y);
+	static float ArcTangent(float _x, float _y);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation image speed
+	*******************************************************************************/
+	static void SetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation image speed
+	*******************************************************************************/
+	static float GetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
 	Set current animation image index by entity
 	*******************************************************************************/
-	static void SetCurrentImageIndexByEntity(Entity _e, int _index);
+	static void SetSpriteSheetIndexByEntity(Entity _e, int _index);
 
 	/*!*****************************************************************************
 	\brief
 	Get current animation image index by entity
 	*******************************************************************************/
-	static int GetCurrentImageIndexByEntity(Entity _e);
+	static int GetSpriteSheetIndexByEntity(Entity _e);
 
 	/*!*****************************************************************************
 	\brief
 	Set current animation image index
 	*******************************************************************************/
-	static void SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+	static void SetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
 
 	/*!*****************************************************************************
 	\brief
 	Get current animation image index
 	*******************************************************************************/
-	static int GetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName);
+	static int GetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation image index
+	*******************************************************************************/
+	static void SetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation image index
+	*******************************************************************************/
+	static int GetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Get current animation total frame count
+	*******************************************************************************/
+	static int GetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+	Set current animation total frame count
+	*******************************************************************************/
+	static void SetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count);
 
 	/*!*****************************************************************************
 	\brief
@@ -437,6 +482,18 @@ public:
 	Should be called in application's init
 	*******************************************************************************/
 	static void InitScriptWindow(int* _windowWidth, int* _windowHeight);
+
+	/*!*****************************************************************************
+	\brief
+		Stop a sound
+	*******************************************************************************/
+	static void StopSound(std::string const& _entityName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+		Plays a sound on loop
+	*******************************************************************************/
+	static void PlaySoundOnLoop(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief

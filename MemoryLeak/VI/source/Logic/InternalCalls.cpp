@@ -446,36 +446,102 @@ void InternalCalls::SetCurrentCameraPosY(float _y) {
 
 /*!*****************************************************************************
 \brief
-Set current animation image index
+	Math vector functions
 *******************************************************************************/
-void InternalCalls::SetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
-	Entity entity = FUNC->GetEntity(_entityName, _sceneName);
-	animator->SetCurrentImageIndex(entity, _index);
-	entity.GetComponent<SheetAnimation>().currFrameIndex = 0;
+float InternalCalls::SqMagnitude(float _x, float _y) {
+	Math::Vec2 temp = { _x, _y };
+	return temp.SqMagnitude();
+}
+float InternalCalls::NormalizeX(float _x, float _y) {
+	Math::Vec2 temp = { _x, _y };
+	return temp.Normalize().x;
+}
+float InternalCalls::NormalizeY(float _x, float _y) {
+	Math::Vec2 temp = { _x, _y };
+	return temp.Normalize().y;
+}
+float InternalCalls::ArcTangent(float _x, float _y) {
+	return atan2f(_x, _y);
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image speed
+*******************************************************************************/
+void InternalCalls::SetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().timePerFrame = _speed;
+}
+
+/*!*****************************************************************************
+\brief
+Get current animation image speed
+*******************************************************************************/
+float InternalCalls::GetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().timePerFrame;
 }
 
 /*!*****************************************************************************
 \brief
 Set current animation image index
 *******************************************************************************/
-int InternalCalls::GetCurrentImageIndex(std::string const& _entityName, std::string const& _sceneName) {
-	return animator->GetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName));
+void InternalCalls::SetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().currFrameIndex = _index;
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index
+*******************************************************************************/
+int InternalCalls::GetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().currFrameIndex;
 }
 
 /*!*****************************************************************************
 \brief
 Set current animation image index by entity
 *******************************************************************************/
-void InternalCalls::SetCurrentImageIndexByEntity(Entity _e, int _index) {
+void InternalCalls::SetSpriteSheetIndexByEntity(Entity _e, int _index) {
 	animator->SetCurrentImageIndex(_e, _index);
 }
 
 /*!*****************************************************************************
 \brief
-Set current animation image index by entity
+Get current animation image index by entity
 *******************************************************************************/
-int InternalCalls::GetCurrentImageIndexByEntity(Entity _e) {
+int InternalCalls::GetSpriteSheetIndexByEntity(Entity _e) {
 	return animator->GetCurrentImageIndex(_e);
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation image index
+*******************************************************************************/
+void InternalCalls::SetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	animator->SetCurrentImageIndex((FUNC->GetEntity(_entityName, _sceneName)), _index);
+}
+
+/*!*****************************************************************************
+\brief
+Get current animation image index
+*******************************************************************************/
+int InternalCalls::GetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName) {
+	return animator->GetCurrentImageIndex(FUNC->GetEntity(_entityName, _sceneName));
+}
+
+/*!*****************************************************************************
+\brief
+Get current animation total frame count
+*******************************************************************************/
+int InternalCalls::GetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName) {
+	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().frameCount;
+}
+
+/*!*****************************************************************************
+\brief
+Set current animation total frame count
+*******************************************************************************/
+void InternalCalls::SetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().frameCount = _count;
 }
 
 /*!*****************************************************************************
@@ -573,6 +639,26 @@ Should be called in application's init
 void InternalCalls::InitScriptWindow(int* _windowWidth, int* _windowHeight) {
 	windowWidth = _windowWidth;
 	windowHeight = _windowHeight;
+}
+
+/*!*****************************************************************************
+\brief
+	Plays a sound on loop
+*******************************************************************************/
+void InternalCalls::PlaySoundOnLoop(std::string const& _entityName, std::string const& _sceneName) {
+	if (FUNC->GetEntity(_entityName, _sceneName).HasComponent<Audio>()) {
+		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = true;
+		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.isLoop = true;
+	}
+}
+
+/*!*****************************************************************************
+\brief
+	Stop a sound
+*******************************************************************************/
+void InternalCalls::StopSound(std::string const& _entityName, std::string const& _sceneName) {
+	if (FUNC->GetEntity(_entityName, _sceneName).HasComponent<Audio>())
+		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = false;
 }
 
 /*!*****************************************************************************

@@ -74,9 +74,9 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::B)) speedCheat = !speedCheat; // speed cheat toggle
 	}
 
-	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) && (!FUNC->EntitiesCollidedByEntity(enemy, _e) || !canDie)) {
+	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) /* && (!FUNC->EntitiesCollidedByEntity(enemy, _e) || !canDie) */) {
 		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)/*|| _e.GetComponent<General>().name != "Boat"*/) {
-			Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currCamera->translation - _e.GetComponent<Transform>().translation };
+			/*Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currCamera->translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
 				FUNC->ApplyImpulseByEntity(_e, (dirVector.Normalized() * playerSpeed * (speedCheat ? speedCheatMultiplier : 1)) * (float)FUNC->GetDeltaTime(), Math::Vec2{ 0.f, 0.f });
 			if (_e.HasComponent<Audio>())
@@ -96,14 +96,14 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			float tempRotation{ rotation };
 			if (tempRotation < 0) tempRotation += 2 * pi;
 
-			if (tempRotation >= 15.f * miniAngle || tempRotation <= miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png");
-			else if (tempRotation <= 3.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png");
-			else if (tempRotation <= 5.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png");
-			else if (tempRotation <= 7.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png");
-			else if (tempRotation <= 9.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png");
-			else if (tempRotation <= 11.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png");
-			else if (tempRotation <= 13.f * miniAngle) FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png");
-			else FUNC->SetTextureByEntity(_e, "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png");
+			if (tempRotation >= 15.f * miniAngle || tempRotation <= miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 6);
+			else if (tempRotation <= 3.f * miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 5);
+			else if (tempRotation <= 5.f * miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 4);
+			else if (tempRotation <= 7.f * miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 3);
+			else if (tempRotation <= 9.f * miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 2);
+			else if (tempRotation <= 11.f * miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 1);
+			else if (tempRotation <= 13.f * miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 0);
+			else FUNC->SetSpriteSheetIndexByEntity(_e, 7);*/
 
 			if (FUNC->EntitiesCollidedByEntity(_e, littleGirl)) {
 				if (dialogueActivated == false) {

@@ -49,6 +49,6 @@ private:
 	void RayCast();
 	void CreateRays();
 	void ClearVectors();
-	void CreateCameraVertices();
+	void CreateFOVVertices();
 	void CreateObjectVertices(Entity e);
 };

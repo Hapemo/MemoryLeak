@@ -391,46 +391,6 @@
                     "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SE_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_S_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_SW_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_W_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NW_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_N_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_E_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_SE_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
                 }
             ],
             "currentImageIndex": 0
