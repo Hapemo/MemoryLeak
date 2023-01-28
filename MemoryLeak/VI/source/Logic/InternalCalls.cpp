@@ -272,7 +272,7 @@ Returns true if speaker is player using function from DialogManager.
 \param int _id
 The id of the current dialog.
 *******************************************************************************/
-bool IsPlayerSpeaker(int _id) {
+bool InternalCalls::IsPlayerSpeaker(int _id) {
 	return dialogManager->GetSpeaker(_id);
 }
 
