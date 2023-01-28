@@ -551,6 +551,8 @@ namespace BonVoyage {
             #endregion
 
             #region Player
+            const float miniAngle = (float)Pi / 8;
+            float tempRotation = 0;
             if (InternalCalls.CheckKeyHold(349)) { // Mouse click
                 float DirX = InternalCalls.GetWorldMousePosX() + InternalCalls.GetCurrentCameraPosX() - InternalCalls.GetPosX("Boat", "Level1");
                 float DirY = InternalCalls.GetWorldMousePosY() + InternalCalls.GetCurrentCameraPosY() - InternalCalls.GetPosY("Boat", "Level1");
@@ -576,8 +578,7 @@ namespace BonVoyage {
                 }
                 else rotation = 3f * (float)Pi / 2f;
 
-                const float miniAngle = (float)Pi / 8;
-                float tempRotation = rotation;
+                tempRotation = rotation;
                 if (tempRotation < 0) tempRotation += 2 * (float)Pi;
 
                 if (tempRotation >= 15f * miniAngle || tempRotation <= miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 6);
@@ -656,7 +657,7 @@ namespace BonVoyage {
                 InternalCalls.SetSpriteSheetIndex("Enemy", "Level1", 0);
             }
 
-            if (InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1")) {
+            if (InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") && HitTaken != -1) {
                 ++HitCounter;
                 if (HitCounter >= HitInterval) {
                     Console.Write("Attacking!\n");
@@ -664,6 +665,15 @@ namespace BonVoyage {
                     ++HitTaken;
                     InternalCalls.SetTexture("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
                 }
+
+                if (tempRotation >= 15f * miniAngle || tempRotation <= miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 14);
+                else if (tempRotation <= 3f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 13);
+                else if (tempRotation <= 5f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 12);
+                else if (tempRotation <= 7f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 11);
+                else if (tempRotation <= 9f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 10);
+                else if (tempRotation <= 11f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 9);
+                else if (tempRotation <= 13f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 8);
+                else InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 15);
             } else {
                 ++HealCounter;
                 if (HitTaken > 0 && HealCounter >= HealInterval) {
@@ -680,6 +690,19 @@ namespace BonVoyage {
                 HitTaken = -1;
             }
             if (HitTaken == -1 && InternalCalls.GetAnimationCurrentIndex("Boat", "Level1") == InternalCalls.GetAnimationFrameCount("Boat", "Level1") - 1)
+            {
+                if (tempRotation >= 15f * miniAngle || tempRotation <= miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 22);
+                else if (tempRotation <= 3f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 21);
+                else if (tempRotation <= 5f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 20);
+                else if (tempRotation <= 7f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 19);
+                else if (tempRotation <= 9f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 18);
+                else if (tempRotation <= 11f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 17);
+                else if (tempRotation <= 13f * miniAngle) InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 16);
+                else InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 23);
+                InternalCalls.SetAnimationCurrentIndex("Boat", "Level1", 0);
+                HitTaken = -2;
+            }
+            if (HitTaken == -2 && InternalCalls.GetAnimationCurrentIndex("Boat", "Level1") == InternalCalls.GetAnimationFrameCount("Boat", "Level1") - 1)
             {
                 InternalCalls.PauseScene("Level1");
                 InternalCalls.PlayScene("Game Over");

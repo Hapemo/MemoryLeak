@@ -706,7 +706,6 @@ float InternalCalls::GetPosY(std::string const& _entityName, std::string const& 
 Set X pos of an entity.
 *******************************************************************************/
 void InternalCalls::SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX) {
-	LOG_DEBUG(("Setting " + _entityName + " from scene " + _sceneName + " to position X " + std::to_string(_posX) + "px;").c_str());
 	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Transform>().translation.x = _posX;
 }
 
