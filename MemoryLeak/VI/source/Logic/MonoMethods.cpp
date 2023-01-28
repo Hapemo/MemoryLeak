@@ -246,4 +246,5 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::UpdateText", &MonoMethods::UpdateText);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetTextOffset", &MonoMethods::SetTextOffset);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetLineCount", &MonoMethods::GetLineCount);
+	mono_add_internal_call("BonVoyage.InternalCalls::IsPlayerSpeaker", &FUNC->IsPlayerSpeaker);
 }

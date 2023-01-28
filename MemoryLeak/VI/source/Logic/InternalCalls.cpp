@@ -267,6 +267,17 @@ int InternalCalls::GetCurrentDialogueID() {
 
 /*!*****************************************************************************
 \brief
+Returns true if speaker is player using function from DialogManager.
+
+\param int _id
+The id of the current dialog.
+*******************************************************************************/
+bool IsPlayerSpeaker(int _id) {
+	return dialogManager->GetSpeaker(_id);
+}
+
+/*!*****************************************************************************
+\brief
 This function is called by user, to change the next game state
 *******************************************************************************/
 void InternalCalls::ChangeGameState(std::string const& _name) {

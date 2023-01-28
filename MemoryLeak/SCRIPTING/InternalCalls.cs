@@ -193,5 +193,8 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetLineCount(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool IsPlayerSpeaker(int _id);
 	}
 }

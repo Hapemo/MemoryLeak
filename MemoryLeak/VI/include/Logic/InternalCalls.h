@@ -52,13 +52,9 @@ public:
 	- Returns true if inputted state matches current state of specified key
 	*******************************************************************************/
 	static bool CheckKey(E_STATE _state, E_KEY _key);
-
 	static bool CheckKeyPress(int _key);
-
 	static bool CheckKeyHold(int _key);
-
 	static bool CheckKeyRelease(int _key);
-
 	static bool CheckKeyIdle(int _key);
 
 	/*!*****************************************************************************
@@ -220,6 +216,15 @@ public:
 	The id of the current dialog.
 	*******************************************************************************/
 	static int GetCurrentDialogueID();
+
+	/*!*****************************************************************************
+	\brief
+	Returns true if speaker is player using function from DialogManager.
+
+	\param int _id
+	The id of the current dialog.
+	*******************************************************************************/
+	static bool IsPlayerSpeaker(int _id);
 
 	/*!*****************************************************************************
 	\brief
@@ -540,5 +545,4 @@ public:
 	static void UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text);
 	static void SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset);
 	static int GetLineCount(std::string const& _entityName, std::string const& _sceneName);
-
 };
