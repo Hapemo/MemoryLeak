@@ -126,6 +126,9 @@ namespace BonVoyage
 		internal extern static float ArcTangent(float _x, float _y);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float Negate(float _value);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetAnimationSpeed(string _entityName, string _sceneName, float _speed);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]

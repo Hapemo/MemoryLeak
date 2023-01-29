@@ -463,6 +463,9 @@ float InternalCalls::NormalizeY(float _x, float _y) {
 float InternalCalls::ArcTangent(float _x, float _y) {
 	return atan2f(_x, _y);
 }
+float InternalCalls::Negate(float _value) {
+	return (_value < 0 ? -_value : _value);
+}
 
 /*!*****************************************************************************
 \brief

@@ -355,6 +355,7 @@ public:
 	static float NormalizeX(float _x, float _y);
 	static float NormalizeY(float _x, float _y);
 	static float ArcTangent(float _x, float _y);
+	static float Negate(float _value);
 
 	/*!*****************************************************************************
 	\brief
