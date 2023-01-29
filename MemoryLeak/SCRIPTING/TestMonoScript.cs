@@ -67,7 +67,7 @@ namespace BonVoyage {
             }
             #endregion
 
-      #region Little Girl Dialogue
+            #region Little Girl Dialogue
       if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) {
 
         // I'll be using G1, P1, PP1 and PP2 for the refactored code
@@ -79,7 +79,7 @@ namespace BonVoyage {
       }
       #endregion
 
-      #region Passenger 1 Dialogue (currently using Little Girl dialogue lines)
+            #region Passenger 1 Dialogue (currently using Little Girl dialogue lines)
       if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) {
 
         if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunPassengerDialog) {
@@ -437,6 +437,15 @@ namespace BonVoyage {
 
                 InternalCalls.SetTextOffset(entityname, scenename, -340, 75);
             break;
+                case 6:
+                    InternalCalls.SetScaleX(entityname, scenename, 740);
+                    InternalCalls.SetScaleY(entityname, scenename, 320);
+
+                    InternalCalls.SetPosX(entityname, scenename, -387);
+                    InternalCalls.SetPosY(entityname, scenename, 89);
+
+                    InternalCalls.SetTextOffset(entityname, scenename, -340, 100);
+                    break;
             }
         }
 
