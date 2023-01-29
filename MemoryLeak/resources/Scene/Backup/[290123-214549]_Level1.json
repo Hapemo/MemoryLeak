@@ -97,17 +97,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 10.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.3499999940395355
-            },
-            "renderFlag": true
         }
     },
     {
@@ -240,12 +229,12 @@
         },
         "ShadowCaster": {
             "centerOffset": {
-                "X": 5.0,
-                "Y": -35.0
+                "X": 0.0,
+                "Y": -2.0
             },
             "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
+                "X": 0.699999988079071,
+                "Y": 0.8999999761581421
             },
             "renderFlag": true
         }
@@ -312,17 +301,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -80.0
-            },
-            "scaleOffset": {
-                "X": 0.20000000298023224,
-                "Y": 0.20000000298023224
-            },
-            "renderFlag": true
         }
     },
     {
@@ -623,17 +601,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 50.0
-            },
-            "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.6000000238418579
-            },
-            "renderFlag": true
         }
     },
     {
@@ -698,17 +665,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": -50.0,
-                "Y": -70.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -773,17 +729,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 8.0,
-                "Y": -150.0
-            },
-            "scaleOffset": {
-                "X": 0.15000000596046448,
-                "Y": 0.20000000298023224
-            },
-            "renderFlag": true
         }
     },
     {
@@ -848,17 +793,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -120.0
-            },
-            "scaleOffset": {
-                "X": 0.20000000298023224,
-                "Y": 0.20000000298023224
-            },
-            "renderFlag": true
         }
     },
     {
@@ -926,17 +860,6 @@
         },
         "Script": {
             "name": "TestMonoScript"
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -20.0
-            },
-            "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.3499999940395355
-            },
-            "renderFlag": true
         }
     },
     {
@@ -993,17 +916,6 @@
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.30000001192092896
-            },
-            "renderFlag": true
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 38.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 0.5,
                 "Y": 0.30000001192092896
             },
             "renderFlag": true
@@ -1077,17 +989,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": 10.0
-            },
-            "scaleOffset": {
-                "X": 0.5,
-                "Y": 0.4000000059604645
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1188,17 +1089,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -100.0
-            },
-            "scaleOffset": {
-                "X": 0.15000000596046448,
-                "Y": 0.30000001192092896
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1258,17 +1148,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": -115.0,
-                "Y": 65.0
-            },
-            "scaleOffset": {
-                "X": 0.3499999940395355,
-                "Y": 0.23000000417232513
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1320,17 +1199,6 @@
         },
         "Script": {
             "name": "PassengerScript"
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -50.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1401,17 +1269,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": -65.0,
-                "Y": 40.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.3499999940395355
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1484,7 +1341,7 @@
             },
             "scaleOffset": {
                 "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
+                "Y": 0.20000000298023224
             },
             "renderFlag": true
         }
@@ -1551,17 +1408,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -120.0
-            },
-            "scaleOffset": {
-                "X": 0.20000000298023224,
-                "Y": 0.25
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1626,17 +1472,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 50.0,
-                "Y": -70.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1854,17 +1689,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 3.0,
-                "Y": -80.0
-            },
-            "scaleOffset": {
-                "X": 0.20000000298023224,
-                "Y": 0.20000000298023224
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1929,17 +1753,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -20.0
-            },
-            "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.3499999940395355
-            },
-            "renderFlag": true
         }
     },
     {
@@ -2004,17 +1817,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -10.0
-            },
-            "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.3499999940395355
-            },
-            "renderFlag": true
         }
     },
     {
@@ -2209,17 +2011,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": -10.0,
-                "Y": -60.0
-            },
-            "scaleOffset": {
-                "X": 0.2199999988079071,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -2381,7 +2172,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 861.9550170898438,
-                "Y": -212.06301879882813
+                "Y": -212.06300354003906
             }
         },
         "Sprite": {
@@ -2663,12 +2454,12 @@
         },
         "ShadowCaster": {
             "centerOffset": {
-                "X": 5.0,
-                "Y": -32.0
+                "X": 0.0,
+                "Y": -20.0
             },
             "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.10000000149011612
+                "X": 0.5,
+                "Y": 0.30000001192092896
             },
             "renderFlag": true
         }

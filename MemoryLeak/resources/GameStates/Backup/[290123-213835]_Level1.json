@@ -43,13 +43,13 @@
     {
         "SceneName": "Dialogue",
         "isActive": false,
-        "layer": 8,
+        "layer": 3,
         "order": 7
     },
     {
         "SceneName": "cutscene1",
         "isActive": true,
-        "layer": 9,
+        "layer": 5,
         "order": 5
     }
 ]
