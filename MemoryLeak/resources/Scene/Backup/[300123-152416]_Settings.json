@@ -430,10 +430,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Back",
             "offset": {
-                "X": -59.0,
+                "X": -53.0,
                 "Y": -18.0
             },
             "scale": 1.0,

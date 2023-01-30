@@ -94,10 +94,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Start Game",
             "offset": {
-                "X": -144.0,
+                "X": -173.0,
                 "Y": -21.0
             },
             "scale": 1.2000000476837158,
@@ -168,11 +168,11 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "How To Play",
             "offset": {
-                "X": -160.0,
-                "Y": -24.0
+                "X": -188.0,
+                "Y": -21.0
             },
             "scale": 1.2000000476837158,
             "color": {
@@ -203,7 +203,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
+                "X": -1.2985076904296875,
                 "Y": -295.7156066894531
             }
         },
@@ -242,11 +242,11 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Quit Game",
             "offset": {
-                "X": -142.0,
-                "Y": -19.0
+                "X": -158.0,
+                "Y": -21.0
             },
             "scale": 1.2000000476837158,
             "color": {

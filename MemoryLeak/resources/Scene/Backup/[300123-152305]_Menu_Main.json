@@ -1,7 +1,7 @@
 [
     {
         "General": {
-            "name": "Background",
+            "name": "MenuBackground",
             "tag": 4,
             "subtag": 0,
             "isActive": true
@@ -22,61 +22,28 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 255
+                "a": 100
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\menu screen background.jpg",
             "layer": 0
-        }
-    },
-    {
-        "General": {
-            "name": "How_To_Play",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
         },
-        "Transform": {
-            "scale": {
-                "X": 1183.0,
-                "Y": 695.0
-            },
-            "rotation": 0.0,
-            "translation": {
+        "RectCollider": {
+            "centerOffset": {
                 "X": 0.0,
                 "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
-            "layer": 0
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "HOW TO PLAY",
-            "offset": {
-                "X": -234.0,
-                "Y": 196.0
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
             },
-            "scale": 1.5,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
+            "isTrigger": false,
+            "renderFlag": true
         }
     },
     {
         "General": {
-            "name": "Back",
+            "name": "PlayBtn",
             "tag": 5,
             "subtag": 1,
             "isActive": true
@@ -89,7 +56,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -330.75
+                "Y": -36.14518737792969
             }
         },
         "Sprite": {
@@ -103,14 +70,17 @@
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 1
         },
-        "CircleCollider": {
+        "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
                 "Y": 0.0
             },
-            "scaleOffset": 1.0,
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
             "isTrigger": false,
-            "renderFlag": false
+            "renderFlag": true
         },
         "Audio": {
             "path": "Button_Click_SFX",
@@ -125,12 +95,12 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Back",
+            "text": "Start Game",
             "offset": {
-                "X": -59.0,
-                "Y": -19.0
+                "X": -173.0,
+                "Y": -21.0
             },
-            "scale": 1.0,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -139,7 +109,7 @@
             }
         },
         "Script": {
-            "name": "BackToMainMenuButton"
+            "name": "PlayGameButton"
         },
         "Button": {
             "interactable": true
@@ -147,20 +117,20 @@
     },
     {
         "General": {
-            "name": "Instruction 1",
+            "name": "HowToPlayBtn",
             "tag": 5,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 379.0,
-                "Y": 150.0
+                "X": 496.0,
+                "Y": 99.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 89.74579620361328,
-                "Y": 135.47454833984375
+                "X": 0.0,
+                "Y": -163.85302734375
             }
         },
         "Sprite": {
@@ -168,44 +138,73 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 0
+                "a": 100
             },
-            "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 3
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Move Player",
+            "fontFile": "CaviarDreams",
+            "text": "How To Play",
             "offset": {
-                "X": -173.0,
-                "Y": -78.0
+                "X": -160.0,
+                "Y": -24.0
             },
-            "scale": 0.8999999761581421,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "HowToPlayButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
         "General": {
-            "name": "Instruction 2",
+            "name": "QuitBtn",
             "tag": 5,
-            "subtag": 0,
+            "subtag": 3,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 573.0,
-                "Y": 150.0
+                "X": 496.0,
+                "Y": 99.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 168.99154663085938,
-                "Y": 22.61437225341797
+                "X": 0.0,
+                "Y": -295.7156066894531
             }
         },
         "Sprite": {
@@ -213,134 +212,73 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 0
+                "a": 100
             },
-            "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 4
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-1.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Advance Dialogue",
+            "fontFile": "CaviarDreams",
+            "text": "Quit Game",
             "offset": {
-                "X": -253.0,
-                "Y": -18.0
+                "X": -142.0,
+                "Y": -19.0
             },
-            "scale": 0.8999999761581421,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "ExitConfirmationButton"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
         "General": {
-            "name": "Cursor",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 90.0,
-                "Y": 90.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -168.72439575195313,
-                "Y": -132.81863403320313
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 0
-            },
-            "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 2
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "ESC",
-            "offset": {
-                "X": -42.0,
-                "Y": -16.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
-            "name": "Instruction 1",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 379.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 93.51278686523438,
-                "Y": -69.32334899902344
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 3
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Pause Menu",
-            "offset": {
-                "X": -173.0,
-                "Y": -78.0
-            },
-            "scale": 0.8999999761581421,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 1",
+            "name": "Title",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 90.0,
-                "Y": 90.0
+                "X": 944.0,
+                "Y": 285.1781311035156
             },
             "rotation": 0.0,
             "translation": {
-                "X": -167.73953247070313,
-                "Y": 44.4610710144043
+                "X": 0.0,
+                "Y": 193.67959594726563
             }
         },
         "Sprite": {
@@ -351,8 +289,92 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Icons\\cursors\\UI_Cursor_Mouse_0001.png",
-            "layer": 5
+            "texture": "Textures\\Menu\\bon voyage logo 5.png",
+            "layer": 1
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 700.0,
+                "Y": -370.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\credits-icon.png",
+            "layer": 1
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Settings",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 700.0,
+                "Y": -220.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\settings-icon.png",
+            "layer": 1
+        },
+        "Animation": {
+            "sheets": [],
+            "currentImageIndex": 0
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "SettingsButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

@@ -59,10 +59,10 @@
             "layer": 0
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "HOW TO PLAY",
             "offset": {
-                "X": -234.0,
+                "X": -249.0,
                 "Y": 196.0
             },
             "scale": 1.5,
@@ -124,10 +124,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Back",
             "offset": {
-                "X": -59.0,
+                "X": -55.0,
                 "Y": -19.0
             },
             "scale": 1.0,
@@ -175,7 +175,7 @@
             "layer": 3
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Move Player",
             "offset": {
                 "X": -173.0,
@@ -204,8 +204,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 168.99154663085938,
-                "Y": 22.61437225341797
+                "X": 172.88699340820313,
+                "Y": 24.029464721679688
             }
         },
         "Sprite": {
@@ -220,7 +220,7 @@
             "layer": 4
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Advance Dialogue",
             "offset": {
                 "X": -253.0,
@@ -265,7 +265,7 @@
             "layer": 2
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "ESC",
             "offset": {
                 "X": -42.0,
@@ -310,7 +310,7 @@
             "layer": 3
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Pause Menu",
             "offset": {
                 "X": -173.0,

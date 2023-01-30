@@ -13,7 +13,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1.29852294921875,
+                "X": 0.0,
                 "Y": 0.0
             }
         },
@@ -29,13 +29,13 @@
             "layer": 6
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Are you sure you want to quit?",
             "offset": {
-                "X": -485.0,
+                "X": -443.0,
                 "Y": -7.0
             },
-            "scale": 1.100000023841858,
+            "scale": 1.2999999523162842,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -85,11 +85,11 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Yes",
             "offset": {
-                "X": -45.0,
-                "Y": -19.0
+                "X": -40.0,
+                "Y": -17.0
             },
             "scale": 1.0,
             "color": {
@@ -147,11 +147,11 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "No",
             "offset": {
                 "X": -29.0,
-                "Y": -19.0
+                "Y": -17.0
             },
             "scale": 1.0,
             "color": {
