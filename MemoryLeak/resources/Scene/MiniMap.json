@@ -59,14 +59,15 @@
         },
         "Button": {
             "interactable": true
-        }
+        },
+        "CircularViewport": {}
     },
     {
         "General": {
             "name": "minimapbig",
             "tag": 4,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {

@@ -1,5 +1,5 @@
 /*!*****************************************************************************
-\file texture.frag
+\file circularvp.frag
 \author Kew Yu Jun
 \par DP email: k.yujun\@digipen.edu
 \par Group: Memory Leak Studios
@@ -26,7 +26,7 @@ uniform sampler2D uTex2D[16];
 Main function of the fragment shader.
 *******************************************************************************/
 void main (void) {
-//	if (distance(vec2(0.5, 0.5), vTexCoord) > 0.5)
-//		return;
+	if (distance(vec2(0.5, 0.5), vTexCoord) > 0.5)
+		return;
 	fFragColor =  texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
 }

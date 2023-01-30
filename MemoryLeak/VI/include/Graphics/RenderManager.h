@@ -269,7 +269,7 @@ private:
 	int* mWindowHeight;
 	GLShader mDefaultProgram;
 	GLShader mTextureProgram;
-	//GLShader mMinimapProgram;
+	GLShader mCircularViewportProgram;
 	GLAllocator mAllocator;
 	std::vector<Vertex> mTextureVertices;
 	std::vector<GLushort> mTextureIndices;
@@ -281,10 +281,10 @@ private:
 	std::vector<Entity> mEditorSelectedEntities;
 	std::vector<Vertex> mLightVertices;
 	std::vector<GLushort> mLightIndices;
+
 	VIzmo mGizmo;
 	int mPrevWidth;
 	int mInitialWidth, mInitialHeight;
-	//Entity minimap;
 	bool mDebug;
 	std::vector<int> mRenderLayers;
 	Color mClearColor;
@@ -312,6 +312,8 @@ private:
 	void BindTextureUnit(const GLuint& _texID, TextureInfo& _texInfo, std::vector<int>& _texUnits);
 
 	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
+	
+	void BatchRenderVPLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
 	void CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices);
 
@@ -367,7 +369,7 @@ private:
 	\brief
 	Creating vertices from the ECS.
 	*******************************************************************************/
-	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
+	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo);
 
 	void CreateVerticesAnimator(std::map<size_t, std::map<GLuint, TextureInfo>>& _texInfo);
 
@@ -391,7 +393,7 @@ private:
 	\brief
 	Rendering of textures
 	*******************************************************************************/
-	void RenderTextures(std::map<GLuint, TextureInfo>& _texInfo);
+	void RenderTextures(std::map<GLuint, TextureInfo>& _texInfo, bool _cvp);
 
 	/*!*****************************************************************************
 	\brief

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace BonVoyage {
+namespace BonVoyage
+{
     public class TestMonoScript
     {
         private bool fragment1 = false;
@@ -34,9 +35,13 @@ namespace BonVoyage {
         private string currentobjective = "";
         private bool objectiveexpanded = false;
 
-        public void Init() {
+        private bool camZoomingIn = false;
+        private bool camZoomingOut = false;
+        private float camScaleX = 700;
+
+        public void Init()
+        {
             //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
-            CameraZoomIn();
             halfX = InternalCalls.GetPosX("Water", "Level1");
             halfY = InternalCalls.GetPosY("Water", "Level1");
             maxX = (InternalCalls.GetScaleX("Water", "Level1") / 2) + halfX - InternalCalls.GetScaleX("Enemy", "Level1");
@@ -45,48 +50,57 @@ namespace BonVoyage {
             minY = halfY - (InternalCalls.GetScaleY("Water", "Level1") / 2) + InternalCalls.GetScaleY("Enemy", "Level1");
 
 
-            
+
 
         }
 
-        public void Update() {
+        public void Update()
+        {
             #region Intro Dialogue
-            if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1")) {
-                if (RunIntroDialog && InternalCalls.EntityIsActive("IntroBox", "Level1")) {
-                  LockPosition(160, 120);
-                  RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
-                  if (!RunIntroDialog) InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
+            if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1"))
+            {
+                if (RunIntroDialog && InternalCalls.EntityIsActive("IntroBox", "Level1"))
+                {
+                    LockPosition(160, 120);
+                    RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
+                    if (!RunIntroDialog) InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
                 }
             }
             #endregion
 
             #region Little Girl Dialogue
-      if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) {
-        // I'll be using G1, P1, PP1 and PP2 for the refactored code
-        if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
-          LockPosition(-295, -85);
-          RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
+            if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1"))
+            {
+                // I'll be using G1, P1, PP1 and PP2 for the refactored code
+                if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog)
+                {
+                    LockPosition(-295, -85);
+                    RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
 
-          if (!RunlittleGirlDialog) {
-              InternalCalls.EntityDeactivate("Little Girl", "Level1");
-              SetObjectiveText();
-          }
-        }
-      }
-      #endregion
+                    if (!RunlittleGirlDialog)
+                    {
+                        InternalCalls.EntityDeactivate("Little Girl", "Level1");
+                        SetObjectiveText();
+                    }
+                }
+            }
+            #endregion
 
             #region Passenger 1 Dialogue
-      if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) {
-        if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1")) {
-          LockPosition(-1240, 670);
-          RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
+            if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1"))
+            {
+                if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1"))
+                {
+                    LockPosition(-1240, 670);
+                    RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
 
-          if (!RunPassengerDialog) {
-              SetPosition("Passenger_1", "Level1", -1240, 670);
-              SetObjectiveText();
-          }
-        }
-      }
+                    if (!RunPassengerDialog)
+                    {
+                        SetPosition("Passenger_1", "Level1", -1240, 670);
+                        SetObjectiveText();
+                    }
+                }
+            }
             #endregion
 
             #region Passenger 1 Delivered
@@ -106,11 +120,15 @@ namespace BonVoyage {
                 InternalCalls.EntityDeactivate("fragment1drop", "Level1");
             }
 
-            if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
-                if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
+            if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true)
+            {
+                if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false)
+                {
                     InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");
                     if (fragment1 == true) { InternalCalls.EntityActivate("fragment1obj", "Dialogue"); }
-                } else {
+                }
+                else
+                {
                     InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
                     if (fragment1 == true) { InternalCalls.EntityDeactivate("fragment1obj", "Dialogue"); }
                 }
@@ -212,11 +230,13 @@ namespace BonVoyage {
             #region Player
             float PlayerPosX = InternalCalls.GetPosX("Boat", "Level1");
             float PlayerPosY = InternalCalls.GetPosY("Boat", "Level1");
-            if (InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false) { // Mouse click
+            if (InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false)
+            { // Mouse click
                 float DirX = InternalCalls.GetWorldMousePosX() + InternalCalls.GetCurrentCameraPosX() - PlayerPosX;
                 float DirY = InternalCalls.GetWorldMousePosY() + InternalCalls.GetCurrentCameraPosY() - PlayerPosY;
                 float NormX = 0f, NormY = 0f;
-                if (InternalCalls.SqMagnitude(DirX, DirY) > Epsilon * Epsilon) {
+                if (InternalCalls.SqMagnitude(DirX, DirY) > Epsilon * Epsilon)
+                {
                     NormX = InternalCalls.NormalizeX(DirX, DirY);
                     NormY = InternalCalls.NormalizeY(DirX, DirY);
                     ApplyForce("Boat", "Level1", NormX, NormY, PlayerSpeed);
@@ -224,6 +244,10 @@ namespace BonVoyage {
                 PlayerRotation = GetRotation(NormX, NormY);
                 SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
             }
+            #endregion
+
+            #region Camera Update
+            UpdateCamera();
             #endregion
 
             #region Enemy
@@ -236,7 +260,8 @@ namespace BonVoyage {
             float EnemyDisX = EnemyPosX - PlayerPosX;
             float EnemyDisY = EnemyPosY - PlayerPosY;
             float EnemyNormDisX = 0f, EnemyNormDisY = 0f;
-            if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
+            if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon)
+            {
                 EnemyNormDisX = InternalCalls.NormalizeX(EnemyDisX, EnemyDisY);
                 EnemyNormDisY = InternalCalls.NormalizeY(EnemyDisX, EnemyDisY);
             }
@@ -245,13 +270,15 @@ namespace BonVoyage {
             if (EnemyPosX <= InternalCalls.GetCurrentCameraPosX() + (InternalCalls.GetCurrentCameraScaleX() / 2) &&
                 EnemyPosY <= InternalCalls.GetCurrentCameraPosY() + (InternalCalls.GetCurrentCameraScaleY() / 2) &&
                 EnemyPosX >= InternalCalls.GetCurrentCameraPosX() - (InternalCalls.GetCurrentCameraScaleX() / 2) &&
-                EnemyPosY >= InternalCalls.GetCurrentCameraPosY() - (InternalCalls.GetCurrentCameraScaleY() / 2)) {
+                EnemyPosY >= InternalCalls.GetCurrentCameraPosY() - (InternalCalls.GetCurrentCameraScaleY() / 2))
+            {
                 float EnemyRotation = 0;
                 EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
                 //SetCharRotation(EnemyRotation, "Enemy", "Level1", "Idle");
 
                 // Chasing player
-                if (InternalCalls.Negate(EnemyDisX) <= InternalCalls.GetScaleX("EnemyTrigger", "Level1") && InternalCalls.Negate(EnemyDisY) <= InternalCalls.GetScaleY("EnemyTrigger", "Level1")) {
+                if (InternalCalls.Negate(EnemyDisX) <= InternalCalls.GetScaleX("EnemyTrigger", "Level1") && InternalCalls.Negate(EnemyDisY) <= InternalCalls.GetScaleY("EnemyTrigger", "Level1"))
+                {
                     EnemyLoiter = false;
                     //if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
                     //    ApplyForce("Enemy", "Level1", EnemyNormDisX, EnemyNormDisY, EnemySpeed);
@@ -264,8 +291,10 @@ namespace BonVoyage {
                 }
                 else EnemyLoiter = true;
 
-                if (InternalCalls.EntitiesCollided("Boat", "EnemyTrigger", "Level1")) {
-                    switch (OctopusAttacked) {
+                if (InternalCalls.EntitiesCollided("Boat", "EnemyTrigger", "Level1"))
+                {
+                    switch (OctopusAttacked)
+                    {
                         case 0:
                             OctopusAttacked = 1;
                             InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
@@ -275,7 +304,8 @@ namespace BonVoyage {
                             HealInterval = HitInterval * 4.0f;
                             break;
                         case 1:
-                            if (InternalCalls.GetAnimationCurrentIndex("Enemy", "Level1") == InternalCalls.GetAnimationFrameCount("Enemy", "Level1") - 1) {
+                            if (InternalCalls.GetAnimationCurrentIndex("Enemy", "Level1") == InternalCalls.GetAnimationFrameCount("Enemy", "Level1") - 1)
+                            {
                                 SetCharRotation(EnemyRotation, "Enemy", "Level1", "Attack1");
                                 InternalCalls.SetAnimationCurrentIndex("Enemy", "Level1", 0);
                                 OctopusAttacked = 2;
@@ -284,16 +314,20 @@ namespace BonVoyage {
                         default:
                             break;
                     }
-                } else {
+                }
+                else
+                {
                     OctopusAttacked = 0;
                     InternalCalls.StopSound("EnemyTrigger", "Level1");
                     SetCharRotation(EnemyRotation, "Enemy", "Level1", "Idle");
                 }
 
-                if ((InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") || InternalCalls.EntitiesCollided("Enemy", "Boat", "Level1")) && HitTaken != -1) {
+                if ((InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") || InternalCalls.EntitiesCollided("Enemy", "Boat", "Level1")) && HitTaken != -1)
+                {
                     //Console.Write("HitCounter!\n");
                     HitCounter += (float)InternalCalls.GetDeltaTime();
-                    if (HitCounter >= HitInterval) {
+                    if (HitCounter >= HitInterval)
+                    {
                         //Console.Write("Attacking!\n");
                         HitCounter = 0;
                         ++HitTaken;
@@ -303,21 +337,25 @@ namespace BonVoyage {
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Hit");
                 }
 
-                if(HitTaken == MaxHealth) {
+                if (HitTaken == MaxHealth)
+                {
                     Console.Write("MaxHealth");
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Death");
                     InternalCalls.SetAnimationCurrentIndex("Boat", "Level1", 0);
                     HitTaken = -1;
                 }
-                if (HitTaken == -1 && InternalCalls.GetAnimationCurrentIndex("Boat", "Level1") == InternalCalls.GetAnimationFrameCount("Boat", "Level1") - 1) {
+                if (HitTaken == -1 && InternalCalls.GetAnimationCurrentIndex("Boat", "Level1") == InternalCalls.GetAnimationFrameCount("Boat", "Level1") - 1)
+                {
                     InternalCalls.PauseScene("Level1");
                     InternalCalls.PlayScene("Game Over");
                 }
             }
 
             // Loitering
-            if (EnemyLoiter) {
-                switch (CheckRegion("Enemy", "Level1")) {
+            if (EnemyLoiter)
+            {
+                switch (CheckRegion("Enemy", "Level1"))
+                {
                     case 1:
                         EnemyChangeInX = rand.Next(0, 5);
                         EnemyChangeInY = rand.Next(-4, 1);
@@ -352,9 +390,11 @@ namespace BonVoyage {
             InternalCalls.SetPosY("Enemy", "Level1", EnemyPosY + EnemyChangeInY);
 
             // Healing player
-            if (!InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") && HitTaken > 0) {
+            if (!InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") && HitTaken > 0)
+            {
                 ++HealCounter;
-                if (HealCounter >= HealInterval) {
+                if (HealCounter >= HealInterval)
+                {
                     //Console.Write("Regenerating!\n");
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
                     HealCounter = 0;
@@ -386,7 +426,8 @@ namespace BonVoyage {
             }
         }
 
-        public void DisableUI() {
+        public void DisableUI()
+        {
             InternalCalls.EntityDeactivate("hpbar", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragment", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
@@ -406,7 +447,8 @@ namespace BonVoyage {
             InternalCalls.EntityDeactivate("objectivetext", "Dialogue");
         }
 
-        public void EnableUI() {
+        public void EnableUI()
+        {
             InternalCalls.EntityActivate("hpbar", "Dialogue");
             InternalCalls.EntityActivate("memoryfragment", "Dialogue");
 
@@ -418,175 +460,216 @@ namespace BonVoyage {
             InternalCalls.EntityActivate("objectivetext", "Dialogue");
         }
 
-        public void CameraZoomIn() {
-            InternalCalls.SetCurrentCameraScaleX(700);
+        public void UpdateCamera()
+        {
+            if (camZoomingIn)
+            {
+                camScaleX -= 500 * (float)InternalCalls.GetDeltaTime();
+                InternalCalls.SetCurrentCameraScaleX(camScaleX);
+                if (camScaleX < 700)
+                {
+                    camScaleX = 700;
+                    InternalCalls.SetCurrentCameraScaleX(700);
+                    camZoomingIn = false;
+                }
+            }
+            if (camZoomingOut)
+            {
+                camScaleX += 500 * (float)InternalCalls.GetDeltaTime();
+                InternalCalls.SetCurrentCameraScaleX(camScaleX);
+                if (camScaleX > 1600)
+                {
+                    camScaleX = 1600;
+                    InternalCalls.SetCurrentCameraScaleX(1600);
+                    camZoomingOut = false;
+                }
+            }
         }
 
-        public void CameraZoomOut() {
-            InternalCalls.SetCurrentCameraScaleX(1600);
+        // int scaleX           - This is the default width of button
+        // int posX             - This is the center X coordinate of button (500)
+        // int posY             - This is the center Y coordinate of button. If it's choice, it's the middle of both buttons (-25)
+        // int spaceing         - Spacing between choice button edge from middle, useless for single button.
+        // int perLineScaleY    - This is the increment for one additional line
+        // int textXSpacing     - This is the spacing of the text from the left edge of the box 
+        // int textYSpacing     - This is the spacing of the text from the top edge of the box 
+        public void TextAlignChoices(string entityname, string scenename, int posX, int posY, int scaleX = 500, int perLineScaleY = 60, int textXSpacing = 50, int textYSpacing = 15, int choice = 0, int spacing = 15)
+        {
+            int additionalLines = InternalCalls.GetLineCount(entityname, scenename) - 1;
+            int scaleY = 100;         // This is the default height of button, will changing with respect to line count
+
+            InternalCalls.SetScaleX(entityname, scenename, scaleX);
+            InternalCalls.SetScaleY(entityname, scenename, scaleY + perLineScaleY * additionalLines);
+
+            if (choice == 1) posY = posY + spacing + scaleY / 2 + perLineScaleY * additionalLines / 2;
+            else if (choice == 2) posY = posY - spacing - scaleY / 2 - perLineScaleY * additionalLines / 2;
+
+            InternalCalls.SetPosX(entityname, scenename, posX);
+            InternalCalls.SetPosY(entityname, scenename, posY);
+
+            int textY = perLineScaleY * additionalLines / 2 - textYSpacing;
+            InternalCalls.SetTextOffset(entityname, scenename, -scaleX / 2 + textXSpacing, textY);
         }
 
-    // int scaleX           - This is the default width of button
-    // int posX             - This is the center X coordinate of button (500)
-    // int posY             - This is the center Y coordinate of button. If it's choice, it's the middle of both buttons (-25)
-    // int spaceing         - Spacing between choice button edge from middle, useless for single button.
-    // int perLineScaleY    - This is the increment for one additional line
-    // int textXSpacing     - This is the spacing of the text from the left edge of the box 
-    // int textYSpacing     - This is the spacing of the text from the top edge of the box 
-    public void TextAlignChoices(string entityname, string scenename, int posX, int posY, int scaleX = 500, int perLineScaleY = 60, int textXSpacing = 50, int textYSpacing = 15, int choice = 0, int spacing = 15) {
-      int additionalLines = InternalCalls.GetLineCount(entityname, scenename) - 1;
-      int scaleY = 100;         // This is the default height of button, will changing with respect to line count
-
-      InternalCalls.SetScaleX(entityname, scenename, scaleX);
-      InternalCalls.SetScaleY(entityname, scenename, scaleY + perLineScaleY * additionalLines);
-
-      if (choice == 1)      posY = posY + spacing + scaleY / 2 + perLineScaleY * additionalLines / 2;
-      else if (choice == 2) posY = posY - spacing - scaleY / 2 - perLineScaleY * additionalLines / 2;
-
-      InternalCalls.SetPosX(entityname, scenename, posX);
-      InternalCalls.SetPosY(entityname, scenename, posY);
-
-      int textY = perLineScaleY * additionalLines / 2 - textYSpacing;
-      InternalCalls.SetTextOffset(entityname, scenename, -scaleX / 2 + textXSpacing, textY);
-    }
-  
-  #endregion
-
-  #region Dialogue helper functions
-  // Based on the current dialog ID, move to the next one. Can input choice if there is a choice selection, by default it's 1
-  public void MoveToNextDialog(int choice = 1) { 
-            if (choice == 1) InternalCalls.SetCurrentDialogueID(InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID())); 
-            else InternalCalls.SetCurrentDialogueID(InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID())); 
-        }
-    
-    // Get the texts of the next dialog, able to input 1 or 2 to get the different choices
-    public string GetNextDialog(int choice = 1) {
-      int ID = 0;
-      if (choice == 1) {
-        ID = InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID());
-        //Console.WriteLine("Choice 1 is: " + ID);
-      } else {
-        ID = InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID());
-        //Console.WriteLine("Choice 2 is: " + ID);
-      }
-      //Console.WriteLine("Resultant line is: " + InternalCalls.GetDialogue(ID));
-      return InternalCalls.GetDialogue(ID);
-    }
-
-    /* For carrying on the dialog conversation logic. It will automatically zoom in and out, disabling and enabling UI too.
-     * player - The chatbox entity of the player
-     * notPlayer - The chatbox entity of the entity the player is talking to
-     * choice1 - The chatbox entity of the first choice dialog
-     * choice2 - The chatbox entity of the second choice dialog
-     * scene - The scene of all the chatbox entities (All must be the same scene)
-     * dialogFile - Dialog file name
-     * return bool - True if dialog is still running. False if dialog has ended.
-    */
-    public bool RunDialog(string player, string notPlayer, string choice1, string choice2, string scene, string dialogFile) {
-      if (!starttalking) {
-        DisableUI();
-        // Load Little Girl Talking
-        InternalCalls.LoadDialogs(dialogFile);
-        InternalCalls.SetCurrentDialogueID(1);
-
-        // Setting default P1, PP1, PP2 positions
-        InternalCalls.SetPosX(choice1, scene, 500);
-        InternalCalls.SetPosY(choice1, scene, 46);
-        InternalCalls.SetPosX(choice2, scene, 500);
-        InternalCalls.SetPosY(choice2, scene, -90);
-        InternalCalls.SetPosX(player, scene, 450);
-        InternalCalls.SetPosY(player, scene, 5);
-
-        // Activate little girl dialogue
-        string firstSpeaker;
-        if (InternalCalls.IsPlayerSpeaker(1)) firstSpeaker = player;
-        else firstSpeaker = notPlayer;
-
-        InternalCalls.EntityActivate(firstSpeaker, scene);
-        InternalCalls.UpdateText(firstSpeaker, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-
-        if (InternalCalls.IsPlayerSpeaker(1)) { }// TODO player alignment
-        else TextAlignChoices(notPlayer, scene, -387, 200, 740);
-
-        CameraZoomIn();
-        starttalking = true;
-      }
-
-      // Button click set flags
-      if (choiceFlag) {
-        if (InternalCalls.ButtonReleased(choice1, scene) || InternalCalls.ButtonReleased(choice2, scene)) updateChat = true;
-      } else if (InternalCalls.ButtonReleased(player, scene) || InternalCalls.ButtonReleased(notPlayer, scene)) updateChat = true;
-
-      // Logic done using those flags
-      if (updateChat) {
-        updateChat = false;
-
-        // Finish dialog
-        if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0) {
-          DeactivateDialogBox(player, notPlayer, choice1, choice2, scene);
-          starttalking = false;
-          CameraZoomOut();
-          EnableUI();
-          //Console.WriteLine("finished dialog");
-          return false;
-        }
-
-        //Console.WriteLine("Moving on from: " + InternalCalls.GetCurrentDialogueID());
-        if (choiceFlag) {
-          //Console.WriteLine("It's a choice dialog");
-          choiceFlag = false;
-          if (InternalCalls.ButtonReleased(choice2, scene)) {
-            MoveToNextDialog(2);
-            //Console.WriteLine("Choice 2 selected, moving to: " + InternalCalls.GetCurrentDialogueID());
-          } else {
-            MoveToNextDialog(1);
-            //Console.WriteLine("Choice 1 selected, moving to: " + InternalCalls.GetCurrentDialogueID());
-          }
-          InternalCalls.EntityDeactivate(choice1, scene);
-          InternalCalls.EntityDeactivate(choice2, scene);
-        }
-        MoveToNextDialog(1);
-        //Console.WriteLine("Moving to: " + InternalCalls.GetCurrentDialogueID());
-
-        if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID())) {
-          InternalCalls.EntityActivate(player, scene);
-          InternalCalls.EntityDeactivate(notPlayer, scene);
-          InternalCalls.UpdateText(player, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-          TextAlignChoices(player, scene, 450, 5, 500);
-        } else {
-          InternalCalls.EntityActivate(notPlayer, scene);
-          InternalCalls.EntityDeactivate(player, scene);
-          InternalCalls.UpdateText(notPlayer, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-          TextAlignChoices(notPlayer, scene, -387, 200, 740);
-        }
-
-        if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
-          //Console.WriteLine("This dialog is a choice dialog: " + InternalCalls.GetCurrentDialogueID());
-          InternalCalls.EntityActivate(choice1, scene);
-          InternalCalls.EntityActivate(choice2, scene);
-          InternalCalls.UpdateText(choice1, scene, GetNextDialog(1));
-          InternalCalls.UpdateText(choice2, scene, GetNextDialog(2));
-          TextAlignChoices(choice1, scene, 500, -25, 500, 70, 50, 25, 1);
-          TextAlignChoices(choice2, scene, 500, -25, 500, 70, 50, 25, 2);
-          choiceFlag = true;
-        }
-      }
-      return true;
-    }
-
-    public void DeactivateDialogBox(string player, string notPlayer, string choice1, string choice2, string scene) {
-      InternalCalls.EntityDeactivate(player, scene);
-      InternalCalls.EntityDeactivate(notPlayer, scene);
-      InternalCalls.EntityDeactivate(choice1, scene);
-      InternalCalls.EntityDeactivate(choice2, scene);
-    }
         #endregion
-        public void LockPosition(float x, float y) {
-          InternalCalls.SetPosX("Boat", "Level1", x);
-          InternalCalls.SetPosY("Boat", "Level1", y);
+
+        #region Dialogue helper functions
+        // Based on the current dialog ID, move to the next one. Can input choice if there is a choice selection, by default it's 1
+        public void MoveToNextDialog(int choice = 1)
+        {
+            if (choice == 1) InternalCalls.SetCurrentDialogueID(InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()));
+            else InternalCalls.SetCurrentDialogueID(InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()));
         }
 
-        public void SetPosition(string entityname, string scenename, float x, float y) {
+        // Get the texts of the next dialog, able to input 1 or 2 to get the different choices
+        public string GetNextDialog(int choice = 1)
+        {
+            int ID = 0;
+            if (choice == 1)
+            {
+                ID = InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID());
+                //Console.WriteLine("Choice 1 is: " + ID);
+            }
+            else
+            {
+                ID = InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID());
+                //Console.WriteLine("Choice 2 is: " + ID);
+            }
+            //Console.WriteLine("Resultant line is: " + InternalCalls.GetDialogue(ID));
+            return InternalCalls.GetDialogue(ID);
+        }
+
+        /* For carrying on the dialog conversation logic. It will automatically zoom in and out, disabling and enabling UI too.
+         * player - The chatbox entity of the player
+         * notPlayer - The chatbox entity of the entity the player is talking to
+         * choice1 - The chatbox entity of the first choice dialog
+         * choice2 - The chatbox entity of the second choice dialog
+         * scene - The scene of all the chatbox entities (All must be the same scene)
+         * dialogFile - Dialog file name
+         * return bool - True if dialog is still running. False if dialog has ended.
+        */
+        public bool RunDialog(string player, string notPlayer, string choice1, string choice2, string scene, string dialogFile)
+        {
+            if (!starttalking)
+            {
+                DisableUI();
+                // Load Little Girl Talking
+                InternalCalls.LoadDialogs(dialogFile);
+                InternalCalls.SetCurrentDialogueID(1);
+
+                // Setting default P1, PP1, PP2 positions
+                InternalCalls.SetPosX(choice1, scene, 500);
+                InternalCalls.SetPosY(choice1, scene, 46);
+                InternalCalls.SetPosX(choice2, scene, 500);
+                InternalCalls.SetPosY(choice2, scene, -90);
+                InternalCalls.SetPosX(player, scene, 450);
+                InternalCalls.SetPosY(player, scene, 5);
+
+                // Activate little girl dialogue
+                string firstSpeaker;
+                if (InternalCalls.IsPlayerSpeaker(1)) firstSpeaker = player;
+                else firstSpeaker = notPlayer;
+
+                InternalCalls.EntityActivate(firstSpeaker, scene);
+                InternalCalls.UpdateText(firstSpeaker, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+
+                if (InternalCalls.IsPlayerSpeaker(1)) { }// TODO player alignment
+                else TextAlignChoices(notPlayer, scene, -387, 200, 740);
+
+                camZoomingIn = true;
+                starttalking = true;
+            }
+
+            // Button click set flags
+            if (choiceFlag)
+            {
+                if (InternalCalls.ButtonReleased(choice1, scene) || InternalCalls.ButtonReleased(choice2, scene)) updateChat = true;
+            }
+            else if (InternalCalls.ButtonReleased(player, scene) || InternalCalls.ButtonReleased(notPlayer, scene)) updateChat = true;
+
+            // Logic done using those flags
+            if (updateChat)
+            {
+                updateChat = false;
+
+                // Finish dialog
+                if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0)
+                {
+                    DeactivateDialogBox(player, notPlayer, choice1, choice2, scene);
+                    starttalking = false;
+                    camZoomingOut = true;
+                    EnableUI();
+                    //Console.WriteLine("finished dialog");
+                    return false;
+                }
+
+                //Console.WriteLine("Moving on from: " + InternalCalls.GetCurrentDialogueID());
+                if (choiceFlag)
+                {
+                    //Console.WriteLine("It's a choice dialog");
+                    choiceFlag = false;
+                    if (InternalCalls.ButtonReleased(choice2, scene))
+                    {
+                        MoveToNextDialog(2);
+                        //Console.WriteLine("Choice 2 selected, moving to: " + InternalCalls.GetCurrentDialogueID());
+                    }
+                    else
+                    {
+                        MoveToNextDialog(1);
+                        //Console.WriteLine("Choice 1 selected, moving to: " + InternalCalls.GetCurrentDialogueID());
+                    }
+                    InternalCalls.EntityDeactivate(choice1, scene);
+                    InternalCalls.EntityDeactivate(choice2, scene);
+                }
+                MoveToNextDialog(1);
+                //Console.WriteLine("Moving to: " + InternalCalls.GetCurrentDialogueID());
+
+                if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID()))
+                {
+                    InternalCalls.EntityActivate(player, scene);
+                    InternalCalls.EntityDeactivate(notPlayer, scene);
+                    InternalCalls.UpdateText(player, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+                    TextAlignChoices(player, scene, 450, 5, 500);
+                }
+                else
+                {
+                    InternalCalls.EntityActivate(notPlayer, scene);
+                    InternalCalls.EntityDeactivate(player, scene);
+                    InternalCalls.UpdateText(notPlayer, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+                    TextAlignChoices(notPlayer, scene, -387, 200, 740);
+                }
+
+                if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0)
+                {
+                    //Console.WriteLine("This dialog is a choice dialog: " + InternalCalls.GetCurrentDialogueID());
+                    InternalCalls.EntityActivate(choice1, scene);
+                    InternalCalls.EntityActivate(choice2, scene);
+                    InternalCalls.UpdateText(choice1, scene, GetNextDialog(1));
+                    InternalCalls.UpdateText(choice2, scene, GetNextDialog(2));
+                    TextAlignChoices(choice1, scene, 500, -25, 500, 70, 50, 25, 1);
+                    TextAlignChoices(choice2, scene, 500, -25, 500, 70, 50, 25, 2);
+                    choiceFlag = true;
+                }
+            }
+            return true;
+        }
+
+        public void DeactivateDialogBox(string player, string notPlayer, string choice1, string choice2, string scene)
+        {
+            InternalCalls.EntityDeactivate(player, scene);
+            InternalCalls.EntityDeactivate(notPlayer, scene);
+            InternalCalls.EntityDeactivate(choice1, scene);
+            InternalCalls.EntityDeactivate(choice2, scene);
+        }
+        #endregion
+        public void LockPosition(float x, float y)
+        {
+            InternalCalls.SetPosX("Boat", "Level1", x);
+            InternalCalls.SetPosY("Boat", "Level1", y);
+        }
+
+        public void SetPosition(string entityname, string scenename, float x, float y)
+        {
             InternalCalls.SetPosX(entityname, scenename, x);
             InternalCalls.SetPosY(entityname, scenename, y);
         }
@@ -603,22 +686,27 @@ namespace BonVoyage {
             return -1;
         }
 
-        public float GetRotation(float _x, float _y) {
+        public float GetRotation(float _x, float _y)
+        {
             float Rotation = 0;
             if (_y != 0f && _x >= 0f)
                 Rotation = InternalCalls.ArcTangent(_y, _x);
             else if (_y == 0f && _x > 0f)
                 Rotation = (float)Pi / 2;
-            else if (_y != 0f && _x < 0f) {
+            else if (_y != 0f && _x < 0f)
+            {
                 Rotation = InternalCalls.ArcTangent(_y, _x);
                 Rotation += Rotation < 0f ? (float)Pi * 2f : 0f;
-            } else Rotation = 3f * (float)Pi / 2f;
+            }
+            else Rotation = 3f * (float)Pi / 2f;
             return Rotation;
         }
 
-        public void SetCharRotation(float _rotation, string _entityName, string _sceneName, string _status) {
+        public void SetCharRotation(float _rotation, string _entityName, string _sceneName, string _status)
+        {
             int InitialStatus = 0;
-            switch (_status) {
+            switch (_status)
+            {
                 case "Idle":
                     InitialStatus = 8;
                     break;
@@ -637,17 +725,18 @@ namespace BonVoyage {
                     break;
             }
             if (_rotation < 0) _rotation += 2 * (float)Pi;
-            if (_rotation >= 15f * MiniAngle || _rotation <= MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus-2);
-            else if (_rotation <= 3f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus-3);
-            else if (_rotation <= 5f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus-4);
-            else if (_rotation <= 7f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus-5);
-            else if (_rotation <= 9f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus-6);
-            else if (_rotation <= 11f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus-7);
-            else if (_rotation <= 13f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus-8);
-            else InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus-1);
+            if (_rotation >= 15f * MiniAngle || _rotation <= MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 2);
+            else if (_rotation <= 3f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 3);
+            else if (_rotation <= 5f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 4);
+            else if (_rotation <= 7f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 5);
+            else if (_rotation <= 9f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 6);
+            else if (_rotation <= 11f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 7);
+            else if (_rotation <= 13f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 8);
+            else InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 1);
         }
 
-        public void ApplyForce(string _entityName, string _sceneName, float _x, float _y, float _multiplier) {
+        public void ApplyForce(string _entityName, string _sceneName, float _x, float _y, float _multiplier)
+        {
             InternalCalls.ApplyImpulse(_entityName, _sceneName,
                 (_x * _multiplier * (float)InternalCalls.GetDeltaTime()),
                 (_y * _multiplier * (float)InternalCalls.GetDeltaTime()), 0f, 0f);
