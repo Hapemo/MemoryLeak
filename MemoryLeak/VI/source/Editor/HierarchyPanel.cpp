@@ -12,6 +12,7 @@ that lists the entities and its components in the scene
 #include "HierarchyPanel.h"
 #include <ECSManager.h>
 #include "GameStateManager.h"
+#include <RenderProps.h>
 
 /*!*****************************************************************************
 \brief
@@ -275,7 +276,7 @@ void HierarchyPanel::Update()
 											: ((*mGameStates)[g].mScenes[s].mLayer > (int)(*mGameStates)[g].mScenes.size() ? (int)(*mGameStates)[g].mScenes.size()
 												: (*mGameStates)[g].mScenes[s].mLayer);*/
 										(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
-											: ((*mGameStates)[g].mScenes[s].mLayer > 3 ? 3
+											: ((*mGameStates)[g].mScenes[s].mLayer > MAX_SCENE_LAYERS -1  ? MAX_SCENE_LAYERS -1
 												: (*mGameStates)[g].mScenes[s].mLayer);
 									}
 									ImGui::InputInt("Order", &((*mGameStates)[g].mScenes[s].mOrder));

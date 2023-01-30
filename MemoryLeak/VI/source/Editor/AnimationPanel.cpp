@@ -45,6 +45,7 @@ void AnimationPanel::Update()
 		
 		if (selectedEntity != nullptr)
 		{
+			animator->Animate();
 			Entity e = *selectedEntity;
 			if (e.HasComponent<Sprite>())
 			{
@@ -127,13 +128,13 @@ void AnimationPanel::Update()
 						ImGui::SameLine();
 						ImGui::Text(("Sheet " + std::to_string(i)).c_str());
 					}
-					if (!isViewportPaused)
-					{
-						if (ImGui::IsWindowFocused())
-							animator->Animate();
-						else
-							isViewportPaused = true;
-					}
+					//if (!isViewportPaused)
+					//{
+						//if (ImGui::IsWindowFocused())
+							//animator->Animate();
+						//else
+							//isViewportPaused = true;
+					//}
 				}
 			}
 		}

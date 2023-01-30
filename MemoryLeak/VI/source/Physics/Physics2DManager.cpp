@@ -30,39 +30,18 @@ void Physics2DManager::Update(const double& _appDT) {
 	// Check if system is not in step mode
 	if (!Physics2DManager::mStepMode) {
 		// Increment accumulatedDT by the application's DT
-		Physics2DManager::mAccumulatedDT += _appDT;
+		mAccumulatedDT += _appDT;
 
 		// Prevent spiral of death
-		if (Physics2DManager::mAccumulatedDT > Physics2DManager::mAccumulatedDTCap)
-			Physics2DManager::mAccumulatedDT = Physics2DManager::mAccumulatedDTCap;
+		if (mAccumulatedDT > accumulatedDTCap)
+			mAccumulatedDT = accumulatedDTCap;
 
 		// If the accumlatedDT is larger than or equal to the defined fixedDT,
 		//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
-		while (Physics2DManager::mAccumulatedDT >= Physics2DManager::mFixedDT) {
-			Step(mFixedDT);
-			Physics2DManager::mAccumulatedDT -= Physics2DManager::mFixedDT;
+		while (mAccumulatedDT >= fixedDT) {
+			Step(fixedDT);
+			mAccumulatedDT -= fixedDT;
 		}
-
-		// Removal of strictly fixedDT updates but rather, can be specified by the function parameter
-		//Step(_appDT);
-
-//#ifdef MultiThread
-//		try {
-//			mPhysicsStepLock.lock();
-//			std::thread physicsThread([this, _appDT] {Step(_appDT); });
-//
-//			physicsThread.join();
-//			mPhysicsStepLock.unlock();
-//		}
-//		catch (const std::exception& _e) {
-//			_e;
-//
-//			if (mPhysicsStepLock.try_lock())
-//				mPhysicsStepLock.unlock();
-//		}
-//#else
-//		Step(_appDT);
-//#endif // MultiThread
 
 	}
 	// In step mode

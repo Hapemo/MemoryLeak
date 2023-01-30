@@ -15,7 +15,9 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <Graphics/GLShader.h>
-
+#include <ECS_systems.h>
+#include "ECS_items.h"
+#include "ECS_components.h"
 /*!*****************************************************************************
 \brief
 Struct that encapsulates what is needed for rendering a single character.
@@ -40,6 +42,7 @@ struct Paragraph
 	float scale;
 	Math::Vec3 color;
 	float renderWidth;
+	float camZoom;
 };
 
 /*!*****************************************************************************
@@ -78,7 +81,7 @@ public:
 	\param const Math::Vec3& _color
 	Color of the font.
 	*******************************************************************************/
-	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color, int layer, float _width);
+	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color, int layer, float _width, float _camZoom);
 	/*!*****************************************************************************
 	\brief
 	Renders all paragraphs stored in mParagraphs.
@@ -111,15 +114,8 @@ public:
 		mWindowWidth = *_windowWidth; 
 		mWindowHeight = *_windowHeight;
 	}
+	int GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float _width, float camZoom);
 
-	/*!*****************************************************************************
-	\brief
-	Sets the camera's zoom.
-
-	\param float _camZoom
-	The zoom of the camera.
-	*******************************************************************************/
-	void SetCamZoom(float _camZoom) { mCamZoom = _camZoom; }
 private:
 	/*!*****************************************************************************
 	\brief
@@ -137,5 +133,4 @@ private:
 	bool mInitialized;
 	int mWindowWidth, mWindowHeight;
 	float mMaxYSize;
-	float mCamZoom;
 };
