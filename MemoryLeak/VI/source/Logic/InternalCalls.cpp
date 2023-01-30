@@ -633,16 +633,6 @@ double InternalCalls::GetDeltaTime() {
 
 /*!*****************************************************************************
 \brief
-Initialise the window width and height of the application using pointer.
-Should be called in application's init
-*******************************************************************************/
-void InternalCalls::InitScriptWindow(int* _windowWidth, int* _windowHeight) {
-	windowWidth = _windowWidth;
-	windowHeight = _windowHeight;
-}
-
-/*!*****************************************************************************
-\brief
 	Plays a sound on loop
 *******************************************************************************/
 void InternalCalls::PlaySoundOnLoop(std::string const& _entityName, std::string const& _sceneName) {
