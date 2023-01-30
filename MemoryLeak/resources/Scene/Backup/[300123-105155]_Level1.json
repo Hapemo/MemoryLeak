@@ -2137,7 +2137,7 @@
             "name": "Enemy",
             "tag": 2,
             "subtag": 3,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {

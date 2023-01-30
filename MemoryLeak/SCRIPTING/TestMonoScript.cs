@@ -29,6 +29,10 @@ namespace BonVoyage {
         private bool updateChat = false;      // This flag is true when dialog changes for anyone
         private bool RunlittleGirlDialog = true;
         private bool RunPassengerDialog = true;
+
+        private string currentobjective = "";
+        private bool objectiveexpanded = false;
+
         public void Init() {
             //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
             CameraZoomIn();
@@ -78,8 +82,13 @@ namespace BonVoyage {
         if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
           LockPosition(-295, -85);
           RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
-        }
 
+                    if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0)
+                    {
+                        InternalCalls.EntityDeactivate("Little Girl", "Level1");
+                        SetObjectiveText();
+                    }
+                }
       }
       #endregion
 
@@ -93,7 +102,7 @@ namespace BonVoyage {
                     if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0)
                     {
                         SetPosition("Passenger_1", "Level1", -1240, 670);
-                        InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find the destination"); // hint
+                        SetObjectiveText();
                     }
         }
 
@@ -124,6 +133,38 @@ namespace BonVoyage {
                 } else {
                     InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
                     if (fragment1 == true) { InternalCalls.EntityDeactivate("fragment1obj", "Dialogue"); }
+                }
+            }
+            #endregion
+
+            #region Objective UI
+            if ((InternalCalls.ButtonReleased("objectivetext", "Dialogue") && currentobjective != "") == true)
+            {
+                if (objectiveexpanded)
+                {
+                    objectiveexpanded = false;
+                }
+                else
+                {
+                    objectiveexpanded = true;
+                }
+
+                if (objectiveexpanded)
+                {
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
+                    InternalCalls.SetScaleX("objectivetext", "Dialogue", 420);
+                    InternalCalls.SetScaleY("objectivetext", "Dialogue", 566);
+                    SetPosition("objectivetext", "Dialogue", 555, 139);
+                    InternalCalls.SetTextOffset("objectivetext", "Dialogue", -185, 217);
+                }
+
+                if (!objectiveexpanded)
+                {
+                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view"); // hint
+                    InternalCalls.SetScaleX("objectivetext", "Dialogue", 420);
+                    InternalCalls.SetScaleY("objectivetext", "Dialogue", 150);
+                    SetPosition("objectivetext", "Dialogue", 555, 347);
+                    InternalCalls.SetTextOffset("objectivetext", "Dialogue", -185, 9);
                 }
             }
             #endregion
@@ -354,7 +395,17 @@ namespace BonVoyage {
             #endregion
         }
 
-        #region UI, Camera, Text Align Functions
+        #region UI, Camera, Text Align, Objective Functions
+        public void SetObjectiveText()
+        {
+            currentobjective = InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID());
+            InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
+            if (InternalCalls.GetLineCount("objectivetext", "Dialogue") > 2)
+            {
+                InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view");
+            }
+        }
+
         public void DisableUI() {
             InternalCalls.EntityDeactivate("hpbar", "Dialogue");
             InternalCalls.EntityDeactivate("memoryfragment", "Dialogue");
