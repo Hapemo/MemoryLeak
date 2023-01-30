@@ -33,14 +33,14 @@ void Physics2DManager::Update(const double& _appDT) {
 		mAccumulatedDT += _appDT;
 
 		// Prevent spiral of death
-		if (mAccumulatedDT > accumulatedDTCap)
-			mAccumulatedDT = accumulatedDTCap;
+		if (mAccumulatedDT > mAccumulatedDTCap)
+			mAccumulatedDT = mAccumulatedDTCap;
 
 		// If the accumlatedDT is larger than or equal to the defined fixedDT,
 		//	Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
-		while (mAccumulatedDT >= fixedDT) {
-			Step(fixedDT);
-			mAccumulatedDT -= fixedDT;
+		while (mAccumulatedDT >= mFixedDT) {
+			Step(mFixedDT);
+			mAccumulatedDT -= mFixedDT;
 		}
 
 	}
