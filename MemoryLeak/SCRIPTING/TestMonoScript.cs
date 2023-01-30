@@ -83,12 +83,17 @@ namespace BonVoyage {
       }
       #endregion
 
-            #region Passenger 1 Dialogue (currently using Little Girl dialogue lines)
+            #region Passenger 1 Dialogue
       if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) {
 
         if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunPassengerDialog) {
           LockPosition(-1240, 670);
           RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
+
+                    if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0)
+                    {
+                        SetPosition("Passenger_1", "Level1", -1240, 670);
+                    }
         }
 
       }
