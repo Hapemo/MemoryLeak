@@ -7,11 +7,11 @@ namespace BonVoyage {
         private bool fragment1 = false;
         private bool starttalking = false;
         private float maxX, maxY, minX, minY, halfX, halfY;
-        private int HitInterval = 0;
-        private int HitCounter = 0;
+        private float HitInterval = 0;
+        private float HitCounter = 0;
         private int HitTaken = 0;
-        private int HealInterval = 0;
-        private int HealCounter = 0;
+        private float HealInterval = 0;
+        private float HealCounter = 0;
         private int OctopusAttacked = 0;
         private float PlayerRotation = 0;
         private float PlayerSpeed = 500f;
@@ -291,8 +291,8 @@ namespace BonVoyage {
                             InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
                             SetCharRotation(EnemyRotation, "Enemy", "Level1", "Rising");
                             InternalCalls.SetAnimationCurrentIndex("Enemy", "Level1", 0);
-                            HitInterval = (int)(20 * InternalCalls.GetAnimationSpeed("Enemy", "Level1") * InternalCalls.GetAnimationFrameCount("Enemy", "Level1"));
-                            HealInterval = HitInterval * 4;
+                            HitInterval = (20 * InternalCalls.GetAnimationSpeed("Enemy", "Level1") * InternalCalls.GetAnimationFrameCount("Enemy", "Level1"));
+                            HealInterval = HitInterval * 4.0f;
                             break;
                         case 1:
                             if (InternalCalls.GetAnimationCurrentIndex("Enemy", "Level1") == InternalCalls.GetAnimationFrameCount("Enemy", "Level1") - 1) {
@@ -312,7 +312,7 @@ namespace BonVoyage {
 
                 if ((InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") || InternalCalls.EntitiesCollided("Enemy", "Boat", "Level1")) && HitTaken != -1) {
                     //Console.Write("HitCounter!\n");
-                    ++HitCounter;
+                    HitCounter += (float)InternalCalls.GetDeltaTime();
                     if (HitCounter >= HitInterval) {
                         //Console.Write("Attacking!\n");
                         HitCounter = 0;
@@ -364,8 +364,8 @@ namespace BonVoyage {
             }
 
             // Updating enemy position
-            EnemyChangeInX = (((EnemyPosX + EnemyChangeInX) < maxX) && ((EnemyPosX + EnemyChangeInX) > minX)) ? EnemyChangeInX : 0;
-            EnemyChangeInY = (((EnemyPosY + EnemyChangeInY) < maxY) && ((EnemyPosY + EnemyChangeInY) > minY)) ? EnemyChangeInY : 0;
+            EnemyChangeInX = (((EnemyPosX + EnemyChangeInX) < maxX) && ((EnemyPosX + EnemyChangeInX) > minX)) ? (EnemyChangeInX * (float)InternalCalls.GetDeltaTime()) : 0;
+            EnemyChangeInY = (((EnemyPosY + EnemyChangeInY) < maxY) && ((EnemyPosY + EnemyChangeInY) > minY)) ? (EnemyChangeInY * (float)InternalCalls.GetDeltaTime()) : 0;
             InternalCalls.SetPosX("EnemyTrigger", "Level1", EnemyPosX + EnemyChangeInX);
             InternalCalls.SetPosY("EnemyTrigger", "Level1", EnemyPosY + EnemyChangeInY);
             InternalCalls.SetPosX("Enemy", "Level1", EnemyPosX + EnemyChangeInX);
