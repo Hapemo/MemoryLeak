@@ -24,11 +24,12 @@ namespace BonVoyage {
         private const float MiniAngle = (float)Pi / 8;
 
         /* Some of these flags are here to optimise the code. Because checking this bool value is faster than button check function calls */
-        private bool choiceFlag = false;      // This flag is true during choice selection dialogs
-        private bool playerTalking = false;   // This flag is true when player is talking, aka P1 active
-        private bool updateChat = false;      // This flag is true when dialog changes for anyone
-        private bool RunlittleGirlDialog = true;
-        private bool RunPassengerDialog = true;
+        private bool choiceFlag = false;            // This flag is true during choice selection dialogs
+        private bool playerTalking = false;         // This flag is true when player is talking, aka P1 active
+        private bool updateChat = false;            // This flag is true when dialog changes for anyone
+        private bool RunIntroDialog = true;         // This flag is true if the dialog has not player and should play
+        private bool RunlittleGirlDialog = true;    // This flag is true if the dialog has not player and should play
+        private bool RunPassengerDialog = true;     // This flag is true if the dialog has not player and should play
 
         private string currentobjective = "";
         private bool objectiveexpanded = false;
@@ -47,65 +48,40 @@ namespace BonVoyage {
         public void Update() {
             #region Intro Dialogue
             if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1")) {
-                LockPosition(160, 120);
-
-                if (!starttalking && InternalCalls.EntityIsActive("IntroBox", "Level1")) {
-                    DisableUI();
-                    if (InternalCalls.EntityIsActive("I2", "Dialogue") == false) {
-                    InternalCalls.EntityActivate("I1", "Dialogue");
-                    InternalCalls.UpdateText("I1", "Dialogue", "Where am I?");
-                    }
-                    starttalking = true;
-                }
-
-                if ((InternalCalls.ButtonReleased("I1", "Dialogue")) == true) {
-                    InternalCalls.EntityDeactivate("I1", "Dialogue");
-                    InternalCalls.EntityActivate("I2", "Dialogue");
-                    InternalCalls.UpdateText("I2", "Dialogue", "Maybe that girl knows...");
-                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
-                }
-
-                if ((InternalCalls.ButtonReleased("I2", "Dialogue")) == true) {
-                    InternalCalls.EntityDeactivate("I2", "Dialogue");
-                    InternalCalls.EntityDeactivate("IntroBox", "Level1");
-                    CameraZoomOut();
-                    starttalking = false;
-                    EnableUI();
+                if (RunIntroDialog && InternalCalls.EntityIsActive("IntroBox", "Level1")) {
+                  LockPosition(160, 120);
+                  RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
+                  if (!RunIntroDialog) InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
                 }
             }
             #endregion
 
             #region Little Girl Dialogue
       if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) {
-
         // I'll be using G1, P1, PP1 and PP2 for the refactored code
         if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
           LockPosition(-295, -85);
           RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
 
-                    if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0)
-                    {
-                        InternalCalls.EntityDeactivate("Little Girl", "Level1");
-                        SetObjectiveText();
-                    }
-                }
+          if (!RunlittleGirlDialog) {
+              InternalCalls.EntityDeactivate("Little Girl", "Level1");
+              SetObjectiveText();
+          }
+        }
       }
       #endregion
 
             #region Passenger 1 Dialogue
       if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) {
-
-        if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunPassengerDialog) {
+        if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1")) {
           LockPosition(-1240, 670);
           RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
 
-                    if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0)
-                    {
-                        SetPosition("Passenger_1", "Level1", -1240, 670);
-                        SetObjectiveText();
-                    }
+          if (!RunPassengerDialog) {
+              SetPosition("Passenger_1", "Level1", -1240, 670);
+              SetObjectiveText();
+          }
         }
-
       }
             #endregion
 
@@ -556,7 +532,7 @@ namespace BonVoyage {
       return InternalCalls.GetDialogue(ID);
     }
 
-    /* For carrying on the dialog conversation logic
+    /* For carrying on the dialog conversation logic. It will automatically zoom in and out, disabling and enabling UI too.
      * player - The chatbox entity of the player
      * notPlayer - The chatbox entity of the entity the player is talking to
      * choice1 - The chatbox entity of the first choice dialog
@@ -572,11 +548,6 @@ namespace BonVoyage {
         InternalCalls.LoadDialogs(dialogFile);
         InternalCalls.SetCurrentDialogueID(1);
 
-        // Activate little girl dialogue
-        InternalCalls.EntityActivate(notPlayer, scene);
-        InternalCalls.UpdateText(notPlayer, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-        TextAlign(notPlayer, scene);
-
         // Setting default P1, PP1, PP2 positions
         InternalCalls.SetPosX(choice1, scene, 500);
         InternalCalls.SetPosY(choice1, scene, 46);
@@ -585,7 +556,16 @@ namespace BonVoyage {
         InternalCalls.SetPosX(player, scene, 450);
         InternalCalls.SetPosY(player, scene, 5);
 
-        starttalking = true;
+        // Activate little girl dialogue
+        string firstSpeaker;
+        if (InternalCalls.IsPlayerSpeaker(1)) firstSpeaker = player;
+        else firstSpeaker = notPlayer;
+
+        InternalCalls.EntityActivate(firstSpeaker, scene);
+        InternalCalls.UpdateText(firstSpeaker, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+
+        if (InternalCalls.IsPlayerSpeaker(1)) { }// TODO player alignment
+        else TextAlign(notPlayer, scene);
 
         CameraZoomIn();
         starttalking = true;
