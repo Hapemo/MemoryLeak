@@ -114,7 +114,7 @@ public:
 	*******************************************************************************/
 	GLuint GetGameFBO() const { return mGameFBO.GetColorAttachment(); }
 
-	void CreateShadows();
+	void CreateShadows(const glm::vec4& clr);
 
 	/*!*****************************************************************************
 	\brief
@@ -314,6 +314,8 @@ private:
 	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
 	void CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices);
+
+	glm::vec4 InterpolateColor(const glm::vec4& original, const glm::vec4& target, float distance, float actual);
 
 	void RenderVisibilityPolygon();
 

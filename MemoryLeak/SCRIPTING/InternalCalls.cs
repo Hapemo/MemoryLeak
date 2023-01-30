@@ -90,22 +90,22 @@ namespace BonVoyage
 		internal extern static void PlayScene(string _name);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetCurrentCameraScaleX();
+		internal extern static float GetCurrentCameraScaleX();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetCurrentCameraScaleY();
+		internal extern static float GetCurrentCameraScaleY();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetCurrentCameraPosX();
+		internal extern static float GetCurrentCameraPosX();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GetCurrentCameraPosY();
+		internal extern static float GetCurrentCameraPosY();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetCurrentCameraScaleX(float _x);
+		internal extern static float SetCurrentCameraScaleX(float _x);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetCurrentCameraScaleY(float _y);
+		internal extern static float SetCurrentCameraScaleY(float _y);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetCurrentCameraPosX(float _x);
@@ -114,10 +114,43 @@ namespace BonVoyage
 		internal extern static void SetCurrentCameraPosY(float _y);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetCurrentImageIndex(string _entityName, string _sceneName, int _index);
+		internal extern static float SqMagnitude(float _x, float _y);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static int GetCurrentImageIndex(string _entityName, string _sceneName);
+		internal extern static float NormalizeX(float _x, float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float NormalizeY(float _x, float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float ArcTangent(float _x, float _y);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float Negate(float _value);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetAnimationSpeed(string _entityName, string _sceneName, float _speed);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float GetAnimationSpeed(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetAnimationCurrentIndex(string _entityName, string _sceneName, int _index);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetAnimationCurrentIndex(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetAnimationFrameCount(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetAnimationFrameCount(string _entityName, string _sceneName, int _count);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetSpriteSheetIndex(string _entityName, string _sceneName, int _index);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetSpriteSheetIndex(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetTexture(string _entityName, string _sceneName, string _path);
@@ -136,6 +169,12 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static double GetDeltaTime();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void StopSound(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void PlaySoundOnLoop(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void PlayAnySound(string _name, int _channel);
@@ -193,5 +232,8 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetLineCount(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool IsPlayerSpeaker(int _id);
 	}
 }

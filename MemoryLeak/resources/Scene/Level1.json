@@ -60,9 +60,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
@@ -97,6 +97,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 10.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.3499999940395355
+            },
+            "renderFlag": true
         }
     },
     {
@@ -114,7 +125,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -717.2084350585938,
-                "Y": 98.61135864257813
+                "Y": 98.6113510131836
             }
         },
         "Sprite": {
@@ -130,9 +141,9 @@
         },
         "SheetAnimation": {
             "frameCount": 6,
-            "currFrameIndex": 4,
+            "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
@@ -167,6 +178,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -110.0
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.20000000298023224
+            },
+            "renderFlag": true
         }
     },
     {
@@ -200,9 +222,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 7,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
@@ -214,6 +236,17 @@
                 "Y": 1.0
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 5.0,
+                "Y": -35.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.10000000149011612
+            },
             "renderFlag": true
         }
     },
@@ -279,6 +312,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -80.0
+            },
+            "scaleOffset": {
+                "X": 0.20000000298023224,
+                "Y": 0.20000000298023224
+            },
+            "renderFlag": true
         }
     },
     {
@@ -290,8 +334,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 159.0,
-                "Y": 200.0
+                "X": 252.0,
+                "Y": 250.0
             },
             "rotation": 0.0,
             "translation": {
@@ -310,11 +354,136 @@
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
             "layer": 50
         },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_S_Hit_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SW_Hit_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_W_Hit_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NW_Hit_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_N_Hit_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NE_Hit_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_E_Hit_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SE_Hit_Spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_S_Capsize_Spritesheet.png",
+                    "frameCount": 11,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_SW_Capsize_Spritesheet.png",
+                    "frameCount": 11,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_W_Capsize_Spritesheet.png",
+                    "frameCount": 11,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NW_Capsize_Spritesheet.png",
+                    "frameCount": 11,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_N_Capsize_Spritesheet.png",
+                    "frameCount": 11,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png",
+                    "frameCount": 11,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_E_Capsize_Spritesheet.png",
+                    "frameCount": 11,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_SE_Capsize_Spritesheet.png",
+                    "frameCount": 11,
+                    "timePerFrame": 0.17000000178813934
+                }
+            ],
+            "currentImageIndex": 0
+        },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 6,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -376,6 +545,14 @@
         },
         "Script": {
             "name": "PlayerMovementScript"
+        },
+        "LightSource": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "radius": 500.0,
+            "intensity": 0.0
         }
     },
     {
@@ -409,9 +586,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
@@ -446,6 +623,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 50.0
+            },
+            "scaleOffset": {
+                "X": 0.30000001192092896,
+                "Y": 0.6000000238418579
+            },
+            "renderFlag": true
         }
     },
     {
@@ -510,6 +698,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": -50.0,
+                "Y": -70.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.10000000149011612
+            },
+            "renderFlag": true
         }
     },
     {
@@ -574,6 +773,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 8.0,
+                "Y": -150.0
+            },
+            "scaleOffset": {
+                "X": 0.15000000596046448,
+                "Y": 0.20000000298023224
+            },
+            "renderFlag": true
         }
     },
     {
@@ -638,6 +848,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 5.0,
+                "Y": -120.0
+            },
+            "scaleOffset": {
+                "X": 0.20000000298023224,
+                "Y": 0.20000000298023224
+            },
+            "renderFlag": true
         }
     },
     {
@@ -705,6 +926,17 @@
         },
         "Script": {
             "name": "TestMonoScript"
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -20.0
+            },
+            "scaleOffset": {
+                "X": 0.30000001192092896,
+                "Y": 0.3499999940395355
+            },
+            "renderFlag": true
         }
     },
     {
@@ -738,9 +970,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
@@ -761,6 +993,17 @@
             },
             "scaleOffset": {
                 "X": 1.0,
+                "Y": 0.30000001192092896
+            },
+            "renderFlag": true
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 38.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 0.5,
                 "Y": 0.30000001192092896
             },
             "renderFlag": true
@@ -797,9 +1040,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
@@ -834,6 +1077,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 26.0,
+                "Y": 10.0
+            },
+            "scaleOffset": {
+                "X": 0.5,
+                "Y": 0.4000000059604645
+            },
+            "renderFlag": true
         }
     },
     {
@@ -934,6 +1188,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 10.0,
+                "Y": -100.0
+            },
+            "scaleOffset": {
+                "X": 0.15000000596046448,
+                "Y": 0.30000001192092896
+            },
+            "renderFlag": true
         }
     },
     {
@@ -967,9 +1232,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
@@ -993,6 +1258,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": -115.0,
+                "Y": 65.0
+            },
+            "scaleOffset": {
+                "X": 0.3499999940395355,
+                "Y": 0.23000000417232513
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1026,13 +1302,13 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 100.0,
+                "X": 0.0,
                 "Y": 0.0
             },
             "scaleOffset": {
@@ -1044,6 +1320,17 @@
         },
         "Script": {
             "name": "PassengerScript"
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -50.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.10000000149011612
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1077,9 +1364,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         },
         "RectCollider": {
             "centerOffset": {
@@ -1114,6 +1401,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": -65.0,
+                "Y": 40.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.3499999940395355
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1178,6 +1476,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 50.0,
+                "Y": -70.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.10000000149011612
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1242,6 +1551,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 5.0,
+                "Y": -120.0
+            },
+            "scaleOffset": {
+                "X": 0.20000000298023224,
+                "Y": 0.25
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1306,6 +1626,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 50.0,
+                "Y": -70.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.10000000149011612
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1448,6 +1779,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 10.0,
+                "Y": -100.0
+            },
+            "scaleOffset": {
+                "X": 0.15000000596046448,
+                "Y": 0.30000001192092896
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1512,6 +1854,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 3.0,
+                "Y": -80.0
+            },
+            "scaleOffset": {
+                "X": 0.20000000298023224,
+                "Y": 0.20000000298023224
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1576,6 +1929,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -20.0
+            },
+            "scaleOffset": {
+                "X": 0.30000001192092896,
+                "Y": 0.3499999940395355
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1640,6 +2004,17 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -10.0
+            },
+            "scaleOffset": {
+                "X": 0.30000001192092896,
+                "Y": 0.3499999940395355
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1733,7 +2108,7 @@
                 "X": 1.0,
                 "Y": 1.0
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "CircleCollider": {
@@ -1766,13 +2141,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -200.0,
-                "Y": 86.0
+                "X": -523.0,
+                "Y": 353.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 812.552001953125,
-                "Y": -279.9410095214844
+                "X": 878.2362670898438,
+                "Y": -201.94100952148438
             }
         },
         "Sprite": {
@@ -1785,6 +2160,171 @@
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
             "layer": 15
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Background\\Assets.txt",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Background\\Assets.txt",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Background\\Assets.txt",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                }
+            ],
+            "currentImageIndex": 0
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -1815,8 +2355,16 @@
             "isRandPitch": false,
             "isSpacial": false
         },
-        "Script": {
-            "name": "DeathScript"
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": -10.0,
+                "Y": -60.0
+            },
+            "scaleOffset": {
+                "X": 0.2199999988079071,
+                "Y": 0.10000000149011612
+            },
+            "renderFlag": true
         }
     },
     {
@@ -1850,9 +2398,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 3,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         }
     },
     {
@@ -1886,9 +2434,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 3,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         }
     },
     {
@@ -1922,9 +2470,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         }
     },
     {
@@ -1958,9 +2506,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.083542101085186
         }
     },
     {
@@ -1972,13 +2520,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 718.5,
-                "Y": 416.5
+                "X": 862.5,
+                "Y": 634.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": 808.9550170898438,
-                "Y": -293.0625305175781
+                "X": 861.9550170898438,
+                "Y": -212.06301879882813
             }
         },
         "Sprite": {
@@ -2014,9 +2562,6 @@
             "isLoop": true,
             "isRandPitch": false,
             "isSpacial": true
-        },
-        "Script": {
-            "name": "AttackScript"
         }
     },
     {
@@ -2028,8 +2573,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 10.990904808044434,
-                "Y": 10.990904808044434
+                "X": 10.99090576171875,
+                "Y": 10.99090576171875
             },
             "rotation": 0.0,
             "translation": {
@@ -2119,8 +2664,8 @@
                 "b": 123,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\dialogueIcon.png",
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -2217,6 +2762,59 @@
                 "Y": 1.0
             },
             "isTrigger": true,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "fragment1drop",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -707.960693359375,
+                "Y": -256.8012390136719
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 123,
+                "g": 181,
+                "b": 123,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\pet.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 5.0,
+                "Y": -32.0
+            },
+            "scaleOffset": {
+                "X": 0.30000001192092896,
+                "Y": 0.10000000149011612
+            },
             "renderFlag": true
         }
     }
