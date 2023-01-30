@@ -68,6 +68,7 @@
     <Compile Include="InternalCalls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestMonoScript.cs" />
+    <Compile Include="WeatherScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

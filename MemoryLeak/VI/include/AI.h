@@ -31,13 +31,14 @@ DEFINES
 class AIManager : public System
 {
 public:
-	void weatherAIinit();
+	void weatherAIinit(float width =1600, float height = 900);
 	void weatherAIupdate();
 	void updateAI();
 
 	//int weatherMap[mapWidth][mapHeight]{}; //to be shifted to provate after implementing proxy class for [] [] operator
 	std::vector<std::vector<int>> getWeatherMap() { return weatherMap; }
 	std::vector<std::vector<int>> weatherMap{};
+	int GetCurrentWeather(int index, float posX, float posY);
 private:
 	void updateAIAllColors(const Entity&);
 	void updateAITrafficLight(const Entity&);
@@ -46,8 +47,8 @@ private:
 	void updateAICircle(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAISwing(const Entity&, float speed = 1.0f, float range = 10.0f);
 
-	int mapMaxHeight= 50;
-	int mapMaxWidth= 40;
+	int mapMaxHeight=0;
+	int mapMaxWidth=0;
 	int weatherMaxHeight = 10;
 	int weatherMaxWidth = 10;
 	int weatherMaxLocation = 3;

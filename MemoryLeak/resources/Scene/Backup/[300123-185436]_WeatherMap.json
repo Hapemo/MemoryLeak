@@ -1,7 +1,7 @@
 [
     {
         "General": {
-            "name": "MIcon6",
+            "name": "Icon6",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -76,7 +76,7 @@
     },
     {
         "General": {
-            "name": "MIcon7",
+            "name": "Icon7",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -151,7 +151,7 @@
     },
     {
         "General": {
-            "name": "MIcon8",
+            "name": "Icon8",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -226,7 +226,7 @@
     },
     {
         "General": {
-            "name": "MIcon11",
+            "name": "Icon11",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -239,7 +239,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 550.0,
-                "Y": -257.676025390625
+                "Y": -260.0
             }
         },
         "Sprite": {
@@ -301,7 +301,7 @@
     },
     {
         "General": {
-            "name": "MIcon12",
+            "name": "Icon12",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -376,7 +376,7 @@
     },
     {
         "General": {
-            "name": "MIcon13",
+            "name": "Icon13",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -451,7 +451,7 @@
     },
     {
         "General": {
-            "name": "MIcon16",
+            "name": "Icon16",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -464,7 +464,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 550.0,
-                "Y": -347.6760559082031
+                "Y": -350.0
             }
         },
         "Sprite": {
@@ -526,7 +526,7 @@
     },
     {
         "General": {
-            "name": "MIcon17",
+            "name": "Icon17",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -601,7 +601,7 @@
     },
     {
         "General": {
-            "name": "MIcon18",
+            "name": "Icon18",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -676,7 +676,7 @@
     },
     {
         "General": {
-            "name": "EIcon0",
+            "name": "Icon0",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -751,7 +751,7 @@
     },
     {
         "General": {
-            "name": "EIcon1",
+            "name": "Icon1",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -826,7 +826,7 @@
     },
     {
         "General": {
-            "name": "EIcon2",
+            "name": "Icon2",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -839,7 +839,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 266.9718322753906
+                "Y": 260.0
             }
         },
         "Sprite": {
@@ -901,7 +901,7 @@
     },
     {
         "General": {
-            "name": "EIcon3",
+            "name": "Icon3",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -976,7 +976,7 @@
     },
     {
         "General": {
-            "name": "EIcon4",
+            "name": "Icon4",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1051,7 +1051,7 @@
     },
     {
         "General": {
-            "name": "EIcon5",
+            "name": "Icon5",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1064,7 +1064,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -260.0,
-                "Y": 132.32394409179688
+                "Y": 130.0
             }
         },
         "Sprite": {
@@ -1126,7 +1126,7 @@
     },
     {
         "General": {
-            "name": "EIcon6",
+            "name": "Icon6",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1201,7 +1201,7 @@
     },
     {
         "General": {
-            "name": "EIcon7",
+            "name": "Icon7",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1276,7 +1276,7 @@
     },
     {
         "General": {
-            "name": "EIcon8",
+            "name": "Icon8",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1351,7 +1351,7 @@
     },
     {
         "General": {
-            "name": "EIcon9",
+            "name": "Icon9",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1426,7 +1426,7 @@
     },
     {
         "General": {
-            "name": "EIcon10",
+            "name": "Icon10",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1501,7 +1501,7 @@
     },
     {
         "General": {
-            "name": "EIcon11",
+            "name": "Ico11",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1576,7 +1576,7 @@
     },
     {
         "General": {
-            "name": "EIcon12",
+            "name": "Icon12",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1651,7 +1651,7 @@
     },
     {
         "General": {
-            "name": "EIcon13",
+            "name": "Icon13",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1664,7 +1664,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 130.0,
-                "Y": 2.323944091796875
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -1726,7 +1726,7 @@
     },
     {
         "General": {
-            "name": "EIcon14",
+            "name": "Icon14",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1801,7 +1801,7 @@
     },
     {
         "General": {
-            "name": "EIcon15",
+            "name": "Icon15",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1876,7 +1876,7 @@
     },
     {
         "General": {
-            "name": "EIcon16",
+            "name": "Icon16",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1951,7 +1951,7 @@
     },
     {
         "General": {
-            "name": "EIcon17",
+            "name": "Icon17",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -2026,7 +2026,7 @@
     },
     {
         "General": {
-            "name": "EIcon18",
+            "name": "Icon18",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -2101,7 +2101,7 @@
     },
     {
         "General": {
-            "name": "EIcon19",
+            "name": "Icon19",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -2176,7 +2176,7 @@
     },
     {
         "General": {
-            "name": "EIcon20",
+            "name": "Icon20",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -2251,7 +2251,7 @@
     },
     {
         "General": {
-            "name": "EIcon21",
+            "name": "Icon21",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -2326,7 +2326,7 @@
     },
     {
         "General": {
-            "name": "EIcon22",
+            "name": "Icon22",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -2401,7 +2401,7 @@
     },
     {
         "General": {
-            "name": "EIcon23",
+            "name": "Icon23",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -2476,7 +2476,7 @@
     },
     {
         "General": {
-            "name": "EIcon24",
+            "name": "Icon24",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -2547,39 +2547,6 @@
                 }
             ],
             "currentImageIndex": 0
-        }
-    },
-    {
-        "General": {
-            "name": "WeatherBg",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 917.0,
-                "Y": 722.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\volume-button-2.png",
-            "layer": 3
-        },
-        "Script": {
-            "name": "WeatherScript"
         }
     }
 ]

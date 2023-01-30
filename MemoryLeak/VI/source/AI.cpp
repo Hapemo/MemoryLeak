@@ -19,8 +19,10 @@ Entities and its Components.
 \return
 None.
 *******************************************************************************/
-void AIManager::weatherAIinit()
+void AIManager::weatherAIinit(float width, float height)
 {
+	mapMaxHeight = (int)(height/100);
+	mapMaxWidth = (int)(width/100);
 	/*for (int h = 0; h < weatherMap.size(); h++)
 	{
 		weatherMap[h].clear();
@@ -69,7 +71,10 @@ None.
 *******************************************************************************/
 void AIManager::weatherAIupdate()
 {
-	
+	if (mapMaxWidth == 0)
+		return;
+	if (mapMaxHeight == 0)
+		return;
 	int update = std::rand() % 20;
 	if (update == 0)
 	{
@@ -126,7 +131,14 @@ void AIManager::weatherAIupdate()
 		
 	}
 }
-
+int AIManager::GetCurrentWeather(int index, float posX, float posY)
+{
+	int indexX = (int)((posX+mapMaxWidth*50)/100);
+	int indexY = (int)(-(posY - mapMaxHeight*50)/100);
+	indexX += (index % 5) - 2;
+	indexY += (index / 5) - 2;
+	return weatherMap[indexX][indexY];
+}
 
 
 /*!*****************************************************************************
@@ -138,6 +150,7 @@ None.
 *******************************************************************************/
 void AIManager::updateAI()
 {
+	weatherAIupdate();
 	for (auto& e : mEntities) {
 		if (e.GetComponent<AI>().colorChange == 1)
 			updateAIAllColors(e);

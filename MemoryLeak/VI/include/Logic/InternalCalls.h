@@ -603,4 +603,8 @@ public:
 	static void UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text);
 	static void SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset);
 	static int GetLineCount(std::string const& _entityName, std::string const& _sceneName);
+
+
+	static void WeatherAIinit(float width = 1600, float height = 900);
+	static int GetCurrentWeather(int index, float posX, float posY);
 };

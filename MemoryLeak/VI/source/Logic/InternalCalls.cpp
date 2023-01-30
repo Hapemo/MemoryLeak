@@ -822,3 +822,14 @@ int InternalCalls::GetLineCount(std::string const& _entityName, std::string cons
 {
 	return renderManager->GetTextLines((FUNC->GetEntity(_entityName, _sceneName)));
 }
+
+
+void InternalCalls::WeatherAIinit(float _width, float _height)
+{
+	aiManager->weatherAIinit(_width, _height);
+}
+
+int InternalCalls::GetCurrentWeather(int _index, float _posX, float _posY)
+{
+	return aiManager->GetCurrentWeather(_index, _posX, _posY);
+}

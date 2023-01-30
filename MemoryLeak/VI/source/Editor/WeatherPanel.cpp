@@ -73,11 +73,11 @@ void WeatherPanel::Update()
 			isWeatherPaused = true;
 		}
 		ImGui::PopStyleColor();*/
-		for (int w = 0; w < aiManager->getWeatherMap().size(); w++)
+		for (int w = 0; w < aiManager->getWeatherMap()[0].size(); w++)
 		{
-			for (int h = 0; h < aiManager->getWeatherMap()[w].size(); h++)
+			for (int h = 0; h < aiManager->getWeatherMap().size(); h++)
 			{
-				if ((aiManager->getWeatherMap()[w][h]) == SUNNUY)
+				if ((aiManager->getWeatherMap()[h][w]) == SUNNUY)
 				{
 					//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(255, 203, 81)));
 					//ImGui::Button("S", weatherIocnSize);
@@ -85,7 +85,7 @@ void WeatherPanel::Update()
 					//ImGui::PopStyleColor();
 					selectedIcon = sunIcon;
 				}
-				else if ((aiManager->getWeatherMap()[w][h]) == ALL)
+				else if ((aiManager->getWeatherMap()[h][w]) == ALL)
 				{
 					//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(255, 203, 81)));
 					//ImGui::Button("S", weatherIocnSize);
@@ -95,51 +95,51 @@ void WeatherPanel::Update()
 				}
 				else
 				{
-					if ((aiManager->getWeatherMap()[w][h] &= RAIN))
+					if ((aiManager->getWeatherMap()[h][w] &= RAIN))
 					{
 						//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 76, 153)));
 						//ImGui::Button("R", weatherIocnSize);
 						//ImGui::Image(rainIcon, weatherIocnSize, ImVec2(0, 1), ImVec2(1, 0));
 						//ImGui::PopStyleColor();
 						selectedIcon = rainIcon;
-						if ((aiManager->getWeatherMap()[w][h] &= FOG))
+						if ((aiManager->getWeatherMap()[h][w] &= FOG))
 						{
 							selectedIcon = rainfogIcon;
 						}
-						else if ((aiManager->getWeatherMap()[w][h] &= WINDY))
+						else if ((aiManager->getWeatherMap()[h][w] &= WINDY))
 						{
 							selectedIcon = rainwindIcon;
 						}
 
 					}
-					else if ((aiManager->getWeatherMap()[w][h] &= WINDY))
+					else if ((aiManager->getWeatherMap()[h][w] &= WINDY))
 					{
 						//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 200, 200)));
 						//ImGui::Button("W", weatherIocnSize);
 						//ImGui::Image(windIcon, weatherIocnSize, ImVec2(0, 1), ImVec2(1, 0));
 						//ImGui::PopStyleColor();
 						selectedIcon = windIcon;
-						if ((aiManager->getWeatherMap()[w][h] &= RAIN))
+						if ((aiManager->getWeatherMap()[h][w] &= RAIN))
 						{
 							selectedIcon = rainwindIcon;
 						}
-						else if ((aiManager->getWeatherMap()[w][h] &= FOG))
+						else if ((aiManager->getWeatherMap()[h][w] &= FOG))
 						{
 							selectedIcon = windfogIcon;
 						}
 					}
-					else if ((aiManager->getWeatherMap()[w][h] &= FOG))
+					else if ((aiManager->getWeatherMap()[h][w] &= FOG))
 					{
 						//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(102, 204, 0)));
 						//ImGui::Button("F", weatherIocnSize);
 						//ImGui::Image(fogIcon, weatherIocnSize, ImVec2(0, 1), ImVec2(1, 0));
 						//ImGui::PopStyleColor();
 						selectedIcon = fogIcon;
-						if ((aiManager->getWeatherMap()[w][h] &= RAIN))
+						if ((aiManager->getWeatherMap()[h][w] &= RAIN))
 						{
 							selectedIcon = rainfogIcon;
 						}
-						else if ((aiManager->getWeatherMap()[w][h] &= WINDY))
+						else if ((aiManager->getWeatherMap()[h][w] &= WINDY))
 						{
 							selectedIcon = windfogIcon;
 						}

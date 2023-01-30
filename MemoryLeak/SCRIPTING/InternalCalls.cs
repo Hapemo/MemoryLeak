@@ -233,7 +233,13 @@ namespace BonVoyage
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetLineCount(string _entityName, string _sceneName);
 
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static bool IsPlayerSpeaker(int _id);
-	}
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static bool IsPlayerSpeaker(int _id);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static void WeatherAIinit(float _width = 1600, float _height = 900);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static int GetCurrentWeather(int _index, float _posX, float _posY);
+    }
 }

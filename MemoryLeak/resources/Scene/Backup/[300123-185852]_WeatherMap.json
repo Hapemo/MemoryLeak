@@ -2548,38 +2548,5 @@
             ],
             "currentImageIndex": 0
         }
-    },
-    {
-        "General": {
-            "name": "WeatherBg",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 917.0,
-                "Y": 722.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\volume-button-2.png",
-            "layer": 3
-        },
-        "Script": {
-            "name": "WeatherScript"
-        }
     }
 ]
