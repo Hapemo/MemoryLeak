@@ -49,8 +49,8 @@ private:
 
 	int mapMaxHeight=0;
 	int mapMaxWidth=0;
-	int weatherMaxHeight = 10;
-	int weatherMaxWidth = 10;
+	int weatherMaxHeight = 20;
+	int weatherMaxWidth = 20;
 	int weatherMaxLocation = 3;
 
 	int initialLoactionX[maxlocation]{};

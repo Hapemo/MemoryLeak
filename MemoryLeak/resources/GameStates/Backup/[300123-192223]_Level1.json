@@ -54,6 +54,17 @@
     },
     {
         "SceneName": "WeatherMap",
+        "Transform": {
+            "scale": {
+                "X": 700.0,
+                "Y": 393.75
+            },
+            "rotation": 2.2857143878936768,
+            "translation": {
+                "X": 160.0,
+                "Y": 120.0
+            }
+        },
         "isActive": false,
         "layer": 9,
         "order": 0

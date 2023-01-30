@@ -32,3 +32,9 @@ C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SC
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
 C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.dll
+C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\bin\EditorDebug\x64\SCRIPTING\Scripting.pdb
+C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.dll
+C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\Scripting\obj\EditorDebug\Scripting.pdb

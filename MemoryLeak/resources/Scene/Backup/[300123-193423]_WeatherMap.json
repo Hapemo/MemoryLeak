@@ -2577,6 +2577,9 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\volume-button-2.png",
             "layer": 3
+        },
+        "Script": {
+            "name": "WeatherScript"
         }
     }
 ]

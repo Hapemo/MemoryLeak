@@ -679,7 +679,7 @@
             "name": "EIcon0",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -754,7 +754,7 @@
             "name": "EIcon1",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -829,7 +829,7 @@
             "name": "EIcon2",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -904,7 +904,7 @@
             "name": "EIcon3",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -979,7 +979,7 @@
             "name": "EIcon4",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1054,7 +1054,7 @@
             "name": "EIcon5",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1129,7 +1129,7 @@
             "name": "EIcon6",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1204,7 +1204,7 @@
             "name": "EIcon7",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1279,7 +1279,7 @@
             "name": "EIcon8",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1354,7 +1354,7 @@
             "name": "EIcon9",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1429,7 +1429,7 @@
             "name": "EIcon10",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1504,7 +1504,7 @@
             "name": "EIcon11",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1579,7 +1579,7 @@
             "name": "EIcon12",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1654,7 +1654,7 @@
             "name": "EIcon13",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1729,7 +1729,7 @@
             "name": "EIcon14",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1804,7 +1804,7 @@
             "name": "EIcon15",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1879,7 +1879,7 @@
             "name": "EIcon16",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1954,7 +1954,7 @@
             "name": "EIcon17",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2029,7 +2029,7 @@
             "name": "EIcon18",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2104,7 +2104,7 @@
             "name": "EIcon19",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2179,7 +2179,7 @@
             "name": "EIcon20",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2254,7 +2254,7 @@
             "name": "EIcon21",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2329,7 +2329,7 @@
             "name": "EIcon22",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2404,7 +2404,7 @@
             "name": "EIcon23",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2479,7 +2479,7 @@
             "name": "EIcon24",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2554,7 +2554,7 @@
             "name": "WeatherBg",
             "tag": 4,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2577,6 +2577,9 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\volume-button-2.png",
             "layer": 3
+        },
+        "Script": {
+            "name": "WeatherScript"
         }
     }
 ]
