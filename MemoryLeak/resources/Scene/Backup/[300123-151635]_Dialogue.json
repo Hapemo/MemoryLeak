@@ -1141,8 +1141,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 371.8309326171875,
-                "Y": 55.70423126220703
+                "X": 420.0,
+                "Y": 5.0
             }
         },
         "Sprite": {
@@ -1479,8 +1479,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 640.0,
-                "Y": -260.0
+                "X": 630.0,
+                "Y": -290.0
             }
         },
         "Sprite": {
@@ -1529,7 +1529,7 @@
             "name": "enemymap",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1538,8 +1538,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 640.0,
-                "Y": -260.0
+                "X": 630.0,
+                "Y": -290.0
             }
         },
         "Sprite": {
@@ -1588,7 +1588,7 @@
             "name": "weathermap",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1597,8 +1597,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 640.0,
-                "Y": -260.0
+                "X": 630.0,
+                "Y": -290.0
             }
         },
         "Sprite": {
@@ -1781,7 +1781,7 @@
             "name": "weathermapbig",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1790,7 +1790,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
+                "X": -5.0,
                 "Y": 0.0
             }
         },
