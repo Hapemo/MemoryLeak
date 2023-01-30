@@ -42,6 +42,7 @@ public:
 	static MonoString* GetDialogue(int _id);
 	static void ChangeGameState(MonoString* _name);
 	static bool EntityIsActive(MonoString* _entityName, MonoString* _sceneName);
+	static void SetEntityIsActive(MonoString* _entityName, MonoString* _sceneName, bool _active);
 	static void EntityActivate(MonoString* _entityName, MonoString* _sceneName);
 	static void EntityDeactivate(MonoString* _entityName, MonoString* _sceneName);
 	static MonoString* EntityGetParent(MonoString* _entityName, MonoString* _sceneName);

@@ -108,8 +108,8 @@
     },
     {
         "General": {
-            "name": "player",
-            "tag": 0,
+            "name": "NEW Entity 1",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -133,13 +133,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\mc.png",
-            "layer": 10
+            "layer": 4
         }
     },
     {
         "General": {
-            "name": "playerbig",
-            "tag": 0,
+            "name": "NEW Entity 1",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -163,67 +163,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\mc.png",
-            "layer": 10
-        }
-    },
-    {
-        "General": {
-            "name": "enemybig",
-            "tag": 2,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 120.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -263.0281982421875,
-                "Y": 230.2816925048828
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\monster.png",
-            "layer": 10
-        }
-    },
-    {
-        "General": {
-            "name": "enemy",
-            "tag": 2,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 80.0,
-                "Y": 69.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 580.9154052734375,
-                "Y": -195.4929656982422
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\monster.png",
-            "layer": 10
+            "layer": 4
         }
     }
 ]

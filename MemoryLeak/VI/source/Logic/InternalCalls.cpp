@@ -302,6 +302,14 @@ bool InternalCalls::EntityIsActive(std::string const& _entityName, std::string c
 
 /*!*****************************************************************************
 \brief
+Sets if an entity from scene is active.
+*******************************************************************************/
+void InternalCalls::SetEntityIsActive(std::string const& _entityName, std::string const& _sceneName, bool _active) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<General>().isActive = _active;
+}
+
+/*!*****************************************************************************
+\brief
 Activate an entity from scene.
 *******************************************************************************/
 void InternalCalls::EntityActivate(std::string const& _entityName, std::string const& _sceneName) {

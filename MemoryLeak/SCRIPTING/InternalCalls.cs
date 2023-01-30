@@ -68,7 +68,10 @@ namespace BonVoyage
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool EntityIsActive(string _entityName, string _sceneName);
 
-		[MethodImpl(MethodImplOptions.InternalCall)]
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static bool SetEntityIsActive(string _entityName, string _sceneName, bool _active = true);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void EntityActivate(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]

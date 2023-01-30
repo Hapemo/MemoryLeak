@@ -246,6 +246,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Sets if an entity from scene is active.
+	*******************************************************************************/
+	static void SetEntityIsActive(std::string const& _entityName, std::string const& _sceneName, bool _active);
+
+	/*!*****************************************************************************
+	\brief
 	Activate an entity from scene.
 	*******************************************************************************/
 	static void EntityActivate(std::string const& _entityName, std::string const& _sceneName);

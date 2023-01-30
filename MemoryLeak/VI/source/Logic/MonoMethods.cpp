@@ -48,6 +48,10 @@ bool MonoMethods::EntityIsActive(MonoString* _entityName, MonoString* _sceneName
 	return FUNC->EntityIsActive(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
+void MonoMethods::SetEntityIsActive(MonoString* _entityName, MonoString* _sceneName, bool _active) {
+	FUNC->SetEntityIsActive(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _active);
+}
+
 void MonoMethods::EntityActivate(MonoString* _entityName, MonoString* _sceneName) {
 	FUNC->EntityActivate(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
@@ -237,6 +241,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::IsPlayerSpeaker", &FUNC->IsPlayerSpeaker);
 	mono_add_internal_call("BonVoyage.InternalCalls::ChangeGameState", &MonoMethods::ChangeGameState);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityIsActive", &MonoMethods::EntityIsActive);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetEntityIsActive", &MonoMethods::SetEntityIsActive);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityActivate", &MonoMethods::EntityActivate);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityDeactivate", &MonoMethods::EntityDeactivate);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityGetParent", &MonoMethods::EntityGetParent);
