@@ -31,8 +31,6 @@ void ShadowManager::Update()
 
 	mCastShadows = true;
 
-	mCamera = GameStateManager::GetInstance()->mCurrentGameState->mCamera;
-
 	CreateFOVVertices();
 
 	for (Entity e : mEntities)
@@ -107,10 +105,6 @@ void ShadowManager::RayCast()
 void ShadowManager::CreateRays()
 {
 	Math::Vec2 lightPos = GetLightPos();
-
-	Math::Vec2 i{ mCamera.scale.x / 2.f, 0 };
-	Math::Vec2 j{ 0, mCamera.scale.y / 2.f };
-	
 	for (size_t k = 0; k < mObjectEdges.size(); ++k)
 		mRayDirection.push_back({ lightPos, mObjectEdges[k].pos - lightPos });
 }

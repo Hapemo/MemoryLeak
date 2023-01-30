@@ -180,6 +180,9 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	if (!lightsource.HasComponent<LightSource>()) return;
 	if (!_vertices.size()) return;
 
+	bool prev = mIsCurrSceneUI;
+	mIsCurrSceneUI = false;
+
 	Vertex v0;
 	glm::vec4 clr{ 1.f, 1.f, 1.f, 0.1f };
 	glm::vec4 shadowclr{ 0, 0, 0, 0.8f };
@@ -221,6 +224,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	}
 
 	CreateShadows(shadowclr);
+	mIsCurrSceneUI = prev;
 }
 
 void RenderManager::CreateShadows(const glm::vec4& _clr)

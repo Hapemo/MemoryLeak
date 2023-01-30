@@ -2660,11 +2660,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": -50.0
+                "Y": 0.0
             },
             "scaleOffset": {
-                "X": 0.5,
-                "Y": 0.5
+                "X": 1.0,
+                "Y": 1.0
             },
             "isTrigger": true,
             "renderFlag": true
