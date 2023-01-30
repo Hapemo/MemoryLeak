@@ -29,7 +29,7 @@
             "layer": 0
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "BOAT CAPSIZED",
             "offset": {
                 "X": -451.0,
@@ -94,7 +94,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Try Again",
             "offset": {
                 "X": -106.0,
@@ -165,7 +165,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Quit Game",
             "offset": {
                 "X": -126.0,

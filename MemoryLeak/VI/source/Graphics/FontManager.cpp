@@ -151,7 +151,11 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
         float width{};
         str += " ";
         for (char ch : str)
+        {
+            if (ch == '\n')
+                width += 1000;
             width += mGlyphs[ch].size.x * scale;
+        }
         wordWidth.push_back(width);
     }
     mParagraphs[layer].push_back(Paragraph(strings, wordWidth, _pos, scale, color, _width, camZoom));
@@ -193,6 +197,7 @@ void FontRenderer::DrawParagraphs(int _layer)
             }
             for (auto itr = para.words[i].begin(); itr != para.words[i].end(); ++itr)
             {
+                if (*itr == '\n') continue;
                 Character ch = mGlyphs[*itr];
                 float w = ch.size.x * para.scale;
                 float h = ch.size.y * para.scale;

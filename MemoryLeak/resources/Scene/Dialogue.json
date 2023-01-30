@@ -40,7 +40,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Where am I?",
             "offset": {
                 "X": -138.0,
@@ -102,7 +102,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Maybe that girl knows...",
             "offset": {
                 "X": -255.0,
@@ -164,7 +164,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "At last we meet again!",
             "offset": {
                 "X": 363.0,
@@ -177,465 +177,6 @@
                 "b": 255,
                 "a": 255
             }
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G2",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 94.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -425.0,
-                "Y": 200.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "I've been waiting for you!",
-            "offset": {
-                "X": -289.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G3",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 135.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -425.0,
-                "Y": 180.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "What would you like to do? Play or remininsce?",
-            "offset": {
-                "X": -287.0,
-                "Y": 7.0
-            },
-            "scale": 0.8999999761581421,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G4",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 215.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -420.0,
-                "Y": 133.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Let's play a game where you hold your hands out and I'll give you something!",
-            "offset": {
-                "X": -306.0,
-                "Y": 25.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G5",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 203.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -398.0,
-                "Y": 140.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Well, let's play together now! Or are you supposed to be doing something else?",
-            "offset": {
-                "X": -333.0,
-                "Y": 25.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G6",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 215.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -250.0,
-                "Y": 190.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "We have plenty of time to reminsce! There's something I want to show you!",
-            "offset": {
-                "X": -476.0,
-                "Y": 3.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G7",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 215.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -389.0,
-                "Y": 133.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Ain't it pretty? Have you seen one of them before? Do you know what it's called?",
-            "offset": {
-                "X": -334.0,
-                "Y": 25.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G8",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 215.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -358.0,
-                "Y": 133.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...",
-            "offset": {
-                "X": -360.0,
-                "Y": 25.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G9",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 215.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -363.0,
-                "Y": 133.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "The people said you're a ferryman. Quick, a passenger is waiting! We will meet again...",
-            "offset": {
-                "X": -343.0,
-                "Y": 25.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "G10",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 740.0,
-                "Y": 215.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -403.0,
-                "Y": 133.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "So you remember the sea conches! Don't forget them now! We will meet again...",
-            "offset": {
-                "X": -306.0,
-                "Y": 25.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
         },
         "Button": {
             "interactable": true
@@ -682,7 +223,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Play...",
             "offset": {
                 "X": -59.0,
@@ -741,7 +282,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Reminisce...",
             "offset": {
                 "X": -109.0,
@@ -754,210 +295,6 @@
                 "b": 255,
                 "a": 255
             }
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "PP3",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 500.0,
-                "Y": 110.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 500.0,
-                "Y": 46.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Do what?",
-            "offset": {
-                "X": -105.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "PP4",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 500.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 500.0,
-                "Y": -90.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Where am I?",
-            "offset": {
-                "X": -130.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "PP5",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 500.0,
-                "Y": 110.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 500.0,
-                "Y": 46.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Yes...",
-            "offset": {
-                "X": -52.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "PP6",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 500.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 500.0,
-                "Y": -90.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "No...",
-            "offset": {
-                "X": -34.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
         },
         "Button": {
             "interactable": true
@@ -1004,265 +341,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "I'd like to play",
             "offset": {
                 "X": -158.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "P2",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 550.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 420.0,
-                "Y": 5.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "I'd like to remininsce.",
-            "offset": {
-                "X": -221.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "P3",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 700.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 420.0,
-                "Y": 5.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "What am I supposed to do?",
-            "offset": {
-                "X": -309.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "P4",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 730.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 371.8309326171875,
-                "Y": 55.70423126220703
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "I don't even know where I am.",
-            "offset": {
-                "X": -323.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "P5",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 450.0,
-                "Y": 120.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 420.0,
-                "Y": 5.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Yes, I think.",
-            "offset": {
-                "X": -118.0,
-                "Y": -17.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "TestMonoScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "P6",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 450.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 420.0,
-                "Y": 5.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
-            "layer": 63
-        },
-        "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Yes, I think.",
-            "offset": {
-                "X": -129.0,
                 "Y": -17.0
             },
             "scale": 1.0,
@@ -1310,7 +392,7 @@
             "layer": 63
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "These are called sea conches, and are known to store important memories of the past. We will meet again...",
             "offset": {
                 "X": -431.0,
@@ -1361,7 +443,7 @@
             "layer": 63
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "HP",
             "offset": {
                 "X": -272.0,
@@ -1450,7 +532,7 @@
             "layer": 62
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Memory Fragments (0/1)",
             "offset": {
                 "X": -316.0,
@@ -1506,7 +588,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Minimap",
             "offset": {
                 "X": -90.0,
@@ -1565,7 +647,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Radar",
             "offset": {
                 "X": -70.0,
@@ -1624,7 +706,7 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Weather",
             "offset": {
                 "X": -90.0,
@@ -1716,7 +798,7 @@
             "layer": 63
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Enlarged Minimap",
             "offset": {
                 "X": -185.0,
@@ -1761,7 +843,7 @@
             "layer": 63
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Enlarged Radar",
             "offset": {
                 "X": -185.0,
@@ -1806,7 +888,7 @@
             "layer": 63
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Enlarged Weather",
             "offset": {
                 "X": -185.0,
@@ -1851,13 +933,13 @@
             "layer": 63
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Weather: Calm Effect: None",
             "offset": {
                 "X": -185.0,
                 "Y": 9.0
             },
-            "scale": 1.0,
+            "scale": 0.8999999761581421,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -1896,7 +978,7 @@
             "layer": 63
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Objective: None",
             "offset": {
                 "X": -185.0,
@@ -1944,7 +1026,7 @@
             "layer": 64
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "A cat.",
             "offset": {
                 "X": 93.0,
