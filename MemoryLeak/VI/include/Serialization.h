@@ -117,7 +117,7 @@ private:
 	Button getButton(Value& entity);
 	LightSource getLightSource(Value& entity);
 	ShadowCaster getShadowCaster(Value& entity);
-
+	CircularViewport getCircularViewport(Value& entity);
 	//save components 
 	void addGeneral(Document& scene, Value& entity, General general);
 	void addLifespan(Document& scene, Value& entity, Lifespan lifespan);
@@ -139,6 +139,8 @@ private:
 	void addButton(Document& scene, Value& entity, Button button);
 	void addLightSource(Document& scene, Value& entity, LightSource lightSource);
 	void addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster);
+	void addCircularViewport(Document& scene, Value& entity, CircularViewport circularViewport);
+	
 public:
 	//static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
 	//static SceneData LoadSceneData(std::string const& _filePath);

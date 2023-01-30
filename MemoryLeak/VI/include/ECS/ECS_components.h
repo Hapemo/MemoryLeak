@@ -344,6 +344,8 @@ struct ShadowCaster
 	bool renderFlag{ false };				// save, edit, see
 };
 
+struct CircularViewport {};
+
 //use to index the variant data type, for ditor and serilization to determine type stored
 enum class COMPONENTID
 {
@@ -366,11 +368,12 @@ enum class COMPONENTID
 	BUTTON,			//16
 	LAYERCOLLIDER,	//17
 	LIGHTSOURCE,	//18
-	SHADOWCASTER	//19
+	SHADOWCASTER,	//19
+	CIRCULARVIEWPORT//20
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, CircularViewport>  COMPONENT;
 
 
 

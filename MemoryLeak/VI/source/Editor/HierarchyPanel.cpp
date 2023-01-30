@@ -550,6 +550,11 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 			ImGui::Text("ShadowCaster");
 			setSelectedEntity(e);
 		}
+		if (e->HasComponent<CircularViewport>())
+		{
+			ImGui::Text("CircularViewport");
+			setSelectedEntity(e);
+		}
 		ImGui::TreePop();
 	}
 	setSelectedEntity(e);
