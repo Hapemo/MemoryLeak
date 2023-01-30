@@ -1,0 +1,106 @@
+[
+    {
+        "General": {
+            "name": "enemymap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 280.0,
+                "Y": 280.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 62
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Radar",
+            "offset": {
+                "X": -70.0,
+                "Y": 150.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "enemymapbig",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 700.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -5.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 63
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Enlarged Radar",
+            "offset": {
+                "X": -200.0,
+                "Y": 360.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    }
+]

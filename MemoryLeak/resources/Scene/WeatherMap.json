@@ -239,7 +239,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 550.0,
-                "Y": -257.676025390625
+                "Y": -260.0
             }
         },
         "Sprite": {
@@ -679,7 +679,7 @@
             "name": "EIcon0",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -754,7 +754,7 @@
             "name": "EIcon1",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -829,7 +829,7 @@
             "name": "EIcon2",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -904,7 +904,7 @@
             "name": "EIcon3",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -979,7 +979,7 @@
             "name": "EIcon4",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1054,7 +1054,7 @@
             "name": "EIcon5",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1129,7 +1129,7 @@
             "name": "EIcon6",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1204,7 +1204,7 @@
             "name": "EIcon7",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1279,7 +1279,7 @@
             "name": "EIcon8",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1354,7 +1354,7 @@
             "name": "EIcon9",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1429,7 +1429,7 @@
             "name": "EIcon10",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1504,7 +1504,7 @@
             "name": "EIcon11",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1579,7 +1579,7 @@
             "name": "EIcon12",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1654,7 +1654,7 @@
             "name": "EIcon13",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1729,7 +1729,7 @@
             "name": "EIcon14",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1804,7 +1804,7 @@
             "name": "EIcon15",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1879,7 +1879,7 @@
             "name": "EIcon16",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -1954,7 +1954,7 @@
             "name": "EIcon17",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2029,7 +2029,7 @@
             "name": "EIcon18",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2104,7 +2104,7 @@
             "name": "EIcon19",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2179,7 +2179,7 @@
             "name": "EIcon20",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2254,7 +2254,7 @@
             "name": "EIcon21",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2329,7 +2329,7 @@
             "name": "EIcon22",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2404,7 +2404,7 @@
             "name": "EIcon23",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2479,7 +2479,7 @@
             "name": "EIcon24",
             "tag": 5,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2551,15 +2551,77 @@
     },
     {
         "General": {
-            "name": "WeatherBg",
-            "tag": 4,
+            "name": "weathermap",
+            "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 917.0,
-                "Y": 722.0
+                "X": 280.0,
+                "Y": 280.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 26,
+                "g": 81,
+                "b": 137,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 3
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Weather",
+            "offset": {
+                "X": -90.0,
+                "Y": 150.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "WeatherMapScript"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "weathermapbig",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 700.0
             },
             "rotation": 0.0,
             "translation": {
@@ -2569,14 +2631,29 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
+                "r": 29,
+                "g": 123,
+                "b": 162,
                 "a": 255
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\volume-button-2.png",
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 3
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Enlarged Weather",
+            "offset": {
+                "X": -210.0,
+                "Y": 360.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
         }
     }
 ]

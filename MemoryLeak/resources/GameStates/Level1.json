@@ -19,7 +19,7 @@
     {
         "SceneName": "Pause",
         "isActive": true,
-        "layer": 9,
+        "layer": 10,
         "order": 0
     },
     {
@@ -31,13 +31,13 @@
     {
         "SceneName": "How_To_Play",
         "isActive": true,
-        "layer": 9,
+        "layer": 10,
         "order": 0
     },
     {
         "SceneName": "Quit Confirmation",
         "isActive": true,
-        "layer": 9,
+        "layer": 10,
         "order": 4
     },
     {
@@ -54,6 +54,18 @@
     },
     {
         "SceneName": "WeatherMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "MiniMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "EnemyMap",
         "isActive": false,
         "layer": 9,
         "order": 0
