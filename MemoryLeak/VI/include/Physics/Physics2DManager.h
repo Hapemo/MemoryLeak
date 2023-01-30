@@ -11,7 +11,7 @@
 *******************************************************************************/
 #pragma once
 
-#define MultiThread 1 // 1 to multi thread, 0 to not multi thread.
+//#define MultiThread 1 // 1 to multi thread, 0 to not multi thread.
 
 // -----------------------------
 // Include files
@@ -489,6 +489,7 @@ public:
 	NULL
 	*******************************************************************************/
 	void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
+//	std::mutex mPhysicsStepLock;	// Variable for testing multi-threading
 private:
 	// -----------------------------
 	// Constant values
@@ -500,6 +501,5 @@ private:
 	const float	 mAngularVelocityCap{ 30.f };		// Global angular velocity cap
 	bool mStepMode{ false };						// Flag variable containing whether physics update is in step mode
 	bool mAdvanceStep{ false };						// Flag variable containing whether physics should step when its in step mode
-	bool mFirstUpdate{ true };						// First Update flag
-	std::mutex mPhysicsStepLock;
+	bool mFirstUpdate{ true };						// First Update flag for hacking vector direction
 };

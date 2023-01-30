@@ -88,8 +88,27 @@ void Application::SystemUpdate() {
 
   // Physics
   TRACK_PERFORMANCE("Physics");
+  //try {
+  //    physics2DManager->mPhysicsStepLock.lock();
+  //    std::thread phyThread{ [] {physics2DManager->Update(FPSManager::dt); } };
+  //    phyThread.join();
+  //    physics2DManager->mPhysicsStepLock.unlock();
+  //}
+  //catch (...) {
+  //    if (physics2DManager->mPhysicsStepLock.try_lock())
+  //        physics2DManager->mPhysicsStepLock.unlock();
+  //}
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
+
+  TRACK_PERFORMANCE("Collision");
+  collision2DManager->Update(FPSManager::dt);
+  END_TRACK("Collision");
+
+  // Layer
+  TRACK_PERFORMANCE("Layer");
+  layerManager->Update();
+  END_TRACK("Layer");
 
   // Animator
   TRACK_PERFORMANCE("Animation");
@@ -109,6 +128,9 @@ void Application::init() {
   SystemInit();
 
   GameStateManager::GetInstance()->Init();
+
+  // Set up quadtree after scene entities have been loaded
+  collision2DManager->SetupQuadTree();
 
 #ifdef NDEBUG
 #ifdef _EDITOR
@@ -171,6 +193,7 @@ void Application::MainUpdate() {
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
     editorManager->Update();
+    shadowManager->Update();
     END_TRACK("Editor");
     if (!editorManager->IsScenePaused()) {
       GameStateManager::GetInstance()->Update(); // Game logic
@@ -178,11 +201,12 @@ void Application::MainUpdate() {
     }
 #else
     GameStateManager::GetInstance()->Update(); // Game logic
+    shadowManager->Update();
     SystemUpdate();
 
 #endif
     static bool toggle{ false };
-    if (Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
+    if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
 
     TRACK_PERFORMANCE("Graphics");
     //--------------------- Drawing and rendering ---------------------
@@ -207,6 +231,7 @@ void Application::MainUpdate() {
 
 void Application::exit() {
     //logicSystem->Exit();
+    //collision2DManager->Cleanup();
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
 #ifdef _EDITOR

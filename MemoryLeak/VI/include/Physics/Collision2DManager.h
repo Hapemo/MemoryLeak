@@ -18,6 +18,7 @@
 #include "ECS_systems.h"
 #include "Contact.h"
 #include "ColliderType.h"
+#include "QuadTree.h"
 
 /*!*****************************************************************************
 Define a function callback for collision dispatch
@@ -136,6 +137,18 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Update function that does collision checks by going into inner system functions 
+	when enough time has passed
+	\param const float &
+	A reference to a read-only variable that tells us the application's current
+	delta time
+	\return void
+	NULL
+	*******************************************************************************/
+	void Update(const double& _dt);
+
+	/*!*****************************************************************************
+	\brief
 	ResolveCollisions function that calls the different system functions in order to
 	detect & resolve collisions
 	\param const double &
@@ -169,6 +182,19 @@ public:
 	*******************************************************************************/
 	bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
 
+	/*!*****************************************************************************
+	\brief
+	CheckCollision function that checks for collision between 2 specified entities.
+	Can be specified to be static check or dynamic checks
+	\param const Entity &
+	A reference to a read-only entity to compare with
+	\param const Entity &
+	A reference to a read-only entity to compare against
+	\param bool
+	True/false variable dictating whether to do dynamic check
+	\return bool
+	Evaluated result of whether a collision happened between the two given entities
+	*******************************************************************************/
 	bool CheckCollision(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
 
 	/*!*****************************************************************************
@@ -206,11 +232,70 @@ public:
 	*******************************************************************************/
 	void PositionCorrection(Contact& _contact);
 
+// -----------------------------
+// QuadTree related functions
+// -----------------------------
+	/*!*****************************************************************************
+	\brief
+	CheckCollision function that checks for collision between 2 specified entities.
+	Can be specified to be static check or dynamic checks
+	\param const Entity &
+	A reference to a read-only entity to compare with
+	\param const Entity &
+	A reference to a read-only entity to compare against
+	\param bool
+	True/false variable dictating whether to do dynamic check
+	\return bool
+	Evaluated result of whether a collision happened between the two given entities
+	*******************************************************************************/
+	QuadTree& GetQuadTree();
+
+	/*!*****************************************************************************
+	\brief
+	SetupQuadTree function that initializes the quadtree parameters for usage
+	\param void
+	NULL
+	\return void
+	NULL
+	*******************************************************************************/
+	void SetupQuadTree();
+
+	/*!*****************************************************************************
+	\brief
+	UpdateEntityInQuadTree function that updates an entity's position in the quad tree
+	\param const Entity&
+	A reference to a read-only entity to update
+	\return void
+	NULL
+	*******************************************************************************/
+	void UpdateEntityInQuadTree(const Entity& _e);
+
+	/*!*****************************************************************************
+	\brief
+	GetPossibleContactList function that returns a reference to the system's stored
+	narrowed collision pair container
+	\param void
+	NUL
+	\return const std::vector<std::pair<Entity, Entity>>&
+	Reference to the storeed container
+	*******************************************************************************/
+	const std::vector<std::pair<Entity, Entity>>& GetPossibleContactList();
 private:
 	// Database of callback functions to collision checks 
 	CollisionCallback mCollisionDatabase[static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)][static_cast<int>(ColliderType::MAXTYPESOFCOLLIDERS)];
+	
+	QuadTree mQuadTree;						// QuadTree instance				
+	std::vector<std::pair<Entity, Entity>> 
+		mPossibleContactList;				// List of narrowed down entity pair to check for collision
 	std::vector<Contact> mContactList;		// List of contacts in the current frame
+
+	bool mFirstUpdate{ true };				// First Update flag for hacking vector direction
 
 	const float	penAllowance{ 0.01f },		// Penetration allowance
 				penPercentage{ 2.0f };		// Penetration percentage to correct
+
+	double mAccumulatedDT{ 0.0 };					// Member variable storing accumulatedDT
+	const double mFixedDT{ 1.0 / 60.0 };			// Fixed delta time step of 1/60 steps a second
+	const double mAccumulatedDTCap{ 1.0 };			// Accumulated cannot store more than 1 second worth of updates
+
 };
