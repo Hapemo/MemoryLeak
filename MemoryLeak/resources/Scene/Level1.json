@@ -924,9 +924,6 @@
             "isRandPitch": false,
             "isSpacial": false
         },
-        "Script": {
-            "name": "TestMonoScript"
-        },
         "ShadowCaster": {
             "centerOffset": {
                 "X": 0.0,
@@ -2805,6 +2802,39 @@
                 "Y": 0.10000000149011612
             },
             "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "level 1 manager",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2504.846923828125,
+                "Y": -131.1092529296875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "Textures\\Background\\Assets.txt",
+            "layer": 58
+        },
+        "Script": {
+            "name": "TestMonoScript"
         }
     }
 ]

@@ -54,9 +54,6 @@
                 "a": 255
             }
         },
-        "Script": {
-            "name": "TestMonoScript"
-        },
         "Button": {
             "interactable": true
         }
@@ -115,9 +112,6 @@
                 "b": 255,
                 "a": 255
             }
-        },
-        "Script": {
-            "name": "TestMonoScript"
         },
         "Button": {
             "interactable": true
@@ -355,9 +349,6 @@
                 "a": 255
             }
         },
-        "Script": {
-            "name": "TestMonoScript"
-        },
         "Button": {
             "interactable": true
         }
@@ -405,9 +396,6 @@
                 "b": 255,
                 "a": 255
             }
-        },
-        "Script": {
-            "name": "TestMonoScript"
         },
         "Button": {
             "interactable": true
