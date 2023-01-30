@@ -27,9 +27,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Env_Water.png",
             "layer": 0
-        },
-        "Script": {
-            "name": "WeatherScript"
         }
     },
     {
