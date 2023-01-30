@@ -16,13 +16,15 @@ namespace BonVoyage {
             {
                 int modI = i % 5;
                 int divI = i / 5;
+                int index = InternalCalls.GetCurrentWeather(i, 
+                    InternalCalls.GetPosX("Boat", "Level1"), InternalCalls.GetPosY("Boat", "Level1"));
                 if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
                 {
-                    string icon = "MIcon" + i;
-                    int index = InternalCalls.GetCurrentWeather(i, 
-                        InternalCalls.GetPosX("Boat", "Level1"), InternalCalls.GetPosY("Boat", "Level1"));
-                    InternalCalls.SetSpriteSheetIndex(icon, "WeatherMap", index);
+                    string MIcon = "MIcon" + i;
+                    InternalCalls.SetSpriteSheetIndex(MIcon, "WeatherMap", index);
                 }
+                string EIcon = "EIcon" + i;
+                InternalCalls.SetSpriteSheetIndex(EIcon, "WeatherMap", index);
             }
             
         }
