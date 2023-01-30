@@ -462,7 +462,6 @@
     <ClCompile Include="source\Logic\ScriptManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />
     <ClCompile Include="source\Physics\Physics2DManager.cpp" />
-    <ClCompile Include="source\Physics\QuadTree.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Serialization.cpp" />
     <ClCompile Include="source\stb_image.cpp" />

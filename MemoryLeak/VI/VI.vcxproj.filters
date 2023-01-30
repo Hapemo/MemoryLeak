@@ -55,7 +55,6 @@
     <ClCompile Include="source\Logic\InternalCalls.cpp" />
     <ClCompile Include="source\Logic\MonoMethods.cpp" />
     <ClCompile Include="source\Logic\MonoComponent.cpp" />
-    <ClCompile Include="source\Physics\QuadTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
