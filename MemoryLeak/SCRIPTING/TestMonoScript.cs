@@ -93,6 +93,7 @@ namespace BonVoyage {
                     if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0)
                     {
                         SetPosition("Passenger_1", "Level1", -1240, 670);
+                        InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find the destination"); // hint
                     }
         }
 
