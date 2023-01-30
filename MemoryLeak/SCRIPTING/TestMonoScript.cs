@@ -426,91 +426,28 @@ namespace BonVoyage {
             InternalCalls.SetCurrentCameraScaleX(1600);
         }
 
-        public void TextAlign(string entityname, string scenename) {
-            int lineCount = InternalCalls.GetLineCount(entityname, scenename);
-            switch(lineCount) {
-            case 1:
-                InternalCalls.SetScaleX(entityname, scenename, 740);
-                InternalCalls.SetScaleY(entityname, scenename, 100);
-
-                InternalCalls.SetPosX(entityname, scenename, -387);
-                InternalCalls.SetPosY(entityname, scenename, 200);
-
-                InternalCalls.SetTextOffset(entityname, scenename, -340, -15);
-            break;
-            case 2:
-                InternalCalls.SetScaleX(entityname, scenename, 740);
-                InternalCalls.SetScaleY(entityname, scenename, 135);
-
-                InternalCalls.SetPosX(entityname, scenename, -387);
-                InternalCalls.SetPosY(entityname, scenename, 180);
-
-                InternalCalls.SetTextOffset(entityname, scenename, -340, 7);
-            break;
-            case 3:
-                InternalCalls.SetScaleX(entityname, scenename, 740);
-                InternalCalls.SetScaleY(entityname, scenename, 215);
-
-                InternalCalls.SetPosX(entityname, scenename, -387);
-                InternalCalls.SetPosY(entityname, scenename, 133);
-
-                InternalCalls.SetTextOffset(entityname, scenename, -340, 25);
-            break;
-            case 4:
-                InternalCalls.SetScaleX(entityname, scenename, 740);
-                InternalCalls.SetScaleY(entityname, scenename, 229);
-
-                InternalCalls.SetPosX(entityname, scenename, -387);
-                InternalCalls.SetPosY(entityname, scenename, 133);
-
-                InternalCalls.SetTextOffset(entityname, scenename, -340, 50);
-            break;
-            case 5:
-                InternalCalls.SetScaleX(entityname, scenename, 740);
-                InternalCalls.SetScaleY(entityname, scenename, 277);
-
-                InternalCalls.SetPosX(entityname, scenename, -387);
-                InternalCalls.SetPosY(entityname, scenename, 108);
-
-                InternalCalls.SetTextOffset(entityname, scenename, -340, 75);
-            break;
-                case 6:
-                    InternalCalls.SetScaleX(entityname, scenename, 740);
-                    InternalCalls.SetScaleY(entityname, scenename, 320);
-
-                    InternalCalls.SetPosX(entityname, scenename, -387);
-                    InternalCalls.SetPosY(entityname, scenename, 89);
-
-                    InternalCalls.SetTextOffset(entityname, scenename, -340, 100);
-                    break;
-            }
-        }
-
-    public void TextAlignChoices(string entityname, string scenename, int choice) {
+    // int scaleX           - This is the default width of button
+    // int posX             - This is the center X coordinate of button (500)
+    // int posY             - This is the center Y coordinate of button. If it's choice, it's the middle of both buttons (-25)
+    // int spaceing         - Spacing between choice button edge from middle, useless for single button.
+    // int perLineScaleY    - This is the increment for one additional line
+    // int textXSpacing     - This is the spacing of the text from the left edge of the box 
+    // int textYSpacing     - This is the spacing of the text from the top edge of the box 
+    public void TextAlignChoices(string entityname, string scenename, int posX, int posY, int scaleX = 500, int perLineScaleY = 60, int textXSpacing = 50, int textYSpacing = 15, int choice = 0, int spacing = 15) {
       int additionalLines = InternalCalls.GetLineCount(entityname, scenename) - 1;
-      int middle = -25;         // This is the center point of both texts
-      int spaceing = 15;        // Spacing between edge from middle
-      int scaleX = 500;         // This is the default width of button
       int scaleY = 100;         // This is the default height of button, will changing with respect to line count
-      int buttonCenterX = 500;  // Center X coordinate of button
-      int buttonCenterY = 0;    // This must be calculated, differs for different choices
-      int perLineScaleY = 60;   // This is the increment for one additional line
-      int textXSpacing = 50;    // This is the spacing of the text from the left edge of the box 
-      int textYSpacing = 20;    // This is the spacing of the text from the top edge of the box 
 
       InternalCalls.SetScaleX(entityname, scenename, scaleX);
-      InternalCalls.SetScaleY(entityname, scenename, scaleY + perLineScaleY* additionalLines);
+      InternalCalls.SetScaleY(entityname, scenename, scaleY + perLineScaleY * additionalLines);
 
-      if (choice == 1) {
-        buttonCenterY = middle + spaceing + scaleY/2 + perLineScaleY * additionalLines / 2;
-      } else buttonCenterY = middle - spaceing - scaleY / 2 - perLineScaleY * additionalLines / 2;
+      if (choice == 1)      posY = posY + spacing + scaleY / 2 + perLineScaleY * additionalLines / 2;
+      else if (choice == 2) posY = posY - spacing - scaleY / 2 - perLineScaleY * additionalLines / 2;
 
-      InternalCalls.SetPosX(entityname, scenename, buttonCenterX);
-      InternalCalls.SetPosY(entityname, scenename, buttonCenterY);
+      InternalCalls.SetPosX(entityname, scenename, posX);
+      InternalCalls.SetPosY(entityname, scenename, posY);
 
       int textY = perLineScaleY * additionalLines / 2 - textYSpacing;
-
-      InternalCalls.SetTextOffset(entityname, scenename, -scaleX/2 + textXSpacing, textY);
+      InternalCalls.SetTextOffset(entityname, scenename, -scaleX / 2 + textXSpacing, textY);
     }
   
   #endregion
@@ -569,7 +506,7 @@ namespace BonVoyage {
         InternalCalls.UpdateText(firstSpeaker, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
 
         if (InternalCalls.IsPlayerSpeaker(1)) { }// TODO player alignment
-        else TextAlign(notPlayer, scene);
+        else TextAlignChoices(notPlayer, scene, -387, 200, 740);
 
         CameraZoomIn();
         starttalking = true;
@@ -615,11 +552,12 @@ namespace BonVoyage {
           InternalCalls.EntityActivate(player, scene);
           InternalCalls.EntityDeactivate(notPlayer, scene);
           InternalCalls.UpdateText(player, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+          TextAlignChoices(player, scene, 450, 5, 500);
         } else {
           InternalCalls.EntityActivate(notPlayer, scene);
           InternalCalls.EntityDeactivate(player, scene);
           InternalCalls.UpdateText(notPlayer, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-          TextAlign(notPlayer, scene);
+          TextAlignChoices(notPlayer, scene, -387, 200, 740);
         }
 
         if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0) {
@@ -628,8 +566,8 @@ namespace BonVoyage {
           InternalCalls.EntityActivate(choice2, scene);
           InternalCalls.UpdateText(choice1, scene, GetNextDialog(1));
           InternalCalls.UpdateText(choice2, scene, GetNextDialog(2));
-          TextAlignChoices(choice1, scene, 1);
-          TextAlignChoices(choice2, scene, 2);
+          TextAlignChoices(choice1, scene, 500, -25, 500, 70, 50, 25, 1);
+          TextAlignChoices(choice2, scene, 500, -25, 500, 70, 50, 25, 2);
           choiceFlag = true;
         }
       }
