@@ -150,6 +150,7 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
     {
         float width{};
         str += " ";
+        width += mGlyphs[' '].size.x * scale;
         for (char ch : str)
         {
             if (ch == '\n')
@@ -189,7 +190,8 @@ void FontRenderer::DrawParagraphs(int _layer)
         for (size_t i = 0; i < para.words.size(); ++i)
         {
             currWidth += para.wordWidth[i];
-            if (i && currWidth > para.renderWidth *0.5f/ para.camZoom)
+
+            if (i && para.renderWidth * 0.5f / para.camZoom)
             {
                 pos.x = initialX;
                 pos.y -= (mMaxYSize) * para.scale;
