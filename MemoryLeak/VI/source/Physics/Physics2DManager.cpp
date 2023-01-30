@@ -46,9 +46,9 @@ void Physics2DManager::Update(const double& _appDT) {
 	// In step mode
 	else {
 		// Reset accumulatedDT for next time we are not in step mode
-		Physics2DManager::mAccumulatedDT = 0.0;	// To shift into if condition checking for step mode toggle
+		mAccumulatedDT = 0.0;	// To shift into if condition checking for step mode toggle
 		// Check if we should step (key pressed)
-		if (Physics2DManager::mAdvanceStep) {
+		if (mAdvanceStep) {
 			// Execute a simulation tick of physics using defined fixedDT
 			Step(mFixedDT);
 			// Set advance flag to false;
@@ -138,52 +138,7 @@ void Physics2DManager::Step(const double& _stepDT) {
 	// Hack
 	if (mFirstUpdate)
 		mFirstUpdate = false;
-
-	//collision2DManager->ResolveCollisions(_stepDT);
 }
-
-//void Physics2DManager::UpdatePosition(const Entity& _e) {
-//	// Dampen velocity (for soft drag)
-//	//SetVelocity(e, GetVelocity(e) * static_cast<float>(std::pow(GetDamping(e), fixedDT)));
-//	ScaleVelocity(_e, static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
-//	SetAngularVelocity(_e, GetAngularVelocity(_e) * static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
-//	SetAngularTorque(_e, GetAngularTorque(_e) * static_cast<float>(std::pow(GetDamping(_e), fixedDT)));
-//
-//	// Cap velocity
-//	if (Math::Dot(GetVelocity(_e), GetVelocity(_e)) > Physics2DManager::velocityCap * Physics2DManager::velocityCap) 
-//		SetVelocity(_e, GetVelocity(_e).Normalize() * Physics2DManager::velocityCap);
-//
-//	if (GetAngularVelocity(_e) > Physics2DManager::angularVelocityCap)
-//		SetAngularVelocity(_e, Physics2DManager::angularVelocityCap);
-//	if (GetAngularTorque(_e) > Physics2DManager::angularVelocityCap)
-//		SetAngularTorque(_e, Physics2DManager::angularVelocityCap);
-//
-//	// Move entity by velocity
-//	_e.GetComponent<Transform>().translation += GetVelocity(_e) * static_cast<float>(fixedDT);
-//	_e.GetComponent<Transform>().rotation += static_cast<float>(GetAngularVelocity(_e) * fixedDT);
-//
-//	// Clamp rotation
-//	if (_e.GetComponent<Transform>().rotation > static_cast<float>((2.0 * Math::PI)))
-//		_e.GetComponent<Transform>().rotation -= static_cast<float>((2.0 * Math::PI));
-//	else if (_e.GetComponent<Transform>().rotation < static_cast<float>(-(2.0 * Math::PI)))
-//		_e.GetComponent<Transform>().rotation += static_cast<float>((2.0 * Math::PI));
-//}
-
-//void Physics2DManager::AddPhysicsComponent() {
-	//// If the physics component does not exists in the entity yet, we add it to the entity with the given values
-	//// If it already exists, we reset the values to the given values
-	//if (!_e.HasComponent<Physics2D>()) {
-	//	_e.AddComponent(Physics2D{ _gravityEnabled, _mass, _speed, _moveDirection, Math::Vec2{0, 0}, Math::Vec2{0, 0}, _renderFlag });
-	//}
-	//else {
-	//	Physics2DManager::SetMass(_e, _mass);
-	//	Physics2DManager::SetSpeed(_e, _speed);
-	//	Physics2DManager::SetMoveDirection(_e, _moveDirection);
-	//	Physics2DManager::SetForces(_e, Math::Vec2{ 0, 0 });
-	//	Physics2DManager::SetVelocity(_e, Math::Vec2{ 0, 0 });
-	//	Physics2DManager::SetPhysicsRenderFlag(_e, _renderFlag);
-	//}
-//}
 
 void Physics2DManager::RemovePhysicsComponent(const Entity& _e) {
 	// Remove component if component exists
@@ -242,22 +197,6 @@ float Physics2DManager::GetDamping(const Entity& _e) {
 void Physics2DManager::SetDamping(const Entity& _e, const float& _damping) {
 	GetPhysicsComponent(_e).damping = _damping;
 }
-
-//float Physics2DManager::GetSpeed(const Entity& _e) {
-//	return GetPhysicsComponent(_e).speed;
-//}
-//
-//void Physics2DManager::SetSpeed(const Entity& _e, const float& _speed) {
-//	GetPhysicsComponent(_e).speed = _speed;
-//}
-//
-//float Physics2DManager::GetMoveDirection(const Entity& _e) {
-//	return GetPhysicsComponent(_e).moveDirection;
-//}
-//
-//void Physics2DManager::SetMoveDirection(const Entity& _e, const float& _moveDirection) {
-//	GetPhysicsComponent(_e).moveDirection = _moveDirection;
-//}
 
 Math::Vec2 Physics2DManager::GetAccumulatedForce(const Entity& _e) {
 	return GetPhysicsComponent(_e).accumulatedForce;

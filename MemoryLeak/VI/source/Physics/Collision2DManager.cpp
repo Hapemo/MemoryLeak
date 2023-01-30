@@ -16,17 +16,6 @@
 // -----------------------------
 #include "ECSManager.h"
 
-//std::vector<Entity> Collision2DManager::CI_PlayervsEnemy(const Entity& _player, const Entity& _enemy) {
-//	return 
-//}
-
-//bool Collision2DManager::SCI_RectvsCircle(const Math::Vec2& _rectPos, const Math::Vec2& _rectScale, const Math::Vec2& _circlePos, const float& _circleScale) {
-//
-//
-//	return false;
-//}
-
-
 bool Collision2DManager::CI_RectvsRect(Contact& _contact, const double& _dt, const bool& _dynamicCheck) {
 	// Get reference to the entities
 	Entity& obj1{ _contact.obj[0] },
@@ -855,6 +844,6 @@ void Collision2DManager::UpdateEntityInQuadTree(const Entity& _e) {
 	mQuadTree.AddNode(_e);
 }
 
-const std::vector<std::pair<Entity, Entity>>& Collision2DManager::GetPossibleContactList() const {
+const std::vector<std::pair<Entity, Entity>>& Collision2DManager::GetPossibleContactList() {
 	return mPossibleContactList;
 }
