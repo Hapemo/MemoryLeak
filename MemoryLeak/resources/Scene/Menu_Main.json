@@ -27,18 +27,6 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\menu screen background.jpg",
             "layer": 0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": false,
-            "renderFlag": true
         }
     },
     {
