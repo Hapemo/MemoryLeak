@@ -83,17 +83,17 @@ namespace BonVoyage
       #endregion
 
             #region Passenger 1 Dialogue
-      if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) {
-        if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1")) {
-          LockPosition(-1240, 670);
-          RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
+          if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) {
+            if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1")) {
+              LockPosition(-1240, 670);
+              RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
 
-          if (!RunPassengerDialog) {
-              SetPosition("Passenger_1", "Level1", -1240, 670);
-              SetObjectiveText();
+              if (!RunPassengerDialog) {
+                  //SetPosition("Passenger_1", "Level1", -1240, 670);
+                  SetObjectiveText();
+              }
+            }
           }
-        }
-      }
             #endregion
 
             #region Passenger 1 Delivered
@@ -151,66 +151,6 @@ namespace BonVoyage
         }
       }
             #endregion
-
-            //#region Crystalball
-
-            //if ((InternalCalls.ButtonReleased("cyclemap", "Dialogue")) == true) {
-            //    if (InternalCalls.EntityIsActive("minimap", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("minimap", "Dialogue");
-            //        InternalCalls.EntityActivate("enemymap", "Dialogue");
-
-            //        if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue")) {
-            //        InternalCalls.EntityActivate("enemymapbig", "Dialogue");
-            //        InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
-            //        InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
-            //        }
-            //    } else if (InternalCalls.EntityIsActive("enemymap", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("enemymap", "Dialogue");
-            //        InternalCalls.EntityActivate("weathermap", "Dialogue");
-
-            //        if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
-            //        InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
-            //        InternalCalls.EntityActivate("weathermapbig", "Dialogue");
-            //        }
-            //    } else if (InternalCalls.EntityIsActive("weathermap", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("weathermap", "Dialogue");
-            //        InternalCalls.EntityActivate("minimap", "Dialogue");
-
-            //        if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
-            //        InternalCalls.EntityActivate("minimapbig", "Dialogue");
-            //        InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
-            //        }
-            //    }
-            //}
-            //#endregion
-
-            //#region Big Maps
-            //if ((InternalCalls.ButtonReleased("minimap", "Dialogue")) == true) {
-            //    if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") == false) {
-            //        InternalCalls.EntityActivate("minimapbig", "Dialogue");
-            //    } else {
-            //        InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
-            //    }
-            //}
-
-            //if ((InternalCalls.ButtonReleased("enemymap", "Dialogue")) == true) {
-            //    if (InternalCalls.EntityIsActive("enemymapbig", "Dialogue") == false) {
-            //        InternalCalls.EntityActivate("enemymapbig", "Dialogue");
-            //    } else {
-            //        InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
-            //    }
-            //}
-
-            //if ((InternalCalls.ButtonReleased("weathermap", "Dialogue")) == true) {
-            //    if (InternalCalls.EntityIsActive("weathermapbig", "Dialogue") == false) {
-            //        InternalCalls.EntityActivate("weathermapbig", "Dialogue");
-            //    } else {
-            //        InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
-            //    }
-            //}
-            //#endregion
 
             #region Player
             float PlayerPosX = InternalCalls.GetPosX("Boat", "Level1");
