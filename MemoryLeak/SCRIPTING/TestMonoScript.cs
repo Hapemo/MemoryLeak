@@ -59,7 +59,10 @@ namespace BonVoyage
                 if (RunIntroDialog && InternalCalls.EntityIsActive("IntroBox", "Level1")) {
                   LockPosition(160, 120);
                   RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
-                  if (!RunIntroDialog) InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
+          if (!RunIntroDialog) {
+            InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
+            TextAlignChoices("objectivetext", "Dialogue", 400, 320, 600, 50);
+          }
                 }
             }
             #endregion
@@ -136,21 +139,17 @@ namespace BonVoyage
                 if (objectiveexpanded)
                 {
                     InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
-                    InternalCalls.SetScaleX("objectivetext", "Dialogue", 420);
-                    InternalCalls.SetScaleY("objectivetext", "Dialogue", 566);
-                    SetPosition("objectivetext", "Dialogue", 555, 139);
-                    InternalCalls.SetTextOffset("objectivetext", "Dialogue", -185, 217);
-                }
+          TextAlignChoices("objectivetext", "Dialogue", 400, 0, 600, 62);
 
-                if (!objectiveexpanded)
+        }
+
+        if (!objectiveexpanded)
                 {
                     InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view"); // hint
-                    InternalCalls.SetScaleX("objectivetext", "Dialogue", 420);
-                    InternalCalls.SetScaleY("objectivetext", "Dialogue", 150);
-                    SetPosition("objectivetext", "Dialogue", 555, 347);
-                    InternalCalls.SetTextOffset("objectivetext", "Dialogue", -185, 9);
-                }
-            }
+          TextAlignChoices("objectivetext", "Dialogue", 400, 320, 600, 50);
+
+        }
+      }
             #endregion
 
             //#region Crystalball
