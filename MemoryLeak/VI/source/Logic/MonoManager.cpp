@@ -41,11 +41,13 @@ Set and return the mono directory path according to the projec configuration.
 *******************************************************************************/
 std::string MonoManager::MonoDirectoryPath() {
 //	std::string path = std::filesystem::current_path().parent_path().string() + "\\bin\\";
+//	std::string path = std::filesystem::current_path().parent_path().string();// +"\\bin\\";
 //#ifdef NDEBUG
 //#ifdef _EDITOR
 //	path += "EditorRelease";
 //#else
 //	path += "Release";
+//	path += "";
 //#endif
 //#else
 //#ifdef _EDITOR
