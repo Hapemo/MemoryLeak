@@ -924,6 +924,9 @@
             "isRandPitch": false,
             "isSpacial": false
         },
+        "Script": {
+            "name": "TestMonoScript"
+        },
         "ShadowCaster": {
             "centerOffset": {
                 "X": 0.0,
@@ -1317,6 +1320,17 @@
         },
         "Script": {
             "name": "PassengerScript"
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -50.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.10000000149011612
+            },
+            "renderFlag": true
         }
     },
     {
@@ -2150,27 +2164,12 @@
         "Animation": {
             "sheets": [
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2180,44 +2179,9 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Background\\Assets.txt",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Background\\Assets.txt",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Background\\Assets.txt",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
                 },
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
@@ -2225,32 +2189,22 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2260,37 +2214,17 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
-                    "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
-                    "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
-                    "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
-                    "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2300,12 +2234,12 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 }
@@ -2657,11 +2591,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": -50.0
+                "Y": 0.0
             },
             "scaleOffset": {
-                "X": 0.5,
-                "Y": 0.5
+                "X": 1.0,
+                "Y": 1.0
             },
             "isTrigger": true,
             "renderFlag": true
@@ -2802,39 +2736,6 @@
                 "Y": 0.10000000149011612
             },
             "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "level 1 manager",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -2504.846923828125,
-                "Y": -131.1092529296875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 0,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 58
-        },
-        "Script": {
-            "name": "TestMonoScript"
         }
     }
 ]
