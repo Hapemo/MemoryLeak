@@ -619,4 +619,8 @@ public:
 
 	static void WeatherAIinit(float width = 1600, float height = 900);
 	static int GetCurrentWeather(int index, float posX, float posY);
+
+	static float GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName);
+	static void SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius);
+
 };

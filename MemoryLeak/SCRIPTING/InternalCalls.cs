@@ -247,5 +247,11 @@ namespace BonVoyage
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         internal extern static int GetCurrentWeather(int _index, float _posX, float _posY);
-    }
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float GetLightSourceRadius(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetLightSourceRadius(string _entityName, string _sceneName, float _radius);
+	}
 }

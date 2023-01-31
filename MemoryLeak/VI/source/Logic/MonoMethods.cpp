@@ -212,6 +212,16 @@ int MonoMethods::GetLineCount(MonoString* _entityName, MonoString* _sceneName) {
 	return FUNC->GetLineCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
+float MonoMethods::GetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName)
+{
+	return FUNC->GetLightSourceRadius(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+void  MonoMethods::SetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName, float _radius)
+{
+	FUNC->SetLightSourceRadius(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _radius);
+}
+
 /*!*****************************************************************************
 \brief
 Checks for the state of certain key
@@ -304,4 +314,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::GetLineCount", &MonoMethods::GetLineCount);
 	mono_add_internal_call("BonVoyage.InternalCalls::WeatherAIinit", &FUNC->WeatherAIinit);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentWeather", &FUNC->GetCurrentWeather);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetLightSourceRadius", &MonoMethods::GetLightSourceRadius);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetLightSourceRadius", &MonoMethods::SetLightSourceRadius);
+
 }

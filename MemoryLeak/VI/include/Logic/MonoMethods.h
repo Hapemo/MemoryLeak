@@ -83,4 +83,6 @@ public:
 	static void UpdateText(MonoString* _entityName, MonoString* _sceneName, MonoString* _text);
 	static void SetTextOffset(MonoString* _entityName, MonoString* _sceneName, float _xoffset, float _yoffset);
 	static int GetLineCount(MonoString * _entityName, MonoString * _sceneName);
+	static float GetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName);
+	static void SetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName, float _radius);
 };

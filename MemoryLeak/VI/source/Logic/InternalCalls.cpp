@@ -849,3 +849,17 @@ int InternalCalls::GetCurrentWeather(int _index, float _posX, float _posY)
 {
 	return aiManager->GetCurrentWeather(_index, _posX, _posY);
 }
+
+float InternalCalls::GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<LightSource>())
+		return -1.f;
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius;
+}
+
+void InternalCalls::SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<LightSource>())
+		return;
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius = _radius;
+}
