@@ -40,7 +40,6 @@ void MonoManager::InitMono() {
 Set and return the mono directory path according to the projec configuration.
 *******************************************************************************/
 std::string MonoManager::MonoDirectoryPath() {
-//	std::string path = std::filesystem::current_path().parent_path().string() + "\\bin\\";
 //	std::string path = std::filesystem::current_path().parent_path().string();// +"\\bin\\";
 //#ifdef NDEBUG
 //#ifdef _EDITOR
@@ -60,8 +59,12 @@ std::string MonoManager::MonoDirectoryPath() {
 //	mono_set_dirs(path.c_str(), path.c_str());
 //	path += "\\SCRIPTING";
 //	return path;
-	std::string path{ };
-	path += _OUTPUTDIR;
+
+	char* tmp{};
+	_get_pgmptr(&tmp);
+	std::string path{ tmp };
+	path.erase(path.find_last_of("\\"));
+
 	LOG_INFO(path);
 	mono_set_dirs(path.c_str(), path.c_str());
 	path += "\\SCRIPTING";
