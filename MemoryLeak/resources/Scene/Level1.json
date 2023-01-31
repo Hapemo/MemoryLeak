@@ -1320,17 +1320,6 @@
         },
         "Script": {
             "name": "PassengerScript"
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -50.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
