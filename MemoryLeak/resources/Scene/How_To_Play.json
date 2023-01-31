@@ -83,8 +83,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 500.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
@@ -100,7 +100,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 1
         },
         "CircleCollider": {
@@ -171,7 +171,7 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 3
         },
         "Text": {
@@ -216,7 +216,7 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 4
         },
         "Text": {
@@ -261,7 +261,7 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 2
         },
         "Text": {
@@ -306,7 +306,7 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 3
         },
         "Text": {

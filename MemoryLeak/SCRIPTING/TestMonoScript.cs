@@ -34,6 +34,7 @@ namespace BonVoyage
         private bool RunIntroDialog = true;         // This flag is true if the dialog has not player and should play
         private bool RunlittleGirlDialog = true;    // This flag is true if the dialog has not player and should play
         private bool RunPassengerDialog = true;     // This flag is true if the dialog has not player and should play
+        private bool AllowAdvance = false;
 
         private string currentobjective = "";
         private bool objectiveexpanded = false;
@@ -93,13 +94,12 @@ namespace BonVoyage
               //SetPosition("Passenger_1", "Level1", -1240, 670);
               InternalCalls.SetRotate("Passenger_1", "Level1", 0.5f);
               SetObjectiveText();
+              AllowAdvance = true;
           }
-        }
-      }
             #endregion
 
             #region Passenger 1 Delivered
-            if (InternalCalls.EntitiesCollided("Boat", "destination", "Level1"))
+            if (AllowAdvance && InternalCalls.EntitiesCollided("Boat", "destination", "Level1"))
             {
                 InternalCalls.PlayScene("cutscene1");
                 InternalCalls.EntityDeactivate("destination", "Level1");
@@ -110,8 +110,10 @@ namespace BonVoyage
 
             if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1"))
             {
+                Console.Write("COLLECTED");
                 fragment1 = true;
                 InternalCalls.UpdateText("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
+                InternalCalls.PlayEntitySound("fragment1drop", "Level1");
                 InternalCalls.EntityDeactivate("fragment1drop", "Level1");
             }
 
@@ -153,66 +155,6 @@ namespace BonVoyage
         }
       }
             #endregion
-
-            //#region Crystalball
-
-            //if ((InternalCalls.ButtonReleased("cyclemap", "Dialogue")) == true) {
-            //    if (InternalCalls.EntityIsActive("minimap", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("minimap", "Dialogue");
-            //        InternalCalls.EntityActivate("enemymap", "Dialogue");
-
-            //        if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue")) {
-            //        InternalCalls.EntityActivate("enemymapbig", "Dialogue");
-            //        InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
-            //        InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
-            //        }
-            //    } else if (InternalCalls.EntityIsActive("enemymap", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("enemymap", "Dialogue");
-            //        InternalCalls.EntityActivate("weathermap", "Dialogue");
-
-            //        if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
-            //        InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
-            //        InternalCalls.EntityActivate("weathermapbig", "Dialogue");
-            //        }
-            //    } else if (InternalCalls.EntityIsActive("weathermap", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("weathermap", "Dialogue");
-            //        InternalCalls.EntityActivate("minimap", "Dialogue");
-
-            //        if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") || InternalCalls.EntityIsActive("enemymapbig", "Dialogue") || InternalCalls.EntityIsActive("weathermapbig", "Dialogue")) {
-            //        InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
-            //        InternalCalls.EntityActivate("minimapbig", "Dialogue");
-            //        InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
-            //        }
-            //    }
-            //}
-            //#endregion
-
-            //#region Big Maps
-            //if ((InternalCalls.ButtonReleased("minimap", "Dialogue")) == true) {
-            //    if (InternalCalls.EntityIsActive("minimapbig", "Dialogue") == false) {
-            //        InternalCalls.EntityActivate("minimapbig", "Dialogue");
-            //    } else {
-            //        InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
-            //    }
-            //}
-
-            //if ((InternalCalls.ButtonReleased("enemymap", "Dialogue")) == true) {
-            //    if (InternalCalls.EntityIsActive("enemymapbig", "Dialogue") == false) {
-            //        InternalCalls.EntityActivate("enemymapbig", "Dialogue");
-            //    } else {
-            //        InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
-            //    }
-            //}
-
-            //if ((InternalCalls.ButtonReleased("weathermap", "Dialogue")) == true) {
-            //    if (InternalCalls.EntityIsActive("weathermapbig", "Dialogue") == false) {
-            //        InternalCalls.EntityActivate("weathermapbig", "Dialogue");
-            //    } else {
-            //        InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
-            //    }
-            //}
-            //#endregion
 
             #region Player
             float PlayerPosX = InternalCalls.GetPosX("Boat", "Level1");
@@ -644,6 +586,7 @@ namespace BonVoyage
             InternalCalls.EntityDeactivate(choice2, scene);
         }
         #endregion
+
         public void LockPosition(float x, float y) {
           InternalCalls.SetPosX("Boat", "Level1", x);
           InternalCalls.SetPosY("Boat", "Level1", y);
@@ -654,6 +597,7 @@ namespace BonVoyage
             InternalCalls.SetPosY(entityname, scenename, y);
         }
 
+        #region Player & Enemy Helper Functions
         public int CheckRegion(string _entityName, string _sceneName)
         {
             if (InternalCalls.GetPosX(_entityName, _sceneName) > maxX || InternalCalls.GetPosY(_entityName, _sceneName) > maxY ||
@@ -732,5 +676,6 @@ namespace BonVoyage
                 (_x * _multiplier * (float)InternalCalls.GetDeltaTime()),
                 (_y * _multiplier * (float)InternalCalls.GetDeltaTime()), 0f, 0f);
         }
+        #endregion
     }
 }

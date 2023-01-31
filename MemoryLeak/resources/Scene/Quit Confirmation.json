@@ -13,7 +13,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1.29852294921875,
+                "X": 0.0,
                 "Y": 0.0
             }
         },
@@ -53,8 +53,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 500.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
@@ -70,7 +70,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 7
         },
         "Audio": {
@@ -115,8 +115,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 500.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
@@ -132,7 +132,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 7
         },
         "Audio": {

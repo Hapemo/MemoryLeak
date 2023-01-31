@@ -2629,6 +2629,17 @@
             "isTrigger": true,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "HEALTH",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
         "ShadowCaster": {
             "centerOffset": {
                 "X": 5.0,

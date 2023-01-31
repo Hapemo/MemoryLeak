@@ -68,6 +68,7 @@
     <Compile Include="CrystalBallScript.cs" />
     <Compile Include="EnemyMapScript.cs" />
     <Compile Include="InternalCalls.cs" />
+    <Compile Include="MenuLightScript.cs" />
     <Compile Include="MiniMapScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestMonoScript.cs" />

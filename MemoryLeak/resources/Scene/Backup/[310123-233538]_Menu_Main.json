@@ -280,15 +280,12 @@
             "texture": "Textures\\Menu\\bon voyage logo 5.png",
             "layer": 1
         },
-        "Script": {
-            "name": "MenuLightScript"
-        },
         "LightSource": {
             "centerOffset": {
                 "X": 0.0,
                 "Y": 0.0
             },
-            "radius": 874.0,
+            "radius": 849.0,
             "intensity": 0.0
         }
     },

@@ -674,10 +674,18 @@ void InternalCalls::StopSound(std::string const& _entityName, std::string const&
 
 /*!*****************************************************************************
 \brief
-	Plays a single background sound
+	Plays sound
 *******************************************************************************/
-void InternalCalls::PlayAnySound(std::string _name, int _channel) {
-	audioManager->PlayAnySound(_name, _channel);
+void InternalCalls::PlayEntitySound(std::string const& _entityName, std::string const& _sceneName){
+	audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
+}
+
+/*!*****************************************************************************
+\brief
+	Force play sound in channel
+*******************************************************************************/
+void InternalCalls::PlaySoundInChannel(std::string const& _soundName, int _channel) {
+	audioManager->PlayAnySound(_soundName, _channel);
 }
 
 /*!*****************************************************************************
@@ -840,4 +848,18 @@ void InternalCalls::WeatherAIinit(float _width, float _height)
 int InternalCalls::GetCurrentWeather(int _index, float _posX, float _posY)
 {
 	return aiManager->GetCurrentWeather(_index, _posX, _posY);
+}
+
+float InternalCalls::GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<LightSource>())
+		return -1.f;
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius;
+}
+
+void InternalCalls::SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<LightSource>())
+		return;
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius = _radius;
 }

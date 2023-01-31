@@ -62,7 +62,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		(FUNC->SelectScene("Level1")).Pause(true);
 		(FUNC->SelectScene("Game Over")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(false);
-		FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+		FUNC->PlaySoundInChannel("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 
 	if (FUNC->CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && FUNC->CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT)) {

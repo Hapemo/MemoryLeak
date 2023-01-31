@@ -180,7 +180,10 @@ namespace BonVoyage
 		internal extern static void PlaySoundOnLoop(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void PlayAnySound(string _name, int _channel);
+		internal extern static void PlayEntitySound(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void PlaySoundInChannel(string _soundName, string _channel);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool IsPlaying(int _channel);
@@ -244,5 +247,11 @@ namespace BonVoyage
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         internal extern static int GetCurrentWeather(int _index, float _posX, float _posY);
-    }
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float GetLightSourceRadius(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetLightSourceRadius(string _entityName, string _sceneName, float _radius);
+	}
 }
