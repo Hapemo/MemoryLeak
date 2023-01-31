@@ -45,10 +45,10 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	if (pickingUp)
 	{//animation of going to boat
 		diff = boatTransform->translation - passengerTransform->translation;
-		if (diff.x > 10 || diff.x < -10)
-			passengerTransform->translation.x += diff.Normalized().x;
-		else if (diff.y >10 || diff.y < -10)
-			passengerTransform->translation.y += diff.Normalized(). y;
+		if (diff.x > 10 || diff.x < -10 || diff.y >10 || diff.y < -10)
+		{
+			passengerTransform->translation += diff.Normalized();
+		}
 		else
 		{
 			pickedUp = true;
