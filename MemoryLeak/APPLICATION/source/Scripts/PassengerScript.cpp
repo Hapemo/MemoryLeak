@@ -20,7 +20,7 @@ namespace {
 void PassengerScript::StartScript(const Entity& _e) {
 	(void)_e;
 	boat = (FUNC->GetEntity("Boat", "Level1"));
-	//passenger = (FUNC->GetEntity("Passenger_1", "Level1"));
+	passenger = (FUNC->GetEntity("Passenger_1", "Level1"));
 	destination = (FUNC->GetEntity("destination", "Level1"));
 	destinationHouse = FUNC->GetEntity("Single Story House", "Level1");
 	passengerTransform = &_e.GetComponent<Transform>();
@@ -32,18 +32,88 @@ void PassengerScript::StartScript(const Entity& _e) {
 void PassengerScript::UpdateScript(const Entity& _e) {
 	// If ready to pick up and it collided, make it pick up next frame.
 	if (readyToPickUp) {
-		if (collision2DManager->EntitiesCollided(_e, boat)) {
-			pickedUp = true;
+		//if (collision2DManager->EntitiesCollided(_e, boat)) {
+		if(passenger.GetComponent<Transform>().rotation == 0.5f){
+			passenger.GetComponent<Transform>().rotation = 0.0f;
+			pickingUp = true;
+			//pickedUp = true;
 			_e.GetComponent<RectCollider>().isTrigger = true;
 			readyToPickUp = false;
 		}
 		return;
 	}
-	
+	if (pickingUp)
+	{//animation of going to boat
+		float diffX = passengerTransform->translation.x != boatTransform->translation.x;
+		float diffY = passengerTransform->translation.y != boatTransform->translation.y;
+		//std::cout << diffX << " dX: \n";
+		static int i = 0;
+		if (diffX >1 || diffY > 1 || diffX < -1 || diffY < -1)
+		{
+			if (diffX > 10)
+				passengerTransform->translation.x += (boatTransform->translation.x - passengerTransform->translation.x)/100;
+			else //if (diffY >10)
+				passengerTransform->translation.y += (boatTransform->translation.y - passengerTransform->translation.y) /100;
+			//std::cout << ++i << " : \n";
+		}
+		else
+		{
+			pickedUp = true;
+			pickingUp = false;
+		}
+
+	}
 	// If picked up, follow boat
 	if (pickedUp) {
 		
-		passengerTransform->translation = boatTransform->translation;
+		//passengerTransform->translation = boatTransform->translation;
+		int direction = boat.GetComponent<Animation>().currentImageIndex % 8;
+		switch (direction) 
+		{
+		case 0://front
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
+			passengerTransform->translation = boatTransform->translation;
+			break;
+		case 1:
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
+			passengerTransform->translation.x = boatTransform->translation.x - boatTransform->scale.x / 10;
+			passengerTransform->translation.y = boatTransform->translation.y;// -boatTransform->scale.y / 40;
+			break;
+		case 2://left
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
+			passengerTransform->translation.x = boatTransform->translation.x - boatTransform->scale.x/4;
+			passengerTransform->translation.y = boatTransform->translation.y + boatTransform->scale.y / 16;
+			break;
+		case 3:
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
+			passengerTransform->translation.x = boatTransform->translation.x - boatTransform->scale.x / 6;
+			passengerTransform->translation.y = boatTransform->translation.y + boatTransform->scale.y / 8;
+			break;
+		case 4://back
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + -1;
+			passengerTransform->translation = boatTransform->translation;
+			break;
+		case 5:
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
+			passengerTransform->translation.x = boatTransform->translation.x + boatTransform->scale.x / 6;
+			passengerTransform->translation.y = boatTransform->translation.y + boatTransform->scale.y / 8;
+			break;
+		case 6://right
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
+			passengerTransform->translation.x = boatTransform->translation.x + boatTransform->scale.x / 4;
+			passengerTransform->translation.y = boatTransform->translation.y + boatTransform->scale.y / 16;
+			break;
+		case 7:
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
+			passengerTransform->translation.x = boatTransform->translation.x + boatTransform->scale.x / 10;
+			passengerTransform->translation.y = boatTransform->translation.y;// -boatTransform->scale.y / 40;
+			break;
+		/*default:
+			passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
+			passengerTransform->translation = boatTransform->translation;*/
+			
+		}
+
 
 		// If reached destination, get off boat (pickedUp false) and go onto island.
 		if (collision2DManager->EntitiesCollided(boat, destination)) {

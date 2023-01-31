@@ -84,12 +84,14 @@ namespace BonVoyage
 
             #region Passenger 1 Dialogue
       if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")) {
-        if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1")) {
+        if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1")) 
+        {
           LockPosition(-1240, 670);
           RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
 
           if (!RunPassengerDialog) {
-              SetPosition("Passenger_1", "Level1", -1240, 670);
+              //SetPosition("Passenger_1", "Level1", -1240, 670);
+              InternalCalls.SetRotate("Passenger_1", "Level1", 0.5f);
               SetObjectiveText();
           }
         }
