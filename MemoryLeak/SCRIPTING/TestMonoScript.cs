@@ -14,15 +14,18 @@ namespace BonVoyage
         private float HealInterval = 0;
         private float HealCounter = 0;
         private int OctopusAttacked = 0;
+        private int OctopusDirection = 1;
         private float PlayerRotation = 0;
         private float PlayerSpeed = 500f;
-        private float EnemySpeed = 420f;
+        private float EnemySpeed = 40f;
         private bool EnemyLoiter = true;
 
         private const int MaxHealth = 12;
         private const float Epsilon = 1.192092896e-07F;
         private const double Pi = 3.141592653589793238f;
         private const float MiniAngle = (float)Pi / 8;
+        private const float RightAngle = (float)Pi / 2;
+        private const float RadToDeg = 180 / (float)Pi;
 
         /* Some of these flags are here to optimise the code. Because checking this bool value is faster than button check function calls */
         private bool choiceFlag = false;            // This flag is true during choice selection dialogs
@@ -48,10 +51,6 @@ namespace BonVoyage
             maxY = (InternalCalls.GetScaleY("Water", "Level1") / 2) + halfY - InternalCalls.GetScaleY("Enemy", "Level1");
             minX = halfX - (InternalCalls.GetScaleX("Water", "Level1") / 2) + InternalCalls.GetScaleX("Enemy", "Level1");
             minY = halfY - (InternalCalls.GetScaleY("Water", "Level1") / 2) + InternalCalls.GetScaleY("Enemy", "Level1");
-
-
-
-
         }
 
         public void Update()
@@ -63,7 +62,11 @@ namespace BonVoyage
                 {
                     LockPosition(160, 120);
                     RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
-                    if (!RunIntroDialog) InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
+                    if (!RunIntroDialog)
+                    {
+                        InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
+                        TextAlignChoices("objectivetext", "Dialogue", 400, 320, 600, 50);
+                    }
                 }
             }
             #endregion
@@ -150,19 +153,15 @@ namespace BonVoyage
                 if (objectiveexpanded)
                 {
                     InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
-                    InternalCalls.SetScaleX("objectivetext", "Dialogue", 420);
-                    InternalCalls.SetScaleY("objectivetext", "Dialogue", 566);
-                    SetPosition("objectivetext", "Dialogue", 555, 139);
-                    InternalCalls.SetTextOffset("objectivetext", "Dialogue", -185, 217);
+                    TextAlignChoices("objectivetext", "Dialogue", 400, 0, 600, 62);
+
                 }
 
                 if (!objectiveexpanded)
                 {
                     InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view"); // hint
-                    InternalCalls.SetScaleX("objectivetext", "Dialogue", 420);
-                    InternalCalls.SetScaleY("objectivetext", "Dialogue", 150);
-                    SetPosition("objectivetext", "Dialogue", 555, 347);
-                    InternalCalls.SetTextOffset("objectivetext", "Dialogue", -185, 9);
+                    TextAlignChoices("objectivetext", "Dialogue", 400, 320, 600, 50);
+
                 }
             }
             #endregion
@@ -272,46 +271,58 @@ namespace BonVoyage
                 EnemyPosX >= InternalCalls.GetCurrentCameraPosX() - (InternalCalls.GetCurrentCameraScaleX() / 2) &&
                 EnemyPosY >= InternalCalls.GetCurrentCameraPosY() - (InternalCalls.GetCurrentCameraScaleY() / 2))
             {
-                float EnemyRotation = 0;
-                EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
-                //SetCharRotation(EnemyRotation, "Enemy", "Level1", "Idle");
+                float EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
+                /*
+                if (EnemyRotation < 0) OctopusDirection = 1;
+                else OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation) / Pi);
+                */
+                //Console.Write(OctopusDirection + "\n");
+                //Console.Write((EnemyRotation / Pi / 2) + "\n");
+                OctopusDirection = 0;
+                //OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation));
+                //Console.Write(OctopusDirection + "\n");
 
                 // Chasing player
-                if (InternalCalls.Negate(EnemyDisX) <= InternalCalls.GetScaleX("EnemyTrigger", "Level1") && InternalCalls.Negate(EnemyDisY) <= InternalCalls.GetScaleY("EnemyTrigger", "Level1"))
+                if (!starttalking && InternalCalls.Negate(EnemyDisX) <= InternalCalls.GetScaleX("EnemyTrigger", "Level1") && InternalCalls.Negate(EnemyDisY) <= InternalCalls.GetScaleY("EnemyTrigger", "Level1"))
                 {
                     EnemyLoiter = false;
                     //if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
                     //    ApplyForce("Enemy", "Level1", EnemyNormDisX, EnemyNormDisY, EnemySpeed);
                     //    ApplyForce("EnemyTrigger", "Level1", EnemyNormDisX, EnemyNormDisY, EnemySpeed);
                     //}
-                    EnemyChangeInX = (EnemyDisX > -1 && EnemyDisX < 1 ? EnemyDisX : 1);
-                    EnemyChangeInY = (EnemyDisY > -1 && EnemyDisY < 1 ? EnemyDisY : 1);
+                    EnemyChangeInX = (EnemyDisX > -1 && EnemyDisX < 1 ? EnemyDisX : EnemySpeed);
+                    EnemyChangeInY = (EnemyDisY > -1 && EnemyDisY < 1 ? EnemyDisY : EnemySpeed);
                     EnemyChangeInX = (EnemyDisX > 0 ? -EnemyChangeInX : EnemyChangeInX);
                     EnemyChangeInY = (EnemyDisY > 0 ? -EnemyChangeInY : EnemyChangeInY);
                 }
                 else EnemyLoiter = true;
 
-                if (InternalCalls.EntitiesCollided("Boat", "EnemyTrigger", "Level1"))
+                // Attacking player
+                if (!starttalking && InternalCalls.EntitiesCollided("Boat", "EnemyTrigger", "Level1"))
                 {
                     switch (OctopusAttacked)
                     {
                         case 0:
                             OctopusAttacked = 1;
                             InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
-                            SetCharRotation(EnemyRotation, "Enemy", "Level1", "Rising");
+                            SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Rising");
                             InternalCalls.SetAnimationCurrentIndex("Enemy", "Level1", 0);
-                            HitInterval = (20 * InternalCalls.GetAnimationSpeed("Enemy", "Level1") * InternalCalls.GetAnimationFrameCount("Enemy", "Level1"));
-                            HealInterval = HitInterval * 4.0f;
+                            HitInterval = InternalCalls.GetAnimationSpeed("Enemy", "Level1") * InternalCalls.GetAnimationFrameCount("Enemy", "Level1");
+                            HealInterval = HitInterval * 3.0f;
                             break;
                         case 1:
                             if (InternalCalls.GetAnimationCurrentIndex("Enemy", "Level1") == InternalCalls.GetAnimationFrameCount("Enemy", "Level1") - 1)
                             {
-                                SetCharRotation(EnemyRotation, "Enemy", "Level1", "Attack1");
+                                SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Attack1");
                                 InternalCalls.SetAnimationCurrentIndex("Enemy", "Level1", 0);
                                 OctopusAttacked = 2;
                             }
                             break;
+                        case 2:
+                            SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Attack1");
+                            break;
                         default:
+                            SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                             break;
                     }
                 }
@@ -319,7 +330,7 @@ namespace BonVoyage
                 {
                     OctopusAttacked = 0;
                     InternalCalls.StopSound("EnemyTrigger", "Level1");
-                    SetCharRotation(EnemyRotation, "Enemy", "Level1", "Idle");
+                    SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                 }
 
                 if ((InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") || InternalCalls.EntitiesCollided("Enemy", "Boat", "Level1")) && HitTaken != -1)
@@ -333,13 +344,12 @@ namespace BonVoyage
                         ++HitTaken;
                         InternalCalls.SetTexture("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
                     }
-
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Hit");
                 }
 
+                // Player dies
                 if (HitTaken == MaxHealth)
                 {
-                    Console.Write("MaxHealth");
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Death");
                     InternalCalls.SetAnimationCurrentIndex("Boat", "Level1", 0);
                     HitTaken = -1;
@@ -351,29 +361,31 @@ namespace BonVoyage
                 }
             }
 
+            if (starttalking) EnemyLoiter = true;
+
             // Loitering
             if (EnemyLoiter)
             {
                 switch (CheckRegion("Enemy", "Level1"))
                 {
                     case 1:
-                        EnemyChangeInX = rand.Next(0, 5);
-                        EnemyChangeInY = rand.Next(-4, 1);
+                        EnemyChangeInX = EnemySpeed;
+                        EnemyChangeInY = -EnemySpeed;
                         //Console.Write("Region 1!\n");
                         break;
                     case 2:
-                        EnemyChangeInX = rand.Next(-4, 1);
-                        EnemyChangeInY = rand.Next(-4, 1);
+                        EnemyChangeInX = -EnemySpeed;
+                        EnemyChangeInY = -EnemySpeed;
                         //Console.Write("Region 2!\n");
                         break;
                     case 3:
-                        EnemyChangeInX = rand.Next(-4, 1);
-                        EnemyChangeInY = rand.Next(0, 5);
+                        EnemyChangeInX = -EnemySpeed;
+                        EnemyChangeInY = EnemySpeed;
                         //Console.Write("Region 3!\n");
                         break;
                     case 4:
-                        EnemyChangeInX = rand.Next(0, 5);
-                        EnemyChangeInY = rand.Next(0, 5);
+                        EnemyChangeInX = EnemySpeed;
+                        EnemyChangeInY = EnemySpeed;
                         //Console.Write("Region 4!\n");
                         break;
                     default:
@@ -382,8 +394,10 @@ namespace BonVoyage
             }
 
             // Updating enemy position
-            EnemyChangeInX = (((EnemyPosX + EnemyChangeInX) < maxX) && ((EnemyPosX + EnemyChangeInX) > minX)) ? (EnemyChangeInX * (float)InternalCalls.GetDeltaTime()) : 0;
-            EnemyChangeInY = (((EnemyPosY + EnemyChangeInY) < maxY) && ((EnemyPosY + EnemyChangeInY) > minY)) ? (EnemyChangeInY * (float)InternalCalls.GetDeltaTime()) : 0;
+            EnemyChangeInX *= (float)InternalCalls.GetDeltaTime();
+            EnemyChangeInY *= (float)InternalCalls.GetDeltaTime();
+            EnemyChangeInX = (((EnemyPosX + EnemyChangeInX) < maxX) && ((EnemyPosX + EnemyChangeInX) > minX)) ? EnemyChangeInX : 0;
+            EnemyChangeInY = (((EnemyPosY + EnemyChangeInY) < maxY) && ((EnemyPosY + EnemyChangeInY) > minY)) ? EnemyChangeInY : 0;
             InternalCalls.SetPosX("EnemyTrigger", "Level1", EnemyPosX + EnemyChangeInX);
             InternalCalls.SetPosY("EnemyTrigger", "Level1", EnemyPosY + EnemyChangeInY);
             InternalCalls.SetPosX("Enemy", "Level1", EnemyPosX + EnemyChangeInX);
@@ -392,7 +406,7 @@ namespace BonVoyage
             // Healing player
             if (!InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") && HitTaken > 0)
             {
-                ++HealCounter;
+                HealCounter += (float)InternalCalls.GetDeltaTime(); ;
                 if (HealCounter >= HealInterval)
                 {
                     //Console.Write("Regenerating!\n");
@@ -711,15 +725,10 @@ namespace BonVoyage
                     InitialStatus = 8;
                     break;
                 case "Hit":
-                case "Rising":
                     InitialStatus = 16;
                     break;
                 case "Death":
-                case "Attack1":
                     InitialStatus = 24;
-                    break;
-                case "Attack2":
-                    InitialStatus = 32;
                     break;
                 default:
                     break;
@@ -733,6 +742,30 @@ namespace BonVoyage
             else if (_rotation <= 11f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 7);
             else if (_rotation <= 13f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 8);
             else InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 1);
+        }
+
+        public void SetCharRotation4(int direction, string _entityName, string _sceneName, string _status)
+        {
+            int InitialStatus = 0;
+            switch (_status)
+            {
+                case "Idle":
+                    InitialStatus = 0;
+                    break;
+                case "Rising":
+                    InitialStatus = 4;
+                    break;
+                case "Attack1":
+                    InitialStatus = 8;
+                    break;
+                case "Attack2":
+                    InitialStatus = 12;
+                    break;
+                default:
+                    break;
+            }
+            //Console.Write(OctopusDirection+"\n");
+            InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + direction);
         }
 
         public void ApplyForce(string _entityName, string _sceneName, float _x, float _y, float _multiplier)
