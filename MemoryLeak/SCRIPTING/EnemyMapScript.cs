@@ -10,7 +10,7 @@ namespace BonVoyage {
         private float miniMapX, miniMapY;
         private float expMapX, expMapY;
         public void Init() {
-            
+
             InternalCalls.SetEntityIsActive("enemymapbig", "EnemyMap", false);
             InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", false);
             InternalCalls.SetEntityIsActive("playerbig", "EnemyMap", false);
@@ -20,6 +20,7 @@ namespace BonVoyage {
             miniMapY = InternalCalls.GetScaleY("enemymap", "EnemyMap");
             expMapX = InternalCalls.GetScaleX("enemymapbig", "EnemyMap");
             expMapY = InternalCalls.GetScaleY("enemymapbig", "EnemyMap");
+           
         }
 
         public void Update() {
@@ -69,8 +70,8 @@ namespace BonVoyage {
                 else
                 {
                     InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", true);
-                    float eposx = InternalCalls.GetPosX("playerbig", "EnemyMap") + (posx * (expMapX / MapX ));
-                    float eposy = InternalCalls.GetPosY("playerbig", "EnemyMap") + (posy * (expMapY / MapY ));
+                    float eposx = InternalCalls.GetPosX("playerbig", "EnemyMap") + (posx * (expMapX / MapX));
+                    float eposy = InternalCalls.GetPosY("playerbig", "EnemyMap") + (posy * (expMapY / MapY));
                     InternalCalls.SetPosX("enemybig", "EnemyMap", eposx);
                     InternalCalls.SetPosY("enemybig", "EnemyMap", eposy);
                 }
@@ -78,7 +79,11 @@ namespace BonVoyage {
         }
 
         public void Exit() {
-            
+            big= false;
+            InternalCalls.SetEntityIsActive("enemymapbig", "EnemyMap", false);
+            InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", false);
+            InternalCalls.SetEntityIsActive("playerbig", "EnemyMap", false);
+
         }
     }
 }

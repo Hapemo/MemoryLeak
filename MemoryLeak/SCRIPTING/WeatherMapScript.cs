@@ -20,6 +20,10 @@ namespace BonVoyage {
                     string MIcon = "MIcon" + i;
                     InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
                 }
+            }
+            InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
+            for (int i = 0; i < 25; i++)
+            {
                 string EIcon = "EIcon" + i;
                 InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", false);
             }
@@ -35,23 +39,22 @@ namespace BonVoyage {
             if ((InternalCalls.ButtonReleased("weathermap", "WeatherMap")) == true)
             {
                 big = !big;
+                
                 if (big)
                 {
                     InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", true);
+                    for (int i = 0; i < 25; i++)
+                    {
+                        string EIcon = "EIcon" + i;
+                        InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", true);
+                    }
                 }
                 else
                 {
                     InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
-                }
-                for (int i = 0; i < 25; i++)
-                {
-                    string EIcon = "EIcon" + i;
-                    if (big)
+                    for (int i = 0; i < 25; i++)
                     {
-                        InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", true);
-                    }
-                    else
-                    {
+                        string EIcon = "EIcon" + i;
                         InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", false);
                     }
                 }
@@ -66,6 +69,7 @@ namespace BonVoyage {
                 {
                     string MIcon = "MIcon" + i;
                     InternalCalls.SetSpriteSheetIndex(MIcon, "WeatherMap", index);
+                    InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", true);
                 }
                 if (big)
                 {
@@ -78,7 +82,13 @@ namespace BonVoyage {
         }
 
         public void Exit() {
-            
+            big = false;
+            InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
+            for (int i = 0; i < 25; i++)
+            {
+                string EIcon = "EIcon" + i;
+                InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", false);
+            }
         }
     }
 }
