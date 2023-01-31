@@ -2630,7 +2630,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Health",
+            "path": "HEALTH",
             "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,

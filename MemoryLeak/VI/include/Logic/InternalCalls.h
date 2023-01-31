@@ -506,7 +506,13 @@ public:
 	\brief
 		Plays sound
 	*******************************************************************************/
-	static void PlaySound(std::string const& _entityName, std::string const& _sceneName);
+	static void PlayEntitySound(std::string const& _soundName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+		Force play sound in channel
+	*******************************************************************************/
+	static void PlaySoundInChannel(std::string const& _soundName, int _channel);
 
 	/*!*****************************************************************************
 	\brief

@@ -136,12 +136,16 @@ void MonoMethods::PlaySoundOnLoop(MonoString* _entityName, MonoString* _sceneNam
 	FUNC->PlaySoundOnLoop(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
-void MonoMethods::PlaySound(MonoString* _entityName, MonoString* _sceneName) {
-	FUNC->PlaySound(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+void MonoMethods::PlayEntitySound(MonoString* _entityName, MonoString* _sceneName) {
+	FUNC->PlayEntitySound(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
 void MonoMethods::PlayBGSound(MonoString* _name, int _channel) {
 	FUNC->PlayBGSound(MONO->ConvertFromMonoString(_name), _channel);
+}
+
+void MonoMethods::PlaySoundInChannel(MonoString* _name, int _channel) {
+	FUNC->PlaySoundInChannel(MONO->ConvertFromMonoString(_name), _channel);
 }
 
 float MonoMethods::GetPosX(MonoString* _entityName, MonoString* _sceneName) {
@@ -278,7 +282,8 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::GetDeltaTime", &FUNC->GetDeltaTime);
 	mono_add_internal_call("BonVoyage.InternalCalls::StopSound", &MonoMethods::StopSound);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlaySoundOnLoop", &MonoMethods::PlaySoundOnLoop);
-	mono_add_internal_call("BonVoyage.InternalCalls::PlaySound", &MonoMethods::PlaySound);
+	mono_add_internal_call("BonVoyage.InternalCalls::PlayEntitySound", &MonoMethods::PlayEntitySound);
+	mono_add_internal_call("BonVoyage.InternalCalls::PlaySoundInChannel", &MonoMethods::PlaySoundInChannel);
 	mono_add_internal_call("BonVoyage.InternalCalls::IsPlaying", &FUNC->IsPlaying);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayBGSound", &MonoMethods::PlayBGSound);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetPosX", &MonoMethods::GetPosX);

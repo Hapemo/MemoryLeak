@@ -676,8 +676,16 @@ void InternalCalls::StopSound(std::string const& _entityName, std::string const&
 \brief
 	Plays sound
 *******************************************************************************/
-void InternalCalls::PlaySound(std::string const& _entityName, std::string const& _sceneName){
+void InternalCalls::PlayEntitySound(std::string const& _entityName, std::string const& _sceneName){
 	audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
+}
+
+/*!*****************************************************************************
+\brief
+	Force play sound in channel
+*******************************************************************************/
+void InternalCalls::PlaySoundInChannel(std::string const& _soundName, int _channel) {
+	audioManager->PlayAnySound(_soundName, _channel);
 }
 
 /*!*****************************************************************************

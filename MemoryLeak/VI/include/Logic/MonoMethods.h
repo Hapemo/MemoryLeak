@@ -64,7 +64,8 @@ public:
 	static bool CheckCollision(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName, bool _dynamicCheck);
 	static void StopSound(MonoString* _entityName, MonoString* _sceneName);
 	static void PlaySoundOnLoop(MonoString* _entityName, MonoString* _sceneName);
-	static void PlaySound(MonoString* _entityName, MonoString* _sceneName);
+	static void PlayEntitySound(MonoString* _entityName, MonoString* _sceneName);
+	static void PlaySoundInChannel(MonoString* _soundName, int _channel);
 	static void PlayBGSound(MonoString* _name, int _channel);
 	static float GetPosX(MonoString* _entityName, MonoString* _sceneName);
 	static float GetPosY(MonoString* _entityName, MonoString* _sceneName);

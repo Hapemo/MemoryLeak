@@ -110,10 +110,11 @@ namespace BonVoyage
 
             if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1"))
             {
+                Console.Write("COLLECTED");
                 fragment1 = true;
                 InternalCalls.UpdateText("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
+                InternalCalls.PlayEntitySound("fragment1drop", "Level1");
                 InternalCalls.EntityDeactivate("fragment1drop", "Level1");
-                InternalCalls.PlaySound("fragment1drop", "Level1");
             }
 
             if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
