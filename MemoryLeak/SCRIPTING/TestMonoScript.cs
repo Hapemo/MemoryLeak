@@ -34,6 +34,7 @@ namespace BonVoyage
         private bool RunIntroDialog = true;         // This flag is true if the dialog has not player and should play
         private bool RunlittleGirlDialog = true;    // This flag is true if the dialog has not player and should play
         private bool RunPassengerDialog = true;     // This flag is true if the dialog has not player and should play
+        private bool AllowAdvance = false;
 
         private string currentobjective = "";
         private bool objectiveexpanded = false;
@@ -91,13 +92,14 @@ namespace BonVoyage
               if (!RunPassengerDialog) {
                   //SetPosition("Passenger_1", "Level1", -1240, 670);
                   SetObjectiveText();
+                  AllowAdvance = true;
               }
             }
           }
             #endregion
 
             #region Passenger 1 Delivered
-            if (InternalCalls.EntitiesCollided("Boat", "destination", "Level1"))
+            if (AllowAdvance && InternalCalls.EntitiesCollided("Boat", "destination", "Level1"))
             {
                 InternalCalls.PlayScene("cutscene1");
                 InternalCalls.EntityDeactivate("destination", "Level1");
@@ -582,6 +584,7 @@ namespace BonVoyage
             InternalCalls.EntityDeactivate(choice2, scene);
         }
         #endregion
+
         public void LockPosition(float x, float y) {
           InternalCalls.SetPosX("Boat", "Level1", x);
           InternalCalls.SetPosY("Boat", "Level1", y);
@@ -592,6 +595,7 @@ namespace BonVoyage
             InternalCalls.SetPosY(entityname, scenename, y);
         }
 
+        #region Player & Enemy Helper Functions
         public int CheckRegion(string _entityName, string _sceneName)
         {
             if (InternalCalls.GetPosX(_entityName, _sceneName) > maxX || InternalCalls.GetPosY(_entityName, _sceneName) > maxY ||
@@ -670,5 +674,6 @@ namespace BonVoyage
                 (_x * _multiplier * (float)InternalCalls.GetDeltaTime()),
                 (_y * _multiplier * (float)InternalCalls.GetDeltaTime()), 0f, 0f);
         }
+        #endregion
     }
 }
