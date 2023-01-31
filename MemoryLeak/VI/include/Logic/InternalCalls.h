@@ -620,7 +620,18 @@ public:
 	static void WeatherAIinit(float width = 1600, float height = 900);
 	static int GetCurrentWeather(int index, float posX, float posY);
 
+	/*!*****************************************************************************
+	\brief
+	Changing lightsource component.
+	*******************************************************************************/
 	static float GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName);
 	static void SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius);
+
+	/*!*****************************************************************************
+	\brief
+	Changing sprite component.
+	*******************************************************************************/
+	static void SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a);
+	static void SetSpriteAlpha(std::string const& _entityName, std::string const& _sceneName, int _a);
 
 };

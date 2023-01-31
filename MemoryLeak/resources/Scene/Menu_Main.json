@@ -278,7 +278,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\bon voyage logo 5.png",
-            "layer": 1
+            "layer": 2
         },
         "Script": {
             "name": "MenuLightScript"
@@ -288,7 +288,7 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "radius": 874.0,
+            "radius": 900.0,
             "intensity": 0.0
         }
     },
@@ -374,6 +374,39 @@
         },
         "Button": {
             "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "LightCircle",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -94.79512786865234,
+                "Y": 244.46290588378906
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 50
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 1
+        },
+        "Script": {
+            "name": "MenuLightCircle"
         }
     }
 ]

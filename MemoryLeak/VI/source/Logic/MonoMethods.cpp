@@ -222,6 +222,11 @@ void  MonoMethods::SetLightSourceRadius(MonoString* _entityName, MonoString* _sc
 	FUNC->SetLightSourceRadius(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _radius);
 }
 
+void MonoMethods::SetSpriteColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a)
+{
+	FUNC->SetSpriteColor(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _r, _g, _b, _a);
+}
+
 /*!*****************************************************************************
 \brief
 Checks for the state of certain key
@@ -316,5 +321,6 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentWeather", &FUNC->GetCurrentWeather);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetLightSourceRadius", &MonoMethods::GetLightSourceRadius);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetLightSourceRadius", &MonoMethods::SetLightSourceRadius);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteColor", &MonoMethods::SetSpriteColor);
 
 }
