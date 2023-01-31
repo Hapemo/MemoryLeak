@@ -863,3 +863,11 @@ void InternalCalls::SetLightSourceRadius(std::string const& _entityName, std::st
 		return;
 	FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius = _radius;
 }
+
+void InternalCalls::SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<Sprite>())
+		return;
+	Color clr{ _r, _g, _b, _a };
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Sprite>().color = clr;
+}

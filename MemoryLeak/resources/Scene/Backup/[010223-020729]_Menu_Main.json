@@ -285,8 +285,8 @@
         },
         "LightSource": {
             "centerOffset": {
-                "X": -94.0,
-                "Y": 24.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "radius": 900.0,
             "intensity": 0.0

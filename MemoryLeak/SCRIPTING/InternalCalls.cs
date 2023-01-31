@@ -253,5 +253,8 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetLightSourceRadius(string _entityName, string _sceneName, float _radius);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetSpriteColor(string _entityName, string _sceneName, int _r, int _g, int _b, int _a);
 	}
 }

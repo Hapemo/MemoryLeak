@@ -508,6 +508,16 @@ void RenderManager::RenderDebug()
 				CreateDebugArrow(t, { 0, 255, 0, 255 });
 			}
 
+			if (e.HasComponent<LightSource>())
+			{
+				Transform t = e.GetComponent<Transform>();
+				t.scale = { 0, 0 };
+				t.rotation = 0;
+				t.translation += Math::Vec2(e.GetComponent<LightSource>().centerOffset.x,
+					e.GetComponent<LightSource>().centerOffset.y);
+				CreateDebugPoint(t, { 0, 255, 0, 255 });
+			}
+
 			if (e.HasComponent<ShadowCaster>() && e.GetComponent<ShadowCaster>().renderFlag)
 			{
 				Transform t = e.GetComponent<Transform>();
