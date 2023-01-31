@@ -504,9 +504,9 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-		Plays a single background sound
+		Plays sound
 	*******************************************************************************/
-	static void PlayAnySound(std::string _name, int _channel);
+	static void PlaySound(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief

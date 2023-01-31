@@ -674,10 +674,10 @@ void InternalCalls::StopSound(std::string const& _entityName, std::string const&
 
 /*!*****************************************************************************
 \brief
-	Plays a single background sound
+	Plays sound
 *******************************************************************************/
-void InternalCalls::PlayAnySound(std::string _name, int _channel) {
-	audioManager->PlayAnySound(_name, _channel);
+void InternalCalls::PlaySound(std::string const& _entityName, std::string const& _sceneName){
+	audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
 }
 
 /*!*****************************************************************************

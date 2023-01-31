@@ -180,7 +180,7 @@ namespace BonVoyage
 		internal extern static void PlaySoundOnLoop(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void PlayAnySound(string _name, int _channel);
+		internal extern static void PlaySound(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool IsPlaying(int _channel);
