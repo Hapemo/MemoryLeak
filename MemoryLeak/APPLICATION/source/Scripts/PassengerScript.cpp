@@ -44,18 +44,11 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	}
 	if (pickingUp)
 	{//animation of going to boat
-		float diffX = passengerTransform->translation.x != boatTransform->translation.x;
-		float diffY = passengerTransform->translation.y != boatTransform->translation.y;
-		//std::cout << diffX << " dX: \n";
-		static int i = 0;
-		if (diffX >1 || diffY > 1 || diffX < -1 || diffY < -1)
-		{
-			if (diffX > 10)
-				passengerTransform->translation.x += (boatTransform->translation.x - passengerTransform->translation.x)/100;
-			else //if (diffY >10)
-				passengerTransform->translation.y += (boatTransform->translation.y - passengerTransform->translation.y) /100;
-			//std::cout << ++i << " : \n";
-		}
+		diff = boatTransform->translation - passengerTransform->translation;
+		if (diff.x > 10 || diff.x < -10)
+			passengerTransform->translation.x += diff.Normalized().x;
+		else if (diff.y >10 || diff.y < -10)
+			passengerTransform->translation.y += diff.Normalized(). y;
 		else
 		{
 			pickedUp = true;

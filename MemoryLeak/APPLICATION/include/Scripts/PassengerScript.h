@@ -20,7 +20,7 @@ private:
 	bool pickedUp;
 	bool pickingUp;
 	bool readyToPickUp;
-
+	Math::Vec2 diff;
 	Entity boat;
 	Entity passenger;
 	Entity destination;
