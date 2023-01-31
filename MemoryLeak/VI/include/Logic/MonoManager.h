@@ -12,6 +12,7 @@ The MonoManager class handles the C# scripting for the engine.
 
 #pragma once
 #include <mono/jit/jit.h>
+#include "mono/metadata/object.h"
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/debug-helpers.h>
 #include "Singleton.h"
@@ -104,6 +105,7 @@ private:
 	static MonoDomain* mAppDomain;
 	static MonoDomain* mRootDomain;
 	static MonoAssembly* mAssembly;
+	static uint32_t test;
 
 	// Storing all mono scripts
 	std::map<std::string, MonoObject*> mMonoComponents;

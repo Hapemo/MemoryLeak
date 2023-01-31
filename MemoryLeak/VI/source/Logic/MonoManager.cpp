@@ -19,6 +19,7 @@ The MonoManager class handles the C# scripting for the engine.
 MonoDomain* MonoManager::mAppDomain = nullptr;
 MonoDomain* MonoManager::mRootDomain = nullptr;
 MonoAssembly* MonoManager::mAssembly = nullptr;
+uint32_t MonoManager::test = 0;
 
 /*!*****************************************************************************
 \brief
@@ -146,6 +147,7 @@ Calls a mono method by script name and function name.
 *******************************************************************************/
 void MonoManager::CallMethod(std::string _scriptName, const char* _function, int _paramCount) {
 	MonoObject* monoInstance = GetMonoComponent(_scriptName);
+
 	if(monoInstance == nullptr) std::cout << "Failed to get an instance to Mono object from member map mMonoComponents!\n";
 
 	// Get the MonoClass pointer from the instance
@@ -183,6 +185,8 @@ void MonoManager::RegisterMonoScript(std::string _namespace, std::string _class)
 		// Storing mono object
 		if (testInstance != nullptr) SetMonoComponent(_class, testInstance);
 		else std::cout << "Failed to register C# script method " << _namespace << "::" << _class << "()!\n";
+		
+		test = mono_gchandle_new(testInstance, true);
 	}
 }
 
@@ -221,4 +225,6 @@ void MonoManager::CloseMono() {
 		mono_jit_cleanup(mRootDomain);
 	}
 	mRootDomain = nullptr;
+
+	mono_gchandle_free(test);
 }
