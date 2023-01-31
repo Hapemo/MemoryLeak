@@ -90,6 +90,8 @@ void LayerManager::Update() {
 		if (CollidedFlag)
 			++it;
 		else {
+			if (it->first->id > MAX_ENTITIES)
+				continue;
 			if (it->first->HasComponent<Sprite>())
 				it->first->GetComponent<Sprite>().layer = it->second;
 			it = mOriginLayerMap.erase(it);

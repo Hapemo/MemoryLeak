@@ -4,8 +4,8 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class CrystalBallScript
     {
-        int toggle = -1; // 0 minimap, 1, weathermap, 2 enemymap
-        int prevTog = -2;
+        int toggle = 0; // 0 minimap, 1, weathermap, 2 enemymap
+        int prevTog = -1;
         public void Init() {
             //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
             //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
@@ -22,76 +22,100 @@ namespace BonVoyage {
             { 
                 if (toggle == 0)
                 {
-                    InternalCalls.SetEntityIsActive("minimap", "MiniMap", true);
-                    InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
-                    InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
-                    InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
-                    InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
-                    for (int i = 0; i < 25; i++)
-                    {
-                        int modI = i % 5;
-                        int divI = i / 5;
-                        if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
-                        {
-                            string MIcon = "MIcon" + i;
-                            InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
-                        }
-                    }
+                    InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
+                    InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
+                    InternalCalls.PlayScene("MiniMap");
+                    InternalCalls.EntityActivate("minimap", "MiniMap");
+                    InternalCalls.PauseScene("WeatherMap");
+                    InternalCalls.PauseScene("EnemyMap");
+                    //InternalCalls.SetEntityIsActive("minimap", "MiniMap", true);
+                    //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
+                    //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
+                    //InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
+                    //InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
+                    //for (int i = 0; i < 25; i++)
+                    //{
+                    //    int modI = i % 5;
+                    //    int divI = i / 5;
+                    //    if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
+                    //    {
+                    //        string MIcon = "MIcon" + i;
+                    //        InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
+                    //    }
+                    //}
                 }
                 else if (toggle == 1)
                 {
-                    InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
-                    InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", true);
-                    InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
-                    InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
-                    InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
-                    for (int i = 0; i < 25; i++)
-                    {
-                        int modI = i % 5;
-                        int divI = i / 5;
-                        if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
-                        {
-                            string MIcon = "MIcon" + i;
-                            InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", true);
-                        }
-                    }
-                    
+                    InternalCalls.EntityDeactivate("minimap", "MiniMap");
+                    InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
+                    InternalCalls.PauseScene("MiniMap");
+                    InternalCalls.PlayScene("WeatherMap");
+                    InternalCalls.EntityActivate("weathermap", "WeatherMap");
+                    InternalCalls.PauseScene("EnemyMap");
+                    //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
+                    //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", true);
+                    //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
+                    //InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
+                    //InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
+                    //for (int i = 0; i < 25; i++)
+                    //{
+                    //    int modI = i % 5;
+                    //    int divI = i / 5;
+                    //    if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
+                    //    {
+                    //        string MIcon = "MIcon" + i;
+                    //        InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", true);
+                    //    }
+                    //}
+
                 }
                 else if (toggle == 2)
                 {
-                    InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
-                    InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
-                    InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", true);
-                    InternalCalls.SetEntityIsActive("enemy", "EnemyMap", true);
-                    InternalCalls.SetEntityIsActive("player", "EnemyMap", true);
-                    for (int i = 0; i < 25; i++)
-                    {
-                        int modI = i % 5;
-                        int divI = i / 5;
-                        if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
-                        {
-                            string MIcon = "MIcon" + i;
-                            InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
-                        }
-                    }
+                    InternalCalls.EntityDeactivate("minimap", "MiniMap");
+                    InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
+                    InternalCalls.PauseScene("MiniMap");
+                    InternalCalls.PauseScene("WeatherMap");
+                    InternalCalls.PlayScene("EnemyMap");
+                    InternalCalls.EntityActivate("enemymap", "EnemyMap");
+                    //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
+                    //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
+                    //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", true);
+                    //InternalCalls.SetEntityIsActive("enemy", "EnemyMap", true);
+                    //InternalCalls.SetEntityIsActive("player", "EnemyMap", true);
+                    //for (int i = 0; i < 25; i++)
+                    //{
+                    //    int modI = i % 5;
+                    //    int divI = i / 5;
+                    //    if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
+                    //    {
+                    //        string MIcon = "MIcon" + i;
+                    //        InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
+                    //    }
+                    //}
                 }
                 else //if (toggle == 2)
                 {
-                    InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
-                    InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
-                    InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
-                    InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
-                    InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
-                    for (int i = 0; i < 25; i++)
-                    {
-                        int modI = i % 5;
-                        int divI = i / 5;
-                        if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
-                        {
-                            string MIcon = "MIcon" + i;
-                            InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
-                        }
-                    }
+                    InternalCalls.EntityDeactivate("minimap", "MiniMap");
+                    InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
+                    InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
+                    InternalCalls.PauseScene("MiniMap");
+                    InternalCalls.PauseScene("WeatherMap");
+                    InternalCalls.PauseScene("EnemyMap");
+                    //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
+                    //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
+                    //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
+                    //InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
+                    //InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
+                    //for (int i = 0; i < 25; i++)
+                    //{
+                    //    int modI = i % 5;
+                    //    int divI = i / 5;
+                    //    if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
+                    //    {
+                    //        string MIcon = "MIcon" + i;
+                    //        InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
+                    //    }
+                    //}
                 }
                 prevTog = toggle;
             }
@@ -99,6 +123,13 @@ namespace BonVoyage {
         }
         public void Exit() {
             toggle=0;
+            prevTog = -1;
+            InternalCalls.EntityDeactivate("minimap", "MiniMap");
+            InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
+            InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
+            InternalCalls.PauseScene("MiniMap");
+            InternalCalls.PauseScene("WeatherMap");
+            InternalCalls.PauseScene("EnemyMap");
         }
     }
 }

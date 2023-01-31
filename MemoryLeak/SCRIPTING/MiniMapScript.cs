@@ -7,7 +7,7 @@ namespace BonVoyage {
         static bool init = true;
         static bool big = false;
         public void Init() {
-            
+
             InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
         }
 
@@ -34,7 +34,8 @@ namespace BonVoyage {
         }
 
         public void Exit() {
-            
+            big = false;
+            InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
         }
     }
 }
