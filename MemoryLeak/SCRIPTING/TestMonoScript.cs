@@ -260,7 +260,7 @@ namespace BonVoyage
       if (!objectiveexpanded)
               {
                   InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view"); // hint
-                  TextAlignChoices("objectivetext", "Dialogue", 400, 350, 700, 51.0f, 20, 10);
+                  TextAlignChoices("objectivetext", "Dialogue", 400, 350, 530, 51.0f, 20, 10);
 
       }
     }
