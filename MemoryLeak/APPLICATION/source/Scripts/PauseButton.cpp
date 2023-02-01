@@ -35,17 +35,31 @@ void PauseButton::UpdateScript(Entity const& gob) {
 	if (gob.HasComponent<Button>()) {
 		static float x = gob.GetComponent<Transform>().scale.x;
 		static float y = gob.GetComponent<Transform>().scale.y;
-		if (gob.GetComponent<Button>().isHover) {
-			if (gob.GetComponent<Transform>().scale.x < x + 15.f)
-				++(gob.GetComponent<Transform>().scale.x);
-			if (gob.GetComponent<Transform>().scale.y < y + 15.f)
-				++(gob.GetComponent<Transform>().scale.y);
+		if (gob.GetComponent<Button>().isClick)
+		{
+			if (gob.GetComponent<Transform>().scale.x > x - 10.f)
+				gob.GetComponent<Transform>().scale.x -= 250.f * (float)FPSManager::dt;
+			if (gob.GetComponent<Transform>().scale.y > y - 10.f)
+				gob.GetComponent<Transform>().scale.y -= 250.f * (float)FPSManager::dt;
+
 		}
-		else {
+		else if (gob.GetComponent<Button>().isHover) {
+			if (gob.GetComponent<Transform>().scale.x < x + 15.f)
+				gob.GetComponent<Transform>().scale.x += 100.f * (float)FPSManager::dt;
+			if (gob.GetComponent<Transform>().scale.y < y + 15.f)
+				gob.GetComponent<Transform>().scale.y += 100.f * (float)FPSManager::dt;
+
+		}
+		else
+		{
+			if (gob.GetComponent<Transform>().scale.x < x)
+				gob.GetComponent<Transform>().scale.x += 250.f * (float)FPSManager::dt;
+			if (gob.GetComponent<Transform>().scale.y < y)
+				gob.GetComponent<Transform>().scale.y += 250.f * (float)FPSManager::dt;
 			if (gob.GetComponent<Transform>().scale.x > x)
-				--(gob.GetComponent<Transform>().scale.x);
+				gob.GetComponent<Transform>().scale.x -= 250.f * (float)FPSManager::dt;
 			if (gob.GetComponent<Transform>().scale.y > y)
-				--(gob.GetComponent<Transform>().scale.y);
+				gob.GetComponent<Transform>().scale.y -= 250.f * (float)FPSManager::dt;
 		}
 		if (gob.GetComponent<Button>().activated) {
 			init = false;
