@@ -257,8 +257,13 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
     {
         float width{};
         str += " ";
+        width += mGlyphs[' '].size.x * scale;
         for (char ch : str)
+        {
+            if (ch == '\n')
+                width += 1000;
             width += mGlyphs[ch].size.x * scale;
+        }
         wordWidth.push_back(width);
     }
     
