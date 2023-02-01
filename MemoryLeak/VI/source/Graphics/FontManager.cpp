@@ -153,7 +153,7 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
         width += mGlyphs[' '].size.x * scale;
         for (char ch : str)
         {
-          if (ch == '\n') {
+          if (ch == '$') {
                 width += 1000;
                 continue;
             }
@@ -201,7 +201,7 @@ void FontRenderer::DrawParagraphs(int _layer)
             }
             for (auto itr = para.words[i].begin(); itr != para.words[i].end(); ++itr)
             {
-                if (*itr == '\n') continue;
+                if (*itr == '$') continue;
                 Character ch = mGlyphs[*itr];
                 float w = ch.size.x * para.scale;
                 float h = ch.size.y * para.scale;
@@ -262,7 +262,7 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
         width += mGlyphs[' '].size.x * scale;
         for (char ch : str)
         {
-            if (ch == '\n')
+            if (ch == '$')
                 width += 1000;
             width += mGlyphs[ch].size.x * scale;
         }
