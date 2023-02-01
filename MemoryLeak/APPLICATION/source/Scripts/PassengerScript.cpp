@@ -45,9 +45,10 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	if (pickingUp)
 	{//animation of going to boat
 		diff = boatTransform->translation - passengerTransform->translation;
-		if (diff.x > 10 || diff.x < -10 || diff.y >10 || diff.y < -10)
+		if (std::fabs(diff.x) > 10  || std::fabs(diff.y >10))
 		{
 			passengerTransform->translation += diff.Normalized();
+			passenger.GetComponent<Sprite>().color.a -= 10;
 		}
 		else
 		{
@@ -58,7 +59,10 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	}
 	// If picked up, follow boat
 	if (pickedUp) {
-		
+		if (passenger.GetComponent<Sprite>().color.a < 255)
+		{
+			passenger.GetComponent<Sprite>().color.a += 10;
+		}
 		//passengerTransform->translation = boatTransform->translation;
 		int direction = boat.GetComponent<Animation>().currentImageIndex % 8;
 		switch (direction) 
