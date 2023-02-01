@@ -19,7 +19,7 @@ namespace BonVoyage
         private float PlayerSpeed = 500f;
         private float EnemySpeed = 40f;
         private bool EnemyLoiter = true;
-    private float perlineScale = 45;
+        private float perlineScale = 45;
 
         private const int MaxHealth = 12;
         private const float Epsilon = 1.192092896e-07F;
@@ -212,7 +212,7 @@ namespace BonVoyage
             float PlayerPosY = InternalCalls.GetPosY("Boat", "Level1");
             float PlayerScaleX = InternalCalls.GetScaleX("Boat", "Level1");
             float PlayerScaleY = InternalCalls.GetScaleY("Boat", "Level1");
-            if (InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false) { // Mouse click
+            if (!starttalking && InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false) { // Mouse click
                 float DirX = InternalCalls.GetWorldMousePosX() + InternalCalls.GetCurrentCameraPosX() - PlayerPosX;
                 float DirY = InternalCalls.GetWorldMousePosY() + InternalCalls.GetCurrentCameraPosY() - PlayerPosY;
                 float NormX = 0f, NormY = 0f;
