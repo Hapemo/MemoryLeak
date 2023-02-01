@@ -26,7 +26,7 @@ RenderManager::RenderManager()
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
 	mCircularViewportProgram("shaders/texture.vert", "shaders/circularvp.frag"),
-	mWindowHeight(nullptr), mWindowWidth(nullptr), lightsource(0)
+	mWindowHeight(nullptr), mWindowWidth(nullptr)
 {
 	//render world (editor)
 	mRenderGameToScreen = true;
@@ -79,6 +79,8 @@ Render Entities with Sprite and Transform Component.
 *******************************************************************************/
 void RenderManager::Render()
 {
+	lightsources.clear();
+
 	gs = GameStateManager::GetInstance()->mCurrentGameState;
 
 	if (gs)
@@ -175,11 +177,14 @@ glm::vec4 RenderManager::InterpolateColor(const glm::vec4& original, const glm::
 	return original + (target - original) * (actual / distance);
 }
 
-void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices)
+void RenderManager::CreateVisibilityPolygon(const std::vector<std::vector<Math::Vec2>>& _vertices)
 {
-	if (!lightsource.id) return;
-	if (!lightsource.HasComponent<LightSource>()) return;
 	if (!_vertices.size()) return;
+	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
+		for (Entity e : scene.mEntities)
+			if (e.HasComponent<LightSource>())
+				lightsources.push_back(e);
+	if (lightsources.empty()) return;
 
 	bool prev = mIsCurrSceneUI;
 	mIsCurrSceneUI = false;
@@ -189,43 +194,53 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	glm::vec4 shadowclr{ 0, 0, 0, 0.8f };
 	Math::Mat3 mtx;
 
-	Math::Vec2 lightPos = lightsource.GetComponent<Transform>().translation 
-		+ lightsource.GetComponent<LightSource>().centerOffset;
-	float radius = lightsource.GetComponent<LightSource>().radius;
-	mtx = GetTransform({ 0, 0 }, 0, lightPos);
+	float z = 0.1f;
 
-	v0.color = clr;
-	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
-	v0.texID = 0.f;
-	v0.position.z = 1.f;
-	mLightVertices.push_back(v0);
-
-	for (const Math::Vec2& vec : _vertices)
+	for (int i = 0; i < lightsources.size(); ++i)
 	{
-		mtx = GetTransform({ 0, 0 }, 0, vec);
+		if (i > _vertices.size() - 1) continue;
+		if (i > 9) break;
+		Math::Vec2 lightPos = lightsources[i].GetComponent<Transform>().translation
+			+ lightsources[i].GetComponent<LightSource>().centerOffset;
+		float radius = lightsources[i].GetComponent<LightSource>().radius;
+		mtx = GetTransform({ 0, 0 }, 0, lightPos);
+
+		v0.color = clr;
 		v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
-		v0.color = InterpolateColor(clr, shadowclr, radius, Math::Distance(vec, lightPos));
 		v0.texID = 0.f;
-		v0.position.z = 1.f;
-		mLightVertices.push_back(v0);
-	}
-	mtx = GetTransform({ 0, 0 }, 0, _vertices[0]);
-	v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
-	v0.texID = 0.f;
-	v0.position.z = 1.f;
-	mLightVertices.push_back(v0);
+		v0.position.z = z;
+		mLightVertices[i].push_back(v0);
 
-	GLushort pivot = mLightIndices.empty() ? 0 : mLightIndices.back() + 1;
+		for (const Math::Vec2& vec : _vertices[i])
+		{
+			mtx = GetTransform({ 0, 0 }, 0, vec);
+			v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
+			v0.color = InterpolateColor(clr, shadowclr, radius, Math::Distance(vec, lightPos));
+			v0.texID = 0.f;
+			v0.position.z = z;
+			mLightVertices[i].push_back(v0);
+		}
+		mtx = GetTransform({ 0, 0 }, 0, _vertices[i][0]);
+		v0.position = (mtx * Math::Vec3(0, 0, 1.f)).ToGLM();
+		v0.texID = 0.f;
+		v0.position.z = z;
+		mLightVertices[i].push_back(v0);
 
-	for (GLushort i = 0; i < _vertices.size(); ++i)
-	{
-		mLightIndices.push_back(pivot);
-		mLightIndices.push_back(pivot + 1 + i);
-		mLightIndices.push_back(pivot + 2 + i);
+		GLushort pivot = mLightIndices[i].empty() ? 0 : mLightIndices[i].back() + 1;
+
+		for (GLushort j = 0; j < _vertices[i].size(); ++j) // u stopped here
+		{
+			mLightIndices[i].push_back(pivot);
+			mLightIndices[i].push_back(pivot + 1 + j);
+			mLightIndices[i].push_back(pivot + 2 + j);
+		}
+
+		z += 0.1f;
 	}
 
 	CreateShadows(shadowclr);
 	mIsCurrSceneUI = prev;
+	lightsources.clear();
 }
 
 void RenderManager::CreateShadows(const glm::vec4& _clr)
@@ -234,34 +249,34 @@ void RenderManager::CreateShadows(const glm::vec4& _clr)
 
 	Vertex v0, v1, v2, v3;
 
-	v0.position = Math::Vec3(-1.f, 1.f, 0.9f).ToGLM();
+	v0.position = Math::Vec3(-1.f, 1.f, 0.f).ToGLM();
 	v0.color = clr;
 	v0.texID = 0.f;
 
-	v1.position = Math::Vec3(-1.f, -1.f, 0.9f).ToGLM();
+	v1.position = Math::Vec3(-1.f, -1.f, 0.f).ToGLM();
 	v1.color = clr;
 	v1.texID = 0.f;
 
-	v2.position = Math::Vec3(1.f, 1.f, 0.9f).ToGLM();
+	v2.position = Math::Vec3(1.f, 1.f, 0.f).ToGLM();
 	v2.color = clr;
 	v2.texID = 0.f;
 
-	v3.position = Math::Vec3(1.f, -1.f, 0.9f).ToGLM();
+	v3.position = Math::Vec3(1.f, -1.f, 0.f).ToGLM();
 	v3.color = clr;
 	v3.texID = 0.f;
 
-	mLightVertices.push_back(v0);
-	mLightVertices.push_back(v1);
-	mLightVertices.push_back(v2);
-	mLightVertices.push_back(v3);
+	mLightVertices[10].push_back(v0);
+	mLightVertices[10].push_back(v1);
+	mLightVertices[10].push_back(v2);
+	mLightVertices[10].push_back(v3);
 
-	GLushort first = mLightIndices.empty() ? 0 : mLightIndices.back() + 1;
-	mLightIndices.push_back(first);
-	mLightIndices.push_back(first + 1);
-	mLightIndices.push_back(first + 2);
-	mLightIndices.push_back(first + 1);
-	mLightIndices.push_back(first + 2);
-	mLightIndices.push_back(first + 3);
+	GLushort first = mLightIndices[10].empty() ? 0 : mLightIndices[10].back() + 1;
+	mLightIndices[10].push_back(first);
+	mLightIndices[10].push_back(first + 1);
+	mLightIndices[10].push_back(first + 2);
+	mLightIndices[10].push_back(first + 1);
+	mLightIndices[10].push_back(first + 2);
+	mLightIndices[10].push_back(first + 3);
 }
 
 void RenderManager::RenderVisibilityPolygon()
@@ -273,7 +288,12 @@ void RenderManager::RenderVisibilityPolygon()
 	mAllocator.BindVAO();
 
 	//render all shapes
-	BatchRenderElements(GL_TRIANGLES, mLightVertices, mLightIndices);
+	for (std::map<int, std::vector<Vertex>>::reverse_iterator itr = mLightVertices.rbegin(); itr != mLightVertices.rend(); ++itr)
+	{
+		if (itr->first == 10) continue;
+		BatchRenderElements(GL_TRIANGLES, itr->second, mLightIndices[itr->first]);
+	}
+	BatchRenderElements(GL_TRIANGLES, mLightVertices[10], mLightIndices[10]);
 
 	//unuse VAO and normal program
 	mAllocator.UnbindVAO();
@@ -671,10 +691,9 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		{
 			if (!e.GetComponent<General>().isActive) continue;
 			if (!e.ShouldRun()) continue;
-			if (e.HasComponent<LightSource>())
-				lightsource = e;
 			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
-
+			if (e.HasComponent<LightSource>())
+				lightsources.push_back(e);
 			if (e.HasComponent<Sprite>())
 			{
 				if (e.HasComponent<CircularViewport>())
@@ -750,7 +769,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				CreateText(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		}
 	}
-	if (lightsource.id)
+	if (!lightsources.empty())
 	{
 		int shadowLayer = MAX_LAYERS_PER_SCENE * SHADOW_SCENE_LAYER;
 		if (find(mRenderLayers.begin(), mRenderLayers.end(), shadowLayer) == mRenderLayers.end())

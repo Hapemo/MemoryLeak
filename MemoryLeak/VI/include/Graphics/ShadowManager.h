@@ -36,14 +36,18 @@ public:
 	void Update();
 	Math::Vec2 GetLightPos();
 	bool CastShadows() { return mCastShadows; }
-	const std::vector <Math::Vec2>& GetRayEndPoints() { return mRayEndPoints; }
+	const std::vector<std::vector <Math::Vec2>>& GetRayEndPoints() 
+	{ 
+		return mRayEndPoints; 
+	}
 private:
-	Entity mLightsource;
+	Entity mCurrEntity;
+	std::vector<Entity> mLightsources;
 	bool mCastShadows;
 	std::vector <Edge> mObjectEdges;
 	std::vector <Edge> mRayDirection;
 	std::vector <Edge> mExtendedRayDirection;
-	std::vector <Math::Vec2> mRayEndPoints;
+	std::vector<std::vector <Math::Vec2>> mRayEndPoints;
 	Transform mCamera;
 
 	void RayCast();

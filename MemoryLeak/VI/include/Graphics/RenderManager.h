@@ -255,7 +255,7 @@ public:
 
 	void NewLayer(int _layer);
 
-	Entity GetLightSource() { return lightsource; }
+	std::vector<Entity> GetLightSource() { return lightsources; }
 private:
 	void* gs;
 	bool mIsCurrSceneUI;
@@ -279,8 +279,8 @@ private:
 	std::vector<Vertex> mDebugVertices;
 	std::vector<GLushort> mDebugIndices;
 	std::vector<Entity> mEditorSelectedEntities;
-	std::vector<Vertex> mLightVertices;
-	std::vector<GLushort> mLightIndices;
+	std::map<int, std::vector<Vertex>> mLightVertices;
+	std::map<int, std::vector<GLushort>> mLightIndices;
 
 	VIzmo mGizmo;
 	int mPrevWidth;
@@ -288,7 +288,7 @@ private:
 	bool mDebug;
 	std::vector<int> mRenderLayers;
 	Color mClearColor;
-	Entity lightsource;
+	std::vector<Entity> lightsources;
 
 	/*!*****************************************************************************
 	\brief
@@ -315,7 +315,7 @@ private:
 	
 	void BatchRenderVPLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
-	void CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices);
+	void CreateVisibilityPolygon(const std::vector<std::vector<Math::Vec2>>& _vertices);
 
 	glm::vec4 InterpolateColor(const glm::vec4& original, const glm::vec4& target, float distance, float actual);
 

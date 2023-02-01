@@ -14,33 +14,39 @@ as Sprites that are Squares. In the future, we will make a Shadow Component.
 #include <GameStateManager.h>
 #include <RenderProps.h>
 
-ShadowManager::ShadowManager() : mLightsource(0), mCastShadows(false) {}
+ShadowManager::ShadowManager() : mCastShadows(false) {}
 
 void ShadowManager::Update()
 {
 	ClearVectors();
 
-	mLightsource = renderManager->GetLightSource();
+	mLightsources = renderManager->GetLightSource();
 
-	if (!mLightsource.id)
+	if (mLightsources.empty())
 	{
 		mCastShadows = false;
 		return;
 	}
-	if (!mLightsource.HasComponent<LightSource>()) return;
 
 	mCastShadows = true;
 
-	CreateFOVVertices();
-
-	for (Entity e : mEntities)
+	for (Entity lightsource : mLightsources)
 	{
-		if (!e.ShouldRun()) continue;
-		if (!e.HasComponent<ShadowCaster>()) continue;
-		CreateObjectVertices(e);
+		mCurrEntity = lightsource;
+		CreateFOVVertices();
+
+		for (Entity e : mEntities)
+		{
+			if (!e.ShouldRun()) continue;
+			if (!e.HasComponent<ShadowCaster>()) continue;
+			CreateObjectVertices(e);
+		}
+		CreateRays();
+		RayCast();
+		mObjectEdges.clear();
+		mRayDirection.clear();
+		mExtendedRayDirection.clear();
 	}
-	CreateRays();
-	RayCast();
 }
 
 void ShadowManager::RayCast()
@@ -50,6 +56,7 @@ void ShadowManager::RayCast()
 	float T1, T2;
 	float smallestT1{};
 	bool foundIntersection;
+	std::vector<Math::Vec2> rayPts;
 
 	for (const Edge& ray : mRayDirection)
 	{
@@ -69,7 +76,7 @@ void ShadowManager::RayCast()
 			smallestT1 = T1;
 		}
 		Math::Vec2 _ray = ray.pos + smallestT1 * ray.dir;
-		mRayEndPoints.push_back(_ray);
+		rayPts.push_back(_ray);
 
 		if (!foundIntersection) // intersection is at a point
 		{
@@ -97,9 +104,10 @@ void ShadowManager::RayCast()
 			smallestT1 = T1;
 		}
 		Math::Vec2 _ray = ray.pos + smallestT1 * ray.dir;
-		mRayEndPoints.push_back(_ray);
+		rayPts.push_back(_ray);
 	}
-	std::sort(mRayEndPoints.begin(), mRayEndPoints.end(), CompareAngle);
+	std::sort(rayPts.begin(), rayPts.end(), CompareAngle);
+	mRayEndPoints.push_back(rayPts);
 }
 
 void ShadowManager::CreateRays()
@@ -111,9 +119,9 @@ void ShadowManager::CreateRays()
 
 Math::Vec2 ShadowManager::GetLightPos()
 {
-	if (!mLightsource.id) return Math::Vec2();
-	return mLightsource.GetComponent<Transform>().translation
-		+ mLightsource.GetComponent<LightSource>().centerOffset;;
+	if (!mCurrEntity.id) return Math::Vec2();
+	return mCurrEntity.GetComponent<Transform>().translation
+		+ mCurrEntity.GetComponent<LightSource>().centerOffset;;
 }
 
 bool CompareAngle(const Math::Vec2& endPt1, const Math::Vec2& endPt2)
@@ -160,13 +168,13 @@ void ShadowManager::CreateObjectVertices(Entity e)
 	Math::Vec2 p3 = xform.translation + i - j;
 
 	if (powf(p0.x - lightPos.x, 2.f) + powf(p0.y - lightPos.y, 2.f)
-		< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
+		< powf(mCurrEntity.GetComponent<LightSource>().radius, 2.f) ||
 		powf(p1.x - lightPos.x, 2.f) + powf(p1.y - lightPos.y, 2.f)
-		< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
+		< powf(mCurrEntity.GetComponent<LightSource>().radius, 2.f) ||
 		powf(p2.x - lightPos.x, 2.f) + powf(p2.y - lightPos.y, 2.f)
-		< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
+		< powf(mCurrEntity.GetComponent<LightSource>().radius, 2.f) ||
 		powf(p3.x - lightPos.x, 2.f) + powf(p3.y - lightPos.y, 2.f)
-		< powf(mLightsource.GetComponent<LightSource>().radius, 2.f))
+		< powf(mCurrEntity.GetComponent<LightSource>().radius, 2.f))
 	{
 		mObjectEdges.push_back({ p0, -2.f * i });
 		mObjectEdges.push_back({ p1, -2.f * j });
@@ -187,7 +195,7 @@ void ShadowManager::CreateFOVVertices()
 {
 	std::vector<Math::Vec2> circlePts;
 	Math::Vec2 center = GetLightPos();
-	Math::Vec2 vec = Math::Vec2(mLightsource.GetComponent<LightSource>().radius, 0.f);
+	Math::Vec2 vec = Math::Vec2(mCurrEntity.GetComponent<LightSource>().radius, 0.f);
 	float theta = 2.f / CIRCLE_SLICES * static_cast<float>(Math::PI);
 
 
