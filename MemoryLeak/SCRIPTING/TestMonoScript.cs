@@ -46,7 +46,7 @@ namespace BonVoyage
 
         private float CatPosX;
         private float CatPosY;
-        private float CatFlyTime = 2;
+        private float CatFlyTime = 1.5f;
         private float CatSpeedX = 0;
         private float CatSpeedY = 0;
 
@@ -141,7 +141,7 @@ namespace BonVoyage
                     fragment1 = 2;
                 else
                 { 
-                    InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + 100.0f *(float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + 150 *(float)InternalCalls.GetDeltaTime());
                     InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
                     InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
                 }
@@ -160,7 +160,7 @@ namespace BonVoyage
                 InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + CatSpeedY * (float)InternalCalls.GetDeltaTime());
                 InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
                 InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
-                InternalCalls.SetRotate("fragment1drop", "Level1", InternalCalls.GetRotate("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
+                InternalCalls.SetRotate("fragment1drop", "Level1", InternalCalls.GetRotate("fragment1drop", "Level1") + 50.0f * (float)InternalCalls.GetDeltaTime());
                 if (CatFlyTime < 0)
                 {
                     InternalCalls.EntityDeactivate("fragment1drop", "Level1");
