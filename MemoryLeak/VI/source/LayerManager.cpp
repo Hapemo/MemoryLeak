@@ -67,12 +67,12 @@ void LayerManager::Update() {
 			// lesser than the current entity
 			if (item.obj[0].GetComponent<General>().tag == TAG::PLAYER) {
 				LayerManager::mOriginLayerMap.try_emplace(&item.obj[0], item.obj[0].GetComponent<Sprite>().layer);
-				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 1;
+				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 2;
 
 			}
 			else if (item.obj[1].GetComponent<General>().tag == TAG::PLAYER) {
 				LayerManager::mOriginLayerMap.try_emplace(&item.obj[1], item.obj[1].GetComponent<Sprite>().layer);
-				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 1;
+				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 2;
 			}
 		}
 	}

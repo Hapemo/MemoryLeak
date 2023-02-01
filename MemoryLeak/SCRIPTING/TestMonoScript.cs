@@ -118,9 +118,16 @@ namespace BonVoyage
                 fragment1 = true;
                 InternalCalls.UpdateText("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
                 InternalCalls.PlayEntitySound("fragment1drop", "Level1");
-                InternalCalls.EntityDeactivate("fragment1drop", "Level1");
+                //InternalCalls.EntityDeactivate("fragment1drop", "Level1");
             }
-
+            
+            if (fragment1)//make cat fly to memoryfragment
+            {
+                //float diffX = InternalCalls.GetPosX("memoryfragment", "Dialogue") - InternalCalls.GetPosX("fragment1drop", "Level1");
+                InternalCalls.SetPosX("fragment1drop", "Level1", InternalCalls.GetPosX("fragment1drop", "Level1") - 3);
+                InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") - 1.5f);
+                InternalCalls.SetRotate("fragment1drop", "Level1", InternalCalls.GetRotate("fragment1drop", "Level1") + 0.2f);
+            }
             if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
                 if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
                     InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");
