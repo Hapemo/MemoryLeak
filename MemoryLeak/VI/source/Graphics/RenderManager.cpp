@@ -80,7 +80,6 @@ Render Entities with Sprite and Transform Component.
 void RenderManager::Render()
 {
 	gs = GameStateManager::GetInstance()->mCurrentGameState;
-
 	if (gs)
 	{
 		mGameCam.SetCameraWidth((int)reinterpret_cast<GameState*>(gs)->mCamera.scale.x);

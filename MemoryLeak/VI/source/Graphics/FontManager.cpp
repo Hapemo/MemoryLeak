@@ -10,7 +10,7 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 #include <FontManager.h>
 #include <sstream>
 #include <RenderProps.h>
-
+float FontRenderer::magicNumber = 0.445f;
 /*!*****************************************************************************
 \brief
 Default constructor for FontRenderer class.
@@ -153,8 +153,10 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
         width += mGlyphs[' '].size.x * scale;
         for (char ch : str)
         {
-            if (ch == '\n')
+          if (ch == '\n') {
                 width += 1000;
+                continue;
+            }
             width += mGlyphs[ch].size.x * scale;
         }
         wordWidth.push_back(width);
@@ -190,8 +192,8 @@ void FontRenderer::DrawParagraphs(int _layer)
         for (size_t i = 0; i < para.words.size(); ++i)
         {
             currWidth += para.wordWidth[i];
-
-            if (i && currWidth > para.renderWidth * 0.45f / para.camZoom)
+            
+            if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
             {
                 pos.x = initialX;
                 pos.y -= (mMaxYSize) * para.scale * 1.1f;
@@ -274,7 +276,7 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
     for (size_t i = 0; i < para.words.size(); ++i)
     {
         currWidth += para.wordWidth[i];
-        if (i && currWidth > para.renderWidth * 0.45f / para.camZoom)
+        if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
         {
             ++lines;
             currWidth = para.wordWidth[i];

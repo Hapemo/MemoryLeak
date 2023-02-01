@@ -133,4 +133,6 @@ private:
 	bool mInitialized;
 	int mWindowWidth, mWindowHeight;
 	float mMaxYSize;
+public:
+	static float magicNumber;
 };

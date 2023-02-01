@@ -19,6 +19,7 @@ namespace BonVoyage
         private float PlayerSpeed = 500f;
         private float EnemySpeed = 40f;
         private bool EnemyLoiter = true;
+    private float perlineScale = 45;
 
         private const int MaxHealth = 12;
         private const float Epsilon = 1.192092896e-07F;
@@ -61,12 +62,15 @@ namespace BonVoyage
                   LockPosition(160, 120);
                   RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
           if (!RunIntroDialog) {
-            InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Talk to the little girl"); // hint
-            TextAlignChoices("objectivetext", "Dialogue", 400, 320, 600, 50);
+            InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find the Little Girl");// Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum est nec rutrum venenatis. Suspendisse facilisis lectus ornare nisi feugiat, sed eleifend nisi molestie. Vestibulum et malesuada tortor. Donec eget diam vel lorem consequat tempus. Maecenas at mollis tellus. Maecenas dolor nisl, scelerisque a eleifend ornare, rhoncus nec leo. Praesent ultricies vehicula placerat. Etiam ligula enim, tempus sed tempor at, congue in ante. Ut condimentum non mauris ac efficitur."); // hint
+            Console.WriteLine("hi");
+            TextAlignChoices("objectivetext", "Dialogue", 400, 350, 700, 50, 20, 0);
           }
                 }
             }
-            #endregion
+      #endregion
+
+            //TextAlignChoices("objectivetext", "Dialogue", 400, 1800, 600);
 
             #region Little Girl Dialogue
       if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) {
@@ -428,21 +432,25 @@ namespace BonVoyage
         // int perLineScaleY    - This is the increment for one additional line
         // int textXSpacing     - This is the spacing of the text from the left edge of the box 
         // int textYSpacing     - This is the spacing of the text from the top edge of the box 
-        public void TextAlignChoices(string entityname, string scenename, int posX, int posY, int scaleX = 500, int perLineScaleY = 60, int textXSpacing = 50, int textYSpacing = 15, int choice = 0, int spacing = 15)
+        public void TextAlignChoices(string entityname, string scenename, float posX, float posY, float scaleX = 500, float perLineScaleY = 50, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15)
         {
             int additionalLines = InternalCalls.GetLineCount(entityname, scenename) - 1;
-            int scaleY = 100;         // This is the default height of button, will changing with respect to line count
+      Console.WriteLine("lines: " + additionalLines);
+            float scaleY = perLineScaleY;         // This is the default height of button, will changing with respect to line count
 
             InternalCalls.SetScaleX(entityname, scenename, scaleX);
-            InternalCalls.SetScaleY(entityname, scenename, scaleY + perLineScaleY * additionalLines);
+            InternalCalls.SetScaleY(entityname, scenename, scaleY + perLineScaleY * additionalLines + textYSpacing*2);
 
-            if (choice == 1) posY = posY + spacing + scaleY / 2 + perLineScaleY * additionalLines / 2;
-            else if (choice == 2) posY = posY - spacing - scaleY / 2 - perLineScaleY * additionalLines / 2;
+            // If it's a choice textbox, posY is the middle of both texts
+            if (choice == 1) posY = posY + spacing + scaleY / 2 + perLineScaleY * additionalLines;
+            else if (choice == 2) posY = posY - spacing - scaleY / 2 - perLineScaleY * additionalLines;
+
+            float finalPosY = posY - (perLineScaleY * additionalLines) / 2;
 
             InternalCalls.SetPosX(entityname, scenename, posX);
-            InternalCalls.SetPosY(entityname, scenename, posY);
+            InternalCalls.SetPosY(entityname, scenename, finalPosY);
 
-            int textY = perLineScaleY * additionalLines / 2 - textYSpacing;
+            float textY = perLineScaleY * additionalLines / 2 - perLineScaleY/2;
             InternalCalls.SetTextOffset(entityname, scenename, -scaleX / 2 + textXSpacing, textY);
         }
 
@@ -564,7 +572,7 @@ namespace BonVoyage
                     InternalCalls.EntityActivate(player, scene);
                     InternalCalls.EntityDeactivate(notPlayer, scene);
                     InternalCalls.UpdateText(player, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
-                    TextAlignChoices(player, scene, 450, 5, 500);
+                    TextAlignChoices(player, scene, 450, 5, 500, 50, 30, 50);
                 }
                 else
                 {
