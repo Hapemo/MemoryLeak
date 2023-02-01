@@ -15,6 +15,7 @@ REGISTER_SCRIPT(ScriptComponent, PassengerScript);
 
 namespace {
 	static bool speedCheat{ false };
+	static float passengerOriginalSizeX{};
 }
 
 void PassengerScript::StartScript(const Entity& _e) {
@@ -35,6 +36,7 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 		//if (collision2DManager->EntitiesCollided(_e, boat)) {
 		if(passenger.GetComponent<Transform>().rotation == 0.5f){
 			passenger.GetComponent<Transform>().rotation = 0.0f;
+			passengerOriginalSizeX = passengerTransform->scale.x;
 			pickingUp = true;
 			//pickedUp = true;
 			_e.GetComponent<RectCollider>().isTrigger = true;
@@ -45,9 +47,10 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	if (pickingUp)
 	{//animation of going to boat
 		diff = boatTransform->translation - passengerTransform->translation;
-		if (std::fabs(diff.x) > 10  || std::fabs(diff.y >10))
+		if (std::fabs(diff.x) > boatTransform->scale.x/3 || std::fabs(diff.y) > boatTransform->scale.y/3)
 		{
-			passengerTransform->translation += diff.Normalized();
+			passengerTransform->translation += diff.Normalized()*(float)FPSManager::dt*100;
+			passengerTransform->scale /= 1+ 2 *(float)FPSManager::dt;
 			passenger.GetComponent<Sprite>().color.a -= 10;
 		}
 		else
@@ -62,6 +65,10 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 		if (passenger.GetComponent<Sprite>().color.a < 255)
 		{
 			passenger.GetComponent<Sprite>().color.a += 10;
+		}
+		if (passengerTransform->scale.x < passengerOriginalSizeX)
+		{
+			passengerTransform->scale *= 1+2 *(float)FPSManager::dt;
 		}
 		//passengerTransform->translation = boatTransform->translation;
 		int direction = boat.GetComponent<Animation>().currentImageIndex % 8;
