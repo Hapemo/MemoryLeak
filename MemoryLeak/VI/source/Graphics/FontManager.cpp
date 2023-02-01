@@ -10,7 +10,7 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 #include <FontManager.h>
 #include <sstream>
 #include <RenderProps.h>
-float FontRenderer::magicNumber = 0.445f;
+float FontRenderer::magicNumber = 0.435f;
 /*!*****************************************************************************
 \brief
 Default constructor for FontRenderer class.

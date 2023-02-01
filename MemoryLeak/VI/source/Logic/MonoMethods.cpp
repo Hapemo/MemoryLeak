@@ -326,6 +326,6 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::GetLightSourceRadius", &MonoMethods::GetLightSourceRadius);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetLightSourceRadius", &MonoMethods::SetLightSourceRadius);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteColor", &MonoMethods::SetSpriteColor);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteColor", &MonoMethods::GetFontScale);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetFontScale", &MonoMethods::GetFontScale);
 
 }
