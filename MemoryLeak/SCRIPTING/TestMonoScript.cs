@@ -14,7 +14,7 @@ namespace BonVoyage
         private float HealInterval = 0;
         private float HealCounter = 0;
         private int OctopusAttacked = 0;
-        private int OctopusDirection = 1;
+        private float OctopusDirection = 0;
         private float PlayerRotation = 0;
         private float PlayerSpeed = 500f;
         private float EnemySpeed = 40f;
@@ -199,8 +199,8 @@ namespace BonVoyage
             Random rand = new Random();
             float EnemyPosX = InternalCalls.GetPosX("Enemy", "Level1");
             float EnemyPosY = InternalCalls.GetPosY("Enemy", "Level1");
-            float EnemyDisX = EnemyPosX - PlayerPosX;
-            float EnemyDisY = EnemyPosY - PlayerPosY;
+            float EnemyDisX = PlayerPosX - EnemyPosX;
+            float EnemyDisY = PlayerPosY - EnemyPosY;
             float EnemyNormDisX = 0f, EnemyNormDisY = 0f;
             if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
                 EnemyNormDisX = InternalCalls.NormalizeX(EnemyDisX, EnemyDisY);
@@ -212,14 +212,14 @@ namespace BonVoyage
                 EnemyPosY <= InternalCalls.GetCurrentCameraPosY() + (InternalCalls.GetCurrentCameraScaleY() / 2) &&
                 EnemyPosX >= InternalCalls.GetCurrentCameraPosX() - (InternalCalls.GetCurrentCameraScaleX() / 2) &&
                 EnemyPosY >= InternalCalls.GetCurrentCameraPosY() - (InternalCalls.GetCurrentCameraScaleY() / 2)) {
-                float EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
+                //float EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
                 /*
                 if (EnemyRotation < 0) OctopusDirection = 1;
                 else OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation) / Pi);
                 */
                 //Console.Write(OctopusDirection + "\n");
                 //Console.Write((EnemyRotation / Pi / 2) + "\n");
-                OctopusDirection = 0;
+                OctopusDirection = GetRotation(EnemyNormDisX, EnemyNormDisY);
                 //OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation));
                 //Console.Write(OctopusDirection + "\n");
 
@@ -230,10 +230,10 @@ namespace BonVoyage
                     //    ApplyForce("Enemy", "Level1", EnemyNormDisX, EnemyNormDisY, EnemySpeed);
                     //    ApplyForce("EnemyTrigger", "Level1", EnemyNormDisX, EnemyNormDisY, EnemySpeed);
                     //}
-                    EnemyChangeInX = (EnemyDisX > -1 && EnemyDisX < 1 ? EnemyDisX : EnemySpeed);
-                    EnemyChangeInY = (EnemyDisY > -1 && EnemyDisY < 1 ? EnemyDisY : EnemySpeed);
-                    EnemyChangeInX = (EnemyDisX > 0 ? -EnemyChangeInX : EnemyChangeInX);
-                    EnemyChangeInY = (EnemyDisY > 0 ? -EnemyChangeInY : EnemyChangeInY);
+                    EnemyChangeInX = (EnemyDisX > -1 && EnemyDisX < 1 ? 0 : EnemySpeed);
+                    EnemyChangeInY = (EnemyDisY > -1 && EnemyDisY < 1 ? 0 : EnemySpeed);
+                    EnemyChangeInX = (EnemyDisX > 0 ? EnemyChangeInX : -EnemyChangeInX);
+                    EnemyChangeInY = (EnemyDisY > 0 ? EnemyChangeInY : -EnemyChangeInY);
                 }
                 else EnemyLoiter = true;
 
@@ -262,6 +262,11 @@ namespace BonVoyage
                             SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                             break;
                     }
+                    if (InternalCalls.EntitiesCollided("Enemy", "Boat", "Level1")) {
+                      EnemyChangeInY = 0;
+                      EnemyChangeInY = 0;
+                    }
+
                 } else {
                     OctopusAttacked = 0;
                     InternalCalls.StopSound("EnemyTrigger", "Level1");
@@ -668,7 +673,7 @@ namespace BonVoyage
             else InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 1);
         }
 
-        public void SetCharRotation4(int direction, string _entityName, string _sceneName, string _status) {
+        public void SetCharRotation4(float _rotation, string _entityName, string _sceneName, string _status) {
             int InitialStatus = 0;
             switch (_status) {
                 case "Idle":
@@ -687,14 +692,23 @@ namespace BonVoyage
                     break;
             }
             //Console.Write(OctopusDirection+"\n");
-            InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + direction);
+            //InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + direction);
+            if (0 <= _rotation && _rotation < RightAngle)                   // 1st Quadrant
+              InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + 2);
+            else if (RightAngle <= _rotation && _rotation < Pi)           // 2nd Quadrant
+              InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + 1);
+            else if (Pi <= _rotation && _rotation < 3f * RightAngle)       // 3rd Quadrant
+              InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus);
+            else    // 4th Quadrant
+              InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + 3);
+             
         }
 
         public void ApplyForce(string _entityName, string _sceneName, float _x, float _y, float _multiplier) {
-            InternalCalls.ApplyImpulse(_entityName, _sceneName,
-                (_x * _multiplier * (float)InternalCalls.GetDeltaTime()),
-                (_y * _multiplier * (float)InternalCalls.GetDeltaTime()), 0f, 0f);
+          InternalCalls.ApplyImpulse(_entityName, _sceneName,
+              (_x * _multiplier * (float)InternalCalls.GetDeltaTime()),
+              (_y * _multiplier * (float)InternalCalls.GetDeltaTime()), 0f, 0f);
         }
         #endregion
-    }
+      }
 }
