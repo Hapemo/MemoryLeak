@@ -5,22 +5,21 @@ namespace BonVoyage
 {
     public class TestMonoScript
     {
-        private int fragment1 = 0;
-        private bool starttalking = false;
+        private int fragment1;
+        private bool starttalking;
         private float maxX, maxY, minX, minY, halfX, halfY;
-        private float HitInterval = 0;
-        private float HitCounter = 0;
-        private int HitTaken = 0;
-        private float HealInterval = 0;
-        private float HealCounter = 0;
-        private int OctopusAttacked = 0;
-        private float OctopusDirection = 0;
-        private float PlayerRotation = 0;
-        private float PlayerSpeed = 500f;
-        private float EnemySpeed = 40f;
-        private bool EnemyLoiter = true;
-    private float perlineScale = 49.5f;
-
+        private float HitInterval;
+        private float HitCounter;
+        private int HitTaken;
+        private float HealInterval;
+        private float HealCounter;
+        private int OctopusAttacked;
+        private float OctopusDirection;
+        private float PlayerRotation;
+        private float PlayerSpeed;
+        private float EnemySpeed;
+        private bool EnemyLoiter;
+        private float perlineScale;
         private const int MaxHealth = 12;
         private const float Epsilon = 1.192092896e-07F;
         private const double Pi = 3.141592653589793238f;
@@ -29,258 +28,297 @@ namespace BonVoyage
         private const float RadToDeg = 180/(float)Pi;
 
         /* Some of these flags are here to optimise the code. Because checking this bool value is faster than button check function calls */
-        private bool choiceFlag = false;            // This flag is true during choice selection dialogs
-        private bool playerTalking = false;         // This flag is true when player is talking, aka P1 active
-        private bool updateChat = false;            // This flag is true when dialog changes for anyone
-        private bool RunIntroDialog = true;         // This flag is true if the dialog has not player and should play
-        private bool RunlittleGirlDialog = true;    // This flag is true if the dialog has not player and should play
-        private bool RunPassengerDialog = true;     // This flag is true if the dialog has not player and should play
-        private bool AllowAdvance = false;
+        private bool choiceFlag;            // This flag is true during choice selection dialogs
+        private bool playerTalking;         // This flag is true when player is talking, aka P1 active
+        private bool updateChat;            // This flag is true when dialog changes for anyone
+        private bool RunIntroDialog;         // This flag is true if the dialog has not player and should play
+        private bool RunlittleGirlDialog;    // This flag is true if the dialog has not player and should play
+        private bool RunPassengerDialog;     // This flag is true if the dialog has not player and should play
+        private bool AllowAdvance;
 
-        private string currentobjective = "";
-        private bool objectiveexpanded = false;
+        private string currentobjective;
+        private bool objectiveexpanded;
 
-        private bool camZoomingIn = false;
-        private bool camZoomingOut = false;
-        private float camScaleX = 700;
+        private bool camZoomingIn;
+        private bool camZoomingOut;
+        private float camScaleX;
 
         private float CatPosX;
         private float CatPosY;
-        private float CatFlyTime = 1.5f;
-        private float CatSpeedX = 0;
-        private float CatSpeedY = 0;
-        private float oriFragScaleX = 0;
-        public void Init()
-        {
-            //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
-            halfX = InternalCalls.GetPosX("Water", "Level1");
-            halfY = InternalCalls.GetPosY("Water", "Level1");
-            maxX = (InternalCalls.GetScaleX("Water", "Level1") / 2) + halfX - InternalCalls.GetScaleX("Enemy", "Level1");
-            maxY = (InternalCalls.GetScaleY("Water", "Level1") / 2) + halfY - InternalCalls.GetScaleY("Enemy", "Level1");
-            minX = halfX - (InternalCalls.GetScaleX("Water", "Level1") / 2) + InternalCalls.GetScaleX("Enemy", "Level1");
-            minY = halfY - (InternalCalls.GetScaleY("Water", "Level1") / 2) + InternalCalls.GetScaleY("Enemy", "Level1");
-            CatPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue");
-            CatPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue");
-        }
+        private float CatFlyTime;
+        private float CatSpeedX;
+        private float CatSpeedY;
+        private float oriFragScaleX;
 
-        public void Update() {
-            #region Intro Dialogue
-            if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1")) {
-                if (RunIntroDialog && InternalCalls.EntityIsActive("IntroBox", "Level1")) {
-                  LockPosition(160, 120);
-                  RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
-                  if (!RunIntroDialog) {
-                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find the Little Girl");// for the start Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum est nec rutrum venenatis. Suspendisse facilisis lectus ornare nisi feugiat, sed eleifend nisi molestie. Vestibulum et malesuada tortor. Donec eget diam vel lorem consequat tempus. Maecenas at mollis tellus. Maecenas dolor nisl, scelerisque a eleifend ornare, rhoncus nec leo. Praesent ultricies vehicula placerat. Etiam ligula enim, tempus sed tempor at, congue in ante. Ut condimentum non mauris ac efficitur."); // hint
-                  }
+    public void InitVariables() {
+      fragment1 = 0;
+      starttalking = false;
+      maxX = maxY = minX = minY = halfX = halfY = 0;
+      HitInterval = 0;
+      HitCounter = 0;
+      HitTaken = 0;
+      HealInterval = 0;
+      HealCounter = 0;
+      OctopusAttacked = 0;
+      OctopusDirection = 0;
+      PlayerRotation = 0;
+      PlayerSpeed = 500f;
+      EnemySpeed = 40f;
+      EnemyLoiter = true;
+      perlineScale = 49.5f;
+
+      choiceFlag = false;            
+      playerTalking = false;         
+      updateChat = false;            
+      RunIntroDialog = true;         
+      RunlittleGirlDialog = true;    
+      RunPassengerDialog = true;     
+      AllowAdvance = false;
+
+      currentobjective = "";
+      objectiveexpanded = false;
+
+      camZoomingIn = false;
+      camZoomingOut = false;
+      camScaleX = 700;
+
+      CatFlyTime = 1.5f;
+      CatSpeedX = 0;
+      CatSpeedY = 0;
+      oriFragScaleX = 0;
+    }
+  public void Init()
+      {
+          //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
+          InitVariables();
+          halfX = InternalCalls.GetPosX("Water", "Level1");
+          halfY = InternalCalls.GetPosY("Water", "Level1");
+          maxX = (InternalCalls.GetScaleX("Water", "Level1") / 2) + halfX - InternalCalls.GetScaleX("Enemy", "Level1");
+          maxY = (InternalCalls.GetScaleY("Water", "Level1") / 2) + halfY - InternalCalls.GetScaleY("Enemy", "Level1");
+          minX = halfX - (InternalCalls.GetScaleX("Water", "Level1") / 2) + InternalCalls.GetScaleX("Enemy", "Level1");
+          minY = halfY - (InternalCalls.GetScaleY("Water", "Level1") / 2) + InternalCalls.GetScaleY("Enemy", "Level1");
+          CatPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue");
+          CatPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue");
+      }
+
+      public void Update() {
+          #region Intro Dialogue
+          if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1")) {
+              if (RunIntroDialog && InternalCalls.EntityIsActive("IntroBox", "Level1")) {
+                LockPosition(160, 120);
+                RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
+                if (!RunIntroDialog) {
+                  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find the Little Girl");// for the start Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum est nec rutrum venenatis. Suspendisse facilisis lectus ornare nisi feugiat, sed eleifend nisi molestie. Vestibulum et malesuada tortor. Donec eget diam vel lorem consequat tempus. Maecenas at mollis tellus. Maecenas dolor nisl, scelerisque a eleifend ornare, rhoncus nec leo. Praesent ultricies vehicula placerat. Etiam ligula enim, tempus sed tempor at, congue in ante. Ut condimentum non mauris ac efficitur."); // hint
                 }
-                if (!RunIntroDialog) TextAlignChoices("objectivetext", "Dialogue", 400, 350, 530, 51.0f, 20, 10);
-            }
-      #endregion
-
-      //TextAlignChoices("objectivetext", "Dialogue", 400, 1800, 600);
-
-      #region Little Girl Dialogue
-      if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) {
-        // I'll be using G1, P1, PP1 and PP2 for the refactored code
-        if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
-          LockPosition(-295, -85);
-          RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
-
-          if (!RunlittleGirlDialog) {
-              InternalCalls.EntityDeactivate("Little Girl", "Level1");
-              SetObjectiveText();
+              }
+              if (!RunIntroDialog) TextAlignChoices("objectivetext", "Dialogue", 400, 350, 530, 51.0f, 20, 10);
           }
+    #endregion
+
+    //TextAlignChoices("objectivetext", "Dialogue", 400, 1800, 600);
+
+    #region Little Girl Dialogue
+    if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) {
+      // I'll be using G1, P1, PP1 and PP2 for the refactored code
+      if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
+        LockPosition(-295, -85);
+        RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
+
+        if (!RunlittleGirlDialog) {
+            InternalCalls.EntityDeactivate("Little Girl", "Level1");
+            SetObjectiveText();
         }
       }
-            #endregion
+    }
+          #endregion
 
-            #region Passenger 1 Dialogue
-            if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1"))
-            {
-                if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1"))
-                {
-                    LockPosition(-1240, 670);
-                    RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
+          #region Passenger 1 Dialogue
+          if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1"))
+          {
+              if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1"))
+              {
+                  LockPosition(-1240, 670);
+                  RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
 
-                    if (!RunPassengerDialog)
-                    {
-                        //SetPosition("Passenger_1", "Level1", -1240, 670);
-                        InternalCalls.SetRotate("Passenger_1", "Level1", 0.5f);
-                        SetObjectiveText();
-                        AllowAdvance = true;
-                    }
-                }
-            }
-            #endregion
+                  if (!RunPassengerDialog)
+                  {
+                      //SetPosition("Passenger_1", "Level1", -1240, 670);
+                      InternalCalls.SetRotate("Passenger_1", "Level1", 0.5f);
+                      SetObjectiveText();
+                      AllowAdvance = true;
+                  }
+              }
+          }
+          #endregion
 
-            #region Passenger 1 Delivered
-            if (AllowAdvance && InternalCalls.EntitiesCollided("Boat", "destination", "Level1"))
-            {
-                InternalCalls.PlayScene("cutscene1");
-                InternalCalls.EntityDeactivate("destination", "Level1");
-            }
-            #endregion
+          #region Passenger 1 Delivered
+          if (AllowAdvance && InternalCalls.EntitiesCollided("Boat", "destination", "Level1"))
+          {
+              InternalCalls.PlayScene("cutscene1");
+              InternalCalls.EntityDeactivate("destination", "Level1");
+          }
+          #endregion
 
-            #region Memory Fragment UI
+          #region Memory Fragment UI
 
-            if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1")&& fragment1==0)
-            {
-                Console.Write("COLLECTED");
-                fragment1 = 1;
-                InternalCalls.UpdateText("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
-                //InternalCalls.SetLayer("fragment1drop", "Level1", 100);///////////////////////////////////////////    need set layer higher
-                InternalCalls.PlayEntitySound("fragment1drop", "Level1");
-                //InternalCalls.EntityDeactivate("fragment1drop", "Level1");
-            }
-            
-            if (fragment1 == 1)//cat rising up
-            {
+          if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1")&& fragment1==0)
+          {
+              Console.Write("COLLECTED");
+              fragment1 = 1;
+              InternalCalls.UpdateText("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
+              //InternalCalls.SetLayer("fragment1drop", "Level1", 100);///////////////////////////////////////////    need set layer higher
+              InternalCalls.PlayEntitySound("fragment1drop", "Level1");
+              //InternalCalls.EntityDeactivate("fragment1drop", "Level1");
+          }
 
-                if (InternalCalls.GetPosY("fragment1drop", "Level1") > InternalCalls.GetScaleY("Boat", "Level1")/2 + InternalCalls.GetPosY("Boat", "Level1"))
-                    fragment1 = 2;
-                else
-                { 
-                    InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + 150 *(float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
-                }
-            }
-            else if (fragment1 == 2)//make cat fly to memoryfragment
-            {
-                float uiPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue") + InternalCalls.GetCurrentCameraPosX();
-                float uiPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue") + InternalCalls.GetCurrentCameraPosY();
+          if (fragment1 == 1)//cat rising up
+          {
 
-                CatSpeedX = (uiPosX - InternalCalls.GetPosX("fragment1drop", "Level1")) / CatFlyTime;
-                CatSpeedY = (uiPosY - InternalCalls.GetPosY("fragment1drop", "Level1")) / CatFlyTime;
+              if (InternalCalls.GetPosY("fragment1drop", "Level1") > InternalCalls.GetScaleY("Boat", "Level1")/2 + InternalCalls.GetPosY("Boat", "Level1"))
+                  fragment1 = 2;
+              else
+              { 
+                  InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + 150 *(float)InternalCalls.GetDeltaTime());
+                  InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
+                  InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
+              }
+          }
+          else if (fragment1 == 2)//make cat fly to memoryfragment
+          {
+              float uiPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue") + InternalCalls.GetCurrentCameraPosX();
+              float uiPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue") + InternalCalls.GetCurrentCameraPosY();
 
-                CatFlyTime -= (float)InternalCalls.GetDeltaTime();
+              CatSpeedX = (uiPosX - InternalCalls.GetPosX("fragment1drop", "Level1")) / CatFlyTime;
+              CatSpeedY = (uiPosY - InternalCalls.GetPosY("fragment1drop", "Level1")) / CatFlyTime;
 
-                InternalCalls.SetPosX("fragment1drop", "Level1", InternalCalls.GetPosX("fragment1drop", "Level1") + CatSpeedX * (float)InternalCalls.GetDeltaTime());
-                InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + CatSpeedY * (float)InternalCalls.GetDeltaTime());
-                InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
-                InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
-                InternalCalls.SetRotate("fragment1drop", "Level1", InternalCalls.GetRotate("fragment1drop", "Level1") + 10.0f * (float)InternalCalls.GetDeltaTime());
-                if (CatFlyTime < 0)
-                {
-                    InternalCalls.EntityDeactivate("fragment1drop", "Level1");
-                    fragment1 = 4;
-                    oriFragScaleX = InternalCalls.GetScaleX("memoryfragment", "Dialogue");
-                }
-            }
-            else if (fragment1 == 4)
-            {
-                if (InternalCalls.GetScaleX("memoryfragment", "Dialogue") < oriFragScaleX+30)
-                { 
-                    InternalCalls.SetScaleX("memoryfragment", "Dialogue", InternalCalls.GetScaleX("memoryfragment", "Dialogue") + 100 * (float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleY("memoryfragment", "Dialogue", InternalCalls.GetScaleY("memoryfragment", "Dialogue") + 100 * (float)InternalCalls.GetDeltaTime());
-                }
-                else
-                    fragment1 = 5;
+              CatFlyTime -= (float)InternalCalls.GetDeltaTime();
 
-            }
-            else if (fragment1 == 5)
-            {
-                if (InternalCalls.GetScaleX("memoryfragment", "Dialogue") > oriFragScaleX)
-                {
-                    InternalCalls.SetScaleX("memoryfragment", "Dialogue", InternalCalls.GetScaleX("memoryfragment", "Dialogue") - 100 * (float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleY("memoryfragment", "Dialogue", InternalCalls.GetScaleY("memoryfragment", "Dialogue") - 100 * (float)InternalCalls.GetDeltaTime());
-                }
-                else
-                    fragment1 = 6;
+              InternalCalls.SetPosX("fragment1drop", "Level1", InternalCalls.GetPosX("fragment1drop", "Level1") + CatSpeedX * (float)InternalCalls.GetDeltaTime());
+              InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + CatSpeedY * (float)InternalCalls.GetDeltaTime());
+              InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
+              InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
+              InternalCalls.SetRotate("fragment1drop", "Level1", InternalCalls.GetRotate("fragment1drop", "Level1") + 10.0f * (float)InternalCalls.GetDeltaTime());
+              if (CatFlyTime < 0)
+              {
+                  InternalCalls.EntityDeactivate("fragment1drop", "Level1");
+                  fragment1 = 4;
+                  oriFragScaleX = InternalCalls.GetScaleX("memoryfragment", "Dialogue");
+              }
+          }
+          else if (fragment1 == 4)
+          {
+              if (InternalCalls.GetScaleX("memoryfragment", "Dialogue") < oriFragScaleX+30)
+              { 
+                  InternalCalls.SetScaleX("memoryfragment", "Dialogue", InternalCalls.GetScaleX("memoryfragment", "Dialogue") + 100 * (float)InternalCalls.GetDeltaTime());
+                  InternalCalls.SetScaleY("memoryfragment", "Dialogue", InternalCalls.GetScaleY("memoryfragment", "Dialogue") + 100 * (float)InternalCalls.GetDeltaTime());
+              }
+              else
+                  fragment1 = 5;
 
-            }
-            if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
-                if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
-                    InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");
-                    if (fragment1 != 0) { InternalCalls.EntityActivate("fragment1obj", "Dialogue"); }
-                } else {
-                    InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
-                    if (fragment1 != 0) { InternalCalls.EntityDeactivate("fragment1obj", "Dialogue"); }
-                }
-            }
-            #endregion
+          }
+          else if (fragment1 == 5)
+          {
+              if (InternalCalls.GetScaleX("memoryfragment", "Dialogue") > oriFragScaleX)
+              {
+                  InternalCalls.SetScaleX("memoryfragment", "Dialogue", InternalCalls.GetScaleX("memoryfragment", "Dialogue") - 100 * (float)InternalCalls.GetDeltaTime());
+                  InternalCalls.SetScaleY("memoryfragment", "Dialogue", InternalCalls.GetScaleY("memoryfragment", "Dialogue") - 100 * (float)InternalCalls.GetDeltaTime());
+              }
+              else
+                  fragment1 = 6;
 
-            #region Objective UI
-            if ((InternalCalls.ButtonReleased("objectivetext", "Dialogue") && currentobjective != "") == true)
-            {
-                if (objectiveexpanded)
-                {
-                    objectiveexpanded = false;
-                }
-                else
-                {
-                    objectiveexpanded = true;
-                }
+          }
+          if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
+              if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
+                  InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");
+                  if (fragment1 != 0) { InternalCalls.EntityActivate("fragment1obj", "Dialogue"); }
+              } else {
+                  InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
+                  if (fragment1 != 0) { InternalCalls.EntityDeactivate("fragment1obj", "Dialogue"); }
+              }
+          }
+          #endregion
 
-                if (objectiveexpanded)
-                {
-                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
-                    TextAlignChoices("objectivetext", "Dialogue", 400, 350, 530, 51.0f, 20, 10);
+          #region Objective UI
+          if ((InternalCalls.ButtonReleased("objectivetext", "Dialogue") && currentobjective != "") == true)
+          {
+              if (objectiveexpanded)
+              {
+                  objectiveexpanded = false;
+              }
+              else
+              {
+                  objectiveexpanded = true;
+              }
 
-        }
+              if (objectiveexpanded)
+              {
+                  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
+                  TextAlignChoices("objectivetext", "Dialogue", 400, 350, 530, 51.0f, 20, 10);
 
-        if (!objectiveexpanded)
-                {
-                    InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view"); // hint
-                    TextAlignChoices("objectivetext", "Dialogue", 400, 350, 700, 51.0f, 20, 10);
-
-        }
       }
-            #endregion
 
-            #region Player
-            float PlayerPosX = InternalCalls.GetPosX("Boat", "Level1");
-            float PlayerPosY = InternalCalls.GetPosY("Boat", "Level1");
-            float PlayerScaleX = InternalCalls.GetScaleX("Boat", "Level1");
-            float PlayerScaleY = InternalCalls.GetScaleY("Boat", "Level1");
-            if (!starttalking && InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false) { // Mouse click
-                float DirX = InternalCalls.GetWorldMousePosX() + InternalCalls.GetCurrentCameraPosX() - PlayerPosX;
-                float DirY = InternalCalls.GetWorldMousePosY() + InternalCalls.GetCurrentCameraPosY() - PlayerPosY;
-                float NormX = 0f, NormY = 0f;
-                if (InternalCalls.SqMagnitude(DirX, DirY) > Epsilon * Epsilon) {
-                    NormX = InternalCalls.NormalizeX(DirX, DirY);
-                    NormY = InternalCalls.NormalizeY(DirX, DirY);
-                    ApplyForce("Boat", "Level1", NormX, NormY, PlayerSpeed);
-                }
-                PlayerRotation = GetRotation(NormX, NormY);
-                SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
-            }
-            #endregion
+      if (!objectiveexpanded)
+              {
+                  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view"); // hint
+                  TextAlignChoices("objectivetext", "Dialogue", 400, 350, 700, 51.0f, 20, 10);
 
-            #region Camera Update
-            UpdateCamera();
-            #endregion
+      }
+    }
+          #endregion
 
-            #region Enemy
-            //InternalCalls.SetCurrentCameraScaleX(5500);
-            float EnemyChangeInX = 0;
-            float EnemyChangeInY = 0;
-            Random rand = new Random();
-            float EnemyPosX = InternalCalls.GetPosX("Enemy", "Level1");
-            float EnemyPosY = InternalCalls.GetPosY("Enemy", "Level1");
-            float EnemyScaleX = InternalCalls.GetScaleX("Enemy", "Level1");
-            float EnemyScaleY = InternalCalls.GetScaleY("Enemy", "Level1");
-            float EnemyDisX = PlayerPosX - EnemyPosX;
-            float EnemyDisY = PlayerPosY - EnemyPosY;
-            float EnemyNormDisX = 0f, EnemyNormDisY = 0f;
-            if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
-                EnemyNormDisX = InternalCalls.NormalizeX(EnemyDisX, EnemyDisY);
-                EnemyNormDisY = InternalCalls.NormalizeY(EnemyDisX, EnemyDisY);
-            }
+          #region Player
+          float PlayerPosX = InternalCalls.GetPosX("Boat", "Level1");
+          float PlayerPosY = InternalCalls.GetPosY("Boat", "Level1");
+          float PlayerScaleX = InternalCalls.GetScaleX("Boat", "Level1");
+          float PlayerScaleY = InternalCalls.GetScaleY("Boat", "Level1");
+          if (!starttalking && InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false) { // Mouse click
+              float DirX = InternalCalls.GetWorldMousePosX() + InternalCalls.GetCurrentCameraPosX() - PlayerPosX;
+              float DirY = InternalCalls.GetWorldMousePosY() + InternalCalls.GetCurrentCameraPosY() - PlayerPosY;
+              float NormX = 0f, NormY = 0f;
+              if (InternalCalls.SqMagnitude(DirX, DirY) > Epsilon * Epsilon) {
+                  NormX = InternalCalls.NormalizeX(DirX, DirY);
+                  NormY = InternalCalls.NormalizeY(DirX, DirY);
+                  ApplyForce("Boat", "Level1", NormX, NormY, PlayerSpeed);
+              }
+              PlayerRotation = GetRotation(NormX, NormY);
+              SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
+          }
+          #endregion
 
-            // Enemy is in screen
-            if (EnemyPosX <= InternalCalls.GetCurrentCameraPosX() + (InternalCalls.GetCurrentCameraScaleX() / 2) &&
-                EnemyPosY <= InternalCalls.GetCurrentCameraPosY() + (InternalCalls.GetCurrentCameraScaleY() / 2) &&
-                EnemyPosX >= InternalCalls.GetCurrentCameraPosX() - (InternalCalls.GetCurrentCameraScaleX() / 2) &&
-                EnemyPosY >= InternalCalls.GetCurrentCameraPosY() - (InternalCalls.GetCurrentCameraScaleY() / 2)) {
-                //float EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
-                /*
-                if (EnemyRotation < 0) OctopusDirection = 1;
-                else OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation) / Pi);
-                */
-                //Console.Write(OctopusDirection + "\n");
-                //Console.Write((EnemyRotation / Pi / 2) + "\n");
-                OctopusDirection = GetRotation(EnemyNormDisX, EnemyNormDisY);
+          #region Camera Update
+          UpdateCamera();
+          #endregion
+
+          #region Enemy
+          //InternalCalls.SetCurrentCameraScaleX(5500);
+          float EnemyChangeInX = 0;
+          float EnemyChangeInY = 0;
+          Random rand = new Random();
+          float EnemyPosX = InternalCalls.GetPosX("Enemy", "Level1");
+          float EnemyPosY = InternalCalls.GetPosY("Enemy", "Level1");
+          float EnemyScaleX = InternalCalls.GetScaleX("Enemy", "Level1");
+          float EnemyScaleY = InternalCalls.GetScaleY("Enemy", "Level1");
+          float EnemyDisX = PlayerPosX - EnemyPosX;
+          float EnemyDisY = PlayerPosY - EnemyPosY;
+          float EnemyNormDisX = 0f, EnemyNormDisY = 0f;
+          if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
+              EnemyNormDisX = InternalCalls.NormalizeX(EnemyDisX, EnemyDisY);
+              EnemyNormDisY = InternalCalls.NormalizeY(EnemyDisX, EnemyDisY);
+          }
+
+          // Enemy is in screen
+          if (EnemyPosX <= InternalCalls.GetCurrentCameraPosX() + (InternalCalls.GetCurrentCameraScaleX() / 2) &&
+              EnemyPosY <= InternalCalls.GetCurrentCameraPosY() + (InternalCalls.GetCurrentCameraScaleY() / 2) &&
+              EnemyPosX >= InternalCalls.GetCurrentCameraPosX() - (InternalCalls.GetCurrentCameraScaleX() / 2) &&
+              EnemyPosY >= InternalCalls.GetCurrentCameraPosY() - (InternalCalls.GetCurrentCameraScaleY() / 2)) {
+              //float EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
+              /*
+              if (EnemyRotation < 0) OctopusDirection = 1;
+              else OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation) / Pi);
+              */
+    //Console.Write(OctopusDirection + "\n");
+    //Console.Write((EnemyRotation / Pi / 2) + "\n");
+    OctopusDirection = GetRotation(EnemyNormDisX, EnemyNormDisY);
                 //OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation));
                 //Console.Write(OctopusDirection + "\n");
 

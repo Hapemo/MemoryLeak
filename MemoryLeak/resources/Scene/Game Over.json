@@ -95,9 +95,9 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Try Again",
+            "text": "Main Menu",
             "offset": {
-                "X": -106.0,
+                "X": -130.0,
                 "Y": -18.0
             },
             "scale": 1.0,
@@ -109,7 +109,7 @@
             }
         },
         "Script": {
-            "name": "PlayGameButton"
+            "name": "BackToMainMenuButton"
         },
         "Button": {
             "interactable": true

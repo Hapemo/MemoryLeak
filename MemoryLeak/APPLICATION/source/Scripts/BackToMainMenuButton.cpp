@@ -57,6 +57,7 @@ void BackToMainMenuButton::UpdateScript(Entity const& gob) {
 	}
 	if(gob.HasComponent<Button>())
 		if (gob.GetComponent<Button>().activated) {
+			FUNC->ChangeGameState("Menu");
 			(FUNC->SelectScene("Settings")).Pause(true);
 			(FUNC->SelectScene("How_To_Play")).Pause(true);
 			(FUNC->SelectScene("Quit Confirmation")).Pause(true);
