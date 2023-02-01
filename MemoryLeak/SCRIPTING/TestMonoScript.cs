@@ -5,7 +5,7 @@ namespace BonVoyage
 {
     public class TestMonoScript
     {
-        private bool fragment1 = false;
+        private int fragment1 = 0;
         private bool starttalking = false;
         private float maxX, maxY, minX, minY, halfX, halfY;
         private float HitInterval = 0;
@@ -44,6 +44,12 @@ namespace BonVoyage
         private bool camZoomingOut = false;
         private float camScaleX = 700;
 
+        private float CatPosX;
+        private float CatPosY;
+        private float CatFlyTime = 2;
+        private float CatSpeedX = 0;
+        private float CatSpeedY = 0;
+
         public void Init()
         {
             //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
@@ -53,6 +59,8 @@ namespace BonVoyage
             maxY = (InternalCalls.GetScaleY("Water", "Level1") / 2) + halfY - InternalCalls.GetScaleY("Enemy", "Level1");
             minX = halfX - (InternalCalls.GetScaleX("Water", "Level1") / 2) + InternalCalls.GetScaleX("Enemy", "Level1");
             minY = halfY - (InternalCalls.GetScaleY("Water", "Level1") / 2) + InternalCalls.GetScaleY("Enemy", "Level1");
+            CatPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue");
+            CatPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue");
         }
 
         public void Update() {
@@ -116,29 +124,57 @@ namespace BonVoyage
 
             #region Memory Fragment UI
 
-            if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1"))
+            if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1")&& fragment1==0)
             {
                 Console.Write("COLLECTED");
-                fragment1 = true;
+                fragment1 = 1;
                 InternalCalls.UpdateText("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
+                //InternalCalls.SetLayer("fragment1drop", "Level1", 100);///////////////////////////////////////////    need set layer higher
                 InternalCalls.PlayEntitySound("fragment1drop", "Level1");
                 //InternalCalls.EntityDeactivate("fragment1drop", "Level1");
             }
             
-            if (fragment1)//make cat fly to memoryfragment
+            if (fragment1 == 1)//cat rising up
             {
-                //float diffX = InternalCalls.GetPosX("memoryfragment", "Dialogue") - InternalCalls.GetPosX("fragment1drop", "Level1");
-                InternalCalls.SetPosX("fragment1drop", "Level1", InternalCalls.GetPosX("fragment1drop", "Level1") - 3);
-                InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") - 1.5f);
-                InternalCalls.SetRotate("fragment1drop", "Level1", InternalCalls.GetRotate("fragment1drop", "Level1") + 0.2f);
+
+                if (InternalCalls.GetPosY("fragment1drop", "Level1") > InternalCalls.GetScaleY("Boat", "Level1")/2 + InternalCalls.GetPosY("Boat", "Level1"))
+                    fragment1 = 2;
+                else
+                { 
+                    InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + 100.0f *(float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
+                }
             }
+            else if (fragment1 == 2)//make cat fly to memoryfragment
+            {
+                float uiPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue") + InternalCalls.GetCurrentCameraPosX();
+                float uiPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue") + InternalCalls.GetCurrentCameraPosY();
+
+                CatSpeedX = (uiPosX - InternalCalls.GetPosX("fragment1drop", "Level1")) / CatFlyTime;
+                CatSpeedY = (uiPosY - InternalCalls.GetPosY("fragment1drop", "Level1")) / CatFlyTime;
+
+                CatFlyTime -= (float)InternalCalls.GetDeltaTime();
+
+                InternalCalls.SetPosX("fragment1drop", "Level1", InternalCalls.GetPosX("fragment1drop", "Level1") + CatSpeedX * (float)InternalCalls.GetDeltaTime());
+                InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + CatSpeedY * (float)InternalCalls.GetDeltaTime());
+                InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
+                InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
+                InternalCalls.SetRotate("fragment1drop", "Level1", InternalCalls.GetRotate("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
+                if (CatFlyTime < 0)
+                {
+                    InternalCalls.EntityDeactivate("fragment1drop", "Level1");
+                    fragment1 = 4;
+                }
+            }
+
             if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
                 if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
                     InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");
-                    if (fragment1 == true) { InternalCalls.EntityActivate("fragment1obj", "Dialogue"); }
+                    if (fragment1 != 0) { InternalCalls.EntityActivate("fragment1obj", "Dialogue"); }
                 } else {
                     InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
-                    if (fragment1 == true) { InternalCalls.EntityDeactivate("fragment1obj", "Dialogue"); }
+                    if (fragment1 != 0) { InternalCalls.EntityDeactivate("fragment1obj", "Dialogue"); }
                 }
             }
             #endregion
