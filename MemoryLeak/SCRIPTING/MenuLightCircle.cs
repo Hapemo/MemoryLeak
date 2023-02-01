@@ -15,8 +15,8 @@ namespace BonVoyage {
             lowerSize = 110;
             upperSize = 120;
 
-            alpha = 50;
-            lowerAlpha = 50;
+            alpha = 150;
+            lowerAlpha = 150;
             upperAlpha = 255;
 
             stepSize = (upperSize - lowerSize) / 0.4f;
