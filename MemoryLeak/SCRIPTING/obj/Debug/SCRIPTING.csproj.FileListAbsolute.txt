@@ -10,3 +10,9 @@ C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryL
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
 C:\Users\wjhua\OneDrive - DigiPen Institute of Technology\Desktop\GAM250\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.dll
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\bin\Debug\x64\SCRIPTING\Scripting.pdb
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\Debug\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.dll
+C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\Debug\Scripting.pdb

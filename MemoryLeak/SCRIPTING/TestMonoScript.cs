@@ -273,7 +273,7 @@ namespace BonVoyage
                     SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                 }
 
-                if ((InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") || InternalCalls.EntitiesCollided("Enemy", "Boat", "Level1")) && HitTaken != -1) {
+                if (InternalCalls.CheckCollision("Boat", "Enemy", "Level1", false) && HitTaken != -1) {
                     //Console.Write("HitCounter!\n");
                     HitCounter += (float)InternalCalls.GetDeltaTime();
                     if (HitCounter >= HitInterval) {
