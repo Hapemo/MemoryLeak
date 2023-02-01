@@ -256,5 +256,8 @@ namespace BonVoyage
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetSpriteColor(string _entityName, string _sceneName, int _r, int _g, int _b, int _a);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float GetFontScale(string _entityName, string _sceneName);
 	}
 }

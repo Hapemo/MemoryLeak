@@ -839,6 +839,12 @@ int InternalCalls::GetLineCount(std::string const& _entityName, std::string cons
 	return renderManager->GetTextLines((FUNC->GetEntity(_entityName, _sceneName)));
 }
 
+float InternalCalls::GetFontScale(std::string const& _entityName, std::string const& _sceneName)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<Text>())
+		return -1.f;
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Text>().scale;
+}
 
 void InternalCalls::WeatherAIinit(float _width, float _height)
 {
@@ -871,3 +877,4 @@ void InternalCalls::SetSpriteColor(std::string const& _entityName, std::string c
 	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a};
 	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Sprite>().color = clr;
 }
+

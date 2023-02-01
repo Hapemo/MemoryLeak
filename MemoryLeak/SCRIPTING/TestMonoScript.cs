@@ -19,7 +19,7 @@ namespace BonVoyage
         private float PlayerSpeed = 500f;
         private float EnemySpeed = 40f;
         private bool EnemyLoiter = true;
-    private float perlineScale = 45;
+        private float perlineScale = 45;
 
         private const int MaxHealth = 12;
         private const float Epsilon = 1.192092896e-07F;
@@ -210,7 +210,9 @@ namespace BonVoyage
             #region Player
             float PlayerPosX = InternalCalls.GetPosX("Boat", "Level1");
             float PlayerPosY = InternalCalls.GetPosY("Boat", "Level1");
-            if (InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false) { // Mouse click
+            float PlayerScaleX = InternalCalls.GetScaleX("Boat", "Level1");
+            float PlayerScaleY = InternalCalls.GetScaleY("Boat", "Level1");
+            if (!starttalking && InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false) { // Mouse click
                 float DirX = InternalCalls.GetWorldMousePosX() + InternalCalls.GetCurrentCameraPosX() - PlayerPosX;
                 float DirY = InternalCalls.GetWorldMousePosY() + InternalCalls.GetCurrentCameraPosY() - PlayerPosY;
                 float NormX = 0f, NormY = 0f;
@@ -235,6 +237,8 @@ namespace BonVoyage
             Random rand = new Random();
             float EnemyPosX = InternalCalls.GetPosX("Enemy", "Level1");
             float EnemyPosY = InternalCalls.GetPosY("Enemy", "Level1");
+            float EnemyScaleX = InternalCalls.GetScaleX("Enemy", "Level1");
+            float EnemyScaleY = InternalCalls.GetScaleY("Enemy", "Level1");
             float EnemyDisX = PlayerPosX - EnemyPosX;
             float EnemyDisY = PlayerPosY - EnemyPosY;
             float EnemyNormDisX = 0f, EnemyNormDisY = 0f;
@@ -298,18 +302,13 @@ namespace BonVoyage
                             SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                             break;
                     }
-                    if (InternalCalls.EntitiesCollided("Enemy", "Boat", "Level1")) {
-                      EnemyChangeInY = 0;
-                      EnemyChangeInY = 0;
-                    }
-
                 } else {
                     OctopusAttacked = 0;
                     InternalCalls.StopSound("EnemyTrigger", "Level1");
                     SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                 }
 
-                if (InternalCalls.CheckCollision("Boat", "Enemy", "Level1", false) && HitTaken != -1) {
+                if (InternalCalls.CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken != -1) {
                     //Console.Write("HitCounter!\n");
                     HitCounter += (float)InternalCalls.GetDeltaTime();
                     if (HitCounter >= HitInterval) {
@@ -319,6 +318,12 @@ namespace BonVoyage
                         InternalCalls.SetTexture("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
                     }
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Hit");
+
+                    EnemyChangeInX = 0;
+                    EnemyChangeInY = 0;
+                }
+                else{
+                    SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
                 }
 
                 // Player dies
