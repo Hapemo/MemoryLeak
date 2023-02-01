@@ -109,7 +109,7 @@
             }
         },
         "Script": {
-            "name": "BackToMainMenuButton"
+            "name": "DeathToMainMenuButton"
         },
         "Button": {
             "interactable": true
