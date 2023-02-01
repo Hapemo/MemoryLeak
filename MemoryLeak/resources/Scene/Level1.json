@@ -2615,7 +2615,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\pet.png",
-            "layer": 1
+            "layer": 16
         },
         "RectCollider": {
             "centerOffset": {
