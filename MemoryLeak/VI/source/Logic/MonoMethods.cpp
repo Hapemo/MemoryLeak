@@ -227,6 +227,10 @@ void MonoMethods::SetSpriteColor(MonoString* _entityName, MonoString* _sceneName
 	FUNC->SetSpriteColor(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _r, _g, _b, _a);
 }
 
+float MonoMethods::GetFontScale(MonoString* _entityName, MonoString* _sceneName)
+{
+	return FUNC->GetFontScale(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
 /*!*****************************************************************************
 \brief
 Checks for the state of certain key
@@ -322,5 +326,6 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::GetLightSourceRadius", &MonoMethods::GetLightSourceRadius);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetLightSourceRadius", &MonoMethods::SetLightSourceRadius);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteColor", &MonoMethods::SetSpriteColor);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteColor", &MonoMethods::GetFontScale);
 
 }

@@ -86,6 +86,5 @@ public:
 	static float GetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName);
 	static void SetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName, float _radius);
 	static void SetSpriteColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a);
-
-
+	static float GetFontScale(MonoString* _entityName, MonoString* _sceneName);
 };
