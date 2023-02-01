@@ -868,6 +868,6 @@ void InternalCalls::SetSpriteColor(std::string const& _entityName, std::string c
 {
 	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<Sprite>())
 		return;
-	Color clr{ _r, _g, _b, _a };
+	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a};
 	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Sprite>().color = clr;
 }
