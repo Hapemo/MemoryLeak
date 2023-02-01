@@ -49,7 +49,7 @@ namespace BonVoyage
         private float CatFlyTime = 1.5f;
         private float CatSpeedX = 0;
         private float CatSpeedY = 0;
-
+        private float oriFragScaleX = 0;
         public void Init()
         {
             //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
@@ -165,9 +165,31 @@ namespace BonVoyage
                 {
                     InternalCalls.EntityDeactivate("fragment1drop", "Level1");
                     fragment1 = 4;
+                    oriFragScaleX = InternalCalls.GetScaleX("memoryfragment", "Dialogue");
                 }
             }
+            else if (fragment1 == 4)
+            {
+                if (InternalCalls.GetScaleX("memoryfragment", "Dialogue") < oriFragScaleX+30)
+                { 
+                    InternalCalls.SetScaleX("memoryfragment", "Dialogue", InternalCalls.GetScaleX("memoryfragment", "Dialogue") + 100 * (float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleY("memoryfragment", "Dialogue", InternalCalls.GetScaleY("memoryfragment", "Dialogue") + 100 * (float)InternalCalls.GetDeltaTime());
+                }
+                else
+                    fragment1 = 5;
 
+            }
+            else if (fragment1 == 5)
+            {
+                if (InternalCalls.GetScaleX("memoryfragment", "Dialogue") > oriFragScaleX)
+                {
+                    InternalCalls.SetScaleX("memoryfragment", "Dialogue", InternalCalls.GetScaleX("memoryfragment", "Dialogue") - 100 * (float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleY("memoryfragment", "Dialogue", InternalCalls.GetScaleY("memoryfragment", "Dialogue") - 100 * (float)InternalCalls.GetDeltaTime());
+                }
+                else
+                    fragment1 = 6;
+
+            }
             if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
                 if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
                     InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");

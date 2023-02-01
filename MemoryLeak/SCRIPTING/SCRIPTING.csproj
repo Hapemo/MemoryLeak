@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="CrystalBallScript.cs" />
     <Compile Include="EnemyMapScript.cs" />
+    <Compile Include="FragmentScript.cs" />
     <Compile Include="InternalCalls.cs" />
     <Compile Include="MenuLightCircle.cs" />
     <Compile Include="MenuLightScript.cs" />
