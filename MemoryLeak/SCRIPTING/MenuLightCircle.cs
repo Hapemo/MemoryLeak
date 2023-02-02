@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file MenuLightCircle.cs
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 27-01-2023
+\brief
+This script contains functions to alter the light circle in the menu of the
+game.
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
