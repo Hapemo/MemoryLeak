@@ -155,7 +155,7 @@ void AudioManager::UpdateSound()
     }
     else
     {
-        for (int i = 19; i < mChannel.size(); i++)
+        for (int i = 20; i < mChannel.size(); i++)
         {
             mChannel[i]->stop();
         }
@@ -394,6 +394,21 @@ None.
 void AudioManager::StopSound(int _channel)
 {
     mChannel[_channel]->stop();
+}
+void AudioManager::StopAllSound()
+{
+    for (int i = 0; i < mChannel.size(); i++)
+        mChannel[i]->stop();
+}
+void AudioManager::StopBGMSound()
+{
+    for(int i =0; i < 20;i++)
+        mChannel[i]->stop();
+}
+void AudioManager::StopSFXSound()
+{
+    for (int i = 20; i < mChannel.size(); i++)
+        mChannel[i]->stop();
 }
 /*!*****************************************************************************
 \brief

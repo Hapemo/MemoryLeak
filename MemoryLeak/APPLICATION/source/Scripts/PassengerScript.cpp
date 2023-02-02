@@ -49,8 +49,8 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 		diff = boatTransform->translation - passengerTransform->translation;
 		if (std::fabs(diff.x) > boatTransform->scale.x/3 || std::fabs(diff.y) > boatTransform->scale.y/3)
 		{
-			passengerTransform->translation += diff.Normalized()*(float)FPSManager::dt*100;
-			passengerTransform->scale /= 1+ 3 *(float)FPSManager::dt;
+			passengerTransform->translation += diff.Normalized()*(float)FPSManager::dt*200;
+			passengerTransform->scale /= 1 + 8 *(float)FPSManager::dt;
 			passenger.GetComponent<Sprite>().color.a -= 10;
 		}
 		else
@@ -68,7 +68,7 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 		}
 		if (passengerTransform->scale.x < passengerOriginalSizeX)
 		{
-			passengerTransform->scale *= 1+3 *(float)FPSManager::dt;
+			passengerTransform->scale *= 1 + 8 *(float)FPSManager::dt;
 		}
 		//passengerTransform->translation = boatTransform->translation;
 		int direction = boat.GetComponent<Animation>().currentImageIndex % 8;

@@ -49,7 +49,7 @@ namespace BonVoyage
         private float CatSpeedX;
         private float CatSpeedY;
         private float oriFragScaleX;
-
+        private int dialogueOrder;
     public void InitVariables() {
       fragment1 = 0;
       starttalking = false;
@@ -82,10 +82,11 @@ namespace BonVoyage
       camZoomingOut = false;
       camScaleX = 700;
 
-      CatFlyTime = 1.5f;
+      CatFlyTime = 1.2f;
       CatSpeedX = 0;
       CatSpeedY = 0;
       oriFragScaleX = 0;
+
     }
   public void Init()
       {
@@ -99,6 +100,7 @@ namespace BonVoyage
           minY = halfY - (InternalCalls.GetScaleY("Water", "Level1") / 2) + InternalCalls.GetScaleY("Enemy", "Level1");
           CatPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue");
           CatPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue");
+          dialogueOrder = 0;
       }
 
       public void Update() {
@@ -118,26 +120,30 @@ namespace BonVoyage
     //TextAlignChoices("objectivetext", "Dialogue", 400, 1800, 600);
 
     #region Little Girl Dialogue
-    if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")) {
+    if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")&& dialogueOrder==0) {
       // I'll be using G1, P1, PP1 and PP2 for the refactored code
       if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
         LockPosition(-295, -85);
+        InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 1);
         RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
 
         if (!RunlittleGirlDialog) {
             InternalCalls.EntityDeactivate("Little Girl", "Level1");
+            InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
             SetObjectiveText();
+                        dialogueOrder = 1;
         }
       }
     }
           #endregion
 
           #region Passenger 1 Dialogue
-          if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1"))
+          if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")&&(dialogueOrder==1))
           {
-              if (RunPassengerDialog && InternalCalls.EntityIsActive("LittleGirlBox", "Level1"))
+              if (RunPassengerDialog && !InternalCalls.EntityIsActive("LittleGirlBox", "Level1"))
               {
                   LockPosition(-1240, 670);
+                  InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 1);
                   RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
 
                   if (!RunPassengerDialog)
@@ -146,6 +152,7 @@ namespace BonVoyage
                       InternalCalls.SetRotate("Passenger_1", "Level1", 0.5f);
                       SetObjectiveText();
                       AllowAdvance = true;
+                        dialogueOrder = 2;
                   }
               }
           }
@@ -174,11 +181,11 @@ namespace BonVoyage
           if (fragment1 == 1)//cat rising up
           {
 
-              if (InternalCalls.GetPosY("fragment1drop", "Level1") > InternalCalls.GetScaleY("Boat", "Level1")/2 + InternalCalls.GetPosY("Boat", "Level1"))
+              if (InternalCalls.GetPosY("fragment1drop", "Level1") >  InternalCalls.GetScaleY("Boat", "Level1")/2 + InternalCalls.GetPosY("Boat", "Level1"))
                   fragment1 = 2;
               else
               { 
-                  InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + 150 *(float)InternalCalls.GetDeltaTime());
+                  InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + 200 *(float)InternalCalls.GetDeltaTime());
                   InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
                   InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
               }
