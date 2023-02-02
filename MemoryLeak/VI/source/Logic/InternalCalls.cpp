@@ -299,6 +299,14 @@ bool InternalCalls::EntityIsActive(std::string const& _entityName, std::string c
 
 /*!*****************************************************************************
 \brief
+Sets if an entity from scene is active.
+*******************************************************************************/
+void InternalCalls::SetEntityIsActive(std::string const& _entityName, std::string const& _sceneName, bool _active) {
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<General>().isActive = _active;
+}
+
+/*!*****************************************************************************
+\brief
 Activate an entity from scene.
 *******************************************************************************/
 void InternalCalls::EntityActivate(std::string const& _entityName, std::string const& _sceneName) {
@@ -648,15 +656,28 @@ void InternalCalls::PlaySoundOnLoop(std::string const& _entityName, std::string 
 *******************************************************************************/
 void InternalCalls::StopSound(std::string const& _entityName, std::string const& _sceneName) {
 	if (FUNC->GetEntity(_entityName, _sceneName).HasComponent<Audio>())
+	{
+		audioManager->StopSound(FUNC->GetEntity(_entityName, _sceneName));
 		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = false;
+	}
 }
 
 /*!*****************************************************************************
 \brief
-	Plays a single background sound
+	Plays sound
 *******************************************************************************/
-void InternalCalls::PlayAnySound(std::string _name, int _channel) {
-	audioManager->PlayAnySound(_name, _channel);
+void InternalCalls::PlayEntitySound(std::string const& _entityName, std::string const& _sceneName){
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = true;
+	//(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.volume = 1.f;
+	//audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
+}
+
+/*!*****************************************************************************
+\brief
+	Force play sound in channel
+*******************************************************************************/
+void InternalCalls::PlaySoundInChannel(std::string const& _soundName, int _channel) {
+	audioManager->PlayAnySound(_soundName, _channel);
 }
 
 /*!*****************************************************************************
@@ -809,3 +830,43 @@ int InternalCalls::GetLineCount(std::string const& _entityName, std::string cons
 {
 	return renderManager->GetTextLines((FUNC->GetEntity(_entityName, _sceneName)));
 }
+
+float InternalCalls::GetFontScale(std::string const& _entityName, std::string const& _sceneName)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<Text>())
+		return -1.f;
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Text>().scale;
+}
+
+void InternalCalls::WeatherAIinit(float _width, float _height)
+{
+	aiManager->weatherAIinit(_width, _height);
+}
+
+int InternalCalls::GetCurrentWeather(int _index, float _posX, float _posY)
+{
+	return aiManager->GetCurrentWeather(_index, _posX, _posY);
+}
+
+float InternalCalls::GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<LightSource>())
+		return -1.f;
+	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius;
+}
+
+void InternalCalls::SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<LightSource>())
+		return;
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius = _radius;
+}
+
+void InternalCalls::SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a)
+{
+	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<Sprite>())
+		return;
+	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a};
+	FUNC->GetEntity(_entityName, _sceneName).GetComponent<Sprite>().color = clr;
+}
+

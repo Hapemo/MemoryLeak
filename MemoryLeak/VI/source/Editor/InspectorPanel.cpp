@@ -122,6 +122,10 @@ void InspectorPanel::Update()
 				{
 					ShadowCasterEditor();
 				}
+				if (e.HasComponent<CircularViewport>())
+				{
+					CircularViewportEditor();
+				}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 				if (ImGui::Button("Add Component"))
@@ -309,6 +313,8 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<LightSource>({});
 	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
 		e.AddComponent<ShadowCaster>({});
+	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
+		e.AddComponent<CircularViewport>({});
 	
 }
 /*!*****************************************************************************
@@ -363,6 +369,8 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<LightSource>({});
 	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
 		p->AddComponent<ShadowCaster>({});
+	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
+		p->AddComponent<CircularViewport>({});
 }
 
 
@@ -1139,6 +1147,13 @@ void InspectorPanel::ShadowCasterEditor()
 		e.GetComponent<ShadowCaster>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
+	}
+}
+void InspectorPanel::CircularViewportEditor()
+{
+	if (ImGui::CollapsingHeader("CircularViewport"))
+	{
+		ImGui::Text("CircularViewport");
 	}
 }
 /*!*****************************************************************************

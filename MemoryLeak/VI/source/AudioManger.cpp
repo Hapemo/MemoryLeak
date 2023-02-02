@@ -117,7 +117,11 @@ void AudioManager::UpdateSound()
             if (e.GetComponent<Audio>().sound.toPlay == true)
             {
                 if (e.GetComponent<Audio>().sound.channel == 0)
+                {
                     e.GetComponent<Audio>().sound.channel = AddChannel();
+                    if (e.GetComponent < General>().name == "EnemyTrigger")
+                        std::cout << "channellll: " << e.GetComponent<Audio>().sound.channel;
+                }
                 PlaySound(e);
             }
             if (e.GetComponent<Audio>().sound.channel != 0 && isPlaying(e.GetComponent<Audio>().sound.channel))
@@ -134,12 +138,6 @@ void AudioManager::UpdateSound()
                     spacial = spacial < 0.f ? 0.f : spacial;
 
                     vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
-
-//#ifdef _DEBUG
-//                    std::cout << "sound vol :  " << e.GetComponent<Audio>().sound.volume << "\n";
-//                    std::cout << "Spacial ratio :  " << spacial << "\n";
-//                    std::cout << "finial sound :  " << vol << "\n";
-//#endif
                     mChannel[channel]->setVolume(vol);
                 }
                 else
@@ -155,7 +153,7 @@ void AudioManager::UpdateSound()
     }
     else
     {
-        for (int i = 19; i < mChannel.size(); i++)
+        for (int i = 20; i < mChannel.size(); i++)
         {
             mChannel[i]->stop();
         }
@@ -395,6 +393,21 @@ void AudioManager::StopSound(int _channel)
 {
     mChannel[_channel]->stop();
 }
+void AudioManager::StopAllSound()
+{
+    for (int i = 0; i < mChannel.size(); i++)
+        mChannel[i]->stop();
+}
+void AudioManager::StopBGMSound()
+{
+    for(int i =0; i < 20;i++)
+        mChannel[i]->stop();
+}
+void AudioManager::StopSFXSound()
+{
+    for (int i = 20; i < mChannel.size(); i++)
+        mChannel[i]->stop();
+}
 /*!*****************************************************************************
 \brief
     stop a entity sound
@@ -404,8 +417,10 @@ None.
 *******************************************************************************/
 void AudioManager::StopSound(const Entity& e)
 {
-    if(e.GetComponent<Audio>().sound.channel != 0)
+    int x = e.GetComponent<Audio>().sound.channel;
+    //if(e.GetComponent<Audio>().sound.channel != 0)
         mChannel[e.GetComponent<Audio>().sound.channel]->stop();
+    std::cout << e.GetComponent <General>().name << x;
 }
 
 /*!*****************************************************************************

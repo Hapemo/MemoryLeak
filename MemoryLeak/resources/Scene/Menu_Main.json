@@ -19,26 +19,14 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\menu screen background.jpg",
             "layer": 0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": false,
-            "renderFlag": true
         }
     },
     {
@@ -50,24 +38,24 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 800.0,
+                "Y": 200.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -36.14518737792969
+                "Y": -57.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 1
         },
         "RectCollider": {
@@ -94,10 +82,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Start Game",
             "offset": {
-                "X": -144.0,
+                "X": -173.0,
                 "Y": -21.0
             },
             "scale": 1.2000000476837158,
@@ -124,24 +112,24 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 545.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -163.85302734375
+                "Y": -208.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 1
         },
         "RectCollider": {
@@ -168,13 +156,13 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "How To Play",
             "offset": {
-                "X": -160.0,
-                "Y": -24.0
+                "X": -141.0,
+                "Y": -16.0
             },
-            "scale": 1.2000000476837158,
+            "scale": 0.8999999761581421,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -198,13 +186,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 545.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -295.7156066894531
+                "Y": -333.0
             }
         },
         "Sprite": {
@@ -215,7 +203,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 1
         },
         "RectCollider": {
@@ -242,13 +230,13 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Quit Game",
             "offset": {
-                "X": -142.0,
-                "Y": -19.0
+                "X": -129.0,
+                "Y": -16.0
             },
-            "scale": 1.2000000476837158,
+            "scale": 1.0,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -278,19 +266,30 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 193.67959594726563
+                "Y": 220.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\bon voyage logo 5.png",
-            "layer": 1
+            "layer": 2
+        },
+        "Script": {
+            "name": "MenuLightScript"
+        },
+        "LightSource": {
+            "centerOffset": {
+                "X": -94.0,
+                "Y": 24.0
+            },
+            "radius": 900.0,
+            "intensity": 0.0
         }
     },
     {
@@ -319,7 +318,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\credits-icon.png",
+            "texture": "Textures\\Menu\\credits-icon-click.png",
             "layer": 1
         },
         "Button": {
@@ -340,19 +339,19 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 700.0,
+                "X": 696.4562377929688,
                 "Y": -220.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
+                "r": 251,
+                "g": 252,
+                "b": 253,
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\settings-icon.png",
+            "texture": "Textures\\Menu\\settings-icon-click.png",
             "layer": 1
         },
         "Animation": {
@@ -375,6 +374,39 @@
         },
         "Button": {
             "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "LightCircle",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -94.79512786865234,
+                "Y": 244.46290588378906
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 1
+        },
+        "Script": {
+            "name": "MenuLightCircle"
         }
     }
 ]

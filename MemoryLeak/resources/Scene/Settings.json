@@ -59,11 +59,11 @@
             "layer": 7
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "SETTINGS",
             "offset": {
-                "X": -154.0,
-                "Y": 197.0
+                "X": -175.0,
+                "Y": 201.0
             },
             "scale": 1.5,
             "color": {
@@ -83,13 +83,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 70.0,
-                "Y": 70.0
+                "X": 50.0,
+                "Y": 50.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -395.8949279785156,
-                "Y": 57.60954284667969
+                "X": -104.0,
+                "Y": 90.0
             }
         },
         "Sprite": {
@@ -104,13 +104,13 @@
             "layer": 8
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "FullScreen",
             "offset": {
-                "X": 54.0,
-                "Y": -18.0
+                "X": 35.0,
+                "Y": -11.0
             },
-            "scale": 1.0,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -128,13 +128,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 70.0,
-                "Y": 70.0
+                "X": 50.0,
+                "Y": 50.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 170.94700622558594,
-                "Y": 49.574501037597656
+                "X": -104.0,
+                "Y": 20.0
             }
         },
         "Sprite": {
@@ -149,13 +149,13 @@
             "layer": 8
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Windows",
             "offset": {
-                "X": 54.0,
-                "Y": -18.0
+                "X": 35.0,
+                "Y": -11.0
             },
-            "scale": 1.0,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -178,8 +178,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 188.12939453125,
-                "Y": -131.59326171875
+                "X": -76.0,
+                "Y": -154.0
             }
         },
         "Sprite": {
@@ -208,8 +208,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 86.50811767578125,
-                "Y": -130.72586059570313
+                "X": -313.0,
+                "Y": -154.0
             }
         },
         "Sprite": {
@@ -238,8 +238,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 145.1814727783203,
-                "Y": -131.32659912109375
+                "X": -244.0,
+                "Y": -154.0
             }
         },
         "Sprite": {
@@ -268,8 +268,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 165.58197021484375,
-                "Y": -131.15139770507813
+                "X": -221.0,
+                "Y": -154.0
             }
         },
         "Sprite": {
@@ -298,8 +298,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 106.48309326171875,
-                "Y": -131.576904296875
+                "X": -290.0,
+                "Y": -154.0
             }
         },
         "Sprite": {
@@ -328,8 +328,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 125.68208312988281,
-                "Y": -131.20144653320313
+                "X": -267.0,
+                "Y": -154.0
             }
         },
         "Sprite": {
@@ -358,8 +358,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 61.34590148925781,
-                "Y": -132.018798828125
+                "X": -343.0,
+                "Y": -154.0
             }
         },
         "Sprite": {
@@ -374,13 +374,13 @@
             "layer": 8
         },
         "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Volume",
+            "fontFile": "BPtypewrite",
+            "text": "Music",
             "offset": {
-                "X": -203.0,
-                "Y": -12.0
+                "X": -14.0,
+                "Y": 55.0
             },
-            "scale": 1.0,
+            "scale": 0.75,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -398,13 +398,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 650.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -329.1109924316406
+                "Y": -336.0
             }
         },
         "Sprite": {
@@ -415,7 +415,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 8
         },
         "Audio": {
@@ -430,10 +430,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Back",
             "offset": {
-                "X": -53.0,
+                "X": -59.0,
                 "Y": -18.0
             },
             "scale": 1.0,
@@ -449,6 +449,561 @@
         },
         "Button": {
             "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -198.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -175.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -152.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -129.0,
+                "Y": -155.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -107.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Flipped_arrow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -18.0,
+                "Y": 23.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 343.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-1.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -313.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-3.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 244.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 221.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 290.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 267.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 18.0,
+                "Y": 23.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 76.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-1.png",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "SFX",
+            "offset": {
+                "X": -14.0,
+                "Y": 55.0
+            },
+            "scale": 0.75,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 198.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 175.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 152.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 129.0,
+                "Y": -155.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar_nonactive",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 313.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Volume_bar",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 14.0,
+                "Y": 61.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 106.0,
+                "Y": -154.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\volume-button-3.png",
+            "layer": 8
         }
     }
 ]

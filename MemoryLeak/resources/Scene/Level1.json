@@ -534,12 +534,12 @@
         },
         "Audio": {
             "path": "Boat_Row_SFX",
-            "volume": 0.0,
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
             "isMute": false,
-            "isLoop": true,
+            "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
         },
@@ -925,7 +925,7 @@
             "isSpacial": false
         },
         "Script": {
-            "name": "TestMonoScript"
+            "name": "MonoScript"
         },
         "ShadowCaster": {
             "centerOffset": {
@@ -1116,7 +1116,7 @@
                 "a": 100
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 2
         },
         "AI": {
@@ -1320,17 +1320,6 @@
         },
         "Script": {
             "name": "PassengerScript"
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -50.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1503,8 +1492,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1107.287841796875,
-                "Y": 1154.743408203125
+                "X": -1037.209716796875,
+                "Y": 1298.1175537109375
             }
         },
         "Sprite": {
@@ -1665,7 +1654,7 @@
                 "a": 150
             },
             "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 61
         }
     },
@@ -1695,11 +1684,11 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 62
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "",
             "offset": {
                 "X": -108.0,
@@ -1881,8 +1870,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -601.6849975585938,
-                "Y": 851.0050048828125
+                "X": -492.27703857421875,
+                "Y": 999.02734375
             }
         },
         "Sprite": {
@@ -2019,59 +2008,6 @@
     },
     {
         "General": {
-            "name": "ActivateLittleGirlScript",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 118.0,
-                "Y": 96.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -2342.991943359375,
-                "Y": -1365.288818359375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
-            "layer": 21
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": true,
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Rain_SFX",
-            "volume": 0.4099999964237213,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
             "name": "destination",
             "tag": 8,
             "subtag": 0,
@@ -2164,27 +2100,12 @@
         "Animation": {
             "sheets": [
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2194,44 +2115,9 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Background\\Assets.txt",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Background\\Assets.txt",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Background\\Assets.txt",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
                 },
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
@@ -2239,32 +2125,22 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2274,37 +2150,17 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
-                    "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
-                    "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
-                    "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
-                    "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2314,12 +2170,12 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 }
@@ -2341,12 +2197,12 @@
                 "X": 0.5,
                 "Y": 0.5
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "Audio": {
             "path": "DAMAGE",
-            "volume": 1.0,
+            "volume": 0.3,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -2537,7 +2393,7 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 13
         },
         "RectCollider": {
@@ -2566,39 +2422,6 @@
     },
     {
         "General": {
-            "name": "Minimap",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 10.99090576171875,
-                "Y": 10.99090576171875
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -435.8729248046875,
-                "Y": -118.47915649414063
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\minimap.png",
-            "layer": 66
-        },
-        "Script": {
-            "name": "MoveMinimapScript"
-        }
-    },
-    {
-        "General": {
             "name": "PassengerDeliverCollider",
             "tag": 8,
             "subtag": 0,
@@ -2623,7 +2446,7 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 67
         },
         "RectCollider": {
@@ -2665,7 +2488,7 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 1
         },
         "RectCollider": {
@@ -2707,7 +2530,7 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 1
         },
         "RectCollider": {
@@ -2749,7 +2572,7 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 1
         },
         "RectCollider": {
@@ -2792,7 +2615,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\pet.png",
-            "layer": 1
+            "layer": 16
         },
         "RectCollider": {
             "centerOffset": {
@@ -2805,6 +2628,20 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "HEALTH",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "FragmentScript"
         },
         "ShadowCaster": {
             "centerOffset": {

@@ -223,6 +223,8 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<LightSource>();
 	ECS::RegisterComponent<Button>();
 	ECS::RegisterComponent<ShadowCaster>();
+	ECS::RegisterComponent<CircularViewport>();
+
 	// More to come
 }
 

@@ -99,6 +99,7 @@ Scene& GameStateManager::SelectScene(std::string const& _name) {
 void GameStateManager::ChangeGameState(std::string const& _name) {
 	LOG_CUSTOM("GAMESTATEMANAGER", "Set gamestate to change to: " + _name);
 	std::string path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::gamestateEntities).string() + _name + ".json" };
+	audioManager->StopAllSound();
 	// Check if exit or restart;
 	if (_name == EXIT)
 		mGSMState = E_GSMSTATE::EXIT;

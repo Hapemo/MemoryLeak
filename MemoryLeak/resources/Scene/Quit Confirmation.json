@@ -29,13 +29,13 @@
             "layer": 6
         },
         "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Are you sure you want to quit?",
+            "fontFile": "BPtypewrite",
+            "text": "Are you sure?",
             "offset": {
-                "X": -443.0,
-                "Y": -7.0
+                "X": -190.0,
+                "Y": -41.0
             },
-            "scale": 1.2999999523162842,
+            "scale": 1.0,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -53,8 +53,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 500.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
@@ -70,7 +70,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 7
         },
         "Audio": {
@@ -85,11 +85,11 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Yes",
             "offset": {
-                "X": -40.0,
-                "Y": -17.0
+                "X": -45.0,
+                "Y": -19.0
             },
             "scale": 1.0,
             "color": {
@@ -115,8 +115,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 500.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
@@ -132,7 +132,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 7
         },
         "Audio": {
@@ -147,11 +147,11 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "No",
             "offset": {
                 "X": -29.0,
-                "Y": -17.0
+                "Y": -19.0
             },
             "scale": 1.0,
             "color": {
@@ -196,6 +196,51 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\menu screen background.jpg",
             "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "Quit Game",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 702.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 214.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "QUIT GAME",
+            "offset": {
+                "X": -205.0,
+                "Y": -19.0
+            },
+            "scale": 1.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
         }
     }
 ]

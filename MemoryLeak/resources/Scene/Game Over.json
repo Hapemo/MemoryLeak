@@ -29,13 +29,13 @@
             "layer": 0
         },
         "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "BOAT CAPSIZED",
+            "fontFile": "BPtypewrite",
+            "text": "BOAT CAPSIZED!",
             "offset": {
-                "X": -451.0,
-                "Y": 237.0
+                "X": -296.0,
+                "Y": 60.0
             },
-            "scale": 2.5,
+            "scale": 1.5,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -53,13 +53,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 545.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 3.4418277740478516
+                "X": -0.0000152587890625,
+                "Y": -86.10199737548828
             }
         },
         "Sprite": {
@@ -94,10 +94,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
-            "text": "Try Again",
+            "fontFile": "BPtypewrite",
+            "text": "Main Menu",
             "offset": {
-                "X": -106.0,
+                "X": -130.0,
                 "Y": -18.0
             },
             "scale": 1.0,
@@ -109,7 +109,7 @@
             }
         },
         "Script": {
-            "name": "PlayGameButton"
+            "name": "DeathToMainMenuButton"
         },
         "Button": {
             "interactable": true
@@ -124,8 +124,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 505.0,
+                "Y": 108.0
             },
             "rotation": 0.0,
             "translation": {
@@ -165,11 +165,11 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Quit Game",
             "offset": {
                 "X": -126.0,
-                "Y": -18.0
+                "Y": -17.0
             },
             "scale": 1.0,
             "color": {

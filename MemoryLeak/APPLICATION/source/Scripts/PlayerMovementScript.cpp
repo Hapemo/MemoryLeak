@@ -34,8 +34,8 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 	if (Input::CheckKey(PRESS, SPACE)) std::cout << "MousePos: " << FUNC->GetWorldMousePos() << '\n';
 	/*if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
 		FUNC->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);*/
-	if (_e.HasComponent<Audio>())
-		_e.GetComponent<Audio>().sound.volume = 0.0f;
+	//if (_e.HasComponent<Audio>())
+		//_e.GetComponent<Audio>().sound.volume = 0.0f;
 
 	if (!inited) {
 		littleGirl = FUNC->GetEntity("ActivateLittleGirlScript", "Level1");
@@ -62,7 +62,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		(FUNC->SelectScene("Level1")).Pause(true);
 		(FUNC->SelectScene("Game Over")).Pause(true);
 		(FUNC->SelectScene("Pause")).Pause(false);
-		FUNC->PlayAnySound("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+		FUNC->PlaySoundInChannel("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 	}
 
 	if (FUNC->CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && FUNC->CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT)) {

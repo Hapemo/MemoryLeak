@@ -48,6 +48,10 @@ bool MonoMethods::EntityIsActive(MonoString* _entityName, MonoString* _sceneName
 	return FUNC->EntityIsActive(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
+void MonoMethods::SetEntityIsActive(MonoString* _entityName, MonoString* _sceneName, bool _active) {
+	FUNC->SetEntityIsActive(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _active);
+}
+
 void MonoMethods::EntityActivate(MonoString* _entityName, MonoString* _sceneName) {
 	FUNC->EntityActivate(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
@@ -132,12 +136,16 @@ void MonoMethods::PlaySoundOnLoop(MonoString* _entityName, MonoString* _sceneNam
 	FUNC->PlaySoundOnLoop(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
-void MonoMethods::PlayAnySound(MonoString* _name, int _channel) {
-	FUNC->PlayAnySound(MONO->ConvertFromMonoString(_name), _channel);
+void MonoMethods::PlayEntitySound(MonoString* _entityName, MonoString* _sceneName) {
+	FUNC->PlayEntitySound(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
 void MonoMethods::PlayBGSound(MonoString* _name, int _channel) {
 	FUNC->PlayBGSound(MONO->ConvertFromMonoString(_name), _channel);
+}
+
+void MonoMethods::PlaySoundInChannel(MonoString* _name, int _channel) {
+	FUNC->PlaySoundInChannel(MONO->ConvertFromMonoString(_name), _channel);
 }
 
 float MonoMethods::GetPosX(MonoString* _entityName, MonoString* _sceneName) {
@@ -204,6 +212,25 @@ int MonoMethods::GetLineCount(MonoString* _entityName, MonoString* _sceneName) {
 	return FUNC->GetLineCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
+float MonoMethods::GetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName)
+{
+	return FUNC->GetLightSourceRadius(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+void  MonoMethods::SetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName, float _radius)
+{
+	FUNC->SetLightSourceRadius(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _radius);
+}
+
+void MonoMethods::SetSpriteColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a)
+{
+	FUNC->SetSpriteColor(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _r, _g, _b, _a);
+}
+
+float MonoMethods::GetFontScale(MonoString* _entityName, MonoString* _sceneName)
+{
+	return FUNC->GetFontScale(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
 /*!*****************************************************************************
 \brief
 Checks for the state of certain key
@@ -237,6 +264,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::IsPlayerSpeaker", &FUNC->IsPlayerSpeaker);
 	mono_add_internal_call("BonVoyage.InternalCalls::ChangeGameState", &MonoMethods::ChangeGameState);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityIsActive", &MonoMethods::EntityIsActive);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetEntityIsActive", &MonoMethods::SetEntityIsActive);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityActivate", &MonoMethods::EntityActivate);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityDeactivate", &MonoMethods::EntityDeactivate);
 	mono_add_internal_call("BonVoyage.InternalCalls::EntityGetParent", &MonoMethods::EntityGetParent);
@@ -273,7 +301,8 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::GetDeltaTime", &FUNC->GetDeltaTime);
 	mono_add_internal_call("BonVoyage.InternalCalls::StopSound", &MonoMethods::StopSound);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlaySoundOnLoop", &MonoMethods::PlaySoundOnLoop);
-	mono_add_internal_call("BonVoyage.InternalCalls::PlayAnySound", &MonoMethods::PlayAnySound);
+	mono_add_internal_call("BonVoyage.InternalCalls::PlayEntitySound", &MonoMethods::PlayEntitySound);
+	mono_add_internal_call("BonVoyage.InternalCalls::PlaySoundInChannel", &MonoMethods::PlaySoundInChannel);
 	mono_add_internal_call("BonVoyage.InternalCalls::IsPlaying", &FUNC->IsPlaying);
 	mono_add_internal_call("BonVoyage.InternalCalls::PlayBGSound", &MonoMethods::PlayBGSound);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetPosX", &MonoMethods::GetPosX);
@@ -292,4 +321,11 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::UpdateText", &MonoMethods::UpdateText);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetTextOffset", &MonoMethods::SetTextOffset);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetLineCount", &MonoMethods::GetLineCount);
+	mono_add_internal_call("BonVoyage.InternalCalls::WeatherAIinit", &FUNC->WeatherAIinit);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentWeather", &FUNC->GetCurrentWeather);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetLightSourceRadius", &MonoMethods::GetLightSourceRadius);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetLightSourceRadius", &MonoMethods::SetLightSourceRadius);
+	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteColor", &MonoMethods::SetSpriteColor);
+	mono_add_internal_call("BonVoyage.InternalCalls::GetFontScale", &MonoMethods::GetFontScale);
+
 }

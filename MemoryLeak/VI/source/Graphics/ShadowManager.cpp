@@ -5,8 +5,8 @@
 \par Group: Memory Leak Studios
 \date 20-10-2022
 \brief
-This file contains a system to create shadows. As of now, shadows are defined
-as Sprites that are Squares. In the future, we will make a Shadow Component.
+This file contains a system to create shadows. Currently, it can only cast
+rectangular shadows.
 *******************************************************************************/
 #include <ShadowManager.h>
 #include <Logger.h>
@@ -14,8 +14,15 @@ as Sprites that are Squares. In the future, we will make a Shadow Component.
 #include <GameStateManager.h>
 #include <RenderProps.h>
 
+/*!*****************************************************************************
+\brief
+Default constructor for ShadowManager.
+*******************************************************************************/
 ShadowManager::ShadowManager() : mLightsource(0), mCastShadows(false) {}
-
+/*!*****************************************************************************
+\brief
+Updates the ShadowManager.
+*******************************************************************************/
 void ShadowManager::Update()
 {
 	ClearVectors();
@@ -31,8 +38,6 @@ void ShadowManager::Update()
 
 	mCastShadows = true;
 
-	mCamera = GameStateManager::GetInstance()->mCurrentGameState->mCamera;
-
 	CreateFOVVertices();
 
 	for (Entity e : mEntities)
@@ -44,7 +49,10 @@ void ShadowManager::Update()
 	CreateRays();
 	RayCast();
 }
-
+/*!*****************************************************************************
+\brief
+Raycasting to determine ray endpoints.
+*******************************************************************************/
 void ShadowManager::RayCast()
 {
 	Math::Vec2 lightPos = GetLightPos();
@@ -103,30 +111,55 @@ void ShadowManager::RayCast()
 	}
 	std::sort(mRayEndPoints.begin(), mRayEndPoints.end(), CompareAngle);
 }
-
+/*!*****************************************************************************
+\brief
+Create rays based on the object vertices.
+*******************************************************************************/
 void ShadowManager::CreateRays()
 {
 	Math::Vec2 lightPos = GetLightPos();
-
-	Math::Vec2 i{ mCamera.scale.x / 2.f, 0 };
-	Math::Vec2 j{ 0, mCamera.scale.y / 2.f };
-	
 	for (size_t k = 0; k < mObjectEdges.size(); ++k)
 		mRayDirection.push_back({ lightPos, mObjectEdges[k].pos - lightPos });
 }
-
+/*!*****************************************************************************
+\brief
+Returns the position of the lightsoruce.
+\return
+The position of the lightsource.
+*******************************************************************************/
 Math::Vec2 ShadowManager::GetLightPos()
 {
 	if (!mLightsource.id) return Math::Vec2();
 	return mLightsource.GetComponent<Transform>().translation
 		+ mLightsource.GetComponent<LightSource>().centerOffset;;
 }
+/*!*****************************************************************************
+\brief
+Function for comparing angles between 2 vectors.
 
+\param const Math::Vec2
+The first vector.
+
+\param const Math::Vec2
+The second vector.
+
+\return
+true if the angle of endPt1 is less than endPt2.
+*******************************************************************************/
 bool CompareAngle(const Math::Vec2& endPt1, const Math::Vec2& endPt2)
 {
 	return GetAngle(endPt1 - shadowManager->GetLightPos()) < GetAngle(endPt2 - shadowManager->GetLightPos());
 }
+/*!*****************************************************************************
+\brief
+Returns the angle of a vector.
 
+\param Math::Vec2
+The vector to be checked.
+
+\return
+The angle of the vector.
+*******************************************************************************/
 float GetAngle(const Math::Vec2& endPt)
 {
 	if (endPt.y != 0.f && endPt.x >= 0.f)
@@ -147,7 +180,10 @@ float GetAngle(const Math::Vec2& endPt)
 	}
 	return (float)Math::PI;
 }
-
+/*!*****************************************************************************
+\brief
+Create vertices for the field of view (lightsource radius)
+*******************************************************************************/
 void ShadowManager::CreateObjectVertices(Entity e)
 {
 	Math::Vec2 lightPos = GetLightPos();
@@ -180,7 +216,10 @@ void ShadowManager::CreateObjectVertices(Entity e)
 		mObjectEdges.push_back({ p3, 2 * j });
 	}
 }
-
+/*!*****************************************************************************
+\brief
+Clear vectors.
+*******************************************************************************/
 void ShadowManager::ClearVectors()
 {
 	mObjectEdges.clear();
@@ -188,7 +227,10 @@ void ShadowManager::ClearVectors()
 	mExtendedRayDirection.clear();
 	mRayEndPoints.clear();
 }
-
+/*!*****************************************************************************
+\brief
+Create vertices for the field of view (lightsource radius)
+*******************************************************************************/
 void ShadowManager::CreateFOVVertices()
 {
 	std::vector<Math::Vec2> circlePts;

@@ -242,6 +242,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Sets if an entity from scene is active.
+	*******************************************************************************/
+	static void SetEntityIsActive(std::string const& _entityName, std::string const& _sceneName, bool _active);
+
+	/*!*****************************************************************************
+	\brief
 	Activate an entity from scene.
 	*******************************************************************************/
 	static void EntityActivate(std::string const& _entityName, std::string const& _sceneName);
@@ -494,9 +500,15 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-		Plays a single background sound
+		Plays sound
 	*******************************************************************************/
-	static void PlayAnySound(std::string _name, int _channel);
+	static void PlayEntitySound(std::string const& _soundName, std::string const& _sceneName);
+
+	/*!*****************************************************************************
+	\brief
+		Force play sound in channel
+	*******************************************************************************/
+	static void PlaySoundInChannel(std::string const& _soundName, int _channel);
 
 	/*!*****************************************************************************
 	\brief
@@ -599,4 +611,23 @@ public:
 	static void UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text);
 	static void SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset);
 	static int GetLineCount(std::string const& _entityName, std::string const& _sceneName);
+	static float GetFontScale(std::string const& _entityName, std::string const& _sceneName);
+
+
+	static void WeatherAIinit(float width = 1600, float height = 900);
+	static int GetCurrentWeather(int index, float posX, float posY);
+
+	/*!*****************************************************************************
+	\brief
+	Changing lightsource component.
+	*******************************************************************************/
+	static float GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName);
+	static void SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius);
+
+	/*!*****************************************************************************
+	\brief
+	Changing sprite component.
+	*******************************************************************************/
+	static void SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a);
+
 };
