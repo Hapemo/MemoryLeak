@@ -276,7 +276,7 @@ struct Audio {
 	//std::vector<Sound> sound;
 	Sound sound;
 	bool isSpacial = false;
-	float spacialDistance = 1.f;
+	float spacialDistance = 1.5f;
 	float spacialRatio = 1.f;
 	/*SOUND::::
 	std::string path;
