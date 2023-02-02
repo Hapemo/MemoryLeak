@@ -38,8 +38,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 700.0,
+                "Y": 180.0
             },
             "rotation": 0.0,
             "translation": {
@@ -85,10 +85,10 @@
             "fontFile": "BPtypewrite",
             "text": "Start Game",
             "offset": {
-                "X": -144.0,
-                "Y": -18.0
+                "X": -172.0,
+                "Y": -21.0
             },
-            "scale": 1.0,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -112,8 +112,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 700.0,
+                "Y": 180.0
             },
             "rotation": 0.0,
             "translation": {
@@ -159,10 +159,10 @@
             "fontFile": "BPtypewrite",
             "text": "How To Play",
             "offset": {
-                "X": -159.0,
-                "Y": -19.0
+                "X": -184.0,
+                "Y": -21.0
             },
-            "scale": 1.0,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -186,8 +186,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 700.0,
+                "Y": 180.0
             },
             "rotation": 0.0,
             "translation": {
@@ -233,10 +233,10 @@
             "fontFile": "BPtypewrite",
             "text": "Quit Game",
             "offset": {
-                "X": -130.0,
-                "Y": -16.0
+                "X": -150.0,
+                "Y": -21.0
             },
-            "scale": 1.0,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,

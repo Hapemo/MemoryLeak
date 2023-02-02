@@ -25,45 +25,15 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\menu screen background.jpg",
-            "layer": 0
-        }
-    },
-    {
-        "General": {
-            "name": "Paused",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 1174.0,
-                "Y": 686.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\game over background.jpg",
             "layer": 0
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "PAUSED",
+            "text": "BOAT CAPSIZED!",
             "offset": {
-                "X": -132.0,
-                "Y": 195.0
+                "X": -296.0,
+                "Y": 60.0
             },
             "scale": 1.5,
             "color": {
@@ -76,20 +46,20 @@
     },
     {
         "General": {
-            "name": "Controls",
+            "name": "Try_Again",
             "tag": 5,
-            "subtag": 0,
+            "subtag": 1,
             "isActive": true
         },
         "Transform": {
             "scale": {
                 "X": 545.0,
-                "Y": 125.0
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 50.0
+                "X": -0.0000152587890625,
+                "Y": -86.10199737548828
             }
         },
         "Sprite": {
@@ -97,11 +67,20 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 255
+                "a": 100
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 1
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": false
         },
         "Audio": {
             "path": "Button_Click_SFX",
@@ -116,10 +95,10 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "How To Play",
+            "text": "Main Menu",
             "offset": {
-                "X": -167.0,
-                "Y": -16.0
+                "X": -130.0,
+                "Y": -18.0
             },
             "scale": 1.0,
             "color": {
@@ -130,7 +109,7 @@
             }
         },
         "Script": {
-            "name": "HowToPlayButton"
+            "name": "DeathToMainMenuButton"
         },
         "Button": {
             "interactable": true
@@ -140,18 +119,18 @@
         "General": {
             "name": "Quit_Game",
             "tag": 5,
-            "subtag": 0,
-            "isActive": true
+            "subtag": 1,
+            "isActive": false
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 505.0,
+                "Y": 108.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -100.0
+                "Y": -142.94117736816406
             }
         },
         "Sprite": {
@@ -159,11 +138,20 @@
                 "r": 0,
                 "g": 255,
                 "b": 0,
-                "a": 255
+                "a": 100
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-1.png",
             "layer": 1
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": false
         },
         "Audio": {
             "path": "Button_Click_SFX",
@@ -180,8 +168,8 @@
             "fontFile": "BPtypewrite",
             "text": "Quit Game",
             "offset": {
-                "X": -133.0,
-                "Y": -16.0
+                "X": -126.0,
+                "Y": -17.0
             },
             "scale": 1.0,
             "color": {
@@ -193,68 +181,6 @@
         },
         "Script": {
             "name": "ExitConfirmationButton"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "Resume",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 545.0,
-                "Y": 125.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": -250.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 1
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Resume Game",
-            "offset": {
-                "X": -157.0,
-                "Y": -16.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        },
-        "Script": {
-            "name": "BackToGameButton"
         },
         "Button": {
             "interactable": true
