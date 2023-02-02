@@ -228,7 +228,7 @@
             "layer": 8
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "QUIT GAME",
             "offset": {
                 "X": -205.0,
