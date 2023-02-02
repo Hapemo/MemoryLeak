@@ -21,6 +21,7 @@
     <ClInclude Include="include\Scripts\ExitConfirmationButton.h" />
     <ClInclude Include="include\Scripts\PauseButton.h" />
     <ClInclude Include="include\Scripts\DeathToMainMenuButton.h" />
+    <ClInclude Include="include\Scripts\FPSPrint.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -44,5 +45,6 @@
     <ClCompile Include="source\Scripts\ExitConfirmationButton.cpp" />
     <ClCompile Include="source\Scripts\PauseButton.cpp" />
     <ClCompile Include="source\Scripts\DeathToMainMenuButton.cpp" />
+    <ClCompile Include="source\Scripts\FPSPrint.cpp" />
   </ItemGroup>
 </Project>

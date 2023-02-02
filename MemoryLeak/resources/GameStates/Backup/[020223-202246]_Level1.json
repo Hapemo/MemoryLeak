@@ -69,11 +69,5 @@
         "isActive": false,
         "layer": 9,
         "order": 0
-    },
-    {
-        "SceneName": "FPS",
-        "isActive": false,
-        "layer": 10,
-        "order": 0
     }
 ]

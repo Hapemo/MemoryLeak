@@ -120,6 +120,13 @@ namespace BonVoyage
         }
 
       public void Update() {
+
+      // Toggle fps printing box (press 'T')
+      if (InternalCalls.CheckKeyPress(84)) {
+        if (InternalCalls.EntityIsActive("fpsDisplay", "FPS")) InternalCalls.EntityDeactivate("fpsDisplay", "FPS");
+        else InternalCalls.EntityActivate("fpsDisplay", "FPS");
+      }
+
           #region Intro Dialogue
           if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1")) {
               if (RunIntroDialog && InternalCalls.EntityIsActive("IntroBox", "Level1")) {

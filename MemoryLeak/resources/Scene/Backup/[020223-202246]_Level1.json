@@ -1110,9 +1110,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 155,
-                "g": 225,
-                "b": 252,
+                "r": 4,
+                "g": 19,
+                "b": 12,
                 "a": 100
             },
             "sprite": 1,
@@ -2202,7 +2202,7 @@
         },
         "Audio": {
             "path": "DAMAGE",
-            "volume": 0.30000001192092896,
+            "volume": 0.3,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
