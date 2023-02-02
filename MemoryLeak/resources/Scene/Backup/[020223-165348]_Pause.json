@@ -84,12 +84,12 @@
         "Transform": {
             "scale": {
                 "X": 545.0,
-                "Y": 125.0
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 50.0
+                "Y": 51.0
             }
         },
         "Sprite": {
@@ -145,13 +145,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 555.5,
-                "Y": 135.5
+                "X": 545.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -100.0
+                "Y": -71.0
             }
         },
         "Sprite": {
@@ -208,12 +208,12 @@
         "Transform": {
             "scale": {
                 "X": 545.0,
-                "Y": 125.0
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -250.0
+                "Y": -191.0
             }
         },
         "Sprite": {
