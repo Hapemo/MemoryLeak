@@ -136,7 +136,7 @@ namespace BonVoyage
                   InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find the Little Girl");// for the start Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum est nec rutrum venenatis. Suspendisse facilisis lectus ornare nisi feugiat, sed eleifend nisi molestie. Vestibulum et malesuada tortor. Donec eget diam vel lorem consequat tempus. Maecenas at mollis tellus. Maecenas dolor nisl, scelerisque a eleifend ornare, rhoncus nec leo. Praesent ultricies vehicula placerat. Etiam ligula enim, tempus sed tempor at, congue in ante. Ut condimentum non mauris ac efficitur."); // hint
                 }
               }
-              if (!RunIntroDialog) TextAlignChoices("objectivetext", "Dialogue", 500, 350, 530, 51.0f, 20, 10);
+              if (!RunIntroDialog) TextAlignChoices("objectivetext", "Dialogue", 500, 380, 530, 51.0f, 20, 10);
           }
     #endregion
 
@@ -294,14 +294,14 @@ namespace BonVoyage
               if (objectiveexpanded)
               {
                   InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
-                  TextAlignChoices("objectivetext", "Dialogue", 500, 350, 530, 51.0f, 20, 10);
+                  TextAlignChoices("objectivetext", "Dialogue", 500, 380, 530, 51.0f, 20, 10);
 
       }
 
       if (!objectiveexpanded)
               {
                   InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view"); // hint
-                  TextAlignChoices("objectivetext", "Dialogue", 500, 350, 530, 51.0f, 20, 10);
+                  TextAlignChoices("objectivetext", "Dialogue", 500, 380, 530, 51.0f, 20, 10);
 
       }
     }
@@ -514,11 +514,11 @@ namespace BonVoyage
         {
             currentobjective = InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID());
             InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
-            TextAlignChoices("objectivetext", "Dialogue", 500, 350, 700, 51.0f, 20, 10);
+            TextAlignChoices("objectivetext", "Dialogue", 500, 380, 700, 51.0f, 20, 10);
             if (InternalCalls.GetLineCount("objectivetext", "Dialogue") > 2)
             {
                 InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view");
-                TextAlignChoices("objectivetext", "Dialogue", 500, 350, 530, 51.0f, 20, 10);
+                TextAlignChoices("objectivetext", "Dialogue", 500, 380, 530, 51.0f, 20, 10);
             }
         }
 
