@@ -75,15 +75,16 @@ public:
   /return int
   - Width of screen
   *******************************************************************************/
-  static int GetScreenWidth() { return mWindowSize[0]; }
-  
+  static int GetScreenWidth() { return fullscreenFlag ? mWindowMaximisedSize[0] : mWindowSize[0];
+  }
+
   /*!*****************************************************************************
   Get main window's screen height
 
   /return int
   - Height of screen
   *******************************************************************************/
-  static int GetScreenHeight() { return mWindowSize[1]; }
+  static int GetScreenHeight() { return fullscreenFlag ? mWindowMaximisedSize[1] : mWindowSize[1]; }
 
   /*!*****************************************************************************
   Get main window's selected status
@@ -98,5 +99,6 @@ private:
   static GLFWmonitor* mMonitor;
   static std::array<int, 2> mWindowPos;
   static std::array<int, 2> mWindowSize;
+  static std::array<int, 2> mWindowMaximisedSize;
   static bool fullscreenFlag;
 };
