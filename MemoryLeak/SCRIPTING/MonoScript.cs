@@ -1,6 +1,6 @@
 ﻿/*!*****************************************************************************
 \file MonoScript.cs
-\author Jazz Teoh Yu Jue, Chen Jia Wen, Kew Yu Jun, Xiu Han
+\author Jazz Teoh Yu Jue, Chen Jia Wen, Kew Yu Jun, Xiu Han, Huang Wei Jhin
 \par DP email: j.teoh\@digipen.edu
 \par Group: Memory Leak Studios
 \date 27-01-2023
@@ -163,9 +163,9 @@ namespace BonVoyage
             {
                 if (InternalCalls.GetScaleX("Little Girl", "Level1") >0)
                 {
-                    InternalCalls.SetPosY("Little Girl", "Level1", InternalCalls.GetPosY("Little Girl", "Level1") + 200 * (float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleX("Little Girl", "Level1", InternalCalls.GetScaleX("Little Girl", "Level1") - 10.0f * (float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleY("Little Girl", "Level1", InternalCalls.GetScaleY("Little Girl", "Level1") - 10.0f * (float)InternalCalls.GetDeltaTime());
+                    //InternalCalls.SetPosY("Little Girl", "Level1", InternalCalls.GetPosY("Little Girl", "Level1") + 200 * (float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleX("Little Girl", "Level1", InternalCalls.GetScaleX("Little Girl", "Level1") / (1 + 2.0f * (float)InternalCalls.GetDeltaTime()));
+                    InternalCalls.SetScaleY("Little Girl", "Level1", InternalCalls.GetScaleY("Little Girl", "Level1") / (1 + 2.0f * (float)InternalCalls.GetDeltaTime()));
                 }
                 else
                     InternalCalls.EntityDeactivate("Little Girl", "Level1");

@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file MiniMapScript.cs
+\author Huang Wei Jhin
+\par DP email: h.weijhin\@digipen.edu
+\par Group: Memory Leak Studios
+\date 28-01-2023
+\brief
+MiniMapScript contains multiple script components to run the Level1 of the game.
+Part of which are:
+- Functions of the minimap
+- Expanding the minimap
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

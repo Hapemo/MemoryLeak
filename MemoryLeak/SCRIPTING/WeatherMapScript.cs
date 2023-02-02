@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file WeatherMapScript.cs
+\author Huang Wei Jhin
+\par DP email: h.weijhin\@digipen.edu
+\par Group: Memory Leak Studios
+\date 28-01-2023
+\brief
+WeatherMapScript contains multiple script components to run the Level1 of the game.
+Part of which are:
+- Functions of the weather map
+- Expanding the weather minimap
+- Gettign the each weather type of 9 or 16 locations in the mini and expanded map
+*******************************************************************************/
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 

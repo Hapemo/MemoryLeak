@@ -43,10 +43,10 @@
             "fontFile": "BPtypewrite",
             "text": "Radar",
             "offset": {
-                "X": -42.0,
-                "Y": -170.0
+                "X": -55.0,
+                "Y": 150.0
             },
-            "scale": 0.6000000238418579,
+            "scale": 0.75,
             "color": {
                 "r": 255,
                 "g": 255,
