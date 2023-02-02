@@ -311,14 +311,14 @@ namespace BonVoyage
               EnemyPosY <= InternalCalls.GetCurrentCameraPosY() + (InternalCalls.GetCurrentCameraScaleY() / 2) &&
               EnemyPosX >= InternalCalls.GetCurrentCameraPosX() - (InternalCalls.GetCurrentCameraScaleX() / 2) &&
               EnemyPosY >= InternalCalls.GetCurrentCameraPosY() - (InternalCalls.GetCurrentCameraScaleY() / 2)) {
-              //float EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
-              /*
-              if (EnemyRotation < 0) OctopusDirection = 1;
-              else OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation) / Pi);
-              */
-    //Console.Write(OctopusDirection + "\n");
-    //Console.Write((EnemyRotation / Pi / 2) + "\n");
-    OctopusDirection = GetRotation(EnemyNormDisX, EnemyNormDisY);
+                //float EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
+                /*
+                if (EnemyRotation < 0) OctopusDirection = 1;
+                else OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation) / Pi);
+                */
+                //Console.Write(OctopusDirection + "\n");
+                //Console.Write((EnemyRotation / Pi / 2) + "\n");
+                OctopusDirection = GetRotation(EnemyNormDisX, EnemyNormDisY);
                 //OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation));
                 //Console.Write(OctopusDirection + "\n");
 
@@ -439,7 +439,7 @@ namespace BonVoyage
 
             // Healing player
             if (!InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") && HitTaken > 0) {
-                HealCounter += (float)InternalCalls.GetDeltaTime(); ;
+                HealCounter += (float)InternalCalls.GetDeltaTime();
                 if (HealCounter >= HealInterval) {
                     //Console.Write("Regenerating!\n");
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
@@ -542,7 +542,7 @@ namespace BonVoyage
         public void TextAlignChoices(string entityname, string scenename, float posX, float posY, float scaleX = 500, float perLineScaleY = 51, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15)
         {
             int additionalLines = InternalCalls.GetLineCount(entityname, scenename) - 1;
-      Console.WriteLine("lines: " + additionalLines);
+            //Console.WriteLine("lines: " + additionalLines);
             //float scaleY = perLineScaleY;         // This is the default height of button, will changing with respect to line count
             perLineScaleY *= InternalCalls.GetFontScale(entityname, scenename);
 
