@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage
 {
-    public class TestMonoScript
+    public class MonoScript
     {
         private int fragment1;
         private bool starttalking;
