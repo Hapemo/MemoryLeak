@@ -51,4 +51,7 @@ public:
 	*******************************************************************************/
 	void Animate(const Entity& _e);
 private:
+	double mAccumulatedDT{ 0.0 };
+	const double mFixedDT{ 1.0 / 60.0 };
+	const double mAccumulatedDTCap{ 1.0 };
 };

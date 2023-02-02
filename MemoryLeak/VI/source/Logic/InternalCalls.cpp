@@ -16,9 +16,6 @@ is being stored.
 #include "GameStateManager.h"
 #include "Helper.h"
 
-int* InternalCalls::windowWidth = nullptr;
-int* InternalCalls::windowHeight = nullptr;
-
 /*!*****************************************************************************
 \brief
 Test internal function for string.
@@ -70,7 +67,7 @@ Math::Vec2 InternalCalls::GetWorldMousePos() {
 #ifdef _EDITOR
 	return editorManager->GetEditorWorldMousePos();
 #else 
-	Math::Vec2 cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-*windowWidth / 2.f, *windowHeight / 2.f);
+	Math::Vec2 cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-Helper::GetScreenWidth() / 2.f, Helper::GetScreenHeight() / 2.f);
 	//if (Input::CheckKey(PRESS, M_BUTTON_L)) std::cout << "cursorPos: " << cursorPos << '\n';
 
 	return cursorPos;
@@ -644,16 +641,6 @@ double InternalCalls::GetDeltaTime() {
 
 /*!*****************************************************************************
 \brief
-Initialise the window width and height of the application using pointer.
-Should be called in application's init
-*******************************************************************************/
-void InternalCalls::InitScriptWindow(int* _windowWidth, int* _windowHeight) {
-	windowWidth = _windowWidth;
-	windowHeight = _windowHeight;
-}
-
-/*!*****************************************************************************
-\brief
 	Plays a sound on loop
 *******************************************************************************/
 void InternalCalls::PlaySoundOnLoop(std::string const& _entityName, std::string const& _sceneName) {
@@ -681,7 +668,7 @@ void InternalCalls::StopSound(std::string const& _entityName, std::string const&
 *******************************************************************************/
 void InternalCalls::PlayEntitySound(std::string const& _entityName, std::string const& _sceneName){
 	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = true;
-	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.volume = 1.f;
+	//(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.volume = 1.f;
 	//audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
 }
 

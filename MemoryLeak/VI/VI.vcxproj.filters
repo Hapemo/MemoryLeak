@@ -184,6 +184,7 @@
     <ClInclude Include="include\Logic\MonoMethods.h" />
     <ClInclude Include="include\Logic\MonoComponent.h" />
     <ClInclude Include="include\Graphics\AnimationVariable.h" />
+    <ClInclude Include="include\Physics\QuadTree.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

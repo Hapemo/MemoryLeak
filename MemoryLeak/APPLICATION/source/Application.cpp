@@ -46,7 +46,6 @@ void Application::SystemInit() {
   audioManager->Init();
   //aiManager->weatherAIinit();
   
-  InternalCalls::GetInstance()->InitScriptWindow(&window_width, &window_height);
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
   //playerManager->Init(window_width, window_height);
@@ -89,10 +88,27 @@ void Application::SystemUpdate() {
 
   // Physics
   TRACK_PERFORMANCE("Physics");
+  //try {
+  //    physics2DManager->mPhysicsStepLock.lock();
+  //    std::thread phyThread{ [] {physics2DManager->Update(FPSManager::dt); } };
+  //    phyThread.join();
+  //    physics2DManager->mPhysicsStepLock.unlock();
+  //}
+  //catch (...) {
+  //    if (physics2DManager->mPhysicsStepLock.try_lock())
+  //        physics2DManager->mPhysicsStepLock.unlock();
+  //}
   physics2DManager->Update(FPSManager::dt);
   END_TRACK("Physics");
 
-  //shadowManager->Update();
+  TRACK_PERFORMANCE("Collision");
+  collision2DManager->Update(FPSManager::dt);
+  END_TRACK("Collision");
+
+  // Layer
+  TRACK_PERFORMANCE("Layer");
+  layerManager->Update();
+  END_TRACK("Layer");
 
   // Animator
   TRACK_PERFORMANCE("Animation");
@@ -112,6 +128,9 @@ void Application::init() {
   SystemInit();
 
   GameStateManager::GetInstance()->Init();
+
+  // Set up quadtree after scene entities have been loaded
+  collision2DManager->SetupQuadTree();
 
 #ifdef NDEBUG
 #ifdef _EDITOR
@@ -212,6 +231,7 @@ void Application::MainUpdate() {
 
 void Application::exit() {
     //logicSystem->Exit();
+    //collision2DManager->Cleanup();
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
 #ifdef _EDITOR

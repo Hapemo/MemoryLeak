@@ -29,10 +29,6 @@ struct Transform;
 #define FUNC InternalCalls::GetInstance()
 
 class InternalCalls : public Singleton<InternalCalls> {
-private:
-	static int* windowWidth;
-	static int* windowHeight;
-
 public:
 	/*!*****************************************************************************
 	\brief

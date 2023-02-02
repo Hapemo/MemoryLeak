@@ -74,8 +74,10 @@ bool MonoManager::InitMonoDomain(const char* _root, const char* _appdomain, cons
 		if (!mAssembly) {
 			std::cout << "Failed to load Mono assembly from: " << _directory + '\\' << _dll << ".dll!\n";
 			return false;
-		} else return true;
-	} else {
+		}
+		else return true;
+	}
+	else {
 		std::cout << "Failed to initialise Mono root domain: " << _root << "!\n";
 		return false;
 	}
@@ -113,7 +115,8 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	if (monoClass == nullptr) {
 		std::cout << "Failed to retrieve Mono class " << _namespace << "::" << _class << "!\n";
 		return nullptr;
-	} else std::cout << "Retrieved Mono class " << _namespace << "::" << _class << ".\n";
+	}
+	else std::cout << "Retrieved Mono class " << _namespace << "::" << _class << ".\n";
 
 	// Allocate an instance of the class
 	MonoObject* classInstance = mono_object_new(mAppDomain, monoClass);
@@ -121,7 +124,8 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	if (classInstance == nullptr) {
 		std::cout << "Failed to allocate an instance to Mono class " << _namespace << "::" << _class << "!\n";
 		return nullptr;
-	} else std::cout << "Allocated an instance to Mono class " << _namespace << "::" << _class << ".\n";
+	}
+	else std::cout << "Allocated an instance to Mono class " << _namespace << "::" << _class << ".\n";
 
 	// Call the parameterless (default) constructor
 	mono_runtime_object_init(classInstance);
@@ -135,7 +139,7 @@ Calls a mono method by script name and function name.
 void MonoManager::CallMethod(std::string _scriptName, const char* _function, int _paramCount) {
 	MonoObject* monoInstance = GetMonoComponent(_scriptName);
 
-	if(monoInstance == nullptr) std::cout << "Failed to get an instance to Mono object from member map mMonoComponents!\n";
+	if (monoInstance == nullptr) std::cout << "Failed to get an instance to Mono object from member map mMonoComponents!\n";
 
 	// Get the MonoClass pointer from the instance
 	MonoClass* classInstance = mono_object_get_class(monoInstance);
@@ -179,7 +183,7 @@ void MonoManager::RegisterMonoScript(std::string _namespace, std::string _class)
 		// Storing mono object
 		if (newInstance != nullptr) SetMonoComponent(_class, newInstance);
 		else std::cout << "Failed to register C# script method " << _namespace << "::" << _class << "()!\n";
-		
+
 		mMonoHandler = mono_gchandle_new(newInstance, true);
 	}
 }

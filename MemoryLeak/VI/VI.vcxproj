@@ -400,6 +400,7 @@
     <ClInclude Include="include\Physics\Contact.h" />
     <ClInclude Include="include\Physics\Force.h" />
     <ClInclude Include="include\Physics\Physics2DManager.h" />
+    <ClInclude Include="include\Physics\QuadTree.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Serialization.h" />
