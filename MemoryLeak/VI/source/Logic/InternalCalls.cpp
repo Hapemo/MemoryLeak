@@ -680,7 +680,9 @@ void InternalCalls::StopSound(std::string const& _entityName, std::string const&
 	Plays sound
 *******************************************************************************/
 void InternalCalls::PlayEntitySound(std::string const& _entityName, std::string const& _sceneName){
-	audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = true;
+	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.volume = 1.f;
+	//audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
 }
 
 /*!*****************************************************************************

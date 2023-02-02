@@ -116,7 +116,7 @@ namespace BonVoyage
           CatPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue");
           CatPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue");
           dialogueOrder = 0;
-            InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
+          InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
         }
 
       public void Update() {
@@ -316,7 +316,12 @@ namespace BonVoyage
               }
               PlayerRotation = GetRotation(NormX, NormY);
               SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
-          }
+              InternalCalls.PlayEntitySound("Boat", "Level1");
+            }
+            //if (!InternalCalls.CheckKeyHold(349))
+            //{ 
+            //    InternalCalls.StopSound("Boat", "Level1");
+            //}
           #endregion
 
           #region Camera Update
