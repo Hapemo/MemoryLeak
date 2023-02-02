@@ -549,8 +549,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 470.6368713378906,
-                "Y": -373.06146240234375
+                "X": 476.0,
+                "Y": -382.0
             }
         },
         "Sprite": {
@@ -718,36 +718,6 @@
                 "b": 255,
                 "a": 255
             }
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 1",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 285.0,
-                "Y": 324.076416015625
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 640.0,
-                "Y": -278.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\crystalball.png",
-            "layer": 65
         }
     }
 ]
