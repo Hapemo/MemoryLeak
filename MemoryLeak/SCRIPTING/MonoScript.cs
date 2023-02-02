@@ -1,4 +1,19 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file MonoScript.cs
+\author Jazz Teoh Yu Jue, Chen Jia Wen, Kew Yu Jun, Xiu Han
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 27-01-2023
+\brief
+MonoScript contains multiple script components to run the Level1 of the game.
+Part of which are:
+- Dialog management Script
+- Passenger delivery Script
+- Camera updating script
+- Enemy logic
+- Memory fragment logic
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage
