@@ -116,8 +116,8 @@ namespace BonVoyage
           CatPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue");
           CatPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue");
           dialogueOrder = 0;
-          
-      }
+            InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
+        }
 
       public void Update() {
           #region Intro Dialogue
@@ -375,7 +375,7 @@ namespace BonVoyage
                     switch (OctopusAttacked) {
                         case 0:
                             OctopusAttacked = 1;
-                            InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
+                            //InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
                             SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Rising");
                             InternalCalls.SetAnimationCurrentIndex("Enemy", "Level1", 0);
                             HitInterval = InternalCalls.GetAnimationSpeed("Enemy", "Level1") * InternalCalls.GetAnimationFrameCount("Enemy", "Level1");
@@ -397,7 +397,7 @@ namespace BonVoyage
                     }
                 } else {
                     OctopusAttacked = 0;
-                    InternalCalls.StopSound("EnemyTrigger", "Level1");
+                    //InternalCalls.StopSound("EnemyTrigger", "Level1");
                     SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                 }
 
