@@ -318,14 +318,14 @@ namespace BonVoyage
               SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
               InternalCalls.PlayEntitySound("Boat", "Level1");
             }
-            //if (!InternalCalls.CheckKeyHold(349))
-            //{ 
-            //    InternalCalls.StopSound("Boat", "Level1");
-            //}
-          #endregion
+            if (!InternalCalls.CheckKeyHold(349))
+            {
+                InternalCalls.StopSound("Boat", "Level1");
+            }
+            #endregion
 
-          #region Camera Update
-          UpdateCamera();
+            #region Camera Update
+            UpdateCamera();
           #endregion
 
           #region Enemy
