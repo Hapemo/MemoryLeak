@@ -555,7 +555,7 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		// If it returns true, means collision occurred
 		if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt, false)) {
 			mContactList.emplace_back(contact);
-			LOG_INFO("Collision Detected\n");
+			//LOG_INFO("Collision Detected\n");
 		}
 	}
 }
