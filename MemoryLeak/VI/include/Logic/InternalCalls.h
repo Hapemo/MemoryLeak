@@ -613,7 +613,10 @@ public:
 	static int GetLineCount(std::string const& _entityName, std::string const& _sceneName);
 	static float GetFontScale(std::string const& _entityName, std::string const& _sceneName);
 
-
+	/*!*****************************************************************************
+	\brief
+	Weather functions.
+	*******************************************************************************/
 	static void WeatherAIinit(float width = 1600, float height = 900);
 	static int GetCurrentWeather(int index, float posX, float posY);
 

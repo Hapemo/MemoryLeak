@@ -361,7 +361,6 @@
     <ClInclude Include="include\LayerManager.h" />
     <ClInclude Include="include\Logic\InternalCalls.h" />
     <ClInclude Include="include\Logic\LogicSystem.h" />
-    <ClInclude Include="include\Logic\MonoComponent.h" />
     <ClInclude Include="include\Logic\MonoManager.h" />
     <ClInclude Include="include\Logic\MonoMethods.h" />
     <ClInclude Include="include\Logic\ScriptComponent.h" />
@@ -455,7 +454,6 @@
     <ClCompile Include="source\LifespanManager.cpp" />
     <ClCompile Include="source\Logic\InternalCalls.cpp" />
     <ClCompile Include="source\Logic\LogicSystem.cpp" />
-    <ClCompile Include="source\Logic\MonoComponent.cpp" />
     <ClCompile Include="source\Logic\MonoManager.cpp" />
     <ClCompile Include="source\Logic\MonoMethods.cpp" />
     <ClCompile Include="source\Logic\ScriptComponent.cpp" />

@@ -1,7 +1,7 @@
 ﻿/*!*****************************************************************************
 \file MonoScript.cs
-\author Jazz Teoh Yu Jue, Chen Jia Wen, Kew Yu Jun, Xiu Han
-\par DP email: j.teoh\@digipen.edu
+\author Yip Xiu Han, Jazz Teoh Yu Jue, Chen Jia Wen, Kew Yu Jun
+\par DP email: xiuhan.yip@\digipen.edu, j.teoh\@digipen.edu, c.jiawen\@digipen.edu, k.yujun\@digipen.edu
 \par Group: Memory Leak Studios
 \date 27-01-2023
 \brief

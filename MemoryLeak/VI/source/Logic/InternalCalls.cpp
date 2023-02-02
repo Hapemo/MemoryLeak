@@ -655,8 +655,7 @@ void InternalCalls::PlaySoundOnLoop(std::string const& _entityName, std::string 
 	Stop a sound
 *******************************************************************************/
 void InternalCalls::StopSound(std::string const& _entityName, std::string const& _sceneName) {
-	if (FUNC->GetEntity(_entityName, _sceneName).HasComponent<Audio>())
-	{
+	if (FUNC->GetEntity(_entityName, _sceneName).HasComponent<Audio>()) {
 		audioManager->StopSound(FUNC->GetEntity(_entityName, _sceneName));
 		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = false;
 	}
@@ -821,49 +820,53 @@ void InternalCalls::UpdateText(std::string const& _entityName, std::string const
 	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Text>().text = _text;
 }
 
-void InternalCalls::SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset)
-{
+void InternalCalls::SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset) {
 	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Text>().offset = Math::Vec2(_xoffset, _yoffset);
 }
 
-int InternalCalls::GetLineCount(std::string const& _entityName, std::string const& _sceneName)
-{
+int InternalCalls::GetLineCount(std::string const& _entityName, std::string const& _sceneName) {
 	return renderManager->GetTextLines((FUNC->GetEntity(_entityName, _sceneName)));
 }
 
-float InternalCalls::GetFontScale(std::string const& _entityName, std::string const& _sceneName)
-{
+float InternalCalls::GetFontScale(std::string const& _entityName, std::string const& _sceneName) {
 	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<Text>())
 		return -1.f;
 	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<Text>().scale;
 }
 
-void InternalCalls::WeatherAIinit(float _width, float _height)
-{
+/*!*****************************************************************************
+\brief
+Weather functions.
+*******************************************************************************/
+void InternalCalls::WeatherAIinit(float _width, float _height) {
 	aiManager->weatherAIinit(_width, _height);
 }
 
-int InternalCalls::GetCurrentWeather(int _index, float _posX, float _posY)
-{
+int InternalCalls::GetCurrentWeather(int _index, float _posX, float _posY) {
 	return aiManager->GetCurrentWeather(_index, _posX, _posY);
 }
 
-float InternalCalls::GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName)
-{
+/*!*****************************************************************************
+\brief
+Changing lightsource component.
+*******************************************************************************/
+float InternalCalls::GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName) {
 	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<LightSource>())
 		return -1.f;
 	return FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius;
 }
 
-void InternalCalls::SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius)
-{
+void InternalCalls::SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius) {
 	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<LightSource>())
 		return;
 	FUNC->GetEntity(_entityName, _sceneName).GetComponent<LightSource>().radius = _radius;
 }
 
-void InternalCalls::SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a)
-{
+/*!*****************************************************************************
+\brief
+Changing sprite component.
+*******************************************************************************/
+void InternalCalls::SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a) {
 	if (!FUNC->GetEntity(_entityName, _sceneName).HasComponent<Sprite>())
 		return;
 	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a};

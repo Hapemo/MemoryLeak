@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file InternalCalls.cs
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 02-02-2023
+\brief
+This file contains the function declarations of the class InternalCalls in C#.
+InternalCalls are where all functions that scripts need to use from the engine
+is being stored.
+*******************************************************************************/
+
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage

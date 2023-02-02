@@ -233,13 +233,7 @@ float MonoMethods::GetFontScale(MonoString* _entityName, MonoString* _sceneName)
 }
 /*!*****************************************************************************
 \brief
-Checks for the state of certain key
-\param STATE
-- State of the key pressed
-\param KEY
-- Key to check the state of
-\return bool
-- Returns true if inputted state matches current state of specified key
+	Registers the internal calls for mono use.
 *******************************************************************************/
 void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::TestArgString", &FUNC->TestArgString);
@@ -327,5 +321,4 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("BonVoyage.InternalCalls::SetLightSourceRadius", &MonoMethods::SetLightSourceRadius);
 	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteColor", &MonoMethods::SetSpriteColor);
 	mono_add_internal_call("BonVoyage.InternalCalls::GetFontScale", &MonoMethods::GetFontScale);
-
 }
