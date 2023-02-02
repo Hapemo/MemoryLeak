@@ -9,7 +9,7 @@ This file contains information related to the rendering of objects.
 *******************************************************************************/
 #pragma once
 //define number of triangles for circle
-constexpr int CIRCLE_SLICES = 17;
+constexpr int CIRCLE_SLICES = 34;
 //modifier for vector.reserve() 
 constexpr float MODIFIER = 0.05f;
 constexpr size_t NO_OF_OBJECTS = 10000;
