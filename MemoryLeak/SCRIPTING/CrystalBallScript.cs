@@ -24,10 +24,12 @@ namespace BonVoyage {
             //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
             //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
             //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
+            InternalCalls.EntityDeactivate("Ball", "Dialogue");
         }
 
         public void Update()
         {
+            InternalCalls.EntityActivate("Ball", "Dialogue");
             if ((InternalCalls.ButtonReleased("cyclemap", "Dialogue")) == true)
             {
                 toggle = toggle >= 2 ? 0 : (toggle + 1);
@@ -141,6 +143,7 @@ namespace BonVoyage {
             InternalCalls.EntityDeactivate("minimap", "MiniMap");
             InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
             InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
+            InternalCalls.EntityDeactivate("Ball", "Dialogue");
             InternalCalls.PauseScene("MiniMap");
             InternalCalls.PauseScene("WeatherMap");
             InternalCalls.PauseScene("EnemyMap");
