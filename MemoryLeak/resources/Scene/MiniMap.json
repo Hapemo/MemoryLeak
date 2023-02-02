@@ -43,7 +43,7 @@
             "fontFile": "BPtypewrite",
             "text": "Minimap",
             "offset": {
-                "X": -84.0,
+                "X": -75.0,
                 "Y": 150.0
             },
             "scale": 0.75,
