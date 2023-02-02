@@ -669,7 +669,10 @@ void InternalCalls::PlaySoundOnLoop(std::string const& _entityName, std::string 
 *******************************************************************************/
 void InternalCalls::StopSound(std::string const& _entityName, std::string const& _sceneName) {
 	if (FUNC->GetEntity(_entityName, _sceneName).HasComponent<Audio>())
+	{
+		audioManager->StopSound(FUNC->GetEntity(_entityName, _sceneName));
 		(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.toPlay = false;
+	}
 }
 
 /*!*****************************************************************************

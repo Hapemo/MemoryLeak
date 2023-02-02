@@ -101,6 +101,7 @@ namespace BonVoyage
           CatPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue");
           CatPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue");
           dialogueOrder = 0;
+          
       }
 
       public void Update() {
@@ -138,11 +139,11 @@ namespace BonVoyage
             #endregion
             if (dialogueOrder == 1)
             {
-                if (InternalCalls.GetPosY("Little Girl", "Level1") < 10000)
+                if (InternalCalls.GetScaleX("Little Girl", "Level1") >0)
                 {
                     InternalCalls.SetPosY("Little Girl", "Level1", InternalCalls.GetPosY("Little Girl", "Level1") + 200 * (float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleX("Little Girl", "Level1", InternalCalls.GetScaleX("Little Girl", "Level1") - 50.0f * (float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleY("Little Girl", "Level1", InternalCalls.GetScaleY("Little Girl", "Level1") - 50.0f * (float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleX("Little Girl", "Level1", InternalCalls.GetScaleX("Little Girl", "Level1") - 10.0f * (float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleY("Little Girl", "Level1", InternalCalls.GetScaleY("Little Girl", "Level1") - 10.0f * (float)InternalCalls.GetDeltaTime());
                 }
                 else
                     InternalCalls.EntityDeactivate("Little Girl", "Level1");
@@ -392,6 +393,7 @@ namespace BonVoyage
                         //Console.Write("Attacking!\n");
                         HitCounter = 0;
                         ++HitTaken;
+                        InternalCalls.PlayEntitySound("Enemy", "Level1");
                         InternalCalls.SetTexture("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
                     }
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Hit");
@@ -410,6 +412,7 @@ namespace BonVoyage
                     HitTaken = -1;
                 }
                 if (HitTaken == -1 && InternalCalls.GetAnimationCurrentIndex("Boat", "Level1") == InternalCalls.GetAnimationFrameCount("Boat", "Level1") - 1) {
+                    InternalCalls.StopSound("EnemyTrigger", "Level1");
                     InternalCalls.PauseScene("Level1");
                     InternalCalls.PlayScene("Game Over");
                 }
