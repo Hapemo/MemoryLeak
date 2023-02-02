@@ -114,6 +114,13 @@ public:
 	*******************************************************************************/
 	GLuint GetGameFBO() const { return mGameFBO.GetColorAttachment(); }
 
+	/*!*****************************************************************************
+	\brief
+	Creates the shadow overlay.
+
+	\param glm::vec4
+	The color of the shadow.
+	*******************************************************************************/
 	void CreateShadows(const glm::vec4& clr);
 
 	/*!*****************************************************************************
@@ -253,9 +260,34 @@ public:
 	*******************************************************************************/
 	bool ShouldCull(const Entity& e);
 
+	/*!*****************************************************************************
+	\brief
+	Adds a new layer to the render layers.
+
+	\param int
+	The layer number to add.
+	*******************************************************************************/
 	void NewLayer(int _layer);
 
+	/*!*****************************************************************************
+	\brief
+	Returns the entity with the lightsource component attached.
+
+	\param
+	The entity with the lightsource component.
+	*******************************************************************************/
 	Entity GetLightSource() { return lightsource; }
+
+	/*!*****************************************************************************
+	\brief
+	Get the number of lines of text in a text component.
+	\param Entity
+	The entity with text component to check for.
+	\return
+	The number of lines.
+	*******************************************************************************/
+	int GetTextLines(Entity _e);
+
 private:
 	void* gs;
 	bool mIsCurrSceneUI;
@@ -311,14 +343,55 @@ private:
 	*******************************************************************************/
 	void BindTextureUnit(const GLuint& _texID, TextureInfo& _texInfo, std::vector<int>& _texUnits);
 
+	/*!*****************************************************************************
+	\brief
+	Batch renders textures, shapes and font based on their respective layers.
+
+	\param std::map<size_t, std::map<GLuint, TextureInfo>>& 
+	The texture info with vertices.
+	*******************************************************************************/
 	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 	
+	/*!*****************************************************************************
+	\brief
+	Batch renders the Circular vieport.
+	
+	\param std::map<size_t, std::map<GLuint, TextureInfo>>&
+	The texture info for the circular viewport.
+	*******************************************************************************/
 	void BatchRenderVPLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
+	/*!*****************************************************************************
+	\brief
+	Creates the visibility polygon for lighting.
+
+	\param const std::vector<Math::Vec2>&
+	The ray endpoints to create the polygon from.
+	*******************************************************************************/
 	void CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices);
 
+	/*!*****************************************************************************
+	\brief
+	Interpolates color for the lightsource and shadow.
+
+	\param const glm::vec4&
+	The original color.
+
+	\param const glm::vec4&
+	The target color.
+
+	\param float
+	The distanct to the target color from the original.
+
+	\param float
+	The distance from the target.
+	*******************************************************************************/
 	glm::vec4 InterpolateColor(const glm::vec4& original, const glm::vec4& target, float distance, float actual);
 
+	/*!*****************************************************************************
+	\brief
+	Renders the visibility polygon.
+	*******************************************************************************/
 	void RenderVisibilityPolygon();
 
 	/*!*****************************************************************************
@@ -363,6 +436,13 @@ private:
 	*******************************************************************************/
 	void BatchRenderTextures(int& _texCount, std::vector<int>& _texUnits);
 
+	/*!*****************************************************************************
+	\brief
+	Renders all text on a specific layer.
+
+	\param int
+	The layer to render.
+	*******************************************************************************/
 	void RenderText(int _layer);
 
 	/*!*****************************************************************************
@@ -371,8 +451,19 @@ private:
 	*******************************************************************************/
 	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo);
 
+	/*!*****************************************************************************
+	\brief
+	Renders all text on a specific layer.
+
+	\param int
+	The layer to render.
+	*******************************************************************************/
 	void CreateVerticesAnimator(std::map<size_t, std::map<GLuint, TextureInfo>>& _texInfo);
 
+	/*!*****************************************************************************
+	\brief
+	Create the light map.
+	*******************************************************************************/
 	void CreateLightMap();
 
 	/*!*****************************************************************************
@@ -386,9 +477,8 @@ private:
 	\param const Color& _c
 	The color component.
 	*******************************************************************************/
-	public:
 	void CreateDebugPoint(const Transform& _t, const Color& _clr);
-	private:
+	
 	/*!*****************************************************************************
 	\brief
 	Rendering of textures
@@ -416,6 +506,16 @@ private:
 	*******************************************************************************/
 	void CreateSquare(const Entity& _e, int layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
 
+	/*!*****************************************************************************
+	\brief
+	Create vertices for the shadow filter.
+	\param int
+	The layer of the shadow.
+	\param std::vector<Vertex>&
+	The veritices of the shadow filter.
+	\param std::vector<GLushort>&
+	The indices of the shadow filter.
+	*******************************************************************************/
 	void CreateLightFilter(int _shadowLayer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
 
 	/*!*****************************************************************************
@@ -427,7 +527,6 @@ private:
 	*******************************************************************************/
 	void CreateCircle(const Entity& _e, int layer);
 
-public:
 	/*!*****************************************************************************
 	\brief
 	Creates a circle based on Transform, Color and layer.
@@ -443,9 +542,21 @@ public:
 	*******************************************************************************/
 	void CreateCircle(const Transform& _xform, const Color& _clr, int layer);
 
+	/*!*****************************************************************************
+	\brief
+	Creates a circle based on Transform, Color and layer.
+
+	\param const Transform& _t
+	The transform component.
+
+	\param const Color& _cltr&
+	The color component.
+
+	\param int
+	Layer to render at.
+	*******************************************************************************/
 	void CreateSquare(const Transform& _xform, const Color& _clr, int layer);
 
-private:
 	/*!*****************************************************************************
 	\brief
 	Creates a debug point based on Transform and Sprite Component, or Physics point
@@ -466,7 +577,7 @@ private:
 	The entity containing Transform and Sprite component.
 	*******************************************************************************/
 	void CreateDebugLine(const Entity& _e);
-public:
+
 	/*!*****************************************************************************
 	\brief
 	Creates a debug line based on Transform and Sprite Component, or Physics Edge
@@ -480,8 +591,6 @@ public:
 	*******************************************************************************/
 	void CreateDebugLine(const Transform& _t, const Color& _clr);
 
-	int GetTextLines(Entity _e);
-private:
 	/*!*****************************************************************************
 	\brief
 	Creates a debug Square based on Transform and Sprite Component, or Physics Rect
@@ -697,6 +806,3 @@ private:
 	void CreateGizmo();
 
 };
-
-
-

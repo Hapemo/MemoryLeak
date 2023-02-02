@@ -59,7 +59,7 @@
             "layer": 0
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "PAUSED",
             "offset": {
                 "X": -132.0,
@@ -84,12 +84,12 @@
         "Transform": {
             "scale": {
                 "X": 545.0,
-                "Y": 125.0
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 50.0
+                "Y": 51.0
             }
         },
         "Sprite": {
@@ -115,10 +115,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "How To Play",
             "offset": {
-                "X": -167.0,
+                "X": -134.0,
                 "Y": -16.0
             },
             "scale": 1.0,
@@ -145,13 +145,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 555.5,
-                "Y": 135.5
+                "X": 545.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -100.0
+                "Y": -71.0
             }
         },
         "Sprite": {
@@ -177,10 +177,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Quit Game",
             "offset": {
-                "X": -133.0,
+                "X": -120.0,
                 "Y": -16.0
             },
             "scale": 1.0,
@@ -208,12 +208,12 @@
         "Transform": {
             "scale": {
                 "X": 545.0,
-                "Y": 125.0
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -250.0
+                "Y": -191.0
             }
         },
         "Sprite": {
@@ -239,10 +239,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "BPtypewrite",
+            "fontFile": "CaviarDreams",
             "text": "Resume Game",
             "offset": {
-                "X": -157.0,
+                "X": -152.0,
                 "Y": -16.0
             },
             "scale": 1.0,
