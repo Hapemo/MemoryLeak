@@ -88,6 +88,10 @@ public:
 	*******************************************************************************/
 	void DrawParagraphs(int _layer);
 
+	/*!*****************************************************************************
+	\brief
+	Clears paragraph vector.
+	*******************************************************************************/
 	void Clear();
 
 	/*!*****************************************************************************
@@ -114,6 +118,32 @@ public:
 		mWindowWidth = *_windowWidth; 
 		mWindowHeight = *_windowHeight;
 	}
+
+	/*!*****************************************************************************
+	\brief
+	Gets the number of lines for each text component.
+
+	\param const std::string& _text
+	String containing text to be rendered.
+
+	\param const Math::Vec2& _pos
+	Position to render the string.
+
+	\param float _scale
+	Scale of the font.
+
+	\param const Math::Vec3& _color
+	Color of the font.
+
+	\param float
+	Width of the sprite that the text is rendered on.
+
+	\param float
+	Camera's zoom
+	
+	\return 
+	the number of lines.
+	*******************************************************************************/
 	int GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float _width, float camZoom);
 
 private:

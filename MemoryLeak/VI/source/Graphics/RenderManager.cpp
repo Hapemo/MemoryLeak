@@ -154,7 +154,10 @@ void RenderManager::Render()
 		Render();
 	//minimap.id = 0;
 }
-
+/*!*****************************************************************************
+\brief
+Create the light map.
+*******************************************************************************/
 void RenderManager::CreateLightMap()
 {
 	mLightMapFBO.Bind();
@@ -168,12 +171,33 @@ void RenderManager::CreateLightMap()
 	SetClearColor(prevClearColor);
 	mLightMapFBO.Unbind();
 }
+/*!*****************************************************************************
+\brief
+Interpolates color for the lightsource and shadow.
 
+\param const glm::vec4&
+The original color.
+
+\param const glm::vec4&
+The target color.
+
+\param float
+The distanct to the target color from the original.
+
+\param float
+The distance from the target.
+*******************************************************************************/
 glm::vec4 RenderManager::InterpolateColor(const glm::vec4& original, const glm::vec4& target, float distance, float actual)
 {
 	return original + (target - original) * (actual / distance);
 }
+/*!*****************************************************************************
+\brief
+Creates the visibility polygon for lighting.
 
+\param const std::vector<Math::Vec2>&
+The ray endpoints to create the polygon from.
+*******************************************************************************/
 void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vertices)
 {
 	if (!lightsource.id) return;
@@ -226,7 +250,13 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	CreateShadows(shadowclr);
 	mIsCurrSceneUI = prev;
 }
+/*!*****************************************************************************
+\brief
+Creates the shadow overlay.
 
+\param glm::vec4
+The color of the shadow.
+*******************************************************************************/
 void RenderManager::CreateShadows(const glm::vec4& _clr)
 {
 	glm::vec4 clr = _clr;
@@ -262,7 +292,10 @@ void RenderManager::CreateShadows(const glm::vec4& _clr)
 	mLightIndices.push_back(first + 2);
 	mLightIndices.push_back(first + 3);
 }
-
+/*!*****************************************************************************
+\brief
+Renders the visibility polygon.
+*******************************************************************************/
 void RenderManager::RenderVisibilityPolygon()
 {
 	if (mLightVertices.empty()) return;
@@ -317,7 +350,13 @@ GLuint RenderManager::GetAnimatorFBO()
 
 	return mAnimatorFBO.GetColorAttachment();
 }
+/*!*****************************************************************************
+\brief
+Batch renders textures, shapes and font based on their respective layers.
 
+\param std::map<size_t, std::map<GLuint, TextureInfo>>&
+The texture info with vertices.
+*******************************************************************************/
 void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo)
 {
 	for (int layer : mRenderLayers)
@@ -334,7 +373,13 @@ void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureI
 		RenderText(layer);
 	}
 }
+/*!*****************************************************************************
+\brief
+Batch renders the Circular vieport.
 
+\param std::map<size_t, std::map<GLuint, TextureInfo>>&
+The texture info for the circular viewport.
+*******************************************************************************/
 void RenderManager::BatchRenderVPLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo)
 {
 	for (int layer : mRenderLayers)
@@ -641,7 +686,13 @@ void RenderManager::BatchRenderElements(GLenum _mode, const std::vector<Vertex>&
 	glNamedBufferSubData(mAllocator.meboid, 0, _indices.size() * sizeof(GLushort), _indices.data());
 	glDrawElements(_mode, static_cast<GLsizei>(_indices.size()), GL_UNSIGNED_SHORT, nullptr);
 }
+/*!*****************************************************************************
+\brief
+Adds a new layer to the render layers.
 
+\param int
+The layer number to add.
+*******************************************************************************/
 void RenderManager::NewLayer(int _layer)
 {
 	if (find(mRenderLayers.begin(), mRenderLayers.end(), _layer) == mRenderLayers.end())
@@ -770,6 +821,16 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 
 	std::sort(mRenderLayers.begin(), mRenderLayers.end());
 }
+/*!*****************************************************************************
+\brief
+Create vertices for the shadow filter.
+\param int
+The layer of the shadow.
+\param std::vector<Vertex>&
+The veritices of the shadow filter.
+\param std::vector<GLushort>&
+The indices of the shadow filter.
+*******************************************************************************/
 void RenderManager::CreateLightFilter(int _shadowLayer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
 {
 	float layer = (_shadowLayer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f)
@@ -810,6 +871,13 @@ void RenderManager::CreateLightFilter(int _shadowLayer, std::vector<Vertex>& _ve
 	_indices.push_back(first + 2);
 	_indices.push_back(first + 3);
 }
+/*!*****************************************************************************
+\brief
+Renders all text on a specific layer.
+
+\param int
+The layer to render.
+*******************************************************************************/
 void RenderManager::CreateVerticesAnimator(std::map<size_t, std::map<GLuint, TextureInfo>>& _texInfo)
 {
 	Entity e = mEditorSelectedEntities[0];
@@ -909,7 +977,13 @@ void RenderManager::RenderShapes(int _layer)
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
 }
+/*!*****************************************************************************
+\brief
+Renders all text on a specific layer.
 
+\param int
+The layer to render.
+*******************************************************************************/
 void RenderManager::RenderText(int _layer)
 {
 	Camera currCam = mCurrRenderPass == RENDER_STATE::WORLD ? mWorldCam
@@ -1023,6 +1097,19 @@ void RenderManager::CreateSquare(const Entity& _e, int _layer, std::vector<Verte
 	_indices.push_back(first + 2);
 	_indices.push_back(first + 3);
 }
+/*!*****************************************************************************
+\brief
+Creates a circle based on Transform, Color and layer.
+
+\param const Transform& _t
+The transform component.
+
+\param const Color& _cltr&
+The color component.
+
+\param int
+Layer to render at.
+*******************************************************************************/
 void RenderManager::CreateSquare(const Transform& _xform, const Color& _clr, int _layer)
 {
 	Math::Mat3 mtx = GetTransform(_xform.scale, _xform.rotation, _xform.translation);
@@ -1557,7 +1644,14 @@ void RenderManager::CreateText(const Entity& _e, int _layer)
 		(text.offset + _e.GetComponent<Transform>().translation  - cam.GetPos() ) / cam.GetZoom() + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
 		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), _layer, _e.GetComponent<Transform>().scale.x, cam.GetZoom());
 }
-
+/*!*****************************************************************************
+\brief
+Get the number of lines of text in a text component.
+\param Entity
+The entity with text component to check for.
+\return
+The number of lines.
+*******************************************************************************/
 int RenderManager::GetTextLines(Entity _e)
 {
 	Text text = _e.GetComponent<Text>();
