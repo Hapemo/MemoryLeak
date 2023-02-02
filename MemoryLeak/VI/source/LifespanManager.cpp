@@ -1,4 +1,4 @@
-
+//Deprecated
 #include "ECS_systems.h"
 
 void LifespanManager::Update(float dt) {

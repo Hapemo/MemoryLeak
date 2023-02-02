@@ -925,7 +925,7 @@
             "isSpacial": false
         },
         "Script": {
-            "name": "TestMonoScript"
+            "name": "MonoScript"
         },
         "ShadowCaster": {
             "centerOffset": {

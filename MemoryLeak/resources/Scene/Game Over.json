@@ -30,12 +30,12 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "BOAT CAPSIZED",
+            "text": "BOAT CAPSIZED!",
             "offset": {
-                "X": -451.0,
-                "Y": 237.0
+                "X": -296.0,
+                "Y": 60.0
             },
-            "scale": 2.5,
+            "scale": 1.5,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -53,13 +53,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 545.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": -0.0000152587890625,
-                "Y": -0.10191726684570313
+                "Y": -86.10199737548828
             }
         },
         "Sprite": {
@@ -124,8 +124,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 505.0,
+                "Y": 108.0
             },
             "rotation": 0.0,
             "translation": {
@@ -169,7 +169,7 @@
             "text": "Quit Game",
             "offset": {
                 "X": -126.0,
-                "Y": -18.0
+                "Y": -17.0
             },
             "scale": 1.0,
             "color": {

@@ -30,12 +30,12 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Are you sure you want to quit?",
+            "text": "Are you sure?",
             "offset": {
-                "X": -485.0,
-                "Y": -7.0
+                "X": -190.0,
+                "Y": -41.0
             },
-            "scale": 1.100000023841858,
+            "scale": 1.0,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -54,7 +54,7 @@
         "Transform": {
             "scale": {
                 "X": 500.0,
-                "Y": 150.0
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
@@ -116,7 +116,7 @@
         "Transform": {
             "scale": {
                 "X": 500.0,
-                "Y": 150.0
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
@@ -196,6 +196,51 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\menu screen background.jpg",
             "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "Quit Game",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 702.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 214.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "QUIT GAME",
+            "offset": {
+                "X": -205.0,
+                "Y": -19.0
+            },
+            "scale": 1.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
         }
     }
 ]
