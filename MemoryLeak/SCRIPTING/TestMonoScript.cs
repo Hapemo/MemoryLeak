@@ -128,15 +128,26 @@ namespace BonVoyage
         RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
 
         if (!RunlittleGirlDialog) {
-            InternalCalls.EntityDeactivate("Little Girl", "Level1");
+            
             InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
             SetObjectiveText();
-                        dialogueOrder = 1;
+            dialogueOrder = 1;
         }
       }
     }
-          #endregion
+            #endregion
+            if (dialogueOrder == 1)
+            {
+                if (InternalCalls.GetPosY("Little Girl", "Level1") < 10000)
+                {
+                    InternalCalls.SetPosY("Little Girl", "Level1", InternalCalls.GetPosY("Little Girl", "Level1") + 200 * (float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleX("Little Girl", "Level1", InternalCalls.GetScaleX("Little Girl", "Level1") - 50.0f * (float)InternalCalls.GetDeltaTime());
+                    InternalCalls.SetScaleY("Little Girl", "Level1", InternalCalls.GetScaleY("Little Girl", "Level1") - 50.0f * (float)InternalCalls.GetDeltaTime());
+                }
+                else
+                    InternalCalls.EntityDeactivate("Little Girl", "Level1");
 
+            }
           #region Passenger 1 Dialogue
           if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")&&(dialogueOrder==1))
           {

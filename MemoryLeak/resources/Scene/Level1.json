@@ -1116,7 +1116,7 @@
                 "a": 100
             },
             "sprite": 1,
-            "texture": "",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 2
         },
         "AI": {
@@ -1654,7 +1654,7 @@
                 "a": 150
             },
             "sprite": 0,
-            "texture": "",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 61
         }
     },
@@ -1684,7 +1684,7 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 62
         },
         "Text": {
@@ -2125,12 +2125,12 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
@@ -2197,7 +2197,7 @@
                 "X": 0.5,
                 "Y": 0.5
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "Audio": {
@@ -2393,7 +2393,7 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 13
         },
         "RectCollider": {
@@ -2446,7 +2446,7 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 67
         },
         "RectCollider": {
@@ -2488,7 +2488,7 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -2530,7 +2530,7 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -2572,7 +2572,7 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "",
+            "texture": "Textures\\Background\\Assets.txt",
             "layer": 1
         },
         "RectCollider": {
@@ -2640,9 +2640,6 @@
             "isRandPitch": false,
             "isSpacial": false
         },
-        "Script": {
-            "name": "FragmentScript"
-        },
         "ShadowCaster": {
             "centerOffset": {
                 "X": 5.0,
@@ -2653,6 +2650,9 @@
                 "Y": 0.10000000149011612
             },
             "renderFlag": true
+        },
+        "Script": {
+            "name": "FragmentScript"
         }
     }
 ]
