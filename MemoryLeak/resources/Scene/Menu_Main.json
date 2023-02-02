@@ -38,13 +38,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 800.0,
-                "Y": 200.0
+                "X": 700.0,
+                "Y": 180.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -57.0
+                "Y": -35.0
             }
         },
         "Sprite": {
@@ -85,7 +85,7 @@
             "fontFile": "BPtypewrite",
             "text": "Start Game",
             "offset": {
-                "X": -173.0,
+                "X": -172.0,
                 "Y": -21.0
             },
             "scale": 1.2000000476837158,
@@ -112,13 +112,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 700.0,
+                "Y": 180.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -208.0
+                "Y": -185.0
             }
         },
         "Sprite": {
@@ -159,10 +159,10 @@
             "fontFile": "BPtypewrite",
             "text": "How To Play",
             "offset": {
-                "X": -141.0,
-                "Y": -16.0
+                "X": -184.0,
+                "Y": -21.0
             },
-            "scale": 0.8999999761581421,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -186,13 +186,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 700.0,
+                "Y": 180.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -333.0
+                "Y": -335.0
             }
         },
         "Sprite": {
@@ -233,10 +233,10 @@
             "fontFile": "BPtypewrite",
             "text": "Quit Game",
             "offset": {
-                "X": -129.0,
-                "Y": -16.0
+                "X": -150.0,
+                "Y": -21.0
             },
-            "scale": 1.0,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
