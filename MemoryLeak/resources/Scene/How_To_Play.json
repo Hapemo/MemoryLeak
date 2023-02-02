@@ -43,8 +43,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": -1.7718505859375,
+                "Y": -1.7718734741210938
             }
         },
         "Sprite": {
@@ -59,11 +59,11 @@
             "layer": 0
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "HOW TO PLAY",
             "offset": {
-                "X": -249.0,
-                "Y": 196.0
+                "X": -243.0,
+                "Y": 200.0
             },
             "scale": 1.5,
             "color": {
@@ -83,8 +83,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 496.0,
-                "Y": 99.0
+                "X": 650.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
@@ -100,7 +100,7 @@
                 "a": 100
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 1
         },
         "CircleCollider": {
@@ -124,10 +124,10 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Back",
             "offset": {
-                "X": -55.0,
+                "X": -59.0,
                 "Y": -19.0
             },
             "scale": 1.0,
@@ -154,12 +154,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 379.0,
+                "X": 504.0,
                 "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 89.74579620361328,
+                "X": 89.74580383300781,
                 "Y": 135.47454833984375
             }
         },
@@ -171,11 +171,11 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 3
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Move Player",
             "offset": {
                 "X": -173.0,
@@ -199,13 +199,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 573.0,
+                "X": 594.0,
                 "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 172.88699340820313,
-                "Y": 24.029464721679688
+                "X": 168.99154663085938,
+                "Y": 14.614001274108887
             }
         },
         "Sprite": {
@@ -216,11 +216,11 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 4
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Advance Dialogue",
             "offset": {
                 "X": -253.0,
@@ -249,7 +249,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -168.72439575195313,
+                "X": -232.0,
                 "Y": -132.81863403320313
             }
         },
@@ -261,11 +261,11 @@
                 "a": 0
             },
             "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 2
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "ESC",
             "offset": {
                 "X": -42.0,
@@ -306,11 +306,11 @@
                 "a": 0
             },
             "sprite": 1,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 3
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "Pause Menu",
             "offset": {
                 "X": -173.0,
@@ -339,7 +339,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -167.73953247070313,
+                "X": -240.0,
                 "Y": 44.4610710144043
             }
         },

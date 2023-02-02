@@ -19,7 +19,7 @@ The MonoManager class handles the C# scripting for the engine.
 MonoDomain* MonoManager::mAppDomain = nullptr;
 MonoDomain* MonoManager::mRootDomain = nullptr;
 MonoAssembly* MonoManager::mAssembly = nullptr;
-std::shared_ptr<MonoManager> MonoManager::mInstance;
+uint32_t MonoManager::mMonoHandler = 0;
 
 /*!*****************************************************************************
 \brief
@@ -40,21 +40,12 @@ void MonoManager::InitMono() {
 Set and return the mono directory path according to the projec configuration.
 *******************************************************************************/
 std::string MonoManager::MonoDirectoryPath() {
-	std::string path = std::filesystem::current_path().parent_path().string() + "\\bin\\";
-#ifdef NDEBUG
-#ifdef _EDITOR
-	path += "EditorRelease";
-#else
-	path += "Release";
-#endif
-#else
-#ifdef _EDITOR
-	path += "EditorDebug";
-#else
-	path += "Debug";
-#endif
-#endif
-	path += "\\x64";
+	char* tmp{};
+	_get_pgmptr(&tmp);
+	std::string path{ tmp };
+	path.erase(path.find_last_of("\\"));
+
+	//LOG_INFO(path);
 	mono_set_dirs(path.c_str(), path.c_str());
 	path += "\\SCRIPTING";
 	return path;
@@ -70,8 +61,10 @@ bool MonoManager::InitMonoDomain(const char* _root, const char* _appdomain, cons
 	//LOG_INFO("Initialising Mono domain...");
 	mRootDomain = mono_jit_init(_root);
 	if (mRootDomain != nullptr) {
+		std::cout << "Creating app domain...\n";
 		// Create a mono app domain
 		mAppDomain = mono_domain_create_appdomain((char*)_appdomain, nullptr);
+
 		if (!mAppDomain) std::cout << "Failed to create Mono app domain: " << _appdomain << "!\n";
 		else mono_domain_set(mAppDomain, true);
 
@@ -81,8 +74,10 @@ bool MonoManager::InitMonoDomain(const char* _root, const char* _appdomain, cons
 		if (!mAssembly) {
 			std::cout << "Failed to load Mono assembly from: " << _directory + '\\' << _dll << ".dll!\n";
 			return false;
-		} else return true;
-	} else {
+		}
+		else return true;
+	}
+	else {
 		std::cout << "Failed to initialise Mono root domain: " << _root << "!\n";
 		return false;
 	}
@@ -120,7 +115,8 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	if (monoClass == nullptr) {
 		std::cout << "Failed to retrieve Mono class " << _namespace << "::" << _class << "!\n";
 		return nullptr;
-	} else std::cout << "Retrieved Mono class " << _namespace << "::" << _class << ".\n";
+	}
+	else std::cout << "Retrieved Mono class " << _namespace << "::" << _class << ".\n";
 
 	// Allocate an instance of the class
 	MonoObject* classInstance = mono_object_new(mAppDomain, monoClass);
@@ -128,7 +124,8 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	if (classInstance == nullptr) {
 		std::cout << "Failed to allocate an instance to Mono class " << _namespace << "::" << _class << "!\n";
 		return nullptr;
-	} else std::cout << "Allocated an instance to Mono class " << _namespace << "::" << _class << ".\n";
+	}
+	else std::cout << "Allocated an instance to Mono class " << _namespace << "::" << _class << ".\n";
 
 	// Call the parameterless (default) constructor
 	mono_runtime_object_init(classInstance);
@@ -141,7 +138,8 @@ Calls a mono method by script name and function name.
 *******************************************************************************/
 void MonoManager::CallMethod(std::string _scriptName, const char* _function, int _paramCount) {
 	MonoObject* monoInstance = GetMonoComponent(_scriptName);
-	if(monoInstance == nullptr) std::cout << "Failed to get an instance to Mono object from member map mMonoComponents!\n";
+
+	if (monoInstance == nullptr) std::cout << "Failed to get an instance to Mono object from member map mMonoComponents!\n";
 
 	// Get the MonoClass pointer from the instance
 	MonoClass* classInstance = mono_object_get_class(monoInstance);
@@ -162,7 +160,14 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 		mono_runtime_invoke(method, monoInstance, nullptr, &exception);
 
 		// Handle the exception
-		if (exception) std::cout << "Failed to call method " << _function << "()!\n";
+		if (exception) {
+			MonoString* exceptionString = mono_object_to_string(exception, nullptr);
+			const char* exceptionCString = mono_string_to_utf8(exceptionString);
+			std::cout << "Failed to call method " << _function << "()!\n";
+			std::cout << "Error " << exceptionCString << " thrown!\n";
+			mono_print_unhandled_exception(exception);
+			BREAKPOINT(true);
+		}
 	}
 }
 
@@ -174,10 +179,12 @@ void MonoManager::RegisterMonoScript(std::string _namespace, std::string _class)
 	if (GetMonoComponent(_class) == nullptr) {
 		std::cout << "Registering C# script method " << _namespace << "::" << _class << "()...\n";
 		// Loading mono image
-		MonoObject* testInstance = InstantiateClass(_namespace.c_str(), _class.c_str());
+		MonoObject* newInstance = InstantiateClass(_namespace.c_str(), _class.c_str());
 		// Storing mono object
-		if (testInstance != nullptr) SetMonoComponent(_class, testInstance);
+		if (newInstance != nullptr) SetMonoComponent(_class, newInstance);
 		else std::cout << "Failed to register C# script method " << _namespace << "::" << _class << "()!\n";
+
+		mMonoHandler = mono_gchandle_new(newInstance, true);
 	}
 }
 
@@ -216,4 +223,6 @@ void MonoManager::CloseMono() {
 		mono_jit_cleanup(mRootDomain);
 	}
 	mRootDomain = nullptr;
+
+	mono_gchandle_free(mMonoHandler);
 }

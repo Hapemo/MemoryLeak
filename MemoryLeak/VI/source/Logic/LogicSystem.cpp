@@ -111,6 +111,7 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 		case E_SCRIPTTYPE::INIT:
 			LOG_INFO("Start Script for " + scriptName + " ran!");
 			MonoManager::GetInstance()->CallMethod(scriptName, "Init", 0);
+
 			break;
 
 		case E_SCRIPTTYPE::UPDATE:

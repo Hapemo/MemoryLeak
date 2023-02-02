@@ -18,9 +18,11 @@ class PassengerScript : public ScriptComponent {
 private:
 	std::string name{ "PassengerScript" };
 	bool pickedUp;
+	bool pickingUp;
 	bool readyToPickUp;
-
+	Math::Vec2 diff;
 	Entity boat;
+	Entity passenger;
 	Entity destination;
 	Entity destinationHouse;
 	Transform* passengerTransform;

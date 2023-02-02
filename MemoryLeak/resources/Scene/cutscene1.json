@@ -38,12 +38,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 497.0,
-                "Y": 150.0
+                "X": 545.0,
+                "Y": 115.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 511.80126953125,
+                "X": 502.8009948730469,
                 "Y": -352.7950439453125
             }
         },
@@ -70,13 +70,13 @@
             "isSpacial": false
         },
         "Text": {
-            "fontFile": "CaviarDreams",
+            "fontFile": "BPtypewrite",
             "text": "To be continued...",
             "offset": {
-                "X": -188.0,
-                "Y": -16.0
+                "X": -195.0,
+                "Y": -15.0
             },
-            "scale": 1.0,
+            "scale": 0.75,
             "color": {
                 "r": 255,
                 "g": 255,

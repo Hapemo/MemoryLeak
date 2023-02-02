@@ -20,6 +20,7 @@ GLFWwindow* Helper::mWindow = nullptr;
 GLFWmonitor* Helper::mMonitor = nullptr;
 std::array<int, 2> Helper::mWindowPos{};
 std::array<int, 2> Helper::mWindowSize{};
+std::array<int, 2> Helper::mWindowMaximisedSize{};
 bool Helper::fullscreenFlag{ false };
 
 void FPSManager::CalcFPS(double fps_calc_interval) {
@@ -76,6 +77,7 @@ void Helper::SetFullScreen(bool _fullscreen) {
 
     // switch to full screen
     glfwSetWindowMonitor(mWindow, mMonitor, 0, 0, mode->width, mode->height, 0);
+    mWindowMaximisedSize = { mode->width, mode->height };
     LOG_INFO("Fullscreen activated");
     
     fullscreenFlag = true;

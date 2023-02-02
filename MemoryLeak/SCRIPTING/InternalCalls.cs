@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file InternalCalls.cs
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 02-02-2023
+\brief
+This file contains the function declarations of the class InternalCalls in C#.
+InternalCalls are where all functions that scripts need to use from the engine
+is being stored.
+*******************************************************************************/
+
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage
@@ -68,7 +81,10 @@ namespace BonVoyage
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool EntityIsActive(string _entityName, string _sceneName);
 
-		[MethodImpl(MethodImplOptions.InternalCall)]
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static bool SetEntityIsActive(string _entityName, string _sceneName, bool _active = true);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void EntityActivate(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
@@ -177,7 +193,10 @@ namespace BonVoyage
 		internal extern static void PlaySoundOnLoop(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void PlayAnySound(string _name, int _channel);
+		internal extern static void PlayEntitySound(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void PlaySoundInChannel(string _soundName, string _channel);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool IsPlaying(int _channel);
@@ -233,7 +252,25 @@ namespace BonVoyage
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetLineCount(string _entityName, string _sceneName);
 
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static bool IsPlayerSpeaker(int _id);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static void WeatherAIinit(float _width = 1600, float _height = 900);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static int GetCurrentWeather(int _index, float _posX, float _posY);
+
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static bool IsPlayerSpeaker(int _id);
+		internal extern static float GetLightSourceRadius(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetLightSourceRadius(string _entityName, string _sceneName, float _radius);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetSpriteColor(string _entityName, string _sceneName, int _r, int _g, int _b, int _a);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float GetFontScale(string _entityName, string _sceneName);
 	}
 }

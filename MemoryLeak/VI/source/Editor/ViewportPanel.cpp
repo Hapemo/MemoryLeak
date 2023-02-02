@@ -86,7 +86,7 @@ void ViewportPanel::renderUI()
 	else
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(0, 150, 0)));
 	
-	if (ImGui::Button("Play", buttonSize))
+	if (ImGui::Button("Play", buttonSize) || (Input::CheckKey(E_STATE::PRESS, E_KEY::P) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)))
 	{
 		isViewportPaused = false;
 	}
@@ -97,7 +97,7 @@ void ViewportPanel::renderUI()
 	else
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(200, 0, 0)));
 	ImGui::SameLine(0.f, 20.f);
-	if (ImGui::Button("Pause", buttonSize))
+	if (ImGui::Button("Pause", buttonSize)|| (Input::CheckKey(E_STATE::PRESS, E_KEY::K)&& Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)))
 	{
 		isViewportPaused = true;
 	}

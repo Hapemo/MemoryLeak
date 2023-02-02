@@ -65,9 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrystalBallScript.cs" />
+    <Compile Include="EnemyMapScript.cs" />
+    <Compile Include="FragmentScript.cs" />
     <Compile Include="InternalCalls.cs" />
+    <Compile Include="MenuLightCircle.cs" />
+    <Compile Include="MenuLightScript.cs" />
+    <Compile Include="MiniMapScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestMonoScript.cs" />
+    <Compile Include="MonoScript.cs" />
+    <Compile Include="WeatherMapScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

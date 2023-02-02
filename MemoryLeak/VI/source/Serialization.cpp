@@ -170,7 +170,10 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			if (entity[index].HasMember("ShadowCaster")) {
 				e.AddComponent<ShadowCaster>(getShadowCaster(entity[index]));
 			}
-
+			if (entity[index].HasMember("CircularViewport")) {
+				e.AddComponent<CircularViewport>(getCircularViewport(entity[index]));
+			}
+			
 			//mEntities.insert(e);
 			_sceneData.mEntities.insert(e);
 		}
@@ -657,7 +660,12 @@ ShadowCaster SerializationManager::getShadowCaster(Value& entity)
 	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();;
 	return shadowCaster;
 }
-
+CircularViewport SerializationManager::getCircularViewport(Value& entity)
+{
+	CircularViewport circularViewport;
+	(void)entity;
+	return circularViewport;
+}
 
 
 
@@ -895,6 +903,10 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		if (e.HasComponent<ShadowCaster>()) {
 
 			addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
+		}
+		if (e.HasComponent<CircularViewport>()) {
+
+			addCircularViewport(scene, entity, e.GetComponent<CircularViewport>());
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -1169,6 +1181,12 @@ void SerializationManager::addShadowCaster(Document& scene, Value& entity, Shado
 	entity.AddMember(StringRef("ShadowCaster"), tmp, scene.GetAllocator());
 }
 
+void SerializationManager::addCircularViewport(Document& scene, Value& entity, CircularViewport circularViewport)
+{
+	Value tmp(kObjectType);
+	(void)circularViewport;
+	entity.AddMember(StringRef("CircularViewport"), tmp, scene.GetAllocator());
+}
 /*!*****************************************************************************
 \brief
 	Load the saved gamestate data

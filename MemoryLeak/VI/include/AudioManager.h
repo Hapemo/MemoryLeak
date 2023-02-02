@@ -37,6 +37,9 @@ public:
 	void PlaySound(const Entity& e);	//Play sound 
 	int AddChannel();
 	void StopSound(int);
+	void StopAllSound();
+	void StopBGMSound();
+	void StopSFXSound();
 	void StopSound(const Entity& e);
 	std::vector<std::string> GetSongs() { return songs; }
 private:

@@ -89,12 +89,12 @@ void LayerManager::Step() {
 			// lesser than the current entity
 			if (item.obj[0].GetComponent<General>().tag == TAG::PLAYER) {
 				LayerManager::mOriginLayerMap.try_emplace(&item.obj[0], item.obj[0].GetComponent<Sprite>().layer);
-				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 1;
+				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 2;
 
 			}
 			else if (item.obj[1].GetComponent<General>().tag == TAG::PLAYER) {
 				LayerManager::mOriginLayerMap.try_emplace(&item.obj[1], item.obj[1].GetComponent<Sprite>().layer);
-				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 1;
+				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 2;
 			}
 		}
 	}
@@ -112,6 +112,8 @@ void LayerManager::Step() {
 		if (CollidedFlag)
 			++it;
 		else {
+			if (it->first->id > MAX_ENTITIES)
+				continue;
 			if (it->first->HasComponent<Sprite>())
 				it->first->GetComponent<Sprite>().layer = it->second;
 			it = mOriginLayerMap.erase(it);

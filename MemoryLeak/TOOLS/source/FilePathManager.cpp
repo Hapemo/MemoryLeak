@@ -1,3 +1,14 @@
+/*!*****************************************************************************
+\file FilePathManager.cpp
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 27-01-2023
+\brief
+File Path Manager is a manager that manages the filepaths of directory in
+project flexibly. Instead of hardcoding the filepath directly into the code,
+user can use filepath manager to get the file path.
+*******************************************************************************/
 #include "FilePathManager.h"
 #include "Logger.h"
 

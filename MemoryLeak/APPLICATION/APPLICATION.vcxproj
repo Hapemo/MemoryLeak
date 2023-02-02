@@ -36,6 +36,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Application.h" />
+    <ClInclude Include="include\Scripts\FPSPrint.h" />
+    <ClInclude Include="include\Scripts\DeathToMainMenuButton.h" />
     <ClInclude Include="include\Scripts\AttackScript.h" />
     <ClInclude Include="include\Scripts\BackToGameButton.h" />
     <ClInclude Include="include\Scripts\ExitConfirmationButton.h" />
@@ -57,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
+    <ClCompile Include="source\Scripts\FPSPrint.cpp" />
+    <ClCompile Include="source\Scripts\DeathToMainMenuButton.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Scripts\AttackScript.cpp" />
     <ClCompile Include="source\Scripts\BackToGameButton.cpp" />

@@ -10,7 +10,7 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 #include <FontManager.h>
 #include <sstream>
 #include <RenderProps.h>
-
+float FontRenderer::magicNumber = 0.435f;
 /*!*****************************************************************************
 \brief
 Default constructor for FontRenderer class.
@@ -150,8 +150,15 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
     {
         float width{};
         str += " ";
+        width += mGlyphs[' '].size.x * scale;
         for (char ch : str)
+        {
+          if (ch == '$') {
+                width += 1000;
+                continue;
+            }
             width += mGlyphs[ch].size.x * scale;
+        }
         wordWidth.push_back(width);
     }
     mParagraphs[layer].push_back(Paragraph(strings, wordWidth, _pos, scale, color, _width, camZoom));
@@ -185,14 +192,16 @@ void FontRenderer::DrawParagraphs(int _layer)
         for (size_t i = 0; i < para.words.size(); ++i)
         {
             currWidth += para.wordWidth[i];
-            if (i && currWidth > para.renderWidth *0.6f/ para.camZoom)
+            
+            if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
             {
                 pos.x = initialX;
-                pos.y -= (mMaxYSize) * para.scale;
+                pos.y -= (mMaxYSize) * para.scale * 1.1f;
                 currWidth = para.wordWidth[i];
             }
             for (auto itr = para.words[i].begin(); itr != para.words[i].end(); ++itr)
             {
+                if (*itr == '$') continue;
                 Character ch = mGlyphs[*itr];
                 float w = ch.size.x * para.scale;
                 float h = ch.size.y * para.scale;
@@ -229,13 +238,40 @@ void FontRenderer::DrawParagraphs(int _layer)
         mFontProgram.Unbind();
     }
 }
-
+/*!*****************************************************************************
+\brief
+Clears paragraph vector.
+*******************************************************************************/
 void FontRenderer::Clear()
 {
     //clear paragraph for next frame
     mParagraphs.clear();
 }
+/*!*****************************************************************************
+\brief
+Gets the number of lines for each text component.
 
+\param const std::string& _text
+String containing text to be rendered.
+
+\param const Math::Vec2& _pos
+Position to render the string.
+
+\param float _scale
+Scale of the font.
+
+\param const Math::Vec3& _color
+Color of the font.
+
+\param float
+Width of the sprite that the text is rendered on.
+
+\param float
+Camera's zoom
+
+\return
+the number of lines.
+*******************************************************************************/
 int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float _width, float camZoom)
 {
     if (!mInitialized) return 0;
@@ -250,8 +286,13 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
     {
         float width{};
         str += " ";
+        width += mGlyphs[' '].size.x * scale;
         for (char ch : str)
+        {
+            if (ch == '$')
+                width += 1000;
             width += mGlyphs[ch].size.x * scale;
+        }
         wordWidth.push_back(width);
     }
     
@@ -262,7 +303,7 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
     for (size_t i = 0; i < para.words.size(); ++i)
     {
         currWidth += para.wordWidth[i];
-        if (i && currWidth > para.renderWidth * 0.6f / para.camZoom)
+        if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
         {
             ++lines;
             currWidth = para.wordWidth[i];

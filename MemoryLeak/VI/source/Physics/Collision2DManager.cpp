@@ -555,7 +555,7 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		// If it returns true, means collision occurred
 		if ((*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, _dt, false)) {
 			mContactList.emplace_back(contact);
-			LOG_INFO("Collision Detected\n");
+			//LOG_INFO("Collision Detected\n");
 		}
 	}
 }
@@ -586,13 +586,12 @@ bool Collision2DManager::CheckCollision(const Entity& _e1, const Entity& _e2, co
 	// Dynamic check only
 	else {
 		// Code has not accounted for multiple colliders attached to an entity despite it being a constraint made to me by group members
-		int e1Type{ 0 }, e2Type;
+		int e1Type{ 0 }, e2Type{ 0 };
 		// Find collider type of 1st entity
 		if (_e1.HasComponent<RectCollider>())
 			e1Type = static_cast<int>(ColliderType::RECT);
 		else if (_e1.HasComponent<CircleCollider>())
 			e1Type = static_cast<int>(ColliderType::CIRCLE);
-		else
 
 		// Find collider type of 2nd entity
 		if (_e2.HasComponent<RectCollider>())

@@ -42,6 +42,7 @@ public:
 	static MonoString* GetDialogue(int _id);
 	static void ChangeGameState(MonoString* _name);
 	static bool EntityIsActive(MonoString* _entityName, MonoString* _sceneName);
+	static void SetEntityIsActive(MonoString* _entityName, MonoString* _sceneName, bool _active);
 	static void EntityActivate(MonoString* _entityName, MonoString* _sceneName);
 	static void EntityDeactivate(MonoString* _entityName, MonoString* _sceneName);
 	static MonoString* EntityGetParent(MonoString* _entityName, MonoString* _sceneName);
@@ -63,7 +64,8 @@ public:
 	static bool CheckCollision(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName, bool _dynamicCheck);
 	static void StopSound(MonoString* _entityName, MonoString* _sceneName);
 	static void PlaySoundOnLoop(MonoString* _entityName, MonoString* _sceneName);
-	static void PlayAnySound(MonoString* _name, int _channel);
+	static void PlayEntitySound(MonoString* _entityName, MonoString* _sceneName);
+	static void PlaySoundInChannel(MonoString* _soundName, int _channel);
 	static void PlayBGSound(MonoString* _name, int _channel);
 	static float GetPosX(MonoString* _entityName, MonoString* _sceneName);
 	static float GetPosY(MonoString* _entityName, MonoString* _sceneName);
@@ -81,4 +83,8 @@ public:
 	static void UpdateText(MonoString* _entityName, MonoString* _sceneName, MonoString* _text);
 	static void SetTextOffset(MonoString* _entityName, MonoString* _sceneName, float _xoffset, float _yoffset);
 	static int GetLineCount(MonoString * _entityName, MonoString * _sceneName);
+	static float GetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName);
+	static void SetLightSourceRadius(MonoString* _entityName, MonoString* _sceneName, float _radius);
+	static void SetSpriteColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a);
+	static float GetFontScale(MonoString* _entityName, MonoString* _sceneName);
 };
