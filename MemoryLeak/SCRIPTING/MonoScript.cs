@@ -413,10 +413,12 @@ namespace BonVoyage
                     SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                 }
 
-                if (InternalCalls.CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken != -1) {
+                if (InternalCalls.CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken > -1)
+                {
                     //Console.Write("HitCounter!\n");
                     HitCounter += (float)InternalCalls.GetDeltaTime();
-                    if (HitCounter >= HitInterval) {
+                    if (HitCounter >= HitInterval)
+                    {
                         //Console.Write("Attacking!\n");
                         HitCounter = 0;
                         ++HitTaken;
@@ -428,8 +430,13 @@ namespace BonVoyage
                     EnemyChangeInX = 0;
                     EnemyChangeInY = 0;
                 }
-                else{
+                else if (HitTaken > -1)
+                {
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
+                }
+                else if (HitTaken <0)
+                {
+                    SetCharRotation(PlayerRotation, "Boat", "Level1", "Death");
                 }
 
                 // Player dies
@@ -810,6 +817,7 @@ namespace BonVoyage
                     break;
                 case "Death":
                     InitialStatus = 24;
+                    Console.WriteLine("DIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n");
                     break;
                 default:
                     break;
