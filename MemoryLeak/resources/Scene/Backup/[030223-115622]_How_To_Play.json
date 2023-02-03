@@ -83,8 +83,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 645.41015625,
-                "Y": 145.4102783203125
+                "X": 654.3394775390625,
+                "Y": 154.3395538330078
             },
             "rotation": 0.0,
             "translation": {
@@ -101,7 +101,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button1-click.png",
-            "layer": 2
+            "layer": 1
         },
         "CircleCollider": {
             "centerOffset": {
