@@ -34,7 +34,7 @@ namespace BonVoyage
         private float PlayerSpeed;
         private float EnemySpeed;
         private bool EnemyLoiter;
-        private float perlineScale;
+        //private float perlineScale;
         private const int MaxHealth = 12;
         private const float Epsilon = 1.192092896e-07F;
         private const double Pi = 3.141592653589793238f;
@@ -44,7 +44,7 @@ namespace BonVoyage
 
         /* Some of these flags are here to optimise the code. Because checking this bool value is faster than button check function calls */
         private bool choiceFlag;            // This flag is true during choice selection dialogs
-        private bool playerTalking;         // This flag is true when player is talking, aka P1 active
+        //private bool playerTalking;         // This flag is true when player is talking, aka P1 active
         private bool updateChat;            // This flag is true when dialog changes for anyone
         private bool RunIntroDialog;         // This flag is true if the dialog has not player and should play
         private bool RunlittleGirlDialog;    // This flag is true if the dialog has not player and should play
@@ -80,10 +80,10 @@ namespace BonVoyage
       PlayerSpeed = 500f;
       EnemySpeed = 40f;
       EnemyLoiter = true;
-      perlineScale = 49.5f;
+      //perlineScale = 49.5f;
 
       choiceFlag = false;            
-      playerTalking = false;         
+      //playerTalking = false;         
       updateChat = false;            
       RunIntroDialog = true;         
       RunlittleGirlDialog = true;    
