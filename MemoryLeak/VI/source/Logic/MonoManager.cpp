@@ -5,6 +5,14 @@
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 19-10-2022
+
+\co-author Lee Hsien Wei, Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 19-10-2022
+\Remark: Edited MonoDirectoryPath function
+
 \brief
 This file contains the function definitions of the class MonoManager.
 The MonoManager class handles the C# scripting for the engine.
