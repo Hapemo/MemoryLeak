@@ -38,8 +38,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 600.0,
-                "Y": 150.0
+                "X": 545.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
@@ -83,9 +83,9 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Start Game",
+            "text": "Play Game",
             "offset": {
-                "X": -144.0,
+                "X": -126.0,
                 "Y": -18.0
             },
             "scale": 1.0,
@@ -112,13 +112,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 600.0,
-                "Y": 150.0
+                "X": 545.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -183.0
+                "Y": -173.0
             }
         },
         "Sprite": {
@@ -186,13 +186,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 600.0,
-                "Y": 150.0
+                "X": 545.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -335.0
+                "Y": -315.0
             }
         },
         "Sprite": {
