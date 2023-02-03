@@ -15,6 +15,9 @@ of resources using void*. Added meta file system. Added scene and game state
 serialisation. Automatically loading of game state and scene will be implmemented
 for game release, but currently it's done manually in game state.
 
+For M4: 
+Multithreaded resource loading, speeding up resource loading by several fold.
+
 IMPORTANT NOTE TODO: Right now, all scene data are loaded into the gamestate 
 since the start. Next time if we want to load in specific scene data resource 
 at specific game state, we have to make a function that load specific scene
@@ -173,12 +176,13 @@ public:
 
 	/*!*****************************************************************************
 	Initialise all textures in openGL side.
-
-	\param const std::string _filepath
-	The filepath of the texture to be loaded.
 	*******************************************************************************/
 	void InitialiseAllTextures();
 
+	/*!*****************************************************************************
+	Initialise all textures that is load into the game midway through running the
+	editor.
+	*******************************************************************************/
 	void InitialiseReloadedTextures();
 
 
@@ -297,6 +301,12 @@ public:
 	*******************************************************************************/
 	void LoadAllResources(std::filesystem::path const&);
 
+	/*!*****************************************************************************
+	Loads a resource specified by the director inputted.
+
+	\param std::filesystem::path const&
+	- File path to load
+	*******************************************************************************/
 	void LoadResource(std::filesystem::path const&);
 
 	/*!*****************************************************************************
