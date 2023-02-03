@@ -119,8 +119,6 @@ void AudioManager::UpdateSound()
                 if (e.GetComponent<Audio>().sound.channel == 0)
                 {
                     e.GetComponent<Audio>().sound.channel = AddChannel();
-                    if (e.GetComponent < General>().name == "EnemyTrigger")
-                        std::cout << "channellll: " << e.GetComponent<Audio>().sound.channel;
                 }
                 PlaySound(e);
             }
@@ -417,10 +415,8 @@ None.
 *******************************************************************************/
 void AudioManager::StopSound(const Entity& e)
 {
-    int x = e.GetComponent<Audio>().sound.channel;
-    //if(e.GetComponent<Audio>().sound.channel != 0)
+    if(e.GetComponent<Audio>().sound.channel != 0)
         mChannel[e.GetComponent<Audio>().sound.channel]->stop();
-    std::cout << e.GetComponent <General>().name << x;
 }
 
 /*!*****************************************************************************
