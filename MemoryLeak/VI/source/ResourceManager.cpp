@@ -484,6 +484,15 @@ std::string ResourceManager::GetFilePath(GUID const& _guid) {
 	return filePath;
 }
 
+typename ResourceManager::GUID ResourceManager::GetFileGUID(std::string const& _path) const {
+	std::string actualPath{ resourceFolder.string() + "\\" + _path};
+	for (auto& [guid, path] : mAllFilePaths)
+		if (path == actualPath) return guid;
+	LOG_WARN("Unable to identify GUID value of " + _path);
+	return GUID();
+}
+
+
 std::filesystem::path ResourceManager::FileTypePath(E_RESOURCETYPE _type) {
 	std::string path = resourceFolder.string();
 	switch (_type) {

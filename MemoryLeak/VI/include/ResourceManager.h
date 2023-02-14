@@ -360,6 +360,18 @@ public:
 	std::string GetFilePath(GUID const&);
 
 	/*!*****************************************************************************
+	Get file GUID from resource file path. File path's directory should start from
+	resource folder directory.
+
+	\param GUID const&
+	- Guid of the file, starting from resource folder directory.
+
+	\return std::string
+	- File path of the file. Return 0 and logs warning if guid not found.
+	*******************************************************************************/
+	GUID GetFileGUID(std::string const&) const;
+
+	/*!*****************************************************************************
 	Load game state json file. Load in all the data of gamestate and load the
 	entities in to the ECS.
 
