@@ -48,7 +48,7 @@ have change in data during run-time will not work.
 
 #define LOAD_TEXTURES(...) ResourceManager::GetInstance()->LoadTextures(__VA_ARGS__)
 #define UPDATE_TEXTURES(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
-#define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
+//#define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
 //
 //struct GameStateData;
 //struct SceneData;
@@ -100,7 +100,7 @@ private:
 	const std::filesystem::path resourceFolder = "..\\resources";
 
 	std::map<GUID, void*> mAllResources;
-	std::map<GUID, std::string> mAllFilePaths;
+	std::map<GUID, std::string> mAllFilePaths; // Store the GUID mapped to file path. All file paths contains "..\\resources\\".
 	unsigned char guidCounter = 0;
 	bool LoadedAll = false;
 	std::vector<std::thread> mResourceLoadingThreads;
@@ -143,7 +143,7 @@ public:
 	/*!*****************************************************************************
 	Free the resources in the vector.
 	*******************************************************************************/
-	void FreeResources();
+	//void FreeResources();
 
 	/*!*****************************************************************************
 	Update a specific texture and it's data by calling the stbi load functon.

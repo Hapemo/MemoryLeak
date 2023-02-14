@@ -148,10 +148,10 @@ std::vector<int> ResourceManager::UpdateTextures() {
 
 /*!*****************************************************************************
 \brief
-Retrieve the texture id of a specific resource.
+Retrieve the texture id of a specific resource. Path starts from "..\\resources\\",
 
 \param const std::string& _texturePath
-The filepath of the texture.
+The filepath of the texture, starting from resources folder's directory
 
 \return
 Returns the id of the texture in GLuint.
@@ -227,9 +227,9 @@ float ResourceManager::GetAspectRatio(const GLuint _id) {
 \brief
 Free the resources in the vector.
 *******************************************************************************/
-void ResourceManager::FreeResources() {
-	mResources.clear();
-}
+//void ResourceManager::FreeResources() {
+//	mResources.clear();
+//}
 
 // GUID is made with the following format
 // GUID is firstly made with total time stamp
