@@ -102,9 +102,10 @@ private:
 	std::map<GUID, void*> mAllResources;
 	std::map<GUID, std::string> mAllFilePaths; // Store the GUID mapped to file path. All file paths contains "..\\resources\\".
 	unsigned char guidCounter = 0;
-	bool LoadedAll = false;
+	bool LoadedAll = false;		// Editor Mode only
 	std::vector<std::thread> mResourceLoadingThreads;
 	std::mutex myLock;
+	std::set<GUID> mGuidList; // Game Mode only
 
 public:
 	/*!*****************************************************************************
@@ -302,7 +303,8 @@ public:
 	void LoadAllResources(std::filesystem::path const&);
 
 	/*!*****************************************************************************
-	Loads a resource specified by the director inputted.
+	Loads a resource specified by the director inputted. 
+	This function is EDITOR ONLY.
 
 	\param std::filesystem::path const&
 	- File path to load
@@ -384,6 +386,10 @@ public:
 	//GameStateData LoadGameState(GUID const&);
 
 	std::filesystem::path FileTypePath(E_RESOURCETYPE);
+
+	void LoadGameStateResources(std::filesystem::path const&);
+	void SelectiveLoadAllResources(std::filesystem::path const&);
+	void SelectiveLoadResource(std::filesystem::path const& entry);
 
 	//------------------------------------
 	// Helper function 
