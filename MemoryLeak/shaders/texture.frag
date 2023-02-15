@@ -26,7 +26,6 @@ uniform sampler2D uTex2D[16];
 Main function of the fragment shader.
 *******************************************************************************/
 void main (void) {
- //vec4 x = 
-fFragColor = texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
-	//fFragColor =  x * vColor;
+	fFragColor = texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
+	fFragColor =  fFragColor * vColor;
 }
