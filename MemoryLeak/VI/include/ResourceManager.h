@@ -390,6 +390,7 @@ public:
 	void LoadGameStateResources(std::filesystem::path const&);
 	void SelectiveLoadAllResources(std::filesystem::path const&);
 	void SelectiveLoadResource(std::filesystem::path const& entry);
+	void SelectiveUnloadAllResources();
 
 	//------------------------------------
 	// Helper function 

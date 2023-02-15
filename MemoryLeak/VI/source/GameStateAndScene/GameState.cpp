@@ -80,6 +80,9 @@ void GameState::Unload() {
 	for (auto& scene : mScenes)
 		scene.Unload();
 	mScenes.clear();
+#ifndef _EDITOR
+	ResourceManager::GetInstance()->SelectiveUnloadAllResources();
+#endif
 }
 
 
