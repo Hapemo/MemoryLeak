@@ -12,15 +12,21 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class MenuLightCircle
+    public class MenuLightCircle : BaseScript
     {
+        public override void PreInit(int _id)
+        {
+            var bs = new BaseScript();
+            bs.PreInit(_id);
+        }
+
         float size;
         float alpha;
         float stepSize, stepAlpha;
         float upperSize, lowerSize;
         float upperAlpha, lowerAlpha;
         bool increasing;
-        public void Init() {
+        public void Init(int _id) {
             size = 110;
             lowerSize = 110;
             upperSize = 120;
@@ -35,7 +41,7 @@ namespace BonVoyage {
             increasing = true;
         }
 
-        public void Update() {
+        public void Update(int _id) {
             UpdateSizeAlpha();
             InternalCalls.SetScaleX("LightCircle", "Menu_Main", size);
             InternalCalls.SetScaleY("LightCircle", "Menu_Main", size);
@@ -68,7 +74,7 @@ namespace BonVoyage {
             }
         }
 
-        public void Exit() {
+        public void Exit(int _id) {
             
         }
     }
