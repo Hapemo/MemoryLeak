@@ -15,7 +15,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include <Scene.h>
 #include <GameState.h>
 #include "GameStateManager.h"
-
+#include "ResourceManager.h"
 
 using namespace rapidjson;
 /*!*****************************************************************************
@@ -819,7 +819,7 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 	StringBuffer buffer;
 	PrettyWriter<StringBuffer> writer(buffer);
 	//int counter = 0;
-
+	GUIDList.clear();
 	for (const Entity& e : _sceneData.mEntities)
 	{
 		if (!e.HasComponent<General>())
@@ -950,6 +950,36 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 	}
 	else
 		LOG_INFO("Saved Scene: " + path);
+	ofs.close();
+	SaveSceneGUID(_sceneData.mName);
+	GUIDList.clear();
+}
+void SerializationManager::SaveSceneGUID(std::string sceneName)
+{
+	Document scene;
+	auto& allocator = scene.GetAllocator();
+	//scene.SetObject();
+	scene.SetArray();
+	StringBuffer buffer;
+	PrettyWriter<StringBuffer> writer(buffer);
+	for (const ResourceManager::GUID g : GUIDList)
+	//for(int g =0; g< GUIDList.size(); ++g)
+	{
+		//Value guid(g, (SizeType)g.size(), scene.GetAllocator());
+		//uint64_t guid = static_cast<uint64_t>(g);
+		scene.PushBack(g, allocator);
+	}
+	scene.Accept(writer);
+	std::string jsonf(buffer.GetString(), buffer.GetSize());
+	std::string path = "../resources/SceneGUID/" + sceneName + "_GUIDList.json";
+	std::ofstream ofs(path);
+	ofs << jsonf;
+	if (!ofs.good())
+	{
+		LOG_ERROR("Unable to save scene to: " + path);
+	}
+	else
+		LOG_INFO("Saved Scene: " + path);
 }
 /*!*****************************************************************************
 \brief
@@ -1003,6 +1033,7 @@ void SerializationManager::addSprite(Document& scene, Value& entity, Sprite spri
 	tmp.AddMember(StringRef("texture"), vtexture, scene.GetAllocator());
 	tmp.AddMember(StringRef("layer"), sprite.layer, scene.GetAllocator());
 	entity.AddMember(StringRef("Sprite"), tmp, scene.GetAllocator());
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(tex));
 }
 void SerializationManager::addAnimation(Document& scene, Value& entity, Animation animation)
 {
@@ -1020,6 +1051,7 @@ void SerializationManager::addAnimation(Document& scene, Value& entity, Animatio
 		sheets.AddMember(StringRef("frameCount"), animation.sheets[i].frameCount, scene.GetAllocator());
 		sheets.AddMember(StringRef("timePerFrame"), animation.sheets[i].timePerFrame, scene.GetAllocator());
 		child.PushBack(sheets, scene.GetAllocator());
+		GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(tex));
 	}
 	tmp.AddMember(StringRef("sheets"), child, scene.GetAllocator());
 	
@@ -1115,6 +1147,8 @@ void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
 	tmp.AddMember(StringRef("isRandPitch"), audio.sound.isRandPitch, scene.GetAllocator());
 	tmp.AddMember(StringRef("isSpacial"), audio.isSpacial, scene.GetAllocator());
 	entity.AddMember(StringRef("Audio"), tmp, scene.GetAllocator());
+	std::string path = "\\Audio\\" + audio.sound.path;
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));
 }
 void SerializationManager::addAI(Document& scene, Value& entity, AI ai)
 {
@@ -1141,15 +1175,20 @@ void SerializationManager::addText(Document& scene, Value& entity, Text text)
 	tmpc.AddMember(StringRef("a"), text.color.a, scene.GetAllocator());
 	tmp.AddMember(StringRef("color"), tmpc, scene.GetAllocator());
 	entity.AddMember(StringRef("Text"), tmp, scene.GetAllocator());
+	std::string path = "\\Font\\" + text.fontFile;
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));
 }
 void SerializationManager::addDialogue(Document& scene, Value& entity, Dialogue dialogue)
 {
 	Value tmp(kObjectType);
+	//tmp.AddMember(StringRef("filename"), dialogue.filename, scene.GetAllocator());
 	tmp.AddMember(StringRef("speakerID"), dialogue.speakerID, scene.GetAllocator());
 	tmp.AddMember(StringRef("selectedID"), dialogue.selectedID, scene.GetAllocator());
 	tmp.AddMember(StringRef("textID"), dialogue.textID, scene.GetAllocator());
 	tmp.AddMember(StringRef("nextTextID"), dialogue.nextTextID, scene.GetAllocator());
 	entity.AddMember(StringRef("Dialogue"), tmp, scene.GetAllocator());
+	std::string path = "\\Dialogs\\" + dialogue.filename;
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));
 }
 void SerializationManager::addScript(Document& scene, Value& entity, Script script)
 {
@@ -1157,6 +1196,8 @@ void SerializationManager::addScript(Document& scene, Value& entity, Script scri
 	Value spath(script.name.c_str(), (SizeType)script.name.size(), scene.GetAllocator());
 	tmp.AddMember(StringRef("name"), spath, scene.GetAllocator());
 	entity.AddMember(StringRef("Script"), tmp, scene.GetAllocator());
+	/*std::string path = "\\Scripts\\" + script.name;
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));*/
 }
 void SerializationManager::addButton(Document& scene, Value& entity, Button button)
 {
@@ -1641,6 +1682,66 @@ void SerializationManager::SavePrefab(std::string _filename)
 	else
 		LOG_INFO("Saved Prefab: " + path);
 }
+
+
+
+
+
+
+
+void SerializationManager::GetGUIDList(std::filesystem::path _filename, std::set<ResourceManager::GUID>& sGUIDList)
+{
+	std::ifstream ifs(_filename.string());
+	if (!ifs.good())
+	{
+		LOG_ERROR("Can't open json file! : " + _filename.stem().string());
+		return;
+	}
+	else
+		LOG_INFO("Opening game state: " + _filename.stem().string());
+	
+	std::stringstream contents;
+	contents << ifs.rdbuf();
+	Document doc;
+	doc.Parse(contents.str().c_str());
+
+	Value entity(kArrayType);
+	entity = doc.GetArray();
+	std::string sceneName;
+	for (rapidjson::SizeType index = 0; index < entity.Size(); ++index)
+	{
+		sceneName = entity[index]["SceneName"].GetString();
+		std::string path = "../resources/SceneGUID/" + sceneName + "_GUIDList.json";
+		std::ifstream ifsGUID(path);
+		if (!ifsGUID.good())
+		{
+			LOG_ERROR("Can't open GUID json file! : " + sceneName);
+			return;
+		}
+		else
+			LOG_INFO("Opening SceneGUID: " + sceneName);
+
+		std::stringstream contentsGUID;
+		contentsGUID << ifsGUID.rdbuf();
+		Document docGUID;
+		docGUID.Parse(contentsGUID.str().c_str());
+		Value guid(kArrayType);
+		guid = docGUID.GetArray();
+		for (rapidjson::SizeType index = 0; index < guid.Size(); ++index)
+		{
+			sGUIDList.insert(guid[index].GetInt64());
+		}
+		ifsGUID.close();
+	}
+	ifs.close();
+
+}
+
+
+
+
+
+
 
 
 /*!*****************************************************************************
