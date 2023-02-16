@@ -16,12 +16,18 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class WeatherMapScript
+    public class WeatherMapScript : BaseScript
     {
+        public override void PreInit(int _id)
+        {
+            var bs = new BaseScript();
+            bs.PreInit(_id);
+        }
+
         static bool init = true;
         static bool big = false;
         private float maxMapX, maxMapY;
-        public void Init() {
+        public void Init(int _id) {
             
             InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
@@ -48,7 +54,7 @@ namespace BonVoyage {
                 init = false;
             }
         }
-        public void Update() {
+        public void Update(int _id) {
             if ((InternalCalls.ButtonReleased("weathermap", "WeatherMap")) == true)
             {
                 big = !big;
@@ -94,7 +100,7 @@ namespace BonVoyage {
 
         }
 
-        public void Exit() {
+        public void Exit(int _id) {
             big = false;
             InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)

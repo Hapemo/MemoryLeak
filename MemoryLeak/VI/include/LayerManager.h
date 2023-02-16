@@ -37,19 +37,25 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Update function that checks which entities layer collider collides and stores that
-	as a contact info for resolution of the layer values
+	Update function that calls the inner step function once enough time has passed
 	\return void
 	NULL
 	*******************************************************************************/
 	void Update();
 	
+	/*!*****************************************************************************
+	\brief
+	Step function that checks which entities layer collider collides and stores that
+	as a contact info for resolution of the layer values
+	\return void
+	NULL
+	*******************************************************************************/
 	void Step();
 private:
 	std::vector<Contact> mUpdateList;					// List of collided layer contacts
 	std::unordered_map<Entity*, int> mOriginLayerMap;	// Container that stores the original layer value
 
-	double mAccumulatedDT{ 0.0 };
+	double mAccumulatedDT{ 0.0 };						
 	const double mFixedDT{ 1.0 / 60.0 };
 	double mAccumulatedDTCap{ 1.0 };
 };

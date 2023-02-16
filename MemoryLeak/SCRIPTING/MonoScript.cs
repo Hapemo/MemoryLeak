@@ -1,7 +1,7 @@
 ﻿/*!*****************************************************************************
 \file MonoScript.cs
-\author Yip Xiu Han, Jazz Teoh Yu Jue, Chen Jia Wen, Kew Yu Jun
-\par DP email: xiuhan.yip@\digipen.edu, j.teoh\@digipen.edu, c.jiawen\@digipen.edu, k.yujun\@digipen.edu
+\author Yip Xiu Han, Jazz Teoh Yu Jue, Chen Jia Wen, Kew Yu Jun, Lee Hsien Wei Joachim
+\par DP email: xiuhan.yip@\digipen.edu, j.teoh\@digipen.edu, c.jiawen\@digipen.edu, k.yujun\@digipen.edu, l.hsienweijoachim@digipen.edu
 \par Group: Memory Leak Studios
 \date 27-01-2023
 \brief
@@ -18,8 +18,14 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage
 {
-    public class MonoScript
+    public class MonoScript : BaseScript
     {
+        public override void PreInit(int _id)
+        {
+            var bs = new BaseScript();
+            bs.PreInit(_id);
+        }
+
         private int fragment1;
         private bool starttalking;
         private float maxX, maxY, minX, minY, halfX, halfY;
@@ -34,7 +40,7 @@ namespace BonVoyage
         private float PlayerSpeed;
         private float EnemySpeed;
         private bool EnemyLoiter;
-        private float perlineScale;
+        //private float perlineScale;
         private const int MaxHealth = 12;
         private const float Epsilon = 1.192092896e-07F;
         private const double Pi = 3.141592653589793238f;
@@ -44,7 +50,7 @@ namespace BonVoyage
 
         /* Some of these flags are here to optimise the code. Because checking this bool value is faster than button check function calls */
         private bool choiceFlag;            // This flag is true during choice selection dialogs
-        private bool playerTalking;         // This flag is true when player is talking, aka P1 active
+        //private bool playerTalking;         // This flag is true when player is talking, aka P1 active
         private bool updateChat;            // This flag is true when dialog changes for anyone
         private bool RunIntroDialog;         // This flag is true if the dialog has not player and should play
         private bool RunlittleGirlDialog;    // This flag is true if the dialog has not player and should play
@@ -80,10 +86,10 @@ namespace BonVoyage
       PlayerSpeed = 500f;
       EnemySpeed = 40f;
       EnemyLoiter = true;
-      perlineScale = 49.5f;
+      //perlineScale = 49.5f;
 
       choiceFlag = false;            
-      playerTalking = false;         
+      //playerTalking = false;         
       updateChat = false;            
       RunIntroDialog = true;         
       RunlittleGirlDialog = true;    
@@ -103,7 +109,7 @@ namespace BonVoyage
       oriFragScaleX = 0;
 
     }
-  public void Init()
+  public void Init(int _id)
       {
           //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
           InitVariables();
@@ -119,7 +125,7 @@ namespace BonVoyage
           InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
         }
 
-      public void Update() {
+      public void Update(int _id) {
 
       // Toggle fps printing box (press 'T')
       if (InternalCalls.CheckKeyPress(84)) {
@@ -413,10 +419,12 @@ namespace BonVoyage
                     SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                 }
 
-                if (InternalCalls.CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken != -1) {
+                if (InternalCalls.CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken > -1)
+                {
                     //Console.Write("HitCounter!\n");
                     HitCounter += (float)InternalCalls.GetDeltaTime();
-                    if (HitCounter >= HitInterval) {
+                    if (HitCounter >= HitInterval)
+                    {
                         //Console.Write("Attacking!\n");
                         HitCounter = 0;
                         ++HitTaken;
@@ -428,8 +436,13 @@ namespace BonVoyage
                     EnemyChangeInX = 0;
                     EnemyChangeInY = 0;
                 }
-                else{
+                else if (HitTaken > -1)
+                {
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
+                }
+                else if (HitTaken <0)
+                {
+                    SetCharRotation(PlayerRotation, "Boat", "Level1", "Death");
                 }
 
                 // Player dies
@@ -810,6 +823,7 @@ namespace BonVoyage
                     break;
                 case "Death":
                     InitialStatus = 24;
+                    Console.WriteLine("DIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n");
                     break;
                 default:
                     break;

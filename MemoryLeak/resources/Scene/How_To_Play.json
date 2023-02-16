@@ -19,9 +19,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -49,14 +49,14 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\window-1.png",
-            "layer": 0
+            "layer": 1
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -83,8 +83,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 650.0,
-                "Y": 150.0
+                "X": 645.41015625,
+                "Y": 145.4102783203125
             },
             "rotation": 0.0,
             "translation": {
@@ -94,14 +94,14 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button1-click.png",
-            "layer": 1
+            "layer": 2
         },
         "CircleCollider": {
             "centerOffset": {
@@ -345,9 +345,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,

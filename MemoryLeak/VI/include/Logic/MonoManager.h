@@ -80,7 +80,7 @@ public:
 	\brief
 	Calls a mono method by script name and function name.
 	*******************************************************************************/
-	void CallMethod(std::string _scriptName, const char* _function, int _paramCount);
+	void CallMethod(std::string _scriptName, const char* _function, int _paramCount, void** _params);
 
 	/*!*****************************************************************************
 	\brief

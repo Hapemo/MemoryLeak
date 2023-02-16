@@ -1,0 +1,412 @@
+[
+    {
+        "General": {
+            "name": "MenuBackground",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1920.0,
+                "Y": 1080.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\menu screen background.jpg",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "PlayBtn",
+            "tag": 5,
+            "subtag": 1,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 700.0,
+                "Y": 180.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -35.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Start Game",
+            "offset": {
+                "X": -172.0,
+                "Y": -21.0
+            },
+            "scale": 1.2000000476837158,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "PlayGameButton"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "HowToPlayBtn",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 700.0,
+                "Y": 180.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -185.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "How To Play",
+            "offset": {
+                "X": -184.0,
+                "Y": -21.0
+            },
+            "scale": 1.2000000476837158,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "HowToPlayButton"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "QuitBtn",
+            "tag": 5,
+            "subtag": 3,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 700.0,
+                "Y": 180.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -335.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Quit Game",
+            "offset": {
+                "X": -150.0,
+                "Y": -21.0
+            },
+            "scale": 1.2000000476837158,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "ExitConfirmationButton"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Title",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 944.0,
+                "Y": 285.1781311035156
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 220.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\bon voyage logo 5.png",
+            "layer": 2
+        },
+        "Script": {
+            "name": "MenuLightScript"
+        },
+        "LightSource": {
+            "centerOffset": {
+                "X": -94.0,
+                "Y": 24.0
+            },
+            "radius": 900.0,
+            "intensity": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 700.0,
+                "Y": -370.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\credits-icon-click.png",
+            "layer": 1
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Settings",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 696.4562377929688,
+                "Y": -220.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 251,
+                "g": 252,
+                "b": 253,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\settings-icon-click.png",
+            "layer": 1
+        },
+        "Animation": {
+            "sheets": [],
+            "currentImageIndex": 0
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "SettingsButton"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "LightCircle",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -94.79512786865234,
+                "Y": 244.46290588378906
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 1
+        },
+        "Script": {
+            "name": "MenuLightCircle"
+        }
+    }
+]

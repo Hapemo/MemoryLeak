@@ -283,6 +283,14 @@ void InternalCalls::ChangeGameState(std::string const& _name) {
 
 /*!*****************************************************************************
 \brief
+Gets entity id from scene.
+*******************************************************************************/
+int InternalCalls::GetEntityId(std::string _entityName, std::string _sceneName) {
+	return GameStateManager::GetInstance()->GetEntity(_entityName, _sceneName).id;
+}
+
+/*!*****************************************************************************
+\brief
 Gets an entity from scene.
 *******************************************************************************/
 Entity InternalCalls::GetEntity(std::string const& _entityName, std::string const& _sceneName) {

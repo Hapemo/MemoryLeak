@@ -1,5 +1,29 @@
+/*!*****************************************************************************
+\file	LayerManager.cpp
+\author Lee Hsien Wei, Joachim
+\par	DP email: l.hsienweijoachim@digipen.edu
+\par	Course: GAM200
+\par	Group: Memory Leak Studios
+\date	26-11-2022
+\brief  This file contains the definition of the Layer Manager Class and its
+		member functions. It handles the updating of the layer values
+		of each entity through the use of a layer collider
+*******************************************************************************/
+
+// -----------------------------
+// Include files
+// -----------------------------
 #include "ECSManager.h"
 
+/*!*****************************************************************************
+\brief
+CI_RectvsRect function that is modified to handle layer collider that does not
+require dynamic checks
+\param Contact &
+A reference to struct containing entity pair data to check
+\return bool
+Evaluated result of whether collision has occurred between the given entity pair
+*******************************************************************************/
 bool LayerManager::CI_RectvsRect(Contact& _contact) {
 	// Get reference to the entities
 	Entity& obj1{ _contact.obj[0] },
@@ -28,6 +52,12 @@ bool LayerManager::CI_RectvsRect(Contact& _contact) {
 	return false;
 }
 
+/*!*****************************************************************************
+\brief
+Update function that calls the inner step function once enough time has passed
+\return void
+NULL
+*******************************************************************************/
 void LayerManager::Update() {
 	mAccumulatedDT += FPSManager::dt;
 
@@ -40,6 +70,13 @@ void LayerManager::Update() {
 	}
 }
 
+/*!*****************************************************************************
+\brief
+Step function that checks which entities layer collider collides and stores that
+as a contact info for resolution of the layer values
+\return void
+NULL
+*******************************************************************************/
 void LayerManager::Step() {
 	// Loop through player entities
 	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {

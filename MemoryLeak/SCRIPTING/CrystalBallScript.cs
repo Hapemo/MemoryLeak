@@ -16,18 +16,26 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class CrystalBallScript
+    public class CrystalBallScript : BaseScript
     {
+        public override void PreInit(int _id)
+        {
+            var bs = new BaseScript();
+            bs.PreInit(_id);
+        }
+
         int toggle = 0; // 0 minimap, 1, weathermap, 2 enemymap
         int prevTog = -1;
-        public void Init() {
+        public void Init(int _id) {
             //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
             //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
             //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
+            InternalCalls.EntityDeactivate("Ball", "Dialogue");
         }
 
-        public void Update()
+        public void Update(int _id)
         {
+            InternalCalls.EntityActivate("Ball", "Dialogue");
             if ((InternalCalls.ButtonReleased("cyclemap", "Dialogue")) == true)
             {
                 toggle = toggle >= 2 ? 0 : (toggle + 1);
@@ -135,12 +143,13 @@ namespace BonVoyage {
             }
 
         }
-        public void Exit() {
+        public void Exit(int _id) {
             toggle=0;
             prevTog = -1;
             InternalCalls.EntityDeactivate("minimap", "MiniMap");
             InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
             InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
+            InternalCalls.EntityDeactivate("Ball", "Dialogue");
             InternalCalls.PauseScene("MiniMap");
             InternalCalls.PauseScene("WeatherMap");
             InternalCalls.PauseScene("EnemyMap");

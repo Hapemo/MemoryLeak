@@ -230,6 +230,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Gets entity id from scene.
+	*******************************************************************************/
+	static int GetEntityId(std::string _entityName, std::string _sceneName);
+
+	/*!*****************************************************************************
+	\brief
 	Gets an entity from scene.
 	*******************************************************************************/
 	static Entity GetEntity(std::string const& _entityName, std::string const& _sceneName);

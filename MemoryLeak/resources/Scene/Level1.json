@@ -19,10 +19,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Env_Water.png",
@@ -49,10 +49,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building1_spritesheet.png",
@@ -130,10 +130,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building6_spritesheet.png",
@@ -211,10 +211,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
@@ -270,10 +270,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
@@ -345,10 +345,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
@@ -575,10 +575,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Lighthouse_spritesheet.png",
@@ -656,10 +656,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
@@ -731,10 +731,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
@@ -806,10 +806,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
@@ -881,10 +881,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
@@ -959,10 +959,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
@@ -1029,10 +1029,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
@@ -1146,10 +1146,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
@@ -1221,10 +1221,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building5_spritesheet.png",
@@ -1291,10 +1291,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
@@ -1342,10 +1342,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building3_spritesheet.png",
@@ -1423,10 +1423,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
@@ -1498,10 +1498,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
@@ -1573,10 +1573,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
@@ -1726,10 +1726,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
@@ -1801,10 +1801,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
@@ -1876,10 +1876,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
@@ -1951,10 +1951,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
-                "a": 100
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
@@ -2026,9 +2026,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -2077,7 +2077,7 @@
         },
         "Transform": {
             "scale": {
-                "X": -523.0,
+                "X": 523.0,
                 "Y": 353.0
             },
             "rotation": 0.0,
@@ -2088,29 +2088,19 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
+            "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
             "layer": 15
         },
         "Animation": {
             "sheets": [
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2120,19 +2110,14 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_idle_spritesheet.png",
                     "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
+                    "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
                     "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "",
-                    "frameCount": 8,
-                    "timePerFrame": 0.17000000178813934
+                    "timePerFrame": 0.10000000149011612
                 },
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
@@ -2140,12 +2125,22 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
-                    "frameCount": 10,
-                    "timePerFrame": 0.10000000149011612
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2155,17 +2150,17 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
-                    "frameCount": 12,
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 },
@@ -2175,7 +2170,12 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 }
@@ -2243,9 +2243,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -2279,9 +2279,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -2315,9 +2315,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -2351,9 +2351,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -2608,10 +2608,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 123,
-                "g": 181,
-                "b": 123,
-                "a": 0
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\pet.png",

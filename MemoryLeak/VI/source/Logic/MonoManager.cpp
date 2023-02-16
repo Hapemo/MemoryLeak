@@ -5,6 +5,14 @@
 \par Course: GAM200
 \par Group: Memory Leak Studios
 \date 19-10-2022
+
+\co-author Lee Hsien Wei, Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 19-10-2022
+\Remark: Edited MonoDirectoryPath function
+
 \brief
 This file contains the function definitions of the class MonoManager.
 The MonoManager class handles the C# scripting for the engine.
@@ -28,7 +36,6 @@ Initialise Mono.
 void MonoManager::InitMono() {
 	// Set and get mono directory
 	std::string path = MonoDirectoryPath();
-
 	// Create mono domain
 	bool success = InitMonoDomain("MonoRoot", "MonoAppDomain", path, "Scripting");
 	// Add internal functionsx
@@ -136,7 +143,7 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 \brief
 Calls a mono method by script name and function name.
 *******************************************************************************/
-void MonoManager::CallMethod(std::string _scriptName, const char* _function, int _paramCount) {
+void MonoManager::CallMethod(std::string _scriptName, const char* _function, int _paramCount, void** _params) {
 	MonoObject* monoInstance = GetMonoComponent(_scriptName);
 
 	if (monoInstance == nullptr) std::cout << "Failed to get an instance to Mono object from member map mMonoComponents!\n";
@@ -157,7 +164,7 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 		// Call the C# method on the objectInstance instance, and get any potential exceptions
 		MonoObject* exception = nullptr;
 		//std::cout << "Calling method...\n";
-		mono_runtime_invoke(method, monoInstance, nullptr, &exception);
+		mono_runtime_invoke(method, monoInstance, _params, &exception);
 
 		// Handle the exception
 		if (exception) {
