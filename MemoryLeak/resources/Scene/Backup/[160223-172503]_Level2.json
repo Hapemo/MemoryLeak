@@ -31,8 +31,8 @@
     },
     {
         "General": {
-            "name": "Building",
-            "tag": 3,
+            "name": "NEW Entity 3",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -61,8 +61,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 4",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -91,8 +91,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 5",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -121,8 +121,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 6",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -151,8 +151,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 7",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -181,8 +181,8 @@
     },
     {
         "General": {
-            "name": "Gigantic Tree",
-            "tag": 5,
+            "name": "NEW Entity 8",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -211,8 +211,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 9",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -241,8 +241,8 @@
     },
     {
         "General": {
-            "name": "Log",
-            "tag": 5,
+            "name": "NEW Entity 11",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -271,8 +271,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 12",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -301,8 +301,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 13",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -331,8 +331,8 @@
     },
     {
         "General": {
-            "name": "Mushroom",
-            "tag": 5,
+            "name": "NEW Entity 14",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -361,8 +361,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 15",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -391,8 +391,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 16",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -421,8 +421,8 @@
     },
     {
         "General": {
-            "name": "Reed Petal",
-            "tag": 5,
+            "name": "NEW Entity 17",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -451,8 +451,8 @@
     },
     {
         "General": {
-            "name": "Fountain",
-            "tag": 3,
+            "name": "NEW Entity 1",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -463,8 +463,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 798.6510009765625,
-                "Y": -555.53125
+                "X": 791.2835693359375,
+                "Y": -724.9780883789063
             }
         },
         "Sprite": {
@@ -481,8 +481,8 @@
     },
     {
         "General": {
-            "name": "Island",
-            "tag": 3,
+            "name": "NEW Entity 2",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -493,8 +493,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1305.3978271484375,
-                "Y": -408.982177734375
+                "X": -1054.9111328125,
+                "Y": -578.2299194335938
             }
         },
         "Sprite": {
@@ -511,8 +511,8 @@
     },
     {
         "General": {
-            "name": "Lighthouse",
-            "tag": 3,
+            "name": "NEW Entity 3",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -541,8 +541,8 @@
     },
     {
         "General": {
-            "name": "Ruins",
-            "tag": 3,
+            "name": "NEW Entity 4",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -571,8 +571,8 @@
     },
     {
         "General": {
-            "name": "Reed",
-            "tag": 5,
+            "name": "NEW Entity 5",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -583,8 +583,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1498.738525390625,
-                "Y": -701.68115234375
+                "X": -1356.5704345703125,
+                "Y": -728.7608032226563
             }
         },
         "Sprite": {
@@ -601,8 +601,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 6",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -613,8 +613,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1692.0792236328125,
-                "Y": -385.08837890625
+                "X": -1407.7431640625,
+                "Y": -486.6370544433594
             }
         },
         "Sprite": {
@@ -631,20 +631,20 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 7",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 222.0,
-                "Y": 267.4698791503906
+                "X": 150.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1660.81787109375,
-                "Y": -1264.778564453125
+                "X": 990.5968017578125,
+                "Y": -1109.0704345703125
             }
         },
         "Sprite": {
@@ -661,8 +661,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 8",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -673,8 +673,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1518.8492431640625,
-                "Y": -220.22117614746094
+                "X": -747.07958984375,
+                "Y": -491.0175476074219
             }
         },
         "Sprite": {
@@ -691,8 +691,8 @@
     },
     {
         "General": {
-            "name": "Sign",
-            "tag": 5,
+            "name": "NEW Entity 9",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -721,8 +721,8 @@
     },
     {
         "General": {
-            "name": "Multistory House",
-            "tag": 3,
+            "name": "NEW Entity 10",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -733,8 +733,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -979.6461791992188,
-                "Y": -988.0087280273438
+                "X": -769.779052734375,
+                "Y": -1238.4952392578125
             }
         },
         "Sprite": {
@@ -751,8 +751,8 @@
     },
     {
         "General": {
-            "name": "Mushroom",
-            "tag": 5,
+            "name": "NEW Entity 11",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -781,8 +781,8 @@
     },
     {
         "General": {
-            "name": "Reed",
-            "tag": 5,
+            "name": "NEW Entity 12",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -811,8 +811,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 13",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -823,8 +823,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1988.7611083984375,
-                "Y": 275.3760070800781
+                "X": -2002.30078125,
+                "Y": 363.38482666015625
             }
         },
         "Sprite": {
@@ -841,8 +841,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 14",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -853,8 +853,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1755.79638671875,
-                "Y": 400.8184814453125
+                "X": -1762.5662841796875,
+                "Y": 441.4379577636719
             }
         },
         "Sprite": {
@@ -871,8 +871,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 15",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -901,8 +901,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 16",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -931,8 +931,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 17",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -961,8 +961,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 18",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -991,8 +991,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 19",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1021,8 +1021,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 20",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1051,8 +1051,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 21",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1081,8 +1081,8 @@
     },
     {
         "General": {
-            "name": "Reed Petal",
-            "tag": 5,
+            "name": "NEW Entity 22",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1111,8 +1111,8 @@
     },
     {
         "General": {
-            "name": "Mushroom",
-            "tag": 5,
+            "name": "NEW Entity 23",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1141,8 +1141,8 @@
     },
     {
         "General": {
-            "name": "Lotus",
-            "tag": 5,
+            "name": "NEW Entity 24",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1171,8 +1171,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 25",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1201,8 +1201,8 @@
     },
     {
         "General": {
-            "name": "Rock",
-            "tag": 5,
+            "name": "NEW Entity 26",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1231,8 +1231,8 @@
     },
     {
         "General": {
-            "name": "Rock",
-            "tag": 5,
+            "name": "NEW Entity 27",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1261,8 +1261,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 28",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1291,8 +1291,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 29",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1321,8 +1321,8 @@
     },
     {
         "General": {
-            "name": "Porthouse",
-            "tag": 3,
+            "name": "NEW Entity 31",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1351,8 +1351,8 @@
     },
     {
         "General": {
-            "name": "Reed",
-            "tag": 5,
+            "name": "NEW Entity 32",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1381,8 +1381,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 33",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1411,8 +1411,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 34",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1441,8 +1441,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 35",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1471,8 +1471,8 @@
     },
     {
         "General": {
-            "name": "Mushroom",
-            "tag": 5,
+            "name": "NEW Entity 36",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1501,8 +1501,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 37",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1531,8 +1531,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 38",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1561,8 +1561,8 @@
     },
     {
         "General": {
-            "name": "Walnut House",
-            "tag": 3,
+            "name": "NEW Entity 39",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1591,8 +1591,8 @@
     },
     {
         "General": {
-            "name": "House",
-            "tag": 3,
+            "name": "NEW Entity 40",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1621,8 +1621,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 41",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1651,8 +1651,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 42",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1681,8 +1681,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 43",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1711,8 +1711,8 @@
     },
     {
         "General": {
-            "name": "Log",
-            "tag": 5,
+            "name": "NEW Entity 44",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1741,8 +1741,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 45",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1771,8 +1771,8 @@
     },
     {
         "General": {
-            "name": "Log Variant",
-            "tag": 5,
+            "name": "NEW Entity 46",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1801,8 +1801,8 @@
     },
     {
         "General": {
-            "name": "Log Variant",
-            "tag": 5,
+            "name": "NEW Entity 47",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1831,8 +1831,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 48",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1861,8 +1861,8 @@
     },
     {
         "General": {
-            "name": "Reed",
-            "tag": 5,
+            "name": "NEW Entity 49",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1891,8 +1891,8 @@
     },
     {
         "General": {
-            "name": "Reed",
-            "tag": 5,
+            "name": "NEW Entity 50",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1921,8 +1921,8 @@
     },
     {
         "General": {
-            "name": "Reed Petal",
-            "tag": 5,
+            "name": "NEW Entity 51",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1951,8 +1951,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 52",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1963,8 +1963,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1043.959228515625,
-                "Y": -503.35906982421875
+                "X": 1107.07861328125,
+                "Y": -635.5714721679688
             }
         },
         "Sprite": {
@@ -1981,8 +1981,8 @@
     },
     {
         "General": {
-            "name": "Reed Petal",
-            "tag": 5,
+            "name": "NEW Entity 53",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -1993,8 +1993,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1152.8753662109375,
-                "Y": -706.8546142578125
+                "X": 1303.8043212890625,
+                "Y": -733.9342651367188
             }
         },
         "Sprite": {
@@ -2011,8 +2011,8 @@
     },
     {
         "General": {
-            "name": "Reed",
-            "tag": 5,
+            "name": "NEW Entity 54",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -2041,8 +2041,8 @@
     },
     {
         "General": {
-            "name": "Reed Petal",
-            "tag": 5,
+            "name": "NEW Entity 55",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -2053,8 +2053,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -705.465087890625,
-                "Y": -939.2218017578125
+                "X": -509.1376953125,
+                "Y": -1155.85888671875
             }
         },
         "Sprite": {
@@ -2071,15 +2071,15 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 56",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 198.0,
-                "Y": 231.64785766601563
+                "X": 150.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
@@ -2101,15 +2101,15 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 57",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
                 "X": 201.0,
-                "Y": 242.168701171875
+                "Y": 242.16868591308594
             },
             "rotation": 0.0,
             "translation": {
@@ -2131,8 +2131,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 58",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -2161,8 +2161,8 @@
     },
     {
         "General": {
-            "name": "Reed Petal",
-            "tag": 5,
+            "name": "NEW Entity 59",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -2191,8 +2191,8 @@
     },
     {
         "General": {
-            "name": "Lotus",
-            "tag": 5,
+            "name": "NEW Entity 60",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -2204,7 +2204,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 501.37078857421875,
-                "Y": -661.2572631835938
+                "Y": -786.5006103515625
             }
         },
         "Sprite": {
@@ -2221,8 +2221,8 @@
     },
     {
         "General": {
-            "name": "Reed Petal",
-            "tag": 5,
+            "name": "NEW Entity 61",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -2251,8 +2251,8 @@
     },
     {
         "General": {
-            "name": "Mushroom",
-            "tag": 5,
+            "name": "NEW Entity 62",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -2281,8 +2281,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "NEW Entity 63",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -2307,276 +2307,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region2_Tree1.png",
             "layer": 77
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 200.0,
-                "Y": 223.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1090.552001953125,
-                "Y": -1364.929443359375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Region2_Tree3.png",
-            "layer": 78
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 201.0,
-                "Y": 242.168701171875
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 220.41964721679688,
-                "Y": -1232.31884765625
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Region2_Tree4.png",
-            "layer": 79
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 172.0,
-                "Y": 248.19622802734375
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 479.0699768066406,
-                "Y": -1274.133056640625
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Region2_Tree2.png",
-            "layer": 80
-        }
-    },
-    {
-        "General": {
-            "name": "Reed",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 342.4770202636719,
-                "Y": -1384.6419677734375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Region2_Reed1.png",
-            "layer": 81
-        }
-    },
-    {
-        "General": {
-            "name": "Mushroom",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 766.392822265625,
-                "Y": -1310.9696044921875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Region2_Mushroom.png",
-            "layer": 82
-        }
-    },
-    {
-        "General": {
-            "name": "Boat",
-            "tag": 0,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 252.0,
-                "Y": 252.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 70.48602294921875,
-                "Y": -210.66024780273438
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\boat.png",
-            "layer": 83
-        }
-    },
-    {
-        "General": {
-            "name": "Player",
-            "tag": 0,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 106.0,
-                "Y": 120.69921875
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 92.38896942138672,
-                "Y": -229.5757598876953
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Characters\\mc.png",
-            "layer": 84
-        }
-    },
-    {
-        "General": {
-            "name": "Passenger3",
-            "tag": 1,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 59.0,
-                "Y": 163.0625
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1209.2259521484375,
-                "Y": -488.6244201660156
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\ghost2_SE_idle.png",
-            "layer": 85
-        }
-    },
-    {
-        "General": {
-            "name": "Passenger4",
-            "tag": 1,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 74.0,
-                "Y": 184.390625
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -534.22509765625,
-                "Y": 1264.782470703125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\ghost4_SE_idle.png",
-            "layer": 86
         }
     }
 ]

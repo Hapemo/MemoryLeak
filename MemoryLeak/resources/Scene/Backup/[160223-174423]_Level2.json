@@ -1771,7 +1771,7 @@
     },
     {
         "General": {
-            "name": "Log Variant",
+            "name": "LogVariant",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -1801,7 +1801,7 @@
     },
     {
         "General": {
-            "name": "Log Variant",
+            "name": "LogVariant",
             "tag": 5,
             "subtag": 0,
             "isActive": true

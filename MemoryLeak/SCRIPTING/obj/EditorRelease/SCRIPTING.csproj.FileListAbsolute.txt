@@ -30,3 +30,9 @@ C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRel
 C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
 C:\Users\joach\source\repos\Hapemo\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
+C:\Users\Christy Loh\Documents\gam200\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.dll
+C:\Users\Christy Loh\Documents\gam200\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.pdb
+C:\Users\Christy Loh\Documents\gam200\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\Christy Loh\Documents\gam200\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\Christy Loh\Documents\gam200\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
+C:\Users\Christy Loh\Documents\gam200\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb

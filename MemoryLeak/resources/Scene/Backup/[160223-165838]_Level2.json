@@ -1,0 +1,482 @@
+[
+    {
+        "General": {
+            "name": "Water",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 4242.0,
+                "Y": 3000.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Env_Water_Green.png",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1165.0,
+                "Y": 655.3125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2498.8935546875,
+                "Y": 425.70782470703125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Background\\tree region concept 2.jpg",
+            "layer": 1
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -551.0,
+                "Y": 507.0341796875
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -720.3982543945313,
+                "Y": 321.7697448730469
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\building_3(revised).png",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 4",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 223.8000030517578
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1044.557373046875,
+                "Y": 196.92454528808594
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree3.png",
+            "layer": 3
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 5",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 222.0,
+                "Y": 267.4698791503906
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1026.43798828125,
+                "Y": 597.3450317382813
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree5.png",
+            "layer": 4
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 6",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 223.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1074.822998046875,
+                "Y": 401.0174865722656
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree3.png",
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 7",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 172.0,
+                "Y": 249.52523803710938
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -845.8406982421875,
+                "Y": 663.8493041992188
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 8",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 616.0,
+                "Y": 744.9337768554688
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 267.0130615234375,
+                "Y": 396.8359680175781
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree5.png",
+            "layer": 7
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 9",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 199.0,
+                "Y": 233.83743286132813
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -595.3539428710938,
+                "Y": 559.5131225585938
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree1.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 11",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -272.0,
+                "Y": 193.8453369140625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 456.37127685546875,
+                "Y": 43.606292724609375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Log1.png",
+            "layer": 9
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 12",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 198.0,
+                "Y": 233.68711853027344
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 743.495361328125,
+                "Y": 560.906982421875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree1.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 13",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 173.0,
+                "Y": 253.62625122070313
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 549.9554443359375,
+                "Y": 775.9512939453125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree2.png",
+            "layer": 11
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 14",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -84.4249267578125,
+                "Y": 109.31417846679688
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Mushroom.png",
+            "layer": 12
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 15",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 201.0,
+                "Y": 244.62652587890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 308.03076171875,
+                "Y": 921.1061401367188
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree4.png",
+            "layer": 13
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 16",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 223.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -873.9158935546875,
+                "Y": 128.42950439453125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Tree3.png",
+            "layer": 14
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 17",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 616.659423828125,
+                "Y": 211.85858154296875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region2_Reed2.png",
+            "layer": 15
+        }
+    }
+]
