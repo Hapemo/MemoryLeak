@@ -716,7 +716,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			mIsCurrSceneUI = true;
 		else
 			mIsCurrSceneUI = false;
-
+		//u are here
 		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
 			for (Entity e : scene.mEntities)
