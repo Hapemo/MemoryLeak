@@ -717,17 +717,11 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		else
 			mIsCurrSceneUI = false;
 
-		for (Entity e : scene.mEntities)
+		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
-			if (!e.GetComponent<General>().isActive) continue;
-			if (!e.ShouldRun()) continue;
-			if (e.HasComponent<LightSource>())
-				lightsource = e;
-			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
-
-			if (e.HasComponent<Sprite>())
+			for (Entity e : scene.mEntities)
 			{
-				if (e.HasComponent<CircularViewport>())
+				if (e.HasComponent<Sprite>())
 				{
 					Sprite sprite = e.GetComponent<Sprite>();
 					if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
@@ -747,44 +741,54 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
 					}
 				}
-				else
+			}
+		}
+
+		for (Entity e : scene.mEntities)
+		{
+			if (!e.GetComponent<General>().isActive) continue;
+			if (!e.ShouldRun()) continue;
+			if (e.HasComponent<LightSource>())
+				lightsource = e;
+			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
+
+			if (e.HasComponent<Sprite>())
+			{
+				Sprite sprite = e.GetComponent<Sprite>();
+				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
+					mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+
+				switch (sprite.sprite)
 				{
-					Sprite sprite = e.GetComponent<Sprite>();
-					if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
-						mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+				case SPRITE::TEXTURE:
+				{
+					GLuint texid = sprite.texture;
 
-					switch (sprite.sprite)
+					if (texid != 0)
 					{
-					case SPRITE::TEXTURE:
-					{
-						GLuint texid = sprite.texture;
+						if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+						if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+							== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-						if (texid != 0)
-						{
-							if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
-								_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
-							if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
-								== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
-								_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
-							{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
-
-							CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-								_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
-								_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
-						}
-					}
-					break;
-					case SPRITE::SQUARE:
 						CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-							mVertices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE],
-							mIndices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE]);
-						break;
-					case SPRITE::CIRCLE:
-						CreateCircle(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
-						break;
-					default:
-						break;
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
 					}
+				}
+				break;
+				case SPRITE::SQUARE:
+					CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
+						mVertices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE],
+						mIndices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE]);
+					break;
+				case SPRITE::CIRCLE:
+					CreateCircle(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+					break;
+				default:
+					break;
 				}
 			}
 
