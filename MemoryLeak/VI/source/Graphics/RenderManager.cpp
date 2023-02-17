@@ -194,7 +194,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<std::vector<Math::
 	glm::vec4 shadowclr{ 0, 0, 0, 0.8f };
 	Math::Mat3 mtx;
 
-	float z = 0.1f;
+	float z = 1.f;
 
 	for (int i = 0; i < lightsources.size(); ++i)
 	{
@@ -235,7 +235,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<std::vector<Math::
 			mLightIndices[i].push_back(pivot + 2 + j);
 		}
 
-		z += 0.1f;
+		z -= 0.1f;
 	}
 
 	CreateShadows(shadowclr);

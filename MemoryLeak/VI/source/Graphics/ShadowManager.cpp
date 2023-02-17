@@ -32,6 +32,7 @@ void ShadowManager::Update()
 
 	for (Entity lightsource : mLightsources)
 	{
+		if (!lightsource.HasComponent<LightSource>()) continue;
 		mCurrEntity = lightsource;
 		CreateFOVVertices();
 
@@ -120,8 +121,10 @@ void ShadowManager::CreateRays()
 Math::Vec2 ShadowManager::GetLightPos()
 {
 	if (!mCurrEntity.id) return Math::Vec2();
+	if (!mCurrEntity.HasComponent<LightSource>()) return Math::Vec2();
+
 	return mCurrEntity.GetComponent<Transform>().translation
-		+ mCurrEntity.GetComponent<LightSource>().centerOffset;;
+		+ mCurrEntity.GetComponent<LightSource>().centerOffset;
 }
 
 bool CompareAngle(const Math::Vec2& endPt1, const Math::Vec2& endPt2)
