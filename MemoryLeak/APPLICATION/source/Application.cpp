@@ -62,11 +62,13 @@ void Application::SystemInit() {
 
   // Run Init() scripts
   logicSystem->Init();
-
+#ifdef _EDITOR
 #ifdef _DEBUG
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif
     ResourceManager::GetInstance()->LoadAllResources();
+#endif
+
 #ifdef _EDITOR
   editorManager->Init(); //need loaded resources
 #endif

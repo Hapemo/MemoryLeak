@@ -62,6 +62,9 @@ public:
 	void LoadDialogs(std::string _filename = "Dialog1");
 	void SaveDialogs(std::string _filename = "Dialog1");
 
+	void SaveSceneGUID(std::string sceneName);
+	void GetGUIDList(std::filesystem::path _filename, std::set<ResourceManager::GUID>& GUIDList);
+
 	//getters
 	std::string GetSceneFilename();
 	std::string GetGameStateFilename();
@@ -83,7 +86,7 @@ private:
 	std::vector<std::string> allgameStateFilename;
 	std::vector<std::string> allprefabFilename;
 	std::vector<std::string> alldialogueFilename;
-
+	std::vector<ResourceManager::GUID> GUIDList;
 	//helper functions
 	static Math::Vec2 GetVec2(Value& vecIn);
 	static void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec2 data);
