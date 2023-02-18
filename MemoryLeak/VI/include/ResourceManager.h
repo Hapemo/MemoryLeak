@@ -48,7 +48,7 @@ have change in data during run-time will not work.
 
 #define LOAD_TEXTURES(...) ResourceManager::GetInstance()->LoadTextures(__VA_ARGS__)
 #define UPDATE_TEXTURES(...) ResourceManager::GetInstance()->UpdateTextures(__VA_ARGS__)
-#define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
+//#define FREE_RESOURCES(...) ResourceManager::GetInstance()->FreeResources(__VA_ARGS__)
 //
 //struct GameStateData;
 //struct SceneData;
@@ -100,11 +100,12 @@ private:
 	const std::filesystem::path resourceFolder = "..\\resources";
 
 	std::map<GUID, void*> mAllResources;
-	std::map<GUID, std::string> mAllFilePaths;
+	std::map<GUID, std::string> mAllFilePaths; // Store the GUID mapped to file path. All file paths contains "..\\resources\\".
 	unsigned char guidCounter = 0;
-	bool LoadedAll = false;
+	bool LoadedAll = false;		// Editor Mode only
 	std::vector<std::thread> mResourceLoadingThreads;
 	std::mutex myLock;
+	std::set<GUID> mGuidList; // Game Mode only
 
 public:
 	/*!*****************************************************************************
@@ -143,7 +144,7 @@ public:
 	/*!*****************************************************************************
 	Free the resources in the vector.
 	*******************************************************************************/
-	void FreeResources();
+	//void FreeResources();
 
 	/*!*****************************************************************************
 	Update a specific texture and it's data by calling the stbi load functon.
@@ -302,7 +303,8 @@ public:
 	void LoadAllResources(std::filesystem::path const&);
 
 	/*!*****************************************************************************
-	Loads a resource specified by the director inputted.
+	Loads a resource specified by the director inputted. 
+	This function is EDITOR ONLY.
 
 	\param std::filesystem::path const&
 	- File path to load
@@ -360,6 +362,18 @@ public:
 	std::string GetFilePath(GUID const&);
 
 	/*!*****************************************************************************
+	Get file GUID from resource file path. File path's directory should start from
+	resource folder directory.
+
+	\param GUID const&
+	- Guid of the file, starting from resource folder directory.
+
+	\return std::string
+	- File path of the file. Return 0 and logs warning if guid not found.
+	*******************************************************************************/
+	GUID GetFileGUID(std::string const&) const;
+
+	/*!*****************************************************************************
 	Load game state json file. Load in all the data of gamestate and load the
 	entities in to the ECS.
 
@@ -372,6 +386,11 @@ public:
 	//GameStateData LoadGameState(GUID const&);
 
 	std::filesystem::path FileTypePath(E_RESOURCETYPE);
+
+	void LoadGameStateResources(std::filesystem::path const&);
+	void SelectiveLoadAllResources(std::filesystem::path const&);
+	void SelectiveLoadResource(std::filesystem::path const& entry);
+	void SelectiveUnloadAllResources();
 
 	//------------------------------------
 	// Helper function 

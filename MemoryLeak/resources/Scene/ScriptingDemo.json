@@ -91,7 +91,7 @@
                 "a": 255
             },
             "sprite": 0,
-            "texture": "Textures\\Background\\Assets.txt",
+            "texture": "",
             "layer": 11
         },
         "RectCollider": {
