@@ -394,13 +394,13 @@ void Collision2DManager::RegisterCollisionTest(const ColliderType& typeA, const 
 void Collision2DManager::Update(const double& _dt) {
 	mAccumulatedDT += _dt;
 
-	if (mAccumulatedDT > mAccumulatedDTCap)
-		mAccumulatedDT = mAccumulatedDTCap;
+	//if (mAccumulatedDT > mAccumulatedDTCap)
+	//	mAccumulatedDT = mAccumulatedDTCap;
 
-	while (mAccumulatedDT >= mFixedDT) {
-		ResolveCollisions(mFixedDT);
-		mAccumulatedDT -= mFixedDT;
-	}
+	//while (mAccumulatedDT >= mFixedDT) {
+	//	ResolveCollisions(mFixedDT);
+	//	mAccumulatedDT -= mFixedDT;
+	//}
 }
 
 void Collision2DManager::ResolveCollisions(const double& _dt) {

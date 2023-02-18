@@ -296,7 +296,7 @@ private:
 	std::unordered_map<std::string, FontRenderer> mFontRenderers;
 	bool mRenderGameToScreen;
 	float mVectorLengthModifier;
-	FBO mWorldFBO, mGameFBO, mAnimatorFBO, mLightMapFBO;
+	FBO mWorldFBO, mGameFBO, mAnimatorFBO, mLightMapFBO, mMinimapFBO;
 	int* mWindowWidth;
 	int* mWindowHeight;
 	GLShader mDefaultProgram;
@@ -449,7 +449,10 @@ private:
 	\brief
 	Creating vertices from the ECS.
 	*******************************************************************************/
-	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo);
+	void CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo);
+	void CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo);
+	void CreateMinimap(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo);
+	void CreateMinimapVertices(const Entity& _e, int _layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices, GLuint texid);
 
 	/*!*****************************************************************************
 	\brief

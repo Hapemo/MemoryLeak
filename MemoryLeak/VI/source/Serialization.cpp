@@ -1727,9 +1727,9 @@ void SerializationManager::GetGUIDList(std::filesystem::path _filename, std::set
 		docGUID.Parse(contentsGUID.str().c_str());
 		Value guid(kArrayType);
 		guid = docGUID.GetArray();
-		for (rapidjson::SizeType index = 0; index < guid.Size(); ++index)
+		for (rapidjson::SizeType indx = 0; indx < guid.Size(); ++indx)
 		{
-			sGUIDList.insert(guid[index].GetInt64());
+			sGUIDList.insert(guid[indx].GetInt64());
 		}
 		ifsGUID.close();
 	}

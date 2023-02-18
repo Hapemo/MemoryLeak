@@ -7,7 +7,7 @@
 \brief
 This file contains function definitions for the class RenderManager, which
 operates on Entities with Sprite and Transform Components.
-*******************************************************************************/
+*******************************************************************************/ 
 #include "Graphics/RenderManager.h"
 #include "pch.h"
 #include "RenderProps.h"
@@ -22,7 +22,7 @@ Default Constructor for RenderManager class.
 *******************************************************************************/
 RenderManager::RenderManager()
 	: mAllocator(NO_OF_OBJECTS, VERTICES_PER_OBJECT, INDICES_PER_OBJECT),
-	mWorldFBO(), mGameFBO(), mAnimatorFBO(), mLightMapFBO(),
+	mWorldFBO(), mGameFBO(), mAnimatorFBO(), mLightMapFBO(), mMinimapFBO(),
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
 	mCircularViewportProgram("shaders/texture.vert", "shaders/circularvp.frag"),
@@ -68,6 +68,7 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
 	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
 	mLightMapFBO.Init(*mWindowWidth, *mWindowHeight);
+	mMinimapFBO.Init(*mWindowWidth, *mWindowHeight);
 	mGameCam.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
 	mPrevWidth = *mWindowWidth;
@@ -104,6 +105,13 @@ void RenderManager::Render()
 	if (shadowManager->CastShadows())
 		CreateLightMap();
 
+	std::map<size_t, std::map<GLuint, TextureInfo>> circularvpInfo;
+
+	CreateVerticesVP(circularvpInfo);
+	CreateMinimap(circularvpInfo);
+
+	circularvpInfo.clear();
+
 	if (!mRenderGameToScreen)
 		mCurrRenderPass == RENDER_STATE::GAME ? 
 		mGameFBO.Bind() : mWorldFBO.Bind();
@@ -111,7 +119,6 @@ void RenderManager::Render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	std::map<size_t, std::map<GLuint, TextureInfo>> textureInfo;
-	std::map<size_t, std::map<GLuint, TextureInfo>> circularvpInfo;
 
 	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
@@ -123,6 +130,7 @@ void RenderManager::Render()
 
 	BatchRenderLayers(textureInfo);
 	BatchRenderVPLayers(circularvpInfo);
+
 	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
 	if (mCurrRenderPass == RENDER_STATE::WORLD || mDebug)
 		RenderDebug();
@@ -310,6 +318,17 @@ void RenderManager::RenderVisibilityPolygon()
 	//unuse VAO and normal program
 	mAllocator.UnbindVAO();
 	mDefaultProgram.Unbind();
+}
+
+void RenderManager::CreateMinimap(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo)
+{
+	if (_cvpinfo.empty()) return;
+	mMinimapFBO.Bind();
+	SetClearColor({ 255, 255, 255, 255 });
+	Clear();
+	//render all shapes
+	BatchRenderLayers(_cvpinfo);
+	mMinimapFBO.Unbind();
 }
 
 /*!*****************************************************************************
@@ -699,11 +718,7 @@ void RenderManager::NewLayer(int _layer)
 		mRenderLayers.push_back(_layer);
 }
 
-/*!*****************************************************************************
-\brief
-Creating vertices from the ECS.
-*******************************************************************************/
-void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>&_texInfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo)
+void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo)
 {
 	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
 	{
@@ -716,11 +731,13 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			mIsCurrSceneUI = true;
 		else
 			mIsCurrSceneUI = false;
-		//u are here
+
 		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
 			for (Entity e : scene.mEntities)
 			{
+				if (!e.GetComponent<General>().isActive) continue;
+				if (!e.ShouldRun()) continue;
 				if (e.HasComponent<Sprite>())
 				{
 					Sprite sprite = e.GetComponent<Sprite>();
@@ -742,7 +759,74 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 					}
 				}
 			}
+			break;
 		}
+	}
+}
+
+void RenderManager::CreateMinimapVertices(const Entity& _e, int _layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices, GLuint texid)
+{
+	Math::Mat3 mtx = GetTransform(_e);
+	glm::vec4 clr = GetColor(_e);
+	float layer = (_layer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f) / ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
+	float texID = (float)texid;
+
+	Vertex v0, v1, v2, v3;
+	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
+	v0.position.z = layer > 1.f ? 1.f : layer;
+	v0.color = clr;
+	v0.texCoords = glm::vec2(0, 1.f);
+	v0.texID = texID;
+
+	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
+	v1.position.z = layer > 1.f ? 1.f : layer;
+	v1.color = clr;
+	v1.texCoords = glm::vec2(0, 0.f);
+	v1.texID = texID;
+
+	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
+	v2.position.z = layer > 1.f ? 1.f : layer;
+	v2.color = clr;
+	v2.texCoords = glm::vec2(1.f, 1.f);
+	v2.texID = texID;
+
+	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
+	v3.position.z = layer > 1.f ? 1.f : layer;
+	v3.color = clr;
+	v3.texCoords = glm::vec2(1.f, 0.f);
+	v3.texID = texID;
+
+	_vertices.push_back(v0);
+	_vertices.push_back(v1);
+	_vertices.push_back(v2);
+	_vertices.push_back(v3);
+
+	GLushort first = _indices.empty() ? 0 : _indices.back() + 1;
+	_indices.push_back(first);
+	_indices.push_back(first + 1);
+	_indices.push_back(first + 2);
+	_indices.push_back(first + 1);
+	_indices.push_back(first + 2);
+	_indices.push_back(first + 3);
+}
+
+/*!*****************************************************************************
+\brief
+Creating vertices from the ECS.
+*******************************************************************************/
+void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo>>&_texInfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo)
+{
+	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
+	{
+		if (scene.mLayer > MAX_SCENE_LAYERS - 1)
+			continue;
+
+		if (scene.mIsPause) continue;
+
+		if (scene.mIsUI && mCurrRenderPass == RENDER_STATE::GAME)
+			mIsCurrSceneUI = true;
+		else
+			mIsCurrSceneUI = false;
 
 		for (Entity e : scene.mEntities)
 		{
@@ -751,8 +835,29 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			if (e.HasComponent<LightSource>())
 				lightsource = e;
 			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
+			auto i = _cvpInfo.end();
+			if (e.HasComponent<CircularViewport>())
+			{
+				if (!e.HasComponent<Sprite>()) continue;
+				Sprite sprite = e.GetComponent<Sprite>();
+				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
+					mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+				GLuint texid = mMinimapFBO.GetColorAttachment();
+				if (texid != 0)
+				{
+					if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+						_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+					if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+						== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+						_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+					{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-			if (e.HasComponent<Sprite>())
+					CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
+						_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+						_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+				}
+			}
+			else if (e.HasComponent<Sprite>())
 			{
 				Sprite sprite = e.GetComponent<Sprite>();
 				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
