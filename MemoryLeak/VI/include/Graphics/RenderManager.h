@@ -301,7 +301,6 @@ private:
 	int* mWindowHeight;
 	GLShader mDefaultProgram;
 	GLShader mTextureProgram;
-	GLShader mCircularViewportProgram;
 	GLAllocator mAllocator;
 	std::vector<Vertex> mTextureVertices;
 	std::vector<GLushort> mTextureIndices;
@@ -343,6 +342,7 @@ private:
 	*******************************************************************************/
 	void BindTextureUnit(const GLuint& _texID, TextureInfo& _texInfo, std::vector<int>& _texUnits);
 
+	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 	/*!*****************************************************************************
 	\brief
 	Batch renders textures, shapes and font based on their respective layers.
@@ -350,16 +350,8 @@ private:
 	\param std::map<size_t, std::map<GLuint, TextureInfo>>& 
 	The texture info with vertices.
 	*******************************************************************************/
-	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
+	void BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo);
 	
-	/*!*****************************************************************************
-	\brief
-	Batch renders the Circular vieport.
-	
-	\param std::map<size_t, std::map<GLuint, TextureInfo>>&
-	The texture info for the circular viewport.
-	*******************************************************************************/
-	void BatchRenderVPLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo);
 
 	/*!*****************************************************************************
 	\brief

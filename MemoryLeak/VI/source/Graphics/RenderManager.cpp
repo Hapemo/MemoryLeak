@@ -25,7 +25,6 @@ RenderManager::RenderManager()
 	mWorldFBO(), mGameFBO(), mAnimatorFBO(), mLightMapFBO(), mMinimapFBO(),
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
-	mCircularViewportProgram("shaders/texture.vert", "shaders/circularvp.frag"),
 	mWindowHeight(nullptr), mWindowWidth(nullptr), lightsource(0)
 {
 	//render world (editor)
@@ -128,8 +127,7 @@ void RenderManager::Render()
 	CreateVertices(textureInfo, circularvpInfo);
 	/*************************************CREATING VERTICES END**************************************/
 
-	BatchRenderLayers(textureInfo);
-	BatchRenderVPLayers(circularvpInfo);
+	BatchRenderLayers(textureInfo, circularvpInfo);
 
 	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
 	if (mCurrRenderPass == RENDER_STATE::WORLD || mDebug)
@@ -369,6 +367,21 @@ GLuint RenderManager::GetAnimatorFBO()
 
 	return mAnimatorFBO.GetColorAttachment();
 }
+
+void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo)
+{
+	for (int layer : mRenderLayers)
+	{
+		mTextureProgram.Bind();
+		mAllocator.BindVAO();
+		if (_texinfo.find(layer) != _texinfo.end())
+			RenderTextures(_texinfo[layer], false);
+		mAllocator.UnbindVAO();
+		mTextureProgram.Unbind();
+		RenderShapes(layer);
+		RenderText(layer);
+	}
+}
 /*!*****************************************************************************
 \brief
 Batch renders textures, shapes and font based on their respective layers.
@@ -376,40 +389,21 @@ Batch renders textures, shapes and font based on their respective layers.
 \param std::map<size_t, std::map<GLuint, TextureInfo>>&
 The texture info with vertices.
 *******************************************************************************/
-void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo)
+void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo)
 {
 	for (int layer : mRenderLayers)
 	{
+		mTextureProgram.Bind();
+		mAllocator.BindVAO();
 		if (_texinfo.find(layer) != _texinfo.end())
-		{
-			mTextureProgram.Bind();
-			mAllocator.BindVAO();
 			RenderTextures(_texinfo[layer], false);
-			mAllocator.UnbindVAO();
-			mTextureProgram.Unbind();
-		}
+		if (_cvpinfo.find(layer) != _cvpinfo.end())
+			RenderTextures(_cvpinfo[layer], true);
+		mAllocator.UnbindVAO();
+		mTextureProgram.Unbind();
 		RenderShapes(layer);
 		RenderText(layer);
 	}
-}
-/*!*****************************************************************************
-\brief
-Batch renders the Circular vieport.
-
-\param std::map<size_t, std::map<GLuint, TextureInfo>>&
-The texture info for the circular viewport.
-*******************************************************************************/
-void RenderManager::BatchRenderVPLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo)
-{
-	for (int layer : mRenderLayers)
-		if (_cvpinfo.find(layer) != _cvpinfo.end())
-		{
-			mCircularViewportProgram.Bind();
-			mAllocator.BindVAO();
-			RenderTextures(_cvpinfo[layer], true);
-			mAllocator.UnbindVAO();
-			mCircularViewportProgram.Unbind();
-		}
 }
 
 /*!*****************************************************************************
@@ -738,6 +732,7 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 			{
 				if (!e.GetComponent<General>().isActive) continue;
 				if (!e.ShouldRun()) continue;
+				if (e.HasComponent<CircularViewport>()) continue;
 				if (e.HasComponent<Sprite>())
 				{
 					Sprite sprite = e.GetComponent<Sprite>();
@@ -827,7 +822,6 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			mIsCurrSceneUI = true;
 		else
 			mIsCurrSceneUI = false;
-
 		for (Entity e : scene.mEntities)
 		{
 			if (!e.GetComponent<General>().isActive) continue;
@@ -835,7 +829,6 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			if (e.HasComponent<LightSource>())
 				lightsource = e;
 			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
-			auto i = _cvpInfo.end();
 			if (e.HasComponent<CircularViewport>())
 			{
 				if (!e.HasComponent<Sprite>()) continue;
@@ -845,16 +838,16 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				GLuint texid = mMinimapFBO.GetColorAttachment();
 				if (texid != 0)
 				{
-					if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
-						_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
-					if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
-						== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
-						_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+					if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
+						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+					if (_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+						== _cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
 					{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
 					CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-						_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
-						_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
 				}
 			}
 			else if (e.HasComponent<Sprite>())
@@ -1034,12 +1027,10 @@ void RenderManager::RenderTextures(std::map<GLuint, TextureInfo>&_texInfo, bool 
 	for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
 		samplerUniform[i] = i;
 	//use texture program and bind VAO
-
+	int circular = static_cast<int>(_cvp);
 	//insert uniforms
-	if (!_cvp)
-		mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
-	else 
-		mCircularViewportProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
+	mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
+	mTextureProgram.InsertUniform1iv("uCircular", 1, &circular);
 
 	int textureCount = 0;
 
@@ -1680,11 +1671,11 @@ void RenderManager::InitializeShaders()
 {
 	mDefaultProgram.CompileLinkShaders();
 	mTextureProgram.CompileLinkShaders();
-	mCircularViewportProgram.CompileLinkShaders();
 
 	mDefaultProgram.Validate();
 	mTextureProgram.Validate();
-	mCircularViewportProgram.Validate();
+
+	mTextureProgram.RegisterUniforms({"uTex2D", "uCircular"});
 }
 
 /*!*****************************************************************************
