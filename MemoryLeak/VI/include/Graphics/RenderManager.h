@@ -506,6 +506,8 @@ private:
 	*******************************************************************************/
 	void CreateSquare(const Entity& _e, int layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
 
+	void CreateSquareParticle(GLuint texid, int layer, const Transform& xform, Color clr, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices);
+
 	/*!*****************************************************************************
 	\brief
 	Create vertices for the shadow filter.

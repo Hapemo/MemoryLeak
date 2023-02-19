@@ -230,6 +230,15 @@ void GameStateManager::RenameGameState(GameState* _gs, std::string const& _name)
 	_gs->mName = _name;
 }
 
+Scene*& GameStateManager::FindScene(EntityID _e) {
+	for (Scene& scene : mCurrentGameState->mScenes)
+		for (Entity e : scene.mEntities)
+			if (e.id == _e) return &scene;
+
+	LOG_WARN("Unable to find entity " + std::to_string(_e) + " in any scenes");
+	return &mErrorScene;
+}
+
 Entity GameStateManager::GetEntity(std::string const& _entityName, std::string const& _sceneName) {
 	for (Scene& scene : mCurrentGameState->mScenes) {
 		// If scene is specified, skip those scenes that are not same name.

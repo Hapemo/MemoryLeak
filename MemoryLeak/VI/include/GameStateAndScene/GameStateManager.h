@@ -166,6 +166,8 @@ public:
 		return std::find_if(mGameStates.begin(), mGameStates.end(), [_name] (GameState& gs) -> bool { return gs.mName == _name; });
 	}
 
+	Scene* FindScene(EntityID _e);
+
 	std::vector<GameState> mGameStates{}; // Only 1 in game, multi gamestates allowed during editor mode
 	std::map<std::string,std::vector<bool>> mGameStatesScenesPause; // One std::vector<bool> for each game state to keep record of their pause
 	std::string mNextGSPath;

@@ -46,6 +46,9 @@ public:
 	void Destroy();
 
 	bool GetIsActive() const { return mLifespan != 0; }
+	Color GetColor() const { return mColor; }
+	Transform GetTransform() const { return mTransform; }
+	EntityID GetEntityID() const { return mEntity; }
 
 private:
 	Transform mTransform;		// Position, scale and rotation of the particle
@@ -71,10 +74,19 @@ public:
 	void Update();
 
 	// Generate one frame of particles
-	void GenerateOnce(Entity _e) { _e.GetComponent<ParticleSystem>().mIsActive = true; }
+	void GenerateOnce(Entity _e) { 
+		ParticleSystem& system{ _e.GetComponent<ParticleSystem>() };
+		system.mIsActive = true;
+		system.mParticleInfo.GetScene() = GameStateManager::GetInstance()->FindScene(_e.id);
+	}
 
 	// Generate loop of time frame
-	void GenerateLoop(Entity _e, float _duration) { _e.GetComponent<ParticleSystem>().mIsActive = true; _e.GetComponent<ParticleSystem>().mDuration = _duration; }
+	void GenerateLoop(Entity _e, float _duration) { 
+		ParticleSystem& system{ _e.GetComponent<ParticleSystem>() };
+		system.mIsActive = true;
+		system.mDuration = _duration;
+		system.mParticleInfo.GetScene() = GameStateManager::GetInstance()->FindScene(_e.id);
+	}
 
 	auto ParticleBegin() { return mParticles.begin(); }
 	auto ParticleLast() { return mParticles.begin() + mParticleCount; }
@@ -90,6 +102,8 @@ private:
 	void UpdateParticles(); // Update movement of particles and render them
 
 	void GenerateParticle(ParticleSystem const&, EntityID _e);
+
+	std::string GetScene(); // Get the scene that the particle system is in
 
 private:
 	//SparseSet<Particle> mParticles;

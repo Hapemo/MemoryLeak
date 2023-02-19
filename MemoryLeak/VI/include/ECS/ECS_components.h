@@ -21,6 +21,7 @@ ComponentType starts from 0.
 #include "AnimationVariable.h"
 
 class Prefab;
+class Scene;
 
 /*!*****************************************************************************
 \brief
@@ -357,6 +358,10 @@ struct ParticleSystem {
 		float mSpeed;					// Speed of particle
 		bool mFading;					// Boolean value to determine if the color fades as it travels
 		int mLayer;						// Particle's layer
+		
+		Scene*& GetScene() { return mScene; }
+	private:
+		Scene* mScene;			// This should be left empty, system init it
 	} mParticleInfo;
 
 	int mDensity = 0;													// Amount of particles to generate
