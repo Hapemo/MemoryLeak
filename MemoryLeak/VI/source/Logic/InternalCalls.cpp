@@ -194,8 +194,8 @@ The id of the current dialog.
 \return
 Returns the next dialog id.
 *******************************************************************************/
-int InternalCalls::GetNext(int _id) {
-	return dialogManager->GetNext(_id);
+std::string InternalCalls::GetNext(int _id) {
+	return dialogManager->GetDialogue(dialogManager->GetNext(_id));
 }
 
 /*!*****************************************************************************

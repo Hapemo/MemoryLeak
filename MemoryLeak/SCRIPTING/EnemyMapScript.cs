@@ -15,14 +15,8 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class EnemyMapScript : BaseScript
+    public class EnemyMapScript
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
-        }
-
         static bool init = true;
         static bool big = false;
         private float MapX, MapY;
@@ -30,15 +24,15 @@ namespace BonVoyage {
         private float expMapX, expMapY;
         public void Init(int _id) {
 
-            InternalCalls.SetEntityIsActive("enemymapbig", "EnemyMap", false);
-            InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", false);
-            InternalCalls.SetEntityIsActive("playerbig", "EnemyMap", false);
-            MapX = InternalCalls.GetScaleX("Water", "Level1");
-            MapY = InternalCalls.GetScaleY("Water", "Level1");
-            miniMapX = InternalCalls.GetScaleX("enemymap", "EnemyMap");
-            miniMapY = InternalCalls.GetScaleY("enemymap", "EnemyMap");
-            expMapX = InternalCalls.GetScaleX("enemymapbig", "EnemyMap");
-            expMapY = InternalCalls.GetScaleY("enemymapbig", "EnemyMap");
+            VI.Entity.SetActive("enemymapbig", "EnemyMap", false);
+            VI.Entity.SetActive("enemybig", "EnemyMap", false);
+            VI.Entity.SetActive("playerbig", "EnemyMap", false);
+            MapX = VI.Transform.Scale.GetX("Water", "Level1");
+            MapY = VI.Transform.Scale.GetY("Water", "Level1");
+            miniMapX = VI.Transform.Scale.GetX("enemymap", "EnemyMap");
+            miniMapY = VI.Transform.Scale.GetY("enemymap", "EnemyMap");
+            expMapX = VI.Transform.Scale.GetX("enemymapbig", "EnemyMap");
+            expMapY = VI.Transform.Scale.GetY("enemymapbig", "EnemyMap");
            
         }
 
@@ -51,57 +45,57 @@ namespace BonVoyage {
             }
 
             //////////////////////////////////////////////init
-            if ((InternalCalls.ButtonReleased("enemymap", "EnemyMap")) == true)
+            if ((VI.Input.Button.Released("enemymap", "EnemyMap")) == true)
             {
                 big = !big;
                 if (big)
                 {
-                    InternalCalls.SetEntityIsActive("enemymapbig", "EnemyMap", true);
-                    InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", true);
-                    InternalCalls.SetEntityIsActive("playerbig", "EnemyMap", true);
+                    VI.Entity.SetActive("enemymapbig", "EnemyMap", true);
+                    VI.Entity.SetActive("enemybig", "EnemyMap", true);
+                    VI.Entity.SetActive("playerbig", "EnemyMap", true);
                 }
                 else {
-                    InternalCalls.SetEntityIsActive("enemymapbig", "EnemyMap", false);
-                    InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", false);
-                    InternalCalls.SetEntityIsActive("playerbig", "EnemyMap", false);
+                    VI.Entity.SetActive("enemymapbig", "EnemyMap", false);
+                    VI.Entity.SetActive("enemybig", "EnemyMap", false);
+                    VI.Entity.SetActive("playerbig", "EnemyMap", false);
                 }
             }
-            float posx = InternalCalls.GetPosX("Enemy", "Level1")- InternalCalls.GetPosX("Boat", "Level1");
-            float posy = InternalCalls.GetPosY("Enemy", "Level1") - InternalCalls.GetPosY("Boat", "Level1");
+            float posx = VI.Transform.Position.GetX("Enemy", "Level1")- VI.Transform.Position.GetX("Boat", "Level1");
+            float posy = VI.Transform.Position.GetY("Enemy", "Level1") - VI.Transform.Position.GetY("Boat", "Level1");
             if (posx > MapX / 4 || posy > MapY / 4)
             {
-                InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
+                VI.Entity.SetActive("enemy", "EnemyMap", false);
             }
             else
             {
-                InternalCalls.SetEntityIsActive("enemy", "EnemyMap", true);
-                float eposx = InternalCalls.GetPosX("player", "EnemyMap") + (posx * (miniMapX / MapX));
-                float eposy = InternalCalls.GetPosY("player", "EnemyMap") + (posy * (miniMapY / MapY));
-                InternalCalls.SetPosX("enemy", "EnemyMap", eposx);
-                InternalCalls.SetPosY("enemy", "EnemyMap", eposy);
+                VI.Entity.SetActive("enemy", "EnemyMap", true);
+                float eposx = VI.Transform.Position.GetX("player", "EnemyMap") + (posx * (miniMapX / MapX));
+                float eposy = VI.Transform.Position.GetY("player", "EnemyMap") + (posy * (miniMapY / MapY));
+                VI.Transform.Position.SetX("enemy", "EnemyMap", eposx);
+                VI.Transform.Position.SetY("enemy", "EnemyMap", eposy);
             }
             if (big)
             { 
                 if (posx > MapX / 2 || posy > MapY / 2)
                 {
-                    InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", false);
+                    VI.Entity.SetActive("enemybig", "EnemyMap", false);
                 }
                 else
                 {
-                    InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", true);
-                    float eposx = InternalCalls.GetPosX("playerbig", "EnemyMap") + (posx * (expMapX / MapX));
-                    float eposy = InternalCalls.GetPosY("playerbig", "EnemyMap") + (posy * (expMapY / MapY));
-                    InternalCalls.SetPosX("enemybig", "EnemyMap", eposx);
-                    InternalCalls.SetPosY("enemybig", "EnemyMap", eposy);
+                    VI.Entity.SetActive("enemybig", "EnemyMap", true);
+                    float eposx = VI.Transform.Position.GetX("playerbig", "EnemyMap") + (posx * (expMapX / MapX));
+                    float eposy = VI.Transform.Position.GetY("playerbig", "EnemyMap") + (posy * (expMapY / MapY));
+                    VI.Transform.Position.SetX("enemybig", "EnemyMap", eposx);
+                    VI.Transform.Position.SetY("enemybig", "EnemyMap", eposy);
                 }
             }
         }
 
         public void Exit(int _id) {
             big= false;
-            InternalCalls.SetEntityIsActive("enemymapbig", "EnemyMap", false);
-            InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", false);
-            InternalCalls.SetEntityIsActive("playerbig", "EnemyMap", false);
+            VI.Entity.SetActive("enemymapbig", "EnemyMap", false);
+            VI.Entity.SetActive("enemybig", "EnemyMap", false);
+            VI.Entity.SetActive("playerbig", "EnemyMap", false);
 
         }
     }

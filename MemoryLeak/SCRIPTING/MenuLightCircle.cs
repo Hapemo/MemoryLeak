@@ -12,14 +12,8 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class MenuLightCircle : BaseScript
+    public class MenuLightCircle
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
-        }
-
         float size;
         float alpha;
         float stepSize, stepAlpha;
@@ -43,17 +37,17 @@ namespace BonVoyage {
 
         public void Update(int _id) {
             UpdateSizeAlpha();
-            InternalCalls.SetScaleX("LightCircle", "Menu_Main", size);
-            InternalCalls.SetScaleY("LightCircle", "Menu_Main", size);
-            InternalCalls.SetSpriteColor("LightCircle", "Menu_Main", 255, 255, 255, (int)alpha);
+            VI.Transform.Scale.SetX("LightCircle", "Menu_Main", size);
+            VI.Transform.Scale.SetY("LightCircle", "Menu_Main", size);
+            VI.LightSource.SpriteColor.Set("LightCircle", "Menu_Main", 255, 255, 255, (int)alpha);
         }
 
         void UpdateSizeAlpha()
         {
             if (increasing)
             {
-                size += stepSize * (float)InternalCalls.GetDeltaTime();
-                alpha += stepAlpha * (float)InternalCalls.GetDeltaTime();
+                size += stepSize * (float)VI.General.DeltaTime();
+                alpha += stepAlpha * (float)VI.General.DeltaTime();
                 if (size > upperSize)
                 {
                     size = upperSize;
@@ -63,8 +57,8 @@ namespace BonVoyage {
             }
             else
             {
-                size -= stepSize * (float)InternalCalls.GetDeltaTime();
-                alpha -= stepAlpha * (float)InternalCalls.GetDeltaTime();
+                size -= stepSize * (float)VI.General.DeltaTime();
+                alpha -= stepAlpha * (float)VI.General.DeltaTime();
                 if (size < lowerSize)
                 {
                     size = lowerSize;
