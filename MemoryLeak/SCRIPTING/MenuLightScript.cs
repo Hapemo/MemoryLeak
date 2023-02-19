@@ -11,20 +11,14 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class MenuLightScript : BaseScript
+    public class MenuLightScript
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
-        }
-
         float radius;
         float speed;
         bool increasing;
         float upper, lower;
         public void Init(int _id) {
-            radius = InternalCalls.GetLightSourceRadius("Title", "Menu_Main");
+            radius = VI.LightSource.Radius.Get("Title", "Menu_Main");
             speed = 500;
             increasing = false;
             upper = 1100;
@@ -33,7 +27,7 @@ namespace BonVoyage {
 
         public void Update(int _id) {
             UpdateRadius();
-            InternalCalls.SetLightSourceRadius("Title", "Menu_Main", radius);
+            VI.LightSource.Radius.Set("Title", "Menu_Main", radius);
         }
 
         public void Exit(int _id) {
@@ -44,7 +38,7 @@ namespace BonVoyage {
         {
             if (increasing)
             {
-                radius += speed * (float)InternalCalls.GetDeltaTime();
+                radius += speed * (float)VI.General.DeltaTime();
                 if (radius > upper)
                 {
                     increasing = false;
@@ -53,7 +47,7 @@ namespace BonVoyage {
             }
             else
             {
-                radius -= speed * (float)InternalCalls.GetDeltaTime();
+                radius -= speed * (float)VI.General.DeltaTime();
                 if (radius < lower)
                 {
                     increasing = true;

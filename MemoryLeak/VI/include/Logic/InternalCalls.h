@@ -149,15 +149,15 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Retrieves the next dialog id.
+	Retrieves the next dialog text.
 
 	\param int _id
 	The id of the current dialog.
 
 	\return
-	Returns the next dialog id.
+	Returns the next dialog text.
 	*******************************************************************************/
-	static int GetNext(int _id);
+	static std::string GetNext(int _id);
 
 	/*!*****************************************************************************
 	\brief

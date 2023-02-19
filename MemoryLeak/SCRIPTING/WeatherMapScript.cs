@@ -16,20 +16,14 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class WeatherMapScript : BaseScript
+    public class WeatherMapScript
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
-        }
-
         static bool init = true;
         static bool big = false;
         private float maxMapX, maxMapY;
         public void Init(int _id) {
             
-            InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
+            VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
                 int modI = i % 5;
@@ -37,44 +31,44 @@ namespace BonVoyage {
                 if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
                 {
                     string MIcon = "MIcon" + i;
-                    InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
+                    VI.Entity.SetActive(MIcon, "WeatherMap", false);
                 }
             }
-            InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
+            VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
                 string EIcon = "EIcon" + i;
-                InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", false);
+                VI.Entity.SetActive(EIcon, "WeatherMap", false);
             }
             if (init)
             {
-                maxMapX = InternalCalls.GetScaleX("Water", "Level1");
-                maxMapY = InternalCalls.GetScaleY("Water", "Level1");
-                InternalCalls.WeatherAIinit(maxMapX, maxMapY);
+                maxMapX = VI.Transform.Scale.GetX("Water", "Level1");
+                maxMapY = VI.Transform.Scale.GetY("Water", "Level1");
+                VI.Weather.Init(maxMapX, maxMapY);
                 init = false;
             }
         }
         public void Update(int _id) {
-            if ((InternalCalls.ButtonReleased("weathermap", "WeatherMap")) == true)
+            if ((VI.Input.Button.Released("weathermap", "WeatherMap")) == true)
             {
                 big = !big;
                 
                 if (big)
                 {
-                    InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", true);
+                    VI.Entity.SetActive("weathermapbig", "WeatherMap", true);
                     for (int i = 0; i < 25; i++)
                     {
                         string EIcon = "EIcon" + i;
-                        InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", true);
+                        VI.Entity.SetActive(EIcon, "WeatherMap", true);
                     }
                 }
                 else
                 {
-                    InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
+                    VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
                     for (int i = 0; i < 25; i++)
                     {
                         string EIcon = "EIcon" + i;
-                        InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", false);
+                        VI.Entity.SetActive(EIcon, "WeatherMap", false);
                     }
                 }
             }
@@ -82,18 +76,18 @@ namespace BonVoyage {
             {
                 int modI = i % 5;
                 int divI = i / 5;
-                int index = InternalCalls.GetCurrentWeather(i, 
-                    InternalCalls.GetPosX("Boat", "Level1"), InternalCalls.GetPosY("Boat", "Level1"));
+                int index = VI.Weather.GetCurrent(i, 
+                    VI.Transform.Position.GetX("Boat", "Level1"), VI.Transform.Position.GetY("Boat", "Level1"));
                 if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
                 {
                     string MIcon = "MIcon" + i;
-                    InternalCalls.SetSpriteSheetIndex(MIcon, "WeatherMap", index);
-                    InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", true);
+                    VI.Animation.SheetIndex.Set(MIcon, "WeatherMap", index);
+                    VI.Entity.SetActive(MIcon, "WeatherMap", true);
                 }
                 if (big)
                 {
                     string EIcon = "EIcon" + i;
-                    InternalCalls.SetSpriteSheetIndex(EIcon, "WeatherMap", index);
+                    VI.Animation.SheetIndex.Set(EIcon, "WeatherMap", index);
                 }
             }
             
@@ -102,11 +96,11 @@ namespace BonVoyage {
 
         public void Exit(int _id) {
             big = false;
-            InternalCalls.SetEntityIsActive("weathermapbig", "WeatherMap", false);
+            VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
                 string EIcon = "EIcon" + i;
-                InternalCalls.SetEntityIsActive(EIcon, "WeatherMap", false);
+                VI.Entity.SetActive(EIcon, "WeatherMap", false);
             }
         }
     }
