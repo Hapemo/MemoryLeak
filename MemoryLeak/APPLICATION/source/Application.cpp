@@ -77,7 +77,7 @@ void Application::SystemInit() {
 }
 
 void Application::SystemUpdate() {
-    buttonManager->Update();
+  buttonManager->Update();
   // AI
   TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
@@ -106,6 +106,11 @@ void Application::SystemUpdate() {
   TRACK_PERFORMANCE("Collision");
   collision2DManager->Update(FPSManager::dt);
   END_TRACK("Collision");
+
+  // Particles
+  TRACK_PERFORMANCE("Particle");
+  particleManager->Update();
+  END_TRACK("Particle");
 
   // Layer
   TRACK_PERFORMANCE("Layer");

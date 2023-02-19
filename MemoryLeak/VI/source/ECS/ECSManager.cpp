@@ -28,6 +28,7 @@ std::shared_ptr<AIManager> aiManager{ nullptr };
 std::shared_ptr<LogicSystem> logicSystem{ nullptr };
 std::shared_ptr<ShadowManager> shadowManager{ nullptr };
 std::shared_ptr<ButtonManager> buttonManager{ nullptr };
+std::shared_ptr<ParticleManager> particleManager{ nullptr };
 
 //----------------------------------------------------------------
 // Register Managers
@@ -176,6 +177,14 @@ void ECSManager::RegisterButtonManager() {
 	buttonManager = ECS::RegisterSystem<ButtonManager>();
 	ECS::SetSystemSignature<ButtonManager>(signature);
 }
+
+void ECSManager::RegisterParticleManager() {
+	Signature signature;
+	signature.set(ECS::GetComponentType<ParticleSystem>());
+
+	particleManager = ECS::RegisterSystem<ParticleManager>();
+	ECS::SetSystemSignature<ParticleManager>(signature);
+}
 //----------------------------------------------------------------
 // ECSManager Functions
 //----------------------------------------------------------------
@@ -198,6 +207,7 @@ void ECSManager::RegisterAllSystems() {
 	RegisterLogicSystem();
 	RegisterShadowManager();
 	RegisterButtonManager();
+	RegisterParticleManager();
 	// More to come
 }
 
@@ -224,6 +234,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Button>();
 	ECS::RegisterComponent<ShadowCaster>();
 	ECS::RegisterComponent<CircularViewport>();
+	ECS::RegisterComponent<ParticleSystem>();
 
 	// More to come
 }
