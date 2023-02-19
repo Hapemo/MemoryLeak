@@ -15,14 +15,20 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class EnemyMapScript
+    public class EnemyMapScript : BaseScript
     {
+        public override void PreInit(int _id)
+        {
+            var bs = new BaseScript();
+            bs.PreInit(_id);
+        }
+
         static bool init = true;
         static bool big = false;
         private float MapX, MapY;
         private float miniMapX, miniMapY;
         private float expMapX, expMapY;
-        public void Init() {
+        public void Init(int _id) {
 
             InternalCalls.SetEntityIsActive("enemymapbig", "EnemyMap", false);
             InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", false);
@@ -36,7 +42,7 @@ namespace BonVoyage {
            
         }
 
-        public void Update() {
+        public void Update(int _id) {
             
             if (init)
             {
@@ -91,7 +97,7 @@ namespace BonVoyage {
             }
         }
 
-        public void Exit() {
+        public void Exit(int _id) {
             big= false;
             InternalCalls.SetEntityIsActive("enemymapbig", "EnemyMap", false);
             InternalCalls.SetEntityIsActive("enemybig", "EnemyMap", false);

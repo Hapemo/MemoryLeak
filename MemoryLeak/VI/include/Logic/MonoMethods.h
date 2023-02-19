@@ -41,6 +41,7 @@ public:
 	static void LoadDialogs(MonoString* _filename);
 	static MonoString* GetDialogue(int _id);
 	static void ChangeGameState(MonoString* _name);
+	static int GetEntityId(MonoString* _entityName, MonoString* _sceneName);
 	static bool EntityIsActive(MonoString* _entityName, MonoString* _sceneName);
 	static void SetEntityIsActive(MonoString* _entityName, MonoString* _sceneName, bool _active);
 	static void EntityActivate(MonoString* _entityName, MonoString* _sceneName);

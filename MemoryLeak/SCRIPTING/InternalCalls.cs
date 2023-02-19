@@ -79,6 +79,9 @@ namespace BonVoyage
 		internal extern static void ChangeGameState(string _name);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetEntityId(string _entityName, string _sceneName);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool EntityIsActive(string _entityName, string _sceneName);
 
         [MethodImpl(MethodImplOptions.InternalCall)]

@@ -14,16 +14,22 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class MiniMapScript
+    public class MiniMapScript : BaseScript
     {
+        public override void PreInit(int _id)
+        {
+            var bs = new BaseScript();
+            bs.PreInit(_id);
+        }
+
         static bool init = true;
         static bool big = false;
-        public void Init() {
+        public void Init(int _id) {
 
             InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
         }
 
-        public void Update() {
+        public void Update(int _id) {
             if (init)
             {
                 init = false;
@@ -45,7 +51,7 @@ namespace BonVoyage {
 
         }
 
-        public void Exit() {
+        public void Exit(int _id) {
             big = false;
             InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
         }

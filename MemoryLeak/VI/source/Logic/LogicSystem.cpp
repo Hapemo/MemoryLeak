@@ -107,20 +107,20 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 	// Script is C# script
 	MonoManager::GetInstance()->RegisterMonoScript("BonVoyage", scriptName);
 	if (MonoManager::GetInstance()->GetMonoComponent(scriptName) != nullptr) {
+		void* params[1]{ (void*)&_e };
 		switch (_type) {
 		case E_SCRIPTTYPE::INIT:
 			LOG_INFO("Start Script for " + scriptName + " ran!");
-			MonoManager::GetInstance()->CallMethod(scriptName, "Init", 0);
-
+			MonoManager::GetInstance()->CallMethod(scriptName, "Init", 1, params);
 			break;
 
 		case E_SCRIPTTYPE::UPDATE:
-			MonoManager::GetInstance()->CallMethod(scriptName, "Update", 0);
+			MonoManager::GetInstance()->CallMethod(scriptName, "Update", 1, params);
 			break;
 
 		case E_SCRIPTTYPE::EXIT:
 			LOG_INFO("Exit Script for " + scriptName + " ran!");
-			MonoManager::GetInstance()->CallMethod(scriptName, "Exit", 0);
+			MonoManager::GetInstance()->CallMethod(scriptName, "Exit", 1, params);
 			break;
 
 		default:

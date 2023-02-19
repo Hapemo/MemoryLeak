@@ -836,25 +836,30 @@ void RenderManager::CreateLightFilter(int _shadowLayer, std::vector<Vertex>& _ve
 	float layer = (_shadowLayer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f)
 		/ ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
 	float texID = static_cast<float>(mLightMapFBO.GetColorAttachment());
+	glm::vec4 clr = { 1.f, 1.f, 1.f, 1.f };
 
 	Vertex v0, v1, v2, v3;
 	v0.position = Math::Vec3(-1.f, 1.f, 1.f).ToGLM();
 	v0.position.z = layer;
+	v0.color = clr;
 	v0.texCoords = glm::vec2(0.f, 1.f);
 	v0.texID = texID;
 
 	v1.position = Math::Vec3(-1.f, -1.f, 1.f).ToGLM();
 	v1.position.z = layer;
+	v1.color = clr;
 	v1.texCoords = glm::vec2(0.f, 0.f);
 	v1.texID = texID;
 
 	v2.position = Math::Vec3(1.f, 1.f, 1.f).ToGLM();
 	v2.position.z = layer;
+	v2.color = clr;
 	v2.texCoords = glm::vec2(1.f, 1.f);
 	v2.texID = texID;
 
 	v3.position = Math::Vec3(1.f, -1.f, 1.f).ToGLM();
 	v3.position.z = layer;
+	v3.color = clr;
 	v3.texCoords = glm::vec2(1.f, 0.f);
 	v3.texID = texID;
 

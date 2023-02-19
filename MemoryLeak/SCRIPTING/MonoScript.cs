@@ -18,8 +18,14 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage
 {
-    public class MonoScript
+    public class MonoScript : BaseScript
     {
+        public override void PreInit(int _id)
+        {
+            var bs = new BaseScript();
+            bs.PreInit(_id);
+        }
+
         private int fragment1;
         private bool starttalking;
         private float maxX, maxY, minX, minY, halfX, halfY;
@@ -103,7 +109,7 @@ namespace BonVoyage
       oriFragScaleX = 0;
 
     }
-  public void Init()
+  public void Init(int _id)
       {
           //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
           InitVariables();
@@ -119,7 +125,7 @@ namespace BonVoyage
           InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
         }
 
-      public void Update() {
+      public void Update(int _id) {
 
       // Toggle fps printing box (press 'T')
       if (InternalCalls.CheckKeyPress(84)) {
