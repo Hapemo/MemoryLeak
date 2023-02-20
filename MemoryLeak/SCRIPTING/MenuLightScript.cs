@@ -13,8 +13,6 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class MenuLightScript : BaseScript
     {
-        int ENTITY = 0;
-
         float radius;
         float speed;
         bool increasing;
