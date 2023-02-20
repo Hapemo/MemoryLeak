@@ -15,7 +15,7 @@ user can use filepath manager to get the file path.
 std::map<std::string, std::string> FilePathManager::mFilePaths;
 
 void FilePathManager::Init(std::string const& path) {
-  LOG_CUSTOM_CREATE("FILEPATHMANAGER");
+  LOG_CREATE("FILEPATHMANAGER");
 
   // Opening file
   std::fstream file;

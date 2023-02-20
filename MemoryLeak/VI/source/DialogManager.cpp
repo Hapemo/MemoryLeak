@@ -17,7 +17,7 @@ The DialogManager manages the scripts and dialogues data.
 Constructor of the DialogManager.
 *******************************************************************************/
 DialogManager::DialogManager() {
-	LOG_CUSTOM_CREATE("DIALOG");
+	LOG_CREATE("DIALOG");
 }
 
 /*!*****************************************************************************

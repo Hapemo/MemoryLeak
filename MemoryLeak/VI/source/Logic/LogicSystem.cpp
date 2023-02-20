@@ -20,6 +20,7 @@ Activate logic system in application.
 *******************************************************************************/
 void LogicSystem::Activate() {
 	LOG_DEBUG("Activate Logic System & Mono.");
+	LOG_CREATE("Mono");
 	MonoManager::GetInstance()->InitMono();
 }
 
