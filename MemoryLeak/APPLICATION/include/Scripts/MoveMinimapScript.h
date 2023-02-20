@@ -37,6 +37,13 @@ public:
 	Default destructor.
 	*******************************************************************************/
 	~MoveMinimapScript() override = default;
+
+	/*!*****************************************************************************
+	\brief
+	Function will run when the gamestate of the entity is activated.
+	*******************************************************************************/
+	void Alive(Entity const& _e) override;
+
 	/*!*****************************************************************************
 	\brief
 	Function that contains logic to run on script start
@@ -45,7 +52,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void StartScript(const Entity& _e) override;
+	void Init(const Entity& _e) override;
 	/*!*****************************************************************************
 	\brief
 	Function that contains logic to run during each update frame
@@ -54,7 +61,7 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void UpdateScript(const Entity& _e) override;
+	void Update(const Entity& _e) override;
 	/*!*****************************************************************************
 	\brief
 	Function that contains logic to run on script end
@@ -63,5 +70,11 @@ public:
 	\return void
 	NULL
 	*******************************************************************************/
-	void EndScript(const Entity& _e) override;
+	void Exit(const Entity& _e) override;
+
+	/*!*****************************************************************************
+	\brief
+	Function will run when the gamestate of the entity exits.
+	*******************************************************************************/
+	void Dead(Entity const& _e) override;
 };

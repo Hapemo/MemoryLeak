@@ -23,19 +23,31 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Function will run when the gamestate of the entity is activated.
+	*******************************************************************************/
+	void Alive(Entity const& _e) override;
+
+	/*!*****************************************************************************
+	\brief
 	Function will run on initialisation of the entity.
 	*******************************************************************************/
-	void StartScript(Entity const& gob) override;
+	void Init(Entity const& _e) override;
 
 	/*!*****************************************************************************
 	\brief
 	Function will run on every update while the entity is active.
 	*******************************************************************************/
-	void UpdateScript(Entity const& gob) override;
+	void Update(Entity const& _e) override;
 
 	/*!*****************************************************************************
 	\brief
 	Function will run on exit or when the entity is destroyed.
 	*******************************************************************************/
-	void EndScript(Entity const& gob) override;
+	void Exit(Entity const& _e) override;
+
+	/*!*****************************************************************************
+	\brief
+	Function will run when the gamestate of the entity exits.
+	*******************************************************************************/
+	void Dead(Entity const& _e) override;
 };

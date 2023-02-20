@@ -25,12 +25,16 @@ namespace {
 	static bool speedCheat{ false };
 }
 
-void PlayerMovementScript::StartScript(const Entity& _e) {
+void PlayerMovementScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+void PlayerMovementScript::Init(const Entity& _e) {
 	(void)_e;
 	inited = false;
 }
 
-void PlayerMovementScript::UpdateScript(const Entity& _e) {
+void PlayerMovementScript::Update(const Entity& _e) {
 	//if (Input::CheckKey(PRESS, SPACE)) std::cout << "MousePos: " << FUNC->GetWorldMousePos() << '\n';
 	/*if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
 		FUNC->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);*/
@@ -143,6 +147,10 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		currCamera->translation += (_e.GetComponent<Transform>().translation - currCamera->translation) * static_cast<float>(FUNC->GetDeltaTime()) * (speedCheat ? speedCheatMultiplier : 1);
 }
 
-void PlayerMovementScript::EndScript(const Entity& _e) {
+void PlayerMovementScript::Exit(const Entity& _e) {
+	(void)_e;
+}
+
+void PlayerMovementScript::Dead(Entity const& _e) {
 	(void)_e;
 }

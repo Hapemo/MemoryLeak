@@ -13,8 +13,11 @@ time.
 
 
 void GameState::Init() {
-	for (auto& scene : mScenes)
+	for (auto& scene : mScenes) {
+		for (auto e : scene.mEntities)
+			if (e.HasComponent<Script>()) logicSystem->Alive(e);
 		if (!scene.mIsPause) scene.Init();
+	}
 }
 
 void GameState::Update() {
@@ -23,8 +26,11 @@ void GameState::Update() {
 }
 
 void GameState::Exit() {
-	for (auto& scene : mScenes)
+	for (auto& scene : mScenes) {
+		for (auto e : scene.mEntities)
+			if (e.HasComponent<Script>()) logicSystem->Dead(e);
 		scene.Exit();
+	}
 }
 
 // Load new gamestate with file path

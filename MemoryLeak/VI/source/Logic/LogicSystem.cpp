@@ -16,12 +16,39 @@ The LogicSystem class handles the C# scripting for the engine.
 
 /*!*****************************************************************************
 \brief
+Activate logic system in application.
+*******************************************************************************/
+void LogicSystem::Activate() {
+	LOG_DEBUG("Activate Logic System & Mono.");
+	MonoManager::GetInstance()->InitMono();
+}
+
+/*!*****************************************************************************
+\brief
+Exit logic system in application.
+*******************************************************************************/
+void LogicSystem::Close() {
+	LOG_DEBUG("Closing Logic System & Mono.");
+	MonoManager::GetInstance()->CloseMono();
+}
+
+/*!*****************************************************************************
+\brief
+Run the alive function for all active entities' scripts.
+*******************************************************************************/
+void LogicSystem::Alive() {
+	LOG_DEBUG("Waking entities' scripts.");
+	for (Entity const& e : mEntities) Alive(e);
+	//GameStateManager::GetReference()->mcurrentGameState->mScenes[]
+}
+
+/*!*****************************************************************************
+\brief
 Run the initialisation function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Init() {
-	LOG_DEBUG("Initialising LogicSystem.");
-	MonoManager::GetInstance()->InitMono();
-	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::INIT);
+	LOG_DEBUG("Initialising entities' scripts.");
+	for (Entity const& e : mEntities) Init(e);
 	//GameStateManager::GetReference()->mcurrentGameState->mScenes[]
 }
 
@@ -30,7 +57,7 @@ void LogicSystem::Init() {
 Run the update function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Update() {
-	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::UPDATE);
+	for (Entity const& e : mEntities) Update(e);
 }
 
 /*!*****************************************************************************
@@ -38,9 +65,25 @@ void LogicSystem::Update() {
 Run the exit function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Exit() {
-	LOG_DEBUG("Closing LogicSystem.");
-	for (Entity const& e : mEntities) RunScript(e, E_SCRIPTTYPE::EXIT);
-	MonoManager::GetInstance()->CloseMono();
+	LOG_DEBUG("Exiting entities' scripts.");
+	for (Entity const& e : mEntities) Exit(e);
+}
+
+/*!*****************************************************************************
+\brief
+Run the exit function for all active entities' scripts.
+*******************************************************************************/
+void LogicSystem::Dead() {
+	LOG_DEBUG("Killing entities' scripts.");
+	for (Entity const& e : mEntities) Dead(e);
+}
+
+/*!*****************************************************************************
+\brief
+Run the alive function for all entities' scripts given by the parameter.
+*******************************************************************************/
+void LogicSystem::Alive(std::set<Entity> const& _entities) {
+	for (Entity const& e : _entities) Alive(e);
 }
 
 /*!*****************************************************************************
@@ -48,7 +91,7 @@ void LogicSystem::Exit() {
 Run the initialisation function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Init(std::set<Entity> const& _entities) {
-	for (Entity const& e : _entities) RunScript(e, E_SCRIPTTYPE::INIT);
+	for (Entity const& e : _entities) Init(e);
 }
 
 /*!*****************************************************************************
@@ -56,7 +99,7 @@ void LogicSystem::Init(std::set<Entity> const& _entities) {
 Run the update function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Update(std::set<Entity> const& _entities) {
-	for (Entity const& e : _entities) RunScript(e, E_SCRIPTTYPE::UPDATE);
+	for (Entity const& e : _entities) Update(e);
 }
 
 /*!*****************************************************************************
@@ -64,7 +107,55 @@ void LogicSystem::Update(std::set<Entity> const& _entities) {
 Run the exit function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Exit(std::set<Entity> const& _entities) {
-	for (Entity const& e : _entities) RunScript(e, E_SCRIPTTYPE::EXIT);
+	for (Entity const& e : _entities) Exit(e);
+}
+
+/*!*****************************************************************************
+\brief
+Run the dead function for all entities' scripts given by the parameter.
+*******************************************************************************/
+void LogicSystem::Dead(std::set<Entity> const& _entities) {
+	for (Entity const& e : _entities) Dead(e);
+}
+
+/*!*****************************************************************************
+\brief
+Run the alive function for entity.
+*******************************************************************************/
+void LogicSystem::Alive(Entity const& _e) {
+	RunScript(_e, E_SCRIPTTYPE::ALIVE);
+}
+
+/*!*****************************************************************************
+\brief
+Run the initialisation function for entity.
+*******************************************************************************/
+void LogicSystem::Init(Entity const& _e) {
+	RunScript(_e, E_SCRIPTTYPE::INIT);
+}
+
+/*!*****************************************************************************
+\brief
+Run the update function for entity.
+*******************************************************************************/
+void LogicSystem::Update(Entity const& _e) {
+	RunScript(_e, E_SCRIPTTYPE::UPDATE);
+}
+
+/*!*****************************************************************************
+\brief
+Run the exit function for entity.
+*******************************************************************************/
+void LogicSystem::Exit(Entity const& _e) {
+	RunScript(_e, E_SCRIPTTYPE::EXIT);
+}
+
+/*!*****************************************************************************
+\brief
+Run the dead function for entity.
+*******************************************************************************/
+void LogicSystem::Dead(Entity const& _e) {
+	RunScript(_e, E_SCRIPTTYPE::DEAD);
 }
 
 /*!*****************************************************************************
@@ -83,18 +174,28 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 	// Script is C++ script
 	if (ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName) != nullptr) {
 		switch (_type) {
+		case E_SCRIPTTYPE::ALIVE:
+			LOG_INFO("Alive Script for " + scriptName + " ran! (C++)");
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Alive(_e);
+			break;
+
 		case E_SCRIPTTYPE::INIT:
-			LOG_INFO("Start Script for " + scriptName + " ran!");
-			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->StartScript(_e);
+			LOG_INFO("Init Script for " + scriptName + " ran! (C++)");
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Init(_e);
 			break;
 
 		case E_SCRIPTTYPE::UPDATE:
-			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->UpdateScript(_e);
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Update(_e);
 			break;
 
 		case E_SCRIPTTYPE::EXIT:
-			LOG_INFO("Exit Script for " + scriptName + " ran!");
-			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->EndScript(_e);
+			LOG_INFO("Exit Script for " + scriptName + " ran! (C++)");
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Exit(_e);
+			break;
+
+		case E_SCRIPTTYPE::DEAD:
+			LOG_INFO("Dead Script for " + scriptName + " ran! (C++)");
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Dead(_e);
 			break;
 
 		default:
@@ -109,8 +210,13 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 	if (MonoManager::GetInstance()->GetMonoComponent(scriptName) != nullptr) {
 		void* params[1]{ (void*)&_e };
 		switch (_type) {
+		case E_SCRIPTTYPE::ALIVE:
+			LOG_INFO("Alive Script for " + scriptName + " ran! (C#)");
+			MonoManager::GetInstance()->CallMethod(scriptName, "Alive", 1, params);
+			break;
+
 		case E_SCRIPTTYPE::INIT:
-			LOG_INFO("Start Script for " + scriptName + " ran!");
+			LOG_INFO("Init Script for " + scriptName + " ran! (C#)");
 			MonoManager::GetInstance()->CallMethod(scriptName, "Init", 1, params);
 			break;
 
@@ -119,8 +225,13 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 			break;
 
 		case E_SCRIPTTYPE::EXIT:
-			LOG_INFO("Exit Script for " + scriptName + " ran!");
+			LOG_INFO("Exit Script for " + scriptName + " ran! (C#)");
 			MonoManager::GetInstance()->CallMethod(scriptName, "Exit", 1, params);
+			break;
+
+		case E_SCRIPTTYPE::DEAD:
+			LOG_INFO("Dead Script for " + scriptName + " ran! (C#)");
+			MonoManager::GetInstance()->CallMethod(scriptName, "Dead", 1, params);
 			break;
 
 		default:

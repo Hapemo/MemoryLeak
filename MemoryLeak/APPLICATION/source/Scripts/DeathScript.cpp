@@ -18,9 +18,17 @@ REGISTER_SCRIPT(ScriptComponent, DeathScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void DeathScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void DeathScript::StartScript(Entity const& _e) {
+void DeathScript::Init(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Death script starts works!!!");
 	player = FUNC->GetEntity("Boat", "Level1");
@@ -30,7 +38,7 @@ void DeathScript::StartScript(Entity const& _e) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void DeathScript::UpdateScript(Entity const& _e) {
+void DeathScript::Update(Entity const& _e) {
 	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT) && FUNC->CheckKey(PRESS, M)) canDie = !canDie;
 
 	static bool onEntry = false;
@@ -59,7 +67,15 @@ void DeathScript::UpdateScript(Entity const& _e) {
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void DeathScript::EndScript(Entity const& _e) {
+void DeathScript::Exit(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Death script end works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void DeathScript::Dead(Entity const& _e) {
+	(void)_e;
 }

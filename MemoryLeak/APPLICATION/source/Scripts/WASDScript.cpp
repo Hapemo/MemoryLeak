@@ -17,30 +17,39 @@ REGISTER_SCRIPT(ScriptComponent, WASDScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void WASDScript::Alive(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("WASDScript alive works!!!");
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void WASDScript::StartScript(Entity const& gob) {
-	(void)gob;
-	LOG_INFO("WASDScript starts works!!!");
+void WASDScript::Init(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("WASDScript init works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void WASDScript::UpdateScript(Entity const& gob) {
+void WASDScript::Update(Entity const& _e) {
 	//LOG_INFO("RotateScript updating works!!!");
 	if (FUNC->CheckKey(E_STATE::HOLD, W)) {
-		gob.GetComponent<Transform>().translation.y += 1.f;
+		_e.GetComponent<Transform>().translation.y += 1.f;
 	}
 	if (FUNC->CheckKey(E_STATE::HOLD, A)) {
-		gob.GetComponent<Transform>().translation.x -= 1.f;
+		_e.GetComponent<Transform>().translation.x -= 1.f;
 	}
 	if (FUNC->CheckKey(E_STATE::HOLD, S)) {
-		gob.GetComponent<Transform>().translation.y -= 1.f;
+		_e.GetComponent<Transform>().translation.y -= 1.f;
 	}
 	if (FUNC->CheckKey(E_STATE::HOLD, D)) {
-		gob.GetComponent<Transform>().translation.x += 1.f;
+		_e.GetComponent<Transform>().translation.x += 1.f;
 	}
 }
 
@@ -48,7 +57,16 @@ void WASDScript::UpdateScript(Entity const& gob) {
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void WASDScript::EndScript(Entity const& gob) {
-	(void)gob;
-	LOG_INFO("WASDScript end works!!!");
+void WASDScript::Exit(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("WASDScript exit works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void WASDScript::Dead(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("WASDScript dead works!!!");
 }

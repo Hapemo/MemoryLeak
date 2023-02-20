@@ -18,7 +18,11 @@ namespace {
 	static float passengerOriginalSizeX{};
 }
 
-void PassengerScript::StartScript(const Entity& _e) {
+void PassengerScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+void PassengerScript::Init(const Entity& _e) {
 	(void)_e;
 	boat = (FUNC->GetEntity("Boat", "Level1"));
 	passenger = (FUNC->GetEntity("Passenger_1", "Level1"));
@@ -30,7 +34,7 @@ void PassengerScript::StartScript(const Entity& _e) {
 	readyToPickUp = true;
 }
 
-void PassengerScript::UpdateScript(const Entity& _e) {
+void PassengerScript::Update(const Entity& _e) {
 	// If ready to pick up and it collided, make it pick up next frame.
 	if (readyToPickUp) {
 		//if (collision2DManager->EntitiesCollided(_e, boat)) {
@@ -127,6 +131,10 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	}
 }
 
-void PassengerScript::EndScript(const Entity& _e) {
+void PassengerScript::Exit(const Entity& _e) {
+	(void)_e;
+}
+
+void PassengerScript::Dead(Entity const& _e) {
 	(void)_e;
 }

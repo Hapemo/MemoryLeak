@@ -16,10 +16,18 @@ REGISTER_SCRIPT(ScriptComponent, FPSPrintScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void FPSPrintScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void FPSPrintScript::StartScript(Entity const& gob) {
-	(void)gob;
+void FPSPrintScript::Init(Entity const& _e) {
+	(void)_e;
 	//LOG_INFO("How to Play button script starts works!!!");
 }
 
@@ -27,8 +35,8 @@ void FPSPrintScript::StartScript(Entity const& gob) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void FPSPrintScript::UpdateScript(Entity const& gob) {
-	(void)gob;
+void FPSPrintScript::Update(Entity const& _e) {
+	(void)_e;
 	// Update every 2 seconds
 	static float timeCounter{1};
 	timeCounter += static_cast<float>(FPSManager::dt);
@@ -44,7 +52,15 @@ void FPSPrintScript::UpdateScript(Entity const& gob) {
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void FPSPrintScript::EndScript(Entity const& gob) {
-	(void)gob;
+void FPSPrintScript::Exit(Entity const& _e) {
+	(void)_e;
 	//LOG_INFO("How to Play button script end works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void FPSPrintScript::Dead(Entity const& _e) {
+	(void)_e;
 }
