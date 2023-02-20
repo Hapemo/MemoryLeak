@@ -18,11 +18,12 @@ class LogicSystem : public System
 {
 public:
 	enum class E_SCRIPTTYPE {
-		ALIVE = 0,
-		INIT = 1,
-		UPDATE = 2,
-		EXIT = 3,
-		DEAD = 4
+		ALIVE,
+		INIT,
+		UPDATE,
+		FIXED_UPDATE,
+		EXIT,
+		DEAD,
 	};
 
 	/*!*****************************************************************************
@@ -71,6 +72,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Run the fixed update function for all active entities' scripts.
+	*******************************************************************************/
+	void FixedUpdate();
+
+	/*!*****************************************************************************
+	\brief
 	Run the exit function for all active entities' scripts.
 	*******************************************************************************/
 	void Exit();
@@ -98,6 +105,12 @@ public:
 	Run the update function for all entities' scripts given by the parameter.
 	*******************************************************************************/
 	void Update(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
+	Run the fixed update function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void FixedUpdate(std::set<Entity> const& _entities);
 
 	/*!*****************************************************************************
 	\brief
@@ -131,6 +144,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Run the fixed update function for entity.
+	*******************************************************************************/
+	void FixedUpdate(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
 	Run the exit function for entity.
 	*******************************************************************************/
 	void Exit(Entity const& _e);
@@ -148,5 +167,7 @@ public:
 	void RunScript(Entity const& _e, E_SCRIPTTYPE _type);
 
 private:
-		
+	double mAccumulatedDT{ 0.0 };
+	const double mFixedDT{ 1.0 / 60.0 };
+	const double mAccumulatedDTCap{ 1.0 };
 };

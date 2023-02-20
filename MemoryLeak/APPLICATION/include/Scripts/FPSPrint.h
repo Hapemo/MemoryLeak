@@ -39,6 +39,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Fixed update script to run on fixed delta time.
+	*******************************************************************************/
+	void FixedUpdate(Entity const& _e) override;
+
+	/*!*****************************************************************************
+	\brief
 	Function will run on exit or when the entity is destroyed.
 	*******************************************************************************/
 	void Exit(Entity const& _e) override;

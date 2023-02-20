@@ -87,6 +87,7 @@ void Application::SystemUpdate() {
   //Scripting
   TRACK_PERFORMANCE("Scripting");
   logicSystem->Update();
+  logicSystem->FixedUpdate();
   END_TRACK("Scripting");
 
   // Physics

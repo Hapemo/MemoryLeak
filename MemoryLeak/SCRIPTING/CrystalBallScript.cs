@@ -142,6 +142,10 @@ namespace BonVoyage {
             }
 
         }
+
+        public void FixedUpdate(int _ENTITY) {
+
+        }
         public void Exit(int _ENTITY) {
             toggle=0;
             prevTog = -1;

@@ -12,7 +12,7 @@
 
 REGISTER_SCRIPT(ScriptComponent, MoveMinimapScript);
 
-void MoveMinimapScript::Alive(Entity const& _e) {
+void MoveMinimapScript::Alive(const Entity& _e) {
 	(void)_e;
 }
 
@@ -34,10 +34,14 @@ void MoveMinimapScript::Update(const Entity& _e) {
 	_e.GetComponent<Transform>().scale = originalScale / currCamera->rotation;
 }
 
+void MoveMinimapScript::FixedUpdate(const Entity& _e) {
+	(void)_e;
+}
+
 void MoveMinimapScript::Exit(const Entity& _e) {
 	(void)_e;
 }
 
-void MoveMinimapScript::Dead(Entity const& _e) {
+void MoveMinimapScript::Dead(const Entity& _e) {
 	(void)_e;
 }

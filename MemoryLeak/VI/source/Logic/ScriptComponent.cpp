@@ -42,6 +42,15 @@ void ScriptComponent::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
+Fixed update script to run on fixed delta time.
+*******************************************************************************/
+void ScriptComponent::FixedUpdate(Entity const& _e) {
+	(void)_e;
+	//LOG_INFO("Base script fixed delta time works!!!");
+}
+
+/*!*****************************************************************************
+\brief
 End script to run when the entity gets destroyed/exit.
 *******************************************************************************/
 void ScriptComponent::Exit(Entity const& _e) {
