@@ -71,10 +71,12 @@ public:
 	void Update();
 
 	// Generate one frame of particles
-	void GenerateOnce(Entity _e) { _e.GetComponent<ParticleSystem>().mIsActive = true; }
+	void GenerateOnce(Entity _e) const { _e.GetComponent<ParticleSystem>().mIsActive = true; }
 
 	// Generate loop of time frame
-	void GenerateLoop(Entity _e, float _duration) { _e.GetComponent<ParticleSystem>().mIsActive = true; _e.GetComponent<ParticleSystem>().mDuration = _duration; }
+	void GenerateLoop(Entity _e, float _duration) const { _e.GetComponent<ParticleSystem>().mIsActive = true; _e.GetComponent<ParticleSystem>().mDuration = _duration; }
+
+	void Reset();
 
 	auto ParticleBegin() { return mParticles.begin(); }
 	auto ParticleLast() { return mParticles.begin() + mParticleCount; }
@@ -83,6 +85,7 @@ public:
 	uint64_t ParticleCount() const { return mParticleCount; }
 
 	static inline void DecreaseParticleCount() { --mParticleCount; }
+	static inline void ParticleChanged() { mParticleChange = true; }
 
 private:
 	void UpdateSystems(); // Update the generation of particles
@@ -95,6 +98,7 @@ private:
 	//SparseSet<Particle> mParticles;
 	std::array<Particle, MAX_PARTICLES> mParticles;
 	static uint64_t mParticleCount; // Amount of particles, also the position to the last particle
+	static bool mParticleChange;		// True if particle was created or destroyed in the current frame
 };
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

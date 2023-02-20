@@ -20,6 +20,7 @@ brief:	Particle System class. This is a singleton where it keeps track of all th
 
 
 uint64_t ParticleManager::mParticleCount{};
+bool		 ParticleManager::mParticleChange{};
 
 //==============================
 // Particle 
@@ -32,6 +33,7 @@ void Particle::Init(Vec2 _velocity, Transform _transform, float _lifespan, Entit
 	mColor = ECS::GetComponent<ParticleSystem>(_e).mParticleInfo.mSprite.color;
 	mMaxLifespan = mLifespan = _lifespan;
 	mEntity = _e;
+	ParticleManager::ParticleChanged();
 }
 
 void Particle::Update() {
@@ -58,7 +60,7 @@ void Particle::Update() {
 
 	// Update Color/Alpha
 	if (system.mParticleInfo.mFading) {
-		mColor.a = mLifespan / mMaxLifespan;
+		mColor.a = static_cast<GLubyte>(mLifespan / mMaxLifespan);
 	}
 
 }
@@ -66,6 +68,7 @@ void Particle::Update() {
 void Particle::Destroy() {
 	memset(this, 0, sizeof(Particle));
 	ParticleManager::DecreaseParticleCount();
+	ParticleManager::ParticleChanged();
 }
 
 //==============================
@@ -82,7 +85,8 @@ void ParticleManager::UpdateSystems() {
 		GenerateParticle(system, e.id);
 	}
 
-	std::sort(mParticles.begin(), mParticles.end(), [] (Particle p1, Particle p2) { return p1.GetIsActive() > p2.GetIsActive(); });
+	if (mParticleChange)
+		std::sort(mParticles.begin(), mParticles.end(), [] (Particle p1, Particle p2) { return p1.GetIsActive() > p2.GetIsActive(); });
 }
 
 void ParticleManager::UpdateParticles() {
@@ -92,8 +96,16 @@ void ParticleManager::UpdateParticles() {
 }
 
 void ParticleManager::Update() {
+	mParticleChange = false;
 	UpdateSystems();
 	UpdateParticles();
+}
+
+void ParticleManager::Reset() {
+	LOG_INFO("Reset Particle Manager of size " + std::to_string(sizeof(ParticleManager)));
+	memset(&mParticles, 0, mParticles.size() * sizeof(Particle));
+	mParticleChange = false;
+	mParticleCount = 0;
 }
 
 void ParticleManager::GenerateParticle(ParticleSystem const& _system, EntityID _e) {
@@ -104,8 +116,8 @@ void ParticleManager::GenerateParticle(ParticleSystem const& _system, EntityID _
 		Transform trans{};
 		trans.rotation = _system.mParticleInfo.mFacing;
 		trans.scale *= _system.mParticleInfo.mScale;
-		trans.translation = _system.mCenter + Vec2(static_cast<float>(Util::RandInt(-static_cast<float>(_system.mAreaWidth) / 2, static_cast<float>(_system.mAreaWidth) / 2)),
-																							 static_cast<float>(Util::RandInt(-static_cast<float>(_system.mAreaWidth) / 2, static_cast<float>(_system.mAreaWidth) / 2)));
+		trans.translation = _system.mCenter + Vec2(static_cast<float>(Util::RandInt(-static_cast<int>(_system.mAreaWidth) / 2, static_cast<int>(_system.mAreaWidth) / 2)),
+																							 static_cast<float>(Util::RandInt(-static_cast<int>(_system.mAreaWidth) / 2, static_cast<int>(_system.mAreaWidth) / 2)));
 
 
 		float angle = Util::RandInt(static_cast<int>(-_system.mSpread) * 10, static_cast<int>(_system.mSpread) * 10) / 10.f;

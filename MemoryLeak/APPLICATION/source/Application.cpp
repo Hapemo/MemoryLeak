@@ -79,9 +79,9 @@ void Application::SystemInit() {
 void Application::SystemUpdate() {
   buttonManager->Update();
   // AI
-  TRACK_PERFORMANCE("AI");
+  //TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
-  END_TRACK("AI");
+  //END_TRACK("AI");
 
   //Scripting
   TRACK_PERFORMANCE("Scripting");
@@ -222,9 +222,9 @@ void Application::MainUpdate() {
     END_TRACK("Graphics");
 
     // Audio
-    TRACK_PERFORMANCE("Audio");
+    //TRACK_PERFORMANCE("Audio");
     audioManager->UpdateSound(); 
-    END_TRACK("Audio");
+    //END_TRACK("Audio");
 
     // If it changes, it should've came from when updaing game logic
     //if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->GameStateExit();

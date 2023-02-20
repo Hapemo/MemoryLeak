@@ -25,6 +25,7 @@ void GameState::Update() {
 void GameState::Exit() {
 	for (auto& scene : mScenes)
 		scene.Exit();
+	particleManager->Reset();
 }
 
 // Load new gamestate with file path

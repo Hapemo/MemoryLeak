@@ -45,7 +45,7 @@ void PlayGameButton::StartScript(Entity const& gob) {
 		10, // mDuration 
 		true // mIsActive 
 	});
-	//LOG_INFO("Play button script starts works!!!");
+	LOG_INFO(gob.GetComponent<General>().name + "Added component particle system============================================");
 }
 
 /*!*****************************************************************************
