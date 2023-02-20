@@ -4,18 +4,18 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class FragmentScript
     {
-        public void Init() {
+        public void Init(int _id) {
             
         }
 
-        public void Update() {
-            //if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1"))
+        public void Update(int _id) {
+            //if (VI.Physics.EntitiesCollided("Boat", "fragment1drop", "Level1"))
             //{ 
             
             //}
         }
 
-        public void Exit() {
+        public void Exit(int _id) {
             
         }
     }

@@ -18,36 +18,36 @@ namespace BonVoyage {
     {
         static bool init = true;
         static bool big = false;
-        public void Init() {
+        public void Init(int _id) {
 
-            InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
+            VI.Entity.SetActive("minimapbig", "MiniMap", false);
         }
 
-        public void Update() {
+        public void Update(int _id) {
             if (init)
             {
                 init = false;
                 
             }
             //////////////////////////////////////////////init
-            if ((InternalCalls.ButtonReleased("minimap", "MiniMap")) == true)
+            if ((VI.Input.Button.Released("minimap", "MiniMap")) == true)
             {
                 big = !big;
                 if (big)
                 {
-                    InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", true);
+                    VI.Entity.SetActive("minimapbig", "MiniMap", true);
                 }
                 else
                 {
-                    InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
+                    VI.Entity.SetActive("minimapbig", "MiniMap", false);
                 }
             }
 
         }
 
-        public void Exit() {
+        public void Exit(int _id) {
             big = false;
-            InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
+            VI.Entity.SetActive("minimapbig", "MiniMap", false);
         }
     }
 }

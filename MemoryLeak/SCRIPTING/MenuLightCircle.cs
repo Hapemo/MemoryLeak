@@ -20,7 +20,7 @@ namespace BonVoyage {
         float upperSize, lowerSize;
         float upperAlpha, lowerAlpha;
         bool increasing;
-        public void Init() {
+        public void Init(int _id) {
             size = 110;
             lowerSize = 110;
             upperSize = 120;
@@ -35,19 +35,19 @@ namespace BonVoyage {
             increasing = true;
         }
 
-        public void Update() {
+        public void Update(int _id) {
             UpdateSizeAlpha();
-            InternalCalls.SetScaleX("LightCircle", "Menu_Main", size);
-            InternalCalls.SetScaleY("LightCircle", "Menu_Main", size);
-            InternalCalls.SetSpriteColor("LightCircle", "Menu_Main", 255, 255, 255, (int)alpha);
+            VI.Transform.Scale.SetX("LightCircle", "Menu_Main", size);
+            VI.Transform.Scale.SetY("LightCircle", "Menu_Main", size);
+            VI.LightSource.SpriteColor.Set("LightCircle", "Menu_Main", 255, 255, 255, (int)alpha);
         }
 
         void UpdateSizeAlpha()
         {
             if (increasing)
             {
-                size += stepSize * (float)InternalCalls.GetDeltaTime();
-                alpha += stepAlpha * (float)InternalCalls.GetDeltaTime();
+                size += stepSize * (float)VI.General.DeltaTime();
+                alpha += stepAlpha * (float)VI.General.DeltaTime();
                 if (size > upperSize)
                 {
                     size = upperSize;
@@ -57,8 +57,8 @@ namespace BonVoyage {
             }
             else
             {
-                size -= stepSize * (float)InternalCalls.GetDeltaTime();
-                alpha -= stepAlpha * (float)InternalCalls.GetDeltaTime();
+                size -= stepSize * (float)VI.General.DeltaTime();
+                alpha -= stepAlpha * (float)VI.General.DeltaTime();
                 if (size < lowerSize)
                 {
                     size = lowerSize;
@@ -68,7 +68,7 @@ namespace BonVoyage {
             }
         }
 
-        public void Exit() {
+        public void Exit(int _id) {
             
         }
     }

@@ -20,13 +20,18 @@ out vec4 fFragColor;
 
 //array of samplers/texture units
 uniform sampler2D uTex2D[16];
+uniform int uCircular;
 
 /*!*****************************************************************************
 \brief
 Main function of the fragment shader.
 *******************************************************************************/
 void main (void) {
- //vec4 x = 
-fFragColor = texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
-	//fFragColor =  x * vColor;
+	if (uCircular == 1)
+	{
+		if (distance(vec2(0.5, 0.5), vTexCoord) > 0.5)
+			return;
+	}
+	fFragColor = texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
+	fFragColor =  fFragColor * vColor;
 }

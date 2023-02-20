@@ -149,15 +149,15 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Retrieves the next dialog id.
+	Retrieves the next dialog text.
 
 	\param int _id
 	The id of the current dialog.
 
 	\return
-	Returns the next dialog id.
+	Returns the next dialog text.
 	*******************************************************************************/
-	static int GetNext(int _id);
+	static std::string GetNext(int _id);
 
 	/*!*****************************************************************************
 	\brief
@@ -227,6 +227,12 @@ public:
 	This function is called by user, to change the next game state
 	*******************************************************************************/
 	static void ChangeGameState(std::string const& _name);
+
+	/*!*****************************************************************************
+	\brief
+	Gets entity id from scene.
+	*******************************************************************************/
+	static int GetEntityId(std::string _entityName, std::string _sceneName);
 
 	/*!*****************************************************************************
 	\brief

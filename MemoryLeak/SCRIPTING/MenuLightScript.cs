@@ -17,20 +17,20 @@ namespace BonVoyage {
         float speed;
         bool increasing;
         float upper, lower;
-        public void Init() {
-            radius = InternalCalls.GetLightSourceRadius("Title", "Menu_Main");
+        public void Init(int _id) {
+            radius = VI.LightSource.Radius.Get("Title", "Menu_Main");
             speed = 500;
             increasing = false;
             upper = 1100;
             lower = 900;
         }
 
-        public void Update() {
+        public void Update(int _id) {
             UpdateRadius();
-            InternalCalls.SetLightSourceRadius("Title", "Menu_Main", radius);
+            VI.LightSource.Radius.Set("Title", "Menu_Main", radius);
         }
 
-        public void Exit() {
+        public void Exit(int _id) {
             
         }
 
@@ -38,7 +38,7 @@ namespace BonVoyage {
         {
             if (increasing)
             {
-                radius += speed * (float)InternalCalls.GetDeltaTime();
+                radius += speed * (float)VI.General.DeltaTime();
                 if (radius > upper)
                 {
                     increasing = false;
@@ -47,7 +47,7 @@ namespace BonVoyage {
             }
             else
             {
-                radius -= speed * (float)InternalCalls.GetDeltaTime();
+                radius -= speed * (float)VI.General.DeltaTime();
                 if (radius < lower)
                 {
                     increasing = true;

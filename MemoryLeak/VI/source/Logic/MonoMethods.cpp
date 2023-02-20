@@ -44,6 +44,10 @@ void MonoMethods::ChangeGameState(MonoString* _name) {
 	FUNC->ChangeGameState(MONO->ConvertFromMonoString(_name));
 }
 
+int MonoMethods::GetEntityId(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->GetEntityId(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
 bool MonoMethods::EntityIsActive(MonoString* _entityName, MonoString* _sceneName) {
 	return FUNC->EntityIsActive(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
@@ -231,94 +235,155 @@ float MonoMethods::GetFontScale(MonoString* _entityName, MonoString* _sceneName)
 {
 	return FUNC->GetFontScale(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
+
 /*!*****************************************************************************
 \brief
 	Registers the internal calls for mono use.
 *******************************************************************************/
 void MonoMethods::RegisterCalls() {
-	mono_add_internal_call("BonVoyage.InternalCalls::TestArgString", &FUNC->TestArgString);
-	mono_add_internal_call("BonVoyage.InternalCalls::TestReturnString", &FUNC->TestReturnString);
-	mono_add_internal_call("BonVoyage.InternalCalls::CheckKeyPress", &FUNC->CheckKeyPress);
-	mono_add_internal_call("BonVoyage.InternalCalls::CheckKeyHold", &FUNC->CheckKeyHold);
-	mono_add_internal_call("BonVoyage.InternalCalls::CheckKeyRelease", &FUNC->CheckKeyRelease);
-	mono_add_internal_call("BonVoyage.InternalCalls::CheckKeyIdle", &FUNC->CheckKeyIdle);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetWorldMousePosX", &FUNC->GetWorldMousePosX);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetWorldMousePosY", &FUNC->GetWorldMousePosY);
-	mono_add_internal_call("BonVoyage.InternalCalls::ApplyImpulse", &MonoMethods::ApplyImpulse);
-	mono_add_internal_call("BonVoyage.InternalCalls::LoadDialogs", &MonoMethods::LoadDialogs);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetDialogue", &MonoMethods::GetDialogue);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetNextDialogueID", &FUNC->GetNextDialogueID);
-	mono_add_internal_call("BonVoyage.InternalCalls::HasChoice", &FUNC->HasChoice);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetNext", &FUNC->GetNext);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetChoice1", &FUNC->GetChoice1);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetChoice2", &FUNC->GetChoice2);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetSelectedChoice", &FUNC->SetSelectedChoice);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentDialogueID", &FUNC->SetCurrentDialogueID);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentDialogueID", &FUNC->GetCurrentDialogueID);
-	mono_add_internal_call("BonVoyage.InternalCalls::IsPlayerSpeaker", &FUNC->IsPlayerSpeaker);
-	mono_add_internal_call("BonVoyage.InternalCalls::ChangeGameState", &MonoMethods::ChangeGameState);
-	mono_add_internal_call("BonVoyage.InternalCalls::EntityIsActive", &MonoMethods::EntityIsActive);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetEntityIsActive", &MonoMethods::SetEntityIsActive);
-	mono_add_internal_call("BonVoyage.InternalCalls::EntityActivate", &MonoMethods::EntityActivate);
-	mono_add_internal_call("BonVoyage.InternalCalls::EntityDeactivate", &MonoMethods::EntityDeactivate);
-	mono_add_internal_call("BonVoyage.InternalCalls::EntityGetParent", &MonoMethods::EntityGetParent);
-	mono_add_internal_call("BonVoyage.InternalCalls::EntityGetParentId", &MonoMethods::EntityGetParentId);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentGameStateName", &MonoMethods::GetCurrentGameStateName);
-	mono_add_internal_call("BonVoyage.InternalCalls::PauseScene", &MonoMethods::PauseScene);
-	mono_add_internal_call("BonVoyage.InternalCalls::PlayScene", &MonoMethods::PlayScene);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraScaleX", &FUNC->GetCurrentCameraScaleX);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraScaleY", &FUNC->GetCurrentCameraScaleY);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraPosX", &FUNC->GetCurrentCameraPosX);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentCameraPosY", &FUNC->GetCurrentCameraPosY);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraScaleX", &FUNC->SetCurrentCameraScaleX);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraScaleY", &FUNC->SetCurrentCameraScaleY);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosX", &FUNC->SetCurrentCameraPosX);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetCurrentCameraPosY", &FUNC->SetCurrentCameraPosY);
-	mono_add_internal_call("BonVoyage.InternalCalls::SqMagnitude", &FUNC->SqMagnitude);
-	mono_add_internal_call("BonVoyage.InternalCalls::NormalizeX", &FUNC->NormalizeX);
-	mono_add_internal_call("BonVoyage.InternalCalls::NormalizeY", &FUNC->NormalizeY);
-	mono_add_internal_call("BonVoyage.InternalCalls::ArcTangent", &FUNC->ArcTangent);
-	mono_add_internal_call("BonVoyage.InternalCalls::Negate", &FUNC->Negate);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationSpeed", &MonoMethods::SetAnimationSpeed);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationSpeed", &MonoMethods::GetAnimationSpeed);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationCurrentIndex", &MonoMethods::SetAnimationCurrentIndex);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationCurrentIndex", &MonoMethods::GetAnimationCurrentIndex);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetAnimationFrameCount", &MonoMethods::GetAnimationFrameCount);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetAnimationFrameCount", &MonoMethods::SetAnimationFrameCount);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteSheetIndex", &MonoMethods::SetSpriteSheetIndex);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetSpriteSheetIndex", &MonoMethods::GetSpriteSheetIndex);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetTexture", &MonoMethods::SetTexture);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetTexture", &MonoMethods::GetTexture);
-	mono_add_internal_call("BonVoyage.InternalCalls::EntitiesCollided", &MonoMethods::EntitiesCollided);
-	mono_add_internal_call("BonVoyage.InternalCalls::CheckCollision", &MonoMethods::CheckCollision);
-	mono_add_internal_call("BonVoyage.InternalCalls::GameStateExit", &FUNC->GameStateExit);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetDeltaTime", &FUNC->GetDeltaTime);
-	mono_add_internal_call("BonVoyage.InternalCalls::StopSound", &MonoMethods::StopSound);
-	mono_add_internal_call("BonVoyage.InternalCalls::PlaySoundOnLoop", &MonoMethods::PlaySoundOnLoop);
-	mono_add_internal_call("BonVoyage.InternalCalls::PlayEntitySound", &MonoMethods::PlayEntitySound);
-	mono_add_internal_call("BonVoyage.InternalCalls::PlaySoundInChannel", &MonoMethods::PlaySoundInChannel);
-	mono_add_internal_call("BonVoyage.InternalCalls::IsPlaying", &FUNC->IsPlaying);
-	mono_add_internal_call("BonVoyage.InternalCalls::PlayBGSound", &MonoMethods::PlayBGSound);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetPosX", &MonoMethods::GetPosX);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetPosY", &MonoMethods::GetPosY);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetPosX", &MonoMethods::SetPosX);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetPosY", &MonoMethods::SetPosY);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetScaleX", &MonoMethods::GetScaleX);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetScaleY", &MonoMethods::GetScaleY);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetScaleX", &MonoMethods::SetScaleX);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetScaleY", &MonoMethods::SetScaleY);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetRotate", &MonoMethods::GetRotate);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetRotate", &MonoMethods::SetRotate);
-	mono_add_internal_call("BonVoyage.InternalCalls::ButtonClicked", &MonoMethods::ButtonClicked);
-	mono_add_internal_call("BonVoyage.InternalCalls::ButtonReleased", &MonoMethods::ButtonReleased);
-	mono_add_internal_call("BonVoyage.InternalCalls::ButtonHover", &MonoMethods::ButtonHover);
-	mono_add_internal_call("BonVoyage.InternalCalls::UpdateText", &MonoMethods::UpdateText);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetTextOffset", &MonoMethods::SetTextOffset);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetLineCount", &MonoMethods::GetLineCount);
-	mono_add_internal_call("BonVoyage.InternalCalls::WeatherAIinit", &FUNC->WeatherAIinit);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetCurrentWeather", &FUNC->GetCurrentWeather);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetLightSourceRadius", &MonoMethods::GetLightSourceRadius);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetLightSourceRadius", &MonoMethods::SetLightSourceRadius);
-	mono_add_internal_call("BonVoyage.InternalCalls::SetSpriteColor", &MonoMethods::SetSpriteColor);
-	mono_add_internal_call("BonVoyage.InternalCalls::GetFontScale", &MonoMethods::GetFontScale);
+	// Test
+	mono_add_internal_call("VI.Test::ArgString", &FUNC->TestArgString);
+	mono_add_internal_call("VI.Test::ReturnString", &FUNC->TestReturnString);
+
+	// General
+	mono_add_internal_call("VI.General::DeltaTime", &FUNC->GetDeltaTime);
+
+	// Inputs
+	mono_add_internal_call("VI.Input/Key::Press", &FUNC->CheckKeyPress);
+	mono_add_internal_call("VI.Input/Key::Hold", &FUNC->CheckKeyHold);
+	mono_add_internal_call("VI.Input/Key::Release", &FUNC->CheckKeyRelease);
+	mono_add_internal_call("VI.Input/Key::Idle", &FUNC->CheckKeyIdle);
+	mono_add_internal_call("VI.Input/Button::Clicked", &MonoMethods::ButtonClicked);
+	mono_add_internal_call("VI.Input/Button::Released", &MonoMethods::ButtonReleased);
+	mono_add_internal_call("VI.Input/Button::Hover", &MonoMethods::ButtonHover);
+	mono_add_internal_call("VI.Input/Mouse::WorldPosX", &FUNC->GetWorldMousePosX);
+	mono_add_internal_call("VI.Input/Mouse::WorldPosY", &FUNC->GetWorldMousePosY);
+	mono_add_internal_call("VI.Input/Mouse::Press", &FUNC->CheckKeyPress); //
+	mono_add_internal_call("VI.Input/Mouse::Hold", &FUNC->CheckKeyHold); //
+	mono_add_internal_call("VI.Input/Mouse::Release", &FUNC->CheckKeyRelease); //
+	mono_add_internal_call("VI.Input/Mouse::Idle", &FUNC->CheckKeyIdle); //
+
+	// Physics
+	mono_add_internal_call("VI.Physics::ApplyImpulse", &MonoMethods::ApplyImpulse);
+	mono_add_internal_call("VI.Physics::EntitiesCollided", &MonoMethods::EntitiesCollided);
+	mono_add_internal_call("VI.Physics::CheckCollision", &MonoMethods::CheckCollision);
+
+	// Dialogue
+	mono_add_internal_call("VI.Dialogue::LoadScript", &MonoMethods::LoadDialogs);
+	mono_add_internal_call("VI.Dialogue::GetLine", &MonoMethods::GetDialogue);
+	mono_add_internal_call("VI.Dialogue::HaveChoices", &FUNC->HasChoice);
+	mono_add_internal_call("VI.Dialogue/Current::GetLine", &MonoMethods::GetDialogue); //
+	mono_add_internal_call("VI.Dialogue/Current::GetId", &FUNC->GetCurrentDialogueID);
+	mono_add_internal_call("VI.Dialogue/Current::HaveChoices", &FUNC->HasChoice); //
+	mono_add_internal_call("VI.Dialogue/Current::SetTo", &FUNC->SetCurrentDialogueID);
+	mono_add_internal_call("VI.Dialogue/Current::GetChoice1", &FUNC->GetChoice1); //
+	mono_add_internal_call("VI.Dialogue/Current::GetChoice2", &FUNC->GetChoice2); //
+	mono_add_internal_call("VI.Dialogue/Current::SetSelectedChoice", &FUNC->SetSelectedChoice); //
+	mono_add_internal_call("VI.Dialogue/current::PlayerSpeaking", &FUNC->IsPlayerSpeaker); //
+	mono_add_internal_call("VI.Dialogue/Next::GetLine", &FUNC->GetNext); //
+	mono_add_internal_call("VI.Dialogue/Next::GetLine2", &FUNC->GetNext); // !!
+	mono_add_internal_call("VI.Dialogue/Next::GetId", &FUNC->GetNextDialogueID);
+	mono_add_internal_call("VI.Dialogue/Next::GetId2", &FUNC->GetNextDialogueID); // !!
+	mono_add_internal_call("VI.Dialogue/Next::HaveChoices", &FUNC->HasChoice); //
+	mono_add_internal_call("VI.Dialogue/Next::GetChoice1", &FUNC->GetChoice1); //
+	mono_add_internal_call("VI.Dialogue/Next::GetChoice2", &FUNC->GetChoice2); //
+	mono_add_internal_call("VI.Dialogue/Next::PlayerSpeaking", &FUNC->IsPlayerSpeaker); //
+	mono_add_internal_call("VI.Dialogue/Choice::First", &FUNC->GetChoice1);
+	mono_add_internal_call("VI.Dialogue/Choice::Second", &FUNC->GetChoice2);
+	mono_add_internal_call("VI.Dialogue/Choice::Selected", &FUNC->SetSelectedChoice);
+	mono_add_internal_call("VI.Dialogue/Speaker::IsPlayer", &FUNC->IsPlayerSpeaker);
+
+	// Gamestate
+	mono_add_internal_call("VI.GameState::Go", &MonoMethods::ChangeGameState);
+	mono_add_internal_call("VI.GameState::GetName", &MonoMethods::GetCurrentGameStateName);
+	mono_add_internal_call("VI.GameState::Exit", &FUNC->GameStateExit);
+
+	// Entity
+	mono_add_internal_call("VI.Entity::GetId", &MonoMethods::GetEntityId);
+	mono_add_internal_call("VI.Entity::IsActive", &MonoMethods::EntityIsActive);
+	mono_add_internal_call("VI.Entity::SetActive", &MonoMethods::SetEntityIsActive);
+	mono_add_internal_call("VI.Entity::Activate", &MonoMethods::EntityActivate);
+	mono_add_internal_call("VI.Entity::Deactivate", &MonoMethods::EntityDeactivate);
+	mono_add_internal_call("VI.Entity/Parent::Name", &MonoMethods::EntityGetParent);
+	mono_add_internal_call("VI.Entity/Parent::Id", &MonoMethods::EntityGetParentId);
+
+	// Scene
+	mono_add_internal_call("VI.Scene::Pause", &MonoMethods::PauseScene);
+	mono_add_internal_call("VI.Scene::Play", &MonoMethods::PlayScene);
+
+	// Camera
+	mono_add_internal_call("VI.Camera/GetScale::X", &FUNC->GetCurrentCameraScaleX);
+	mono_add_internal_call("VI.Camera/GetScale::Y", &FUNC->GetCurrentCameraScaleY);
+	mono_add_internal_call("VI.Camera/GetPos::X", &FUNC->GetCurrentCameraPosX);
+	mono_add_internal_call("VI.Camera/GetPos::Y", &FUNC->GetCurrentCameraPosY);
+	mono_add_internal_call("VI.Camera/SetScale::X", &FUNC->SetCurrentCameraScaleX);
+	mono_add_internal_call("VI.Camera/SetScale::Y", &FUNC->SetCurrentCameraScaleY);
+	mono_add_internal_call("VI.Camera/SetPos::X", &FUNC->SetCurrentCameraPosX);
+	mono_add_internal_call("VI.Camera/SetPos::Y", &FUNC->SetCurrentCameraPosY);
+
+	// Math
+	mono_add_internal_call("VI.Math::SqMagnitude", &FUNC->SqMagnitude);
+	mono_add_internal_call("VI.Math/Normalize::X", &FUNC->NormalizeX);
+	mono_add_internal_call("VI.Math/Normalize::Y", &FUNC->NormalizeY);
+	mono_add_internal_call("VI.Math::ArcTangent", &FUNC->ArcTangent);
+	mono_add_internal_call("VI.Math::Negate", &FUNC->Negate);
+
+	// Animation
+	mono_add_internal_call("VI.Animation/SheetIndex::Set", &MonoMethods::SetSpriteSheetIndex);
+	mono_add_internal_call("VI.Animation/SheetIndex::Get", &MonoMethods::GetSpriteSheetIndex);
+	mono_add_internal_call("VI.Animation/Speed::Set", &MonoMethods::SetAnimationSpeed);
+	mono_add_internal_call("VI.Animation/Speed::Get", &MonoMethods::GetAnimationSpeed);
+	mono_add_internal_call("VI.Animation/CurrentFrame::Set", &MonoMethods::SetAnimationCurrentIndex);
+	mono_add_internal_call("VI.Animation/CurrentFrame::Get", &MonoMethods::GetAnimationCurrentIndex);
+	mono_add_internal_call("VI.Animation/FrameCount::Get", &MonoMethods::GetAnimationFrameCount);
+	mono_add_internal_call("VI.Animation/FrameCount::Set", &MonoMethods::SetAnimationFrameCount);
+
+	// Textures
+	mono_add_internal_call("VI.Texture::Set", &MonoMethods::SetTexture);
+	mono_add_internal_call("VI.Texture::Get", &MonoMethods::GetTexture);
+
+	// Audio
+	mono_add_internal_call("VI.Audio::Stop", &MonoMethods::StopSound);
+	mono_add_internal_call("VI.Audio::StopAll", &MonoMethods::StopSound); //
+	mono_add_internal_call("VI.Audio::StopBGM", &MonoMethods::StopSound); //
+	mono_add_internal_call("VI.Audio::StopSFX", &MonoMethods::StopSound); //
+	mono_add_internal_call("VI.Audio::Play", &MonoMethods::PlayEntitySound);
+	mono_add_internal_call("VI.Audio::PlayOnLoop", &MonoMethods::PlaySoundOnLoop);
+	mono_add_internal_call("VI.Audio/Channel::Play", &MonoMethods::PlaySoundInChannel);
+	mono_add_internal_call("VI.Audio/Channel::PlayBGM", &MonoMethods::PlayBGSound);
+	mono_add_internal_call("VI.Audio/Channel::Stop", &MonoMethods::StopSound); //
+	mono_add_internal_call("VI.Audio/Channel::IsPlaying", &FUNC->IsPlaying);
+	mono_add_internal_call("VI.Audio/Volume::SetVolume", &MonoMethods::StopSound); //
+	mono_add_internal_call("VI.Audio/Volume::SetBGMVolume", &MonoMethods::StopSound); //
+	mono_add_internal_call("VI.Audio/Volume::SetSFXVolume", &MonoMethods::StopSound); //
+
+	// Transform
+	mono_add_internal_call("VI.Transform/Position::GetX", &MonoMethods::GetPosX);
+	mono_add_internal_call("VI.Transform/Position::GetY", &MonoMethods::GetPosY);
+	mono_add_internal_call("VI.Transform/Position::SetX", &MonoMethods::SetPosX);
+	mono_add_internal_call("VI.Transform/Position::SetY", &MonoMethods::SetPosY);
+	mono_add_internal_call("VI.Transform/Scale::GetX", &MonoMethods::GetScaleX);
+	mono_add_internal_call("VI.Transform/Scale::GetY", &MonoMethods::GetScaleY);
+	mono_add_internal_call("VI.Transform/Scale::SetX", &MonoMethods::SetScaleX);
+	mono_add_internal_call("VI.Transform/Scale::SetY", &MonoMethods::SetScaleY);
+	mono_add_internal_call("VI.Transform/Rotate::Get", &MonoMethods::GetRotate);
+	mono_add_internal_call("VI.Transform/Rotate::Set", &MonoMethods::SetRotate);
+
+	// Text
+	mono_add_internal_call("VI.Text::Update", &MonoMethods::UpdateText);
+	mono_add_internal_call("VI.Text::GetLineCount", &MonoMethods::GetLineCount);
+	mono_add_internal_call("VI.Text/Offset::Set", &MonoMethods::SetTextOffset);
+	mono_add_internal_call("VI.Text/Offset::GetX", &MonoMethods::SetTextOffset); //
+	mono_add_internal_call("VI.Text/Offset::GetY", &MonoMethods::SetTextOffset); //
+	mono_add_internal_call("VI.Text/Scale::Get", &MonoMethods::GetFontScale);
+	mono_add_internal_call("VI.Text/Scale::Set", &MonoMethods::GetFontScale); //
+
+	// Weather
+	mono_add_internal_call("VI.Weather::Init", &FUNC->WeatherAIinit);
+	mono_add_internal_call("VI.Weather::GetCurrent", &FUNC->GetCurrentWeather);
+
+	// LightSource
+	mono_add_internal_call("VI.LightSource/Radius::Get", &MonoMethods::GetLightSourceRadius);
+	mono_add_internal_call("VI.LightSource/Radius::Set", &MonoMethods::SetLightSourceRadius);
+	mono_add_internal_call("VI.LightSource/SpriteColor::Set", &MonoMethods::SetSpriteColor);
 }

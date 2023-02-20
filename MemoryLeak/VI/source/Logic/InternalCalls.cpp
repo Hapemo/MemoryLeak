@@ -194,8 +194,8 @@ The id of the current dialog.
 \return
 Returns the next dialog id.
 *******************************************************************************/
-int InternalCalls::GetNext(int _id) {
-	return dialogManager->GetNext(_id);
+std::string InternalCalls::GetNext(int _id) {
+	return dialogManager->GetDialogue(dialogManager->GetNext(_id));
 }
 
 /*!*****************************************************************************
@@ -279,6 +279,14 @@ This function is called by user, to change the next game state
 *******************************************************************************/
 void InternalCalls::ChangeGameState(std::string const& _name) {
 	GameStateManager::GetInstance()->ChangeGameState(_name);
+}
+
+/*!*****************************************************************************
+\brief
+Gets entity id from scene.
+*******************************************************************************/
+int InternalCalls::GetEntityId(std::string _entityName, std::string _sceneName) {
+	return GameStateManager::GetInstance()->GetEntity(_entityName, _sceneName).id;
 }
 
 /*!*****************************************************************************

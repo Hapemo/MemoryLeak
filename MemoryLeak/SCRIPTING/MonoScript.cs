@@ -103,37 +103,38 @@ namespace BonVoyage
       oriFragScaleX = 0;
 
     }
-  public void Init()
+  public void Init(int _id)
       {
-          //InternalCalls.LoadDialogs("Dialogue LittleGirl 0");
-          InitVariables();
-          halfX = InternalCalls.GetPosX("Water", "Level1");
-          halfY = InternalCalls.GetPosY("Water", "Level1");
-          maxX = (InternalCalls.GetScaleX("Water", "Level1") / 2) + halfX - InternalCalls.GetScaleX("Enemy", "Level1");
-          maxY = (InternalCalls.GetScaleY("Water", "Level1") / 2) + halfY - InternalCalls.GetScaleY("Enemy", "Level1");
-          minX = halfX - (InternalCalls.GetScaleX("Water", "Level1") / 2) + InternalCalls.GetScaleX("Enemy", "Level1");
-          minY = halfY - (InternalCalls.GetScaleY("Water", "Level1") / 2) + InternalCalls.GetScaleY("Enemy", "Level1");
-          CatPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue");
-          CatPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue");
+            //VI.Dialogue.LoadScript("Dialogue LittleGirl 0");
+            InitVariables();
+          halfX = VI.Transform.Position.GetX("Water", "Level1");
+
+          halfY = VI.Transform.Position.GetY("Water", "Level1");
+          maxX = (VI.Transform.Scale.GetX("Water", "Level1") / 2) + halfX - VI.Transform.Scale.GetX("Enemy", "Level1");
+          maxY = (VI.Transform.Scale.GetY("Water", "Level1") / 2) + halfY - VI.Transform.Scale.GetY("Enemy", "Level1");
+          minX = halfX - (VI.Transform.Scale.GetX("Water", "Level1") / 2) + VI.Transform.Scale.GetX("Enemy", "Level1");
+          minY = halfY - (VI.Transform.Scale.GetY("Water", "Level1") / 2) + VI.Transform.Scale.GetY("Enemy", "Level1");
+          CatPosX = VI.Transform.Position.GetX("memoryfragment", "Dialogue");
+          CatPosY = VI.Transform.Position.GetY("memoryfragment", "Dialogue");
           dialogueOrder = 0;
-          InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
+          VI.Audio.PlayOnLoop("EnemyTrigger", "Level1");
         }
 
-      public void Update() {
+      public void Update(int _id) {
 
       // Toggle fps printing box (press 'T')
-      if (InternalCalls.CheckKeyPress(84)) {
-        if (InternalCalls.EntityIsActive("fpsDisplay", "FPS")) InternalCalls.EntityDeactivate("fpsDisplay", "FPS");
-        else InternalCalls.EntityActivate("fpsDisplay", "FPS");
+      if (VI.Input.Key.Press(84)) {
+        if (VI.Entity.IsActive("fpsDisplay", "FPS")) VI.Entity.Deactivate("fpsDisplay", "FPS");
+        else VI.Entity.Activate("fpsDisplay", "FPS");
       }
 
           #region Intro Dialogue
-          if (InternalCalls.EntitiesCollided("Boat", "IntroBox", "Level1")) {
-              if (RunIntroDialog && InternalCalls.EntityIsActive("IntroBox", "Level1")) {
+          if (VI.Physics.EntitiesCollided("Boat", "IntroBox", "Level1")) {
+              if (RunIntroDialog && VI.Entity.IsActive("IntroBox", "Level1")) {
                 LockPosition(160, 120);
                 RunIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
                 if (!RunIntroDialog) {
-                  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Find the Little Girl");// for the start Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum est nec rutrum venenatis. Suspendisse facilisis lectus ornare nisi feugiat, sed eleifend nisi molestie. Vestibulum et malesuada tortor. Donec eget diam vel lorem consequat tempus. Maecenas at mollis tellus. Maecenas dolor nisl, scelerisque a eleifend ornare, rhoncus nec leo. Praesent ultricies vehicula placerat. Etiam ligula enim, tempus sed tempor at, congue in ante. Ut condimentum non mauris ac efficitur."); // hint
+                  VI.Text.Update("objectivetext", "Dialogue", "Objective: Find the Little Girl");// for the start Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum est nec rutrum venenatis. Suspendisse facilisis lectus ornare nisi feugiat, sed eleifend nisi molestie. Vestibulum et malesuada tortor. Donec eget diam vel lorem consequat tempus. Maecenas at mollis tellus. Maecenas dolor nisl, scelerisque a eleifend ornare, rhoncus nec leo. Praesent ultricies vehicula placerat. Etiam ligula enim, tempus sed tempor at, congue in ante. Ut condimentum non mauris ac efficitur."); // hint
                 }
               }
               if (!RunIntroDialog) TextAlignChoices("objectivetext", "Dialogue", 500, 380, 530, 51.0f, 20, 10);
@@ -143,16 +144,16 @@ namespace BonVoyage
     //TextAlignChoices("objectivetext", "Dialogue", 400, 1800, 600);
 
     #region Little Girl Dialogue
-    if (InternalCalls.EntitiesCollided("Boat", "LittleGirlBox", "Level1")&& dialogueOrder==0) {
+    if (VI.Physics.EntitiesCollided("Boat", "LittleGirlBox", "Level1")&& dialogueOrder==0) {
       // I'll be using G1, P1, PP1 and PP2 for the refactored code
-      if (InternalCalls.EntityIsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
+      if (VI.Entity.IsActive("LittleGirlBox", "Level1") && RunlittleGirlDialog) {
         LockPosition(-295, -85);
-        InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 1);
+        VI.Animation.SheetIndex.Set("Boat", "Level1", 1);
         RunlittleGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
 
         if (!RunlittleGirlDialog) {
             
-            InternalCalls.EntityDeactivate("LittleGirlBox", "Level1");
+            VI.Entity.Deactivate("LittleGirlBox", "Level1");
             SetObjectiveText();
             dialogueOrder = 1;
         }
@@ -161,29 +162,29 @@ namespace BonVoyage
             #endregion
             if (dialogueOrder == 1)
             {
-                if (InternalCalls.GetScaleX("Little Girl", "Level1") >0)
+                if (VI.Transform.Scale.GetX("Little Girl", "Level1") >0)
                 {
-                    //InternalCalls.SetPosY("Little Girl", "Level1", InternalCalls.GetPosY("Little Girl", "Level1") + 200 * (float)InternalCalls.GetDeltaTime());
-                    InternalCalls.SetScaleX("Little Girl", "Level1", InternalCalls.GetScaleX("Little Girl", "Level1") / (1 + 2.0f * (float)InternalCalls.GetDeltaTime()));
-                    InternalCalls.SetScaleY("Little Girl", "Level1", InternalCalls.GetScaleY("Little Girl", "Level1") / (1 + 2.0f * (float)InternalCalls.GetDeltaTime()));
+                    //VI.Transform.Position.SetY("Little Girl", "Level1", VI.Transform.Position.GetY("Little Girl", "Level1") + 200 * (float)VI.General.DeltaTime());
+                    VI.Transform.Scale.SetX("Little Girl", "Level1", VI.Transform.Scale.GetX("Little Girl", "Level1") / (1 + 2.0f * (float)VI.General.DeltaTime()));
+                    VI.Transform.Scale.SetY("Little Girl", "Level1", VI.Transform.Scale.GetY("Little Girl", "Level1") / (1 + 2.0f * (float)VI.General.DeltaTime()));
                 }
                 else
-                    InternalCalls.EntityDeactivate("Little Girl", "Level1");
+                    VI.Entity.Deactivate("Little Girl", "Level1");
 
             }
           #region Passenger 1 Dialogue
-          if (InternalCalls.EntitiesCollided("Boat", "PassengerBox", "Level1")&&(dialogueOrder==1))
+          if (VI.Physics.EntitiesCollided("Boat", "PassengerBox", "Level1")&&(dialogueOrder==1))
           {
-              if (RunPassengerDialog && !InternalCalls.EntityIsActive("LittleGirlBox", "Level1"))
+              if (RunPassengerDialog && !VI.Entity.IsActive("LittleGirlBox", "Level1"))
               {
                   LockPosition(-1240, 670);
-                  InternalCalls.SetSpriteSheetIndex("Boat", "Level1", 1);
+                  VI.Animation.SheetIndex.Set("Boat", "Level1", 1);
                   RunPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
 
                   if (!RunPassengerDialog)
                   {
                       //SetPosition("Passenger_1", "Level1", -1240, 670);
-                      InternalCalls.SetRotate("Passenger_1", "Level1", 0.5f);
+                      VI.Transform.Rotate.Set("Passenger_1", "Level1", 0.5f);
                       SetObjectiveText();
                       AllowAdvance = true;
                         dialogueOrder = 2;
@@ -193,65 +194,65 @@ namespace BonVoyage
           #endregion
 
           #region Passenger 1 Delivered
-          if (AllowAdvance && InternalCalls.EntitiesCollided("Boat", "destination", "Level1"))
+          if (AllowAdvance && VI.Physics.EntitiesCollided("Boat", "destination", "Level1"))
           {
-              InternalCalls.PlayScene("cutscene1");
-              InternalCalls.EntityDeactivate("destination", "Level1");
+              VI.Scene.Play("cutscene1");
+              VI.Entity.Deactivate("destination", "Level1");
           }
           #endregion
 
           #region Memory Fragment UI
 
-          if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1")&& fragment1==0)
+          if (VI.Physics.EntitiesCollided("Boat", "fragment1drop", "Level1")&& fragment1==0)
           {
               Console.Write("COLLECTED");
               fragment1 = 1;
-              InternalCalls.UpdateText("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
+              VI.Text.Update("memoryfragmentscreen", "Dialogue", "Memory Fragments (1/1)");
               //InternalCalls.SetLayer("fragment1drop", "Level1", 100);///////////////////////////////////////////    need set layer higher
-              InternalCalls.PlayEntitySound("fragment1drop", "Level1");
-              //InternalCalls.EntityDeactivate("fragment1drop", "Level1");
+              VI.Audio.Play("fragment1drop", "Level1");
+              //VI.Entity.Deactivate("fragment1drop", "Level1");
           }
 
           if (fragment1 == 1)//cat rising up
           {
 
-              if (InternalCalls.GetPosY("fragment1drop", "Level1") >  InternalCalls.GetScaleY("Boat", "Level1")/2 + InternalCalls.GetPosY("Boat", "Level1"))
+              if (VI.Transform.Position.GetY("fragment1drop", "Level1") >  VI.Transform.Scale.GetY("Boat", "Level1")/2 + VI.Transform.Position.GetY("Boat", "Level1"))
                   fragment1 = 2;
               else
               { 
-                  InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + 200 *(float)InternalCalls.GetDeltaTime());
-                  InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
-                  InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") + 100.0f * (float)InternalCalls.GetDeltaTime());
+                  VI.Transform.Position.SetY("fragment1drop", "Level1", VI.Transform.Position.GetY("fragment1drop", "Level1") + 200 *(float)VI.General.DeltaTime());
+                  VI.Transform.Scale.SetX("fragment1drop", "Level1", VI.Transform.Scale.GetX("fragment1drop", "Level1") + 100.0f * (float)VI.General.DeltaTime());
+                  VI.Transform.Scale.SetY("fragment1drop", "Level1", VI.Transform.Scale.GetY("fragment1drop", "Level1") + 100.0f * (float)VI.General.DeltaTime());
               }
           }
           else if (fragment1 == 2)//make cat fly to memoryfragment
           {
-              float uiPosX = InternalCalls.GetPosX("memoryfragment", "Dialogue") + InternalCalls.GetCurrentCameraPosX();
-              float uiPosY = InternalCalls.GetPosY("memoryfragment", "Dialogue") + InternalCalls.GetCurrentCameraPosY();
+              float uiPosX = VI.Transform.Position.GetX("memoryfragment", "Dialogue") + VI.Camera.GetPos.X();
+              float uiPosY = VI.Transform.Position.GetY("memoryfragment", "Dialogue") + VI.Camera.GetPos.Y();
 
-              CatSpeedX = (uiPosX - InternalCalls.GetPosX("fragment1drop", "Level1")) / CatFlyTime;
-              CatSpeedY = (uiPosY - InternalCalls.GetPosY("fragment1drop", "Level1")) / CatFlyTime;
+              CatSpeedX = (uiPosX - VI.Transform.Position.GetX("fragment1drop", "Level1")) / CatFlyTime;
+              CatSpeedY = (uiPosY - VI.Transform.Position.GetY("fragment1drop", "Level1")) / CatFlyTime;
 
-              CatFlyTime -= (float)InternalCalls.GetDeltaTime();
+              CatFlyTime -= (float)VI.General.DeltaTime();
 
-              InternalCalls.SetPosX("fragment1drop", "Level1", InternalCalls.GetPosX("fragment1drop", "Level1") + CatSpeedX * (float)InternalCalls.GetDeltaTime());
-              InternalCalls.SetPosY("fragment1drop", "Level1", InternalCalls.GetPosY("fragment1drop", "Level1") + CatSpeedY * (float)InternalCalls.GetDeltaTime());
-              InternalCalls.SetScaleX("fragment1drop", "Level1", InternalCalls.GetScaleX("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
-              InternalCalls.SetScaleY("fragment1drop", "Level1", InternalCalls.GetScaleY("fragment1drop", "Level1") - 100.0f * (float)InternalCalls.GetDeltaTime());
-              InternalCalls.SetRotate("fragment1drop", "Level1", InternalCalls.GetRotate("fragment1drop", "Level1") + 10.0f * (float)InternalCalls.GetDeltaTime());
+              VI.Transform.Position.SetX("fragment1drop", "Level1", VI.Transform.Position.GetX("fragment1drop", "Level1") + CatSpeedX * (float)VI.General.DeltaTime());
+              VI.Transform.Position.SetY("fragment1drop", "Level1", VI.Transform.Position.GetY("fragment1drop", "Level1") + CatSpeedY * (float)VI.General.DeltaTime());
+              VI.Transform.Scale.SetX("fragment1drop", "Level1", VI.Transform.Scale.GetX("fragment1drop", "Level1") - 100.0f * (float)VI.General.DeltaTime());
+              VI.Transform.Scale.SetY("fragment1drop", "Level1", VI.Transform.Scale.GetY("fragment1drop", "Level1") - 100.0f * (float)VI.General.DeltaTime());
+              VI.Transform.Rotate.Set("fragment1drop", "Level1", VI.Transform.Rotate.Get("fragment1drop", "Level1") + 10.0f * (float)VI.General.DeltaTime());
               if (CatFlyTime < 0)
               {
-                  InternalCalls.EntityDeactivate("fragment1drop", "Level1");
+                  VI.Entity.Deactivate("fragment1drop", "Level1");
                   fragment1 = 4;
-                  oriFragScaleX = InternalCalls.GetScaleX("memoryfragment", "Dialogue");
+                  oriFragScaleX = VI.Transform.Scale.GetX("memoryfragment", "Dialogue");
               }
           }
           else if (fragment1 == 4)
           {
-              if (InternalCalls.GetScaleX("memoryfragment", "Dialogue") < oriFragScaleX+30)
+              if (VI.Transform.Scale.GetX("memoryfragment", "Dialogue") < oriFragScaleX+30)
               { 
-                  InternalCalls.SetScaleX("memoryfragment", "Dialogue", InternalCalls.GetScaleX("memoryfragment", "Dialogue") + 100 * (float)InternalCalls.GetDeltaTime());
-                  InternalCalls.SetScaleY("memoryfragment", "Dialogue", InternalCalls.GetScaleY("memoryfragment", "Dialogue") + 100 * (float)InternalCalls.GetDeltaTime());
+                  VI.Transform.Scale.SetX("memoryfragment", "Dialogue", VI.Transform.Scale.GetX("memoryfragment", "Dialogue") + 100 * (float)VI.General.DeltaTime());
+                  VI.Transform.Scale.SetY("memoryfragment", "Dialogue", VI.Transform.Scale.GetY("memoryfragment", "Dialogue") + 100 * (float)VI.General.DeltaTime());
               }
               else
                   fragment1 = 5;
@@ -259,28 +260,28 @@ namespace BonVoyage
           }
           else if (fragment1 == 5)
           {
-              if (InternalCalls.GetScaleX("memoryfragment", "Dialogue") > oriFragScaleX)
+              if (VI.Transform.Scale.GetX("memoryfragment", "Dialogue") > oriFragScaleX)
               {
-                  InternalCalls.SetScaleX("memoryfragment", "Dialogue", InternalCalls.GetScaleX("memoryfragment", "Dialogue") - 100 * (float)InternalCalls.GetDeltaTime());
-                  InternalCalls.SetScaleY("memoryfragment", "Dialogue", InternalCalls.GetScaleY("memoryfragment", "Dialogue") - 100 * (float)InternalCalls.GetDeltaTime());
+                  VI.Transform.Scale.SetX("memoryfragment", "Dialogue", VI.Transform.Scale.GetX("memoryfragment", "Dialogue") - 100 * (float)VI.General.DeltaTime());
+                  VI.Transform.Scale.SetY("memoryfragment", "Dialogue", VI.Transform.Scale.GetY("memoryfragment", "Dialogue") - 100 * (float)VI.General.DeltaTime());
               }
               else
                   fragment1 = 6;
 
           }
-          if ((InternalCalls.ButtonReleased("memoryfragment", "Dialogue")) == true) {
-              if (InternalCalls.EntityIsActive("memoryfragmentscreen", "Dialogue") == false) {
-                  InternalCalls.EntityActivate("memoryfragmentscreen", "Dialogue");
-                  if (fragment1 != 0) { InternalCalls.EntityActivate("fragment1obj", "Dialogue"); }
+          if ((VI.Input.Button.Released("memoryfragment", "Dialogue")) == true) {
+              if (VI.Entity.IsActive("memoryfragmentscreen", "Dialogue") == false) {
+                  VI.Entity.Activate("memoryfragmentscreen", "Dialogue");
+                  if (fragment1 != 0) { VI.Entity.Activate("fragment1obj", "Dialogue"); }
               } else {
-                  InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
-                  if (fragment1 != 0) { InternalCalls.EntityDeactivate("fragment1obj", "Dialogue"); }
+                  VI.Entity.Deactivate("memoryfragmentscreen", "Dialogue");
+                  if (fragment1 != 0) { VI.Entity.Deactivate("fragment1obj", "Dialogue"); }
               }
           }
           #endregion
 
           #region Objective UI
-          if ((InternalCalls.ButtonReleased("objectivetext", "Dialogue") && currentobjective != "") == true)
+          if ((VI.Input.Button.Released("objectivetext", "Dialogue") && currentobjective != "") == true)
           {
               if (objectiveexpanded)
               {
@@ -293,14 +294,14 @@ namespace BonVoyage
 
               if (objectiveexpanded)
               {
-                  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
+                  VI.Text.Update("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
                   TextAlignChoices("objectivetext", "Dialogue", 500, 380, 530, 51.0f, 20, 10);
 
       }
 
       if (!objectiveexpanded)
               {
-                  InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view"); // hint
+                  VI.Text.Update("objectivetext", "Dialogue", "Objective: Click to view"); // hint
                   TextAlignChoices("objectivetext", "Dialogue", 500, 380, 530, 51.0f, 20, 10);
 
       }
@@ -308,26 +309,26 @@ namespace BonVoyage
           #endregion
 
           #region Player
-          float PlayerPosX = InternalCalls.GetPosX("Boat", "Level1");
-          float PlayerPosY = InternalCalls.GetPosY("Boat", "Level1");
-          float PlayerScaleX = InternalCalls.GetScaleX("Boat", "Level1");
-          float PlayerScaleY = InternalCalls.GetScaleY("Boat", "Level1");
-          if (!starttalking && InternalCalls.CheckKeyHold(349) && InternalCalls.EntityIsActive("DialogueText", "Level1") == false) { // Mouse click
-              float DirX = InternalCalls.GetWorldMousePosX() + InternalCalls.GetCurrentCameraPosX() - PlayerPosX;
-              float DirY = InternalCalls.GetWorldMousePosY() + InternalCalls.GetCurrentCameraPosY() - PlayerPosY;
+          float PlayerPosX = VI.Transform.Position.GetX("Boat", "Level1");
+          float PlayerPosY = VI.Transform.Position.GetY("Boat", "Level1");
+          float PlayerScaleX = VI.Transform.Scale.GetX("Boat", "Level1");
+          float PlayerScaleY = VI.Transform.Scale.GetY("Boat", "Level1");
+          if (!starttalking && VI.Input.Key.Hold(349) && VI.Entity.IsActive("DialogueText", "Level1") == false) { // Mouse click
+              float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerPosX;
+              float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerPosY;
               float NormX = 0f, NormY = 0f;
-              if (InternalCalls.SqMagnitude(DirX, DirY) > Epsilon * Epsilon) {
-                  NormX = InternalCalls.NormalizeX(DirX, DirY);
-                  NormY = InternalCalls.NormalizeY(DirX, DirY);
+              if (VI.Math.SqMagnitude(DirX, DirY) > Epsilon * Epsilon) {
+                  NormX = VI.Math.Normalize.X(DirX, DirY);
+                  NormY = VI.Math.Normalize.Y(DirX, DirY);
                   ApplyForce("Boat", "Level1", NormX, NormY, PlayerSpeed);
               }
               PlayerRotation = GetRotation(NormX, NormY);
               SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
-              InternalCalls.PlayEntitySound("Boat", "Level1");
+              VI.Audio.Play("Boat", "Level1");
             }
-            if (!InternalCalls.CheckKeyHold(349))
+            if (!VI.Input.Key.Hold(349))
             {
-                InternalCalls.StopSound("Boat", "Level1");
+                VI.Audio.Stop("Boat", "Level1");
             }
             #endregion
 
@@ -336,42 +337,42 @@ namespace BonVoyage
           #endregion
 
           #region Enemy
-          //InternalCalls.SetCurrentCameraScaleX(5500);
+          //VI.Camera.SetScale.X(5500);
           float EnemyChangeInX = 0;
           float EnemyChangeInY = 0;
           Random rand = new Random();
-          float EnemyPosX = InternalCalls.GetPosX("Enemy", "Level1");
-          float EnemyPosY = InternalCalls.GetPosY("Enemy", "Level1");
-          float EnemyScaleX = InternalCalls.GetScaleX("Enemy", "Level1");
-          float EnemyScaleY = InternalCalls.GetScaleY("Enemy", "Level1");
+          float EnemyPosX = VI.Transform.Position.GetX("Enemy", "Level1");
+          float EnemyPosY = VI.Transform.Position.GetY("Enemy", "Level1");
+          float EnemyScaleX = VI.Transform.Scale.GetX("Enemy", "Level1");
+          float EnemyScaleY = VI.Transform.Scale.GetY("Enemy", "Level1");
           float EnemyDisX = PlayerPosX - EnemyPosX;
           float EnemyDisY = PlayerPosY - EnemyPosY;
           float EnemyNormDisX = 0f, EnemyNormDisY = 0f;
-          if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
-              EnemyNormDisX = InternalCalls.NormalizeX(EnemyDisX, EnemyDisY);
-              EnemyNormDisY = InternalCalls.NormalizeY(EnemyDisX, EnemyDisY);
+          if (VI.Math.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
+              EnemyNormDisX = VI.Math.Normalize.X(EnemyDisX, EnemyDisY);
+              EnemyNormDisY = VI.Math.Normalize.Y(EnemyDisX, EnemyDisY);
           }
 
           // Enemy is in screen
-          if (EnemyPosX <= InternalCalls.GetCurrentCameraPosX() + (InternalCalls.GetCurrentCameraScaleX() / 2) &&
-              EnemyPosY <= InternalCalls.GetCurrentCameraPosY() + (InternalCalls.GetCurrentCameraScaleY() / 2) &&
-              EnemyPosX >= InternalCalls.GetCurrentCameraPosX() - (InternalCalls.GetCurrentCameraScaleX() / 2) &&
-              EnemyPosY >= InternalCalls.GetCurrentCameraPosY() - (InternalCalls.GetCurrentCameraScaleY() / 2)) {
+          if (EnemyPosX <= VI.Camera.GetPos.X() + (VI.Camera.GetScale.X() / 2) &&
+              EnemyPosY <= VI.Camera.GetPos.Y() + (VI.Camera.GetScale.Y() / 2) &&
+              EnemyPosX >= VI.Camera.GetPos.X() - (VI.Camera.GetScale.X() / 2) &&
+              EnemyPosY >= VI.Camera.GetPos.Y() - (VI.Camera.GetScale.Y() / 2)) {
                 //float EnemyRotation = GetRotation(EnemyNormDisX, EnemyNormDisY);
                 /*
                 if (EnemyRotation < 0) OctopusDirection = 1;
-                else OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation) / Pi);
+                else OctopusDirection = (int)(VI.Math.Negate(EnemyRotation) / Pi);
                 */
                 //Console.Write(OctopusDirection + "\n");
                 //Console.Write((EnemyRotation / Pi / 2) + "\n");
                 OctopusDirection = GetRotation(EnemyNormDisX, EnemyNormDisY);
-                //OctopusDirection = (int)(InternalCalls.Negate(EnemyRotation));
+                //OctopusDirection = (int)(VI.Math.Negate(EnemyRotation));
                 //Console.Write(OctopusDirection + "\n");
 
                 // Chasing player
-                if (!starttalking && InternalCalls.Negate(EnemyDisX) <= InternalCalls.GetScaleX("EnemyTrigger", "Level1") && InternalCalls.Negate(EnemyDisY) <= InternalCalls.GetScaleY("EnemyTrigger", "Level1")) {
+                if (!starttalking && VI.Math.Negate(EnemyDisX) <= VI.Transform.Scale.GetX("EnemyTrigger", "Level1") && VI.Math.Negate(EnemyDisY) <= VI.Transform.Scale.GetY("EnemyTrigger", "Level1")) {
                     EnemyLoiter = false;
-                    //if (InternalCalls.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
+                    //if (VI.Math.SqMagnitude(EnemyDisX, EnemyDisY) > Epsilon * Epsilon) {
                     //    ApplyForce("Enemy", "Level1", EnemyNormDisX, EnemyNormDisY, EnemySpeed);
                     //    ApplyForce("EnemyTrigger", "Level1", EnemyNormDisX, EnemyNormDisY, EnemySpeed);
                     //}
@@ -383,20 +384,20 @@ namespace BonVoyage
                 else EnemyLoiter = true;
 
                 // Attacking player
-                if (!starttalking && InternalCalls.EntitiesCollided("Boat", "EnemyTrigger", "Level1")) {
+                if (!starttalking && VI.Physics.EntitiesCollided("Boat", "EnemyTrigger", "Level1")) {
                     switch (OctopusAttacked) {
                         case 0:
                             OctopusAttacked = 1;
-                            //InternalCalls.PlaySoundOnLoop("EnemyTrigger", "Level1");
+                            //VI.Audio.PlayOnLoop("EnemyTrigger", "Level1");
                             SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Rising");
-                            InternalCalls.SetAnimationCurrentIndex("Enemy", "Level1", 0);
-                            HitInterval = InternalCalls.GetAnimationSpeed("Enemy", "Level1") * InternalCalls.GetAnimationFrameCount("Enemy", "Level1");
+                            VI.Animation.FrameCount.Set("Enemy", "Level1", 0);
+                            HitInterval = VI.Animation.Speed.Get("Enemy", "Level1") * VI.Animation.FrameCount.Get("Enemy", "Level1");
                             HealInterval = HitInterval * 3.0f;
                             break;
                         case 1:
-                            if (InternalCalls.GetAnimationCurrentIndex("Enemy", "Level1") == InternalCalls.GetAnimationFrameCount("Enemy", "Level1") - 1) {
+                            if (VI.Animation.CurrentFrame.Get("Enemy", "Level1") == VI.Animation.FrameCount.Get("Enemy", "Level1") - 1) {
                                 SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Attack1");
-                                InternalCalls.SetAnimationCurrentIndex("Enemy", "Level1", 0);
+                                VI.Animation.FrameCount.Set("Enemy", "Level1", 0);
                                 OctopusAttacked = 2;
                             }
                             break;
@@ -409,21 +410,21 @@ namespace BonVoyage
                     }
                 } else {
                     OctopusAttacked = 0;
-                    //InternalCalls.StopSound("EnemyTrigger", "Level1");
+                    //VI.Audio.Stop("EnemyTrigger", "Level1");
                     SetCharRotation4(OctopusDirection, "Enemy", "Level1", "Idle");
                 }
 
-                if (InternalCalls.CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken > -1)
+                if (VI.Physics.CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken > -1)
                 {
                     //Console.Write("HitCounter!\n");
-                    HitCounter += (float)InternalCalls.GetDeltaTime();
+                    HitCounter += (float)VI.General.DeltaTime();
                     if (HitCounter >= HitInterval)
                     {
                         //Console.Write("Attacking!\n");
                         HitCounter = 0;
                         ++HitTaken;
-                        InternalCalls.PlayEntitySound("Enemy", "Level1");
-                        InternalCalls.SetTexture("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
+                        VI.Audio.Play("Enemy", "Level1");
+                        VI.Texture.Set("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
                     }
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Hit");
 
@@ -442,13 +443,13 @@ namespace BonVoyage
                 // Player dies
                 if(HitTaken == MaxHealth) {
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Death");
-                    InternalCalls.SetAnimationCurrentIndex("Boat", "Level1", 0);
+                    VI.Animation.FrameCount.Set("Boat", "Level1", 0);
                     HitTaken = -1;
                 }
-                if (HitTaken == -1 && InternalCalls.GetAnimationCurrentIndex("Boat", "Level1") == InternalCalls.GetAnimationFrameCount("Boat", "Level1") - 1) {
-                    InternalCalls.StopSound("EnemyTrigger", "Level1");
-                    InternalCalls.PauseScene("Level1");
-                    InternalCalls.PlayScene("Game Over");
+                if (HitTaken == -1 && VI.Animation.CurrentFrame.Get("Boat", "Level1") == VI.Animation.FrameCount.Get("Boat", "Level1") - 1) {
+                    VI.Audio.Stop("EnemyTrigger", "Level1");
+                    VI.Scene.Pause("Level1");
+                    VI.Scene.Play("Game Over");
                 }
             }
 
@@ -483,24 +484,24 @@ namespace BonVoyage
             }
 
             // Updating enemy position
-            EnemyChangeInX *= (float)InternalCalls.GetDeltaTime();
-            EnemyChangeInY *= (float)InternalCalls.GetDeltaTime();
+            EnemyChangeInX *= (float)VI.General.DeltaTime();
+            EnemyChangeInY *= (float)VI.General.DeltaTime();
             EnemyChangeInX = (((EnemyPosX + EnemyChangeInX) < maxX) && ((EnemyPosX + EnemyChangeInX) > minX)) ? EnemyChangeInX : 0;
             EnemyChangeInY = (((EnemyPosY + EnemyChangeInY) < maxY) && ((EnemyPosY + EnemyChangeInY) > minY)) ? EnemyChangeInY : 0;
-            InternalCalls.SetPosX("EnemyTrigger", "Level1", EnemyPosX + EnemyChangeInX);
-            InternalCalls.SetPosY("EnemyTrigger", "Level1", EnemyPosY + EnemyChangeInY);
-            InternalCalls.SetPosX("Enemy", "Level1", EnemyPosX + EnemyChangeInX);
-            InternalCalls.SetPosY("Enemy", "Level1", EnemyPosY + EnemyChangeInY);
+            VI.Transform.Position.SetX("EnemyTrigger", "Level1", EnemyPosX + EnemyChangeInX);
+            VI.Transform.Position.SetY("EnemyTrigger", "Level1", EnemyPosY + EnemyChangeInY);
+            VI.Transform.Position.SetX("Enemy", "Level1", EnemyPosX + EnemyChangeInX);
+            VI.Transform.Position.SetY("Enemy", "Level1", EnemyPosY + EnemyChangeInY);
 
             // Healing player
-            if (!InternalCalls.EntitiesCollided("Boat", "Enemy", "Level1") && HitTaken > 0) {
-                HealCounter += (float)InternalCalls.GetDeltaTime();
+            if (!VI.Physics.EntitiesCollided("Boat", "Enemy", "Level1") && HitTaken > 0) {
+                HealCounter += (float)VI.General.DeltaTime();
                 if (HealCounter >= HealInterval) {
                     //Console.Write("Regenerating!\n");
                     SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
                     HealCounter = 0;
                     --HitTaken;
-                    InternalCalls.SetTexture("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
+                    VI.Texture.Set("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
                 }
             }
             #endregion
@@ -508,9 +509,9 @@ namespace BonVoyage
             #region cutscene1
             //if (InternalCalls.GetCurrentGameStateName() == "cutscene1state")
             {
-                if ((InternalCalls.ButtonReleased("cutscene1button", "cutscene1")) == true)
+                if ((VI.Input.Button.Released("cutscene1button", "cutscene1")) == true)
                 {
-                    InternalCalls.PauseScene("cutscene1");
+                    VI.Scene.Pause("cutscene1");
                 }
             }
             #endregion
@@ -519,69 +520,69 @@ namespace BonVoyage
         #region UI, Camera, Text Align, Objective Functions
         public void SetObjectiveText()
         {
-            currentobjective = InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID());
-            InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
+            currentobjective = VI.Dialogue.GetLine(VI.Dialogue.Current.GetId());
+            VI.Text.Update("objectivetext", "Dialogue", "Objective: " + currentobjective); // hint
             TextAlignChoices("objectivetext", "Dialogue", 500, 380, 700, 51.0f, 20, 10);
-            if (InternalCalls.GetLineCount("objectivetext", "Dialogue") > 2)
+            if (VI.Text.GetLineCount("objectivetext", "Dialogue") > 2)
             {
-                InternalCalls.UpdateText("objectivetext", "Dialogue", "Objective: Click to view");
+                VI.Text.Update("objectivetext", "Dialogue", "Objective: Click to view");
                 TextAlignChoices("objectivetext", "Dialogue", 500, 380, 530, 51.0f, 20, 10);
             }
         }
 
         public void DisableUI() {
-            InternalCalls.EntityDeactivate("hpbar", "Dialogue");
-            InternalCalls.EntityDeactivate("memoryfragment", "Dialogue");
-            InternalCalls.EntityDeactivate("memoryfragmentscreen", "Dialogue");
-            InternalCalls.EntityDeactivate("fragment1obj", "Dialogue");
+            VI.Entity.Deactivate("hpbar", "Dialogue");
+            VI.Entity.Deactivate("memoryfragment", "Dialogue");
+            VI.Entity.Deactivate("memoryfragmentscreen", "Dialogue");
+            VI.Entity.Deactivate("fragment1obj", "Dialogue");
 
-            InternalCalls.EntityDeactivate("cyclemap", "Dialogue");
+            VI.Entity.Deactivate("cyclemap", "Dialogue");
 
-            InternalCalls.EntityDeactivate("minimap", "Dialogue");
-            InternalCalls.EntityDeactivate("enemymap", "Dialogue");
-            InternalCalls.EntityDeactivate("weathermap", "Dialogue");
+            VI.Entity.Deactivate("minimap", "Dialogue");
+            VI.Entity.Deactivate("enemymap", "Dialogue");
+            VI.Entity.Deactivate("weathermap", "Dialogue");
 
-            //InternalCalls.EntityDeactivate("minimapbig", "Dialogue");
-            //InternalCalls.EntityDeactivate("enemymapbig", "Dialogue");
-            //InternalCalls.EntityDeactivate("weathermapbig", "Dialogue");
+            //VI.Entity.Deactivate("minimapbig", "Dialogue");
+            //VI.Entity.Deactivate("enemymapbig", "Dialogue");
+            //VI.Entity.Deactivate("weathermapbig", "Dialogue");
 
-            InternalCalls.EntityDeactivate("weathertext", "Dialogue");
-            InternalCalls.EntityDeactivate("objectivetext", "Dialogue");
+            VI.Entity.Deactivate("weathertext", "Dialogue");
+            VI.Entity.Deactivate("objectivetext", "Dialogue");
         }
 
         public void EnableUI() {
-            InternalCalls.EntityActivate("hpbar", "Dialogue");
-            InternalCalls.EntityActivate("memoryfragment", "Dialogue");
+            VI.Entity.Activate("hpbar", "Dialogue");
+            VI.Entity.Activate("memoryfragment", "Dialogue");
 
-            InternalCalls.EntityActivate("cyclemap", "Dialogue");
+            VI.Entity.Activate("cyclemap", "Dialogue");
 
-            //InternalCalls.EntityActivate("minimap", "Dialogue");
+            //VI.Entity.Activate("minimap", "Dialogue");
 
-            //InternalCalls.EntityActivate("weathertext", "Dialogue");
-            InternalCalls.EntityActivate("objectivetext", "Dialogue");
+            //VI.Entity.Activate("weathertext", "Dialogue");
+            VI.Entity.Activate("objectivetext", "Dialogue");
         }
 
         public void UpdateCamera()
         {
             if (camZoomingIn)
             {
-                camScaleX -= 500 * (float)InternalCalls.GetDeltaTime();
-                InternalCalls.SetCurrentCameraScaleX(camScaleX);
+                camScaleX -= 500 * (float)VI.General.DeltaTime();
+                VI.Camera.SetScale.X(camScaleX);
                 if (camScaleX < 700)
                 {
                     camScaleX = 700;
-                    InternalCalls.SetCurrentCameraScaleX(700);
+                    VI.Camera.SetScale.X(700);
                     camZoomingIn = false;
                 }
             }
             if (camZoomingOut)
             {
-                camScaleX += 500 * (float)InternalCalls.GetDeltaTime();
-                InternalCalls.SetCurrentCameraScaleX(camScaleX);
+                camScaleX += 500 * (float)VI.General.DeltaTime();
+                VI.Camera.SetScale.X(camScaleX);
                 if (camScaleX > 1600)
                 {
                     camScaleX = 1600;
-                    InternalCalls.SetCurrentCameraScaleX(1600);
+                    VI.Camera.SetScale.X(1600);
                     camZoomingOut = false;
                 }
             }
@@ -596,13 +597,13 @@ namespace BonVoyage
         // int textYSpacing     - This is the spacing of the text from the top edge of the box 
         public void TextAlignChoices(string entityname, string scenename, float posX, float posY, float scaleX = 500, float perLineScaleY = 51, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15)
         {
-            int additionalLines = InternalCalls.GetLineCount(entityname, scenename) - 1;
+            int additionalLines = VI.Text.GetLineCount(entityname, scenename) - 1;
             //Console.WriteLine("lines: " + additionalLines);
             //float scaleY = perLineScaleY;         // This is the default height of button, will changing with respect to line count
-            perLineScaleY *= InternalCalls.GetFontScale(entityname, scenename);
+            perLineScaleY *= VI.Text.Scale.Get(entityname, scenename);
 
-            InternalCalls.SetScaleX(entityname, scenename, scaleX);
-            InternalCalls.SetScaleY(entityname, scenename, perLineScaleY * (1+additionalLines) + textYSpacing*2);
+            VI.Transform.Scale.SetX(entityname, scenename, scaleX);
+            VI.Transform.Scale.SetY(entityname, scenename, perLineScaleY * (1+additionalLines) + textYSpacing*2);
             
             // If it's a choice textbox, posY is the middle of both texts
             if (choice == 1) posY = posY + spacing + perLineScaleY * (additionalLines+1);
@@ -610,12 +611,12 @@ namespace BonVoyage
 
             float finalPosY = posY - (perLineScaleY * additionalLines) / 2;
 
-            InternalCalls.SetPosX(entityname, scenename, posX);
-            InternalCalls.SetPosY(entityname, scenename, finalPosY);
+            VI.Transform.Position.SetX(entityname, scenename, posX);
+            VI.Transform.Position.SetY(entityname, scenename, finalPosY);
 
             float textY = perLineScaleY * additionalLines / 2 - perLineScaleY/2;
-            float magicNumber = 10.0f * InternalCalls.GetFontScale(entityname, scenename);
-            InternalCalls.SetTextOffset(entityname, scenename, -scaleX / 2 + textXSpacing, textY + magicNumber);
+            float magicNumber = 10.0f * VI.Text.Scale.Get(entityname, scenename);
+            VI.Text.Offset.Set(entityname, scenename, -scaleX / 2 + textXSpacing, textY + magicNumber);
         }
 
         #endregion
@@ -624,8 +625,8 @@ namespace BonVoyage
         // Based on the current dialog ID, move to the next one. Can input choice if there is a choice selection, by default it's 1
         public void MoveToNextDialog(int choice = 1)
         {
-            if (choice == 1) InternalCalls.SetCurrentDialogueID(InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()));
-            else InternalCalls.SetCurrentDialogueID(InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()));
+            if (choice == 1) VI.Dialogue.Current.SetTo(VI.Dialogue.Next.GetId2(VI.Dialogue.Current.GetId()));
+            else VI.Dialogue.Current.SetTo(VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId()));
         }
 
         // Get the texts of the next dialog, able to input 1 or 2 to get the different choices
@@ -634,16 +635,16 @@ namespace BonVoyage
             int ID = 0;
             if (choice == 1)
             {
-                ID = InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID());
+                ID = VI.Dialogue.Next.GetId2(VI.Dialogue.Current.GetId());
                 //Console.WriteLine("Choice 1 is: " + ID);
             }
             else
             {
-                ID = InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID());
+                ID = VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId());
                 //Console.WriteLine("Choice 2 is: " + ID);
             }
-            //Console.WriteLine("Resultant line is: " + InternalCalls.GetDialogue(ID));
-            return InternalCalls.GetDialogue(ID);
+            //Console.WriteLine("Resultant line is: " + VI.Dialogue.GetLine(ID));
+            return VI.Dialogue.GetLine(ID);
         }
 
         /* For carrying on the dialog conversation logic. It will automatically zoom in and out, disabling and enabling UI too.
@@ -661,26 +662,26 @@ namespace BonVoyage
             {
                 DisableUI();
                 // Load Little Girl Talking
-                InternalCalls.LoadDialogs(dialogFile);
-                InternalCalls.SetCurrentDialogueID(1);
+                VI.Dialogue.LoadScript(dialogFile);
+                VI.Dialogue.Current.SetTo(1);
 
                 // Setting default P1, PP1, PP2 positions
-                InternalCalls.SetPosX(choice1, scene, 500);
-                InternalCalls.SetPosY(choice1, scene, 46);
-                InternalCalls.SetPosX(choice2, scene, 500);
-                InternalCalls.SetPosY(choice2, scene, -90);
-                InternalCalls.SetPosX(player, scene, 450);
-                InternalCalls.SetPosY(player, scene, 5);
+                VI.Transform.Position.SetX(choice1, scene, 500);
+                VI.Transform.Position.SetY(choice1, scene, 46);
+                VI.Transform.Position.SetX(choice2, scene, 500);
+                VI.Transform.Position.SetY(choice2, scene, -90);
+                VI.Transform.Position.SetX(player, scene, 450);
+                VI.Transform.Position.SetY(player, scene, 5);
 
                 // Activate little girl dialogue
                 string firstSpeaker;
-                if (InternalCalls.IsPlayerSpeaker(1)) firstSpeaker = player;
+                if (VI.Dialogue.Speaker.IsPlayer(1)) firstSpeaker = player;
                 else firstSpeaker = notPlayer;
 
-                InternalCalls.EntityActivate(firstSpeaker, scene);
-                InternalCalls.UpdateText(firstSpeaker, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+                VI.Entity.Activate(firstSpeaker, scene);
+                VI.Text.Update(firstSpeaker, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
 
-                if (InternalCalls.IsPlayerSpeaker(1)) TextAlignChoices(player, scene, 450, 5, 500, 51, 20, 20);
+                if (VI.Dialogue.Speaker.IsPlayer(1)) TextAlignChoices(player, scene, 450, 5, 500, 51, 20, 20);
                 else TextAlignChoices(notPlayer, scene, -387, 330, 740, 51, 20, 20);
 
                 camZoomingIn = true;
@@ -690,9 +691,9 @@ namespace BonVoyage
             // Button click set flags
             if (choiceFlag)
             {
-                if (InternalCalls.ButtonReleased(choice1, scene) || InternalCalls.ButtonReleased(choice2, scene)) updateChat = true;
+                if (VI.Input.Button.Released(choice1, scene) || VI.Input.Button.Released(choice2, scene)) updateChat = true;
             }
-            else if (InternalCalls.ButtonReleased(player, scene) || InternalCalls.ButtonReleased(notPlayer, scene)) updateChat = true;
+            else if (VI.Input.Button.Released(player, scene) || VI.Input.Button.Released(notPlayer, scene)) updateChat = true;
 
             // Logic done using those flags
             if (updateChat)
@@ -700,7 +701,7 @@ namespace BonVoyage
                 updateChat = false;
 
                 // Finish dialog
-                if (InternalCalls.GetNextDialogueID(InternalCalls.GetCurrentDialogueID()) == 0)
+                if (VI.Dialogue.Next.GetId2(VI.Dialogue.Current.GetId()) == 0)
                 {
                     DeactivateDialogBox(player, notPlayer, choice1, choice2, scene);
                     starttalking = false;
@@ -710,49 +711,49 @@ namespace BonVoyage
                     return false;
                 }
 
-                //Console.WriteLine("Moving on from: " + InternalCalls.GetCurrentDialogueID());
+                //Console.WriteLine("Moving on from: " + VI.Dialogue.Current.GetId());
                 if (choiceFlag)
                 {
                     //Console.WriteLine("It's a choice dialog");
                     choiceFlag = false;
-                    if (InternalCalls.ButtonReleased(choice2, scene))
+                    if (VI.Input.Button.Released(choice2, scene))
                     {
                         MoveToNextDialog(2);
-                        //Console.WriteLine("Choice 2 selected, moving to: " + InternalCalls.GetCurrentDialogueID());
+                        //Console.WriteLine("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
                     }
                     else
                     {
                         MoveToNextDialog(1);
-                        //Console.WriteLine("Choice 1 selected, moving to: " + InternalCalls.GetCurrentDialogueID());
+                        //Console.WriteLine("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
                     }
-                    InternalCalls.EntityDeactivate(choice1, scene);
-                    InternalCalls.EntityDeactivate(choice2, scene);
+                    VI.Entity.Deactivate(choice1, scene);
+                    VI.Entity.Deactivate(choice2, scene);
                 }
                 MoveToNextDialog(1);
-                //Console.WriteLine("Moving to: " + InternalCalls.GetCurrentDialogueID());
+                //Console.WriteLine("Moving to: " + VI.Dialogue.Current.GetId());
 
-                if (InternalCalls.IsPlayerSpeaker(InternalCalls.GetCurrentDialogueID()))
+                if (VI.Dialogue.Speaker.IsPlayer(VI.Dialogue.Current.GetId()))
                 {
-                    InternalCalls.EntityActivate(player, scene);
-                    InternalCalls.EntityDeactivate(notPlayer, scene);
-                    InternalCalls.UpdateText(player, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+                    VI.Entity.Activate(player, scene);
+                    VI.Entity.Deactivate(notPlayer, scene);
+                    VI.Text.Update(player, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
                     TextAlignChoices(player, scene, 450, 5, 500, 51, 20, 20);
                 }
                 else
                 {
-                    InternalCalls.EntityActivate(notPlayer, scene);
-                    InternalCalls.EntityDeactivate(player, scene);
-                    InternalCalls.UpdateText(notPlayer, scene, InternalCalls.GetDialogue(InternalCalls.GetCurrentDialogueID()));
+                    VI.Entity.Activate(notPlayer, scene);
+                    VI.Entity.Deactivate(player, scene);
+                    VI.Text.Update(notPlayer, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
                     TextAlignChoices(notPlayer, scene, -387, 330, 740, 51, 20, 20);
                 }
 
-                if (InternalCalls.GetChoice2(InternalCalls.GetCurrentDialogueID()) != 0)
+                if (VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId()) != 0)
                 {
-                    //Console.WriteLine("This dialog is a choice dialog: " + InternalCalls.GetCurrentDialogueID());
-                    InternalCalls.EntityActivate(choice1, scene);
-                    InternalCalls.EntityActivate(choice2, scene);
-                    InternalCalls.UpdateText(choice1, scene, GetNextDialog(1));
-                    InternalCalls.UpdateText(choice2, scene, GetNextDialog(2));
+                    //Console.WriteLine("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
+                    VI.Entity.Activate(choice1, scene);
+                    VI.Entity.Activate(choice2, scene);
+                    VI.Text.Update(choice1, scene, GetNextDialog(1));
+                    VI.Text.Update(choice2, scene, GetNextDialog(2));
                     TextAlignChoices(choice1, scene, 500, -25, 500, 51, 40, 25, 1);
                     TextAlignChoices(choice2, scene, 500, -25, 500, 51, 40, 25, 2);
                     choiceFlag = true;
@@ -763,32 +764,32 @@ namespace BonVoyage
 
         public void DeactivateDialogBox(string player, string notPlayer, string choice1, string choice2, string scene)
         {
-            InternalCalls.EntityDeactivate(player, scene);
-            InternalCalls.EntityDeactivate(notPlayer, scene);
-            InternalCalls.EntityDeactivate(choice1, scene);
-            InternalCalls.EntityDeactivate(choice2, scene);
+            VI.Entity.Deactivate(player, scene);
+            VI.Entity.Deactivate(notPlayer, scene);
+            VI.Entity.Deactivate(choice1, scene);
+            VI.Entity.Deactivate(choice2, scene);
         }
         #endregion
 
         public void LockPosition(float x, float y) {
-          InternalCalls.SetPosX("Boat", "Level1", x);
-          InternalCalls.SetPosY("Boat", "Level1", y);
+          VI.Transform.Position.SetX("Boat", "Level1", x);
+          VI.Transform.Position.SetY("Boat", "Level1", y);
         }
 
         public void SetPosition(string entityname, string scenename, float x, float y) {
-            InternalCalls.SetPosX(entityname, scenename, x);
-            InternalCalls.SetPosY(entityname, scenename, y);
+            VI.Transform.Position.SetX(entityname, scenename, x);
+            VI.Transform.Position.SetY(entityname, scenename, y);
         }
 
         #region Player & Enemy Helper Functions
         public int CheckRegion(string _entityName, string _sceneName)
         {
-            if (InternalCalls.GetPosX(_entityName, _sceneName) > maxX || InternalCalls.GetPosY(_entityName, _sceneName) > maxY ||
-                InternalCalls.GetPosX(_entityName, _sceneName) < minX || InternalCalls.GetPosY(_entityName, _sceneName) < minY) return 0;
-            if (InternalCalls.GetPosX(_entityName, _sceneName) > halfX && InternalCalls.GetPosY(_entityName, _sceneName) > halfY) return 1;
-            if (InternalCalls.GetPosX(_entityName, _sceneName) > halfX && InternalCalls.GetPosY(_entityName, _sceneName) < halfY) return 2;
-            if (InternalCalls.GetPosX(_entityName, _sceneName) < halfX && InternalCalls.GetPosY(_entityName, _sceneName) < halfY) return 3;
-            if (InternalCalls.GetPosX(_entityName, _sceneName) < halfX && InternalCalls.GetPosY(_entityName, _sceneName) > halfY) return 4;
+            if (VI.Transform.Position.GetX(_entityName, _sceneName) > maxX || VI.Transform.Position.GetY(_entityName, _sceneName) > maxY ||
+                VI.Transform.Position.GetX(_entityName, _sceneName) < minX || VI.Transform.Position.GetY(_entityName, _sceneName) < minY) return 0;
+            if (VI.Transform.Position.GetX(_entityName, _sceneName) > halfX && VI.Transform.Position.GetY(_entityName, _sceneName) > halfY) return 1;
+            if (VI.Transform.Position.GetX(_entityName, _sceneName) > halfX && VI.Transform.Position.GetY(_entityName, _sceneName) < halfY) return 2;
+            if (VI.Transform.Position.GetX(_entityName, _sceneName) < halfX && VI.Transform.Position.GetY(_entityName, _sceneName) < halfY) return 3;
+            if (VI.Transform.Position.GetX(_entityName, _sceneName) < halfX && VI.Transform.Position.GetY(_entityName, _sceneName) > halfY) return 4;
             //Console.Write("Out of bounds!\n");
             return -1;
         }
@@ -796,11 +797,11 @@ namespace BonVoyage
         public float GetRotation(float _x, float _y) {
             float Rotation = 0;
             if (_y != 0f && _x >= 0f)
-                Rotation = InternalCalls.ArcTangent(_y, _x);
+                Rotation = VI.Math.ArcTangent(_y, _x);
             else if (_y == 0f && _x > 0f)
                 Rotation = (float)Pi / 2;
             else if (_y != 0f && _x < 0f) {
-                Rotation = InternalCalls.ArcTangent(_y, _x);
+                Rotation = VI.Math.ArcTangent(_y, _x);
                 Rotation += Rotation < 0f ? (float)Pi * 2f : 0f;
             } else Rotation = 3f * (float)Pi / 2f;
             return Rotation;
@@ -823,14 +824,14 @@ namespace BonVoyage
                     break;
             }
             if (_rotation < 0) _rotation += 2 * (float)Pi;
-            if (_rotation >= 15f * MiniAngle || _rotation <= MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 2);
-            else if (_rotation <= 3f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 3);
-            else if (_rotation <= 5f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 4);
-            else if (_rotation <= 7f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 5);
-            else if (_rotation <= 9f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 6);
-            else if (_rotation <= 11f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 7);
-            else if (_rotation <= 13f * MiniAngle) InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 8);
-            else InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus - 1);
+            if (_rotation >= 15f * MiniAngle || _rotation <= MiniAngle) VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus - 2);
+            else if (_rotation <= 3f * MiniAngle) VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus - 3);
+            else if (_rotation <= 5f * MiniAngle) VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus - 4);
+            else if (_rotation <= 7f * MiniAngle) VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus - 5);
+            else if (_rotation <= 9f * MiniAngle) VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus - 6);
+            else if (_rotation <= 11f * MiniAngle) VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus - 7);
+            else if (_rotation <= 13f * MiniAngle) VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus - 8);
+            else VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus - 1);
         }
 
         public void SetCharRotation4(float _rotation, string _entityName, string _sceneName, string _status) {
@@ -852,22 +853,22 @@ namespace BonVoyage
                     break;
             }
             //Console.Write(OctopusDirection+"\n");
-            //InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + direction);
+            //VI.Animation.SpriteSheet.Index.Set(_entityName, _sceneName, InitialStatus + direction);
             if (0 <= _rotation && _rotation < RightAngle)                   // 1st Quadrant
-              InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + 2);
+              VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus + 2);
             else if (RightAngle <= _rotation && _rotation < Pi)           // 2nd Quadrant
-              InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + 1);
+              VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus + 1);
             else if (Pi <= _rotation && _rotation < 3f * RightAngle)       // 3rd Quadrant
-              InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus);
+              VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus);
             else    // 4th Quadrant
-              InternalCalls.SetSpriteSheetIndex(_entityName, _sceneName, InitialStatus + 3);
+              VI.Animation.SheetIndex.Set(_entityName, _sceneName, InitialStatus + 3);
              
         }
 
         public void ApplyForce(string _entityName, string _sceneName, float _x, float _y, float _multiplier) {
-          InternalCalls.ApplyImpulse(_entityName, _sceneName,
-              (_x * _multiplier * (float)InternalCalls.GetDeltaTime()),
-              (_y * _multiplier * (float)InternalCalls.GetDeltaTime()), 0f, 0f);
+          VI.Physics.ApplyImpulse(_entityName, _sceneName,
+              (_x * _multiplier * (float)VI.General.DeltaTime()),
+              (_y * _multiplier * (float)VI.General.DeltaTime()), 0f, 0f);
         }
         #endregion
       }
