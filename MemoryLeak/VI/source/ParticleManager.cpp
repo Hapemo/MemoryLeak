@@ -86,7 +86,7 @@ void ParticleManager::UpdateSystems() {
 	}
 
 	if (mParticleChange)
-		std::sort(mParticles.begin(), mParticles.end(), [] (Particle p1, Particle p2) { return p1.GetIsActive() > p2.GetIsActive(); });
+		std::sort(mParticles.begin(), mParticles.end(), [] (Particle p1, Particle p2) { return p1.GetEntityID() > p2.GetEntityID(); });
 }
 
 void ParticleManager::UpdateParticles() {

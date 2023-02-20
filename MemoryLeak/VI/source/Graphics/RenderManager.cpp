@@ -7,7 +7,7 @@
 \brief
 This file contains function definitions for the class RenderManager, which
 operates on Entities with Sprite and Transform Components.
-*******************************************************************************/ 
+*******************************************************************************/
 #include "Graphics/RenderManager.h"
 #include "pch.h"
 #include "RenderProps.h"
@@ -22,9 +22,10 @@ Default Constructor for RenderManager class.
 *******************************************************************************/
 RenderManager::RenderManager()
 	: mAllocator(NO_OF_OBJECTS, VERTICES_PER_OBJECT, INDICES_PER_OBJECT),
-	mWorldFBO(), mGameFBO(), mAnimatorFBO(), mLightMapFBO(), mMinimapFBO(),
+	mWorldFBO(), mGameFBO(), mAnimatorFBO(), mLightMapFBO(),
 	mDefaultProgram("shaders/default.vert", "shaders/default.frag"),
 	mTextureProgram("shaders/texture.vert", "shaders/texture.frag"),
+	mCircularViewportProgram("shaders/texture.vert", "shaders/circularvp.frag"),
 	mWindowHeight(nullptr), mWindowWidth(nullptr), lightsource(0)
 {
 	//render world (editor)
@@ -67,7 +68,6 @@ void RenderManager::Init(int* _windowWidth, int* _windowHeight) {
 	mAnimatorFBO.Init(*mWindowWidth, *mWindowHeight);
 	mWorldCam.Init(*mWindowWidth, *mWindowHeight);
 	mLightMapFBO.Init(*mWindowWidth, *mWindowHeight);
-	mMinimapFBO.Init(*mWindowWidth, *mWindowHeight);
 	mGameCam.Init(*mWindowWidth, *mWindowHeight);
 	mAnimatorCam.Init(*mWindowWidth, *mWindowHeight);
 	mPrevWidth = *mWindowWidth;
@@ -104,13 +104,6 @@ void RenderManager::Render()
 	if (shadowManager->CastShadows())
 		CreateLightMap();
 
-	std::map<size_t, std::map<GLuint, TextureInfo>> circularvpInfo;
-
-	CreateVerticesVP(circularvpInfo);
-	CreateMinimap(circularvpInfo);
-
-	circularvpInfo.clear();
-
 	if (!mRenderGameToScreen)
 		mCurrRenderPass == RENDER_STATE::GAME ? 
 		mGameFBO.Bind() : mWorldFBO.Bind();
@@ -118,6 +111,7 @@ void RenderManager::Render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	std::map<size_t, std::map<GLuint, TextureInfo>> textureInfo;
+	std::map<size_t, std::map<GLuint, TextureInfo>> circularvpInfo;
 
 	/*************************************CREATING VERTICES START************************************/
 	//creating squares and circles based on Sprite component
@@ -127,8 +121,8 @@ void RenderManager::Render()
 	CreateVertices(textureInfo, circularvpInfo);
 	/*************************************CREATING VERTICES END**************************************/
 
-	BatchRenderLayers(textureInfo, circularvpInfo);
-
+	BatchRenderLayers(textureInfo);
+	BatchRenderVPLayers(circularvpInfo);
 	//if rendering to editor OR debug mode is on and is rendering to screen, then render debug
 	if (mCurrRenderPass == RENDER_STATE::WORLD || mDebug)
 		RenderDebug();
@@ -318,17 +312,6 @@ void RenderManager::RenderVisibilityPolygon()
 	mDefaultProgram.Unbind();
 }
 
-void RenderManager::CreateMinimap(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo)
-{
-	if (_cvpinfo.empty()) return;
-	mMinimapFBO.Bind();
-	SetClearColor({ 255, 255, 255, 255 });
-	Clear();
-	//render all shapes
-	BatchRenderLayers(_cvpinfo);
-	mMinimapFBO.Unbind();
-}
-
 /*!*****************************************************************************
 \brief
 Returns the color attachment to the Animator buffer, for displaying the
@@ -367,21 +350,6 @@ GLuint RenderManager::GetAnimatorFBO()
 
 	return mAnimatorFBO.GetColorAttachment();
 }
-
-void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo)
-{
-	for (int layer : mRenderLayers)
-	{
-		mTextureProgram.Bind();
-		mAllocator.BindVAO();
-		if (_texinfo.find(layer) != _texinfo.end())
-			RenderTextures(_texinfo[layer], false);
-		mAllocator.UnbindVAO();
-		mTextureProgram.Unbind();
-		RenderShapes(layer);
-		RenderText(layer);
-	}
-}
 /*!*****************************************************************************
 \brief
 Batch renders textures, shapes and font based on their respective layers.
@@ -389,21 +357,40 @@ Batch renders textures, shapes and font based on their respective layers.
 \param std::map<size_t, std::map<GLuint, TextureInfo>>&
 The texture info with vertices.
 *******************************************************************************/
-void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo, std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo)
+void RenderManager::BatchRenderLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _texinfo)
 {
 	for (int layer : mRenderLayers)
 	{
-		mTextureProgram.Bind();
-		mAllocator.BindVAO();
 		if (_texinfo.find(layer) != _texinfo.end())
+		{
+			mTextureProgram.Bind();
+			mAllocator.BindVAO();
 			RenderTextures(_texinfo[layer], false);
-		if (_cvpinfo.find(layer) != _cvpinfo.end())
-			RenderTextures(_cvpinfo[layer], true);
-		mAllocator.UnbindVAO();
-		mTextureProgram.Unbind();
+			mAllocator.UnbindVAO();
+			mTextureProgram.Unbind();
+		}
 		RenderShapes(layer);
 		RenderText(layer);
 	}
+}
+/*!*****************************************************************************
+\brief
+Batch renders the Circular vieport.
+
+\param std::map<size_t, std::map<GLuint, TextureInfo>>&
+The texture info for the circular viewport.
+*******************************************************************************/
+void RenderManager::BatchRenderVPLayers(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpinfo)
+{
+	for (int layer : mRenderLayers)
+		if (_cvpinfo.find(layer) != _cvpinfo.end())
+		{
+			mCircularViewportProgram.Bind();
+			mAllocator.BindVAO();
+			RenderTextures(_cvpinfo[layer], true);
+			mAllocator.UnbindVAO();
+			mCircularViewportProgram.Unbind();
+		}
 }
 
 /*!*****************************************************************************
@@ -712,59 +699,12 @@ void RenderManager::NewLayer(int _layer)
 		mRenderLayers.push_back(_layer);
 }
 
-void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo)
+void RenderManager::CreateSquareParticle(GLuint texid, int _layer, const Transform& xform, Color _clr, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
 {
-	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
-	{
-		if (scene.mLayer > MAX_SCENE_LAYERS - 1)
-			continue;
-
-		if (scene.mIsPause) continue;
-
-		if (scene.mIsUI && mCurrRenderPass == RENDER_STATE::GAME)
-			mIsCurrSceneUI = true;
-		else
-			mIsCurrSceneUI = false;
-
-		if (!strncmp(scene.mName.c_str(), "Level", 5))
-		{
-			for (Entity e : scene.mEntities)
-			{
-				if (!e.GetComponent<General>().isActive) continue;
-				if (!e.ShouldRun()) continue;
-				if (e.HasComponent<CircularViewport>()) continue;
-				if (e.HasComponent<Sprite>())
-				{
-					Sprite sprite = e.GetComponent<Sprite>();
-					if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
-						mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
-					GLuint texid = sprite.texture;
-					if (texid != 0)
-					{
-						if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
-							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
-						if (_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
-							== _cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
-							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
-						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
-
-						CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
-							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
-					}
-				}
-			}
-			break;
-		}
-	}
-}
-
-void RenderManager::CreateMinimapVertices(const Entity& _e, int _layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices, GLuint texid)
-{
-	Math::Mat3 mtx = GetTransform(_e);
-	glm::vec4 clr = GetColor(_e);
+	Math::Mat3 mtx = GetTransform(xform.scale, xform.rotation, xform.translation);
+	glm::vec4 clr = GetColor(_clr.r, _clr.g, _clr.b, _clr.a);
 	float layer = (_layer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f) / ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
-	float texID = (float)texid;
+	float texID = static_cast<float>(texid);
 
 	Vertex v0, v1, v2, v3;
 	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
@@ -782,13 +722,13 @@ void RenderManager::CreateMinimapVertices(const Entity& _e, int _layer, std::vec
 	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
 	v2.position.z = layer > 1.f ? 1.f : layer;
 	v2.color = clr;
-	v2.texCoords = glm::vec2(1.f, 1.f);
+	v2.texCoords = glm::vec2(1, 1.f);
 	v2.texID = texID;
 
 	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
 	v3.position.z = layer > 1.f ? 1.f : layer;
 	v3.color = clr;
-	v3.texCoords = glm::vec2(1.f, 0.f);
+	v3.texCoords = glm::vec2(1, 0.f);
 	v3.texID = texID;
 
 	_vertices.push_back(v0);
@@ -822,6 +762,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			mIsCurrSceneUI = true;
 		else
 			mIsCurrSceneUI = false;
+
 		for (Entity e : scene.mEntities)
 		{
 			if (!e.GetComponent<General>().isActive) continue;
@@ -829,64 +770,122 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			if (e.HasComponent<LightSource>())
 				lightsource = e;
 			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
-			if (e.HasComponent<CircularViewport>())
-			{
-				if (!e.HasComponent<Sprite>()) continue;
-				Sprite sprite = e.GetComponent<Sprite>();
-				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
-					mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
-				GLuint texid = mMinimapFBO.GetColorAttachment();
-				if (texid != 0)
-				{
-					if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
-					if (_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
-						== _cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
-					{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-					CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+			if (e.HasComponent<ParticleSystem>())
+			{
+				if (e.GetComponent<ParticleSystem>().mIsActive)
+				{
+					bool thisEntity{ false };
+					for (auto i = particleManager->ParticleBegin(); i != particleManager->ParticleLast(); ++i)
+					{
+						if (!thisEntity)
+						{
+							if (i->GetEntityID() != e.id) continue;
+							thisEntity = true;
+						}
+						else
+							if (i->GetEntityID() != e.id)
+								break;
+						Sprite sprite = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite;
+						if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
+							mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+						switch (sprite.sprite)
+						{
+						case SPRITE::TEXTURE:
+						{
+							GLuint texid = sprite.texture;
+
+							if (texid != 0)
+							{
+								if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+									_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+								if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+									== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+									_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+								{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+								CreateSquareParticle(texid, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, i->GetTransform(), sprite.color,
+									_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+									_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
+							}
+						}
+						break;
+						case SPRITE::SQUARE:
+							CreateSquareParticle(0, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, i->GetTransform(), sprite.color,
+								mVertices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE],
+								mIndices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE]);
+							break;
+						case SPRITE::CIRCLE:
+							CreateCircle(i->GetTransform(), sprite.color, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+							break;
+						default:
+							break;
+						}
+					}
 				}
+				
 			}
-			else if (e.HasComponent<Sprite>())
+
+			if (e.HasComponent<Sprite>())
 			{
-				Sprite sprite = e.GetComponent<Sprite>();
-				if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
-					mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
-
-				switch (sprite.sprite)
+				if (e.HasComponent<CircularViewport>())
 				{
-				case SPRITE::TEXTURE:
-				{
+					Sprite sprite = e.GetComponent<Sprite>();
+					if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
+						mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
 					GLuint texid = sprite.texture;
-
 					if (texid != 0)
 					{
-						if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
-							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
-						if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
-							== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
-							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+						if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+						if (_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+							== _cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
 						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
 						CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
-							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
 					}
 				}
-				break;
-				case SPRITE::SQUARE:
-					CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-						mVertices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE],
-						mIndices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE]);
+				else
+				{
+					Sprite sprite = e.GetComponent<Sprite>();
+					if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
+						mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+
+					switch (sprite.sprite)
+					{
+					case SPRITE::TEXTURE:
+					{
+						GLuint texid = sprite.texture;
+
+						if (texid != 0)
+						{
+							if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+								_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+							if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+								== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+								_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+							{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+							CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
+								_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+								_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
+						}
+					}
 					break;
-				case SPRITE::CIRCLE:
-					CreateCircle(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
-					break;
-				default:
-					break;
+					case SPRITE::SQUARE:
+						CreateSquare(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
+							mVertices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE],
+							mIndices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE]);
+						break;
+					case SPRITE::CIRCLE:
+						CreateCircle(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+						break;
+					default:
+						break;
+					}
 				}
 			}
 
@@ -902,6 +901,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				CreateText(e, MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 		}
 	}
+
 	if (lightsource.id)
 	{
 		int shadowLayer = MAX_LAYERS_PER_SCENE * SHADOW_SCENE_LAYER;
@@ -1027,10 +1027,12 @@ void RenderManager::RenderTextures(std::map<GLuint, TextureInfo>&_texInfo, bool 
 	for (int i = 0; i < TEXTURES_PER_DRAW; ++i)
 		samplerUniform[i] = i;
 	//use texture program and bind VAO
-	int circular = static_cast<int>(_cvp);
+
 	//insert uniforms
-	mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
-	mTextureProgram.InsertUniform1iv("uCircular", 1, &circular);
+	if (!_cvp)
+		mTextureProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
+	else 
+		mCircularViewportProgram.InsertUniform1iv("uTex2D", TEXTURES_PER_DRAW, samplerUniform);
 
 	int textureCount = 0;
 
@@ -1671,11 +1673,11 @@ void RenderManager::InitializeShaders()
 {
 	mDefaultProgram.CompileLinkShaders();
 	mTextureProgram.CompileLinkShaders();
+	mCircularViewportProgram.CompileLinkShaders();
 
 	mDefaultProgram.Validate();
 	mTextureProgram.Validate();
-
-	mTextureProgram.RegisterUniforms({"uTex2D", "uCircular"});
+	mCircularViewportProgram.Validate();
 }
 
 /*!*****************************************************************************

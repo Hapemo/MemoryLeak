@@ -46,6 +46,9 @@ public:
 	void Destroy();
 
 	bool GetIsActive() const { return mLifespan != 0; }
+	Color GetColor() const { return mColor; }
+	Transform GetTransform() const { return mTransform; }
+	EntityID GetEntityID() const { return mEntity; }
 
 private:
 	Transform mTransform;		// Position, scale and rotation of the particle
