@@ -268,6 +268,16 @@ struct AI {
 	float	speed = 1.f;
 	float range = 10.f;
 };
+
+struct MovementAI {
+	bool run = false;
+	bool loop = false; //save
+	int state{0};
+	float time = 2.f;//save
+	float currtime;
+	Transform targetTransform{};//save
+	Transform targetTransform2{};
+};
 /*!*****************************************************************************
 \brief
 	This struct contains the data for Audio component
@@ -369,11 +379,12 @@ enum class COMPONENTID
 	LAYERCOLLIDER,	//17
 	LIGHTSOURCE,	//18
 	SHADOWCASTER,	//19
-	CIRCULARVIEWPORT//20
+	CIRCULARVIEWPORT,//20
+	MOVEMENTAI      //21
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, CircularViewport>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, CircularViewport, MovementAI>  COMPONENT;
 
 
 

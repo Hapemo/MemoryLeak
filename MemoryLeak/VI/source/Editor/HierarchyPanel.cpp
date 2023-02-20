@@ -555,6 +555,11 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 			ImGui::Text("CircularViewport");
 			setSelectedEntity(e);
 		}
+		if (e->HasComponent<MovementAI>())
+		{
+			ImGui::Text("MovementAI");
+			setSelectedEntity(e);
+		}
 		ImGui::TreePop();
 	}
 	setSelectedEntity(e);

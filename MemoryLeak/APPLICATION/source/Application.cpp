@@ -82,6 +82,7 @@ void Application::SystemUpdate() {
   // AI
   TRACK_PERFORMANCE("AI");
   aiManager->updateAI();
+  movementAIManager->update();
   END_TRACK("AI");
 
   //Scripting

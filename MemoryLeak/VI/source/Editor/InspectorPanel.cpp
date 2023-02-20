@@ -126,6 +126,10 @@ void InspectorPanel::Update()
 				{
 					CircularViewportEditor();
 				}
+				if (e.HasComponent<MovementAI>())
+				{
+					MovementAIEditor();
+				}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 				if (ImGui::Button("Add Component"))
@@ -315,6 +319,9 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<ShadowCaster>({});
 	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
 		e.AddComponent<CircularViewport>({});
+	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
+		e.AddComponent<MovementAI>({});
+	
 	
 }
 /*!*****************************************************************************
@@ -371,6 +378,8 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<ShadowCaster>({});
 	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
 		p->AddComponent<CircularViewport>({});
+	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
+		p->AddComponent<MovementAI>({});
 }
 
 
@@ -1155,6 +1164,39 @@ void InspectorPanel::CircularViewportEditor()
 	{
 		ImGui::Text("CircularViewport");
 	}
+}
+void InspectorPanel::MovementAIEditor()
+{
+	if (ImGui::CollapsingHeader("MovementAI"))
+	{
+		ImGui::Text("MovementAI");
+		ImGui::Checkbox("run", &e.GetComponent<MovementAI>().run);
+		ImGui::Checkbox("loop", &e.GetComponent<MovementAI>().loop);
+		ImGui::DragFloat("Set Time", &e.GetComponent<MovementAI>().time, 0.1f, 0.f, 60.f);
+
+		//scale
+		tmpVec2[0] = e.GetComponent<MovementAI>().targetTransform.scale.x;
+		tmpVec2[1] = e.GetComponent<MovementAI>().targetTransform.scale.y;
+		ImGui::DragFloat2("Set Target Scale", tmpVec2);
+		e.GetComponent<MovementAI>().targetTransform.scale = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+
+		//translate
+		tmpVec2[0] = e.GetComponent<MovementAI>().targetTransform.translation.x;
+		tmpVec2[1] = e.GetComponent<MovementAI>().targetTransform.translation.y;
+		ImGui::DragFloat2("Set Target Position", tmpVec2);
+		e.GetComponent<MovementAI>().targetTransform.translation = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+
+		//rotate
+		tmpFloat = e.GetComponent<MovementAI>().targetTransform.rotation;
+		tmpFloat = (float)(tmpFloat / M_PI * 180.f);
+		ImGui::DragFloat("Set Target Rotation", &tmpFloat, 1.f, -360.f, 360.f);
+		tmpFloat = (float)(tmpFloat * M_PI / 180.f);
+		e.GetComponent<MovementAI>().targetTransform.rotation = tmpFloat;
+
+
+
+	}
+
 }
 /*!*****************************************************************************
 \brief
