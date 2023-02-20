@@ -165,8 +165,8 @@ The id of the dialog to be checked.
 \return
 Returns true if the dialog has choices else returns false.
 *******************************************************************************/
-bool InternalCalls::HasChoice(int _id) {
-	return dialogManager->HasChoice(_id);
+bool InternalCalls::HaveChoices(int _id) {
+	return dialogManager->HaveChoices(_id);
 }
 
 /*!*****************************************************************************
@@ -400,7 +400,7 @@ Transform& InternalCalls::CurrentCamera() {
 \brief
 Get current game state's camera X scale
 *******************************************************************************/
-float InternalCalls::GetCurrentCameraScaleX() {
+float InternalCalls::GetCameraScaleX() {
 	return CurrentGameState().mCamera.scale.x;
 }
 
@@ -408,7 +408,7 @@ float InternalCalls::GetCurrentCameraScaleX() {
 \brief
 Get current game state's camera Y scale
 *******************************************************************************/
-float InternalCalls::GetCurrentCameraScaleY() {
+float InternalCalls::GetCameraScaleY() {
 	return CurrentGameState().mCamera.scale.y;
 }
 
@@ -416,7 +416,7 @@ float InternalCalls::GetCurrentCameraScaleY() {
 \brief
 Get current game state's camera X pos
 *******************************************************************************/
-float InternalCalls::GetCurrentCameraPosX() {
+float InternalCalls::GetCameraPosX() {
 	return CurrentGameState().mCamera.translation.x;
 }
 
@@ -424,7 +424,7 @@ float InternalCalls::GetCurrentCameraPosX() {
 \brief
 Get current game state's camera Y pos
 *******************************************************************************/
-float InternalCalls::GetCurrentCameraPosY() {
+float InternalCalls::GetCameraPosY() {
 	return CurrentGameState().mCamera.translation.y;
 }
 
@@ -432,7 +432,7 @@ float InternalCalls::GetCurrentCameraPosY() {
 \brief
 Set current game state's camera X scale
 *******************************************************************************/
-void InternalCalls::SetCurrentCameraScaleX(float _x) {
+void InternalCalls::SetCameraScaleX(float _x) {
 	CurrentGameState().mCamera.scale.x = _x;
 }
 
@@ -440,7 +440,7 @@ void InternalCalls::SetCurrentCameraScaleX(float _x) {
 \brief
 Set current game state's camera Y scale
 *******************************************************************************/
-void InternalCalls::SetCurrentCameraScaleY(float _y) {
+void InternalCalls::SetCameraScaleY(float _y) {
 	CurrentGameState().mCamera.scale.y = _y;
 }
 
@@ -448,7 +448,7 @@ void InternalCalls::SetCurrentCameraScaleY(float _y) {
 \brief
 Set current game state's camera X pos
 *******************************************************************************/
-void InternalCalls::SetCurrentCameraPosX(float _x) {
+void InternalCalls::SetCameraPosX(float _x) {
 	CurrentGameState().mCamera.translation.x = _x;
 }
 
@@ -456,7 +456,7 @@ void InternalCalls::SetCurrentCameraPosX(float _x) {
 \brief
 Set current game state's camera Y pos
 *******************************************************************************/
-void InternalCalls::SetCurrentCameraPosY(float _y) {
+void InternalCalls::SetCameraPosY(float _y) {
 	CurrentGameState().mCamera.translation.y = _y;
 }
 
@@ -503,7 +503,7 @@ float InternalCalls::GetAnimationSpeed(std::string const& _entityName, std::stri
 \brief
 Set current animation image index
 *******************************************************************************/
-void InternalCalls::SetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
+void InternalCalls::SetAnimationCurrentFrame(std::string const& _entityName, std::string const& _sceneName, int _index) {
 	(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().currFrameIndex = _index;
 }
 
@@ -511,7 +511,7 @@ void InternalCalls::SetAnimationCurrentIndex(std::string const& _entityName, std
 \brief
 Set current animation image index
 *******************************************************************************/
-int InternalCalls::GetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName) {
+int InternalCalls::GetAnimationCurrentFrame(std::string const& _entityName, std::string const& _sceneName) {
 	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<SheetAnimation>().currFrameIndex;
 }
 

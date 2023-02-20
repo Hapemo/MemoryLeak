@@ -92,12 +92,12 @@ float MonoMethods::GetAnimationSpeed(MonoString* _entityName, MonoString* _scene
 	return FUNC->GetAnimationSpeed(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
-void MonoMethods::SetAnimationCurrentIndex(MonoString* _entityName, MonoString* _sceneName, int _index) {
-	FUNC->SetAnimationCurrentIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
+void MonoMethods::SetAnimationCurrentFrame(MonoString* _entityName, MonoString* _sceneName, int _index) {
+	FUNC->SetAnimationCurrentFrame(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
 }
 
-int MonoMethods::GetAnimationCurrentIndex(MonoString* _entityName, MonoString* _sceneName) {
-	return FUNC->GetAnimationCurrentIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+int MonoMethods::GetAnimationCurrentFrame(MonoString* _entityName, MonoString* _sceneName) {
+	return FUNC->GetAnimationCurrentFrame(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
 int MonoMethods::GetAnimationFrameCount(MonoString* _entityName, MonoString* _sceneName) {
@@ -272,10 +272,10 @@ void MonoMethods::RegisterCalls() {
 	// Dialogue
 	mono_add_internal_call("VI.Dialogue::LoadScript", &MonoMethods::LoadDialogs);
 	mono_add_internal_call("VI.Dialogue::GetLine", &MonoMethods::GetDialogue);
-	mono_add_internal_call("VI.Dialogue::HaveChoices", &FUNC->HasChoice);
+	mono_add_internal_call("VI.Dialogue::HaveChoices", &FUNC->HaveChoices);
 	mono_add_internal_call("VI.Dialogue/Current::GetLine", &MonoMethods::GetDialogue); //
 	mono_add_internal_call("VI.Dialogue/Current::GetId", &FUNC->GetCurrentDialogueID);
-	mono_add_internal_call("VI.Dialogue/Current::HaveChoices", &FUNC->HasChoice); //
+	mono_add_internal_call("VI.Dialogue/Current::HaveChoices", &FUNC->HaveChoices); //
 	mono_add_internal_call("VI.Dialogue/Current::SetTo", &FUNC->SetCurrentDialogueID);
 	mono_add_internal_call("VI.Dialogue/Current::GetChoice1", &FUNC->GetChoice1); //
 	mono_add_internal_call("VI.Dialogue/Current::GetChoice2", &FUNC->GetChoice2); //
@@ -285,7 +285,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Dialogue/Next::GetLine2", &FUNC->GetNext); // !!
 	mono_add_internal_call("VI.Dialogue/Next::GetId", &FUNC->GetNextDialogueID);
 	mono_add_internal_call("VI.Dialogue/Next::GetId2", &FUNC->GetNextDialogueID); // !!
-	mono_add_internal_call("VI.Dialogue/Next::HaveChoices", &FUNC->HasChoice); //
+	mono_add_internal_call("VI.Dialogue/Next::HaveChoices", &FUNC->HaveChoices); //
 	mono_add_internal_call("VI.Dialogue/Next::GetChoice1", &FUNC->GetChoice1); //
 	mono_add_internal_call("VI.Dialogue/Next::GetChoice2", &FUNC->GetChoice2); //
 	mono_add_internal_call("VI.Dialogue/Next::PlayerSpeaking", &FUNC->IsPlayerSpeaker); //
@@ -313,14 +313,14 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Scene::Play", &MonoMethods::PlayScene);
 
 	// Camera
-	mono_add_internal_call("VI.Camera/GetScale::X", &FUNC->GetCurrentCameraScaleX);
-	mono_add_internal_call("VI.Camera/GetScale::Y", &FUNC->GetCurrentCameraScaleY);
-	mono_add_internal_call("VI.Camera/GetPos::X", &FUNC->GetCurrentCameraPosX);
-	mono_add_internal_call("VI.Camera/GetPos::Y", &FUNC->GetCurrentCameraPosY);
-	mono_add_internal_call("VI.Camera/SetScale::X", &FUNC->SetCurrentCameraScaleX);
-	mono_add_internal_call("VI.Camera/SetScale::Y", &FUNC->SetCurrentCameraScaleY);
-	mono_add_internal_call("VI.Camera/SetPos::X", &FUNC->SetCurrentCameraPosX);
-	mono_add_internal_call("VI.Camera/SetPos::Y", &FUNC->SetCurrentCameraPosY);
+	mono_add_internal_call("VI.Camera/GetScale::X", &FUNC->GetCameraScaleX);
+	mono_add_internal_call("VI.Camera/GetScale::Y", &FUNC->GetCameraScaleY);
+	mono_add_internal_call("VI.Camera/GetPos::X", &FUNC->GetCameraPosX);
+	mono_add_internal_call("VI.Camera/GetPos::Y", &FUNC->GetCameraPosY);
+	mono_add_internal_call("VI.Camera/SetScale::X", &FUNC->SetCameraScaleX);
+	mono_add_internal_call("VI.Camera/SetScale::Y", &FUNC->SetCameraScaleY);
+	mono_add_internal_call("VI.Camera/SetPos::X", &FUNC->SetCameraPosX);
+	mono_add_internal_call("VI.Camera/SetPos::Y", &FUNC->SetCameraPosY);
 
 	// Math
 	mono_add_internal_call("VI.Math::SqMagnitude", &FUNC->SqMagnitude);
@@ -334,8 +334,8 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/SheetIndex::Get", &MonoMethods::GetSpriteSheetIndex);
 	mono_add_internal_call("VI.Animation/Speed::Set", &MonoMethods::SetAnimationSpeed);
 	mono_add_internal_call("VI.Animation/Speed::Get", &MonoMethods::GetAnimationSpeed);
-	mono_add_internal_call("VI.Animation/CurrentFrame::Set", &MonoMethods::SetAnimationCurrentIndex);
-	mono_add_internal_call("VI.Animation/CurrentFrame::Get", &MonoMethods::GetAnimationCurrentIndex);
+	mono_add_internal_call("VI.Animation/CurrentFrame::Set", &MonoMethods::SetAnimationCurrentFrame);
+	mono_add_internal_call("VI.Animation/CurrentFrame::Get", &MonoMethods::GetAnimationCurrentFrame);
 	mono_add_internal_call("VI.Animation/FrameCount::Get", &MonoMethods::GetAnimationFrameCount);
 	mono_add_internal_call("VI.Animation/FrameCount::Set", &MonoMethods::SetAnimationFrameCount);
 

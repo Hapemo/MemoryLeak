@@ -58,11 +58,11 @@ The id of the dialog to be checked.
 \return
 Returns true if the dialog has choices else returns false.
 *******************************************************************************/
-bool DialogManager::HasChoice(int _id) {
+bool DialogManager::HaveChoices(int _id) {
 	if (mDialogs.count(_id)) {
 		if (mDialogs[_id].next2) return true;
 		else return false;
-	} else LOG_ERROR("HasChoice(" + std::to_string(_id) + "): Dialogue ID doesn't exist!");
+	} else LOG_ERROR("HaveChoices(" + std::to_string(_id) + "): Dialogue ID doesn't exist!");
 	return false;
 }
 

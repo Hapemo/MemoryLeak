@@ -53,8 +53,8 @@ public:
 	static void PlayScene(MonoString* _name);
 	static void SetAnimationSpeed(MonoString* _entityName, MonoString* _sceneName, float _speed);
 	static float GetAnimationSpeed(MonoString* _entityName, MonoString* _sceneName);
-	static void SetAnimationCurrentIndex(MonoString* _entityName, MonoString* _sceneName, int _index);
-	static int GetAnimationCurrentIndex(MonoString* _entityName, MonoString* _sceneName);
+	static void SetAnimationCurrentFrame(MonoString* _entityName, MonoString* _sceneName, int _index);
+	static int GetAnimationCurrentFrame(MonoString* _entityName, MonoString* _sceneName);
 	static int GetAnimationFrameCount(MonoString* _entityName, MonoString* _sceneName);
 	static void SetAnimationFrameCount(MonoString* _entityName, MonoString* _sceneName, int _count);
 	static void SetSpriteSheetIndex(MonoString* _entityName, MonoString* _sceneName, int _index);

@@ -132,7 +132,7 @@ public:
 	\return
 	Returns true if the dialog has choices else returns false.
 	*******************************************************************************/
-	static bool HasChoice(int _id);
+	static bool HaveChoices(int _id);
 
 	/*!*****************************************************************************
 	\brief
@@ -312,49 +312,49 @@ public:
 	\brief
 	Get current game state's camera X scale
 	*******************************************************************************/
-	static float GetCurrentCameraScaleX();
+	static float GetCameraScaleX();
 
 	/*!*****************************************************************************
 	\brief
 	Get current game state's camera Y scale
 	*******************************************************************************/
-	static float GetCurrentCameraScaleY();
+	static float GetCameraScaleY();
 
 	/*!*****************************************************************************
 	\brief
 	Get current game state's camera X pos
 	*******************************************************************************/
-	static float GetCurrentCameraPosX();
+	static float GetCameraPosX();
 
 	/*!*****************************************************************************
 	\brief
 	Get current game state's camera Y pos
 	*******************************************************************************/
-	static float GetCurrentCameraPosY();
+	static float GetCameraPosY();
 
 	/*!*****************************************************************************
 	\brief
 	Set current game state's camera X scale
 	*******************************************************************************/
-	static void SetCurrentCameraScaleX(float _x);
+	static void SetCameraScaleX(float _x);
 
 	/*!*****************************************************************************
 	\brief
 	Set current game state's camera Y scale
 	*******************************************************************************/
-	static void SetCurrentCameraScaleY(float _y);
+	static void SetCameraScaleY(float _y);
 
 	/*!*****************************************************************************
 	\brief
 	Set current game state's camera X pos
 	*******************************************************************************/
-	static void SetCurrentCameraPosX(float _x);
+	static void SetCameraPosX(float _x);
 
 	/*!*****************************************************************************
 	\brief
 	Set current game state's camera Y pos
 	*******************************************************************************/
-	static void SetCurrentCameraPosY(float _y);
+	static void SetCameraPosY(float _y);
 
 	/*!*****************************************************************************
 	\brief
@@ -406,13 +406,13 @@ public:
 	\brief
 	Set current animation image index
 	*******************************************************************************/
-	static void SetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+	static void SetAnimationCurrentFrame(std::string const& _entityName, std::string const& _sceneName, int _index);
 
 	/*!*****************************************************************************
 	\brief
 	Get current animation image index
 	*******************************************************************************/
-	static int GetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName);
+	static int GetAnimationCurrentFrame(std::string const& _entityName, std::string const& _sceneName);
 
 	/*!*****************************************************************************
 	\brief
