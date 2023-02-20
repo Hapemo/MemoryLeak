@@ -17,9 +17,17 @@ REGISTER_SCRIPT(ScriptComponent, AttackScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void AttackScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void AttackScript::StartScript(Entity const& _e) {
+void AttackScript::Init(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Attack script starts works!!!");
 	player = FUNC->GetEntity("Boat", "Level1");
@@ -34,7 +42,7 @@ void AttackScript::StartScript(Entity const& _e) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void AttackScript::UpdateScript(Entity const& _e) {
+void AttackScript::Update(Entity const& _e) {
 	static bool raised = false;
 	if (FUNC->EntitiesCollidedByEntity(player, _e)) {
 		if(visible == 0) {
@@ -80,7 +88,15 @@ void AttackScript::UpdateScript(Entity const& _e) {
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void AttackScript::EndScript(Entity const& _e) {
+void AttackScript::Exit(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Attack script end works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void AttackScript::Dead(Entity const& _e) {
+	(void)_e;
 }

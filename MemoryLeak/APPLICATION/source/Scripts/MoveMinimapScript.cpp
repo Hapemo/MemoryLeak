@@ -12,12 +12,16 @@
 
 REGISTER_SCRIPT(ScriptComponent, MoveMinimapScript);
 
-void MoveMinimapScript::StartScript(const Entity& _e) {
+void MoveMinimapScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+void MoveMinimapScript::Init(const Entity& _e) {
 	(void)_e;
 	inited = false;
 }
 
-void MoveMinimapScript::UpdateScript(const Entity& _e) {
+void MoveMinimapScript::Update(const Entity& _e) {
 	if (!inited)
 	{
 		currScene = &(FUNC->SelectScene("Level1"));
@@ -30,6 +34,10 @@ void MoveMinimapScript::UpdateScript(const Entity& _e) {
 	_e.GetComponent<Transform>().scale = originalScale / currCamera->rotation;
 }
 
-void MoveMinimapScript::EndScript(const Entity& _e) {
+void MoveMinimapScript::Exit(const Entity& _e) {
+	(void)_e;
+}
+
+void MoveMinimapScript::Dead(Entity const& _e) {
 	(void)_e;
 }

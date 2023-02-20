@@ -60,8 +60,9 @@ void Application::SystemInit() {
   // Collision database initialization
   collision2DManager->SetupCollisionDatabase();
 
-  // Run Init() scripts
-  logicSystem->Init();
+  // Activate logic system & Mono
+  logicSystem->Activate();
+
 #ifdef _EDITOR
 #ifdef _DEBUG
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
@@ -232,7 +233,6 @@ void Application::MainUpdate() {
 }
 
 void Application::exit() {
-    //logicSystem->Exit();
     //collision2DManager->Cleanup();
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
@@ -241,6 +241,7 @@ void Application::exit() {
 #endif
   audioManager->Unload();
   spriteManager->FreeTextures();
+  logicSystem->Close(); // Close Mono
   ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   ResourceManager::GetInstance()->UnloadAllResources();
   SingletonManager::destroyAllSingletons();

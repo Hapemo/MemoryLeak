@@ -17,19 +17,28 @@ REGISTER_SCRIPT(ScriptComponent, TestScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void TestScript::Alive(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("Test script alive works!!!");
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void TestScript::StartScript(Entity const& gob) {
-	(void)gob;
-	LOG_INFO("Test script starts works!!!");
+void TestScript::Init(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("Test script init works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void TestScript::UpdateScript(Entity const& gob) {
-	(void)gob;
+void TestScript::Update(Entity const& _e) {
+	(void)_e;
 	static int counter{};
 	if (++counter > 500) {
 		LOG_INFO("Test script updating works!!!");
@@ -41,7 +50,16 @@ void TestScript::UpdateScript(Entity const& gob) {
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void TestScript::EndScript(Entity const& gob) {
-	(void)gob;
-	LOG_INFO("Test script end works!!!");
+void TestScript::Exit(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("Test script exit works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void TestScript::Dead(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("Test script dead works!!!");
 }

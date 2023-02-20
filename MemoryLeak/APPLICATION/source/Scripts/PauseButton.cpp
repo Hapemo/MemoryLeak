@@ -15,10 +15,18 @@ REGISTER_SCRIPT(ScriptComponent, PauseButton);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void PauseButton::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void PauseButton::StartScript(Entity const& gob) {
-	(void)gob;
+void PauseButton::Init(Entity const& _e) {
+	(void)_e;
 	init = false;
 	//LOG_INFO("Back to Main Menu button script starts works!!!");
 }
@@ -27,41 +35,41 @@ void PauseButton::StartScript(Entity const& gob) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void PauseButton::UpdateScript(Entity const& gob) {
-	if (!init && gob.HasComponent<Button>()) {
+void PauseButton::Update(Entity const& _e) {
+	if (!init && _e.HasComponent<Button>()) {
 		init = true;
-		gob.GetComponent<Button>().activated = false;
+		_e.GetComponent<Button>().activated = false;
 	}
-	if (gob.HasComponent<Button>()) {
-		static float x = gob.GetComponent<Transform>().scale.x;
-		static float y = gob.GetComponent<Transform>().scale.y;
-		if (gob.GetComponent<Button>().isClick)
+	if (_e.HasComponent<Button>()) {
+		static float x = _e.GetComponent<Transform>().scale.x;
+		static float y = _e.GetComponent<Transform>().scale.y;
+		if (_e.GetComponent<Button>().isClick)
 		{
-			if (gob.GetComponent<Transform>().scale.x > x - 10.f)
-				gob.GetComponent<Transform>().scale.x -= 250.f * (float)FPSManager::dt;
-			if (gob.GetComponent<Transform>().scale.y > y - 10.f)
-				gob.GetComponent<Transform>().scale.y -= 250.f * (float)FPSManager::dt;
+			if (_e.GetComponent<Transform>().scale.x > x - 10.f)
+				_e.GetComponent<Transform>().scale.x -= 250.f * (float)FPSManager::dt;
+			if (_e.GetComponent<Transform>().scale.y > y - 10.f)
+				_e.GetComponent<Transform>().scale.y -= 250.f * (float)FPSManager::dt;
 
 		}
-		else if (gob.GetComponent<Button>().isHover) {
-			if (gob.GetComponent<Transform>().scale.x < x + 15.f)
-				gob.GetComponent<Transform>().scale.x += 100.f * (float)FPSManager::dt;
-			if (gob.GetComponent<Transform>().scale.y < y + 15.f)
-				gob.GetComponent<Transform>().scale.y += 100.f * (float)FPSManager::dt;
+		else if (_e.GetComponent<Button>().isHover) {
+			if (_e.GetComponent<Transform>().scale.x < x + 15.f)
+				_e.GetComponent<Transform>().scale.x += 100.f * (float)FPSManager::dt;
+			if (_e.GetComponent<Transform>().scale.y < y + 15.f)
+				_e.GetComponent<Transform>().scale.y += 100.f * (float)FPSManager::dt;
 
 		}
 		else
 		{
-			if (gob.GetComponent<Transform>().scale.x < x)
-				gob.GetComponent<Transform>().scale.x += 250.f * (float)FPSManager::dt;
-			if (gob.GetComponent<Transform>().scale.y < y)
-				gob.GetComponent<Transform>().scale.y += 250.f * (float)FPSManager::dt;
-			if (gob.GetComponent<Transform>().scale.x > x)
-				gob.GetComponent<Transform>().scale.x -= 250.f * (float)FPSManager::dt;
-			if (gob.GetComponent<Transform>().scale.y > y)
-				gob.GetComponent<Transform>().scale.y -= 250.f * (float)FPSManager::dt;
+			if (_e.GetComponent<Transform>().scale.x < x)
+				_e.GetComponent<Transform>().scale.x += 250.f * (float)FPSManager::dt;
+			if (_e.GetComponent<Transform>().scale.y < y)
+				_e.GetComponent<Transform>().scale.y += 250.f * (float)FPSManager::dt;
+			if (_e.GetComponent<Transform>().scale.x > x)
+				_e.GetComponent<Transform>().scale.x -= 250.f * (float)FPSManager::dt;
+			if (_e.GetComponent<Transform>().scale.y > y)
+				_e.GetComponent<Transform>().scale.y -= 250.f * (float)FPSManager::dt;
 		}
-		if (gob.GetComponent<Button>().activated) {
+		if (_e.GetComponent<Button>().activated) {
 			init = false;
 			Scene& menuScene{ FUNC->SelectScene("Menu_Main") };
 			if (menuScene.mName != "Error") { // If it's at main menu
@@ -82,8 +90,15 @@ void PauseButton::UpdateScript(Entity const& gob) {
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void PauseButton::EndScript(Entity const& gob) {
-	(void)gob;
-
+void PauseButton::Exit(Entity const& _e) {
+	(void)_e;
 	//LOG_INFO("Back to Main Menu button script end works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void PauseButton::Dead(Entity const& _e) {
+	(void)_e;
 }
