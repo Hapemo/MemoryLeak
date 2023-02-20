@@ -304,6 +304,9 @@ Checks if an entity from scene is active.
 bool InternalCalls::EntityIsActive(std::string const& _entityName, std::string const& _sceneName) {
 	return (FUNC->GetEntity(_entityName, _sceneName)).GetComponent<General>().isActive;
 }
+bool InternalCalls::EntityIsActiveById(int _eId) {
+	return (Entity(_eId)).GetComponent<General>().isActive;
+}
 
 /*!*****************************************************************************
 \brief

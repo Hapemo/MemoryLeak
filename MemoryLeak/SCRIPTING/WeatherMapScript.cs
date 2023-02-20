@@ -21,7 +21,12 @@ namespace BonVoyage {
         static bool init = true;
         static bool big = false;
         private float maxMapX, maxMapY;
-        public void Init(int _id) {
+
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+        }
+
+        public void Init(int _ENTITY) {
             
             VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
@@ -48,7 +53,7 @@ namespace BonVoyage {
                 init = false;
             }
         }
-        public void Update(int _id) {
+        public void Update(int _ENTITY) {
             if ((VI.Input.Button.Released("weathermap", "WeatherMap")) == true)
             {
                 big = !big;
@@ -94,7 +99,7 @@ namespace BonVoyage {
 
         }
 
-        public void Exit(int _id) {
+        public void Exit(int _ENTITY) {
             big = false;
             VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
@@ -102,6 +107,9 @@ namespace BonVoyage {
                 string EIcon = "EIcon" + i;
                 VI.Entity.SetActive(EIcon, "WeatherMap", false);
             }
+        }
+        public void Dead(int _ENTITY) {
+
         }
     }
 }
