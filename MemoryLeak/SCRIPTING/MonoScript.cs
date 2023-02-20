@@ -65,7 +65,12 @@ namespace BonVoyage
         private float CatSpeedY;
         private float oriFragScaleX;
         private int dialogueOrder;
-    public void InitVariables() {
+
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+        }
+
+        public void InitVariables() {
       fragment1 = 0;
       starttalking = false;
       maxX = maxY = minX = minY = halfX = halfY = 0;
@@ -103,7 +108,7 @@ namespace BonVoyage
       oriFragScaleX = 0;
 
     }
-  public void Init(int _id)
+  public void Init(int _ENTITY)
       {
             //VI.Dialogue.LoadScript("Dialogue LittleGirl 0");
             InitVariables();
@@ -120,7 +125,7 @@ namespace BonVoyage
           VI.Audio.PlayOnLoop("EnemyTrigger", "Level1");
         }
 
-      public void Update(int _id) {
+      public void Update(int _ENTITY) {
 
       // Toggle fps printing box (press 'T')
       if (VI.Input.Key.Press(84)) {
@@ -871,5 +876,12 @@ namespace BonVoyage
               (_y * _multiplier * (float)VI.General.DeltaTime()), 0f, 0f);
         }
         #endregion
-      }
+        public void Exit(int _ENTITY) {
+
+        }
+
+        public void Dead(int _ENTITY) {
+
+        }
+    }
 }

@@ -299,7 +299,7 @@ void SystemManager::EntitySignatureChanged(EntityID _entity, Signature _entitySi
 // Coordinator
 //-------------------------------------------------------------------------
 Coordinator::Coordinator() {
-	LOG_CUSTOM_CREATE("ECS");
+	LOG_CREATE("ECS");
 	mEntityManager = std::make_unique<EntityManager>();
 	mComponentArrayManager = std::make_unique<ComponentArrayManager>();
 	mSystemManager = std::make_unique<SystemManager>();

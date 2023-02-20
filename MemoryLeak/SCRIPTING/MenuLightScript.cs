@@ -11,7 +11,7 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class MenuLightScript
+    public class MenuLightScript : BaseScript
     {
         int ENTITY = 0;
 
@@ -19,8 +19,9 @@ namespace BonVoyage {
         float speed;
         bool increasing;
         float upper, lower;
+
         public void Alive(int _ENTITY) {
-            THIS.StoreId(_ENTITY);
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
 
         public void Init(int _ENTITY) {
@@ -34,11 +35,13 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             UpdateRadius();
             VI.LightSource.Radius.Set("Title", "Menu_Main", radius);
+            Console.Write(THIS.IsActive());
         }
 
         public void Exit(int _ENTITY) {
 
         }
+
         public void Dead(int _ENTITY) {
 
         }

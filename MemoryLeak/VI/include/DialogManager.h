@@ -76,7 +76,7 @@ public:
 	\return
 	Returns true if the dialog has choices else returns false.
 	*******************************************************************************/
-	bool HasChoice(int _id);
+	bool HaveChoices(int _id);
 
 	/*!*****************************************************************************
 	\brief
