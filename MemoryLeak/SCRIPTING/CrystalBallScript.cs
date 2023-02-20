@@ -20,14 +20,19 @@ namespace BonVoyage {
     {
         int toggle = 0; // 0 minimap, 1, weathermap, 2 enemymap
         int prevTog = -1;
-        public void Init(int _id) {
+
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+        }
+
+        public void Init(int _ENTITY) {
             //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
             //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
             //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
             VI.Entity.Deactivate("Ball", "Dialogue");
         }
 
-        public void Update(int _id)
+        public void Update(int _ENTITY)
         {
             VI.Entity.Activate("Ball", "Dialogue");
             if ((VI.Input.Button.Released("cyclemap", "Dialogue")) == true)
@@ -137,7 +142,11 @@ namespace BonVoyage {
             }
 
         }
-        public void Exit(int _id) {
+
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+        public void Exit(int _ENTITY) {
             toggle=0;
             prevTog = -1;
             VI.Entity.Deactivate("minimap", "MiniMap");
@@ -147,6 +156,9 @@ namespace BonVoyage {
             VI.Scene.Pause("MiniMap");
             VI.Scene.Pause("WeatherMap");
             VI.Scene.Pause("EnemyMap");
+        }
+        public void Dead(int _ENTITY) {
+
         }
     }
 }

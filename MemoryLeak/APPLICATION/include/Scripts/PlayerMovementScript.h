@@ -54,7 +54,7 @@ public:
 	\brief
 	Function will run when the gamestate of the entity is activated.
 	*******************************************************************************/
-	void Alive(Entity const& _e) override;
+	void Alive(const Entity& _e) override;
 
 	/*!*****************************************************************************
 	\brief
@@ -78,6 +78,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Fixed update script to run on fixed delta time.
+	*******************************************************************************/
+	void FixedUpdate(const Entity& _e) override;
+
+	/*!*****************************************************************************
+	\brief
 	Function that contains logic to run on script end
 	\param const Entity &
 	A reference to read-only entity to update
@@ -90,5 +96,5 @@ public:
 	\brief
 	Function will run when the gamestate of the entity exits.
 	*******************************************************************************/
-	void Dead(Entity const& _e) override;
+	void Dead(const Entity& _e) override;
 };

@@ -22,7 +22,10 @@ namespace BonVoyage {
         private float MapX, MapY;
         private float miniMapX, miniMapY;
         private float expMapX, expMapY;
-        public void Init(int _id) {
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+        }
+        public void Init(int _ENTITY) {
 
             VI.Entity.SetActive("enemymapbig", "EnemyMap", false);
             VI.Entity.SetActive("enemybig", "EnemyMap", false);
@@ -36,7 +39,7 @@ namespace BonVoyage {
            
         }
 
-        public void Update(int _id) {
+        public void Update(int _ENTITY) {
             
             if (init)
             {
@@ -91,11 +94,18 @@ namespace BonVoyage {
             }
         }
 
-        public void Exit(int _id) {
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+
+        public void Exit(int _ENTITY) {
             big= false;
             VI.Entity.SetActive("enemymapbig", "EnemyMap", false);
             VI.Entity.SetActive("enemybig", "EnemyMap", false);
             VI.Entity.SetActive("playerbig", "EnemyMap", false);
+
+        }
+        public void Dead(int _ENTITY) {
 
         }
     }

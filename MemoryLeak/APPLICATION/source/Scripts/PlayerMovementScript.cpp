@@ -25,7 +25,7 @@ namespace {
 	static bool speedCheat{ false };
 }
 
-void PlayerMovementScript::Alive(Entity const& _e) {
+void PlayerMovementScript::Alive(const Entity& _e) {
 	(void)_e;
 }
 
@@ -147,10 +147,14 @@ void PlayerMovementScript::Update(const Entity& _e) {
 		currCamera->translation += (_e.GetComponent<Transform>().translation - currCamera->translation) * static_cast<float>(FUNC->GetDeltaTime()) * (speedCheat ? speedCheatMultiplier : 1);
 }
 
+void PlayerMovementScript::FixedUpdate(const Entity& _e) {
+	(void)_e;
+}
+
 void PlayerMovementScript::Exit(const Entity& _e) {
 	(void)_e;
 }
 
-void PlayerMovementScript::Dead(Entity const& _e) {
+void PlayerMovementScript::Dead(const Entity& _e) {
 	(void)_e;
 }

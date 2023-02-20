@@ -20,6 +20,7 @@ Activate logic system in application.
 *******************************************************************************/
 void LogicSystem::Activate() {
 	LOG_DEBUG("Activate Logic System & Mono.");
+	LOG_CREATE("Mono");
 	MonoManager::GetInstance()->InitMono();
 }
 
@@ -58,6 +59,14 @@ Run the update function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Update() {
 	for (Entity const& e : mEntities) Update(e);
+}
+
+/*!*****************************************************************************
+\brief
+Run the fixed update function for all entities' scripts given by the parameter.
+*******************************************************************************/
+void LogicSystem::FixedUpdate() {
+	for (Entity const& e : mEntities) FixedUpdate(e);
 }
 
 /*!*****************************************************************************
@@ -104,6 +113,14 @@ void LogicSystem::Update(std::set<Entity> const& _entities) {
 
 /*!*****************************************************************************
 \brief
+Run the fixed update function for all entities' scripts given by the parameter.
+*******************************************************************************/
+void LogicSystem::FixedUpdate(std::set<Entity> const& _entities) {
+	for (Entity const& e : _entities) FixedUpdate(e);
+}
+
+/*!*****************************************************************************
+\brief
 Run the exit function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Exit(std::set<Entity> const& _entities) {
@@ -140,6 +157,26 @@ Run the update function for entity.
 *******************************************************************************/
 void LogicSystem::Update(Entity const& _e) {
 	RunScript(_e, E_SCRIPTTYPE::UPDATE);
+}
+
+/*!*****************************************************************************
+\brief
+Run the fixed update function for entity.
+*******************************************************************************/
+void LogicSystem::FixedUpdate(Entity const& _e) {
+	// Increment accumulatedDT by the application's DT
+	mAccumulatedDT += FPSManager::dt;
+
+	// Prevent spiral of death
+	if (mAccumulatedDT > mAccumulatedDTCap)
+		mAccumulatedDT = mAccumulatedDTCap;
+
+	// If the accumlatedDT is larger than or equal to the defined fixedDT,
+	// Execute a simulation tick of the physics using the defined fixedDT and subtract that value from accumulatedDT 
+	while (mAccumulatedDT >= mFixedDT) {
+		RunScript(_e, E_SCRIPTTYPE::FIXED_UPDATE);
+		mAccumulatedDT -= mFixedDT;
+	}
 }
 
 /*!*****************************************************************************
@@ -188,6 +225,10 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Update(_e);
 			break;
 
+		case E_SCRIPTTYPE::FIXED_UPDATE:
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->FixedUpdate(_e);
+			break;
+
 		case E_SCRIPTTYPE::EXIT:
 			LOG_INFO("Exit Script for " + scriptName + " ran! (C++)");
 			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Exit(_e);
@@ -222,6 +263,10 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 
 		case E_SCRIPTTYPE::UPDATE:
 			MonoManager::GetInstance()->CallMethod(scriptName, "Update", 1, params);
+			break;
+
+		case E_SCRIPTTYPE::FIXED_UPDATE:
+			MonoManager::GetInstance()->CallMethod(scriptName, "FixedUpdate", 1, params);
 			break;
 
 		case E_SCRIPTTYPE::EXIT:

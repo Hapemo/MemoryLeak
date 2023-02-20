@@ -62,6 +62,13 @@ public:
 	NULL
 	*******************************************************************************/
 	void Update(const Entity& _e) override;
+
+	/*!*****************************************************************************
+	\brief
+	Fixed update script to run on fixed delta time.
+	*******************************************************************************/
+	void FixedUpdate(Entity const& _e) override;
+
 	/*!*****************************************************************************
 	\brief
 	Function that contains logic to run on script end

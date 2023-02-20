@@ -20,7 +20,12 @@ namespace BonVoyage {
         float upperSize, lowerSize;
         float upperAlpha, lowerAlpha;
         bool increasing;
-        public void Init(int _id) {
+
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+        }
+
+        public void Init(int _ENTITY) {
             size = 110;
             lowerSize = 110;
             upperSize = 120;
@@ -35,7 +40,7 @@ namespace BonVoyage {
             increasing = true;
         }
 
-        public void Update(int _id) {
+        public void Update(int _ENTITY) {
             UpdateSizeAlpha();
             VI.Transform.Scale.SetX("LightCircle", "Menu_Main", size);
             VI.Transform.Scale.SetY("LightCircle", "Menu_Main", size);
@@ -68,8 +73,15 @@ namespace BonVoyage {
             }
         }
 
-        public void Exit(int _id) {
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+
+        public void Exit(int _ENTITY) {
             
+        }
+        public void Dead(int _ENTITY) {
+
         }
     }
 }

@@ -71,6 +71,14 @@ void DialogueScript::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
+Function will run on fixed delta time.
+*******************************************************************************/
+void DialogueScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void DialogueScript::Exit(Entity const& _e) {
