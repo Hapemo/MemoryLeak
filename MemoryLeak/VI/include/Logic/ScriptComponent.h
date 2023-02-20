@@ -54,6 +54,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Fixed update script to run on fixed delta time.
+	*******************************************************************************/
+	virtual void FixedUpdate(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
 	Exit script to run when the entity gets destroyed/exit.
 	*******************************************************************************/
 	virtual void Exit(Entity const& _e);

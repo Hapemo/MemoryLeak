@@ -49,6 +49,14 @@ void RotateScript::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
+Function will run on fixed delta time.
+*******************************************************************************/
+void RotateScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void RotateScript::Exit(Entity const& _e) {

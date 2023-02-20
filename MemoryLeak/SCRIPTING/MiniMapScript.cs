@@ -50,6 +50,10 @@ namespace BonVoyage {
 
         }
 
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+
         public void Exit(int _ENTITY) {
             big = false;
             VI.Entity.SetActive("minimapbig", "MiniMap", false);

@@ -33,9 +33,10 @@ public:
 	~PassengerScript() override = default;
 
 	// Refer to parent
-	void Alive(Entity const& _e) override;
+	void Alive(const Entity& _e) override;
 	void Init(const Entity& _e) override;
 	void Update(const Entity& _e) override;
+	void FixedUpdate(const Entity& _e) override;
 	void Exit(const Entity& _e) override;
-	void Dead(Entity const& _e) override;
+	void Dead(const Entity& _e) override;
 };

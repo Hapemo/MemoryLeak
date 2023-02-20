@@ -131,6 +131,10 @@ void PassengerScript::Update(const Entity& _e) {
 	}
 }
 
+void PassengerScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
 void PassengerScript::Exit(const Entity& _e) {
 	(void)_e;
 }

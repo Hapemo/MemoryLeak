@@ -48,6 +48,14 @@ void TestScript::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
+Function will run on fixed delta time.
+*******************************************************************************/
+void TestScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
 void TestScript::Exit(Entity const& _e) {

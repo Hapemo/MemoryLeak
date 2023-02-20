@@ -876,6 +876,11 @@ namespace BonVoyage
               (_y * _multiplier * (float)VI.General.DeltaTime()), 0f, 0f);
         }
         #endregion
+
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+
         public void Exit(int _ENTITY) {
 
         }
