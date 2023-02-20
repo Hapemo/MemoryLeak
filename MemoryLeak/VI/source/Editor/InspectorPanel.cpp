@@ -320,7 +320,10 @@ void InspectorPanel::AddComponent()
 	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
 		e.AddComponent<CircularViewport>({});
 	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
+	{
 		e.AddComponent<MovementAI>({});
+		movementAIManager->addTransform(e, e.GetComponent<Transform>());
+	}
 	
 	
 }
@@ -379,7 +382,11 @@ void InspectorPanel::AddPrefabComponent()
 	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
 		p->AddComponent<CircularViewport>({});
 	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
+	{
 		p->AddComponent<MovementAI>({});
+		//p->GetComponent<MovementAI>().targetTransforms.push_back(p->GetComponent<Transform>());
+		//p->GetComponent<MovementAI>().time.push_back(1.f);
+	}
 }
 
 
@@ -1171,27 +1178,38 @@ void InspectorPanel::MovementAIEditor()
 	{
 		ImGui::Text("MovementAI");
 		ImGui::Checkbox("run", &e.GetComponent<MovementAI>().run);
+		ImGui::Checkbox("next", &e.GetComponent<MovementAI>().next);
 		ImGui::Checkbox("loop", &e.GetComponent<MovementAI>().loop);
-		ImGui::DragFloat("Set Time", &e.GetComponent<MovementAI>().time, 0.1f, 0.f, 60.f);
+		for (int i = 0; i < e.GetComponent<MovementAI>().targetTransforms.size(); i++)
+		{
+			ImGui::DragFloat(("Set Time" + std::to_string(i)).c_str(), &e.GetComponent<MovementAI>().time[i], 0.1f, 0.f, 60.f);
 
-		//scale
-		tmpVec2[0] = e.GetComponent<MovementAI>().targetTransform.scale.x;
-		tmpVec2[1] = e.GetComponent<MovementAI>().targetTransform.scale.y;
-		ImGui::DragFloat2("Set Target Scale", tmpVec2);
-		e.GetComponent<MovementAI>().targetTransform.scale = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+			//scale
+			tmpVec2[0] = e.GetComponent<MovementAI>().targetTransforms[i].scale.x;
+			tmpVec2[1] = e.GetComponent<MovementAI>().targetTransforms[i].scale.y;
+			ImGui::DragFloat2(("Set Target Scale" + std::to_string(i)).c_str(), tmpVec2);
+			e.GetComponent<MovementAI>().targetTransforms[i].scale = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 
-		//translate
-		tmpVec2[0] = e.GetComponent<MovementAI>().targetTransform.translation.x;
-		tmpVec2[1] = e.GetComponent<MovementAI>().targetTransform.translation.y;
-		ImGui::DragFloat2("Set Target Position", tmpVec2);
-		e.GetComponent<MovementAI>().targetTransform.translation = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+			//translate
+			tmpVec2[0] = e.GetComponent<MovementAI>().targetTransforms[i].translation.x;
+			tmpVec2[1] = e.GetComponent<MovementAI>().targetTransforms[i].translation.y;
+			ImGui::DragFloat2(("Set Target Position" + std::to_string(i)).c_str(), tmpVec2);
+			e.GetComponent<MovementAI>().targetTransforms[i].translation = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 
-		//rotate
-		tmpFloat = e.GetComponent<MovementAI>().targetTransform.rotation;
-		tmpFloat = (float)(tmpFloat / M_PI * 180.f);
-		ImGui::DragFloat("Set Target Rotation", &tmpFloat, 1.f, -360.f, 360.f);
-		tmpFloat = (float)(tmpFloat * M_PI / 180.f);
-		e.GetComponent<MovementAI>().targetTransform.rotation = tmpFloat;
+			//rotate
+			tmpFloat = e.GetComponent<MovementAI>().targetTransforms[i].rotation;
+			tmpFloat = (float)(tmpFloat / M_PI * 180.f);
+			ImGui::DragFloat(("Set Target Rotation" + std::to_string(i)).c_str(), &tmpFloat, 1.f, -360.f, 360.f);
+			tmpFloat = (float)(tmpFloat * M_PI / 180.f);
+			e.GetComponent<MovementAI>().targetTransforms[i].rotation = tmpFloat;
+			ImGui::Separator();
+		}
+		if (ImGui::Button("Add Transform"))
+		{
+			//e.GetComponent<MovementAI>().targetTransforms.push_back(Transform{});
+			//e.GetComponent<MovementAI>().time.push_back(1.f);
+			movementAIManager->addTransform(e, e.GetComponent<Transform>());
+		}
 
 
 

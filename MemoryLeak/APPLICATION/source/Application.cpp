@@ -45,7 +45,7 @@ void Application::SystemInit() {
 #endif
   audioManager->Init();
   //aiManager->weatherAIinit();
-  
+  movementAIManager->init();
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
   //playerManager->Init(window_width, window_height);

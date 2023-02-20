@@ -26,8 +26,9 @@ DEFINES
 class MovementAIManager : public System
 {
 public:
+	void init();
 	void update();
-	
+	void addTransform(Entity e, Transform t);
 
 private:
 	
