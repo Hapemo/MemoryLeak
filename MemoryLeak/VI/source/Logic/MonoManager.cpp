@@ -38,7 +38,7 @@ void MonoManager::InitMono() {
 	std::string path = MonoDirectoryPath();
 	// Create mono domain
 	bool success = InitMonoDomain("MonoRoot", "MonoAppDomain", path, "Scripting");
-	// Add internal functionsx
+	// Add internal functions
 	if (success) MonoMethods::GetInstance()->RegisterCalls();
 }
 

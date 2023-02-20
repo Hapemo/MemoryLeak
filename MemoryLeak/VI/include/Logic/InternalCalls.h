@@ -245,6 +245,7 @@ public:
 	Checks if an entity from scene is active.
 	*******************************************************************************/
 	static bool EntityIsActive(std::string const& _entityName, std::string const& _sceneName);
+	static bool EntityIsActive2(int _eId);
 
 	/*!*****************************************************************************
 	\brief

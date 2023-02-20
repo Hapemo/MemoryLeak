@@ -14,6 +14,25 @@ is being stored.
 using System;
 using System.Runtime.CompilerServices;
 
+namespace BonVoyage
+{
+	public class THIS
+	{
+		static int ENTITY = 0;
+		internal static bool StoreId(int _ENTITY) {
+			ENTITY = _ENTITY;
+			return true;
+		}
+
+		internal static bool IsActive() {
+			return IsActive(ENTITY);
+		}
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool IsActive(int _ENTITY);
+	}
+}
+
 namespace VI
 {
 	public class Test
@@ -65,16 +84,16 @@ namespace VI
 			internal extern static float WorldPosY();
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static bool Press(int _key);
+			internal extern static bool Press(int _key = 349); // right mouse click
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static bool Hold(int _key);
+			internal extern static bool Hold(int _key = 349); // right mouse click
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static bool Release(int _key);
+			internal extern static bool Release(int _key = 349); // right mouse click
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static bool Idle(int _key);
+			internal extern static bool Idle(int _key = 349); // right mouse click
 		}
 	}
 	public class Physics

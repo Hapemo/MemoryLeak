@@ -13,11 +13,17 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class MenuLightScript
     {
+        int ENTITY = 0;
+
         float radius;
         float speed;
         bool increasing;
         float upper, lower;
-        public void Init(int _id) {
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY);
+        }
+
+        public void Init(int _ENTITY) {
             radius = VI.LightSource.Radius.Get("Title", "Menu_Main");
             speed = 500;
             increasing = false;
@@ -25,13 +31,16 @@ namespace BonVoyage {
             lower = 900;
         }
 
-        public void Update(int _id) {
+        public void Update(int _ENTITY) {
             UpdateRadius();
             VI.LightSource.Radius.Set("Title", "Menu_Main", radius);
         }
 
-        public void Exit(int _id) {
-            
+        public void Exit(int _ENTITY) {
+
+        }
+        public void Dead(int _ENTITY) {
+
         }
 
         void UpdateRadius()
