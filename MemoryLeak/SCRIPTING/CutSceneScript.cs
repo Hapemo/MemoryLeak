@@ -30,7 +30,7 @@ namespace BonVoyage {
         }
 
         public void Init(int _ENTITY) {
-            targetRadius = (int)VI.LightSource.Radius.Get(light, scene);
+            targetRadius = (int)VI.LightSource.Radius.s_Get(light, scene);
         }
 
         public void Update(int _ENTITY) {
@@ -47,7 +47,7 @@ namespace BonVoyage {
                 if (!soundPlayed)
                 {
                     soundPlayed = true;
-                    VI.Audio.Play("lightning", scene);
+                    VI.Audio.s_Play("lightning", scene);
                 }
             }
         }
@@ -59,7 +59,7 @@ namespace BonVoyage {
                 currAlpha -= speed *2; 
                 if (currAlpha < 0)
                     currAlpha = 0;
-                VI.LightSource.SpriteColor.Set(entity, scene, 255, 255, 255, currAlpha);
+                VI.LightSource.SpriteColor.s_Set(entity, scene, 255, 255, 255, currAlpha);
             }
             if (currAlpha == 0)
             {
@@ -77,14 +77,14 @@ namespace BonVoyage {
                 lightningAlpha -= speed;
                 if (lightningAlpha < 0)
                     lightningAlpha = 0;
-                VI.LightSource.SpriteColor.Set(lightning, scene, 255, 255, 255, lightningAlpha);
+                VI.LightSource.SpriteColor.s_Set(lightning, scene, 255, 255, 255, lightningAlpha);
             }
             if (currRadius != targetRadius)
             {
                 currRadius -= 20;
                 if (currRadius < targetRadius)
                     currRadius = targetRadius;
-                VI.LightSource.Radius.Set(light, scene, currRadius);
+                VI.LightSource.Radius.s_Set(light, scene, currRadius);
             }
         }
 
