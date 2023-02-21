@@ -24,12 +24,92 @@ namespace BonVoyage
 			return true;
 		}
 
-		internal static bool IsActive() {
-			return IsActive(ENTITY);
+		public class Parent {
+			internal static string Name() { return VI.Entity.Parent.Name(ENTITY); }
+			internal static int Id() { return VI.Entity.Parent.Id(ENTITY); }
+		}
+		internal static int GetId() { return VI.Entity.GetId(ENTITY); }
+		internal static bool IsActive() { return VI.Entity.IsActive(ENTITY); }
+		internal static void SetActive(bool _active = true) { VI.Entity.SetActive(ENTITY, _active); }
+		internal static void Activate() { VI.Entity.Activate(ENTITY); }
+		internal static void Deactivate() { VI.Entity.Deactivate(ENTITY); 
+		}
+		public class Input {
+			public class Button {
+				internal static bool Clicked() { return VI.Input.Button.Clicked(ENTITY); }
+				internal static bool Released() { return VI.Input.Button.Released(ENTITY); }
+				internal static bool Hover() { return VI.Input.Button.Hover(ENTITY); }
+			}
 		}
 
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static bool IsActive(int _ENTITY);
+		public class Animation {
+			public class SheetIndex {
+				internal static void Set(int _index) { VI.Animation.SheetIndex.Set(ENTITY, _index); }
+				internal static int Get() { return VI.Animation.SheetIndex.Get(ENTITY); }
+			}
+			public class Speed {
+				internal static void Set(float _speed) { VI.Animation.Speed.Set(ENTITY, _speed); }
+				internal static float Get() { return VI.Animation.Speed.Get(ENTITY); }
+			}
+			public class CurrentFrame {
+				internal static void Set(int _index) { VI.Animation.CurrentFrame.Set(ENTITY, _index); }
+				internal static int Get() { return VI.Animation.CurrentFrame.Get(ENTITY); }
+			}
+			public class FrameCount {
+				internal static void Set(int _count) { VI.Animation.FrameCount.Set(ENTITY, _count); }
+				internal static int Get() { return VI.Animation.FrameCount.Get(ENTITY); }
+			}
+		}
+		public class Texture {
+			internal static void Set(string _path) { VI.Texture.Set(ENTITY, _path); }
+			internal static string Get() { return VI.Texture.Get(ENTITY); }
+		}
+		public class Audio {
+			internal static void Play() { VI.Audio.Play(ENTITY); }
+			internal static void PlayOnLoop() { VI.Audio.PlayOnLoop(ENTITY); }
+			internal static void Stop() { VI.Audio.Stop(ENTITY); }
+			internal static void SetLoop(bool _loop) { VI.Audio.SetLoop(ENTITY, _loop); }
+		}
+		public class Transform {
+			public class Position {
+				internal static float GetX() { return VI.Transform.Position.GetX(ENTITY); }
+				internal static float GetY() { return VI.Transform.Position.GetY(ENTITY); }
+				internal static void SetX(float _posX) { VI.Transform.Position.SetX(ENTITY, _posX); }
+				internal static void SetY(float _posY) { VI.Transform.Position.SetY(ENTITY, _posY); }
+			}
+			public class Scale {
+				internal static float GetX() { return VI.Transform.Scale.GetX(ENTITY); }
+				internal static float GetY() { return VI.Transform.Scale.GetY(ENTITY); }
+				internal static void SetX(float _scaleX) { VI.Transform.Scale.SetX(ENTITY, _scaleX); }
+				internal static void SetY(float _scaleY) { VI.Transform.Scale.SetY(ENTITY, _scaleY); }
+			}
+			public class Rotate {
+				internal static float Get() { return VI.Transform.Rotate.Get(ENTITY); }
+				internal static void Set(float _rotate) { VI.Transform.Rotate.Set(ENTITY, _rotate); }
+			}
+		}
+		public class Text {
+			internal static void Update(string _text) { VI.Text.Update(ENTITY, _text); }
+			internal static int GetLineCount() { return VI.Text.GetLineCount(ENTITY); }
+			public class Offset {
+				internal static void Set(float _xoffset, float _yoffset) { VI.Text.Offset.Set(ENTITY, _xoffset, _yoffset); }
+				internal static float GetX() { return VI.Text.Offset.GetX(ENTITY); }
+				internal static float GetY() { return VI.Text.Offset.GetY(ENTITY); }
+			}
+			public class Scale {
+				internal static float Get() { return VI.Text.Scale.Get(ENTITY); }
+				internal static void Set(float _scale) { VI.Text.Scale.Set(ENTITY, _scale); }
+			}
+		}
+		public class LightSource {
+			public class Radius {
+				internal static float Get() { return VI.LightSource.Radius.Get(ENTITY); }
+				internal static void Set(float _radius) { VI.LightSource.Radius.Set(ENTITY, _radius); }
+			}
+			public class SpriteColor {
+				internal static void Set(int _r, int _g, int _b, int _a) { VI.LightSource.SpriteColor.Set(ENTITY, _r, _g, _b, _a); }
+			}
+		}
 	}
 }
 
@@ -414,6 +494,9 @@ namespace VI
 		internal extern static void s_PlayOnLoop(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void s_SetLoop(string _entityName, string _sceneName, bool _loop);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void s_Stop(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
@@ -441,10 +524,7 @@ namespace VI
 		internal extern static void StopSFX();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void StopLoop();
-
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetLoop();
+		internal extern static void SetLoop(int _eId, bool _loop);
 		public class Volume
 		{
 			[MethodImpl(MethodImplOptions.InternalCall)]
@@ -551,7 +631,7 @@ namespace VI
 			internal extern static float s_GetY(string _entityName, string _sceneName);
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void Set(int _eIdset);
+			internal extern static void Set(int _eId, float _xoffset, float _yoffset);
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static float GetX(int _eId);
@@ -565,13 +645,13 @@ namespace VI
 			internal extern static float s_Get(string _entityName, string _sceneName);
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static float s_Set(string _entityName, string _sceneName, float _scale);
+			internal extern static void s_Set(string _entityName, string _sceneName, float _scale);
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static float Get(int _eId);
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static float Set(int _eId, float _scale);
+			internal extern static void Set(int _eId, float _scale);
 		}
 	}
 	public class Weather
