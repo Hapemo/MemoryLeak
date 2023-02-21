@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "General": {
+            "name": "Water",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1000.0,
+                "Y": 1000.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2.986722946166992,
+                "Y": -0.00000762939453125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Env_Water.png",
+            "layer": 0
+        }
+    }
+]
