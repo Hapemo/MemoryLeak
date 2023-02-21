@@ -37,11 +37,11 @@ Function will run on every update while the entity is active.
 void PlayGameButton::Update(Entity const& _e) {
 	static bool first = true;
 	if (first) {
-		FUNC->PlayBGSound("SwampNightTime_Loop", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+		VI::iAudio::PlayBGM("SwampNightTime_Loop");
 		first = false;
 	}
-	if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
-		FUNC->PlayBGSound("SwampNightTime_Loop", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+	if (!VI::iAudio::IsBgmPlaying())
+		VI::iAudio::PlayBGM("SwampNightTime_Loop");
 
 	static float x = _e.GetComponent<Transform>().scale.x;
 	static float y = _e.GetComponent<Transform>().scale.y;
@@ -75,12 +75,12 @@ void PlayGameButton::Update(Entity const& _e) {
 
 	if(_e.HasComponent<Button>())
 		if (_e.GetComponent<Button>().activated) {
-			FUNC->ChangeGameState("Level1");
-			(FUNC->SelectScene("Settings")).Pause(true);
-			(FUNC->SelectScene("How_To_Play")).Pause(true);
-			(FUNC->SelectScene("Pause")).Pause(true);
-			(FUNC->SelectScene("Level1")).Pause(false);
-			FUNC->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+			VI::iGameState::ChangeGameState("Level1");
+			(VI::iScene::Select("Settings")).Pause(true);
+			(VI::iScene::Select("How_To_Play")).Pause(true);
+			(VI::iScene::Select("Pause")).Pause(true);
+			(VI::iScene::Select("Level1")).Pause(false);
+			VI::iAudio::PlayBGM("Bon_Voyage_BGM");
 			first = false;
 		}
 }

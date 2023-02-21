@@ -23,7 +23,7 @@ namespace BonVoyage {
         }
 
         public void Init(int _ENTITY) {
-            radius = VI.LightSource.Radius.Get("Title", "Menu_Main");
+            radius = VI.LightSource.Radius.s_Get("Title", "Menu_Main");
             speed = 500;
             increasing = false;
             upper = 1100;
@@ -32,8 +32,12 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             UpdateRadius();
-            VI.LightSource.Radius.Set("Title", "Menu_Main", radius);
+            VI.LightSource.Radius.s_Set("Title", "Menu_Main", radius);
             Console.Write(THIS.IsActive());
+            if (VI.Input.Mouse.Press())
+            {
+                Console.Write("PRESSEDDDD!!!");
+            }
             Console.Write("UPDATE\n");
         }
 

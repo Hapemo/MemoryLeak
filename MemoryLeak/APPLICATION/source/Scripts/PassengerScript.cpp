@@ -24,10 +24,10 @@ void PassengerScript::Alive(Entity const& _e) {
 
 void PassengerScript::Init(const Entity& _e) {
 	(void)_e;
-	boat = (FUNC->GetEntity("Boat", "Level1"));
-	passenger = (FUNC->GetEntity("Passenger_1", "Level1"));
-	destination = (FUNC->GetEntity("destination", "Level1"));
-	destinationHouse = FUNC->GetEntity("Single Story House", "Level1");
+	boat = (VI::iEntity::GetEntity("Boat", "Level1"));
+	passenger = (VI::iEntity::GetEntity("Passenger_1", "Level1"));
+	destination = (VI::iEntity::GetEntity("destination", "Level1"));
+	destinationHouse = VI::iEntity::GetEntity("Single Story House", "Level1");
 	passengerTransform = &_e.GetComponent<Transform>();
 	boatTransform = &boat.GetComponent<Transform>();
 	pickedUp = false;

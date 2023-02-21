@@ -71,16 +71,16 @@ void PauseButton::Update(Entity const& _e) {
 		}
 		if (_e.GetComponent<Button>().activated) {
 			init = false;
-			Scene& menuScene{ FUNC->SelectScene("Menu_Main") };
+			Scene& menuScene{ VI::iScene::Select("Menu_Main") };
 			if (menuScene.mName != "Error") { // If it's at main menu
-				(FUNC->SelectScene("Quit Confirmation")).Pause(true);
+				(VI::iScene::Select("Quit Confirmation")).Pause(true);
 				menuScene.Pause(false);
 			} else { // if it's game pause
-				(FUNC->SelectScene("Settings")).Pause(true);
-				(FUNC->SelectScene("How_To_Play")).Pause(true);
-				(FUNC->SelectScene("Level1")).Pause(true);
-				(FUNC->SelectScene("Quit Confirmation")).Pause(true);
-				(FUNC->SelectScene("Pause")).Pause(false);
+				(VI::iScene::Select("Settings")).Pause(true);
+				(VI::iScene::Select("How_To_Play")).Pause(true);
+				(VI::iScene::Select("Level1")).Pause(true);
+				(VI::iScene::Select("Quit Confirmation")).Pause(true);
+				(VI::iScene::Select("Pause")).Pause(false);
 			}
 		}
 	}

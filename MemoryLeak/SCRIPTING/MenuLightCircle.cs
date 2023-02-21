@@ -42,9 +42,9 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             UpdateSizeAlpha();
-            VI.Transform.Scale.SetX("LightCircle", "Menu_Main", size);
-            VI.Transform.Scale.SetY("LightCircle", "Menu_Main", size);
-            VI.LightSource.SpriteColor.Set("LightCircle", "Menu_Main", 255, 255, 255, (int)alpha);
+            VI.Transform.Scale.s_SetX("LightCircle", "Menu_Main", size);
+            VI.Transform.Scale.s_SetY("LightCircle", "Menu_Main", size);
+            VI.LightSource.SpriteColor.s_Set("LightCircle", "Menu_Main", 255, 255, 255, (int)alpha);
         }
 
         void UpdateSizeAlpha()

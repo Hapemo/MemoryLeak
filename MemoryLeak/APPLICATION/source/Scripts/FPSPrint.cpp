@@ -45,7 +45,7 @@ void FPSPrintScript::Update(Entity const& _e) {
 
 	std::stringstream str;
 	str << std::fixed << std::setprecision(1) << FPSManager::fps;
-	FUNC->UpdateText("fpsDisplay", "FPS", str.str());
+	VI::iText::UpdateText("fpsDisplay", "FPS", str.str());
 }
 
 /*!*****************************************************************************

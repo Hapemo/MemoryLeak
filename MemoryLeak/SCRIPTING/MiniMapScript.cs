@@ -25,7 +25,7 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
 
-            VI.Entity.SetActive("minimapbig", "MiniMap", false);
+            VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
         }
 
         public void Update(int _ENTITY) {
@@ -35,16 +35,16 @@ namespace BonVoyage {
                 
             }
             //////////////////////////////////////////////init
-            if ((VI.Input.Button.Released("minimap", "MiniMap")) == true)
+            if ((VI.Input.Button.s_Released("minimap", "MiniMap")) == true)
             {
                 big = !big;
                 if (big)
                 {
-                    VI.Entity.SetActive("minimapbig", "MiniMap", true);
+                    VI.Entity.s_SetActive("minimapbig", "MiniMap", true);
                 }
                 else
                 {
-                    VI.Entity.SetActive("minimapbig", "MiniMap", false);
+                    VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
                 }
             }
 
@@ -56,7 +56,7 @@ namespace BonVoyage {
 
         public void Exit(int _ENTITY) {
             big = false;
-            VI.Entity.SetActive("minimapbig", "MiniMap", false);
+            VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
         }
 
         public void Dead(int _ENTITY) {

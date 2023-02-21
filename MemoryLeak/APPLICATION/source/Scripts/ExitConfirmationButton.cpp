@@ -64,14 +64,14 @@ void ExitConfirmationButton::Update(Entity const& _e) {
 	}
 
 	if (_e.HasComponent<Button>() && _e.GetComponent<Button>().activated){
-		(FUNC->SelectScene("Settings")).Pause(true);
-		(FUNC->SelectScene("How_To_Play")).Pause(true);
-		(FUNC->SelectScene("Menu_Main")).Pause(true);
-		(FUNC->SelectScene("Pause")).Pause(true);
-		(FUNC->SelectScene("Level1")).Pause(true);
-		(FUNC->SelectScene("Menu_Main")).Pause(true);
-		(FUNC->SelectScene("Game Over")).Pause(true);
-		(FUNC->SelectScene("Quit Confirmation")).Pause(false);
+		(VI::iScene::Select("Settings")).Pause(true);
+		(VI::iScene::Select("How_To_Play")).Pause(true);
+		(VI::iScene::Select("Menu_Main")).Pause(true);
+		(VI::iScene::Select("Pause")).Pause(true);
+		(VI::iScene::Select("Level1")).Pause(true);
+		(VI::iScene::Select("Menu_Main")).Pause(true);
+		(VI::iScene::Select("Game Over")).Pause(true);
+		(VI::iScene::Select("Quit Confirmation")).Pause(false);
 	}
 }
 

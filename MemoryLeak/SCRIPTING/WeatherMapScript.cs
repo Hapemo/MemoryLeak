@@ -28,7 +28,7 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             
-            VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
+            VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
                 int modI = i % 5;
@@ -36,44 +36,44 @@ namespace BonVoyage {
                 if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
                 {
                     string MIcon = "MIcon" + i;
-                    VI.Entity.SetActive(MIcon, "WeatherMap", false);
+                    VI.Entity.s_SetActive(MIcon, "WeatherMap", false);
                 }
             }
-            VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
+            VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
                 string EIcon = "EIcon" + i;
-                VI.Entity.SetActive(EIcon, "WeatherMap", false);
+                VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
             }
             if (init)
             {
-                maxMapX = VI.Transform.Scale.GetX("Water", "Level1");
-                maxMapY = VI.Transform.Scale.GetY("Water", "Level1");
+                maxMapX = VI.Transform.Scale.s_GetX("Water", "Level1");
+                maxMapY = VI.Transform.Scale.s_GetY("Water", "Level1");
                 VI.Weather.Init(maxMapX, maxMapY);
                 init = false;
             }
         }
         public void Update(int _ENTITY) {
-            if ((VI.Input.Button.Released("weathermap", "WeatherMap")) == true)
+            if ((VI.Input.Button.s_Released("weathermap", "WeatherMap")) == true)
             {
                 big = !big;
                 
                 if (big)
                 {
-                    VI.Entity.SetActive("weathermapbig", "WeatherMap", true);
+                    VI.Entity.s_SetActive("weathermapbig", "WeatherMap", true);
                     for (int i = 0; i < 25; i++)
                     {
                         string EIcon = "EIcon" + i;
-                        VI.Entity.SetActive(EIcon, "WeatherMap", true);
+                        VI.Entity.s_SetActive(EIcon, "WeatherMap", true);
                     }
                 }
                 else
                 {
-                    VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
+                    VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
                     for (int i = 0; i < 25; i++)
                     {
                         string EIcon = "EIcon" + i;
-                        VI.Entity.SetActive(EIcon, "WeatherMap", false);
+                        VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
                     }
                 }
             }
@@ -82,17 +82,17 @@ namespace BonVoyage {
                 int modI = i % 5;
                 int divI = i / 5;
                 int index = VI.Weather.GetCurrent(i, 
-                    VI.Transform.Position.GetX("Boat", "Level1"), VI.Transform.Position.GetY("Boat", "Level1"));
+                    VI.Transform.Position.s_GetX("Boat", "Level1"), VI.Transform.Position.s_GetY("Boat", "Level1"));
                 if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
                 {
                     string MIcon = "MIcon" + i;
-                    VI.Animation.SheetIndex.Set(MIcon, "WeatherMap", index);
-                    VI.Entity.SetActive(MIcon, "WeatherMap", true);
+                    VI.Animation.SheetIndex.s_Set(MIcon, "WeatherMap", index);
+                    VI.Entity.s_SetActive(MIcon, "WeatherMap", true);
                 }
                 if (big)
                 {
                     string EIcon = "EIcon" + i;
-                    VI.Animation.SheetIndex.Set(EIcon, "WeatherMap", index);
+                    VI.Animation.SheetIndex.s_Set(EIcon, "WeatherMap", index);
                 }
             }
             
@@ -105,11 +105,11 @@ namespace BonVoyage {
 
         public void Exit(int _ENTITY) {
             big = false;
-            VI.Entity.SetActive("weathermapbig", "WeatherMap", false);
+            VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
                 string EIcon = "EIcon" + i;
-                VI.Entity.SetActive(EIcon, "WeatherMap", false);
+                VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
             }
         }
         public void Dead(int _ENTITY) {

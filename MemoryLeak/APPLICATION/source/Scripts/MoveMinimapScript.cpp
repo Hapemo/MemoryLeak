@@ -24,8 +24,8 @@ void MoveMinimapScript::Init(const Entity& _e) {
 void MoveMinimapScript::Update(const Entity& _e) {
 	if (!inited)
 	{
-		currScene = &(FUNC->SelectScene("Level1"));
-		currCamera = &FUNC->CurrentCamera();
+		currScene = &(VI::iScene::Select("Level1"));
+		currCamera = &VI::iCamera::CurrentCamera();
 		originalTranslate = _e.GetComponent<Transform>().translation;
 		originalScale = _e.GetComponent<Transform>().scale;
 		inited = true;

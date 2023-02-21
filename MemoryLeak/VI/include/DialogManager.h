@@ -112,7 +112,7 @@ public:
 	\return
 	Returns the dialog text in string.
 	*******************************************************************************/
-	std::string GetDialogue(int _id);
+	std::string GetLine(int _id);
 
 	/*!*****************************************************************************
 	\brief
