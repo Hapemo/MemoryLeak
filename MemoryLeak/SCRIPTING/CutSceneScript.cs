@@ -56,7 +56,7 @@ namespace BonVoyage {
         {
             if (currAlpha > 0)
             {
-                currAlpha -= speed *2; 
+                currAlpha -= speed; 
                 if (currAlpha < 0)
                     currAlpha = 0;
                 VI.LightSource.SpriteColor.s_Set(entity, scene, 255, 255, 255, currAlpha);
