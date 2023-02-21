@@ -27,15 +27,15 @@ namespace BonVoyage {
         }
         public void Init(int _ENTITY) {
 
-            VI.Entity.SetActive("enemymapbig", "EnemyMap", false);
-            VI.Entity.SetActive("enemybig", "EnemyMap", false);
-            VI.Entity.SetActive("playerbig", "EnemyMap", false);
-            MapX = VI.Transform.Scale.GetX("Water", "Level1");
-            MapY = VI.Transform.Scale.GetY("Water", "Level1");
-            miniMapX = VI.Transform.Scale.GetX("enemymap", "EnemyMap");
-            miniMapY = VI.Transform.Scale.GetY("enemymap", "EnemyMap");
-            expMapX = VI.Transform.Scale.GetX("enemymapbig", "EnemyMap");
-            expMapY = VI.Transform.Scale.GetY("enemymapbig", "EnemyMap");
+            VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
+            VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
+            VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
+            MapX = VI.Transform.Scale.s_GetX("Water", "Level1");
+            MapY = VI.Transform.Scale.s_GetY("Water", "Level1");
+            miniMapX = VI.Transform.Scale.s_GetX("enemymap", "EnemyMap");
+            miniMapY = VI.Transform.Scale.s_GetY("enemymap", "EnemyMap");
+            expMapX = VI.Transform.Scale.s_GetX("enemymapbig", "EnemyMap");
+            expMapY = VI.Transform.Scale.s_GetY("enemymapbig", "EnemyMap");
            
         }
 
@@ -48,48 +48,48 @@ namespace BonVoyage {
             }
 
             //////////////////////////////////////////////init
-            if ((VI.Input.Button.Released("enemymap", "EnemyMap")) == true)
+            if ((VI.Input.Button.s_Released("enemymap", "EnemyMap")) == true)
             {
                 big = !big;
                 if (big)
                 {
-                    VI.Entity.SetActive("enemymapbig", "EnemyMap", true);
-                    VI.Entity.SetActive("enemybig", "EnemyMap", true);
-                    VI.Entity.SetActive("playerbig", "EnemyMap", true);
+                    VI.Entity.s_SetActive("enemymapbig", "EnemyMap", true);
+                    VI.Entity.s_SetActive("enemybig", "EnemyMap", true);
+                    VI.Entity.s_SetActive("playerbig", "EnemyMap", true);
                 }
                 else {
-                    VI.Entity.SetActive("enemymapbig", "EnemyMap", false);
-                    VI.Entity.SetActive("enemybig", "EnemyMap", false);
-                    VI.Entity.SetActive("playerbig", "EnemyMap", false);
+                    VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
+                    VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
+                    VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
                 }
             }
-            float posx = VI.Transform.Position.GetX("Enemy", "Level1")- VI.Transform.Position.GetX("Boat", "Level1");
-            float posy = VI.Transform.Position.GetY("Enemy", "Level1") - VI.Transform.Position.GetY("Boat", "Level1");
+            float posx = VI.Transform.Position.s_GetX("Enemy", "Level1")- VI.Transform.Position.s_GetX("Boat", "Level1");
+            float posy = VI.Transform.Position.s_GetY("Enemy", "Level1") - VI.Transform.Position.s_GetY("Boat", "Level1");
             if (posx > MapX / 4 || posy > MapY / 4)
             {
-                VI.Entity.SetActive("enemy", "EnemyMap", false);
+                VI.Entity.s_SetActive("enemy", "EnemyMap", false);
             }
             else
             {
-                VI.Entity.SetActive("enemy", "EnemyMap", true);
-                float eposx = VI.Transform.Position.GetX("player", "EnemyMap") + (posx * (miniMapX / MapX));
-                float eposy = VI.Transform.Position.GetY("player", "EnemyMap") + (posy * (miniMapY / MapY));
-                VI.Transform.Position.SetX("enemy", "EnemyMap", eposx);
-                VI.Transform.Position.SetY("enemy", "EnemyMap", eposy);
+                VI.Entity.s_SetActive("enemy", "EnemyMap", true);
+                float eposx = VI.Transform.Position.s_GetX("player", "EnemyMap") + (posx * (miniMapX / MapX));
+                float eposy = VI.Transform.Position.s_GetY("player", "EnemyMap") + (posy * (miniMapY / MapY));
+                VI.Transform.Position.s_SetX("enemy", "EnemyMap", eposx);
+                VI.Transform.Position.s_SetY("enemy", "EnemyMap", eposy);
             }
             if (big)
             { 
                 if (posx > MapX / 2 || posy > MapY / 2)
                 {
-                    VI.Entity.SetActive("enemybig", "EnemyMap", false);
+                    VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
                 }
                 else
                 {
-                    VI.Entity.SetActive("enemybig", "EnemyMap", true);
-                    float eposx = VI.Transform.Position.GetX("playerbig", "EnemyMap") + (posx * (expMapX / MapX));
-                    float eposy = VI.Transform.Position.GetY("playerbig", "EnemyMap") + (posy * (expMapY / MapY));
-                    VI.Transform.Position.SetX("enemybig", "EnemyMap", eposx);
-                    VI.Transform.Position.SetY("enemybig", "EnemyMap", eposy);
+                    VI.Entity.s_SetActive("enemybig", "EnemyMap", true);
+                    float eposx = VI.Transform.Position.s_GetX("playerbig", "EnemyMap") + (posx * (expMapX / MapX));
+                    float eposy = VI.Transform.Position.s_GetY("playerbig", "EnemyMap") + (posy * (expMapY / MapY));
+                    VI.Transform.Position.s_SetX("enemybig", "EnemyMap", eposx);
+                    VI.Transform.Position.s_SetY("enemybig", "EnemyMap", eposy);
                 }
             }
         }
@@ -100,9 +100,9 @@ namespace BonVoyage {
 
         public void Exit(int _ENTITY) {
             big= false;
-            VI.Entity.SetActive("enemymapbig", "EnemyMap", false);
-            VI.Entity.SetActive("enemybig", "EnemyMap", false);
-            VI.Entity.SetActive("playerbig", "EnemyMap", false);
+            VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
+            VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
+            VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
 
         }
         public void Dead(int _ENTITY) {

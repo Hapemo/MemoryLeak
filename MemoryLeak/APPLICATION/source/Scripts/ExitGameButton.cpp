@@ -65,9 +65,9 @@ void ExitGameButton::Update(Entity const& _e) {
 	}
 	if(_e.HasComponent<Button>())
 		if (_e.GetComponent<Button>().activated)
-			FUNC->GameStateExit();
+			VI::iGameState::GameStateExit();
 
-	if (FUNC->CheckKey(E_STATE::RELEASE, E_KEY::ENTER)) FUNC->GameStateExit();
+	if (VI::iInput::CheckKey(E_STATE::RELEASE, E_KEY::ENTER)) VI::iGameState::GameStateExit();
 }
 
 /*!*****************************************************************************

@@ -30,13 +30,13 @@ Function will run on initialisation of the entity.
 void DialogueScript::Init(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Dialogue script starts works!!!");
-	FUNC->LoadDialogs("Dialogue LittleGirl 0");
-	FUNC->SetCurrentDialogueID(1);
-	if (_e.HasComponent<Text>()) _e.GetComponent<Text>().text = FUNC->GetDialogue(FUNC->GetCurrentDialogueID());
-	(FUNC->GetEntity("DialogueBox", "Level1")).Activate();
-	currScn = &(FUNC->SelectScene("Level1"));
-	currCamera = &FUNC->CurrentCamera();
-	initialCamScale = FUNC->CurrentCamera().scale;
+	VI::iDialogue::LoadScript("Dialogue LittleGirl 0");
+	VI::iDialogue::SetCurrentId(1);
+	if (_e.HasComponent<Text>()) _e.GetComponent<Text>().text = VI::iDialogue::GetLine(VI::iDialogue::GetCurrentId());
+	(VI::iEntity::GetEntity("DialogueBox", "Level1")).Activate();
+	currScn = &(VI::iScene::Select("Level1"));
+	currCamera = &VI::iCamera::CurrentCamera();
+	initialCamScale = VI::iCamera::CurrentCamera().scale;
 	currCamScale = initialCamScale; 
 	targetCamScale = initialCamScale * 0.5f;
 }
@@ -50,20 +50,20 @@ void DialogueScript::Update(Entity const& _e) {
 	if (currCamera->scale.x >= targetCamScale.x)
 		currCamera->scale.x -= 500 * (float)FUNC->GetDeltaTime();
 	currCamScale = currCamera->scale;
-	if (FUNC->CheckKey(E_STATE::PRESS, M_BUTTON_L)) {
+	if (VI::iInput::CheckKey(E_STATE::PRESS, M_BUTTON_L)) {
 		if (_e.HasComponent<Text>()) {
-			int currentId = FUNC->GetCurrentDialogueID();
-			if (!FUNC->SetCurrentDialogueID(++currentId)) {
+			int currentId = VI::iDialogue::GetCurrentId();
+			if (!VI::iDialogue::SetCurrentId(++currentId)) {
 				_e.GetComponent<Text>().text = "";
 				_e.Deactivate();
 			} else {
-				_e.GetComponent<Text>().text = FUNC->GetDialogue(currentId);
-				FUNC->PlaySoundInChannel("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+				_e.GetComponent<Text>().text = VI::iDialogue::GetLine(currentId);
+				//FUNC->PlaySoundInChannel("BTNCLICK", (int)E_AUDIO_CHANNEL::FORCEPLAY);
 			}
 		}
 	}
 
-	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT) && FUNC->CheckKey(PRESS, N)) {
+	if (VI::iInput::CheckKey(HOLD, LEFT_CONTROL) && VI::iInput::CheckKey(HOLD, LEFT_SHIFT) && VI::iInput::CheckKey(PRESS, N)) {
 		_e.GetComponent<Text>().text = "";
 		_e.Deactivate();
 	}
@@ -84,7 +84,7 @@ Function will run on exit or when the entity is destroyed.
 void DialogueScript::Exit(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Dialogue script end works!!!");
-	(FUNC->GetEntity("DialogueBox", "Level1")).Deactivate();
+	(VI::iEntity::GetEntity("DialogueBox", "Level1")).Deactivate();
 }
 
 /*!*****************************************************************************

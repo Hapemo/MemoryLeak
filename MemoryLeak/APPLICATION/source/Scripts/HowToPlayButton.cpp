@@ -66,9 +66,9 @@ void HowToPlayButton::Update(Entity const& _e) {
 
 	if(_e.HasComponent<Button>())
 		if (_e.GetComponent<Button>().activated) {
-			(FUNC->SelectScene("Menu_Main")).Pause(true);
-			(FUNC->SelectScene("Pause")).Pause(true);
-			(FUNC->SelectScene("How_To_Play")).Pause(false);
+			(VI::iScene::Select("Menu_Main")).Pause(true);
+			(VI::iScene::Select("Pause")).Pause(true);
+			(VI::iScene::Select("How_To_Play")).Pause(false);
 		}
 }
 

@@ -67,8 +67,8 @@ void SettingsButton::Update(Entity const& _e) {
 	if (_e.HasComponent<Button>()) {
 		if (_e.GetComponent<Button>().isHover)
 		if (_e.GetComponent<Button>().activated) {
-			(FUNC->SelectScene("Menu_Main")).Pause(true);
-			(FUNC->SelectScene("Settings")).Pause(false);
+			(VI::iScene::Select("Menu_Main")).Pause(true);
+			(VI::iScene::Select("Settings")).Pause(false);
 		}
 	}
 }

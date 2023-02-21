@@ -39,16 +39,16 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void WASDScript::Update(Entity const& _e) {
 	//LOG_INFO("RotateScript updating works!!!");
-	if (FUNC->CheckKey(E_STATE::HOLD, W)) {
+	if (VI::iInput::CheckKey(E_STATE::HOLD, W)) {
 		_e.GetComponent<Transform>().translation.y += 1.f;
 	}
-	if (FUNC->CheckKey(E_STATE::HOLD, A)) {
+	if (VI::iInput::CheckKey(E_STATE::HOLD, A)) {
 		_e.GetComponent<Transform>().translation.x -= 1.f;
 	}
-	if (FUNC->CheckKey(E_STATE::HOLD, S)) {
+	if (VI::iInput::CheckKey(E_STATE::HOLD, S)) {
 		_e.GetComponent<Transform>().translation.y -= 1.f;
 	}
-	if (FUNC->CheckKey(E_STATE::HOLD, D)) {
+	if (VI::iInput::CheckKey(E_STATE::HOLD, D)) {
 		_e.GetComponent<Transform>().translation.x += 1.f;
 	}
 }
