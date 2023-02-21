@@ -712,6 +712,52 @@ void RenderManager::NewLayer(int _layer)
 		mRenderLayers.push_back(_layer);
 }
 
+void RenderManager::CreateSquareParticle(GLuint texid, int _layer, const Transform& xform, Color _clr, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
+{
+	Math::Mat3 mtx = GetTransform(xform.scale, xform.rotation, xform.translation);
+	glm::vec4 clr = GetColor(_clr.r, _clr.g, _clr.b, _clr.a);
+	float layer = (_layer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f) / ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
+	float texID = static_cast<float>(texid);
+
+	Vertex v0, v1, v2, v3;
+	v0.position = (mtx * Math::Vec3(-1.f, 1.f, 1.f)).ToGLM();
+	v0.position.z = layer > 1.f ? 1.f : layer;
+	v0.color = clr;
+	v0.texCoords = glm::vec2(0, 1.f);
+	v0.texID = texID;
+
+	v1.position = (mtx * Math::Vec3(-1.f, -1.f, 1.f)).ToGLM();
+	v1.position.z = layer > 1.f ? 1.f : layer;
+	v1.color = clr;
+	v1.texCoords = glm::vec2(0, 0.f);
+	v1.texID = texID;
+
+	v2.position = (mtx * Math::Vec3(1.f, 1.f, 1.f)).ToGLM();
+	v2.position.z = layer > 1.f ? 1.f : layer;
+	v2.color = clr;
+	v2.texCoords = glm::vec2(1, 1.f);
+	v2.texID = texID;
+
+	v3.position = (mtx * Math::Vec3(1.f, -1.f, 1.f)).ToGLM();
+	v3.position.z = layer > 1.f ? 1.f : layer;
+	v3.color = clr;
+	v3.texCoords = glm::vec2(1, 0.f);
+	v3.texID = texID;
+
+	_vertices.push_back(v0);
+	_vertices.push_back(v1);
+	_vertices.push_back(v2);
+	_vertices.push_back(v3);
+
+	GLushort first = _indices.empty() ? 0 : _indices.back() + 1;
+	_indices.push_back(first);
+	_indices.push_back(first + 1);
+	_indices.push_back(first + 2);
+	_indices.push_back(first + 1);
+	_indices.push_back(first + 2);
+	_indices.push_back(first + 3);
+}
+
 void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo)
 {
 	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
@@ -829,6 +875,61 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			if (e.HasComponent<LightSource>())
 				lightsource = e;
 			if (!mIsCurrSceneUI && ShouldCull(e)) continue;
+
+			if (e.HasComponent<ParticleSystem>())
+			{
+				if (e.GetComponent<ParticleSystem>().mIsActive)
+				{
+					bool thisEntity{ false };
+					for (auto i = particleManager->ParticleBegin(); i != particleManager->ParticleLast(); ++i)
+					{
+						if (!thisEntity)
+						{
+							if (i->GetEntityID() != e.id) continue;
+							thisEntity = true;
+						}
+						else
+							if (i->GetEntityID() != e.id)
+								break;
+						Sprite sprite = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite;
+						if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
+							mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+						switch (sprite.sprite)
+						{
+						case SPRITE::TEXTURE:
+						{
+							GLuint texid = sprite.texture;
+
+							if (texid != 0)
+							{
+								if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+									_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+								if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+									== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+									_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+								{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+								CreateSquareParticle(texid, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, i->GetTransform(), sprite.color,
+									_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+									_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices);
+							}
+						}
+						break;
+						case SPRITE::SQUARE:
+							CreateSquareParticle(0, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE, i->GetTransform(), sprite.color,
+								mVertices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE],
+								mIndices[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE]);
+							break;
+						case SPRITE::CIRCLE:
+							CreateCircle(i->GetTransform(), sprite.color, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
+							break;
+						default:
+							break;
+						}
+					}
+				}
+			}
+
 			if (e.HasComponent<CircularViewport>())
 			{
 				if (!e.HasComponent<Sprite>()) continue;

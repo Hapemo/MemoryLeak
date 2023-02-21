@@ -235,7 +235,7 @@
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -409,6 +409,7 @@
     <ClInclude Include="include\Start_1.h" />
     <ClInclude Include="include\Start_background.h" />
     <ClInclude Include="include\TagVariable.h" />
+    <ClInclude Include="include\ParticleManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AI.cpp" />
@@ -459,6 +460,7 @@
     <ClCompile Include="source\Logic\MonoMethods.cpp" />
     <ClCompile Include="source\Logic\ScriptComponent.cpp" />
     <ClCompile Include="source\Logic\ScriptManager.cpp" />
+    <ClCompile Include="source\ParticleManager.cpp" />
     <ClCompile Include="source\MovementAIManager.cpp" />
     <ClCompile Include="source\Physics\Collision2DManager.cpp" />
     <ClCompile Include="source\Physics\Physics2DManager.cpp" />

@@ -85,6 +85,9 @@ public:
     *******************************************************************************/
     static std::map<std::string, std::string> TextFileToMap(std::fstream& file);
 
+    // Make a static number
+    static inline int RandInt(int max, int min) { return (rand() % (max - min + 1)) + min;  }
+
     /*
     static double RoundToDecimal(double _value, int _decimal) {
         if (_decimal < 0) return _value;
