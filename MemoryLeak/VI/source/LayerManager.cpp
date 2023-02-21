@@ -4,10 +4,10 @@
 \par	DP email: l.hsienweijoachim@digipen.edu
 \par	Course: GAM200
 \par	Group: Memory Leak Studios
-\date	26-11-2022
+\date	14-02-2023
 \brief  This file contains the definition of the Layer Manager Class and its
 		member functions. It handles the updating of the layer values
-		of each entity through the use of a layer collider
+		of each entity through the y-axis value comparisions with an offset
 *******************************************************************************/
 
 // -----------------------------
@@ -17,49 +17,12 @@
 
 /*!*****************************************************************************
 \brief
-CI_RectvsRect function that is modified to handle layer collider that does not
-require dynamic checks
-\param Contact &
-A reference to struct containing entity pair data to check
-\return bool
-Evaluated result of whether collision has occurred between the given entity pair
-*******************************************************************************/
-bool LayerManager::CI_RectvsRect(Contact& _contact) {
-	// Get reference to the entities
-	Entity& obj1{ _contact.obj[0] },
-		& obj2{ _contact.obj[1] };
-
-	// Store center and scale of both entities
-	Math::Vec2	center1{ Math::Vec2{obj1.GetComponent<Transform>().translation} + obj1.GetComponent<LayerCollider>().centerOffset },
-		scale1{ static_cast<float>(static_cast<double>(std::fabs(obj1.GetComponent<Transform>().scale.x)) * static_cast<double>(obj1.GetComponent<LayerCollider>().scaleOffset.x) / 2.0),
-				static_cast<float>(static_cast<double>(std::fabs(obj1.GetComponent<Transform>().scale.y)) * static_cast<double>(obj1.GetComponent<LayerCollider>().scaleOffset.y) / 2.0) },
-		center2{ Math::Vec2{obj2.GetComponent<Transform>().translation} + obj2.GetComponent<LayerCollider>().centerOffset },
-		scale2{ static_cast<float>(static_cast<double>(std::fabs(obj2.GetComponent<Transform>().scale.x)) * static_cast<double>(obj2.GetComponent<LayerCollider>().scaleOffset.x) / 2.0),
-				static_cast<float>(static_cast<double>(std::fabs(obj2.GetComponent<Transform>().scale.y)) * static_cast<double>(obj2.GetComponent<LayerCollider>().scaleOffset.y) / 2.0) };
-
-// Only static check required
-	Math::Vec2 distVec{ center1 - center2 };
-	Math::Vec2 diff{ scale1.x + scale2.x - std::fabs(distVec.x),
-					 scale1.y + scale2.y - std::fabs(distVec.y) };
-	// For 2 rect to collide, both axis needs to be larger than 0, indicating a penetration has happened on both axis
-	if (0.f < diff.x) {
-		if (0.f < diff.y) {
-			return true;
-		}
-	}
-
-	// Not colliding; Return false
-	return false;
-}
-
-/*!*****************************************************************************
-\brief
 Update function that calls the inner step function once enough time has passed
 \return void
 NULL
 *******************************************************************************/
-void LayerManager::Update() {
-	mAccumulatedDT += FPSManager::dt;
+void LayerManager::Update(const double& _appDT) {
+	mAccumulatedDT += _appDT;
 
 	if (mAccumulatedDT > mAccumulatedDTCap)
 		mAccumulatedDT = mAccumulatedDTCap;
@@ -72,92 +35,41 @@ void LayerManager::Update() {
 
 /*!*****************************************************************************
 \brief
+entityLayerCmp function which servers as the bool comparision function for sorting
+purposes
+\param const Entity&
+A reference to read-only entity to compare with
+\param const Entity&
+A reference to read-only entity to compare against
+\return bool
+Comparision result
+*******************************************************************************/
+bool entityLayerCmp(const Entity& _e1, const Entity& _e2) {
+	return (_e1.GetComponent<Transform>().translation.y + _e1.GetComponent<LayerCollider>().centerOffset.y) <= (_e2.GetComponent<Transform>().translation.y + _e2.GetComponent<LayerCollider>().centerOffset.y);
+}
+
+/*!*****************************************************************************
+\brief
 Step function that checks which entities layer collider collides and stores that
 as a contact info for resolution of the layer values
 \return void
 NULL
 *******************************************************************************/
 void LayerManager::Step() {
-	// Loop through player entities
-	for (auto e1{ mEntities.begin() }; e1 != mEntities.end(); ++e1) {
-		if (!e1->ShouldRun())
-			continue;
+	// Create sorted container using set custom compare
+	std::set<Entity, decltype(&entityLayerCmp)> sortedEntities(&entityLayerCmp);
+	for (auto& entity : mEntities)
+		sortedEntities.emplace(entity);
 
-		if (e1->GetComponent<General>().tag != TAG::PLAYER)
-			continue;
-
-		// Loop through all other entities
-		for (auto e2{ mEntities.begin() }; e2 != mEntities.end(); ++e2) {
-			if (e1 == e2)
-				continue;
-
-			if (!e2->ShouldRun())
-				continue;
-
-			Contact contact{ *e1, *e2, static_cast<int>(ColliderType::RECT), static_cast<int>(ColliderType::RECT) };
-			// Check for layer collision
-			if (CI_RectvsRect(contact)) 
-				mUpdateList.emplace_back(contact);	// Push into list if true
-	
-		}
+	double index{ 0 };
+	for (auto it{ sortedEntities.begin() }; it != sortedEntities.end(); ++it, ++index) {
+		//if (it->GetComponent<General>().tag == TAG::PLAYER) {
+		//	auto nextIt{ std::next(it, 1) };
+		//	if (nextIt != sortedEntities.end())
+		//		it->GetComponent<Sprite>().layer = nextIt->GetComponent<Sprite>().layer - 2;
+		//	else
+		//		it->GetComponent<Sprite>().layer = 255;
+		//}
+		it->GetComponent<Sprite>().layer = static_cast<int>(std::lerp(255.0, 0.0, index / static_cast<double>(sortedEntities.size())));
 	}
-
-	//for (const std::pair<Entity, Entity>& possibleContactPair : collision2DManager->GetPossibleContactList()) {
-	//	if (!possibleContactPair.first.ShouldRun() || !possibleContactPair.second.ShouldRun())
-	//		continue;
-
-	//	//if (possibleContactPair.first.GetComponent<General>().tag != TAG::PLAYER && 
-	//	//	possibleContactPair.second.GetComponent<General>().tag != TAG::PLAYER)
-	//	//	continue;
-
-	//	if (!possibleContactPair.first.HasComponent<LayerCollider>() || !possibleContactPair.second.HasComponent<LayerCollider>())
-	//		continue;
-
-	//	Contact contact{ possibleContactPair.first, possibleContactPair.second, static_cast<int>(ColliderType::RECT), static_cast<int>(ColliderType::RECT) };
-	//	if (CI_RectvsRect(contact))
-	//		mUpdateList.emplace_back(contact);
-	//}
-
-	//  For every contact
-	for (auto& item : mUpdateList) {
-		// Check if they both have a sprite component (contains the layer value
-		if (item.obj[0].HasComponent<Sprite>() && item.obj[1].HasComponent<Sprite>()) {
-			// Check which entity is the player and store its original value while making its layer value be one
-			// lesser than the current entity
-			if (item.obj[0].GetComponent<General>().tag == TAG::PLAYER) {
-				LayerManager::mOriginLayerMap.try_emplace(&item.obj[0], item.obj[0].GetComponent<Sprite>().layer);
-				item.obj[0].GetComponent<Sprite>().layer = item.obj[1].GetComponent<Sprite>().layer - 2;
-
-			}
-			else if (item.obj[1].GetComponent<General>().tag == TAG::PLAYER) {
-				LayerManager::mOriginLayerMap.try_emplace(&item.obj[1], item.obj[1].GetComponent<Sprite>().layer);
-				item.obj[1].GetComponent<Sprite>().layer = item.obj[0].GetComponent<Sprite>().layer - 2;
-			}
-		}
-	}
-
-	// Code to pop back the original layer value after entities are no longer colliding
-	// Does not work if multiple layer colliders overlap the player's layer collider
-	// Causes two layer values to be inserted and creates issues
-	bool CollidedFlag{ false };
-	for (auto it{ mOriginLayerMap.begin() }; it != mOriginLayerMap.end(); ) {
-		for (auto& collisionPair : mUpdateList) {
-			if (&collisionPair.obj[0] == it->first || &collisionPair.obj[1] == it->first)
-				CollidedFlag = true;
-		}
-
-		if (CollidedFlag)
-			++it;
-		else {
-			if (it->first->id > MAX_ENTITIES)
-				continue;
-			if (it->first->HasComponent<Sprite>())
-				it->first->GetComponent<Sprite>().layer = it->second;
-			it = mOriginLayerMap.erase(it);
-			CollidedFlag = false;
-		}
-	}
-
-	// Clear the update list
-	mUpdateList.clear();
 }

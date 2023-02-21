@@ -112,7 +112,7 @@ void Application::SystemUpdate() {
 
   // Layer
   TRACK_PERFORMANCE("Layer");
-  layerManager->Update();
+  layerManager->Update(FPSManager::dt);
   END_TRACK("Layer");
 
   // Animator
