@@ -1,0 +1,73 @@
+[
+  {
+    "SceneName": "LevelTutorial",
+    "Transform": {
+      "scale": {
+        "X": 1600.0,
+        "Y": 900.0
+      },
+      "rotation": 1.0,
+      "translation": {
+        "X": 0.0,
+        "Y": 0.0
+      }
+    },
+    "isActive": false,
+    "layer": 0,
+    "order": 0
+  }
+      {
+        "SceneName": "Pause",
+        "isActive": true,
+        "layer": 10,
+        "order": 0
+    },
+    {
+        "SceneName": "Game Over",
+        "isActive": true,
+        "layer": 10,
+        "order": 4
+    },
+    {
+        "SceneName": "How_To_Play",
+        "isActive": true,
+        "layer": 10,
+        "order": 0
+    },
+    {
+        "SceneName": "Quit Confirmation",
+        "isActive": true,
+        "layer": 10,
+        "order": 4
+    },
+    {
+        "SceneName": "Dialogue",
+        "isActive": false,
+        "layer": 8,
+        "order": 7
+    },
+    {
+        "SceneName": "WeatherMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "MiniMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "EnemyMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "FPS",
+        "isActive": false,
+        "layer": 10,
+        "order": 0
+    }
+]
