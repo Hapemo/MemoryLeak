@@ -365,7 +365,7 @@ void ResourceManager::LoadResource(std::filesystem::path const& entry) {
 	mAllResources.insert({ guid, dataPointer });
 	mAllFilePaths.insert({ guid, entry.string() });
 	myLock.unlock();
-	std::cout << "GUID: " << guid << " | File: " << entry.filename().string() << '\n';
+	//std::cout << "GUID: " << guid << " | File: " << entry.filename().string() << '\n';
 }
 
 void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {

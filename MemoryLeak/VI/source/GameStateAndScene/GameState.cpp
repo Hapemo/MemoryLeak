@@ -31,6 +31,7 @@ void GameState::Exit() {
 			if (e.HasComponent<Script>()) logicSystem->Dead(e);
 		scene.Exit();
 	}
+	particleManager->Reset();
 }
 
 // Load new gamestate with file path
