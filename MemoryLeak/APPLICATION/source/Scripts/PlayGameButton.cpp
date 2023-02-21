@@ -25,9 +25,35 @@ void PlayGameButton::Alive(Entity const& _e) {
 \brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void PlayGameButton::Init(Entity const& _e) {
-	(void)_e;
-	//LOG_INFO("Play button script starts works!!!");
+void PlayGameButton::Init(Entity const& gob) {
+	(void)gob;
+	Entity e = gob;
+
+	//e.AddComponent(ParticleSystem{
+	//	ParticleSystem::ParticleInfo{
+	//		1, // mScale			
+	//		0, // mFacing		
+	//		3, // mLifespan	
+	//		Sprite{
+	//			RED, // color
+	//			SPRITE::CIRCLE, // sprit
+	//			0, // texture
+	//			e.GetComponent<Sprite>().layer + 1  // layer
+	//		}, // mSprite		
+	//		0, // mRotation	
+	//		10, // mSpeed			
+	//		false, // mFading			
+	//		100  // mLayer				
+	//	},
+	//	5, // mDensity 
+	//	e.GetComponent<Transform>().translation, // mCenter
+	//	1, // mAreaWidth 
+	//	0, // mDirection
+	//	0, // mSpread 
+	//	10, // mDuration 
+	//	true // mIsActive 
+	//});
+	LOG_INFO(gob.GetComponent<General>().name + "Added component particle system============================================");
 }
 
 /*!*****************************************************************************

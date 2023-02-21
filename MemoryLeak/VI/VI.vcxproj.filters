@@ -55,6 +55,7 @@
     <ClCompile Include="source\Logic\InternalCalls.cpp" />
     <ClCompile Include="source\Logic\MonoMethods.cpp" />
     <ClCompile Include="source\MovementAIManager.cpp" />
+    <ClCompile Include="source\ParticleManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="include\Graphics\AnimationVariable.h" />
     <ClInclude Include="include\Physics\QuadTree.h" />
     <ClInclude Include="include\MovementAIManager.h" />
+    <ClInclude Include="include\ParticleManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

@@ -78,7 +78,7 @@ void Application::SystemInit() {
 }
 
 void Application::SystemUpdate() {
-    buttonManager->Update();
+  buttonManager->Update();
   // AI
   TRACK_PERFORMANCE("AI");
   aiManager->UpdateAI();
@@ -110,9 +110,14 @@ void Application::SystemUpdate() {
   collision2DManager->Update(FPSManager::dt);
   END_TRACK("Collision");
 
+  // Particles
+  TRACK_PERFORMANCE("Particle");
+  particleManager->Update();
+  END_TRACK("Particle");
+
   // Layer
   TRACK_PERFORMANCE("Layer");
-  layerManager->Update();
+  layerManager->Update(FPSManager::dt);
   END_TRACK("Layer");
 
   // Animator
@@ -220,9 +225,9 @@ void Application::MainUpdate() {
     END_TRACK("Graphics");
 
     // Audio
-    TRACK_PERFORMANCE("Audio");
+    //TRACK_PERFORMANCE("Audio");
     audioManager->UpdateSound(); 
-    END_TRACK("Audio");
+    //END_TRACK("Audio");
 
     // If it changes, it should've came from when updaing game logic
     //if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->GameStateExit();
