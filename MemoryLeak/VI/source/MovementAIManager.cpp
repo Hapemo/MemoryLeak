@@ -12,13 +12,13 @@ Entities and its Components.
 #include <ECSManager.h>
 
 
-void MovementAIManager::init()
+void MovementAIManager::Init()
 {
 	//for (auto& e : mEntities) {
 		//addTransform(e, e.GetComponent<Transform>());
 	//}
 }
-void MovementAIManager::update()
+void MovementAIManager::Update()
 {
 	for (auto& e : mEntities) {
 		if (e.GetComponent<MovementAI>().run)
@@ -27,42 +27,7 @@ void MovementAIManager::update()
 				return;
 			if (e.GetComponent<MovementAI>().state == 0)//initialise
 			{
-
-				if (e.GetComponent<MovementAI>().reverse)
-				{
-					e.GetComponent<MovementAI>().step--;
-				}
-				else
-				{
-					e.GetComponent<MovementAI>().step++;
-				}
-				if (e.GetComponent<MovementAI>().loop)
-				{
-					if (e.GetComponent<MovementAI>().step < 0)
-					{
-						e.GetComponent<MovementAI>().reverse = false;
-						e.GetComponent<MovementAI>().step = 1;
-					}
-					else if (e.GetComponent<MovementAI>().step >= e.GetComponent<MovementAI>().targetTransforms.size())
-					{
-						e.GetComponent<MovementAI>().reverse = true;
-						e.GetComponent<MovementAI>().step = (int)e.GetComponent<MovementAI>().targetTransforms.size() - 2;
-					}
-				}
-				else
-				{
-					if (e.GetComponent<MovementAI>().step >= e.GetComponent<MovementAI>().targetTransforms.size())
-					{
-						e.GetComponent<MovementAI>().run = false;
-						return;
-					}
-				}
-				if (e.GetComponent<MovementAI>().step < 0)
-				{
-					e.GetComponent<MovementAI>().reverse = false;
-					e.GetComponent<MovementAI>().step = 1;
-				}
-
+				e.GetComponent<MovementAI>().step = e.GetComponent<MovementAI>().nextStep;
 				e.GetComponent<MovementAI>().currtime = e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step];
 				e.GetComponent<MovementAI>().state= 1;
 			}
@@ -100,13 +65,124 @@ void MovementAIManager::update()
 					e.GetComponent<MovementAI>().run = false;
 				}
 				e.GetComponent<MovementAI>().state = 0;
+				if (e.GetComponent<MovementAI>().reverse)
+				{
+					e.GetComponent<MovementAI>().nextStep--;
+				}
+				else
+				{
+					e.GetComponent<MovementAI>().nextStep++;
+				}
+				if (e.GetComponent<MovementAI>().loop)
+				{
+					if (e.GetComponent<MovementAI>().nextStep < 0)
+					{
+						e.GetComponent<MovementAI>().reverse = false;
+						e.GetComponent<MovementAI>().nextStep = 1;
+					}
+					else if (e.GetComponent<MovementAI>().nextStep >= e.GetComponent<MovementAI>().targetTransforms.size())
+					{
+						if (e.GetComponent<MovementAI>().cycle)
+						{
+							e.GetComponent<MovementAI>().nextStep = 0;
+						}
+						else
+						{
+							e.GetComponent<MovementAI>().reverse = true;
+							e.GetComponent<MovementAI>().nextStep = (int)e.GetComponent<MovementAI>().targetTransforms.size() - 2;
+						}
+					}
+				}
+				else
+				{
+					if (e.GetComponent<MovementAI>().nextStep >= e.GetComponent<MovementAI>().targetTransforms.size())
+					{
+						e.GetComponent<MovementAI>().run = false;
+						return;
+					}
+				}
+				if (e.GetComponent<MovementAI>().nextStep < 0)
+				{
+					e.GetComponent<MovementAI>().reverse = false;
+					e.GetComponent<MovementAI>().nextStep = 1;
+				}
 			}
 		}
 	}
 }
-void MovementAIManager::addTransform(Entity e, Transform t)
+void MovementAIManager::AddTransform(Entity e, Transform t, float time)
 {
 	e.GetComponent<MovementAI>().targetTransforms.push_back(t);
-	e.GetComponent<MovementAI>().time.push_back(1.f);
+	e.GetComponent<MovementAI>().time.push_back(time);
 }
-
+void MovementAIManager::AddTransformDifference(Entity e, Transform d, float time)
+{
+	int i = e.GetComponent<MovementAI>().targetTransforms.size() - 1;
+	d.scale += e.GetComponent<MovementAI>().targetTransforms[i].scale;
+	d.rotation += e.GetComponent<MovementAI>().targetTransforms[i].rotation;
+	d.translation += e.GetComponent<MovementAI>().targetTransforms[i].translation;
+	e.GetComponent<MovementAI>().targetTransforms.push_back(d);
+	e.GetComponent<MovementAI>().time.push_back(time);
+}
+bool MovementAIManager::SetNextStep(Entity e, int i)
+{
+	if (i >= 0 && i < e.GetComponent<MovementAI>().targetTransforms.size())
+	{
+		e.GetComponent<MovementAI>().step = i;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+void MovementAIManager::StartAnimation(Entity e)
+{
+	e.GetComponent<MovementAI>().run = true;
+}
+void MovementAIManager::StopAfterThisAnimation(Entity e, bool next)
+{
+	e.GetComponent<MovementAI>().next = !next;
+}
+void MovementAIManager::StopAfterEndofAnimationLoop(Entity e, bool loop)
+{
+	e.GetComponent<MovementAI>().loop = !loop;
+}
+void MovementAIManager::ReverseOrderAfterNextAnimation(Entity e, bool reverse)
+{
+	e.GetComponent<MovementAI>().reverse = reverse;
+}
+void MovementAIManager::SetAnimationLoopToCycle(Entity e, bool cycle)
+{
+	e.GetComponent<MovementAI>().cycle = cycle;
+}
+void MovementAIManager::SetCalculatedTimeFromPosition(Entity e, Math::Vec2 pos, int step)
+{
+	if (step != -1)
+	{
+		SetNextStep(e, step);
+	}
+	Math::Vec2 diff = e.GetComponent<Transform>().translation - e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation;
+	float time = std::max( diff.x / pos.x, diff.y / pos.y);
+	e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step] = time;
+}
+void MovementAIManager::SetCalculatedTimeFromRotation(Entity e, float rot, int step)
+{
+	if (step != -1)
+	{
+		SetNextStep(e, step);
+	}
+	float diff = e.GetComponent<Transform>().rotation - e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].rotation;
+	float time = diff/rot;
+	e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step] = time;
+}
+void MovementAIManager::SetCalculatedTimeFromScale(Entity e, Math::Vec2 scale, int step)
+{
+	if (step != -1)
+	{
+		SetNextStep(e, step);
+	}
+	Math::Vec2 diff = e.GetComponent<Transform>().scale - e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale;
+	float time = std::max(diff.x / scale.x, diff.y / scale.y);
+	e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step] = time;
+}

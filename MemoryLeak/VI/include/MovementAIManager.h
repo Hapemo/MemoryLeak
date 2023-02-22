@@ -26,11 +26,22 @@ DEFINES
 class MovementAIManager : public System
 {
 public:
-	void init();
-	void update();
-	void addTransform(Entity e, Transform t);
+	void Init();
+	void Update();
 
+	//Addtoscripting
+	void StartAnimation(Entity e);
+	void AddTransform(Entity e, Transform t, float time = 1.f);
+	void AddTransformDifference(Entity e, Transform t, float time = 1.f);
+	bool SetNextStep(Entity e, int i); // return ture if sucessful (withing 0 to the vector MAX)
+	void StopAfterThisAnimation(Entity e, bool next = true);
+	void StopAfterEndofAnimationLoop(Entity e, bool loop = true);
+	void ReverseOrderAfterNextAnimation(Entity e, bool reverse = true);
+	void SetAnimationLoopToCycle(Entity e, bool cycle = true);
+	void SetCalculatedTimeFromPosition(Entity e, Math::Vec2 pos, int step =-1);
+	void SetCalculatedTimeFromRotation(Entity e, float rot, int step =-1);
+	void SetCalculatedTimeFromScale(Entity e, Math::Vec2 scale, int step =-1);
+	//Addtoscripting
 private:
-	
 
 };

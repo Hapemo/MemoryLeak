@@ -39,10 +39,10 @@ Function will run on every update while the entity is active.
 *******************************************************************************/
 void RotateScript::Update(Entity const& _e) {
 	//LOG_INFO("RotateScript updating works!!!");
-	if (FUNC->CheckKey(E_STATE::HOLD, O)) {
+	if (VI::iInput::CheckKey(E_STATE::HOLD, O)) {
 		_e.GetComponent<Transform>().rotation += 0.05f;
 	}
-	else if (FUNC->CheckKey(E_STATE::HOLD, P)) {
+	else if (VI::iInput::CheckKey(E_STATE::HOLD, P)) {
 		_e.GetComponent<Transform>().rotation -= 0.05f;
 	}
 }

@@ -152,26 +152,37 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				e.AddComponent<AI>(getAI(entity[index]));
 			}
-			if (entity[index].HasMember("Text")) {
+			if (entity[index].HasMember("Text")) 
+			{
 				e.AddComponent<Text>(getText(entity[index]));
 			}
-			if (entity[index].HasMember("Dialogue")) {
+			if (entity[index].HasMember("Dialogue")) 
+			{
 				e.AddComponent<Dialogue>(getDialogue(entity[index]));
 			}
-			if (entity[index].HasMember("Script")) {
+			if (entity[index].HasMember("Script")) 
+			{
 				e.AddComponent<Script>(getScript(entity[index]));
 			}
-			if (entity[index].HasMember("Button")) {
+			if (entity[index].HasMember("Button")) 
+			{
 				e.AddComponent<Button>(getButton(entity[index]));
 			}
-			if (entity[index].HasMember("LightSource")) {
+			if (entity[index].HasMember("LightSource")) 
+			{
 				e.AddComponent<LightSource>(getLightSource(entity[index]));
 			}
-			if (entity[index].HasMember("ShadowCaster")) {
+			if (entity[index].HasMember("ShadowCaster")) 
+			{
 				e.AddComponent<ShadowCaster>(getShadowCaster(entity[index]));
 			}
-			if (entity[index].HasMember("CircularViewport")) {
+			if (entity[index].HasMember("CircularViewport")) 
+			{
 				e.AddComponent<CircularViewport>(getCircularViewport(entity[index]));
+			}
+			if (entity[index].HasMember("MovementAI")) 
+			{
+				e.AddComponent<MovementAI>(getMovementAI(entity[index]));
 			}
 			
 			//mEntities.insert(e);
@@ -657,7 +668,7 @@ ShadowCaster SerializationManager::getShadowCaster(Value& entity)
 	ShadowCaster shadowCaster;
 	shadowCaster.centerOffset = GetVec2(entity["ShadowCaster"]["centerOffset"]);
 	shadowCaster.scaleOffset = GetVec2(entity["ShadowCaster"]["scaleOffset"]);
-	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();;
+	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();
 	return shadowCaster;
 }
 CircularViewport SerializationManager::getCircularViewport(Value& entity)
@@ -666,7 +677,31 @@ CircularViewport SerializationManager::getCircularViewport(Value& entity)
 	(void)entity;
 	return circularViewport;
 }
+MovementAI SerializationManager::getMovementAI(Value& entity)
+{
+	MovementAI movementAI;
+	movementAI.run = entity["MovementAI"]["run"].GetBool();
+	movementAI.next = entity["MovementAI"]["next"].GetBool();
+	movementAI.loop = entity["MovementAI"]["loop"].GetBool();
+	movementAI.reverse = entity["MovementAI"]["reverse"].GetBool();
+	movementAI.cycle = entity["MovementAI"]["cycle"].GetBool();
+	movementAI.nextStep = entity["MovementAI"]["nextStep"].GetInt();
+	movementAI.acceleration = entity["MovementAI"]["acceleration"].GetFloat();
+	Value a(kObjectType);
+	if (entity["MovementAI"].HasMember("targets"))
+	{
+		a = entity["MovementAI"]["targets"].GetArray();
+		for (int j = 0; j < (int)a.Size(); ++j)
+		{
+			float time = a[j]["time"].GetInt();
+			Transform trans = getTransform(a[j]["Transform"]);
+			movementAI.time.push_back(time);
+			movementAI.targetTransforms.push_back(trans);
+		}
+	}
 
+	return movementAI;
+}
 
 
 
@@ -881,32 +916,36 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		{
 			addAI(scene, entity, e.GetComponent<AI>());
 		}
-		if (e.HasComponent<Text>()) {
-
+		if (e.HasComponent<Text>())
+		{
 			addText(scene, entity, e.GetComponent<Text>());
 		}
-		if (e.HasComponent<Dialogue>()) {
-
+		if (e.HasComponent<Dialogue>())
+		{
 			addDialogue(scene, entity, e.GetComponent<Dialogue>());
 		}
-		if (e.HasComponent<Script>()) {
-
+		if (e.HasComponent<Script>()) 
+		{
 			addScript(scene, entity, e.GetComponent<Script>());
 		}
-		if (e.HasComponent<Button>()) {
+		if (e.HasComponent<Button>()) 
+		{
 			addButton(scene, entity, e.GetComponent<Button>());
 		}
-		if (e.HasComponent<LightSource>()) {
-
+		if (e.HasComponent<LightSource>())
+		{
 			addLightSource(scene, entity, e.GetComponent<LightSource>());
 		}
-		if (e.HasComponent<ShadowCaster>()) {
-
+		if (e.HasComponent<ShadowCaster>()){
 			addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
 		}
-		if (e.HasComponent<CircularViewport>()) {
-
+		if (e.HasComponent<CircularViewport>()) 
+		{
 			addCircularViewport(scene, entity, e.GetComponent<CircularViewport>());
+		}
+		if (e.HasComponent<MovementAI>()) 
+		{
+			addMovementAI(scene, entity, e.GetComponent<MovementAI>());
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -1227,6 +1266,28 @@ void SerializationManager::addCircularViewport(Document& scene, Value& entity, C
 	Value tmp(kObjectType);
 	(void)circularViewport;
 	entity.AddMember(StringRef("CircularViewport"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addMovementAI(Document& scene, Value& entity, MovementAI movementAI)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("run"), movementAI.run, scene.GetAllocator());
+	tmp.AddMember(StringRef("next"), movementAI.next, scene.GetAllocator());
+	tmp.AddMember(StringRef("loop"), movementAI.loop, scene.GetAllocator());
+	tmp.AddMember(StringRef("reverse"), movementAI.reverse, scene.GetAllocator());
+	tmp.AddMember(StringRef("cycle"), movementAI.cycle, scene.GetAllocator());
+	tmp.AddMember(StringRef("nextStep"), movementAI.nextStep, scene.GetAllocator());
+	tmp.AddMember(StringRef("acceleration"), movementAI.acceleration, scene.GetAllocator());
+	Value child(kObjectType);
+	child.SetArray();
+	for (int i = 0; i < movementAI.targetTransforms.size(); ++i)
+	{
+		Value trans(kObjectType);
+		trans.AddMember(StringRef("time"), movementAI.time[i], scene.GetAllocator());
+		addTransform(scene, trans, movementAI.targetTransforms[i]);
+		child.PushBack(trans, scene.GetAllocator());
+	}
+	tmp.AddMember(StringRef("targets"), child, scene.GetAllocator());
+	entity.AddMember(StringRef("MovementAI"), tmp, scene.GetAllocator());
 }
 /*!*****************************************************************************
 \brief

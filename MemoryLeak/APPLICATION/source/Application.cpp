@@ -45,7 +45,7 @@ void Application::SystemInit() {
 #endif
   audioManager->Init();
   //aiManager->weatherAIinit();
-  movementAIManager->init();
+  movementAIManager->Init();
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
   //playerManager->Init(window_width, window_height);
@@ -80,9 +80,9 @@ void Application::SystemInit() {
 void Application::SystemUpdate() {
   buttonManager->Update();
   // AI
-  //TRACK_PERFORMANCE("AI");
-  aiManager->updateAI();
-  movementAIManager->update();
+  TRACK_PERFORMANCE("AI");
+  aiManager->UpdateAI();
+  movementAIManager->Update();
   END_TRACK("AI");
 
   //Scripting

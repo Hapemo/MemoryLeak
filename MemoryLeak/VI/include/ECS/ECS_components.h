@@ -273,10 +273,13 @@ struct MovementAI {
 	bool run = false;
 	bool next = true;	//save
 	bool loop = false; //save
-	bool reverse = false;
-	int step = 0;
-	int state{0};
+	bool reverse = false;//save
+	bool cycle = false;//save
+	int step = 1;
+	int nextStep = 1; //save
+	int state = 0;
 	float currtime;
+	float acceleration = 0.f;//save
 	std::vector<float> time; //save
 	std::vector<Transform> targetTransforms; //save
 };

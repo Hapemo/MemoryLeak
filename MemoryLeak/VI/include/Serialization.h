@@ -121,6 +121,7 @@ private:
 	LightSource getLightSource(Value& entity);
 	ShadowCaster getShadowCaster(Value& entity);
 	CircularViewport getCircularViewport(Value& entity);
+	MovementAI getMovementAI(Value& entity);
 	//save components 
 	void addGeneral(Document& scene, Value& entity, General general);
 	void addLifespan(Document& scene, Value& entity, Lifespan lifespan);
@@ -143,7 +144,7 @@ private:
 	void addLightSource(Document& scene, Value& entity, LightSource lightSource);
 	void addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster);
 	void addCircularViewport(Document& scene, Value& entity, CircularViewport circularViewport);
-	
+	void addMovementAI(Document& scene, Value& entity, MovementAI movementAI);
 public:
 	//static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
 	//static SceneData LoadSceneData(std::string const& _filePath);

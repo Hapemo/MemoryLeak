@@ -92,7 +92,7 @@ The id of the dialog to get.
 \return
 Returns the dialog text in string.
 *******************************************************************************/
-std::string DialogManager::GetDialogue(int _id) {
+std::string DialogManager::GetLine(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].text;
 	else LOG_ERROR("GetDialogue(" + std::to_string(_id) + "): Dialogue ID doesn't exist!");
 	return "";

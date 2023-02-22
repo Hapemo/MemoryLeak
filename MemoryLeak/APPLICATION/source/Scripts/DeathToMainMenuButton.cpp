@@ -65,12 +65,12 @@ void DeathToMainMenuButton::Update(Entity const& _e) {
 	}
 	if(_e.HasComponent<Button>())
 		if (_e.GetComponent<Button>().activated) {
-			FUNC->ChangeGameState("Menu");
-			(FUNC->SelectScene("Settings")).Pause(true);
-			(FUNC->SelectScene("How_To_Play")).Pause(true);
-			(FUNC->SelectScene("Quit Confirmation")).Pause(true);
-			(FUNC->SelectScene("Menu_Main")).Pause(false);
-			(FUNC->SelectScene("Pause")).Pause(false);
+			VI::iGameState::ChangeGameState("Menu");
+			(VI::iScene::Select("Settings")).Pause(true);
+			(VI::iScene::Select("How_To_Play")).Pause(true);
+			(VI::iScene::Select("Quit Confirmation")).Pause(true);
+			(VI::iScene::Select("Menu_Main")).Pause(false);
+			(VI::iScene::Select("Pause")).Pause(false);
 		}
 }
 

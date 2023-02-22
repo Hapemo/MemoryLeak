@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="BaseScript.cs" />
     <Compile Include="CrystalBallScript.cs" />
+    <Compile Include="CutSceneScript.cs" />
     <Compile Include="EnemyMapScript.cs" />
     <Compile Include="FragmentScript.cs" />
     <Compile Include="InternalCalls.cs" />

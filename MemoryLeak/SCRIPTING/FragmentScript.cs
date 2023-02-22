@@ -13,7 +13,7 @@ namespace BonVoyage {
         }
 
         public void Update(int _ENTITY) {
-            //if (VI.Physics.EntitiesCollided("Boat", "fragment1drop", "Level1"))
+            //if (VI.Physics.s_EntitiesCollided("Boat", "fragment1drop", "Level1"))
             //{ 
             
             //}

@@ -148,7 +148,7 @@ int AIManager::GetCurrentWeather(int index, float posX, float posY)
 \return
 None.
 *******************************************************************************/
-void AIManager::updateAI()
+void AIManager::UpdateAI()
 {
 	weatherAIupdate();
 	for (auto& e : mEntities) {
