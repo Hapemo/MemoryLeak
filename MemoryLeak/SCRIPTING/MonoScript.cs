@@ -325,15 +325,15 @@ namespace BonVoyage
               if (VI.Math.SqMagnitude(DirX, DirY) > Epsilon * Epsilon) {
                   NormX = VI.Math.Normalize.X(DirX, DirY);
                   NormY = VI.Math.Normalize.Y(DirX, DirY);
-                  ApplyForce("Boat", "Level1", NormX, NormY, PlayerSpeed);
+                  //ApplyForce("Boat", "Level1", NormX, NormY, PlayerSpeed);
               }
               PlayerRotation = GetRotation(NormX, NormY);
-              SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
-              VI.Audio.s_Play("Boat", "Level1");
+              //SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
+              //VI.Audio.s_Play("Boat", "Level1");
             }
             if (!VI.Input.Key.Hold(349))
             {
-                VI.Audio.s_Stop("Boat", "Level1");
+                //VI.Audio.s_Stop("Boat", "Level1");
             }
             #endregion
 

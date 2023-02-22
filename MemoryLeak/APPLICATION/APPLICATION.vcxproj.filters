@@ -6,7 +6,6 @@
     <ClInclude Include="include\Scripts\ScaleScript.h" />
     <ClInclude Include="include\Scripts\TestScript.h" />
     <ClInclude Include="include\Scripts\DialogueScript.h" />
-    <ClInclude Include="include\Scripts\PlayerMovementScript.h" />
     <ClInclude Include="include\Scripts\PlayGameButton.h" />
     <ClInclude Include="include\Scripts\HowToPlayButton.h" />
     <ClInclude Include="include\Scripts\BackToMainMenuButton.h" />
@@ -22,6 +21,7 @@
     <ClInclude Include="include\Scripts\PauseButton.h" />
     <ClInclude Include="include\Scripts\DeathToMainMenuButton.h" />
     <ClInclude Include="include\Scripts\FPSPrint.h" />
+    <ClInclude Include="include\Scripts\PlayerMovementScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
@@ -33,7 +33,6 @@
     <ClCompile Include="source\Scripts\DialogueScript.cpp" />
     <ClCompile Include="source\Scripts\ExitGameButton.cpp" />
     <ClCompile Include="source\Scripts\HowToPlayButton.cpp" />
-    <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
     <ClCompile Include="source\Scripts\PlayGameButton.cpp" />
     <ClCompile Include="source\Scripts\RotateScript.cpp" />
     <ClCompile Include="source\Scripts\ScaleScript.cpp" />
@@ -46,5 +45,6 @@
     <ClCompile Include="source\Scripts\PauseButton.cpp" />
     <ClCompile Include="source\Scripts\DeathToMainMenuButton.cpp" />
     <ClCompile Include="source\Scripts\FPSPrint.cpp" />
+    <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
   </ItemGroup>
 </Project>
