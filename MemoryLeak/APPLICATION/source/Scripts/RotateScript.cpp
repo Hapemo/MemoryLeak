@@ -17,32 +17,58 @@ REGISTER_SCRIPT(ScriptComponent, RotateScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void RotateScript::Alive(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("RotateScript alive works!!!");
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void RotateScript::StartScript(Entity const& gob) {
-	(void)gob;
-	LOG_INFO("RotateScript starts works!!!");
+void RotateScript::Init(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("RotateScript init works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void RotateScript::UpdateScript(Entity const& gob) {
+void RotateScript::Update(Entity const& _e) {
 	//LOG_INFO("RotateScript updating works!!!");
-	if (FUNC->CheckKey(E_STATE::HOLD, O)) {
-		gob.GetComponent<Transform>().rotation += 0.05f;
+	if (VI::iInput::CheckKey(E_STATE::HOLD, O)) {
+		_e.GetComponent<Transform>().rotation += 0.05f;
 	}
-	else if (FUNC->CheckKey(E_STATE::HOLD, P)) {
-		gob.GetComponent<Transform>().rotation -= 0.05f;
+	else if (VI::iInput::CheckKey(E_STATE::HOLD, P)) {
+		_e.GetComponent<Transform>().rotation -= 0.05f;
 	}
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on fixed delta time.
+*******************************************************************************/
+void RotateScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void RotateScript::EndScript(Entity const& gob) {
-	(void)gob;
-	LOG_INFO("RotateScript end works!!!");
+void RotateScript::Exit(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("RotateScript exit works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void RotateScript::Dead(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("RotateScript dead works!!!");
 }

@@ -25,29 +25,33 @@ namespace {
 	static bool speedCheat{ false };
 }
 
-void PlayerMovementScript::StartScript(const Entity& _e) {
+void PlayerMovementScript::Alive(const Entity& _e) {
+	(void)_e;
+}
+
+void PlayerMovementScript::Init(const Entity& _e) {
 	(void)_e;
 	inited = false;
 }
 
-void PlayerMovementScript::UpdateScript(const Entity& _e) {
+void PlayerMovementScript::Update(const Entity& _e) {
 	//if (Input::CheckKey(PRESS, SPACE)) std::cout << "MousePos: " << FUNC->GetWorldMousePos() << '\n';
-	/*if (!FUNC->IsPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
-		FUNC->PlayBGSound("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);*/
+	/*if (!VI::iAudio::IsBgmPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
+		VI::iAudio::PlayBGM("Bon_Voyage_BGM", (int)E_AUDIO_CHANNEL::MAINBACKGROUND);*/
 	//if (_e.HasComponent<Audio>())
 		//_e.GetComponent<Audio>().sound.volume = 0.0f;
 
 	if (!inited) {
-		littleGirl = FUNC->GetEntity("ActivateLittleGirlScript", "Level1");
-		dialogueText = FUNC->GetEntity("DialogueText", "Level1");
-		water = FUNC->GetEntity("Water", "Level1");
-		enemy = FUNC->GetEntity("Enemy", "Level1");
+		littleGirl = VI::iEntity::GetEntity("ActivateLittleGirlScript", "Level1");
+		dialogueText = VI::iEntity::GetEntity("DialogueText", "Level1");
+		water = VI::iEntity::GetEntity("Water", "Level1");
+		enemy = VI::iEntity::GetEntity("Enemy", "Level1");
 		if (_e.HasComponent<Audio>()) {
 			_e.GetComponent<Audio>().sound.toPlay = true;
 			_e.GetComponent<Audio>().sound.isLoop = true;
 		}
-		currScene = &(FUNC->SelectScene("Level1"));
-		currCamera = &FUNC->CurrentCamera();
+		currScene = &(VI::iScene::Select("Level1"));
+		currCamera = &VI::iCamera::CurrentCamera();
 		initialCamScale = currCamera->scale;
 		inited = true;
 	}
@@ -56,26 +60,26 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			currCamera->scale.x += 500 * (float)FUNC->GetDeltaTime();
 	_e.GetComponent<Transform>().scale.x = std::abs(_e.GetComponent<Transform>().scale.x);
 
-	if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::ESCAPE)) {
-		(FUNC->SelectScene("Settings")).Pause(true);
-		(FUNC->SelectScene("How_To_Play")).Pause(true);
-		(FUNC->SelectScene("Level1")).Pause(true);
-		(FUNC->SelectScene("Game Over")).Pause(true);
-		(FUNC->SelectScene("Pause")).Pause(false);
-		FUNC->PlaySoundInChannel("Button_Click_SFX", (int)E_AUDIO_CHANNEL::FORCEPLAY);
+	if (VI::iInput::CheckKey(E_STATE::PRESS, E_KEY::ESCAPE)) {
+		(VI::iScene::Select("Settings")).Pause(true);
+		(VI::iScene::Select("How_To_Play")).Pause(true);
+		(VI::iScene::Select("Level1")).Pause(true);
+		(VI::iScene::Select("Game Over")).Pause(true);
+		(VI::iScene::Select("Pause")).Pause(false);
+		VI::iAudio::ForcePlay("Button_Click_SFX");
 	}
 
-	if (FUNC->CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && FUNC->CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT)) {
-		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::L)) {
-			(FUNC->SelectScene("Level1")).Pause(true);
-			(FUNC->SelectScene("Game Over")).Pause(false);
+	if (VI::iInput::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL) && VI::iInput::CheckKey(E_STATE::HOLD, E_KEY::LEFT_SHIFT)) {
+		if (VI::iInput::CheckKey(E_STATE::PRESS, E_KEY::L)) {
+			(VI::iScene::Select("Level1")).Pause(true);
+			(VI::iScene::Select("Game Over")).Pause(false);
 			_e.Deactivate();
 		}
-		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::M)) canDie = !canDie;
-		if (FUNC->CheckKey(E_STATE::PRESS, E_KEY::B)) speedCheat = !speedCheat; // speed cheat toggle
+		if (VI::iInput::CheckKey(E_STATE::PRESS, E_KEY::M)) canDie = !canDie;
+		if (VI::iInput::CheckKey(E_STATE::PRESS, E_KEY::B)) speedCheat = !speedCheat; // speed cheat toggle
 	}
 
-	if (FUNC->CheckKey(E_STATE::HOLD, M_BUTTON_L) /* && (!FUNC->EntitiesCollidedByEntity(enemy, _e) || !canDie) */) {
+	if (VI::iInput::CheckKey(E_STATE::HOLD, M_BUTTON_L) /* && (!VI::iPhysics::EntitiesCollided(enemy, _e) || !canDie) */) {
 		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)/*|| _e.GetComponent<General>().name != "Boat"*/) {
 			/*Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currCamera->translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
@@ -106,7 +110,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			else if (tempRotation <= 13.f * miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 0);
 			else FUNC->SetSpriteSheetIndexByEntity(_e, 7);*/
 
-			if (FUNC->EntitiesCollidedByEntity(_e, littleGirl)) {
+			if (VI::iPhysics::EntitiesCollided(_e, littleGirl)) {
 				if (dialogueActivated == false) {
 					dialogueText.Activate();
 					dialogueActivated = true;
@@ -119,7 +123,7 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 			}
 		}
 		else {
-			if (FUNC->EntitiesCollidedByEntity(_e, littleGirl)) {
+			if (VI::iPhysics::EntitiesCollided(_e, littleGirl)) {
 				dialogueZoomOut = true;
 			}
 		}
@@ -143,6 +147,14 @@ void PlayerMovementScript::UpdateScript(const Entity& _e) {
 		currCamera->translation += (_e.GetComponent<Transform>().translation - currCamera->translation) * static_cast<float>(FUNC->GetDeltaTime()) * (speedCheat ? speedCheatMultiplier : 1);
 }
 
-void PlayerMovementScript::EndScript(const Entity& _e) {
+void PlayerMovementScript::FixedUpdate(const Entity& _e) {
+	(void)_e;
+}
+
+void PlayerMovementScript::Exit(const Entity& _e) {
+	(void)_e;
+}
+
+void PlayerMovementScript::Dead(const Entity& _e) {
 	(void)_e;
 }

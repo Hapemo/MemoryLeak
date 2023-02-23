@@ -18,9 +18,12 @@ class LogicSystem : public System
 {
 public:
 	enum class E_SCRIPTTYPE {
-		INIT = 1,
-		UPDATE = 2,
-		EXIT = 3,
+		ALIVE,
+		INIT,
+		UPDATE,
+		FIXED_UPDATE,
+		EXIT,
+		DEAD,
 	};
 
 	/*!*****************************************************************************
@@ -39,6 +42,24 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Activate logic system in application.
+	*******************************************************************************/
+	void Activate();
+
+	/*!*****************************************************************************
+	\brief
+	Exit logic system in application.
+	*******************************************************************************/
+	void Close();
+
+	/*!*****************************************************************************
+	\brief
+	Run the alive function for all active entities' scripts.
+	*******************************************************************************/
+	void Alive();
+
+	/*!*****************************************************************************
+	\brief
 	Run the initialisation function for all active entities' scripts.
 	*******************************************************************************/
 	void Init();
@@ -51,15 +72,33 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Run the fixed update function for all active entities' scripts.
+	*******************************************************************************/
+	void FixedUpdate();
+
+	/*!*****************************************************************************
+	\brief
 	Run the exit function for all active entities' scripts.
 	*******************************************************************************/
 	void Exit();
 
 	/*!*****************************************************************************
 	\brief
+	Run the dead function for all active entities' scripts.
+	*******************************************************************************/
+	void Dead();
+
+	/*!*****************************************************************************
+	\brief
+	Run the alive function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void Alive(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
 	Run the initialisation function for all entities' scripts given by the parameter.
 	*******************************************************************************/
-	void Init(std::set<Entity> const & _entities);
+	void Init(std::set<Entity> const& _entities);
 
 	/*!*****************************************************************************
 	\brief
@@ -69,9 +108,57 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Run the fixed update function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void FixedUpdate(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
 	Run the exit function for all entities' scripts given by the parameter.
 	*******************************************************************************/
 	void Exit(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
+	Run the dead function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void Dead(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
+	Run the alive function for entity.
+	*******************************************************************************/
+	void Alive(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Run the initialisation function for entity.
+	*******************************************************************************/
+	void Init(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Run the update function for entity.
+	*******************************************************************************/
+	void Update(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Run the fixed update function for entity.
+	*******************************************************************************/
+	void FixedUpdate(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Run the exit function for entity.
+	*******************************************************************************/
+	void Exit(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Run the dead function for entity.
+	*******************************************************************************/
+	void Dead(Entity const& _e);
 
 	/*!*****************************************************************************
 	\brief
@@ -80,5 +167,7 @@ public:
 	void RunScript(Entity const& _e, E_SCRIPTTYPE _type);
 
 private:
-		
+	double mAccumulatedDT{ 0.0 };
+	const double mFixedDT{ 1.0 / 60.0 };
+	const double mAccumulatedDTCap{ 1.0 };
 };

@@ -12,21 +12,20 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class MenuLightCircle : BaseScript
+    public class MenuLightCircle
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
-        }
-
         float size;
         float alpha;
         float stepSize, stepAlpha;
         float upperSize, lowerSize;
         float upperAlpha, lowerAlpha;
         bool increasing;
-        public void Init(int _id) {
+
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+        }
+
+        public void Init(int _ENTITY) {
             size = 110;
             lowerSize = 110;
             upperSize = 120;
@@ -41,19 +40,19 @@ namespace BonVoyage {
             increasing = true;
         }
 
-        public void Update(int _id) {
+        public void Update(int _ENTITY) {
             UpdateSizeAlpha();
-            InternalCalls.SetScaleX("LightCircle", "Menu_Main", size);
-            InternalCalls.SetScaleY("LightCircle", "Menu_Main", size);
-            InternalCalls.SetSpriteColor("LightCircle", "Menu_Main", 255, 255, 255, (int)alpha);
+            VI.Transform.Scale.s_SetX("LightCircle", "Menu_Main", size);
+            VI.Transform.Scale.s_SetY("LightCircle", "Menu_Main", size);
+            VI.LightSource.SpriteColor.s_Set("LightCircle", "Menu_Main", 255, 255, 255, (int)alpha);
         }
 
         void UpdateSizeAlpha()
         {
             if (increasing)
             {
-                size += stepSize * (float)InternalCalls.GetDeltaTime();
-                alpha += stepAlpha * (float)InternalCalls.GetDeltaTime();
+                size += stepSize * (float)VI.General.DeltaTime();
+                alpha += stepAlpha * (float)VI.General.DeltaTime();
                 if (size > upperSize)
                 {
                     size = upperSize;
@@ -63,8 +62,8 @@ namespace BonVoyage {
             }
             else
             {
-                size -= stepSize * (float)InternalCalls.GetDeltaTime();
-                alpha -= stepAlpha * (float)InternalCalls.GetDeltaTime();
+                size -= stepSize * (float)VI.General.DeltaTime();
+                alpha -= stepAlpha * (float)VI.General.DeltaTime();
                 if (size < lowerSize)
                 {
                     size = lowerSize;
@@ -74,8 +73,15 @@ namespace BonVoyage {
             }
         }
 
-        public void Exit(int _id) {
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+
+        public void Exit(int _ENTITY) {
             
+        }
+        public void Dead(int _ENTITY) {
+
         }
     }
 }

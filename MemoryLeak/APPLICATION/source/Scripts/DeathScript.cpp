@@ -18,26 +18,34 @@ REGISTER_SCRIPT(ScriptComponent, DeathScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void DeathScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void DeathScript::StartScript(Entity const& _e) {
+void DeathScript::Init(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Death script starts works!!!");
-	player = FUNC->GetEntity("Boat", "Level1");
+	player = VI::iEntity::GetEntity("Boat", "Level1");
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void DeathScript::UpdateScript(Entity const& _e) {
-	if (FUNC->CheckKey(HOLD, LEFT_CONTROL) && FUNC->CheckKey(HOLD, LEFT_SHIFT) && FUNC->CheckKey(PRESS, M)) canDie = !canDie;
+void DeathScript::Update(Entity const& _e) {
+	if (VI::iInput::CheckKey(HOLD, LEFT_CONTROL) && VI::iInput::CheckKey(HOLD, LEFT_SHIFT) && VI::iInput::CheckKey(PRESS, M)) canDie = !canDie;
 
 	static bool onEntry = false;
-	if (FUNC->EntitiesCollidedByEntity(player, _e)) onEntry = true;
+	if (VI::iPhysics::EntitiesCollided(player, _e)) onEntry = true;
 	if (onEntry && canDie) {
 		static bool capsized = false;
-		FUNC->SetTextureByEntity(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
+		VI::iTexture::SetTexture(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");
 		if (capsized == false) {
 			player.GetComponent<SheetAnimation>().frameCount = 11;
 			player.GetComponent<SheetAnimation>().timePerFrame = 0.15f;
@@ -47,8 +55,8 @@ void DeathScript::UpdateScript(Entity const& _e) {
 
 		if (player.GetComponent<SheetAnimation>().currFrameIndex == player.GetComponent<SheetAnimation>().frameCount - 1) {
 			player.Deactivate();
-			(FUNC->SelectScene("Level1")).Pause(true);
-			(FUNC->SelectScene("Game Over")).Pause(false);
+			(VI::iScene::Select("Level1")).Pause(true);
+			(VI::iScene::Select("Game Over")).Pause(false);
 			onEntry = false;
 			capsized = false;
 		}
@@ -57,9 +65,25 @@ void DeathScript::UpdateScript(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
+Function will run on fixed delta time.
+*******************************************************************************/
+void DeathScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void DeathScript::EndScript(Entity const& _e) {
+void DeathScript::Exit(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Death script end works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void DeathScript::Dead(Entity const& _e) {
+	(void)_e;
 }

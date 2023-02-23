@@ -15,7 +15,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include <Scene.h>
 #include <GameState.h>
 #include "GameStateManager.h"
-
+#include "ResourceManager.h"
 
 using namespace rapidjson;
 /*!*****************************************************************************
@@ -152,26 +152,37 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				e.AddComponent<AI>(getAI(entity[index]));
 			}
-			if (entity[index].HasMember("Text")) {
+			if (entity[index].HasMember("Text")) 
+			{
 				e.AddComponent<Text>(getText(entity[index]));
 			}
-			if (entity[index].HasMember("Dialogue")) {
+			if (entity[index].HasMember("Dialogue")) 
+			{
 				e.AddComponent<Dialogue>(getDialogue(entity[index]));
 			}
-			if (entity[index].HasMember("Script")) {
+			if (entity[index].HasMember("Script")) 
+			{
 				e.AddComponent<Script>(getScript(entity[index]));
 			}
-			if (entity[index].HasMember("Button")) {
+			if (entity[index].HasMember("Button")) 
+			{
 				e.AddComponent<Button>(getButton(entity[index]));
 			}
-			if (entity[index].HasMember("LightSource")) {
+			if (entity[index].HasMember("LightSource")) 
+			{
 				e.AddComponent<LightSource>(getLightSource(entity[index]));
 			}
-			if (entity[index].HasMember("ShadowCaster")) {
+			if (entity[index].HasMember("ShadowCaster")) 
+			{
 				e.AddComponent<ShadowCaster>(getShadowCaster(entity[index]));
 			}
-			if (entity[index].HasMember("CircularViewport")) {
+			if (entity[index].HasMember("CircularViewport")) 
+			{
 				e.AddComponent<CircularViewport>(getCircularViewport(entity[index]));
+			}
+			if (entity[index].HasMember("MovementAI")) 
+			{
+				e.AddComponent<MovementAI>(getMovementAI(entity[index]));
 			}
 			
 			//mEntities.insert(e);
@@ -657,7 +668,7 @@ ShadowCaster SerializationManager::getShadowCaster(Value& entity)
 	ShadowCaster shadowCaster;
 	shadowCaster.centerOffset = GetVec2(entity["ShadowCaster"]["centerOffset"]);
 	shadowCaster.scaleOffset = GetVec2(entity["ShadowCaster"]["scaleOffset"]);
-	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();;
+	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();
 	return shadowCaster;
 }
 CircularViewport SerializationManager::getCircularViewport(Value& entity)
@@ -666,7 +677,31 @@ CircularViewport SerializationManager::getCircularViewport(Value& entity)
 	(void)entity;
 	return circularViewport;
 }
+MovementAI SerializationManager::getMovementAI(Value& entity)
+{
+	MovementAI movementAI;
+	movementAI.run = entity["MovementAI"]["run"].GetBool();
+	movementAI.next = entity["MovementAI"]["next"].GetBool();
+	movementAI.loop = entity["MovementAI"]["loop"].GetBool();
+	movementAI.reverse = entity["MovementAI"]["reverse"].GetBool();
+	movementAI.cycle = entity["MovementAI"]["cycle"].GetBool();
+	movementAI.nextStep = entity["MovementAI"]["nextStep"].GetInt();
+	movementAI.acceleration = entity["MovementAI"]["acceleration"].GetFloat();
+	Value a(kObjectType);
+	if (entity["MovementAI"].HasMember("targets"))
+	{
+		a = entity["MovementAI"]["targets"].GetArray();
+		for (int j = 0; j < (int)a.Size(); ++j)
+		{
+			float time = a[j]["time"].GetInt();
+			Transform trans = getTransform(a[j]["Transform"]);
+			movementAI.time.push_back(time);
+			movementAI.targetTransforms.push_back(trans);
+		}
+	}
 
+	return movementAI;
+}
 
 
 
@@ -819,7 +854,7 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 	StringBuffer buffer;
 	PrettyWriter<StringBuffer> writer(buffer);
 	//int counter = 0;
-
+	GUIDList.clear();
 	for (const Entity& e : _sceneData.mEntities)
 	{
 		if (!e.HasComponent<General>())
@@ -881,32 +916,36 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		{
 			addAI(scene, entity, e.GetComponent<AI>());
 		}
-		if (e.HasComponent<Text>()) {
-
+		if (e.HasComponent<Text>())
+		{
 			addText(scene, entity, e.GetComponent<Text>());
 		}
-		if (e.HasComponent<Dialogue>()) {
-
+		if (e.HasComponent<Dialogue>())
+		{
 			addDialogue(scene, entity, e.GetComponent<Dialogue>());
 		}
-		if (e.HasComponent<Script>()) {
-
+		if (e.HasComponent<Script>()) 
+		{
 			addScript(scene, entity, e.GetComponent<Script>());
 		}
-		if (e.HasComponent<Button>()) {
+		if (e.HasComponent<Button>()) 
+		{
 			addButton(scene, entity, e.GetComponent<Button>());
 		}
-		if (e.HasComponent<LightSource>()) {
-
+		if (e.HasComponent<LightSource>())
+		{
 			addLightSource(scene, entity, e.GetComponent<LightSource>());
 		}
-		if (e.HasComponent<ShadowCaster>()) {
-
+		if (e.HasComponent<ShadowCaster>()){
 			addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
 		}
-		if (e.HasComponent<CircularViewport>()) {
-
+		if (e.HasComponent<CircularViewport>()) 
+		{
 			addCircularViewport(scene, entity, e.GetComponent<CircularViewport>());
+		}
+		if (e.HasComponent<MovementAI>()) 
+		{
+			addMovementAI(scene, entity, e.GetComponent<MovementAI>());
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -942,6 +981,36 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 	else
 		LOG_ERROR("Can't backup before saving! : ");
 	//
+	std::ofstream ofs(path);
+	ofs << jsonf;
+	if (!ofs.good())
+	{
+		LOG_ERROR("Unable to save scene to: " + path);
+	}
+	else
+		LOG_INFO("Saved Scene: " + path);
+	ofs.close();
+	SaveSceneGUID(_sceneData.mName);
+	GUIDList.clear();
+}
+void SerializationManager::SaveSceneGUID(std::string sceneName)
+{
+	Document scene;
+	auto& allocator = scene.GetAllocator();
+	//scene.SetObject();
+	scene.SetArray();
+	StringBuffer buffer;
+	PrettyWriter<StringBuffer> writer(buffer);
+	for (const ResourceManager::GUID g : GUIDList)
+	//for(int g =0; g< GUIDList.size(); ++g)
+	{
+		//Value guid(g, (SizeType)g.size(), scene.GetAllocator());
+		//uint64_t guid = static_cast<uint64_t>(g);
+		scene.PushBack(g, allocator);
+	}
+	scene.Accept(writer);
+	std::string jsonf(buffer.GetString(), buffer.GetSize());
+	std::string path = "../resources/SceneGUID/" + sceneName + "_GUIDList.json";
 	std::ofstream ofs(path);
 	ofs << jsonf;
 	if (!ofs.good())
@@ -1003,6 +1072,7 @@ void SerializationManager::addSprite(Document& scene, Value& entity, Sprite spri
 	tmp.AddMember(StringRef("texture"), vtexture, scene.GetAllocator());
 	tmp.AddMember(StringRef("layer"), sprite.layer, scene.GetAllocator());
 	entity.AddMember(StringRef("Sprite"), tmp, scene.GetAllocator());
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(tex));
 }
 void SerializationManager::addAnimation(Document& scene, Value& entity, Animation animation)
 {
@@ -1020,6 +1090,7 @@ void SerializationManager::addAnimation(Document& scene, Value& entity, Animatio
 		sheets.AddMember(StringRef("frameCount"), animation.sheets[i].frameCount, scene.GetAllocator());
 		sheets.AddMember(StringRef("timePerFrame"), animation.sheets[i].timePerFrame, scene.GetAllocator());
 		child.PushBack(sheets, scene.GetAllocator());
+		GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(tex));
 	}
 	tmp.AddMember(StringRef("sheets"), child, scene.GetAllocator());
 	
@@ -1115,6 +1186,8 @@ void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
 	tmp.AddMember(StringRef("isRandPitch"), audio.sound.isRandPitch, scene.GetAllocator());
 	tmp.AddMember(StringRef("isSpacial"), audio.isSpacial, scene.GetAllocator());
 	entity.AddMember(StringRef("Audio"), tmp, scene.GetAllocator());
+	std::string path = "\\Audio\\" + audio.sound.path;
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));
 }
 void SerializationManager::addAI(Document& scene, Value& entity, AI ai)
 {
@@ -1141,15 +1214,20 @@ void SerializationManager::addText(Document& scene, Value& entity, Text text)
 	tmpc.AddMember(StringRef("a"), text.color.a, scene.GetAllocator());
 	tmp.AddMember(StringRef("color"), tmpc, scene.GetAllocator());
 	entity.AddMember(StringRef("Text"), tmp, scene.GetAllocator());
+	std::string path = "\\Font\\" + text.fontFile;
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));
 }
 void SerializationManager::addDialogue(Document& scene, Value& entity, Dialogue dialogue)
 {
 	Value tmp(kObjectType);
+	//tmp.AddMember(StringRef("filename"), dialogue.filename, scene.GetAllocator());
 	tmp.AddMember(StringRef("speakerID"), dialogue.speakerID, scene.GetAllocator());
 	tmp.AddMember(StringRef("selectedID"), dialogue.selectedID, scene.GetAllocator());
 	tmp.AddMember(StringRef("textID"), dialogue.textID, scene.GetAllocator());
 	tmp.AddMember(StringRef("nextTextID"), dialogue.nextTextID, scene.GetAllocator());
 	entity.AddMember(StringRef("Dialogue"), tmp, scene.GetAllocator());
+	std::string path = "\\Dialogs\\" + dialogue.filename;
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));
 }
 void SerializationManager::addScript(Document& scene, Value& entity, Script script)
 {
@@ -1157,6 +1235,8 @@ void SerializationManager::addScript(Document& scene, Value& entity, Script scri
 	Value spath(script.name.c_str(), (SizeType)script.name.size(), scene.GetAllocator());
 	tmp.AddMember(StringRef("name"), spath, scene.GetAllocator());
 	entity.AddMember(StringRef("Script"), tmp, scene.GetAllocator());
+	/*std::string path = "\\Scripts\\" + script.name;
+	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));*/
 }
 void SerializationManager::addButton(Document& scene, Value& entity, Button button)
 {
@@ -1186,6 +1266,28 @@ void SerializationManager::addCircularViewport(Document& scene, Value& entity, C
 	Value tmp(kObjectType);
 	(void)circularViewport;
 	entity.AddMember(StringRef("CircularViewport"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addMovementAI(Document& scene, Value& entity, MovementAI movementAI)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("run"), movementAI.run, scene.GetAllocator());
+	tmp.AddMember(StringRef("next"), movementAI.next, scene.GetAllocator());
+	tmp.AddMember(StringRef("loop"), movementAI.loop, scene.GetAllocator());
+	tmp.AddMember(StringRef("reverse"), movementAI.reverse, scene.GetAllocator());
+	tmp.AddMember(StringRef("cycle"), movementAI.cycle, scene.GetAllocator());
+	tmp.AddMember(StringRef("nextStep"), movementAI.nextStep, scene.GetAllocator());
+	tmp.AddMember(StringRef("acceleration"), movementAI.acceleration, scene.GetAllocator());
+	Value child(kObjectType);
+	child.SetArray();
+	for (int i = 0; i < movementAI.targetTransforms.size(); ++i)
+	{
+		Value trans(kObjectType);
+		trans.AddMember(StringRef("time"), movementAI.time[i], scene.GetAllocator());
+		addTransform(scene, trans, movementAI.targetTransforms[i]);
+		child.PushBack(trans, scene.GetAllocator());
+	}
+	tmp.AddMember(StringRef("targets"), child, scene.GetAllocator());
+	entity.AddMember(StringRef("MovementAI"), tmp, scene.GetAllocator());
 }
 /*!*****************************************************************************
 \brief
@@ -1641,6 +1743,66 @@ void SerializationManager::SavePrefab(std::string _filename)
 	else
 		LOG_INFO("Saved Prefab: " + path);
 }
+
+
+
+
+
+
+
+void SerializationManager::GetGUIDList(std::filesystem::path _filename, std::set<ResourceManager::GUID>& sGUIDList)
+{
+	std::ifstream ifs(_filename.string());
+	if (!ifs.good())
+	{
+		LOG_ERROR("Can't open json file! : " + _filename.stem().string());
+		return;
+	}
+	else
+		LOG_INFO("Opening game state: " + _filename.stem().string());
+	
+	std::stringstream contents;
+	contents << ifs.rdbuf();
+	Document doc;
+	doc.Parse(contents.str().c_str());
+
+	Value entity(kArrayType);
+	entity = doc.GetArray();
+	std::string sceneName;
+	for (rapidjson::SizeType index = 0; index < entity.Size(); ++index)
+	{
+		sceneName = entity[index]["SceneName"].GetString();
+		std::string path = "../resources/SceneGUID/" + sceneName + "_GUIDList.json";
+		std::ifstream ifsGUID(path);
+		if (!ifsGUID.good())
+		{
+			LOG_ERROR("Can't open GUID json file! : " + sceneName);
+			return;
+		}
+		else
+			LOG_INFO("Opening SceneGUID: " + sceneName);
+
+		std::stringstream contentsGUID;
+		contentsGUID << ifsGUID.rdbuf();
+		Document docGUID;
+		docGUID.Parse(contentsGUID.str().c_str());
+		Value guid(kArrayType);
+		guid = docGUID.GetArray();
+		for (rapidjson::SizeType indx = 0; indx < guid.Size(); ++indx)
+		{
+			sGUIDList.insert(guid[indx].GetInt64());
+		}
+		ifsGUID.close();
+	}
+	ifs.close();
+
+}
+
+
+
+
+
+
 
 
 /*!*****************************************************************************

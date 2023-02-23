@@ -27,6 +27,7 @@ class GameState;
 struct Transform;
 
 #define FUNC InternalCalls::GetInstance()
+#define VI InternalCalls
 
 class InternalCalls : public Singleton<InternalCalls> {
 public:
@@ -39,604 +40,526 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Checks for the state of certain key
-	\param STATE
-	- State of the key pressed
-	\param KEY
-	- Key to check the state of
-	\return bool
-	- Returns true if inputted state matches current state of specified key
-	*******************************************************************************/
-	static bool CheckKey(E_STATE _state, E_KEY _key);
-	static bool CheckKeyPress(int _key);
-	static bool CheckKeyHold(int _key);
-	static bool CheckKeyRelease(int _key);
-	static bool CheckKeyIdle(int _key);
-
-	/*!*****************************************************************************
-	\brief
-	Get world mouse position.
-	*******************************************************************************/
-	static Math::Vec2 GetWorldMousePos();
-
-	/*!*****************************************************************************
-	\brief
-	Get world mouse position x.
-	*******************************************************************************/
-	static float GetWorldMousePosX();
-
-	/*!*****************************************************************************
-	\brief
-	Get world mouse position y.
-	*******************************************************************************/
-	static float GetWorldMousePosY();
-
-	/*!*****************************************************************************
-	\brief
-	ApplyImpulse function that adds a velocity impulse to the entity
-	\param const Entity &
-	A reference to a read-only Entity to
-	\param const Math::Vec2 &
-	A reference to a read-only variable containing the velocity impulse
-	\param const Math::Vec2 &
-	A reference to a read-only variable containing the rotation impulse
-	calculation
-	\return void
-	NULL
-	*******************************************************************************/
-	static void ApplyImpulseByEntity(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
-	static void ApplyImpulse(std::string const& _entityName, std::string const& _sceneName, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY);
-
-	/*!*****************************************************************************
-	\brief
-		Loads the dialogs from a json file to the dialog manager
-
-	\return
-	None.
-	*******************************************************************************/
-	static void LoadDialogs(std::string _filename);
-
-	/*!*****************************************************************************
-	\brief
-	Retrieves the dialog text of the dialog with a specific id using function from
-	DialogManager.
-
-	\param int _id
-	The id of the dialog to get.
-
-	\return
-	Returns the dialog text in string.
-	*******************************************************************************/
-	static std::string GetDialogue(int _id);
-
-	/*!*****************************************************************************
-	\brief
-	Retrieves the next dialog id using function from DialogManager.
-
-	\param int _id
-	The id of the current dialog.
-
-	\return
-	Returns the next dialog id.
-	*******************************************************************************/
-	static int GetNextDialogueID(int _id);
-	
-	/*!*****************************************************************************
-	\brief
-	Checks if the dialog with a specific id has choices using function from
-	DialogManager.
-
-	\param int _id
-	The id of the dialog to be checked.
-
-	\return
-	Returns true if the dialog has choices else returns false.
-	*******************************************************************************/
-	static bool HasChoice(int _id);
-
-	/*!*****************************************************************************
-	\brief
-	Retrieves the choices of the dialog with a specific id using function from
-	DialogManager.
-
-	\param int _id
-	The id of the dialog to get the choices of.
-
-	\return
-	Returns a pair of integers with the choices of the dialog.
-	*******************************************************************************/
-	static std::pair<int, int> GetChoices(int _id);
-
-	/*!*****************************************************************************
-	\brief
-	Retrieves the next dialog id.
-
-	\param int _id
-	The id of the current dialog.
-
-	\return
-	Returns the next dialog id.
-	*******************************************************************************/
-	static int GetNext(int _id);
-
-	/*!*****************************************************************************
-	\brief
-	Retrieves the next dialog id.
-
-	\param int _id
-	The id of the current dialog.
-
-	\return
-	Returns the next dialog id.
-	*******************************************************************************/
-	static int GetChoice1(int _id);
-
-	/*!*****************************************************************************
-	\brief
-	Retrieves the second choice dialog id.
-
-	\param int _id
-	The id of the current dialog.
-
-	\return
-	Returns the second choice dialog id.
-	*******************************************************************************/
-	static int GetChoice2(int _id);
-
-	/*!*****************************************************************************
-	\brief
-	Set the selected choice using function from DialogManager.
-
-	\param int _id
-	The id of the current dialog.
-
-	\param int _selectedChoice
-	The selected choice.
-	*******************************************************************************/
-	static void SetSelectedChoice(int _id, int _selectedChoice);
-
-	/*!*****************************************************************************
-	\brief
-	Get current dialogue id using function from DialogManager.
-
-	\param int _id
-	The id of the current dialog.
-	*******************************************************************************/
-	static bool SetCurrentDialogueID(int _id);
-
-	/*!*****************************************************************************
-	\brief
-	Get current dialogue id using function from DialogManager.
-
-	\return
-	The id of the current dialog.
-	*******************************************************************************/
-	static int GetCurrentDialogueID();
-
-	/*!*****************************************************************************
-	\brief
-	Returns true if speaker is player using function from DialogManager.
-
-	\param int _id
-	The id of the current dialog.
-	*******************************************************************************/
-	static bool IsPlayerSpeaker(int _id);
-
-	/*!*****************************************************************************
-	\brief
-	This function is called by user, to change the next game state
-	*******************************************************************************/
-	static void ChangeGameState(std::string const& _name);
-
-	/*!*****************************************************************************
-	\brief
-	Gets entity id from scene.
-	*******************************************************************************/
-	static int GetEntityId(std::string _entityName, std::string _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Gets an entity from scene.
-	*******************************************************************************/
-	static Entity GetEntity(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Checks if an entity from scene is active.
-	*******************************************************************************/
-	static bool EntityIsActive(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Sets if an entity from scene is active.
-	*******************************************************************************/
-	static void SetEntityIsActive(std::string const& _entityName, std::string const& _sceneName, bool _active);
-
-	/*!*****************************************************************************
-	\brief
-	Activate an entity from scene.
-	*******************************************************************************/
-	static void EntityActivate(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Deactivate an entity from scene.
-	*******************************************************************************/
-	static void EntityDeactivate(std::string const& _entityName, std::string const& _sceneName);
-	
-	/*!*****************************************************************************
-	\brief
-	Gets parent name of an entity from scene.
-	*******************************************************************************/
-	static std::string EntityGetParent(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Gets parent id of an entity from scene.
-	*******************************************************************************/
-	static int EntityGetParentId(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Gets scene to pause or unpause the scene.
-	*******************************************************************************/
-	static Scene& SelectScene(std::string const& _name);
-
-	/*!*****************************************************************************
-	\brief
-	Pause scene.
-	*******************************************************************************/
-	static void PauseScene(std::string const& _name);
-
-	/*!*****************************************************************************
-	\brief
-	Unpause scene.
-	*******************************************************************************/
-	static void PlayScene(std::string const& _name);
-
-	/*!*****************************************************************************
-	\brief
-	Get current game state
-	*******************************************************************************/
-	static GameState& CurrentGameState();
-	static std::string GetCurrentGameStateName();
-
-	/*!*****************************************************************************
-	\brief
-	Get current game state's camera
-	*******************************************************************************/
-	static Transform& CurrentCamera();
-
-	/*!*****************************************************************************
-	\brief
-	Get current game state's camera X scale
-	*******************************************************************************/
-	static float GetCurrentCameraScaleX();
-
-	/*!*****************************************************************************
-	\brief
-	Get current game state's camera Y scale
-	*******************************************************************************/
-	static float GetCurrentCameraScaleY();
-
-	/*!*****************************************************************************
-	\brief
-	Get current game state's camera X pos
-	*******************************************************************************/
-	static float GetCurrentCameraPosX();
-
-	/*!*****************************************************************************
-	\brief
-	Get current game state's camera Y pos
-	*******************************************************************************/
-	static float GetCurrentCameraPosY();
-
-	/*!*****************************************************************************
-	\brief
-	Set current game state's camera X scale
-	*******************************************************************************/
-	static void SetCurrentCameraScaleX(float _x);
-
-	/*!*****************************************************************************
-	\brief
-	Set current game state's camera Y scale
-	*******************************************************************************/
-	static void SetCurrentCameraScaleY(float _y);
-
-	/*!*****************************************************************************
-	\brief
-	Set current game state's camera X pos
-	*******************************************************************************/
-	static void SetCurrentCameraPosX(float _x);
-
-	/*!*****************************************************************************
-	\brief
-	Set current game state's camera Y pos
-	*******************************************************************************/
-	static void SetCurrentCameraPosY(float _y);
-
-	/*!*****************************************************************************
-	\brief
-	Math vector functions
-	*******************************************************************************/
-	static float SqMagnitude(float _x, float _y);
-	static float NormalizeX(float _x, float _y);
-	static float NormalizeY(float _x, float _y);
-	static float ArcTangent(float _x, float _y);
-	static float Negate(float _value);
-
-	/*!*****************************************************************************
-	\brief
-	Set current animation image speed
-	*******************************************************************************/
-	static void SetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed);
-
-	/*!*****************************************************************************
-	\brief
-	Get current animation image speed
-	*******************************************************************************/
-	static float GetAnimationSpeed(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Set current animation image index by entity
-	*******************************************************************************/
-	static void SetSpriteSheetIndexByEntity(Entity _e, int _index);
-
-	/*!*****************************************************************************
-	\brief
-	Get current animation image index by entity
-	*******************************************************************************/
-	static int GetSpriteSheetIndexByEntity(Entity _e);
-
-	/*!*****************************************************************************
-	\brief
-	Set current animation image index
-	*******************************************************************************/
-	static void SetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
-
-	/*!*****************************************************************************
-	\brief
-	Get current animation image index
-	*******************************************************************************/
-	static int GetSpriteSheetIndex(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Set current animation image index
-	*******************************************************************************/
-	static void SetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
-
-	/*!*****************************************************************************
-	\brief
-	Get current animation image index
-	*******************************************************************************/
-	static int GetAnimationCurrentIndex(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Get current animation total frame count
-	*******************************************************************************/
-	static int GetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	Set current animation total frame count
-	*******************************************************************************/
-	static void SetAnimationFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count);
-
-	/*!*****************************************************************************
-	\brief
-	Sets the texture of an entity.
-	*******************************************************************************/
-	static void SetTextureByEntity(const Entity& _e, const std::string& _path);
-
-	/*!*****************************************************************************
-	\brief
-	Retrieves the texture of an entity.
-	*******************************************************************************/
-	static std::string GetTextureByEntity(const Entity& _e);
-
-	/*!*****************************************************************************
-	\brief
-	Sets the texture of an entity.
-	*******************************************************************************/
-	static void SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
-
-	/*!*****************************************************************************
-	\brief
-	Retrieves the texture of an entity.
-	*******************************************************************************/
-	static std::string GetTexture(std::string const& _entityName, std::string const& _sceneName);
-
-	/*!*****************************************************************************
-	\brief
-	EntitiesCollided function that checks if two given entities have collided by
-	checking whether if a contact with the two entities exists
-	\param const Entity &
-	A reference to a read-only entity to compare with
-	\param const Entity &
-	A reference to a read-only entity to compare against
-	\return bool
-	Evaluated result of whether a collision happened between the two given entities
-	*******************************************************************************/
-	static bool EntitiesCollidedByEntity(const Entity& _e1, const Entity& _e2);
-	static bool CheckCollisionByEntity(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
-
-	/*!*****************************************************************************
-	\brief
-	EntitiesCollided function that checks if two given entities have collided by
-	checking whether if a contact with the two entities exists
-	\return bool
-	Evaluated result of whether a collision happened between the two given entities
-	*******************************************************************************/
-	static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
-	static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck = false);
-
-	/*!*****************************************************************************
-	\brief
-	Exits the game.
-	*******************************************************************************/
-	static void GameStateExit();
-
-	/*!*****************************************************************************
-	\brief
 	Gets the delta time in double.
 	*******************************************************************************/
 	static double GetDeltaTime();
 
-	/*!*****************************************************************************
-	\brief
-	Initialise the window width and height of the application using pointer.
-	Should be called in application's init
-	*******************************************************************************/
-	static void InitScriptWindow(int* _windowWidth, int* _windowHeight);
+	struct iInput {
+		/*!*****************************************************************************
+		\brief
+		Checks for the state of certain key
+		\param STATE
+		- State of the key pressed
+		\param KEY
+		- Key to check the state of
+		\return bool
+		- Returns true if inputted state matches current state of specified key
+		*******************************************************************************/
+		static bool CheckKey(E_STATE _state, E_KEY _key);
+		struct iKey {
+			static bool Press(int _key);
+			static bool Hold(int _key);
+			static bool Release(int _key);
+			static bool Idle(int _key);
+		};
 
-	/*!*****************************************************************************
-	\brief
-		Stop a sound
-	*******************************************************************************/
-	static void StopSound(std::string const& _entityName, std::string const& _sceneName);
+		struct iButton {
+			/*!*****************************************************************************
+			\brief
+			This is for checking button activity.
+			*******************************************************************************/
+			static bool Clicked(const Entity& _e);
+			static bool Clicked(const int _eId);
+			static bool Clicked(std::string const& _entityName, std::string const& _sceneName);
+			
+			static bool Released(const Entity& _e);
+			static bool Released(const int _eId);
+			static bool Released(std::string const& _entityName, std::string const& _sceneName);
+			
+			static bool Hover(const Entity& _e);
+			static bool Hover(const int _eId);
+			static bool Hover(std::string const& _entityName, std::string const& _sceneName);
+		};
 
-	/*!*****************************************************************************
-	\brief
-		Plays a sound on loop
-	*******************************************************************************/
-	static void PlaySoundOnLoop(std::string const& _entityName, std::string const& _sceneName);
+		struct iMouse {
+			/*!*****************************************************************************
+			\brief
+			Get world mouse position.
+			*******************************************************************************/
+			static Math::Vec2 GetWorldPos();
+			static float GetWorldPosX();
+			static float GetWorldPosY();
+		};
+	};
 
-	/*!*****************************************************************************
-	\brief
-		Plays sound
-	*******************************************************************************/
-	static void PlayEntitySound(std::string const& _soundName, std::string const& _sceneName);
+	struct iPhysics {
+		/*!*****************************************************************************
+		\brief
+		ApplyImpulse function that adds a velocity impulse to the entity
+		\param const Entity &
+		A reference to a read-only Entity to
+		\param const Math::Vec2 &
+		A reference to a read-only variable containing the velocity impulse
+		\param const Math::Vec2 &
+		A reference to a read-only variable containing the rotation impulse
+		calculation
+		\return void
+		NULL
+		*******************************************************************************/
+		static void ApplyImpulse(const Entity& _e, const Math::Vec2& _impulse, const Math::Vec2& _rotation);
+		static void ApplyImpulse(const int _eId, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY);
+		static void ApplyImpulse(std::string const& _entityName, std::string const& _sceneName, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY);
 
-	/*!*****************************************************************************
-	\brief
-		Force play sound in channel
-	*******************************************************************************/
-	static void PlaySoundInChannel(std::string const& _soundName, int _channel);
+		/*!*****************************************************************************
+		\brief
+		EntitiesCollided function that checks if two given entities have collided by
+		checking whether if a contact with the two entities exists
+		\param const Entity &
+		A reference to a read-only entity to compare with
+		\param const Entity &
+		A reference to a read-only entity to compare against
+		\return bool
+		Evaluated result of whether a collision happened between the two given entities
+		*******************************************************************************/
+		static bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
+		static bool EntitiesCollided(const int _eId1, const int _eId2);
+		static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
 
-	/*!*****************************************************************************
-	\brief
-	   Checks if a channel is playing
-	*******************************************************************************/
-	static bool IsPlaying(int _channel);
+		static bool CheckCollision(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
+		static bool CheckCollision(const int _eId1, const int _eId2, const bool& _dynamicCheck = false);
+		static bool CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck = false);
+	};
 
-	/*!*****************************************************************************
-	\brief
-		Plays a single background sound
-	*******************************************************************************/
-	static void PlayBGSound(std::string _name, int _channel);
+	struct iDialogue {
+		/*!*****************************************************************************
+		\brief
+			Loads the dialogs from a json file to the dialog manager
 
-	/*!*****************************************************************************
-	\brief
-	Get X pos of an entity.
-	*******************************************************************************/
-	static float GetPosX(std::string const& _entityName, std::string const& _sceneName);
+		\return
+		None.
+		*******************************************************************************/
+		static void LoadScript(std::string _filename);
 
-	/*!*****************************************************************************
-	\brief
-	Get Y pos of an entity.
-	*******************************************************************************/
-	static float GetPosY(std::string const& _entityName, std::string const& _sceneName);
+		/*!*****************************************************************************
+		\brief
+		Retrieves the dialog text of the dialog with a specific id using function from
+		DialogManager.
 
-	/*!*****************************************************************************
-	\brief
-	Set X pos of an entity.
-	*******************************************************************************/
-	static void SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+		\param int _id
+		The id of the dialog to get.
 
-	/*!*****************************************************************************
-	\brief
-	Set Y pos of an entity.
-	*******************************************************************************/
-	static void SetPosY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+		\return
+		Returns the dialog text in string.
+		*******************************************************************************/
+		static std::string GetLine(int _id);
 
-	/*!*****************************************************************************
-	\brief
-	Get X scale of an entity.
-	*******************************************************************************/
-	static float GetScaleX(std::string const& _entityName, std::string const& _sceneName);
+		/*!*****************************************************************************
+		\brief
+		Retrieves the next dialog id using function from DialogManager.
 
-	/*!*****************************************************************************
-	\brief
-	Get Y scale of an entity.
-	*******************************************************************************/
-	static float GetScaleY(std::string const& _entityName, std::string const& _sceneName);
+		\param int _id
+		The id of the current dialog.
 
-	/*!*****************************************************************************
-	\brief
-	Set X scale of an entity.
-	*******************************************************************************/
-	static void SetScaleX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+		\return
+		Returns the next dialog id.
+		*******************************************************************************/
+		static int GetNextId(int _id);
+		static std::string GetNext(int _id);
 
-	/*!*****************************************************************************
-	\brief
-	Set Y scale of an entity.
-	*******************************************************************************/
-	static void SetScaleY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+		/*!*****************************************************************************
+		\brief
+		Checks if/Get the dialog with a specific id has choices using function from
+		DialogManager.
 
-	/*!*****************************************************************************
-	\brief
-	Get rotation of an entity.
-	*******************************************************************************/
-	static float GetRotate(std::string const& _entityName, std::string const& _sceneName);
+		\param int _id
+		The id of the dialog to be checked.
 
-	/*!*****************************************************************************
-	\brief
-	Set rotation of an entity.
-	*******************************************************************************/
-	static void SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate);
+		\return
+		Returns true if the dialog has choices else returns false.
+		*******************************************************************************/
+		static bool HaveChoices(int _id);
+		static std::pair<int, int> GetChoices(int _id);
+		static int GetChoice1(int _id);
+		static int GetChoice2(int _id);
 
-	/*!*****************************************************************************
-	\brief
-	This is for checking holding down button.
-	*******************************************************************************/
-	static bool ButtonClickedByEntity(const Entity& _e);
-	static bool ButtonClicked(std::string const& _entityName, std::string const& _sceneName);
+		/*!*****************************************************************************
+		\brief
+		Set/Get the selected choice using function from DialogManager.
 
-	/*!*****************************************************************************
-	\brief
-	This is for checking button is released. Plays sound if there is audio attached to it.
-	*******************************************************************************/
-	static bool ButtonReleasedByEntity(const Entity& _e);
-	static bool ButtonReleased(std::string const& _entityName, std::string const& _sceneName);
+		\param int _id
+		The id of the current dialog.
 
-	/*!*****************************************************************************
-	\brief
-	This is for checking if button is hovered.
-	*******************************************************************************/
-	static bool ButtonHoverByEntity(const Entity& _e);
-	static bool ButtonHover(std::string const& _entityName, std::string const& _sceneName);
+		\param int _selectedChoice
+		The selected choice.
+		*******************************************************************************/
+		static void SetSelectedChoice(int _selectedChoice);
+		static int GetSelectedChoice(int _id);
+		static int GetCurrentSelectedChoice();
 
-	/*!*****************************************************************************
-	\brief
-	Changing text component text.
-	*******************************************************************************/
-	static void UpdateTextByEntity(const Entity& _e, std::string const& _text);
-	static void UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text);
-	static void SetTextOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset);
-	static int GetLineCount(std::string const& _entityName, std::string const& _sceneName);
-	static float GetFontScale(std::string const& _entityName, std::string const& _sceneName);
+		/*!*****************************************************************************
+		\brief
+		Get/Set current dialogue id using function from DialogManager.
 
-	/*!*****************************************************************************
-	\brief
-	Weather functions.
-	*******************************************************************************/
-	static void WeatherAIinit(float width = 1600, float height = 900);
-	static int GetCurrentWeather(int index, float posX, float posY);
+		\param int _id
+		The id of the current dialog.
+		*******************************************************************************/
+		static bool SetCurrentId(int _id);
+		static int GetCurrentId();
 
-	/*!*****************************************************************************
-	\brief
-	Changing lightsource component.
-	*******************************************************************************/
-	static float GetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName);
-	static void SetLightSourceRadius(std::string const& _entityName, std::string const& _sceneName, float _radius);
+		/*!*****************************************************************************
+		\brief
+		Returns true if speaker is player using function from DialogManager.
 
-	/*!*****************************************************************************
-	\brief
-	Changing sprite component.
-	*******************************************************************************/
-	static void SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a);
+		\param int _id
+		The id of the current dialog.
+		*******************************************************************************/
+		static bool IsPlayerSpeaker(int _id);
+	};
 
+	struct iGameState {
+		/*!*****************************************************************************
+		\brief
+		This function is called by user, to change the next game state
+		*******************************************************************************/
+		static void ChangeGameState(std::string const& _name);
+
+		/*!*****************************************************************************
+		\brief
+		Get current game state
+		*******************************************************************************/
+		static GameState& CurrentGameState();
+		static std::string GetCurrentGameStateName();
+
+		/*!*****************************************************************************
+		\brief
+		Exits the game.
+		*******************************************************************************/
+		static void GameStateExit();
+	};
+
+	struct iEntity {
+		/*!*****************************************************************************
+		\brief
+		Gets entity id.
+		*******************************************************************************/
+		static int GetId(const Entity& _e);
+		static int GetId(std::string _entityName, std::string _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+		Gets an entity.
+		*******************************************************************************/
+		static Entity GetEntity(const int _eId);
+		static Entity GetEntity(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+		Checks if/Set an entity is active.
+		*******************************************************************************/
+		static bool IsActive(const Entity& _e);
+		static bool IsActive(const int _eId);
+		static bool IsActive(std::string const& _entityName, std::string const& _sceneName);
+
+		static void SetIsActive(const Entity& _e, bool _active);
+		static void SetIsActive(const int _eId, bool _active);
+		static void SetIsActive(std::string const& _entityName, std::string const& _sceneName, bool _active);
+
+		/*!*****************************************************************************
+		\brief
+		Activate/Deactivate an entity.
+		*******************************************************************************/
+		static void Activate(const Entity& _e);
+		static void Deactivate(const Entity& _e);
+		static void Activate(const int _eId);
+		static void Deactivate(const int _eId);
+		static void Activate(std::string const& _entityName, std::string const& _sceneName);
+		static void Deactivate(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+		Gets parent name/id of an entity.
+		*******************************************************************************/
+		static std::string GetParent(const Entity& _e);
+		static std::string GetParent(const int _eId);
+		static std::string GetParent(std::string const& _entityName, std::string const& _sceneName);
+		
+		static int GetParentId(const Entity& _e);
+		static int GetParentId(const int _eId);
+		static int GetParentId(std::string const& _entityName, std::string const& _sceneName);
+	};
+
+	struct iScene {
+		/*!*****************************************************************************
+		\brief
+		Gets scene to pause or unpause the scene.
+		*******************************************************************************/
+		static Scene& Select(std::string const& _name);
+		static void Pause(std::string const& _name);
+		static void Play(std::string const& _name);
+	};
+
+	struct iCamera {
+		/*!*****************************************************************************
+		\brief
+		Get current game state's camera
+		*******************************************************************************/
+		static Transform& CurrentCamera();
+		static float GetScaleX();
+		static float GetScaleY();
+		static float GetPosX();
+		static float GetPosY();
+		static void SetScaleX(float _x);
+		static void SetScaleY(float _y);
+		static void SetPosX(float _x);
+		static void SetPosY(float _y);
+	};
+
+	struct iMath {
+		/*!*****************************************************************************
+		\brief
+		Math vector functions
+		*******************************************************************************/
+		static float SqMagnitude(float _x, float _y);
+		static float NormalizeX(float _x, float _y);
+		static float NormalizeY(float _x, float _y);
+		static float ArcTangent(float _x, float _y);
+		static float Negate(float _value);
+	};
+
+	struct iAnimation {
+		/*!*****************************************************************************
+		\brief
+		Set/Get current animation image speed
+		*******************************************************************************/
+		static void SetSpeed(const Entity& _e, float _speed);
+		static float GetSpeed(const Entity& _e);
+		static void SetSpeed(const int _eId, float _speed);
+		static float GetSpeed(const int _eId);
+		static void SetSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed);
+		static float GetSpeed(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+		Set/Get current sprite sheet image index
+		*******************************************************************************/
+		static void SetSheetIndex(const Entity& _e, int _index);
+		static int GetSheetIndex(const Entity& _e);
+		static void SetSheetIndex(const int _eId, int _index);
+		static int GetSheetIndex(const int _eId);
+		static void SetSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+		static int GetSheetIndex(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+		Set/Get current animation image frame index
+		*******************************************************************************/
+		static void SetCurrentFrame(const Entity& _e, int _index);
+		static int GetCurrentFrame(const Entity& _e);
+		static void SetCurrentFrame(const int _eId, int _index);
+		static int GetCurrentFrame(const int _eId);
+		static void SetCurrentFrame(std::string const& _entityName, std::string const& _sceneName, int _index);
+		static int GetCurrentFrame(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+		Get current animation total frame count
+		*******************************************************************************/
+		static void SetFrameCount(const Entity& _e, int _count);
+		static int GetFrameCount(const Entity& _e);
+		static void SetFrameCount(const int _eId, int _count);
+		static int GetFrameCount(const int _eId);
+		static void SetFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count);
+		static int GetFrameCount(std::string const& _entityName, std::string const& _sceneName);
+	};
+
+	struct iTexture {
+		/*!*****************************************************************************
+		\brief
+		Set/Get the texture of an entity.
+		*******************************************************************************/
+		static void SetTexture(const Entity& _e, const std::string& _path);
+		static std::string GetTexture(const Entity& _e);
+		static void SetTexture(const int _eId, const std::string& _path);
+
+		static std::string GetTexture(const int _eId);
+		static void SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
+		static std::string GetTexture(std::string const& _entityName, std::string const& _sceneName);
+	};
+
+	struct iAudio {
+		/*!*****************************************************************************
+		\brief
+			Plays sound
+		*******************************************************************************/
+		static void Play(const Entity& _e);
+		static void Play(const int _eId);
+		static void Play(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+			Plays a sound on loop
+		*******************************************************************************/
+		static void PlayOnLoop(const Entity& _e);
+		static void PlayOnLoop(const int _eId);
+		static void PlayOnLoop(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+			Loop functions
+		*******************************************************************************/
+		static void SetLoop(const Entity& _e, bool _loop);
+		static void SetLoop(const int _eId, bool _loop);
+		static void SetLoop(std::string const& _entityName, std::string const& _sceneName, bool _loop);
+
+		/*!*****************************************************************************
+		\brief
+			Stop a sound
+		*******************************************************************************/
+		static void Stop(const Entity& _e);
+		static void Stop(const int _eId);
+		static void Stop(std::string const& _entityName, std::string const& _sceneName);
+
+		static void StopAll();
+		static void StopBGM();
+		static void StopSFX();
+
+		/*!*****************************************************************************
+		\brief
+			BGM & force play
+		*******************************************************************************/
+		static void PlayBGM(std::string const& _soundName);
+		static bool IsBgmPlaying();
+		static void ForcePlay(std::string const& _soundName);
+
+		/*!*****************************************************************************
+		\brief
+			Set volume
+		*******************************************************************************/
+		static void SetAllVolume(float _vol);
+		static void SetBGMVolume(float _vol);
+		static void SetSFXVolume(float _vol);
+	};
+
+	struct iTransform {
+		static Transform& GetTransform(const Entity& _e);
+		static float GetRotation(const Entity& _e);
+		static Math::Vec2 GetScale(const Entity& _e);
+		static Math::Vec2 GetTranslate(const Entity& _e);
+
+		/*!*****************************************************************************
+		\brief
+		Get/Set pos of an entity.
+		*******************************************************************************/
+		static float GetPosX(const Entity& _e);
+		static float GetPosY(const Entity& _e);
+		static void SetPosX(const Entity& _e, float _posX);
+		static void SetPosY(const Entity& _e, float _posY);
+
+		static float GetPosX(const int _eId);
+		static float GetPosY(const int _eId);
+		static void SetPosX(const int _eId, float _posX);
+		static void SetPosY(const int _eId, float _posY);
+
+		static float GetPosX(std::string const& _entityName, std::string const& _sceneName);
+		static float GetPosY(std::string const& _entityName, std::string const& _sceneName);
+		static void SetPosX(std::string const& _entityName, std::string const& _sceneName, float _posX);
+		static void SetPosY(std::string const& _entityName, std::string const& _sceneName, float _posY);
+
+		/*!*****************************************************************************
+		\brief
+		Get/Set scale of an entity.
+		*******************************************************************************/
+		static float GetScaleX(const Entity& _e);
+		static float GetScaleY(const Entity& _e);
+		static void SetScaleX(const Entity& _e, float _scaleX);
+		static void SetScaleY(const Entity& _e, float _scaleY);
+
+		static float GetScaleX(const int _eId);
+		static float GetScaleY(const int _eId);
+		static void SetScaleX(const int _eId, float _scaleX);
+		static void SetScaleY(const int _eId, float _scaleY);
+
+		static float GetScaleX(std::string const& _entityName, std::string const& _sceneName);
+		static float GetScaleY(std::string const& _entityName, std::string const& _sceneName);
+		static void SetScaleX(std::string const& _entityName, std::string const& _sceneName, float _scaleX);
+		static void SetScaleY(std::string const& _entityName, std::string const& _sceneName, float _scaleY);
+
+		/*!*****************************************************************************
+		\brief
+		Get/Set rotation of an entity.
+		*******************************************************************************/
+		static float GetRotate(const Entity& _e);
+		static void SetRotate(const Entity& _e, float _rotate);
+
+		static float GetRotate(const int _eId);
+		static void SetRotate(const int _eId, float _rotate);
+
+		static float GetRotate(std::string const& _entityName, std::string const& _sceneName);
+		static void SetRotate(std::string const& _entityName, std::string const& _sceneName, float _rotate);
+	};
+
+	struct iText {
+		/*!*****************************************************************************
+		\brief
+		Changing text component text.
+		*******************************************************************************/
+		static void UpdateText(const Entity& _e, std::string const& _text);
+		static void UpdateText(const int _eId, std::string const& _text);
+		static void UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text);
+		
+		static void SetOffset(const Entity& _e, float _xoffset, float _yoffset);
+		static void SetOffset(const int _eId, float _xoffset, float _yoffset);
+		static void SetOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset);
+
+		static float GetOffsetX(const Entity& _e);
+		static float GetOffsetX(const int _eId);
+		static float GetOffsetX(std::string const& _entityName, std::string const& _sceneName);
+
+		static float GetOffsetY(const Entity& _e);
+		static float GetOffsetY(const int _eId);
+		static float GetOffsetY(std::string const& _entityName, std::string const& _sceneName);
+
+		static int GetLineCount(const Entity& _e);
+		static int GetLineCount(const int _eId);
+		static int GetLineCount(std::string const& _entityName, std::string const& _sceneName);
+
+		static float GetScale(const Entity& _e);
+		static float GetScale(const int _eId);
+		static float GetScale(std::string const& _entityName, std::string const& _sceneName);
+
+		static void SetScale(const Entity& _e, float _scale);
+		static void SetScale(const int _eId, float _scale);
+		static void SetScale(std::string const& _entityName, std::string const& _sceneName, float _scale);
+	};
+
+	struct iWeather {
+		/*!*****************************************************************************
+		\brief
+		Weather functions.
+		*******************************************************************************/
+		static void WeatherInit(float width = 1600, float height = 900);
+		static int GetCurrentWeather(int index, float posX, float posY);
+	};
+
+	struct iLightSource {
+		/*!*****************************************************************************
+		\brief
+		Changing lightsource component.
+		*******************************************************************************/
+		static float GetRadius(const Entity& _e);
+		static float GetRadius(const int _eId);
+		static float GetRadius(std::string const& _entityName, std::string const& _sceneName);
+
+		static void SetRadius(const Entity& _e, float _radius);
+		static void SetRadius(const int _eId, float _radius);
+		static void SetRadius(std::string const& _entityName, std::string const& _sceneName, float _radius);
+
+		/*!*****************************************************************************
+		\brief
+		Changing sprite component.
+		*******************************************************************************/
+		static void SetSpriteColor(const Entity& _e, int _r, int _g, int _b, int _a);
+		static void SetSpriteColor(const int _eId, int _r, int _g, int _b, int _a);
+		static void SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a);
+	};
 };

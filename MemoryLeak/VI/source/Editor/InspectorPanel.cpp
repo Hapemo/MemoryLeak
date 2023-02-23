@@ -126,6 +126,10 @@ void InspectorPanel::Update()
 				{
 					CircularViewportEditor();
 				}
+				if (e.HasComponent<MovementAI>())
+				{
+					MovementAIEditor();
+				}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 				if (ImGui::Button("Add Component"))
@@ -315,6 +319,12 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<ShadowCaster>({});
 	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
 		e.AddComponent<CircularViewport>({});
+	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
+	{
+		e.AddComponent<MovementAI>({});
+		movementAIManager->AddTransform(e, e.GetComponent<Transform>());
+	}
+	
 	
 }
 /*!*****************************************************************************
@@ -371,6 +381,12 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<ShadowCaster>({});
 	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
 		p->AddComponent<CircularViewport>({});
+	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
+	{
+		p->AddComponent<MovementAI>({});
+		//p->GetComponent<MovementAI>().targetTransforms.push_back(p->GetComponent<Transform>());
+		//p->GetComponent<MovementAI>().time.push_back(1.f);
+	}
 }
 
 
@@ -1130,6 +1146,13 @@ void InspectorPanel::LightSourceEditor()
 		ImGui::DragFloat("Radius", &e.GetComponent<LightSource>().radius, 1.f);
 
 		ImGui::DragFloat("Intensity", &e.GetComponent<LightSource>().intensity, 0.05f, 0.f, 1.f);
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+		if (ImGui::Button("Remove LightSource"))
+		{
+			e.RemoveComponent<Button>();
+			LOG_INFO("LightSource component removed");
+		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::ShadowCasterEditor()
@@ -1147,6 +1170,13 @@ void InspectorPanel::ShadowCasterEditor()
 		e.GetComponent<ShadowCaster>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+		if (ImGui::Button("Remove ShadowCaster"))
+		{
+			e.RemoveComponent<Button>();
+			LOG_INFO("ShadowCaster component removed");
+		}
+		ImGui::PopStyleColor();
 	}
 }
 void InspectorPanel::CircularViewportEditor()
@@ -1154,7 +1184,66 @@ void InspectorPanel::CircularViewportEditor()
 	if (ImGui::CollapsingHeader("CircularViewport"))
 	{
 		ImGui::Text("CircularViewport");
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+		if (ImGui::Button("Remove CircularViewport"))
+		{
+			e.RemoveComponent<Button>();
+			LOG_INFO("CircularViewport component removed");
+		}
+		ImGui::PopStyleColor();
 	}
+}
+void InspectorPanel::MovementAIEditor()
+{
+	if (ImGui::CollapsingHeader("MovementAI"))
+	{
+		ImGui::Text("MovementAI");
+		ImGui::Checkbox("run", &e.GetComponent<MovementAI>().run);
+		ImGui::Checkbox("next", &e.GetComponent<MovementAI>().next);
+		ImGui::Checkbox("loop", &e.GetComponent<MovementAI>().loop);
+		ImGui::Checkbox("reverse", &e.GetComponent<MovementAI>().reverse);
+		ImGui::Checkbox("cycle", &e.GetComponent<MovementAI>().cycle);
+		for (int i = 0; i < e.GetComponent<MovementAI>().targetTransforms.size(); i++)
+		{
+			ImGui::DragFloat(("Set Time" + std::to_string(i)).c_str(), &e.GetComponent<MovementAI>().time[i], 0.1f, 0.f, 60.f);
+
+			//scale
+			tmpVec2[0] = e.GetComponent<MovementAI>().targetTransforms[i].scale.x;
+			tmpVec2[1] = e.GetComponent<MovementAI>().targetTransforms[i].scale.y;
+			ImGui::DragFloat2(("Set Target Scale" + std::to_string(i)).c_str(), tmpVec2);
+			e.GetComponent<MovementAI>().targetTransforms[i].scale = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+
+			//translate
+			tmpVec2[0] = e.GetComponent<MovementAI>().targetTransforms[i].translation.x;
+			tmpVec2[1] = e.GetComponent<MovementAI>().targetTransforms[i].translation.y;
+			ImGui::DragFloat2(("Set Target Position" + std::to_string(i)).c_str(), tmpVec2);
+			e.GetComponent<MovementAI>().targetTransforms[i].translation = Math::Vec2(tmpVec2[0], tmpVec2[1]);
+
+			//rotate
+			tmpFloat = e.GetComponent<MovementAI>().targetTransforms[i].rotation;
+			tmpFloat = (float)(tmpFloat / M_PI * 180.f);
+			ImGui::DragFloat(("Set Target Rotation" + std::to_string(i)).c_str(), &tmpFloat, 1.f, -360.f, 360.f);
+			tmpFloat = (float)(tmpFloat * M_PI / 180.f);
+			e.GetComponent<MovementAI>().targetTransforms[i].rotation = tmpFloat;
+			ImGui::Separator();
+		}
+		if (ImGui::Button("Add Transform"))
+		{
+			//e.GetComponent<MovementAI>().targetTransforms.push_back(Transform{});
+			//e.GetComponent<MovementAI>().time.push_back(1.f);
+			movementAIManager->AddTransform(e, e.GetComponent<Transform>());
+		}
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+		if (ImGui::Button("Remove MovementAI"))
+		{
+			e.RemoveComponent<Button>();
+			LOG_INFO("MovementAI component removed");
+		}
+		ImGui::PopStyleColor();
+
+
+	}
+
 }
 /*!*****************************************************************************
 \brief

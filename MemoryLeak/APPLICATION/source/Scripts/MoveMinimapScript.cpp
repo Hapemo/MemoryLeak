@@ -12,16 +12,20 @@
 
 REGISTER_SCRIPT(ScriptComponent, MoveMinimapScript);
 
-void MoveMinimapScript::StartScript(const Entity& _e) {
+void MoveMinimapScript::Alive(const Entity& _e) {
+	(void)_e;
+}
+
+void MoveMinimapScript::Init(const Entity& _e) {
 	(void)_e;
 	inited = false;
 }
 
-void MoveMinimapScript::UpdateScript(const Entity& _e) {
+void MoveMinimapScript::Update(const Entity& _e) {
 	if (!inited)
 	{
-		currScene = &(FUNC->SelectScene("Level1"));
-		currCamera = &FUNC->CurrentCamera();
+		currScene = &(VI::iScene::Select("Level1"));
+		currCamera = &VI::iCamera::CurrentCamera();
 		originalTranslate = _e.GetComponent<Transform>().translation;
 		originalScale = _e.GetComponent<Transform>().scale;
 		inited = true;
@@ -30,6 +34,14 @@ void MoveMinimapScript::UpdateScript(const Entity& _e) {
 	_e.GetComponent<Transform>().scale = originalScale / currCamera->rotation;
 }
 
-void MoveMinimapScript::EndScript(const Entity& _e) {
+void MoveMinimapScript::FixedUpdate(const Entity& _e) {
+	(void)_e;
+}
+
+void MoveMinimapScript::Exit(const Entity& _e) {
+	(void)_e;
+}
+
+void MoveMinimapScript::Dead(const Entity& _e) {
 	(void)_e;
 }

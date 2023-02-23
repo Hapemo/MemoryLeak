@@ -15,27 +15,54 @@ engine.
 
 /*!*****************************************************************************
 \brief
+Alive script will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void ScriptComponent::Alive(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("Base script alive works!!!");
+}
+
+/*!*****************************************************************************
+\brief
 Start script to run on initialisation.
 *******************************************************************************/
-void ScriptComponent::StartScript(Entity const& gob) {
-	(void)gob;
-	LOG_INFO("Base script starts works!!!");
+void ScriptComponent::Init(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("Base script init works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 Update script to run every update function call.
 *******************************************************************************/
-void ScriptComponent::UpdateScript(Entity const& gob) {
-	(void)gob;
+void ScriptComponent::Update(Entity const& _e) {
+	(void)_e;
 	//LOG_INFO("Base script updating works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Fixed update script to run on fixed delta time.
+*******************************************************************************/
+void ScriptComponent::FixedUpdate(Entity const& _e) {
+	(void)_e;
+	//LOG_INFO("Base script fixed delta time works!!!");
 }
 
 /*!*****************************************************************************
 \brief
 End script to run when the entity gets destroyed/exit.
 *******************************************************************************/
-void ScriptComponent::EndScript(Entity const& gob) {
-	(void)gob;
-	LOG_INFO("Base script end works!!!");
+void ScriptComponent::Exit(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("Base script exit works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Dead script will run when the gamestate of the entity exits.
+*******************************************************************************/
+void ScriptComponent::Dead(Entity const& _e) {
+	(void)_e;
+	LOG_INFO("Base script dead works!!!");
 }

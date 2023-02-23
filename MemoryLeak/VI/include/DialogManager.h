@@ -76,7 +76,7 @@ public:
 	\return
 	Returns true if the dialog has choices else returns false.
 	*******************************************************************************/
-	bool HasChoice(int _id);
+	bool HaveChoices(int _id);
 
 	/*!*****************************************************************************
 	\brief
@@ -112,7 +112,7 @@ public:
 	\return
 	Returns the dialog text in string.
 	*******************************************************************************/
-	std::string GetDialogue(int _id);
+	std::string GetLine(int _id);
 
 	/*!*****************************************************************************
 	\brief

@@ -211,6 +211,59 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": true
+        },
+        "MovementAI": {
+            "run": false,
+            "next": true,
+            "loop": true,
+            "reverse": true,
+            "cycle": true,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 150.0,
+                            "Y": 150.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -728.0792846679688,
+                            "Y": 397.3904113769531
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 231.0,
+                            "Y": 212.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -728.0792846679688,
+                            "Y": 397.3904113769531
+                        }
+                    }
+                },
+                {
+                    "time": 5.5,
+                    "Transform": {
+                        "scale": {
+                            "X": 254.0,
+                            "Y": 192.0
+                        },
+                        "rotation": 1.239183783531189,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {

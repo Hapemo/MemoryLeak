@@ -2,27 +2,33 @@
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class FragmentScript : BaseScript
+    public class FragmentScript
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY);
         }
 
-        public void Init(int _id) {
+        public void Init(int _ENTITY) {
             
         }
 
-        public void Update(int _id) {
-            //if (InternalCalls.EntitiesCollided("Boat", "fragment1drop", "Level1"))
+        public void Update(int _ENTITY) {
+            //if (VI.Physics.s_EntitiesCollided("Boat", "fragment1drop", "Level1"))
             //{ 
             
             //}
         }
 
-        public void Exit(int _id) {
-            
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+
+        public void Exit(int _ENTITY) {
+
+        }
+
+        public void Dead(int _ENTITY) {
+
         }
     }
 }

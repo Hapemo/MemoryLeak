@@ -13,8 +13,11 @@ time.
 
 
 void GameState::Init() {
-	for (auto& scene : mScenes)
+	for (auto& scene : mScenes) {
+		for (auto e : scene.mEntities)
+			if (e.HasComponent<Script>()) logicSystem->Alive(e);
 		if (!scene.mIsPause) scene.Init();
+	}
 }
 
 void GameState::Update() {
@@ -23,8 +26,12 @@ void GameState::Update() {
 }
 
 void GameState::Exit() {
-	for (auto& scene : mScenes)
+	for (auto& scene : mScenes) {
+		for (auto e : scene.mEntities)
+			if (e.HasComponent<Script>()) logicSystem->Dead(e);
 		scene.Exit();
+	}
+	particleManager->Reset();
 }
 
 // Load new gamestate with file path
@@ -59,14 +66,14 @@ void GameState::RemoveScene(std::string const& _name){
 
 void GameState::Load(std::filesystem::path const& _path){
 	LOG_CUSTOM("GAMESTATE", "Load GameState: " + _path.string());
+	// Load relevant resources here, Game Mode only
+#ifndef _EDITOR
+	ResourceManager::GetInstance()->LoadGameStateResources(_path);
+#endif
 	serializationManager->LoadGameState(*this, _path);
 	for (auto& scene : mScenes) {
 		std::filesystem::path path{ ResourceManager::GetInstance()->FileTypePath(ResourceManager::E_RESOURCETYPE::scene).string() + scene.mName + ".json"};
 		scene.Load(path);
-		//renderManager->GetGameCamera().SetInitialPos(scene.mCamera.translation); //need set initial for multiple scenes
-		//renderManager->GetGameCamera().SetInitialZoom(scene.mCamera.rotation);
-		//renderManager->GetGameCamera().SetCameraWidth(scene.mCamera.scale.x); //need set initial scale
-		//renderManager->GetGameCamera().SetCameraHeight(scene.mCamera.scale.y);
 	}
 }
 
@@ -80,6 +87,9 @@ void GameState::Unload() {
 	for (auto& scene : mScenes)
 		scene.Unload();
 	mScenes.clear();
+#ifndef _EDITOR
+	ResourceManager::GetInstance()->SelectiveUnloadAllResources();
+#endif
 }
 
 

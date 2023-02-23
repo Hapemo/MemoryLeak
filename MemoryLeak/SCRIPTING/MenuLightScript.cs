@@ -13,38 +13,51 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class MenuLightScript : BaseScript
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
-        }
-
         float radius;
         float speed;
         bool increasing;
         float upper, lower;
-        public void Init(int _id) {
-            radius = InternalCalls.GetLightSourceRadius("Title", "Menu_Main");
+
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+        }
+
+        public void Init(int _ENTITY) {
+            radius = VI.LightSource.Radius.s_Get("Title", "Menu_Main");
             speed = 500;
             increasing = false;
             upper = 1100;
             lower = 900;
         }
 
-        public void Update(int _id) {
+        public void Update(int _ENTITY) {
             UpdateRadius();
-            InternalCalls.SetLightSourceRadius("Title", "Menu_Main", radius);
+            VI.LightSource.Radius.s_Set("Title", "Menu_Main", radius);
+            Console.Write(THIS.IsActive());
+            if (VI.Input.Mouse.Press())
+            {
+                Console.Write("PRESSEDDDD!!!");
+            }
+            Console.Write("UPDATE\n");
         }
 
-        public void Exit(int _id) {
-            
+        public void FixedUpdate(int _ENTITY) {
+            Console.Write("FIXED\n");
+        }
+
+        public void Exit(int _ENTITY) {
+
+        }
+
+        public void Dead(int _ENTITY) {
+
         }
 
         void UpdateRadius()
         {
             if (increasing)
             {
-                radius += speed * (float)InternalCalls.GetDeltaTime();
+                radius += speed * (float)VI.General.DeltaTime();
                 if (radius > upper)
                 {
                     increasing = false;
@@ -53,7 +66,7 @@ namespace BonVoyage {
             }
             else
             {
-                radius -= speed * (float)InternalCalls.GetDeltaTime();
+                radius -= speed * (float)VI.General.DeltaTime();
                 if (radius < lower)
                 {
                     increasing = true;

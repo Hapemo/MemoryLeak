@@ -17,13 +17,21 @@ REGISTER_SCRIPT(ScriptComponent, AttackScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void AttackScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void AttackScript::StartScript(Entity const& _e) {
+void AttackScript::Init(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Attack script starts works!!!");
-	player = FUNC->GetEntity("Boat", "Level1");
-	enemy = FUNC->GetEntity("Enemy", "Level1");
+	player = VI::iEntity::GetEntity("Boat", "Level1");
+	enemy = VI::iEntity::GetEntity("Enemy", "Level1");
 	if (_e.HasComponent<Audio>()) {
 		_e.GetComponent<Audio>().sound.toPlay = true;
 		_e.GetComponent<Audio>().sound.isLoop = true;
@@ -34,15 +42,15 @@ void AttackScript::StartScript(Entity const& _e) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void AttackScript::UpdateScript(Entity const& _e) {
+void AttackScript::Update(Entity const& _e) {
 	static bool raised = false;
-	if (FUNC->EntitiesCollidedByEntity(player, _e)) {
+	if (VI::iPhysics::EntitiesCollided(player, _e)) {
 		if(visible == 0) {
 			if (!raised) {
 				enemy.GetComponent<SheetAnimation>().currFrameIndex = 0;
 				raised = true;
 			}
-			FUNC->SetTextureByEntity(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png");
+			VI::iTexture::SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png");
 			enemy.GetComponent<SheetAnimation>().frameCount = 8;
 			enemy.GetComponent<SheetAnimation>().timePerFrame = 0.170f;
 			enemy.GetComponent<Transform>().scale.x = -523.000f;
@@ -55,7 +63,7 @@ void AttackScript::UpdateScript(Entity const& _e) {
 			}
 		}
 		if (visible == 1) {
-			FUNC->SetTextureByEntity(enemy, "Textures\\Spritesheets\\MONSTER\\monster-attack-1-spritesheet.png");
+			VI::iTexture::SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\monster-attack-1-spritesheet.png");
 			enemy.GetComponent<SheetAnimation>().frameCount = 9;
 			enemy.GetComponent<SheetAnimation>().timePerFrame = 0.100f;
 			enemy.GetComponent<Transform>().scale.x = -591.000f;
@@ -66,7 +74,7 @@ void AttackScript::UpdateScript(Entity const& _e) {
 	} else {
 		visible = 0;
 		raised = false;
-		FUNC->SetTextureByEntity(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png");
+		VI::iTexture::SetTexture(enemy, "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png");
 		enemy.GetComponent<SheetAnimation>().frameCount = 8;
 		enemy.GetComponent<SheetAnimation>().timePerFrame = 0.100f;
 		enemy.GetComponent<Transform>().scale.x = -200.000f;
@@ -78,9 +86,25 @@ void AttackScript::UpdateScript(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
+Function will run on fixed delta time.
+*******************************************************************************/
+void AttackScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void AttackScript::EndScript(Entity const& _e) {
+void AttackScript::Exit(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Attack script end works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void AttackScript::Dead(Entity const& _e) {
+	(void)_e;
 }

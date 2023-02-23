@@ -14,46 +14,53 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class MiniMapScript : BaseScript
+    public class MiniMapScript
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
-        }
-
         static bool init = true;
         static bool big = false;
-        public void Init(int _id) {
 
-            InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
 
-        public void Update(int _id) {
+        public void Init(int _ENTITY) {
+
+            VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
+        }
+
+        public void Update(int _ENTITY) {
             if (init)
             {
                 init = false;
                 
             }
             //////////////////////////////////////////////init
-            if ((InternalCalls.ButtonReleased("minimap", "MiniMap")) == true)
+            if ((VI.Input.Button.s_Released("minimap", "MiniMap")) == true)
             {
                 big = !big;
                 if (big)
                 {
-                    InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", true);
+                    VI.Entity.s_SetActive("minimapbig", "MiniMap", true);
                 }
                 else
                 {
-                    InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
+                    VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
                 }
             }
 
         }
 
-        public void Exit(int _id) {
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+
+        public void Exit(int _ENTITY) {
             big = false;
-            InternalCalls.SetEntityIsActive("minimapbig", "MiniMap", false);
+            VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
+        }
+
+        public void Dead(int _ENTITY) {
+
         }
     }
 }

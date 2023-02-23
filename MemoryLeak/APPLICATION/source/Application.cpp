@@ -45,7 +45,7 @@ void Application::SystemInit() {
 #endif
   audioManager->Init();
   //aiManager->weatherAIinit();
-  
+  movementAIManager->Init();
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
   //playerManager->Init(window_width, window_height);
@@ -60,13 +60,16 @@ void Application::SystemInit() {
   // Collision database initialization
   collision2DManager->SetupCollisionDatabase();
 
-  // Run Init() scripts
-  logicSystem->Init();
+  // Activate logic system & Mono
+  logicSystem->Activate();
 
+#ifdef _EDITOR
 #ifdef _DEBUG
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif
     ResourceManager::GetInstance()->LoadAllResources();
+#endif
+
 #ifdef _EDITOR
   editorManager->Init(); //need loaded resources
 #endif
@@ -75,15 +78,17 @@ void Application::SystemInit() {
 }
 
 void Application::SystemUpdate() {
-    buttonManager->Update();
+  buttonManager->Update();
   // AI
   TRACK_PERFORMANCE("AI");
-  aiManager->updateAI();
+  aiManager->UpdateAI();
+  movementAIManager->Update();
   END_TRACK("AI");
 
   //Scripting
   TRACK_PERFORMANCE("Scripting");
   logicSystem->Update();
+  logicSystem->FixedUpdate();
   END_TRACK("Scripting");
 
   // Physics
@@ -105,9 +110,14 @@ void Application::SystemUpdate() {
   collision2DManager->Update(FPSManager::dt);
   END_TRACK("Collision");
 
+  // Particles
+  TRACK_PERFORMANCE("Particle");
+  particleManager->Update();
+  END_TRACK("Particle");
+
   // Layer
   TRACK_PERFORMANCE("Layer");
-  layerManager->Update();
+  layerManager->Update(FPSManager::dt);
   END_TRACK("Layer");
 
   // Animator
@@ -215,9 +225,9 @@ void Application::MainUpdate() {
     END_TRACK("Graphics");
 
     // Audio
-    TRACK_PERFORMANCE("Audio");
+    //TRACK_PERFORMANCE("Audio");
     audioManager->UpdateSound(); 
-    END_TRACK("Audio");
+    //END_TRACK("Audio");
 
     // If it changes, it should've came from when updaing game logic
     //if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->GameStateExit();
@@ -230,7 +240,6 @@ void Application::MainUpdate() {
 }
 
 void Application::exit() {
-    //logicSystem->Exit();
     //collision2DManager->Cleanup();
   GameStateManager::GetInstance()->Unload();
   ECS::DestroyAllEntities();
@@ -239,6 +248,7 @@ void Application::exit() {
 #endif
   audioManager->Unload();
   spriteManager->FreeTextures();
+  logicSystem->Close(); // Close Mono
   ScriptManager<ScriptComponent>::GetInstance()->UnloadScripts();
   ResourceManager::GetInstance()->UnloadAllResources();
   SingletonManager::destroyAllSingletons();

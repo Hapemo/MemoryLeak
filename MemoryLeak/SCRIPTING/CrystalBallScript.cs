@@ -16,27 +16,26 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class CrystalBallScript : BaseScript
+    public class CrystalBallScript
     {
-        public override void PreInit(int _id)
-        {
-            var bs = new BaseScript();
-            bs.PreInit(_id);
-        }
-
         int toggle = 0; // 0 minimap, 1, weathermap, 2 enemymap
         int prevTog = -1;
-        public void Init(int _id) {
+
+        public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+        }
+
+        public void Init(int _ENTITY) {
             //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
             //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
             //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
-            InternalCalls.EntityDeactivate("Ball", "Dialogue");
+            VI.Entity.s_Deactivate("Ball", "Dialogue");
         }
 
-        public void Update(int _id)
+        public void Update(int _ENTITY)
         {
-            InternalCalls.EntityActivate("Ball", "Dialogue");
-            if ((InternalCalls.ButtonReleased("cyclemap", "Dialogue")) == true)
+            VI.Entity.s_Activate("Ball", "Dialogue");
+            if ((VI.Input.Button.s_Released("cyclemap", "Dialogue")) == true)
             {
                 toggle = toggle >= 2 ? 0 : (toggle + 1);
             }
@@ -44,12 +43,12 @@ namespace BonVoyage {
             { 
                 if (toggle == 0)
                 {
-                    InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
-                    InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
-                    InternalCalls.PlayScene("MiniMap");
-                    InternalCalls.EntityActivate("minimap", "MiniMap");
-                    InternalCalls.PauseScene("WeatherMap");
-                    InternalCalls.PauseScene("EnemyMap");
+                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
+                    VI.Scene.Play("MiniMap");
+                    VI.Entity.s_Activate("minimap", "MiniMap");
+                    VI.Scene.Pause("WeatherMap");
+                    VI.Scene.Pause("EnemyMap");
                     //InternalCalls.SetEntityIsActive("minimap", "MiniMap", true);
                     //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
                     //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
@@ -68,12 +67,12 @@ namespace BonVoyage {
                 }
                 else if (toggle == 1)
                 {
-                    InternalCalls.EntityDeactivate("minimap", "MiniMap");
-                    InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
-                    InternalCalls.PauseScene("MiniMap");
-                    InternalCalls.PlayScene("WeatherMap");
-                    InternalCalls.EntityActivate("weathermap", "WeatherMap");
-                    InternalCalls.PauseScene("EnemyMap");
+                    VI.Entity.s_Deactivate("minimap", "MiniMap");
+                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
+                    VI.Scene.Pause("MiniMap");
+                    VI.Scene.Play("WeatherMap");
+                    VI.Entity.s_Activate("weathermap", "WeatherMap");
+                    VI.Scene.Pause("EnemyMap");
                     //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
                     //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", true);
                     //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
@@ -93,12 +92,12 @@ namespace BonVoyage {
                 }
                 else if (toggle == 2)
                 {
-                    InternalCalls.EntityDeactivate("minimap", "MiniMap");
-                    InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
-                    InternalCalls.PauseScene("MiniMap");
-                    InternalCalls.PauseScene("WeatherMap");
-                    InternalCalls.PlayScene("EnemyMap");
-                    InternalCalls.EntityActivate("enemymap", "EnemyMap");
+                    VI.Entity.s_Deactivate("minimap", "MiniMap");
+                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+                    VI.Scene.Pause("MiniMap");
+                    VI.Scene.Pause("WeatherMap");
+                    VI.Scene.Play("EnemyMap");
+                    VI.Entity.s_Activate("enemymap", "EnemyMap");
                     //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
                     //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
                     //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", true);
@@ -117,12 +116,12 @@ namespace BonVoyage {
                 }
                 else //if (toggle == 2)
                 {
-                    InternalCalls.EntityDeactivate("minimap", "MiniMap");
-                    InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
-                    InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
-                    InternalCalls.PauseScene("MiniMap");
-                    InternalCalls.PauseScene("WeatherMap");
-                    InternalCalls.PauseScene("EnemyMap");
+                    VI.Entity.s_Deactivate("minimap", "MiniMap");
+                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
+                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+                    VI.Scene.Pause("MiniMap");
+                    VI.Scene.Pause("WeatherMap");
+                    VI.Scene.Pause("EnemyMap");
                     //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
                     //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
                     //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
@@ -143,16 +142,23 @@ namespace BonVoyage {
             }
 
         }
-        public void Exit(int _id) {
+
+        public void FixedUpdate(int _ENTITY) {
+
+        }
+        public void Exit(int _ENTITY) {
             toggle=0;
             prevTog = -1;
-            InternalCalls.EntityDeactivate("minimap", "MiniMap");
-            InternalCalls.EntityDeactivate("enemymap", "EnemyMap");
-            InternalCalls.EntityDeactivate("weathermap", "WeatherMap");
-            InternalCalls.EntityDeactivate("Ball", "Dialogue");
-            InternalCalls.PauseScene("MiniMap");
-            InternalCalls.PauseScene("WeatherMap");
-            InternalCalls.PauseScene("EnemyMap");
+            VI.Entity.s_Deactivate("minimap", "MiniMap");
+            VI.Entity.s_Deactivate("enemymap", "EnemyMap");
+            VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+            VI.Entity.s_Deactivate("Ball", "Dialogue");
+            VI.Scene.Pause("MiniMap");
+            VI.Scene.Pause("WeatherMap");
+            VI.Scene.Pause("EnemyMap");
+        }
+        public void Dead(int _ENTITY) {
+
         }
     }
 }

@@ -14,12 +14,6 @@ namespace BonVoyage
 {
     public class BaseScript
     {
-        int EntityID;
-        public virtual void PreInit(int _id)
-        {
-            Console.Write("ID FROM PARAMS:");
-            Console.Write(_id);
-            Console.Write("\n---\n");
-        }
+        int ENTITY = 0;
     }
 }

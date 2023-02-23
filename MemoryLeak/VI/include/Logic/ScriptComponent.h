@@ -36,21 +36,39 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Start script to run on initialisation.
+	Alive script will run when the gamestate of the entity is activated.
 	*******************************************************************************/
-	virtual void StartScript(Entity const& gob);
+	virtual void Alive(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Init script to run on initialisation.
+	*******************************************************************************/
+	virtual void Init(Entity const& _e);
 
 	/*!*****************************************************************************
 	\brief
 	Update script to run every update function call.
 	*******************************************************************************/
-	virtual void UpdateScript(Entity const& gob);
+	virtual void Update(Entity const& _e);
 
 	/*!*****************************************************************************
 	\brief
-	End script to run when the entity gets destroyed/exit.
+	Fixed update script to run on fixed delta time.
 	*******************************************************************************/
-	virtual void EndScript(Entity const& gob);
+	virtual void FixedUpdate(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Exit script to run when the entity gets destroyed/exit.
+	*******************************************************************************/
+	virtual void Exit(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Dead script will run when the gamestate of the entity exits.
+	*******************************************************************************/
+	virtual void Dead(Entity const& _e);
 
 	/*!*****************************************************************************
 	\brief

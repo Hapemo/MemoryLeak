@@ -78,7 +78,7 @@ void DialoguePanel::Update()
 				//active = false;
 				break;
 			}
-			dialog = dialogManager->GetDialogue(id);
+			dialog = dialogManager->GetLine(id);
 			//if (id == 1 && dialog != dialogPrev) //reset selected if change dialogue
 			//{
 			//	selectedID = 0;
@@ -111,7 +111,7 @@ void DialoguePanel::Update()
 			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
 			{//edit text for 1st choice
 				selectedID = id;
-				dialogEdit = dialogManager->GetDialogue(selectedID);
+				dialogEdit = dialogManager->GetLine(selectedID);
 				BreakString(dialogEdit, wrapsize);
 			}
 			else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
@@ -126,7 +126,7 @@ void DialoguePanel::Update()
 			}
 			if (id2) //if have 2nd choice
 			{
-				dialog2 = dialogManager->GetDialogue(id2);
+				dialog2 = dialogManager->GetLine(id2);
 				BreakString(dialog2, wrapsize);
 				if (dialogManager->GetSpeaker(id2))
 				{
@@ -148,7 +148,7 @@ void DialoguePanel::Update()
 				if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0))
 				{//edit text for 2nd choice
 					selectedID = id2;
-					dialogEdit = dialogManager->GetDialogue(selectedID);
+					dialogEdit = dialogManager->GetLine(selectedID);
 					BreakString(dialogEdit, wrapsize);
 				}
 				else if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))

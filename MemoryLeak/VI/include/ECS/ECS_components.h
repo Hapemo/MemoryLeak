@@ -56,7 +56,7 @@ This component encapsulates what is needed in a Transform Component.
 struct Transform
 {
 	Math::Vec2		scale = {1.f,1.f};		//save, edit, see
-	float			rotation = 0.f;			//save, edit, see
+	float					rotation = 0.f;			//save, edit, see
 	Math::Vec2		translation = {0.f,0.f};//save, edit, see
 };
 
@@ -268,6 +268,21 @@ struct AI {
 	float	speed = 1.f;
 	float range = 10.f;
 };
+
+struct MovementAI {
+	bool run = false;
+	bool next = true;	//save
+	bool loop = false; //save
+	bool reverse = false;//save
+	bool cycle = false;//save
+	int step = 1;
+	int nextStep = 1; //save
+	int state = 0;
+	float currtime;
+	float acceleration = 0.f;//save
+	std::vector<float> time; //save
+	std::vector<Transform> targetTransforms; //save
+};
 /*!*****************************************************************************
 \brief
 	This struct contains the data for Audio component
@@ -346,6 +361,28 @@ struct ShadowCaster
 
 struct CircularViewport {};
 
+struct ParticleSystem {
+	// Information of particle to generate
+	struct ParticleInfo {
+		float mScale;					// Scale size of particle
+		float mFacing;				// Direction which particle is facing (in degrees)
+		float mLifespan;			// Lifespan of particle
+		Sprite mSprite;				// Particle's sprite
+		float mRotation;			// Particle's rotation per second (in degrees)
+		float mSpeed;					// Speed of particle
+		bool mFading;					// Boolean value to determine if the color fades as it travels
+		int mLayer;						// Particle's layer
+	} mParticleInfo;
+
+	int mDensity = 0;													// Amount of particles to generate
+	Math::Vec2 mCenter = Math::Vec2();				// Center point of where particle generates from (Particles will be generated evently throughout the specified area)
+	float mAreaWidth = 0;											// Half width of a square, away from the center point (Shape will be a square)
+	Math::Vec2 mDirection = Math::Vec2();			// Direction of where the particles will travel
+	float mSpread = 0;												// Angle in degrees, to spread the particles in a cone shape (360 degrees will spread all around evenly)
+	float mDuration = 0;											// Duration to run the generator for. Particle system will stop generating once this number hits 0 or less
+	bool mIsActive = false;										// Active state of the particle generator
+};
+
 //use to index the variant data type, for ditor and serilization to determine type stored
 enum class COMPONENTID
 {
@@ -369,11 +406,12 @@ enum class COMPONENTID
 	LAYERCOLLIDER,	//17
 	LIGHTSOURCE,	//18
 	SHADOWCASTER,	//19
-	CIRCULARVIEWPORT//20
+	CIRCULARVIEWPORT,//20
+	MOVEMENTAI      //21
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, CircularViewport>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, CircularViewport, MovementAI>  COMPONENT;
 
 
 

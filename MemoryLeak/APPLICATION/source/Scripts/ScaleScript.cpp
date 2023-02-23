@@ -17,10 +17,18 @@ REGISTER_SCRIPT(ScriptComponent, ScaleScript);
 
 /*!*****************************************************************************
 \brief
+Function will run when the gamestate of the entity is activated.
+*******************************************************************************/
+void ScaleScript::Alive(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
 Function will run on initialisation of the entity.
 *******************************************************************************/
-void ScaleScript::StartScript(Entity const& gob) {
-	(void)gob;
+void ScaleScript::Init(Entity const& _e) {
+	(void)_e;
 	LOG_INFO("ScaleScript starts works!!!");
 }
 
@@ -28,21 +36,37 @@ void ScaleScript::StartScript(Entity const& gob) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
-void ScaleScript::UpdateScript(Entity const& gob) {
+void ScaleScript::Update(Entity const& _e) {
 	//LOG_INFO("ScaleScript updating works!!!");
 	if (Input::CheckKey(E_STATE::HOLD, Y)) {
-		gob.GetComponent<Transform>().scale += 2;
+		_e.GetComponent<Transform>().scale += 2;
 	}
 	else if (Input::CheckKey(E_STATE::HOLD, U)) {
-		gob.GetComponent<Transform>().scale -= 2;
+		_e.GetComponent<Transform>().scale -= 2;
 	}
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on fixed delta time.
+*******************************************************************************/
+void ScaleScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
 }
 
 /*!*****************************************************************************
 \brief
 Function will run on exit or when the entity is destroyed.
 *******************************************************************************/
-void ScaleScript::EndScript(Entity const& gob) {
-	(void)gob;
+void ScaleScript::Exit(Entity const& _e) {
+	(void)_e;
 	LOG_INFO("ScaleScript end works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Function will run when the gamestate of the entity exits.
+*******************************************************************************/
+void ScaleScript::Dead(Entity const& _e) {
+	(void)_e;
 }

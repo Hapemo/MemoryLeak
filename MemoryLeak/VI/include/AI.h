@@ -33,7 +33,7 @@ class AIManager : public System
 public:
 	void weatherAIinit(float width =1600, float height = 900);
 	void weatherAIupdate();
-	void updateAI();
+	void UpdateAI();
 
 	//int weatherMap[mapWidth][mapHeight]{}; //to be shifted to provate after implementing proxy class for [] [] operator
 	std::vector<std::vector<int>> getWeatherMap() { return weatherMap; }

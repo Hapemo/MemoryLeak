@@ -18,19 +18,23 @@ namespace {
 	static float passengerOriginalSizeX{};
 }
 
-void PassengerScript::StartScript(const Entity& _e) {
+void PassengerScript::Alive(Entity const& _e) {
 	(void)_e;
-	boat = (FUNC->GetEntity("Boat", "Level1"));
-	passenger = (FUNC->GetEntity("Passenger_1", "Level1"));
-	destination = (FUNC->GetEntity("destination", "Level1"));
-	destinationHouse = FUNC->GetEntity("Single Story House", "Level1");
+}
+
+void PassengerScript::Init(const Entity& _e) {
+	(void)_e;
+	boat = (VI::iEntity::GetEntity("Boat", "Level1"));
+	passenger = (VI::iEntity::GetEntity("Passenger_1", "Level1"));
+	destination = (VI::iEntity::GetEntity("destination", "Level1"));
+	destinationHouse = VI::iEntity::GetEntity("Single Story House", "Level1");
 	passengerTransform = &_e.GetComponent<Transform>();
 	boatTransform = &boat.GetComponent<Transform>();
 	pickedUp = false;
 	readyToPickUp = true;
 }
 
-void PassengerScript::UpdateScript(const Entity& _e) {
+void PassengerScript::Update(const Entity& _e) {
 	// If ready to pick up and it collided, make it pick up next frame.
 	if (readyToPickUp) {
 		//if (collision2DManager->EntitiesCollided(_e, boat)) {
@@ -127,6 +131,14 @@ void PassengerScript::UpdateScript(const Entity& _e) {
 	}
 }
 
-void PassengerScript::EndScript(const Entity& _e) {
+void PassengerScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+void PassengerScript::Exit(const Entity& _e) {
+	(void)_e;
+}
+
+void PassengerScript::Dead(Entity const& _e) {
 	(void)_e;
 }

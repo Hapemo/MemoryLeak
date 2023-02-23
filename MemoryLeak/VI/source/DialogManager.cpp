@@ -17,7 +17,7 @@ The DialogManager manages the scripts and dialogues data.
 Constructor of the DialogManager.
 *******************************************************************************/
 DialogManager::DialogManager() {
-	LOG_CUSTOM_CREATE("DIALOG");
+	LOG_CREATE("DIALOG");
 }
 
 /*!*****************************************************************************
@@ -58,11 +58,11 @@ The id of the dialog to be checked.
 \return
 Returns true if the dialog has choices else returns false.
 *******************************************************************************/
-bool DialogManager::HasChoice(int _id) {
+bool DialogManager::HaveChoices(int _id) {
 	if (mDialogs.count(_id)) {
 		if (mDialogs[_id].next2) return true;
 		else return false;
-	} else LOG_ERROR("HasChoice(" + std::to_string(_id) + "): Dialogue ID doesn't exist!");
+	} else LOG_ERROR("HaveChoices(" + std::to_string(_id) + "): Dialogue ID doesn't exist!");
 	return false;
 }
 
@@ -92,7 +92,7 @@ The id of the dialog to get.
 \return
 Returns the dialog text in string.
 *******************************************************************************/
-std::string DialogManager::GetDialogue(int _id) {
+std::string DialogManager::GetLine(int _id) {
 	if (mDialogs.count(_id)) return mDialogs[_id].text;
 	else LOG_ERROR("GetDialogue(" + std::to_string(_id) + "): Dialogue ID doesn't exist!");
 	return "";
