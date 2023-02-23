@@ -1,13 +1,13 @@
 [
     {
         "SceneName": "CutScene",
-        "isActive": false,
+        "isActive": true,
         "layer": 0,
         "order": 0
     },
     {
         "SceneName": "CutSceneUI",
-        "isActive": false,
+        "isActive": true,
         "layer": 8,
         "order": 0
     },
