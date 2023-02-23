@@ -28,7 +28,7 @@ namespace BonVoyage
 			internal static string Name() { return VI.Entity.Parent.Name(ENTITY); }
 			internal static int Id() { return VI.Entity.Parent.Id(ENTITY); }
 		}
-		internal static int GetId() { return VI.Entity.GetId(ENTITY); }
+		internal static int GetId() { return ENTITY; }
 		internal static bool IsActive() { return VI.Entity.IsActive(ENTITY); }
 		internal static void SetActive(bool _active = true) { VI.Entity.SetActive(ENTITY, _active); }
 		internal static void Activate() { VI.Entity.Activate(ENTITY); }
@@ -68,7 +68,7 @@ namespace BonVoyage
 			internal static void Play() { VI.Audio.Play(ENTITY); }
 			internal static void PlayOnLoop() { VI.Audio.PlayOnLoop(ENTITY); }
 			internal static void Stop() { VI.Audio.Stop(ENTITY); }
-			internal static void SetLoop(bool _loop) { VI.Audio.SetLoop(ENTITY, _loop); }
+			internal static void SetLoop(bool _loop = true) { VI.Audio.SetLoop(ENTITY, _loop); }
 		}
 		public class Transform {
 			public class Position {
@@ -304,7 +304,7 @@ namespace VI
 	public class Entity
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static int s_GetId(string _entityName, string _sceneName);
+		internal extern static int GetId(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool s_IsActive(string _entityName, string _sceneName);
@@ -331,9 +331,6 @@ namespace VI
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static int Id(int _eId);
 		}
-
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static int GetId(int _eId);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool IsActive(int _eId);
@@ -470,6 +467,42 @@ namespace VI
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static int Get(int _eId);
 		}
+		
+		public class Transform
+		{
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void Start(int _eId);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static bool SetNext(int _eId, int _i); // return true if successful (withing 0 to the vector MAX)
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void Stop(int _eId, bool _next = true);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void StopAfterEndLoop(int _eId, bool _loop = true);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void ReverseOrder(int _eId, bool _reverse = true);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void SetLoopCycle(int _eId, bool _cycle = true);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void AddTransform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void AddTransformDifference(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void SetCalculatedTimeFromPosition(int _eId, float _posX, float _posY, int _step = -1);
+			
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void SetCalculatedTimeFromRotation(int _eId, float _rot, int _step = -1);
+			
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void SetCalculatedTimeFromScale(int _eId, float _scaleX, float _scaleY, int _step = -1);
+		}
 	}
 	public class Texture
 	{
@@ -494,7 +527,7 @@ namespace VI
 		internal extern static void s_PlayOnLoop(string _entityName, string _sceneName);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void s_SetLoop(string _entityName, string _sceneName, bool _loop);
+		internal extern static void s_SetLoop(string _entityName, string _sceneName, bool _loop = true);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void s_Stop(string _entityName, string _sceneName);
@@ -524,7 +557,7 @@ namespace VI
 		internal extern static void StopSFX();
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetLoop(int _eId, bool _loop);
+		internal extern static void SetLoop(int _eId, bool _loop = true);
 		public class Volume
 		{
 			[MethodImpl(MethodImplOptions.InternalCall)]

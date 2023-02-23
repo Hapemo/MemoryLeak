@@ -573,6 +573,46 @@ int InternalCalls::iAnimation::GetFrameCount(std::string const& _entityName, std
 
 /*!*****************************************************************************
 \brief
+Movement animation
+*******************************************************************************/
+void InternalCalls::iAnimation::Start(int _eId) {
+	movementAIManager->StartAnimation(Entity(_eId));
+}
+bool InternalCalls::iAnimation::SetNext(int _eId, int _i) { // return true if successful (withing 0 to the vector MAX)
+	return movementAIManager->SetNextStep(Entity(_eId), _i);
+}
+void InternalCalls::iAnimation::Stop(int _eId, bool _next) {
+	movementAIManager->StopAfterThisAnimation(Entity(_eId), _next);
+}
+void InternalCalls::iAnimation::StopAfterEndLoop(int _eId, bool _loop) {
+	movementAIManager->StopAfterEndofAnimationLoop(Entity(_eId), _loop);
+}
+void InternalCalls::iAnimation::ReverseOrder(int _eId, bool _reverse) {
+	movementAIManager->ReverseOrderAfterNextAnimation(Entity(_eId), _reverse);
+}
+void InternalCalls::iAnimation::SetLoopCycle(int _eId, bool _cycle) {
+	movementAIManager->SetAnimationLoopToCycle(Entity(_eId), _cycle);
+}
+void InternalCalls::iAnimation::AddTransform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
+	movementAIManager->AddTransform(Entity(_eId), trans);
+}
+void InternalCalls::iAnimation::AddTransformDifference(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
+	movementAIManager->AddTransformDifference(Entity(_eId), trans);
+}
+void InternalCalls::iAnimation::SetCalculatedTimeFromPosition(int _eId, float _posX, float _posY, int _step) {
+	movementAIManager->SetCalculatedTimeFromPosition(Entity(_eId), { _posX, _posY }, _step);
+}
+void InternalCalls::iAnimation::SetCalculatedTimeFromRotation(int _eId, float _rot, int _step) {
+	movementAIManager->SetCalculatedTimeFromRotation(Entity(_eId), _rot, _step);
+}
+void InternalCalls::iAnimation::SetCalculatedTimeFromScale(int _eId, float _scaleX, float _scaleY, int _step) {
+	movementAIManager->SetCalculatedTimeFromScale(Entity(_eId), { _scaleX, _scaleY }, _step);
+}
+
+/*!*****************************************************************************
+\brief
 Set/Get the texture of an entity.
 *******************************************************************************/
 void InternalCalls::iTexture::SetTexture(const Entity& _e, const std::string& _path) {

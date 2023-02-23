@@ -537,6 +537,18 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/FrameCount::Set", &VIM::iAnimation::SetFrameCount);
 	mono_add_internal_call("VI.Animation/FrameCount::Get", &VIM::iAnimation::GetFrameCount);
 
+	mono_add_internal_call("VI.Animation/Transform::Start", &VI::iAnimation::Start);
+	mono_add_internal_call("VI.Animation/Transform::SetNext", &VI::iAnimation::SetNext);
+	mono_add_internal_call("VI.Animation/Transform::Stop", &VI::iAnimation::Stop);
+	mono_add_internal_call("VI.Animation/Transform::StopAfterEndLoop", &VI::iAnimation::StopAfterEndLoop);
+	mono_add_internal_call("VI.Animation/Transform::ReverseOrder", &VI::iAnimation::ReverseOrder);
+	mono_add_internal_call("VI.Animation/Transform::SetLoopCycle", &VI::iAnimation::SetLoopCycle);
+	mono_add_internal_call("VI.Animation/Transform::AddTransform", &VI::iAnimation::AddTransform);
+	mono_add_internal_call("VI.Animation/Transform::AddTransformDifference", &VI::iAnimation::AddTransformDifference);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromPosition", &VI::iAnimation::SetCalculatedTimeFromPosition);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromRotation", &VI::iAnimation::SetCalculatedTimeFromRotation);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromScale", &VI::iAnimation::SetCalculatedTimeFromScale);
+
 	// Textures
 	mono_add_internal_call("VI.Texture::s_Set", &VIM::iTexture::s_SetTexture);
 	mono_add_internal_call("VI.Texture::s_Get", &VIM::iTexture::s_GetTexture);
