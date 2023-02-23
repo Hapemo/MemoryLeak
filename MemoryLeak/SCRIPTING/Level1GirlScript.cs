@@ -13,11 +13,13 @@ namespace BonVoyage {
 
     public void Init(int _ENTITY) {
       colliderBox = VI.Entity.GetId("LittleGirlBox", "Level1");
-      playerBoat = VI.Entity.GetId("boat", "Level1");
+      playerBoat = VI.Entity.GetId("Boat", "Level1");
     }
 
     public void Update(int _ENTITY) {
       if (VI.Physics.EntitiesCollided(colliderBox, playerBoat)) {
+        
+        Console.WriteLine("collided");
         if (!Level1DialogScript.runGirlDialog)
           Level1DialogScript.runGirlDialog = true;
       }

@@ -93,6 +93,7 @@ bool MonoMethods::iDialogue::IsPlayerCurrentSpeaker() {
 }
 
 int MonoMethods::iDialogue::GetNextId() {
+	LOG_INFO("Ran monomethod getnextid");
 	return VI::iDialogue::GetNextId(VI::iDialogue::GetCurrentId());
 }
 MonoString* MonoMethods::iDialogue::GetNext() {

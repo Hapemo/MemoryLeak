@@ -672,7 +672,7 @@
             }
         },
         "Script": {
-            "name": "ObjectiveTestScript"
+            "name": "ObjectiveTestScript.cs"
         },
         "Button": {
             "interactable": true
@@ -755,7 +755,7 @@
     },
     {
         "General": {
-            "name": "Dialog Manager",
+            "name": "NEW Entity 3",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -783,7 +783,7 @@
             "layer": 66
         },
         "Script": {
-            "name": "Level1DialogScript"
+            "name": "Level1DialogScript.cs"
         }
     }
 ]

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using VI;
+using static VI.Dialogue;
 
 namespace BonVoyage {
   public class Level1DialogScript : BaseScript {
@@ -8,6 +10,7 @@ namespace BonVoyage {
     static public bool runPassengerDialog;
     private bool choiceFlag;            // This flag is true during choice selection dialogs
     private bool updateChat;            // This flag is true when dialog changes for anyone
+    private bool dialogInit;            // THis flag is true when entering a dialog for the first line
 
     private int playerID;
 
@@ -48,6 +51,8 @@ namespace BonVoyage {
       PP1ID = VI.Entity.GetId("PP1", "Dialogue");
       PP2ID = VI.Entity.GetId("PP2", "Dialogue");
       G1ID = VI.Entity.GetId("G1", "Dialogue");
+
+      dialogInit = true;
     }
 
     public void Update(int _ENTITY) {
@@ -140,7 +145,10 @@ namespace BonVoyage {
     }
     // Based on the current dialog ID, move to the next one. Can input choice if there is a choice selection, by default it's 1
     public void MoveToNextDialog(int choice = 1) {
-      if (choice == 1) VI.Dialogue.Current.SetTo(VI.Dialogue.Next.GetId());
+      VI.Test.ArgString("Current ID: " + Dialogue.Current.GetId());
+      VI.Test.ArgString("Next ID: " + Dialogue.Next.GetId());
+
+      if (choice == 1) VI.Dialogue.Current.SetTo(VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
       else VI.Dialogue.Current.SetTo(VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId()));
     }
 
@@ -148,13 +156,17 @@ namespace BonVoyage {
     public string GetNextDialog(int choice = 1) {
       int ID = 0;
       if (choice == 1) {
-        ID = VI.Dialogue.Next.GetId();
+        ID = VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId());
         //Console.WriteLine("Choice 1 is: " + ID);
+        VI.Test.ArgString("Choice 1 is: " + ID);
       } else {
         ID = VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId());
         //Console.WriteLine("Choice 2 is: " + ID);
+        VI.Test.ArgString("Choice 2 is: " + ID);
+        
       }
       //Console.WriteLine("Resultant line is: " + VI.Dialogue.GetLine(ID));
+      VI.Test.ArgString("Resultant line is: " + VI.Dialogue.GetLine(ID));
       return VI.Dialogue.GetLine(ID);
     }
 
@@ -177,7 +189,7 @@ namespace BonVoyage {
          * return bool - True if dialog is still running. False if dialog has ended.
         */
     public bool RunDialog(string player, string notPlayer, string choice1, string choice2, string scene, string dialogFile) {
-      if (!PlayerScript.PlayerInDialogue) {
+      if (dialogInit) {
         DisableUI();
         // Load Little Girl Talking
         VI.Dialogue.LoadScript(dialogFile);
@@ -203,7 +215,7 @@ namespace BonVoyage {
         else TextBoxAlign(notPlayer, scene, -387, 330, 740, 51, 20, 20);
 
         //camZoomingIn = true;
-        PlayerScript.PlayerInDialogue = true;
+        dialogInit = false;
       }
 
       // Button click set flags
@@ -215,32 +227,40 @@ namespace BonVoyage {
       if (updateChat) {
         updateChat = false;
 
+        VI.Test.ArgString("CurrentID before check quit: " + VI.Dialogue.Current.GetId());
+        VI.Test.ArgString("NextID before check quit: " + VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
         // Finish dialog
-        if (VI.Dialogue.Next.GetId() == 0) {
+        if (VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()) == 0) {
           DeactivateDialogBox(player, notPlayer, choice1, choice2, scene);
-          PlayerScript.PlayerInDialogue = false;
+          dialogInit = true;
           //camZoomingOut = true;
           EnableUI();
           //Console.WriteLine("finished dialog");
+          VI.Test.ArgString("finished dialog");
           return false;
         }
 
         //Console.WriteLine("Moving on from: " + VI.Dialogue.Current.GetId());
+        VI.Test.ArgString("Moving on from: " + VI.Dialogue.Current.GetId());
         if (choiceFlag) {
           //Console.WriteLine("It's a choice dialog");
+          VI.Test.ArgString("It's a choice dialog");
           choiceFlag = false;
           if (VI.Input.Button.s_Released(choice2, scene)) {
             MoveToNextDialog(2);
             //Console.WriteLine("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
+            VI.Test.ArgString("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
           } else {
             MoveToNextDialog(1);
             //Console.WriteLine("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
+            VI.Test.ArgString("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
           }
           VI.Entity.s_Deactivate(choice1, scene);
           VI.Entity.s_Deactivate(choice2, scene);
         }
         MoveToNextDialog(1);
         //Console.WriteLine("Moving to: " + VI.Dialogue.Current.GetId());
+        VI.Test.ArgString("Moving to: " + VI.Dialogue.Current.GetId());
 
         if (VI.Dialogue.Speaker.IsPlayer(VI.Dialogue.Current.GetId())) {
           VI.Entity.s_Activate(player, scene);
@@ -256,6 +276,7 @@ namespace BonVoyage {
 
         if (VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId()) != 0) {
           //Console.WriteLine("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
+          VI.Test.ArgString("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
           VI.Entity.s_Activate(choice1, scene);
           VI.Entity.s_Activate(choice2, scene);
           VI.Text.s_Update(choice1, scene, GetNextDialog(1));
@@ -275,6 +296,7 @@ namespace BonVoyage {
     public void EndIntroDialog() {
       runIntroDialog = false;
       PlayerScript.PlayerInDialogue = false;
+
       VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
     }
 
@@ -290,6 +312,7 @@ namespace BonVoyage {
     public void EndPassengerDialog() {
       runPassengerDialog = false;
       PlayerScript.PlayerInDialogue = false;
+
       VI.Transform.Rotate.s_Set("Passenger_1", "Level1", 0.5f);
       ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
