@@ -186,34 +186,19 @@ Create vertices for the field of view (lightsource radius)
 *******************************************************************************/
 void ShadowManager::CreateObjectVertices(Entity e)
 {
+	std::vector<Math::Vec2> objV = e.GetComponent<ShadowCaster>().centerOffset;
+
+	if (objV.size() < 2) return;
+
 	Math::Vec2 lightPos = GetLightPos();
 
-	Transform xform = e.GetComponent<Transform>();
-	ShadowCaster caster = e.GetComponent<ShadowCaster>();
-	xform.translation += caster.centerOffset;
-	xform.scale.x *= caster.scaleOffset.x;
-	xform.scale.y *= caster.scaleOffset.y;
-	Math::Vec2 i{ xform.scale.x * 0.5f, 0 };
-	Math::Vec2 j{ 0, xform.scale.y * 0.5f };
-
-	Math::Vec2 p0 = xform.translation + i + j;
-	Math::Vec2 p1 = xform.translation - i + j;
-	Math::Vec2 p2 = xform.translation - i - j;
-	Math::Vec2 p3 = xform.translation + i - j;
-
-	if (powf(p0.x - lightPos.x, 2.f) + powf(p0.y - lightPos.y, 2.f)
-		< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
-		powf(p1.x - lightPos.x, 2.f) + powf(p1.y - lightPos.y, 2.f)
-		< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
-		powf(p2.x - lightPos.x, 2.f) + powf(p2.y - lightPos.y, 2.f)
-		< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
-		powf(p3.x - lightPos.x, 2.f) + powf(p3.y - lightPos.y, 2.f)
-		< powf(mLightsource.GetComponent<LightSource>().radius, 2.f))
+	for (size_t i = 0; i < objV.size() - 1; ++i)
 	{
-		mObjectEdges.push_back({ p0, -2.f * i });
-		mObjectEdges.push_back({ p1, -2.f * j });
-		mObjectEdges.push_back({ p2, 2 * i });
-		mObjectEdges.push_back({ p3, 2 * j });
+		if (powf(objV[i].x - lightPos.x, 2.f) + powf(objV[i].y - lightPos.y, 2.f)
+			< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
+			powf(objV[i + 1].x - lightPos.x, 2.f) + powf(objV[i + 1].y - lightPos.y, 2.f)
+			< powf(mLightsource.GetComponent<LightSource>().radius, 2.f))
+			mObjectEdges.push_back({ objV[i], objV[i + 1] - objV[i] });
 	}
 }
 /*!*****************************************************************************
