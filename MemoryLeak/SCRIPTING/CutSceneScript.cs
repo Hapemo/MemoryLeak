@@ -12,6 +12,7 @@ namespace BonVoyage {
         const string scene = "CutScene";
         const string light = "light";
         const string lightning = "lightning";
+        bool skipping;
         int lightningAlpha;
         bool soundPlayed;
         int targetRadius;
@@ -27,6 +28,7 @@ namespace BonVoyage {
             lightningAlpha = 255;
             soundPlayed = false;
             currRadius = 2000;
+            skipping = false;
         }
 
         public void Init(int _ENTITY) {
@@ -34,14 +36,26 @@ namespace BonVoyage {
         }
 
         public void Update(int _ENTITY) {
-            if (!isAlphaDecreasing && VI.Input.Key.Press(349) && currScn < 18)
+            if (VI.Input.Button.s_Released("Skip", "CutSceneUI"))
+            {
+                isAlphaDecreasing = true;
+                skipping = true;
+            }
+            if (currScn >= 18)
+            {
+                if (skipping || !isAlphaDecreasing)
+                {
+                    VI.GameState.Go("Menu");
+                }
+            }
+            if (!skipping && !isAlphaDecreasing && VI.Input.Key.Press(349) && currScn < 19)
                 isAlphaDecreasing = true;
         }
 
         public void FixedUpdate(int _ENTITY) {
             if (isAlphaDecreasing)
                 UpdateAlpha();
-            if (currScn >= 12)
+            if (currScn >= 12 && !skipping)
             {
                 UpdateLightning();
                 if (!soundPlayed)
@@ -54,19 +68,40 @@ namespace BonVoyage {
 
         public void UpdateAlpha()
         {
-            if (currAlpha > 0)
+            if (skipping)
             {
-                currAlpha -= speed; 
-                if (currAlpha < 0)
-                    currAlpha = 0;
-                VI.LightSource.SpriteColor.s_Set(entity, scene, 255, 255, 255, currAlpha);
+                if (currAlpha > 0)
+                {
+                    currAlpha -= speed;
+                    if (currAlpha < 0) currAlpha = 0;
+                    VI.LightSource.SpriteColor.s_Set(entity, scene, 255, 255, 255, currAlpha);
+
+                    for (int i = currScn + 1; i < 19; ++i)
+                        VI.LightSource.SpriteColor.s_Set("e" + i, scene, 255, 255, 255, 0);
+                }
+                if (currAlpha == 0)
+                {
+                    currAlpha = 255;
+                    isAlphaDecreasing = false;
+                    currScn = 19;
+                }
             }
-            if (currAlpha == 0)
+            else
             {
-                currAlpha = 255;
-                isAlphaDecreasing = false;
-                ++currScn;
-                entity = "e" + currScn;
+                if (currAlpha > 0)
+                {
+                    currAlpha -= speed; 
+                    if (currAlpha < 0)
+                        currAlpha = 0;
+                    VI.LightSource.SpriteColor.s_Set(entity, scene, 255, 255, 255, currAlpha);
+                }
+                if (currAlpha == 0)
+                {
+                    currAlpha = 255;
+                    isAlphaDecreasing = false;
+                    ++currScn;
+                    entity = "e" + currScn;
+                }
             }
         }
 
