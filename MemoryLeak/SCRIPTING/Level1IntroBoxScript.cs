@@ -29,24 +29,24 @@ namespace BonVoyage {
         }
 
         public void Init(int _ENTITY) {
-            PlayerID = VI.Entity.s_GetId("Boat", VI.GameState.GetName());
+            PlayerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
             RunDialogue = true;
 
-            UIHPBarID = VI.Entity.s_GetId("hpbar", "Dialogue");
-            UIMemoryFragmentID = VI.Entity.s_GetId("memoryfragment", "Dialogue");
-            UIMemoryFragmentScreenID = VI.Entity.s_GetId("memoryfragmentscreen", "Dialogue");
-            UIFragment1ObjID = VI.Entity.s_GetId("fragment1obj", "Dialogue");
-            UICycleMapID = VI.Entity.s_GetId("cyclemap", "Dialogue");
-            UIMiniMapID = VI.Entity.s_GetId("minimap", "Dialogue");
-            UIEnemyMapID = VI.Entity.s_GetId("enemymap", "Dialogue");
-            UIWeatherMapID = VI.Entity.s_GetId("weathermap", "Dialogue");
-            UIWeatherTextID = VI.Entity.s_GetId("weathertext", "Dialogue");
-            UIObjectiveTextID = VI.Entity.s_GetId("objectivetext", "Dialogue");
+            UIHPBarID = VI.Entity.GetId("hpbar", "Dialogue");
+            UIMemoryFragmentID = VI.Entity.GetId("memoryfragment", "Dialogue");
+            UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
+            UIFragment1ObjID = VI.Entity.GetId("fragment1obj", "Dialogue");
+            UICycleMapID = VI.Entity.GetId("cyclemap", "Dialogue");
+            UIMiniMapID = VI.Entity.GetId("minimap", "Dialogue");
+            UIEnemyMapID = VI.Entity.GetId("enemymap", "Dialogue");
+            UIWeatherMapID = VI.Entity.GetId("weathermap", "Dialogue");
+            UIWeatherTextID = VI.Entity.GetId("weathertext", "Dialogue");
+            UIObjectiveTextID = VI.Entity.GetId("objectivetext", "Dialogue");
 
-            DialogueUIP1ID = VI.Entity.s_GetId("P1", "Dialogue");
-            DialogueUIPP1ID = VI.Entity.s_GetId("PP1", "Dialogue");
-            DialogueUIPP2ID = VI.Entity.s_GetId("PP2", "Dialogue");
-            DialogueUIG1ID = VI.Entity.s_GetId("G1", "Dialogue"); 
+            DialogueUIP1ID = VI.Entity.GetId("P1", "Dialogue");
+            DialogueUIPP1ID = VI.Entity.GetId("PP1", "Dialogue");
+            DialogueUIPP2ID = VI.Entity.GetId("PP2", "Dialogue");
+            DialogueUIG1ID = VI.Entity.GetId("G1", "Dialogue"); 
 
         }
 

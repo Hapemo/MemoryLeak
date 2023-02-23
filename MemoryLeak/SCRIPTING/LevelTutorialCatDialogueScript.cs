@@ -22,14 +22,14 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             RunDialogueFlag = true;
-            PlayerID = VI.Entity.s_GetId("Boat", VI.GameState.GetName());
+            PlayerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
 
-            DialogueUIP1ID = VI.Entity.s_GetId("P1", "TutorialDialogue");
-            DialogueUIPP1ID = VI.Entity.s_GetId("PP1", "TutorialDialogue");
-            DialogueUIPP2ID = VI.Entity.s_GetId("PP2", "TutorialDialogue");
-            DialogueUIG1ID = VI.Entity.s_GetId("G1", "TutorialDialogue");
+            DialogueUIP1ID = VI.Entity.GetId("P1", "TutorialDialogue");
+            DialogueUIPP1ID = VI.Entity.GetId("PP1", "TutorialDialogue");
+            DialogueUIPP2ID = VI.Entity.GetId("PP2", "TutorialDialogue");
+            DialogueUIG1ID = VI.Entity.GetId("G1", "TutorialDialogue");
 
-            UIObjectiveTextID = VI.Entity.s_GetId("objectivetext", "TutorialDialogue");
+            UIObjectiveTextID = VI.Entity.GetId("objectivetext", "TutorialDialogue");
 
             DialogueChoiceFlag = false;
             DialogueUpdateFlag = false;
@@ -41,7 +41,7 @@ namespace BonVoyage {
                 if (RunDialogueFlag)
                 {
                     PlayerScript.PlayerInDialogue = true;
-                    RunDialogueFlag = RunDialog(DialogueUIP1ID, DialogueUIG1ID, DialogueUIPP1ID, DialogueUIPP2ID, "Dialogue SceneIntro 1");
+                    RunDialogueFlag = RunDialog(DialogueUIP1ID, DialogueUIG1ID, DialogueUIPP1ID, DialogueUIPP2ID, "Dialogue LittleGirl 0");
                     if (!RunDialogueFlag)
                     {
                         VI.Text.Update(UIObjectiveTextID, "Objective: Push Forward & Explore");

@@ -73,12 +73,12 @@ namespace BonVoyage
             #endregion
 
             #region Player Movement
+            // Get entity position which is assumed to be player
+            float PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
+            float PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
             // Not in dialogue
             if (!PlayerInDialogue && !InDeathAnimation)
             {
-                // Get entity position which is assumed to be player
-                float PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
-                float PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
                 // Left mouse button held
                 if (VI.Input.Key.Hold(349))
                 {
@@ -106,10 +106,12 @@ namespace BonVoyage
                     VI.Audio.Stop(_ENTITY);
                 }
 
-                // Update camera position to follow entity assumed to be player
-                VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (PlayerPosX - VI.Camera.GetPos.X()) * (SpeedCheatToggle ? SpeedCheatMultiplier : 1f) * FixedDT);
-                VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (PlayerPosY - VI.Camera.GetPos.Y()) * (SpeedCheatToggle ? SpeedCheatMultiplier : 1f) * FixedDT);
             }
+
+            // Update camera position to follow entity assumed to be player
+            VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (PlayerPosX - VI.Camera.GetPos.X()) * (SpeedCheatToggle ? SpeedCheatMultiplier : 1f) * FixedDT);
+            VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (PlayerPosY - VI.Camera.GetPos.Y()) * (SpeedCheatToggle ? SpeedCheatMultiplier : 1f) * FixedDT);
+            
             #endregion
 
             #region Player Death

@@ -6545,6 +6545,9 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "Script": {
+            "name": "LevelTutorialCatDialogueScript"
         }
     },
     {

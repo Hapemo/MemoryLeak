@@ -79,7 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MonoScript.cs" />
     <Compile Include="PlayerScript.cs" />
-    <Compile Include="ScriptTemplate_DONOTDELETE - Copy - Copy.cs" />
+    <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="LevelTutorialCatDialogueScript.cs" />
     <Compile Include="Level1IntroBoxScript.cs" />
     <Compile Include="WeatherMapScript.cs" />
