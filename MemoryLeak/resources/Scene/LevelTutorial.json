@@ -710,7 +710,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 50
+            "layer": 51
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1093,7 +1093,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 309.11773681640625,
+                "X": 307.1265869140625,
                 "Y": -576.1954345703125
             }
         },
@@ -1106,7 +1106,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 54
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1682,7 +1682,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 54
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1718,7 +1718,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 53
+            "layer": 54
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1826,7 +1826,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 49
+            "layer": 50
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2186,7 +2186,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 54
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2546,7 +2546,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 54
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2654,7 +2654,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 54
+            "layer": 56
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2726,7 +2726,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 54
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2762,7 +2762,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 55
+            "layer": 54
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2942,7 +2942,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 48
+            "layer": 49
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -3230,7 +3230,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 54
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -3266,7 +3266,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 47
+            "layer": 48
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -3338,7 +3338,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 57
+            "layer": 58
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -3374,7 +3374,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 53
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -4130,7 +4130,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 48
+            "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -4202,7 +4202,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 42
+            "layer": 43
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -4418,7 +4418,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 56
+            "layer": 57
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -4478,7 +4478,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 777.8051147460938,
-                "Y": 599.4683837890625
+                "Y": 601.4595336914063
             }
         },
         "Sprite": {
@@ -4916,7 +4916,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 56
+            "layer": 57
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5060,7 +5060,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 52
+            "layer": 51
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5204,7 +5204,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 56
+            "layer": 57
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -6212,7 +6212,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 48
+            "layer": 47
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -6403,7 +6403,7 @@
     },
     {
         "General": {
-            "name": "destination",
+            "name": "TutorialEndCollider",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -6465,7 +6465,7 @@
     },
     {
         "General": {
-            "name": "NEW Entity 1",
+            "name": "GirlDialogueCollider",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -6483,19 +6483,31 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
+            "texture": "",
             "layer": 110
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
         }
     },
     {
         "General": {
-            "name": "NEW Entity 2",
+            "name": "CatDialogueCollider",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -6507,25 +6519,37 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -802.8329467773438,
-                "Y": 211.4617462158203
+                "X": -830.7090454101563,
+                "Y": 247.3024444580078
             }
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
+            "texture": "",
             "layer": 111
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
         }
     },
     {
         "General": {
-            "name": "NEW Entity 3",
+            "name": "PassengerPickupDialogueCollider",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -6543,6 +6567,48 @@
         },
         "Sprite": {
             "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 112
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 5",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1197.2784423828125,
+                "Y": -437.6535339355469
+            }
+        },
+        "Sprite": {
+            "color": {
                 "r": 0,
                 "g": 255,
                 "b": 0,
@@ -6550,12 +6616,12 @@
             },
             "sprite": 2,
             "texture": "Textures\\Icons\\scriptIcon.png",
-            "layer": 112
+            "layer": 114
         }
     },
     {
         "General": {
-            "name": "NEW Entity 4",
+            "name": "PassengerDropOffDialogueCollider",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -6573,44 +6639,26 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
+                "r": 255,
                 "g": 255,
-                "b": 0,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
+            "texture": "",
             "layer": 113
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 5",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
         },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
             },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1189.313720703125,
-                "Y": -469.51190185546875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
             },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
-            "layer": 114
+            "isTrigger": true,
+            "renderFlag": true
         }
     }
 ]

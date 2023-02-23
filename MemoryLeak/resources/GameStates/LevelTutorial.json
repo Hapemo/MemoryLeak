@@ -30,7 +30,7 @@
             }
         },
         "isActive": true,
-        "layer": 0,
+        "layer": 8,
         "order": 0
     },
     {
@@ -47,7 +47,7 @@
             }
         },
         "isActive": true,
-        "layer": 0,
+        "layer": 8,
         "order": 0
     },
     {
@@ -64,41 +64,19 @@
             }
         },
         "isActive": true,
-        "layer": 0,
+        "layer": 8,
         "order": 0
     },
     {
         "SceneName": "TutorialDialogue",
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 1.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "isActive": true,
-        "layer": 0,
+        "isActive": false,
+        "layer": 8,
         "order": 0
     },
     {
         "SceneName": "FPS",
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 1.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
         "isActive": false,
-        "layer": 0,
+        "layer": 10,
         "order": 0
     }
 ]
