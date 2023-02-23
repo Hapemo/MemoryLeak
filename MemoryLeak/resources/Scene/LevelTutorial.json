@@ -1513,8 +1513,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "Cat",
+            "tag": 1,
             "subtag": 0,
             "isActive": true
         },
@@ -1545,6 +1545,9 @@
             "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.0
+        },
+        "Script": {
+            "name": "LevelTutorialCatScript"
         }
     },
     {
@@ -6977,9 +6980,6 @@
             },
             "isTrigger": true,
             "renderFlag": true
-        },
-        "Script": {
-            "name": "LevelTutorialCatDialogueScript"
         }
     },
     {
@@ -7580,6 +7580,39 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "DialogHandler",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -573.5350341796875,
+                "Y": 847.3453369140625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 60
+        },
+        "Script": {
+            "name": "LevelTutorialDialogueScript"
         }
     }
 ]
