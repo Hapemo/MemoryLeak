@@ -19,18 +19,20 @@ namespace BonVoyage
 {
     public class PlayerScript : BaseScript
     {
-        private const double Pi = 3.141592653589793238f;
-        private const float MiniAngle = (float)Pi / 8;
-        private const float FixedDT = 1f / 60f;
-
         static public bool PlayerInDialogue;
         static public float PlayerHealth;
+
         private const float MaxPlayerHealth = 12f;
         private bool InDeathAnimation;
         private const float PlayerSpeed = 500f;
 
         private bool SpeedCheatToggle;
         private const float SpeedCheatMultiplier = 2.5f;
+
+        private const double Pi = 3.141592653589793238f;
+        private const float MiniAngle = (float)Pi / 8;
+        private const float FixedDT = 1f / 60f;
+
 
         // Dictionary for relics?
 

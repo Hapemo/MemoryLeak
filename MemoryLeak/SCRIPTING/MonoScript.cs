@@ -870,11 +870,11 @@ namespace BonVoyage
              
         }
 
-        public void ApplyForce(string _entityName, string _sceneName, float _x, float _y, float _multiplier) {
-          VI.Physics.s_ApplyImpulse(_entityName, _sceneName,
-              (_x * _multiplier * (float)VI.General.DeltaTime()),
-              (_y * _multiplier * (float)VI.General.DeltaTime()), 0f, 0f);
-        }
+        //public void ApplyForce(string _entityName, string _sceneName, float _x, float _y, float _multiplier) {
+        //  VI.Physics.s_ApplyImpulse(_entityName, _sceneName,
+        //      (_x * _multiplier * (float)VI.General.DeltaTime()),
+        //      (_y * _multiplier * (float)VI.General.DeltaTime()), 0f, 0f);
+        //}
         #endregion
 
         public void FixedUpdate(int _ENTITY) {
