@@ -17,10 +17,9 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-  public class PlayerScript : BaseScript {
-    static public bool PlayerInDialogue;
-    static public float PlayerHealth;
-    static public bool InteractingWithPassenger; // When picking up or dropping off passenger
+    public class PlayerScript : BaseScript {
+        static public bool PlayerInDialogue;
+        static public float PlayerHealth;
 
         private const float MaxPlayerHealth = 12f;
         private bool InDeathAnimation;
@@ -74,7 +73,7 @@ namespace BonVoyage {
             float PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
             
             // Not in dialogue
-            if (!PlayerInDialogue && !InDeathAnimation && !InteractingWithPassenger) {
+            if (!PlayerInDialogue && !InDeathAnimation) {
                 // Left mouse button held
                 if (VI.Input.Key.Hold(349)) {
                     float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerPosX;
