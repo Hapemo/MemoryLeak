@@ -34,15 +34,10 @@ namespace BonVoyage {
             UpdateRadius();
             VI.LightSource.Radius.s_Set("Title", "Menu_Main", radius);
             Console.Write(THIS.IsActive());
-            if (VI.Input.Mouse.Press())
-            {
-                Console.Write("PRESSEDDDD!!!");
-            }
-            Console.Write("UPDATE\n");
         }
 
         public void FixedUpdate(int _ENTITY) {
-            Console.Write("FIXED\n");
+
         }
 
         public void Exit(int _ENTITY) {
