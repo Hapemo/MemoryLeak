@@ -101,7 +101,7 @@ void PlayGameButton::Update(Entity const& _e) {
 
 	if(_e.HasComponent<Button>())
 		if (_e.GetComponent<Button>().activated) {
-			VI::iGameState::ChangeGameState("Level1");
+			VI::iGameState::ChangeGameState("CutScene");
 			(VI::iScene::Select("Settings")).Pause(true);
 			(VI::iScene::Select("How_To_Play")).Pause(true);
 			(VI::iScene::Select("Pause")).Pause(true);
