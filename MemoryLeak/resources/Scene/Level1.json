@@ -79,11 +79,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 65.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -148,11 +148,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 5.0,
-                "Y": -140.0
+                "Y": -148.0
             },
             "scaleOffset": {
                 "X": 0.9100000262260437,
-                "Y": 0.4000000059604645
+                "Y": 0.3799999952316284
             },
             "isTrigger": false,
             "renderFlag": true
@@ -160,11 +160,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -22.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -218,7 +218,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
-            "layer": 14
+            "layer": 60
         },
         "SheetAnimation": {
             "frameCount": 9,
@@ -294,11 +294,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -96.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -528,7 +528,7 @@
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -605,11 +605,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -49.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -680,11 +680,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -48.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -755,11 +755,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -167.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -830,11 +830,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -142.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -905,11 +905,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -40.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -986,11 +986,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 54.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1056,11 +1056,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 68.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1167,11 +1167,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -97.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1235,14 +1235,25 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": -20.0,
-                "Y": 0.0
+                "X": -10.0,
+                "Y": -20.0
             },
             "scaleOffset": {
                 "X": 0.8999999761581421,
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 150.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -1295,7 +1306,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 24
+            "layer": 30
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -1369,11 +1380,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 69.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1444,11 +1455,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -49.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1519,11 +1530,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -135.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1594,11 +1605,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -47.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1747,11 +1758,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -101.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1822,11 +1833,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -66.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1897,11 +1908,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -41.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1972,11 +1983,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -28.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.10000000149011612
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -2195,6 +2206,17 @@
                 "Y": 0.5
             },
             "isTrigger": true,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
