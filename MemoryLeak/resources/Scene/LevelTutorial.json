@@ -248,7 +248,7 @@
             "isSpacial": false
         },
         "Script": {
-            "name": "PlayerMovementScript"
+            "name": "PlayerScript"
         }
     },
     {

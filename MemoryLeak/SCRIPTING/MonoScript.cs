@@ -318,23 +318,23 @@ namespace BonVoyage
           float PlayerPosY = VI.Transform.Position.s_GetY("Boat", "Level1");
           float PlayerScaleX = VI.Transform.Scale.s_GetX("Boat", "Level1");
           float PlayerScaleY = VI.Transform.Scale.s_GetY("Boat", "Level1");
-          if (!starttalking && VI.Input.Key.Hold(349) && VI.Entity.s_IsActive("DialogueText", "Level1") == false) { // Mouse click
-              float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerPosX;
-              float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerPosY;
-              float NormX = 0f, NormY = 0f;
-              if (VI.Math.SqMagnitude(DirX, DirY) > Epsilon * Epsilon) {
-                  NormX = VI.Math.Normalize.X(DirX, DirY);
-                  NormY = VI.Math.Normalize.Y(DirX, DirY);
-                  ApplyForce("Boat", "Level1", NormX, NormY, PlayerSpeed);
-              }
-              PlayerRotation = GetRotation(NormX, NormY);
-              SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
-              VI.Audio.s_Play("Boat", "Level1");
-            }
-            if (!VI.Input.Key.Hold(349))
-            {
-                VI.Audio.s_Stop("Boat", "Level1");
-            }
+          //if (!starttalking && VI.Input.Key.Hold(349) && VI.Entity.s_IsActive("DialogueText", "Level1") == false) { // Mouse click
+          //    float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerPosX;
+          //    float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerPosY;
+          //    float NormX = 0f, NormY = 0f;
+          //    if (VI.Math.SqMagnitude(DirX, DirY) > Epsilon * Epsilon) {
+          //        NormX = VI.Math.Normalize.X(DirX, DirY);
+          //        NormY = VI.Math.Normalize.Y(DirX, DirY);
+          //        ApplyForce("Boat", "Level1", NormX, NormY, PlayerSpeed);
+          //    }
+          //    PlayerRotation = GetRotation(NormX, NormY);
+          //    SetCharRotation(PlayerRotation, "Boat", "Level1", "Idle");
+          //    VI.Audio.s_Play("Boat", "Level1");
+          //  }
+          //  if (!VI.Input.Key.Hold(349))
+          //  {
+          //      VI.Audio.s_Stop("Boat", "Level1");
+          //  }
             #endregion
 
             #region Camera Update
@@ -447,8 +447,8 @@ namespace BonVoyage
 
                 // Player dies
                 if(HitTaken == MaxHealth) {
-                    SetCharRotation(PlayerRotation, "Boat", "Level1", "Death");
-                    VI.Animation.FrameCount.s_Set("Boat", "Level1", 0);
+                    //SetCharRotation(PlayerRotation, "Boat", "Level1", "Death");
+                    //VI.Animation.FrameCount.s_Set("Boat", "Level1", 0);
                     HitTaken = -1;
                 }
                 if (HitTaken == -1 && VI.Animation.CurrentFrame.s_Get("Boat", "Level1") == VI.Animation.FrameCount.s_Get("Boat", "Level1") - 1) {
