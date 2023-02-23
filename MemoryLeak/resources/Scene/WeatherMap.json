@@ -226,81 +226,6 @@
     },
     {
         "General": {
-            "name": "MIcon11",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 80.0,
-                "Y": 80.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 550.0,
-                "Y": -260.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\sunIcon.png",
-            "layer": 4
-        },
-        "Animation": {
-            "sheets": [
-                {
-                    "sheet": "Textures\\Icons\\sunIcon.png",
-                    "frameCount": 1,
-                    "timePerFrame": 1.0
-                },
-                {
-                    "sheet": "Textures\\Icons\\rainIcon.png",
-                    "frameCount": 1,
-                    "timePerFrame": 1.0
-                },
-                {
-                    "sheet": "Textures\\Icons\\windIcon.png",
-                    "frameCount": 1,
-                    "timePerFrame": 1.0
-                },
-                {
-                    "sheet": "Textures\\Icons\\rainwindIcon.png",
-                    "frameCount": 1,
-                    "timePerFrame": 1.0
-                },
-                {
-                    "sheet": "Textures\\Icons\\fogIcon.png",
-                    "frameCount": 1,
-                    "timePerFrame": 1.0
-                },
-                {
-                    "sheet": "Textures\\Icons\\rainfogIcon.png",
-                    "frameCount": 1,
-                    "timePerFrame": 1.0
-                },
-                {
-                    "sheet": "Textures\\Icons\\windfogIcon.png",
-                    "frameCount": 1,
-                    "timePerFrame": 1.0
-                },
-                {
-                    "sheet": "Textures\\Icons\\rainwindfogIcon.png",
-                    "frameCount": 1,
-                    "timePerFrame": 1.0
-                }
-            ],
-            "currentImageIndex": 0
-        }
-    },
-    {
-        "General": {
             "name": "MIcon12",
             "tag": 5,
             "subtag": 0,
@@ -683,8 +608,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
-                "Y": 120.0
+                "X": 123.0,
+                "Y": 123.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1208,8 +1133,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
-                "Y": 120.0
+                "X": 135.0,
+                "Y": 135.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1283,8 +1208,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
-                "Y": 120.0
+                "X": 133.5,
+                "Y": 133.5
             },
             "rotation": 0.0,
             "translation": {
@@ -1358,8 +1283,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
-                "Y": 120.0
+                "X": 124.5,
+                "Y": 124.5
             },
             "rotation": 0.0,
             "translation": {
@@ -1433,8 +1358,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
-                "Y": 120.0
+                "X": 132.0,
+                "Y": 132.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1508,8 +1433,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
-                "Y": 120.0
+                "X": 130.5,
+                "Y": 130.5
             },
             "rotation": 0.0,
             "translation": {
@@ -1658,8 +1583,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
-                "Y": 120.0
+                "X": 127.5,
+                "Y": 127.5
             },
             "rotation": 0.0,
             "translation": {
@@ -1733,8 +1658,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
-                "Y": 120.0
+                "X": 126.0,
+                "Y": 126.0
             },
             "rotation": 0.0,
             "translation": {
@@ -2554,7 +2479,7 @@
             "name": "weathermap",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -2606,9 +2531,81 @@
         },
         "Script": {
             "name": "WeatherMapScript"
+        }
+    },
+    {
+        "General": {
+            "name": "MIcon11",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": false
         },
-        "Button": {
-            "interactable": true
+        "Transform": {
+            "scale": {
+                "X": 80.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 550.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\sunIcon.png",
+            "layer": 4
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Icons\\sunIcon.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\rainIcon.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\windIcon.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\rainwindIcon.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\fogIcon.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\rainfogIcon.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\windfogIcon.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\rainwindfogIcon.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                }
+            ],
+            "currentImageIndex": 0
         }
     },
     {
@@ -2654,6 +2651,430 @@
                 "b": 255,
                 "a": 255
             }
+        }
+    },
+    {
+        "General": {
+            "name": "enemymapbig",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 700.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 3
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Enlarged Radar",
+            "offset": {
+                "X": -200.0,
+                "Y": 360.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "enemybig",
+            "tag": 2,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 123.0,
+                "Y": 123.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -263.0281982421875,
+                "Y": 230.2816925048828
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\monster.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "enemy",
+            "tag": 2,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 80.0,
+                "Y": 59.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 580.9154052734375,
+                "Y": -195.4929656982422
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\monster.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "player",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 67.0,
+                "Y": 61.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 638.2281494140625,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\mc.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "playerbig",
+            "tag": 0,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 120.0,
+                "Y": 120.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\mc.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "enemymap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 280.0,
+                "Y": 280.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 3
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Radar",
+            "offset": {
+                "X": -42.0,
+                "Y": -170.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "EnemyMapScript"
+        }
+    },
+    {
+        "General": {
+            "name": "cyclemap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 120.0,
+                "Y": 120.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 470.6368713378906,
+                "Y": -373.06146240234375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\cycle.png",
+            "layer": 3
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "CrystalBallScript"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "minimap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 280.0,
+                "Y": 280.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 3
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Minimap",
+            "offset": {
+                "X": -60.0,
+                "Y": -170.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "MiniMapScript"
+        },
+        "CircularViewport": {}
+    },
+    {
+        "General": {
+            "name": "minimapbig",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 700.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 3
+        }
+    },
+    {
+        "General": {
+            "name": "Ball",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 280.0,
+                "Y": 312.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -280.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\crystalball.png",
+            "layer": 2
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "minimaphead",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 75.0,
+                "Y": 75.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\mc-icon-head.png",
+            "layer": 11
         }
     }
 ]

@@ -13,7 +13,8 @@ of animation when the player dies. It also handles the pausing.
 Press "CTRL+SHIFT+B" to toggle player's speed increase.
 Press "ESC" to toggle the pause menu.
 *******************************************************************************/
-
+using System;
+using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
   public class PlayerScript : BaseScript {

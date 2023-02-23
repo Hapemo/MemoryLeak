@@ -291,6 +291,7 @@ public:
 private:
 	void* gs;
 	bool mIsCurrSceneUI;
+	bool mIsCurrSceneMinimap;
 	RENDER_STATE mCurrRenderPass;
 	Camera mWorldCam, mGameCam, mAnimatorCam;
 	std::unordered_map<std::string, FontRenderer> mFontRenderers;

@@ -56,13 +56,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building1_spritesheet.png",
-            "layer": 54
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -141,9 +141,9 @@
         },
         "SheetAnimation": {
             "frameCount": 6,
-            "currFrameIndex": 5,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -222,9 +222,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 5,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -291,7 +291,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 58
+            "layer": 60
         },
         "RectCollider": {
             "centerOffset": {
@@ -353,8 +353,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 159.9105682373047,
-                "Y": 119.98279571533203
+                "X": 90.63593292236328,
+                "Y": 86.99281311035156
             }
         },
         "Sprite": {
@@ -365,7 +365,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png",
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
             "layer": 43
         },
         "Animation": {
@@ -491,13 +491,13 @@
                     "timePerFrame": 0.17000000178813934
                 }
             ],
-            "currentImageIndex": 0
+            "currentImageIndex": 2
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -511,8 +511,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": -1.1425945700693774e-7,
-                "Y": -2.2042849323611335e-8
+                "X": -33.94560623168945,
+                "Y": 8.332412719726563
             },
             "acceleration": {
                 "X": 0.0,
@@ -600,9 +600,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -677,7 +677,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 49
+            "layer": 50
         },
         "RectCollider": {
             "centerOffset": {
@@ -752,7 +752,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 32
+            "layer": 35
         },
         "RectCollider": {
             "centerOffset": {
@@ -902,7 +902,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 50
+            "layer": 51
         },
         "RectCollider": {
             "centerOffset": {
@@ -977,13 +977,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 55
+            "layer": 56
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -1047,13 +1047,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
-            "layer": 35
+            "layer": 32
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -1121,9 +1121,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 253,
-                "g": 45,
-                "b": 1,
+                "r": 222,
+                "g": 100,
+                "b": 179,
                 "a": 100
             },
             "sprite": 1,
@@ -1164,7 +1164,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 42
+            "layer": 41
         },
         "RectCollider": {
             "centerOffset": {
@@ -1239,13 +1239,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building5_spritesheet.png",
-            "layer": 12
+            "layer": 42
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -1320,13 +1320,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 38
+            "layer": 37
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 5,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -1386,9 +1386,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -1613,7 +1613,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 60
+            "layer": 58
         },
         "RectCollider": {
             "centerOffset": {
@@ -1766,7 +1766,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 51
+            "layer": 52
         },
         "RectCollider": {
             "centerOffset": {
@@ -1841,7 +1841,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 39
+            "layer": 38
         },
         "RectCollider": {
             "centerOffset": {
@@ -1916,7 +1916,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 34
+            "layer": 33
         },
         "RectCollider": {
             "centerOffset": {
@@ -2128,7 +2128,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
-            "layer": 15
+            "layer": 48
         },
         "Animation": {
             "sheets": [
@@ -2217,9 +2217,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 5,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.06666667014360428
         },
         "RectCollider": {
             "centerOffset": {
@@ -2298,9 +2298,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         }
     },
     {
@@ -2334,9 +2334,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         }
     },
     {
@@ -2370,9 +2370,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 0,
+            "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         }
     },
     {
@@ -2406,9 +2406,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 3.725290298461914e-9
+            "timeToFrameSwap": 0.05000000447034836
         }
     },
     {
