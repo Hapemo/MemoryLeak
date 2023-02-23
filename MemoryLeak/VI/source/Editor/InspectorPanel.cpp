@@ -1158,8 +1158,16 @@ void InspectorPanel::ShadowCasterEditor()
 			tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset[i].y;
 			ImGui::InputFloat2(("Shadow center" + std::to_string(i)).c_str(), tmpVec2);
 			e.GetComponent<ShadowCaster>().centerOffset[i] = {tmpVec2[0] ,tmpVec2[1]};
+			if (ImGui::Button(("Remove Shadow Vertex" + std::to_string(i)).c_str()))
+			{
+				e.GetComponent<ShadowCaster>().centerOffset.erase(e.GetComponent<ShadowCaster>().centerOffset.begin()+i);
+			}
+			ImGui::Separator();
 		}
-
+		if (ImGui::Button("Add Shadow Vertex"))
+		{
+			e.GetComponent<ShadowCaster>().centerOffset.push_back(Math::Vec2{});
+		}
 		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
 	}
 }

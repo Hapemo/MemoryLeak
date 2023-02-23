@@ -187,6 +187,7 @@ Create vertices for the field of view (lightsource radius)
 void ShadowManager::CreateObjectVertices(Entity e)
 {
 	std::vector<Math::Vec2> objV = e.GetComponent<ShadowCaster>().centerOffset;
+	Math::Vec2 pos = e.GetComponent<Transform>().translation;
 
 	if (objV.size() < 2) return;
 
@@ -194,11 +195,13 @@ void ShadowManager::CreateObjectVertices(Entity e)
 
 	for (size_t i = 0; i < objV.size() - 1; ++i)
 	{
-		if (powf(objV[i].x - lightPos.x, 2.f) + powf(objV[i].y - lightPos.y, 2.f)
+		Math::Vec2 curr = objV[i] + pos;
+		Math::Vec2 next = objV[i + 1] + pos;
+		if (powf(curr.x - lightPos.x, 2.f) + powf(curr.y - lightPos.y, 2.f)
 			< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
-			powf(objV[i + 1].x - lightPos.x, 2.f) + powf(objV[i + 1].y - lightPos.y, 2.f)
+			powf(next.x - lightPos.x, 2.f) + powf(next.y - lightPos.y, 2.f)
 			< powf(mLightsource.GetComponent<LightSource>().radius, 2.f))
-			mObjectEdges.push_back({ objV[i], objV[i + 1] - objV[i] });
+			mObjectEdges.push_back({ curr, next - curr });
 	}
 }
 /*!*****************************************************************************
