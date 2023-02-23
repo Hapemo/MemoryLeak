@@ -404,13 +404,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 255.0,
-                "Y": 275.0
+                "X": 205.0,
+                "Y": 212.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -207.7535858154297,
-                "Y": 353.052001953125
+                "X": -225.873046875,
+                "Y": 368.3838806152344
             }
         },
         "Sprite": {
@@ -1273,8 +1273,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -165.55038452148438,
-                "Y": -1028.998291015625
+                "X": -141.85569763183594,
+                "Y": -1009.4850463867188
             }
         },
         "Sprite": {
@@ -1417,8 +1417,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -636.810546875,
-                "Y": 247.5442352294922
+                "X": -641.1910400390625,
+                "Y": 267.05755615234375
             }
         },
         "Sprite": {
@@ -1561,8 +1561,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 366.62652587890625,
-                "Y": -1162.9256591796875
+                "X": 384.1486511230469,
+                "Y": -1213.8990478515625
             }
         },
         "Sprite": {
@@ -1597,8 +1597,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 383.9579772949219,
-                "Y": -1145.8868408203125
+                "X": 397.89599609375,
+                "Y": -1200.046142578125
             }
         },
         "Sprite": {
@@ -1777,8 +1777,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -216.3511505126953,
-                "Y": -1136.9964599609375
+                "X": -202.41311645507813,
+                "Y": -1095.1822509765625
             }
         },
         "Sprite": {
@@ -2173,8 +2173,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -84.93511962890625,
-                "Y": -1271.6456298828125
+                "X": -77.96607971191406,
+                "Y": -1250.7386474609375
             }
         },
         "Sprite": {
@@ -2893,8 +2893,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 981.6422119140625,
-                "Y": 227.05104064941406
+                "X": 965.7130126953125,
+                "Y": 211.12185668945313
             }
         },
         "Sprite": {
@@ -3644,13 +3644,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 335.0,
-                "Y": 359.0
+                "X": 250.0,
+                "Y": 250.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1220.2020263671875,
-                "Y": 221.87857055664063
+                "X": 1155.48974609375,
+                "Y": 253.73696899414063
             }
         },
         "Sprite": {
@@ -4513,8 +4513,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 50.62548828125,
-                "Y": -1097.096435546875
+                "X": 89.65203857421875,
+                "Y": -1069.2203369140625
             }
         },
         "Sprite": {
@@ -4729,8 +4729,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1199.78076171875,
-                "Y": -1327.6839599609375
+                "X": 1212.9222412109375,
+                "Y": -1357.55126953125
             }
         },
         "Sprite": {
@@ -6399,218 +6399,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "destination",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1315.8848876953125,
-                "Y": -588.5840454101563
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
-            "layer": 5
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 100.0,
-                "Y": 100.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": true,
-            "renderFlag": true
-        },
-        "CircleCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": 1.0,
-            "isTrigger": true,
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "HEALTH",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 1",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -101.35072326660156,
-                "Y": -625.4186401367188
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
-            "layer": 110
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 2",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -802.8329467773438,
-                "Y": 211.4617462158203
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
-            "layer": 111
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 3",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 646.3267822265625,
-                "Y": -1151.08251953125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
-            "layer": 112
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 4",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1062.676513671875,
-                "Y": -1263.58251953125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
-            "layer": 113
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 5",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1189.313720703125,
-                "Y": -469.51190185546875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\scriptIcon.png",
-            "layer": 114
         }
     }
 ]
