@@ -89,42 +89,44 @@ namespace BonVoyage {
         //int direction = boat.GetComponent<Animation>().currentImageIndex % 8;
         switch (direction) {
           case 0://front
-            passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
-            passengerTransform->translation = boatTransform->translation;
+            VI.Texture.SetLayer(THIS.GetId(), VI.Texture.GetLayer(playerBoat) + 1);
+            VI.Transform.Position.SetX(THIS.GetId(), VI.Transform.Position.GetX(playerBoat));
+            VI.Transform.Position.SetY(THIS.GetId(), VI.Transform.Position.GetY(playerBoat));
             break;
           case 1:
-            passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
-            passengerTransform->translation.x = boatTransform->translation.x - boatTransform->scale.x / 10;
-            passengerTransform->translation.y = boatTransform->translation.y;// -boatTransform->scale.y / 40;
+            VI.Texture.SetLayer(THIS.GetId(), VI.Texture.GetLayer(playerBoat) + 1);
+            VI.Transform.Position.SetX(THIS.GetId(), VI.Transform.Position.GetX(playerBoat) - VI.Transform.Scale.GetX(playerBoat) / 10.0f);
+            VI.Transform.Position.SetY(THIS.GetId(), VI.Transform.Position.GetY(playerBoat));
             break;
           case 2://left
-            passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
-            passengerTransform->translation.x = boatTransform->translation.x - boatTransform->scale.x / 4;
-            passengerTransform->translation.y = boatTransform->translation.y + boatTransform->scale.y / 16;
+            VI.Texture.SetLayer(THIS.GetId(), VI.Texture.GetLayer(playerBoat) + 1);
+            VI.Transform.Position.SetX(THIS.GetId(), VI.Transform.Position.GetX(playerBoat) - VI.Transform.Scale.GetX(playerBoat) / 4.0f);
+            VI.Transform.Position.SetY(THIS.GetId(), VI.Transform.Position.GetY(playerBoat) + VI.Transform.Scale.GetY(playerBoat) / 16.0f);
             break;
           case 3:
-            passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
-            passengerTransform->translation.x = boatTransform->translation.x - boatTransform->scale.x / 6;
-            passengerTransform->translation.y = boatTransform->translation.y + boatTransform->scale.y / 8;
+            VI.Texture.SetLayer(THIS.GetId(), VI.Texture.GetLayer(playerBoat) + 1);
+            VI.Transform.Position.SetX(THIS.GetId(), VI.Transform.Position.GetX(playerBoat) - VI.Transform.Scale.GetX(playerBoat) / 6.0f);
+            VI.Transform.Position.SetY(THIS.GetId(), VI.Transform.Position.GetY(playerBoat) + VI.Transform.Scale.GetY(playerBoat) / 8.0f);
             break;
           case 4://back
-            passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + -1;
-            passengerTransform->translation = boatTransform->translation;
+            VI.Texture.SetLayer(THIS.GetId(), VI.Texture.GetLayer(playerBoat) - 1);
+            VI.Transform.Position.SetX(THIS.GetId(), VI.Transform.Position.GetX(playerBoat));
+            VI.Transform.Position.SetY(THIS.GetId(), VI.Transform.Position.GetY(playerBoat));
             break;
           case 5:
-            passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
-            passengerTransform->translation.x = boatTransform->translation.x + boatTransform->scale.x / 6;
-            passengerTransform->translation.y = boatTransform->translation.y + boatTransform->scale.y / 8;
+            VI.Texture.SetLayer(THIS.GetId(), VI.Texture.GetLayer(playerBoat) + 1);
+            VI.Transform.Position.SetX(THIS.GetId(), VI.Transform.Position.GetX(playerBoat) + VI.Transform.Scale.GetX(playerBoat) / 6.0f);
+            VI.Transform.Position.SetY(THIS.GetId(), VI.Transform.Position.GetY(playerBoat) + VI.Transform.Scale.GetY(playerBoat) / 8.0f);
             break;
           case 6://right
-            passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
-            passengerTransform->translation.x = boatTransform->translation.x + boatTransform->scale.x / 4;
-            passengerTransform->translation.y = boatTransform->translation.y + boatTransform->scale.y / 16;
+            VI.Texture.SetLayer(THIS.GetId(), VI.Texture.GetLayer(playerBoat) + 1);
+            VI.Transform.Position.SetX(THIS.GetId(), VI.Transform.Position.GetX(playerBoat) + VI.Transform.Scale.GetX(playerBoat) / 4.0f);
+            VI.Transform.Position.SetY(THIS.GetId(), VI.Transform.Position.GetY(playerBoat) + VI.Transform.Scale.GetY(playerBoat) / 16.0f);
             break;
           case 7:
-            passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;
-            passengerTransform->translation.x = boatTransform->translation.x + boatTransform->scale.x / 10;
-            passengerTransform->translation.y = boatTransform->translation.y;// -boatTransform->scale.y / 40;
+            VI.Texture.SetLayer(THIS.GetId(), VI.Texture.GetLayer(playerBoat) + 1);
+            VI.Transform.Position.SetX(THIS.GetId(), VI.Transform.Position.GetX(playerBoat) + VI.Transform.Scale.GetX(playerBoat) / 10.0f);
+            VI.Transform.Position.SetY(THIS.GetId(), VI.Transform.Position.GetY(playerBoat));
             break;
             /*default:
               passenger.GetComponent<Sprite>().layer = boat.GetComponent<Sprite>().layer + 1;

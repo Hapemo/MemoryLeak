@@ -636,7 +636,25 @@ void InternalCalls::iTexture::SetTexture(std::string const& _entityName, std::st
 std::string InternalCalls::iTexture::GetTexture(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iTexture::GetTexture(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
+int InternalCalls::iTexture::GetLayer(const Entity& _e) {
+	return _e.GetComponent<Sprite>().layer;
+}
+void InternalCalls::iTexture::SetLayer(const Entity& _e, int layer) {
+	_e.GetComponent<Sprite>().layer = layer;
+}
+int InternalCalls::iTexture::GetLayer(const int _eId) {
+	return VI::iTexture::GetLayer(Entity(_eId));
+}
+void InternalCalls::iTexture::SetLayer(const int _eId, int layer) {
+	VI::iTexture::SetLayer(Entity(_eId), layer);
+}
+int InternalCalls::iTexture::GetLayer(std::string const& _entityName, std::string const& _sceneName) {
+	return VI::iTexture::GetLayer(VI::iEntity::GetEntity(_entityName, _sceneName));
+}
+void InternalCalls::iTexture::SetLayer(std::string const& _entityName, std::string const& _sceneName, int layer) {
+	VI::iTexture::SetLayer(VI::iEntity::GetEntity(_entityName, _sceneName), layer);
 
+}
 /*!*****************************************************************************
 \brief
 	Plays sound
