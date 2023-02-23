@@ -41,7 +41,7 @@ namespace BonVoyage {
                 if (RunDialogueFlag)
                 {
                     PlayerScript.PlayerInDialogue = true;
-                    RunDialogueFlag = RunDialog(DialogueUIP1ID, DialogueUIG1ID, DialogueUIPP1ID, DialogueUIPP2ID, "Dialogue SceneIntro 1");
+                    RunDialogueFlag = RunDialog(DialogueUIP1ID, DialogueUIG1ID, DialogueUIPP1ID, DialogueUIPP2ID, "Dialogue LittleGirl 0");
                     if (!RunDialogueFlag)
                     {
                         VI.Text.Update(UIObjectiveTextID, "Objective: Push Forward & Explore");
