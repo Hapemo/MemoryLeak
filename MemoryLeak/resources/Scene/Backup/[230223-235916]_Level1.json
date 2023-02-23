@@ -238,17 +238,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": false
-        },
         "ShadowCaster": {
             "centerOffset": {
                 "X": 5.0,
@@ -1325,17 +1314,6 @@
             },
             "isTrigger": false,
             "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": false
         },
         "Script": {
             "name": "PassengerScript"
