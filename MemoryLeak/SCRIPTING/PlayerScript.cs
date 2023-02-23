@@ -1,4 +1,22 @@
-﻿namespace BonVoyage
+﻿/*!*****************************************************************************
+\file PlayerScript
+\author Lee Hsien Wei, Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Course: GAM200
+\par Group: Memory Leak Studios
+\date 23-02-2022
+\brief
+The PlayerScript handles the player movement & its sprite updates, cheats tied 
+to the player as well as the handling of animation when it is dead
+
+Press "CTRL+SHIFT+L" to skip to the game over screen.
+Press "CTRL+SHIFT+M" to toggle player invincible mode.
+Press "CTRL+SHIFT+B" to toggle player's speed increase.
+Press "ESC" to toggle the pause menu.
+*******************************************************************************/
+
+
+namespace BonVoyage
 {
     public class PlayerScript : BaseScript
     {
@@ -9,6 +27,7 @@
         static public bool PlayerInDialogue;
         static public float PlayerHealth;
         private const float MaxPlayerHealth = 12f;
+        private bool InDeathAnimation;
         private const float PlayerSpeed = 500f;
 
         private bool SpeedCheatToggle;
@@ -24,6 +43,7 @@
             PlayerInDialogue = false;
             PlayerHealth = MaxPlayerHealth;
             SpeedCheatToggle = false;
+            InDeathAnimation = false;
         }
 
         public void Update(int _ENTITY)
@@ -53,7 +73,7 @@
 
             #region Player Movement
             // Not in dialogue
-            if (!PlayerInDialogue)
+            if (!PlayerInDialogue && !InDeathAnimation)
             {
                 // Get entity position which is assumed to be player
                 float PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
@@ -93,10 +113,20 @@
 
             #region Player Death
             
+            // Set animation and update bool flag
             if (PlayerHealth <= 0f)
             {
                 SetPlayerSprite(_ENTITY, 0f, "Death");
                 VI.Animation.FrameCount.Set(_ENTITY, 0);
+                InDeathAnimation = true;
+                
+            }
+
+            // Check for animation completion, then transition state
+            if (InDeathAnimation && VI.Animation.CurrentFrame.Get(_ENTITY) == VI.Animation.FrameCount.Get(_ENTITY))
+            {
+                VI.Scene.Pause(VI.GameState.GetName());
+                VI.Scene.Play("Game Over");
             }
 
             #endregion
