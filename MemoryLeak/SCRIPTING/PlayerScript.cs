@@ -6,11 +6,10 @@
 \par Group: Memory Leak Studios
 \date 23-02-2022
 \brief
-The PlayerScript handles the player movement & its sprite updates, cheats tied 
-to the player as well as the handling of animation when it is dead
+The PlayerScript handles the player movement, its sprite updates & camera 
+following player on movement, cheats tied to the player as well as the handling 
+of animation when the player dies. It also handles the pausing.
 
-Press "CTRL+SHIFT+L" to skip to the game over screen.
-Press "CTRL+SHIFT+M" to toggle player invincible mode.
 Press "CTRL+SHIFT+B" to toggle player's speed increase.
 Press "ESC" to toggle the pause menu.
 *******************************************************************************/
