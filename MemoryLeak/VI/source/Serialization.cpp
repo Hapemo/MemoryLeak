@@ -655,8 +655,12 @@ LightSource SerializationManager::getLightSource(Value& entity)
 ShadowCaster SerializationManager::getShadowCaster(Value& entity)
 {
 	ShadowCaster shadowCaster;
-	shadowCaster.centerOffset = GetVec2(entity["ShadowCaster"]["centerOffset"]);
-	shadowCaster.scaleOffset = GetVec2(entity["ShadowCaster"]["scaleOffset"]);
+	Value a(kObjectType);
+	a = entity["ShadowCaster"]["centerOffsets"].GetArray();
+	for (int j = 0; j < (int)a.Size(); ++j)
+	{
+		shadowCaster.centerOffset.push_back(GetVec2(a[j]["centerOffset"]));
+	}
 	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();;
 	return shadowCaster;
 }
@@ -1216,8 +1220,15 @@ void SerializationManager::addLightSource(Document& scene, Value& entity, LightS
 void SerializationManager::addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster)
 {
 	Value tmp(kObjectType);
-	addVectorMember(scene, tmp, "centerOffset", shadowCaster.centerOffset);
-	addVectorMember(scene, tmp, "scaleOffset", shadowCaster.scaleOffset);
+	Value child(kObjectType);
+	child.SetArray();
+	for (int i = 0; i < shadowCaster.centerOffset.size(); i++)
+	{
+		Value ctrOffset(kObjectType);
+		addVectorMember(scene, ctrOffset, "centerOffset", shadowCaster.centerOffset[i]);
+		child.PushBack(ctrOffset, scene.GetAllocator());
+	}
+	tmp.AddMember(StringRef("centerOffsets"), child, scene.GetAllocator());
 	tmp.AddMember(StringRef("renderFlag"), shadowCaster.renderFlag, scene.GetAllocator());
 	entity.AddMember(StringRef("ShadowCaster"), tmp, scene.GetAllocator());
 }

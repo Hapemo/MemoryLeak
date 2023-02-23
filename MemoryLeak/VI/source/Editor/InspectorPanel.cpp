@@ -1152,15 +1152,13 @@ void InspectorPanel::ShadowCasterEditor()
 {
 	if (ImGui::CollapsingHeader("ShadowCaster"))
 	{
-		tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset.x;
-		tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset.y;
-		ImGui::InputFloat2("Shadow center", tmpVec2);
-		e.GetComponent<ShadowCaster>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
-
-		tmpVec2[0] = e.GetComponent<ShadowCaster>().scaleOffset.x;
-		tmpVec2[1] = e.GetComponent<ShadowCaster>().scaleOffset.y;
-		ImGui::InputFloat2("Shadow scale ", tmpVec2);
-		e.GetComponent<ShadowCaster>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
+		for (int i = 0; i < e.GetComponent<ShadowCaster>().centerOffset.size(); i++)
+		{
+			tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset[i].x;
+			tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset[i].y;
+			ImGui::InputFloat2(("Shadow center" + std::to_string(i)).c_str(), tmpVec2);
+			e.GetComponent<ShadowCaster>().centerOffset[i] = {tmpVec2[0] ,tmpVec2[1]};
+		}
 
 		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
 	}
