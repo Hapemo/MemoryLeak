@@ -924,9 +924,6 @@
             "isRandPitch": false,
             "isSpacial": false
         },
-        "Script": {
-            "name": "MonoScript"
-        },
         "ShadowCaster": {
             "centerOffset": {
                 "X": 0.0,
