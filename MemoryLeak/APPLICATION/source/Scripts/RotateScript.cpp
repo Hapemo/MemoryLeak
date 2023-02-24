@@ -37,6 +37,15 @@ void RotateScript::Init(Entity const& _e) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
+void RotateScript::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate functions from all other active scripts.
+*******************************************************************************/
 void RotateScript::Update(Entity const& _e) {
 	//LOG_INFO("RotateScript updating works!!!");
 	if (VI::iInput::CheckKey(E_STATE::HOLD, O)) {
@@ -49,9 +58,19 @@ void RotateScript::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
-Function will run on fixed delta time.
+Function will run on fixed delta time after running all EarlyUpdate and Update
+functions from all other active scripts.
 *******************************************************************************/
 void RotateScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate, Update, and FixedUpdate functions from all other active scripts.
+*******************************************************************************/
+void RotateScript::LateUpdate(Entity const& _e) {
 	(void)_e;
 }
 

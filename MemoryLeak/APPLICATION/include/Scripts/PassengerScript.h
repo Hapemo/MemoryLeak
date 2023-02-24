@@ -35,8 +35,10 @@ public:
 	// Refer to parent
 	void Alive(const Entity& _e) override;
 	void Init(const Entity& _e) override;
-	void Update(const Entity& _e) override;
-	void FixedUpdate(const Entity& _e) override;
+	void EarlyUpdate(Entity const& _e) override;
+	void Update(Entity const& _e) override;
+	void FixedUpdate(Entity const& _e) override;
+	void LateUpdate(Entity const& _e) override;
 	void Exit(const Entity& _e) override;
 	void Dead(const Entity& _e) override;
 };

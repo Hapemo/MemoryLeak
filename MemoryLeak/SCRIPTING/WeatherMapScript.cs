@@ -53,6 +53,8 @@ namespace BonVoyage {
                 init = false;
             }
         }
+
+        public void EarlyUpdate(int _ENTITY) { }
         public void Update(int _ENTITY) {
             if ((VI.Input.Button.s_Released("weathermap", "WeatherMap")) == true)
             {
@@ -102,6 +104,8 @@ namespace BonVoyage {
         public void FixedUpdate(int _ENTITY) {
 
         }
+
+        public void LateUpdate(int _ENTITY) { }
 
         public void Exit(int _ENTITY) {
             big = false;

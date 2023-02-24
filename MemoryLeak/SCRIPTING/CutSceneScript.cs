@@ -33,6 +33,8 @@ namespace BonVoyage {
             targetRadius = (int)VI.LightSource.Radius.s_Get(light, scene);
         }
 
+        public void EarlyUpdate(int _ENTITY) { }
+
         public void Update(int _ENTITY) {
             if (!isAlphaDecreasing && VI.Input.Key.Press(349) && currScn < 18)
                 isAlphaDecreasing = true;
@@ -87,6 +89,8 @@ namespace BonVoyage {
                 VI.LightSource.Radius.s_Set(light, scene, currRadius);
             }
         }
+
+        public void LateUpdate(int _ENTITY) { }
 
         public void Exit(int _ENTITY) {
 

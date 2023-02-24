@@ -595,11 +595,11 @@ void InternalCalls::iAnimation::SetLoopCycle(int _eId, bool _cycle) {
 }
 void InternalCalls::iAnimation::AddTransform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
-	movementAIManager->AddTransform(Entity(_eId), trans);
+	movementAIManager->AddTransform(Entity(_eId), trans, _time);
 }
 void InternalCalls::iAnimation::AddTransformDifference(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
-	movementAIManager->AddTransformDifference(Entity(_eId), trans);
+	movementAIManager->AddTransformDifference(Entity(_eId), trans, _time);
 }
 void InternalCalls::iAnimation::SetCalculatedTimeFromPosition(int _eId, float _posX, float _posY, int _step) {
 	movementAIManager->SetCalculatedTimeFromPosition(Entity(_eId), { _posX, _posY }, _step);

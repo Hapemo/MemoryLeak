@@ -34,6 +34,10 @@ void PlayerMovementScript::Init(const Entity& _e) {
 	inited = false;
 }
 
+void PlayerMovementScript::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
 void PlayerMovementScript::Update(const Entity& _e) {
 	//if (Input::CheckKey(PRESS, SPACE)) std::cout << "MousePos: " << FUNC->GetWorldMousePos() << '\n';
 	/*if (!VI::iAudio::IsBgmPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
@@ -148,6 +152,10 @@ void PlayerMovementScript::Update(const Entity& _e) {
 }
 
 void PlayerMovementScript::FixedUpdate(const Entity& _e) {
+	(void)_e;
+}
+
+void PlayerMovementScript::LateUpdate(Entity const& _e) {
 	(void)_e;
 }
 

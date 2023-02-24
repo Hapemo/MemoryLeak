@@ -30,6 +30,8 @@ namespace BonVoyage {
             lower = 900;
         }
 
+        public void EarlyUpdate(int _ENTITY) { }
+
         public void Update(int _ENTITY) {
             UpdateRadius();
             VI.LightSource.Radius.s_Set("Title", "Menu_Main", radius);
@@ -44,6 +46,8 @@ namespace BonVoyage {
         public void FixedUpdate(int _ENTITY) {
             Console.Write("FIXED\n");
         }
+
+        public void LateUpdate(int _ENTITY) { }
 
         public void Exit(int _ENTITY) {
 

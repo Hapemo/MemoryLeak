@@ -32,6 +32,8 @@ namespace BonVoyage {
             VI.Entity.s_Deactivate("Ball", "Dialogue");
         }
 
+        public void EarlyUpdate(int _ENTITY) { }
+
         public void Update(int _ENTITY)
         {
             VI.Entity.s_Activate("Ball", "Dialogue");
@@ -146,6 +148,8 @@ namespace BonVoyage {
         public void FixedUpdate(int _ENTITY) {
 
         }
+
+        public void LateUpdate(int _ENTITY) { }
         public void Exit(int _ENTITY) {
             toggle=0;
             prevTog = -1;

@@ -34,6 +34,15 @@ void ExitGameButton::Init(Entity const& _e) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
+void ExitGameButton::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate functions from all other active scripts.
+*******************************************************************************/
 void ExitGameButton::Update(Entity const& _e) {
 	static float x = _e.GetComponent<Transform>().scale.x;
 	static float y = _e.GetComponent<Transform>().scale.y;
@@ -72,9 +81,19 @@ void ExitGameButton::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
-Function will run on fixed delta time.
+Function will run on fixed delta time after running all EarlyUpdate and Update
+functions from all other active scripts.
 *******************************************************************************/
 void ExitGameButton::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate, Update, and FixedUpdate functions from all other active scripts.
+*******************************************************************************/
+void ExitGameButton::LateUpdate(Entity const& _e) {
 	(void)_e;
 }
 

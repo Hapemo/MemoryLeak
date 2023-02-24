@@ -117,7 +117,7 @@ void MovementAIManager::AddTransform(Entity e, Transform t, float time)
 }
 void MovementAIManager::AddTransformDifference(Entity e, Transform d, float time)
 {
-	int i = e.GetComponent<MovementAI>().targetTransforms.size() - 1;
+	int i = (int)e.GetComponent<MovementAI>().targetTransforms.size() - 1;
 	d.scale += e.GetComponent<MovementAI>().targetTransforms[i].scale;
 	d.rotation += e.GetComponent<MovementAI>().targetTransforms[i].rotation;
 	d.translation += e.GetComponent<MovementAI>().targetTransforms[i].translation;

@@ -38,6 +38,15 @@ void DeathScript::Init(Entity const& _e) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
+void DeathScript::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate functions from all other active scripts.
+*******************************************************************************/
 void DeathScript::Update(Entity const& _e) {
 	if (VI::iInput::CheckKey(HOLD, LEFT_CONTROL) && VI::iInput::CheckKey(HOLD, LEFT_SHIFT) && VI::iInput::CheckKey(PRESS, M)) canDie = !canDie;
 
@@ -65,9 +74,19 @@ void DeathScript::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
-Function will run on fixed delta time.
+Function will run on fixed delta time after running all EarlyUpdate and Update
+functions from all other active scripts.
 *******************************************************************************/
 void DeathScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate, Update, and FixedUpdate functions from all other active scripts.
+*******************************************************************************/
+void DeathScript::LateUpdate(Entity const& _e) {
 	(void)_e;
 }
 

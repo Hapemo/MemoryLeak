@@ -125,7 +125,9 @@ namespace BonVoyage
           VI.Audio.s_PlayOnLoop("EnemyTrigger", "Level1");
         }
 
-      public void Update(int _ENTITY) {
+        public void EarlyUpdate(int _ENTITY) { }
+
+        public void Update(int _ENTITY) {
 
       // Toggle fps printing box (press 'T')
       if (VI.Input.Key.Press(84)) {
@@ -880,6 +882,8 @@ namespace BonVoyage
         public void FixedUpdate(int _ENTITY) {
 
         }
+
+        public void LateUpdate(int _ENTITY) { }
 
         public void Exit(int _ENTITY) {
 

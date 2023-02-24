@@ -34,6 +34,10 @@ void PassengerScript::Init(const Entity& _e) {
 	readyToPickUp = true;
 }
 
+void PassengerScript::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
 void PassengerScript::Update(const Entity& _e) {
 	// If ready to pick up and it collided, make it pick up next frame.
 	if (readyToPickUp) {
@@ -132,6 +136,10 @@ void PassengerScript::Update(const Entity& _e) {
 }
 
 void PassengerScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+void PassengerScript::LateUpdate(Entity const& _e) {
 	(void)_e;
 }
 

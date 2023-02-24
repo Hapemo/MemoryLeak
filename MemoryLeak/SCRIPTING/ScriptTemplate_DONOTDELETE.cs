@@ -9,7 +9,11 @@ namespace BonVoyage {
         }
 
         public void Init(int _ENTITY) {
-            
+
+        }
+
+        public void EarlyUpdate(int _ENTITY) {
+        
         }
 
         public void Update(int _ENTITY) {
@@ -18,6 +22,10 @@ namespace BonVoyage {
 
         public void FixedUpdate(int _ENTITY) {
 
+        }
+
+        public void LateUpdate(int _ENTITY) {
+        
         }
 
         public void Exit(int _ENTITY) {

@@ -36,8 +36,10 @@ namespace BonVoyage {
             miniMapY = VI.Transform.Scale.s_GetY("enemymap", "EnemyMap");
             expMapX = VI.Transform.Scale.s_GetX("enemymapbig", "EnemyMap");
             expMapY = VI.Transform.Scale.s_GetY("enemymapbig", "EnemyMap");
-           
+
         }
+
+        public void EarlyUpdate(int _ENTITY) { }
 
         public void Update(int _ENTITY) {
             
@@ -97,6 +99,8 @@ namespace BonVoyage {
         public void FixedUpdate(int _ENTITY) {
 
         }
+
+        public void LateUpdate(int _ENTITY) { }
 
         public void Exit(int _ENTITY) {
             big= false;
