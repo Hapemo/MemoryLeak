@@ -400,6 +400,13 @@ public:
 		static std::string GetTexture(const int _eId);
 		static void SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
 		static std::string GetTexture(std::string const& _entityName, std::string const& _sceneName);
+
+		static int GetLayer(const Entity& _e);
+		static void SetLayer(const Entity& _e, int layer);
+		static int GetLayer(const int _eId);
+		static void SetLayer(const int _eId, int layer);
+		static int GetLayer(std::string const& _entityName, std::string const& _sceneName);
+		static void SetLayer(std::string const& _entityName, std::string const& _sceneName, int layer);
 	};
 
 	struct iAudio {

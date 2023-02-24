@@ -56,13 +56,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building1_spritesheet.png",
-            "layer": 24
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -79,11 +79,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 65.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -126,22 +126,22 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building6_spritesheet.png",
-            "layer": 13
+            "layer": 45
         },
         "SheetAnimation": {
             "frameCount": 6,
-            "currFrameIndex": 5,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
                 "X": 5.0,
-                "Y": -140.0
+                "Y": -148.0
             },
             "scaleOffset": {
                 "X": 0.9100000262260437,
-                "Y": 0.4000000059604645
+                "Y": 0.3799999952316284
             },
             "isTrigger": false,
             "renderFlag": true
@@ -149,11 +149,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -22.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -196,13 +196,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
-            "layer": 14
+            "layer": 47
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 2,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -214,6 +214,31 @@
                 "Y": 1.0
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": false
+        },
+        "Script": {
+            "name": "Level1GirlScript"
+        },
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 5.0,
+                "Y": -35.0
+            },
+            "scaleOffset": {
+                "X": 0.4000000059604645,
+                "Y": 0.10000000149011612
+            },
             "renderFlag": true
         }
     },
@@ -244,7 +269,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 25
+            "layer": 60
         },
         "RectCollider": {
             "centerOffset": {
@@ -261,11 +286,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -96.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -295,8 +320,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 160.0,
-                "Y": 120.0
+                "X": 90.63593292236328,
+                "Y": 86.99281311035156
             }
         },
         "Sprite": {
@@ -308,7 +333,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
-            "layer": 50
+            "layer": 43
         },
         "Animation": {
             "sheets": [
@@ -433,13 +458,13 @@
                     "timePerFrame": 0.17000000178813934
                 }
             ],
-            "currentImageIndex": 0
+            "currentImageIndex": 2
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -453,8 +478,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": -0.28263059258461,
-                "Y": -0.05452486500144005
+                "X": -33.94560623168945,
+                "Y": 8.332412719726563
             },
             "acceleration": {
                 "X": 0.0,
@@ -484,7 +509,7 @@
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -500,7 +525,7 @@
             "isSpacial": false
         },
         "Script": {
-            "name": "PlayerMovementScript"
+            "name": "PlayerScript"
         },
         "LightSource": {
             "centerOffset": {
@@ -538,13 +563,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Lighthouse_spritesheet.png",
-            "layer": 7
+            "layer": 36
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -561,11 +586,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -49.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -608,7 +633,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 16
+            "layer": 50
         },
         "RectCollider": {
             "centerOffset": {
@@ -625,11 +650,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -48.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -672,7 +697,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 5
+            "layer": 35
         },
         "RectCollider": {
             "centerOffset": {
@@ -689,11 +714,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -167.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -736,7 +761,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 20
+            "layer": 53
         },
         "RectCollider": {
             "centerOffset": {
@@ -753,11 +778,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -142.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -800,7 +825,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 12
+            "layer": 51
         },
         "RectCollider": {
             "centerOffset": {
@@ -817,11 +842,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -40.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -836,8 +861,16 @@
             "isRandPitch": false,
             "isSpacial": false
         },
-        "Script": {
-            "name": "MonoScript"
+        "ShadowCaster": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -20.0
+            },
+            "scaleOffset": {
+                "X": 0.30000001192092896,
+                "Y": 0.3499999940395355
+            },
+            "renderFlag": true
         }
     },
     {
@@ -867,13 +900,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 23
+            "layer": 56
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -890,11 +923,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 54.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         }
@@ -926,13 +959,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
-            "layer": 6
+            "layer": 32
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -949,11 +982,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 68.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -989,9 +1022,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 155,
-                "g": 225,
-                "b": 252,
+                "r": 222,
+                "g": 100,
+                "b": 179,
                 "a": 100
             },
             "sprite": 1,
@@ -1032,7 +1065,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 28
+            "layer": 41
         },
         "RectCollider": {
             "centerOffset": {
@@ -1049,11 +1082,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -97.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1096,24 +1129,35 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building5_spritesheet.png",
-            "layer": 12
+            "layer": 42
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
-                "X": -20.0,
-                "Y": 0.0
+                "X": -10.0,
+                "Y": -20.0
             },
             "scaleOffset": {
                 "X": 0.8999999761581421,
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 150.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -1155,13 +1199,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 24
+            "layer": 37
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -1174,6 +1218,17 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": false
         },
         "Script": {
             "name": "PassengerScript"
@@ -1206,13 +1261,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building3_spritesheet.png",
-            "layer": 13
+            "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -1229,11 +1284,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 69.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1276,7 +1331,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 10
+            "layer": 40
         },
         "RectCollider": {
             "centerOffset": {
@@ -1293,11 +1348,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -49.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1340,7 +1395,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 6
+            "layer": 31
         },
         "RectCollider": {
             "centerOffset": {
@@ -1357,11 +1412,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -135.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1404,7 +1459,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 10
+            "layer": 58
         },
         "RectCollider": {
             "centerOffset": {
@@ -1421,11 +1476,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -47.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1546,7 +1601,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 18
+            "layer": 52
         },
         "RectCollider": {
             "centerOffset": {
@@ -1563,11 +1618,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -101.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1610,7 +1665,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 8
+            "layer": 38
         },
         "RectCollider": {
             "centerOffset": {
@@ -1627,11 +1682,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -66.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1674,7 +1729,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 6
+            "layer": 33
         },
         "RectCollider": {
             "centerOffset": {
@@ -1691,11 +1746,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -41.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1738,7 +1793,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 24
+            "layer": 57
         },
         "RectCollider": {
             "centerOffset": {
@@ -1755,11 +1810,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -28.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.1
+                "Y": 0.004999999888241291
             },
             "renderFlag": true
         },
@@ -1864,7 +1919,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
-            "layer": 15
+            "layer": 48
         },
         "Animation": {
             "sheets": [
@@ -1953,9 +2008,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.06666667014360428
         },
         "RectCollider": {
             "centerOffset": {
@@ -1967,6 +2022,17 @@
                 "Y": 0.5
             },
             "isTrigger": true,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -2012,9 +2078,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         }
     },
     {
@@ -2048,9 +2114,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 3,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         }
     },
     {
@@ -2084,9 +2150,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         }
     },
     {
@@ -2120,9 +2186,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 5,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.083542101085186
+            "timeToFrameSwap": 0.05000000447034836
         }
     },
     {

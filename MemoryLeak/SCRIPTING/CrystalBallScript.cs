@@ -20,127 +20,85 @@ namespace BonVoyage {
     {
         int toggle = 0; // 0 minimap, 1, weathermap, 2 enemymap
         int prevTog = -1;
+        static bool big = false;
+        static bool active = true;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
 
         public void Init(int _ENTITY) {
-            //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
-            //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
-            //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
-            VI.Entity.s_Deactivate("Ball", "Dialogue");
+            VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+            VI.Entity.s_Deactivate("minimap", "WeatherMap");
+            VI.Entity.s_Deactivate("enemymap", "WeatherMap");
+            VI.Entity.s_Deactivate("Ball", "WeatherMap");
         }
 
         public void Update(int _ENTITY)
         {
-            VI.Entity.s_Activate("Ball", "Dialogue");
-            if ((VI.Input.Button.s_Released("cyclemap", "Dialogue")) == true)
+            if (active)
             {
-                toggle = toggle >= 2 ? 0 : (toggle + 1);
+                VI.Entity.s_Activate("Ball", "WeatherMap");
+                if ((VI.Input.Button.s_Released("cyclemap", "WeatherMap")))
+                {
+                    toggle = toggle >= 2 ? 0 : (toggle + 1);
+                }
+                if ((VI.Input.Button.s_Released("Ball", "WeatherMap")))
+                {
+                    big = !big;
+                    Console.WriteLine("toggled size!");
+                }
+                if (prevTog != toggle)
+                { 
+                    if (toggle == 0)
+                    {
+                        VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+                        VI.Entity.s_Deactivate("enemymap", "WeatherMap");
+                        VI.Entity.s_Activate("minimap", "WeatherMap");
+                    }
+                    else if (toggle == 1)
+                    {
+                        VI.Entity.s_Deactivate("minimap", "WeatherMap");
+                        VI.Entity.s_Deactivate("enemymap", "WeatherMap");
+                        VI.Entity.s_Activate("weathermap", "WeatherMap");
+                    }
+                    else if (toggle == 2)
+                    {
+                        VI.Entity.s_Deactivate("minimap", "WeatherMap");
+                        VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+                        VI.Entity.s_Activate("enemymap", "WeatherMap");
+                    }
+                    else
+                    {
+                        VI.Entity.s_Deactivate("minimap", "WeatherMap");
+                        VI.Entity.s_Deactivate("enemymap", "WeatherMap");
+                        VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+                    }
+                    prevTog = toggle;
+                }
             }
-            if(prevTog != toggle)
-            { 
-                if (toggle == 0)
-                {
-                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
-                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
-                    VI.Scene.Play("MiniMap");
-                    VI.Entity.s_Activate("minimap", "MiniMap");
-                    VI.Scene.Pause("WeatherMap");
-                    VI.Scene.Pause("EnemyMap");
-                    //InternalCalls.SetEntityIsActive("minimap", "MiniMap", true);
-                    //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
-                    //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
-                    //InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
-                    //InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
-                    //for (int i = 0; i < 25; i++)
-                    //{
-                    //    int modI = i % 5;
-                    //    int divI = i / 5;
-                    //    if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
-                    //    {
-                    //        string MIcon = "MIcon" + i;
-                    //        InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
-                    //    }
-                    //}
-                }
-                else if (toggle == 1)
-                {
-                    VI.Entity.s_Deactivate("minimap", "MiniMap");
-                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
-                    VI.Scene.Pause("MiniMap");
-                    VI.Scene.Play("WeatherMap");
-                    VI.Entity.s_Activate("weathermap", "WeatherMap");
-                    VI.Scene.Pause("EnemyMap");
-                    //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
-                    //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", true);
-                    //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
-                    //InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
-                    //InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
-                    //for (int i = 0; i < 25; i++)
-                    //{
-                    //    int modI = i % 5;
-                    //    int divI = i / 5;
-                    //    if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
-                    //    {
-                    //        string MIcon = "MIcon" + i;
-                    //        InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", true);
-                    //    }
-                    //}
-
-                }
-                else if (toggle == 2)
-                {
-                    VI.Entity.s_Deactivate("minimap", "MiniMap");
-                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
-                    VI.Scene.Pause("MiniMap");
-                    VI.Scene.Pause("WeatherMap");
-                    VI.Scene.Play("EnemyMap");
-                    VI.Entity.s_Activate("enemymap", "EnemyMap");
-                    //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
-                    //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
-                    //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", true);
-                    //InternalCalls.SetEntityIsActive("enemy", "EnemyMap", true);
-                    //InternalCalls.SetEntityIsActive("player", "EnemyMap", true);
-                    //for (int i = 0; i < 25; i++)
-                    //{
-                    //    int modI = i % 5;
-                    //    int divI = i / 5;
-                    //    if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
-                    //    {
-                    //        string MIcon = "MIcon" + i;
-                    //        InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
-                    //    }
-                    //}
-                }
-                else //if (toggle == 2)
-                {
-                    VI.Entity.s_Deactivate("minimap", "MiniMap");
-                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
-                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
-                    VI.Scene.Pause("MiniMap");
-                    VI.Scene.Pause("WeatherMap");
-                    VI.Scene.Pause("EnemyMap");
-                    //InternalCalls.SetEntityIsActive("minimap", "MiniMap", false);
-                    //InternalCalls.SetEntityIsActive("weathermap", "WeatherMap", false);
-                    //InternalCalls.SetEntityIsActive("enemymap", "EnemyMap", false);
-                    //InternalCalls.SetEntityIsActive("enemy", "EnemyMap", false);
-                    //InternalCalls.SetEntityIsActive("player", "EnemyMap", false);
-                    //for (int i = 0; i < 25; i++)
-                    //{
-                    //    int modI = i % 5;
-                    //    int divI = i / 5;
-                    //    if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
-                    //    {
-                    //        string MIcon = "MIcon" + i;
-                    //        InternalCalls.SetEntityIsActive(MIcon, "WeatherMap", false);
-                    //    }
-                    //}
-                }
-                prevTog = toggle;
+            else
+            {
+                VI.Entity.s_Deactivate("minimap", "WeatherMap");
+                VI.Entity.s_Deactivate("enemymap", "WeatherMap");
+                VI.Entity.s_Deactivate("weathermap", "WeatherMap");
             }
 
+        }
+
+        public static bool Big()
+        {
+            return big;
+        }
+
+        public static void TurnOff()
+        {
+            active = false;
+        }
+
+        public static void TurnOn()
+        {
+            active = true;
         }
 
         public void FixedUpdate(int _ENTITY) {
@@ -149,13 +107,10 @@ namespace BonVoyage {
         public void Exit(int _ENTITY) {
             toggle=0;
             prevTog = -1;
-            VI.Entity.s_Deactivate("minimap", "MiniMap");
-            VI.Entity.s_Deactivate("enemymap", "EnemyMap");
+            VI.Entity.s_Deactivate("minimap", "WeatherMap");
+            VI.Entity.s_Deactivate("enemymap", "WeatherMap");
             VI.Entity.s_Deactivate("weathermap", "WeatherMap");
             VI.Entity.s_Deactivate("Ball", "Dialogue");
-            VI.Scene.Pause("MiniMap");
-            VI.Scene.Pause("WeatherMap");
-            VI.Scene.Pause("EnemyMap");
         }
         public void Dead(int _ENTITY) {
 

@@ -537,53 +537,6 @@
     },
     {
         "General": {
-            "name": "cyclemap",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 120.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 470.6368713378906,
-                "Y": -373.06146240234375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\cycle.png",
-            "layer": 63
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "Script": {
-            "name": "CrystalBallScript"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
             "name": "weathertext",
             "tag": 8,
             "subtag": 0,
@@ -671,6 +624,9 @@
                 "a": 255
             }
         },
+        "Script": {
+            "name": "ObjectiveTextScript"
+        },
         "Button": {
             "interactable": true
         }
@@ -722,32 +678,35 @@
     },
     {
         "General": {
-            "name": "Ball",
+            "name": "Dialog Manager",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 285.0,
-                "Y": 324.076416015625
+                "X": 176.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 640.0,
-                "Y": -278.0
+                "X": -10000.0,
+                "Y": -10000.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
+                "r": 0,
                 "g": 255,
-                "b": 255,
-                "a": 255
+                "b": 0,
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\crystalball.png",
-            "layer": 65
+            "sprite": 1,
+            "texture": "",
+            "layer": 66
+        },
+        "Script": {
+            "name": "Level1DialogScript"
         }
     }
 ]

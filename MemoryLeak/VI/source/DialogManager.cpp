@@ -109,6 +109,7 @@ The id of the current dialog.
 Returns the next dialog id.
 *******************************************************************************/
 int DialogManager::GetNext(int _id) {
+	LOG_INFO("Using choice's get next");
 	if (mDialogs.count(_id)) return mDialogs[_id].next;
 	else LOG_ERROR("GetNext(" + std::to_string(_id) + "): Dialogue ID doesn't exist!");
 	return 0;
@@ -453,5 +454,6 @@ Get current dialogue id.
 The id of the current dialog.
 *******************************************************************************/
 int DialogManager::GetCurrentDialogueID() {
+	LOG_INFO("root get current dialog ID");
 	return mCurrentDialogue;
 }
