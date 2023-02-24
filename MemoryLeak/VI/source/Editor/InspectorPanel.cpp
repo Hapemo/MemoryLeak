@@ -1159,16 +1159,22 @@ void InspectorPanel::ShadowCasterEditor()
 {
 	if (ImGui::CollapsingHeader("ShadowCaster"))
 	{
-		tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset.x;
-		tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset.y;
-		ImGui::InputFloat2("Shadow center", tmpVec2);
-		e.GetComponent<ShadowCaster>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
-
-		tmpVec2[0] = e.GetComponent<ShadowCaster>().scaleOffset.x;
-		tmpVec2[1] = e.GetComponent<ShadowCaster>().scaleOffset.y;
-		ImGui::InputFloat2("Shadow scale ", tmpVec2);
-		e.GetComponent<ShadowCaster>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
-
+		for (int i = 0; i < e.GetComponent<ShadowCaster>().centerOffset.size(); i++)
+		{
+			tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset[i].x;
+			tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset[i].y;
+			ImGui::InputFloat2(("Shadow center" + std::to_string(i)).c_str(), tmpVec2);
+			e.GetComponent<ShadowCaster>().centerOffset[i] = {tmpVec2[0] ,tmpVec2[1]};
+			if (ImGui::Button(("Remove Shadow Vertex" + std::to_string(i)).c_str()))
+			{
+				e.GetComponent<ShadowCaster>().centerOffset.erase(e.GetComponent<ShadowCaster>().centerOffset.begin()+i);
+			}
+			ImGui::Separator();
+		}
+		if (ImGui::Button("Add Shadow Vertex"))
+		{
+			e.GetComponent<ShadowCaster>().centerOffset.push_back(Math::Vec2{});
+		}
 		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove ShadowCaster"))

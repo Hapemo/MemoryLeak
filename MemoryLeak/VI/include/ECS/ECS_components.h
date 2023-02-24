@@ -354,8 +354,7 @@ struct LightSource
 
 struct ShadowCaster
 {
-	Math::Vec2 centerOffset = { 0.f, 0.f },	// save, edit, see
-		scaleOffset = { 1.f,1.f };		// save, edit, see
+	std::vector<Math::Vec2> centerOffset;
 	bool renderFlag{ false };				// save, edit, see
 };
 

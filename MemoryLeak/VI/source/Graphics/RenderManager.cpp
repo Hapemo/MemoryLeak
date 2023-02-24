@@ -577,12 +577,12 @@ void RenderManager::RenderDebug()
 
 			if (e.HasComponent<ShadowCaster>() && e.GetComponent<ShadowCaster>().renderFlag)
 			{
-				Transform t = e.GetComponent<Transform>();
-				t.translation += e.GetComponent<ShadowCaster>().centerOffset;
-				t.scale.x *= e.GetComponent<ShadowCaster>().scaleOffset.x;
-				t.scale.y *= e.GetComponent<ShadowCaster>().scaleOffset.y;
-				t.rotation = 0;
-				CreateDebugSquare(t, { 50, 50, 50, 255 });
+				for (const Math::Vec2& pt : e.GetComponent<ShadowCaster>().centerOffset)
+				{
+					Transform t = e.GetComponent<Transform>();
+					t.translation += Math::Vec2(pt.x, pt.y);
+					CreateDebugPoint(t, { 0, 255, 0, 255 });
+				}
 			}
 
 			//check if sprite component itself is a debug drawing
