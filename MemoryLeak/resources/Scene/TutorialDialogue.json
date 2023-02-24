@@ -445,9 +445,6 @@
                 "a": 255
             }
         },
-        "Script": {
-            "name": "ObjectiveTextScript"
-        },
         "Button": {
             "interactable": true
         }
@@ -482,7 +479,7 @@
             "layer": 66
         },
         "Script": {
-          "name": "LevelTutorialDialogueScript"
+            "name": "LevelTutorialDialogueScript"
         }
     }
 ]

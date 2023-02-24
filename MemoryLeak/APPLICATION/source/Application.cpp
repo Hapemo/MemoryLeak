@@ -107,7 +107,7 @@ void Application::SystemUpdate() {
   END_TRACK("Physics");
 
   TRACK_PERFORMANCE("Collision");
-  collision2DManager->Update(FPSManager::dt);
+  //collision2DManager->Update(FPSManager::dt);
   END_TRACK("Collision");
 
   // Particles

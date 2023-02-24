@@ -14,6 +14,8 @@ namespace BonVoyage {
 
     private int playerID;
 
+    private int CatDialogueColliderID;
+
     private int UIHPBarID;
     private int UIMemoryFragmentID;
     private int UIMemoryFragmentScreenID;
@@ -34,23 +36,26 @@ namespace BonVoyage {
     }
 
     public void Init(int _ENTITY) {
-      playerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
+      //playerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
+      CatDialogueColliderID = VI.Entity.GetId("CatDialogueCollider", "LevelTutorial");
 
-      UIHPBarID = VI.Entity.GetId("hpbar", "Dialogue");
-      UIMemoryFragmentID = VI.Entity.GetId("memoryfragment", "Dialogue");
-      UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
-      UIFragment1ObjID = VI.Entity.GetId("fragment1obj", "Dialogue");
-      UICycleMapID = VI.Entity.GetId("cyclemap", "Dialogue");
-      UIMiniMapID = VI.Entity.GetId("minimap", "Dialogue");
-      UIEnemyMapID = VI.Entity.GetId("enemymap", "Dialogue");
-      UIWeatherMapID = VI.Entity.GetId("weathermap", "Dialogue");
-      UIWeatherTextID = VI.Entity.GetId("weathertext", "Dialogue");
-      UIObjectiveTextID = VI.Entity.GetId("objectivetext", "Dialogue");
+      //UIHPBarID = VI.Entity.GetId("hpbar", "Dialogue");
+      //UIMemoryFragmentID = VI.Entity.GetId("memoryfragment", "Dialogue");
+      //UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
+      //UIFragment1ObjID = VI.Entity.GetId("fragment1obj", "Dialogue");
+      //UICycleMapID = VI.Entity.GetId("cyclemap", "Dialogue");
+      //UIMiniMapID = VI.Entity.GetId("minimap", "Dialogue");
+      //UIEnemyMapID = VI.Entity.GetId("enemymap", "Dialogue");
+      //UIWeatherMapID = VI.Entity.GetId("weathermap", "Dialogue");
+      //UIWeatherTextID = VI.Entity.GetId("weathertext", "Dialogue");
+      //UIObjectiveTextID = VI.Entity.GetId("objectivetext", "Dialogue");
 
-      P1ID = VI.Entity.GetId("P1", "Dialogue");
-      PP1ID = VI.Entity.GetId("PP1", "Dialogue");
-      PP2ID = VI.Entity.GetId("PP2", "Dialogue");
-      G1ID = VI.Entity.GetId("G1", "Dialogue");
+      //P1ID = VI.Entity.GetId("P1", "Dialogue");
+      //PP1ID = VI.Entity.GetId("PP1", "Dialogue");
+      //PP2ID = VI.Entity.GetId("PP2", "Dialogue");
+      //G1ID = VI.Entity.GetId("G1", "Dialogue");
+
+
 
       dialogInit = true;
     }
@@ -92,23 +97,23 @@ namespace BonVoyage {
 
     #region UIControl
     public void DisableUI() {
-      VI.Entity.Deactivate(UIHPBarID);
-      VI.Entity.Deactivate(UIMemoryFragmentID);
-      VI.Entity.Deactivate(UIMemoryFragmentScreenID);
-      VI.Entity.Deactivate(UIFragment1ObjID);
-      VI.Entity.Deactivate(UICycleMapID);
-      VI.Entity.Deactivate(UIMiniMapID);
-      VI.Entity.Deactivate(UIEnemyMapID);
-      VI.Entity.Deactivate(UIWeatherMapID);
-      VI.Entity.Deactivate(UIWeatherTextID);
-      VI.Entity.Deactivate(UIObjectiveTextID);
+      //VI.Entity.Deactivate(UIHPBarID);
+      //VI.Entity.Deactivate(UIMemoryFragmentID);
+      //VI.Entity.Deactivate(UIMemoryFragmentScreenID);
+      //VI.Entity.Deactivate(UIFragment1ObjID);
+      //VI.Entity.Deactivate(UICycleMapID);
+      //VI.Entity.Deactivate(UIMiniMapID);
+      //VI.Entity.Deactivate(UIEnemyMapID);
+      //VI.Entity.Deactivate(UIWeatherMapID);
+      //VI.Entity.Deactivate(UIWeatherTextID);
+      //VI.Entity.Deactivate(UIObjectiveTextID);
     }
 
     public void EnableUI() {
-      VI.Entity.Activate(UIHPBarID);
-      VI.Entity.Activate(UIMemoryFragmentID);
-      VI.Entity.Activate(UICycleMapID);
-      VI.Entity.Activate(UIObjectiveTextID);
+      //VI.Entity.Activate(UIHPBarID);
+      //VI.Entity.Activate(UIMemoryFragmentID);
+      //VI.Entity.Activate(UICycleMapID);
+      //VI.Entity.Activate(UIObjectiveTextID);
     }
     #endregion
 
@@ -196,7 +201,7 @@ namespace BonVoyage {
         VI.Dialogue.Current.SetTo(1);
 
         // Setting default P1, PP1, PP2 positions
-        VI.Transform.Position.SetX(PP1ID, 500);
+        VI.Transform.Position.s_SetX(choice1, scene, 500);
         VI.Transform.Position.s_SetY(choice1, scene, 46);
         VI.Transform.Position.s_SetX(choice2, scene, 500);
         VI.Transform.Position.s_SetY(choice2, scene, -90);
@@ -297,15 +302,16 @@ namespace BonVoyage {
       runCatDialog = false;
       PlayerScript.PlayerInDialogue = false;
 
-      VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
+      VI.Entity.Deactivate(CatDialogueColliderID);
+      //VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
     }
 
     public void EndGirlDialog() {
       runGirlDialog = false;
       PlayerScript.PlayerInDialogue = false;
 
-      VI.Entity.s_Deactivate("LittleGirlBox", "Level1"); //Todo change to girl's ID or public static it's vvariable
-      ObjectiveTextScript.UpdateText("Finished talking to little girl"); // TODO Christy to update the text needed here
+      //VI.Entity.s_Deactivate("LittleGirlBox", "Level1"); //Todo change to girl's ID or public static it's vvariable
+      //ObjectiveTextScript.UpdateText("Finished talking to little girl"); // TODO Christy to update the text needed here
       //EndGirlExistance(); // TODO. after talking to girl, make her dissappear.
     }
 
@@ -313,8 +319,8 @@ namespace BonVoyage {
       runPassengerDialog = false;
       PlayerScript.PlayerInDialogue = false;
 
-      VI.Transform.Rotate.s_Set("Passenger_1", "Level1", 0.5f);
-      ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
+      //VI.Transform.Rotate.s_Set("Passenger_1", "Level1", 0.5f);
+      //ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
     }
