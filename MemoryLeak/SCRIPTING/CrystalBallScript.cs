@@ -16,7 +16,7 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class CrystalBallScript
+    public class CrystalBallScript : BaseScript
     {
         int toggle = 0; // 0 minimap, 1, weathermap, 2 enemymap
         int prevTog = -1;
@@ -36,9 +36,15 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY)
         {
+            Console.WriteLine("BALL " + THIS.GetId());
+
             if (active)
             {
                 VI.Entity.s_Activate("Ball", "WeatherMap");
+                if ((VI.Input.Button.s_Released("cyclemap", "WeatherMap")))
+                {
+                    Console.WriteLine("Hover cycle");
+                }
                 if ((VI.Input.Button.s_Released("cyclemap", "WeatherMap")))
                 {
                     toggle = toggle >= 2 ? 0 : (toggle + 1);

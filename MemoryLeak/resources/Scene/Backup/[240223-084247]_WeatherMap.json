@@ -2891,7 +2891,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 436.6369934082031,
+                "X": 470.6368713378906,
                 "Y": -373.06146240234375
             }
         },
@@ -2929,7 +2929,7 @@
             "name": "minimap",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -3019,7 +3019,7 @@
             "name": "Ball",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -3052,7 +3052,7 @@
             "name": "minimaphead",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {

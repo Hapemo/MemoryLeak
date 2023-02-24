@@ -2684,9 +2684,6 @@
             "isRandPitch": false,
             "isSpacial": false
         },
-        "Script": {
-            "name": "FragmentScript"
-        },
         "ShadowCaster": {
             "centerOffset": {
                 "X": 5.0,

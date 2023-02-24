@@ -17,6 +17,7 @@ namespace BonVoyage {
     }
 
     public void Update(int _ENTITY) {
+            Console.WriteLine("OBJ " +THIS.GetId());
       if (THIS.Input.Button.Clicked()) {
         showingObjective = !showingObjective;
 
