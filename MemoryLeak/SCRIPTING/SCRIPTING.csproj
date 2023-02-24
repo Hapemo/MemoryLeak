@@ -66,23 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseScript.cs" />
-    <Compile Include="CrystalBallScript.cs" />
-    <Compile Include="CutSceneScript.cs" />
-    <Compile Include="EnemyMapScript.cs" />
     <Compile Include="InternalCalls.cs" />
-    <Compile Include="LevelTutorialCatScript.cs" />
-    <Compile Include="LevelTutorialDialogueScript.cs" />
-    <Compile Include="MenuLightCircle.cs" />
-    <Compile Include="MenuLightScript.cs" />
-    <Compile Include="MiniMapScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PlayerScript.cs" />
-    <Compile Include="Level1GirlScript.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
-    <Compile Include="ObjectiveTextScript.cs" />
-    <Compile Include="Level1DialogScript.cs" />
-    <Compile Include="TemplateScript.cs" />
-    <Compile Include="WeatherMapScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

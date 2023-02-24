@@ -59,27 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
-    <ClCompile Include="source\Scripts\FPSPrint.cpp" />
-    <ClCompile Include="source\Scripts\DeathToMainMenuButton.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\Scripts\AttackScript.cpp" />
-    <ClCompile Include="source\Scripts\BackToGameButton.cpp" />
-    <ClCompile Include="source\Scripts\ExitConfirmationButton.cpp" />
-    <ClCompile Include="source\Scripts\MoveMinimapScript.cpp" />
-    <ClCompile Include="source\Scripts\PassengerScript.cpp" />
-    <ClCompile Include="source\Scripts\BackToMainMenuButton.cpp" />
-    <ClCompile Include="source\Scripts\DeathScript.cpp" />
-    <ClCompile Include="source\Scripts\DialogueScript.cpp" />
-    <ClCompile Include="source\Scripts\ExitGameButton.cpp" />
-    <ClCompile Include="source\Scripts\HowToPlayButton.cpp" />
-    <ClCompile Include="source\Scripts\PauseButton.cpp" />
-    <ClCompile Include="source\Scripts\PlayerMovementScript.cpp" />
-    <ClCompile Include="source\Scripts\PlayGameButton.cpp" />
-    <ClCompile Include="source\Scripts\RotateScript.cpp" />
-    <ClCompile Include="source\Scripts\ScaleScript.cpp" />
-    <ClCompile Include="source\Scripts\SettingsButton.cpp" />
-    <ClCompile Include="source\Scripts\TestScript.cpp" />
-    <ClCompile Include="source\Scripts\WASDScript.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
