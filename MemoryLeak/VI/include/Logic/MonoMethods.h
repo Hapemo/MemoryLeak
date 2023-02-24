@@ -125,6 +125,11 @@ public:
 		
 		static void SetTexture(const int _id, MonoString* _path);
 		static MonoString* GetTexture(const int _id);
+
+		static int GetLayer(const int _eId);
+		static void SetLayer(const int _eId, int layer);
+		static int s_GetLayer(MonoString* _entityName, MonoString* _sceneName);
+		static void s_SetLayer(MonoString* _entityName, MonoString* _sceneName, int layer);
 	};
 	struct iAudio {
 		static void s_Play(MonoString* _entityName, MonoString* _sceneName);

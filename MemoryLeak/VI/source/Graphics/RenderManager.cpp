@@ -44,6 +44,7 @@ RenderManager::RenderManager()
 	mDebug = false;
 	mRenderLayers.reserve(MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 	mIsCurrSceneUI = false;
+	mIsCurrSceneMinimap = false;
 }
 
 /*!*****************************************************************************
@@ -577,12 +578,12 @@ void RenderManager::RenderDebug()
 
 			if (e.HasComponent<ShadowCaster>() && e.GetComponent<ShadowCaster>().renderFlag)
 			{
-				Transform t = e.GetComponent<Transform>();
-				t.translation += e.GetComponent<ShadowCaster>().centerOffset;
-				t.scale.x *= e.GetComponent<ShadowCaster>().scaleOffset.x;
-				t.scale.y *= e.GetComponent<ShadowCaster>().scaleOffset.y;
-				t.rotation = 0;
-				CreateDebugSquare(t, { 50, 50, 50, 255 });
+				for (const Math::Vec2& pt : e.GetComponent<ShadowCaster>().centerOffset)
+				{
+					Transform t = e.GetComponent<Transform>();
+					t.translation += Math::Vec2(pt.x, pt.y);
+					CreateDebugPoint(t, { 0, 255, 0, 255 });
+				}
 			}
 
 			//check if sprite component itself is a debug drawing
@@ -774,11 +775,13 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 
 		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
+			mIsCurrSceneMinimap = true;
 			for (Entity e : scene.mEntities)
 			{
 				if (!e.GetComponent<General>().isActive) continue;
 				if (!e.ShouldRun()) continue;
 				if (e.HasComponent<CircularViewport>()) continue;
+				if (e.GetComponent<General>().name == "Boat") continue;
 				if (e.HasComponent<Sprite>())
 				{
 					Sprite sprite = e.GetComponent<Sprite>();
@@ -800,6 +803,8 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 					}
 				}
 			}
+			mIsCurrSceneMinimap = false;
+
 			break;
 		}
 	}
@@ -870,6 +875,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			mIsCurrSceneUI = false;
 		for (Entity e : scene.mEntities)
 		{
+			std::string name = e.GetComponent<General>().name;
 			if (!e.GetComponent<General>().isActive) continue;
 			if (!e.ShouldRun()) continue;
 			if (e.HasComponent<LightSource>())
@@ -1742,7 +1748,7 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	float sinRot = sinf(_rotate);
 
 	Math::Vec2 camPos = mIsCurrSceneUI ? Math::Vec2{0, 0} : cam.GetPos();
-	float camZoom = mIsCurrSceneUI ? 1.f : cam.GetZoom();
+	float camZoom = mIsCurrSceneMinimap ? 2.f : mIsCurrSceneUI ? 1.f : cam.GetZoom();
 
 	Math::Mat3 temp
 	{

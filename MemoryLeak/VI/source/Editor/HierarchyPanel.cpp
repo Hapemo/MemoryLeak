@@ -23,7 +23,6 @@ None.
 *******************************************************************************/
 void HierarchyPanel::Init()
 {
-	//to be read from file in the future
 	tag = { "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "ENVIRONMENT","EFFECTS","PREFABS","OTHERS" };
 }
 /*!*****************************************************************************
@@ -39,43 +38,24 @@ void HierarchyPanel::Update()
 	if (ImGui::Begin("Hierarchy Manager"))
 	{
 		int id = 0;
-		/*ImGuiTabBarFlags_ barfalg = ImGuiTabBarFlags_None;
-		barfalg = (ImGuiTabBarFlags_)(barfalg|ImGuiTabBarFlags_Reorderable);
-		barfalg = (ImGuiTabBarFlags_)(barfalg | ImGuiTabBarFlags_AutoSelectNewTabs);
-		ImGuiTabItemFlags_ flag = ImGuiTabItemFlags_None;*/
 		ImGui::Text("GameState Selection:");
 		if (ImGui::BeginTabBar("GameState"))
 		{
 			for (int g = 0; g < (*mGameStates).size(); g++)
 			{
-				
-				//ImGui::PushID(id++);
 				if (ImGui::BeginTabItem((*mGameStates)[g].mName.c_str()))
 				{
-					//ImGui::PopID();
 					static std::string gsName = (*mGameStates)[g].mName;
 					if (selectedGameState != g && isScenePaused)
 					{
-						//if(hack)
-						//for (const Entity& e : *myEntities)//REMOVEME aft jazz
-						//	e.GetComponent<General>().isPaused = true;
-						
 						SceneReset();
 						gsName = (*mGameStates)[g].mName;
 						GameStateManager::GetInstance()->SetGameState((*mGameStates)[g].mName);
 						selectedGameState = g;
-
-						//if (hack)
-						//for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
-						//	for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)//REMOVEME aft jazz
-						//		e.GetComponent<General>().isPaused = (*mGameStates)[g].mScenes[s].mIsPause;
-
 					}
 					ImGui::InputText("GameState Name", &gsName);
-					//if(ImGui::IsItemActive() && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
 					if (ImGui::IsItemDeactivatedAfterEdit())
 					{
-						//(*mGameStates)[g].mName = gsName;
 						GameStateManager::GetInstance()->RenameGameState(&(*mGameStates)[g], gsName);
 					}
 					std::string saveGSbtn = "SAVE GameState";
@@ -92,7 +72,7 @@ void HierarchyPanel::Update()
 					ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.f, 0.f, 1.0f });
 					if (ImGui::Button(removeGSbtn.c_str()))
 					{
-						
+						SetScenePaused(true);
 						GameStateManager::GetInstance()->RemoveGameState(&(*mGameStates)[g]);
 						selectedScene = 0;
 						selectedGameState = 0;
@@ -104,7 +84,6 @@ void HierarchyPanel::Update()
 					ImGui::PopStyleColor();
 					//free camera
 					{
-
 						//cam pos
 						float pos[2] = { (*mGameStates)[g].mCamera.translation.x , (*mGameStates)[g].mCamera.translation.y };
 						ImGui::DragFloat2("Camera Pos", pos);
@@ -116,15 +95,11 @@ void HierarchyPanel::Update()
 						//set camera
 						if (ImGui::IsItemActive())
 						{
-							//renderManager->GetGameCamera().SetZoom(1.f);
-							/*renderManager->GetGameCamera().SetCameraWidth((int)size[0]);*/
 							(*mGameStates)[g].mCamera.scale.x = size[0];
 						}
 						ImGui::DragFloat("Camera Height", &size[1], 1.f, 0.f);
 						if (ImGui::IsItemActive())
 						{
-							//renderManager->GetGameCamera().SetZoom(1.f);
-							/*renderManager->GetGameCamera().SetCameraHeight((int)size[1]);*/
 							(*mGameStates)[g].mCamera.scale.y = size[1];
 						}
 						//zoom
@@ -132,7 +107,6 @@ void HierarchyPanel::Update()
 						ImGui::DragFloat("Camera Zoom", &zoom, 0.005f);
 						if (ImGui::IsItemActive())
 						{
-							//renderManager->GetGameCamera().SetZoom(1.f/zoom);
 							(*mGameStates)[g].mCamera.rotation = zoom;
 						}
 						(*mGameStates)[g].mCamera.rotation = zoom;
@@ -175,10 +149,8 @@ void HierarchyPanel::Update()
 
 						for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
 						{
-							//ImGui::PushID(id++);
 							if (ImGui::BeginTabItem((*mGameStates)[g].mScenes[s].mName.c_str()))
 							{
-								//ImGui::PopID();
 								if (selectedScene != s)
 								{
 									if (hack)
@@ -195,7 +167,6 @@ void HierarchyPanel::Update()
 								}
 								std::string sName = (*mGameStates)[g].mScenes[s].mName;
 								ImGui::InputText("Scene Name", &sName);
-								//if (ImGui::IsItemActive() && Input::CheckKey(E_STATE::PRESS, E_KEY::ENTER))
 								if (ImGui::IsItemDeactivatedAfterEdit())
 								{
 										(*mGameStates)[g].mScenes[s].mName = sName;
@@ -214,6 +185,7 @@ void HierarchyPanel::Update()
 								ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.8f, 0.f, 0.f, 1.0f });
 								if (ImGui::Button(removeScenebtn.c_str()))
 								{
+									SetScenePaused(true);
 									(*mGameStates)[g].RemoveScene((*mGameStates)[g].mScenes[s].mName);
 									selectedScene = 0;
 									SceneReset();
@@ -223,9 +195,7 @@ void HierarchyPanel::Update()
 								}
 								ImGui::PopStyleColor();
 
-								/// <summary>
 								/// Game Camera Editor
-								/// </summary>
 								if (ImGui::CollapsingHeader("Scene Camera")||true)
 								{
 									bool isPause = !(*mGameStates)[g].mScenes[s].mIsPause;
@@ -234,47 +204,9 @@ void HierarchyPanel::Update()
 									if(isPause != old)
 										(*mGameStates)[g].mScenes[s].Pause(!isPause);
 									ImGui::Checkbox("Fix Camera for UI", &(*mGameStates)[g].mScenes[s].mIsUI);
-									//if (!(*mGameStates)[g].mScenes[s].mIsUI)//free camera
-									//{
-									//
-									//	//cam pos
-									//	float pos[2] = { (*mGameStates)[g].mCamera.translation.x , (*mGameStates)[g].mCamera.translation.y };
-									//	ImGui::DragFloat2("Camera Pos", pos);
-									//	(*mGameStates)[g].mCamera.translation = Math::Vec2{ pos[0], pos[1] };
-									//	//cam size
-									//	float size[2] = { (*mGameStates)[g].mCamera.scale.x, (*mGameStates)[g].mCamera.scale.y };
-									//	ImGui::DragFloat("Camera Width", &size[0], 1.f, 0.f);
-
-									//	//set camera
-									//	if (ImGui::IsItemActive())
-									//	{
-									//		//renderManager->GetGameCamera().SetZoom(1.f);
-									//		/*renderManager->GetGameCamera().SetCameraWidth((int)size[0]);*/
-									//		(*mGameStates)[g].mCamera.scale.x = size[0];
-									//	}
-									//	ImGui::DragFloat("Camera Height", &size[1], 1.f, 0.f);
-									//	if (ImGui::IsItemActive())
-									//	{
-									//		//renderManager->GetGameCamera().SetZoom(1.f);
-									//		/*renderManager->GetGameCamera().SetCameraHeight((int)size[1]);*/
-									//		(*mGameStates)[g].mCamera.scale.y = size[1];
-									//	}
-									//	//zoom
-									//	float zoom = (*mGameStates)[g].mCamera.rotation;
-									//	ImGui::DragFloat("Camera Zoom", &zoom, 0.005f);
-									//	if (ImGui::IsItemActive())
-									//	{
-									//		//renderManager->GetGameCamera().SetZoom(1.f/zoom);
-									//		(*mGameStates)[g].mCamera.rotation = zoom;
-									//	}
-									//	(*mGameStates)[g].mCamera.rotation = zoom;
-									//}
 									ImGui::InputInt("Layer", &((*mGameStates)[g].mScenes[s].mLayer));
 									if (ImGui::IsItemDeactivatedAfterEdit())
 									{
-										/*(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
-											: ((*mGameStates)[g].mScenes[s].mLayer > (int)(*mGameStates)[g].mScenes.size() ? (int)(*mGameStates)[g].mScenes.size()
-												: (*mGameStates)[g].mScenes[s].mLayer);*/
 										(*mGameStates)[g].mScenes[s].mLayer = (*mGameStates)[g].mScenes[s].mLayer < 0 ? 0
 											: ((*mGameStates)[g].mScenes[s].mLayer > MAX_SCENE_LAYERS -1  ? MAX_SCENE_LAYERS -1
 												: (*mGameStates)[g].mScenes[s].mLayer);
