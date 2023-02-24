@@ -423,7 +423,7 @@ void MonoMethods::RegisterCalls() {
 	// Test
 	mono_add_internal_call("VI.Test::ArgString", &FUNC->TestArgString);
 	mono_add_internal_call("VI.Test::ReturnString", &FUNC->TestReturnString);
-	mono_add_internal_call("BonVoyage.THIS::IsActive", &VIM::iEntity::IsActive);
+	//mono_add_internal_call("BonVoyage.THIS::IsActive", &VIM::iEntity::IsActive);
 
 	// General
 	mono_add_internal_call("VI.General::DeltaTime", &FUNC->GetDeltaTime);
