@@ -22,25 +22,6 @@ Entities and its Components.
 #include "stringbuffer.h"
 #include <prettywriter.h>
 
-
-// Data that a scene class should contain
-//struct SceneData {
-//	std::string name = "";
-//	Transform camera = {};
-//	bool isActive = false;
-//	int layer =0;
-//	int order = 0;;
-//	std::set<Entity> mEntities = {};
-//};
-//
-////Data that a gamestate class should contain
-//struct GameStateData {
-//	std::string name = "";
-//	std::vector<SceneData> scenes = {};
-//
-//	///
-//	std::vector<ResourceManager::GUID> mGUIDs;
-//};
 class Scene;
 class GameState;
 using namespace rapidjson;
@@ -145,13 +126,6 @@ private:
 	void addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster);
 	void addCircularViewport(Document& scene, Value& entity, CircularViewport circularViewport);
 	void addMovementAI(Document& scene, Value& entity, MovementAI movementAI);
-public:
-	//static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
-	//static SceneData LoadSceneData(std::string const& _filePath);
-	//static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid); // (Deprecated)
-	//static GameStateData LoadGameStateData(std::string const& _filePath); // (Deprecated)
-	//static void SaveSceneData(ResourceManager::GUID const&);
-
 };
 
 

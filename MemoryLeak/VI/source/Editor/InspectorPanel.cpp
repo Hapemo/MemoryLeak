@@ -419,6 +419,7 @@ void InspectorPanel::GeneralEditor()
 		ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
 		e.GetComponent<General>().subtag = (SUBTAG)subtagID;
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
+
 	}
 }
 void InspectorPanel::LifespanEditor()
@@ -438,20 +439,6 @@ void InspectorPanel::LifespanEditor()
 }
 void InspectorPanel::TransformEditor()
 {
-	//if (ImGui::CollapsingHeader("Transform Gizmo")) {
-	//	//ImGui::Text("Transform Gizmo: ");
-	//	static bool s = 0, r = 0, t = 0;
-	//	if(SRT == 4)
-	//		s = r = t = 0;
-	//	ImGui::Checkbox("Scale Gizmo", &s);
-	//	if (s) { SRT = 1; r = t = 0; }
-	//	ImGui::Checkbox("Rotate", &r);
-	//	if (r) { SRT = 2; s = t = 0; }
-	//	ImGui::Checkbox("Translate Gizmo", &t);
-	//	if (t) { SRT = 3; s = r = 0; }
-	//	if (!s && !r && !t) SRT = 0;
-	//}
-
 	if (ImGui::CollapsingHeader("Transform") || true) {
 		//ImGui::Text("Transform Component");
 		static bool g = false;
@@ -516,7 +503,8 @@ void InspectorPanel::SpriteEditor()
 		tmpVec4[1] = e.GetComponent<Sprite>().color.g / 255.f;
 		tmpVec4[2] = e.GetComponent<Sprite>().color.b / 255.f;
 		tmpVec4[3] = e.GetComponent<Sprite>().color.a / 255.f;
-		ImGui::ColorEdit4("Color", tmpVec4);
+		//ImGui::ColorEdit4("Sprite Color", tmpVec4);
+		ImGui::ColorPicker4("Color", tmpVec4);
 		e.GetComponent<Sprite>().color.r = (GLubyte)(tmpVec4[0] * 255);
 		e.GetComponent<Sprite>().color.g = (GLubyte)(tmpVec4[1] * 255);
 		e.GetComponent<Sprite>().color.b = (GLubyte)(tmpVec4[2] * 255);
