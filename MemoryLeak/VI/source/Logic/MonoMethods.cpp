@@ -236,6 +236,19 @@ MonoString* MonoMethods::iTexture::GetTexture(const int _eId) {
 	return MONO->ConvertToMonoString(VI::iTexture::GetTexture(_eId));
 }
 
+int MonoMethods::iTexture::GetLayer(const int _eId) {
+	return VI::iTexture::GetLayer(_eId);
+}
+int MonoMethods::iTexture::s_GetLayer(MonoString* _entityName, MonoString* _sceneName) {
+	return VI::iTexture::GetLayer(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+void MonoMethods::iTexture::SetLayer(const int _eId, int layer) {
+	VI::iTexture::SetLayer(_eId, layer);
+}
+void MonoMethods::iTexture::s_SetLayer(MonoString* _entityName, MonoString* _sceneName, int layer) {
+	VI::iTexture::SetLayer(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), layer);
+}
+
 // Audio
 void MonoMethods::iAudio::s_Play(MonoString* _entityName, MonoString* _sceneName) {
 	VI::iAudio::Play(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
@@ -556,6 +569,10 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Texture::Set", &VIM::iTexture::SetTexture);
 	mono_add_internal_call("VI.Texture::Get", &VIM::iTexture::GetTexture);
 
+	mono_add_internal_call("VI.Texture::GetLayer", &VIM::iTexture::GetLayer);
+	mono_add_internal_call("VI.Texture::SetLayer", &VIM::iTexture::SetLayer);
+	mono_add_internal_call("VI.Texture::s_GetLayer", &VIM::iTexture::s_GetLayer);
+	mono_add_internal_call("VI.Texture::s_SetLayer", &VIM::iTexture::s_SetLayer);
 	// Audio
 	mono_add_internal_call("VI.Audio::Play", &VIM::iAudio::Play);
 	mono_add_internal_call("VI.Audio::PlayOnLoop", &VIM::iAudio::PlayOnLoop);

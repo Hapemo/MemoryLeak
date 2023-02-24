@@ -517,6 +517,14 @@ namespace VI
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static string Get(int _eId);
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetLayer(int _eId);
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetLayer(int _eId, int _layer);
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int s_GetLayer(string _entityName, string _sceneName);
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void s_SetLayer(string _entityName, string _sceneName, int layer);
 	}
 	public class Audio
 	{
