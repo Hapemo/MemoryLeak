@@ -31,27 +31,27 @@ void PlayGameButton::Init(Entity const& gob) {
 
 	e.AddComponent(ParticleSystem{
 		ParticleSystem::ParticleInfo{
-			1, // mScale			
-			0, // mFacing		
-			3, // mLifespan	
+			20, // mScale			
+			90, // mFacing		
+			5, // mLifespan	
 			Sprite{
 				RED, // color
-				SPRITE::CIRCLE, // sprit
+				SPRITE::SQUARE, // sprit
 				0, // texture
 				e.GetComponent<Sprite>().layer + 1  // layer
 			}, // mSprite		
-			0, // mRotation	
-			10, // mSpeed			
-			false, // mFading			
-			100  // mLayer (not working)
+			2, // mRotation	
+			100, // mSpeed			
+			true // mFading			
 		},
-		5, // mDensity 
+		1, // mDensity 
 		e.GetComponent<Transform>().translation, // mCenter
-		1, // mAreaWidth 
-		0, // mDirection
-		0, // mSpread 
+		20, // mAreaWidth 
+		0.5, // mDirection
+		2, // mSpread 
 		10, // mDuration 
-		true // mIsActive 
+		true, // mIsActive 
+		1.f // mSlow
 	});
 	LOG_INFO(gob.GetComponent<General>().name + "Added component particle system============================================");
 }

@@ -81,11 +81,20 @@ void ParticleManager::UpdateSystems() {
 		if (!e.ShouldRun()) continue;
 		ParticleSystem& system{ e.GetComponent<ParticleSystem>() };
 
+		// Update particle system active state
 		if (!system.mIsActive) continue;
 		system.mDuration -= static_cast<float>(FPSManager::dt);
 		if (system.mDuration < 0) system.mIsActive = false;
 		if (!system.mIsActive) continue;
 
+		// Track slow spawning
+		if (system.mSlow) {
+			float& tracker{ system.SlowTracker() };
+			tracker += static_cast<float>(FPSManager::dt);
+			if (tracker > system.mSlow)	tracker = 0;
+			else continue;
+		}
+		
 		GenerateParticle(system, e.id);
 	}
 
