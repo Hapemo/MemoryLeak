@@ -42,6 +42,15 @@ void AttackScript::Init(Entity const& _e) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
+void AttackScript::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate functions from all other active scripts.
+*******************************************************************************/
 void AttackScript::Update(Entity const& _e) {
 	static bool raised = false;
 	if (VI::iPhysics::EntitiesCollided(player, _e)) {
@@ -86,9 +95,19 @@ void AttackScript::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
-Function will run on fixed delta time.
+Function will run on fixed delta time after running all EarlyUpdate and Update
+functions from all other active scripts.
 *******************************************************************************/
 void AttackScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate, Update, and FixedUpdate functions from all other active scripts.
+*******************************************************************************/
+void AttackScript::LateUpdate(Entity const& _e) {
 	(void)_e;
 }
 

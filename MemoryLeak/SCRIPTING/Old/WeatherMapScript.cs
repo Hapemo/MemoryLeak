@@ -50,6 +50,8 @@ namespace BonVoyage {
             }
         }
 
+        public void EarlyUpdate(int _ENTITY) { }
+
         public void Init(int _ENTITY) {
             VI.Entity.s_SetActive("weathermap", "WeatherMap", true);
             for (int i = 0; i < 25; i++)
@@ -135,6 +137,8 @@ namespace BonVoyage {
         public void FixedUpdate(int _ENTITY) {
 
         }
+
+        public void LateUpdate(int _ENTITY) { }
 
         public void Exit(int _ENTITY) {
             VI.Entity.s_SetActive("weathermap", "WeatherMap", false);

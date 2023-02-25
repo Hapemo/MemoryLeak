@@ -21,6 +21,10 @@ void MoveMinimapScript::Init(const Entity& _e) {
 	inited = false;
 }
 
+void MoveMinimapScript::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
 void MoveMinimapScript::Update(const Entity& _e) {
 	if (!inited)
 	{
@@ -35,6 +39,10 @@ void MoveMinimapScript::Update(const Entity& _e) {
 }
 
 void MoveMinimapScript::FixedUpdate(const Entity& _e) {
+	(void)_e;
+}
+
+void MoveMinimapScript::LateUpdate(Entity const& _e) {
 	(void)_e;
 }
 

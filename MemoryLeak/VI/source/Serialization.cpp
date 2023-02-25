@@ -697,7 +697,7 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 		a = entity["MovementAI"]["targets"].GetArray();
 		for (int j = 0; j < (int)a.Size(); ++j)
 		{
-			float time = a[j]["time"].GetInt();
+			float time = (float)a[j]["time"].GetInt();
 			Transform trans = getTransform(a[j]["Transform"]);
 			movementAI.time.push_back(time);
 			movementAI.targetTransforms.push_back(trans);

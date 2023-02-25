@@ -68,19 +68,47 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Function that contains logic to run during each update frame
+	Function that contains logic to run during each update frame while the entity
+	is active.
 	\param const Entity &
 	A reference to read-only entity to update
 	\return void
 	NULL
 	*******************************************************************************/
-	void Update(const Entity& _e) override;
+	void EarlyUpdate(Entity const& _e) override;
 
 	/*!*****************************************************************************
 	\brief
-	Fixed update script to run on fixed delta time.
+	Function that contains logic to run during each update frame while the entity
+	is active after running all EarlyUpdate functions from all other active scripts.
+	\param const Entity &
+	A reference to read-only entity to update
+	\return void
+	NULL
 	*******************************************************************************/
-	void FixedUpdate(const Entity& _e) override;
+	void Update(Entity const& _e) override;
+
+	/*!*****************************************************************************
+	\brief
+	Function that contains logic to run on fixed delta time after running all
+	EarlyUpdate and Update functions from all other active scripts.
+	\param const Entity &
+	A reference to read-only entity to update
+	\return void
+	NULL
+	*******************************************************************************/
+	void FixedUpdate(Entity const& _e) override;
+
+	/*!*****************************************************************************
+	\brief
+	Function that contains logic to run while the entity is active after running all
+	EarlyUpdate, Update, and FixedUpdate functions from all other active scripts.
+	\param const Entity &
+	A reference to read-only entity to update
+	\return void
+	NULL
+	*******************************************************************************/
+	void LateUpdate(Entity const& _e) override;
 
 	/*!*****************************************************************************
 	\brief

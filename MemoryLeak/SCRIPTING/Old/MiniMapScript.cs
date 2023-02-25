@@ -32,6 +32,8 @@ namespace BonVoyage {
 
         }
 
+        public void EarlyUpdate(int _ENTITY) { }
+
         public void Update(int _ENTITY) {
             if (init)
             {
@@ -57,6 +59,8 @@ namespace BonVoyage {
         public void FixedUpdate(int _ENTITY) {
 
         }
+
+        public void LateUpdate(int _ENTITY) { }
 
         public void Exit(int _ENTITY) {
             VI.Entity.s_SetActive("minimap", "WeatherMap", false);

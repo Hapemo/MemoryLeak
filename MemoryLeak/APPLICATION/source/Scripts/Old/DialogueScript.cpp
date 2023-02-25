@@ -45,6 +45,15 @@ void DialogueScript::Init(Entity const& _e) {
 \brief
 Function will run on every update while the entity is active.
 *******************************************************************************/
+void DialogueScript::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate functions from all other active scripts.
+*******************************************************************************/
 void DialogueScript::Update(Entity const& _e) {
 	currCamera->scale = currCamScale;
 	if (currCamera->scale.x >= targetCamScale.x)
@@ -71,9 +80,19 @@ void DialogueScript::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
-Function will run on fixed delta time.
+Function will run on fixed delta time after running all EarlyUpdate and Update
+functions from all other active scripts.
 *******************************************************************************/
 void DialogueScript::FixedUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Function will run on every update while the entity is active after running all
+EarlyUpdate, Update, and FixedUpdate functions from all other active scripts.
+*******************************************************************************/
+void DialogueScript::LateUpdate(Entity const& _e) {
 	(void)_e;
 }
 
