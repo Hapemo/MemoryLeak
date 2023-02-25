@@ -189,21 +189,41 @@ void ShadowManager::CreateObjectVertices(Entity e)
 	std::vector<Math::Vec2> objV = e.GetComponent<ShadowCaster>().centerOffset;
 	Math::Vec2 pos = e.GetComponent<Transform>().translation;
 
-	if (objV.size() < 2) return;
-
+	float radius = mLightsource.GetComponent<LightSource>().radius;
 	Math::Vec2 lightPos = GetLightPos();
+
+	if (e.HasComponent<Sprite>())
+	{
+		Transform xform = e.GetComponent<Transform>();
+		if (powf(xform.translation.x - lightPos.x, 2.f) + powf(xform.translation.y - lightPos.y, 2.f)
+		> powf(mLightsource.GetComponent<LightSource>().radius, 2.f))
+			e.GetComponent<Sprite>().color = { 80, 80, 80, 255 };
+		else if (powf(xform.translation.x - lightPos.x, 2.f) + powf(xform.translation.y - lightPos.y, 2.f)
+			< powf(mLightsource.GetComponent<LightSource>().radius * 0.5f, 2.f))
+			e.GetComponent<Sprite>().color = { 255, 255, 255, 255 };
+		else
+		{
+			int color = 255 - 175 * (Math::Distance(xform.translation, lightPos) - 0.5f * radius) / (radius * 0.5f);
+			if (color < 80) color = 80;
+			e.GetComponent<Sprite>().color = { (unsigned char)color, (unsigned char)color, (unsigned char)color, 255 };
+		}
+	}
+
+	if (objV.size() < 2) return;
 
 	for (size_t i = 0; i < objV.size() - 1; ++i)
 	{
 		Math::Vec2 curr = objV[i] + pos;
 		Math::Vec2 next = objV[i + 1] + pos;
 		if (powf(curr.x - lightPos.x, 2.f) + powf(curr.y - lightPos.y, 2.f)
-			< powf(mLightsource.GetComponent<LightSource>().radius, 2.f) ||
+			< powf(radius, 2.f) ||
 			powf(next.x - lightPos.x, 2.f) + powf(next.y - lightPos.y, 2.f)
-			< powf(mLightsource.GetComponent<LightSource>().radius, 2.f))
+			< powf(radius, 2.f))
 			mObjectEdges.push_back({ curr, next - curr });
 	}
 }
+
+
 /*!*****************************************************************************
 \brief
 Clear vectors.
