@@ -351,5 +351,5 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 	}
 
 	// Script doesnt exist
-	LOG_ERROR(scriptName + " Script failed to attach or doesn't exist!");
+	//LOG_ERROR(scriptName + " Script failed to attach or doesn't exist!");
 }

@@ -19,7 +19,7 @@ brief:	Particle System class. This is a singleton where it keeps track of all th
 #include "SpriteVariable.h"
 
 
-uint64_t ParticleManager::mParticleCount{};
+uint64_t ParticleManager::mParticleCount{0};
 bool		 ParticleManager::mParticleChange{};
 
 //==============================
@@ -80,16 +80,20 @@ void ParticleManager::UpdateSystems() {
 	for (auto& e : mEntities) {
 		if (!e.ShouldRun()) continue;
 		ParticleSystem& system{ e.GetComponent<ParticleSystem>() };
+
+		if (!system.mIsActive) continue;
+		system.mDuration -= static_cast<float>(FPSManager::dt);
+		if (system.mDuration < 0) system.mIsActive = false;
 		if (!system.mIsActive) continue;
 
 		GenerateParticle(system, e.id);
 	}
 
-	if (mParticleChange)
-		std::sort(mParticles.begin(), mParticles.end(), [] (Particle p1, Particle p2) { return p1.GetEntityID() > p2.GetEntityID(); });
+	
 }
 
 void ParticleManager::UpdateParticles() {
+	std::cout << "particle count: " << mParticleCount << '\n';
 	for (int i{}; i < mParticleCount; ++i)
 		mParticles[i].Update();
 
@@ -99,6 +103,9 @@ void ParticleManager::Update() {
 	mParticleChange = false;
 	UpdateSystems();
 	UpdateParticles();
+
+	if (mParticleChange)
+		std::sort( mParticles.begin(), mParticles.end(), [] ( Particle p1, Particle p2 ) { return p1.GetEntityID() > p2.GetEntityID(); } );
 }
 
 void ParticleManager::Reset() {
@@ -124,8 +131,10 @@ void ParticleManager::GenerateParticle(ParticleSystem const& _system, EntityID _
 		float cos = cosf(angle);
 		float sin = sinf(angle);
 
-		Vec2 vel = Vec2{ cos * _system.mDirection.x - sin * _system.mDirection.y,
-										 sin * _system.mDirection.x + cos * _system.mDirection.y }.Normalize() * _system.mParticleInfo.mSpeed;
+		Vec2 vel{};
+		if (_system.mDirection.Magnitude()) // Only move particle if it needs to move
+			vel = Vec2{ cos * _system.mDirection.x - sin * _system.mDirection.y,
+											 sin * _system.mDirection.x + cos * _system.mDirection.y }.Normalize() * _system.mParticleInfo.mSpeed;
 
 		currP.Init(std::move(vel), trans, _system.mParticleInfo.mLifespan, _e);
 	}
