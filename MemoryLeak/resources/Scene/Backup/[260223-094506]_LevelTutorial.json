@@ -374,7 +374,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 49
+            "layer": 51
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -397,8 +397,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -230.40528869628906,
-                "Y": 362.75555419921875
+                "X": -207.7535858154297,
+                "Y": 353.052001953125
             }
         },
         "Sprite": {
@@ -565,8 +565,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -210.86517333984375,
-                "Y": 483.8992919921875
+                "X": -181.20225524902344,
+                "Y": 491.69677734375
             }
         },
         "Sprite": {
@@ -578,7 +578,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 49
+            "layer": 51
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -614,7 +614,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 48
+            "layer": 49
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -637,8 +637,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 84.3558349609375,
-                "Y": 461.08026123046875
+                "X": 54.153594970703125,
+                "Y": 446.52496337890625
             }
         },
         "Sprite": {
@@ -650,7 +650,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 48
+            "layer": 50
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -721,8 +721,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 21.336204528808594,
-                "Y": -44.63452911376953
+                "X": -73.76486206054688,
+                "Y": 163.99139404296875
             }
         },
         "Sprite": {
@@ -734,7 +734,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 51
+            "layer": 50
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -769,8 +769,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 67.58314514160156,
-                "Y": 135.65164184570313
+                "X": 33.605560302734375,
+                "Y": 99.26338195800781
             }
         },
         "Sprite": {
@@ -782,7 +782,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 50
+            "layer": 51
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -818,7 +818,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -895.070556640625,
-                "Y": -431.5879821777344
+                "Y": -430.63494873046875
             }
         },
         "Sprite": {
@@ -1130,7 +1130,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 52
+            "layer": 53
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1286,7 +1286,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 51
+            "layer": 52
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1309,8 +1309,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -959.818115234375,
-                "Y": -596.7548828125
+                "X": -973.6608276367188,
+                "Y": -607.2381591796875
             }
         },
         "Sprite": {
@@ -1345,8 +1345,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -176.3369140625,
-                "Y": -1044.59326171875
+                "X": -165.55038452148438,
+                "Y": -1028.998291015625
             }
         },
         "Sprite": {
@@ -1876,8 +1876,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 539.9989624023438,
-                "Y": -326.3824462890625
+                "X": 575.9540405273438,
+                "Y": -315.9858093261719
             }
         },
         "Sprite": {
@@ -1889,7 +1889,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 52
+            "layer": 53
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1948,8 +1948,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -209.8792266845703,
-                "Y": -1134.9171142578125
+                "X": -216.3511505126953,
+                "Y": -1136.9964599609375
             }
         },
         "Sprite": {
@@ -2015,13 +2015,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 325.0,
-                "Y": 315.0
+                "X": 250.0,
+                "Y": 250.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 712.9732666015625,
-                "Y": -62.58506774902344
+                "X": 714.0520629882813,
+                "Y": -103.13197326660156
             }
         },
         "Sprite": {
@@ -2033,7 +2033,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 51
+            "layer": 50
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2069,7 +2069,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 49
+            "layer": 50
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2344,8 +2344,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -75.867919921875,
-                "Y": -1279.962890625
+                "X": -83.77803039550781,
+                "Y": -1271.6456298828125
             }
         },
         "Sprite": {
@@ -3419,13 +3419,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 301.0,
-                "Y": 327.0
+                "X": 250.0,
+                "Y": 250.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2003.378662109375,
-                "Y": -2.4873428344726563
+                "X": 2026.74951171875,
+                "Y": -19.815086364746094
             }
         },
         "Sprite": {
@@ -3760,8 +3760,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1062.169677734375,
-                "Y": -740.8787841796875
+                "X": -1124.4617919921875,
+                "Y": -730.3955078125
             }
         },
         "Sprite": {
@@ -4744,8 +4744,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -842.07080078125,
-                "Y": -1393.5399169921875
+                "X": -886.4752807617188,
+                "Y": -1430.7078857421875
             }
         },
         "Sprite": {
@@ -4888,8 +4888,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 37.14234161376953,
-                "Y": -1117.8896484375
+                "X": 50.62548828125,
+                "Y": -1097.096435546875
             }
         },
         "Sprite": {
@@ -4997,7 +4997,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 51
+            "layer": 52
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5230,8 +5230,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1254.249267578125,
-                "Y": -1021.7680053710938
+                "X": -1276.0020751953125,
+                "Y": -933.1365966796875
             }
         },
         "Sprite": {
@@ -5266,8 +5266,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1234.881103515625,
-                "Y": -643.9660034179688
+                "X": -1297.1732177734375,
+                "Y": -665.8856201171875
             }
         },
         "Sprite": {
@@ -5315,7 +5315,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 48
+            "layer": 50
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5410,8 +5410,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -498.21783447265625,
-                "Y": -1605.0244140625
+                "X": -545.678466796875,
+                "Y": -1636.907470703125
             }
         },
         "Sprite": {
@@ -5446,8 +5446,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2093.0654296875,
-                "Y": -572.3185424804688
+                "X": 2120.941650390625,
+                "Y": -602.7830810546875
             }
         },
         "Sprite": {
@@ -5567,7 +5567,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 50
+            "layer": 51
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5590,8 +5590,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -860.5031127929688,
-                "Y": -1577.4296875
+                "X": -892.0537109375,
+                "Y": -1622.4818115234375
             }
         },
         "Sprite": {
@@ -5747,7 +5747,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 47
+            "layer": 48
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5963,7 +5963,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 51
+            "layer": 50
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -6262,8 +6262,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2222.338623046875,
-                "Y": -342.65008544921875
+                "X": 2165.39111328125,
+                "Y": -328.3137512207031
             }
         },
         "Sprite": {
@@ -6406,8 +6406,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1081.962890625,
-                "Y": -1541.3741455078125
+                "X": -1145.06396484375,
+                "Y": -1593.18408203125
             }
         },
         "Sprite": {
@@ -6598,8 +6598,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1745.483154296875,
-                "Y": -1669.5372314453125
+                "X": 1571.8201904296875,
+                "Y": -1663.2991943359375
             }
         },
         "Sprite": {
@@ -7128,8 +7128,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -935.9778442382813,
-                "Y": 772.4878540039063
+                "X": -930.0452270507813,
+                "Y": 781.3250122070313
             }
         },
         "Sprite": {
@@ -7591,8 +7591,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 159.0,
-                "Y": 159.0
+                "X": 150.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
@@ -7613,1026 +7613,6 @@
         },
         "Script": {
             "name": "LevelTutorialDialogueScript"
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 314.0,
-                "Y": 369.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1538.814453125,
-                "Y": 181.72190856933594
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 47
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 0.5600000023841858,
-                "Y": 0.20000000298023224
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 250.0,
-                "Y": 250.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1404.380859375,
-                "Y": 54.25091552734375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 48
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 4.0,
-                "Y": -90.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.15000000596046448
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 243.0,
-                "Y": 322.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -40.9339599609375,
-                "Y": 315.1759948730469
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 49
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 250.0,
-                "Y": 250.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1375.3851318359375,
-                "Y": -239.09036254882813
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 50
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 300.0,
-                "Y": 300.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1138.427001953125,
-                "Y": -1767.1925048828125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 60
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 300.0,
-                "Y": 300.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 509.8878173828125,
-                "Y": -1706.1258544921875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 60
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 341.0,
-                "Y": 315.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 222.93292236328125,
-                "Y": -1731.84619140625
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 57
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 313.0,
-                "Y": 285.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -106.27543640136719,
-                "Y": -1716.6981201171875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 58
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 300.0,
-                "Y": 300.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1515.23583984375,
-                "Y": -1632.3826904296875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 59
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 344.0,
-                "Y": 365.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1414.4578857421875,
-                "Y": -1806.0335693359375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 59
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 313.0,
-                "Y": 285.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -362.9945373535156,
-                "Y": -1762.096923828125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 58
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 250.0,
-                "Y": 250.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1758.72314453125,
-                "Y": 908.2894897460938
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 38
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 4.0,
-                "Y": -75.0
-            },
-            "scaleOffset": {
-                "X": 0.5600000023841858,
-                "Y": 0.30000001192092896
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 306.0,
-                "Y": 305.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1555.6260986328125,
-                "Y": 940.2186889648438
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 39
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 4.0,
-                "Y": -60.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.5
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 342.0,
-                "Y": 406.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 2240.22265625,
-                "Y": -135.03631591796875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 50
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 287.0,
-                "Y": 341.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1517.0931396484375,
-                "Y": 657.6046142578125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 44
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 250.0,
-                "Y": 250.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -587.7445068359375,
-                "Y": 859.3861694335938
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 48
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 250.0,
-                "Y": 250.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1050.4862060546875,
-                "Y": 874.2015380859375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 41
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 296.0,
-                "Y": 279.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1454.1976318359375,
-                "Y": -164.06011962890625
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 49
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 296.0,
-                "Y": 279.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1573.3436279296875,
-                "Y": -20.85992431640625
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 48
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 347.0,
-                "Y": 315.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -827.8847045898438,
-                "Y": 874.9747924804688
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 47
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 325.0,
-                "Y": 297.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1245.1256103515625,
-                "Y": -867.3914184570313
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 54
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 342.0,
-                "Y": 406.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 2327.952880859375,
-                "Y": 105.03945922851563
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 46
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 250.0,
-                "Y": 250.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 726.5015258789063,
-                "Y": -214.12966918945313
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 51
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 318.0,
-                "Y": 329.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1390.9337158203125,
-                "Y": -568.3946533203125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 51
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 305.0,
-                "Y": 348.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1290.48583984375,
-                "Y": 913.310302734375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 39
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 305.0,
-                "Y": 348.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1042.875244140625,
-                "Y": 866.4076538085938
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 38
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 387.0,
-                "Y": 369.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 2179.76904296875,
-                "Y": -771.9424438476563
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 51
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         }
     }
 ]
