@@ -210,7 +210,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 43
+            "layer": 60
         },
         "RectCollider": {
             "centerOffset": {
@@ -502,8 +502,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 926.5567626953125,
-                "Y": -284.9364929199219
+                "X": 946.4683227539063,
+                "Y": -290.909912109375
             }
         },
         "Sprite": {
@@ -658,8 +658,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1778.3746337890625,
-                "Y": -921.1943969726563
+                "X": -1769.613525390625,
+                "Y": -951.8580932617188
             }
         },
         "Sprite": {
@@ -671,7 +671,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 41
+            "layer": 45
         },
         "RectCollider": {
             "centerOffset": {
@@ -981,8 +981,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1595.727294921875,
-                "Y": 1579.26806640625
+                "X": -1590.55029296875,
+                "Y": 1513.5601806640625
             }
         },
         "Sprite": {
@@ -1359,8 +1359,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1902.38916015625,
-                "Y": -574.6307373046875
+                "X": -1898.8050537109375,
+                "Y": -608.679443359375
             }
         },
         "Sprite": {
@@ -1662,8 +1662,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 760.8667602539063,
-                "Y": -507.6171875
+                "X": 796.7074584960938,
+                "Y": -491.6879577636719
             }
         },
         "Sprite": {
@@ -2328,8 +2328,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2044.942138671875,
-                "Y": -321.3960876464844
+                "X": -1931.446533203125,
+                "Y": -351.26336669921875
             }
         },
         "Sprite": {
@@ -2341,7 +2341,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 36
+            "layer": 35
         },
         "RectCollider": {
             "centerOffset": {
@@ -2475,7 +2475,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 40
+            "layer": 43
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2679,7 +2679,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 39
+            "layer": 42
         },
         "RectCollider": {
             "centerOffset": {
@@ -2794,8 +2794,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 141.93878173828125,
-                "Y": -512.944580078125
+                "X": 148.90780639648438,
+                "Y": -517.1259765625
             }
         },
         "Sprite": {
@@ -3051,7 +3051,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 446.4221496582031,
-                "Y": -1383.2451171875
+                "Y": -1368.3115234375
             }
         },
         "Sprite": {
@@ -3242,8 +3242,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1435.514404296875,
-                "Y": -158.79852294921875
+                "X": 1313.05859375,
+                "Y": -215.54632568359375
             }
         },
         "Sprite": {
@@ -3370,8 +3370,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1434.89453125,
-                "Y": 170.51568603515625
+                "X": 1454.4078369140625,
+                "Y": 173.30331420898438
             }
         },
         "Sprite": {
@@ -4010,8 +4010,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1632.4439697265625,
-                "Y": 453.2744140625
+                "X": 1635.2314453125,
+                "Y": 467.21246337890625
             }
         },
         "Sprite": {
@@ -5994,8 +5994,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 807.7893676757813,
-                "Y": 1450.068115234375
+                "X": 817.3468627929688,
+                "Y": 1448.47509765625
             }
         },
         "Sprite": {
@@ -6250,8 +6250,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 566.6593017578125,
-                "Y": -523.0083618164063
+                "X": 685.1326904296875,
+                "Y": -522.4110107421875
             }
         },
         "Sprite": {
@@ -6292,8 +6292,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 874.2289428710938,
-                "Y": 1627.4013671875
+                "X": 883.7864379882813,
+                "Y": 1536.60498046875
             }
         },
         "Sprite": {
@@ -6484,8 +6484,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 655.5111083984375,
-                "Y": -1658.8958740234375
+                "X": 551.97119140625,
+                "Y": -1625.4444580078125
             }
         },
         "Sprite": {
@@ -6804,8 +6804,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2030.1751708984375,
-                "Y": -1611.129638671875
+                "X": -2073.18408203125,
+                "Y": -1592.0145263671875
             }
         },
         "Sprite": {
@@ -7124,8 +7124,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -566.0070190429688,
-                "Y": 1474.11474609375
+                "X": -533.7503662109375,
+                "Y": 1515.132568359375
             }
         },
         "Sprite": {
@@ -7188,8 +7188,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -205.21034240722656,
-                "Y": 1599.557373046875
+                "X": -247.02450561523438,
+                "Y": 1588.406982421875
             }
         },
         "Sprite": {
@@ -7731,454 +7731,6 @@
             "centerOffset": {
                 "X": 0.0,
                 "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree7",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 284.0,
-                "Y": 326.02691650390625
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1151.4619140625,
-                "Y": 1603.1875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -95.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3400000035762787
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -41.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -400.0,
-                "Y": 415.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1465.7440185546875,
-                "Y": 1561.52490234375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 32
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree8",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 446.0,
-                "Y": 453.82501220703125
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1811.947998046875,
-                "Y": 1579.6890869140625
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 32
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree4",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 349.0,
-                "Y": 507.6363525390625
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -506.98046875,
-                "Y": 1666.9466552734375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 25
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -400.0,
-                "Y": 415.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 2069.173828125,
-                "Y": -1637.1483154296875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 58
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -398.5,
-                "Y": 416.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 347.713134765625,
-                "Y": -1661.9493408203125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 56
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree1",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -352.0,
-                "Y": 517.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -2384.971923828125,
-                "Y": -1631.8829345703125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 54
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -5.0,
-                "Y": -126.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -96.0
             },
             "scaleOffset": {
                 "X": 1.0,
