@@ -60,7 +60,7 @@ void Particle::Update() {
 
 	// Update Color/Alpha
 	if (system.mParticleInfo.mFading) {
-		mColor.a = static_cast<GLubyte>(mLifespan / mMaxLifespan);
+		mColor.a = static_cast<GLubyte>((mLifespan / mMaxLifespan) * 255);
 	}
 
 }

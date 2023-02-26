@@ -898,6 +898,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 							if (i->GetEntityID() != e.id)
 								break;
 						Sprite sprite = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite;
+						sprite.color = i->GetColor();
 						if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
 							mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
 						switch (sprite.sprite)
