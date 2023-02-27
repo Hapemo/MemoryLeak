@@ -122,9 +122,9 @@ void InspectorPanel::Update()
 				{
 					ShadowCasterEditor();
 				}
-				if (e.HasComponent<CircularViewport>())
+				if (e.HasComponent<Viewport>())
 				{
-					CircularViewportEditor();
+					ViewportEditor();
 				}
 				if (e.HasComponent<MovementAI>())
 				{
@@ -317,8 +317,8 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<LightSource>({});
 	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
 		e.AddComponent<ShadowCaster>({});
-	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
-		e.AddComponent<CircularViewport>({});
+	else if (addComponentID == (int)COMPONENTID::Viewport)
+		e.AddComponent<Viewport>({});
 	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
 	{
 		e.AddComponent<MovementAI>({});
@@ -379,8 +379,8 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<LightSource>({});
 	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
 		p->AddComponent<ShadowCaster>({});
-	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
-		p->AddComponent<CircularViewport>({});
+	else if (addComponentID == (int)COMPONENTID::Viewport)
+		p->AddComponent<Viewport>({});
 	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
 	{
 		p->AddComponent<MovementAI>({});
@@ -1173,16 +1173,21 @@ void InspectorPanel::ShadowCasterEditor()
 		ImGui::PopStyleColor();
 	}
 }
-void InspectorPanel::CircularViewportEditor()
+void InspectorPanel::ViewportEditor()
 {
-	if (ImGui::CollapsingHeader("CircularViewport"))
+	if (ImGui::CollapsingHeader("Viewport"))
 	{
-		ImGui::Text("CircularViewport");
+		ImGui::Text("Viewport");
+		int shapeID = (int)e.GetComponent<Viewport>().viewport;
+		static const char* shape[]{ "RECTANGULAR", "CIRCULAR"};
+		ImGui::Combo("ViewportType", &shapeID, shape, IM_ARRAYSIZE(shape));
+		e.GetComponent<Viewport>().viewport = (VIEWPORT)shapeID;
+		//ImGui::InputInt("Viewport type", &e.GetComponent<Viewport>().viewport);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
-		if (ImGui::Button("Remove CircularViewport"))
+		if (ImGui::Button("Remove Viewport"))
 		{
 			e.RemoveComponent<Button>();
-			LOG_INFO("CircularViewport component removed");
+			LOG_INFO("Viewport component removed");
 		}
 		ImGui::PopStyleColor();
 	}

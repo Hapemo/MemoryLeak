@@ -244,7 +244,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<LightSource>();
 	ECS::RegisterComponent<Button>();
 	ECS::RegisterComponent<ShadowCaster>();
-	ECS::RegisterComponent<CircularViewport>();
+	ECS::RegisterComponent<Viewport>();
 	ECS::RegisterComponent<MovementAI>();
 	ECS::RegisterComponent<ParticleSystem>();
 

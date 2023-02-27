@@ -176,9 +176,9 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				e.AddComponent<ShadowCaster>(getShadowCaster(entity[index]));
 			}
-			if (entity[index].HasMember("CircularViewport")) 
+			if (entity[index].HasMember("Viewport")) 
 			{
-				e.AddComponent<CircularViewport>(getCircularViewport(entity[index]));
+				e.AddComponent<Viewport>(getViewport(entity[index]));
 			}
 			if (entity[index].HasMember("MovementAI")) 
 			{
@@ -675,11 +675,11 @@ ShadowCaster SerializationManager::getShadowCaster(Value& entity)
 	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();;
 	return shadowCaster;
 }
-CircularViewport SerializationManager::getCircularViewport(Value& entity)
+Viewport SerializationManager::getViewport(Value& entity)
 {
-	CircularViewport circularViewport;
-	(void)entity;
-	return circularViewport;
+	Viewport viewport;
+	viewport.viewport = static_cast<VIEWPORT>(entity["Viewport"]["viewport"].GetInt());
+	return viewport;
 }
 MovementAI SerializationManager::getMovementAI(Value& entity)
 {
@@ -943,9 +943,9 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		if (e.HasComponent<ShadowCaster>()){
 			addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
 		}
-		if (e.HasComponent<CircularViewport>()) 
+		if (e.HasComponent<Viewport>()) 
 		{
-			addCircularViewport(scene, entity, e.GetComponent<CircularViewport>());
+			addViewport(scene, entity, e.GetComponent<Viewport>());
 		}
 		if (e.HasComponent<MovementAI>()) 
 		{
@@ -1272,11 +1272,11 @@ void SerializationManager::addShadowCaster(Document& scene, Value& entity, Shado
 	entity.AddMember(StringRef("ShadowCaster"), tmp, scene.GetAllocator());
 }
 
-void SerializationManager::addCircularViewport(Document& scene, Value& entity, CircularViewport circularViewport)
+void SerializationManager::addViewport(Document& scene, Value& entity, Viewport Viewport)
 {
 	Value tmp(kObjectType);
-	(void)circularViewport;
-	entity.AddMember(StringRef("CircularViewport"), tmp, scene.GetAllocator());
+	tmp.AddMember(StringRef("viewport"), static_cast<int>(Viewport.viewport), scene.GetAllocator());
+	entity.AddMember(StringRef("Viewport"), tmp, scene.GetAllocator());
 }
 void SerializationManager::addMovementAI(Document& scene, Value& entity, MovementAI movementAI)
 {

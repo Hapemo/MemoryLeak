@@ -482,9 +482,9 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 			ImGui::Text("ShadowCaster");
 			setSelectedEntity(e);
 		}
-		if (e->HasComponent<CircularViewport>())
+		if (e->HasComponent<Viewport>())
 		{
-			ImGui::Text("CircularViewport");
+			ImGui::Text("Viewport");
 			setSelectedEntity(e);
 		}
 		if (e->HasComponent<MovementAI>())

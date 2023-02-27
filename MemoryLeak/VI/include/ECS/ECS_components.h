@@ -358,7 +358,9 @@ struct ShadowCaster
 	bool renderFlag{ false };				// save, edit, see
 };
 
-struct CircularViewport {};
+struct Viewport {
+	VIEWPORT viewport;
+};
 
 struct ParticleSystem {
 	// Information of particle to generate
@@ -421,12 +423,12 @@ enum class COMPONENTID
 	LAYERCOLLIDER,	//17
 	LIGHTSOURCE,	//18
 	SHADOWCASTER,	//19
-	CIRCULARVIEWPORT,//20
+	Viewport,//20
 	MOVEMENTAI      //21
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, CircularViewport, MovementAI>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, Viewport, MovementAI>  COMPONENT;
 
 
 

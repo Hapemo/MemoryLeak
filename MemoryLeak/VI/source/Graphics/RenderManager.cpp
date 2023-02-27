@@ -780,7 +780,7 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 			{
 				if (!e.GetComponent<General>().isActive) continue;
 				if (!e.ShouldRun()) continue;
-				if (e.HasComponent<CircularViewport>()) continue;
+				if (e.HasComponent<Viewport>()) continue;
 				if (e.GetComponent<General>().name == "Boat") continue;
 				if (e.HasComponent<Sprite>())
 				{
@@ -937,7 +937,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				}
 			}
 
-			if (e.HasComponent<CircularViewport>())
+			if (e.HasComponent<Viewport>())
 			{
 				if (!e.HasComponent<Sprite>()) continue;
 				Sprite sprite = e.GetComponent<Sprite>();
@@ -946,16 +946,32 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				GLuint texid = mMinimapFBO.GetColorAttachment();
 				if (texid != 0)
 				{
-					if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
-					if (_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
-						== _cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
-					{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+					if (e.GetComponent<Viewport>().viewport == VIEWPORT::CIRCULAR)
+					{
+						if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+						if (_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+							== _cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-					CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+						CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+					}
+					else
+					{
+						if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+						if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+							== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+						CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+					}
 				}
 			}
 			else if (e.HasComponent<Sprite>())

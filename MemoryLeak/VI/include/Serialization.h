@@ -101,7 +101,7 @@ private:
 	Button getButton(Value& entity);
 	LightSource getLightSource(Value& entity);
 	ShadowCaster getShadowCaster(Value& entity);
-	CircularViewport getCircularViewport(Value& entity);
+	Viewport getViewport(Value& entity);
 	MovementAI getMovementAI(Value& entity);
 	//save components 
 	void addGeneral(Document& scene, Value& entity, General general);
@@ -124,7 +124,7 @@ private:
 	void addButton(Document& scene, Value& entity, Button button);
 	void addLightSource(Document& scene, Value& entity, LightSource lightSource);
 	void addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster);
-	void addCircularViewport(Document& scene, Value& entity, CircularViewport circularViewport);
+	void addViewport(Document& scene, Value& entity, Viewport Viewport);
 	void addMovementAI(Document& scene, Value& entity, MovementAI movementAI);
 };
 
