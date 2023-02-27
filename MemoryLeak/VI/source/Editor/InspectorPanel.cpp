@@ -1137,7 +1137,7 @@ void InspectorPanel::LightSourceEditor()
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove LightSource"))
 		{
-			e.RemoveComponent<Button>();
+			e.RemoveComponent<LightSource>();
 			LOG_INFO("LightSource component removed");
 		}
 		ImGui::PopStyleColor();
@@ -1167,7 +1167,7 @@ void InspectorPanel::ShadowCasterEditor()
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove ShadowCaster"))
 		{
-			e.RemoveComponent<Button>();
+			e.RemoveComponent<ShadowCaster>();
 			LOG_INFO("ShadowCaster component removed");
 		}
 		ImGui::PopStyleColor();
@@ -1235,7 +1235,7 @@ void InspectorPanel::MovementAIEditor()
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove MovementAI"))
 		{
-			e.RemoveComponent<Button>();
+			e.RemoveComponent<MovementAI>();
 			LOG_INFO("MovementAI component removed");
 		}
 		ImGui::PopStyleColor();
