@@ -1178,10 +1178,10 @@ void InspectorPanel::ViewportEditor()
 	if (ImGui::CollapsingHeader("Viewport"))
 	{
 		ImGui::Text("Viewport");
-		int shapeID = (int)e.GetComponent<Viewport>().viewport;
-		static const char* shape[]{ "RECTANGULAR", "CIRCULAR"};
-		ImGui::Combo("ViewportType", &shapeID, shape, IM_ARRAYSIZE(shape));
-		e.GetComponent<Viewport>().viewport = (VIEWPORT)shapeID;
+		int typeID = (int)e.GetComponent<Viewport>().viewport;
+		//static const char* type[]{ "RECTANGULAR", "CIRCULAR"};
+		ImGui::Combo("ViewportType", &typeID, type, IM_ARRAYSIZE(type));
+		e.GetComponent<Viewport>().viewport = (VIEWPORT)typeID;
 		ImGui::DragInt("Viewport width", &e.GetComponent<Viewport>().width, 1, 0, 1600);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Viewport"))

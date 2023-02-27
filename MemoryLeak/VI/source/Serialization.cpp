@@ -184,7 +184,12 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				e.AddComponent<MovementAI>(getMovementAI(entity[index]));
 			}
-			
+			if (entity[index].HasMember("ParticleInfo"))
+			{
+				ParticleSystem p;
+				p.mParticleInfo = getParticleInfo(entity[index]);
+				e.AddComponent<ParticleSystem>(p);
+			}
 			//mEntities.insert(e);
 			_sceneData.mEntities.insert(e);
 		}
@@ -707,7 +712,19 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 
 	return movementAI;
 }
-
+ParticleSystem::ParticleInfo SerializationManager::getParticleInfo(Value& entity)
+{
+	ParticleSystem::ParticleInfo particleInfo;
+	particleInfo.mScale = entity["ParticleInfo"]["mScale"].GetFloat();
+	particleInfo.mFacing = entity["ParticleInfo"]["mFacing"].GetFloat();
+	particleInfo.mLifespan = entity["ParticleInfo"]["mLifespan"].GetFloat();
+	particleInfo.mScale = entity["ParticleInfo"]["mScale"].GetFloat();
+	particleInfo.mSprite = getSprite(entity["ParticleInfo"]);
+	particleInfo.mRotation = entity["ParticleInfo"]["mRotation"].GetFloat();
+	particleInfo.mSpeed = entity["ParticleInfo"]["mSpeed"].GetFloat();
+	particleInfo.mFading = entity["ParticleInfo"]["mFading"].GetBool();
+	return particleInfo;
+}
 
 
 
@@ -951,6 +968,10 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		if (e.HasComponent<MovementAI>()) 
 		{
 			addMovementAI(scene, entity, e.GetComponent<MovementAI>());
+		}
+		if (e.HasComponent<ParticleSystem>())
+		{
+			addParticleInfo(scene, entity, e.GetComponent<ParticleSystem>().mParticleInfo);
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -1302,6 +1323,23 @@ void SerializationManager::addMovementAI(Document& scene, Value& entity, Movemen
 	tmp.AddMember(StringRef("targets"), child, scene.GetAllocator());
 	entity.AddMember(StringRef("MovementAI"), tmp, scene.GetAllocator());
 }
+void SerializationManager::addParticleInfo(Document& scene, Value& entity, ParticleSystem::ParticleInfo particleInfo)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("mScale"), particleInfo.mScale, scene.GetAllocator());
+	tmp.AddMember(StringRef("mFacing"), particleInfo.mFacing, scene.GetAllocator());
+	tmp.AddMember(StringRef("mLifespan"), particleInfo.mLifespan, scene.GetAllocator());
+	addSprite(scene, entity, particleInfo.mSprite);
+	tmp.AddMember(StringRef("mRotation"), particleInfo.mRotation, scene.GetAllocator());
+	tmp.AddMember(StringRef("mSpeed"), particleInfo.mSpeed, scene.GetAllocator());
+	tmp.AddMember(StringRef("mFading"), particleInfo.mFading, scene.GetAllocator());
+	entity.AddMember(StringRef("ParticleInfo"), tmp, scene.GetAllocator());
+}
+
+
+
+
+
 /*!*****************************************************************************
 \brief
 	Load the saved gamestate data

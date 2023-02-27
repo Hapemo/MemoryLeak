@@ -69,7 +69,7 @@ private:
 	const char* componentsList[22]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
 				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "Button" ,"LayerCollider", 
 		"LightSource", "ShadowCaster","Viewport", "MovementAI"};
-
+	const char* type[2]{ "RECTANGULAR", "CIRCULAR" };
 
 	/*typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 		Physics2D, RectCollider, CircleCollider, Edge2DCollider,
