@@ -1,0 +1,50 @@
+[
+    {
+        "General": {
+            "name": "fpsDisplay",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 143.0,
+                "Y": 69.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -685.3569946289063,
+                "Y": 405.843994140625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 10
+        },
+        "Text": {
+            "fontFile": "CaviarDreams",
+            "text": "17.3",
+            "offset": {
+                "X": -60.0,
+                "Y": -18.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "FPSPrintScript"
+        }
+    }
+]

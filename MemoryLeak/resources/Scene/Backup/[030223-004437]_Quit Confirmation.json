@@ -1,0 +1,246 @@
+[
+    {
+        "General": {
+            "name": "Panel",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1174.0,
+                "Y": 686.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\window-1.png",
+            "layer": 6
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Are you sure?",
+            "offset": {
+                "X": -190.0,
+                "Y": -41.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Yes",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 125.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -270.0,
+                "Y": -330.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 7
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Yes",
+            "offset": {
+                "X": -45.0,
+                "Y": -19.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "ExitGameButton"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "No",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 125.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 270.0,
+                "Y": -330.498046875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 7
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "No",
+            "offset": {
+                "X": -29.0,
+                "Y": -19.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "PauseButton"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Background",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\menu screen background.jpg",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "Quit Game",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 702.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 214.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "QUIT GAME",
+            "offset": {
+                "X": -205.0,
+                "Y": -19.0
+            },
+            "scale": 1.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    }
+]

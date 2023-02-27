@@ -1,0 +1,358 @@
+[
+    {
+        "General": {
+            "name": "Background",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1920.0,
+                "Y": 1080.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\menu screen background.jpg",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "How_To_Play",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1183.0,
+                "Y": 695.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1.7718505859375,
+                "Y": -1.7718734741210938
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\window-1.png",
+            "layer": 1
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "HOW TO PLAY",
+            "offset": {
+                "X": -243.0,
+                "Y": 200.0
+            },
+            "scale": 1.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Back",
+            "tag": 5,
+            "subtag": 1,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 654.3394775390625,
+                "Y": 154.3395538330078
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -330.75
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 1
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": false
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Back",
+            "offset": {
+                "X": -59.0,
+                "Y": -19.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        },
+        "Script": {
+            "name": "BackToMainMenuButton"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Instruction 1",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 504.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 89.74580383300781,
+                "Y": 135.47454833984375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 3
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Move Player",
+            "offset": {
+                "X": -173.0,
+                "Y": -78.0
+            },
+            "scale": 0.8999999761581421,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Instruction 2",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 594.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 168.99154663085938,
+                "Y": 14.614001274108887
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 4
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Advance Dialogue",
+            "offset": {
+                "X": -253.0,
+                "Y": -18.0
+            },
+            "scale": 0.8999999761581421,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Cursor",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 90.0,
+                "Y": 90.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -232.0,
+                "Y": -132.81863403320313
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 2
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "ESC",
+            "offset": {
+                "X": -42.0,
+                "Y": -16.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "Instruction 1",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 379.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 93.51278686523438,
+                "Y": -69.32334899902344
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 3
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Pause Menu",
+            "offset": {
+                "X": -173.0,
+                "Y": -78.0
+            },
+            "scale": 0.8999999761581421,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            }
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 90.0,
+                "Y": 90.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -240.0,
+                "Y": 44.4610710144043
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\cursors\\UI_Cursor_Mouse_0001.png",
+            "layer": 5
+        }
+    }
+]
