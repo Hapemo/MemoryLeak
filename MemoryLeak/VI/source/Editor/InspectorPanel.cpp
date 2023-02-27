@@ -1128,7 +1128,7 @@ void InspectorPanel::LightSourceEditor()
 	{
 		tmpVec2[0] = e.GetComponent<LightSource>().centerOffset.x;
 		tmpVec2[1] = e.GetComponent<LightSource>().centerOffset.y;
-		ImGui::InputFloat2("Light center", tmpVec2);
+		ImGui::DragFloat2("Light center", tmpVec2);
 		e.GetComponent<LightSource>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 		ImGui::DragFloat("Radius", &e.GetComponent<LightSource>().radius, 1.f);
@@ -1151,7 +1151,7 @@ void InspectorPanel::ShadowCasterEditor()
 		{
 			tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset[i].x;
 			tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset[i].y;
-			ImGui::InputFloat2(("Shadow center" + std::to_string(i)).c_str(), tmpVec2);
+			ImGui::DragFloat2(("Shadow center" + std::to_string(i)).c_str(), tmpVec2);
 			e.GetComponent<ShadowCaster>().centerOffset[i] = {tmpVec2[0] ,tmpVec2[1]};
 			if (ImGui::Button(("Remove Shadow Vertex" + std::to_string(i)).c_str()))
 			{
@@ -1182,7 +1182,7 @@ void InspectorPanel::ViewportEditor()
 		static const char* shape[]{ "RECTANGULAR", "CIRCULAR"};
 		ImGui::Combo("ViewportType", &shapeID, shape, IM_ARRAYSIZE(shape));
 		e.GetComponent<Viewport>().viewport = (VIEWPORT)shapeID;
-		//ImGui::InputInt("Viewport type", &e.GetComponent<Viewport>().viewport);
+		ImGui::DragInt("Viewport width", &e.GetComponent<Viewport>().width, 1, 0, 1600);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Viewport"))
 		{

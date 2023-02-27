@@ -679,6 +679,7 @@ Viewport SerializationManager::getViewport(Value& entity)
 {
 	Viewport viewport;
 	viewport.viewport = static_cast<VIEWPORT>(entity["Viewport"]["viewport"].GetInt());
+	viewport.width = entity["Viewport"]["width"].GetInt();
 	return viewport;
 }
 MovementAI SerializationManager::getMovementAI(Value& entity)
@@ -1276,6 +1277,7 @@ void SerializationManager::addViewport(Document& scene, Value& entity, Viewport 
 {
 	Value tmp(kObjectType);
 	tmp.AddMember(StringRef("viewport"), static_cast<int>(Viewport.viewport), scene.GetAllocator());
+	tmp.AddMember(StringRef("width"), Viewport.width, scene.GetAllocator());
 	entity.AddMember(StringRef("Viewport"), tmp, scene.GetAllocator());
 }
 void SerializationManager::addMovementAI(Document& scene, Value& entity, MovementAI movementAI)
