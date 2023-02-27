@@ -360,6 +360,7 @@ struct ShadowCaster
 
 struct Viewport {
 	VIEWPORT viewport;
+	int width;
 };
 
 struct ParticleSystem {
