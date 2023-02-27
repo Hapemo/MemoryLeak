@@ -97,17 +97,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 10.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.3499999940395355
-            },
-            "renderFlag": true
         }
     },
     {
@@ -170,17 +159,6 @@
         },
         "Script": {
             "name": "Level1GirlScript"
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -35.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -245,17 +223,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -80.0
-            },
-            "scaleOffset": {
-                "X": 0.20000000298023224,
-                "Y": 0.20000000298023224
-            },
-            "renderFlag": true
         }
     },
     {
@@ -556,17 +523,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 50.0
-            },
-            "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.6000000238418579
-            },
-            "renderFlag": true
         }
     },
     {
@@ -631,17 +587,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": -50.0,
-                "Y": -70.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -706,17 +651,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -120.0
-            },
-            "scaleOffset": {
-                "X": 0.20000000298023224,
-                "Y": 0.20000000298023224
-            },
-            "renderFlag": true
         }
     },
     {
@@ -817,17 +751,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -100.0
-            },
-            "scaleOffset": {
-                "X": 0.15000000596046448,
-                "Y": 0.30000001192092896
-            },
-            "renderFlag": true
         }
     },
     {
@@ -954,17 +877,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 50.0,
-                "Y": -70.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1029,17 +941,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -120.0
-            },
-            "scaleOffset": {
-                "X": 0.20000000298023224,
-                "Y": 0.25
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1104,17 +1005,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 50.0,
-                "Y": -70.0
-            },
-            "scaleOffset": {
-                "X": 0.4000000059604645,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1257,17 +1147,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -100.0
-            },
-            "scaleOffset": {
-                "X": 0.15000000596046448,
-                "Y": 0.30000001192092896
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1332,17 +1211,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -20.0
-            },
-            "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.3499999940395355
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1407,17 +1275,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -10.0
-            },
-            "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.3499999940395355
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1635,17 +1492,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": -10.0,
-                "Y": -60.0
-            },
-            "scaleOffset": {
-                "X": 0.2199999988079071,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
@@ -1917,17 +1763,6 @@
         },
         "Script": {
             "name": "FragmentScript"
-        },
-        "ShadowCaster": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -32.0
-            },
-            "scaleOffset": {
-                "X": 0.30000001192092896,
-                "Y": 0.10000000149011612
-            },
-            "renderFlag": true
         }
     },
     {
