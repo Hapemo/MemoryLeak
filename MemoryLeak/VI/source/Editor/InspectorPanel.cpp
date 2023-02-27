@@ -1186,7 +1186,7 @@ void InspectorPanel::ViewportEditor()
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Viewport"))
 		{
-			e.RemoveComponent<Button>();
+			e.RemoveComponent<Viewport>();
 			LOG_INFO("Viewport component removed");
 		}
 		ImGui::PopStyleColor();

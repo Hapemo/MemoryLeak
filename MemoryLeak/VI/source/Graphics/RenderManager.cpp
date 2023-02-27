@@ -44,7 +44,7 @@ RenderManager::RenderManager()
 	mDebug = false;
 	mRenderLayers.reserve(MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 	mIsCurrSceneUI = false;
-	mIsCurrSceneMinimap = false;
+	mIsCurrSceneMinimap = 0;
 }
 
 /*!*****************************************************************************
@@ -775,7 +775,12 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 
 		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
-			mIsCurrSceneMinimap = true;
+			for (Entity e : scene.mEntities)
+			{
+				if (!e.HasComponent<Viewport>()) continue;
+				mIsCurrSceneMinimap = (float)e.GetComponent<Viewport>().width / (float)*mWindowWidth;
+			}
+			if (!mIsCurrSceneMinimap) return;
 			for (Entity e : scene.mEntities)
 			{
 				if (!e.GetComponent<General>().isActive) continue;
@@ -803,7 +808,7 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 					}
 				}
 			}
-			mIsCurrSceneMinimap = false;
+			mIsCurrSceneMinimap = 0;
 
 			break;
 		}
@@ -1765,7 +1770,7 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	float sinRot = sinf(_rotate);
 
 	Math::Vec2 camPos = mIsCurrSceneUI ? Math::Vec2{0, 0} : cam.GetPos();
-	float camZoom = mIsCurrSceneMinimap ? 2.f : mIsCurrSceneUI ? 1.f : cam.GetZoom();
+	float camZoom = mIsCurrSceneMinimap ? mIsCurrSceneMinimap : mIsCurrSceneUI ? 1.f : cam.GetZoom();
 
 	Math::Mat3 temp
 	{
