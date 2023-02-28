@@ -59,49 +59,6 @@
         },
         "Button": {
             "interactable": true
-        },
-        "Viewport": {
-            "isUI": true,
-            "width": 5000
-        },
-        "MovementAI": {
-            "run": true,
-            "next": true,
-            "loop": true,
-            "reverse": false,
-            "cycle": false,
-            "nextStep": 1,
-            "acceleration": 0.0,
-            "targets": [
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 270.0,
-                            "Y": 270.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 640.0,
-                            "Y": -260.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 270.0,
-                            "Y": 270.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 640.0,
-                            "Y": -260.0
-                        }
-                    }
-                }
-            ]
         }
     },
     {
@@ -109,7 +66,7 @@
             "name": "minimaphead",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
