@@ -286,6 +286,12 @@ public:
 		static int GetParentId(const Entity& _e);
 		static int GetParentId(const int _eId);
 		static int GetParentId(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+		Sprite component
+		*******************************************************************************/
+		static int GetSpriteType(const int _eId);
 	};
 
 	struct iScene {
@@ -312,6 +318,17 @@ public:
 		static void SetScaleY(float _y);
 		static void SetPosX(float _x);
 		static void SetPosY(float _y);
+	};
+
+	struct iViewport {
+		/*!*****************************************************************************
+		\brief
+		Viewport stuff
+		*******************************************************************************/
+		static int GetWidth(const int _eId);
+		static void SetWidth(const int _eId, int _width);
+		static int IsUI(const int _eId);
+		static void SetIsUI(const int _eId, int _ui);
 	};
 
 	struct iMath {

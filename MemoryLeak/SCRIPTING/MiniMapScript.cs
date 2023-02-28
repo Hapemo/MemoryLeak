@@ -40,11 +40,13 @@ namespace BonVoyage {
             textbigScale = 1.0f;
         }
         public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
         }
 
         public void Update(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             //////////////////////////////////////////////init
             if ((VI.Input.Mouse.Press(349) && big)||(VI.Input.Button.Clicked(minimapID) &&!big))
             {
@@ -77,11 +79,13 @@ namespace BonVoyage {
         }
 
         public void Exit(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             big = false;
             VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
         }
         public void Dead(int _ENTITY)
         {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
     }

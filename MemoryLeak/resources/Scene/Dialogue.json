@@ -706,7 +706,7 @@
             "layer": 66
         },
         "Script": {
-            "name": "Level1DialogScript"
+            "name": "Level1DialogManager"
         }
     }
 ]

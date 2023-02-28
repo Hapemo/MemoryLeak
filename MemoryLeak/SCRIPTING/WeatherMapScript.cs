@@ -26,6 +26,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
         public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
@@ -54,6 +55,7 @@ namespace BonVoyage {
             }
         }
         public void Update(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             if ((VI.Input.Button.s_Released("weathermap", "WeatherMap")) == true)
             {
                 big = !big;
@@ -101,6 +103,7 @@ namespace BonVoyage {
         }
 
         public void Exit(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             big = false;
             VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
@@ -111,6 +114,7 @@ namespace BonVoyage {
         }
         public void Dead(int _ENTITY)
         {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
     }

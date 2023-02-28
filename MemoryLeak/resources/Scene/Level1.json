@@ -755,7 +755,7 @@
     },
     {
         "General": {
-            "name": "Passenger_1",
+            "name": "Passenger1",
             "tag": 1,
             "subtag": 0,
             "isActive": true
@@ -812,7 +812,7 @@
             "renderFlag": false
         },
         "Script": {
-            "name": "PassengerScript"
+            "name": "Level1Passenger1Script"
         }
     },
     {
@@ -1759,48 +1759,6 @@
     },
     {
         "General": {
-            "name": "IntroBox",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1534.2701416015625,
-                "Y": 760.3540649414063
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 123,
-                "g": 181,
-                "b": 123,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 1
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": true,
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
             "name": "PassengerBox",
             "tag": 8,
             "subtag": 0,
@@ -1813,8 +1771,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1135.6639404296875,
-                "Y": -724.9995727539063
+                "X": -1100.0,
+                "Y": -717.0
             }
         },
         "Sprite": {
@@ -6217,8 +6175,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 566.6593017578125,
-                "Y": -523.0083618164063
+                "X": 151.0,
+                "Y": 567.0
             }
         },
         "Sprite": {
@@ -8167,7 +8125,7 @@
     },
     {
         "General": {
-            "name": "Passenger_1",
+            "name": "Passenger2",
             "tag": 1,
             "subtag": 0,
             "isActive": true
@@ -8215,7 +8173,7 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -50.0
             },
             "scaleOffset": {
                 "X": 1.0,
@@ -8224,7 +8182,7 @@
             "renderFlag": false
         },
         "Script": {
-            "name": "PassengerScript"
+            "name": "Level1Passenger2Script"
         }
     },
     {
@@ -8289,6 +8247,39 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "Level1Manager",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 3,
+            "texture": "",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Level1ManagerScript"
         }
     }
 ]

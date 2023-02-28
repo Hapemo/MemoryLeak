@@ -27,6 +27,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
         public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
             VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
             VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
@@ -40,6 +41,7 @@ namespace BonVoyage {
         }
 
         public void Update(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
             if (init)
             {
@@ -95,6 +97,7 @@ namespace BonVoyage {
         }
 
         public void Exit(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             big= false;
             VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
             VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
@@ -103,6 +106,7 @@ namespace BonVoyage {
         }
         public void Dead(int _ENTITY)
         {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
     }
