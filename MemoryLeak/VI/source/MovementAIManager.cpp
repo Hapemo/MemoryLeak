@@ -23,8 +23,16 @@ void MovementAIManager::Update()
 	for (auto& e : mEntities) {
 		if (e.GetComponent<MovementAI>().run)
 		{
-			if (e.GetComponent<MovementAI>().targetTransforms.size() <=1)
+			if (e.GetComponent<MovementAI>().targetTransforms.size() <= 1)
+			{
+				e.GetComponent<MovementAI>().run = false;
 				return;
+			}
+			if (e.GetComponent<MovementAI>().nextStep < 0 || e.GetComponent<MovementAI>().nextStep >= e.GetComponent<MovementAI>().targetTransforms.size())
+			{
+				e.GetComponent<MovementAI>().run = false;
+				return;
+			}
 			if (e.GetComponent<MovementAI>().state == 0)//initialise
 			{
 				e.GetComponent<MovementAI>().step = e.GetComponent<MovementAI>().nextStep;
