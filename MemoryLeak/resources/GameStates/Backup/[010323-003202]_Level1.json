@@ -3,10 +3,10 @@
         "SceneName": "Level1",
         "Transform": {
             "scale": {
-                "X": 1200.0,
-                "Y": 675.0
+                "X": 700.0,
+                "Y": 393.75
             },
-            "rotation": 1.3333333730697632,
+            "rotation": 2.2857143878936768,
             "translation": {
                 "X": -1525.0,
                 "Y": 800.0
@@ -51,24 +51,6 @@
         "isActive": true,
         "layer": 10,
         "order": 5
-    },
-    {
-        "SceneName": "CrystalBalls",
-        "isActive": false,
-        "layer": 8,
-        "order": 0
-    },
-	{
-        "SceneName": "MiniMap",
-        "isActive": false,
-        "layer": 9,
-        "order": 0
-    },
-    {
-        "SceneName": "EnemyMap",
-        "isActive": false,
-        "layer": 9,
-        "order": 0
     },
     {
         "SceneName": "WeatherMap",
