@@ -778,11 +778,6 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 
 		if (scene.mIsPause) continue;
 
-		if (scene.mIsUI && mCurrRenderPass == RENDER_STATE::GAME)
-			mIsCurrSceneUI = true;
-		else
-			mIsCurrSceneUI = false;
-
 		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
 			if (!mIsCurrSceneMinimap) return;

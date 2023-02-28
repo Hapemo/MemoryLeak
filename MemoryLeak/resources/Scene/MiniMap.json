@@ -61,8 +61,8 @@
             "interactable": true
         },
         "Viewport": {
-            "isUI": false,
-            "width": 5000
+            "isUI": true,
+            "width": 3600
         },
         "MovementAI": {
             "run": false,
