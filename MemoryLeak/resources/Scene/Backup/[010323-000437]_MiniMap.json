@@ -19,13 +19,13 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
-            "sprite": 1,
-            "texture": "",
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\minimap.png",
             "layer": 3
         },
         "Audio": {
@@ -60,40 +60,7 @@
         "Button": {
             "interactable": true
         },
-        "Viewport": {
-            "viewport": 1,
-            "width": 5000
-        }
-    },
-    {
-        "General": {
-            "name": "minimaphead",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 60.0,
-                "Y": 60.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 640.0,
-                "Y": -260.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\mc-icon-head.png",
-            "layer": 4
-        }
+        "CircularViewport": {}
     },
     {
         "General": {

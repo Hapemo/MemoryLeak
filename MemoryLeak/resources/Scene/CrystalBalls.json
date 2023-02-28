@@ -1,0 +1,80 @@
+[
+    {
+        "General": {
+            "name": "toggleMap",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 120.0,
+                "Y": 120.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 470.0,
+                "Y": -375.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\cycle.png",
+            "layer": 0
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "CrystalBallScript"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    
+    {
+        "General": {
+            "name": "crystalBall",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 285.0,
+                "Y": 324.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -278.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\crystalball.png",
+            "layer": 0
+        }
+    }
+]

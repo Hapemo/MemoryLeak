@@ -53,6 +53,24 @@
         "order": 5
     },
     {
+        "SceneName": "CrystalBalls",
+        "isActive": false,
+        "layer": 8,
+        "order": 0
+    },
+	{
+        "SceneName": "MiniMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "EnemyMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
         "SceneName": "WeatherMap",
         "isActive": false,
         "layer": 9,
