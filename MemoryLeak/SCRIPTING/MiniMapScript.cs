@@ -53,7 +53,6 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            //////////////////////////////////////////////init
             if ((VI.Input.Mouse.Press(349) && big)||(VI.Input.Button.Clicked(minimapID) &&!big))
             {
                 big = !big;
@@ -65,11 +64,11 @@ namespace BonVoyage {
                     VI.Text.Offset.Set(minimapID, textbigOffsetX, textbigOffsetY);
                     VI.Text.Scale.Set(minimapID, textbigScale);
                     VI.Animation.Transform.Start(minimapID);
-
+                    
                     float posx = VI.Transform.Position.GetX(playerID) * (miniMapX / MapX);
                     float posy = VI.Transform.Position.GetY(playerID) * (miniMapY / MapY);
                     VI.Animation.Transform.Add.Transform(playerheadID, 100,100,0, posx, posy, 0.5f);
-
+                    
                     VI.Animation.Transform.SetNext(playerheadID, i++);
                     VI.Animation.Transform.Start(playerheadID);
                 }

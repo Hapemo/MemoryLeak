@@ -4,7 +4,7 @@
             "name": "MIcon6",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -79,7 +79,7 @@
             "name": "MIcon7",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -154,7 +154,7 @@
             "name": "MIcon8",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -229,7 +229,7 @@
             "name": "MIcon11",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -304,7 +304,7 @@
             "name": "MIcon12",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -379,7 +379,7 @@
             "name": "MIcon13",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -454,7 +454,7 @@
             "name": "MIcon16",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -529,7 +529,7 @@
             "name": "MIcon17",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -604,7 +604,7 @@
             "name": "MIcon18",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -747,6 +747,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": 260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": 260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -822,6 +861,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 124.5,
+                            "Y": 124.5
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": 260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 124.5,
+                            "Y": 124.5
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": 260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -897,6 +975,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 266.9718322753906
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 266.9718322753906
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -972,6 +1089,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": 260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": 260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1047,6 +1203,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": 260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": 260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1122,6 +1317,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": 132.32394409179688
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": 132.32394409179688
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1197,6 +1431,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": 130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": 130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1272,6 +1545,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1347,6 +1659,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": 130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": 130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1422,6 +1773,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": 130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": 130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1497,6 +1887,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": 0.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1572,6 +2001,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": 0.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1647,6 +2115,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1722,6 +2229,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": 2.323944091796875
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": 2.323944091796875
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1797,6 +2343,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": 0.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1872,6 +2457,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": -130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": -130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1947,6 +2571,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": -130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": -130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2022,6 +2685,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2097,6 +2799,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": -130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": -130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2172,6 +2913,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": -130.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": -130.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2247,6 +3027,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": -260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": -260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2322,6 +3141,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": -260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -130.0,
+                            "Y": -260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2397,6 +3255,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2472,6 +3369,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": -260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 130.0,
+                            "Y": -260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2547,6 +3483,45 @@
                 }
             ],
             "currentImageIndex": 0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": -260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 120.0,
+                            "Y": 120.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 260.0,
+                            "Y": -260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2609,6 +3584,45 @@
         },
         "Button": {
             "interactable": true
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 280.0,
+                            "Y": 280.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 640.0,
+                            "Y": -260.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 280.0,
+                            "Y": 280.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 640.0,
+                            "Y": -260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2616,7 +3630,7 @@
             "name": "weathermapbig",
             "tag": 4,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
