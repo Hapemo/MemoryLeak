@@ -1197,7 +1197,7 @@ void InspectorPanel::MovementAIEditor()
 {
 	if (ImGui::CollapsingHeader("MovementAI"))
 	{
-		ImGui::Text("MovementAI");
+		ImGui::Text((std::to_string(e.GetComponent<MovementAI>().step)).c_str());
 		ImGui::Checkbox("run", &e.GetComponent<MovementAI>().run);
 		ImGui::Checkbox("next", &e.GetComponent<MovementAI>().next);
 		ImGui::Checkbox("loop", &e.GetComponent<MovementAI>().loop);

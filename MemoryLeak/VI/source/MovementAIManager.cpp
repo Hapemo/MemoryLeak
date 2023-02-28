@@ -120,6 +120,11 @@ void MovementAIManager::AddTransformAt(Entity e, Transform t, float time, int in
 	e.GetComponent<MovementAI>().targetTransforms.insert(e.GetComponent<MovementAI>().targetTransforms.begin()+index, t);
 	e.GetComponent<MovementAI>().time.insert(e.GetComponent<MovementAI>().time.begin() + index, time);
 }
+void MovementAIManager::removeTransformAt(Entity e, int index)
+{
+	e.GetComponent<MovementAI>().targetTransforms.erase(e.GetComponent<MovementAI>().targetTransforms.begin() + index);
+	e.GetComponent<MovementAI>().time.erase(e.GetComponent<MovementAI>().time.begin() + index);
+}
 void MovementAIManager::AddTransformDifference(Entity e, Transform d, float time)
 {
 	int i = (int)e.GetComponent<MovementAI>().targetTransforms.size() - 1;
@@ -133,7 +138,7 @@ bool MovementAIManager::SetNextStep(Entity e, int i)
 {
 	if (i >= 0 && i < e.GetComponent<MovementAI>().targetTransforms.size())
 	{
-		e.GetComponent<MovementAI>().step = i;
+		e.GetComponent<MovementAI>().nextStep = i;
 		return true;
 	}
 	else

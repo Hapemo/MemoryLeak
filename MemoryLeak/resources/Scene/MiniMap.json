@@ -106,7 +106,7 @@
     },
     {
         "General": {
-            "name": "minimaphead",
+            "name": "playerhead",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -132,6 +132,31 @@
             "sprite": 2,
             "texture": "Textures\\Icons\\mc-icon-head.png",
             "layer": 4
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 0.5,
+                    "Transform": {
+                        "scale": {
+                            "X": 60.0,
+                            "Y": 60.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 640.0,
+                            "Y": -260.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
