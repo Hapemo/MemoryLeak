@@ -763,6 +763,14 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 {
 	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
 	{
+		for (Entity e : scene.mEntities)
+		{
+			if (!e.HasComponent<Viewport>()) continue;
+			mIsCurrSceneMinimap = (float)e.GetComponent<Viewport>().width / (float)*mWindowWidth;
+		}
+	}
+	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
+	{
 		if (scene.mLayer > MAX_SCENE_LAYERS - 1)
 			continue;
 
@@ -775,11 +783,6 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 
 		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
-			for (Entity e : scene.mEntities)
-			{
-				if (!e.HasComponent<Viewport>()) continue;
-				mIsCurrSceneMinimap = (float)e.GetComponent<Viewport>().width / (float)*mWindowWidth;
-			}
 			if (!mIsCurrSceneMinimap) return;
 			for (Entity e : scene.mEntities)
 			{
