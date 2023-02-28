@@ -11,32 +11,39 @@ namespace BonVoyage {
         public int HitTaken;
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
-        private bool starttalking;
         private float maxX, maxY, minX, minY, halfX, halfY;
 
         private int OctopusAttacked;
         private float OctopusDirection;
-        private float EnemySpeed;
-        private bool EnemyLoiter;
+        static private int ChasingPlayer = 0;
+        private int DialogueSceneId;
+        private int EnemyTriggerId;
 
         private const int MaxHealth = 12;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            DialogueSceneId = VI.Entity.GetId("DialogueBox");
+            EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
+
             PlayerPosX = 0;
             PlayerPosY = 0;
         }
 
         public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             // Console.WriteLine("From EnemyController!");
         }
 
         public void EarlyUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         
         }
 
         public void Update(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             VI.Camera.SetScale.X(5500);
 
             PlayerPosX = VI.Transform.Position.s_GetX("Boat");
@@ -45,8 +52,6 @@ namespace BonVoyage {
             Console.WriteLine(PlayerPosX);
             Console.WriteLine(PlayerPosY);
 
-            float EnemyChangeInX = 0;
-            float EnemyChangeInY = 0;
             float EnemyPosX = THIS.Transform.Position.GetX();
             float EnemyPosY = THIS.Transform.Position.GetY();
             float EnemyDisX = PlayerPosX - EnemyPosX;
@@ -65,22 +70,23 @@ namespace BonVoyage {
                 OctopusDirection = GetRotation(EnemyNormDisX, EnemyNormDisY);
 
                 // Chasing player
-                if (!starttalking && VI.Math.Negate(EnemyDisX) <= VI.Transform.Scale.s_GetX("EnemyTrigger", "Level1") && VI.Math.Negate(EnemyDisY) <= VI.Transform.Scale.s_GetY("EnemyTrigger", "Level1")) {
-                    EnemyLoiter = false;
-                    EnemyChangeInX = (EnemyDisX > -1 && EnemyDisX < 1 ? 0 : EnemySpeed);
-                    EnemyChangeInY = (EnemyDisY > -1 && EnemyDisY < 1 ? 0 : EnemySpeed);
-                    EnemyChangeInX = (EnemyDisX > 0 ? EnemyChangeInX : -EnemyChangeInX);
-                    EnemyChangeInY = (EnemyDisY > 0 ? EnemyChangeInY : -EnemyChangeInY);
+                /*
+                if (!VI.Entity.IsActive(DialogueSceneId) && VI.Math.Negate(EnemyDisX) <= VI.Transform.Scale.GetX(EnemyTriggerId) && VI.Math.Negate(EnemyDisY) <= VI.Transform.Scale.GetY(EnemyTriggerId)) {
+                    //THIS.Animation.Transform.Stop();
+                    THIS.Animation.Transform.AddAtCurrent.TransformPos(PlayerPosX, PlayerPosY);
                 }
-                else EnemyLoiter = true;
+                else THIS.Animation.Transform.Start();
+                */
 
                 // Attacking player
-                if (!starttalking && VI.Physics.s_EntitiesCollided("Boat", "EnemyTrigger", "Level1")) {
+                if (!VI.Entity.IsActive(DialogueSceneId) && VI.Physics.s_EntitiesCollided("Boat", "EnemyTrigger", "Level1")) {
                     switch (OctopusAttacked) {
                         case 0:
                             OctopusAttacked = 1;
                             SetCharRotation4(OctopusDirection, "Rising");
-                            VI.Animation.SpriteSheet.FrameCount.s_Set("Enemy", "Level1", 0);
+                            THIS.Animation.SpriteSheet.FrameCount.Set(0);
+                            ChasingPlayer = THIS.Animation.Transform.GetCurrentIndex();
+                            THIS.Animation.Transform.AddAtCurrent.TransformPos(PlayerPosX, PlayerPosY);
                             HitInterval = THIS.Animation.SpriteSheet.Speed.Get() * THIS.Animation.SpriteSheet.FrameCount.Get();
                             break;
                         case 1:
@@ -101,6 +107,7 @@ namespace BonVoyage {
                 else {
                     OctopusAttacked = 0;
                     SetCharRotation4(OctopusDirection, "Idle");
+                    THIS.Animation.Transform.Remove(ChasingPlayer);
                 }
 
                 if (VI.Physics.s_CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken > -1) {
@@ -111,65 +118,27 @@ namespace BonVoyage {
                         THIS.Audio.Play();
                         VI.Texture.s_Set("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
                     }
-                    EnemyChangeInX = 0;
-                    EnemyChangeInY = 0;
                 }
             }
-
-            if (starttalking) EnemyLoiter = true;
-
-            // Loitering
-            if (EnemyLoiter) {
-                switch (CheckRegion()) {
-                    case 1:
-                        EnemyChangeInX = EnemySpeed;
-                        EnemyChangeInY = -EnemySpeed;
-                        //Console.Write("Region 1!\n");
-                        break;
-                    case 2:
-                        EnemyChangeInX = -EnemySpeed;
-                        EnemyChangeInY = -EnemySpeed;
-                        //Console.Write("Region 2!\n");
-                        break;
-                    case 3:
-                        EnemyChangeInX = -EnemySpeed;
-                        EnemyChangeInY = EnemySpeed;
-                        //Console.Write("Region 3!\n");
-                        break;
-                    case 4:
-                        EnemyChangeInX = EnemySpeed;
-                        EnemyChangeInY = EnemySpeed;
-                        //Console.Write("Region 4!\n");
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            // Updating enemy position
-            EnemyChangeInX *= (float)VI.General.DeltaTime();
-            EnemyChangeInY *= (float)VI.General.DeltaTime();
-            EnemyChangeInX = (((EnemyPosX + EnemyChangeInX) < maxX) && ((EnemyPosX + EnemyChangeInX) > minX)) ? EnemyChangeInX : 0;
-            EnemyChangeInY = (((EnemyPosY + EnemyChangeInY) < maxY) && ((EnemyPosY + EnemyChangeInY) > minY)) ? EnemyChangeInY : 0;
-            THIS.Transform.Position.SetX(EnemyPosX + EnemyChangeInX);
-            THIS.Transform.Position.SetY(EnemyPosY + EnemyChangeInY);
-            THIS.Transform.Position.SetX(EnemyPosX + EnemyChangeInX);
-            THIS.Transform.Position.SetY(EnemyPosY + EnemyChangeInY);
         }
 
         public void FixedUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
 
         public void LateUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         
         }
 
         public void Exit(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
 
         public void Dead(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
         public int CheckRegion() {
