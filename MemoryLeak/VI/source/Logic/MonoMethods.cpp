@@ -574,11 +574,11 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/Transform::StopAfterEndLoop", &VI::iAnimation::iTransform::StopAfterEndLoop);
 	mono_add_internal_call("VI.Animation/Transform::ReverseOrder", &VI::iAnimation::iTransform::ReverseOrder);
 	mono_add_internal_call("VI.Animation/Transform::SetLoopCycle", &VI::iAnimation::iTransform::SetLoopCycle);
-	mono_add_internal_call("VI.Animation/Transform::AddTransform", &VI::iAnimation::iTransform::AddTransform);
-	mono_add_internal_call("VI.Animation/Transform::AddTransformDifference", &VI::iAnimation::iTransform::AddTransformDifference);
-	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromPosition", &VI::iAnimation::iTransform::SetCalculatedTimeFromPosition);
-	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromRotation", &VI::iAnimation::iTransform::SetCalculatedTimeFromRotation);
-	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromScale", &VI::iAnimation::iTransform::SetCalculatedTimeFromScale);
+	mono_add_internal_call("VI.Animation/Add::Transform", &VI::iAnimation::iTransform::AddTransform);
+	mono_add_internal_call("VI.Animation/Add::TransformDifference", &VI::iAnimation::iTransform::AddTransformDifference);
+	mono_add_internal_call("VI.Animation/SetCalculatedTime::FromPosition", &VI::iAnimation::iTransform::SetCalculatedTimeFromPosition);
+	mono_add_internal_call("VI.Animation/SetCalculatedTime::FromRotation", &VI::iAnimation::iTransform::SetCalculatedTimeFromRotation);
+	mono_add_internal_call("VI.Animation/SetCalculatedTime::FromScale", &VI::iAnimation::iTransform::SetCalculatedTimeFromScale);
 
 	// Particle System
 	mono_add_internal_call("VI.ParticleSystem::GetDensity", &VI::iParticleSystem::GetDensity);
