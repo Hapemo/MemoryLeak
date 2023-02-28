@@ -14,6 +14,7 @@ namespace BonVoyage {
     private bool updateChat;            // This flag is true when dialog changes for anyone
     private bool dialogInit;            // THis flag is true when entering a dialog for the first line
     private bool movingPlayer;
+    private bool normalZoom = false;
 
     private int playerID;
 
@@ -68,6 +69,10 @@ namespace BonVoyage {
     }
 
     public void Update(int _ENTITY) {
+
+      if (!normalZoom)
+        normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
+
       // Dialog control
 
       if (runIntroDialog) {
@@ -85,14 +90,16 @@ namespace BonVoyage {
       }
 
       if (runPassengerDialog) {
-        //VI.Animation.SheetIndex.Set(playerID, 1);
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), VI.Transform.Position.GetY(P1ColliderBox));
-        runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1");
+        VI.Animation.SpriteSheet.SheetIndex.Set(playerID, 1); // Make player face the other person
+        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
+        Level1ManagerScript.ChangeZoom(1200, 300);
+        runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
       }
 
       if (runPassenger2Dialog) {
+        VI.Animation.SpriteSheet.SheetIndex.Set(playerID, 1);
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), VI.Transform.Position.GetY(P2ColliderBox));
         runPassenger2Dialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 2");
         if (!runPassenger2Dialog)
@@ -350,6 +357,7 @@ namespace BonVoyage {
 
     public void EndPassengerDialog() {
       runPassengerDialog = false;
+      normalZoom = false;
       PlayerScript.PlayerInDialogue = false;
 
       VI.Transform.Rotate.s_Set("Passenger1", "Level1", 0.5f);
