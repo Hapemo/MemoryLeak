@@ -481,137 +481,282 @@ float InternalCalls::iMath::ArcTangent(float _x, float _y) {
 float InternalCalls::iMath::Negate(float _value) {
 	return (_value < 0 ? -_value : _value);
 }
+float InternalCalls::iMath::Epsilon() {
+	return Math::EPSILON;
+}
+double InternalCalls::iMath::Pi() {
+	return Math::PI;
+}
+float InternalCalls::iMath::ConvertRadToDeg(float _value) {
+	return _value * (180 / (float)Math::PI);
+}
+float InternalCalls::iMath::ConvertDegToRad(float _value) {
+	return _value * ((float)Math::PI / 180);
+}
 
 /*!*****************************************************************************
 \brief
 Set/Get current animation image speed
 *******************************************************************************/
-void InternalCalls::iAnimation::SetSpeed(const Entity& _e, float _speed) {
+void InternalCalls::iAnimation::iSpriteSheet::SetSpeed(const Entity& _e, float _speed) {
 	_e.GetComponent<SheetAnimation>().timePerFrame = _speed;
 }
-float InternalCalls::iAnimation::GetSpeed(const Entity& _e) {
+float InternalCalls::iAnimation::iSpriteSheet::GetSpeed(const Entity& _e) {
 	return _e.GetComponent<SheetAnimation>().timePerFrame;
 }
-void InternalCalls::iAnimation::SetSpeed(const int _eId, float _speed) {
-	VI::iAnimation::SetSpeed(Entity(_eId), _speed);
+void InternalCalls::iAnimation::iSpriteSheet::SetSpeed(const int _eId, float _speed) {
+	VI::iAnimation::iSpriteSheet::SetSpeed(Entity(_eId), _speed);
 }
-float InternalCalls::iAnimation::GetSpeed(const int _eId) {
-	return VI::iAnimation::GetSpeed(Entity(_eId));
+float InternalCalls::iAnimation::iSpriteSheet::GetSpeed(const int _eId) {
+	return VI::iAnimation::iSpriteSheet::GetSpeed(Entity(_eId));
 }
-void InternalCalls::iAnimation::SetSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed) {
-	VI::iAnimation::SetSpeed(VI::iEntity::GetEntity(_entityName, _sceneName), _speed);
+void InternalCalls::iAnimation::iSpriteSheet::SetSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed) {
+	VI::iAnimation::iSpriteSheet::SetSpeed(VI::iEntity::GetEntity(_entityName, _sceneName), _speed);
 }
-float InternalCalls::iAnimation::GetSpeed(std::string const& _entityName, std::string const& _sceneName) {
-	return VI::iAnimation::GetSpeed(VI::iEntity::GetEntity(_entityName, _sceneName));
+float InternalCalls::iAnimation::iSpriteSheet::GetSpeed(std::string const& _entityName, std::string const& _sceneName) {
+	return VI::iAnimation::iSpriteSheet::GetSpeed(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 /*!*****************************************************************************
 \brief
 Set/Get current sprite sheet image index
 *******************************************************************************/
-void InternalCalls::iAnimation::SetSheetIndex(const Entity& _e, int _index) {
+void InternalCalls::iAnimation::iSpriteSheet::SetSheetIndex(const Entity& _e, int _index) {
 	animator->SetCurrentImageIndex(_e, _index);
 }
-int InternalCalls::iAnimation::GetSheetIndex(const Entity& _e) {
+int InternalCalls::iAnimation::iSpriteSheet::GetSheetIndex(const Entity& _e) {
 	return animator->GetCurrentImageIndex(_e);
 }
-void InternalCalls::iAnimation::SetSheetIndex(const int _eId, int _index) {
-	VI::iAnimation::SetSheetIndex(Entity(_eId), _index);
+void InternalCalls::iAnimation::iSpriteSheet::SetSheetIndex(const int _eId, int _index) {
+	VI::iAnimation::iSpriteSheet::SetSheetIndex(Entity(_eId), _index);
 }
-int InternalCalls::iAnimation::GetSheetIndex(const int _eId) {
-	return VI::iAnimation::GetSheetIndex(Entity(_eId));
+int InternalCalls::iAnimation::iSpriteSheet::GetSheetIndex(const int _eId) {
+	return VI::iAnimation::iSpriteSheet::GetSheetIndex(Entity(_eId));
 }
-void InternalCalls::iAnimation::SetSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
-	VI::iAnimation::SetSheetIndex((VI::iEntity::GetEntity(_entityName, _sceneName)), _index);
+void InternalCalls::iAnimation::iSpriteSheet::SetSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	VI::iAnimation::iSpriteSheet::SetSheetIndex((VI::iEntity::GetEntity(_entityName, _sceneName)), _index);
 }
-int InternalCalls::iAnimation::GetSheetIndex(std::string const& _entityName, std::string const& _sceneName) {
-	return VI::iAnimation::GetSheetIndex(VI::iEntity::GetEntity(_entityName, _sceneName));
+int InternalCalls::iAnimation::iSpriteSheet::GetSheetIndex(std::string const& _entityName, std::string const& _sceneName) {
+	return VI::iAnimation::iSpriteSheet::GetSheetIndex(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 /*!*****************************************************************************
 \brief
 Set current animation image index
 *******************************************************************************/
-void InternalCalls::iAnimation::SetCurrentFrame(const Entity& _e, int _index) {
+void InternalCalls::iAnimation::iSpriteSheet::SetCurrentFrame(const Entity& _e, int _index) {
 	_e.GetComponent<SheetAnimation>().currFrameIndex = _index;
 }
-int InternalCalls::iAnimation::GetCurrentFrame(const Entity& _e) {
+int InternalCalls::iAnimation::iSpriteSheet::GetCurrentFrame(const Entity& _e) {
 	return _e.GetComponent<SheetAnimation>().currFrameIndex;
 }
-void InternalCalls::iAnimation::SetCurrentFrame(const int _eId, int _index) {
-	VI::iAnimation::SetCurrentFrame(Entity(_eId), _index);
+void InternalCalls::iAnimation::iSpriteSheet::SetCurrentFrame(const int _eId, int _index) {
+	VI::iAnimation::iSpriteSheet::SetCurrentFrame(Entity(_eId), _index);
 }
-int InternalCalls::iAnimation::GetCurrentFrame(const int _eId) {
-	return VI::iAnimation::GetCurrentFrame(Entity(_eId));
+int InternalCalls::iAnimation::iSpriteSheet::GetCurrentFrame(const int _eId) {
+	return VI::iAnimation::iSpriteSheet::GetCurrentFrame(Entity(_eId));
 }
-void InternalCalls::iAnimation::SetCurrentFrame(std::string const& _entityName, std::string const& _sceneName, int _index) {
-	VI::iAnimation::SetCurrentFrame(VI::iEntity::GetEntity(_entityName, _sceneName), _index);
+void InternalCalls::iAnimation::iSpriteSheet::SetCurrentFrame(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	VI::iAnimation::iSpriteSheet::SetCurrentFrame(VI::iEntity::GetEntity(_entityName, _sceneName), _index);
 }
-int InternalCalls::iAnimation::GetCurrentFrame(std::string const& _entityName, std::string const& _sceneName) {
-	return VI::iAnimation::GetCurrentFrame(VI::iEntity::GetEntity(_entityName, _sceneName));
+int InternalCalls::iAnimation::iSpriteSheet::GetCurrentFrame(std::string const& _entityName, std::string const& _sceneName) {
+	return VI::iAnimation::iSpriteSheet::GetCurrentFrame(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 /*!*****************************************************************************
 \brief
 Get/Set current animation total frame count
 *******************************************************************************/
-void InternalCalls::iAnimation::SetFrameCount(const Entity& _e, int _count) {
+void InternalCalls::iAnimation::iSpriteSheet::SetFrameCount(const Entity& _e, int _count) {
 	_e.GetComponent<SheetAnimation>().frameCount = _count;
 }
-int InternalCalls::iAnimation::GetFrameCount(const Entity& _e) {
+int InternalCalls::iAnimation::iSpriteSheet::GetFrameCount(const Entity& _e) {
 	return _e.GetComponent<SheetAnimation>().frameCount;
 }
-void InternalCalls::iAnimation::SetFrameCount(const int _eId, int _count) {
-	VI::iAnimation::SetFrameCount(Entity(_eId), _count);
+void InternalCalls::iAnimation::iSpriteSheet::SetFrameCount(const int _eId, int _count) {
+	VI::iAnimation::iSpriteSheet::SetFrameCount(Entity(_eId), _count);
 }
-int InternalCalls::iAnimation::GetFrameCount(const int _eId) {
-	return VI::iAnimation::GetFrameCount(Entity(_eId));
+int InternalCalls::iAnimation::iSpriteSheet::GetFrameCount(const int _eId) {
+	return VI::iAnimation::iSpriteSheet::GetFrameCount(Entity(_eId));
 }
-void InternalCalls::iAnimation::SetFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count) {
-	VI::iAnimation::SetFrameCount(VI::iEntity::GetEntity(_entityName, _sceneName), _count);
+void InternalCalls::iAnimation::iSpriteSheet::SetFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count) {
+	VI::iAnimation::iSpriteSheet::SetFrameCount(VI::iEntity::GetEntity(_entityName, _sceneName), _count);
 }
-int InternalCalls::iAnimation::GetFrameCount(std::string const& _entityName, std::string const& _sceneName) {
-	return VI::iAnimation::GetFrameCount(VI::iEntity::GetEntity(_entityName, _sceneName));
+int InternalCalls::iAnimation::iSpriteSheet::GetFrameCount(std::string const& _entityName, std::string const& _sceneName) {
+	return VI::iAnimation::iSpriteSheet::GetFrameCount(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 /*!*****************************************************************************
 \brief
 Movement animation
 *******************************************************************************/
-void InternalCalls::iAnimation::Start(int _eId) {
+void InternalCalls::iAnimation::iTransform::Start(const int _eId) {
 	movementAIManager->StartAnimation(Entity(_eId));
 }
-bool InternalCalls::iAnimation::SetNext(int _eId, int _i) { // return true if successful (withing 0 to the vector MAX)
+bool InternalCalls::iAnimation::iTransform::SetNext(const int _eId, int _i) { // return true if successful (withing 0 to the vector MAX)
 	return movementAIManager->SetNextStep(Entity(_eId), _i);
 }
-void InternalCalls::iAnimation::Stop(int _eId, bool _next) {
+void InternalCalls::iAnimation::iTransform::Stop(const int _eId, bool _next) {
 	movementAIManager->StopAfterThisAnimation(Entity(_eId), _next);
 }
-void InternalCalls::iAnimation::StopAfterEndLoop(int _eId, bool _loop) {
+void InternalCalls::iAnimation::iTransform::StopAfterEndLoop(const int _eId, bool _loop) {
 	movementAIManager->StopAfterEndofAnimationLoop(Entity(_eId), _loop);
 }
-void InternalCalls::iAnimation::ReverseOrder(int _eId, bool _reverse) {
+void InternalCalls::iAnimation::iTransform::ReverseOrder(const int _eId, bool _reverse) {
 	movementAIManager->ReverseOrderAfterNextAnimation(Entity(_eId), _reverse);
 }
-void InternalCalls::iAnimation::SetLoopCycle(int _eId, bool _cycle) {
+void InternalCalls::iAnimation::iTransform::SetLoopCycle(const int _eId, bool _cycle) {
 	movementAIManager->SetAnimationLoopToCycle(Entity(_eId), _cycle);
 }
-void InternalCalls::iAnimation::AddTransform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+void InternalCalls::iAnimation::iTransform::AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
 	movementAIManager->AddTransform(Entity(_eId), trans, _time);
 }
-void InternalCalls::iAnimation::AddTransformDifference(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+void InternalCalls::iAnimation::iTransform::AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
 	movementAIManager->AddTransformDifference(Entity(_eId), trans, _time);
 }
-void InternalCalls::iAnimation::SetCalculatedTimeFromPosition(int _eId, float _posX, float _posY, int _step) {
+void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step) {
 	movementAIManager->SetCalculatedTimeFromPosition(Entity(_eId), { _posX, _posY }, _step);
 }
-void InternalCalls::iAnimation::SetCalculatedTimeFromRotation(int _eId, float _rot, int _step) {
+void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step) {
 	movementAIManager->SetCalculatedTimeFromRotation(Entity(_eId), _rot, _step);
 }
-void InternalCalls::iAnimation::SetCalculatedTimeFromScale(int _eId, float _scaleX, float _scaleY, int _step) {
+void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step) {
 	movementAIManager->SetCalculatedTimeFromScale(Entity(_eId), { _scaleX, _scaleY }, _step);
+}
+
+/*!*****************************************************************************
+\brief
+Particle system
+*******************************************************************************/
+int InternalCalls::iParticleSystem::GetDensity(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mDensity;
+}
+void InternalCalls::iParticleSystem::SetDensity(const int _eId, int _density) {
+	Entity(_eId).GetComponent<ParticleSystem>().mDensity = _density;
+}
+
+float InternalCalls::iParticleSystem::GetPosX(int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mCenter.x;
+}
+void InternalCalls::iParticleSystem::SetPosX(const int _eId, float _posX) {
+	Entity(_eId).GetComponent<ParticleSystem>().mCenter.x = _posX;
+}
+float InternalCalls::iParticleSystem::GetPosY(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mCenter.y;
+}
+void InternalCalls::iParticleSystem::SetPosY(const int _eId, float _posY) {
+	Entity(_eId).GetComponent<ParticleSystem>().mCenter.y = _posY;
+}
+
+float InternalCalls::iParticleSystem::GetWidth(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mAreaWidth;
+}
+void InternalCalls::iParticleSystem::SetWidth(const int _eId, float _width) {
+	Entity(_eId).GetComponent<ParticleSystem>().mAreaWidth = _width;
+}
+
+float InternalCalls::iParticleSystem::GetDirX(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mDirection.x;
+}
+void InternalCalls::iParticleSystem::SetDirX(const int _eId, float _dirX) {
+	Entity(_eId).GetComponent<ParticleSystem>().mDirection.x = _dirX;
+}
+float InternalCalls::iParticleSystem::GetDirY(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mDirection.y;
+}
+void InternalCalls::iParticleSystem::SetDirY(const int _eId, float _dirY) {
+	Entity(_eId).GetComponent<ParticleSystem>().mDirection.y = _dirY;
+}
+
+float InternalCalls::iParticleSystem::GetSpread(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mSpread;
+}
+void InternalCalls::iParticleSystem::SetSpread(const int _eId, float _spread) {
+	Entity(_eId).GetComponent<ParticleSystem>().mSpread = _spread;
+}
+
+float InternalCalls::iParticleSystem::GetDuration(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mDuration;
+}
+void InternalCalls::iParticleSystem::SetDuration(const int _eId, float _dur) {
+	Entity(_eId).GetComponent<ParticleSystem>().mDuration = _dur;
+}
+
+bool InternalCalls::iParticleSystem::IsActive(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mIsActive;
+}
+void InternalCalls::iParticleSystem::SetIsActive(const int _eId, bool _active) {
+	Entity(_eId).GetComponent<ParticleSystem>().mIsActive = _active;
+}
+
+float InternalCalls::iParticleSystem::GetSlow(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mSlow;
+}
+void InternalCalls::iParticleSystem::SetSlow(const int _eId, float _slow) {
+	Entity(_eId).GetComponent<ParticleSystem>().mSlow = _slow;
+}
+
+/*!*****************************************************************************
+\brief
+Individual particle
+*******************************************************************************/
+float InternalCalls::iParticleSystem::iParticleInfo::GetScale(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mScale;
+}
+float InternalCalls::iParticleSystem::iParticleInfo::GetDirection(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mFacing;
+}
+float InternalCalls::iParticleSystem::iParticleInfo::GetLifeSpan(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mLifespan;
+}
+float InternalCalls::iParticleSystem::iParticleInfo::GetRotation(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mRotation;
+}
+float InternalCalls::iParticleSystem::iParticleInfo::GetSpeed(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSpeed;
+}
+bool InternalCalls::iParticleSystem::iParticleInfo::GetFading(const int _eId) {
+	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mFading;
+}
+int InternalCalls::iParticleSystem::iParticleInfo::GetSpriteType(const int _eId) {
+	return (int)Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite;
+}
+int InternalCalls::iParticleSystem::iParticleInfo::GetLayer(const int _eId) {
+	return (int)Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.layer;
+}
+
+void InternalCalls::iParticleSystem::iParticleInfo::SetScale(const int _eId, float _scale) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mScale = _scale;
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetDirection(const int _eId, float _dir) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mFacing = _dir;
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetLifeSpan(const int _eId, float _lifespan) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mLifespan = _lifespan;
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetRotation(const int _eId, float _rot) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mRotation = _rot;
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetSpeed(const int _eId, float _speed) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSpeed = _speed;
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetFading(const int _eId, bool _fade) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mFading = _fade;
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetColour(const int _eId, int _r, int _g, int _b, int _a) {
+	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a };
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.color = clr;
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetSpriteType(const int _eId, int _type) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite = (SPRITE)_type;
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetTexture(const int _eId, std::string _texture) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture = GET_TEXTURE_ID(_texture);
+}
+void InternalCalls::iParticleSystem::iParticleInfo::SetLayer(const int _eId, int _layer) {
+	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.layer = _layer;
 }
 
 /*!*****************************************************************************

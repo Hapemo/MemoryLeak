@@ -102,7 +102,7 @@ void ParticleManager::UpdateSystems() {
 }
 
 void ParticleManager::UpdateParticles() {
-	std::cout << "particle count: " << mParticleCount << '\n';
+	//std::cout << "particle count: " << mParticleCount << '\n';
 	for (int i{}; i < mParticleCount; ++i)
 		mParticles[i].Update();
 

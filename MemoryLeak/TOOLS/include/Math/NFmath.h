@@ -15,6 +15,6 @@ This file is just a compiled header file for the math libraries
 
 namespace Math {
 	static const double PI{ 3.141592653589793238 };
-	static const float epsilonValue{ FLT_EPSILON };
+	static const float EPSILON{ FLT_EPSILON };
 }
 
