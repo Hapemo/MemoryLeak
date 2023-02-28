@@ -53,7 +53,7 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Camera.SetScale.X(5500);
+            //VI.Camera.SetScale.X(5500);
 
             PlayerPosX = VI.Transform.Position.s_GetX("Boat");
             PlayerPosY = VI.Transform.Position.s_GetY("Boat");
