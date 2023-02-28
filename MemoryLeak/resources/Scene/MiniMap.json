@@ -65,8 +65,8 @@
             "width": 5000
         },
         "MovementAI": {
-            "run": true,
-            "next": true,
+            "run": false,
+            "next": false,
             "loop": true,
             "reverse": false,
             "cycle": false,
@@ -91,13 +91,13 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 270.0,
-                            "Y": 270.0
+                            "X": 800.0,
+                            "Y": 700.0
                         },
-                        "rotation": 0.0,
+                        "rotation": 6.283,
                         "translation": {
-                            "X": 640.0,
-                            "Y": -260.0
+                            "X": 0.0,
+                            "Y": 0.0
                         }
                     }
                 }

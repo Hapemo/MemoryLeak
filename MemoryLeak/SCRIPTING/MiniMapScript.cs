@@ -33,11 +33,13 @@ namespace BonVoyage {
                 big = !big;
                 if (big)
                 {
-                    VI.Entity.s_SetActive("minimapbig", "MiniMap", true);
+                    //VI.Entity.s_SetActive("minimapbig", "MiniMap", true);
+                    VI.Animation.Transform.Start(VI.Entity.GetId("minimap", "MiniMap"));
                 }
                 else
                 {
-                    VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
+                    //VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
+                    VI.Animation.Transform.Start(VI.Entity.GetId("minimap", "MiniMap"));
                 }
             }
 
