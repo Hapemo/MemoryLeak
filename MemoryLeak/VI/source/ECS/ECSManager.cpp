@@ -89,6 +89,8 @@ void ECSManager::RegisterCollision2DManager() {
 void ECSManager::RegisterLayerManager() {
 	Signature signature{};
 	signature.set(ECS::GetComponentType<LayerCollider>());
+	signature.set(ECS::GetComponentType<Sprite>());
+
 
 	layerManager = ECS::RegisterSystem<LayerManager>();
 	ECS::SetSystemSignature<LayerManager>(signature);
