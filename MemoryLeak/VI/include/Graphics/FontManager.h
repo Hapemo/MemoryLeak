@@ -40,7 +40,7 @@ struct Paragraph
 	std::vector<float> wordWidth;
 	Math::Vec2 pos;
 	float scale;
-	Math::Vec3 color;
+	glm::vec4 color;
 	float renderWidth;
 	float camZoom;
 };
@@ -81,7 +81,7 @@ public:
 	\param const Math::Vec3& _color
 	Color of the font.
 	*******************************************************************************/
-	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const Math::Vec3& _color, int layer, float _width, float _camZoom);
+	void AddParagraph(const std::string& _text, const Math::Vec2& _pos, float _scale, const glm::vec4& _color, int layer, float _width, float _camZoom);
 	/*!*****************************************************************************
 	\brief
 	Renders all paragraphs stored in mParagraphs.
@@ -144,7 +144,7 @@ public:
 	\return 
 	the number of lines.
 	*******************************************************************************/
-	int GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float _width, float camZoom);
+	int GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const glm::vec4& color, float _width, float camZoom);
 
 private:
 	/*!*****************************************************************************

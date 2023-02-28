@@ -215,7 +215,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	mIsCurrSceneUI = false;
 
 	Vertex v0;
-	glm::vec4 clr{ 1.f, 1.f, 1.f, 0.1f };
+	glm::vec4 clr{ 0.f, 0.f, 0.f, 0.01f };
 	glm::vec4 shadowclr{ 0, 0, 0, 0.8f };
 	Math::Mat3 mtx;
 
@@ -1876,7 +1876,7 @@ void RenderManager::CreateText(const Entity& _e, int _layer)
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation  - cam.GetPos() ) / cam.GetZoom() + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
-		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), _layer, _e.GetComponent<Transform>().scale.x, cam.GetZoom());
+		text.scale / cam.GetZoom(), glm::vec4(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f, text.color.a / 255.f), _layer, _e.GetComponent<Transform>().scale.x, cam.GetZoom());
 }
 /*!*****************************************************************************
 \brief
@@ -1911,8 +1911,8 @@ int RenderManager::GetTextLines(Entity _e)
 	return mFontRenderers[fileName].GetLineCount(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation - cam.GetPos()) / cam.GetZoom() 
 		+ Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
-		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, 
-			text.color.b / 255.f), _e.GetComponent<Transform>().scale.x, cam.GetZoom());
+		text.scale / cam.GetZoom(), glm::vec4(text.color.r / 255.f, text.color.g / 255.f, 
+			text.color.b / 255.f, text.color.a), _e.GetComponent<Transform>().scale.x, cam.GetZoom());
 }
 
 /*!*****************************************************************************

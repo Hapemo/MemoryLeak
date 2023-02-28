@@ -1,36 +1,6 @@
 [
     {
         "General": {
-            "name": "MenuBackground",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 1920.0,
-                "Y": 1080.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\menu screen background.jpg",
-            "layer": 0
-        }
-    },
-    {
-        "General": {
             "name": "PlayBtn",
             "tag": 5,
             "subtag": 1,
@@ -38,13 +8,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 400.0,
+                "Y": 80.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": -35.0
+                "X": -260.0,
+                "Y": -50.0
             }
         },
         "Sprite": {
@@ -52,23 +22,11 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 1
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Button_Click_SFX",
@@ -85,7 +43,7 @@
             "fontFile": "BPtypewrite",
             "text": "Play Game",
             "offset": {
-                "X": -126.0,
+                "X": -131.0,
                 "Y": -18.0
             },
             "scale": 1.0,
@@ -97,7 +55,7 @@
             }
         },
         "Script": {
-            "name": "PlayGameButton"
+            "name": ""
         },
         "Button": {
             "interactable": true
@@ -112,13 +70,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 400.0,
+                "Y": 80.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": -173.0
+                "X": -260.0,
+                "Y": -140.0
             }
         },
         "Sprite": {
@@ -126,23 +84,11 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 1
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Button_Click_SFX",
@@ -171,7 +117,7 @@
             }
         },
         "Script": {
-            "name": "HowToPlayButton"
+            "name": ""
         },
         "Button": {
             "interactable": true
@@ -186,13 +132,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 400.0,
+                "Y": 80.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": -315.0
+                "X": -260.0,
+                "Y": -230.0
             }
         },
         "Sprite": {
@@ -200,23 +146,11 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 1
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Button_Click_SFX",
@@ -233,7 +167,7 @@
             "fontFile": "BPtypewrite",
             "text": "Quit Game",
             "offset": {
-                "X": -130.0,
+                "X": -132.0,
                 "Y": -16.0
             },
             "scale": 1.0,
@@ -245,7 +179,7 @@
             }
         },
         "Script": {
-            "name": "ExitConfirmationButton"
+            "name": ""
         },
         "Button": {
             "interactable": true
@@ -265,8 +199,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 220.0
+                "X": -260.0,
+                "Y": 210.0
             }
         },
         "Sprite": {
@@ -278,36 +212,25 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\bon voyage logo 5.png",
-            "layer": 2
-        },
-        "Script": {
-            "name": "MenuLightScript"
-        },
-        "LightSource": {
-            "centerOffset": {
-                "X": -94.0,
-                "Y": 24.0
-            },
-            "radius": 1017.9983520507813,
-            "intensity": 0.0
+            "layer": 1
         }
     },
     {
         "General": {
-            "name": "NEW Entity 2",
+            "name": "Credits",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 120.0,
+                "Y": 120.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 700.0,
-                "Y": -370.0
+                "X": -700.0,
+                "Y": -350.0
             }
         },
         "Sprite": {
@@ -334,13 +257,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 149.75778198242188,
-                "Y": 149.75778198242188
+                "X": 120.0,
+                "Y": 120.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 696.4562377929688,
-                "Y": -220.0
+                "X": -700.0,
+                "Y": -230.0
             }
         },
         "Sprite": {
@@ -370,7 +293,7 @@
             "isSpacial": false
         },
         "Script": {
-            "name": "SettingsButton"
+            "name": ""
         },
         "Button": {
             "interactable": true
@@ -378,20 +301,90 @@
     },
     {
         "General": {
-            "name": "LightCircle",
+            "name": "Water",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 212,
+                "g": 212,
+                "b": 212,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Env_Water.png",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "House",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 115.89988708496094,
-                "Y": 115.89988708496094
+                "X": 503.0,
+                "Y": 503.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -94.79512786865234,
-                "Y": 244.46290588378906
+                "X": 482.876708984375,
+                "Y": -50.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 253,
+                "g": 253,
+                "b": 253,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
+            "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.15000000596046448,
+            "timeToFrameSwap": 0.21666666865348816
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "P1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 88.5,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 359.0740051269531,
+                "Y": -101.2979965209961
             }
         },
         "Sprite": {
@@ -399,14 +392,69 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 211
+                "a": 255
             },
-            "sprite": 1,
-            "texture": "",
-            "layer": 1
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 1\\Character_ghost1_SW_idle_spritesheet.png",
+            "layer": 5
         },
-        "Script": {
-            "name": "MenuLightCircle"
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 7,
+            "timePerFrame": 0.15000000596046448,
+            "timeToFrameSwap": 0.016666678711771965
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Boat",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 300.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 194.21527099609375,
+                "Y": -244.1490020751953
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+            "layer": 6
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 2,
+            "timePerFrame": 0.15000000596046448,
+            "timeToFrameSwap": 1.1175870895385742e-8
+        },
+        "LightSource": {
+            "centerOffset": {
+                "X": 7.0,
+                "Y": 85.0
+            },
+            "radius": 600.0,
+            "intensity": 0.0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     }
 ]

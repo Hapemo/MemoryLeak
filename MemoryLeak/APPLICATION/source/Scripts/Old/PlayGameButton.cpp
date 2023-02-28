@@ -29,31 +29,31 @@ void PlayGameButton::Init(Entity const& gob) {
 	(void)gob;
 	Entity e = gob;
 
-	e.AddComponent(ParticleSystem{
-		ParticleSystem::ParticleInfo{
-			20, // mScale			
-			90, // mFacing		
-			5, // mLifespan	
-			Sprite{
-				RED, // color
-				SPRITE::SQUARE, // sprit
-				0, // texture
-				e.GetComponent<Sprite>().layer + 1  // layer
-			}, // mSprite		
-			2, // mRotation	
-			100, // mSpeed			
-			true // mFading			
-		},
-		1, // mDensity 
-		e.GetComponent<Transform>().translation, // mCenter
-		20, // mAreaWidth 
-		0.5, // mDirection
-		2, // mSpread 
-		10, // mDuration 
-		true, // mIsActive 
-		1.f // mSlow
-	});
-	LOG_INFO(gob.GetComponent<General>().name + "Added component particle system============================================");
+	//e.AddComponent(ParticleSystem{
+	//	ParticleSystem::ParticleInfo{
+	//		20, // mScale			
+	//		90, // mFacing		
+	//		5, // mLifespan	
+	//		Sprite{
+	//			RED, // color
+	//			SPRITE::SQUARE, // sprit
+	//			0, // texture
+	//			e.GetComponent<Sprite>().layer + 1  // layer
+	//		}, // mSprite		
+	//		2, // mRotation	
+	//		100, // mSpeed			
+	//		true // mFading			
+	//	},
+	//	1, // mDensity 
+	//	e.GetComponent<Transform>().translation, // mCenter
+	//	20, // mAreaWidth 
+	//	0.5, // mDirection
+	//	2, // mSpread 
+	//	10, // mDuration 
+	//	true, // mIsActive 
+	//	1.f // mSlow
+	//});
+	//LOG_INFO(gob.GetComponent<General>().name + "Added component particle system============================================");
 }
 
 /*!*****************************************************************************
