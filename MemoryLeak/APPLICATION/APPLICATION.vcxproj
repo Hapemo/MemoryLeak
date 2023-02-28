@@ -60,7 +60,6 @@
   <ItemGroup>
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\Scripts\Old\HowToPlayButton.cpp" />
     <ClCompile Include="source\Scripts\Old\PlayGameButton.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

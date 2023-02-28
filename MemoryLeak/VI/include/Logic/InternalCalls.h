@@ -405,8 +405,17 @@ public:
 			static void StopAfterEndLoop(const int _eId, bool _loop = true);
 			static void ReverseOrder(const int _eId, bool _reverse = true);
 			static void SetLoopCycle(const int _eId, bool _cycle = true);
-			static void AddTransform(const int _eId, float _posX, float _posY, float _scaleX, float _scaleY, float _rot, float _time = 1);
-			static void AddTransformDifference(const int _eId, float _posX, float _posY, float _scaleX, float _scaleY, float _rot, float _time = 1);
+			static int GetCurrentIndex(const int _eId);
+			static void EditTiming(const int _eId, float _time);
+			static void AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
+			static void EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
+			static void CurrentScaleX(const int _eId, float _scaleX);
+			static void CurrentScaleY(const int _eId, float _scaleY);
+			static void CurrentRotate(const int _eId, float _rot);
+			static void CurrentPosX(const int _eId, float _posX);
+			static void CurrentPosY(const int _eId, float _posY);
+			static void AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1.f, int _index = 0);
+			static void AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
 			static void SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step = -1);
 			static void SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step = -1);
 			static void SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step = -1);
@@ -647,6 +656,8 @@ public:
 		static void SetScale(const Entity& _e, float _scale);
 		static void SetScale(const int _eId, float _scale);
 		static void SetScale(std::string const& _entityName, std::string const& _sceneName, float _scale);
+
+		static void SetColour(const int _eId, int _r, int _g, int _b, int _a);
 	};
 
 	struct iWeather {

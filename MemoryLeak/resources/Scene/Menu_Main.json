@@ -8,8 +8,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 80.0
+                "X": 421.0,
+                "Y": 101.0
             },
             "rotation": 0.0,
             "translation": {
@@ -55,7 +55,7 @@
             }
         },
         "Script": {
-            "name": ""
+            "name": "PlayButton"
         },
         "Button": {
             "interactable": true
@@ -76,7 +76,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -260.0,
-                "Y": -140.0
+                "Y": -142.3426055908203
             }
         },
         "Sprite": {
@@ -117,7 +117,7 @@
             }
         },
         "Script": {
-            "name": ""
+            "name": "HowToPlayButton"
         },
         "Button": {
             "interactable": true
@@ -179,7 +179,7 @@
             }
         },
         "Script": {
-            "name": ""
+            "name": "QuitButton"
         },
         "Button": {
             "interactable": true
@@ -194,8 +194,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 944.0,
-                "Y": 285.1781311035156
+                "X": 957.5,
+                "Y": 298.6781311035156
             },
             "rotation": 0.0,
             "translation": {
@@ -243,6 +243,20 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\credits-icon-click.png",
             "layer": 1
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "CreditsButton"
         },
         "Button": {
             "interactable": true
@@ -293,40 +307,10 @@
             "isSpacial": false
         },
         "Script": {
-            "name": ""
+            "name": "SettingsButton"
         },
         "Button": {
             "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "Water",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 212,
-                "g": 212,
-                "b": 212,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Env_Water.png",
-            "layer": 0
         }
     },
     {
@@ -338,8 +322,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 503.0,
-                "Y": 503.0
+                "X": 506.0,
+                "Y": 506.0
             },
             "rotation": 0.0,
             "translation": {
@@ -349,9 +333,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 253,
-                "g": 253,
-                "b": 253,
+                "r": 232,
+                "g": 232,
+                "b": 232,
                 "a": 255
             },
             "sprite": 2,
@@ -360,13 +344,44 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.21666666865348816
+            "timeToFrameSwap": 0.06666667759418488
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -80.0,
+                        "Y": -17.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 56.0,
+                        "Y": -102.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 170.0,
+                        "Y": -20.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 31.0,
+                        "Y": 56.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -80.0,
+                        "Y": -17.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -378,8 +393,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 88.5,
-                "Y": 150.0
+                "X": 93.0,
+                "Y": 154.5
             },
             "rotation": 0.0,
             "translation": {
@@ -400,13 +415,50 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 6,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.016666678711771965
+            "timeToFrameSwap": 0.033333346247673035
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -33.0,
+                        "Y": -58.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -17.0,
+                        "Y": -70.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 23.0,
+                        "Y": -60.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 17.0,
+                        "Y": -57.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -6.0,
+                        "Y": -45.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -33.0,
+                        "Y": -58.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -423,8 +475,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 194.21527099609375,
-                "Y": -244.1490020751953
+                "X": 151.5797882080078,
+                "Y": -231.49887084960938
             }
         },
         "Sprite": {
@@ -440,9 +492,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 1,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 1.1175870895385742e-8
+            "timeToFrameSwap": 0.016666678711771965
         },
         "LightSource": {
             "centerOffset": {

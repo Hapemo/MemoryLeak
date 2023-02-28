@@ -62,8 +62,8 @@ namespace BonVoyage {
         float NormY = VI.Math.Normalize.Y(DirX, DirY);
 
         VI.Physics.ApplyImpulse(player,
-            (NormX * 4 ),
-            (NormY * 4 ), 0f, 0f);
+            (NormX * 200 ) * (float)VI.General.DeltaTime(),
+            (NormY * 200 ) * (float)VI.General.DeltaTime(), 0f, 0f);
         // Get new rotation and set sprite
         //PlayerRotation = GetRotation(NormX, NormY);
         //SetPlayerSprite(player, PlayerRotation, "Idle");
@@ -79,6 +79,25 @@ namespace BonVoyage {
       if (((int)tempX < 2) && ((int)tempY < 2)) {
         VI.Transform.Position.SetX(player, x);
         VI.Transform.Position.SetY(player, y);
+      }
+
+      return false;
+    }
+
+    public static bool ChangeZoom(float x, float speed) {
+      if (VI.Camera.GetScale.X() == x)
+        return true;
+      float currX = VI.Camera.GetScale.X();
+
+      if (x > currX) {
+        VI.Camera.SetScale.X(currX + speed * (float)VI.General.DeltaTime());
+        if (VI.Camera.GetScale.X() > x)
+          VI.Camera.SetScale.X(x);
+      }
+      else {
+        VI.Camera.SetScale.X(currX - speed * (float)VI.General.DeltaTime());
+        if (VI.Camera.GetScale.X() < x)
+          VI.Camera.SetScale.X(x);
       }
 
       return false;
