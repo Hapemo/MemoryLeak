@@ -637,7 +637,7 @@ int InternalCalls::iAnimation::iTransform::GetCurrentIndex(const int _eId) {
 	return Entity(_eId).GetComponent<MovementAI>().step;
 }
 void InternalCalls::iAnimation::iTransform::Remove(const int _eId, int _index) {
-	movementAIManager->removeTransformAt(Entity(_eId), _index);
+	movementAIManager->RemoveTransformAt(Entity(_eId), _index);
 }
 void InternalCalls::iAnimation::iTransform::EditTiming(const int _eId, float _time) {
 	Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step] = _time;
