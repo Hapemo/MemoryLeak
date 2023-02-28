@@ -891,6 +891,9 @@ namespace VI
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetLineCount(int _eId);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int SetColour(int _eId, int _r, int _g, int _b, int _a);
 		public class Offset
 		{
 			[MethodImpl(MethodImplOptions.InternalCall)]

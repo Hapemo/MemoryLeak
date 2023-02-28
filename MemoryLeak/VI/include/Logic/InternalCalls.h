@@ -656,6 +656,8 @@ public:
 		static void SetScale(const Entity& _e, float _scale);
 		static void SetScale(const int _eId, float _scale);
 		static void SetScale(std::string const& _entityName, std::string const& _sceneName, float _scale);
+
+		static void SetColour(const int _eId, int _r, int _g, int _b, int _a);
 	};
 
 	struct iWeather {

@@ -707,6 +707,8 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Text/Scale::Get", &MM::iText::GetScale);
 	mono_add_internal_call("VI.Text/Scale::Set", &MM::iText::SetScale);
 
+	mono_add_internal_call("VI.Text::SetColour", &VI::iText::SetColour);
+
 	// Weather
 	mono_add_internal_call("VI.Weather::Init", &VI::iWeather::WeatherInit);
 	mono_add_internal_call("VI.Weather::GetCurrent", &VI::iWeather::GetCurrentWeather);

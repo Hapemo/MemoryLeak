@@ -1160,6 +1160,11 @@ void InternalCalls::iText::SetScale(std::string const& _entityName, std::string 
 	VI::iText::SetScale(VI::iEntity::GetEntity(_entityName, _sceneName), _scale);
 }
 
+void InternalCalls::iText::SetColour(const int _eId, int _r, int _g, int _b, int _a) {
+	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a };
+	Entity(_eId).GetComponent<Text>().color= clr;
+}
+
 /*!*****************************************************************************
 \brief
 Weather functions.
