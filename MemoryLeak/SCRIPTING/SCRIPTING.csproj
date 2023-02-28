@@ -71,6 +71,7 @@
     <Compile Include="InternalCalls.cs" />
     <Compile Include="MiniMapScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PlayerScript.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="WeatherMapScript.cs" />
   </ItemGroup>

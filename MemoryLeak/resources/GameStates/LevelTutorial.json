@@ -13,70 +13,43 @@
             }
         },
         "isActive": false,
-        "layer": 0,
-        "order": 0
+        "layer": 3,
+        "order": 3
     },
     {
         "SceneName": "Pause",
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 1.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
         "isActive": true,
-        "layer": 8,
+        "layer": 10,
         "order": 0
     },
     {
-        "SceneName": "How_To_Play",
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 1.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
+        "SceneName": "Game Over",
         "isActive": true,
-        "layer": 8,
+        "layer": 10,
+        "order": 4
+    },
+    {
+        "SceneName": "How_To_Play",
+        "isActive": true,
+        "layer": 10,
         "order": 0
     },
     {
         "SceneName": "Quit Confirmation",
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 1.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
         "isActive": true,
-        "layer": 8,
-        "order": 0
+        "layer": 10,
+        "order": 4
     },
     {
         "SceneName": "TutorialDialogue",
         "isActive": false,
         "layer": 8,
-        "order": 0
+        "order": 7
     },
     {
         "SceneName": "FPS",
         "isActive": false,
-        "layer": 9,
+        "layer": 10,
         "order": 0
     }
 ]
