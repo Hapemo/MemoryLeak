@@ -87,13 +87,13 @@ namespace BonVoyage {
                 if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
                 {
                     string MIcon = "MIcon" + i;
-                    VI.Animation.SheetIndex.s_Set(MIcon, "WeatherMap", index);
+                    VI.Animation.SpriteSheet.SheetIndex.s_Set(MIcon, "WeatherMap", index);
                     VI.Entity.s_SetActive(MIcon, "WeatherMap", true);
                 }
                 if (big)
                 {
                     string EIcon = "EIcon" + i;
-                    VI.Animation.SheetIndex.s_Set(EIcon, "WeatherMap", index);
+                    VI.Animation.SpriteSheet.SheetIndex.s_Set(EIcon, "WeatherMap", index);
                 }
             }
             
