@@ -29,12 +29,14 @@ namespace BonVoyage {
         }
 
         public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
             VI.Entity.s_Deactivate("crystalBall", "CrystalBalls");
         }
 
         public void Update(int _ENTITY)
         {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             VI.Entity.s_Activate("crystalBall", "CrystalBalls");
             if ((VI.Input.Button.s_Released("toggleMap", "CrystalBalls")) == true)
             {
@@ -88,6 +90,7 @@ namespace BonVoyage {
 
         }
         public void Exit(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             toggle=0;
             prevTog = -1;
             VI.Entity.s_Deactivate("minimap", "MiniMap");
@@ -100,6 +103,7 @@ namespace BonVoyage {
         }
         public void Dead(int _ENTITY)
         {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
     }

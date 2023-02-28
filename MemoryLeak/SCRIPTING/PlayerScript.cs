@@ -38,14 +38,17 @@ namespace BonVoyage {
         }
 
         public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
 
         public void EarlyUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         
         }
 
         public void Update(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             #region Pause Game
             // Escape key is pressed
             if (VI.Input.Key.Press(256))
@@ -113,6 +116,7 @@ namespace BonVoyage {
         }
 
         public void FixedUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             #region Movement
             // Update player position variables
             PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
@@ -161,14 +165,17 @@ namespace BonVoyage {
         }
 
         public void LateUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
         }
 
         public void Exit(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
 
         public void Dead(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
 
