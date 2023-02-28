@@ -280,12 +280,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
+                "X": 39.269927978515625,
                 "Y": 50.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -300.0,
+                "X": -305.36505126953125,
                 "Y": 50.0
             }
         },
@@ -329,6 +329,12 @@
             "sprite": 0,
             "texture": "",
             "layer": 8
+        },
+        "Script": {
+            "name": "BGMcontroller"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -389,6 +395,12 @@
             "sprite": 0,
             "texture": "",
             "layer": 8
+        },
+        "Script": {
+            "name": "SFXcontroller"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

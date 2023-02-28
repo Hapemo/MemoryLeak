@@ -344,9 +344,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.06666667759418488
+            "timeToFrameSwap": 0.050000011920928955
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -415,9 +415,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 6,
+            "currFrameIndex": 2,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.033333346247673035
+            "timeToFrameSwap": 0.016666678711771965
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -492,9 +492,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 1,
+            "currFrameIndex": 5,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.016666678711771965
+            "timeToFrameSwap": 1.1175870895385742e-8
         },
         "LightSource": {
             "centerOffset": {

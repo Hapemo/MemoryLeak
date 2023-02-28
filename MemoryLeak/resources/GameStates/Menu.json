@@ -40,11 +40,5 @@
         "isActive": false,
         "layer": 0,
         "order": 0
-    },
-    {
-        "SceneName": "TransitionScene",
-        "isActive": false,
-        "layer": 4,
-        "order": 0
     }
 ]

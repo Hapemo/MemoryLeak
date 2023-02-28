@@ -85,6 +85,8 @@
     <Compile Include="Level 1\Level1DialogManager.cs" />
     <Compile Include="QuitButton.cs" />
     <Compile Include="ReallyQuitButton.cs" />
+    <Compile Include="BGMcontroller.cs" />
+    <Compile Include="SFXcontroller.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="SettingsButton.cs" />
     <Compile Include="WeatherMapScript.cs" />
