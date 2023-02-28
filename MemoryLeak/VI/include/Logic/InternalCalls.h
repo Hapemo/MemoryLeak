@@ -292,6 +292,7 @@ public:
 		Sprite component
 		*******************************************************************************/
 		static int GetSpriteType(const int _eId);
+		static void SetSpriteType(const int _eId, int _type);
 	};
 
 	struct iScene {

@@ -420,6 +420,9 @@ Sprite component
 int InternalCalls::iEntity::GetSpriteType(const int _eId) {
 	return (int)Entity(_eId).GetComponent<Sprite>().sprite;
 }
+void InternalCalls::iEntity::SetSpriteType(const int _eId, int _type) {
+	Entity(_eId).GetComponent<Sprite>().sprite = (SPRITE)_type;
+}
 
 /*!*****************************************************************************
 \brief

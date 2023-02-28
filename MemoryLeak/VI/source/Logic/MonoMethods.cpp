@@ -516,7 +516,8 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Entity/Parent::Name", &MM::iEntity::GetParent);
 	mono_add_internal_call("VI.Entity/Parent::Id", &MM::iEntity::GetParentId);
 
-	mono_add_internal_call("VI.Entity::GetSpriteType", &VI::iEntity::GetSpriteType);
+	mono_add_internal_call("VI.Entity/Sprite::GetType", &VI::iEntity::GetSpriteType);
+	mono_add_internal_call("VI.Entity/Sprite::SetType", &VI::iEntity::SetSpriteType);
 
 	// Scene
 	mono_add_internal_call("VI.Scene::Pause", &MM::iScene::Pause);
