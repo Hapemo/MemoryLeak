@@ -144,6 +144,9 @@
                 "a": 255
             }
         },
+        "Script": {
+            "name": "BackButton"
+        },
         "Button": {
             "interactable": true
         }
@@ -157,7 +160,7 @@
         },
         "Transform": {
             "scale": {
-                "X": -18.0,
+                "X": 18.0,
                 "Y": 23.0
             },
             "rotation": 0.0,
@@ -202,7 +205,7 @@
         },
         "Transform": {
             "scale": {
-                "X": -18.0,
+                "X": 18.0,
                 "Y": 23.0
             },
             "rotation": 0.0,

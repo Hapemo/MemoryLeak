@@ -138,6 +138,9 @@
                 "a": 255
             }
         },
+        "Script": {
+            "name": "BackButton"
+        },
         "Button": {
             "interactable": true
         }
