@@ -893,8 +893,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1565.0189208984375,
-                "Y": 1605.166748046875
+                "X": -1595.727294921875,
+                "Y": 1579.26806640625
             }
         },
         "Sprite": {
@@ -1496,6 +1496,42 @@
     },
     {
         "General": {
+            "name": "Ghost3",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -67.0,
+                "Y": 139.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 760.8667602539063,
+                "Y": -507.6171875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost6_SE_Idle_Spritesheet.png",
+            "layer": 40
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 5,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        }
+    },
+    {
+        "General": {
             "name": "EnemyTrigger",
             "tag": 2,
             "subtag": 0,
@@ -1999,8 +2035,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2473.1064453125,
-                "Y": 985.629150390625
+                "X": -2412.04638671875,
+                "Y": 1022.79931640625
             }
         },
         "Sprite": {
@@ -2913,8 +2949,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 827.4944458007813,
-                "Y": -982.4331665039063
+                "X": 848.7403564453125,
+                "Y": -956.1043090820313
             }
         },
         "Sprite": {
@@ -3105,8 +3141,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1574.4288330078125,
-                "Y": -548.1177978515625
+                "X": 1559.2532958984375,
+                "Y": -545.1923828125
             }
         },
         "Sprite": {
@@ -3297,8 +3333,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -512.112548828125,
-                "Y": -1315.3043212890625
+                "X": -503.00714111328125,
+                "Y": -1268.4974365234375
             }
         },
         "Sprite": {
@@ -3425,8 +3461,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1702.626953125,
-                "Y": 1345.6185302734375
+                "X": 1730.4786376953125,
+                "Y": 1287.4541015625
             }
         },
         "Sprite": {
@@ -3809,8 +3845,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1622.7137451171875,
-                "Y": 338.9244689941406
+                "X": 1632.4439697265625,
+                "Y": 453.2744140625
             }
         },
         "Sprite": {
@@ -3822,7 +3858,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 26
+            "layer": 45
         },
         "RectCollider": {
             "centerOffset": {
@@ -4193,8 +4229,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -655.0977172851563,
-                "Y": -1496.046630859375
+                "X": -673.3084716796875,
+                "Y": -1504.8228759765625
             }
         },
         "Sprite": {
@@ -4833,8 +4869,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1397.7125244140625,
-                "Y": -1073.1109619140625
+                "X": 1373.4315185546875,
+                "Y": -1040.93115234375
             }
         },
         "Sprite": {
@@ -5537,8 +5573,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1737.1895751953125,
-                "Y": 38.54573059082031
+                "X": 1757.8106689453125,
+                "Y": 40.35261535644531
             }
         },
         "Sprite": {
@@ -5601,8 +5637,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2005.59716796875,
-                "Y": 1384.35009765625
+                "X": 1895.885986328125,
+                "Y": 1055.9278564453125
             }
         },
         "Sprite": {
@@ -5665,8 +5701,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2036.5400390625,
-                "Y": 465.0617370605469
+                "X": 1837.292724609375,
+                "Y": 741.1708374023438
             }
         },
         "Sprite": {
@@ -5678,7 +5714,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 1
+            "layer": 44
         },
         "RectCollider": {
             "centerOffset": {
@@ -5921,8 +5957,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2393.846435546875,
-                "Y": 730.2582397460938
+                "X": -2319.75341796875,
+                "Y": 766.0517578125
             }
         },
         "Sprite": {
@@ -6155,8 +6191,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2015.95703125,
-                "Y": 147.07705688476563
+                "X": 1924.9920654296875,
+                "Y": 520.2415771484375
             }
         },
         "Sprite": {
@@ -6168,7 +6204,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 27
+            "layer": 44
         },
         "RectCollider": {
             "centerOffset": {
@@ -7627,8 +7663,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1432.0897216796875,
-                "Y": 1541.563232421875
+                "X": 1465.7440185546875,
+                "Y": 1561.52490234375
             }
         },
         "Sprite": {
@@ -7691,8 +7727,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1786.23876953125,
-                "Y": 1574.1826171875
+                "X": 1811.947998046875,
+                "Y": 1579.6890869140625
             }
         },
         "Sprite": {
@@ -7978,132 +8014,6 @@
             "centerOffset": {
                 "X": 0.0,
                 "Y": -96.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Passenger_1",
-            "tag": 1,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 75.5,
-                "Y": 151.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -113.57493591308594,
-                "Y": 566.1349487304688
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 50
-        },
-        "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 2.0,
-                "Y": 1.0
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": false
-        },
-        "Script": {
-            "name": "PassengerScript"
-        }
-    },
-    {
-        "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -400.0,
-                "Y": 415.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1881.0760498046875,
-                "Y": 313.0904235839844
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 24
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
             },
             "scaleOffset": {
                 "X": 1.0,

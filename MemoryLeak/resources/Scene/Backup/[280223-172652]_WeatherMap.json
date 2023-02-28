@@ -2981,7 +2981,8 @@
         },
         "Script": {
             "name": "MiniMapScript"
-        }
+        },
+        "CircularViewport": {}
     },
     {
         "General": {
