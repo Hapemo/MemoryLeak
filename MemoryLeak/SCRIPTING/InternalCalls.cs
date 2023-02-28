@@ -430,6 +430,20 @@ namespace VI
 			internal extern static void Y(float _y);
 		}
 	}
+	public class Viewport
+	{
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetWidth(int _eId);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetWidth(int _eId, int _width);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool IsUI(int _eId);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetIsUI(int _eId, bool _ui = true);
+	}
 	public class Math
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]

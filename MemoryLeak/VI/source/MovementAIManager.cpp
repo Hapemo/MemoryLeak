@@ -128,7 +128,7 @@ void MovementAIManager::AddTransformAt(Entity e, Transform t, float time, int in
 	e.GetComponent<MovementAI>().targetTransforms.insert(e.GetComponent<MovementAI>().targetTransforms.begin()+index, t);
 	e.GetComponent<MovementAI>().time.insert(e.GetComponent<MovementAI>().time.begin() + index, time);
 }
-void MovementAIManager::removeTransformAt(Entity e, int index)
+void MovementAIManager::RemoveTransformAt(Entity e, int index)
 {
 	e.GetComponent<MovementAI>().targetTransforms.erase(e.GetComponent<MovementAI>().targetTransforms.begin() + index);
 	e.GetComponent<MovementAI>().time.erase(e.GetComponent<MovementAI>().time.begin() + index);

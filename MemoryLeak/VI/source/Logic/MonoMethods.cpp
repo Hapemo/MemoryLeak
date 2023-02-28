@@ -532,7 +532,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Camera/SetPos::X", &VI::iCamera::SetPosX);
 	mono_add_internal_call("VI.Camera/SetPos::Y", &VI::iCamera::SetPosY);
 
-	// Camera
+	// Viewport
 	mono_add_internal_call("VI.Viewport::GetWidth", &VI::iViewport::GetWidth);
 	mono_add_internal_call("VI.Viewport::SetWidth", &VI::iViewport::SetWidth);
 	mono_add_internal_call("VI.Viewport::IsUI", &VI::iViewport::IsUI);

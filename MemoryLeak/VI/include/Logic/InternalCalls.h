@@ -327,8 +327,8 @@ public:
 		*******************************************************************************/
 		static int GetWidth(const int _eId);
 		static void SetWidth(const int _eId, int _width);
-		static int IsUI(const int _eId);
-		static void SetIsUI(const int _eId, int _ui);
+		static bool IsUI(const int _eId);
+		static void SetIsUI(const int _eId, bool _ui = true);
 	};
 
 	struct iMath {
