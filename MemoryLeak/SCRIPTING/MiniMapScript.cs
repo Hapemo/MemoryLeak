@@ -64,7 +64,8 @@ namespace BonVoyage {
                     VI.Text.Offset.Set(minimapID, textbigOffsetX, textbigOffsetY);
                     VI.Text.Scale.Set(minimapID, textbigScale);
                     VI.Animation.Transform.Start(minimapID);
-                    
+                    VI.Viewport.SetIsUI(minimapID, true);
+                    //VI.Viewport.SetWidth(minimapID, 3600);
                     float posx = VI.Transform.Position.GetX(playerID) * (miniMapX / MapX);
                     float posy = VI.Transform.Position.GetY(playerID) * (miniMapY / MapY);
                     VI.Animation.Transform.Add.Transform(playerheadID, 100,100,0, posx, posy, 0.5f);
@@ -79,7 +80,8 @@ namespace BonVoyage {
                     VI.Text.Offset.Set(minimapID, textOffsetX, textOffsetY);
                     VI.Text.Scale.Set(minimapID, textScale);
                     VI.Animation.Transform.Start(minimapID);
-
+                    VI.Viewport.SetIsUI(minimapID, false);
+                    VI.Viewport.SetWidth(minimapID, 1600);
                     VI.Animation.Transform.SetNext(playerheadID, 0);
                     VI.Animation.Transform.Start(playerheadID);
 
