@@ -57,10 +57,10 @@ namespace BonVoyage {
                     //VI.Animation.Transform.SetNext(VI.Entity.GetId("minimap", "MiniMap"), 1);
                     VI.Text.Offset.Set(minimapID, textbigOffsetX, textbigOffsetY);
                     VI.Text.Scale.Set(minimapID, textbigScale);
-                   
-                    //VI.Animation.Transform.Add.Transform(minimapID,100,100,0, VI.Transform.Position.GetX(playerID), VI.Transform.Position.GetY(playerID),0.5f);
-                    //VI.Animation.Transform.SetNext(minimapID, 1);
-                    VI.Animation.Transform.Start(minimapID);
+                    VI.Animation.Transform.Add.Transform(miniplayerID, 100, 100, 0, 0, 0, 0.5f);
+                    //VI.Animation.Transform.Add.Transform(miniplayerID, 100,100,0, VI.Transform.Position.GetX(playerID), VI.Transform.Position.GetY(playerID),0.5f);
+                    //VI.Animation.Transform.SetNext(miniplayerID, 1);
+                    VI.Animation.Transform.Start(miniplayerID);
                 }
                 else
                 {
@@ -70,8 +70,8 @@ namespace BonVoyage {
                     VI.Text.Scale.Set(minimapID, textScale);
                     VI.Animation.Transform.Start(minimapID);
 
-                    VI.Animation.Transform.SetNext(minimapID, 0);
-                    VI.Animation.Transform.Start(minimapID);
+                    VI.Animation.Transform.SetNext(miniplayerID, 0);
+                    VI.Animation.Transform.Start(miniplayerID);
 
                 }
             }
