@@ -17,9 +17,23 @@ namespace BonVoyage {
     public class MiniMapScript
     {
         static bool big = false;
+        int minimapID;
+        float textOffsetX;
+        float textOffsetY;
+        float textbigOffsetX;
+        float textbigOffsetY;
+        float textScale;
+        float textbigScale;
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            minimapID = VI.Entity.GetId("minimap", "MiniMap");
+            textOffsetX = -59;// VI.Text.Offset.GetX(minimapID);
+            textOffsetY = -170;// VI.Text.Offset.GetY(minimapID);
+            textbigOffsetX = -100;
+            textbigOffsetY = 360;
+            textScale = VI.Text.Scale.Get(minimapID);
+            textbigScale = 1.0f;
         }
         public void Init(int _ENTITY) {
 
@@ -35,13 +49,18 @@ namespace BonVoyage {
                 {
                     //VI.Entity.s_SetActive("minimapbig", "MiniMap", true);
                     //VI.Animation.Transform.SetNext(VI.Entity.GetId("minimap", "MiniMap"), 1);
-                    VI.Animation.Transform.Start(VI.Entity.GetId("minimap", "MiniMap"));
+                    VI.Animation.Transform.Start(minimapID);
+                    VI.Text.Offset.Set(minimapID, textbigOffsetX, textbigOffsetY);
+                    VI.Text.Scale.Set(minimapID, textbigScale);
                 }
                 else
                 {
                     //VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
                     //VI.Animation.Transform.SetNext(VI.Entity.GetId("minimap", "MiniMap"), 0);
-                    VI.Animation.Transform.Start(VI.Entity.GetId("minimap", "MiniMap"));
+                    VI.Animation.Transform.Start(minimapID);
+                    VI.Text.Offset.Set(minimapID, textOffsetX, textOffsetY);
+                    VI.Text.Scale.Set(minimapID, textScale);
+
                 }
             }
 
