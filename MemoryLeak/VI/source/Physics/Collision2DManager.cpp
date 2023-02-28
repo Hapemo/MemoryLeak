@@ -708,7 +708,7 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 	Math::Vec2 impulse{ _contact.normal * scalar };
 
 	// Check for zero vector
-	if ((fabs(impulse.x) < Math::epsilonValue) && (fabs(impulse.y) < Math::epsilonValue))
+	if ((fabs(impulse.x) < Math::EPSILON) && (fabs(impulse.y) < Math::EPSILON))
 		return;
 
 	// Has physics component (Response required)
@@ -734,7 +734,7 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 						newForceVec = -impulse / physics2DManager->GetMass(_contact.obj[0]);
 
 					// Check if magnitude would not cause zero division nan
-					if (newForceVec.SqMagnitude() > Math::epsilonValue * Math::epsilonValue) {
+					if (newForceVec.SqMagnitude() > Math::EPSILON * Math::EPSILON) {
 						moveForce.linearForce.unitDirection = newForceVec.Normalized();
 						moveForce.linearForce.magnitude = newForceVec.Magnitude();
 					}
@@ -763,7 +763,7 @@ void Collision2DManager::ResolveContact(Contact& _contact, const double& _dt) {
 						newForceVec = impulse / physics2DManager->GetMass(_contact.obj[1]);
 
 					// Check if magnitude would not cause zero division nan
-					if (newForceVec.SqMagnitude() > Math::epsilonValue * Math::epsilonValue) {
+					if (newForceVec.SqMagnitude() > Math::EPSILON * Math::EPSILON) {
 						moveForce.linearForce.unitDirection = newForceVec.Normalized();
 						moveForce.linearForce.magnitude = newForceVec.Magnitude();
 					}

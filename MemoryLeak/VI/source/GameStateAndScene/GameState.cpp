@@ -50,6 +50,9 @@ void GameState::AddScene(std::filesystem::path const& _path) { // filesystem
 		LOG_CUSTOM("GAMESTATE", "Adding scene \"" + _path.stem().string() + "\" to gamestate: " + mName);
 	}
 
+	for (auto e : latestScene.mEntities)
+		if (e.HasComponent<Script>()) logicSystem->Alive(e);
+
 	if (!latestScene.mIsPause) latestScene.Init();
 }
 void GameState::RemoveScene(std::string const& _name){

@@ -18,10 +18,10 @@ to use from the engine is being linked.
 MonoString conversion methods.
 *******************************************************************************/
 std::string MonoMethods::ConvertFromMonoString(MonoString* _string) {
-	return mono_string_to_utf8(_string);
+	return (_string == nullptr ? "" : mono_string_to_utf8(_string));
 }
 MonoString* MonoMethods::ConvertToMonoString(std::string _string) {
-	return mono_string_new(mono_domain_get(), _string.c_str());
+	return (_string == "" ? nullptr : mono_string_new(mono_domain_get(), _string.c_str()));
 }
 
 /*!*****************************************************************************
@@ -100,16 +100,16 @@ MonoString* MonoMethods::iDialogue::GetNext() {
 	return MONO->ConvertToMonoString(VI::iDialogue::GetNext(VI::iDialogue::GetCurrentId()));
 }
 bool MonoMethods::iDialogue::NextHaveChoices() {
-	return VI::iDialogue::HaveChoices(VIM::iDialogue::GetNextId());
+	return VI::iDialogue::HaveChoices(MM::iDialogue::GetNextId());
 }
 bool MonoMethods::iDialogue::GetNextChoice1() {
-	return VI::iDialogue::GetChoice1(VIM::iDialogue::GetNextId());
+	return VI::iDialogue::GetChoice1(MM::iDialogue::GetNextId());
 }
 bool MonoMethods::iDialogue::GetNextChoice2() {
-	return VI::iDialogue::GetChoice2(VIM::iDialogue::GetNextId());
+	return VI::iDialogue::GetChoice2(MM::iDialogue::GetNextId());
 }
 bool MonoMethods::iDialogue::IsPlayerNextSpeaker() {
-	return VI::iDialogue::IsPlayerSpeaker(VIM::iDialogue::GetNextId());
+	return VI::iDialogue::IsPlayerSpeaker(MM::iDialogue::GetNextId());
 }
 
 // Gamestate
@@ -172,53 +172,58 @@ void MonoMethods::iScene::Play(MonoString* _name) {
 
 // Animation
 void MonoMethods::iAnimation::s_SetSpeed(MonoString* _entityName, MonoString* _sceneName, float _speed) {
-	VI::iAnimation::SetSpeed(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _speed);
+	VI::iAnimation::iSpriteSheet::SetSpeed(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _speed);
 }
 float MonoMethods::iAnimation::s_GetSpeed(MonoString* _entityName, MonoString* _sceneName) {
-	return VI::iAnimation::GetSpeed(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+	return VI::iAnimation::iSpriteSheet::GetSpeed(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 void MonoMethods::iAnimation::s_SetCurrentFrame(MonoString* _entityName, MonoString* _sceneName, int _index) {
-	VI::iAnimation::SetCurrentFrame(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
+	VI::iAnimation::iSpriteSheet::SetCurrentFrame(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
 }
 int MonoMethods::iAnimation::s_GetCurrentFrame(MonoString* _entityName, MonoString* _sceneName) {
-	return VI::iAnimation::GetCurrentFrame(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+	return VI::iAnimation::iSpriteSheet::GetCurrentFrame(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 int MonoMethods::iAnimation::s_GetFrameCount(MonoString* _entityName, MonoString* _sceneName) {
-	return VI::iAnimation::GetFrameCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+	return VI::iAnimation::iSpriteSheet::GetFrameCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 void MonoMethods::iAnimation::s_SetFrameCount(MonoString* _entityName, MonoString* _sceneName, int _count) {
-	return VI::iAnimation::SetFrameCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _count);
+	return VI::iAnimation::iSpriteSheet::SetFrameCount(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _count);
 }
 void MonoMethods::iAnimation::s_SetSheetIndex(MonoString* _entityName, MonoString* _sceneName, int _index) {
-	VI::iAnimation::SetSheetIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
+	VI::iAnimation::iSpriteSheet::SetSheetIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
 }
 int MonoMethods::iAnimation::s_GetSheetIndex(MonoString* _entityName, MonoString* _sceneName) {
-	return VI::iAnimation::GetSheetIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+	return VI::iAnimation::iSpriteSheet::GetSheetIndex(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
 
 void MonoMethods::iAnimation::SetSpeed(const int _eId, float _speed) {
-	VI::iAnimation::SetSpeed(_eId, _speed);
+	VI::iAnimation::iSpriteSheet::SetSpeed(_eId, _speed);
 }
 float MonoMethods::iAnimation::GetSpeed(const int _eId) {
-	return VI::iAnimation::GetSpeed(_eId);
+	return VI::iAnimation::iSpriteSheet::GetSpeed(_eId);
 }
 void MonoMethods::iAnimation::SetCurrentFrame(const int _eId, int _index) {
-	VI::iAnimation::SetCurrentFrame(_eId, _index);
+	VI::iAnimation::iSpriteSheet::SetCurrentFrame(_eId, _index);
 }
 int MonoMethods::iAnimation::GetCurrentFrame(const int _eId) {
-	return VI::iAnimation::GetCurrentFrame(_eId);
+	return VI::iAnimation::iSpriteSheet::GetCurrentFrame(_eId);
 }
 int MonoMethods::iAnimation::GetFrameCount(const int _eId) {
-	return VI::iAnimation::GetFrameCount(_eId);
+	return VI::iAnimation::iSpriteSheet::GetFrameCount(_eId);
 }
 void MonoMethods::iAnimation::SetFrameCount(const int _eId, int _count) {
-	return VI::iAnimation::SetFrameCount(_eId, _count);
+	return VI::iAnimation::iSpriteSheet::SetFrameCount(_eId, _count);
 }
 void MonoMethods::iAnimation::SetSheetIndex(const int _eId, int _index) {
-	VI::iAnimation::SetSheetIndex(_eId, _index);
+	VI::iAnimation::iSpriteSheet::SetSheetIndex(_eId, _index);
 }
 int MonoMethods::iAnimation::GetSheetIndex(const int _eId) {
-	return VI::iAnimation::GetSheetIndex(_eId);
+	return VI::iAnimation::iSpriteSheet::GetSheetIndex(_eId);
+}
+
+// Particle system
+void MonoMethods::iParticleSystem::iParticleInfo::SetTexture(const int _eId, MonoString* _texture) {
+	VI::iParticleSystem::iParticleInfo::SetTexture(_eId, MONO->ConvertFromMonoString(_texture));
 }
 
 // Texture
@@ -408,7 +413,7 @@ void MonoMethods::iLightSource::s_SetSpriteColor(MonoString* _entityName, MonoSt
 float MonoMethods::iLightSource::GetRadius(const int _eId) {
 	return VI::iLightSource::GetRadius(_eId);
 }
-void  MonoMethods::iLightSource::SetRadius(const int _eId, float _radius) {
+void MonoMethods::iLightSource::SetRadius(const int _eId, float _radius) {
 	VI::iLightSource::SetRadius(_eId, _radius);
 }
 void MonoMethods::iLightSource::SetSpriteColor(const int _eId, int _r, int _g, int _b, int _a) {
@@ -423,7 +428,7 @@ void MonoMethods::RegisterCalls() {
 	// Test
 	mono_add_internal_call("VI.Test::ArgString", &FUNC->TestArgString);
 	mono_add_internal_call("VI.Test::ReturnString", &FUNC->TestReturnString);
-	//mono_add_internal_call("BonVoyage.THIS::IsActive", &VIM::iEntity::IsActive);
+	//mono_add_internal_call("BonVoyage.THIS::IsActive", &MM::iEntity::IsActive);
 
 	// General
 	mono_add_internal_call("VI.General::DeltaTime", &FUNC->GetDeltaTime);
@@ -434,13 +439,13 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Input/Key::Release", &VI::iInput::iKey::Release);
 	mono_add_internal_call("VI.Input/Key::Idle", &VI::iInput::iKey::Idle);
 
-	mono_add_internal_call("VI.Input/Button::s_Clicked", &VIM::iInput::iButton::s_Clicked);
-	mono_add_internal_call("VI.Input/Button::s_Released", &VIM::iInput::iButton::s_Released);
-	mono_add_internal_call("VI.Input/Button::s_Hover", &VIM::iInput::iButton::s_Hover);
+	mono_add_internal_call("VI.Input/Button::s_Clicked", &MM::iInput::iButton::s_Clicked);
+	mono_add_internal_call("VI.Input/Button::s_Released", &MM::iInput::iButton::s_Released);
+	mono_add_internal_call("VI.Input/Button::s_Hover", &MM::iInput::iButton::s_Hover);
 
-	mono_add_internal_call("VI.Input/Button::Clicked", &VIM::iInput::iButton::Clicked);
-	mono_add_internal_call("VI.Input/Button::Released", &VIM::iInput::iButton::Released);
-	mono_add_internal_call("VI.Input/Button::Hover", &VIM::iInput::iButton::Hover);
+	mono_add_internal_call("VI.Input/Button::Clicked", &MM::iInput::iButton::Clicked);
+	mono_add_internal_call("VI.Input/Button::Released", &MM::iInput::iButton::Released);
+	mono_add_internal_call("VI.Input/Button::Hover", &MM::iInput::iButton::Hover);
 
 	mono_add_internal_call("VI.Input/Mouse::WorldPosX", &VI::iInput::iMouse::GetWorldPosX);
 	mono_add_internal_call("VI.Input/Mouse::WorldPosY", &VI::iInput::iMouse::GetWorldPosY);
@@ -451,38 +456,38 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Input/Mouse::Idle", &VI::iInput::iKey::Idle);
 
 	// Physics
-	mono_add_internal_call("VI.Physics::s_ApplyImpulse", &VIM::iPhysics::s_ApplyImpulse);
-	mono_add_internal_call("VI.Physics::s_EntitiesCollided", &VIM::iPhysics::s_EntitiesCollided);
-	mono_add_internal_call("VI.Physics::s_CheckCollision", &VIM::iPhysics::s_CheckCollision);
+	mono_add_internal_call("VI.Physics::s_ApplyImpulse", &MM::iPhysics::s_ApplyImpulse);
+	mono_add_internal_call("VI.Physics::s_EntitiesCollided", &MM::iPhysics::s_EntitiesCollided);
+	mono_add_internal_call("VI.Physics::s_CheckCollision", &MM::iPhysics::s_CheckCollision);
 
-	mono_add_internal_call("VI.Physics::ApplyImpulse", &VIM::iPhysics::ApplyImpulse);
-	mono_add_internal_call("VI.Physics::EntitiesCollided", &VIM::iPhysics::EntitiesCollided);
-	mono_add_internal_call("VI.Physics::CheckCollision", &VIM::iPhysics::CheckCollision);
+	mono_add_internal_call("VI.Physics::ApplyImpulse", &MM::iPhysics::ApplyImpulse);
+	mono_add_internal_call("VI.Physics::EntitiesCollided", &MM::iPhysics::EntitiesCollided);
+	mono_add_internal_call("VI.Physics::CheckCollision", &MM::iPhysics::CheckCollision);
 
 	// Dialogue
-	mono_add_internal_call("VI.Dialogue::LoadScript", &VIM::iDialogue::LoadScript);
-	mono_add_internal_call("VI.Dialogue::GetLine", &VIM::iDialogue::GetLine);
+	mono_add_internal_call("VI.Dialogue::LoadScript", &MM::iDialogue::LoadScript);
+	mono_add_internal_call("VI.Dialogue::GetLine", &MM::iDialogue::GetLine);
 	mono_add_internal_call("VI.Dialogue::HaveChoices", &VI::iDialogue::HaveChoices);
 	mono_add_internal_call("VI.Dialogue::GetSelectedChoice", &VI::iDialogue::GetSelectedChoice);
 	mono_add_internal_call("VI.Dialogue::GetNext", &VI::iDialogue::GetNext);
 	mono_add_internal_call("VI.Dialogue::GetNextId", &VI::iDialogue::GetNextId);
 
-	mono_add_internal_call("VI.Dialogue/Current::GetLine", &VIM::iDialogue::GetCurrentLine);
+	mono_add_internal_call("VI.Dialogue/Current::GetLine", &MM::iDialogue::GetCurrentLine);
 	mono_add_internal_call("VI.Dialogue/Current::GetId", &VI::iDialogue::GetCurrentId);
-	mono_add_internal_call("VI.Dialogue/Current::HaveChoices", &VIM::iDialogue::HaveChoices);
+	mono_add_internal_call("VI.Dialogue/Current::HaveChoices", &MM::iDialogue::HaveChoices);
 	mono_add_internal_call("VI.Dialogue/Current::SetTo", &VI::iDialogue::SetCurrentId);
-	mono_add_internal_call("VI.Dialogue/Current::GetFirstChoice", &VIM::iDialogue::GetCurrentChoice1);
-	mono_add_internal_call("VI.Dialogue/Current::GetSecondChoice", &VIM::iDialogue::GetCurrentChoice2);
+	mono_add_internal_call("VI.Dialogue/Current::GetFirstChoice", &MM::iDialogue::GetCurrentChoice1);
+	mono_add_internal_call("VI.Dialogue/Current::GetSecondChoice", &MM::iDialogue::GetCurrentChoice2);
 	mono_add_internal_call("VI.Dialogue/Current::SetSelectedChoice", &VI::iDialogue::SetSelectedChoice);
 	mono_add_internal_call("VI.Dialogue/Current::GetSelectedChoice", &VI::iDialogue::GetCurrentSelectedChoice);
-	mono_add_internal_call("VI.Dialogue/current::PlayerSpeaking", &VIM::iDialogue::IsPlayerCurrentSpeaker);
+	mono_add_internal_call("VI.Dialogue/current::PlayerSpeaking", &MM::iDialogue::IsPlayerCurrentSpeaker);
 
-	mono_add_internal_call("VI.Dialogue/Next::GetLine", &VIM::iDialogue::GetNext);
+	mono_add_internal_call("VI.Dialogue/Next::GetLine", &MM::iDialogue::GetNext);
 	mono_add_internal_call("VI.Dialogue/Next::GetId", &VI::iDialogue::GetNextId);
-	mono_add_internal_call("VI.Dialogue/Next::HaveChoices", &VIM::iDialogue::NextHaveChoices);
-	mono_add_internal_call("VI.Dialogue/Next::GetFirstChoice", &VIM::iDialogue::GetNextChoice1);
-	mono_add_internal_call("VI.Dialogue/Next::GetSecondChoice", &VIM::iDialogue::GetNextChoice2);
-	mono_add_internal_call("VI.Dialogue/Next::PlayerSpeaking", &VIM::iDialogue::IsPlayerNextSpeaker);
+	mono_add_internal_call("VI.Dialogue/Next::HaveChoices", &MM::iDialogue::NextHaveChoices);
+	mono_add_internal_call("VI.Dialogue/Next::GetFirstChoice", &MM::iDialogue::GetNextChoice1);
+	mono_add_internal_call("VI.Dialogue/Next::GetSecondChoice", &MM::iDialogue::GetNextChoice2);
+	mono_add_internal_call("VI.Dialogue/Next::PlayerSpeaking", &MM::iDialogue::IsPlayerNextSpeaker);
 
 	mono_add_internal_call("VI.Dialogue/Choice::First", &VI::iDialogue::GetChoice1);
 	mono_add_internal_call("VI.Dialogue/Choice::Second", &VI::iDialogue::GetChoice2);
@@ -490,30 +495,30 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Dialogue/Speaker::IsPlayer", &VI::iDialogue::IsPlayerSpeaker);
 
 	// Gamestate
-	mono_add_internal_call("VI.GameState::Go", &VIM::iGameState::Go);
-	mono_add_internal_call("VI.GameState::GetName", &VIM::iGameState::GetCurrentName);
+	mono_add_internal_call("VI.GameState::Go", &MM::iGameState::Go);
+	mono_add_internal_call("VI.GameState::GetName", &MM::iGameState::GetCurrentName);
 	mono_add_internal_call("VI.GameState::Exit", &VI::iGameState::GameStateExit);
 
 	// Entity
-	mono_add_internal_call("VI.Entity::GetId", &VIM::iEntity::GetId);
+	mono_add_internal_call("VI.Entity::GetId", &MM::iEntity::GetId);
 
-	mono_add_internal_call("VI.Entity::s_IsActive", &VIM::iEntity::s_IsActive);
-	mono_add_internal_call("VI.Entity::s_SetActive", &VIM::iEntity::s_SetIsActive);
-	mono_add_internal_call("VI.Entity::s_Activate", &VIM::iEntity::s_Activate);
-	mono_add_internal_call("VI.Entity::s_Deactivate", &VIM::iEntity::s_Deactivate);
-	mono_add_internal_call("VI.Entity/Parent::s_Name", &VIM::iEntity::s_GetParent);
-	mono_add_internal_call("VI.Entity/Parent::s_Id", &VIM::iEntity::s_GetParentId);
+	mono_add_internal_call("VI.Entity::s_IsActive", &MM::iEntity::s_IsActive);
+	mono_add_internal_call("VI.Entity::s_SetActive", &MM::iEntity::s_SetIsActive);
+	mono_add_internal_call("VI.Entity::s_Activate", &MM::iEntity::s_Activate);
+	mono_add_internal_call("VI.Entity::s_Deactivate", &MM::iEntity::s_Deactivate);
+	mono_add_internal_call("VI.Entity/Parent::s_Name", &MM::iEntity::s_GetParent);
+	mono_add_internal_call("VI.Entity/Parent::s_Id", &MM::iEntity::s_GetParentId);
 
-	mono_add_internal_call("VI.Entity::IsActive", &VIM::iEntity::IsActive);
-	mono_add_internal_call("VI.Entity::SetActive", &VIM::iEntity::SetIsActive);
-	mono_add_internal_call("VI.Entity::Activate", &VIM::iEntity::Activate);
-	mono_add_internal_call("VI.Entity::Deactivate", &VIM::iEntity::Deactivate);
-	mono_add_internal_call("VI.Entity/Parent::Name", &VIM::iEntity::GetParent);
-	mono_add_internal_call("VI.Entity/Parent::Id", &VIM::iEntity::GetParentId);
+	mono_add_internal_call("VI.Entity::IsActive", &MM::iEntity::IsActive);
+	mono_add_internal_call("VI.Entity::SetActive", &MM::iEntity::SetIsActive);
+	mono_add_internal_call("VI.Entity::Activate", &MM::iEntity::Activate);
+	mono_add_internal_call("VI.Entity::Deactivate", &MM::iEntity::Deactivate);
+	mono_add_internal_call("VI.Entity/Parent::Name", &MM::iEntity::GetParent);
+	mono_add_internal_call("VI.Entity/Parent::Id", &MM::iEntity::GetParentId);
 
 	// Scene
-	mono_add_internal_call("VI.Scene::Pause", &VIM::iScene::Pause);
-	mono_add_internal_call("VI.Scene::Play", &VIM::iScene::Play);
+	mono_add_internal_call("VI.Scene::Pause", &MM::iScene::Pause);
+	mono_add_internal_call("VI.Scene::Play", &MM::iScene::Play);
 
 	// Camera
 	mono_add_internal_call("VI.Camera/GetScale::X", &VI::iCamera::GetScaleX);
@@ -531,57 +536,103 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Math/Normalize::Y", &VI::iMath::NormalizeY);
 	mono_add_internal_call("VI.Math::ArcTangent", &VI::iMath::ArcTangent);
 	mono_add_internal_call("VI.Math::Negate", &VI::iMath::Negate);
+	mono_add_internal_call("VI.Math::Epsilon", &VI::iMath::Epsilon);
+	mono_add_internal_call("VI.Math::Pi", &VI::iMath::Pi);
+	mono_add_internal_call("VI.Math::ConvertRadToDeg", &VI::iMath::ConvertRadToDeg);
+	mono_add_internal_call("VI.Math::ConvertDegToRad", &VI::iMath::ConvertDegToRad);
 
 	// Animation
-	mono_add_internal_call("VI.Animation/SheetIndex::s_Set", &VIM::iAnimation::s_SetSheetIndex);
-	mono_add_internal_call("VI.Animation/SheetIndex::s_Get", &VIM::iAnimation::s_GetSheetIndex);
-	mono_add_internal_call("VI.Animation/Speed::s_Set", &VIM::iAnimation::s_SetSpeed);
-	mono_add_internal_call("VI.Animation/Speed::s_Get", &VIM::iAnimation::s_GetSpeed);
-	mono_add_internal_call("VI.Animation/CurrentFrame::s_Set", &VIM::iAnimation::s_SetCurrentFrame);
-	mono_add_internal_call("VI.Animation/CurrentFrame::s_Get", &VIM::iAnimation::s_GetCurrentFrame);
-	mono_add_internal_call("VI.Animation/FrameCount::s_Set", &VIM::iAnimation::s_SetFrameCount);
-	mono_add_internal_call("VI.Animation/FrameCount::s_Get", &VIM::iAnimation::s_GetFrameCount);
+	mono_add_internal_call("VI.Animation/SheetIndex::s_Set", &MM::iAnimation::s_SetSheetIndex);
+	mono_add_internal_call("VI.Animation/SheetIndex::s_Get", &MM::iAnimation::s_GetSheetIndex);
+	mono_add_internal_call("VI.Animation/Speed::s_Set", &MM::iAnimation::s_SetSpeed);
+	mono_add_internal_call("VI.Animation/Speed::s_Get", &MM::iAnimation::s_GetSpeed);
+	mono_add_internal_call("VI.Animation/CurrentFrame::s_Set", &MM::iAnimation::s_SetCurrentFrame);
+	mono_add_internal_call("VI.Animation/CurrentFrame::s_Get", &MM::iAnimation::s_GetCurrentFrame);
+	mono_add_internal_call("VI.Animation/FrameCount::s_Set", &MM::iAnimation::s_SetFrameCount);
+	mono_add_internal_call("VI.Animation/FrameCount::s_Get", &MM::iAnimation::s_GetFrameCount);
 
-	mono_add_internal_call("VI.Animation/SheetIndex::Set", &VIM::iAnimation::SetSheetIndex);
-	mono_add_internal_call("VI.Animation/SheetIndex::Get", &VIM::iAnimation::GetSheetIndex);
-	mono_add_internal_call("VI.Animation/Speed::Set", &VIM::iAnimation::SetSpeed);
-	mono_add_internal_call("VI.Animation/Speed::Get", &VIM::iAnimation::GetSpeed);
-	mono_add_internal_call("VI.Animation/CurrentFrame::Set", &VIM::iAnimation::SetCurrentFrame);
-	mono_add_internal_call("VI.Animation/CurrentFrame::Get", &VIM::iAnimation::GetCurrentFrame);
-	mono_add_internal_call("VI.Animation/FrameCount::Set", &VIM::iAnimation::SetFrameCount);
-	mono_add_internal_call("VI.Animation/FrameCount::Get", &VIM::iAnimation::GetFrameCount);
+	mono_add_internal_call("VI.Animation/SheetIndex::Set", &MM::iAnimation::SetSheetIndex);
+	mono_add_internal_call("VI.Animation/SheetIndex::Get", &MM::iAnimation::GetSheetIndex);
+	mono_add_internal_call("VI.Animation/Speed::Set", &MM::iAnimation::SetSpeed);
+	mono_add_internal_call("VI.Animation/Speed::Get", &MM::iAnimation::GetSpeed);
+	mono_add_internal_call("VI.Animation/CurrentFrame::Set", &MM::iAnimation::SetCurrentFrame);
+	mono_add_internal_call("VI.Animation/CurrentFrame::Get", &MM::iAnimation::GetCurrentFrame);
+	mono_add_internal_call("VI.Animation/FrameCount::Set", &MM::iAnimation::SetFrameCount);
+	mono_add_internal_call("VI.Animation/FrameCount::Get", &MM::iAnimation::GetFrameCount);
 
-	mono_add_internal_call("VI.Animation/Transform::Start", &VI::iAnimation::Start);
-	mono_add_internal_call("VI.Animation/Transform::SetNext", &VI::iAnimation::SetNext);
-	mono_add_internal_call("VI.Animation/Transform::Stop", &VI::iAnimation::Stop);
-	mono_add_internal_call("VI.Animation/Transform::StopAfterEndLoop", &VI::iAnimation::StopAfterEndLoop);
-	mono_add_internal_call("VI.Animation/Transform::ReverseOrder", &VI::iAnimation::ReverseOrder);
-	mono_add_internal_call("VI.Animation/Transform::SetLoopCycle", &VI::iAnimation::SetLoopCycle);
-	mono_add_internal_call("VI.Animation/Transform::AddTransform", &VI::iAnimation::AddTransform);
-	mono_add_internal_call("VI.Animation/Transform::AddTransformDifference", &VI::iAnimation::AddTransformDifference);
-	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromPosition", &VI::iAnimation::SetCalculatedTimeFromPosition);
-	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromRotation", &VI::iAnimation::SetCalculatedTimeFromRotation);
-	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromScale", &VI::iAnimation::SetCalculatedTimeFromScale);
+	mono_add_internal_call("VI.Animation/Transform::Start", &VI::iAnimation::iTransform::Start);
+	mono_add_internal_call("VI.Animation/Transform::SetNext", &VI::iAnimation::iTransform::SetNext);
+	mono_add_internal_call("VI.Animation/Transform::Stop", &VI::iAnimation::iTransform::Stop);
+	mono_add_internal_call("VI.Animation/Transform::StopAfterEndLoop", &VI::iAnimation::iTransform::StopAfterEndLoop);
+	mono_add_internal_call("VI.Animation/Transform::ReverseOrder", &VI::iAnimation::iTransform::ReverseOrder);
+	mono_add_internal_call("VI.Animation/Transform::SetLoopCycle", &VI::iAnimation::iTransform::SetLoopCycle);
+	mono_add_internal_call("VI.Animation/Transform::AddTransform", &VI::iAnimation::iTransform::AddTransform);
+	mono_add_internal_call("VI.Animation/Transform::AddTransformDifference", &VI::iAnimation::iTransform::AddTransformDifference);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromPosition", &VI::iAnimation::iTransform::SetCalculatedTimeFromPosition);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromRotation", &VI::iAnimation::iTransform::SetCalculatedTimeFromRotation);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromScale", &VI::iAnimation::iTransform::SetCalculatedTimeFromScale);
+
+	// Particle System
+	mono_add_internal_call("VI.ParticleSystem::GetDensity", &VI::iParticleSystem::GetDensity);
+	mono_add_internal_call("VI.ParticleSystem::SetDensity", &VI::iParticleSystem::SetDensity);
+	mono_add_internal_call("VI.ParticleSystem::GetPosX", &VI::iParticleSystem::GetPosX);
+	mono_add_internal_call("VI.ParticleSystem::SetPosX", &VI::iParticleSystem::SetPosX);
+	mono_add_internal_call("VI.ParticleSystem::GetPosY", &VI::iParticleSystem::GetPosY);
+	mono_add_internal_call("VI.ParticleSystem::SetPosY", &VI::iParticleSystem::SetPosY);
+	mono_add_internal_call("VI.ParticleSystem::GetWidth", &VI::iParticleSystem::GetWidth);
+	mono_add_internal_call("VI.ParticleSystem::SetWidth", &VI::iParticleSystem::SetWidth);
+	mono_add_internal_call("VI.ParticleSystem::GetDirX", &VI::iParticleSystem::GetDirX);
+	mono_add_internal_call("VI.ParticleSystem::SetDirX", &VI::iParticleSystem::SetDirX);
+	mono_add_internal_call("VI.ParticleSystem::GetDirY", &VI::iParticleSystem::GetDirY);
+	mono_add_internal_call("VI.ParticleSystem::SetDirY", &VI::iParticleSystem::SetDirY);
+	mono_add_internal_call("VI.ParticleSystem::GetSpread", &VI::iParticleSystem::GetSpread);
+	mono_add_internal_call("VI.ParticleSystem::SetSpread", &VI::iParticleSystem::SetSpread);
+	mono_add_internal_call("VI.ParticleSystem::GetDuration", &VI::iParticleSystem::GetDuration);
+	mono_add_internal_call("VI.ParticleSystem::SetDuration", &VI::iParticleSystem::SetDuration);
+	mono_add_internal_call("VI.ParticleSystem::IsActive", &VI::iParticleSystem::IsActive);
+	mono_add_internal_call("VI.ParticleSystem::SetIsActive", &VI::iParticleSystem::SetIsActive);
+	mono_add_internal_call("VI.ParticleSystem::GetSlow", &VI::iParticleSystem::GetSlow);
+	mono_add_internal_call("VI.ParticleSystem::SetSlow", &VI::iParticleSystem::SetSlow);
+	
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetScale", &VI::iParticleSystem::iParticleInfo::GetScale);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetDirection", &VI::iParticleSystem::iParticleInfo::GetDirection);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetLifeSpan", &VI::iParticleSystem::iParticleInfo::GetLifeSpan);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetRotation", &VI::iParticleSystem::iParticleInfo::GetRotation);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetSpeed", &VI::iParticleSystem::iParticleInfo::GetSpeed);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetFading", &VI::iParticleSystem::iParticleInfo::GetFading);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetSpriteType", &VI::iParticleSystem::iParticleInfo::GetSpriteType);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetLayer", &VI::iParticleSystem::iParticleInfo::GetLayer);
+
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetScale", &VI::iParticleSystem::iParticleInfo::SetScale);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetDirection", &VI::iParticleSystem::iParticleInfo::SetDirection);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetLifeSpan", &VI::iParticleSystem::iParticleInfo::SetLifeSpan);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetRotation", &VI::iParticleSystem::iParticleInfo::SetRotation);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetSpeed", &VI::iParticleSystem::iParticleInfo::SetSpeed);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetFading", &VI::iParticleSystem::iParticleInfo::SetFading);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetColour", &VI::iParticleSystem::iParticleInfo::SetColour);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetSpriteType", &VI::iParticleSystem::iParticleInfo::SetSpriteType);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetTexture", &MM::iParticleSystem::iParticleInfo::SetTexture);
+	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetLayer", &VI::iParticleSystem::iParticleInfo::SetLayer);
 
 	// Textures
-	mono_add_internal_call("VI.Texture::s_Set", &VIM::iTexture::s_SetTexture);
-	mono_add_internal_call("VI.Texture::s_Get", &VIM::iTexture::s_GetTexture);
-	mono_add_internal_call("VI.Texture::Set", &VIM::iTexture::SetTexture);
-	mono_add_internal_call("VI.Texture::Get", &VIM::iTexture::GetTexture);
+	mono_add_internal_call("VI.Texture::s_Set", &MM::iTexture::s_SetTexture);
+	mono_add_internal_call("VI.Texture::s_Get", &MM::iTexture::s_GetTexture);
+	mono_add_internal_call("VI.Texture::Set", &MM::iTexture::SetTexture);
+	mono_add_internal_call("VI.Texture::Get", &MM::iTexture::GetTexture);
 
-	mono_add_internal_call("VI.Texture::GetLayer", &VIM::iTexture::GetLayer);
-	mono_add_internal_call("VI.Texture::SetLayer", &VIM::iTexture::SetLayer);
-	mono_add_internal_call("VI.Texture::s_GetLayer", &VIM::iTexture::s_GetLayer);
-	mono_add_internal_call("VI.Texture::s_SetLayer", &VIM::iTexture::s_SetLayer);
+	mono_add_internal_call("VI.Texture::GetLayer", &MM::iTexture::GetLayer);
+	mono_add_internal_call("VI.Texture::SetLayer", &MM::iTexture::SetLayer);
+	mono_add_internal_call("VI.Texture::s_GetLayer", &MM::iTexture::s_GetLayer);
+	mono_add_internal_call("VI.Texture::s_SetLayer", &MM::iTexture::s_SetLayer);
 	// Audio
-	mono_add_internal_call("VI.Audio::Play", &VIM::iAudio::Play);
-	mono_add_internal_call("VI.Audio::PlayOnLoop", &VIM::iAudio::PlayOnLoop);
-	mono_add_internal_call("VI.Audio::SetLoop", &VIM::iAudio::SetLoop);
-	mono_add_internal_call("VI.Audio::Stop", &VIM::iAudio::Stop);
+	mono_add_internal_call("VI.Audio::Play", &MM::iAudio::Play);
+	mono_add_internal_call("VI.Audio::PlayOnLoop", &MM::iAudio::PlayOnLoop);
+	mono_add_internal_call("VI.Audio::SetLoop", &MM::iAudio::SetLoop);
+	mono_add_internal_call("VI.Audio::Stop", &MM::iAudio::Stop);
 
-	mono_add_internal_call("VI.Audio::PlayBGM", &VIM::iAudio::PlayBGM);
-	mono_add_internal_call("VI.Audio::IsBgmPlaying", &VIM::iAudio::IsBgmPlaying);
-	mono_add_internal_call("VI.Audio::ForcePlay", &VIM::iAudio::ForcePlay);
+	mono_add_internal_call("VI.Audio::PlayBGM", &MM::iAudio::PlayBGM);
+	mono_add_internal_call("VI.Audio::IsBgmPlaying", &MM::iAudio::IsBgmPlaying);
+	mono_add_internal_call("VI.Audio::ForcePlay", &MM::iAudio::ForcePlay);
 
 	mono_add_internal_call("VI.Audio::StopAll", &VI::iAudio::StopAll);
 	mono_add_internal_call("VI.Audio::StopBGM", &VI::iAudio::StopBGM);
@@ -590,65 +641,65 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Audio/Volume::SetBGMVolume", &VI::iAudio::SetBGMVolume);
 	mono_add_internal_call("VI.Audio/Volume::SetSFXVolume", &VI::iAudio::SetSFXVolume);
 
-	mono_add_internal_call("VI.Audio::s_Stop", &VIM::iAudio::s_Stop);
-	mono_add_internal_call("VI.Audio::s_Play", &VIM::iAudio::s_Play);
+	mono_add_internal_call("VI.Audio::s_Stop", &MM::iAudio::s_Stop);
+	mono_add_internal_call("VI.Audio::s_Play", &MM::iAudio::s_Play);
 	mono_add_internal_call("VI.Audio::s_PlayOnLoop", &MonoMethods::iAudio::s_PlayOnLoop);
-	mono_add_internal_call("VI.Audio::s_SetLoop", &VIM::iAudio::s_SetLoop);
+	mono_add_internal_call("VI.Audio::s_SetLoop", &MM::iAudio::s_SetLoop);
 
 	// Transform
-	mono_add_internal_call("VI.Transform/Position::s_GetX", &VIM::iTransform::s_GetPosX);
-	mono_add_internal_call("VI.Transform/Position::s_GetY", &VIM::iTransform::s_GetPosY);
-	mono_add_internal_call("VI.Transform/Position::s_SetX", &VIM::iTransform::s_SetPosX);
-	mono_add_internal_call("VI.Transform/Position::s_SetY", &VIM::iTransform::s_SetPosY);
+	mono_add_internal_call("VI.Transform/Position::s_GetX", &MM::iTransform::s_GetPosX);
+	mono_add_internal_call("VI.Transform/Position::s_GetY", &MM::iTransform::s_GetPosY);
+	mono_add_internal_call("VI.Transform/Position::s_SetX", &MM::iTransform::s_SetPosX);
+	mono_add_internal_call("VI.Transform/Position::s_SetY", &MM::iTransform::s_SetPosY);
 
-	mono_add_internal_call("VI.Transform/Position::GetX", &VIM::iTransform::GetPosX);
-	mono_add_internal_call("VI.Transform/Position::GetY", &VIM::iTransform::GetPosY);
-	mono_add_internal_call("VI.Transform/Position::SetX", &VIM::iTransform::SetPosX);
-	mono_add_internal_call("VI.Transform/Position::SetY", &VIM::iTransform::SetPosY);
+	mono_add_internal_call("VI.Transform/Position::GetX", &MM::iTransform::GetPosX);
+	mono_add_internal_call("VI.Transform/Position::GetY", &MM::iTransform::GetPosY);
+	mono_add_internal_call("VI.Transform/Position::SetX", &MM::iTransform::SetPosX);
+	mono_add_internal_call("VI.Transform/Position::SetY", &MM::iTransform::SetPosY);
 
-	mono_add_internal_call("VI.Transform/Scale::s_GetX", &VIM::iTransform::s_GetScaleX);
-	mono_add_internal_call("VI.Transform/Scale::s_GetY", &VIM::iTransform::s_GetScaleY);
-	mono_add_internal_call("VI.Transform/Scale::s_SetX", &VIM::iTransform::s_SetScaleX);
-	mono_add_internal_call("VI.Transform/Scale::s_SetY", &VIM::iTransform::s_SetScaleY);
+	mono_add_internal_call("VI.Transform/Scale::s_GetX", &MM::iTransform::s_GetScaleX);
+	mono_add_internal_call("VI.Transform/Scale::s_GetY", &MM::iTransform::s_GetScaleY);
+	mono_add_internal_call("VI.Transform/Scale::s_SetX", &MM::iTransform::s_SetScaleX);
+	mono_add_internal_call("VI.Transform/Scale::s_SetY", &MM::iTransform::s_SetScaleY);
 
-	mono_add_internal_call("VI.Transform/Scale::GetX", &VIM::iTransform::GetScaleX);
-	mono_add_internal_call("VI.Transform/Scale::GetY", &VIM::iTransform::GetScaleY);
-	mono_add_internal_call("VI.Transform/Scale::SetX", &VIM::iTransform::SetScaleX);
-	mono_add_internal_call("VI.Transform/Scale::SetY", &VIM::iTransform::SetScaleY);
+	mono_add_internal_call("VI.Transform/Scale::GetX", &MM::iTransform::GetScaleX);
+	mono_add_internal_call("VI.Transform/Scale::GetY", &MM::iTransform::GetScaleY);
+	mono_add_internal_call("VI.Transform/Scale::SetX", &MM::iTransform::SetScaleX);
+	mono_add_internal_call("VI.Transform/Scale::SetY", &MM::iTransform::SetScaleY);
 
-	mono_add_internal_call("VI.Transform/Rotate::s_Get", &VIM::iTransform::s_GetRotate);
-	mono_add_internal_call("VI.Transform/Rotate::s_Set", &VIM::iTransform::s_SetRotate);
+	mono_add_internal_call("VI.Transform/Rotate::s_Get", &MM::iTransform::s_GetRotate);
+	mono_add_internal_call("VI.Transform/Rotate::s_Set", &MM::iTransform::s_SetRotate);
 
-	mono_add_internal_call("VI.Transform/Rotate::Get", &VIM::iTransform::GetRotate);
-	mono_add_internal_call("VI.Transform/Rotate::Set", &VIM::iTransform::SetRotate);
+	mono_add_internal_call("VI.Transform/Rotate::Get", &MM::iTransform::GetRotate);
+	mono_add_internal_call("VI.Transform/Rotate::Set", &MM::iTransform::SetRotate);
 
 	// Text
-	mono_add_internal_call("VI.Text::s_Update", &VIM::iText::s_UpdateText);
-	mono_add_internal_call("VI.Text::s_GetLineCount", &VIM::iText::s_GetLineCount);
-	mono_add_internal_call("VI.Text/Offset::s_Set", &VIM::iText::s_SetOffset);
-	mono_add_internal_call("VI.Text/Offset::s_GetX", &VIM::iText::s_GetOffsetX);
-	mono_add_internal_call("VI.Text/Offset::s_GetY", &VIM::iText::s_GetOffsetY);
-	mono_add_internal_call("VI.Text/Scale::s_Get", &VIM::iText::s_GetScale);
-	mono_add_internal_call("VI.Text/Scale::s_Set", &VIM::iText::s_SetScale);
+	mono_add_internal_call("VI.Text::s_Update", &MM::iText::s_UpdateText);
+	mono_add_internal_call("VI.Text::s_GetLineCount", &MM::iText::s_GetLineCount);
+	mono_add_internal_call("VI.Text/Offset::s_Set", &MM::iText::s_SetOffset);
+	mono_add_internal_call("VI.Text/Offset::s_GetX", &MM::iText::s_GetOffsetX);
+	mono_add_internal_call("VI.Text/Offset::s_GetY", &MM::iText::s_GetOffsetY);
+	mono_add_internal_call("VI.Text/Scale::s_Get", &MM::iText::s_GetScale);
+	mono_add_internal_call("VI.Text/Scale::s_Set", &MM::iText::s_SetScale);
 
-	mono_add_internal_call("VI.Text::Update", &VIM::iText::UpdateText);
-	mono_add_internal_call("VI.Text::GetLineCount", &VIM::iText::GetLineCount);
-	mono_add_internal_call("VI.Text/Offset::Set", &VIM::iText::SetOffset);
-	mono_add_internal_call("VI.Text/Offset::GetX", &VIM::iText::GetOffsetX);
-	mono_add_internal_call("VI.Text/Offset::GetY", &VIM::iText::GetOffsetY);
-	mono_add_internal_call("VI.Text/Scale::Get", &VIM::iText::GetScale);
-	mono_add_internal_call("VI.Text/Scale::Set", &VIM::iText::SetScale);
+	mono_add_internal_call("VI.Text::Update", &MM::iText::UpdateText);
+	mono_add_internal_call("VI.Text::GetLineCount", &MM::iText::GetLineCount);
+	mono_add_internal_call("VI.Text/Offset::Set", &MM::iText::SetOffset);
+	mono_add_internal_call("VI.Text/Offset::GetX", &MM::iText::GetOffsetX);
+	mono_add_internal_call("VI.Text/Offset::GetY", &MM::iText::GetOffsetY);
+	mono_add_internal_call("VI.Text/Scale::Get", &MM::iText::GetScale);
+	mono_add_internal_call("VI.Text/Scale::Set", &MM::iText::SetScale);
 
 	// Weather
 	mono_add_internal_call("VI.Weather::Init", &VI::iWeather::WeatherInit);
 	mono_add_internal_call("VI.Weather::GetCurrent", &VI::iWeather::GetCurrentWeather);
 
 	// LightSource
-	mono_add_internal_call("VI.LightSource/Radius::s_Get", &VIM::iLightSource::s_GetRadius);
-	mono_add_internal_call("VI.LightSource/Radius::s_Set", &VIM::iLightSource::s_SetRadius);
-	mono_add_internal_call("VI.LightSource/SpriteColor::s_Set", &VIM::iLightSource::s_SetSpriteColor);
+	mono_add_internal_call("VI.LightSource/Radius::s_Get", &MM::iLightSource::s_GetRadius);
+	mono_add_internal_call("VI.LightSource/Radius::s_Set", &MM::iLightSource::s_SetRadius);
+	mono_add_internal_call("VI.LightSource/SpriteColor::s_Set", &MM::iLightSource::s_SetSpriteColor);
 
-	mono_add_internal_call("VI.LightSource/Radius::Get", &VIM::iLightSource::GetRadius);
-	mono_add_internal_call("VI.LightSource/Radius::Set", &VIM::iLightSource::SetRadius);
-	mono_add_internal_call("VI.LightSource/SpriteColor::Set", &VIM::iLightSource::SetSpriteColor);
+	mono_add_internal_call("VI.LightSource/Radius::Get", &MM::iLightSource::GetRadius);
+	mono_add_internal_call("VI.LightSource/Radius::Set", &MM::iLightSource::SetRadius);
+	mono_add_internal_call("VI.LightSource/SpriteColor::Set", &MM::iLightSource::SetSpriteColor);
 }
