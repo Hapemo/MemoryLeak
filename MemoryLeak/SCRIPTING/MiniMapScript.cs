@@ -46,8 +46,8 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"));
             MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"));
-            miniMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("minimapbig", "MiniMap"));
-            miniMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("minimapbig", "MiniMap"));
+            miniMapX = 1244;
+            miniMapY = 700;
             VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
         }
 
@@ -69,7 +69,7 @@ namespace BonVoyage {
                     VI.Entity.Sprite.SetType(minimapID, 0);
 
                     float posx = VI.Transform.Position.GetX(playerID) * (miniMapX / MapX)*2;
-                    float posy = VI.Transform.Position.GetY(playerID) * (miniMapY / MapY)*2;
+                    float posy = VI.Transform.Position.GetY(playerID) * (miniMapY / MapY)*2;//helppp
                     VI.Animation.Transform.Add.Transform(playerheadID, 100,100,0, posx, posy, 0.5f);
                     
                     VI.Animation.Transform.SetNext(playerheadID, i++);
