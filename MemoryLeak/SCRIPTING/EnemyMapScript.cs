@@ -31,8 +31,8 @@ namespace BonVoyage {
             VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
             VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
             VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
-            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"));
-            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"));
+            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"))/2;
+            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"))/2;
             miniMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("enemymap", "EnemyMap"));
             miniMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("enemymap", "EnemyMap"));
             expMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("enemymapbig", "EnemyMap"));
