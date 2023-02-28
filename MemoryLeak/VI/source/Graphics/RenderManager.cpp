@@ -761,12 +761,14 @@ void RenderManager::CreateSquareParticle(GLuint texid, int _layer, const Transfo
 
 void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo)
 {
+	bool prev = mIsCurrSceneUI;
 	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
 	{
 		for (Entity e : scene.mEntities)
 		{
 			if (!e.HasComponent<Viewport>()) continue;
 			mIsCurrSceneMinimap = (float)e.GetComponent<Viewport>().width / (float)*mWindowWidth;
+			mIsCurrSceneUI = e.GetComponent<Viewport>().isUI;
 		}
 	}
 	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
@@ -816,6 +818,7 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 			break;
 		}
 	}
+	mIsCurrSceneUI = prev;
 }
 
 void RenderManager::CreateMinimapVertices(const Entity& _e, int _layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices, GLuint texid)
@@ -954,7 +957,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				GLuint texid = mMinimapFBO.GetColorAttachment();
 				if (texid != 0)
 				{
-					if (e.GetComponent<Viewport>().viewport == VIEWPORT::CIRCULAR)
+					if (e.GetComponent<Sprite>().sprite == SPRITE::CIRCLE)
 					{
 						if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
 							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
@@ -967,7 +970,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
 							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
 					}
-					else
+					else if (e.GetComponent<Sprite>().sprite == SPRITE::SQUARE)
 					{
 						if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
 							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();

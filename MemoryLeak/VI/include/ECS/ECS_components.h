@@ -359,8 +359,8 @@ struct ShadowCaster
 };
 
 struct Viewport {
-	VIEWPORT viewport;
 	int width;
+	bool isUI;
 };
 
 struct ParticleSystem {

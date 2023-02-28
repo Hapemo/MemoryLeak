@@ -35,9 +35,3 @@ struct Color
 {
 	GLubyte r, g, b, a;
 };
-
-enum class VIEWPORT
-{
-	RECTANGULAR,
-	CIRCULAR
-};
