@@ -13,8 +13,8 @@
             }
         },
         "isActive": false,
-        "layer": 0,
-        "order": 0
+        "layer": 3,
+        "order": 3
     },
     {
         "SceneName": "Pause",
@@ -30,7 +30,7 @@
             }
         },
         "isActive": true,
-        "layer": 8,
+        "layer": 10,
         "order": 0
     },
     {
@@ -47,7 +47,7 @@
             }
         },
         "isActive": true,
-        "layer": 8,
+        "layer": 10,
         "order": 0
     },
     {
@@ -64,19 +64,19 @@
             }
         },
         "isActive": true,
-        "layer": 8,
-        "order": 0
+        "layer": 10,
+        "order": 4
     },
     {
         "SceneName": "TutorialDialogue",
         "isActive": false,
         "layer": 8,
-        "order": 0
+        "order": 7
     },
     {
         "SceneName": "FPS",
         "isActive": false,
-        "layer": 9,
+        "layer": 10,
         "order": 0
     }
 ]
