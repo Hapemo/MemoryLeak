@@ -544,9 +544,22 @@ namespace VI
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void SetLoopCycle(int _eId, bool _cycle = true);
-			
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static int GetCurrentIndex(int _eId);
+
+			public struct Edit {
+				internal static void Timing(int _eId, float _time = 1) { VI.Animation.Edit.Timing(_eId, _time); }
+				internal static void Current(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Edit.Current(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
+				internal static void CurrentScaleX(int _eId, float _scaleX) { VI.Animation.Edit.CurrentScaleX(_eId, _scaleX); }
+				internal static void CurrentScaleY(int _eId, float _scaleY) { VI.Animation.Edit.CurrentScaleY(_eId, _scaleY); }
+				internal static void CurrentRotate(int _eId, float _rot) { VI.Animation.Edit.CurrentRotate(_eId, _rot); }
+				internal static void CurrentPosX(int _eId, float _posX) { VI.Animation.Edit.CurrentPosX(_eId,_posX); }
+				internal static void CurrentPosY(int _eId, float _posY) { VI.Animation.Edit.CurrentPosY(_eId, _posY); }
+			}
 			public struct Add {
 				internal static void Transform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Add.Transform(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
+				internal static void TransformAt(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1, int _index = 0) { VI.Animation.Add.TransformAt(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time, _index); }
 				internal static void TransformDifference(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Add.TransformDifference(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
 			}
 			public struct SetCalculatedTime {
@@ -555,10 +568,35 @@ namespace VI
 				internal static void FromScale(int _eId, float _scaleX, float _scaleY, int _step = -1) { VI.Animation.SetCalculatedTime.FromScale(_eId, _scaleX, _scaleY, _step); }
 			}
 		}
+		private class Edit {
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void Timing(int _eId, float _time = 1);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void Current(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void CurrentScaleX(int _eId, float _scaleX);
+			
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void CurrentScaleY(int _eId, float _scaleY);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void CurrentRotate(int _eId, float _rot);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void CurrentPosX(int _eId, float _posX);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void CurrentPosY(int _eId, float _posY);
+		}
 		private class Add {
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void Transform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
 
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void TransformAt(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1, int _index = 0);
+			
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void TransformDifference(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
 		}

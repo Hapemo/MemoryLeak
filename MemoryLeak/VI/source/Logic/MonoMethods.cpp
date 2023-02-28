@@ -574,7 +574,16 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/Transform::StopAfterEndLoop", &VI::iAnimation::iTransform::StopAfterEndLoop);
 	mono_add_internal_call("VI.Animation/Transform::ReverseOrder", &VI::iAnimation::iTransform::ReverseOrder);
 	mono_add_internal_call("VI.Animation/Transform::SetLoopCycle", &VI::iAnimation::iTransform::SetLoopCycle);
+	mono_add_internal_call("VI.Animation/Transform::GetCurrentIndex", &VI::iAnimation::iTransform::GetCurrentIndex);
+	mono_add_internal_call("VI.Animation/Edit::Timing", &VI::iAnimation::iTransform::EditTiming);
+	mono_add_internal_call("VI.Animation/Edit::Current", &VI::iAnimation::iTransform::EditCurrent);
+	mono_add_internal_call("VI.Animation/Edit::CurrentScaleX", &VI::iAnimation::iTransform::CurrentScaleX);
+	mono_add_internal_call("VI.Animation/Edit::CurrentScaleY", &VI::iAnimation::iTransform::CurrentScaleY);
+	mono_add_internal_call("VI.Animation/Edit::CurrentRotate", &VI::iAnimation::iTransform::CurrentRotate);
+	mono_add_internal_call("VI.Animation/Edit::CurrentPosX", &VI::iAnimation::iTransform::CurrentPosX);
+	mono_add_internal_call("VI.Animation/Edit::CurrentPosY", &VI::iAnimation::iTransform::CurrentPosY);
 	mono_add_internal_call("VI.Animation/Add::Transform", &VI::iAnimation::iTransform::AddTransform);
+	mono_add_internal_call("VI.Animation/Add::TransformAt", &VI::iAnimation::iTransform::AddTransformAt);
 	mono_add_internal_call("VI.Animation/Add::TransformDifference", &VI::iAnimation::iTransform::AddTransformDifference);
 	mono_add_internal_call("VI.Animation/SetCalculatedTime::FromPosition", &VI::iAnimation::iTransform::SetCalculatedTimeFromPosition);
 	mono_add_internal_call("VI.Animation/SetCalculatedTime::FromRotation", &VI::iAnimation::iTransform::SetCalculatedTimeFromRotation);

@@ -633,9 +633,39 @@ void InternalCalls::iAnimation::iTransform::ReverseOrder(const int _eId, bool _r
 void InternalCalls::iAnimation::iTransform::SetLoopCycle(const int _eId, bool _cycle) {
 	movementAIManager->SetAnimationLoopToCycle(Entity(_eId), _cycle);
 }
+int InternalCalls::iAnimation::iTransform::GetCurrentIndex(const int _eId) {
+	return Entity(_eId).GetComponent<MovementAI>().step;
+}
+void InternalCalls::iAnimation::iTransform::EditTiming(const int _eId, float _time) {
+	Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step] = _time;
+}
+void InternalCalls::iAnimation::iTransform::EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
+	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step] = trans;
+	Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step] = _time;
+}
+void InternalCalls::iAnimation::iTransform::CurrentScaleX(const int _eId, float _scaleX) {
+	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].scale.x = _scaleX;
+}
+void InternalCalls::iAnimation::iTransform::CurrentScaleY(const int _eId, float _scaleY) {
+	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].scale.y = _scaleY;
+}
+void InternalCalls::iAnimation::iTransform::CurrentRotate(const int _eId, float _rot) {
+	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].rotation = _rot;
+}
+void InternalCalls::iAnimation::iTransform::CurrentPosX(const int _eId, float _posX) {
+	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.x = _posX;
+}
+void InternalCalls::iAnimation::iTransform::CurrentPosY(const int _eId, float _posY) {
+	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.y = _posY;
+}
 void InternalCalls::iAnimation::iTransform::AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
 	movementAIManager->AddTransform(Entity(_eId), trans, _time);
+}
+void InternalCalls::iAnimation::iTransform::AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time, int _index) {
+	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
+	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, _index);
 }
 void InternalCalls::iAnimation::iTransform::AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Transform trans{ {_scaleX, _scaleY}, _rot, { _posX, _posY} };
