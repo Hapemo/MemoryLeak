@@ -28,17 +28,19 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             //////////////////////////////////////////////init
-            if ((VI.Input.Button.s_Released("minimap", "MiniMap")) == true)
+            if ((VI.Input.Button.s_Released("minimap", "MiniMap")&&!big)||(VI.Input.Mouse.Press(349)&&big))
             {
                 big = !big;
                 if (big)
                 {
                     //VI.Entity.s_SetActive("minimapbig", "MiniMap", true);
+                    //VI.Animation.Transform.SetNext(VI.Entity.GetId("minimap", "MiniMap"), 1);
                     VI.Animation.Transform.Start(VI.Entity.GetId("minimap", "MiniMap"));
                 }
                 else
                 {
                     //VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
+                    //VI.Animation.Transform.SetNext(VI.Entity.GetId("minimap", "MiniMap"), 0);
                     VI.Animation.Transform.Start(VI.Entity.GetId("minimap", "MiniMap"));
                 }
             }
