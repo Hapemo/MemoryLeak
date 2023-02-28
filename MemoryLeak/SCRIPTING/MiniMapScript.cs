@@ -19,19 +19,22 @@ namespace BonVoyage {
         static bool big = false;
         int minimapID;
         int playerID;
-        int miniplayerID;
+        int playerheadID;
         float textOffsetX;
         float textOffsetY;
         float textbigOffsetX;
         float textbigOffsetY;
         float textScale;
         float textbigScale;
+        private float MapX, MapY;
+        private float miniMapX, miniMapY;
+        int i = 1;
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             minimapID = VI.Entity.GetId("minimap", "MiniMap");
             playerID = VI.Entity.GetId("Boat", "Level1");
-            miniplayerID = VI.Entity.GetId("minimaphead", "MiniMap");
+            playerheadID = VI.Entity.GetId("playerhead", "MiniMap");
             textOffsetX = -59;// VI.Text.Offset.GetX(minimapID);
             textOffsetY = -170;// VI.Text.Offset.GetY(minimapID);
             textbigOffsetX = -100;
@@ -41,7 +44,10 @@ namespace BonVoyage {
         }
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
+            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"));
+            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"));
+            miniMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("minimapbig", "MiniMap"));
+            miniMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("minimapbig", "MiniMap"));
             VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
         }
 
@@ -51,27 +57,32 @@ namespace BonVoyage {
             if ((VI.Input.Mouse.Press(349) && big)||(VI.Input.Button.Clicked(minimapID) &&!big))
             {
                 big = !big;
+                
                 if (big)
                 {
                     //VI.Entity.s_SetActive("minimapbig", "MiniMap", true);
-                    //VI.Animation.Transform.SetNext(VI.Entity.GetId("minimap", "MiniMap"), 1);
+                    VI.Animation.Transform.SetNext(minimapID, 1);
                     VI.Text.Offset.Set(minimapID, textbigOffsetX, textbigOffsetY);
                     VI.Text.Scale.Set(minimapID, textbigScale);
-                   
-                    //VI.Animation.Transform.Add.Transform(minimapID,100,100,0, VI.Transform.Position.GetX(playerID), VI.Transform.Position.GetY(playerID),0.5f);
-                    //VI.Animation.Transform.SetNext(minimapID, 1);
                     VI.Animation.Transform.Start(minimapID);
+
+                    float posx = VI.Transform.Position.GetX(playerID) * (miniMapX / MapX);
+                    float posy = VI.Transform.Position.GetY(playerID) * (miniMapY / MapY);
+                    VI.Animation.Transform.Add.Transform(playerheadID, 100,100,0, posx, posy, 0.5f);
+
+                    VI.Animation.Transform.SetNext(playerheadID, i++);
+                    VI.Animation.Transform.Start(playerheadID);
                 }
                 else
                 {
                     //VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
-                    //VI.Animation.Transform.SetNext(VI.Entity.GetId("minimap", "MiniMap"), 0);
+                    VI.Animation.Transform.SetNext(minimapID, 0);
                     VI.Text.Offset.Set(minimapID, textOffsetX, textOffsetY);
                     VI.Text.Scale.Set(minimapID, textScale);
                     VI.Animation.Transform.Start(minimapID);
 
-                    VI.Animation.Transform.SetNext(minimapID, 0);
-                    VI.Animation.Transform.Start(minimapID);
+                    VI.Animation.Transform.SetNext(playerheadID, 0);
+                    VI.Animation.Transform.Start(playerheadID);
 
                 }
             }

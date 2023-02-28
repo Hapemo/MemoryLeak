@@ -33,6 +33,7 @@ public:
 	void StartAnimation(Entity e);
 	void AddTransform(Entity e, Transform t, float time = 1.f);
 	void AddTransformAt(Entity e, Transform t, float time = 1.f, int index=0);
+	void removeTransformAt(Entity e, int index);
 	void AddTransformDifference(Entity e, Transform t, float time = 1.f);
 	bool SetNextStep(Entity e, int i); // return ture if sucessful (withing 0 to the vector MAX)
 	void StopAfterThisAnimation(Entity e, bool next = true);
