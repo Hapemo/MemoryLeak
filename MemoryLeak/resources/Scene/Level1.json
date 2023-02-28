@@ -1254,6 +1254,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -28.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -2143,6 +2154,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -47.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -2660,6 +2682,17 @@
                 "Y": 0.3799999952316284
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -3227,6 +3260,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -3600,6 +3644,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -47.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -3651,6 +3706,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -3898,6 +3964,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -41.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -3949,6 +4026,17 @@
                 "Y": 0.3400000035762787
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -41.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -4132,6 +4220,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -142.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4249,6 +4348,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4300,6 +4410,17 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -47.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -4355,6 +4476,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4406,6 +4538,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -4461,6 +4604,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4514,6 +4668,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -142.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4565,6 +4730,17 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -97.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -4876,6 +5052,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -97.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4927,6 +5114,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -4982,6 +5180,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5033,6 +5242,17 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -49.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -5088,6 +5308,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5139,6 +5370,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -5194,6 +5436,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5245,6 +5498,17 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -97.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -5556,6 +5820,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -41.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5737,6 +6012,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -49.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5832,6 +6118,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -49.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5883,6 +6180,17 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -47.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -5938,6 +6246,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5989,6 +6308,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6044,6 +6374,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6095,6 +6436,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6150,6 +6502,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -97.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6201,6 +6564,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6256,6 +6630,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6307,6 +6692,17 @@
                 "Y": 0.3799999952316284
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6362,6 +6758,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6413,6 +6820,17 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -97.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6468,6 +6886,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6519,6 +6948,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -142.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6574,6 +7014,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -142.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6625,6 +7076,17 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -97.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6680,6 +7142,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -97.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6731,6 +7204,17 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -47.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6786,6 +7270,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6837,6 +7332,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -142.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6892,6 +7398,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6943,6 +7460,17 @@
                 "Y": 0.3799999952316284
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -6998,6 +7526,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -48.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7049,6 +7588,17 @@
                 "Y": 0.3400000035762787
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -41.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -7104,6 +7654,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -47.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7155,6 +7716,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -7210,6 +7782,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -142.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7261,6 +7844,17 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -47.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -7316,6 +7910,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -47.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7367,6 +7972,17 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -96.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
             "renderFlag": true
         },
         "Audio": {
@@ -7431,11 +8047,11 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": -50.0
+                "Y": 0.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 0.004999999888241291
+                "Y": 1.0
             },
             "renderFlag": false
         },
