@@ -32,7 +32,7 @@ namespace BonVoyage
 		internal static bool IsActive() { return VI.Entity.IsActive(ENTITY); }
 		internal static void SetActive(bool _active = true) { VI.Entity.SetActive(ENTITY, _active); }
 		internal static void Activate() { VI.Entity.Activate(ENTITY); }
-		internal static void Deactivate() { VI.Entity.Deactivate(ENTITY) };
+		internal static void Deactivate() { VI.Entity.Deactivate(ENTITY); }
 		public class Sprite
 		{
 			internal static int GetType(int _eId) { return VI.Entity.Sprite.GetType(ENTITY); }

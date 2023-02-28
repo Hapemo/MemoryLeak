@@ -11,6 +11,7 @@ namespace BonVoyage {
         public int HitTaken;
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
+        private int WorldId;
         private float maxX, maxY, minX, minY, halfX, halfY;
 
         private int OctopusAttacked;
@@ -29,6 +30,14 @@ namespace BonVoyage {
 
             PlayerPosX = 0;
             PlayerPosY = 0;
+
+            WorldId = VI.Entity.GetId("Water");
+            halfX = VI.Transform.Position.GetX(WorldId);
+            halfY = VI.Transform.Position.GetY(WorldId);
+            maxX = (VI.Transform.Scale.GetX(WorldId) / 2) + halfX - THIS.Transform.Scale.GetX();
+            maxY = (VI.Transform.Scale.GetY(WorldId) / 2) + halfY - THIS.Transform.Scale.GetY();
+            minX = halfX - (VI.Transform.Scale.GetX(WorldId) / 2) + THIS.Transform.Scale.GetX();
+            minY = halfY - (VI.Transform.Scale.GetY(WorldId) / 2) + THIS.Transform.Scale.GetY();
         }
 
         public void Init(int _ENTITY) {
@@ -107,7 +116,7 @@ namespace BonVoyage {
                 else {
                     OctopusAttacked = 0;
                     SetCharRotation4(OctopusDirection, "Idle");
-                    THIS.Animation.Transform.Remove(ChasingPlayer);
+                    if(ChasingPlayer > 0) THIS.Animation.Transform.Remove(ChasingPlayer);
                 }
 
                 if (VI.Physics.s_CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken > -1) {
