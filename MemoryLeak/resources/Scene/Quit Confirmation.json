@@ -99,6 +99,9 @@
                 "a": 255
             }
         },
+        "Script": {
+            "name": "ReallyQuitButton"
+        },
         "Button": {
             "interactable": true
         }
@@ -157,6 +160,9 @@
                 "b": 255,
                 "a": 255
             }
+        },
+        "Script": {
+            "name": "BackButton"
         },
         "Button": {
             "interactable": true

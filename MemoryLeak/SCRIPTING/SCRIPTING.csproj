@@ -65,19 +65,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackButton.cs" />
     <Compile Include="BaseScript.cs" />
+    <Compile Include="CreditsButton.cs" />
     <Compile Include="CrystalBallsScript.cs" />
+    <Compile Include="CutSceneScript.cs" />
+    <Compile Include="EnemyController.cs" />
     <Compile Include="EnemyMapScript.cs" />
+    <Compile Include="HowToPlayButton.cs" />
     <Compile Include="InternalCalls.cs" />
     <Compile Include="MiniMapScript.cs" />
     <Compile Include="Level 1\Level1Passenger2Script.cs" />
     <Compile Include="Level 1\Level1Passenger1Script.cs" />
     <Compile Include="Level 1\Level1GirlScript.cs" />
     <Compile Include="Level 1\Level1ManagerScript.cs" />
+    <Compile Include="PlayButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlayerScript.cs" />
     <Compile Include="Level 1\Level1DialogManager.cs" />
+    <Compile Include="QuitButton.cs" />
+    <Compile Include="ReallyQuitButton.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
+    <Compile Include="SettingsButton.cs" />
     <Compile Include="WeatherMapScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
