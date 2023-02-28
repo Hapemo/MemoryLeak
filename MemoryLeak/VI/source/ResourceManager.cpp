@@ -463,6 +463,7 @@ ResourceManager::E_RESOURCETYPE ResourceManager::CheckResourceType(std::filesyst
 	else if (_path.string().find("\\GameStates\\") != std::string::npos) return E_RESOURCETYPE::gamestateEntities;
 	else if (_path.string().find("\\Fonts\\") != std::string::npos) return E_RESOURCETYPE::font;
 	else if (_path.string().find("\\Prefabs\\") != std::string::npos) return E_RESOURCETYPE::prefab;
+	else if (_path.string().find("\\SceneGUID\\") != std::string::npos) return E_RESOURCETYPE::error;
 
 	LOG_WARN("Attempted to load unknown resource into resource manager. Resource: " + _path.string());
 	return E_RESOURCETYPE::error;
