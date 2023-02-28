@@ -61,6 +61,24 @@ namespace BonVoyage
 					internal static int Get() { return VI.Animation.SpriteSheet.FrameCount.Get(ENTITY); }
 				}
 			}
+			public class Transform {
+				internal static void Start() { VI.Animation.Transform.Start(ENTITY); }
+				internal static bool SetNext(int _i) { return VI.Animation.Transform.SetNext(ENTITY, _i); }
+				internal static void Stop(bool _next = true) { VI.Animation.Transform.Stop(ENTITY, _next); }
+				internal static void StopAfterEndLoop(bool _loop = true) { VI.Animation.Transform.StopAfterEndLoop(ENTITY, _loop); }
+				internal static void ReverseOrder(bool _reverse = true) { VI.Animation.Transform.ReverseOrder(ENTITY, _reverse); }
+				internal static void SetLoopCycle(bool _cycle = true) { VI.Animation.Transform.SetLoopCycle(ENTITY, _cycle); }
+
+				public struct Add {
+					internal static void Transform(float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Transform.Add.Transform(ENTITY, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
+					internal static void TransformDifference(float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Transform.Add.TransformDifference(ENTITY, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
+				}
+				public struct SetCalculatedTime {
+					internal static void FromPosition(float _posX, float _posY, int _step = -1) { VI.Animation.Transform.SetCalculatedTime.FromPosition(ENTITY, _posX, _posY, _step); }
+					internal static void FromRotation(float _rot, int _step = -1) { VI.Animation.Transform.SetCalculatedTime.FromRotation(ENTITY, _rot, _step); }
+					internal static void FromScale(float _scaleX, float _scaleY, int _step = -1) { VI.Animation.Transform.SetCalculatedTime.FromScale(ENTITY, _scaleX, _scaleY, _step); }
+				}
+			}
 		}
 		public class Texture {
 			internal static void Set(string _path) { VI.Texture.Set(ENTITY, _path); }

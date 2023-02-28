@@ -415,6 +415,14 @@ int InternalCalls::iEntity::GetParentId(std::string const& _entityName, std::str
 
 /*!*****************************************************************************
 \brief
+Sprite component
+*******************************************************************************/
+int InternalCalls::iEntity::GetSpriteType(const int _eId) {
+	return (int)Entity(_eId).GetComponent<Sprite>().sprite;
+}
+
+/*!*****************************************************************************
+\brief
 Gets scene to pause or unpause the scene.
 *******************************************************************************/
 Scene& InternalCalls::iScene::Select(std::string const& _name) {
@@ -457,6 +465,23 @@ void InternalCalls::iCamera::SetPosX(float _x) {
 }
 void InternalCalls::iCamera::SetPosY(float _y) {
 	VI::iGameState::CurrentGameState().mCamera.translation.y = _y;
+}
+
+/*!*****************************************************************************
+\brief
+Viewport stuff
+*******************************************************************************/
+int InternalCalls::iViewport::GetWidth(const int _eId) {
+	return Entity(_eId).GetComponent<Viewport>().width;
+}
+void InternalCalls::iViewport::SetWidth(const int _eId, int _width) {
+	Entity(_eId).GetComponent<Viewport>().width = _width;
+}
+int InternalCalls::iViewport::IsUI(const int _eId) {
+	return Entity(_eId).GetComponent<Viewport>().isUI;
+}
+void InternalCalls::iViewport::SetIsUI(const int _eId, int _ui) {
+	Entity(_eId).GetComponent<Viewport>().isUI = _ui;
 }
 
 /*!*****************************************************************************

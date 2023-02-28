@@ -14,6 +14,5 @@ namespace BonVoyage
 {
     public class BaseScript
     {
-        int ENTITY = 0;
     }
 }
