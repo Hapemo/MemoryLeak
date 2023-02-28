@@ -215,7 +215,7 @@ void RenderManager::CreateVisibilityPolygon(const std::vector<Math::Vec2>& _vert
 	mIsCurrSceneUI = false;
 
 	Vertex v0;
-	glm::vec4 clr{ 1.f, 1.f, 1.f, 0.1f };
+	glm::vec4 clr{ 0.f, 0.f, 0.f, 0.01f };
 	glm::vec4 shadowclr{ 0, 0, 0, 0.8f };
 	Math::Mat3 mtx;
 
@@ -761,6 +761,16 @@ void RenderManager::CreateSquareParticle(GLuint texid, int _layer, const Transfo
 
 void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureInfo>>& _cvpInfo)
 {
+	bool prev = mIsCurrSceneUI;
+	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
+	{
+		for (Entity e : scene.mEntities)
+		{
+			if (!e.HasComponent<Viewport>()) continue;
+			mIsCurrSceneMinimap = (float)e.GetComponent<Viewport>().width / (float)*mWindowWidth;
+			mIsCurrSceneUI = e.GetComponent<Viewport>().isUI;
+		}
+	}
 	for (const Scene& scene : reinterpret_cast<GameState*>(gs)->mScenes)
 	{
 		if (scene.mLayer > MAX_SCENE_LAYERS - 1)
@@ -775,11 +785,6 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 
 		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
-			for (Entity e : scene.mEntities)
-			{
-				if (!e.HasComponent<Viewport>()) continue;
-				mIsCurrSceneMinimap = (float)e.GetComponent<Viewport>().width / (float)*mWindowWidth;
-			}
 			if (!mIsCurrSceneMinimap) return;
 			for (Entity e : scene.mEntities)
 			{
@@ -813,6 +818,7 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 			break;
 		}
 	}
+	mIsCurrSceneUI = prev;
 }
 
 void RenderManager::CreateMinimapVertices(const Entity& _e, int _layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices, GLuint texid)
@@ -951,7 +957,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				GLuint texid = mMinimapFBO.GetColorAttachment();
 				if (texid != 0)
 				{
-					if (e.GetComponent<Viewport>().viewport == VIEWPORT::CIRCULAR)
+					if (e.GetComponent<Sprite>().sprite == SPRITE::CIRCLE)
 					{
 						if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
 							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
@@ -964,7 +970,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
 							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
 					}
-					else
+					else if (e.GetComponent<Sprite>().sprite == SPRITE::SQUARE)
 					{
 						if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
 							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
@@ -1876,7 +1882,7 @@ void RenderManager::CreateText(const Entity& _e, int _layer)
 				
 	mFontRenderers[fileName].AddParagraph(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation  - cam.GetPos() ) / cam.GetZoom() + Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
-		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f), _layer, _e.GetComponent<Transform>().scale.x, cam.GetZoom());
+		text.scale / cam.GetZoom(), glm::vec4(text.color.r / 255.f, text.color.g / 255.f, text.color.b / 255.f, text.color.a / 255.f), _layer, _e.GetComponent<Transform>().scale.x, cam.GetZoom());
 }
 /*!*****************************************************************************
 \brief
@@ -1911,8 +1917,8 @@ int RenderManager::GetTextLines(Entity _e)
 	return mFontRenderers[fileName].GetLineCount(text.text,
 		(text.offset + _e.GetComponent<Transform>().translation - cam.GetPos()) / cam.GetZoom() 
 		+ Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
-		text.scale / cam.GetZoom(), Math::Vec3(text.color.r / 255.f, text.color.g / 255.f, 
-			text.color.b / 255.f), _e.GetComponent<Transform>().scale.x, cam.GetZoom());
+		text.scale / cam.GetZoom(), glm::vec4(text.color.r / 255.f, text.color.g / 255.f, 
+			text.color.b / 255.f, text.color.a), _e.GetComponent<Transform>().scale.x, cam.GetZoom());
 }
 
 /*!*****************************************************************************

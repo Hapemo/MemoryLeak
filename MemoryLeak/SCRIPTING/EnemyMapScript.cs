@@ -18,32 +18,25 @@ namespace BonVoyage {
     public class EnemyMapScript
     {
         static bool init = true;
+        static bool big = false;
         private float MapX, MapY;
         private float miniMapX, miniMapY;
         private float expMapX, expMapY;
-        public void Alive(int _ENTITY) {
+        public void Alive(int _ENTITY)
+        {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            VI.Entity.s_SetActive("enemymapbig", "WeatherMap", false);
-            VI.Entity.s_SetActive("enemybig", "WeatherMap", false);
-            VI.Entity.s_SetActive("playerbig", "WeatherMap", false);
-            MapX = VI.Transform.Scale.s_GetX("Water", "Level1");
-            MapY = VI.Transform.Scale.s_GetY("Water", "Level1");
-            miniMapX = VI.Transform.Scale.s_GetX("enemymap", "WeatherMap");
-            miniMapY = VI.Transform.Scale.s_GetY("enemymap", "WeatherMap");
-            expMapX = VI.Transform.Scale.s_GetX("enemymapbig", "WeatherMap");
-            expMapY = VI.Transform.Scale.s_GetY("enemymapbig", "WeatherMap");
         }
         public void Init(int _ENTITY) {
-
-            VI.Entity.s_SetActive("enemymap", "WeatherMap", true);
-            VI.Entity.s_SetActive("enemy", "WeatherMap", true);
-            VI.Entity.s_SetActive("player", "WeatherMap", true);
-            if (CrystalBallScript.Big())
-            {
-                VI.Entity.s_SetActive("enemymapbig", "WeatherMap", true);
-                VI.Entity.s_SetActive("enemybig", "WeatherMap", true);
-                VI.Entity.s_SetActive("playerbig", "WeatherMap", true);
-            }
+            VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
+            VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
+            VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
+            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"));
+            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"));
+            miniMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("enemymap", "EnemyMap"));
+            miniMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("enemymap", "EnemyMap"));
+            expMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("enemymapbig", "EnemyMap"));
+            expMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("enemymapbig", "EnemyMap"));
+           
         }
 
         public void Update(int _ENTITY) {
@@ -55,63 +48,61 @@ namespace BonVoyage {
             }
 
             //////////////////////////////////////////////init
-            
-             if (CrystalBallScript.Big())
-             {
-                 VI.Entity.s_SetActive("enemymapbig", "WeatherMap", true);
-                 VI.Entity.s_SetActive("enemybig", "WeatherMap", true);
-                 VI.Entity.s_SetActive("playerbig", "WeatherMap", true);
-             }
-             else {
-                 VI.Entity.s_SetActive("enemymapbig", "WeatherMap", false);
-                 VI.Entity.s_SetActive("enemybig", "WeatherMap", false);
-                 VI.Entity.s_SetActive("playerbig", "WeatherMap", false);
-             }
-
-            float posx = VI.Transform.Position.s_GetX("Enemy", "Level1")- VI.Transform.Position.s_GetX("Boat", "Level1");
-            float posy = VI.Transform.Position.s_GetY("Enemy", "Level1") - VI.Transform.Position.s_GetY("Boat", "Level1");
+            if ((VI.Input.Button.s_Released("enemymap", "EnemyMap")) == true)
+            {
+                big = !big;
+                if (big)
+                {
+                    VI.Entity.s_SetActive("enemymapbig", "EnemyMap", true);
+                    VI.Entity.s_SetActive("enemybig", "EnemyMap", true);
+                    VI.Entity.s_SetActive("playerbig", "EnemyMap", true);
+                }
+                else {
+                    VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
+                    VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
+                    VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
+                }
+            }
+            float posx = VI.Transform.Scale.GetX(VI.Entity.GetId("Enemy", "Level1")) - VI.Transform.Scale.GetX(VI.Entity.GetId("Boat", "Level1"));
+            float posy = VI.Transform.Scale.GetY(VI.Entity.GetId("Enemy", "Level1")) - VI.Transform.Scale.GetY(VI.Entity.GetId("Boat", "Level1"));
             if (posx > MapX / 4 || posy > MapY / 4)
             {
-                VI.Entity.s_SetActive("enemy", "WeatherMap", false);
+                VI.Entity.s_SetActive("enemy", "EnemyMap", false);
             }
             else
             {
-                VI.Entity.s_SetActive("enemy", "WeatherMap", true);
-                float eposx = VI.Transform.Position.s_GetX("player", "WeatherMap") + (posx * (miniMapX / MapX));
-                float eposy = VI.Transform.Position.s_GetY("player", "WeatherMap") + (posy * (miniMapY / MapY));
-                VI.Transform.Position.s_SetX("enemy", "WeatherMap", eposx);
-                VI.Transform.Position.s_SetY("enemy", "WeatherMap", eposy);
+                VI.Entity.s_SetActive("enemy", "EnemyMap", true);
+                float eposx = VI.Transform.Scale.GetX(VI.Entity.GetId("player", "EnemyMap")) + (posx * (miniMapX / MapX));
+                float eposy = VI.Transform.Scale.GetY(VI.Entity.GetId("player", "EnemyMap")) + (posy * (miniMapY / MapY));
+                VI.Transform.Scale.SetX(VI.Entity.GetId("enemy", "EnemyMap"), eposx);
+                VI.Transform.Scale.SetY(VI.Entity.GetId("enemy", "EnemyMap"), eposy);
             }
-            if (CrystalBallScript.Big())
+            if (big)
             { 
                 if (posx > MapX / 2 || posy > MapY / 2)
                 {
-                    VI.Entity.s_SetActive("enemybig", "WeatherMap", false);
+                    VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
                 }
                 else
                 {
-                    VI.Entity.s_SetActive("enemybig", "WeatherMap", true);
-                    float eposx = VI.Transform.Position.s_GetX("playerbig", "WeatherMap") + (posx * (expMapX / MapX));
-                    float eposy = VI.Transform.Position.s_GetY("playerbig", "WeatherMap") + (posy * (expMapY / MapY));
-                    VI.Transform.Position.s_SetX("enemybig", "WeatherMap", eposx);
-                    VI.Transform.Position.s_SetY("enemybig", "WeatherMap", eposy);
+                    VI.Entity.s_SetActive("enemybig", "EnemyMap", true);
+                    float eposx = VI.Transform.Scale.GetX(VI.Entity.GetId("playerbig", "EnemyMap")) + (posx * (expMapX / MapX));
+                    float eposy = VI.Transform.Scale.GetY(VI.Entity.GetId("playerbig", "EnemyMap")) + (posy * (expMapY / MapY));
+                    VI.Transform.Scale.SetX(VI.Entity.GetId("enemybig", "EnemyMap"), eposx);
+                    VI.Transform.Scale.SetY(VI.Entity.GetId("enemybig", "EnemyMap"), eposy);
                 }
             }
         }
 
-        public void FixedUpdate(int _ENTITY) {
-
-        }
-
         public void Exit(int _ENTITY) {
-            VI.Entity.s_SetActive("enemymapbig", "WeatherMap", false);
-            VI.Entity.s_SetActive("enemybig", "WeatherMap", false);
-            VI.Entity.s_SetActive("playerbig", "WeatherMap", false);
-            VI.Entity.s_SetActive("enemymap", "WeatherMap", false);
-            VI.Entity.s_SetActive("enemy", "WeatherMap", false);
-            VI.Entity.s_SetActive("player", "WeatherMap", false);
+            big= false;
+            VI.Entity.s_SetActive("enemymapbig", "EnemyMap", false);
+            VI.Entity.s_SetActive("enemybig", "EnemyMap", false);
+            VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
+
         }
-        public void Dead(int _ENTITY) {
+        public void Dead(int _ENTITY)
+        {
 
         }
     }

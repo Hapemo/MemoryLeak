@@ -17,7 +17,7 @@ to use from the engine is being linked.
 #include <mono/jit/jit.h>
 
 #define MONO MonoMethods::GetInstance()
-#define VIM MonoMethods
+#define MM MonoMethods
 
 class MonoMethods : public Singleton<MonoMethods> {
 public:
@@ -118,6 +118,11 @@ public:
 		static void SetFrameCount(const int _eId, int _count);
 		static void SetSheetIndex(const int _eId, int _index);
 		static int GetSheetIndex(const int _eId);
+	};
+	struct iParticleSystem {
+		struct iParticleInfo {
+			static void SetTexture(const int _eId, MonoString* _texture);
+		};
 	};
 	struct iTexture {
 		static void s_SetTexture(MonoString* _entityName, MonoString* _sceneName, MonoString* _path);

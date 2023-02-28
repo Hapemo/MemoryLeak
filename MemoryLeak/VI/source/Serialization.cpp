@@ -683,7 +683,7 @@ ShadowCaster SerializationManager::getShadowCaster(Value& entity)
 Viewport SerializationManager::getViewport(Value& entity)
 {
 	Viewport viewport;
-	viewport.viewport = static_cast<VIEWPORT>(entity["Viewport"]["viewport"].GetInt());
+	viewport.isUI = entity["Viewport"]["isUI"].GetBool();
 	viewport.width = entity["Viewport"]["width"].GetInt();
 	return viewport;
 }
@@ -703,8 +703,8 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 		a = entity["MovementAI"]["targets"].GetArray();
 		for (int j = 0; j < (int)a.Size(); ++j)
 		{
-			float time = (float)a[j]["time"].GetInt();
-			Transform trans = getTransform(a[j]["Transform"]);
+			float time = (float)a[j]["time"].GetFloat();
+			Transform trans = getTransform(a[j]);
 			movementAI.time.push_back(time);
 			movementAI.targetTransforms.push_back(trans);
 		}
@@ -1297,7 +1297,7 @@ void SerializationManager::addShadowCaster(Document& scene, Value& entity, Shado
 void SerializationManager::addViewport(Document& scene, Value& entity, Viewport Viewport)
 {
 	Value tmp(kObjectType);
-	tmp.AddMember(StringRef("viewport"), static_cast<int>(Viewport.viewport), scene.GetAllocator());
+	tmp.AddMember(StringRef("isUI"), Viewport.isUI, scene.GetAllocator());
 	tmp.AddMember(StringRef("width"), Viewport.width, scene.GetAllocator());
 	entity.AddMember(StringRef("Viewport"), tmp, scene.GetAllocator());
 }

@@ -324,68 +324,145 @@ public:
 		static float NormalizeY(float _x, float _y);
 		static float ArcTangent(float _x, float _y);
 		static float Negate(float _value);
+		static float Epsilon();
+		static double Pi();
+		static float ConvertRadToDeg(float _value);
+		static float ConvertDegToRad(float _value);
 	};
 
 	struct iAnimation {
+		struct iSpriteSheet {
+			/*!*****************************************************************************
+			\brief
+			Set/Get current animation image speed
+			*******************************************************************************/
+			static void SetSpeed(const Entity& _e, float _speed);
+			static float GetSpeed(const Entity& _e);
+			static void SetSpeed(const int _eId, float _speed);
+			static float GetSpeed(const int _eId);
+			static void SetSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed);
+			static float GetSpeed(std::string const& _entityName, std::string const& _sceneName);
+
+			/*!*****************************************************************************
+			\brief
+			Set/Get current sprite sheet image index
+			*******************************************************************************/
+			static void SetSheetIndex(const Entity& _e, int _index);
+			static int GetSheetIndex(const Entity& _e);
+			static void SetSheetIndex(const int _eId, int _index);
+			static int GetSheetIndex(const int _eId);
+			static void SetSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
+			static int GetSheetIndex(std::string const& _entityName, std::string const& _sceneName);
+
+			/*!*****************************************************************************
+			\brief
+			Set/Get current animation image frame index
+			*******************************************************************************/
+			static void SetCurrentFrame(const Entity& _e, int _index);
+			static int GetCurrentFrame(const Entity& _e);
+			static void SetCurrentFrame(const int _eId, int _index);
+			static int GetCurrentFrame(const int _eId);
+			static void SetCurrentFrame(std::string const& _entityName, std::string const& _sceneName, int _index);
+			static int GetCurrentFrame(std::string const& _entityName, std::string const& _sceneName);
+
+			/*!*****************************************************************************
+			\brief
+			Get current animation total frame count
+			*******************************************************************************/
+			static void SetFrameCount(const Entity& _e, int _count);
+			static int GetFrameCount(const Entity& _e);
+			static void SetFrameCount(const int _eId, int _count);
+			static int GetFrameCount(const int _eId);
+			static void SetFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count);
+			static int GetFrameCount(std::string const& _entityName, std::string const& _sceneName);
+		};
+
+		struct iTransform {
+			/*!*****************************************************************************
+			\brief
+			Movement animation
+			*******************************************************************************/
+			static void Start(const int _eId);
+			static bool SetNext(const int _eId, int _i); // return true if successful (withing 0 to the vector MAX)
+			static void Stop(const int _eId, bool _next = true);
+			static void StopAfterEndLoop(const int _eId, bool _loop = true);
+			static void ReverseOrder(const int _eId, bool _reverse = true);
+			static void SetLoopCycle(const int _eId, bool _cycle = true);
+			static void AddTransform(const int _eId, float _posX, float _posY, float _scaleX, float _scaleY, float _rot, float _time = 1);
+			static void AddTransformDifference(const int _eId, float _posX, float _posY, float _scaleX, float _scaleY, float _rot, float _time = 1);
+			static void SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step = -1);
+			static void SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step = -1);
+			static void SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step = -1);
+		};
+	};
+
+	struct iParticleSystem {
 		/*!*****************************************************************************
 		\brief
-		Set/Get current animation image speed
+		Particle system
 		*******************************************************************************/
-		static void SetSpeed(const Entity& _e, float _speed);
-		static float GetSpeed(const Entity& _e);
-		static void SetSpeed(const int _eId, float _speed);
-		static float GetSpeed(const int _eId);
-		static void SetSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed);
-		static float GetSpeed(std::string const& _entityName, std::string const& _sceneName);
+		static int GetDensity(const int _eId);
+		static void SetDensity(const int _eId, int _density);
+
+		static float GetPosX(const int _eId);
+		static void SetPosX(const int _eId, float _posX);
+		static float GetPosY(const int _eId);
+		static void SetPosY(const int _eId, float _posY);
+
+		static float GetWidth(const int _eId);
+		static void SetWidth(const int _eId, float _width);
+
+		static float GetDirX(const int _eId);
+		static void SetDirX(const int _eId, float _dirX);
+		static float GetDirY(const int _eId);
+		static void SetDirY(const int _eId, float _dirY);
+
+		static float GetSpread(const int _eId);
+		static void SetSpread(const int _eId, float _spread);
+
+		static float GetDuration(const int _eId);
+		static void SetDuration(const int _eId, float _dur);
+
+		static bool IsActive(const int _eId);
+		static void SetIsActive(const int _eId, bool _active = true);
+
+		static float GetSlow(const int _eId);
+		static void SetSlow(const int _eId, float _slow);
 
 		/*!*****************************************************************************
 		\brief
-		Set/Get current sprite sheet image index
+		Individual particle
 		*******************************************************************************/
-		static void SetSheetIndex(const Entity& _e, int _index);
-		static int GetSheetIndex(const Entity& _e);
-		static void SetSheetIndex(const int _eId, int _index);
-		static int GetSheetIndex(const int _eId);
-		static void SetSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index);
-		static int GetSheetIndex(std::string const& _entityName, std::string const& _sceneName);
+		struct iParticleInfo {
+			static float GetScale(const int _eId);
+			static float GetDirection(const int _eId);
+			static float GetLifeSpan(const int _eId);
+			static float GetRotation(const int _eId);
+			static float GetSpeed(const int _eId);
+			static bool GetFading(const int _eId);
 
-		/*!*****************************************************************************
-		\brief
-		Set/Get current animation image frame index
-		*******************************************************************************/
-		static void SetCurrentFrame(const Entity& _e, int _index);
-		static int GetCurrentFrame(const Entity& _e);
-		static void SetCurrentFrame(const int _eId, int _index);
-		static int GetCurrentFrame(const int _eId);
-		static void SetCurrentFrame(std::string const& _entityName, std::string const& _sceneName, int _index);
-		static int GetCurrentFrame(std::string const& _entityName, std::string const& _sceneName);
+			static int GetSpriteType(const int _eId);
+			static int GetLayer(const int _eId);
 
-		/*!*****************************************************************************
-		\brief
-		Get current animation total frame count
-		*******************************************************************************/
-		static void SetFrameCount(const Entity& _e, int _count);
-		static int GetFrameCount(const Entity& _e);
-		static void SetFrameCount(const int _eId, int _count);
-		static int GetFrameCount(const int _eId);
-		static void SetFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count);
-		static int GetFrameCount(std::string const& _entityName, std::string const& _sceneName);
+			static void SetScale(const int _eId, float _scale);
+			static void SetDirection(const int _eId, float _dir);
+			static void SetLifeSpan(const int _eId, float _lifespan);
+			static void SetRotation(const int _eId, float _rot);
+			static void SetSpeed(const int _eId, float _speed);
+			static void SetFading(const int _eId, bool _fade = true);
 
-		/*!*****************************************************************************
-		\brief
-		Movement animation
-		*******************************************************************************/
-		static void Start(int _eId);
-		static bool SetNext(int _eId, int _i); // return true if successful (withing 0 to the vector MAX)
-		static void Stop(int _eId, bool _next = true);
-		static void StopAfterEndLoop(int _eId, bool _loop = true);
-		static void ReverseOrder(int _eId, bool _reverse = true);
-		static void SetLoopCycle(int _eId, bool _cycle = true);
-		static void AddTransform(int _eId, float _posX, float _posY, float _scaleX, float _scaleY, float _rot, float _time = 1);
-		static void AddTransformDifference(int _eId, float _posX, float _posY, float _scaleX, float _scaleY, float _rot, float _time = 1);
-		static void SetCalculatedTimeFromPosition(int _eId, float _posX, float _posY, int _step = -1);
-		static void SetCalculatedTimeFromRotation(int _eId, float _rot, int _step = -1);
-		static void SetCalculatedTimeFromScale(int _eId, float _scaleX, float _scaleY, int _step = -1);
+			static void SetColour(const int _eId, int _r, int _g, int _b, int _a);
+			static void SetSpriteType(const int _eId, int _type);
+			static void SetTexture(const int _eId, std::string _texture);
+			static void SetLayer(const int _eId, int _layer);
+
+			/*
+			Color color = Color{ 0,255,0,255 };	//save, edit, see
+			SPRITE sprite;						//save, edit, see
+			GLuint texture = 0;					//save, edit, see
+			int layer = 0;						//save, edit, see
+			*/
+		};
 	};
 
 	struct iTexture {

@@ -136,7 +136,7 @@ Scale of the font.
 \param const Math::Vec3& _color
 Color of the font.
 *******************************************************************************/
-void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, int layer, float _width, float camZoom)
+void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos, float scale, const glm::vec4& color, int layer, float _width, float camZoom)
 {
     if (!mInitialized) return;
     std::vector<std::string> strings;
@@ -183,7 +183,7 @@ void FontRenderer::DrawParagraphs(int _layer)
         float initialX = pos.x;
         mFontProgram.Bind();
         glUniformMatrix4fv(mMatrixLocation, 1, GL_FALSE, glm::value_ptr(_projection));
-        glUniform3f(mTextColorLocation, para.color.r, para.color.g, para.color.b);
+        glUniform4f(mTextColorLocation, para.color.r, para.color.g, para.color.b, para.color.a);
         glUniform1f(mZValueLocation, layer);
         glActiveTexture(GL_TEXTURE0);
         glBindVertexArray(mVAO);
@@ -272,7 +272,7 @@ Camera's zoom
 \return
 the number of lines.
 *******************************************************************************/
-int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const Math::Vec3& color, float _width, float camZoom)
+int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, float scale, const glm::vec4& color, float _width, float camZoom)
 {
     if (!mInitialized) return 0;
     std::vector<std::string> strings;

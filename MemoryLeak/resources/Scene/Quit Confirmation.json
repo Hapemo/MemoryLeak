@@ -8,8 +8,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 1174.0,
-                "Y": 686.0
+                "X": 1186.0,
+                "Y": 692.0
             },
             "rotation": 0.0,
             "translation": {
@@ -30,9 +30,9 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Are you sure?",
+            "text": "Are you sure you want to quit?",
             "offset": {
-                "X": -190.0,
+                "X": -439.0,
                 "Y": -41.0
             },
             "scale": 1.0,
@@ -59,7 +59,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -270.0,
-                "Y": -330.0
+                "Y": -335.0
             }
         },
         "Sprite": {
@@ -99,9 +99,6 @@
                 "a": 255
             }
         },
-        "Script": {
-            "name": "ExitGameButton"
-        },
         "Button": {
             "interactable": true
         }
@@ -121,7 +118,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 270.0,
-                "Y": -330.498046875
+                "Y": -335.0
             }
         },
         "Sprite": {
@@ -160,9 +157,6 @@
                 "b": 255,
                 "a": 255
             }
-        },
-        "Script": {
-            "name": "PauseButton"
         },
         "Button": {
             "interactable": true
