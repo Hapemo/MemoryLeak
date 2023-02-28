@@ -97,12 +97,12 @@ namespace BonVoyage {
 
                 // Set animation
                 SetPlayerSprite(_ENTITY, PlayerRotation, "Death");
-                VI.Animation.CurrentFrame.Set(_ENTITY, 0);
-                VI.Animation.FrameCount.Set(_ENTITY, 11);
+                VI.Animation.SpriteSheet.CurrentFrame.Set(_ENTITY, 0);
+                VI.Animation.SpriteSheet.FrameCount.Set(_ENTITY, 11);
             }
 
             // Check for completion of death animation
-            if (PlayerInDeathAnimation && (VI.Animation.CurrentFrame.Get(_ENTITY) + 1 == VI.Animation.FrameCount.Get(_ENTITY)))
+            if (PlayerInDeathAnimation && (VI.Animation.SpriteSheet.CurrentFrame.Get(_ENTITY) + 1 == VI.Animation.SpriteSheet.FrameCount.Get(_ENTITY)))
             {
                 // Assumes the main game scene level running is the same as the gamestate name
                 VI.Scene.Pause(VI.GameState.GetName());     // Pause current scene
@@ -211,21 +211,21 @@ namespace BonVoyage {
                 _rotation += 2 * (float)Pi;
 
             if (_rotation >= 15f * MiniAngle || _rotation <= MiniAngle)
-                VI.Animation.SheetIndex.Set(_eID, InitialStatus - 2);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 2);
             else if (_rotation <= 3f * MiniAngle)
-                VI.Animation.SheetIndex.Set(_eID, InitialStatus - 3);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 3);
             else if (_rotation <= 5f * MiniAngle)
-                VI.Animation.SheetIndex.Set(_eID, InitialStatus - 4);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 4);
             else if (_rotation <= 7f * MiniAngle)
-                VI.Animation.SheetIndex.Set(_eID, InitialStatus - 5);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 5);
             else if (_rotation <= 9f * MiniAngle)
-                VI.Animation.SheetIndex.Set(_eID, InitialStatus - 6);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 6);
             else if (_rotation <= 11f * MiniAngle)
-                VI.Animation.SheetIndex.Set(_eID, InitialStatus - 7);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 7);
             else if (_rotation <= 13f * MiniAngle)
-                VI.Animation.SheetIndex.Set(_eID, InitialStatus - 8);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 8);
             else
-                VI.Animation.SheetIndex.Set(_eID, InitialStatus - 1);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 1);
         }
 
         public void ApplyForce(int _eID, float _x, float _y, float _multiplier)

@@ -42,6 +42,9 @@ namespace BonVoyage {
             PlayerPosX = VI.Transform.Position.s_GetX("Boat");
             PlayerPosY = VI.Transform.Position.s_GetY("Boat");
 
+            Console.WriteLine(PlayerPosX);
+            Console.WriteLine(PlayerPosY);
+
             float EnemyChangeInX = 0;
             float EnemyChangeInY = 0;
             float EnemyPosX = THIS.Transform.Position.GetX();
