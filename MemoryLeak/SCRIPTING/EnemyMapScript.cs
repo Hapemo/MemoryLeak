@@ -63,8 +63,8 @@ namespace BonVoyage {
                     VI.Entity.s_SetActive("playerbig", "EnemyMap", false);
                 }
             }
-            float posx = VI.Transform.Scale.GetX(VI.Entity.GetId("Enemy", "Level1")) - VI.Transform.Scale.GetX(VI.Entity.GetId("Boat", "Level1"));
-            float posy = VI.Transform.Scale.GetY(VI.Entity.GetId("Enemy", "Level1")) - VI.Transform.Scale.GetY(VI.Entity.GetId("Boat", "Level1"));
+            float posx = VI.Transform.Position.GetX(VI.Entity.GetId("Enemy", "Level1")) - VI.Transform.Position.GetX(VI.Entity.GetId("Boat", "Level1"));
+            float posy = VI.Transform.Position.GetY(VI.Entity.GetId("Enemy", "Level1")) - VI.Transform.Position.GetY(VI.Entity.GetId("Boat", "Level1"));
             if (posx > MapX / 4 || posy > MapY / 4)
             {
                 VI.Entity.s_SetActive("enemy", "EnemyMap", false);
@@ -72,10 +72,10 @@ namespace BonVoyage {
             else
             {
                 VI.Entity.s_SetActive("enemy", "EnemyMap", true);
-                float eposx = VI.Transform.Scale.GetX(VI.Entity.GetId("player", "EnemyMap")) + (posx * (miniMapX / MapX));
-                float eposy = VI.Transform.Scale.GetY(VI.Entity.GetId("player", "EnemyMap")) + (posy * (miniMapY / MapY));
-                VI.Transform.Scale.SetX(VI.Entity.GetId("enemy", "EnemyMap"), eposx);
-                VI.Transform.Scale.SetY(VI.Entity.GetId("enemy", "EnemyMap"), eposy);
+                float eposx = VI.Transform.Position.GetX(VI.Entity.GetId("player", "EnemyMap")) + (posx * (miniMapX / MapX));
+                float eposy = VI.Transform.Position.GetY(VI.Entity.GetId("player", "EnemyMap")) + (posy * (miniMapY / MapY));
+                VI.Transform.Position.SetX(VI.Entity.GetId("enemy", "EnemyMap"), eposx);
+                VI.Transform.Position.SetY(VI.Entity.GetId("enemy", "EnemyMap"), eposy);
             }
             if (big)
             { 
@@ -86,10 +86,10 @@ namespace BonVoyage {
                 else
                 {
                     VI.Entity.s_SetActive("enemybig", "EnemyMap", true);
-                    float eposx = VI.Transform.Scale.GetX(VI.Entity.GetId("playerbig", "EnemyMap")) + (posx * (expMapX / MapX));
-                    float eposy = VI.Transform.Scale.GetY(VI.Entity.GetId("playerbig", "EnemyMap")) + (posy * (expMapY / MapY));
-                    VI.Transform.Scale.SetX(VI.Entity.GetId("enemybig", "EnemyMap"), eposx);
-                    VI.Transform.Scale.SetY(VI.Entity.GetId("enemybig", "EnemyMap"), eposy);
+                    float eposx = VI.Transform.Position.GetX(VI.Entity.GetId("playerbig", "EnemyMap")) + (posx * (expMapX / MapX));
+                    float eposy = VI.Transform.Position.GetY(VI.Entity.GetId("playerbig", "EnemyMap")) + (posy * (expMapY / MapY));
+                    VI.Transform.Position.SetX(VI.Entity.GetId("enemybig", "EnemyMap"), eposx);
+                    VI.Transform.Position.SetY(VI.Entity.GetId("enemybig", "EnemyMap"), eposy);
                 }
             }
         }
