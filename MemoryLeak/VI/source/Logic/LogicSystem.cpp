@@ -55,6 +55,14 @@ void LogicSystem::Init() {
 
 /*!*****************************************************************************
 \brief
+Run the early update function for all active entities' scripts.
+*******************************************************************************/
+void LogicSystem::EarlyUpdate() {
+	for (Entity const& e : mEntities) EarlyUpdate(e);
+}
+
+/*!*****************************************************************************
+\brief
 Run the update function for all active entities' scripts.
 *******************************************************************************/
 void LogicSystem::Update() {
@@ -67,6 +75,14 @@ Run the fixed update function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::FixedUpdate() {
 	for (Entity const& e : mEntities) FixedUpdate(e);
+}
+
+/*!*****************************************************************************
+\brief
+Run the late update function for all active entities' scripts.
+*******************************************************************************/
+void LogicSystem::LateUpdate() {
+	for (Entity const& e : mEntities) LateUpdate(e);
 }
 
 /*!*****************************************************************************
@@ -105,6 +121,14 @@ void LogicSystem::Init(std::set<Entity> const& _entities) {
 
 /*!*****************************************************************************
 \brief
+Run the early update function for all entities' scripts given by the parameter.
+*******************************************************************************/
+void LogicSystem::EarlyUpdate(std::set<Entity> const& _entities) {
+	for (Entity const& e : _entities) EarlyUpdate(e);
+}
+
+/*!*****************************************************************************
+\brief
 Run the update function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::Update(std::set<Entity> const& _entities) {
@@ -117,6 +141,14 @@ Run the fixed update function for all entities' scripts given by the parameter.
 *******************************************************************************/
 void LogicSystem::FixedUpdate(std::set<Entity> const& _entities) {
 	for (Entity const& e : _entities) FixedUpdate(e);
+}
+
+/*!*****************************************************************************
+\brief
+Run the late update function for all entities' scripts given by the parameter.
+*******************************************************************************/
+void LogicSystem::LateUpdate(std::set<Entity> const& _entities) {
+	for (Entity const& e : _entities) LateUpdate(e);
 }
 
 /*!*****************************************************************************
@@ -153,6 +185,14 @@ void LogicSystem::Init(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
+Run the early update function for entity.
+*******************************************************************************/
+void LogicSystem::EarlyUpdate(Entity const& _e) {
+	RunScript(_e, E_SCRIPTTYPE::EARLY_UPDATE);
+}
+
+/*!*****************************************************************************
+\brief
 Run the update function for entity.
 *******************************************************************************/
 void LogicSystem::Update(Entity const& _e) {
@@ -177,6 +217,14 @@ void LogicSystem::FixedUpdate(Entity const& _e) {
 		RunScript(_e, E_SCRIPTTYPE::FIXED_UPDATE);
 		mAccumulatedDT -= mFixedDT;
 	}
+}
+
+/*!*****************************************************************************
+\brief
+Run the late update function for entity.
+*******************************************************************************/
+void LogicSystem::LateUpdate(Entity const& _e) {
+	RunScript(_e, E_SCRIPTTYPE::LATE_UPDATE);
 }
 
 /*!*****************************************************************************
@@ -221,12 +269,20 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Init(_e);
 			break;
 
+		case E_SCRIPTTYPE::EARLY_UPDATE:
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->EarlyUpdate(_e);
+			break;
+
 		case E_SCRIPTTYPE::UPDATE:
 			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->Update(_e);
 			break;
 
 		case E_SCRIPTTYPE::FIXED_UPDATE:
 			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->FixedUpdate(_e);
+			break;
+
+		case E_SCRIPTTYPE::LATE_UPDATE:
+			ScriptManager<ScriptComponent>::GetInstance()->GetScript(scriptName)->LateUpdate(_e);
 			break;
 
 		case E_SCRIPTTYPE::EXIT:
@@ -261,12 +317,20 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 			MonoManager::GetInstance()->CallMethod(scriptName, "Init", 1, params);
 			break;
 
+		case E_SCRIPTTYPE::EARLY_UPDATE:
+			MonoManager::GetInstance()->CallMethod(scriptName, "EarlyUpdate", 1, params);
+			break;
+
 		case E_SCRIPTTYPE::UPDATE:
 			MonoManager::GetInstance()->CallMethod(scriptName, "Update", 1, params);
 			break;
 
 		case E_SCRIPTTYPE::FIXED_UPDATE:
 			MonoManager::GetInstance()->CallMethod(scriptName, "FixedUpdate", 1, params);
+			break;
+
+		case E_SCRIPTTYPE::LATE_UPDATE:
+			MonoManager::GetInstance()->CallMethod(scriptName, "LateUpdate", 1, params);
 			break;
 
 		case E_SCRIPTTYPE::EXIT:
@@ -287,5 +351,5 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 	}
 
 	// Script doesnt exist
-	LOG_ERROR("Script failed to attach or doesn't exist!");
+	//LOG_ERROR(scriptName + " Script failed to attach or doesn't exist!");
 }

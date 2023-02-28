@@ -44,6 +44,7 @@ RenderManager::RenderManager()
 	mDebug = false;
 	mRenderLayers.reserve(MAX_SCENE_LAYERS * MAX_LAYERS_PER_SCENE);
 	mIsCurrSceneUI = false;
+	mIsCurrSceneMinimap = 0;
 }
 
 /*!*****************************************************************************
@@ -577,12 +578,12 @@ void RenderManager::RenderDebug()
 
 			if (e.HasComponent<ShadowCaster>() && e.GetComponent<ShadowCaster>().renderFlag)
 			{
-				Transform t = e.GetComponent<Transform>();
-				t.translation += e.GetComponent<ShadowCaster>().centerOffset;
-				t.scale.x *= e.GetComponent<ShadowCaster>().scaleOffset.x;
-				t.scale.y *= e.GetComponent<ShadowCaster>().scaleOffset.y;
-				t.rotation = 0;
-				CreateDebugSquare(t, { 50, 50, 50, 255 });
+				for (const Math::Vec2& pt : e.GetComponent<ShadowCaster>().centerOffset)
+				{
+					Transform t = e.GetComponent<Transform>();
+					t.translation += Math::Vec2(pt.x, pt.y);
+					CreateDebugPoint(t, { 0, 255, 0, 255 });
+				}
 			}
 
 			//check if sprite component itself is a debug drawing
@@ -776,9 +777,16 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 		{
 			for (Entity e : scene.mEntities)
 			{
+				if (!e.HasComponent<Viewport>()) continue;
+				mIsCurrSceneMinimap = (float)e.GetComponent<Viewport>().width / (float)*mWindowWidth;
+			}
+			if (!mIsCurrSceneMinimap) return;
+			for (Entity e : scene.mEntities)
+			{
 				if (!e.GetComponent<General>().isActive) continue;
 				if (!e.ShouldRun()) continue;
-				if (e.HasComponent<CircularViewport>()) continue;
+				if (e.HasComponent<Viewport>()) continue;
+				if (e.GetComponent<General>().name == "Boat") continue;
 				if (e.HasComponent<Sprite>())
 				{
 					Sprite sprite = e.GetComponent<Sprite>();
@@ -800,6 +808,8 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 					}
 				}
 			}
+			mIsCurrSceneMinimap = 0;
+
 			break;
 		}
 	}
@@ -870,6 +880,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			mIsCurrSceneUI = false;
 		for (Entity e : scene.mEntities)
 		{
+			std::string name = e.GetComponent<General>().name;
 			if (!e.GetComponent<General>().isActive) continue;
 			if (!e.ShouldRun()) continue;
 			if (e.HasComponent<LightSource>())
@@ -892,6 +903,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 							if (i->GetEntityID() != e.id)
 								break;
 						Sprite sprite = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite;
+						sprite.color = i->GetColor();
 						if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())
 							mRenderLayers.push_back(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE);
 						switch (sprite.sprite)
@@ -930,7 +942,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				}
 			}
 
-			if (e.HasComponent<CircularViewport>())
+			if (e.HasComponent<Viewport>())
 			{
 				if (!e.HasComponent<Sprite>()) continue;
 				Sprite sprite = e.GetComponent<Sprite>();
@@ -939,16 +951,32 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 				GLuint texid = mMinimapFBO.GetColorAttachment();
 				if (texid != 0)
 				{
-					if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
-					if (_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
-						== _cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
-					{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+					if (e.GetComponent<Viewport>().viewport == VIEWPORT::CIRCULAR)
+					{
+						if (_cvpInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _cvpInfo.end())
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+						if (_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+							== _cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
 
-					CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
-						_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+						CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+							_cvpInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+					}
+					else
+					{
+						if (_texInfo.find(sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == _texInfo.end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE] = std::map<GLuint, TextureInfo>();
+						if (_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].find(texid)
+							== _texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE].end())
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid] =
+						{ (int)texid - 1, std::vector<Vertex>(), std::vector<GLushort>() };
+
+						CreateMinimapVertices(e, sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE,
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mVertices,
+							_texInfo[sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE][texid].mIndices, texid);
+					}
 				}
 			}
 			else if (e.HasComponent<Sprite>())
@@ -1742,7 +1770,7 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	float sinRot = sinf(_rotate);
 
 	Math::Vec2 camPos = mIsCurrSceneUI ? Math::Vec2{0, 0} : cam.GetPos();
-	float camZoom = mIsCurrSceneUI ? 1.f : cam.GetZoom();
+	float camZoom = mIsCurrSceneMinimap ? mIsCurrSceneMinimap : mIsCurrSceneUI ? 1.f : cam.GetZoom();
 
 	Math::Mat3 temp
 	{

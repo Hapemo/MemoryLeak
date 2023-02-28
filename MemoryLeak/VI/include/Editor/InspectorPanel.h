@@ -44,7 +44,7 @@ private:
 	void LayerColliderEditor();
 	void LightSourceEditor();
 	void ShadowCasterEditor();
-	void CircularViewportEditor();
+	void ViewportEditor();
 	void MovementAIEditor();
 
 	void AddPrefabComponent();
@@ -68,8 +68,8 @@ private:
 	int addComponentID{};
 	const char* componentsList[22]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
 				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "Button" ,"LayerCollider", 
-		"LightSource", "ShadowCaster","CircularViewport", "MovementAI"};
-
+		"LightSource", "ShadowCaster","Viewport", "MovementAI"};
+	const char* type[2]{ "RECTANGULAR", "CIRCULAR" };
 
 	/*typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 		Physics2D, RectCollider, CircleCollider, Edge2DCollider,

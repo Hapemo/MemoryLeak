@@ -370,6 +370,22 @@ public:
 		static int GetFrameCount(const int _eId);
 		static void SetFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count);
 		static int GetFrameCount(std::string const& _entityName, std::string const& _sceneName);
+
+		/*!*****************************************************************************
+		\brief
+		Movement animation
+		*******************************************************************************/
+		static void Start(int _eId);
+		static bool SetNext(int _eId, int _i); // return true if successful (withing 0 to the vector MAX)
+		static void Stop(int _eId, bool _next = true);
+		static void StopAfterEndLoop(int _eId, bool _loop = true);
+		static void ReverseOrder(int _eId, bool _reverse = true);
+		static void SetLoopCycle(int _eId, bool _cycle = true);
+		static void AddTransform(int _eId, float _posX, float _posY, float _scaleX, float _scaleY, float _rot, float _time = 1);
+		static void AddTransformDifference(int _eId, float _posX, float _posY, float _scaleX, float _scaleY, float _rot, float _time = 1);
+		static void SetCalculatedTimeFromPosition(int _eId, float _posX, float _posY, int _step = -1);
+		static void SetCalculatedTimeFromRotation(int _eId, float _rot, int _step = -1);
+		static void SetCalculatedTimeFromScale(int _eId, float _scaleX, float _scaleY, int _step = -1);
 	};
 
 	struct iTexture {
@@ -384,6 +400,13 @@ public:
 		static std::string GetTexture(const int _eId);
 		static void SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
 		static std::string GetTexture(std::string const& _entityName, std::string const& _sceneName);
+
+		static int GetLayer(const Entity& _e);
+		static void SetLayer(const Entity& _e, int layer);
+		static int GetLayer(const int _eId);
+		static void SetLayer(const int _eId, int layer);
+		static int GetLayer(std::string const& _entityName, std::string const& _sceneName);
+		static void SetLayer(std::string const& _entityName, std::string const& _sceneName, int layer);
 	};
 
 	struct iAudio {

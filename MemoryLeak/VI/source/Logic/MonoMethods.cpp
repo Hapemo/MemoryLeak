@@ -93,6 +93,7 @@ bool MonoMethods::iDialogue::IsPlayerCurrentSpeaker() {
 }
 
 int MonoMethods::iDialogue::GetNextId() {
+	LOG_INFO("Ran monomethod getnextid");
 	return VI::iDialogue::GetNextId(VI::iDialogue::GetCurrentId());
 }
 MonoString* MonoMethods::iDialogue::GetNext() {
@@ -233,6 +234,19 @@ void MonoMethods::iTexture::SetTexture(const int _eId, MonoString* _path) {
 }
 MonoString* MonoMethods::iTexture::GetTexture(const int _eId) {
 	return MONO->ConvertToMonoString(VI::iTexture::GetTexture(_eId));
+}
+
+int MonoMethods::iTexture::GetLayer(const int _eId) {
+	return VI::iTexture::GetLayer(_eId);
+}
+int MonoMethods::iTexture::s_GetLayer(MonoString* _entityName, MonoString* _sceneName) {
+	return VI::iTexture::GetLayer(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+void MonoMethods::iTexture::SetLayer(const int _eId, int layer) {
+	VI::iTexture::SetLayer(_eId, layer);
+}
+void MonoMethods::iTexture::s_SetLayer(MonoString* _entityName, MonoString* _sceneName, int layer) {
+	VI::iTexture::SetLayer(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), layer);
 }
 
 // Audio
@@ -409,7 +423,7 @@ void MonoMethods::RegisterCalls() {
 	// Test
 	mono_add_internal_call("VI.Test::ArgString", &FUNC->TestArgString);
 	mono_add_internal_call("VI.Test::ReturnString", &FUNC->TestReturnString);
-	mono_add_internal_call("BonVoyage.THIS::IsActive", &VIM::iEntity::IsActive);
+	//mono_add_internal_call("BonVoyage.THIS::IsActive", &VIM::iEntity::IsActive);
 
 	// General
 	mono_add_internal_call("VI.General::DeltaTime", &FUNC->GetDeltaTime);
@@ -537,12 +551,28 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/FrameCount::Set", &VIM::iAnimation::SetFrameCount);
 	mono_add_internal_call("VI.Animation/FrameCount::Get", &VIM::iAnimation::GetFrameCount);
 
+	mono_add_internal_call("VI.Animation/Transform::Start", &VI::iAnimation::Start);
+	mono_add_internal_call("VI.Animation/Transform::SetNext", &VI::iAnimation::SetNext);
+	mono_add_internal_call("VI.Animation/Transform::Stop", &VI::iAnimation::Stop);
+	mono_add_internal_call("VI.Animation/Transform::StopAfterEndLoop", &VI::iAnimation::StopAfterEndLoop);
+	mono_add_internal_call("VI.Animation/Transform::ReverseOrder", &VI::iAnimation::ReverseOrder);
+	mono_add_internal_call("VI.Animation/Transform::SetLoopCycle", &VI::iAnimation::SetLoopCycle);
+	mono_add_internal_call("VI.Animation/Transform::AddTransform", &VI::iAnimation::AddTransform);
+	mono_add_internal_call("VI.Animation/Transform::AddTransformDifference", &VI::iAnimation::AddTransformDifference);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromPosition", &VI::iAnimation::SetCalculatedTimeFromPosition);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromRotation", &VI::iAnimation::SetCalculatedTimeFromRotation);
+	mono_add_internal_call("VI.Animation/Transform::SetCalculatedTimeFromScale", &VI::iAnimation::SetCalculatedTimeFromScale);
+
 	// Textures
 	mono_add_internal_call("VI.Texture::s_Set", &VIM::iTexture::s_SetTexture);
 	mono_add_internal_call("VI.Texture::s_Get", &VIM::iTexture::s_GetTexture);
 	mono_add_internal_call("VI.Texture::Set", &VIM::iTexture::SetTexture);
 	mono_add_internal_call("VI.Texture::Get", &VIM::iTexture::GetTexture);
 
+	mono_add_internal_call("VI.Texture::GetLayer", &VIM::iTexture::GetLayer);
+	mono_add_internal_call("VI.Texture::SetLayer", &VIM::iTexture::SetLayer);
+	mono_add_internal_call("VI.Texture::s_GetLayer", &VIM::iTexture::s_GetLayer);
+	mono_add_internal_call("VI.Texture::s_SetLayer", &VIM::iTexture::s_SetLayer);
 	// Audio
 	mono_add_internal_call("VI.Audio::Play", &VIM::iAudio::Play);
 	mono_add_internal_call("VI.Audio::PlayOnLoop", &VIM::iAudio::PlayOnLoop);

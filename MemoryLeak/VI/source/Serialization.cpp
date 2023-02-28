@@ -176,15 +176,20 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				e.AddComponent<ShadowCaster>(getShadowCaster(entity[index]));
 			}
-			if (entity[index].HasMember("CircularViewport")) 
+			if (entity[index].HasMember("Viewport")) 
 			{
-				e.AddComponent<CircularViewport>(getCircularViewport(entity[index]));
+				e.AddComponent<Viewport>(getViewport(entity[index]));
 			}
 			if (entity[index].HasMember("MovementAI")) 
 			{
 				e.AddComponent<MovementAI>(getMovementAI(entity[index]));
 			}
-			
+			if (entity[index].HasMember("ParticleInfo"))
+			{
+				ParticleSystem p;
+				p.mParticleInfo = getParticleInfo(entity[index]);
+				e.AddComponent<ParticleSystem>(p);
+			}
 			//mEntities.insert(e);
 			_sceneData.mEntities.insert(e);
 		}
@@ -666,16 +671,21 @@ LightSource SerializationManager::getLightSource(Value& entity)
 ShadowCaster SerializationManager::getShadowCaster(Value& entity)
 {
 	ShadowCaster shadowCaster;
-	shadowCaster.centerOffset = GetVec2(entity["ShadowCaster"]["centerOffset"]);
-	shadowCaster.scaleOffset = GetVec2(entity["ShadowCaster"]["scaleOffset"]);
-	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();
+	Value a(kObjectType);
+	a = entity["ShadowCaster"]["centerOffsets"].GetArray();
+	for (int j = 0; j < (int)a.Size(); ++j)
+	{
+		shadowCaster.centerOffset.push_back(GetVec2(a[j]["centerOffset"]));
+	}
+	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();;
 	return shadowCaster;
 }
-CircularViewport SerializationManager::getCircularViewport(Value& entity)
+Viewport SerializationManager::getViewport(Value& entity)
 {
-	CircularViewport circularViewport;
-	(void)entity;
-	return circularViewport;
+	Viewport viewport;
+	viewport.viewport = static_cast<VIEWPORT>(entity["Viewport"]["viewport"].GetInt());
+	viewport.width = entity["Viewport"]["width"].GetInt();
+	return viewport;
 }
 MovementAI SerializationManager::getMovementAI(Value& entity)
 {
@@ -693,7 +703,7 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 		a = entity["MovementAI"]["targets"].GetArray();
 		for (int j = 0; j < (int)a.Size(); ++j)
 		{
-			float time = a[j]["time"].GetInt();
+			float time = (float)a[j]["time"].GetInt();
 			Transform trans = getTransform(a[j]["Transform"]);
 			movementAI.time.push_back(time);
 			movementAI.targetTransforms.push_back(trans);
@@ -702,7 +712,19 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 
 	return movementAI;
 }
-
+ParticleSystem::ParticleInfo SerializationManager::getParticleInfo(Value& entity)
+{
+	ParticleSystem::ParticleInfo particleInfo;
+	particleInfo.mScale = entity["ParticleInfo"]["mScale"].GetFloat();
+	particleInfo.mFacing = entity["ParticleInfo"]["mFacing"].GetFloat();
+	particleInfo.mLifespan = entity["ParticleInfo"]["mLifespan"].GetFloat();
+	particleInfo.mScale = entity["ParticleInfo"]["mScale"].GetFloat();
+	particleInfo.mSprite = getSprite(entity["ParticleInfo"]);
+	particleInfo.mRotation = entity["ParticleInfo"]["mRotation"].GetFloat();
+	particleInfo.mSpeed = entity["ParticleInfo"]["mSpeed"].GetFloat();
+	particleInfo.mFading = entity["ParticleInfo"]["mFading"].GetBool();
+	return particleInfo;
+}
 
 
 
@@ -939,13 +961,17 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		if (e.HasComponent<ShadowCaster>()){
 			addShadowCaster(scene, entity, e.GetComponent<ShadowCaster>());
 		}
-		if (e.HasComponent<CircularViewport>()) 
+		if (e.HasComponent<Viewport>()) 
 		{
-			addCircularViewport(scene, entity, e.GetComponent<CircularViewport>());
+			addViewport(scene, entity, e.GetComponent<Viewport>());
 		}
 		if (e.HasComponent<MovementAI>()) 
 		{
 			addMovementAI(scene, entity, e.GetComponent<MovementAI>());
+		}
+		if (e.HasComponent<ParticleSystem>())
+		{
+			addParticleInfo(scene, entity, e.GetComponent<ParticleSystem>().mParticleInfo);
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -1255,17 +1281,25 @@ void SerializationManager::addLightSource(Document& scene, Value& entity, LightS
 void SerializationManager::addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster)
 {
 	Value tmp(kObjectType);
-	addVectorMember(scene, tmp, "centerOffset", shadowCaster.centerOffset);
-	addVectorMember(scene, tmp, "scaleOffset", shadowCaster.scaleOffset);
+	Value child(kObjectType);
+	child.SetArray();
+	for (int i = 0; i < shadowCaster.centerOffset.size(); i++)
+	{
+		Value ctrOffset(kObjectType);
+		addVectorMember(scene, ctrOffset, "centerOffset", shadowCaster.centerOffset[i]);
+		child.PushBack(ctrOffset, scene.GetAllocator());
+	}
+	tmp.AddMember(StringRef("centerOffsets"), child, scene.GetAllocator());
 	tmp.AddMember(StringRef("renderFlag"), shadowCaster.renderFlag, scene.GetAllocator());
 	entity.AddMember(StringRef("ShadowCaster"), tmp, scene.GetAllocator());
 }
 
-void SerializationManager::addCircularViewport(Document& scene, Value& entity, CircularViewport circularViewport)
+void SerializationManager::addViewport(Document& scene, Value& entity, Viewport Viewport)
 {
 	Value tmp(kObjectType);
-	(void)circularViewport;
-	entity.AddMember(StringRef("CircularViewport"), tmp, scene.GetAllocator());
+	tmp.AddMember(StringRef("viewport"), static_cast<int>(Viewport.viewport), scene.GetAllocator());
+	tmp.AddMember(StringRef("width"), Viewport.width, scene.GetAllocator());
+	entity.AddMember(StringRef("Viewport"), tmp, scene.GetAllocator());
 }
 void SerializationManager::addMovementAI(Document& scene, Value& entity, MovementAI movementAI)
 {
@@ -1289,6 +1323,23 @@ void SerializationManager::addMovementAI(Document& scene, Value& entity, Movemen
 	tmp.AddMember(StringRef("targets"), child, scene.GetAllocator());
 	entity.AddMember(StringRef("MovementAI"), tmp, scene.GetAllocator());
 }
+void SerializationManager::addParticleInfo(Document& scene, Value& entity, ParticleSystem::ParticleInfo particleInfo)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("mScale"), particleInfo.mScale, scene.GetAllocator());
+	tmp.AddMember(StringRef("mFacing"), particleInfo.mFacing, scene.GetAllocator());
+	tmp.AddMember(StringRef("mLifespan"), particleInfo.mLifespan, scene.GetAllocator());
+	addSprite(scene, entity, particleInfo.mSprite);
+	tmp.AddMember(StringRef("mRotation"), particleInfo.mRotation, scene.GetAllocator());
+	tmp.AddMember(StringRef("mSpeed"), particleInfo.mSpeed, scene.GetAllocator());
+	tmp.AddMember(StringRef("mFading"), particleInfo.mFading, scene.GetAllocator());
+	entity.AddMember(StringRef("ParticleInfo"), tmp, scene.GetAllocator());
+}
+
+
+
+
+
 /*!*****************************************************************************
 \brief
 	Load the saved gamestate data

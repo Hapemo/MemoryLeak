@@ -17,16 +17,22 @@ namespace BonVoyage {
     public class MiniMapScript
     {
         static bool init = true;
-        static bool big = false;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            VI.Entity.s_SetActive("minimapbig", "WeatherMap", false);
+            VI.Entity.s_SetActive("minimap", "WeatherMap", false);
+            VI.Entity.s_SetActive("minimaphead", "WeatherMap", false);
         }
 
         public void Init(int _ENTITY) {
+            VI.Entity.s_SetActive("minimap", "WeatherMap", true);
+            VI.Entity.s_SetActive("minimapbig", "WeatherMap", true);
+            VI.Entity.s_SetActive("minimaphead", "WeatherMap", true);
 
-            VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
         }
+
+        public void EarlyUpdate(int _ENTITY) { }
 
         public void Update(int _ENTITY) {
             if (init)
@@ -35,17 +41,17 @@ namespace BonVoyage {
                 
             }
             //////////////////////////////////////////////init
-            if ((VI.Input.Button.s_Released("minimap", "MiniMap")) == true)
+            VI.Entity.s_SetActive("minimaphead", "WeatherMap", true);
+            VI.Entity.s_SetActive("minimap", "WeatherMap", true);
+
+            ///
+            if (CrystalBallScript.Big())
             {
-                big = !big;
-                if (big)
-                {
-                    VI.Entity.s_SetActive("minimapbig", "MiniMap", true);
-                }
-                else
-                {
-                    VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
-                }
+                VI.Entity.s_SetActive("minimapbig", "WeatherMap", true);
+            }
+            else
+            {
+                VI.Entity.s_SetActive("minimapbig", "WeatherMap", false);
             }
 
         }
@@ -54,9 +60,13 @@ namespace BonVoyage {
 
         }
 
+        public void LateUpdate(int _ENTITY) { }
+
         public void Exit(int _ENTITY) {
-            big = false;
-            VI.Entity.s_SetActive("minimapbig", "MiniMap", false);
+            VI.Entity.s_SetActive("minimap", "WeatherMap", false);
+            VI.Entity.s_SetActive("minimapbig", "WeatherMap", false);
+            VI.Entity.s_SetActive("minimaphead", "WeatherMap", false);
+
         }
 
         public void Dead(int _ENTITY) {

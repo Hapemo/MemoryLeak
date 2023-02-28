@@ -22,25 +22,6 @@ Entities and its Components.
 #include "stringbuffer.h"
 #include <prettywriter.h>
 
-
-// Data that a scene class should contain
-//struct SceneData {
-//	std::string name = "";
-//	Transform camera = {};
-//	bool isActive = false;
-//	int layer =0;
-//	int order = 0;;
-//	std::set<Entity> mEntities = {};
-//};
-//
-////Data that a gamestate class should contain
-//struct GameStateData {
-//	std::string name = "";
-//	std::vector<SceneData> scenes = {};
-//
-//	///
-//	std::vector<ResourceManager::GUID> mGUIDs;
-//};
 class Scene;
 class GameState;
 using namespace rapidjson;
@@ -120,8 +101,9 @@ private:
 	Button getButton(Value& entity);
 	LightSource getLightSource(Value& entity);
 	ShadowCaster getShadowCaster(Value& entity);
-	CircularViewport getCircularViewport(Value& entity);
+	Viewport getViewport(Value& entity);
 	MovementAI getMovementAI(Value& entity);
+	ParticleSystem::ParticleInfo getParticleInfo(Value& entity);
 	//save components 
 	void addGeneral(Document& scene, Value& entity, General general);
 	void addLifespan(Document& scene, Value& entity, Lifespan lifespan);
@@ -143,15 +125,9 @@ private:
 	void addButton(Document& scene, Value& entity, Button button);
 	void addLightSource(Document& scene, Value& entity, LightSource lightSource);
 	void addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster);
-	void addCircularViewport(Document& scene, Value& entity, CircularViewport circularViewport);
+	void addViewport(Document& scene, Value& entity, Viewport Viewport);
 	void addMovementAI(Document& scene, Value& entity, MovementAI movementAI);
-public:
-	//static SceneData LoadSceneData(ResourceManager::GUID const& _guid);
-	//static SceneData LoadSceneData(std::string const& _filePath);
-	//static GameStateData LoadGameStateData(ResourceManager::GUID const& _guid); // (Deprecated)
-	//static GameStateData LoadGameStateData(std::string const& _filePath); // (Deprecated)
-	//static void SaveSceneData(ResourceManager::GUID const&);
-
+	void addParticleInfo(Document& scene, Value& entity, ParticleSystem::ParticleInfo particleInfo);
 };
 
 

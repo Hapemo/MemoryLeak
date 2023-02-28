@@ -20,8 +20,10 @@ public:
 	enum class E_SCRIPTTYPE {
 		ALIVE,
 		INIT,
+		EARLY_UPDATE,
 		UPDATE,
 		FIXED_UPDATE,
+		LATE_UPDATE,
 		EXIT,
 		DEAD,
 	};
@@ -66,6 +68,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Run the early update function for all active entities' scripts.
+	*******************************************************************************/
+	void EarlyUpdate();
+
+	/*!*****************************************************************************
+	\brief
 	Run the update function for all active entities' scripts.
 	*******************************************************************************/
 	void Update();
@@ -75,6 +83,12 @@ public:
 	Run the fixed update function for all active entities' scripts.
 	*******************************************************************************/
 	void FixedUpdate();
+
+	/*!*****************************************************************************
+	\brief
+	Run the late update function for all active entities' scripts.
+	*******************************************************************************/
+	void LateUpdate();
 
 	/*!*****************************************************************************
 	\brief
@@ -102,6 +116,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Run the early update function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void EarlyUpdate(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
 	Run the update function for all entities' scripts given by the parameter.
 	*******************************************************************************/
 	void Update(std::set<Entity> const& _entities);
@@ -111,6 +131,12 @@ public:
 	Run the fixed update function for all entities' scripts given by the parameter.
 	*******************************************************************************/
 	void FixedUpdate(std::set<Entity> const& _entities);
+
+	/*!*****************************************************************************
+	\brief
+	Run the late update function for all entities' scripts given by the parameter.
+	*******************************************************************************/
+	void LateUpdate(std::set<Entity> const& _entities);
 
 	/*!*****************************************************************************
 	\brief
@@ -138,6 +164,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Run the early update function for entity.
+	*******************************************************************************/
+	void EarlyUpdate(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
 	Run the update function for entity.
 	*******************************************************************************/
 	void Update(Entity const& _e);
@@ -147,6 +179,12 @@ public:
 	Run the fixed update function for entity.
 	*******************************************************************************/
 	void FixedUpdate(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Run the late update function for entity.
+	*******************************************************************************/
+	void LateUpdate(Entity const& _e);
 
 	/*!*****************************************************************************
 	\brief

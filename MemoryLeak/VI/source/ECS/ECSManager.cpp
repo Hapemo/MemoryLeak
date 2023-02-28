@@ -163,7 +163,6 @@ void ECSManager::RegisterLogicSystem() {
 void ECSManager::RegisterShadowManager() {
 	Signature signature;
 	signature.set(ECS::GetComponentType<General>());
-	signature.set(ECS::GetComponentType<Sprite>());
 	signature.set(ECS::GetComponentType<ShadowCaster>());
 
 	shadowManager = ECS::RegisterSystem<ShadowManager>();
@@ -245,7 +244,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<LightSource>();
 	ECS::RegisterComponent<Button>();
 	ECS::RegisterComponent<ShadowCaster>();
-	ECS::RegisterComponent<CircularViewport>();
+	ECS::RegisterComponent<Viewport>();
 	ECS::RegisterComponent<MovementAI>();
 	ECS::RegisterComponent<ParticleSystem>();
 

@@ -19,5 +19,5 @@ constexpr size_t INDICES_PER_OBJECT = 6;
 constexpr size_t TEXTURES_PER_DRAW = 16;
 
 constexpr int MAX_SCENE_LAYERS = 16;
-constexpr int SHADOW_SCENE_LAYER = 7;
+constexpr int SHADOW_SCENE_LAYER = 1;
 constexpr int MAX_LAYERS_PER_SCENE = 64;

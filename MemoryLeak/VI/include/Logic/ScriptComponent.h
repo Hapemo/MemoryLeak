@@ -48,15 +48,31 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Update script to run every update function call.
+	Function will run on every update while the entity is active.
+	*******************************************************************************/
+	virtual void EarlyUpdate(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Update script to run every update function call while the entity is active after
+	running all EarlyUpdate	functions from all other active scripts.
 	*******************************************************************************/
 	virtual void Update(Entity const& _e);
 
 	/*!*****************************************************************************
 	\brief
-	Fixed update script to run on fixed delta time.
+	Fixed update script to run on fixed delta time after running all EarlyUpdate
+	and Update functions from all other active scripts.
 	*******************************************************************************/
 	virtual void FixedUpdate(Entity const& _e);
+
+	/*!*****************************************************************************
+	\brief
+	Late update script will run on every update while the entity is active after
+	running all	EarlyUpdate, Update, and FixedUpdate functions from all other active
+	scripts.
+	*******************************************************************************/
+	virtual void LateUpdate(Entity const& _e);
 
 	/*!*****************************************************************************
 	\brief

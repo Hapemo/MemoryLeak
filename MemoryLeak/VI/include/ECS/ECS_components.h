@@ -354,12 +354,14 @@ struct LightSource
 
 struct ShadowCaster
 {
-	Math::Vec2 centerOffset = { 0.f, 0.f },	// save, edit, see
-		scaleOffset = { 1.f,1.f };		// save, edit, see
+	std::vector<Math::Vec2> centerOffset;
 	bool renderFlag{ false };				// save, edit, see
 };
 
-struct CircularViewport {};
+struct Viewport {
+	VIEWPORT viewport;
+	int width;
+};
 
 struct ParticleSystem {
 	// Information of particle to generate
@@ -371,7 +373,11 @@ struct ParticleSystem {
 		float mRotation;			// Particle's rotation per second (in degrees)
 		float mSpeed;					// Speed of particle
 		bool mFading;					// Boolean value to determine if the color fades as it travels
-		int mLayer;						// Particle's layer
+
+		ParticleInfo() = default;
+		ParticleInfo( float _Scale, float _Facing, float _Lifespan, Sprite _Sprite, float _Rotation, float _Speed, bool _Fading ) : 
+			mScale(_Scale), mFacing(_Facing), mLifespan(_Lifespan), mSprite(_Sprite), mRotation(_Rotation), mSpeed(_Speed), mFading(_Fading)
+		{}
 	} mParticleInfo;
 
 	int mDensity = 0;													// Amount of particles to generate
@@ -381,6 +387,18 @@ struct ParticleSystem {
 	float mSpread = 0;												// Angle in degrees, to spread the particles in a cone shape (360 degrees will spread all around evenly)
 	float mDuration = 0;											// Duration to run the generator for. Particle system will stop generating once this number hits 0 or less
 	bool mIsActive = false;										// Active state of the particle generator
+	float mSlow = 0;													// Slow states that particle will only generate every indicated seconds instead of every frames
+
+	float& SlowTracker() { return mSlowTracker; }
+	ParticleSystem() = default;
+	ParticleSystem( ParticleInfo _ParticleInfo, int _Density, Math::Vec2 _Center, float _AreaWidth,
+									Math::Vec2 _Direction, float _Spread, float _Duration, bool _IsActive, float _Slow ) :
+		mParticleInfo( _ParticleInfo ), mDensity(_Density), mCenter(_Center), mAreaWidth(_AreaWidth), 
+		mDirection(_Direction), mSpread(_Spread), mDuration(_Duration), mIsActive(_IsActive), mSlow(_Slow), mSlowTracker()
+	{}
+
+private:
+	float mSlowTracker = 0;										// Track the duration for particle to spawn if slow
 };
 
 //use to index the variant data type, for ditor and serilization to determine type stored
@@ -406,12 +424,12 @@ enum class COMPONENTID
 	LAYERCOLLIDER,	//17
 	LIGHTSOURCE,	//18
 	SHADOWCASTER,	//19
-	CIRCULARVIEWPORT,//20
+	Viewport,//20
 	MOVEMENTAI      //21
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, CircularViewport, MovementAI>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, Viewport, MovementAI>  COMPONENT;
 
 
 

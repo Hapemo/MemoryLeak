@@ -31,7 +31,12 @@ void main (void) {
 	{
 		if (distance(vec2(0.5, 0.5), vTexCoord) > 0.5)
 			return;
+		fFragColor = texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
 	}
-	fFragColor = texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
-	fFragColor =  fFragColor * vColor;
+	else
+	{
+		fFragColor = texture(uTex2D[(int(vTexID) - 1) % 16], vTexCoord);
+		fFragColor =  fFragColor * vColor;
+	}
+
 }

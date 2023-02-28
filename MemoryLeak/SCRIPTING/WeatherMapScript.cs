@@ -19,16 +19,12 @@ namespace BonVoyage {
     public class WeatherMapScript
     {
         static bool init = true;
-        static bool big = false;
         private float maxMapX, maxMapY;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-        }
 
-        public void Init(int _ENTITY) {
-            
-            VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
+            VI.Entity.s_SetActive("weathermap", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
                 int modI = i % 5;
@@ -53,28 +49,67 @@ namespace BonVoyage {
                 init = false;
             }
         }
-        public void Update(int _ENTITY) {
-            if ((VI.Input.Button.s_Released("weathermap", "WeatherMap")) == true)
+
+        public void EarlyUpdate(int _ENTITY) { }
+
+        public void Init(int _ENTITY) {
+            VI.Entity.s_SetActive("weathermap", "WeatherMap", true);
+            for (int i = 0; i < 25; i++)
             {
-                big = !big;
-                
-                if (big)
+                int modI = i % 5;
+                int divI = i / 5;
+                if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
                 {
-                    VI.Entity.s_SetActive("weathermapbig", "WeatherMap", true);
-                    for (int i = 0; i < 25; i++)
-                    {
-                        string EIcon = "EIcon" + i;
-                        VI.Entity.s_SetActive(EIcon, "WeatherMap", true);
-                    }
+                    string MIcon = "MIcon" + i;
+                    VI.Entity.s_SetActive(MIcon, "WeatherMap", true);
                 }
-                else
+            }
+            if (CrystalBallScript.Big())
+            {
+                VI.Entity.s_SetActive("weathermapbig", "WeatherMap", true);
+                for (int i = 0; i < 25; i++)
                 {
-                    VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
-                    for (int i = 0; i < 25; i++)
-                    {
-                        string EIcon = "EIcon" + i;
-                        VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
-                    }
+                    string EIcon = "EIcon" + i;
+                    VI.Entity.s_SetActive(EIcon, "WeatherMap", true);
+                }
+            }
+        }
+        public void Update(int _ENTITY) {
+            for (int i = 0; i < 25; i++)
+            {
+                int modI = i % 5;
+                int divI = i / 5;
+                int index = VI.Weather.GetCurrent(i,
+                    VI.Transform.Position.s_GetX("Boat", "Level1"),
+                    VI.Transform.Position.s_GetY("Boat", "Level1"));
+                if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
+                {
+                    string MIcon = "MIcon" + i;
+                    VI.Animation.SheetIndex.s_Set(MIcon, "WeatherMap", index);
+                    VI.Entity.s_SetActive(MIcon, "WeatherMap", true);
+                }
+                if (CrystalBallScript.Big())
+                {
+                    string EIcon = "EIcon" + i;
+                    VI.Animation.SheetIndex.s_Set(EIcon, "WeatherMap", index);
+                }
+            }
+            if (CrystalBallScript.Big())
+            {
+                VI.Entity.s_SetActive("weathermapbig", "WeatherMap", true);
+                for (int i = 0; i < 25; i++)
+                {
+                    string EIcon = "EIcon" + i;
+                    VI.Entity.s_SetActive(EIcon, "WeatherMap", true);
+                }
+            }
+            else
+            {
+                VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
+                for (int i = 0; i < 25; i++)
+                {
+                    string EIcon = "EIcon" + i;
+                    VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
                 }
             }
             for (int i = 0; i < 25; i++)
@@ -89,7 +124,7 @@ namespace BonVoyage {
                     VI.Animation.SheetIndex.s_Set(MIcon, "WeatherMap", index);
                     VI.Entity.s_SetActive(MIcon, "WeatherMap", true);
                 }
-                if (big)
+                if (CrystalBallScript.Big())
                 {
                     string EIcon = "EIcon" + i;
                     VI.Animation.SheetIndex.s_Set(EIcon, "WeatherMap", index);
@@ -103,8 +138,20 @@ namespace BonVoyage {
 
         }
 
+        public void LateUpdate(int _ENTITY) { }
+
         public void Exit(int _ENTITY) {
-            big = false;
+            VI.Entity.s_SetActive("weathermap", "WeatherMap", false);
+            for (int i = 0; i < 25; i++)
+            {
+                int modI = i % 5;
+                int divI = i / 5;
+                if (modI != 0 && modI != 4 && divI != 0 && divI != 4)
+                {
+                    string MIcon = "MIcon" + i;
+                    VI.Entity.s_SetActive(MIcon, "WeatherMap", false);
+                }
+            }
             VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {

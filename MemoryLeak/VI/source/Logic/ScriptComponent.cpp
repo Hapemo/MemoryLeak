@@ -33,7 +33,16 @@ void ScriptComponent::Init(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
-Update script to run every update function call.
+Update script to run every update function call while the entity is active.
+*******************************************************************************/
+void ScriptComponent::EarlyUpdate(Entity const& _e) {
+	(void)_e;
+}
+
+/*!*****************************************************************************
+\brief
+Update script to run every update function call while the entity is active after
+running all EarlyUpdate	functions from all other active scripts.
 *******************************************************************************/
 void ScriptComponent::Update(Entity const& _e) {
 	(void)_e;
@@ -42,11 +51,22 @@ void ScriptComponent::Update(Entity const& _e) {
 
 /*!*****************************************************************************
 \brief
-Fixed update script to run on fixed delta time.
+Fixed update script to run on fixed delta time after running all EarlyUpdate
+and Update functions from all other active scripts.
 *******************************************************************************/
 void ScriptComponent::FixedUpdate(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("Base script fixed delta time works!!!");
+}
+
+/*!*****************************************************************************
+\brief
+Update script to run every update function call while the entity is active after
+running all	EarlyUpdate, Update, and FixedUpdate functions from all other active
+scripts.
+*******************************************************************************/
+void ScriptComponent::LateUpdate(Entity const& _e) {
+	(void)_e;
 }
 
 /*!*****************************************************************************

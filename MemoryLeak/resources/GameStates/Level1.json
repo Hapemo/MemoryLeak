@@ -59,18 +59,6 @@
         "order": 0
     },
     {
-        "SceneName": "MiniMap",
-        "isActive": false,
-        "layer": 9,
-        "order": 0
-    },
-    {
-        "SceneName": "EnemyMap",
-        "isActive": false,
-        "layer": 9,
-        "order": 0
-    },
-    {
         "SceneName": "FPS",
         "isActive": false,
         "layer": 10,

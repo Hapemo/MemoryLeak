@@ -122,9 +122,9 @@ void InspectorPanel::Update()
 				{
 					ShadowCasterEditor();
 				}
-				if (e.HasComponent<CircularViewport>())
+				if (e.HasComponent<Viewport>())
 				{
-					CircularViewportEditor();
+					ViewportEditor();
 				}
 				if (e.HasComponent<MovementAI>())
 				{
@@ -317,8 +317,8 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<LightSource>({});
 	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
 		e.AddComponent<ShadowCaster>({});
-	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
-		e.AddComponent<CircularViewport>({});
+	else if (addComponentID == (int)COMPONENTID::Viewport)
+		e.AddComponent<Viewport>({});
 	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
 	{
 		e.AddComponent<MovementAI>({});
@@ -379,8 +379,8 @@ void InspectorPanel::AddPrefabComponent()
 		p->AddComponent<LightSource>({});
 	else if (addComponentID == (int)COMPONENTID::SHADOWCASTER)
 		p->AddComponent<ShadowCaster>({});
-	else if (addComponentID == (int)COMPONENTID::CIRCULARVIEWPORT)
-		p->AddComponent<CircularViewport>({});
+	else if (addComponentID == (int)COMPONENTID::Viewport)
+		p->AddComponent<Viewport>({});
 	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
 	{
 		p->AddComponent<MovementAI>({});
@@ -419,6 +419,7 @@ void InspectorPanel::GeneralEditor()
 		ImGui::Combo("SubTag", &subtagID, subtag, IM_ARRAYSIZE(subtag));
 		e.GetComponent<General>().subtag = (SUBTAG)subtagID;
 		SaveUndo(e, tempComponent, COMPONENTID::GENERAL);
+
 	}
 }
 void InspectorPanel::LifespanEditor()
@@ -438,20 +439,6 @@ void InspectorPanel::LifespanEditor()
 }
 void InspectorPanel::TransformEditor()
 {
-	//if (ImGui::CollapsingHeader("Transform Gizmo")) {
-	//	//ImGui::Text("Transform Gizmo: ");
-	//	static bool s = 0, r = 0, t = 0;
-	//	if(SRT == 4)
-	//		s = r = t = 0;
-	//	ImGui::Checkbox("Scale Gizmo", &s);
-	//	if (s) { SRT = 1; r = t = 0; }
-	//	ImGui::Checkbox("Rotate", &r);
-	//	if (r) { SRT = 2; s = t = 0; }
-	//	ImGui::Checkbox("Translate Gizmo", &t);
-	//	if (t) { SRT = 3; s = r = 0; }
-	//	if (!s && !r && !t) SRT = 0;
-	//}
-
 	if (ImGui::CollapsingHeader("Transform") || true) {
 		//ImGui::Text("Transform Component");
 		static bool g = false;
@@ -516,7 +503,8 @@ void InspectorPanel::SpriteEditor()
 		tmpVec4[1] = e.GetComponent<Sprite>().color.g / 255.f;
 		tmpVec4[2] = e.GetComponent<Sprite>().color.b / 255.f;
 		tmpVec4[3] = e.GetComponent<Sprite>().color.a / 255.f;
-		ImGui::ColorEdit4("Color", tmpVec4);
+		//ImGui::ColorEdit4("Sprite Color", tmpVec4);
+		ImGui::ColorPicker4("Color", tmpVec4);
 		e.GetComponent<Sprite>().color.r = (GLubyte)(tmpVec4[0] * 255);
 		e.GetComponent<Sprite>().color.g = (GLubyte)(tmpVec4[1] * 255);
 		e.GetComponent<Sprite>().color.b = (GLubyte)(tmpVec4[2] * 255);
@@ -1140,7 +1128,7 @@ void InspectorPanel::LightSourceEditor()
 	{
 		tmpVec2[0] = e.GetComponent<LightSource>().centerOffset.x;
 		tmpVec2[1] = e.GetComponent<LightSource>().centerOffset.y;
-		ImGui::InputFloat2("Light center", tmpVec2);
+		ImGui::DragFloat2("Light center", tmpVec2);
 		e.GetComponent<LightSource>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 
 		ImGui::DragFloat("Radius", &e.GetComponent<LightSource>().radius, 1.f);
@@ -1149,7 +1137,7 @@ void InspectorPanel::LightSourceEditor()
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove LightSource"))
 		{
-			e.RemoveComponent<Button>();
+			e.RemoveComponent<LightSource>();
 			LOG_INFO("LightSource component removed");
 		}
 		ImGui::PopStyleColor();
@@ -1159,36 +1147,47 @@ void InspectorPanel::ShadowCasterEditor()
 {
 	if (ImGui::CollapsingHeader("ShadowCaster"))
 	{
-		tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset.x;
-		tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset.y;
-		ImGui::InputFloat2("Shadow center", tmpVec2);
-		e.GetComponent<ShadowCaster>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
-
-		tmpVec2[0] = e.GetComponent<ShadowCaster>().scaleOffset.x;
-		tmpVec2[1] = e.GetComponent<ShadowCaster>().scaleOffset.y;
-		ImGui::InputFloat2("Shadow scale ", tmpVec2);
-		e.GetComponent<ShadowCaster>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
-
+		for (int i = 0; i < e.GetComponent<ShadowCaster>().centerOffset.size(); i++)
+		{
+			tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset[i].x;
+			tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset[i].y;
+			ImGui::DragFloat2(("Shadow center" + std::to_string(i)).c_str(), tmpVec2);
+			e.GetComponent<ShadowCaster>().centerOffset[i] = {tmpVec2[0] ,tmpVec2[1]};
+			if (ImGui::Button(("Remove Shadow Vertex" + std::to_string(i)).c_str()))
+			{
+				e.GetComponent<ShadowCaster>().centerOffset.erase(e.GetComponent<ShadowCaster>().centerOffset.begin()+i);
+			}
+			ImGui::Separator();
+		}
+		if (ImGui::Button("Add Shadow Vertex"))
+		{
+			e.GetComponent<ShadowCaster>().centerOffset.push_back(Math::Vec2{});
+		}
 		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove ShadowCaster"))
 		{
-			e.RemoveComponent<Button>();
+			e.RemoveComponent<ShadowCaster>();
 			LOG_INFO("ShadowCaster component removed");
 		}
 		ImGui::PopStyleColor();
 	}
 }
-void InspectorPanel::CircularViewportEditor()
+void InspectorPanel::ViewportEditor()
 {
-	if (ImGui::CollapsingHeader("CircularViewport"))
+	if (ImGui::CollapsingHeader("Viewport"))
 	{
-		ImGui::Text("CircularViewport");
+		ImGui::Text("Viewport");
+		int typeID = (int)e.GetComponent<Viewport>().viewport;
+		//static const char* type[]{ "RECTANGULAR", "CIRCULAR"};
+		ImGui::Combo("ViewportType", &typeID, type, IM_ARRAYSIZE(type));
+		e.GetComponent<Viewport>().viewport = (VIEWPORT)typeID;
+		ImGui::DragInt("Viewport width", &e.GetComponent<Viewport>().width, 1, 0, 1600);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
-		if (ImGui::Button("Remove CircularViewport"))
+		if (ImGui::Button("Remove Viewport"))
 		{
-			e.RemoveComponent<Button>();
-			LOG_INFO("CircularViewport component removed");
+			e.RemoveComponent<Viewport>();
+			LOG_INFO("Viewport component removed");
 		}
 		ImGui::PopStyleColor();
 	}
@@ -1236,7 +1235,7 @@ void InspectorPanel::MovementAIEditor()
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove MovementAI"))
 		{
-			e.RemoveComponent<Button>();
+			e.RemoveComponent<MovementAI>();
 			LOG_INFO("MovementAI component removed");
 		}
 		ImGui::PopStyleColor();

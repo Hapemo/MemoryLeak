@@ -463,6 +463,9 @@ public:
 				_entityPos += _entity.GetComponent<CircleCollider>().centerOffset;
 				_entityScale *= _entity.GetComponent<CircleCollider>().scaleOffset;
 			}
+			else
+				continue;
+
 			_entityScale.x = fabs(_entityScale.x);
 			_entityScale.y = fabs(_entityScale.y);
 			Math::Vec2 _entityMax{ _entityPos + _entityScale / 2.f }, _entityMin{ _entityPos - _entityScale / 2.f };
@@ -499,7 +502,8 @@ public:
 
 		for (auto const& _entity : _entitySet) {
 			if (_entity.ShouldRun())
-				AddNode(_entity);
+				if (_entity.HasComponent<RectCollider>() || _entity.HasComponent<CircleCollider>())
+					AddNode(_entity);
 		}
 	}
 
