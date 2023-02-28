@@ -406,6 +406,7 @@ public:
 			static void ReverseOrder(const int _eId, bool _reverse = true);
 			static void SetLoopCycle(const int _eId, bool _cycle = true);
 			static int GetCurrentIndex(const int _eId);
+			static void Remove(const int _eId, int _index);
 			static void EditTiming(const int _eId, float _time);
 			static void AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
 			static void EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
@@ -415,10 +416,17 @@ public:
 			static void CurrentPosX(const int _eId, float _posX);
 			static void CurrentPosY(const int _eId, float _posY);
 			static void AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1.f, int _index = 0);
+			static void TransformScaleAt(const int _eId, float _scaleX, float _scaleY, float _time = 1.f, int _index = 0);
+			static void TransformRotateAt(const int _eId, float _rot, float _time = 1.f, int _index = 0);
+			static void TransformPosAt(const int _eId, float _posX, float _posY, float _time = 1.f, int _index = 0);
 			static void AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
 			static void SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step = -1);
 			static void SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step = -1);
 			static void SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step = -1);
+			static void AddTransformAtCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1.f);
+			static void TransformScaleAtCurrent(const int _eId, float _scaleX, float _scaleY, float _time = 1.f);
+			static void TransformRotateAtCurrent(const int _eId, float _rot, float _time = 1.f);
+			static void TransformPosAtCurrent(const int _eId, float _posX, float _posY, float _time = 1.f);
 		};
 	};
 
