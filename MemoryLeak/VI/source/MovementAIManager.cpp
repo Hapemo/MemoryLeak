@@ -115,6 +115,11 @@ void MovementAIManager::AddTransform(Entity e, Transform t, float time)
 	e.GetComponent<MovementAI>().targetTransforms.push_back(t);
 	e.GetComponent<MovementAI>().time.push_back(time);
 }
+void MovementAIManager::AddTransformAt(Entity e, Transform t, float time, int index)
+{
+	e.GetComponent<MovementAI>().targetTransforms.insert(e.GetComponent<MovementAI>().targetTransforms.begin()+index, t);
+	e.GetComponent<MovementAI>().time.insert(e.GetComponent<MovementAI>().time.begin() + index, time);
+}
 void MovementAIManager::AddTransformDifference(Entity e, Transform d, float time)
 {
 	int i = (int)e.GetComponent<MovementAI>().targetTransforms.size() - 1;
