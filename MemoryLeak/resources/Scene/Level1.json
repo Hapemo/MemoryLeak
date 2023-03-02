@@ -27,6 +27,87 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Env_Water.png",
             "layer": 0
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 10000.0,
+                            "Y": 10000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 11000.0,
+                            "Y": 10000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 40.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 10000.0,
+                            "Y": 11000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -20.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 9000.0,
+                            "Y": 10000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -20.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 10000.0,
+                            "Y": 9000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 40.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -1396,12 +1477,12 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },

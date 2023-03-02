@@ -48,9 +48,9 @@
             },
             "scale": 0.6000000238418579,
             "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
+                "r": 160,
+                "g": 4,
+                "b": 4,
                 "a": 255
             }
         },
@@ -70,7 +70,7 @@
             "acceleration": 0.0,
             "targets": [
                 {
-                    "time": 1.0,
+                    "time": 0.3,
                     "Transform": {
                         "scale": {
                             "X": 280.0,
@@ -84,16 +84,16 @@
                     }
                 },
                 {
-                    "time": 1.0,
+                    "time": 0.3,
                     "Transform": {
                         "scale": {
-                            "X": 280.0,
-                            "Y": 280.0
+                            "X": 800.0,
+                            "Y": 700.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 640.0,
-                            "Y": -260.0
+                            "X": 0.0,
+                            "Y": 0.0
                         }
                     }
                 }
@@ -184,7 +184,7 @@
             "acceleration": 0.0,
             "targets": [
                 {
-                    "time": 1.0,
+                    "time": 0.3,
                     "Transform": {
                         "scale": {
                             "X": 67.0,
@@ -198,16 +198,16 @@
                     }
                 },
                 {
-                    "time": 1.0,
+                    "time": 0.3,
                     "Transform": {
                         "scale": {
-                            "X": 67.0,
-                            "Y": 61.5
+                            "X": 120.0,
+                            "Y": 120.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 638.2281494140625,
-                            "Y": -260.0
+                            "X": 0.0,
+                            "Y": 0.0
                         }
                     }
                 }
@@ -313,7 +313,7 @@
             "acceleration": 0.0,
             "targets": [
                 {
-                    "time": 1.0,
+                    "time": 0.3,
                     "Transform": {
                         "scale": {
                             "X": 80.0,
@@ -321,26 +321,56 @@
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 580.9154052734375,
-                            "Y": -195.4929656982422
+                            "X": 0.0,
+                            "Y": 0.0
                         }
                     }
                 },
                 {
-                    "time": 1.0,
+                    "time": 0.3,
                     "Transform": {
                         "scale": {
-                            "X": 80.0,
-                            "Y": 59.5
+                            "X": 120.0,
+                            "Y": 120.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 580.9154052734375,
-                            "Y": -195.4929656982422
+                            "X": 0.0,
+                            "Y": 0.0
                         }
                     }
                 }
             ]
+        }
+    },
+    {
+        "General": {
+            "name": "blur",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 30,
+                "g": 30,
+                "b": 30,
+                "a": 80
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 2
         }
     }
 ]

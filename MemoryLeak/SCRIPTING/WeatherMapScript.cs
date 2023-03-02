@@ -29,6 +29,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
+            VI.Entity.s_SetActive("blur", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
                 int modI = i % 5;
@@ -68,6 +69,7 @@ namespace BonVoyage {
                         string EIcon = "EIcon" + i;
                         VI.Entity.s_SetActive(EIcon, "WeatherMap", true);
                     }
+                    VI.Entity.s_SetActive("blur", "WeatherMap", true);
                 }
                 else
                 {
@@ -77,6 +79,7 @@ namespace BonVoyage {
                         string EIcon = "EIcon" + i;
                         VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
                     }
+                    VI.Entity.s_SetActive("blur", "WeatherMap", false);
                 }
             }
             for (int i = 0; i < 25; i++)

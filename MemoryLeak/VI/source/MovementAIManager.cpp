@@ -125,11 +125,15 @@ void MovementAIManager::AddTransform(Entity e, Transform t, float time)
 }
 void MovementAIManager::AddTransformAt(Entity e, Transform t, float time, int index)
 {
+	if (index < 0 || index >= e.GetComponent<MovementAI>().targetTransforms.size())
+		return;
 	e.GetComponent<MovementAI>().targetTransforms.insert(e.GetComponent<MovementAI>().targetTransforms.begin()+index, t);
 	e.GetComponent<MovementAI>().time.insert(e.GetComponent<MovementAI>().time.begin() + index, time);
 }
 void MovementAIManager::RemoveTransformAt(Entity e, int index)
 {
+	if (index < 0 || index >= e.GetComponent<MovementAI>().targetTransforms.size())
+		return;
 	e.GetComponent<MovementAI>().targetTransforms.erase(e.GetComponent<MovementAI>().targetTransforms.begin() + index);
 	e.GetComponent<MovementAI>().time.erase(e.GetComponent<MovementAI>().time.begin() + index);
 }
