@@ -58,7 +58,7 @@
         "layer": 8,
         "order": 0
     },
-	{
+    {
         "SceneName": "MiniMap",
         "isActive": false,
         "layer": 9,
@@ -80,6 +80,12 @@
         "SceneName": "FPS",
         "isActive": false,
         "layer": 10,
+        "order": 0
+    },
+    {
+        "SceneName": "BackGround",
+        "isActive": false,
+        "layer": 4,
         "order": 0
     }
 ]

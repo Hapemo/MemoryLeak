@@ -16,16 +16,20 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
+    
     public class CrystalBallScript
     {
         int toggle = 0; // 0 minimap, 1, weathermap, 2 enemymap
         int prevTog = -1;
         static bool big = false;
         static bool active = true;
-
+        int playerID;
+        int rainID;
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            playerID = VI.Entity.GetId("Boat", "Level1");
+            rainID = VI.Entity.GetId("rain", "Level1");
         }
 
         public void Init(int _ENTITY) {
@@ -86,6 +90,18 @@ namespace BonVoyage {
                     
                 }
                 prevTog = toggle;
+            }
+            int index = VI.Weather.GetCurrent(12,
+                    VI.Transform.Scale.GetY(playerID), VI.Transform.Scale.GetY(playerID));
+            if(index == 1 || index == 3 || index == 7)
+            {
+                VI.Entity.SetActive(rainID, true);
+                VI.Transform.Position.SetX(rainID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(rainID, VI.Transform.Position.GetY(playerID));
+            }
+            else
+            {
+                VI.Entity.SetActive(rainID, false);
             }
 
         }

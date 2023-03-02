@@ -42,7 +42,7 @@ namespace BonVoyage {
             minienemyID = VI.Entity.GetId("enemy", "EnemyMap");
             textOffsetX = -42;// VI.Text.Offset.GetX(enemymapID);
             textOffsetY = -170;// VI.Text.Offset.GetY(enemymapID);
-            textbigOffsetX = -150;
+            textbigOffsetX = -120;
             textbigOffsetY = 360;
             textScale = VI.Text.Scale.Get(enemymapID);
             textbigScale = 1.0f;

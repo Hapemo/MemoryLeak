@@ -1,10 +1,10 @@
 [
     {
         "General": {
-            "name": "NEW Entity 3",
-            "tag": 8,
+            "name": "rain",
+            "tag": 6,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -19,14 +19,20 @@
         },
         "Sprite": {
             "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
-            "sprite": 0,
-            "texture": "",
-            "layer": 0
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\Weather\\rainspritesheet.png",
+            "layer": 1
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 5,
+            "timePerFrame": 0.20000000298023224,
+            "timeToFrameSwap": 0.0833333432674408
         }
     }
 ]

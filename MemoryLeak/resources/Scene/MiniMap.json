@@ -62,10 +62,10 @@
         },
         "Viewport": {
             "isUI": false,
-            "width": 1250
+            "width": 2500
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -74,7 +74,7 @@
             "acceleration": 0.0,
             "targets": [
                 {
-                    "time": 0.3,
+                    "time": 0.30000001192092896,
                     "Transform": {
                         "scale": {
                             "X": 270.0,
@@ -88,7 +88,7 @@
                     }
                 },
                 {
-                    "time": 0.3,
+                    "time": 0.30000001192092896,
                     "Transform": {
                         "scale": {
                             "X": 1244.0,
@@ -134,7 +134,7 @@
             "layer": 4
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -143,7 +143,7 @@
             "acceleration": 0.0,
             "targets": [
                 {
-                    "time": 0.3,
+                    "time": 0.30000001192092896,
                     "Transform": {
                         "scale": {
                             "X": 60.0,
@@ -164,7 +164,7 @@
             "name": "blur",
             "tag": 6,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
