@@ -102,51 +102,6 @@
     },
     {
         "General": {
-            "name": "enemymapbig",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 800.0,
-                "Y": 700.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 0,
-            "texture": "",
-            "layer": 3
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Enlarged Radar",
-            "offset": {
-                "X": -200.0,
-                "Y": 360.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
             "name": "player",
             "tag": 0,
             "subtag": 0,
@@ -212,66 +167,6 @@
                     }
                 }
             ]
-        }
-    },
-    {
-        "General": {
-            "name": "playerbig",
-            "tag": 0,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 120.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\mc.png",
-            "layer": 10
-        }
-    },
-    {
-        "General": {
-            "name": "enemybig",
-            "tag": 2,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 120.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -263.0281982421875,
-                "Y": 230.2816925048828
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\monster.png",
-            "layer": 10
         }
     },
     {
@@ -363,10 +258,10 @@
         },
         "Sprite": {
             "color": {
-                "r": 30,
+                "r": 100,
                 "g": 30,
                 "b": 30,
-                "a": 80
+                "a": 180
             },
             "sprite": 0,
             "texture": "",

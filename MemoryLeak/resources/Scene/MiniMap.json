@@ -161,51 +161,6 @@
     },
     {
         "General": {
-            "name": "minimapbig",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 800.0,
-                "Y": 700.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -5.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\minimap.png",
-            "layer": 3
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Enlarged Minimap",
-            "offset": {
-                "X": -200.0,
-                "Y": 360.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
             "name": "blur",
             "tag": 6,
             "subtag": 0,
@@ -226,8 +181,8 @@
             "color": {
                 "r": 30,
                 "g": 30,
-                "b": 30,
-                "a": 80
+                "b": 100,
+                "a": 180
             },
             "sprite": 0,
             "texture": "",

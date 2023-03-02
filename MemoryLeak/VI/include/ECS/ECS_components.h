@@ -268,7 +268,10 @@ struct AI {
 	float	speed = 1.f;
 	float range = 10.f;
 };
-
+/*!*****************************************************************************
+\brief
+	This struct contains the data for MovementAI component
+*******************************************************************************/
 struct MovementAI {
 	bool run = false;
 	bool next = true;	//save
@@ -277,6 +280,7 @@ struct MovementAI {
 	bool cycle = false;//save
 	int step = 1;
 	int nextStep = 1; //save
+	int setStep = -1;
 	int state = 0;
 	float currtime;
 	float acceleration = 0.f;//save

@@ -21,12 +21,18 @@ void MovementAIManager::Init()
 void MovementAIManager::Update()
 {
 	for (auto& e : mEntities) {
+		
 		if (e.GetComponent<MovementAI>().run)
 		{
 			if (e.GetComponent<MovementAI>().targetTransforms.size() <= 1)
 			{
 				e.GetComponent<MovementAI>().run = false;
 				return;
+			}
+			if (e.GetComponent<MovementAI>().setStep != -1)
+			{
+				e.GetComponent<MovementAI>().nextStep = e.GetComponent<MovementAI>().setStep;
+				e.GetComponent<MovementAI>().setStep = -1;
 			}
 			if (e.GetComponent<MovementAI>().nextStep < 0 || e.GetComponent<MovementAI>().nextStep >= e.GetComponent<MovementAI>().targetTransforms.size())
 			{
@@ -65,14 +71,14 @@ void MovementAIManager::Update()
 			}
 			else if (e.GetComponent<MovementAI>().state == 2) //end
 			{
+				e.GetComponent<MovementAI>().state = 0;
 				e.GetComponent<Transform>().scale = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale;
 				e.GetComponent<Transform>().rotation = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].rotation;
 				e.GetComponent<Transform>().translation = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation;
-				if (!e.GetComponent<MovementAI>().next)//move back to orgial if loop
+				if (!e.GetComponent<MovementAI>().next)//move back to origial if loop
 				{
 					e.GetComponent<MovementAI>().run = false;
 				}
-				e.GetComponent<MovementAI>().state = 0;
 				if (e.GetComponent<MovementAI>().reverse)
 				{
 					e.GetComponent<MovementAI>().nextStep--;
@@ -150,7 +156,7 @@ bool MovementAIManager::SetNextStep(Entity e, int i)
 {
 	if (i >= 0 && i < e.GetComponent<MovementAI>().targetTransforms.size())
 	{
-		e.GetComponent<MovementAI>().nextStep = i;
+		e.GetComponent<MovementAI>().setStep = i;
 		return true;
 	}
 	else

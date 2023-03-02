@@ -14,21 +14,37 @@ Part of which are:
 using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace BonVoyage {
     public class WeatherMapScript
     {
-        static bool init = true;
         static bool big = false;
+        int weathermapID;
+        float textOffsetX;
+        float textOffsetY;
+        float textbigOffsetX;
+        float textbigOffsetY;
+        float textScale;
+        float textbigScale;
         private float maxMapX, maxMapY;
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            weathermapID = VI.Entity.GetId("weathermap", "WeatherMap");
+            textOffsetX = -59;// VI.Text.Offset.GetX(minimapID);
+            textOffsetY = -170;// VI.Text.Offset.GetY(minimapID);
+            textbigOffsetX = -100;
+            textbigOffsetY = 360;
+            textScale = VI.Text.Scale.Get(weathermapID);
+            textbigScale = 1.0f;
+            maxMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"))/2;
+            maxMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"))/2;
+            VI.Weather.Init(maxMapX, maxMapY);
         }
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
             VI.Entity.s_SetActive("blur", "WeatherMap", false);
             for (int i = 0; i < 25; i++)
             {
@@ -40,48 +56,71 @@ namespace BonVoyage {
                     VI.Entity.s_SetActive(MIcon, "WeatherMap", false);
                 }
             }
-            VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
+            big = false;
+            VI.Animation.Transform.SetNext(weathermapID, 0);
+            VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);
+            VI.Text.Scale.Set(weathermapID, textScale);
+            VI.Animation.Transform.Start(weathermapID);
+            VI.Entity.Sprite.SetType(weathermapID, 1);
             for (int i = 0; i < 25; i++)
             {
+                int modI = i % 5;
+                int divI = i / 5;
                 string EIcon = "EIcon" + i;
-                VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
+                if (!(modI != 0 && modI != 4 && divI != 0 && divI != 4))
+                {
+                    VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
+                }
+                VI.Animation.Transform.SetNext(VI.Entity.GetId(EIcon, "WeatherMap"), 0);
+                VI.Animation.Transform.Start(VI.Entity.GetId(EIcon, "WeatherMap"));
             }
-            if (init)
-            {
-                
-                maxMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"));
-                maxMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"));
-                VI.Weather.Init(maxMapX, maxMapY);
-                init = false;
-            }
+
+            VI.Entity.s_SetActive("blur", "WeatherMap", false);
         }
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            if ((VI.Input.Button.s_Released("weathermap", "WeatherMap")) == true)
+            if (!big && (VI.Input.Button.Released(weathermapID)))
             {
-                big = !big;
-                
-                if (big)
+                big = true;
+                VI.Animation.Transform.SetNext(weathermapID, 1);
+                VI.Text.Offset.Set(weathermapID, textbigOffsetX, textbigOffsetY);
+                VI.Text.Scale.Set(weathermapID, textbigScale);
+                VI.Animation.Transform.Start(weathermapID);
+                VI.Entity.Sprite.SetType(weathermapID, 0);
+                for (int i = 0; i < 25; i++)
                 {
-                    VI.Entity.s_SetActive("weathermapbig", "WeatherMap", true);
-                    for (int i = 0; i < 25; i++)
-                    {
-                        string EIcon = "EIcon" + i;
-                        VI.Entity.s_SetActive(EIcon, "WeatherMap", true);
-                    }
-                    VI.Entity.s_SetActive("blur", "WeatherMap", true);
+                    string EIcon = "EIcon" + i;
+                    VI.Entity.s_SetActive(EIcon, "WeatherMap", true);
+                    VI.Animation.Transform.SetNext(VI.Entity.GetId(EIcon, "WeatherMap"), 1);
+                    VI.Animation.Transform.Start(VI.Entity.GetId(EIcon, "WeatherMap"));
                 }
-                else
+                VI.Entity.s_SetActive("blur", "WeatherMap", true);
+            }
+            else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(weathermapID)))
+            {
+                big = false;
+                VI.Animation.Transform.SetNext(weathermapID, 0);
+                VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);
+                VI.Text.Scale.Set(weathermapID, textScale);
+                VI.Animation.Transform.Start(weathermapID);
+                VI.Entity.Sprite.SetType(weathermapID, 1);
+                for (int i = 0; i < 25; i++)
                 {
-                    VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
-                    for (int i = 0; i < 25; i++)
+                    int modI = i % 5;
+                    int divI = i / 5;
+                    string EIcon = "EIcon" + i;
+                    if (!(modI != 0 && modI != 4 && divI != 0 && divI != 4))
                     {
-                        string EIcon = "EIcon" + i;
                         VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
                     }
-                    VI.Entity.s_SetActive("blur", "WeatherMap", false);
+                    VI.Animation.Transform.SetNext(VI.Entity.GetId(EIcon, "WeatherMap"), 0);
+                    VI.Animation.Transform.Start(VI.Entity.GetId(EIcon, "WeatherMap"));
                 }
+
+                VI.Entity.s_SetActive("blur", "WeatherMap", false);
             }
+
+
             for (int i = 0; i < 25; i++)
             {
                 int modI = i % 5;
@@ -108,12 +147,25 @@ namespace BonVoyage {
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             big = false;
-            VI.Entity.s_SetActive("weathermapbig", "WeatherMap", false);
+            VI.Animation.Transform.SetNext(weathermapID, 0);
+            VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);
+            VI.Text.Scale.Set(weathermapID, textScale);
+            VI.Animation.Transform.Start(weathermapID);
+            VI.Entity.Sprite.SetType(weathermapID, 1);
             for (int i = 0; i < 25; i++)
             {
+                int modI = i % 5;
+                int divI = i / 5;
                 string EIcon = "EIcon" + i;
-                VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
+                if (!(modI != 0 && modI != 4 && divI != 0 && divI != 4))
+                {
+                    VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
+                }
+                VI.Animation.Transform.SetNext(VI.Entity.GetId(EIcon, "WeatherMap"), 0);
+                VI.Animation.Transform.Start(VI.Entity.GetId(EIcon, "WeatherMap"));
             }
+
+            VI.Entity.s_SetActive("blur", "WeatherMap", false);
         }
         public void Dead(int _ENTITY)
         {
