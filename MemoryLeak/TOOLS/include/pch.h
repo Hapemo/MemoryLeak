@@ -29,6 +29,3 @@
 #include <thread>
 #include <mutex>
 #include "NFmath.h"
-
-
-

@@ -14,6 +14,12 @@ is being stored.
 using System;
 using System.Runtime.CompilerServices;
 
+public class LOG
+{
+	[MethodImpl(MethodImplOptions.InternalCall)]
+	internal extern static void WRITE(string _log);
+}
+
 namespace BonVoyage
 {
 	public class THIS

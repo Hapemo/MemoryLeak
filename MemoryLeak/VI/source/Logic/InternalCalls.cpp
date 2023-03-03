@@ -16,6 +16,7 @@ is being stored.
 #include "GameStateManager.h"
 #include "Helper.h"
 #include "logger.h"
+
 /*!*****************************************************************************
 \brief
 Test internal function for string.
@@ -27,6 +28,14 @@ void InternalCalls::TestArgString(MonoString* _thingToPrint) {
 MonoString* InternalCalls::TestReturnString() {
 	std::cout << "Calling internal call TestReturnString() success!\n";
 	return mono_string_new(mono_domain_get(), "Hello from TestReturnString()!");
+}
+
+/*!*****************************************************************************
+\brief
+Logger function.
+*******************************************************************************/
+void InternalCalls::Logger(std::string _log) {
+	LOG_GAME(_log);
 }
 
 /*!*****************************************************************************

@@ -12,6 +12,7 @@ to use from the engine is being linked.
 *******************************************************************************/
 
 #include "MonoMethods.h"
+#include "Logger.h"
 
 /*!*****************************************************************************
 \brief
@@ -23,6 +24,12 @@ std::string MonoMethods::ConvertFromMonoString(MonoString* _string) {
 MonoString* MonoMethods::ConvertToMonoString(std::string _string) {
 	return (_string == "" ? nullptr : mono_string_new(mono_domain_get(), _string.c_str()));
 }
+
+/*!*****************************************************************************
+\brief
+Logger function.
+*******************************************************************************/
+void MonoMethods::Logger(MonoString* _log) {
 
 /*!*****************************************************************************
 \brief
