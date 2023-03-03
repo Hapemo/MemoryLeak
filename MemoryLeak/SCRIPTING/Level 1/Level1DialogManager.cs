@@ -5,7 +5,7 @@ namespace BonVoyage {
   public class Level1DialogManager : BaseScript {
 
     static public bool runIntroDialog;
-    static public bool runGirlDialog;
+    //static public bool runGirlDialog;
     static public bool runPassengerDialog;
     private int P1ColliderBox;
     static public bool runPassenger2Dialog;
@@ -14,7 +14,7 @@ namespace BonVoyage {
     private bool updateChat;            // This flag is true when dialog changes for anyone
     private bool dialogInit;            // THis flag is true when entering a dialog for the first line
     private bool movingPlayer;
-    private bool normalZoom = false;
+    private bool normalZoom = true;
 
     private int playerID;
 
@@ -76,37 +76,36 @@ namespace BonVoyage {
       // Dialog control
 
       if (runIntroDialog) {
+        PlayerScript.PlayerInDialogue = true;
         runIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
         if (!runIntroDialog)
           EndIntroDialog();
       }
 
-      if (runGirlDialog) {
-        //VI.Animation.SheetIndex.Set(playerID, 1);
-        runGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
+      //if (runGirlDialog) {
+      //  //VI.Animation.SheetIndex.Set(playerID, 1);
+      //  runGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
         
-        if (!runGirlDialog)
-          EndGirlDialog();
-      }
+      //  if (!runGirlDialog)
+      //    EndGirlDialog();
+      //}
 
       if (runPassengerDialog) {
-        VI.Animation.SpriteSheet.SheetIndex.Set(playerID, 1); // Make player face the other person
+        GeneralDialogStart();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
-        Level1ManagerScript.ChangeZoom(1200, 300);
         runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
       }
 
       if (runPassenger2Dialog) {
-        VI.Animation.SpriteSheet.SheetIndex.Set(playerID, 1);
+        GeneralDialogStart();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), VI.Transform.Position.GetY(P2ColliderBox));
         runPassenger2Dialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 2");
         if (!runPassenger2Dialog)
           EndPassenger2Dialog();
       }
 
-      PlayerScript.PlayerInDialogue = (runIntroDialog || runGirlDialog || runPassengerDialog || runPassenger2Dialog);
     }
 
     public void FixedUpdate(int _ENTITY) {
@@ -169,6 +168,10 @@ namespace BonVoyage {
     // int textYSpacing     - This is the spacing of the text from the top edge of the box 
     public void TextBoxAlign(string entityname, string scenename, float posX, float posY, float scaleX = 500, float perLineScaleY = 51, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
       int additionalLines = VI.Text.s_GetLineCount(entityname, scenename) - 1;
+
+      // Selecting the dialog box texture and putting it into correct position
+
+
       //Console.WriteLine("lines: " + additionalLines);
       //float scaleY = perLineScaleY;         // This is the default height of button, will changing with respect to line count
       perLineScaleY *= VI.Text.Scale.s_Get(entityname, scenename);
@@ -347,28 +350,40 @@ namespace BonVoyage {
 
     #endregion
 
+    // The General function for stand still dialogs
+    void GeneralDialogStart() {
+      PlayerScript.CameraFollowPlayer = false;
+      PlayerScript.PlayerInDialogue = true;
+      MoveCameraToDialog();
+      VI.Animation.SpriteSheet.SheetIndex.Set(playerID, 1); // Make player face the other person
+      Level1ManagerScript.ChangeZoom(1200, 300);
+    }
 
     #region Dialog Endings
-    public void EndIntroDialog() {
-      runIntroDialog = false;
+
+    public void GeneralEndDialog() {
+      PlayerScript.CameraFollowPlayer = true;
+      runPassenger2Dialog = false;
+      normalZoom = false;
       PlayerScript.PlayerInDialogue = false;
+    }
+    public void EndIntroDialog() {
+      GeneralEndDialog();
 
       VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
     }
 
-    public void EndGirlDialog() {
-      runGirlDialog = false;
-      PlayerScript.PlayerInDialogue = false;
+    //public void EndGirlDialog() {
+    //  runGirlDialog = false;
+    //  PlayerScript.PlayerInDialogue = false;
 
-      VI.Entity.s_Deactivate("LittleGirlBox", "Level1"); //Todo change to girl's ID or public static it's vvariable
-      //ObjectiveTextScript.UpdateText("Finished talking to little girl"); // TODO Christy to update the text needed here
-      //EndGirlExistance(); // TODO. after talking to girl, make her dissappear.
-    }
+    //  VI.Entity.s_Deactivate("LittleGirlBox", "Level1"); //Todo change to girl's ID or public static it's vvariable
+    //  //ObjectiveTextScript.UpdateText("Finished talking to little girl"); // TODO Christy to update the text needed here
+    //  //EndGirlExistance(); // TODO. after talking to girl, make her dissappear.
+    //}
 
     public void EndPassengerDialog() {
-      runPassengerDialog = false;
-      normalZoom = false;
-      PlayerScript.PlayerInDialogue = false;
+      GeneralEndDialog();
 
       VI.Transform.Rotate.s_Set("Passenger1", "Level1", 0.5f);
       //ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
@@ -377,13 +392,20 @@ namespace BonVoyage {
     }
 
     public void EndPassenger2Dialog() {
-      runPassenger2Dialog = false;
-      PlayerScript.PlayerInDialogue = false;
+      GeneralEndDialog();
 
       VI.Transform.Rotate.s_Set("Passenger2", "Level1", 0.5f);
       //ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
+    }
+
+    public void MoveCameraToDialog() {
+      float playerHeight = VI.Transform.Scale.GetY(playerID);
+      float screenHalfHeight = VI.Camera.GetScale.Y()/2;
+
+      Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID),
+                                     VI.Transform.Position.GetY(playerID) + screenHalfHeight - playerHeight/2);
     }
 
     #endregion

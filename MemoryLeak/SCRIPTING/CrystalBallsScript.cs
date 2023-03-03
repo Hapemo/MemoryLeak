@@ -34,14 +34,14 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            
-            VI.Entity.s_Deactivate("crystalBall", "CrystalBalls");
+            prevTog = -1;
+            //VI.Entity.s_Deactivate("crystalBall", "CrystalBalls");
+            VI.Entity.s_Activate("crystalBall", "CrystalBalls");
         }
 
         public void Update(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            VI.Entity.s_Activate("crystalBall", "CrystalBalls");
             if ((VI.Input.Button.s_Released("toggleMap", "CrystalBalls")) == true)
             {
                 toggle = toggle >= 2 ? 0 : (toggle + 1);
@@ -93,7 +93,7 @@ namespace BonVoyage {
             }
             int index = VI.Weather.GetCurrent(12,
                     VI.Transform.Scale.GetY(playerID), VI.Transform.Scale.GetY(playerID));
-            if(index == 1 || index == 3 || index == 7)
+            if(index == 1 || index == 3 || index <= 5)
             {
                 VI.Entity.SetActive(rainID, true);
                 VI.Transform.Position.SetX(rainID, VI.Transform.Position.GetX(playerID));
