@@ -5,6 +5,7 @@ namespace BonVoyage {
     public class PlayerScript : BaseScript
     {
         static public bool PlayerInDialogue;
+        static public bool PlayerInOtherAnimation;
         static public bool PlayerInDeathAnimation;
         static public float PlayerHealth;
 
@@ -27,6 +28,7 @@ namespace BonVoyage {
             // Initialize bool variables
             PlayerHealth = MaxHealth;
             PlayerInDialogue = false;
+            PlayerInOtherAnimation = false;
             PlayerInDeathAnimation = false;
 
             SpeedCheatToggle = false;
@@ -49,38 +51,46 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            #region Pause Game
-            // Escape key is pressed
-            if (VI.Input.Key.Press(256))
+            
+            // Things allowed to run when player is not dead
+            if (!PlayerInDeathAnimation)
             {
-                // Assumes the main game scene level running is the same as the gamestate name
-                VI.Scene.Pause(VI.GameState.GetName());     // Pause current scene
-                VI.Scene.Play("Pause");                     // Play the pause scene
-                // Play audio transition if required
-
-            }
-            #endregion
-
-            #region Player Cheats
-            // Left control & shift held
-            if (VI.Input.Key.Hold(340) && VI.Input.Key.Hold(341))
-            {
-                // A is pressed
-                if (VI.Input.Key.Press(65))
+                // Pausing the game
+                #region Pause Game
+                // Escape key is pressed
+                if (VI.Input.Key.Press(256))
                 {
-                    PlayerInDialogue = !PlayerInDialogue;
+                    // Assumes the main game scene level running is the same as the gamestate name
+                    VI.Scene.Pause(VI.GameState.GetName());     // Pause current scene
+                    VI.Scene.Play("Pause");                     // Play the pause scene
+                                                                // Play audio transition if required
+
                 }
 
-                // B is pressed
-                if (VI.Input.Key.Press(66))
-                {
-                    SpeedCheatToggle = !SpeedCheatToggle;
-                }
+                #endregion
 
-                // D is pressed
-                if (VI.Input.Key.Press(68))
+                // Game cheats
+                #region Player Cheats
+                // Left control & shift held
+                if (VI.Input.Key.Hold(340) && VI.Input.Key.Hold(341))
                 {
-                    PlayerHealth = 0f;
+                    // A is pressed
+                    if (VI.Input.Key.Press(65))
+                    {
+                        PlayerInDialogue = !PlayerInDialogue;
+                    }
+
+                    // B is pressed
+                    if (VI.Input.Key.Press(66))
+                    {
+                        SpeedCheatToggle = !SpeedCheatToggle;
+                    }
+
+                    // D is pressed
+                    if (VI.Input.Key.Press(68))
+                    {
+                        PlayerHealth = 0f;
+                    }
                 }
             }
             #endregion
@@ -123,7 +133,7 @@ namespace BonVoyage {
             PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
 
             // Move only if player is not in dialogue or death animation
-            if (!PlayerInDialogue && !PlayerInDeathAnimation)
+            if (!PlayerInDialogue && !PlayerInDeathAnimation && !PlayerInOtherAnimation)
             {
                 // Left mouse button is held
                 if (VI.Input.Mouse.Hold())
