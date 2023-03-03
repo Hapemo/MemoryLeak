@@ -14592,9 +14592,6 @@
                 "Y": 1.0
             },
             "renderFlag": false
-        },
-        "Script": {
-            "name": "PassengerScript"
         }
     },
     {
@@ -14654,9 +14651,6 @@
                 "Y": 1.0
             },
             "renderFlag": false
-        },
-        "Script": {
-            "name": "PassengerScript"
         }
     },
     {
