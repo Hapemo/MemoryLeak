@@ -11,27 +11,32 @@ namespace BonVoyage {
         public int HitTaken;
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
-        private int WorldId;
         private float maxX, maxY, minX, minY, halfX, halfY;
 
         private int OctopusAttacked;
         private float OctopusDirection;
         static private int ChasingPlayer = 0;
+
+        private int WorldId;
         private int PlayerId;
         private int DialogueSceneId;
         private int EnemyTriggerId;
 
-        private const int MaxHealth = 12;
+        public enum EnemyState {
+            IDLE = 0,
+            RISING = 4,
+            ATTACK1 = 8,
+            ATTACK2 = 12,
+        }
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            DialogueSceneId = VI.Entity.GetId("DialogueBox");
-            EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
-
             PlayerPosX = 0;
             PlayerPosY = 0;
 
+            DialogueSceneId = VI.Entity.GetId("DialogueBox");
+            EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
 
             WorldId = VI.Entity.GetId("Water");
@@ -58,11 +63,8 @@ namespace BonVoyage {
 
             //VI.Camera.SetScale.X(5500);
 
-            PlayerPosX = VI.Transform.Position.s_GetX("Boat");
-            PlayerPosY = VI.Transform.Position.s_GetY("Boat");
-
-            Console.WriteLine(PlayerPosX);
-            Console.WriteLine(PlayerPosY);
+            PlayerPosX = VI.Transform.Position.GetX(PlayerId);
+            PlayerPosY = VI.Transform.Position.GetY(PlayerId);
 
             float EnemyPosX = THIS.Transform.Position.GetX();
             float EnemyPosY = THIS.Transform.Position.GetY();
@@ -92,10 +94,11 @@ namespace BonVoyage {
 
                 // Attacking player
                 if (!VI.Entity.IsActive(DialogueSceneId) && VI.Physics.IsCollided(PlayerId, EnemyTriggerId)) {
+                    LOG.WRITE("Collided");
                     switch (OctopusAttacked) {
                         case 0:
                             OctopusAttacked = 1;
-                            SetCharRotation4(OctopusDirection, "Rising");
+                            SetRotation(OctopusDirection, EnemyState.RISING);
                             THIS.Animation.SpriteSheet.FrameCount.Set(0);
                             ChasingPlayer = THIS.Animation.Transform.GetCurrentIndex();
                             THIS.Animation.Transform.AddAtCurrent.TransformPos(PlayerPosX, PlayerPosY);
@@ -103,22 +106,26 @@ namespace BonVoyage {
                             break;
                         case 1:
                             if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1) {
-                                SetCharRotation4(OctopusDirection, "Attack1");
+                                SetRotation(OctopusDirection, EnemyState.ATTACK1);
                                 THIS.Animation.SpriteSheet.FrameCount.Set(0);
                                 OctopusAttacked = 2;
                             }
+                            THIS.Animation.Transform.Edit.CurrentPosX(PlayerPosX);
+                            THIS.Animation.Transform.Edit.CurrentPosY(PlayerPosY);
                             break;
                         case 2:
-                            SetCharRotation4(OctopusDirection, "Attack1");
+                            SetRotation(OctopusDirection, EnemyState.ATTACK1);
+                            THIS.Animation.Transform.Edit.CurrentPosX(PlayerPosX);
+                            THIS.Animation.Transform.Edit.CurrentPosY(PlayerPosY);
                             break;
                         default:
-                            SetCharRotation4(OctopusDirection, "Idle");
+                            SetRotation(OctopusDirection, EnemyState.IDLE);
                             break;
                     }
                 }
                 else {
                     OctopusAttacked = 0;
-                    SetCharRotation4(OctopusDirection, "Idle");
+                    SetRotation(OctopusDirection, EnemyState.IDLE);
                     if(ChasingPlayer > 0) THIS.Animation.Transform.Remove(ChasingPlayer);
                 }
 
@@ -153,18 +160,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
-        public int CheckRegion() {
-            if (THIS.Transform.Position.GetX() > maxX || THIS.Transform.Position.GetY() > maxY ||
-                THIS.Transform.Position.GetX() < minX || THIS.Transform.Position.GetY() < minY) return 0;
-            if (THIS.Transform.Position.GetX() > halfX && THIS.Transform.Position.GetY() > halfY) return 1;
-            if (THIS.Transform.Position.GetX() > halfX && THIS.Transform.Position.GetY() < halfY) return 2;
-            if (THIS.Transform.Position.GetX() < halfX && THIS.Transform.Position.GetY() < halfY) return 3;
-            if (THIS.Transform.Position.GetX() < halfX && THIS.Transform.Position.GetY() > halfY) return 4;
-            //Console.Write("Out of bounds!\n");
-            return -1;
-        }
-
-        public float GetRotation(float _x, float _y) {
+        private float GetRotation(float _x, float _y) {
             float Rotation = 0;
             if (_y != 0f && _x >= 0f)
                 Rotation = VI.Math.ArcTangent(_y, _x);
@@ -179,41 +175,22 @@ namespace BonVoyage {
             return Rotation;
         }
 
-        public void SetCharRotation4(float _rotation, string _status) {
-            int InitialStatus = 0;
-            switch (_status) {
-                case "Idle":
-                    InitialStatus = 0;
-                    break;
-                case "Rising":
-                    InitialStatus = 4;
-                    break;
-                case "Attack1":
-                    InitialStatus = 8;
-                    break;
-                case "Attack2":
-                    InitialStatus = 12;
-                    break;
-                default:
-                    break;
-            }
-
+        private void SetRotation(float _rotation, EnemyState _status) {
             //Console.Write(OctopusDirection+"\n");
             //VI.Animation.SpriteSheet.Index.Set(_entityName, _sceneName, InitialStatus + direction);
 
             // 1st Quadrant
             if (0 <= _rotation && _rotation < RightAngle)
-                THIS.Animation.SpriteSheet.SheetIndex.Set(InitialStatus + 2);
+                THIS.Animation.SpriteSheet.SheetIndex.Set((int)_status + 2);
             // 2nd Quadrant
             else if (RightAngle <= _rotation && _rotation < VI.Math.Pi())
-                THIS.Animation.SpriteSheet.SheetIndex.Set(InitialStatus + 1);
+                THIS.Animation.SpriteSheet.SheetIndex.Set((int)_status + 1);
             // 3rd Quadrant
             else if (VI.Math.Pi() <= _rotation && _rotation < 3f * RightAngle)
-                THIS.Animation.SpriteSheet.SheetIndex.Set(InitialStatus);
+                THIS.Animation.SpriteSheet.SheetIndex.Set((int)_status);
             // 4th Quadrant
             else
-                THIS.Animation.SpriteSheet.SheetIndex.Set(InitialStatus + 3);
-
+                THIS.Animation.SpriteSheet.SheetIndex.Set((int)_status + 3);
         }
     }
 }
