@@ -12,7 +12,7 @@
         "order": 0
     },
     {
-        "SceneName": "Background",
+        "SceneName": "CutSceneBackground",
         "Transform": {
             "scale": {
                 "X": 1600.0,
