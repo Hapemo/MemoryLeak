@@ -156,6 +156,8 @@ void AIManager::UpdateAI()
 			updateAIAllColors(e);
 		else if (e.GetComponent<AI>().colorChange == 2)
 			updateAITrafficLight(e);
+		else if (e.GetComponent<AI>().colorChange == 3)
+			updateWater(e);
 		if (e.GetComponent<AI>().movement == 1)
 			updateAIUpDown(e, e.GetComponent<AI>().speed, e.GetComponent<AI>().range);
 		else if (e.GetComponent<AI>().movement == 2)
@@ -185,8 +187,6 @@ void AIManager::updateAIAllColors(const Entity& e)
 	GLubyte blue = GLubyte((sin(time * 8) + 1) / 2 * 255.f);
 	Color clr{ red, green, blue , e.GetComponent<Sprite>().color.a };
 	e.GetComponent<Sprite>().color = clr;
-	//@weijhin
-	//colorManager->SetColor(e, clr);
 }
 
 /*!*****************************************************************************
@@ -230,7 +230,18 @@ void AIManager::updateAITrafficLight(const Entity& e)
 	Color clr{ (GLubyte)(red * 255), (GLubyte)(green * 255), (GLubyte)(blue*255) , e.GetComponent<Sprite>().color.a };
 	e.GetComponent<Sprite>().color = clr;
 }
-
+void AIManager::updateWater(const Entity& e)
+{
+	static double time = 0.0;
+	time += FPSManager::dt / 1.f;
+	if (time > 2 * M_PI)
+		time -= (2 * M_PI);
+	float cap = 3.f;
+	float col = ((((float)sin(time) + 1.f) / 2.f / cap)+(cap-1.f)/cap  );
+	e.GetComponent<Sprite>().color.r = (GLubyte)(col * 255);
+	e.GetComponent<Sprite>().color.g = (GLubyte)(col * 255);
+	//e.GetComponent<Sprite>().color.b= blue;
+}
 /*!*****************************************************************************
 \brief
 	AI to move an entity up and down

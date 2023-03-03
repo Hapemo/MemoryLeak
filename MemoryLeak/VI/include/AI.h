@@ -42,6 +42,7 @@ public:
 private:
 	void updateAIAllColors(const Entity&);
 	void updateAITrafficLight(const Entity&);
+	void updateWater(const Entity&);
 	void updateAIUpDown(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAILeftRight(const Entity&, float speed = 1.0f, float range = 10.0f);
 	void updateAICircle(const Entity&, float speed = 1.0f, float range = 10.0f);
