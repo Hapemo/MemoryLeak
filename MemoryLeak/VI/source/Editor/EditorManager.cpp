@@ -545,7 +545,7 @@ void EditorManager::Undo()
 	}
 	else
 	{
-		LOG_ERROR("FK LA NO MORE UNDOO");
+		LOG_ERROR("NO MORE UNDO");
 		stackPointer = 0;
 	}
 }
