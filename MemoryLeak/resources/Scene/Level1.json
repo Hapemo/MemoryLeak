@@ -110,7 +110,7 @@
             ]
         }
     },
-	{
+    {
         "General": {
             "name": "rain",
             "tag": 6,
@@ -1591,7 +1591,7 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 67.0
             },
             "scaleOffset": {
                 "X": 0.6000000238418579,
@@ -2470,7 +2470,7 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 69.0
+                "Y": 84.0
             },
             "scaleOffset": {
                 "X": 1.0,
@@ -8284,7 +8284,7 @@
                 "X": 2.0,
                 "Y": 1.0
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "LayerCollider": {
@@ -8294,9 +8294,9 @@
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 1.0
+                "Y": 0.004999999888241291
             },
-            "renderFlag": false
+            "renderFlag": true
         },
         "Script": {
             "name": "Level1Passenger2Script"
@@ -8397,6 +8397,36 @@
         },
         "Script": {
             "name": "Level1ManagerScript"
+        }
+    },
+    {
+        "General": {
+            "name": "Passenger2DestRender",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 75.0,
+                "Y": 151.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 907.6952514648438,
+                "Y": 930.4625244140625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 0
         }
     }
 ]
