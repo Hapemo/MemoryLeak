@@ -51,7 +51,7 @@ void DeathScript::Update(Entity const& _e) {
 	if (VI::iInput::CheckKey(HOLD, LEFT_CONTROL) && VI::iInput::CheckKey(HOLD, LEFT_SHIFT) && VI::iInput::CheckKey(PRESS, M)) canDie = !canDie;
 
 	static bool onEntry = false;
-	if (VI::iPhysics::EntitiesCollided(player, _e)) onEntry = true;
+	if (VI::iPhysics::IsCollided(player, _e)) onEntry = true;
 	if (onEntry && canDie) {
 		static bool capsized = false;
 		VI::iTexture::SetTexture(player, "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png");

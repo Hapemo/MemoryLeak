@@ -22,6 +22,7 @@ also handles the assertion.
 #define LOG_WARN(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_WARN, __VA_ARGS__)
 #define LOG_ERROR(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_ERROR, __VA_ARGS__)
 #define LOG_CRASH(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_CRASH, __VA_ARGS__)
+#define LOG_GAME(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_GAME, __VA_ARGS__)
 
 #define LOG_CUSTOM(_customLogLevel, ...) Logger::GetInstance()->CustomLog(std::source_location::current(), _customLogLevel, __VA_ARGS__)
 #define LOG_CREATE(_newType) Logger::GetInstance()->CreateNew(_newType)
@@ -43,7 +44,8 @@ public:
         LOG_WARN = 2,
         LOG_ERROR = 3,
         LOG_ASSERT = 4,
-        LOG_CRASH = 5
+        LOG_CRASH = 5,
+        LOG_GAME = 6
     };
 
     enum class E_EXCEPTION {
@@ -82,7 +84,7 @@ public:
         size_t customType = 0;
         size_t index = 0;
         for (std::string type : mLogNames) {
-            if (type == _customLogLevel)
+            if (type == Util::UpperString(_customLogLevel))
                 customType = index;
             ++index;
         }
@@ -252,7 +254,7 @@ private:
     };
 
     const std::string mFilepath = "../logs/";
-    std::vector<std::string> mLogNames = { "INFO", "DEBUG", "WARN", "ERROR", "ASSERT", "CRASH" };
+    std::vector<std::string> mLogNames = { "INFO", "DEBUG", "WARN", "ERROR", "ASSERT", "CRASH", "GAME" };
 
     const std::string mLogFilename = "log.log";
     const std::string mFullLogFilename = "fulllog.log";

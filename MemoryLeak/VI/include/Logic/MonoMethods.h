@@ -36,6 +36,12 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Logger function.
+	*******************************************************************************/
+	static void Logger(MonoString* _log);
+
+	/*!*****************************************************************************
+	\brief
 	Internal Call functions that uses MonoString or needs overloading.
 	*******************************************************************************/
 	struct iInput {
@@ -51,11 +57,11 @@ public:
 	};
 	struct iPhysics {
 		static void s_ApplyImpulse(MonoString* _entityName, MonoString* _sceneName, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY);
-		static bool s_EntitiesCollided(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName);
+		static bool s_IsCollided(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName);
 		static bool s_CheckCollision(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName, bool _dynamicCheck);
 
 		static void ApplyImpulse(const int _eId, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY);
-		static bool EntitiesCollided(const int _eId1, const int _eId2);
+		static bool IsCollided(const int _eId1, const int _eId2);
 		static bool CheckCollision(const int _eId1, const int _eId2, bool _dynamicCheck);
 	};
 	struct iDialogue {

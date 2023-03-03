@@ -14,6 +14,12 @@ is being stored.
 using System;
 using System.Runtime.CompilerServices;
 
+public class LOG
+{
+	[MethodImpl(MethodImplOptions.InternalCall)]
+	internal extern static void WRITE(string _log);
+}
+
 namespace BonVoyage
 {
 	public class THIS
@@ -236,7 +242,7 @@ namespace VI
 		internal extern static void s_ApplyImpulse(string _entityName, string _sceneName = "", float _impulseX = 0, float _impulseY = 0, float _rotationX = 0, float _rotationY = 0);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static bool s_EntitiesCollided(string _entityName1, string _entityName2, string _sceneName = "");
+		internal extern static bool s_IsCollided(string _entityName1, string _entityName2, string _sceneName = "");
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool s_CheckCollision(string _entityName1, string _entityName2, string _sceneName = "", bool _dynamicCheck = true);
@@ -245,7 +251,7 @@ namespace VI
 		internal extern static void ApplyImpulse(int _eId, float _impulseX, float _impulseY, float _rotationX, float _rotationY);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static bool EntitiesCollided(int _eId1, int _eId2);
+		internal extern static bool IsCollided(int _eId1, int _eId2);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool CheckCollision(int _eId1, int _eId2, bool _dynamicCheck);
@@ -617,10 +623,10 @@ namespace VI
 				internal static void TransformDifference(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Add.TransformDifference(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
 			}
 			public struct AddAtCurrent {
-				internal static void Transform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Transform.AddAtCurrent.Transform(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
-				internal static void TransformScale(int _eId, float _scaleX, float _scaleY, float _time = 1) { VI.Animation.Transform.AddAtCurrent.TransformScale(_eId, _scaleX, _scaleY, _time); }
-				internal static void TransformRotate(int _eId, float _rot, float _time = 1) { VI.Animation.Transform.AddAtCurrent.TransformRotate(_eId, _rot, _time); }
-				internal static void TransformPos(int _eId, float _posX, float _posY, float _time = 1) { VI.Animation.Transform.AddAtCurrent.TransformPos(_eId, _posX, _posY, _time); }
+				internal static void Transform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.AddAtCurrent.Transform(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
+				internal static void TransformScale(int _eId, float _scaleX, float _scaleY, float _time = 1) { VI.Animation.AddAtCurrent.TransformScale(_eId, _scaleX, _scaleY, _time); }
+				internal static void TransformRotate(int _eId, float _rot, float _time = 1) { VI.Animation.AddAtCurrent.TransformRotate(_eId, _rot, _time); }
+				internal static void TransformPos(int _eId, float _posX, float _posY, float _time = 1) { VI.Animation.AddAtCurrent.TransformPos(_eId, _posX, _posY, _time); }
 			}
 			public struct SetCalculatedTime {
 				internal static void FromPosition(int _eId, float _posX, float _posY, int _step = -1) { VI.Animation.SetCalculatedTime.FromPosition(_eId, _posX, _posY, _step); }

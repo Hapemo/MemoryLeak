@@ -179,8 +179,9 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 			const char* exceptionCString = mono_string_to_utf8(exceptionString);
 			std::string exceptionStr = exceptionCString;
 			LOG_CUSTOM("Mono", "Failed to call method " + funcStr + "()!");
-			LOG_ERROR("Mono", "Error " + exceptionStr + " thrown!");
-			mono_print_unhandled_exception(exception);
+			LOG_CUSTOM("Mono", exceptionStr);
+			LOG_ERROR(exceptionStr);
+			//mono_print_unhandled_exception(exception);
 			BREAKPOINT(true);
 		}
 	}

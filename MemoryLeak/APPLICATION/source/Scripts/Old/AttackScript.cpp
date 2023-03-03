@@ -53,7 +53,7 @@ EarlyUpdate functions from all other active scripts.
 *******************************************************************************/
 void AttackScript::Update(Entity const& _e) {
 	static bool raised = false;
-	if (VI::iPhysics::EntitiesCollided(player, _e)) {
+	if (VI::iPhysics::IsCollided(player, _e)) {
 		if(visible == 0) {
 			if (!raised) {
 				enemy.GetComponent<SheetAnimation>().currFrameIndex = 0;
