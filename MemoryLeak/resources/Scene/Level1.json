@@ -124,8 +124,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 56.791015625,
+                "Y": -209.60153198242188
             }
         },
         "Sprite": {
@@ -9821,8 +9821,38 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 907.6952514648438,
-                "Y": 930.4625244140625
+                "X": 900.0,
+                "Y": 950.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "Passenger1DestRender",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 75.0,
+                "Y": 151.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1050.0,
+                "Y": 850.0
             }
         },
         "Sprite": {
