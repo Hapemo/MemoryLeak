@@ -5315,7 +5315,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 48
+            "layer": 49
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -7609,7 +7609,7 @@
             },
             "sprite": 2,
             "texture": "",
-            "layer": 60
+            "layer": 30
         },
         "Script": {
             "name": "LevelTutorialDialogueScript"
@@ -8627,6 +8627,306 @@
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
             "layer": 51
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 324.0,
+                "Y": 1657.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2007.6495361328125,
+                "Y": 583.774658203125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "layer": 46
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": -20.0,
+                "Y": -80.0
+            },
+            "scaleOffset": {
+                "X": 0.7599999904632568,
+                "Y": 0.4000000059604645
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 326.0,
+                "Y": 357.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1680.600830078125,
+                "Y": 311.4430847167969
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 45
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 326.0,
+                "Y": 357.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1342.0167236328125,
+                "Y": 837.9918212890625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 40
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 326.0,
+                "Y": 357.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1755.291015625,
+                "Y": 526.6643676757813
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 40
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 287.0,
+                "Y": 341.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1190.0576171875,
+                "Y": 976.2772216796875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 39
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 287.0,
+                "Y": 341.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -926.3408813476563,
+                "Y": 1039.2860107421875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 39
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 287.0,
+                "Y": 341.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -677.7567749023438,
+                "Y": 978.4453125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 39
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 287.0,
+                "Y": 341.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1598.774658203125,
+                "Y": 822.4276123046875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 39
         },
         "SheetAnimation": {
             "frameCount": 3,

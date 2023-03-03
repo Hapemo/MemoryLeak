@@ -15702,5 +15702,355 @@
             "isRandPitch": false,
             "isSpacial": false
         }
+    },
+    {
+        "General": {
+            "name": "EntryBlockerCollider",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -873.0,
+                "Y": 634.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2155.919189453125,
+                "Y": 2547.92138671875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "layer": 35
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -55.0
+            },
+            "scaleOffset": {
+                "X": 0.8999999761581421,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 69.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "EntryBlockerCollider2",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -873.0,
+                "Y": 634.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2971.0078125,
+                "Y": 2350.8857421875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "layer": 35
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -55.0
+            },
+            "scaleOffset": {
+                "X": 0.8999999761581421,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 69.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "ExitBlockerCollider",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -873.0,
+                "Y": 634.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2489.7197265625,
+                "Y": -2696.877197265625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "layer": 35
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -55.0
+            },
+            "scaleOffset": {
+                "X": 0.8999999761581421,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 69.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "ExitBlockerCollider2",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -873.0,
+                "Y": 1800.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3338.436767578125,
+                "Y": -2348.7353515625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "layer": 35
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -55.0
+            },
+            "scaleOffset": {
+                "X": 0.8999999761581421,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 69.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "EntryBlockerCollider3",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -873.0,
+                "Y": 634.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3227.379638671875,
+                "Y": 1931.637939453125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "layer": 35
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -55.0
+            },
+            "scaleOffset": {
+                "X": 0.8999999761581421,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 69.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
     }
 ]
