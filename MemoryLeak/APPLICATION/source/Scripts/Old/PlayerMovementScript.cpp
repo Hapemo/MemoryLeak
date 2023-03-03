@@ -83,7 +83,7 @@ void PlayerMovementScript::Update(const Entity& _e) {
 		if (VI::iInput::CheckKey(E_STATE::PRESS, E_KEY::B)) speedCheat = !speedCheat; // speed cheat toggle
 	}
 
-	if (VI::iInput::CheckKey(E_STATE::HOLD, M_BUTTON_L) /* && (!VI::iPhysics::EntitiesCollided(enemy, _e) || !canDie) */) {
+	if (VI::iInput::CheckKey(E_STATE::HOLD, M_BUTTON_L) /* && (!VI::iPhysics::IsCollided(enemy, _e) || !canDie) */) {
 		if ((dialogueText.HasComponent<General>() && dialogueText.GetComponent<General>().isActive == false)/*|| _e.GetComponent<General>().name != "Boat"*/) {
 			/*Math::Vec2 dirVector{ FUNC->GetWorldMousePos() + currCamera->translation - _e.GetComponent<Transform>().translation };
 			if (dirVector.SqMagnitude() > FLT_EPSILON * FLT_EPSILON)
@@ -114,7 +114,7 @@ void PlayerMovementScript::Update(const Entity& _e) {
 			else if (tempRotation <= 13.f * miniAngle) FUNC->SetSpriteSheetIndexByEntity(_e, 0);
 			else FUNC->SetSpriteSheetIndexByEntity(_e, 7);*/
 
-			if (VI::iPhysics::EntitiesCollided(_e, littleGirl)) {
+			if (VI::iPhysics::IsCollided(_e, littleGirl)) {
 				if (dialogueActivated == false) {
 					dialogueText.Activate();
 					dialogueActivated = true;
@@ -127,7 +127,7 @@ void PlayerMovementScript::Update(const Entity& _e) {
 			}
 		}
 		else {
-			if (VI::iPhysics::EntitiesCollided(_e, littleGirl)) {
+			if (VI::iPhysics::IsCollided(_e, littleGirl)) {
 				dialogueZoomOut = true;
 			}
 		}

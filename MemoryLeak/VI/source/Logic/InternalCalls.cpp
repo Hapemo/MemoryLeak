@@ -153,7 +153,7 @@ void InternalCalls::iPhysics::ApplyImpulse(std::string const& _entityName, std::
 
 /*!*****************************************************************************
 \brief
-EntitiesCollided function that checks if two given entities have collided by
+IsCollided function that checks if two given entities have collided by
 checking whether if a contact with the two entities exists
 \param const Entity &
 A reference to a read-only entity to compare with
@@ -162,14 +162,14 @@ A reference to a read-only entity to compare against
 \return bool
 Evaluated result of whether a collision happened between the two given entities
 *******************************************************************************/
-bool InternalCalls::iPhysics::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
+bool InternalCalls::iPhysics::IsCollided(const Entity& _e1, const Entity& _e2) {
 	return collision2DManager->EntitiesCollided(_e1, _e2);
 }
-bool InternalCalls::iPhysics::EntitiesCollided(const int _eId1, const int _eId2) {
-	return VI::iPhysics::EntitiesCollided(Entity(_eId1), Entity(_eId2));
+bool InternalCalls::iPhysics::IsCollided(const int _eId1, const int _eId2) {
+	return VI::iPhysics::IsCollided(Entity(_eId1), Entity(_eId2));
 }
-bool InternalCalls::iPhysics::EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName) {
-	return VI::iPhysics::EntitiesCollided(VI::iEntity::GetEntity(_entityName1, _sceneName), VI::iEntity::GetEntity(_entityName2, _sceneName));
+bool InternalCalls::iPhysics::IsCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName) {
+	return VI::iPhysics::IsCollided(VI::iEntity::GetEntity(_entityName1, _sceneName), VI::iEntity::GetEntity(_entityName2, _sceneName));
 }
 bool InternalCalls::iPhysics::CheckCollision(const Entity& _e1, const Entity& _e2, bool const& _dynamicCheck) {
 	return collision2DManager->CheckCollision(_e1, _e2, _dynamicCheck);

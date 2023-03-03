@@ -17,6 +17,7 @@ namespace BonVoyage {
         private int OctopusAttacked;
         private float OctopusDirection;
         static private int ChasingPlayer = 0;
+        private int PlayerId;
         private int DialogueSceneId;
         private int EnemyTriggerId;
 
@@ -30,6 +31,8 @@ namespace BonVoyage {
 
             PlayerPosX = 0;
             PlayerPosY = 0;
+
+            PlayerId = VI.Entity.GetId("Boat");
 
             WorldId = VI.Entity.GetId("Water");
             halfX = VI.Transform.Position.GetX(WorldId);
@@ -88,7 +91,7 @@ namespace BonVoyage {
                 */
 
                 // Attacking player
-                if (!VI.Entity.IsActive(DialogueSceneId) && VI.Physics.s_EntitiesCollided("Boat", "EnemyTrigger", "Level1")) {
+                if (!VI.Entity.IsActive(DialogueSceneId) && VI.Physics.IsCollided(PlayerId, EnemyTriggerId)) {
                     switch (OctopusAttacked) {
                         case 0:
                             OctopusAttacked = 1;
@@ -119,7 +122,7 @@ namespace BonVoyage {
                     if(ChasingPlayer > 0) THIS.Animation.Transform.Remove(ChasingPlayer);
                 }
 
-                if (VI.Physics.s_CheckCollision("Boat", "Enemy", "Level1", true) && HitTaken > -1) {
+                if (VI.Physics.CheckCollision(PlayerId, THIS.GetId(), true) && HitTaken > -1) {
                     HitCounter += (float)VI.General.DeltaTime();
                     if (HitCounter >= HitInterval) {
                         HitCounter = 0;

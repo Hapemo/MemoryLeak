@@ -41,7 +41,7 @@ void PassengerScript::EarlyUpdate(Entity const& _e) {
 void PassengerScript::Update(const Entity& _e) {
 	// If ready to pick up and it collided, make it pick up next frame.
 	if (readyToPickUp) {
-		//if (collision2DManager->EntitiesCollided(_e, boat)) {
+		//if (collision2DManager->IsCollided(_e, boat)) {
 		if(passenger.GetComponent<Transform>().rotation == 0.5f){
 			passenger.GetComponent<Transform>().rotation = 0.0f;
 			passengerOriginalSizeX = passengerTransform->scale.x;
@@ -128,7 +128,7 @@ void PassengerScript::Update(const Entity& _e) {
 
 
 		// If reached destination, get off boat (pickedUp false) and go onto island.
-		if (collision2DManager->EntitiesCollided(boat, destination)) {
+		if (collision2DManager->IsCollided(boat, destination)) {
 			pickedUp = false;
 			passengerTransform->translation = destinationHouse.GetComponent<Transform>().translation;
 		}

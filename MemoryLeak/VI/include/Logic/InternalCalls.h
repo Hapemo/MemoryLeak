@@ -118,7 +118,7 @@ public:
 
 		/*!*****************************************************************************
 		\brief
-		EntitiesCollided function that checks if two given entities have collided by
+		IsCollided function that checks if two given entities have collided by
 		checking whether if a contact with the two entities exists
 		\param const Entity &
 		A reference to a read-only entity to compare with
@@ -127,9 +127,9 @@ public:
 		\return bool
 		Evaluated result of whether a collision happened between the two given entities
 		*******************************************************************************/
-		static bool EntitiesCollided(const Entity& _e1, const Entity& _e2);
-		static bool EntitiesCollided(const int _eId1, const int _eId2);
-		static bool EntitiesCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
+		static bool IsCollided(const Entity& _e1, const Entity& _e2);
+		static bool IsCollided(const int _eId1, const int _eId2);
+		static bool IsCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName);
 
 		static bool CheckCollision(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck = false);
 		static bool CheckCollision(const int _eId1, const int _eId2, const bool& _dynamicCheck = false);

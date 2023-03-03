@@ -20,7 +20,7 @@ namespace BonVoyage {
     public void Update(int _ENTITY) {
       
       if (VI.Entity.IsActive(colliderBox))
-      if (VI.Physics.EntitiesCollided(colliderBox, playerBoat)) {
+      if (VI.Physics.IsCollided(colliderBox, playerBoat)) {
         //Console.WriteLine("collided");
         //VI.Animation.SheetIndex.Set(_ENTITY, 1);
         if (!Level1DialogManager.runPassengerDialog) {

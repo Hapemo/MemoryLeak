@@ -17,7 +17,7 @@ namespace BonVoyage {
     }
 
     public void Update(int _ENTITY) {
-      //if (VI.Physics.EntitiesCollided(colliderBox, playerBoat)) {
+      //if (VI.Physics.IsCollided(colliderBox, playerBoat)) {
 
       //  //Console.WriteLine("collided");
       //  if (!Level1DialogManager.runGirlDialog)

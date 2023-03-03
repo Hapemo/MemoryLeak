@@ -30,6 +30,8 @@ MonoString* MonoMethods::ConvertToMonoString(std::string _string) {
 Logger function.
 *******************************************************************************/
 void MonoMethods::Logger(MonoString* _log) {
+	FUNC->Logger(MONO->ConvertFromMonoString(_log));
+}
 
 /*!*****************************************************************************
 \brief
@@ -62,11 +64,11 @@ void MonoMethods::iPhysics::s_ApplyImpulse(MonoString* _entityName, MonoString* 
 void MonoMethods::iPhysics::ApplyImpulse(const int _eId, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY) {
 	VI::iPhysics::ApplyImpulse(_eId, _impulseX, _impulseY, _rotationX, _rotationY);
 }
-bool MonoMethods::iPhysics::s_EntitiesCollided(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName) {
-	return VI::iPhysics::EntitiesCollided(MONO->ConvertFromMonoString(_entityName1), MONO->ConvertFromMonoString(_entityName2), MONO->ConvertFromMonoString(_sceneName));
+bool MonoMethods::iPhysics::s_IsCollided(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName) {
+	return VI::iPhysics::IsCollided(MONO->ConvertFromMonoString(_entityName1), MONO->ConvertFromMonoString(_entityName2), MONO->ConvertFromMonoString(_sceneName));
 }
-bool MonoMethods::iPhysics::EntitiesCollided(const int _eId1, const int _eId2) {
-	return VI::iPhysics::EntitiesCollided(_eId1, _eId2);
+bool MonoMethods::iPhysics::IsCollided(const int _eId1, const int _eId2) {
+	return VI::iPhysics::IsCollided(_eId1, _eId2);
 }
 bool MonoMethods::iPhysics::s_CheckCollision(MonoString* _entityName1, MonoString* _entityName2, MonoString* _sceneName, bool _dynamicCheck) {
 	return VI::iPhysics::CheckCollision(MONO->ConvertFromMonoString(_entityName1), MONO->ConvertFromMonoString(_entityName2), MONO->ConvertFromMonoString(_sceneName), _dynamicCheck);
@@ -436,6 +438,9 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Test::ArgString", &FUNC->TestArgString);
 	mono_add_internal_call("VI.Test::ReturnString", &FUNC->TestReturnString);
 	//mono_add_internal_call("BonVoyage.THIS::IsActive", &MM::iEntity::IsActive);
+	
+	// Logger
+	mono_add_internal_call("VI.LOG::WRITE", &MONO->Logger);
 
 	// General
 	mono_add_internal_call("VI.General::DeltaTime", &FUNC->GetDeltaTime);
@@ -464,11 +469,11 @@ void MonoMethods::RegisterCalls() {
 
 	// Physics
 	mono_add_internal_call("VI.Physics::s_ApplyImpulse", &MM::iPhysics::s_ApplyImpulse);
-	mono_add_internal_call("VI.Physics::s_EntitiesCollided", &MM::iPhysics::s_EntitiesCollided);
+	mono_add_internal_call("VI.Physics::s_IsCollided", &MM::iPhysics::s_IsCollided);
 	mono_add_internal_call("VI.Physics::s_CheckCollision", &MM::iPhysics::s_CheckCollision);
 
 	mono_add_internal_call("VI.Physics::ApplyImpulse", &MM::iPhysics::ApplyImpulse);
-	mono_add_internal_call("VI.Physics::EntitiesCollided", &MM::iPhysics::EntitiesCollided);
+	mono_add_internal_call("VI.Physics::IsCollided", &MM::iPhysics::IsCollided);
 	mono_add_internal_call("VI.Physics::CheckCollision", &MM::iPhysics::CheckCollision);
 
 	// Dialogue
@@ -603,7 +608,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/AddAtCurrent::Transform", &VI::iAnimation::iTransform::AddTransformAtCurrent);
 	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformScale", &VI::iAnimation::iTransform::TransformScaleAtCurrent);
 	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformRotate", &VI::iAnimation::iTransform::TransformRotateAtCurrent);
-	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformPos", &VI::iAnimation::iTransform::TransformPosAtCurrent);
+	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformPos", &VI::iAnimation::iTransform::TransformScaleAtCurrent);
 
 	// Particle System
 	mono_add_internal_call("VI.ParticleSystem::GetDensity", &VI::iParticleSystem::GetDensity);
