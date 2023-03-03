@@ -1,0 +1,37 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Oh this is indeed the place I remembered!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "Thank goodness, it seems like my compass is finally working again.",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "In the past, this compass would always guide a certain friend of mine to Delphia.",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "She really liked that friend so much, she'd label him the \"special guest\" of hers haha!",
+   "Speaker": 0,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "Wait... who was that friend again...? Maybe Delphia might have a better idea... Anyway, here, take this compass with you. May it guide you on your journey.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]

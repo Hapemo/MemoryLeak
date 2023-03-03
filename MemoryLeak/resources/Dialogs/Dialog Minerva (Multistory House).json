@@ -1,0 +1,37 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "I knew I was right to trust you all along!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "Indeed, this is the place I've been looking for.",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "Hm... but my brother doesn't seem to be anywhere here. Maybe I've mistaken?",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "That's strange... maybe he might've gone to a much brighter area. And who knows if you may cross paths with him during your journey?",
+   "Speaker": 0,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "Perhaps our fates might really be intertwined. I managed to meet you in such a vast place after all! Here, take this. It's the least I can do to thank you.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]

@@ -1,0 +1,79 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Hey you over there!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "You feel kind of familiar, have we met before?",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 4
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "Perhaps we might have.",
+   "Speaker": 1,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "I don't remember.",
+   "Speaker": 1,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "That's great! You must be familiar with this place I suppose?",
+   "Speaker": 0,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "All I can remember is that wide spacious balcony but since this area is so vast, I thought that maybe someone like you might know which building I'm referring to!",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 11
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "Well no matter! I'm actually looking for my little brother.",
+   "Speaker": 0,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "He loved running up and down the stairs back then, so I thought he may be at our old house.",
+   "Speaker": 0,
+   "Next Dialogue": 9,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "There's just so many buildings here and I don't know which one it is. Since you're more familiar, maybe you could help me out!",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 11
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "Let's try the multistory house.",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "Let's try the lighthouse.",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]

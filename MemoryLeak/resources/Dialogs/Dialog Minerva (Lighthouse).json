@@ -1,0 +1,30 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Oh? This place doesn't seem like the one I had in mind...",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "Well, it's alright! Everyone makes mistakes after all and perhaps I had been a little vague earlier.",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "Still, I really wonder where my brother might've gone...",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "If you do see him along the way, please send him my regards! In return, here, take this! It's the least I can do for you.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
