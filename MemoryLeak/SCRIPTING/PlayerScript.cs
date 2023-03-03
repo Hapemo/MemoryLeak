@@ -7,6 +7,7 @@ namespace BonVoyage {
         static public bool PlayerInDialogue;
         static public bool PlayerInDeathAnimation;
         static public float PlayerHealth;
+        static public bool CameraFollowPlayer = true;
 
         private const double Pi = 3.141592653589793238f;
         private const float MiniAngle = (float)Pi / 8;
@@ -87,8 +88,10 @@ namespace BonVoyage {
 
             #region Camera Follow Player
             // Update camera position to follow entity assumed to be player
-            VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (PlayerPosX - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime());
-            VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (PlayerPosY - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime());
+            if (CameraFollowPlayer) {
+              VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (PlayerPosY - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime());
+              VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (PlayerPosX - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime());
+            }
             #endregion
 
             #region Player Death

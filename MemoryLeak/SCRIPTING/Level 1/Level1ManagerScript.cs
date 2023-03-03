@@ -10,6 +10,7 @@ namespace BonVoyage {
 
     public void Init(int _ENTITY) {
       CamZoom33Percent();
+      Level1DialogManager.runIntroDialog = true;
     }
 
     public void EarlyUpdate(int _ENTITY) {
@@ -82,6 +83,11 @@ namespace BonVoyage {
       }
 
       return false;
+    }
+
+    public static void MoveCamera(float x, float y) {
+      VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (y - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime());
+      VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (x - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime());
     }
 
     public static bool ChangeZoom(float x, float speed) {
