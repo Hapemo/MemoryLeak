@@ -160,8 +160,6 @@ namespace BonVoyage {
                 VI.Transform.Scale.SetY(_ENTITY, VI.Transform.Scale.GetY(_ENTITY) / (1 + 8 * (float)VI.General.DeltaTime()));
             }
             else {
-                    VI.Test.ArgString("Animation complete\n");
-
                 // Animation complete
                 DetachFromPlayerAnimation = false;
                 PlayerScript.PlayerInOtherAnimation = false;
@@ -169,28 +167,27 @@ namespace BonVoyage {
             }
 
         }
-            if (DestinationReached) {
-                // Restore passenger's original scale x value
-                if (VI.Transform.Scale.GetX(_ENTITY) < InitialScaleX) {
-                    VI.Transform.Scale.SetX(_ENTITY, VI.Transform.Scale.GetX(_ENTITY) * (1 + 8 * (float)VI.General.DeltaTime()));
-                    VI.Transform.Scale.SetY(_ENTITY, VI.Transform.Scale.GetY(_ENTITY) * (1 + 8 * (float)VI.General.DeltaTime()));
-                }
-
-                // Get distance between passenger and boat
-                float diffX = VI.Transform.Position.GetX(destinationRenderLocation) - VI.Transform.Position.GetX(_ENTITY);
-                float diffY = VI.Transform.Position.GetY(destinationRenderLocation) - VI.Transform.Position.GetY(_ENTITY);
-
-                if (diffX * diffX > (InitialScaleX * InitialScaleX + VI.Transform.Scale.GetX(destinationRenderLocation) * VI.Transform.Scale.GetX(destinationRenderLocation))) {
-                    // Animation
-                    VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(_ENTITY) + diffX * (float)VI.General.DeltaTime());
-                    VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(_ENTITY) + diffY * (float)VI.General.DeltaTime());
-                }
-                else { 
-                    DestinationReached = false;
-                }
+        
+        if (DestinationReached) {
+            // Restore passenger's original scale x value
+            if (VI.Transform.Scale.GetX(_ENTITY) < InitialScaleX) {
+                VI.Transform.Scale.SetX(_ENTITY, VI.Transform.Scale.GetX(_ENTITY) * (1 + 8 * (float)VI.General.DeltaTime()));
+                VI.Transform.Scale.SetY(_ENTITY, VI.Transform.Scale.GetY(_ENTITY) * (1 + 8 * (float)VI.General.DeltaTime()));
             }
 
+            // Get distance between passenger and boat
+            float diffX = VI.Transform.Position.GetX(destinationRenderLocation) - VI.Transform.Position.GetX(_ENTITY);
+            float diffY = VI.Transform.Position.GetY(destinationRenderLocation) - VI.Transform.Position.GetY(_ENTITY);
 
+            if (diffX * diffX > (InitialScaleX * InitialScaleX + VI.Transform.Scale.GetX(destinationRenderLocation) * VI.Transform.Scale.GetX(destinationRenderLocation))) {
+                // Animation
+                VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(_ENTITY) + diffX * (float)VI.General.DeltaTime());
+                VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(_ENTITY) + diffY * (float)VI.General.DeltaTime());
+            }
+            else { 
+                DestinationReached = false;
+            }
+        }
     }
 
     public void FixedUpdate(int _ENTITY) {
