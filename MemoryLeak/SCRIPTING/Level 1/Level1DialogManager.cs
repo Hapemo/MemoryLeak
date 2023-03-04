@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
+// INFO
+// Intro Dialog zoom is x = 1200
+// Static Dialog zoom is x = 960
+// Normal zoom is x = 1600
+
 namespace BonVoyage {
   public class Level1DialogManager : BaseScript {
 
@@ -168,16 +173,36 @@ namespace BonVoyage {
     // int textYSpacing     - This is the spacing of the text from the top edge of the box 
     public void TextBoxAlign(string entityname, string scenename, float posX, float posY, float scaleX = 500, float perLineScaleY = 51, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
       int additionalLines = VI.Text.s_GetLineCount(entityname, scenename) - 1;
+      VI.Test.ArgString("Aligning");
 
       // Selecting the dialog box texture and putting it into correct position
-
+      if (choice == 0) {
+          VI.Test.ArgString("Not choice");
+        if      (additionalLines < 3) {
+          VI.Transform.Scale.s_SetY(entityname, scenename, 109.8f);
+          VI.Transform.Scale.s_SetX(entityname, scenename, 549.0f);
+          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox1.png");
+          VI.Test.ArgString("Setting dialog box 1");
+          
+        }
+        else if (additionalLines < 6) {
+          VI.Transform.Scale.s_SetY(entityname, scenename, 178.8f);
+          VI.Transform.Scale.s_SetX(entityname, scenename, 549.0f);
+          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox2.png");
+          VI.Test.ArgString("Setting dialog box 2");
+        }
+        else                          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
+      } else {
+        if (additionalLines == 0)     VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
+        else                          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueOption2.png");
+      }
 
       //Console.WriteLine("lines: " + additionalLines);
       //float scaleY = perLineScaleY;         // This is the default height of button, will changing with respect to line count
-      perLineScaleY *= VI.Text.Scale.s_Get(entityname, scenename);
+      //perLineScaleY *= VI.Text.Scale.s_Get(entityname, scenename);
 
-      VI.Transform.Scale.s_SetX(entityname, scenename, scaleX);
-      VI.Transform.Scale.s_SetY(entityname, scenename, perLineScaleY * (1 + additionalLines) + textYSpacing * 2);
+      //VI.Transform.Scale.s_SetX(entityname, scenename, scaleX);
+      //VI.Transform.Scale.s_SetY(entityname, scenename, perLineScaleY * (1 + additionalLines) + textYSpacing * 2);
 
       // If it's a choice textbox, posY is the middle of both texts
       if (choice == 1)
@@ -350,13 +375,16 @@ namespace BonVoyage {
 
     #endregion
 
+    void ZoomCameraToDialog() {
+      Level1ManagerScript.ChangeZoom(960, 540);
+    }
     // The General function for stand still dialogs
     void GeneralDialogStart() {
       PlayerScript.CameraFollowPlayer = false;
       PlayerScript.PlayerInDialogue = true;
       MoveCameraToDialog();
+      ZoomCameraToDialog();
       VI.Animation.SpriteSheet.SheetIndex.Set(playerID, 1); // Make player face the other person
-      Level1ManagerScript.ChangeZoom(1200, 300);
     }
 
     #region Dialog Endings
@@ -402,9 +430,10 @@ namespace BonVoyage {
 
     public void MoveCameraToDialog() {
       float playerHeight = VI.Transform.Scale.GetY(playerID);
+      float playerWidth = VI.Transform.Scale.GetX(playerID);
       float screenHalfHeight = VI.Camera.GetScale.Y()/2;
 
-      Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID),
+      Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID) + playerWidth/3,
                                      VI.Transform.Position.GetY(playerID) + screenHalfHeight - playerHeight/2);
     }
 
