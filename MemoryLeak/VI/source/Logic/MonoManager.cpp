@@ -182,7 +182,9 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 			LOG_CUSTOM("Mono", exceptionStr);
 			LOG_ERROR(exceptionStr);
 			//mono_print_unhandled_exception(exception);
+#ifdef _DEBUG
 			BREAKPOINT(true);
+#endif
 		}
 	}
 }

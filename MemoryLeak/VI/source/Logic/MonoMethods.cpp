@@ -440,7 +440,7 @@ void MonoMethods::RegisterCalls() {
 	//mono_add_internal_call("BonVoyage.THIS::IsActive", &MM::iEntity::IsActive);
 	
 	// Logger
-	mono_add_internal_call("VI.LOG::WRITE", &MONO->Logger);
+	mono_add_internal_call("LOG::WRITE", &MONO->Logger);
 
 	// General
 	mono_add_internal_call("VI.General::DeltaTime", &FUNC->GetDeltaTime);
