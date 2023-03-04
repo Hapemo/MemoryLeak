@@ -11,11 +11,9 @@ namespace BonVoyage {
         public int HitTaken;
 
         private EnemyState OctopusState;
-        private float OctopusDirection;
         private static int ChasingTransformIndex = 0;
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
-        private int WorldId;
         private int PlayerId;
         private int DialogueSceneId;
         private int EnemyTriggerId;
@@ -27,20 +25,7 @@ namespace BonVoyage {
             ATTACK2 = 12,
         }
 
-        public struct WorldCoods {
-            public struct Max {
-                public static float x;
-                public static float y;
-            };
-            public struct Min {
-                public static float x;
-                public static float y;
-            };
-            public struct Mid {
-                public static float x;
-                public static float y;
-            };
-        };
+        public enum Axis { x, y }
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
@@ -52,19 +37,10 @@ namespace BonVoyage {
             DialogueSceneId = VI.Entity.GetId("DialogueBox");
             EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
-
-            WorldId = VI.Entity.GetId("Water");
-            WorldCoods.Mid.x = VI.Transform.Position.GetX(WorldId);
-            WorldCoods.Mid.y = VI.Transform.Position.GetY(WorldId);
-            WorldCoods.Max.x = (VI.Transform.Scale.GetX(WorldId) / 2) + WorldCoods.Mid.x - THIS.Transform.Scale.GetX();
-            WorldCoods.Max.y = (VI.Transform.Scale.GetY(WorldId) / 2) + WorldCoods.Mid.y - THIS.Transform.Scale.GetY();
-            WorldCoods.Min.x = WorldCoods.Mid.x - (VI.Transform.Scale.GetX(WorldId) / 2) + THIS.Transform.Scale.GetX();
-            WorldCoods.Min.y = WorldCoods.Mid.y - (VI.Transform.Scale.GetY(WorldId) / 2) + THIS.Transform.Scale.GetY();
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            // Console.WriteLine("From EnemyController!");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -74,68 +50,36 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
             //VI.Camera.SetScale.X(5500);
 
             PlayerPosX = VI.Transform.Position.GetX(PlayerId);
             PlayerPosY = VI.Transform.Position.GetY(PlayerId);
 
-            float EnemyPosX = THIS.Transform.Position.GetX();
-            float EnemyPosY = THIS.Transform.Position.GetY();
-            float EnemyDisX = PlayerPosX - EnemyPosX;
-            float EnemyDisY = PlayerPosY - EnemyPosY;
-            float EnemyNormDisX = 0f, EnemyNormDisY = 0f;
-            if (VI.Math.SqMagnitude(EnemyDisX, EnemyDisY) > VI.Math.Epsilon() * VI.Math.Epsilon()) {
-                EnemyNormDisX = VI.Math.Normalize.X(EnemyDisX, EnemyDisY);
-                EnemyNormDisY = VI.Math.Normalize.Y(EnemyDisX, EnemyDisY);
-            }
+            float x = GetDistance(PlayerPosX, PlayerPosY, Axis.x);
+            float y = GetDistance(PlayerPosX, PlayerPosY, Axis.y);
+            float OctopusDirection = GetRotation(x, y);
 
             // Enemy is in screen
-            if (EnemyPosX <= VI.Camera.GetPos.X() + (VI.Camera.GetScale.X() / 2) &&
-                EnemyPosY <= VI.Camera.GetPos.Y() + (VI.Camera.GetScale.Y() / 2) &&
-                EnemyPosX >= VI.Camera.GetPos.X() - (VI.Camera.GetScale.X() / 2) &&
-                EnemyPosY >= VI.Camera.GetPos.Y() - (VI.Camera.GetScale.Y() / 2)) {
-                OctopusDirection = GetRotation(EnemyNormDisX, EnemyNormDisY);
-
-                // Attacking player
+            if (OnScreen()) {
                 if (!VI.Entity.IsActive(DialogueSceneId) && VI.Physics.IsCollided(PlayerId, EnemyTriggerId)) {
-                    if (OctopusState == EnemyState.IDLE) {
-                        OctopusState = EnemyState.RISING;
-                        SetRotation(OctopusDirection, OctopusState);
-                        THIS.Animation.SpriteSheet.FrameCount.Set(0);
-                        ChasingTransformIndex = THIS.Animation.Transform.GetCurrentIndex();
-                        THIS.Animation.Transform.AddAtCurrent.TransformPos(PlayerPosX, PlayerPosY);
-                        VI.Animation.Transform.AddAtCurrent.TransformPos(EnemyTriggerId, PlayerPosX, PlayerPosY);
-                    } else {
-                        if (OctopusState == EnemyState.RISING) {
-                            if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1) {
-                                THIS.Animation.SpriteSheet.FrameCount.Set(0);
-                                HitInterval = THIS.Animation.SpriteSheet.Speed.Get() * THIS.Animation.SpriteSheet.FrameCount.Get();
-                                OctopusState = EnemyState.ATTACK1;
-                            }
-                        }
-                        SetRotation(OctopusDirection, OctopusState);
-                        THIS.Animation.Transform.Edit.CurrentPosX(PlayerPosX);
-                        THIS.Animation.Transform.Edit.CurrentPosY(PlayerPosY);
-                        VI.Animation.Transform.Edit.CurrentPosX(EnemyTriggerId, PlayerPosX);
-                        VI.Animation.Transform.Edit.CurrentPosY(EnemyTriggerId, PlayerPosY);
-                    }
-                }
-                else {
+                    ChasePlayer(x, y);
+                    // LOG.WRITE(OctopusState.ToString());
+                } else {
                     OctopusState = EnemyState.IDLE;
-                    SetRotation(OctopusDirection, OctopusState);
                     if (ChasingTransformIndex > 0) {
                         THIS.Animation.Transform.Remove(ChasingTransformIndex);
                         VI.Animation.Transform.Remove(EnemyTriggerId, ChasingTransformIndex);
                         ChasingTransformIndex = 0;
                     }
                 }
+                SetDirection(OctopusDirection, OctopusState);
             }
         }
 
         public void FixedUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            // Detecting player hits
             if (VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > -1) {
                 ++HitCounter;
                 if (HitCounter >= HitInterval) {
@@ -161,14 +105,66 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
+
+        private bool OnScreen() {
+            float EnemyPosX = THIS.Transform.Position.GetX();
+            float EnemyPosY = THIS.Transform.Position.GetY();
+            // Enemy is in screen
+            if (EnemyPosX <= VI.Camera.GetPos.X() + (VI.Camera.GetScale.X() / 2) &&
+                EnemyPosY <= VI.Camera.GetPos.Y() + (VI.Camera.GetScale.Y() / 2) &&
+                EnemyPosX >= VI.Camera.GetPos.X() - (VI.Camera.GetScale.X() / 2) &&
+                EnemyPosY >= VI.Camera.GetPos.Y() - (VI.Camera.GetScale.Y() / 2)) {
+                return true;
+            } else return false;
+        }
+
+        private void ChasePlayer(float _x, float _y) {
+            // First attack, enemy still in idle mode
+            if (OctopusState == EnemyState.IDLE) {
+                //OctopusState = EnemyState.RISING;
+                OctopusState = EnemyState.ATTACK1;
+                float OctopusSpeed = VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime();
+                ChasingTransformIndex = THIS.Animation.Transform.GetCurrentIndex();
+                THIS.Animation.SpriteSheet.CurrentFrame.Set(0);
+                THIS.Animation.Transform.AddAtCurrent.TransformPos(PlayerPosX, PlayerPosY);
+                THIS.Animation.Transform.Edit.Timing(OctopusSpeed);
+                VI.Animation.Transform.AddAtCurrent.TransformPos(EnemyTriggerId, PlayerPosX, PlayerPosY);
+                VI.Animation.Transform.Edit.Timing(EnemyTriggerId, OctopusSpeed);
+                return;
+            }
+            // Rising enemy
+            if (OctopusState == EnemyState.RISING &&
+                THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1) {
+                THIS.Animation.SpriteSheet.CurrentFrame.Set(0);
+                HitInterval = THIS.Animation.SpriteSheet.Speed.Get() * THIS.Animation.SpriteSheet.FrameCount.Get();
+
+                Random rand = new Random();
+                OctopusState = (rand.Next(0, 2) == 0 ? EnemyState.ATTACK1 : EnemyState.ATTACK2);
+            }
+            THIS.Animation.Transform.Edit.CurrentPosX(PlayerPosX);
+            THIS.Animation.Transform.Edit.CurrentPosY(PlayerPosY);
+            VI.Animation.Transform.Edit.CurrentPosX(EnemyTriggerId, PlayerPosX);
+            VI.Animation.Transform.Edit.CurrentPosY(EnemyTriggerId, PlayerPosY);
+        }
+
+        private float GetDistance(float _x, float _y, Axis _axis) {
+            float xDis = _x - THIS.Transform.Position.GetX();
+            float yDis = _y - THIS.Transform.Position.GetY();
+            float xNorm = 0f, yNorm = 0f;
+            if (VI.Math.SqMagnitude(xDis, yDis) > VI.Math.Epsilon() * VI.Math.Epsilon()) {
+                xNorm = VI.Math.Normalize.X(xDis, yDis);
+                yNorm = VI.Math.Normalize.Y(xDis, yDis);
+            }
+            return (_axis == Axis.x ? xNorm : yNorm);
+        }
+
         private float GetRotation(float _x, float _y) {
             float Rotation = 0;
             if (_y != 0f && _x >= 0f)
                 Rotation = VI.Math.ArcTangent(_y, _x);
             else if (_y == 0f && _x > 0f)
                 Rotation = (float)VI.Math.Pi() / 2;
-            else if (_y != 0f && _x < 0f)
-            {
+            else if (_y != 0f && _x < 0f) {
                 Rotation = VI.Math.ArcTangent(_y, _x);
                 Rotation += Rotation < 0f ? (float)VI.Math.Pi() * 2f : 0f;
             }
@@ -176,7 +172,7 @@ namespace BonVoyage {
             return Rotation;
         }
 
-        private void SetRotation(float _rotation, EnemyState _status) {
+        private void SetDirection(float _rotation, EnemyState _status) {
             //Console.Write(OctopusDirection+"\n");
             //VI.Animation.SpriteSheet.Index.Set(_entityName, _sceneName, InitialStatus + direction);
 
