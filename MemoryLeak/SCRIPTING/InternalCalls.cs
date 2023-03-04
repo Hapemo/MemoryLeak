@@ -469,6 +469,9 @@ namespace VI
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static float SqMagnitude(float _x, float _y);
 
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static float Magnitude(float _x, float _y);
+
 		public class Normalize
         {
 			[MethodImpl(MethodImplOptions.InternalCall)]

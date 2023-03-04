@@ -344,6 +344,7 @@ public:
 		Math vector functions
 		*******************************************************************************/
 		static float SqMagnitude(float _x, float _y);
+		static float Magnitude(float _x, float _y);
 		static float NormalizeX(float _x, float _y);
 		static float NormalizeY(float _x, float _y);
 		static float ArcTangent(float _x, float _y);

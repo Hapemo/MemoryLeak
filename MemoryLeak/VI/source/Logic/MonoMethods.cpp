@@ -553,6 +553,7 @@ void MonoMethods::RegisterCalls() {
 
 	// Math
 	mono_add_internal_call("VI.Math::SqMagnitude", &VI::iMath::SqMagnitude);
+	mono_add_internal_call("VI.Math::Magnitude", &VI::iMath::Magnitude);
 	mono_add_internal_call("VI.Math/Normalize::X", &VI::iMath::NormalizeX);
 	mono_add_internal_call("VI.Math/Normalize::Y", &VI::iMath::NormalizeY);
 	mono_add_internal_call("VI.Math::ArcTangent", &VI::iMath::ArcTangent);
