@@ -68,14 +68,14 @@ namespace BonVoyage {
                 VI.Animation.Transform.SetNext(enemymapID, 1);
                 VI.Text.Offset.Set(enemymapID, textbigOffsetX, textbigOffsetY);
                 VI.Text.Scale.Set(enemymapID, textbigScale);
-                VI.Animation.Transform.Start(enemymapID);
+                VI.Animation.Transform.Run(enemymapID);
                 VI.Entity.Sprite.SetType(enemymapID, 0);
                 scaleMapX = MapX;
                 scaleMapY = MapY;
                 VI.Animation.Transform.SetNext(miniplayerID, 1);
-                VI.Animation.Transform.Start(miniplayerID);
+                VI.Animation.Transform.Run(miniplayerID);
                 VI.Animation.Transform.SetNext(minienemyID, 1);
-                VI.Animation.Transform.Start(minienemyID);
+                VI.Animation.Transform.Run(minienemyID);
                 VI.Entity.s_SetActive("blur", "EnemyMap", true);
             }
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(enemymapID)))
@@ -84,14 +84,14 @@ namespace BonVoyage {
                 VI.Animation.Transform.SetNext(enemymapID, 0);
                 VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);
                 VI.Text.Scale.Set(enemymapID, textScale);
-                VI.Animation.Transform.Start(enemymapID);
+                VI.Animation.Transform.Run(enemymapID);
                 VI.Entity.Sprite.SetType(enemymapID, 1);
                 scaleMapX = MapX/2;
                 scaleMapY = MapY/2;
                 VI.Animation.Transform.SetNext(miniplayerID, 0);
-                VI.Animation.Transform.Start(miniplayerID);
+                VI.Animation.Transform.Run(miniplayerID);
                 VI.Animation.Transform.SetNext(minienemyID, 0);
-                VI.Animation.Transform.Start(minienemyID);
+                VI.Animation.Transform.Run(minienemyID);
                 VI.Entity.s_SetActive("blur", "EnemyMap", false);
             }
             float posx = VI.Transform.Position.GetX(enemyID) - VI.Transform.Position.GetX(boatID);
@@ -118,14 +118,14 @@ namespace BonVoyage {
             VI.Animation.Transform.SetNext(enemymapID, 0);
             VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);
             VI.Text.Scale.Set(enemymapID, textScale);
-            VI.Animation.Transform.Start(enemymapID);
+            VI.Animation.Transform.Run(enemymapID);
             VI.Entity.Sprite.SetType(enemymapID, 1);
             scaleMapX = MapX / 2;
             scaleMapY = MapY / 2;
             VI.Animation.Transform.SetNext(miniplayerID, 0);
-            VI.Animation.Transform.Start(miniplayerID);
+            VI.Animation.Transform.Run(miniplayerID);
             VI.Animation.Transform.SetNext(minienemyID, 0);
-            VI.Animation.Transform.Start(minienemyID);
+            VI.Animation.Transform.Run(minienemyID);
             VI.Entity.s_SetActive("blur", "EnemyMap", false);
         }
         public void Dead(int _ENTITY)

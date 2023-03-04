@@ -72,8 +72,9 @@ namespace BonVoyage
 				}
 			}
 			public class Transform {
-				internal static void Start() { VI.Animation.Transform.Start(ENTITY); }
+				internal static void Run() { VI.Animation.Transform.Run(ENTITY); }
 				internal static bool SetNext(int _i) { return VI.Animation.Transform.SetNext(ENTITY, _i); }
+				internal static void GoToNext() { VI.Animation.Transform.GoToNext(ENTITY); }
 				internal static void Stop(bool _next = true) { VI.Animation.Transform.Stop(ENTITY, _next); }
 				internal static void StopAfterEndLoop(bool _loop = true) { VI.Animation.Transform.StopAfterEndLoop(ENTITY, _loop); }
 				internal static void ReverseOrder(bool _reverse = true) { VI.Animation.Transform.ReverseOrder(ENTITY, _reverse); }
@@ -582,10 +583,13 @@ namespace VI
 		public class Transform
 		{
 			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void Start(int _eId);
+			internal extern static void Run(int _eId);
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static bool SetNext(int _eId, int _i); // return true if successful (withing 0 to the vector MAX)
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void GoToNext(int _eId);
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void Stop(int _eId, bool _next = true);

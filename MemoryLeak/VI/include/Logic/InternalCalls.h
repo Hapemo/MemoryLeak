@@ -407,7 +407,8 @@ public:
 			Movement animation
 			*******************************************************************************/
 			static void Start(const int _eId);
-			static bool SetNext(const int _eId, int _i); // return true if successful (withing 0 to the vector MAX)
+			static bool SetNext(const int _eId, int _i);
+			static void GoToNext(const int _eId);
 			static void Stop(const int _eId, bool _next = true);
 			static void StopAfterEndLoop(const int _eId, bool _loop = true);
 			static void ReverseOrder(const int _eId, bool _reverse = true);

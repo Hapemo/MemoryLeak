@@ -633,6 +633,9 @@ void InternalCalls::iAnimation::iTransform::Start(const int _eId) {
 bool InternalCalls::iAnimation::iTransform::SetNext(const int _eId, int _i) { // return true if successful (withing 0 to the vector MAX)
 	return movementAIManager->SetNextStep(Entity(_eId), _i);
 }
+void InternalCalls::iAnimation::iTransform::GoToNext(const int _eId) {
+	movementAIManager->SetNextStep(Entity(_eId), Entity(_eId).GetComponent<MovementAI>().nextStep);
+}
 void InternalCalls::iAnimation::iTransform::Stop(const int _eId, bool _next) {
 	movementAIManager->StopAfterThisAnimation(Entity(_eId), _next);
 }

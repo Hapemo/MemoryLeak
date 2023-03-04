@@ -581,8 +581,9 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/FrameCount::Set", &MM::iAnimation::SetFrameCount);
 	mono_add_internal_call("VI.Animation/FrameCount::Get", &MM::iAnimation::GetFrameCount);
 
-	mono_add_internal_call("VI.Animation/Transform::Start", &VI::iAnimation::iTransform::Start);
+	mono_add_internal_call("VI.Animation/Transform::Run", &VI::iAnimation::iTransform::Start);
 	mono_add_internal_call("VI.Animation/Transform::SetNext", &VI::iAnimation::iTransform::SetNext);
+	mono_add_internal_call("VI.Animation/Transform::GoToNext", &VI::iAnimation::iTransform::GoToNext);
 	mono_add_internal_call("VI.Animation/Transform::Stop", &VI::iAnimation::iTransform::Stop);
 	mono_add_internal_call("VI.Animation/Transform::StopAfterEndLoop", &VI::iAnimation::iTransform::StopAfterEndLoop);
 	mono_add_internal_call("VI.Animation/Transform::ReverseOrder", &VI::iAnimation::iTransform::ReverseOrder);
@@ -608,7 +609,7 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/AddAtCurrent::Transform", &VI::iAnimation::iTransform::AddTransformAtCurrent);
 	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformScale", &VI::iAnimation::iTransform::TransformScaleAtCurrent);
 	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformRotate", &VI::iAnimation::iTransform::TransformRotateAtCurrent);
-	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformPos", &VI::iAnimation::iTransform::TransformScaleAtCurrent);
+	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformPos", &VI::iAnimation::iTransform::TransformPosAtCurrent);
 
 	// Particle System
 	mono_add_internal_call("VI.ParticleSystem::GetDensity", &VI::iParticleSystem::GetDensity);
