@@ -787,6 +787,8 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 				if (!e.ShouldRun()) continue;
 				if (e.HasComponent<Viewport>()) continue;
 				if (e.GetComponent<General>().name == "Boat") continue;
+				if (e.GetComponent<General>().name == "Enemy") continue;
+
 				if (e.HasComponent<Sprite>())
 				{
 					Sprite sprite = e.GetComponent<Sprite>();
