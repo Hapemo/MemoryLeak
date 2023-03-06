@@ -27,6 +27,9 @@
             "sprite": 0,
             "texture": "",
             "layer": 0
+        },
+        "Script": {
+            "name": "TransitionSquare"
         }
     }
 ]

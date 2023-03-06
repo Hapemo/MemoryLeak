@@ -19,7 +19,7 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY);
             if (THIS.Input.Button.Released())
-                VI.GameState.Go("CutScene");
+                TransitionSquare.FadeOut("CutScene");
         }
 
         public void FixedUpdate(int _ENTITY) {
