@@ -30,6 +30,7 @@ private:
 	void NewPrefabee();
 	void SetSelectedEntity();
 	void MoveSelectedEntity();
+	void pointPicker();
 	void UseGuizmo();
 	void MouseOverObject();
 	void PopObject();

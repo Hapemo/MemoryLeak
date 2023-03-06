@@ -6,6 +6,9 @@ namespace BonVoyage {
         private float PlayerPosX;
         private float PlayerPosY;
 
+        private float HealSpeed = 1f;
+        private float HealCounter;
+
         private float HitSpeed = 1f;
         private float HitInterval;
         private float HitAnimationCounter;
@@ -59,6 +62,9 @@ namespace BonVoyage {
             //VI.Camera.SetScale.X(5500);
 
             if (EnemyActivated) {
+                THIS.Activate();
+                VI.Entity.Activate(EnemyTriggerId);
+
                 PlayerPosX = VI.Transform.Position.GetX(PlayerId);
                 PlayerPosY = VI.Transform.Position.GetY(PlayerId);
 
@@ -80,6 +86,9 @@ namespace BonVoyage {
                     }
                     SetDirection(OctopusDirection, OctopusState);
                 }
+            } else {
+                THIS.Deactivate();
+                VI.Entity.Deactivate(EnemyTriggerId);
             }
         }
 
@@ -101,6 +110,16 @@ namespace BonVoyage {
                         HitTaken = (HitTaken < HitMax ? HitTaken + 1 : 0);
                         VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
                     }
+                }
+            }
+
+            // Healing player
+            if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > 0) {
+                ++HealCounter;
+                if (HealCounter >= HitInterval * 100f * HealSpeed) {
+                    HealCounter = 0;
+                    --HitTaken;
+                    VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
                 }
             }
         }
