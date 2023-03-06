@@ -17,7 +17,7 @@ namespace BonVoyage {
             wrongDestination_Box = VI.Entity.GetId("LighthouseDropOffPoint", "Level1");
             wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDestRender", "Level1");
 
-            // Store original scale x value
+            // Store original scale and layer values
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
             InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
         }

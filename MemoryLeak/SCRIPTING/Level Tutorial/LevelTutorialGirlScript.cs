@@ -25,6 +25,17 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            // Check if cat's trigger box is active
+            if (VI.Entity.IsActive(triggerBox)) {
+                // Check if player is colliding with that box
+                if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
+                    // Set Dialog Manager's flag to true and run it
+                    // LevelTutorialDialogManager
+
+                    // Deactivate the trigger box
+                    VI.Entity.Deactivate(triggerBox);
+                }
+            }
         }
 
         public void FixedUpdate(int _ENTITY) {

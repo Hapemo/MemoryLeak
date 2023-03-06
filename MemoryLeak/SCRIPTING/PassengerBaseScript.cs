@@ -3,14 +3,14 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
     public class PassengerBaseScript : BaseScript {
-        protected int playerBoat;
-        protected int triggerBox;
+        protected int playerBoat = 0;
+        protected int triggerBox = 0;
 
-        protected int correctDestination_Box;
-        protected int correctDestination_RenderLocation;
+        protected int correctDestination_Box = 0;
+        protected int correctDestination_RenderLocation = 0;
 
-        protected int wrongDestination_Box;
-        protected int wrongDestination_RenderLocation;
+        protected int wrongDestination_Box = 0;
+        protected int wrongDestination_RenderLocation = 0;
 
         protected bool correctDestinationDelivery;
 
