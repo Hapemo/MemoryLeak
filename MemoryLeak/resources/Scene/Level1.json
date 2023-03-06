@@ -124,8 +124,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 56.791015625,
-                "Y": -209.60153198242188
+                "X": -204.24884033203125,
+                "Y": -825.066162109375
             }
         },
         "Sprite": {
@@ -155,8 +155,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 581.0,
-                "Y": 491.0
+                "X": 566.0,
+                "Y": 476.0
             },
             "rotation": 0.0,
             "translation": {
@@ -1339,7 +1339,7 @@
     },
     {
         "General": {
-            "name": "destination",
+            "name": "MinervaDestination1Box",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1351,7 +1351,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 767.2344970703125,
+                "X": 769.4247436523438,
                 "Y": 708.7607421875
             }
         },
@@ -1456,12 +1456,12 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
@@ -1498,7 +1498,7 @@
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
                     "frameCount": 12,
-			  "timePerFrame": 0.10000000149011612
+                    "timePerFrame": 0.10000000149011612
                 },
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack2_Spritesheet.png",
@@ -1625,7 +1625,7 @@
                     "time": 4.5,
                     "Transform": {
                         "scale": {
-				    "X": 523.0,
+                            "X": 523.0,
                             "Y": 353.0
                         },
                         "rotation": 0.0,
@@ -2647,76 +2647,6 @@
     },
     {
         "General": {
-            "name": "Porthouse",
-            "tag": 3,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 630.5,
-                "Y": 547.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -229.93789672851563,
-                "Y": -637.700439453125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building3_spritesheet.png",
-            "layer": 46
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -55.0
-            },
-            "scaleOffset": {
-                "X": 0.8999999761581421,
-                "Y": 0.6000000238418579
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 69.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
             "name": "Tree8",
             "tag": 5,
             "subtag": 0,
@@ -3357,7 +3287,7 @@
     },
     {
         "General": {
-            "name": "Tree2",
+            "name": "MinervaDestination2",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -6138,7 +6068,7 @@
             "name": "Passenger2Box",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -7663,7 +7593,7 @@
             "name": "Passenger2",
             "tag": 1,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -9163,6 +9093,124 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "MinervaDestination2Box",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 656.614990234375,
+                "Y": -638.7615356445313
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 5
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "HEALTH",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "Fountain",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 602.5,
+                "Y": 902.782470703125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -194.13717651367188,
+                "Y": -643.141357421875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 254,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building6_spritesheet.png",
+            "layer": 64
+        },
+        "SheetAnimation": {
+            "frameCount": 6,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -230.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": -0.0,
+                "Y": -180.0
+            },
+            "scaleOffset": 0.699999988079071,
+            "isTrigger": false,
+            "renderFlag": true
         }
     }
 ]

@@ -33,7 +33,7 @@ namespace BonVoyage {
 
             playerBoat = VI.Entity.GetId("Boat", "Level1");
             triggerBox = VI.Entity.GetId("PassengerBox", "Level1");
-            destinationBox = VI.Entity.GetId("destination", "Level1");
+            destinationBox = VI.Entity.GetId("MinervaDestination1Box");
             destinationRenderLocation = VI.Entity.GetId("Passenger1DestRender", "Level1");
 
             // Store original scale x value

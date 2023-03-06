@@ -95,7 +95,6 @@
     <Compile Include="QuitButton.cs" />
     <Compile Include="ReallyQuitButton.cs" />
     <Compile Include="BGMcontroller.cs" />
-    <Compile Include="ObjectiveText.cs" />
     <Compile Include="SFXcontroller.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="SettingsButton.cs" />
