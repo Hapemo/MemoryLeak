@@ -82,7 +82,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 10.0
         },
         "Button": {
             "interactable": true

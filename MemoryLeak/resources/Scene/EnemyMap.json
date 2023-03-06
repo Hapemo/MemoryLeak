@@ -52,7 +52,9 @@
                 "g": 4,
                 "b": 4,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 10.0
         },
         "Script": {
             "name": "EnemyMapScript"
