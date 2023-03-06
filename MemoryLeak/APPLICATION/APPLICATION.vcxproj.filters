@@ -27,5 +27,6 @@
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Scripts\Old\PlayGameButton.cpp" />
+    <ClCompile Include="source\Scripts\FPSPrint.cpp" />
   </ItemGroup>
 </Project>
