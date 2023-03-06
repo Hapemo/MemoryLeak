@@ -914,7 +914,7 @@
                 "X": 2.0,
                 "Y": 1.0
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "LayerCollider": {
@@ -1350,7 +1350,7 @@
     },
     {
         "General": {
-            "name": "destination",
+            "name": "DestinationBox",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1995,7 +1995,7 @@
     },
     {
         "General": {
-            "name": "PassengerBox",
+            "name": "Passenger1Box",
             "tag": 8,
             "subtag": 0,
             "isActive": true

@@ -23,7 +23,7 @@ namespace BonVoyage {
 
         playerBoat = VI.Entity.GetId("Boat", "Level1");
         triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
-        destinationBox = VI.Entity.GetId("destination", "Level1");
+        destinationBox = VI.Entity.GetId("DestinationBox", "Level1");
         destinationRenderLocation = VI.Entity.GetId("Passenger2DestRender", "Level1");
 
         ReadyToAttach = false;

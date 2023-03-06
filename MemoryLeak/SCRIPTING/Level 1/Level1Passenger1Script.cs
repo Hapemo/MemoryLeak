@@ -32,8 +32,8 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             playerBoat = VI.Entity.GetId("Boat", "Level1");
-            triggerBox = VI.Entity.GetId("PassengerBox", "Level1");
-            destinationBox = VI.Entity.GetId("destination", "Level1");
+            triggerBox = VI.Entity.GetId("Passenger1Box", "Level1");
+            destinationBox = VI.Entity.GetId("DestinationBox", "Level1");
             destinationRenderLocation = VI.Entity.GetId("Passenger1DestRender", "Level1");
 
             // Store original scale x value
@@ -48,10 +48,10 @@ namespace BonVoyage {
                 if (VI.Physics.IsCollided(triggerBox, playerBoat))
                 {
                     // Check if dialogue script should be ran
-                    if (!Level1DialogManager.runPassenger2Dialog)
+                    if (!Level1DialogManager.runPassengerDialog)
                     {
                         // Set Dialogue Manager's flag to true to run it
-                        Level1DialogManager.runPassenger2Dialog = true;
+                        Level1DialogManager.runPassengerDialog = true;
                         // Deactivate the trigger box
                         VI.Entity.Deactivate(triggerBox);
                         // Set flag to true
@@ -61,7 +61,7 @@ namespace BonVoyage {
             }
 
             // Passenger is ready to attach & dialogue has ended
-            if (ReadyToAttach && !Level1DialogManager.runPassenger2Dialog)
+            if (ReadyToAttach && !Level1DialogManager.runPassengerDialog)
             {
                 // Set flag variables
                 AttachToPlayerAnimation = true;
