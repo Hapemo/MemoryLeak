@@ -95,12 +95,12 @@ namespace BonVoyage {
     }
 
     public void EnableUI() {
-      VI.Entity.Activate(UIHPBarID);
-      VI.Entity.Activate(UIMemoryFragmentID);
-      VI.Entity.Activate(UICycleMapID);
-      VI.Entity.Activate(UIObjectiveTextID);
-            VI.Entity.Activate(UICycleMapID);
-            //VI.Scene.Play("CrystalBalls");
+      if (UIHPBarID != 0)VI.Entity.Activate(UIHPBarID);
+      if (UIMemoryFragmentID != 0)VI.Entity.Activate(UIMemoryFragmentID);
+      if (UICycleMapID != 0)VI.Entity.Activate(UICycleMapID);
+      if (UIObjectiveTextID != 0)VI.Entity.Activate(UIObjectiveTextID);
+      if (UICycleMapID != 0)VI.Entity.Activate(UICycleMapID);
+      //VI.Scene.Play("CrystalBalls");
       //VI.Scene.Play("MiniMap");
       //VI.Scene.Play("EnemyMap");
       //VI.Scene.Play("WeatherMap");

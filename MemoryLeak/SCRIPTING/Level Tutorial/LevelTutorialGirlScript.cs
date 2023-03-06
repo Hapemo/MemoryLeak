@@ -30,7 +30,7 @@ namespace BonVoyage {
                 // Check if player is colliding with that box
                 if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
                     // Set Dialog Manager's flag to true and run it
-                    // LevelTutorialDialogManager
+                    LevelTutorialDialogManager.runGirlDialog = true;
 
                     // Deactivate the trigger box
                     VI.Entity.Deactivate(triggerBox);

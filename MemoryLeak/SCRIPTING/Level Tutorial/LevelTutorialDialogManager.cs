@@ -27,24 +27,12 @@ namespace BonVoyage {
     }
 
     public void Init(int _ENTITY) {
-      playerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
-
-      UIHPBarID = VI.Entity.GetId("hpbar", "Dialogue");
-      UIMemoryFragmentID = VI.Entity.GetId("memoryfragment", "Dialogue");
-      UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
-      UIFragment1ObjID = VI.Entity.GetId("fragment1obj", "Dialogue");
-      UICycleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
-      UIMiniMapID = VI.Entity.GetId("minimap", "Dialogue");
-      UIEnemyMapID = VI.Entity.GetId("enemymap", "Dialogue");
-      UIWeatherMapID = VI.Entity.GetId("weathermap", "Dialogue");
-      UIWeatherTextID = VI.Entity.GetId("weathertext", "Dialogue");
-      UIObjectiveTextID = VI.Entity.GetId("objectivetext", "Dialogue");
-
-      P1ID = VI.Entity.GetId("P1", "Dialogue");
-      PP1ID = VI.Entity.GetId("PP1", "Dialogue");
-      PP2ID = VI.Entity.GetId("PP2", "Dialogue");
-      G1ID = VI.Entity.GetId("G1", "Dialogue");
-
+      playerID = VI.Entity.GetId("Boat");
+      UIObjectiveTextID = VI.Entity.GetId("objectivetext");
+      P1ID = VI.Entity.GetId("P1");
+      PP1ID = VI.Entity.GetId("PP1");
+      PP2ID = VI.Entity.GetId("PP2");
+      G1ID = VI.Entity.GetId("G1");
       girlColliderBox = VI.Entity.GetId("GirlBox");
       PColliderBox = VI.Entity.GetId("PassengerPickupBox");
       PEndColliderBox = VI.Entity.GetId("TutorialEndCollider");
@@ -57,6 +45,24 @@ namespace BonVoyage {
     }
 
     public void Update(int _ENTITY) {
+      if (playerID == 0) LOG.WRITE("playerID========");
+      if (UIHPBarID == 0) LOG.WRITE("UIHPBarID========");
+      if (UIMemoryFragmentID == 0) LOG.WRITE("UIMemoryFragmentID========");
+      if (UIMemoryFragmentScreenID == 0) LOG.WRITE("UIMemoryFragmentScreenID========");
+      if (UIFragment1ObjID == 0) LOG.WRITE("UIFragment1ObjID========");
+      if (UICycleMapID == 0) LOG.WRITE("UICycleMapID========");
+      if (UIMiniMapID == 0) LOG.WRITE("UIMiniMapID========");
+      if (UIEnemyMapID == 0) LOG.WRITE("UIEnemyMapID========");
+      if (UIWeatherMapID == 0) LOG.WRITE("UIWeatherMapID========");
+      if (UIWeatherTextID == 0) LOG.WRITE("UIWeatherTextID========");
+      if (UIObjectiveTextID == 0) LOG.WRITE("UIObjectiveTextID========");
+      if (P1ID == 0) LOG.WRITE("P1ID========");
+      if (PP1ID == 0) LOG.WRITE("PP1ID========");
+      if (PP2ID == 0) LOG.WRITE("PP2ID========");
+      if (G1ID == 0) LOG.WRITE("G1ID========");
+      if (girlColliderBox == 0) LOG.WRITE("girlColliderBox========");
+      if (PColliderBox == 0) LOG.WRITE("PColliderBox========");
+      if (PEndColliderBox == 0) LOG.WRITE("PEndColliderBox========");
 
       if (!normalZoom)
         normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
@@ -65,7 +71,7 @@ namespace BonVoyage {
 
       if (runIntroDialog) {
         PlayerScript.PlayerInDialogue = true;
-        runIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
+        runIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialogue SceneIntro 1");
         if (!runIntroDialog)
           EndIntroDialog();
       }
@@ -73,9 +79,8 @@ namespace BonVoyage {
       if (runGirlDialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(-280), 
-                                                 VI.Transform.Position.GetY(-635));
-        runGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
+        Level1ManagerScript.MovePlayer(playerID, -280, -635);
+        runGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialogue LittleGirl 0");
         if (!runGirlDialog)
           EndGirlDialog();
       }
@@ -83,9 +88,8 @@ namespace BonVoyage {
       if (runPassengerDialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(650), 
-                                                 VI.Transform.Position.GetY(-1160)); // Move him to better location
-        runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog NPC"); // Run the dialog
+        Level1ManagerScript.MovePlayer(playerID, 650, -1160); // Move him to better location
+        runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialog NPC"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
       }
@@ -95,7 +99,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(PEndColliderBox),
                                                  VI.Transform.Position.GetY(PEndColliderBox)); // Move him to better location
-        runPassengerEndDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog NPC dropoff"); // Run the dialog
+        runPassengerEndDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialog NPC dropoff"); // Run the dialog
         if (!runPassengerEndDialog)
           EndPassengerDialog();
       }
