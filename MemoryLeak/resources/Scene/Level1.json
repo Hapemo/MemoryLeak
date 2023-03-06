@@ -1203,8 +1203,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree3.png",
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
             "layer": 45
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
         },
         "RectCollider": {
             "centerOffset": {
@@ -1267,8 +1273,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree4.png",
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
             "layer": 33
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
         },
         "RectCollider": {
             "centerOffset": {
@@ -2913,8 +2925,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree5.png",
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
             "layer": 45
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
         },
         "RectCollider": {
             "centerOffset": {
@@ -10118,6 +10136,237 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree7",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 284.0,
+                "Y": 326.02691650390625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -896.03515625,
+                "Y": -6.684539794921875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
+            "layer": 33
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 5.0,
+                "Y": -95.0
+            },
+            "scaleOffset": {
+                "X": 0.800000011920929,
+                "Y": 0.3400000035762787
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -41.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": 51.0,
+                        "Y": -32.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 105.63128662109375,
+                        "Y": -63.93480682373047
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 116.55767822265625,
+                        "Y": -94.15543365478516
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 98.03033447265625,
+                        "Y": -94.61331939697266
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 85.67877197265625,
+                        "Y": -76.29779052734375
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 63.35101318359375,
+                        "Y": -73.09256744384766
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 78.077880859375,
+                        "Y": -83.62400817871094
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 86.62890625,
+                        "Y": -114.76042938232422
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 67.62652587890625,
+                        "Y": -133.53384399414063
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 60.9757080078125,
+                        "Y": -108.34998321533203
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 15.8450927734375,
+                        "Y": -93.69755554199219
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -4.107421875,
+                        "Y": -77.67145538330078
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -14.5587158203125,
+                        "Y": -105.1447525024414
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -45.43756103515625,
+                        "Y": -123.46029663085938
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -56.3638916015625,
+                        "Y": -144.523193359375
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -83.44232177734375,
+                        "Y": -137.65484619140625
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -84.3924560546875,
+                        "Y": -110.6394271850586
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -60.1644287109375,
+                        "Y": -75.38201141357422
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -77.7415771484375,
+                        "Y": -79.50300598144531
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -90.5682373046875,
+                        "Y": -94.15543365478516
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -104.8199462890625,
+                        "Y": -85.9134521484375
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -87.2427978515625,
+                        "Y": -55.23491668701172
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -52.08837890625,
+                        "Y": -41.040374755859375
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -38.3116455078125,
+                        "Y": 2.4590320587158203
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 42.9234619140625,
+                        "Y": 5.664251327514648
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 51.0,
+                        "Y": -32.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     }
 ]
