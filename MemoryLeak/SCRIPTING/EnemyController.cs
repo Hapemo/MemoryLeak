@@ -10,8 +10,10 @@ namespace BonVoyage {
         private float HitInterval;
         private float HitAnimationCounter;
         private float HitCounter;
-        public int HitTaken;
         private int HitMax = 11;
+        public int HitTaken;
+
+        public bool EnemyActivated = false;
 
         public float EnemySpeed = 2.2f;
         private EnemyState OctopusState;
@@ -19,7 +21,6 @@ namespace BonVoyage {
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
         private int PlayerId;
-        private int DialogueSceneId;
         private int EnemyTriggerId;
         private int HpBarId;
 
@@ -39,7 +40,6 @@ namespace BonVoyage {
             PlayerPosY = 0;
             HitTaken = 0;
 
-            DialogueSceneId = VI.Entity.GetId("DialogueBox");
             EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
             HpBarId = VI.Entity.GetId("hpbar");
@@ -58,46 +58,49 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             //VI.Camera.SetScale.X(5500);
 
-            PlayerPosX = VI.Transform.Position.GetX(PlayerId);
-            PlayerPosY = VI.Transform.Position.GetY(PlayerId);
+            if (EnemyActivated) {
+                PlayerPosX = VI.Transform.Position.GetX(PlayerId);
+                PlayerPosY = VI.Transform.Position.GetY(PlayerId);
 
-            float x = GetDistance(PlayerPosX, PlayerPosY, Axis.x);
-            float y = GetDistance(PlayerPosX, PlayerPosY, Axis.y);
-            float OctopusDirection = GetRotation(x, y);
+                float x = GetDistance(PlayerPosX, PlayerPosY, Axis.x);
+                float y = GetDistance(PlayerPosX, PlayerPosY, Axis.y);
+                float OctopusDirection = GetRotation(x, y);
 
-            // Enemy is in screen
-            if (OnScreen()) {
-                LOG.WRITE(VI.Entity.IsActive(DialogueSceneId).ToString());
-                if (!VI.Entity.IsActive(DialogueSceneId) && VI.Physics.CheckCollision(PlayerId, EnemyTriggerId, true))
-                    ChasePlayer(x, y);
-                else {
-                    OctopusState = EnemyState.IDLE;
-                    UpdateTransform(OctopusState);
-                    float x_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.x);
-                    float y_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.y);
-                    UpdateSpeed(GetSpeed(x_, y_));
-                    if (ChasingIndex > 0) ChasingIndex = 0;
+                // Enemy is in screen
+                if (OnScreen()) {
+                    if (!PlayerScript.PlayerInDialogue && VI.Physics.CheckCollision(PlayerId, EnemyTriggerId, true))
+                        ChasePlayer(x, y);
+                    else {
+                        OctopusState = EnemyState.IDLE;
+                        UpdateTransform(OctopusState);
+                        float x_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.x);
+                        float y_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.y);
+                        UpdateSpeed(GetSpeed(x_, y_));
+                        if (ChasingIndex > 0) ChasingIndex = 0;
+                    }
+                    SetDirection(OctopusDirection, OctopusState);
                 }
-                SetDirection(OctopusDirection, OctopusState);
             }
         }
 
         public void FixedUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
-            // Detecting player hits
-            if (VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > -1) {
-                ++HitCounter;
-                ++HitAnimationCounter;
-                if (HitAnimationCounter >= HitInterval) {
-                    THIS.Audio.Play();
-                    HitAnimationCounter = 0;
-                }
+            
+            if (EnemyActivated) {
+                // Detecting player hits
+                if (VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > -1) {
+                    ++HitCounter;
+                    ++HitAnimationCounter;
+                    if (HitAnimationCounter >= HitInterval) {
+                        THIS.Audio.Play();
+                        HitAnimationCounter = 0;
+                    }
                 
-                if (HitCounter >= HitInterval * 100f * HitSpeed) {
-                    HitCounter = 0;
-                    HitTaken = (HitTaken < HitMax ? HitTaken + 1 : 0);
-                    VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
+                    if (HitCounter >= HitInterval * 100f * HitSpeed) {
+                        HitCounter = 0;
+                        HitTaken = (HitTaken < HitMax ? HitTaken + 1 : 0);
+                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
+                    }
                 }
             }
         }
