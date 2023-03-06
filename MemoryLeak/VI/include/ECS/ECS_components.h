@@ -320,6 +320,7 @@ struct Text {
 	float scale = 1.f;						//save, edit, see
 	Color color = Color{ 0, 0, 0, 255 };	//save, edit, see
 	bool followCam = false;					//NO save, edit, see
+	float width = 10.f;
 };
 
 /*!*****************************************************************************
