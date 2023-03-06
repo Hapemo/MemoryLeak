@@ -73,7 +73,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 10.0
+            "width": 0.0
         }
     },
     {
@@ -131,7 +131,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 10.0
+            "width": 0.0
         },
         "Script": {
             "name": "HowToPlayButton"
@@ -195,7 +195,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 10.0
+            "width": 0.0
         },
         "Script": {
             "name": "ExitConfirmationButton"
@@ -259,7 +259,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 10.0
+            "width": 0.0
         },
         "Script": {
             "name": "BackToGameButton"
