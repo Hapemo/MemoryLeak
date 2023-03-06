@@ -52,7 +52,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Script": {
             "name": "PlayButton"
@@ -114,7 +116,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Script": {
             "name": "HowToPlayButton"
@@ -176,7 +180,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Script": {
             "name": "QuitButton"
