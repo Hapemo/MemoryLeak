@@ -882,6 +882,8 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			mIsCurrSceneUI = true;
 		else
 			mIsCurrSceneUI = false;
+
+		std::string scnname = scene.mName;
 		for (Entity e : scene.mEntities)
 		{
 			std::string name = e.GetComponent<General>().name;
@@ -1774,7 +1776,7 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	float sinRot = sinf(_rotate);
 
 	Math::Vec2 camPos = mIsCurrSceneUI ? Math::Vec2{0, 0} : cam.GetPos();
-	float camZoom = mIsCurrSceneMinimap ? mIsCurrSceneMinimap : mIsCurrSceneUI ? 1.f : cam.GetZoom();
+	float camZoom = mIsCurrSceneUI ? 1.f : mIsCurrSceneMinimap ? mIsCurrSceneMinimap :   cam.GetZoom();
 
 	Math::Mat3 temp
 	{

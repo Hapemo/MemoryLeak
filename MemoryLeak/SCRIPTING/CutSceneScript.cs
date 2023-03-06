@@ -43,7 +43,7 @@ namespace BonVoyage {
                 isAlphaDecreasing = true;
                 skipping = true;
             }
-            if (currScn >= 18)
+            if (currScn >= 19)
             {
                 if (skipping || !isAlphaDecreasing)
                 {

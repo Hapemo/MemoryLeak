@@ -26,7 +26,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-11.png",
-            "layer": 0
+            "layer": 1
         }
     },
     {
@@ -56,7 +56,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-10.png",
-            "layer": 1
+            "layer": 2
         }
     },
     {
@@ -86,7 +86,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-09.png",
-            "layer": 2
+            "layer": 3
         }
     },
     {
@@ -116,7 +116,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-08.png",
-            "layer": 3
+            "layer": 4
         }
     },
     {
@@ -146,7 +146,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-07.png",
-            "layer": 4
+            "layer": 5
         }
     },
     {
@@ -176,7 +176,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-06.png",
-            "layer": 5
+            "layer": 6
         }
     },
     {
@@ -206,7 +206,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-05.png",
-            "layer": 6
+            "layer": 7
         }
     },
     {
@@ -236,7 +236,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-04.png",
-            "layer": 7
+            "layer": 8
         }
     },
     {
@@ -266,7 +266,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-03.png",
-            "layer": 8
+            "layer": 9
         }
     },
     {
@@ -296,7 +296,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-02.png",
-            "layer": 9
+            "layer": 10
         }
     },
     {
@@ -326,7 +326,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-01.png",
-            "layer": 10
+            "layer": 11
         }
     },
     {
@@ -356,7 +356,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene2-04.png",
-            "layer": 11
+            "layer": 12
         }
     },
     {
@@ -386,7 +386,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene2-03.png",
-            "layer": 12
+            "layer": 13
         }
     },
     {
@@ -416,7 +416,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene2-02.png",
-            "layer": 13
+            "layer": 14
         }
     },
     {
@@ -446,7 +446,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene2-01.png",
-            "layer": 14
+            "layer": 15
         }
     },
     {
@@ -476,7 +476,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene1-04.png",
-            "layer": 15
+            "layer": 16
         }
     },
     {
@@ -506,7 +506,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene1-03.png",
-            "layer": 16
+            "layer": 17
         }
     },
     {
@@ -536,7 +536,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene1-02.png",
-            "layer": 17
+            "layer": 18
         }
     },
     {
@@ -566,7 +566,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Cutscenes\\Cutscene1_Scene1-01.png",
-            "layer": 18
+            "layer": 19
         },
         "Script": {
             "name": "CutSceneScript"
@@ -599,7 +599,7 @@
             },
             "sprite": 1,
             "texture": "",
-            "layer": 19
+            "layer": 20
         },
         "LightSource": {
             "centerOffset": {
@@ -637,7 +637,7 @@
             },
             "sprite": 0,
             "texture": "",
-            "layer": 20
+            "layer": 21
         },
         "Audio": {
             "path": "TO_BE_REMOVED_THUNDER_SOUND",
