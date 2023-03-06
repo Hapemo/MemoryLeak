@@ -200,13 +200,12 @@ void WorldViewPanel::Update()
 					{
 						MoveSelectedEntity();
 					}
+					else if (SRT == 4)
+						renderManager->GetGizmo().Attach(*selectedEntity);
+					else if (SRT == 5)
+						pointPicker();
 					else
-					{
-						if (SRT == 4)
-							renderManager->GetGizmo().Attach(*selectedEntity);
-						else
-							UseGuizmo();
-					}
+						UseGuizmo();
 				}
 			}
 			if(SRT!=4)
@@ -552,6 +551,11 @@ void WorldViewPanel::MoveSelectedEntity()
 		e.GetComponent<Transform>().translation = camMousePos - objectOffset;
 	}
 	
+}
+
+void WorldViewPanel::pointPicker()
+{
+	MouseClickMoveCam();
 }
 /*!*****************************************************************************
 \brief

@@ -1147,6 +1147,37 @@ void InspectorPanel::ShadowCasterEditor()
 {
 	if (ImGui::CollapsingHeader("ShadowCaster"))
 	{
+		static bool pp = false;
+		if (pp)
+		{
+			e.GetComponent<ShadowCaster>().renderFlag = true;
+			SRT = 5;
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
+			{
+				Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos() - e.GetComponent<Transform>().translation;
+				e.GetComponent<ShadowCaster>().centerOffset.push_back(Math::Vec2{ point });
+			}
+			else if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
+			{
+				Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos() - e.GetComponent<Transform>().translation;
+				e.GetComponent<ShadowCaster>().centerOffset[e.GetComponent<ShadowCaster>().centerOffset.size() - 1] = point;
+			}
+			else if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_R))
+			{
+				Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos() - e.GetComponent<Transform>().translation;
+				e.GetComponent<ShadowCaster>().centerOffset[e.GetComponent<ShadowCaster>().centerOffset.size() - 1] = point;
+			}
+		}
+		
+		ImGui::Checkbox("Point Picker", &pp);
+		if(!pp)
+		{
+			if (SRT == 5)
+			{
+				e.GetComponent<ShadowCaster>().centerOffset.pop_back();
+				SRT = 0;
+			}
+		}
 		for (int i = 0; i < e.GetComponent<ShadowCaster>().centerOffset.size(); i++)
 		{
 			tmpVec2[0] = e.GetComponent<ShadowCaster>().centerOffset[i].x;
