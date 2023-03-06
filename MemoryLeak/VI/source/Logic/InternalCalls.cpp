@@ -662,6 +662,9 @@ void InternalCalls::iAnimation::iTransform::Remove(const int _eId, int _index) {
 void InternalCalls::iAnimation::iTransform::EditTiming(const int _eId, float _time) {
 	Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step] = _time;
 }
+void InternalCalls::iAnimation::iTransform::EditCurrentTiming(const int _eId, float _time) {
+	Entity(_eId).GetComponent<MovementAI>().currtime = _time;
+}
 void InternalCalls::iAnimation::iTransform::EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
 	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step] = trans;
@@ -681,6 +684,27 @@ void InternalCalls::iAnimation::iTransform::CurrentPosX(const int _eId, float _p
 }
 void InternalCalls::iAnimation::iTransform::CurrentPosY(const int _eId, float _posY) {
 	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.y = _posY;
+}
+float InternalCalls::iAnimation::iTransform::GetTiming(const int _eId) {
+	return Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step];
+}
+float InternalCalls::iAnimation::iTransform::GetCurrentTiming(const int _eId) {
+	return Entity(_eId).GetComponent<MovementAI>().currtime;
+}
+float InternalCalls::iAnimation::iTransform::GetCurrentScaleX(const int _eId) {
+	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].scale.x;
+}
+float InternalCalls::iAnimation::iTransform::GetCurrentScaleY(const int _eId) {
+	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].scale.y;
+}
+float InternalCalls::iAnimation::iTransform::GetCurrentRotate(const int _eId) {
+	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].rotation;
+}
+float InternalCalls::iAnimation::iTransform::GetCurrentPosX(const int _eId) {
+	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.x;
+}
+float InternalCalls::iAnimation::iTransform::GetCurrentPosY(const int _eId) {
+	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.y;
 }
 void InternalCalls::iAnimation::iTransform::AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
