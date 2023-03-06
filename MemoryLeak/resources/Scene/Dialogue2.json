@@ -176,7 +176,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": -50.0
+            "width": 0.0
         },
         "Button": {
             "interactable": true
@@ -731,7 +731,7 @@
             "layer": 66
         },
         "Script": {
-            "name": "Level1DialogManager"
+            "name": "Level2DialogManager"
         }
     },
     {
