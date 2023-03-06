@@ -1037,17 +1037,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -1099,17 +1088,6 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -1344,8 +1322,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1902.38916015625,
-                "Y": -574.6307373046875
+                "X": -1947.06201171875,
+                "Y": -606.5398559570313
             }
         },
         "Sprite": {
@@ -1513,12 +1491,12 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
@@ -1892,7 +1870,7 @@
                         "rotation": 0.0,
                         "translation": {
                             "X": -787.7119750976563,
-                            "Y": -241.3890075683594
+                            "Y": -241.38900756835938
                         }
                     }
                 },
@@ -1920,7 +1898,7 @@
                         "rotation": 0.0,
                         "translation": {
                             "X": 108.28800201416016,
-                            "Y": 62.61100006103516
+                            "Y": 62.611000061035156
                         }
                     }
                 },
@@ -2011,7 +1989,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 3034.401611328125,
+                "X": 3043.8701171875,
                 "Y": -750.8397216796875
             }
         },
@@ -2432,17 +2410,6 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -2873,7 +2840,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1684.5069580078125,
+                "X": -1669.6160888671875,
                 "Y": -299.26251220703125
             }
         },
@@ -3659,11 +3626,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 10.0,
-                "Y": -175.0
+                "Y": -190.0
             },
             "scaleOffset": {
                 "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
+                "Y": 0.20000000298023224
             },
             "isTrigger": false,
             "renderFlag": true
@@ -3705,8 +3672,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -512.112548828125,
-                "Y": -1315.3043212890625
+                "X": -604.4318237304688,
+                "Y": -1324.97900390625
             }
         },
         "Sprite": {
@@ -3726,7 +3693,7 @@
                 "Y": -175.0
             },
             "scaleOffset": {
-                "X": 0.47999998927116394,
+                "X": 0.6000000238418579,
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
@@ -4089,8 +4056,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2265.883056640625,
-                "Y": -227.4351348876953
+                "X": -2302.046875,
+                "Y": -229.5624237060547
             }
         },
         "Sprite": {
@@ -4153,8 +4120,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1756.1292724609375,
-                "Y": -279.5146484375
+                "X": 1713.5203857421875,
+                "Y": -274.6773376464844
             }
         },
         "Sprite": {
@@ -4171,11 +4138,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 10.0,
-                "Y": -175.0
+                "Y": -190.0
             },
             "scaleOffset": {
                 "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
+                "Y": 0.30000001192092896
             },
             "isTrigger": false,
             "renderFlag": true
@@ -4409,8 +4376,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2169.268310546875,
-                "Y": -537.586669921875
+                "X": -2224.577392578125,
+                "Y": -541.8411865234375
             }
         },
         "Sprite": {
@@ -4434,17 +4401,6 @@
                 "Y": 0.3400000035762787
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -41.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -4473,8 +4429,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -952.8700561523438,
-                "Y": -1413.0240478515625
+                "X": -937.9791870117188,
+                "Y": -1410.896728515625
             }
         },
         "Sprite": {
@@ -4494,7 +4450,7 @@
                 "Y": -130.0
             },
             "scaleOffset": {
-                "X": 0.800000011920929,
+                "X": 1.0,
                 "Y": 0.3799999952316284
             },
             "isTrigger": false,
@@ -4537,8 +4493,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -247.71527099609375,
-                "Y": -1456.7408447265625
+                "X": -266.8607177734375,
+                "Y": -1433.3406982421875
             }
         },
         "Sprite": {
@@ -4626,17 +4582,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -4793,8 +4738,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2080.58251953125,
-                "Y": -995.0021362304688
+                "X": -2084.837158203125,
+                "Y": -980.1112060546875
             }
         },
         "Sprite": {
@@ -4857,8 +4802,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2076.94482421875,
-                "Y": -1206.70458984375
+                "X": -2100.3447265625,
+                "Y": -1223.7227783203125
             }
         },
         "Sprite": {
@@ -4875,11 +4820,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 10.0,
-                "Y": -175.0
+                "Y": -200.0
             },
             "scaleOffset": {
                 "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
+                "Y": 0.30000001192092896
             },
             "isTrigger": false,
             "renderFlag": true
@@ -4921,8 +4866,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1847.0777587890625,
-                "Y": -1406.5277099609375
+                "X": -1881.1141357421875,
+                "Y": -1383.127685546875
             }
         },
         "Sprite": {
@@ -4939,11 +4884,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 10.0,
-                "Y": -175.0
+                "Y": -200.0
             },
             "scaleOffset": {
                 "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
+                "Y": 0.30000001192092896
             },
             "isTrigger": false,
             "renderFlag": true
@@ -5076,17 +5021,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5138,17 +5072,6 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -5492,8 +5415,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 462.8248596191406
+                "X": 407.5,
+                "Y": 470.3248596191406
             },
             "rotation": 0.0,
             "translation": {
@@ -5625,8 +5548,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 187.30401611328125,
-                "Y": 1384.7022705078125
+                "X": 143.69842529296875,
+                "Y": 1365.0982666015625
             }
         },
         "Sprite": {
@@ -5689,8 +5612,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1943.7855224609375,
-                "Y": -578.895751953125
+                "X": 1950.8870849609375,
+                "Y": -392.6580505371094
             }
         },
         "Sprite": {
@@ -5714,17 +5637,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -5778,17 +5690,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -5908,17 +5809,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6034,17 +5924,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -6228,17 +6107,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -41.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6354,17 +6222,6 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -49.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -6526,17 +6383,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -49.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6590,17 +6436,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6652,17 +6487,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -6755,8 +6579,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -345.37005615234375,
-                "Y": -1662.913330078125
+                "X": -283.67913818359375,
+                "Y": -1658.6588134765625
             }
         },
         "Sprite": {
@@ -6782,17 +6606,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6814,13 +6627,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 462.8248596191406
+                "X": 401.5,
+                "Y": 464.3248596191406
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1594.7548828125,
-                "Y": -1607.98876953125
+                "X": -1560.718505859375,
+                "Y": -1580.334228515625
             }
         },
         "Sprite": {
@@ -6832,7 +6645,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 60
+            "layer": 59
         },
         "RectCollider": {
             "centerOffset": {
@@ -7011,8 +6824,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2030.1751708984375,
-                "Y": -1611.129638671875
+                "X": -2021.6661376953125,
+                "Y": -1598.365966796875
             }
         },
         "Sprite": {
@@ -7033,7 +6846,7 @@
             },
             "scaleOffset": {
                 "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
+                "Y": 0.30000001192092896
             },
             "isTrigger": false,
             "renderFlag": true
@@ -7075,8 +6888,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1217.6044921875,
-                "Y": -1688.112548828125
+                "X": -1215.4771728515625,
+                "Y": -1643.4398193359375
             }
         },
         "Sprite": {
@@ -7166,17 +6979,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7228,17 +7030,6 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -7294,17 +7085,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7356,17 +7136,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -7422,17 +7191,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7459,8 +7217,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 90.32098388671875,
-                "Y": 1571.8482666015625
+                "X": 198.46292114257813,
+                "Y": 1523.7294921875
             }
         },
         "Sprite": {
@@ -7484,17 +7242,6 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -7548,17 +7295,6 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -7678,17 +7414,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7715,8 +7440,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1974.500732421875,
-                "Y": -996.3052978515625
+                "X": 1969.7664794921875,
+                "Y": -938.2572021484375
             }
         },
         "Sprite": {
@@ -7779,8 +7504,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2431.9189453125,
-                "Y": -540.722900390625
+                "X": -2506.37353515625,
+                "Y": -555.6138305664063
             }
         },
         "Sprite": {
@@ -7804,17 +7529,6 @@
                 "Y": 0.3799999952316284
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -7844,7 +7558,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -2482.007568359375,
-                "Y": -102.38208770751953
+                "Y": -102.38209533691406
             }
         },
         "Sprite": {
@@ -7998,17 +7712,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -41.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8060,17 +7763,6 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -8126,17 +7818,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8190,17 +7871,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8252,17 +7922,6 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -8380,17 +8039,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -96.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -8596,11 +8244,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": -18.0,
-                "Y": -130.0
+                "Y": -160.0
             },
             "scaleOffset": {
                 "X": 0.800000011920929,
-                "Y": 0.3799999952316284
+                "Y": 0.44999998807907104
             },
             "isTrigger": false,
             "renderFlag": true
@@ -8642,8 +8290,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2717.785888671875,
-                "Y": -87.96609497070313
+                "X": -2792.240478515625,
+                "Y": 31.161170959472656
             }
         },
         "Sprite": {
@@ -8656,18 +8304,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 39
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "LayerCollider": {
             "centerOffset": {
@@ -8733,17 +8369,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8795,17 +8420,6 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -8861,17 +8475,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8923,17 +8526,6 @@
                 "Y": 0.33000001311302185
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -8989,17 +8581,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9021,8 +8602,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 349.0,
-                "Y": 507.6363525390625
+                "X": 352.0,
+                "Y": 510.6363525390625
             },
             "rotation": 0.0,
             "translation": {
@@ -9051,17 +8632,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -9115,17 +8685,6 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -9243,17 +8802,6 @@
                 "Y": 0.20999999344348907
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -9437,17 +8985,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9538,7 +9075,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2662.1220703125,
+                "X": -2742.95849609375,
                 "Y": 458.9145812988281
             }
         },
@@ -9565,17 +9102,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9597,8 +9123,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 437.1398010253906
+                "X": 410.5,
+                "Y": 447.6398010253906
             },
             "rotation": 0.0,
             "translation": {
@@ -9627,17 +9153,6 @@
                 "Y": 0.3799999952316284
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -9693,17 +9208,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9755,17 +9259,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -9821,17 +9314,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9858,8 +9340,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 126.20559692382813,
-                "Y": 1719.9114990234375
+                "X": 101.78645324707031,
+                "Y": 1716.3470458984375
             }
         },
         "Sprite": {
@@ -9883,17 +9365,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -9947,17 +9418,6 @@
                 "Y": 0.18000000715255737
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -10061,12 +9521,6 @@
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
             "layer": 46
         },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
@@ -10077,17 +9531,6 @@
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 84.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -10131,12 +9574,6 @@
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
             "layer": 46
         },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
@@ -10147,17 +9584,6 @@
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 84.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -10201,12 +9627,6 @@
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
             "layer": 46
         },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
@@ -10217,17 +9637,6 @@
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 84.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -10289,10 +9698,63 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree4",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 349.0,
+                "Y": 507.6363525390625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1954.259033203125,
+                "Y": -654.6220092773438
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Tree2.png",
+            "layer": 32
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": -100.0,
+                "Y": -186.0
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.18000000715255737
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 84.0
+                "Y": -142.0
             },
             "scaleOffset": {
                 "X": 1.0,
