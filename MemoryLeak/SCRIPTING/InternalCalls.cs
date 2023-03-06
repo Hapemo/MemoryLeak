@@ -84,12 +84,22 @@ namespace BonVoyage
 
 				public struct Edit {
 					internal static void Timing(float _time = 1) { VI.Animation.Transform.Edit.Timing(ENTITY, _time); }
+					internal static void CurrentTiming(float _time = 0) { VI.Animation.Transform.Edit.CurrentTiming(ENTITY, _time); }
 					internal static void Current(float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Transform.Edit.Current(ENTITY, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
 					internal static void CurrentScaleX(float _scaleX) { VI.Animation.Transform.Edit.CurrentScaleX(ENTITY, _scaleX); }
 					internal static void CurrentScaleY(float _scaleY) { VI.Animation.Transform.Edit.CurrentScaleY(ENTITY, _scaleY); }
 					internal static void CurrentRotate(float _rot) { VI.Animation.Transform.Edit.CurrentRotate(ENTITY, _rot); }
 					internal static void CurrentPosX(float _posX) { VI.Animation.Transform.Edit.CurrentPosX(ENTITY, _posX); }
 					internal static void CurrentPosY(float _posY) { VI.Animation.Transform.Edit.CurrentPosY(ENTITY, _posY); }
+				}
+				public struct Get {
+					internal static float Timing() { return VI.Animation.Transform.Get.Timing(ENTITY); }
+					internal static float CurrentTiming() { return VI.Animation.Transform.Get.CurrentTiming(ENTITY); }
+					internal static float CurrentScaleX() { return VI.Animation.Transform.Get.CurrentScaleX(ENTITY); }
+					internal static float CurrentScaleY() { return VI.Animation.Transform.Get.CurrentScaleY(ENTITY); }
+					internal static float CurrentRotate() { return VI.Animation.Transform.Get.CurrentRotate(ENTITY); }
+					internal static float CurrentPosX() { return VI.Animation.Transform.Get.CurrentPosX(ENTITY); }
+					internal static float CurrentPosY() { return VI.Animation.Transform.Get.CurrentPosY(ENTITY); }
 				}
 				public struct Add {
 					internal static void Transform(float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Transform.Add.Transform(ENTITY, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
@@ -614,12 +624,22 @@ namespace VI
 
 			public struct Edit {
 				internal static void Timing(int _eId, float _time = 1) { VI.Animation.Edit.Timing(_eId, _time); }
+				internal static void CurrentTiming(int _eId, float _time = 0) { VI.Animation.Edit.CurrentTiming(_eId, _time); }
 				internal static void Current(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Edit.Current(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
 				internal static void CurrentScaleX(int _eId, float _scaleX) { VI.Animation.Edit.CurrentScaleX(_eId, _scaleX); }
 				internal static void CurrentScaleY(int _eId, float _scaleY) { VI.Animation.Edit.CurrentScaleY(_eId, _scaleY); }
 				internal static void CurrentRotate(int _eId, float _rot) { VI.Animation.Edit.CurrentRotate(_eId, _rot); }
 				internal static void CurrentPosX(int _eId, float _posX) { VI.Animation.Edit.CurrentPosX(_eId,_posX); }
 				internal static void CurrentPosY(int _eId, float _posY) { VI.Animation.Edit.CurrentPosY(_eId, _posY); }
+			}
+			public struct Get {
+				internal static float Timing(int _eId) { return VI.Animation.Get.Timing(_eId); }
+				internal static float CurrentTiming(int _eId) { return VI.Animation.Get.CurrentTiming(_eId); }
+				internal static float CurrentScaleX(int _eId) { return VI.Animation.Get.CurrentScaleX(_eId); }
+				internal static float CurrentScaleY(int _eId) { return VI.Animation.Get.CurrentScaleY(_eId); }
+				internal static float CurrentRotate(int _eId) { return VI.Animation.Get.CurrentRotate(_eId); }
+				internal static float CurrentPosX(int _eId) { return VI.Animation.Get.CurrentPosX(_eId); }
+				internal static float CurrentPosY(int _eId) { return VI.Animation.Get.CurrentPosY(_eId); }
 			}
 			public struct Add {
 				internal static void Transform(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1) { VI.Animation.Add.Transform(_eId, _scaleX, _scaleY, _rot, _posX, _posY, _time); }
@@ -641,9 +661,13 @@ namespace VI
 				internal static void FromScale(int _eId, float _scaleX, float _scaleY, int _step = -1) { VI.Animation.SetCalculatedTime.FromScale(_eId, _scaleX, _scaleY, _step); }
 			}
 		}
-		private class Edit {
+		private class Edit
+		{
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void Timing(int _eId, float _time = 1);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static void CurrentTiming(int _eId, float _time = 0);
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void Current(int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
@@ -662,6 +686,29 @@ namespace VI
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void CurrentPosY(int _eId, float _posY);
+		}
+		private class Get
+		{
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static float Timing(int _eId);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static float CurrentTiming(int _eId);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static float CurrentScaleX(int _eId);
+			
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static float CurrentScaleY(int _eId);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static float CurrentRotate(int _eId);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static float CurrentPosX(int _eId);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static float CurrentPosY(int _eId);
 		}
 		private class Add {
 			[MethodImpl(MethodImplOptions.InternalCall)]

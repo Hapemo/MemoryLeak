@@ -417,6 +417,7 @@ public:
 			static int GetCurrentIndex(const int _eId);
 			static void Remove(const int _eId, int _index);
 			static void EditTiming(const int _eId, float _time);
+			static void EditCurrentTiming(const int _eId, float _time);
 			static void AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
 			static void EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
 			static void CurrentScaleX(const int _eId, float _scaleX);
@@ -424,6 +425,13 @@ public:
 			static void CurrentRotate(const int _eId, float _rot);
 			static void CurrentPosX(const int _eId, float _posX);
 			static void CurrentPosY(const int _eId, float _posY);
+			static float GetTiming(const int _eId);
+			static float GetCurrentTiming(const int _eId);
+			static float GetCurrentScaleX(const int _eId);
+			static float GetCurrentScaleY(const int _eId);
+			static float GetCurrentRotate(const int _eId);
+			static float GetCurrentPosX(const int _eId);
+			static float GetCurrentPosY(const int _eId);
 			static void AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1.f, int _index = 0);
 			static void TransformScaleAt(const int _eId, float _scaleX, float _scaleY, float _time = 1.f, int _index = 0);
 			static void TransformRotateAt(const int _eId, float _rot, float _time = 1.f, int _index = 0);
