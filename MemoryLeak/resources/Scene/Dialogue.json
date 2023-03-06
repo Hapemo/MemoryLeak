@@ -430,6 +430,71 @@
             "texture": "Textures\\Icons\\healthbar-1.png",
             "layer": 63
         },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Icons\\healthbar-1.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-2.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-3.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-4.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-5.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-6.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-7.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-8.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-9.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-10.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-11.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-12.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1
+                }
+            ],
+            "currentImageIndex": 0
+        },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "HP",
@@ -594,7 +659,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\text1.png",
+            "texture": "Textures\\Icons\\dialogue\\UI_ObjectiveBox.png",
             "layer": 63
         },
         "Text": {
@@ -611,9 +676,6 @@
                 "b": 255,
                 "a": 255
             }
-        },
-        "Script": {
-            "name": "ObjectiveTextScript"
         },
         "Button": {
             "interactable": true

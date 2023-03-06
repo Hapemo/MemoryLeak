@@ -28,8 +28,9 @@ namespace BonVoyage {
     private bool choiceFlag;            // This flag is true during choice selection dialogs
     private bool updateChat;            // This flag is true when dialog changes for anyone
     private bool dialogInit;            // THis flag is true when entering a dialog for the first line
-    private bool movingPlayer;
     private bool normalZoom = true;
+    private int latestChoiceChosen = 0; // 0 if no choice chosen, 1 if choice 1 chosen, 2 if choice 2 chosen. Resets every frame
+    private int passengerDialogProgress = 0;
 
     private int playerID;
 
@@ -61,7 +62,7 @@ namespace BonVoyage {
       UIMemoryFragmentID = VI.Entity.GetId("memoryfragment", "Dialogue");
       UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
       UIFragment1ObjID = VI.Entity.GetId("fragment1obj", "Dialogue");
-      UICycleMapID = VI.Entity.GetId("cyclemap", "Dialogue");
+      UICycleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
       UIMiniMapID = VI.Entity.GetId("minimap", "Dialogue");
       UIEnemyMapID = VI.Entity.GetId("enemymap", "Dialogue");
       UIWeatherMapID = VI.Entity.GetId("weathermap", "Dialogue");
@@ -77,6 +78,9 @@ namespace BonVoyage {
       P2ColliderBox = VI.Entity.GetId("Passenger2Box", "Level1");
 
       dialogInit = true;
+
+      VI.Entity.s_Deactivate("Passenger2");
+      VI.Entity.Deactivate(P2ColliderBox);
     }
 
     public void EarlyUpdate(int _ENTITY) {
@@ -147,16 +151,16 @@ namespace BonVoyage {
       VI.Entity.Deactivate(UIMemoryFragmentScreenID);
       VI.Entity.Deactivate(UIFragment1ObjID);
       VI.Entity.Deactivate(UICycleMapID);
-      VI.Entity.Deactivate(UIMiniMapID);
-      VI.Entity.Deactivate(UIEnemyMapID);
-      VI.Entity.Deactivate(UIWeatherMapID);
+      //VI.Entity.Deactivate(UIMiniMapID);
+      //VI.Entity.Deactivate(UIEnemyMapID);
+      //VI.Entity.Deactivate(UIWeatherMapID);
       VI.Entity.Deactivate(UIWeatherTextID);
       VI.Entity.Deactivate(UIObjectiveTextID);
 
-      VI.Scene.Pause("CrystalBalls");
-      VI.Scene.Pause("MiniMap");
-      VI.Scene.Pause("EnemyMap");
-      VI.Scene.Pause("WeatherMap");
+      //VI.Scene.Pause("CrystalBalls");
+      //VI.Scene.Pause("MiniMap");
+      //VI.Scene.Pause("EnemyMap");
+      //VI.Scene.Pause("WeatherMap");
     }
 
     public void EnableUI() {
@@ -164,11 +168,11 @@ namespace BonVoyage {
       VI.Entity.Activate(UIMemoryFragmentID);
       VI.Entity.Activate(UICycleMapID);
       VI.Entity.Activate(UIObjectiveTextID);
-
-      VI.Scene.Play("CrystalBalls");
-      VI.Scene.Play("MiniMap");
-      VI.Scene.Play("EnemyMap");
-      VI.Scene.Play("WeatherMap");
+            VI.Entity.Activate(UICycleMapID);
+            //VI.Scene.Play("CrystalBalls");
+      //VI.Scene.Play("MiniMap");
+      //VI.Scene.Play("EnemyMap");
+      //VI.Scene.Play("WeatherMap");
     }
     #endregion
 
@@ -308,6 +312,7 @@ namespace BonVoyage {
         dialogInit = false;
       }
 
+      latestChoiceChosen = 0;
       // Button click set flags
       if (choiceFlag) {
         if (VI.Input.Button.s_Released(choice1, scene) || VI.Input.Button.s_Released(choice2, scene))
@@ -340,10 +345,12 @@ namespace BonVoyage {
           choiceFlag = false;
           if (VI.Input.Button.s_Released(choice2, scene)) {
             MoveToNextDialog(2);
+            latestChoiceChosen = 2;
             //Console.WriteLine("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
             //VI.Test.ArgString("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
           } else {
             MoveToNextDialog(1);
+            latestChoiceChosen = 1;
             //Console.WriteLine("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
             //VI.Test.ArgString("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
           }
@@ -384,10 +391,7 @@ namespace BonVoyage {
     #endregion
 
 #region minorHelpers
-    void ZoomCameraToDialog() {
-      Level1ManagerScript.ChangeZoom(960, 540);
-    }
-
+    void ZoomCameraToDialog() { Level1ManagerScript.ChangeZoom(960, 540); }
     void AlignPlayerText(string player, string scene) { TextBoxAlign(player, scene, 450, 5, 20, 0); }
     void AlignNonPlayerText(string nonplayer, string scene) { TextBoxAlign(nonplayer, scene, 0, 20, 20, 0); }
 
@@ -403,6 +407,12 @@ namespace BonVoyage {
     }
 
     #region Dialog Endings
+
+    void UpdateObjective(string objectiveFile) {
+      VI.Dialogue.LoadScript(objectiveFile);
+      if (latestChoiceChosen == 1) VI.Dialogue.Current.SetTo(1);
+      else if (latestChoiceChosen == 2) VI.Dialogue.Current.SetTo(2);
+    }
 
     public void GeneralEndDialog() {
       PlayerScript.CameraFollowPlayer = true;
@@ -428,7 +438,12 @@ namespace BonVoyage {
     public void EndPassengerDialog() {
       GeneralEndDialog();
 
-      //ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
+      UpdateObjective("Dialog Objective Passenger1 (Minerva)");
+      passengerDialogProgress = 1;
+
+      //VI.Entity.s_Activate("Passenger2");
+      //VI.Entity.Activate(P2ColliderBox);
+
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
     }
@@ -436,7 +451,9 @@ namespace BonVoyage {
     public void EndPassenger2Dialog() {
       GeneralEndDialog();
 
-      //ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
+      UpdateObjective("Dialog Objective Passenger2 (Argus)");
+      passengerDialogProgress = 1;
+
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
     }

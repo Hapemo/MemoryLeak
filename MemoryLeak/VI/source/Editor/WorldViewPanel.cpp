@@ -447,6 +447,7 @@ void WorldViewPanel::MouseOverObject()
 	bool notColliding = false;
 	if (!(selectedGameState < (*mGameStates).size() && selectedScene < (*mGameStates)[selectedGameState].mScenes.size()))
 		return;
+	const Entity* eee = nullptr;
 	for (const Entity& ee : (*mGameStates)[selectedGameState].mScenes[selectedScene].mEntities)
 	{
 		if (ee.GetComponent<General>().tag == TAG::BACKGROUND)
@@ -473,42 +474,30 @@ void WorldViewPanel::MouseOverObject()
 					}
 					if (check)
 					{
-						if (pop != nullptr)
+						eee = &ee;
+						/*if (pop != nullptr)
 						{
 							if(pop->id != ee.id)
 								popList.push_back(std::make_pair(&ee, 0));
 						}
 						else
-							popList.push_back(std::make_pair(&ee, 0));
+							popList.push_back(std::make_pair(&ee, 0));*/
 
 					}
-					/*if (pop != nullptr)
-					{
-						if (pop->id != ee.id )
-						{
-							pop = &ee;
-							bool check = true;
-							for (int i = popList.size()-1; i >=0 ; i--)
-							{
-								if ((popList[i].first->id == ee.id))
-								{
-									check = false;
-									break;
-								}
-							}
-							if(check)
-								popList.push_back(std::make_pair(&ee, 0));
-						}
-					}
-					else
-					{
-						pop = &ee;
-						popList.push_back(std::make_pair(&ee, 0));
-					}*/
-					//return;
 				}
 			}
 		}
+	}
+	if (eee != nullptr)
+	{
+		if (pop != nullptr)
+		{
+			if (pop->id != eee->id)
+				popList.push_back(std::make_pair(eee, 0));
+		}
+		else
+			popList.push_back(std::make_pair(eee, 0));
+
 	}
 	if (!notColliding)
 		pop = nullptr;
@@ -519,24 +508,26 @@ void WorldViewPanel::PopObject()
 	{
 		if (popList[i].first != nullptr)
 		{
-			if (popList[i].second < 10)
+			if (popList[i].second < 7)
 			{
-				popList[i].first->GetComponent<Transform>().scale.x += 1.5f;
-				popList[i].first->GetComponent<Transform>().scale.y += 1.5f;
+				popList[i].first->GetComponent<Transform>().scale.x += 2.5f;
+				popList[i].first->GetComponent<Transform>().scale.y += 2.5f;
 			}
-			else if(popList[i].second < 20)
+			else if(popList[i].second < 14)
 			{
-				popList[i].first->GetComponent<Transform>().scale.x -= 1.5f;
-				popList[i].first->GetComponent<Transform>().scale.y -= 1.5f;
+				popList[i].first->GetComponent<Transform>().scale.x -= 2.5f;
+				popList[i].first->GetComponent<Transform>().scale.y -= 2.5f;
 			}
 			popList[i].second++;
-			if (popList[i].second > 30)
+			if (popList[i].second > 100)
 			{
 				pop = popList[i].first;
 				popList.erase(popList.begin()+i);
 			}
 
 		}
+		else
+			popList.erase(popList.begin() + i);
 	}
 }
 /*!*****************************************************************************

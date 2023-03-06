@@ -119,13 +119,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 3189.5,
-                "Y": 1789.5
+                "X": 3200.0,
+                "Y": 1800.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -36.2099609375,
-                "Y": -225.41441345214844
+                "X": -204.24884033203125,
+                "Y": -825.066162109375
             }
         },
         "Sprite": {
@@ -155,8 +155,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 581.0,
-                "Y": 491.0
+                "X": 566.0,
+                "Y": 476.0
             },
             "rotation": 0.0,
             "translation": {
@@ -581,13 +581,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 638.0,
-                "Y": 897.0
+                "X": 641.0,
+                "Y": 900.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 926.5567626953125,
-                "Y": -284.9365234375
+                "Y": -284.9364929199219
             }
         },
         "Sprite": {
@@ -610,11 +610,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 5.0,
-                "Y": -260.0
+                "Y": -155.0
             },
             "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.30000001192092896
+                "X": 0.550000011920929,
+                "Y": 0.33000001311302185
             },
             "isTrigger": false,
             "renderFlag": true
@@ -784,7 +784,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 927.7650146484375,
+                "X": 943.6942138671875,
                 "Y": 122.20008850097656
             }
         },
@@ -935,8 +935,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -489.97467041015625,
-                "Y": 862.9323120117188
+                "X": -486.58978271484375,
+                "Y": 815.5429077148438
             }
         },
         "Sprite": {
@@ -1012,7 +1012,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 28
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1339,7 +1339,7 @@
     },
     {
         "General": {
-            "name": "DoubleStoryDropOffPoint",
+            "name": "MinervaDestination1Box",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1351,7 +1351,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 767.2344970703125,
+                "X": 769.4247436523438,
                 "Y": 708.7607421875
             }
         },
@@ -1365,6 +1365,18 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2.png",
             "layer": 5
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
         },
         "CircleCollider": {
             "centerOffset": {
@@ -1444,12 +1456,12 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
@@ -1972,7 +1984,7 @@
     },
     {
         "General": {
-            "name": "Passenger1Box",
+            "name": "PassengerBox",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -2159,7 +2171,30 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 30
+            "layer": 42
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 10.0,
+                "Y": -186.0
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.18000000715255737
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -142.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2328,7 +2363,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 29
+            "layer": 26
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2369,7 +2404,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 30
+            "layer": 28
         },
         "RectCollider": {
             "centerOffset": {
@@ -2568,76 +2603,6 @@
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
             "layer": 40
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -55.0
-            },
-            "scaleOffset": {
-                "X": 0.8999999761581421,
-                "Y": 0.6000000238418579
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 69.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Porthouse",
-            "tag": 3,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 630.5,
-                "Y": 547.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -229.93789672851563,
-                "Y": -637.700439453125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building3_spritesheet.png",
-            "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -3322,7 +3287,7 @@
     },
     {
         "General": {
-            "name": "Tree2",
+            "name": "MinervaDestination2",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -3462,8 +3427,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1397.659912109375,
-                "Y": 120.13957214355469
+                "X": 1434.89453125,
+                "Y": 170.51568603515625
             }
         },
         "Sprite": {
@@ -6020,7 +5985,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 29
+            "layer": 27
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6103,7 +6068,7 @@
             "name": "Passenger2Box",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -7628,7 +7593,7 @@
             "name": "Passenger2",
             "tag": 1,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -8464,7 +8429,30 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 29
+            "layer": 31
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 10.0,
+                "Y": -175.0
+            },
+            "scaleOffset": {
+                "X": 0.47999998927116394,
+                "Y": 0.18000000715255737
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -135.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8767,7 +8755,7 @@
     },
     {
         "General": {
-            "name": "LighthouseDestRender",
+            "name": "Passenger2DestRender",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -8779,8 +8767,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 864.291015625,
-                "Y": -438.177001953125
+                "X": 900.0,
+                "Y": 950.0
             }
         },
         "Sprite": {
@@ -8792,12 +8780,12 @@
             },
             "sprite": 1,
             "texture": "",
-            "layer": 2
+            "layer": 0
         }
     },
     {
         "General": {
-            "name": "DoubleStoryDestRender",
+            "name": "Passenger1DestRender",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -8809,8 +8797,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 977.5809936523438,
-                "Y": 961.7540283203125
+                "X": 1050.0,
+                "Y": 850.0
             }
         },
         "Sprite": {
@@ -8822,7 +8810,7 @@
             },
             "sprite": 1,
             "texture": "",
-            "layer": 2
+            "layer": 0
         }
     },
     {
@@ -8945,8 +8933,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2476.973876953125,
-                "Y": 742.541748046875
+                "X": -2303.54443359375,
+                "Y": 776.1921997070313
             }
         },
         "Sprite": {
@@ -9109,20 +9097,20 @@
     },
     {
         "General": {
-            "name": "PortHouseDropOffPoint",
+            "name": "MinervaDestination2Box",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 162.0,
-                "Y": 162.0
+                "X": 150.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -528.2301025390625,
-                "Y": -916.8058471679688
+                "X": 656.614990234375,
+                "Y": -638.7615356445313
             }
         },
         "Sprite": {
@@ -9130,111 +9118,99 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
-            "layer": 5
-        },
-        "CircleCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": 1.0,
-            "isTrigger": true,
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "HEALTH",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "LighthouseDropOffPoint",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 174.0,
-                "Y": 174.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 603.7316284179688,
-                "Y": -664.7861328125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
-            "layer": 5
-        },
-        "CircleCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": 1.0,
-            "isTrigger": true,
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "HEALTH",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "PortHouseDestRender",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 75.0,
-                "Y": 151.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -258.7829895019531,
-                "Y": -625.2410278320313
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
                 "a": 0
             },
             "sprite": 1,
             "texture": "",
-            "layer": 2
+            "layer": 5
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "HEALTH",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "Fountain",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 602.5,
+                "Y": 902.782470703125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -194.13717651367188,
+                "Y": -643.141357421875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 254,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building6_spritesheet.png",
+            "layer": 64
+        },
+        "SheetAnimation": {
+            "frameCount": 6,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -230.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": -0.0,
+                "Y": -180.0
+            },
+            "scaleOffset": 0.699999988079071,
+            "isTrigger": false,
+            "renderFlag": true
         }
     }
 ]
