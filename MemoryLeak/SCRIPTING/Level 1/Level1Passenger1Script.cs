@@ -32,8 +32,8 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             playerBoat = VI.Entity.GetId("Boat", "Level1");
-            triggerBox = VI.Entity.GetId("Passenger1Box", "Level1");
-            destinationBox = VI.Entity.GetId("DestinationBox", "Level1");
+            triggerBox = VI.Entity.GetId("PassengerBox", "Level1");
+            destinationBox = VI.Entity.GetId("destination", "Level1");
             destinationRenderLocation = VI.Entity.GetId("Passenger1DestRender", "Level1");
 
             // Store original scale x value
@@ -111,34 +111,42 @@ namespace BonVoyage {
                 switch (playerDirection)
                 {
                     case 0: // Front
+                        VI.Texture.SetLayer(_ENTITY, VI.Texture.GetLayer(playerBoat) + 1);
                         VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(playerBoat));
                         VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(playerBoat));
                         break;
                     case 1:
+                        VI.Texture.SetLayer(_ENTITY, VI.Texture.GetLayer(playerBoat) + 1);
                         VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(playerBoat) - VI.Transform.Scale.GetX(playerBoat) / 10f);
                         VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(playerBoat));
                         break;
                     case 2: // Left
+                        VI.Texture.SetLayer(_ENTITY, VI.Texture.GetLayer(playerBoat) + 1);
                         VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(playerBoat) - VI.Transform.Scale.GetX(playerBoat) / 4f);
                         VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(playerBoat) + VI.Transform.Scale.GetY(playerBoat) / 16f);
                         break;
                     case 3:
+                        VI.Texture.SetLayer(_ENTITY, VI.Texture.GetLayer(playerBoat) + 1);
                         VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(playerBoat) - VI.Transform.Scale.GetX(playerBoat) / 6f);
                         VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(playerBoat) + VI.Transform.Scale.GetY(playerBoat) / 8f);
                         break;
                     case 4: // Back
+                        VI.Texture.SetLayer(_ENTITY, VI.Texture.GetLayer(playerBoat) - 1);
                         VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(playerBoat));
                         VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(playerBoat));
                         break;
                     case 5:
+                        VI.Texture.SetLayer(_ENTITY, VI.Texture.GetLayer(playerBoat) + 1);
                         VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(playerBoat) + VI.Transform.Scale.GetX(playerBoat) / 6f);
                         VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(playerBoat) + VI.Transform.Scale.GetY(playerBoat) / 8f);
                         break;
                     case 6: // Right
+                        VI.Texture.SetLayer(_ENTITY, VI.Texture.GetLayer(playerBoat) + 1);
                         VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(playerBoat) + VI.Transform.Scale.GetX(playerBoat) / 4f);
                         VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(playerBoat) + VI.Transform.Scale.GetY(playerBoat) / 16f);
                         break;
                     case 7:
+                        VI.Texture.SetLayer(_ENTITY, VI.Texture.GetLayer(playerBoat) + 1);
                         VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(playerBoat) + VI.Transform.Scale.GetX(playerBoat) / 10f);
                         VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(playerBoat));
                         break;
@@ -184,25 +192,15 @@ namespace BonVoyage {
 
             if (DestinationReached)
             {
+                VI.Texture.SetLayer(_ENTITY, 50);
+                
                 // Restore passenger's original scale x value
                 if (VI.Transform.Scale.GetX(_ENTITY) < InitialScaleX)
                 {
                     VI.Transform.Scale.SetX(_ENTITY, VI.Transform.Scale.GetX(_ENTITY) * (1 + 8 * (float)VI.General.DeltaTime()));
                     VI.Transform.Scale.SetY(_ENTITY, VI.Transform.Scale.GetY(_ENTITY) * (1 + 8 * (float)VI.General.DeltaTime()));
                 }
-
-                // Get distance between passenger and boat
-                float diffX = VI.Transform.Position.GetX(destinationRenderLocation) - VI.Transform.Position.GetX(_ENTITY);
-                float diffY = VI.Transform.Position.GetY(destinationRenderLocation) - VI.Transform.Position.GetY(_ENTITY);
-
-                if (diffX * diffX > (InitialScaleX * InitialScaleX + VI.Transform.Scale.GetX(destinationRenderLocation) * VI.Transform.Scale.GetX(destinationRenderLocation)))
-                {
-                    // Animation
-                    VI.Transform.Position.SetX(_ENTITY, VI.Transform.Position.GetX(_ENTITY) + diffX * (float)VI.General.DeltaTime());
-                    VI.Transform.Position.SetY(_ENTITY, VI.Transform.Position.GetY(_ENTITY) + diffY * (float)VI.General.DeltaTime());
-                }
-                else
-                {
+                else {
                     DestinationReached = false;
                 }
             }

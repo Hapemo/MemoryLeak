@@ -917,17 +917,6 @@
             "isTrigger": true,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": false
-        },
         "Script": {
             "name": "Level1Passenger1Script"
         }
@@ -1350,7 +1339,7 @@
     },
     {
         "General": {
-            "name": "DestinationBox",
+            "name": "destination",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1995,7 +1984,7 @@
     },
     {
         "General": {
-            "name": "Passenger1Box",
+            "name": "PassengerBox",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -7714,17 +7703,6 @@
                 "Y": 1.0
             },
             "isTrigger": true,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -50.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Script": {
