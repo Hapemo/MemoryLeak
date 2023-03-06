@@ -1942,7 +1942,7 @@
     },
     {
         "General": {
-            "name": "Tree",
+            "name": "Passenger",
             "tag": 1,
             "subtag": 0,
             "isActive": true
@@ -7527,7 +7527,7 @@
     },
     {
         "General": {
-            "name": "GirlDialogueCollider",
+            "name": "GirlBox",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -7569,7 +7569,7 @@
     },
     {
         "General": {
-            "name": "CatDialogueCollider",
+            "name": "CatBox",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -7611,7 +7611,7 @@
     },
     {
         "General": {
-            "name": "PassengerPickupDialogueCollider",
+            "name": "PassengerPickupBox",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -7653,7 +7653,7 @@
     },
     {
         "General": {
-            "name": "PassengerDropOffDialogueCollider",
+            "name": "PassengerDropOffBox",
             "tag": 8,
             "subtag": 0,
             "isActive": true

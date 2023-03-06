@@ -148,7 +148,7 @@
     },
     {
         "General": {
-            "name": "Double Story House",
+            "name": "DoubleStoryHouse",
             "tag": 3,
             "subtag": 0,
             "isActive": true
@@ -581,8 +581,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 641.0,
-                "Y": 900.0
+                "X": 653.5,
+                "Y": 912.5
             },
             "rotation": 0.0,
             "translation": {
@@ -784,8 +784,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 943.6942138671875,
-                "Y": 122.20008850097656
+                "X": 923.78271484375,
+                "Y": 118.41691589355469
             }
         },
         "Sprite": {
@@ -1339,10 +1339,10 @@
     },
     {
         "General": {
-            "name": "MinervaDestination1Box",
+            "name": "DoubleStoryHouseDropOffPoint",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1365,18 +1365,6 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2.png",
             "layer": 5
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 100.0,
-                "Y": 100.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": true,
-            "renderFlag": true
         },
         "CircleCollider": {
             "centerOffset": {
@@ -1984,7 +1972,7 @@
     },
     {
         "General": {
-            "name": "PassengerBox",
+            "name": "Passenger1Box",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -2507,7 +2495,7 @@
     },
     {
         "General": {
-            "name": "Porthouse",
+            "name": "PortHouse",
             "tag": 3,
             "subtag": 0,
             "isActive": true
@@ -8755,36 +8743,6 @@
     },
     {
         "General": {
-            "name": "Passenger2DestRender",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 75.0,
-                "Y": 151.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 900.0,
-                "Y": 950.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 0
-        }
-    },
-    {
-        "General": {
             "name": "Passenger1DestRender",
             "tag": 8,
             "subtag": 0,
@@ -8798,7 +8756,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 1050.0,
-                "Y": 850.0
+                "Y": 451.0
             }
         },
         "Sprite": {
@@ -8810,7 +8768,7 @@
             },
             "sprite": 1,
             "texture": "",
-            "layer": 0
+            "layer": 5
         }
     },
     {
@@ -9097,10 +9055,10 @@
     },
     {
         "General": {
-            "name": "MinervaDestination2Box",
+            "name": "LighthouseDropOffPoint",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -9109,8 +9067,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 656.614990234375,
-                "Y": -638.7615356445313
+                "X": 631.5264892578125,
+                "Y": -672.212890625
             }
         },
         "Sprite": {
@@ -9118,30 +9076,18 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 0
+                "a": 255
             },
-            "sprite": 1,
-            "texture": "",
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
             "layer": 5
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 100.0,
-                "Y": 100.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": true,
-            "renderFlag": true
         },
         "CircleCollider": {
             "centerOffset": {
                 "X": 0.0,
                 "Y": 0.0
             },
-            "scaleOffset": 1.0,
+            "scaleOffset": 0.699999988079071,
             "isTrigger": true,
             "renderFlag": true
         },
@@ -9195,7 +9141,7 @@
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": -230.0
+                "Y": -30.0
             },
             "scaleOffset": {
                 "X": 1.0,
@@ -9211,6 +9157,306 @@
             "scaleOffset": 0.699999988079071,
             "isTrigger": false,
             "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "PortHouseDropOffPoint",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 43.93791198730469,
+                "Y": 410.375732421875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 5
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "HEALTH",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "FountainDropOffPoint",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -500.3541564941406,
+                "Y": -1055.4208984375
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 5
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "HEALTH",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "PorthouseDropOffPoint",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1238.783447265625,
+                "Y": -900.819091796875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 5
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "HEALTH",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "DoubleStoryHouseDestRender",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 989.535400390625,
+                "Y": 922.8978881835938
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "PortHouseDestRender",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -243.69479370117188,
+                "Y": 624.5128784179688
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "LighthouseDestRender",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 855.8185424804688,
+                "Y": -466.4385070800781
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "FountainDestRender",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -292.1903076171875,
+                "Y": -838.2969970703125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "PorthouseDestRender",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1514.46923828125,
+                "Y": -647.8544921875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 5
         }
     }
 ]
