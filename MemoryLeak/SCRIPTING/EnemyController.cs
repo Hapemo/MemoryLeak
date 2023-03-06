@@ -6,18 +6,22 @@ namespace BonVoyage {
         private float PlayerPosX;
         private float PlayerPosY;
 
+        private float HitSpeed = 1f;
         private float HitInterval;
+        private float HitAnimationCounter;
         private float HitCounter;
         public int HitTaken;
+        private int HitMax = 11;
 
         public float EnemySpeed = 2.2f;
         private EnemyState OctopusState;
-        private static int ChasingIndex = 0;
+        private int ChasingIndex = 0;
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
         private int PlayerId;
         private int DialogueSceneId;
         private int EnemyTriggerId;
+        private int HpBarId;
 
         public enum EnemyState {
             IDLE = 0,
@@ -38,6 +42,7 @@ namespace BonVoyage {
             DialogueSceneId = VI.Entity.GetId("DialogueBox");
             EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
+            HpBarId = VI.Entity.GetId("hpbar");
         }
 
         public void Init(int _ENTITY) {
@@ -62,6 +67,7 @@ namespace BonVoyage {
 
             // Enemy is in screen
             if (OnScreen()) {
+                LOG.WRITE(VI.Entity.IsActive(DialogueSceneId).ToString());
                 if (!VI.Entity.IsActive(DialogueSceneId) && VI.Physics.CheckCollision(PlayerId, EnemyTriggerId, true))
                     ChasePlayer(x, y);
                 else {
@@ -82,11 +88,16 @@ namespace BonVoyage {
             // Detecting player hits
             if (VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > -1) {
                 ++HitCounter;
-                if (HitCounter >= HitInterval) {
-                    HitCounter = 0;
-                    ++HitTaken;
+                ++HitAnimationCounter;
+                if (HitAnimationCounter >= HitInterval) {
                     THIS.Audio.Play();
-                    //VI.Texture.s_Set("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
+                    HitAnimationCounter = 0;
+                }
+                
+                if (HitCounter >= HitInterval * 100f * HitSpeed) {
+                    HitCounter = 0;
+                    HitTaken = (HitTaken < HitMax ? HitTaken + 1 : 0);
+                    VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
                 }
             }
         }
@@ -119,23 +130,18 @@ namespace BonVoyage {
         }
 
         private float GetSpeed(float _x, float _y) {
-            //THIS.Animation.Transform.SetCalculatedTime.FromPosition(_x, _y);
-            //LOG.WRITE(((float)VI.General.DeltaTime()).ToString());
-            //LOG.WRITE(VI.Math.Magnitude(_x, _y).ToString());
-            //LOG.WRITE((VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 10000000000f).ToString());
-            //LOG.WRITE("===");
             return VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 100f * EnemySpeed;
         }
 
         private void ChasePlayer(float _x, float _y) {
             // First attack, enemy still in idle mode
             if (OctopusState == EnemyState.IDLE) {
-                //OctopusState = EnemyState.RISING;
-                OctopusState = EnemyState.ATTACK1;
+                VI.Audio.PlayBGM("MonsterChase_BGM");
+                OctopusState = EnemyState.RISING;
                 THIS.Animation.SpriteSheet.CurrentFrame.Set(0);
             } else if (OctopusState == EnemyState.RISING &&
                 THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1) {
-                HitInterval = THIS.Animation.SpriteSheet.Speed.Get() * THIS.Animation.SpriteSheet.FrameCount.Get();
+                HitInterval = THIS.Animation.SpriteSheet.Speed.Get() * THIS.Animation.SpriteSheet.FrameCount.Get() * (float)VI.General.DeltaTime() * 100f;
                 THIS.Animation.SpriteSheet.CurrentFrame.Set(0);
                 Random rand = new Random();
                 OctopusState = (rand.Next(0, 2) == 0 ? EnemyState.ATTACK1 : EnemyState.ATTACK2);
