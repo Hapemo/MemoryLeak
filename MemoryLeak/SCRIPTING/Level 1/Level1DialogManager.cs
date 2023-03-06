@@ -61,7 +61,7 @@ namespace BonVoyage {
       UIMemoryFragmentID = VI.Entity.GetId("memoryfragment", "Dialogue");
       UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
       UIFragment1ObjID = VI.Entity.GetId("fragment1obj", "Dialogue");
-      UICycleMapID = VI.Entity.GetId("cyclemap", "Dialogue");
+      UICycleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
       UIMiniMapID = VI.Entity.GetId("minimap", "Dialogue");
       UIEnemyMapID = VI.Entity.GetId("enemymap", "Dialogue");
       UIWeatherMapID = VI.Entity.GetId("weathermap", "Dialogue");
@@ -147,16 +147,16 @@ namespace BonVoyage {
       VI.Entity.Deactivate(UIMemoryFragmentScreenID);
       VI.Entity.Deactivate(UIFragment1ObjID);
       VI.Entity.Deactivate(UICycleMapID);
-      VI.Entity.Deactivate(UIMiniMapID);
-      VI.Entity.Deactivate(UIEnemyMapID);
-      VI.Entity.Deactivate(UIWeatherMapID);
-      VI.Entity.Deactivate(UIWeatherTextID);
+      //VI.Entity.Deactivate(UIMiniMapID);
+      //VI.Entity.Deactivate(UIEnemyMapID);
+      //VI.Entity.Deactivate(UIWeatherMapID);
+      //VI.Entity.Deactivate(UIWeatherTextID);
       VI.Entity.Deactivate(UIObjectiveTextID);
 
-      VI.Scene.Pause("CrystalBalls");
-      VI.Scene.Pause("MiniMap");
-      VI.Scene.Pause("EnemyMap");
-      VI.Scene.Pause("WeatherMap");
+      //VI.Scene.Pause("CrystalBalls");
+      //VI.Scene.Pause("MiniMap");
+      //VI.Scene.Pause("EnemyMap");
+      //VI.Scene.Pause("WeatherMap");
     }
 
     public void EnableUI() {
@@ -164,11 +164,11 @@ namespace BonVoyage {
       VI.Entity.Activate(UIMemoryFragmentID);
       VI.Entity.Activate(UICycleMapID);
       VI.Entity.Activate(UIObjectiveTextID);
-
-      VI.Scene.Play("CrystalBalls");
-      VI.Scene.Play("MiniMap");
-      VI.Scene.Play("EnemyMap");
-      VI.Scene.Play("WeatherMap");
+            VI.Entity.Activate(UICycleMapID);
+            //VI.Scene.Play("CrystalBalls");
+      //VI.Scene.Play("MiniMap");
+      //VI.Scene.Play("EnemyMap");
+      //VI.Scene.Play("WeatherMap");
     }
     #endregion
 

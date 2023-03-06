@@ -74,7 +74,7 @@ namespace BonVoyage {
                 string EIcon = "EIcon" + i;
                 if (!(modI != 0 && modI != 4 && divI != 0 && divI != 4))
                 {
-                    VI.Entity.s_SetActive(EIcon, "WeatherMap", true);
+                    VI.Entity.s_SetActive(EIcon, "WeatherMap", false);
                 }
                 else
                 {

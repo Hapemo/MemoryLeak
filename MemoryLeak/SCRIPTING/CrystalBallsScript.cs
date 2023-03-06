@@ -34,8 +34,8 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            toggle = 0;
             prevTog = -1;
-            //VI.Entity.s_Deactivate("crystalBall", "CrystalBalls");
             VI.Entity.s_Activate("crystalBall", "CrystalBalls");
         }
 
@@ -108,9 +108,6 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             toggle=0;
             prevTog = -1;
-            VI.Entity.s_Deactivate("minimap", "MiniMap");
-            VI.Entity.s_Deactivate("enemymap", "EnemyMap");
-            VI.Entity.s_Deactivate("weathermap", "WeatherMap");
             VI.Entity.s_Deactivate("crystalBall", "CrystalBalls");
             VI.Scene.Pause("MiniMap");
             VI.Scene.Pause("WeatherMap");
