@@ -6,24 +6,25 @@ namespace BonVoyage {
 
     public class Level1Passenger2Script : PassengerBaseScript {
         public override void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            base.Init(_ENTITY);
 
             // Get required entities
             playerBoat = VI.Entity.GetId("Boat", "Level1");
             triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
+            
             correctDestination_Box = VI.Entity.GetId("DoubleStoryHouseDropOffPoint", "Level1");
             correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDestRender", "Level1");
 
             wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1");
             wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDestRender", "Level1");
 
-            // Store original scale x value
-            InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+            // Store original scale and layer values
+            //InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
+            //InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
         }
 
         public override void Update(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            base.Update(_ENTITY);
 
             // Check if passenger's trigger box is active
             if (VI.Entity.IsActive(triggerBox)) {

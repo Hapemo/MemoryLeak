@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using VI;
 
 namespace BonVoyage {
-    public class LevelTutorialPassengerScript : PassengerBaseScript {
+
+    public class Level2Passenger2Script : PassengerBaseScript {
         public override void Init(int _ENTITY) {
             base.Init(_ENTITY);
 
-            // Find required entities
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-            triggerBox = VI.Entity.GetId("PassengerPickupBox", "LevelTutorial");
+            // Get required entities
+            playerBoat = VI.Entity.GetId("Boat", "Level2");
+            triggerBox = VI.Entity.GetId("Passenger2Box", "Level2");
 
-            correctDestination_Box = VI.Entity.GetId("PassengerDropOffBox", "LevelTutorial");
-            correctDestination_RenderLocation = VI.Entity.GetId("DropOffBuilding", "LevelTutorial");
+            correctDestination_Box = VI.Entity.GetId("", "Level2");
+            correctDestination_RenderLocation = VI.Entity.GetId("", "Level2");
 
-            wrongDestination_Box = VI.Entity.GetId("PassengerDummyDropOffBox", "LevelTutorial");
-            wrongDestination_RenderLocation = VI.Entity.GetId("PassengerDummyDropOffBox", "LevelTutorial");
-
-            // Store original scale and layer values
-            //InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            //InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+            wrongDestination_Box = VI.Entity.GetId("", "Level2");
+            wrongDestination_RenderLocation = VI.Entity.GetId("", "Level2");
         }
 
         public override void Update(int _ENTITY) {
@@ -138,5 +136,6 @@ namespace BonVoyage {
                 }
             }
         }
+
     }
 }

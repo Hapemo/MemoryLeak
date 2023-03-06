@@ -43,8 +43,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -934.578369140625,
-                "Y": 409.6569519042969
+                "X": -968.0296630859375,
+                "Y": 466.8030090332031
             }
         },
         "Sprite": {
@@ -1663,6 +1663,9 @@
             "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "Script": {
+            "name": "LevelTutorialGirlScript"
         }
     },
     {
@@ -1967,13 +1970,16 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
-            "layer": 53
+            "layer": 60
         },
         "SheetAnimation": {
             "frameCount": 8,
             "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "Script": {
+            "name": "LevelTutorialPassengerScript"
         }
     },
     {
@@ -5659,7 +5665,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 1233.63037109375,
-                "Y": -1311.7547607421875
+                "Y": -1310.0
             }
         },
         "Sprite": {
@@ -7534,13 +7540,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 214.0,
+                "X": 430.0,
                 "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -101.35073852539063,
-                "Y": -635.4921875
+                "X": -111.10736083984375,
+                "Y": -645.2488403320313
             }
         },
         "Sprite": {
@@ -7560,7 +7566,7 @@
                 "Y": 0.0
             },
             "scaleOffset": {
-                "X": 2.0,
+                "X": 1.0,
                 "Y": 1.0
             },
             "isTrigger": true,
@@ -7572,17 +7578,17 @@
             "name": "CatBox",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 100.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -830.7090454101563,
-                "Y": 247.3024444580078
+                "X": -740.1116943359375,
+                "Y": 241.7272186279297
             }
         },
         "Sprite": {
@@ -7618,13 +7624,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 174.0
+                "X": 134.0,
+                "Y": 650.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 640.0560302734375,
-                "Y": -1151.08251953125
+                "X": 558.0205688476563,
+                "Y": -1133.361328125
             }
         },
         "Sprite": {
@@ -7641,11 +7647,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": 30.0
+                "Y": 0.0
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 3.5
+                "Y": 1.0
             },
             "isTrigger": true,
             "renderFlag": true
@@ -7665,8 +7671,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1062.676513671875,
-                "Y": -1263.58251953125
+                "X": 1088.959716796875,
+                "Y": -1310.0
             }
         },
         "Sprite": {
@@ -13879,6 +13885,48 @@
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 3.725290298461914e-9
+        }
+    },
+    {
+        "General": {
+            "name": "PassengerDummyDropOffBox",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2797.45556640625,
+                "Y": -1127.5220947265625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 113
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
         }
     }
 ]
