@@ -302,7 +302,7 @@ void InspectorPanel::AddComponent()
 	else if (addComponentID == (int)COMPONENTID::AUDIO)
 		e.AddComponent<Audio>({});
 	else if (addComponentID == (int)COMPONENTID::TEXT)
-		e.AddComponent<Text>({ "CaviarDreams", "PLAY", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
+		e.AddComponent<Text>({ "BPtypewrite", "PLAY", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
 	else if (addComponentID == (int)COMPONENTID::AI)
 		e.AddComponent<AI>({});
 	else if (addComponentID == (int)COMPONENTID::SCRIPT)
@@ -364,7 +364,7 @@ void InspectorPanel::AddPrefabComponent()
 	else if (addComponentID == (int)COMPONENTID::AUDIO)
 		p->AddComponent<Audio>({});
 	else if (addComponentID == (int)COMPONENTID::TEXT)
-		p->AddComponent<Text>({ "CaviarDreams", "PLAY", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
+		p->AddComponent<Text>({ "BPtypewrite", "PLAY", Math::Vec2{0,0}, 1.f, Color{ 255,255,255,255 } });
 	else if (addComponentID == (int)COMPONENTID::AI)
 		p->AddComponent<AI>({});
 	else if (addComponentID == (int)COMPONENTID::SCRIPT)

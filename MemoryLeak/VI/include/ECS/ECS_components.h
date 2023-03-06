@@ -69,7 +69,7 @@ The layer variable contains which layer the sprite is to be rendered in.
 *******************************************************************************/
 struct Sprite
 {
-	Color color = Color{ 0,255,0,255 };	//save, edit, see
+	Color color = Color{ 255, 255,255,255 };	//save, edit, see
 	SPRITE sprite;						//save, edit, see
 	GLuint texture = 0;					//save, edit, see
 	int layer = 0;						//save, edit, see
@@ -314,13 +314,13 @@ struct Audio {
 	This struct contains the data for Text component
 *******************************************************************************/
 struct Text {
-	std::string fontFile = "3Dumb";			//save, edit, see
+	std::string fontFile = "BPtypewrite";	//save, edit, see
 	std::string text = "Hello";				//save, edit, see
 	Math::Vec2 offset = Math::Vec2{0, 0};	//save, edit, see
 	float scale = 1.f;						//save, edit, see
 	Color color = Color{ 0, 0, 0, 255 };	//save, edit, see
 	bool followCam = false;					//NO save, edit, see
-	float width = 10.f;
+	float width = 0.f;
 };
 
 /*!*****************************************************************************

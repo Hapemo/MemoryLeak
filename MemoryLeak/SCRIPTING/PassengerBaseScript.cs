@@ -6,15 +6,13 @@ namespace BonVoyage {
         protected int playerBoat;
         protected int triggerBox;
 
-        protected int destinationA_Box;
-        protected int destinationA_RenderLocation;
+        protected int correctDestination_Box;
+        protected int correctDestination_RenderLocation;
 
-        protected int destinationB_Box;
-        protected int destinationB_RenderLocation;
+        protected int wrongDestination_Box;
+        protected int wrongDestination_RenderLocation;
 
-        protected const char A_char = 'A';
-        protected const char B_char = 'B';
-        protected char destinationDelivered;
+        protected bool correctDestinationDelivery;
 
         protected bool ReadyToAttach;
         protected bool AttachToPlayerAnimation;
@@ -28,7 +26,7 @@ namespace BonVoyage {
         public virtual void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            destinationDelivered = ' ';
+            correctDestinationDelivery = false;
 
             ReadyToAttach = false;
             AttachToPlayerAnimation = false;

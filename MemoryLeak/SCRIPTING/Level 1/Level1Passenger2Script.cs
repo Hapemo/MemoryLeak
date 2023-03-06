@@ -11,11 +11,11 @@ namespace BonVoyage {
             // Get required entities
             playerBoat = VI.Entity.GetId("Boat", "Level1");
             triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
-            destinationA_Box = VI.Entity.GetId("DoubleStoryHouseDropOffPoint", "Level1");
-            destinationA_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDestRender", "Level1");
+            correctDestination_Box = VI.Entity.GetId("DoubleStoryHouseDropOffPoint", "Level1");
+            correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDestRender", "Level1");
 
-            destinationB_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1");
-            destinationB_RenderLocation = VI.Entity.GetId("PortHouseDestRender", "Level1");
+            wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1");
+            wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDestRender", "Level1");
 
             // Store original scale x value
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
@@ -33,8 +33,14 @@ namespace BonVoyage {
                     if (!Level1DialogManager.runPassenger2Dialog) {
                         // Set Dialogue Manager's flag to true to run it
                         Level1DialogManager.runPassenger2Dialog = true;
+                        
                         // Deactivate the trigger box
                         VI.Entity.Deactivate(triggerBox);
+
+                        // Activate the drop off point boxes
+                        VI.Entity.Activate(correctDestination_Box);
+                        VI.Entity.Activate(wrongDestination_Box);
+
                         // Set flag to true
                         ReadyToAttach = true;
                     }
@@ -70,18 +76,30 @@ namespace BonVoyage {
             }
 
             // Check if passenger reaches destination
-            if (VI.Physics.CheckCollision(destinationA_Box, _ENTITY, false)) {
+            if (VI.Physics.IsCollided(correctDestination_Box, _ENTITY)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+
+                // Set flag
+                correctDestinationDelivery = true;
+            }
+            else if (VI.Physics.IsCollided(wrongDestination_Box, _ENTITY)) {
+                // Move on to detaching animation
+                AttachedToPlayer = false;
+                DetachFromPlayerAnimation = true;
+                PlayerScript.PlayerInOtherAnimation = true;
+
+                // Set flag
+                correctDestinationDelivery = false;
             }
 
             // Play animation of passenger detaching from player
             if (DetachFromPlayerAnimation) {
                 // Animate detachment to player
                 // returns true once complete
-                if (DetachPassengerFromPlayer(_ENTITY, destinationA_RenderLocation, InitialScaleX)) {
+                if (DetachPassengerFromPlayer(_ENTITY, correctDestination_RenderLocation, InitialScaleX)) {
                     // Animation complete
                     DetachFromPlayerAnimation = false;
                     PlayerScript.PlayerInOtherAnimation = false;
@@ -90,11 +108,34 @@ namespace BonVoyage {
 
             }
         
+            // Passenger was delivered
             if (DestinationReached) {
+                // Return layer value
                 VI.Texture.SetLayer(_ENTITY, InitialLayerVal);
 
+
+
                 // Restore passenger's original scale value
+                // Returns true when completed
                 if (RestorePassengerScale(_ENTITY, InitialScaleX)){
+                    // Run logic based on whether destination delievered was correct
+                    switch (correctDestinationDelivery) {
+                        case true:
+                            // Run second script/logic from here
+                            break;
+                        case false:
+                            // Run second script/logic from here
+                            break;
+                        default:
+                            // Do nothing
+                            break;
+                    }
+
+                    // Deactivate the drop off point boxes
+                    VI.Entity.Deactivate(correctDestination_Box);
+                    VI.Entity.Deactivate(wrongDestination_Box);
+
+                    // Set flag to get out
                     DestinationReached = false;
                 }
             }
