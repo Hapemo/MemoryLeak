@@ -11,8 +11,8 @@ namespace BonVoyage {
             // Get required entities
             playerBoat = VI.Entity.GetId("Boat", "Level1");
             triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
-            destinationA_Box = VI.Entity.GetId("DoubleStoryDropOffPoint", "Level1");
-            destinationA_RenderLocation = VI.Entity.GetId("DoubleStoryDestRender", "Level1");
+            destinationA_Box = VI.Entity.GetId("DoubleStoryHouseDropOffPoint", "Level1");
+            destinationA_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDestRender", "Level1");
 
             destinationB_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1");
             destinationB_RenderLocation = VI.Entity.GetId("PortHouseDestRender", "Level1");

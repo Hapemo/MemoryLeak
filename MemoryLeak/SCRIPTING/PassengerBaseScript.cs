@@ -166,6 +166,9 @@ namespace BonVoyage {
                 return false;
             }
             else {
+                VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_eDestination));
+                VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_eDestination));
+
                 return true;
             }
         }

@@ -97,7 +97,6 @@
     <Compile Include="QuitButton.cs" />
     <Compile Include="ReallyQuitButton.cs" />
     <Compile Include="BGMcontroller.cs" />
-    <Compile Include="ObjectiveText.cs" />
     <Compile Include="Level Tutorial\LevelTutorialCatScript.cs" />
     <Compile Include="PassengerBaseScript.cs" />
     <Compile Include="SFXcontroller.cs" />
