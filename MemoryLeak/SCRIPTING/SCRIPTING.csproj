@@ -81,6 +81,7 @@
     <Compile Include="Fragment6.cs" />
     <Compile Include="HowToPlayButton.cs" />
     <Compile Include="InternalCalls.cs" />
+    <Compile Include="Level 2\Level2DialogManager.cs" />
     <Compile Include="Level 2\Level2Passenger1Script.cs" />
     <Compile Include="Level 2\Level2Passenger2Script.cs" />
     <Compile Include="Level Tutorial\LevelTutorialDialogManager.cs" />
