@@ -80,6 +80,7 @@
     <Compile Include="Fragment6.cs" />
     <Compile Include="HowToPlayButton.cs" />
     <Compile Include="InternalCalls.cs" />
+    <Compile Include="LevelToMenu.cs" />
     <Compile Include="MemoryFragmentExpand.cs" />
     <Compile Include="MiniMapScript.cs" />
     <Compile Include="Level 1\Level1Passenger2Script.cs" />

@@ -8,8 +8,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 1920.0,
-                "Y": 1080.0
+                "X": 1600.0,
+                "Y": 900.0
             },
             "rotation": 0.0,
             "translation": {
@@ -38,8 +38,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 1174.0,
-                "Y": 686.0
+                "X": 1186.0,
+                "Y": 692.0
             },
             "rotation": 0.0,
             "translation": {
@@ -83,13 +83,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 650.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 50.0
+                "Y": -75.0
             }
         },
         "Sprite": {
@@ -100,7 +100,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 1
         },
         "Audio": {
@@ -145,13 +145,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 650.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -100.0
+                "Y": -225.0
             }
         },
         "Sprite": {
@@ -162,7 +162,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 1
         },
         "Audio": {
@@ -207,13 +207,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 125.0
+                "X": 650.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -250.0
+                "Y": 75.0
             }
         },
         "Sprite": {
@@ -224,7 +224,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Menu\\button1-click.png",
             "layer": 1
         },
         "Audio": {
