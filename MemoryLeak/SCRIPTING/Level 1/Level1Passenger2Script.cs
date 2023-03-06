@@ -7,7 +7,7 @@ namespace BonVoyage {
     public class Level1Passenger2Script : PassengerBaseScript {
         private bool ranOnceInit = true;
         public override void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            base.Init(_ENTITY);
 
             // Get required entities (ALL THESE ENTITIES NEED TO UPDATE IN Level1DialogManager.cs AS WELL IF CHANGED!!!)
             playerBoat = VI.Entity.GetId("Boat", "Level1");

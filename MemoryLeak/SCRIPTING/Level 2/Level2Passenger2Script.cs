@@ -4,23 +4,19 @@ using VI;
 
 namespace BonVoyage {
 
-    public class Level1Passenger1Script : PassengerBaseScript {
+    public class Level2Passenger2Script : PassengerBaseScript {
         public override void Init(int _ENTITY) {
             base.Init(_ENTITY);
 
-            // Find required entities
-            playerBoat = VI.Entity.GetId("Boat", "Level1");
-            triggerBox = VI.Entity.GetId("Passenger1Box", "Level1");
-            
-            correctDestination_Box = VI.Entity.GetId("DoubleStoryHouseDropOffPoint", "Level1");
-            correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDestRender", "Level1");
+            // Get required entities
+            playerBoat = VI.Entity.GetId("Boat", "Level2");
+            triggerBox = VI.Entity.GetId("Passenger2Box", "Level2");
 
-            wrongDestination_Box = VI.Entity.GetId("LighthouseDropOffPoint", "Level1");
-            wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDestRender", "Level1");
+            correctDestination_Box = VI.Entity.GetId("", "Level2");
+            correctDestination_RenderLocation = VI.Entity.GetId("", "Level2");
 
-            // Store original scale and layer values
-            //InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            //InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+            wrongDestination_Box = VI.Entity.GetId("", "Level2");
+            wrongDestination_RenderLocation = VI.Entity.GetId("", "Level2");
         }
 
         public override void Update(int _ENTITY) {
@@ -31,9 +27,9 @@ namespace BonVoyage {
                 // Check if player is colliding with that box
                 if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
                     // Check if dialogue script should be ran
-                    if (!Level1DialogManager.runPassengerDialog) {
+                    if (!Level1DialogManager.runPassenger2Dialog) {
                         // Set Dialogue Manager's flag to true to run it
-                        Level1DialogManager.runPassengerDialog = true;
+                        Level1DialogManager.runPassenger2Dialog = true;
                         
                         // Deactivate the trigger box
                         VI.Entity.Deactivate(triggerBox);
@@ -41,7 +37,7 @@ namespace BonVoyage {
                         // Activate the drop off point boxes
                         VI.Entity.Activate(correctDestination_Box);
                         VI.Entity.Activate(wrongDestination_Box);
-                        
+
                         // Set flag to true
                         ReadyToAttach = true;
                     }
@@ -49,7 +45,7 @@ namespace BonVoyage {
             }
 
             // Passenger is ready to attach & dialogue has ended
-            if (ReadyToAttach && !Level1DialogManager.runPassengerDialog) {
+            if (ReadyToAttach && !Level1DialogManager.runPassenger2Dialog) {
                 // Set flag variables
                 AttachToPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
@@ -76,26 +72,23 @@ namespace BonVoyage {
                 MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
             }
 
-            // Check if passenger reaches destination A
+            // Check if passenger reaches destination
             if (VI.Physics.IsCollided(correctDestination_Box, _ENTITY)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
-                Level1DialogManager.passengerDialogProgress = 11;
 
-                // Set flag variable
+                // Set flag
                 correctDestinationDelivery = true;
             }
-            // Check if passenger reaches destination B
             else if (VI.Physics.IsCollided(wrongDestination_Box, _ENTITY)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
-                Level1DialogManager.passengerDialogProgress = 10;
 
-                // Set flag variable
+                // Set flag
                 correctDestinationDelivery = false;
             }
 
@@ -109,29 +102,25 @@ namespace BonVoyage {
                     DetachFromPlayerAnimation = false;
                     PlayerScript.PlayerInOtherAnimation = false;
                     DestinationReached = true;
-                }                
-            }
+                }
 
+            }
+        
             // Passenger was delivered
             if (DestinationReached) {
                 // Return layer value
                 VI.Texture.SetLayer(_ENTITY, InitialLayerVal);
 
-                
-
                 // Restore passenger's original scale value
                 // Returns true when completed
-                if (RestorePassengerScale(_ENTITY, InitialScaleX)) {
-
+                if (RestorePassengerScale(_ENTITY, InitialScaleX)){
                     // Run logic based on whether destination delievered was correct
                     switch (correctDestinationDelivery) {
                         case true:
                             // Run second script/logic from here
-
                             break;
                         case false:
                             // Run second script/logic from here
-
                             break;
                         default:
                             // Do nothing
@@ -147,5 +136,6 @@ namespace BonVoyage {
                 }
             }
         }
+
     }
 }

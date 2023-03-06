@@ -33,11 +33,22 @@ namespace BonVoyage {
             AttachedToPlayer = false;
             DetachFromPlayerAnimation = false;
             DestinationReached = false;
+
+            // Store original scale x value
+            InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
+            InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
         }
 
         public virtual void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            correctDestinationDelivery = false;
+
+            ReadyToAttach = false;
+            AttachToPlayerAnimation = false;
+            AttachedToPlayer = false;
+            DetachFromPlayerAnimation = false;
+            DestinationReached = false;
         }
 
         public virtual void EarlyUpdate(int _ENTITY) {
@@ -62,7 +73,14 @@ namespace BonVoyage {
 
         public virtual void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            
+            correctDestinationDelivery = false;
 
+            ReadyToAttach = false;
+            AttachToPlayerAnimation = false;
+            AttachedToPlayer = false;
+            DetachFromPlayerAnimation = false;
+            DestinationReached = false;
         }
 
         public virtual void Dead(int _ENTITY) {
