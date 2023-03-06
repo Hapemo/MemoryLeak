@@ -308,8 +308,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 420.0,
-                "Y": 5.0
+                "X": -214.20355224609375,
+                "Y": -8.259674072265625
             }
         },
         "Sprite": {
@@ -486,6 +486,9 @@
             "isRandPitch": false,
             "isSpacial": false
         },
+        "Script": {
+            "name": "MemoryFragmentExpand"
+        },
         "Button": {
             "interactable": true
         }
@@ -499,12 +502,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 685.0,
-                "Y": 246.0
+                "X": 400.0,
+                "Y": 260.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -250.0,
+                "X": -380.0,
                 "Y": -126.0
             }
         },
@@ -513,26 +516,11 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 100
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\text1.png",
-            "layer": 62
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Memory Fragments (0/1)",
-            "offset": {
-                "X": -316.0,
-                "Y": 63.0
-            },
-            "scale": 0.6000000238418579,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
+            "layer": 61
         }
     },
     {
@@ -633,51 +621,6 @@
     },
     {
         "General": {
-            "name": "fragment1obj",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 161.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -493.58172607421875,
-                "Y": -146.43299865722656
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\pet.png",
-            "layer": 64
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "A cat.",
-            "offset": {
-                "X": 93.0,
-                "Y": -27.0
-            },
-            "scale": 0.800000011920929,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            }
-        }
-    },
-    {
-        "General": {
             "name": "Dialog Manager",
             "tag": 8,
             "subtag": 0,
@@ -707,6 +650,384 @@
         },
         "Script": {
             "name": "Level1DialogManager"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -500.0,
+                "Y": -61.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic1.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment1"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -380.0,
+                "Y": -61.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic2.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment2"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic4",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -500.0,
+                "Y": -191.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic4.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment4"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic5",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -380.0,
+                "Y": -191.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic5.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment5"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic6",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -260.0,
+                "Y": -191.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic6.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment6"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -260.0,
+                "Y": -61.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic3.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment3"
+        }
+    },
+    {
+        "General": {
+            "name": "Back1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -500.0,
+                "Y": -61.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic1.png",
+            "layer": 62
+        }
+    },
+    {
+        "General": {
+            "name": "Back2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -380.0,
+                "Y": -61.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic2.png",
+            "layer": 62
+        }
+    },
+    {
+        "General": {
+            "name": "Back3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -260.0,
+                "Y": -61.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic3.png",
+            "layer": 62
+        }
+    },
+    {
+        "General": {
+            "name": "Back4",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -500.0,
+                "Y": -191.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic4.png",
+            "layer": 62
+        }
+    },
+    {
+        "General": {
+            "name": "Back5",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -380.0,
+                "Y": -191.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic5.png",
+            "layer": 62
+        }
+    },
+    {
+        "General": {
+            "name": "Back6",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -260.0,
+                "Y": -191.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic6.png",
+            "layer": 62
         }
     }
 ]

@@ -72,8 +72,15 @@
     <Compile Include="CutSceneScript.cs" />
     <Compile Include="EnemyController.cs" />
     <Compile Include="EnemyMapScript.cs" />
+    <Compile Include="Fragment1.cs" />
+    <Compile Include="Fragment2.cs" />
+    <Compile Include="Fragment3.cs" />
+    <Compile Include="Fragment4.cs" />
+    <Compile Include="Fragment5.cs" />
+    <Compile Include="Fragment6.cs" />
     <Compile Include="HowToPlayButton.cs" />
     <Compile Include="InternalCalls.cs" />
+    <Compile Include="MemoryFragmentExpand.cs" />
     <Compile Include="MiniMapScript.cs" />
     <Compile Include="Level 1\Level1Passenger2Script.cs" />
     <Compile Include="Level 1\Level1Passenger1Script.cs" />
