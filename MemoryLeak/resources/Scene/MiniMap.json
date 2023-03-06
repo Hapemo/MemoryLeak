@@ -52,7 +52,9 @@
                 "g": 9,
                 "b": 99,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Script": {
             "name": "MiniMapScript"

@@ -56,7 +56,7 @@ public:
 	\brief
 	Default constructor for FontRenderer class.
 	*******************************************************************************/
-	FontRenderer() : FontRenderer("3Dumb.ttf") {}
+	FontRenderer() : FontRenderer("BPtypewrite.ttf") {}
 	/*!*****************************************************************************
 	\brief
 	Non-default constructor for FontRenderer class.

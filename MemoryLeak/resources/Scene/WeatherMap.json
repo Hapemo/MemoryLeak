@@ -679,7 +679,7 @@
             "name": "EIcon0",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -793,7 +793,7 @@
             "name": "EIcon1",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -907,7 +907,7 @@
             "name": "EIcon2",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1021,7 +1021,7 @@
             "name": "EIcon3",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1135,7 +1135,7 @@
             "name": "EIcon4",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1249,7 +1249,7 @@
             "name": "EIcon5",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1705,7 +1705,7 @@
             "name": "EIcon9",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1819,7 +1819,7 @@
             "name": "EIcon10",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -2275,7 +2275,7 @@
             "name": "EIcon14",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -2389,7 +2389,7 @@
             "name": "EIcon15",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -2845,7 +2845,7 @@
             "name": "EIcon19",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -2959,7 +2959,7 @@
             "name": "EIcon20",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -3073,7 +3073,7 @@
             "name": "EIcon21",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -3187,7 +3187,7 @@
             "name": "EIcon22",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -3301,7 +3301,7 @@
             "name": "EIcon23",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -3415,7 +3415,7 @@
             "name": "EIcon24",
             "tag": 5,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -3577,7 +3577,9 @@
                 "g": 134,
                 "b": 15,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Script": {
             "name": "WeatherMapScript"

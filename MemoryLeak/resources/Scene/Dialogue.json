@@ -52,7 +52,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Button": {
             "interactable": true
@@ -111,7 +113,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Button": {
             "interactable": true
@@ -170,7 +174,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Button": {
             "interactable": true
@@ -229,7 +235,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 20.0
         },
         "Button": {
             "interactable": true
@@ -288,7 +296,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 20.0
         },
         "Button": {
             "interactable": true
@@ -347,7 +357,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Button": {
             "interactable": true
@@ -395,7 +407,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Button": {
             "interactable": true
@@ -435,62 +449,62 @@
                 {
                     "sheet": "Textures\\Icons\\healthbar-1.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-2.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-3.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-4.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-5.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-6.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-7.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-8.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-9.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-10.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-11.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 },
                 {
                     "sheet": "Textures\\Icons\\healthbar-12.png",
                     "frameCount": 1,
-                    "timePerFrame": 1
+                    "timePerFrame": 1.0
                 }
             ],
             "currentImageIndex": 0
@@ -508,7 +522,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         }
     },
     {
@@ -630,7 +646,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         }
     },
     {
@@ -675,7 +693,9 @@
                 "g": 255,
                 "b": 255,
                 "a": 255
-            }
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Button": {
             "interactable": true
