@@ -11,8 +11,11 @@ namespace BonVoyage {
             // Find required entities
             playerBoat = VI.Entity.GetId("Boat", "Level1");
             triggerBox = VI.Entity.GetId("Passenger1Box", "Level1");
-            destinationBox = VI.Entity.GetId("destination", "Level1");
-            destinationRenderLocation = VI.Entity.GetId("Passenger1DestRender", "Level1");
+            destinationA_Box = VI.Entity.GetId("DoubleStoryDropOffPoint", "Level1");
+            destinationA_RenderLocation = VI.Entity.GetId("DoubleStoryDestRender", "Level1");
+
+            destinationB_Box = VI.Entity.GetId("LighthouseDropOffPoint", "Level1");
+            destinationB_RenderLocation = VI.Entity.GetId("LighthouseDestRender", "Level1");
 
             // Store original scale x value
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
@@ -66,24 +69,55 @@ namespace BonVoyage {
                 MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
             }
 
-            // Check if passenger reaches destination
-            if (VI.Physics.CheckCollision(destinationBox, _ENTITY, false)) {
+            // Check if passenger reaches destination A
+            if (VI.Physics.CheckCollision(destinationA_Box, _ENTITY, false)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+
+                // Set destination
+                destinationDelivered = A_char;
+            }
+            // Check if passenger reaches destination B
+            else if (VI.Physics.CheckCollision(destinationB_Box, _ENTITY, false)) {
+                // Move on to detaching animation
+                AttachedToPlayer = false;
+                DetachFromPlayerAnimation = true;
+                PlayerScript.PlayerInOtherAnimation = true;
+
+                // Set destination
+                destinationDelivered = B_char;
             }
 
             // Play animation of passenger detaching from player
             if (DetachFromPlayerAnimation) {
-                // Animate detachment to player
-                // returns true once complete
-                if (DetachPassengerFromPlayer(_ENTITY, destinationBox, InitialScaleX)) {
-                    // Animation complete
-                    DetachFromPlayerAnimation = false;
-                    PlayerScript.PlayerInOtherAnimation = false;
-                    DestinationReached = true;
+                switch (destinationDelivered) {
+                    case A_char:
+                        // Animate detachment to player
+                        // returns true once complete
+                        if (DetachPassengerFromPlayer(_ENTITY, destinationA_RenderLocation, InitialScaleX)) {
+                            // Animation complete
+                            DetachFromPlayerAnimation = false;
+                            PlayerScript.PlayerInOtherAnimation = false;
+                            DestinationReached = true;
+                        }
+                        break;
+                    case B_char:
+                        // Animate detachment to player
+                        // returns true once complete
+                        if (DetachPassengerFromPlayer(_ENTITY, destinationB_RenderLocation, InitialScaleX)) {
+                            // Animation complete
+                            DetachFromPlayerAnimation = false;
+                            PlayerScript.PlayerInOtherAnimation = false;
+                            DestinationReached = true;
+                        }
+                        break;
+                    default:
+
+                        break;
                 }
+                
             }
 
             if (DestinationReached) {

@@ -11,8 +11,11 @@ namespace BonVoyage {
             // Get required entities
             playerBoat = VI.Entity.GetId("Boat", "Level1");
             triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
-            destinationBox = VI.Entity.GetId("destination", "Level1");
-            destinationRenderLocation = VI.Entity.GetId("Passenger2DestRender", "Level1");
+            destinationA_Box = VI.Entity.GetId("DoubleStoryDropOffPoint", "Level1");
+            destinationA_RenderLocation = VI.Entity.GetId("DoubleStoryDestRender", "Level1");
+
+            destinationB_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1");
+            destinationB_RenderLocation = VI.Entity.GetId("PortHouseDestRender", "Level1");
 
             // Store original scale x value
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
@@ -67,7 +70,7 @@ namespace BonVoyage {
             }
 
             // Check if passenger reaches destination
-            if (VI.Physics.CheckCollision(destinationBox, _ENTITY, false)) {
+            if (VI.Physics.CheckCollision(destinationA_Box, _ENTITY, false)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
@@ -78,7 +81,7 @@ namespace BonVoyage {
             if (DetachFromPlayerAnimation) {
                 // Animate detachment to player
                 // returns true once complete
-                if (DetachPassengerFromPlayer(_ENTITY, destinationBox, InitialScaleX)) {
+                if (DetachPassengerFromPlayer(_ENTITY, destinationA_RenderLocation, InitialScaleX)) {
                     // Animation complete
                     DetachFromPlayerAnimation = false;
                     PlayerScript.PlayerInOtherAnimation = false;
