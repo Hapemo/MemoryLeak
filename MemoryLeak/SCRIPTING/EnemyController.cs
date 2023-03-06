@@ -62,6 +62,9 @@ namespace BonVoyage {
             //VI.Camera.SetScale.X(5500);
 
             if (EnemyActivated) {
+                THIS.Activate();
+                VI.Entity.Activate(EnemyTriggerId);
+
                 PlayerPosX = VI.Transform.Position.GetX(PlayerId);
                 PlayerPosY = VI.Transform.Position.GetY(PlayerId);
 
@@ -83,6 +86,9 @@ namespace BonVoyage {
                     }
                     SetDirection(OctopusDirection, OctopusState);
                 }
+            } else {
+                THIS.Deactivate();
+                VI.Entity.Deactivate(EnemyTriggerId);
             }
         }
 
