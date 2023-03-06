@@ -96,6 +96,7 @@ namespace BonVoyage {
 
             // Play animation of passenger detaching from player
             if (DetachFromPlayerAnimation) {
+                LevelTutorialDialogManager.runPassengerEndDialog = true;
                 // Animate detachment to player
                 // returns true once complete
                 int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
@@ -128,7 +129,6 @@ namespace BonVoyage {
                             // Do nothing
                             break;
                     }
-                    LevelTutorialDialogManager.runPassengerEndDialog = true;
                     // Deactivate the drop off point boxes
                     VI.Entity.Deactivate(correctDestination_Box);
                     VI.Entity.Deactivate(wrongDestination_Box);

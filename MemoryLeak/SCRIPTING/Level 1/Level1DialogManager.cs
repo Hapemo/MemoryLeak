@@ -54,6 +54,7 @@ namespace BonVoyage {
       P2ColliderBox = VI.Entity.GetId("Passenger2Box", "Level1");
 
       dialogInit = true;
+      normalZoom = false;
 
       VI.Entity.s_Deactivate("Passenger2");
       VI.Entity.Deactivate(P2ColliderBox);
@@ -90,7 +91,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), 
                                                  VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
-        runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1"); // Run the dialog
+        runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
       }
@@ -100,7 +101,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), 
                                                  VI.Transform.Position.GetY(P2ColliderBox));
-        runPassenger2Dialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 2");
+        runPassenger2Dialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus");
         if (!runPassenger2Dialog)
           EndPassenger2Dialog();
       }
