@@ -6,18 +6,26 @@ namespace BonVoyage {
         private float PlayerPosX;
         private float PlayerPosY;
 
+        private float HealSpeed = 1f;
+        private float HealCounter;
+
+        private float HitSpeed = 1f;
         private float HitInterval;
+        private float HitAnimationCounter;
         private float HitCounter;
+        private int HitMax = 11;
         public int HitTaken;
+
+        public bool EnemyActivated = false;
 
         public float EnemySpeed = 2.2f;
         private EnemyState OctopusState;
-        private static int ChasingIndex = 0;
+        private int ChasingIndex = 0;
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
         private int PlayerId;
-        private int DialogueSceneId;
         private int EnemyTriggerId;
+        private int HpBarId;
 
         public enum EnemyState {
             IDLE = 0,
@@ -35,9 +43,9 @@ namespace BonVoyage {
             PlayerPosY = 0;
             HitTaken = 0;
 
-            DialogueSceneId = VI.Entity.GetId("DialogueBox");
             EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
+            HpBarId = VI.Entity.GetId("hpbar");
         }
 
         public void Init(int _ENTITY) {
@@ -53,40 +61,65 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             //VI.Camera.SetScale.X(5500);
 
-            PlayerPosX = VI.Transform.Position.GetX(PlayerId);
-            PlayerPosY = VI.Transform.Position.GetY(PlayerId);
+            if (EnemyActivated) {
+                THIS.Activate();
+                VI.Entity.Activate(EnemyTriggerId);
 
-            float x = GetDistance(PlayerPosX, PlayerPosY, Axis.x);
-            float y = GetDistance(PlayerPosX, PlayerPosY, Axis.y);
-            float OctopusDirection = GetRotation(x, y);
+                PlayerPosX = VI.Transform.Position.GetX(PlayerId);
+                PlayerPosY = VI.Transform.Position.GetY(PlayerId);
 
-            // Enemy is in screen
-            if (OnScreen()) {
-                if (!VI.Entity.IsActive(DialogueSceneId) && VI.Physics.CheckCollision(PlayerId, EnemyTriggerId, true))
-                    ChasePlayer(x, y);
-                else {
-                    OctopusState = EnemyState.IDLE;
-                    UpdateTransform(OctopusState);
-                    float x_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.x);
-                    float y_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.y);
-                    UpdateSpeed(GetSpeed(x_, y_));
-                    if (ChasingIndex > 0) ChasingIndex = 0;
+                float x = GetDistance(PlayerPosX, PlayerPosY, Axis.x);
+                float y = GetDistance(PlayerPosX, PlayerPosY, Axis.y);
+                float OctopusDirection = GetRotation(x, y);
+
+                // Enemy is in screen
+                if (OnScreen()) {
+                    if (!PlayerScript.PlayerInDialogue && VI.Physics.CheckCollision(PlayerId, EnemyTriggerId, true))
+                        ChasePlayer(x, y);
+                    else {
+                        OctopusState = EnemyState.IDLE;
+                        UpdateTransform(OctopusState);
+                        float x_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.x);
+                        float y_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.y);
+                        UpdateSpeed(GetSpeed(x_, y_));
+                        if (ChasingIndex > 0) ChasingIndex = 0;
+                    }
+                    SetDirection(OctopusDirection, OctopusState);
                 }
-                SetDirection(OctopusDirection, OctopusState);
+            } else {
+                THIS.Deactivate();
+                VI.Entity.Deactivate(EnemyTriggerId);
             }
         }
 
         public void FixedUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            
+            if (EnemyActivated) {
+                // Detecting player hits
+                if (VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > -1) {
+                    ++HitCounter;
+                    ++HitAnimationCounter;
+                    if (HitAnimationCounter >= HitInterval) {
+                        THIS.Audio.Play();
+                        HitAnimationCounter = 0;
+                    }
+                
+                    if (HitCounter >= HitInterval * 100f * HitSpeed) {
+                        HitCounter = 0;
+                        HitTaken = (HitTaken < HitMax ? HitTaken + 1 : 0);
+                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
+                    }
+                }
+            }
 
-            // Detecting player hits
-            if (VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > -1) {
-                ++HitCounter;
-                if (HitCounter >= HitInterval) {
-                    HitCounter = 0;
-                    ++HitTaken;
-                    THIS.Audio.Play();
-                    //VI.Texture.s_Set("hpbar", "Dialogue", "Textures\\Icons\\healthbar-" + (HitTaken + 1) + ".png");
+            // Healing player
+            if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > 0) {
+                ++HealCounter;
+                if (HealCounter >= HitInterval * 100f * HealSpeed) {
+                    HealCounter = 0;
+                    --HitTaken;
+                    VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
                 }
             }
         }
@@ -119,23 +152,18 @@ namespace BonVoyage {
         }
 
         private float GetSpeed(float _x, float _y) {
-            //THIS.Animation.Transform.SetCalculatedTime.FromPosition(_x, _y);
-            //LOG.WRITE(((float)VI.General.DeltaTime()).ToString());
-            //LOG.WRITE(VI.Math.Magnitude(_x, _y).ToString());
-            //LOG.WRITE((VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 10000000000f).ToString());
-            //LOG.WRITE("===");
             return VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 100f * EnemySpeed;
         }
 
         private void ChasePlayer(float _x, float _y) {
             // First attack, enemy still in idle mode
             if (OctopusState == EnemyState.IDLE) {
-                //OctopusState = EnemyState.RISING;
-                OctopusState = EnemyState.ATTACK1;
+                VI.Audio.PlayBGM("MonsterChase_BGM");
+                OctopusState = EnemyState.RISING;
                 THIS.Animation.SpriteSheet.CurrentFrame.Set(0);
             } else if (OctopusState == EnemyState.RISING &&
                 THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1) {
-                HitInterval = THIS.Animation.SpriteSheet.Speed.Get() * THIS.Animation.SpriteSheet.FrameCount.Get();
+                HitInterval = THIS.Animation.SpriteSheet.Speed.Get() * THIS.Animation.SpriteSheet.FrameCount.Get() * (float)VI.General.DeltaTime() * 100f;
                 THIS.Animation.SpriteSheet.CurrentFrame.Set(0);
                 Random rand = new Random();
                 OctopusState = (rand.Next(0, 2) == 0 ? EnemyState.ATTACK1 : EnemyState.ATTACK2);
