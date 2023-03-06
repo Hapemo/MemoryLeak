@@ -33,8 +33,14 @@ namespace BonVoyage {
                     if (!Level1DialogManager.runPassengerDialog) {
                         // Set Dialogue Manager's flag to true to run it
                         Level1DialogManager.runPassengerDialog = true;
+                        
                         // Deactivate the trigger box
                         VI.Entity.Deactivate(triggerBox);
+
+                        // Activate the drop off point boxes
+                        VI.Entity.Activate(correctDestination_Box);
+                        VI.Entity.Activate(wrongDestination_Box);
+                        
                         // Set flag to true
                         ReadyToAttach = true;
                     }
@@ -127,6 +133,10 @@ namespace BonVoyage {
                             // Do nothing
                             break;
                     }
+
+                    // Deactivate the drop off point boxes
+                    VI.Entity.Deactivate(correctDestination_Box);
+                    VI.Entity.Deactivate(wrongDestination_Box);
 
                     // Set flag to get out
                     DestinationReached = false;
