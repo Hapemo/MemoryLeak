@@ -935,8 +935,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -486.58978271484375,
-                "Y": 815.5429077148438
+                "X": -489.97467041015625,
+                "Y": 862.9323120117188
             }
         },
         "Sprite": {
@@ -1012,7 +1012,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 29
+            "layer": 28
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1498,7 +1498,7 @@
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
                     "frameCount": 12,
-			  "timePerFrame": 0.10000000149011612
+                    "timePerFrame": 0.10000000149011612
                 },
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack2_Spritesheet.png",
@@ -1625,7 +1625,7 @@
                     "time": 4.5,
                     "Transform": {
                         "scale": {
-				    "X": 523.0,
+                            "X": 523.0,
                             "Y": 353.0
                         },
                         "rotation": 0.0,
@@ -1984,7 +1984,7 @@
     },
     {
         "General": {
-            "name": "PassengerBox",
+            "name": "Passenger1Box",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -2171,30 +2171,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 42
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
+            "layer": 30
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2363,7 +2340,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 26
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2404,7 +2381,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 28
+            "layer": 30
         },
         "RectCollider": {
             "centerOffset": {
@@ -3497,8 +3474,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1434.89453125,
-                "Y": 170.51568603515625
+                "X": 1397.659912109375,
+                "Y": 120.13957214355469
             }
         },
         "Sprite": {
@@ -6055,7 +6032,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 27
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8499,30 +8476,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9003,8 +8957,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2303.54443359375,
-                "Y": 776.1921997070313
+                "X": -2476.973876953125,
+                "Y": 742.541748046875
             }
         },
         "Sprite": {
