@@ -636,6 +636,10 @@ Text SerializationManager::getText(Value& entity)
 	text.color.g = (GLubyte)entity["Text"]["color"]["g"].GetInt();
 	text.color.b = (GLubyte)entity["Text"]["color"]["b"].GetInt();
 	text.color.a = (GLubyte)entity["Text"]["color"]["a"].GetInt();
+	if (entity["Text"].HasMember("followCam"))//////remove this if line
+		text.followCam = entity["Text"]["followCam"].GetBool();
+	if (entity["Text"].HasMember("width"))//////remove this if line
+		text.width = entity["Text"]["width"].GetFloat();
 	return text;
 }
 Dialogue SerializationManager::getDialogue(Value& entity)
@@ -1239,6 +1243,9 @@ void SerializationManager::addText(Document& scene, Value& entity, Text text)
 	tmpc.AddMember(StringRef("b"), text.color.b, scene.GetAllocator());
 	tmpc.AddMember(StringRef("a"), text.color.a, scene.GetAllocator());
 	tmp.AddMember(StringRef("color"), tmpc, scene.GetAllocator());
+	tmp.AddMember(StringRef("followCam"), text.followCam, scene.GetAllocator());
+	tmp.AddMember(StringRef("width"), text.width, scene.GetAllocator());
+
 	entity.AddMember(StringRef("Text"), tmp, scene.GetAllocator());
 	std::string path = "\\Font\\" + text.fontFile;
 	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));

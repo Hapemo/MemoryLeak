@@ -989,11 +989,15 @@ void InspectorPanel::TextEditor()
 		tmpVec4[1] = e.GetComponent<Text>().color.g / 255.f;
 		tmpVec4[2] = e.GetComponent<Text>().color.b / 255.f;
 		tmpVec4[3] = e.GetComponent<Text>().color.a / 255.f;
-		ImGui::ColorEdit4("Text Color", tmpVec4);
+		
+		ImGui::ColorPicker4("Text Color", tmpVec4);
 		e.GetComponent<Text>().color.r = (GLubyte)(tmpVec4[0] * 255);
 		e.GetComponent<Text>().color.g = (GLubyte)(tmpVec4[1] * 255);
 		e.GetComponent<Text>().color.b = (GLubyte)(tmpVec4[2] * 255);
 		e.GetComponent<Text>().color.a = (GLubyte)(tmpVec4[3] * 255);
+		ImGui::Checkbox("Follow Cam", &e.GetComponent<Text>().followCam);
+		ImGui::DragFloat("Text Width", &e.GetComponent<Text>().width);
+
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove Text"))
