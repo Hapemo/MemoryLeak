@@ -154,7 +154,7 @@ namespace BonVoyage {
       //VI.Entity.Deactivate(UIMiniMapID);
       //VI.Entity.Deactivate(UIEnemyMapID);
       //VI.Entity.Deactivate(UIWeatherMapID);
-      //VI.Entity.Deactivate(UIWeatherTextID);
+      VI.Entity.Deactivate(UIWeatherTextID);
       VI.Entity.Deactivate(UIObjectiveTextID);
 
       //VI.Scene.Pause("CrystalBalls");
