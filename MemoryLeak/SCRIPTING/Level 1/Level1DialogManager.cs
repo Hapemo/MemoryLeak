@@ -19,18 +19,25 @@ namespace BonVoyage {
     private const float smallChoiceHeight = 61.8f;
     private const float midChoiceHeight = 87.6f;
 
+    static public int passengerDialogProgress = 0; // Consists of 2 numbers in this format <passenger number><right or wrong>. 1 for right, 0 for wrong. eg passenger 1 right answer destination reached, it will be 11.
+    private bool progressUpdate = false;
     static public bool runIntroDialog;
     //static public bool runGirlDialog;
+
+    private int correctDestination_RenderLocation;
+    private int wrongDestination_RenderLocation;
+
     static public bool runPassengerDialog;
     private int P1ColliderBox;
+    
     static public bool runPassenger2Dialog;
     private int P2ColliderBox;
+
     private bool choiceFlag;            // This flag is true during choice selection dialogs
     private bool updateChat;            // This flag is true when dialog changes for anyone
     private bool dialogInit;            // THis flag is true when entering a dialog for the first line
     private bool normalZoom = true;
     private int latestChoiceChosen = 0; // 0 if no choice chosen, 1 if choice 1 chosen, 2 if choice 2 chosen. Resets every frame
-    private int passengerDialogProgress = 0;
 
     private int playerID;
 
@@ -110,19 +117,67 @@ namespace BonVoyage {
       //}
 
       if (runPassengerDialog) {
-        GeneralDialogStart();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
+        GeneralDialogStart(1);
+        MoveCameraRightToDialog();
+        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), 
+                                                 VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
         runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 1"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
       }
 
       if (runPassenger2Dialog) {
-        GeneralDialogStart();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), VI.Transform.Position.GetY(P2ColliderBox));
+        GeneralDialogStart(1);
+        MoveCameraRightToDialog();
+        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), 
+                                                 VI.Transform.Position.GetY(P2ColliderBox));
         runPassenger2Dialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue Passenger 2");
         if (!runPassenger2Dialog)
           EndPassenger2Dialog();
+      }
+
+      bool dialogEnded = false;
+      switch (passengerDialogProgress) {
+      case 10: // Passenger 1 wrong
+        GeneralDialogStart(7);
+        MoveCameraRightToDialog();
+        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
+                                                 VI.Transform.Position.GetY(wrongDestination_RenderLocation));
+        if (!VI.Entity.IsActive(P2ColliderBox)) {
+          VI.Entity.Activate(VI.Entity.GetId("Passenger2"));
+          VI.Entity.Activate(P2ColliderBox);
+        }
+        dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva (Lighthouse)");
+        if (!dialogEnded) EndDropoffDialog();
+        break;
+      case 11: // Passenger 1 correct
+        GeneralDialogStart(5);
+        MoveCameraRightToDialog();
+        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
+                                                 VI.Transform.Position.GetY(correctDestination_RenderLocation));
+        if (!VI.Entity.IsActive(P2ColliderBox)) {
+          VI.Entity.Activate(VI.Entity.GetId("Passenger2"));
+          VI.Entity.Activate(P2ColliderBox);
+        }
+        dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva (Multistory House)");
+        if (!dialogEnded) EndDropoffDialog();
+        break;
+      case 20: // Passenger 2 wrong
+        GeneralDialogStart(1);
+        MoveCameraLeftToDialog();
+        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
+                                                 VI.Transform.Position.GetY(wrongDestination_RenderLocation));
+        dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus (Brown House)");
+        if (!dialogEnded) EndDropoffDialog();
+        break;
+      case 21: // Passenger 2 correct
+        GeneralDialogStart(7);
+        MoveCameraRightToDialog();
+        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
+                                                 VI.Transform.Position.GetY(correctDestination_RenderLocation));
+        dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus (Water Fountain)");
+        if (!dialogEnded) EndDropoffDialog();
+        break;
       }
 
     }
@@ -398,12 +453,11 @@ namespace BonVoyage {
     #endregion
 
     // The General function for stand still dialogs
-    void GeneralDialogStart() {
+    void GeneralDialogStart(int direction) { // 1 to face left, 
       PlayerScript.CameraFollowPlayer = false;
       PlayerScript.PlayerInDialogue = true;
-      MoveCameraToDialog();
       ZoomCameraToDialog();
-      VI.Animation.SpriteSheet.SheetIndex.Set(playerID, 1); // Make player face the other person
+      VI.Animation.SpriteSheet.SheetIndex.Set(playerID, direction); // Make player face the other person
     }
 
     #region Dialog Endings
@@ -416,7 +470,7 @@ namespace BonVoyage {
 
     public void GeneralEndDialog() {
       PlayerScript.CameraFollowPlayer = true;
-      runPassenger2Dialog = false;
+      //runPassenger2Dialog = false;
       normalZoom = false;
       PlayerScript.PlayerInDialogue = false;
     }
@@ -439,10 +493,9 @@ namespace BonVoyage {
       GeneralEndDialog();
 
       UpdateObjective("Dialog Objective Passenger1 (Minerva)");
-      passengerDialogProgress = 1;
 
-      //VI.Entity.s_Activate("Passenger2");
-      //VI.Entity.Activate(P2ColliderBox);
+      correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDropOffPoint");
+      wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDropOffPoint");
 
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
@@ -452,19 +505,35 @@ namespace BonVoyage {
       GeneralEndDialog();
 
       UpdateObjective("Dialog Objective Passenger2 (Argus)");
-      passengerDialogProgress = 1;
 
+      correctDestination_RenderLocation = VI.Entity.GetId("FountainDropOffPoint");
+      wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDropOffPoint");
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
     }
 
-    public void MoveCameraToDialog() {
+    public void EndDropoffDialog() {
+      GeneralEndDialog();
+      UpdateObjective("Continue Exploring...");
+      passengerDialogProgress = 0;
+    }
+
+    public void MoveCameraRightToDialog() {
       float playerHeight = VI.Transform.Scale.GetY(playerID);
       float playerWidth = VI.Transform.Scale.GetX(playerID);
       float screenHalfHeight = VI.Camera.GetScale.Y()/2;
 
       Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID) + playerWidth/3,
                                      VI.Transform.Position.GetY(playerID) + screenHalfHeight - playerHeight/2);
+    }
+
+    public void MoveCameraLeftToDialog() {
+      float playerHeight = VI.Transform.Scale.GetY(playerID);
+      float playerWidth = VI.Transform.Scale.GetX(playerID);
+      float screenHalfHeight = VI.Camera.GetScale.Y()/2;
+
+      Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID) - playerWidth / 3,
+                                     VI.Transform.Position.GetY(playerID) + screenHalfHeight - playerHeight / 2);
     }
 
     #endregion

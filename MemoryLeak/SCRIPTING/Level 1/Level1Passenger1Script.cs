@@ -81,6 +81,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                Level1DialogManager.passengerDialogProgress = 11;
 
                 // Set flag variable
                 correctDestinationDelivery = true;
@@ -91,6 +92,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                Level1DialogManager.passengerDialogProgress = 10;
 
                 // Set flag variable
                 correctDestinationDelivery = false;
@@ -100,7 +102,8 @@ namespace BonVoyage {
             if (DetachFromPlayerAnimation) {
                 // Animate detachment to player
                 // returns true once complete
-                if (DetachPassengerFromPlayer(_ENTITY, correctDestination_RenderLocation, InitialScaleX)) {
+                int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
+                if (DetachPassengerFromPlayer(_ENTITY, renderLocation, InitialScaleX)) {
                     // Animation complete
                     DetachFromPlayerAnimation = false;
                     PlayerScript.PlayerInOtherAnimation = false;
