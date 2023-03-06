@@ -1467,12 +1467,12 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
@@ -1509,7 +1509,7 @@
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
                     "frameCount": 12,
-                    "timePerFrame": 0.10000000149011612
+			  "timePerFrame": 0.10000000149011612
                 },
                 {
                     "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack2_Spritesheet.png",
@@ -1636,7 +1636,7 @@
                     "time": 4.5,
                     "Transform": {
                         "scale": {
-                            "X": 523.0,
+				    "X": 523.0,
                             "Y": 353.0
                         },
                         "rotation": 0.0,
