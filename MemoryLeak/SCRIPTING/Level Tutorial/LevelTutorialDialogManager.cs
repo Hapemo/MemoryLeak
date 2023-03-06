@@ -79,7 +79,7 @@ namespace BonVoyage {
       if (runGirlDialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, -280, -635);
+        Level1ManagerScript.MovePlayer(playerID, -250, -635);
         runGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialogue LittleGirl 0");
         if (!runGirlDialog)
           EndGirlDialog();
