@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Dynamic;
 using System.Runtime.CompilerServices;
+using VI;
 
 // INFO
 // Intro Dialog zoom is x = 1200
@@ -8,6 +10,14 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
   public class Level1DialogManager : BaseScript {
+    private const float textHeight = 50.0f;
+    private const float dialogBoxWidth = 549.0f;
+    private const float choiceWidth = 564.6f;
+    private const float smallDialogBoxHeight = 109.8f;
+    private const float midDialogBoxHeight = 178.8f;
+    private const float bigDialogBoxHeight = 228.6f;
+    private const float smallChoiceHeight = 61.8f;
+    private const float midChoiceHeight = 87.6f;
 
     static public bool runIntroDialog;
     //static public bool runGirlDialog;
@@ -171,54 +181,52 @@ namespace BonVoyage {
     // int perLineScaleY    - This is the increment for one additional line
     // int textXSpacing     - This is the spacing of the text from the left edge of the box 
     // int textYSpacing     - This is the spacing of the text from the top edge of the box 
-    public void TextBoxAlign(string entityname, string scenename, float posX, float posY, float scaleX = 500, float perLineScaleY = 51, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
+    public void TextBoxAlign(string entityname, string scenename, float posX, float posY, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
       int additionalLines = VI.Text.s_GetLineCount(entityname, scenename) - 1;
-      VI.Test.ArgString("Aligning");
 
       // Selecting the dialog box texture and putting it into correct position
       if (choice == 0) {
-          VI.Test.ArgString("Not choice");
-        if      (additionalLines < 3) {
-          VI.Transform.Scale.s_SetY(entityname, scenename, 109.8f);
-          VI.Transform.Scale.s_SetX(entityname, scenename, 549.0f);
+        if (additionalLines < 2) {
+          VI.Transform.Scale.s_SetY(entityname, scenename, smallDialogBoxHeight);
+          VI.Transform.Scale.s_SetX(entityname, scenename, dialogBoxWidth);
           VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox1.png");
-          VI.Test.ArgString("Setting dialog box 1");
-          
-        }
-        else if (additionalLines < 6) {
-          VI.Transform.Scale.s_SetY(entityname, scenename, 178.8f);
-          VI.Transform.Scale.s_SetX(entityname, scenename, 549.0f);
+        } else if (additionalLines < 4) {
+          posY += (midDialogBoxHeight - smallDialogBoxHeight) / 2;
+          VI.Transform.Scale.s_SetY(entityname, scenename, midDialogBoxHeight);
+          VI.Transform.Scale.s_SetX(entityname, scenename, dialogBoxWidth);
           VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox2.png");
-          VI.Test.ArgString("Setting dialog box 2");
+        } else {
+          posY += (bigDialogBoxHeight - smallDialogBoxHeight) / 2;
+          VI.Transform.Scale.s_SetY(entityname, scenename, bigDialogBoxHeight);
+          VI.Transform.Scale.s_SetX(entityname, scenename, dialogBoxWidth);
+          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
         }
-        else                          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
       } else {
-        if (additionalLines == 0)     VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
-        else                          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueOption2.png");
+        if (additionalLines == 0) {
+          textYSpacing = 0;
+          VI.Transform.Scale.s_SetY(entityname, scenename, smallChoiceHeight);
+          VI.Transform.Scale.s_SetX(entityname, scenename, choiceWidth);
+          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
+        } else {
+          VI.Transform.Scale.s_SetY(entityname, scenename, midChoiceHeight);
+          VI.Transform.Scale.s_SetX(entityname, scenename, choiceWidth);
+          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueOption2.png");
+        }
       }
-
-      //Console.WriteLine("lines: " + additionalLines);
-      //float scaleY = perLineScaleY;         // This is the default height of button, will changing with respect to line count
-      //perLineScaleY *= VI.Text.Scale.s_Get(entityname, scenename);
-
-      //VI.Transform.Scale.s_SetX(entityname, scenename, scaleX);
-      //VI.Transform.Scale.s_SetY(entityname, scenename, perLineScaleY * (1 + additionalLines) + textYSpacing * 2);
 
       // If it's a choice textbox, posY is the middle of both texts
       if (choice == 1)
-        posY = posY + spacing + perLineScaleY * (additionalLines + 1);
+        posY = posY + spacing + VI.Transform.Scale.s_GetY(entityname, scenename) / 2;
       else if (choice == 2)
-        posY = posY - spacing - perLineScaleY * (additionalLines + 1);
-
-      float finalPosY = posY - (perLineScaleY * additionalLines) / 2;
+        posY = posY - spacing - VI.Transform.Scale.s_GetY(entityname, scenename) / 2;
 
       VI.Transform.Position.s_SetX(entityname, scenename, posX);
-      VI.Transform.Position.s_SetY(entityname, scenename, finalPosY);
+      VI.Transform.Position.s_SetY(entityname, scenename, posY);
 
-      float textY = perLineScaleY * additionalLines / 2 - perLineScaleY / 2;
       float magicNumber = 10.0f * VI.Text.Scale.s_Get(entityname, scenename);
-      VI.Text.Offset.s_Set(entityname, scenename, -scaleX / 2 + textXSpacing, textY + magicNumber);
+      VI.Text.Offset.s_Set(entityname, scenename, -VI.Transform.Scale.s_GetX(entityname) / 2 + textXSpacing, VI.Transform.Scale.s_GetY(entityname)/2 - textHeight + textYSpacing);
     }
+
     // Based on the current dialog ID, move to the next one. Can input choice if there is a choice selection, by default it's 1
     public void MoveToNextDialog(int choice = 1) {
       //VI.Test.ArgString("Current ID: " + Dialogue.Current.GetId());
@@ -292,9 +300,9 @@ namespace BonVoyage {
         VI.Text.s_Update(firstSpeaker, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
 
         if (VI.Dialogue.Speaker.IsPlayer(1))
-          TextBoxAlign(player, scene, 450, 5, 500, 51, 20, 20);
+          AlignPlayerText(player, scene); 
         else
-          TextBoxAlign(notPlayer, scene, -387, 330, 740, 51, 20, 20);
+          AlignNonPlayerText(notPlayer, scene);
 
         //camZoomingIn = true;
         dialogInit = false;
@@ -350,12 +358,12 @@ namespace BonVoyage {
           VI.Entity.s_Activate(player, scene);
           VI.Entity.s_Deactivate(notPlayer, scene);
           VI.Text.s_Update(player, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
-          TextBoxAlign(player, scene, 450, 5, 500, 51, 20, 20);
+          AlignPlayerText(player, scene); 
         } else {
           VI.Entity.s_Activate(notPlayer, scene);
           VI.Entity.s_Deactivate(player, scene);
           VI.Text.s_Update(notPlayer, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
-          TextBoxAlign(notPlayer, scene, -387, 330, 740, 51, 20, 20);
+          AlignNonPlayerText(notPlayer, scene);
         }
 
         if (VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId()) != 0) {
@@ -365,8 +373,8 @@ namespace BonVoyage {
           VI.Entity.s_Activate(choice2, scene);
           VI.Text.s_Update(choice1, scene, GetNextDialog(1));
           VI.Text.s_Update(choice2, scene, GetNextDialog(2));
-          TextBoxAlign(choice1, scene, 500, -25, 500, 51, 40, 25, 1);
-          TextBoxAlign(choice2, scene, 500, -25, 500, 51, 40, 25, 2);
+          TextBoxAlign(choice1, scene, 400, -280, 80, 15, 1);
+          TextBoxAlign(choice2, scene, 400, -280, 80, 15, 2);
           choiceFlag = true;
         }
       }
@@ -375,9 +383,16 @@ namespace BonVoyage {
 
     #endregion
 
+#region minorHelpers
     void ZoomCameraToDialog() {
       Level1ManagerScript.ChangeZoom(960, 540);
     }
+
+    void AlignPlayerText(string player, string scene) { TextBoxAlign(player, scene, 450, 5, 20, 0); }
+    void AlignNonPlayerText(string nonplayer, string scene) { TextBoxAlign(nonplayer, scene, 0, 20, 20, 0); }
+
+    #endregion
+
     // The General function for stand still dialogs
     void GeneralDialogStart() {
       PlayerScript.CameraFollowPlayer = false;
@@ -413,7 +428,6 @@ namespace BonVoyage {
     public void EndPassengerDialog() {
       GeneralEndDialog();
 
-      VI.Transform.Rotate.s_Set("Passenger1", "Level1", 0.5f);
       //ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
@@ -422,7 +436,6 @@ namespace BonVoyage {
     public void EndPassenger2Dialog() {
       GeneralEndDialog();
 
-      VI.Transform.Rotate.s_Set("Passenger2", "Level1", 0.5f);
       //ObjectiveTextScript.UpdateText("Finished talking to passenger"); // TODO Christy to update the text needed here
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
