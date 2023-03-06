@@ -25,9 +25,9 @@ namespace BonVoyage {
             if (VI.Entity.IsActive(triggerBox)) { 
                 // Check if player is colliding with that box
                 if (VI.Physics.IsCollided(triggerBox, playerBoat)) { 
-                    // Check if dialogue script should be rAn
+                    // Check if dialogue script should be ran
                     //if (){
-                    
+                        // Set Dialogue Manager's flag to true to run it
                     //}
                 }
             }
