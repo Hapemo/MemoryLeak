@@ -7490,13 +7490,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 85.0,
+                "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1315.8848876953125,
-                "Y": -588.5840454101563
+                "X": 1286.614990234375,
+                "Y": -482.6548156738281
             }
         },
         "Sprite": {
@@ -8355,7 +8355,7 @@
             "layer": 30
         },
         "Script": {
-            "name": "LevelTutorialDialogueScript"
+            "name": "LevelTutorialDialogManager"
         }
     },
     {

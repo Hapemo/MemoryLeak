@@ -495,7 +495,7 @@
             "layer": 66
         },
         "Script": {
-            "name": "LevelTutorialDialogueScript"
+            "name": "LevelTutorialDialogManager"
         }
     }
 ]
