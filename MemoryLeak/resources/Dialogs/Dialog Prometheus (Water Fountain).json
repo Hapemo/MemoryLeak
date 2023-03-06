@@ -1,0 +1,30 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Ooh! It's the glorious flowing thing I imagined!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "And here I thought I was the only one with foresight, maybe you do too!",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "Take this, it's a relic I crafted specially for you.",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "When you feel a little lost, just look towards it and maybe you'll start seeing a new path opened for you.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]

@@ -5,26 +5,42 @@ using VI;
 namespace BonVoyage {
 
     public class Level1Passenger2Script : PassengerBaseScript {
+        private bool ranOnceInit = true;
         public override void Init(int _ENTITY) {
             base.Init(_ENTITY);
 
-            // Get required entities
+            // Get required entities (ALL THESE ENTITIES NEED TO UPDATE IN Level1DialogManager.cs AS WELL IF CHANGED!!!)
             playerBoat = VI.Entity.GetId("Boat", "Level1");
             triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
-            
-            correctDestination_Box = VI.Entity.GetId("DoubleStoryHouseDropOffPoint", "Level1");
-            correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDestRender", "Level1");
+            correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint", "Level1");
+            correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender", "Level1");
 
-            wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1");
-            wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDestRender", "Level1");
-
-            // Store original scale and layer values
-            //InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            //InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+            wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1"); 
+            wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDest2Render", "Level1");
+            // Store original scale x value
+            InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
+            InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
         }
 
         public override void Update(int _ENTITY) {
-            base.Update(_ENTITY);
+            // Temporary implementation TODO change this
+            if (ranOnceInit) { 
+                ranOnceInit = false;
+
+                // Get required entities (ALL THESE ENTITIES NEED TO UPDATE IN Level1DialogManager.cs AS WELL IF CHANGED!!!)
+                playerBoat = VI.Entity.GetId("Boat", "Level1");
+                triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
+                correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint", "Level1");
+                correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender", "Level1");
+
+                wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1"); 
+                wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDest2Render", "Level1");
+                // Store original scale x value
+                InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
+                InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+            }
+
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             // Check if passenger's trigger box is active
             if (VI.Entity.IsActive(triggerBox)) {
@@ -82,6 +98,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                Level1DialogManager.passengerDialogProgress = 21;
 
                 // Set flag
                 correctDestinationDelivery = true;
@@ -91,6 +108,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                Level1DialogManager.passengerDialogProgress = 20;
 
                 // Set flag
                 correctDestinationDelivery = false;
@@ -100,7 +118,8 @@ namespace BonVoyage {
             if (DetachFromPlayerAnimation) {
                 // Animate detachment to player
                 // returns true once complete
-                if (DetachPassengerFromPlayer(_ENTITY, correctDestination_RenderLocation, InitialScaleX)) {
+                int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
+                if (DetachPassengerFromPlayer(_ENTITY, renderLocation, InitialScaleX)) {
                     // Animation complete
                     DetachFromPlayerAnimation = false;
                     PlayerScript.PlayerInOtherAnimation = false;

@@ -1,0 +1,37 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "WHOA! Are you psychic or something?",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "No... no... I'm sure Minerva must've told you where I wanted to go.",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "Oh before I forget, here, take this.",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "It's a flower that once grew in our backyard. It changes color based on the season.",
+   "Speaker": 0,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "I hope it serves you well on your journey!",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]

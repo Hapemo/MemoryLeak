@@ -1,0 +1,79 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Ah, the fated one has arrived. I have long awaited your presence.",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "WIll you be so kind as to let me on board? I sense an interesting structure nearby.",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 4
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "What's so interesting about it?",
+   "Speaker": 1,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "What do you mean by sense?",
+   "Speaker": 1,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "It's tall and nostalgic, enough to reflect one's life through it.",
+   "Speaker": 0,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "Maybe you might have heard of it. You know? One of those structures that never seem to stop flowing.",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 11
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "Hahaha! You react the same way just like that person I once knew.",
+   "Speaker": 0,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "\"Stop with your weird antics and just call it by its name...\"",
+   "Speaker": 0,
+   "Next Dialogue": 9,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "Hm...? Name? What was it again? ...Anyways! It was elegant and  it's shaped like a house with some flowy things.",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 11
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "Let's try the water fountain.",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "Let's try the lighthouse.",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
