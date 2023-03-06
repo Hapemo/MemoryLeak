@@ -1023,19 +1023,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1077,18 +1065,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 58
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2380,8 +2356,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 400.0
+                "X": 404.5,
+                "Y": 404.5
             },
             "rotation": 0.0,
             "translation": {
@@ -2399,18 +2375,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 26
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -4391,18 +4355,6 @@
             "texture": "Textures\\Sprites\\Props_Tree4.png",
             "layer": 39
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -95.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3400000035762787
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4571,18 +4523,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
             "layer": 53
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5009,18 +4949,6 @@
             "texture": "Textures\\Sprites\\Props_Tree2.png",
             "layer": 53
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5060,19 +4988,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 33
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5627,18 +5543,6 @@
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 31
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5679,18 +5583,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 54
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5795,19 +5687,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 42
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5899,8 +5779,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2005.59716796875,
-                "Y": 1384.35009765625
+                "X": 2001.2166748046875,
+                "Y": 1342.7349853515625
             }
         },
         "Sprite": {
@@ -5913,18 +5793,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 35
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6093,19 +5961,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -95.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3400000035762787
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6211,18 +6067,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 27
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6369,19 +6213,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 28
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6424,18 +6256,6 @@
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 27
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6476,18 +6296,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6593,18 +6401,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 46
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -18.0,
-                "Y": -130.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3799999952316284
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6967,18 +6763,6 @@
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 46
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -18.0,
-                "Y": -130.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3799999952316284
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7018,19 +6802,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 27
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7071,19 +6843,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 32
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 28
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7111,8 +6871,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -601.8477172851563,
-                "Y": 1482.079345703125
+                "X": -575.564453125,
+                "Y": 1528.074951171875
             }
         },
         "Sprite": {
@@ -7124,19 +6884,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 27
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7177,19 +6925,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 27
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7217,8 +6953,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 198.46292114257813,
-                "Y": 1523.7294921875
+                "X": 231.31689453125,
+                "Y": 1541.2515869140625
             }
         },
         "Sprite": {
@@ -7230,19 +6966,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7283,19 +7007,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7402,18 +7114,6 @@
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 59
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7518,18 +7218,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 39
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -18.0,
-                "Y": -130.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3799999952316284
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7698,19 +7386,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -95.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3400000035762787
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7751,19 +7427,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 32
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7804,19 +7468,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 32
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7857,19 +7509,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 29
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7911,18 +7551,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 58
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8028,18 +7656,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
             "layer": 54
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -5.0,
-                "Y": -126.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8305,17 +7921,6 @@
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 39
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8356,18 +7961,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 39
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8410,18 +8003,6 @@
             "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 54
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8462,18 +8043,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 54
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8516,18 +8085,6 @@
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 56
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8568,18 +8125,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 59
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8622,18 +8167,6 @@
             "texture": "Textures\\Sprites\\Props_Tree2.png",
             "layer": 58
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8674,18 +8207,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 60
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8791,18 +8312,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 60
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8973,18 +8482,6 @@
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 59
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9090,18 +8587,6 @@
             "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 33
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9143,18 +8628,6 @@
             "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 32
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -18.0,
-                "Y": -130.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3799999952316284
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9194,19 +8667,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 27
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9247,19 +8708,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 27
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9300,19 +8749,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 27
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9353,19 +8790,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree2.png",
-            "layer": 30
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 27
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9406,19 +8831,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree1.png",
-            "layer": 31
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
+            "layer": 28
         },
         "Audio": {
             "path": "Collision_Finalized",
