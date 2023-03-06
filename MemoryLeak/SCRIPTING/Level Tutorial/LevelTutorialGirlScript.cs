@@ -2,8 +2,10 @@
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class LevelTutorialGirlScript : BaseScript
-    {
+    public class LevelTutorialGirlScript : BaseScript {
+        private int playerBoat;
+        private int triggerBox;
+
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
@@ -11,6 +13,8 @@ namespace BonVoyage {
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
+            triggerBox = VI.Entity.GetId("GirlBox", "LevelTutorial");
         }
 
         public void EarlyUpdate(int _ENTITY) {

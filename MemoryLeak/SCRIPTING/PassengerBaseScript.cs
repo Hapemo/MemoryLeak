@@ -2,8 +2,7 @@
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class PassengerBaseScript : BaseScript
-    {
+    public class PassengerBaseScript : BaseScript {
         protected int playerBoat;
         protected int triggerBox;
 
