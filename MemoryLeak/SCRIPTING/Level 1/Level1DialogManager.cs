@@ -367,7 +367,6 @@ namespace BonVoyage {
         dialogInit = false;
       }
 
-      latestChoiceChosen = 0;
       // Button click set flags
       if (choiceFlag) {
         if (VI.Input.Button.s_Released(choice1, scene) || VI.Input.Button.s_Released(choice2, scene))
@@ -401,11 +400,13 @@ namespace BonVoyage {
           if (VI.Input.Button.s_Released(choice2, scene)) {
             MoveToNextDialog(2);
             latestChoiceChosen = 2;
+            LOG.WRITE("latestChoiceChosen = 2");
             //Console.WriteLine("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
             //VI.Test.ArgString("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
           } else {
             MoveToNextDialog(1);
             latestChoiceChosen = 1;
+            LOG.WRITE("latestChoiceChosen = 1");
             //Console.WriteLine("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
             //VI.Test.ArgString("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
           }
@@ -464,8 +465,9 @@ namespace BonVoyage {
 
     void UpdateObjective(string objectiveFile) {
       VI.Dialogue.LoadScript(objectiveFile);
-      if (latestChoiceChosen == 1) VI.Dialogue.Current.SetTo(1);
-      else if (latestChoiceChosen == 2) VI.Dialogue.Current.SetTo(2);
+      if (latestChoiceChosen == 1) VI.Text.Update(UIObjectiveTextID, VI.Dialogue.GetLine(1));
+      else if (latestChoiceChosen == 2) VI.Text.Update(UIObjectiveTextID, VI.Dialogue.GetLine(2));
+      latestChoiceChosen = 0;
     }
 
     public void GeneralEndDialog() {
@@ -514,7 +516,7 @@ namespace BonVoyage {
 
     public void EndDropoffDialog() {
       GeneralEndDialog();
-      UpdateObjective("Continue Exploring...");
+      VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
       passengerDialogProgress = 0;
     }
 
