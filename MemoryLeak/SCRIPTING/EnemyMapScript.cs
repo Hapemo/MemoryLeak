@@ -51,8 +51,8 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             VI.Entity.s_SetActive("blur", "EnemyMap", false);
-            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"));
-            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"));
+            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "LevelShadowBackground"));
+            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "LevelShadowBackground"));
             scaleMapX = MapX / 2;
             scaleMapY = MapY / 2;
             miniMapX = VI.Transform.Scale.GetX(enemymapID);

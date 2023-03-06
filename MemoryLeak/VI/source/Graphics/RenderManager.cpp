@@ -811,11 +811,9 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 					}
 				}
 			}
-			mIsCurrSceneMinimap = 0;
-
-			break;
 		}
 	}
+	mIsCurrSceneMinimap = 0;
 	mIsCurrSceneUI = prev;
 }
 
@@ -1282,7 +1280,7 @@ Indices array for new indices to be pushed to.
 void RenderManager::CreateSquare(const Entity& _e, int _layer, std::vector<Vertex>& _vertices, std::vector<GLushort>& _indices)
 {
 	Math::Mat3 mtx = GetTransform(_e);
-	glm::vec4 clr = GetColor(_e);
+	glm::vec4 clr = mIsCurrSceneMinimap ? glm::vec4{1, 1, 1, 1} : GetColor(_e);
 	float layer = (_layer - (MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f)/ ((MAX_LAYERS_PER_SCENE * MAX_SCENE_LAYERS) / 2.f);
 	float texID = static_cast<float>(_e.GetComponent<Sprite>().texture);
 
@@ -1776,7 +1774,7 @@ Math::Mat3 RenderManager::GetTransform(const Math::Vec2& _scale, float _rotate, 
 	float sinRot = sinf(_rotate);
 
 	Math::Vec2 camPos = mIsCurrSceneUI ? Math::Vec2{0, 0} : cam.GetPos();
-	float camZoom = mIsCurrSceneUI ? 1.f : mIsCurrSceneMinimap ? mIsCurrSceneMinimap :   cam.GetZoom();
+	float camZoom = mIsCurrSceneMinimap ? mIsCurrSceneMinimap : mIsCurrSceneUI ? 1.f : cam.GetZoom();
 
 	Math::Mat3 temp
 	{
