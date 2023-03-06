@@ -73,7 +73,7 @@ namespace BonVoyage {
       PP2ID = VI.Entity.GetId("PP2", "Dialogue");
       G1ID = VI.Entity.GetId("G1", "Dialogue");
 
-      P1ColliderBox = VI.Entity.GetId("PassengerBox", "Level1");
+      P1ColliderBox = VI.Entity.GetId("Passenger1Box", "Level1");
       P2ColliderBox = VI.Entity.GetId("Passenger2Box", "Level1");
 
       dialogInit = true;
