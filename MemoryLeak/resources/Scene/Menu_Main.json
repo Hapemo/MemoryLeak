@@ -8,8 +8,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 421.0,
-                "Y": 101.0
+                "X": 420.0,
+                "Y": 80.0
             },
             "rotation": 0.0,
             "translation": {
@@ -19,9 +19,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 0,
+                "g": 0,
+                "b": 0,
                 "a": 0
             },
             "sprite": 0,
@@ -72,20 +72,20 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
+                "X": 420.0,
                 "Y": 80.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": -260.0,
-                "Y": -142.3426055908203
+                "Y": -140.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 0,
+                "g": 0,
+                "b": 0,
                 "a": 0
             },
             "sprite": 0,
@@ -136,7 +136,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
+                "X": 420.0,
                 "Y": 80.0
             },
             "rotation": 0.0,
@@ -147,9 +147,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 0,
+                "g": 0,
+                "b": 0,
                 "a": 0
             },
             "sprite": 0,
@@ -350,9 +350,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 6,
+            "currFrameIndex": 3,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.050000011920928955
+            "timeToFrameSwap": 0.0833333432674408
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -427,9 +427,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 2,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.816666841506958
+            "timeToFrameSwap": 0.016666678711771965
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -500,7 +500,7 @@
             "frameCount": 8,
             "currFrameIndex": 0,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.816666841506958
+            "timeToFrameSwap": 0.016666678711771965
         },
         "LightSource": {
             "centerOffset": {

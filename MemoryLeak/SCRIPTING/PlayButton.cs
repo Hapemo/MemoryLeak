@@ -9,7 +9,7 @@ namespace BonVoyage {
         }
 
         public void Init(int _ENTITY) {
-            
+
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -18,6 +18,12 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY);
+            if (THIS.Input.Button.Hover())
+                THIS.LightSource.SpriteColor.Set(0, 0, 0, 100);
+            else
+                THIS.LightSource.SpriteColor.Set(0, 0, 0, 0);
+
+
             if (THIS.Input.Button.Released())
                 TransitionSquare.FadeOut("CutScene");
         }

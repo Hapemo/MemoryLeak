@@ -4,12 +4,22 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class CreditsButton : BaseScript
     {
+        float firstX, firstY;
+        float bigX, bigY;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            firstX = THIS.Transform.Scale.GetX();
+            firstY = THIS.Transform.Scale.GetY();
+            bigX = firstX * 1.5f;
+            bigY = firstY * 1.5f;
+
         }
 
         public void Init(int _ENTITY) {
-
+            firstX = THIS.Transform.Scale.GetX();
+            firstY = THIS.Transform.Scale.GetY();
+            bigX = firstX * 1.5f;
+            bigY = firstY * 1.5f;
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -18,6 +28,18 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+            if (THIS.Input.Button.Hover())
+            {
+                THIS.Transform.Scale.SetX(bigX);
+                THIS.Transform.Scale.SetY(bigY);
+            }
+            else
+            {
+                THIS.Transform.Scale.SetX(firstX);
+                THIS.Transform.Scale.SetY(firstY);
+            }
+
             if (THIS.Input.Button.Released())
             {
                 VI.Scene.Pause("How_To_Play");
