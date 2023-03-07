@@ -7495,48 +7495,6 @@
     },
     {
         "General": {
-            "name": "TutorialEndCollider",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 85.0,
-                "Y": 85.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1286.614990234375,
-                "Y": -482.6548156738281
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
-            "layer": 5
-        },
-        "CircleCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": 1.0,
-            "isTrigger": true,
-            "renderFlag": true
-        },
-        "Script": {
-            "name": "SwitchToLevel1"
-        }
-    },
-    {
-        "General": {
             "name": "GirlBox",
             "tag": 8,
             "subtag": 0,
@@ -7562,7 +7520,7 @@
             },
             "sprite": 2,
             "texture": "",
-            "layer": 110
+            "layer": 5
         },
         "RectCollider": {
             "centerOffset": {
@@ -7604,7 +7562,7 @@
             },
             "sprite": 2,
             "texture": "",
-            "layer": 111
+            "layer": 5
         },
         "RectCollider": {
             "centerOffset": {
@@ -7646,7 +7604,7 @@
             },
             "sprite": 2,
             "texture": "",
-            "layer": 112
+            "layer": 5
         },
         "RectCollider": {
             "centerOffset": {
@@ -7670,13 +7628,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 100.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1088.959716796875,
-                "Y": -1310.0
+                "X": 1256.8138427734375,
+                "Y": -466.3495178222656
             }
         },
         "Sprite": {
@@ -7688,7 +7646,7 @@
             },
             "sprite": 2,
             "texture": "",
-            "layer": 113
+            "layer": 5
         },
         "RectCollider": {
             "centerOffset": {
@@ -13918,7 +13876,7 @@
             },
             "sprite": 2,
             "texture": "",
-            "layer": 113
+            "layer": 5
         },
         "RectCollider": {
             "centerOffset": {
@@ -13931,6 +13889,51 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "TutorialEndCollider",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1256.90234375,
+                "Y": -466.2610168457031
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 5
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "Script": {
+            "name": "SwitchToLevel1"
         }
     }
 ]
