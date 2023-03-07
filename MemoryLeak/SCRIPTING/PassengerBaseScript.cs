@@ -49,6 +49,10 @@ namespace BonVoyage {
             AttachedToPlayer = false;
             DetachFromPlayerAnimation = false;
             DestinationReached = false;
+
+            // Store original scale x value
+            InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
+            InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
         }
 
         public virtual void EarlyUpdate(int _ENTITY) {
