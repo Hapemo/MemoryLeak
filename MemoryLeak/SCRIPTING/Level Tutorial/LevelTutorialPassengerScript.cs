@@ -18,7 +18,8 @@ namespace BonVoyage {
             wrongDestination_Box = VI.Entity.GetId("PassengerDummyDropOffBox", "LevelTutorial");
             wrongDestination_RenderLocation = VI.Entity.GetId("PassengerDummyDropOffBox", "LevelTutorial");
 
-            //level1Transition_Box = VI.Entity.GetId("TutorialEndCollider", "LevelTutorial");
+            level1Transition_Box = VI.Entity.GetId("TutorialEndCollider", "LevelTutorial");
+            
             // Store original scale and layer values
             //InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
             //InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
@@ -137,7 +138,7 @@ namespace BonVoyage {
                     VI.Entity.Deactivate(wrongDestination_Box);
 
                     // Activate entity to transition to level 1 once player touches it
-                    //VI.Entity.Activate(level1Transition_Box);
+                    VI.Entity.Activate(level1Transition_Box);
 
                     // Set flag to get out
                     DestinationReached = false;

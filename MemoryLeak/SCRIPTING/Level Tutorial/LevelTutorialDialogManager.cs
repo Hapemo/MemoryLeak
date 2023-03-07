@@ -139,9 +139,6 @@ namespace BonVoyage {
             
       VI.Text.Update(UIObjectiveTextID, "Objective: Get the lost soul home");
 
-        //TransitionSquare.FadeOut("Level1");
-        VI.GameState.Go("Level1");
-
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
     }

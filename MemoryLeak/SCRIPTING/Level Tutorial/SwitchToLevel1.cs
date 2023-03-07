@@ -36,7 +36,7 @@ namespace BonVoyage {
 
             if (!PlayerScript.PlayerInDialogue && VI.Physics.IsCollided(_ENTITY, playerBoat)) {
                 //TransitionSquare.FadeOut("Level1");
-                //VI.GameState.Go("Level1");
+                VI.GameState.Go("Level1");
             }
         }
 
