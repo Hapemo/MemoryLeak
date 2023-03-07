@@ -101,7 +101,6 @@ namespace BonVoyage {
           VI.Entity.Activate(P2ColliderBox);
         }
         dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva (Lighthouse)");
-        EnemyController.EnemyActivated = true;
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 11: // Passenger 1 correct
