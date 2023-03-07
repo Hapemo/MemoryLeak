@@ -34,9 +34,9 @@ namespace BonVoyage {
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            if (!PlayerScript.PlayerInDialogue && VI.Physics.IsCollided(_ENTITY, playerBoat)) {
-                //TransitionSquare.FadeOut("Level1");
-                VI.GameState.Go("Level1");
+            if (VI.Physics.IsCollided(_ENTITY, playerBoat)) {
+                TransitionSquare.FadeOut("Level1");
+                //VI.GameState.Go("Level1");
             }
         }
 
