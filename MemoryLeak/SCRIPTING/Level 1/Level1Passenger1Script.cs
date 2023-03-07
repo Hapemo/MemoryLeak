@@ -51,7 +51,7 @@ namespace BonVoyage {
             // Passenger is ready to attach & dialogue has ended
             if (ReadyToAttach && !Level1DialogManager.runPassengerDialog) {
                 // Set flag variables
-                AttachToPlayerAnimation = true;
+                base.AttachToPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
                 ReadyToAttach = false;
             }
@@ -62,7 +62,7 @@ namespace BonVoyage {
             if (AttachToPlayerAnimation) {
                 // Animate attachment to player
                 // returns true once complete
-                if (AttachPassengerToPlayer(_ENTITY, playerBoat, InitialScaleX)) {
+                if (base.AttachPassengerToPlayer(_ENTITY, playerBoat, InitialScaleX)) {
                     // Move on to passenger moving with the player
                     AttachedToPlayer = true;
                     AttachToPlayerAnimation = false;
@@ -73,7 +73,7 @@ namespace BonVoyage {
             // Move passenger with player       
             if (AttachedToPlayer) {
                 // Move passenger with player
-                MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
+                base.MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
             }
 
             // Check if passenger reaches destination A
@@ -104,7 +104,7 @@ namespace BonVoyage {
                 // Animate detachment to player
                 // returns true once complete
                 int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
-                if (DetachPassengerFromPlayer(_ENTITY, renderLocation, InitialScaleX)) {
+                if (base.DetachPassengerFromPlayer(_ENTITY, renderLocation, InitialScaleX)) {
                     // Animation complete
                     DetachFromPlayerAnimation = false;
                     PlayerScript.PlayerInOtherAnimation = false;
@@ -121,7 +121,7 @@ namespace BonVoyage {
 
                 // Restore passenger's original scale value
                 // Returns true when completed
-                if (RestorePassengerScale(_ENTITY, InitialScaleX)) {
+                if (base.RestorePassengerScale(_ENTITY, InitialScaleX)) {
 
                     // Run logic based on whether destination delievered was correct
                     switch (correctDestinationDelivery) {

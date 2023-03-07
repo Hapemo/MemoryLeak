@@ -100,8 +100,8 @@ namespace BonVoyage {
                 VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePassenger) + VI.Math.Normalize.X(diffX, diffY) * 200f * (float)VI.General.DeltaTime());
                 VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePassenger) + VI.Math.Normalize.Y(diffX, diffY) * 200f * (float)VI.General.DeltaTime());
 
-                VI.Transform.Scale.SetX(_ePassenger, VI.Transform.Scale.GetX(_ePassenger) / (1 + 8 * (float)VI.General.DeltaTime()));
-                VI.Transform.Scale.SetY(_ePassenger, VI.Transform.Scale.GetY(_ePassenger) / (1 + 8 * (float)VI.General.DeltaTime()));
+                //VI.Transform.Scale.SetX(_ePassenger, VI.Transform.Scale.GetX(_ePassenger) / (1 + 8 * (float)VI.General.DeltaTime()));
+                //VI.Transform.Scale.SetY(_ePassenger, VI.Transform.Scale.GetY(_ePassenger) / (1 + 8 * (float)VI.General.DeltaTime()));
 
                 return false;
             }
@@ -113,7 +113,7 @@ namespace BonVoyage {
         // Moves the passenger along with the player and updates its layer values accordingly
         protected void MovePassengerWithPlayer(int _ePassenger, int _ePlayer, float _passengerInitialScaleX) {
             // Restore passenger's original scale x value
-            RestorePassengerScale(_ePassenger, _passengerInitialScaleX);
+            this.RestorePassengerScale(_ePassenger, _passengerInitialScaleX);
 
             // Get player's direction
             int playerDirection = VI.Animation.SpriteSheet.SheetIndex.Get(_ePlayer) % 8;
@@ -191,6 +191,9 @@ namespace BonVoyage {
         // Plays animation to restore passsenger entity's scale value
         // Returns true once complete
         protected bool RestorePassengerScale(int _ePassenger, float _passengerInitialScaleX) {
+            LOG.WRITE("Passenger original X: " + _passengerInitialScaleX);
+            LOG.WRITE("Current scale value: " + VI.Transform.Scale.GetX(_ePassenger));
+
             // Restore passenger's original scale x value
             if (VI.Transform.Scale.GetX(_ePassenger) < _passengerInitialScaleX) {
                 VI.Transform.Scale.SetX(_ePassenger, VI.Transform.Scale.GetX(_ePassenger) * (1 + 8 * (float)VI.General.DeltaTime()));

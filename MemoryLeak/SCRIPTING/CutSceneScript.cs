@@ -47,7 +47,7 @@ namespace BonVoyage {
             {
                 if (skipping || !isAlphaDecreasing)
                 {
-                    VI.GameState.Go("Level1");
+                    VI.GameState.Go("LevelTutorial");
                 }
             }
             if (!skipping && !isAlphaDecreasing && VI.Input.Key.Press(349) && currScn < 19)

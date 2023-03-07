@@ -1827,8 +1827,8 @@
     },
     {
         "General": {
-            "name": "Tree",
-            "tag": 5,
+            "name": "PortHouse",
+            "tag": 3,
             "subtag": 0,
             "isActive": true
         },
@@ -1977,6 +1977,18 @@
             "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
         },
         "Script": {
             "name": "LevelTutorialPassengerScript"
@@ -7486,7 +7498,7 @@
             "name": "TutorialEndCollider",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -7519,16 +7531,8 @@
             "isTrigger": true,
             "renderFlag": true
         },
-        "Audio": {
-            "path": "HEALTH",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
+        "Script": {
+            "name": "SwitchToLevel1"
         }
     },
     {
@@ -7662,7 +7666,7 @@
             "name": "PassengerDropOffBox",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {

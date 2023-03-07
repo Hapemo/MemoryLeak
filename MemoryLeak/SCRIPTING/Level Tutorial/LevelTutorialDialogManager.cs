@@ -35,7 +35,7 @@ namespace BonVoyage {
       G1ID = VI.Entity.GetId("G1");
       girlColliderBox = VI.Entity.GetId("GirlBox");
       PColliderBox = VI.Entity.GetId("PassengerPickupBox");
-      PEndColliderBox = VI.Entity.GetId("TutorialEndCollider");
+      PEndColliderBox = VI.Entity.GetId("PassengerDropOffBox");
 
       dialogInit = true;
     }

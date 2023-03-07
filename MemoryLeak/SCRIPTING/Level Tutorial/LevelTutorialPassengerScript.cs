@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
     public class LevelTutorialPassengerScript : PassengerBaseScript {
+
+        private int level1Transition_Box;
         public override void Init(int _ENTITY) {
             base.Init(_ENTITY);
 
@@ -15,6 +17,8 @@ namespace BonVoyage {
 
             wrongDestination_Box = VI.Entity.GetId("PassengerDummyDropOffBox", "LevelTutorial");
             wrongDestination_RenderLocation = VI.Entity.GetId("PassengerDummyDropOffBox", "LevelTutorial");
+
+            level1Transition_Box = VI.Entity.GetId("TutorialEndCollider", "LevelTutorial");
 
             // Store original scale and layer values
             //InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
@@ -75,7 +79,7 @@ namespace BonVoyage {
             }
 
             // Check if passenger reaches destination
-            if (VI.Physics.IsCollided(correctDestination_Box, _ENTITY)) {
+            if (VI.Physics.CheckCollision(correctDestination_Box, _ENTITY, false)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
@@ -84,7 +88,7 @@ namespace BonVoyage {
                 // Set flag
                 correctDestinationDelivery = true;
             }
-            else if (VI.Physics.IsCollided(wrongDestination_Box, _ENTITY)) {
+            else if (VI.Physics.CheckCollision(wrongDestination_Box, _ENTITY, false)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
@@ -132,6 +136,9 @@ namespace BonVoyage {
                     // Deactivate the drop off point boxes
                     VI.Entity.Deactivate(correctDestination_Box);
                     VI.Entity.Deactivate(wrongDestination_Box);
+
+                    // Activate entity to transition to level 1 once player touches it
+                    VI.Entity.Activate(level1Transition_Box);
 
                     // Set flag to get out
                     DestinationReached = false;
