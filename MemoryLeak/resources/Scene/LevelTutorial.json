@@ -1639,12 +1639,12 @@
         "Transform": {
             "scale": {
                 "X": 71.5,
-                "Y": 101.5
+                "Y": 115.5
             },
             "rotation": 0.0,
             "translation": {
                 "X": -473.3697509765625,
-                "Y": -653.8890991210938
+                "Y": -648.8889770507813
             }
         },
         "Sprite": {
@@ -1682,8 +1682,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -636.810546875,
-                "Y": 247.5442352294922
+                "X": -552.1866455078125,
+                "Y": 103.18585205078125
             }
         },
         "Sprite": {
@@ -5671,13 +5671,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 100.0,
-                "Y": 100.0
+                "X": 301.0,
+                "Y": 261.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1233.63037109375,
-                "Y": -1310.0
+                "X": 1230.6300048828125,
+                "Y": -1279.0
             }
         },
         "Sprite": {
@@ -5688,7 +5688,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Relic6.png",
+            "texture": "Textures\\Sprites\\building_3(revised).png",
             "layer": 52
         },
         "RectCollider": {
@@ -7495,6 +7495,45 @@
     },
     {
         "General": {
+            "name": "TutorialEndCollider",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 85.0,
+                "Y": 85.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1020.9955444335938,
+                "Y": -1293.252197265625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2.png",
+            "layer": 5
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": true,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
             "name": "GirlBox",
             "tag": 8,
             "subtag": 0,
@@ -7502,12 +7541,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 430.0,
+                "X": 505.0,
                 "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -111.10736083984375,
+                "X": -80.10700225830078,
                 "Y": -645.2488403320313
             }
         },
@@ -7544,13 +7583,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 100.0,
-                "Y": 100.0
+                "X": 749.0,
+                "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -740.1116943359375,
-                "Y": 241.7272186279297
+                "X": -715.1119995117188,
+                "Y": 103.72699737548828
             }
         },
         "Sprite": {
@@ -7591,8 +7630,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 558.0205688476563,
-                "Y": -1133.361328125
+                "X": 548.02099609375,
+                "Y": -1086.3609619140625
             }
         },
         "Sprite": {
@@ -9407,6 +9446,9 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Script": {
+            "name": "SwitchToLevel1"
         }
     },
     {

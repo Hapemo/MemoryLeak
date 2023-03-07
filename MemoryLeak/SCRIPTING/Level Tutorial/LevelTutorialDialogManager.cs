@@ -13,7 +13,7 @@ namespace BonVoyage {
 
 
     private bool progressUpdate = false;
-    static public bool runIntroDialog;
+    static public bool runIntroDialog = true;
     static public bool runGirlDialog;
     static public bool runPassengerDialog;
     static public bool runPassengerEndDialog;
@@ -45,25 +45,6 @@ namespace BonVoyage {
     }
 
     public void Update(int _ENTITY) {
-      if (playerID == 0) LOG.WRITE("playerID========");
-      if (UIHPBarID == 0) LOG.WRITE("UIHPBarID========");
-      if (UIMemoryFragmentID == 0) LOG.WRITE("UIMemoryFragmentID========");
-      if (UIMemoryFragmentScreenID == 0) LOG.WRITE("UIMemoryFragmentScreenID========");
-      if (UIFragment1ObjID == 0) LOG.WRITE("UIFragment1ObjID========");
-      if (UICycleMapID == 0) LOG.WRITE("UICycleMapID========");
-      if (UIMiniMapID == 0) LOG.WRITE("UIMiniMapID========");
-      if (UIEnemyMapID == 0) LOG.WRITE("UIEnemyMapID========");
-      if (UIWeatherMapID == 0) LOG.WRITE("UIWeatherMapID========");
-      if (UIWeatherTextID == 0) LOG.WRITE("UIWeatherTextID========");
-      if (UIObjectiveTextID == 0) LOG.WRITE("UIObjectiveTextID========");
-      if (P1ID == 0) LOG.WRITE("P1ID========");
-      if (PP1ID == 0) LOG.WRITE("PP1ID========");
-      if (PP2ID == 0) LOG.WRITE("PP2ID========");
-      if (G1ID == 0) LOG.WRITE("G1ID========");
-      if (girlColliderBox == 0) LOG.WRITE("girlColliderBox========");
-      if (PColliderBox == 0) LOG.WRITE("PColliderBox========");
-      if (PEndColliderBox == 0) LOG.WRITE("PEndColliderBox========");
-
       if (!normalZoom)
         normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
 

@@ -800,29 +800,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -1080,29 +1057,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -1149,29 +1103,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1619,8 +1550,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2383.368408203125,
-                "Y": 518.1309204101563
+                "X": -2382.0,
+                "Y": 518.0
             }
         },
         "Sprite": {
@@ -2270,29 +2201,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -2550,29 +2458,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -2690,29 +2575,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -2759,29 +2621,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2900,29 +2739,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -3040,29 +2856,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -3109,29 +2902,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -3250,29 +3020,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -3320,29 +3067,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -3389,29 +3113,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -3810,29 +3511,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4160,29 +3838,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4299,29 +3954,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -4510,29 +4142,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4579,29 +4188,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -4650,29 +4236,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4719,29 +4282,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -4790,29 +4330,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4859,29 +4376,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -4930,29 +4424,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -4999,29 +4470,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5070,29 +4518,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5139,29 +4564,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5210,29 +4612,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5279,29 +4658,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5350,29 +4706,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5419,29 +4752,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5560,29 +4870,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -5629,29 +4916,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5890,7 +5154,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -1604.390869140625,
-                "Y": -2546.181640625
+                "Y": -2542.701171875
             }
         },
         "Sprite": {
@@ -5909,29 +5173,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6050,29 +5291,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6119,29 +5337,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6260,29 +5455,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6329,29 +5501,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6400,29 +5549,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6469,29 +5595,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6540,29 +5643,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6609,29 +5689,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6680,29 +5737,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6750,29 +5784,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -6819,29 +5830,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6960,29 +5948,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7029,29 +5994,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7100,29 +6042,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7169,29 +6088,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7240,29 +6136,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7309,29 +6182,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7450,29 +6300,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7520,29 +6347,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7569,7 +6373,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -885.2657470703125,
+                "X": -882.6802978515625,
                 "Y": 2325.7119140625
             }
         },
@@ -7660,29 +6464,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -7729,29 +6510,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8080,29 +6838,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8150,29 +6885,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8219,29 +6931,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8360,29 +7049,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8429,29 +7095,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8500,29 +7143,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8569,29 +7189,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8920,29 +7517,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -8989,29 +7563,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9200,29 +7751,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9269,29 +7797,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9480,29 +7985,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9620,29 +8102,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -9689,29 +8148,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9970,29 +8406,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -10039,29 +8452,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10110,29 +8500,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -10180,29 +8547,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -10249,29 +8593,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10460,29 +8781,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -10529,29 +8827,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10670,29 +8945,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -10739,29 +8991,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10810,29 +9039,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -10880,29 +9086,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -10949,29 +9132,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11160,29 +9320,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -11230,29 +9367,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -11279,7 +9393,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1237.411865234375,
+                "X": -1239.997314453125,
                 "Y": 2637.017333984375
             }
         },
@@ -11299,29 +9413,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11370,29 +9461,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -11439,29 +9507,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11580,29 +9625,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -11720,29 +9742,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -11789,29 +9788,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11860,29 +9836,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -11929,29 +9882,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12000,29 +9930,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -12069,29 +9976,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12140,29 +10024,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -12209,29 +10070,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12280,29 +10118,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -12349,29 +10164,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12420,29 +10212,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -12489,29 +10258,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12560,29 +10306,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -12629,29 +10352,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12840,29 +10540,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -12980,29 +10657,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -13049,29 +10703,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13190,29 +10821,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -13260,29 +10868,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -13329,29 +10914,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13680,29 +11242,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -13749,29 +11288,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13820,29 +11336,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -13889,29 +11382,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13960,29 +11430,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -14029,29 +11476,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14574,29 +11998,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -14643,29 +12044,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14714,29 +12092,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -14783,29 +12138,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14854,29 +12186,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -14923,29 +12232,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14994,29 +12280,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -15063,29 +12326,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -15134,29 +12374,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -15203,29 +12420,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -15274,29 +12468,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -15344,29 +12515,6 @@
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "volume": 0.5,
@@ -15413,29 +12561,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -138.0
-            },
-            "scaleOffset": {
-                "X": 0.6800000071525574,
-                "Y": 0.20999999344348907
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -15603,7 +12728,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2155.919189453125,
+                "X": -2174.017578125,
                 "Y": 2547.92138671875
             }
         },

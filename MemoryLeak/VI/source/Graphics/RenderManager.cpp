@@ -1916,7 +1916,7 @@ int RenderManager::GetTextLines(Entity _e)
 		(text.offset + _e.GetComponent<Transform>().translation - cam.GetPos()) / cam.GetZoom() 
 		+ Math::Vec2(mInitialWidth * 0.5f, mInitialHeight * 0.5f),
 		text.scale / cam.GetZoom(), glm::vec4(text.color.r / 255.f, text.color.g / 255.f, 
-			text.color.b / 255.f, text.color.a), _e.GetComponent<Transform>().scale.x - text.width, cam.GetZoom());
+			text.color.b / 255.f, text.color.a),_e.GetComponent<Transform>().scale.x - text.width, cam.GetZoom());
 }
 
 /*!*****************************************************************************

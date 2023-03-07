@@ -14,7 +14,6 @@ namespace BonVoyage {
 
     static public int passengerDialogProgress = 0; // Consists of 2 numbers in this format <passenger number><right or wrong>. 1 for right, 0 for wrong. eg passenger 1 right answer destination reached, it will be 11.
     private bool progressUpdate = false;
-    static public bool runIntroDialog;
     //static public bool runGirlDialog;
 
     private int correctDestination_RenderLocation;
@@ -69,22 +68,6 @@ namespace BonVoyage {
       if (!normalZoom)
         normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
 
-      // Dialog control
-
-      if (runIntroDialog) {
-        PlayerScript.PlayerInDialogue = true;
-        runIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue SceneIntro 1");
-        if (!runIntroDialog)
-          EndIntroDialog();
-      }
-
-      //if (runGirlDialog) {
-      //  //VI.Animation.SheetIndex.Set(playerID, 1);
-      //  runGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialogue LittleGirl 0");
-        
-      //  if (!runGirlDialog)
-      //    EndGirlDialog();
-      //}
 
       if (runPassengerDialog) {
         GeneralDialogStart(1);
@@ -146,6 +129,7 @@ namespace BonVoyage {
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
         dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus (Water Fountain)");
+        EnemyController.EnemyActivated = true;
         if (!dialogEnded) EndDropoffDialog();
         break;
       }
@@ -162,7 +146,6 @@ namespace BonVoyage {
 
     public void Exit(int _ENTITY) {
       passengerDialogProgress = 0;
-      runIntroDialog = false;
       runPassengerDialog = false;
       runPassenger2Dialog = false;
     }

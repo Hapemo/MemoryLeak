@@ -176,7 +176,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": -50.0
+            "width": -60.0
         },
         "Button": {
             "interactable": true
