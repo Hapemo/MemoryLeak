@@ -176,8 +176,8 @@ namespace BonVoyage {
                 VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePassenger) + diffX * (float)VI.General.DeltaTime());
                 VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePassenger) + diffY * (float)VI.General.DeltaTime());
 
-                VI.Transform.Scale.SetX(_ePassenger, VI.Transform.Scale.GetX(_ePassenger) / (1 + 8 * (float)VI.General.DeltaTime()));
-                VI.Transform.Scale.SetY(_ePassenger, VI.Transform.Scale.GetY(_ePassenger) / (1 + 8 * (float)VI.General.DeltaTime()));
+                //VI.Transform.Scale.SetX(_ePassenger, VI.Transform.Scale.GetX(_ePassenger) / (1 + 8 * (float)VI.General.DeltaTime()));
+                //VI.Transform.Scale.SetY(_ePassenger, VI.Transform.Scale.GetY(_ePassenger) / (1 + 8 * (float)VI.General.DeltaTime()));
                 return false;
             }
             else {
