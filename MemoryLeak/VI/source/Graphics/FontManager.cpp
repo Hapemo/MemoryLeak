@@ -193,7 +193,7 @@ void FontRenderer::DrawParagraphs(int _layer)
         {
             currWidth += para.wordWidth[i];
             
-            if (i && currWidth > para.renderWidth * magicNumber / para.camZoom && (para.words.size() != i+1))
+            if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
             {
                 pos.x = initialX;
                 pos.y -= (mMaxYSize) * para.scale * 1.1f;
@@ -303,7 +303,7 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
     for (size_t i = 0; i < para.words.size(); ++i)
     {
         currWidth += para.wordWidth[i];
-        if (i && currWidth > para.renderWidth * magicNumber / para.camZoom && (para.words.size() != i+1))
+        if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
         {
             ++lines;
             currWidth = para.wordWidth[i];
