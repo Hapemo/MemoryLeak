@@ -13,7 +13,7 @@ namespace BonVoyage {
 
 
     private bool progressUpdate = false;
-    static public bool runIntroDialog = true;
+    static public bool runIntroDialog;
     static public bool runGirlDialog;
     static public bool runPassengerDialog;
     static public bool runPassengerEndDialog;
@@ -38,6 +38,7 @@ namespace BonVoyage {
       PEndColliderBox = VI.Entity.GetId("PassengerDropOffBox");
 
       dialogInit = true;
+      runIntroDialog = true;
     }
 
     public void EarlyUpdate(int _ENTITY) {
