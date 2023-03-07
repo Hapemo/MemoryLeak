@@ -128,9 +128,6 @@ namespace BonVoyage {
 
       UpdateObjective("Dialog Objective Passenger1 (Minerva)");
 
-        //TransitionSquare.FadeOut("Level1");
-        VI.GameState.Go("Level1");
-
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
     }
