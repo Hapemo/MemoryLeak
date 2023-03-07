@@ -10,7 +10,6 @@ namespace BonVoyage {
 
     public void Init(int _ENTITY) {
       CamZoom33Percent();
-      Level1DialogManager.runIntroDialog = true;
     }
 
     public void EarlyUpdate(int _ENTITY) {
