@@ -23,11 +23,13 @@ namespace BonVoyage {
     private int PColliderBox;
     private int PEndColliderBox;
 
-    public void Alive(int _ENTITY) {
-      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+    public override void Alive(int _ENTITY) {
+        base.Alive(_ENTITY);
     }
 
-    public void Init(int _ENTITY) {
+    public override void Init(int _ENTITY) {
+        base.Init(_ENTITY);
+
       playerID = VI.Entity.GetId("Boat");
       UIObjectiveTextID = VI.Entity.GetId("objectivetext");
       P1ID = VI.Entity.GetId("P1");
@@ -42,11 +44,32 @@ namespace BonVoyage {
       runIntroDialog = true;
     }
 
-    public void EarlyUpdate(int _ENTITY) {
-
+    public override void EarlyUpdate(int _ENTITY) {
+        base.EarlyUpdate(_ENTITY);
     }
 
-    public void Update(int _ENTITY) {
+    public override void Update(int _ENTITY) {
+        base.Update(_ENTITY);
+
+      if (playerID == 0) LOG.WRITE("playerID========");
+      if (UIHPBarID == 0) LOG.WRITE("UIHPBarID========");
+      if (UIMemoryFragmentID == 0) LOG.WRITE("UIMemoryFragmentID========");
+      if (UIMemoryFragmentScreenID == 0) LOG.WRITE("UIMemoryFragmentScreenID========");
+      if (UIFragment1ObjID == 0) LOG.WRITE("UIFragment1ObjID========");
+      if (UICycleMapID == 0) LOG.WRITE("UICycleMapID========");
+      if (UIMiniMapID == 0) LOG.WRITE("UIMiniMapID========");
+      if (UIEnemyMapID == 0) LOG.WRITE("UIEnemyMapID========");
+      if (UIWeatherMapID == 0) LOG.WRITE("UIWeatherMapID========");
+      if (UIWeatherTextID == 0) LOG.WRITE("UIWeatherTextID========");
+      if (UIObjectiveTextID == 0) LOG.WRITE("UIObjectiveTextID========");
+      if (P1ID == 0) LOG.WRITE("P1ID========");
+      if (PP1ID == 0) LOG.WRITE("PP1ID========");
+      if (PP2ID == 0) LOG.WRITE("PP2ID========");
+      if (G1ID == 0) LOG.WRITE("G1ID========");
+      if (girlColliderBox == 0) LOG.WRITE("girlColliderBox========");
+      if (PColliderBox == 0) LOG.WRITE("PColliderBox========");
+      if (PEndColliderBox == 0) LOG.WRITE("PEndColliderBox========");
+
       if (!normalZoom)
         normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
 
@@ -98,23 +121,25 @@ namespace BonVoyage {
 
     }
 
-    public void FixedUpdate(int _ENTITY) {
-
+    public override void FixedUpdate(int _ENTITY) {
+        base.FixedUpdate(_ENTITY);
     }
 
-    public void LateUpdate(int _ENTITY) {
-
+    public override void LateUpdate(int _ENTITY) {
+        base.LateUpdate(_ENTITY);
     }
 
-    public void Exit(int _ENTITY) {
+    public override void Exit(int _ENTITY) {
+        base.Exit(_ENTITY);
+
       runIntroDialog = false;
       runGirlDialog = false;
       runPassengerDialog = false;
       runPassengerEndDialog = false;
     }
 
-    public void Dead(int _ENTITY) {
-
+    public override void Dead(int _ENTITY) {
+        base.Dead(_ENTITY);
     }
 
     #region Dialog Endings

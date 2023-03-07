@@ -44,34 +44,36 @@ namespace BonVoyage {
     protected int G1ID;
 
 
-    public void Alive(int _ENTITY) {
+    public virtual void Alive(int _ENTITY) {
       THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
-    public void Init(int _ENTITY) {
+    public virtual void Init(int _ENTITY) {
+        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
-    public void EarlyUpdate(int _ENTITY) {
-
+    public virtual void EarlyUpdate(int _ENTITY) {
+        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
-    public void Update(int _ENTITY) {
+    public virtual void Update(int _ENTITY) {
+        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
-    public void FixedUpdate(int _ENTITY) {
-
+    public virtual void FixedUpdate(int _ENTITY) {
+        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
-    public void LateUpdate(int _ENTITY) {
-
+    public virtual void LateUpdate(int _ENTITY) {
+        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
-    public void Exit(int _ENTITY) {
-
+    public virtual void Exit(int _ENTITY) {
+        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
-    public void Dead(int _ENTITY) {
-
+    public virtual void Dead(int _ENTITY) {
+        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
 

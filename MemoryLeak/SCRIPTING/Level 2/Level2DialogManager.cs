@@ -26,11 +26,13 @@ namespace BonVoyage {
     private int P2ColliderBox;
 
 
-    public void Alive(int _ENTITY) {
-      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+    public override void Alive(int _ENTITY) {
+        base.Alive(_ENTITY);
     }
 
-    public void Init(int _ENTITY) {
+    public override void Init(int _ENTITY) {
+        base.Init(_ENTITY);
+
       playerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
 
       UIHPBarID = VI.Entity.GetId("hpbar", "Dialogue");
@@ -58,11 +60,12 @@ namespace BonVoyage {
       VI.Entity.Deactivate(P2ColliderBox);
     }
 
-    public void EarlyUpdate(int _ENTITY) {
-
+    public override void EarlyUpdate(int _ENTITY) {
+        base.EarlyUpdate(_ENTITY);
     }
 
-    public void Update(int _ENTITY) {
+    public override void Update(int _ENTITY) {
+        base.Update(_ENTITY);
 
       if (!normalZoom)
         normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
@@ -135,23 +138,25 @@ namespace BonVoyage {
 
     }
 
-    public void FixedUpdate(int _ENTITY) {
-
+    public override void FixedUpdate(int _ENTITY) {
+        base.FixedUpdate(_ENTITY);
     }
 
-    public void LateUpdate(int _ENTITY) {
-
+    public override void LateUpdate(int _ENTITY) {
+        base.LateUpdate(_ENTITY);
     }
 
-    public void Exit(int _ENTITY) {
+    public override void Exit(int _ENTITY) {
+        base.Exit(_ENTITY);
+
       passengerDialogProgress = 0;
       runIntroDialog = false;
       runPassengerDialog = false;
       runPassenger2Dialog = false;
     }
 
-    public void Dead(int _ENTITY) {
-
+    public override void Dead(int _ENTITY) {
+        base.Dead(_ENTITY);
     }
 
     #region Dialog Endings
