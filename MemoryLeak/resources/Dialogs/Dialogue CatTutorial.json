@@ -1,0 +1,44 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Hey, you there!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "You've finally woken up! How do you feel?",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 4
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "I feel great!",
+   "Speaker": 1,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "I don't remember anything...",
+   "Speaker": 1,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "Great! Now you gotta go find the little girl! She'll let you know what to do.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "Don't worry! You just gotta go find the little girl! She'll let you know what to do.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
