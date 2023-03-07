@@ -101,6 +101,7 @@ namespace BonVoyage {
           VI.Entity.Activate(P2ColliderBox);
         }
         dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva (Lighthouse)");
+        MemoryFragmentExpand.ActivateFragment(0);
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 11: // Passenger 1 correct
@@ -113,6 +114,7 @@ namespace BonVoyage {
           VI.Entity.Activate(P2ColliderBox);
         }
         dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva (Multistory House)");
+        MemoryFragmentExpand.ActivateFragment(0);
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 20: // Passenger 2 wrong
@@ -121,6 +123,7 @@ namespace BonVoyage {
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
         dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus (Brown House)");
+        MemoryFragmentExpand.ActivateFragment(1);
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 21: // Passenger 2 correct
@@ -130,6 +133,7 @@ namespace BonVoyage {
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
         dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus (Water Fountain)");
         EnemyController.EnemyActivated = true;
+        MemoryFragmentExpand.ActivateFragment(1);
         if (!dialogEnded) EndDropoffDialog();
         break;
       }
