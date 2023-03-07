@@ -1,0 +1,37 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "You're awake at long last!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": " I was swept away by the strong waves and when I came to, you were left unconscious right beside me.",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "What am I here for...",
+   "Speaker": 1,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "To ferry people of course! But don't worry, I'll guide you along the way.",
+   "Speaker": 0,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "Come on now, there's a little girl waiting for us right ahead, let's not keep her waiting!",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
