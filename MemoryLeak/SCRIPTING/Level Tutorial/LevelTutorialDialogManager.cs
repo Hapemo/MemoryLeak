@@ -14,6 +14,7 @@ namespace BonVoyage {
 
     private bool progressUpdate = false;
     static public bool runIntroDialog;
+    static public bool runCatDialog;
     static public bool runGirlDialog;
     static public bool runPassengerDialog;
     static public bool runPassengerEndDialog;
@@ -65,6 +66,15 @@ namespace BonVoyage {
         runGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialogue LittleGirl 0");
         if (!runGirlDialog)
           EndGirlDialog();
+      }
+
+      if (runCatDialog) {
+        GeneralDialogStart(6);
+        MoveCameraRightToDialog();
+        Level1ManagerScript.MovePlayer(playerID, -770, 103);
+        runCatDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialogue CatTutorial");
+        if (!runCatDialog)
+          EndCatDialog();
       }
 
       if (runPassengerDialog) {
@@ -131,6 +141,10 @@ namespace BonVoyage {
 
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
+    }
+
+    public void EndCatDialog() {
+      GeneralEndDialog();
     }
 
     public void EndGirlDialog() {
