@@ -32,10 +32,11 @@ namespace BonVoyage {
                 playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
             }
 
-                THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            if (VI.Physics.IsCollided(_ENTITY, playerBoat)) {
-                VI.GameState.Go("Level1");
+            if (!PlayerScript.PlayerInDialogue && VI.Physics.IsCollided(_ENTITY, playerBoat)) {
+                //TransitionSquare.FadeOut("Level1");
+                //VI.GameState.Go("Level1");
             }
         }
 
