@@ -16,7 +16,7 @@ namespace BonVoyage {
         private int HitMax = 11;
         public int HitTaken;
 
-        public bool EnemyActivated = false;
+        static public bool EnemyActivated = false;
 
         public float EnemySpeed = 2.2f;
         private EnemyState OctopusState;
