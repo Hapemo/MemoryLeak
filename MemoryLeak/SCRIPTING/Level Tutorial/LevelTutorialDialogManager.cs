@@ -82,7 +82,7 @@ namespace BonVoyage {
                                                  VI.Transform.Position.GetY(PEndColliderBox)); // Move him to better location
         runPassengerEndDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialog NPC dropoff"); // Run the dialog
         if (!runPassengerEndDialog)
-          EndPassengerDialog();
+          EndDropoffDialog();
       }
 
     }
@@ -125,8 +125,8 @@ namespace BonVoyage {
 
     public void EndPassengerDialog() {
       GeneralEndDialog();
-
-      UpdateObjective("Dialog Objective Passenger1 (Minerva)");
+            
+      VI.Text.Update(UIObjectiveTextID, "Objective: Get the lost soul home");
 
         //TransitionSquare.FadeOut("Level1");
         VI.GameState.Go("Level1");
@@ -137,8 +137,8 @@ namespace BonVoyage {
 
     public void EndGirlDialog() {
       GeneralEndDialog();
-
-      UpdateObjective("Dialog Objective Passenger2 (Argus)");
+            
+      VI.Text.Update(UIObjectiveTextID, "Objective: Find the lost soul");
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
     }
