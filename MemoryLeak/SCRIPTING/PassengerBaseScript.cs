@@ -99,7 +99,7 @@ namespace BonVoyage {
             float diffX = VI.Transform.Position.GetX(_ePlayer) - VI.Transform.Position.GetX(_ePassenger);
             float diffY = VI.Transform.Position.GetY(_ePlayer) - VI.Transform.Position.GetY(_ePassenger);
 
-            if (diffX * diffX > (_passengerInitialScaleX * _passengerInitialScaleX + VI.Transform.Scale.GetX(_ePlayer) * VI.Transform.Scale.GetX(_ePlayer)) / 3f) {
+            if (diffX * diffX > (_passengerInitialScaleX * _passengerInitialScaleX + VI.Transform.Scale.GetX(_ePlayer) * VI.Transform.Scale.GetX(_ePlayer)) / 4f) {
                 // Animation
                 VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePassenger) + VI.Math.Normalize.X(diffX, diffY) * 200f * (float)VI.General.DeltaTime());
                 VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePassenger) + VI.Math.Normalize.Y(diffX, diffY) * 200f * (float)VI.General.DeltaTime());
