@@ -13,7 +13,7 @@ namespace BonVoyage {
 
 
     private bool progressUpdate = false;
-    static public bool runIntroDialog = true;
+    static public bool runIntroDialog;
     static public bool runGirlDialog;
     static public bool runPassengerDialog;
     static public bool runPassengerEndDialog;
@@ -38,6 +38,7 @@ namespace BonVoyage {
       PEndColliderBox = VI.Entity.GetId("PassengerDropOffBox");
 
       dialogInit = true;
+      runIntroDialog = true;
     }
 
     public void EarlyUpdate(int _ENTITY) {
@@ -82,7 +83,7 @@ namespace BonVoyage {
                                                  VI.Transform.Position.GetY(PEndColliderBox)); // Move him to better location
         runPassengerEndDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialog NPC dropoff"); // Run the dialog
         if (!runPassengerEndDialog)
-          EndPassengerDialog();
+          EndDropoffDialog();
       }
 
     }
@@ -125,8 +126,8 @@ namespace BonVoyage {
 
     public void EndPassengerDialog() {
       GeneralEndDialog();
-
-      UpdateObjective("Dialog Objective Passenger1 (Minerva)");
+            
+      VI.Text.Update(UIObjectiveTextID, "Objective: Get the lost soul home");
 
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
@@ -134,8 +135,8 @@ namespace BonVoyage {
 
     public void EndGirlDialog() {
       GeneralEndDialog();
-
-      UpdateObjective("Dialog Objective Passenger2 (Argus)");
+            
+      VI.Text.Update(UIObjectiveTextID, "Objective: Find the lost soul");
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
     }
