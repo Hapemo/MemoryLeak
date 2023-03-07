@@ -574,11 +574,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 4.0,
-                "Y": -90.0
+                "Y": -130.0
             },
             "scaleOffset": {
                 "X": 0.47999998927116394,
-                "Y": 0.15000000596046448
+                "Y": 0.5
             },
             "isTrigger": false,
             "renderFlag": true
@@ -1264,7 +1264,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 321.5616760253906,
-                "Y": -561.0851440429688
+                "Y": -550.3328857421875
             }
         },
         "Sprite": {
@@ -7503,7 +7503,7 @@
         "Transform": {
             "scale": {
                 "X": 505.0,
-                "Y": 150.0
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
@@ -7544,12 +7544,12 @@
         },
         "Transform": {
             "scale": {
-                "X": 749.0,
+                "X": 700.0,
                 "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -715.1119995117188,
+                "X": -740.1119995117188,
                 "Y": 103.72699737548828
             }
         },
@@ -7645,7 +7645,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Menu\\button-2.png",
             "layer": 5
         },
         "RectCollider": {
@@ -13937,6 +13937,39 @@
         },
         "Script": {
             "name": "SwitchToLevel1"
+        }
+    },
+    {
+        "General": {
+            "name": "Mouse",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 50.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1985.17724609375,
+                "Y": 618.650390625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\cursors\\UI_Cursor_Mouse.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": ""
         }
     }
 ]
