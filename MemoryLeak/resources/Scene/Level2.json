@@ -14459,7 +14459,7 @@
                 "X": 2.0,
                 "Y": 1.0
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "LayerCollider": {
@@ -14521,7 +14521,7 @@
                 "X": 2.0,
                 "Y": 1.0
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "LayerCollider": {
