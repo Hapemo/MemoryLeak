@@ -7645,7 +7645,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Menu\\button-2.png",
             "layer": 5
         },
         "RectCollider": {
