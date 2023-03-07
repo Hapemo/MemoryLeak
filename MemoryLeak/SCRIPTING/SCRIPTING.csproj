@@ -70,6 +70,7 @@
     <Compile Include="CreditsButton.cs" />
     <Compile Include="CrystalBallsScript.cs" />
     <Compile Include="CutSceneScript.cs" />
+    <Compile Include="DialogManager.cs" />
     <Compile Include="EnemyController.cs" />
     <Compile Include="EnemyMapScript.cs" />
     <Compile Include="Fragment1.cs" />
@@ -80,17 +81,19 @@
     <Compile Include="Fragment6.cs" />
     <Compile Include="HowToPlayButton.cs" />
     <Compile Include="InternalCalls.cs" />
+    <Compile Include="Level 2\Level2DialogManager.cs" />
     <Compile Include="Level 2\Level2Passenger1Script.cs" />
     <Compile Include="Level 2\Level2Passenger2Script.cs" />
+    <Compile Include="Level Tutorial\LevelTutorialDialogManager.cs" />
     <Compile Include="Level Tutorial\LevelTutorialPassengerScript.cs" />
     <Compile Include="Level Tutorial\LevelTutorialGirlScript.cs" />
     <Compile Include="LevelToMenu.cs" />
     <Compile Include="MemoryFragmentExpand.cs" />
-    <Compile Include="MiniMapScript.cs" />
     <Compile Include="Level 1\Level1Passenger2Script.cs" />
     <Compile Include="Level 1\Level1Passenger1Script.cs" />
     <Compile Include="Level 1\Level1GirlScript.cs" />
     <Compile Include="Level 1\Level1ManagerScript.cs" />
+    <Compile Include="MiniMapScript.cs" />
     <Compile Include="PlayButton.cs" />
     <Compile Include="PlayerScriptMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +104,8 @@
     <Compile Include="BGMcontroller.cs" />
     <Compile Include="Level Tutorial\LevelTutorialCatScript.cs" />
     <Compile Include="PassengerBaseScript.cs" />
+    <Compile Include="BackToGame.cs" />
+    <Compile Include="TransitionSquare.cs" />
     <Compile Include="SFXcontroller.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="SettingsButton.cs" />

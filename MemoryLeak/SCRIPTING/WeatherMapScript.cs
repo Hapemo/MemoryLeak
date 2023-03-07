@@ -42,8 +42,8 @@ namespace BonVoyage {
             textbigOffsetY = 360;
             textScale = VI.Text.Scale.Get(weathermapID);
             textbigScale = 1.0f;
-            maxMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"))/2;
-            maxMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"))/2;
+            maxMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "LevelShadowBackground"))/2;
+            maxMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "LevelShadowBackground"))/2;
             VI.Weather.Init(maxMapX, maxMapY);
         }
         public void Init(int _ENTITY) {

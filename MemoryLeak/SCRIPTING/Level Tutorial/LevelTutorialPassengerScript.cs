@@ -29,9 +29,9 @@ namespace BonVoyage {
                 // Check if player is colliding with that box
                 if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
                     // Check if dialogue script should be ran
-                    if (!Level1DialogManager.runPassenger2Dialog) {
+                    if (!LevelTutorialDialogManager.runPassengerDialog) {
                         // Set Dialogue Manager's flag to true to run it
-                        Level1DialogManager.runPassenger2Dialog = true;
+                        LevelTutorialDialogManager.runPassengerDialog = true;
                         
                         // Deactivate the trigger box
                         VI.Entity.Deactivate(triggerBox);
@@ -47,7 +47,7 @@ namespace BonVoyage {
             }
 
             // Passenger is ready to attach & dialogue has ended
-            if (ReadyToAttach && !Level1DialogManager.runPassenger2Dialog) {
+            if (ReadyToAttach && !LevelTutorialDialogManager.runPassengerDialog) {
                 // Set flag variables
                 AttachToPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
@@ -80,7 +80,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
-
+                
                 // Set flag
                 correctDestinationDelivery = true;
             }
@@ -96,6 +96,7 @@ namespace BonVoyage {
 
             // Play animation of passenger detaching from player
             if (DetachFromPlayerAnimation) {
+                LevelTutorialDialogManager.runPassengerEndDialog = true;
                 // Animate detachment to player
                 // returns true once complete
                 int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
@@ -128,7 +129,6 @@ namespace BonVoyage {
                             // Do nothing
                             break;
                     }
-
                     // Deactivate the drop off point boxes
                     VI.Entity.Deactivate(correctDestination_Box);
                     VI.Entity.Deactivate(wrongDestination_Box);

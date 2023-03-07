@@ -41,8 +41,8 @@ namespace BonVoyage {
             textbigOffsetY = 360;
             textScale = VI.Text.Scale.Get(minimapID);
             textbigScale = 1.0f;
-            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "Level1"));
-            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "Level1"));
+            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "LevelShadowBackground"));
+            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "LevelShadowBackground"));
             miniMapX = 1244;
             miniMapY = 700;
         }

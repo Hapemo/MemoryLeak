@@ -2,10 +2,8 @@
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class LevelTutorialGirlScript : BaseScript {
-        private int playerBoat;
-        private int triggerBox;
-
+    public class BackToGame : BaseScript
+    {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
@@ -13,8 +11,6 @@ namespace BonVoyage {
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-            triggerBox = VI.Entity.GetId("GirlBox", "LevelTutorial");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -24,17 +20,11 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            if (THIS.Input.Button.Released())
+            {
+                VI.Scene.Pause("Pause");
+                VI.Scene.Play(VI.GameState.GetName());
 
-            // Check if cat's trigger box is active
-            if (VI.Entity.IsActive(triggerBox)) {
-                // Check if player is colliding with that box
-                if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
-                    // Set Dialog Manager's flag to true and run it
-                    LevelTutorialDialogManager.runGirlDialog = true;
-
-                    // Deactivate the trigger box
-                    VI.Entity.Deactivate(triggerBox);
-                }
             }
         }
 

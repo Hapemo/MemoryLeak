@@ -9,14 +9,14 @@ namespace BonVoyage {
             base.Init(_ENTITY);
 
             // Get required entities
-            playerBoat = VI.Entity.GetId("Boat", "Level2");
-            triggerBox = VI.Entity.GetId("Passenger1Box", "Level2");
+            playerBoat = VI.Entity.GetId("Boat");
+            triggerBox = VI.Entity.GetId("Passenger1Box");
 
-            correctDestination_Box = VI.Entity.GetId("", "Level2");
-            correctDestination_RenderLocation = VI.Entity.GetId("", "Level2");
+            correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint");
+            correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender");
 
-            wrongDestination_Box = VI.Entity.GetId("", "Level2");
-            wrongDestination_RenderLocation = VI.Entity.GetId("", "Level2");
+            wrongDestination_Box = VI.Entity.GetId("LighthouseBox");
+            wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDestRender");
         }
 
         public override void Update(int _ENTITY) {
@@ -27,9 +27,9 @@ namespace BonVoyage {
                 // Check if player is colliding with that box
                 if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
                     // Check if dialogue script should be ran
-                    if (!Level1DialogManager.runPassenger2Dialog) {
+                    if (!Level2DialogManager.runPassengerDialog) {
                         // Set Dialogue Manager's flag to true to run it
-                        Level1DialogManager.runPassenger2Dialog = true;
+                        Level2DialogManager.runPassengerDialog = true;
                         
                         // Deactivate the trigger box
                         VI.Entity.Deactivate(triggerBox);
@@ -45,7 +45,7 @@ namespace BonVoyage {
             }
 
             // Passenger is ready to attach & dialogue has ended
-            if (ReadyToAttach && !Level1DialogManager.runPassenger2Dialog) {
+            if (ReadyToAttach && !Level2DialogManager.runPassengerDialog) {
                 // Set flag variables
                 AttachToPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;

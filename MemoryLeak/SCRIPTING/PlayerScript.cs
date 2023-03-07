@@ -59,10 +59,21 @@ namespace BonVoyage {
                 // Pausing the game
                 #region Pause Game
                 // Escape key is pressed
-                if (VI.Input.Key.Press(256))
+                if (VI.Input.Key.Release(256))
                 {
                     // Assumes the main game scene level running is the same as the gamestate name
-                    VI.Scene.Pause(VI.GameState.GetName());     // Pause current scene
+                    VI.Scene.Pause(VI.GameState.GetName());     
+                    //VI.Scene.Pause("Game Over");
+                    //VI.Scene.Pause("How_To_Play");
+                    //VI.Scene.Pause("Quit Confirmation");
+                    //VI.Scene.Pause("Dialogue");
+                    //VI.Scene.Pause("cutscene1");
+                    //VI.Scene.Pause("CrystalBalls");
+                    //VI.Scene.Pause("MiniMap");
+                    //VI.Scene.Pause("EnemyMap");
+                    //VI.Scene.Pause("WeatherMap");
+                    //VI.Scene.Pause("BackGround");
+                    
                     VI.Scene.Play("Pause");                     // Play the pause scene
                                                                 // Play audio transition if required
 

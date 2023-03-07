@@ -198,7 +198,7 @@
             "width": 0.0
         },
         "Script": {
-            "name": "ExitConfirmationButton"
+            "name": "QuitButton"
         },
         "Button": {
             "interactable": true
@@ -262,7 +262,7 @@
             "width": 0.0
         },
         "Script": {
-            "name": "BackToGameButton"
+            "name": "BackToGame"
         },
         "Button": {
             "interactable": true

@@ -8,8 +8,8 @@
             },
             "rotation": 1.3333333730697632,
             "translation": {
-                "X": -1525.0,
-                "Y": 800.0
+                "X": -1525.69873046875,
+                "Y": 799.8675537109375
             }
         },
         "isActive": false,
@@ -21,12 +21,6 @@
         "isActive": true,
         "layer": 10,
         "order": 0
-    },
-    {
-        "SceneName": "Game Over",
-        "isActive": true,
-        "layer": 10,
-        "order": 4
     },
     {
         "SceneName": "How_To_Play",
@@ -45,12 +39,6 @@
         "isActive": false,
         "layer": 8,
         "order": 7
-    },
-    {
-        "SceneName": "cutscene1",
-        "isActive": true,
-        "layer": 10,
-        "order": 5
     },
     {
         "SceneName": "CrystalBalls",
@@ -86,6 +74,29 @@
         "SceneName": "BackGround",
         "isActive": false,
         "layer": 4,
+        "order": 0
+    },
+    {
+        "SceneName": "LevelShadowBackground",
+        "Transform": {
+            "scale": {
+                "X": 1200.0,
+                "Y": 675.0
+            },
+            "rotation": 1.3333333730697632,
+            "translation": {
+                "X": -1525.69873046875,
+                "Y": 799.8675537109375
+            }
+        },
+        "isActive": false,
+        "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "Transition",
+        "isActive": false,
+        "layer": 15,
         "order": 0
     }
 ]

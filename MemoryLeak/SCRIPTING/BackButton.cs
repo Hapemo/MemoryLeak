@@ -29,6 +29,7 @@ namespace BonVoyage {
                 VI.Scene.Pause("Quit Confirmation");
                 VI.Scene.Play("Menu_Main");
                 VI.Scene.Play("TransitionScene");
+                VI.Scene.Play("Pause");
             }
         }
 

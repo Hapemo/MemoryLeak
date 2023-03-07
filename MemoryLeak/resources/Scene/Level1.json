@@ -1,117 +1,6 @@
 [
     {
         "General": {
-            "name": "Water",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 10000.0,
-                "Y": 10000.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Env_Water.png",
-            "layer": 0
-        },
-        "MovementAI": {
-            "run": true,
-            "next": true,
-            "loop": true,
-            "reverse": false,
-            "cycle": true,
-            "nextStep": 1,
-            "acceleration": 0.0,
-            "targets": [
-                {
-                    "time": 0.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 10000.0,
-                            "Y": 10000.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 0.0
-                        }
-                    }
-                },
-                {
-                    "time": 2.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 9500.0,
-                            "Y": 9250.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 30.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.5,
-                    "Transform": {
-                        "scale": {
-                            "X": 10000.0,
-                            "Y": 10000.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 0.0
-                        }
-                    }
-                },
-                {
-                    "time": 2.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 9500.0,
-                            "Y": 9250.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": -30.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.5,
-                    "Transform": {
-                        "scale": {
-                            "X": 10000.0,
-                            "Y": 10000.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 0.0
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "General": {
             "name": "rain",
             "tag": 6,
             "subtag": 0,
@@ -177,9 +66,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -342,9 +231,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 4,
+            "currFrameIndex": 8,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -393,9 +282,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -404,9 +293,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -441,6 +330,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -599,9 +492,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 0,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.0833333358168602
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -669,7 +562,7 @@
                 "X": 0.0,
                 "Y": 0.0
             },
-            "radius": 500.0,
+            "radius": 600.0,
             "intensity": 0.0
         }
     },
@@ -704,9 +597,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -840,9 +733,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -882,6 +775,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -898,15 +795,15 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1916.9019775390625,
-                "Y": -900.6810302734375
+                "X": -1904.955078125,
+                "Y": -900.6809692382813
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -915,9 +812,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -952,42 +849,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "Light",
-            "tag": 6,
-            "subtag": 0,
-            "isActive": true
         },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 923.78271484375,
-                "Y": 118.41691589355469
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 222,
-                "g": 100,
-                "b": 179,
-                "a": 100
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 2
-        },
-        "AI": {
-            "colorChange": 1,
-            "movement": 0,
-            "speed": 1.0,
-            "range": 10.0
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -1010,9 +875,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -1052,6 +917,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -1085,9 +954,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -1125,9 +994,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -1136,9 +1005,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -1173,6 +1042,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -1195,9 +1068,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -1206,9 +1079,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1220,6 +1093,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -1242,9 +1119,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -1253,9 +1130,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1267,6 +1144,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -1380,9 +1261,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -1623,7 +1504,7 @@
             "name": "Enemy",
             "tag": 2,
             "subtag": 3,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1632,8 +1513,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1366.6710205078125,
-                "Y": 671.593994140625
+                "X": -1360.5142822265625,
+                "Y": 634.4677124023438
             }
         },
         "Sprite": {
@@ -1946,17 +1827,17 @@
             "name": "EnemyTrigger",
             "tag": 2,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
-                "X": 954.5,
-                "Y": 868.5
+                "X": 956.73876953125,
+                "Y": 870.36572265625
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1382.6710205078125,
-                "Y": 655.593994140625
+                "X": -1375.114990234375,
+                "Y": 620.3798828125
             }
         },
         "Sprite": {
@@ -2313,15 +2194,15 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1057.9405517578125,
+                "X": -1061.7236328125,
                 "Y": 1153.4443359375
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 89,
+                "g": 89,
+                "b": 89,
                 "a": 255
             },
             "sprite": 2,
@@ -2330,9 +2211,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -2367,6 +2248,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -2389,9 +2274,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 126,
+                "g": 126,
+                "b": 126,
                 "a": 255
             },
             "sprite": 2,
@@ -2400,9 +2285,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2414,6 +2299,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -2436,9 +2325,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -2478,6 +2367,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -2500,9 +2393,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -2511,9 +2404,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -2548,6 +2441,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -2570,9 +2467,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -2589,6 +2486,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -2600,8 +2501,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 437.1398010253906
+                "X": 412.5,
+                "Y": 449.6398010253906
             },
             "rotation": 0.0,
             "translation": {
@@ -2611,9 +2512,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -2653,6 +2554,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -2675,9 +2580,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -2705,6 +2610,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -2738,9 +2647,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -2885,9 +2794,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -3021,9 +2930,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3032,9 +2941,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3069,6 +2978,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3091,9 +3004,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3133,6 +3046,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3155,9 +3072,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3166,9 +3083,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -3191,6 +3108,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3224,9 +3145,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3402,9 +3323,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3444,6 +3365,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3466,9 +3391,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3477,9 +3402,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3514,6 +3439,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3536,9 +3465,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3547,9 +3476,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -3572,6 +3501,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3594,9 +3527,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3605,9 +3538,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3642,6 +3575,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3664,9 +3601,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3675,9 +3612,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3712,6 +3649,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3734,9 +3675,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3745,9 +3686,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3782,6 +3723,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3804,9 +3749,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3815,9 +3760,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3852,6 +3797,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3874,9 +3823,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3885,9 +3834,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3922,6 +3871,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -3944,9 +3897,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3955,9 +3908,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3992,6 +3945,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4014,9 +3971,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4044,6 +4001,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4066,9 +4027,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4077,9 +4038,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4114,6 +4075,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4136,9 +4101,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4147,9 +4112,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4184,6 +4149,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4206,9 +4175,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4217,9 +4186,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4254,6 +4223,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4276,9 +4249,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4287,9 +4260,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4324,6 +4297,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4346,9 +4323,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4357,9 +4334,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4394,6 +4371,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4416,9 +4397,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4458,6 +4439,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4475,14 +4460,14 @@
             "rotation": 0.0,
             "translation": {
                 "X": -2300.051513671875,
-                "Y": -229.5624237060547
+                "Y": -229.56243896484375
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4510,6 +4495,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4532,9 +4521,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4543,9 +4532,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4580,6 +4569,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4602,9 +4595,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4613,9 +4606,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4650,6 +4643,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4672,9 +4669,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4683,9 +4680,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4720,6 +4717,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4742,9 +4743,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4784,6 +4785,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4806,9 +4811,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4825,6 +4830,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4847,9 +4856,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4858,9 +4867,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4895,6 +4904,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4917,9 +4930,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4928,9 +4941,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4965,6 +4978,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -4987,9 +5004,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -4998,9 +5015,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5012,6 +5029,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5034,9 +5055,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5045,9 +5066,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5082,6 +5103,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5104,9 +5129,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5115,9 +5140,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5140,6 +5165,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5162,9 +5191,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5173,9 +5202,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5210,6 +5239,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5232,9 +5265,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5243,9 +5276,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5268,6 +5301,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5290,9 +5327,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5301,9 +5338,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5326,6 +5363,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5348,9 +5389,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5359,9 +5400,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5384,6 +5425,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5406,9 +5451,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5417,9 +5462,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5431,6 +5476,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5453,9 +5502,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5464,9 +5513,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5478,6 +5527,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5500,9 +5553,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5511,9 +5564,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5548,6 +5601,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5570,9 +5627,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5581,9 +5638,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5618,6 +5675,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5640,9 +5701,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5651,9 +5712,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5688,6 +5749,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5710,9 +5775,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5721,9 +5786,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5758,6 +5823,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5780,9 +5849,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5791,9 +5860,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5828,6 +5897,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5850,9 +5923,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5861,9 +5934,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5898,6 +5971,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5920,9 +5997,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -5931,9 +6008,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5968,6 +6045,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -5990,9 +6071,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6001,9 +6082,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6015,6 +6096,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6037,9 +6122,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6048,9 +6133,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6062,6 +6147,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6084,9 +6173,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6095,9 +6184,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -6120,6 +6209,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6142,9 +6235,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6153,9 +6246,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 1.0,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.5833337306976318
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6167,6 +6260,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6189,9 +6286,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6200,9 +6297,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6237,6 +6334,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6259,9 +6360,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6270,9 +6371,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6284,6 +6385,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6306,9 +6411,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6317,9 +6422,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6354,6 +6459,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6376,9 +6485,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6387,9 +6496,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6424,6 +6533,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6457,9 +6570,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6493,9 +6606,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6504,9 +6617,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6541,6 +6654,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6552,8 +6669,8 @@
         },
         "Transform": {
             "scale": {
-                "X": -400.0,
-                "Y": 400.0
+                "X": -385.0,
+                "Y": 415.0
             },
             "rotation": 0.0,
             "translation": {
@@ -6563,9 +6680,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6582,6 +6699,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6598,15 +6719,15 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 537.016845703125,
+                "X": 540.800048828125,
                 "Y": 1455.67431640625
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6615,9 +6736,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6652,6 +6773,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6716,9 +6841,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6727,9 +6852,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6741,6 +6866,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6763,9 +6892,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6774,9 +6903,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6788,6 +6917,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6810,9 +6943,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6821,9 +6954,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6835,6 +6968,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6857,9 +6994,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6868,9 +7005,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -6893,6 +7030,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6915,9 +7056,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6926,9 +7067,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6940,6 +7081,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -6962,9 +7107,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -6973,9 +7118,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -6998,6 +7143,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7020,9 +7169,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7031,9 +7180,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7056,6 +7205,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7078,9 +7231,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7089,9 +7242,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7114,6 +7267,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7136,9 +7293,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7147,9 +7304,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7172,6 +7329,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7194,9 +7355,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7205,9 +7366,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7230,6 +7391,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7252,9 +7417,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7263,9 +7428,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7277,6 +7442,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7299,9 +7468,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7310,9 +7479,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7324,6 +7493,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7346,9 +7519,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7357,9 +7530,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7371,6 +7544,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7393,9 +7570,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7404,9 +7581,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7418,6 +7595,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7440,9 +7621,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7451,9 +7632,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7465,6 +7646,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7487,9 +7672,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7498,9 +7683,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7512,6 +7697,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7534,9 +7723,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7545,9 +7734,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7559,6 +7748,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7581,9 +7774,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7592,9 +7785,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7617,6 +7810,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7639,9 +7836,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7650,9 +7847,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7664,6 +7861,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7686,9 +7887,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7697,9 +7898,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -7734,6 +7935,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7756,9 +7961,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7775,6 +7980,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7797,9 +8006,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7827,6 +8036,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7843,15 +8056,15 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2420.857421875,
+                "X": -2423.64501953125,
                 "Y": 388.771240234375
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7879,6 +8092,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7901,9 +8118,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7912,9 +8129,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7926,6 +8143,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7948,9 +8169,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -7959,9 +8180,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7973,6 +8194,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -7995,9 +8220,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8006,9 +8231,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8020,6 +8245,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8042,9 +8271,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8053,9 +8282,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8067,6 +8296,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8089,9 +8322,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8100,9 +8333,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8114,6 +8347,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8136,9 +8373,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8147,9 +8384,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -8172,6 +8409,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8194,9 +8435,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8205,9 +8446,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8219,6 +8460,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8292,9 +8537,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8303,9 +8548,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -8340,6 +8585,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8395,9 +8644,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8425,6 +8674,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8447,9 +8700,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8466,6 +8719,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8488,9 +8745,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8507,6 +8764,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8529,9 +8790,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8540,9 +8801,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8554,6 +8815,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8576,9 +8841,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8587,9 +8852,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8601,6 +8866,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8623,9 +8892,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8634,9 +8903,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8648,6 +8917,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8670,9 +8943,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8681,9 +8954,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8695,6 +8968,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8717,9 +8994,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8728,9 +9005,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8742,6 +9019,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8764,9 +9045,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8775,9 +9056,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8789,6 +9070,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8811,9 +9096,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8822,9 +9107,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -8847,6 +9132,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8869,9 +9158,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8880,9 +9169,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8894,6 +9183,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8916,9 +9209,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8927,9 +9220,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -8952,6 +9245,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -8974,9 +9271,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8985,9 +9282,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -9010,6 +9307,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9032,9 +9333,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -9043,9 +9344,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9057,6 +9358,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9079,9 +9384,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -9090,9 +9395,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9104,6 +9409,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9126,9 +9435,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -9145,6 +9454,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9156,8 +9469,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 410.5,
-                "Y": 447.6398010253906
+                "X": 415.5,
+                "Y": 452.6398010253906
             },
             "rotation": 0.0,
             "translation": {
@@ -9167,9 +9480,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -9186,6 +9499,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9208,9 +9525,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -9219,9 +9536,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9233,6 +9550,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9255,9 +9576,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -9266,9 +9587,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9280,6 +9601,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9302,9 +9627,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -9313,9 +9638,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9327,6 +9652,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9384,8 +9713,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 46
         },
         "RectCollider": {
@@ -9437,8 +9766,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 46
         },
         "RectCollider": {
@@ -9474,13 +9803,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -620.0,
-                "Y": 467.0
+                "X": -615.0,
+                "Y": 472.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2368.152587890625,
-                "Y": 738.1875610351563
+                "X": -2317.9755859375,
+                "Y": 774.4265747070313
             }
         },
         "Sprite": {
@@ -9490,8 +9819,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 46
         },
         "RectCollider": {
@@ -9532,8 +9861,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2050.1064453125,
-                "Y": 865.9431762695313
+                "X": 2026.411865234375,
+                "Y": 923.4874267578125
             }
         },
         "Sprite": {
@@ -9543,15 +9872,15 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -9597,9 +9926,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -9608,9 +9937,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -9645,6 +9974,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -9728,9 +10061,9 @@
         },
         "SheetAnimation": {
             "frameCount": 6,
-            "currFrameIndex": 0,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -10106,9 +10439,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10117,9 +10450,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10131,6 +10464,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10153,9 +10490,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10172,6 +10509,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10194,9 +10535,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10213,6 +10554,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10235,9 +10580,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10254,6 +10599,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10276,9 +10625,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10295,6 +10644,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10317,9 +10670,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10328,9 +10681,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10342,6 +10695,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10364,9 +10721,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10375,9 +10732,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10389,6 +10746,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10411,9 +10772,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10430,6 +10791,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10452,9 +10817,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10471,6 +10836,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10482,8 +10851,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 404.5,
-                "Y": 404.5
+                "X": 419.5,
+                "Y": 419.5
             },
             "rotation": 0.0,
             "translation": {
@@ -10493,9 +10862,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10512,6 +10881,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10534,9 +10907,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10553,6 +10926,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10575,9 +10952,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10594,6 +10971,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10616,9 +10997,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10635,6 +11016,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10657,9 +11042,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10676,6 +11061,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10698,9 +11087,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10709,9 +11098,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -10734,6 +11123,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10756,9 +11149,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10767,9 +11160,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -10792,6 +11185,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10814,9 +11211,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10825,9 +11222,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -10850,6 +11247,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10872,9 +11273,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10883,9 +11284,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -10908,6 +11309,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10930,9 +11335,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10941,9 +11346,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -10966,6 +11371,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -10988,9 +11397,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -10999,9 +11408,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11013,6 +11422,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11035,9 +11448,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11046,9 +11459,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11060,6 +11473,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11082,9 +11499,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11093,9 +11510,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11107,6 +11524,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11129,9 +11550,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11140,9 +11561,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11154,6 +11575,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11176,9 +11601,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11187,9 +11612,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11201,6 +11626,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11223,9 +11652,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11234,9 +11663,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11248,6 +11677,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11270,9 +11703,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11281,9 +11714,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11295,6 +11728,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11317,9 +11754,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11328,9 +11765,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11342,6 +11779,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11364,9 +11805,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11375,9 +11816,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11389,6 +11830,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11411,9 +11856,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11422,9 +11867,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11436,6 +11881,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11458,9 +11907,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11469,9 +11918,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11483,6 +11932,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11505,9 +11958,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11516,9 +11969,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11530,6 +11983,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11552,9 +12009,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11563,9 +12020,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11577,6 +12034,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11599,9 +12060,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11610,9 +12071,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11624,6 +12085,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11646,9 +12111,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11657,9 +12122,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11671,6 +12136,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11693,9 +12162,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11704,9 +12173,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11718,6 +12187,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11740,9 +12213,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11751,9 +12224,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11765,6 +12238,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11787,9 +12264,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11798,9 +12275,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11812,6 +12289,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11834,9 +12315,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11845,9 +12326,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11859,6 +12340,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11881,9 +12366,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11892,9 +12377,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11906,6 +12391,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11928,9 +12417,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11939,9 +12428,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11953,6 +12442,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -11975,9 +12468,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -11986,9 +12479,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12000,6 +12493,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12022,9 +12519,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12033,9 +12530,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12047,6 +12544,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12069,9 +12570,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12080,9 +12581,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12094,6 +12595,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12116,9 +12621,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12127,9 +12632,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12141,6 +12646,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12163,9 +12672,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12174,9 +12683,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12188,6 +12697,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12210,9 +12723,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12221,9 +12734,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12235,6 +12748,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12257,9 +12774,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12268,9 +12785,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12282,6 +12799,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12304,9 +12825,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12315,9 +12836,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12329,6 +12850,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12351,9 +12876,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12362,9 +12887,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12376,6 +12901,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12398,9 +12927,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12409,9 +12938,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12423,6 +12952,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12445,9 +12978,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12456,9 +12989,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12470,6 +13003,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12492,9 +13029,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12503,9 +13040,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12517,6 +13054,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12539,9 +13080,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12550,9 +13091,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12564,6 +13105,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12586,9 +13131,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12597,9 +13142,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12611,6 +13156,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12633,9 +13182,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12644,9 +13193,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12658,6 +13207,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12680,9 +13233,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12691,9 +13244,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12705,6 +13258,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12727,9 +13284,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12738,9 +13295,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12752,6 +13309,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12774,9 +13335,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12785,9 +13346,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12799,6 +13360,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12821,9 +13386,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12832,9 +13397,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12846,6 +13411,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12868,9 +13437,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12879,9 +13448,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12893,6 +13462,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12915,9 +13488,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12926,9 +13499,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12940,6 +13513,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -12962,9 +13539,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -12973,9 +13550,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12987,6 +13564,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13009,9 +13590,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13020,9 +13601,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13034,6 +13615,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13056,9 +13641,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13067,9 +13652,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13081,6 +13666,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13103,9 +13692,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13114,9 +13703,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13128,6 +13717,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13150,9 +13743,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13161,9 +13754,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13175,6 +13768,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13197,9 +13794,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13208,9 +13805,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13222,6 +13819,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13244,9 +13845,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13255,9 +13856,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13269,6 +13870,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13291,9 +13896,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13302,9 +13907,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13316,6 +13921,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13338,9 +13947,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13349,9 +13958,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13363,6 +13972,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13385,9 +13998,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13396,9 +14009,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13410,6 +14023,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13432,9 +14049,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13443,9 +14060,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13457,6 +14074,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13479,9 +14100,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13490,9 +14111,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13504,6 +14125,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13526,9 +14151,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13537,9 +14162,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13551,6 +14176,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13573,9 +14202,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13584,9 +14213,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13598,6 +14227,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13620,9 +14253,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13631,9 +14264,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13645,6 +14278,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
@@ -13667,9 +14304,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -13678,9 +14315,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13692,442 +14329,10 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        }
-    },
-    {
-        "General": {
-            "name": "BorderShadows",
-            "tag": 6,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 40.28497314453125,
-                "Y": 126.65190124511719
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 65
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": -2800.0,
-                        "Y": 1140.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2568.170166015625,
-                        "Y": 1000.4732666015625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2447.409912109375,
-                        "Y": 778.94677734375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2318.859130859375,
-                        "Y": 534.8922119140625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2190.30810546875,
-                        "Y": 320.8751220703125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2042.279541015625,
-                        "Y": 151.91436767578125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1859.19189453125,
-                        "Y": -24.555816650390625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1847.50537109375,
-                        "Y": -257.3463134765625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1695.58154296875,
-                        "Y": -475.1180419921875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2057.861572265625,
-                        "Y": -632.8148193359375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2295.486083984375,
-                        "Y": -873.1146240234375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2061.757080078125,
-                        "Y": -1049.5848388671875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1691.68603515625,
-                        "Y": -1248.5831298828125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1329.40576171875,
-                        "Y": -1548.9578857421875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -959.3346557617188,
-                        "Y": -1582.75
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -600.9500122070313,
-                        "Y": -1533.939208984375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -211.40155029296875,
-                        "Y": -1642.8250732421875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 174.25164794921875,
-                        "Y": -1597.768798828125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 439.14471435546875,
-                        "Y": -1567.7314453125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 684.5601196289063,
-                        "Y": -1447.5814208984375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 844.2752075195313,
-                        "Y": -1289.884765625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1222.705322265625,
-                        "Y": -1465.8046875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1567.59814453125,
-                        "Y": -1471.8489990234375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1592.68115234375,
-                        "Y": -1018.53955078125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1630.30615234375,
-                        "Y": -855.34814453125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1410.82861328125,
-                        "Y": -746.5538330078125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1555.056640625,
-                        "Y": -438.303466796875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1429.64111328125,
-                        "Y": -383.9063720703125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1473.53662109375,
-                        "Y": -154.22955322265625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1316.76708984375,
-                        "Y": -75.65591430664063
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1630.020263671875,
-                        "Y": 161.07223510742188
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 2001.516845703125,
-                        "Y": 308.9701843261719
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 2421.468994140625,
-                        "Y": 308.9701843261719
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 2437.620849609375,
-                        "Y": -2096.317138671875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2892.54296875,
-                        "Y": -2127.45361328125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -3054.06298828125,
-                        "Y": 1079.5963134765625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2800.0,
-                        "Y": 1140.0
-                    }
-                }
-            ],
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "BorderShadows2",
-            "tag": 6,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 242.89776611328125,
-                "Y": 119.45335388183594
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 65
-        },
-        "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": -2250.0,
-                        "Y": 1520.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2316.442626953125,
-                        "Y": 1926.9287109375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 2039.185302734375,
-                        "Y": 1923.540283203125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 2204.410888671875,
-                        "Y": 1388.1771240234375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 2084.885986328125,
-                        "Y": 1103.5537109375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1807.16650390625,
-                        "Y": 1052.72802734375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1374.767333984375,
-                        "Y": 1079.8350830078125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 1100.563232421875,
-                        "Y": 1113.71875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 847.4515991210938,
-                        "Y": 1178.097900390625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 661.1334228515625,
-                        "Y": 1100.165283203125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 376.3829345703125,
-                        "Y": 1066.281494140625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 292.01239013671875,
-                        "Y": 886.6976318359375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 45.93170166015625,
-                        "Y": 757.9395141601563
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -56.016021728515625,
-                        "Y": 639.3463134765625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -358.34375,
-                        "Y": 822.318603515625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -614.970703125,
-                        "Y": 768.1045532226563
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -843.4742431640625,
-                        "Y": 622.404541015625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1149.3173828125,
-                        "Y": 859.5906982421875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1409.459716796875,
-                        "Y": 900.251220703125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1405.9443359375,
-                        "Y": 1117.107177734375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1602.808837890625,
-                        "Y": 1015.4559326171875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -1778.580810546875,
-                        "Y": 1059.5047607421875
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2189.88720703125,
-                        "Y": 1306.8560791015625
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -2250.0,
-                        "Y": 1520.0
-                    }
-                }
-            ],
-            "renderFlag": true
+            "centerOffsets": [],
+            "renderFlag": false
         }
     }
 ]
