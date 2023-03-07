@@ -321,100 +321,6 @@
     },
     {
         "General": {
-            "name": "House",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 350.0,
-                "Y": 200.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 456.81475830078125,
-                "Y": -144.29202270507813
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 241,
-                "g": 241,
-                "b": 241,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 2
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.050000011920928955
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -20.0,
-                "Y": -80.0
-            },
-            "scaleOffset": {
-                "X": 0.699999988079071,
-                "Y": 0.4000000059604645
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 60.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": -80.0,
-                        "Y": -17.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 56.0,
-                        "Y": -102.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 170.0,
-                        "Y": -20.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 31.0,
-                        "Y": 56.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -80.0,
-                        "Y": -17.0
-                    }
-                }
-            ],
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
             "name": "P1",
             "tag": 8,
             "subtag": 0,
@@ -427,8 +333,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 359.0740051269531,
-                "Y": -101.2979965209961
+                "X": 428.7642822265625,
+                "Y": -131.16525268554688
             }
         },
         "Sprite": {
@@ -444,9 +350,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 6,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.016666678711771965
+            "timeToFrameSwap": 0.050000011920928955
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -492,20 +398,20 @@
     },
     {
         "General": {
-            "name": "Boat",
-            "tag": 0,
+            "name": "House",
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 210.0,
-                "Y": 120.0
+                "X": 450.0,
+                "Y": 450.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 79.84514617919922,
-                "Y": -119.73450469970703
+                "X": 537.6107177734375,
+                "Y": -97.56636047363281
             }
         },
         "Sprite": {
@@ -516,207 +422,92 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
-            "layer": 43
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
+            "layer": 60
         },
-        "Animation": {
-            "sheets": [
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.15000000596046448,
+            "timeToFrameSwap": 0.816666841506958
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
+                    "centerOffset": {
+                        "X": 50.0,
+                        "Y": -95.0
+                    }
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
+                    "centerOffset": {
+                        "X": 157.30078125,
+                        "Y": -21.902664184570313
+                    }
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
+                    "centerOffset": {
+                        "X": 29.910999298095703,
+                        "Y": 47.77000045776367
+                    }
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
+                    "centerOffset": {
+                        "X": -71.68148803710938,
+                        "Y": -9.955764770507813
+                    }
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_S_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SW_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_W_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NW_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_N_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NE_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_E_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SE_Hit_Spritesheet.png",
-                    "frameCount": 8,
-                    "timePerFrame": 0.10000000149011612
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_S_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_SW_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_W_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NW_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_N_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_E_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
-                },
-                {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_SE_Capsize_Spritesheet.png",
-                    "frameCount": 11,
-                    "timePerFrame": 0.17000000178813934
+                    "centerOffset": {
+                        "X": 50.0,
+                        "Y": -95.0
+                    }
                 }
             ],
-            "currentImageIndex": 2
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Boat",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 300.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 143.36285400390625,
+                "Y": -107.52214050292969
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+            "layer": 62
         },
         "SheetAnimation": {
             "frameCount": 8,
             "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "Physics2D": {
-            "dynamicsEnabled": true,
-            "mass": 1.0,
-            "inertia": 1.0,
-            "restitution": 0.0,
-            "friction": 0.0,
-            "damping": 0.949999988079071,
-            "accumulatedForce": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "velocity": {
-                "X": -33.94560623168945,
-                "Y": 8.332412719726563
-            },
-            "acceleration": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "angularVelocity": 0.0,
-            "angularTorque": 0.0,
-            "forceList": [],
-            "renderFlag": false
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -30.0
-            },
-            "scaleOffset": {
-                "X": 0.699999988079071,
-                "Y": 0.4000000059604645
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Boat_Row_SFX",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "Script": {
-            "name": "PlayerScriptMenu"
+            "timePerFrame": 0.15000000596046448,
+            "timeToFrameSwap": 0.816666841506958
         },
         "LightSource": {
             "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 8.0,
+                "Y": 83.0
             },
-            "radius": 700.0,
+            "radius": 800.0,
             "intensity": 0.0
         }
     }
