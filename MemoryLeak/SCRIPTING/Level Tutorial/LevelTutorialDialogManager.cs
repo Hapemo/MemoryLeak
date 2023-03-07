@@ -95,7 +95,7 @@ namespace BonVoyage {
       }
 
       if (runPassengerEndDialog) {
-        GeneralDialogStart(1);
+        GeneralDialogStart(7);
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(PEndColliderBox),
                                                  VI.Transform.Position.GetY(PEndColliderBox)); // Move him to better location
@@ -146,6 +146,9 @@ namespace BonVoyage {
       GeneralEndDialog();
 
       UpdateObjective("Dialog Objective Passenger1 (Minerva)");
+
+        //TransitionSquare.FadeOut("Level1");
+        VI.GameState.Go("Level1");
 
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
