@@ -31,6 +31,7 @@ namespace BonVoyage {
                 if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
                     // Set Dialog Manager's flag to true and run it
                     // LevelTutorialDialogManager
+                    LevelTutorialDialogManager.runCatDialog = true;
                     
                     // Deactivate the trigger box
                     VI.Entity.Deactivate(triggerBox);
