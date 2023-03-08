@@ -351,7 +351,7 @@
                 "X": -158.0,
                 "Y": -17.0
             },
-            "scale": 1.0,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -463,39 +463,6 @@
         },
         "Button": {
             "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "Dialog Manager",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 176.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -10000.0,
-                "Y": -10000.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 66
-        },
-        "Script": {
-            "name": "LevelTutorialDialogManager"
         }
     }
 ]

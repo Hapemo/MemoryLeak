@@ -454,6 +454,5 @@ Get current dialogue id.
 The id of the current dialog.
 *******************************************************************************/
 int DialogManager::GetCurrentDialogueID() {
-	LOG_INFO("root get current dialog ID");
 	return mCurrentDialogue;
 }

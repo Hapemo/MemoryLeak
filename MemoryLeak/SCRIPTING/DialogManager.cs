@@ -200,7 +200,9 @@ namespace BonVoyage {
       VI.Entity.s_Deactivate(choice2, scene);
     }
 
-
+    public bool MouseClick(string entity, string scene) {
+      return (VI.Input.Mouse.Press() && VI.Input.Button.s_Hover(entity, scene));
+    }
 
     /* For carrying on the dialog conversation logic. It will automatically zoom in and out, disabling and enabling UI too.
          * player - The chatbox entity of the player
@@ -247,17 +249,17 @@ namespace BonVoyage {
 
       // Button click set flags
       if (choiceFlag) {
-        if (VI.Input.Button.s_Released(choice1, scene) || VI.Input.Button.s_Released(choice2, scene))
+        if (MouseClick(choice1, scene) || MouseClick(choice2, scene))
           updateChat = true;
-      } else if (VI.Input.Button.s_Released(player, scene) || VI.Input.Button.s_Released(notPlayer, scene))
+      } else if (VI.Input.Mouse.Press())//(VI.Input.Button.s_Released(player, scene) || VI.Input.Button.s_Released(notPlayer, scene))
         updateChat = true;
 
       // Logic done using those flags
       if (updateChat) {
         updateChat = false;
 
-        //VI.Test.ArgString("CurrentID before check quit: " + VI.Dialogue.Current.GetId());
-        //VI.Test.ArgString("NextID before check quit: " + VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
+        LOG.WRITE("CurrentID before check quit: " + VI.Dialogue.Current.GetId());
+        LOG.WRITE("NextID before check quit: " + VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
         // Finish dialog
         if (VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()) == 0) {
           DeactivateDialogBox(player, notPlayer, choice1, choice2, scene);
@@ -265,35 +267,35 @@ namespace BonVoyage {
           //camZoomingOut = true;
           EnableUI();
           //Console.WriteLine("finished dialog");
-          //VI.Test.ArgString("finished dialog");
+          LOG.WRITE("finished dialog");
           return false;
         }
 
         //Console.WriteLine("Moving on from: " + VI.Dialogue.Current.GetId());
-        //VI.Test.ArgString("Moving on from: " + VI.Dialogue.Current.GetId());
+        LOG.WRITE("Moving on from: " + VI.Dialogue.Current.GetId());
         if (choiceFlag) {
           //Console.WriteLine("It's a choice dialog");
-          //VI.Test.ArgString("It's a choice dialog");
+          LOG.WRITE("It's a choice dialog");
           choiceFlag = false;
           if (VI.Input.Button.s_Released(choice2, scene)) {
             MoveToNextDialog(2);
             latestChoiceChosen = 2;
             LOG.WRITE("latestChoiceChosen = 2");
             //Console.WriteLine("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
-            //VI.Test.ArgString("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
+            LOG.WRITE("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
           } else {
             MoveToNextDialog(1);
             latestChoiceChosen = 1;
             LOG.WRITE("latestChoiceChosen = 1");
             //Console.WriteLine("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
-            //VI.Test.ArgString("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
+            LOG.WRITE("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
           }
           VI.Entity.s_Deactivate(choice1, scene);
           VI.Entity.s_Deactivate(choice2, scene);
         }
         MoveToNextDialog(1);
         //Console.WriteLine("Moving to: " + VI.Dialogue.Current.GetId());
-        //VI.Test.ArgString("Moving to: " + VI.Dialogue.Current.GetId());
+        LOG.WRITE("Moving to: " + VI.Dialogue.Current.GetId());
 
         if (VI.Dialogue.Speaker.IsPlayer(VI.Dialogue.Current.GetId())) {
           VI.Entity.s_Activate(player, scene);
@@ -309,7 +311,7 @@ namespace BonVoyage {
 
         if (VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId()) != 0) {
           //Console.WriteLine("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
-          //VI.Test.ArgString("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
+          LOG.WRITE("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
           VI.Entity.s_Activate(choice1, scene);
           VI.Entity.s_Activate(choice2, scene);
           VI.Text.s_Update(choice1, scene, GetNextDialog(1));
