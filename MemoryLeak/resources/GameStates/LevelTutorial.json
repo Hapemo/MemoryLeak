@@ -43,19 +43,25 @@
     {
         "SceneName": "TutorialDialogue",
         "isActive": false,
-        "layer": 8,
+        "layer": 6,
         "order": 7
     },
     {
         "SceneName": "FPS",
         "isActive": false,
-        "layer": 10,
+        "layer": 9,
         "order": 0
     },
     {
         "SceneName": "Transition",
+        "isActive": true,
+        "layer": 11,
+        "order": 0
+    },
+    {
+        "SceneName": "TutorialUI",
         "isActive": false,
-        "layer": 15,
+        "layer": 7,
         "order": 0
     }
 ]

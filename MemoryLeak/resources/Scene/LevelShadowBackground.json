@@ -22,7 +22,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 200
+                "a": 180
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Env_Water.png",
@@ -139,7 +139,7 @@
                         "rotation": 0.0,
                         "translation": {
                             "X": 0.0,
-                            "Y": 0.0
+                            "Y": 20.0
                         }
                     }
                 }

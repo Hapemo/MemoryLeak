@@ -75,7 +75,8 @@ void AIManager::weatherAIupdate()
 		return;
 	if (mapMaxHeight == 0)
 		return;
-	int update = std::rand() % 100;
+	
+	int update = std::rand() % (int)(FPSManager::fps*2);
 	if (update == 0)
 	{
 		for (int w = 0; w < mapMaxWidth; w++)
