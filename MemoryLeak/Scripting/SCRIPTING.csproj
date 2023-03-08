@@ -94,6 +94,7 @@
     <Compile Include="Level 1\Level1GirlScript.cs" />
     <Compile Include="Level 1\Level1ManagerScript.cs" />
     <Compile Include="MiniMapScript.cs" />
+    <Compile Include="Mouse.cs" />
     <Compile Include="PlayButton.cs" />
     <Compile Include="PlayerScriptMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
