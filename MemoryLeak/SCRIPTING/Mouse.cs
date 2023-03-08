@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class MouseMenu : BaseScript {
+    public class Mouse : BaseScript {
         private const double Pi = 3.141592653589793238f;
         private const float MiniAngle = (float)Pi / 8;
         private const int MovingIconIndexStart = 3;
@@ -14,14 +14,14 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "Menu_Main");
+            playerBoat = VI.Entity.GetId("Boat", VI.GameState.GetName());
             InAnimation = false;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "Menu_Main");
+            playerBoat = VI.Entity.GetId("Boat", VI.GameState.GetName());
             InAnimation = false;
         }
 
@@ -33,8 +33,8 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Transform.Position.SetX(_ENTITY, VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(_ENTITY) / 2f);
-            VI.Transform.Position.SetY(_ENTITY, VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(_ENTITY) / 2f);
+            VI.Transform.Position.SetX(_ENTITY, VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() + VI.Transform.Scale.GetX(_ENTITY) / 2f);
+            VI.Transform.Position.SetY(_ENTITY, VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - VI.Transform.Scale.GetY(_ENTITY) / 2f);
 
             //if (VI.Input.Mouse.Hold()) {
             //    if (!InAnimation) {

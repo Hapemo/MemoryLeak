@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class Mouse : BaseScript {
+    public class MouseMenu : BaseScript {
         private const double Pi = 3.141592653589793238f;
         private const float MiniAngle = (float)Pi / 8;
         private const int MovingIconIndexStart = 3;
