@@ -8,13 +8,43 @@
         },
         "Transform": {
             "scale": {
-                "X": 9910.6962890625,
-                "Y": 9866.0439453125
+                "X": 10000.0,
+                "Y": 10000.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 5.358253479003906
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 200
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Env_Water.png",
+            "layer": 1
+        }
+    },
+    {
+        "General": {
+            "name": "Water2",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 9910.6962890625,
+                "Y": -9866.0439453125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -28,6 +58,12 @@
             "texture": "Textures\\Sprites\\Env_Water.png",
             "layer": 0
         },
+        "AI": {
+            "colorChange": 3,
+            "movement": 0,
+            "speed": 1.0,
+            "range": 10.0
+        },
         "MovementAI": {
             "run": true,
             "next": true,
@@ -38,11 +74,11 @@
             "acceleration": 0.0,
             "targets": [
                 {
-                    "time": 0.0,
+                    "time": 2.0,
                     "Transform": {
                         "scale": {
                             "X": 10000.0,
-                            "Y": 10000.0
+                            "Y": -10000.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -56,7 +92,7 @@
                     "Transform": {
                         "scale": {
                             "X": 9500.0,
-                            "Y": 9250.0
+                            "Y": -9250.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -66,11 +102,11 @@
                     }
                 },
                 {
-                    "time": 1.5,
+                    "time": 2.0,
                     "Transform": {
                         "scale": {
                             "X": 10000.0,
-                            "Y": 10000.0
+                            "Y": -10000.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -84,7 +120,7 @@
                     "Transform": {
                         "scale": {
                             "X": 9500.0,
-                            "Y": 9250.0
+                            "Y": -9250.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -98,7 +134,7 @@
                     "Transform": {
                         "scale": {
                             "X": 10000.0,
-                            "Y": 10000.0
+                            "Y": -10000.0
                         },
                         "rotation": 0.0,
                         "translation": {

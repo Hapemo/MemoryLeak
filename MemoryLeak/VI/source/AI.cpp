@@ -21,8 +21,8 @@ None.
 *******************************************************************************/
 void AIManager::weatherAIinit(float width, float height)
 {
-	mapMaxHeight = (int)(height/100);
-	mapMaxWidth = (int)(width/100);
+	mapMaxHeight = (int)(height/200);
+	mapMaxWidth = (int)(width/200);
 	/*for (int h = 0; h < weatherMap.size(); h++)
 	{
 		weatherMap[h].clear();
@@ -75,7 +75,7 @@ void AIManager::weatherAIupdate()
 		return;
 	if (mapMaxHeight == 0)
 		return;
-	int update = std::rand() % 50;
+	int update = std::rand() % 100;
 	if (update == 0)
 	{
 		for (int w = 0; w < mapMaxWidth; w++)

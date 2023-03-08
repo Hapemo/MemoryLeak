@@ -8,8 +8,38 @@
         },
         "Transform": {
             "scale": {
-                "X": 1600.0,
-                "Y": 900.0
+                "X": -1600.0,
+                "Y": -900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 184,
+                "g": 184,
+                "b": 255,
+                "a": 180
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Env_Water.png",
+            "layer": 1
+        }
+    },
+    {
+        "General": {
+            "name": "Water2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1650.0,
+                "Y": 950.0
             },
             "rotation": 0.0,
             "translation": {
@@ -33,6 +63,87 @@
             "movement": 0,
             "speed": 1.0,
             "range": 10.0
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": true,
+            "reverse": false,
+            "cycle": true,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 1650.0,
+                            "Y": 950.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 1750.0,
+                            "Y": 950.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 30.0
+                        }
+                    }
+                },
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 1700.0,
+                            "Y": 1000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 1650.0,
+                            "Y": 1050.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -30.0
+                        }
+                    }
+                },
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 1700.0,
+                            "Y": 1000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                }
+            ]
         }
     }
 ]
