@@ -39,8 +39,8 @@ namespace BonVoyage {
                         VI.Entity.Deactivate(triggerBox);
 
                         // Activate the drop off point boxes
-                        VI.Entity.Activate(correctDestination_Box);
-                        VI.Entity.Activate(wrongDestination_Box);
+                        //VI.Entity.Activate(correctDestination_Box);
+                        //VI.Entity.Activate(wrongDestination_Box);
                         
                         // Set flag to true
                         ReadyToAttach = true;

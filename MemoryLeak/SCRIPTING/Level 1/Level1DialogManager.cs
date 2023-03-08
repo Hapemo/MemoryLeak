@@ -174,24 +174,48 @@ namespace BonVoyage {
     public void EndPassengerDialog() {
       GeneralEndDialog();
 
-      UpdateObjective("Dialog Objective Passenger1 (Minerva)");
-
       correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDropOffPoint");
       wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDropOffPoint");
 
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
+      
+        // Activate drop off point entity based on the dialog chosen
+        switch (base.latestChoiceChosen) {
+            case 1:
+                VI.Entity.Activate(correctDestination_RenderLocation);
+                break;
+            case 2:
+                VI.Entity.Activate(wrongDestination_RenderLocation);
+                break;
+            default:
+                break;
+        }
+
+        UpdateObjective("Dialog Objective Passenger1 (Minerva)");
     }
 
     public void EndPassenger2Dialog() {
       GeneralEndDialog();
 
-      UpdateObjective("Dialog Objective Passenger2 (Argus)");
-
       correctDestination_RenderLocation = VI.Entity.GetId("FountainDropOffPoint");
       wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDropOffPoint");
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
+
+        // Activate drop off point entity based on the dialog chosen
+        switch (base.latestChoiceChosen) {
+            case 1:
+                VI.Entity.Activate(correctDestination_RenderLocation);
+                break;
+            case 2:
+                VI.Entity.Activate(wrongDestination_RenderLocation);
+                break;
+            default:
+                break;
+        }
+
+      UpdateObjective("Dialog Objective Passenger2 (Argus)");
     }
 
     public void EndDropoffDialog() {
