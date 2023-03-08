@@ -1,0 +1,19 @@
+[
+    {
+        "SceneName": "Text",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": false,
+        "layer": 0,
+        "order": 0
+    }
+]
