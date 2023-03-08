@@ -828,6 +828,16 @@ void InternalCalls::iParticleSystem::SetSlow(const int _eId, float _slow) {
 	Entity(_eId).GetComponent<ParticleSystem>().mSlow = _slow;
 }
 
+// Generate one frame of particles
+void InternalCalls::iParticleSystem::GenerateOnce(const int _eId) {
+	particleManager->GenerateOnce(Entity(_eId));
+}
+
+// Generate loop of time frame
+void InternalCalls::iParticleSystem::GenerateLoop(const int _eId, float _duration) {
+	particleManager->GenerateLoop(Entity(_eId), _duration);
+}
+
 /*!*****************************************************************************
 \brief
 Individual particle

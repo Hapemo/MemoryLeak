@@ -816,6 +816,12 @@ namespace VI
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetSlow(int _eId, int _slow);
 
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GenerateOnce(int _eId);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void GenerateLoop(int _eId, int _slow);
+
 		public class ParticleInfo
         {
 			[MethodImpl(MethodImplOptions.InternalCall)]

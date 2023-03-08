@@ -480,6 +480,13 @@ public:
 		static float GetSlow(const int _eId);
 		static void SetSlow(const int _eId, float _slow);
 
+		// Generate one frame of particles
+		static void GenerateOnce(const int _eId);
+
+		// Generate loop of time frame
+		static void GenerateLoop(const int _eId, float _duration);
+
+
 		/*!*****************************************************************************
 		\brief
 		Individual particle
