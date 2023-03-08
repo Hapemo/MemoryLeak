@@ -16,10 +16,35 @@ namespace BonVoyage {
 
     public override void Alive(int _ENTITY) {
       base.Alive(_ENTITY);
-      fileNames = new string[] { "Dialog NPC", 
-                                 "Dialog Objective Passenger1 (Minerva)", 
-                                 "Dialog Objective Passenger2 (Argus)", 
-                                 "Dialog Prometheus (Lighthouse)" };
+      fileNames = new string[] { "Dialog Argus (Brown House)",
+                                 "Dialog Argus (Water Fountain)",
+                                 "Dialog Argus",
+                                 "Dialog Cat",
+                                 "Dialog Eleos (Island)",
+      "Dialog Eleos (Lighthouse)",
+      "Dialog Eleos",
+      "Dialog Minerva (Lighthouse)",
+      "Dialog Minerva (Multistory House)",
+      "Dialog Minerva",
+      "Dialog NPC dropoff",
+      "Dialog NPC",
+      "Dialog Objective Passenger1 (Minerva)",
+      "Dialog Objective Passenger2 (Argus)",
+      "Dialog Objective Passenger3 (Prometheus)",
+      "Dialog Objective Passenger4 (Eleos)",
+      "Dialog Prometheus (Lighthouse)",
+      "Dialog Prometheus (Water Fountain)",
+      "Dialog Prometheus",
+      "Dialogue CatTutorial",
+      "Dialogue LittleGirl 0",
+      "Dialogue LittleGirl 1",
+      "Dialogue Passenger 1",
+      "Dialogue Passenger 2",
+      "Dialogue Passenger 3",
+      "Dialogue Passenger 4",
+      "Dialogue Passenger 5",
+      "Dialogue Passenger 6",
+      "Dialogue SceneIntro 1"};
     }
 
     public override void Init(int _ENTITY) {
@@ -37,6 +62,10 @@ namespace BonVoyage {
 
     void UpdateText() {
       VI.Text.s_Update("P1", "Text", VI.Dialogue.GetLine(currentID));
+        if (VI.Dialogue.Speaker.IsPlayer(currentID))
+                isChoice = true;
+        else
+            isChoice = false;
       if (!isChoice) TextBoxAlign("P1", "Text", 0, 0, 20, 0);
       else TextBoxAlign("P1", "Text", 0, 0, 80, 15, 1);
     }

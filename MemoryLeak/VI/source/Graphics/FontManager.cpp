@@ -10,7 +10,7 @@ This file contains a class FontRenderer, which is a tool for renderering fonts.
 #include <FontManager.h>
 #include <sstream>
 #include <RenderProps.h>
-float FontRenderer::magicNumber = 0.435f;
+float FontRenderer::magicNumber = 0.7f;
 /*!*****************************************************************************
 \brief
 Default constructor for FontRenderer class.
@@ -149,15 +149,18 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
     for (std::string& str : strings)
     {
         float width{};
-        str += " ";
-        width += mGlyphs[' '].size.x * scale;
+        if (str != strings.back())
+        {
+            str += " ";
+            width += 18 * scale;
+        }
         for (char ch : str)
         {
           if (ch == '$') {
                 width += 1000;
                 continue;
             }
-            width += mGlyphs[ch].size.x * scale;
+            width += 18 * scale;
         }
         wordWidth.push_back(width);
     }
@@ -187,17 +190,26 @@ void FontRenderer::DrawParagraphs(int _layer)
         glUniform1f(mZValueLocation, layer);
         glActiveTexture(GL_TEXTURE0);
         glBindVertexArray(mVAO);
+        int lines = 1;
 
         // iterate through characters in paragraph
         for (size_t i = 0; i < para.words.size(); ++i)
         {
             currWidth += para.wordWidth[i];
-            
+            std::string wordddd = para.words[i];
             if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
             {
-                pos.x = initialX;
-                pos.y -= (mMaxYSize) * para.scale * 1.1f;
-                currWidth = para.wordWidth[i];
+                currWidth -= 18 * para.scale;
+                if (currWidth > para.renderWidth * magicNumber / para.camZoom)
+                {
+                    ++lines;
+                    pos.x = initialX;
+                    pos.y -= (mMaxYSize)*para.scale * 1.1f;
+                    currWidth = para.wordWidth[i];
+                }
+                else
+                    currWidth += 18 * para.scale;
+
             }
             for (auto itr = para.words[i].begin(); itr != para.words[i].end(); ++itr)
             {
@@ -233,6 +245,8 @@ void FontRenderer::DrawParagraphs(int _layer)
 
             }
         }
+        std::cout << "lines: " << lines << std::endl;
+
         glBindVertexArray(0);
         glBindTexture(GL_TEXTURE_2D, 0);
         mFontProgram.Unbind();
@@ -285,13 +299,16 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
     for (std::string& str : strings)
     {
         float width{};
-        str += " ";
-        width += mGlyphs[' '].size.x * scale;
+        if (str != strings.back())
+        {
+            str += " ";
+            width += 18 * scale;
+        }
         for (char ch : str)
         {
             if (ch == '$')
                 width += 1000;
-            width += mGlyphs[ch].size.x * scale;
+            width += 18 * scale;
         }
         wordWidth.push_back(width);
     }
@@ -305,10 +322,18 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
         currWidth += para.wordWidth[i];
         if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
         {
-            ++lines;
-            currWidth = para.wordWidth[i];
+            currWidth -= 18 * scale;
+            if (currWidth > para.renderWidth * magicNumber / para.camZoom)
+            {
+                ++lines;
+                currWidth = para.wordWidth[i];
+            }
+            else
+                currWidth += 18 * scale;
         }
     }
+    std::cout << "lines: " << lines << std::endl;
+
     return lines;
 
 }
