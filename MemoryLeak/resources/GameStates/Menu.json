@@ -46,5 +46,22 @@
         "isActive": false,
         "layer": 15,
         "order": 0
+    },
+    {
+        "SceneName": "Mouse",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "isActive": false,
+        "layer": 3,
+        "order": 0
     }
 ]

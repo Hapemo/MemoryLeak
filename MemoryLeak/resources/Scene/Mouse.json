@@ -1,0 +1,56 @@
+[
+    {
+        "General": {
+            "name": "Mouse",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 50.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\cursors\\UI_Cursor_Mouse_Spritesheet.png",
+            "layer": 0
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Icons\\cursors\\UI_Cursor_Mouse_Spritesheet.png",
+                    "frameCount": 2,
+                    "timePerFrame": 0.4000000059604645
+                },
+                {
+                    "sheet": "Textures\\Icons\\cursors\\UI_Cursor_Prompt_Spritesheet.png",
+                    "frameCount": 3,
+                    "timePerFrame": 0.4000000059604645
+                }
+            ],
+            "currentImageIndex": 0
+        },
+        "SheetAnimation": {
+            "frameCount": 2,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.4000000059604645,
+            "timeToFrameSwap": 0.16666656732559204
+        },
+        "Script": {
+            "name": "Mouse"
+        }
+    }
+]
