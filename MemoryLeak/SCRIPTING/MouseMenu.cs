@@ -33,8 +33,8 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Transform.Position.SetX(_ENTITY, VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(_ENTITY) / 2f);
-            VI.Transform.Position.SetY(_ENTITY, VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(_ENTITY) / 2f);
+            VI.Transform.Position.SetX(_ENTITY, VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() + VI.Transform.Scale.GetX(_ENTITY) / 2f);
+            VI.Transform.Position.SetY(_ENTITY, VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - VI.Transform.Scale.GetY(_ENTITY) / 2f);
 
             //if (VI.Input.Mouse.Hold()) {
             //    if (!InAnimation) {
