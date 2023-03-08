@@ -53,7 +53,9 @@ namespace BonVoyage {
 
       P1ColliderBox = VI.Entity.GetId("Passenger1Box", "Level1");
       P2ColliderBox = VI.Entity.GetId("Passenger2Box", "Level1");
-
+            UIPassengersLeftID = VI.Entity.GetId("PassengersLeft", "Dialogue");
+            UIPassengerIcon1ID = VI.Entity.GetId("PassengerIcon1", "Dialogue");
+            UIPassengerIcon2ID = VI.Entity.GetId("PassengerIcon2", "Dialogue");
       dialogInit = true;
       normalZoom = false;
 

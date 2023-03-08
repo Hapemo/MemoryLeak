@@ -15,9 +15,9 @@
  },
  {
    "Dialogue ID": 3,
-   "Dialogue Text": "W..well you seem to know better so here's something for you in return.",
+   "Dialogue Text": "W..well you seem to know better so maybe I'll go explore this area a little myself..",
    "Speaker": 0,
-   "Next Dialogue": 4,
+   "Next Dialogue": 0,
    "Next Dialogue(2)": 0
  }
 ]

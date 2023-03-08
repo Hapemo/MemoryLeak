@@ -641,6 +641,8 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.ParticleSystem::SetIsActive", &VI::iParticleSystem::SetIsActive);
 	mono_add_internal_call("VI.ParticleSystem::GetSlow", &VI::iParticleSystem::GetSlow);
 	mono_add_internal_call("VI.ParticleSystem::SetSlow", &VI::iParticleSystem::SetSlow);
+	mono_add_internal_call("VI.ParticleSystem::GenerateOnce", &VI::iParticleSystem::GenerateOnce);
+	mono_add_internal_call("VI.ParticleSystem::GenerateLoop", &VI::iParticleSystem::GenerateLoop);
 	
 	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetScale", &VI::iParticleSystem::iParticleInfo::GetScale);
 	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::GetDirection", &VI::iParticleSystem::iParticleInfo::GetDirection);
