@@ -8,21 +8,14 @@
  },
  {
    "Dialogue ID": 2,
-   "Dialogue Text": "Doesn't seem right... Not even my compass seem to be working...",
+   "Dialogue Text": "Doesn't seem right... Not even my compass seems to be working...",
    "Speaker": 0,
    "Next Dialogue": 3,
    "Next Dialogue(2)": 0
  },
  {
    "Dialogue ID": 3,
-   "Dialogue Text": "Why don't you take the compass with you instead?",
-   "Speaker": 0,
-   "Next Dialogue": 4,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 4,
-   "Dialogue Text": "You can treat it as a little token of appreciation of mine haha! Who knows, you might find some clues in it for your journey.",
+   "Dialogue Text": "*Sigh* I hope it works soon... Thanks anyway!",
    "Speaker": 0,
    "Next Dialogue": 0,
    "Next Dialogue(2)": 0
