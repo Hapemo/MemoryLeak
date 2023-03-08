@@ -1,0 +1,642 @@
+[
+    {
+        "General": {
+            "name": "CrystalBallTut",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 600.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 0
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Click on cycle button to toggle between Mini map, Weather map & enemy radar",
+            "offset": {
+                "X": -220.0,
+                "Y": 12.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 132.0
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 350.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 400.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "WeatherTut1",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 600.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 1
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Sunny: Clear visibility around region",
+            "offset": {
+                "X": -216.0,
+                "Y": 3.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 276.0
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 7.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 350.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 400.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "WeatherTut2",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 600.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 2
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Rain : Sea monster appears more frequently",
+            "offset": {
+                "X": -218.0,
+                "Y": 4.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 199.0
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 13.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 350.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 400.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "WeatherTut3",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 600.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 3
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Fog : Obscures visibility around region",
+            "offset": {
+                "X": -213.0,
+                "Y": 3.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 199.0
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 19.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 350.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 400.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "WeatherTut4",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 800.0,
+                "Y": 200.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 600.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button1-click.png",
+            "layer": 4
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Wind  : Affects player movement",
+            "offset": {
+                "X": -221.0,
+                "Y": 3.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 199.0
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 25.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 350.0
+                        }
+                    }
+                },
+                {
+                    "time": 4.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 400.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 800.0,
+                            "Y": 200.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 600.0
+                        }
+                    }
+                }
+            ]
+        }
+    }
+]
