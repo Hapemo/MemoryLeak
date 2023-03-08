@@ -48,7 +48,7 @@
         "order": 0
     },
     {
-        "SceneName": "Mouse",
+        "SceneName": "MouseMenu",
         "Transform": {
             "scale": {
                 "X": 1600.0,

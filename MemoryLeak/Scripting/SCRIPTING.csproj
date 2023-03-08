@@ -106,7 +106,7 @@
     <Compile Include="PassengerBaseScript.cs" />
     <Compile Include="BackToGame.cs" />
     <Compile Include="Level Tutorial\SwitchToLevel1.cs" />
-    <Compile Include="Mouse.cs" />
+    <Compile Include="MouseMenu.cs" />
     <Compile Include="TransitionSquare.cs" />
     <Compile Include="SFXcontroller.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
