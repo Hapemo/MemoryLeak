@@ -306,6 +306,9 @@ void ResourceManager::LoadResource(std::filesystem::path const& entry) {
 			}
 		}
 
+		if (entry.string().find("\\Prefabs\\") != std::string::npos) return;
+		if (entry.string().find("\\SceneGUID\\") != std::string::npos) return;
+
 		if (fileLoaded) return;
 		LOG_INFO("RESOURCE MANAGER: loading new resources midway through editor: " + entry.string());
 	}
