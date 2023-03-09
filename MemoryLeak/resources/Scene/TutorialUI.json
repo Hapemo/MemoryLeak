@@ -30,10 +30,10 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Click in direction to move player",
+            "text": "Click in any direction to move player",
             "offset": {
                 "X": -135.0,
-                "Y": 0.0
+                "Y": 14.0
             },
             "scale": 0.5,
             "color": {
@@ -43,7 +43,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 132.0
+            "width": 185.0
         },
         "MovementAI": {
             "run": true,
@@ -158,7 +158,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Click any where to advance NPC dialogue",
+            "text": "Click anywhere to advance NPC dialogue",
             "offset": {
                 "X": -144.0,
                 "Y": 5.0
@@ -171,7 +171,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 115.0
+            "width": 185.0
         },
         "MovementAI": {
             "run": true,
@@ -286,7 +286,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Click on dialogue choice to choose player reply",
+            "text": "Click on dialogue options to make a choice",
             "offset": {
                 "X": -135.0,
                 "Y": 14.0
@@ -299,7 +299,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 132.0
+            "width": 185.0
         },
         "MovementAI": {
             "run": true,
@@ -382,5 +382,5 @@
                 }
             ]
         }
-    }   
+    }
 ]
