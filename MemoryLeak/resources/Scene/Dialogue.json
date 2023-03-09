@@ -984,7 +984,6 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Passengers Left:",
             "text": "Passengers Delivered:",
             "offset": {
                 "X": -185.0,
