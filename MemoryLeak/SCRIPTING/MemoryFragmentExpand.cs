@@ -83,7 +83,7 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
+            if (VI.Input.Key.Press(32)) VI.ParticleSystem.GenerateLoop(_ENTITY, 1);
         }
 
         public void FixedUpdate(int _ENTITY) {

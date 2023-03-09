@@ -14,11 +14,42 @@ Updates the fps count, for the fps printer in entity
 
 REGISTER_SCRIPT(ScriptComponent, FPSPrintScript);
 
+namespace {
+	Entity memoryFragment; // THIS SHOULD REMOVE WHEN REAL PARTICLE SYSTEM IS IMPLEMENTED
+}
+
 /*!*****************************************************************************
 \brief
 Function will run when the gamestate of the entity is activated.
 *******************************************************************************/
 void FPSPrintScript::Alive(Entity const& _e) {
+	memoryFragment = VI::iEntity::GetEntity("memoryfragment", "");
+	if (memoryFragment.id == 0) return;
+	memoryFragment.AddComponent(ParticleSystem{
+		ParticleSystem::ParticleInfo{
+			20, // mScale			
+			90, // mFacing		
+			5, // mLifespan	
+			Sprite{
+				RED, // color
+				SPRITE::SQUARE, // sprit
+				0, // texture
+				memoryFragment.GetComponent<Sprite>().layer + 1  // layer
+			}, // mSprite		
+			2, // mRotation	
+			100, // mSpeed			
+			true // mFading			
+		},
+		1, // mDensity 
+		memoryFragment.GetComponent<Transform>().translation, // mCenter
+		20, // mAreaWidth 
+		0.5, // mDirection
+		2, // mSpread 
+		10, // mDuration 
+		true, // mIsActive 
+		0.f // mSlow
+	});
+	LOG_INFO(memoryFragment.GetComponent<General>().name + ": Added component particle system IMPROPERLY VIA C++============================================");
 	(void)_e;
 }
 

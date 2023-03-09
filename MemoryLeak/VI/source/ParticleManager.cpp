@@ -74,18 +74,19 @@ void Particle::Destroy() {
 //==============================
 // Particle Manager
 //==============================
-ParticleManager::ParticleManager() : mParticles() { srand(static_cast<unsigned int>(time(0))); }
+ParticleManager::ParticleManager() : mParticles() { srand(static_cast<unsigned int>(time(0))); LOG_CREATE("PARTICLESYSTEM"); }
 
 void ParticleManager::UpdateSystems() {
 	for (auto& e : mEntities) {
 		if (!e.ShouldRun()) continue;
 		ParticleSystem& system{ e.GetComponent<ParticleSystem>() };
-
 		// Update particle system active state
 		if (!system.mIsActive) continue;
 		system.mDuration -= static_cast<float>(FPSManager::dt);
-		if (system.mDuration < 0) system.mIsActive = false;
-		if (!system.mIsActive) continue;
+		if (system.mDuration < 0) {
+			system.mDuration = 0;
+			system.mIsActive = false;
+		}//if (!system.mIsActive) continue;
 
 		// Track slow spawning
 		if (system.mSlow) {
