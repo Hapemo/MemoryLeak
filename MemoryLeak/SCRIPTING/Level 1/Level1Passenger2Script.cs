@@ -6,6 +6,11 @@ namespace BonVoyage {
 
     public class Level1Passenger2Script : PassengerBaseScript {
         private bool ranOnceInit = true;
+
+        public override void Alive(int _ENTITY)
+        {
+            base.Alive(_ENTITY);
+        }
         public override void Init(int _ENTITY) {
             base.Init(_ENTITY);
 
@@ -20,6 +25,11 @@ namespace BonVoyage {
             // Store original scale x value
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
             InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+        }
+
+        public override void EarlyUpdate(int _ENTITY)
+        {
+            base.EarlyUpdate(_ENTITY);
         }
 
         public override void Update(int _ENTITY) {
@@ -159,6 +169,26 @@ namespace BonVoyage {
                     DestinationReached = false;
                 }
             }
+        }
+
+        public override void FixedUpdate(int _ENTITY)
+        {
+            base.FixedUpdate(_ENTITY);
+        }
+
+        public override void LateUpdate(int _ENTITY)
+        {
+            base.LateUpdate(_ENTITY);
+        }
+
+        public override void Exit(int _ENTITY)
+        {
+            base.Exit(_ENTITY);
+        }
+
+        public override void Dead(int _ENTITY)
+        {
+            base.Dead(_ENTITY);
         }
     }
 }
