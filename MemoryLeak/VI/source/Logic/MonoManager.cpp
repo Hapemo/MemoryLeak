@@ -100,15 +100,15 @@ Retrieves the mono class from a mono image. Returns the mono class pointer if
 success, else returns a nullptr.
 *******************************************************************************/
 MonoClass* MonoManager::GetClassInAssembly(MonoAssembly* _assembly, const char* _namespace, const char* _class) {
-	LOG_CUSTOM("Mono", "Loading Mono image...");
+	//LOG_CUSTOM("Mono", "Loading Mono image...");
 	MonoImage* assemblyImage = mono_assembly_get_image(_assembly);
 
 	if (!assemblyImage) {
-		LOG_CUSTOM("Mono", "Failed to retrieve assembly image!");
+		//LOG_CUSTOM("Mono", "Failed to retrieve assembly image!");
 		return nullptr;
 	}
 
-	LOG_CUSTOM("Mono", "Retrieving Mono class...");
+	//LOG_CUSTOM("Mono", "Retrieving Mono class...");
 	MonoClass* monoClass = mono_class_from_name(assemblyImage, _namespace, _class);
 	if (monoClass == nullptr) return nullptr;
 	return monoClass;
@@ -125,7 +125,7 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	std::string namespaceStr = _namespace;
 	std::string classStr = _class;
 	if (monoClass == nullptr) {
-		LOG_CUSTOM("Mono", "Failed to retrieve Mono class " + namespaceStr + "::" + classStr + "!");
+		//LOG_CUSTOM("Mono", "Failed to retrieve Mono class " + namespaceStr + "::" + classStr + "!");
 		return nullptr;
 	}
 	else LOG_CUSTOM("Mono", "Retrieved Mono class " + namespaceStr + "::" + classStr + "."); 
@@ -164,7 +164,7 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 	// No method called "Init" with 0 parameters in the class
 	if (method == nullptr) {
 		std::string funcStr = _function;
-		LOG_CUSTOM("Mono", "Method " + funcStr + "() does not exist!");
+		//LOG_CUSTOM("Mono", "Method " + funcStr + "() does not exist!");
 	}
 	else {
 		// Call the C# method on the objectInstance instance, and get any potential exceptions
@@ -178,8 +178,8 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 			MonoString* exceptionString = mono_object_to_string(exception, nullptr);
 			const char* exceptionCString = mono_string_to_utf8(exceptionString);
 			std::string exceptionStr = exceptionCString;
-			LOG_CUSTOM("Mono", "Failed to call method " + funcStr + "()!");
-			LOG_CUSTOM("Mono", exceptionStr);
+			//LOG_CUSTOM("Mono", "Failed to call method " + funcStr + "()!");
+			//LOG_CUSTOM("Mono", exceptionStr);
 			LOG_ERROR(exceptionStr);
 			//mono_print_unhandled_exception(exception);
 #ifdef _DEBUG
@@ -195,14 +195,14 @@ Register the C# scripts to store internally for the logic system to use.
 *******************************************************************************/
 void MonoManager::RegisterMonoScript(std::string _namespace, std::string _class) {
 	if (GetMonoComponent(_class) != nullptr) return;
-	LOG_CUSTOM("Mono", "Registering C# script method " + _namespace + "::" + _class + "()...");
+	//LOG_CUSTOM("Mono", "Registering C# script method " + _namespace + "::" + _class + "()...");
 
 	// Loading mono image
 	MonoObject* newInstance = InstantiateClass(_namespace.c_str(), _class.c_str());
 
 	// Storing mono object
 	if (newInstance != nullptr) SetMonoComponent(_class, newInstance);
-	else LOG_CUSTOM("Mono", "Failed to register C# script method " + _namespace + "::" + _class + "()!"); 
+	else //LOG_CUSTOM("Mono", "Failed to register C# script method " + _namespace + "::" + _class + "()!"); 
 
 	mMonoHandler = mono_gchandle_new(newInstance, true);
 }
