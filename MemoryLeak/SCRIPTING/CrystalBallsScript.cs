@@ -25,6 +25,7 @@ namespace BonVoyage {
         static bool active = true;
         int playerID;
         int rainID;
+        int fogID;
         int crystalBallID;
         int toggleMapID;
         int minimapID;
@@ -40,6 +41,7 @@ namespace BonVoyage {
             //if (currlevel == "Level1")
             playerID = VI.Entity.GetId("Boat", currlevel);
             rainID = VI.Entity.GetId("rain", currlevelBG);
+            fogID = VI.Entity.GetId("fog", currlevelBG);
             crystalBallID = VI.Entity.GetId("crystalBall", "CrystalBalls");
             toggleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
             minimapID = VI.Entity.GetId("minimap", "MiniMap");
@@ -109,7 +111,7 @@ namespace BonVoyage {
                 prevTog = toggle;
             }
             int index = VI.Weather.GetCurrent(12, VI.Transform.Scale.GetY(playerID), VI.Transform.Scale.GetY(playerID));
-            if(index == 1 || index == 3 || index == 7)
+            if(index == 1 || index == 3 || index == 5 || index == 7)
             {
                 VI.Entity.SetActive(rainID, true);
                 VI.Transform.Position.SetX(rainID, VI.Transform.Position.GetX(playerID));
@@ -118,6 +120,16 @@ namespace BonVoyage {
             else
             {
                 VI.Entity.SetActive(rainID, false);
+            }
+            if (index == 4 || index == 5 || index == 6 || index == 7)
+            {
+                VI.Entity.SetActive(fogID, true);
+                VI.Transform.Position.SetX(fogID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(fogID, VI.Transform.Position.GetY(playerID));
+            }
+            else
+            {
+                VI.Entity.SetActive(fogID, false);
             }
 
         }
