@@ -985,6 +985,7 @@
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Passengers Left:",
+            "text": "Passengers Delivered:",
             "offset": {
                 "X": -185.0,
                 "Y": 26.0
@@ -998,6 +999,9 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Script": {
+            "name": "PassengerDeliverUI"
         }
     },
     {
@@ -1020,9 +1024,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 0,
+                "g": 0,
+                "b": 0,
                 "a": 255
             },
             "sprite": 2,
@@ -1050,9 +1054,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 0,
+                "g": 0,
+                "b": 0,
                 "a": 255
             },
             "sprite": 2,

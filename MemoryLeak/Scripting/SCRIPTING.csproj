@@ -87,6 +87,7 @@
     <Compile Include="Level Tutorial\LevelTutorialDialogManager.cs" />
     <Compile Include="Level Tutorial\LevelTutorialPassengerScript.cs" />
     <Compile Include="Level Tutorial\LevelTutorialGirlScript.cs" />
+    <Compile Include="PassengerDeliverUI.cs" />
     <Compile Include="TextTestingScripts.cs" />
     <Compile Include="LevelToMenu.cs" />
     <Compile Include="MemoryFragmentExpand.cs" />
