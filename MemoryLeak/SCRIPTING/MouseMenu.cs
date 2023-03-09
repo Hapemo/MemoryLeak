@@ -32,8 +32,12 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Transform.Position.SetX(_ENTITY, VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(_ENTITY) / 2f);
-            VI.Transform.Position.SetY(_ENTITY, VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(_ENTITY) / 2f);
+            // To change hardcoded value to get application's width n height when functions are added to internal calls or the compution of mouse world position is corrected to be in the world
+            ZoomScaleFactorX = VI.Camera.GetScale.X() / 1600f;
+            ZoomScaleFactorY = VI.Camera.GetScale.Y() / 900f;
+
+            VI.Transform.Position.SetX(_ENTITY, VI.Camera.GetPos.X() + ZoomScaleFactorX * VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(_ENTITY) / 2f);
+            VI.Transform.Position.SetY(_ENTITY, VI.Camera.GetPos.Y() + ZoomScaleFactorY * VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(_ENTITY) / 2f);
 
             //if (VI.Input.Mouse.Hold()) {
             //    if (!InAnimation) {
