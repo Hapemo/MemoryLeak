@@ -61,6 +61,7 @@ namespace BonVoyage {
       UIHPBarID = VI.Entity.GetId("hpbar");
       UIMemoryFragmentID = VI.Entity.GetId("memoryfragment");
       UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen");
+      VI.Entity.Deactivate(UIObjectiveTextID);
     }
 
     public virtual void EarlyUpdate(int _ENTITY) {
@@ -344,6 +345,7 @@ namespace BonVoyage {
     public void GeneralDialogStart(int direction) { // 1 to face left, 
       PlayerScript.CameraFollowPlayer = false;
       PlayerScript.PlayerInDialogue = true;
+      VI.Entity.Deactivate(UIObjectiveTextID);
       ZoomCameraToDialog();
       VI.Animation.SpriteSheet.SheetIndex.Set(playerID, direction); // Make player face the other person
     }
@@ -362,6 +364,7 @@ namespace BonVoyage {
     public void GeneralEndDialog() {
       PlayerScript.CameraFollowPlayer = true;
       //runPassenger2Dialog = false;
+      VI.Entity.Activate(UIObjectiveTextID);
       normalZoom = false;
       PlayerScript.PlayerInDialogue = false;
     }
