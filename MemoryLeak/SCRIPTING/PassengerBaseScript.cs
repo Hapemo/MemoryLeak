@@ -195,8 +195,8 @@ namespace BonVoyage {
         // Plays animation to restore passsenger entity's scale value
         // Returns true once complete
         protected bool RestorePassengerScale(int _ePassenger, float _passengerInitialScaleX) {
-            LOG.WRITE("Passenger original X: " + _passengerInitialScaleX);
-            LOG.WRITE("Current scale value: " + VI.Transform.Scale.GetX(_ePassenger));
+            //LOG.WRITE("Passenger original X: " + _passengerInitialScaleX);
+            //LOG.WRITE("Current scale value: " + VI.Transform.Scale.GetX(_ePassenger));
 
             // Restore passenger's original scale x value
             if (VI.Transform.Scale.GetX(_ePassenger) < _passengerInitialScaleX) {

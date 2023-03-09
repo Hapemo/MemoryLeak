@@ -266,8 +266,8 @@ namespace BonVoyage {
       if (updateChat) {
         updateChat = false;
 
-        LOG.WRITE("CurrentID before check quit: " + VI.Dialogue.Current.GetId());
-        LOG.WRITE("NextID before check quit: " + VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
+        //LOG.WRITE("CurrentID before check quit: " + VI.Dialogue.Current.GetId());
+        //LOG.WRITE("NextID before check quit: " + VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
         // Finish dialog
         if (VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()) == 0) {
           DeactivateDialogBox(player, notPlayer, choice1, choice2);
@@ -280,7 +280,7 @@ namespace BonVoyage {
         }
 
         //Console.WriteLine("Moving on from: " + VI.Dialogue.Current.GetId());
-        LOG.WRITE("Moving on from: " + VI.Dialogue.Current.GetId());
+        //LOG.WRITE("Moving on from: " + VI.Dialogue.Current.GetId());
         if (choiceFlag) {
           //Console.WriteLine("It's a choice dialog");
           LOG.WRITE("It's a choice dialog");
@@ -303,7 +303,7 @@ namespace BonVoyage {
         }
         MoveToNextDialog(1);
         //Console.WriteLine("Moving to: " + VI.Dialogue.Current.GetId());
-        LOG.WRITE("Moving to: " + VI.Dialogue.Current.GetId());
+        //LOG.WRITE("Moving to: " + VI.Dialogue.Current.GetId());
 
         if (VI.Dialogue.Speaker.IsPlayer(VI.Dialogue.Current.GetId())) {
           VI.Entity.Activate(player);
