@@ -940,13 +940,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 140.0
+                "X": 73.5,
+                "Y": 22.399999618530273
             },
             "rotation": 0.0,
             "translation": {
                 "X": 1500.0,
-                "Y": -280.0
+                "Y": -340.0
             }
         },
         "Sprite": {
@@ -2343,20 +2343,6 @@
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 3000.0,
-                            "Y": 20.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 700.0,
-                            "Y": 250.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
                             "X": 0.0,
                             "Y": 20.0
                         }
@@ -2400,6 +2386,20 @@
                         "rotation": 0.0,
                         "translation": {
                             "X": -4500.0,
+                            "Y": 20.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 250.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -6000.0,
                             "Y": 20.0
                         }
                     }
@@ -4501,7 +4501,7 @@
         },
         "MovementAI": {
             "run": false,
-            "next": true,
+            "next": false,
             "loop": false,
             "reverse": false,
             "cycle": false,
@@ -4518,6 +4518,90 @@
                         "rotation": 0.0,
                         "translation": {
                             "X": 4500.0,
+                            "Y": -205.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 500.0,
+                            "Y": 373.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 3000.0,
+                            "Y": -205.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 500.0,
+                            "Y": 373.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1500.0,
+                            "Y": -205.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 500.0,
+                            "Y": 373.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -205.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 500.0,
+                            "Y": 373.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1500.0,
+                            "Y": -205.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 500.0,
+                            "Y": 373.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3000.0,
+                            "Y": -205.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 500.0,
+                            "Y": 373.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -4500.0,
                             "Y": -205.0
                         }
                     }
