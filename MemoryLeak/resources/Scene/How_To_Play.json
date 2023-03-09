@@ -157,7 +157,7 @@
     },
     {
         "General": {
-            "name": "PauseIcon",
+            "name": "C3",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -313,7 +313,7 @@
     },
     {
         "General": {
-            "name": "ClickIcon",
+            "name": "C1",
             "tag": 5,
             "subtag": 0,
             "isActive": true
@@ -638,7 +638,7 @@
     },
     {
         "General": {
-            "name": "PMClickIcon",
+            "name": "PM1",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -777,7 +777,7 @@
     },
     {
         "General": {
-            "name": "MovementCard",
+            "name": "PM2",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -933,20 +933,20 @@
     },
     {
         "General": {
-            "name": "Boat",
+            "name": "PM3",
             "tag": 0,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 125.0,
-                "Y": 175.0
+                "X": 150.0,
+                "Y": 140.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 1500.0,
-                "Y": -250.0
+                "Y": -280.0
             }
         },
         "Sprite": {
@@ -1181,7 +1181,7 @@
     },
     {
         "General": {
-            "name": "Rectcollider1",
+            "name": "PM4",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1332,7 +1332,7 @@
     },
     {
         "General": {
-            "name": "RectCollider",
+            "name": "PM5",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1483,7 +1483,7 @@
     },
     {
         "General": {
-            "name": "Rectcollider4",
+            "name": "PM7",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1634,7 +1634,7 @@
     },
     {
         "General": {
-            "name": "Rectcollider3",
+            "name": "PM6",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1785,7 +1785,7 @@
     },
     {
         "General": {
-            "name": "Click Card",
+            "name": "C2",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1941,7 +1941,7 @@
     },
     {
         "General": {
-            "name": "PauseCard",
+            "name": "C4",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -2253,7 +2253,7 @@
     },
     {
         "General": {
-            "name": "DialogueCard",
+            "name": "D2",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -2409,7 +2409,7 @@
     },
     {
         "General": {
-            "name": "DClickIcon",
+            "name": "D1",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -2548,7 +2548,7 @@
     },
     {
         "General": {
-            "name": "Dbuilding",
+            "name": "D7",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -2693,14 +2693,14 @@
     },
     {
         "General": {
-            "name": "Dpassenger",
+            "name": "D8",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": -70.0,
+                "X": 70.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
@@ -2838,7 +2838,7 @@
     },
     {
         "General": {
-            "name": "Dboat",
+            "name": "D3",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -2983,7 +2983,7 @@
     },
     {
         "General": {
-            "name": "Dboxp",
+            "name": "D6",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -3139,7 +3139,7 @@
     },
     {
         "General": {
-            "name": "Dbox1",
+            "name": "D4",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -3295,7 +3295,7 @@
     },
     {
         "General": {
-            "name": "Dbox2",
+            "name": "D5",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -4177,37 +4177,7 @@
     },
     {
         "General": {
-            "name": "NEW Entity 1",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 168.11441040039063
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 4500.0,
-                "Y": -120.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\crystalball.png",
-            "layer": 49
-        }
-    },
-    {
-        "General": {
-            "name": "CBClickIcon",
+            "name": "CB1",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -4346,7 +4316,7 @@
     },
     {
         "General": {
-            "name": "CrystalballCard",
+            "name": "CB2",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -4502,80 +4472,20 @@
     },
     {
         "General": {
-            "name": "NEW Entity 1",
+            "name": "CB3",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 168.11441040039063
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 4700.0,
-                "Y": -300.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\crystalball.png",
-            "layer": 49
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 1",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 168.11441040039063
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 4300.0,
-                "Y": -300.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\crystalball.png",
-            "layer": 49
-        }
-    },
-    {
-        "General": {
-            "name": "NEW Entity 3",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 100.0,
-                "Y": 100.0
+                "X": 500.0,
+                "Y": 373.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 4500.0,
-                "Y": -280.0
+                "Y": -205.0
             }
         },
         "Sprite": {
@@ -4586,8 +4496,1281 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Icons\\cycle.png",
+            "texture": "Textures\\Menu\\htpCrystalball.png",
+            "layer": 49
+        },
+        "MovementAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 500.0,
+                            "Y": 373.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4500.0,
+                            "Y": -205.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "W2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 700.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 6000.0,
+                "Y": 80.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 248,
+                "g": 248,
+                "b": 248,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\UI_DialogueBox1.png",
+            "layer": 7
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Clear Visibility around region",
+            "offset": {
+                "X": -299.0,
+                "Y": -12.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -84.0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 6000.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4500.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 3000.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1500.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1500.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3000.0,
+                            "Y": 80.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "W4",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 700.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 6000.0,
+                "Y": -40.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 248,
+                "g": 248,
+                "b": 248,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\UI_DialogueBox1.png",
+            "layer": 7
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Sea monster appears more frequently",
+            "offset": {
+                "X": -299.0,
+                "Y": -12.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -84.0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 6000.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4500.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 3000.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1500.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1500.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3000.0,
+                            "Y": -40.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "W6",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 700.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 6000.0,
+                "Y": -170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 248,
+                "g": 248,
+                "b": 248,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\UI_DialogueBox1.png",
+            "layer": 7
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Affects player movement",
+            "offset": {
+                "X": -299.0,
+                "Y": -12.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -84.0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 6000.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4500.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 3000.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1500.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1500.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3000.0,
+                            "Y": -170.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "W8",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 700.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 6000.0,
+                "Y": -300.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 248,
+                "g": 248,
+                "b": 248,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\UI_DialogueBox1.png",
+            "layer": 7
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Obscures players vision",
+            "offset": {
+                "X": -299.0,
+                "Y": -12.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -84.0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 6000.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4500.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 3000.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1500.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1500.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3000.0,
+                            "Y": -300.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "W1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 80.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 5600.0,
+                "Y": 80.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\sunIcon.png",
             "layer": 50
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Night",
+            "offset": {
+                "X": -43.0,
+                "Y": 49.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 5600.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4100.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 2600.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1100.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -400.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1900.0,
+                            "Y": 80.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3400.0,
+                            "Y": 80.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "W3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 80.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 5600.0,
+                "Y": -40.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\rainIcon.png",
+            "layer": 50
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Rain",
+            "offset": {
+                "X": -34.0,
+                "Y": 49.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 5600.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4100.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 2600.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1100.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -400.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1900.0,
+                            "Y": -40.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3400.0,
+                            "Y": -40.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "W5",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 80.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 5600.0,
+                "Y": -170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\windIcon.png",
+            "layer": 50
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Wind",
+            "offset": {
+                "X": -35.0,
+                "Y": 49.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 5600.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4100.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 2600.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1100.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -400.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1900.0,
+                            "Y": -170.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3400.0,
+                            "Y": -170.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "W7",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 80.0,
+                "Y": 80.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 5600.0,
+                "Y": -300.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\rainfogIcon.png",
+            "layer": 50
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Fog",
+            "offset": {
+                "X": -26.0,
+                "Y": 49.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 5600.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 4100.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 2600.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1100.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -400.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1900.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 80.0,
+                            "Y": 80.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -3400.0,
+                            "Y": -300.0
+                        }
+                    }
+                }
+            ]
         }
     }
 ]
