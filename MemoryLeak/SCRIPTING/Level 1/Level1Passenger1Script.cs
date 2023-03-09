@@ -15,14 +15,14 @@ namespace BonVoyage {
             base.Init(_ENTITY);
 
             // Find required entities
-            playerBoat = VI.Entity.GetId("Boat", "Level1");
-            triggerBox = VI.Entity.GetId("Passenger1Box", "Level1");
+            playerBoat = VI.Entity.GetId("Boat");
+            triggerBox = VI.Entity.GetId("Passenger1Box");
             
-            correctDestination_Box = VI.Entity.GetId("DoubleStoryHouseDropOffPoint", "Level1");
-            correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDestRender", "Level1");
+            correctDestination_Box = VI.Entity.GetId("DoubleStoryHouseDropOffPoint");
+            correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDestRender");
 
-            wrongDestination_Box = VI.Entity.GetId("LighthouseDropOffPoint", "Level1");
-            wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDestRender", "Level1");
+            wrongDestination_Box = VI.Entity.GetId("LighthouseDropOffPoint");
+            wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDestRender");
 
             // Store original scale and layer values
             //InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);

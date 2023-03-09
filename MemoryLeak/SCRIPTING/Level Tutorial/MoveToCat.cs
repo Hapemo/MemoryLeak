@@ -19,8 +19,8 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-            catBox = VI.Entity.GetId("CatBox", "LevelTutorial");
+            playerBoat = VI.Entity.GetId("Boat");
+            catBox = VI.Entity.GetId("CatBox");
 
             MovePlayer = false;
         }
@@ -28,8 +28,8 @@ namespace BonVoyage {
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-            catBox = VI.Entity.GetId("CatBox", "LevelTutorial");
+            playerBoat = VI.Entity.GetId("Boat");
+            catBox = VI.Entity.GetId("CatBox");
 
             MovePlayer = false;
         }
@@ -42,8 +42,8 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             if (init)
             {
-                playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-                catBox = VI.Entity.GetId("CatBox", "LevelTutorial");
+                playerBoat = VI.Entity.GetId("Boat");
+                catBox = VI.Entity.GetId("CatBox");
 
                 MovePlayer = false;
 

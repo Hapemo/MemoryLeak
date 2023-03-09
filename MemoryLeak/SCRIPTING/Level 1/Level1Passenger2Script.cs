@@ -15,13 +15,13 @@ namespace BonVoyage {
             base.Init(_ENTITY);
 
             // Get required entities (ALL THESE ENTITIES NEED TO UPDATE IN Level1DialogManager.cs AS WELL IF CHANGED!!!)
-            playerBoat = VI.Entity.GetId("Boat", "Level1");
-            triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
-            correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint", "Level1");
-            correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender", "Level1");
+            playerBoat = VI.Entity.GetId("Boat");
+            triggerBox = VI.Entity.GetId("Passenger2Box");
+            correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint");
+            correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender");
 
-            wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1"); 
-            wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDest2Render", "Level1");
+            wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint"); 
+            wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDest2Render");
             // Store original scale x value
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
             InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
@@ -38,13 +38,13 @@ namespace BonVoyage {
                 ranOnceInit = false;
 
                 // Get required entities (ALL THESE ENTITIES NEED TO UPDATE IN Level1DialogManager.cs AS WELL IF CHANGED!!!)
-                playerBoat = VI.Entity.GetId("Boat", "Level1");
-                triggerBox = VI.Entity.GetId("Passenger2Box", "Level1");
-                correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint", "Level1");
-                correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender", "Level1");
+                playerBoat = VI.Entity.GetId("Boat");
+                triggerBox = VI.Entity.GetId("Passenger2Box");
+                correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint");
+                correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender");
 
-                wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint", "Level1"); 
-                wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDest2Render", "Level1");
+                wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint"); 
+                wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDest2Render");
                 // Store original scale x value
                 InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
                 InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
