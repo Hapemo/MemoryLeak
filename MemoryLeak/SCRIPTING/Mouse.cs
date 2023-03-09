@@ -7,6 +7,9 @@ namespace BonVoyage {
         private const float MiniAngle = (float)Pi / 8;
         private const int MovingIconIndexStart = 2;
 
+        private float ZoomScaleFactorX;
+        private float ZoomScaleFactorY;
+
         private int playerBoat;
 
         private bool InAnimation;
@@ -33,16 +36,20 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Transform.Position.SetX(_ENTITY, VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() + VI.Transform.Scale.GetX(_ENTITY) / 2f);
-            VI.Transform.Position.SetY(_ENTITY, VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - VI.Transform.Scale.GetY(_ENTITY) / 2f);
+            ZoomScaleFactorX = VI.Camera.GetScale.X() / 1600f;
+            ZoomScaleFactorY = VI.Camera.GetScale.Y() / 900f;
+
+            VI.Transform.Position.SetX(_ENTITY, VI.Camera.GetPos.X() + ZoomScaleFactorX * VI.Input.Mouse.WorldPosX() + ZoomScaleFactorX * VI.Transform.Scale.GetX(_ENTITY) / 2f);
+            VI.Transform.Position.SetY(_ENTITY, VI.Camera.GetPos.Y() + ZoomScaleFactorY * VI.Input.Mouse.WorldPosY() - ZoomScaleFactorY * VI.Transform.Scale.GetY(_ENTITY) / 2f);
 
             if (VI.Input.Mouse.Hold())
             {
- 
-                float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - VI.Transform.Position.GetX(playerBoat);
-                float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - VI.Transform.Position.GetY(playerBoat);
-                SetMouseMovingIcon(_ENTITY, GetRotation(DirX, DirY));
-
+                if (!PlayerScript.PlayerInDialogue)
+                {
+                    float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - VI.Transform.Position.GetX(playerBoat);
+                    float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - VI.Transform.Position.GetY(playerBoat);
+                    SetMouseMovingIcon(_ENTITY, GetRotation(DirX, DirY));
+                }
             }
             else if (VI.Input.Mouse.Press())
             {
