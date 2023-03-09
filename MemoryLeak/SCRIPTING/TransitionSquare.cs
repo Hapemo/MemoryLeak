@@ -96,10 +96,12 @@ namespace BonVoyage {
         public static void FadeIn()
         {
             fadingin = true;
+            fadingout = false;
         }
         public static void FadeOut(string _nextstate)
         {
             fadingout = true;
+            fadingin = false;
             nextgs = _nextstate;
         }
     }
