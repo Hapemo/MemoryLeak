@@ -788,16 +788,16 @@ void InternalCalls::iParticleSystem::SetWidth(const int _eId, float _width) {
 }
 
 float InternalCalls::iParticleSystem::GetDirX(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mDirection.x;
+	return Entity(_eId).GetComponent<ParticleSystem>().mDirection;
 }
 void InternalCalls::iParticleSystem::SetDirX(const int _eId, float _dirX) {
-	Entity(_eId).GetComponent<ParticleSystem>().mDirection.x = _dirX;
+	Entity(_eId).GetComponent<ParticleSystem>().mDirection = _dirX;
 }
 float InternalCalls::iParticleSystem::GetDirY(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mDirection.y;
+	return Entity(_eId).GetComponent<ParticleSystem>().mDirection;
 }
 void InternalCalls::iParticleSystem::SetDirY(const int _eId, float _dirY) {
-	Entity(_eId).GetComponent<ParticleSystem>().mDirection.y = _dirY;
+	Entity(_eId).GetComponent<ParticleSystem>().mDirection = _dirY;
 }
 
 float InternalCalls::iParticleSystem::GetSpread(const int _eId) {

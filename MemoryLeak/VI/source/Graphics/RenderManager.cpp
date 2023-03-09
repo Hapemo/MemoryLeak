@@ -893,7 +893,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 
 			if (e.HasComponent<ParticleSystem>())
 			{
-				//if (e.GetComponent<ParticleSystem>().mIsActive || 1)
+				//if (e.GetComponent<ParticleSystem>().mIsActive)
 				//{
 					bool thisEntity{ false };
 					for (auto i = particleManager->ParticleBegin(); i != particleManager->ParticleLast(); ++i)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using VI;
 
 namespace BonVoyage {
     public class MemoryFragmentExpand : BaseScript
@@ -7,6 +8,7 @@ namespace BonVoyage {
         static int[] relics;
         int[] backs;
         static bool[] activated;
+        static bool activatedChanged;
         int expanded;
         bool showing;
         public void Alive(int _ENTITY) {
@@ -32,11 +34,11 @@ namespace BonVoyage {
             activated = new bool[] { false, false, false, false, false, false };
             expanded = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
             showing = false;
+            activatedChanged = false;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -83,8 +85,11 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            if (VI.Input.Key.Press(32)) VI.ParticleSystem.GenerateLoop(_ENTITY, 1);
-        }
+            if (activatedChanged) { 
+                activatedChanged = false;
+                VI.ParticleSystem.GenerateLoop(VI.Entity.GetId("memoryfragment"), 5.0f);
+            }
+    }
 
         public void FixedUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
@@ -131,6 +136,7 @@ namespace BonVoyage {
 
         public static void ActivateFragment(int fragmentId)
         {
+            activatedChanged = true;
             activated[fragmentId] = true;
         }
     }

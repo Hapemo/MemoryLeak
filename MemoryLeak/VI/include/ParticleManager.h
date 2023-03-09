@@ -21,6 +21,7 @@ brief:	Particle System class. This is a singleton where it keeps track of all th
 #define BLUE Color (0, 0, 255, 255)
 #define GREEN Color (0, 255, 0, 255)
 #define RED Color (255, 0, 0, 255)
+#define WHITE Color (255, 255, 255, 255)
 #define PURPLE Color (255, 0, 255, 255)
 #define DARK_GREY Color (90, 90, 90, 255)
 #define DUMPSTER_GREEN Color (0, 79, 0, 255)
@@ -76,7 +77,10 @@ public:
 	void GenerateOnce(Entity _e) const { _e.GetComponent<ParticleSystem>().mIsActive = true; }
 
 	// Generate loop of time frame
-	void GenerateLoop(Entity _e, float _duration) const { _e.GetComponent<ParticleSystem>().mIsActive = true; _e.GetComponent<ParticleSystem>().mDuration = _duration; }
+	void GenerateLoop(Entity _e, float _duration) const { 
+		LOG_CUSTOM("PARTICLESYSTEM", "Entity: " + std::to_string(_e.id) + " | Duration: " + std::to_string(_duration));
+		_e.GetComponent<ParticleSystem>().mIsActive = true; _e.GetComponent<ParticleSystem>().mDuration = _duration; 
+	}
 
 	void Reset();
 

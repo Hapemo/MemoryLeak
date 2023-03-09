@@ -27,27 +27,27 @@ void FPSPrintScript::Alive(Entity const& _e) {
 	if (memoryFragment.id == 0) return;
 	memoryFragment.AddComponent(ParticleSystem{
 		ParticleSystem::ParticleInfo{
-			20, // mScale			
+			10, // mScale			
 			90, // mFacing		
-			5, // mLifespan	
+			2, // mLifespan	
 			Sprite{
-				RED, // color
+				Color(255,255,255,125), // color
 				SPRITE::SQUARE, // sprit
 				0, // texture
 				memoryFragment.GetComponent<Sprite>().layer + 1  // layer
 			}, // mSprite		
 			2, // mRotation	
-			100, // mSpeed			
+			20, // mSpeed			
 			true // mFading			
 		},
 		1, // mDensity 
 		memoryFragment.GetComponent<Transform>().translation, // mCenter
-		20, // mAreaWidth 
-		0.5, // mDirection
-		2, // mSpread 
-		10, // mDuration 
+		130, // mAreaWidth 
+		90.f, // mDirection
+		45.f, // mSpread 
+		0.1f, // mDuration 
 		true, // mIsActive 
-		0.f // mSlow
+		0.1f // mSlow
 	});
 	LOG_INFO(memoryFragment.GetComponent<General>().name + ": Added component particle system IMPROPERLY VIA C++============================================");
 	(void)_e;
