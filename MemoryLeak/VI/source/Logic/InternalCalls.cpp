@@ -444,6 +444,9 @@ void InternalCalls::iScene::Pause(std::string const& _name) {
 void InternalCalls::iScene::Play(std::string const& _name) {
 	GameStateManager::GetInstance()->SelectScene(_name).Pause(false);
 }
+void InternalCalls::iScene::IsPaused(std::string const& _name) {
+	GameStateManager::GetInstance()->SelectScene(_name).mIsPause;
+}
 
 /*!*****************************************************************************
 \brief
@@ -787,17 +790,11 @@ void InternalCalls::iParticleSystem::SetWidth(const int _eId, float _width) {
 	Entity(_eId).GetComponent<ParticleSystem>().mAreaWidth = _width;
 }
 
-float InternalCalls::iParticleSystem::GetDirX(const int _eId) {
+float InternalCalls::iParticleSystem::GetDir(const int _eId) {
 	return Entity(_eId).GetComponent<ParticleSystem>().mDirection;
 }
-void InternalCalls::iParticleSystem::SetDirX(const int _eId, float _dirX) {
-	Entity(_eId).GetComponent<ParticleSystem>().mDirection = _dirX;
-}
-float InternalCalls::iParticleSystem::GetDirY(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mDirection;
-}
-void InternalCalls::iParticleSystem::SetDirY(const int _eId, float _dirY) {
-	Entity(_eId).GetComponent<ParticleSystem>().mDirection = _dirY;
+void InternalCalls::iParticleSystem::SetDir(const int _eId, float _dir) {
+	Entity(_eId).GetComponent<ParticleSystem>().mDirection = _dir;
 }
 
 float InternalCalls::iParticleSystem::GetSpread(const int _eId) {
@@ -832,6 +829,7 @@ void InternalCalls::iParticleSystem::SetSlow(const int _eId, float _slow) {
 void InternalCalls::iParticleSystem::GenerateOnce(const int _eId) {
 	particleManager->GenerateOnce(Entity(_eId));
 }
+
 
 // Generate loop of time frame
 void InternalCalls::iParticleSystem::GenerateLoop(const int _eId, float _duration) {

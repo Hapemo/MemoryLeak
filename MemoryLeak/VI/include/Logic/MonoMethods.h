@@ -105,6 +105,7 @@ public:
 	struct iScene {
 		static void Pause(MonoString* _name);
 		static void Play(MonoString* _name);
+		static void IsPaused(MonoString* _name);
 	};
 	struct iAnimation {
 		static void s_SetSpeed(MonoString* _entityName, MonoString* _sceneName, float _speed);
