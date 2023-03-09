@@ -34,7 +34,7 @@ namespace BonVoyage {
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            if (VI.Physics.IsCollided(_ENTITY, playerBoat)&& Level1DialogManager.passengerDialogProgress >= 20) {
+            if (VI.Physics.IsCollided(_ENTITY, playerBoat) && PassengerDeliverUI.DelieveredAllPassengers()) {
                 TransitionSquare.FadeOut("Level2");
                 //VI.GameState.Go("Level1");
             }

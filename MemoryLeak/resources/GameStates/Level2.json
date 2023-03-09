@@ -153,5 +153,11 @@
         "isActive": false,
         "layer": 10,
         "order": 0
+    },
+    {
+        "SceneName": "Transition",
+        "isActive": false,
+        "layer": 15,
+        "order": 0
     }
 ]

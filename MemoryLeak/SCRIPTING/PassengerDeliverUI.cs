@@ -86,5 +86,10 @@ namespace BonVoyage {
             else if (!increase2)
                 increase2 = true;
         }
+
+        static public bool DelieveredAllPassengers()
+        {
+            return increase1 && increase2;
+        }
     }
 }
