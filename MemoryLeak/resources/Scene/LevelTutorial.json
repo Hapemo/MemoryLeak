@@ -710,7 +710,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 44
+            "layer": 45
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2171,7 +2171,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 43
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
