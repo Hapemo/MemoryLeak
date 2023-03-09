@@ -166,8 +166,8 @@ GUID: 16783542384197892 | File: UI Scene.json
 GUID: 16783527982203140 | File: UIBackground.json
 GUID: 16750630817696004 | File: WeatherMap.json
 GUID: 14757395258967593988 | File: WeatherMapold.json
-[10-03-2023 04:00:31]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\InternalCalls.cs
-[10-03-2023 04:00:31]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\TestMonoScript.cs
+[10-03-2023 04:18:27]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\InternalCalls.cs
+[10-03-2023 04:18:27]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\TestMonoScript.cs
 GUID: 16691742281236739 | File: PlayerMovementScript.h
 GUID: 16681628817424643 | File: RotateScript.h
 GUID: 16681628817490435 | File: ScaleScript.h
@@ -361,7 +361,7 @@ GUID: 16683718377675777 | File: settings-icon.png
 GUID: 16669651555782401 | File: settings-menu-screen.jpg
 GUID: 16741782613262593 | File: text1.png
 GUID: 16683718378134785 | File: title screen 5.jpg
-[10-03-2023 04:00:39]   ERROR   Attempted to load in invalid texture file: ..\resources\Textures\Menu\title screen gif.gif
+[10-03-2023 04:18:35]   ERROR   Attempted to load in invalid texture file: ..\resources\Textures\Menu\title screen gif.gif
 GUID: 16778117552278017 | File: title screen gif.gif
 GUID: 16665530912609793 | File: title screen.jpg
 GUID: 16778117548999169 | File: UI_DialogueBox1.png
