@@ -52,7 +52,7 @@
     },
     {
         "SceneName": "Dialogue2",
-        "isActive": false,
+        "isActive": true,
         "layer": 7,
         "order": 0
     },
@@ -103,8 +103,49 @@
                 "Y": 1968.0
             }
         },
-        "isActive": false,
+        "isActive": true,
         "layer": 5,
+        "order": 0
+    },
+    {
+        "SceneName": "CrystalBalls",
+        "isActive": false,
+        "layer": 8,
+        "order": 0
+    },
+    {
+        "SceneName": "Level2Background",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": -2464.0,
+                "Y": 1968.0
+            }
+        },
+        "isActive": false,
+        "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "MiniMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "WeatherMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "EnemyMap",
+        "isActive": false,
+        "layer": 9,
         "order": 0
     }
 ]

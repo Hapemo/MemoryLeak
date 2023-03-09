@@ -22,7 +22,7 @@ namespace BonVoyage {
         static bool big = false;
         int weathermapID;
         int playerID;
-        int rainID;
+        int blurID;
         float textOffsetX;
         float textOffsetY;
         float textbigOffsetX;
@@ -33,23 +33,25 @@ namespace BonVoyage {
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            string currlevel = VI.GameState.GetName();
+            string currlevelBG = currlevel + "Background";
             weathermapID = VI.Entity.GetId("weathermap", "WeatherMap");
-            playerID = VI.Entity.GetId("Boat", "Level1");
-            rainID = VI.Entity.GetId("rain", "Level1");
+            playerID = VI.Entity.GetId("Boat", currlevel);
+            blurID = VI.Entity.GetId("blur", "WeatherMap");
             textOffsetX = -59;// VI.Text.Offset.GetX(minimapID);
             textOffsetY = -170;// VI.Text.Offset.GetY(minimapID);
             textbigOffsetX = -100;
             textbigOffsetY = 360;
             textScale = VI.Text.Scale.Get(weathermapID);
             textbigScale = 1.0f;
-            maxMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "LevelShadowBackground"))/2;
-            maxMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "LevelShadowBackground"))/2;
+            maxMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", currlevelBG))/2;
+            maxMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", currlevelBG))/2;
             VI.Weather.Init(maxMapX, maxMapY);
         }
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Entity.s_SetActive("blur", "WeatherMap", false);
+            VI.Entity.SetActive(blurID, false);
             for (int i = 0; i < 25; i++)
             {
                 int modI = i % 5;
@@ -84,7 +86,7 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(VI.Entity.GetId(EIcon, "WeatherMap"));
             }
 
-            VI.Entity.s_SetActive("blur", "WeatherMap", false);
+            VI.Entity.SetActive(blurID, false);
         }
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
@@ -103,7 +105,7 @@ namespace BonVoyage {
                     VI.Animation.Transform.SetNext(VI.Entity.GetId(EIcon, "WeatherMap"), 1);
                     VI.Animation.Transform.Run(VI.Entity.GetId(EIcon, "WeatherMap"));
                 }
-                VI.Entity.s_SetActive("blur", "WeatherMap", true);
+                VI.Entity.SetActive(blurID, true);  
             }
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(weathermapID)))
             {
@@ -126,7 +128,7 @@ namespace BonVoyage {
                     VI.Animation.Transform.Run(VI.Entity.GetId(EIcon, "WeatherMap"));
                 }
 
-                VI.Entity.s_SetActive("blur", "WeatherMap", false);
+                VI.Entity.SetActive(blurID, false);
             }
 
 
@@ -135,24 +137,10 @@ namespace BonVoyage {
                 int modI = i % 5;
                 int divI = i / 5;
                 
-                int index = VI.Weather.GetCurrent(i,
-                    VI.Transform.Scale.GetY(playerID), VI.Transform.Scale.GetY(playerID));
+                int index = VI.Weather.GetCurrent(i, VI.Transform.Scale.GetY(playerID), VI.Transform.Scale.GetY(playerID));
                 
                 string EIcon = "EIcon" + i;
                 VI.Animation.SpriteSheet.SheetIndex.s_Set(EIcon, "WeatherMap", index);
-                //if (i == 12)//current poition
-                //{
-                //    if (index == 1 || index == 3 || index == 7)
-                //    {
-                //        VI.Entity.SetActive(rainID, true);
-                //        VI.Transform.Position.SetX(rainID, VI.Transform.Position.GetX(playerID));
-                //        VI.Transform.Position.SetY(rainID, VI.Transform.Position.GetY(playerID));
-                //    }
-                //    else
-                //    {
-                //        VI.Entity.SetActive(rainID, false);
-                //    }
-                //}
             }
             
 
@@ -179,7 +167,7 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(VI.Entity.GetId(EIcon, "WeatherMap"));
             }
 
-            VI.Entity.s_SetActive("blur", "WeatherMap", false);
+            VI.Entity.SetActive(blurID, false);
         }
         public void Dead(int _ENTITY)
         {

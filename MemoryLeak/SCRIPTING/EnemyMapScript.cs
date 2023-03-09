@@ -23,6 +23,7 @@ namespace BonVoyage {
         int minienemyID;
         int boatID;
         int enemyID;
+        int blurID;
         float textOffsetX;
         float textOffsetY;
         float textbigOffsetX;
@@ -35,11 +36,16 @@ namespace BonVoyage {
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            string currlevel = VI.GameState.GetName();
+            string currlevelBG = currlevel + "Background";
             enemymapID = VI.Entity.GetId("enemymap", "EnemyMap");
-            boatID = VI.Entity.GetId("Boat", "Level1");
-            enemyID = VI.Entity.GetId("Enemy", "Level1");
+            boatID = VI.Entity.GetId("Boat", currlevel);
+            enemyID = VI.Entity.GetId("Enemy", currlevel);
             miniplayerID = VI.Entity.GetId("player", "EnemyMap");
             minienemyID = VI.Entity.GetId("enemy", "EnemyMap");
+            blurID = VI.Entity.GetId("blur", "EnemyMap");
+            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", currlevelBG));
+            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", currlevelBG));
             textOffsetX = -42;// VI.Text.Offset.GetX(enemymapID);
             textOffsetY = -170;// VI.Text.Offset.GetY(enemymapID);
             textbigOffsetX = -120;
@@ -49,10 +55,8 @@ namespace BonVoyage {
         }
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
-            VI.Entity.s_SetActive("blur", "EnemyMap", false);
-            MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", "LevelShadowBackground"));
-            MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", "LevelShadowBackground"));
+            VI.Entity.SetActive(blurID, false);
+            
             scaleMapX = MapX / 2;
             scaleMapY = MapY / 2;
             miniMapX = VI.Transform.Scale.GetX(enemymapID);
@@ -76,7 +80,7 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(miniplayerID);
                 VI.Animation.Transform.SetNext(minienemyID, 1);
                 VI.Animation.Transform.Run(minienemyID);
-                VI.Entity.s_SetActive("blur", "EnemyMap", true);
+                VI.Entity.SetActive(blurID, true);
             }
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(enemymapID)))
             {
@@ -92,7 +96,7 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(miniplayerID);
                 VI.Animation.Transform.SetNext(minienemyID, 0);
                 VI.Animation.Transform.Run(minienemyID);
-                VI.Entity.s_SetActive("blur", "EnemyMap", false);
+                VI.Entity.SetActive(blurID, false);
             }
             float posx = VI.Transform.Position.GetX(enemyID) - VI.Transform.Position.GetX(boatID);
             float posy = VI.Transform.Position.GetY(enemyID) - VI.Transform.Position.GetY(boatID);
@@ -104,11 +108,11 @@ namespace BonVoyage {
             VI.Transform.Position.SetY(minienemyID, eposy);
             if ((vecx * vecx + vecy * vecy) > (VI.Transform.Scale.GetX(enemymapID)/2 * VI.Transform.Scale.GetX(enemymapID)/2 - VI.Transform.Scale.GetX(minienemyID)* VI.Transform.Scale.GetX(minienemyID)))
             {
-                VI.Entity.s_SetActive("enemy", "EnemyMap", false);
+                VI.Entity.SetActive(minienemyID, false);
             }
             else
             { 
-                VI.Entity.s_SetActive("enemy", "EnemyMap", true);
+                VI.Entity.SetActive(minienemyID, true);
             }
         }
 
@@ -126,7 +130,7 @@ namespace BonVoyage {
             VI.Animation.Transform.Run(miniplayerID);
             VI.Animation.Transform.SetNext(minienemyID, 0);
             VI.Animation.Transform.Run(minienemyID);
-            VI.Entity.s_SetActive("blur", "EnemyMap", false);
+            VI.Entity.SetActive(blurID, false);
         }
         public void Dead(int _ENTITY)
         {

@@ -1,0 +1,185 @@
+[
+    {
+        "General": {
+            "name": "Water",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 10000.0,
+                "Y": 10000.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 180
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Env_Water_Green.png",
+            "layer": 1
+        }
+    },
+    {
+        "General": {
+            "name": "Water2",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 9910.6962890625,
+                "Y": -9866.0439453125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Env_Water_Green.png",
+            "layer": 0
+        },
+        "AI": {
+            "colorChange": 3,
+            "movement": 0,
+            "speed": 1.0,
+            "range": 10.0
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": true,
+            "reverse": false,
+            "cycle": true,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 10000.0,
+                            "Y": -10000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 9500.0,
+                            "Y": -9250.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 30.0
+                        }
+                    }
+                },
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 10000.0,
+                            "Y": -10000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                },
+                {
+                    "time": 2.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 9500.0,
+                            "Y": -9250.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": -30.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.5,
+                    "Transform": {
+                        "scale": {
+                            "X": 10000.0,
+                            "Y": -10000.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 20.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "rain",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 3200.0,
+                "Y": 1800.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -335.3653564453125,
+                "Y": -872.6865844726563
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\Weather\\rainspritesheet.png",
+            "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 5,
+            "timePerFrame": 0.20000000298023224,
+            "timeToFrameSwap": 0.0833333432674408
+        }
+    }
+]
