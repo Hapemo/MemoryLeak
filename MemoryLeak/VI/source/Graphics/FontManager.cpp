@@ -152,7 +152,7 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
         if (str != strings.back())
         {
             str += " ";
-            width += 18 * scale;
+            width += 20 * scale;
         }
         for (char ch : str)
         {
@@ -160,10 +160,11 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
                 width += 1000;
                 continue;
             }
-            width += 18 * scale;
+            width += 20 * scale;
         }
         wordWidth.push_back(width);
     }
+
     mParagraphs[layer].push_back(Paragraph(strings, wordWidth, _pos, scale, color, _width, camZoom));
 }
 /*!*****************************************************************************
@@ -199,7 +200,7 @@ void FontRenderer::DrawParagraphs(int _layer)
             std::string wordddd = para.words[i];
             if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
             {
-                currWidth -= 18 * para.scale;
+                currWidth -= 20 * para.scale;
                 if (currWidth > para.renderWidth * magicNumber / para.camZoom)
                 {
                     ++lines;
@@ -208,7 +209,7 @@ void FontRenderer::DrawParagraphs(int _layer)
                     currWidth = para.wordWidth[i];
                 }
                 else
-                    currWidth += 18 * para.scale;
+                    currWidth += 20 * para.scale;
 
             }
             for (auto itr = para.words[i].begin(); itr != para.words[i].end(); ++itr)
@@ -245,7 +246,7 @@ void FontRenderer::DrawParagraphs(int _layer)
 
             }
         }
-        std::cout << "lines: " << lines << std::endl;
+
 
         glBindVertexArray(0);
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -302,13 +303,13 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
         if (str != strings.back())
         {
             str += " ";
-            width += 18 * scale;
+            width += 20 * scale;
         }
         for (char ch : str)
         {
             if (ch == '$')
                 width += 1000;
-            width += 18 * scale;
+            width += 20 * scale;
         }
         wordWidth.push_back(width);
     }
@@ -322,17 +323,16 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
         currWidth += para.wordWidth[i];
         if (i && currWidth > para.renderWidth * magicNumber / para.camZoom)
         {
-            currWidth -= 18 * scale;
+            currWidth -= 20 * scale;
             if (currWidth > para.renderWidth * magicNumber / para.camZoom)
             {
                 ++lines;
                 currWidth = para.wordWidth[i];
             }
             else
-                currWidth += 18 * scale;
+                currWidth += 20 * scale;
         }
     }
-    std::cout << "lines: " << lines << std::endl;
 
     return lines;
 

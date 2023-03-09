@@ -30,7 +30,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Click on cycle button to toggle between Mini map, Weather map & enemy radar",
+            "text": "Use the cycle button to toggle between your maps",
             "offset": {
                 "X": -220.0,
                 "Y": 12.0
@@ -43,7 +43,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 132.0
+            "width": 250.0
         },
         "MovementAI": {
             "run": true,
@@ -158,7 +158,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Sunny: Clear visibility around region",
+            "text": "Sunny: Good weather! Clear visibility",
             "offset": {
                 "X": -216.0,
                 "Y": 3.0
@@ -171,7 +171,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 276.0
+            "width": 250.0
         },
         "MovementAI": {
             "run": true,
@@ -286,7 +286,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Rain : Sea monster appears more frequently",
+            "text": "Rain: Careful! The sea monster appears more frequently",
             "offset": {
                 "X": -218.0,
                 "Y": 4.0
@@ -299,7 +299,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 199.0
+            "width": 250.0
         },
         "MovementAI": {
             "run": true,
@@ -414,7 +414,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Fog : Obscures visibility around region",
+            "text": "Fog: A thick fog appears and obscures your visibility",
             "offset": {
                 "X": -213.0,
                 "Y": 3.0
@@ -427,7 +427,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 199.0
+            "width": 250.0
         },
         "MovementAI": {
             "run": true,
@@ -542,7 +542,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Wind  : Affects player movement",
+            "text": "Wind: Strong winds alert! Your boat might move uncontrollably",
             "offset": {
                 "X": -221.0,
                 "Y": 3.0
@@ -555,7 +555,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 199.0
+            "width": 250.0
         },
         "MovementAI": {
             "run": true,
