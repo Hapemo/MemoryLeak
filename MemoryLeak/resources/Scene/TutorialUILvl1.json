@@ -158,7 +158,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Sunny: Good weather! Clear visibility",
+            "text": "Clear Skies: Good weather! Clear visibility",
             "offset": {
                 "X": -216.0,
                 "Y": 3.0
