@@ -79,9 +79,9 @@ namespace BonVoyage {
       }
 
       if (runPassengerDialog) {
-        GeneralDialogStart(1);
+        GeneralDialogStart(7);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, 650, -1160); // Move him to better location
+        Level1ManagerScript.MovePlayer(playerID, 385, -1170); // Move him to better location
         runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
