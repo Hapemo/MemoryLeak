@@ -162,11 +162,6 @@ namespace BonVoyage {
       // dialogueOrder = 2;
     }
 
-    public void EndDropoffDialog() {
-      GeneralEndDialog();
-      VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
-    }
-
 
     #endregion
 

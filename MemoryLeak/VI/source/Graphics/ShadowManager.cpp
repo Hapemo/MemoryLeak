@@ -195,6 +195,8 @@ void ShadowManager::CreateObjectVertices(Entity e)
 	if (e.HasComponent<Sprite>())
 	{
 		Transform xform = e.GetComponent<Transform>();
+		if (e.HasComponent<RectCollider>())
+			xform.translation += e.GetComponent<RectCollider>().centerOffset;
 		if (powf(xform.translation.x - lightPos.x, 2.f) + powf(xform.translation.y - lightPos.y, 2.f)
 		> powf(mLightsource.GetComponent<LightSource>().radius, 2.f))
 			e.GetComponent<Sprite>().color = { 80, 80, 80, 255 };

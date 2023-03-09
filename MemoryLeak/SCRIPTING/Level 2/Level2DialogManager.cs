@@ -213,13 +213,6 @@ namespace BonVoyage {
       UpdateObjective("Dialog Objective Passenger2 (Argus)");
     }
 
-    public void EndDropoffDialog() {
-      GeneralEndDialog();
-      VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
-      passengerDialogProgress = 0;
-    }
-
-
     #endregion
 
   }

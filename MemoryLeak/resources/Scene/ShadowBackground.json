@@ -8,8 +8,8 @@
         },
         "Transform": {
             "scale": {
-                "X": -1600.0,
-                "Y": -900.0
+                "X": 1600.0,
+                "Y": 900.0
             },
             "rotation": 0.0,
             "translation": {
