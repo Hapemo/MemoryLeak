@@ -5,7 +5,7 @@ namespace BonVoyage {
     public class Mouse : BaseScript {
         private const double Pi = 3.141592653589793238f;
         private const float MiniAngle = (float)Pi / 8;
-        private const int MovingIconIndexStart = 3;
+        private const int MovingIconIndexStart = 2;
 
         private int playerBoat;
 
@@ -110,21 +110,21 @@ namespace BonVoyage {
                 _rotation -= 2 * (float)Pi;
 
             if (_rotation >= 15f * MiniAngle || _rotation <= MiniAngle)
-                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 2);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 6);
             else if (_rotation <= 3f * MiniAngle)
-                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 3);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 5);
             else if (_rotation <= 5f * MiniAngle)
                 VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 4);
             else if (_rotation <= 7f * MiniAngle)
-                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 5);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 3);
             else if (_rotation <= 9f * MiniAngle)
-                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 6);
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 2);
             else if (_rotation <= 11f * MiniAngle)
-                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 7);
-            else if (_rotation <= 13f * MiniAngle)
-                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 8);
-            else
                 VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 1);
+            else if (_rotation <= 13f * MiniAngle)
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart);
+            else
+                VI.Animation.SpriteSheet.SheetIndex.Set(_eID, MovingIconIndexStart + 7);
         }
     }
 }
