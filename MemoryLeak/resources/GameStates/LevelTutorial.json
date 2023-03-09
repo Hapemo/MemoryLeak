@@ -54,7 +54,7 @@
     },
     {
         "SceneName": "Transition",
-        "isActive": true,
+        "isActive": false,
         "layer": 11,
         "order": 0
     },
