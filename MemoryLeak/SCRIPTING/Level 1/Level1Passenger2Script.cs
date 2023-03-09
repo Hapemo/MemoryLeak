@@ -96,12 +96,6 @@ namespace BonVoyage {
                 }
             }
 
-            // Move passenger with player       
-            if (AttachedToPlayer) {
-                // Move passenger with player
-                MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
-            }
-
             // Check if passenger reaches destination
             if (VI.Physics.IsCollided(correctDestination_Box, _ENTITY)) {
                 // Move on to detaching animation
@@ -179,6 +173,13 @@ namespace BonVoyage {
         public override void LateUpdate(int _ENTITY)
         {
             base.LateUpdate(_ENTITY);
+
+            // Move passenger with player       
+            if (AttachedToPlayer)
+            {
+                // Move passenger with player
+                MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
+            }
         }
 
         public override void Exit(int _ENTITY)
