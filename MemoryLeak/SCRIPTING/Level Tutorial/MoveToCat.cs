@@ -9,7 +9,7 @@ namespace BonVoyage {
 
         private bool MovePlayer;
 
-        private bool init = false;
+        private bool init = true;
 
         private const float PlayerSpeed = 10f;
         private const double Pi = 3.141592653589793238f;
@@ -45,21 +45,27 @@ namespace BonVoyage {
                 catBox = VI.Entity.GetId("CatBox", "LevelTutorial");
 
                 MovePlayer = false;
+
+                init = false;
             }
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            if (THIS.Input.Button.Hover())
+            VI.Test.ArgString("Running " +  _ENTITY);
+
+            if (VI.Input.Button.Hover(_ENTITY))
             {
                 // Animation
+                VI.Test.ArgString("Test");
             }
 
-            if (THIS.Input.Button.Clicked())
+            if (VI.Input.Button.Released(_ENTITY))
             {
-                if (!VI.Physics.IsCollided(playerBoat, catBox)){
+                    VI.Test.ArgString("Button Clicked");
+                //if (!VI.Physics.IsCollided(playerBoat, catBox)){
                     MovePlayer = true;
                     PlayerScript.PlayerInDialogue = true;
-                }
+                //}
             }
 
         }
