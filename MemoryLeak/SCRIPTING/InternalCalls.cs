@@ -422,6 +422,9 @@ namespace VI
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void Play(string _name);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void IsPaused(string _name);
 	}
 	public class Camera
 	{
@@ -781,16 +784,10 @@ namespace VI
 		internal extern static void SetWidth(int _eId, float _width);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static float GetDirX(int _eId);
+		internal extern static float GetDir(int _eId);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetDirX(int _eId, float _dirX);
-
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static float GetDirY(int _eId);
-
-		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void SetDirY(int _eId, float _dirY);
+		internal extern static void SetDir(int _eId, float _dir);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static float GetSpread(int _eId);

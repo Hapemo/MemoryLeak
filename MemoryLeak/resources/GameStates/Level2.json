@@ -147,5 +147,17 @@
         "isActive": false,
         "layer": 9,
         "order": 0
+    },
+    {
+        "SceneName": "GUI Scene",
+        "isActive": false,
+        "layer": 10,
+        "order": 0
+    },
+    {
+        "SceneName": "Transition",
+        "isActive": false,
+        "layer": 15,
+        "order": 0
     }
 ]

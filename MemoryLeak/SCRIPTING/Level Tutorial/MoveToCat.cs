@@ -10,6 +10,7 @@ namespace BonVoyage {
         private bool MovePlayer;
 
         private bool init = true;
+        private double DelayActivation = 1f;
 
         private const float PlayerSpeed = 10f;
         private const double Pi = 3.141592653589793238f;
@@ -18,8 +19,8 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-            catBox = VI.Entity.GetId("CatBox", "LevelTutorial");
+            playerBoat = VI.Entity.GetId("Boat");
+            catBox = VI.Entity.GetId("CatBox");
 
             MovePlayer = false;
         }
@@ -27,8 +28,8 @@ namespace BonVoyage {
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-            catBox = VI.Entity.GetId("CatBox", "LevelTutorial");
+            playerBoat = VI.Entity.GetId("Boat");
+            catBox = VI.Entity.GetId("CatBox");
 
             MovePlayer = false;
         }
@@ -41,8 +42,8 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             if (init)
             {
-                playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-                catBox = VI.Entity.GetId("CatBox", "LevelTutorial");
+                playerBoat = VI.Entity.GetId("Boat");
+                catBox = VI.Entity.GetId("CatBox");
 
                 MovePlayer = false;
 
@@ -51,21 +52,16 @@ namespace BonVoyage {
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Test.ArgString("Running " +  _ENTITY);
+            if (DelayActivation >= 0f)
+                DelayActivation -= VI.General.DeltaTime();
 
-            if (VI.Input.Button.Hover(_ENTITY))
+            if (VI.Input.Mouse.Release())
             {
-                // Animation
-                VI.Test.ArgString("Test");
-            }
-
-            if (VI.Input.Button.Released(_ENTITY))
-            {
-                    VI.Test.ArgString("Button Clicked");
-                //if (!VI.Physics.IsCollided(playerBoat, catBox)){
+                if (DelayActivation < 0f)
+                {
                     MovePlayer = true;
                     PlayerScript.PlayerInDialogue = true;
-                //}
+                }
             }
 
         }
@@ -91,7 +87,11 @@ namespace BonVoyage {
                     // Get new rotation and set sprite
                     SetPlayerSprite(playerBoat, GetRotation(NormX, NormY), "Idle");
                 }
-
+                else
+                {
+                    MovePlayer = false;
+                    VI.Entity.Deactivate(_ENTITY);
+                }
             }
         }
 

@@ -2,19 +2,21 @@
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class LevelTutorialGirlScript : BaseScript {
+    public class SwitchToLevel2 : BaseScript
+    {
         private int playerBoat;
-        private int triggerBox;
+        private bool ranOnceInit = true;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+            playerBoat = VI.Entity.GetId("Boat", "Level1");
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat");
-            triggerBox = VI.Entity.GetId("GirlBox");
+            playerBoat = VI.Entity.GetId("Boat", "Level1");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -23,18 +25,18 @@ namespace BonVoyage {
         }
 
         public void Update(int _ENTITY) {
+            // Temporary implementation TODO change this
+            if (ranOnceInit) {
+                ranOnceInit = false;
+                
+                playerBoat = VI.Entity.GetId("Boat", "Level1");
+            }
+
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            // Check if cat's trigger box is active
-            if (VI.Entity.IsActive(triggerBox)) {
-                // Check if player is colliding with that box
-                if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
-                    // Set Dialog Manager's flag to true and run it
-                    LevelTutorialDialogManager.runGirlDialog = true;
-
-                    // Deactivate the trigger box
-                    VI.Entity.Deactivate(triggerBox);
-                }
+            if (VI.Physics.IsCollided(_ENTITY, playerBoat) && PassengerDeliverUI.DelieveredAllPassengers()) {
+                TransitionSquare.FadeOut("Level2");
+                //VI.GameState.Go("Level1");
             }
         }
 

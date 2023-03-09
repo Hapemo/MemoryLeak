@@ -9302,6 +9302,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
+        },
+        "Script": {
+            "name": "SwitchToLevel2"
         }
     },
     {

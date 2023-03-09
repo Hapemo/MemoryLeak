@@ -13,8 +13,8 @@ namespace BonVoyage {
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
-            triggerBox = VI.Entity.GetId("CatBox", "LevelTutorial");
+            playerBoat = VI.Entity.GetId("Boat");
+            triggerBox = VI.Entity.GetId("CatBox");
         }
 
         public void EarlyUpdate(int _ENTITY) {

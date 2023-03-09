@@ -22,6 +22,7 @@ namespace BonVoyage {
     private int girlColliderBox;
     private int PColliderBox;
     private int PEndColliderBox;
+    private int tutorialGuider;
 
     public override void Alive(int _ENTITY) {
         base.Alive(_ENTITY);
@@ -33,6 +34,7 @@ namespace BonVoyage {
       girlColliderBox = VI.Entity.GetId("GirlBox");
       PColliderBox = VI.Entity.GetId("PassengerPickupBox");
       PEndColliderBox = VI.Entity.GetId("PassengerDropOffBox");
+        tutorialGuider = VI.Entity.GetId("MoveToCatGuider");
 
       dialogInit = true;
       runIntroDialog = true;
@@ -52,7 +54,7 @@ namespace BonVoyage {
       // Dialog control
 
       if (runIntroDialog) {
-        PlayerScript.PlayerInDialogue = true;
+        GeneralDialogStart(7);
         runIntroDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue SceneIntro 1");
         if (!runIntroDialog)
           EndIntroDialog();
@@ -77,9 +79,9 @@ namespace BonVoyage {
       }
 
       if (runPassengerDialog) {
-        GeneralDialogStart(1);
+        GeneralDialogStart(7);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, 650, -1160); // Move him to better location
+        Level1ManagerScript.MovePlayer(playerID, 385, -1170); // Move him to better location
         runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
@@ -122,6 +124,8 @@ namespace BonVoyage {
 
     public void EndIntroDialog() {
       GeneralEndDialog();
+
+            VI.Entity.Activate(tutorialGuider);
 
       VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
     }

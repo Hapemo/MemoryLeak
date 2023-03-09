@@ -147,7 +147,7 @@ namespace BonVoyage {
         }
       } else {
         if (additionalLines == 0) {
-          textYSpacing = 0;
+          textYSpacing = 10;
           VI.Transform.Scale.SetY(entityname, smallChoiceHeight);
           VI.Transform.Scale.SetX(entityname, choiceWidth);
           VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
@@ -265,8 +265,8 @@ namespace BonVoyage {
       if (updateChat) {
         updateChat = false;
 
-        LOG.WRITE("CurrentID before check quit: " + VI.Dialogue.Current.GetId());
-        LOG.WRITE("NextID before check quit: " + VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
+        //LOG.WRITE("CurrentID before check quit: " + VI.Dialogue.Current.GetId());
+        //LOG.WRITE("NextID before check quit: " + VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
         // Finish dialog
         if (VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()) == 0) {
           DeactivateDialogBox(player, notPlayer, choice1, choice2);
@@ -279,7 +279,7 @@ namespace BonVoyage {
         }
 
         //Console.WriteLine("Moving on from: " + VI.Dialogue.Current.GetId());
-        LOG.WRITE("Moving on from: " + VI.Dialogue.Current.GetId());
+        //LOG.WRITE("Moving on from: " + VI.Dialogue.Current.GetId());
         if (choiceFlag) {
           //Console.WriteLine("It's a choice dialog");
           LOG.WRITE("It's a choice dialog");
@@ -302,7 +302,7 @@ namespace BonVoyage {
         }
         MoveToNextDialog(1);
         //Console.WriteLine("Moving to: " + VI.Dialogue.Current.GetId());
-        LOG.WRITE("Moving to: " + VI.Dialogue.Current.GetId());
+        //LOG.WRITE("Moving to: " + VI.Dialogue.Current.GetId());
 
         if (VI.Dialogue.Speaker.IsPlayer(VI.Dialogue.Current.GetId())) {
           VI.Entity.Activate(player);
@@ -344,6 +344,7 @@ namespace BonVoyage {
     public void GeneralDialogStart(int direction) { // 1 to face left, 
       PlayerScript.CameraFollowPlayer = false;
       PlayerScript.PlayerInDialogue = true;
+      VI.Entity.Deactivate(UIObjectiveTextID);
       ZoomCameraToDialog();
       VI.Animation.SpriteSheet.SheetIndex.Set(playerID, direction); // Make player face the other person
     }
@@ -362,6 +363,7 @@ namespace BonVoyage {
     public void GeneralEndDialog() {
       PlayerScript.CameraFollowPlayer = true;
       //runPassenger2Dialog = false;
+      VI.Entity.Activate(UIObjectiveTextID);
       normalZoom = false;
       PlayerScript.PlayerInDialogue = false;
     }
