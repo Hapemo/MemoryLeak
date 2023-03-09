@@ -12,7 +12,6 @@ namespace BonVoyage {
   public class Level1DialogManager : DialogManager {
 
 
-    static public int passengerDialogProgress = 0; // Consists of 2 numbers in this format <passenger number><right or wrong>. 1 for right, 0 for wrong. eg passenger 1 right answer destination reached, it will be 11.
     private bool progressUpdate = false;
     //static public bool runGirlDialog;
 
@@ -38,13 +37,6 @@ namespace BonVoyage {
       UIHPBarID = VI.Entity.GetId("hpbar", "Dialogue");
       UIMemoryFragmentID = VI.Entity.GetId("memoryfragment", "Dialogue");
       UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
-      UIFragment1ObjID = VI.Entity.GetId("fragment1obj", "Dialogue");
-      UICycleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
-      UIMiniMapID = VI.Entity.GetId("minimap", "Dialogue");
-      UIEnemyMapID = VI.Entity.GetId("enemymap", "Dialogue");
-      UIWeatherMapID = VI.Entity.GetId("weathermap", "Dialogue");
-      UIWeatherTextID = VI.Entity.GetId("weathertext", "Dialogue");
-      UIObjectiveTextID = VI.Entity.GetId("objectivetext", "Dialogue");
 
       P1ID = VI.Entity.GetId("P1", "Dialogue");
       PP1ID = VI.Entity.GetId("PP1", "Dialogue");
@@ -79,7 +71,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), 
                                                  VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
-        runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva"); // Run the dialog
+        runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
       }
@@ -89,12 +81,13 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), 
                                                  VI.Transform.Position.GetY(P2ColliderBox));
-        runPassenger2Dialog = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus");
+        runPassenger2Dialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus");
         if (!runPassenger2Dialog)
           EndPassenger2Dialog();
       }
 
       bool dialogEnded = false;
+
       switch (passengerDialogProgress) {
       case 10: // Passenger 1 wrong
         GeneralDialogStart(7);
@@ -105,8 +98,7 @@ namespace BonVoyage {
           VI.Entity.Activate(VI.Entity.GetId("Passenger2"));
           VI.Entity.Activate(P2ColliderBox);
         }
-        dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva (Lighthouse)");
-        MemoryFragmentExpand.ActivateFragment(0);
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva (Lighthouse)");
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 11: // Passenger 1 correct
@@ -118,7 +110,7 @@ namespace BonVoyage {
           VI.Entity.Activate(VI.Entity.GetId("Passenger2"));
           VI.Entity.Activate(P2ColliderBox);
         }
-        dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Minerva (Multistory House)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva (Multistory House)");
         MemoryFragmentExpand.ActivateFragment(0);
         if (!dialogEnded) EndDropoffDialog();
         break;
@@ -127,8 +119,7 @@ namespace BonVoyage {
         MoveCameraLeftToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
-        dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus (Brown House)");
-        MemoryFragmentExpand.ActivateFragment(1);
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Brown House)");
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 21: // Passenger 2 correct
@@ -136,7 +127,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
-        dialogEnded = RunDialog("P1", "G1", "PP1", "PP2", "Dialogue", "Dialog Argus (Water Fountain)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Water Fountain)");
         EnemyController.EnemyActivated = true;
         MemoryFragmentExpand.ActivateFragment(1);
         if (!dialogEnded) EndDropoffDialog();
@@ -156,7 +147,6 @@ namespace BonVoyage {
     public override void Exit(int _ENTITY) {
         base.Exit(_ENTITY);
 
-      passengerDialogProgress = 0;
       runPassengerDialog = false;
       runPassenger2Dialog = false;
     }
@@ -219,13 +209,6 @@ namespace BonVoyage {
 
       UpdateObjective("Dialog Objective Passenger2 (Argus)");
     }
-
-    public void EndDropoffDialog() {
-      GeneralEndDialog();
-      VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
-      passengerDialogProgress = 0;
-    }
-
 
     #endregion
 

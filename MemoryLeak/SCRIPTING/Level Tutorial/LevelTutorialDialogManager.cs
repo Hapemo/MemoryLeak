@@ -59,7 +59,7 @@ namespace BonVoyage {
 
       if (runIntroDialog) {
         PlayerScript.PlayerInDialogue = true;
-        runIntroDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialogue SceneIntro 1");
+        runIntroDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue SceneIntro 1");
         if (!runIntroDialog)
           EndIntroDialog();
       }
@@ -68,7 +68,7 @@ namespace BonVoyage {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, -250, -635);
-        runGirlDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialogue LittleGirl 0");
+        runGirlDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue LittleGirl 0");
         if (!runGirlDialog)
           EndGirlDialog();
       }
@@ -77,7 +77,7 @@ namespace BonVoyage {
         GeneralDialogStart(6);
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, -770, 103);
-        runCatDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialogue CatTutorial");
+        runCatDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue CatTutorial");
         if (!runCatDialog)
           EndCatDialog();
       }
@@ -86,7 +86,7 @@ namespace BonVoyage {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, 650, -1160); // Move him to better location
-        runPassengerDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialog NPC"); // Run the dialog
+        runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
       }
@@ -96,7 +96,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(PEndColliderBox),
                                                  VI.Transform.Position.GetY(PEndColliderBox)); // Move him to better location
-        runPassengerEndDialog = RunDialog("P1", "G1", "PP1", "PP2", "TutorialDialogue", "Dialog NPC dropoff"); // Run the dialog
+        runPassengerEndDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC dropoff"); // Run the dialog
         if (!runPassengerEndDialog)
           EndDropoffDialog();
       }
@@ -160,11 +160,6 @@ namespace BonVoyage {
       VI.Text.Update(UIObjectiveTextID, "Objective: Find the lost soul");
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
-    }
-
-    public void EndDropoffDialog() {
-      GeneralEndDialog();
-      VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
     }
 
 
