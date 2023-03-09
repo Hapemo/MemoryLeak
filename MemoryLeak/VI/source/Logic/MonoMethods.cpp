@@ -178,6 +178,9 @@ void MonoMethods::iScene::Pause(MonoString* _name) {
 void MonoMethods::iScene::Play(MonoString* _name) {
 	VI::iScene::Play(MONO->ConvertFromMonoString(_name));
 }
+void MonoMethods::iScene::IsPaused(MonoString* _name) {
+	VI::iScene::IsPaused(MONO->ConvertFromMonoString(_name));
+}
 
 // Animation
 void MonoMethods::iAnimation::s_SetSpeed(MonoString* _entityName, MonoString* _sceneName, float _speed) {
@@ -629,10 +632,8 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.ParticleSystem::SetPosY", &VI::iParticleSystem::SetPosY);
 	mono_add_internal_call("VI.ParticleSystem::GetWidth", &VI::iParticleSystem::GetWidth);
 	mono_add_internal_call("VI.ParticleSystem::SetWidth", &VI::iParticleSystem::SetWidth);
-	mono_add_internal_call("VI.ParticleSystem::GetDirX", &VI::iParticleSystem::GetDirX);
-	mono_add_internal_call("VI.ParticleSystem::SetDirX", &VI::iParticleSystem::SetDirX);
-	mono_add_internal_call("VI.ParticleSystem::GetDirY", &VI::iParticleSystem::GetDirY);
-	mono_add_internal_call("VI.ParticleSystem::SetDirY", &VI::iParticleSystem::SetDirY);
+	mono_add_internal_call("VI.ParticleSystem::GetDir", &VI::iParticleSystem::GetDir);
+	mono_add_internal_call("VI.ParticleSystem::SetDir", &VI::iParticleSystem::SetDir);
 	mono_add_internal_call("VI.ParticleSystem::GetSpread", &VI::iParticleSystem::GetSpread);
 	mono_add_internal_call("VI.ParticleSystem::SetSpread", &VI::iParticleSystem::SetSpread);
 	mono_add_internal_call("VI.ParticleSystem::GetDuration", &VI::iParticleSystem::GetDuration);

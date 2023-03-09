@@ -20,7 +20,7 @@ namespace BonVoyage {
             correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint");
             correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender");
 
-            wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint");
+            wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint"); 
             wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDest2Render");
             // Store original scale x value
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
@@ -43,7 +43,7 @@ namespace BonVoyage {
                 correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint");
                 correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender");
 
-                wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint");
+                wrongDestination_Box = VI.Entity.GetId("PortHouseDropOffPoint"); 
                 wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDest2Render");
                 // Store original scale x value
                 InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
@@ -94,12 +94,6 @@ namespace BonVoyage {
                     AttachToPlayerAnimation = false;
                     PlayerScript.PlayerInOtherAnimation = false;
                 }
-            }
-
-            // Move passenger with player       
-            if (AttachedToPlayer) {
-                // Move passenger with player
-                MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
             }
 
             // Check if passenger reaches destination
@@ -179,6 +173,13 @@ namespace BonVoyage {
         public override void LateUpdate(int _ENTITY)
         {
             base.LateUpdate(_ENTITY);
+
+            // Move passenger with player       
+            if (AttachedToPlayer)
+            {
+                // Move passenger with player
+                MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
+            }
         }
 
         public override void Exit(int _ENTITY)

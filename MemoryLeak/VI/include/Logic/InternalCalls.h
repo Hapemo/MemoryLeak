@@ -309,6 +309,7 @@ public:
 		static Scene& Select(std::string const& _name);
 		static void Pause(std::string const& _name);
 		static void Play(std::string const& _name);
+		static void IsPaused(std::string const& _name);
 	};
 
 	struct iCamera {
@@ -463,10 +464,8 @@ public:
 		static float GetWidth(const int _eId);
 		static void SetWidth(const int _eId, float _width);
 
-		static float GetDirX(const int _eId);
-		static void SetDirX(const int _eId, float _dirX);
-		static float GetDirY(const int _eId);
-		static void SetDirY(const int _eId, float _dirY);
+		static float GetDir(const int _eId);
+		static void SetDir(const int _eId, float _dir);
 
 		static float GetSpread(const int _eId);
 		static void SetSpread(const int _eId, float _spread);
