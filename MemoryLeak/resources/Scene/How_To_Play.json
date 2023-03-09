@@ -1,36 +1,6 @@
 [
     {
         "General": {
-            "name": "Background",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\menu screen background.jpg",
-            "layer": 0
-        }
-    },
-    {
-        "General": {
             "name": "How_To_Play",
             "tag": 8,
             "subtag": 0,
@@ -38,13 +8,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 1186.0,
-                "Y": 692.0
+                "X": 1200.0,
+                "Y": 600.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 18.0,
+                "Y": -50.0
             }
         },
         "Sprite": {
@@ -52,18 +22,18 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 150
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\window-1.png",
-            "layer": 1
+            "layer": 2
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "HOW TO PLAY",
             "offset": {
-                "X": -243.0,
-                "Y": 200.0
+                "X": -237.0,
+                "Y": 391.0
             },
             "scale": 1.5,
             "color": {
@@ -78,79 +48,6 @@
     },
     {
         "General": {
-            "name": "Back",
-            "tag": 5,
-            "subtag": 1,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 650.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": -335.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
-            "layer": 2
-        },
-        "CircleCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": 1.0,
-            "isTrigger": false,
-            "renderFlag": false
-        },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Back",
-            "offset": {
-                "X": -59.0,
-                "Y": -19.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": 0.0
-        },
-        "Script": {
-            "name": "BackButton"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
             "name": "Instruction 1",
             "tag": 5,
             "subtag": 0,
@@ -158,8 +55,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 504.0,
-                "Y": 150.0
+                "X": 494.0,
+                "Y": 140.0
             },
             "rotation": 0.0,
             "translation": {
@@ -176,7 +73,7 @@
             },
             "sprite": 1,
             "texture": "",
-            "layer": 3
+            "layer": 5
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -223,7 +120,7 @@
             },
             "sprite": 1,
             "texture": "",
-            "layer": 4
+            "layer": 5
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -270,7 +167,7 @@
             },
             "sprite": 0,
             "texture": "",
-            "layer": 2
+            "layer": 3
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -394,7 +291,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Icons\\sendIcon.png",
-            "layer": 6
+            "layer": 5
         }
     },
     {
@@ -424,7 +321,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Icons\\dialogueIcon.png",
-            "layer": 8
+            "layer": 5
         }
     },
     {
@@ -454,7 +351,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\volume-button-3.png",
-            "layer": 9
+            "layer": 6
         }
     },
     {
@@ -484,7 +381,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\volume-button-3.png",
-            "layer": 9
+            "layer": 6
         }
     },
     {
@@ -501,20 +398,80 @@
             },
             "rotation": 0.7853981852531433,
             "translation": {
-                "X": -122.0,
+                "X": -121.99996948242188,
                 "Y": -132.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 63,
-                "g": 95,
-                "b": 112,
+                "r": 32,
+                "g": 153,
+                "b": 229,
                 "a": 255
             },
             "sprite": 0,
             "texture": "",
-            "layer": 8
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "Background",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 220
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "Card",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 1140.0,
+                "Y": 750.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -50.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 78,
+                "g": 78,
+                "b": 78,
+                "a": 150
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 1
         }
     }
 ]
