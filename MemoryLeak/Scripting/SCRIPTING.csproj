@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackBtnHTP.cs" />
     <Compile Include="BackButton.cs" />
     <Compile Include="BaseScript.cs" />
     <Compile Include="CreditsButton.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="DialogManager.cs" />
     <Compile Include="EnemyController.cs" />
     <Compile Include="EnemyMapScript.cs" />
+    <Compile Include="ForwardBtnHTP.cs" />
     <Compile Include="Fragment1.cs" />
     <Compile Include="Fragment2.cs" />
     <Compile Include="Fragment3.cs" />

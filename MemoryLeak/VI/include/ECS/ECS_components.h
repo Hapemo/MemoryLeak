@@ -278,7 +278,7 @@ struct MovementAI {
 	bool loop = false; //save
 	bool reverse = false;//save
 	bool cycle = false;//save
-	int step = 1;
+	int step = 0;
 	int nextStep = 1; //save
 	int setStep = -1;
 	int state = 0;
