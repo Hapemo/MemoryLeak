@@ -21,7 +21,6 @@ namespace BonVoyage {
 
         public void EarlyUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-        
         }
 
         public void Update(int _ENTITY) {

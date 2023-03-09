@@ -1,53 +1,6 @@
 [
     {
         "General": {
-            "name": "Panel",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 1186.0,
-                "Y": 692.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
-            "layer": 6
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Are you sure you want to quit?",
-            "offset": {
-                "X": -439.0,
-                "Y": -41.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": 0.0
-        }
-    },
-    {
-        "General": {
             "name": "Yes",
             "tag": 8,
             "subtag": 0,
@@ -55,24 +8,24 @@
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
-                "Y": 125.0
+                "X": 300.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": -270.0,
-                "Y": -335.0
+                "Y": -300.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 7
         },
         "Audio": {
@@ -119,24 +72,24 @@
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
-                "Y": 125.0
+                "X": 300.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 270.0,
-                "Y": -335.0
+                "Y": -300.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 7
         },
         "Audio": {
@@ -168,7 +121,7 @@
             "width": 0.0
         },
         "Script": {
-            "name": "BackButton"
+            "name": "NoQuit"
         },
         "Button": {
             "interactable": true
@@ -176,8 +129,55 @@
     },
     {
         "General": {
+            "name": "Quit Game",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 730.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -231.0,
+                "Y": 31.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Are you sure you want to quit?",
+            "offset": {
+                "X": -205.0,
+                "Y": -19.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -424.0
+        }
+    },
+    {
+        "General": {
             "name": "Background",
-            "tag": 4,
+            "tag": 8,
             "subtag": 0,
             "isActive": true
         },
@@ -194,32 +194,32 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 150
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\menu screen background.jpg",
+            "sprite": 0,
+            "texture": "",
             "layer": 0
         }
     },
     {
         "General": {
-            "name": "Quit Game",
+            "name": "Window",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 702.0,
-                "Y": 150.0
+                "X": 1200.0,
+                "Y": 700.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 214.0
+                "Y": -50.000003814697266
             }
         },
         "Sprite": {
@@ -227,18 +227,18 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 200
             },
             "sprite": 2,
-            "texture": "",
-            "layer": 8
+            "texture": "Textures\\Menu\\window-1.png",
+            "layer": 6
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "QUIT GAME",
+            "text": "Quit Game",
             "offset": {
-                "X": -205.0,
-                "Y": -19.0
+                "X": -202.0,
+                "Y": 380.0
             },
             "scale": 1.5,
             "color": {
@@ -249,6 +249,53 @@
             },
             "followCam": false,
             "width": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Back",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 60.0,
+                "Y": 60.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 535.0,
+                "Y": 238.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\ExitBtn.png",
+            "layer": 8
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "BackButton"
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

@@ -958,7 +958,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
-            "layer": 41
+            "layer": 60
         },
         "Animation": {
             "sheets": [
