@@ -372,6 +372,8 @@ void ResourceManager::LoadResource(std::filesystem::path const& entry) {
 }
 
 void ResourceManager::LoadAllResources(std::filesystem::path const& _folder) {
+	//std::cout << "------- File Directory: " << _folder << std::endl;
+
 	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(_folder)) {
 		// If it's a folder, go into it
 		if (std::filesystem::is_directory(entry)) {
@@ -547,6 +549,7 @@ void ResourceManager::LoadGameStateResources(std::filesystem::path const& _games
 }
 
 void ResourceManager::SelectiveLoadAllResources(std::filesystem::path const& _folderDirectory) {
+	//std::cout << "------- File Directory: " << _folderDirectory << std::endl;
 	for (const std::filesystem::path& entry : std::filesystem::directory_iterator(_folderDirectory)) {
 		// If it's a folder, go into it
 		if (std::filesystem::is_directory(entry)) {
