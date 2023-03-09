@@ -3580,7 +3580,7 @@
             }
         },
         "Script": {
-            "name": "WeatherMapScript"
+            "name": "WeatherMapScript3"
         },
         "Button": {
             "interactable": true

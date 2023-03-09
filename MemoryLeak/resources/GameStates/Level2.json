@@ -12,7 +12,7 @@
                 "Y": 1968.0
             }
         },
-        "isActive": false,
+        "isActive": true,
         "layer": 3,
         "order": 7
     },
@@ -52,7 +52,7 @@
     },
     {
         "SceneName": "Dialogue2",
-        "isActive": false,
+        "isActive": true,
         "layer": 7,
         "order": 0
     },
@@ -103,8 +103,14 @@
                 "Y": 1968.0
             }
         },
-        "isActive": false,
+        "isActive": true,
         "layer": 5,
+        "order": 0
+    },
+    {
+        "SceneName": "CrystalBalls",
+        "isActive": false,
+        "layer": 7,
         "order": 0
     }
 ]
