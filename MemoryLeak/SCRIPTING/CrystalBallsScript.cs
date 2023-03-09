@@ -61,9 +61,7 @@ namespace BonVoyage {
             {
                 toggle = toggle >= 2 ? 0 : (toggle + 1);
                 if (currlevel == "Level1" && toggle == 2)
-                { 
                     toggle = 0;
-                }
             }
             if(prevTog != toggle)
             { 

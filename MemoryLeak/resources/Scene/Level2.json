@@ -16379,41 +16379,5 @@
             "isRandPitch": false,
             "isSpacial": false
         }
-    },
-    {
-        "General": {
-            "name": "Enemy",
-            "tag": 2,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1185.68603515625,
-                "Y": -493.3326110839844
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack1_Spritesheet.png",
-            "layer": 69
-        },
-        "SheetAnimation": {
-            "frameCount": 12,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.5,
-            "timeToFrameSwap": 0.0
-        }
     }
 ]

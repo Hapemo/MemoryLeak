@@ -32,6 +32,8 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            if (VI.Input.Key.Release(258))
+                DeliveredPassenger();
             if ((curr1 < 255 && increase1) || (curr2 < 255 && increase2))
                 UpdateColor();
         }
