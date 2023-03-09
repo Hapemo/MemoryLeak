@@ -104,10 +104,52 @@ namespace BonVoyage {
             e3 = VI.Entity.GetId("E3", "How_To_Play");
             e4 = VI.Entity.GetId("E4", "How_To_Play");
             e5 = VI.Entity.GetId("E5", "How_To_Play");
+            init = true;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            Alive(_ENTITY);
+            init = false;
+            VI.Animation.Transform.SetNext(c1, 0);
+            VI.Animation.Transform.SetNext(c2, 0);
+            VI.Animation.Transform.SetNext(c3, 0);
+            VI.Animation.Transform.SetNext(c4, 0);
+            VI.Animation.Transform.SetNext(pm1, 0);
+            VI.Animation.Transform.SetNext(pm2, 0);
+            VI.Animation.Transform.SetNext(pm3, 0);
+            VI.Animation.Transform.SetNext(pm4, 0);
+            VI.Animation.Transform.SetNext(pm5, 0);
+            VI.Animation.Transform.SetNext(pm6, 0);
+            VI.Animation.Transform.SetNext(pm7, 0);
+            VI.Animation.Transform.SetNext(d1, 0);
+            VI.Animation.Transform.SetNext(d2, 0);
+            VI.Animation.Transform.SetNext(d3, 0);
+            VI.Animation.Transform.SetNext(d4, 0);
+            VI.Animation.Transform.SetNext(d5, 0);
+            VI.Animation.Transform.SetNext(d6, 0);
+            VI.Animation.Transform.SetNext(d7, 0);
+            VI.Animation.Transform.SetNext(d8, 0);
+            VI.Animation.Transform.SetNext(cb1, 0);
+            VI.Animation.Transform.SetNext(cb2, 0);
+            VI.Animation.Transform.SetNext(cb3, 0);
+            VI.Animation.Transform.SetNext(w1, 0);
+            VI.Animation.Transform.SetNext(w2, 0);
+            VI.Animation.Transform.SetNext(w3, 0);
+            VI.Animation.Transform.SetNext(w4, 0);
+            VI.Animation.Transform.SetNext(w5, 0);
+            VI.Animation.Transform.SetNext(w6, 0);
+            VI.Animation.Transform.SetNext(w7, 0);
+            VI.Animation.Transform.SetNext(w8, 0);
+            VI.Animation.Transform.SetNext(mf1, 0);
+            VI.Animation.Transform.SetNext(mf2, 0);
+            VI.Animation.Transform.SetNext(mf3, 0);
+            VI.Animation.Transform.SetNext(mf4, 0);
+            VI.Animation.Transform.SetNext(e1, 0);
+            VI.Animation.Transform.SetNext(e2, 0);
+            VI.Animation.Transform.SetNext(e3, 0);
+            VI.Animation.Transform.SetNext(e4, 0);
+            VI.Animation.Transform.SetNext(e5, 0);
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -116,17 +158,19 @@ namespace BonVoyage {
         }
 
         public void Update(int _ENTITY) {
-            if (!init)
-            {
-                Alive(_ENTITY);
+            //if (!init)
+            //{
+            //    Alive(_ENTITY);
                 
-                init = true;
-            }
+            //    init = true;
+            //}
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            //
-            Console.WriteLine("FORWARDID:" + ForwardBtnID);
+            BackBtnID = VI.Entity.GetId("BackBtnHTP", "How_To_Play");
+            ForwardBtnID = VI.Entity.GetId("ForwardBtnHTP", "How_To_Play");
+            ControlsID = VI.Entity.GetId("Controls", "How_To_Play");
             if (VI.Input.Button.Released(ForwardBtnID))
             {
+                Alive(_ENTITY);
                 VI.Animation.Transform.Run(ControlsID);
                 VI.Animation.Transform.Run(PlayerMovementID);
                 VI.Animation.Transform.Run(DialogueID);
@@ -196,7 +240,7 @@ namespace BonVoyage {
 
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
+            init = false;
         }
 
         public void Dead(int _ENTITY) {
