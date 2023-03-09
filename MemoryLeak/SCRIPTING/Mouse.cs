@@ -17,14 +17,14 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", VI.GameState.GetName());
+            playerBoat = VI.Entity.GetId("Boat");
             InAnimation = false;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", VI.GameState.GetName());
+            playerBoat = VI.Entity.GetId("Boat");
             InAnimation = false;
         }
 

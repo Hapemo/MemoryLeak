@@ -10,13 +10,13 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
+            playerBoat = VI.Entity.GetId("Boat");
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
+            playerBoat = VI.Entity.GetId("Boat");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -29,7 +29,7 @@ namespace BonVoyage {
             if (ranOnceInit) {
                 ranOnceInit = false;
 
-                playerBoat = VI.Entity.GetId("Boat", "LevelTutorial");
+                playerBoat = VI.Entity.GetId("Boat");
             }
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
