@@ -51,7 +51,7 @@ namespace BonVoyage {
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            VI.Test.ArgString("Running " +  _ENTITY);
+            //VI.Test.ArgString("Running " +  _ENTITY);
 
             if (VI.Input.Button.Hover(_ENTITY))
             {
