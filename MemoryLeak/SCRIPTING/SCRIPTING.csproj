@@ -74,6 +74,7 @@
     <Compile Include="DialogManager.cs" />
     <Compile Include="EnemyController.cs" />
     <Compile Include="EnemyMapScript.cs" />
+    <Compile Include="ExitBtnHTP.cs" />
     <Compile Include="ForwardBtnHTP.cs" />
     <Compile Include="Fragment1.cs" />
     <Compile Include="Fragment2.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Fragment5.cs" />
     <Compile Include="Fragment6.cs" />
     <Compile Include="HowToPlayButton.cs" />
+    <Compile Include="htpPlayer.cs" />
     <Compile Include="InternalCalls.cs" />
     <Compile Include="Level 1\SwitchToLevel2.cs" />
     <Compile Include="Level 2\Level2DialogManager.cs" />
