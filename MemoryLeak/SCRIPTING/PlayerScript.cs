@@ -19,8 +19,8 @@ namespace BonVoyage {
 
         private bool SpeedCheatToggle;
 
-        private float PlayerPosX;
-        private float PlayerPosY;
+        static public float PlayerPosX;
+        static public float PlayerPosY;
         private float PlayerRotation;
 
         public void Alive(int _ENTITY) {

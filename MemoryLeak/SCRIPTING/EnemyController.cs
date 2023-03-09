@@ -3,21 +3,16 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
     public class EnemyController : BaseScript {
-        private float PlayerPosX;
-        private float PlayerPosY;
-
         private float HealSpeed = 1f;
         private float HealCounter;
-
         private float HitSpeed = 1f;
         private float HitInterval;
         private float HitAnimationCounter;
         private float HitCounter;
         private int HitMax = 11;
-        public int HitTaken;
+        private int HitTaken;
 
         static public bool EnemyActivated = false;
-
         public float EnemySpeed = 2.2f;
         private EnemyState OctopusState;
         private int ChasingIndex = 0;
@@ -39,10 +34,7 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            PlayerPosX = 0;
-            PlayerPosY = 0;
             HitTaken = 0;
-
             EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
             HpBarId = VI.Entity.GetId("hpbar");
@@ -50,6 +42,11 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+            HitTaken = 0;
+            PlayerId = VI.Entity.GetId("Boat");
+            EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
+            HpBarId = VI.Entity.GetId("hpbar");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -62,14 +59,10 @@ namespace BonVoyage {
             //VI.Camera.SetScale.X(5500);
 
             if (EnemyActivated) {
-                THIS.Activate();
                 VI.Entity.Activate(EnemyTriggerId);
 
-                PlayerPosX = VI.Transform.Position.GetX(PlayerId);
-                PlayerPosY = VI.Transform.Position.GetY(PlayerId);
-
-                float x = GetDistance(PlayerPosX, PlayerPosY, Axis.x);
-                float y = GetDistance(PlayerPosX, PlayerPosY, Axis.y);
+                float x = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.x);
+                float y = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.y);
                 float OctopusDirection = GetRotation(x, y);
 
                 // Enemy is in screen
@@ -175,14 +168,14 @@ namespace BonVoyage {
         private void UpdateTransform(EnemyState _state) {
             if (ChasingIndex == 0) {
                 ChasingIndex = THIS.Animation.Transform.GetCurrentIndex();
-                THIS.Animation.Transform.AddAtCurrent.TransformPos(PlayerPosX, PlayerPosY);
-                VI.Animation.Transform.AddAtCurrent.TransformPos(EnemyTriggerId, PlayerPosX, PlayerPosY);
+                THIS.Animation.Transform.AddAtCurrent.TransformPos(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY);
+                VI.Animation.Transform.AddAtCurrent.TransformPos(EnemyTriggerId, PlayerScript.PlayerPosX, PlayerScript.PlayerPosY);
             } else {
                 if (_state != EnemyState.IDLE) { 
-                    THIS.Animation.Transform.Edit.CurrentPosX(PlayerPosX);
-                    THIS.Animation.Transform.Edit.CurrentPosY(PlayerPosY);
-                    VI.Animation.Transform.Edit.CurrentPosX(EnemyTriggerId, PlayerPosX);
-                    VI.Animation.Transform.Edit.CurrentPosY(EnemyTriggerId, PlayerPosY);
+                    THIS.Animation.Transform.Edit.CurrentPosX(PlayerScript.PlayerPosX);
+                    THIS.Animation.Transform.Edit.CurrentPosY(PlayerScript.PlayerPosY);
+                    VI.Animation.Transform.Edit.CurrentPosX(EnemyTriggerId, PlayerScript.PlayerPosX);
+                    VI.Animation.Transform.Edit.CurrentPosY(EnemyTriggerId, PlayerScript.PlayerPosY);
                 } else {
                     THIS.Animation.Transform.Remove(ChasingIndex);
                     VI.Animation.Transform.Remove(EnemyTriggerId, ChasingIndex);
