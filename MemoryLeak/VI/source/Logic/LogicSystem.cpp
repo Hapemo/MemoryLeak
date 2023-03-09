@@ -253,7 +253,7 @@ void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
 
 	std::string scriptName = _e.GetComponent<Script>().name;
 	if (scriptName == "") {
-		LOG_ERROR("Entity " + _e.GetComponent<General>().name + " component script name is empty!");
+		//LOG_ERROR("Entity " + _e.GetComponent<General>().name + " component script name is empty!");
 		return;
 	}
 	// Script is C++ script

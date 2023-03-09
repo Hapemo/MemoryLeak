@@ -26,24 +26,18 @@ namespace BonVoyage {
     protected int latestChoiceChosen = 0; // 0 if no choice chosen, 1 if choice 1 chosen, 2 if choice 2 chosen. Resets every frame
 
     protected int playerID;
+    protected int UIObjectiveTextID;
 
     protected int UIHPBarID;
     protected int UIMemoryFragmentID;
     protected int UIMemoryFragmentScreenID;
-    protected int UIFragment1ObjID;
-    protected int UICycleMapID;
-    protected int UIMiniMapID;
-    protected int UIEnemyMapID;
-    protected int UIWeatherMapID;
-    protected int UIWeatherTextID;
-    protected int UIObjectiveTextID;
 
-        protected int UIPassengersLeftID;
-        protected int UIPassengerIcon1ID;
-        protected int UIPassengerIcon2ID;
+    protected int UIPassengersLeftID;
+    protected int UIPassengerIcon1ID;
+    protected int UIPassengerIcon2ID;
 
 
-        protected int P1ID;
+    protected int P1ID;
     protected int PP1ID;
     protected int PP2ID;
     protected int G1ID;
@@ -54,31 +48,36 @@ namespace BonVoyage {
     }
 
     public virtual void Init(int _ENTITY) {
-        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      UIObjectiveTextID = VI.Entity.GetId("objectivetext");
+      P1ID = VI.Entity.GetId("P1");
+      PP1ID = VI.Entity.GetId("PP1");
+      PP2ID = VI.Entity.GetId("PP2");
+      G1ID = VI.Entity.GetId("G1");
     }
 
     public virtual void EarlyUpdate(int _ENTITY) {
-        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
     public virtual void Update(int _ENTITY) {
-        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
     public virtual void FixedUpdate(int _ENTITY) {
-        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
     public virtual void LateUpdate(int _ENTITY) {
-        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
     public virtual void Exit(int _ENTITY) {
-        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
     public virtual void Dead(int _ENTITY) {
-        THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
 
 
@@ -87,38 +86,39 @@ namespace BonVoyage {
       VI.Entity.Deactivate(UIHPBarID);
       VI.Entity.Deactivate(UIMemoryFragmentID);
       VI.Entity.Deactivate(UIMemoryFragmentScreenID);
-      VI.Entity.Deactivate(UIFragment1ObjID);
-      VI.Entity.Deactivate(UICycleMapID);
       //VI.Entity.Deactivate(UIMiniMapID);
       //VI.Entity.Deactivate(UIEnemyMapID);
       //VI.Entity.Deactivate(UIWeatherMapID);
-      VI.Entity.Deactivate(UIWeatherTextID);
       VI.Entity.Deactivate(UIObjectiveTextID);
-            VI.Entity.Deactivate(UIPassengersLeftID);
-            VI.Entity.Deactivate(UIPassengerIcon1ID);
-            VI.Entity.Deactivate(UIPassengerIcon2ID);
+      VI.Entity.Deactivate(UIPassengersLeftID);
+      VI.Entity.Deactivate(UIPassengerIcon1ID);
+      VI.Entity.Deactivate(UIPassengerIcon2ID);
 
 
-            //VI.Scene.Pause("CrystalBalls");
-            //VI.Scene.Pause("MiniMap");
-            //VI.Scene.Pause("EnemyMap");
-            //VI.Scene.Pause("WeatherMap");
-        }
+      VI.Scene.Pause("CrystalBalls");
+      VI.Scene.Pause("MiniMap");
+      VI.Scene.Pause("EnemyMap");
+      VI.Scene.Pause("WeatherMap");
+    }
 
-        public void EnableUI() {
-      if (UIHPBarID != 0)VI.Entity.Activate(UIHPBarID);
-      if (UIMemoryFragmentID != 0)VI.Entity.Activate(UIMemoryFragmentID);
-      if (UICycleMapID != 0)VI.Entity.Activate(UICycleMapID);
-      if (UIObjectiveTextID != 0)VI.Entity.Activate(UIObjectiveTextID);
-      if (UICycleMapID != 0)VI.Entity.Activate(UICycleMapID);
-      if (UIPassengersLeftID != 0) VI.Entity.Activate(UIPassengersLeftID);
-            if (UIPassengerIcon1ID != 0) VI.Entity.Activate(UIPassengerIcon1ID);
-            if (UIPassengerIcon2ID != 0) VI.Entity.Activate(UIPassengerIcon2ID);
-            //VI.Scene.Play("CrystalBalls");
-            //VI.Scene.Play("MiniMap");
-            //VI.Scene.Play("EnemyMap");
-            //VI.Scene.Play("WeatherMap");
-        }
+    public void EnableUI() {
+      if (UIHPBarID != 0)
+        VI.Entity.Activate(UIHPBarID);
+      if (UIMemoryFragmentID != 0)
+        VI.Entity.Activate(UIMemoryFragmentID);
+      if (UIObjectiveTextID != 0)
+        VI.Entity.Activate(UIObjectiveTextID);
+      if (UIPassengersLeftID != 0)
+        VI.Entity.Activate(UIPassengersLeftID);
+      if (UIPassengerIcon1ID != 0)
+        VI.Entity.Activate(UIPassengerIcon1ID);
+      if (UIPassengerIcon2ID != 0)
+        VI.Entity.Activate(UIPassengerIcon2ID);
+      VI.Scene.Play("CrystalBalls");
+      VI.Scene.Play("MiniMap");
+      VI.Scene.Play("EnemyMap");
+      VI.Scene.Play("WeatherMap");
+    }
     #endregion
 
     // All the functions on the top of DialogHelper region are helper functions to assist RunDialog() at the bottom of the region
@@ -130,50 +130,50 @@ namespace BonVoyage {
     // int perLineScaleY    - This is the increment for one additional line
     // int textXSpacing     - This is the spacing of the text from the left edge of the box 
     // int textYSpacing     - This is the spacing of the text from the top edge of the box 
-    public void TextBoxAlign(string entityname, string scenename, float posX, float posY, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
-      int additionalLines = VI.Text.s_GetLineCount(entityname, scenename) - 1;
+    public void TextBoxAlign(int entityname, float posX, float posY, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
+      int additionalLines = VI.Text.GetLineCount(entityname) - 1;
 
       // Selecting the dialog box texture and putting it into correct position
       if (choice == 0) {
         if (additionalLines < 2) {
-          VI.Transform.Scale.s_SetY(entityname, scenename, smallDialogBoxHeight);
-          VI.Transform.Scale.s_SetX(entityname, scenename, dialogBoxWidth);
-          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox1.png");
+          VI.Transform.Scale.SetY(entityname, smallDialogBoxHeight);
+          VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
+          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox1.png");
         } else if (additionalLines < 4) {
           posY += (midDialogBoxHeight - smallDialogBoxHeight) / 2;
-          VI.Transform.Scale.s_SetY(entityname, scenename, midDialogBoxHeight);
-          VI.Transform.Scale.s_SetX(entityname, scenename, dialogBoxWidth);
-          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox2.png");
+          VI.Transform.Scale.SetY(entityname, midDialogBoxHeight);
+          VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
+          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox2.png");
         } else {
           posY += (bigDialogBoxHeight - smallDialogBoxHeight) / 2;
-          VI.Transform.Scale.s_SetY(entityname, scenename, bigDialogBoxHeight);
-          VI.Transform.Scale.s_SetX(entityname, scenename, dialogBoxWidth);
-          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
+          VI.Transform.Scale.SetY(entityname, bigDialogBoxHeight);
+          VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
+          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
         }
       } else {
         if (additionalLines == 0) {
           textYSpacing = 0;
-          VI.Transform.Scale.s_SetY(entityname, scenename, smallChoiceHeight);
-          VI.Transform.Scale.s_SetX(entityname, scenename, choiceWidth);
-          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
+          VI.Transform.Scale.SetY(entityname, smallChoiceHeight);
+          VI.Transform.Scale.SetX(entityname, choiceWidth);
+          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
         } else {
-          VI.Transform.Scale.s_SetY(entityname, scenename, midChoiceHeight);
-          VI.Transform.Scale.s_SetX(entityname, scenename, choiceWidth);
-          VI.Texture.s_Set(entityname, scenename, "Textures\\Icons\\dialogue\\UI_DialogueOption2.png");
+          VI.Transform.Scale.SetY(entityname, midChoiceHeight);
+          VI.Transform.Scale.SetX(entityname, choiceWidth);
+          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueOption2.png");
         }
       }
 
       // If it's a choice textbox, posY is the middle of both texts
       if (choice == 1)
-        posY = posY + spacing + VI.Transform.Scale.s_GetY(entityname, scenename) / 2;
+        posY = posY + spacing + VI.Transform.Scale.GetY(entityname) / 2;
       else if (choice == 2)
-        posY = posY - spacing - VI.Transform.Scale.s_GetY(entityname, scenename) / 2;
+        posY = posY - spacing - VI.Transform.Scale.GetY(entityname) / 2;
 
-      VI.Transform.Position.s_SetX(entityname, scenename, posX);
-      VI.Transform.Position.s_SetY(entityname, scenename, posY);
+      VI.Transform.Position.SetX(entityname, posX);
+      VI.Transform.Position.SetY(entityname, posY);
 
-      float magicNumber = 10.0f * VI.Text.Scale.s_Get(entityname, scenename);
-      VI.Text.Offset.s_Set(entityname, scenename, -VI.Transform.Scale.s_GetX(entityname) / 2 + textXSpacing, VI.Transform.Scale.s_GetY(entityname)/2 - textHeight + textYSpacing);
+      float magicNumber = 10.0f * VI.Text.Scale.Get(entityname);
+      VI.Text.Offset.Set(entityname, -VI.Transform.Scale.GetX(entityname) / 2 + textXSpacing, VI.Transform.Scale.GetY(entityname) / 2 - textHeight + textYSpacing);
     }
 
     // Based on the current dialog ID, move to the next one. Can input choice if there is a choice selection, by default it's 1
@@ -205,15 +205,15 @@ namespace BonVoyage {
       return VI.Dialogue.GetLine(ID);
     }
 
-    public void DeactivateDialogBox(string player, string notPlayer, string choice1, string choice2, string scene) {
-      VI.Entity.s_Deactivate(player, scene);
-      VI.Entity.s_Deactivate(notPlayer, scene);
-      VI.Entity.s_Deactivate(choice1, scene);
-      VI.Entity.s_Deactivate(choice2, scene);
+    public void DeactivateDialogBox(int player, int notPlayer, int choice1, int choice2) {
+      VI.Entity.Deactivate(player);
+      VI.Entity.Deactivate(notPlayer);
+      VI.Entity.Deactivate(choice1);
+      VI.Entity.Deactivate(choice2);
     }
 
-    public bool MouseClick(string entity, string scene) {
-      return (VI.Input.Mouse.Press() && VI.Input.Button.s_Hover(entity, scene));
+    public bool MouseClick(int entity) {
+      return (VI.Input.Mouse.Press() && VI.Input.Button.Hover(entity));
     }
 
     /* For carrying on the dialog conversation logic. It will automatically zoom in and out, disabling and enabling UI too.
@@ -225,7 +225,7 @@ namespace BonVoyage {
          * dialogFile - Dialog file name
          * return bool - True if dialog is still running. False if dialog has ended.
         */
-    public bool RunDialog(string player, string notPlayer, string choice1, string choice2, string scene, string dialogFile) {
+    public bool RunDialog(int player, int notPlayer, int choice1, int choice2, string dialogFile) {
       if (dialogInit) {
         DisableUI();
         // Load Little Girl Talking
@@ -233,27 +233,27 @@ namespace BonVoyage {
         VI.Dialogue.Current.SetTo(1);
 
         // Setting default P1, PP1, PP2 positions
-        VI.Transform.Position.SetX(PP1ID, 500);
-        VI.Transform.Position.s_SetY(choice1, scene, 46);
-        VI.Transform.Position.s_SetX(choice2, scene, 500);
-        VI.Transform.Position.s_SetY(choice2, scene, -90);
-        VI.Transform.Position.s_SetX(player, scene, 450);
-        VI.Transform.Position.s_SetY(player, scene, 5);
+        VI.Transform.Position.SetX(choice1, 500);
+        VI.Transform.Position.SetY(choice1, 46);
+        VI.Transform.Position.SetX(choice2, 500);
+        VI.Transform.Position.SetY(choice2, -90);
+        VI.Transform.Position.SetX(player, 450);
+        VI.Transform.Position.SetY(player, 5);
 
         // Activate little girl dialogue
-        string firstSpeaker;
+        int firstSpeaker;
         if (VI.Dialogue.Speaker.IsPlayer(1))
           firstSpeaker = player;
         else
           firstSpeaker = notPlayer;
 
-        VI.Entity.s_Activate(firstSpeaker, scene);
-        VI.Text.s_Update(firstSpeaker, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
+        VI.Entity.Activate(firstSpeaker);
+        VI.Text.Update(firstSpeaker, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
 
         if (VI.Dialogue.Speaker.IsPlayer(1))
-          AlignPlayerText(player, scene); 
+          AlignPlayerText(player);
         else
-          AlignNonPlayerText(notPlayer, scene);
+          AlignNonPlayerText(notPlayer);
 
         //camZoomingIn = true;
         dialogInit = false;
@@ -261,7 +261,7 @@ namespace BonVoyage {
 
       // Button click set flags
       if (choiceFlag) {
-        if (MouseClick(choice1, scene) || MouseClick(choice2, scene))
+        if (MouseClick(choice1) || MouseClick(choice2))
           updateChat = true;
       } else if (VI.Input.Mouse.Press())//(VI.Input.Button.s_Released(player, scene) || VI.Input.Button.s_Released(notPlayer, scene))
         updateChat = true;
@@ -274,7 +274,7 @@ namespace BonVoyage {
         LOG.WRITE("NextID before check quit: " + VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()));
         // Finish dialog
         if (VI.Dialogue.GetNextId(VI.Dialogue.Current.GetId()) == 0) {
-          DeactivateDialogBox(player, notPlayer, choice1, choice2, scene);
+          DeactivateDialogBox(player, notPlayer, choice1, choice2);
           dialogInit = true;
           //camZoomingOut = true;
           EnableUI();
@@ -289,7 +289,7 @@ namespace BonVoyage {
           //Console.WriteLine("It's a choice dialog");
           LOG.WRITE("It's a choice dialog");
           choiceFlag = false;
-          if (VI.Input.Button.s_Released(choice2, scene)) {
+          if (VI.Input.Button.Released(choice2)) {
             MoveToNextDialog(2);
             latestChoiceChosen = 2;
             LOG.WRITE("latestChoiceChosen = 2");
@@ -302,34 +302,34 @@ namespace BonVoyage {
             //Console.WriteLine("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
             LOG.WRITE("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
           }
-          VI.Entity.s_Deactivate(choice1, scene);
-          VI.Entity.s_Deactivate(choice2, scene);
+          VI.Entity.Deactivate(choice1);
+          VI.Entity.Deactivate(choice2);
         }
         MoveToNextDialog(1);
         //Console.WriteLine("Moving to: " + VI.Dialogue.Current.GetId());
         LOG.WRITE("Moving to: " + VI.Dialogue.Current.GetId());
 
         if (VI.Dialogue.Speaker.IsPlayer(VI.Dialogue.Current.GetId())) {
-          VI.Entity.s_Activate(player, scene);
-          VI.Entity.s_Deactivate(notPlayer, scene);
-          VI.Text.s_Update(player, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
-          AlignPlayerText(player, scene); 
+          VI.Entity.Activate(player);
+          VI.Entity.Deactivate(notPlayer);
+          VI.Text.Update(player, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
+          AlignPlayerText(player);
         } else {
-          VI.Entity.s_Activate(notPlayer, scene);
-          VI.Entity.s_Deactivate(player, scene);
-          VI.Text.s_Update(notPlayer, scene, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
-          AlignNonPlayerText(notPlayer, scene);
+          VI.Entity.Activate(notPlayer);
+          VI.Entity.Deactivate(player);
+          VI.Text.Update(notPlayer, VI.Dialogue.GetLine(VI.Dialogue.Current.GetId()));
+          AlignNonPlayerText(notPlayer);
         }
 
         if (VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId()) != 0) {
           //Console.WriteLine("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
           LOG.WRITE("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
-          VI.Entity.s_Activate(choice1, scene);
-          VI.Entity.s_Activate(choice2, scene);
-          VI.Text.s_Update(choice1, scene, GetNextDialog(1));
-          VI.Text.s_Update(choice2, scene, GetNextDialog(2));
-          TextBoxAlign(choice1, scene, 400, -280, 80, 15, 1);
-          TextBoxAlign(choice2, scene, 400, -280, 80, 15, 2);
+          VI.Entity.Activate(choice1);
+          VI.Entity.Activate(choice2);
+          VI.Text.Update(choice1, GetNextDialog(1));
+          VI.Text.Update(choice2, GetNextDialog(2));
+          TextBoxAlign(choice1, 400, -280, 80, 15, 1);
+          TextBoxAlign(choice2, 400, -280, 80, 15, 2);
           choiceFlag = true;
         }
       }
@@ -338,10 +338,10 @@ namespace BonVoyage {
 
     #endregion
 
-#region minorHelpers
+    #region minorHelpers
     void ZoomCameraToDialog() { Level1ManagerScript.ChangeZoom(960, 540); }
-    void AlignPlayerText(string player, string scene) { TextBoxAlign(player, scene, 450, 5, 20, 0); }
-    void AlignNonPlayerText(string nonplayer, string scene) { TextBoxAlign(nonplayer, scene, 0, 20, 20, 0); }
+    void AlignPlayerText(int player) { TextBoxAlign(player, 450, 5, 20, 0); }
+    void AlignNonPlayerText(int nonplayer) { TextBoxAlign(nonplayer, 0, 20, 20, 0); }
 
     #endregion
 
@@ -357,8 +357,10 @@ namespace BonVoyage {
 
     public void UpdateObjective(string objectiveFile) {
       VI.Dialogue.LoadScript(objectiveFile);
-      if (latestChoiceChosen == 1) VI.Text.Update(UIObjectiveTextID, VI.Dialogue.GetLine(1));
-      else if (latestChoiceChosen == 2) VI.Text.Update(UIObjectiveTextID, VI.Dialogue.GetLine(2));
+      if (latestChoiceChosen == 1)
+        VI.Text.Update(UIObjectiveTextID, VI.Dialogue.GetLine(1));
+      else if (latestChoiceChosen == 2)
+        VI.Text.Update(UIObjectiveTextID, VI.Dialogue.GetLine(2));
       latestChoiceChosen = 0;
     }
 
@@ -382,8 +384,8 @@ namespace BonVoyage {
       float playerWidth = VI.Transform.Scale.GetX(playerID);
       float screenHalfHeight = VI.Camera.GetScale.Y()/2;
 
-      Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID) + playerWidth/3,
-                                     VI.Transform.Position.GetY(playerID) + screenHalfHeight - playerHeight/2);
+      Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID) + playerWidth / 3,
+                                     VI.Transform.Position.GetY(playerID) + screenHalfHeight - playerHeight / 2);
     }
 
     public void MoveCameraLeftToDialog() {

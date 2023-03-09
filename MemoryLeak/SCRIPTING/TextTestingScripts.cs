@@ -66,8 +66,8 @@ namespace BonVoyage {
                 isChoice = true;
         else
             isChoice = false;
-      if (!isChoice) TextBoxAlign("P1", "Text", 0, 0, 20, 0);
-      else TextBoxAlign("P1", "Text", 0, 0, 80, 15, 1);
+      //if (!isChoice) TextBoxAlign("P1", "Text", 0, 0, 20, 0);
+      //else TextBoxAlign("P1", "Text", 0, 0, 80, 15, 1);
     }
 
     public override void Update(int _ENTITY) {
