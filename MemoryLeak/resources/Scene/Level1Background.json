@@ -214,7 +214,7 @@
         "SheetAnimation": {
             "frameCount": 4,
             "currFrameIndex": 4,
-            "timePerFrame": 0.20000000298023224,
+            "timePerFrame": 1.0,
             "timeToFrameSwap": 0.016666678711771965
         }
     }
