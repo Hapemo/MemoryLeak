@@ -24,6 +24,7 @@ namespace BonVoyage {
     protected bool dialogInit;            // THis flag is true when entering a dialog for the first line
     protected bool normalZoom = true;
     protected int latestChoiceChosen = 0; // 0 if no choice chosen, 1 if choice 1 chosen, 2 if choice 2 chosen. Resets every frame
+    static public int passengerDialogProgress = 0; // Consists of 2 numbers in this format <passenger number><right or wrong>. 1 for right, 0 for wrong. eg passenger 1 right answer destination reached, it will be 11.
 
     protected int playerID;
     protected int UIObjectiveTextID;
@@ -62,6 +63,7 @@ namespace BonVoyage {
 
     public virtual void Update(int _ENTITY) {
       THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      // Things that should happen when passenger is delivered
     }
 
     public virtual void FixedUpdate(int _ENTITY) {
@@ -74,6 +76,7 @@ namespace BonVoyage {
 
     public virtual void Exit(int _ENTITY) {
       THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+      passengerDialogProgress = 0;
     }
 
     public virtual void Dead(int _ENTITY) {
@@ -369,6 +372,14 @@ namespace BonVoyage {
       //runPassenger2Dialog = false;
       normalZoom = false;
       PlayerScript.PlayerInDialogue = false;
+    }
+
+    public void EndDropoffDialog() {
+      GeneralEndDialog();
+      VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
+      passengerDialogProgress = 0;
+      LOG.WRITE("Dropped off =================");
+      PassengerDeliverUI.DeliveredPassenger();
     }
 
     //public void EndGirlDialog() {

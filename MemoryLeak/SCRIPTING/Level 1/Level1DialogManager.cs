@@ -12,7 +12,6 @@ namespace BonVoyage {
   public class Level1DialogManager : DialogManager {
 
 
-    static public int passengerDialogProgress = 0; // Consists of 2 numbers in this format <passenger number><right or wrong>. 1 for right, 0 for wrong. eg passenger 1 right answer destination reached, it will be 11.
     private bool progressUpdate = false;
     //static public bool runGirlDialog;
 
@@ -88,6 +87,7 @@ namespace BonVoyage {
       }
 
       bool dialogEnded = false;
+
       switch (passengerDialogProgress) {
       case 10: // Passenger 1 wrong
         GeneralDialogStart(7);
@@ -99,7 +99,6 @@ namespace BonVoyage {
           VI.Entity.Activate(P2ColliderBox);
         }
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva (Lighthouse)");
-        MemoryFragmentExpand.ActivateFragment(0);
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 11: // Passenger 1 correct
@@ -121,7 +120,6 @@ namespace BonVoyage {
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Brown House)");
-        MemoryFragmentExpand.ActivateFragment(1);
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 21: // Passenger 2 correct
@@ -149,7 +147,6 @@ namespace BonVoyage {
     public override void Exit(int _ENTITY) {
         base.Exit(_ENTITY);
 
-      passengerDialogProgress = 0;
       runPassengerDialog = false;
       runPassenger2Dialog = false;
     }
@@ -212,13 +209,6 @@ namespace BonVoyage {
 
       UpdateObjective("Dialog Objective Passenger2 (Argus)");
     }
-
-    public void EndDropoffDialog() {
-      GeneralEndDialog();
-      VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
-      passengerDialogProgress = 0;
-    }
-
 
     #endregion
 
