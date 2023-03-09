@@ -19,13 +19,13 @@
     {
         "SceneName": "Pause",
         "isActive": true,
-        "layer": 10,
+        "layer": 12,
         "order": 0
     },
     {
         "SceneName": "How_To_Play",
         "isActive": true,
-        "layer": 10,
+        "layer": 12,
         "order": 0
     },
     {

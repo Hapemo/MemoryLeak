@@ -19,13 +19,13 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 150
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\menu screen background.jpg",
+            "sprite": 0,
+            "texture": "",
             "layer": 0
         }
     },
@@ -56,7 +56,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\window-1.png",
-            "layer": 0
+            "layer": 1
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -103,7 +103,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button1-click.png",
-            "layer": 1
+            "layer": 2
         },
         "Audio": {
             "path": "Button_Click_SFX",
@@ -167,7 +167,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button1-click.png",
-            "layer": 1
+            "layer": 2
         },
         "Audio": {
             "path": "Button_Click_SFX",
@@ -231,7 +231,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button1-click.png",
-            "layer": 1
+            "layer": 2
         },
         "Audio": {
             "path": "Button_Click_SFX",
