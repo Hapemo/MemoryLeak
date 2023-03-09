@@ -7507,7 +7507,7 @@
             "name": "MoveToCatGuider",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -7533,9 +7533,6 @@
         },
         "Script": {
             "name": "MoveToCat"
-        },
-        "Button": {
-            "interactable": true
         }
     },
     {

@@ -51,21 +51,9 @@ namespace BonVoyage {
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            //VI.Test.ArgString("Running " +  _ENTITY);
-
-            if (VI.Input.Button.Hover(_ENTITY))
+            if (VI.Input.Mouse.Hold())
             {
-                // Animation
-                VI.Test.ArgString("Test");
-            }
-
-            if (VI.Input.Button.Released(_ENTITY))
-            {
-                    VI.Test.ArgString("Button Clicked");
-                //if (!VI.Physics.IsCollided(playerBoat, catBox)){
-                    MovePlayer = true;
-                    PlayerScript.PlayerInDialogue = true;
-                //}
+                MovePlayer = true;
             }
 
         }
@@ -91,7 +79,11 @@ namespace BonVoyage {
                     // Get new rotation and set sprite
                     SetPlayerSprite(playerBoat, GetRotation(NormX, NormY), "Idle");
                 }
-
+                else
+                {
+                    MovePlayer = false;
+                    VI.Entity.Deactivate(_ENTITY);
+                }
             }
         }
 

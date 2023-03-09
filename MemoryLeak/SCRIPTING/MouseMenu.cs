@@ -4,27 +4,23 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class MouseMenu : BaseScript {
         private const double Pi = 3.141592653589793238f;
-        private const float MiniAngle = (float)Pi / 8;
-        private const int MovingIconIndexStart = 3;
 
         private float ZoomScaleFactorX;
         private float ZoomScaleFactorY;
-
-        private int playerBoat;
 
         private bool InAnimation;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "Menu_Main");
+            //playerBoat = VI.Entity.GetId("Boat", "Menu_Main");
             InAnimation = false;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "Menu_Main");
+            //playerBoat = VI.Entity.GetId("Boat", "Menu_Main");
             InAnimation = false;
         }
 

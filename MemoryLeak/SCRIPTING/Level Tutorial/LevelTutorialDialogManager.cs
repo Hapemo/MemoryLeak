@@ -22,6 +22,7 @@ namespace BonVoyage {
     private int girlColliderBox;
     private int PColliderBox;
     private int PEndColliderBox;
+    private int tutorialGuider;
 
     public override void Alive(int _ENTITY) {
         base.Alive(_ENTITY);
@@ -33,6 +34,7 @@ namespace BonVoyage {
       girlColliderBox = VI.Entity.GetId("GirlBox");
       PColliderBox = VI.Entity.GetId("PassengerPickupBox");
       PEndColliderBox = VI.Entity.GetId("PassengerDropOffBox");
+        tutorialGuider = VI.Entity.GetId("MoveToCatGuider");
 
       dialogInit = true;
       runIntroDialog = true;
@@ -122,6 +124,8 @@ namespace BonVoyage {
 
     public void EndIntroDialog() {
       GeneralEndDialog();
+
+            VI.Entity.Activate(tutorialGuider);
 
       VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
     }
