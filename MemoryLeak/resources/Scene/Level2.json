@@ -16382,7 +16382,7 @@
     },
     {
         "General": {
-            "name": "NEW Entity 1",
+            "name": "Enemy",
             "tag": 8,
             "subtag": 0,
             "isActive": true
