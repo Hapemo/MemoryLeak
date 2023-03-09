@@ -54,7 +54,7 @@ namespace BonVoyage {
       // Dialog control
 
       if (runIntroDialog) {
-        PlayerScript.PlayerInDialogue = true;
+        GeneralDialogStart(7);
         runIntroDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue SceneIntro 1");
         if (!runIntroDialog)
           EndIntroDialog();

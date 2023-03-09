@@ -61,7 +61,6 @@ namespace BonVoyage {
       UIHPBarID = VI.Entity.GetId("hpbar");
       UIMemoryFragmentID = VI.Entity.GetId("memoryfragment");
       UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen");
-      VI.Entity.Deactivate(UIObjectiveTextID);
     }
 
     public virtual void EarlyUpdate(int _ENTITY) {
