@@ -1,3 +1,6 @@
+------- File Directory: "..\\resources"
+------- File Directory: "..\\resources\\Audio"
+------- File Directory: "..\\resources\\Audio\\BGM"
 GUID: 16672825022742786 | File: 01.Daytime_Forest_Field_Sun_Loop.wav
 GUID: 16672825022939650 | File: 02.Night_Forest_Field_Stars_Loop.wav
 GUID: 16672825023070978 | File: 03.Rain_Day-Night_Loop.wav
@@ -16,6 +19,8 @@ GUID: 16672825031723778 | File: ThunderClap_Linear_02.wav
 GUID: 16672825032182786 | File: ThunderClap_Linear_03.wav
 GUID: 16672825032576258 | File: Walla_behind closed doors_Loop_1.wav
 GUID: 16672825033494018 | File: Walla_behind closed doors_Loop_2.wav
+------- File Directory: "..\\resources\\Audio\\Dialogue"
+------- File Directory: "..\\resources\\Audio\\Dialogue\\Dialogue LittleGirl 0"
 GUID: 16679324687532290 | File: 1.mp3
 GUID: 16679324687598082 | File: 10.mp3
 GUID: 14757395258967589634 | File: 11.mp3
@@ -33,6 +38,7 @@ GUID: 16679324688059906 | File: 6.mp3
 GUID: 16679324688125698 | File: 7.mp3
 GUID: 16679324688191490 | File: 8.mp3
 GUID: 16679324688191746 | File: 9.mp3
+------- File Directory: "..\\resources\\Audio\\SFX"
 GUID: 16671508787365634 | File: Background_Light Waves_SFX.wav
 GUID: 16671508787365890 | File: Boat_Row_Long_SFX.wav
 GUID: 16671508787364866 | File: Boat_Row_SFX.wav
@@ -50,7 +56,9 @@ GUID: 16671508787431938 | File: Rain_SFX.wav
 GUID: 16665530161234946 | File: SHOOT1.wav
 GUID: 16665530161235202 | File: SHOOT5.wav
 GUID: 16769834256171266 | File: TO_BE_REMOVED_THUNDER_SOUND.wav
+------- File Directory: "..\\resources\\Audio\\Songs"
 GUID: 16695512960860418 | File: MENUBG.wav
+------- File Directory: "..\\resources\\Dialogs"
 GUID: 16779098167443974 | File: Dialog Argus (Brown House).json
 GUID: 16782862337048838 | File: Dialog Argus (Water Fountain).json
 GUID: 16779098167444230 | File: Dialog Argus.json
@@ -80,7 +88,9 @@ GUID: 16679324688717318 | File: Dialogue Passenger 4.json
 GUID: 16679324688717574 | File: Dialogue Passenger 5.json
 GUID: 16679324688717830 | File: Dialogue Passenger 6.json
 GUID: 16750747055292678 | File: Dialogue SceneIntro 1.json
+------- File Directory: "..\\resources\\Fonts"
 GUID: 0 | File: 3Dumb.ttf
+------- File Directory: "..\\resources\\Fonts\\bptypewrite"
 GUID: 16682653192356872 | File: BPtypewriteDamagedSlashed.ttf
 GUID: 16682653192357128 | File: BPtypewriteDamagedSlashedItalics.ttf
 GUID: 16682653192357384 | File: BPtypewriteDamagedStrikethrough.ttf
@@ -113,6 +123,7 @@ GUID: 16691255197630984 | File: comici.ttf
 GUID: 16691255197631240 | File: ComicSans.ttf
 GUID: 16691255197631496 | File: comicz.ttf
 GUID: 16739502921220360 | File: Montserrat-Regular.ttf
+------- File Directory: "..\\resources\\GameStates"
 GUID: 16769763058188549 | File: CutScene.json
 GUID: 16749204682506757 | File: cutscene1state.json
 GUID: 16684263769047813 | File: Level1.json
@@ -122,6 +133,8 @@ GUID: 16684263769113861 | File: Menu.json
 GUID: 16691044500504837 | File: Pause_Menu.json
 GUID: 16782761203597573 | File: Text Testing.json
 GUID: 16750630798230277 | File: Weather.json
+------- File Directory: "..\\resources\\Prefabs"
+------- File Directory: "..\\resources\\Scene"
 GUID: 16735843943252228 | File: Animation Sheet.json
 GUID: 16776186210812164 | File: Credits.json
 GUID: 16775958683194116 | File: CrystalBalls.json
@@ -166,13 +179,20 @@ GUID: 16783542384197892 | File: UI Scene.json
 GUID: 16783527982203140 | File: UIBackground.json
 GUID: 16750630817696004 | File: WeatherMap.json
 GUID: 14757395258967593988 | File: WeatherMapold.json
-[10-03-2023 04:18:27]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\InternalCalls.cs
-[10-03-2023 04:18:27]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\TestMonoScript.cs
+------- File Directory: "..\\resources\\SceneGUID"
+------- File Directory: "..\\resources\\SCRIPTING"
+[10-03-2023 04:22:00]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\InternalCalls.cs
+------- File Directory: "..\\resources\\SCRIPTING\\obj"
+------- File Directory: "..\\resources\\SCRIPTING\\obj\\EditorDebug"
+[10-03-2023 04:22:00]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\TestMonoScript.cs
+------- File Directory: "..\\resources\\Scripts"
+------- File Directory: "..\\resources\\Scripts\\Includes"
 GUID: 16691742281236739 | File: PlayerMovementScript.h
 GUID: 16681628817424643 | File: RotateScript.h
 GUID: 16681628817490435 | File: ScaleScript.h
 GUID: 16681628817752835 | File: TestScript.h
 GUID: 16693661207429379 | File: WASDScript.h
+------- File Directory: "..\\resources\\Scripts\\Old"
 GUID: 16693640920629507 | File: AttackScript.cpp
 GUID: 16693249921253635 | File: BackToGameButton.cpp
 GUID: 16693095108378883 | File: BackToMainMenuButton.cpp
@@ -190,6 +210,8 @@ GUID: 16673720425447939 | File: ScaleScript.cpp
 GUID: 16693180933931267 | File: SettingsButton.cpp
 GUID: 16673720425448195 | File: TestScript.cpp
 GUID: 16693661207429635 | File: WASDScript.cpp
+------- File Directory: "..\\resources\\Textures"
+------- File Directory: "..\\resources\\Textures\\Background"
 GUID: 16665530911558913 | File: background.png
 GUID: 16665530911559169 | File: foreground.png
 GUID: 16665530911624961 | File: greyStoneBG.png
@@ -198,6 +220,7 @@ GUID: 16747534957347073 | File: regiojn 1 concept.jpg
 GUID: 16747534957347329 | File: region 3 concept 1.jpg
 GUID: 16747534957413121 | File: region 3 concept 2.jpg
 GUID: 16747534957413377 | File: tree region concept 2.jpg
+------- File Directory: "..\\resources\\Textures\\Characters"
 GUID: 16669651548307713 | File: ghost 1.png
 GUID: 16669651548570113 | File: ghost 2.png
 GUID: 16669651548766977 | File: ghost 3.png
@@ -208,6 +231,7 @@ GUID: 16669651549751041 | File: girl.png
 GUID: 16669651550341121 | File: mc.png
 GUID: 16747534957806849 | File: sea monster.png
 GUID: 16681741603832065 | File: sea-monster.png
+------- File Directory: "..\\resources\\Textures\\Cutscenes"
 GUID: 16782985763291393 | File: (1)HowToPlay.png
 GUID: 16782985763422977 | File: (2)Weather.png
 GUID: 16782985763488769 | File: (3)Crystalball.png
@@ -235,6 +259,7 @@ GUID: 16782985765455105 | File: Page1_1.png
 GUID: 16782985775285761 | File: Page2.png
 GUID: 16782985775286017 | File: Page3.png
 GUID: 16782985775286273 | File: Page4.png
+------- File Directory: "..\\resources\\Textures\\Icons"
 GUID: 16783493554897153 | File: back2Icon.png
 GUID: 16783493555291137 | File: backBtn.png
 GUID: 16783493554962945 | File: backIcon.png
@@ -243,7 +268,9 @@ GUID: 16783493555291393 | File: ball_radar.png
 GUID: 16783493555291649 | File: ball_weather.png
 GUID: 16783493557455361 | File: bgmIcon.png
 GUID: 16783493557455617 | File: crystalball.png
+------- File Directory: "..\\resources\\Textures\\Icons\\cursors"
 GUID: 16683718373083393 | File: cursors.jpg
+------- File Directory: "..\\resources\\Textures\\Icons\\cursors\\direction cursor"
 GUID: 16693037898268929 | File: UI_Cursor_Direction_E.png
 GUID: 16693037898269185 | File: UI_Cursor_Direction_E_0001.png
 GUID: 16693037898269441 | File: UI_Cursor_Direction_E_0002.png
@@ -278,6 +305,7 @@ GUID: 16692964149496321 | File: UI_Cursor_Prompt_002.png
 GUID: 16692964149496577 | File: UI_Cursor_Prompt_003.png
 GUID: 16692964149562369 | File: UI_Cursor_Prompt_Spritesheet.png
 GUID: 16783493558242305 | File: cycle.png
+------- File Directory: "..\\resources\\Textures\\Icons\\dialogue"
 GUID: 16778117551031297 | File: UI_DialogueBox1.png
 GUID: 16778117549327105 | File: UI_DialogueBox2.png
 GUID: 16778117551031553 | File: UI_DialogueBox3.png
@@ -324,6 +352,7 @@ GUID: 16783493559034369 | File: sunIconOld.png
 GUID: 16783493559037697 | File: textIcon.png
 GUID: 16783493559037953 | File: windfogIcon.png
 GUID: 16783493559038209 | File: windIcon.png
+------- File Directory: "..\\resources\\Textures\\Menu"
 GUID: 16671515798471169 | File: bon voyage logo 5.png
 GUID: 16669651553094145 | File: button-1.png
 GUID: 16669651553094401 | File: button-2.png
@@ -361,7 +390,7 @@ GUID: 16683718377675777 | File: settings-icon.png
 GUID: 16669651555782401 | File: settings-menu-screen.jpg
 GUID: 16741782613262593 | File: text1.png
 GUID: 16683718378134785 | File: title screen 5.jpg
-[10-03-2023 04:18:35]   ERROR   Attempted to load in invalid texture file: ..\resources\Textures\Menu\title screen gif.gif
+[10-03-2023 04:22:08]   ERROR   Attempted to load in invalid texture file: ..\resources\Textures\Menu\title screen gif.gif
 GUID: 16778117552278017 | File: title screen gif.gif
 GUID: 16665530912609793 | File: title screen.jpg
 GUID: 16778117548999169 | File: UI_DialogueBox1.png
@@ -377,6 +406,7 @@ GUID: 16669651557945601 | File: volume-button-1.png
 GUID: 16669651557945857 | File: volume-button-2.png
 GUID: 16669651558011649 | File: volume-button-3.png
 GUID: 16669651558011905 | File: window-1.png
+------- File Directory: "..\\resources\\Textures\\Sprites"
 GUID: 16665530913265409 | File: boat.png
 GUID: 16665530914510849 | File: building_1.png
 GUID: 16671351934157313 | File: building_2(revised).png
@@ -458,7 +488,10 @@ GUID: 16691998653810433 | File: Props_Tree5.png
 GUID: 16665530940731393 | File: tree-1.png
 GUID: 16665530942042369 | File: tree-2.png
 GUID: 16665530943287809 | File: water.jpg
+------- File Directory: "..\\resources\\Textures\\Spritesheets"
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\BOAT"
 GUID: 16689398516547841 | File: boat_NW_spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\BOAT\\capsize"
 GUID: 16693623341121793 | File: Props_Boat_E_Capsize_Spritesheet.png
 GUID: 16693623341908481 | File: Props_Boat_NE_Capsize_Spritesheet.png
 GUID: 16693623342170881 | File: Props_Boat_NW_Capsize_Spritesheet.png
@@ -467,6 +500,7 @@ GUID: 16693623342499073 | File: Props_Boat_SE_Capsize_Spritesheet.png
 GUID: 16693623342761473 | File: Props_Boat_SW_Capsize_Spritesheet.png
 GUID: 16693623342958337 | File: Props_Boat_S_Capsize_Spritesheet.png
 GUID: 16693623343089665 | File: Props_Boat_W_Capsize_Spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\BOAT\\hit"
 GUID: 16720718955086081 | File: Props_Boat_E_Hit_Spritesheet.png
 GUID: 16720718955610625 | File: Props_Boat_NE_Hit_Spritesheet.png
 GUID: 16720718956069633 | File: Props_Boat_NW_Hit_Spritesheet.png
@@ -486,6 +520,8 @@ GUID: 16689398517139457 | File: Props_Boat_W_Spritesheet.png
 GUID: 16766151888540673 | File: Border_Spritesheet.png
 GUID: 16665530944008961 | File: bridgeSheet.png
 GUID: 16665530944009217 | File: jumppadSheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\MC"
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\MC\\idle"
 GUID: 16689398517270785 | File: Character_mc_E_idle_spritesheet.png
 GUID: 16689398517467649 | File: Character_mc_NE_idle_spritesheet.png
 GUID: 16689398517795585 | File: Character_mc_NW_idle_spritesheet.png
@@ -498,6 +534,7 @@ GUID: 16683718412476673 | File: mc-idle-back-spritesheet.png
 GUID: 16683718414770689 | File: mc-idle-spritesheet.png
 GUID: 16683718416999169 | File: mc-shock-back-spritesheet.png
 GUID: 16683718419031041 | File: mc-shock-spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\MONSTER"
 GUID: 16720718980253953 | File: Character_Monster_NE_Attack1_Spritesheet.png
 GUID: 16691149651509505 | File: Character_Monster_NE_Attack2_Spritesheet.png
 GUID: 16691149668811265 | File: Character_Monster_NE_idle_spritesheet.png
@@ -514,6 +551,8 @@ GUID: 16750120185366529 | File: Character_Monster_SW_Attack1_Spritesheet.png
 GUID: 16750120185366017 | File: Character_Monster_SW_Attack2_Spritesheet.png
 GUID: 16750120185366273 | File: Character_Monster_SW_idle_spritesheet.png
 GUID: 16750120185365761 | File: Character_Monster_SW_rising_spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC"
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC\\cat"
 GUID: 16728197186781441 | File: Character_cat_NE_idle_spritesheet.png
 GUID: 16728197186978305 | File: Character_cat_NW_idle_spritesheet.png
 GUID: 16728197187175169 | File: Character_cat_SE_idle_spritesheet.png
@@ -524,6 +563,7 @@ GUID: 16685760445285121 | File: Character_Ghost3_SE_Idle_Spritesheet.png
 GUID: 16685760445481985 | File: Character_Ghost4_SE_Idle_Spritesheet.png
 GUID: 16685760445613313 | File: Character_Ghost5_SE_Idle_Spritesheet.png
 GUID: 16685760445744641 | File: Character_Ghost6_SE_Idle_Spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC\\ghost 1"
 GUID: 16728197188486401 | File: Character_ghost1_E_idle_spritesheet.png
 GUID: 16728197188879873 | File: Character_ghost1_NE_idle_spritesheet.png
 GUID: 16728197189273345 | File: Character_ghost1_NW_idle_spritesheet.png
@@ -531,6 +571,7 @@ GUID: 16728197189666817 | File: Character_ghost1_SE_idle_spritesheet.png
 GUID: 16728197190060289 | File: Character_ghost1_SW_idle_spritesheet.png
 GUID: 16728197190453761 | File: Character_ghost1_S_idle_spritesheet.png
 GUID: 16728197190847233 | File: Character_ghost1_W_idle_spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC\\ghost 2"
 GUID: 16728197191306241 | File: Character_ghost2_E_idle_spritesheet.png
 GUID: 16728197191765249 | File: Character_ghost2_NE_idle_spritesheet.png
 GUID: 16728197192158721 | File: Character_ghost2_NW_idle_spritesheet.png
@@ -538,6 +579,7 @@ GUID: 16728197192486657 | File: Character_ghost2_SE_idle_spritesheet.png
 GUID: 16728197192880129 | File: Character_ghost2_SW_idle_spritesheet.png
 GUID: 16728197193273601 | File: Character_ghost2_S_idle_spritesheet.png
 GUID: 16728197193667073 | File: Character_ghost2_W_idle_spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC\\ghost 3"
 GUID: 16728197194126081 | File: Character_ghost3_E_idle_spritesheet.png
 GUID: 16728197194585089 | File: Character_ghost3_NE_idle_spritesheet.png
 GUID: 16728197195044097 | File: Character_ghost3_NW_idle_spritesheet.png
@@ -545,6 +587,7 @@ GUID: 16728197195437569 | File: Character_ghost3_SE_idle_spritesheet.png
 GUID: 16728197195831041 | File: Character_ghost3_SW_idle_spritesheet.png
 GUID: 16728197196290049 | File: Character_ghost3_S_idle_spritesheet.png
 GUID: 16728197196683521 | File: Character_ghost3_W_idle_spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC\\ghost 4"
 GUID: 16728212152254721 | File: Character_ghost4_E_idle_spritesheet.png
 GUID: 16728197197536001 | File: Character_ghost4_NE_idle_spritesheet.png
 GUID: 16728197197929473 | File: Character_ghost4_NW_idle_spritesheet.png
@@ -552,6 +595,7 @@ GUID: 16728197198257409 | File: Character_ghost4_SE_idle_spritesheet.png
 GUID: 16728197198650881 | File: Character_ghost4_SW_idle_spritesheet.png
 GUID: 16728197199044353 | File: Character_ghost4_S_idle_spritesheet.png
 GUID: 16728197199437825 | File: Character_ghost4_W_idle_spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC\\ghost 5"
 GUID: 16728197199831297 | File: Character_ghost5_E_idle_spritesheet.png
 GUID: 16728197200224769 | File: Character_ghost5_NE_idle_spritesheet.png
 GUID: 16728197200552705 | File: Character_ghost5_NW_idle_spritesheet.png
@@ -559,6 +603,7 @@ GUID: 16728197200880641 | File: Character_ghost5_SE_idle_spritesheet.png
 GUID: 16728197201274113 | File: Character_ghost5_SW_idle_spritesheet.png
 GUID: 16728197201602049 | File: Character_ghost5_S_idle_spritesheet.png
 GUID: 16728197201995521 | File: Character_ghost5_W_idle_spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC\\ghost 6"
 GUID: 16687557551980801 | File: Character_ghost6_E_idle_spritesheet.png
 GUID: 16687557552112129 | File: Character_ghost6_NE_idle_Spritesheet.png
 GUID: 16691787165335809 | File: Character_ghost6_NW_spritesheet.png
@@ -566,9 +611,11 @@ GUID: 16687557552243457 | File: Character_ghost6_SE_idle_spritesheet.png
 GUID: 16691787165663745 | File: Character_ghost6_SW_idle_spritesheet.png
 GUID: 16687557552374785 | File: Character_ghost6_S_idle_spritesheet.png
 GUID: 16687557552506113 | File: Character_ghost6_W_idle_spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\NPC\\girl"
 GUID: 16720719039958017 | File: Character_Girl_SE_Idle_Spritesheet.png
 GUID: 16728197206321153 | File: Character_girl_SW_idle_Spritesheet.png
 GUID: 16683718432796161 | File: girl-idle-spritesheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\PROPS"
 GUID: 16689398527496193 | File: Props_Building1_spritesheet.png
 GUID: 16689398528479489 | File: Props_Building2_spritesheet.png
 GUID: 16689398529659393 | File: Props_Building3_spritesheet.png
@@ -596,6 +643,7 @@ GUID: 16747534975513089 | File: Props_Region2_Tree4_Spritesheet.png
 GUID: 16747534975511297 | File: Props_Region2_Tree5_Spritesheet.png
 GUID: 16689398540409601 | File: Props_Sign1_spritesheet.png
 GUID: 16665530944009473 | File: walkingSheet.png
+------- File Directory: "..\\resources\\Textures\\Spritesheets\\Weather"
 GUID: 16783493573063169 | File: fog_spritesheet.png
 GUID: 16777559116022017 | File: rainspritesheet.png
 GUID: 16665530944009729 | File: Woodcutter_jump.png
