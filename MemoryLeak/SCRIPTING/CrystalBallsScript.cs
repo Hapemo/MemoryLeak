@@ -25,24 +25,35 @@ namespace BonVoyage {
         static bool active = true;
         int playerID;
         int rainID;
+        int crystalBallID;
+        int toggleMapID;
+        int minimapID;
+        int weathermapID;
+        int enemymapID;
+
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             playerID = VI.Entity.GetId("Boat", "Level1");
             rainID = VI.Entity.GetId("rain", "Level1");
+            crystalBallID = VI.Entity.GetId("crystalBall", "CrystalBalls");
+            toggleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
+            minimapID = VI.Entity.GetId("minimap", "MiniMap");
+            weathermapID = VI.Entity.GetId("weathermap", "WeatherMap");
+            enemymapID = VI.Entity.GetId("enemymap", "EnemyMap");
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             toggle = 0;
             prevTog = -1;
-            VI.Entity.s_Activate("crystalBall", "CrystalBalls");
+            VI.Entity.Activate(crystalBallID);
         }
 
         public void Update(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            if ((VI.Input.Button.s_Released("toggleMap", "CrystalBalls")) == true)
+            if ((VI.Input.Button.Released(toggleMapID)) == true)
             {
                 toggle = toggle >= 2 ? 0 : (toggle + 1);
             }
@@ -50,40 +61,40 @@ namespace BonVoyage {
             { 
                 if (toggle == 0)
                 {
-                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
-                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
+                    VI.Entity.Deactivate(weathermapID);
+                    VI.Entity.Deactivate(enemymapID);
                     VI.Scene.Play("MiniMap");
-                    VI.Entity.s_Activate("minimap", "MiniMap");
+                    VI.Entity.Activate(minimapID);
                     VI.Scene.Pause("WeatherMap");
                     VI.Scene.Pause("EnemyMap");
                     
                 }
                 else if (toggle == 1)
                 {
-                    VI.Entity.s_Deactivate("minimap", "MiniMap");
-                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
+                    VI.Entity.Deactivate(minimapID);
+                    VI.Entity.Deactivate(enemymapID);
                     VI.Scene.Pause("MiniMap");
                     VI.Scene.Play("WeatherMap");
-                    VI.Entity.s_Activate("weathermap", "WeatherMap");
+                    VI.Entity.Activate(weathermapID);
                     VI.Scene.Pause("EnemyMap");
                     
 
                 }
                 else if (toggle == 2)
                 {
-                    VI.Entity.s_Deactivate("minimap", "MiniMap");
-                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+                    VI.Entity.Deactivate(minimapID);
+                    VI.Entity.Deactivate(weathermapID);
                     VI.Scene.Pause("MiniMap");
                     VI.Scene.Pause("WeatherMap");
                     VI.Scene.Play("EnemyMap");
-                    VI.Entity.s_Activate("enemymap", "EnemyMap");
+                    VI.Entity.Activate(enemymapID);
                     
                 }
                 else //if (toggle == 3)
                 {
-                    VI.Entity.s_Deactivate("minimap", "MiniMap");
-                    VI.Entity.s_Deactivate("enemymap", "EnemyMap");
-                    VI.Entity.s_Deactivate("weathermap", "WeatherMap");
+                    VI.Entity.Deactivate(minimapID);
+                    VI.Entity.Deactivate(enemymapID);
+                    VI.Entity.Deactivate(weathermapID);
                     VI.Scene.Pause("MiniMap");
                     VI.Scene.Pause("WeatherMap");
                     VI.Scene.Pause("EnemyMap");
@@ -108,7 +119,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             toggle=0;
             prevTog = -1;
-            VI.Entity.s_Deactivate("crystalBall", "CrystalBalls");
+            VI.Entity.Deactivate(crystalBallID);
             VI.Scene.Pause("MiniMap");
             VI.Scene.Pause("WeatherMap");
             VI.Scene.Pause("EnemyMap");
