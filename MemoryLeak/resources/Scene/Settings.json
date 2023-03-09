@@ -8,13 +8,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 70.0,
-                "Y": 70.0
+                "X": 100.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -115.0,
-                "Y": -140.0
+                "X": 0.0,
+                "Y": -240.0
             }
         },
         "Sprite": {
@@ -32,10 +32,10 @@
             "fontFile": "BPtypewrite",
             "text": "Fullscreen",
             "offset": {
-                "X": 45.0,
-                "Y": -11.0
+                "X": -148.0,
+                "Y": 60.0
             },
-            "scale": 0.75,
+            "scale": 1.0,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -55,13 +55,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
-                "Y": 50.0
+                "X": 60.0,
+                "Y": 60.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 505.0,
-                "Y": 262.0
+                "X": 535.0,
+                "Y": 238.0
             }
         },
         "Sprite": {
@@ -95,100 +95,6 @@
     },
     {
         "General": {
-            "name": "SFXindicator",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 18.0,
-                "Y": 23.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 105.0,
-                "Y": 50.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\volume-button-1.png",
-            "layer": 8
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "SFX",
-            "offset": {
-                "X": 15.0,
-                "Y": 55.0
-            },
-            "scale": 0.75,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "BGMindicator",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 18.0,
-                "Y": 23.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -345.0,
-                "Y": 50.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\volume-button-1.png",
-            "layer": 8
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "BGM",
-            "offset": {
-                "X": 15.0,
-                "Y": 55.0
-            },
-            "scale": 0.75,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": 0.0
-        }
-    },
-    {
-        "General": {
             "name": "BGMvolume",
             "tag": 8,
             "subtag": 0,
@@ -202,7 +108,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -305.36505126953125,
-                "Y": 50.0
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -232,7 +138,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -225.0,
-                "Y": 50.0
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -245,6 +151,23 @@
             "sprite": 0,
             "texture": "",
             "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "BGM",
+            "offset": {
+                "X": -104.0,
+                "Y": 40.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "Script": {
             "name": "BGMcontroller"
@@ -268,7 +191,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 150.0,
-                "Y": 50.0
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -298,7 +221,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 225.0,
-                "Y": 50.0
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -312,6 +235,23 @@
             "texture": "",
             "layer": 8
         },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "SFX",
+            "offset": {
+                "X": -104.0,
+                "Y": 40.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
         "Script": {
             "name": "SFXcontroller"
         },
@@ -321,19 +261,19 @@
     },
     {
         "General": {
-            "name": "NEW Entity 1",
+            "name": "Window",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 1800.0,
-                "Y": 950.0
+                "X": 1200.0,
+                "Y": 700.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 18.0,
+                "X": 0.0,
                 "Y": -50.0
             }
         },
@@ -345,17 +285,17 @@
                 "a": 200
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\Frame.png",
+            "texture": "Textures\\Menu\\window-1.png",
             "layer": 6
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "SETTINGS",
+            "text": "Settings",
             "offset": {
-                "X": -127.0,
+                "X": -175.0,
                 "Y": 380.0
             },
-            "scale": 1.0,
+            "scale": 1.5,
             "color": {
                 "r": 255,
                 "g": 255,

@@ -45,7 +45,15 @@ namespace BonVoyage {
         int w6;
         int w7;
         int w8;
-
+        int mf1;
+        int mf2;
+        int mf3;
+        int mf4;
+        int e1;
+        int e2;
+        int e3;
+        int e4;
+        int e5;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             BackBtnID = VI.Entity.GetId("BackBtnHTP", "How_To_Play");
@@ -87,7 +95,15 @@ namespace BonVoyage {
             w6 = VI.Entity.GetId("W6", "How_To_Play");
             w7 = VI.Entity.GetId("W7", "How_To_Play");
             w8 = VI.Entity.GetId("W8", "How_To_Play");
-
+            mf1 = VI.Entity.GetId("MF1", "How_To_Play");
+            mf2 = VI.Entity.GetId("MF2", "How_To_Play");
+            mf3 = VI.Entity.GetId("MF3", "How_To_Play");
+            mf4 = VI.Entity.GetId("MF4", "How_To_Play");
+            e1 = VI.Entity.GetId("E1", "How_To_Play");
+            e2 = VI.Entity.GetId("E2", "How_To_Play");
+            e3 = VI.Entity.GetId("E3", "How_To_Play");
+            e4 = VI.Entity.GetId("E4", "How_To_Play");
+            e5 = VI.Entity.GetId("E5", "How_To_Play");
         }
 
         public void Init(int _ENTITY) {
@@ -150,7 +166,15 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(w6);
                 VI.Animation.Transform.Run(w7);
                 VI.Animation.Transform.Run(w8);
-
+                VI.Animation.Transform.Run(mf1);
+                VI.Animation.Transform.Run(mf2);
+                VI.Animation.Transform.Run(mf3);
+                VI.Animation.Transform.Run(mf4);
+                VI.Animation.Transform.Run(e1);
+                VI.Animation.Transform.Run(e2);
+                VI.Animation.Transform.Run(e3);
+                VI.Animation.Transform.Run(e4);
+                VI.Animation.Transform.Run(e5);
             }
             if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 0)
             {
