@@ -1,53 +1,6 @@
 [
     {
         "General": {
-            "name": "Window",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 1186.0,
-                "Y": 692.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -0.00006103515625,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
-            "layer": 7
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "SETTINGS",
-            "offset": {
-                "X": -175.0,
-                "Y": 201.0
-            },
-            "scale": 1.5,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": 0.0
-        }
-    },
-    {
-        "General": {
             "name": "ToggleSize",
             "tag": 8,
             "subtag": 0,
@@ -102,13 +55,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 650.0,
-                "Y": 150.0
+                "X": 50.0,
+                "Y": 50.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": -335.0
+                "X": 505.0,
+                "Y": 262.0
             }
         },
         "Sprite": {
@@ -119,7 +72,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Icons\\ExitBtn.png",
             "layer": 8
         },
         "Audio": {
@@ -132,23 +85,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Back",
-            "offset": {
-                "X": -59.0,
-                "Y": -18.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": 0.0
         },
         "Script": {
             "name": "BackButton"
@@ -249,36 +185,6 @@
             },
             "followCam": false,
             "width": 0.0
-        }
-    },
-    {
-        "General": {
-            "name": "Background",
-            "tag": 4,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\menu screen background.jpg",
-            "layer": 1
         }
     },
     {
@@ -411,6 +317,83 @@
         },
         "Button": {
             "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1800.0,
+                "Y": 950.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 18.0,
+                "Y": -50.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 200
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\Frame.png",
+            "layer": 6
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "SETTINGS",
+            "offset": {
+                "X": -127.0,
+                "Y": 380.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Background",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 150
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
         }
     }
 ]
