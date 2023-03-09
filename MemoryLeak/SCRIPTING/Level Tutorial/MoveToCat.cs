@@ -10,6 +10,7 @@ namespace BonVoyage {
         private bool MovePlayer;
 
         private bool init = true;
+        private double DelayActivation = 1f;
 
         private const float PlayerSpeed = 10f;
         private const double Pi = 3.141592653589793238f;
@@ -51,9 +52,16 @@ namespace BonVoyage {
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            if (VI.Input.Mouse.Hold())
+            if (DelayActivation >= 0f)
+                DelayActivation -= VI.General.DeltaTime();
+
+            if (VI.Input.Mouse.Release())
             {
-                MovePlayer = true;
+                if (DelayActivation < 0f)
+                {
+                    MovePlayer = true;
+                    PlayerScript.PlayerInDialogue = true;
+                }
             }
 
         }
