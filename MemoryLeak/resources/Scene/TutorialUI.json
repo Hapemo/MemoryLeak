@@ -30,7 +30,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Click in any direction to move player",
+            "text": "Click in any direction to move the boat",
             "offset": {
                 "X": -135.0,
                 "Y": 14.0
@@ -158,7 +158,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Click anywhere to advance NPC dialogue",
+            "text": "Click anywhere to advance the dialogue",
             "offset": {
                 "X": -144.0,
                 "Y": 5.0
@@ -286,7 +286,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Click on dialogue options to make a choice",
+            "text": "Click on the dialogue options to make a choice",
             "offset": {
                 "X": -135.0,
                 "Y": 14.0

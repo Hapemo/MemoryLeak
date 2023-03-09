@@ -388,7 +388,7 @@ struct ParticleSystem {
 	int mDensity = 0;													// Amount of particles to generate
 	Math::Vec2 mCenter = Math::Vec2();				// Center point of where particle generates from (Particles will be generated evently throughout the specified area)
 	float mAreaWidth = 0;											// Half width of a square, away from the center point (Shape will be a square)
-	Math::Vec2 mDirection = Math::Vec2();			// Direction of where the particles will travel
+	float mDirection = 0;											// Direction of where the particles will travel
 	float mSpread = 0;												// Angle in degrees, to spread the particles in a cone shape (360 degrees will spread all around evenly)
 	float mDuration = 0;											// Duration to run the generator for. Particle system will stop generating once this number hits 0 or less
 	bool mIsActive = false;										// Active state of the particle generator
@@ -397,7 +397,7 @@ struct ParticleSystem {
 	float& SlowTracker() { return mSlowTracker; }
 	ParticleSystem() = default;
 	ParticleSystem( ParticleInfo _ParticleInfo, int _Density, Math::Vec2 _Center, float _AreaWidth,
-									Math::Vec2 _Direction, float _Spread, float _Duration, bool _IsActive, float _Slow ) :
+									float _Direction, float _Spread, float _Duration, bool _IsActive, float _Slow ) :
 		mParticleInfo( _ParticleInfo ), mDensity(_Density), mCenter(_Center), mAreaWidth(_AreaWidth), 
 		mDirection(_Direction), mSpread(_Spread), mDuration(_Duration), mIsActive(_IsActive), mSlow(_Slow), mSlowTracker()
 	{}

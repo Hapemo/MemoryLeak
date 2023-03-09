@@ -820,7 +820,7 @@ namespace VI
 		internal extern static int GenerateOnce(int _eId);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void GenerateLoop(int _eId, int _slow);
+		internal extern static void GenerateLoop(int _eId, float _slow);
 
 		public class ParticleInfo
         {

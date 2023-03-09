@@ -71,13 +71,7 @@
         "order": 0
     },
     {
-        "SceneName": "BackGround",
-        "isActive": false,
-        "layer": 4,
-        "order": 0
-    },
-    {
-        "SceneName": "LevelShadowBackground",
+        "SceneName": "Level1Background",
         "Transform": {
             "scale": {
                 "X": 1200.0,

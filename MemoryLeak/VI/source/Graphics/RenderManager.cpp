@@ -893,8 +893,8 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 
 			if (e.HasComponent<ParticleSystem>())
 			{
-				if (e.GetComponent<ParticleSystem>().mIsActive)
-				{
+				//if (e.GetComponent<ParticleSystem>().mIsActive)
+				//{
 					bool thisEntity{ false };
 					for (auto i = particleManager->ParticleBegin(); i != particleManager->ParticleLast(); ++i)
 					{
@@ -943,7 +943,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 							break;
 						}
 					}
-				}
+				//}
 			}
 
 			if (e.HasComponent<Viewport>())

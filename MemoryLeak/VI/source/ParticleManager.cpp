@@ -74,18 +74,19 @@ void Particle::Destroy() {
 //==============================
 // Particle Manager
 //==============================
-ParticleManager::ParticleManager() : mParticles() { srand(static_cast<unsigned int>(time(0))); }
+ParticleManager::ParticleManager() : mParticles() { srand(static_cast<unsigned int>(time(0))); LOG_CREATE("PARTICLESYSTEM"); }
 
 void ParticleManager::UpdateSystems() {
 	for (auto& e : mEntities) {
 		if (!e.ShouldRun()) continue;
 		ParticleSystem& system{ e.GetComponent<ParticleSystem>() };
-
 		// Update particle system active state
 		if (!system.mIsActive) continue;
 		system.mDuration -= static_cast<float>(FPSManager::dt);
-		if (system.mDuration < 0) system.mIsActive = false;
-		if (!system.mIsActive) continue;
+		if (system.mDuration < 0) {
+			system.mDuration = 0;
+			system.mIsActive = false;
+		}//if (!system.mIsActive) continue;
 
 		// Track slow spawning
 		if (system.mSlow) {
@@ -97,8 +98,6 @@ void ParticleManager::UpdateSystems() {
 		
 		GenerateParticle(system, e.id);
 	}
-
-	
 }
 
 void ParticleManager::UpdateParticles() {
@@ -118,7 +117,7 @@ void ParticleManager::Update() {
 }
 
 void ParticleManager::Reset() {
-	LOG_INFO("Reset Particle Manager of size " + std::to_string(sizeof(ParticleManager)));
+	LOG_CUSTOM("PARTICLESYSTEM", "Reset Particle Manager of size " + std::to_string(sizeof(ParticleManager)));
 	memset(&mParticles, 0, mParticles.size() * sizeof(Particle));
 	mParticleChange = false;
 	mParticleCount = 0;
@@ -132,18 +131,16 @@ void ParticleManager::GenerateParticle(ParticleSystem const& _system, EntityID _
 		Transform trans{};
 		trans.rotation = _system.mParticleInfo.mFacing;
 		trans.scale *= _system.mParticleInfo.mScale;
-		trans.translation = _system.mCenter + Vec2(static_cast<float>(Util::RandInt(-static_cast<int>(_system.mAreaWidth) / 2, static_cast<int>(_system.mAreaWidth) / 2)),
-																							 static_cast<float>(Util::RandInt(-static_cast<int>(_system.mAreaWidth) / 2, static_cast<int>(_system.mAreaWidth) / 2)));
+		trans.translation = _system.mCenter + Vec2(static_cast<float>(Util::RandInt(static_cast<int>(_system.mAreaWidth) / 2, -static_cast<int>(_system.mAreaWidth) / 2)),
+																							 static_cast<float>(Util::RandInt(static_cast<int>(_system.mAreaWidth) / 2, -static_cast<int>(_system.mAreaWidth) / 2)));
 
 
-		float angle = Util::RandInt(static_cast<int>(-_system.mSpread) * 10, static_cast<int>(_system.mSpread) * 10) / 10.f;
-		float cos = cosf(angle);
-		float sin = sinf(angle);
-
+		float angle = Util::RandInt(static_cast<int>(_system.mSpread) * 10, static_cast<int>(-_system.mSpread) * 10) / 10.f + _system.mDirection;
+		LOG_INFO("Random number: " + std::to_string(Util::RandInt(static_cast<int>(_system.mSpread) * 10, static_cast<int>(-_system.mSpread) * 10)));
+		angle *= (static_cast<float>(Math::PI)/180.f);
 		Vec2 vel{};
-		if (_system.mDirection.Magnitude()) // Only move particle if it needs to move
-			vel = Vec2{ cos * _system.mDirection.x - sin * _system.mDirection.y,
-											 sin * _system.mDirection.x + cos * _system.mDirection.y }.Normalize() * _system.mParticleInfo.mSpeed;
+		if (_system.mDirection) // Only move particle if it needs to move
+			vel = Vec2{ cosf(angle), sinf(angle) }.Normalized() * _system.mParticleInfo.mSpeed;
 
 		currP.Init(std::move(vel), trans, _system.mParticleInfo.mLifespan, _e);
 	}

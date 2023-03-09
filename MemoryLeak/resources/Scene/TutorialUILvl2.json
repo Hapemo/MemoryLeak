@@ -1,7 +1,7 @@
 [
     {
         "General": {
-            "name": "CrystalBallTut",
+            "name": "EnemyTut1",
             "tag": 6,
             "subtag": 0,
             "isActive": true
@@ -30,7 +30,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Use the cycle button to toggle between your maps",
+            "text": "Beware of the ememy!!!",
             "offset": {
                 "X": -220.0,
                 "Y": 12.0
@@ -129,7 +129,7 @@
     },
     {
         "General": {
-            "name": "WeatherTut1",
+            "name": "EnemyTut2",
             "tag": 6,
             "subtag": 0,
             "isActive": true
@@ -158,7 +158,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Sunny: Good weather! Clear visibility",
+            "text": "You will sink when your health reaches 0!",
             "offset": {
                 "X": -216.0,
                 "Y": 3.0
@@ -257,7 +257,7 @@
     },
     {
         "General": {
-            "name": "WeatherTut2",
+            "name": "EnemyTut3",
             "tag": 6,
             "subtag": 0,
             "isActive": true
@@ -286,7 +286,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Rain: Careful! The sea monster appears more frequently",
+            "text": "Enemy apprpaching! Run!!",
             "offset": {
                 "X": -218.0,
                 "Y": 4.0
@@ -385,7 +385,7 @@
     },
     {
         "General": {
-            "name": "WeatherTut3",
+            "name": "EnemyTut4",
             "tag": 6,
             "subtag": 0,
             "isActive": true
@@ -414,7 +414,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Fog: A thick fog appears and obscures your visibility",
+            "text": "Use the crystalball to find out where the enemy is",
             "offset": {
                 "X": -213.0,
                 "Y": 3.0
@@ -454,134 +454,6 @@
                 },
                 {
                     "time": 19.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 350.0
-                        }
-                    }
-                },
-                {
-                    "time": 4.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 400.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "General": {
-            "name": "WeatherTut4",
-            "tag": 6,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 800.0,
-                "Y": 200.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 600.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
-            "layer": 4
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Wind: Strong winds alert! Your boat might move uncontrollably",
-            "offset": {
-                "X": -221.0,
-                "Y": 3.0
-            },
-            "scale": 0.5,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": 250.0
-        },
-        "MovementAI": {
-            "run": true,
-            "next": true,
-            "loop": false,
-            "reverse": false,
-            "cycle": false,
-            "nextStep": 1,
-            "acceleration": 0.0,
-            "targets": [
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
-                        }
-                    }
-                },
-                {
-                    "time": 25.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
