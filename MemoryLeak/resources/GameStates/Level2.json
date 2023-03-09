@@ -12,7 +12,7 @@
                 "Y": 1968.0
             }
         },
-        "isActive": true,
+        "isActive": false,
         "layer": 3,
         "order": 7
     },
@@ -110,7 +110,7 @@
     {
         "SceneName": "CrystalBalls",
         "isActive": false,
-        "layer": 7,
+        "layer": 8,
         "order": 0
     },
     {
@@ -128,6 +128,24 @@
         },
         "isActive": false,
         "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "MiniMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "WeatherMap",
+        "isActive": false,
+        "layer": 9,
+        "order": 0
+    },
+    {
+        "SceneName": "EnemyMap",
+        "isActive": false,
+        "layer": 9,
         "order": 0
     }
 ]

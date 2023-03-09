@@ -30,12 +30,13 @@ namespace BonVoyage {
         int minimapID;
         int weathermapID;
         int enemymapID;
-
+        string currlevel;
+        string currlevelBG;
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            string currlevel = VI.GameState.GetName();
-            string currlevelBG = currlevel + "Background";
+            currlevel = VI.GameState.GetName();
+            currlevelBG = currlevel + "Background";
             //if (currlevel == "Level1")
             playerID = VI.Entity.GetId("Boat", currlevel);
             rainID = VI.Entity.GetId("rain", currlevelBG);
@@ -59,6 +60,8 @@ namespace BonVoyage {
             if ((VI.Input.Button.Released(toggleMapID)) == true)
             {
                 toggle = toggle >= 2 ? 0 : (toggle + 1);
+                if (currlevel == "Level1" && toggle == 2)
+                    toggle = 0;
             }
             if(prevTog != toggle)
             { 

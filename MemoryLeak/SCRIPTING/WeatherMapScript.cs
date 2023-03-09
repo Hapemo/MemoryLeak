@@ -36,7 +36,7 @@ namespace BonVoyage {
             string currlevel = VI.GameState.GetName();
             string currlevelBG = currlevel + "Background";
             weathermapID = VI.Entity.GetId("weathermap", "WeatherMap");
-            playerID = VI.Entity.GetId("Boat", "Level1");
+            playerID = VI.Entity.GetId("Boat", currlevel);
             blurID = VI.Entity.GetId("blur", "WeatherMap");
             textOffsetX = -59;// VI.Text.Offset.GetX(minimapID);
             textOffsetY = -170;// VI.Text.Offset.GetY(minimapID);
