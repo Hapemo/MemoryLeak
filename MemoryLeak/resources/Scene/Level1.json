@@ -26,13 +26,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building1_spritesheet.png",
-            "layer": 33
+            "layer": 55
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -195,9 +195,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 4,
+            "currFrameIndex": 8,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -253,13 +253,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 53
+            "layer": 49
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -314,8 +314,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1535.401123046875,
-                "Y": 812.9248657226563
+                "X": -1526.9747314453125,
+                "Y": 799.625732421875
             }
         },
         "Sprite": {
@@ -326,8 +326,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
-            "layer": 36
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
+            "layer": 43
         },
         "Animation": {
             "sheets": [
@@ -452,13 +452,13 @@
                     "timePerFrame": 0.17000000178813934
                 }
             ],
-            "currentImageIndex": 4
+            "currentImageIndex": 2
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.0833333358168602
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -472,8 +472,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 10.695672035217285,
-                "Y": 55.502899169921875
+                "X": -33.94560623168945,
+                "Y": 8.332412719726563
             },
             "acceleration": {
                 "X": 0.0,
@@ -557,13 +557,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Lighthouse_spritesheet.png",
-            "layer": 43
+            "layer": 36
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -691,14 +691,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 41
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
+            "layer": 37
         },
         "RectCollider": {
             "centerOffset": {
@@ -766,13 +760,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 48
+            "layer": 47
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -827,8 +821,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2096.28955078125,
-                "Y": 299.5635986328125
+                "X": -2101.068359375,
+                "Y": 312.5060729980469
             }
         },
         "Sprite": {
@@ -839,14 +833,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 39
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "texture": "Textures\\Sprites\\Props_Tree3.png",
+            "layer": 37
         },
         "RectCollider": {
             "centerOffset": {
@@ -918,9 +906,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -965,13 +953,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 36
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -1043,9 +1031,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1094,9 +1082,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1221,13 +1209,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
-            "layer": 40
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -1477,13 +1465,8 @@
             },
             "rotation": 0.0,
             "translation": {
-<<<<<<< Updated upstream
                 "X": 100000.0,
                 "Y": 100000.0
-=======
-                "X": -1335.16357421875,
-                "Y": 481.59759521484375
->>>>>>> Stashed changes
             }
         },
         "Sprite": {
@@ -1495,7 +1478,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
-            "layer": 37
+            "layer": 48
         },
         "RectCollider": {
             "centerOffset": {
@@ -1519,406 +1502,6 @@
                 "Y": 0.004999999888241291
             },
             "renderFlag": true
-<<<<<<< Updated upstream
-=======
-        },
-        "Audio": {
-            "path": "DAMAGE",
-            "volume": 0.30000001192092896,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "Script": {
-            "name": "EnemyController"
-        },
-        "MovementAI": {
-            "run": true,
-            "next": true,
-            "loop": true,
-            "reverse": false,
-            "cycle": true,
-            "nextStep": 1,
-            "acceleration": 0.0,
-            "targets": [
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -1366.6710205078125,
-                            "Y": 671.593994140625
-                        }
-                    }
-                },
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -1234.6710205078125,
-                            "Y": -124.40599822998047
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -822.781005859375,
-                            "Y": -824.8629760742188
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -801.7119750976563,
-                            "Y": -266.3890075683594
-                        }
-                    }
-                },
-                {
-                    "time": 4.5,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -424.7120056152344,
-                            "Y": 10.611000061035156
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 122.28800201416016,
-                            "Y": 87.61100006103516
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 474.2879943847656,
-                            "Y": -121.38899993896484
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 641.2880249023438,
-                            "Y": 359.6109924316406
-                        }
-                    }
-                },
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 99.28800201416016,
-                            "Y": 418.6109924316406
-                        }
-                    }
-                },
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -622.7119750976563,
-                            "Y": 303.6109924316406
-                        }
-                    }
-                },
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 523.0,
-                            "Y": 353.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -888.7119750976563,
-                            "Y": 571.6110229492188
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "General": {
-            "name": "EnemyTrigger",
-            "tag": 2,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 965.9568481445313,
-                "Y": 878.04736328125
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1344.00341796875,
-                "Y": 475.38372802734375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 255,
-                "b": 0,
-                "a": 0
-            },
-            "sprite": 0,
-            "texture": "",
-            "layer": 13
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": true,
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "MonsterChase_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": true,
-            "isRandPitch": false,
-            "isSpacial": true
-        },
-        "MovementAI": {
-            "run": true,
-            "next": true,
-            "loop": true,
-            "reverse": false,
-            "cycle": true,
-            "nextStep": 1,
-            "acceleration": 0.0,
-            "targets": [
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -1352.6710205078125,
-                            "Y": 646.593994140625
-                        }
-                    }
-                },
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -1220.6710205078125,
-                            "Y": -99.40599822998047
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -808.781005859375,
-                            "Y": -799.8629760742188
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -787.7119750976563,
-                            "Y": -241.38900756835938
-                        }
-                    }
-                },
-                {
-                    "time": 4.5,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -410.7120056152344,
-                            "Y": -15.611000061035156
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 108.28800201416016,
-                            "Y": 62.611000061035156
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 460.2879943847656,
-                            "Y": -96.38899993896484
-                        }
-                    }
-                },
-                {
-                    "time": 6.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 627.2880249023438,
-                            "Y": 334.6109924316406
-                        }
-                    }
-                },
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 85.28800201416016,
-                            "Y": 393.6109924316406
-                        }
-                    }
-                },
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -608.7119750976563,
-                            "Y": 278.6109924316406
-                        }
-                    }
-                },
-                {
-                    "time": 8.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 1002.5,
-                            "Y": 908.5
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": -874.7119750976563,
-                            "Y": 546.6110229492188
-                        }
-                    }
-                }
-            ]
->>>>>>> Stashed changes
         }
     },
     {
@@ -2088,13 +1671,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 33
+            "layer": 43
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -2155,9 +1738,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 133,
-                "g": 133,
-                "b": 133,
+                "r": 126,
+                "g": 126,
+                "b": 126,
                 "a": 255
             },
             "sprite": 2,
@@ -2166,9 +1749,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2213,7 +1796,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree3.png",
-            "layer": 42
+            "layer": 38
         },
         "RectCollider": {
             "centerOffset": {
@@ -2281,13 +1864,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 35
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -2354,14 +1937,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 33
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2405,14 +1982,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 37
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
+            "layer": 36
         },
         "RectCollider": {
             "centerOffset": {
@@ -2479,14 +2050,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 44
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
+            "layer": 40
         },
         "LayerCollider": {
             "centerOffset": {
@@ -2542,13 +2107,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
-            "layer": 37
+            "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -2689,13 +2254,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 45
+            "layer": 40
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -2812,13 +2377,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 55
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -2886,7 +2451,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 43
+            "layer": 39
         },
         "RectCollider": {
             "centerOffset": {
@@ -2954,13 +2519,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 35
+            "layer": 45
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -3016,13 +2581,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 41
+            "layer": 45
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3205,7 +2770,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 34
+            "layer": 31
         },
         "RectCollider": {
             "centerOffset": {
@@ -3273,13 +2838,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
-            "layer": 35
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3347,13 +2912,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 36
+            "layer": 45
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -3409,13 +2974,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 53
+            "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3483,13 +3048,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
-            "layer": 50
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3557,13 +3122,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 52
+            "layer": 53
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3631,13 +3196,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 43
+            "layer": 30
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3705,13 +3270,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 45
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3779,13 +3344,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 40
+            "layer": 27
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3840,8 +3405,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2223.75927734375,
-                "Y": 87.27735900878906
+                "X": -2262.785888671875,
+                "Y": 123.51629638671875
             }
         },
         "Sprite": {
@@ -3852,14 +3417,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 41
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "texture": "Textures\\Sprites\\Props_Tree1.png",
+            "layer": 39
         },
         "LayerCollider": {
             "centerOffset": {
@@ -3915,13 +3474,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 54
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -3989,13 +3548,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 55
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4063,13 +3622,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 31
+            "layer": 34
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4137,13 +3696,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
-            "layer": 32
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4211,13 +3770,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
-            "layer": 31
+            "layer": 30
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4285,7 +3844,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 53
+            "layer": 58
         },
         "RectCollider": {
             "centerOffset": {
@@ -4340,8 +3899,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2304.233154296875,
-                "Y": -233.9429473876953
+                "X": -2300.051513671875,
+                "Y": -229.56243896484375
             }
         },
         "Sprite": {
@@ -4352,14 +3911,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 44
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "LayerCollider": {
             "centerOffset": {
@@ -4415,13 +3968,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 44
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4489,13 +4042,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 39
+            "layer": 26
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4567,9 +4120,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4637,7 +4190,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 47
+            "layer": 41
         },
         "RectCollider": {
             "centerOffset": {
@@ -4750,13 +4303,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 54
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4824,13 +4377,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 54
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -4902,9 +4455,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -4949,13 +4502,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 51
+            "layer": 35
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5023,13 +4576,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 56
+            "layer": 53
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5085,13 +4638,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 51
+            "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5159,13 +4712,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 52
+            "layer": 47
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5221,13 +4774,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 55
+            "layer": 47
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5287,9 +4840,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5349,9 +4902,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5400,9 +4953,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5447,13 +5000,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 51
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5521,13 +5074,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 50
+            "layer": 35
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5595,13 +5148,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 48
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5669,13 +5222,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 33
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5743,13 +5296,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 32
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5817,13 +5370,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 34
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5891,13 +5444,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 32
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -5969,9 +5522,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6020,9 +5573,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6067,13 +5620,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 49
+            "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -6133,9 +5686,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 1.0,
-            "timeToFrameSwap": 1.0
+            "timeToFrameSwap": 0.5833337306976318
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6180,13 +5733,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 42
+            "layer": 28
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6258,9 +5811,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6305,13 +5858,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 38
+            "layer": 1
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6379,13 +5932,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
-            "layer": 30
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6457,9 +6010,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6500,13 +6053,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
-            "layer": 31
+            "layer": 34
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6573,14 +6126,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 34
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6625,13 +6172,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 30
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -6745,9 +6292,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6796,9 +6343,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6847,9 +6394,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6894,13 +6441,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 58
+            "layer": 54
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -6960,9 +6507,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7007,13 +6554,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 56
+            "layer": 59
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7069,13 +6616,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 58
+            "layer": 34
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7131,13 +6678,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 58
+            "layer": 59
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7193,13 +6740,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 57
+            "layer": 48
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7255,13 +6802,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 57
+            "layer": 46
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7321,9 +6868,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7372,9 +6919,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7423,9 +6970,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7457,8 +7004,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -566.8034057617188,
-                "Y": 1501.7916259765625
+                "X": -575.564453125,
+                "Y": 1528.074951171875
             }
         },
         "Sprite": {
@@ -7474,9 +7021,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7525,9 +7072,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7576,9 +7123,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7627,9 +7174,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7674,13 +7221,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 56
+            "layer": 58
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7740,9 +7287,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7787,13 +7334,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 49
+            "layer": 33
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -7860,14 +7407,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 42
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7899,8 +7440,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2456.785400390625,
-                "Y": -56.640357971191406
+                "X": -2472.316162109375,
+                "Y": -108.60939025878906
             }
         },
         "Sprite": {
@@ -7911,14 +7452,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 40
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
+            "layer": 39
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7961,8 +7496,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2426.4326171875,
-                "Y": 333.0190124511719
+                "X": -2423.64501953125,
+                "Y": 388.771240234375
             }
         },
         "Sprite": {
@@ -7973,14 +7508,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 38
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
+            "layer": 37
         },
         "LayerCollider": {
             "centerOffset": {
@@ -8040,9 +7569,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8091,9 +7620,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8142,9 +7671,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8193,9 +7722,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8244,9 +7773,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8291,13 +7820,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 57
+            "layer": 56
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -8357,9 +7886,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8455,13 +7984,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 38
+            "layer": 24
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -8561,14 +8090,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 38
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "LayerCollider": {
             "centerOffset": {
@@ -8623,14 +8146,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 39
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8724,9 +8241,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8775,9 +8292,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8826,9 +8343,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8877,9 +8394,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8928,9 +8445,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8979,9 +8496,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9030,9 +8547,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -9092,9 +8609,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9139,13 +8656,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 59
+            "layer": 58
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -9201,13 +8718,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 60
+            "layer": 59
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -9267,9 +8784,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9318,9 +8835,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9352,8 +8869,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2702.917236328125,
-                "Y": 465.70574951171875
+                "X": -2747.51904296875,
+                "Y": 426.6792297363281
             }
         },
         "Sprite": {
@@ -9364,14 +8881,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 37
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
+            "texture": "Textures\\Sprites\\Props_Tree1.png",
+            "layer": 38
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9403,8 +8914,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2661.912353515625,
-                "Y": 635.3152465820313
+                "X": -2695.961181640625,
+                "Y": 628.1471557617188
             }
         },
         "Sprite": {
@@ -9415,14 +8926,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree5.png",
             "layer": 36
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9454,8 +8959,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 504.36956787109375,
-                "Y": 1781.2066650390625
+                "X": 464.546630859375,
+                "Y": 1771.2508544921875
             }
         },
         "Sprite": {
@@ -9471,9 +8976,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9505,8 +9010,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 74.01768493652344,
-                "Y": 1619.5755615234375
+                "X": 107.86723327636719,
+                "Y": 1629.5313720703125
             }
         },
         "Sprite": {
@@ -9522,9 +9027,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9573,9 +9078,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9743,8 +9248,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2399.214599609375,
-                "Y": 724.2495727539063
+                "X": -2317.9755859375,
+                "Y": 774.4265747070313
             }
         },
         "Sprite": {
@@ -9813,9 +9318,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.10000000149011612
+            "timeToFrameSwap": 0.0833333358168602
         },
         "RectCollider": {
             "centerOffset": {
@@ -9868,13 +9373,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 46
+            "layer": 32
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -9992,13 +9497,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building6_spritesheet.png",
-            "layer": 45
+            "layer": 64
         },
         "SheetAnimation": {
             "frameCount": 6,
-            "currFrameIndex": 0,
+            "currFrameIndex": 4,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "RectCollider": {
             "centerOffset": {
@@ -10382,9 +9887,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10416,7 +9921,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2743.109130859375,
+                "X": -2746.693115234375,
                 "Y": 842.4376831054688
             }
         },
@@ -10428,14 +9933,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 33
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10524,14 +10023,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 31
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10575,14 +10068,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 30
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10631,9 +10118,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10682,9 +10169,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10728,14 +10215,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 35
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10779,14 +10260,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 33
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10830,14 +10305,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree3.png",
             "layer": 31
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10881,14 +10350,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 38
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10932,14 +10395,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 38
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10983,14 +10440,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 39
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11034,14 +10485,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "texture": "Textures\\Sprites\\Props_Tree1.png",
             "layer": 41
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 1,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11086,13 +10531,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 46
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11148,13 +10593,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 47
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11210,13 +10655,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 48
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11272,13 +10717,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 50
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11334,13 +10779,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 52
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11400,9 +10845,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11434,7 +10879,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2593.0009765625,
+                "X": -2590.41259765625,
                 "Y": -1527.9803466796875
             }
         },
@@ -11451,9 +10896,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11502,9 +10947,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11553,9 +10998,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11604,9 +11049,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11655,9 +11100,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11706,9 +11151,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11757,9 +11202,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11808,9 +11253,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11859,9 +11304,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11910,9 +11355,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11961,9 +11406,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12012,9 +11457,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12063,9 +11508,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12114,9 +11559,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12165,9 +11610,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12216,9 +11661,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12267,9 +11712,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12318,9 +11763,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12369,9 +11814,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12420,9 +11865,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12471,9 +11916,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12522,9 +11967,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12573,9 +12018,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12607,8 +12052,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -520.73291015625,
-                "Y": 1807.343017578125
+                "X": -525.1134033203125,
+                "Y": 1721.9227294921875
             }
         },
         "Sprite": {
@@ -12620,13 +12065,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 28
+            "layer": 29
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12671,13 +12116,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 28
+            "layer": 29
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12709,59 +12154,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 229.40696716308594,
-                "Y": 1810.044677734375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 28
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree8",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 462.8248596191406
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 600.9574584960938,
-                "Y": 1969.353515625
+                "X": 253.698974609375,
+                "Y": 1858.6287841796875
             }
         },
         "Sprite": {
@@ -12777,9 +12171,60 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree8",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 462.8248596191406
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 573.0814208984375,
+                "Y": 1951.43310546875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 29
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12828,9 +12273,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12879,9 +12324,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12930,9 +12375,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12981,9 +12426,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13032,9 +12477,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13083,9 +12528,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13134,9 +12579,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13185,9 +12630,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13236,9 +12681,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13287,9 +12732,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13338,9 +12783,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13389,9 +12834,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13440,9 +12885,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13491,9 +12936,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13542,9 +12987,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13593,9 +13038,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13644,9 +13089,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13695,9 +13140,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13746,9 +13191,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13797,9 +13242,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13848,9 +13293,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13899,9 +13344,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13950,9 +13395,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13984,8 +13429,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -513.3121337890625,
-                "Y": 2055.64794921875
+                "X": -522.0731811523438,
+                "Y": 1939.56396484375
             }
         },
         "Sprite": {
@@ -13997,13 +13442,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 27
+            "layer": 28
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14035,8 +13480,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -140.4278564453125,
-                "Y": 2035.696044921875
+                "X": -153.5694580078125,
+                "Y": 1991.890869140625
             }
         },
         "Sprite": {
@@ -14048,13 +13493,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 27
+            "layer": 28
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14086,8 +13531,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 241.20152282714844,
-                "Y": 2038.59033203125
+                "X": 225.67056274414063,
+                "Y": 1997.97119140625
             }
         },
         "Sprite": {
@@ -14099,13 +13544,13 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 27
+            "layer": 28
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14154,9 +13599,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14205,9 +13650,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14256,9 +13701,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14307,9 +13752,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Audio": {
             "path": "Collision_Finalized",
