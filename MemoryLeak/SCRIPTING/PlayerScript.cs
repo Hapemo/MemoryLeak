@@ -203,7 +203,7 @@ namespace BonVoyage {
 
         }
 
-        public float GetRotation(float _x, float _y)
+        private float GetRotation(float _x, float _y)
         {
             float Rotation = 0;
             if (_y != 0f && _x >= 0f)
@@ -259,7 +259,7 @@ namespace BonVoyage {
                 VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 1);
         }
 
-        public void ApplyForce(int _eID, float _x, float _y, float _multiplier)
+        private void ApplyForce(int _eID, float _x, float _y, float _multiplier)
         {
             VI.Physics.ApplyImpulse(_eID,
                 (_x * _multiplier),

@@ -93,6 +93,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
         }
+
         private float GetRotation(float _x, float _y) {
             float Rotation = 0;
             if (_y != 0f && _x >= 0f)
