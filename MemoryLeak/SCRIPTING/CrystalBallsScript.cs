@@ -34,8 +34,11 @@ namespace BonVoyage {
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            playerID = VI.Entity.GetId("Boat", "Level1");
-            rainID = VI.Entity.GetId("rain", "Level1");
+            string currlevel = VI.GameState.GetName();
+            string currlevelBG = currlevel + "Background";
+            //if (currlevel == "Level1")
+            playerID = VI.Entity.GetId("Boat", currlevel);
+            rainID = VI.Entity.GetId("rain", currlevelBG);
             crystalBallID = VI.Entity.GetId("crystalBall", "CrystalBalls");
             toggleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
             minimapID = VI.Entity.GetId("minimap", "MiniMap");

@@ -112,5 +112,22 @@
         "isActive": false,
         "layer": 7,
         "order": 0
+    },
+    {
+        "SceneName": "Level2Background",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": -2464.0,
+                "Y": 1968.0
+            }
+        },
+        "isActive": false,
+        "layer": 0,
+        "order": 0
     }
 ]
