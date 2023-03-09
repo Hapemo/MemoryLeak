@@ -32,22 +32,11 @@ namespace BonVoyage {
     public override void Init(int _ENTITY) {
         base.Init(_ENTITY);
 
-      playerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
-
-      UIHPBarID = VI.Entity.GetId("hpbar", "Dialogue");
-      UIMemoryFragmentID = VI.Entity.GetId("memoryfragment", "Dialogue");
-      UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
-
-      P1ID = VI.Entity.GetId("P1", "Dialogue");
-      PP1ID = VI.Entity.GetId("PP1", "Dialogue");
-      PP2ID = VI.Entity.GetId("PP2", "Dialogue");
-      G1ID = VI.Entity.GetId("G1", "Dialogue");
-
       P1ColliderBox = VI.Entity.GetId("Passenger1Box", "Level1");
       P2ColliderBox = VI.Entity.GetId("Passenger2Box", "Level1");
-            UIPassengersLeftID = VI.Entity.GetId("PassengersLeft", "Dialogue");
-            UIPassengerIcon1ID = VI.Entity.GetId("PassengerIcon1", "Dialogue");
-            UIPassengerIcon2ID = VI.Entity.GetId("PassengerIcon2", "Dialogue");
+      UIPassengersLeftID = VI.Entity.GetId("PassengersLeft", "Dialogue");
+      UIPassengerIcon1ID = VI.Entity.GetId("PassengerIcon1", "Dialogue");
+      UIPassengerIcon2ID = VI.Entity.GetId("PassengerIcon2", "Dialogue");
       dialogInit = true;
       normalZoom = false;
 

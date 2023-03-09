@@ -15,24 +15,24 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             relics = new int[]
             {
-                VI.Entity.GetId("Relic1", "Dialogue"),
-                VI.Entity.GetId("Relic2", "Dialogue"),
-                VI.Entity.GetId("Relic3", "Dialogue"),
-                VI.Entity.GetId("Relic4", "Dialogue"),
-                VI.Entity.GetId("Relic5", "Dialogue"),
-                VI.Entity.GetId("Relic6", "Dialogue")
+                VI.Entity.GetId("Relic1"),
+                VI.Entity.GetId("Relic2"),
+                VI.Entity.GetId("Relic3"),
+                VI.Entity.GetId("Relic4"),
+                VI.Entity.GetId("Relic5"),
+                VI.Entity.GetId("Relic6")
             };
             backs = new int[]
             {
-                VI.Entity.GetId("Back1", "Dialogue"),
-                VI.Entity.GetId("Back2", "Dialogue"),
-                VI.Entity.GetId("Back3", "Dialogue"),
-                VI.Entity.GetId("Back4", "Dialogue"),
-                VI.Entity.GetId("Back5", "Dialogue"),
-                VI.Entity.GetId("Back6", "Dialogue")
+                VI.Entity.GetId("Back1"),
+                VI.Entity.GetId("Back2"),
+                VI.Entity.GetId("Back3"),
+                VI.Entity.GetId("Back4"),
+                VI.Entity.GetId("Back5"),
+                VI.Entity.GetId("Back6")
             };
             activated = new bool[] { false, false, false, false, false, false };
-            expanded = VI.Entity.GetId("memoryfragmentscreen", "Dialogue");
+            expanded = VI.Entity.GetId("memoryfragmentscreen");
             showing = false;
             activatedChanged = false;
         }

@@ -11,7 +11,6 @@ using VI;
 namespace BonVoyage {
   public class Level2DialogManager : DialogManager {
 
-    static public int passengerDialogProgress = 0; // Consists of 2 numbers in this format <passenger number><right or wrong>. 1 for right, 0 for wrong. eg passenger 1 right answer destination reached, it will be 11.
     private bool progressUpdate = false;
     static public bool runIntroDialog;
     //static public bool runGirlDialog;
@@ -33,25 +32,8 @@ namespace BonVoyage {
     public override void Init(int _ENTITY) {
         base.Init(_ENTITY);
 
-      playerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
-
-      UIHPBarID = VI.Entity.GetId("hpbar");
-      UIMemoryFragmentID = VI.Entity.GetId("memoryfragment");
-      UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen");
-
       P1ColliderBox = VI.Entity.GetId("Passenger1Box");
       P2ColliderBox = VI.Entity.GetId("Passenger2Box");
-
-      if (UIHPBarID == 0) LOG.WRITE("UIHPBarID ==========");
-      if (UIMemoryFragmentID == 0) LOG.WRITE("UIMemoryFragmentID ==========");
-      if (UIMemoryFragmentScreenID == 0) LOG.WRITE("UIMemoryFragmentScreenID ==========");
-      if (P1ID == 0) LOG.WRITE("P1ID ==========");
-      if (PP1ID == 0) LOG.WRITE("PP1ID ==========");
-      if (PP2ID == 0) LOG.WRITE("PP2ID ==========");
-      if (G1ID == 0) LOG.WRITE("G1ID ==========");
-      if (P1ColliderBox == 0) LOG.WRITE("P1ColliderBox ==========");
-      if (P2ColliderBox == 0) LOG.WRITE("P2ColliderBox ==========");
-      if (UIObjectiveTextID == 0) LOG.WRITE("UIObjectiveTextID ==========");
 
       dialogInit = true;
 

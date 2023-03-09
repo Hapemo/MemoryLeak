@@ -30,12 +30,6 @@ namespace BonVoyage {
     public override void Init(int _ENTITY) {
         base.Init(_ENTITY);
 
-      playerID = VI.Entity.GetId("Boat");
-      UIObjectiveTextID = VI.Entity.GetId("objectivetext");
-      P1ID = VI.Entity.GetId("P1");
-      PP1ID = VI.Entity.GetId("PP1");
-      PP2ID = VI.Entity.GetId("PP2");
-      G1ID = VI.Entity.GetId("G1");
       girlColliderBox = VI.Entity.GetId("GirlBox");
       PColliderBox = VI.Entity.GetId("PassengerPickupBox");
       PEndColliderBox = VI.Entity.GetId("PassengerDropOffBox");

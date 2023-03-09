@@ -14,8 +14,8 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            p1icon = VI.Entity.GetId("PassengerIcon1", "Dialogue");
-            p2icon = VI.Entity.GetId("PassengerIcon2", "Dialogue");
+            p1icon = VI.Entity.GetId("PassengerIcon1");
+            p2icon = VI.Entity.GetId("PassengerIcon2");
             curr1 = curr2 = 0;
             increase1 = false;
             increase2 = false;

@@ -55,6 +55,12 @@ namespace BonVoyage {
       PP1ID = VI.Entity.GetId("PP1");
       PP2ID = VI.Entity.GetId("PP2");
       G1ID = VI.Entity.GetId("G1");
+
+      playerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
+
+      UIHPBarID = VI.Entity.GetId("hpbar");
+      UIMemoryFragmentID = VI.Entity.GetId("memoryfragment");
+      UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen");
     }
 
     public virtual void EarlyUpdate(int _ENTITY) {
@@ -87,17 +93,11 @@ namespace BonVoyage {
     #region UIControl
     public void DisableUI() {
       VI.Entity.Deactivate(UIHPBarID);
-      VI.Entity.Deactivate(UIMemoryFragmentID);
-      VI.Entity.Deactivate(UIMemoryFragmentScreenID);
       //VI.Entity.Deactivate(UIMiniMapID);
       //VI.Entity.Deactivate(UIEnemyMapID);
       //VI.Entity.Deactivate(UIWeatherMapID);
-      VI.Entity.Deactivate(UIObjectiveTextID);
-      VI.Entity.Deactivate(UIPassengersLeftID);
-      VI.Entity.Deactivate(UIPassengerIcon1ID);
-      VI.Entity.Deactivate(UIPassengerIcon2ID);
 
-
+      VI.Scene.Pause("GUI Scene");
       VI.Scene.Pause("CrystalBalls");
       VI.Scene.Pause("MiniMap");
       VI.Scene.Pause("EnemyMap");
@@ -107,16 +107,8 @@ namespace BonVoyage {
     public void EnableUI() {
       if (UIHPBarID != 0)
         VI.Entity.Activate(UIHPBarID);
-      if (UIMemoryFragmentID != 0)
-        VI.Entity.Activate(UIMemoryFragmentID);
-      if (UIObjectiveTextID != 0)
-        VI.Entity.Activate(UIObjectiveTextID);
-      if (UIPassengersLeftID != 0)
-        VI.Entity.Activate(UIPassengersLeftID);
-      if (UIPassengerIcon1ID != 0)
-        VI.Entity.Activate(UIPassengerIcon1ID);
-      if (UIPassengerIcon2ID != 0)
-        VI.Entity.Activate(UIPassengerIcon2ID);
+
+      VI.Scene.Play("GUI Scene");
       VI.Scene.Play("CrystalBalls");
       VI.Scene.Play("MiniMap");
       VI.Scene.Play("EnemyMap");
