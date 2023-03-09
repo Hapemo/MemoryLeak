@@ -148,7 +148,7 @@ namespace BonVoyage {
         }
       } else {
         if (additionalLines == 0) {
-          textYSpacing = 0;
+          textYSpacing = 10;
           VI.Transform.Scale.SetY(entityname, smallChoiceHeight);
           VI.Transform.Scale.SetX(entityname, choiceWidth);
           VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
