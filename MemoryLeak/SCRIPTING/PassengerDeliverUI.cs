@@ -1,7 +1,7 @@
 ﻿/*!*****************************************************************************
 \file PassengerDeliverUI.cs
-\author Lee Hsien Wei Joachim
-\par DP email: l.hsienweijoachim@digipen.edu
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
 \par Group: Memory Leak Studios
 \date 10-03-2023
 \brief

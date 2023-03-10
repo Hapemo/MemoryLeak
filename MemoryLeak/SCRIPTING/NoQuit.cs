@@ -1,11 +1,11 @@
 ﻿/*!*****************************************************************************
 \file NoQuit.cs
-\author Lee Hsien Wei Joachim
-\par DP email: l.hsienweijoachim@digipen.edu
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
 \par Group: Memory Leak Studios
 \date 10-03-2023
 \brief
-Script for resume game when pause in menu
+Script for quit game when pause in menu
 *******************************************************************************/
 using System;
 using System.Runtime.CompilerServices;

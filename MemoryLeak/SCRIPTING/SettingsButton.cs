@@ -5,7 +5,7 @@
 \par Group: Memory Leak Studios
 \date 01-03-2023
 \brief
-This file contains scripting functions for logic system for fragments.
+This file contains scripting functions for logic system to switch to settings scene
 *******************************************************************************/
 using System;
 using System.Runtime.CompilerServices;

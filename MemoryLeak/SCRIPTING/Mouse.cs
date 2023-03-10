@@ -1,11 +1,12 @@
 ﻿/*!*****************************************************************************
-\file LevelToMenu.cs
+\file Mouse.cs
 \author Lee Hsien Wei Joachim
 \par DP email: l.hsienweijoachim@digipen.edu
 \par Group: Memory Leak Studios
 \date 10-03-2023
 \brief
-Changes the mouse to a unique texture
+Changes the mouse to a unique texture based on the player direction and animates on
+player action
 *******************************************************************************/
 using System;
 using System.Runtime.CompilerServices;

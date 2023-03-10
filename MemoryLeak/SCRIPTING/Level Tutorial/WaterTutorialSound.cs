@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file WaterTutorialSound.cs
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+WaterTutorialSound contains plays the background sound in the tutorial level
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
