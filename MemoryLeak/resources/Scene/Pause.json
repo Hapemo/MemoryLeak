@@ -85,8 +85,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 650.0,
-                "Y": 150.0
+                "X": 450.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
@@ -96,13 +96,13 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 2
         },
         "Audio": {
@@ -120,7 +120,7 @@
             "fontFile": "BPtypewrite",
             "text": "How To Play",
             "offset": {
-                "X": -167.0,
+                "X": -158.0,
                 "Y": -16.0
             },
             "scale": 1.0,
@@ -149,8 +149,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 650.0,
-                "Y": 150.0
+                "X": 450.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
@@ -160,13 +160,13 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 2
         },
         "Audio": {
@@ -213,8 +213,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 650.0,
-                "Y": 150.0
+                "X": 450.0,
+                "Y": 125.0
             },
             "rotation": 0.0,
             "translation": {
@@ -224,13 +224,13 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 2
         },
         "Audio": {
@@ -262,7 +262,7 @@
             "width": 0.0
         },
         "Script": {
-            "name": "BackToGame"
+            "name": "ResumeGame"
         },
         "Button": {
             "interactable": true
