@@ -1,42 +1,6 @@
 [
     {
         "General": {
-            "name": "fog",
-            "tag": 6,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 3200.0,
-                "Y": 1800.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1133.2613525390625,
-                "Y": 432.8030700683594
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 120
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\Weather\\fog_spritesheet.png",
-            "layer": 63
-        },
-        "SheetAnimation": {
-            "frameCount": 4,
-            "currFrameIndex": 4,
-            "timePerFrame": 1.0,
-            "timeToFrameSwap": 0.016666678711771965
-        }
-    },
-    {
-        "General": {
             "name": "Log",
             "tag": 5,
             "subtag": 0,
@@ -63,10 +27,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region2_Log1.png",
             "layer": 9
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -97,10 +57,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region2_Mushroom.png",
             "layer": 12
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -131,10 +87,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region2_Reed2.png",
             "layer": 15
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -171,10 +123,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 1.0,
             "timeToFrameSwap": 0.0
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -205,10 +153,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region2_Rock1.png",
             "layer": 41
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -239,10 +183,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region2_Reed1.png",
             "layer": 46
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -273,10 +213,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region2_Reed2.png",
             "layer": 67
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -307,10 +243,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region2_Reed1.png",
             "layer": 68
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -381,10 +313,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -455,10 +383,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -664,10 +588,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -738,10 +658,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -812,10 +728,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -886,10 +798,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -937,10 +845,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1011,10 +915,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1031,8 +931,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2694.04150390625,
-                "Y": 1122.4990234375
+                "X": -2683.53076171875,
+                "Y": 1129.04443359375
             }
         },
         "Sprite": {
@@ -1085,10 +985,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1105,8 +1001,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2532.997314453125,
-                "Y": 1251.480712890625
+                "X": -2536.000244140625,
+                "Y": 1256.389892578125
             }
         },
         "Sprite": {
@@ -1159,10 +1055,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1210,10 +1102,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1261,10 +1149,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1335,10 +1219,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1409,10 +1289,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1483,10 +1359,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1557,10 +1429,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1631,10 +1499,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -1705,10 +1569,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3099,10 +2959,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3150,10 +3006,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3224,10 +3076,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3298,10 +3146,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3372,10 +3216,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3423,10 +3263,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3497,10 +3333,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3548,10 +3380,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3599,10 +3427,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3673,10 +3497,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3724,10 +3544,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3798,10 +3614,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3849,10 +3661,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3923,10 +3731,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3974,10 +3778,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4025,10 +3825,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4076,10 +3872,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4150,10 +3942,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4224,10 +4012,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4298,10 +4082,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4372,10 +4152,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4446,10 +4222,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4497,10 +4269,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4571,10 +4339,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4645,10 +4409,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4719,10 +4479,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4793,10 +4549,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4844,10 +4596,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4918,10 +4666,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -4969,10 +4713,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5043,10 +4783,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5117,10 +4853,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5168,10 +4900,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5219,10 +4947,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5270,10 +4994,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5321,10 +5041,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5372,10 +5088,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5423,10 +5135,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5474,10 +5182,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5525,10 +5229,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5576,10 +5276,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5627,10 +5323,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5678,10 +5370,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5729,10 +5417,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5780,10 +5464,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5854,10 +5534,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5905,10 +5581,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -5956,10 +5628,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6030,10 +5698,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6104,10 +5768,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6178,10 +5838,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6229,10 +5885,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6303,10 +5955,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6354,10 +6002,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6405,10 +6049,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6479,10 +6119,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6530,10 +6166,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6581,10 +6213,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6632,10 +6260,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6683,10 +6307,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6734,10 +6354,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6785,10 +6401,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6836,10 +6448,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6887,10 +6495,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6938,10 +6542,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7012,10 +6612,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7063,10 +6659,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7114,10 +6706,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7165,10 +6753,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7239,10 +6823,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7290,10 +6870,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7341,10 +6917,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7415,10 +6987,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7466,10 +7034,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7517,10 +7081,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7591,10 +7151,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7665,10 +7221,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7739,10 +7291,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7813,10 +7361,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7864,10 +7408,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7915,10 +7455,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -7966,10 +7502,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8040,10 +7572,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8091,10 +7619,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8142,10 +7666,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8193,10 +7713,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8244,10 +7760,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8318,10 +7830,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8392,10 +7900,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8466,10 +7970,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8540,10 +8040,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8591,10 +8087,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8642,10 +8134,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8716,10 +8204,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8790,10 +8274,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8841,10 +8321,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8892,10 +8368,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -8966,10 +8438,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9040,10 +8508,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9091,10 +8555,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9165,10 +8625,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9216,10 +8672,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9267,10 +8719,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9341,10 +8789,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9415,10 +8859,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9489,10 +8929,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9540,10 +8976,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9591,10 +9023,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9642,10 +9070,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9693,10 +9117,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9744,10 +9164,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9818,10 +9234,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9892,10 +9304,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9943,10 +9351,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -9994,10 +9398,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10068,10 +9468,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10119,10 +9515,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10170,10 +9562,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10221,10 +9609,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10272,10 +9656,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10323,10 +9703,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10397,10 +9773,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10471,10 +9843,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10522,10 +9890,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10573,10 +9937,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10624,10 +9984,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10675,10 +10031,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10726,10 +10078,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10800,10 +10148,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10851,10 +10195,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10925,10 +10265,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -10976,10 +10312,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11027,10 +10359,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11078,10 +10406,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11129,10 +10453,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11180,10 +10500,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11231,10 +10547,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11282,10 +10594,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11333,10 +10641,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11384,10 +10688,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11435,10 +10735,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11486,10 +10782,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11537,10 +10829,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11588,10 +10876,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11639,10 +10923,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11713,10 +10993,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11764,10 +11040,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11838,10 +11110,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11889,10 +11157,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -11940,10 +11204,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12014,10 +11274,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12065,10 +11321,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12116,10 +11368,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12167,10 +11415,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12241,10 +11485,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12315,10 +11555,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12389,10 +11625,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12463,10 +11695,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12514,10 +11742,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12565,10 +11789,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12616,10 +11836,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12667,10 +11883,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12718,10 +11930,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12769,10 +11977,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12843,10 +12047,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12917,10 +12117,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -12991,10 +12187,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13065,10 +12257,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13139,10 +12327,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13314,10 +12498,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13365,10 +12545,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13416,10 +12592,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13467,10 +12639,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13518,10 +12686,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13569,10 +12733,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13620,10 +12780,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13671,10 +12827,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13722,10 +12874,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13773,10 +12921,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13824,10 +12968,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13875,10 +13015,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -13926,10 +13062,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -14000,10 +13132,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -14570,10 +13698,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -15430,8 +14554,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1437.01806640625,
-                "Y": -1560.900390625
+                "X": -2464.0,
+                "Y": 1968.0
             }
         },
         "Sprite": {
@@ -15706,10 +14830,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -15757,10 +14877,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -15808,10 +14924,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -15859,10 +14971,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -15910,10 +15018,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -15961,10 +15065,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16012,10 +15112,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16063,10 +15159,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16114,10 +15206,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16165,10 +15253,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16216,10 +15300,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16267,10 +15347,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16318,10 +15394,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16369,10 +15441,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16420,10 +15488,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16471,10 +15535,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16522,10 +15582,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16573,10 +15629,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16624,10 +15676,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16675,10 +15723,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16726,10 +15770,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16777,10 +15817,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16828,10 +15864,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16902,10 +15934,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -16976,10 +16004,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -17050,10 +16074,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -17124,10 +16144,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -17198,10 +16214,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -17249,10 +16261,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -17300,10 +16308,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -17374,10 +16378,6 @@
             "isLoop": false,
             "isRandPitch": false,
             "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {

@@ -181,5 +181,41 @@
             "timePerFrame": 0.20000000298023224,
             "timeToFrameSwap": 0.0833333432674408
         }
+    },
+    {
+        "General": {
+            "name": "fog",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 3200.0,
+                "Y": 1800.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1133.2613525390625,
+                "Y": 432.8030700683594
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\Weather\\fog_spritesheet.png",
+            "layer": 2
+        },
+        "SheetAnimation": {
+            "frameCount": 4,
+            "currFrameIndex": 4,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.016666678711771965
+        }
     }
 ]

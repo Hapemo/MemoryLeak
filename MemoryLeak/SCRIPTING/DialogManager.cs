@@ -98,12 +98,10 @@ namespace BonVoyage {
       //VI.Entity.Deactivate(UIWeatherMapID);
 
       VI.Scene.Pause("GUI Scene");
-
-      VI.Entity.s_Deactivate("toggleMap");
-      //VI.Scene.Pause("CrystalBalls");
-      //VI.Scene.Pause("MiniMap");
-      //VI.Scene.Pause("EnemyMap");
-      //VI.Scene.Pause("WeatherMap");
+      VI.Scene.Pause("CrystalBalls");
+      VI.Scene.Pause("MiniMap");
+      VI.Scene.Pause("EnemyMap");
+      VI.Scene.Pause("WeatherMap");
     }
 
     public void EnableUI() {
@@ -111,12 +109,10 @@ namespace BonVoyage {
         VI.Entity.Activate(UIHPBarID);
 
       VI.Scene.Play("GUI Scene");
-
-      VI.Entity.s_Activate("toggleMap");
-      //VI.Scene.Play("CrystalBalls");
-      //VI.Scene.Play("MiniMap");
-      //VI.Scene.Play("EnemyMap");
-      //VI.Scene.Play("WeatherMap");
+      VI.Scene.Play("CrystalBalls");
+      VI.Scene.Play("MiniMap");
+      VI.Scene.Play("EnemyMap");
+      VI.Scene.Play("WeatherMap");
     }
     #endregion
 
@@ -131,7 +127,7 @@ namespace BonVoyage {
     // int textYSpacing     - This is the spacing of the text from the top edge of the box 
     public void TextBoxAlign(int entityname, float posX, float posY, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
       int additionalLines = VI.Text.GetLineCount(entityname) - 1;
-      LOG.WRITE("=========================NUMBER OF LINE: " + (additionalLines + 1));
+
       // Selecting the dialog box texture and putting it into correct position
       if (choice == 0) {
         if (additionalLines < 2) {
