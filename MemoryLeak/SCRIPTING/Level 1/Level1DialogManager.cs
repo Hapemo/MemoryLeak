@@ -130,8 +130,6 @@ namespace BonVoyage {
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Brown House)");
-        EnemyController.EnemyActivated = true;
-        allPassengerDelivered = true;
         MemoryFragmentExpand.ActivateFragment(1);
         if (!dialogEnded) EndDropoffDialog();
         break;
