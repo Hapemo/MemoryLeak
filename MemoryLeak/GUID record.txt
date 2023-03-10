@@ -19,8 +19,6 @@ GUID: 16672825031723778 | File: ThunderClap_Linear_02.wav
 GUID: 16672825032182786 | File: ThunderClap_Linear_03.wav
 GUID: 16672825032576258 | File: Walla_behind closed doors_Loop_1.wav
 GUID: 16672825033494018 | File: Walla_behind closed doors_Loop_2.wav
-------- File Directory: "..\\resources\\Audio\\Dialogue"
-------- File Directory: "..\\resources\\Audio\\Dialogue\\Dialogue LittleGirl 0"
 GUID: 16679324687532290 | File: 1.mp3
 GUID: 16679324687598082 | File: 10.mp3
 GUID: 14757395258967589634 | File: 11.mp3
@@ -38,7 +36,6 @@ GUID: 16679324688059906 | File: 6.mp3
 GUID: 16679324688125698 | File: 7.mp3
 GUID: 16679324688191490 | File: 8.mp3
 GUID: 16679324688191746 | File: 9.mp3
-------- File Directory: "..\\resources\\Audio\\SFX"
 GUID: 16671508787365634 | File: Background_Light Waves_SFX.wav
 GUID: 16671508787365890 | File: Boat_Row_Long_SFX.wav
 GUID: 16671508787364866 | File: Boat_Row_SFX.wav
@@ -63,7 +60,6 @@ GUID: 16665530161235202 | File: SHOOT5.wav
 GUID: 16784333675890178 | File: Thunder.wav
 GUID: 16784333675890434 | File: Toggle(Edited).wav
 GUID: 16769834256171266 | File: TO_BE_REMOVED_THUNDER_SOUND.wav
-------- File Directory: "..\\resources\\Audio\\Songs"
 GUID: 16695512960860418 | File: MENUBG.wav
 ------- File Directory: "..\\resources\\Dialogs"
 GUID: 16779098167443974 | File: Dialog Argus (Brown House).json
