@@ -29,6 +29,7 @@ namespace BonVoyage {
             if (!init)
             {
                 VI.Audio.PlayBGM("01.Daytime_Forest_Field_Sun_Loop");
+                VI.Audio.PlayBGM("Bon_Voyage_BGM");
                 init = true;
             }
 

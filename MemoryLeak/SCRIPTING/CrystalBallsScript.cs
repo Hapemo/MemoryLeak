@@ -49,10 +49,11 @@ namespace BonVoyage {
             enemymapID = VI.Entity.GetId("enemymap", "EnemyMap");
             VI.Entity.Activate(crystalBallID);
             VI.Audio.PlayBGM("01.Daytime_Forest_Field_Sun_Loop");
-            
-        }
+            VI.Audio.PlayBGM("Bon_Voyage_BGM");
 
-        public void Init(int _ENTITY) {
+    }
+
+    public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             toggle = 0;
             prevTog = -1;
