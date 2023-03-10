@@ -31,7 +31,7 @@
     {
         "SceneName": "Quit Confirmation",
         "isActive": true,
-        "layer": 10,
+        "layer": 13,
         "order": 4
     },
     {
