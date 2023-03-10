@@ -15520,8 +15520,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1437.01806640625,
-                "Y": -1560.900390625
+                "X": -2464.0,
+                "Y": 1968.0
             }
         },
         "Sprite": {
@@ -17504,6 +17504,87 @@
             "currFrameIndex": 0,
             "timePerFrame": 0.5,
             "timeToFrameSwap": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Middle tree collider 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 440.0,
+                "Y": 272.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 520.3532104492188,
+                "Y": -231.07827758789063
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 70
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 174.0,
+                "Y": 175.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2.4119999408721924,
+                "Y": -25.842998504638672
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 71
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
         }
     }
 ]
