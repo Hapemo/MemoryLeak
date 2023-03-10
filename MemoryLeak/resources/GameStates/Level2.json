@@ -165,5 +165,11 @@
         "isActive": false,
         "layer": 15,
         "order": 0
+    },
+    {
+        "SceneName": "TutorialUILvl2",
+        "isActive": false,
+        "layer": 12,
+        "order": 0
     }
 ]
