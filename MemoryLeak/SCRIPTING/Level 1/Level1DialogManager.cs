@@ -121,7 +121,7 @@ namespace BonVoyage {
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
         allPassengerDelivered = true;
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Brown House)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Water Fountain)");
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 21: // Passenger 2 correct
@@ -129,7 +129,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Water Fountain)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Brown House)");
         EnemyController.EnemyActivated = true;
         allPassengerDelivered = true;
         MemoryFragmentExpand.ActivateFragment(1);
@@ -185,8 +185,8 @@ namespace BonVoyage {
     public void EndPassenger2Dialog() {
       GeneralEndDialog();
 
-      correctDestination_RenderLocation = VI.Entity.GetId("FountainDropOffPoint");
-      wrongDestination_RenderLocation = VI.Entity.GetId("PortHouseDropOffPoint");
+      correctDestination_RenderLocation = VI.Entity.GetId("PortHouseDropOffPoint");
+      wrongDestination_RenderLocation = VI.Entity.GetId("FountainDropOffPoint");
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
 
