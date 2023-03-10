@@ -112,7 +112,9 @@ Math::Vec2 InternalCalls::iInput::iMouse::GetWorldPos() {
 #ifdef _EDITOR
 	return editorManager->GetEditorWorldMousePos();
 #else 
-	Math::Vec2 cursorPos = Math::Vec2(Input::CursorPos().x, -Input::CursorPos().y) + Math::Vec2(-Helper::GetScreenWidth() / 2.f, Helper::GetScreenHeight() / 2.f);
+	Math::Vec2 zoomFactor{ VI::iCamera::GetScaleX() / Helper::GetScreenWidth(), VI::iCamera::GetScaleY() / Helper::GetScreenHeight() };
+
+	Math::Vec2 cursorPos = Math::Vec2{ VI::iCamera::GetPosX(), VI::iCamera::GetPosY() } + Math::Vec2{ (Input::CursorPos().x - Helper::GetScreenWidth() / 2.f) * zoomFactor.x, (-Input::CursorPos().y + Helper::GetScreenHeight() / 2.f) * zoomFactor.y };
 	//if (Input::CheckKey(PRESS, M_BUTTON_L)) std::cout << "cursorPos: " << cursorPos << '\n';
 	return cursorPos;
 #endif 
@@ -478,25 +480,6 @@ void InternalCalls::iCamera::SetPosX(float _x) {
 }
 void InternalCalls::iCamera::SetPosY(float _y) {
 	VI::iGameState::CurrentGameState().mCamera.translation.y = _y;
-}
-
-/*!*****************************************************************************
-\brief
-Get main window's screen width and height
-*******************************************************************************/
-int InternalCalls::iWindow::GetScreenWidth() {
-	return Helper::GetScreenWidth();
-}
-int InternalCalls::iWindow::GetScreenHeight() {
-	return Helper::GetScreenHeight();
-}
-
-/*!*****************************************************************************
-\brief
-Set the main window to fullscreen according to bool
-*******************************************************************************/
-void InternalCalls::iWindow::SetFullScreen(bool _fullscreen) {
-	Helper::SetFullScreen(_fullscreen);
 }
 
 /*!*****************************************************************************

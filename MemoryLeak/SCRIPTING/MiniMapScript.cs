@@ -81,7 +81,7 @@ namespace BonVoyage {
                 VI.Text.Scale.Set(minimapID, textbigScale);
                 VI.Animation.Transform.Run(minimapID);
                 VI.Viewport.SetIsUI(minimapID, true);
-                VI.Viewport.SetWidth(minimapID, (int)(MapX/1.5));
+                VI.Viewport.SetWidth(minimapID, (int)(MapX / 2));
                 VI.Entity.Sprite.SetType(minimapID, 0);
 
                 float posx = VI.Transform.Position.GetX(boatID) * (miniMapX / MapX) * 2;

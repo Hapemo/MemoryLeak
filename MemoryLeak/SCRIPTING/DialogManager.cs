@@ -25,6 +25,7 @@ namespace BonVoyage {
     protected bool normalZoom = true;
     protected int latestChoiceChosen = 0; // 0 if no choice chosen, 1 if choice 1 chosen, 2 if choice 2 chosen. Resets every frame
     static public int passengerDialogProgress = 0; // Consists of 2 numbers in this format <passenger number><right or wrong>. 1 for right, 0 for wrong. eg passenger 1 right answer destination reached, it will be 11.
+    static public bool allPassengerDelivered = false;
 
     protected int playerID;
     protected int UIObjectiveTextID;
@@ -61,6 +62,7 @@ namespace BonVoyage {
       UIHPBarID = VI.Entity.GetId("hpbar");
       UIMemoryFragmentID = VI.Entity.GetId("memoryfragment");
       UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen");
+      allPassengerDelivered = false;
     }
 
     public virtual void EarlyUpdate(int _ENTITY) {
@@ -98,12 +100,10 @@ namespace BonVoyage {
       //VI.Entity.Deactivate(UIWeatherMapID);
 
       VI.Scene.Pause("GUI Scene");
-
-      VI.Entity.s_Deactivate("toggleMap");
-      //VI.Scene.Pause("CrystalBalls");
-      //VI.Scene.Pause("MiniMap");
-      //VI.Scene.Pause("EnemyMap");
-      //VI.Scene.Pause("WeatherMap");
+      VI.Scene.Pause("CrystalBalls");
+      VI.Scene.Pause("MiniMap");
+      VI.Scene.Pause("EnemyMap");
+      VI.Scene.Pause("WeatherMap");
     }
 
     public void EnableUI() {
@@ -111,12 +111,10 @@ namespace BonVoyage {
         VI.Entity.Activate(UIHPBarID);
 
       VI.Scene.Play("GUI Scene");
-
-      VI.Entity.s_Activate("toggleMap");
-      //VI.Scene.Play("CrystalBalls");
-      //VI.Scene.Play("MiniMap");
-      //VI.Scene.Play("EnemyMap");
-      //VI.Scene.Play("WeatherMap");
+      VI.Scene.Play("CrystalBalls");
+      VI.Scene.Play("MiniMap");
+      VI.Scene.Play("EnemyMap");
+      VI.Scene.Play("WeatherMap");
     }
     #endregion
 
@@ -131,7 +129,7 @@ namespace BonVoyage {
     // int textYSpacing     - This is the spacing of the text from the top edge of the box 
     public void TextBoxAlign(int entityname, float posX, float posY, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
       int additionalLines = VI.Text.GetLineCount(entityname) - 1;
-      LOG.WRITE("=========================NUMBER OF LINE: " + (additionalLines + 1));
+
       // Selecting the dialog box texture and putting it into correct position
       if (choice == 0) {
         if (additionalLines < 2) {

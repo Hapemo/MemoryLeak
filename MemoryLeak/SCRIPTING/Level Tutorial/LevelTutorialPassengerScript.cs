@@ -30,7 +30,7 @@ namespace BonVoyage {
             triggerBox = VI.Entity.GetId("PassengerPickupBox");
 
             correctDestination_Box = VI.Entity.GetId("PassengerDropOffBox");
-            correctDestination_RenderLocation = VI.Entity.GetId("PassengerDummyDropOffBox");
+            correctDestination_RenderLocation = VI.Entity.GetId("PortHouse");
 
             wrongDestination_Box = VI.Entity.GetId("PassengerDummyDropOffBox");
             wrongDestination_RenderLocation = VI.Entity.GetId("PassengerDummyDropOffBox");
