@@ -15508,6 +15508,575 @@
     },
     {
         "General": {
+            "name": "Enemy",
+            "tag": 2,
+            "subtag": 3,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 523.0,
+                "Y": 353.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1622.0,
+                "Y": 210.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
+            "layer": 48
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_rising_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SW_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                }
+            ],
+            "currentImageIndex": 0
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 2,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.06666667014360428
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": -23.0,
+                "Y": -20.0
+            },
+            "scaleOffset": {
+                "X": 0.5,
+                "Y": 0.5
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 67.0
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "DAMAGE",
+            "volume": 0.30000001192092896,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "EnemyController"
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": true,
+            "reverse": false,
+            "cycle": true,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 162.0,
+                            "Y": 210.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1622.0,
+                            "Y": 210.0
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1770.000,
+                            "Y": 1096.000
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 595.687,
+                            "Y": 1761.098
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -620.195,
+                            "Y": 1459.725
+                        }
+                    }
+                },
+                {
+                    "time": 4.5,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -692.940,
+                            "Y": 1064.824
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1358.037,
+                            "Y": 669.922
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1555.488,
+                            "Y": -410.862
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -931.959,
+                            "Y": -899.293
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 24.119,
+                            "Y": -1522.822
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 460.589,
+                            "Y": -1065.567
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 606.079,
+                            "Y": -587.528
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1104.903,
+                            "Y": -462.822
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "EnemyTrigger",
+            "tag": 2,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 965.9568481445313,
+                "Y": 878.04736328125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1622.0,
+                "Y": 210.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 13
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "MonsterChase_SFX",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": true,
+            "isRandPitch": false,
+            "isSpacial": true
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": true,
+            "reverse": false,
+            "cycle": true,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "targets": [
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1622.0,
+                            "Y": 210.0
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1770.000,
+                            "Y": 1096.000
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 595.687,
+                            "Y": 1761.098
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -620.195,
+                            "Y": 1459.725
+                        }
+                    }
+                },
+                {
+                    "time": 4.5,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -692.940,
+                            "Y": 1064.824
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1358.037,
+                            "Y": 669.922
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1555.488,
+                            "Y": -410.862
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -931.959,
+                            "Y": -899.293
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 24.119,
+                            "Y": -1522.822
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 460.589,
+                            "Y": -1065.567
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 606.079,
+                            "Y": -587.528
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 965.9568481445313,
+                            "Y": 878.04736328125
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1104.903,
+                            "Y": -462.822
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
             "name": "Boat",
             "tag": 0,
             "subtag": 0,

@@ -65,6 +65,7 @@ namespace BonVoyage {
                     if (!PlayerScript.PlayerInDialogue && VI.Physics.CheckCollision(PlayerId, EnemyTriggerId, true))
                         ChasePlayer(x, y);
                     else {
+                        VI.Audio.StopBGM();
                         OctopusState = EnemyState.IDLE;
                         UpdateTransform(OctopusState);
                         float x_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.x);
