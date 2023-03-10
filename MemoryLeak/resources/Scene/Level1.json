@@ -30,9 +30,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
@@ -195,9 +195,9 @@
         },
         "SheetAnimation": {
             "frameCount": 9,
-            "currFrameIndex": 2,
+            "currFrameIndex": 6,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
@@ -259,7 +259,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -458,7 +458,7 @@
             "frameCount": 8,
             "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.10000000149011612
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -561,9 +561,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
@@ -766,7 +766,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -951,9 +951,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 7,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.016666671261191368
         },
         "RectCollider": {
             "centerOffset": {
@@ -1004,7 +1004,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -1078,7 +1078,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1129,7 +1129,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -1260,7 +1260,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -2168,7 +2168,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -2242,7 +2242,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -2361,7 +2361,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -2602,9 +2602,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
@@ -2749,9 +2749,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
@@ -2874,7 +2874,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3016,7 +3016,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -3078,7 +3078,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3335,7 +3335,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3409,7 +3409,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -3471,7 +3471,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3545,7 +3545,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3619,7 +3619,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3693,7 +3693,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3767,7 +3767,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3841,7 +3841,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -3971,7 +3971,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4045,7 +4045,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4119,7 +4119,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4193,7 +4193,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4267,7 +4267,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4465,7 +4465,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4539,7 +4539,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4613,7 +4613,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4800,7 +4800,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4874,7 +4874,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -4948,7 +4948,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -4999,7 +4999,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -5073,7 +5073,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5135,7 +5135,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -5209,7 +5209,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5271,7 +5271,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5333,7 +5333,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -5395,7 +5395,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5446,7 +5446,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -5497,7 +5497,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -5571,7 +5571,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -5645,7 +5645,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -5719,7 +5719,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -5793,7 +5793,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -5867,7 +5867,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -5941,7 +5941,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -6015,7 +6015,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6066,7 +6066,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6117,7 +6117,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -6177,9 +6177,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 0,
+            "currFrameIndex": 1,
             "timePerFrame": 1.0,
-            "timeToFrameSwap": 0.6500003337860107
+            "timeToFrameSwap": 0.13333360850811005
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6230,7 +6230,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -6304,7 +6304,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6355,7 +6355,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -6429,7 +6429,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -6503,7 +6503,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6550,7 +6550,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -6669,7 +6669,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -6785,7 +6785,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6836,7 +6836,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6887,7 +6887,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -6938,7 +6938,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7000,7 +7000,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7051,7 +7051,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7113,7 +7113,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7175,7 +7175,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7237,7 +7237,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7299,7 +7299,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7361,7 +7361,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7412,7 +7412,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7463,7 +7463,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7514,7 +7514,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7565,7 +7565,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7616,7 +7616,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7667,7 +7667,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7718,7 +7718,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -7780,7 +7780,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -7831,7 +7831,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -8062,7 +8062,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8113,7 +8113,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8164,7 +8164,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8215,7 +8215,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8266,7 +8266,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8317,7 +8317,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -8379,7 +8379,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8432,13 +8432,48 @@
                     "sheet": "Textures\\Sprites\\ghost2_SE_idle.png",
                     "frameCount": 1,
                     "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 2\\Character_ghost2_E_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 2\\Character_ghost2_NE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 2\\Character_ghost2_NW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 2\\Character_ghost2_SE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 2\\Character_ghost2_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 2\\Character_ghost2_S_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 2\\Character_ghost2_W_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
                 }
             ],
             "currentImageIndex": 0
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 2,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.05000000447034836
         },
@@ -8491,7 +8526,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -8744,7 +8779,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8795,7 +8830,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8846,7 +8881,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8897,7 +8932,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8948,7 +8983,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -8999,7 +9034,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9050,7 +9085,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -9112,7 +9147,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9163,7 +9198,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -9225,7 +9260,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -9287,7 +9322,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9338,7 +9373,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9479,7 +9514,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9530,7 +9565,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9581,7 +9616,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -9819,9 +9854,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.10000000149011612
         },
         "RectCollider": {
             "centerOffset": {
@@ -9883,7 +9918,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -10005,9 +10040,9 @@
         },
         "SheetAnimation": {
             "frameCount": 6,
-            "currFrameIndex": 2,
+            "currFrameIndex": 5,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "RectCollider": {
             "centerOffset": {
@@ -10393,7 +10428,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10624,7 +10659,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -10675,7 +10710,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11041,7 +11076,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11103,7 +11138,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11165,7 +11200,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11227,7 +11262,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11289,7 +11324,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "LayerCollider": {
             "centerOffset": {
@@ -11351,7 +11386,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11402,7 +11437,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11453,7 +11488,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11504,7 +11539,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11555,7 +11590,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11606,7 +11641,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11657,7 +11692,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11708,7 +11743,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11759,7 +11794,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11810,7 +11845,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11861,7 +11896,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11912,7 +11947,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -11963,7 +11998,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12014,7 +12049,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12065,7 +12100,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12116,7 +12151,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12167,7 +12202,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12218,7 +12253,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12269,7 +12304,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12320,7 +12355,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12371,7 +12406,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12422,7 +12457,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12473,7 +12508,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12524,7 +12559,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12575,7 +12610,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12626,7 +12661,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12677,7 +12712,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12728,7 +12763,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12779,7 +12814,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12830,7 +12865,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12881,7 +12916,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12932,7 +12967,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -12983,7 +13018,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13034,7 +13069,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13085,7 +13120,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13136,7 +13171,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13187,7 +13222,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13238,7 +13273,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13289,7 +13324,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13340,7 +13375,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13391,7 +13426,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13442,7 +13477,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13493,7 +13528,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13544,7 +13579,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13595,7 +13630,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13646,7 +13681,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13697,7 +13732,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13748,7 +13783,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13799,7 +13834,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13850,7 +13885,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13901,7 +13936,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -13952,7 +13987,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14003,7 +14038,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14054,7 +14089,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14105,7 +14140,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14156,7 +14191,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14207,7 +14242,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
@@ -14258,7 +14293,7 @@
             "frameCount": 3,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0833333358168602
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
