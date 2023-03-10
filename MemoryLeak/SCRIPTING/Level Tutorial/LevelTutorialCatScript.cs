@@ -19,6 +19,7 @@ namespace BonVoyage {
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
         }
 
         public void Init(int _ENTITY) {
