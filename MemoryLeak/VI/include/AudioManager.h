@@ -29,7 +29,7 @@ public:
 	bool isPlaying(int _channel);
 	void PlayAnySound(std::string _snd, int _channel);
 	void PlayDialogueSound(std::string _snd, int _channel);
-	void PlayBGSound(std::string, int);
+	void PlayBGSound(std::string, int channel = 1);
 	void UpdateSound();
 	void SetALLVolume(float vol);
 	void SetBGMVolume(float vol);

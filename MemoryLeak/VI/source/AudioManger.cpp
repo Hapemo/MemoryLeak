@@ -279,6 +279,7 @@ None.
 *******************************************************************************/
 void AudioManager::PlayBGSound(std::string _snd, int _channel)
 {
+    _channel  = (int)E_AUDIO_CHANNEL::MAINBACKGROUND;
     mBgmSound[_snd]->setMode(2);
    /* bool f;
     mChannel[_channel]->isPlaying(&f);*/
