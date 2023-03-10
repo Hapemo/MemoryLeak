@@ -8,7 +8,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
+                "X": 800.0,
                 "Y": 200.0
             },
             "rotation": 0.0,
@@ -25,17 +25,17 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Menu\\button3.png",
             "layer": 0
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Click in any direction to move the boat",
             "offset": {
-                "X": -135.0,
-                "Y": 14.0
+                "X": -260.0,
+                "Y": 5.0
             },
-            "scale": 0.5,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -43,7 +43,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 185.0
+            "width": 105.0
         },
         "MovementAI": {
             "run": true,
@@ -58,7 +58,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -72,7 +72,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -86,7 +86,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -100,7 +100,7 @@
                     "time": 4.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -114,7 +114,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -136,7 +136,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
+                "X": 800.0,
                 "Y": 200.0
             },
             "rotation": 0.0,
@@ -153,17 +153,17 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Menu\\button3.png",
             "layer": 1
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Click anywhere to advance the dialogue",
             "offset": {
-                "X": -144.0,
+                "X": -260.0,
                 "Y": 5.0
             },
-            "scale": 0.5,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -171,7 +171,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 185.0
+            "width": 105.0
         },
         "MovementAI": {
             "run": true,
@@ -186,7 +186,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -200,7 +200,7 @@
                     "time": 7.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -214,7 +214,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -228,7 +228,7 @@
                     "time": 4.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -242,7 +242,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -264,13 +264,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
+                "X": 800.0,
                 "Y": 200.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 600.0
+                "X": -2.5806884765625,
+                "Y": 605.625
             }
         },
         "Sprite": {
@@ -281,17 +281,17 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Menu\\button3.png",
             "layer": 2
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Click on the dialogue options to make a choice",
             "offset": {
-                "X": -135.0,
-                "Y": 14.0
+                "X": -260.0,
+                "Y": 5.0
             },
-            "scale": 0.5,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -299,7 +299,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 185.0
+            "width": 105.0
         },
         "MovementAI": {
             "run": true,
@@ -314,7 +314,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -328,7 +328,7 @@
                     "time": 13.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -342,7 +342,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -356,7 +356,7 @@
                     "time": 5.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,
@@ -370,7 +370,7 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 500.0,
+                            "X": 800.0,
                             "Y": 200.0
                         },
                         "rotation": 0.0,

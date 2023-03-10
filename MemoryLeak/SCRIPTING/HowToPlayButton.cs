@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class HowToPlayButton : BaseScript
     {
+        string currlevel;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
@@ -25,15 +26,29 @@ namespace BonVoyage {
 
             if (THIS.Input.Button.Released())
             {
-                VI.Scene.Pause("Menu_Main");
-                VI.Scene.Pause("Settings");
-                VI.Scene.Pause("Credits");
-                VI.Scene.Pause("Quit Confirmation");
-                VI.Scene.Pause("TransitionScene");
-                VI.Scene.Pause("Pause");
-
-
-                VI.Scene.Play("How_To_Play");
+                currlevel = VI.GameState.GetName();
+                if (currlevel == "Menu")
+                {
+                    VI.Scene.Pause("Menu_Main");
+                    VI.Scene.Pause("Settings");
+                    VI.Scene.Pause("Credits");
+                    VI.Scene.Pause("Quit Confirmation");
+                    VI.Scene.Pause("TransitionScene");
+                    
+                    VI.Scene.Play("How_To_Play");
+                }
+                else if (currlevel == "LevelTutorial")
+                {
+                    VI.Scene.Play("LevelTutorial");
+                    VI.Scene.Pause("Pause");
+                    VI.Scene.Play("How_To_Play");
+                }
+                else if (currlevel == "Level1")
+                {
+                    VI.Scene.Play("Level1");
+                    VI.Scene.Pause("Pause");
+                    VI.Scene.Play("How_To_Play");
+                }
             }
         }
 

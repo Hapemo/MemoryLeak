@@ -1,6 +1,42 @@
 [
     {
         "General": {
+            "name": "fog",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 3200.0,
+                "Y": 1800.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1133.2613525390625,
+                "Y": 432.8030700683594
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 140
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\Weather\\fog_spritesheet.png",
+            "layer": 63
+        },
+        "SheetAnimation": {
+            "frameCount": 4,
+            "currFrameIndex": 4,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.016666678711771965
+        }
+    },
+    {
+        "General": {
             "name": "DoubleStoryHouse",
             "tag": 3,
             "subtag": 0,
@@ -1508,12 +1544,12 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },

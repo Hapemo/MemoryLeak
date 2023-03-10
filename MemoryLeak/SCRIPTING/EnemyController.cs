@@ -56,9 +56,12 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            //VI.Camera.SetScale.X(5500);
+      PlayerId = VI.Entity.GetId("Boat");
+      EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
+      HpBarId = VI.Entity.GetId("hpbar");
+      //VI.Camera.SetScale.X(5500);
 
-            if (EnemyActivated) {
+      if (EnemyActivated) {
                 VI.Entity.Activate(EnemyTriggerId);
 
                 float x = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.x);

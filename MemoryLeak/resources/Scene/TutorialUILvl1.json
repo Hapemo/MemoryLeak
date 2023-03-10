@@ -25,17 +25,17 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Menu\\button3.png",
             "layer": 0
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Use the cycle button to toggle between your maps",
             "offset": {
-                "X": -220.0,
-                "Y": 12.0
+                "X": -260.0,
+                "Y": 5.0
             },
-            "scale": 0.5,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -43,7 +43,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 250.0
+            "width": 105.0
         },
         "MovementAI": {
             "run": true,
@@ -153,17 +153,17 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Menu\\button3.png",
             "layer": 1
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Clear Skies: Good weather! Clear visibility",
             "offset": {
-                "X": -216.0,
-                "Y": 3.0
+                "X": -260.0,
+                "Y": 5.0
             },
-            "scale": 0.5,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -171,7 +171,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 250.0
+            "width": 180.0
         },
         "MovementAI": {
             "run": true,
@@ -281,17 +281,17 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Menu\\button3.png",
             "layer": 2
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Rain: Careful! The sea monster appears more frequently",
             "offset": {
-                "X": -218.0,
-                "Y": 4.0
+                "X": -260.0,
+                "Y": 5.0
             },
-            "scale": 0.5,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -299,7 +299,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 250.0
+            "width": 105.0
         },
         "MovementAI": {
             "run": true,
@@ -409,17 +409,17 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Menu\\button3.png",
             "layer": 3
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Fog: A thick fog appears and obscures your visibility",
             "offset": {
-                "X": -213.0,
-                "Y": 3.0
+                "X": -260.0,
+                "Y": 5.0
             },
-            "scale": 0.5,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -427,7 +427,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 250.0
+            "width": 105.0
         },
         "MovementAI": {
             "run": true,
@@ -537,17 +537,17 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button1-click.png",
+            "texture": "Textures\\Menu\\button3.png",
             "layer": 4
         },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Wind: Strong winds alert! Your boat might move uncontrollably",
             "offset": {
-                "X": -221.0,
-                "Y": 3.0
+                "X": -260.0,
+                "Y": 5.0
             },
-            "scale": 0.5,
+            "scale": 0.6000000238418579,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -555,7 +555,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 250.0
+            "width": 105.0
         },
         "MovementAI": {
             "run": true,
