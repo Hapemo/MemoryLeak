@@ -296,7 +296,7 @@ namespace BonVoyage {
           //Console.WriteLine("It's a choice dialog");
           //LOG.WRITE("It's a choice dialog");
           choiceFlag = false;
-          if (VI.Input.Button.Released(choice2)) {
+          if (MouseClick(choice2)) {
             MoveToNextDialog(2);
             latestChoiceChosen = 2;
             //LOG.WRITE("latestChoiceChosen = 2");
