@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file Fragment4.cs
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 01-03-2023
+\brief
+This file contains scripting functions for logic system for fragments.
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
