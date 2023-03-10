@@ -378,10 +378,11 @@ struct ParticleSystem {
 		float mRotation;			// Particle's rotation per second (in degrees)
 		float mSpeed;					// Speed of particle
 		bool mFading;					// Boolean value to determine if the color fades as it travels
+		bool mFadeIn;					// Boolean value to determine if the color fades in from transparent. If this and mFading is true, it will fade in with half duration and fade out in half duration
 
 		ParticleInfo() = default;
-		ParticleInfo( float _Scale, float _Facing, float _Lifespan, Sprite _Sprite, float _Rotation, float _Speed, bool _Fading ) : 
-			mScale(_Scale), mFacing(_Facing), mLifespan(_Lifespan), mSprite(_Sprite), mRotation(_Rotation), mSpeed(_Speed), mFading(_Fading)
+		ParticleInfo( float _Scale, float _Facing, float _Lifespan, Sprite _Sprite, float _Rotation, float _Speed, bool _Fading, bool _FadeIn ) : 
+			mScale(_Scale), mFacing(_Facing), mLifespan(_Lifespan), mSprite(_Sprite), mRotation(_Rotation), mSpeed(_Speed), mFading(_Fading), mFadeIn(_FadeIn)
 		{}
 	} mParticleInfo;
 

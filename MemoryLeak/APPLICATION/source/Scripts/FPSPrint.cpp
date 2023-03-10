@@ -29,7 +29,7 @@ void FPSPrintScript::Alive(Entity const& _e) {
 		ParticleSystem::ParticleInfo{
 			10, // mScale			
 			90, // mFacing		
-			2, // mLifespan	
+			3, // mLifespan	
 			Sprite{
 				Color(255,255,255,125), // color
 				SPRITE::SQUARE, // sprit
@@ -38,7 +38,8 @@ void FPSPrintScript::Alive(Entity const& _e) {
 			}, // mSprite		
 			2, // mRotation	
 			20, // mSpeed			
-			true // mFading			
+			true, // mFading			
+			true // mFadeIn
 		},
 		1, // mDensity 
 		memoryFragment.GetComponent<Transform>().translation, // mCenter

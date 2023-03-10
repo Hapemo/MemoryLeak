@@ -59,8 +59,14 @@ void Particle::Update() {
 	//								sin * mFacing.x + cos * mFacing.y }.Normalize();
 
 	// Update Color/Alpha
-	if (system.mParticleInfo.mFading) {
+	if (system.mParticleInfo.mFading && system.mParticleInfo.mFadeIn) {
+		float ratio = abs(mLifespan - mMaxLifespan/2.f);
+		ratio = abs(ratio - mMaxLifespan/2.f);
+		mColor.a = static_cast<GLubyte>(ratio * 255);
+	} else if (system.mParticleInfo.mFading) {
 		mColor.a = static_cast<GLubyte>((mLifespan / mMaxLifespan) * 255);
+	} else if (system.mParticleInfo.mFading) {
+		mColor.a = static_cast<GLubyte>((1 - (mLifespan / mMaxLifespan)) * 255);
 	}
 
 }
