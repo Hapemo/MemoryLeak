@@ -24,6 +24,7 @@ namespace BonVoyage {
             {
                 VI.Transform.Scale.s_SetX("BGMvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - VI.Input.Mouse.WorldPosX()));
                 VI.Transform.Position.s_SetX("BGMvolume", "Settings", THIS.Transform.Position.GetX() - 0.5f * THIS.Transform.Scale.GetX() + VI.Transform.Scale.s_GetX("BGMvolume", "Settings") * 0.5f);
+                VI.Audio.Volume.SetBGMVolume(VI.Transform.Scale.s_GetX("BGMvolume", "Settings") / 200.0f); ;
             }
         }
 

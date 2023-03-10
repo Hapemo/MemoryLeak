@@ -33,6 +33,7 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             targetRadius = (int)VI.LightSource.Radius.s_Get(light, scene);
+            VI.Audio.PlayBGM("CaveWithWaterDrops_Loop");
         }
 
         public void EarlyUpdate(int _ENTITY) { }
@@ -128,7 +129,7 @@ namespace BonVoyage {
         public void LateUpdate(int _ENTITY) { }
 
         public void Exit(int _ENTITY) {
-
+            VI.Audio.StopBGM();
         }
 
         public void Dead(int _ENTITY) {
