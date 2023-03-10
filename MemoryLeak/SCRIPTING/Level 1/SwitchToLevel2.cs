@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file SwitchToLevel2.cs
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+SwitchToLevel2 contains the logic that handles the logic of function calling to 
+switch the game state to the second level
+*******************************************************************************/
+
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
@@ -10,13 +21,13 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "Level1");
+            playerBoat = VI.Entity.GetId("Boat");
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat", "Level1");
+            playerBoat = VI.Entity.GetId("Boat");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -28,7 +39,7 @@ namespace BonVoyage {
             if (ranOnceInit) {
                 ranOnceInit = false;
                 
-                playerBoat = VI.Entity.GetId("Boat", "Level1");
+                playerBoat = VI.Entity.GetId("Boat");
             }
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!

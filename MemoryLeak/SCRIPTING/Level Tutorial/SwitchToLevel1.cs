@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file SwitchToLevel1.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+SwitchToLevel1 contains the logic that handles the logic of function calling to 
+switch the game state to the first level
+*******************************************************************************/
+
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

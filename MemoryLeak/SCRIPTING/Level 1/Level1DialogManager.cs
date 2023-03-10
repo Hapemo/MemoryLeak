@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file Level1DialogManager.cs
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+Level1DialogManager contains the logic that handles the conversation between
+the player and/or the different passengers in level 1 as well as the camera
+transition
+*******************************************************************************/
+
+using System;
 using System.Dynamic;
 using System.Runtime.CompilerServices;
 using VI;
@@ -32,11 +44,11 @@ namespace BonVoyage {
     public override void Init(int _ENTITY) {
         base.Init(_ENTITY);
 
-      P1ColliderBox = VI.Entity.GetId("Passenger1Box", "Level1");
-      P2ColliderBox = VI.Entity.GetId("Passenger2Box", "Level1");
-      UIPassengersLeftID = VI.Entity.GetId("PassengersLeft", "Dialogue");
-      UIPassengerIcon1ID = VI.Entity.GetId("PassengerIcon1", "Dialogue");
-      UIPassengerIcon2ID = VI.Entity.GetId("PassengerIcon2", "Dialogue");
+      P1ColliderBox = VI.Entity.GetId("Passenger1Box");
+      P2ColliderBox = VI.Entity.GetId("Passenger2Box");
+      UIPassengersLeftID = VI.Entity.GetId("PassengersLeft");
+      UIPassengerIcon1ID = VI.Entity.GetId("PassengerIcon1");
+      UIPassengerIcon2ID = VI.Entity.GetId("PassengerIcon2");
       dialogInit = true;
       normalZoom = false;
 

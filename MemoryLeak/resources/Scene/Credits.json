@@ -67,7 +67,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -50.00001525878906
+                "Y": -50.000030517578125
             }
         },
         "Sprite": {
@@ -78,7 +78,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 1
         },
         "Text": {
