@@ -155,6 +155,10 @@ namespace BonVoyage {
     public void EndPassengerDialog() {
       GeneralEndDialog();
 
+      // TEPOIRARY TO REMOVE AFTER M5 PRESETNATION=============================================================================================================================================================================
+      EnemyController.EnemyActivated = true;
+      VI.Entity.s_Activate("Enemy");
+
       correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDropOffPoint");
       wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDropOffPoint");
 
