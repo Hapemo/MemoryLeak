@@ -482,6 +482,25 @@ void InternalCalls::iCamera::SetPosY(float _y) {
 
 /*!*****************************************************************************
 \brief
+Get main window's screen width and height
+*******************************************************************************/
+int InternalCalls::iWindow::GetScreenWidth() {
+	return Helper::GetScreenWidth();
+}
+int InternalCalls::iWindow::GetScreenHeight() {
+	return Helper::GetScreenHeight();
+}
+
+/*!*****************************************************************************
+\brief
+Set the main window to fullscreen according to bool
+*******************************************************************************/
+void InternalCalls::iWindow::SetFullScreen(bool _fullscreen) {
+	Helper::SetFullScreen(_fullscreen);
+}
+
+/*!*****************************************************************************
+\brief
 Viewport stuff
 *******************************************************************************/
 int InternalCalls::iViewport::GetWidth(const int _eId) {

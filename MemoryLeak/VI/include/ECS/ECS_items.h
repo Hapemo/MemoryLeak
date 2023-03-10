@@ -47,7 +47,9 @@ struct Entity {
 	Entity() = default;
 	
 	// Copy Constructor
-	explicit Entity(EntityID _id) : id(_id) {}
+	explicit Entity(EntityID _id) {
+		if(_id > 0) id = _id;
+	}
 
 	/*!*****************************************************************************
 	Operator overload for '<' operator. This is required for std::set as set uses 
