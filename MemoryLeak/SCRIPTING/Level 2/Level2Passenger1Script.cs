@@ -14,14 +14,14 @@ namespace BonVoyage {
             base.Init(_ENTITY);
 
             // Get required entities
-            playerBoat = VI.Entity.GetId("Boat");
-            triggerBox = VI.Entity.GetId("Passenger1Box");
+            playerBoat                          = VI.Entity.GetId("Boat");
+            triggerBox                          = VI.Entity.GetId(Level2DialogManager.P1BoxString);
 
-            correctDestination_Box = VI.Entity.GetId("FountainDropOffPoint");
-            correctDestination_RenderLocation = VI.Entity.GetId("FountainDestRender");
+            correctDestination_Box              = VI.Entity.GetId(Level2DialogManager.P1CorrectBoxString);
+            correctDestination_RenderLocation   = VI.Entity.GetId(Level2DialogManager.P1CorrectRenderString);
 
-            wrongDestination_Box = VI.Entity.GetId("LighthouseBox");
-            wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDestRender");
+            wrongDestination_Box                = VI.Entity.GetId(Level2DialogManager.P1WrongBoxString);
+            wrongDestination_RenderLocation     = VI.Entity.GetId(Level2DialogManager.P1WrongRenderString);
         }
 
         public override void EarlyUpdate(int _ENTITY)
@@ -40,7 +40,6 @@ namespace BonVoyage {
                     if (!Level2DialogManager.runPassengerDialog) {
                         // Set Dialogue Manager's flag to true to run it
                         Level2DialogManager.runPassengerDialog = true;
-                        
                         // Deactivate the trigger box
                         VI.Entity.Deactivate(triggerBox);
 
@@ -82,6 +81,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                Level2DialogManager.passengerDialogProgress = 11;
 
                 // Set flag
                 correctDestinationDelivery = true;
@@ -91,6 +91,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                Level2DialogManager.passengerDialogProgress = 10;
 
                 // Set flag
                 correctDestinationDelivery = false;

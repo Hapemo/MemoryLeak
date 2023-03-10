@@ -106,7 +106,7 @@ namespace BonVoyage {
       VI.Scene.Pause("WeatherMap");
     }
 
-    public void EnableUI() {
+    public void EnableUI() {  
       if (UIHPBarID != 0)
         VI.Entity.Activate(UIHPBarID);
 
@@ -276,7 +276,7 @@ namespace BonVoyage {
           //camZoomingOut = true;
           EnableUI();
           //Console.WriteLine("finished dialog");
-          LOG.WRITE("finished dialog");
+          //LOG.WRITE("finished dialog");
           return false;
         }
 
@@ -284,20 +284,20 @@ namespace BonVoyage {
         //LOG.WRITE("Moving on from: " + VI.Dialogue.Current.GetId());
         if (choiceFlag) {
           //Console.WriteLine("It's a choice dialog");
-          LOG.WRITE("It's a choice dialog");
+          //LOG.WRITE("It's a choice dialog");
           choiceFlag = false;
           if (VI.Input.Button.Released(choice2)) {
             MoveToNextDialog(2);
             latestChoiceChosen = 2;
-            LOG.WRITE("latestChoiceChosen = 2");
+            //LOG.WRITE("latestChoiceChosen = 2");
             //Console.WriteLine("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
-            LOG.WRITE("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
+            //LOG.WRITE("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
           } else {
             MoveToNextDialog(1);
             latestChoiceChosen = 1;
-            LOG.WRITE("latestChoiceChosen = 1");
+            //LOG.WRITE("latestChoiceChosen = 1");
             //Console.WriteLine("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
-            LOG.WRITE("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
+            //LOG.WRITE("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
           }
           VI.Entity.Deactivate(choice1);
           VI.Entity.Deactivate(choice2);
@@ -320,7 +320,7 @@ namespace BonVoyage {
 
         if (VI.Dialogue.Choice.Second(VI.Dialogue.Current.GetId()) != 0) {
           //Console.WriteLine("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
-          LOG.WRITE("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
+          //LOG.WRITE("This dialog is a choice dialog: " + VI.Dialogue.Current.GetId());
           VI.Entity.Activate(choice1);
           VI.Entity.Activate(choice2);
           VI.Text.Update(choice1, GetNextDialog(1));

@@ -5,7 +5,7 @@ using VI;
 namespace BonVoyage {
 
     public class Level2Passenger2Script : PassengerBaseScript {
-
+    bool runOnce = true;
         public override void Alive(int _ENTITY)
         {
             base.Alive(_ENTITY);
@@ -15,14 +15,14 @@ namespace BonVoyage {
             base.Init(_ENTITY);
 
             // Get required entities
-            playerBoat = VI.Entity.GetId("Boat");
-            triggerBox = VI.Entity.GetId("Passenger2Box");
+            playerBoat                          = VI.Entity.GetId("Boat");
+            triggerBox                          = VI.Entity.GetId(Level2DialogManager.P2BoxString);
 
-            correctDestination_Box = VI.Entity.GetId("Porthouse6DropOffPoint");
-            correctDestination_RenderLocation = VI.Entity.GetId("Porthouse6DestRender");
+            correctDestination_Box              = VI.Entity.GetId(Level2DialogManager.P2CorrectBoxString);
+            correctDestination_RenderLocation   = VI.Entity.GetId(Level2DialogManager.P2CorrectRenderString);
 
-            wrongDestination_Box = VI.Entity.GetId("Porthouse5DropOffPoint");
-            wrongDestination_RenderLocation = VI.Entity.GetId("Porthouse5DestRender");
+            wrongDestination_Box                = VI.Entity.GetId(Level2DialogManager.P2WrongBoxString);
+            wrongDestination_RenderLocation     = VI.Entity.GetId(Level2DialogManager.P2WrongRenderString);
         }
 
         public override void EarlyUpdate(int _ENTITY)
@@ -32,8 +32,17 @@ namespace BonVoyage {
 
         public override void Update(int _ENTITY) {
             base.Update(_ENTITY);
+            if (runOnce) { runOnce = false; Init(_ENTITY); }
+
+      //if (playerBoat == 0) LOG.WRITE("playerBoat========================");
+      //if (triggerBox == 0) LOG.WRITE("triggerBox========================");
+      //if (correctDestination_Box == 0) LOG.WRITE("correctDestination_Box========================");
+      //if (correctDestination_RenderLocation == 0) LOG.WRITE("correctDestination_RenderLocation========================");
+      //if (wrongDestination_Box == 0) LOG.WRITE("wrongDestination_Box========================");
+      //if (wrongDestination_RenderLocation == 0) LOG.WRITE("wrongDestination_RenderLocation========================");
 
             // Check if passenger's trigger box is active
+            if (triggerBox != 0)
             if (VI.Entity.IsActive(triggerBox)) {
                 // Check if player is colliding with that box
                 if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
@@ -85,6 +94,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                Level2DialogManager.passengerDialogProgress = 21;
 
                 // Set flag
                 correctDestinationDelivery = true;
@@ -94,6 +104,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                Level2DialogManager.passengerDialogProgress = 20;
 
                 // Set flag
                 correctDestinationDelivery = false;
