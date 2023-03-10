@@ -121,7 +121,8 @@ namespace BonVoyage {
 
             // Get player's direction
             int playerDirection = VI.Animation.SpriteSheet.SheetIndex.Get(_ePlayer) % 8;
-            switch (playerDirection) {
+            switch (playerDirection)
+            {
                 case 0: // Front
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer));
@@ -132,13 +133,13 @@ namespace BonVoyage {
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) - VI.Transform.Scale.GetX(_ePlayer) / 10f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer));
-                    VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 4);
+                    VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 5);
                     break;
                 case 2: // Left
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) - VI.Transform.Scale.GetX(_ePlayer) / 4f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 16f);
-                    VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 1);
+                    VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 7);
                     break;
                 case 3: // NW
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
@@ -150,7 +151,6 @@ namespace BonVoyage {
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) - 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer));
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer));
-                    //VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 2);
                     break;
                 case 5:
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
@@ -162,13 +162,13 @@ namespace BonVoyage {
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) + VI.Transform.Scale.GetX(_ePlayer) / 4f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 16f);
-                    VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 7);
+                    VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 1);
                     break;
                 case 7:
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) + VI.Transform.Scale.GetX(_ePlayer) / 10f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer));
-                    VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 5);
+                    VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 4);
                     break;
                 default:
                     break;

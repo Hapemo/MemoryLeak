@@ -640,7 +640,7 @@
             "layer": 21
         },
         "Audio": {
-            "path": "TO_BE_REMOVED_THUNDER_SOUND",
+            "path": "Thunder",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
