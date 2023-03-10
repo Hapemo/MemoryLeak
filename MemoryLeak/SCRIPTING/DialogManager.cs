@@ -131,7 +131,7 @@ namespace BonVoyage {
     // int textYSpacing     - This is the spacing of the text from the top edge of the box 
     public void TextBoxAlign(int entityname, float posX, float posY, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
       int additionalLines = VI.Text.GetLineCount(entityname) - 1;
-
+      LOG.WRITE("=========================NUMBER OF LINE: " + (additionalLines + 1));
       // Selecting the dialog box texture and putting it into correct position
       if (choice == 0) {
         if (additionalLines < 2) {
