@@ -30,10 +30,17 @@ namespace BonVoyage {
     public const string P1CorrectRenderString = "DoubleStoryHouseDestRender";
     public const string P1WrongRenderString = "LighthouseDestRender";
 
+
+    public const string P2String = "Passenger2";
+    public const string P2BoxString = "Passenger2Box";
+    public const string P2CorrectBoxString = "PortHouseDropOffPoint";
+    public const string P2WrongBoxString = "FountainDropOffPoint";
+    public const string P2CorrectRenderString = "PortHouseDest2Render";
+    public const string P2WrongRenderString = "FountainDestRender";
     //private bool progressUpdate = false;
     //static public bool runGirlDialog;
 
-    private int correctDestination_RenderLocation;
+        private int correctDestination_RenderLocation;
     private int wrongDestination_RenderLocation;
 
     static public bool runPassengerDialog;
