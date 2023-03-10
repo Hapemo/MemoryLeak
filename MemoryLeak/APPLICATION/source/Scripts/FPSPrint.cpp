@@ -79,16 +79,16 @@ EarlyUpdate functions from all other active scripts.
 *******************************************************************************/
 void FPSPrintScript::Update(Entity const& _e) {
 	(void)_e;
-	return;
-	// Update every 2 seconds
-	static float timeCounter{1};
-	timeCounter += static_cast<float>(FPSManager::dt);
-	if (timeCounter <= 2) return;
-	timeCounter = 0;
+	//return;
+	//// Update every 2 seconds
+	//static float timeCounter{1};
+	//timeCounter += static_cast<float>(FPSManager::dt);
+	//if (timeCounter <= 2) return;
+	//timeCounter = 0;
 
-	std::stringstream str;
-	str << std::fixed << std::setprecision(1) << FPSManager::fps;
-	VI::iText::UpdateText("fpsDisplay", "FPS", str.str());
+	//std::stringstream str;
+	//str << std::fixed << std::setprecision(1) << FPSManager::fps;
+	//VI::iText::UpdateText("fpsDisplay", "FPS", str.str());
 }
 
 /*!*****************************************************************************

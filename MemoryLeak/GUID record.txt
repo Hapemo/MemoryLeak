@@ -131,6 +131,7 @@ GUID: 16684263769113605 | File: Level2.json
 GUID: 16769774679752965 | File: LevelTutorial.json
 GUID: 16684263769113861 | File: Menu.json
 GUID: 16691044500504837 | File: Pause_Menu.json
+GUID: 16783902064050437 | File: testgs.json
 GUID: 16782761203597573 | File: Text Testing.json
 GUID: 16750630798230277 | File: Weather.json
 ------- File Directory: "..\\resources\\Prefabs"
@@ -181,10 +182,10 @@ GUID: 16750630817696004 | File: WeatherMap.json
 GUID: 14757395258967593988 | File: WeatherMapold.json
 ------- File Directory: "..\\resources\\SceneGUID"
 ------- File Directory: "..\\resources\\SCRIPTING"
-[10-03-2023 04:22:00]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\InternalCalls.cs
+[10-03-2023 09:13:31]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\InternalCalls.cs
 ------- File Directory: "..\\resources\\SCRIPTING\\obj"
 ------- File Directory: "..\\resources\\SCRIPTING\\obj\\EditorDebug"
-[10-03-2023 04:22:00]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\TestMonoScript.cs
+[10-03-2023 09:13:31]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\TestMonoScript.cs
 ------- File Directory: "..\\resources\\Scripts"
 ------- File Directory: "..\\resources\\Scripts\\Includes"
 GUID: 16691742281236739 | File: PlayerMovementScript.h
@@ -390,7 +391,7 @@ GUID: 16683718377675777 | File: settings-icon.png
 GUID: 16669651555782401 | File: settings-menu-screen.jpg
 GUID: 16741782613262593 | File: text1.png
 GUID: 16683718378134785 | File: title screen 5.jpg
-[10-03-2023 04:22:08]   ERROR   Attempted to load in invalid texture file: ..\resources\Textures\Menu\title screen gif.gif
+[10-03-2023 09:13:41]   ERROR   Attempted to load in invalid texture file: ..\resources\Textures\Menu\title screen gif.gif
 GUID: 16778117552278017 | File: title screen gif.gif
 GUID: 16665530912609793 | File: title screen.jpg
 GUID: 16778117548999169 | File: UI_DialogueBox1.png
