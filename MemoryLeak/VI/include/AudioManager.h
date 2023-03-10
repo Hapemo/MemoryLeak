@@ -62,6 +62,8 @@ private:
 	std::vector<FMOD::Channel*> mChannel;
 	std::vector<std::string> songs;
 	float songVol;
+	float bgmVol;
+	float sfxVol;
 }; 
 	enum class E_AUDIO_CHANNEL
 	{

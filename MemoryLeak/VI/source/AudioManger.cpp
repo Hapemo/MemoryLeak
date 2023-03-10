@@ -36,6 +36,8 @@ void AudioManager::Init()
     }
     mChannel.resize(20);
     songVol = 0.05f;
+    bgmVol=1.f;
+    sfxVol=1.f;
     ///LoadSound();
 }
 
@@ -120,6 +122,7 @@ void AudioManager::UpdateSound()
                 {
                     e.GetComponent<Audio>().sound.channel = AddChannel();
                 }
+                mChannel[e.GetComponent<Audio>().sound.channel]->setVolume(e.GetComponent<Audio>().sound.volume * sfxVol);
                 PlaySound(e);
             }
             if (e.GetComponent<Audio>().sound.channel != 0 && isPlaying(e.GetComponent<Audio>().sound.channel))
@@ -136,10 +139,10 @@ void AudioManager::UpdateSound()
                     spacial = spacial < 0.f ? 0.f : spacial;
 
                     vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
-                    mChannel[channel]->setVolume(vol);
+                    mChannel[channel]->setVolume(vol * sfxVol);
                 }
                 else
-                    mChannel[channel]->setVolume(e.GetComponent<Audio>().sound.volume);
+                    mChannel[channel]->setVolume(e.GetComponent<Audio>().sound.volume*sfxVol);
                 if (e.GetComponent<Audio>().sound.isRandPitch)
                 {
                     mChannel[channel]->setPitch(((float)(std::rand() % 100)) / 100.f + 0.5f);
@@ -179,22 +182,7 @@ void AudioManager::UpdateSound()
     }
     mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(songVol);
     mChannel[(int)E_AUDIO_CHANNEL::MAINBACKGROUND]->setVolume(0.2f+ songVol/4.f); //need manage volume properly aft m3
-    /// <REMOVE after M3>
-    //static bool wasMinimised = false;
-    //if (minimise)   //should check this else where after M3
-    //{
-    //    SetALLVolume(0.f);
-    //    wasMinimised = true;
-    //}
-    //else
-    //{
-    //    if (wasMinimised)
-    //    {
-    //        SetALLVolume(1.f); //idk whats the original volume // need find a way to resume audio after m3
-    //        wasMinimised = false;
-    //    }
-    //}
-    /// </REMOVE>
+
 
     system->update();
 }
@@ -300,7 +288,7 @@ void AudioManager::PlayBGSound(std::string _snd, int _channel)
     }
     //LOG_INFO("Play BG sound");
     system->playSound(mBgmSound[_snd], nullptr, false, &mChannel[_channel]);
-    mChannel[_channel]->setVolume(0.5f);
+    mChannel[_channel]->setVolume(bgmVol);
 }
 /*!*****************************************************************************
 \brief
@@ -327,11 +315,13 @@ None.
 *******************************************************************************/
 void AudioManager::SetALLVolume(float vol)
 {
-    for (int i = 0; i< mChannel.size(); i++)
+    /*for (int i = 0; i< mChannel.size(); i++)
     {
         mChannel[i]->setVolume(vol);
-    }
+    }*/
     songVol = 0.f;
+    bgmVol = vol;
+    sfxVol = vol;
 }
 /*!*****************************************************************************
 \brief
@@ -344,10 +334,8 @@ None.
 *******************************************************************************/
 void AudioManager::SetBGMVolume(float vol)
 {
-    for (const Entity& e : mEntities)
-    {
-        e.GetComponent<Audio>().sound.volume = vol;
-    }
+    
+    bgmVol = vol;
 }
 /*!*****************************************************************************
 \brief
@@ -360,10 +348,11 @@ None.
 *******************************************************************************/
 void AudioManager::SetSFXVolume(float vol)
 {
-    for (const Entity& e : mEntities)
+    /*for (const Entity& e : mEntities)
     {
         e.GetComponent<Audio>().sound.volume = vol;
-    }
+    }*/
+    sfxVol = vol;
 }
 /*!*****************************************************************************
 \brief
