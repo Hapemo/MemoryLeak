@@ -45,16 +45,23 @@ GUID: 16671508787364866 | File: Boat_Row_SFX.wav
 GUID: 16695404779536642 | File: BTNCLICK.wav
 GUID: 16695401679225602 | File: Button_Click_SFX.wav
 GUID: 16695401679225858 | File: Button_Click_SFX2.wav
-GUID: 16695478464086274 | File: Collision_Finalized.wav
+GUID: 16784333675692290 | File: Collision_Finalized.wav
 GUID: 16665530161234178 | File: DAMAGE.wav
+GUID: 16784333675758082 | File: Dialog(Edited).wav
 GUID: 16671508787365378 | File: Fog_SFX.wav
 GUID: 16665530161234434 | File: HEALTH.wav
 GUID: 16693623942940930 | File: HOVER.wav
 GUID: 16693674837541122 | File: MonsterChase_SFX.wav
 GUID: 16671508787431682 | File: Monster_Warning_SFX.wav
+GUID: 16784333675823874 | File: OldCollision_Finalized.wav
+GUID: 16784511175753986 | File: Open Enemy-Weather.wav
+GUID: 16784333675889666 | File: OpenMemoryFragment.wav
+GUID: 16784333675889922 | File: OpenMinimap.wav
 GUID: 16671508787431938 | File: Rain_SFX.wav
 GUID: 16665530161234946 | File: SHOOT1.wav
 GUID: 16665530161235202 | File: SHOOT5.wav
+GUID: 16784333675890178 | File: Thunder.wav
+GUID: 16784333675890434 | File: Toggle(Edited).wav
 GUID: 16769834256171266 | File: TO_BE_REMOVED_THUNDER_SOUND.wav
 ------- File Directory: "..\\resources\\Audio\\Songs"
 GUID: 16695512960860418 | File: MENUBG.wav
@@ -182,10 +189,10 @@ GUID: 16750630817696004 | File: WeatherMap.json
 GUID: 14757395258967593988 | File: WeatherMapold.json
 ------- File Directory: "..\\resources\\SceneGUID"
 ------- File Directory: "..\\resources\\SCRIPTING"
-[10-03-2023 09:13:31]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\InternalCalls.cs
+[10-03-2023 21:05:54]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\InternalCalls.cs
 ------- File Directory: "..\\resources\\SCRIPTING\\obj"
 ------- File Directory: "..\\resources\\SCRIPTING\\obj\\EditorDebug"
-[10-03-2023 09:13:31]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\TestMonoScript.cs
+[10-03-2023 21:05:54]   WARN    Attempted to load unknown resource into resource manager. Resource: ..\resources\SCRIPTING\TestMonoScript.cs
 ------- File Directory: "..\\resources\\Scripts"
 ------- File Directory: "..\\resources\\Scripts\\Includes"
 GUID: 16691742281236739 | File: PlayerMovementScript.h
@@ -391,7 +398,7 @@ GUID: 16683718377675777 | File: settings-icon.png
 GUID: 16669651555782401 | File: settings-menu-screen.jpg
 GUID: 16741782613262593 | File: text1.png
 GUID: 16683718378134785 | File: title screen 5.jpg
-[10-03-2023 09:13:41]   ERROR   Attempted to load in invalid texture file: ..\resources\Textures\Menu\title screen gif.gif
+[10-03-2023 21:06:05]   ERROR   Attempted to load in invalid texture file: ..\resources\Textures\Menu\title screen gif.gif
 GUID: 16778117552278017 | File: title screen gif.gif
 GUID: 16665530912609793 | File: title screen.jpg
 GUID: 16778117548999169 | File: UI_DialogueBox1.png
@@ -474,6 +481,19 @@ GUID: 16747534966071553 | File: Props_Region2_Tree2.png
 GUID: 16747534966401025 | File: Props_Region2_Tree3.png
 GUID: 16747534966401537 | File: Props_Region2_Tree4.png
 GUID: 16747534966202881 | File: Props_Region2_Tree5.png
+GUID: 16784474544867841 | File: Props_Region3_Pillar1.png
+GUID: 16784474544868353 | File: Props_Region3_Pillar2.png
+GUID: 16784474544868353 | File: Props_Region3_Ruin1.png
+GUID: 16784474528416001 | File: Props_Region3_Ruin2.png
+GUID: 16784474529202689 | File: Props_Region3_Ruin3.png
+GUID: 16784474529202945 | File: Props_Region3_Ruin4.png
+GUID: 16784474544868097 | File: Props_Region3_Ruin5.png
+GUID: 16784474529203201 | File: Props_Region3_Star.png
+GUID: 16784474529203457 | File: Props_Region3_Tree1.png
+GUID: 16784474529203713 | File: Props_Region3_Tree2.png
+GUID: 16784474529203969 | File: Props_Region3_Tree3.png
+GUID: 16784474529204225 | File: Props_Region3_Tree4.png
+GUID: 16784474529204481 | File: Props_Region3_Tree5.png
 GUID: 16747534966203137 | File: Props_Relic1.png
 GUID: 16747534966334977 | File: Props_Relic2.png
 GUID: 16747534966401281 | File: Props_Relic3.png
@@ -518,8 +538,8 @@ GUID: 16689398516876801 | File: Props_Boat_SE_spritesheet.png
 GUID: 16764502808462337 | File: Props_Boat_SW_spritesheet.png
 GUID: 16689398516942593 | File: Props_Boat_S_Spritesheet.png
 GUID: 16689398517139457 | File: Props_Boat_W_Spritesheet.png
-GUID: 16766151888540673 | File: Border_Spritesheet.png
 GUID: 16665530944008961 | File: bridgeSheet.png
+GUID: 16784474547358977 | File: fog_spritesheet.png
 GUID: 16665530944009217 | File: jumppadSheet.png
 ------- File Directory: "..\\resources\\Textures\\Spritesheets\\MC"
 ------- File Directory: "..\\resources\\Textures\\Spritesheets\\MC\\idle"
@@ -625,6 +645,7 @@ GUID: 16689398531888129 | File: Props_Building5_spritesheet.png
 GUID: 16689398532936961 | File: Props_Building6_spritesheet.png
 GUID: 16778117560144129 | File: Props_Building7_spritesheet.png
 GUID: 16689398536476161 | File: Props_Gate1_spritesheet.png
+GUID: 16784474557255169 | File: Props_Gate_spritesheet.png
 GUID: 16689398537393921 | File: Props_GirlStatue_spritesheet.png
 GUID: 16689398537984001 | File: Props_Island1_spritesheet.png
 GUID: 16689398538901761 | File: Props_Lighthouse_spritesheet.png
@@ -634,14 +655,27 @@ GUID: 16766151897388801 | File: Props_Region1_Tree2_Spritesheet.png
 GUID: 16766151897388545 | File: Props_Region1_Tree3_Spritesheet.png
 GUID: 16766151897389057 | File: Props_Region1_Tree4_Spritesheet.png
 GUID: 16766151897389313 | File: Props_Region1_Tree5_Spritesheet.png
-GUID: 16747534975511809 | File: Props_Region2_Lotus_spritesheet.png
-GUID: 16747534975512321 | File: Props_Region2_Reed1_Spritesheet.png
-GUID: 16747534975511553 | File: Props_Region2_Reed2_Spritesheet.png
-GUID: 16747534975512065 | File: Props_Region2_Tree1_Spritesheet.png
-GUID: 16747534975512577 | File: Props_Region2_Tree2_Spritesheet.png
-GUID: 16747534975512833 | File: Props_Region2_Tree3_Spritesheet.png
-GUID: 16747534975513089 | File: Props_Region2_Tree4_Spritesheet.png
-GUID: 16747534975511297 | File: Props_Region2_Tree5_Spritesheet.png
+GUID: 16784474592186625 | File: Props_Region2_Lotus_spritesheet.png
+GUID: 16784474592187137 | File: Props_Region2_Reed1_Spritesheet.png
+GUID: 16784474592187905 | File: Props_Region2_Reed2_Spritesheet.png
+GUID: 16784474592188161 | File: Props_Region2_Tree1_Spritesheet.png
+GUID: 16784474558500865 | File: Props_Region2_Tree2_Spritesheet.png
+GUID: 16784474592186881 | File: Props_Region2_Tree3_Spritesheet.png
+GUID: 16784474592187393 | File: Props_Region2_Tree4_Spritesheet.png
+GUID: 16784474592187649 | File: Props_Region2_Tree5_Spritesheet.png
+GUID: 16784474558107393 | File: Props_Region3_Pillar1_Spritesheet.png
+GUID: 16784474592189697 | File: Props_Region3_Pillar2_Spritesheet.png
+GUID: 16784474592188673 | File: Props_Region3_Ruin1_Spritesheet.png
+GUID: 16784474592188417 | File: Props_Region3_Ruin2_Spritesheet.png
+GUID: 14757395258967641089 | File: Props_Region3_Ruin3_Spritesheet.png
+GUID: 16784474592189185 | File: Props_Region3_Ruin4_Spritesheet.png
+GUID: 16784474592190977 | File: Props_Region3_Ruin5_Spritesheet.png
+GUID: 16784474592190721 | File: Props_Region3_Star_Spritesheet.png
+GUID: 16784474592190209 | File: Props_Region3_Tree1_Spritesheet.png
+GUID: 16784474592189441 | File: Props_Region3_Tree2_Spritesheet.png
+GUID: 16784474592190465 | File: Props_Region3_Tree3_Spritesheet.png
+GUID: 16784474592189185 | File: Props_Region3_Tree4_Spritesheet.png
+GUID: 16784474592189953 | File: Props_Region3_Tree5_Spritesheet.png
 GUID: 16689398540409601 | File: Props_Sign1_spritesheet.png
 GUID: 16665530944009473 | File: walkingSheet.png
 ------- File Directory: "..\\resources\\Textures\\Spritesheets\\Weather"
