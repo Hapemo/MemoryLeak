@@ -2,6 +2,7 @@
 using System.Dynamic;
 using System.Runtime.CompilerServices;
 using VI;
+using static VI.Dialogue;
 
 // INFO
 // Intro Dialog zoom is x = 1200
@@ -56,6 +57,11 @@ namespace BonVoyage {
       PP1ID = VI.Entity.GetId("PP1");
       PP2ID = VI.Entity.GetId("PP2");
       G1ID = VI.Entity.GetId("G1");
+
+      AlignNonPlayerText(G1ID);
+      AlignPlayerText(P1ID);
+      TextBoxAlign(PP1ID, 400, -280, 80, 15, 1);
+      TextBoxAlign(PP2ID, 400, -280, 80, 15, 2);
 
       playerID = VI.Entity.GetId("Boat", VI.GameState.GetName());
 
@@ -133,7 +139,7 @@ namespace BonVoyage {
     // int textYSpacing     - This is the spacing of the text from the top edge of the box 
     public void TextBoxAlign(int entityname, float posX, float posY, float textXSpacing = 50, float textYSpacing = 50, int choice = 0, float spacing = 15) {
       int additionalLines = VI.Text.GetLineCount(entityname) - 1;
-      LOG.WRITE("=========================NUMBER OF LINE: " + (additionalLines + 1));
+
       // Selecting the dialog box texture and putting it into correct position
       if (choice == 0) {
         if (additionalLines < 2) {
@@ -265,7 +271,7 @@ namespace BonVoyage {
         if (MouseClick(choice1) || MouseClick(choice2))
           updateChat = true;
       } else if (VI.Input.Mouse.Press())//(VI.Input.Button.s_Released(player, scene) || VI.Input.Button.s_Released(notPlayer, scene))
-        updateChat = true;
+          updateChat = true;
 
       // Logic done using those flags
       if (updateChat) {
@@ -290,7 +296,7 @@ namespace BonVoyage {
           //Console.WriteLine("It's a choice dialog");
           //LOG.WRITE("It's a choice dialog");
           choiceFlag = false;
-          if (VI.Input.Button.Released(choice2)) {
+          if (MouseClick(choice2)) {
             MoveToNextDialog(2);
             latestChoiceChosen = 2;
             //LOG.WRITE("latestChoiceChosen = 2");
