@@ -48,6 +48,8 @@ namespace BonVoyage {
             weathermapID = VI.Entity.GetId("weathermap", "WeatherMap");
             enemymapID = VI.Entity.GetId("enemymap", "EnemyMap");
             VI.Entity.Activate(crystalBallID);
+            VI.Audio.PlayBGM("01.Daytime_Forest_Field_Sun_Loop");
+            
         }
 
         public void Init(int _ENTITY) {
@@ -145,6 +147,7 @@ namespace BonVoyage {
             VI.Scene.Pause("MiniMap");
             VI.Scene.Pause("WeatherMap");
             VI.Scene.Pause("EnemyMap");
+            VI.Audio.StopBGM();
         }
         public void Dead(int _ENTITY)
         {
