@@ -9342,7 +9342,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\ghost 1\\Character_ghost1_NE_idle_spritesheet.png",
+            "texture": "Textures\\Sprites\\ghost_1_green.png",
             "layer": 60
         },
         "Animation": {
@@ -9391,8 +9391,8 @@
             "currentImageIndex": 2
         },
         "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 4,
+            "frameCount": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.05000000447034836
         },
