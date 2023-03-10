@@ -104,8 +104,10 @@ namespace BonVoyage {
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(PEndColliderBox),
                                                  VI.Transform.Position.GetY(PEndColliderBox)); // Move him to better location
         runPassengerEndDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC dropoff"); // Run the dialog
-        if (!runPassengerEndDialog)
+        if (!runPassengerEndDialog) {
+          VI.Entity.Deactivate(PEndColliderBox);
           EndDropoffDialog();
+        }
       }
 
     }

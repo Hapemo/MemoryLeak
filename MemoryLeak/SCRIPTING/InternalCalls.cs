@@ -463,6 +463,19 @@ namespace VI
 			internal extern static void Y(float _y);
 		}
 	}
+
+	public class Window
+	{
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetScreenWidth();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetScreenHeight();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetFullScreen(bool _fullscreen = true);
+	}
+
 	public class Viewport
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]

@@ -2,16 +2,15 @@
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class ExitBtnHTP : BaseScript
+    public class ResumeGame : BaseScript
     {
-        string currlevel;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            currlevel = VI.GameState.GetName();
+
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -21,30 +20,15 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            
+            if (THIS.Input.Button.Hover())
+                THIS.LightSource.SpriteColor.Set(0, 0, 0, 100);
+            else
+                THIS.LightSource.SpriteColor.Set(0, 0, 0, 0);
             if (THIS.Input.Button.Released())
             {
-                currlevel = VI.GameState.GetName();
-                if (currlevel == "Menu")
-                {
-                    VI.Scene.Pause("How_To_Play");
-                    VI.Scene.Pause("Settings");
-                    VI.Scene.Pause("Credits");
-                    VI.Scene.Pause("Quit Confirmation");
-                    VI.Scene.Play("Menu_Main");
-                    VI.Scene.Play("TransitionScene");
-                    VI.Scene.Play("Pause");
-                }
-                else if (currlevel == "LevelTutorial")
-                {
-                    VI.Scene.Pause("How_To_Play");
-                    VI.Scene.Play("LevelTutorial");
-                }
-                else if (currlevel == "Level1")
-                {
-                    VI.Scene.Pause("How_To_Play");
-                    VI.Scene.Play("Level1");
-                }
+                VI.Scene.Pause("Pause");
+                VI.Scene.Play(VI.GameState.GetName());
+
             }
         }
 

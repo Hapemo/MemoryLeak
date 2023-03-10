@@ -34,6 +34,12 @@
         "order": 0
     },
     {
+        "SceneName": "Pause",
+        "isActive": true,
+        "layer": 12,
+        "order": 0
+    },
+    {
         "SceneName": "How_To_Play",
         "Transform": {
             "scale": {
@@ -47,7 +53,7 @@
             }
         },
         "isActive": true,
-        "layer": 0,
+        "layer": 12,
         "order": 0
     },
     {
@@ -110,7 +116,7 @@
     {
         "SceneName": "CrystalBalls",
         "isActive": false,
-        "layer": 8,
+        "layer": 9,
         "order": 0
     },
     {
@@ -133,19 +139,19 @@
     {
         "SceneName": "MiniMap",
         "isActive": false,
-        "layer": 9,
+        "layer": 11,
         "order": 0
     },
     {
         "SceneName": "WeatherMap",
         "isActive": false,
-        "layer": 9,
+        "layer": 11,
         "order": 0
     },
     {
         "SceneName": "EnemyMap",
         "isActive": false,
-        "layer": 9,
+        "layer": 11,
         "order": 0
     },
     {
