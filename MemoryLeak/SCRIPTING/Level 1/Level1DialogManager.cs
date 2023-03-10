@@ -42,7 +42,6 @@ namespace BonVoyage {
 
       VI.Entity.s_Deactivate("Passenger2");
       VI.Entity.Deactivate(P2ColliderBox);
-      allPassengerDelivered = false;
     }
 
     public override void EarlyUpdate(int _ENTITY) {
