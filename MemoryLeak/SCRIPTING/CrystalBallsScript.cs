@@ -147,11 +147,11 @@ namespace BonVoyage {
             VI.Scene.Pause("MiniMap");
             VI.Scene.Pause("WeatherMap");
             VI.Scene.Pause("EnemyMap");
-            VI.Audio.StopBGM();
         }
         public void Dead(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            VI.Audio.StopBGM();
         }
     }
 }
