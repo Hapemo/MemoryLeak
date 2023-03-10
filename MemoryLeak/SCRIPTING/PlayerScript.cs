@@ -72,7 +72,10 @@ namespace BonVoyage {
                 if (VI.Input.Key.Release(256))
                 {
                     // Assumes the main game scene level running is the same as the gamestate name
-                    VI.Scene.Play(VI.GameState.GetName());
+                    //VI.Scene.Play(VI.GameState.GetName());
+                    //if (VI.Scene.IsPaused("Pause") == false)
+                    //    VI.Scene.Pause("Pause");
+                    //else
                     VI.Scene.Play("Pause");
                     //VI.Scene.Pause("Game Over");
                     //VI.Scene.Pause("How_To_Play");
@@ -85,7 +88,7 @@ namespace BonVoyage {
                     //VI.Scene.Pause("WeatherMap");
                     //VI.Scene.Pause("BackGround");
 
-                                                                // Play audio transition if required
+                    // Play audio transition if required
 
                 }
 

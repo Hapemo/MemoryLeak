@@ -424,7 +424,7 @@ namespace VI
 		internal extern static void Play(string _name);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void IsPaused(string _name);
+		internal extern static bool IsPaused(string _name);
 	}
 	public class Camera
 	{

@@ -309,7 +309,7 @@ public:
 		static Scene& Select(std::string const& _name);
 		static void Pause(std::string const& _name);
 		static void Play(std::string const& _name);
-		static void IsPaused(std::string const& _name);
+		static bool IsPaused(std::string const& _name);
 	};
 
 	struct iCamera {

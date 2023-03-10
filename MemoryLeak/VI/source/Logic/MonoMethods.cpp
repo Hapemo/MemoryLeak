@@ -178,8 +178,8 @@ void MonoMethods::iScene::Pause(MonoString* _name) {
 void MonoMethods::iScene::Play(MonoString* _name) {
 	VI::iScene::Play(MONO->ConvertFromMonoString(_name));
 }
-void MonoMethods::iScene::IsPaused(MonoString* _name) {
-	VI::iScene::IsPaused(MONO->ConvertFromMonoString(_name));
+bool MonoMethods::iScene::IsPaused(MonoString* _name) {
+	return VI::iScene::IsPaused(MONO->ConvertFromMonoString(_name));
 }
 
 // Animation

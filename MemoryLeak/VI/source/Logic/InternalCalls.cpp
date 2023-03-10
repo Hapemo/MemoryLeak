@@ -444,8 +444,8 @@ void InternalCalls::iScene::Pause(std::string const& _name) {
 void InternalCalls::iScene::Play(std::string const& _name) {
 	GameStateManager::GetInstance()->SelectScene(_name).Pause(false);
 }
-void InternalCalls::iScene::IsPaused(std::string const& _name) {
-	GameStateManager::GetInstance()->SelectScene(_name).mIsPause;
+bool InternalCalls::iScene::IsPaused(std::string const& _name) {
+	return GameStateManager::GetInstance()->SelectScene(_name).mIsPause;
 }
 
 /*!*****************************************************************************
