@@ -25,6 +25,7 @@ namespace BonVoyage {
     protected bool normalZoom = true;
     protected int latestChoiceChosen = 0; // 0 if no choice chosen, 1 if choice 1 chosen, 2 if choice 2 chosen. Resets every frame
     static public int passengerDialogProgress = 0; // Consists of 2 numbers in this format <passenger number><right or wrong>. 1 for right, 0 for wrong. eg passenger 1 right answer destination reached, it will be 11.
+    static public bool allPassengerDelivered = false;
 
     protected int playerID;
     protected int UIObjectiveTextID;
@@ -61,6 +62,7 @@ namespace BonVoyage {
       UIHPBarID = VI.Entity.GetId("hpbar");
       UIMemoryFragmentID = VI.Entity.GetId("memoryfragment");
       UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen");
+      allPassengerDelivered = false;
     }
 
     public virtual void EarlyUpdate(int _ENTITY) {

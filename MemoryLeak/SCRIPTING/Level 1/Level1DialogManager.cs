@@ -108,6 +108,7 @@ namespace BonVoyage {
         MoveCameraLeftToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
+        allPassengerDelivered = true;
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Brown House)");
         if (!dialogEnded) EndDropoffDialog();
         break;
@@ -118,6 +119,7 @@ namespace BonVoyage {
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Water Fountain)");
         EnemyController.EnemyActivated = true;
+        allPassengerDelivered = true;
         MemoryFragmentExpand.ActivateFragment(1);
         if (!dialogEnded) EndDropoffDialog();
         break;

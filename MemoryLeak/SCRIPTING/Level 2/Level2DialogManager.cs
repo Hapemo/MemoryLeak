@@ -104,6 +104,7 @@ namespace BonVoyage {
         MoveCameraLeftToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
+        allPassengerDelivered = true;
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Lighthouse)");
         if (!dialogEnded) EndDropoffDialog();
         break;
@@ -112,6 +113,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
+        allPassengerDelivered = true;
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Island)");
         if (!dialogEnded) EndDropoffDialog();
         break;
