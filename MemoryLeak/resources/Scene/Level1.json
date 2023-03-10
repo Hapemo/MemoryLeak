@@ -9903,7 +9903,7 @@
                 "X": 0.8999999761581421,
                 "Y": 0.6000000238418579
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "Audio": {
@@ -14345,6 +14345,65 @@
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "ExitBlocker",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 1100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2123.412109375,
+                "Y": 881.4869995117188
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 46
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 2,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.10000000149011612
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -55.0
+            },
+            "scaleOffset": {
+                "X": 0.8999999761581421,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         }
     }
 ]
