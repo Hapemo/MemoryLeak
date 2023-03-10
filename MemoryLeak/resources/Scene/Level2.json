@@ -13171,12 +13171,57 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
+            "texture": "Textures\\Sprites\\ghost3_SE_idle.png",
             "layer": 50
         },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Sprites\\ghost3_SE_idle.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 3\\Character_ghost3_E_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 3\\Character_ghost3_NE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 3\\Character_ghost3_NW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 3\\Character_ghost3_SE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 3\\Character_ghost3_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 3\\Character_ghost3_S_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 3\\Character_ghost3_W_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                }
+            ],
+            "currentImageIndex": 0
+        },
         "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 2,
+            "frameCount": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.05000000447034836
         },
@@ -13233,12 +13278,57 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
+            "texture": "Textures\\Sprites\\ghost4_SE_idle.png",
             "layer": 50
         },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Sprites\\ghost4_SE_idle.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 4\\Character_ghost4_E_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 4\\Character_ghost4_NE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 4\\Character_ghost4_NW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 4\\Character_ghost4_SE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 4\\Character_ghost4_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 4\\Character_ghost4_S_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 4\\Character_ghost4_W_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                }
+            ],
+            "currentImageIndex": 0
+        },
         "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 2,
+            "frameCount": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.05000000447034836
         },
