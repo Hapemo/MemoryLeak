@@ -28,6 +28,17 @@
             "texture": "Textures\\Menu\\button3.png",
             "layer": 0
         },
+        "Audio": {
+            "path": "Button_Click_SFX2",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Use the cycle button to toggle between your maps",
@@ -155,6 +166,17 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\button3.png",
             "layer": 1
+        },
+        "Audio": {
+            "path": "Button_Click_SFX2",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -284,6 +306,17 @@
             "texture": "Textures\\Menu\\button3.png",
             "layer": 2
         },
+        "Audio": {
+            "path": "Button_Click_SFX2",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Rain: Careful! The sea monster appears more frequently",
@@ -412,6 +445,17 @@
             "texture": "Textures\\Menu\\button3.png",
             "layer": 3
         },
+        "Audio": {
+            "path": "Button_Click_SFX2",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Fog: A thick fog appears and obscures your visibility",
@@ -539,6 +583,17 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\button3.png",
             "layer": 4
+        },
+        "Audio": {
+            "path": "Button_Click_SFX2",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         },
         "Text": {
             "fontFile": "BPtypewrite",

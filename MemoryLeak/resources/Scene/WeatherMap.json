@@ -3554,7 +3554,7 @@
             "layer": 3
         },
         "Audio": {
-            "path": "Button_Click_SFX",
+            "path": "OpenMinimap",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,

@@ -29,7 +29,7 @@
             "layer": 7
         },
         "Audio": {
-            "path": "Button_Click_SFX",
+            "path": "DAMAGE",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -93,7 +93,7 @@
             "layer": 7
         },
         "Audio": {
-            "path": "Button_Click_SFX",
+            "path": "HOVER",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -281,7 +281,7 @@
             "layer": 8
         },
         "Audio": {
-            "path": "Button_Click_SFX",
+            "path": "OpenMemoryFragment",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,

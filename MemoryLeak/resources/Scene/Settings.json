@@ -76,7 +76,7 @@
             "layer": 8
         },
         "Audio": {
-            "path": "Button_Click_SFX",
+            "path": "OpenMemoryFragment",
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,

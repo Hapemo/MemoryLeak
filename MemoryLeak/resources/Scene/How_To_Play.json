@@ -4094,6 +4094,17 @@
             "texture": "Textures\\Icons\\PrevBtn(Left).png",
             "layer": 48
         },
+        "Audio": {
+            "path": "Toggle(Edited)",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
         "Script": {
             "name": "BackBtnHTP"
         },
@@ -4130,6 +4141,17 @@
             "texture": "Textures\\Icons\\ExitBtn.png",
             "layer": 10
         },
+        "Audio": {
+            "path": "OpenMemoryFragment",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
         "Script": {
             "name": "ExitBtnHTP"
         },
@@ -4165,6 +4187,17 @@
             "sprite": 2,
             "texture": "Textures\\Icons\\NextBtn(Right).png",
             "layer": 10
+        },
+        "Audio": {
+            "path": "Toggle(Edited)",
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
         },
         "Script": {
             "name": "ForwardBtnHTP"

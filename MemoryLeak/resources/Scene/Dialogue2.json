@@ -130,13 +130,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 740.0,
-                "Y": 100.0
+                "X": 549.0,
+                "Y": 109.80000305175781
             },
             "rotation": 0.0,
             "translation": {
-                "X": -425.0,
-                "Y": 200.0
+                "X": 0.0,
+                "Y": 20.0
             }
         },
         "Sprite": {
@@ -165,8 +165,8 @@
             "fontFile": "BPtypewrite",
             "text": "At last we meet again!",
             "offset": {
-                "X": 363.0,
-                "Y": -17.0
+                "X": -254.5,
+                "Y": 4.900001525878906
             },
             "scale": 0.6000000238418579,
             "color": {
@@ -191,13 +191,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 506.0,
-                "Y": 116.0
+                "X": 564.5999755859375,
+                "Y": 61.79999923706055
             },
             "rotation": 0.0,
             "translation": {
-                "X": 500.0,
-                "Y": 46.0
+                "X": 400.0,
+                "Y": -234.10000610351563
             }
         },
         "Sprite": {
@@ -208,7 +208,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Icons\\dialogue\\UI_DialogueOption1.png",
             "layer": 63
         },
         "Audio": {
@@ -226,8 +226,8 @@
             "fontFile": "BPtypewrite",
             "text": "Play...",
             "offset": {
-                "X": -59.0,
-                "Y": -17.0
+                "X": -202.29998779296875,
+                "Y": -9.100000381469727
             },
             "scale": 0.6000000238418579,
             "color": {
@@ -252,13 +252,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 500.0,
-                "Y": 100.0
+                "X": 564.5999755859375,
+                "Y": 61.79999923706055
             },
             "rotation": 0.0,
             "translation": {
-                "X": 500.0,
-                "Y": -90.0
+                "X": 400.0,
+                "Y": -325.8999938964844
             }
         },
         "Sprite": {
@@ -269,7 +269,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
+            "texture": "Textures\\Icons\\dialogue\\UI_DialogueOption1.png",
             "layer": 63
         },
         "Audio": {
@@ -287,8 +287,8 @@
             "fontFile": "BPtypewrite",
             "text": "Reminisce...",
             "offset": {
-                "X": -109.0,
-                "Y": -17.0
+                "X": -202.29998779296875,
+                "Y": -9.100000381469727
             },
             "scale": 0.6000000238418579,
             "color": {
@@ -313,13 +313,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 456.0,
-                "Y": 126.0
+                "X": 549.0,
+                "Y": 109.80000305175781
             },
             "rotation": 0.0,
             "translation": {
-                "X": -214.20355224609375,
-                "Y": -8.259674072265625
+                "X": 450.0,
+                "Y": 5.0
             }
         },
         "Sprite": {
@@ -348,8 +348,8 @@
             "fontFile": "BPtypewrite",
             "text": "I'd like to play",
             "offset": {
-                "X": -158.0,
-                "Y": -17.0
+                "X": -254.5,
+                "Y": 4.900001525878906
             },
             "scale": 0.6000000238418579,
             "color": {
