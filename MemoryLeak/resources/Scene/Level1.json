@@ -937,7 +937,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\ghost 1\\Character_ghost1_E_idle_spritesheet.png",
+            "texture": "Textures\\Sprites\\Character_Ghost1_SE_idle.png",
             "layer": 50
         },
         "Animation": {
@@ -986,8 +986,8 @@
             "currentImageIndex": 1
         },
         "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 7,
+            "frameCount": 1,
+            "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.016666671261191368
         },
@@ -2621,7 +2621,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -160.6095733642578,
+                "X": -160.60955810546875,
                 "Y": 634.142578125
             }
         },
@@ -8508,7 +8508,7 @@
             "currentImageIndex": 0
         },
         "SheetAnimation": {
-            "frameCount": 8,
+            "frameCount": 1,
             "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.05000000447034836
