@@ -52,7 +52,7 @@
     },
     {
         "SceneName": "Dialogue2",
-        "isActive": true,
+        "isActive": false,
         "layer": 7,
         "order": 0
     },
