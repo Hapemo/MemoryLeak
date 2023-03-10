@@ -23,32 +23,32 @@ namespace {
 Function will run when the gamestate of the entity is activated.
 *******************************************************************************/
 void FPSPrintScript::Alive(Entity const& _e) {
-	//memoryFragment = VI::iEntity::GetEntity("memoryfragment", "");
-	//if (memoryFragment.id == 0) return;
-	//memoryFragment.AddComponent(ParticleSystem{
-	//	ParticleSystem::ParticleInfo{
-	//		10, // mScale			
-	//		90, // mFacing		
-	//		2, // mLifespan	
-	//		Sprite{
-	//			Color(255,255,255,125), // color
-	//			SPRITE::SQUARE, // sprit
-	//			0, // texture
-	//			memoryFragment.GetComponent<Sprite>().layer + 1  // layer
-	//		}, // mSprite		
-	//		2, // mRotation	
-	//		20, // mSpeed			
-	//		true // mFading			
-	//	},
-	//	1, // mDensity 
-	//	memoryFragment.GetComponent<Transform>().translation, // mCenter
-	//	130, // mAreaWidth 
-	//	90.f, // mDirection
-	//	45.f, // mSpread 
-	//	0.1f, // mDuration 
-	//	true, // mIsActive 
-	//	0.1f // mSlow
-	//});
+	memoryFragment = VI::iEntity::GetEntity("memoryfragment", "");
+	if (memoryFragment.id == 0) return;
+	memoryFragment.AddComponent(ParticleSystem{
+		ParticleSystem::ParticleInfo{
+			10, // mScale			
+			90, // mFacing		
+			2, // mLifespan	
+			Sprite{
+				Color(255,255,255,125), // color
+				SPRITE::SQUARE, // sprit
+				0, // texture
+				memoryFragment.GetComponent<Sprite>().layer + 1  // layer
+			}, // mSprite		
+			2, // mRotation	
+			20, // mSpeed			
+			true // mFading			
+		},
+		1, // mDensity 
+		memoryFragment.GetComponent<Transform>().translation, // mCenter
+		130, // mAreaWidth 
+		90.f, // mDirection
+		45.f, // mSpread 
+		0.1f, // mDuration 
+		true, // mIsActive 
+		0.1f // mSlow
+	});
 	//LOG_INFO(memoryFragment.GetComponent<General>().name + ": Added component particle system IMPROPERLY VIA C++============================================");
 	(void)_e;
 }

@@ -96,7 +96,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             if (activatedChanged) { 
                 activatedChanged = false;
-                //VI.ParticleSystem.GenerateLoop(VI.Entity.GetId("memoryfragment"), 5.0f);
+                VI.ParticleSystem.GenerateLoop(VI.Entity.GetId("memoryfragment"), 5.0f);
             }
     }
 
