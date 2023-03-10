@@ -52,7 +52,6 @@ namespace BonVoyage {
         normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
 
       // Dialog control
-
       if (runPassengerDialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();

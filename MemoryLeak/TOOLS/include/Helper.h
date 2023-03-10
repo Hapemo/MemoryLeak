@@ -75,8 +75,7 @@ public:
   /return int
   - Width of screen
   *******************************************************************************/
-  static int GetScreenWidth() { return fullscreenFlag ? mWindowMaximisedSize[0] : mWindowSize[0];
-  }
+  static int GetScreenWidth() { return fullscreenFlag ? mWindowMaximisedSize[0] : mWindowSize[0]; }
 
   /*!*****************************************************************************
   Get main window's screen height

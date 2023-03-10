@@ -47,6 +47,7 @@ namespace BonVoyage {
             minimapID = VI.Entity.GetId("minimap", "MiniMap");
             weathermapID = VI.Entity.GetId("weathermap", "WeatherMap");
             enemymapID = VI.Entity.GetId("enemymap", "EnemyMap");
+            VI.Entity.Activate(crystalBallID);
         }
 
         public void Init(int _ENTITY) {
@@ -75,7 +76,8 @@ namespace BonVoyage {
                     VI.Entity.Activate(minimapID);
                     VI.Scene.Pause("WeatherMap");
                     VI.Scene.Pause("EnemyMap");
-                    
+                    VI.Entity.Activate(crystalBallID);
+
                 }
                 else if (toggle == 1)
                 {
@@ -85,7 +87,8 @@ namespace BonVoyage {
                     VI.Scene.Play("WeatherMap");
                     VI.Entity.Activate(weathermapID);
                     VI.Scene.Pause("EnemyMap");
-                    
+                    VI.Entity.Activate(crystalBallID);
+
 
                 }
                 else if (toggle == 2)
@@ -96,7 +99,8 @@ namespace BonVoyage {
                     VI.Scene.Pause("WeatherMap");
                     VI.Scene.Play("EnemyMap");
                     VI.Entity.Activate(enemymapID);
-                    
+                    VI.Entity.Activate(crystalBallID);
+
                 }
                 else //if (toggle == 3)
                 {
@@ -106,7 +110,7 @@ namespace BonVoyage {
                     VI.Scene.Pause("MiniMap");
                     VI.Scene.Pause("WeatherMap");
                     VI.Scene.Pause("EnemyMap");
-                    
+                    VI.Entity.Deactivate(crystalBallID);
                 }
                 prevTog = toggle;
             }
@@ -145,7 +149,6 @@ namespace BonVoyage {
         public void Dead(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
         }
     }
 }
