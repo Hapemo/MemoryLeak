@@ -328,6 +328,21 @@ public:
 		static void SetPosY(float _y);
 	};
 
+	struct iWindow {
+		/*!*****************************************************************************
+		\brief
+		Get main window's screen width and height
+		*******************************************************************************/
+		static int GetScreenWidth();
+		static int GetScreenHeight();
+
+		/*!*****************************************************************************
+		\brief
+		Set the main window to fullscreen according to bool
+		*******************************************************************************/
+		static void SetFullScreen(bool _fullscreen = true);
+	};
+
 	struct iViewport {
 		/*!*****************************************************************************
 		\brief

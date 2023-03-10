@@ -548,6 +548,11 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Camera/SetPos::X", &VI::iCamera::SetPosX);
 	mono_add_internal_call("VI.Camera/SetPos::Y", &VI::iCamera::SetPosY);
 
+	// Window
+	mono_add_internal_call("VI.Window::GetScreenWidth", &VI::iWindow::GetScreenWidth);
+	mono_add_internal_call("VI.Window::GetScreenHeight", &VI::iWindow::GetScreenHeight);
+	mono_add_internal_call("VI.Window::SetFullScreen", &VI::iWindow::SetFullScreen);
+
 	// Viewport
 	mono_add_internal_call("VI.Viewport::GetWidth", &VI::iViewport::GetWidth);
 	mono_add_internal_call("VI.Viewport::SetWidth", &VI::iViewport::SetWidth);
