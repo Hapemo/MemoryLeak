@@ -25,7 +25,7 @@
                 "a": 150
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 2
         },
         "Text": {
@@ -506,7 +506,7 @@
                 "a": 150
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 2
         },
         "Text": {
@@ -940,13 +940,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 125.0,
-                "Y": 175.0
+                "X": 61.25,
+                "Y": 28.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 1500.0,
-                "Y": -250.0
+                "Y": -310.0
             }
         },
         "Sprite": {
@@ -2113,7 +2113,7 @@
                 "a": 150
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 2
         },
         "Text": {
@@ -2692,7 +2692,7 @@
         },
         "Transform": {
             "scale": {
-                "X": -70.0,
+                "X": 70.0,
                 "Y": 100.0
             },
             "rotation": 0.0,
@@ -3138,8 +3138,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 40.0
+                "X": 200.0,
+                "Y": 35.0
             },
             "rotation": 0.0,
             "translation": {
@@ -3188,8 +3188,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3202,8 +3202,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3216,8 +3216,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3230,8 +3230,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3244,8 +3244,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3258,8 +3258,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3272,8 +3272,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3294,8 +3294,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 40.0
+                "X": 200.0,
+                "Y": 35.0
             },
             "rotation": 0.0,
             "translation": {
@@ -3344,8 +3344,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3358,8 +3358,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3372,8 +3372,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3386,8 +3386,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3400,8 +3400,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3414,8 +3414,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3428,8 +3428,8 @@
                     "time": 1.0,
                     "Transform": {
                         "scale": {
-                            "X": 150.0,
-                            "Y": 40.0
+                            "X": 200.0,
+                            "Y": 35.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -3467,7 +3467,7 @@
                 "a": 150
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 2
         },
         "Text": {
@@ -3623,7 +3623,7 @@
                 "a": 150
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 2
         },
         "Text": {
@@ -3779,7 +3779,7 @@
                 "a": 150
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 2
         },
         "Text": {
@@ -3935,7 +3935,7 @@
                 "a": 150
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 2
         },
         "Text": {
@@ -4070,7 +4070,7 @@
             "name": "BackBtnHTP",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -4091,7 +4091,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\volume-button-1.png",
+            "texture": "Textures\\Icons\\PrevBtn(Left).png",
             "layer": 48
         },
         "Script": {
@@ -4115,8 +4115,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 593.6920776367188,
-                "Y": 297.6530456542969
+                "X": 535.0,
+                "Y": 238.0
             }
         },
         "Sprite": {
@@ -4149,7 +4149,7 @@
                 "X": 100.0,
                 "Y": 100.0
             },
-            "rotation": 3.1415927410125732,
+            "rotation": 0.0,
             "translation": {
                 "X": 680.0,
                 "Y": -50.0
@@ -4163,7 +4163,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\volume-button-1.png",
+            "texture": "Textures\\Icons\\NextBtn(Right).png",
             "layer": 10
         },
         "Script": {
@@ -6181,7 +6181,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Avoide being hit by the enemy or your health will drop!",
+            "text": "Avoid being hit by the enemy or your health will drop!",
             "offset": {
                 "X": -333.0,
                 "Y": 9.0

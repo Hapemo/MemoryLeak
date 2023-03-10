@@ -285,7 +285,7 @@
                 "a": 200
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\window-1.png",
+            "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
             "layer": 6
         },
         "Text": {
