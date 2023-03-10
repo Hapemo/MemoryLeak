@@ -81,11 +81,11 @@ namespace BonVoyage {
                 VI.Text.Scale.Set(minimapID, textbigScale);
                 VI.Animation.Transform.Run(minimapID);
                 VI.Viewport.SetIsUI(minimapID, true);
-                VI.Viewport.SetWidth(minimapID, (int)(MapX/1.5));
+                VI.Viewport.SetWidth(minimapID, (int)(MapX));
                 VI.Entity.Sprite.SetType(minimapID, 0);
 
-                float posx = VI.Transform.Position.GetX(boatID) * (miniMapX / MapX) * 2;
-                float posy = VI.Transform.Position.GetY(boatID) * (miniMapY / MapY) * 2;//helppp
+                float posx = VI.Transform.Position.GetX(boatID) * (miniMapX / MapX) ;
+                float posy = VI.Transform.Position.GetY(boatID) * (miniMapY / MapY) ;//helppp
                 VI.Animation.Transform.Remove(playerheadID, 1);
                 VI.Animation.Transform.Add.Transform(playerheadID, 100, 100, 0, posx, posy, 0.5f);
 
