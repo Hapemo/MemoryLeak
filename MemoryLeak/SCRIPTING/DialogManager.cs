@@ -98,10 +98,12 @@ namespace BonVoyage {
       //VI.Entity.Deactivate(UIWeatherMapID);
 
       VI.Scene.Pause("GUI Scene");
-      VI.Scene.Pause("CrystalBalls");
-      VI.Scene.Pause("MiniMap");
-      VI.Scene.Pause("EnemyMap");
-      VI.Scene.Pause("WeatherMap");
+
+      VI.Entity.s_Deactivate("toggleMap");
+      //VI.Scene.Pause("CrystalBalls");
+      //VI.Scene.Pause("MiniMap");
+      //VI.Scene.Pause("EnemyMap");
+      //VI.Scene.Pause("WeatherMap");
     }
 
     public void EnableUI() {
@@ -109,10 +111,12 @@ namespace BonVoyage {
         VI.Entity.Activate(UIHPBarID);
 
       VI.Scene.Play("GUI Scene");
-      VI.Scene.Play("CrystalBalls");
-      VI.Scene.Play("MiniMap");
-      VI.Scene.Play("EnemyMap");
-      VI.Scene.Play("WeatherMap");
+
+      VI.Entity.s_Activate("toggleMap");
+      //VI.Scene.Play("CrystalBalls");
+      //VI.Scene.Play("MiniMap");
+      //VI.Scene.Play("EnemyMap");
+      //VI.Scene.Play("WeatherMap");
     }
     #endregion
 
