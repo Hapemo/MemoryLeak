@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file PassengerDeliverUI.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+Script to control the UI when passenger is delivered to location
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file HowToPlayButton.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 01-01-2023
+\brief
+Old player control script
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

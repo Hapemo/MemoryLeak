@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file BackBtnHTP.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+qmanager variable to true when the player collides with its trigger box
+*******************************************************************************/
+
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

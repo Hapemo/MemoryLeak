@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file TextTestingScripts.cs
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+This script is made for testing a very weird text alignment in box issue
+*******************************************************************************/
+using System;
 using System.Dynamic;
 using System.Runtime.CompilerServices;
 using VI;

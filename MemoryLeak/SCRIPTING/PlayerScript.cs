@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file PlayerScript.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+Script to control the movement and controls of the player, and everything related
+to the player
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

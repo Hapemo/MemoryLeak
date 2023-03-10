@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file LevelToMenu.cs
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 01-01-2023
+\brief
+Controls the gamestate changing from level to menu
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

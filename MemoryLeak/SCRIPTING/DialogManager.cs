@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file DialogManager.cs
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+The base script for dialog manager in any gamestate
+*******************************************************************************/
+using System;
 using System.Dynamic;
 using System.Runtime.CompilerServices;
 using VI;

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file EnemyController.cs
+\author Chen Jia Wen
+\par DP email: c.jiawen\@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+This script controls all the enemy movement and attacks
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

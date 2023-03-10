@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file ExitBtnHTP.cs
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+Controls the exit button
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

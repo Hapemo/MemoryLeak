@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file PlayerScriptMenu.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+A script that stores the values of the player
+*******************************************************************************/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
