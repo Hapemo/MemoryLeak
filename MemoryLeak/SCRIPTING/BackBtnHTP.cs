@@ -24,7 +24,7 @@ namespace BonVoyage {
         int EnemyID;
         int BackBtnID;
         int ForwardBtnID;
-        bool init = false;
+        //bool init = false;
         int c1;
         int c2;
         int c3;
@@ -115,13 +115,13 @@ namespace BonVoyage {
             e3 = VI.Entity.GetId("E3", "How_To_Play");
             e4 = VI.Entity.GetId("E4", "How_To_Play");
             e5 = VI.Entity.GetId("E5", "How_To_Play");
-            init = true;
+            //init = true;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             Alive(_ENTITY);
-            init = false;
+            //init = false;
             VI.Animation.Transform.SetNext(c1, 0);
             VI.Animation.Transform.SetNext(c2, 0);
             VI.Animation.Transform.SetNext(c3, 0);
@@ -313,7 +313,7 @@ namespace BonVoyage {
 
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            init = false;
+            //init = false;
         }
 
         public void Dead(int _ENTITY) {

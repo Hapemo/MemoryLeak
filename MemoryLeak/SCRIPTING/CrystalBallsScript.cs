@@ -21,8 +21,8 @@ namespace BonVoyage {
     {
         int toggle = 0; // 0 minimap, 1, weathermap, 2 enemymap
         int prevTog = -1;
-        static bool big = false;
-        static bool active = true;
+        //static bool big = false;
+        //static bool active = true;
         int playerID;
         int rainID;
         int fogID;

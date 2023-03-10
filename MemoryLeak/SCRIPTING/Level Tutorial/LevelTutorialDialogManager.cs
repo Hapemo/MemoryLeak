@@ -23,7 +23,7 @@ namespace BonVoyage {
   public class LevelTutorialDialogManager : DialogManager {
 
 
-    private bool progressUpdate = false;
+    //private bool progressUpdate = false;
     static public bool runIntroDialog;
     static public bool runCatDialog;
     static public bool runGirlDialog;

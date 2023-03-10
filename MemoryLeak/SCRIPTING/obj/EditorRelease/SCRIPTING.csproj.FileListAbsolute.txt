@@ -60,3 +60,9 @@ C:\Users\j.teoh\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelea
 C:\Users\j.teoh\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb
 C:\Users\j.teoh\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.dll
 C:\Users\j.teoh\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.pdb
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.dll
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\bin\EditorRelease\x64\SCRIPTING\Scripting.pdb
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.AssemblyReference.cache
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.dll
+C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\EditorRelease\Scripting.pdb

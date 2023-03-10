@@ -36,7 +36,7 @@ namespace BonVoyage {
     public const string P2CorrectRenderString       = "Porthouse5DestRender";
     public const string P2WrongRenderString         = "LighthouseDestRender";
 
-    private bool progressUpdate = false;
+    //private bool progressUpdate = false;
     static public bool runIntroDialog;
     //static public bool runGirlDialog;
 

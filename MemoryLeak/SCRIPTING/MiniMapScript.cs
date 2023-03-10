@@ -29,7 +29,7 @@ namespace BonVoyage {
         float textbigScale;
         private float MapX, MapY;
         private float miniMapX, miniMapY;
-        int i = 1;
+        //int i = 1;
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
