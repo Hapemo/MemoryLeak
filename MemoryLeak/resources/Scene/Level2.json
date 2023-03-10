@@ -55,9 +55,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 189,
-                "g": 189,
-                "b": 189,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -89,9 +89,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -123,9 +123,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 179,
-                "g": 179,
-                "b": 179,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -157,9 +157,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -197,9 +197,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 131,
-                "g": 131,
-                "b": 131,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -265,9 +265,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -299,9 +299,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 239,
-                "g": 239,
-                "b": 239,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -333,9 +333,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -8418,9 +8418,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 101,
-                "g": 101,
-                "b": 101,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -14116,9 +14116,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 151,
+                "g": 151,
+                "b": 151,
                 "a": 255
             },
             "sprite": 2,
@@ -15563,12 +15563,12 @@
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NW_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\Character_Monster_NE_rising_spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.17000000178813934
                 },
