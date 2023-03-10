@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file Level1DialogManager.cs
+\author Jazz Teoh Yu Jue
+\par DP email: j.teoh\@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+Level1DialogManager contains the logic that handles the conversation between
+the player and/or the different passengers in level 2 as well as the camera
+transition
+*******************************************************************************/
+
+using System;
 using System.Dynamic;
 using System.Runtime.CompilerServices;
 using VI;

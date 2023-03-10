@@ -101,7 +101,6 @@
     <Compile Include="MemoryFragmentExpand.cs" />
     <Compile Include="Level 1\Level1Passenger2Script.cs" />
     <Compile Include="Level 1\Level1Passenger1Script.cs" />
-    <Compile Include="Level 1\Level1GirlScript.cs" />
     <Compile Include="Level 1\Level1ManagerScript.cs" />
     <Compile Include="MiniMapScript.cs" />
     <Compile Include="Mouse.cs" />

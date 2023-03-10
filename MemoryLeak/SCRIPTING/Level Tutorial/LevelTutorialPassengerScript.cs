@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file LevelTutorialPassengerScript.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+LevelTutorialPassengerScript contains the logic that handles the logic of the animation
+calls of the passenger in the tutorial level and setting the level's dialog
+manager variable to true when the player collides with its trigger box
+*******************************************************************************/
+
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {

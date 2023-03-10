@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file Level2Passenger1Script.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+Level2Passenger1Script contains the logic that handles the logic of the animation
+calls of the first passenger in the second level and setting the level's dialog
+manager variable to true when the player collides with its trigger box
+*******************************************************************************/
+
+using System;
 using System.Runtime.CompilerServices;
 using VI;
 

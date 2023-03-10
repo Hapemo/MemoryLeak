@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*!*****************************************************************************
+\file MoveToCat.cs
+\author Lee Hsien Wei Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
+\par Group: Memory Leak Studios
+\date 10-03-2023
+\brief
+MoveToCat contains the logic that handles auto movement of the player after the
+introductory dialogue of the player monologue-ing. 
+(Does not work currently due to it querying a non-existent entity component)
+*******************************************************************************/
+
+using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
