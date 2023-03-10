@@ -1,10 +1,11 @@
 ﻿/*!*****************************************************************************
 \file BackBtnHTP.cs
-\author Lee Hsien Wei Joachim
-\par DP email: l.hsienweijoachim@digipen.edu
+\author Huang Wei Jhin
+\par DP email: h.weijhin\@digipen.edu
 \par Group: Memory Leak Studios
 \date 10-03-2023
-qmanager variable to true when the player collides with its trigger box
+\brief
+Script that runs logic to go back to the previous scene from How to Play scene
 *******************************************************************************/
 
 using System;
