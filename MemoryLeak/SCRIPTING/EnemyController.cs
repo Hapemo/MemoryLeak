@@ -42,26 +42,18 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
-            HitTaken = 0;
-            PlayerId = VI.Entity.GetId("Boat");
-            EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
-            HpBarId = VI.Entity.GetId("hpbar");
         }
 
         public void EarlyUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-        
         }
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-      PlayerId = VI.Entity.GetId("Boat");
-      EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
-      HpBarId = VI.Entity.GetId("hpbar");
-      //VI.Camera.SetScale.X(5500);
+            Alive(_ENTITY);
+            //VI.Camera.SetScale.X(5500);
 
-      if (EnemyActivated) {
+            if (EnemyActivated) {
                 VI.Entity.Activate(EnemyTriggerId);
 
                 float x = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.x);
@@ -219,9 +211,6 @@ namespace BonVoyage {
         }
 
         private void SetDirection(float _rotation, EnemyState _status) {
-            //Console.Write(OctopusDirection+"\n");
-            //VI.Animation.SpriteSheet.Index.Set(_entityName, _sceneName, InitialStatus + direction);
-
             // 1st Quadrant
             if (0 <= _rotation && _rotation < RightAngle)
                 THIS.Animation.SpriteSheet.SheetIndex.Set((int)_status + 2);
