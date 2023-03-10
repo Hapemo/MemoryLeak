@@ -73,6 +73,8 @@ namespace BonVoyage {
     public override void Update(int _ENTITY) {
         base.Update(_ENTITY);
 
+      EnemyController.EnemyActivated = true;
+      VI.Entity.s_Activate("Enemy");
       if (!normalZoom)
         normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
 

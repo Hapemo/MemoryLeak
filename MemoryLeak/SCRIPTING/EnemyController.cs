@@ -5,12 +5,12 @@ namespace BonVoyage {
     public class EnemyController : BaseScript {
         private float HealSpeed = 1f;
         private float HealCounter;
-        private float HitSpeed = 1f;
+        private float HitSpeed = 0.5f;
         private float HitInterval;
         private float HitAnimationCounter;
         private float HitCounter;
         private int HitMax = 11;
-        private int HitTaken;
+        private int HitTaken = 0;
 
         static public bool EnemyActivated = false;
         public float EnemySpeed = 2.2f;
@@ -34,7 +34,6 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            HitTaken = 0;
             EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
             HpBarId = VI.Entity.GetId("hpbar");
@@ -94,10 +93,29 @@ namespace BonVoyage {
                         HitAnimationCounter = 0;
                     }
                 
-                    if (HitCounter >= HitInterval * 100f * HitSpeed) {
+                    if (HitCounter >= HitInterval * 80f * HitSpeed) {
                         HitCounter = 0;
-                        HitTaken = (HitTaken < HitMax ? HitTaken + 1 : 0);
+                        HitTaken = (HitTaken < HitMax ? HitTaken + 1 : -1);
                         VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
+                    }
+
+                    if(HitTaken >= HitMax) {
+                        VI.Scene.Play("Game Over");
+                        VI.Scene.Pause("Level2");
+                        VI.Scene.Pause("How_To_Play");
+                        VI.Scene.Pause("Pause");
+                        VI.Scene.Pause("Dialogue2");
+                        VI.Scene.Pause("Quit Confirmation");
+                        VI.Scene.Pause("Settings");
+                        VI.Scene.Pause("Mouse");
+                        VI.Scene.Pause("CrystalBalls");
+                        VI.Scene.Pause("Level2Background");
+                        VI.Scene.Pause("MiniMap");
+                        VI.Scene.Pause("WeatherMap");
+                        VI.Scene.Pause("EnemyMap");
+                        VI.Scene.Pause("GUI Scene");
+                        VI.Scene.Pause("Transition");
+                        VI.Scene.Pause("TutorialUILvl2");
                     }
                 }
             }
