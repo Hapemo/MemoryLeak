@@ -307,13 +307,13 @@ namespace BonVoyage {
           if (MouseClick(choice2)) {
             MoveToNextDialog(2);
             latestChoiceChosen = 2;
-            //LOG.WRITE("latestChoiceChosen = 2");
+            LOG.WRITE("latestChoiceChosen = 2");
             //Console.WriteLine("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
             //LOG.WRITE("Choice 2 selected, moving to: " + VI.Dialogue.Current.GetId());
           } else {
             MoveToNextDialog(1);
             latestChoiceChosen = 1;
-            //LOG.WRITE("latestChoiceChosen = 1");
+            LOG.WRITE("latestChoiceChosen = 1");
             //Console.WriteLine("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
             //LOG.WRITE("Choice 1 selected, moving to: " + VI.Dialogue.Current.GetId());
           }

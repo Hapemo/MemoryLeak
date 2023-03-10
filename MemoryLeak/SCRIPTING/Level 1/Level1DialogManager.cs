@@ -23,7 +23,19 @@ using VI;
 namespace BonVoyage {
   public class Level1DialogManager : DialogManager {
 
+    public const string P1String = "Passenger1";
+    public const string P1BoxString = "Passenger1Box";
+    public const string P1CorrectBoxString = "DoubleStoryHouseDropOffPoint";
+    public const string P1WrongBoxString = "LighthouseDropOffPoint";
+    public const string P1CorrectRenderString = "DoubleStoryHouseDestRender";
+    public const string P1WrongRenderString = "LighthouseDestRender";
 
+    public const string P2String = "Passenger2";
+    public const string P2BoxString = "Passenger2Box";
+    public const string P2CorrectBoxString = "PortHouseDropOffPoint";
+    public const string P2WrongBoxString = "FountainDropOffPoint";
+    public const string P2CorrectRenderString = "PortHouseDest2Render";
+    public const string P2WrongRenderString = "FountainDestRender";
     private bool progressUpdate = false;
     //static public bool runGirlDialog;
 
@@ -44,15 +56,15 @@ namespace BonVoyage {
     public override void Init(int _ENTITY) {
         base.Init(_ENTITY);
 
-      P1ColliderBox = VI.Entity.GetId("Passenger1Box");
-      P2ColliderBox = VI.Entity.GetId("Passenger2Box");
+      P1ColliderBox = VI.Entity.GetId(P1BoxString);
+      P2ColliderBox = VI.Entity.GetId(P2BoxString);
       UIPassengersLeftID = VI.Entity.GetId("PassengersLeft");
       UIPassengerIcon1ID = VI.Entity.GetId("PassengerIcon1");
       UIPassengerIcon2ID = VI.Entity.GetId("PassengerIcon2");
       dialogInit = true;
       normalZoom = false;
 
-      VI.Entity.s_Deactivate("Passenger2");
+      VI.Entity.s_Deactivate(P2String);
       VI.Entity.Deactivate(P2ColliderBox);
     }
 
@@ -96,7 +108,7 @@ namespace BonVoyage {
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
         if (!VI.Entity.IsActive(P2ColliderBox)) {
-          VI.Entity.Activate(VI.Entity.GetId("Passenger2"));
+          VI.Entity.Activate(VI.Entity.GetId(P2String));
           VI.Entity.Activate(P2ColliderBox);
         }
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva (Lighthouse)");
@@ -108,7 +120,7 @@ namespace BonVoyage {
         Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
         if (!VI.Entity.IsActive(P2ColliderBox)) {
-          VI.Entity.Activate(VI.Entity.GetId("Passenger2"));
+          VI.Entity.Activate(VI.Entity.GetId(P2String));
           VI.Entity.Activate(P2ColliderBox);
         }
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva (Multistory House)");
@@ -167,8 +179,8 @@ namespace BonVoyage {
     public void EndPassengerDialog() {
       GeneralEndDialog();
 
-      correctDestination_RenderLocation = VI.Entity.GetId("DoubleStoryHouseDropOffPoint");
-      wrongDestination_RenderLocation = VI.Entity.GetId("LighthouseDropOffPoint");
+      correctDestination_RenderLocation = VI.Entity.GetId(P1CorrectBoxString);
+      wrongDestination_RenderLocation = VI.Entity.GetId(P1WrongBoxString);
 
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
@@ -183,8 +195,8 @@ namespace BonVoyage {
     public void EndPassenger2Dialog() {
       GeneralEndDialog();
 
-      correctDestination_RenderLocation = VI.Entity.GetId("PortHouseDropOffPoint");
-      wrongDestination_RenderLocation = VI.Entity.GetId("FountainDropOffPoint");
+      correctDestination_RenderLocation = VI.Entity.GetId(P2CorrectBoxString);
+      wrongDestination_RenderLocation = VI.Entity.GetId(P2WrongBoxString);
       // AllowAdvance = true; // TODO to update that player has talked to passenger already
       // dialogueOrder = 2;
 
