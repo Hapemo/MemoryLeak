@@ -62,11 +62,11 @@ void Particle::Update() {
 	if (system.mParticleInfo.mFading && system.mParticleInfo.mFadeIn) {
 		float ratio = abs(mLifespan - mMaxLifespan/2.f);
 		ratio = abs(ratio - mMaxLifespan/2.f);
-		mColor.a = static_cast<GLubyte>(ratio * 255);
+		mColor.a = static_cast<GLubyte>(ratio * system.OriginalAlpha());
 	} else if (system.mParticleInfo.mFading) {
-		mColor.a = static_cast<GLubyte>((mLifespan / mMaxLifespan) * 255);
+		mColor.a = static_cast<GLubyte>((mLifespan / mMaxLifespan) * system.OriginalAlpha());
 	} else if (system.mParticleInfo.mFading) {
-		mColor.a = static_cast<GLubyte>((1 - (mLifespan / mMaxLifespan)) * 255);
+		mColor.a = static_cast<GLubyte>((1 - (mLifespan / mMaxLifespan)) * system.OriginalAlpha());
 	}
 
 }

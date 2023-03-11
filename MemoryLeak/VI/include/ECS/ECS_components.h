@@ -396,15 +396,20 @@ struct ParticleSystem {
 	float mSlow = 0;													// Slow states that particle will only generate every indicated seconds instead of every frames
 
 	float& SlowTracker() { return mSlowTracker; }
+	const float& OriginalAlpha() const { return mOriginalAlpha; }
+
 	ParticleSystem() = default;
 	ParticleSystem( ParticleInfo _ParticleInfo, int _Density, Math::Vec2 _Center, float _AreaWidth,
 									float _Direction, float _Spread, float _Duration, bool _IsActive, float _Slow ) :
 		mParticleInfo( _ParticleInfo ), mDensity(_Density), mCenter(_Center), mAreaWidth(_AreaWidth), 
-		mDirection(_Direction), mSpread(_Spread), mDuration(_Duration), mIsActive(_IsActive), mSlow(_Slow), mSlowTracker()
+		mDirection(_Direction), mSpread(_Spread), mDuration(_Duration), mIsActive(_IsActive), mSlow(_Slow),
+		mSlowTracker(), mOriginalAlpha(_ParticleInfo.mSprite.color.a)
 	{}
 
 private:
+	// These variables should not be touched by anyone other than ParticleManager
 	float mSlowTracker = 0;										// Track the duration for particle to spawn if slow
+	float mOriginalAlpha = 0;
 };
 
 //use to index the variant data type, for ditor and serilization to determine type stored
