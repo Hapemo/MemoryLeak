@@ -1585,8 +1585,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 409.02099609375,
-                "Y": -1086.3609619140625
+                "X": 397.0088806152344,
+                "Y": -1125.6337890625
             }
         },
         "Sprite": {
@@ -2327,7 +2327,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 62
+            "layer": 63
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -3082,8 +3082,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2036.2218017578125,
-                "Y": 580.564208984375
+                "X": 2030.215576171875,
+                "Y": 590.3823852539063
             }
         },
         "Sprite": {
@@ -4274,7 +4274,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 36
+            "layer": 17
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5858,7 +5858,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 62
+            "layer": 63
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5966,7 +5966,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 62
+            "layer": 63
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -6722,7 +6722,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 36
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -6758,7 +6758,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 34
+            "layer": 31
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -6794,7 +6794,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 32
+            "layer": 24
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -6866,7 +6866,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 35
+            "layer": 15
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -8836,7 +8836,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 54
+            "layer": 53
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -10817,7 +10817,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 42
+            "layer": 40
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -11021,7 +11021,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 45
+            "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -11165,7 +11165,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 40
+            "layer": 39
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -11513,7 +11513,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 44
+            "layer": 40
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -12653,7 +12653,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 34
+            "layer": 35
         },
         "SheetAnimation": {
             "frameCount": 3,

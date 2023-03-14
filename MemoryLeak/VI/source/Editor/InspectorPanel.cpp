@@ -13,6 +13,7 @@ Entities and its Components.
 #include <ECSManager.h>
 #include "ScriptManager.h"
 #include "GameStateManager.h"
+#include "RenderProps.h"
 /*!*****************************************************************************
 \brief
 	Initializes the Inspector Panel editor
@@ -560,7 +561,7 @@ void InspectorPanel::SpriteEditor()
 		if (ImGui::IsItemDeactivatedAfterEdit())
 		{
 			e.GetComponent<Sprite>().layer = e.GetComponent<Sprite>().layer < 0 ? 0
-				: (e.GetComponent<Sprite>().layer > 63 ? 63
+				: (e.GetComponent<Sprite>().layer > MAX_LAYERS_PER_SCENE - 1 ? MAX_LAYERS_PER_SCENE - 1// 63 ? 63
 					: e.GetComponent<Sprite>().layer);
 		}
 		SaveUndo(e, tempComponent, COMPONENTID::SPRITE);
