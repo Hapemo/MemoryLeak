@@ -70,6 +70,6 @@ void LayerManager::Step() {
 		//	else
 		//		it->GetComponent<Sprite>().layer = 255;
 		//}
-		it->GetComponent<Sprite>().layer = static_cast<int>(std::lerp(60.0, 30.0, index / static_cast<double>(sortedEntities.size())));
+		it->GetComponent<Sprite>().layer = static_cast<int>(std::lerp(MAX_DYNAMIC_LAYER_VALUE, MIN_DYNAMIC_LAYER_VALUE, index / static_cast<double>(sortedEntities.size())));
 	}
 }

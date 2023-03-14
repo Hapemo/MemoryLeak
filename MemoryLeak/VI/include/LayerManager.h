@@ -42,4 +42,7 @@ private:
 	double mAccumulatedDT{ 0.0 };						
 	const double mFixedDT{ 1.0 / 60.0 };
 	double mAccumulatedDTCap{ 1.0 };
+
+	const int MIN_DYNAMIC_LAYER_VALUE{ 400 };
+	const int MAX_DYNAMIC_LAYER_VALUE{ 600 };
 };
