@@ -205,8 +205,11 @@ void Application::MainUpdate() {
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
     editorManager->Update();
-    shadowManager->Update();
     END_TRACK("Editor");
+    TRACK_PERFORMANCE("Shadows");
+    shadowManager->Update();
+    END_TRACK("Shadows");
+
     if (!editorManager->IsScenePaused()) {
       GameStateManager::GetInstance()->Update(); // Game logic
       SystemUpdate(); // Should be called after logic
