@@ -46,6 +46,7 @@ private:
 	void ShadowCasterEditor();
 	void ViewportEditor();
 	void MovementAIEditor();
+	void ParticleSystemEditor();
 
 	void AddPrefabComponent();
 	void PrefabEditor();
