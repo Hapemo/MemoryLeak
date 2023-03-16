@@ -67,7 +67,7 @@
     {
         "SceneName": "FPS",
         "isActive": false,
-        "layer": 10,
+        "layer": 15,
         "order": 0
     },
     {
