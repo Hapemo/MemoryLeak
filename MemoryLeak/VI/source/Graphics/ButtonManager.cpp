@@ -39,8 +39,21 @@ void ButtonManager::Update()
 {
 	for (const Entity& e : mEntities)
 	{
+		bool prev;
 		if (!e.ShouldRun()) continue;
+		prev = e.GetComponent<Button>().isHover;
 		e.GetComponent<Button>().isHover = CheckHover(e);
+		if (e.HasComponent<MovementAI>())
+			if (!prev && e.GetComponent<Button>().isHover)
+			{
+				movementAIManager->SetNextStep(e, 1);
+				e.GetComponent<MovementAI>().run = true;
+			}
+			else if (prev && !e.GetComponent<Button>().isHover)
+			{
+				movementAIManager->SetNextStep(e, 0);
+				e.GetComponent<MovementAI>().run = true;
+			}
 		e.GetComponent<Button>().isClick = CheckClick(e);
 		e.GetComponent<Button>().activated = CheckActivate(e);
 	}
@@ -70,6 +83,7 @@ bool ButtonManager::CheckHover(const Entity& _e)
 	if (!(cursorPos.x >= xform.translation.x - 0.5f * xform.scale.x)) return false;
 	if (!(cursorPos.y <= xform.translation.y + 0.5f * xform.scale.y)) return false;
 	if (!(cursorPos.y >= xform.translation.y - 0.5f * xform.scale.y)) return false;
+
 	return true;
 }
 

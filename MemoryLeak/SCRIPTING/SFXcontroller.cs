@@ -51,6 +51,7 @@ namespace BonVoyage {
                     return;
                 VI.Transform.Scale.s_SetX("SFXvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - mouseX));
                 VI.Transform.Position.s_SetX("SFXvolume", "Settings", THIS.Transform.Position.GetX() - 0.5f * THIS.Transform.Scale.GetX() +VI.Transform.Scale.s_GetX("SFXvolume", "Settings") * 0.5f);
+                Console.WriteLine("VOLUME:" + VI.Transform.Scale.s_GetX("SFXvolume", "Settings") / THIS.Transform.Scale.GetX());
                 VI.Audio.Volume.SetSFXVolume(VI.Transform.Scale.s_GetX("SFXvolume", "Settings") / THIS.Transform.Scale.GetX()); ;
             }
         }
