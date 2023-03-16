@@ -7033,9 +7033,9 @@
             "layer": 46
         },
         "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
+            "frameCount": 1,
+            "currFrameIndex": 0,
+            "timePerFrame": 1.0,
             "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
