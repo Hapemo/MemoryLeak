@@ -103,6 +103,12 @@ bool InternalCalls::iInput::iButton::Hover(const int _eId) {
 bool InternalCalls::iInput::iButton::Hover(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iInput::iButton::Hover(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
+bool InternalCalls::iInput::iButton::AllNotHover() {
+	return buttonManager->AllNotHover();
+}
+bool InternalCalls::iInput::iButton::AllNotClick() {
+	return buttonManager->AllNotClick();
+}
 
 /*!*****************************************************************************
 \brief
