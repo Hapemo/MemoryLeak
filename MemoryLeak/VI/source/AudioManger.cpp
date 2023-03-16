@@ -34,7 +34,7 @@ void AudioManager::Init()
         //printf("FMOD error: (%d) %s\n", result, FMOD_ErrorString(result));
         exit(-1);
     }
-    mChannel.resize(20);
+    mChannel.resize((int)E_AUDIO_CHANNEL::MAX);
     songVol = 0.05f;
     bgmVol=1.f;
     sfxVol=1.f;
@@ -123,7 +123,7 @@ void AudioManager::UpdateSound()
                     e.GetComponent<Audio>().sound.channel = AddChannel();
                 }
                 mChannel[e.GetComponent<Audio>().sound.channel]->setVolume(e.GetComponent<Audio>().sound.volume * sfxVol);
-                PlaySound(e);
+                PlayEntitySound(e);
             }
             if (e.GetComponent<Audio>().sound.channel != 0 && isPlaying(e.GetComponent<Audio>().sound.channel))
             {
@@ -181,7 +181,7 @@ void AudioManager::UpdateSound()
         }
     }
     mChannel[(int)E_AUDIO_CHANNEL::EDITORSONG]->setVolume(songVol);
-    mChannel[(int)E_AUDIO_CHANNEL::MAINBACKGROUND]->setVolume(0.2f+ songVol/4.f); //need manage volume properly aft m3
+    //mChannel[(int)E_AUDIO_CHANNEL::MAINBACKGROUND]->setVolume(0.2f+ songVol/4.f); //need manage volume properly aft m3
 
 
     system->update();
@@ -195,7 +195,7 @@ void AudioManager::UpdateSound()
 \return
 None.
 *******************************************************************************/
-void AudioManager::PlaySound(const Entity& _e)
+void AudioManager::PlayEntitySound(const Entity& _e)
 {
     //for (int i = 0; i < e.GetComponent<Audio>().sound.size(); i++) 
     if (!_e.GetComponent<Audio>().sound.isPaused)
@@ -215,6 +215,10 @@ void AudioManager::PlaySound(const Entity& _e)
     {
         _e.GetComponent<Audio>().sound.toPlay = false;
     }
+}
+void AudioManager::PlaySound(const Entity& _e)
+{
+    _e.GetComponent<Audio>().sound.toPlay = true;
 }
 /*!*****************************************************************************
 \brief
@@ -323,6 +327,10 @@ void AudioManager::SetALLVolume(float vol)
     songVol = 0.f;
     bgmVol = vol;
     sfxVol = vol;
+    for (int i = 0; i < (int)E_AUDIO_CHANNEL::MAX; i++)
+    {
+        mChannel[i]->setVolume(bgmVol);
+    }
 }
 /*!*****************************************************************************
 \brief
@@ -335,8 +343,14 @@ None.
 *******************************************************************************/
 void AudioManager::SetBGMVolume(float vol)
 {
-    
     bgmVol = vol;
+    std::string s = "VOLUME : : :::::";
+    s += std::to_string(vol);
+    LOG_INFO(s);
+   for (int i = 0; i<(int) E_AUDIO_CHANNEL::MAX; i++)
+   {
+       mChannel[i]->setVolume(bgmVol);
+   }
 }
 /*!*****************************************************************************
 \brief
