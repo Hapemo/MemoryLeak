@@ -196,11 +196,10 @@ void Application::MainUpdate() {
   // Application ending update
 
   while (GameStateManager::mGSMState != GameStateManager::E_GSMSTATE::EXIT) {
-      if (!FirstUpdate())
-      {
-        audioManager->SetALLVolume(0.f);   //need pause all the audio... and resume properly
-        continue;
-      }
+    if (!FirstUpdate()) {
+      audioManager->SetALLVolume(0.f);   //need pause all the audio... and resume properly
+      continue;
+    }
     TRACK_PERFORMANCE("MainLoop");
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
@@ -222,6 +221,10 @@ void Application::MainUpdate() {
 #endif
     static bool toggle{ false };
     if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
+
+    TRACK_PERFORMANCE("Shadow");
+    shadowManager->Update();
+    END_TRACK("Shadow");
 
     TRACK_PERFORMANCE("Graphics");
     //--------------------- Drawing and rendering ---------------------
