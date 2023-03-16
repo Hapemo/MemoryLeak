@@ -93,6 +93,7 @@ namespace BonVoyage {
             if (!big && (VI.Input.Button.Released(weathermapID)))
             {
                 big = true;
+                PlayerScript.PlayerInOtherAnimation = true;
                 VI.Animation.Transform.SetNext(weathermapID, 1);
                 VI.Text.Offset.Set(weathermapID, textbigOffsetX, textbigOffsetY);
                 VI.Text.Scale.Set(weathermapID, textbigScale);
@@ -110,6 +111,7 @@ namespace BonVoyage {
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(weathermapID)))
             {
                 big = false;
+                PlayerScript.PlayerInOtherAnimation = false;
                 VI.Animation.Transform.SetNext(weathermapID, 0);
                 VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);
                 VI.Text.Scale.Set(weathermapID, textScale);
@@ -149,6 +151,7 @@ namespace BonVoyage {
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             big = false;
+            PlayerScript.PlayerInOtherAnimation = false;
             VI.Animation.Transform.SetNext(weathermapID, 0);
             VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);
             VI.Text.Scale.Set(weathermapID, textScale);
