@@ -161,6 +161,12 @@ namespace BonVoyage {
                     VI.Entity.Deactivate(correctDestination_Box);
                     VI.Entity.Deactivate(wrongDestination_Box);
 
+                    if (VI.Transform.Position.GetX(playerBoat) < VI.Transform.Position.GetX(_ENTITY))
+                        VI.Animation.SpriteSheet.SheetIndex.Set(_ENTITY, 5);
+                    else
+                        VI.Animation.SpriteSheet.SheetIndex.Set(_ENTITY, 4);
+
+
                     // Set flag to get out
                     DestinationReached = false;
                 }
