@@ -2452,7 +2452,7 @@
                 "X": 0.8999999761581421,
                 "Y": 0.8999999761581421
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "Script": {
