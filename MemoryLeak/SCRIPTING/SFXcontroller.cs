@@ -32,11 +32,13 @@ namespace BonVoyage {
         public void Update(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            float ZoomScaleFactorX = VI.Camera.GetScale.X() / VI.Window.GetScreenWidth();
+            float mouseX = VI.Camera.GetPos.X() + ZoomScaleFactorX * VI.Input.Mouse.WorldPosX();
             if (THIS.Input.Button.Clicked())
             {
-                VI.Transform.Scale.s_SetX("SFXvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - VI.Input.Mouse.WorldPosX()));
+                VI.Transform.Scale.s_SetX("SFXvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - mouseX));
                 VI.Transform.Position.s_SetX("SFXvolume", "Settings", THIS.Transform.Position.GetX() - 0.5f * THIS.Transform.Scale.GetX() + VI.Transform.Scale.s_GetX("SFXvolume", "Settings") * 0.5f);
-                VI.Audio.Volume.SetSFXVolume(VI.Transform.Scale.s_GetX("SFXvolume", "Settings")/200.0f); ;
+                VI.Audio.Volume.SetSFXVolume(VI.Transform.Scale.s_GetX("SFXvolume", "Settings") / THIS.Transform.Scale.GetX()); ;
             }
         }
 

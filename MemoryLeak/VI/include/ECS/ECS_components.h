@@ -80,6 +80,7 @@ struct Button
 	bool interactable = true;			//save, edit, see
 	bool isHover = false;				//NO save, NO edit, see
 	bool isClick = false;				//NO save, NO edit, see
+	bool isNotClick = true;
 	bool activated = false;				//NO save, NO edit, see
 	bool renderFlag = true;				//NO save, edit, see
 };
