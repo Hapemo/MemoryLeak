@@ -13,14 +13,20 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class SFXcontroller : BaseScript
     {
+        bool isIn;
+
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            isIn = false;
+
         }
 
         public void Init(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            isIn = false;
+
         }
 
         public void EarlyUpdate(int _ENTITY)
@@ -33,10 +39,20 @@ namespace BonVoyage {
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             if (THIS.Input.Button.Clicked())
+                isIn = true;
+            if (isIn && VI.Input.Mouse.Release())
+                isIn = false;
+            if (isIn)
             {
-                VI.Transform.Scale.s_SetX("SFXvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - VI.Input.Mouse.WorldPosX()));
-                VI.Transform.Position.s_SetX("SFXvolume", "Settings", THIS.Transform.Position.GetX() - 0.5f * THIS.Transform.Scale.GetX() + VI.Transform.Scale.s_GetX("SFXvolume", "Settings") * 0.5f);
-                VI.Audio.Volume.SetSFXVolume(VI.Transform.Scale.s_GetX("SFXvolume", "Settings")/200.0f); ;
+                float ZoomScaleFactorX = VI.Camera.GetScale.X() / VI.Window.GetScreenWidth();
+                float mouseX = VI.Camera.GetPos.X() + ZoomScaleFactorX * VI.Input.Mouse.WorldPosX();
+                if (mouseX > THIS.Transform.Position.GetX() + 0.5 * THIS.Transform.Scale.GetX() ||
+                    mouseX < THIS.Transform.Position.GetX() - 0.5 * THIS.Transform.Scale.GetX())
+                    return;
+                VI.Transform.Scale.s_SetX("SFXvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - mouseX));
+                VI.Transform.Position.s_SetX("SFXvolume", "Settings", THIS.Transform.Position.GetX() - 0.5f * THIS.Transform.Scale.GetX() +VI.Transform.Scale.s_GetX("SFXvolume", "Settings") * 0.5f);
+                Console.WriteLine("VOLUME:" + VI.Transform.Scale.s_GetX("SFXvolume", "Settings") / THIS.Transform.Scale.GetX());
+                VI.Audio.Volume.SetSFXVolume(VI.Transform.Scale.s_GetX("SFXvolume", "Settings") / THIS.Transform.Scale.GetX()); ;
             }
         }
 

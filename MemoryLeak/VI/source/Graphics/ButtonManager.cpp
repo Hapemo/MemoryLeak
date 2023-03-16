@@ -39,8 +39,21 @@ void ButtonManager::Update()
 {
 	for (const Entity& e : mEntities)
 	{
+		bool prev;
 		if (!e.ShouldRun()) continue;
+		prev = e.GetComponent<Button>().isHover;
 		e.GetComponent<Button>().isHover = CheckHover(e);
+		if (e.HasComponent<MovementAI>())
+			if (!prev && e.GetComponent<Button>().isHover)
+			{
+				movementAIManager->SetNextStep(e, 1);
+				e.GetComponent<MovementAI>().run = true;
+			}
+			else if (prev && !e.GetComponent<Button>().isHover)
+			{
+				movementAIManager->SetNextStep(e, 0);
+				e.GetComponent<MovementAI>().run = true;
+			}
 		e.GetComponent<Button>().isClick = CheckClick(e);
 		e.GetComponent<Button>().activated = CheckActivate(e);
 	}
@@ -70,6 +83,7 @@ bool ButtonManager::CheckHover(const Entity& _e)
 	if (!(cursorPos.x >= xform.translation.x - 0.5f * xform.scale.x)) return false;
 	if (!(cursorPos.y <= xform.translation.y + 0.5f * xform.scale.y)) return false;
 	if (!(cursorPos.y >= xform.translation.y - 0.5f * xform.scale.y)) return false;
+
 	return true;
 }
 
@@ -82,7 +96,7 @@ The entity to check for.
 *******************************************************************************/
 bool ButtonManager::CheckClick(const Entity& _e)
 {
-	if (CheckHover(_e) && Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
+	if (CheckHover(_e) && Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
 		return true;
 	return false;
 }
@@ -113,4 +127,24 @@ void ButtonManager::ResetAllButtons()
 	for (auto& e : mEntities) {
 		e.GetComponent<Button>(safe).activated = false;
 	}
+}
+
+bool ButtonManager::AllNotHover()
+{
+	for (auto& e : mEntities)
+		if (e.ShouldRun())
+			if (e.HasComponent<Button>())
+				if (e.GetComponent<Button>().isHover)
+					return false;
+	return true;
+}
+
+bool ButtonManager::AllNotClick()
+{
+	for (auto& e : mEntities)
+		if (e.ShouldRun()) 
+			if (e.HasComponent<Button>())
+				if (e.GetComponent<Button>().isClick)
+					return false;
+	return true;
 }
