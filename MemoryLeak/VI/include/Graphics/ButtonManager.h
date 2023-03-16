@@ -48,6 +48,10 @@ public:
 
 	void ResetAllButtons();
 
+	bool AllNotHover();
+
+	bool AllNotClick();
+
 private:
 	/*!*****************************************************************************
 	\brief

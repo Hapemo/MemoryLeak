@@ -43,7 +43,6 @@ void ButtonManager::Update()
 		e.GetComponent<Button>().isHover = CheckHover(e);
 		e.GetComponent<Button>().isClick = CheckClick(e);
 		e.GetComponent<Button>().activated = CheckActivate(e);
-		e.GetComponent<Button>().isNotClick = !CheckClick(e);
 	}
 }
 
@@ -83,7 +82,7 @@ The entity to check for.
 *******************************************************************************/
 bool ButtonManager::CheckClick(const Entity& _e)
 {
-	if (CheckHover(_e) && Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
+	if (CheckHover(_e) && Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
 		return true;
 	return false;
 }
@@ -114,4 +113,24 @@ void ButtonManager::ResetAllButtons()
 	for (auto& e : mEntities) {
 		e.GetComponent<Button>(safe).activated = false;
 	}
+}
+
+bool ButtonManager::AllNotHover()
+{
+	for (auto& e : mEntities)
+		if (e.ShouldRun())
+			if (e.HasComponent<Button>())
+				if (e.GetComponent<Button>().isHover)
+					return false;
+	return true;
+}
+
+bool ButtonManager::AllNotClick()
+{
+	for (auto& e : mEntities)
+		if (e.ShouldRun()) 
+			if (e.HasComponent<Button>())
+				if (e.GetComponent<Button>().isClick)
+					return false;
+	return true;
 }
