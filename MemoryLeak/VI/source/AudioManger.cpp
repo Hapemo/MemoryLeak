@@ -344,9 +344,6 @@ None.
 void AudioManager::SetBGMVolume(float vol)
 {
     bgmVol = vol;
-    std::string s = "VOLUME : : :::::";
-    s += std::to_string(vol);
-    LOG_INFO(s);
    for (int i = 0; i<(int) E_AUDIO_CHANNEL::MAX; i++)
    {
        mChannel[i]->setVolume(bgmVol);

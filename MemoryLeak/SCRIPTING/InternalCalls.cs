@@ -967,12 +967,18 @@ namespace VI
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void SetVolume(float _vol);
 
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void SetBGMVolume(float _vol);
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            internal extern static void SetBGMVolume(float _vol);
 
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void SetSFXVolume(float _vol);
-		}
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            internal extern static void SetSFXVolume(float _vol);
+
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            internal extern static float GetBgmVol();
+
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            internal extern static float GetSfxVol();
+        }
 	}
 	public class Transform
 	{

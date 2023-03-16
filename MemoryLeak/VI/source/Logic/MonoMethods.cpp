@@ -696,9 +696,12 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Audio::StopAll", &VI::iAudio::StopAll);
 	mono_add_internal_call("VI.Audio::StopBGM", &VI::iAudio::StopBGM);
 	mono_add_internal_call("VI.Audio::StopSFX", &VI::iAudio::StopSFX);
+
 	mono_add_internal_call("VI.Audio/Volume::SetVolume", &VI::iAudio::SetAllVolume);
 	mono_add_internal_call("VI.Audio/Volume::SetBGMVolume", &VI::iAudio::SetBGMVolume);
 	mono_add_internal_call("VI.Audio/Volume::SetSFXVolume", &VI::iAudio::SetSFXVolume);
+	mono_add_internal_call("VI.Audio/Volume::GetBgmVol", &VI::iAudio::GetBgmVol);
+	mono_add_internal_call("VI.Audio/Volume::GetSfxVol", &VI::iAudio::GetSfxVol);
 
 	mono_add_internal_call("VI.Audio::s_Stop", &MM::iAudio::s_Stop);
 	mono_add_internal_call("VI.Audio::s_Play", &MM::iAudio::s_Play);

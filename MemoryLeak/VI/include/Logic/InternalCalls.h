@@ -608,11 +608,13 @@ public:
 
 		/*!*****************************************************************************
 		\brief
-			Set volume
+			Set and get volume
 		*******************************************************************************/
 		static void SetAllVolume(float _vol);
 		static void SetBGMVolume(float _vol);
 		static void SetSFXVolume(float _vol);
+		static float GetBgmVol();
+		static float GetSfxVol();
 	};
 
 	struct iTransform {

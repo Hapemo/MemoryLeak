@@ -1053,7 +1053,7 @@ void InternalCalls::iAudio::ForcePlay(std::string const& _soundName) {
 
 /*!*****************************************************************************
 \brief
-	Set volume
+	Set and get volume
 *******************************************************************************/
 void InternalCalls::iAudio::SetAllVolume(float _vol) {
 	audioManager->SetALLVolume(_vol);
@@ -1063,6 +1063,12 @@ void InternalCalls::iAudio::SetBGMVolume(float _vol) {
 }
 void InternalCalls::iAudio::SetSFXVolume(float _vol) {
 	audioManager->SetSFXVolume(_vol);
+}
+float InternalCalls::iAudio::GetBgmVol() {
+	return audioManager->GetBgmVol();
+}
+float InternalCalls::iAudio::GetSfxVol() {
+	return audioManager->GetSfxVol();
 }
 
 /*!*****************************************************************************
