@@ -225,6 +225,12 @@ namespace VI
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static bool Hover(int _id);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static bool AllNotHover();
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static bool AllNotClick();
 		}
 		public class Mouse
 		{
@@ -961,12 +967,18 @@ namespace VI
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void SetVolume(float _vol);
 
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void SetBGMVolume(float _vol);
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            internal extern static void SetBGMVolume(float _vol);
 
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void SetSFXVolume(float _vol);
-		}
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            internal extern static void SetSFXVolume(float _vol);
+
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            internal extern static float GetBgmVol();
+
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            internal extern static float GetSfxVol();
+        }
 	}
 	public class Transform
 	{
