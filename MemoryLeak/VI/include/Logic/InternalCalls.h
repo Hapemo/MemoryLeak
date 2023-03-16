@@ -85,6 +85,9 @@ public:
 			static bool Hover(const Entity& _e);
 			static bool Hover(const int _eId);
 			static bool Hover(std::string const& _entityName, std::string const& _sceneName);
+
+			static bool AllNotHover();
+			static bool AllNotClick();
 		};
 
 		struct iMouse {

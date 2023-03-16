@@ -225,6 +225,12 @@ namespace VI
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static bool Hover(int _id);
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static bool AllNotHover();
+
+			[MethodImpl(MethodImplOptions.InternalCall)]
+			internal extern static bool AllNotClick();
 		}
 		public class Mouse
 		{
