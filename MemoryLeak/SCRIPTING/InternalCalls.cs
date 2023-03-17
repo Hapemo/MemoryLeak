@@ -14,16 +14,13 @@ is being stored.
 using System;
 using System.Runtime.CompilerServices;
 
-public class LOG
-{
+public class LOG {
 	[MethodImpl(MethodImplOptions.InternalCall)]
 	internal extern static void WRITE(string _log);
 }
 
-namespace BonVoyage
-{
-	public class THIS
-	{
+namespace BonVoyage {
+	public class THIS 	{
 		static int ENTITY = 0;
 		internal static bool StoreId(int _ENTITY) {
 			ENTITY = _ENTITY;
@@ -39,8 +36,7 @@ namespace BonVoyage
 		internal static void SetActive(bool _active = true) { VI.Entity.SetActive(ENTITY, _active); }
 		internal static void Activate() { VI.Entity.Activate(ENTITY); }
 		internal static void Deactivate() { VI.Entity.Deactivate(ENTITY); }
-		public class Sprite
-		{
+		public class Sprite {
 			internal static int GetType(int _eId) { return VI.Entity.Sprite.GetType(ENTITY); }
 			internal static void SetType(int _eId, int _type) { VI.Entity.Sprite.SetType(ENTITY, _type); }
 		}
@@ -175,8 +171,7 @@ namespace BonVoyage
 	}
 }
 
-namespace VI
-{
+namespace VI {
 	public class Test
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]
