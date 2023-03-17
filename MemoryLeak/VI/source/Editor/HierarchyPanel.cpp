@@ -35,6 +35,7 @@ None.
 *******************************************************************************/
 void HierarchyPanel::Update()
 {
+	return;
 	static int hack = 1;
 	if (ImGui::Begin("Hierarchy Manager"))
 	{

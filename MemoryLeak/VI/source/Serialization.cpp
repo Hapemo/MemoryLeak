@@ -1221,7 +1221,7 @@ void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
 	tmp.AddMember(StringRef("isRandPitch"), audio.sound.isRandPitch, scene.GetAllocator());
 	tmp.AddMember(StringRef("isSpacial"), audio.isSpacial, scene.GetAllocator());
 	entity.AddMember(StringRef("Audio"), tmp, scene.GetAllocator());
-	std::string path = "\\Audio\\" + audio.sound.path;
+	std::string path = "\\Audio\\SFX\\" + audio.sound.path;
 	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));
 }
 void SerializationManager::addAI(Document& scene, Value& entity, AI ai)
