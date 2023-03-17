@@ -60,7 +60,7 @@ namespace BonVoyage {
 
 
       if (!normalZoom)
-        normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
+        normalZoom = ChangeZoom(1600, 300);
 
       // Dialog control
 
@@ -74,7 +74,7 @@ namespace BonVoyage {
       if (runGirlDialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, -250, -635);
+        MovePlayer(playerID, -250, -635);
         runGirlDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue LittleGirl 0");
         if (!runGirlDialog)
           EndGirlDialog();
@@ -83,7 +83,7 @@ namespace BonVoyage {
       if (runCatDialog) {
         GeneralDialogStart(6);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, -770, 103);
+        MovePlayer(playerID, -770, 103);
         runCatDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue CatTutorial");
         if (!runCatDialog)
           EndCatDialog();
@@ -92,7 +92,7 @@ namespace BonVoyage {
       if (runPassengerDialog) {
         GeneralDialogStart(7);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, 385, -1170); // Move him to better location
+        MovePlayer(playerID, 385, -1170); // Move him to better location
         runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
@@ -101,7 +101,7 @@ namespace BonVoyage {
       if (runPassengerEndDialog) {
         GeneralDialogStart(7);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(PEndColliderBox),
+        MovePlayer(playerID, VI.Transform.Position.GetX(PEndColliderBox),
                                                  VI.Transform.Position.GetY(PEndColliderBox)); // Move him to better location
         runPassengerEndDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC dropoff"); // Run the dialog
         if (!runPassengerEndDialog) {

@@ -77,13 +77,13 @@ namespace BonVoyage {
         base.Update(_ENTITY);
 
       if (!normalZoom)
-        normalZoom = Level1ManagerScript.ChangeZoom(1600, 300);
+        normalZoom = ChangeZoom(1600, 300);
 
 
       if (runPassengerDialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), 
+        MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), 
                                                  VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
         runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva"); // Run the dialog
         if (!runPassengerDialog)
@@ -93,7 +93,7 @@ namespace BonVoyage {
       if (runPassenger2Dialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), 
+        MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), 
                                                  VI.Transform.Position.GetY(P2ColliderBox));
         runPassenger2Dialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus");
         if (!runPassenger2Dialog)
@@ -106,7 +106,7 @@ namespace BonVoyage {
       case 10: // Passenger 1 wrong
         GeneralDialogStart(7);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
+        MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
         if (!VI.Entity.IsActive(P2ColliderBox)) {
           VI.Entity.Activate(VI.Entity.GetId(P2String));
@@ -118,7 +118,7 @@ namespace BonVoyage {
       case 11: // Passenger 1 correct
         GeneralDialogStart(5);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
+        MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
         if (!VI.Entity.IsActive(P2ColliderBox)) {
           VI.Entity.Activate(VI.Entity.GetId(P2String));
@@ -131,7 +131,7 @@ namespace BonVoyage {
       case 20: // Passenger 2 wrong
         GeneralDialogStart(1);
         MoveCameraLeftToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
+        MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
         allPassengerDelivered = true;
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Water Fountain)");
@@ -140,7 +140,7 @@ namespace BonVoyage {
       case 21: // Passenger 2 correct
         GeneralDialogStart(7);
         MoveCameraRightToDialog();
-        Level1ManagerScript.MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
+        MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Brown House)");
         MemoryFragmentExpand.ActivateFragment(1);
