@@ -5316,39 +5316,8 @@
             "name": "LevelTutorialPassengerScript"
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": 5.0,
-                        "Y": 47.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 4.63641357421875,
-                        "Y": -51.368896484375
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -14.1627197265625,
-                        "Y": -52.39453125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -13.80804443359375,
-                        "Y": 47.4345703125
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 5.0,
-                        "Y": 47.0
-                    }
-                }
-            ],
-            "renderFlag": true
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
