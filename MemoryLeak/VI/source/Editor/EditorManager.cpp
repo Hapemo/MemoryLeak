@@ -58,7 +58,7 @@ float EditorManager::copyOffset = 20.f;
 int EditorManager::SRT{};
 Math::Vec2 EditorManager::mWorldMousePos = 0;
 bool EditorManager::isFullScreen = false;
-bool EditorManager::isScenePaused = false;;
+bool EditorManager::isScenePaused = false;
 int EditorManager::highestLayer =0;
 bool EditorManager::isAnimatorEditor = false;
 bool EditorManager::aspect = false;

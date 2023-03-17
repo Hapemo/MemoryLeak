@@ -354,7 +354,7 @@ namespace BonVoyage {
     #endregion
 
     #region minorHelpers
-    void ZoomCameraToDialog() { Level1ManagerScript.ChangeZoom(960, 540); }
+    void ZoomCameraToDialog() { ChangeZoom(960, 540); }
     void AlignPlayerText(int player) { TextBoxAlign(player, 450, 5, 20, 0); }
     void AlignNonPlayerText(int nonplayer) { TextBoxAlign(nonplayer, 0, 20, 20, 0); }
 
@@ -409,7 +409,7 @@ namespace BonVoyage {
       float playerWidth = VI.Transform.Scale.GetX(playerID);
       float screenHalfHeight = VI.Camera.GetScale.Y()/2;
 
-      Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID) + playerWidth / 3,
+      MoveCamera(VI.Transform.Position.GetX(playerID) + playerWidth / 3,
                                      VI.Transform.Position.GetY(playerID) + screenHalfHeight - playerHeight / 2);
     }
 
@@ -418,7 +418,7 @@ namespace BonVoyage {
       float playerWidth = VI.Transform.Scale.GetX(playerID);
       float screenHalfHeight = VI.Camera.GetScale.Y()/2;
 
-      Level1ManagerScript.MoveCamera(VI.Transform.Position.GetX(playerID) - playerWidth / 3,
+      MoveCamera(VI.Transform.Position.GetX(playerID) - playerWidth / 3,
                                      VI.Transform.Position.GetY(playerID) + screenHalfHeight - playerHeight / 2);
     }
 

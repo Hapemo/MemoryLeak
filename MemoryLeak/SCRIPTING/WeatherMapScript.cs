@@ -136,8 +136,8 @@ namespace BonVoyage {
 
             for (int i = 0; i < 25; i++)
             {
-                int modI = i % 5;
-                int divI = i / 5;
+                //int modI = i % 5;
+                //int divI = i / 5;
                 
                 int index = VI.Weather.GetCurrent(i, VI.Transform.Scale.GetY(playerID), VI.Transform.Scale.GetY(playerID));
                 

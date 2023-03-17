@@ -44,8 +44,8 @@ void Entity::Activate() const {
 	// Codes that should run when activating entity halfway through game
 	
 	// Scripting
-	if (HasComponent<Script>()) //GetComponent<Script>().script->StartScript(*this);
-		logicSystem->RunScript(*this, LogicSystem::E_SCRIPTTYPE::INIT);
+	//if (!editorManager->IsScenePaused())
+		if (HasComponent<Script>()) logicSystem->Init(*this);
 
 	// General
 	genComp.isActive = true;
@@ -67,8 +67,8 @@ void Entity::Deactivate() const {
 	// Codes that should run when deactivating entity halfway through game
 	
 	// Scripting
-	if (HasComponent<Script>()) //GetComponent<Script>().script->EndScript(*this);
-		logicSystem->RunScript(*this, LogicSystem::E_SCRIPTTYPE::EXIT);
+	//if (!editorManager->IsScenePaused())
+		if (HasComponent<Script>()) logicSystem->Exit(*this);
 
 	// General
 	genComp.isActive = false;

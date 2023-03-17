@@ -18,7 +18,7 @@ namespace BonVoyage {
         static public bool PlayerInOtherAnimation;
         static public bool PlayerInDeathAnimation;
         static public float PlayerHealth;
-        static public bool CameraFollowPlayer = true;
+        static public bool CameraFollowPlayer;
 
         private const double Pi = 3.141592653589793238f;
         private const float MiniAngle = (float)Pi / 8;
@@ -33,21 +33,30 @@ namespace BonVoyage {
         static public float PlayerPosY;
         private float PlayerRotation;
 
+        private int PlayerCurrWeather;
+        private float MovementXModifier;
+        private float MovementYModifier;
+
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             // Initialize bool variables
-            PlayerHealth = MaxHealth;
             PlayerInDialogue = false;
             PlayerInOtherAnimation = false;
             PlayerInDeathAnimation = false;
+            PlayerHealth = MaxHealth;
+            CameraFollowPlayer = true;
 
             SpeedCheatToggle = false;
 
             // Initialize position variables
             PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
             PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
+            PlayerRotation = 0;
 
+            PlayerCurrWeather = 0;
+            MovementXModifier = 0f;
+            MovementYModifier = 0f;
         }
 
         public void Init(int _ENTITY) {
@@ -57,12 +66,30 @@ namespace BonVoyage {
 
         public void EarlyUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-        
-        }
 
-        public void Update(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            
+            #region Player Death
+            // Once health hits 0
+            if (PlayerHealth <= 0f && !PlayerInDeathAnimation)
+            {
+                // Update bool flag
+                PlayerInDeathAnimation = true;
+
+                // Set animation
+                SetPlayerSprite(_ENTITY, PlayerRotation, "Death");
+                VI.Animation.SpriteSheet.CurrentFrame.Set(_ENTITY, 0);
+                VI.Animation.SpriteSheet.FrameCount.Set(_ENTITY, 11);
+            }
+
+            // Check for completion of death animation
+            if (PlayerInDeathAnimation && (VI.Animation.SpriteSheet.CurrentFrame.Get(_ENTITY) + 1 == VI.Animation.SpriteSheet.FrameCount.Get(_ENTITY)))
+            {
+                // Assumes the main game scene level running is the same as the gamestate name
+                VI.Scene.Pause(VI.GameState.GetName());     // Pause current scene
+                VI.Scene.Play("Game Over");                 // Play Game Over scene
+                // Play audio transition if required
+            }
+            #endregion
+
             // Things allowed to run when player is not dead
             if (!PlayerInDeathAnimation)
             {
@@ -76,7 +103,7 @@ namespace BonVoyage {
                     //if (VI.Scene.IsPaused("Pause") == false)
                     //    VI.Scene.Pause("Pause");
                     //else
-                    VI.Scene.Play("Pause");
+                    //VI.Scene.Play("Pause");
                     //VI.Scene.Pause("Game Over");
                     //VI.Scene.Pause("How_To_Play");
                     //VI.Scene.Pause("Quit Confirmation");
@@ -117,48 +144,29 @@ namespace BonVoyage {
                         PlayerHealth = 0f;
                     }
                 }
-            }
-            #endregion
+                #endregion
 
-            #region Camera Follow Player
-            // Update camera position to follow entity assumed to be player
-            if (CameraFollowPlayer) {
-              VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (PlayerPosY - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime());
-              VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (PlayerPosX - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime());
+                // Weather effects on the player
+                #region Weather Effects
+                // Update player's current weather based on updated position
+                if (VI.GameState.GetName() != "LevelTutorial") { 
+                    PlayerCurrWeather = VI.Weather.GetCurrent(0, PlayerPosX, PlayerPosY);
+                    if (PlayerCurrWeather == 2) {
+                        MovementXModifier = 0f;
+                        MovementYModifier = 0f;
+                    }
+                }
+                #endregion
             }
-            #endregion
+        }
 
-            #region Player Death
-            // Once health hits 0
-            if (PlayerHealth <= 0f && !PlayerInDeathAnimation)
-            {
-                // Update bool flag
-                PlayerInDeathAnimation = true;
-
-                // Set animation
-                SetPlayerSprite(_ENTITY, PlayerRotation, "Death");
-                VI.Animation.SpriteSheet.CurrentFrame.Set(_ENTITY, 0);
-                VI.Animation.SpriteSheet.FrameCount.Set(_ENTITY, 11);
-            }
-
-            // Check for completion of death animation
-            if (PlayerInDeathAnimation && (VI.Animation.SpriteSheet.CurrentFrame.Get(_ENTITY) + 1 == VI.Animation.SpriteSheet.FrameCount.Get(_ENTITY)))
-            {
-                // Assumes the main game scene level running is the same as the gamestate name
-                VI.Scene.Pause(VI.GameState.GetName());     // Pause current scene
-                VI.Scene.Play("Game Over");                 // Play Game Over scene
-                // Play audio transition if required
-            }
-            #endregion
+        public void Update(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
 
         public void FixedUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             #region Movement
-            // Update player position variables
-            PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
-            PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
-
             // Move only if player is not in dialogue or death animation
             if (!PlayerInDialogue && !PlayerInDeathAnimation && !PlayerInOtherAnimation)
             {
@@ -167,6 +175,9 @@ namespace BonVoyage {
                 {
                     float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerPosX;
                     float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerPosY;
+
+                    DirX += MovementXModifier;
+                    DirY += MovementYModifier;
 
                     // Move if the vector is significant
                     if (VI.Math.SqMagnitude(DirX, DirY) > float.Epsilon * float.Epsilon)
@@ -194,8 +205,12 @@ namespace BonVoyage {
             else // In dialogue or death animation
             {
                 // Stop rowing audio in case
-                VI.Audio.Stop(_ENTITY);
+                //VI.Audio.Stop(_ENTITY);
             }
+
+            // Update player position variables
+            PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
+            PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
 
             #endregion
 
@@ -203,7 +218,15 @@ namespace BonVoyage {
 
         public void LateUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            
+
+            #region Camera Follow Player
+            // Update camera position to follow entity assumed to be player
+            if (CameraFollowPlayer)
+            {
+                VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (PlayerPosY - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime());
+                VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (PlayerPosX - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime());
+            }
+            #endregion
         }
 
         public void Exit(int _ENTITY) {

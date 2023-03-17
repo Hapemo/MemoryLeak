@@ -1,0 +1,86 @@
+[
+ {
+   "FIELD1": 1,
+   "Dialogue Text": "Are you sure this is where we should be?",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 2,
+   "Dialogue Text": "There's no presence of spiritual energy around here...",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 3,
+   "Dialogue Text": "Ahaha... Well I suppose I'll still try to answer you to the best of my ability!",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 4,
+   "Dialogue Text": "Go on, ask away!",
+   "Speaker": 0,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 5,
+   "Dialogue Text": "Do I used to know that little girl?",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 6,
+   "Dialogue Text": "...",
+   "Speaker": 0,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 7,
+   "Dialogue Text": "Sorry, I don't think I'll be able to answer that without looking at your past.",
+   "Speaker": 0,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 8,
+   "Dialogue Text": "You can see my past?",
+   "Speaker": 1,
+   "Next Dialogue": 9,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 9,
+   "Dialogue Text": "Of course! Nothing my little magic ball can't do!",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 10,
+   "Dialogue Text": "But since there's a lack of spiritual energy... ",
+   "Speaker": 0,
+   "Next Dialogue": 11,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 11,
+   "Dialogue Text": "...Maybe you can inspect your surroundings a little more! ",
+   "Speaker": 0,
+   "Next Dialogue": 12,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 12,
+   "Dialogue Text": "Sometimes the answer can be just right in front of us.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
