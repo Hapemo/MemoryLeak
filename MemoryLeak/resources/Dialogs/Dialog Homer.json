@@ -1,0 +1,128 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Eldoris? You must be Eldoris, right? ",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "Have you returned to see me again?",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 4,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "Who's Eldoris?",
+   "Speaker": 1,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 4,
+   "Dialogue Text": "I think you have gotten the wrong person.",
+   "Speaker": 1,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "I'm sorry, I got excited for a moment...",
+   "Speaker": 0,
+   "Next Dialogue": 6,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 6,
+   "Dialogue Text": "The person may no longer be here but I still remember his promise.",
+   "Speaker": 0,
+   "Next Dialogue": 7,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 7,
+   "Dialogue Text": "\"See you at the town of boats, where our last journey lies.\"",
+   "Speaker": 0,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "Perhaps if I meet him there, I may see him once more. Will you take me there?",
+   "Speaker": 0,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": 14,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "Pardon me, you seem to resemble him a little.",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "If he was still here, he would probably be standing in the same position as you now.",
+   "Speaker": 0,
+   "Next Dialogue": 11,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "...And yet no matter how many people he ferried, I never saw him again.",
+   "Speaker": 0,
+   "Next Dialogue": 12,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 12,
+   "Dialogue Text": "Perhaps we can travel to the boat place? If he still remembers our promise together, I'm sure he would be there.",
+   "Speaker": 0,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": 14,
+   "FIELD6": "",
+   "FIELD7": " "
+ },
+ {
+   "Dialogue ID": 13,
+   "Dialogue Text": "Let's try the island.",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ },
+ {
+   "Dialogue ID": 14,
+   "Dialogue Text": "Let's try the porthouse.",
+   "Speaker": 1,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0,
+   "FIELD6": "",
+   "FIELD7": ""
+ }
+]

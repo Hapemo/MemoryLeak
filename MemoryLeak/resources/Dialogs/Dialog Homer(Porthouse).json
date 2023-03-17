@@ -1,0 +1,37 @@
+[
+ {
+   "FIELD1": 1,
+   "Dialogue Text": "Ah... How nostalgic...",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 2,
+   "Dialogue Text": "Had Eldoris still existed in this life, I'm sure he would have fulfiled that last promise we had together.",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 3,
+   "Dialogue Text": "Would you like to hold onto this ring for me?",
+   "Speaker": 0,
+   "Next Dialogue": 4,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 4,
+   "Dialogue Text": "If fate allows for it, perhaps our paths may cross once more. ",
+   "Speaker": 0,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "FIELD1": 5,
+   "Dialogue Text": "Thank you for bringing me here. If you meet Eldoris along your journey, let him know that I'm here waiting.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
