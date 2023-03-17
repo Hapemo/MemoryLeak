@@ -42,8 +42,11 @@ public:
 	void StopSFXSound();
 	void StopSound(const Entity& e);
 
+	void PauseSound(int);
 	void PauseAllSound();
+	void ResumeSound(int);
 	void ResumeAllSound();
+	
 
 	std::vector<std::string> GetSongs() { return songs; }
 	float GetBgmVol() { return bgmVol; }

@@ -98,6 +98,7 @@ void ViewportPanel::renderUI()
 					logicSystem->Alive(e);
 			}
 		}
+		audioManager->ResumeAllSound();
 	}
 	ImGui::PopStyleColor();
 
@@ -109,6 +110,7 @@ void ViewportPanel::renderUI()
 	if (ImGui::Button("Pause", buttonSize)|| (Input::CheckKey(E_STATE::PRESS, E_KEY::K)&& Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)))
 	{
 		isViewportPaused = true;
+		audioManager->PauseAllSound();
 	}
 	ImGui::PopStyleColor();
 	ImGui::SetWindowFontScale(1.0f);

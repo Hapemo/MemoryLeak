@@ -93,7 +93,6 @@
     <Compile Include="Level Tutorial\LevelTutorialPassengerScript.cs" />
     <Compile Include="Level Tutorial\LevelTutorialGirlScript.cs" />
     <Compile Include="PassengerDeliverUI.cs" />
-    <Compile Include="Level Tutorial\MoveToCat.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="ChoiceHover.cs" />
     <Compile Include="Level Tutorial\WaterTutorialSound.cs" />
