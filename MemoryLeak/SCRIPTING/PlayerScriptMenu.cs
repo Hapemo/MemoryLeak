@@ -17,9 +17,6 @@ namespace BonVoyage {
         static public bool PlayerInDeathAnimation;
         static public float PlayerHealth;
 
-        private const double Pi = 3.141592653589793238f;
-        private const float MiniAngle = (float)Pi / 8;
-
         private const float MaxHealth = 12f;
         private const float PlayerSpeed = 10f;
         private const float SpeedCheatMultiplier = 2.5f;
@@ -124,24 +121,6 @@ namespace BonVoyage {
 
         }
 
-        public float GetRotation(float _x, float _y)
-        {
-            float Rotation = 0;
-            if (_y != 0f && _x >= 0f)
-                Rotation = VI.Math.ArcTangent(_y, _x);
-            else if (_y == 0f && _x > 0f)
-                Rotation = (float)Pi / 2;
-            else if (_y != 0f && _x < 0f)
-            {
-                Rotation = VI.Math.ArcTangent(_y, _x);
-                Rotation += Rotation < 0f ? (float)Pi * 2f : 0f;
-            }
-            else
-                Rotation = 3f * (float)Pi / 2f;
-
-            return Rotation;
-        }
-
         private void SetPlayerSprite(int _eID, float _rotation, string _status)
         {
             int InitialStatus = 0;
@@ -178,13 +157,6 @@ namespace BonVoyage {
                 VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 8);
             else
                 VI.Animation.SpriteSheet.SheetIndex.Set(_eID, InitialStatus - 1);
-        }
-
-        public void ApplyForce(int _eID, float _x, float _y, float _multiplier)
-        {
-            VI.Physics.ApplyImpulse(_eID,
-                (_x * _multiplier),
-                (_y * _multiplier), 0f, 0f);
         }
     }
 }

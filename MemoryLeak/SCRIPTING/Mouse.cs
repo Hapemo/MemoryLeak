@@ -13,8 +13,6 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
     public class Mouse : BaseScript {
-        private const double Pi = 3.141592653589793238f;
-        private const float MiniAngle = (float)Pi / 8;
         private const int MovingIconIndexStart = 2;
 
         private float ZoomScaleFactorX;
@@ -103,23 +101,6 @@ namespace BonVoyage {
         public void Dead(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-        }
-
-        private float GetRotation(float _x, float _y) {
-            float Rotation = 0;
-            if (_y != 0f && _x >= 0f)
-                Rotation = VI.Math.ArcTangent(_y, _x);
-            else if (_y == 0f && _x > 0f)
-                Rotation = (float)Pi / 2;
-            else if (_y != 0f && _x < 0f)
-            {
-                Rotation = VI.Math.ArcTangent(_y, _x);
-                Rotation += Rotation < 0f ? (float)Pi * 2f : 0f;
-            }
-            else
-                Rotation = 3f * (float)Pi / 2f;
-
-            return Rotation;
         }
 
         private void SetMouseMovingIcon(int _eID, float _rotation) {
