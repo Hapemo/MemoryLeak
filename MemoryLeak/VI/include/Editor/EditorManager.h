@@ -51,7 +51,7 @@ public:
 	void SetFullScreen(bool _isfull) { isFullScreen = _isfull; }
 	
 	using PrefabPtr = std::shared_ptr<Prefab>;
-
+	Entity Clone(Entity e);
 private:
 	static std::vector<Panel*> panels;
 	
@@ -81,7 +81,7 @@ protected:
 	void Copy();
 	void Cut();
 	void Paste();
-	Entity Clone(Entity e);
+	
 	void SceneReset();
 	Entity NewEntity();
 	void NewScene();

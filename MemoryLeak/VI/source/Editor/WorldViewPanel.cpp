@@ -548,7 +548,8 @@ void WorldViewPanel::MoveSelectedEntity()
 	}
 	if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L) && isSelected == 1)
 	{
-		e.GetComponent<Transform>().translation = camMousePos - objectOffset;
+		e.GetComponent<Transform>().translation.x = ((int)((camMousePos.x - objectOffset.x)/10))*10.f;
+		e.GetComponent<Transform>().translation.y = ((int)((camMousePos.y - objectOffset.y) / 10)) * 10.f;
 	}
 	
 }
