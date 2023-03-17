@@ -239,6 +239,9 @@
             "followCam": false,
             "width": 50.0
         },
+        "Script": {
+            "name": "ChoiceHover"
+        },
         "Button": {
             "interactable": true
         }
@@ -299,6 +302,9 @@
             },
             "followCam": false,
             "width": 50.0
+        },
+        "Script": {
+            "name": "ChoiceHover"
         },
         "Button": {
             "interactable": true
@@ -446,6 +452,36 @@
         },
         "Script": {
             "name": "Level1DialogManager"
+        }
+    },
+    {
+        "General": {
+            "name": "ChoiceBackground",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 564.5999755859375,
+                "Y": 61.80000305175781
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 420.0,
+                "Y": -214.10000610351563
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 34,
+                "g": 34,
+                "b": 42,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 62
         }
     }
 ]

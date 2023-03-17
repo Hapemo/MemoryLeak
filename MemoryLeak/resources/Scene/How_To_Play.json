@@ -2709,7 +2709,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost5_SE_Idle_Spritesheet.png",
+            "texture": "",
             "layer": 44
         },
         "SheetAnimation": {
