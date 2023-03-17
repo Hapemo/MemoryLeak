@@ -53,6 +53,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,
@@ -181,6 +182,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,
@@ -309,6 +311,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,

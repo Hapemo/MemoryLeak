@@ -30,6 +30,7 @@
         },
         "Audio": {
             "path": "Button_Click_SFX2",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -64,6 +65,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,
@@ -169,6 +171,7 @@
         },
         "Audio": {
             "path": "Button_Click_SFX2",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -203,6 +206,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,
@@ -308,6 +312,7 @@
         },
         "Audio": {
             "path": "Button_Click_SFX2",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -342,6 +347,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,
@@ -447,6 +453,7 @@
         },
         "Audio": {
             "path": "Button_Click_SFX2",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -481,6 +488,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,
@@ -586,6 +594,7 @@
         },
         "Audio": {
             "path": "Button_Click_SFX2",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -620,6 +629,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,

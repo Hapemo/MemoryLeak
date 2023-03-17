@@ -548,6 +548,7 @@
         },
         "Audio": {
             "path": "OpenMemoryFragment",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -568,11 +569,19 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 200
+                "a": 255
             },
             "sprite": 0,
             "texture": "",
-            "layer": 64
+            "layer": 0
+        },
+        "ParticleInfo": {
+            "mScale": 10.0,
+            "mFacing": 90.0,
+            "mLifespan": 3.0,
+            "mRotation": 2.0,
+            "mSpeed": 20.0,
+            "mFading": true
         }
     },
     {

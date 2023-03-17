@@ -704,7 +704,7 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 	movementAI.nextStep = entity["MovementAI"]["nextStep"].GetInt();
 	movementAI.acceleration = entity["MovementAI"]["acceleration"].GetFloat();
 	if (entity["MovementAI"].HasMember("moveOnHover"))//////remove this if line
-		movementAI.moveOnHover = entity["MovementAI"]["moveOnHover"].GetBool();
+		movementAI.moveOnHover = false;// entity["MovementAI"]["moveOnHover"].GetBool();
 	Value a(kObjectType);
 	if (entity["MovementAI"].HasMember("targets"))
 	{
@@ -727,7 +727,7 @@ ParticleSystem::ParticleInfo SerializationManager::getParticleInfo(Value& entity
 	particleInfo.mFacing = entity["ParticleInfo"]["mFacing"].GetFloat();
 	particleInfo.mLifespan = entity["ParticleInfo"]["mLifespan"].GetFloat();
 	particleInfo.mScale = entity["ParticleInfo"]["mScale"].GetFloat();
-	particleInfo.mSprite = getSprite(entity["ParticleInfo"]);
+	//particleInfo.mSprite = getSprite(entity["ParticleInfo"]);
 	particleInfo.mRotation = entity["ParticleInfo"]["mRotation"].GetFloat();
 	particleInfo.mSpeed = entity["ParticleInfo"]["mSpeed"].GetFloat();
 	particleInfo.mFading = entity["ParticleInfo"]["mFading"].GetBool();
@@ -1323,7 +1323,7 @@ void SerializationManager::addMovementAI(Document& scene, Value& entity, Movemen
 	tmp.AddMember(StringRef("cycle"), movementAI.cycle, scene.GetAllocator());
 	tmp.AddMember(StringRef("nextStep"), movementAI.nextStep, scene.GetAllocator());
 	tmp.AddMember(StringRef("acceleration"), movementAI.acceleration, scene.GetAllocator());
-	tmp.AddMember(StringRef("moveOnHover"), movementAI.moveOnHover, scene.GetAllocator());
+	tmp.AddMember(StringRef("moveOnHover"), false, scene.GetAllocator());
 	Value child(kObjectType);
 	child.SetArray();
 	for (int i = 0; i < movementAI.targetTransforms.size(); ++i)

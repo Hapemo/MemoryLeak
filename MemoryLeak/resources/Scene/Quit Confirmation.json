@@ -30,6 +30,7 @@
         },
         "Audio": {
             "path": "DAMAGE",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -94,6 +95,7 @@
         },
         "Audio": {
             "path": "HOVER",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -282,6 +284,7 @@
         },
         "Audio": {
             "path": "OpenMemoryFragment",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
