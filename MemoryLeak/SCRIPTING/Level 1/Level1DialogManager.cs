@@ -77,7 +77,7 @@ namespace BonVoyage {
         base.Update(_ENTITY);
 
       if (!normalZoom)
-        normalZoom = ChangeZoom(1600, 300);
+        normalZoom =  ChangeZoom(1600, 300);
 
 
       if (runPassengerDialog) {
