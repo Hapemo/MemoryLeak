@@ -354,7 +354,7 @@ namespace BonVoyage {
     #endregion
 
     #region minorHelpers
-    void ZoomCameraToDialog() { ChangeZoom(960, 540); }
+    public void ZoomCameraToDialog() { ChangeZoom(960, 540); }
     void AlignPlayerText(int player) { TextBoxAlign(player, 450, 5, 20, 0); }
     void AlignNonPlayerText(int nonplayer) { TextBoxAlign(nonplayer, 0, 20, 20, 0); }
 
