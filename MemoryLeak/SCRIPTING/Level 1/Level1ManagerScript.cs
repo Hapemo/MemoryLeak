@@ -95,8 +95,8 @@ namespace BonVoyage {
     }
 
     public static void MoveCamera(float x, float y) {
-      VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (y - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime());
-      VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (x - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime());
+      VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (y - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime() * 3.0f);
+      VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (x - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime() * 3.0f);
     }
 
     public static bool ChangeZoom(float x, float speed) {
