@@ -94,7 +94,8 @@
     <Compile Include="Level Tutorial\LevelTutorialGirlScript.cs" />
     <Compile Include="PassengerDeliverUI.cs" />
     <Compile Include="Level Tutorial\MoveToCat.cs" />
-    <Compile Include="ScriptTemplate_DONOTDELETE - Copy - Copy - Copy.cs" />
+    <Compile Include="ScriptTemplate_DONOTDELETE - Copy - Copy - Copy - Copy.cs" />
+    <Compile Include="ChoiceHover.cs" />
     <Compile Include="Level Tutorial\WaterTutorialSound.cs" />
     <Compile Include="ResumeGame.cs" />
     <Compile Include="TextTestingScripts.cs" />
