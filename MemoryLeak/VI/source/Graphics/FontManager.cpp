@@ -149,8 +149,11 @@ void FontRenderer::AddParagraph(const std::string& text, const Math::Vec2& _pos,
     for (std::string& str : strings)
     {
         float width{};
+        if (str != strings.back())
+        {
             str += " ";
             width += 20 * scale;
+        }
         for (char ch : str)
         {
           if (ch == '$') {
@@ -297,10 +300,11 @@ int FontRenderer::GetLineCount(const std::string& text, const Math::Vec2& _pos, 
     for (std::string& str : strings)
     {
         float width{};
-
+        if (str != strings.back())
+        {
             str += " ";
             width += 20 * scale;
-
+        }
         for (char ch : str)
         {
             if (ch == '$')
