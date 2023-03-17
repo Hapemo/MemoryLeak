@@ -9,6 +9,7 @@ This file contains function definations for a Viewport Panel Editor system that 
 *******************************************************************************/
 #include "ViewportPanel.h"
 #include <ECSManager.h>
+#include "GameStateManager.h"
 int ViewportPanel::isSelected = 0;
 //int ViewportPanel::newEntityCount = 1;
 /*!*****************************************************************************
@@ -89,6 +90,14 @@ void ViewportPanel::renderUI()
 	if (ImGui::Button("Play", buttonSize) || (Input::CheckKey(E_STATE::PRESS, E_KEY::P) && Input::CheckKey(E_STATE::HOLD, E_KEY::LEFT_CONTROL)))
 	{
 		isViewportPaused = false;
+		for (Scene& scene : GameStateManager::GetInstance()->mCurrentGameState->mScenes)
+		{
+			for (const Entity& e : scene.mEntities)
+			{
+				if (e.HasComponent<Script>()) 
+					logicSystem->Alive(e);
+			}
+		}
 	}
 	ImGui::PopStyleColor();
 
