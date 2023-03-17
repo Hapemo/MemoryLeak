@@ -12,8 +12,6 @@ using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
     public class MouseMenu : BaseScript {
-        private const double Pi = 3.141592653589793238f;
-
         private float ZoomScaleFactorX;
         private float ZoomScaleFactorY;
 
