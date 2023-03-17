@@ -427,8 +427,12 @@ void AudioManager::PauseSound(int _channel)
 
 void AudioManager::PauseAllSound()
 {
-    for (int i = 0; i < mChannel.size(); i++)
-        mChannel[i]->setPaused(true);
+	for (int i = 0; i < mChannel.size(); i++) {
+		if (i == static_cast<int>(E_AUDIO_CHANNEL::EDITORSONG))
+			continue;
+
+		PauseSound(i);
+	}
 }
 
 void AudioManager::ResumeSound(int _channel)
@@ -438,8 +442,12 @@ void AudioManager::ResumeSound(int _channel)
 
 void AudioManager::ResumeAllSound()
 {
-    for (int i = 0; i < mChannel.size(); i++)
-        mChannel[i]->setPaused(false);
+	for (int i = 0; i < mChannel.size(); i++) {
+		if (i == static_cast<int>(E_AUDIO_CHANNEL::EDITORSONG))
+			continue;
+		
+		ResumeSound(i);
+	}
 }
 
 /*!*****************************************************************************

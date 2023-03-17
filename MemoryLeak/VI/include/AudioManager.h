@@ -78,7 +78,7 @@ private:
 }; 
 	enum class E_AUDIO_CHANNEL
 	{
-		FORCEPLAY,
+		FORCEPLAY = 0,
 		MAINBACKGROUND,
 		EDITORSONG,
 		DIALOGUE,
