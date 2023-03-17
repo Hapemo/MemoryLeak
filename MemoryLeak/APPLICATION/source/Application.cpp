@@ -198,9 +198,14 @@ void Application::MainUpdate() {
   while (GameStateManager::mGSMState != GameStateManager::E_GSMSTATE::EXIT) {
       if (!FirstUpdate())
       {
-        audioManager->SetALLVolume(0.f);   //need pause all the audio... and resume properly
+        //audioManager->SetALLVolume(0.f);   //need pause all the audio... and resume properly
+        audioManager->PauseAllSound();
         continue;
       }
+      else {
+          audioManager->ResumeAllSound();
+      }
+
     TRACK_PERFORMANCE("MainLoop");
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
