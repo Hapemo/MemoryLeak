@@ -25,11 +25,12 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Icons\\cycle.png",
+            "texture": "",
             "layer": 0
         },
         "Audio": {
             "path": "Toggle(Edited)",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,

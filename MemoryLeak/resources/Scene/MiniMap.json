@@ -30,6 +30,7 @@
         },
         "Audio": {
             "path": "OpenMinimap",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -74,6 +75,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -143,6 +145,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,

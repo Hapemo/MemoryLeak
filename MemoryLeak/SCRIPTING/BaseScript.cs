@@ -44,8 +44,8 @@ namespace BonVoyage
             float NormY = VI.Math.Normalize.Y(DirX, DirY);
 
             VI.Physics.ApplyImpulse(player,
-                (NormX * 200) * (float)VI.General.DeltaTime(),
-                (NormY * 200) * (float)VI.General.DeltaTime(), 0f, 0f);
+                (NormX * 200) * (float)VI.General.DeltaTime() * 3.0f,
+                (NormY * 200) * (float)VI.General.DeltaTime() * 3.0f, 0f, 0f);
             // Get new rotation and set sprite
             //PlayerRotation = GetRotation(NormX, NormY);
             //SetPlayerSprite(player, PlayerRotation, "Idle");

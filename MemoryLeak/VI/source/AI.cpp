@@ -19,10 +19,11 @@ Entities and its Components.
 \return
 None.
 *******************************************************************************/
+#define weatherScale 400
 void AIManager::weatherAIinit(float width, float height)
 {
-	mapMaxHeight = (int)(height/200);
-	mapMaxWidth = (int)(width/200);
+	mapMaxHeight = (int)(height/ weatherScale);
+	mapMaxWidth = (int)(width/ weatherScale);
 	/*for (int h = 0; h < weatherMap.size(); h++)
 	{
 		weatherMap[h].clear();
@@ -134,8 +135,8 @@ void AIManager::weatherAIupdate()
 }
 int AIManager::GetCurrentWeather(int index, float posX, float posY)
 {
-	int indexX = (int)((posX+mapMaxWidth*50)/100);
-	int indexY = (int)(-(posY - mapMaxHeight*50)/100);
+	int indexX = (int)((posX + mapMaxWidth* weatherScale/2)/ weatherScale);
+	int indexY = (int)(-(posY - mapMaxHeight* weatherScale/2)/ weatherScale);
 	indexX += (index % 5) - 2;
 	indexY += (index / 5) - 2;
 	return weatherMap[indexX][indexY];

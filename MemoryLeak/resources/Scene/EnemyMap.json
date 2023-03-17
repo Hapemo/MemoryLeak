@@ -30,6 +30,7 @@
         },
         "Audio": {
             "path": "OpenMinimap",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
@@ -70,6 +71,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -128,7 +130,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\mc.png",
+            "texture": "",
             "layer": 10
         },
         "MovementAI": {
@@ -139,6 +141,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -197,7 +200,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\monster.png",
+            "texture": "",
             "layer": 10
         },
         "MovementAI": {
@@ -208,6 +211,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,

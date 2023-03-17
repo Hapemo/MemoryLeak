@@ -125,7 +125,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost1_SE_Spritesheet.png",
+            "texture": "",
             "layer": 4
         },
         "SheetAnimation": {
@@ -178,7 +178,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost4_SE_Idle_Spritesheet.png",
+            "texture": "",
             "layer": 5
         },
         "SheetAnimation": {
@@ -231,7 +231,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost6_SE_Idle_Spritesheet.png",
+            "texture": "",
             "layer": 5
         },
         "SheetAnimation": {
@@ -284,7 +284,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost3_SE_Idle_Spritesheet.png",
+            "texture": "",
             "layer": 5
         },
         "SheetAnimation": {
@@ -337,7 +337,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost2_SE_Idle_Spritesheet.png",
+            "texture": "",
             "layer": 5
         },
         "SheetAnimation": {
@@ -390,7 +390,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\Character_Ghost5_SE_Idle_Spritesheet.png",
+            "texture": "",
             "layer": 5
         },
         "SheetAnimation": {
@@ -443,7 +443,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\NPC\\girl-idle-spritesheet.png",
+            "texture": "",
             "layer": 5
         },
         "SheetAnimation": {
@@ -501,6 +501,7 @@
         },
         "Audio": {
             "path": "OpenMemoryFragment",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,

@@ -86,6 +86,7 @@
         },
         "Audio": {
             "path": "Button_Click_SFX",
+            "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,

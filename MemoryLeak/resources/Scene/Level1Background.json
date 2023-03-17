@@ -72,6 +72,7 @@
             "cycle": true,
             "nextStep": 1,
             "acceleration": 0.0,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 2.0,

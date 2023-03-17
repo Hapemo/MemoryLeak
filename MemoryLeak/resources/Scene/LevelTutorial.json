@@ -699,6 +699,7 @@
         },
         "Audio": {
             "path": "Boat_Row_SFX",
+            "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,

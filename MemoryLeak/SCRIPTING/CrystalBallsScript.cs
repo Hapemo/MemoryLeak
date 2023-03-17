@@ -117,7 +117,7 @@ namespace BonVoyage {
                 }
                 prevTog = toggle;
             }
-            int index = VI.Weather.GetCurrent(12, VI.Transform.Scale.GetY(playerID), VI.Transform.Scale.GetY(playerID));
+            int index = VI.Weather.GetCurrent(12, VI.Transform.Position.GetY(playerID), VI.Transform.Position.GetY(playerID));
             if(index == 1 || index == 3 || index == 5 || index == 7)
             {
                 VI.Entity.SetActive(rainID, true);
