@@ -24,6 +24,7 @@ None.
 void HierarchyPanel::Init()
 {
 	tag = { "PLAYER","PASSENGER", "ENEMY", "BUILDING","BACKGROUND", "ENVIRONMENT","EFFECTS","PREFABS","OTHERS" };
+	showDetails = false;
 }
 /*!*****************************************************************************
 \brief
@@ -124,16 +125,10 @@ void HierarchyPanel::Update()
 										e.GetComponent<General>().isPaused = (*mGameStates)[g].mScenes[s].mIsPause;
 								selectedScene = 99;
 							}
+							ImGui::Checkbox("showdetails ", &showDetails);
 							for (int s = 0; s < (*mGameStates)[g].mScenes.size(); s++)
 							{
-								{
-									bool isPause = !(*mGameStates)[g].mScenes[s].mIsPause;
-									bool old = isPause;
-									std::string showScenebtn = "Show " + (*mGameStates)[g].mScenes[s].mName + " Scene";
-									ImGui::Checkbox(showScenebtn.c_str(), &isPause);
-									if (isPause != old)
-										(*mGameStates)[g].mScenes[s].Pause(!isPause);
-								}
+
 								if (ImGui::CollapsingHeader((*mGameStates)[g].mScenes[s].mName.c_str()))
 								{
 									for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)
@@ -142,6 +137,21 @@ void HierarchyPanel::Update()
 										ImGui::Text(e.GetComponent<General>().name.c_str());
 										ImGui::PopID();
 									}
+								}
+								if(showDetails)
+								{
+									bool isPause = !(*mGameStates)[g].mScenes[s].mIsPause;
+									bool old = isPause;
+									std::string showScenebtn = "Show " + (*mGameStates)[g].mScenes[s].mName + " Scene";
+									ImGui::PushID(id++);
+									ImGui::Checkbox("Show ", &isPause);
+									ImGui::PopID();
+									if (isPause != old)
+										(*mGameStates)[g].mScenes[s].Pause(!isPause);
+									ImGui::SameLine();
+									ImGui::PushID(id++);
+									ImGui::InputInt("Layer", &((*mGameStates)[g].mScenes[s].mLayer));
+									ImGui::PopID();
 								}
 							}
 							ImGui::EndTabItem(); //end ALL scene item
@@ -224,13 +234,13 @@ void HierarchyPanel::Update()
 
 									if (ImGui::CollapsingHeader(tag[i].c_str()))
 									{
-										for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)
+										for (int l = -1; l < 1024; l++)
 										{
-											if (e.GetComponent<General>().tag != (TAG)i)
-												continue;
-											
-											for (int l = -1; l < 255; l++)
+											for (const Entity& e : (*mGameStates)[g].mScenes[s].mEntities)
 											{
+												if (e.GetComponent<General>().tag != (TAG)i)
+													continue;
+											
 												if (l == -1)
 												{
 													if (!e.HasComponent<Sprite>())
@@ -242,6 +252,8 @@ void HierarchyPanel::Update()
 												}
 												else
 												{
+													if (!e.HasComponent<Sprite>())
+														continue;
 													if (e.GetComponent<Sprite>().layer != l)
 														continue;
 													std::string name = "(" + std::to_string(l) + ") " + e.GetComponent<General>().name;

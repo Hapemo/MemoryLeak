@@ -329,6 +329,8 @@ void InspectorPanel::AddComponent()
 		e.AddComponent<MovementAI>({});
 		movementAIManager->AddTransform(e, e.GetComponent<Transform>());
 	}
+	else if (addComponentID == (int)COMPONENTID::PARTICLESYSTEM)
+		e.AddComponent<ParticleSystem>({});
 	
 	
 }
@@ -702,45 +704,45 @@ void InspectorPanel::Physics2DEditor()
 		ImGui::Checkbox("dynamicsEnabled", &e.GetComponent<Physics2D>().dynamicsEnabled);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputFloat("Mass", &e.GetComponent<Physics2D>().mass);
+		ImGui::DragFloat("Mass", &e.GetComponent<Physics2D>().mass, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputFloat("inertia", &e.GetComponent<Physics2D>().inertia);
+		ImGui::DragFloat("inertia", &e.GetComponent<Physics2D>().inertia, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputFloat("restitution", &e.GetComponent<Physics2D>().restitution);
+		ImGui::DragFloat("restitution", &e.GetComponent<Physics2D>().restitution, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputFloat("friction", &e.GetComponent<Physics2D>().friction);
+		ImGui::DragFloat("friction", &e.GetComponent<Physics2D>().friction, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputFloat("damping", &e.GetComponent<Physics2D>().damping);
+		ImGui::DragFloat("damping", &e.GetComponent<Physics2D>().damping, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
 		tmpVec2[0] = e.GetComponent<Physics2D>().velocity.x;
 		tmpVec2[1] = e.GetComponent<Physics2D>().velocity.y;
-		ImGui::InputFloat2("velocity", tmpVec2);
+		ImGui::DragFloat2("velocity", tmpVec2, 0.1f);
 		e.GetComponent<Physics2D>().velocity = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
 		tmpVec2[0] = e.GetComponent<Physics2D>().acceleration.x;
 		tmpVec2[1] = e.GetComponent<Physics2D>().acceleration.y;
-		ImGui::InputFloat2("acceleration", tmpVec2);
+		ImGui::DragFloat2("acceleration", tmpVec2,0.1f, 0.1f);
 		e.GetComponent<Physics2D>().acceleration = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
 				
 		tmpVec2[0] = e.GetComponent<Physics2D>().accumulatedForce.x;
 		tmpVec2[1] = e.GetComponent<Physics2D>().accumulatedForce.y;
-		ImGui::InputFloat2("accumulatedForce", tmpVec2);
+		ImGui::DragFloat2("accumulatedForce", tmpVec2, 0.1f);
 		e.GetComponent<Physics2D>().accumulatedForce = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
 
-		ImGui::InputFloat("angularVelocity", &e.GetComponent<Physics2D>().angularVelocity);
+		ImGui::DragFloat("angularVelocity", &e.GetComponent<Physics2D>().angularVelocity, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
-		ImGui::InputFloat("angularTorque", &e.GetComponent<Physics2D>().angularTorque);
+		ImGui::DragFloat("angularTorque", &e.GetComponent<Physics2D>().angularTorque, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::PHYSICS2D);
 
 		ImGui::Checkbox("Physics RenderFlag", &e.GetComponent<Physics2D>().renderFlag);
@@ -760,13 +762,13 @@ void InspectorPanel::RectColliderEditor()
 		//ImGui::Text("RectCollider");
 		tmpVec2[0] = e.GetComponent<RectCollider>().centerOffset.x;
 		tmpVec2[1] = e.GetComponent<RectCollider>().centerOffset.y;
-		ImGui::InputFloat2("Box position Offset", tmpVec2);
+		ImGui::DragFloat2("Box position Offset", tmpVec2, 0.1f);
 		e.GetComponent<RectCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::RECTCOLLIDER);
 
 		tmpVec2[0] = e.GetComponent<RectCollider>().scaleOffset.x;
 		tmpVec2[1] = e.GetComponent<RectCollider>().scaleOffset.y;
-		ImGui::InputFloat2("Box scale Offset", tmpVec2);
+		ImGui::DragFloat2("Box scale Offset", tmpVec2, 0.1f);
 		e.GetComponent<RectCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::RECTCOLLIDER);
 
@@ -791,13 +793,13 @@ void InspectorPanel::LayerColliderEditor()
 		//ImGui::Text("LayerCollider");
 		tmpVec2[0] = e.GetComponent<LayerCollider>().centerOffset.x;
 		tmpVec2[1] = e.GetComponent<LayerCollider>().centerOffset.y;
-		ImGui::InputFloat2("Layer position Offset", tmpVec2);
+		ImGui::DragFloat2("Layer position Offset", tmpVec2, 0.1f);
 		e.GetComponent<LayerCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
 
 		tmpVec2[0] = e.GetComponent<LayerCollider>().scaleOffset.x;
 		tmpVec2[1] = e.GetComponent<LayerCollider>().scaleOffset.y;
-		ImGui::InputFloat2("Layer scale Offset", tmpVec2);
+		ImGui::DragFloat2("Layer scale Offset", tmpVec2, 0.1f);
 		e.GetComponent<LayerCollider>().scaleOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::LAYERCOLLIDER);
 
@@ -821,12 +823,12 @@ void InspectorPanel::CircleColliderEditor()
 		//ImGui::Text("CircleCollider");
 		tmpVec2[0] = e.GetComponent<CircleCollider>().centerOffset.x;
 		tmpVec2[1] = e.GetComponent<CircleCollider>().centerOffset.y;
-		ImGui::InputFloat2("Circle position Offset", tmpVec2);
+		ImGui::DragFloat2("Circle position Offset", tmpVec2, 0.1f);
 		e.GetComponent<CircleCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
 		float scale = e.GetComponent<CircleCollider>().scaleOffset;
-		ImGui::InputFloat("Circle scale Offset", &scale);
+		ImGui::DragFloat("Circle scale Offset", &scale, 0.1f);
 		e.GetComponent<CircleCollider>().scaleOffset = { scale };
 		SaveUndo(e, tempComponent, COMPONENTID::CIRCLECOLLIDER);
 
@@ -851,14 +853,14 @@ void InspectorPanel::Edge2DColliderEditor()
 		//ImGui::Text("Edge2DCollider");
 		tmpVec2[0] = e.GetComponent<Edge2DCollider>().p0Offset.x;
 		tmpVec2[1] = e.GetComponent<Edge2DCollider>().p0Offset.y;
-		ImGui::InputFloat2("p0 Offset", tmpVec2);
+		ImGui::DragFloat2("p0 Offset", tmpVec2, 0.1f);
 		e.GetComponent<Edge2DCollider>().p0Offset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::EDGE2DCOLLIDER);
 
-		ImGui::InputFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset);
+		ImGui::DragFloat("rotationOffset", &e.GetComponent<Edge2DCollider>().rotationOffset, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::EDGE2DCOLLIDER);
 
-		ImGui::InputFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset);
+		ImGui::DragFloat("scaleOffset", &e.GetComponent<Edge2DCollider>().scaleOffset, 0.1f);
 		SaveUndo(e, tempComponent, COMPONENTID::EDGE2DCOLLIDER);
 
 		ImGui::Checkbox("RenderFlag", &e.GetComponent<Edge2DCollider>().renderFlag);
@@ -878,7 +880,7 @@ void InspectorPanel::Point2DColliderEditor()
 		//ImGui::Text("Point2DCollider");
 		tmpVec2[0] = e.GetComponent<Point2DCollider>().centerOffset.x;
 		tmpVec2[1] = e.GetComponent<Point2DCollider>().centerOffset.y;
-		ImGui::InputFloat2("centerOffset", tmpVec2);
+		ImGui::DragFloat2("centerOffset", tmpVec2, 0.1f);
 		e.GetComponent<Point2DCollider>().centerOffset = { tmpVec2[0] ,tmpVec2[1] };
 		SaveUndo(e, tempComponent, COMPONENTID::POINT2DCOLLIDER);
 
@@ -987,7 +989,7 @@ void InspectorPanel::TextEditor()
 		e.GetComponent<Text>().offset = Math::Vec2(tmpVec2[0], tmpVec2[1]);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
-		ImGui::DragFloat("Text Scale", &e.GetComponent<Text>().scale);
+		ImGui::DragFloat("Text Scale", &e.GetComponent<Text>().scale, 0.01f);
 		SaveUndo(e, tempComponent, COMPONENTID::TEXT);
 
 		tmpVec4[0] = e.GetComponent<Text>().color.r / 255.f;

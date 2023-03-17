@@ -67,9 +67,9 @@ private:
 	const char* colorChange[4]{ "None","Smoothy","Traffic Light","Water" };
 	const char* movement[5]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
 	int addComponentID{};
-	const char* componentsList[22]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
+	const char* componentsList[23]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
 				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "Button" ,"LayerCollider", 
-		"LightSource", "ShadowCaster","Viewport", "MovementAI"};
+		"LightSource", "ShadowCaster","Viewport", "MovementAI", "ParticleSystem" };
 	const char* type[2]{ "RECTANGULAR", "CIRCULAR" };
 
 	/*typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,

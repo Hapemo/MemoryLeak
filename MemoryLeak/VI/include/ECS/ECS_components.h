@@ -436,12 +436,16 @@ enum class COMPONENTID
 	LAYERCOLLIDER,	//17
 	LIGHTSOURCE,	//18
 	SHADOWCASTER,	//19
-	Viewport,//20
-	MOVEMENTAI      //21
+	Viewport,		//20
+	MOVEMENTAI,      //21
+	PARTICLESYSTEM	//22
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
-	Point2DCollider, Audio, Text, AI, Script, Dialogue, Button, LayerCollider, LightSource, ShadowCaster, Viewport, MovementAI>  COMPONENT;
+	Point2DCollider, Audio, Text, AI, Script, 
+	Dialogue, Button, LayerCollider, 
+	LightSource, ShadowCaster, Viewport, 
+	MovementAI, ParticleSystem>  COMPONENT;
 
 
 

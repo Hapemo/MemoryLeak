@@ -218,7 +218,7 @@ void EditorManager::Update()
 				if (e.HasComponent<Sprite>())
 				{
 					if (highestLayer <= e.GetComponent<Sprite>().layer)
-						highestLayer = e.GetComponent<Sprite>().layer + 1;
+						highestLayer = e.GetComponent<Sprite>().layer;// +1;
 				}
 			}
 		}
@@ -343,6 +343,16 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 			_old = e.GetComponent<Button>();
 		else if (_id == COMPONENTID::LAYERCOLLIDER)
 			_old = e.GetComponent<LayerCollider>();
+		else if (_id == COMPONENTID::LIGHTSOURCE)
+			_old = e.GetComponent<LightSource>();
+		else if (_id == COMPONENTID::SHADOWCASTER)
+			_old = e.GetComponent<ShadowCaster>();
+		else if (_id == COMPONENTID::Viewport)
+			_old = e.GetComponent<Viewport>();
+		else if (_id == COMPONENTID::MOVEMENTAI)
+			_old = e.GetComponent<MovementAI>();
+		else if (_id == COMPONENTID::PARTICLESYSTEM)
+			_old = e.GetComponent<ParticleSystem>();
 	}
 	if (ImGui::IsItemDeactivatedAfterEdit())
 	{
@@ -389,6 +399,16 @@ void EditorManager::SaveUndo(Entity const e, COMPONENT& _old, COMPONENTID _id)
 			_new = e.GetComponent<Button>();
 		else if (_id == COMPONENTID::LAYERCOLLIDER)
 			_new = e.GetComponent<LayerCollider>();
+		else if (_id == COMPONENTID::LIGHTSOURCE)
+			_new = e.GetComponent<LightSource>();
+		else if (_id == COMPONENTID::SHADOWCASTER)
+			_new = e.GetComponent<ShadowCaster>();
+		else if (_id == COMPONENTID::Viewport)
+			_new = e.GetComponent<Viewport>();
+		else if (_id == COMPONENTID::MOVEMENTAI)
+			_new = e.GetComponent<MovementAI>();
+		else if (_id == COMPONENTID::PARTICLESYSTEM)
+			_new = e.GetComponent<ParticleSystem>();
 
 		undoStack.push_back(std::make_pair(e, _new));
 		stackPointer = (int)undoStack.size();
@@ -513,6 +533,37 @@ void EditorManager::Do()
 		if (!(undoStack[stackPointer].first).HasComponent<LayerCollider>())
 			(undoStack[stackPointer].first).AddComponent(LayerCollider());
 		(undoStack[stackPointer].first).GetComponent<LayerCollider>() = std::get<LayerCollider>(undoStack[stackPointer].second);
+	}
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::LIGHTSOURCE)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<LightSource>())
+			(undoStack[stackPointer].first).AddComponent(LightSource());
+		(undoStack[stackPointer].first).GetComponent<LightSource>() = std::get<LightSource>(undoStack[stackPointer].second);
+	}
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::SHADOWCASTER)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<ShadowCaster>())
+			(undoStack[stackPointer].first).AddComponent(ShadowCaster());
+		(undoStack[stackPointer].first).GetComponent<ShadowCaster>() = std::get<ShadowCaster>(undoStack[stackPointer].second);
+	}
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::Viewport)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<Viewport>())
+			(undoStack[stackPointer].first).AddComponent(Viewport());
+		(undoStack[stackPointer].first).GetComponent<Viewport>() = std::get<Viewport>(undoStack[stackPointer].second);
+	}
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::MOVEMENTAI)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<MovementAI>())
+			(undoStack[stackPointer].first).AddComponent(MovementAI());
+		(undoStack[stackPointer].first).GetComponent<MovementAI>() = std::get<MovementAI>(undoStack[stackPointer].second);
+
+	}
+	else if (undoStack[stackPointer].second.index() == (int)COMPONENTID::PARTICLESYSTEM)
+	{
+		if (!(undoStack[stackPointer].first).HasComponent<ParticleSystem>())
+			(undoStack[stackPointer].first).AddComponent(ParticleSystem());
+		(undoStack[stackPointer].first).GetComponent<ParticleSystem>() = std::get<ParticleSystem>(undoStack[stackPointer].second);
 	}
 }
 /*!*****************************************************************************
@@ -740,11 +791,20 @@ Entity EditorManager::Clone(Entity c)
 		e.AddComponent(c.GetComponent<Script>());
 	if (c.HasComponent<Dialogue>())
 		e.AddComponent(c.GetComponent<Dialogue>());
-	if (c.HasComponent<LayerCollider>())
-		e.AddComponent(c.GetComponent<LayerCollider>());
 	if (c.HasComponent<Button>())
 		e.AddComponent(c.GetComponent<Button>());
-
+	if (c.HasComponent<LayerCollider>())
+		e.AddComponent(c.GetComponent<LayerCollider>());
+	if (c.HasComponent<LightSource>())
+		e.AddComponent(c.GetComponent<LightSource>());
+	if (c.HasComponent<ShadowCaster>())
+		e.AddComponent(c.GetComponent<ShadowCaster>());
+	if (c.HasComponent<Viewport>())
+		e.AddComponent(c.GetComponent<Viewport>());
+	if (c.HasComponent<MovementAI>())
+		e.AddComponent(c.GetComponent<MovementAI>());
+	/*if (c.HasComponent<ParticleSystem>())
+		e.AddComponent(c.GetComponent<ParticleSystem>());*/
 	return e;
 
 }
@@ -770,7 +830,7 @@ Entity EditorManager::NewEntity()
 		General{ "NEW Entity " + std::to_string(newEntityCount), TAG::OTHERS, SUBTAG::NOSUBTAG, 
 		true , false},
 		Transform{ {150,150}, 0, campos },
-		Sprite{ Color{0,255,0,255}, SPRITE::CIRCLE, 0,highestLayer });
+		Sprite{ Color{255,255,255,255}, SPRITE::CIRCLE, 0,highestLayer });
 	newEntityCount++;
 	//selectedEntity = &e;
 	return e;

@@ -25,7 +25,7 @@ public:
 	
 private:
 	void setSelectedEntity(const Entity* e);
-
+	bool showDetails;
 	void listComponents(const Entity* e, std::string _name);
 	std::vector<std::string> tag;
 
