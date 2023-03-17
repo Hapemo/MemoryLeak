@@ -573,7 +573,7 @@ void RenderManager::RenderDebug()
 				t.rotation = 0;
 				t.translation += Math::Vec2(e.GetComponent<LightSource>().centerOffset.x,
 					e.GetComponent<LightSource>().centerOffset.y);
-				CreateDebugPoint(t, { 0, 255, 0, 255 });
+				CreateDebugPoint(t, { 245, 158, 66, 255 });
 			}
 
 			if (e.HasComponent<ShadowCaster>() && e.GetComponent<ShadowCaster>().renderFlag)
@@ -585,6 +585,17 @@ void RenderManager::RenderDebug()
 					CreateDebugPoint(t, { 0, 255, 0, 255 });
 				}
 			}
+
+			if (e.HasComponent<MovementAI>() && e.GetComponent<MovementAI>().renderFlag)
+			{
+				for (const Transform& xform : e.GetComponent<MovementAI>().targetTransforms)
+				{
+					CreateDebugSquare(xform, { 255, 135, 247, 255 });
+					CreateDebugPoint(xform , { 255, 135, 247, 255 });
+
+				}
+			}
+
 
 			//check if sprite component itself is a debug drawing
 			if (!e.HasComponent<Sprite>()) continue;

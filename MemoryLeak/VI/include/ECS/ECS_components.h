@@ -286,7 +286,8 @@ struct MovementAI {
 	float acceleration = 0.f;//save
 	std::vector<float> time; //save
 	std::vector<Transform> targetTransforms; //save
-	bool moveOnHover;
+	bool moveOnHover = false;
+	bool renderFlag = false;
 };
 /*!*****************************************************************************
 \brief
