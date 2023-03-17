@@ -234,7 +234,6 @@ public:
 	*******************************************************************************/
 	void SelectEntities(std::vector<Entity>const& _es);
 
-	void AddSelectedEntity(const Entity& _e);
 	/*!*****************************************************************************
 	\brief
 	Unselect an entity. (not drawing box around it)

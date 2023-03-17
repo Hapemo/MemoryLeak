@@ -1983,11 +1983,6 @@ void RenderManager::SelectEntity(const Entity& _e)
 	ClearSelectedEntities();
 	mEditorSelectedEntities.push_back(_e);
 }
-void RenderManager::AddSelectedEntity(const Entity& _e)
-{
-	//ClearSelectedEntities();
-	mEditorSelectedEntities.push_back(_e);
-}
 /*!*****************************************************************************
 \brief
 Select multiple entities.
