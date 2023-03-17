@@ -94,8 +94,11 @@ void ViewportPanel::renderUI()
 		{
 			for (const Entity& e : scene.mEntities)
 			{
-				if (e.HasComponent<Script>()) 
+				if (e.HasComponent<Script>())
+				{
 					logicSystem->Alive(e);
+					logicSystem->Init(e);
+				}
 			}
 		}
 		audioManager->ResumeAllSound();
