@@ -43,7 +43,7 @@ void ButtonManager::Update()
 		if (!e.ShouldRun()) continue;
 		prev = e.GetComponent<Button>().isHover;
 		e.GetComponent<Button>().isHover = CheckHover(e);
-		if (e.HasComponent<MovementAI>())
+		if (e.HasComponent<MovementAI>() && e.GetComponent<MovementAI>().moveOnHover)
 			if (!prev && e.GetComponent<Button>().isHover)
 			{
 				movementAIManager->SetNextStep(e, 1);

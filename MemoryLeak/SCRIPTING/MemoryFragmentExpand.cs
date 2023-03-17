@@ -54,10 +54,10 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             //make button toggle showing
             //activate every frame
-            if (THIS.Input.Button.Released())
-            {
-                showing = !showing;
-            }
+            if (THIS.Input.Button.Hover())
+                showing = true;
+            else
+                showing = false;
             if (showing)
             {
                 ActivateFragMenu();
