@@ -887,8 +887,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 60.0,
-                "Y": 60.0
+                "X": 62.5,
+                "Y": 62.5
             },
             "rotation": 0.0,
             "translation": {
@@ -905,7 +905,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\cat\\Character_cat_SW_idle_spritesheet.png",
-            "layer": 55
+            "layer": 601
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -920,32 +920,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -3.4998779296875,
-                        "Y": 18.0
+                        "X": -16.0,
+                        "Y": 27.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 5.7158203125,
-                        "Y": -20.735092163085938
+                        "X": -15.9866943359375,
+                        "Y": -22.676719665527344
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -14.8724365234375,
-                        "Y": -20.53900909423828
+                        "X": 6.5360107421875,
+                        "Y": -18.74945068359375
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -13.69598388671875,
-                        "Y": 19.46099090576172
+                        "X": -0.6712646484375,
+                        "Y": 24.941452026367188
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -3.5,
-                        "Y": 18.0
+                        "X": -16.0,
+                        "Y": 27.0
                     }
                 }
             ],
