@@ -27,6 +27,7 @@ std::string Application::title{ "gam200" };
 GLFWwindow* Application::ptr_window;
 std::string Application::mCurrGameStateName{""};
 bool Application::mLoadAllResources{ true };
+bool Application::mShowCursor;
 
 void Application::startup() {
   loadConfig("../config.txt");
@@ -143,6 +144,9 @@ void Application::init() {
 
   // Set up quadtree after scene entities have been loaded
   collision2DManager->SetupQuadTree();
+#ifndef _EDITOR
+  mShowCursor ? glfwSetInputMode(ptr_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL) : glfwSetInputMode(ptr_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+#endif
 
 #ifdef NDEBUG
 #ifdef _EDITOR
@@ -155,7 +159,6 @@ void Application::init() {
 
 bool Application::FirstUpdate() {
   FPSManager::mPrevTime = glfwGetTime();
-
   // Part 1
   glfwPollEvents();
 
@@ -295,6 +298,7 @@ void Application::loadConfig(std::string path) {
     //else if (key == "starting_gamestate") GameStateManager::GetInstance()->SetStartingGS(static_cast<E_GS>(stoi(value)));
     else if (key == "load_all_resources") Application::mLoadAllResources = stoi(value);
     else if (key == "new_starting_gamestate") GameStateManager::GetInstance()->SetNextGSPath(value);
+    else if (key == "show_cursor") SetShowCursor(stoi(value));
   }
 #ifdef _DEBUG
   std::cout << "-----------\n";
