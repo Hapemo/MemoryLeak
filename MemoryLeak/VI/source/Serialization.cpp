@@ -605,6 +605,8 @@ Audio SerializationManager::getAudio(Value& entity)
 	Audio audio;
 	Sound sound;
 	sound.path = entity["Audio"]["path"].GetString();
+	if(entity["Audio"].HasMember("toPlay"))//////////////////////////////////////////remove
+		sound.volume = entity["Audio"]["toPlay"].GetFloat();
 	sound.volume = entity["Audio"]["volume"].GetFloat();
 	sound.volumeMod = entity["Audio"]["volumeMod"].GetFloat();
 	sound.pitch = entity["Audio"]["pitch"].GetFloat();
@@ -1209,6 +1211,7 @@ void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
 	Value tmp(kObjectType);
 	Value vpath(audio.sound.path.c_str(), (SizeType)audio.sound.path.size(), scene.GetAllocator());
 	tmp.AddMember(StringRef("path"), vpath, scene.GetAllocator());
+	tmp.AddMember(StringRef("toPlay"), audio.sound.toPlay, scene.GetAllocator());
 	tmp.AddMember(StringRef("volume"), audio.sound.volume, scene.GetAllocator());
 	tmp.AddMember(StringRef("volumeMod"), audio.sound.volumeMod, scene.GetAllocator());
 	tmp.AddMember(StringRef("pitch"), audio.sound.pitch, scene.GetAllocator());
@@ -1218,7 +1221,7 @@ void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
 	tmp.AddMember(StringRef("isRandPitch"), audio.sound.isRandPitch, scene.GetAllocator());
 	tmp.AddMember(StringRef("isSpacial"), audio.isSpacial, scene.GetAllocator());
 	entity.AddMember(StringRef("Audio"), tmp, scene.GetAllocator());
-	std::string path = "\\Audio\\" + audio.sound.path;
+	std::string path = "\\Audio\\SFX\\" + audio.sound.path;
 	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));
 }
 void SerializationManager::addAI(Document& scene, Value& entity, AI ai)

@@ -1248,6 +1248,7 @@ void InspectorPanel::MovementAIEditor()
 		ImGui::Checkbox("loop", &e.GetComponent<MovementAI>().loop);
 		ImGui::Checkbox("reverse", &e.GetComponent<MovementAI>().reverse);
 		ImGui::Checkbox("cycle", &e.GetComponent<MovementAI>().cycle);
+		ImGui::Checkbox("moveOnHover", &e.GetComponent<MovementAI>().moveOnHover);
 		ImGui::Separator();
 		static bool pp = false;
 		if (pp)
@@ -1334,7 +1335,53 @@ void InspectorPanel::ParticleSystemEditor()
 {
 	if (ImGui::CollapsingHeader("ParticleSystem"))
 	{
+		ImGui::InputFloat("Lifespan", &e.GetComponent<ParticleSystem>().mParticleInfo.mScale);
+		ImGui::InputFloat("mFacing", &e.GetComponent<ParticleSystem>().mParticleInfo.mFacing);
+		ImGui::InputFloat("mLifespan", &e.GetComponent<ParticleSystem>().mParticleInfo.mLifespan);
 
+		ImGui::Text("Sprite");
+		tmpVec4[0] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.r / 255.f;
+		tmpVec4[1] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.g / 255.f;
+		tmpVec4[2] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.b / 255.f;
+		tmpVec4[3] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.a / 255.f;
+		ImGui::ColorEdit4("Sprite Color", tmpVec4);
+		//ImGui::ColorPicker4("Color", tmpVec4);
+		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.r = (GLubyte)(tmpVec4[0] * 255);
+		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.g = (GLubyte)(tmpVec4[1] * 255);
+		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.b = (GLubyte)(tmpVec4[2] * 255);
+		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.a = (GLubyte)(tmpVec4[3] * 255);
+
+		std::string tex{};
+		if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::TEXTURE)
+			tex = spriteManager->GetTexturePath(e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture);
+		else if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::CIRCLE)
+			tex = "CIRCLE";
+		else if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::SQUARE)
+			tex = "SQUARE";
+		int shapeID = (int)e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite;
+		//static const char* shape[]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
+		ImGui::Combo("Shape", &shapeID, shape, IM_ARRAYSIZE(shape));
+		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite = (SPRITE)shapeID;
+
+		if ((SPRITE)shapeID != SPRITE::TEXTURE)
+		{
+			e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture = 0;
+		}
+		if (e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)
+		{
+			ImGui::InputText("Sprite", &tex);
+			spriteManager->GetTextureID(tex);
+		}
+		else
+		{
+			ImGui::Text(tex.c_str());
+		}
+
+
+		ImGui::InputFloat("mRotation", &e.GetComponent<ParticleSystem>().mParticleInfo.mRotation);
+		ImGui::InputFloat("mSpeed", &e.GetComponent<ParticleSystem>().mParticleInfo.mSpeed);
+		ImGui::Checkbox("mFading", &e.GetComponent<ParticleSystem>().mParticleInfo.mFading);
+		ImGui::Checkbox("mFadeIn", &e.GetComponent<ParticleSystem>().mParticleInfo.mFadeIn);
 	}
 
 }

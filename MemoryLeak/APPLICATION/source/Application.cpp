@@ -211,20 +211,20 @@ void Application::MainUpdate() {
     TRACK_PERFORMANCE("Editor");
     editorManager->Update();
     END_TRACK("Editor");
-    TRACK_PERFORMANCE("Shadows");
-    shadowManager->Update();
-    END_TRACK("Shadows");
 
     if (!editorManager->IsScenePaused()) {
       GameStateManager::GetInstance()->Update(); // Game logic
       SystemUpdate(); // Should be called after logic
     }
+
 #else
     GameStateManager::GetInstance()->Update(); // Game logic
-    shadowManager->Update();
     SystemUpdate();
 
 #endif
+    TRACK_PERFORMANCE("Shadows");
+    shadowManager->Update();
+    END_TRACK("Shadows");
     static bool toggle{ false };
     if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
 
