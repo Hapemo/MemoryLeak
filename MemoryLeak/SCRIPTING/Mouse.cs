@@ -55,7 +55,7 @@ namespace BonVoyage {
 
             if (VI.Input.Mouse.Hold())
             {
-                if (!PlayerScript.PlayerInDialogue)
+                if (!PlayerScript.PlayerInDialogue && !PlayerScript.PlayerInDeathAnimation && !PlayerScript.PlayerInOtherAnimation)
                 {
                     float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - VI.Transform.Position.GetX(playerBoat);
                     float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - VI.Transform.Position.GetY(playerBoat);
