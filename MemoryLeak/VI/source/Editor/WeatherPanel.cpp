@@ -77,7 +77,7 @@ void WeatherPanel::Update()
 		{
 			for (int h = 0; h < aiManager->getWeatherMap().size(); h++)
 			{
-				if ((aiManager->getWeatherMap()[h][w]) == SUNNUY)
+				if ((aiManager->getWeatherMap()[h][w]) == SUNNY)
 				{
 					//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(ImColor(255, 203, 81)));
 					//ImGui::Button("S", weatherIocnSize);

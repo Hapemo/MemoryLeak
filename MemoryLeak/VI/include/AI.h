@@ -63,7 +63,7 @@ private:
 	int currentWeather[maxlocation]{};
 };
 enum WeatherType {
-	SUNNUY=0,
+	SUNNY=0,
 	RAIN=1,
 	WINDY=2,
 	FOG=4,

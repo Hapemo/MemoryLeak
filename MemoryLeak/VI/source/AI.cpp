@@ -37,7 +37,7 @@ void AIManager::weatherAIinit(float width, float height)
 	{
 		for (int h = 0; h < mapMaxHeight; h++)
 		{
-			weatherMap[w][h] = SUNNUY; //reset map
+			weatherMap[w][h] = SUNNY; //reset map
 		}
 	}
 	//int numWeatherLoc = 3;//(std::rand() % 3)+1;
@@ -83,7 +83,7 @@ void AIManager::weatherAIupdate()
 		{
 			for (int h = 0; h < mapMaxHeight; h++)
 			{
-				weatherMap[w][h] = SUNNUY; //reset map
+				weatherMap[w][h] = SUNNY; //reset map
 			}
 		}
 		//int numWeatherLoc = 3;// std::rand() % 3;
