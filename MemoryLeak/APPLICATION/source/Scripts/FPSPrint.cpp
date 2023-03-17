@@ -29,16 +29,17 @@ void FPSPrintScript::Alive(Entity const& _e) {
 		ParticleSystem::ParticleInfo{
 			10, // mScale			
 			90, // mFacing		
-			2, // mLifespan	
+			3, // mLifespan	
 			Sprite{
-				Color(255,255,255,125), // color
+				Color(255,255,255,200), // color
 				SPRITE::SQUARE, // sprit
 				0, // texture
 				memoryFragment.GetComponent<Sprite>().layer + 1  // layer
 			}, // mSprite		
 			2, // mRotation	
 			20, // mSpeed			
-			true // mFading			
+			true, // mFading			
+			true // mFadeIn
 		},
 		1, // mDensity 
 		memoryFragment.GetComponent<Transform>().translation, // mCenter
@@ -49,6 +50,35 @@ void FPSPrintScript::Alive(Entity const& _e) {
 		true, // mIsActive 
 		0.1f // mSlow
 	});
+
+	//memoryFragment = VI::iEntity::GetEntity("Boat", "");
+	//if (memoryFragment.id == 0) return;
+	//memoryFragment.AddComponent(ParticleSystem{
+	//	ParticleSystem::ParticleInfo{
+	//		70, // mScale			
+	//		90, // mFacing		
+	//		8, // mLifespan	
+	//		Sprite{
+	//			Color(255,255,255,), // color
+	//			SPRITE::SQUARE, // sprit
+	//			0, // texture
+	//			memoryFragment.GetComponent<Sprite>().layer + 1  // layer
+	//		}, // mSprite		
+	//		2, // mRotation	
+	//		20, // mSpeed			
+	//		true, // mFading			
+	//		true // mFadeIn
+	//	},
+	//	1, // mDensity 
+	//	memoryFragment.GetComponent<Transform>().translation, // mCenter
+	//	130, // mAreaWidth 
+	//	90.f, // mDirection
+	//	45.f, // mSpread 
+	//	0.1f, // mDuration 
+	//	true, // mIsActive 
+	//	0.1f // mSlow
+	//	});
+
 	//LOG_INFO(memoryFragment.GetComponent<General>().name + ": Added component particle system IMPROPERLY VIA C++============================================");
 	(void)_e;
 }
@@ -87,7 +117,7 @@ void FPSPrintScript::Update(Entity const& _e) {
 
 	std::stringstream str;
 	str << std::fixed << std::setprecision(1) << FPSManager::fps;
-	VI::iText::UpdateText("fpsDisplay", "FPS", str.str());
+	VI::iText::UpdateText("fpsDisplay", "", str.str());
 }
 
 /*!*****************************************************************************

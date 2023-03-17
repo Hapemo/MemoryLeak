@@ -85,6 +85,9 @@ public:
 			static bool Hover(const Entity& _e);
 			static bool Hover(const int _eId);
 			static bool Hover(std::string const& _entityName, std::string const& _sceneName);
+
+			static bool AllNotHover();
+			static bool AllNotClick();
 		};
 
 		struct iMouse {
@@ -605,11 +608,13 @@ public:
 
 		/*!*****************************************************************************
 		\brief
-			Set volume
+			Set and get volume
 		*******************************************************************************/
 		static void SetAllVolume(float _vol);
 		static void SetBGMVolume(float _vol);
 		static void SetSFXVolume(float _vol);
+		static float GetBgmVol();
+		static float GetSfxVol();
 	};
 
 	struct iTransform {

@@ -50,14 +50,13 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             if (VI.Input.Button.s_Released("Skip", "CutSceneUI"))
             {
-                isAlphaDecreasing = true;
-                skipping = true;
+                TransitionSquare.FadeOut("LevelTutorial");
             }
             if (currScn >= 19)
             {
                 if (skipping || !isAlphaDecreasing)
                 {
-                    VI.GameState.Go("LevelTutorial");
+                    TransitionSquare.FadeOut("LevelTutorial");
                 }
             }
             if (!skipping && !isAlphaDecreasing && VI.Input.Key.Press(349) && currScn < 19)

@@ -132,7 +132,7 @@ namespace BonVoyage {
             int playerDirection = VI.Animation.SpriteSheet.SheetIndex.Get(_ePlayer) % 8;
             switch (playerDirection)
             {
-                case 0: // Front
+                case 0: // South / Front
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer));
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer));
@@ -144,7 +144,7 @@ namespace BonVoyage {
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer));
                     VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 5);
                     break;
-                case 2: // Left
+                case 2: // West / Left
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) - VI.Transform.Scale.GetX(_ePlayer) / 4f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 16f);
@@ -156,24 +156,24 @@ namespace BonVoyage {
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 8f);
                     VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 3);
                     break;
-                case 4: // Back
+                case 4: // North / Back
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) - 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer));
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer));
                     break;
-                case 5:
+                case 5: // NE
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) + VI.Transform.Scale.GetX(_ePlayer) / 6f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 8f);
                     VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 2);
                     break;
-                case 6: // Right
+                case 6: // East / Right
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) + VI.Transform.Scale.GetX(_ePlayer) / 4f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 16f);
                     VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 1);
                     break;
-                case 7:
+                case 7: // SE
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) + VI.Transform.Scale.GetX(_ePlayer) / 10f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer));

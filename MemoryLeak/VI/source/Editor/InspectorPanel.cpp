@@ -131,6 +131,10 @@ void InspectorPanel::Update()
 				{
 					MovementAIEditor();
 				}
+				if (e.HasComponent<ParticleSystem>())
+				{
+					ParticleSystemEditor();
+				}
 				ImGui::Combo("Select Component", &addComponentID, componentsList, IM_ARRAYSIZE(componentsList));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.f, 0.5f, 0.f, 1.0f });
 				if (ImGui::Button("Add Component"))
@@ -1277,6 +1281,14 @@ void InspectorPanel::MovementAIEditor()
 		}
 		ImGui::PopStyleColor();
 
+
+	}
+
+}
+void InspectorPanel::ParticleSystemEditor()
+{
+	if (ImGui::CollapsingHeader("ParticleSystem"))
+	{
 
 	}
 

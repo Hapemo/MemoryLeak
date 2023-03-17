@@ -13,13 +13,16 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class BGMcontroller : BaseScript
     {
+        bool isIn;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            
+            isIn = false;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            isIn = false;
+            
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -30,10 +33,19 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             if (THIS.Input.Button.Clicked())
-            {
-                VI.Transform.Scale.s_SetX("BGMvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - VI.Input.Mouse.WorldPosX()));
+                isIn = true;
+            if (isIn && VI.Input.Mouse.Release())
+                isIn = false;
+            if (isIn)
+            { 
+                float ZoomScaleFactorX = VI.Camera.GetScale.X() / VI.Window.GetScreenWidth();
+                float mouseX = VI.Camera.GetPos.X() + ZoomScaleFactorX * VI.Input.Mouse.WorldPosX();
+                if (mouseX > THIS.Transform.Position.GetX() + 0.5 * THIS.Transform.Scale.GetX() ||
+                    mouseX < THIS.Transform.Position.GetX() - 0.5 * THIS.Transform.Scale.GetX())
+                    return;
+                VI.Transform.Scale.s_SetX("BGMvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - mouseX));
                 VI.Transform.Position.s_SetX("BGMvolume", "Settings", THIS.Transform.Position.GetX() - 0.5f * THIS.Transform.Scale.GetX() + VI.Transform.Scale.s_GetX("BGMvolume", "Settings") * 0.5f);
-                VI.Audio.Volume.SetBGMVolume(VI.Transform.Scale.s_GetX("BGMvolume", "Settings") / 200.0f); ;
+                VI.Audio.Volume.SetBGMVolume(VI.Transform.Scale.s_GetX("BGMvolume", "Settings") / THIS.Transform.Scale.GetX());
             }
         }
 

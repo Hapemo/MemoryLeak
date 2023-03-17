@@ -69,6 +69,7 @@ namespace BonVoyage {
             if (!big && (VI.Input.Button.Released(enemymapID)))
             {
                 big = true;
+                PlayerScript.PlayerInOtherAnimation = true;
                 VI.Animation.Transform.SetNext(enemymapID, 1);
                 VI.Text.Offset.Set(enemymapID, textbigOffsetX, textbigOffsetY);
                 VI.Text.Scale.Set(enemymapID, textbigScale);
@@ -85,6 +86,7 @@ namespace BonVoyage {
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(enemymapID)))
             {
                 big = false;
+                PlayerScript.PlayerInOtherAnimation = false;
                 VI.Animation.Transform.SetNext(enemymapID, 0);
                 VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);
                 VI.Text.Scale.Set(enemymapID, textScale);
@@ -119,6 +121,7 @@ namespace BonVoyage {
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             big= false;
+            PlayerScript.PlayerInOtherAnimation = false;
             VI.Animation.Transform.SetNext(enemymapID, 0);
             VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);
             VI.Text.Scale.Set(enemymapID, textScale);

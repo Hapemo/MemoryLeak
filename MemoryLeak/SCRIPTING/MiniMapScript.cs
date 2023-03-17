@@ -76,6 +76,7 @@ namespace BonVoyage {
             if (!big && (VI.Input.Button.Released(minimapID)))
             {
                 big = true;
+                PlayerScript.PlayerInOtherAnimation = true;
                 VI.Animation.Transform.SetNext(minimapID, 1);
                 VI.Text.Offset.Set(minimapID, textbigOffsetX, textbigOffsetY);
                 VI.Text.Scale.Set(minimapID, textbigScale);
@@ -96,6 +97,7 @@ namespace BonVoyage {
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(minimapID)))
             {
                 big = false;
+                PlayerScript.PlayerInOtherAnimation = false;
                 VI.Animation.Transform.SetNext(minimapID, 0);
                 VI.Text.Offset.Set(minimapID, textOffsetX, textOffsetY);
                 VI.Text.Scale.Set(minimapID, textScale);
@@ -114,6 +116,7 @@ namespace BonVoyage {
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             big = false;
+            PlayerScript.PlayerInOtherAnimation = false;
             VI.Animation.Transform.SetNext(minimapID, 0);
             VI.Text.Offset.Set(minimapID, textOffsetX, textOffsetY);
             VI.Text.Scale.Set(minimapID, textScale);

@@ -34,7 +34,7 @@ public:
 	void SetALLVolume(float vol);
 	void SetBGMVolume(float vol);
 	void SetSFXVolume(float vol);
-	void PlaySound(const Entity& e);	//Play sound 
+	void PlaySound(const Entity& e);
 	int AddChannel();
 	void StopSound(int);
 	void StopAllSound();
@@ -42,7 +42,11 @@ public:
 	void StopSFXSound();
 	void StopSound(const Entity& e);
 	std::vector<std::string> GetSongs() { return songs; }
+	float GetBgmVol() { return bgmVol; }
+	float GetSfxVol() { return sfxVol; }
+
 private:
+	void PlayEntitySound(const Entity& e);	//Play sound 
 	//WIP
 	//void PauseSound(int, bool);				//pasue (sound enum, true/false) true - pause 
 	//void SetSoundVolume(int, float);			//set volume (sound, 0.0f-1.0f, 0 or 1) 1.0f loudest
@@ -70,6 +74,6 @@ private:
 		FORCEPLAY,
 		MAINBACKGROUND,
 		EDITORSONG,
-		DIALOGUE
-
+		DIALOGUE,
+		MAX =20
 	};

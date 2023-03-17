@@ -154,6 +154,11 @@ namespace BonVoyage {
 
                     // Activate entity to transition to level 1 once player touches it
                     //VI.Entity.Activate(level1Transition_Box);
+                    if (VI.Transform.Position.GetX(playerBoat) < VI.Transform.Position.GetX(_ENTITY)) 
+                        VI.Animation.SpriteSheet.SheetIndex.Set(_ENTITY, 5);
+                    else 
+                        VI.Animation.SpriteSheet.SheetIndex.Set(_ENTITY, 4);
+                    
 
                     // Set flag to get out
                     DestinationReached = false;

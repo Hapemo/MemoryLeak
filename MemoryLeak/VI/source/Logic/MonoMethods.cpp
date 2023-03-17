@@ -462,6 +462,9 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Input/Button::Released", &MM::iInput::iButton::Released);
 	mono_add_internal_call("VI.Input/Button::Hover", &MM::iInput::iButton::Hover);
 
+	mono_add_internal_call("VI.Input/Button::AllNotHover", &VI::iInput::iButton::AllNotHover);
+	mono_add_internal_call("VI.Input/Button::AllNotClick", &VI::iInput::iButton::AllNotClick);
+
 	mono_add_internal_call("VI.Input/Mouse::WorldPosX", &VI::iInput::iMouse::GetWorldPosX);
 	mono_add_internal_call("VI.Input/Mouse::WorldPosY", &VI::iInput::iMouse::GetWorldPosY);
 
@@ -693,9 +696,12 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Audio::StopAll", &VI::iAudio::StopAll);
 	mono_add_internal_call("VI.Audio::StopBGM", &VI::iAudio::StopBGM);
 	mono_add_internal_call("VI.Audio::StopSFX", &VI::iAudio::StopSFX);
+
 	mono_add_internal_call("VI.Audio/Volume::SetVolume", &VI::iAudio::SetAllVolume);
 	mono_add_internal_call("VI.Audio/Volume::SetBGMVolume", &VI::iAudio::SetBGMVolume);
 	mono_add_internal_call("VI.Audio/Volume::SetSFXVolume", &VI::iAudio::SetSFXVolume);
+	mono_add_internal_call("VI.Audio/Volume::GetBgmVol", &VI::iAudio::GetBgmVol);
+	mono_add_internal_call("VI.Audio/Volume::GetSfxVol", &VI::iAudio::GetSfxVol);
 
 	mono_add_internal_call("VI.Audio::s_Stop", &MM::iAudio::s_Stop);
 	mono_add_internal_call("VI.Audio::s_Play", &MM::iAudio::s_Play);

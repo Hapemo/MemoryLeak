@@ -83,7 +83,7 @@ namespace BonVoyage {
                 currAlpha = 0;
                 fadingin = false;
             }
-            THIS.LightSource.SpriteColor.Set(0, 0, 0, (int)currAlpha);
+            THIS.LightSource.SpriteColor.Set(255, 255, 255, (int)currAlpha);
         }
 
         private static void IncreaseAlpha()
@@ -94,7 +94,7 @@ namespace BonVoyage {
                 currAlpha = 255;
                 fadingout = false;
             }
-            THIS.LightSource.SpriteColor.Set(0, 0, 0, (int)currAlpha);
+            THIS.LightSource.SpriteColor.Set(255, 255, 255, (int)currAlpha);
             if (currAlpha == 255)
             {
                 fadingin = true;

@@ -9,12 +9,25 @@ main file of the whole program
 *******************************************************************************/
 
 // Extension loader library's header must be included before GLFW's header!!!
+
 #include <Helper.h>
 #include "pch.h"
 #include "Application.h"
 #include "GameStateManager.h"
 #include "SignalHandler.h"
 #include "SparseSet.h"
+
+// To use dedicated gpu
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+  __declspec(dllexport) unsigned long NvOptimusEnablement = 1;
+  __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+
+#ifdef __cplusplus
+}
+#endif
 
 /*  _________________________________________________________________________ */
 /*! main
