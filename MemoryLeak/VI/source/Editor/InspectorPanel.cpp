@@ -1163,19 +1163,17 @@ void InspectorPanel::ShadowCasterEditor()
 		{
 			e.GetComponent<ShadowCaster>().renderFlag = true;
 			SRT = 5;
+			Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos() - e.GetComponent<Transform>().translation;
 			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
 			{
-				Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos() - e.GetComponent<Transform>().translation;
 				e.GetComponent<ShadowCaster>().centerOffset.push_back(Math::Vec2{ point });
 			}
 			else if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
 			{
-				Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos() - e.GetComponent<Transform>().translation;
 				e.GetComponent<ShadowCaster>().centerOffset[e.GetComponent<ShadowCaster>().centerOffset.size() - 1] = point;
 			}
 			else if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_R))
 			{
-				Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos() - e.GetComponent<Transform>().translation;
 				e.GetComponent<ShadowCaster>().centerOffset[e.GetComponent<ShadowCaster>().centerOffset.size() - 1] = point;
 			}
 		}
@@ -1195,16 +1193,21 @@ void InspectorPanel::ShadowCasterEditor()
 			tmpVec2[1] = e.GetComponent<ShadowCaster>().centerOffset[i].y;
 			ImGui::DragFloat2(("Shadow center" + std::to_string(i)).c_str(), tmpVec2);
 			e.GetComponent<ShadowCaster>().centerOffset[i] = {tmpVec2[0] ,tmpVec2[1]};
+
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 			if (ImGui::Button(("Remove Shadow Vertex" + std::to_string(i)).c_str()))
 			{
 				e.GetComponent<ShadowCaster>().centerOffset.erase(e.GetComponent<ShadowCaster>().centerOffset.begin()+i);
 			}
+			ImGui::PopStyleColor();
 			ImGui::Separator();
 		}
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0f, 0.5f, 0.f, 1.0f });
 		if (ImGui::Button("Add Shadow Vertex"))
 		{
 			e.GetComponent<ShadowCaster>().centerOffset.push_back(Math::Vec2{});
 		}
+		ImGui::PopStyleColor();
 		ImGui::Checkbox("Shadow RenderFlag", &e.GetComponent<ShadowCaster>().renderFlag);
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove ShadowCaster"))
@@ -1245,6 +1248,37 @@ void InspectorPanel::MovementAIEditor()
 		ImGui::Checkbox("loop", &e.GetComponent<MovementAI>().loop);
 		ImGui::Checkbox("reverse", &e.GetComponent<MovementAI>().reverse);
 		ImGui::Checkbox("cycle", &e.GetComponent<MovementAI>().cycle);
+		ImGui::Separator();
+		static bool pp = false;
+		if (pp)
+		{
+			//e.GetComponent<ShadowCaster>().renderFlag = true;
+			SRT = 6;
+			Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();// -e.GetComponent<Transform>().translation;
+			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
+			{
+				e.GetComponent<MovementAI>().time.push_back(e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().targetTransforms.size() - 1]);
+				e.GetComponent<MovementAI>().targetTransforms.push_back(e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().targetTransforms.size() - 1]);
+			}
+			else if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_L))
+			{
+				e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().targetTransforms.size() - 1].translation = point;
+			}
+			else if (Input::CheckKey(E_STATE::HOLD, E_KEY::M_BUTTON_R))
+			{
+				e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().targetTransforms.size() - 1].translation = point;
+			}
+		}
+
+		ImGui::Checkbox("Translation Point Adder", &pp);
+		if (!pp)
+		{
+			if (SRT == 6)
+			{
+				e.GetComponent<MovementAI>().targetTransforms.pop_back();
+				SRT = 0;
+			}
+		}
 		for (int i = 0; i < e.GetComponent<MovementAI>().targetTransforms.size(); i++)
 		{
 			ImGui::DragFloat(("Set Time" + std::to_string(i)).c_str(), &e.GetComponent<MovementAI>().time[i], 0.1f, 0.f, 60.f);
@@ -1267,14 +1301,22 @@ void InspectorPanel::MovementAIEditor()
 			ImGui::DragFloat(("Set Target Rotation" + std::to_string(i)).c_str(), &tmpFloat, 1.f, -360.f, 360.f);
 			tmpFloat = (float)(tmpFloat * M_PI / 180.f);
 			e.GetComponent<MovementAI>().targetTransforms[i].rotation = tmpFloat;
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+			if (ImGui::Button(("Remove Transform" + std::to_string(i)).c_str()))
+			{
+				e.GetComponent<MovementAI>().targetTransforms.erase(e.GetComponent<MovementAI>().targetTransforms.begin() + i);
+			}
+			ImGui::PopStyleColor();
 			ImGui::Separator();
 		}
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0f, 0.5f, 0.f, 1.0f });
 		if (ImGui::Button("Add Transform"))
 		{
 			//e.GetComponent<MovementAI>().targetTransforms.push_back(Transform{});
 			//e.GetComponent<MovementAI>().time.push_back(1.f);
 			movementAIManager->AddTransform(e, e.GetComponent<Transform>());
 		}
+		ImGui::PopStyleColor();
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove MovementAI"))
 		{

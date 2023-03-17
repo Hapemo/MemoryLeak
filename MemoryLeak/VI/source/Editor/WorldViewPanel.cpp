@@ -204,6 +204,8 @@ void WorldViewPanel::Update()
 						renderManager->GetGizmo().Attach(*selectedEntity);
 					else if (SRT == 5)
 						pointPicker();
+					else if (SRT == 6)
+						pointPicker();
 					else
 						UseGuizmo();
 				}
