@@ -1252,7 +1252,7 @@ void InspectorPanel::MovementAIEditor()
 		static bool pp = false;
 		if (pp)
 		{
-			//e.GetComponent<ShadowCaster>().renderFlag = true;
+			e.GetComponent<MovementAI>().renderFlag = true;
 			SRT = 6;
 			Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos();// -e.GetComponent<Transform>().translation;
 			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
@@ -1316,6 +1316,7 @@ void InspectorPanel::MovementAIEditor()
 			//e.GetComponent<MovementAI>().time.push_back(1.f);
 			movementAIManager->AddTransform(e, e.GetComponent<Transform>());
 		}
+		ImGui::Checkbox("AI render Flag", &e.GetComponent<MovementAI>().renderFlag);
 		ImGui::PopStyleColor();
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 		if (ImGui::Button("Remove MovementAI"))

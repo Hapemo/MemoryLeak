@@ -701,6 +701,8 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 	movementAI.cycle = entity["MovementAI"]["cycle"].GetBool();
 	movementAI.nextStep = entity["MovementAI"]["nextStep"].GetInt();
 	movementAI.acceleration = entity["MovementAI"]["acceleration"].GetFloat();
+	if (entity["MovementAI"].HasMember("moveOnHover"))//////remove this if line
+		movementAI.moveOnHover = entity["MovementAI"]["moveOnHover"].GetBool();
 	Value a(kObjectType);
 	if (entity["MovementAI"].HasMember("targets"))
 	{
@@ -1318,6 +1320,7 @@ void SerializationManager::addMovementAI(Document& scene, Value& entity, Movemen
 	tmp.AddMember(StringRef("cycle"), movementAI.cycle, scene.GetAllocator());
 	tmp.AddMember(StringRef("nextStep"), movementAI.nextStep, scene.GetAllocator());
 	tmp.AddMember(StringRef("acceleration"), movementAI.acceleration, scene.GetAllocator());
+	tmp.AddMember(StringRef("moveOnHover"), movementAI.moveOnHover, scene.GetAllocator());
 	Value child(kObjectType);
 	child.SetArray();
 	for (int i = 0; i < movementAI.targetTransforms.size(); ++i)
