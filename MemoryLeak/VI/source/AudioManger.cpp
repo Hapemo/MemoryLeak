@@ -420,10 +420,20 @@ void AudioManager::StopSound(const Entity& e)
         mChannel[e.GetComponent<Audio>().sound.channel]->stop();
 }
 
+void AudioManager::PauseSound(int _channel)
+{
+    mChannel[_channel]->setPaused(true);
+}
+
 void AudioManager::PauseAllSound()
 {
     for (int i = 0; i < mChannel.size(); i++)
         mChannel[i]->setPaused(true);
+}
+
+void AudioManager::ResumeSound(int _channel)
+{
+    mChannel[_channel]->setPaused(false);
 }
 
 void AudioManager::ResumeAllSound()
