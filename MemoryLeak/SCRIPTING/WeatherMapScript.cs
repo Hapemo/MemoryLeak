@@ -19,6 +19,8 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 namespace BonVoyage {
     public class WeatherMapScript
     {
+        private bool init = true;
+
         static bool big = false;
         int weathermapID;
         int playerID;
@@ -89,6 +91,14 @@ namespace BonVoyage {
             VI.Entity.SetActive(blurID, false);
         }
         public void Update(int _ENTITY) {
+            if (init) {
+                Alive(_ENTITY);
+                Init(_ENTITY);
+
+                init = false;
+            }
+
+
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             if (!big && (VI.Input.Button.Released(weathermapID)))
             {
