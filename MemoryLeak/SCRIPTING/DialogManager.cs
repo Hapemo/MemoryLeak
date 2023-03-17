@@ -25,6 +25,7 @@ namespace BonVoyage {
     protected const float smallDialogBoxHeight = 109.8f;
     protected const float midDialogBoxHeight = 178.8f;
     protected const float bigDialogBoxHeight = 228.6f;
+    protected const float verybigDialogBoxHeight = 300.6f;
     protected const float smallChoiceHeight = 61.8f;
     protected const float midChoiceHeight = 87.6f;
 
@@ -159,9 +160,14 @@ namespace BonVoyage {
           VI.Transform.Scale.SetY(entityname, midDialogBoxHeight);
           VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
           VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox2.png");
-        } else {
+        } else if (additionalLines < 6) {
           posY += (bigDialogBoxHeight - smallDialogBoxHeight) / 2;
           VI.Transform.Scale.SetY(entityname, bigDialogBoxHeight);
+          VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
+          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
+        } else {
+          posY += (verybigDialogBoxHeight - smallDialogBoxHeight) / 2;
+          VI.Transform.Scale.SetY(entityname, verybigDialogBoxHeight);
           VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
           VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
         }
