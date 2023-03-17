@@ -99,7 +99,7 @@
  },
  {
    "Dialogue ID": 15,
-   "Dialogue Text": "▇er, have you really forgotten what you tried to give me?",
+   "Dialogue Text": "***er, have you really forgotten what you tried to give me?",
    "Speaker": 0,
    "Next Dialogue": 16,
    "Next Dialogue(2)": 0
@@ -113,7 +113,7 @@
  },
  {
    "Dialogue ID": 17,
-   "Dialogue Text": "I'm not letting you go until I find it again... The precious gift ▇er gave to me...",
+   "Dialogue Text": "I'm not letting you go until I find it again... The precious gift ***er gave to me...",
    "Speaker": 0,
    "Next Dialogue": 0,
    "Next Dialogue(2)": 0
