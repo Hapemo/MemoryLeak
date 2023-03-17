@@ -219,7 +219,7 @@ namespace BonVoyage {
 
             #region Camera Follow Player
             if (CameraFollowPlayer)
-                MoveCamera(_ENTITY, PlayerPosX, PlayerPosY);
+                MoveCamera(PlayerPosX, PlayerPosY);
             #endregion
         }
 
