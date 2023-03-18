@@ -151,7 +151,7 @@
         },
         "Viewport": {
             "isUI": false,
-            "width": 1500
+            "width": 2500
         },
         "MovementAI": {
             "run": true,
