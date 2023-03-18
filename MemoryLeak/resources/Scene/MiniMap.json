@@ -59,7 +59,7 @@
             "layer": 4
         },
         "MovementAI": {
-            "run": true,
+            "run": false,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -100,7 +100,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 640.0,
-                "Y": -258.00885009765625
+                "Y": -260.0
             }
         },
         "Sprite": {
@@ -154,7 +154,7 @@
             "width": 2500
         },
         "MovementAI": {
-            "run": true,
+            "run": false,
             "next": false,
             "loop": true,
             "reverse": false,
