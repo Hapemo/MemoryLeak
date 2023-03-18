@@ -4685,13 +4685,13 @@
         },
         "Transform": {
             "scale": {
-                "X": -252.0,
+                "X": 252.0,
                 "Y": 250.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -4690.0,
-                "Y": 2160.0
+                "X": -4420.8662109375,
+                "Y": 2048.035888671875
             }
         },
         "Sprite": {
@@ -4702,8 +4702,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
-            "layer": 43
+            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
+            "layer": 600
         },
         "Animation": {
             "sheets": [
@@ -4828,13 +4828,13 @@
                     "timePerFrame": 0.17000000178813934
                 }
             ],
-            "currentImageIndex": 2
+            "currentImageIndex": 4
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 0,
+            "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
+            "timeToFrameSwap": 0.03333333879709244
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -4848,8 +4848,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": -33.94560623168945,
-                "Y": 8.332412719726563
+                "X": 5.14933967590332,
+                "Y": 26.674312591552734
             },
             "acceleration": {
                 "X": 0.0,
