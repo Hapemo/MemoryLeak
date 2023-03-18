@@ -8,7 +8,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 10000.0,
+                "X": 11000.0,
                 "Y": 10000.0
             },
             "rotation": 0.0,
@@ -25,7 +25,7 @@
                 "a": 180
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\Env_Water.png",
+            "texture": "Textures\\Sprites\\Env_Water_Purple.png",
             "layer": 1
         }
     },
@@ -38,24 +38,24 @@
         },
         "Transform": {
             "scale": {
-                "X": 9910.6962890625,
-                "Y": -9866.0439453125
+                "X": 9746.671875,
+                "Y": -9620.009765625
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 11.981536865234375
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
+                "r": 240,
+                "g": 240,
                 "b": 255,
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\Env_Water.png",
+            "texture": "Textures\\Sprites\\Env_Water_Purple.png",
             "layer": 0
         },
         "AI": {
