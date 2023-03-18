@@ -1,6 +1,92 @@
 [
     {
         "General": {
+            "name": "blur",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 30,
+                "g": 30,
+                "b": 100,
+                "a": 180
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "playerhead",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 60.0,
+                "Y": 60.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\mc-icon-head.png",
+            "layer": 4
+        },
+        "MovementAI": {
+            "run": true,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "targets": [
+                {
+                    "time": 0.30000001192092896,
+                    "Transform": {
+                        "scale": {
+                            "X": 60.0,
+                            "Y": 60.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 640.0,
+                            "Y": -260.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
             "name": "minimap",
             "tag": 8,
             "subtag": 0,
@@ -106,92 +192,6 @@
                     }
                 }
             ]
-        }
-    },
-    {
-        "General": {
-            "name": "playerhead",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 60.0,
-                "Y": 60.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 640.0,
-                "Y": -260.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\mc-icon-head.png",
-            "layer": 4
-        },
-        "MovementAI": {
-            "run": true,
-            "next": false,
-            "loop": true,
-            "reverse": false,
-            "cycle": false,
-            "nextStep": 1,
-            "acceleration": 0.0,
-            "moveOnHover": false,
-            "targets": [
-                {
-                    "time": 0.30000001192092896,
-                    "Transform": {
-                        "scale": {
-                            "X": 60.0,
-                            "Y": 60.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 640.0,
-                            "Y": -260.0
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "General": {
-            "name": "blur",
-            "tag": 6,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": 0.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 30,
-                "g": 30,
-                "b": 100,
-                "a": 180
-            },
-            "sprite": 0,
-            "texture": "",
-            "layer": 2
         }
     }
 ]

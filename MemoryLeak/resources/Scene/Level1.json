@@ -175,7 +175,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -3540.0,
+                "X": -3510.0,
                 "Y": 1410.0
             }
         },
@@ -227,8 +227,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -3230.0,
-                "Y": 1360.0
+                "X": -3240.0,
+                "Y": 1330.0
             }
         },
         "Sprite": {
@@ -1151,81 +1151,6 @@
     },
     {
         "General": {
-            "name": "Tree1",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -364.0,
-                "Y": 505.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1578.2457275390625,
-                "Y": -1267.1925048828125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 49
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -5.0,
-                "Y": -126.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -96.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
             "name": "Boat",
             "tag": 0,
             "subtag": 0,
@@ -1593,81 +1518,6 @@
     },
     {
         "General": {
-            "name": "Tree4",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 349.0,
-                "Y": 507.6363525390625
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1904.955078125,
-                "Y": -900.6809692382813
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
-            "layer": 47
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -186.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
             "name": "Passenger1",
             "tag": 1,
             "subtag": 0,
@@ -1680,8 +1530,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1479.1170654296875,
-                "Y": -778.2615356445313
+                "X": -1470.0,
+                "Y": -770.0
             }
         },
         "Sprite": {
@@ -1693,7 +1543,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Character_Ghost1_SE_idle.png",
-            "layer": 50
+            "layer": 709
         },
         "Animation": {
             "sheets": [
@@ -1760,58 +1610,6 @@
         },
         "Script": {
             "name": "Level1Passenger1Script"
-        }
-    },
-    {
-        "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -400.0,
-                "Y": 415.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1495.6339111328125,
-                "Y": -1332.5908203125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 58
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3023,8 +2821,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1760.0,
-                "Y": -610.0
+                "X": -1720.0,
+                "Y": -630.0
             }
         },
         "Sprite": {
@@ -3036,7 +2834,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 710
+            "layer": 708
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -3125,81 +2923,6 @@
                 }
             ],
             "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "Tree8",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 462.8248596191406
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1329.9661865234375,
-                "Y": -1356.686767578125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 31
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 10.0,
-                "Y": -175.0
-            },
-            "scaleOffset": {
-                "X": 0.47999998927116394,
-                "Y": 0.18000000715255737
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -3994,75 +3717,6 @@
     },
     {
         "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -400.0,
-                "Y": 415.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1219.209716796875,
-                "Y": -1361.6761474609375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 58
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
             "name": "Tree8",
             "tag": 5,
             "subtag": 0,
@@ -4213,150 +3867,6 @@
     },
     {
         "General": {
-            "name": "Tree7",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 284.0,
-                "Y": 326.02691650390625
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -2096.9423828125,
-                "Y": -867.6921997070313
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree4.png",
-            "layer": 41
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 5.0,
-                "Y": -95.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.3400000035762787
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -41.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree2",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 437.1398010253906
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -969.3331298828125,
-                "Y": -1386.72021484375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 44
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -18.0,
-                "Y": -130.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.3799999952316284
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
             "name": "Tree2",
             "tag": 5,
             "subtag": 0,
@@ -4432,58 +3942,6 @@
     },
     {
         "General": {
-            "name": "Tree4",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 485.0,
-                "Y": 507.6363525390625
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -606.8410034179688,
-                "Y": -1606.908935546875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 44
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
             "name": "Tree2",
             "tag": 5,
             "subtag": 0,
@@ -4533,144 +3991,6 @@
             "centerOffset": {
                 "X": 0.0,
                 "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree8",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 462.8248596191406
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 810.5331420898438,
-                "Y": -1409.692138671875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 53
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -400.0,
-                "Y": 415.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1707.6402587890625,
-                "Y": -1129.749267578125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 46
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 26.0,
-                "Y": -114.0
-            },
-            "scaleOffset": {
-                "X": 0.800000011920929,
-                "Y": 0.33000001311302185
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
             },
             "scaleOffset": {
                 "X": 1.0,
@@ -5114,362 +4434,6 @@
     },
     {
         "General": {
-            "name": "Tree8",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 462.8248596191406
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 622.4679565429688,
-                "Y": -1610.8251953125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 54
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree2",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 437.1398010253906
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -283.67913818359375,
-                "Y": -1658.6588134765625
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Tree5.png",
-            "layer": 46
-        },
-        "SheetAnimation": {
-            "frameCount": 1,
-            "currFrameIndex": 0,
-            "timePerFrame": 1.0,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree8",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 401.5,
-                "Y": 464.3248596191406
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1558.5333251953125,
-                "Y": -1531.8896484375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 59
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -135.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 400.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 23.153076171875,
-                "Y": -1643.9268798828125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
-            "layer": 34
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -97.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree2",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 437.0,
-                "Y": 437.1398010253906
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1215.4771728515625,
-                "Y": -1643.4398193359375
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 46
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree2",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 437.1398010253906
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -866.2771606445313,
-                "Y": -1662.935546875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 46
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
             "name": "Tree4",
             "tag": 5,
             "subtag": 0,
@@ -5519,69 +4483,6 @@
             "centerOffset": {
                 "X": 0.0,
                 "Y": -142.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -398.5,
-                "Y": 416.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 347.713134765625,
-                "Y": -1661.9493408203125
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
-            "layer": 56
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
             },
             "scaleOffset": {
                 "X": 1.0,
@@ -5808,69 +4709,6 @@
         },
         "Script": {
             "name": "Level1ManagerScript"
-        }
-    },
-    {
-        "General": {
-            "name": "Tree9",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": -437.5,
-                "Y": 428.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 831.961181640625,
-                "Y": -1837.170654296875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 58
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -47.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -6482,69 +5320,6 @@
     },
     {
         "General": {
-            "name": "Tree2",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 437.1398010253906
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -2929.602294921875,
-                "Y": -1122.633544921875
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 44
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 2,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.05000000447034836
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -48.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
-        "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
             "name": "Tree4",
             "tag": 5,
             "subtag": 0,
@@ -6973,8 +5748,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2123.412109375,
-                "Y": 881.4869995117188
+                "X": 2400.0,
+                "Y": 920.0
             }
         },
         "Sprite": {
@@ -12389,8 +11164,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -3810.0,
-                "Y": 1370.0
+                "X": -3800.0,
+                "Y": 1380.0
             }
         },
         "Sprite": {
@@ -14933,6 +13708,1446 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 462.8248596191406
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1460.0,
+                "Y": -1110.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 710
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 5.0,
+                "Y": -140.0
+            },
+            "scaleOffset": {
+                "X": 0.44999998807907104,
+                "Y": 0.30000001192092896
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1620.0,
+                "Y": -970.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "layer": 709
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": -20.0,
+                "Y": -70.0
+            },
+            "scaleOffset": {
+                "X": 0.800000011920929,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 349.0,
+                "Y": 507.6363525390625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1330.0,
+                "Y": -1250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
+            "layer": 711
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 10.0,
+                "Y": -170.0
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.30000001192092896
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3870.0,
+                "Y": 970.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 700
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.13333360850811005
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 349.0,
+                "Y": 507.6363525390625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3560.0,
+                "Y": 990.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
+            "layer": 700
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3270.0,
+                "Y": 910.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "layer": 700
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 462.8248596191406
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2980.0,
+                "Y": 940.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 700
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 462.8248596191406
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3760.0,
+                "Y": 810.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 701
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3420.0,
+                "Y": 780.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 701
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.13333360850811005
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2850.0,
+                "Y": 740.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "layer": 701
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 349.0,
+                "Y": 507.6363525390625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3150.0,
+                "Y": 810.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
+            "layer": 701
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -392.5,
+                "Y": 407.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3890.0,
+                "Y": 620.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 702
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.13333360850811005
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 359.0,
+                "Y": 517.6363525390625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3600.0,
+                "Y": 670.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
+            "layer": 702
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3300.0,
+                "Y": 590.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "layer": 702
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 462.8248596191406
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2980.0,
+                "Y": 610.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 702
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -392.5,
+                "Y": 407.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2660.0,
+                "Y": 600.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 702
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.13333360850811005
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 462.8248596191406
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3750.0,
+                "Y": 460.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 703
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3420.0,
+                "Y": 460.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 703
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.13333360850811005
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 349.0,
+                "Y": 507.6363525390625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3140.0,
+                "Y": 470.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
+            "layer": 703
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2840.0,
+                "Y": 420.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "layer": 703
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 462.8248596191406
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2540.0,
+                "Y": 420.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 703
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -392.5,
+                "Y": 407.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3900.0,
+                "Y": 310.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 704
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.13333360850811005
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 359.0,
+                "Y": 517.6363525390625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3620.0,
+                "Y": 360.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree2_Spritesheet.png",
+            "layer": 704
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3290.0,
+                "Y": 280.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "layer": 704
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 462.8248596191406
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2970.0,
+                "Y": 310.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree1_Spritesheet.png",
+            "layer": 704
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -392.5,
+                "Y": 407.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2670.0,
+                "Y": 290.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree3_Spritesheet.png",
+            "layer": 704
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.13333360850811005
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "isSpacial": false
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 400.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2380.0,
+                "Y": 270.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
+            "layer": 704
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
             "path": "Collision_Finalized",
