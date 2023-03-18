@@ -38,19 +38,19 @@
         },
         "Transform": {
             "scale": {
-                "X": 9591.5810546875,
-                "Y": -9387.375
+                "X": 9532.40234375,
+                "Y": -9298.603515625
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 24.505104064941406
+                "Y": -26.75981903076172
             }
         },
         "Sprite": {
             "color": {
-                "r": 178,
-                "g": 178,
+                "r": 232,
+                "g": 232,
                 "b": 255,
                 "a": 255
             },
@@ -70,7 +70,7 @@
             "loop": true,
             "reverse": false,
             "cycle": true,
-            "nextStep": 1,
+            "nextStep": 4,
             "acceleration": 0.0,
             "moveOnHover": false,
             "targets": [

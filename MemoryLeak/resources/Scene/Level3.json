@@ -2410,7 +2410,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2300.0,
+                "X": 2450.0,
                 "Y": -4370.0
             }
         },
@@ -2500,8 +2500,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 3360.0,
-                "Y": -4370.0
+                "X": 3470.0,
+                "Y": -4350.0
             }
         },
         "Sprite": {
@@ -2603,7 +2603,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
-            "layer": 4
+            "layer": 6
         }
     },
     {
@@ -2693,7 +2693,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
-            "layer": 4
+            "layer": 5
         }
     },
     {
@@ -2723,7 +2723,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
-            "layer": 6
+            "layer": 5
         }
     },
     {
@@ -3143,7 +3143,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
-            "layer": 6
+            "layer": 7
         }
     },
     {
@@ -3173,7 +3173,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
-            "layer": 6
+            "layer": 8
         }
     },
     {
@@ -3203,7 +3203,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
-            "layer": 6
+            "layer": 9
         }
     },
     {
@@ -3263,7 +3263,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
-            "layer": 4
+            "layer": 6
         }
     },
     {
@@ -4690,8 +4690,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -4420.8662109375,
-                "Y": 2048.035888671875
+                "X": -4530.0,
+                "Y": 2150.0
             }
         },
         "Sprite": {
@@ -4834,7 +4834,7 @@
             "frameCount": 8,
             "currFrameIndex": 2,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.03333333879709244
+            "timeToFrameSwap": 3.725290298461914e-9
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -4848,8 +4848,8 @@
                 "Y": 0.0
             },
             "velocity": {
-                "X": 5.14933967590332,
-                "Y": 26.674312591552734
+                "X": 28.39630126953125,
+                "Y": 18.374252319335938
             },
             "acceleration": {
                 "X": 0.0,
@@ -7749,6 +7749,1056 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
             "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3290.0,
+                "Y": -4480.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2870.0,
+                "Y": -4460.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2380.0,
+                "Y": -4490.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1900.0,
+                "Y": -4490.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1420.0,
+                "Y": -4530.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -970.0,
+                "Y": -4520.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -470.0,
+                "Y": -4530.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 463.0043029785156
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 90.0,
+                "Y": -4490.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree4.png",
+            "layer": 4
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 463.0043029785156
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 630.0,
+                "Y": -4520.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree4.png",
+            "layer": 4
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1150.0,
+                "Y": -4480.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1420.0,
+                "Y": -4480.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 305.0,
+                "Y": 475.73956298828125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1930.0,
+                "Y": -4450.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree3.png",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 305.0,
+                "Y": 475.73956298828125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2200.0,
+                "Y": -4430.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree3.png",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 305.0,
+                "Y": 475.73956298828125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2670.0,
+                "Y": -4430.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree3.png",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3240.0,
+                "Y": -4380.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 310.0,
+                "Y": 446.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4130.0,
+                "Y": -4190.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 310.0,
+                "Y": 446.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4110.0,
+                "Y": -3560.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 310.0,
+                "Y": 446.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4230.0,
+                "Y": -3200.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 410.0,
+                "Y": 471.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4550.0,
+                "Y": -3250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 410.0,
+                "Y": 471.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4680.0,
+                "Y": -2630.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 410.0,
+                "Y": 471.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4560.0,
+                "Y": -2050.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4320.0,
+                "Y": -1500.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 5
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4610.0,
+                "Y": -920.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 8
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 461.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4700.0,
+                "Y": 180.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 461.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4680.0,
+                "Y": -300.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 7
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 461.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3990.0,
+                "Y": 1940.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 461.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3930.0,
+                "Y": 2650.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 461.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3920.0,
+                "Y": 3080.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 461.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -4360.0,
+                "Y": 1450.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree5.png",
+            "layer": 4
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 470.73956298828125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -4370.0,
+                "Y": -630.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree3.png",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -4380.0,
+                "Y": -1140.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 405.0,
+                "Y": 466.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -4210.0,
+                "Y": -1840.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree1.png",
+            "layer": 4
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -4110.0,
+                "Y": -1380.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 436.68121337890625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3820.0,
+                "Y": -1930.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree2.png",
+            "layer": 6
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 461.0950927734375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -4240.0,
+                "Y": 1060.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Region3_Tree5.png",
+            "layer": 4
         }
     }
 ]
