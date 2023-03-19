@@ -736,7 +736,7 @@ ParticleSystem::ParticleInfo SerializationManager::getParticleInfo(Value& entity
 ParticleSystem SerializationManager::getParticleSystem(Value& entity)
 {
 	ParticleSystem particleSystem;
-	particleSystem.mParticleInfo = getParticleInfo(entity["ParticleSystem"]["mParticleInfo"]);
+	particleSystem.mParticleInfo = getParticleInfo(entity["ParticleSystem"]);
 	particleSystem.mDensity = entity["ParticleSystem"]["mDensity"].GetInt();
 	particleSystem.mAreaWidth = entity["ParticleSystem"]["mAreaWidth"].GetFloat();
 	particleSystem.mDirection = entity["ParticleSystem"]["mDirection"].GetFloat();
