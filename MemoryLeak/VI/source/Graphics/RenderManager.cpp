@@ -586,15 +586,6 @@ void RenderManager::RenderDebug()
 				}
 			}
 
-			if (e.HasComponent<MovementAI>() && e.GetComponent<MovementAI>().renderFlag)
-			{
-				for (const Transform& xform : e.GetComponent<MovementAI>().targetTransforms)
-				{
-					CreateDebugSquare(xform, { 255, 135, 247, 255 });
-					CreateDebugPoint(xform , { 255, 135, 247, 255 });
-
-				}
-			}
 
 
 			//check if sprite component itself is a debug drawing
@@ -625,9 +616,19 @@ void RenderManager::RenderDebug()
 	//make overlay for selected entities in the editor
 	for (const Entity& e : mEditorSelectedEntities)
 	{
-		if (!e.HasComponent<General>()) continue;
 		if (!e.GetComponent<General>().isActive) continue;
 		if (!e.ShouldRun()) continue;
+
+
+		if (e.HasComponent<MovementAI>() && e.GetComponent<MovementAI>().renderFlag)
+		{
+			for (const Transform& xform : e.GetComponent<MovementAI>().targetTransforms)
+			{
+				CreateDebugSquare(xform, { 255, 135, 247, 255 });
+				CreateDebugPoint(xform, { 255, 135, 247, 255 });
+
+			}
+		}
 
 		Color blue{ 0,0,255,100 };
 		Transform xform = e.GetComponent<Transform>();
@@ -787,7 +788,7 @@ void RenderManager::CreateVerticesVP(std::map<size_t, std::map<GLuint, TextureIn
 		if (scene.mLayer > MAX_SCENE_LAYERS - 1)
 			continue;
 
-		if (scene.mIsPause) continue;
+		if (scene.mIsPause && !scene.mForceRender) continue;
 
 		if (!strncmp(scene.mName.c_str(), "Level", 5))
 		{
@@ -885,7 +886,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		if (scene.mLayer > MAX_SCENE_LAYERS - 1)
 			continue;
 
-		if (scene.mIsPause) continue;
+		if (scene.mIsPause && !scene.mForceRender) continue;
 
 		if (scene.mIsUI && mCurrRenderPass == RENDER_STATE::GAME)
 			mIsCurrSceneUI = true;
