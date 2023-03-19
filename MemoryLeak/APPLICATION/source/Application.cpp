@@ -226,7 +226,7 @@ void Application::MainUpdate() {
 
 #endif
     TRACK_PERFORMANCE("Shadows");
-    shadowManager->Update();
+    //shadowManager->Update();
     END_TRACK("Shadows");
     static bool toggle{ false };
     if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);

@@ -1335,7 +1335,7 @@ void InspectorPanel::ParticleSystemEditor()
 {
 	if (ImGui::CollapsingHeader("ParticleSystem"))
 	{
-		ImGui::InputFloat("Lifespan", &e.GetComponent<ParticleSystem>().mParticleInfo.mScale);
+		ImGui::InputFloat("mScale", &e.GetComponent<ParticleSystem>().mParticleInfo.mScale);
 		ImGui::InputFloat("mFacing", &e.GetComponent<ParticleSystem>().mParticleInfo.mFacing);
 		ImGui::InputFloat("mLifespan", &e.GetComponent<ParticleSystem>().mParticleInfo.mLifespan);
 
@@ -1345,7 +1345,6 @@ void InspectorPanel::ParticleSystemEditor()
 		tmpVec4[2] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.b / 255.f;
 		tmpVec4[3] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.a / 255.f;
 		ImGui::ColorEdit4("Sprite Color", tmpVec4);
-		//ImGui::ColorPicker4("Color", tmpVec4);
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.r = (GLubyte)(tmpVec4[0] * 255);
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.g = (GLubyte)(tmpVec4[1] * 255);
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.b = (GLubyte)(tmpVec4[2] * 255);
@@ -1382,6 +1381,21 @@ void InspectorPanel::ParticleSystemEditor()
 		ImGui::InputFloat("mSpeed", &e.GetComponent<ParticleSystem>().mParticleInfo.mSpeed);
 		ImGui::Checkbox("mFading", &e.GetComponent<ParticleSystem>().mParticleInfo.mFading);
 		ImGui::Checkbox("mFadeIn", &e.GetComponent<ParticleSystem>().mParticleInfo.mFadeIn);
+
+
+
+		ImGui::InputInt("mDensity", &e.GetComponent<ParticleSystem>().mDensity);
+		tmpVec2[0] = e.GetComponent<ParticleSystem>().mCenter.x;
+		tmpVec2[1] = e.GetComponent<ParticleSystem>().mCenter.y;
+		ImGui::DragFloat2("mCenter", tmpVec2);
+		e.GetComponent<ParticleSystem>().mCenter = { tmpVec2[0] ,tmpVec2[1] };
+		ImGui::InputFloat("mAreaWidth", &e.GetComponent<ParticleSystem>().mAreaWidth);
+		ImGui::InputFloat("mDirection", &e.GetComponent<ParticleSystem>().mDirection);
+		ImGui::InputFloat("mSpread", &e.GetComponent<ParticleSystem>().mSpread);
+		ImGui::InputFloat("mDuration", &e.GetComponent<ParticleSystem>().mDuration);
+		ImGui::Checkbox("mIsActive", &e.GetComponent<ParticleSystem>().mIsActive);
+		ImGui::InputFloat("mSlow", &e.GetComponent<ParticleSystem>().mSlow);
+
 	}
 
 }
