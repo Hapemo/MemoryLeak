@@ -81,7 +81,8 @@ public:
 	void RemoveEntity(Entity const&);
 
 	std::set<Entity> mEntities{};			// Entities in the scene 
-	bool mIsPause=true;											// Paused state of the scene
+	bool mIsPause = true;											// Paused state of the scene
+	bool mForceRender;
 	std::string mName="";
 	//Transform mCamera{};
 	bool mIsUI = false;
