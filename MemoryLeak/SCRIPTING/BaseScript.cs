@@ -67,8 +67,14 @@ namespace BonVoyage
         }
 
         public static void MoveCamera(float x, float y) {
-          VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (y - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime() * 3.0f);
-          VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (x - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime() * 3.0f);
+            //VI.Camera.SetPos.X(VI.Camera.GetPos.X() + (x - VI.Camera.GetPos.X()) * (float)VI.General.DeltaTime() * 3.0f);
+            //VI.Camera.SetPos.Y(VI.Camera.GetPos.Y() + (y - VI.Camera.GetPos.Y()) * (float)VI.General.DeltaTime() * 3.0f);
+           
+            //VI.Test.ArgString("Player: " + x + ", " + y);
+            //VI.Test.ArgString("Camera: " + VI.Camera.GetPos.X() + ", " + VI.Camera.GetPos.Y());
+
+            VI.Camera.SetPos.X(Lerp(VI.Camera.GetPos.X(), x, (float)VI.General.DeltaTime()));
+            VI.Camera.SetPos.Y(Lerp(VI.Camera.GetPos.Y(), y, (float)VI.General.DeltaTime()));
         }
 
         public static bool ChangeZoom(float x, float speed) {
@@ -112,6 +118,12 @@ namespace BonVoyage
             VI.Physics.ApplyImpulse(_eID,
                 (_x * _multiplier),
                 (_y * _multiplier), 0f, 0f);
+        }
+
+        public static float Lerp(float _f1, float _f2, float _t)
+        {
+            //VI.Test.ArgString("Value: " + (_f1 + (_f2 - _f1) * _t));
+            return _f1 + (_f2 - _f1) * _t;
         }
     }
 }

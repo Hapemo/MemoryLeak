@@ -28,6 +28,8 @@ namespace BonVoyage {
 
         static public float PlayerPosX;
         static public float PlayerPosY;
+        private float PlayerScaleX;
+        private float PlayerScaleY;
         private float PlayerRotation;
 
         private int PlayerCurrWeather;
@@ -49,6 +51,8 @@ namespace BonVoyage {
             // Initialize position variables
             PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
             PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
+            PlayerScaleX = VI.Transform.Scale.GetX(_ENTITY);
+            PlayerScaleY = VI.Transform.Scale.GetY(_ENTITY);
             PlayerRotation = 0;
 
             PlayerCurrWeather = 0;
@@ -220,7 +224,7 @@ namespace BonVoyage {
 
             #region Camera Follow Player
             if (CameraFollowPlayer)
-                MoveCamera(PlayerPosX, PlayerPosY);
+                MoveCamera(PlayerPosX, PlayerPosY - PlayerScaleY / 2f);
             #endregion
         }
 
