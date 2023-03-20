@@ -14,6 +14,8 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class PlayerScript : BaseScript
     {
+        static private Random rand;
+
         static public bool PlayerInDialogue;
         static public bool PlayerInOtherAnimation;
         static public bool PlayerInDeathAnimation;
@@ -38,6 +40,8 @@ namespace BonVoyage {
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+            rand = new Random();
 
             // Initialize bool variables
             PlayerInDialogue = false;
@@ -150,10 +154,12 @@ namespace BonVoyage {
 
                 // Weather effects on the player
                 #region Weather Effects
-                // Update player's current weather based on updated position
+                // Update player's modifier based on current weather
                 if (PlayerCurrWeather == 2) {
-                    MovementXModifier = 0f;
-                    MovementYModifier = 0f;
+                    if (rand.Next(0, 100) < 50) {
+                        MovementXModifier = (float)rand.NextDouble() * 50f;
+                        MovementYModifier = (float)rand.NextDouble() * 50f;
+                    }
                 }
                 #endregion
             }
