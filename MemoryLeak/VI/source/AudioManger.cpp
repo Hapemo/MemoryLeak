@@ -442,11 +442,13 @@ void AudioManager::ResumeSound(int _channel)
 
 void AudioManager::ResumeAllSound()
 {
-	for (int i = 0; i < mChannel.size(); i++) {
-		if (i == static_cast<int>(E_AUDIO_CHANNEL::EDITORSONG))
-			continue;
-		
-		ResumeSound(i);
+	if (!editorManager->IsScenePaused()) {
+		for (int i = 0; i < mChannel.size(); i++) {
+			if (i == static_cast<int>(E_AUDIO_CHANNEL::EDITORSONG))
+				continue;
+
+			ResumeSound(i);
+		}
 	}
 }
 

@@ -195,14 +195,18 @@ void EditorManager::Update()
 		return;
 
 	Window();
-	if (isScenePaused )  //to be handled by audio manager after M3 clean up
-	{
-		//if(audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
-		//	audioManager->StopSound((int)E_AUDIO_CHANNEL::MAINBACKGROUND);
-		/*else if(!audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))
-			audioManager->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::EDITORSONG);*/
-		audioManager->PauseSound(static_cast<int>(E_AUDIO_CHANNEL::MAINBACKGROUND));
-	}
+	//if (isScenePaused )  //to be handled by audio manager after M3 clean up
+	//{
+	//	//if(audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND))
+	//	//	audioManager->StopSound((int)E_AUDIO_CHANNEL::MAINBACKGROUND);
+	//	/*else if(!audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))
+	//		audioManager->PlayBGSound("MENUBG", (int)E_AUDIO_CHANNEL::EDITORSONG);*/
+	//	audioManager->PauseSound(static_cast<int>(E_AUDIO_CHANNEL::MAINBACKGROUND));
+	//}
+	//else {
+	//	audioManager->ResumeSound(static_cast<int>(E_AUDIO_CHANNEL::MAINBACKGROUND));
+	//}
+
 	if (!isScenePaused && audioManager->isPlaying((int)E_AUDIO_CHANNEL::EDITORSONG))//scene playing
 	{
 		audioManager->StopSound((int)E_AUDIO_CHANNEL::EDITORSONG);
