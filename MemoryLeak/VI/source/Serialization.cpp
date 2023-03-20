@@ -465,7 +465,10 @@ Sprite SerializationManager::getSprite(Value& entity)
 	sprite.color.b = (GLubyte)entity["Sprite"]["color"]["b"].GetInt();
 	sprite.color.a = (GLubyte)entity["Sprite"]["color"]["a"].GetInt();
 	sprite.sprite = (SPRITE)entity["Sprite"]["sprite"].GetInt();
-	sprite.texture = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
+	if (sprite.sprite == SPRITE::TEXTURE)
+		sprite.texture = (GLuint)spriteManager->GetTextureID(entity["Sprite"]["texture"].GetString());
+	else
+		sprite.texture = 0;
 	sprite.layer = entity["Sprite"]["layer"].GetInt();
 	return sprite;
 }
@@ -1354,7 +1357,7 @@ void SerializationManager::addParticleInfo(Document& scene, Value& entity, Parti
 	tmp.AddMember(StringRef("mScale"), particleInfo.mScale, scene.GetAllocator());
 	tmp.AddMember(StringRef("mFacing"), particleInfo.mFacing, scene.GetAllocator());
 	tmp.AddMember(StringRef("mLifespan"), particleInfo.mLifespan, scene.GetAllocator());
-	addSprite(scene, entity, particleInfo.mSprite);
+	addSprite(scene, tmp, particleInfo.mSprite);
 	tmp.AddMember(StringRef("mRotation"), particleInfo.mRotation, scene.GetAllocator());
 	tmp.AddMember(StringRef("mSpeed"), particleInfo.mSpeed, scene.GetAllocator());
 	tmp.AddMember(StringRef("mFading"), particleInfo.mFading, scene.GetAllocator());
@@ -1448,6 +1451,7 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 			sceneData.mIsUI = true;
 		}
 		sceneData.mIsPause = entity[index]["isActive"].GetBool();
+		sceneData.mForceRender = entity[index]["mForceRender"].GetBool();
 		sceneData.mLayer = entity[index]["layer"].GetInt();
 		sceneData.mOrder = entity[index]["order"].GetInt();
 
@@ -1490,6 +1494,7 @@ void SerializationManager::SaveGameState(GameState& _gameState)
 		if(!_gameState.mScenes[s].mIsUI)
 			addTransform(gamestate, scene, _gameState.mCamera);
 		scene.AddMember(StringRef("isActive"), _gameState.mScenes[s].mIsPause, gamestate.GetAllocator());
+		scene.AddMember(StringRef("mForceRender"), _gameState.mScenes[s].mForceRender, gamestate.GetAllocator());
 		scene.AddMember(StringRef("layer"), _gameState.mScenes[s].mLayer, gamestate.GetAllocator());
 		scene.AddMember(StringRef("order"), _gameState.mScenes[s].mOrder, gamestate.GetAllocator());
 		gamestate.PushBack(scene, allocator);
