@@ -1350,9 +1350,12 @@ void InspectorPanel::ParticleSystemEditor()
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.b = (GLubyte)(tmpVec4[2] * 255);
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.a = (GLubyte)(tmpVec4[3] * 255);
 
-		std::string tex{};
+		static std::string tex{};
 		if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::TEXTURE)
-			tex = spriteManager->GetTexturePath(e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture);
+		{
+			if(tex.length()==0)
+				tex = spriteManager->GetTexturePath(e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture);
+		}
 		else if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::CIRCLE)
 			tex = "CIRCLE";
 		else if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::SQUARE)
@@ -1368,14 +1371,15 @@ void InspectorPanel::ParticleSystemEditor()
 		}
 		if (e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)
 		{
+			
 			ImGui::InputText("mSprite", &tex);
-			spriteManager->GetTextureID(tex);
+			e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture = spriteManager->GetTextureID(tex);
 		}
 		else
 		{
 			ImGui::Text(tex.c_str());
 		}
-
+		ImGui::InputInt("mlayer", &e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.layer);
 
 		ImGui::InputFloat("mRotation", &e.GetComponent<ParticleSystem>().mParticleInfo.mRotation);
 		ImGui::InputFloat("mSpeed", &e.GetComponent<ParticleSystem>().mParticleInfo.mSpeed);
