@@ -104,6 +104,8 @@ private:
 	Viewport getViewport(Value& entity);
 	MovementAI getMovementAI(Value& entity);
 	ParticleSystem::ParticleInfo getParticleInfo(Value& entity);
+	ParticleSystem getParticleSystem(Value& entity);
+
 	//save components 
 	void addGeneral(Document& scene, Value& entity, General general);
 	void addLifespan(Document& scene, Value& entity, Lifespan lifespan);
@@ -128,6 +130,7 @@ private:
 	void addViewport(Document& scene, Value& entity, Viewport Viewport);
 	void addMovementAI(Document& scene, Value& entity, MovementAI movementAI);
 	void addParticleInfo(Document& scene, Value& entity, ParticleSystem::ParticleInfo particleInfo);
+	void addParticleSystem(Document& scene, Value& entity, ParticleSystem particleSystem);
 };
 
 

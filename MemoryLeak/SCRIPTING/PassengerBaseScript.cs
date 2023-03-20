@@ -140,14 +140,14 @@ namespace BonVoyage {
                     break;
                 case 1: // SW
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
-                    VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) - VI.Transform.Scale.GetX(_ePlayer) / 10f);
+                    VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) - VI.Transform.Scale.GetX(_ePlayer) / 16f);
                     VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer));
                     VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 5);
                     break;
                 case 2: // West / Left
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) - VI.Transform.Scale.GetX(_ePlayer) / 4f);
-                    VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 16f);
+                    VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 32f);
                     VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 7);
                     break;
                 case 3: // NW
@@ -170,7 +170,7 @@ namespace BonVoyage {
                 case 6: // East / Right
                     VI.Texture.SetLayer(_ePassenger, VI.Texture.GetLayer(_ePlayer) + 1);
                     VI.Transform.Position.SetX(_ePassenger, VI.Transform.Position.GetX(_ePlayer) + VI.Transform.Scale.GetX(_ePlayer) / 4f);
-                    VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 16f);
+                    VI.Transform.Position.SetY(_ePassenger, VI.Transform.Position.GetY(_ePlayer) + VI.Transform.Scale.GetY(_ePlayer) / 32f);
                     VI.Animation.SpriteSheet.SheetIndex.Set(_ePassenger, 1);
                     break;
                 case 7: // SE

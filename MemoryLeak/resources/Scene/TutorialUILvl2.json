@@ -14,7 +14,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 600.0
+                "Y": 523.9030151367188
             }
         },
         "Sprite": {
@@ -51,7 +51,7 @@
             "loop": false,
             "reverse": false,
             "cycle": false,
-            "nextStep": 1,
+            "nextStep": 2,
             "acceleration": 0.0,
             "moveOnHover": false,
             "targets": [
@@ -271,8 +271,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2.5806884765625,
-                "Y": 605.625
+                "X": -2.3123700618743896,
+                "Y": 605.040283203125
             }
         },
         "Sprite": {

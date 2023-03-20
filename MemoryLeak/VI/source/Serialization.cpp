@@ -184,11 +184,9 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				e.AddComponent<MovementAI>(getMovementAI(entity[index]));
 			}
-			if (entity[index].HasMember("ParticleInfo"))
+			if (entity[index].HasMember("ParticleSystem"))
 			{
-				ParticleSystem p;
-				p.mParticleInfo = getParticleInfo(entity[index]);
-				e.AddComponent<ParticleSystem>(p);
+				e.AddComponent<ParticleSystem>(getParticleSystem(entity[index]));
 			}
 			//mEntities.insert(e);
 			_sceneData.mEntities.insert(e);
@@ -724,18 +722,30 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 }
 ParticleSystem::ParticleInfo SerializationManager::getParticleInfo(Value& entity)
 {
-	ParticleSystem::ParticleInfo particleInfo;
-	particleInfo.mScale = entity["ParticleInfo"]["mScale"].GetFloat();
-	particleInfo.mFacing = entity["ParticleInfo"]["mFacing"].GetFloat();
-	particleInfo.mLifespan = entity["ParticleInfo"]["mLifespan"].GetFloat();
-	particleInfo.mScale = entity["ParticleInfo"]["mScale"].GetFloat();
-	//particleInfo.mSprite = getSprite(entity["ParticleInfo"]);
-	particleInfo.mRotation = entity["ParticleInfo"]["mRotation"].GetFloat();
-	particleInfo.mSpeed = entity["ParticleInfo"]["mSpeed"].GetFloat();
-	particleInfo.mFading = entity["ParticleInfo"]["mFading"].GetBool();
-	return particleInfo;
+	ParticleSystem::ParticleInfo mParticleInfo;
+	mParticleInfo.mScale = entity["mParticleInfo"]["mScale"].GetFloat();
+	mParticleInfo.mFacing = entity["mParticleInfo"]["mFacing"].GetFloat();
+	mParticleInfo.mLifespan = entity["mParticleInfo"]["mLifespan"].GetFloat();
+	mParticleInfo.mScale = entity["mParticleInfo"]["mScale"].GetFloat();
+	mParticleInfo.mSprite = getSprite(entity["mParticleInfo"]);
+	mParticleInfo.mRotation = entity["mParticleInfo"]["mRotation"].GetFloat();
+	mParticleInfo.mSpeed = entity["mParticleInfo"]["mSpeed"].GetFloat();
+	mParticleInfo.mFading = entity["mParticleInfo"]["mFading"].GetBool();
+	return mParticleInfo;
 }
-
+ParticleSystem SerializationManager::getParticleSystem(Value& entity)
+{
+	ParticleSystem particleSystem;
+	particleSystem.mParticleInfo = getParticleInfo(entity["ParticleSystem"]);
+	particleSystem.mDensity = entity["ParticleSystem"]["mDensity"].GetInt();
+	particleSystem.mAreaWidth = entity["ParticleSystem"]["mAreaWidth"].GetFloat();
+	particleSystem.mDirection = entity["ParticleSystem"]["mDirection"].GetFloat();
+	particleSystem.mSpread = entity["ParticleSystem"]["mSpread"].GetFloat();
+	particleSystem.mDuration = entity["ParticleSystem"]["mDuration"].GetFloat();
+	particleSystem.mIsActive = entity["ParticleSystem"]["mIsActive"].GetBool();
+	particleSystem.mSlow = entity["ParticleSystem"]["mSlow"].GetFloat();
+	return particleSystem;
+}
 
 
 /*!*****************************************************************************
@@ -981,7 +991,7 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		}
 		if (e.HasComponent<ParticleSystem>())
 		{
-			addParticleInfo(scene, entity, e.GetComponent<ParticleSystem>().mParticleInfo);
+			addParticleSystem(scene, entity, e.GetComponent<ParticleSystem>());
 		}
 		/*std::string s("Entity" + std::to_string(counter));
 		Value index(s.c_str(), (SizeType)s.size(), allocator);
@@ -1348,9 +1358,24 @@ void SerializationManager::addParticleInfo(Document& scene, Value& entity, Parti
 	tmp.AddMember(StringRef("mRotation"), particleInfo.mRotation, scene.GetAllocator());
 	tmp.AddMember(StringRef("mSpeed"), particleInfo.mSpeed, scene.GetAllocator());
 	tmp.AddMember(StringRef("mFading"), particleInfo.mFading, scene.GetAllocator());
-	entity.AddMember(StringRef("ParticleInfo"), tmp, scene.GetAllocator());
+	entity.AddMember(StringRef("mParticleInfo"), tmp, scene.GetAllocator());
 }
+void SerializationManager::addParticleSystem(Document& scene, Value& entity, ParticleSystem particleSystem)
+{
+	Value tmp(kObjectType);
+	addParticleInfo(scene, tmp, particleSystem.mParticleInfo);
+	tmp.AddMember(StringRef("mDensity"), particleSystem.mDensity, scene.GetAllocator());
+	addVectorMember(scene, tmp, "mCenter", particleSystem.mCenter);
+	tmp.AddMember(StringRef("mAreaWidth"), particleSystem.mAreaWidth, scene.GetAllocator());
+	tmp.AddMember(StringRef("mDirection"), particleSystem.mDirection, scene.GetAllocator());
+	tmp.AddMember(StringRef("mSpread"), particleSystem.mSpread, scene.GetAllocator());
+	tmp.AddMember(StringRef("mDuration"), particleSystem.mDuration, scene.GetAllocator());
+	tmp.AddMember(StringRef("mIsActive"), particleSystem.mIsActive, scene.GetAllocator());
+	tmp.AddMember(StringRef("mSlow"), particleSystem.mSlow, scene.GetAllocator());
+	entity.AddMember(StringRef("ParticleSystem"), tmp, scene.GetAllocator());
 
+
+}
 
 
 

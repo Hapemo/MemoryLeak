@@ -1,171 +1,6 @@
 [
     {
         "General": {
-            "name": "Relic1",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 130.0,
-                "Y": 98.0199966430664
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -485.0,
-                "Y": -170.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Relic1.png",
-            "layer": 63
-        },
-        "Script": {
-            "name": "Fragment1"
-        }
-    },
-    {
-        "General": {
-            "name": "Relic2",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 100.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -340.0,
-                "Y": -170.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Relic2.png",
-            "layer": 63
-        },
-        "Script": {
-            "name": "Fragment2"
-        }
-    },
-    {
-        "General": {
-            "name": "Relic4",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 100.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -50.0,
-                "Y": -170.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Relic4.png",
-            "layer": 63
-        },
-        "Script": {
-            "name": "Fragment4"
-        }
-    },
-    {
-        "General": {
-            "name": "Relic5",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 100.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 100.0,
-                "Y": -170.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Relic5.png",
-            "layer": 63
-        },
-        "Script": {
-            "name": "Fragment5"
-        }
-    },
-    {
-        "General": {
-            "name": "Relic6",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 100.0,
-                "Y": 100.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 245.0,
-                "Y": -170.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Sprites\\Props_Relic6.png",
-            "layer": 63
-        },
-        "Script": {
-            "name": "Fragment6"
-        }
-    },
-    {
-        "General": {
             "name": "Relic3",
             "tag": 8,
             "subtag": 0,
@@ -632,6 +467,171 @@
         },
         "Button": {
             "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Relic1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 130.0,
+                "Y": 98.0199966430664
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -485.0,
+                "Y": -170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic1.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment1"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -340.0,
+                "Y": -170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic2.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment2"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic4",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -50.0,
+                "Y": -170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic4.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment4"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic5",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 100.0,
+                "Y": -170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic5.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment5"
+        }
+    },
+    {
+        "General": {
+            "name": "Relic6",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 100.0,
+                "Y": 100.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 245.0,
+                "Y": -170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic6.png",
+            "layer": 63
+        },
+        "Script": {
+            "name": "Fragment6"
         }
     }
 ]
