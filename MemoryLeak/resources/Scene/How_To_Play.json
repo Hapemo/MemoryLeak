@@ -946,13 +946,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 10.294286727905273,
-                "Y": 0.28672000765800476
+                "X": 7.206000804901123,
+                "Y": 0.11468800157308578
             },
             "rotation": 0.0,
             "translation": {
                 "X": 1500.0,
-                "Y": -460.0
+                "Y": -490.0
             }
         },
         "Sprite": {
@@ -7162,7 +7162,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
-            "moveOnHover": false,
+            "moveOnHover": true,
             "targets": [
                 {
                     "time": 1.0,

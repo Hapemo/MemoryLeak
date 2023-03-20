@@ -1344,7 +1344,7 @@ void InspectorPanel::ParticleSystemEditor()
 		tmpVec4[1] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.g / 255.f;
 		tmpVec4[2] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.b / 255.f;
 		tmpVec4[3] = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.a / 255.f;
-		ImGui::ColorEdit4("Sprite Color", tmpVec4);
+		ImGui::ColorEdit4("mSprite Color", tmpVec4);
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.r = (GLubyte)(tmpVec4[0] * 255);
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.g = (GLubyte)(tmpVec4[1] * 255);
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.b = (GLubyte)(tmpVec4[2] * 255);
@@ -1359,7 +1359,7 @@ void InspectorPanel::ParticleSystemEditor()
 			tex = "SQUARE";
 		int shapeID = (int)e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite;
 		//static const char* shape[]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
-		ImGui::Combo("Shape", &shapeID, shape, IM_ARRAYSIZE(shape));
+		ImGui::Combo("mShape", &shapeID, shape, IM_ARRAYSIZE(shape));
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite = (SPRITE)shapeID;
 
 		if ((SPRITE)shapeID != SPRITE::TEXTURE)
@@ -1368,7 +1368,7 @@ void InspectorPanel::ParticleSystemEditor()
 		}
 		if (e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)
 		{
-			ImGui::InputText("Sprite", &tex);
+			ImGui::InputText("mSprite", &tex);
 			spriteManager->GetTextureID(tex);
 		}
 		else
@@ -1395,7 +1395,6 @@ void InspectorPanel::ParticleSystemEditor()
 		ImGui::InputFloat("mDuration", &e.GetComponent<ParticleSystem>().mDuration);
 		ImGui::Checkbox("mIsActive", &e.GetComponent<ParticleSystem>().mIsActive);
 		ImGui::InputFloat("mSlow", &e.GetComponent<ParticleSystem>().mSlow);
-
 	}
 
 }

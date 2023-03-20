@@ -214,6 +214,7 @@ void HierarchyPanel::Update()
 									if(isPause != old)
 										(*mGameStates)[g].mScenes[s].Pause(!isPause);
 									ImGui::Checkbox("Fix Camera for UI", &(*mGameStates)[g].mScenes[s].mIsUI);
+									ImGui::Checkbox("mForceRender", &(*mGameStates)[g].mScenes[s].mForceRender);
 									ImGui::InputInt("Layer", &((*mGameStates)[g].mScenes[s].mLayer));
 									if (ImGui::IsItemDeactivatedAfterEdit())
 									{
@@ -228,6 +229,7 @@ void HierarchyPanel::Update()
 											: ((*mGameStates)[g].mScenes[s].mOrder > (int)(*mGameStates)[g].mScenes.size() ? (int)(*mGameStates)[g].mScenes.size()
 												: (*mGameStates)[g].mScenes[s].mOrder);
 									}
+
 								}
 								for (int i = 0; i < (int)tag.size(); i++)
 								{

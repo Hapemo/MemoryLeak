@@ -2,48 +2,56 @@
     {
         "SceneName": "Menu_Main",
         "isActive": false,
+        "mForceRender": false,
         "layer": 2,
         "order": 0
     },
     {
         "SceneName": "Settings",
         "isActive": true,
+        "mForceRender": false,
         "layer": 2,
         "order": 0
     },
     {
         "SceneName": "How_To_Play",
         "isActive": true,
+        "mForceRender": false,
         "layer": 2,
         "order": 0
     },
     {
         "SceneName": "Quit Confirmation",
         "isActive": true,
+        "mForceRender": false,
         "layer": 2,
         "order": 0
     },
     {
         "SceneName": "FPS",
         "isActive": false,
+        "mForceRender": false,
         "layer": 15,
         "order": 0
     },
     {
         "SceneName": "Credits",
         "isActive": true,
+        "mForceRender": false,
         "layer": 2,
         "order": 0
     },
     {
         "SceneName": "ShadowBackground",
         "isActive": false,
+        "mForceRender": false,
         "layer": 0,
         "order": 0
     },
     {
         "SceneName": "Transition",
         "isActive": false,
+        "mForceRender": false,
         "layer": 15,
         "order": 0
     },
@@ -61,12 +69,14 @@
             }
         },
         "isActive": false,
+        "mForceRender": false,
         "layer": 3,
         "order": 0
     },
     {
         "SceneName": "UIBackground",
         "isActive": false,
+        "mForceRender": false,
         "layer": 1,
         "order": 0
     }
