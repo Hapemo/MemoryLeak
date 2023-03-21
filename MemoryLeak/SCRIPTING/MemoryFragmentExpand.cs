@@ -15,8 +15,9 @@ namespace BonVoyage {
     public class MemoryFragmentExpand : BaseScript
     {
         static int[] relics;
-        int[] backs;
+        static int[] backs;
         static bool[] activated;
+        static int[] tooltips;
         static bool activatedChanged;
         int expanded;
         bool showing;
@@ -40,6 +41,16 @@ namespace BonVoyage {
                 VI.Entity.GetId("Back5"),
                 VI.Entity.GetId("Back6")
             };
+            tooltips = new int[]
+            {
+                VI.Entity.GetId("tooltip1"),
+                VI.Entity.GetId("tooltip2"),
+                VI.Entity.GetId("tooltip3"),
+                VI.Entity.GetId("tooltip4"),
+                VI.Entity.GetId("tooltip5"),
+                VI.Entity.GetId("tooltip6"),
+                VI.Entity.GetId("tooltipNO")
+            };
             activated = new bool[] { false, false, false, false, false, false };
             expanded = VI.Entity.GetId("memoryfragmentscreen");
             showing = false;
@@ -54,10 +65,9 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             //make button toggle showing
             //activate every frame
-            if (THIS.Input.Button.Hover())
-                showing = true;
-            else
-                showing = false;
+            if (THIS.Input.Button.Clicked())
+                showing = !showing;
+
             if (showing)
             {
                 ActivateFragMenu();
@@ -66,30 +76,39 @@ namespace BonVoyage {
             {
                 DeactivateFragMenu();
             }
-            //if (VI.Input.Key.Press(65))
-            //{
-            //    ActivateFragment(0);
-            //}
-            //if (VI.Input.Key.Press(66))
-            //{
-            //    ActivateFragment(1);
-            //}
-            //if (VI.Input.Key.Press(67))
-            //{
-            //    ActivateFragment(2);
-            //}
-            //if (VI.Input.Key.Press(68))
-            //{
-            //    ActivateFragment(3);
-            //}
-            //if (VI.Input.Key.Press(69))
-            //{
-            //    ActivateFragment(4);
-            //}
-            //if (VI.Input.Key.Press(70))
-            //{
-            //    ActivateFragment(5);
-            //}
+            if (showing)
+            {
+                bool nonehovering = true;
+                for (int i = 0; i < 6; ++i)
+                { 
+                    if (VI.Input.Button.Hover(backs[i]))
+                    {
+                        nonehovering = false;
+                        if (activated[i])
+                        {
+                            VI.Entity.Activate(tooltips[i]);
+                            VI.Entity.Deactivate(tooltips[6]);
+                            VI.Transform.Position.SetX(tooltips[i],  VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 40);
+                            VI.Transform.Position.SetY(tooltips[i],  VI.Input.Mouse.WorldPosY() - 30);
+                        }
+                        else
+                        {
+                            VI.Entity.Deactivate(tooltips[i]);
+                            VI.Entity.Activate(tooltips[6]);
+                            VI.Transform.Position.SetX(tooltips[6], VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 40);
+                            VI.Transform.Position.SetY(tooltips[6], VI.Input.Mouse.WorldPosY() - 30);
+                        }
+
+                    }
+                    else
+                    {
+                        VI.Entity.Deactivate(tooltips[i]);
+                    }
+                }
+                if (nonehovering)
+                    VI.Entity.Deactivate(tooltips[6]);
+
+            }
         }
 
         public void Update(int _ENTITY) {

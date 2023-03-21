@@ -60,6 +60,9 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Relic1.png",
             "layer": 62
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -90,6 +93,9 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Relic2.png",
             "layer": 62
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -120,6 +126,9 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Relic3.png",
             "layer": 62
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -150,6 +159,9 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Relic4.png",
             "layer": 62
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -180,6 +192,9 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Relic5.png",
             "layer": 62
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -210,6 +225,9 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Relic6.png",
             "layer": 62
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -442,8 +460,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 420.0,
-                "Y": 150.0
+                "X": 430.0,
+                "Y": 160.0
             },
             "rotation": 0.0,
             "translation": {
@@ -646,6 +664,335 @@
         },
         "Script": {
             "name": "Fragment6"
+        }
+    },
+    {
+        "General": {
+            "name": "tooltip2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 75.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 290.0,
+                "Y": 70.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 64
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Guiding Compass - An artifact with a large arrow that points its direction to \"home\".",
+            "offset": {
+                "X": -237.0,
+                "Y": 14.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -36.0
+        }
+    },
+    {
+        "General": {
+            "name": "tooltip1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 75.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 460.0,
+                "Y": -90.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 64
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Priceless Timepiece - An indicator of time, one that brings assurance to the people.",
+            "offset": {
+                "X": -237.0,
+                "Y": 14.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -36.0
+        }
+    },
+    {
+        "General": {
+            "name": "tooltip3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 75.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 50.0,
+                "Y": -270.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 64
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Ominous Goblet - A symbolism of foresight that comes at a certain price.",
+            "offset": {
+                "X": -237.0,
+                "Y": 14.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -36.0
+        }
+    },
+    {
+        "General": {
+            "name": "tooltip4",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 75.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 120.0,
+                "Y": -70.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 64
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Cordelia Flower - A breathtaking flower that reacts to a certain emotion.",
+            "offset": {
+                "X": -237.0,
+                "Y": 14.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -36.0
+        }
+    },
+    {
+        "General": {
+            "name": "tooltip5",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 75.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -10.0,
+                "Y": -20.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 64
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Promise Ring - An artifact containing one's promises and memories.",
+            "offset": {
+                "X": -237.0,
+                "Y": 14.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -36.0
+        }
+    },
+    {
+        "General": {
+            "name": "tooltip6",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 75.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 70.0,
+                "Y": 30.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 64
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Eternal Runestone - A powerful stone capable of sealing one's fate within.",
+            "offset": {
+                "X": -237.0,
+                "Y": 14.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -36.0
+        }
+    },
+    {
+        "General": {
+            "name": "tooltipNO",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 25.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 150
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 64
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "??? - Undiscovered Relic",
+            "offset": {
+                "X": -237.0,
+                "Y": -6.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
         }
     }
 ]
