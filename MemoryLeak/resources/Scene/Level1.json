@@ -1418,7 +1418,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 5
         },
         "CircleCollider": {
@@ -2011,13 +2011,13 @@
         },
         "Sprite": {
             "color": {
-                "r": 123,
-                "g": 181,
-                "b": 123,
-                "a": 0
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
             },
-            "sprite": 1,
-            "texture": "",
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 1
         },
         "RectCollider": {
@@ -2456,13 +2456,13 @@
         },
         "Sprite": {
             "color": {
-                "r": 123,
-                "g": 181,
-                "b": 123,
-                "a": 0
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
             },
-            "sprite": 1,
-            "texture": "",
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 1
         },
         "RectCollider": {
@@ -2727,7 +2727,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 5
         },
         "CircleCollider": {
@@ -2903,7 +2903,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 5
         },
         "CircleCollider": {
@@ -2955,7 +2955,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 5
         },
         "CircleCollider": {
@@ -3004,10 +3004,10 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 0
+                "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 5
         }
     },
@@ -3034,10 +3034,10 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 0
+                "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 5
         }
     },
@@ -3094,10 +3094,10 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 0
+                "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 5
         }
     },
@@ -3124,10 +3124,10 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 0
+                "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-2.png",
+            "texture": "Textures\\Sprites\\LandingSpace.png",
             "layer": 5
         }
     },
