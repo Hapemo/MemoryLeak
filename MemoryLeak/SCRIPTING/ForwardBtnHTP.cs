@@ -202,35 +202,6 @@ namespace BonVoyage {
             d6 = VI.Entity.GetId("D6", "How_To_Play");
             VI.Entity.SetActive(w9, false);
             VI.Entity.SetActive(w10, false);
-            if (VI.Input.Button.Hover(w3)|| VI.Input.Button.Hover(w4))
-            {
-                VI.Entity.SetActive(w9, true);
-            }
-            if (VI.Input.Button.Hover(w5) || VI.Input.Button.Hover(w6))
-            {
-                VI.Animation.Transform.Run(BoatID);
-            }
-            else if(VI.Animation.Transform.GetCurrentIndex(BoatID) != 0)
-            {
-                VI.Animation.Transform.SetNext(BoatID, 0);
-                VI.Animation.Transform.Run(BoatID);
-            }
-            if (VI.Input.Button.Hover(w7) || VI.Input.Button.Hover(w8))
-            {
-                VI.Entity.SetActive(w10, true);
-            }
-            if (VI.Input.Button.Released(d4))
-            {
-                VI.Text.Update(d4, "Welcome!");
-                VI.Text.Update(d5, "Wait I cant");
-                VI.Text.Update(d6, "Thank you so much!!");
-            }
-            else if (VI.Input.Button.Released(d5))
-            {
-                VI.Text.Update(d4, "Ok then");
-                VI.Text.Update(d5, "Idk How");
-                VI.Text.Update(d6, "Why not? I miss home..");
-            }
             if (VI.Input.Button.Released(ForwardBtnID))
             {
                 Alive(_ENTITY);
@@ -283,6 +254,47 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(e4);
                 VI.Animation.Transform.Run(e5);
             }
+            else
+            {
+                if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 4)
+                {
+                    if (VI.Input.Button.Hover(w3))// || VI.Input.Button.Hover(w4))
+                    {
+                        VI.Entity.SetActive(w9, true);
+                    }
+                    if (VI.Input.Button.Hover(w5) || VI.Input.Button.Hover(w6))
+                    {
+                        BoatID = VI.Entity.GetId("Boat", "UIBackground");
+                        VI.Animation.Transform.Run(BoatID);
+                    }
+                    //else if(VI.Animation.Transform.GetCurrentIndex(BoatID) != 0)
+                    //{
+                    //    BoatID = VI.Entity.GetId("Boat", "UIBackground");
+                    //    VI.Animation.Transform.SetNext(BoatID, 0);
+                    //    VI.Animation.Transform.Run(BoatID);
+                    //}
+                    if (VI.Input.Button.Hover(w7) || VI.Input.Button.Hover(w8))
+                    {
+                        VI.Entity.SetActive(w10, true);
+                    }
+                }
+                else if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 2)
+                { 
+                    if (VI.Input.Button.Released(d4))
+                    {
+                        VI.Text.Update(d4, "Welcome!");
+                        VI.Text.Update(d5, "Wait I cant");
+                        VI.Text.Update(d6, "Thank you so much!!");
+                    }
+                    else if (VI.Input.Button.Released(d5))
+                    {
+                        VI.Text.Update(d4, "Ok then");
+                        VI.Text.Update(d5, "Idk How");
+                        VI.Text.Update(d6, "Why not? I miss home..");
+                    }
+                }
+            }
+            
             if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 0)
             {
                 VI.Entity.SetActive(BackBtnID, false);
