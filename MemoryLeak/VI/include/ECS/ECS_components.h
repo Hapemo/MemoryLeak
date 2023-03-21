@@ -398,7 +398,9 @@ struct ParticleSystem {
 	float mSlow = 0;													// Slow states that particle will only generate every indicated seconds instead of every frames
 
 	float& SlowTracker() { return mSlowTracker; }
+	
 	const float& OriginalAlpha() const { return mOriginalAlpha; }
+	float& OriginalAlpha() { return mOriginalAlpha; }
 
 	ParticleSystem() = default;
 	ParticleSystem( ParticleInfo _ParticleInfo, int _Density, Math::Vec2 _Center, float _AreaWidth,

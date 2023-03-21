@@ -734,6 +734,7 @@ ParticleSystem::ParticleInfo SerializationManager::getParticleInfo(Value& entity
 	mParticleInfo.mRotation = entity["mParticleInfo"]["mRotation"].GetFloat();
 	mParticleInfo.mSpeed = entity["mParticleInfo"]["mSpeed"].GetFloat();
 	mParticleInfo.mFading = entity["mParticleInfo"]["mFading"].GetBool();
+	mParticleInfo.mFadeIn = entity["mParticleInfo"]["mFadeIn"].GetBool();
 	return mParticleInfo;
 }
 ParticleSystem SerializationManager::getParticleSystem(Value& entity)
@@ -747,6 +748,7 @@ ParticleSystem SerializationManager::getParticleSystem(Value& entity)
 	particleSystem.mDuration = entity["ParticleSystem"]["mDuration"].GetFloat();
 	particleSystem.mIsActive = entity["ParticleSystem"]["mIsActive"].GetBool();
 	particleSystem.mSlow = entity["ParticleSystem"]["mSlow"].GetFloat();
+	particleSystem.OriginalAlpha() = particleSystem.mParticleInfo.mSprite.color.a;
 	return particleSystem;
 }
 
@@ -1361,6 +1363,7 @@ void SerializationManager::addParticleInfo(Document& scene, Value& entity, Parti
 	tmp.AddMember(StringRef("mRotation"), particleInfo.mRotation, scene.GetAllocator());
 	tmp.AddMember(StringRef("mSpeed"), particleInfo.mSpeed, scene.GetAllocator());
 	tmp.AddMember(StringRef("mFading"), particleInfo.mFading, scene.GetAllocator());
+	tmp.AddMember(StringRef("mFadeIn"), particleInfo.mFadeIn, scene.GetAllocator());
 	entity.AddMember(StringRef("mParticleInfo"), tmp, scene.GetAllocator());
 }
 void SerializationManager::addParticleSystem(Document& scene, Value& entity, ParticleSystem particleSystem)
