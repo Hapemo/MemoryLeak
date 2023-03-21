@@ -946,13 +946,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 7.206000804901123,
-                "Y": 0.11468800157308578
+                "X": 2.471658229827881,
+                "Y": 0.007340032607316971
             },
             "rotation": 0.0,
             "translation": {
                 "X": 1500.0,
-                "Y": -490.0
+                "Y": -580.0
             }
         },
         "Sprite": {
@@ -1013,9 +1013,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 4,
+            "currFrameIndex": 1,
             "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.016666671261191368
+            "timeToFrameSwap": 0.0833333358168602
         },
         "Physics2D": {
             "dynamicsEnabled": true,
@@ -1675,6 +1675,23 @@
             },
             "isTrigger": false,
             "renderFlag": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Try it here!",
+            "offset": {
+                "X": -82.0,
+                "Y": -35.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
         },
         "MovementAI": {
             "run": false,
@@ -2586,9 +2603,9 @@
         },
         "SheetAnimation": {
             "frameCount": 3,
-            "currFrameIndex": 1,
+            "currFrameIndex": 2,
             "timePerFrame": 0.30000001192092896,
-            "timeToFrameSwap": 0.21666665375232697
+            "timeToFrameSwap": 0.30000001192092896
         },
         "MovementAI": {
             "run": false,
@@ -2715,8 +2732,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 3180.0,
-                "Y": -260.0
+                "X": 3186.0,
+                "Y": -256.0
             }
         },
         "Sprite": {
@@ -2727,14 +2744,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 1\\Character_ghost1_SW_idle_spritesheet.png",
             "layer": 44
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 0,
             "timePerFrame": 1.0,
-            "timeToFrameSwap": 0.816666841506958
+            "timeToFrameSwap": 0.7833335399627686
         },
         "MovementAI": {
             "run": false,
@@ -2878,9 +2895,26 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 0,
             "timePerFrame": 1.0,
-            "timeToFrameSwap": 0.816666841506958
+            "timeToFrameSwap": 0.7833335399627686
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Try chooing an option!",
+            "offset": {
+                "X": 79.0,
+                "Y": -63.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -25.0
         },
         "MovementAI": {
             "run": false,
@@ -3183,7 +3217,7 @@
             "fontFile": "BPtypewrite",
             "text": "Yes!",
             "offset": {
-                "X": -42.0,
+                "X": -65.0,
                 "Y": -8.0
             },
             "scale": 0.5,
@@ -3195,6 +3229,9 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Button": {
+            "interactable": true
         },
         "MovementAI": {
             "run": false,
@@ -3340,7 +3377,7 @@
             "fontFile": "BPtypewrite",
             "text": "No...",
             "offset": {
-                "X": -42.0,
+                "X": -65.0,
                 "Y": -8.0
             },
             "scale": 0.5,
@@ -3352,6 +3389,9 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Button": {
+            "interactable": true
         },
         "MovementAI": {
             "run": false,
@@ -4719,6 +4759,9 @@
             "followCam": false,
             "width": -84.0
         },
+        "Button": {
+            "interactable": true
+        },
         "MovementAI": {
             "run": false,
             "next": false,
@@ -4875,6 +4918,9 @@
             },
             "followCam": false,
             "width": -84.0
+        },
+        "Button": {
+            "interactable": true
         },
         "MovementAI": {
             "run": false,
@@ -5033,6 +5079,9 @@
             "followCam": false,
             "width": -84.0
         },
+        "Button": {
+            "interactable": true
+        },
         "MovementAI": {
             "run": false,
             "next": false,
@@ -5190,6 +5239,9 @@
             "followCam": false,
             "width": -84.0
         },
+        "Button": {
+            "interactable": true
+        },
         "MovementAI": {
             "run": false,
             "next": false,
@@ -5334,8 +5386,8 @@
             "fontFile": "BPtypewrite",
             "text": "Night",
             "offset": {
-                "X": -43.0,
-                "Y": 49.0
+                "X": -140.0,
+                "Y": -10.0
             },
             "scale": 0.6000000238418579,
             "color": {
@@ -5346,6 +5398,9 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Button": {
+            "interactable": true
         },
         "MovementAI": {
             "run": false,
@@ -5491,8 +5546,8 @@
             "fontFile": "BPtypewrite",
             "text": "Rain",
             "offset": {
-                "X": -34.0,
-                "Y": 49.0
+                "X": -130.0,
+                "Y": -10.0
             },
             "scale": 0.6000000238418579,
             "color": {
@@ -5503,6 +5558,9 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Button": {
+            "interactable": true
         },
         "MovementAI": {
             "run": false,
@@ -5648,8 +5706,8 @@
             "fontFile": "BPtypewrite",
             "text": "Wind",
             "offset": {
-                "X": -35.0,
-                "Y": 49.0
+                "X": -130.0,
+                "Y": -10.0
             },
             "scale": 0.6000000238418579,
             "color": {
@@ -5660,6 +5718,9 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Button": {
+            "interactable": true
         },
         "MovementAI": {
             "run": false,
@@ -5805,8 +5866,8 @@
             "fontFile": "BPtypewrite",
             "text": "Fog",
             "offset": {
-                "X": -26.0,
-                "Y": 49.0
+                "X": -110.0,
+                "Y": -10.0
             },
             "scale": 0.6000000238418579,
             "color": {
@@ -5817,6 +5878,9 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Button": {
+            "interactable": true
         },
         "MovementAI": {
             "run": false,
@@ -6724,9 +6788,9 @@
         },
         "SheetAnimation": {
             "frameCount": 8,
-            "currFrameIndex": 7,
+            "currFrameIndex": 1,
             "timePerFrame": 0.30000001192092896,
-            "timeToFrameSwap": 0.21666665375232697
+            "timeToFrameSwap": 0.30000001192092896
         },
         "MovementAI": {
             "run": false,
@@ -6865,14 +6929,14 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+            "texture": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region2_Monster_SE_Attack1_Spritesheet.png",
             "layer": 55
         },
         "SheetAnimation": {
-            "frameCount": 12,
-            "currFrameIndex": 7,
+            "frameCount": 10,
+            "currFrameIndex": 5,
             "timePerFrame": 0.30000001192092896,
-            "timeToFrameSwap": 0.21666665375232697
+            "timeToFrameSwap": 0.30000001192092896
         },
         "MovementAI": {
             "run": false,
@@ -7263,6 +7327,78 @@
                     }
                 }
             ]
+        }
+    },
+    {
+        "General": {
+            "name": "W9",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\Weather\\rainspritesheet.png",
+            "layer": 60
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.20000000298023224,
+            "timeToFrameSwap": 0.2499999850988388
+        }
+    },
+    {
+        "General": {
+            "name": "W10",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 100
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\Weather\\fog_spritesheet.png",
+            "layer": 60
+        },
+        "SheetAnimation": {
+            "frameCount": 4,
+            "currFrameIndex": 0,
+            "timePerFrame": 1.0,
+            "timeToFrameSwap": 0.0
         }
     }
 ]

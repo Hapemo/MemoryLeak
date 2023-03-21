@@ -179,6 +179,9 @@ namespace BonVoyage {
             ForwardBtnID = VI.Entity.GetId("ForwardBtnHTP", "How_To_Play");
             ControlsID = VI.Entity.GetId("Controls", "How_To_Play");
             e3 = VI.Entity.GetId("E3", "How_To_Play");
+            d4 = VI.Entity.GetId("D4", "How_To_Play");
+            d5 = VI.Entity.GetId("D5", "How_To_Play");
+            d6 = VI.Entity.GetId("D6", "How_To_Play");
             if (VI.Input.Button.Released(BackBtnID))
             {
                 Alive(_ENTITY);
@@ -296,6 +299,12 @@ namespace BonVoyage {
                     else
                         VI.Animation.SpriteSheet.SheetIndex.Set(e3, 0);
                 }
+            }
+            else if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 3)
+            {
+                VI.Text.Update(d4, "Yes!");
+                VI.Text.Update(d5, "No...");
+                VI.Text.Update(d6, "Can you bring me home?");
             }
             else
                 VI.Entity.SetActive(ForwardBtnID, true);

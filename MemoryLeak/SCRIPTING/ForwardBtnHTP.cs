@@ -23,6 +23,7 @@ namespace BonVoyage {
         int EnemyID;
         int BackBtnID;
         int ForwardBtnID;
+        int BoatID;
         //bool init = false;
         int c1;
         int c2;
@@ -54,6 +55,8 @@ namespace BonVoyage {
         int w6;
         int w7;
         int w8;
+        int w9;
+        int w10;
         int mf1;
         int mf2;
         int mf3;
@@ -74,6 +77,7 @@ namespace BonVoyage {
             WeatherID = VI.Entity.GetId("Weather", "How_To_Play");
             MemeoryFragmentID = VI.Entity.GetId("MemeoryFragment", "How_To_Play");
             EnemyID = VI.Entity.GetId("Enemy", "How_To_Play");
+            BoatID = VI.Entity.GetId("Boat", "UIBackground");
             c1 = VI.Entity.GetId("C1", "How_To_Play");
             c2 = VI.Entity.GetId("C2", "How_To_Play");
             c3 = VI.Entity.GetId("C3", "How_To_Play");
@@ -104,6 +108,8 @@ namespace BonVoyage {
             w6 = VI.Entity.GetId("W6", "How_To_Play");
             w7 = VI.Entity.GetId("W7", "How_To_Play");
             w8 = VI.Entity.GetId("W8", "How_To_Play");
+            w9 = VI.Entity.GetId("W9", "How_To_Play");
+            w10 = VI.Entity.GetId("W10", "How_To_Play");
             mf1 = VI.Entity.GetId("MF1", "How_To_Play");
             mf2 = VI.Entity.GetId("MF2", "How_To_Play");
             mf3 = VI.Entity.GetId("MF3", "How_To_Play");
@@ -114,6 +120,8 @@ namespace BonVoyage {
             e4 = VI.Entity.GetId("E4", "How_To_Play");
             e5 = VI.Entity.GetId("E5", "How_To_Play");
             //init = true;
+            VI.Entity.SetActive(w9, false);
+            VI.Entity.SetActive(w10, false);
         }
 
         public void Init(int _ENTITY) {
@@ -159,6 +167,9 @@ namespace BonVoyage {
             VI.Animation.Transform.SetNext(e3, 0);
             VI.Animation.Transform.SetNext(e4, 0);
             VI.Animation.Transform.SetNext(e5, 0);
+            VI.Text.Update(d4, "Yes!");
+            VI.Text.Update(d5, "No...");
+            VI.Text.Update(d6, "Can you bring me home?");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -177,6 +188,49 @@ namespace BonVoyage {
             BackBtnID = VI.Entity.GetId("BackBtnHTP", "How_To_Play");
             ForwardBtnID = VI.Entity.GetId("ForwardBtnHTP", "How_To_Play");
             ControlsID = VI.Entity.GetId("Controls", "How_To_Play");
+            BoatID = VI.Entity.GetId("Boat", "UIBackground");
+            w3 = VI.Entity.GetId("W3", "How_To_Play");
+            w4 = VI.Entity.GetId("W4", "How_To_Play");
+            w5 = VI.Entity.GetId("W5", "How_To_Play");
+            w6 = VI.Entity.GetId("W6", "How_To_Play");
+            w7 = VI.Entity.GetId("W7", "How_To_Play");
+            w8 = VI.Entity.GetId("W8", "How_To_Play");
+            w9 = VI.Entity.GetId("W9", "How_To_Play");
+            w10 = VI.Entity.GetId("W10", "How_To_Play");
+            d4 = VI.Entity.GetId("D4", "How_To_Play");
+            d5 = VI.Entity.GetId("D5", "How_To_Play");
+            d6 = VI.Entity.GetId("D6", "How_To_Play");
+            VI.Entity.SetActive(w9, false);
+            VI.Entity.SetActive(w10, false);
+            if (VI.Input.Button.Hover(w3)|| VI.Input.Button.Hover(w4))
+            {
+                VI.Entity.SetActive(w9, true);
+            }
+            if (VI.Input.Button.Hover(w5) || VI.Input.Button.Hover(w6))
+            {
+                VI.Animation.Transform.Run(BoatID);
+            }
+            else if(VI.Animation.Transform.GetCurrentIndex(BoatID) != 0)
+            {
+                VI.Animation.Transform.SetNext(BoatID, 0);
+                VI.Animation.Transform.Run(BoatID);
+            }
+            if (VI.Input.Button.Hover(w7) || VI.Input.Button.Hover(w8))
+            {
+                VI.Entity.SetActive(w10, true);
+            }
+            if (VI.Input.Button.Released(d4))
+            {
+                VI.Text.Update(d4, "Welcome!");
+                VI.Text.Update(d5, "Wait I cant");
+                VI.Text.Update(d6, "Thank you so much!!");
+            }
+            else if (VI.Input.Button.Released(d5))
+            {
+                VI.Text.Update(d4, "Ok then");
+                VI.Text.Update(d5, "Idk How");
+                VI.Text.Update(d6, "Why not? I miss home..");
+            }
             if (VI.Input.Button.Released(ForwardBtnID))
             {
                 Alive(_ENTITY);
@@ -232,6 +286,12 @@ namespace BonVoyage {
             if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 0)
             {
                 VI.Entity.SetActive(BackBtnID, false);
+            }
+            else if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 1)
+            {
+                VI.Text.Update(d4, "Yes!");
+                VI.Text.Update(d5, "No...");
+                VI.Text.Update(d6, "Can you bring me home?");
             }
             else
                 VI.Entity.SetActive(BackBtnID, true);
