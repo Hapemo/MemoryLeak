@@ -205,6 +205,48 @@ namespace BonVoyage {
             if (VI.Input.Button.Released(ForwardBtnID))
             {
                 Alive(_ENTITY);
+                int i = VI.Animation.Transform.GetCurrentIndex(ControlsID) + 1;
+                VI.Animation.Transform.SetNext(c1, i);
+                VI.Animation.Transform.SetNext(c2, i);
+                VI.Animation.Transform.SetNext(c3, i);
+                VI.Animation.Transform.SetNext(c4, i);
+                VI.Animation.Transform.SetNext(pm1, i);
+                VI.Animation.Transform.SetNext(pm2, i);
+                VI.Animation.Transform.SetNext(pm3, i);
+                VI.Animation.Transform.SetNext(pm4, i);
+                VI.Animation.Transform.SetNext(pm5, i);
+                VI.Animation.Transform.SetNext(pm6, i);
+                VI.Animation.Transform.SetNext(pm7, i);
+                VI.Animation.Transform.SetNext(d1, i);
+                VI.Animation.Transform.SetNext(d2, i);
+                VI.Animation.Transform.SetNext(d3, i);
+                VI.Animation.Transform.SetNext(d4, i);
+                VI.Animation.Transform.SetNext(d5, i);
+                VI.Animation.Transform.SetNext(d6, i);
+                VI.Animation.Transform.SetNext(d7, i);
+                VI.Animation.Transform.SetNext(d8, i);
+                VI.Animation.Transform.SetNext(cb1, i);
+                VI.Animation.Transform.SetNext(cb2, i);
+                VI.Animation.Transform.SetNext(cb3, i);
+                VI.Animation.Transform.SetNext(w1, i);
+                VI.Animation.Transform.SetNext(w2, i);
+                VI.Animation.Transform.SetNext(w3, i);
+                VI.Animation.Transform.SetNext(w4, i);
+                VI.Animation.Transform.SetNext(w5, i);
+                VI.Animation.Transform.SetNext(w6, i);
+                VI.Animation.Transform.SetNext(w7, i);
+                VI.Animation.Transform.SetNext(w8, i);
+                VI.Animation.Transform.SetNext(mf1, i);
+                VI.Animation.Transform.SetNext(mf2, i);
+                VI.Animation.Transform.SetNext(mf3, i);
+                VI.Animation.Transform.SetNext(mf4, i);
+                VI.Animation.Transform.SetNext(e1, i);
+                VI.Animation.Transform.SetNext(e2, i);
+                VI.Animation.Transform.SetNext(e3, i);
+                VI.Animation.Transform.SetNext(e4, i);
+                VI.Animation.Transform.SetNext(e5, i);
+
+
                 VI.Animation.Transform.Run(ControlsID);
                 VI.Animation.Transform.Run(PlayerMovementID);
                 VI.Animation.Transform.Run(DialogueID);
@@ -258,7 +300,7 @@ namespace BonVoyage {
             {
                 if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 4)
                 {
-                    if (VI.Input.Button.Hover(w3))// || VI.Input.Button.Hover(w4))
+                    if (VI.Input.Button.Hover(w3) || VI.Input.Button.Hover(w4))
                     {
                         VI.Entity.SetActive(w9, true);
                     }
