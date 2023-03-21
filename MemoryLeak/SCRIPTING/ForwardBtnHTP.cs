@@ -206,6 +206,13 @@ namespace BonVoyage {
             {
                 Alive(_ENTITY);
                 int i = VI.Animation.Transform.GetCurrentIndex(ControlsID) + 1;
+                VI.Animation.Transform.SetNext(ControlsID, i);
+                VI.Animation.Transform.SetNext(PlayerMovementID, i);
+                VI.Animation.Transform.SetNext(DialogueID, i);
+                VI.Animation.Transform.SetNext(CrystalBallID, i);
+                VI.Animation.Transform.SetNext(WeatherID, i);
+                VI.Animation.Transform.SetNext(MemeoryFragmentID, i);
+                VI.Animation.Transform.SetNext(EnemyID, i);
                 VI.Animation.Transform.SetNext(c1, i);
                 VI.Animation.Transform.SetNext(c2, i);
                 VI.Animation.Transform.SetNext(c3, i);
