@@ -4380,36 +4380,6 @@
     },
     {
         "General": {
-            "name": "MoveToCatGuider",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 75.0,
-                "Y": 50.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -775.7525024414063,
-                "Y": 260.6415710449219
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Icons\\cursors\\direction cursor\\UI_Cursor_Direction_SE_0002.png",
-            "layer": 3
-        }
-    },
-    {
-        "General": {
             "name": "Tree",
             "tag": 5,
             "subtag": 0,
