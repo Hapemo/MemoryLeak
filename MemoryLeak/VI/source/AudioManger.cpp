@@ -420,34 +420,34 @@ void AudioManager::StopSound(const Entity& e)
         mChannel[e.GetComponent<Audio>().sound.channel]->stop();
 }
 
-void AudioManager::PauseSound(int _channel)
+void AudioManager::PauseChannel(int _channel)
 {
     mChannel[_channel]->setPaused(true);
 }
 
-void AudioManager::PauseAllSound()
+void AudioManager::PauseAllChannels()
 {
 	for (int i = 0; i < mChannel.size(); i++) {
 		if (i == static_cast<int>(E_AUDIO_CHANNEL::EDITORSONG))
 			continue;
 
-		PauseSound(i);
+		PauseChannel(i);
 	}
 }
 
-void AudioManager::ResumeSound(int _channel)
+void AudioManager::ResumeChannel(int _channel)
 {
     mChannel[_channel]->setPaused(false);
 }
 
-void AudioManager::ResumeAllSound()
+void AudioManager::ResumeAllChannels()
 {
 	if (!editorManager->IsScenePaused()) {
 		for (int i = 0; i < mChannel.size(); i++) {
 			if (i == static_cast<int>(E_AUDIO_CHANNEL::EDITORSONG))
 				continue;
 
-			ResumeSound(i);
+			ResumeChannel(i);
 		}
 	}
 }

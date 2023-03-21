@@ -203,11 +203,11 @@ void Application::MainUpdate() {
       if (!FirstUpdate())
       {
         //audioManager->SetALLVolume(0.f);   //need pause all the audio... and resume properly
-        audioManager->PauseAllSound();
+        audioManager->PauseAllChannels();
         continue;
       }
       else {
-          audioManager->ResumeAllSound();
+          audioManager->ResumeAllChannels();
       }
 
     TRACK_PERFORMANCE("MainLoop");

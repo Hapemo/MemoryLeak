@@ -42,10 +42,10 @@ public:
 	void StopSFXSound();
 	void StopSound(const Entity& e);
 
-	void PauseSound(int);
-	void PauseAllSound();
-	void ResumeSound(int);
-	void ResumeAllSound();
+	void PauseChannel(int);
+	void PauseAllChannels();
+	void ResumeChannel(int);
+	void ResumeAllChannels();
 	
 
 	std::vector<std::string> GetSongs() { return songs; }
