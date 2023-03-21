@@ -615,6 +615,8 @@ Audio SerializationManager::getAudio(Value& entity)
 	sound.isMute = entity["Audio"]["isMute"].GetBool();
 	sound.isLoop = entity["Audio"]["isLoop"].GetBool();
 	sound.isRandPitch = entity["Audio"]["isRandPitch"].GetBool();
+	if(entity["Audio"].HasMember("toPlayOnCollision"))
+		sound.toPlayOnCollision = entity["Audio"]["toPlayOnCollision"].GetBool();
 	audio.sound = sound;
 	audio.isSpacial = entity["Audio"]["isSpacial"].GetBool();
 	return audio;
@@ -1236,6 +1238,7 @@ void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
 	tmp.AddMember(StringRef("isMute"), audio.sound.isMute, scene.GetAllocator());
 	tmp.AddMember(StringRef("isLoop"), audio.sound.isLoop, scene.GetAllocator());
 	tmp.AddMember(StringRef("isRandPitch"), audio.sound.isRandPitch, scene.GetAllocator());
+	tmp.AddMember(StringRef("toPlayOnCollision"), audio.sound.toPlayOnCollision, scene.GetAllocator());
 	tmp.AddMember(StringRef("isSpacial"), audio.isSpacial, scene.GetAllocator());
 	entity.AddMember(StringRef("Audio"), tmp, scene.GetAllocator());
 	std::string path = "\\Audio\\SFX\\" + audio.sound.path;

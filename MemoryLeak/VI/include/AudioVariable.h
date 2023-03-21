@@ -29,7 +29,7 @@ struct Sound
 	bool isMute = false;
 	bool isLoop = false;
 	bool isRandPitch = false;
-
+	bool toPlayOnCollision = false;
 	int channel =0;
 	
 };
