@@ -4728,6 +4728,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -5262,7 +5263,7 @@
                     "timePerFrame": 0.10000000149011612
                 }
             ],
-            "currentImageIndex": 2
+            "currentImageIndex": 5
         },
         "SheetAnimation": {
             "frameCount": 8,
