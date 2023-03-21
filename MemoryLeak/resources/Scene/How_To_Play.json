@@ -6865,7 +6865,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack2_Spritesheet.png",
+            "texture": "",
             "layer": 55
         },
         "SheetAnimation": {
@@ -7162,7 +7162,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
-            "moveOnHover": true,
+            "moveOnHover": false,
             "targets": [
                 {
                     "time": 1.0,

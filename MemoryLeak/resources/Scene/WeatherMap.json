@@ -449,7 +449,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -564,7 +564,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -679,7 +679,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -794,7 +794,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -909,7 +909,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1024,7 +1024,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1139,7 +1139,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1254,7 +1254,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1369,7 +1369,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1484,7 +1484,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1599,7 +1599,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1714,7 +1714,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1829,7 +1829,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -1944,7 +1944,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2059,7 +2059,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2174,7 +2174,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2289,7 +2289,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2404,7 +2404,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2519,7 +2519,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2634,7 +2634,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2749,7 +2749,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2864,7 +2864,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -2979,7 +2979,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -3094,7 +3094,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -3209,7 +3209,7 @@
             "currentImageIndex": 0
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,
@@ -3314,7 +3314,7 @@
             "interactable": true
         },
         "MovementAI": {
-            "run": false,
+            "run": true,
             "next": false,
             "loop": true,
             "reverse": false,

@@ -297,7 +297,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MC\\mc-death-spritesheet.png",
+            "texture": "",
             "layer": 3
         },
         "SheetAnimation": {
@@ -333,7 +333,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MC\\mc-shock-spritesheet.png",
+            "texture": "",
             "layer": 4
         },
         "SheetAnimation": {
