@@ -78,6 +78,7 @@ void GameStateManager::UpdateNextGSMState() {
 		}
 #else //GAME MODE
 		mCurrentGameState->Unload();
+		SetGameState(mNextGSPath);
 		mCurrentGameState->Load(mNextGSPath);
 #endif // _EDITOR
 

@@ -68,6 +68,7 @@ void Application::SystemInit() {
 #ifdef _DEBUG
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif
+  if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
     ResourceManager::GetInstance()->LoadAllResources();
 #endif
 
@@ -202,11 +203,11 @@ void Application::MainUpdate() {
       if (!FirstUpdate())
       {
         //audioManager->SetALLVolume(0.f);   //need pause all the audio... and resume properly
-        audioManager->PauseAllSound();
+        audioManager->PauseAllChannels();
         continue;
       }
       else {
-          audioManager->ResumeAllSound();
+          audioManager->ResumeAllChannels();
       }
 
     TRACK_PERFORMANCE("MainLoop");
@@ -326,6 +327,7 @@ void Application::PrintTitleBar(double _s) {
                                                << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | ";
     if (printDebug) sstr << GET_SYSTEMS_PERFORMANCES();
 #else
+    sstr << " fps: " << FPSManager::fps;
     sstr << Application::getTitle();
 #endif
     glfwSetWindowTitle(Application::getWindow(), sstr.str().c_str());

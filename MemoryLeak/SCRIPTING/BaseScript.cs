@@ -83,13 +83,13 @@ namespace BonVoyage
           float currX = VI.Camera.GetScale.X();
 
           if (x > currX) {
-            //VI.Camera.SetScale.X(currX + speed * (float)VI.General.DeltaTime());
-            VI.Camera.SetScale.X(Lerp(currX, x, (float)VI.General.DeltaTime()));
+            VI.Camera.SetScale.X(currX + speed * (float)VI.General.DeltaTime());
+            //VI.Camera.SetScale.X(Lerp(currX, x, (float)VI.General.DeltaTime()));
             if (VI.Camera.GetScale.X() > x)
               VI.Camera.SetScale.X(x);
           } else {
-            //VI.Camera.SetScale.X(currX - speed * (float)VI.General.DeltaTime());
-            VI.Camera.SetScale.X(Lerp(currX, x, (float)VI.General.DeltaTime()));
+            VI.Camera.SetScale.X(currX - speed * (float)VI.General.DeltaTime());
+            //VI.Camera.SetScale.X(Lerp(x, currX, (float)VI.General.DeltaTime()));
             if (VI.Camera.GetScale.X() < x)
               VI.Camera.SetScale.X(x);
           }
