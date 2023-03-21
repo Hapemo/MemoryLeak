@@ -20,6 +20,9 @@ namespace BonVoyage {
         static float currAlpha;
         static float speed;
 
+        private double delay = 5.0; 
+
+
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             fadingin = true;
@@ -27,6 +30,7 @@ namespace BonVoyage {
             nextgs = "";
             currAlpha = 255;
             speed = 250;
+            delay = 1.0;
         }
 
         public void Init(int _ENTITY) {
@@ -36,8 +40,7 @@ namespace BonVoyage {
             nextgs = "";
             currAlpha = 255;
             speed = 250;
-
-
+            delay = 1.0;
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -49,10 +52,14 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             if (fadingin)
-                DecreaseAlpha();
+                if (delay < 0)
+                    DecreaseAlpha();
+                else
+                    delay -= VI.General.DeltaTime();
 
-            if (fadingout)
+            if (fadingout) { 
                 IncreaseAlpha();
+            }
         }
 
         public void FixedUpdate(int _ENTITY) {
@@ -67,12 +74,10 @@ namespace BonVoyage {
 
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
         }
 
         public void Dead(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
         }
 
         private static void DecreaseAlpha()
