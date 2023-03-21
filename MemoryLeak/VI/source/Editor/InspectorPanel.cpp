@@ -1356,11 +1356,10 @@ void InspectorPanel::ParticleSystemEditor()
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.b = (GLubyte)(tmpVec4[2] * 255);
 		e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color.a = (GLubyte)(tmpVec4[3] * 255);
 
-		static std::string tex{};
+		std::string tex{};
 		if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::TEXTURE)
 		{
-			if(tex.length()==0)
-				tex = spriteManager->GetTexturePath(e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture);
+			tex = spriteManager->GetTexturePath(e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture);
 		}
 		else if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::CIRCLE)
 			tex = "CIRCLE";
@@ -1375,7 +1374,7 @@ void InspectorPanel::ParticleSystemEditor()
 		{
 			e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture = 0;
 		}
-		if (e.GetComponent<Sprite>().sprite == SPRITE::TEXTURE)
+		if (e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite == SPRITE::TEXTURE)
 		{
 			
 			ImGui::InputText("mSprite", &tex);
