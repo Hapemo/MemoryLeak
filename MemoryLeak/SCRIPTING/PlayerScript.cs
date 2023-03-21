@@ -173,35 +173,33 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             #region Movement
             // Move only if player is not in dialogue or death animation
-            if (!PlayerInDialogue && !PlayerInDeathAnimation && !PlayerInOtherAnimation)
-            {
-                // Left mouse button is held
+            if (!PlayerInDialogue && !PlayerInDeathAnimation && !PlayerInOtherAnimation) {
+                float DirX = MovementXModifier;
+                float DirY = MovementYModifier;
+
                 if (VI.Input.Mouse.Hold())
                 {
-                    float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerPosX;
-                    float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerPosY;
-
-                    DirX += MovementXModifier;
-                    DirY += MovementYModifier;
-
-                    // Move if the vector is significant
-                    if (VI.Math.SqMagnitude(DirX, DirY) > float.Epsilon * float.Epsilon)
-                    {
-                        // Apply force
-                        float NormX = VI.Math.Normalize.X(DirX, DirY);
-                        float NormY = VI.Math.Normalize.Y(DirX, DirY);
-                        ApplyForce(_ENTITY, NormX, NormY, PlayerSpeed * (SpeedCheatToggle ? SpeedCheatMultiplier : 1f));
-
-                        // Get new rotation and set sprite
-                        PlayerRotation = GetRotation(NormX, NormY);
-                        SetPlayerSprite(_ENTITY, PlayerRotation, "Idle");
-
-                        // Play rowing boat audio
-                        VI.Audio.Play(_ENTITY);
-                    }
-
+                    DirX += VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerPosX;
+                    DirY += VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerPosY;
                 }
-                else // Not held anymore
+
+                // Move if the vector is significant
+                if (VI.Math.SqMagnitude(DirX, DirY) > float.Epsilon * float.Epsilon)
+                {
+                    // Apply force
+                    float NormX = VI.Math.Normalize.X(DirX, DirY);
+                    float NormY = VI.Math.Normalize.Y(DirX, DirY);
+                    ApplyForce(_ENTITY, NormX, NormY, PlayerSpeed * (SpeedCheatToggle ? SpeedCheatMultiplier : 1f));
+
+                    // Get new rotation and set sprite
+                    PlayerRotation = GetRotation(NormX, NormY);
+                    SetPlayerSprite(_ENTITY, PlayerRotation, "Idle");
+
+
+                    // Play rowing audio
+                    VI.Audio.Play(_ENTITY);
+                }
+                else
                 {
                     // Stop rowing audio
                     VI.Audio.Stop(_ENTITY);
