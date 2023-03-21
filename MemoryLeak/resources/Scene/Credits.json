@@ -25,7 +25,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\MONSTER\\Character_Monster_SE_Attack1_Spritesheet.png",
+            "texture": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region2_Monster_SE_Attack1_Spritesheet.png",
             "layer": 3
         },
         "SheetAnimation": {
@@ -67,7 +67,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -50.000030517578125
+                "Y": -50.0
             }
         },
         "Sprite": {
@@ -125,7 +125,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 6\\Character_ghost6_SE_idle_spritesheet.png",
             "layer": 4
         },
         "SheetAnimation": {
@@ -178,7 +178,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_SE_idle_spritesheet.png",
             "layer": 5
         },
         "SheetAnimation": {
@@ -231,7 +231,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 4\\Character_ghost4_SE_idle_spritesheet.png",
             "layer": 5
         },
         "SheetAnimation": {
@@ -284,7 +284,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 1\\Character_ghost1_SE_idle_spritesheet.png",
             "layer": 5
         },
         "SheetAnimation": {
@@ -337,7 +337,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 2\\Character_ghost2_SE_idle_spritesheet.png",
             "layer": 5
         },
         "SheetAnimation": {
@@ -390,7 +390,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\NPC\\cat\\Character_cat_SE_idle_spritesheet.png",
             "layer": 5
         },
         "SheetAnimation": {
@@ -443,11 +443,11 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\NPC\\girl\\Character_Girl_SE_Idle_Spritesheet.png",
             "layer": 5
         },
         "SheetAnimation": {
-            "frameCount": 9,
+            "frameCount": 8,
             "currFrameIndex": 2,
             "timePerFrame": 0.15000000596046448,
             "timeToFrameSwap": 0.06666667759418488
