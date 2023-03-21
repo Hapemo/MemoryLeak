@@ -1,0 +1,191 @@
+[
+    {
+        "General": {
+            "name": "fog",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 3200.0,
+                "Y": 1800.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 63
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 1200.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\fog.png",
+                    "layer": 1
+                },
+                "mRotation": 0.0,
+                "mSpeed": 20.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 3,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 2000.0,
+            "mDirection": 0.0,
+            "mSpread": 360.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.5
+        }
+    },
+    {
+        "General": {
+            "name": "fogSmall",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 3200.0,
+                "Y": 1800.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 63
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 800.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\fog.png",
+                    "layer": 2
+                },
+                "mRotation": 0.0,
+                "mSpeed": 20.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 3,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 2000.0,
+            "mDirection": 0.0,
+            "mSpread": 360.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.5
+        }
+    },
+    {
+        "General": {
+            "name": "rain",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 3200.0,
+                "Y": 1800.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 2
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 250.0,
+                "mFacing": 0.5,
+                "mLifespan": 0.1,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\raindrop.png",
+                    "layer": 0
+                },
+                "mRotation": 0.0,
+                "mSpeed": 20.0,
+                "mFading": true,
+                "mFadeIn": false
+            },
+            "mDensity": 5,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 2000.0,
+            "mDirection": 0.0,
+            "mSpread": 360.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.0
+        }
+    }
+]

@@ -399,24 +399,38 @@
         "Button": {
             "interactable": true
         },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 3.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 0,
+                    "texture": "",
+                    "layer": 64
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mFading": true,
+                "mFadeIn": true
             },
-            "sprite": 0,
-            "texture": "",
-            "layer": 0
-        },
-        "ParticleInfo": {
-            "mScale": 10.0,
-            "mFacing": 90.0,
-            "mLifespan": 3.0,
-            "mRotation": 2.0,
-            "mSpeed": 20.0,
-            "mFading": true
+            "mDensity": 1,
+            "mCenter": {
+                "X": -650.0,
+                "Y": -310.0
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 0.10000000149011612,
+            "mIsActive": true,
+            "mSlow": 0.10000000149011612
         }
     },
     {

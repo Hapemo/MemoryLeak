@@ -13,60 +13,70 @@
             }
         },
         "isActive": false,
+        "mForceRender": false,
         "layer": 3,
         "order": 3
     },
     {
         "SceneName": "Pause",
         "isActive": true,
+        "mForceRender": false,
         "layer": 12,
         "order": 0
     },
     {
         "SceneName": "How_To_Play",
         "isActive": true,
+        "mForceRender": false,
         "layer": 12,
         "order": 0
     },
     {
         "SceneName": "Quit Confirmation",
         "isActive": true,
+        "mForceRender": false,
         "layer": 13,
         "order": 4
     },
     {
         "SceneName": "Dialogue",
         "isActive": false,
+        "mForceRender": false,
         "layer": 8,
         "order": 7
     },
     {
         "SceneName": "CrystalBalls",
         "isActive": false,
+        "mForceRender": false,
         "layer": 9,
         "order": 0
     },
     {
         "SceneName": "MiniMap",
         "isActive": false,
+        "mForceRender": false,
         "layer": 11,
         "order": 0
     },
     {
         "SceneName": "EnemyMap",
         "isActive": false,
+        "mForceRender": false,
         "layer": 11,
         "order": 0
     },
     {
         "SceneName": "WeatherMap",
         "isActive": false,
+        "mForceRender": false,
         "layer": 11,
         "order": 0
     },
     {
         "SceneName": "FPS",
         "isActive": false,
+        "mForceRender": false,
         "layer": 15,
         "order": 0
     },
@@ -84,12 +94,14 @@
             }
         },
         "isActive": false,
+        "mForceRender": false,
         "layer": 0,
         "order": 0
     },
     {
         "SceneName": "Transition",
         "isActive": false,
+        "mForceRender": false,
         "layer": 15,
         "order": 0
     },
@@ -107,19 +119,40 @@
             }
         },
         "isActive": false,
+        "mForceRender": false,
         "layer": 14,
         "order": 0
     },
     {
         "SceneName": "TutorialUILvl1",
         "isActive": false,
+        "mForceRender": false,
         "layer": 11,
         "order": 0
     },
     {
         "SceneName": "GUI Scene",
         "isActive": false,
+        "mForceRender": false,
         "layer": 10,
+        "order": 0
+    },
+    {
+        "SceneName": "WeatherScene",
+        "Transform": {
+            "scale": {
+                "X": 1200.0,
+                "Y": 675.0
+            },
+            "rotation": 1.3333333730697632,
+            "translation": {
+                "X": -1525.69873046875,
+                "Y": 799.8675537109375
+            }
+        },
+        "isActive": false,
+        "mForceRender": true,
+        "layer": 4,
         "order": 0
     }
 ]
