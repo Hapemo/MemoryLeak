@@ -207,11 +207,6 @@ namespace BonVoyage {
                     VI.Audio.Stop(_ENTITY);
                 }
             }
-            else // In dialogue or death animation
-            {
-                // Stop rowing audio in case
-                //VI.Audio.Stop(_ENTITY);
-            }
 
             // Update player position variables
             PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
