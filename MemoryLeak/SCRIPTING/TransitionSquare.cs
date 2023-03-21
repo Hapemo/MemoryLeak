@@ -20,7 +20,7 @@ namespace BonVoyage {
         static float currAlpha;
         static float speed;
 
-        private double delay = 5.0; 
+        private double delay = 1.0; 
 
 
         public void Alive(int _ENTITY) {
