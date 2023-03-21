@@ -899,7 +899,7 @@ void InspectorPanel::AudioEditor()
 {
 	if (ImGui::CollapsingHeader("Audio")) {
 		//ImGui::Text("Audio");
-		ImGui::Checkbox("toPlay", &e.GetComponent<Audio>().sound.toPlay);
+		ImGui::Checkbox("toPlay On start up", &e.GetComponent<Audio>().sound.toPlay);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 
 		ImGui::Checkbox("toPlayOnCollision", &e.GetComponent<Audio>().sound.toPlayOnCollision);
