@@ -202,38 +202,58 @@ namespace BonVoyage {
             d6 = VI.Entity.GetId("D6", "How_To_Play");
             VI.Entity.SetActive(w9, false);
             VI.Entity.SetActive(w10, false);
-            if (VI.Input.Button.Hover(w3)|| VI.Input.Button.Hover(w4))
-            {
-                VI.Entity.SetActive(w9, true);
-            }
-            if (VI.Input.Button.Hover(w5) || VI.Input.Button.Hover(w6))
-            {
-                VI.Animation.Transform.Run(BoatID);
-            }
-            else if(VI.Animation.Transform.GetCurrentIndex(BoatID) != 0)
-            {
-                VI.Animation.Transform.SetNext(BoatID, 0);
-                VI.Animation.Transform.Run(BoatID);
-            }
-            if (VI.Input.Button.Hover(w7) || VI.Input.Button.Hover(w8))
-            {
-                VI.Entity.SetActive(w10, true);
-            }
-            if (VI.Input.Button.Released(d4))
-            {
-                VI.Text.Update(d4, "Welcome!");
-                VI.Text.Update(d5, "Wait I cant");
-                VI.Text.Update(d6, "Thank you so much!!");
-            }
-            else if (VI.Input.Button.Released(d5))
-            {
-                VI.Text.Update(d4, "Ok then");
-                VI.Text.Update(d5, "Idk How");
-                VI.Text.Update(d6, "Why not? I miss home..");
-            }
             if (VI.Input.Button.Released(ForwardBtnID))
             {
                 Alive(_ENTITY);
+                int i = VI.Animation.Transform.GetCurrentIndex(ControlsID) + 1;
+                VI.Animation.Transform.SetNext(ControlsID, i);
+                VI.Animation.Transform.SetNext(PlayerMovementID, i);
+                VI.Animation.Transform.SetNext(DialogueID, i);
+                VI.Animation.Transform.SetNext(CrystalBallID, i);
+                VI.Animation.Transform.SetNext(WeatherID, i);
+                VI.Animation.Transform.SetNext(MemeoryFragmentID, i);
+                VI.Animation.Transform.SetNext(EnemyID, i);
+                VI.Animation.Transform.SetNext(c1, i);
+                VI.Animation.Transform.SetNext(c2, i);
+                VI.Animation.Transform.SetNext(c3, i);
+                VI.Animation.Transform.SetNext(c4, i);
+                VI.Animation.Transform.SetNext(pm1, i);
+                VI.Animation.Transform.SetNext(pm2, i);
+                VI.Animation.Transform.SetNext(pm3, i);
+                VI.Animation.Transform.SetNext(pm4, i);
+                VI.Animation.Transform.SetNext(pm5, i);
+                VI.Animation.Transform.SetNext(pm6, i);
+                VI.Animation.Transform.SetNext(pm7, i);
+                VI.Animation.Transform.SetNext(d1, i);
+                VI.Animation.Transform.SetNext(d2, i);
+                VI.Animation.Transform.SetNext(d3, i);
+                VI.Animation.Transform.SetNext(d4, i);
+                VI.Animation.Transform.SetNext(d5, i);
+                VI.Animation.Transform.SetNext(d6, i);
+                VI.Animation.Transform.SetNext(d7, i);
+                VI.Animation.Transform.SetNext(d8, i);
+                VI.Animation.Transform.SetNext(cb1, i);
+                VI.Animation.Transform.SetNext(cb2, i);
+                VI.Animation.Transform.SetNext(cb3, i);
+                VI.Animation.Transform.SetNext(w1, i);
+                VI.Animation.Transform.SetNext(w2, i);
+                VI.Animation.Transform.SetNext(w3, i);
+                VI.Animation.Transform.SetNext(w4, i);
+                VI.Animation.Transform.SetNext(w5, i);
+                VI.Animation.Transform.SetNext(w6, i);
+                VI.Animation.Transform.SetNext(w7, i);
+                VI.Animation.Transform.SetNext(w8, i);
+                VI.Animation.Transform.SetNext(mf1, i);
+                VI.Animation.Transform.SetNext(mf2, i);
+                VI.Animation.Transform.SetNext(mf3, i);
+                VI.Animation.Transform.SetNext(mf4, i);
+                VI.Animation.Transform.SetNext(e1, i);
+                VI.Animation.Transform.SetNext(e2, i);
+                VI.Animation.Transform.SetNext(e3, i);
+                VI.Animation.Transform.SetNext(e4, i);
+                VI.Animation.Transform.SetNext(e5, i);
+
+
                 VI.Animation.Transform.Run(ControlsID);
                 VI.Animation.Transform.Run(PlayerMovementID);
                 VI.Animation.Transform.Run(DialogueID);
@@ -283,6 +303,47 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(e4);
                 VI.Animation.Transform.Run(e5);
             }
+            else
+            {
+                if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 4)
+                {
+                    if (VI.Input.Button.Hover(w3) || VI.Input.Button.Hover(w4))
+                    {
+                        VI.Entity.SetActive(w9, true);
+                    }
+                    if (VI.Input.Button.Hover(w5) || VI.Input.Button.Hover(w6))
+                    {
+                        BoatID = VI.Entity.GetId("Boat", "UIBackground");
+                        VI.Animation.Transform.Run(BoatID);
+                    }
+                    //else if(VI.Animation.Transform.GetCurrentIndex(BoatID) != 0)
+                    //{
+                    //    BoatID = VI.Entity.GetId("Boat", "UIBackground");
+                    //    VI.Animation.Transform.SetNext(BoatID, 0);
+                    //    VI.Animation.Transform.Run(BoatID);
+                    //}
+                    if (VI.Input.Button.Hover(w7) || VI.Input.Button.Hover(w8))
+                    {
+                        VI.Entity.SetActive(w10, true);
+                    }
+                }
+                else if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 2)
+                { 
+                    if (VI.Input.Button.Released(d4))
+                    {
+                        VI.Text.Update(d4, "Welcome!");
+                        VI.Text.Update(d5, "Wait I cant");
+                        VI.Text.Update(d6, "Thank you so much!!");
+                    }
+                    else if (VI.Input.Button.Released(d5))
+                    {
+                        VI.Text.Update(d4, "Ok then");
+                        VI.Text.Update(d5, "Idk How");
+                        VI.Text.Update(d6, "Why not? I miss home..");
+                    }
+                }
+            }
+            
             if (VI.Animation.Transform.GetCurrentIndex(ControlsID) == 0)
             {
                 VI.Entity.SetActive(BackBtnID, false);

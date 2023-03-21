@@ -50,6 +50,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         }
     },
@@ -104,6 +105,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         }
     },
@@ -158,6 +160,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         }
     },
@@ -206,6 +209,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -258,6 +262,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -310,6 +315,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -362,6 +368,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -426,6 +433,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -490,6 +498,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -554,6 +563,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -629,6 +639,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -970,6 +981,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -1052,6 +1064,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -1168,7 +1181,7 @@
                     "timePerFrame": 0.10000000149011612
                 }
             ],
-            "currentImageIndex": 1
+            "currentImageIndex": 4
         },
         "SheetAnimation": {
             "frameCount": 1,
@@ -1340,6 +1353,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -1426,6 +1440,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         }
     },
@@ -1582,6 +1597,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -1805,6 +1821,7 @@
             "isMute": false,
             "isLoop": true,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": true
         },
         "MovementAI": {
@@ -2067,6 +2084,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -2141,6 +2159,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -2259,6 +2278,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -2377,6 +2397,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -2529,7 +2550,7 @@
                     "timePerFrame": 0.10000000149011612
                 }
             ],
-            "currentImageIndex": 0
+            "currentImageIndex": 4
         },
         "SheetAnimation": {
             "frameCount": 1,
@@ -2673,6 +2694,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -2727,6 +2749,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         }
     },
@@ -2902,6 +2925,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         }
     },
@@ -2953,6 +2977,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         }
     },
@@ -3163,6 +3188,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         }
     },
@@ -3211,6 +3237,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3263,6 +3290,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3315,6 +3343,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3367,6 +3396,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3419,6 +3449,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3471,6 +3502,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3523,6 +3555,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3575,6 +3608,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3627,6 +3661,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3679,6 +3714,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3731,6 +3767,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3783,6 +3820,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3835,6 +3873,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3887,6 +3926,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3939,6 +3979,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -3991,6 +4032,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4043,6 +4085,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4095,6 +4138,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4147,6 +4191,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4199,6 +4244,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4251,6 +4297,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4303,6 +4350,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4355,6 +4403,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4407,6 +4456,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4459,6 +4509,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4511,6 +4562,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4563,6 +4615,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4615,6 +4668,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4667,6 +4721,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4719,6 +4774,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4771,6 +4827,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4823,6 +4880,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4875,6 +4933,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4927,6 +4986,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -4979,6 +5039,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5031,6 +5092,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5083,6 +5145,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5135,6 +5198,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5187,6 +5251,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5239,6 +5304,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5291,6 +5357,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5343,6 +5410,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5395,6 +5463,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5447,6 +5516,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5499,6 +5569,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5551,6 +5622,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5603,6 +5675,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5655,6 +5728,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5707,6 +5781,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5759,6 +5834,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5811,6 +5887,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5863,6 +5940,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5915,6 +5993,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -5967,6 +6046,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6019,6 +6099,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6071,6 +6152,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6123,6 +6205,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6175,6 +6258,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6227,6 +6311,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6279,6 +6364,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6331,6 +6417,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6383,6 +6470,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6435,6 +6523,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6487,6 +6576,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6539,6 +6629,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6591,6 +6682,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6643,6 +6735,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6695,6 +6788,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6747,6 +6841,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6799,6 +6894,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6851,6 +6947,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6903,6 +7000,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -6955,6 +7053,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7007,6 +7106,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7059,6 +7159,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7111,6 +7212,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7163,6 +7265,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7215,6 +7318,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7267,6 +7371,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7319,6 +7424,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7371,6 +7477,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7423,6 +7530,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7475,6 +7583,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7527,6 +7636,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7579,6 +7689,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7631,6 +7742,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7683,6 +7795,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7735,6 +7848,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7787,6 +7901,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7839,6 +7954,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7891,6 +8007,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7943,6 +8060,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -7995,6 +8113,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8047,6 +8166,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8099,6 +8219,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8151,6 +8272,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8203,6 +8325,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8255,6 +8378,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8307,6 +8431,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8359,6 +8484,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8411,6 +8537,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8463,6 +8590,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8515,6 +8643,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8567,6 +8696,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8619,6 +8749,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8671,6 +8802,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8723,6 +8855,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8775,6 +8908,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8827,6 +8961,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8879,6 +9014,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8931,6 +9067,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -8983,6 +9120,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9035,6 +9173,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9087,6 +9226,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9139,6 +9279,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9203,6 +9344,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9267,6 +9409,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9331,6 +9474,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9395,6 +9539,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9459,6 +9604,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9511,6 +9657,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9575,6 +9722,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9639,6 +9787,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9691,6 +9840,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9743,6 +9893,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9795,6 +9946,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9859,6 +10011,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9923,6 +10076,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -9975,6 +10129,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10027,6 +10182,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10091,6 +10247,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10155,6 +10312,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10219,6 +10377,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10283,6 +10442,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10335,6 +10495,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10387,6 +10548,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10439,6 +10601,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10491,6 +10654,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10543,6 +10707,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10595,6 +10760,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10647,6 +10813,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10699,6 +10866,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10751,6 +10919,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10803,6 +10972,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10855,6 +11025,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10907,6 +11078,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -10959,6 +11131,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11011,6 +11184,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11063,6 +11237,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11115,6 +11290,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11167,6 +11343,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11219,6 +11396,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11271,6 +11449,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11323,6 +11502,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11375,6 +11555,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11427,6 +11608,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11479,6 +11661,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11531,6 +11714,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11583,6 +11767,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11635,6 +11820,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11687,6 +11873,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11739,6 +11926,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11791,6 +11979,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11843,6 +12032,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11895,6 +12085,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11947,6 +12138,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -11999,6 +12191,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12051,6 +12244,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12103,6 +12297,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12155,6 +12350,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12207,6 +12403,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12259,6 +12456,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12311,6 +12509,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12363,6 +12562,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12415,6 +12615,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12467,6 +12668,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12519,6 +12721,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12571,6 +12774,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12623,6 +12827,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12675,6 +12880,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12727,6 +12933,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12779,6 +12986,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12831,6 +13039,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12883,6 +13092,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12935,6 +13145,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -12987,6 +13198,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13039,6 +13251,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13091,6 +13304,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13143,6 +13357,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13195,6 +13410,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13247,6 +13463,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13299,6 +13516,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13351,6 +13569,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13403,6 +13622,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13455,6 +13675,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13507,6 +13728,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13559,6 +13781,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13611,6 +13834,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13663,6 +13887,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13715,6 +13940,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13767,6 +13993,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13819,6 +14046,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13871,6 +14099,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13923,6 +14152,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -13975,6 +14205,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14027,6 +14258,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14079,6 +14311,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14131,6 +14364,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14183,6 +14417,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14235,6 +14470,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14287,6 +14523,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14339,6 +14576,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14391,6 +14629,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14443,6 +14682,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14495,6 +14735,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14547,6 +14788,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14599,6 +14841,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14651,6 +14894,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14703,6 +14947,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14767,6 +15012,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14819,6 +15065,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14871,6 +15118,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14923,6 +15171,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -14975,6 +15224,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15027,6 +15277,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15079,6 +15330,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15131,6 +15383,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15183,6 +15436,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15235,6 +15489,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15287,6 +15542,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15339,6 +15595,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15391,6 +15648,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15455,6 +15713,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15519,6 +15778,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15583,6 +15843,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15647,6 +15908,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15711,6 +15973,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15775,6 +16038,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15839,6 +16103,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15903,6 +16168,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -15967,6 +16233,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16031,6 +16298,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16095,6 +16363,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16147,6 +16416,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16199,6 +16469,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16251,6 +16522,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16303,6 +16575,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16355,6 +16628,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16407,6 +16681,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16459,6 +16734,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16511,6 +16787,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16563,6 +16840,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16615,6 +16893,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16667,6 +16946,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16719,6 +16999,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16771,6 +17052,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16823,6 +17105,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16875,6 +17158,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16927,6 +17211,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -16979,6 +17264,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17031,6 +17317,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17083,6 +17370,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17135,6 +17423,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17187,6 +17476,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17239,6 +17529,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17291,6 +17582,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17343,6 +17635,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17395,6 +17688,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17447,6 +17741,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17499,6 +17794,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17551,6 +17847,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17603,6 +17900,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17655,6 +17953,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17707,6 +18006,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17759,6 +18059,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17811,6 +18112,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17863,6 +18165,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17915,6 +18218,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -17967,6 +18271,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18019,6 +18324,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18071,6 +18377,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18123,6 +18430,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18175,6 +18483,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18227,6 +18536,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18279,6 +18589,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18331,6 +18642,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18383,6 +18695,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18435,6 +18748,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18487,6 +18801,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18539,6 +18854,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18591,6 +18907,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18643,6 +18960,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18695,6 +19013,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18747,6 +19066,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18799,6 +19119,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18851,6 +19172,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18903,6 +19225,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -18955,6 +19278,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19007,6 +19331,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19059,6 +19384,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19111,6 +19437,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19163,6 +19490,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19215,6 +19543,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19267,6 +19596,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19319,6 +19649,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19371,6 +19702,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19423,6 +19755,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19475,6 +19808,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19527,6 +19861,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19579,6 +19914,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19631,6 +19967,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19683,6 +20020,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19735,6 +20073,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19787,6 +20126,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19839,6 +20179,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19891,6 +20232,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19943,6 +20285,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -19995,6 +20338,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20047,6 +20391,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20099,6 +20444,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20151,6 +20497,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20203,6 +20550,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20255,6 +20603,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20307,6 +20656,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20359,6 +20709,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20411,6 +20762,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20463,6 +20815,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20515,6 +20868,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20567,6 +20921,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20619,6 +20974,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20671,6 +21027,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20723,6 +21080,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20775,6 +21133,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20827,6 +21186,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20879,6 +21239,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20931,6 +21292,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -20983,6 +21345,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21035,6 +21398,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21087,6 +21451,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21139,6 +21504,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21191,6 +21557,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21243,6 +21610,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21295,6 +21663,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21347,6 +21716,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21399,6 +21769,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21451,6 +21822,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21503,6 +21875,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21555,6 +21928,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21607,6 +21981,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21659,6 +22034,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21711,6 +22087,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21763,6 +22140,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21815,6 +22193,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21867,6 +22246,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21919,6 +22299,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -21983,6 +22364,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22047,6 +22429,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22111,6 +22494,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22175,6 +22559,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22239,6 +22624,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22303,6 +22689,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22367,6 +22754,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22431,6 +22819,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22495,6 +22884,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22559,6 +22949,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22623,6 +23014,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22675,6 +23067,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22727,6 +23120,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22779,6 +23173,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22831,6 +23226,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22883,6 +23279,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22935,6 +23332,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -22987,6 +23385,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23039,6 +23438,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23091,6 +23491,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23143,6 +23544,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23195,6 +23597,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23247,6 +23650,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23299,6 +23703,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23351,6 +23756,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23403,6 +23809,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23455,6 +23862,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23507,6 +23915,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23559,6 +23968,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23611,6 +24021,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23663,6 +24074,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23715,6 +24127,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23767,6 +24180,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23819,6 +24233,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23871,6 +24286,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23923,6 +24339,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -23975,6 +24392,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24027,6 +24445,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24079,6 +24498,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24131,6 +24551,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24183,6 +24604,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24235,6 +24657,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24287,6 +24710,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24339,6 +24763,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24391,6 +24816,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24443,6 +24869,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24495,6 +24922,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24547,6 +24975,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24599,6 +25028,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24651,6 +25081,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24703,6 +25134,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24755,6 +25187,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24807,6 +25240,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24859,6 +25293,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24911,6 +25346,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -24963,6 +25399,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25015,6 +25452,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25067,6 +25505,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25119,6 +25558,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25171,6 +25611,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25223,6 +25664,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25275,6 +25717,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25327,6 +25770,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25379,6 +25823,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25431,6 +25876,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25483,6 +25929,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25535,6 +25982,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25587,6 +26035,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25639,6 +26088,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25691,6 +26141,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25743,6 +26194,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25795,6 +26247,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25847,6 +26300,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25899,6 +26353,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -25951,6 +26406,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26003,6 +26459,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26055,6 +26512,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26107,6 +26565,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26159,6 +26618,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26211,6 +26671,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26263,6 +26724,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26315,6 +26777,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26367,6 +26830,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26419,6 +26883,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26471,6 +26936,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26523,6 +26989,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26575,6 +27042,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26627,6 +27095,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26679,6 +27148,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26731,6 +27201,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26783,6 +27254,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26835,6 +27307,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26887,6 +27360,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26939,6 +27413,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -26991,6 +27466,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27043,6 +27519,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27095,6 +27572,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27147,6 +27625,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27199,6 +27678,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27263,6 +27743,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27315,6 +27796,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27367,6 +27849,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27419,6 +27902,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27471,6 +27955,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27523,6 +28008,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27575,6 +28061,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27627,6 +28114,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27679,6 +28167,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27731,6 +28220,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27783,6 +28273,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27835,6 +28326,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27887,6 +28379,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27939,6 +28432,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -27991,6 +28485,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28043,6 +28538,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28095,6 +28591,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28147,6 +28644,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28199,6 +28697,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28251,6 +28750,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28303,6 +28803,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28355,6 +28856,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28407,6 +28909,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28459,6 +28962,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
@@ -28511,11 +29015,327 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1480.0,
+                "Y": -810.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": -1480.0,
+                "Y": -810.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -350.0,
+                "Y": -950.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": -350.0,
+                "Y": -950.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 170.0,
+                "Y": 820.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 170.0,
+                "Y": 820.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1450.0,
+                "Y": -640.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 1450.0,
+                "Y": -640.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 950.0,
+                "Y": 830.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 950.0,
+                "Y": 830.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
         }
     }
 ]

@@ -441,6 +441,15 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 			continue;
 		}
 
+		if (item.obj[0].HasComponent<Audio>())
+			if (item.obj[0].GetComponent<Audio>().sound.toPlayOnCollision)
+				item.obj[0].GetComponent<Audio>().sound.toPlay = true;
+
+		if (item.obj[1].HasComponent<Audio>())
+			if (item.obj[1].GetComponent<Audio>().sound.toPlayOnCollision)
+				item.obj[1].GetComponent<Audio>().sound.toPlay = true;
+
+
 		// Correct penetrated positions
 		PositionCorrection(item);
 		// Resolve contact by updating velocity values of both objects

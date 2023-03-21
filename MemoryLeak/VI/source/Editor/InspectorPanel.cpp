@@ -899,6 +899,12 @@ void InspectorPanel::AudioEditor()
 {
 	if (ImGui::CollapsingHeader("Audio")) {
 		//ImGui::Text("Audio");
+		ImGui::Checkbox("toPlay On start up", &e.GetComponent<Audio>().sound.toPlay);
+		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
+		ImGui::Checkbox("toPlayOnCollision", &e.GetComponent<Audio>().sound.toPlayOnCollision);
+		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
+
 		ImGui::InputText("Add Sound Path", &e.GetComponent<Audio>().sound.path);
 		SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 		static const wchar_t* texpath = (const wchar_t*)"";
