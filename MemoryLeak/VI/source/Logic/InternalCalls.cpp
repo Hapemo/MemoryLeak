@@ -385,8 +385,8 @@ Checks if/Sets an entity is active.
 *******************************************************************************/
 bool InternalCalls::iEntity::IsActive(const Entity& _e) {
 	if (!_e.HasComponent<General>()) {
-		LOG_GAME("Entity does not exist!");
-		LOG_ERROR("Stop! Entity does not exist!");
+		LOG_GAME("Entity does not have a General component!");
+		LOG_ERROR("Entity does not have a General component!");
 		return false;
 	}
 	return _e.GetComponent<General>().isActive;
