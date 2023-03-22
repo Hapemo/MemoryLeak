@@ -179,6 +179,16 @@ namespace VI {
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static string ReturnString();
 	}
+
+	public class Storage
+	{
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void Push(string _key, int _value);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int Get(string _key);
+	}
+
 	public class General
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]

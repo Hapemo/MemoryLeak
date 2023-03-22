@@ -35,6 +35,17 @@ void MonoMethods::Logger(MonoString* _log) {
 
 /*!*****************************************************************************
 \brief
+Int storage.
+*******************************************************************************/
+void MonoMethods::StoreValue(MonoString* _key, int _value) {
+	FUNC->StoreValue(MONO->ConvertFromMonoString(_key), _value);
+}
+int MonoMethods::GetValue(MonoString* _key) {
+	return FUNC->GetValue(MONO->ConvertFromMonoString(_key));
+}
+
+/*!*****************************************************************************
+\brief
 Internal Call functions that uses MonoString or needs overloading.
 *******************************************************************************/
 // Input
@@ -479,6 +490,10 @@ void MonoMethods::RegisterCalls() {
 	
 	// Logger
 	mono_add_internal_call("LOG::WRITE", &MONO->Logger);
+
+	// Store int
+	mono_add_internal_call("VI.Storage::Push", &FUNC->StoreValue);
+	mono_add_internal_call("VI.Storage::Get", &FUNC->GetValue);
 
 	// General
 	mono_add_internal_call("VI.General::DeltaTime", &FUNC->GetDeltaTime);

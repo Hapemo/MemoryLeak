@@ -30,7 +30,12 @@ struct Transform;
 #define VI InternalCalls
 
 class InternalCalls : public Singleton<InternalCalls> {
+private:
+	static std::map<std::string, int> storageInt;
 public:
+	static void StoreValue(std::string _key, int _value);
+	static int GetValue(std::string _key);
+
 	/*!*****************************************************************************
 	\brief
 	Test internal function for string.

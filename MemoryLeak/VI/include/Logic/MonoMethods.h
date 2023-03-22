@@ -42,6 +42,13 @@ public:
 
 	/*!*****************************************************************************
 	\brief
+	Int storage.
+	*******************************************************************************/
+	static void StoreValue(MonoString* _key, int _value);
+	static int GetValue(MonoString* _key);
+
+	/*!*****************************************************************************
+	\brief
 	Internal Call functions that uses MonoString or needs overloading.
 	*******************************************************************************/
 	struct iInput {
