@@ -100,15 +100,15 @@ Retrieves the mono class from a mono image. Returns the mono class pointer if
 success, else returns a nullptr.
 *******************************************************************************/
 MonoClass* MonoManager::GetClassInAssembly(MonoAssembly* _assembly, const char* _namespace, const char* _class) {
-	//LOG_CUSTOM("Mono", "Loading Mono image...");
+	LOG_CUSTOM("Mono", "Loading Mono image...");
 	MonoImage* assemblyImage = mono_assembly_get_image(_assembly);
 
 	if (!assemblyImage) {
-		//LOG_CUSTOM("Mono", "Failed to retrieve assembly image!");
+		LOG_CUSTOM("Mono", "Failed to retrieve assembly image!");
 		return nullptr;
 	}
 
-	//LOG_CUSTOM("Mono", "Retrieving Mono class...");
+	LOG_CUSTOM("Mono", "Retrieving Mono class...");
 	MonoClass* monoClass = mono_class_from_name(assemblyImage, _namespace, _class);
 	if (monoClass == nullptr) return nullptr;
 	return monoClass;
@@ -125,7 +125,7 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	std::string namespaceStr = _namespace;
 	std::string classStr = _class;
 	if (monoClass == nullptr) {
-		//LOG_CUSTOM("Mono", "Failed to retrieve Mono class " + namespaceStr + "::" + classStr + "!");
+		LOG_CUSTOM("Mono", "Failed to retrieve Mono class " + namespaceStr + "::" + classStr + "!");
 		return nullptr;
 	}
 	else LOG_CUSTOM("Mono", "Retrieved Mono class " + namespaceStr + "::" + classStr + "."); 
