@@ -126,7 +126,7 @@ namespace BonVoyage {
             // Passenger was delivered
             if (DestinationReached) {
                 // Return layer value
-                VI.Texture.SetLayer(_ENTITY, InitialLayerVal);
+                VI.Sprite.SetLayer(_ENTITY, InitialLayerVal);
 
                 // Restore passenger's original scale value
                 // Returns true when completed

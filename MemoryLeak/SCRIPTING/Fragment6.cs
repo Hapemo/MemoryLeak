@@ -51,7 +51,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             increasingalpha = false;
             currclr = 255;
-            THIS.LightSource.SpriteColor.Set((int)currclr, (int)currclr, (int)currclr, 255);
+            THIS.Sprite.SetColor((int)currclr, (int)currclr, (int)currclr, 255);
         }
 
         public void Dead(int _ENTITY) {
@@ -67,7 +67,7 @@ namespace BonVoyage {
                 currclr = 255;
                 increasingalpha = false;
             }
-            THIS.LightSource.SpriteColor.Set((int)currclr, (int)currclr, (int)currclr, 255);
+            THIS.Sprite.SetColor((int)currclr, (int)currclr, (int)currclr, 255);
         }
     }
 }

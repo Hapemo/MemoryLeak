@@ -70,7 +70,7 @@ namespace BonVoyage {
             VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);
             VI.Text.Scale.Set(weathermapID, textScale);
             VI.Animation.Transform.Run(weathermapID);
-            VI.Entity.Sprite.SetType(weathermapID, 1);
+            VI.Sprite.SetType(weathermapID, 1);
             for (int i = 0; i < 25; i++)
             {
                 int modI = i % 5;
@@ -108,7 +108,7 @@ namespace BonVoyage {
                 VI.Text.Offset.Set(weathermapID, textbigOffsetX, textbigOffsetY);
                 VI.Text.Scale.Set(weathermapID, textbigScale);
                 VI.Animation.Transform.Run(weathermapID);
-                VI.Entity.Sprite.SetType(weathermapID, 0);
+                VI.Sprite.SetType(weathermapID, 0);
                 for (int i = 0; i < 25; i++)
                 {
                     string EIcon = "EIcon" + i;
@@ -126,7 +126,7 @@ namespace BonVoyage {
                 VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);
                 VI.Text.Scale.Set(weathermapID, textScale);
                 VI.Animation.Transform.Run(weathermapID);
-                VI.Entity.Sprite.SetType(weathermapID, 1);
+                VI.Sprite.SetType(weathermapID, 1);
                 for (int i = 0; i < 25; i++)
                 {
                     int modI = i % 5;
@@ -166,7 +166,7 @@ namespace BonVoyage {
             VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);
             VI.Text.Scale.Set(weathermapID, textScale);
             VI.Animation.Transform.Run(weathermapID);
-            VI.Entity.Sprite.SetType(weathermapID, 1);
+            VI.Sprite.SetType(weathermapID, 1);
             for (int i = 0; i < 25; i++)
             {
                 int modI = i % 5;

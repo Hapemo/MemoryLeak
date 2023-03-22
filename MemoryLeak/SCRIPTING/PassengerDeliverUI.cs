@@ -29,8 +29,8 @@ namespace BonVoyage {
             increase1 = false;
             increase2 = false;
             speed = 250;
-            VI.LightSource.SpriteColor.Set(p1icon, 0,0,0, 255);
-            VI.LightSource.SpriteColor.Set(p2icon, 0,0,0, 255);
+            VI.Sprite.SetColor(p1icon, 0,0,0, 255);
+            VI.Sprite.SetColor(p2icon, 0,0,0, 255);
 
         }
 
@@ -77,14 +77,14 @@ namespace BonVoyage {
                 curr1 += speed * (float)VI.General.DeltaTime();
                 if (curr1 > 255)
                     curr1 = 255;
-                VI.LightSource.SpriteColor.Set(p1icon, (int)curr1, (int)curr1, (int)curr1, 255);
+                VI.Sprite.SetColor(p1icon, (int)curr1, (int)curr1, (int)curr1, 255);
             }
             if (increase2)
             {
                 curr2 += speed * (float)VI.General.DeltaTime();
                 if (curr2 > 255)
                     curr2 = 255;
-                VI.LightSource.SpriteColor.Set(p2icon, (int)curr2, (int)curr2, (int)curr2, 255);
+                VI.Sprite.SetColor(p2icon, (int)curr2, (int)curr2, (int)curr2, 255);
             }
         }
 

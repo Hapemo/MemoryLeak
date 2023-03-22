@@ -238,32 +238,74 @@ void MonoMethods::iParticleSystem::iParticleInfo::SetTexture(const int _eId, Mon
 	VI::iParticleSystem::iParticleInfo::SetTexture(_eId, MONO->ConvertFromMonoString(_texture));
 }
 
-// Texture
-void MonoMethods::iTexture::s_SetTexture(MonoString* _entityName, MonoString* _sceneName, MonoString* _path) {
-	VI::iTexture::SetTexture(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), MONO->ConvertFromMonoString(_path));
+// Sprite
+void MonoMethods::iSprite::s_SetTexture(MonoString* _entityName, MonoString* _sceneName, MonoString* _path) {
+	VI::iSprite::SetTexture(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), MONO->ConvertFromMonoString(_path));
 }
-MonoString* MonoMethods::iTexture::s_GetTexture(MonoString* _entityName, MonoString* _sceneName) {
-	return MONO->ConvertToMonoString(VI::iTexture::GetTexture(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName)));
-}
-
-void MonoMethods::iTexture::SetTexture(const int _eId, MonoString* _path) {
-	VI::iTexture::SetTexture(_eId, MONO->ConvertFromMonoString(_path));
-}
-MonoString* MonoMethods::iTexture::GetTexture(const int _eId) {
-	return MONO->ConvertToMonoString(VI::iTexture::GetTexture(_eId));
+MonoString* MonoMethods::iSprite::s_GetTexture(MonoString* _entityName, MonoString* _sceneName) {
+	return MONO->ConvertToMonoString(VI::iSprite::GetTexture(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName)));
 }
 
-int MonoMethods::iTexture::GetLayer(const int _eId) {
-	return VI::iTexture::GetLayer(_eId);
+void MonoMethods::iSprite::SetTexture(const int _eId, MonoString* _path) {
+	VI::iSprite::SetTexture(_eId, MONO->ConvertFromMonoString(_path));
 }
-int MonoMethods::iTexture::s_GetLayer(MonoString* _entityName, MonoString* _sceneName) {
-	return VI::iTexture::GetLayer(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+MonoString* MonoMethods::iSprite::GetTexture(const int _eId) {
+	return MONO->ConvertToMonoString(VI::iSprite::GetTexture(_eId));
 }
-void MonoMethods::iTexture::SetLayer(const int _eId, int layer) {
-	VI::iTexture::SetLayer(_eId, layer);
+
+void MonoMethods::iSprite::s_SetType(MonoString* _entityName, MonoString* _sceneName, int _type) {
+	VI::iSprite::SetType(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _type);
 }
-void MonoMethods::iTexture::s_SetLayer(MonoString* _entityName, MonoString* _sceneName, int layer) {
-	VI::iTexture::SetLayer(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), layer);
+int MonoMethods::iSprite::s_GetType(MonoString* _entityName, MonoString* _sceneName) {
+	return VI::iSprite::GetType(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+
+void MonoMethods::iSprite::SetType(const int _eId, int _type) {
+	VI::iSprite::SetType(_eId, _type);
+}
+int MonoMethods::iSprite::GetType(const int _eId) {
+	return VI::iSprite::GetType(_eId);
+}
+
+int MonoMethods::iSprite::GetLayer(const int _eId) {
+	return VI::iSprite::GetLayer(_eId);
+}
+int MonoMethods::iSprite::s_GetLayer(MonoString* _entityName, MonoString* _sceneName) {
+	return VI::iSprite::GetLayer(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+void MonoMethods::iSprite::SetLayer(const int _eId, int _layer) {
+	VI::iSprite::SetLayer(_eId, _layer);
+}
+void MonoMethods::iSprite::s_SetLayer(MonoString* _entityName, MonoString* _sceneName, int _layer) {
+	VI::iSprite::SetLayer(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _layer);
+}
+
+void MonoMethods::iSprite::s_SetColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a) {
+	VI::iSprite::SetColor(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _r, _g, _b, _a);
+}
+void MonoMethods::iSprite::SetColor(const int _eId, int _r, int _g, int _b, int _a) {
+	VI::iSprite::SetColor(_eId, _r, _g, _b, _a);
+}
+
+void MonoMethods::iSprite::s_SetAlpha(MonoString* _entityName, MonoString* _sceneName, int _a) {
+	VI::iSprite::SetAlpha(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _a);
+}
+void MonoMethods::iSprite::SetAlpha(const int _eId, int _a) {
+	VI::iSprite::SetAlpha(_eId, _a);
+}
+
+int MonoMethods::iSprite::s_GetColor(MonoString* _entityName, MonoString* _sceneName, int _rgba) {
+	return VI::iSprite::GetColor(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _rgba);
+}
+int MonoMethods::iSprite::GetColor(const int _eId, int _rgba) {
+	return VI::iSprite::GetColor(_eId, _rgba);
+}
+
+int MonoMethods::iSprite::s_GetAlpha(MonoString* _entityName, MonoString* _sceneName) {
+	return VI::iSprite::GetColor(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), 3);
+}
+int MonoMethods::iSprite::GetAlpha(const int _eId) {
+	return VI::iSprite::GetColor(_eId, 3);
 }
 
 // Audio
@@ -418,18 +460,11 @@ float MonoMethods::iLightSource::s_GetRadius(MonoString* _entityName, MonoString
 void  MonoMethods::iLightSource::s_SetRadius(MonoString* _entityName, MonoString* _sceneName, float _radius) {
 	VI::iLightSource::SetRadius(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _radius);
 }
-void MonoMethods::iLightSource::s_SetSpriteColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a) {
-	VI::iLightSource::SetSpriteColor(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _r, _g, _b, _a);
-}
-
 float MonoMethods::iLightSource::GetRadius(const int _eId) {
 	return VI::iLightSource::GetRadius(_eId);
 }
 void MonoMethods::iLightSource::SetRadius(const int _eId, float _radius) {
 	VI::iLightSource::SetRadius(_eId, _radius);
-}
-void MonoMethods::iLightSource::SetSpriteColor(const int _eId, int _r, int _g, int _b, int _a) {
-	VI::iLightSource::SetSpriteColor(_eId, _r, _g, _b, _a);
 }
 
 /*!*****************************************************************************
@@ -533,9 +568,6 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Entity::Deactivate", &MM::iEntity::Deactivate);
 	mono_add_internal_call("VI.Entity/Parent::Name", &MM::iEntity::GetParent);
 	mono_add_internal_call("VI.Entity/Parent::Id", &MM::iEntity::GetParentId);
-
-	mono_add_internal_call("VI.Entity/Sprite::GetType", &VI::iEntity::GetSpriteType);
-	mono_add_internal_call("VI.Entity/Sprite::SetType", &VI::iEntity::SetSpriteType);
 
 	// Scene
 	mono_add_internal_call("VI.Scene::Pause", &MM::iScene::Pause);
@@ -673,16 +705,32 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetTexture", &MM::iParticleSystem::iParticleInfo::SetTexture);
 	mono_add_internal_call("VI.ParticleSystem/ParticleInfo::SetLayer", &VI::iParticleSystem::iParticleInfo::SetLayer);
 
-	// Textures
-	mono_add_internal_call("VI.Texture::s_Set", &MM::iTexture::s_SetTexture);
-	mono_add_internal_call("VI.Texture::s_Get", &MM::iTexture::s_GetTexture);
-	mono_add_internal_call("VI.Texture::Set", &MM::iTexture::SetTexture);
-	mono_add_internal_call("VI.Texture::Get", &MM::iTexture::GetTexture);
+	// Sprite
+	mono_add_internal_call("VI.Sprite::s_SetTexture", &MM::iSprite::s_SetTexture);
+	mono_add_internal_call("VI.Sprite::s_GetTexture", &MM::iSprite::s_GetTexture);
+	mono_add_internal_call("VI.Sprite::SetTexture", &MM::iSprite::SetTexture);
+	mono_add_internal_call("VI.Sprite::GetTexture", &MM::iSprite::GetTexture);
 
-	mono_add_internal_call("VI.Texture::GetLayer", &MM::iTexture::GetLayer);
-	mono_add_internal_call("VI.Texture::SetLayer", &MM::iTexture::SetLayer);
-	mono_add_internal_call("VI.Texture::s_GetLayer", &MM::iTexture::s_GetLayer);
-	mono_add_internal_call("VI.Texture::s_SetLayer", &MM::iTexture::s_SetLayer);
+	mono_add_internal_call("VI.Sprite::GetType", &MM::iSprite::GetType);
+	mono_add_internal_call("VI.Sprite::SetType", &MM::iSprite::SetType);
+	mono_add_internal_call("VI.Sprite::s_GetType", &MM::iSprite::s_GetType);
+	mono_add_internal_call("VI.Sprite::s_SetType", &MM::iSprite::s_SetType);
+
+	mono_add_internal_call("VI.Sprite::GetLayer", &MM::iSprite::GetLayer);
+	mono_add_internal_call("VI.Sprite::SetLayer", &MM::iSprite::SetLayer);
+	mono_add_internal_call("VI.Sprite::s_GetLayer", &MM::iSprite::s_GetLayer);
+	mono_add_internal_call("VI.Sprite::s_SetLayer", &MM::iSprite::s_SetLayer);
+
+	mono_add_internal_call("VI.Sprite::s_SetColor", &MM::iSprite::s_SetColor);
+	mono_add_internal_call("VI.Sprite::SetColor", &MM::iSprite::SetColor);
+	mono_add_internal_call("VI.Sprite::s_SetAlpha", &MM::iSprite::s_SetAlpha);
+	mono_add_internal_call("VI.Sprite::SetAlpha", &MM::iSprite::SetAlpha);
+
+	mono_add_internal_call("VI.Sprite::s_GetColor", &MM::iSprite::s_GetColor);
+	mono_add_internal_call("VI.Sprite::GetColor", &MM::iSprite::GetColor);
+	mono_add_internal_call("VI.Sprite::s_GetAlpha", &MM::iSprite::s_GetAlpha);
+	mono_add_internal_call("VI.Sprite::GetAlpha", &MM::iSprite::GetAlpha);
+
 	// Audio
 	mono_add_internal_call("VI.Audio::Play", &MM::iAudio::Play);
 	mono_add_internal_call("VI.Audio::PlayOnLoop", &MM::iAudio::PlayOnLoop);
@@ -761,9 +809,6 @@ void MonoMethods::RegisterCalls() {
 	// LightSource
 	mono_add_internal_call("VI.LightSource/Radius::s_Get", &MM::iLightSource::s_GetRadius);
 	mono_add_internal_call("VI.LightSource/Radius::s_Set", &MM::iLightSource::s_SetRadius);
-	mono_add_internal_call("VI.LightSource/SpriteColor::s_Set", &MM::iLightSource::s_SetSpriteColor);
-
 	mono_add_internal_call("VI.LightSource/Radius::Get", &MM::iLightSource::GetRadius);
 	mono_add_internal_call("VI.LightSource/Radius::Set", &MM::iLightSource::SetRadius);
-	mono_add_internal_call("VI.LightSource/SpriteColor::Set", &MM::iLightSource::SetSpriteColor);
 }

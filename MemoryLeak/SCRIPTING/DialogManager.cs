@@ -154,33 +154,33 @@ namespace BonVoyage {
         if (additionalLines < 2) {
           VI.Transform.Scale.SetY(entityname, smallDialogBoxHeight);
           VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
-          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox1.png");
+          VI.Sprite.SetTexture(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox1.png");
         } else if (additionalLines < 4) {
           posY += (midDialogBoxHeight - smallDialogBoxHeight) / 2;
           VI.Transform.Scale.SetY(entityname, midDialogBoxHeight);
           VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
-          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox2.png");
+          VI.Sprite.SetTexture(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox2.png");
         } else if (additionalLines < 6) {
           posY += (bigDialogBoxHeight - smallDialogBoxHeight) / 2;
           VI.Transform.Scale.SetY(entityname, bigDialogBoxHeight);
           VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
-          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
+          VI.Sprite.SetTexture(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
         } else {
           posY += (verybigDialogBoxHeight - smallDialogBoxHeight) / 2;
           VI.Transform.Scale.SetY(entityname, verybigDialogBoxHeight);
           VI.Transform.Scale.SetX(entityname, dialogBoxWidth);
-          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
+          VI.Sprite.SetTexture(entityname, "Textures\\Icons\\dialogue\\UI_DialogueBox3.png");
         }
       } else {
         if (additionalLines == 0) {
           textYSpacing = 10;
           VI.Transform.Scale.SetY(entityname, smallChoiceHeight);
           VI.Transform.Scale.SetX(entityname, choiceWidth);
-          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
+          VI.Sprite.SetTexture(entityname, "Textures\\Icons\\dialogue\\UI_DialogueOption1.png");
         } else {
           VI.Transform.Scale.SetY(entityname, midChoiceHeight);
           VI.Transform.Scale.SetX(entityname, choiceWidth);
-          VI.Texture.Set(entityname, "Textures\\Icons\\dialogue\\UI_DialogueOption2.png");
+          VI.Sprite.SetTexture(entityname, "Textures\\Icons\\dialogue\\UI_DialogueOption2.png");
         }
       }
 

@@ -428,17 +428,6 @@ int InternalCalls::iEntity::GetParentId(std::string const& _entityName, std::str
 
 /*!*****************************************************************************
 \brief
-Sprite component
-*******************************************************************************/
-int InternalCalls::iEntity::GetSpriteType(const int _eId) {
-	return (int)Entity(_eId).GetComponent<Sprite>().sprite;
-}
-void InternalCalls::iEntity::SetSpriteType(const int _eId, int _type) {
-	Entity(_eId).GetComponent<Sprite>().sprite = (SPRITE)_type;
-}
-
-/*!*****************************************************************************
-\brief
 Gets scene to pause or unpause the scene.
 *******************************************************************************/
 Scene& InternalCalls::iScene::Select(std::string const& _name) {
@@ -924,45 +913,110 @@ void InternalCalls::iParticleSystem::iParticleInfo::SetLayer(const int _eId, int
 
 /*!*****************************************************************************
 \brief
-Set/Get the texture of an entity.
+Edit/Get the sprite details of an entity.
 *******************************************************************************/
-void InternalCalls::iTexture::SetTexture(const Entity& _e, const std::string& _path) {
+void InternalCalls::iSprite::SetTexture(const Entity& _e, const std::string& _path) {
 	spriteManager->SetTexture(_e, _path);
 }
-std::string InternalCalls::iTexture::GetTexture(const Entity& _e) {
+std::string InternalCalls::iSprite::GetTexture(const Entity& _e) {
 	return spriteManager->GetTexturePath(spriteManager->GetTexture(_e));
 }
-void InternalCalls::iTexture::SetTexture(const int _eId, const std::string& _path) {
-	VI::iTexture::SetTexture(Entity(_eId), _path);
+void InternalCalls::iSprite::SetTexture(const int _eId, const std::string& _path) {
+	VI::iSprite::SetTexture(Entity(_eId), _path);
 }
-std::string InternalCalls::iTexture::GetTexture(const int _eId) {
-	return VI::iTexture::GetTexture(Entity(_eId));
+std::string InternalCalls::iSprite::GetTexture(const int _eId) {
+	return VI::iSprite::GetTexture(Entity(_eId));
 }
-void InternalCalls::iTexture::SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path) {
-	VI::iTexture::SetTexture(VI::iEntity::GetEntity(_entityName, _sceneName), _path);
+void InternalCalls::iSprite::SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path) {
+	VI::iSprite::SetTexture(VI::iEntity::GetEntity(_entityName, _sceneName), _path);
 }
-std::string InternalCalls::iTexture::GetTexture(std::string const& _entityName, std::string const& _sceneName) {
-	return VI::iTexture::GetTexture(VI::iEntity::GetEntity(_entityName, _sceneName));
+std::string InternalCalls::iSprite::GetTexture(std::string const& _entityName, std::string const& _sceneName) {
+	return VI::iSprite::GetTexture(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
-int InternalCalls::iTexture::GetLayer(const Entity& _e) {
+int InternalCalls::iSprite::GetType(const Entity& _e) {
+	return (int)_e.GetComponent<Sprite>().sprite;
+}
+int InternalCalls::iSprite::GetType(const int _eId) {
+	return VI::iSprite::GetType(Entity(_eId));
+}
+int InternalCalls::iSprite::GetType(std::string const& _entityName, std::string const& _sceneName) {
+	return VI::iSprite::GetType(VI::iEntity::GetEntity(_entityName, _sceneName));
+}
+void InternalCalls::iSprite::SetType(const Entity& _e, int _type) {
+	_e.GetComponent<Sprite>().sprite = (SPRITE)_type;
+}
+void InternalCalls::iSprite::SetType(const int _eId, int _type) {
+	VI::iSprite::SetType(Entity(_eId), _type);
+}
+void InternalCalls::iSprite::SetType(std::string const& _entityName, std::string const& _sceneName, int _type) {
+	VI::iSprite::SetType(VI::iEntity::GetEntity(_entityName, _sceneName), _type);
+}
+int InternalCalls::iSprite::GetLayer(const Entity& _e) {
 	return _e.GetComponent<Sprite>().layer;
 }
-void InternalCalls::iTexture::SetLayer(const Entity& _e, int layer) {
+void InternalCalls::iSprite::SetLayer(const Entity& _e, int layer) {
 	_e.GetComponent<Sprite>().layer = layer;
 }
-int InternalCalls::iTexture::GetLayer(const int _eId) {
-	return VI::iTexture::GetLayer(Entity(_eId));
+int InternalCalls::iSprite::GetLayer(const int _eId) {
+	return VI::iSprite::GetLayer(Entity(_eId));
 }
-void InternalCalls::iTexture::SetLayer(const int _eId, int layer) {
-	VI::iTexture::SetLayer(Entity(_eId), layer);
+void InternalCalls::iSprite::SetLayer(const int _eId, int layer) {
+	VI::iSprite::SetLayer(Entity(_eId), layer);
 }
-int InternalCalls::iTexture::GetLayer(std::string const& _entityName, std::string const& _sceneName) {
-	return VI::iTexture::GetLayer(VI::iEntity::GetEntity(_entityName, _sceneName));
+int InternalCalls::iSprite::GetLayer(std::string const& _entityName, std::string const& _sceneName) {
+	return VI::iSprite::GetLayer(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
-void InternalCalls::iTexture::SetLayer(std::string const& _entityName, std::string const& _sceneName, int layer) {
-	VI::iTexture::SetLayer(VI::iEntity::GetEntity(_entityName, _sceneName), layer);
+void InternalCalls::iSprite::SetLayer(std::string const& _entityName, std::string const& _sceneName, int layer) {
+	VI::iSprite::SetLayer(VI::iEntity::GetEntity(_entityName, _sceneName), layer);
+}
+void InternalCalls::iSprite::SetAlpha(const Entity& _e, int _a) {
+	if (!_e.HasComponent<Sprite>()) return;
+	_e.GetComponent<Sprite>().color.a = (GLubyte)_a;
+}
+void InternalCalls::iSprite::SetAlpha(const int _eId, int _a) {
+	VI::iSprite::SetAlpha(Entity(_eId), _a);
+}
+void InternalCalls::iSprite::SetAlpha(std::string const& _entityName, std::string const& _sceneName, int _a) {
+	VI::iSprite::SetAlpha(VI::iEntity::GetEntity(_entityName, _sceneName), _a);
+}
+void InternalCalls::iSprite::SetColor(const Entity& _e, int _r, int _g, int _b, int _a) {
+	if (!_e.HasComponent<Sprite>())
+		return;
+	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a };
+	_e.GetComponent<Sprite>().color = clr;
+}
+void InternalCalls::iSprite::SetColor(const int _eId, int _r, int _g, int _b, int _a) {
+	VI::iSprite::SetColor(Entity(_eId), _r, _g, _b, _a);
+}
+void InternalCalls::iSprite::SetColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a) {
+	VI::iSprite::SetColor(VI::iEntity::GetEntity(_entityName, _sceneName), _r, _g, _b, _a);
+}
+int InternalCalls::iSprite::GetColor(const Entity& _e, int _rgba) {
+	if (!_e.HasComponent<Sprite>()) return -1;
+	switch (_rgba) {
+	case 0:
+		return _e.GetComponent<Sprite>().color.r;
+		break;
+	case 1:
+		return _e.GetComponent<Sprite>().color.g;
+		break;
+	case 2:
+		return _e.GetComponent<Sprite>().color.b;
+		break;
+	case 3:
+		return _e.GetComponent<Sprite>().color.a;
+		break;
+	default:
+		return -1;
+	}
+}
+int InternalCalls::iSprite::GetColor(const int _eId, int _rgba) {
+	return VI::iSprite::GetColor(Entity(_eId), _rgba);
+}
+int InternalCalls::iSprite::GetColor(std::string const& _entityName, std::string const& _sceneName, int _rgba) {
+	return VI::iSprite::GetColor(VI::iEntity::GetEntity(_entityName, _sceneName), _rgba);
+}
 
-}
 /*!*****************************************************************************
 \brief
 	Plays sound
@@ -1316,21 +1370,4 @@ void InternalCalls::iLightSource::SetRadius(const int _eId, float _radius) {
 }
 void InternalCalls::iLightSource::SetRadius(std::string const& _entityName, std::string const& _sceneName, float _radius) {
 	VI::iLightSource::SetRadius(VI::iEntity::GetEntity(_entityName, _sceneName), _radius);
-}
-
-/*!*****************************************************************************
-\brief
-Changing sprite component.
-*******************************************************************************/
-void InternalCalls::iLightSource::SetSpriteColor(const Entity& _e, int _r, int _g, int _b, int _a) {
-	if (!_e.HasComponent<Sprite>())
-		return;
-	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a};
-	_e.GetComponent<Sprite>().color = clr;
-}
-void InternalCalls::iLightSource::SetSpriteColor(const int _eId, int _r, int _g, int _b, int _a) {
-	VI::iLightSource::SetSpriteColor(Entity(_eId), _r, _g, _b, _a);
-}
-void InternalCalls::iLightSource::SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a) {
-	VI::iLightSource::SetSpriteColor(VI::iEntity::GetEntity(_entityName, _sceneName), _r, _g, _b, _a);
 }

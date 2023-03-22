@@ -131,17 +131,31 @@ public:
 			static void SetTexture(const int _eId, MonoString* _texture);
 		};
 	};
-	struct iTexture {
+	struct iSprite {
 		static void s_SetTexture(MonoString* _entityName, MonoString* _sceneName, MonoString* _path);
 		static MonoString* s_GetTexture(MonoString* _entityName, MonoString* _sceneName);
-		
 		static void SetTexture(const int _id, MonoString* _path);
 		static MonoString* GetTexture(const int _id);
 
+		static int GetType(const int _eId);
+		static void SetType(const int _eId, int _type);
+		static int s_GetType(MonoString* _entityName, MonoString* _sceneName);
+		static void s_SetType(MonoString* _entityName, MonoString* _sceneName, int _type);
+
 		static int GetLayer(const int _eId);
-		static void SetLayer(const int _eId, int layer);
+		static void SetLayer(const int _eId, int _layer);
 		static int s_GetLayer(MonoString* _entityName, MonoString* _sceneName);
-		static void s_SetLayer(MonoString* _entityName, MonoString* _sceneName, int layer);
+		static void s_SetLayer(MonoString* _entityName, MonoString* _sceneName, int _layer);
+
+		static void s_SetColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a);
+		static void SetColor(const int _eId, int _r, int _g, int _b, int _a);
+		static void s_SetAlpha(MonoString* _entityName, MonoString* _sceneName, int _a);
+		static void SetAlpha(const int _eId, int _a);
+
+		static int s_GetColor(MonoString* _entityName, MonoString* _sceneName, int _rgb);
+		static int GetColor(const int _eId, int _rgb);
+		static int s_GetAlpha(MonoString* _entityName, MonoString* _sceneName);
+		static int GetAlpha(const int _eId);
 	};
 	struct iAudio {
 		static void s_Play(MonoString* _entityName, MonoString* _sceneName);
@@ -201,10 +215,7 @@ public:
 	struct iLightSource {
 		static float s_GetRadius(MonoString* _entityName, MonoString* _sceneName);
 		static void s_SetRadius(MonoString* _entityName, MonoString* _sceneName, float _radius);
-		static void s_SetSpriteColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a);
-
 		static float GetRadius(const int _eId);
 		static void SetRadius(const int _eId, float _radius);
-		static void SetSpriteColor(const int _eId, int _r, int _g, int _b, int _a);
 	};
 };

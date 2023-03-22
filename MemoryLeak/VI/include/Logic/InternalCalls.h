@@ -295,13 +295,6 @@ public:
 		static int GetParentId(const Entity& _e);
 		static int GetParentId(const int _eId);
 		static int GetParentId(std::string const& _entityName, std::string const& _sceneName);
-
-		/*!*****************************************************************************
-		\brief
-		Sprite component
-		*******************************************************************************/
-		static int GetSpriteType(const int _eId);
-		static void SetSpriteType(const int _eId, int _type);
 	};
 
 	struct iScene {
@@ -540,7 +533,7 @@ public:
 		};
 	};
 
-	struct iTexture {
+	struct iSprite {
 		/*!*****************************************************************************
 		\brief
 		Set/Get the texture of an entity.
@@ -548,17 +541,45 @@ public:
 		static void SetTexture(const Entity& _e, const std::string& _path);
 		static std::string GetTexture(const Entity& _e);
 		static void SetTexture(const int _eId, const std::string& _path);
-
 		static std::string GetTexture(const int _eId);
 		static void SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path);
 		static std::string GetTexture(std::string const& _entityName, std::string const& _sceneName);
 
+		/*!*****************************************************************************
+		\brief
+		Get/Set sprite type
+		*******************************************************************************/
+		static int GetType(const Entity& _e);
+		static int GetType(const int _eId);
+		static int GetType(std::string const& _entityName, std::string const& _sceneName);
+		static void SetType(const Entity& _e, int _type);
+		static void SetType(const int _eId, int _type);
+		static void SetType(std::string const& _entityName, std::string const& _sceneName, int _type);
+
+		/*!*****************************************************************************
+		\brief
+		Set/Get layer of an entity.
+		*******************************************************************************/
 		static int GetLayer(const Entity& _e);
 		static void SetLayer(const Entity& _e, int layer);
 		static int GetLayer(const int _eId);
 		static void SetLayer(const int _eId, int layer);
 		static int GetLayer(std::string const& _entityName, std::string const& _sceneName);
 		static void SetLayer(std::string const& _entityName, std::string const& _sceneName, int layer);
+
+		/*!*****************************************************************************
+		\brief
+		Get/Set sprite colour of an entity.
+		*******************************************************************************/
+		static void SetAlpha(const Entity& _e, int _a);
+		static void SetAlpha(const int _eId, int _a);
+		static void SetAlpha(std::string const& _entityName, std::string const& _sceneName, int _a);
+		static void SetColor(const Entity& _e, int _r, int _g, int _b, int _a);
+		static void SetColor(const int _eId, int _r, int _g, int _b, int _a);
+		static void SetColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a);
+		static int GetColor(const Entity& _e, int _rgba); // _rgba: 0 = red, 1 = green, 2 = blue, 3 = alpha
+		static int GetColor(const int _eId, int _rgba);
+		static int GetColor(std::string const& _entityName, std::string const& _sceneName, int _rgba);
 	};
 
 	struct iAudio {
@@ -732,13 +753,5 @@ public:
 		static void SetRadius(const Entity& _e, float _radius);
 		static void SetRadius(const int _eId, float _radius);
 		static void SetRadius(std::string const& _entityName, std::string const& _sceneName, float _radius);
-
-		/*!*****************************************************************************
-		\brief
-		Changing sprite component.
-		*******************************************************************************/
-		static void SetSpriteColor(const Entity& _e, int _r, int _g, int _b, int _a);
-		static void SetSpriteColor(const int _eId, int _r, int _g, int _b, int _a);
-		static void SetSpriteColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a);
 	};
 };

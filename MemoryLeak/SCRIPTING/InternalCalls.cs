@@ -36,10 +36,6 @@ namespace BonVoyage {
 		internal static void SetActive(bool _active = true) { VI.Entity.SetActive(ENTITY, _active); }
 		internal static void Activate() { VI.Entity.Activate(ENTITY); }
 		internal static void Deactivate() { VI.Entity.Deactivate(ENTITY); }
-		public class Sprite {
-			internal static int GetType(int _eId) { return VI.Entity.Sprite.GetType(ENTITY); }
-			internal static void SetType(int _eId, int _type) { VI.Entity.Sprite.SetType(ENTITY, _type); }
-		}
 		public class Input {
 			public class Button {
 				internal static bool Clicked() { return VI.Input.Button.Clicked(ENTITY); }
@@ -118,9 +114,15 @@ namespace BonVoyage {
 				}
 			}
 		}
-		public class Texture {
-			internal static void Set(string _path) { VI.Texture.Set(ENTITY, _path); }
-			internal static string Get() { return VI.Texture.Get(ENTITY); }
+		public class Sprite {
+			internal static int GetType(int _eId) { return VI.Sprite.GetType(ENTITY); }
+			internal static void SetType(int _eId, int _type) { VI.Sprite.SetType(ENTITY, _type); }
+			internal static void SetTexture(string _path) { VI.Sprite.SetTexture(ENTITY, _path); }
+			internal static string GetTexture() { return VI.Sprite.GetTexture(ENTITY); }
+			internal static void SetColor(int _r, int _g, int _b, int _a) { VI.Sprite.SetColor(ENTITY, _r, _g, _b, _a); }
+			internal static int GetColor(int _rgba) { return VI.Sprite.GetColor(ENTITY, _rgba); } // _rgba: 0 = red, 1 = green, 2 = blue, 3 = alpha
+			internal static void SetAlpha(int _a) { VI.Sprite.SetAlpha(ENTITY, _a); }
+			internal static int GetAlpha() { return VI.Sprite.GetAlpha(ENTITY); }
 		}
 		public class Audio {
 			internal static void Play() { VI.Audio.Play(ENTITY); }
@@ -163,9 +165,6 @@ namespace BonVoyage {
 			public class Radius {
 				internal static float Get() { return VI.LightSource.Radius.Get(ENTITY); }
 				internal static void Set(float _radius) { VI.LightSource.Radius.Set(ENTITY, _radius); }
-			}
-			public class SpriteColor {
-				internal static void Set(int _r, int _g, int _b, int _a) { VI.LightSource.SpriteColor.Set(ENTITY, _r, _g, _b, _a); }
 			}
 		}
 	}
@@ -406,15 +405,6 @@ namespace VI {
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void Deactivate(int _eId);
-
-		public class Sprite
-        {
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static int GetType(int _eId);
-
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void SetType(int _eId, int _type);
-		}
 	}
 	public class Scene
 	{
@@ -891,19 +881,31 @@ namespace VI {
 			internal extern static void SetLayer(int _eId, int _type);
 		}
 	}
-	public class Texture
+	public class Sprite
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void s_Set(string _entityName, string _sceneName = "", string _path = "");
+		internal extern static void s_SetTexture(string _entityName, string _sceneName = "", string _path = "");
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static string s_Get(string _entityName, string _sceneName = "");
+		internal extern static string s_GetTexture(string _entityName, string _sceneName = "");
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void Set(int _eId, string _path);
+		internal extern static void SetTexture(int _eId, string _path);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static string Get(int _eId);
+		internal extern static string GetTexture(int _eId);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetType(int _eId);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetType(int _eId, int _type);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int s_GetType(string _entityName, string _sceneName = "");
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void s_SetType(string _entityName, string _sceneName = "", int _type = 0);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetLayer(int _eId);
@@ -916,6 +918,30 @@ namespace VI {
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void s_SetLayer(string _entityName, string _sceneName = "", int layer = 63);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void s_SetColor(string _entityName, string _sceneName = "", int _r = 1, int _g = 1, int _b = 1, int _a = 1);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetColor(int _eId, int _r, int _g, int _b, int _a);
+
+		[MethodImpl(MethodImplOptions.InternalCall)] // _rgba: 0 = red, 1 = green, 2 = blue, 3 = alpha
+		internal extern static int s_GetColor(string _entityName, string _sceneName = "", int _rgba = 0);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetColor(int _eId, int _rgba = 0); // _rgba: 0 = red, 1 = green, 2 = blue, 3 = alpha
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void s_SetAlpha(string _entityName, string _sceneName = "", int _a = 1);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetAlpha(int _eId, int _a);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int s_GetAlpha(string _entityName, string _sceneName = "");
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetAlpha(int _eId);
 	}
 	public class Audio
 	{
@@ -1117,14 +1143,6 @@ namespace VI {
 
 			[MethodImpl(MethodImplOptions.InternalCall)]
 			internal extern static void Set(int _eId, float _radius);
-		}
-		public class SpriteColor
-		{
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void s_Set(string _entityName, string _sceneName = "", int _r = 1, int _g = 1, int _b = 1, int _a = 1);
-
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			internal extern static void Set(int _eId, int _r, int _g, int _b, int _a);
 		}
 	}
 }

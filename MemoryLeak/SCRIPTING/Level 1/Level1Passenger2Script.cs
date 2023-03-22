@@ -36,7 +36,7 @@ namespace BonVoyage {
             wrongDestination_RenderLocation = VI.Entity.GetId(Level1DialogManager.P2WrongRenderString);
             // Store original scale x value
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+            InitialLayerVal = VI.Sprite.GetLayer(_ENTITY);
         }
 
         public override void EarlyUpdate(int _ENTITY)
@@ -59,7 +59,7 @@ namespace BonVoyage {
                 wrongDestination_RenderLocation = VI.Entity.GetId(Level1DialogManager.P2WrongRenderString);
                 // Store original scale x value
                 InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-                InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+                InitialLayerVal = VI.Sprite.GetLayer(_ENTITY);
             }
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
@@ -147,7 +147,7 @@ namespace BonVoyage {
             // Passenger was delivered
             if (DestinationReached) {
                 // Return layer value
-                VI.Texture.SetLayer(_ENTITY, InitialLayerVal);
+                VI.Sprite.SetLayer(_ENTITY, InitialLayerVal);
 
 
 

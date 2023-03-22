@@ -62,7 +62,7 @@ namespace BonVoyage {
             VI.Animation.Transform.Run(minimapID);
             VI.Viewport.SetIsUI(minimapID, false);
             VI.Viewport.SetWidth(minimapID, (int)(MapX / 4));
-            VI.Entity.Sprite.SetType(minimapID, 1);
+            VI.Sprite.SetType(minimapID, 1);
 
             VI.Animation.Transform.SetNext(playerheadID, 0);
             VI.Animation.Transform.Run(playerheadID);
@@ -83,7 +83,7 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(minimapID);
                 VI.Viewport.SetIsUI(minimapID, true);
                 VI.Viewport.SetWidth(minimapID, (int)(MapX));
-                VI.Entity.Sprite.SetType(minimapID, 0);
+                VI.Sprite.SetType(minimapID, 0);
 
                 float posx = VI.Transform.Position.GetX(boatID) * (miniMapX / MapX) ;
                 float posy = VI.Transform.Position.GetY(boatID) * (miniMapY / MapY) ;//helppp
@@ -104,7 +104,7 @@ namespace BonVoyage {
                 VI.Animation.Transform.Run(minimapID);
                 VI.Viewport.SetIsUI(minimapID, false);
                 VI.Viewport.SetWidth(minimapID, (int)(MapX / 4));
-                VI.Entity.Sprite.SetType(minimapID, 1);
+                VI.Sprite.SetType(minimapID, 1);
 
                 VI.Animation.Transform.SetNext(playerheadID, 0);
                 VI.Animation.Transform.Run(playerheadID);
@@ -123,7 +123,7 @@ namespace BonVoyage {
             VI.Animation.Transform.Run(minimapID);
             VI.Viewport.SetIsUI(minimapID, false);
             VI.Viewport.SetWidth(minimapID, (int)(MapX / 4));
-            VI.Entity.Sprite.SetType(minimapID, 1);
+            VI.Sprite.SetType(minimapID, 1);
 
             VI.Animation.Transform.SetNext(playerheadID, 0);
             VI.Animation.Transform.Run(playerheadID);

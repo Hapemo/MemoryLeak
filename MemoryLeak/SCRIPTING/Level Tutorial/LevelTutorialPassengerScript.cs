@@ -39,7 +39,7 @@ namespace BonVoyage {
             
             // Store original scale and layer values
             //InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            //InitialLayerVal = VI.Texture.GetLayer(_ENTITY);
+            //InitialLayerVal = VI.Sprite.GetLayer(_ENTITY);
         }
 
         public override void EarlyUpdate(int _ENTITY) {
@@ -131,7 +131,7 @@ namespace BonVoyage {
             // Passenger was delivered
             if (DestinationReached) {
                 // Return layer value
-                VI.Texture.SetLayer(_ENTITY, InitialLayerVal);
+                VI.Sprite.SetLayer(_ENTITY, InitialLayerVal);
 
                 // Restore passenger's original scale value
                 // Returns true when completed

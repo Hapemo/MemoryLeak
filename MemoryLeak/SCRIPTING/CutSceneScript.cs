@@ -85,10 +85,10 @@ namespace BonVoyage {
                 {
                     currAlpha -= speed;
                     if (currAlpha < 0) currAlpha = 0;
-                    VI.LightSource.SpriteColor.s_Set(entity, scene, 255, 255, 255, currAlpha);
+                    VI.Sprite.s_SetColor(entity, scene, 255, 255, 255, currAlpha);
 
                     for (int i = currScn + 1; i < 19; ++i)
-                        VI.LightSource.SpriteColor.s_Set("e" + i, scene, 255, 255, 255, 0);
+                        VI.Sprite.s_SetColor("e" + i, scene, 255, 255, 255, 0);
                 }
                 if (currAlpha == 0)
                 {
@@ -104,7 +104,7 @@ namespace BonVoyage {
                     currAlpha -= speed; 
                     if (currAlpha < 0)
                         currAlpha = 0;
-                    VI.LightSource.SpriteColor.s_Set(entity, scene, 255, 255, 255, currAlpha);
+                    VI.Sprite.s_SetColor(entity, scene, 255, 255, 255, currAlpha);
                 }
                 if (currAlpha == 0)
                 {
@@ -123,7 +123,7 @@ namespace BonVoyage {
                 lightningAlpha -= speed;
                 if (lightningAlpha < 0)
                     lightningAlpha = 0;
-                VI.LightSource.SpriteColor.s_Set(lightning, scene, 255, 255, 255, lightningAlpha);
+                VI.Sprite.s_SetColor(lightning, scene, 255, 255, 255, lightningAlpha);
             }
             if (currRadius != targetRadius)
             {

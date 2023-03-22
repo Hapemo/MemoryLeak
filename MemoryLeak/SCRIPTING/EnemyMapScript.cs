@@ -74,7 +74,7 @@ namespace BonVoyage {
                 VI.Text.Offset.Set(enemymapID, textbigOffsetX, textbigOffsetY);
                 VI.Text.Scale.Set(enemymapID, textbigScale);
                 VI.Animation.Transform.Run(enemymapID);
-                VI.Entity.Sprite.SetType(enemymapID, 0);
+                VI.Sprite.SetType(enemymapID, 0);
                 scaleMapX = MapX;
                 scaleMapY = MapY;
                 VI.Animation.Transform.SetNext(miniplayerID, 1);
@@ -91,7 +91,7 @@ namespace BonVoyage {
                 VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);
                 VI.Text.Scale.Set(enemymapID, textScale);
                 VI.Animation.Transform.Run(enemymapID);
-                VI.Entity.Sprite.SetType(enemymapID, 1);
+                VI.Sprite.SetType(enemymapID, 1);
                 scaleMapX = MapX/2;
                 scaleMapY = MapY/2;
                 VI.Animation.Transform.SetNext(miniplayerID, 0);
@@ -126,7 +126,7 @@ namespace BonVoyage {
             VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);
             VI.Text.Scale.Set(enemymapID, textScale);
             VI.Animation.Transform.Run(enemymapID);
-            VI.Entity.Sprite.SetType(enemymapID, 1);
+            VI.Sprite.SetType(enemymapID, 1);
             scaleMapX = MapX / 2;
             scaleMapY = MapY / 2;
             VI.Animation.Transform.SetNext(miniplayerID, 0);
