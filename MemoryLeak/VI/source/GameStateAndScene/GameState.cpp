@@ -11,11 +11,13 @@ time.
 #include "GameState.h"
 //#include "Serialization.h"
 
-
 void GameState::Init() {
 	for (auto& scene : mScenes) {
-		for (auto e : scene.mEntities)
-			if (e.HasComponent<Script>()) logicSystem->Alive(e);
+#ifndef _EDITOR
+		//if (!editorManager->IsScenePaused())
+			for (auto e : scene.mEntities)
+				if (e.HasComponent<Script>()) logicSystem->Alive(e);
+#endif
 		if (!scene.mIsPause) scene.Init();
 	}
 }
@@ -27,9 +29,10 @@ void GameState::Update() {
 
 void GameState::Exit() {
 	for (auto& scene : mScenes) {
-		for (auto e : scene.mEntities)
-			if (e.HasComponent<Script>()) logicSystem->Dead(e);
 		scene.Exit();
+		for (auto e : scene.mEntities) {
+			if (e.HasComponent<Script>()) logicSystem->Dead(e);
+		}
 	}
 	particleManager->Reset();
 }
@@ -50,8 +53,11 @@ void GameState::AddScene(std::filesystem::path const& _path) { // filesystem
 		LOG_CUSTOM("GAMESTATE", "Adding scene \"" + _path.stem().string() + "\" to gamestate: " + mName);
 	}
 
-	for (auto e : latestScene.mEntities)
-		if (e.HasComponent<Script>()) logicSystem->Alive(e);
+#ifndef _EDITOR
+	//if(!editorManager->IsScenePaused())
+		for (auto e : latestScene.mEntities)
+			if (e.HasComponent<Script>()) logicSystem->Alive(e);
+#endif
 
 	if (!latestScene.mIsPause) latestScene.Init();
 }

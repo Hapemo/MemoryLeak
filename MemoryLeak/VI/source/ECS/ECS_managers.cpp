@@ -44,8 +44,10 @@ void Entity::Activate() const {
 	// Codes that should run when activating entity halfway through game
 	
 	// Scripting
+#ifndef _EDITOR
 	//if (!editorManager->IsScenePaused())
 		if (HasComponent<Script>()) logicSystem->Init(*this);
+#endif
 
 	// General
 	genComp.isActive = true;

@@ -91,16 +91,14 @@ void ViewportPanel::renderUI()
 	{
 		isViewportPaused = false;
 		for (Scene& scene : GameStateManager::GetInstance()->mCurrentGameState->mScenes)
-		{
 			for (const Entity& e : scene.mEntities)
-			{
 				if (e.HasComponent<Script>())
-				{
 					logicSystem->Alive(e);
-					logicSystem->Init(e);
-				}
-			}
-		}
+		for (Scene& scene : GameStateManager::GetInstance()->mCurrentGameState->mScenes)
+			for (const Entity& e : scene.mEntities)
+				if (e.ShouldRun())
+					if (e.HasComponent<Script>())
+						logicSystem->Init(e);
 		audioManager->ResumeAllChannels();
 	}
 	ImGui::PopStyleColor();

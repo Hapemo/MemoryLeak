@@ -88,12 +88,18 @@ void Application::SystemUpdate() {
   END_TRACK("AI");
 
   //Scripting
-  TRACK_PERFORMANCE("Scripting");
-  logicSystem->EarlyUpdate();
-  logicSystem->Update();
-  logicSystem->FixedUpdate();
-  logicSystem->LateUpdate();
-  END_TRACK("Scripting");
+#ifdef _EDITOR
+  if (!editorManager->IsScenePaused()) {
+#endif
+      TRACK_PERFORMANCE("Scripting");
+      logicSystem->EarlyUpdate();
+      logicSystem->Update();
+      logicSystem->FixedUpdate();
+      logicSystem->LateUpdate();
+      END_TRACK("Scripting");
+#ifdef _EDITOR
+  }
+#endif
 
   // Physics
   TRACK_PERFORMANCE("Physics");
