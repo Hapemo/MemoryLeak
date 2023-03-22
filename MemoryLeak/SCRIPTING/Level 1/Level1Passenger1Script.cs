@@ -17,7 +17,6 @@ using VI;
 namespace BonVoyage {
 
     public class Level1Passenger1Script : PassengerBaseScript {
-
         public override void Alive(int _ENTITY)
         {
             base.Alive(_ENTITY);
@@ -74,6 +73,7 @@ namespace BonVoyage {
             // Passenger is ready to attach & dialogue has ended
             if (ReadyToAttach && !Level1DialogManager.runPassengerDialog) {
                 // Set flag variables
+                fadingOut = true;
                 base.AttachToPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
                 ReadyToAttach = false;
@@ -83,14 +83,7 @@ namespace BonVoyage {
 
             // Play animation of passenger attaching to player
             if (AttachToPlayerAnimation) {
-                // Animate attachment to player
-                // returns true once complete
-                if (base.AttachPassengerToPlayer(_ENTITY, playerBoat, InitialScaleX)) {
-                    // Move on to passenger moving with the player
-                    AttachedToPlayer = true;
-                    AttachToPlayerAnimation = false;
-                    PlayerScript.PlayerInOtherAnimation = false;
-                }
+                DefaultAttachToPlayer(_ENTITY);
             }
 
 
@@ -121,14 +114,7 @@ namespace BonVoyage {
             // Play animation of passenger detaching from player
             if (DetachFromPlayerAnimation) {
                 // Animate detachment to player
-                // returns true once complete
-                int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
-                if (base.DetachPassengerFromPlayer(_ENTITY, renderLocation, InitialScaleX)) {
-                    // Animation complete
-                    DetachFromPlayerAnimation = false;
-                    PlayerScript.PlayerInOtherAnimation = false;
-                    DestinationReached = true;
-                }                
+                DefaultAttachToDestination(_ENTITY);
             }
 
             // Passenger was delivered

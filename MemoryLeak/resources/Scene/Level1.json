@@ -1203,6 +1203,39 @@
         },
         "Script": {
             "name": "Level1Passenger1Script"
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 3.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 0,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 80.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": -1207.5,
+                "Y": -772.3
+            },
+            "mAreaWidth": 70.0,
+            "mDirection": 90.0,
+            "mSpread": 15.0,
+            "mDuration": 0,
+            "mIsActive": false,
+            "mSlow": 0.1
         }
     },
     {
@@ -2031,6 +2064,39 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 0,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": -1207.5,
+                "Y": -772.3
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001,
+            "mIsActive": true,
+            "mSlow": 0.2
         }
     },
     {
@@ -2476,6 +2542,39 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 0,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": -1207.5,
+                "Y": -772.3
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001,
+            "mIsActive": false,
+            "mSlow": 0.2
         }
     },
     {

@@ -446,9 +446,9 @@
             "mAreaWidth": 130.0,
             "mDirection": 90.0,
             "mSpread": 45.0,
-            "mDuration": 0.10000000149011612,
-            "mIsActive": true,
-            "mSlow": 0.10000000149011612
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.1
         }
     },
     {
