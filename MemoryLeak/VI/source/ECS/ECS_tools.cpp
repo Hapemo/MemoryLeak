@@ -21,3 +21,5 @@ void ECS::UnlinkPrefab(EntityID _e) { Coordinator::GetInstance()->UnlinkPrefab(_
 void ECS::DestroyAllEntities() { Coordinator::GetInstance()->DestroyAllEntities(); }
 
 void ECS::DestroySomeEntites(const std::set<Entity>& _e) { Coordinator::GetInstance()->DestroySomeEntites(_e); }
+
+bool ECS::EntityExists(EntityID _e) { return Coordinator::GetInstance()->EntityExists(_e); }

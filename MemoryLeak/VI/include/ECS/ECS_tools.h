@@ -128,4 +128,6 @@ namespace ECS {
 	- A bunch of entities to be blacklisted from being deleted
 	*******************************************************************************/
 	void DestroySomeEntites(const std::set<Entity>&);
+
+	bool EntityExists(EntityID _e);
 }

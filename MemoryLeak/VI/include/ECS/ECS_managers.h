@@ -63,6 +63,8 @@ public:
 	*******************************************************************************/
 	Signature GetSignature(EntityID);
 
+	bool EntityExists(EntityID _e) { return !(std::find(mAvailableEntities.begin(), mAvailableEntities.end(), _e) == mAvailableEntities.end()); }
+
 	uint32_t GetEntityCount() { return mLivingEntityCount; }
 
 private:
@@ -416,6 +418,8 @@ public:
 	- Number of entities
 	*******************************************************************************/
 	uint32_t GetEntityCount();
+
+	bool EntityExists(EntityID _e) { return mEntityManager->EntityExists(_e); }
 
 private:
 	std::unique_ptr<EntityManager> mEntityManager;
