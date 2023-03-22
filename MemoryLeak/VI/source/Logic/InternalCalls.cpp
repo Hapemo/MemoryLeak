@@ -32,6 +32,14 @@ MonoString* InternalCalls::TestReturnString() {
 
 /*!*****************************************************************************
 \brief
+Error logger helper function.
+*******************************************************************************/
+void InternalCalls::MissingComponent(std::string _entityName, std::string _componentName) {
+	LOG_GAME("Entity " + _entityName + " does not have a " + _componentName + " component!");
+}
+
+/*!*****************************************************************************
+\brief
 Logger function.
 *******************************************************************************/
 void InternalCalls::Logger(std::string _log) {
@@ -77,28 +85,40 @@ bool InternalCalls::iInput::iKey::Idle(int _key) {
 This is for checking button activity.
 *******************************************************************************/
 bool InternalCalls::iInput::iButton::Clicked(const Entity& _e) {
+	if (!_e.HasComponent<Button>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Button");
+		return false;
+	}
 	return _e.GetComponent<Button>().isClick;
 }
 bool InternalCalls::iInput::iButton::Clicked(const int _eId) {
-	return VI::iInput::iButton::Clicked(Entity(_eId));
+	return VI::iInput::iButton::Clicked(VI::iEntity::GetEntity(_eId));
 }
 bool InternalCalls::iInput::iButton::Clicked(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iInput::iButton::Clicked(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 bool InternalCalls::iInput::iButton::Released(const Entity& _e) {
+	if (!_e.HasComponent<Button>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Button");
+		return false;
+	}
 	return _e.GetComponent<Button>().activated;
 }
 bool InternalCalls::iInput::iButton::Released(const int _eId) {
-	return VI::iInput::iButton::Released(Entity(_eId));
+	return VI::iInput::iButton::Released(VI::iEntity::GetEntity(_eId));
 }
 bool InternalCalls::iInput::iButton::Released(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iInput::iButton::Released(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 bool InternalCalls::iInput::iButton::Hover(const Entity& _e) {
+	if (!_e.HasComponent<Button>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Button");
+		return false;
+	}
 	return _e.GetComponent<Button>().isHover;
 }
 bool InternalCalls::iInput::iButton::Hover(const int _eId) {
-	return VI::iInput::iButton::Hover(Entity(_eId));
+	return VI::iInput::iButton::Hover(VI::iEntity::GetEntity(_eId));
 }
 bool InternalCalls::iInput::iButton::Hover(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iInput::iButton::Hover(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -149,7 +169,7 @@ void InternalCalls::iPhysics::ApplyImpulse(const Entity& _e, const Math::Vec2& _
 void InternalCalls::iPhysics::ApplyImpulse(const int _eId, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY) {
 	Math::Vec2 impulse = { _impulseX, _impulseY };
 	Math::Vec2 rotate = { _rotationX, _rotationY };
-	VI::iPhysics::ApplyImpulse(Entity(_eId), impulse, rotate);
+	VI::iPhysics::ApplyImpulse(VI::iEntity::GetEntity(_eId), impulse, rotate);
 }
 void InternalCalls::iPhysics::ApplyImpulse(std::string const& _entityName, std::string const& _sceneName, const float _impulseX, const float _impulseY, const float _rotationX, const float _rotationY) {
 	Math::Vec2 impulse = { _impulseX, _impulseY };
@@ -172,7 +192,7 @@ bool InternalCalls::iPhysics::IsCollided(const Entity& _e1, const Entity& _e2) {
 	return collision2DManager->EntitiesCollided(_e1, _e2);
 }
 bool InternalCalls::iPhysics::IsCollided(const int _eId1, const int _eId2) {
-	return VI::iPhysics::IsCollided(Entity(_eId1), Entity(_eId2));
+	return VI::iPhysics::IsCollided(VI::iEntity::GetEntity(_eId1), VI::iEntity::GetEntity(_eId2));
 }
 bool InternalCalls::iPhysics::IsCollided(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName) {
 	return VI::iPhysics::IsCollided(VI::iEntity::GetEntity(_entityName1, _sceneName), VI::iEntity::GetEntity(_entityName2, _sceneName));
@@ -181,7 +201,7 @@ bool InternalCalls::iPhysics::CheckCollision(const Entity& _e1, const Entity& _e
 	return collision2DManager->CheckCollision(_e1, _e2, _dynamicCheck);
 }
 bool InternalCalls::iPhysics::CheckCollision(const int _eId1, const int _eId2, bool const& _dynamicCheck) {
-	return VI::iPhysics::CheckCollision(Entity(_eId1), Entity(_eId2), _dynamicCheck);
+	return VI::iPhysics::CheckCollision(VI::iEntity::GetEntity(_eId1), VI::iEntity::GetEntity(_eId2), _dynamicCheck);
 }
 bool InternalCalls::iPhysics::CheckCollision(std::string const& _entityName1, std::string const& _entityName2, std::string const& _sceneName, bool const& _dynamicCheck) {
 	return VI::iPhysics::CheckCollision(VI::iEntity::GetEntity(_entityName1, _sceneName), VI::iEntity::GetEntity(_entityName2, _sceneName), _dynamicCheck);
@@ -348,6 +368,11 @@ int InternalCalls::iEntity::GetId(std::string _entityName, std::string _sceneNam
 Gets an entity.
 *******************************************************************************/
 Entity InternalCalls::iEntity::GetEntity(const int _eId) {
+	if (!ECS::EntityExists(_eId)) {
+		std::string error = "There is no Entity with id " + std::to_string(_eId) + "!";
+		LOG_GAME(error);
+		LOG_ERROR(error);
+	}
 	return Entity(_eId);
 }
 Entity InternalCalls::iEntity::GetEntity(std::string const& _entityName, std::string const& _sceneName) {
@@ -359,10 +384,15 @@ Entity InternalCalls::iEntity::GetEntity(std::string const& _entityName, std::st
 Checks if/Sets an entity is active.
 *******************************************************************************/
 bool InternalCalls::iEntity::IsActive(const Entity& _e) {
+	if (!_e.HasComponent<General>()) {
+		LOG_GAME("Entity does not exist!");
+		LOG_ERROR("Stop! Entity does not exist!");
+		return false;
+	}
 	return _e.GetComponent<General>().isActive;
 }
 bool InternalCalls::iEntity::IsActive(const int _eId) {
-	return VI::iEntity::IsActive(Entity(_eId));
+	return VI::iEntity::IsActive(VI::iEntity::GetEntity(_eId));
 }
 bool InternalCalls::iEntity::IsActive(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iEntity::IsActive(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -372,7 +402,7 @@ void InternalCalls::iEntity::SetIsActive(const Entity& _e, bool _active) {
 	_e.GetComponent<General>().isActive = _active;
 }
 void InternalCalls::iEntity::SetIsActive(const int _eId, bool _active) {
-	VI::iEntity::SetIsActive(Entity(_eId), _active);
+	VI::iEntity::SetIsActive(VI::iEntity::GetEntity(_eId), _active);
 }
 void InternalCalls::iEntity::SetIsActive(std::string const& _entityName, std::string const& _sceneName, bool _active) {
 	VI::iEntity::SetIsActive(VI::iEntity::GetEntity(_entityName, _sceneName), _active);
@@ -386,7 +416,7 @@ void InternalCalls::iEntity::Activate(const Entity& _e) {
 	_e.Activate();
 }
 void InternalCalls::iEntity::Activate(const int _eId) {
-	VI::iEntity::Activate(Entity(_eId));
+	VI::iEntity::Activate(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iEntity::Activate(std::string const& _entityName, std::string const& _sceneName) {
 	VI::iEntity::Activate(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -396,7 +426,7 @@ void InternalCalls::iEntity::Deactivate(const Entity& _e) {
 	_e.Deactivate();
 }
 void InternalCalls::iEntity::Deactivate(const int _eId) {
-	VI::iEntity::Deactivate(Entity(_eId));
+	VI::iEntity::Deactivate(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iEntity::Deactivate(std::string const& _entityName, std::string const& _sceneName) {
 	VI::iEntity::Deactivate(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -410,7 +440,7 @@ std::string InternalCalls::iEntity::GetParent(const Entity& _e) {
 	return _e.GetComponent<General>().parent.GetComponent<General>().name;
 }
 std::string InternalCalls::iEntity::GetParent(const int _eId) {
-	return VI::iEntity::GetParent(Entity(_eId));
+	return VI::iEntity::GetParent(VI::iEntity::GetEntity(_eId));
 }
 std::string InternalCalls::iEntity::GetParent(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iEntity::GetParent(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -420,7 +450,7 @@ int InternalCalls::iEntity::GetParentId(const Entity& _e) {
 	return _e.GetComponent<General>().parent.id;
 }
 int InternalCalls::iEntity::GetParentId(const int _eId) {
-	return VI::iEntity::GetParentId(Entity(_eId));
+	return VI::iEntity::GetParentId(VI::iEntity::GetEntity(_eId));
 }
 int InternalCalls::iEntity::GetParentId(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iEntity::GetParentId(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -499,16 +529,16 @@ void InternalCalls::iWindow::SetFullScreen(bool _fullscreen) {
 Viewport stuff
 *******************************************************************************/
 int InternalCalls::iViewport::GetWidth(const int _eId) {
-	return Entity(_eId).GetComponent<Viewport>().width;
+	return VI::iEntity::GetEntity(_eId).GetComponent<Viewport>().width;
 }
 void InternalCalls::iViewport::SetWidth(const int _eId, int _width) {
-	Entity(_eId).GetComponent<Viewport>().width = _width;
+	VI::iEntity::GetEntity(_eId).GetComponent<Viewport>().width = _width;
 }
 bool InternalCalls::iViewport::IsUI(const int _eId) {
-	return Entity(_eId).GetComponent<Viewport>().isUI;
+	return VI::iEntity::GetEntity(_eId).GetComponent<Viewport>().isUI;
 }
 void InternalCalls::iViewport::SetIsUI(const int _eId, bool _ui) {
-	Entity(_eId).GetComponent<Viewport>().isUI = _ui;
+	VI::iEntity::GetEntity(_eId).GetComponent<Viewport>().isUI = _ui;
 }
 
 /*!*****************************************************************************
@@ -555,16 +585,24 @@ float InternalCalls::iMath::ConvertDegToRad(float _value) {
 Set/Get current animation image speed
 *******************************************************************************/
 void InternalCalls::iAnimation::iSpriteSheet::SetSpeed(const Entity& _e, float _speed) {
+	if (!_e.HasComponent<SheetAnimation>()) {
+		MissingComponent(_e.GetComponent<General>().name, "SheetAnimation");
+		return;
+	}
 	_e.GetComponent<SheetAnimation>().timePerFrame = _speed;
 }
 float InternalCalls::iAnimation::iSpriteSheet::GetSpeed(const Entity& _e) {
+	if (!_e.HasComponent<SheetAnimation>()) {
+		MissingComponent(_e.GetComponent<General>().name, "SheetAnimation");
+		return -1.f;
+	}
 	return _e.GetComponent<SheetAnimation>().timePerFrame;
 }
 void InternalCalls::iAnimation::iSpriteSheet::SetSpeed(const int _eId, float _speed) {
-	VI::iAnimation::iSpriteSheet::SetSpeed(Entity(_eId), _speed);
+	VI::iAnimation::iSpriteSheet::SetSpeed(VI::iEntity::GetEntity(_eId), _speed);
 }
 float InternalCalls::iAnimation::iSpriteSheet::GetSpeed(const int _eId) {
-	return VI::iAnimation::iSpriteSheet::GetSpeed(Entity(_eId));
+	return VI::iAnimation::iSpriteSheet::GetSpeed(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iAnimation::iSpriteSheet::SetSpeed(std::string const& _entityName, std::string const& _sceneName, float _speed) {
 	VI::iAnimation::iSpriteSheet::SetSpeed(VI::iEntity::GetEntity(_entityName, _sceneName), _speed);
@@ -578,16 +616,24 @@ float InternalCalls::iAnimation::iSpriteSheet::GetSpeed(std::string const& _enti
 Set/Get current sprite sheet image index
 *******************************************************************************/
 void InternalCalls::iAnimation::iSpriteSheet::SetSheetIndex(const Entity& _e, int _index) {
+	if (!_e.HasComponent<Animation>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Animation");
+		return;
+	}
 	animator->SetCurrentImageIndex(_e, _index);
 }
 int InternalCalls::iAnimation::iSpriteSheet::GetSheetIndex(const Entity& _e) {
+	if (!_e.HasComponent<Animation>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Animation");
+		return -1;
+	}
 	return animator->GetCurrentImageIndex(_e);
 }
 void InternalCalls::iAnimation::iSpriteSheet::SetSheetIndex(const int _eId, int _index) {
-	VI::iAnimation::iSpriteSheet::SetSheetIndex(Entity(_eId), _index);
+	VI::iAnimation::iSpriteSheet::SetSheetIndex(VI::iEntity::GetEntity(_eId), _index);
 }
 int InternalCalls::iAnimation::iSpriteSheet::GetSheetIndex(const int _eId) {
-	return VI::iAnimation::iSpriteSheet::GetSheetIndex(Entity(_eId));
+	return VI::iAnimation::iSpriteSheet::GetSheetIndex(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iAnimation::iSpriteSheet::SetSheetIndex(std::string const& _entityName, std::string const& _sceneName, int _index) {
 	VI::iAnimation::iSpriteSheet::SetSheetIndex((VI::iEntity::GetEntity(_entityName, _sceneName)), _index);
@@ -601,16 +647,24 @@ int InternalCalls::iAnimation::iSpriteSheet::GetSheetIndex(std::string const& _e
 Set current animation image index
 *******************************************************************************/
 void InternalCalls::iAnimation::iSpriteSheet::SetCurrentFrame(const Entity& _e, int _index) {
+	if (!_e.HasComponent<SheetAnimation>()) {
+		MissingComponent(_e.GetComponent<General>().name, "SheetAnimation");
+		return;
+	}
 	_e.GetComponent<SheetAnimation>().currFrameIndex = _index;
 }
 int InternalCalls::iAnimation::iSpriteSheet::GetCurrentFrame(const Entity& _e) {
+	if (!_e.HasComponent<SheetAnimation>()) {
+		MissingComponent(_e.GetComponent<General>().name, "SheetAnimation");
+		return -1;
+	}
 	return _e.GetComponent<SheetAnimation>().currFrameIndex;
 }
 void InternalCalls::iAnimation::iSpriteSheet::SetCurrentFrame(const int _eId, int _index) {
-	VI::iAnimation::iSpriteSheet::SetCurrentFrame(Entity(_eId), _index);
+	VI::iAnimation::iSpriteSheet::SetCurrentFrame(VI::iEntity::GetEntity(_eId), _index);
 }
 int InternalCalls::iAnimation::iSpriteSheet::GetCurrentFrame(const int _eId) {
-	return VI::iAnimation::iSpriteSheet::GetCurrentFrame(Entity(_eId));
+	return VI::iAnimation::iSpriteSheet::GetCurrentFrame(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iAnimation::iSpriteSheet::SetCurrentFrame(std::string const& _entityName, std::string const& _sceneName, int _index) {
 	VI::iAnimation::iSpriteSheet::SetCurrentFrame(VI::iEntity::GetEntity(_entityName, _sceneName), _index);
@@ -624,16 +678,24 @@ int InternalCalls::iAnimation::iSpriteSheet::GetCurrentFrame(std::string const& 
 Get/Set current animation total frame count
 *******************************************************************************/
 void InternalCalls::iAnimation::iSpriteSheet::SetFrameCount(const Entity& _e, int _count) {
+	if (!_e.HasComponent<SheetAnimation>()) {
+		MissingComponent(_e.GetComponent<General>().name, "SheetAnimation");
+		return;
+	}
 	_e.GetComponent<SheetAnimation>().frameCount = _count;
 }
 int InternalCalls::iAnimation::iSpriteSheet::GetFrameCount(const Entity& _e) {
+	if (!_e.HasComponent<SheetAnimation>()) {
+		MissingComponent(_e.GetComponent<General>().name, "SheetAnimation");
+		return -1;
+	}
 	return _e.GetComponent<SheetAnimation>().frameCount;
 }
 void InternalCalls::iAnimation::iSpriteSheet::SetFrameCount(const int _eId, int _count) {
-	VI::iAnimation::iSpriteSheet::SetFrameCount(Entity(_eId), _count);
+	VI::iAnimation::iSpriteSheet::SetFrameCount(VI::iEntity::GetEntity(_eId), _count);
 }
 int InternalCalls::iAnimation::iSpriteSheet::GetFrameCount(const int _eId) {
-	return VI::iAnimation::iSpriteSheet::GetFrameCount(Entity(_eId));
+	return VI::iAnimation::iSpriteSheet::GetFrameCount(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iAnimation::iSpriteSheet::SetFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count) {
 	VI::iAnimation::iSpriteSheet::SetFrameCount(VI::iEntity::GetEntity(_entityName, _sceneName), _count);
@@ -647,130 +709,315 @@ int InternalCalls::iAnimation::iSpriteSheet::GetFrameCount(std::string const& _e
 Movement animation
 *******************************************************************************/
 void InternalCalls::iAnimation::iTransform::Start(const int _eId) {
-	movementAIManager->StartAnimation(Entity(_eId));
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->StartAnimation(e);
 }
 bool InternalCalls::iAnimation::iTransform::SetNext(const int _eId, int _i) { // return true if successful (withing 0 to the vector MAX)
-	return movementAIManager->SetNextStep(Entity(_eId), _i);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return false;
+	}
+	return movementAIManager->SetNextStep(e, _i);
 }
 void InternalCalls::iAnimation::iTransform::GoToNext(const int _eId) {
-	movementAIManager->SetNextStep(Entity(_eId), Entity(_eId).GetComponent<MovementAI>().nextStep);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->SetNextStep(e, e.GetComponent<MovementAI>().nextStep);
 }
 void InternalCalls::iAnimation::iTransform::Stop(const int _eId, bool _next) {
-	movementAIManager->StopAfterThisAnimation(Entity(_eId), _next);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->StopAfterThisAnimation(e, _next);
 }
 void InternalCalls::iAnimation::iTransform::StopAfterEndLoop(const int _eId, bool _loop) {
-	movementAIManager->StopAfterEndofAnimationLoop(Entity(_eId), _loop);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->StopAfterEndofAnimationLoop(e, _loop);
 }
 void InternalCalls::iAnimation::iTransform::ReverseOrder(const int _eId, bool _reverse) {
-	movementAIManager->ReverseOrderAfterNextAnimation(Entity(_eId), _reverse);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->ReverseOrderAfterNextAnimation(e, _reverse);
 }
 void InternalCalls::iAnimation::iTransform::SetLoopCycle(const int _eId, bool _cycle) {
-	movementAIManager->SetAnimationLoopToCycle(Entity(_eId), _cycle);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->SetAnimationLoopToCycle(e, _cycle);
 }
 int InternalCalls::iAnimation::iTransform::GetCurrentIndex(const int _eId) {
-	return Entity(_eId).GetComponent<MovementAI>().step;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return -1;
+	}
+	return e.GetComponent<MovementAI>().step;
 }
 void InternalCalls::iAnimation::iTransform::Remove(const int _eId, int _index) {
-	movementAIManager->RemoveTransformAt(Entity(_eId), _index);
-	Entity(_eId).GetComponent<MovementAI>().currtime = Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step];
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->RemoveTransformAt(e, _index);
+	e.GetComponent<MovementAI>().currtime = e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step];
 }
 void InternalCalls::iAnimation::iTransform::EditTiming(const int _eId, float _time) {
-	Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step] = _time;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step] = _time;
 }
 void InternalCalls::iAnimation::iTransform::EditCurrentTiming(const int _eId, float _time) {
-	Entity(_eId).GetComponent<MovementAI>().currtime = _time;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	e.GetComponent<MovementAI>().currtime = _time;
 }
 void InternalCalls::iAnimation::iTransform::EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
-	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step] = trans;
-	Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step] = _time;
+	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step] = trans;
+	e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step] = _time;
 }
 void InternalCalls::iAnimation::iTransform::CurrentScaleX(const int _eId, float _scaleX) {
-	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].scale.x = _scaleX;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale.x = _scaleX;
 }
 void InternalCalls::iAnimation::iTransform::CurrentScaleY(const int _eId, float _scaleY) {
-	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].scale.y = _scaleY;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale.y = _scaleY;
 }
 void InternalCalls::iAnimation::iTransform::CurrentRotate(const int _eId, float _rot) {
-	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].rotation = _rot;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].rotation = _rot;
 }
 void InternalCalls::iAnimation::iTransform::CurrentPosX(const int _eId, float _posX) {
-	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.x = _posX;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation.x = _posX;
 }
 void InternalCalls::iAnimation::iTransform::CurrentPosY(const int _eId, float _posY) {
-	Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.y = _posY;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation.y = _posY;
 }
 float InternalCalls::iAnimation::iTransform::GetTiming(const int _eId) {
-	return Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step];
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return -1.f;
+	}
+	return e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step];
 }
 float InternalCalls::iAnimation::iTransform::GetCurrentTiming(const int _eId) {
-	return Entity(_eId).GetComponent<MovementAI>().currtime;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return -1.f;
+	}
+	return e.GetComponent<MovementAI>().currtime;
 }
 float InternalCalls::iAnimation::iTransform::GetCurrentScaleX(const int _eId) {
-	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].scale.x;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return -1.f;
+	}
+	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale.x;
 }
 float InternalCalls::iAnimation::iTransform::GetCurrentScaleY(const int _eId) {
-	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].scale.y;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return -1.f;
+	}
+	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale.y;
 }
 float InternalCalls::iAnimation::iTransform::GetCurrentRotate(const int _eId) {
-	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].rotation;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return -1.f;
+	}
+	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].rotation;
 }
 float InternalCalls::iAnimation::iTransform::GetCurrentPosX(const int _eId) {
-	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.x;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return -1.f;
+	}
+	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation.x;
 }
 float InternalCalls::iAnimation::iTransform::GetCurrentPosY(const int _eId) {
-	return Entity(_eId).GetComponent<MovementAI>().targetTransforms[Entity(_eId).GetComponent<MovementAI>().step].translation.y;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return -1.f;
+	}
+	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation.y;
 }
 void InternalCalls::iAnimation::iTransform::AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
-	movementAIManager->AddTransform(Entity(_eId), trans, _time);
-	Entity(_eId).GetComponent<MovementAI>().currtime = Entity(_eId).GetComponent<MovementAI>().time[Entity(_eId).GetComponent<MovementAI>().step];
+	movementAIManager->AddTransform(e, trans, _time);
+	e.GetComponent<MovementAI>().currtime = e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step];
 }
 void InternalCalls::iAnimation::iTransform::AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time, int _index) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
-	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, _index);
+	movementAIManager->AddTransformAt(e, trans, _time, _index);
 }
 void InternalCalls::iAnimation::iTransform::TransformScaleAt(const int _eId, float _scaleX, float _scaleY, float _time, int _index) {
-	Transform trans{ {_scaleX, _scaleY}, Entity(_eId).GetComponent<Transform>().rotation, Entity(_eId).GetComponent<Transform>().translation };
-	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, _index);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	Transform trans{ {_scaleX, _scaleY}, e.GetComponent<Transform>().rotation, e.GetComponent<Transform>().translation };
+	movementAIManager->AddTransformAt(e, trans, _time, _index);
 }
 void InternalCalls::iAnimation::iTransform::TransformRotateAt(const int _eId,  float _rot, float _time, int _index) {
-	Transform trans{ Entity(_eId).GetComponent<Transform>().scale, _rot, Entity(_eId).GetComponent<Transform>().translation };
-	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, _index);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	Transform trans{ e.GetComponent<Transform>().scale, _rot, e.GetComponent<Transform>().translation };
+	movementAIManager->AddTransformAt(e, trans, _time, _index);
 }
 void InternalCalls::iAnimation::iTransform::TransformPosAt(const int _eId, float _posX, float _posY, float _time, int _index) {
-	Transform trans{ Entity(_eId).GetComponent<Transform>().scale, Entity(_eId).GetComponent<Transform>().rotation, { _posX, _posY} };
-	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, _index);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	Transform trans{ e.GetComponent<Transform>().scale, e.GetComponent<Transform>().rotation, { _posX, _posY} };
+	movementAIManager->AddTransformAt(e, trans, _time, _index);
 }
 void InternalCalls::iAnimation::iTransform::AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
-	movementAIManager->AddTransformDifference(Entity(_eId), trans, _time);
+	movementAIManager->AddTransformDifference(e, trans, _time);
 }
 void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step) {
-	movementAIManager->SetCalculatedTimeFromPosition(Entity(_eId), { _posX, _posY }, _step);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->SetCalculatedTimeFromPosition(e, { _posX, _posY }, _step);
 }
 void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step) {
-	movementAIManager->SetCalculatedTimeFromRotation(Entity(_eId), _rot, _step);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->SetCalculatedTimeFromRotation(e, _rot, _step);
 }
 void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step) {
-	movementAIManager->SetCalculatedTimeFromScale(Entity(_eId), { _scaleX, _scaleY }, _step);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->SetCalculatedTimeFromScale(e, { _scaleX, _scaleY }, _step);
 }
 
 void InternalCalls::iAnimation::iTransform::AddTransformAtCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
-	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, Entity(_eId).GetComponent<MovementAI>().step);
+	movementAIManager->AddTransformAt(e, trans, _time, e.GetComponent<MovementAI>().step);
 }
 void InternalCalls::iAnimation::iTransform::TransformScaleAtCurrent(const int _eId, float _scaleX, float _scaleY, float _time) {
-	Transform trans{ {_scaleX, _scaleY}, Entity(_eId).GetComponent<Transform>().rotation, Entity(_eId).GetComponent<Transform>().translation };
-	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, Entity(_eId).GetComponent<MovementAI>().step);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	Transform trans{ {_scaleX, _scaleY}, e.GetComponent<Transform>().rotation, e.GetComponent<Transform>().translation };
+	movementAIManager->AddTransformAt(e, trans, _time, e.GetComponent<MovementAI>().step);
 }
 void InternalCalls::iAnimation::iTransform::TransformRotateAtCurrent(const int _eId, float _rot, float _time) {
-	Transform trans{ Entity(_eId).GetComponent<Transform>().scale, _rot, Entity(_eId).GetComponent<Transform>().translation };
-	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, Entity(_eId).GetComponent<MovementAI>().step);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	Transform trans{ e.GetComponent<Transform>().scale, _rot, e.GetComponent<Transform>().translation };
+	movementAIManager->AddTransformAt(e, trans, _time, e.GetComponent<MovementAI>().step);
 }
 void InternalCalls::iAnimation::iTransform::TransformPosAtCurrent(const int _eId, float _posX, float _posY, float _time) {
-	Transform trans{ Entity(_eId).GetComponent<Transform>().scale, Entity(_eId).GetComponent<Transform>().rotation, { _posX, _posY} };
-	movementAIManager->AddTransformAt(Entity(_eId), trans, _time, Entity(_eId).GetComponent<MovementAI>().step);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	Transform trans{ e.GetComponent<Transform>().scale, e.GetComponent<Transform>().rotation, { _posX, _posY} };
+	movementAIManager->AddTransformAt(e, trans, _time, e.GetComponent<MovementAI>().step);
 }
 
 /*!*****************************************************************************
@@ -778,76 +1025,174 @@ void InternalCalls::iAnimation::iTransform::TransformPosAtCurrent(const int _eId
 Particle system
 *******************************************************************************/
 int InternalCalls::iParticleSystem::GetDensity(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mDensity;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1;
+	}
+	return e.GetComponent<ParticleSystem>().mDensity;
 }
 void InternalCalls::iParticleSystem::SetDensity(const int _eId, int _density) {
-	Entity(_eId).GetComponent<ParticleSystem>().mDensity = _density;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mDensity = _density;
 }
 
 float InternalCalls::iParticleSystem::GetPosX(int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mCenter.x;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return  -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mCenter.x;
 }
 void InternalCalls::iParticleSystem::SetPosX(const int _eId, float _posX) {
-	Entity(_eId).GetComponent<ParticleSystem>().mCenter.x = _posX;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mCenter.x = _posX;
 }
 float InternalCalls::iParticleSystem::GetPosY(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mCenter.y;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mCenter.y;
 }
 void InternalCalls::iParticleSystem::SetPosY(const int _eId, float _posY) {
-	Entity(_eId).GetComponent<ParticleSystem>().mCenter.y = _posY;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mCenter.y = _posY;
 }
 
 float InternalCalls::iParticleSystem::GetWidth(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mAreaWidth;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mAreaWidth;
 }
 void InternalCalls::iParticleSystem::SetWidth(const int _eId, float _width) {
-	Entity(_eId).GetComponent<ParticleSystem>().mAreaWidth = _width;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mAreaWidth = _width;
 }
 
 float InternalCalls::iParticleSystem::GetDir(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mDirection;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mDirection;
 }
 void InternalCalls::iParticleSystem::SetDir(const int _eId, float _dir) {
-	Entity(_eId).GetComponent<ParticleSystem>().mDirection = _dir;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mDirection = _dir;
 }
 
 float InternalCalls::iParticleSystem::GetSpread(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mSpread;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mSpread;
 }
 void InternalCalls::iParticleSystem::SetSpread(const int _eId, float _spread) {
-	Entity(_eId).GetComponent<ParticleSystem>().mSpread = _spread;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mSpread = _spread;
 }
 
 float InternalCalls::iParticleSystem::GetDuration(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mDuration;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mDuration;
 }
 void InternalCalls::iParticleSystem::SetDuration(const int _eId, float _dur) {
-	Entity(_eId).GetComponent<ParticleSystem>().mDuration = _dur;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mDuration = _dur;
 }
 
 bool InternalCalls::iParticleSystem::IsActive(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mIsActive;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return false;
+	}
+	return e.GetComponent<ParticleSystem>().mIsActive;
 }
 void InternalCalls::iParticleSystem::SetIsActive(const int _eId, bool _active) {
-	Entity(_eId).GetComponent<ParticleSystem>().mIsActive = _active;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mIsActive = _active;
 }
 
 float InternalCalls::iParticleSystem::GetSlow(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mSlow;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mSlow;
 }
 void InternalCalls::iParticleSystem::SetSlow(const int _eId, float _slow) {
-	Entity(_eId).GetComponent<ParticleSystem>().mSlow = _slow;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mSlow = _slow;
 }
 
 // Generate one frame of particles
 void InternalCalls::iParticleSystem::GenerateOnce(const int _eId) {
-	particleManager->GenerateOnce(Entity(_eId));
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	particleManager->GenerateOnce(e);
 }
-
-
 // Generate loop of time frame
 void InternalCalls::iParticleSystem::GenerateLoop(const int _eId, float _duration) {
-	particleManager->GenerateLoop(Entity(_eId), _duration);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	particleManager->GenerateLoop(e, _duration);
 }
 
 /*!*****************************************************************************
@@ -855,60 +1200,150 @@ void InternalCalls::iParticleSystem::GenerateLoop(const int _eId, float _duratio
 Individual particle
 *******************************************************************************/
 float InternalCalls::iParticleSystem::iParticleInfo::GetScale(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mScale;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mParticleInfo.mScale;
 }
 float InternalCalls::iParticleSystem::iParticleInfo::GetDirection(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mFacing;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mParticleInfo.mFacing;
 }
 float InternalCalls::iParticleSystem::iParticleInfo::GetLifeSpan(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mLifespan;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mParticleInfo.mLifespan;
 }
 float InternalCalls::iParticleSystem::iParticleInfo::GetRotation(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mRotation;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mParticleInfo.mRotation;
 }
 float InternalCalls::iParticleSystem::iParticleInfo::GetSpeed(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSpeed;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1.f;
+	}
+	return e.GetComponent<ParticleSystem>().mParticleInfo.mSpeed;
 }
 bool InternalCalls::iParticleSystem::iParticleInfo::GetFading(const int _eId) {
-	return Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mFading;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return false;
+	}
+	return e.GetComponent<ParticleSystem>().mParticleInfo.mFading;
 }
 int InternalCalls::iParticleSystem::iParticleInfo::GetSpriteType(const int _eId) {
-	return (int)Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1;
+	}
+	return (int)e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite;
 }
 int InternalCalls::iParticleSystem::iParticleInfo::GetLayer(const int _eId) {
-	return (int)Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.layer;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return -1;
+	}
+	return (int)e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.layer;
 }
 
 void InternalCalls::iParticleSystem::iParticleInfo::SetScale(const int _eId, float _scale) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mScale = _scale;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mScale = _scale;
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetDirection(const int _eId, float _dir) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mFacing = _dir;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mFacing = _dir;
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetLifeSpan(const int _eId, float _lifespan) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mLifespan = _lifespan;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mLifespan = _lifespan;
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetRotation(const int _eId, float _rot) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mRotation = _rot;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mRotation = _rot;
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetSpeed(const int _eId, float _speed) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSpeed = _speed;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mSpeed = _speed;
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetFading(const int _eId, bool _fade) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mFading = _fade;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mFading = _fade;
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetColour(const int _eId, int _r, int _g, int _b, int _a) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
 	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a };
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.color = clr;
+	e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.color = clr;
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetSpriteType(const int _eId, int _type) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite = (SPRITE)_type;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.sprite = (SPRITE)_type;
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetTexture(const int _eId, std::string _texture) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture = GET_TEXTURE_ID(_texture);
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.texture = GET_TEXTURE_ID(_texture);
 }
 void InternalCalls::iParticleSystem::iParticleInfo::SetLayer(const int _eId, int _layer) {
-	Entity(_eId).GetComponent<ParticleSystem>().mParticleInfo.mSprite.layer = _layer;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<ParticleSystem>()) {
+		MissingComponent(e.GetComponent<General>().name, "ParticleSystem");
+		return;
+	}
+	e.GetComponent<ParticleSystem>().mParticleInfo.mSprite.layer = _layer;
 }
 
 /*!*****************************************************************************
@@ -916,16 +1351,24 @@ void InternalCalls::iParticleSystem::iParticleInfo::SetLayer(const int _eId, int
 Edit/Get the sprite details of an entity.
 *******************************************************************************/
 void InternalCalls::iSprite::SetTexture(const Entity& _e, const std::string& _path) {
+	if (!_e.HasComponent<Sprite>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Sprite");
+		return;
+	}
 	spriteManager->SetTexture(_e, _path);
 }
 std::string InternalCalls::iSprite::GetTexture(const Entity& _e) {
+	if (!_e.HasComponent<Sprite>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Sprite");
+		return "";
+	}
 	return spriteManager->GetTexturePath(spriteManager->GetTexture(_e));
 }
 void InternalCalls::iSprite::SetTexture(const int _eId, const std::string& _path) {
-	VI::iSprite::SetTexture(Entity(_eId), _path);
+	VI::iSprite::SetTexture(VI::iEntity::GetEntity(_eId), _path);
 }
 std::string InternalCalls::iSprite::GetTexture(const int _eId) {
-	return VI::iSprite::GetTexture(Entity(_eId));
+	return VI::iSprite::GetTexture(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iSprite::SetTexture(std::string const& _entityName, std::string const& _sceneName, const std::string& _path) {
 	VI::iSprite::SetTexture(VI::iEntity::GetEntity(_entityName, _sceneName), _path);
@@ -937,31 +1380,39 @@ int InternalCalls::iSprite::GetType(const Entity& _e) {
 	return (int)_e.GetComponent<Sprite>().sprite;
 }
 int InternalCalls::iSprite::GetType(const int _eId) {
-	return VI::iSprite::GetType(Entity(_eId));
+	return VI::iSprite::GetType(VI::iEntity::GetEntity(_eId));
 }
 int InternalCalls::iSprite::GetType(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iSprite::GetType(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 void InternalCalls::iSprite::SetType(const Entity& _e, int _type) {
+	if (!_e.HasComponent<Sprite>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Sprite");
+		return;
+	}
 	_e.GetComponent<Sprite>().sprite = (SPRITE)_type;
 }
 void InternalCalls::iSprite::SetType(const int _eId, int _type) {
-	VI::iSprite::SetType(Entity(_eId), _type);
+	VI::iSprite::SetType(VI::iEntity::GetEntity(_eId), _type);
 }
 void InternalCalls::iSprite::SetType(std::string const& _entityName, std::string const& _sceneName, int _type) {
 	VI::iSprite::SetType(VI::iEntity::GetEntity(_entityName, _sceneName), _type);
 }
 int InternalCalls::iSprite::GetLayer(const Entity& _e) {
+	if (!_e.HasComponent<Sprite>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Sprite");
+		return -1;
+	}
 	return _e.GetComponent<Sprite>().layer;
 }
-void InternalCalls::iSprite::SetLayer(const Entity& _e, int layer) {
-	_e.GetComponent<Sprite>().layer = layer;
+void InternalCalls::iSprite::SetLayer(const Entity& _e, int _layer) {
+	_e.GetComponent<Sprite>().layer = _layer;
 }
 int InternalCalls::iSprite::GetLayer(const int _eId) {
-	return VI::iSprite::GetLayer(Entity(_eId));
+	return VI::iSprite::GetLayer(VI::iEntity::GetEntity(_eId));
 }
-void InternalCalls::iSprite::SetLayer(const int _eId, int layer) {
-	VI::iSprite::SetLayer(Entity(_eId), layer);
+void InternalCalls::iSprite::SetLayer(const int _eId, int _layer) {
+	VI::iSprite::SetLayer(VI::iEntity::GetEntity(_eId), _layer);
 }
 int InternalCalls::iSprite::GetLayer(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iSprite::GetLayer(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -970,29 +1421,37 @@ void InternalCalls::iSprite::SetLayer(std::string const& _entityName, std::strin
 	VI::iSprite::SetLayer(VI::iEntity::GetEntity(_entityName, _sceneName), layer);
 }
 void InternalCalls::iSprite::SetAlpha(const Entity& _e, int _a) {
-	if (!_e.HasComponent<Sprite>()) return;
+	if (!_e.HasComponent<Sprite>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Sprite");
+		return;
+	}
 	_e.GetComponent<Sprite>().color.a = (GLubyte)_a;
 }
 void InternalCalls::iSprite::SetAlpha(const int _eId, int _a) {
-	VI::iSprite::SetAlpha(Entity(_eId), _a);
+	VI::iSprite::SetAlpha(VI::iEntity::GetEntity(_eId), _a);
 }
 void InternalCalls::iSprite::SetAlpha(std::string const& _entityName, std::string const& _sceneName, int _a) {
 	VI::iSprite::SetAlpha(VI::iEntity::GetEntity(_entityName, _sceneName), _a);
 }
 void InternalCalls::iSprite::SetColor(const Entity& _e, int _r, int _g, int _b, int _a) {
-	if (!_e.HasComponent<Sprite>())
+	if (!_e.HasComponent<Sprite>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Sprite");
 		return;
+	}
 	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a };
 	_e.GetComponent<Sprite>().color = clr;
 }
 void InternalCalls::iSprite::SetColor(const int _eId, int _r, int _g, int _b, int _a) {
-	VI::iSprite::SetColor(Entity(_eId), _r, _g, _b, _a);
+	VI::iSprite::SetColor(VI::iEntity::GetEntity(_eId), _r, _g, _b, _a);
 }
 void InternalCalls::iSprite::SetColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a) {
 	VI::iSprite::SetColor(VI::iEntity::GetEntity(_entityName, _sceneName), _r, _g, _b, _a);
 }
 int InternalCalls::iSprite::GetColor(const Entity& _e, int _rgba) {
-	if (!_e.HasComponent<Sprite>()) return -1;
+	if (!_e.HasComponent<Sprite>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Sprite");
+		return -1;
+	}
 	switch (_rgba) {
 	case 0:
 		return _e.GetComponent<Sprite>().color.r;
@@ -1011,7 +1470,7 @@ int InternalCalls::iSprite::GetColor(const Entity& _e, int _rgba) {
 	}
 }
 int InternalCalls::iSprite::GetColor(const int _eId, int _rgba) {
-	return VI::iSprite::GetColor(Entity(_eId), _rgba);
+	return VI::iSprite::GetColor(VI::iEntity::GetEntity(_eId), _rgba);
 }
 int InternalCalls::iSprite::GetColor(std::string const& _entityName, std::string const& _sceneName, int _rgba) {
 	return VI::iSprite::GetColor(VI::iEntity::GetEntity(_entityName, _sceneName), _rgba);
@@ -1022,12 +1481,16 @@ int InternalCalls::iSprite::GetColor(std::string const& _entityName, std::string
 	Plays sound
 *******************************************************************************/
 void InternalCalls::iAudio::Play(const Entity& _e) {
+	if (!_e.HasComponent<Audio>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Audio");
+		return;
+	}
 	_e.GetComponent<Audio>().sound.toPlay = true;
 	//(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.volume = 1.f;
 	//audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
 }
 void InternalCalls::iAudio::Play(const int _eId) {
-	VI::iAudio::Play(Entity(_eId));
+	VI::iAudio::Play(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iAudio::Play(std::string const& _entityName, std::string const& _sceneName) {
 	VI::iAudio::Play(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -1038,13 +1501,15 @@ void InternalCalls::iAudio::Play(std::string const& _entityName, std::string con
 	Plays a sound on loop
 *******************************************************************************/
 void InternalCalls::iAudio::PlayOnLoop(const Entity& _e) {
-	if (_e.HasComponent<Audio>()) {
-		_e.GetComponent<Audio>().sound.toPlay = true;
-		_e.GetComponent<Audio>().sound.isLoop = true;
+	if (!_e.HasComponent<Audio>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Audio");
+		return;
 	}
+	_e.GetComponent<Audio>().sound.toPlay = true;
+	_e.GetComponent<Audio>().sound.isLoop = true;
 }
 void InternalCalls::iAudio::PlayOnLoop(const int _eId) {
-	VI::iAudio::PlayOnLoop(Entity(_eId));
+	VI::iAudio::PlayOnLoop(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iAudio::PlayOnLoop(std::string const& _entityName, std::string const& _sceneName) {
 	VI::iAudio::PlayOnLoop(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -1055,10 +1520,14 @@ void InternalCalls::iAudio::PlayOnLoop(std::string const& _entityName, std::stri
    Loop functions
 *******************************************************************************/
 void InternalCalls::iAudio::SetLoop(const Entity& _e, bool _loop) {
+	if (!_e.HasComponent<Audio>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Audio");
+		return;
+	}
 	_e.GetComponent<Audio>().sound.isLoop = _loop;
 }
 void InternalCalls::iAudio::SetLoop(const int _eId, bool _loop) {
-	VI::iAudio::SetLoop(Entity(_eId), _loop);
+	VI::iAudio::SetLoop(VI::iEntity::GetEntity(_eId), _loop);
 }
 void InternalCalls::iAudio::SetLoop(std::string const& _entityName, std::string const& _sceneName, bool _loop) {
 	VI::iAudio::SetLoop(VI::iEntity::GetEntity(_entityName, _sceneName), _loop);
@@ -1069,13 +1538,15 @@ void InternalCalls::iAudio::SetLoop(std::string const& _entityName, std::string 
 	Stop a sound
 *******************************************************************************/
 void InternalCalls::iAudio::Stop(const Entity& _e) {
-	if (_e.HasComponent<Audio>()) {
-		audioManager->StopSound(_e);
-		_e.GetComponent<Audio>().sound.toPlay = false;
+	if (!_e.HasComponent<Audio>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Audio");
+		return;
 	}
+	audioManager->StopSound(_e);
+	_e.GetComponent<Audio>().sound.toPlay = false;
 }
 void InternalCalls::iAudio::Stop(const int _eId) {
-	VI::iAudio::Stop(Entity(_eId));
+	VI::iAudio::Stop(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iAudio::Stop(std::string const& _entityName, std::string const& _sceneName) {
 	VI::iAudio::Stop(VI::iEntity::GetEntity(_entityName, _sceneName));
@@ -1130,15 +1601,32 @@ float InternalCalls::iAudio::GetSfxVol() {
 Get transform of an entity.
 *******************************************************************************/
 Transform& InternalCalls::iTransform::GetTransform(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		Transform tran;
+		return tran;
+	}
 	return _e.GetComponent<Transform>();
 }
 float InternalCalls::iTransform::GetRotation(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return -1.f;
+	}
 	return _e.GetComponent<Transform>().rotation;
 }
 Math::Vec2 InternalCalls::iTransform::GetScale(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return { -1.f, -1.f };
+	}
 	return _e.GetComponent<Transform>().scale;
 }
 Math::Vec2 InternalCalls::iTransform::GetTranslate(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return { -1.f, -1.f };
+	}
 	return _e.GetComponent<Transform>().translation;
 }
 
@@ -1147,29 +1635,45 @@ Math::Vec2 InternalCalls::iTransform::GetTranslate(const Entity& _e) {
 Get/Set pos of an entity.
 *******************************************************************************/
 float InternalCalls::iTransform::GetPosX(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return -1.f;
+	}
 	return _e.GetComponent<Transform>().translation.x;
 }
 float InternalCalls::iTransform::GetPosY(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return -1.f;
+	}
 	return _e.GetComponent<Transform>().translation.y;
 }
 void InternalCalls::iTransform::SetPosX(const Entity& _e, float _posX) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return;
+	}
 	_e.GetComponent<Transform>().translation.x = _posX;
 }
 void InternalCalls::iTransform::SetPosY(const Entity& _e, float _posY) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return;
+	}
 	_e.GetComponent<Transform>().translation.y = _posY;
 }
 
 float InternalCalls::iTransform::GetPosX(const int _eId) {
-	return VI::iTransform::GetPosX(Entity(_eId));
+	return VI::iTransform::GetPosX(VI::iEntity::GetEntity(_eId));
 }
 float InternalCalls::iTransform::GetPosY(const int _eId) {
-	return VI::iTransform::GetPosY(Entity(_eId));
+	return VI::iTransform::GetPosY(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iTransform::SetPosX(const int _eId, float _posX) {
-	VI::iTransform::SetPosX(Entity(_eId), _posX);
+	VI::iTransform::SetPosX(VI::iEntity::GetEntity(_eId), _posX);
 }
 void InternalCalls::iTransform::SetPosY(const int _eId, float _posY) {
-	VI::iTransform::SetPosY(Entity(_eId), _posY);
+	VI::iTransform::SetPosY(VI::iEntity::GetEntity(_eId), _posY);
 }
 
 float InternalCalls::iTransform::GetPosX(std::string const& _entityName, std::string const& _sceneName) {
@@ -1190,29 +1694,45 @@ void InternalCalls::iTransform::SetPosY(std::string const& _entityName, std::str
 Set/Get scale of an entity.
 *******************************************************************************/
 float InternalCalls::iTransform::GetScaleY(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return -1.f;
+	}
 	return _e.GetComponent<Transform>().scale.y;
 }
 float InternalCalls::iTransform::GetScaleX(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return -1.f;
+	}
 	return _e.GetComponent<Transform>().scale.x;
 }
 void InternalCalls::iTransform::SetScaleY(const Entity& _e, float _scaleY) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return;
+	}
 	_e.GetComponent<Transform>().scale.y = _scaleY;
 }
 void InternalCalls::iTransform::SetScaleX(const Entity& _e, float _scaleX) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return;
+	}
 	_e.GetComponent<Transform>().scale.x = _scaleX;
 }
 
 float InternalCalls::iTransform::GetScaleY(const int _eId) {
-	return VI::iTransform::GetScaleY(Entity(_eId));
+	return VI::iTransform::GetScaleY(VI::iEntity::GetEntity(_eId));
 }
 float InternalCalls::iTransform::GetScaleX(const int _eId) {
-	return VI::iTransform::GetScaleX(Entity(_eId));
+	return VI::iTransform::GetScaleX(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iTransform::SetScaleY(const int _eId, float _scaleY) {
-	VI::iTransform::SetScaleY(Entity(_eId), _scaleY);
+	VI::iTransform::SetScaleY(VI::iEntity::GetEntity(_eId), _scaleY);
 }
 void InternalCalls::iTransform::SetScaleX(const int _eId, float _scaleX) {
-	VI::iTransform::SetScaleX(Entity(_eId), _scaleX);
+	VI::iTransform::SetScaleX(VI::iEntity::GetEntity(_eId), _scaleX);
 }
 
 float InternalCalls::iTransform::GetScaleY(std::string const& _entityName, std::string const& _sceneName) {
@@ -1233,17 +1753,25 @@ void InternalCalls::iTransform::SetScaleX(std::string const& _entityName, std::s
 Set/Get rotation of an entity.
 *******************************************************************************/
 float InternalCalls::iTransform::GetRotate(const Entity& _e) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return -1.f;
+	}
 	return _e.GetComponent<Transform>().rotation;
 }
 void InternalCalls::iTransform::SetRotate(const Entity& _e, float _rotate) {
+	if (!_e.HasComponent<Transform>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Transform");
+		return;
+	}
 	_e.GetComponent<Transform>().rotation = _rotate;
 }
 
 float InternalCalls::iTransform::GetRotate(const int _eId) {
-	return VI::iTransform::GetRotate(Entity(_eId));
+	return VI::iTransform::GetRotate(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iTransform::SetRotate(const int _eId, float _rotate) {
-	VI::iTransform::SetRotate(Entity(_eId), _rotate);
+	VI::iTransform::SetRotate(VI::iEntity::GetEntity(_eId), _rotate);
 }
 
 float InternalCalls::iTransform::GetRotate(std::string const& _entityName, std::string const& _sceneName) {
@@ -1258,79 +1786,111 @@ void InternalCalls::iTransform::SetRotate(std::string const& _entityName, std::s
 Changing text component text.
 *******************************************************************************/
 void InternalCalls::iText::UpdateText(const Entity& _e, std::string const& _text) {
+	if (!_e.HasComponent<Text>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Text");
+		return;
+	}
 	_e.GetComponent<Text>().text = _text;
 }
 void InternalCalls::iText::UpdateText(const int _eId, std::string const& _text) {
-	VI::iText::UpdateText(Entity(_eId), _text);
+	VI::iText::UpdateText(VI::iEntity::GetEntity(_eId), _text);
 }
 void InternalCalls::iText::UpdateText(std::string const& _entityName, std::string const& _sceneName, std::string const& _text) {
 	VI::iText::UpdateText(VI::iEntity::GetEntity(_entityName, _sceneName), _text);
 }
 
 void InternalCalls::iText::SetOffset(const Entity& _e, float _xoffset, float _yoffset) {
+	if (!_e.HasComponent<Text>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Text");
+		return;
+	}
 	_e.GetComponent<Text>().offset = Math::Vec2(_xoffset, _yoffset);
 }
 void InternalCalls::iText::SetOffset(const int _eId, float _xoffset, float _yoffset) {
-	VI::iText::SetOffset(Entity(_eId), _xoffset, _yoffset);
+	VI::iText::SetOffset(VI::iEntity::GetEntity(_eId), _xoffset, _yoffset);
 }
 void InternalCalls::iText::SetOffset(std::string const& _entityName, std::string const& _sceneName, float _xoffset, float _yoffset) {
 	VI::iText::SetOffset(VI::iEntity::GetEntity(_entityName, _sceneName), _xoffset, _yoffset);
 }
 
 float InternalCalls::iText::GetOffsetX(const Entity& _e) {
+	if (!_e.HasComponent<Text>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Text");
+		return -1.f;
+	}
 	return _e.GetComponent<Text>().offset.x;
 }
 float InternalCalls::iText::GetOffsetX(const int _eId) {
-	return VI::iText::GetOffsetX(Entity(_eId));
+	return VI::iText::GetOffsetX(VI::iEntity::GetEntity(_eId));
 }
 float InternalCalls::iText::GetOffsetX(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iText::GetOffsetX(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 float InternalCalls::iText::GetOffsetY(const Entity& _e) {
+	if (!_e.HasComponent<Text>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Text");
+		return -1.f;
+	}
 	return _e.GetComponent<Text>().offset.y;
 }
 float InternalCalls::iText::GetOffsetY(const int _eId) {
-	return VI::iText::GetOffsetX(Entity(_eId));
+	return VI::iText::GetOffsetX(VI::iEntity::GetEntity(_eId));
 }
 float InternalCalls::iText::GetOffsetY(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iText::GetOffsetX(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 int InternalCalls::iText::GetLineCount(const Entity& _e) {
+	if (!_e.HasComponent<Text>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Text");
+		return -1;
+	}
 	return renderManager->GetTextLines(_e);
 }
 int InternalCalls::iText::GetLineCount(const int _eId) {
-	return VI::iText::GetLineCount(Entity(_eId));
+	return VI::iText::GetLineCount(VI::iEntity::GetEntity(_eId));
 }
 int InternalCalls::iText::GetLineCount(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iText::GetLineCount(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 float InternalCalls::iText::GetScale(const Entity& _e) {
-	if (!_e.HasComponent<Text>()) return -1.f;
+	if (!_e.HasComponent<Text>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Text");
+		return -1.f;
+	}
 	return _e.GetComponent<Text>().scale;
 }
 float InternalCalls::iText::GetScale(const int _eId) {
-	return VI::iText::GetScale(Entity(_eId));
+	return VI::iText::GetScale(VI::iEntity::GetEntity(_eId));
 }
 float InternalCalls::iText::GetScale(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iText::GetScale(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 void InternalCalls::iText::SetScale(const Entity& _e, float _scale) {
+	if (!_e.HasComponent<Text>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Text");
+		return;
+	}
 	_e.GetComponent<Text>().scale = _scale;
 }
 void InternalCalls::iText::SetScale(const int _eId, float _scale) {
-	VI::iText::SetScale(Entity(_eId), _scale);
+	VI::iText::SetScale(VI::iEntity::GetEntity(_eId), _scale);
 }
 void InternalCalls::iText::SetScale(std::string const& _entityName, std::string const& _sceneName, float _scale) {
 	VI::iText::SetScale(VI::iEntity::GetEntity(_entityName, _sceneName), _scale);
 }
 
 void InternalCalls::iText::SetColour(const int _eId, int _r, int _g, int _b, int _a) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<Text>()) {
+		MissingComponent(e.GetComponent<General>().name, "Text");
+		return;
+	}
 	Color clr{ (GLubyte)_r, (GLubyte)_g, (GLubyte)_b, (GLubyte)_a };
-	Entity(_eId).GetComponent<Text>().color= clr;
+	e.GetComponent<Text>().color = clr;
 }
 
 /*!*****************************************************************************
@@ -1349,24 +1909,28 @@ int InternalCalls::iWeather::GetCurrentWeather(int _index, float _posX, float _p
 Changing lightsource component.
 *******************************************************************************/
 float InternalCalls::iLightSource::GetRadius(const Entity& _e) {
-	if (!_e.HasComponent<LightSource>())
+	if (!_e.HasComponent<LightSource>()) {
+		MissingComponent(_e.GetComponent<General>().name, "LightSource");
 		return -1.f;
+	}
 	return _e.GetComponent<LightSource>().radius;
 }
 float InternalCalls::iLightSource::GetRadius(const int _eId) {
-	return VI::iLightSource::GetRadius(Entity(_eId));
+	return VI::iLightSource::GetRadius(VI::iEntity::GetEntity(_eId));
 }
 float InternalCalls::iLightSource::GetRadius(std::string const& _entityName, std::string const& _sceneName) {
 	return VI::iLightSource::GetRadius(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 void InternalCalls::iLightSource::SetRadius(const Entity& _e, float _radius) {
-	if (!_e.HasComponent<LightSource>())
+	if (!_e.HasComponent<LightSource>()) {
+		MissingComponent(_e.GetComponent<General>().name, "LightSource");
 		return;
+	}
 	_e.GetComponent<LightSource>().radius = _radius;
 }
 void InternalCalls::iLightSource::SetRadius(const int _eId, float _radius) {
-	VI::iLightSource::SetRadius(Entity(_eId), _radius);
+	VI::iLightSource::SetRadius(VI::iEntity::GetEntity(_eId), _radius);
 }
 void InternalCalls::iLightSource::SetRadius(std::string const& _entityName, std::string const& _sceneName, float _radius) {
 	VI::iLightSource::SetRadius(VI::iEntity::GetEntity(_entityName, _sceneName), _radius);
