@@ -21,7 +21,8 @@ namespace BonVoyage {
         private int HitTaken = 0;
 
         static public bool EnemyActivated = false;
-        public float EnemySpeed = 2.2f;
+        private float EnemySpeed = 2.2f;
+        private float EnemyCurrentSpeed;
         private EnemyState OctopusState;
         private int ChasingIndex = 0;
         private float RightAngle = (float)VI.Math.Pi() / 2;
@@ -45,6 +46,9 @@ namespace BonVoyage {
             EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
             HpBarId = VI.Entity.GetId("hpbar");
+
+            EnemyCurrentSpeed = EnemySpeed;
+            LOG.WRITE("yes alived");
         }
 
         public void Init(int _ENTITY) {
@@ -57,11 +61,15 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            Alive(_ENTITY);
+            //Alive(_ENTITY);
             //VI.Camera.SetScale.X(5500);
 
             if (EnemyActivated) {
-                VI.Entity.Activate(EnemyTriggerId);
+                if(!VI.Entity.IsActive(EnemyTriggerId)) VI.Entity.Activate(EnemyTriggerId);
+                int weather = VI.Weather.GetCurrent(12, PlayerScript.PlayerPosX, PlayerScript.PlayerPosY);
+                if (weather == 1 || weather == 3 || weather == 5 || weather == 7) {
+                    EnemyCurrentSpeed = EnemySpeed * 2;
+                } else EnemyCurrentSpeed = EnemySpeed;
 
                 float x = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.x);
                 float y = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.y);
@@ -167,7 +175,7 @@ namespace BonVoyage {
         }
 
         private float GetSpeed(float _x, float _y) {
-            return VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 100f * EnemySpeed;
+            return VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 100f * EnemyCurrentSpeed;
         }
 
         private void ChasePlayer(float _x, float _y) {
