@@ -63,7 +63,7 @@ public:
 	*******************************************************************************/
 	Signature GetSignature(EntityID);
 
-	bool EntityExists(EntityID _e) { return !(std::find(mAvailableEntities.begin(), mAvailableEntities.end(), _e) == mAvailableEntities.end()); }
+	bool EntityExists(EntityID _e) { return std::find(mAvailableEntities.begin(), mAvailableEntities.end(), _e) == mAvailableEntities.end(); }
 
 	uint32_t GetEntityCount() { return mLivingEntityCount; }
 
