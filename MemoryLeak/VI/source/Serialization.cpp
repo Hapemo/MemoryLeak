@@ -607,7 +607,7 @@ Audio SerializationManager::getAudio(Value& entity)
 	Sound sound;
 	sound.path = entity["Audio"]["path"].GetString();
 	if(entity["Audio"].HasMember("toPlay"))//////////////////////////////////////////remove
-		sound.volume = entity["Audio"]["toPlay"].GetFloat();
+		sound.volume = entity["Audio"]["toPlay"].GetBool();
 	sound.volume = entity["Audio"]["volume"].GetFloat();
 	sound.volumeMod = entity["Audio"]["volumeMod"].GetFloat();
 	sound.pitch = entity["Audio"]["pitch"].GetFloat();
