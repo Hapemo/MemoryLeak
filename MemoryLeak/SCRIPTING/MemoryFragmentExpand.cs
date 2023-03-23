@@ -19,6 +19,7 @@ namespace BonVoyage {
         static bool[] activated;
         static int[] tooltips;
         static bool activatedChanged;
+        static int[] expandedRelics;
         int expanded;
         bool showing;
         public void Alive(int _ENTITY) {
@@ -52,7 +53,16 @@ namespace BonVoyage {
                 VI.Entity.GetId("tooltipNO")
             };
             activated = new bool[] { false, false, false, false, false, false };
-            expanded = VI.Entity.GetId("memoryfragmentscreen");
+            expandedRelics = new int[]
+            {
+                VI.Entity.GetId("Relic1Expanded"),
+                VI.Entity.GetId("Relic2Expanded"),
+                VI.Entity.GetId("Relic3Expanded"),
+                VI.Entity.GetId("Relic4Expanded"),
+                VI.Entity.GetId("Relic5Expanded"),
+                VI.Entity.GetId("Relic6Expanded")
+            };
+        expanded = VI.Entity.GetId("memoryfragmentscreen");
             showing = false;
             activatedChanged = false;
         }
@@ -108,6 +118,15 @@ namespace BonVoyage {
                 if (nonehovering)
                     VI.Entity.Deactivate(tooltips[6]);
 
+                for (int i = 0; i < 6; ++i)
+                { 
+                    if (VI.Input.Button.Clicked(backs[i]) && activated[i])
+                    {
+                        VI.Scene.Play("GUI Scene Expanded");
+                        VI.Entity.Activate(expandedRelics[i]);
+                        VI.Scene.Pause("GUI Scene");
+                    }
+                }
             }
         }
 

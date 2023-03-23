@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackBtnHTP.cs" />
+    <Compile Include="BackBtnGUI.cs" />
     <Compile Include="BackButton.cs" />
     <Compile Include="BaseScript.cs" />
     <Compile Include="CreditsButton.cs" />
