@@ -38,6 +38,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Text": {
@@ -118,7 +119,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 638.2281494140625,
+                "X": 640.0,
                 "Y": -260.0
             }
         },
@@ -130,7 +131,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Characters\\mc.png",
             "layer": 10
         },
         "MovementAI": {
@@ -152,7 +153,7 @@
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 638.2281494140625,
+                            "X": 640.0,
                             "Y": -260.0
                         }
                     }
@@ -188,8 +189,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 580.9154052734375,
-                "Y": -195.4929656982422
+                "X": 580.0,
+                "Y": -190.0
             }
         },
         "Sprite": {
@@ -200,8 +201,8 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
-            "layer": 10
+            "texture": "Textures\\Characters\\sea monster.png",
+            "layer": 9
         },
         "MovementAI": {
             "run": false,
@@ -258,8 +259,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 0.0
+                "X": 510.0,
+                "Y": -270.0
             }
         },
         "Sprite": {
@@ -272,6 +273,146 @@
             "sprite": 0,
             "texture": "",
             "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "Radar",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 270.0,
+                "Y": 260.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\minimap\\radar.png",
+            "layer": 4
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "targets": [
+                {
+                    "time": 0.30000001192092896,
+                    "Transform": {
+                        "scale": {
+                            "X": 270.0,
+                            "Y": 260.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 640.0,
+                            "Y": -260.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.30000001192092896,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 700.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "Swiper",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 280.0,
+                "Y": 280.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 180
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\minimap\\swiper.png",
+            "layer": 4
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "targets": [
+                {
+                    "time": 0.30000001192092896,
+                    "Transform": {
+                        "scale": {
+                            "X": 280.0,
+                            "Y": 280.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 640.0,
+                            "Y": -260.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.30000001192092896,
+                    "Transform": {
+                        "scale": {
+                            "X": 700.0,
+                            "Y": 700.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        }
+                    }
+                }
+            ]
         }
     }
 ]

@@ -90,6 +90,7 @@ public:
 	int mOrder=0;
 
 private:
+	bool mInitBefore = false;
 };
 
 

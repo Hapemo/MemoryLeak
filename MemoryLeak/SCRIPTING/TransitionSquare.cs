@@ -25,12 +25,7 @@ namespace BonVoyage {
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            fadingin = true;
-            fadingout = false;
-            nextgs = "";
-            currAlpha = 255;
-            speed = 250;
-            delay = 1.0;
+
         }
 
         public void Init(int _ENTITY) {

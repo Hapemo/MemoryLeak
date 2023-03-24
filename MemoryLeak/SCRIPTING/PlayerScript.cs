@@ -16,29 +16,34 @@ namespace BonVoyage {
     {
         static private Random rand;
 
-        static public bool PlayerInDialogue;
-        static public bool PlayerInOtherAnimation;
-        static public bool PlayerInDeathAnimation;
-        static public float PlayerHealth;
-        static public bool CameraFollowPlayer;
-
         private const float MaxHealth = 12f;
         private const float PlayerSpeed = 10f;
         private const float SpeedCheatMultiplier = 2.5f;
 
-        private bool SpeedCheatToggle;
+        static public bool PlayerInDialogue = false;
+        static public bool PlayerInOtherAnimation = false;
+        static public bool PlayerInDeathAnimation = false;
+        static public float PlayerHealth = MaxHealth;
+        static public bool CameraFollowPlayer = true;
 
-        static public float PlayerPosX;
-        static public float PlayerPosY;
+        private bool SpeedCheatToggle = false;
+
+        static public float PlayerPosX = 0f;
+        static public float PlayerPosY = 0f;
         private float PlayerScaleX;
-        private float PlayerScaleY;
-        private float PlayerRotation;
+        private float PlayerScaleY = 0f;
+        private float PlayerRotation = 0f;
 
-        private int PlayerCurrWeather;
-        private float MovementXModifier;
-        private float MovementYModifier;
+        private int PlayerCurrWeather = 0;
+        private float MovementXModifier = 0f;
+        private float MovementYModifier = 0f;
 
         public void Alive(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+        }
+
+        public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             rand = new Random();
@@ -62,12 +67,6 @@ namespace BonVoyage {
             PlayerCurrWeather = 0;
             MovementXModifier = 0f;
             MovementYModifier = 0f;
-        }
-
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
-            Alive(_ENTITY);
         }
 
         public void EarlyUpdate(int _ENTITY) {

@@ -19,10 +19,19 @@ namespace BonVoyage {
         static bool[] activated;
         static int[] tooltips;
         static bool activatedChanged;
+        static int[] expandedRelics;
         int expanded;
         bool showing;
+        int toggleMap;
+        int relic1BIG;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            
+        }
+
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             relics = new int[]
             {
                 VI.Entity.GetId("Relic1"),
@@ -52,13 +61,20 @@ namespace BonVoyage {
                 VI.Entity.GetId("tooltipNO")
             };
             activated = new bool[] { false, false, false, false, false, false };
+            expandedRelics = new int[]
+            {
+                VI.Entity.GetId("Relic1Expanded"),
+                VI.Entity.GetId("Relic2Expanded"),
+                VI.Entity.GetId("Relic3Expanded"),
+                VI.Entity.GetId("Relic4Expanded"),
+                VI.Entity.GetId("Relic5Expanded"),
+                VI.Entity.GetId("Relic6Expanded")
+            };
             expanded = VI.Entity.GetId("memoryfragmentscreen");
             showing = false;
             activatedChanged = false;
-        }
-
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            toggleMap = VI.Entity.GetId("toggleMap");
+            relic1BIG = VI.Entity.GetId("Relic1BIG");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -68,9 +84,15 @@ namespace BonVoyage {
             if (THIS.Input.Button.Clicked())
                 showing = !showing;
 
+            if (VI.Input.Key.Press(32))
+            {
+                VI.Entity.Activate(relic1BIG);
+            }
+
             if (showing)
             {
                 ActivateFragMenu();
+                
             }
             else
             {
@@ -88,15 +110,15 @@ namespace BonVoyage {
                         {
                             VI.Entity.Activate(tooltips[i]);
                             VI.Entity.Deactivate(tooltips[6]);
-                            VI.Transform.Position.SetX(tooltips[i],  VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 40);
-                            VI.Transform.Position.SetY(tooltips[i],  VI.Input.Mouse.WorldPosY() - 30);
+                            VI.Transform.Position.SetX(tooltips[i],  VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 60);
+                            VI.Transform.Position.SetY(tooltips[i],  VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(tooltips[i]) / 2);
                         }
                         else
                         {
                             VI.Entity.Deactivate(tooltips[i]);
                             VI.Entity.Activate(tooltips[6]);
-                            VI.Transform.Position.SetX(tooltips[6], VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 40);
-                            VI.Transform.Position.SetY(tooltips[6], VI.Input.Mouse.WorldPosY() - 30);
+                            VI.Transform.Position.SetX(tooltips[6], VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[6]) / 2 + 60);
+                            VI.Transform.Position.SetY(tooltips[6], VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(tooltips[6]) / 2);
                         }
 
                     }
@@ -108,6 +130,16 @@ namespace BonVoyage {
                 if (nonehovering)
                     VI.Entity.Deactivate(tooltips[6]);
 
+                for (int i = 0; i < 6; ++i)
+                { 
+                    if (VI.Input.Button.Clicked(backs[i]) && activated[i])
+                    {
+                        VI.Scene.Play("GUI Scene Expanded");
+                        VI.Entity.Deactivate(toggleMap);
+                        VI.Entity.Activate(expandedRelics[i]);
+                        VI.Scene.Pause("GUI Scene");
+                    }
+                }
             }
         }
 
@@ -167,5 +199,6 @@ namespace BonVoyage {
             activatedChanged = true;
             activated[fragmentId] = true;
         }
+
     }
 }

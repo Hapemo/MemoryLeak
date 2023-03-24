@@ -73,8 +73,8 @@ public:
 	// every frame until the time limit is reached
 	void Update();
 
-	// Generate one frame of particles
-	void GenerateOnce(Entity _e) const { _e.GetComponent<ParticleSystem>().mIsActive = true; }
+	// Generate one frame of particles. (This will override any duration to 0, only generate for 1 frame
+	void GenerateOnce(Entity _e) const { _e.GetComponent<ParticleSystem>().mIsActive = true;  _e.GetComponent<ParticleSystem>().mDuration = 0; }
 
 	// Generate loop of time frame
 	void GenerateLoop(Entity _e, float _duration) const { 

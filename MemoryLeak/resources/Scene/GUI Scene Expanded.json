@@ -1,0 +1,423 @@
+[
+    {
+        "General": {
+            "name": "BackgroundGUI",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 150
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 100
+        }
+    },
+    {
+        "General": {
+            "name": "ExitBtnGUI",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 50.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 640.0,
+                "Y": 280.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\ExitBtn.png",
+            "layer": 102
+        },
+        "Audio": {
+            "path": "OpenMemoryFragment",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "BackBtnGUI"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Relic1Expanded",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 420.0,
+                "Y": 316.67999267578125
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -450.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic1.png",
+            "layer": 102
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "With many uncertainties surrounding around life and death, a timepiece served not only as an indicator of time, but also assured the hearts of the people eventually. $ Such was the case with the fishermen that once travelled the distance seas together. Far and wide were the seas that laid ahead of them, yet the only form of assurance lies within the old vintage timepiece, ticking endlessly through the ages. $ It's said that the treasured timepiece was once invented by the renowned timekeeper between the people, whose intricate designs sparked the hearts of many, including the duo who used to visit his home regularly, bringing along with them a trinket or two in exchange for such valuable timepieces. $ Eventually, the disastrous nature of the great tsunami washed away everything in sight, bringing the lively ticking surrounding the rooms to come to an end.",
+            "offset": {
+                "X": 377.0,
+                "Y": 264.0
+            },
+            "scale": 0.46000000834465027,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -340.0
+        }
+    },
+    {
+        "General": {
+            "name": "RelicDisplayScreen",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 500.0,
+                "Y": 675.4874877929688
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -450.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\RelicScreen2_window1.png",
+            "layer": 101
+        }
+    },
+    {
+        "General": {
+            "name": "RelicTextScreen",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 838.0,
+                "Y": 674.8618774414063
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 280.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\RelicScreen2_window2.png",
+            "layer": 101
+        }
+    },
+    {
+        "General": {
+            "name": "Relic2Expanded",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 350.0,
+                "Y": 332.680419921875
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -450.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic2.png",
+            "layer": 102
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Amidst the vast waters that held many mysteries within, the fishermen of that time found themselves a sophisticated artifact, well-defined by its large arrow that could shift its position. $ Regardless of where they went, the arrow was always known to bring them home. $ Later known as \"the compass\", the people believed that such an esteemed masterpiece ought to be preserved, its components carefully refurbished throughout the years by the skillful hands of their leader, Argus. $ Withstanding against the ravages of time, this very same artifact continues to guide the enstranged beings even in the afterlife.",
+            "offset": {
+                "X": 377.0,
+                "Y": 264.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -393.0
+        }
+    },
+    {
+        "General": {
+            "name": "Relic3Expanded",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 421.34832763671875
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -450.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic3.png",
+            "layer": 102
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Seen as a blessing from above, the gift of foresight was highly sought after. $ Amidst the people was one by the name of Prometheus, whose forte included predicting the weather and crafting precise plans for the people onboard with him. $ High praise and worship bestowed upon him who promised peace and stability to the people. $ However, unbeknownst to the others were the curses that came hand in hand with the blessings he experienced. $ Fear gripped his mind as countless gruesome imageries conjured for the entirety of his life. $ Upon his passing, a goblet was found ashore, in which an eye was found plastered in the middle, reflecting the immense terror of the beholder.",
+            "offset": {
+                "X": 377.0,
+                "Y": 264.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -499.0
+        }
+    },
+    {
+        "General": {
+            "name": "Relic4Expanded",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 300.0,
+                "Y": 363.7833557128906
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -450.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic4.png",
+            "layer": 102
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Before the meaning of the Cordelia flower came to be, only a small portion of them were ever sighted. $ Such a unique flower caught the eye of a pair of close-knitted siblings, who would often shower it with melodies and tunes stemming from the depths of their heart. $ On rare occasions did tragic hymns reach these flowers, breathing new life into it. $ When tragedy befell upon these siblings, the Cordelia flowers were finally in full bloom, representing both the hopes and regrets that still lingered within the once peaceful village. $ \"What type of bird is that?\" $ \"That's a canary.\" $ \"Whats a canary?\" $ \"Canaries are pretty yellow songbirds living among you.\"",
+            "offset": {
+                "X": 377.0,
+                "Y": 264.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -493.0
+        }
+    },
+    {
+        "General": {
+            "name": "Relic5Expanded",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 291.0,
+                "Y": 291.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -450.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic5.png",
+            "layer": 102
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Countless were the people he met, yet none could ever beat the ethereal figure his gaze settled on unconsciously. $ Captivated by her ravishing looks and amiable personality, thus began his new journey. $ Endless small talks eventually led to the exchange of rings between them, each containing the promise they made to each other. $ \"Take me with you on your journey when all is settled.\" $ Alas, the violent nature of the raging storm spares no one. $ Holding on for dear life, the ring that was once reinforced on his finger slid away, along with the memories and oaths it once carried. $ Despite the passing eons, she who bore the news of the passing of her lover continued to await his return again.",
+            "offset": {
+                "X": 377.0,
+                "Y": 264.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -461.0
+        }
+    },
+    {
+        "General": {
+            "name": "Relic6Expanded",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 268.0,
+                "Y": 316.0377197265625
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -450.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Props_Relic6.png",
+            "layer": 102
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Within these small and compact runestones encompass the numerous fates of those who wander within the boundaries of life, each containing distinct stories of their own. $ A powerful wizard once resided among the people, whose antics often repelled those in search for their own destiny. $ \"Fear clings onto such fragile mortals who know not when their lives would reach an end.\" She would often muse to herself. $ As countless seasons passed, the melancholic wizard sits in silence as she looks at the ever-cracking runestone in her hands. $ The inevitability of one's fate remains unchanging for eternity, that, she finally understood.",
+            "offset": {
+                "X": 377.0,
+                "Y": 264.0
+            },
+            "scale": 0.44999998807907104,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -487.0
+        }
+    }
+]

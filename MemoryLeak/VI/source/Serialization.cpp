@@ -184,6 +184,10 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			{
 				e.AddComponent<MovementAI>(getMovementAI(entity[index]));
 			}
+			if (entity[index].HasMember("ColorAI"))
+			{
+				e.AddComponent<ColorAI>(getColorAI(entity[index]));
+			}
 			if (entity[index].HasMember("ParticleSystem"))
 			{
 				e.AddComponent<ParticleSystem>(getParticleSystem(entity[index]));
@@ -457,6 +461,15 @@ Transform SerializationManager::getTransform(Value& entity)
 	transform.translation = GetVec2(entity["Transform"]["translation"]);
 	return transform;
 }
+Color SerializationManager::getColor(Value& entity)
+{
+	Color color;
+	color.r = (GLubyte)entity["color"]["r"].GetInt();
+	color.g = (GLubyte)entity["color"]["g"].GetInt();
+	color.b = (GLubyte)entity["color"]["b"].GetInt();
+	color.a = (GLubyte)entity["color"]["a"].GetInt();
+	return color;
+}
 Sprite SerializationManager::getSprite(Value& entity)
 {
 	Sprite sprite;
@@ -607,7 +620,7 @@ Audio SerializationManager::getAudio(Value& entity)
 	Sound sound;
 	sound.path = entity["Audio"]["path"].GetString();
 	if(entity["Audio"].HasMember("toPlay"))//////////////////////////////////////////remove
-		sound.volume = entity["Audio"]["toPlay"].GetFloat();
+		sound.volume = entity["Audio"]["toPlay"].GetBool();
 	sound.volume = entity["Audio"]["volume"].GetFloat();
 	sound.volumeMod = entity["Audio"]["volumeMod"].GetFloat();
 	sound.pitch = entity["Audio"]["pitch"].GetFloat();
@@ -708,8 +721,16 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 	movementAI.acceleration = entity["MovementAI"]["acceleration"].GetFloat();
 	if (entity["MovementAI"].HasMember("moveOnHover"))//////remove this if line
 	{
-		movementAI.moveOnHover = false;// entity["MovementAI"]["moveOnHover"].GetBool();
+		movementAI.moveOnHover = entity["MovementAI"]["moveOnHover"].GetBool();
 	}
+	else
+		movementAI.moveOnHover = false;
+	if (entity["MovementAI"].HasMember("moveOnCollide"))//////remove this if line
+	{
+		movementAI.moveOnCollide = entity["MovementAI"]["moveOnCollide"].GetBool();
+	}
+	else
+		movementAI.moveOnCollide = false;
 	Value a(kObjectType);
 	if (entity["MovementAI"].HasMember("targets"))
 	{
@@ -724,6 +745,39 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 	}
 
 	return movementAI;
+}
+ColorAI SerializationManager::getColorAI(Value& entity)
+{
+	ColorAI colorAI;
+	colorAI.run = entity["ColorAI"]["run"].GetBool();
+	colorAI.next = entity["ColorAI"]["next"].GetBool();
+	colorAI.loop = entity["ColorAI"]["loop"].GetBool();
+	colorAI.reverse = entity["ColorAI"]["reverse"].GetBool();
+	colorAI.cycle = entity["ColorAI"]["cycle"].GetBool();
+	colorAI.nextStep = entity["ColorAI"]["nextStep"].GetInt();
+	colorAI.acceleration = entity["ColorAI"]["acceleration"].GetFloat();
+	colorAI.spriteORtext = entity["ColorAI"]["spriteORtext"].GetInt();
+	colorAI.changeOnHover = entity["ColorAI"]["changeOnHover"].GetBool();
+	if (entity["ColorAI"].HasMember("changeOnCollide"))//////remove this if line
+	{
+		colorAI.changeOnCollide = entity["ColorAI"]["changeOnCollide"].GetBool();
+	}
+	else
+		colorAI.changeOnCollide = false;
+	Value a(kObjectType);
+	if (entity["ColorAI"].HasMember("targets"))
+	{
+		a = entity["ColorAI"]["targets"].GetArray();
+		for (int j = 0; j < (int)a.Size(); ++j)
+		{
+			float time = (float)a[j]["time"].GetFloat();
+			Color clr = getColor(a[j]);
+			colorAI.time.push_back(time);
+			colorAI.targetColors.push_back(clr);
+		}
+	}
+
+	return colorAI;
 }
 ParticleSystem::ParticleInfo SerializationManager::getParticleInfo(Value& entity)
 {
@@ -997,6 +1051,10 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		{
 			addMovementAI(scene, entity, e.GetComponent<MovementAI>());
 		}
+		if (e.HasComponent<ColorAI>())
+		{
+			addColorAI(scene, entity, e.GetComponent<ColorAI>());
+		}
 		if (e.HasComponent<ParticleSystem>())
 		{
 			addParticleSystem(scene, entity, e.GetComponent<ParticleSystem>());
@@ -1111,14 +1169,23 @@ void SerializationManager::addTransform(Document& scene, Value& entity, Transfor
 	addVectorMember(scene, tmp, "translation", transform.translation);
 	entity.AddMember(StringRef("Transform"), tmp, scene.GetAllocator());
 }
+void SerializationManager::addColor(Document& scene, Value& entity, Color color)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("r"), (int)color.r, scene.GetAllocator());
+	tmp.AddMember(StringRef("g"), (int)color.g, scene.GetAllocator());
+	tmp.AddMember(StringRef("b"), (int)color.b, scene.GetAllocator());
+	tmp.AddMember(StringRef("a"), (int)color.a, scene.GetAllocator());
+	entity.AddMember(StringRef("color"), tmp, scene.GetAllocator());
+}
 void SerializationManager::addSprite(Document& scene, Value& entity, Sprite sprite)
 {
 	Value tmp(kObjectType);
 	Value tmpc(kObjectType);
-	tmpc.AddMember(StringRef("r"), sprite.color.r, scene.GetAllocator());
-	tmpc.AddMember(StringRef("g"), sprite.color.g, scene.GetAllocator());
-	tmpc.AddMember(StringRef("b"), sprite.color.b, scene.GetAllocator());
-	tmpc.AddMember(StringRef("a"), sprite.color.a, scene.GetAllocator());
+	tmpc.AddMember(StringRef("r"), (int)sprite.color.r, scene.GetAllocator());
+	tmpc.AddMember(StringRef("g"), (int)sprite.color.g, scene.GetAllocator());
+	tmpc.AddMember(StringRef("b"), (int)sprite.color.b, scene.GetAllocator());
+	tmpc.AddMember(StringRef("a"), (int)sprite.color.a, scene.GetAllocator());
 	tmp.AddMember(StringRef("color"), tmpc, scene.GetAllocator());
 	tmp.AddMember(StringRef("sprite"), (int)sprite.sprite, scene.GetAllocator());
 	std::string tex = spriteManager->GetTexturePath(sprite.texture);
@@ -1345,6 +1412,7 @@ void SerializationManager::addMovementAI(Document& scene, Value& entity, Movemen
 	tmp.AddMember(StringRef("nextStep"), movementAI.nextStep, scene.GetAllocator());
 	tmp.AddMember(StringRef("acceleration"), movementAI.acceleration, scene.GetAllocator());
 	tmp.AddMember(StringRef("moveOnHover"), movementAI.moveOnHover, scene.GetAllocator());
+	tmp.AddMember(StringRef("moveOnCollide"), movementAI.moveOnCollide, scene.GetAllocator());
 	Value child(kObjectType);
 	child.SetArray();
 	for (int i = 0; i < movementAI.targetTransforms.size(); ++i)
@@ -1356,6 +1424,31 @@ void SerializationManager::addMovementAI(Document& scene, Value& entity, Movemen
 	}
 	tmp.AddMember(StringRef("targets"), child, scene.GetAllocator());
 	entity.AddMember(StringRef("MovementAI"), tmp, scene.GetAllocator());
+}
+void SerializationManager::addColorAI(Document& scene, Value& entity, ColorAI colorAI)
+{
+	Value tmp(kObjectType);
+	tmp.AddMember(StringRef("run"), colorAI.run, scene.GetAllocator());
+	tmp.AddMember(StringRef("next"), colorAI.next, scene.GetAllocator());
+	tmp.AddMember(StringRef("loop"), colorAI.loop, scene.GetAllocator());
+	tmp.AddMember(StringRef("reverse"), colorAI.reverse, scene.GetAllocator());
+	tmp.AddMember(StringRef("cycle"), colorAI.cycle, scene.GetAllocator());
+	tmp.AddMember(StringRef("nextStep"), colorAI.nextStep, scene.GetAllocator());
+	tmp.AddMember(StringRef("acceleration"), colorAI.acceleration, scene.GetAllocator());
+	tmp.AddMember(StringRef("spriteORtext"), colorAI.spriteORtext, scene.GetAllocator());
+	tmp.AddMember(StringRef("changeOnHover"), colorAI.changeOnHover, scene.GetAllocator());
+	tmp.AddMember(StringRef("changeOnCollide"), colorAI.changeOnCollide, scene.GetAllocator());
+	Value child(kObjectType);
+	child.SetArray();
+	for (int i = 0; i < colorAI.targetColors.size(); ++i)
+	{
+		Value trans(kObjectType);
+		trans.AddMember(StringRef("time"), colorAI.time[i], scene.GetAllocator());
+		addColor(scene, trans, colorAI.targetColors[i]);
+		child.PushBack(trans, scene.GetAllocator());
+	}
+	tmp.AddMember(StringRef("targets"), child, scene.GetAllocator());
+	entity.AddMember(StringRef("ColorAI"), tmp, scene.GetAllocator());
 }
 void SerializationManager::addParticleInfo(Document& scene, Value& entity, ParticleSystem::ParticleInfo particleInfo)
 {
@@ -1458,7 +1551,8 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 			sceneData.mIsUI = true;
 		}
 		sceneData.mIsPause = entity[index]["isActive"].GetBool();
-		sceneData.mForceRender = entity[index]["mForceRender"].GetBool();
+		if(entity[index].HasMember("mForceRender"))
+			sceneData.mForceRender = entity[index]["mForceRender"].GetBool();
 		sceneData.mLayer = entity[index]["layer"].GetInt();
 		sceneData.mOrder = entity[index]["order"].GetInt();
 

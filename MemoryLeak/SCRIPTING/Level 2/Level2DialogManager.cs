@@ -32,9 +32,9 @@ namespace BonVoyage {
     public const string P2String                    = "Passenger_2";
     public const string P2BoxString                 = "Passenger2Box";
     public const string P2CorrectBoxString          = "Porthouse5DropOffPoint";
-    public const string P2WrongBoxString            = "LighthouseBox";
+    public const string P2WrongBoxString            = "Porthouse6DropOffPoint";
     public const string P2CorrectRenderString       = "Porthouse5DestRender";
-    public const string P2WrongRenderString         = "LighthouseDestRender";
+    public const string P2WrongRenderString         = "Porthouse6DropOffPoint";
 
     //private bool progressUpdate = false;
     static public bool runIntroDialog;

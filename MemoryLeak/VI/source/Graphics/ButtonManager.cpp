@@ -44,16 +44,33 @@ void ButtonManager::Update()
 		prev = e.GetComponent<Button>().isHover;
 		e.GetComponent<Button>().isHover = CheckHover(e);
 		if (e.HasComponent<MovementAI>() && e.GetComponent<MovementAI>().moveOnHover)
+		{
 			if (!prev && e.GetComponent<Button>().isHover)
 			{
 				movementAIManager->SetNextStep(e, 1);
+				e.GetComponent<MovementAI>().state = 0;
 				e.GetComponent<MovementAI>().run = true;
 			}
 			else if (prev && !e.GetComponent<Button>().isHover)
 			{
 				movementAIManager->SetNextStep(e, 0);
+				e.GetComponent<MovementAI>().state = 0;
 				e.GetComponent<MovementAI>().run = true;
 			}
+		}
+		if (e.HasComponent<ColorAI>() && e.GetComponent<ColorAI>().changeOnHover)
+		{
+			if (!prev && e.GetComponent<Button>().isHover)
+			{
+				colorAIManager->SetNextStep(e, 1);
+				e.GetComponent<ColorAI>().run = true;
+			}
+			else if (prev && !e.GetComponent<Button>().isHover)
+			{
+				colorAIManager->SetNextStep(e, 0);
+				e.GetComponent<ColorAI>().run = true;
+			}
+		}
 		e.GetComponent<Button>().isClick = CheckClick(e);
 		e.GetComponent<Button>().activated = CheckActivate(e);
 	}

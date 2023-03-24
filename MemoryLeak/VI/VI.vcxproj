@@ -286,6 +286,7 @@
     <ClInclude Include="include\AudioManager.h" />
     <ClInclude Include="include\AudioVariable.h" />
     <ClInclude Include="include\ColliderTransformManager.h" />
+    <ClInclude Include="include\ColorAIManager.h" />
     <ClInclude Include="include\ECS\PrefabManager.h" />
     <ClInclude Include="include\Editor\AnimationPanel.h" />
     <ClInclude Include="include\Editor\AssetPanel.h" />
@@ -415,6 +416,7 @@
     <ClCompile Include="source\AI.cpp" />
     <ClCompile Include="source\AudioManger.cpp" />
     <ClCompile Include="source\ColliderTransformManager.cpp" />
+    <ClCompile Include="source\ColorAIManager.cpp" />
     <ClCompile Include="source\DialogManager.cpp" />
     <ClCompile Include="source\ECS\ECSManager.cpp" />
     <ClCompile Include="source\ECS\ECS_managers.cpp" />

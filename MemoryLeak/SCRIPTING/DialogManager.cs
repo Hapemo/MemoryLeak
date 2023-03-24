@@ -398,7 +398,6 @@ namespace BonVoyage {
       GeneralEndDialog();
       VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
       passengerDialogProgress = 0;
-      LOG.WRITE("Dropped off =================");
       PassengerDeliverUI.DeliveredPassenger();
     }
 

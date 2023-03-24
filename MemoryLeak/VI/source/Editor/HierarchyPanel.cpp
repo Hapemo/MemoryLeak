@@ -506,6 +506,11 @@ void HierarchyPanel::listComponents(const Entity* e, std::string _name)
 			ImGui::Text("MovementAI");
 			setSelectedEntity(e);
 		}
+		if (e->HasComponent<ColorAI>())
+		{
+			ImGui::Text("ColorAI");
+			setSelectedEntity(e);
+		}
 		if (e->HasComponent<ParticleSystem>())
 		{
 			ImGui::Text("ParticleSystem");

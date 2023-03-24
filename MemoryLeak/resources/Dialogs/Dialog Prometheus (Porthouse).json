@@ -1,0 +1,23 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Oh heavens my eyes! That many boats here?!",
+   "Speaker": 0,
+   "Next Dialogue": 2,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "Was this really the structure I sensed?",
+   "Speaker": 0,
+   "Next Dialogue": 3,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 3,
+   "Dialogue Text": "W..well you seem to know better so maybe I'll go explore this area a little myself..",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]

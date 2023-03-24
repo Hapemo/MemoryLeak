@@ -158,7 +158,7 @@
             "mParticleInfo": {
                 "mScale": 250.0,
                 "mFacing": 0.5,
-                "mLifespan": 0.1,
+                "mLifespan": 0.10000000149011612,
                 "Sprite": {
                     "color": {
                         "r": 255,

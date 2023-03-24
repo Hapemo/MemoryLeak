@@ -18,21 +18,16 @@ namespace BonVoyage {
         private float ZoomScaleFactorX;
         private float ZoomScaleFactorY;
 
-        private int playerBoat;
-
         private bool InAnimation;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat");
-            InAnimation = false;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat");
             InAnimation = false;
         }
 
@@ -42,6 +37,16 @@ namespace BonVoyage {
         }
 
         public void Update(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+        }
+
+        public void FixedUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+        }
+
+        public void LateUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             // To change hardcoded value to get application's width n height when functions are added to internal calls or the compution of mouse world position is corrected to be in the world
@@ -55,8 +60,8 @@ namespace BonVoyage {
             {
                 if (!PlayerScript.PlayerInDialogue && !PlayerScript.PlayerInDeathAnimation && !PlayerScript.PlayerInOtherAnimation)
                 {
-                    float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - VI.Transform.Position.GetX(playerBoat);
-                    float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - VI.Transform.Position.GetY(playerBoat);
+                    float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerScript.PlayerPosX;
+                    float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerScript.PlayerPosY;
                     SetMouseMovingIcon(_ENTITY, GetRotation(DirX, DirY));
                 }
             }
@@ -81,16 +86,6 @@ namespace BonVoyage {
                 VI.Animation.SpriteSheet.CurrentFrame.Set(_ENTITY, 0);
                 VI.Animation.SpriteSheet.FrameCount.Set(_ENTITY, 1);
             }
-        }
-
-        public void FixedUpdate(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
-        }
-
-        public void LateUpdate(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-        
         }
 
         public void Exit(int _ENTITY) {

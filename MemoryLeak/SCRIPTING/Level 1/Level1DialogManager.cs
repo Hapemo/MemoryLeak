@@ -40,7 +40,7 @@ namespace BonVoyage {
     //private bool progressUpdate = false;
     //static public bool runGirlDialog;
 
-        private int correctDestination_RenderLocation;
+    private int correctDestination_RenderLocation;
     private int wrongDestination_RenderLocation;
 
     static public bool runPassengerDialog;

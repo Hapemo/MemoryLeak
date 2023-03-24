@@ -38,6 +38,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Text": {
@@ -49,9 +50,9 @@
             },
             "scale": 1.0,
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 210,
+                "g": 219,
+                "b": 253,
                 "a": 255
             },
             "followCam": false,
@@ -62,6 +63,38 @@
         },
         "Button": {
             "interactable": true
+        },
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": true,
+            "reverse": true,
+            "cycle": false,
+            "nextStep": 0,
+            "acceleration": 0.0,
+            "spriteORtext": 1,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 0,
+                        "g": 153,
+                        "b": 253,
+                        "a": 255
+                    }
+                }
+            ]
         }
     },
     {
@@ -103,6 +136,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Text": {
@@ -168,6 +202,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Text": {
@@ -222,6 +257,50 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\bon voyage logo 5.png",
             "layer": 1
+        },
+        "Button": {
+            "interactable": true
+        },
+        "MovementAI": {
+            "run": false,
+            "next": false,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": true,
+            "moveOnCollide": false,
+            "targets": [
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 957.5,
+                            "Y": 298.6781311035156
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": 210.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 1020.0,
+                            "Y": 320.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -260.0,
+                            "Y": 210.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -263,6 +342,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -315,6 +395,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {

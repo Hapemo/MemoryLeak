@@ -946,8 +946,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 2.471658229827881,
-                "Y": 0.007340032607316971
+                "X": 125,
+                "Y": 175
             },
             "rotation": 0.0,
             "translation": {
@@ -1063,6 +1063,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -4171,6 +4172,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -4219,6 +4221,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -4267,6 +4270,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -6783,7 +6787,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SW_Hit_Spritesheet.png",
+            "texture": "",
             "layer": 54
         },
         "SheetAnimation": {

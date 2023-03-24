@@ -131,6 +131,10 @@ void InspectorPanel::Update()
 				{
 					MovementAIEditor();
 				}
+				if (e.HasComponent<ColorAI>())
+				{
+					ColorAIEditor();
+				}
 				if (e.HasComponent<ParticleSystem>())
 				{
 					ParticleSystemEditor();
@@ -327,7 +331,14 @@ void InspectorPanel::AddComponent()
 	else if (addComponentID == (int)COMPONENTID::MOVEMENTAI)
 	{
 		e.AddComponent<MovementAI>({});
-		movementAIManager->AddTransform(e, e.GetComponent<Transform>());
+		if (e.HasComponent<Transform>())
+			movementAIManager->AddTransform(e, e.GetComponent<Transform>());
+	}
+	else if (addComponentID == (int)COMPONENTID::COLORAI)
+	{
+		e.AddComponent<ColorAI>({});
+		if(e.HasComponent<Sprite>())
+			colorAIManager->AddColor(e, e.GetComponent<Sprite>().color);
 	}
 	else if (addComponentID == (int)COMPONENTID::PARTICLESYSTEM)
 		e.AddComponent<ParticleSystem>({});
@@ -510,8 +521,8 @@ void InspectorPanel::SpriteEditor()
 		tmpVec4[1] = e.GetComponent<Sprite>().color.g / 255.f;
 		tmpVec4[2] = e.GetComponent<Sprite>().color.b / 255.f;
 		tmpVec4[3] = e.GetComponent<Sprite>().color.a / 255.f;
-		//ImGui::ColorEdit4("Sprite Color", tmpVec4);
-		ImGui::ColorPicker4("Color", tmpVec4);
+		ImGui::ColorEdit4("Sprite Color", tmpVec4);
+		//ImGui::ColorPicker4("Color", tmpVec4);
 		e.GetComponent<Sprite>().color.r = (GLubyte)(tmpVec4[0] * 255);
 		e.GetComponent<Sprite>().color.g = (GLubyte)(tmpVec4[1] * 255);
 		e.GetComponent<Sprite>().color.b = (GLubyte)(tmpVec4[2] * 255);
@@ -1003,7 +1014,7 @@ void InspectorPanel::TextEditor()
 		tmpVec4[2] = e.GetComponent<Text>().color.b / 255.f;
 		tmpVec4[3] = e.GetComponent<Text>().color.a / 255.f;
 		
-		ImGui::ColorPicker4("Text Color", tmpVec4);
+		ImGui::ColorEdit4("Text Color", tmpVec4);
 		e.GetComponent<Text>().color.r = (GLubyte)(tmpVec4[0] * 255);
 		e.GetComponent<Text>().color.g = (GLubyte)(tmpVec4[1] * 255);
 		e.GetComponent<Text>().color.b = (GLubyte)(tmpVec4[2] * 255);
@@ -1255,6 +1266,7 @@ void InspectorPanel::MovementAIEditor()
 		ImGui::Checkbox("reverse", &e.GetComponent<MovementAI>().reverse);
 		ImGui::Checkbox("cycle", &e.GetComponent<MovementAI>().cycle);
 		ImGui::Checkbox("moveOnHover", &e.GetComponent<MovementAI>().moveOnHover);
+		ImGui::Checkbox("moveOnCollide", &e.GetComponent<MovementAI>().moveOnCollide);
 		ImGui::Separator();
 		static bool pp = false;
 		if (pp)
@@ -1311,7 +1323,9 @@ void InspectorPanel::MovementAIEditor()
 			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
 			if (ImGui::Button(("Remove Transform" + std::to_string(i)).c_str()))
 			{
-				e.GetComponent<MovementAI>().targetTransforms.erase(e.GetComponent<MovementAI>().targetTransforms.begin() + i);
+				movementAIManager->RemoveTransformAt(e, i);
+				//e.GetComponent<MovementAI>().time.erase(e.GetComponent<MovementAI>().time.begin() + i);
+				//e.GetComponent<MovementAI>().targetTransforms.erase(e.GetComponent<MovementAI>().targetTransforms.begin() + i);
 			}
 			ImGui::PopStyleColor();
 			ImGui::Separator();
@@ -1330,6 +1344,70 @@ void InspectorPanel::MovementAIEditor()
 		{
 			e.RemoveComponent<MovementAI>();
 			LOG_INFO("MovementAI component removed");
+		}
+		ImGui::PopStyleColor();
+
+
+	}
+
+}
+void InspectorPanel::ColorAIEditor()
+{
+	if (ImGui::CollapsingHeader("ColorAI"))
+	{
+		ImGui::Text((std::to_string(e.GetComponent<ColorAI>().step)).c_str());
+		ImGui::Checkbox("run", &e.GetComponent<ColorAI>().run);
+		ImGui::Checkbox("next", &e.GetComponent<ColorAI>().next);
+		ImGui::Checkbox("loop", &e.GetComponent<ColorAI>().loop);
+		ImGui::Checkbox("reverse", &e.GetComponent<ColorAI>().reverse);
+		ImGui::Checkbox("cycle", &e.GetComponent<ColorAI>().cycle);
+		ImGui::Checkbox("changeOnHover", &e.GetComponent<ColorAI>().changeOnHover);
+		ImGui::Checkbox("changeOnCollide", &e.GetComponent<ColorAI>().changeOnCollide);
+		int spriteORtextID = e.GetComponent<ColorAI>().spriteORtext;
+		ImGui::Combo("Select sprite OR text", &spriteORtextID, spriteORtext, IM_ARRAYSIZE(spriteORtext));
+		if((spriteORtextID == 0)||(e.HasComponent<Text>()))
+			e.GetComponent<ColorAI>().spriteORtext = spriteORtextID;
+		ImGui::Separator();
+		
+		for (int i = 0; i < e.GetComponent<ColorAI>().targetColors.size(); i++)
+		{
+			ImGui::DragFloat(("Set Time" + std::to_string(i)).c_str(), &e.GetComponent<ColorAI>().time[i], 0.1f, 0.f, 60.f);
+
+			//color
+			tmpVec4[0] = e.GetComponent<ColorAI>().targetColors[i].r / 255.f;
+			tmpVec4[1] = e.GetComponent<ColorAI>().targetColors[i].g / 255.f;
+			tmpVec4[2] = e.GetComponent<ColorAI>().targetColors[i].b / 255.f;
+			tmpVec4[3] = e.GetComponent<ColorAI>().targetColors[i].a / 255.f;
+			ImGui::ColorEdit4(("Color" + std::to_string(i)).c_str(), tmpVec4);
+			e.GetComponent<ColorAI>().targetColors[i].r = (GLubyte)(tmpVec4[0] * 255);
+			e.GetComponent<ColorAI>().targetColors[i].g = (GLubyte)(tmpVec4[1] * 255);
+			e.GetComponent<ColorAI>().targetColors[i].b = (GLubyte)(tmpVec4[2] * 255);
+			e.GetComponent<ColorAI>().targetColors[i].a = (GLubyte)(tmpVec4[3] * 255);
+
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+			if (ImGui::Button(("Remove Color" + std::to_string(i)).c_str()))
+			{
+				colorAIManager->RemoveColorAt(e, i);
+				//e.GetComponent<ColorAI>().time.erase(e.GetComponent<ColorAI>().time.begin() + i);
+				//e.GetComponent<ColorAI>().targetColors.erase(e.GetComponent<ColorAI>().targetColors.begin() + i);
+			}
+			ImGui::PopStyleColor();
+			ImGui::Separator();
+		}
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.0f, 0.5f, 0.f, 1.0f });
+		if (ImGui::Button("Add Color"))
+		{
+			if(e.HasComponent<Text>()&&e.GetComponent<ColorAI>().spriteORtext ==1)
+				colorAIManager->AddColor(e, e.GetComponent<Text>().color);
+			else //sprite or both
+				colorAIManager->AddColor(e, e.GetComponent<Sprite>().color);
+		}
+		ImGui::PopStyleColor();
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.7f, 0.f, 0.f, 1.0f });
+		if (ImGui::Button("Remove ColorAI"))
+		{
+			e.RemoveComponent<ColorAI>();
+			LOG_INFO("ColorAI component removed");
 		}
 		ImGui::PopStyleColor();
 

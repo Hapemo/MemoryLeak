@@ -9,6 +9,7 @@ Base script for passenger control, movement and everything related to passenger
 *******************************************************************************/
 using System;
 using System.Runtime.CompilerServices;
+using VI;
 
 namespace BonVoyage {
     public class PassengerBaseScript : BaseScript {
@@ -24,6 +25,7 @@ namespace BonVoyage {
         protected bool correctDestinationDelivery;
 
         protected bool ReadyToAttach;
+        protected bool fadingOut;
         protected bool AttachToPlayerAnimation;
         protected bool AttachedToPlayer;
         protected bool DetachFromPlayerAnimation;
@@ -32,20 +34,13 @@ namespace BonVoyage {
         protected float InitialScaleX;
         protected int InitialLayerVal;
 
+    protected enum FADE {
+      IN,
+      OUT
+    }
         public virtual void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            correctDestinationDelivery = false;
-
-            ReadyToAttach = false;
-            AttachToPlayerAnimation = false;
-            AttachedToPlayer = false;
-            DetachFromPlayerAnimation = false;
-            DestinationReached = false;
-
-            // Store original scale x value
-            InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            InitialLayerVal = VI.Sprite.GetLayer(_ENTITY);
         }
 
         public virtual void Init(int _ENTITY) {
@@ -54,6 +49,7 @@ namespace BonVoyage {
             correctDestinationDelivery = false;
 
             ReadyToAttach = false;
+            fadingOut = false;
             AttachToPlayerAnimation = false;
             AttachedToPlayer = false;
             DetachFromPlayerAnimation = false;
@@ -90,6 +86,7 @@ namespace BonVoyage {
             correctDestinationDelivery = false;
 
             ReadyToAttach = false;
+            fadingOut = false;
             AttachToPlayerAnimation = false;
             AttachedToPlayer = false;
             DetachFromPlayerAnimation = false;
@@ -225,5 +222,82 @@ namespace BonVoyage {
                 return true;
             }
         }
+
+    protected void SetAlpha(int _e, float _alpha) {
+      VI.Sprite.SetColor(_e,
+                         VI.Sprite.GetColor(_e, 0),
+                         VI.Sprite.GetColor(_e, 1),
+                         VI.Sprite.GetColor(_e, 2),
+                         (int)_alpha);
     }
+
+    // _e = entity, _speed = fading speed, _fadeIn = fade in if true, fade out if false
+    // return true if fading completed, otherwise false
+    protected bool Fading(int _e, float _speed, FADE _fadeStatus) {
+      float alpha = VI.Sprite.GetColor(_e, 3); // VI.LightSource.SpriteColor.GetA(); // Get color TODO
+      if (_fadeStatus == FADE.IN) {
+        if (alpha >= 255) return true;
+        alpha += (_speed * (float)VI.General.DeltaTime() < 1 ? 1 : _speed * (float)VI.General.DeltaTime());
+        SetAlpha(_e, alpha > 255 ? 255 : alpha);
+        if (alpha >= 255) return true;
+      } else {
+        if (alpha <= 0) return true;
+        alpha -= (_speed * (float)VI.General.DeltaTime() < 1 ? 1 : _speed * (float)VI.General.DeltaTime());
+        SetAlpha(_e, alpha <= 0 ? 0 : alpha);
+        if (alpha <= 0) return true;
+      }
+      return false;
+    }
+
+    protected void DefaultAttachToPlayer(int _e) {
+      // Animate attachment to player
+      // returns true once complete
+      if (fadingOut) { // Fading out
+        TransferParticleSystemPos(_e, _e);
+        VI.ParticleSystem.GenerateOnce(_e);
+        fadingOut = !Fading(_e, 100.0f, FADE.OUT);
+        if (!fadingOut) { // Just finished fading out
+          VI.Transform.Position.SetX(_e, VI.Transform.Position.GetX(playerBoat));
+          VI.Transform.Position.SetY(_e, VI.Transform.Position.GetY(playerBoat));
+        }
+      } else {
+        if (Fading(_e, 150.0f, FADE.IN)) { // Run the conditional when finished fading in
+          AttachedToPlayer = true;
+          AttachToPlayerAnimation = false;
+          PlayerScript.PlayerInOtherAnimation = false;
+          fadingOut = true;
+        } else {
+          TransferParticleSystemPos(_e, _e);
+          VI.ParticleSystem.GenerateOnce(_e);
+        }
+      }
+    }
+
+    protected void DefaultAttachToDestination(int _e) {
+      // Animate attachment to player
+      // returns true once complete
+      if (fadingOut) { // Fading out
+        TransferEntityPos(_e, playerBoat); // Because the boat will be moving when transfering
+        TransferParticleSystemPos(_e, _e);
+        VI.ParticleSystem.GenerateOnce(_e);
+        fadingOut = !Fading(_e, 100.0f, FADE.OUT);
+        if (!fadingOut) { // Just finished fading out
+          int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
+          VI.Transform.Position.SetX(_e, VI.Transform.Position.GetX(renderLocation));
+          VI.Transform.Position.SetY(_e, VI.Transform.Position.GetY(renderLocation));
+        }
+      } else {
+        if (Fading(_e, 150.0f, FADE.IN)) { // Run the conditional when finished fading in
+          DetachFromPlayerAnimation = false;
+          PlayerScript.PlayerInOtherAnimation = false;
+          DestinationReached = true;
+          fadingOut = true;
+        } else {
+          TransferParticleSystemPos(_e, _e);
+          VI.ParticleSystem.GenerateOnce(_e);
+        }
+      }
+    }
+
+  }
 }

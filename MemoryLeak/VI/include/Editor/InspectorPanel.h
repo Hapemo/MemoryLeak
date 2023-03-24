@@ -46,6 +46,7 @@ private:
 	void ShadowCasterEditor();
 	void ViewportEditor();
 	void MovementAIEditor();
+	void ColorAIEditor();
 	void ParticleSystemEditor();
 
 	void AddPrefabComponent();
@@ -66,10 +67,11 @@ private:
 	const char* shape[8]{ "SQUARE", "CIRCLE", "TEXTURE","DEBUG_POINT" , "DEBUG_LINE","DEBUG_SQUARE","DEBUG_CIRCLE", "DEBUG_ARROW" };
 	const char* colorChange[4]{ "None","Smoothy","Traffic Light","Water" };
 	const char* movement[5]{ "None","UP-Down","Left-Right", "Swing", "Circle" };
+	const char* spriteORtext[3]{ "Sprite","Text","Both" };
 	int addComponentID{};
-	const char* componentsList[23]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
+	const char* componentsList[24]{ "General","Lifespan","Transform", "Sprite" ,"Animation","SheetAnimation","Physics2D",
 				"RectCollider" , "CircleCollider" ,"Edge2DCollider" ,"Point2DCollider","Audio" ,"Text","AI", "Script", "Dialogue", "Button" ,"LayerCollider", 
-		"LightSource", "ShadowCaster","Viewport", "MovementAI", "ParticleSystem" };
+		"LightSource", "ShadowCaster","Viewport", "MovementAI", "ColorAI", "ParticleSystem" };
 	const char* type[2]{ "RECTANGULAR", "CIRCULAR" };
 
 	/*typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,

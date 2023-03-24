@@ -21,7 +21,7 @@ void MovementAIManager::Init()
 void MovementAIManager::Update()
 {
 	for (auto& e : mEntities) {
-		
+		if (!e.ShouldRun()) continue;
 		if (e.GetComponent<MovementAI>().run)
 		{
 			if (e.GetComponent<MovementAI>().targetTransforms.size() <= 1)
