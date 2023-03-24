@@ -21,7 +21,9 @@ void ColorAIManager::Init()
 void ColorAIManager::Update()
 {
 	for (auto& e : mEntities) {
-		
+		if (!e.ShouldRun())
+			continue;
+
 		if (e.GetComponent<ColorAI>().run)
 		{
 			if (e.GetComponent<ColorAI>().targetColors.size() <= 1)
