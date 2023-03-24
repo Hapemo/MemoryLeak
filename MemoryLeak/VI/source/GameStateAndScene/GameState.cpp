@@ -31,10 +31,11 @@ void GameState::Init() {
 
 				//}
 #ifdef _EDITOR
+		}
 			if (!editorManager->IsScenePaused())
 #endif
 				if (!scene.mIsPause) scene.Init();
-		}
+
 	}
 }
 
