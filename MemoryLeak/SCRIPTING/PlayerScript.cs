@@ -28,15 +28,15 @@ namespace BonVoyage {
 
         private bool SpeedCheatToggle = false;
 
-        static public float PlayerPosX;
-        static public float PlayerPosY;
+        static public float PlayerPosX = 0f;
+        static public float PlayerPosY = 0f;
         private float PlayerScaleX;
-        private float PlayerScaleY;
-        private float PlayerRotation;
+        private float PlayerScaleY = 0f;
+        private float PlayerRotation = 0f;
 
         private int PlayerCurrWeather = 0;
-        private float MovementXModifier;
-        private float MovementYModifier;
+        private float MovementXModifier = 0f;
+        private float MovementYModifier = 0f;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
