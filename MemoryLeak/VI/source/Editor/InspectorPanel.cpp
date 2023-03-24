@@ -1260,11 +1260,11 @@ void InspectorPanel::MovementAIEditor()
 	if (ImGui::CollapsingHeader("MovementAI"))
 	{
 		ImGui::Text((std::to_string(e.GetComponent<MovementAI>().step)).c_str());
-		ImGui::Checkbox("run", &e.GetComponent<MovementAI>().run);
-		ImGui::Checkbox("next", &e.GetComponent<MovementAI>().next);
-		ImGui::Checkbox("loop", &e.GetComponent<MovementAI>().loop);
-		ImGui::Checkbox("reverse", &e.GetComponent<MovementAI>().reverse);
-		ImGui::Checkbox("cycle", &e.GetComponent<MovementAI>().cycle);
+		ImGui::Checkbox("run_m", &e.GetComponent<MovementAI>().run);
+		ImGui::Checkbox("next_m", &e.GetComponent<MovementAI>().next);
+		ImGui::Checkbox("loop_m", &e.GetComponent<MovementAI>().loop);
+		ImGui::Checkbox("reverse_m", &e.GetComponent<MovementAI>().reverse);
+		ImGui::Checkbox("cycle_m", &e.GetComponent<MovementAI>().cycle);
 		ImGui::Checkbox("moveOnHover", &e.GetComponent<MovementAI>().moveOnHover);
 		ImGui::Checkbox("moveOnCollide", &e.GetComponent<MovementAI>().moveOnCollide);
 		ImGui::Separator();
@@ -1300,7 +1300,7 @@ void InspectorPanel::MovementAIEditor()
 		}
 		for (int i = 0; i < e.GetComponent<MovementAI>().targetTransforms.size(); i++)
 		{
-			ImGui::DragFloat(("Set Time" + std::to_string(i)).c_str(), &e.GetComponent<MovementAI>().time[i], 0.1f, 0.f, 60.f);
+			ImGui::DragFloat(("Set mTime" + std::to_string(i)).c_str(), &e.GetComponent<MovementAI>().time[i], 0.1f, 0.f, 60.f);
 
 			//scale
 			tmpVec2[0] = e.GetComponent<MovementAI>().targetTransforms[i].scale.x;
@@ -1356,11 +1356,11 @@ void InspectorPanel::ColorAIEditor()
 	if (ImGui::CollapsingHeader("ColorAI"))
 	{
 		ImGui::Text((std::to_string(e.GetComponent<ColorAI>().step)).c_str());
-		ImGui::Checkbox("run", &e.GetComponent<ColorAI>().run);
-		ImGui::Checkbox("next", &e.GetComponent<ColorAI>().next);
-		ImGui::Checkbox("loop", &e.GetComponent<ColorAI>().loop);
-		ImGui::Checkbox("reverse", &e.GetComponent<ColorAI>().reverse);
-		ImGui::Checkbox("cycle", &e.GetComponent<ColorAI>().cycle);
+		ImGui::Checkbox("run_c", &e.GetComponent<ColorAI>().run);
+		ImGui::Checkbox("next_c", &e.GetComponent<ColorAI>().next);
+		ImGui::Checkbox("loop_c", &e.GetComponent<ColorAI>().loop);
+		ImGui::Checkbox("reverse_c", &e.GetComponent<ColorAI>().reverse);
+		ImGui::Checkbox("cycle_c", &e.GetComponent<ColorAI>().cycle);
 		ImGui::Checkbox("changeOnHover", &e.GetComponent<ColorAI>().changeOnHover);
 		ImGui::Checkbox("changeOnCollide", &e.GetComponent<ColorAI>().changeOnCollide);
 		int spriteORtextID = e.GetComponent<ColorAI>().spriteORtext;
@@ -1371,14 +1371,14 @@ void InspectorPanel::ColorAIEditor()
 		
 		for (int i = 0; i < e.GetComponent<ColorAI>().targetColors.size(); i++)
 		{
-			ImGui::DragFloat(("Set Time" + std::to_string(i)).c_str(), &e.GetComponent<ColorAI>().time[i], 0.1f, 0.f, 60.f);
+			ImGui::DragFloat(("Set cTime" + std::to_string(i)).c_str(), &e.GetComponent<ColorAI>().time[i], 0.1f, 0.f, 60.f);
 
 			//color
 			tmpVec4[0] = e.GetComponent<ColorAI>().targetColors[i].r / 255.f;
 			tmpVec4[1] = e.GetComponent<ColorAI>().targetColors[i].g / 255.f;
 			tmpVec4[2] = e.GetComponent<ColorAI>().targetColors[i].b / 255.f;
 			tmpVec4[3] = e.GetComponent<ColorAI>().targetColors[i].a / 255.f;
-			ImGui::ColorEdit4(("Color" + std::to_string(i)).c_str(), tmpVec4);
+			ImGui::ColorEdit4(("AI Color" + std::to_string(i)).c_str(), tmpVec4);
 			e.GetComponent<ColorAI>().targetColors[i].r = (GLubyte)(tmpVec4[0] * 255);
 			e.GetComponent<ColorAI>().targetColors[i].g = (GLubyte)(tmpVec4[1] * 255);
 			e.GetComponent<ColorAI>().targetColors[i].b = (GLubyte)(tmpVec4[2] * 255);
