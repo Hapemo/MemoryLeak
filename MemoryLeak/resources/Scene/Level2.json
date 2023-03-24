@@ -667,18 +667,6 @@
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.0833333358168602
         },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": -90.0
-            },
-            "scaleOffset": {
-                "X": 0.9200000166893005,
-                "Y": 0.699999988079071
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
         "LayerCollider": {
             "centerOffset": {
                 "X": 0.0,
@@ -1124,18 +1112,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.0833333358168602
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": -5.0,
-                "Y": -80.0
-            },
-            "scaleOffset": {
-                "X": 0.949999988079071,
-                "Y": 0.6000000238418579
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "LayerCollider": {
             "centerOffset": {
@@ -31618,6 +31594,171 @@
             "sprite": 1,
             "texture": "",
             "layer": 71
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "big left building collider1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 613.0,
+                "Y": 417.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2095.0,
+                "Y": 213.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 70
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "big left building collider1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 613.0,
+                "Y": 417.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1539.0,
+                "Y": 407.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 70
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "big right building collider1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1195.0,
+                "Y": 695.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2499.0,
+                "Y": -544.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 70
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Big right building collider 2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 491.0,
+                "Y": 140.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1769.0,
+                "Y": -414.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 70
         },
         "CircleCollider": {
             "centerOffset": {
