@@ -426,6 +426,12 @@ namespace VI {
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool IsPaused(string _name);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetForceRender(string _name, bool _render = true);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static bool GetForceRender(string _name);
 	}
 	public class Camera
 	{

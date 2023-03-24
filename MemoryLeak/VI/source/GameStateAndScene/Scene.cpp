@@ -13,7 +13,7 @@ Added load and unload of scene using resourceManager
 Added adding and removing of entity
 *******************************************************************************/
 #include "Scene.h"
-#include "LogicSystem.h"
+//#include "LogicSystem.h"
 
 
 Scene::Scene() : mEntities(), mIsPause(false), mName(), /*mCamera(),*/ mLayer(), mOrder() {

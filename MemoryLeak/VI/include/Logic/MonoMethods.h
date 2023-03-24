@@ -113,6 +113,8 @@ public:
 		static void Pause(MonoString* _name);
 		static void Play(MonoString* _name);
 		static bool IsPaused(MonoString* _name);
+		static void SetForceRender(MonoString* _name, bool _render);
+		static bool GetForceRender(MonoString* _name);
 	};
 	struct iAnimation {
 		static void s_SetSpeed(MonoString* _entityName, MonoString* _sceneName, float _speed);

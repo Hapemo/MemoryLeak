@@ -500,6 +500,12 @@ void InternalCalls::iScene::Play(std::string const& _name) {
 bool InternalCalls::iScene::IsPaused(std::string const& _name) {
 	return GameStateManager::GetInstance()->SelectScene(_name).mIsPause;
 }
+void InternalCalls::iScene::SetForceRender(std::string const& _name, bool _render) {
+	GameStateManager::GetInstance()->SelectScene(_name).mForceRender = _render;
+}
+bool InternalCalls::iScene::GetForceRender(std::string const& _name) {
+	return GameStateManager::GetInstance()->SelectScene(_name).mForceRender;
+}
 
 /*!*****************************************************************************
 \brief

@@ -192,6 +192,12 @@ void MonoMethods::iScene::Play(MonoString* _name) {
 bool MonoMethods::iScene::IsPaused(MonoString* _name) {
 	return VI::iScene::IsPaused(MONO->ConvertFromMonoString(_name));
 }
+void MonoMethods::iScene::SetForceRender(MonoString* _name, bool _render) {
+	VI::iScene::SetForceRender(MONO->ConvertFromMonoString(_name), _render);
+}
+bool MonoMethods::iScene::GetForceRender(MonoString* _name) {
+	return VI::iScene::GetForceRender(MONO->ConvertFromMonoString(_name));
+}
 
 // Animation
 void MonoMethods::iAnimation::s_SetSpeed(MonoString* _entityName, MonoString* _sceneName, float _speed) {
@@ -587,6 +593,9 @@ void MonoMethods::RegisterCalls() {
 	// Scene
 	mono_add_internal_call("VI.Scene::Pause", &MM::iScene::Pause);
 	mono_add_internal_call("VI.Scene::Play", &MM::iScene::Play);
+	mono_add_internal_call("VI.Scene::IsPaused", &MM::iScene::IsPaused);
+	mono_add_internal_call("VI.Scene::SetForceRender", &MM::iScene::SetForceRender);
+	mono_add_internal_call("VI.Scene::GetForceRender", &MM::iScene::GetForceRender);
 
 	// Camera
 	mono_add_internal_call("VI.Camera/GetScale::X", &VI::iCamera::GetScaleX);

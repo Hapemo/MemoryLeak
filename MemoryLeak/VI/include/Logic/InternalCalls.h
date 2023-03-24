@@ -317,6 +317,8 @@ public:
 		static void Pause(std::string const& _name);
 		static void Play(std::string const& _name);
 		static bool IsPaused(std::string const& _name);
+		static void SetForceRender(std::string const& _name, bool _render = true);
+		static bool GetForceRender(std::string const& _name);
 	};
 
 	struct iCamera {
