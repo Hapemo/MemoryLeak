@@ -38,6 +38,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Text": {
@@ -62,6 +63,37 @@
         },
         "Button": {
             "interactable": true
+        },
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": true,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 1,
+            "changeOnHover": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 0,
+                        "g": 153,
+                        "b": 253,
+                        "a": 255
+                    }
+                }
+            ]
         }
     },
     {
@@ -103,6 +135,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Text": {
@@ -168,6 +201,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Text": {
@@ -263,6 +297,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -315,6 +350,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {

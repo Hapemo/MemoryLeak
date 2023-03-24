@@ -289,6 +289,24 @@ struct MovementAI {
 	bool moveOnHover = false;
 	bool renderFlag = false;
 };
+struct ColorAI
+{
+	bool run = false;
+	bool next = true;	//save
+	bool loop = false; //save
+	bool reverse = false;//save
+	bool cycle = false;//save
+	int step = 0;
+	int nextStep = 1; //save
+	int setStep = -1;
+	int state = 0;
+	float currtime;
+	float acceleration = 0.f;//save
+	std::vector<float> time; //save
+	std::vector<Color> targetColors; //save
+	bool changeOnHover = false;
+	int spriteORtext = 0;
+};
 /*!*****************************************************************************
 \brief
 	This struct contains the data for Audio component
@@ -441,14 +459,15 @@ enum class COMPONENTID
 	SHADOWCASTER,	//19
 	Viewport,		//20
 	MOVEMENTAI,      //21
-	PARTICLESYSTEM	//22
+	COLORAI,      //22
+	PARTICLESYSTEM	//23
 };
 typedef std::variant<General, Lifespan, Transform, Sprite, Animation, SheetAnimation,
 	Physics2D, RectCollider, CircleCollider, Edge2DCollider,
 	Point2DCollider, Audio, Text, AI, Script, 
 	Dialogue, Button, LayerCollider, 
 	LightSource, ShadowCaster, Viewport, 
-	MovementAI, ParticleSystem>  COMPONENT;
+	MovementAI, ColorAI, ParticleSystem>  COMPONENT;
 
 
 
