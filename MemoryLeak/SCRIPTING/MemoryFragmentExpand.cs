@@ -22,6 +22,7 @@ namespace BonVoyage {
         static int[] expandedRelics;
         int expanded;
         bool showing;
+        int toggleMap;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
@@ -71,6 +72,7 @@ namespace BonVoyage {
             expanded = VI.Entity.GetId("memoryfragmentscreen");
             showing = false;
             activatedChanged = false;
+            toggleMap = VI.Entity.GetId("toggleMap");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -100,15 +102,15 @@ namespace BonVoyage {
                         {
                             VI.Entity.Activate(tooltips[i]);
                             VI.Entity.Deactivate(tooltips[6]);
-                            VI.Transform.Position.SetX(tooltips[i],  VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 40);
-                            VI.Transform.Position.SetY(tooltips[i],  VI.Input.Mouse.WorldPosY() - 30);
+                            VI.Transform.Position.SetX(tooltips[i],  VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 60);
+                            VI.Transform.Position.SetY(tooltips[i],  VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(tooltips[i]) / 2);
                         }
                         else
                         {
                             VI.Entity.Deactivate(tooltips[i]);
                             VI.Entity.Activate(tooltips[6]);
-                            VI.Transform.Position.SetX(tooltips[6], VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 40);
-                            VI.Transform.Position.SetY(tooltips[6], VI.Input.Mouse.WorldPosY() - 30);
+                            VI.Transform.Position.SetX(tooltips[6], VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[6]) / 2 + 60);
+                            VI.Transform.Position.SetY(tooltips[6], VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(tooltips[6]) / 2);
                         }
 
                     }
@@ -125,6 +127,7 @@ namespace BonVoyage {
                     if (VI.Input.Button.Clicked(backs[i]) && activated[i])
                     {
                         VI.Scene.Play("GUI Scene Expanded");
+                        VI.Entity.Deactivate(toggleMap);
                         VI.Entity.Activate(expandedRelics[i]);
                         VI.Scene.Pause("GUI Scene");
                     }
@@ -188,5 +191,6 @@ namespace BonVoyage {
             activatedChanged = true;
             activated[fragmentId] = true;
         }
+
     }
 }

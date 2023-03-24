@@ -14,7 +14,8 @@ namespace BonVoyage {
     public class BackBtnGUI : BaseScript
     {
         static int[] expandedRelics;
-        
+        int toggleMap;
+
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
@@ -32,6 +33,8 @@ namespace BonVoyage {
                 VI.Entity.GetId("Relic5Expanded"),
                 VI.Entity.GetId("Relic6Expanded")
             };
+            toggleMap = VI.Entity.GetId("toggleMap");
+
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -42,7 +45,7 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            Init(_ENTITY);
+            //Init(_ENTITY);
 
             if (THIS.Input.Button.Released())
             {
@@ -50,6 +53,8 @@ namespace BonVoyage {
                     VI.Entity.Deactivate(relic);
                 VI.Scene.Pause("GUI Scene Expanded");
                 VI.Scene.Play("GUI Scene");
+                VI.Entity.Activate(toggleMap);
+
             }
         }
 
