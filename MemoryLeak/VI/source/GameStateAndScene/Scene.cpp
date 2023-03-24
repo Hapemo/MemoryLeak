@@ -35,8 +35,17 @@ Scene::~Scene() {
 }
 
 void Scene::Init() {
+	//LOG_INFO("Attempting to call Init() called for scene: " + mName + +" ==================");
 	//std::set<Entity> shouldRun{};
-	for (auto e : mEntities) if (e.GetComponent<General>().isActive) e.Activate(); // shouldRun.insert(e);
+	mInitBefore = true;
+	for (auto e : mEntities) {
+		//LOG_INFO("Attempting to call Init() called for ENTITY: " + std::to_string(e.id) + " with name: " + e.GetComponent<General>().name + " ==================");
+		if (e.GetComponent<General>().isActive) {
+			//LOG_INFO("Call Init() called for ENTITY: " + std::to_string(e.id) + " with name: " + e.GetComponent<General>().name + " ==================");
+			e.Activate(); // shouldRun.insert(e);
+		}
+	}
+	
 	
 	//logicSystem->Init(shouldRun);
 };
@@ -62,17 +71,8 @@ void Scene::Pause(bool _pause) {
 	for (auto& e : mEntities)
 		e.GetComponent<General>().isPaused = _pause;
 	mIsPause = _pause; 
-	/*Camera& cam = renderManager->GetGameCamera();*/
-	//if (mIsPause)
-	//{
-	//	mCamera = { { cam.GetCameraWidth(), cam.GetCameraHeight() }, mCamera.rotation, cam.GetPos() };
-	//	renderManager->GetGameCamera().Reset();
-	//}
-	//else
-	//{
-	//	renderManager->GetGameCamera().SetCameraWidth((int)mCamera.scale.x);
-	//	renderManager->GetGameCamera().SetPos(mCamera.translation);
-	//}
+	
+	if (!_pause) if (!mInitBefore) Init();
 }
 
 void Scene::Load(std::filesystem::path const& _path) {

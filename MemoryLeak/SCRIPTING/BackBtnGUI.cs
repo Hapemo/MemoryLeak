@@ -42,7 +42,7 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            Init(_ENTITY);
+            //Init(_ENTITY);
 
             if (THIS.Input.Button.Released())
             {
