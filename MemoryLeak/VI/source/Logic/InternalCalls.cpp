@@ -38,25 +38,26 @@ void InternalCalls::MissingComponent(std::string _entityName, std::string _compo
 	LOG_GAME("Entity " + _entityName + " does not have a " + _componentName + " component!");
 }
 
-std::map<std::string, int> InternalCalls::storageInt = {};
-
 /*!*****************************************************************************
 \brief
 Int storage.
 *******************************************************************************/
+std::map<std::string, int> InternalCalls::storageInt;
+
 void InternalCalls::StoreValue(std::string _key, int _value) {
 	std::string key = Util::LowerString(_key);
-	if (storageInt.find(key) == storageInt.end())
-		storageInt[key] = _value;
-	else {
+	if (storageInt.find(key) == storageInt.end()){
+		//storageInt[key] = _value;
+	} else {
 		std::string message = "Replacing value in storage: " + key + " = " + std::to_string(_value);
 		LOG_WARN(message);
+		//storageInt[key] = _value;
 	}
 }
 int InternalCalls::GetValue(std::string _key) {
 	std::string key = Util::LowerString(_key);
 	if (storageInt.find(key) == storageInt.end()) {
-		std::string message = "Key " + key + " not found.";
+		std::string message = "Key " + key + " not found in storage.";
 		LOG_GAME(message);
 		LOG_ERROR(message);
 		return -1;
@@ -70,8 +71,11 @@ int InternalCalls::GetValue(std::string _key) {
 \brief
 Logger function.
 *******************************************************************************/
-void InternalCalls::Logger(std::string _log) {
+void InternalCalls::LogGame(std::string _log) {
 	LOG_GAME(_log);
+}
+void InternalCalls::LogTest(std::string _log) {
+	LOG_TEST(_log);
 }
 
 /*!*****************************************************************************

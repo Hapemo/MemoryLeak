@@ -38,7 +38,8 @@ public:
 	\brief
 	Logger function.
 	*******************************************************************************/
-	static void Logger(MonoString* _log);
+	static void LogGame(MonoString* _log);
+	static void LogTest(MonoString* _log);
 
 	/*!*****************************************************************************
 	\brief

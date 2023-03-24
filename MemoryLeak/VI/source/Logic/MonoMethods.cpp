@@ -29,8 +29,11 @@ MonoString* MonoMethods::ConvertToMonoString(std::string _string) {
 \brief
 Logger function.
 *******************************************************************************/
-void MonoMethods::Logger(MonoString* _log) {
-	FUNC->Logger(MONO->ConvertFromMonoString(_log));
+void MonoMethods::LogGame(MonoString* _log) {
+	FUNC->LogGame(MONO->ConvertFromMonoString(_log));
+}
+void MonoMethods::LogTest(MonoString* _log) {
+	FUNC->LogTest(MONO->ConvertFromMonoString(_log));
 }
 
 /*!*****************************************************************************
@@ -495,7 +498,8 @@ void MonoMethods::RegisterCalls() {
 	//mono_add_internal_call("BonVoyage.THIS::IsActive", &MM::iEntity::IsActive);
 	
 	// Logger
-	mono_add_internal_call("LOG::WRITE", &MONO->Logger);
+	mono_add_internal_call("LOG::WRITE", &MONO->LogGame);
+	mono_add_internal_call("LOG::TEST", &MONO->LogTest);
 
 	// Store int
 	mono_add_internal_call("VI.Storage::Push", &FUNC->StoreValue);

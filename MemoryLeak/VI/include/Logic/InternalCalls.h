@@ -53,7 +53,8 @@ public:
 	\brief
 	Logger function.
 	*******************************************************************************/
-	void Logger(std::string _log);
+	void LogGame(std::string _log);
+	void LogTest(std::string _log);
 
 	/*!*****************************************************************************
 	\brief

@@ -17,6 +17,9 @@ using System.Runtime.CompilerServices;
 public class LOG {
 	[MethodImpl(MethodImplOptions.InternalCall)]
 	internal extern static void WRITE(string _log);
+
+	[MethodImpl(MethodImplOptions.InternalCall)]
+	internal extern static void TEST(string _log);
 }
 
 namespace BonVoyage {

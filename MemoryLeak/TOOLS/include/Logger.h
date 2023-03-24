@@ -23,6 +23,7 @@ also handles the assertion.
 #define LOG_ERROR(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_ERROR, __VA_ARGS__)
 #define LOG_CRASH(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_CRASH, __VA_ARGS__)
 #define LOG_GAME(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_GAME, __VA_ARGS__)
+#define LOG_TEST(...) Logger::GetInstance()->Log(std::source_location::current(), (size_t)Logger::E_LOGLEVEL::LOG_TEST, __VA_ARGS__)
 
 #define LOG_CUSTOM(_customLogLevel, ...) Logger::GetInstance()->CustomLog(std::source_location::current(), _customLogLevel, __VA_ARGS__)
 #define LOG_CREATE(_newType) Logger::GetInstance()->CreateNew(_newType)
@@ -45,7 +46,8 @@ public:
         LOG_ERROR = 3,
         LOG_ASSERT = 4,
         LOG_CRASH = 5,
-        LOG_GAME = 6
+        LOG_GAME = 6,
+        LOG_TEST = 7
     };
 
     enum class E_EXCEPTION {
@@ -122,15 +124,17 @@ public:
         mLoggerStr.push_back(std::make_pair((E_LOGLEVEL)_logType, ("[" + currentDate + " | " + currentTime + "]\t" + _logMessage).c_str()));
 
         // printing log into terminal
-#ifdef NDEBUG
-#else
+#ifndef NDEBUG
         std::cout << "[" << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME).c_str() << "]\t" << Logger::mLogTypesVec[_logType].title.c_str() << "\t" << _logMessage << "\n";
 #endif
-        // human readable log file
-        mLogFile << "[" << currentDate << " | " << currentTime << "] " << std::left << std::setw(10) << Logger::mLogTypesVec[_logType].title << _logMessage;
 
-        // full log file with file name and line number
-        mFullLogFile << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME) << " " << Logger::mLogTypesVec[_logType].title << " " << _logData.file_name() << ":" << _logData.line() << " " << _logMessage;
+        if ((E_LOGLEVEL)_logType != Logger::E_LOGLEVEL::LOG_GAME) {
+            // human readable log file
+            mLogFile << "[" << currentDate << " | " << currentTime << "] " << std::left << std::setw(10) << Logger::mLogTypesVec[_logType].title << _logMessage;
+
+            // full log file with file name and line number
+            mFullLogFile << Util::CurrentDateTime(Util::E_DTFORMAT::DATE_TIME) << " " << Logger::mLogTypesVec[_logType].title << " " << _logData.file_name() << ":" << _logData.line() << " " << _logMessage;
+        }
 
         // specific log file types
         if (_logType == (size_t)Logger::E_LOGLEVEL::LOG_ASSERT || _logType == (size_t)Logger::E_LOGLEVEL::LOG_CRASH)
@@ -141,8 +145,10 @@ public:
         if constexpr (sizeof...(_logMessages) > 0) {
             return Log(_logData, _logType, _logMessages...);
         } else {
-            mLogFile << "\n" << std::flush;
-            mFullLogFile << "\n" << std::flush;
+            if ((E_LOGLEVEL)_logType != Logger::E_LOGLEVEL::LOG_GAME) {
+                mLogFile << "\n" << std::flush;
+                mFullLogFile << "\n" << std::flush;
+            }
             mLogFilesVec[_logType] << "\n" << std::flush;
         }
     }
@@ -254,7 +260,7 @@ private:
     };
 
     const std::string mFilepath = "../logs/";
-    std::vector<std::string> mLogNames = { "INFO", "DEBUG", "WARN", "ERROR", "ASSERT", "CRASH", "GAME" };
+    std::vector<std::string> mLogNames = { "INFO", "DEBUG", "WARN", "ERROR", "ASSERT", "CRASH", "GAME", "TEST"};
 
     const std::string mLogFilename = "log.log";
     const std::string mFullLogFilename = "fulllog.log";
