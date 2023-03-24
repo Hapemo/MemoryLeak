@@ -18191,15 +18191,15 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1045.624267578125,
-                "Y": -152.46755981445313
+                "X": -1040.0,
+                "Y": -150.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 107,
-                "g": 107,
-                "b": 107,
+                "r": 108,
+                "g": 108,
+                "b": 108,
                 "a": 255
             },
             "sprite": 2,
@@ -18296,7 +18296,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -870.0,
-                "Y": -310.0
+                "Y": -300.0
             }
         },
         "Sprite": {
@@ -18331,6 +18331,89 @@
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
+        },
+        "MovementAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "moveOnCollide": true,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 217.5,
+                            "Y": 317.5
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -870.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.10000000149011612,
+                    "Transform": {
+                        "scale": {
+                            "X": 217.5,
+                            "Y": 317.5
+                        },
+                        "rotation": 0.0872664600610733,
+                        "translation": {
+                            "X": -870.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.10000000149011612,
+                    "Transform": {
+                        "scale": {
+                            "X": 217.5,
+                            "Y": 317.5
+                        },
+                        "rotation": -0.0872664600610733,
+                        "translation": {
+                            "X": -870.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.10000000149011612,
+                    "Transform": {
+                        "scale": {
+                            "X": 217.5,
+                            "Y": 317.5
+                        },
+                        "rotation": 0.0872664600610733,
+                        "translation": {
+                            "X": -870.0,
+                            "Y": -300.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.10000000149011612,
+                    "Transform": {
+                        "scale": {
+                            "X": 217.5,
+                            "Y": 317.5
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -870.0,
+                            "Y": -300.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -18399,8 +18482,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -830.1840209960938,
-                "Y": -500.15997314453125
+                "X": -830.0,
+                "Y": -500.0
             }
         },
         "Sprite": {
@@ -18451,8 +18534,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -748.20947265625,
-                "Y": -555.9903564453125
+                "X": -740.0,
+                "Y": -550.0
             }
         },
         "Sprite": {

@@ -112,6 +112,7 @@ void MovementAIManager::Update()
 					if (e.GetComponent<MovementAI>().nextStep >= e.GetComponent<MovementAI>().targetTransforms.size())
 					{
 						e.GetComponent<MovementAI>().run = false;
+						e.GetComponent<MovementAI>().nextStep = 1;
 						return;
 					}
 				}

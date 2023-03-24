@@ -167,6 +167,7 @@ void ColorAIManager::Update()
 					if (e.GetComponent<ColorAI>().nextStep >= e.GetComponent<ColorAI>().targetColors.size())
 					{
 						e.GetComponent<ColorAI>().run = false;
+						e.GetComponent<ColorAI>().nextStep = 1;
 						return;
 					}
 				}
