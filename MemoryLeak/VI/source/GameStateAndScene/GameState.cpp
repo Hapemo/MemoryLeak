@@ -13,10 +13,14 @@ time.
 
 void GameState::Init() {
 	for (auto& scene : mScenes) {
-#ifndef _EDITOR
-		//if (!editorManager->IsScenePaused())
+#ifdef _EDITOR
+		if (!editorManager->IsScenePaused())
 			for (auto e : scene.mEntities)
 				if (e.HasComponent<Script>()) logicSystem->Alive(e);
+#else
+		//if (!editorManager->IsScenePaused())
+		for (auto e : scene.mEntities)
+			if (e.HasComponent<Script>()) logicSystem->Alive(e);
 #endif
 		if (!scene.mIsPause) scene.Init();
 	}
