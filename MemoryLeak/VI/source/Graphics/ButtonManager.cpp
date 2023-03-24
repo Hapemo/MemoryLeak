@@ -48,11 +48,13 @@ void ButtonManager::Update()
 			if (!prev && e.GetComponent<Button>().isHover)
 			{
 				movementAIManager->SetNextStep(e, 1);
+				e.GetComponent<MovementAI>().state = 0;
 				e.GetComponent<MovementAI>().run = true;
 			}
 			else if (prev && !e.GetComponent<Button>().isHover)
 			{
 				movementAIManager->SetNextStep(e, 0);
+				e.GetComponent<MovementAI>().state = 0;
 				e.GetComponent<MovementAI>().run = true;
 			}
 		}
