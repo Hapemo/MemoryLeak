@@ -47,6 +47,7 @@ void Application::SystemInit() {
   audioManager->Init();
   //aiManager->weatherAIinit();
   movementAIManager->Init();
+  colorAIManager->Init();
   renderManager->Init(&window_width, &window_height);
   buttonManager->Init(&window_width, &window_height);
   //playerManager->Init(window_width, window_height);
@@ -85,6 +86,7 @@ void Application::SystemUpdate() {
   TRACK_PERFORMANCE("AI");
   aiManager->UpdateAI();
   movementAIManager->Update();
+  colorAIManager->Update();
   END_TRACK("AI");
 
   //Scripting
@@ -136,10 +138,7 @@ void Application::SystemUpdate() {
   sheetAnimator->Animate();
   END_TRACK("Animation");
 
-  //// Audio
-  //TRACK_PERFORMANCE("Audio");   //shifted to update in editor
-  //audioManager->UpdateSound();
-  //END_TRACK("Audio");
+
 }
 
 void Application::init() {
@@ -171,7 +170,8 @@ bool Application::FirstUpdate() {
 
   // Part 2
   FPSManager::CalcFPS(0);
-  return !Helper::GetWindowMinimized();
+  return true;// !Helper::GetWindowMinimized();
+
 }
 
 void Application::SecondUpdate() {
@@ -180,9 +180,13 @@ void Application::SecondUpdate() {
   // Close the window if the close flag is triggered
   if (glfwWindowShouldClose(Application::getWindow())) GameStateManager::mGSMState = GameStateManager::E_GSMSTATE::EXIT;
   /////audioManager->UpdateSound();
-  
+#ifdef _EDITOR
+  if(!Helper::GetWindowMinimized())
+    Input::UpdatePrevKeyStates();
+#else
+    Input::UpdatePrevKeyStates();
+#endif // _EDIOTR
   // Reset input
-  Input::UpdatePrevKeyStates();
   buttonManager->ResetAllButtons();
 
   // Part 2: swap buffers: front <-> back
@@ -206,32 +210,35 @@ void Application::MainUpdate() {
   // Application ending update
 
   while (GameStateManager::mGSMState != GameStateManager::E_GSMSTATE::EXIT) {
-      if (!FirstUpdate())
-      {
-        //audioManager->SetALLVolume(0.f);   //need pause all the audio... and resume properly
-        audioManager->PauseAllChannels();
-        continue;
-      }
-      else {
-          audioManager->ResumeAllChannels();
-      }
 
+
+    FirstUpdate();
+        
     TRACK_PERFORMANCE("MainLoop");
+
 #ifdef _EDITOR
     TRACK_PERFORMANCE("Editor");
     editorManager->Update();
     END_TRACK("Editor");
-
+#endif
+    if (Helper::GetWindowMinimized())
+    {
+        audioManager->PauseAllChannels();
+        continue;
+    }
+    else {
+        audioManager->ResumeAllChannels();
+    }
+#ifdef _EDITOR
     if (!editorManager->IsScenePaused()) {
       GameStateManager::GetInstance()->Update(); // Game logic
       SystemUpdate(); // Should be called after logic
     }
-
 #else
     GameStateManager::GetInstance()->Update(); // Game logic
     SystemUpdate();
-
 #endif
+
     TRACK_PERFORMANCE("Shadows");
     shadowManager->Update();
     END_TRACK("Shadows");

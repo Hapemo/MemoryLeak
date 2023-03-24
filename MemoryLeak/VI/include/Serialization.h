@@ -79,6 +79,8 @@ private:
 	static void addVectorArrayMember(Document& scene, Value& parent, const char* name, std::vector <T> data);
 	template<typename T>
 	static void addVectorsMember(Document& scene, Value& parent, const char* name, std::vector <T> data);
+	void addColor(Document& scene, Value& entity, Color color);
+	Color getColor(Value& entity);
 
 	//load components
 	General getGeneral(Value& entity);
@@ -103,6 +105,7 @@ private:
 	ShadowCaster getShadowCaster(Value& entity);
 	Viewport getViewport(Value& entity);
 	MovementAI getMovementAI(Value& entity);
+	ColorAI getColorAI(Value& entity);
 	ParticleSystem::ParticleInfo getParticleInfo(Value& entity);
 	ParticleSystem getParticleSystem(Value& entity);
 
@@ -129,6 +132,7 @@ private:
 	void addShadowCaster(Document& scene, Value& entity, ShadowCaster shadowCaster);
 	void addViewport(Document& scene, Value& entity, Viewport Viewport);
 	void addMovementAI(Document& scene, Value& entity, MovementAI movementAI);
+	void addColorAI(Document& scene, Value& entity, ColorAI colorAI);
 	void addParticleInfo(Document& scene, Value& entity, ParticleSystem::ParticleInfo particleInfo);
 	void addParticleSystem(Document& scene, Value& entity, ParticleSystem particleSystem);
 };
