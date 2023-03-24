@@ -2615,7 +2615,7 @@
             "name": "Passenger2",
             "tag": 1,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -2624,8 +2624,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 91.8949966430664,
-                "Y": 606.31298828125
+                "X": 180.0,
+                "Y": 900.0
             }
         },
         "Sprite": {
@@ -2637,7 +2637,7 @@
             },
             "sprite": 2,
             "texture": "",
-            "layer": 50
+            "layer": 710
         },
         "Animation": {
             "sheets": [
