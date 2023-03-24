@@ -55,9 +55,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 131,
+                "g": 131,
+                "b": 131,
                 "a": 255
             },
             "sprite": 2,
@@ -132,9 +132,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -191,9 +191,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -268,9 +268,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -345,9 +345,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 216,
+                "g": 216,
+                "b": 216,
                 "a": 255
             },
             "sprite": 2,
@@ -456,9 +456,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -652,9 +652,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 86,
-                "g": 86,
-                "b": 86,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -3475,82 +3475,82 @@
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_S_Hit_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SW_Hit_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_W_Hit_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NW_Hit_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_N_Hit_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_NE_Hit_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_E_Hit_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SE_Hit_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_S_Capsize_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_SW_Capsize_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_W_Capsize_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NW_Capsize_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_N_Capsize_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_NE_Capsize_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_E_Capsize_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Props_Boat_SE_Capsize_Spritesheet.png",
+                    "sheet": "",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 }
@@ -3629,20 +3629,20 @@
     },
     {
         "General": {
-            "name": "Middle tree collider 1",
+            "name": "Small collider 1",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 440.0,
-                "Y": 272.0
+                "X": 151.0,
+                "Y": 140.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 410.0,
-                "Y": -20.0
+                "X": -100.0,
+                "Y": 140.0
             }
         },
         "Sprite": {
@@ -3656,22 +3656,19 @@
             "texture": "",
             "layer": 70
         },
-        "RectCollider": {
+        "CircleCollider": {
             "centerOffset": {
                 "X": 0.0,
                 "Y": 0.0
             },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
+            "scaleOffset": 1.0,
             "isTrigger": false,
             "renderFlag": true
         }
     },
     {
         "General": {
-            "name": "NEW Entity 2",
+            "name": "Small collider 3",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -3683,8 +3680,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2.4119999408721924,
-                "Y": -25.842998504638672
+                "X": -120.0,
+                "Y": -270.0
             }
         },
         "Sprite": {
@@ -30774,9 +30771,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -31031,9 +31028,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 130,
+                "g": 130,
+                "b": 130,
                 "a": 255
             },
             "sprite": 2,
@@ -31392,6 +31389,243 @@
                     }
                 }
             ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Small collider 2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 151.0,
+                "Y": 140.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -50.0,
+                "Y": 320.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 70
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Small collider 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 151.0,
+                "Y": 140.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 360.0,
+                "Y": -270.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 70
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Small collider 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 227.0,
+                "Y": 140.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 810.0,
+                "Y": -160.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 70
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Mid collider 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 348.0,
+                "Y": 346.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1066.0,
+                "Y": -850.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 727
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Small collider 4",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 250.0,
+                "Y": 175.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1601.0,
+                "Y": -1285.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 71
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Small collider 3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 219.0,
+                "Y": 175.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2287.0,
+                "Y": -855.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 71
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
             "renderFlag": true
         }
     }
