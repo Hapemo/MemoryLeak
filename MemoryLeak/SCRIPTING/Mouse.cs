@@ -39,6 +39,16 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+        }
+
+        public void FixedUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+        }
+
+        public void LateUpdate(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             // To change hardcoded value to get application's width n height when functions are added to internal calls or the compution of mouse world position is corrected to be in the world
             ZoomScaleFactorX = VI.Camera.GetScale.X() / VI.Window.GetScreenWidth();
             ZoomScaleFactorY = VI.Camera.GetScale.Y() / VI.Window.GetScreenHeight();
@@ -65,7 +75,8 @@ namespace BonVoyage {
                     InAnimation = true;
                 }
             }
-            else if (VI.Input.Mouse.Release()) {
+            else if (VI.Input.Mouse.Release())
+            {
                 InAnimation = false;
             }
 
@@ -75,16 +86,6 @@ namespace BonVoyage {
                 VI.Animation.SpriteSheet.CurrentFrame.Set(_ENTITY, 0);
                 VI.Animation.SpriteSheet.FrameCount.Set(_ENTITY, 1);
             }
-        }
-
-        public void FixedUpdate(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
-        }
-
-        public void LateUpdate(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-        
         }
 
         public void Exit(int _ENTITY) {
