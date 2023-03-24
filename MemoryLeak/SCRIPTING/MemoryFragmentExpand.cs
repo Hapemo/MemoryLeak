@@ -23,6 +23,7 @@ namespace BonVoyage {
         int expanded;
         bool showing;
         int toggleMap;
+        int relic1BIG;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
@@ -73,6 +74,7 @@ namespace BonVoyage {
             showing = false;
             activatedChanged = false;
             toggleMap = VI.Entity.GetId("toggleMap");
+            relic1BIG = VI.Entity.GetId("Relic1BIG");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -82,9 +84,15 @@ namespace BonVoyage {
             if (THIS.Input.Button.Clicked())
                 showing = !showing;
 
+            if (VI.Input.Key.Press(32))
+            {
+                VI.Entity.Activate(relic1BIG);
+            }
+
             if (showing)
             {
                 ActivateFragMenu();
+                
             }
             else
             {
