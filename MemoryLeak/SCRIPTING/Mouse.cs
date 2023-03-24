@@ -18,21 +18,16 @@ namespace BonVoyage {
         private float ZoomScaleFactorX;
         private float ZoomScaleFactorY;
 
-        private int playerBoat;
-
         private bool InAnimation;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat");
-            InAnimation = false;
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat");
             InAnimation = false;
         }
 
@@ -55,8 +50,8 @@ namespace BonVoyage {
             {
                 if (!PlayerScript.PlayerInDialogue && !PlayerScript.PlayerInDeathAnimation && !PlayerScript.PlayerInOtherAnimation)
                 {
-                    float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - VI.Transform.Position.GetX(playerBoat);
-                    float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - VI.Transform.Position.GetY(playerBoat);
+                    float DirX = VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerScript.PlayerPosX;
+                    float DirY = VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerScript.PlayerPosY;
                     SetMouseMovingIcon(_ENTITY, GetRotation(DirX, DirY));
                 }
             }
@@ -70,8 +65,7 @@ namespace BonVoyage {
                     InAnimation = true;
                 }
             }
-            else if (VI.Input.Mouse.Release())
-            {
+            else if (VI.Input.Mouse.Release()) {
                 InAnimation = false;
             }
 
