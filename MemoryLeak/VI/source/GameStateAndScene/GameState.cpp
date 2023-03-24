@@ -24,16 +24,17 @@ void GameState::Init() {
 				//LOG_INFO("Attempting to call Alive() called for ENTITY: " + std::to_string(e.id) + " with name: " + e.GetComponent<General>().name + " ==================");
 				if (e.HasComponent<Script>()) logicSystem->Alive(e);
 			}
-		//}
-			//for (auto e : scene.mEntities) {
-
-			//	if (e.HasComponent<Script>()) logicSystem->Alive(e);
-
 			//}
+				//for (auto e : scene.mEntities) {
+
+				//	if (e.HasComponent<Script>()) logicSystem->Alive(e);
+
+				//}
 #ifdef _EDITOR
-		if (!editorManager->IsScenePaused())
+			if (!editorManager->IsScenePaused())
 #endif
-		if (!scene.mIsPause) scene.Init();
+				if (!scene.mIsPause) scene.Init();
+		}
 	}
 }
 
