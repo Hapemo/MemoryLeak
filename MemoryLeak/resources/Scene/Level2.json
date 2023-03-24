@@ -1,42 +1,6 @@
 [
     {
         "General": {
-            "name": "fog",
-            "tag": 6,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 3200.0,
-                "Y": 1800.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 4000.0,
-                "Y": 20.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 120
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\Weather\\fog_spritesheet.png",
-            "layer": 63
-        },
-        "SheetAnimation": {
-            "frameCount": 4,
-            "currFrameIndex": 2,
-            "timePerFrame": 1.0,
-            "timeToFrameSwap": 0.6833336353302002
-        }
-    },
-    {
-        "General": {
             "name": "Log",
             "tag": 5,
             "subtag": 0,
@@ -1618,7 +1582,7 @@
             "name": "Passenger_2",
             "tag": 1,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
