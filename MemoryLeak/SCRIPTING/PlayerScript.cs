@@ -16,17 +16,17 @@ namespace BonVoyage {
     {
         static private Random rand;
 
-        static public bool PlayerInDialogue;
-        static public bool PlayerInOtherAnimation;
-        static public bool PlayerInDeathAnimation;
-        static public float PlayerHealth;
-        static public bool CameraFollowPlayer;
-
         private const float MaxHealth = 12f;
         private const float PlayerSpeed = 10f;
         private const float SpeedCheatMultiplier = 2.5f;
 
-        private bool SpeedCheatToggle;
+        static public bool PlayerInDialogue = false;
+        static public bool PlayerInOtherAnimation = false;
+        static public bool PlayerInDeathAnimation = false;
+        static public float PlayerHealth = MaxHealth;
+        static public bool CameraFollowPlayer = true;
+
+        private bool SpeedCheatToggle = false;
 
         static public float PlayerPosX;
         static public float PlayerPosY;
@@ -34,7 +34,7 @@ namespace BonVoyage {
         private float PlayerScaleY;
         private float PlayerRotation;
 
-        private int PlayerCurrWeather;
+        private int PlayerCurrWeather = 0;
         private float MovementXModifier;
         private float MovementYModifier;
 
