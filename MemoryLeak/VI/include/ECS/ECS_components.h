@@ -287,6 +287,7 @@ struct MovementAI {
 	std::vector<float> time; //save
 	std::vector<Transform> targetTransforms; //save
 	bool moveOnHover = false;
+	bool moveOnCollide = false;
 	bool renderFlag = false;
 };
 struct ColorAI
@@ -305,6 +306,7 @@ struct ColorAI
 	std::vector<float> time; //save
 	std::vector<Color> targetColors; //save
 	bool changeOnHover = false;
+	bool changeOnCollide = false;
 	int spriteORtext = 0;
 };
 /*!*****************************************************************************

@@ -1266,6 +1266,7 @@ void InspectorPanel::MovementAIEditor()
 		ImGui::Checkbox("reverse", &e.GetComponent<MovementAI>().reverse);
 		ImGui::Checkbox("cycle", &e.GetComponent<MovementAI>().cycle);
 		ImGui::Checkbox("moveOnHover", &e.GetComponent<MovementAI>().moveOnHover);
+		ImGui::Checkbox("moveOnCollide", &e.GetComponent<MovementAI>().moveOnCollide);
 		ImGui::Separator();
 		static bool pp = false;
 		if (pp)
@@ -1361,6 +1362,7 @@ void InspectorPanel::ColorAIEditor()
 		ImGui::Checkbox("reverse", &e.GetComponent<ColorAI>().reverse);
 		ImGui::Checkbox("cycle", &e.GetComponent<ColorAI>().cycle);
 		ImGui::Checkbox("changeOnHover", &e.GetComponent<ColorAI>().changeOnHover);
+		ImGui::Checkbox("changeOnCollide", &e.GetComponent<ColorAI>().changeOnCollide);
 		int spriteORtextID = e.GetComponent<ColorAI>().spriteORtext;
 		ImGui::Combo("Select sprite OR text", &spriteORtextID, spriteORtext, IM_ARRAYSIZE(spriteORtext));
 		if((spriteORtextID == 0)||(e.HasComponent<Text>()))

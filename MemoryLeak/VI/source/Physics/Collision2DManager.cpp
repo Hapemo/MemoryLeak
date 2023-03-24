@@ -440,7 +440,7 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 			// Skip to next contact item
 			continue;
 		}
-
+		//////audio
 		if (item.obj[0].HasComponent<Audio>())
 			if (item.obj[0].GetComponent<Audio>().sound.toPlayOnCollision)
 				item.obj[0].GetComponent<Audio>().sound.toPlay = true;
@@ -449,6 +449,23 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 			if (item.obj[1].GetComponent<Audio>().sound.toPlayOnCollision)
 				item.obj[1].GetComponent<Audio>().sound.toPlay = true;
 
+		//////movementAI
+		if (item.obj[0].HasComponent<MovementAI>())
+			if (item.obj[0].GetComponent<MovementAI>().moveOnCollide)
+				item.obj[0].GetComponent<MovementAI>().run = true;
+
+		if (item.obj[1].HasComponent<MovementAI>())
+			if (item.obj[1].GetComponent<MovementAI>().moveOnCollide)
+				item.obj[1].GetComponent<MovementAI>().run = true;
+
+		//////colorAI
+		if (item.obj[0].HasComponent<ColorAI>())
+			if (item.obj[0].GetComponent<ColorAI>().changeOnCollide)
+				item.obj[0].GetComponent<ColorAI>().run = true;
+
+		if (item.obj[1].HasComponent<ColorAI>())
+			if (item.obj[1].GetComponent<ColorAI>().changeOnCollide)
+				item.obj[1].GetComponent<ColorAI>().run = true;
 
 		// Correct penetrated positions
 		PositionCorrection(item);

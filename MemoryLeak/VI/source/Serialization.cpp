@@ -723,6 +723,14 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 	{
 		movementAI.moveOnHover = entity["MovementAI"]["moveOnHover"].GetBool();
 	}
+	else
+		movementAI.moveOnHover = false;
+	if (entity["MovementAI"].HasMember("moveOnCollide"))//////remove this if line
+	{
+		movementAI.moveOnCollide = entity["MovementAI"]["moveOnCollide"].GetBool();
+	}
+	else
+		movementAI.moveOnCollide = false;
 	Value a(kObjectType);
 	if (entity["MovementAI"].HasMember("targets"))
 	{
@@ -750,6 +758,12 @@ ColorAI SerializationManager::getColorAI(Value& entity)
 	colorAI.acceleration = entity["ColorAI"]["acceleration"].GetFloat();
 	colorAI.spriteORtext = entity["ColorAI"]["spriteORtext"].GetInt();
 	colorAI.changeOnHover = entity["ColorAI"]["changeOnHover"].GetBool();
+	if (entity["ColorAI"].HasMember("changeOnCollide"))//////remove this if line
+	{
+		colorAI.changeOnCollide = entity["ColorAI"]["changeOnCollide"].GetBool();
+	}
+	else
+		colorAI.changeOnCollide = false;
 	Value a(kObjectType);
 	if (entity["ColorAI"].HasMember("targets"))
 	{
@@ -1398,6 +1412,7 @@ void SerializationManager::addMovementAI(Document& scene, Value& entity, Movemen
 	tmp.AddMember(StringRef("nextStep"), movementAI.nextStep, scene.GetAllocator());
 	tmp.AddMember(StringRef("acceleration"), movementAI.acceleration, scene.GetAllocator());
 	tmp.AddMember(StringRef("moveOnHover"), movementAI.moveOnHover, scene.GetAllocator());
+	tmp.AddMember(StringRef("moveOnCollide"), movementAI.moveOnCollide, scene.GetAllocator());
 	Value child(kObjectType);
 	child.SetArray();
 	for (int i = 0; i < movementAI.targetTransforms.size(); ++i)
@@ -1422,6 +1437,7 @@ void SerializationManager::addColorAI(Document& scene, Value& entity, ColorAI co
 	tmp.AddMember(StringRef("acceleration"), colorAI.acceleration, scene.GetAllocator());
 	tmp.AddMember(StringRef("spriteORtext"), colorAI.spriteORtext, scene.GetAllocator());
 	tmp.AddMember(StringRef("changeOnHover"), colorAI.changeOnHover, scene.GetAllocator());
+	tmp.AddMember(StringRef("changeOnCollide"), colorAI.changeOnCollide, scene.GetAllocator());
 	Value child(kObjectType);
 	child.SetArray();
 	for (int i = 0; i < colorAI.targetColors.size(); ++i)
