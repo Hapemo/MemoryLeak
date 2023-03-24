@@ -14,7 +14,7 @@ namespace BonVoyage {
     public class BackBtnGUI : BaseScript
     {
         static int[] expandedRelics;
-
+        
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             expandedRelics = new int[]
@@ -30,7 +30,15 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            
+            expandedRelics = new int[]
+            {
+                VI.Entity.GetId("Relic1Expanded"),
+                VI.Entity.GetId("Relic2Expanded"),
+                VI.Entity.GetId("Relic3Expanded"),
+                VI.Entity.GetId("Relic4Expanded"),
+                VI.Entity.GetId("Relic5Expanded"),
+                VI.Entity.GetId("Relic6Expanded")
+            };
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -40,7 +48,8 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            
+
+            Alive(_ENTITY);
             if (THIS.Input.Button.Released())
             {
                 foreach (int relic in expandedRelics)
