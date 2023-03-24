@@ -17,10 +17,6 @@ namespace BonVoyage {
         float bigX, bigY;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            firstX = THIS.Transform.Scale.GetX();
-            firstY = THIS.Transform.Scale.GetY();
-            bigX = firstX * 1.5f;
-            bigY = firstY * 1.5f;
 
         }
 

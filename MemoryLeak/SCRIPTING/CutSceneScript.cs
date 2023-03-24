@@ -29,6 +29,13 @@ namespace BonVoyage {
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY);
+
+        }
+
+        public void Init(int _ENTITY) {
+            targetRadius = (int)VI.LightSource.Radius.s_Get(light, scene);
+            VI.Audio.PlayBGM("CaveWithWaterDrops_Loop");
+
             currScn = 0;
             isAlphaDecreasing = false;
             entity = "e" + currScn;
@@ -38,11 +45,6 @@ namespace BonVoyage {
             soundPlayed = false;
             currRadius = 2000;
             skipping = false;
-        }
-
-        public void Init(int _ENTITY) {
-            targetRadius = (int)VI.LightSource.Radius.s_Get(light, scene);
-            VI.Audio.PlayBGM("CaveWithWaterDrops_Loop");
         }
 
         public void EarlyUpdate(int _ENTITY) { }

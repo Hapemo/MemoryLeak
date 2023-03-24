@@ -13,10 +13,9 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class BGMcontroller : BaseScript
     {
-        bool isIn;
+        bool isIn = false;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            isIn = false;
         }
 
         public void Init(int _ENTITY) {
@@ -62,6 +61,7 @@ namespace BonVoyage {
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            isIn = false;
         }
 
         public void Dead(int _ENTITY) {

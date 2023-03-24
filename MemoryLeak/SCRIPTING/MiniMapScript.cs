@@ -33,6 +33,11 @@ namespace BonVoyage {
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            
+        }
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             string currlevel = VI.GameState.GetName();
             string currlevelBG = currlevel + "Background";
             //if (currlevel == "Level1")
@@ -52,9 +57,7 @@ namespace BonVoyage {
             textbigScale = 1.0f;
             miniMapX = 1244;
             miniMapY = 700;
-        }
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             big = false;
             VI.Animation.Transform.SetNext(minimapID, 0);
             VI.Text.Offset.Set(minimapID, textOffsetX, textOffsetY);

@@ -24,6 +24,12 @@ namespace BonVoyage {
         bool showing;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            
+        }
+
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             relics = new int[]
             {
                 VI.Entity.GetId("Relic1"),
@@ -62,13 +68,9 @@ namespace BonVoyage {
                 VI.Entity.GetId("Relic5Expanded"),
                 VI.Entity.GetId("Relic6Expanded")
             };
-        expanded = VI.Entity.GetId("memoryfragmentscreen");
+            expanded = VI.Entity.GetId("memoryfragmentscreen");
             showing = false;
             activatedChanged = false;
-        }
-
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
 
         public void EarlyUpdate(int _ENTITY) {

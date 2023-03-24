@@ -35,6 +35,11 @@ namespace BonVoyage {
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+           
+        }
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             string currlevel = VI.GameState.GetName();
             string currlevelBG = currlevel + "Background";
             weathermapID = VI.Entity.GetId("weathermap", "WeatherMap");
@@ -49,9 +54,6 @@ namespace BonVoyage {
             maxMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", currlevelBG));
             maxMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", currlevelBG));
             VI.Weather.Init(maxMapX, maxMapY);
-        }
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             VI.Entity.SetActive(blurID, false);
             for (int i = 0; i < 25; i++)

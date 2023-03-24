@@ -38,6 +38,12 @@ namespace BonVoyage {
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+        }
+
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             currlevel = VI.GameState.GetName();
             currlevelBG = currlevel + "Background";
             //if (currlevel == "Level1")
@@ -50,16 +56,12 @@ namespace BonVoyage {
             VI.Audio.PlayBGM("01.Daytime_Forest_Field_Sun_Loop");
             VI.Audio.PlayBGM("Bon_Voyage_BGM");
 
-    }
-
-    public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             playerID = VI.Entity.GetId("Boat");
             rainID = VI.Entity.GetId("rain");
             puddleID = VI.Entity.GetId("rainpuddle");
             fogID = VI.Entity.GetId("fog");
             fog2ID = VI.Entity.GetId("fogSmall");
-      toggle = 0;
+            toggle = 0;
             prevTog = -1;
             VI.Entity.Activate(crystalBallID);
         }

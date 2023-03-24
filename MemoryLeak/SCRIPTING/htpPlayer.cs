@@ -35,6 +35,11 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+        }
+
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             // Initialize bool variables
             PlayerHealth = MaxHealth;
             PlayerInDialogue = false;
@@ -46,12 +51,6 @@ namespace BonVoyage {
             // Initialize position variables
             PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
             PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
-
-        }
-
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
         }
 
         public void EarlyUpdate(int _ENTITY) {

@@ -53,11 +53,12 @@ namespace BonVoyage {
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            VI.Audio.StopBGM();
+            init = false;
         }
 
         public void Dead(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            VI.Audio.StopBGM();
 
         }
     }

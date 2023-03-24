@@ -16,12 +16,10 @@ namespace BonVoyage {
     public class SwitchToLevel1 : BaseScript
     {
         private int playerBoat;
-        private bool ranOnceInit = true;
-
+        
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            playerBoat = VI.Entity.GetId("Boat");
         }
 
         public void Init(int _ENTITY) {
@@ -36,13 +34,6 @@ namespace BonVoyage {
         }
 
         public void Update(int _ENTITY) {
-            // Temporary implementation TODO change this
-            if (ranOnceInit) {
-                ranOnceInit = false;
-
-                playerBoat = VI.Entity.GetId("Boat");
-            }
-
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             if (VI.Physics.IsCollided(_ENTITY, playerBoat)) {

@@ -38,6 +38,11 @@ namespace BonVoyage {
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
+        }
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             string currlevel = VI.GameState.GetName();
             string currlevelBG = currlevel + "Background";
             enemymapID = VI.Entity.GetId("enemymap", "EnemyMap");
@@ -56,15 +61,15 @@ namespace BonVoyage {
             textbigOffsetY = 360;
             textScale = VI.Text.Scale.Get(enemymapID);
             textbigScale = 1.0f;
-        }
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             VI.Entity.SetActive(blurID, false);
 
             scaleMapX = MapX / 2;
             scaleMapY = MapY / 2;
             miniMapX = VI.Transform.Scale.GetX(enemymapID);
             miniMapY = VI.Transform.Scale.GetY(enemymapID);
+
+
         }
 
         public void FixedUpdate(int _ENTITY)

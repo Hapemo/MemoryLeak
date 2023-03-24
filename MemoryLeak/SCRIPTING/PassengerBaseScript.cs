@@ -41,18 +41,6 @@ namespace BonVoyage {
         public virtual void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            correctDestinationDelivery = false;
-
-            ReadyToAttach = false;
-            fadingOut = false;
-            AttachToPlayerAnimation = false;
-            AttachedToPlayer = false;
-            DetachFromPlayerAnimation = false;
-            DestinationReached = false;
-
-            // Store original scale x value
-            InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            InitialLayerVal = VI.Sprite.GetLayer(_ENTITY);
         }
 
         public virtual void Init(int _ENTITY) {

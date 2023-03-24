@@ -20,6 +20,7 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             currlevel = VI.GameState.GetName();
         }
 

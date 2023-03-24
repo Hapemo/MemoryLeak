@@ -41,6 +41,11 @@ namespace BonVoyage {
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+        }
+
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             rand = new Random();
 
             // Initialize bool variables
@@ -62,12 +67,6 @@ namespace BonVoyage {
             PlayerCurrWeather = 0;
             MovementXModifier = 0f;
             MovementYModifier = 0f;
-        }
-
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
-            Alive(_ENTITY);
         }
 
         public void EarlyUpdate(int _ENTITY) {

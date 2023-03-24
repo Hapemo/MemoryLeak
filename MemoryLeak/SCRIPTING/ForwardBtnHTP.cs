@@ -68,6 +68,12 @@ namespace BonVoyage {
         int e5;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            
+        }
+
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             BackBtnID = VI.Entity.GetId("BackBtnHTP", "How_To_Play");
             ForwardBtnID = VI.Entity.GetId("ForwardBtnHTP", "How_To_Play");
             ControlsID = VI.Entity.GetId("Controls", "How_To_Play");
@@ -82,13 +88,13 @@ namespace BonVoyage {
             c2 = VI.Entity.GetId("C2", "How_To_Play");
             c3 = VI.Entity.GetId("C3", "How_To_Play");
             c4 = VI.Entity.GetId("C4", "How_To_Play");
-            pm1= VI.Entity.GetId("PM1", "How_To_Play");
-            pm2= VI.Entity.GetId("PM2", "How_To_Play");
-            pm3= VI.Entity.GetId("PM3", "How_To_Play");
-            pm4= VI.Entity.GetId("PM4", "How_To_Play");
-            pm5= VI.Entity.GetId("PM5", "How_To_Play");
-            pm6= VI.Entity.GetId("PM6", "How_To_Play");
-            pm7= VI.Entity.GetId("PM7", "How_To_Play");
+            pm1 = VI.Entity.GetId("PM1", "How_To_Play");
+            pm2 = VI.Entity.GetId("PM2", "How_To_Play");
+            pm3 = VI.Entity.GetId("PM3", "How_To_Play");
+            pm4 = VI.Entity.GetId("PM4", "How_To_Play");
+            pm5 = VI.Entity.GetId("PM5", "How_To_Play");
+            pm6 = VI.Entity.GetId("PM6", "How_To_Play");
+            pm7 = VI.Entity.GetId("PM7", "How_To_Play");
             d1 = VI.Entity.GetId("D1", "How_To_Play");
             d2 = VI.Entity.GetId("D2", "How_To_Play");
             d3 = VI.Entity.GetId("D3", "How_To_Play");
@@ -97,9 +103,9 @@ namespace BonVoyage {
             d6 = VI.Entity.GetId("D6", "How_To_Play");
             d7 = VI.Entity.GetId("D7", "How_To_Play");
             d8 = VI.Entity.GetId("D8", "How_To_Play");
-            cb1= VI.Entity.GetId("CB1", "How_To_Play");
-            cb2= VI.Entity.GetId("CB2", "How_To_Play");
-            cb3= VI.Entity.GetId("CB3", "How_To_Play");
+            cb1 = VI.Entity.GetId("CB1", "How_To_Play");
+            cb2 = VI.Entity.GetId("CB2", "How_To_Play");
+            cb3 = VI.Entity.GetId("CB3", "How_To_Play");
             w1 = VI.Entity.GetId("W1", "How_To_Play");
             w2 = VI.Entity.GetId("W2", "How_To_Play");
             w3 = VI.Entity.GetId("W3", "How_To_Play");
@@ -122,11 +128,7 @@ namespace BonVoyage {
             //init = true;
             VI.Entity.SetActive(w9, false);
             VI.Entity.SetActive(w10, false);
-        }
 
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            Alive(_ENTITY);
             //init = false;
             VI.Animation.Transform.SetNext(c1, 0);
             VI.Animation.Transform.SetNext(c2, 0);

@@ -66,6 +66,12 @@ namespace BonVoyage {
         int e5;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            
+        }
+
+        public void Init(int _ENTITY) {
+            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+
             BackBtnID = VI.Entity.GetId("BackBtnHTP", "How_To_Play");
             ForwardBtnID = VI.Entity.GetId("ForwardBtnHTP", "How_To_Play");
             ControlsID = VI.Entity.GetId("Controls", "How_To_Play");
@@ -115,12 +121,8 @@ namespace BonVoyage {
             e3 = VI.Entity.GetId("E3", "How_To_Play");
             e4 = VI.Entity.GetId("E4", "How_To_Play");
             e5 = VI.Entity.GetId("E5", "How_To_Play");
-            //init = true;
-        }
+            //init = true
 
-        public void Init(int _ENTITY) {
-            THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            Alive(_ENTITY);
             //init = false;
             VI.Animation.Transform.SetNext(c1, 0);
             VI.Animation.Transform.SetNext(c2, 0);
