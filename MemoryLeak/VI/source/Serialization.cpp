@@ -1458,7 +1458,8 @@ void SerializationManager::LoadGameState(GameState& _gameState, std::filesystem:
 			sceneData.mIsUI = true;
 		}
 		sceneData.mIsPause = entity[index]["isActive"].GetBool();
-		sceneData.mForceRender = entity[index]["mForceRender"].GetBool();
+		if(entity[index].HasMember("mForceRender"))
+			sceneData.mForceRender = entity[index]["mForceRender"].GetBool();
 		sceneData.mLayer = entity[index]["layer"].GetInt();
 		sceneData.mOrder = entity[index]["order"].GetInt();
 
