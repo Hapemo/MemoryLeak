@@ -253,6 +253,63 @@ int MonoMethods::iAnimation::GetSheetIndex(const int _eId) {
 	return VI::iAnimation::iSpriteSheet::GetSheetIndex(_eId);
 }
 
+// ColorAI
+void MonoMethods::iColorAI::StartAnimation(const int _eId) {
+	VI::iColorAI::StartAnimation(_eId);
+}
+void MonoMethods::iColorAI::AddColor(const int _eId, int _r, int _g, int _b, int _a, float _time) {
+	VI::iColorAI::AddColor(_eId, _r, _g, _b, _a, _time);
+}
+void MonoMethods::iColorAI::AddColorAt(const int _eId, int _r, int _g, int _b, int _a, float _time, int _index) {
+	VI::iColorAI::AddColorAt(_eId, _r, _g, _b, _a, _time, _index);
+}
+void MonoMethods::iColorAI::RemoveColorAt(const int _eId, int _index) {
+	VI::iColorAI::RemoveColorAt(_eId, _index);
+}
+bool MonoMethods::iColorAI::SetNextStep(const int _eId, int _i) { // return ture if sucessful (withing 0 to the vector MAX)
+	return VI::iColorAI::SetNextStep(_eId, _i);
+}
+void MonoMethods::iColorAI::StopAfterThisAnimation(const int _eId, bool _next) {
+	VI::iColorAI::StopAfterThisAnimation(_eId, _next);
+}
+void MonoMethods::iColorAI::StopAfterEndofAnimationLoop(const int _eId, bool _loop) {
+	VI::iColorAI::StopAfterEndofAnimationLoop(_eId, _loop);
+}
+void MonoMethods::iColorAI::ReverseOrderAfterNextAnimation(const int _eId, bool _reverse) {
+	VI::iColorAI::ReverseOrderAfterNextAnimation(_eId, _reverse);
+}
+void MonoMethods::iColorAI::SetAnimationLoopToCycle(const int _eId, bool _cycle) {
+	VI::iColorAI::SetAnimationLoopToCycle(_eId, _cycle);
+}
+
+void MonoMethods::iColorAI::s_StartAnimation(MonoString* _entityName, MonoString* _sceneName) {
+	VI::iColorAI::StartAnimation(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
+void MonoMethods::iColorAI::s_AddColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a, float _time) {
+	VI::iColorAI::AddColor(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _r, _g, _b, _a, _time);
+}
+void MonoMethods::iColorAI::s_AddColorAt(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a, float _time, int _index) {
+	VI::iColorAI::AddColorAt(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _r, _g, _b, _a, _time, _index);
+}
+void MonoMethods::iColorAI::s_RemoveColorAt(MonoString* _entityName, MonoString* _sceneName, int _index) {
+	VI::iColorAI::RemoveColorAt(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _index);
+}
+bool MonoMethods::iColorAI::s_SetNextStep(MonoString* _entityName, MonoString* _sceneName, int _i) { // return ture if sucessful (withing 0 to the vector MAX)
+	return VI::iColorAI::SetNextStep(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _i);
+}
+void MonoMethods::iColorAI::s_StopAfterThisAnimation(MonoString* _entityName, MonoString* _sceneName, bool _next) {
+	VI::iColorAI::StopAfterThisAnimation(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _next);
+}
+void MonoMethods::iColorAI::s_StopAfterEndofAnimationLoop(MonoString* _entityName, MonoString* _sceneName, bool _loop) {
+	VI::iColorAI::StopAfterEndofAnimationLoop(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _loop);
+}
+void MonoMethods::iColorAI::s_ReverseOrderAfterNextAnimation(MonoString* _entityName, MonoString* _sceneName, bool _reverse) {
+	VI::iColorAI::ReverseOrderAfterNextAnimation(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _reverse);
+}
+void MonoMethods::iColorAI::s_SetAnimationLoopToCycle(MonoString* _entityName, MonoString* _sceneName, bool _cycle) {
+	VI::iColorAI::SetAnimationLoopToCycle(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName), _cycle);
+}
+
 // Particle system
 void MonoMethods::iParticleSystem::iParticleInfo::SetTexture(const int _eId, MonoString* _texture) {
 	VI::iParticleSystem::iParticleInfo::SetTexture(_eId, MONO->ConvertFromMonoString(_texture));
@@ -653,43 +710,65 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("VI.Animation/FrameCount::Set", &MM::iAnimation::SetFrameCount);
 	mono_add_internal_call("VI.Animation/FrameCount::Get", &MM::iAnimation::GetFrameCount);
 
-	mono_add_internal_call("VI.Animation/Transform::Run", &VI::iAnimation::iTransform::Start);
-	mono_add_internal_call("VI.Animation/Transform::SetNext", &VI::iAnimation::iTransform::SetNext);
-	mono_add_internal_call("VI.Animation/Transform::GoToNext", &VI::iAnimation::iTransform::GoToNext);
-	mono_add_internal_call("VI.Animation/Transform::Stop", &VI::iAnimation::iTransform::Stop);
-	mono_add_internal_call("VI.Animation/Transform::StopAfterEndLoop", &VI::iAnimation::iTransform::StopAfterEndLoop);
-	mono_add_internal_call("VI.Animation/Transform::ReverseOrder", &VI::iAnimation::iTransform::ReverseOrder);
-	mono_add_internal_call("VI.Animation/Transform::SetLoopCycle", &VI::iAnimation::iTransform::SetLoopCycle);
-	mono_add_internal_call("VI.Animation/Transform::GetCurrentIndex", &VI::iAnimation::iTransform::GetCurrentIndex);
-	mono_add_internal_call("VI.Animation/Transform::Remove", &VI::iAnimation::iTransform::Remove);
-	mono_add_internal_call("VI.Animation/Edit::Timing", &VI::iAnimation::iTransform::EditTiming);
-	mono_add_internal_call("VI.Animation/Edit::CurrentTiming", &VI::iAnimation::iTransform::EditCurrentTiming);
-	mono_add_internal_call("VI.Animation/Edit::Current", &VI::iAnimation::iTransform::EditCurrent);
-	mono_add_internal_call("VI.Animation/Edit::CurrentScaleX", &VI::iAnimation::iTransform::CurrentScaleX);
-	mono_add_internal_call("VI.Animation/Edit::CurrentScaleY", &VI::iAnimation::iTransform::CurrentScaleY);
-	mono_add_internal_call("VI.Animation/Edit::CurrentRotate", &VI::iAnimation::iTransform::CurrentRotate);
-	mono_add_internal_call("VI.Animation/Edit::CurrentPosX", &VI::iAnimation::iTransform::CurrentPosX);
-	mono_add_internal_call("VI.Animation/Edit::CurrentPosY", &VI::iAnimation::iTransform::CurrentPosY);
-	mono_add_internal_call("VI.Animation/Get::Timing", &VI::iAnimation::iTransform::GetTiming);
-	mono_add_internal_call("VI.Animation/Get::CurrentTiming", &VI::iAnimation::iTransform::GetCurrentTiming);
-	mono_add_internal_call("VI.Animation/Get::CurrentScaleX", &VI::iAnimation::iTransform::GetCurrentScaleX);
-	mono_add_internal_call("VI.Animation/Get::CurrentScaleY", &VI::iAnimation::iTransform::GetCurrentScaleY);
-	mono_add_internal_call("VI.Animation/Get::CurrentRotate", &VI::iAnimation::iTransform::GetCurrentRotate);
-	mono_add_internal_call("VI.Animation/Get::CurrentPosX", &VI::iAnimation::iTransform::GetCurrentPosX);
-	mono_add_internal_call("VI.Animation/Get::CurrentPosY", &VI::iAnimation::iTransform::GetCurrentPosY);
-	mono_add_internal_call("VI.Animation/Add::Transform", &VI::iAnimation::iTransform::AddTransform);
-	mono_add_internal_call("VI.Animation/Add::TransformAt", &VI::iAnimation::iTransform::AddTransformAt);
-	mono_add_internal_call("VI.Animation/Add::TransformScaleAt", &VI::iAnimation::iTransform::TransformScaleAt);
-	mono_add_internal_call("VI.Animation/Add::TransformRotateAt", &VI::iAnimation::iTransform::TransformRotateAt);
-	mono_add_internal_call("VI.Animation/Add::TransformPosAt", &VI::iAnimation::iTransform::TransformPosAt);
-	mono_add_internal_call("VI.Animation/Add::TransformDifference", &VI::iAnimation::iTransform::AddTransformDifference);
-	mono_add_internal_call("VI.Animation/SetCalculatedTime::FromPosition", &VI::iAnimation::iTransform::SetCalculatedTimeFromPosition);
-	mono_add_internal_call("VI.Animation/SetCalculatedTime::FromRotation", &VI::iAnimation::iTransform::SetCalculatedTimeFromRotation);
-	mono_add_internal_call("VI.Animation/SetCalculatedTime::FromScale", &VI::iAnimation::iTransform::SetCalculatedTimeFromScale);
-	mono_add_internal_call("VI.Animation/AddAtCurrent::Transform", &VI::iAnimation::iTransform::AddTransformAtCurrent);
-	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformScale", &VI::iAnimation::iTransform::TransformScaleAtCurrent);
-	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformRotate", &VI::iAnimation::iTransform::TransformRotateAtCurrent);
-	mono_add_internal_call("VI.Animation/AddAtCurrent::TransformPos", &VI::iAnimation::iTransform::TransformPosAtCurrent);
+	// MovementAI
+	mono_add_internal_call("VI.MovementAI::Run", &VI::iMovementAI::Start);
+	mono_add_internal_call("VI.MovementAI::SetNext", &VI::iMovementAI::SetNext);
+	mono_add_internal_call("VI.MovementAI::GoToNext", &VI::iMovementAI::GoToNext);
+	mono_add_internal_call("VI.MovementAI::Stop", &VI::iMovementAI::Stop);
+	mono_add_internal_call("VI.MovementAI::StopAfterEndLoop", &VI::iMovementAI::StopAfterEndLoop);
+	mono_add_internal_call("VI.MovementAI::ReverseOrder", &VI::iMovementAI::ReverseOrder);
+	mono_add_internal_call("VI.MovementAI::SetLoopCycle", &VI::iMovementAI::SetLoopCycle);
+	mono_add_internal_call("VI.MovementAI::GetCurrentIndex", &VI::iMovementAI::GetCurrentIndex);
+	mono_add_internal_call("VI.MovementAI::Remove", &VI::iMovementAI::Remove);
+	mono_add_internal_call("VI.MovementAI/Edit::Timing", &VI::iMovementAI::EditTiming);
+	mono_add_internal_call("VI.MovementAI/Edit::CurrentTiming", &VI::iMovementAI::EditCurrentTiming);
+	mono_add_internal_call("VI.MovementAI/Edit::Current", &VI::iMovementAI::EditCurrent);
+	mono_add_internal_call("VI.MovementAI/Edit::CurrentScaleX", &VI::iMovementAI::CurrentScaleX);
+	mono_add_internal_call("VI.MovementAI/Edit::CurrentScaleY", &VI::iMovementAI::CurrentScaleY);
+	mono_add_internal_call("VI.MovementAI/Edit::CurrentRotate", &VI::iMovementAI::CurrentRotate);
+	mono_add_internal_call("VI.MovementAI/Edit::CurrentPosX", &VI::iMovementAI::CurrentPosX);
+	mono_add_internal_call("VI.MovementAI/Edit::CurrentPosY", &VI::iMovementAI::CurrentPosY);
+	mono_add_internal_call("VI.MovementAI/Get::Timing", &VI::iMovementAI::GetTiming);
+	mono_add_internal_call("VI.MovementAI/Get::CurrentTiming", &VI::iMovementAI::GetCurrentTiming);
+	mono_add_internal_call("VI.MovementAI/Get::CurrentScaleX", &VI::iMovementAI::GetCurrentScaleX);
+	mono_add_internal_call("VI.MovementAI/Get::CurrentScaleY", &VI::iMovementAI::GetCurrentScaleY);
+	mono_add_internal_call("VI.MovementAI/Get::CurrentRotate", &VI::iMovementAI::GetCurrentRotate);
+	mono_add_internal_call("VI.MovementAI/Get::CurrentPosX", &VI::iMovementAI::GetCurrentPosX);
+	mono_add_internal_call("VI.MovementAI/Get::CurrentPosY", &VI::iMovementAI::GetCurrentPosY);
+	mono_add_internal_call("VI.MovementAI/Add::Transform", &VI::iMovementAI::AddTransform);
+	mono_add_internal_call("VI.MovementAI/Add::TransformAt", &VI::iMovementAI::AddTransformAt);
+	mono_add_internal_call("VI.MovementAI/Add::TransformScaleAt", &VI::iMovementAI::TransformScaleAt);
+	mono_add_internal_call("VI.MovementAI/Add::TransformRotateAt", &VI::iMovementAI::TransformRotateAt);
+	mono_add_internal_call("VI.MovementAI/Add::TransformPosAt", &VI::iMovementAI::TransformPosAt);
+	mono_add_internal_call("VI.MovementAI/Add::TransformDifference", &VI::iMovementAI::AddTransformDifference);
+	mono_add_internal_call("VI.MovementAI/SetCalculatedTime::FromPosition", &VI::iMovementAI::SetCalculatedTimeFromPosition);
+	mono_add_internal_call("VI.MovementAI/SetCalculatedTime::FromRotation", &VI::iMovementAI::SetCalculatedTimeFromRotation);
+	mono_add_internal_call("VI.MovementAI/SetCalculatedTime::FromScale", &VI::iMovementAI::SetCalculatedTimeFromScale);
+	mono_add_internal_call("VI.MovementAI/AddAtCurrent::Transform", &VI::iMovementAI::AddTransformAtCurrent);
+	mono_add_internal_call("VI.MovementAI/AddAtCurrent::TransformScale", &VI::iMovementAI::TransformScaleAtCurrent);
+	mono_add_internal_call("VI.MovementAI/AddAtCurrent::TransformRotate", &VI::iMovementAI::TransformRotateAtCurrent);
+	mono_add_internal_call("VI.MovementAI/AddAtCurrent::TransformPos", &VI::iMovementAI::TransformPosAtCurrent);
+
+	// ColorAI
+	mono_add_internal_call("VI.ColorAI::StartAnimation", &MM::iColorAI::StartAnimation);
+	mono_add_internal_call("VI.ColorAI::AddColor", &MM::iColorAI::AddColor);
+	mono_add_internal_call("VI.ColorAI::AddColorAt", &MM::iColorAI::AddColorAt);
+	mono_add_internal_call("VI.ColorAI::RemoveColorAt", &MM::iColorAI::RemoveColorAt);
+	mono_add_internal_call("VI.ColorAI::SetNextStep", &MM::iColorAI::SetNextStep);
+	mono_add_internal_call("VI.ColorAI/Stop::AfterThisAnimation", &MM::iColorAI::StopAfterThisAnimation);
+	mono_add_internal_call("VI.ColorAI/Stop::AfterEndofAnimationLoop", &MM::iColorAI::StopAfterEndofAnimationLoop);
+	mono_add_internal_call("VI.ColorAI::ReverseOrderAfterNextAnimation", &MM::iColorAI::ReverseOrderAfterNextAnimation);
+	mono_add_internal_call("VI.ColorAI::SetAnimationLoopToCycle", &MM::iColorAI::SetAnimationLoopToCycle);
+
+	mono_add_internal_call("VI.ColorAI::s_StartAnimation", &MM::iColorAI::s_StartAnimation);
+	mono_add_internal_call("VI.ColorAI::s_AddColor", &MM::iColorAI::s_AddColor);
+	mono_add_internal_call("VI.ColorAI::s_AddColorAt", &MM::iColorAI::s_AddColorAt);
+	mono_add_internal_call("VI.ColorAI::s_RemoveColorAt", &MM::iColorAI::s_RemoveColorAt);
+	mono_add_internal_call("VI.ColorAI::s_SetNextStep", &MM::iColorAI::s_SetNextStep);
+	mono_add_internal_call("VI.ColorAI/Stop::s_AfterThisAnimation", &MM::iColorAI::s_StopAfterThisAnimation);
+	mono_add_internal_call("VI.ColorAI/Stop::s_AfterEndofAnimationLoop", &MM::iColorAI::s_StopAfterEndofAnimationLoop);
+	mono_add_internal_call("VI.ColorAI::s_ReverseOrderAfterNextAnimation", &MM::iColorAI::s_ReverseOrderAfterNextAnimation);
+	mono_add_internal_call("VI.ColorAI::s_SetAnimationLoopToCycle", &MM::iColorAI::s_SetAnimationLoopToCycle);
 
 	// Particle System
 	mono_add_internal_call("VI.ParticleSystem::GetDensity", &VI::iParticleSystem::GetDensity);

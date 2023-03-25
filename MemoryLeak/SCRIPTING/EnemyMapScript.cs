@@ -85,42 +85,42 @@ namespace BonVoyage {
             {
                 big = true;
                 PlayerScript.PlayerInOtherAnimation = true;
-                VI.Animation.Transform.SetNext(enemymapID, 1);
+                VI.MovementAI.SetNext(enemymapID, 1);
                 VI.Text.Offset.Set(enemymapID, textbigOffsetX, textbigOffsetY);
                 VI.Text.Scale.Set(enemymapID, textbigScale);
-                VI.Animation.Transform.Run(enemymapID);
+                VI.MovementAI.Run(enemymapID);
                 VI.Sprite.SetType(enemymapID, 0);
                 scaleMapX = MapX;
                 scaleMapY = MapY;
-                VI.Animation.Transform.SetNext(miniplayerID, 1);
-                VI.Animation.Transform.Run(miniplayerID);
-                VI.Animation.Transform.SetNext(minienemyID, 1);
-                VI.Animation.Transform.Run(minienemyID);
-                VI.Animation.Transform.SetNext(radarID, 1);
-                VI.Animation.Transform.Run(radarID);
-                VI.Animation.Transform.SetNext(swiperID, 1);
-                VI.Animation.Transform.Run(swiperID);
+                VI.MovementAI.SetNext(miniplayerID, 1);
+                VI.MovementAI.Run(miniplayerID);
+                VI.MovementAI.SetNext(minienemyID, 1);
+                VI.MovementAI.Run(minienemyID);
+                VI.MovementAI.SetNext(radarID, 1);
+                VI.MovementAI.Run(radarID);
+                VI.MovementAI.SetNext(swiperID, 1);
+                VI.MovementAI.Run(swiperID);
                 VI.Entity.SetActive(blurID, true);
             }
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(enemymapID)))
             {
                 big = false;
                 PlayerScript.PlayerInOtherAnimation = false;
-                VI.Animation.Transform.SetNext(enemymapID, 0);
+                VI.MovementAI.SetNext(enemymapID, 0);
                 VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);
                 VI.Text.Scale.Set(enemymapID, textScale);
-                VI.Animation.Transform.Run(enemymapID);
+                VI.MovementAI.Run(enemymapID);
                 VI.Sprite.SetType(enemymapID, 1);
                 scaleMapX = MapX/2;
                 scaleMapY = MapY/2;
-                VI.Animation.Transform.SetNext(miniplayerID, 0);
-                VI.Animation.Transform.Run(miniplayerID);
-                VI.Animation.Transform.SetNext(minienemyID, 0);
-                VI.Animation.Transform.Run(minienemyID);
-                VI.Animation.Transform.SetNext(radarID, 0);
-                VI.Animation.Transform.Run(radarID);
-                VI.Animation.Transform.SetNext(swiperID, 0);
-                VI.Animation.Transform.Run(swiperID);
+                VI.MovementAI.SetNext(miniplayerID, 0);
+                VI.MovementAI.Run(miniplayerID);
+                VI.MovementAI.SetNext(minienemyID, 0);
+                VI.MovementAI.Run(minienemyID);
+                VI.MovementAI.SetNext(radarID, 0);
+                VI.MovementAI.Run(radarID);
+                VI.MovementAI.SetNext(swiperID, 0);
+                VI.MovementAI.Run(swiperID);
                 VI.Entity.SetActive(blurID, false);
             }
             float posx = VI.Transform.Position.GetX(enemyID) - VI.Transform.Position.GetX(boatID);
@@ -145,17 +145,17 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             big= false;
             PlayerScript.PlayerInOtherAnimation = false;
-            VI.Animation.Transform.SetNext(enemymapID, 0);
+            VI.MovementAI.SetNext(enemymapID, 0);
             VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);
             VI.Text.Scale.Set(enemymapID, textScale);
-            VI.Animation.Transform.Run(enemymapID);
+            VI.MovementAI.Run(enemymapID);
             VI.Sprite.SetType(enemymapID, 1);
             scaleMapX = MapX / 2;
             scaleMapY = MapY / 2;
-            VI.Animation.Transform.SetNext(miniplayerID, 0);
-            VI.Animation.Transform.Run(miniplayerID);
-            VI.Animation.Transform.SetNext(minienemyID, 0);
-            VI.Animation.Transform.Run(minienemyID);
+            VI.MovementAI.SetNext(miniplayerID, 0);
+            VI.MovementAI.Run(miniplayerID);
+            VI.MovementAI.SetNext(minienemyID, 0);
+            VI.MovementAI.Run(minienemyID);
             VI.Entity.SetActive(blurID, false);
         }
         public void Dead(int _ENTITY)

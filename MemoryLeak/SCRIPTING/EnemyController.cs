@@ -83,8 +83,8 @@ namespace BonVoyage {
                         VI.Audio.StopBGM();
                         OctopusState = EnemyState.IDLE;
                         UpdateTransform(OctopusState);
-                        float x_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.x);
-                        float y_ = GetDistance(THIS.Animation.Transform.Get.CurrentPosX(), THIS.Animation.Transform.Get.CurrentPosY(), Axis.y);
+                        float x_ = GetDistance(THIS.MovementAI.Get.CurrentPosX(), THIS.MovementAI.Get.CurrentPosY(), Axis.x);
+                        float y_ = GetDistance(THIS.MovementAI.Get.CurrentPosX(), THIS.MovementAI.Get.CurrentPosY(), Axis.y);
                         UpdateSpeed(GetSpeed(x_, y_));
                         if (ChasingIndex > 0) ChasingIndex = 0;
                     }
@@ -197,27 +197,27 @@ namespace BonVoyage {
 
         private void UpdateTransform(EnemyState _state) {
             if (ChasingIndex == 0) {
-                ChasingIndex = THIS.Animation.Transform.GetCurrentIndex();
-                THIS.Animation.Transform.AddAtCurrent.TransformPos(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY);
-                VI.Animation.Transform.AddAtCurrent.TransformPos(EnemyTriggerId, PlayerScript.PlayerPosX, PlayerScript.PlayerPosY);
+                ChasingIndex = THIS.MovementAI.GetCurrentIndex();
+                THIS.MovementAI.AddAtCurrent.TransformPos(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY);
+                VI.MovementAI.AddAtCurrent.TransformPos(EnemyTriggerId, PlayerScript.PlayerPosX, PlayerScript.PlayerPosY);
             } else {
                 if (_state != EnemyState.IDLE) { 
-                    THIS.Animation.Transform.Edit.CurrentPosX(PlayerScript.PlayerPosX);
-                    THIS.Animation.Transform.Edit.CurrentPosY(PlayerScript.PlayerPosY);
-                    VI.Animation.Transform.Edit.CurrentPosX(EnemyTriggerId, PlayerScript.PlayerPosX);
-                    VI.Animation.Transform.Edit.CurrentPosY(EnemyTriggerId, PlayerScript.PlayerPosY);
+                    THIS.MovementAI.Edit.CurrentPosX(PlayerScript.PlayerPosX);
+                    THIS.MovementAI.Edit.CurrentPosY(PlayerScript.PlayerPosY);
+                    VI.MovementAI.Edit.CurrentPosX(EnemyTriggerId, PlayerScript.PlayerPosX);
+                    VI.MovementAI.Edit.CurrentPosY(EnemyTriggerId, PlayerScript.PlayerPosY);
                 } else {
-                    THIS.Animation.Transform.Remove(ChasingIndex);
-                    VI.Animation.Transform.Remove(EnemyTriggerId, ChasingIndex);
+                    THIS.MovementAI.Remove(ChasingIndex);
+                    VI.MovementAI.Remove(EnemyTriggerId, ChasingIndex);
                 }
             }
         }
 
         private void UpdateSpeed(float _speed) {
-            THIS.Animation.Transform.Edit.Timing(_speed);
-            VI.Animation.Transform.Edit.Timing(EnemyTriggerId, _speed);
-            THIS.Animation.Transform.Edit.CurrentTiming(_speed);
-            VI.Animation.Transform.Edit.CurrentTiming(EnemyTriggerId, _speed);
+            THIS.MovementAI.Edit.Timing(_speed);
+            VI.MovementAI.Edit.Timing(EnemyTriggerId, _speed);
+            THIS.MovementAI.Edit.CurrentTiming(_speed);
+            VI.MovementAI.Edit.CurrentTiming(EnemyTriggerId, _speed);
         }
 
         private float GetDistance(float _x, float _y, Axis _axis) {

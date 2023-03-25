@@ -427,50 +427,86 @@ public:
 			static void SetFrameCount(std::string const& _entityName, std::string const& _sceneName, int _count);
 			static int GetFrameCount(std::string const& _entityName, std::string const& _sceneName);
 		};
+	};
 
-		struct iTransform {
-			/*!*****************************************************************************
-			\brief
-			Movement animation
-			*******************************************************************************/
-			static void Start(const int _eId);
-			static bool SetNext(const int _eId, int _i);
-			static void GoToNext(const int _eId);
-			static void Stop(const int _eId, bool _next = true);
-			static void StopAfterEndLoop(const int _eId, bool _loop = true);
-			static void ReverseOrder(const int _eId, bool _reverse = true);
-			static void SetLoopCycle(const int _eId, bool _cycle = true);
-			static int GetCurrentIndex(const int _eId);
-			static void Remove(const int _eId, int _index);
-			static void EditTiming(const int _eId, float _time);
-			static void EditCurrentTiming(const int _eId, float _time);
-			static void AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
-			static void EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
-			static void CurrentScaleX(const int _eId, float _scaleX);
-			static void CurrentScaleY(const int _eId, float _scaleY);
-			static void CurrentRotate(const int _eId, float _rot);
-			static void CurrentPosX(const int _eId, float _posX);
-			static void CurrentPosY(const int _eId, float _posY);
-			static float GetTiming(const int _eId);
-			static float GetCurrentTiming(const int _eId);
-			static float GetCurrentScaleX(const int _eId);
-			static float GetCurrentScaleY(const int _eId);
-			static float GetCurrentRotate(const int _eId);
-			static float GetCurrentPosX(const int _eId);
-			static float GetCurrentPosY(const int _eId);
-			static void AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1.f, int _index = 0);
-			static void TransformScaleAt(const int _eId, float _scaleX, float _scaleY, float _time = 1.f, int _index = 0);
-			static void TransformRotateAt(const int _eId, float _rot, float _time = 1.f, int _index = 0);
-			static void TransformPosAt(const int _eId, float _posX, float _posY, float _time = 1.f, int _index = 0);
-			static void AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
-			static void SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step = -1);
-			static void SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step = -1);
-			static void SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step = -1);
-			static void AddTransformAtCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1.f);
-			static void TransformScaleAtCurrent(const int _eId, float _scaleX, float _scaleY, float _time = 1.f);
-			static void TransformRotateAtCurrent(const int _eId, float _rot, float _time = 1.f);
-			static void TransformPosAtCurrent(const int _eId, float _posX, float _posY, float _time = 1.f);
-		};
+	struct iMovementAI {
+		/*!*****************************************************************************
+		\brief
+		Movement AI
+		*******************************************************************************/
+		static void Start(const int _eId);
+		static bool SetNext(const int _eId, int _i);
+		static void GoToNext(const int _eId);
+		static void Stop(const int _eId, bool _next = true);
+		static void StopAfterEndLoop(const int _eId, bool _loop = true);
+		static void ReverseOrder(const int _eId, bool _reverse = true);
+		static void SetLoopCycle(const int _eId, bool _cycle = true);
+		static int GetCurrentIndex(const int _eId);
+		static void Remove(const int _eId, int _index);
+		static void EditTiming(const int _eId, float _time);
+		static void EditCurrentTiming(const int _eId, float _time);
+		static void AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
+		static void EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
+		static void CurrentScaleX(const int _eId, float _scaleX);
+		static void CurrentScaleY(const int _eId, float _scaleY);
+		static void CurrentRotate(const int _eId, float _rot);
+		static void CurrentPosX(const int _eId, float _posX);
+		static void CurrentPosY(const int _eId, float _posY);
+		static float GetTiming(const int _eId);
+		static float GetCurrentTiming(const int _eId);
+		static float GetCurrentScaleX(const int _eId);
+		static float GetCurrentScaleY(const int _eId);
+		static float GetCurrentRotate(const int _eId);
+		static float GetCurrentPosX(const int _eId);
+		static float GetCurrentPosY(const int _eId);
+		static void AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1.f, int _index = 0);
+		static void TransformScaleAt(const int _eId, float _scaleX, float _scaleY, float _time = 1.f, int _index = 0);
+		static void TransformRotateAt(const int _eId, float _rot, float _time = 1.f, int _index = 0);
+		static void TransformPosAt(const int _eId, float _posX, float _posY, float _time = 1.f, int _index = 0);
+		static void AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1);
+		static void SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step = -1);
+		static void SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step = -1);
+		static void SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step = -1);
+		static void AddTransformAtCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time = 1.f);
+		static void TransformScaleAtCurrent(const int _eId, float _scaleX, float _scaleY, float _time = 1.f);
+		static void TransformRotateAtCurrent(const int _eId, float _rot, float _time = 1.f);
+		static void TransformPosAtCurrent(const int _eId, float _posX, float _posY, float _time = 1.f);
+	};
+
+	struct iColorAI {
+		/*!*****************************************************************************
+		\brief
+		Color AI
+		*******************************************************************************/
+		static void StartAnimation(const Entity& _e);
+		static void AddColor(const Entity& _e, int _r, int _g, int _b, int _a, float _time = 1.f);
+		static void AddColorAt(const Entity& _e, int _r, int _g, int _b, int _a, float _time = 1.f, int _index = 0);
+		static void RemoveColorAt(const Entity& _e, int _index);
+		static bool SetNextStep(const Entity& _e, int _i); // return ture if sucessful (withing 0 to the vector MAX)
+		static void StopAfterThisAnimation(const Entity& _e, bool _next = true);
+		static void StopAfterEndofAnimationLoop(const Entity& _e, bool _loop = true);
+		static void ReverseOrderAfterNextAnimation(const Entity& _e, bool _reverse = true);
+		static void SetAnimationLoopToCycle(const Entity& _e, bool _cycle = true);
+
+		static void StartAnimation(const int _eId);
+		static void AddColor(const int _eId, int _r, int _g, int _b, int _a, float _time = 1.f);
+		static void AddColorAt(const int _eId, int _r, int _g, int _b, int _a, float _time = 1.f, int _index = 0);
+		static void RemoveColorAt(const int _eId, int _index);
+		static bool SetNextStep(const int _eId, int _i); // return ture if sucessful (withing 0 to the vector MAX)
+		static void StopAfterThisAnimation(const int _eId, bool _next = true);
+		static void StopAfterEndofAnimationLoop(const int _eId, bool _loop = true);
+		static void ReverseOrderAfterNextAnimation(const int _eId, bool _reverse = true);
+		static void SetAnimationLoopToCycle(const int _eId, bool _cycle = true);
+
+		static void StartAnimation(std::string const& _entityName, std::string const& _sceneName);
+		static void AddColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a, float _time = 1.f);
+		static void AddColorAt(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a, float _time = 1.f, int _index = 0);
+		static void RemoveColorAt(std::string const& _entityName, std::string const& _sceneName, int _index);
+		static bool SetNextStep(std::string const& _entityName, std::string const& _sceneName, int _i); // return ture if sucessful (withing 0 to the vector MAX)
+		static void StopAfterThisAnimation(std::string const& _entityName, std::string const& _sceneName, bool _next = true);
+		static void StopAfterEndofAnimationLoop(std::string const& _entityName, std::string const& _sceneName, bool _loop = true);
+		static void ReverseOrderAfterNextAnimation(std::string const& _entityName, std::string const& _sceneName, bool _reverse = true);
+		static void SetAnimationLoopToCycle(std::string const& _entityName, std::string const& _sceneName, bool _cycle = true);
 	};
 
 	struct iParticleSystem {
