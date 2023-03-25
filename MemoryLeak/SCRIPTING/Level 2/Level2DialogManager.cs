@@ -111,8 +111,8 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus (Porthouse)");
-        if (!dialogEnded) EndDropoffDialog();
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus (Lighthouse)");
+        if (!dialogEnded) EndDropoffDialog(2, false);
         break;
       case 11: // Passenger 1 correct
         GeneralDialogStart(5);
@@ -124,7 +124,8 @@ namespace BonVoyage {
           VI.Entity.Activate(P2ColliderBox);
         }
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus (Water Fountain)");
-        if (!dialogEnded) EndDropoffDialog();
+                    MemoryFragmentExpand.ActivateFragment(2);
+        if (!dialogEnded) EndDropoffDialog(2, true);
         break;
       case 20: // Passenger 2 wrong
         GeneralDialogStart(1);
@@ -135,8 +136,8 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Island)");
-        if (!dialogEnded) EndDropoffDialog();
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Lighthouse)");
+        if (!dialogEnded) EndDropoffDialog(3, false);
         break;
       case 21: // Passenger 2 correct
         GeneralDialogStart(7);
@@ -147,8 +148,9 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Lighthouse)");
-        if (!dialogEnded) EndDropoffDialog();
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Island)");
+                    MemoryFragmentExpand.ActivateFragment(3);
+        if (!dialogEnded) EndDropoffDialog(3, true);
         break;
       }
 

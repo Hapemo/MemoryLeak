@@ -106,7 +106,7 @@ namespace BonVoyage {
         runPassengerEndDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC dropoff"); // Run the dialog
         if (!runPassengerEndDialog) {
           VI.Entity.Deactivate(PEndColliderBox);
-          EndDropoffDialog();
+                    EndDropoffDialog(-1, true) ;
         }
       }
 

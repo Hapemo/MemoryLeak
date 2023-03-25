@@ -113,7 +113,7 @@ namespace BonVoyage {
           VI.Entity.Activate(P2ColliderBox);
         }
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva (Lighthouse)");
-        if (!dialogEnded) EndDropoffDialog();
+        if (!dialogEnded) EndDropoffDialog(0, false);
         break;
       case 11: // Passenger 1 correct
         GeneralDialogStart(5);
@@ -126,7 +126,7 @@ namespace BonVoyage {
         }
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Minerva (Multistory House)");
         MemoryFragmentExpand.ActivateFragment(0);
-        if (!dialogEnded) EndDropoffDialog();
+        if (!dialogEnded) EndDropoffDialog(0, true);
         break;
       case 20: // Passenger 2 wrong
         GeneralDialogStart(1);
@@ -135,7 +135,7 @@ namespace BonVoyage {
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
         allPassengerDelivered = true;
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Water Fountain)");
-        if (!dialogEnded) EndDropoffDialog();
+        if (!dialogEnded) EndDropoffDialog(1, false);
         break;
       case 21: // Passenger 2 correct
         GeneralDialogStart(7);
@@ -144,7 +144,7 @@ namespace BonVoyage {
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
         dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Argus (Brown House)");
         MemoryFragmentExpand.ActivateFragment(1);
-        if (!dialogEnded) EndDropoffDialog();
+        if (!dialogEnded) EndDropoffDialog(1, true);
         break;
       }
 

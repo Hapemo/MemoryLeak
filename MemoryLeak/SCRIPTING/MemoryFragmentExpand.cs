@@ -23,7 +23,10 @@ namespace BonVoyage {
         int expanded;
         bool showing;
         int toggleMap;
-        int relic1BIG;
+        static int[] relicBIG;
+        static int[] relicBIGLOST;
+        static int relicFound;
+        static int relicNotFound;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
@@ -74,7 +77,26 @@ namespace BonVoyage {
             showing = false;
             activatedChanged = false;
             toggleMap = VI.Entity.GetId("toggleMap");
-            relic1BIG = VI.Entity.GetId("Relic1BIG");
+            relicBIG = new int[]
+            {
+                VI.Entity.GetId("Relic1BIG"),
+                VI.Entity.GetId("Relic2BIG"),
+                VI.Entity.GetId("Relic3BIG"),
+                VI.Entity.GetId("Relic4BIG"),
+                VI.Entity.GetId("Relic5BIG"),
+                VI.Entity.GetId("Relic6BIG")
+            };
+            relicBIGLOST = new int[]
+            {
+                VI.Entity.GetId("Relic1BIGLOST"),
+                VI.Entity.GetId("Relic2BIGLOST"),
+                VI.Entity.GetId("Relic3BIGLOST"),
+                VI.Entity.GetId("Relic4BIGLOST"),
+                VI.Entity.GetId("Relic5BIGLOST"),
+                VI.Entity.GetId("Relic6BIGLOST")
+            };
+            relicFound = VI.Entity.GetId("RelicFound");
+            relicNotFound = VI.Entity.GetId("RelicLost");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -83,11 +105,6 @@ namespace BonVoyage {
             //activate every frame
             if (THIS.Input.Button.Clicked())
                 showing = !showing;
-
-            if (VI.Input.Key.Press(32))
-            {
-                VI.Entity.Activate(relic1BIG);
-            }
 
             if (showing)
             {
@@ -196,9 +213,28 @@ namespace BonVoyage {
 
         public static void ActivateFragment(int fragmentId)
         {
+            if (fragmentId < 0) return;
+            if (fragmentId > 5) return;
             activatedChanged = true;
             activated[fragmentId] = true;
         }
 
+        public static void DeliveredPassenger(int fragmentId, bool correctly)
+        {
+            if (fragmentId < 0) return;
+            if (fragmentId > 5) return;
+            if (correctly)
+            {
+                VI.Entity.Activate(relicBIG[fragmentId]);
+
+                VI.Entity.Activate(relicFound);
+            }
+            else
+            {
+                VI.Entity.Activate(relicBIGLOST[fragmentId]);
+
+                VI.Entity.Activate(relicNotFound);
+            }
+        }
     }
 }

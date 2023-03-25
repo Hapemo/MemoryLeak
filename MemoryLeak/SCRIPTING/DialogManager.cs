@@ -394,11 +394,12 @@ namespace BonVoyage {
       PlayerScript.PlayerInDialogue = false;
     }
 
-    public void EndDropoffDialog() {
+    public void EndDropoffDialog(int fragmentId, bool correct) {
       GeneralEndDialog();
       VI.Text.Update(UIObjectiveTextID, "Continue Exploring...");
       passengerDialogProgress = 0;
       PassengerDeliverUI.DeliveredPassenger();
+            MemoryFragmentExpand.DeliveredPassenger(fragmentId, correct);
     }
 
     //public void EndGirlDialog() {
