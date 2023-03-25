@@ -89,7 +89,7 @@ namespace BonVoyage {
                              VI.Transform.Position.GetY(LittleGirlColliderBox)); // Move him to better location
         runLittleGirlDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue LittleGirl 1"); // Run the dialog
         if (!runLittleGirlDialog) {
-          VI.Text.Update(UIObjectiveTextID, "Objective:Continue finding the lost souls");
+          VI.Text.Update(UIObjectiveTextID, "Objective: Continue finding the lost souls");
           GeneralEndDialog();
         }
       }

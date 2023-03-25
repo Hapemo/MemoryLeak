@@ -31,6 +31,69 @@
     },
     {
         "General": {
+            "name": "rainpuddle",
+            "tag": 6,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 3200.0,
+                "Y": 1800.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 2
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 150.0,
+                "mFacing": 0.0,
+                "mLifespan": 0.5,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\puddle.png",
+                    "layer": 10
+                },
+                "mRotation": 0.0,
+                "mSpeed": 20.0,
+                "mFading": true,
+                "mFadeIn": false
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 2000.0,
+            "mDirection": 0.0,
+            "mSpread": 360.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.10000000149011612
+        }
+    },
+    {
+        "General": {
             "name": "Water2",
             "tag": 4,
             "subtag": 0,
@@ -146,42 +209,6 @@
                     }
                 }
             ]
-        }
-    },
-    {
-        "General": {
-            "name": "rain",
-            "tag": 6,
-            "subtag": 0,
-            "isActive": false
-        },
-        "Transform": {
-            "scale": {
-                "X": 3200.0,
-                "Y": 1800.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -335.3653564453125,
-                "Y": -872.6865844726563
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\Weather\\rainspritesheet.png",
-            "layer": 2
-        },
-        "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 5,
-            "timePerFrame": 0.20000000298023224,
-            "timeToFrameSwap": 0.0833333432674408
         }
     }
 ]
