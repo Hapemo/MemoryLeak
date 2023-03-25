@@ -191,7 +191,7 @@
             }
         },
         "isActive": false,
-        "mForceRender": null,
+        "mForceRender": false,
         "layer": 0,
         "order": 0
     }

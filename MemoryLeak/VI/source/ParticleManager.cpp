@@ -52,11 +52,6 @@ void Particle::Update() {
 
 	// Update rotation
 	mTransform.rotation += system.mParticleInfo.mRotation * static_cast<float>(FPSManager::dt);
-	//float radDT = system.mParticleInfo.mRotation * FPSManager::dt;
-	//float cos = cosf(radDT);
-	//float sin = sinf(radDT);
-	//mFacing = Vec2{ cos * mFacing.x - sin * mFacing.y,
-	//								sin * mFacing.x + cos * mFacing.y }.Normalize();
 
 	// Update Color/Alpha
 	if (system.mParticleInfo.mFading && system.mParticleInfo.mFadeIn) {
