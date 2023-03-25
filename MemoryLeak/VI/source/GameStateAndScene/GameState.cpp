@@ -16,25 +16,15 @@ void GameState::Init() {
 	for (auto& scene : mScenes) {
 		//LOG_INFO("Attempting to call Alive() called for scene: " + scene.mName + +" ==================");
 #ifdef _EDITOR
-		if (!editorManager->IsScenePaused()) {
+		if (!editorManager->IsScenePaused())
 #endif
-			//LOG_INFO("Scene is not paused, call Alive() called for scene: " + scene.mName + +" ==================");
-			//LOG_INFO("Scene has number of entities: " + std::to_string(scene.mEntities.size()) +  " ===================");
 			for (auto e : scene.mEntities) {
-				//LOG_INFO("Attempting to call Alive() called for ENTITY: " + std::to_string(e.id) + " with name: " + e.GetComponent<General>().name + " ==================");
 				if (e.HasComponent<Script>()) logicSystem->Alive(e);
 			}
-			//}
-				//for (auto e : scene.mEntities) {
-
-				//	if (e.HasComponent<Script>()) logicSystem->Alive(e);
-
-				//}
 #ifdef _EDITOR
-		}
-			if (!editorManager->IsScenePaused())
+		if (!editorManager->IsScenePaused())
 #endif
-				if (!scene.mIsPause) scene.Init();
+			if (!scene.mIsPause) scene.Init();
 
 	}
 }

@@ -25,16 +25,16 @@ namespace BonVoyage {
     public const string P1String                    = "Passenger_1";
     public const string P1BoxString                 = "Passenger1Box";
     public const string P1CorrectBoxString          = "FountainDropOffPoint";
-    public const string P1WrongBoxString            = "LighthouseBox";
+    public const string P1WrongBoxString            = "Porthouse5DropOffPoint";
     public const string P1CorrectRenderString       = "FountainDestRender";
-    public const string P1WrongRenderString         = "LighthouseDestRender";
+    public const string P1WrongRenderString         = "Porthouse5DestRender";
 
     public const string P2String                    = "Passenger_2";
     public const string P2BoxString                 = "Passenger2Box";
-    public const string P2CorrectBoxString          = "Porthouse5DropOffPoint";
-    public const string P2WrongBoxString            = "Porthouse6DropOffPoint";
-    public const string P2CorrectRenderString       = "Porthouse5DestRender";
-    public const string P2WrongRenderString         = "Porthouse6DropOffPoint";
+    public const string P2CorrectBoxString          = "LighthouseBox";
+    public const string P2WrongBoxString            = "Porthouse5DropOffPoint";
+    public const string P2CorrectRenderString       = "LighthouseDestRender";
+    public const string P2WrongRenderString         = "Porthouse7DestRender";
 
     //private bool progressUpdate = false;
     static public bool runIntroDialog;
@@ -111,7 +111,7 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus (Lighthouse)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus (Porthouse)");
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 11: // Passenger 1 correct
@@ -135,7 +135,7 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Lighthouse)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Island)");
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 21: // Passenger 2 correct
@@ -147,7 +147,7 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Island)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Lighthouse)");
         if (!dialogEnded) EndDropoffDialog();
         break;
       }
