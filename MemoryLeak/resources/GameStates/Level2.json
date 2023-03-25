@@ -194,5 +194,12 @@
         "mForceRender": false,
         "layer": 4,
         "order": 0
+    },
+    {
+        "SceneName": "GUI Scene Expanded",
+        "isActive": true,
+        "mForceRender": false,
+        "layer": 10,
+        "order": 0
     }
 ]
