@@ -50,6 +50,8 @@ public:
 	Color GetColor() const { return mColor; }
 	Transform GetTransform() const { return mTransform; }
 	EntityID GetEntityID() const { return mEntity; }
+	float GetLifespan() const { return mLifespan; }
+
 private:
 	Transform mTransform;		// Position, scale and rotation of the particle
 	Vec2 mVelocity;					// Direction of where particle is traveling
