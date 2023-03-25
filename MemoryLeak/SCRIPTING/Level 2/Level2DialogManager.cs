@@ -66,6 +66,7 @@ namespace BonVoyage {
 
       dialogInit = true;
 
+      VI.Text.Update(UIObjectiveTextID, "Objective:Find the Little Girl");
       VI.Entity.s_Deactivate(P2String);
       VI.Entity.Deactivate(P2ColliderBox);
     }
@@ -87,8 +88,10 @@ namespace BonVoyage {
         MovePlayer(playerID, VI.Transform.Position.GetX(LittleGirlColliderBox),
                              VI.Transform.Position.GetY(LittleGirlColliderBox)); // Move him to better location
         runLittleGirlDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue LittleGirl 1"); // Run the dialog
-        if (!runLittleGirlDialog)
+        if (!runLittleGirlDialog) {
+          VI.Text.Update(UIObjectiveTextID, "Objective:Continue finding the lost souls");
           GeneralEndDialog();
+        }
       }
 
       if (runPassengerDialog) {
