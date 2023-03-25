@@ -1,0 +1,16 @@
+[
+ {
+   "Dialogue ID": 1,
+   "Dialogue Text": "Let's try the island.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 2,
+   "Dialogue Text": "Let's try the lighthouse.",
+   "Speaker": 0,
+   "Next Dialogue": 0,
+   "Next Dialogue(2)": 0
+ }
+]
