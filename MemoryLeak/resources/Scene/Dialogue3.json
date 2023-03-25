@@ -1,0 +1,575 @@
+[
+    {
+        "General": {
+            "name": "I1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 426.0,
+                "Y": 106.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 420.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Where am I?",
+            "offset": {
+                "X": -138.0,
+                "Y": -17.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "I2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 596.0,
+                "Y": 106.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 420.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Maybe that girl knows...",
+            "offset": {
+                "X": -255.0,
+                "Y": -17.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "G1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 549.0,
+                "Y": 109.80000305175781
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 20.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\dialogue\\UI_DialogueBox1.png",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "At last we meet again!",
+            "offset": {
+                "X": -254.5,
+                "Y": 4.900001525878906
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -60.0
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "PP1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 564.5999755859375,
+                "Y": 61.79999923706055
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 400.0,
+                "Y": -234.10000610351563
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\dialogue\\UI_DialogueOption1.png",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Play...",
+            "offset": {
+                "X": -202.29998779296875,
+                "Y": -9.100000381469727
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 50.0
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "PP2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 564.5999755859375,
+                "Y": 61.79999923706055
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 400.0,
+                "Y": -325.8999938964844
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\dialogue\\UI_DialogueOption1.png",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Reminisce...",
+            "offset": {
+                "X": -202.29998779296875,
+                "Y": -9.100000381469727
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 50.0
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "P1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 549.0,
+                "Y": 109.80000305175781
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 450.0,
+                "Y": 5.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\dialogue\\UI_DialogueBox1.png",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "I'd like to play",
+            "offset": {
+                "X": -254.5,
+                "Y": 4.900001525878906
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "G11",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 740.0,
+                "Y": 215.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -255.0,
+                "Y": 133.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\text1.png",
+            "layer": 63
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "These are called sea conches, and are known to store important memories of the past. We will meet again...",
+            "offset": {
+                "X": -431.0,
+                "Y": 25.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "hpbar",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 410.0,
+                "Y": 90.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -300.0,
+                "Y": -390.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\healthbar-1.png",
+            "layer": 63
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Icons\\healthbar-1.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-2.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-3.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-4.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-5.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-6.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-7.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-8.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-9.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-10.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-11.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Icons\\healthbar-12.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                }
+            ],
+            "currentImageIndex": 0
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "HP",
+            "offset": {
+                "X": -272.0,
+                "Y": -20.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        }
+    },
+    {
+        "General": {
+            "name": "Dialog Manager",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 176.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -10000.0,
+                "Y": -10000.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 66
+        },
+        "Script": {
+            "name": "Level3DialogManager"
+        }
+    }
+]

@@ -34,5 +34,37 @@
         "mForceRender": false,
         "layer": 0,
         "order": 0
+    },
+    {
+        "SceneName": "WeatherScene",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": -154.19091796875,
+                "Y": 2276.108642578125
+            }
+        },
+        "isActive": true,
+        "mForceRender": false,
+        "layer": 0,
+        "order": 0
+    },
+    {
+        "SceneName": "Dialogue3",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 7,
+        "order": 0
+    },
+    {
+        "SceneName": "GUI Scene",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 4,
+        "order": 0
     }
 ]

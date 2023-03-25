@@ -136,7 +136,7 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Lighthouse)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Island)");
         if (!dialogEnded) EndDropoffDialog(3, false);
         break;
       case 21: // Passenger 2 correct
@@ -148,7 +148,7 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Island)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Lighthouse)");
                     MemoryFragmentExpand.ActivateFragment(3);
         if (!dialogEnded) EndDropoffDialog(3, true);
         break;
@@ -199,7 +199,7 @@ namespace BonVoyage {
       if (base.latestChoiceChosen == 1) VI.Entity.Activate(correctDestination_RenderLocation);
       else if (base.latestChoiceChosen == 2) VI.Entity.Activate(wrongDestination_RenderLocation);
 
-      UpdateObjective("Dialog Objective Passenger1 (Prometheus)");
+      UpdateObjective("Dialog Objective Passenger3 (Prometheus)");
     }
 
     public void EndPassenger2Dialog() {
@@ -214,7 +214,7 @@ namespace BonVoyage {
       if (base.latestChoiceChosen == 1) VI.Entity.Activate(correctDestination_RenderLocation);
       else if (base.latestChoiceChosen == 2) VI.Entity.Activate(wrongDestination_RenderLocation);
 
-      UpdateObjective("Dialog Objective Passenger2 (Eleos)");
+      UpdateObjective("Dialog Objective Passenger4 (Eleos)");
     }
 
     #endregion

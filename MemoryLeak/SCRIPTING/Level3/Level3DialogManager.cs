@@ -199,7 +199,7 @@ namespace BonVoyage {
       if (base.latestChoiceChosen == 1) VI.Entity.Activate(correctDestination_RenderLocation);
       else if (base.latestChoiceChosen == 2) VI.Entity.Activate(wrongDestination_RenderLocation);
 
-      UpdateObjective("Dialog Objective Passenger1 (Prometheus)");
+      UpdateObjective("Dialog Objective Passenger5 (Homer)");
     }
 
     public void EndPassenger2Dialog() {
@@ -214,7 +214,7 @@ namespace BonVoyage {
       if (base.latestChoiceChosen == 1) VI.Entity.Activate(correctDestination_RenderLocation);
       else if (base.latestChoiceChosen == 2) VI.Entity.Activate(wrongDestination_RenderLocation);
 
-      UpdateObjective("Dialog Objective Passenger2 (Eleos)");
+      UpdateObjective("Dialog Objective Passenger6 (Delphia)");
     }
 
     #endregion
