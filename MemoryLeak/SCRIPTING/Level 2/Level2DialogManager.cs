@@ -100,7 +100,7 @@ namespace BonVoyage {
       bool dialogEnded = false;
       switch (passengerDialogProgress) {
       case 10: // Passenger 1 wrong
-        GeneralDialogStart(7);
+        GeneralDialogStart(PlayerDirection.SW);
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
@@ -115,7 +115,7 @@ namespace BonVoyage {
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 11: // Passenger 1 correct
-        GeneralDialogStart(5);
+        GeneralDialogStart(PlayerDirection.SE);
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
@@ -127,7 +127,7 @@ namespace BonVoyage {
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 20: // Passenger 2 wrong
-        GeneralDialogStart(1);
+        GeneralDialogStart(PlayerDirection.E);
         MoveCameraLeftToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
@@ -139,7 +139,7 @@ namespace BonVoyage {
         if (!dialogEnded) EndDropoffDialog();
         break;
       case 21: // Passenger 2 correct
-        GeneralDialogStart(7);
+        GeneralDialogStart(PlayerDirection.SE);
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
