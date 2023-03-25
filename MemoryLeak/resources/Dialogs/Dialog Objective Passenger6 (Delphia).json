@@ -4,107 +4,13 @@
    "Dialogue Text": "Let's try the water fountain.",
    "Speaker": 0,
    "Next Dialogue": 0,
-   "Next Dialogue(2)": 0,
-   "FIELD6": "",
-   "FIELD7": ""
+   "Next Dialogue(2)": 0
  },
  {
    "Dialogue ID": 2,
    "Dialogue Text": "Let's try the ruins.",
    "Speaker": 0,
    "Next Dialogue": 0,
-   "Next Dialogue(2)": 0,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": ""
- },
- {
-   "Dialogue ID": null,
-   "Dialogue Text": "",
-   "Speaker": null,
-   "Next Dialogue": null,
-   "Next Dialogue(2)": null,
-   "FIELD6": "",
-   "FIELD7": " "
+   "Next Dialogue(2)": 0
  }
 ]
