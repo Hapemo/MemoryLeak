@@ -457,6 +457,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -572,6 +573,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -687,6 +689,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -802,6 +805,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -917,6 +921,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1032,6 +1037,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1147,6 +1153,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1262,6 +1269,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1377,6 +1385,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1492,6 +1501,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1607,6 +1617,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1722,6 +1733,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1837,6 +1849,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -1952,6 +1965,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2067,6 +2081,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2182,6 +2197,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2297,6 +2313,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2412,6 +2429,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2527,6 +2545,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2642,6 +2661,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2757,6 +2777,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2872,6 +2893,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -2987,6 +3009,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -3102,6 +3125,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -3217,6 +3241,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,
@@ -3323,6 +3348,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 0.30000001192092896,

@@ -54,6 +54,7 @@
             "nextStep": 2,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 1.0,
@@ -183,6 +184,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 1.0,
@@ -312,6 +314,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 1.0,

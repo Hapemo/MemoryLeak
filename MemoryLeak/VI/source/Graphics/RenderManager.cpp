@@ -907,17 +907,11 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 			{
 				//if (e.GetComponent<ParticleSystem>().mIsActive)
 				//{
-					bool thisEntity{ false };
 					for (auto i = particleManager->ParticleBegin(); i != particleManager->ParticleLast(); ++i)
 					{
-						if (!thisEntity)
-						{
-							if (i->GetEntityID() != e.id) continue;
-							thisEntity = true;
-						}
-						else
-							if (i->GetEntityID() != e.id)
-								break;
+						if (i->GetEntityID() != e.id) continue;
+						if (i->GetIsActive() == 0) continue;
+						if (i->GetLifespan() == e.GetComponent<ParticleSystem>().mParticleInfo.mLifespan) continue;
 						Sprite sprite = e.GetComponent<ParticleSystem>().mParticleInfo.mSprite;
 						sprite.color = i->GetColor();
 						if (find(mRenderLayers.begin(), mRenderLayers.end(), sprite.layer + scene.mLayer * MAX_LAYERS_PER_SCENE) == mRenderLayers.end())

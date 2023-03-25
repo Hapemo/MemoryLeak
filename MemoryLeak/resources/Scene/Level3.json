@@ -294,9 +294,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 165,
-                "g": 165,
-                "b": 165,
+                "r": 166,
+                "g": 166,
+                "b": 166,
                 "a": 255
             },
             "sprite": 2,
@@ -492,14 +492,25 @@
         },
         "RectCollider": {
             "centerOffset": {
+                "X": 29.600000381469727,
+                "Y": -93.69999694824219
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.5
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -23.700000762939453
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 1.0
+                "Y": 0.0
             },
-            "isTrigger": false,
             "renderFlag": true
         },
         "ShadowCaster": {
@@ -575,14 +586,25 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 0.0,
+                "X": 205.5,
                 "Y": 0.0
             },
             "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
+                "X": 0.5,
+                "Y": 0.5
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -7.199999809265137
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
             "renderFlag": true
         },
         "ShadowCaster": {
@@ -704,14 +726,25 @@
         },
         "RectCollider": {
             "centerOffset": {
+                "X": 66.0999984741211,
+                "Y": -130.39999389648438
+            },
+            "scaleOffset": {
+                "X": 0.699999988079071,
+                "Y": 0.5
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": -103.4000015258789
             },
             "scaleOffset": {
                 "X": 1.0,
-                "Y": 1.0
+                "Y": 0.0
             },
-            "isTrigger": false,
             "renderFlag": true
         },
         "ShadowCaster": {
@@ -803,6 +836,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -231.8000030517578
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
+            "renderFlag": true
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -853,6 +897,17 @@
                 "Y": 1.0
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 1.0,
+                "Y": 42.900001525878906
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
             "renderFlag": true
         },
         "ShadowCaster": {
@@ -1108,6 +1163,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
+            "toPlayOnCollision": false,
             "isSpacial": false
         },
         "Script": {
@@ -1141,7 +1197,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 732
+            "layer": 690
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1159,6 +1215,17 @@
                 "Y": 1.0
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
             "renderFlag": true
         },
         "ShadowCaster": {
@@ -1242,6 +1309,17 @@
                 "Y": 0.5
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -16.5
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
             "renderFlag": true
         },
         "ShadowCaster": {
@@ -1483,6 +1561,17 @@
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -51.099998474121094
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
             "renderFlag": true
         },
         "ShadowCaster": {
@@ -1978,6 +2067,295 @@
                 "X": 3330.0,
                 "Y": 3910.0
             }
+        }
+    },
+    {
+        "General": {
+            "name": "Passenger_1",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 83.0,
+                "Y": 158.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2490.0,
+                "Y": 1570.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_SE_idle_spritesheet.png",
+            "layer": 710
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "Textures\\Sprites\\ghost5_SE_idle.png",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_E_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_NE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_NW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_SE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_S_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_W_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                }
+            ],
+            "currentImageIndex": 4
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.7166669368743896
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 2.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": false
+        },
+        "Script": {
+            "name": "Level3Passenger1Script"
+        }
+    },
+    {
+        "General": {
+            "name": "Passenger_2",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": false
+        },
+        "Transform": {
+            "scale": {
+                "X": 75.0,
+                "Y": 151.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3274.0,
+                "Y": -3206.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\ghost 6\\Character_ghost6_SW_idle_spritesheet.png",
+            "layer": 710
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "",
+                    "frameCount": 1,
+                    "timePerFrame": 1.0
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 6\\Character_ghost6_E_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 6\\Character_ghost6_SE_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 6\\Character_ghost6_SW_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 6\\Character_ghost6_S_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "Textures\\Spritesheets\\NPC\\ghost 6\\Character_ghost6_W_idle_spritesheet.png",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                }
+            ],
+            "currentImageIndex": 5
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.05000000447034836
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 2.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "renderFlag": false
+        },
+        "Script": {
+            "name": "Level2Passenger2Script"
+        }
+    },
+    {
+        "General": {
+            "name": "Passenger1Box",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 86.47000122070313
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1161.5579833984375,
+                "Y": -772.369873046875
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2-tilt.png",
+            "layer": 1
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 0,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 150.0,
+                "Y": 86.47000122070313
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001.0,
+            "mIsActive": true,
+            "mSlow": 0.20000000298023224
         }
     },
     {
@@ -37208,9 +37586,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 128,
-                "g": 128,
-                "b": 128,
+                "r": 127,
+                "g": 127,
+                "b": 127,
                 "a": 255
             },
             "sprite": 2,
@@ -37416,9 +37794,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 82,
-                "g": 82,
-                "b": 82,
+                "r": 81,
+                "g": 81,
+                "b": 81,
                 "a": 255
             },
             "sprite": 2,
@@ -37634,9 +38012,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 194,
-                "g": 194,
-                "b": 194,
+                "r": 193,
+                "g": 193,
+                "b": 193,
                 "a": 255
             },
             "sprite": 2,
@@ -37944,9 +38322,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 107,
-                "g": 107,
-                "b": 107,
+                "r": 108,
+                "g": 108,
+                "b": 108,
                 "a": 255
             },
             "sprite": 2,
@@ -38190,7 +38568,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Ruin4_Spritesheet.png",
-            "layer": 730
+            "layer": 618
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -38208,6 +38586,17 @@
                 "Y": 0.6499999761581421
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": -0.30000001192092896,
+                "Y": -33.70000076293945
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.0
+            },
             "renderFlag": true
         },
         "ShadowCaster": {
@@ -40179,6 +40568,165 @@
                     }
                 }
             ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Porthouse circle collider",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 194.0,
+                "Y": 191.77699279785156
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2041.7049560546875,
+                "Y": 1653.85205078125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 742
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Island circle collider1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 230.0,
+                "Y": 230.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -721.219970703125,
+                "Y": 2426.885986328125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 742
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Island circle collider2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -337.2200012207031,
+                "Y": 2162.885986328125
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 742
+        },
+        "CircleCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": 1.0,
+            "isTrigger": false,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Ruin square collider",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 476.0,
+                "Y": 396.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3255.839111328125,
+                "Y": 2927.845947265625
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 742
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
             "renderFlag": true
         }
     }

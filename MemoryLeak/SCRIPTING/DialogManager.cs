@@ -366,7 +366,21 @@ namespace BonVoyage {
 
     #endregion
 
-    // The General function for stand still dialogs
+    // The General function for stand still dialogs. 1-SW, 2-W, 3-NW, 4-N, 5-NE, 7-SE
+    public enum PlayerDirection {
+      S=0,
+      SW,
+      W,
+      NW,
+      N,
+      NE,
+      E,
+      SE
+    }
+
+    public void GeneralDialogStart(PlayerDirection direction) {
+      GeneralDialogStart((int)direction);
+    }
     public void GeneralDialogStart(int direction) { // 1 to face left, 
       PlayerScript.CameraFollowPlayer = false;
       PlayerScript.PlayerInDialogue = true;
