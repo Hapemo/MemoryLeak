@@ -34189,8 +34189,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 400.0
+                "X": 405.0,
+                "Y": 405.0
             },
             "rotation": 0.0,
             "translation": {
@@ -40981,7 +40981,186 @@
     },
     {
         "General": {
-            "name": "P1CorrectDestRender",
+            "name": "LittleGirl",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -71.5,
+                "Y": 115.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3290.0,
+                "Y": 2170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\girl\\Character_Girl_SE_Idle_Spritesheet.png",
+            "layer": 701
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 5,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "Script": {
+            "name": "Level3LittleGirlScript"
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": 18.0,
+                        "Y": 40.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 17.66741943359375,
+                        "Y": -42.30902099609375
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -5.033447265625,
+                        "Y": -42.65087890625
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -12.83685302734375,
+                        "Y": 44.18670654296875
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 18.0,
+                        "Y": 40.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 250.0,
+                "Y": 250.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3270.0,
+                "Y": 2180.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region2_Lotus_spritesheet.png",
+            "layer": 700
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -5.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 55.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "LittleGirlBox",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 86.47000122070313
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3520.0,
+                "Y": 2130.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2-tilt.png",
+            "layer": 5
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "P1WrongDestRender",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -40993,7 +41172,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -570.0,
+                "X": -580.0,
                 "Y": 1940.0
             }
         },

@@ -43,14 +43,6 @@ namespace BonVoyage {
 
       wrongDestination_Box                = VI.Entity.GetId(Level3DialogManager.P1WrongBoxString);
       wrongDestination_RenderLocation     = VI.Entity.GetId(Level3DialogManager.P1WrongRenderString);
-
-      if (playerBoat == 0) LOG.WRITE("playerBoat=================");
-      if (triggerBox == 0) LOG.WRITE("triggerBox=================");
-      if (correctDestination_Box == 0) LOG.WRITE("correctDestination_Box=================");
-      if (correctDestination_RenderLocation == 0) LOG.WRITE("correctDestination_RenderLocation=================");
-      if (wrongDestination_Box == 0) LOG.WRITE("wrongDestination_Box=================");
-      if (wrongDestination_RenderLocation == 0) LOG.WRITE("wrongDestination_RenderLocation=================");
-
     }
 
     public override void EarlyUpdate(int _ENTITY) {

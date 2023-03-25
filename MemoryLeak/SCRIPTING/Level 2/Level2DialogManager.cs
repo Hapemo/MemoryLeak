@@ -22,6 +22,9 @@ using VI;
 
 namespace BonVoyage {
   public class Level2DialogManager : DialogManager {
+    public const string LittleGirlString            = "LittleGirl";
+    public const string LittleGirlBoxString         = "LittleGirlBox";
+
     public const string P1String                    = "Passenger_1";
     public const string P1BoxString                 = "Passenger1Box";
     public const string P1CorrectBoxString          = "FountainDropOffPoint";
@@ -37,8 +40,8 @@ namespace BonVoyage {
     public const string P2WrongRenderString         = "Porthouse5DestRender";
 
     //private bool progressUpdate = false;
-    static public bool runIntroDialog;
-    //static public bool runGirlDialog;
+    static public bool runLittleGirlDialog;
+    private int LittleGirlColliderBox;
 
     private int correctDestination_RenderLocation;
     private int wrongDestination_RenderLocation;
@@ -59,6 +62,7 @@ namespace BonVoyage {
 
       P1ColliderBox = VI.Entity.GetId(P1BoxString);
       P2ColliderBox = VI.Entity.GetId(P2BoxString);
+      LittleGirlColliderBox = VI.Entity.GetId(LittleGirlBoxString);
 
       dialogInit = true;
 
@@ -77,11 +81,21 @@ namespace BonVoyage {
         normalZoom = ChangeZoom(1600, 300);
 
       // Dialog control
+      if (runLittleGirlDialog) {
+        GeneralDialogStart(PlayerDirection.SW);
+        MoveCameraRightToDialog();
+        MovePlayer(playerID, VI.Transform.Position.GetX(LittleGirlColliderBox),
+                             VI.Transform.Position.GetY(LittleGirlColliderBox)); // Move him to better location
+        runLittleGirlDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue LittleGirl 1"); // Run the dialog
+        if (!runLittleGirlDialog)
+          GeneralEndDialog();
+      }
+
       if (runPassengerDialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), 
-                                                 VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
+                             VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
         runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
@@ -91,7 +105,7 @@ namespace BonVoyage {
         GeneralDialogStart(5);
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), 
-                                                 VI.Transform.Position.GetY(P2ColliderBox));
+                             VI.Transform.Position.GetY(P2ColliderBox));
         runPassenger2Dialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos");
         if (!runPassenger2Dialog)
           EndPassenger2Dialog();
@@ -168,7 +182,7 @@ namespace BonVoyage {
         base.Exit(_ENTITY);
 
       passengerDialogProgress = 0;
-      runIntroDialog = false;
+      runLittleGirlDialog = false;
       runPassengerDialog = false;
       runPassenger2Dialog = false;
     }

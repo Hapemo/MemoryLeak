@@ -1508,7 +1508,7 @@
             "name": "Passenger_1",
             "tag": 1,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1517,7 +1517,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1362.0,
+                "X": -1360.0,
                 "Y": 380.0
             }
         },
@@ -2008,7 +2008,7 @@
             "name": "Passenger1Box",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -3515,8 +3515,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2080.321533203125,
-                "Y": 1634.257080078125
+                "X": -2080.0,
+                "Y": 1630.0
             }
         },
         "Sprite": {
@@ -31906,8 +31906,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1357.0,
-                "Y": 317.0
+                "X": -1350.0,
+                "Y": 310.0
             }
         },
         "Sprite": {
@@ -32583,6 +32583,185 @@
             "mDuration": 99998.0234375,
             "mIsActive": true,
             "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 250.0,
+                "Y": 250.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2310.0,
+                "Y": 1130.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region2_Lotus_spritesheet.png",
+            "layer": 700
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -5.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 55.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "LittleGirl",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 71.5,
+                "Y": 115.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2240.0,
+                "Y": 1170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\girl\\Character_Girl_SE_Idle_Spritesheet.png",
+            "layer": 701
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 5,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "Script": {
+            "name": "Level2LittleGirlScript"
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": 18.0,
+                        "Y": 40.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 17.66741943359375,
+                        "Y": -42.30902099609375
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -5.033447265625,
+                        "Y": -42.65087890625
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -12.83685302734375,
+                        "Y": 44.18670654296875
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 18.0,
+                        "Y": 40.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "LittleGirlBox",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 86.47000122070313
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2050.0,
+                "Y": 1200.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2-tilt.png",
+            "layer": 5
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
         }
     }
 ]
