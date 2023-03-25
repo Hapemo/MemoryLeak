@@ -93,6 +93,9 @@
     <Compile Include="Level Tutorial\LevelTutorialDialogManager.cs" />
     <Compile Include="Level Tutorial\LevelTutorialPassengerScript.cs" />
     <Compile Include="Level Tutorial\LevelTutorialGirlScript.cs" />
+    <Compile Include="Level3\Level3DialogManager.cs" />
+    <Compile Include="Level3\Level3Passenger1Script.cs" />
+    <Compile Include="Level3\Level3Passenger2Script.cs" />
     <Compile Include="PassengerDeliverUI.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="ChoiceHover.cs" />

@@ -21,20 +21,20 @@ using VI;
 // Normal zoom is x = 1600
 
 namespace BonVoyage {
-  public class Level2DialogManager : DialogManager {
+  public class Level3DialogManager : DialogManager {
     public const string P1String                    = "Passenger_1";
     public const string P1BoxString                 = "Passenger1Box";
-    public const string P1CorrectBoxString          = "FountainDropOffPoint";
-    public const string P1WrongBoxString            = "Porthouse2DropOffPoint";
-    public const string P1CorrectRenderString       = "FountainDestRender";
-    public const string P1WrongRenderString         = "Porthouse2DestRender";
+    public const string P1CorrectBoxString          = "P1CorrectDropOffPoint";
+    public const string P1WrongBoxString            = "P1WrongDropOffPoint";
+    public const string P1CorrectRenderString       = "P1CorrectDestRender";
+    public const string P1WrongRenderString         = "P1WrongDestRender";
 
     public const string P2String                    = "Passenger_2";
     public const string P2BoxString                 = "Passenger2Box";
-    public const string P2CorrectBoxString          = "LighthouseBox";
-    public const string P2WrongBoxString            = "Porthouse5DropOffPoint";
-    public const string P2CorrectRenderString       = "LighthouseDestRender";
-    public const string P2WrongRenderString         = "Porthouse5DestRender";
+    public const string P2CorrectBoxString          = "P1CorrectDropOffPoint";
+    public const string P2WrongBoxString            = "P1WrongDropOffPoint";
+    public const string P2CorrectRenderString       = "P1CorrectDestRender";
+    public const string P2WrongRenderString         = "P1WrongDestRender";
 
     //private bool progressUpdate = false;
     static public bool runIntroDialog;
