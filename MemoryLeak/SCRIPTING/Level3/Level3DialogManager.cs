@@ -82,7 +82,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(P1ColliderBox), 
                                                  VI.Transform.Position.GetY(P1ColliderBox)); // Move him to better location
-        runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus"); // Run the dialog
+        runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Homer"); // Run the dialog
         if (!runPassengerDialog)
           EndPassengerDialog();
       }
@@ -92,7 +92,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(P2ColliderBox), 
                                                  VI.Transform.Position.GetY(P2ColliderBox));
-        runPassenger2Dialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos");
+        runPassenger2Dialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Delphia");
         if (!runPassenger2Dialog)
           EndPassenger2Dialog();
       }
@@ -111,7 +111,7 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus (Porthouse)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Homer (Island)");
         if (!dialogEnded) EndDropoffDialog(4, false);
         break;
       case 11: // Passenger 1 correct
@@ -123,7 +123,7 @@ namespace BonVoyage {
           VI.Entity.Activate(VI.Entity.GetId(P2String));
           VI.Entity.Activate(P2ColliderBox);
         }
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Prometheus (Water Fountain)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Homer (Porthouse)");
                     MemoryFragmentExpand.ActivateFragment(4);
         if (!dialogEnded) EndDropoffDialog(4, true);
         break;
@@ -136,7 +136,7 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Island)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Delphia (Water Fountain)");
         if (!dialogEnded) EndDropoffDialog(5, false);
         break;
       case 21: // Passenger 2 correct
@@ -148,7 +148,7 @@ namespace BonVoyage {
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
 
-        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Eleos (Lighthouse)");
+        dialogEnded = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog Delphia (Ruins)");
                     MemoryFragmentExpand.ActivateFragment(5);
         if (!dialogEnded) EndDropoffDialog(5, true);
         break;
