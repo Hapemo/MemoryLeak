@@ -9,12 +9,12 @@
         "Transform": {
             "scale": {
                 "X": 800.0,
-                "Y": 200.0
+                "Y": 87.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 600.0
+                "X": -1200.0,
+                "Y": 150.0
             }
         },
         "Sprite": {
@@ -25,7 +25,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button3.png",
+            "texture": "Textures\\Menu\\UI_DialogueOption1.png",
             "layer": 0
         },
         "Audio": {
@@ -45,7 +45,7 @@
             "fontFile": "BPtypewrite",
             "text": "Use the cycle button to toggle between your maps",
             "offset": {
-                "X": -260.0,
+                "X": -147.0,
                 "Y": 5.0
             },
             "scale": 0.6000000238418579,
@@ -56,7 +56,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 105.0
+            "width": 166.0
         },
         "MovementAI": {
             "run": true,
@@ -67,18 +67,19 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 1.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
@@ -87,12 +88,12 @@
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
@@ -101,41 +102,54 @@
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 350.0
+                            "X": -600.0,
+                            "Y": 150.0
                         }
+                    }
+                }
+            ]
+        },
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 2,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
                     }
                 },
                 {
                     "time": 4.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 400.0
-                        }
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
                     }
                 },
                 {
                     "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
-                        }
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
                     }
                 }
             ]
@@ -151,12 +165,12 @@
         "Transform": {
             "scale": {
                 "X": 800.0,
-                "Y": 200.0
+                "Y": 87.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 600.0
+                "X": -1200.0,
+                "Y": 150.0
             }
         },
         "Sprite": {
@@ -167,7 +181,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button3.png",
+            "texture": "Textures\\Menu\\UI_DialogueOption1.png",
             "layer": 1
         },
         "Audio": {
@@ -187,7 +201,7 @@
             "fontFile": "BPtypewrite",
             "text": "Clear Skies: Good weather! Clear visibility",
             "offset": {
-                "X": -260.0,
+                "X": -147.0,
                 "Y": 5.0
             },
             "scale": 0.6000000238418579,
@@ -198,7 +212,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 180.0
+            "width": 166.0
         },
         "MovementAI": {
             "run": true,
@@ -209,60 +223,33 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 1.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
                 {
-                    "time": 7.0,
+                    "time": 5.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 350.0
-                        }
-                    }
-                },
-                {
-                    "time": 4.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 400.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
@@ -271,13 +258,54 @@
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -600.0,
+                            "Y": 150.0
                         }
+                    }
+                }
+            ]
+        },
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 2,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
                     }
                 }
             ]
@@ -293,12 +321,12 @@
         "Transform": {
             "scale": {
                 "X": 800.0,
-                "Y": 200.0
+                "Y": 87.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 600.0
+                "X": -1200.0,
+                "Y": 150.0
             }
         },
         "Sprite": {
@@ -309,7 +337,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button3.png",
+            "texture": "Textures\\Menu\\UI_DialogueOption1.png",
             "layer": 2
         },
         "Audio": {
@@ -329,7 +357,7 @@
             "fontFile": "BPtypewrite",
             "text": "Rain: Careful! The sea monster appears more frequently",
             "offset": {
-                "X": -260.0,
+                "X": -147.0,
                 "Y": 5.0
             },
             "scale": 0.6000000238418579,
@@ -340,7 +368,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 105.0
+            "width": 166.0
         },
         "MovementAI": {
             "run": true,
@@ -351,60 +379,33 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 1.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
                 {
-                    "time": 13.0,
+                    "time": 9.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 350.0
-                        }
-                    }
-                },
-                {
-                    "time": 4.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 400.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
@@ -413,13 +414,54 @@
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -600.0,
+                            "Y": 150.0
                         }
+                    }
+                }
+            ]
+        },
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 2,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 12.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
                     }
                 }
             ]
@@ -435,12 +477,12 @@
         "Transform": {
             "scale": {
                 "X": 800.0,
-                "Y": 200.0
+                "Y": 87.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 600.0
+                "X": -1200.0,
+                "Y": 150.0
             }
         },
         "Sprite": {
@@ -451,7 +493,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button3.png",
+            "texture": "Textures\\Menu\\UI_DialogueOption1.png",
             "layer": 3
         },
         "Audio": {
@@ -471,7 +513,7 @@
             "fontFile": "BPtypewrite",
             "text": "Fog: A thick fog appears and obscures your visibility",
             "offset": {
-                "X": -260.0,
+                "X": -147.0,
                 "Y": 5.0
             },
             "scale": 0.6000000238418579,
@@ -482,7 +524,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 105.0
+            "width": 166.0
         },
         "MovementAI": {
             "run": true,
@@ -493,60 +535,33 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 1.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
                 {
-                    "time": 19.0,
+                    "time": 13.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 350.0
-                        }
-                    }
-                },
-                {
-                    "time": 4.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 400.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
@@ -555,13 +570,54 @@
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -600.0,
+                            "Y": 150.0
                         }
+                    }
+                }
+            ]
+        },
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 2,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 16.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
                     }
                 }
             ]
@@ -577,12 +633,12 @@
         "Transform": {
             "scale": {
                 "X": 800.0,
-                "Y": 200.0
+                "Y": 87.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 0.0,
-                "Y": 600.0
+                "X": -1200.0,
+                "Y": 150.0
             }
         },
         "Sprite": {
@@ -593,7 +649,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button3.png",
+            "texture": "Textures\\Menu\\UI_DialogueOption1.png",
             "layer": 4
         },
         "Audio": {
@@ -613,7 +669,7 @@
             "fontFile": "BPtypewrite",
             "text": "Wind: Strong winds alert! Your boat might move uncontrollably",
             "offset": {
-                "X": -260.0,
+                "X": -147.0,
                 "Y": 5.0
             },
             "scale": 0.6000000238418579,
@@ -624,7 +680,7 @@
                 "a": 255
             },
             "followCam": false,
-            "width": 105.0
+            "width": 166.0
         },
         "MovementAI": {
             "run": true,
@@ -635,60 +691,33 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 1.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
                 {
-                    "time": 25.0,
+                    "time": 17.0,
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
-                        }
-                    }
-                },
-                {
-                    "time": 1.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 350.0
-                        }
-                    }
-                },
-                {
-                    "time": 4.0,
-                    "Transform": {
-                        "scale": {
-                            "X": 800.0,
-                            "Y": 200.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 0.0,
-                            "Y": 400.0
+                            "X": -1200.0,
+                            "Y": 150.0
                         }
                     }
                 },
@@ -697,13 +726,54 @@
                     "Transform": {
                         "scale": {
                             "X": 800.0,
-                            "Y": 200.0
+                            "Y": 87.0
                         },
                         "rotation": 0.0,
                         "translation": {
-                            "X": 0.0,
-                            "Y": 600.0
+                            "X": -600.0,
+                            "Y": 150.0
                         }
+                    }
+                }
+            ]
+        },
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 2,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 20.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
                     }
                 }
             ]

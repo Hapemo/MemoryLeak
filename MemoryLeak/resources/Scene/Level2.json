@@ -1742,8 +1742,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 30
         },
         "SheetAnimation": {
@@ -1803,8 +1803,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 32
         },
         "SheetAnimation": {
@@ -1864,8 +1864,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 58
         },
         "SheetAnimation": {
@@ -1925,8 +1925,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 56
         },
         "SheetAnimation": {
