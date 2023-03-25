@@ -66,5 +66,12 @@
         "mForceRender": false,
         "layer": 4,
         "order": 0
+    },
+    {
+        "SceneName": "L3NameFade",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 15,
+        "order": 0
     }
 ]

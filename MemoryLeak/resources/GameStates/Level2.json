@@ -201,5 +201,12 @@
         "mForceRender": false,
         "layer": 10,
         "order": 0
+    },
+    {
+        "SceneName": "L2NameFade",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 15,
+        "order": 0
     }
 ]
