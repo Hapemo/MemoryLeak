@@ -73,6 +73,7 @@
             "nextStep": 4,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 2.0,
