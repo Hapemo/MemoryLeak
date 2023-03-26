@@ -13,7 +13,7 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class SwitchToLevel2 : BaseScript
+    public class SwitchToLevel3 : BaseScript
     {
         private int playerBoat;
 
@@ -35,7 +35,7 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             if (VI.Physics.IsCollided(_ENTITY, playerBoat) && PassengerDeliverUI.DelieveredAllPassengers()) {
-                TransitionSquare.FadeOut("Level2");
+                TransitionSquare.FadeOut("Level3");
                 //VI.GameState.Go("Level1");
             }
         }
