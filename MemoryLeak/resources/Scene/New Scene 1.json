@@ -1,0 +1,512 @@
+[
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 350.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -370.0,
+                "Y": -110.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 3
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 350.0,
+                "Y": 500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 390.0,
+                "Y": -110.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 100.0
+            },
+            "rotation": -0.8726646304130554,
+            "translation": {
+                "X": -170.0,
+                "Y": 30.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 100.0
+            },
+            "rotation": 0.8726646304130554,
+            "translation": {
+                "X": -570.0,
+                "Y": 30.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 100.0
+            },
+            "rotation": 0.8726646304130554,
+            "translation": {
+                "X": 190.0,
+                "Y": 30.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 200.0,
+                "Y": 100.0
+            },
+            "rotation": -0.8726646304130554,
+            "translation": {
+                "X": 590.0,
+                "Y": 30.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -370.0,
+                "Y": 150.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 3
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 390.0,
+                "Y": 180.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 3
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 2",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 80.0,
+                "Y": 91.09375
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -280.0,
+                "Y": -20.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\mc.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 3",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 390.0,
+                "Y": -30.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\sea monster.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 4",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 120.83334350585938
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 270.0,
+                "Y": -60.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\ghost 1.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 5",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 120.83334350585938
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 320.0,
+                "Y": -150.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\ghost 2.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 6",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 120.83334350585938
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 370.0,
+                "Y": -250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\ghost 3.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 7",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 120.83334350585938
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 430.0,
+                "Y": -250.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\ghost 4.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 8",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 120.83334350585938
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 470.0,
+                "Y": -150.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\ghost 5.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 9",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 120.83334350585938
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 520.0,
+                "Y": -60.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\ghost 6.png",
+            "layer": 10
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 10",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 86.33975219726563
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 400.0,
+                "Y": -160.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Characters\\girl.png",
+            "layer": 10
+        }
+    }
+]
