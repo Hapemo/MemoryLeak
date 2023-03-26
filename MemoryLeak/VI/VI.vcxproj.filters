@@ -57,6 +57,7 @@
     <ClCompile Include="source\MovementAIManager.cpp" />
     <ClCompile Include="source\ParticleManager.cpp" />
     <ClCompile Include="source\ColorAIManager.cpp" />
+    <ClCompile Include="source\PlayerDataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AI.h" />
@@ -189,6 +190,7 @@
     <ClInclude Include="include\MovementAIManager.h" />
     <ClInclude Include="include\ParticleManager.h" />
     <ClInclude Include="include\ColorAIManager.h" />
+    <ClInclude Include="include\PlayerDataManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\batch.frag" />

@@ -37,6 +37,27 @@ Math::Vec2 SerializationManager::GetVec2(Value& vecIn)
 
 /*!*****************************************************************************
 \brief
+	Creates vector of ints using rapidjson value
+\param
+	vecIn rapidjason vetor  value
+
+\return
+None.
+*******************************************************************************/
+std::vector<int> SerializationManager::GetVectorInt(Value& vecIn)
+{
+	std::vector<int> data;
+	Value dataobj(kArrayType);
+	dataobj = vecIn.GetArray();
+	for (rapidjson::SizeType index = 0; index < dataobj.Size(); ++index)
+	{
+		data.push_back(dataobj[index].GetInt());
+	}
+	return data;
+}
+
+/*!*****************************************************************************
+\brief
 	Loads the scene into ECS
 
 \return
@@ -187,6 +208,10 @@ void SerializationManager::LoadScene(Scene& _sceneData, std::filesystem::path _f
 			if (entity[index].HasMember("ColorAI"))
 			{
 				e.AddComponent<ColorAI>(getColorAI(entity[index]));
+			}
+			if (entity[index].HasMember("PlayerData"))
+			{
+				e.AddComponent<PlayerData>(getPlayerData(entity[index]));
 			}
 			if (entity[index].HasMember("ParticleSystem"))
 			{
@@ -779,6 +804,12 @@ ColorAI SerializationManager::getColorAI(Value& entity)
 
 	return colorAI;
 }
+PlayerData SerializationManager::getPlayerData(Value& entity)
+{
+	PlayerData playerData;
+	(void)entity;
+	return playerData;
+}
 ParticleSystem::ParticleInfo SerializationManager::getParticleInfo(Value& entity)
 {
 	ParticleSystem::ParticleInfo mParticleInfo;
@@ -1055,6 +1086,10 @@ void SerializationManager::SaveScene(Scene& _sceneData)
 		if (e.HasComponent<ColorAI>())
 		{
 			addColorAI(scene, entity, e.GetComponent<ColorAI>());
+		}
+		if (e.HasComponent<PlayerData>())
+		{
+			addPlayerData(scene, entity, e.GetComponent<PlayerData>());
 		}
 		if (e.HasComponent<ParticleSystem>())
 		{
@@ -1451,6 +1486,12 @@ void SerializationManager::addColorAI(Document& scene, Value& entity, ColorAI co
 	tmp.AddMember(StringRef("targets"), child, scene.GetAllocator());
 	entity.AddMember(StringRef("ColorAI"), tmp, scene.GetAllocator());
 }
+void SerializationManager::addPlayerData(Document& scene, Value& entity, PlayerData playerData)
+{
+	Value tmp(kObjectType);
+	
+	entity.AddMember(StringRef("PlayerData"), tmp, scene.GetAllocator());
+}
 void SerializationManager::addParticleInfo(Document& scene, Value& entity, ParticleSystem::ParticleInfo particleInfo)
 {
 	Value tmp(kObjectType);
@@ -1645,12 +1686,6 @@ void SerializationManager::SaveGameState(GameState& _gameState)
 
 
 
-
-
-
-
-
-
 /*!*****************************************************************************
 \brief
 	Loads the dialogs from a json file to the dialog manager
@@ -1720,8 +1755,79 @@ void SerializationManager::SaveDialogs(std::string _filename)
 	std::string path = "../resources/Dialogs/" + _filename + ".json";
 	std::ofstream ofs(path);
 	ofs << jsonf;
-	if (!ofs.good()) LOG_ERROR("Unable to save dialogue file to: " + path);
-	else LOG_INFO("Saved dialogue file: " + path);
+	if (!ofs.good()) LOG_ERROR("Unable to save Dialogs file to: " + path);
+	else LOG_INFO("Saved Dialogs file: " + path);
+}
+
+
+
+
+
+/*!*****************************************************************************
+\brief
+	Loads the PlayerData from a json file to the dialog manager
+
+\return
+None.
+*******************************************************************************/
+void SerializationManager::LoadPlayerData(std::string _filename)
+{
+	PlayerData playerData;
+	std::ifstream ifs("../resources/PlayerData/" + _filename + ".json");
+	if (!ifs.good())
+	{
+		LOG_ERROR("New Player  " + _filename + "!");
+		playerData.name = _filename;
+		playerDataManager->SetPlayerData(playerData);
+	}
+	else
+	{
+		LOG_INFO("Opened PlayerData json file: " + _filename);
+
+
+		std::stringstream contents;
+		contents << ifs.rdbuf();
+		Document json;
+		json.Parse(contents.str().c_str());		
+		
+		Value playerDataObj(kObjectType);
+		playerData.name = playerDataObj["name"].GetString();
+		playerData.levelAt = playerDataObj["levelAt"].GetInt();
+		playerData.data1 = GetVectorInt(playerDataObj["data1"]);
+		playerData.data1 = GetVectorInt(playerDataObj["data2"]);
+		playerDataManager->SetPlayerData(playerData);
+	}
+}
+/*!*****************************************************************************
+\brief
+	Saves the data in the PlayerData manager to a json file
+
+\return
+None.
+*******************************************************************************/
+void SerializationManager::SavePlayerData(std::string _filename)
+{
+	Document json;
+	auto& allocator = json.GetAllocator();
+	json.SetArray();
+	StringBuffer buffer;
+	PrettyWriter<StringBuffer> writer(buffer);
+	PlayerData playerdata = playerDataManager->GetPlayerData();
+
+	Value playerDataObj(kObjectType);
+	std::string text = playerdata.name;
+	Value dText(text.c_str(), (SizeType)text.size(), allocator);
+	playerDataObj.AddMember(StringRef("name"), dText, allocator);
+	playerDataObj.AddMember(StringRef("levelAt"), playerdata.levelAt, allocator);
+	addVectorArrayMember(json, playerDataObj, "data1", playerdata.data1);
+	addVectorArrayMember(json, playerDataObj, "data2", playerdata.data2);
+	json.Accept(writer);
+	std::string jsonf(buffer.GetString(), buffer.GetSize());
+	std::string path = "../resources/PlayerData/" + _filename + ".json";
+	std::ofstream ofs(path);
+	ofs << jsonf;
+	if (!ofs.good()) LOG_ERROR("Unable to save PlayerData file to: " + path);
+	else LOG_INFO("Saved PlayerData file: " + path);
 }
 
 

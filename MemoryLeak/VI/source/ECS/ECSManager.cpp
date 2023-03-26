@@ -29,7 +29,8 @@ std::shared_ptr<LogicSystem> logicSystem{ nullptr };
 std::shared_ptr<ShadowManager> shadowManager{ nullptr };
 std::shared_ptr<ButtonManager> buttonManager{ nullptr };
 std::shared_ptr<MovementAIManager> movementAIManager{ nullptr };
-std::shared_ptr<ColorAIManager> colorAIManager{ nullptr };
+std::shared_ptr<ColorAIManager> colorAIManager{ nullptr }; 
+std::shared_ptr<PlayerDataManager> playerDataManager{ nullptr };
 std::shared_ptr<ParticleManager> particleManager{ nullptr };
 
 //----------------------------------------------------------------
@@ -208,6 +209,16 @@ void ECSManager::RegisterColorAIManager()
 	colorAIManager = ECS::RegisterSystem<ColorAIManager>();
 	ECS::SetSystemSignature<ColorAIManager>(signature);
 }
+
+void ECSManager::RegisterPlayerDataManager()
+{
+	Signature signature;
+	signature.set(ECS::GetComponentType<General>());
+	signature.set(ECS::GetComponentType<PlayerData>());
+
+	playerDataManager = ECS::RegisterSystem<PlayerDataManager>();
+	ECS::SetSystemSignature<PlayerDataManager>(signature);
+}
 //----------------------------------------------------------------
 // ECSManager Functions
 //----------------------------------------------------------------
@@ -232,7 +243,8 @@ void ECSManager::RegisterAllSystems() {
 	RegisterButtonManager();
 	RegisterMovementAIManager();
 	RegisterColorAIManager();
-	RegisterParticleManager();
+	RegisterPlayerDataManager();
+	RegisterParticleManager(); 
 	// More to come
 }
 
@@ -261,6 +273,7 @@ void ECSManager::RegisterAllComponents() {
 	ECS::RegisterComponent<Viewport>();
 	ECS::RegisterComponent<MovementAI>();
 	ECS::RegisterComponent<ColorAI>();
+	ECS::RegisterComponent<PlayerData>();
 	ECS::RegisterComponent<ParticleSystem>();
 
 	// More to come

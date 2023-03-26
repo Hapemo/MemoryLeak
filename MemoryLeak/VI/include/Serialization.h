@@ -43,6 +43,9 @@ public:
 	void LoadDialogs(std::string _filename = "Dialog1");
 	void SaveDialogs(std::string _filename = "Dialog1");
 
+	void LoadPlayerData(std::string _filename = "Dialog1");
+	void SavePlayerData(std::string _filename = "Dialog1");
+
 	void SaveSceneGUID(std::string sceneName);
 	void GetGUIDList(std::filesystem::path _filename, std::set<ResourceManager::GUID>& GUIDList);
 
@@ -70,6 +73,7 @@ private:
 	std::vector<ResourceManager::GUID> GUIDList;
 	//helper functions
 	static Math::Vec2 GetVec2(Value& vecIn);
+	static std::vector<int> GetVectorInt(Value& vecIn);
 	static void addVectorMember(Document& scene, Value& parent, const char* name, Math::Vec2 data);
 	template<typename T>
 	static void addVectorArrayStrMember(Document& scene, Value& parent, const char* name, std::vector <T> data);
@@ -106,6 +110,7 @@ private:
 	Viewport getViewport(Value& entity);
 	MovementAI getMovementAI(Value& entity);
 	ColorAI getColorAI(Value& entity);
+	PlayerData getPlayerData(Value& entity);
 	ParticleSystem::ParticleInfo getParticleInfo(Value& entity);
 	ParticleSystem getParticleSystem(Value& entity);
 
@@ -133,6 +138,7 @@ private:
 	void addViewport(Document& scene, Value& entity, Viewport Viewport);
 	void addMovementAI(Document& scene, Value& entity, MovementAI movementAI);
 	void addColorAI(Document& scene, Value& entity, ColorAI colorAI);
+	void addPlayerData(Document& scene, Value& entity, PlayerData playerData);
 	void addParticleInfo(Document& scene, Value& entity, ParticleSystem::ParticleInfo particleInfo);
 	void addParticleSystem(Document& scene, Value& entity, ParticleSystem particleSystem);
 };

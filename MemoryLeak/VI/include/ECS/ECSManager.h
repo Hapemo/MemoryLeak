@@ -35,6 +35,7 @@ TODO: take note not to change the component registration order. It will break pr
 #include "ButtonManager.h"
 #include "MovementAIManager.h"
 #include "ColorAIManager.h"
+#include "PlayerDataManager.h"
 #include "ParticleManager.h"
 
 //-------------------------------------------------------------------
@@ -59,6 +60,7 @@ extern std::shared_ptr<ShadowManager> shadowManager;
 extern std::shared_ptr<ButtonManager> buttonManager;
 extern std::shared_ptr<MovementAIManager> movementAIManager;
 extern std::shared_ptr<ColorAIManager> colorAIManager;
+extern std::shared_ptr<PlayerDataManager> playerDataManager;
 extern std::shared_ptr<ParticleManager> particleManager;
 
 /*!*****************************************************************************
@@ -92,6 +94,7 @@ private:
 	static void RegisterButtonManager();
 	static void RegisterMovementAIManager();
 	static void RegisterColorAIManager();
+	static void RegisterPlayerDataManager();
 	static void RegisterParticleManager();
 	
 	// More to come

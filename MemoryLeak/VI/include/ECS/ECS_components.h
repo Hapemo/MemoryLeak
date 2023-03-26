@@ -389,6 +389,13 @@ struct Viewport {
 	int width;
 	bool isUI;
 };
+struct PlayerData
+{
+	std::string name = "Tom";
+	int levelAt = 0;
+	std::vector<int> data1;
+	std::vector<int> data2;
+};
 
 struct ParticleSystem {
 	// Information of particle to generate
