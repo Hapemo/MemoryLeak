@@ -80,5 +80,33 @@
         "mForceRender": false,
         "layer": 4,
         "order": 0
+    },
+    {
+        "SceneName": "CrystalBalls",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 10,
+        "order": 0
+    },
+    {
+        "SceneName": "MiniMap",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 11,
+        "order": 0
+    },
+    {
+        "SceneName": "EnemyMap",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 11,
+        "order": 0
+    },
+    {
+        "SceneName": "WeatherMap",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 11,
+        "order": 0
     }
 ]
