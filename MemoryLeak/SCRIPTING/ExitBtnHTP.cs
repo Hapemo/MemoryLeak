@@ -45,15 +45,10 @@ namespace BonVoyage {
                     VI.Scene.Play("TransitionScene");
                     VI.Scene.Play("Pause");
                 }
-                else if (currlevel == "LevelTutorial")
+                else 
                 {
                     VI.Scene.Pause("How_To_Play");
-                    VI.Scene.Play("LevelTutorial");
-                }
-                else if (currlevel == "Level1")
-                {
-                    VI.Scene.Pause("How_To_Play");
-                    VI.Scene.Play("Level1");
+                    VI.Scene.Play("Pause");
                 }
             }
         }

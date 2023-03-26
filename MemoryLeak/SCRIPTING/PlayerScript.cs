@@ -38,6 +38,7 @@ namespace BonVoyage {
         private float MovementXModifier = 0f;
         private float MovementYModifier = 0f;
 
+        private int toggleMap;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
@@ -67,6 +68,8 @@ namespace BonVoyage {
             PlayerCurrWeather = 0;
             MovementXModifier = 0f;
             MovementYModifier = 0f;
+
+            toggleMap = VI.Entity.GetId("toggleMap");
         }
 
         public void EarlyUpdate(int _ENTITY) {
@@ -103,6 +106,59 @@ namespace BonVoyage {
                 // Escape key is pressed
                 if (VI.Input.Key.Release(256))
                 {
+                    string gsname = VI.GameState.GetName();
+                    if (gsname == "LevelTutorial")
+                    {
+                        VI.Scene.Pause(gsname);
+                        VI.Scene.Pause(gsname + "Background");
+                        //VI.Scene.Pause("WeatherScene");
+                        VI.Scene.SetForceRender(gsname, true);
+                        VI.Scene.SetForceRender(gsname + "Background", true);
+                        //VI.Scene.SetForceRender("WeatherScene", true);
+
+                        //VI.Scene.Pause("GUI Scene");
+                        VI.Scene.Pause("TutorialUI");
+                        VI.Scene.Pause("TutorialNameFade");
+
+                        //VI.Entity.Deactivate(toggleMap);
+
+                        VI.Scene.Play("Pause");
+                    }
+                    else if (gsname == "Level3")
+                    {
+                        //VI.Scene.Pause(gsname);
+                        //VI.Scene.Pause(gsname + "Background");
+                        //VI.Scene.Pause("WeatherScene");
+                        //VI.Scene.SetForceRender(gsname, true);
+                        //VI.Scene.SetForceRender(gsname + "Background", true);
+                        //VI.Scene.SetForceRender("WeatherScene", true);
+
+                        //VI.Scene.Pause("GUI Scene");
+                        ////VI.Scene.Pause("TutorialUILvl" + gsname[gsname.Length - 1]);
+                        //VI.Scene.Pause("L" + gsname[gsname.Length - 1] + "NameFade");
+
+                        //VI.Entity.Deactivate(toggleMap);
+
+                        //VI.Scene.Play("Pause");
+                    }
+                    else
+                    {
+                        VI.Scene.Pause(gsname);
+                        VI.Scene.Pause(gsname + "Background");
+                        VI.Scene.Pause("WeatherScene");
+                        VI.Scene.SetForceRender(gsname, true);
+                        VI.Scene.SetForceRender(gsname + "Background", true);
+                        VI.Scene.SetForceRender("WeatherScene", true);
+
+                        VI.Scene.Pause("GUI Scene");
+                        VI.Scene.Pause("TutorialUILvl" + gsname[gsname.Length - 1]);
+                        VI.Scene.Pause("L" + gsname[gsname.Length - 1] + "NameFade");
+
+                        VI.Entity.Deactivate(toggleMap);
+
+                        VI.Scene.Play("Pause");
+                    }
+                    
                     // Assumes the main game scene level running is the same as the gamestate name
                     //VI.Scene.Play(VI.GameState.GetName());
                     //if (VI.Scene.IsPaused("Pause") == false)
