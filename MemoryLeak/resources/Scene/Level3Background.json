@@ -8,8 +8,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 13000.0,
-                "Y": 12000.0
+                "X": 18000.0,
+                "Y": 15500.0
             },
             "rotation": 0.0,
             "translation": {
@@ -102,8 +102,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 11758.578125,
-                "Y": -11637.8671875
+                "X": 18000.0,
+                "Y": -15000.0
             },
             "rotation": 0.0,
             "translation": {
@@ -143,8 +143,8 @@
                     "time": 2.0,
                     "Transform": {
                         "scale": {
-                            "X": 10000.0,
-                            "Y": -10000.0
+                            "X": 18000.0,
+                            "Y": -15000.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -157,8 +157,8 @@
                     "time": 2.0,
                     "Transform": {
                         "scale": {
-                            "X": 9500.0,
-                            "Y": -9250.0
+                            "X": 17500.0,
+                            "Y": -14500.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -171,8 +171,8 @@
                     "time": 2.0,
                     "Transform": {
                         "scale": {
-                            "X": 10000.0,
-                            "Y": -10000.0
+                            "X": 18000.0,
+                            "Y": -15500.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -185,8 +185,8 @@
                     "time": 2.0,
                     "Transform": {
                         "scale": {
-                            "X": 9500.0,
-                            "Y": -9250.0
+                            "X": 17500.0,
+                            "Y": -15000.0
                         },
                         "rotation": 0.0,
                         "translation": {
@@ -199,8 +199,8 @@
                     "time": 1.5,
                     "Transform": {
                         "scale": {
-                            "X": 10000.0,
-                            "Y": -10000.0
+                            "X": 18000.0,
+                            "Y": -14500.0
                         },
                         "rotation": 0.0,
                         "translation": {

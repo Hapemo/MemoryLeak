@@ -22,8 +22,10 @@ None.
 #define weatherScale 400
 void AIManager::weatherAIinit(float width, float height)
 {
+	std::cout << "X: " << width << "Y: " << height << "\n";
 	mapMaxHeight = (int)(height/ weatherScale);
 	mapMaxWidth = (int)(width/ weatherScale);
+	std::cout << "X: " << mapMaxHeight << "Y: " << mapMaxWidth << "\n";
 	/*for (int h = 0; h < weatherMap.size(); h++)
 	{
 		weatherMap[h].clear();
@@ -139,12 +141,18 @@ int AIManager::GetCurrentWeather(int index, float posX, float posY)
 	int indexY = (int)(-(posY - mapMaxHeight* weatherScale/2)/ weatherScale);
 	indexX += (index % 5) - 2;
 	indexY += (index / 5) - 2;
+	if ((indexX < 0) || (indexY < 0) || (indexX > weatherMaxWidth - 1) || indexY > weatherMaxHeight - 1)
+	{
+		std::cout << "Weather Errrrrrrorrrrrrrrrrrrrrrrrr Sub script out of range !!!!!!!!!!!!!!!!\n";
+		std::cout << "X: " << indexX << "Y: " << indexX << "\n";
+		std::cout << "X: " << mapMaxWidth << "Y: " << mapMaxHeight << "\n";
+	}
 	indexX < 0 ? 0 : indexX;
 	indexY < 0 ? 0 : indexY;
-	indexX > weatherMaxWidth-1 ? weatherMaxWidth - 1 : indexX;
-	indexY > weatherMaxHeight-1 ? weatherMaxHeight - 1 : indexY;
-	//return weatherMap[indexX][indexY];
-	return 0;
+	indexX > mapMaxWidth -1 ? mapMaxWidth - 1 : indexX;
+	indexY > mapMaxHeight -1 ? mapMaxHeight - 1 : indexY;
+	return weatherMap[0][0];
+	return weatherMap[indexX][indexY];
 }
 
 
