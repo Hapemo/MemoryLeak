@@ -717,7 +717,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Island1_spritesheet.png",
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Porthouse_spritesheet.png",
             "layer": 527
         },
         "SheetAnimation": {
@@ -1068,7 +1068,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Porthouse_spritesheet.png",
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Island1_spritesheet.png",
             "layer": 510
         },
         "SheetAnimation": {

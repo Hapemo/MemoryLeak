@@ -898,7 +898,7 @@ void RenderManager::CreateVertices(std::map<size_t, std::map<GLuint, TextureInfo
 		{
 			std::string name = e.GetComponent<General>().name;
 			if (!e.GetComponent<General>().isActive) continue;
-			if (!e.ShouldRun()) continue;
+			if (!e.ShouldRun() && !scene.mForceRender) continue;
 			if (e.HasComponent<LightSource>())
 				lightsource = e;
 			if (!mIsCurrSceneUI && ShouldCull(e)) continue;

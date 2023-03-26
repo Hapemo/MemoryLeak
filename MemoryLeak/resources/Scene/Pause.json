@@ -52,7 +52,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 150
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\UI_HowtoPlay_Window.png",
@@ -272,114 +272,6 @@
         },
         "Button": {
             "interactable": true
-        }
-    },
-    {
-        "General": {
-            "name": "PausedQuitIcon",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -280.0,
-                "Y": -200.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "",
-            "layer": 3
-        },
-        "SheetAnimation": {
-            "frameCount": 13,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.30000001192092896,
-            "timeToFrameSwap": 0.016666484996676445
-        }
-    },
-    {
-        "General": {
-            "name": "PausedHTPIcon",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 120.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -280.0,
-                "Y": -50.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "",
-            "layer": 4
-        },
-        "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 4,
-            "timePerFrame": 0.30000001192092896,
-            "timeToFrameSwap": 0.633333683013916
-        }
-    },
-    {
-        "General": {
-            "name": "PauseResumeIcon",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 120.0,
-                "Y": 120.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -280.0,
-                "Y": 100.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png",
-            "layer": 5
-        },
-        "SheetAnimation": {
-            "frameCount": 8,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.20000000298023224,
-            "timeToFrameSwap": 0.0
         }
     }
 ]

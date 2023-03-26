@@ -13,12 +13,15 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class ResumeGame : BaseScript
     {
+        private int toggleMap;
+
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            toggleMap = VI.Entity.GetId("toggleMap");
 
         }
 
@@ -35,8 +38,59 @@ namespace BonVoyage {
                 THIS.Sprite.SetColor(0, 0, 0, 0);
             if (THIS.Input.Button.Released())
             {
-                VI.Scene.Pause("Pause");
-                VI.Scene.Play(VI.GameState.GetName());
+                string gsname = VI.GameState.GetName();
+
+                if (gsname == "LevelTutorial")
+                {
+                    VI.Scene.Play(gsname);
+                    VI.Scene.Play(gsname + "Background");
+                    //VI.Scene.Pause("WeatherScene");
+                    VI.Scene.SetForceRender(gsname, false);
+                    VI.Scene.SetForceRender(gsname + "Background", false);
+                    //VI.Scene.SetForceRender("WeatherScene", true);
+
+                    //VI.Scene.Pause("GUI Scene");
+                    VI.Scene.Play("TutorialUI");
+                    VI.Scene.Play("TutorialNameFade");
+
+                    //VI.Entity.Deactivate(toggleMap);
+
+                    VI.Scene.Pause("Pause");
+                }
+                else if (gsname == "Level3")
+                {
+                    //VI.Scene.Pause(gsname);
+                    //VI.Scene.Pause(gsname + "Background");
+                    //VI.Scene.Pause("WeatherScene");
+                    //VI.Scene.SetForceRender(gsname, true);
+                    //VI.Scene.SetForceRender(gsname + "Background", true);
+                    //VI.Scene.SetForceRender("WeatherScene", true);
+
+                    //VI.Scene.Pause("GUI Scene");
+                    ////VI.Scene.Pause("TutorialUILvl" + gsname[gsname.Length - 1]);
+                    //VI.Scene.Pause("L" + gsname[gsname.Length - 1] + "NameFade");
+
+                    //VI.Entity.Deactivate(toggleMap);
+
+                    //VI.Scene.Play("Pause");
+                }
+                else
+                {
+                    VI.Scene.Play(gsname);
+                    VI.Scene.Play(gsname + "Background");
+                    VI.Scene.Play("WeatherScene");
+                    VI.Scene.SetForceRender(gsname, false);
+                    VI.Scene.SetForceRender(gsname + "Background", false);
+                    VI.Scene.SetForceRender("WeatherScene", false);
+
+                    VI.Scene.Play("GUI Scene");
+                    VI.Scene.Play("TutorialUILvl" + gsname[gsname.Length - 1]);
+                    VI.Scene.Play("L" + gsname[gsname.Length - 1] + "NameFade");
+
+                    VI.Entity.Activate(toggleMap);
+
+                    VI.Scene.Pause("Pause");
+                }
 
             }
         }

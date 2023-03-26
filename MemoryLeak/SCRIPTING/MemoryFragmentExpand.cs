@@ -151,10 +151,24 @@ namespace BonVoyage {
                 { 
                     if (VI.Input.Button.Clicked(backs[i]) && activated[i])
                     {
-                        VI.Scene.Play("GUI Scene Expanded");
-                        VI.Entity.Deactivate(toggleMap);
-                        VI.Entity.Activate(expandedRelics[i]);
+                        string gsname = VI.GameState.GetName();
+
+                        VI.Scene.Pause(gsname);
+                        VI.Scene.Pause(gsname + "Background");
+                        VI.Scene.Pause("WeatherScene");
+                        VI.Scene.SetForceRender(gsname, true);
+                        VI.Scene.SetForceRender(gsname + "Background", true);
+                        VI.Scene.SetForceRender("WeatherScene", true);
+
                         VI.Scene.Pause("GUI Scene");
+                        VI.Scene.Pause("TutorialUILvl" + gsname[gsname.Length - 1]);
+                        VI.Scene.Pause("L" + gsname[gsname.Length - 1] + "NameFade");
+
+                        VI.Entity.Deactivate(toggleMap);
+
+                        VI.Scene.Play("GUI Scene Expanded");
+                        VI.Entity.Activate(expandedRelics[i]);
+
                     }
                 }
             }
