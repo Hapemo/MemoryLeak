@@ -312,7 +312,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -430,7 +430,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -506,7 +506,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -632,7 +632,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -708,7 +708,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -1119,8 +1119,8 @@
             "color": {
                 "r": 255,
                 "g": 255,
-                "b": 255,
-                "a": 255
+                "b": 0,
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -31778,7 +31778,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
