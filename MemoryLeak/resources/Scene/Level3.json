@@ -1174,6 +1174,14 @@
         "Script": {
             "name": "PlayerScript"
         },
+        "LightSource": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "radius": 800.0,
+            "intensity": 0.0
+        },
         "ParticleSystem": {
             "mParticleInfo": {
                 "mScale": 10.0,
@@ -1188,7 +1196,7 @@
                     },
                     "sprite": 2,
                     "texture": "Textures\\Spritesheets\\Weather\\puddle.png",
-                    "layer": 700
+                    "layer": 1
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
@@ -1206,7 +1214,7 @@
             "mSpread": 0.0,
             "mDuration": 0.0,
             "mIsActive": false,
-            "mSlow": 0.5
+            "mSlow": 0.3499999940395355
         }
     },
     {
@@ -11025,9 +11033,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 122,
+                "g": 122,
+                "b": 122,
                 "a": 255
             },
             "sprite": 2,
@@ -11313,9 +11321,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 118,
+                "g": 118,
+                "b": 118,
                 "a": 255
             },
             "sprite": 2,
@@ -11417,9 +11425,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 170,
+                "g": 170,
+                "b": 170,
                 "a": 255
             },
             "sprite": 2,
@@ -23975,9 +23983,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 97,
+                "g": 97,
+                "b": 97,
                 "a": 255
             },
             "sprite": 2,
@@ -34199,9 +34207,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 143,
+                "g": 143,
+                "b": 143,
                 "a": 255
             },
             "sprite": 2,
@@ -34251,9 +34259,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 150,
+                "g": 150,
+                "b": 150,
                 "a": 255
             },
             "sprite": 2,
@@ -34355,9 +34363,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 96,
+                "g": 96,
+                "b": 96,
                 "a": 255
             },
             "sprite": 2,
@@ -34407,9 +34415,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 156,
+                "g": 156,
+                "b": 156,
                 "a": 255
             },
             "sprite": 2,
@@ -39896,9 +39904,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 205,
-                "g": 205,
-                "b": 205,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -39948,9 +39956,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 85,
-                "g": 85,
-                "b": 85,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -41272,9 +41280,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 114,
+                "g": 114,
+                "b": 114,
                 "a": 255
             },
             "sprite": 2,
@@ -41346,9 +41354,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 105,
+                "g": 105,
+                "b": 105,
                 "a": 255
             },
             "sprite": 2,
@@ -41493,6 +41501,347 @@
             "sprite": 0,
             "texture": "",
             "layer": 742
+        }
+    },
+    {
+        "General": {
+            "name": "Enemy",
+            "tag": 2,
+            "subtag": 3,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 523.0,
+                "Y": 353.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1510.0,
+                "Y": 240.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 468
+        },
+        "Animation": {
+            "sheets": [
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 8,
+                    "timePerFrame": 0.17000000178813934
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 10,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                },
+                {
+                    "sheet": "",
+                    "frameCount": 12,
+                    "timePerFrame": 0.10000000149011612
+                }
+            ],
+            "currentImageIndex": 0
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 2,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.06666667014360428
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": -23.0,
+                "Y": -20.0
+            },
+            "scaleOffset": {
+                "X": 0.5,
+                "Y": 0.5
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 67.0
+            },
+            "scaleOffset": {
+                "X": 0.6000000238418579,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "DAMAGE",
+            "toPlay": false,
+            "volume": 0.30000001192092896,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Script": {
+            "name": "EnemyController"
+        },
+        "MovementAI": {
+            "run": true,
+            "next": true,
+            "loop": true,
+            "reverse": false,
+            "cycle": true,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "moveOnCollide": false,
+            "targets": [
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 162.0,
+                            "Y": 210.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1622.0,
+                            "Y": 210.0
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1770.0,
+                            "Y": 1096.0
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 595.68701171875,
+                            "Y": 1761.0980224609375
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -620.1950073242188,
+                            "Y": 1459.7249755859375
+                        }
+                    }
+                },
+                {
+                    "time": 4.5,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -692.9400024414063,
+                            "Y": 1064.823974609375
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1358.0369873046875,
+                            "Y": 669.9219970703125
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -1555.488037109375,
+                            "Y": -410.86199951171875
+                        }
+                    }
+                },
+                {
+                    "time": 6.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -931.958984375,
+                            "Y": -899.2930297851563
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 24.118999481201172,
+                            "Y": -1522.822021484375
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 460.5889892578125,
+                            "Y": -1065.5670166015625
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 606.0789794921875,
+                            "Y": -587.5280151367188
+                        }
+                    }
+                },
+                {
+                    "time": 8.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 523.0,
+                            "Y": 353.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 1104.9029541015625,
+                            "Y": -462.8219909667969
+                        }
+                    }
+                }
+            ]
         }
     }
 ]

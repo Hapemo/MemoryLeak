@@ -139,7 +139,12 @@ int AIManager::GetCurrentWeather(int index, float posX, float posY)
 	int indexY = (int)(-(posY - mapMaxHeight* weatherScale/2)/ weatherScale);
 	indexX += (index % 5) - 2;
 	indexY += (index / 5) - 2;
-	return weatherMap[indexX][indexY];
+	indexX < 0 ? 0 : indexX;
+	indexY < 0 ? 0 : indexY;
+	indexX > weatherMaxWidth-1 ? weatherMaxWidth - 1 : indexX;
+	indexY > weatherMaxHeight-1 ? weatherMaxHeight - 1 : indexY;
+	//return weatherMap[indexX][indexY];
+	return 0;
 }
 
 

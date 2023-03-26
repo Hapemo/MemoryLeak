@@ -115,8 +115,17 @@ namespace BonVoyage {
       //VI.Entity.Deactivate(UIWeatherMapID);
 
       VI.Scene.Pause("GUI Scene");
+            VI.Scene.Pause("TutorialUI");
+            VI.Scene.Pause("TutorialUILvl1");
+            VI.Scene.Pause("TutorialUILvl2");
+            VI.Scene.Pause("TutorialNameFade");
+            VI.Scene.Pause("L1NameFade");
+            VI.Scene.Pause("L2NameFade");
+            VI.Scene.Pause("L3NameFade");
 
-      VI.Entity.s_Deactivate("toggleMap");
+
+
+            VI.Entity.s_Deactivate("toggleMap");
       //VI.Scene.Pause("CrystalBalls");
       //VI.Scene.Pause("MiniMap");
       //VI.Scene.Pause("EnemyMap");
@@ -128,8 +137,14 @@ namespace BonVoyage {
         VI.Entity.Activate(UIHPBarID);
 
       VI.Scene.Play("GUI Scene");
-
-      VI.Entity.s_Activate("toggleMap");
+            VI.Scene.Play("TutorialUI");
+            VI.Scene.Play("TutorialUILvl1");
+            VI.Scene.Play("TutorialUILvl2");
+            VI.Scene.Play("TutorialNameFade");
+            VI.Scene.Play("L1NameFade");
+            VI.Scene.Play("L2NameFade");
+            VI.Scene.Play("L3NameFade");
+            VI.Entity.s_Activate("toggleMap");
       //VI.Scene.Play("CrystalBalls");
       //VI.Scene.Play("MiniMap");
       //VI.Scene.Play("EnemyMap");
