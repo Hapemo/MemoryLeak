@@ -46,18 +46,19 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 2,
             "mCenter": {
-                "X": 0,
-                "Y": 0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 600.0,
             "mDirection": 0.0,
             "mSpread": 0.0,
-            "mDuration": 100001,
+            "mDuration": 100001.0,
             "mIsActive": true,
             "mSlow": 2.0
         }
@@ -109,18 +110,19 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 2,
             "mCenter": {
-                "X": 0,
-                "Y": 0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 600.0,
             "mDirection": 0.0,
             "mSpread": 0.0,
-            "mDuration": 100001,
+            "mDuration": 100001.0,
             "mIsActive": true,
             "mSlow": 2.0
         }
@@ -172,18 +174,19 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 2,
             "mCenter": {
-                "X": 0,
-                "Y": 0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 600.0,
             "mDirection": 0.0,
             "mSpread": 0.0,
-            "mDuration": 100001,
+            "mDuration": 100001.0,
             "mIsActive": true,
             "mSlow": 2.0
         }
@@ -235,18 +238,19 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 2,
             "mCenter": {
-                "X": 0,
-                "Y": 0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 600.0,
             "mDirection": 0.0,
             "mSpread": 0.0,
-            "mDuration": 100001,
+            "mDuration": 100001.0,
             "mIsActive": true,
             "mSlow": 2.0
         }
@@ -298,18 +302,19 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 2,
             "mCenter": {
-                "X": 0,
-                "Y": 0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 600.0,
             "mDirection": 0.0,
             "mSpread": 0.0,
-            "mDuration": 100001,
+            "mDuration": 100001.0,
             "mIsActive": true,
             "mSlow": 2.0
         }

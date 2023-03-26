@@ -50,8 +50,24 @@ void Particle::Update() {
 	// Update position
 	mTransform.translation += static_cast<float>(FPSManager::dt) * mVelocity;
 
+	// Update scale
+	if (system.mParticleInfo.mExpanding) {
+		bool xMoreThan0{ mTransform.scale.x > 0 };
+		bool yMoreThan0{ mTransform.scale.y > 0 };
+		float yExpand = mTransform.scale.y / mTransform.scale.x;
+		mTransform.scale.x += system.mParticleInfo.mExpanding * static_cast<float>(FPSManager::dt);
+		mTransform.scale.y += system.mParticleInfo.mExpanding * yExpand * static_cast<float>(FPSManager::dt);
+
+		// If shrink till 0 size in either axis, destroy
+		if ((xMoreThan0 && (mTransform.scale.x < 0)) || yMoreThan0 && (mTransform.scale.y < 0)) {
+			mLifespan = 0;
+			Destroy();
+		}
+	}
+
 	// Update rotation
-	mTransform.rotation += system.mParticleInfo.mRotation * static_cast<float>(FPSManager::dt);
+	if (system.mParticleInfo.mRotation)
+		mTransform.rotation += system.mParticleInfo.mRotation * static_cast<float>(FPSManager::dt);
 
 	// Update Color/Alpha
 	if (system.mParticleInfo.mFading && system.mParticleInfo.mFadeIn) {

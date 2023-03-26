@@ -216,7 +216,7 @@
             }
         },
         "isActive": false,
-        "mForceRender": null,
+        "mForceRender": false,
         "layer": 4,
         "order": 0
     }

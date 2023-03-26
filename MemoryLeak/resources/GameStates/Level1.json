@@ -176,7 +176,7 @@
             }
         },
         "isActive": false,
-        "mForceRender": "",
+        "mForceRender": false,
         "layer": 4,
         "order": 0
     }

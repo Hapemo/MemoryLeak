@@ -19,9 +19,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 111,
-                "g": 111,
-                "b": 111,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -96,9 +96,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -155,9 +155,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -232,9 +232,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -309,9 +309,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 216,
-                "g": 216,
-                "b": 216,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -420,9 +420,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -616,9 +616,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 136,
+                "g": 136,
+                "b": 136,
                 "a": 255
             },
             "sprite": 2,
@@ -1160,6 +1160,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -1627,6 +1628,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 80.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -1767,6 +1769,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 80.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2128,6 +2131,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2245,6 +2249,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2446,6 +2451,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2521,6 +2527,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2932,6 +2939,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -30935,9 +30943,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -31192,9 +31200,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 130,
-                "g": 130,
-                "b": 130,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -32005,6 +32013,7 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -32217,6 +32226,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },

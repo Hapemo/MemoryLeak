@@ -76,6 +76,7 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": false
             },

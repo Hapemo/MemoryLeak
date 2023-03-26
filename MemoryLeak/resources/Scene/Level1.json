@@ -932,6 +932,40 @@
             },
             "radius": 600.0,
             "intensity": 0.0
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 0.0,
+                "mLifespan": 4.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\puddle.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mExpanding": 150.0,
+                "mFading": true,
+                "mFadeIn": false
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 20.0,
+                "Y": -60.0
+            },
+            "mAreaWidth": 1.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 0,
+            "mIsActive": false,
+            "mSlow": 0.5
         }
     },
     {
@@ -1160,6 +1194,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 80.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -1432,6 +1467,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2056,6 +2092,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2531,6 +2568,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2660,6 +2698,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 80.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -2872,6 +2911,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -3081,6 +3121,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
@@ -3166,6 +3207,7 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
