@@ -46,13 +46,6 @@ namespace BonVoyage {
             base.Update(_ENTITY);
             if (runOnce) { runOnce = false; Init(_ENTITY); }
 
-      //if (playerBoat == 0) LOG.WRITE("playerBoat========================");
-      //if (triggerBox == 0) LOG.WRITE("triggerBox========================");
-      //if (correctDestination_Box == 0) LOG.WRITE("correctDestination_Box========================");
-      //if (correctDestination_RenderLocation == 0) LOG.WRITE("correctDestination_RenderLocation========================");
-      //if (wrongDestination_Box == 0) LOG.WRITE("wrongDestination_Box========================");
-      //if (wrongDestination_RenderLocation == 0) LOG.WRITE("wrongDestination_RenderLocation========================");
-
             // Check if passenger's trigger box is active
             if (triggerBox != 0)
             if (VI.Entity.IsActive(triggerBox)) {
@@ -79,6 +72,7 @@ namespace BonVoyage {
             // Passenger is ready to attach & dialogue has ended
             if (ReadyToAttach && !Level2DialogManager.runPassenger2Dialog) {
                 // Set flag variables
+                fadingOut = true;
                 AttachToPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
                 ReadyToAttach = false;
@@ -88,17 +82,8 @@ namespace BonVoyage {
 
             // Play animation of passenger attaching to player
             if (AttachToPlayerAnimation) {
-                // Animate attachment to player
-                // returns true once complete
-                if (AttachPassengerToPlayer(_ENTITY, playerBoat, InitialScaleX)) {
-                    // Move on to passenger moving with the player
-                    AttachedToPlayer = true;
-                    AttachToPlayerAnimation = false;
-                    PlayerScript.PlayerInOtherAnimation = false;
-                }
+                DefaultAttachToPlayer(_ENTITY);
             }
-
-
 
             // Check if passenger reaches destination
             if (VI.Physics.IsCollided(correctDestination_Box, _ENTITY)) {
@@ -124,16 +109,7 @@ namespace BonVoyage {
 
             // Play animation of passenger detaching from player
             if (DetachFromPlayerAnimation) {
-                // Animate detachment to player
-                // returns true once complete
-                int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
-                if (DetachPassengerFromPlayer(_ENTITY, renderLocation, InitialScaleX)) {
-                    // Animation complete
-                    DetachFromPlayerAnimation = false;
-                    PlayerScript.PlayerInOtherAnimation = false;
-                    DestinationReached = true;
-                }
-
+                DefaultAttachToDestination(_ENTITY);
             }
         
             // Passenger was delivered
