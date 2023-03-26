@@ -585,7 +585,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1435.0,
+                "X": 1430.0,
                 "Y": 980.0
             }
         },
@@ -616,17 +616,6 @@
                 "Y": 0.550000011920929
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 70.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
@@ -963,9 +952,9 @@
             "mAreaWidth": 1.0,
             "mDirection": 0.0,
             "mSpread": 0.0,
-            "mDuration": 0,
+            "mDuration": 0.0,
             "mIsActive": false,
-            "mSlow": 0.35
+            "mSlow": 0.3499999940395355
         }
     },
     {
@@ -1305,8 +1294,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -960.0,
-                "Y": 140.0
+                "X": -950.0,
+                "Y": 150.0
             }
         },
         "Sprite": {
@@ -1366,32 +1355,44 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -40.0,
-                        "Y": 40.0
+                        "X": -47.0,
+                        "Y": -92.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 25.1533203125,
-                        "Y": 42.22618103027344
+                        "X": -40.32318115234375,
+                        "Y": 12.885269165039063
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 24.35528564453125,
-                        "Y": -33.92767333984375
+                        "X": 44.155517578125,
+                        "Y": 16.426254272460938
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -35.50048828125,
-                        "Y": -37.773834228515625
+                        "X": 37.65716552734375,
+                        "Y": 4.918060302734375
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -40.0,
-                        "Y": 40.0
+                        "X": 40.9063720703125,
+                        "Y": -26.065536499023438
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 50.65386962890625,
+                        "Y": -70.32782745361328
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -47.0,
+                        "Y": -92.0
                     }
                 }
             ],
@@ -2211,17 +2212,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 145.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
-            "renderFlag": true
-        },
         "Audio": {
             "path": "Collision_Finalized",
             "toPlay": false,
@@ -2328,17 +2318,6 @@
                 "Y": 0.5
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 140.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.004999999888241291
-            },
             "renderFlag": true
         },
         "Audio": {
