@@ -50,8 +50,24 @@ void Particle::Update() {
 	// Update position
 	mTransform.translation += static_cast<float>(FPSManager::dt) * mVelocity;
 
+	// Update scale
+	if (system.mParticleInfo.mExpanding) {
+		bool xMoreThan0{ mTransform.scale.x > 0 };
+		bool yMoreThan0{ mTransform.scale.y > 0 };
+		float yExpand = mTransform.scale.y / mTransform.scale.x;
+		mTransform.scale.x += system.mParticleInfo.mExpanding * static_cast<float>(FPSManager::dt);
+		mTransform.scale.y += system.mParticleInfo.mExpanding * yExpand * static_cast<float>(FPSManager::dt);
+
+		// If shrink till 0 size in either axis, destroy
+		if ((xMoreThan0 && (mTransform.scale.x < 0)) || yMoreThan0 && (mTransform.scale.y < 0)) {
+			mLifespan = 0;
+			Destroy();
+		}
+	}
+
 	// Update rotation
-	mTransform.rotation += system.mParticleInfo.mRotation * static_cast<float>(FPSManager::dt);
+	if (system.mParticleInfo.mRotation)
+		mTransform.rotation += system.mParticleInfo.mRotation * static_cast<float>(FPSManager::dt);
 
 	// Update Color/Alpha
 	if (system.mParticleInfo.mFading && system.mParticleInfo.mFadeIn) {
@@ -132,12 +148,13 @@ void ParticleManager::GenerateParticle(ParticleSystem const& _system, EntityID _
 		Transform trans{};
 		trans.rotation = _system.mParticleInfo.mFacing;
 		trans.scale *= _system.mParticleInfo.mScale;
-		trans.translation = _system.mCenter + Vec2(static_cast<float>(Util::RandInt(static_cast<int>(_system.mAreaWidth) / 2, -static_cast<int>(_system.mAreaWidth) / 2)),
+		trans.translation = Entity(_e).GetComponent<Transform>().translation +
+												_system.mCenter + Vec2(static_cast<float>(Util::RandInt(static_cast<int>(_system.mAreaWidth) / 2, -static_cast<int>(_system.mAreaWidth) / 2)),
 																							 static_cast<float>(Util::RandInt(static_cast<int>(_system.mAreaWidth) / 2, -static_cast<int>(_system.mAreaWidth) / 2)));
 
 
 		float angle = Util::RandInt(static_cast<int>(_system.mSpread) * 10, static_cast<int>(-_system.mSpread) * 10) / 10.f + _system.mDirection;
-		LOG_INFO("Random number: " + std::to_string(Util::RandInt(static_cast<int>(_system.mSpread) * 10, static_cast<int>(-_system.mSpread) * 10)));
+
 		angle *= (static_cast<float>(Math::PI)/180.f);
 		Vec2 vel{};
 		if (_system.mDirection) // Only move particle if it needs to move

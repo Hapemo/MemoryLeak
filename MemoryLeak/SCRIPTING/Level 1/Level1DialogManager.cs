@@ -65,6 +65,7 @@ namespace BonVoyage {
       dialogInit = true;
       normalZoom = false;
 
+      VI.Text.Update(UIObjectiveTextID, "Objective: Continue finding the lost souls");
       VI.Entity.s_Deactivate(P2String);
       VI.Entity.Deactivate(P2ColliderBox);
     }
@@ -170,12 +171,6 @@ namespace BonVoyage {
     }
 
     #region Dialog Endings
-
-    public void EndIntroDialog() {
-      GeneralEndDialog();
-
-      VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
-    }
 
     public void EndPassengerDialog() {
       GeneralEndDialog();

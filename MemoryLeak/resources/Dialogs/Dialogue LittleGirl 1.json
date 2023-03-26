@@ -22,14 +22,14 @@
  },
  {
    "Dialogue ID": 4,
-   "Dialogue Text": "After talking to them, it seems that most of them have places related to their memories...",
+   "Dialogue Text": "Most have places related to their memories...",
    "Speaker": 1,
    "Next Dialogue": 6,
    "Next Dialogue(2)": 0
  },
  {
    "Dialogue ID": 5,
-   "Dialogue Text": "Just like you, they gave me relics of their own too.",
+   "Dialogue Text": "They gave me relics of their own too.",
    "Speaker": 1,
    "Next Dialogue": 12,
    "Next Dialogue(2)": 0

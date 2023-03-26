@@ -180,6 +180,7 @@ namespace BonVoyage {
                 {
                     DirX += VI.Input.Mouse.WorldPosX() + VI.Camera.GetPos.X() - PlayerPosX;
                     DirY += VI.Input.Mouse.WorldPosY() + VI.Camera.GetPos.Y() - PlayerPosY;
+                    VI.ParticleSystem.GenerateOnce(_ENTITY);
                 }
 
                 // Move if the vector is significant

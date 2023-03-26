@@ -222,9 +222,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -305,9 +305,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 166,
-                "g": 166,
-                "b": 166,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -1173,6 +1173,40 @@
         },
         "Script": {
             "name": "PlayerScript"
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 0.0,
+                "mLifespan": 4.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\puddle.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mExpanding": 150.0,
+                "mFading": true,
+                "mFadeIn": false
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 20.0,
+                "Y": -60.0
+            },
+            "mAreaWidth": 1.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 0,
+            "mIsActive": false,
+            "mSlow": 0.5
         }
     },
     {
@@ -1831,9 +1865,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -2190,6 +2224,40 @@
         },
         "Script": {
             "name": "Level3Passenger1Script"
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 3.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 80.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 70.0,
+            "mDirection": 90.0,
+            "mSpread": 15.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.10000000149011612
         }
     },
     {
@@ -2206,8 +2274,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 3274.0,
-                "Y": -3206.0
+                "X": 2888.0,
+                "Y": -3374.0
             }
         },
         "Sprite": {
@@ -2297,6 +2365,40 @@
         },
         "Script": {
             "name": "Level3Passenger2Script"
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 3.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 80.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 70.0,
+            "mDirection": 90.0,
+            "mSpread": 15.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.10000000149011612
         }
     },
     {
@@ -2352,19 +2454,20 @@
                         "b": 255,
                         "a": 200
                     },
-                    "sprite": 0,
+                    "sprite": 1,
                     "texture": "",
                     "layer": 703
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 1,
             "mCenter": {
-                "X": 150.0,
-                "Y": 86.47000122070313
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 130.0,
             "mDirection": 90.0,
@@ -34189,8 +34292,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 400.0
+                "X": 405.0,
+                "Y": 405.0
             },
             "rotation": 0.0,
             "translation": {
@@ -37311,9 +37414,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 105,
-                "g": 105,
-                "b": 105,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -37446,9 +37549,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 127,
-                "g": 127,
-                "b": 127,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -37654,9 +37757,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 81,
-                "g": 81,
-                "b": 81,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -37706,9 +37809,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 183,
-                "g": 183,
-                "b": 183,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -37789,9 +37892,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -37872,9 +37975,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 193,
-                "g": 193,
-                "b": 193,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -38182,9 +38285,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 108,
-                "g": 108,
-                "b": 108,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -38234,9 +38337,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 84,
-                "g": 84,
-                "b": 84,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -39793,9 +39896,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 205,
+                "g": 205,
+                "b": 205,
                 "a": 255
             },
             "sprite": 2,
@@ -39845,9 +39948,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 85,
+                "g": 85,
+                "b": 85,
                 "a": 255
             },
             "sprite": 2,
@@ -40641,6 +40744,40 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001.0,
+            "mIsActive": true,
+            "mSlow": 0.20000000298023224
         }
     },
     {
@@ -40683,6 +40820,40 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001.0,
+            "mIsActive": true,
+            "mSlow": 0.20000000298023224
         }
     },
     {
@@ -40725,6 +40896,40 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001.0,
+            "mIsActive": true,
+            "mSlow": 0.20000000298023224
         }
     },
     {
@@ -40767,6 +40972,40 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001.0,
+            "mIsActive": true,
+            "mSlow": 0.20000000298023224
         }
     },
     {
@@ -40809,6 +41048,40 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001.0,
+            "mIsActive": true,
+            "mSlow": 0.20000000298023224
         }
     },
     {
@@ -40981,7 +41254,220 @@
     },
     {
         "General": {
-            "name": "P1CorrectDestRender",
+            "name": "LittleGirl",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": -71.5,
+                "Y": 115.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3290.0,
+                "Y": 2170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\girl\\Character_Girl_SE_Idle_Spritesheet.png",
+            "layer": 701
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 5,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "Script": {
+            "name": "Level3LittleGirlScript"
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": 18.0,
+                        "Y": 40.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 17.66741943359375,
+                        "Y": -42.30902099609375
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -5.033447265625,
+                        "Y": -42.65087890625
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -12.83685302734375,
+                        "Y": 44.18670654296875
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 18.0,
+                        "Y": 40.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 250.0,
+                "Y": 250.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3270.0,
+                "Y": 2180.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region2_Lotus_spritesheet.png",
+            "layer": 700
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": -5.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 55.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "LittleGirlBox",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 86.47000122070313
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3520.0,
+                "Y": 2130.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2-tilt.png",
+            "layer": 5
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001.0,
+            "mIsActive": true,
+            "mSlow": 0.20000000298023224
+        }
+    },
+    {
+        "General": {
+            "name": "P1WrongDestRender",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -40993,7 +41479,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -570.0,
+                "X": -580.0,
                 "Y": 1940.0
             }
         },

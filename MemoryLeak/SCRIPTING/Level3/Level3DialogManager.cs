@@ -22,6 +22,9 @@ using VI;
 
 namespace BonVoyage {
   public class Level3DialogManager : DialogManager {
+    public const string LittleGirlString            = "LittleGirl";
+    public const string LittleGirlBoxString         = "LittleGirlBox";
+
     public const string P1String                    = "Passenger_1";
     public const string P1BoxString                 = "Passenger1Box";
     public const string P1CorrectBoxString          = "P1CorrectDropOffPoint";
@@ -31,14 +34,14 @@ namespace BonVoyage {
 
     public const string P2String                    = "Passenger_2";
     public const string P2BoxString                 = "Passenger2Box";
-    public const string P2CorrectBoxString          = "P1CorrectDropOffPoint";
-    public const string P2WrongBoxString            = "P1WrongDropOffPoint";
-    public const string P2CorrectRenderString       = "P1CorrectDestRender";
-    public const string P2WrongRenderString         = "P1WrongDestRender";
+    public const string P2CorrectBoxString          = "P2CorrectDropOffPoint";
+    public const string P2WrongBoxString            = "P2WrongDropOffPoint";
+    public const string P2CorrectRenderString       = "P2CorrectDestRender";
+    public const string P2WrongRenderString         = "P2WrongDestRender";
 
     //private bool progressUpdate = false;
-    static public bool runIntroDialog;
-    //static public bool runGirlDialog;
+    static public bool runLittleGirlDialog;
+    private int LittleGirlColliderBox;
 
     private int correctDestination_RenderLocation;
     private int wrongDestination_RenderLocation;
@@ -59,9 +62,11 @@ namespace BonVoyage {
 
       P1ColliderBox = VI.Entity.GetId(P1BoxString);
       P2ColliderBox = VI.Entity.GetId(P2BoxString);
+      LittleGirlColliderBox = VI.Entity.GetId(LittleGirlBoxString);
 
       dialogInit = true;
 
+      VI.Text.Update(UIObjectiveTextID, "Objective:Find the Little Girl");
       VI.Entity.s_Deactivate(P2String);
       VI.Entity.Deactivate(P2ColliderBox);
     }
@@ -77,6 +82,18 @@ namespace BonVoyage {
         normalZoom = ChangeZoom(1600, 300);
 
       // Dialog control
+      if (runLittleGirlDialog) {
+        GeneralDialogStart(PlayerDirection.E);
+        MoveCameraRightToDialog();
+        MovePlayer(playerID, VI.Transform.Position.GetX(LittleGirlColliderBox),
+                             VI.Transform.Position.GetY(LittleGirlColliderBox)); // Move him to better location
+        runLittleGirlDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue LittleGirl 1"); // Run the dialog
+        if (!runLittleGirlDialog) {
+          VI.Text.Update(UIObjectiveTextID, "Objective: Continue finding the lost souls");
+          GeneralEndDialog();
+        }
+      }
+
       if (runPassengerDialog) {
         GeneralDialogStart(1);
         MoveCameraRightToDialog();
@@ -168,7 +185,8 @@ namespace BonVoyage {
         base.Exit(_ENTITY);
 
       passengerDialogProgress = 0;
-      runIntroDialog = false;
+
+      runLittleGirlDialog = false;
       runPassengerDialog = false;
       runPassenger2Dialog = false;
     }
@@ -182,7 +200,7 @@ namespace BonVoyage {
     public void EndIntroDialog() {
       GeneralEndDialog();
 
-      VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
+      VI.Text.Update(UIObjectiveTextID, "continue finding the lost soulsObjective: Find the Little Girl");
     }
 
     public void EndPassengerDialog() {

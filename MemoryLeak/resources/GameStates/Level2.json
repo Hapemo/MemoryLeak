@@ -192,7 +192,7 @@
         },
         "isActive": false,
         "mForceRender": false,
-        "layer": 4,
+        "layer": 5,
         "order": 0
     },
     {
@@ -207,6 +207,24 @@
         "isActive": false,
         "mForceRender": false,
         "layer": 15,
+        "order": 0
+    },
+    {
+        "SceneName": "Lv2Firefly",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": -2085.3994140625,
+                "Y": 1637.222412109375
+            }
+        },
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 4,
         "order": 0
     }
 ]

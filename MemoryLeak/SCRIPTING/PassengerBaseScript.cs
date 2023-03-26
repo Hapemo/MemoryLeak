@@ -253,7 +253,6 @@ namespace BonVoyage {
       // Animate attachment to player
       // returns true once complete
       if (fadingOut) { // Fading out
-        TransferParticleSystemPos(_e, _e);
         VI.ParticleSystem.GenerateOnce(_e);
         fadingOut = !Fading(_e, 100.0f, FADE.OUT);
         if (!fadingOut) { // Just finished fading out
@@ -267,7 +266,6 @@ namespace BonVoyage {
           PlayerScript.PlayerInOtherAnimation = false;
           fadingOut = true;
         } else {
-          TransferParticleSystemPos(_e, _e);
           VI.ParticleSystem.GenerateOnce(_e);
         }
       }
@@ -278,7 +276,6 @@ namespace BonVoyage {
       // returns true once complete
       if (fadingOut) { // Fading out
         TransferEntityPos(_e, playerBoat); // Because the boat will be moving when transfering
-        TransferParticleSystemPos(_e, _e);
         VI.ParticleSystem.GenerateOnce(_e);
         fadingOut = !Fading(_e, 100.0f, FADE.OUT);
         if (!fadingOut) { // Just finished fading out
@@ -293,7 +290,6 @@ namespace BonVoyage {
           DestinationReached = true;
           fadingOut = true;
         } else {
-          TransferParticleSystemPos(_e, _e);
           VI.ParticleSystem.GenerateOnce(_e);
         }
       }

@@ -89,6 +89,7 @@ namespace BonVoyage {
             // Passenger is ready to attach & dialogue has ended
             if (ReadyToAttach && !Level1DialogManager.runPassenger2Dialog) {
                 // Set flag variables
+                fadingOut = true;
                 AttachToPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
                 ReadyToAttach = false;
@@ -98,14 +99,7 @@ namespace BonVoyage {
 
             // Play animation of passenger attaching to player
             if (AttachToPlayerAnimation) {
-                // Animate attachment to player
-                // returns true once complete
-                if (AttachPassengerToPlayer(_ENTITY, playerBoat, InitialScaleX)) {
-                    // Move on to passenger moving with the player
-                    AttachedToPlayer = true;
-                    AttachToPlayerAnimation = false;
-                    PlayerScript.PlayerInOtherAnimation = false;
-                }
+                DefaultAttachToPlayer(_ENTITY);
             }
 
             // Check if passenger reaches destination
@@ -132,16 +126,7 @@ namespace BonVoyage {
 
             // Play animation of passenger detaching from player
             if (DetachFromPlayerAnimation) {
-                // Animate detachment to player
-                // returns true once complete
-                int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
-                if (DetachPassengerFromPlayer(_ENTITY, renderLocation, InitialScaleX)) {
-                    // Animation complete
-                    DetachFromPlayerAnimation = false;
-                    PlayerScript.PlayerInOtherAnimation = false;
-                    DestinationReached = true;
-                }
-
+                DefaultAttachToDestination(_ENTITY);
             }
         
             // Passenger was delivered

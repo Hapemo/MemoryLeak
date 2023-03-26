@@ -43,14 +43,6 @@ namespace BonVoyage {
 
       wrongDestination_Box                = VI.Entity.GetId(Level3DialogManager.P1WrongBoxString);
       wrongDestination_RenderLocation     = VI.Entity.GetId(Level3DialogManager.P1WrongRenderString);
-
-      if (playerBoat == 0) LOG.WRITE("playerBoat=================");
-      if (triggerBox == 0) LOG.WRITE("triggerBox=================");
-      if (correctDestination_Box == 0) LOG.WRITE("correctDestination_Box=================");
-      if (correctDestination_RenderLocation == 0) LOG.WRITE("correctDestination_RenderLocation=================");
-      if (wrongDestination_Box == 0) LOG.WRITE("wrongDestination_Box=================");
-      if (wrongDestination_RenderLocation == 0) LOG.WRITE("wrongDestination_RenderLocation=================");
-
     }
 
     public override void EarlyUpdate(int _ENTITY) {
@@ -88,6 +80,7 @@ namespace BonVoyage {
       // Passenger is ready to attach & dialogue has ended
       if (ReadyToAttach && !Level3DialogManager.runPassengerDialog) {
         // Set flag variables
+        fadingOut = true;
         AttachToPlayerAnimation = true;
         PlayerScript.PlayerInOtherAnimation = true;
         ReadyToAttach = false;
@@ -97,14 +90,7 @@ namespace BonVoyage {
 
       // Play animation of passenger attaching to player
       if (AttachToPlayerAnimation) {
-        // Animate attachment to player
-        // returns true once complete
-        if (AttachPassengerToPlayer(_ENTITY, playerBoat, InitialScaleX)) {
-          // Move on to passenger moving with the player
-          AttachedToPlayer = true;
-          AttachToPlayerAnimation = false;
-          PlayerScript.PlayerInOtherAnimation = false;
-        }
+        DefaultAttachToPlayer(_ENTITY);
       }
 
       // Check if passenger reaches destination
@@ -130,16 +116,7 @@ namespace BonVoyage {
 
       // Play animation of passenger detaching from player
       if (DetachFromPlayerAnimation) {
-        // Animate detachment to player
-        // returns true once complete
-        int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
-        if (DetachPassengerFromPlayer(_ENTITY, renderLocation, InitialScaleX)) {
-          // Animation complete
-          DetachFromPlayerAnimation = false;
-          PlayerScript.PlayerInOtherAnimation = false;
-          DestinationReached = true;
-        }
-
+        DefaultAttachToDestination(_ENTITY);
       }
 
       // Passenger was delivered
