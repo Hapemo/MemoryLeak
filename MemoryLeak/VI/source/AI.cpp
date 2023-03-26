@@ -141,7 +141,7 @@ int AIManager::GetCurrentWeather(int index, float posX, float posY)
 	int indexY = (int)(-(posY - mapMaxHeight* weatherScale/2)/ weatherScale);
 	indexX += (index % 5) - 2;
 	indexY += (index / 5) - 2;
-	if ((indexX < 0) || (indexY < 0) || (indexX > weatherMaxWidth - 1) || indexY > weatherMaxHeight - 1)
+	if ((indexX < 0) || (indexY < 0) || (indexX > mapMaxWidth - 1) || indexY > mapMaxHeight - 1)
 	{
 		std::cout << "Weather Errrrrrrorrrrrrrrrrrrrrrrrr Sub script out of range !!!!!!!!!!!!!!!!\n";
 		std::cout << "X: " << indexX << "Y: " << indexX << "\n";
