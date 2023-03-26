@@ -73,8 +73,8 @@ namespace BonVoyage
             //VI.Test.ArgString("Player: " + x + ", " + y);
             //VI.Test.ArgString("Camera: " + VI.Camera.GetPos.X() + ", " + VI.Camera.GetPos.Y());
 
-            VI.Camera.SetPos.X(Lerp(VI.Camera.GetPos.X(), x, (float)VI.General.DeltaTime()));
-            VI.Camera.SetPos.Y(Lerp(VI.Camera.GetPos.Y(), y, (float)VI.General.DeltaTime()));
+            VI.Camera.SetPos.X(Lerp(VI.Camera.GetPos.X(), x, (float)(VI.General.DeltaTime() *3.0)));
+            VI.Camera.SetPos.Y(Lerp(VI.Camera.GetPos.Y(), y, (float)(VI.General.DeltaTime() * 3.0)));
         }
 
         public static bool ChangeZoom(float x, float speed) {
