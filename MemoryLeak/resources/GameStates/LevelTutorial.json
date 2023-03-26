@@ -13,54 +13,63 @@
             }
         },
         "isActive": false,
+        "mForceRender": false,
         "layer": 3,
         "order": 3
     },
     {
         "SceneName": "Pause",
         "isActive": true,
+        "mForceRender": false,
         "layer": 10,
         "order": 0
     },
     {
         "SceneName": "Game Over",
         "isActive": true,
+        "mForceRender": false,
         "layer": 10,
         "order": 4
     },
     {
         "SceneName": "How_To_Play",
         "isActive": true,
+        "mForceRender": false,
         "layer": 10,
         "order": 0
     },
     {
         "SceneName": "Quit Confirmation",
         "isActive": true,
+        "mForceRender": false,
         "layer": 10,
         "order": 4
     },
     {
         "SceneName": "TutorialDialogue",
         "isActive": false,
+        "mForceRender": false,
         "layer": 6,
         "order": 7
     },
     {
         "SceneName": "FPS",
         "isActive": false,
+        "mForceRender": false,
         "layer": 15,
         "order": 0
     },
     {
         "SceneName": "Transition",
         "isActive": false,
+        "mForceRender": false,
         "layer": 11,
         "order": 0
     },
     {
         "SceneName": "TutorialUI",
         "isActive": false,
+        "mForceRender": false,
         "layer": 7,
         "order": 0
     },
@@ -78,6 +87,7 @@
             }
         },
         "isActive": false,
+        "mForceRender": false,
         "layer": 0,
         "order": 0
     },
@@ -95,7 +105,15 @@
             }
         },
         "isActive": false,
+        "mForceRender": false,
         "layer": 8,
+        "order": 0
+    },
+    {
+        "SceneName": "TutorialNameFade",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 15,
         "order": 0
     }
 ]

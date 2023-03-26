@@ -76,6 +76,7 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": false
             },
@@ -136,6 +137,7 @@
             "nextStep": 1,
             "acceleration": 0.0,
             "moveOnHover": false,
+            "moveOnCollide": false,
             "targets": [
                 {
                     "time": 2.0,

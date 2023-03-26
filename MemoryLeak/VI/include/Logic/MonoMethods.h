@@ -136,6 +136,31 @@ public:
 		static void SetSheetIndex(const int _eId, int _index);
 		static int GetSheetIndex(const int _eId);
 	};
+	struct iColorAI {
+		/*!*****************************************************************************
+		\brief
+		Color AI
+		*******************************************************************************/
+		static void StartAnimation(const int _eId);
+		static void AddColor(const int _eId, int _r, int _g, int _b, int _a, float _time = 1.f);
+		static void AddColorAt(const int _eId, int _r, int _g, int _b, int _a, float _time = 1.f, int _index = 0);
+		static void RemoveColorAt(const int _eId, int _index);
+		static bool SetNextStep(const int _eId, int _i); // return ture if sucessful (withing 0 to the vector MAX)
+		static void StopAfterThisAnimation(const int _eId, bool _next = true);
+		static void StopAfterEndofAnimationLoop(const int _eId, bool _loop = true);
+		static void ReverseOrderAfterNextAnimation(const int _eId, bool _reverse = true);
+		static void SetAnimationLoopToCycle(const int _eId, bool _cycle = true);
+
+		static void s_StartAnimation(MonoString* _entityName, MonoString* _sceneName);
+		static void s_AddColor(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a, float _time = 1.f);
+		static void s_AddColorAt(MonoString* _entityName, MonoString* _sceneName, int _r, int _g, int _b, int _a, float _time = 1.f, int _index = 0);
+		static void s_RemoveColorAt(MonoString* _entityName, MonoString* _sceneName, int _index);
+		static bool s_SetNextStep(MonoString* _entityName, MonoString* _sceneName, int _i); // return ture if sucessful (withing 0 to the vector MAX)
+		static void s_StopAfterThisAnimation(MonoString* _entityName, MonoString* _sceneName, bool _next = true);
+		static void s_StopAfterEndofAnimationLoop(MonoString* _entityName, MonoString* _sceneName, bool _loop = true);
+		static void s_ReverseOrderAfterNextAnimation(MonoString* _entityName, MonoString* _sceneName, bool _reverse = true);
+		static void s_SetAnimationLoopToCycle(MonoString* _entityName, MonoString* _sceneName, bool _cycle = true);
+	};
 	struct iParticleSystem {
 		struct iParticleInfo {
 			static void SetTexture(const int _eId, MonoString* _texture);

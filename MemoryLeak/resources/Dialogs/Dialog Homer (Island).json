@@ -1,34 +1,34 @@
 [
  {
-   "FIELD1": 1,
+   "Dialogue ID": 1,
    "Dialogue Text": "Boats...? Could this be...",
    "Speaker": 0,
    "Next Dialogue": 2,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 2,
+   "Dialogue ID": 2,
    "Dialogue Text": "But Eldoris doesn't seem to be here...",
    "Speaker": 0,
    "Next Dialogue": 3,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 3,
+   "Dialogue ID": 3,
    "Dialogue Text": "...I guess even in this life I still managed to lose him huh...",
    "Speaker": 0,
    "Next Dialogue": 4,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 4,
+   "Dialogue ID": 4,
    "Dialogue Text": "I just hope he hasn't forgotten our promise... ",
    "Speaker": 0,
    "Next Dialogue": 5,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 5,
+   "Dialogue ID": 5,
    "Dialogue Text": "Thank you however, I'll surely repay you someday.",
    "Speaker": 0,
    "Next Dialogue": 0,

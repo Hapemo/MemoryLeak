@@ -408,6 +408,11 @@ Entity InternalCalls::iEntity::GetEntity(const int _eId) {
 	return Entity(_eId);
 }
 Entity InternalCalls::iEntity::GetEntity(std::string const& _entityName, std::string const& _sceneName) {
+	/*if (!ECS::EntityExists(_eId)) {
+		std::string error = "There is no Entity with id " + std::to_string(_eId) + "!";
+		LOG_GAME(error);
+		LOG_ERROR(error);
+	}*/
 	return GameStateManager::GetInstance()->GetEntity(_entityName, _sceneName);
 }
 
@@ -746,7 +751,7 @@ int InternalCalls::iAnimation::iSpriteSheet::GetFrameCount(std::string const& _e
 \brief
 Movement animation
 *******************************************************************************/
-void InternalCalls::iAnimation::iTransform::Start(const int _eId) {
+void InternalCalls::iMovementAI::Start(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -754,7 +759,7 @@ void InternalCalls::iAnimation::iTransform::Start(const int _eId) {
 	}
 	movementAIManager->StartAnimation(e);
 }
-bool InternalCalls::iAnimation::iTransform::SetNext(const int _eId, int _i) { // return true if successful (withing 0 to the vector MAX)
+bool InternalCalls::iMovementAI::SetNext(const int _eId, int _i) { // return true if successful (withing 0 to the vector MAX)
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -762,7 +767,7 @@ bool InternalCalls::iAnimation::iTransform::SetNext(const int _eId, int _i) { //
 	}
 	return movementAIManager->SetNextStep(e, _i);
 }
-void InternalCalls::iAnimation::iTransform::GoToNext(const int _eId) {
+void InternalCalls::iMovementAI::GoToNext(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -770,7 +775,7 @@ void InternalCalls::iAnimation::iTransform::GoToNext(const int _eId) {
 	}
 	movementAIManager->SetNextStep(e, e.GetComponent<MovementAI>().nextStep);
 }
-void InternalCalls::iAnimation::iTransform::Stop(const int _eId, bool _next) {
+void InternalCalls::iMovementAI::Stop(const int _eId, bool _next) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -778,7 +783,7 @@ void InternalCalls::iAnimation::iTransform::Stop(const int _eId, bool _next) {
 	}
 	movementAIManager->StopAfterThisAnimation(e, _next);
 }
-void InternalCalls::iAnimation::iTransform::StopAfterEndLoop(const int _eId, bool _loop) {
+void InternalCalls::iMovementAI::StopAfterEndLoop(const int _eId, bool _loop) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -786,7 +791,7 @@ void InternalCalls::iAnimation::iTransform::StopAfterEndLoop(const int _eId, boo
 	}
 	movementAIManager->StopAfterEndofAnimationLoop(e, _loop);
 }
-void InternalCalls::iAnimation::iTransform::ReverseOrder(const int _eId, bool _reverse) {
+void InternalCalls::iMovementAI::ReverseOrder(const int _eId, bool _reverse) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -794,7 +799,7 @@ void InternalCalls::iAnimation::iTransform::ReverseOrder(const int _eId, bool _r
 	}
 	movementAIManager->ReverseOrderAfterNextAnimation(e, _reverse);
 }
-void InternalCalls::iAnimation::iTransform::SetLoopCycle(const int _eId, bool _cycle) {
+void InternalCalls::iMovementAI::SetLoopCycle(const int _eId, bool _cycle) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -802,7 +807,7 @@ void InternalCalls::iAnimation::iTransform::SetLoopCycle(const int _eId, bool _c
 	}
 	movementAIManager->SetAnimationLoopToCycle(e, _cycle);
 }
-int InternalCalls::iAnimation::iTransform::GetCurrentIndex(const int _eId) {
+int InternalCalls::iMovementAI::GetCurrentIndex(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -810,7 +815,7 @@ int InternalCalls::iAnimation::iTransform::GetCurrentIndex(const int _eId) {
 	}
 	return e.GetComponent<MovementAI>().step;
 }
-void InternalCalls::iAnimation::iTransform::Remove(const int _eId, int _index) {
+void InternalCalls::iMovementAI::Remove(const int _eId, int _index) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -819,7 +824,7 @@ void InternalCalls::iAnimation::iTransform::Remove(const int _eId, int _index) {
 	movementAIManager->RemoveTransformAt(e, _index);
 	e.GetComponent<MovementAI>().currtime = e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step];
 }
-void InternalCalls::iAnimation::iTransform::EditTiming(const int _eId, float _time) {
+void InternalCalls::iMovementAI::EditTiming(const int _eId, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -827,7 +832,7 @@ void InternalCalls::iAnimation::iTransform::EditTiming(const int _eId, float _ti
 	}
 	e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step] = _time;
 }
-void InternalCalls::iAnimation::iTransform::EditCurrentTiming(const int _eId, float _time) {
+void InternalCalls::iMovementAI::EditCurrentTiming(const int _eId, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -835,7 +840,7 @@ void InternalCalls::iAnimation::iTransform::EditCurrentTiming(const int _eId, fl
 	}
 	e.GetComponent<MovementAI>().currtime = _time;
 }
-void InternalCalls::iAnimation::iTransform::EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+void InternalCalls::iMovementAI::EditCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -845,7 +850,7 @@ void InternalCalls::iAnimation::iTransform::EditCurrent(const int _eId, float _s
 	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step] = trans;
 	e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step] = _time;
 }
-void InternalCalls::iAnimation::iTransform::CurrentScaleX(const int _eId, float _scaleX) {
+void InternalCalls::iMovementAI::CurrentScaleX(const int _eId, float _scaleX) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -853,7 +858,7 @@ void InternalCalls::iAnimation::iTransform::CurrentScaleX(const int _eId, float 
 	}
 	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale.x = _scaleX;
 }
-void InternalCalls::iAnimation::iTransform::CurrentScaleY(const int _eId, float _scaleY) {
+void InternalCalls::iMovementAI::CurrentScaleY(const int _eId, float _scaleY) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -861,7 +866,7 @@ void InternalCalls::iAnimation::iTransform::CurrentScaleY(const int _eId, float 
 	}
 	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale.y = _scaleY;
 }
-void InternalCalls::iAnimation::iTransform::CurrentRotate(const int _eId, float _rot) {
+void InternalCalls::iMovementAI::CurrentRotate(const int _eId, float _rot) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -869,7 +874,7 @@ void InternalCalls::iAnimation::iTransform::CurrentRotate(const int _eId, float 
 	}
 	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].rotation = _rot;
 }
-void InternalCalls::iAnimation::iTransform::CurrentPosX(const int _eId, float _posX) {
+void InternalCalls::iMovementAI::CurrentPosX(const int _eId, float _posX) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -877,7 +882,7 @@ void InternalCalls::iAnimation::iTransform::CurrentPosX(const int _eId, float _p
 	}
 	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation.x = _posX;
 }
-void InternalCalls::iAnimation::iTransform::CurrentPosY(const int _eId, float _posY) {
+void InternalCalls::iMovementAI::CurrentPosY(const int _eId, float _posY) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -885,7 +890,7 @@ void InternalCalls::iAnimation::iTransform::CurrentPosY(const int _eId, float _p
 	}
 	e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation.y = _posY;
 }
-float InternalCalls::iAnimation::iTransform::GetTiming(const int _eId) {
+float InternalCalls::iMovementAI::GetTiming(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -893,7 +898,7 @@ float InternalCalls::iAnimation::iTransform::GetTiming(const int _eId) {
 	}
 	return e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step];
 }
-float InternalCalls::iAnimation::iTransform::GetCurrentTiming(const int _eId) {
+float InternalCalls::iMovementAI::GetCurrentTiming(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -901,7 +906,7 @@ float InternalCalls::iAnimation::iTransform::GetCurrentTiming(const int _eId) {
 	}
 	return e.GetComponent<MovementAI>().currtime;
 }
-float InternalCalls::iAnimation::iTransform::GetCurrentScaleX(const int _eId) {
+float InternalCalls::iMovementAI::GetCurrentScaleX(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -909,7 +914,7 @@ float InternalCalls::iAnimation::iTransform::GetCurrentScaleX(const int _eId) {
 	}
 	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale.x;
 }
-float InternalCalls::iAnimation::iTransform::GetCurrentScaleY(const int _eId) {
+float InternalCalls::iMovementAI::GetCurrentScaleY(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -917,7 +922,7 @@ float InternalCalls::iAnimation::iTransform::GetCurrentScaleY(const int _eId) {
 	}
 	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale.y;
 }
-float InternalCalls::iAnimation::iTransform::GetCurrentRotate(const int _eId) {
+float InternalCalls::iMovementAI::GetCurrentRotate(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -925,7 +930,7 @@ float InternalCalls::iAnimation::iTransform::GetCurrentRotate(const int _eId) {
 	}
 	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].rotation;
 }
-float InternalCalls::iAnimation::iTransform::GetCurrentPosX(const int _eId) {
+float InternalCalls::iMovementAI::GetCurrentPosX(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -933,7 +938,7 @@ float InternalCalls::iAnimation::iTransform::GetCurrentPosX(const int _eId) {
 	}
 	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation.x;
 }
-float InternalCalls::iAnimation::iTransform::GetCurrentPosY(const int _eId) {
+float InternalCalls::iMovementAI::GetCurrentPosY(const int _eId) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -941,7 +946,7 @@ float InternalCalls::iAnimation::iTransform::GetCurrentPosY(const int _eId) {
 	}
 	return e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation.y;
 }
-void InternalCalls::iAnimation::iTransform::AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+void InternalCalls::iMovementAI::AddTransform(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -951,7 +956,7 @@ void InternalCalls::iAnimation::iTransform::AddTransform(const int _eId, float _
 	movementAIManager->AddTransform(e, trans, _time);
 	e.GetComponent<MovementAI>().currtime = e.GetComponent<MovementAI>().time[e.GetComponent<MovementAI>().step];
 }
-void InternalCalls::iAnimation::iTransform::AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time, int _index) {
+void InternalCalls::iMovementAI::AddTransformAt(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time, int _index) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -960,7 +965,7 @@ void InternalCalls::iAnimation::iTransform::AddTransformAt(const int _eId, float
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
 	movementAIManager->AddTransformAt(e, trans, _time, _index);
 }
-void InternalCalls::iAnimation::iTransform::TransformScaleAt(const int _eId, float _scaleX, float _scaleY, float _time, int _index) {
+void InternalCalls::iMovementAI::TransformScaleAt(const int _eId, float _scaleX, float _scaleY, float _time, int _index) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -969,7 +974,7 @@ void InternalCalls::iAnimation::iTransform::TransformScaleAt(const int _eId, flo
 	Transform trans{ {_scaleX, _scaleY}, e.GetComponent<Transform>().rotation, e.GetComponent<Transform>().translation };
 	movementAIManager->AddTransformAt(e, trans, _time, _index);
 }
-void InternalCalls::iAnimation::iTransform::TransformRotateAt(const int _eId,  float _rot, float _time, int _index) {
+void InternalCalls::iMovementAI::TransformRotateAt(const int _eId,  float _rot, float _time, int _index) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -978,7 +983,7 @@ void InternalCalls::iAnimation::iTransform::TransformRotateAt(const int _eId,  f
 	Transform trans{ e.GetComponent<Transform>().scale, _rot, e.GetComponent<Transform>().translation };
 	movementAIManager->AddTransformAt(e, trans, _time, _index);
 }
-void InternalCalls::iAnimation::iTransform::TransformPosAt(const int _eId, float _posX, float _posY, float _time, int _index) {
+void InternalCalls::iMovementAI::TransformPosAt(const int _eId, float _posX, float _posY, float _time, int _index) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -987,7 +992,7 @@ void InternalCalls::iAnimation::iTransform::TransformPosAt(const int _eId, float
 	Transform trans{ e.GetComponent<Transform>().scale, e.GetComponent<Transform>().rotation, { _posX, _posY} };
 	movementAIManager->AddTransformAt(e, trans, _time, _index);
 }
-void InternalCalls::iAnimation::iTransform::AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+void InternalCalls::iMovementAI::AddTransformDifference(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -996,7 +1001,7 @@ void InternalCalls::iAnimation::iTransform::AddTransformDifference(const int _eI
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
 	movementAIManager->AddTransformDifference(e, trans, _time);
 }
-void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step) {
+void InternalCalls::iMovementAI::SetCalculatedTimeFromPosition(const int _eId, float _posX, float _posY, int _step) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -1004,7 +1009,7 @@ void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromPosition(const 
 	}
 	movementAIManager->SetCalculatedTimeFromPosition(e, { _posX, _posY }, _step);
 }
-void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step) {
+void InternalCalls::iMovementAI::SetCalculatedTimeFromRotation(const int _eId, float _rot, int _step) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -1012,7 +1017,7 @@ void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromRotation(const 
 	}
 	movementAIManager->SetCalculatedTimeFromRotation(e, _rot, _step);
 }
-void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step) {
+void InternalCalls::iMovementAI::SetCalculatedTimeFromScale(const int _eId, float _scaleX, float _scaleY, int _step) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -1021,7 +1026,7 @@ void InternalCalls::iAnimation::iTransform::SetCalculatedTimeFromScale(const int
 	movementAIManager->SetCalculatedTimeFromScale(e, { _scaleX, _scaleY }, _step);
 }
 
-void InternalCalls::iAnimation::iTransform::AddTransformAtCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
+void InternalCalls::iMovementAI::AddTransformAtCurrent(const int _eId, float _scaleX, float _scaleY, float _rot, float _posX, float _posY, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -1030,7 +1035,7 @@ void InternalCalls::iAnimation::iTransform::AddTransformAtCurrent(const int _eId
 	Transform trans{ {_scaleX, _scaleY}, _rot, {_posX, _posY} };
 	movementAIManager->AddTransformAt(e, trans, _time, e.GetComponent<MovementAI>().step);
 }
-void InternalCalls::iAnimation::iTransform::TransformScaleAtCurrent(const int _eId, float _scaleX, float _scaleY, float _time) {
+void InternalCalls::iMovementAI::TransformScaleAtCurrent(const int _eId, float _scaleX, float _scaleY, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -1039,7 +1044,7 @@ void InternalCalls::iAnimation::iTransform::TransformScaleAtCurrent(const int _e
 	Transform trans{ {_scaleX, _scaleY}, e.GetComponent<Transform>().rotation, e.GetComponent<Transform>().translation };
 	movementAIManager->AddTransformAt(e, trans, _time, e.GetComponent<MovementAI>().step);
 }
-void InternalCalls::iAnimation::iTransform::TransformRotateAtCurrent(const int _eId, float _rot, float _time) {
+void InternalCalls::iMovementAI::TransformRotateAtCurrent(const int _eId, float _rot, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -1048,7 +1053,7 @@ void InternalCalls::iAnimation::iTransform::TransformRotateAtCurrent(const int _
 	Transform trans{ e.GetComponent<Transform>().scale, _rot, e.GetComponent<Transform>().translation };
 	movementAIManager->AddTransformAt(e, trans, _time, e.GetComponent<MovementAI>().step);
 }
-void InternalCalls::iAnimation::iTransform::TransformPosAtCurrent(const int _eId, float _posX, float _posY, float _time) {
+void InternalCalls::iMovementAI::TransformPosAtCurrent(const int _eId, float _posX, float _posY, float _time) {
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {
 		MissingComponent(e.GetComponent<General>().name, "MovementAI");
@@ -1056,6 +1061,132 @@ void InternalCalls::iAnimation::iTransform::TransformPosAtCurrent(const int _eId
 	}
 	Transform trans{ e.GetComponent<Transform>().scale, e.GetComponent<Transform>().rotation, { _posX, _posY} };
 	movementAIManager->AddTransformAt(e, trans, _time, e.GetComponent<MovementAI>().step);
+}
+
+/*!*****************************************************************************
+\brief
+Color AI
+*******************************************************************************/
+void InternalCalls::iColorAI::StartAnimation(const Entity& _e) {
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return;
+	}
+	colorAIManager->StartAnimation(_e);
+}
+void InternalCalls::iColorAI::AddColor(const Entity& _e, int _r, int _g, int _b, int _a, float _time) {
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return;
+	}
+	Color c = { (GLubyte)_r,(GLubyte)_g,(GLubyte)_b, (GLubyte)_a };
+	colorAIManager->AddColor(_e, c, _time);
+}
+void InternalCalls::iColorAI::AddColorAt(const Entity& _e, int _r, int _g, int _b, int _a, float _time, int _index) {
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return;
+	}
+	Color c = { (GLubyte)_r,(GLubyte)_g,(GLubyte)_b, (GLubyte)_a };
+	colorAIManager->AddColorAt(_e, c, _time, _index);
+}
+void InternalCalls::iColorAI::RemoveColorAt(const Entity& _e, int _index) {
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return;
+	}
+	colorAIManager->RemoveColorAt(_e, _index);
+}
+bool InternalCalls::iColorAI::SetNextStep(const Entity& _e, int _i) { // return ture if sucessful (withing 0 to the vector MAX)
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return false;
+	}
+	return colorAIManager->SetNextStep(_e, _i);
+}
+void InternalCalls::iColorAI::StopAfterThisAnimation(const Entity& _e, bool _next) {
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return;
+	}
+	colorAIManager->StopAfterThisAnimation(_e, _next);
+}
+void InternalCalls::iColorAI::StopAfterEndofAnimationLoop(const Entity& _e, bool _loop) {
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return;
+	}
+	colorAIManager->StopAfterEndofAnimationLoop(_e, _loop);
+}
+void InternalCalls::iColorAI::ReverseOrderAfterNextAnimation(const Entity& _e, bool _reverse) {
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return;
+	}
+	colorAIManager->ReverseOrderAfterNextAnimation(_e, _reverse);
+}
+void InternalCalls::iColorAI::SetAnimationLoopToCycle(const Entity& _e, bool _cycle) {
+	if (!_e.HasComponent<ColorAI>()) {
+		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
+		return;
+	}
+	colorAIManager->SetAnimationLoopToCycle(_e, _cycle);
+}
+
+void InternalCalls::iColorAI::StartAnimation(const int _eId) {
+	VI::iColorAI::StartAnimation(VI::iEntity::GetEntity(_eId));
+}
+void InternalCalls::iColorAI::AddColor(const int _eId, int _r, int _g, int _b, int _a, float _time) {
+	VI::iColorAI::AddColor(VI::iEntity::GetEntity(_eId), _r, _g, _b, _a, _time);
+}
+void InternalCalls::iColorAI::AddColorAt(const int _eId, int _r, int _g, int _b, int _a, float _time, int _index) {
+	VI::iColorAI::AddColorAt(VI::iEntity::GetEntity(_eId), _r, _g, _b, _a, _time, _index);
+}
+void InternalCalls::iColorAI::RemoveColorAt(const int _eId, int _index) {
+	VI::iColorAI::RemoveColorAt(VI::iEntity::GetEntity(_eId), _index);
+}
+bool InternalCalls::iColorAI::SetNextStep(const int _eId, int _i) { // return ture if sucessful (withing 0 to the vector MAX)
+	return VI::iColorAI::SetNextStep(VI::iEntity::GetEntity(_eId), _i);
+}
+void InternalCalls::iColorAI::StopAfterThisAnimation(const int _eId, bool _next) {
+	VI::iColorAI::StopAfterThisAnimation(VI::iEntity::GetEntity(_eId), _next);
+}
+void InternalCalls::iColorAI::StopAfterEndofAnimationLoop(const int _eId, bool _loop) {
+	VI::iColorAI::StopAfterEndofAnimationLoop(VI::iEntity::GetEntity(_eId), _loop);
+}
+void InternalCalls::iColorAI::ReverseOrderAfterNextAnimation(const int _eId, bool _reverse) {
+	VI::iColorAI::ReverseOrderAfterNextAnimation(VI::iEntity::GetEntity(_eId), _reverse);
+}
+void InternalCalls::iColorAI::SetAnimationLoopToCycle(const int _eId, bool _cycle) {
+	VI::iColorAI::SetAnimationLoopToCycle(VI::iEntity::GetEntity(_eId), _cycle);
+}
+
+void InternalCalls::iColorAI::StartAnimation(std::string const& _entityName, std::string const& _sceneName) {
+	VI::iColorAI::StartAnimation(VI::iEntity::GetEntity(_entityName, _sceneName));
+}
+void InternalCalls::iColorAI::AddColor(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a, float _time) {
+	VI::iColorAI::AddColor(VI::iEntity::GetEntity(_entityName, _sceneName), _r, _g, _b, _a, _time);
+}
+void InternalCalls::iColorAI::AddColorAt(std::string const& _entityName, std::string const& _sceneName, int _r, int _g, int _b, int _a, float _time, int _index) {
+	VI::iColorAI::AddColorAt(VI::iEntity::GetEntity(_entityName, _sceneName), _r, _g, _b, _a, _time, _index);
+}
+void InternalCalls::iColorAI::RemoveColorAt(std::string const& _entityName, std::string const& _sceneName, int _index) {
+	VI::iColorAI::RemoveColorAt(VI::iEntity::GetEntity(_entityName, _sceneName), _index);
+}
+bool InternalCalls::iColorAI::SetNextStep(std::string const& _entityName, std::string const& _sceneName, int _i) { // return ture if sucessful (withing 0 to the vector MAX)
+	return VI::iColorAI::SetNextStep(VI::iEntity::GetEntity(_entityName, _sceneName), _i);
+}
+void InternalCalls::iColorAI::StopAfterThisAnimation(std::string const& _entityName, std::string const& _sceneName, bool _next) {
+	VI::iColorAI::StopAfterThisAnimation(VI::iEntity::GetEntity(_entityName, _sceneName), _next);
+}
+void InternalCalls::iColorAI::StopAfterEndofAnimationLoop(std::string const& _entityName, std::string const& _sceneName, bool _loop) {
+	VI::iColorAI::StopAfterEndofAnimationLoop(VI::iEntity::GetEntity(_entityName, _sceneName), _loop);
+}
+void InternalCalls::iColorAI::ReverseOrderAfterNextAnimation(std::string const& _entityName, std::string const& _sceneName, bool _reverse) {
+	VI::iColorAI::ReverseOrderAfterNextAnimation(VI::iEntity::GetEntity(_entityName, _sceneName), _reverse);
+}
+void InternalCalls::iColorAI::SetAnimationLoopToCycle(std::string const& _entityName, std::string const& _sceneName, bool _cycle) {
+	VI::iColorAI::SetAnimationLoopToCycle(VI::iEntity::GetEntity(_entityName, _sceneName), _cycle);
 }
 
 /*!*****************************************************************************

@@ -226,14 +226,16 @@ namespace BonVoyage {
             if (correctly)
             {
                 VI.Entity.Activate(relicBIG[fragmentId]);
-
                 VI.Entity.Activate(relicFound);
+                VI.ColorAI.StartAnimation(relicFound);
+                VI.ColorAI.SetNextStep(relicFound, 1);
             }
             else
             {
                 VI.Entity.Activate(relicBIGLOST[fragmentId]);
-
                 VI.Entity.Activate(relicNotFound);
+                VI.ColorAI.StartAnimation(relicNotFound);
+                VI.ColorAI.SetNextStep(relicNotFound, 1);
             }
         }
     }

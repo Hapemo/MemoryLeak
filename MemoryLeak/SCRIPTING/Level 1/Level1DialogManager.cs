@@ -65,6 +65,7 @@ namespace BonVoyage {
       dialogInit = true;
       normalZoom = false;
 
+      VI.Text.Update(UIObjectiveTextID, "Objective: Continue finding the lost souls");
       VI.Entity.s_Deactivate(P2String);
       VI.Entity.Deactivate(P2ColliderBox);
     }
@@ -129,7 +130,7 @@ namespace BonVoyage {
         if (!dialogEnded) EndDropoffDialog(0, true);
         break;
       case 20: // Passenger 2 wrong
-        GeneralDialogStart(1);
+        GeneralDialogStart(PlayerDirection.SE);
         MoveCameraLeftToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
@@ -138,7 +139,7 @@ namespace BonVoyage {
         if (!dialogEnded) EndDropoffDialog(1, false);
         break;
       case 21: // Passenger 2 correct
-        GeneralDialogStart(7);
+        GeneralDialogStart(PlayerDirection.SW);
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
@@ -170,12 +171,6 @@ namespace BonVoyage {
     }
 
     #region Dialog Endings
-
-    public void EndIntroDialog() {
-      GeneralEndDialog();
-
-      VI.Text.Update(UIObjectiveTextID, "Objective: Find the Little Girl");
-    }
 
     public void EndPassengerDialog() {
       GeneralEndDialog();

@@ -35,6 +35,8 @@ namespace BonVoyage {
     private int PEndColliderBox;
     private int tutorialGuider;
 
+        private int tutorialName;
+
     public override void Alive(int _ENTITY) {
         base.Alive(_ENTITY);
     }
@@ -46,7 +48,7 @@ namespace BonVoyage {
       PColliderBox = VI.Entity.GetId("PassengerPickupBox");
       PEndColliderBox = VI.Entity.GetId("PassengerDropOffBox");
         tutorialGuider = VI.Entity.GetId("MoveToCatGuider");
-
+            tutorialName = VI.Entity.GetId("TutorialName");
       dialogInit = true;
       runIntroDialog = true;
     }
@@ -68,7 +70,10 @@ namespace BonVoyage {
         GeneralDialogStart(7);
         runIntroDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue SceneIntro 1");
         if (!runIntroDialog)
+                {
           EndIntroDialog();
+                    VI.Entity.Activate(tutorialName);
+                }
       }
 
       if (runGirlDialog) {

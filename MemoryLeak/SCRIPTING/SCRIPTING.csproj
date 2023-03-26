@@ -88,11 +88,13 @@
     <Compile Include="InternalCalls.cs" />
     <Compile Include="Level 1\SwitchToLevel2.cs" />
     <Compile Include="Level 2\Level2DialogManager.cs" />
+    <Compile Include="Level 2\Level2LittleGirlScript.cs" />
     <Compile Include="Level 2\Level2Passenger1Script.cs" />
     <Compile Include="Level 2\Level2Passenger2Script.cs" />
     <Compile Include="Level Tutorial\LevelTutorialDialogManager.cs" />
     <Compile Include="Level Tutorial\LevelTutorialPassengerScript.cs" />
     <Compile Include="Level Tutorial\LevelTutorialGirlScript.cs" />
+    <Compile Include="Level3\Level3LittleGirlScript.cs" />
     <Compile Include="Level3\Level3DialogManager.cs" />
     <Compile Include="Level3\Level3Passenger1Script.cs" />
     <Compile Include="Level3\Level3Passenger2Script.cs" />

@@ -1,69 +1,69 @@
 [
  {
-   "FIELD1": 1,
+   "Dialogue ID": 1,
    "Dialogue Text": "That's it...! This is the place I was talking about!",
    "Speaker": 0,
    "Next Dialogue": 2,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 2,
+   "Dialogue ID": 2,
    "Dialogue Text": "Hehe... As promised, I'll let you ask me anything!",
    "Speaker": 0,
    "Next Dialogue": 3,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 3,
+   "Dialogue ID": 3,
    "Dialogue Text": "Exactly what should I offer to that little girl?",
    "Speaker": 1,
    "Next Dialogue": 4,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 4,
+   "Dialogue ID": 4,
    "Dialogue Text": "Let's see... maybe this crystalball might te-",
    "Speaker": 0,
    "Next Dialogue": 5,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 5,
+   "Dialogue ID": 5,
    "Dialogue Text": "OOOOH! The creature beside you seems to have some sort of special connection to you!",
    "Speaker": 0,
    "Next Dialogue": 6,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 6,
+   "Dialogue ID": 6,
    "Dialogue Text": "...I should keep it with me all the more, isn't it?",
    "Speaker": 1,
    "Next Dialogue": 7,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 7,
+   "Dialogue ID": 7,
    "Dialogue Text": "No, not like that! Besides you, there's another one who has a connection to it too.",
    "Speaker": 0,
    "Next Dialogue": 8,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 8,
+   "Dialogue ID": 8,
    "Dialogue Text": "So go on and look for her again!",
    "Speaker": 0,
    "Next Dialogue": 9,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 9,
+   "Dialogue ID": 9,
    "Dialogue Text": "Bon Voyage my friend! Here's where we part ways. ",
    "Speaker": 0,
    "Next Dialogue": 10,
    "Next Dialogue(2)": 0
  },
  {
-   "FIELD1": 10,
+   "Dialogue ID": 10,
    "Dialogue Text": "Perhaps she might be the one, you can never be too sure.",
    "Speaker": 0,
    "Next Dialogue": 0,

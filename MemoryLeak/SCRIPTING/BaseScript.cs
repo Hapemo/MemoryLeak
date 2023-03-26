@@ -128,12 +128,6 @@ namespace BonVoyage
             return _f1 + (_f2 - _f1) * _t;
         }
 
-    // _e1 is the entity with the particle system. _e2 is the entity's position to transfer to
-    public void TransferParticleSystemPos(int _e1, int _e2) {
-      VI.ParticleSystem.SetPosX(_e1, VI.Transform.Position.GetX(_e2));
-      VI.ParticleSystem.SetPosY(_e1, VI.Transform.Position.GetY(_e2));
-    }
-
     public void TransferEntityPos(int _e1, int _e2) {
       VI.Transform.Position.SetX(_e1, VI.Transform.Position.GetX(_e2));
       VI.Transform.Position.SetY(_e1, VI.Transform.Position.GetY(_e2));

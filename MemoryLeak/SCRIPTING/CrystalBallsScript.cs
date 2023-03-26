@@ -27,7 +27,8 @@ namespace BonVoyage {
         int rainID;
         int fogID;
         int fog2ID;
-    int puddleID;
+        int puddleID;
+        int windID;
         int crystalBallID;
         int toggleMapID;
         int minimapID;
@@ -59,6 +60,7 @@ namespace BonVoyage {
             playerID = VI.Entity.GetId("Boat");
             rainID = VI.Entity.GetId("rain");
             puddleID = VI.Entity.GetId("rainpuddle");
+            windID = VI.Entity.GetId("wind");
             fogID = VI.Entity.GetId("fog");
             fog2ID = VI.Entity.GetId("fogSmall");
             toggle = 0;
@@ -126,32 +128,34 @@ namespace BonVoyage {
             int index = VI.Weather.GetCurrent(12, VI.Transform.Position.GetY(playerID), VI.Transform.Position.GetY(playerID));
             if(index == 1 || index == 3 || index == 5 || index == 7)
             {
-                LOG.WRITE("Raining");
-                VI.ParticleSystem.SetPosX(rainID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(rainID, VI.Transform.Position.GetY(playerID));
+                //LOG.WRITE("Raining");
+                VI.Transform.Position.SetX(rainID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(rainID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateLoop(rainID, 1.0f);
-                VI.ParticleSystem.SetPosX(puddleID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(puddleID, VI.Transform.Position.GetY(playerID));
+                VI.Transform.Position.SetX(puddleID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(puddleID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateLoop(puddleID, 1.0f);
             }
-            else
-            {
-                //VI.Entity.SetActive(rainID, false);
-            }
+
             if (index == 4 || index == 5 || index == 6 || index == 7)
             {
                 //VI.Entity.SetActive(fogID, true);
-                LOG.WRITE("Foggy");
-                VI.ParticleSystem.SetPosX(fogID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(fogID, VI.Transform.Position.GetY(playerID));
+                //LOG.WRITE("Foggy");
+                VI.Transform.Position.SetX(fogID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(fogID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateOnce(fogID);
-                VI.ParticleSystem.SetPosX(fog2ID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(fog2ID, VI.Transform.Position.GetY(playerID));
+                VI.Transform.Position.SetX(fog2ID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(fog2ID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateOnce(fog2ID);
             }
-            else
+
+            if (index == 2 || index == 3 || index == 6 || index == 7)
             {
-                //VI.Entity.SetActive(fogID, false);
+                //VI.Entity.SetActive(fogID, true);
+                //LOG.WRITE("WINDY");
+                VI.Transform.Position.SetX(windID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(windID, VI.Transform.Position.GetY(playerID));
+                VI.ParticleSystem.GenerateOnce(windID);
             }
 
         }

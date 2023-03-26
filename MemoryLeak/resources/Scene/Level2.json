@@ -19,9 +19,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 111,
-                "g": 111,
-                "b": 111,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -96,9 +96,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -155,9 +155,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -232,9 +232,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -309,9 +309,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 216,
-                "g": 216,
-                "b": 216,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -420,9 +420,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -616,9 +616,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 136,
+                "g": 136,
+                "b": 136,
                 "a": 255
             },
             "sprite": 2,
@@ -1160,13 +1160,14 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 1,
             "mCenter": {
-                "X": 1801.0,
-                "Y": 1346.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 130.0,
             "mDirection": 90.0,
@@ -1508,7 +1509,7 @@
             "name": "Passenger_1",
             "tag": 1,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -1517,7 +1518,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1362.0,
+                "X": -1360.0,
                 "Y": 380.0
             }
         },
@@ -1608,6 +1609,40 @@
         },
         "Script": {
             "name": "Level2Passenger1Script"
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 3.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 80.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 70.0,
+            "mDirection": 90.0,
+            "mSpread": 15.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.10000000149011612
         }
     },
     {
@@ -1715,6 +1750,40 @@
         },
         "Script": {
             "name": "Level2Passenger2Script"
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 3.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
+                },
+                "mRotation": 2.0,
+                "mSpeed": 80.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 70.0,
+            "mDirection": 90.0,
+            "mSpread": 15.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.10000000149011612
         }
     },
     {
@@ -1742,8 +1811,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 30
         },
         "SheetAnimation": {
@@ -1803,8 +1872,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 32
         },
         "SheetAnimation": {
@@ -1864,8 +1933,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 58
         },
         "SheetAnimation": {
@@ -1925,8 +1994,8 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
+            "sprite": 0,
+            "texture": "",
             "layer": 56
         },
         "SheetAnimation": {
@@ -2008,7 +2077,7 @@
             "name": "Passenger1Box",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -2062,13 +2131,14 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 1,
             "mCenter": {
-                "X": -1100.0,
-                "Y": 350.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 130.0,
             "mDirection": 90.0,
@@ -2179,13 +2249,14 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 1,
             "mCenter": {
-                "X": 272.0790100097656,
-                "Y": -1801.3499755859375
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 130.0,
             "mDirection": 90.0,
@@ -2380,13 +2451,14 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 1,
             "mCenter": {
-                "X": -1063.0,
-                "Y": -1165.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 130.0,
             "mDirection": 90.0,
@@ -2455,13 +2527,14 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 1,
             "mCenter": {
-                "X": 1140.0,
-                "Y": 1540.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 130.0,
             "mDirection": 90.0,
@@ -2866,13 +2939,14 @@
                 },
                 "mRotation": 2.0,
                 "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 1,
             "mCenter": {
-                "X": 2171.81494140625,
-                "Y": 697.7869873046875
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 130.0,
             "mDirection": 90.0,
@@ -3515,8 +3589,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2080.321533203125,
-                "Y": 1634.257080078125
+                "X": -2080.0,
+                "Y": 1630.0
             }
         },
         "Sprite": {
@@ -3723,6 +3797,40 @@
         },
         "Script": {
             "name": "PlayerScript"
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 0.0,
+                "mLifespan": 4.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\puddle.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mExpanding": 150.0,
+                "mFading": true,
+                "mFadeIn": false
+            },
+            "mDensity": 1,
+            "mCenter": {
+                "X": 20.0,
+                "Y": -60.0
+            },
+            "mAreaWidth": 1.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 0,
+            "mIsActive": false,
+            "mSlow": 0.5
         }
     },
     {
@@ -30869,9 +30977,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -31126,9 +31234,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 130,
-                "g": 130,
-                "b": 130,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -31906,8 +32014,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1357.0,
-                "Y": 317.0
+                "X": -1350.0,
+                "Y": 310.0
             }
         },
         "Sprite": {
@@ -31939,13 +32047,14 @@
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
             "mDensity": 2,
             "mCenter": {
-                "X": -1357.0,
-                "Y": 317.0
+                "X": 0.0,
+                "Y": 0.0
             },
             "mAreaWidth": 600.0,
             "mDirection": 0.0,
@@ -31957,70 +32066,144 @@
     },
     {
         "General": {
-            "name": "FireflyEmitter",
+            "name": "Tree",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 250.0,
+                "Y": 250.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -509.0,
-                "Y": -5.0
+                "X": -2310.0,
+                "Y": 1130.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
             },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region2_Lotus_spritesheet.png",
+            "layer": 700
         },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": -509.0,
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 1,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
                 "Y": -5.0
             },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.6000000238418579
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 55.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     },
     {
         "General": {
-            "name": "FireflyEmitter",
+            "name": "LittleGirl",
+            "tag": 1,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 71.5,
+                "Y": 115.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2240.0,
+                "Y": 1170.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\NPC\\girl\\Character_Girl_SE_Idle_Spritesheet.png",
+            "layer": 701
+        },
+        "SheetAnimation": {
+            "frameCount": 8,
+            "currFrameIndex": 5,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 3.725290298461914e-9
+        },
+        "Script": {
+            "name": "Level2LittleGirlScript"
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": 18.0,
+                        "Y": 40.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 17.66741943359375,
+                        "Y": -42.30902099609375
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -5.033447265625,
+                        "Y": -42.65087890625
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -12.83685302734375,
+                        "Y": 44.18670654296875
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 18.0,
+                        "Y": 40.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "LittleGirlBox",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -32028,12 +32211,12 @@
         "Transform": {
             "scale": {
                 "X": 150.0,
-                "Y": 150.0
+                "Y": 86.47000122070313
             },
             "rotation": 0.0,
             "translation": {
-                "X": -471.0,
-                "Y": 1561.0
+                "X": -2050.0,
+                "Y": 1200.0
             }
         },
         "Sprite": {
@@ -32041,548 +32224,57 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 0
+                "a": 255
             },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
+            "sprite": 2,
+            "texture": "Textures\\Menu\\button-2-tilt.png",
+            "layer": 5
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
         },
         "ParticleSystem": {
             "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 5.0,
                 "Sprite": {
                     "color": {
                         "r": 255,
                         "g": 255,
                         "b": 255,
-                        "a": 255
+                        "a": 200
                     },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 703
                 },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
+                "mRotation": 2.0,
+                "mSpeed": 20.0,
+                "mExpanding": 0.0,
                 "mFading": true,
                 "mFadeIn": true
             },
-            "mDensity": 2,
+            "mDensity": 1,
             "mCenter": {
-                "X": -471.0,
-                "Y": 1561.0
+                "X": 0.0,
+                "Y": 0.0
             },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
+            "mAreaWidth": 130.0,
+            "mDirection": 90.0,
+            "mSpread": 45.0,
+            "mDuration": 100001.0,
             "mIsActive": true,
-            "mSlow": 2.0
-        }
-    },
-    {
-        "General": {
-            "name": "FireflyEmitter",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1450.0,
-                "Y": 1590.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
-        },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": 1450.0,
-                "Y": 1590.0
-            },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
-        }
-    },
-    {
-        "General": {
-            "name": "FireflyEmitter",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 2480.0,
-                "Y": 730.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
-        },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": 2480.0,
-                "Y": 730.0
-            },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
-        }
-    },
-    {
-        "General": {
-            "name": "FireflyEmitter",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1900.0,
-                "Y": -620.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
-        },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": 1900.0,
-                "Y": -620.0
-            },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
-        }
-    },
-    {
-        "General": {
-            "name": "FireflyEmitter",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 2398.0,
-                "Y": -743.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
-        },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": 2398.0,
-                "Y": -743.0
-            },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
-        }
-    },
-    {
-        "General": {
-            "name": "FireflyEmitter",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 570.0,
-                "Y": -1763.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
-        },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": 570.0,
-                "Y": -1763.0
-            },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
-        }
-    },
-    {
-        "General": {
-            "name": "FireflyEmitter",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -227.0,
-                "Y": -1825.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
-        },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": -227.0,
-                "Y": -1825.0
-            },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
-        }
-    },
-    {
-        "General": {
-            "name": "FireflyEmitter",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1293.0,
-                "Y": -1010.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
-        },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": -1293.0,
-                "Y": -1010.0
-            },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
-        }
-    },
-    {
-        "General": {
-            "name": "FireflyEmitter",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1794.0,
-                "Y": -1149.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 1,
-            "texture": "",
-            "layer": 721
-        },
-        "ParticleSystem": {
-            "mParticleInfo": {
-                "mScale": 50.0,
-                "mFacing": 0.0,
-                "mLifespan": 6.0,
-                "Sprite": {
-                    "color": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 255
-                    },
-                    "sprite": 2,
-                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
-                    "layer": 700
-                },
-                "mRotation": 0.0,
-                "mSpeed": 0.0,
-                "mFading": true,
-                "mFadeIn": true
-            },
-            "mDensity": 2,
-            "mCenter": {
-                "X": -1794.0,
-                "Y": -1149.0
-            },
-            "mAreaWidth": 600.0,
-            "mDirection": 0.0,
-            "mSpread": 0.0,
-            "mDuration": 99998.0234375,
-            "mIsActive": true,
-            "mSlow": 2.0
+            "mSlow": 0.20000000298023224
         }
     }
 ]
