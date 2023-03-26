@@ -2037,7 +2037,7 @@
                     },
                     "sprite": 2,
                     "texture": "Textures\\Spritesheets\\Weather\\puddle.png",
-                    "layer": 700
+                    "layer": 1
                 },
                 "mRotation": 0.0,
                 "mSpeed": 0.0,
@@ -2055,7 +2055,7 @@
             "mSpread": 0.0,
             "mDuration": 0.0,
             "mIsActive": false,
-            "mSlow": 0.5
+            "mSlow": 0.3499999940395355
         }
     },
     {
