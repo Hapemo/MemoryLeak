@@ -1204,7 +1204,7 @@
             "mAreaWidth": 1.0,
             "mDirection": 0.0,
             "mSpread": 0.0,
-            "mDuration": 0,
+            "mDuration": 0.0,
             "mIsActive": false,
             "mSlow": 0.5
         }
@@ -11474,7 +11474,7 @@
                 "b": 255,
                 "a": 0
             },
-            "sprite": 1,
+            "sprite": 0,
             "texture": "",
             "layer": 705
         },

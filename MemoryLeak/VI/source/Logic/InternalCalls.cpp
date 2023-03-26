@@ -1068,14 +1068,14 @@ void InternalCalls::iMovementAI::TransformPosAtCurrent(const int _eId, float _po
 Color AI
 *******************************************************************************/
 void InternalCalls::iColorAI::StartAnimation(const Entity& _e) {
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return;
 	}
 	colorAIManager->StartAnimation(_e);
 }
 void InternalCalls::iColorAI::AddColor(const Entity& _e, int _r, int _g, int _b, int _a, float _time) {
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return;
 	}
@@ -1083,7 +1083,7 @@ void InternalCalls::iColorAI::AddColor(const Entity& _e, int _r, int _g, int _b,
 	colorAIManager->AddColor(_e, c, _time);
 }
 void InternalCalls::iColorAI::AddColorAt(const Entity& _e, int _r, int _g, int _b, int _a, float _time, int _index) {
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return;
 	}
@@ -1091,42 +1091,42 @@ void InternalCalls::iColorAI::AddColorAt(const Entity& _e, int _r, int _g, int _
 	colorAIManager->AddColorAt(_e, c, _time, _index);
 }
 void InternalCalls::iColorAI::RemoveColorAt(const Entity& _e, int _index) {
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return;
 	}
 	colorAIManager->RemoveColorAt(_e, _index);
 }
 bool InternalCalls::iColorAI::SetNextStep(const Entity& _e, int _i) { // return ture if sucessful (withing 0 to the vector MAX)
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return false;
 	}
 	return colorAIManager->SetNextStep(_e, _i);
 }
 void InternalCalls::iColorAI::StopAfterThisAnimation(const Entity& _e, bool _next) {
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return;
 	}
 	colorAIManager->StopAfterThisAnimation(_e, _next);
 }
 void InternalCalls::iColorAI::StopAfterEndofAnimationLoop(const Entity& _e, bool _loop) {
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return;
 	}
 	colorAIManager->StopAfterEndofAnimationLoop(_e, _loop);
 }
 void InternalCalls::iColorAI::ReverseOrderAfterNextAnimation(const Entity& _e, bool _reverse) {
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return;
 	}
 	colorAIManager->ReverseOrderAfterNextAnimation(_e, _reverse);
 }
 void InternalCalls::iColorAI::SetAnimationLoopToCycle(const Entity& _e, bool _cycle) {
-	if (!_e.HasComponent<MovementAI>()) {
+	if (!_e.HasComponent<ColorAI>()) {
 		MissingComponent(_e.GetComponent<General>().name, "ColorAI");
 		return;
 	}
