@@ -248,7 +248,7 @@
             "mSpread": 360.0,
             "mDuration": 0.0,
             "mIsActive": false,
-            "mSlow": 0.3
+            "mSlow": 0.30000001192092896
         }
     }
 ]

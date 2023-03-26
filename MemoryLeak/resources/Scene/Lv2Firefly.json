@@ -1,0 +1,758 @@
+[
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -509.0,
+                "Y": -5.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -471.0,
+                "Y": 1561.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1450.0,
+                "Y": 1590.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2480.0,
+                "Y": 730.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1900.0,
+                "Y": -620.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2398.0,
+                "Y": -743.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 570.0,
+                "Y": -1763.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -227.0,
+                "Y": -1825.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1293.0,
+                "Y": -1010.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -1794.0,
+                "Y": -1149.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2310.0,
+                "Y": 1130.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    },
+    {
+        "General": {
+            "name": "FireflyEmitter",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 230.0,
+                "Y": -110.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 721
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 50.0,
+                "mFacing": 0.0,
+                "mLifespan": 6.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    },
+                    "sprite": 2,
+                    "texture": "Textures\\Spritesheets\\Weather\\firefly.png",
+                    "layer": 700
+                },
+                "mRotation": 0.0,
+                "mSpeed": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 600.0,
+            "mDirection": 0.0,
+            "mSpread": 0.0,
+            "mDuration": 99998.0234375,
+            "mIsActive": true,
+            "mSlow": 2.0
+        }
+    }
+]

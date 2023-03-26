@@ -132,12 +132,13 @@ void ParticleManager::GenerateParticle(ParticleSystem const& _system, EntityID _
 		Transform trans{};
 		trans.rotation = _system.mParticleInfo.mFacing;
 		trans.scale *= _system.mParticleInfo.mScale;
-		trans.translation = _system.mCenter + Vec2(static_cast<float>(Util::RandInt(static_cast<int>(_system.mAreaWidth) / 2, -static_cast<int>(_system.mAreaWidth) / 2)),
+		trans.translation = Entity(_e).GetComponent<Transform>().translation +
+												_system.mCenter + Vec2(static_cast<float>(Util::RandInt(static_cast<int>(_system.mAreaWidth) / 2, -static_cast<int>(_system.mAreaWidth) / 2)),
 																							 static_cast<float>(Util::RandInt(static_cast<int>(_system.mAreaWidth) / 2, -static_cast<int>(_system.mAreaWidth) / 2)));
 
 
 		float angle = Util::RandInt(static_cast<int>(_system.mSpread) * 10, static_cast<int>(-_system.mSpread) * 10) / 10.f + _system.mDirection;
-		LOG_INFO("Random number: " + std::to_string(Util::RandInt(static_cast<int>(_system.mSpread) * 10, static_cast<int>(-_system.mSpread) * 10)));
+
 		angle *= (static_cast<float>(Math::PI)/180.f);
 		Vec2 vel{};
 		if (_system.mDirection) // Only move particle if it needs to move

@@ -129,11 +129,11 @@ namespace BonVoyage {
             if(index == 1 || index == 3 || index == 5 || index == 7)
             {
                 //LOG.WRITE("Raining");
-                VI.ParticleSystem.SetPosX(rainID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(rainID, VI.Transform.Position.GetY(playerID));
+                VI.Transform.Position.SetX(rainID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(rainID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateLoop(rainID, 1.0f);
-                VI.ParticleSystem.SetPosX(puddleID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(puddleID, VI.Transform.Position.GetY(playerID));
+                VI.Transform.Position.SetX(puddleID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(puddleID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateLoop(puddleID, 1.0f);
             }
 
@@ -141,11 +141,11 @@ namespace BonVoyage {
             {
                 //VI.Entity.SetActive(fogID, true);
                 //LOG.WRITE("Foggy");
-                VI.ParticleSystem.SetPosX(fogID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(fogID, VI.Transform.Position.GetY(playerID));
+                VI.Transform.Position.SetX(fogID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(fogID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateOnce(fogID);
-                VI.ParticleSystem.SetPosX(fog2ID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(fog2ID, VI.Transform.Position.GetY(playerID));
+                VI.Transform.Position.SetX(fog2ID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(fog2ID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateOnce(fog2ID);
             }
 
@@ -153,8 +153,8 @@ namespace BonVoyage {
             {
                 //VI.Entity.SetActive(fogID, true);
                 //LOG.WRITE("WINDY");
-                VI.ParticleSystem.SetPosX(windID, VI.Transform.Position.GetX(playerID));
-                VI.ParticleSystem.SetPosY(windID, VI.Transform.Position.GetY(playerID));
+                VI.Transform.Position.SetX(windID, VI.Transform.Position.GetX(playerID));
+                VI.Transform.Position.SetY(windID, VI.Transform.Position.GetY(playerID));
                 VI.ParticleSystem.GenerateOnce(windID);
             }
 
