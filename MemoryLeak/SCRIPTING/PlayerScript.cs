@@ -156,8 +156,8 @@ namespace BonVoyage {
                 // Update player's modifier based on current weather
                 if (PlayerCurrWeather == 2) {
                     if (rand.Next(0, 100) < 50) {
-                        MovementXModifier = (float)rand.NextDouble() * 50f;
-                        MovementYModifier = (float)rand.NextDouble() * 50f;
+                        MovementXModifier = (float)(rand.NextDouble() * 100.0);
+                        MovementYModifier = (float)(rand.NextDouble() * 100.0);
                     }
                 }
                 #endregion
@@ -218,8 +218,8 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             // Update player current weather
-            //if (VI.GameState.GetName() != "LevelTutorial")
-            //    PlayerCurrWeather = VI.Weather.GetCurrent(0, PlayerPosX, PlayerPosY);
+            if (VI.GameState.GetName() != "LevelTutorial")
+                PlayerCurrWeather = VI.Weather.GetCurrent(0, PlayerPosX, PlayerPosY);
 
             #region Camera Follow Player
             if (CameraFollowPlayer)
