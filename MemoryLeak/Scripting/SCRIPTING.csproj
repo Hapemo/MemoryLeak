@@ -86,6 +86,7 @@
     <Compile Include="HowToPlayButton.cs" />
     <Compile Include="htpPlayer.cs" />
     <Compile Include="InternalCalls.cs" />
+    <Compile Include="Level 2\SwitchToLevel3.cs" />
     <Compile Include="Level 1\SwitchToLevel2.cs" />
     <Compile Include="Level 2\Level2DialogManager.cs" />
     <Compile Include="Level 2\Level2LittleGirlScript.cs" />
