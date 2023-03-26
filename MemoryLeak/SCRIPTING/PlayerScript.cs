@@ -274,8 +274,8 @@ namespace BonVoyage {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
             // Update player current weather
-            if (VI.GameState.GetName() != "LevelTutorial")
-                PlayerCurrWeather = VI.Weather.GetCurrent(0, PlayerPosX, PlayerPosY);
+            //if (VI.GameState.GetName() != "LevelTutorial")
+            //    PlayerCurrWeather = VI.Weather.GetCurrent(12, PlayerPosX, PlayerPosY);
 
             #region Camera Follow Player
             if (CameraFollowPlayer)

@@ -19,9 +19,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 111,
+                "g": 111,
+                "b": 111,
                 "a": 255
             },
             "sprite": 2,
@@ -96,9 +96,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -155,9 +155,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -232,9 +232,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -309,9 +309,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 216,
+                "g": 216,
+                "b": 216,
                 "a": 255
             },
             "sprite": 2,
@@ -420,9 +420,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -616,9 +616,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 136,
-                "g": 136,
-                "b": 136,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -1952,7 +1952,7 @@
                 "X": 0.8999999761581421,
                 "Y": 0.6000000238418579
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "Audio": {
@@ -1967,6 +1967,9 @@
             "isRandPitch": false,
             "toPlayOnCollision": false,
             "isSpacial": false
+        },
+        "Script": {
+            "name": "SwitchToLevel3"
         }
     },
     {
@@ -2028,6 +2031,9 @@
             "isRandPitch": false,
             "toPlayOnCollision": false,
             "isSpacial": false
+        },
+        "Script": {
+            "name": "SwitchToLevel3"
         }
     },
     {
@@ -3828,7 +3834,7 @@
             "mAreaWidth": 1.0,
             "mDirection": 0.0,
             "mSpread": 0.0,
-            "mDuration": 0,
+            "mDuration": 0.0,
             "mIsActive": false,
             "mSlow": 0.5
         }
@@ -30977,9 +30983,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -31234,9 +31240,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 130,
+                "g": 130,
+                "b": 130,
                 "a": 255
             },
             "sprite": 2,
