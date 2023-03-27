@@ -52,7 +52,7 @@ namespace BonVoyage {
             // Check if passenger's trigger box is active
             if (VI.Entity.IsActive(triggerBox)) {
                 // Check if player is colliding with that box
-                if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
+                if (VI.Physics.CheckCollision(triggerBox, playerBoat, false)) {
                     // Check if dialogue script should be ran
                     if (!LevelTutorialDialogManager.runPassengerDialog) {
                         // Set Dialogue Manager's flag to true to run it
@@ -94,7 +94,7 @@ namespace BonVoyage {
             }
 
             // Check if passenger reaches destination
-            if (VI.Physics.CheckCollision(correctDestination_Box, _ENTITY, false)) {
+            if (VI.Physics.CheckCollision(correctDestination_Box, _ENTITY, true)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
@@ -103,7 +103,7 @@ namespace BonVoyage {
                 // Set flag
                 correctDestinationDelivery = true;
             }
-            else if (VI.Physics.CheckCollision(wrongDestination_Box, _ENTITY, false)) {
+            else if (VI.Physics.CheckCollision(wrongDestination_Box, _ENTITY, true)) {
                 // Move on to detaching animation
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
