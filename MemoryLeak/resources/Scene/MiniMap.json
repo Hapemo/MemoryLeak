@@ -120,7 +120,7 @@
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
-            "pitch": 1.0,
+            "pitch": 1.2000000476837158,
             "isPaused": false,
             "isMute": false,
             "isLoop": false,

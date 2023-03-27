@@ -59,11 +59,11 @@
             "layer": 102
         },
         "Audio": {
-            "path": "OpenMemoryFragment",
+            "path": "Menu_Close_Button",
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
-            "pitch": 1.0,
+            "pitch": 0.5,
             "isPaused": false,
             "isMute": false,
             "isLoop": false,
