@@ -632,7 +632,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_island1.png",
-            "layer": 704
+            "layer": 705
         },
         "RectCollider": {
             "centerOffset": {
@@ -10405,7 +10405,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree5_Spritesheet.png",
-            "layer": 113
+            "layer": 112
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -13762,8 +13762,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 4240.0,
-                "Y": -560.0
+                "X": 4290.0,
+                "Y": -580.0
             }
         },
         "Sprite": {
@@ -15486,7 +15486,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 4730.0,
+                "X": 4770.0,
                 "Y": -1870.0
             }
         },
@@ -17243,7 +17243,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree2_Spritesheet.png",
-            "layer": 100
+            "layer": 734
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -23515,7 +23515,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 709
+            "layer": 710
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -23887,7 +23887,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 711
+            "layer": 712
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -24179,7 +24179,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 713
+            "layer": 714
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -24627,7 +24627,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 715
+            "layer": 716
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -24919,7 +24919,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 717
+            "layer": 718
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -25263,7 +25263,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 719
+            "layer": 720
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -25607,7 +25607,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 721
+            "layer": 722
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -25951,7 +25951,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 723
+            "layer": 724
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -26295,7 +26295,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 725
+            "layer": 726
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -26535,7 +26535,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -5090.0,
-                "Y": -2300.0
+                "Y": -2290.0
             }
         },
         "Sprite": {
@@ -26587,7 +26587,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 727
+            "layer": 728
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -26919,7 +26919,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 729
+            "layer": 730
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -31055,7 +31055,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree5_Spritesheet.png",
-            "layer": 112
+            "layer": 111
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -33836,8 +33836,8 @@
         },
         "Transform": {
             "scale": {
-                "X": -745.0,
-                "Y": 745.0
+                "X": -737.5,
+                "Y": 752.5
             },
             "rotation": 0.0,
             "translation": {
@@ -33854,7 +33854,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Pillar1_Spritesheet.png",
-            "layer": 705
+            "layer": 706
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -33937,7 +33937,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Pillar1_Spritesheet.png",
-            "layer": 701
+            "layer": 704
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -35267,8 +35267,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 3850.0,
-                "Y": 670.0
+                "X": 3940.0,
+                "Y": 690.0
             }
         },
         "Sprite": {
@@ -35307,8 +35307,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 3800.0,
-                "Y": 580.0
+                "X": 3780.0,
+                "Y": 570.0
             }
         },
         "Sprite": {
@@ -36831,7 +36831,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree5_Spritesheet.png",
-            "layer": 709
+            "layer": 708
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -36911,7 +36911,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_GirlStatue_spritesheet.png",
-            "layer": 702
+            "layer": 703
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -39748,6 +39748,166 @@
                     }
                 }
             ]
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 410.0,
+                "Y": 410.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3230.0,
+                "Y": -110.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
+            "layer": 717
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 410.0,
+                "Y": 470.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3490.0,
+                "Y": -100.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree1_Spritesheet.png",
+            "layer": 717
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 410.0,
+                "Y": 470.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3910.0,
+                "Y": -580.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree1_Spritesheet.png",
+            "layer": 719
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "Tree",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 437.5,
+                "Y": 437.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3370.0,
+                "Y": -2720.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
+            "layer": 730
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [],
+            "renderFlag": false
         }
     }
 ]
