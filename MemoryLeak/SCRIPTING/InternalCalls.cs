@@ -295,7 +295,7 @@ namespace VI {
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void ApplyImpulse(int _eId, float _impulseX, float _impulseY, float _rotationX, float _rotationY);
 
-		[MethodImpl(MethodImplOptions.InternalCall), Obsolete("Use CheckCollision instead thx")]
+		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool IsCollided(int _eId1, int _eId2);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
