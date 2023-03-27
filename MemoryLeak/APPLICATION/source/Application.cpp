@@ -191,7 +191,6 @@ void Application::SecondUpdate() {
   // Part 2: swap buffers: front <-> back
   TRACK_PERFORMANCE("glfwSwapBuffers");
   glfwSwapBuffers(Application::getWindow());
-  glFinish();
   END_TRACK("glfwSwapBuffers");
 
   FPSManager::LimitFPS();
