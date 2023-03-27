@@ -1339,7 +1339,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -1347,7 +1347,7 @@
             "isPaused": false,
             "isMute": false,
             "isLoop": false,
-            "isRandPitch": false,
+            "isRandPitch": true,
             "toPlayOnCollision": false,
             "isSpacial": false
         },
@@ -1397,6 +1397,89 @@
                 }
             ],
             "renderFlag": true
+        },
+        "MovementAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "moveOnCollide": true,
+            "targets": [
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": 0.03490658476948738,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": -0.03490658476948738,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": 0.03490658476948738,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2440,7 +2523,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -2448,7 +2531,7 @@
             "isPaused": false,
             "isMute": false,
             "isLoop": false,
-            "isRandPitch": false,
+            "isRandPitch": true,
             "toPlayOnCollision": false,
             "isSpacial": false
         },
@@ -2486,6 +2569,89 @@
                 }
             ],
             "renderFlag": true
+        },
+        "MovementAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "moveOnCollide": true,
+            "targets": [
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": 0.03490658476948738,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": -0.03490658476948738,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": 0.03490658476948738,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2964,6 +3130,19 @@
                 "Y": 0.004999999888241291
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Waterfall",
+            "toPlay": true,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": true,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": true
         },
         "ShadowCaster": {
             "centerOffsets": [

@@ -122,7 +122,7 @@ void AudioManager::UpdateSound()
                 {
                     e.GetComponent<Audio>().sound.channel = AddChannel();
                 }
-                mChannel[e.GetComponent<Audio>().sound.channel]->setVolume(e.GetComponent<Audio>().sound.volume * sfxVol);
+                //mChannel[e.GetComponent<Audio>().sound.channel]->setVolume(e.GetComponent<Audio>().sound.volume * sfxVol);
                 PlayEntitySound(e);
             }
             if (e.GetComponent<Audio>().sound.channel != 0 && isPlaying(e.GetComponent<Audio>().sound.channel))
@@ -139,6 +139,7 @@ void AudioManager::UpdateSound()
                     spacial = spacial < 0.f ? 0.f : spacial;
 
                     vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
+                    std::cout << "Spacila: " << spacial << " : " << vol << "\n";
                     mChannel[channel]->setVolume(vol * sfxVol);
                 }
                 else
@@ -235,7 +236,6 @@ void AudioManager::PlaySound(const Entity& e)
 
         float spacial = (max.Magnitude() - distance.Magnitude()) / max.Magnitude();
         spacial = spacial < 0.f ? 0.f : spacial;
-
         vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
         mChannel[channel]->setVolume(vol * sfxVol);
     }
