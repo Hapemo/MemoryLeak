@@ -218,8 +218,13 @@ void AudioManager::PlayEntitySound(const Entity& _e)
 }
 void AudioManager::PlaySound(const Entity& e)
 {
+   
     std::string snd = e.GetComponent<Audio>().sound.path;
     int channel = (int)E_AUDIO_CHANNEL::TESTING;
+    if (isPlaying(channel))
+    {
+        mChannel[channel]->stop();
+    }
     system->playSound(mSfxSound[snd], nullptr, false, &mChannel[channel]);
     if (e.GetComponent<Audio>().isSpacial && e.HasComponent<Transform>())
     {

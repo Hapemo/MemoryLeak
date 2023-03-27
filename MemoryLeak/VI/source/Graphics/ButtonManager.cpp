@@ -131,7 +131,7 @@ bool ButtonManager::CheckActivate(const Entity& _e)
 	{
 		if (_e.HasComponent<Audio>())
 		{
-			_e.GetComponent<Audio>().sound.toPlay = true;
+			//_e.GetComponent<Audio>().sound.toPlay = true;
 			audioManager->PlaySound(_e);
 		}
 		return true;
