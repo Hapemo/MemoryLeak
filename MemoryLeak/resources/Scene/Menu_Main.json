@@ -33,7 +33,7 @@
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
-            "pitch": 1.0,
+            "pitch": 0.5199999809265137,
             "isPaused": false,
             "isMute": false,
             "isLoop": false,
@@ -95,7 +95,7 @@
             "layer": 1
         },
         "Audio": {
-            "path": "OpenMemoryFragment",
+            "path": "Menu_Popup",
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
@@ -161,7 +161,7 @@
             "layer": 1
         },
         "Audio": {
-            "path": "OpenMemoryFragment",
+            "path": "Menu_Popup",
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
@@ -260,7 +260,7 @@
             "layer": 1
         },
         "Audio": {
-            "path": "OpenMemoryFragment",
+            "path": "Menu_Popup",
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
@@ -313,7 +313,7 @@
             "currentImageIndex": 0
         },
         "Audio": {
-            "path": "OpenMemoryFragment",
+            "path": "Menu_Popup",
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,

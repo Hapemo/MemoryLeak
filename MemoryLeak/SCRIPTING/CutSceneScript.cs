@@ -34,7 +34,7 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             targetRadius = (int)VI.LightSource.Radius.s_Get(light, scene);
-            VI.Audio.PlayBGM("CaveWithWaterDrops_Loop");
+            VI.Audio.PlayBGM("Opening_Cutscene(Long)");
 
             currScn = 0;
             isAlphaDecreasing = false;
@@ -75,6 +75,7 @@ namespace BonVoyage {
                 {
                     soundPlayed = true;
                     VI.Audio.s_Play("lightning", scene);
+                    VI.Audio.PlayBGM("Stormy_Cutscene");
                 }
             }
         }
