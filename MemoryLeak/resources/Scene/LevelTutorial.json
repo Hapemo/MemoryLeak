@@ -4188,7 +4188,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2.png",
-            "layer": 700
+            "layer": 200
         },
         "RectCollider": {
             "centerOffset": {
