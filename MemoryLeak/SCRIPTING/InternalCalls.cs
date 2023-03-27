@@ -183,13 +183,34 @@ namespace VI {
 		internal extern static string ReturnString();
 	}
 
-	public class Storage
+	public class Data
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static void Push(string _key, int _value);
+		internal extern static void Load(string _name);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
-		internal extern static int Get(string _key);
+		internal extern static void Save();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static string GetPlayerName();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetLevelAt();
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetLevelAt(int _level);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetData1(int _index);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetData1(int _index, int _value);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static int GetData2(int _index);
+
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		internal extern static void SetData2(int _index, int _value);
 	}
 
 	public class General
