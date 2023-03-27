@@ -30,12 +30,7 @@ struct Transform;
 #define VI InternalCalls
 
 class InternalCalls : public Singleton<InternalCalls> {
-private:
-	static std::map<std::string, int> storageInt;
 public:
-	static void StoreValue(std::string _key, int _value);
-	static int GetValue(std::string _key);
-
 	/*!*****************************************************************************
 	\brief
 	Test internal function for string.
@@ -53,14 +48,30 @@ public:
 	\brief
 	Logger function.
 	*******************************************************************************/
-	void LogGame(std::string _log);
-	void LogTest(std::string _log);
+	static void LogGame(std::string _log);
+	static void LogTest(std::string _log);
 
 	/*!*****************************************************************************
 	\brief
 	Gets the delta time in double.
 	*******************************************************************************/
 	static double GetDeltaTime();
+
+	/*!*****************************************************************************
+	\brief
+	Player data.
+	*******************************************************************************/
+	static void LoadPlayerData(std::string _name);
+	static void SavePlayerData();
+
+	static std::string GetPlayerName();
+	static int GetLevelAt();
+	static void SetLevelAt(int _level);
+
+	static int GetData1(int _index);
+	static void SetData1(int _index, int _value);
+	static int GetData2(int _index);
+	static void SetData2(int _index, int _value);
 
 	struct iInput {
 		/*!*****************************************************************************

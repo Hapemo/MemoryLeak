@@ -38,13 +38,13 @@ void MonoMethods::LogTest(MonoString* _log) {
 
 /*!*****************************************************************************
 \brief
-Int storage.
+Player data.
 *******************************************************************************/
-void MonoMethods::StoreValue(MonoString* _key, int _value) {
-	FUNC->StoreValue(MONO->ConvertFromMonoString(_key), _value);
+void MonoMethods::LoadPlayerData(MonoString* _name) {
+	FUNC->LoadPlayerData(MONO->ConvertFromMonoString(_name));
 }
-int MonoMethods::GetValue(MonoString* _key) {
-	return FUNC->GetValue(MONO->ConvertFromMonoString(_key));
+MonoString* MonoMethods::GetPlayerName() {
+	return MONO->ConvertToMonoString(FUNC->GetPlayerName());
 }
 
 /*!*****************************************************************************
@@ -558,9 +558,16 @@ void MonoMethods::RegisterCalls() {
 	mono_add_internal_call("LOG::WRITE", &MONO->LogGame);
 	mono_add_internal_call("LOG::TEST", &MONO->LogTest);
 
-	// Store int
-	mono_add_internal_call("VI.Storage::Push", &FUNC->StoreValue);
-	mono_add_internal_call("VI.Storage::Get", &FUNC->GetValue);
+	// Player data
+	mono_add_internal_call("VI.Data::Load", &MONO->LoadPlayerData);
+	mono_add_internal_call("VI.Data::Save", &FUNC->SavePlayerData);
+	mono_add_internal_call("VI.Data::GetPlayerName", &MONO->GetPlayerName);
+	mono_add_internal_call("VI.Data::GetLevelAt", &FUNC->GetLevelAt);
+	mono_add_internal_call("VI.Data::SetLevelAt", &FUNC->SetLevelAt);
+	mono_add_internal_call("VI.Data::GetData1", &FUNC->GetData1);
+	mono_add_internal_call("VI.Data::SetData1", &FUNC->SetData1);
+	mono_add_internal_call("VI.Data::GetData2", &FUNC->GetData2);
+	mono_add_internal_call("VI.Data::SetData2", &FUNC->SetData2);
 
 	// General
 	mono_add_internal_call("VI.General::DeltaTime", &FUNC->GetDeltaTime);
