@@ -39,7 +39,7 @@ namespace BonVoyage {
             // Check if cat's trigger box is active
             if (VI.Entity.IsActive(triggerBox)) {
                 // Check if player is colliding with that box
-                if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
+                if (VI.Physics.CheckCollision(triggerBox, playerBoat, false)) {
                     // Set Dialog Manager's flag to true and run it
                     LevelTutorialDialogManager.runGirlDialog = true;
 
