@@ -1746,9 +1746,9 @@ void InternalCalls::iAudio::PlayBGM(std::string const& _soundName) {
 bool InternalCalls::iAudio::IsBgmPlaying() {
 	return audioManager->isPlaying((int)E_AUDIO_CHANNEL::MAINBACKGROUND);
 }
-void InternalCalls::iAudio::ForcePlay(std::string const& _soundName) {
-	audioManager->PlayAnySound(_soundName, (int)E_AUDIO_CHANNEL::FORCEPLAY);
-}
+//void InternalCalls::iAudio::ForcePlay(std::string const& _soundName) {
+//	audioManager->PlayAnySound(_soundName, (int)E_AUDIO_CHANNEL::FORCEPLAY);
+//}
 
 /*!*****************************************************************************
 \brief

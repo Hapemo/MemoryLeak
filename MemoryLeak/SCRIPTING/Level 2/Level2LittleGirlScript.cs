@@ -44,7 +44,7 @@ namespace BonVoyage {
 
       // Check if passenger's trigger box is active
       if (VI.Entity.IsActive(triggerBox) ) {
-        if (VI.Physics.CheckCollision(triggerBox, playerBoat, false))
+        if (VI.Physics.IsCollided(triggerBox, playerBoat))
         if (!Level2DialogManager.runLittleGirlDialog) {
           Level2DialogManager.runLittleGirlDialog = true;
           VI.Entity.Deactivate(triggerBox);

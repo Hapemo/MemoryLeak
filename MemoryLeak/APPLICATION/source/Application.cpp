@@ -188,9 +188,11 @@ void Application::SecondUpdate() {
 #endif // _EDIOTR
   // Reset input
   buttonManager->ResetAllButtons();
-
   // Part 2: swap buffers: front <-> back
+  TRACK_PERFORMANCE("glfwSwapBuffers");
   glfwSwapBuffers(Application::getWindow());
+  glFinish();
+  END_TRACK("glfwSwapBuffers");
 
   FPSManager::LimitFPS();
   FPSManager::CalcDeltaTime();
@@ -252,15 +254,19 @@ void Application::MainUpdate() {
     END_TRACK("Graphics");
 
     // Audio
-    //TRACK_PERFORMANCE("Audio");
+    TRACK_PERFORMANCE("Audio");
     audioManager->UpdateSound(); 
-    //END_TRACK("Audio");
+    END_TRACK("Audio");
 
     // If it changes, it should've came from when updaing game logic
     //if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->GameStateExit();
+    TRACK_PERFORMANCE("GSM");
     GameStateManager::GetInstance()->UpdateNextGSMState();
+    END_TRACK("GSM");
 
+    TRACK_PERFORMANCE("SecondUpdate");
     SecondUpdate(); // This should always be the last
+    END_TRACK("SecondUpdate");
     END_TRACK("MainLoop");
   }
   glfwSetWindowShouldClose(ptr_window, 1);

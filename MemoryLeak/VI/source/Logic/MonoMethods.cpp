@@ -418,9 +418,9 @@ void MonoMethods::iAudio::PlayBGM(MonoString* _soundName) {
 bool MonoMethods::iAudio::IsBgmPlaying() {
 	return VI::iAudio::IsBgmPlaying();
 }
-void MonoMethods::iAudio::ForcePlay(MonoString* _soundName) {
-	VI::iAudio::ForcePlay(MONO->ConvertFromMonoString(_soundName));
-}
+//void MonoMethods::iAudio::ForcePlay(MonoString* _soundName) {
+//	VI::iAudio::ForcePlay(MONO->ConvertFromMonoString(_soundName));
+//}
 
 // Transform
 float MonoMethods::iTransform::s_GetPosX(MonoString* _entityName, MonoString* _sceneName) {
@@ -853,7 +853,7 @@ void MonoMethods::RegisterCalls() {
 
 	mono_add_internal_call("VI.Audio::PlayBGM", &MM::iAudio::PlayBGM);
 	mono_add_internal_call("VI.Audio::IsBgmPlaying", &MM::iAudio::IsBgmPlaying);
-	mono_add_internal_call("VI.Audio::ForcePlay", &MM::iAudio::ForcePlay);
+	//mono_add_internal_call("VI.Audio::ForcePlay", &MM::iAudio::ForcePlay);
 
 	mono_add_internal_call("VI.Audio::StopAll", &VI::iAudio::StopAll);
 	mono_add_internal_call("VI.Audio::StopBGM", &VI::iAudio::StopBGM);
