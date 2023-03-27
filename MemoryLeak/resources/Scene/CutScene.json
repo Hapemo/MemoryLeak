@@ -25,7 +25,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-11.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-11.png",
             "layer": 1
         }
     },
@@ -55,7 +55,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-10.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-10.png",
             "layer": 2
         }
     },
@@ -85,7 +85,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-09.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-09.png",
             "layer": 3
         }
     },
@@ -115,7 +115,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-08.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-08.png",
             "layer": 4
         }
     },
@@ -145,7 +145,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-07.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-07.png",
             "layer": 5
         }
     },
@@ -175,7 +175,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-06.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-06.png",
             "layer": 6
         }
     },
@@ -205,7 +205,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-05.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-05.png",
             "layer": 7
         }
     },
@@ -235,7 +235,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-04.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-04.png",
             "layer": 8
         }
     },
@@ -265,7 +265,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-03.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-03.png",
             "layer": 9
         }
     },
@@ -295,7 +295,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-02.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-02.png",
             "layer": 10
         }
     },
@@ -325,7 +325,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene3-01.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene3-01.png",
             "layer": 11
         }
     },
@@ -355,7 +355,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene2-04.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene2-04.png",
             "layer": 12
         }
     },
@@ -385,7 +385,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene2-03.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene2-03.png",
             "layer": 13
         }
     },
@@ -415,7 +415,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene2-02.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene2-02.png",
             "layer": 14
         }
     },
@@ -445,7 +445,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene2-01.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene2-01.png",
             "layer": 15
         }
     },
@@ -475,7 +475,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene1-04.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene1-04.png",
             "layer": 16
         }
     },
@@ -505,7 +505,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene1-03.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene1-03.png",
             "layer": 17
         }
     },
@@ -535,7 +535,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene1-02.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene1-02.png",
             "layer": 18
         }
     },
@@ -565,7 +565,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Cutscenes\\Cutscene1_Scene1-01.png",
+            "texture": "Textures\\Cutscenes\\opening\\Cutscene1_Scene1-01.png",
             "layer": 19
         },
         "Script": {
