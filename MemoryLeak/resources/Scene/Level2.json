@@ -12127,44 +12127,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": 40.0,
-                        "Y": 150.0
+                        "X": -238.0,
+                        "Y": 1.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 43.0,
-                        "Y": 38.0
+                        "X": -35.0,
+                        "Y": -117.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -120.0,
-                        "Y": -53.0
+                        "X": 135.0,
+                        "Y": -16.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -230.0,
-                        "Y": 2.0
+                        "X": -53.0,
+                        "Y": 91.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -232.0,
-                        "Y": 150.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -84.0,
-                        "Y": 234.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 40.0,
-                        "Y": 150.0
+                        "X": -238.0,
+                        "Y": 1.0
                     }
                 }
             ],
@@ -12448,38 +12436,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": 200.0,
-                        "Y": -16.0
+                        "X": -328.0,
+                        "Y": -120.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -153.0,
-                        "Y": -205.0
+                        "X": -147.0,
+                        "Y": -214.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -345.0,
-                        "Y": -107.0
+                        "X": 207.0,
+                        "Y": -13.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -341.0,
-                        "Y": -64.0
+                        "X": 29.0,
+                        "Y": 78.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 36.0,
-                        "Y": 107.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 200.0,
-                        "Y": -16.0
+                        "X": -328.0,
+                        "Y": -120.0
                     }
                 }
             ],
@@ -12680,38 +12662,38 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -360.0,
-                        "Y": 150.0
+                        "X": -199.0,
+                        "Y": 203.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -96.0,
-                        "Y": 309.0
+                        "X": -112.0,
+                        "Y": 158.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 565.0,
-                        "Y": -67.0
+                        "X": -21.0,
+                        "Y": 181.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 572.0,
-                        "Y": -109.0
+                        "X": -24.0,
+                        "Y": 264.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 351.0,
-                        "Y": -234.0
+                        "X": -199.0,
+                        "Y": 279.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -360.0,
-                        "Y": 150.0
+                        "X": -199.0,
+                        "Y": 203.0
                     }
                 }
             ],
@@ -32347,8 +32329,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 1210.0,
-                "Y": 710.0
+                "X": 1225.0,
+                "Y": 725.0
             },
             "rotation": 0.0,
             "translation": {
@@ -36275,38 +36257,7 @@
             "isSpacial": false
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": -20.0,
-                        "Y": -62.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -26.0,
-                        "Y": -136.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 43.0,
-                        "Y": -132.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 40.0,
-                        "Y": -62.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -20.0,
-                        "Y": -62.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -36542,38 +36493,7 @@
             "isSpacial": false
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": -20.0,
-                        "Y": -62.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -26.0,
-                        "Y": -136.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 43.0,
-                        "Y": -132.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 40.0,
-                        "Y": -62.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -20.0,
-                        "Y": -62.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -36679,38 +36599,7 @@
             "isSpacial": false
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": -20.0,
-                        "Y": -62.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -26.0,
-                        "Y": -136.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 43.0,
-                        "Y": -132.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 40.0,
-                        "Y": -62.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -20.0,
-                        "Y": -62.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -36834,6 +36723,136 @@
             "isRandPitch": false,
             "toPlayOnCollision": false,
             "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 157.5,
+                "Y": 157.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 1970.0,
+                "Y": -420.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 500
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -320.0,
+                        "Y": -39.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -219.0,
+                        "Y": -97.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -98.0,
+                        "Y": -35.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -211.0,
+                        "Y": 14.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -320.0,
+                        "Y": -39.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "NEW Entity 1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 160.0,
+                "Y": 160.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2888.0,
+                "Y": -634.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 500
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -454.0,
+                        "Y": 35.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -224.0,
+                        "Y": -84.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -124.0,
+                        "Y": -40.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -358.0,
+                        "Y": 83.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -454.0,
+                        "Y": 35.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     }
 ]

@@ -27,6 +27,9 @@ namespace BonVoyage {
         static int[] relicBIGLOST;
         static int relicFound;
         static int relicNotFound;
+        static int relicFoundSound;
+        static int relicNotFoundSound;
+
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
@@ -34,6 +37,8 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            relicFoundSound = VI.Entity.GetId("PassengerIcon1");
+            relicNotFoundSound = VI.Entity.GetId("PassengerIcon2");
 
             relics = new int[]
             {
@@ -251,6 +256,8 @@ namespace BonVoyage {
                 VI.Entity.Activate(relicFound);
                 VI.ColorAI.StartAnimation(relicFound);
                 VI.ColorAI.SetNextStep(relicFound, 1);
+                VI.Audio.Play(relicFoundSound);
+
             }
             else
             {
@@ -258,6 +265,8 @@ namespace BonVoyage {
                 VI.Entity.Activate(relicNotFound);
                 VI.ColorAI.StartAnimation(relicNotFound);
                 VI.ColorAI.SetNextStep(relicNotFound, 1);
+                VI.Audio.Play(relicNotFoundSound);
+
             }
         }
     }

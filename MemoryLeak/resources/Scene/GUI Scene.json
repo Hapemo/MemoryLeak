@@ -1409,6 +1409,19 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Character_Ghost1_SE_idle.png",
             "layer": 62
+        },
+        "Audio": {
+            "path": "Collect_Relic",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
         }
     },
     {
@@ -1439,6 +1452,19 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Character_Ghost1_SE_idle.png",
             "layer": 62
+        },
+        "Audio": {
+            "path": "Relic_Fail",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
         }
     },
     {

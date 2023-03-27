@@ -89,8 +89,45 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -17.0,
+                        "Y": -11.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -53.0,
+                        "Y": -50.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -68.0,
+                        "Y": -76.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 11.0,
+                        "Y": -82.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 15.0,
+                        "Y": -11.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -17.0,
+                        "Y": -11.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -141,8 +178,63 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -498.0,
+                        "Y": 86.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -409.0,
+                        "Y": 28.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -254.0,
+                        "Y": 81.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 327.0,
+                        "Y": -210.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 216.0,
+                        "Y": -313.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 318.0,
+                        "Y": -373.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 537.0,
+                        "Y": -247.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -208.0,
+                        "Y": 257.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -498.0,
+                        "Y": 86.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -184,32 +276,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -37.0,
-                        "Y": -58.0
+                        "X": -81.0,
+                        "Y": -173.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 32.0,
-                        "Y": -60.0
+                        "X": -8.0,
+                        "Y": -207.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 33.0,
-                        "Y": -130.0
+                        "X": 71.0,
+                        "Y": -175.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -36.0,
-                        "Y": -126.0
+                        "X": -10.0,
+                        "Y": -141.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -37.0,
-                        "Y": -58.0
+                        "X": -81.0,
+                        "Y": -173.0
                     }
                 }
             ],
@@ -264,7 +356,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -58.0,
+                        "Y": -42.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -4.0,
+                        "Y": -70.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 33.0,
+                        "Y": -52.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -13.0,
+                        "Y": -17.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -58.0,
+                        "Y": -42.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -316,7 +439,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -57.0,
+                        "Y": -6.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -57.0,
+                        "Y": -38.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 1.0,
+                        "Y": -38.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 69.0,
+                        "Y": -1.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -57.0,
+                        "Y": -6.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -368,8 +522,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -80.0,
+                        "Y": 16.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 2.0,
+                        "Y": -26.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 111.0,
+                        "Y": 26.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 6.0,
+                        "Y": 69.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -80.0,
+                        "Y": 16.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -420,8 +605,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -79.0,
+                        "Y": 5.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 7.0,
+                        "Y": -32.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 114.0,
+                        "Y": 21.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 9.0,
+                        "Y": 60.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -79.0,
+                        "Y": 5.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -484,7 +700,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -3160.0,
+                "X": -3140.0,
                 "Y": 3090.0
             }
         },
@@ -497,7 +713,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building5_spritesheet.png",
-            "layer": 701
+            "layer": 399
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -518,8 +734,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": 259.0,
+                        "Y": 74.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -17.0,
+                        "Y": 246.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 242.0,
+                        "Y": 364.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 500.0,
+                        "Y": 226.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 259.0,
+                        "Y": 74.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -573,32 +820,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": 215.0,
-                        "Y": -27.0
+                        "X": -54.0,
+                        "Y": -337.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 215.0,
-                        "Y": -80.0
+                        "X": 337.0,
+                        "Y": -90.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -36.0,
-                        "Y": -221.0
+                        "X": 257.0,
+                        "Y": -16.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -43.0,
-                        "Y": -152.0
+                        "X": -127.0,
+                        "Y": -265.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 215.0,
-                        "Y": -27.0
+                        "X": -54.0,
+                        "Y": -337.0
                     }
                 }
             ],
@@ -665,7 +912,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -3190.0,
+                "X": -3210.0,
                 "Y": 360.0
             }
         },
@@ -710,8 +957,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -407.0,
+                        "Y": -327.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -15.0,
+                        "Y": -518.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 419.0,
+                        "Y": -271.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -3.0,
+                        "Y": -47.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -407.0,
+                        "Y": -327.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -762,7 +1040,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -224.0,
+                        "Y": 27.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 96.0,
+                        "Y": -119.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 228.0,
+                        "Y": -19.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -124.0,
+                        "Y": 108.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -224.0,
+                        "Y": 27.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -780,8 +1089,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -4000.0,
-                "Y": 2050.0
+                "X": -3930.0,
+                "Y": 2140.0
             }
         },
         "Sprite": {
@@ -1157,38 +1466,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": 47.0,
-                        "Y": 63.0
+                        "X": -451.0,
+                        "Y": 8.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -167.0,
-                        "Y": -62.0
+                        "X": -61.0,
+                        "Y": -223.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -289.0,
-                        "Y": 9.0
+                        "X": 252.0,
+                        "Y": -40.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -37.0,
-                        "Y": 133.0
+                        "X": -102.0,
+                        "Y": 191.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 47.0,
-                        "Y": 63.0
+                        "X": -451.0,
+                        "Y": 8.0
                     }
                 }
             ],
@@ -1222,7 +1525,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building1_spritesheet.png",
-            "layer": 600
+            "layer": 615
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1246,32 +1549,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -242.0,
-                        "Y": -53.0
+                        "X": -167.0,
+                        "Y": -264.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 49.0,
-                        "Y": 74.0
+                        "X": 245.0,
+                        "Y": -12.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 166.0,
-                        "Y": -6.0
+                        "X": 25.0,
+                        "Y": 124.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -113.0,
-                        "Y": -163.0
+                        "X": -396.0,
+                        "Y": -134.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -242.0,
-                        "Y": -53.0
+                        "X": -167.0,
+                        "Y": -264.0
                     }
                 }
             ],
@@ -1305,7 +1608,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Pillar1_Spritesheet.png",
-            "layer": 9
+            "layer": 610
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1326,7 +1629,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -295.0,
+                        "Y": -104.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -156.0,
+                        "Y": -99.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -152.0,
+                        "Y": -16.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -299.0,
+                        "Y": -18.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -295.0,
+                        "Y": -104.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -1357,7 +1691,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Ruin3_Spritesheet.png",
-            "layer": 700
+            "layer": 398
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1366,38 +1700,7 @@
             "timeToFrameSwap": 0.0
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": 30.0,
-                        "Y": -80.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 101.0,
-                        "Y": -41.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 160.0,
-                        "Y": -80.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 98.0,
-                        "Y": -114.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 30.0,
-                        "Y": -80.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -1415,8 +1718,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -210.0,
-                "Y": -350.0
+                "X": -180.0,
+                "Y": -450.0
             }
         },
         "Sprite": {
@@ -1449,7 +1752,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -103.0,
+                        "Y": -11.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 67.0,
+                        "Y": -108.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 97.0,
+                        "Y": -93.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -71.0,
+                        "Y": 15.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -103.0,
+                        "Y": -11.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -10358,9 +10692,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 122,
-                "g": 122,
-                "b": 122,
+                "r": 108,
+                "g": 108,
+                "b": 108,
                 "a": 255
             },
             "sprite": 2,
@@ -10610,9 +10944,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 118,
-                "g": 118,
-                "b": 118,
+                "r": 134,
+                "g": 134,
+                "b": 134,
                 "a": 255
             },
             "sprite": 2,
@@ -10662,9 +10996,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 94,
+                "g": 94,
+                "b": 94,
                 "a": 255
             },
             "sprite": 2,
@@ -10714,9 +11048,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 170,
-                "g": 170,
-                "b": 170,
+                "r": 167,
+                "g": 167,
+                "b": 167,
                 "a": 255
             },
             "sprite": 2,
@@ -23272,9 +23606,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 97,
-                "g": 97,
-                "b": 97,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -32224,8 +32558,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -30.0,
+                        "Y": -95.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -30.0,
+                        "Y": -170.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 56.0,
+                        "Y": -170.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 36.0,
+                        "Y": -98.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -30.0,
+                        "Y": -95.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -33448,9 +33813,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 143,
-                "g": 143,
-                "b": 143,
+                "r": 106,
+                "g": 106,
+                "b": 106,
                 "a": 255
             },
             "sprite": 2,
@@ -33500,9 +33865,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 143,
-                "g": 143,
-                "b": 143,
+                "r": 151,
+                "g": 151,
+                "b": 151,
                 "a": 255
             },
             "sprite": 2,
@@ -33552,9 +33917,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 92,
+                "g": 92,
+                "b": 92,
                 "a": 255
             },
             "sprite": 2,
@@ -33592,9 +33957,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 128,
-                "g": 128,
-                "b": 128,
+                "r": 126,
+                "g": 126,
+                "b": 126,
                 "a": 255
             },
             "sprite": 2,
@@ -33632,9 +33997,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 215,
-                "g": 215,
-                "b": 215,
+                "r": 200,
+                "g": 200,
+                "b": 200,
                 "a": 255
             },
             "sprite": 2,
@@ -33752,8 +34117,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -26.0,
+                        "Y": -40.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -95.0,
+                        "Y": -46.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -40.0,
+                        "Y": -117.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 26.0,
+                        "Y": -63.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -26.0,
+                        "Y": -40.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -33783,7 +34179,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Pillar1_Spritesheet.png",
-            "layer": 700
+            "layer": 397
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -33792,38 +34188,7 @@
             "timeToFrameSwap": 0.0
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": 117.0,
-                        "Y": -65.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 213.0,
-                        "Y": -67.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 213.0,
-                        "Y": -110.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 118.0,
-                        "Y": -110.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 117.0,
-                        "Y": -65.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -33878,32 +34243,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": 98.0,
-                        "Y": -110.0
+                        "X": -303.0,
+                        "Y": -288.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 196.0,
-                        "Y": -115.0
+                        "X": -223.0,
+                        "Y": -341.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 197.0,
-                        "Y": -174.0
+                        "X": -138.0,
+                        "Y": -301.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 97.0,
-                        "Y": -170.0
+                        "X": -216.0,
+                        "Y": -251.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 98.0,
-                        "Y": -110.0
+                        "X": -303.0,
+                        "Y": -288.0
                     }
                 }
             ],
@@ -33946,7 +34311,38 @@
             "timeToFrameSwap": 0.0
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -329.0,
+                        "Y": -266.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -205.0,
+                        "Y": -328.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -115.0,
+                        "Y": -269.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -218.0,
+                        "Y": -226.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -329.0,
+                        "Y": -266.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -33970,9 +34366,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 93,
-                "g": 93,
-                "b": 93,
+                "r": 80,
+                "g": 80,
+                "b": 80,
                 "a": 255
             },
             "sprite": 2,
@@ -33998,38 +34394,7 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": 30.0,
-                        "Y": -80.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 101.0,
-                        "Y": -41.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 160.0,
-                        "Y": -80.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 98.0,
-                        "Y": -114.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 30.0,
-                        "Y": -80.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -35572,7 +35937,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 2670.0,
-                "Y": -250.0
+                "Y": -240.0
             }
         },
         "Sprite": {
@@ -35605,8 +35970,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -19.0,
+                        "Y": -29.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -113.0,
+                        "Y": -51.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -31.0,
+                        "Y": -120.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 31.0,
+                        "Y": -60.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -19.0,
+                        "Y": -29.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -35737,38 +36133,7 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": 215.0,
-                        "Y": -27.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 215.0,
-                        "Y": -80.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -36.0,
-                        "Y": -221.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -43.0,
-                        "Y": -152.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 215.0,
-                        "Y": -27.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -35820,7 +36185,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -123.0,
+                        "Y": -294.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -58.0,
+                        "Y": -331.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 342.0,
+                        "Y": -78.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 267.0,
+                        "Y": -34.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -123.0,
+                        "Y": -294.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -35872,7 +36268,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -258.0,
+                        "Y": -270.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -158.0,
+                        "Y": -335.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -40.0,
+                        "Y": -273.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -133.0,
+                        "Y": -215.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -258.0,
+                        "Y": -270.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -35924,7 +36351,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -298.0,
+                        "Y": -244.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -228.0,
+                        "Y": -291.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -144.0,
+                        "Y": -241.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -221.0,
+                        "Y": -214.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -298.0,
+                        "Y": -244.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -35976,7 +36434,32 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -307.0,
+                        "Y": -245.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -224.0,
+                        "Y": -298.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -146.0,
+                        "Y": -258.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -307.0,
+                        "Y": -245.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -36028,7 +36511,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -119.0,
+                        "Y": -292.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -60.0,
+                        "Y": -327.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 337.0,
+                        "Y": -69.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 267.0,
+                        "Y": -18.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -119.0,
+                        "Y": -292.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -36080,7 +36594,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -262.0,
+                        "Y": -278.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -148.0,
+                        "Y": -336.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -40.0,
+                        "Y": -275.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -153.0,
+                        "Y": -220.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -262.0,
+                        "Y": -278.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -36344,8 +36889,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -38.0,
+                        "Y": -76.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -38.0,
+                        "Y": -118.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 39.0,
+                        "Y": -108.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 27.0,
+                        "Y": -65.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -38.0,
+                        "Y": -76.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -36448,8 +37024,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -16.0,
+                        "Y": -70.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -25.0,
+                        "Y": -105.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 26.0,
+                        "Y": -110.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 23.0,
+                        "Y": -72.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -16.0,
+                        "Y": -70.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -36500,8 +37107,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -24.0,
+                        "Y": -67.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -27.0,
+                        "Y": -119.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 13.0,
+                        "Y": -124.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 13.0,
+                        "Y": -70.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -24.0,
+                        "Y": -67.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -36552,8 +37190,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -12.0,
+                        "Y": -8.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -49.0,
+                        "Y": -57.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 16.0,
+                        "Y": -87.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 24.0,
+                        "Y": -17.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -12.0,
+                        "Y": -8.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -36604,8 +37273,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -22.0,
+                        "Y": -71.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -42.0,
+                        "Y": -138.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 59.0,
+                        "Y": -145.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 50.0,
+                        "Y": -80.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -22.0,
+                        "Y": -71.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -36708,7 +37408,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -273.0,
+                        "Y": -276.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -152.0,
+                        "Y": -337.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -43.0,
+                        "Y": -280.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -158.0,
+                        "Y": -221.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -273.0,
+                        "Y": -276.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -36760,7 +37491,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -25.0,
+                        "Y": -69.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -36.0,
+                        "Y": -144.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 66.0,
+                        "Y": -138.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 45.0,
+                        "Y": -75.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -25.0,
+                        "Y": -69.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -36932,7 +37694,44 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -61.0,
+                        "Y": -98.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -82.0,
+                        "Y": -205.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 1.0,
+                        "Y": -242.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 85.0,
+                        "Y": -198.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 64.0,
+                        "Y": -98.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -61.0,
+                        "Y": -98.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -37496,7 +38295,38 @@
             "timeToFrameSwap": 0.0
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": 263.0,
+                        "Y": -117.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 152.0,
+                        "Y": -26.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 45.0,
+                        "Y": -73.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 149.0,
+                        "Y": -147.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 263.0,
+                        "Y": -117.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -37514,8 +38344,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2920.0,
-                "Y": -1320.0
+                "X": -2880.0,
+                "Y": -1340.0
             }
         },
         "Sprite": {
@@ -37536,7 +38366,38 @@
             "timeToFrameSwap": 0.0
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -272.0,
+                        "Y": -115.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 139.0,
+                        "Y": -330.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 252.0,
+                        "Y": -265.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -139.0,
+                        "Y": -41.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -272.0,
+                        "Y": -115.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -37692,8 +38553,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -20.0,
+                        "Y": -68.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -24.0,
+                        "Y": -129.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 28.0,
+                        "Y": -137.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 28.0,
+                        "Y": -63.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -20.0,
+                        "Y": -68.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -37744,7 +38636,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -323.0,
+                        "Y": 66.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 127.0,
+                        "Y": -177.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 300.0,
+                        "Y": -82.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -182.0,
+                        "Y": 126.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -323.0,
+                        "Y": 66.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -37762,8 +38685,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -3150.0,
-                "Y": -1540.0
+                "X": -3170.0,
+                "Y": -1640.0
             }
         },
         "Sprite": {
@@ -37848,7 +38771,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -313.0,
+                        "Y": 45.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 133.0,
+                        "Y": -182.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 292.0,
+                        "Y": -92.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -183.0,
+                        "Y": 118.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -313.0,
+                        "Y": 45.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -37913,7 +38867,7 @@
         },
         "Transform": {
             "scale": {
-                "X": 412.5,
+                "X": -412.5,
                 "Y": 412.5
             },
             "rotation": 0.0,
@@ -37952,8 +38906,45 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -36.0,
+                        "Y": 0.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -25.0,
+                        "Y": -82.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 37.0,
+                        "Y": -46.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 16.0,
+                        "Y": -28.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 14.0,
+                        "Y": 0.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -36.0,
+                        "Y": 0.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -38056,8 +39047,45 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -23.0,
+                        "Y": -65.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -36.0,
+                        "Y": -138.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 5.0,
+                        "Y": -164.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 55.0,
+                        "Y": -125.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 50.0,
+                        "Y": -67.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -23.0,
+                        "Y": -65.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -38108,7 +39136,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -318.0,
+                        "Y": -269.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -230.0,
+                        "Y": -316.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 305.0,
+                        "Y": -76.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 215.0,
+                        "Y": -14.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -318.0,
+                        "Y": -269.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -38206,8 +39265,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -1580.0,
-                "Y": 630.0
+                "X": -1550.0,
+                "Y": 490.0
             }
         },
         "Sprite": {
@@ -38219,7 +39278,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree1_Spritesheet.png",
-            "layer": 701
+            "layer": 650
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -38229,11 +39288,11 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 15.0,
-                "Y": -100.0
+                "X": 69.0,
+                "Y": -105.0
             },
             "scaleOffset": {
-                "X": 0.6000000238418579,
+                "X": 0.10000000149011612,
                 "Y": 0.44999998807907104
             },
             "isTrigger": false,
@@ -38259,7 +39318,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -1710.0,
-                "Y": 410.0
+                "Y": 450.0
             }
         },
         "Sprite": {
@@ -38344,7 +39403,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": 288.0,
+                        "Y": -69.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 214.0,
+                        "Y": -19.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -259.0,
+                        "Y": -196.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -196.0,
+                        "Y": -236.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 288.0,
+                        "Y": -69.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -38396,7 +39486,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -340.0,
+                        "Y": -68.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -268.0,
+                        "Y": -28.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 112.0,
+                        "Y": -276.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 47.0,
+                        "Y": -308.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -340.0,
+                        "Y": -68.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -38442,7 +39563,38 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -93.0,
+                        "Y": 17.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -25.0,
+                        "Y": -19.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 61.0,
+                        "Y": 14.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -13.0,
+                        "Y": 41.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -93.0,
+                        "Y": 17.0
+                    }
+                }
+            ],
             "renderFlag": true
         }
     },
@@ -38546,8 +39698,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -25.0,
+                        "Y": -67.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -21.0,
+                        "Y": -130.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 36.0,
+                        "Y": -129.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 27.0,
+                        "Y": -64.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -25.0,
+                        "Y": -67.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -38598,8 +39781,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -23.0,
+                        "Y": -76.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -41.0,
+                        "Y": -136.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 60.0,
+                        "Y": -144.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 40.0,
+                        "Y": -72.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -23.0,
+                        "Y": -76.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -39186,9 +40400,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 114,
-                "g": 114,
-                "b": 114,
+                "r": 149,
+                "g": 149,
+                "b": 149,
                 "a": 255
             },
             "sprite": 2,
@@ -39208,32 +40422,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": 18.0,
-                        "Y": 40.0
+                        "X": -18.0,
+                        "Y": -48.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 17.0,
-                        "Y": -42.0
+                        "X": -7.0,
+                        "Y": -55.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -5.0,
-                        "Y": -42.0
+                        "X": 1.0,
+                        "Y": -49.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -12.0,
-                        "Y": 44.0
+                        "X": -11.0,
+                        "Y": -40.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 18.0,
-                        "Y": 40.0
+                        "X": -18.0,
+                        "Y": -48.0
                     }
                 }
             ],
@@ -39260,9 +40474,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 129,
-                "g": 129,
-                "b": 129,
+                "r": 164,
+                "g": 164,
+                "b": 164,
                 "a": 255
             },
             "sprite": 2,
@@ -39908,6 +41122,579 @@
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2500.0,
+                "Y": 2140.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -91.0,
+                        "Y": -11.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -91.0,
+                        "Y": -100.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 73.0,
+                        "Y": -97.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 68.0,
+                        "Y": -14.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -91.0,
+                        "Y": -11.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2280.0,
+                "Y": 2110.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -87.0,
+                        "Y": -21.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -85.0,
+                        "Y": -121.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 72.0,
+                        "Y": -126.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 75.0,
+                        "Y": -27.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -87.0,
+                        "Y": -21.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -390.0,
+                "Y": 2290.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -475.0,
+                        "Y": 18.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -385.0,
+                        "Y": -36.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -274.0,
+                        "Y": 26.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -378.0,
+                        "Y": 81.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -475.0,
+                        "Y": 18.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3660.0,
+                "Y": 2650.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 177,
+                "g": 177,
+                "b": 177,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -44.0,
+                        "Y": -31.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 102.0,
+                        "Y": -8.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 112.0,
+                        "Y": 36.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -44.0,
+                        "Y": 27.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -44.0,
+                        "Y": -31.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2380.0,
+                "Y": -690.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -23.0,
+                        "Y": -3.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 86.0,
+                        "Y": -56.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 200.0,
+                        "Y": -9.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 88.0,
+                        "Y": 49.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -23.0,
+                        "Y": -3.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 3613.0,
+                "Y": -1210.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -98.0,
+                        "Y": -5.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 13.0,
+                        "Y": -35.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 123.0,
+                        "Y": 8.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 13.0,
+                        "Y": 72.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -98.0,
+                        "Y": -5.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -3620.0,
+                "Y": -1590.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -99.0,
+                        "Y": -17.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 9.0,
+                        "Y": -85.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 144.0,
+                        "Y": -25.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 21.0,
+                        "Y": 40.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -99.0,
+                        "Y": -17.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 970.0,
+                "Y": 2060.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -94.0,
+                        "Y": -6.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 15.0,
+                        "Y": -49.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 124.0,
+                        "Y": 19.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -94.0,
+                        "Y": -6.0
+                    }
+                }
+            ],
+            "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "shadow",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 50.0,
+                "Y": 45.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 750.0,
+                "Y": 2230.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 80,
+                "g": 80,
+                "b": 80,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        },
+        "ShadowCaster": {
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -80.0,
+                        "Y": -68.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -9.0,
+                        "Y": -104.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 75.0,
+                        "Y": -64.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -80.0,
+                        "Y": -68.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     }
 ]

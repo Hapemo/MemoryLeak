@@ -124,23 +124,6 @@ namespace BonVoyage {
 
                         VI.Scene.Play("Pause");
                     }
-                    else if (gsname == "Level3")
-                    {
-                        //VI.Scene.Pause(gsname);
-                        //VI.Scene.Pause(gsname + "Background");
-                        //VI.Scene.Pause("WeatherScene");
-                        //VI.Scene.SetForceRender(gsname, true);
-                        //VI.Scene.SetForceRender(gsname + "Background", true);
-                        //VI.Scene.SetForceRender("WeatherScene", true);
-
-                        //VI.Scene.Pause("GUI Scene");
-                        ////VI.Scene.Pause("TutorialUILvl" + gsname[gsname.Length - 1]);
-                        //VI.Scene.Pause("L" + gsname[gsname.Length - 1] + "NameFade");
-
-                        //VI.Entity.Deactivate(toggleMap);
-
-                        //VI.Scene.Play("Pause");
-                    }
                     else
                     {
                         VI.Scene.Pause(gsname);
