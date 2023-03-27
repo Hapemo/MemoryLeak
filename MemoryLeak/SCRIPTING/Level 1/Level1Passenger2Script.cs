@@ -36,7 +36,6 @@ namespace BonVoyage {
             wrongDestination_RenderLocation = VI.Entity.GetId(Level1DialogManager.P2WrongRenderString);
             // Store original scale x value
             InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-            InitialLayerVal = VI.Sprite.GetLayer(_ENTITY);
         }
 
         public override void EarlyUpdate(int _ENTITY)
@@ -48,18 +47,7 @@ namespace BonVoyage {
             // Temporary implementation TODO change this
             if (ranOnceInit) { 
                 ranOnceInit = false;
-
-                // Get required entities (ALL THESE ENTITIES NEED TO UPDATE IN Level1DialogManager.cs AS WELL IF CHANGED!!!)
-                playerBoat = VI.Entity.GetId("Boat");
-                triggerBox = VI.Entity.GetId(Level1DialogManager.P2BoxString);
-                correctDestination_Box = VI.Entity.GetId(Level1DialogManager.P2CorrectBoxString);
-                correctDestination_RenderLocation = VI.Entity.GetId(Level1DialogManager.P2CorrectRenderString);
-
-                wrongDestination_Box = VI.Entity.GetId(Level1DialogManager.P2WrongBoxString);
-                wrongDestination_RenderLocation = VI.Entity.GetId(Level1DialogManager.P2WrongRenderString);
-                // Store original scale x value
-                InitialScaleX = VI.Transform.Scale.GetX(_ENTITY);
-                InitialLayerVal = VI.Sprite.GetLayer(_ENTITY);
+                Init(_ENTITY);
             }
 
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
