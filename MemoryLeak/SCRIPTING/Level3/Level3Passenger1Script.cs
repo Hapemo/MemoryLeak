@@ -18,17 +18,9 @@ namespace BonVoyage {
 
   public class Level3Passenger1Script : PassengerBaseScript {
 
-    private bool ranOnce = false;
     public override void Alive(int _ENTITY) {
       base.Alive(_ENTITY);
-      playerBoat = VI.Entity.GetId("Boat");
-      triggerBox = VI.Entity.GetId(Level3DialogManager.P1BoxString);
 
-      correctDestination_Box = VI.Entity.GetId(Level3DialogManager.P1CorrectBoxString);
-      correctDestination_RenderLocation = VI.Entity.GetId(Level3DialogManager.P1CorrectRenderString);
-
-      wrongDestination_Box = VI.Entity.GetId(Level3DialogManager.P1WrongBoxString);
-      wrongDestination_RenderLocation = VI.Entity.GetId(Level3DialogManager.P1WrongRenderString);
     }
 
     public override void Init(int _ENTITY) {
@@ -51,15 +43,11 @@ namespace BonVoyage {
 
     public override void Update(int _ENTITY) {
       base.Update(_ENTITY);
-      if (!ranOnce) {
-        Init(_ENTITY);
-        ranOnce = true;
-      }
 
       // Check if passenger's trigger box is active
       if (VI.Entity.IsActive(triggerBox)) {
         // Check if player is colliding with that box
-        if (VI.Physics.CheckCollision(triggerBox, playerBoat, false)) {
+        if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
           // Check if dialogue script should be ran
           if (!Level3DialogManager.runPassengerDialog) {
             // Set Dialogue Manager's flag to true to run it
@@ -94,7 +82,7 @@ namespace BonVoyage {
       }
 
       // Check if passenger reaches destination
-      if (VI.Physics.CheckCollision(correctDestination_Box, _ENTITY, true)) {
+      if (VI.Physics.IsCollided(correctDestination_Box, _ENTITY)) {
         // Move on to detaching animation
         AttachedToPlayer = false;
         DetachFromPlayerAnimation = true;
@@ -103,7 +91,7 @@ namespace BonVoyage {
 
         // Set flag
         correctDestinationDelivery = true;
-      } else if (VI.Physics.CheckCollision(wrongDestination_Box, _ENTITY, true)) {
+      } else if (VI.Physics.IsCollided(wrongDestination_Box, _ENTITY)) {
         // Move on to detaching animation
         AttachedToPlayer = false;
         DetachFromPlayerAnimation = true;
@@ -170,12 +158,12 @@ namespace BonVoyage {
 
     public override void Exit(int _ENTITY) {
       base.Exit(_ENTITY);
-      ranOnce = false;
+
     }
 
     public override void Dead(int _ENTITY) {
       base.Dead(_ENTITY);
-      ranOnce = false;
+
     }
   }
 }

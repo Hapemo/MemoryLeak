@@ -13474,7 +13474,7 @@
                 "X": 0.8999999761581421,
                 "Y": 0.6000000238418579
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "Audio": {
@@ -13489,6 +13489,9 @@
             "isRandPitch": false,
             "toPlayOnCollision": false,
             "isSpacial": false
+        },
+        "Script": {
+            "name": "SwitchToLevel3"
         }
     },
     {
@@ -13535,7 +13538,7 @@
                 "X": 0.8999999761581421,
                 "Y": 0.6000000238418579
             },
-            "isTrigger": false,
+            "isTrigger": true,
             "renderFlag": true
         },
         "Audio": {
@@ -13550,6 +13553,9 @@
             "isRandPitch": false,
             "toPlayOnCollision": false,
             "isSpacial": false
+        },
+        "Script": {
+            "name": "SwitchToLevel3"
         }
     },
     {
@@ -19976,8 +19982,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 440.0,
-                "Y": 500.0
+                "X": 455.0,
+                "Y": 515.0
             },
             "rotation": 0.0,
             "translation": {
@@ -35847,6 +35853,128 @@
                 }
             ],
             "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "ExitBlockerCollider",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1750.0,
+                "Y": 300.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2930.0,
+                "Y": -2790.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 58
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0833333358168602
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        }
+    },
+    {
+        "General": {
+            "name": "ExitBlockerCollider2",
+            "tag": 3,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 400.0,
+                "Y": 1000.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 4030.0,
+                "Y": -2420.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 56
+        },
+        "SheetAnimation": {
+            "frameCount": 3,
+            "currFrameIndex": 0,
+            "timePerFrame": 0.10000000149011612,
+            "timeToFrameSwap": 0.0833333358168602
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": false,
+            "renderFlag": true
+        },
+        "Audio": {
+            "path": "Collision_Finalized",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
         }
     }
 ]
