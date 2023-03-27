@@ -123,8 +123,79 @@
             }
         },
         "isActive": false,
-        "mForceRender": 0,
+        "mForceRender": false,
         "layer": 5,
+        "order": 0
+    },
+    {
+        "SceneName": "Pause",
+        "isActive": true,
+        "mForceRender": false,
+        "layer": 12,
+        "order": 0
+    },
+    {
+        "SceneName": "How_To_Play",
+        "isActive": true,
+        "mForceRender": false,
+        "layer": 12,
+        "order": 0
+    },
+    {
+        "SceneName": "Quit Confirmation",
+        "isActive": true,
+        "mForceRender": false,
+        "layer": 13,
+        "order": 0
+    },
+    {
+        "SceneName": "FPS",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 15,
+        "order": 0
+    },
+    {
+        "SceneName": "Transition",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 15,
+        "order": 0
+    },
+    {
+        "SceneName": "Mouse",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": -154.19091796875,
+                "Y": 2276.108642578125
+            }
+        },
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 14,
+        "order": 0
+    },
+    {
+        "SceneName": "Game Over",
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 1.0,
+            "translation": {
+                "X": -154.19091796875,
+                "Y": 2276.108642578125
+            }
+        },
+        "isActive": true,
+        "mForceRender": false,
+        "layer": 0,
         "order": 0
     }
 ]
