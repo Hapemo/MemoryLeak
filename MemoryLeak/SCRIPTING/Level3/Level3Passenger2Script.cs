@@ -17,7 +17,6 @@ using VI;
 namespace BonVoyage {
 
   public class Level3Passenger2Script : PassengerBaseScript {
-    bool runOnce = true;
     public override void Alive(int _ENTITY) {
       base.Alive(_ENTITY);
     }
@@ -42,7 +41,6 @@ namespace BonVoyage {
 
     public override void Update(int _ENTITY) {
       base.Update(_ENTITY);
-      if (runOnce) { runOnce = false; Init(_ENTITY); }
 
       //if (playerBoat == 0) LOG.WRITE("playerBoat========================");
       //if (triggerBox == 0) LOG.WRITE("triggerBox========================");

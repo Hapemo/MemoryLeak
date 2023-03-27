@@ -18,17 +18,9 @@ namespace BonVoyage {
 
   public class Level3Passenger1Script : PassengerBaseScript {
 
-    private bool ranOnce = false;
     public override void Alive(int _ENTITY) {
       base.Alive(_ENTITY);
-      playerBoat = VI.Entity.GetId("Boat");
-      triggerBox = VI.Entity.GetId(Level3DialogManager.P1BoxString);
 
-      correctDestination_Box = VI.Entity.GetId(Level3DialogManager.P1CorrectBoxString);
-      correctDestination_RenderLocation = VI.Entity.GetId(Level3DialogManager.P1CorrectRenderString);
-
-      wrongDestination_Box = VI.Entity.GetId(Level3DialogManager.P1WrongBoxString);
-      wrongDestination_RenderLocation = VI.Entity.GetId(Level3DialogManager.P1WrongRenderString);
     }
 
     public override void Init(int _ENTITY) {
@@ -51,10 +43,6 @@ namespace BonVoyage {
 
     public override void Update(int _ENTITY) {
       base.Update(_ENTITY);
-      if (!ranOnce) {
-        Init(_ENTITY);
-        ranOnce = true;
-      }
 
       // Check if passenger's trigger box is active
       if (VI.Entity.IsActive(triggerBox)) {
@@ -170,12 +158,12 @@ namespace BonVoyage {
 
     public override void Exit(int _ENTITY) {
       base.Exit(_ENTITY);
-      ranOnce = false;
+
     }
 
     public override void Dead(int _ENTITY) {
       base.Dead(_ENTITY);
-      ranOnce = false;
+
     }
   }
 }
