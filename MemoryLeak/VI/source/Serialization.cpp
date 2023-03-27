@@ -722,6 +722,10 @@ ShadowCaster SerializationManager::getShadowCaster(Value& entity)
 	a = entity["ShadowCaster"]["centerOffsets"].GetArray();
 	for (int j = 0; j < (int)a.Size(); ++j)
 	{
+		/*Math::Vec2 point = GetVec2(a[j]["centerOffset"]);
+		point.x = (float)((int)point.x);
+		point.y = (float)((int)point.y);
+		shadowCaster.centerOffset.push_back(point);*/
 		shadowCaster.centerOffset.push_back(GetVec2(a[j]["centerOffset"]));
 	}
 	shadowCaster.renderFlag = entity["ShadowCaster"]["renderFlag"].GetBool();;

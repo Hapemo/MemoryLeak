@@ -216,9 +216,34 @@ void AudioManager::PlayEntitySound(const Entity& _e)
         _e.GetComponent<Audio>().sound.toPlay = false;
     }
 }
-void AudioManager::PlaySound(const Entity& _e)
+void AudioManager::PlaySound(const Entity& e)
 {
-    _e.GetComponent<Audio>().sound.toPlay = true;
+    std::string snd = e.GetComponent<Audio>().sound.path;
+    int channel = (int)E_AUDIO_CHANNEL::TESTING;
+    system->playSound(mSfxSound[snd], nullptr, false, &mChannel[channel]);
+    if (e.GetComponent<Audio>().isSpacial && e.HasComponent<Transform>())
+    {
+        float vol = e.GetComponent<Audio>().sound.volume;
+        Math::Vec2 distance = e.GetComponent<Transform>().translation - renderManager->GetGameCamera().GetPos();
+        Math::Vec2 max = { renderManager->GetGameCamera().GetCameraWidth() / 2.f * e.GetComponent<Audio>().spacialDistance,
+            renderManager->GetGameCamera().GetCameraHeight() / 2.f * e.GetComponent<Audio>().spacialDistance };
+
+        float spacial = (max.Magnitude() - distance.Magnitude()) / max.Magnitude();
+        spacial = spacial < 0.f ? 0.f : spacial;
+
+        vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
+        mChannel[channel]->setVolume(vol * sfxVol);
+    }
+    else
+        mChannel[channel]->setVolume(e.GetComponent<Audio>().sound.volume);
+    if (e.GetComponent<Audio>().sound.isRandPitch)
+    {
+        mChannel[channel]->setPitch(((float)(std::rand() % 100)) / 100.f + 0.5f);
+    }
+    else
+        mChannel[channel]->setPitch(e.GetComponent<Audio>().sound.pitch);
+
+    
 }
 /*!*****************************************************************************
 \brief

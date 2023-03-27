@@ -82,5 +82,6 @@ private:
 		MAINBACKGROUND,
 		EDITORSONG,
 		DIALOGUE,
+		TESTING,
 		MAX =20
 	};
