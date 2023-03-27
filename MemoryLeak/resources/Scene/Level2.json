@@ -13118,17 +13118,6 @@
             "isTrigger": true,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": false
-        },
         "Script": {
             "name": "Level2Passenger1Script"
         },
@@ -13258,17 +13247,6 @@
             },
             "isTrigger": true,
             "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": false
         },
         "Script": {
             "name": "Level2Passenger2Script"
