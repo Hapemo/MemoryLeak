@@ -1181,6 +1181,8 @@ void InspectorPanel::ShadowCasterEditor()
 			e.GetComponent<ShadowCaster>().renderFlag = true;
 			SRT = 5;
 			Math::Vec2 point = mWorldMousePos * renderManager->GetWorldCamera().GetZoom() + renderManager->GetWorldCamera().GetPos() - e.GetComponent<Transform>().translation;
+			point.x = (float)((int)point.x);
+			point.y = (float)((int)point.y);
 			if (Input::CheckKey(E_STATE::PRESS, E_KEY::M_BUTTON_L))
 			{
 				e.GetComponent<ShadowCaster>().centerOffset.push_back(Math::Vec2{ point });
