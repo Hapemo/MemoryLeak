@@ -101,7 +101,7 @@ namespace BonVoyage {
             
             if (EnemyActivated) {
                 // Detecting player hits
-                if (VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > -1) {
+                if (VI.Physics.CheckCollision(PlayerId, THIS.GetId(), false) && HitTaken > -1) {
                     ++HitCounter;
                     ++HitAnimationCounter;
                     if (HitAnimationCounter >= HitInterval) {
@@ -137,7 +137,7 @@ namespace BonVoyage {
             }
 
             // Healing player
-            if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > 0) {
+            if (!VI.Physics.CheckCollision(PlayerId, THIS.GetId(), false) && HitTaken > 0) {
                 ++HealCounter;
                 if (HealCounter >= HitInterval * 100f * HealSpeed) {
                     HealCounter = 0;

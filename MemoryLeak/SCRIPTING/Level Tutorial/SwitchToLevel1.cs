@@ -36,7 +36,7 @@ namespace BonVoyage {
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
-            if (VI.Physics.IsCollided(_ENTITY, playerBoat)) {
+            if (VI.Physics.CheckCollision(_ENTITY, playerBoat, false)) {
                 TransitionSquare.FadeOut("Level1");
                 //VI.GameState.Go("Level1");
             }
