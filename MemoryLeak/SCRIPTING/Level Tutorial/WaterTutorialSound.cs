@@ -21,15 +21,15 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
+            VI.Audio.PlayBGM("Bon_Voyage_BGM");
+            init = true;
         }
 
         public void EarlyUpdate(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             if (!init)
             {
-                VI.Audio.PlayBGM("01.Daytime_Forest_Field_Sun_Loop");
-                VI.Audio.PlayBGM("Bon_Voyage_BGM");
+                Init(_ENTITY);
                 init = true;
             }
 

@@ -205,7 +205,7 @@ public:
 
 		static void PlayBGM(MonoString* _soundName);
 		static bool IsBgmPlaying();
-		static void ForcePlay(MonoString* _soundName);
+		/*static void ForcePlay(MonoString* _soundName);*/
 	};
 	struct iTransform {
 		static float s_GetPosX(MonoString* _entityName, MonoString* _sceneName);

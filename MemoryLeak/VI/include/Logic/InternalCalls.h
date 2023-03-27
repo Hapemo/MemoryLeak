@@ -686,7 +686,7 @@ public:
 		*******************************************************************************/
 		static void PlayBGM(std::string const& _soundName);
 		static bool IsBgmPlaying();
-		static void ForcePlay(std::string const& _soundName);
+		/*static void ForcePlay(std::string const& _soundName);*/
 
 		/*!*****************************************************************************
 		\brief
