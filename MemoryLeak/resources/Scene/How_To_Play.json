@@ -952,13 +952,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 87.5,
-                "Y": 70.0
+                "X": 125.0,
+                "Y": 175.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 1500.0,
-                "Y": -610.0
+                "Y": -280.0
             }
         },
         "Sprite": {
@@ -3234,6 +3234,19 @@
             "texture": "Textures\\Menu\\UI_DialogueOption1.png",
             "layer": 47
         },
+        "Audio": {
+            "path": "Dialog_Click_Choice",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Yes!",
@@ -3394,6 +3407,19 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\UI_DialogueOption1.png",
             "layer": 47
+        },
+        "Audio": {
+            "path": "Dialog_Click_Choice",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -4189,7 +4215,7 @@
             "layer": 48
         },
         "Audio": {
-            "path": "Toggle(Edited)",
+            "path": "HTP_Toggle",
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
@@ -4222,8 +4248,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 535.0,
-                "Y": 238.0
+                "X": 530.0,
+                "Y": 230.0
             }
         },
         "Sprite": {
@@ -4238,11 +4264,11 @@
             "layer": 10
         },
         "Audio": {
-            "path": "OpenMemoryFragment",
+            "path": "Menu_Close_Button",
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
-            "pitch": 1.0,
+            "pitch": 0.5,
             "isPaused": false,
             "isMute": false,
             "isLoop": false,
@@ -4287,7 +4313,7 @@
             "layer": 10
         },
         "Audio": {
-            "path": "Toggle(Edited)",
+            "path": "HTP_Toggle",
             "toPlay": false,
             "volume": 1.0,
             "volumeMod": 1.0,
@@ -4936,6 +4962,19 @@
             "texture": "Textures\\Menu\\UI_DialogueBox1.png",
             "layer": 7
         },
+        "Audio": {
+            "path": "Rain_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Sea monster appears more frequently",
@@ -5097,6 +5136,19 @@
             "texture": "Textures\\Menu\\UI_DialogueBox1.png",
             "layer": 7
         },
+        "Audio": {
+            "path": "Wind",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
         "Text": {
             "fontFile": "BPtypewrite",
             "text": "Affects player movement",
@@ -5257,6 +5309,19 @@
             "sprite": 2,
             "texture": "Textures\\Menu\\UI_DialogueBox1.png",
             "layer": 7
+        },
+        "Audio": {
+            "path": "Fog_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -5899,7 +5964,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Icons\\rainfogIcon.png",
+            "texture": "Textures\\Icons\\fogIcon.png",
             "layer": 50
         },
         "Text": {
@@ -6829,7 +6894,7 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "",
+            "texture": "Textures\\Spritesheets\\BOAT\\hit\\Props_Boat_SW_Hit_Spritesheet.png",
             "layer": 54
         },
         "SheetAnimation": {
@@ -7382,7 +7447,7 @@
     {
         "General": {
             "name": "W9",
-            "tag": 6,
+            "tag": 4,
             "subtag": 0,
             "isActive": true
         },
@@ -7418,7 +7483,7 @@
     {
         "General": {
             "name": "W10",
-            "tag": 8,
+            "tag": 4,
             "subtag": 0,
             "isActive": true
         },
