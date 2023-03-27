@@ -216,6 +216,10 @@ namespace BonVoyage {
                         MovementYModifier = (float)(rand.NextDouble() * 100.0);
                     }
                 }
+                else {
+                    MovementXModifier = 0f;
+                    MovementYModifier = 0f;
+                }
                 #endregion
             }
         }
