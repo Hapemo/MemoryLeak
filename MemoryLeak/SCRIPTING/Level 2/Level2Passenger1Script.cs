@@ -153,7 +153,6 @@ namespace BonVoyage {
 
       // Move passenger with player       
       if (AttachedToPlayer) {
-                Console.WriteLine("Destination? " + DestinationReached);
         // Move passenger with player
         MovePassengerWithPlayer(_ENTITY, playerBoat, InitialScaleX);
       }
