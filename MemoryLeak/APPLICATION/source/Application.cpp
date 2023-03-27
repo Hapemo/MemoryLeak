@@ -191,6 +191,7 @@ void Application::SecondUpdate() {
   // Part 2: swap buffers: front <-> back
   TRACK_PERFORMANCE("glfwSwapBuffers");
   glfwSwapBuffers(Application::getWindow());
+ /// glFinish();???????
   END_TRACK("glfwSwapBuffers");
 
   FPSManager::LimitFPS();
@@ -259,13 +260,13 @@ void Application::MainUpdate() {
 
     // If it changes, it should've came from when updaing game logic
     //if (Input::CheckKey(PRESS, ESCAPE)) GameStateManager::GetInstance()->GameStateExit();
-    TRACK_PERFORMANCE("GSM");
-    GameStateManager::GetInstance()->UpdateNextGSMState();
-    END_TRACK("GSM");
 
-    TRACK_PERFORMANCE("SecondUpdate");
+    GameStateManager::GetInstance()->UpdateNextGSMState();
+   
+
+
     SecondUpdate(); // This should always be the last
-    END_TRACK("SecondUpdate");
+
     END_TRACK("MainLoop");
   }
   glfwSetWindowShouldClose(ptr_window, 1);

@@ -16,7 +16,7 @@ using VI;
 
 namespace BonVoyage {
   public class Level2Passenger1Script : PassengerBaseScript {
-    static bool runOnce = false;
+        private bool toInit = true;
     public override void Alive(int _ENTITY) {
       base.Alive(_ENTITY);
     }
@@ -36,14 +36,15 @@ namespace BonVoyage {
     }
 
     public override void EarlyUpdate(int _ENTITY) {
+            if (toInit) {
+                toInit = false;
+                Init(_ENTITY);
+            }
+
       base.EarlyUpdate(_ENTITY);
     }
 
     public override void Update(int _ENTITY) {
-      if (!runOnce) {
-        Init(_ENTITY);
-        runOnce = true;
-      }
       base.Update(_ENTITY);
       // Check if passenger's trigger box is active
       if (VI.Entity.IsActive(triggerBox)) {
@@ -158,8 +159,8 @@ namespace BonVoyage {
     }
 
     public override void Exit(int _ENTITY) {
-      runOnce = false;
-      base.Exit(_ENTITY);
+            toInit = true;
+            base.Exit(_ENTITY);
     }
 
     public override void Dead(int _ENTITY) {
