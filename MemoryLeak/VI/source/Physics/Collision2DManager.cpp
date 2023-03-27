@@ -487,9 +487,9 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		if (!possibleContactPair.first.ShouldRun() || !possibleContactPair.second.ShouldRun())
 			continue;
 
-		//if (possibleContactPair.first.GetComponent<General>().tag != TAG::PLAYER &&
-		//	possibleContactPair.second.GetComponent<General>().tag != TAG::PLAYER)
-		//	continue;
+		if (possibleContactPair.first.GetComponent<General>().tag != TAG::PLAYER &&
+			possibleContactPair.second.GetComponent<General>().tag != TAG::PLAYER)
+			continue;
 
 		if (!HasCollider(possibleContactPair.first) || !HasCollider(possibleContactPair.second))
 			continue;

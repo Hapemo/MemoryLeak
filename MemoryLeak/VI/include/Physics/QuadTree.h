@@ -333,7 +333,7 @@ private:
 *******************************************************************************/
 class QuadTree {
 private:
-	static constexpr size_t mThreshold{ 16 },	// Max number of nodes one quad should hold before subdividing itself
+	static constexpr size_t mThreshold{ 32 },	// Max number of nodes one quad should hold before subdividing itself
 							mMaxDepth{ 8 };		// Max number of inner child nodes the root can have
 
 	/*!*****************************************************************************
