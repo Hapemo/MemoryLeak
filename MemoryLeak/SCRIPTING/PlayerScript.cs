@@ -210,10 +210,10 @@ namespace BonVoyage {
                 // Weather effects on the player
                 #region Weather Effects
                 // Update player's modifier based on current weather
-                if (PlayerCurrWeather == 2) {
+                if (!PlayerInDialogue && !PlayerInOtherAnimation && PlayerCurrWeather == 2) {
                     if (rand.Next(0, 100) < 50) {
-                        MovementXModifier = (float)(rand.NextDouble() * 100.0);
-                        MovementYModifier = (float)(rand.NextDouble() * 100.0);
+                        MovementXModifier = (float)(rand.NextDouble() * 100.0 - 50.0);
+                        MovementYModifier = (float)(rand.NextDouble() * 100.0 - 50.0);
                     }
                 }
                 else {
