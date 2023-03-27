@@ -40,35 +40,6 @@ void InternalCalls::MissingComponent(std::string _entityName, std::string _compo
 
 /*!*****************************************************************************
 \brief
-Int storage.
-*******************************************************************************/
-std::map<std::string, int> InternalCalls::storageInt;
-
-void InternalCalls::StoreValue(std::string _key, int _value) {
-	std::string key = Util::LowerString(_key);
-	if (storageInt.find(key) == storageInt.end()){
-		//storageInt[key] = _value;
-	} else {
-		std::string message = "Replacing value in storage: " + key + " = " + std::to_string(_value);
-		LOG_WARN(message);
-		//storageInt[key] = _value;
-	}
-}
-int InternalCalls::GetValue(std::string _key) {
-	std::string key = Util::LowerString(_key);
-	if (storageInt.find(key) == storageInt.end()) {
-		std::string message = "Key " + key + " not found in storage.";
-		LOG_GAME(message);
-		LOG_ERROR(message);
-		return -1;
-	}
-	else {
-		return storageInt[key];
-	}
-}
-
-/*!*****************************************************************************
-\brief
 Logger function.
 *******************************************************************************/
 void InternalCalls::LogGame(std::string _log) {
@@ -84,6 +55,40 @@ Gets the delta time in double.
 *******************************************************************************/
 double InternalCalls::GetDeltaTime() {
 	return FPSManager::dt;
+}
+
+/*!*****************************************************************************
+\brief
+Player data.
+*******************************************************************************/
+void InternalCalls::LoadPlayerData(std::string _name) {
+	playerDataManager->LoadPlayerData(_name);
+}
+void InternalCalls::SavePlayerData() {
+	playerDataManager->SavePlayerData();
+}
+
+std::string InternalCalls::GetPlayerName() {
+	return playerDataManager->GetPlayerName();
+}
+int InternalCalls::GetLevelAt() {
+	return playerDataManager->GetLevelAt();
+}
+void InternalCalls::SetLevelAt(int _level) {
+	playerDataManager->SetLevelAt(_level);
+}
+
+int InternalCalls::GetData1(int _index) {
+	return playerDataManager->GetData1(_index);
+}
+void InternalCalls::SetData1(int _index, int _value) {
+	playerDataManager->SetData1(_index, _value);
+}
+int InternalCalls::GetData2(int _index) {
+	return playerDataManager->GetData2(_index);
+}
+void InternalCalls::SetData2(int _index, int _value) {
+	playerDataManager->SetData2(_index, _value);
 }
 
 /*!*****************************************************************************

@@ -43,10 +43,10 @@ public:
 
 	/*!*****************************************************************************
 	\brief
-	Int storage.
+	Player data.
 	*******************************************************************************/
-	static void StoreValue(MonoString* _key, int _value);
-	static int GetValue(MonoString* _key);
+	static void LoadPlayerData(MonoString* _name);
+	static MonoString* GetPlayerName();
 
 	/*!*****************************************************************************
 	\brief
