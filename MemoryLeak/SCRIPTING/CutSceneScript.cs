@@ -29,6 +29,8 @@ namespace BonVoyage {
         int gs;
         int targetRadius;
         int currRadius;
+        int animationCounter;
+        int nextScene;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY);
@@ -63,6 +65,8 @@ namespace BonVoyage {
             soundPlayed = false;
             currRadius = 2000;
             skipping = false;
+            animationCounter = 0;
+            nextScene = 250;
         }
 
         public void EarlyUpdate(int _ENTITY) { }
@@ -101,9 +105,12 @@ namespace BonVoyage {
             }
             if (!skipping && !isAlphaDecreasing && VI.Input.Key.Release(349) && currScn < maxScn)
                 isAlphaDecreasing = true;
+            if (!skipping && !isAlphaDecreasing && animationCounter >= nextScene && currScn < maxScn)
+                isAlphaDecreasing = true;
         }
 
         public void FixedUpdate(int _ENTITY) {
+            ++animationCounter;
             if (isAlphaDecreasing)
                 UpdateAlpha();
             if (currScn == 4 && gs == 3 && !skipping)
@@ -135,6 +142,7 @@ namespace BonVoyage {
                 {
                     currAlpha = 255;
                     isAlphaDecreasing = false;
+                    animationCounter = 0;
                     currScn = maxScn;
                 }
             }
@@ -151,6 +159,7 @@ namespace BonVoyage {
                 {
                     currAlpha = 255;
                     isAlphaDecreasing = false;
+                    animationCounter = 0;
                     ++currScn;
                     entity = "e" + currScn;
                 }
