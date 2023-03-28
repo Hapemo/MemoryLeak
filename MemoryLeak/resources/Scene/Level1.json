@@ -635,56 +635,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -170.0,
-                        "Y": 0.0
+                        "X": 116.0,
+                        "Y": -163.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -167.0,
-                        "Y": 205.0
+                        "X": 267.0,
+                        "Y": -94.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 18.0,
-                        "Y": 309.0
+                        "X": -14.0,
+                        "Y": 62.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 168.0,
-                        "Y": 200.0
+                        "X": -169.0,
+                        "Y": -11.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 170.0,
-                        "Y": 10.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 283.0,
-                        "Y": -52.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 281.0,
-                        "Y": -92.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 133.0,
-                        "Y": -166.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -170.0,
-                        "Y": 0.0
+                        "X": 116.0,
+                        "Y": -163.0
                     }
                 }
             ],
@@ -1032,38 +1008,38 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -150.0,
-                        "Y": 45.0
+                        "X": -159.0,
+                        "Y": -307.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 158.0,
-                        "Y": 48.0
+                        "X": 3.0,
+                        "Y": -378.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 166.0,
-                        "Y": -309.0
+                        "X": 173.0,
+                        "Y": -307.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 0.0,
-                        "Y": -375.0
+                        "X": 170.0,
+                        "Y": -173.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -151.0,
-                        "Y": -314.0
+                        "X": -161.0,
+                        "Y": -162.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -150.0,
-                        "Y": 45.0
+                        "X": -159.0,
+                        "Y": -307.0
                     }
                 }
             ],
@@ -1339,7 +1315,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -1347,7 +1323,7 @@
             "isPaused": false,
             "isMute": false,
             "isLoop": false,
-            "isRandPitch": false,
+            "isRandPitch": true,
             "toPlayOnCollision": false,
             "isSpacial": false
         },
@@ -1397,6 +1373,89 @@
                 }
             ],
             "renderFlag": true
+        },
+        "MovementAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "moveOnCollide": true,
+            "targets": [
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": 0.03490658476948738,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": -0.03490658476948738,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": 0.03490658476948738,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": 284.0,
+                            "Y": 326.02691650390625
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -950.0,
+                            "Y": 150.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2229,44 +2288,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -340.0,
-                        "Y": 100.0
+                        "X": -183.0,
+                        "Y": -170.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 49.0,
-                        "Y": 295.0
+                        "X": 202.0,
+                        "Y": 30.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 179.0,
-                        "Y": 229.0
+                        "X": 36.0,
+                        "Y": 137.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 190.0,
-                        "Y": 29.0
+                        "X": -357.0,
+                        "Y": -87.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -184.0,
-                        "Y": -156.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -336.0,
-                        "Y": -85.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -340.0,
-                        "Y": 100.0
+                        "X": -183.0,
+                        "Y": -170.0
                     }
                 }
             ],
@@ -2334,50 +2381,7 @@
             "isSpacial": false
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": 145.0,
-                        "Y": 219.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -111.0,
-                        "Y": 356.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -339.0,
-                        "Y": 186.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -341.0,
-                        "Y": -19.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -128.0,
-                        "Y": -140.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 139.0,
-                        "Y": -25.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 145.0,
-                        "Y": 210.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -2440,7 +2444,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -2448,7 +2452,7 @@
             "isPaused": false,
             "isMute": false,
             "isLoop": false,
-            "isRandPitch": false,
+            "isRandPitch": true,
             "toPlayOnCollision": false,
             "isSpacial": false
         },
@@ -2486,6 +2490,89 @@
                 }
             ],
             "renderFlag": true
+        },
+        "MovementAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": false,
+            "moveOnCollide": true,
+            "targets": [
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": 0.03490658476948738,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": -0.03490658476948738,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": 0.03490658476948738,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                },
+                {
+                    "time": 0.20000000298023224,
+                    "Transform": {
+                        "scale": {
+                            "X": -400.0,
+                            "Y": 415.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": 540.0,
+                            "Y": 140.0
+                        }
+                    }
+                }
+            ]
         }
     },
     {
@@ -2964,6 +3051,19 @@
                 "Y": 0.004999999888241291
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Waterfall",
+            "toPlay": true,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": true,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": true
         },
         "ShadowCaster": {
             "centerOffsets": [

@@ -76,9 +76,9 @@
                 "Y": 1637.222412109375
             }
         },
-        "isActive": true,
+        "isActive": false,
         "mForceRender": false,
-        "layer": 5,
+        "layer": 14,
         "order": 0
     },
     {

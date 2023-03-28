@@ -1409,6 +1409,19 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Character_Ghost1_SE_idle.png",
             "layer": 62
+        },
+        "Audio": {
+            "path": "Collect_Relic",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
         }
     },
     {
@@ -1439,6 +1452,19 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Character_Ghost1_SE_idle.png",
             "layer": 62
+        },
+        "Audio": {
+            "path": "Relic_Fail",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
         }
     },
     {
@@ -1518,6 +1544,47 @@
         },
         "Button": {
             "interactable": true
+        },
+        "MovementAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "moveOnHover": true,
+            "moveOnCollide": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 145.0,
+                            "Y": 145.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -700.0,
+                            "Y": -360.0
+                        }
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "Transform": {
+                        "scale": {
+                            "X": 155.0,
+                            "Y": 155.0
+                        },
+                        "rotation": 0.0,
+                        "translation": {
+                            "X": -700.0,
+                            "Y": -360.0
+                        }
+                    }
+                }
+            ]
         },
         "ParticleSystem": {
             "mParticleInfo": {

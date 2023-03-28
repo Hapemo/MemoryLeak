@@ -16,7 +16,7 @@ namespace BonVoyage {
     {
         static int[] relics;
         static int[] backs;
-        static bool[] activated;
+        static int[] activated;
         static int[] tooltips;
         static bool activatedChanged;
         static int[] expandedRelics;
@@ -27,6 +27,9 @@ namespace BonVoyage {
         static int[] relicBIGLOST;
         static int relicFound;
         static int relicNotFound;
+        static int relicFoundSound;
+        static int relicNotFoundSound;
+
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
@@ -34,6 +37,8 @@ namespace BonVoyage {
 
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            relicFoundSound = VI.Entity.GetId("PassengerIcon1");
+            relicNotFoundSound = VI.Entity.GetId("PassengerIcon2");
 
             relics = new int[]
             {
@@ -63,7 +68,14 @@ namespace BonVoyage {
                 VI.Entity.GetId("tooltip6"),
                 VI.Entity.GetId("tooltipNO")
             };
-            activated = new bool[] { false, false, false, false, false, false };
+            if (VI.Data.GetData1(0) == -1)
+            {
+                for (int i = 0; i < 6; ++i)
+                    VI.Data.SetData1(i, 0);
+            }    
+
+            activated = new int[] { VI.Data.GetData1(0), VI.Data.GetData1(1), VI.Data.GetData1(2), 
+                                        VI.Data.GetData1(3), VI.Data.GetData1(4), VI.Data.GetData1(5) };
             expandedRelics = new int[]
             {
                 VI.Entity.GetId("Relic1Expanded"),
@@ -123,7 +135,7 @@ namespace BonVoyage {
                     if (VI.Input.Button.Hover(backs[i]))
                     {
                         nonehovering = false;
-                        if (activated[i])
+                        if (activated[i] == 1)
                         {
                             VI.Entity.Activate(tooltips[i]);
                             VI.Entity.Deactivate(tooltips[6]);
@@ -149,7 +161,7 @@ namespace BonVoyage {
 
                 for (int i = 0; i < 6; ++i)
                 { 
-                    if (VI.Input.Button.Clicked(backs[i]) && activated[i])
+                    if (VI.Input.Button.Clicked(backs[i]) && activated[i] == 1)
                     {
                         string gsname = VI.GameState.GetName();
 
@@ -208,7 +220,7 @@ namespace BonVoyage {
                 VI.Entity.Activate(back);
             for (int i = 0; i < 6; ++ i)
             {
-                if (activated[i])
+                if (activated[i] == 1)
                     VI.Entity.Activate(relics[i]);
             }
             VI.Entity.Activate(expanded);
@@ -230,7 +242,8 @@ namespace BonVoyage {
             if (fragmentId < 0) return;
             if (fragmentId > 5) return;
             activatedChanged = true;
-            activated[fragmentId] = true;
+            activated[fragmentId] = 1;
+            VI.Data.SetData1(fragmentId, 1);
         }
 
         public static void DeliveredPassenger(int fragmentId, bool correctly)
@@ -243,6 +256,8 @@ namespace BonVoyage {
                 VI.Entity.Activate(relicFound);
                 VI.ColorAI.StartAnimation(relicFound);
                 VI.ColorAI.SetNextStep(relicFound, 1);
+                VI.Audio.Play(relicFoundSound);
+
             }
             else
             {
@@ -250,6 +265,8 @@ namespace BonVoyage {
                 VI.Entity.Activate(relicNotFound);
                 VI.ColorAI.StartAnimation(relicNotFound);
                 VI.ColorAI.SetNextStep(relicNotFound, 1);
+                VI.Audio.Play(relicNotFoundSound);
+
             }
         }
     }

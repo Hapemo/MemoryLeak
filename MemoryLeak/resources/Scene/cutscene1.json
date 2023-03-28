@@ -1,7 +1,37 @@
 [
     {
         "General": {
-            "name": "cutscene1pic",
+            "name": "back",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 255
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "e3",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -25,26 +55,26 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Sprites\\cutscene.png",
-            "layer": 0
+            "texture": "Textures\\Cutscenes\\opening\\cutscene1\\Cutscene1_Scene1-04.png",
+            "layer": 1
         }
     },
     {
         "General": {
-            "name": "cutscene1button",
+            "name": "e2",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 545.0,
-                "Y": 115.0
+                "X": 1600.0,
+                "Y": 900.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 502.8009948730469,
-                "Y": -352.7950439453125
+                "X": 0.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -55,39 +85,109 @@
                 "a": 255
             },
             "sprite": 2,
-            "texture": "Textures\\Menu\\button-1.png",
-            "layer": 1
+            "texture": "Textures\\Cutscenes\\opening\\cutscene1\\Cutscene1_Scene1-03.png",
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "e1",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
         },
-        "Audio": {
-            "path": "Button_Click_SFX",
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "isSpacial": false
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "To be continued...",
-            "offset": {
-                "X": -195.0,
-                "Y": -15.0
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
             },
-            "scale": 0.75,
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
             "color": {
                 "r": 255,
                 "g": 255,
                 "b": 255,
                 "a": 255
             },
-            "followCam": false,
-            "width": 0.0
+            "sprite": 2,
+            "texture": "Textures\\Cutscenes\\opening\\cutscene1\\Cutscene1_Scene1-02.png",
+            "layer": 3
+        }
+    },
+    {
+        "General": {
+            "name": "e0",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
         },
-        "Button": {
-            "interactable": true
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Cutscenes\\opening\\cutscene1\\Cutscene1_Scene1-01.png",
+            "layer": 4
+        }
+    },
+    {
+        "General": {
+            "name": "light",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 5
+        },
+        "Script": {
+            "name": "CutSceneScript"
+        },
+        "LightSource": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "radius": 800.0,
+            "intensity": 0.0
         }
     }
 ]

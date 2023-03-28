@@ -29,9 +29,9 @@
             "layer": 3
         },
         "Audio": {
-            "path": "OpenMinimap",
+            "path": "Open Enemy-Weather",
             "toPlay": false,
-            "volume": 1.0,
+            "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,

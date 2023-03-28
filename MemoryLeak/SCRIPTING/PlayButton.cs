@@ -41,7 +41,7 @@ namespace BonVoyage {
 
 
             if (THIS.Input.Button.Released())
-                TransitionSquare.FadeOut("CutScene");
+                TransitionSquare.FadeOut("CutScene1");
         }
 
         public void FixedUpdate(int _ENTITY) {
