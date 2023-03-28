@@ -754,6 +754,18 @@ MovementAI SerializationManager::getMovementAI(Value& entity)
 	}
 	else
 		movementAI.moveOnHover = false;
+	if (entity["MovementAI"].HasMember("moveScale"))//////remove this if line
+	{
+		movementAI.moveScale = entity["MovementAI"]["moveScale"].GetBool();
+		movementAI.moveRotate = entity["MovementAI"]["moveRotate"].GetBool();
+		movementAI.moveTranslation = entity["MovementAI"]["moveTranslation"].GetBool();
+	}
+	else
+	{
+		movementAI.moveScale = true;
+		movementAI.moveRotate = true;
+		movementAI.moveTranslation = true;
+	}
 	if (entity["MovementAI"].HasMember("moveOnCollide"))//////remove this if line
 	{
 		movementAI.moveOnCollide = entity["MovementAI"]["moveOnCollide"].GetBool();
@@ -793,6 +805,20 @@ ColorAI SerializationManager::getColorAI(Value& entity)
 	}
 	else
 		colorAI.changeOnCollide = false;
+	if (entity["ColorAI"].HasMember("changeR"))//////remove this if line
+	{
+		colorAI.changeR = entity["ColorAI"]["changeR"].GetBool();
+		colorAI.changeG = entity["ColorAI"]["changeG"].GetBool();
+		colorAI.changeB = entity["ColorAI"]["changeB"].GetBool();
+		colorAI.changeA = entity["ColorAI"]["changeA"].GetBool();
+	}
+	else
+	{
+		colorAI.changeR = true;
+		colorAI.changeG = true;
+		colorAI.changeB = true;
+		colorAI.changeA = true;
+	}
 	Value a(kObjectType);
 	if (entity["ColorAI"].HasMember("targets"))
 	{
@@ -1453,6 +1479,9 @@ void SerializationManager::addMovementAI(Document& scene, Value& entity, Movemen
 	tmp.AddMember(StringRef("acceleration"), movementAI.acceleration, scene.GetAllocator());
 	tmp.AddMember(StringRef("moveOnHover"), movementAI.moveOnHover, scene.GetAllocator());
 	tmp.AddMember(StringRef("moveOnCollide"), movementAI.moveOnCollide, scene.GetAllocator());
+	tmp.AddMember(StringRef("moveScale"), movementAI.moveScale, scene.GetAllocator());
+	tmp.AddMember(StringRef("moveRotate"), movementAI.moveRotate, scene.GetAllocator());
+	tmp.AddMember(StringRef("moveTranslation"), movementAI.moveTranslation, scene.GetAllocator());
 	Value child(kObjectType);
 	child.SetArray();
 	for (int i = 0; i < movementAI.targetTransforms.size(); ++i)
@@ -1478,6 +1507,10 @@ void SerializationManager::addColorAI(Document& scene, Value& entity, ColorAI co
 	tmp.AddMember(StringRef("spriteORtext"), colorAI.spriteORtext, scene.GetAllocator());
 	tmp.AddMember(StringRef("changeOnHover"), colorAI.changeOnHover, scene.GetAllocator());
 	tmp.AddMember(StringRef("changeOnCollide"), colorAI.changeOnCollide, scene.GetAllocator());
+	tmp.AddMember(StringRef("changeR"), colorAI.changeR, scene.GetAllocator());
+	tmp.AddMember(StringRef("changeG"), colorAI.changeG, scene.GetAllocator());
+	tmp.AddMember(StringRef("changeB"), colorAI.changeB, scene.GetAllocator());
+	tmp.AddMember(StringRef("changeA"), colorAI.changeA, scene.GetAllocator());
 	Value child(kObjectType);
 	child.SetArray();
 	for (int i = 0; i < colorAI.targetColors.size(); ++i)

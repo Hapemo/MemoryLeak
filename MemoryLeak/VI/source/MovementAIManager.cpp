@@ -47,19 +47,28 @@ void MovementAIManager::Update()
 			}
 			else if (e.GetComponent<MovementAI>().state == 1)//move to target
 			{
-				Math::Vec2 scalediff = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale - e.GetComponent<Transform>().scale;
-				float rotationdiff = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].rotation - e.GetComponent<Transform>().rotation;
-				Math::Vec2 translationdiff = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation - e.GetComponent<Transform>().translation;
 				float timediff = e.GetComponent<MovementAI>().currtime / (float)FPSManager::dt;
 
 				if (timediff >= 1.f)
 				{
-					scalediff /= timediff;
-					rotationdiff /= timediff;
-					translationdiff /= timediff;
-					e.GetComponent<Transform>().scale += scalediff;
-					e.GetComponent<Transform>().rotation += rotationdiff;
-					e.GetComponent<Transform>().translation += translationdiff;
+					if (e.GetComponent<MovementAI>().moveScale)
+					{
+					Math::Vec2 scalediff = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].scale - e.GetComponent<Transform>().scale;
+						scalediff /= timediff;
+						e.GetComponent<Transform>().scale += scalediff;
+					}
+					if (e.GetComponent<MovementAI>().moveRotate)
+					{
+						float rotationdiff = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].rotation - e.GetComponent<Transform>().rotation;
+						rotationdiff /= timediff;
+						e.GetComponent<Transform>().rotation += rotationdiff;
+					}
+					if (e.GetComponent<MovementAI>().moveTranslation)
+					{
+						Math::Vec2 translationdiff = e.GetComponent<MovementAI>().targetTransforms[e.GetComponent<MovementAI>().step].translation - e.GetComponent<Transform>().translation;
+						translationdiff /= timediff;
+						e.GetComponent<Transform>().translation += translationdiff;
+					}
 					e.GetComponent<MovementAI>().currtime -= (float)FPSManager::dt;
 				}
 				else
