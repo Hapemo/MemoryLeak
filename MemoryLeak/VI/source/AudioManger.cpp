@@ -123,7 +123,6 @@ void AudioManager::UpdateSound()
                         mChannel[e.GetComponent<Audio>().sound.channel]->stop();
                     }
                 }
-            }
                 continue;
             }
             if (e.GetComponent<Audio>().sound.toPlay == true)
