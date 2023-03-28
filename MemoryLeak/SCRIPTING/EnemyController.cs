@@ -30,6 +30,7 @@ namespace BonVoyage {
         private int PlayerId;
         private int EnemyTriggerId;
         private int HpBarId;
+        private int OverlayId;
 
         public enum EnemyState {
             IDLE = 0,
@@ -50,6 +51,7 @@ namespace BonVoyage {
             EnemyTriggerId = VI.Entity.GetId("EnemyTrigger");
             PlayerId = VI.Entity.GetId("Boat");
             HpBarId = VI.Entity.GetId("hpbar");
+            OverlayId = VI.Entity.GetId("overlay");
 
             EnemyCurrentSpeed = EnemySpeed;
             LOG.WRITE("yes alived");
@@ -65,6 +67,7 @@ namespace BonVoyage {
             //VI.Camera.SetScale.X(5500);
 
             if (EnemyActivated) {
+                if(!VI.Entity.IsActive(OverlayId)) VI.Entity.Activate(OverlayId);
                 if(!VI.Entity.IsActive(EnemyTriggerId)) VI.Entity.Activate(EnemyTriggerId);
                 int weather = VI.Weather.GetCurrent(12, PlayerScript.PlayerPosX, PlayerScript.PlayerPosY);
                 if (weather == 1 || weather == 3 || weather == 5 || weather == 7) {
@@ -93,6 +96,7 @@ namespace BonVoyage {
             } else {
                 THIS.Deactivate();
                 VI.Entity.Deactivate(EnemyTriggerId);
+                VI.Entity.Deactivate(OverlayId);
             }
         }
 

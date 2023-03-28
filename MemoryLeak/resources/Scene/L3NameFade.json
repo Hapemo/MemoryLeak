@@ -104,5 +104,94 @@
                 }
             ]
         }
+    },
+    {
+        "General": {
+            "name": "Overlay",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 106
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 1
+        }
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 1,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                    }
+                },
+                {
+                    "time": 1.5,
+                    "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 106
+                    }
+                },
+                {
+                    "time": 2.0,
+                    "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 106
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                    }
+                }
+            ]
+        }
     }
 ]

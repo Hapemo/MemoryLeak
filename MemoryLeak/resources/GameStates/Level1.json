@@ -170,6 +170,13 @@
         "order": 0
     },
     {
+        "SceneName": "Overlay",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 14,
+        "order": 0
+    },
+    {
         "SceneName": "Lv1Firefly",
         "Transform": {
             "scale": {
