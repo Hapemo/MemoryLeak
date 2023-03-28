@@ -503,7 +503,10 @@ namespace VI {
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetScreenHeight();
 
-		[MethodImpl(MethodImplOptions.InternalCall)]
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static bool GetFullScreen();
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void SetFullScreen(bool _fullscreen = true);
 	}
 

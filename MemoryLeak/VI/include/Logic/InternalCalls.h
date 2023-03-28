@@ -361,6 +361,7 @@ public:
 		\brief
 		Set the main window to fullscreen according to bool
 		*******************************************************************************/
+		static bool GetFullScreen();
 		static void SetFullScreen(bool _fullscreen = true);
 	};
 

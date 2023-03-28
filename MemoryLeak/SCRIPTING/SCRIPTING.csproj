@@ -100,6 +100,7 @@
     <Compile Include="Level3\Level3Passenger1Script.cs" />
     <Compile Include="Level3\Level3Passenger2Script.cs" />
     <Compile Include="PassengerDeliverUI.cs" />
+    <Compile Include="ToggleFullScreen.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="ChoiceHover.cs" />
     <Compile Include="Level Tutorial\WaterTutorialSound.cs" />
