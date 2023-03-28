@@ -121,6 +121,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
+        VI.Entity.Deactivate(wrongDestination_RenderLocation);
         if (!VI.Entity.IsActive(P2ColliderBox)) {
           VI.Entity.Activate(VI.Entity.GetId(P2String));
           VI.Entity.Activate(P2ColliderBox);
@@ -136,6 +137,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
+        VI.Entity.Deactivate(correctDestination_RenderLocation);
         if (!VI.Entity.IsActive(P2ColliderBox)) {
           VI.Entity.Activate(VI.Entity.GetId(P2String));
           VI.Entity.Activate(P2ColliderBox);
@@ -149,6 +151,7 @@ namespace BonVoyage {
         MoveCameraLeftToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(wrongDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(wrongDestination_RenderLocation));
+        VI.Entity.Deactivate(wrongDestination_RenderLocation);
         allPassengerDelivered = true;
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
@@ -161,6 +164,7 @@ namespace BonVoyage {
         MoveCameraRightToDialog();
         MovePlayer(playerID, VI.Transform.Position.GetX(correctDestination_RenderLocation),
                                                  VI.Transform.Position.GetY(correctDestination_RenderLocation));
+        VI.Entity.Deactivate(correctDestination_RenderLocation);
         allPassengerDelivered = true;
         EnemyController.EnemyActivated = true;
         VI.Entity.s_Activate("Enemy");
