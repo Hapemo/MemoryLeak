@@ -115,7 +115,17 @@ void AudioManager::UpdateSound()
         for (const Entity& e : mEntities)
         {
             if (!e.ShouldRun())
+            {
+                if (e.GetComponent<Audio>().sound.channel != 0)
+                {
+                    if (isPlaying(e.GetComponent<Audio>().sound.channel))
+                    {
+                        mChannel[e.GetComponent<Audio>().sound.channel]->stop();
+                    }
+                }
+            }
                 continue;
+            }
             if (e.GetComponent<Audio>().sound.toPlay == true)
             {
                 if (e.GetComponent<Audio>().sound.channel == 0)
