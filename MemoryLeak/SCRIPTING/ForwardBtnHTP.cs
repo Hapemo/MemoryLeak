@@ -47,6 +47,9 @@ namespace BonVoyage {
         int cb1;
         int cb2;
         int cb3;
+        int cb4;
+        int cb5;
+        int cb6;
         int w1;
         int w2;
         int w3;
@@ -106,6 +109,9 @@ namespace BonVoyage {
             cb1 = VI.Entity.GetId("CB1", "How_To_Play");
             cb2 = VI.Entity.GetId("CB2", "How_To_Play");
             cb3 = VI.Entity.GetId("CB3", "How_To_Play");
+            cb4 = VI.Entity.GetId("CB4", "How_To_Play");
+            cb5 = VI.Entity.GetId("CB5", "How_To_Play");
+            cb6 = VI.Entity.GetId("CB6", "How_To_Play");
             w1 = VI.Entity.GetId("W1", "How_To_Play");
             w2 = VI.Entity.GetId("W2", "How_To_Play");
             w3 = VI.Entity.GetId("W3", "How_To_Play");
@@ -152,6 +158,9 @@ namespace BonVoyage {
             VI.MovementAI.SetNext(cb1, 0);
             VI.MovementAI.SetNext(cb2, 0);
             VI.MovementAI.SetNext(cb3, 0);
+            VI.MovementAI.SetNext(cb4, 0);
+            VI.MovementAI.SetNext(cb5, 0);
+            VI.MovementAI.SetNext(cb6, 0);
             VI.MovementAI.SetNext(w1, 0);
             VI.MovementAI.SetNext(w2, 0);
             VI.MovementAI.SetNext(w3, 0);
@@ -202,6 +211,10 @@ namespace BonVoyage {
             d4 = VI.Entity.GetId("D4", "How_To_Play");
             d5 = VI.Entity.GetId("D5", "How_To_Play");
             d6 = VI.Entity.GetId("D6", "How_To_Play");
+            cb3 = VI.Entity.GetId("CB3", "How_To_Play");
+            cb4 = VI.Entity.GetId("CB4", "How_To_Play");
+            cb5 = VI.Entity.GetId("CB5", "How_To_Play");
+            cb6 = VI.Entity.GetId("CB6", "How_To_Play");
             VI.Entity.SetActive(w9, false);
             VI.Entity.SetActive(w10, false);
             if (VI.Input.Button.Released(ForwardBtnID))
@@ -237,6 +250,9 @@ namespace BonVoyage {
                 VI.MovementAI.SetNext(cb1, i);
                 VI.MovementAI.SetNext(cb2, i);
                 VI.MovementAI.SetNext(cb3, i);
+                VI.MovementAI.SetNext(cb4, i);
+                VI.MovementAI.SetNext(cb5, i);
+                VI.MovementAI.SetNext(cb6, i);
                 VI.MovementAI.SetNext(w1, i);
                 VI.MovementAI.SetNext(w2, i);
                 VI.MovementAI.SetNext(w3, i);
@@ -287,6 +303,9 @@ namespace BonVoyage {
                 VI.MovementAI.Run(cb1);
                 VI.MovementAI.Run(cb2);
                 VI.MovementAI.Run(cb3);
+                VI.MovementAI.Run(cb4);
+                VI.MovementAI.Run(cb5);
+                VI.MovementAI.Run(cb6);
                 VI.MovementAI.Run(w1);
                 VI.MovementAI.Run(w2);
                 VI.MovementAI.Run(w3);
@@ -307,6 +326,24 @@ namespace BonVoyage {
             }
             else
             {
+                if (VI.MovementAI.GetCurrentIndex(ControlsID) == 3)
+                {
+                    if (VI.Input.Button.Released(cb3))
+                    {
+                        if (VI.Animation.SpriteSheet.SheetIndex.Get(cb4) < 2)
+                        {
+                            VI.Animation.SpriteSheet.SheetIndex.Set(cb4, VI.Animation.SpriteSheet.SheetIndex.Get(cb4) + 1);
+                            VI.Animation.SpriteSheet.SheetIndex.Set(cb5, VI.Animation.SpriteSheet.SheetIndex.Get(cb5) + 1);
+                            VI.Animation.SpriteSheet.SheetIndex.Set(cb6, VI.Animation.SpriteSheet.SheetIndex.Get(cb6) + 1);
+                        }
+                        else
+                        {
+                            VI.Animation.SpriteSheet.SheetIndex.Set(cb4, 0);
+                            VI.Animation.SpriteSheet.SheetIndex.Set(cb5, 0);
+                            VI.Animation.SpriteSheet.SheetIndex.Set(cb6, 0);
+                        }
+                    }
+                }
                 if (VI.MovementAI.GetCurrentIndex(ControlsID) == 4)
                 {
                     if (VI.Input.Button.Hover(w3) || VI.Input.Button.Hover(w4))
