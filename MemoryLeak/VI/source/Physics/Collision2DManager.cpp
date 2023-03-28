@@ -477,41 +477,77 @@ void Collision2DManager::ResolveCollisions(const double& _dt) {
 	//ClearContactList();
 }
 
-void Collision2DManager::GenerateContactList(const double& _dt) {	
+void Collision2DManager::GenerateContactList(const double& _dt) {
 	// Update Tree 
-	GetQuadTree().UpdateDimensions(mEntities);
-	GetQuadTree().UpdateQuadTree(mEntities);
+	//GetQuadTree().UpdateDimensions(mEntities);
+	//GetQuadTree().UpdateQuadTree(mEntities);
 
-	mPossibleContactList = mQuadTree.FindAllIntersections();
-	for (const std::pair<Entity, Entity>& possibleContactPair : mPossibleContactList) {
-		if (!possibleContactPair.first.ShouldRun() || !possibleContactPair.second.ShouldRun())
+	//mPossibleContactList = mQuadTree.FindAllIntersections();
+	//for (const std::pair<Entity, Entity>& possibleContactPair : mPossibleContactList) {
+	for (const Entity& _e1 : mEntities) {
+		if (!_e1.ShouldRun())
 			continue;
+
+		if (_e1.GetComponent<General>().tag != TAG::PLAYER)
+			continue;
+
+		if (!HasCollider(_e1))
+			continue;
+
+	for (const Entity& _e2 : mEntities) {
+		//if (!possibleContactPair.first.ShouldRun() || !possibleContactPair.second.ShouldRun())
+		//	continue;
 
 		//if (possibleContactPair.first.GetComponent<General>().tag != TAG::PLAYER &&
 		//	possibleContactPair.second.GetComponent<General>().tag != TAG::PLAYER)
 		//	continue;
 
-		if (!HasCollider(possibleContactPair.first) || !HasCollider(possibleContactPair.second))
+		//if (!HasCollider(possibleContactPair.first) || !HasCollider(possibleContactPair.second))
+		//	continue;
+		if (_e1.id == _e2.id)
 			continue;
 
+		if (!_e2.ShouldRun())
+			continue;
+
+		if (!HasCollider(_e2))
+			continue;
+
+		//int e1Type{ 0 };
+		//if (possibleContactPair.first.HasComponent<RectCollider>())
+		//	e1Type = static_cast<int>(ColliderType::RECT);
+		//else if (possibleContactPair.first.HasComponent<CircleCollider>())
+		//	e1Type = static_cast<int>(ColliderType::CIRCLE);
+		//else
+		//	continue;
+
+		//int e2Type{ 0 };
+		//if (possibleContactPair.second.HasComponent<RectCollider>())
+		//	e2Type = static_cast<int>(ColliderType::RECT);
+		//else if (possibleContactPair.second.HasComponent<CircleCollider>())
+		//	e2Type = static_cast<int>(ColliderType::CIRCLE);
+		//else
+		//	continue;
+
 		int e1Type{ 0 };
-		if (possibleContactPair.first.HasComponent<RectCollider>())
+		if (_e1.HasComponent<RectCollider>())
 			e1Type = static_cast<int>(ColliderType::RECT);
-		else if (possibleContactPair.first.HasComponent<CircleCollider>())
+		else if (_e1.HasComponent<CircleCollider>())
 			e1Type = static_cast<int>(ColliderType::CIRCLE);
 		else
 			continue;
 
 		int e2Type{ 0 };
-		if (possibleContactPair.second.HasComponent<RectCollider>())
+		if (_e2.HasComponent<RectCollider>())
 			e2Type = static_cast<int>(ColliderType::RECT);
-		else if (possibleContactPair.second.HasComponent<CircleCollider>())
+		else if (_e2.HasComponent<CircleCollider>())
 			e2Type = static_cast<int>(ColliderType::CIRCLE);
 		else
 			continue;
 
-		// Initialize contact
-		Contact contact{ possibleContactPair.first, possibleContactPair.second, e1Type, e2Type };
+		//// Initialize contact
+		//Contact contact{ possibleContactPair.first, possibleContactPair.second, e1Type, e2Type };
+		Contact contact{_e1, _e2, e1Type, e2Type};
 
 		// Call function to check for collision
 		// If it returns true, means collision occurred
@@ -520,33 +556,46 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 			//LOG_INFO("Collision Detected\n");
 		}
 	}
+	}
 }
 
 bool Collision2DManager::EntitiesCollided(const Entity& _e1, const Entity& _e2) {
-	for (auto const& item : mContactList) {
-		if (item.obj[0].id == _e1.id && item.obj[1].id == _e2.id)
-			return true;
-		if (item.obj[1].id == _e1.id && item.obj[0].id == _e2.id)
-			return true;
-	}
+	//// Check if one of the entity is not active
+	//if (_e1.ShouldRun() == false || _e2.ShouldRun() == false)
+	//	return false;
 
-	return false;
+	//for (auto const& item : mContactList) {
+	//	if (item.obj[0].id == _e1.id && item.obj[1].id == _e2.id)
+	//		return true;
+	//	if (item.obj[1].id == _e1.id && item.obj[0].id == _e2.id)
+	//		return true;
+	//}
+
+	//return false;
+	return CheckCollision(_e1, _e2, true);
 }
 
 bool Collision2DManager::CheckCollision(const Entity& _e1, const Entity& _e2, const bool& _dynamicCheck) {
-	// Static check only
-	if (!_dynamicCheck) {
-		for (auto const& item : mContactList) {
-			if (item.obj[0].id == _e1.id && item.obj[1].id == _e2.id)
-				return true;
-			if (item.obj[1].id == _e1.id && item.obj[0].id == _e2.id)
-				return true;
-		}
-
+	// Check if one of the entity is not active
+	if (!_e1.ShouldRun() || !_e2.ShouldRun())
 		return false;
-	}
-	// Dynamic check only
-	else {
+	
+	if (!HasCollider(_e1) || !HasCollider(_e2))
+		return false;
+
+	//// Static check only
+	//if (!_dynamicCheck) {
+	//	for (auto const& item : mContactList) {
+	//		if (item.obj[0].id == _e1.id && item.obj[1].id == _e2.id)
+	//			return true;
+	//		if (item.obj[1].id == _e1.id && item.obj[0].id == _e2.id)
+	//			return true;
+	//	}
+
+	//	return false;
+	//}
+	//// Dynamic check only
+	//else {
 		// Code has not accounted for multiple colliders attached to an entity despite it being a constraint made to me by group members
 		int e1Type{ 0 }, e2Type{ 0 };
 		// Find collider type of 1st entity
@@ -566,7 +615,7 @@ bool Collision2DManager::CheckCollision(const Entity& _e1, const Entity& _e2, co
 
 		// Return result of the collision check
 		return (*mCollisionDatabase[static_cast<int>(contact.objType[0])][static_cast<int>(contact.objType[1])])(contact, FPSManager::dt, _dynamicCheck);
-	}
+	//}
 }
 
 void Collision2DManager::ClearContactList() {
@@ -769,28 +818,28 @@ QuadTree& Collision2DManager::GetQuadTree() {
 void Collision2DManager::SetupQuadTree() {
 	LOG_INFO("Initializing QuadTree...");
 
-	Math::Vec2 worldMin{}, worldMax{};
-	for (const auto& _entity : mEntities) {
-		Math::Vec2& _entityPos{ _entity.GetComponent<Transform>().translation }, & _entityScale{ _entity.GetComponent<Transform>().scale };
-		if (_entity.HasComponent<RectCollider>()) {
-			_entityPos += _entity.GetComponent<RectCollider>().centerOffset;
-			_entityScale.x *= _entity.GetComponent<RectCollider>().scaleOffset.x;
-			_entityScale.y *= _entity.GetComponent<RectCollider>().scaleOffset.y;
-		}
-		else if (_entity.HasComponent<CircleCollider>()) {
-			_entityPos += _entity.GetComponent<CircleCollider>().centerOffset;
-			_entityScale *= _entity.GetComponent<CircleCollider>().scaleOffset;
-		}
-		_entityScale.x = fabs(_entityScale.x);
-		_entityScale.y = fabs(_entityScale.y);
-		Math::Vec2 _entityMax{ _entityPos + _entityScale / 2.f }, _entityMin{ _entityPos - _entityScale / 2.f };
-		
-		worldMax.x = std::max(_entityMax.x, worldMax.x);
-		worldMax.y = std::max(_entityMax.y, worldMax.y);
+	Math::Vec2 worldMin{ -5170.f - 365.f / 2.f, -5190.f - 525.f / 2.f }, worldMax{ 5700.f + 355.f / 2.f, 4500.f + 515.f / 2.f };
+	//for (const auto& _entity : mEntities) {
+	//	Math::Vec2& _entityPos{ _entity.GetComponent<Transform>().translation }, & _entityScale{ _entity.GetComponent<Transform>().scale };
+	//	if (_entity.HasComponent<RectCollider>()) {
+	//		_entityPos += _entity.GetComponent<RectCollider>().centerOffset;
+	//		_entityScale.x *= _entity.GetComponent<RectCollider>().scaleOffset.x;
+	//		_entityScale.y *= _entity.GetComponent<RectCollider>().scaleOffset.y;
+	//	}
+	//	else if (_entity.HasComponent<CircleCollider>()) {
+	//		_entityPos += _entity.GetComponent<CircleCollider>().centerOffset;
+	//		_entityScale *= _entity.GetComponent<CircleCollider>().scaleOffset;
+	//	}
+	//	_entityScale.x = fabs(_entityScale.x);
+	//	_entityScale.y = fabs(_entityScale.y);
+	//	Math::Vec2 _entityMax{ _entityPos + _entityScale / 2.f }, _entityMin{ _entityPos - _entityScale / 2.f };
+	//	
+	//	worldMax.x = std::max(_entityMax.x, worldMax.x);
+	//	worldMax.y = std::max(_entityMax.y, worldMax.y);
 
-		worldMin.x = std::min(_entityMin.x, worldMin.x);
-		worldMin.y = std::min(_entityMin.y, worldMin.y);
-	}
+	//	worldMin.x = std::min(_entityMin.x, worldMin.x);
+	//	worldMin.y = std::min(_entityMin.y, worldMin.y);
+	//}
 
 	mQuadTree = QuadTree(QuadBox((worldMax + worldMin) / 2.f, 
 								 (worldMax - worldMin) * 2.f));

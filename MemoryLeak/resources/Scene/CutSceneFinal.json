@@ -538,6 +538,9 @@
             "texture": "",
             "layer": 17
         },
+        "Script": {
+            "name": "CutSceneFinalScript"
+        },
         "LightSource": {
             "centerOffset": {
                 "X": 0.0,

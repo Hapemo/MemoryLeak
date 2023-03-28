@@ -306,6 +306,12 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Script": {
+            "name": "ToggleFullScreen"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {

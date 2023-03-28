@@ -678,6 +678,7 @@ void MonoMethods::RegisterCalls() {
 	// Window
 	mono_add_internal_call("VI.Window::GetScreenWidth", &VI::iWindow::GetScreenWidth);
 	mono_add_internal_call("VI.Window::GetScreenHeight", &VI::iWindow::GetScreenHeight);
+	mono_add_internal_call("VI.Window::GetFullScreen", &VI::iWindow::GetFullScreen);
 	mono_add_internal_call("VI.Window::SetFullScreen", &VI::iWindow::SetFullScreen);
 
 	// Viewport

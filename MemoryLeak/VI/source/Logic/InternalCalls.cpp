@@ -568,6 +568,10 @@ int InternalCalls::iWindow::GetScreenHeight() {
 \brief
 Set the main window to fullscreen according to bool
 *******************************************************************************/
+bool InternalCalls::iWindow::GetFullScreen() {
+	return Helper::GetFullScreenFlag();
+}
+
 void InternalCalls::iWindow::SetFullScreen(bool _fullscreen) {
 	Helper::SetFullScreen(_fullscreen);
 }
