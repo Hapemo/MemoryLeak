@@ -53,7 +53,8 @@ void ColorAIManager::Update()
 				float g = (float)(e.GetComponent<ColorAI>().targetColors[e.GetComponent<ColorAI>().step].g);
 				float b = (float)(e.GetComponent<ColorAI>().targetColors[e.GetComponent<ColorAI>().step].b);
 				float a = (float)(e.GetComponent<ColorAI>().targetColors[e.GetComponent<ColorAI>().step].a);
-				if (((e.GetComponent<ColorAI>().spriteORtext == 1) || (e.GetComponent<ColorAI>().spriteORtext == 2)) && e.HasComponent<Text>())
+				//if (((e.GetComponent<ColorAI>().spriteORtext == 1) || (e.GetComponent<ColorAI>().spriteORtext == 2)) && e.HasComponent<Text>())
+				if ((e.GetComponent<ColorAI>().spriteORtext == 1)  && e.HasComponent<Text>())
 				{
 					if (e.GetComponent<ColorAI>().changeR)
 						r -= e.GetComponent<Text>().color.r;
@@ -64,7 +65,7 @@ void ColorAIManager::Update()
 					if (e.GetComponent<ColorAI>().changeA)
 						a -= e.GetComponent<Text>().color.a;
 				}
-				if (((e.GetComponent<ColorAI>().spriteORtext == 0) || (e.GetComponent<ColorAI>().spriteORtext == 2)) && e.HasComponent<Sprite>())
+				else //if (((e.GetComponent<ColorAI>().spriteORtext == 0) || (e.GetComponent<ColorAI>().spriteORtext == 2)) && e.HasComponent<Sprite>())
 				{
 					if (e.GetComponent<ColorAI>().changeR)
 						r -= e.GetComponent<Sprite>().color.r;
