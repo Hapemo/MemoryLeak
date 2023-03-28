@@ -1,42 +1,91 @@
 [
  {
    "Dialogue ID": 1,
-   "Dialogue Text": "Hey, you there!",
+   "Dialogue Text": "You're awake at long last!",
    "Speaker": 0,
    "Next Dialogue": 2,
    "Next Dialogue(2)": 0
  },
  {
    "Dialogue ID": 2,
-   "Dialogue Text": "You've finally woken up! How do you feel?",
+   "Dialogue Text": "I was swept away by the strong waves and when I came to, you were left unconscious right beside me.",
    "Speaker": 0,
    "Next Dialogue": 3,
-   "Next Dialogue(2)": 4
+   "Next Dialogue(2)": 0
  },
  {
    "Dialogue ID": 3,
-   "Dialogue Text": "I feel great!",
+   "Dialogue Text": "What am I here for...",
    "Speaker": 1,
-   "Next Dialogue": 5,
+   "Next Dialogue": 4,
    "Next Dialogue(2)": 0
  },
  {
    "Dialogue ID": 4,
-   "Dialogue Text": "I don't remember anything...",
+   "Dialogue Text": "To ferry people of course! But don't worry, I'll guide you along the way.",
+   "Speaker": 0,
+   "Next Dialogue": 5,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 5,
+   "Dialogue Text": "Ferry people?",
    "Speaker": 1,
    "Next Dialogue": 6,
    "Next Dialogue(2)": 0
  },
  {
-   "Dialogue ID": 5,
-   "Dialogue Text": "Great! Now you gotta go find the little girl! She'll let you know what to do.",
+   "Dialogue ID": 6,
+   "Dialogue Text": "Yes! They're also known as lost souls and each of them carry a special relic with them, hehe!",
    "Speaker": 0,
-   "Next Dialogue": 0,
+   "Next Dialogue": 7,
    "Next Dialogue(2)": 0
  },
  {
-   "Dialogue ID": 6,
-   "Dialogue Text": "Don't worry! You just gotta go find the little girl! She'll let you know what to do.",
+   "Dialogue ID": 7,
+   "Dialogue Text": "Appease them and who knows? ",
+   "Speaker": 0,
+   "Next Dialogue": 8,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 8,
+   "Dialogue Text": "These precious gift might become yours in return.",
+   "Speaker": 0,
+   "Next Dialogue": 9,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 9,
+   "Dialogue Text": "Disappoint them and well... I'm afraid you won't be able to get your hands on these gifts...",
+   "Speaker": 0,
+   "Next Dialogue": 10,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 10,
+   "Dialogue Text": "Anyways, I'm sure you'll do fine! You've done this before after all!",
+   "Speaker": 0,
+   "Next Dialogue": 11,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 11,
+   "Dialogue Text": "Appease them?",
+   "Speaker": 1,
+   "Next Dialogue": 12,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 12,
+   "Dialogue Text": "Yes, exactly that. So make sure you pay attention to clues they give you when you're ferrying them! ",
+   "Speaker": 0,
+   "Next Dialogue": 13,
+   "Next Dialogue(2)": 0
+ },
+ {
+   "Dialogue ID": 13,
+   "Dialogue Text": "Come on now, there's a little girl waiting for us right ahead, let's not keep her waiting!",
    "Speaker": 0,
    "Next Dialogue": 0,
    "Next Dialogue(2)": 0
