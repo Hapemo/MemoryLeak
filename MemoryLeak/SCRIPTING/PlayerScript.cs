@@ -30,11 +30,12 @@ namespace BonVoyage {
 
         static public float PlayerPosX = 0f;
         static public float PlayerPosY = 0f;
-        private float PlayerScaleX;
+        //private float PlayerScaleX;
         private float PlayerScaleY = 0f;
         private float PlayerRotation = 0f;
 
         private int PlayerCurrWeather = 0;
+        private double ChangeDirTimer = -1.0;
         private float MovementXModifier = 0f;
         private float MovementYModifier = 0f;
 
@@ -61,11 +62,12 @@ namespace BonVoyage {
             // Initialize position variables
             PlayerPosX = VI.Transform.Position.GetX(_ENTITY);
             PlayerPosY = VI.Transform.Position.GetY(_ENTITY);
-            PlayerScaleX = VI.Transform.Scale.GetX(_ENTITY);
+            //PlayerScaleX = VI.Transform.Scale.GetX(_ENTITY);
             PlayerScaleY = VI.Transform.Scale.GetY(_ENTITY);
             PlayerRotation = 0;
 
             PlayerCurrWeather = 0;
+            ChangeDirTimer = -1.0;
             MovementXModifier = 0f;
             MovementYModifier = 0f;
 
@@ -194,14 +196,18 @@ namespace BonVoyage {
                 #region Weather Effects
                 // Update player's modifier based on current weather
                 if (!PlayerInDialogue && !PlayerInOtherAnimation && PlayerCurrWeather == 2) {
-                    if (rand.Next(0, 100) < 50) {
+                    if (ChangeDirTimer < 0.0) {
                         MovementXModifier = (float)(rand.NextDouble() * 100.0 - 50.0);
                         MovementYModifier = (float)(rand.NextDouble() * 100.0 - 50.0);
+                        ChangeDirTimer = rand.Next(3, 8);
                     }
+                    else
+                        ChangeDirTimer -= VI.General.DeltaTime();
                 }
                 else {
                     MovementXModifier = 0f;
                     MovementYModifier = 0f;
+                    ChangeDirTimer = -1.0;
                 }
                 #endregion
             }
@@ -273,6 +279,7 @@ namespace BonVoyage {
         public void Exit(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            Init(_ENTITY);
         }
 
         public void Dead(int _ENTITY) {
