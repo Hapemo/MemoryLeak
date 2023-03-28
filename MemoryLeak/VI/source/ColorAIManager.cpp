@@ -53,19 +53,27 @@ void ColorAIManager::Update()
 				float g = (float)(e.GetComponent<ColorAI>().targetColors[e.GetComponent<ColorAI>().step].g);
 				float b = (float)(e.GetComponent<ColorAI>().targetColors[e.GetComponent<ColorAI>().step].b);
 				float a = (float)(e.GetComponent<ColorAI>().targetColors[e.GetComponent<ColorAI>().step].a);
-				if (e.GetComponent<ColorAI>().spriteORtext == 1 && e.HasComponent<Text>())
+				if (((e.GetComponent<ColorAI>().spriteORtext == 1) || (e.GetComponent<ColorAI>().spriteORtext == 2)) && e.HasComponent<Text>())
 				{
-					r -= e.GetComponent<Text>().color.r;
-					g -= e.GetComponent<Text>().color.g;
-					b -= e.GetComponent<Text>().color.b;
-					a -= e.GetComponent<Text>().color.a;
+					if (e.GetComponent<ColorAI>().changeR)
+						r -= e.GetComponent<Text>().color.r;
+					if (e.GetComponent<ColorAI>().changeG)
+						g -= e.GetComponent<Text>().color.g;
+					if (e.GetComponent<ColorAI>().changeB)
+						b -= e.GetComponent<Text>().color.b;
+					if (e.GetComponent<ColorAI>().changeA)
+						a -= e.GetComponent<Text>().color.a;
 				}
-				else
+				if (((e.GetComponent<ColorAI>().spriteORtext == 0) || (e.GetComponent<ColorAI>().spriteORtext == 2)) && e.HasComponent<Sprite>())
 				{
-					r -= e.GetComponent<Sprite>().color.r;
-					g -= e.GetComponent<Sprite>().color.g;
-					b -= e.GetComponent<Sprite>().color.b;
-					a -= e.GetComponent<Sprite>().color.a;
+					if (e.GetComponent<ColorAI>().changeR)
+						r -= e.GetComponent<Sprite>().color.r;
+					if (e.GetComponent<ColorAI>().changeG)
+						g -= e.GetComponent<Sprite>().color.g;
+					if (e.GetComponent<ColorAI>().changeB)
+						b -= e.GetComponent<Sprite>().color.b;
+					if (e.GetComponent<ColorAI>().changeA)
+						a -= e.GetComponent<Sprite>().color.a;
 				}
 				float timediff = e.GetComponent<ColorAI>().currtime / (float)FPSManager::dt;
 
@@ -75,26 +83,28 @@ void ColorAIManager::Update()
 					g /= timediff;
 					b /= timediff;
 					a /= timediff;
-					if ((e.GetComponent<ColorAI>().spriteORtext == 1)|| (e.GetComponent<ColorAI>().spriteORtext == 2) && e.HasComponent<Text>())
+					if (((e.GetComponent<ColorAI>().spriteORtext == 1)|| (e.GetComponent<ColorAI>().spriteORtext == 2)) && e.HasComponent<Text>())
 					{
-						e.GetComponent<Text>().color.r += (GLubyte)r;
-						e.GetComponent<Text>().color.g += (GLubyte)g;
-						e.GetComponent<Text>().color.b += (GLubyte)b;
-						e.GetComponent<Text>().color.a += (GLubyte)a;
-						if (e.GetComponent<ColorAI>().spriteORtext == 2)
-						{
-							e.GetComponent<Sprite>().color.r += (GLubyte)r;
-							e.GetComponent<Sprite>().color.g += (GLubyte)g;
-							e.GetComponent<Sprite>().color.b += (GLubyte)b;
-							e.GetComponent<Sprite>().color.a += (GLubyte)a;
-						}
+						if (e.GetComponent<ColorAI>().changeR)
+							e.GetComponent<Text>().color.r += (GLubyte)r;
+						if (e.GetComponent<ColorAI>().changeG)
+							e.GetComponent<Text>().color.g += (GLubyte)g;
+						if (e.GetComponent<ColorAI>().changeB)
+							e.GetComponent<Text>().color.b += (GLubyte)b;
+						if (e.GetComponent<ColorAI>().changeA)
+							e.GetComponent<Text>().color.a += (GLubyte)a;
+						
 					}
-					else
+					if (((e.GetComponent<ColorAI>().spriteORtext == 0) || (e.GetComponent<ColorAI>().spriteORtext == 2)) && e.HasComponent<Sprite>())
 					{
-						e.GetComponent<Sprite>().color.r += (GLubyte)r;
-						e.GetComponent<Sprite>().color.g += (GLubyte)g;
-						e.GetComponent<Sprite>().color.b += (GLubyte)b;
-						e.GetComponent<Sprite>().color.a += (GLubyte)a;
+						if (e.GetComponent<ColorAI>().changeR)
+							e.GetComponent<Sprite>().color.r += (GLubyte)r;
+						if (e.GetComponent<ColorAI>().changeG)
+							e.GetComponent<Sprite>().color.g += (GLubyte)g;
+						if (e.GetComponent<ColorAI>().changeB)
+							e.GetComponent<Sprite>().color.b += (GLubyte)b;
+						if (e.GetComponent<ColorAI>().changeA)
+							e.GetComponent<Sprite>().color.a += (GLubyte)a;
 					}
 					e.GetComponent<ColorAI>().currtime -= (float)FPSManager::dt;
 				}

@@ -315,15 +315,12 @@ namespace BonVoyage {
                     }
                     if (VI.Input.Button.Hover(w5) || VI.Input.Button.Hover(w6))
                     {
-                        BoatID = VI.Entity.GetId("Boat", "UIBackground");
-                        VI.MovementAI.Run(BoatID);
+                        if (VI.GameState.GetName() == "Menu")
+                        { 
+                            BoatID = VI.Entity.GetId("Boat", "UIBackground");
+                            VI.MovementAI.Run(BoatID);
+                        }
                     }
-                    //else if(VI.MovementAI.GetCurrentIndex(BoatID) != 0)
-                    //{
-                    //    BoatID = VI.Entity.GetId("Boat", "UIBackground");
-                    //    VI.MovementAI.SetNext(BoatID, 0);
-                    //    VI.MovementAI.Run(BoatID);
-                    //}
                     if (VI.Input.Button.Hover(w7) || VI.Input.Button.Hover(w8))
                     {
                         VI.Entity.SetActive(w10, true);

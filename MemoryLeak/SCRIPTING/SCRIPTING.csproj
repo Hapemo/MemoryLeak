@@ -71,6 +71,7 @@
     <Compile Include="BaseScript.cs" />
     <Compile Include="CreditsButton.cs" />
     <Compile Include="CrystalBallsScript.cs" />
+    <Compile Include="CutSceneFinalScript.cs" />
     <Compile Include="CutSceneScript.cs" />
     <Compile Include="DialogManager.cs" />
     <Compile Include="EnemyController.cs" />

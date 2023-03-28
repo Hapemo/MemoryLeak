@@ -289,6 +289,10 @@ struct MovementAI {
 	bool moveOnHover = false;
 	bool moveOnCollide = false;
 	bool renderFlag = false;
+
+	bool moveScale = true;
+	bool moveRotate = true;
+	bool moveTranslation = true;
 };
 struct ColorAI
 {
@@ -308,6 +312,11 @@ struct ColorAI
 	bool changeOnHover = false;
 	bool changeOnCollide = false;
 	int spriteORtext = 0;
+
+	bool changeR = true;
+	bool changeG = true;
+	bool changeB = true;
+	bool changeA = true;
 };
 /*!*****************************************************************************
 \brief

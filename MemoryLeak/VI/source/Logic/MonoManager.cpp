@@ -204,7 +204,7 @@ void MonoManager::RegisterMonoScript(std::string _namespace, std::string _class)
 	if (newInstance != nullptr) SetMonoComponent(_class, newInstance);
 	else //LOG_CUSTOM("Mono", "Failed to register C# script method " + _namespace + "::" + _class + "()!"); 
 
-	mMonoHandler = mono_gchandle_new(newInstance, true);
+	mMonoHandler = mono_gchandle_new_weakref(newInstance, true);
 }
 
 /*!*****************************************************************************
