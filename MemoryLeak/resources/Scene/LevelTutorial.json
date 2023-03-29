@@ -4437,8 +4437,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -33.0,
+                        "Y": 20.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -23.0,
+                        "Y": 8.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 9.0,
+                        "Y": 16.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -9.0,
+                        "Y": 28.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -33.0,
+                        "Y": 20.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -4503,12 +4534,36 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": 0.0,
-                        "Y": 0.0
+                        "X": -67.0,
+                        "Y": 45.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -27.0,
+                        "Y": 25.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 11.0,
+                        "Y": 48.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -20.0,
+                        "Y": 73.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -67.0,
+                        "Y": 45.0
                     }
                 }
             ],
-            "renderFlag": false
+            "renderFlag": true
         }
     },
     {
@@ -4843,32 +4898,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -62.0,
-                        "Y": 110.0
+                        "X": -103.0,
+                        "Y": -3.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 80.0,
+                        "X": 77.0,
+                        "Y": -111.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 109.0,
+                        "Y": -89.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -73.0,
                         "Y": 17.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 73.0,
-                        "Y": -108.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -79.0,
-                        "Y": -11.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -62.0,
-                        "Y": 110.0
+                        "X": -103.0,
+                        "Y": -3.0
                     }
                 }
             ],
@@ -4884,6 +4939,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": true,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -4958,32 +5016,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": 18.0,
-                        "Y": 40.0
+                        "X": -4.0,
+                        "Y": -50.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 17.0,
-                        "Y": -42.0
+                        "X": 0.0,
+                        "Y": -53.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -5.0,
-                        "Y": -42.0
+                        "X": 16.0,
+                        "Y": -48.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -12.0,
-                        "Y": 44.0
+                        "X": 6.0,
+                        "Y": -43.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 18.0,
-                        "Y": 40.0
+                        "X": -4.0,
+                        "Y": -50.0
                     }
                 }
             ],
@@ -5032,32 +5090,32 @@
             "centerOffsets": [
                 {
                     "centerOffset": {
-                        "X": -16.0,
-                        "Y": 27.0
+                        "X": -14.0,
+                        "Y": -19.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -15.0,
-                        "Y": -22.0
+                        "X": -7.0,
+                        "Y": -26.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 6.0,
-                        "Y": -18.0
+                        "X": 7.0,
+                        "Y": -17.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": 0.0,
-                        "Y": 24.0
+                        "X": -4.0,
+                        "Y": -10.0
                     }
                 },
                 {
                     "centerOffset": {
-                        "X": -16.0,
-                        "Y": 27.0
+                        "X": -14.0,
+                        "Y": -19.0
                     }
                 }
             ],
@@ -5123,8 +5181,39 @@
             "renderFlag": true
         },
         "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
+            "centerOffsets": [
+                {
+                    "centerOffset": {
+                        "X": -65.0,
+                        "Y": 42.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -42.0,
+                        "Y": 19.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": 12.0,
+                        "Y": 42.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -24.0,
+                        "Y": 71.0
+                    }
+                },
+                {
+                    "centerOffset": {
+                        "X": -65.0,
+                        "Y": 42.0
+                    }
+                }
+            ],
+            "renderFlag": true
         }
     },
     {
@@ -5241,9 +5330,9 @@
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 255,
+                "g": 255,
+                "b": 255,
                 "a": 255
             },
             "sprite": 2,
@@ -5315,10 +5404,6 @@
         },
         "Script": {
             "name": "LevelTutorialPassengerScript"
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
         }
     },
     {
@@ -18360,6 +18445,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": true,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,

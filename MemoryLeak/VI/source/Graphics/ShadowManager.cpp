@@ -199,10 +199,10 @@ void ShadowManager::CreateObjectVertices(Entity e)
 			xform.translation += e.GetComponent<RectCollider>().centerOffset;
 		if (powf(xform.translation.x - lightPos.x, 2.f) + powf(xform.translation.y - lightPos.y, 2.f)
 		> powf(mLightsource.GetComponent<LightSource>().radius, 2.f))
-			e.GetComponent<Sprite>().color = { 80, 80, 80, 255 };
+			e.GetComponent<Sprite>().color = { 80, 80, 80, e.GetComponent<Sprite>().color.a };
 		else if (powf(xform.translation.x - lightPos.x, 2.f) + powf(xform.translation.y - lightPos.y, 2.f)
 			< powf(mLightsource.GetComponent<LightSource>().radius * 0.5f, 2.f))
-			e.GetComponent<Sprite>().color = { 255, 255, 255, 255 };
+			e.GetComponent<Sprite>().color = { 255, 255, 255, e.GetComponent<Sprite>().color.a };
 		else
 		{
 			int color = static_cast<int>(255 - 175 * (Math::Distance(xform.translation, lightPos) - 0.5f * radius) / (radius * 0.5f));
