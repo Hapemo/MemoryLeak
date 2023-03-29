@@ -8,13 +8,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 100.0,
-                "Y": 100.0
+                "X": 300.0,
+                "Y": 70.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -240.0
+                "Y": -200.0
             }
         },
         "Sprite": {
@@ -33,7 +33,7 @@
             "text": "Fullscreen",
             "offset": {
                 "X": -148.0,
-                "Y": 60.0
+                "Y": -15.0
             },
             "scale": 1.0,
             "color": {
@@ -44,6 +44,12 @@
             },
             "followCam": false,
             "width": 0.0
+        },
+        "Script": {
+            "name": "ToggleFullScreen"
+        },
+        "Button": {
+            "interactable": true
         }
     },
     {
@@ -306,12 +312,6 @@
             },
             "followCam": false,
             "width": 0.0
-        },
-        "Script": {
-            "name": "ToggleFullScreen"
-        },
-        "Button": {
-            "interactable": true
         }
     },
     {
