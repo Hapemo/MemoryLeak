@@ -13,15 +13,15 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 618.8489990234375,
-                "Y": 33.255836486816406
+                "X": 610.0,
+                "Y": 30.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 202,
-                "g": 202,
-                "b": 202,
+                "r": 206,
+                "g": 206,
+                "b": 206,
                 "a": 255
             },
             "sprite": 2,
@@ -35,50 +35,7 @@
             "timeToFrameSwap": 0.13333334028720856
         },
         "ShadowCaster": {
-            "centerOffsets": [
-                {
-                    "centerOffset": {
-                        "X": -346.0,
-                        "Y": -60.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -361.0,
-                        "Y": 37.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 363.0,
-                        "Y": -3.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 328.0,
-                        "Y": -175.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": 141.0,
-                        "Y": -291.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -96.0,
-                        "Y": -206.0
-                    }
-                },
-                {
-                    "centerOffset": {
-                        "X": -346.0,
-                        "Y": -69.0
-                    }
-                }
-            ],
+            "centerOffsets": [],
             "renderFlag": true
         }
     },
@@ -184,6 +141,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
