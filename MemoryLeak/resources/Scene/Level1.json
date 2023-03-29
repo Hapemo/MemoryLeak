@@ -1384,6 +1384,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": true,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 0.20000000298023224,
@@ -1713,6 +1716,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 8.0,
@@ -1935,6 +1941,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 8.0,
@@ -2358,11 +2367,11 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": -65.0
+                "Y": -179.0
             },
             "scaleOffset": {
                 "X": 0.8999999761581421,
-                "Y": 0.5
+                "Y": 0.6000000238418579
             },
             "isTrigger": false,
             "renderFlag": true
@@ -2501,6 +2510,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": true,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 0.20000000298023224,
@@ -10649,12 +10661,12 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": -20.0,
-                "Y": -70.0
+                "X": 150.0,
+                "Y": -147.8000030517578
             },
             "scaleOffset": {
                 "X": 0.800000011920929,
-                "Y": 0.6000000238418579
+                "Y": 0.10000000149011612
             },
             "isTrigger": false,
             "renderFlag": true
