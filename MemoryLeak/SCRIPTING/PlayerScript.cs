@@ -16,14 +16,14 @@ namespace BonVoyage {
     {
         static private Random rand;
 
-        private const float MaxHealth = 12f;
+        private const int MaxHealth = 11;
         public const float PlayerSpeed = 10f;
         private const float SpeedCheatMultiplier = 2.5f;
 
         static public bool PlayerInDialogue = false;
         static public bool PlayerInOtherAnimation = false;
         static public bool PlayerInDeathAnimation = false;
-        static public float PlayerHealth = MaxHealth;
+        static public int PlayerHealth = 0;
         static public bool CameraFollowPlayer = true;
 
         private bool SpeedCheatToggle = false;
@@ -79,7 +79,7 @@ namespace BonVoyage {
 
             #region Player Death
             // Once health hits 0
-            if (PlayerHealth <= 0f && !PlayerInDeathAnimation)
+            if (PlayerHealth > MaxHealth && !PlayerInDeathAnimation)
             {
                 // Update bool flag
                 PlayerInDeathAnimation = true;
@@ -187,7 +187,7 @@ namespace BonVoyage {
                     // D is pressed
                     if (VI.Input.Key.Press(68))
                     {
-                        PlayerHealth = 0f;
+                        PlayerHealth = 12;
                     }
                 }
                 #endregion
