@@ -129,7 +129,7 @@ namespace BonVoyage
                     if (!takingDamage)
                     { 
                         PlayerScript.PlayerHealth += 1;
-                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
+                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, PlayerScript.PlayerHealth);
                     }
                     takingDamage = true;
                 }
@@ -138,18 +138,18 @@ namespace BonVoyage
 
             }
 
-            // Healing player
+            //Healing player
             //if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > 0)
-            //if(eState == EnemyState.IDLE)
-            //{
-            //    ++HealCounter;
-            //    if (HealCounter >= HitInterval * 100f * HealSpeed)
-            //    {
-            //        HealCounter = 0;
-            //        --HitTaken;
-            //        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
-            //    }
-            //}
+            if (eState == EnemyState.IDLE)
+            {
+                ++HealCounter;
+                if (HealCounter >= HitInterval * 100f * HealSpeed)
+                {
+                    HealCounter = 0;
+                    --PlayerScript.PlayerHealth;
+                    VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, PlayerScript.PlayerHealth);
+                }
+            }
 
         }
 
