@@ -491,6 +491,9 @@ void Collision2DManager::GenerateContactList(const double& _dt) {
 		if (_e1.GetComponent<General>().tag != TAG::PLAYER)
 			continue;
 
+		if (_e1.GetComponent<General>().tag != TAG::ENEMY)
+			continue;
+
 		if (!HasCollider(_e1))
 			continue;
 
