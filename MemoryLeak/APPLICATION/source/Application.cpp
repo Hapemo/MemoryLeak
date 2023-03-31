@@ -247,11 +247,15 @@ void Application::MainUpdate() {
     static bool toggle{ false };
     if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, F)) Helper::SetFullScreen(toggle = !toggle);
 
+#ifndef _EDITOR
     TRACK_PERFORMANCE("Graphics");
     //--------------------- Drawing and rendering ---------------------
     renderManager->Render();
     //-----------------------------------------------------------------
     END_TRACK("Graphics");
+#endif // _EDITOR
+
+
 
     // Audio
     TRACK_PERFORMANCE("Audio");
