@@ -23,7 +23,7 @@ start up of window and game system, also runs their update functions.
 // Static variables
 int Application::window_width{};
 int Application::window_height{};
-std::string Application::title{ "gam200" };
+std::string Application::title{ "VI Engine" };
 GLFWwindow* Application::ptr_window;
 std::string Application::mCurrGameStateName{""};
 bool Application::mLoadAllResources{ true };
