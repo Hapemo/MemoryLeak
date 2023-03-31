@@ -102,6 +102,7 @@ namespace BonVoyage {
                 AttachedToPlayer = false;
                 DetachFromPlayerAnimation = true;
                 PlayerScript.PlayerInOtherAnimation = true;
+                LevelTutorialDialogManager.runPassengerEndDialog = true;
 
                 // Set flag
                 correctDestinationDelivery = false;
@@ -109,11 +110,8 @@ namespace BonVoyage {
 
             // Play animation of passenger detaching from player
             if (DetachFromPlayerAnimation) {
-                LevelTutorialDialogManager.runPassengerEndDialog = true;
-
                 // Update passenger layer to its original value
                 //VI.Sprite.SetLayer(_ENTITY, InitialLayerVal);
-               
                 DefaultAttachToDestination(_ENTITY);
             }
         

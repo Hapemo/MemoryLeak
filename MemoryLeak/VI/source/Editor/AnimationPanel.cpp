@@ -74,6 +74,11 @@ void AnimationPanel::Update()
 						else
 							isViewportPaused = true;
 					}
+					if (!e.HasComponent<Animation>())
+					{
+						ImGui::InputInt("Frame Count", &e.GetComponent<SheetAnimation>().frameCount, 1,2);
+						e.GetComponent<SheetAnimation>().frameCount < 0 ? 0 : e.GetComponent<SheetAnimation>().frameCount;
+					}
 					ImGui::SliderInt("Frame", &e.GetComponent<SheetAnimation>().currFrameIndex, 0, e.GetComponent<SheetAnimation>().frameCount-1);
 				}
 				else
@@ -113,6 +118,9 @@ void AnimationPanel::Update()
 				else
 				{
 					ImGui::SliderInt("Sheet", &e.GetComponent<Animation>().currentImageIndex,0, (int)e.GetComponent<Animation>().sheets.size()-1);
+					ImGui::InputInt("Sheet Count", &e.GetComponent<Animation>().sheets[e.GetComponent<Animation>().currentImageIndex].frameCount, 1, 2);
+					e.GetComponent<Animation>().sheets[e.GetComponent<Animation>().currentImageIndex].frameCount < 0 ? 0 : e.GetComponent<Animation>().sheets[e.GetComponent<Animation>().currentImageIndex].frameCount;
+					
 					for (size_t i = 0; i < e.GetComponent<Animation>().sheets.size(); i++)
 					{
 						if(size * ratio * e.GetComponent<Animation>().sheets[i].frameCount<ImGui::GetWindowWidth())

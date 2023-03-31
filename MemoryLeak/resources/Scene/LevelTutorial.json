@@ -5404,6 +5404,40 @@
         },
         "Script": {
             "name": "LevelTutorialPassengerScript"
+        },
+        "ParticleSystem": {
+            "mParticleInfo": {
+                "mScale": 10.0,
+                "mFacing": 90.0,
+                "mLifespan": 3.0,
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 200
+                    },
+                    "sprite": 1,
+                    "texture": "",
+                    "layer": 900
+                },
+                "mRotation": 2.0,
+                "mSpeed": 80.0,
+                "mExpanding": 0.0,
+                "mFading": true,
+                "mFadeIn": true
+            },
+            "mDensity": 2,
+            "mCenter": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "mAreaWidth": 70.0,
+            "mDirection": 90.0,
+            "mSpread": 15.0,
+            "mDuration": 0.0,
+            "mIsActive": false,
+            "mSlow": 0.10000000149011612
         }
     },
     {
