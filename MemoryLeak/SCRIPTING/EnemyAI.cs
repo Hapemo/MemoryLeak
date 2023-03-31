@@ -37,6 +37,9 @@ namespace BonVoyage
         private int EnemyId;
         private int HpBarId;
         private int toggleMapID;
+        private string currlevel;
+        private float enemySpeed;
+        private float rainSpeed;
         Random rand = new Random();
         public enum EnemyState
         {
@@ -63,8 +66,11 @@ namespace BonVoyage
             toggleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
             takingDamage = false;
             ChangeState(EnemyState.IDLE);
-            //THIS.MovementAI.Run();
-            Console.WriteLine("INITTTTT ENEMYYYYYY\n");
+            currlevel = VI.GameState.GetName();
+            if (currlevel == "Level2")
+                enemySpeed = 0.9f;
+            else if(currlevel == "Level3")
+                enemySpeed = 0.95f;
         }
 
         public void EarlyUpdate(int _ENTITY)
@@ -76,6 +82,7 @@ namespace BonVoyage
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             //Init(_ENTITY);
+            
             float diffx = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.x);
             float diffy = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.y);
             float eDirection = GetEnemyRotation(diffx, diffy);
@@ -86,8 +93,21 @@ namespace BonVoyage
             }
             else
             {
+                int index = VI.Weather.GetCurrent(12, VI.Transform.Position.GetY(PlayerId), VI.Transform.Position.GetY(PlayerId));
+                
+                if (index == 1 || index == 3 || index == 5 || index == 7)
+                {//rain 
+                    rainSpeed = 1.045f;
+                    THIS.MovementAI.ForceStop();
+                    if (!OnScreen(1.2f))
+                        ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *20.0f);
+                }
+                else
+                {
+                    rainSpeed = 1.0f;
+                }
                 SetDirection(eDirection, eState);
-                if (OnScreen(0.95f))
+                if (OnScreen(0.98f))
                 {
                     if (eState == EnemyState.IDLE)
                     {
@@ -113,13 +133,13 @@ namespace BonVoyage
                     {
                         eState = EnemyState.ATTACK2;
                         if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()))
-                            ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.40f);
+                            ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.5f* enemySpeed * rainSpeed);
                         //minus health
                     }
                     else
                     {
                         eState = EnemyState.ATTACK1;
-                        ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.90f);
+                        ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * enemySpeed* rainSpeed);
                     }
                 }
             }

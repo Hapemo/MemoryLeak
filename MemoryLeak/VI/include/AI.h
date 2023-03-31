@@ -61,6 +61,7 @@ private:
 	int initialDirectionX[maxlocation]{};
 	int initialDirectionY[maxlocation]{};
 	int currentWeather[maxlocation]{};
+	int hack = 0;
 };
 enum WeatherType {
 	SUNNY=0,

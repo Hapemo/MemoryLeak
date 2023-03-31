@@ -36,7 +36,7 @@ void AudioManager::Init()
     }
     mChannel.resize((int)E_AUDIO_CHANNEL::MAX);
     songVol = 0.05f;
-    bgmVol=1.f;
+    bgmVol=0.6f;
     sfxVol=1.f;
     ///LoadSound();
 }
@@ -146,8 +146,10 @@ void AudioManager::UpdateSound()
 
                     float spacial = (max.Magnitude() - distance.Magnitude()) / max.Magnitude();
                     spacial = spacial < 0.f ? 0.f : spacial;
-
-                    vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
+                    if (e.GetComponent<Audio>().spacialRatio > 1.0f)
+                        vol = spacial * e.GetComponent<Audio>().spacialRatio;
+                    else
+                        vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
                     //std::cout << "Spacila: " << spacial << " : " << vol << "\n";
                     mChannel[channel]->setVolume(vol * sfxVol);
                 }
@@ -155,7 +157,7 @@ void AudioManager::UpdateSound()
                     mChannel[channel]->setVolume(e.GetComponent<Audio>().sound.volume*sfxVol);
                 if (e.GetComponent<Audio>().sound.isRandPitch)
                 {
-                    mChannel[channel]->setPitch(((float)(std::rand() % 100)) / 100.f + 0.5f);
+                    mChannel[channel]->setPitch(((float)(std::rand() % 50)) / 100.f + 0.75f);
                 }
                 else
                     mChannel[channel]->setPitch(e.GetComponent<Audio>().sound.pitch);

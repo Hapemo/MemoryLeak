@@ -657,6 +657,10 @@ Audio SerializationManager::getAudio(Value& entity)
 		sound.toPlayOnCollision = entity["Audio"]["toPlayOnCollision"].GetBool();
 	audio.sound = sound;
 	audio.isSpacial = entity["Audio"]["isSpacial"].GetBool();
+	if (entity["Audio"].HasMember("spacialDistance"))
+		audio.spacialDistance = entity["Audio"]["spacialDistance"].GetFloat();
+	if (entity["Audio"].HasMember("spacialRatio"))
+		audio.spacialRatio = entity["Audio"]["spacialRatio"].GetFloat();
 	return audio;
 }
 AI SerializationManager::getAI(Value& entity)
@@ -1374,6 +1378,8 @@ void SerializationManager::addAudio(Document& scene, Value& entity, Audio audio)
 	tmp.AddMember(StringRef("isRandPitch"), audio.sound.isRandPitch, scene.GetAllocator());
 	tmp.AddMember(StringRef("toPlayOnCollision"), audio.sound.toPlayOnCollision, scene.GetAllocator());
 	tmp.AddMember(StringRef("isSpacial"), audio.isSpacial, scene.GetAllocator());
+	tmp.AddMember(StringRef("spacialDistance"), audio.spacialDistance, scene.GetAllocator());
+	tmp.AddMember(StringRef("spacialRatio"), audio.spacialRatio, scene.GetAllocator());
 	entity.AddMember(StringRef("Audio"), tmp, scene.GetAllocator());
 	std::string path = "\\Audio\\SFX\\" + audio.sound.path;
 	GUIDList.push_back(ResourceManager::GetInstance()->GetFileGUID(path));

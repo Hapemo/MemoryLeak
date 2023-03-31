@@ -134,9 +134,23 @@ void AIManager::weatherAIupdate()
 
 		
 	}
+	if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, W))
+	{
+		hack++;
+		if (hack > ALL)
+			hack = 0;
+	}
+	if (Input::CheckKey(HOLD, LEFT_CONTROL) && Input::CheckKey(PRESS, Q))
+	{
+		hack = 0;
+	}
 }
 int AIManager::GetCurrentWeather(int index, float posX, float posY)
 {
+	if (weatherMap.size() == 0)
+		return 0;
+	if (weatherMap[0].size() == 0)
+		return 0;
 	int indexX = (int)((posX + mapMaxWidth* weatherScale/2)/ weatherScale);
 	int indexY = (int)(-(posY - mapMaxHeight* weatherScale/2)/ weatherScale);
 	indexX += (index % 5) - 2;
@@ -147,11 +161,12 @@ int AIManager::GetCurrentWeather(int index, float posX, float posY)
 		std::cout << "X: " << indexX << "Y: " << indexX << "\n";
 		std::cout << "X: " << mapMaxWidth << "Y: " << mapMaxHeight << "\n";
 	}
-	indexX < 0 ? 0 : indexX;
-	indexY < 0 ? 0 : indexY;
-	indexX > mapMaxWidth -1 ? mapMaxWidth - 1 : indexX;
-	indexY > mapMaxHeight -1 ? mapMaxHeight - 1 : indexY;
-	return weatherMap[0][0];
+	indexX = indexX < 0 ? 0 : indexX;
+	indexY = indexY < 0 ? 0 : indexY;
+	indexX = indexX > (int)weatherMap.size() - 1 ? (int)weatherMap.size() - 1 : indexX;
+	indexY = indexY > (int)weatherMap[indexX].size() - 1 ? (int)weatherMap[indexX].size() - 1 : indexY;
+	if (hack != 0)
+		return hack;
 	return weatherMap[indexX][indexY];
 }
 

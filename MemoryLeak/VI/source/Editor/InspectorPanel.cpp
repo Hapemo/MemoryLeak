@@ -957,7 +957,7 @@ void InspectorPanel::AudioEditor()
 			ImGui::DragFloat("spacialDistance", &e.GetComponent<Audio>().spacialDistance, 0.01f, 0.0f, 10.f);
 			SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 
-			ImGui::DragFloat("spacialRatio", &e.GetComponent<Audio>().spacialRatio, 0.005f, 0.0f, 1.f);
+			ImGui::DragFloat("spacialRatio", &e.GetComponent<Audio>().spacialRatio, 0.005f, 0.0f, 5.f);
 			SaveUndo(e, tempComponent, COMPONENTID::AUDIO);
 		}
 		
