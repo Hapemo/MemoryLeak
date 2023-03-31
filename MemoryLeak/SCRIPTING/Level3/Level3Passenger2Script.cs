@@ -17,12 +17,15 @@ using VI;
 namespace BonVoyage {
 
   public class Level3Passenger2Script : PassengerBaseScript {
+        int init = 0;
     public override void Alive(int _ENTITY) {
       base.Alive(_ENTITY);
     }
 
     public override void Init(int _ENTITY) {
       base.Init(_ENTITY);
+
+            init = 1;
 
       // Get required entities
       playerBoat = VI.Entity.GetId("Boat");
@@ -50,26 +53,28 @@ namespace BonVoyage {
       //if (wrongDestination_RenderLocation == 0) LOG.WRITE("wrongDestination_RenderLocation========================");
 
       // Check if passenger's trigger box is active
-      if (triggerBox != 0)
+      VI.Test.ArgString(init.ToString());
+        VI.Test.ArgString("Checking entity\n");
         if (VI.Entity.IsActive(triggerBox)) {
-          // Check if player is colliding with that box
-          if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
-            // Check if dialogue script should be ran
-            if (!Level3DialogManager.runPassenger2Dialog) {
-              // Set Dialogue Manager's flag to true to run it
-              Level3DialogManager.runPassenger2Dialog = true;
+                VI.Test.ArgString("Checking collision\n");
+            // Check if player is colliding with that box
+            if (VI.Physics.IsCollided(triggerBox, playerBoat)) {
+                // Check if dialogue script should be ran
+                if (!Level3DialogManager.runPassenger2Dialog) {
+                    // Set Dialogue Manager's flag to true to run it
+                    Level3DialogManager.runPassenger2Dialog = true;
 
-              // Deactivate the trigger box
-              VI.Entity.Deactivate(triggerBox);
+                    // Deactivate the trigger box
+                    VI.Entity.Deactivate(triggerBox);
 
-              // Activate the drop off point boxes
-              //VI.Entity.Activate(correctDestination_Box);
-              //VI.Entity.Activate(wrongDestination_Box);
+                    // Activate the drop off point boxes
+                    //VI.Entity.Activate(correctDestination_Box);
+                    //VI.Entity.Activate(wrongDestination_Box);
 
-              // Set flag to true
-              ReadyToAttach = true;
+                    // Set flag to true
+                    ReadyToAttach = true;
+                }
             }
-          }
         }
 
       // Passenger is ready to attach & dialogue has ended
