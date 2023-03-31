@@ -248,7 +248,7 @@ void LogicSystem::Dead(Entity const& _e) {
 Run specified script for entity.
 *******************************************************************************/
 void LogicSystem::RunScript(Entity const& _e, E_SCRIPTTYPE _type) {
-	if (!_e.ShouldRun()) return;
+	if (!_e.ShouldRun() && _type != E_SCRIPTTYPE::DEAD) return;
 	if (!_e.HasComponent<Script>()) return;
 
 	std::string scriptName = _e.GetComponent<Script>().name;
