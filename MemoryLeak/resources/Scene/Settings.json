@@ -1,59 +1,6 @@
 [
     {
         "General": {
-            "name": "ToggleSize",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 300.0,
-                "Y": 70.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 0.0,
-                "Y": -200.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "",
-            "layer": 8
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Fullscreen",
-            "offset": {
-                "X": -148.0,
-                "Y": -15.0
-            },
-            "scale": 1.0,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": 0.0
-        },
-        "Script": {
-            "name": "ToggleFullScreen"
-        },
-        "Button": {
-            "interactable": true
-        }
-    },
-    {
-        "General": {
             "name": "Back",
             "tag": 5,
             "subtag": 0,
@@ -110,13 +57,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 39.269927978515625,
-                "Y": 50.0
+                "X": 60.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -305.36505126953125,
-                "Y": 0.0
+                "X": -250.0,
+                "Y": -150.0
             }
         },
         "Sprite": {
@@ -140,13 +87,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 200.0,
-                "Y": 50.0
+                "X": 700.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -225.0,
-                "Y": 0.0
+                "X": 70.0,
+                "Y": -150.0
             }
         },
         "Sprite": {
@@ -164,10 +111,10 @@
             "fontFile": "BPtypewrite",
             "text": "BGM",
             "offset": {
-                "X": -104.0,
-                "Y": 40.0
+                "X": -500.0,
+                "Y": -22.0
             },
-            "scale": 1.0,
+            "scale": 1.2000000476837158,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -193,13 +140,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
-                "Y": 50.0
+                "X": 60.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 150.0,
-                "Y": 0.0
+                "X": -260.0,
+                "Y": 50.0
             }
         },
         "Sprite": {
@@ -223,13 +170,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 200.0,
-                "Y": 50.0
+                "X": 700.0,
+                "Y": 100.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 225.0,
-                "Y": 0.0
+                "X": 60.0,
+                "Y": 50.0
             }
         },
         "Sprite": {
@@ -247,8 +194,8 @@
             "fontFile": "BPtypewrite",
             "text": "SFX",
             "offset": {
-                "X": -104.0,
-                "Y": 40.0
+                "X": -500.0,
+                "Y": -22.0
             },
             "scale": 1.0,
             "color": {
