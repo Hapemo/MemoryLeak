@@ -129,7 +129,7 @@ namespace BonVoyage
                     if (!takingDamage)
                     { 
                         PlayerScript.PlayerHealth += 1;
-                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, PlayerScript.PlayerHealth);
+                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, (int)PlayerScript.PlayerHealth);
                     }
                     takingDamage = true;
                 }
@@ -147,7 +147,7 @@ namespace BonVoyage
                 {
                     HealCounter = 0;
                     --PlayerScript.PlayerHealth;
-                    VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, PlayerScript.PlayerHealth);
+                    VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, (int)PlayerScript.PlayerHealth);
                 }
             }
 
