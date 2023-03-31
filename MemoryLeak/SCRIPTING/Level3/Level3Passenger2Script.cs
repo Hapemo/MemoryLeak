@@ -111,6 +111,9 @@ namespace BonVoyage {
 
       // Play animation of passenger detaching from player
       if (DetachFromPlayerAnimation) {
+        // Update passenger layer to its original value
+        VI.Sprite.SetLayer(_ENTITY, InitialLayerVal);
+
         DefaultAttachToDestination(_ENTITY);
       }
 
