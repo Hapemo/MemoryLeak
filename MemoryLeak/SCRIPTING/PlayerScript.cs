@@ -94,7 +94,13 @@ namespace BonVoyage {
             if (PlayerInDeathAnimation && (VI.Animation.SpriteSheet.CurrentFrame.Get(_ENTITY) + 1 == VI.Animation.SpriteSheet.FrameCount.Get(_ENTITY)))
             {
                 // Assumes the main game scene level running is the same as the gamestate name
-                if (VI.GameState.GetName() == "Level2") {
+                if (VI.GameState.GetName() == "LevelTutorial") {
+
+                }
+                else if (VI.GameState.GetName() == "Level1") {
+
+                }
+                else if (VI.GameState.GetName() == "Level2") {
                     VI.Scene.Play("Game Over");
                     VI.Scene.Pause("Level2");
                     VI.Scene.Pause("How_To_Play");
@@ -112,6 +118,12 @@ namespace BonVoyage {
                     VI.Scene.Pause("Transition");
                     VI.Scene.Pause("TutorialUILvl2");
                     // Play audio transition if required
+                }
+                else if (VI.GameState.GetName() == "Level3") {
+
+                }
+                else {
+
                 }
             }
             #endregion
