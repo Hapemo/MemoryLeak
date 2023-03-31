@@ -20,8 +20,7 @@ namespace BonVoyage
         private float HitInterval;
         private float HitAnimationCounter;
         private float HitCounter;
-        private int HitMax = 11;
-        private int HitTaken = 0;
+        private const int HitMax = 11;
 
         static public bool EnemyActivated = false;
         private float EnemySpeed = 2.2f;
@@ -29,6 +28,8 @@ namespace BonVoyage
         private int ChasingIndex = 0;
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
+        private int HitTaken = 0;
+        bool takingDamage = false;
         private float eDirection = 0;
         private EnemyState eState = EnemyState.IDLE;
         private int PlayerId;
@@ -57,6 +58,8 @@ namespace BonVoyage
             EnemyId = VI.Entity.GetId("Enemy");
             PlayerId = VI.Entity.GetId("Boat");
             HpBarId = VI.Entity.GetId("hpbar");
+            HitTaken = 0;
+            takingDamage = false;
             ChangeState(EnemyState.IDLE);
         }
 
@@ -73,7 +76,7 @@ namespace BonVoyage
             float diffy = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.y);
             float eDirection = GetRotation(diffx, diffy);
             SetDirection(eDirection, eState);
-            if (OnScreen(0.9f))
+            if (OnScreen(0.95f))
             {
                 if (eState == EnemyState.IDLE)
                 {
@@ -90,21 +93,22 @@ namespace BonVoyage
                 THIS.MovementAI.Run();
                 eState = EnemyState.IDLE;
             }
-            if (eState != EnemyState.IDLE)
+            if (eState != EnemyState.IDLE && eState != EnemyState.RISING)
             {
-                float xDis = PlayerScript.PlayerPosX - THIS.Transform.Position.GetX();
-                float yDis = PlayerScript.PlayerPosY - THIS.Transform.Position.GetY();
-                xDis= xDis < 0 ? -xDis : xDis;
-                yDis = yDis < 0 ? -yDis : yDis;
-                if (xDis < THIS.Transform.Scale.GetX() || yDis < THIS.Transform.Scale.GetY())
+                THIS.MovementAI.ForceStop();
+                float xDis = Math.Abs(PlayerScript.PlayerPosX - THIS.Transform.Position.GetX());
+                float yDis = Math.Abs(PlayerScript.PlayerPosY - THIS.Transform.Position.GetY());
+                if ((xDis*2.0f < THIS.Transform.Scale.GetX() + VI.Transform.Scale.GetX(PlayerId)) && (yDis*2.0f < THIS.Transform.Scale.GetY() + VI.Transform.Scale.GetX(PlayerId)))
                 {
                     eState = EnemyState.ATTACK2;
+                    ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.50f);
                     //minus health
                 }
-                THIS.MovementAI.ForceStop();
-                ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.90f);
-                //THIS.Transform.Position.SetX(THIS.Transform.Position.GetX() + diffx);
-                //THIS.Transform.Position.SetY(THIS.Transform.Position.GetY() + diffy);
+                else
+                {
+                    eState = EnemyState.ATTACK1;
+                    ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.80f);
+                }
             }
 
 
@@ -115,8 +119,38 @@ namespace BonVoyage
         public void FixedUpdate(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
             
+            // Detecting player hits
+            if (eState == EnemyState.ATTACK2 )
+            {
+
+                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1)
+                {
+                    if (!takingDamage)
+                    { 
+                        PlayerScript.PlayerHealth += 1;
+                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
+                    }
+                    takingDamage = true;
+                }
+                else
+                    takingDamage = false;
+
+            }
+
+            // Healing player
+            //if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > 0)
+            //if(eState == EnemyState.IDLE)
+            //{
+            //    ++HealCounter;
+            //    if (HealCounter >= HitInterval * 100f * HealSpeed)
+            //    {
+            //        HealCounter = 0;
+            //        --HitTaken;
+            //        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, HitTaken);
+            //    }
+            //}
+
         }
 
         public void LateUpdate(int _ENTITY)
