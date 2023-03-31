@@ -113,6 +113,9 @@ void AnimationPanel::Update()
 				else
 				{
 					ImGui::SliderInt("Sheet", &e.GetComponent<Animation>().currentImageIndex,0, (int)e.GetComponent<Animation>().sheets.size()-1);
+					//ImGui::SameLine();
+					ImGui::InputInt("Count", &e.GetComponent<Animation>().currentImageIndex, 1, 2);
+					e.GetComponent<Animation>().currentImageIndex < 0 ? 0 : e.GetComponent<Animation>().currentImageIndex;
 					for (size_t i = 0; i < e.GetComponent<Animation>().sheets.size(); i++)
 					{
 						if(size * ratio * e.GetComponent<Animation>().sheets[i].frameCount<ImGui::GetWindowWidth())
