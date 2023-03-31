@@ -41756,5 +41756,35 @@
         "Script": {
             "name": "SwitchToFinal"
         }
+    },
+    {
+        "General": {
+            "name": "P1CorrectDestRender",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 83.0,
+                "Y": 158.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 2020.0,
+                "Y": 1380.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 600
+        }
     }
 ]
