@@ -138,8 +138,8 @@ void RenderManager::Render()
 	{
 		mCurrRenderPass == RENDER_STATE::GAME ? 
 		mGameFBO.Unbind() : mWorldFBO.Unbind();
-		mCurrRenderPass = mCurrRenderPass == RENDER_STATE::GAME ? 
-		RENDER_STATE::WORLD : RENDER_STATE::GAME;
+		//mCurrRenderPass = mCurrRenderPass == RENDER_STATE::GAME ? 
+		//RENDER_STATE::WORLD : RENDER_STATE::GAME;
 	}
 
 	//clear vertices for next iteration
@@ -157,9 +157,23 @@ void RenderManager::Render()
 		itr->second.Clear();
 
 	//recursion for editor viewport
-	if (mCurrRenderPass == RENDER_STATE::WORLD)
-		Render();
+	//if (mCurrRenderPass == RENDER_STATE::WORLD)
+	//	Render();
 	//minimap.id = 0;
+}
+
+GLuint RenderManager::GetWorldFBO() 
+{
+	mCurrRenderPass = RENDER_STATE::WORLD;
+	Render();
+	return mWorldFBO.GetColorAttachment();
+}
+
+GLuint RenderManager::GetGameFBO() 
+{
+	mCurrRenderPass = RENDER_STATE::GAME;
+	Render();
+	return mGameFBO.GetColorAttachment();
 }
 /*!*****************************************************************************
 \brief

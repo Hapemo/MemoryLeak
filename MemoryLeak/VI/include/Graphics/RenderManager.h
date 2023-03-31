@@ -103,7 +103,7 @@ public:
 	\return
 	Returns the color attachment to the frame buffer.
 	*******************************************************************************/
-	GLuint GetWorldFBO() const { return mWorldFBO.GetColorAttachment(); }
+	GLuint GetWorldFBO() ;
 
 	/*!*****************************************************************************
 	\brief
@@ -112,7 +112,7 @@ public:
 	\return
 	Returns the color attachment to the frame buffer.
 	*******************************************************************************/
-	GLuint GetGameFBO() const { return mGameFBO.GetColorAttachment(); }
+	GLuint GetGameFBO() ;
 
 	/*!*****************************************************************************
 	\brief
