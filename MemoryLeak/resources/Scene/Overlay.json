@@ -36,7 +36,7 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
-            "spriteORtext": 1,
+            "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
             "targets": [

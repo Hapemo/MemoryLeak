@@ -1718,8 +1718,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -180.0,
-                "Y": -450.0
+                "X": -190.0,
+                "Y": -630.0
             }
         },
         "Sprite": {
@@ -40792,6 +40792,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 8.0,
@@ -41695,6 +41698,51 @@
                 }
             ],
             "renderFlag": true
+        }
+    },
+    {
+        "General": {
+            "name": "FinalCutsceneCollider",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 285.0,
+                "Y": 285.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -120.0,
+                "Y": -210.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "",
+            "layer": 10
+        },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
+        "Script": {
+            "name": "SwitchToFinal"
         }
     }
 ]
