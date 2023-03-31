@@ -74,6 +74,7 @@
     <Compile Include="CutSceneFinalScript.cs" />
     <Compile Include="CutSceneScript.cs" />
     <Compile Include="DialogManager.cs" />
+    <Compile Include="EnemyAI.cs" />
     <Compile Include="EnemyController.cs" />
     <Compile Include="EnemyMapScript.cs" />
     <Compile Include="ExitBtnHTP.cs" />

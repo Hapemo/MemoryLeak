@@ -31,6 +31,7 @@ public:
 
 	//Addtoscripting
 	void StartAnimation(Entity e);
+	void ForceStopAnimation(Entity e);
 	void AddTransform(Entity e, Transform t, float time = 1.f);
 	void AddTransformAt(Entity e, Transform t, float time = 1.f, int index=0);
 	void RemoveTransformAt(Entity e, int index);

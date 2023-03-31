@@ -69,7 +69,8 @@ namespace BonVoyage {
 		}
 		public class MovementAI {
 			internal static void Run() { VI.MovementAI.Run(ENTITY); }
-			internal static bool SetNext(int _i) { return VI.MovementAI.SetNext(ENTITY, _i); }
+            internal static void ForceStop() { VI.MovementAI.ForceStop(ENTITY); }
+            internal static bool SetNext(int _i) { return VI.MovementAI.SetNext(ENTITY, _i); }
 			internal static void GoToNext() { VI.MovementAI.GoToNext(ENTITY); }
 			internal static void Stop(bool _next = true) { VI.MovementAI.Stop(ENTITY, _next); }
 			internal static void StopAfterEndLoop(bool _loop = true) { VI.MovementAI.StopAfterEndLoop(ENTITY, _loop); }
@@ -648,7 +649,10 @@ namespace VI {
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void Run(int _eId);
 
-		[MethodImpl(MethodImplOptions.InternalCall)]
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static void ForceStop(int _eId);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static bool SetNext(int _eId, int _i); // return true if successful (withing 0 to the vector MAX)
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
