@@ -97,8 +97,8 @@ namespace BonVoyage
                 xDis= xDis < 0 ? -xDis : xDis;
                 yDis = yDis < 0 ? -yDis : yDis;
                 if (xDis < THIS.Transform.Scale.GetX() || yDis < THIS.Transform.Scale.GetY())
-                { 
-                    ChangeState(EnemyState.ATTACK2);
+                {
+                    eState = EnemyState.ATTACK2;
                     //minus health
                 }
                 THIS.MovementAI.ForceStop();
