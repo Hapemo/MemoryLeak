@@ -93,7 +93,7 @@ namespace BonVoyage
                 THIS.MovementAI.Run();
                 eState = EnemyState.IDLE;
             }
-            if (eState != EnemyState.IDLE /*&& eState != EnemyState.RISING*/)
+            if (eState != EnemyState.IDLE && eState != EnemyState.RISING)
             {
                 THIS.MovementAI.ForceStop();
                 float xDis = Math.Abs(PlayerScript.PlayerPosX - THIS.Transform.Position.GetX());
@@ -108,7 +108,7 @@ namespace BonVoyage
                 else
                 {
                     eState = EnemyState.ATTACK1;
-                    ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.70f);
+                    ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.90f);
                 }
             }
 
@@ -130,7 +130,7 @@ namespace BonVoyage
                     if (!takingDamage)
                     { 
                         PlayerScript.PlayerHealth += 1;
-                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, (int)PlayerScript.PlayerHealth);
+                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, PlayerScript.PlayerHealth);
                     }
                     takingDamage = true;
                 }
@@ -138,18 +138,20 @@ namespace BonVoyage
                     takingDamage = false;
 
             }
-
-            //Healing player
-            //if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()) && HitTaken > 0)
-            if (eState == EnemyState.IDLE)
+            else if (eState == EnemyState.IDLE && PlayerScript.PlayerHealth>0)
             {
-                ++HealCounter;
-                if (HealCounter >= HitInterval * 100f * HealSpeed)
+                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == 0)
                 {
-                    HealCounter = 0;
-                    --PlayerScript.PlayerHealth;
-                    VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, (int)PlayerScript.PlayerHealth);
+                    if (!takingDamage)
+                    {
+                        Random rand = new Random();
+                        PlayerScript.PlayerHealth += rand.Next(0,1);
+                        VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, PlayerScript.PlayerHealth);
+                    }
+                    takingDamage = true;
                 }
+                else
+                    takingDamage = false;
             }
 
         }

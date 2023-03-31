@@ -54,7 +54,7 @@ namespace BonVoyage {
             PlayerInDialogue = false;
             PlayerInOtherAnimation = false;
             PlayerInDeathAnimation = false;
-            PlayerHealth = MaxHealth;
+            PlayerHealth = 0;
             CameraFollowPlayer = true;
 
             SpeedCheatToggle = false;
