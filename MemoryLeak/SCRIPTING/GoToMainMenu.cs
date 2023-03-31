@@ -13,7 +13,7 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class GoToMainMenu : BaseScript
     {
-        private int toggleMap;
+        //private int toggleMap;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!

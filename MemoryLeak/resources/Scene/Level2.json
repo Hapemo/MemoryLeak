@@ -29298,7 +29298,7 @@
             "inertia": 1.0,
             "restitution": 0.0,
             "friction": 0.0,
-            "damping": 0.800000011920929,
+            "damping": 0.949999988079071,
             "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0
@@ -29371,7 +29371,7 @@
                     }
                 },
                 {
-                    "time": 5.0,
+                    "time": 10.0,
                     "Transform": {
                         "scale": {
                             "X": 500.0,
@@ -29385,7 +29385,7 @@
                     }
                 },
                 {
-                    "time": 3.0,
+                    "time": 10.0,
                     "Transform": {
                         "scale": {
                             "X": 500.0,
@@ -29399,7 +29399,7 @@
                     }
                 },
                 {
-                    "time": 8.0,
+                    "time": 12.0,
                     "Transform": {
                         "scale": {
                             "X": 500.0,
@@ -31049,7 +31049,7 @@
             "inertia": 1.0,
             "restitution": 0.0,
             "friction": 0.0,
-            "damping": 0.800000011920929,
+            "damping": 0.949999988079071,
             "accumulatedForce": {
                 "X": 0.0,
                 "Y": 0.0

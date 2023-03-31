@@ -31,7 +31,7 @@ namespace BonVoyage {
         int currRadius;
         int animationCounter;
         int nextSceneTimer;
-        int nextSceneTextTimer;
+        //int nextSceneTextTimer;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY);
@@ -68,7 +68,7 @@ namespace BonVoyage {
             skipping = false;
             animationCounter = 0;
             nextSceneTimer = 250;
-            nextSceneTextTimer = 350;
+           // nextSceneTextTimer = 350;
         }
 
         public void EarlyUpdate(int _ENTITY) { }

@@ -42,7 +42,6 @@ namespace BonVoyage {
         }
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
             string currlevel = VI.GameState.GetName();
             string currlevelBG = currlevel + "Background";
             enemymapID = VI.Entity.GetId("enemymap", "EnemyMap");

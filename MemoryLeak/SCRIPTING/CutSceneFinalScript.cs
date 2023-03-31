@@ -21,7 +21,7 @@ namespace BonVoyage {
         bool isAlphaDecreasing;
         string entity;
         bool skipping;
-        bool soundPlayed;
+        //bool soundPlayed;
 
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY);
@@ -39,7 +39,7 @@ namespace BonVoyage {
             entity = "e" + currScn;
             currAlpha = 255;
             speed = 5;
-            soundPlayed = false;
+            //soundPlayed = false;
             skipping = false;
         }
 

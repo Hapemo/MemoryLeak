@@ -7,6 +7,7 @@
 This script controls all the enemy movement and attacks
 *******************************************************************************/
 using System;
+using System.Data.SqlTypes;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 
@@ -14,28 +15,29 @@ namespace BonVoyage
 {
     public class EnemyAI : BaseScript
     {
-        private float HealSpeed = 1f;
-        private float HealCounter;
-        private float HitSpeed = 0.5f;
-        private float HitInterval;
-        private float HitAnimationCounter;
-        private float HitCounter;
+        //private float HealSpeed = 1f;
+        //private float HealCounter;
+        //private float HitSpeed = 0.5f;
+        //private float HitInterval;
+        //private float HitAnimationCounter;
+        //private float HitCounter;
         private const int HitMax = 11;
 
         static public bool EnemyActivated = false;
-        private float EnemySpeed = 2.2f;
-        private float EnemyCurrentSpeed;
-        private int ChasingIndex = 0;
+        //private float EnemySpeed = 2.2f;
+        //private float EnemyCurrentSpeed;
+        //private int ChasingIndex = 0;
         private float RightAngle = (float)VI.Math.Pi() / 2;
 
-        private int HitTaken = 0;
+        //private int HitTaken = 0;
         bool takingDamage = false;
-        private float eDirection = 0;
+        //private float eDirection = 0;
         private EnemyState eState = EnemyState.IDLE;
         private int PlayerId;
         private int EnemyId;
         private int HpBarId;
-
+        private int toggleMapID;
+        Random rand = new Random();
         public enum EnemyState
         {
             IDLE = 0,
@@ -58,9 +60,11 @@ namespace BonVoyage
             EnemyId = VI.Entity.GetId("Enemy");
             PlayerId = VI.Entity.GetId("Boat");
             HpBarId = VI.Entity.GetId("hpbar");
-            HitTaken = 0;
+            toggleMapID = VI.Entity.GetId("toggleMap", "CrystalBalls");
             takingDamage = false;
             ChangeState(EnemyState.IDLE);
+            //THIS.MovementAI.Run();
+            Console.WriteLine("INITTTTT ENEMYYYYYY\n");
         }
 
         public void EarlyUpdate(int _ENTITY)
@@ -74,44 +78,51 @@ namespace BonVoyage
             //Init(_ENTITY);
             float diffx = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.x);
             float diffy = GetDistance(PlayerScript.PlayerPosX, PlayerScript.PlayerPosY, Axis.y);
-            float eDirection = GetRotation(diffx, diffy);
-            SetDirection(eDirection, eState);
-            if (OnScreen(0.95f))
+            float eDirection = GetEnemyRotation(diffx, diffy);
+            if (!VI.Entity.IsActive(toggleMapID))
             {
-                if (eState == EnemyState.IDLE)
-                {
-                    ChangeState(EnemyState.RISING);
-                }
-                else if (eState == EnemyState.RISING)
-                {
-                    if(THIS.Animation.SpriteSheet.FrameCount.Get() == THIS.Animation.SpriteSheet.CurrentFrame.Get()+1)
-                        ChangeState(EnemyState.ATTACK1);
-                }
-            }
-            else if (!OnScreen(1.1f))
-            {
-                THIS.MovementAI.Run();
-                eState = EnemyState.IDLE;
-            }
-            if (eState != EnemyState.IDLE && eState != EnemyState.RISING)
-            {
+                SetDirection(eDirection, EnemyState.IDLE);
                 THIS.MovementAI.ForceStop();
-                float xDis = Math.Abs(PlayerScript.PlayerPosX - THIS.Transform.Position.GetX());
-                float yDis = Math.Abs(PlayerScript.PlayerPosY - THIS.Transform.Position.GetY());
-                if ((xDis*2.0f < THIS.Transform.Scale.GetX() + VI.Transform.Scale.GetX(PlayerId)) && (yDis*2.0f < THIS.Transform.Scale.GetY() + VI.Transform.Scale.GetX(PlayerId)))
+            }
+            else
+            {
+                SetDirection(eDirection, eState);
+                if (OnScreen(0.95f))
                 {
-                    eState = EnemyState.ATTACK2;
-                    if(!VI.Physics.IsCollided(PlayerId, THIS.GetId()))
-                        ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.40f);
-                    //minus health
+                    if (eState == EnemyState.IDLE)
+                    {
+                        ChangeState(EnemyState.RISING);
+                    }
+                    else if (eState == EnemyState.RISING)
+                    {
+                        if (THIS.Animation.SpriteSheet.FrameCount.Get() == THIS.Animation.SpriteSheet.CurrentFrame.Get() + 1)
+                            ChangeState(EnemyState.ATTACK1);
+                    }
                 }
-                else
+                else if (!OnScreen(1.3f))
                 {
-                    eState = EnemyState.ATTACK1;
-                    ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.90f);
+                    THIS.MovementAI.Run();
+                    eState = EnemyState.IDLE;
+                }
+                if (eState != EnemyState.IDLE && eState != EnemyState.RISING)
+                {
+                    THIS.MovementAI.ForceStop();
+                    float xDis = Math.Abs(PlayerScript.PlayerPosX - THIS.Transform.Position.GetX());
+                    float yDis = Math.Abs(PlayerScript.PlayerPosY - THIS.Transform.Position.GetY());
+                    if ((xDis * 2.0f < THIS.Transform.Scale.GetX() + VI.Transform.Scale.GetX(PlayerId)) && (yDis * 2.0f < THIS.Transform.Scale.GetY() + VI.Transform.Scale.GetX(PlayerId)))
+                    {
+                        eState = EnemyState.ATTACK2;
+                        if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()))
+                            ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.40f);
+                        //minus health
+                    }
+                    else
+                    {
+                        eState = EnemyState.ATTACK1;
+                        ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.90f);
+                    }
                 }
             }
-
 
            
 
@@ -144,8 +155,8 @@ namespace BonVoyage
                 {
                     if (!takingDamage)
                     {
-                        Random rand = new Random();
-                        PlayerScript.PlayerHealth += rand.Next(0,1);
+                        
+                        PlayerScript.PlayerHealth -= 1;
                         VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, PlayerScript.PlayerHealth);
                     }
                     takingDamage = true;
@@ -180,6 +191,10 @@ namespace BonVoyage
         }
         private bool OnScreen(float offset)
         {
+            if (!VI.Entity.IsActive(toggleMapID))
+            {
+                eState = EnemyState.IDLE;
+            }
             float EnemyPosX = THIS.Transform.Position.GetX();
             float EnemyPosY = THIS.Transform.Position.GetY();
             // Enemy is in screen
@@ -193,10 +208,10 @@ namespace BonVoyage
             else return false;
         }
 
-        private float GetSpeed(float _x, float _y)
-        {
-            return VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 100f * EnemyCurrentSpeed;
-        }
+        //private float GetSpeed(float _x, float _y)
+        //{
+        //    return VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 100f * EnemyCurrentSpeed;
+        //}
 
         //private void ChasePlayer(float _x, float _y)
         //{
@@ -240,7 +255,7 @@ namespace BonVoyage
             return (_axis == Axis.x ? xNorm : yNorm);
         }
 
-        private float GetRotation(float _x, float _y)
+        private float GetEnemyRotation(float _x, float _y)
         {
             float Rotation = 0;
             if (_y != 0f && _x >= 0f)
