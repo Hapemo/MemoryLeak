@@ -29,7 +29,8 @@ namespace BonVoyage {
         static int relicNotFound;
         static int relicFoundSound;
         static int relicNotFoundSound;
-
+        private float ZoomScaleFactorX;
+        private float ZoomScaleFactorY;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             
@@ -135,19 +136,21 @@ namespace BonVoyage {
                     if (VI.Input.Button.Hover(backs[i]))
                     {
                         nonehovering = false;
+                        ZoomScaleFactorX = VI.Camera.GetScale.X() / VI.Window.GetScreenWidth();
+                        ZoomScaleFactorY = VI.Camera.GetScale.Y() / VI.Window.GetScreenHeight();
                         if (activated[i] == 1)
                         {
                             VI.Entity.Activate(tooltips[i]);
                             VI.Entity.Deactivate(tooltips[6]);
-                            VI.Transform.Position.SetX(tooltips[i],  VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 60);
-                            VI.Transform.Position.SetY(tooltips[i],  VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(tooltips[i]) / 2);
+                            VI.Transform.Position.SetX(tooltips[i], ZoomScaleFactorX * (VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 60));
+                            VI.Transform.Position.SetY(tooltips[i],  ZoomScaleFactorY * (VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(tooltips[i]) / 2));
                         }
                         else
                         {
                             VI.Entity.Deactivate(tooltips[i]);
                             VI.Entity.Activate(tooltips[6]);
-                            VI.Transform.Position.SetX(tooltips[6], VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[6]) / 2 + 60);
-                            VI.Transform.Position.SetY(tooltips[6], VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(tooltips[6]) / 2);
+                            VI.Transform.Position.SetX(tooltips[6], ZoomScaleFactorX * (VI.Input.Mouse.WorldPosX() + VI.Transform.Scale.GetX(tooltips[i]) / 2 + 60));
+                            VI.Transform.Position.SetY(tooltips[6], ZoomScaleFactorY * (VI.Input.Mouse.WorldPosY() - VI.Transform.Scale.GetY(tooltips[i]) / 2));
                         }
 
                     }
