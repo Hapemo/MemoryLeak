@@ -45,6 +45,14 @@ namespace BonVoyage {
                 DeliveredPassenger();
             if ((curr1 < 255 && increase1) || (curr2 < 255 && increase2))
                 UpdateColor();
+
+            if (VI.Input.Key.Hold(340) && VI.Input.Key.Hold(341))
+            {
+                if (VI.Input.Key.Press(257))
+                {
+                    DeliveredPassenger();
+                }
+            }
         }
 
         public void FixedUpdate(int _ENTITY) {

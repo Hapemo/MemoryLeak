@@ -181,7 +181,7 @@ void MovementAIManager::StartAnimation(Entity e)
 void MovementAIManager::ForceStopAnimation(Entity e)
 {
 	e.GetComponent<MovementAI>().run = false;
-	e.GetComponent<MovementAI>().state = 2;
+	//e.GetComponent<MovementAI>().state = 2;
 }
 void MovementAIManager::StopAfterThisAnimation(Entity e, bool next)
 {

@@ -27,6 +27,9 @@ namespace BonVoyage {
             isIn = false;
             inited = true;
             float currvol = VI.Audio.Volume.GetSfxVol();
+            VI.Transform.Scale.s_SetX("SFXvolume", "Settings", THIS.Transform.Scale.GetX() * currvol);
+            VI.Transform.Position.s_SetX("SFXvolume", "Settings", THIS.Transform.Position.GetX() - 
+                THIS.Transform.Scale.GetX() * 0.5f + VI.Transform.Scale.s_GetX("SFXvolume","Settings") * 0.5f);
         }
 
         public void EarlyUpdate(int _ENTITY)
@@ -38,6 +41,8 @@ namespace BonVoyage {
         public void Update(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
+            if (!inited)
+                Init(_ENTITY);
             if (THIS.Input.Button.Clicked())
                 isIn = true;
             if (isIn && VI.Input.Mouse.Release())
