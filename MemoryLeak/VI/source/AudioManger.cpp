@@ -148,7 +148,7 @@ void AudioManager::UpdateSound()
                     spacial = spacial < 0.f ? 0.f : spacial;
 
                     vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
-                    std::cout << "Spacila: " << spacial << " : " << vol << "\n";
+                    //std::cout << "Spacila: " << spacial << " : " << vol << "\n";
                     mChannel[channel]->setVolume(vol * sfxVol);
                 }
                 else

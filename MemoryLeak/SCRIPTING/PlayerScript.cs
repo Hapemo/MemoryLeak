@@ -17,7 +17,7 @@ namespace BonVoyage {
         static private Random rand;
 
         private const float MaxHealth = 12f;
-        private const float PlayerSpeed = 10f;
+        public const float PlayerSpeed = 10f;
         private const float SpeedCheatMultiplier = 2.5f;
 
         static public bool PlayerInDialogue = false;

@@ -233,8 +233,8 @@ void EditorManager::Update()
 		{
 			if (!isFullScreen)
 			{
-				if (!isScenePaused && p == (int)E_PANELID::WORLDVIEW)
-					continue;
+				//if (!isScenePaused && p == (int)E_PANELID::WORLDVIEW)
+					//continue;
 				panels[p]->Update();
 			}
 			else

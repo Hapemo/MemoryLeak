@@ -768,6 +768,14 @@ void InternalCalls::iMovementAI::Start(const int _eId) {
 	}
 	movementAIManager->StartAnimation(e);
 }
+void InternalCalls::iMovementAI::ForceStop(const int _eId) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<MovementAI>()) {
+		MissingComponent(e.GetComponent<General>().name, "MovementAI");
+		return;
+	}
+	movementAIManager->ForceStopAnimation(e);
+}
 bool InternalCalls::iMovementAI::SetNext(const int _eId, int _i) { // return true if successful (withing 0 to the vector MAX)
 	Entity e = VI::iEntity::GetEntity(_eId);
 	if (!e.HasComponent<MovementAI>()) {

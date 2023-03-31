@@ -447,6 +447,7 @@ public:
 		Movement AI
 		*******************************************************************************/
 		static void Start(const int _eId);
+		static void ForceStop(const int _eId);
 		static bool SetNext(const int _eId, int _i);
 		static void GoToNext(const int _eId);
 		static void Stop(const int _eId, bool _next = true);

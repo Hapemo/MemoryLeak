@@ -720,6 +720,7 @@ void MonoMethods::RegisterCalls() {
 
 	// MovementAI
 	mono_add_internal_call("VI.MovementAI::Run", &VI::iMovementAI::Start);
+	mono_add_internal_call("VI.MovementAI::ForceStop", &VI::iMovementAI::ForceStop);
 	mono_add_internal_call("VI.MovementAI::SetNext", &VI::iMovementAI::SetNext);
 	mono_add_internal_call("VI.MovementAI::GoToNext", &VI::iMovementAI::GoToNext);
 	mono_add_internal_call("VI.MovementAI::Stop", &VI::iMovementAI::Stop);
