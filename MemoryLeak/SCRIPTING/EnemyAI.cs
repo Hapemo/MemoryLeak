@@ -102,7 +102,7 @@ namespace BonVoyage
                     //minus health
                 }
                 THIS.MovementAI.ForceStop();
-                ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.98f);
+                ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.90f);
                 //THIS.Transform.Position.SetX(THIS.Transform.Position.GetX() + diffx);
                 //THIS.Transform.Position.SetY(THIS.Transform.Position.GetY() + diffy);
             }

@@ -14,7 +14,7 @@ namespace BonVoyage {
     public class SFXcontroller : BaseScript
     {
         bool isIn;
-
+        bool inited = false;
         public void Alive(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
@@ -25,7 +25,8 @@ namespace BonVoyage {
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             isIn = false;
-            
+            inited = true;
+            float currvol = VI.Audio.Volume.GetSfxVol();
         }
 
         public void EarlyUpdate(int _ENTITY)
@@ -50,7 +51,6 @@ namespace BonVoyage {
                     return;
                 VI.Transform.Scale.s_SetX("SFXvolume", "Settings", 0.5f * THIS.Transform.Scale.GetX() - (THIS.Transform.Position.GetX() - mouseX));
                 VI.Transform.Position.s_SetX("SFXvolume", "Settings", THIS.Transform.Position.GetX() - 0.5f * THIS.Transform.Scale.GetX() +VI.Transform.Scale.s_GetX("SFXvolume", "Settings") * 0.5f);
-                Console.WriteLine("VOLUME:" + VI.Transform.Scale.s_GetX("SFXvolume", "Settings") / THIS.Transform.Scale.GetX());
                 VI.Audio.Volume.SetSFXVolume(VI.Transform.Scale.s_GetX("SFXvolume", "Settings") / THIS.Transform.Scale.GetX());
             }
         }
