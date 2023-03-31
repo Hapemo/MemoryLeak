@@ -54,7 +54,7 @@ namespace BonVoyage {
             PlayerInDialogue = false;
             PlayerInOtherAnimation = false;
             PlayerInDeathAnimation = false;
-            PlayerHealth = MaxHealth;
+            PlayerHealth = 0;
             CameraFollowPlayer = true;
 
             SpeedCheatToggle = false;
@@ -94,9 +94,25 @@ namespace BonVoyage {
             if (PlayerInDeathAnimation && (VI.Animation.SpriteSheet.CurrentFrame.Get(_ENTITY) + 1 == VI.Animation.SpriteSheet.FrameCount.Get(_ENTITY)))
             {
                 // Assumes the main game scene level running is the same as the gamestate name
-                VI.Scene.Pause(VI.GameState.GetName());     // Pause current scene
-                VI.Scene.Play("Game Over");                 // Play Game Over scene
-                // Play audio transition if required
+                if (VI.GameState.GetName() == "Level2") {
+                    VI.Scene.Play("Game Over");
+                    VI.Scene.Pause("Level2");
+                    VI.Scene.Pause("How_To_Play");
+                    VI.Scene.Pause("Pause");
+                    VI.Scene.Pause("Dialogue2");
+                    VI.Scene.Pause("Quit Confirmation");
+                    VI.Scene.Pause("Settings");
+                    VI.Scene.Pause("Mouse");
+                    VI.Scene.Pause("CrystalBalls");
+                    VI.Scene.Pause("Level2Background");
+                    VI.Scene.Pause("MiniMap");
+                    VI.Scene.Pause("WeatherMap");
+                    VI.Scene.Pause("EnemyMap");
+                    VI.Scene.Pause("GUI Scene");
+                    VI.Scene.Pause("Transition");
+                    VI.Scene.Pause("TutorialUILvl2");
+                    // Play audio transition if required
+                }
             }
             #endregion
 
