@@ -1913,6 +1913,18 @@
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.7166669368743896
         },
+        "RectCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 1.0
+            },
+            "isTrigger": true,
+            "renderFlag": true
+        },
         "Script": {
             "name": "Level3Passenger1Script"
         },

@@ -14,6 +14,7 @@ namespace BonVoyage {
     public class BGMcontroller : BaseScript
     {
         bool isIn = false;
+        bool inited = false;
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
         }
@@ -21,7 +22,8 @@ namespace BonVoyage {
         public void Init(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
             isIn = false;
-            
+            inited = true;
+            float currvol = VI.Audio.Volume.GetSfxVol();
         }
 
         public void EarlyUpdate(int _ENTITY) {
