@@ -91,7 +91,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -50.0
+                "Y": 30.0
             }
         },
         "Sprite": {
@@ -157,7 +157,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": -200.0
+                "Y": -270.0
             }
         },
         "Sprite": {
@@ -223,7 +223,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 0.0,
-                "Y": 100.0
+                "Y": 180.0
             }
         },
         "Sprite": {
@@ -269,6 +269,72 @@
         },
         "Script": {
             "name": "ResumeGame"
+        },
+        "Button": {
+            "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "GoToMainMenu",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 450.0,
+                "Y": 125.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": -120.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 2
+        },
+        "Audio": {
+            "path": "Button_Click_SFX",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Main Menu",
+            "offset": {
+                "X": -132.0,
+                "Y": -16.0
+            },
+            "scale": 1.0,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": 0.0
+        },
+        "Script": {
+            "name": "GoToMainMenu"
         },
         "Button": {
             "interactable": true

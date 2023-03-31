@@ -1,21 +1,22 @@
 ﻿/*!*****************************************************************************
-\file PlayerScriptMenu.cs
-\author Chen Jia Wen
-\par DP email: c.jiawen\@digipen.edu
+\file ResumeGame.cs
+\author Kew Yu Jun
+\par DP email: k.yujun\@digipen.edu
 \par Group: Memory Leak Studios
-\date 10-03-2023
+\date 01-03-2023
 \brief
-The base script for all the script that will be made
+This file contains scripting functions for logic system for resuming game.
 *******************************************************************************/
 using System;
 using System.Runtime.CompilerServices;
 
 namespace BonVoyage {
-    public class ToggleFullScreen : BaseScript
+    public class GoToMainMenu : BaseScript
     {
+        private int toggleMap;
+
         public void Alive(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
         }
 
         public void Init(int _ENTITY) {
@@ -30,12 +31,14 @@ namespace BonVoyage {
 
         public void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
+            if (THIS.Input.Button.Hover())
+                THIS.Sprite.SetColor(0, 0, 0, 100);
+            else
+                THIS.Sprite.SetColor(0, 0, 0, 0);
             if (THIS.Input.Button.Released())
             {
-                VI.Window.SetFullScreen(!VI.Window.GetFullScreen());
-                if (VI.Window.GetFullScreen()) THIS.Text.Update("Fullscreen");
-                else THIS.Text.Update("Windowed");
+                TransitionSquare.FadeOut("Menu");
+
             }
         }
 
