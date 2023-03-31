@@ -93,7 +93,7 @@ namespace BonVoyage
                 THIS.MovementAI.Run();
                 eState = EnemyState.IDLE;
             }
-            if (eState != EnemyState.IDLE && eState != EnemyState.RISING)
+            if (eState != EnemyState.IDLE /*&& eState != EnemyState.RISING*/)
             {
                 THIS.MovementAI.ForceStop();
                 float xDis = Math.Abs(PlayerScript.PlayerPosX - THIS.Transform.Position.GetX());
@@ -101,13 +101,14 @@ namespace BonVoyage
                 if ((xDis*2.0f < THIS.Transform.Scale.GetX() + VI.Transform.Scale.GetX(PlayerId)) && (yDis*2.0f < THIS.Transform.Scale.GetY() + VI.Transform.Scale.GetX(PlayerId)))
                 {
                     eState = EnemyState.ATTACK2;
-                    ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.50f);
+                    if(!VI.Physics.IsCollided(PlayerId, THIS.GetId()))
+                        ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.40f);
                     //minus health
                 }
                 else
                 {
                     eState = EnemyState.ATTACK1;
-                    ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.80f);
+                    ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *0.70f);
                 }
             }
 
