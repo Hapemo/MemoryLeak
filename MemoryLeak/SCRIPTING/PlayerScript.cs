@@ -197,8 +197,8 @@ namespace BonVoyage {
                 // Update player's modifier based on current weather
                 if (!PlayerInDialogue && !PlayerInOtherAnimation && PlayerCurrWeather == 2) {
                     if (ChangeDirTimer < 0.0) {
-                        MovementXModifier = (float)(rand.NextDouble() * 100.0 - 50.0);
-                        MovementYModifier = (float)(rand.NextDouble() * 100.0 - 50.0);
+                        MovementXModifier = (float)(rand.NextDouble() * 10.0 - 5.0);
+                        MovementYModifier = (float)(rand.NextDouble() * 10.0 - 5.0);
                         ChangeDirTimer = rand.Next(3, 8);
                     }
                     else
@@ -222,8 +222,8 @@ namespace BonVoyage {
             #region Movement
             // Move only if player is not in dialogue or death animation
             if (!PlayerInDialogue && !PlayerInDeathAnimation && !PlayerInOtherAnimation) {
-                float DirX = MovementXModifier;
-                float DirY = MovementYModifier;
+                float DirX = 0f;
+                float DirY = 0f;
 
                 if (VI.Input.Mouse.Hold())
                 {
@@ -248,6 +248,12 @@ namespace BonVoyage {
                     // Play rowing audio
                     VI.Audio.Play(_ENTITY);
                 }
+
+                if (VI.Math.SqMagnitude(MovementXModifier, MovementYModifier) > float.Epsilon * float.Epsilon)
+                {
+                    ApplyForce(_ENTITY, MovementXModifier, MovementYModifier, 1f);
+                }
+
                 else
                 {
                     // Stop rowing audio
